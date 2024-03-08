@@ -15,6 +15,10 @@ struct BanimSyncHandler * GetBanimSyncHandler_ComboAtk(struct Anim * anim)
     struct Unit * unit;
     int round;
 
+    /* User defined switch */
+    if (gpConfigUseComboAtk == 0)
+        return NULL;
+
     if (!IsAttackerAnim(anim))
         return NULL;
 

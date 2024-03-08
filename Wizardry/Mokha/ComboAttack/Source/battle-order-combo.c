@@ -53,6 +53,9 @@ bool BattleComboGenerateHits(void)
     int i;
     u32 attrs;
 
+    if (gpConfigUseComboAtk == 0)
+        return false;
+
     /* Not considering on simulation */
     if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
         return false;

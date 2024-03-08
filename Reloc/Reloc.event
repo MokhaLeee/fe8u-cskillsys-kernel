@@ -72,3 +72,10 @@ gpMsu_Saver:
 
 gpMsu_Loader:
     WORD 0
+
+gpConfigUseComboAtk:
+#ifdef CONFIG_USE_COMBO_ATTACK
+    WORD 1
+#else
+    WORD 0
+#endif

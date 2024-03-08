@@ -12,6 +12,7 @@ ORG FreeSpaceKernel
 
 ORG FreeSpaceKernel_Reloc
     #include "Reloc/Reloc.event"
+MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) max (FreeSpaceKernel_Reloc + FreeSpaceRelocSize)
 ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
 
 ORG FreeSpaceKernel_TextTable
