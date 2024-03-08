@@ -82,4 +82,9 @@ struct EmsPackedSusUnit {
     /* 33 */ u8 _u3B;
 } BITPACKED;
 
+extern void (* const gpMsa_Saver )(u8 * dst, const u32 size);
+extern void (* const gpMsa_Loader)(u8 * src, const u32 size);
+extern void (* const gpMsu_Saver )(u8 * dst, const u32 size);
+extern void (* const gpMsu_Loader)(u8 * src, const u32 size);
+
 #define SIZE_OF_SUS_UNIT_PACK 0x34

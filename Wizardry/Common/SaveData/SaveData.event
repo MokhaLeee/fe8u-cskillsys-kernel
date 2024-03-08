@@ -55,6 +55,7 @@ gEmsSavChunks:
     EmsChunk($0F44, $0660, SaveUnitLearnedSkillLists, LoadUnitLearnedSkillLists)
 
     /* Free: $15A4 ~ $1AC0 */
+    EmsChunk($15A4, $1AC0 - $15A4, MSA_ExternalSaver, MSA_ExternalLoader)
     EmsChunkEnd
 
 gEmsSusChunks:
@@ -83,6 +84,7 @@ gEmsSusChunks:
     EmsChunk($25A8, 0x08, SaveRandC, LoadRandC)
 
     /* Free: $25B0 ~ $2CD0 */
+    EmsChunk($25B0, $2CD0 - $25B0, MSU_ExternalSaver, MSU_ExternalLoader)
     EmsChunkEnd
 
 #endif

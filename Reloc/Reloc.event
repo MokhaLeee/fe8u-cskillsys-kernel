@@ -60,3 +60,15 @@ gpMagicPInfos:
 
 gpMagicJInfos:
     POIN gMagicJInfos
+
+gpMsa_Saver:
+    WORD 0
+
+gpMsa_Loader:
+    WORD 0
+
+gpMsu_Saver:
+    WORD 0
+
+gpMsu_Loader:
+    WORD 0

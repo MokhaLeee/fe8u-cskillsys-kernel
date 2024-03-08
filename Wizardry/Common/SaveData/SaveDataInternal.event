@@ -1,6 +1,7 @@
 #include "Source/ModularSaveCore.lyn.event"
 #include "Source/MsaFunc.lyn.event"
 #include "Source/MsuFunc.lyn.event"
+#include "Source/ExternalLoader.lyn.event"
 
 #ifdef CONFIG_VERIFY_SKILLSYS_SRAM
     #include "Source/SramVerify.lyn.event"
