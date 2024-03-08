@@ -286,19 +286,22 @@ void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 * proc)
 
     str = GetSkillDescStr(sid);
 
-    for (i = 0; i < 3 && '\0' != *str; i++)
+    if (str)
     {
-        struct Text * text = &gPrepUnitTexts[0x00 + i];
-        ClearText(text);
-        PutDrawText(
-            text,
-            TILEMAP_LOCATED(gBG0TilemapBuffer, X, Y + 2 * i),
-            TEXT_COLOR_SYSTEM_WHITE, 0, 0, str
-        );
+        for (i = 0; i < 3 && '\0' != *str; i++)
+        {
+            struct Text * text = &gPrepUnitTexts[0x00 + i];
+            ClearText(text);
+            PutDrawText(
+                text,
+                TILEMAP_LOCATED(gBG0TilemapBuffer, X, Y + 2 * i),
+                TEXT_COLOR_SYSTEM_WHITE, 0, 0, str
+            );
 
-        while ('\1' != *str++)
-            if ('\0' == *str)
-                break;
+            while ('\1' != *str++)
+                if ('\0' == *str)
+                    break;
+        }
     }
     BG_EnableSyncByMask(BG0_SYNC_BIT);
 }

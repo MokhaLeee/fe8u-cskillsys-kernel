@@ -363,6 +363,8 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 * proc)
 
     if (hand_moved)
     {
+        PlaySoundEffect(0x65);
+
         if (proc->hand_pos == POS_R)
             ShowSysHandCursor(
                 0x74 + 0x10 * proc->hand_x,
