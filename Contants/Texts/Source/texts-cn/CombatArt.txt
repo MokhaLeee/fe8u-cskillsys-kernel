@@ -1,0 +1,13 @@
+## MSG_COMBATART_UM_NAME
+ 战技[X]
+
+## MSG_COMBATART_UM_DESC
+战技: 通过提高武器损耗[NL]
+获得强力一击。无法追击，[NL]
+无效埋伏技能。[X]
+
+## MSG_COMBATART_BKSEL_NO_ARTS
+无法使用战技[X]
+
+## MSG_COMBATART_BKSEL_HB_Cost
+损耗[X]

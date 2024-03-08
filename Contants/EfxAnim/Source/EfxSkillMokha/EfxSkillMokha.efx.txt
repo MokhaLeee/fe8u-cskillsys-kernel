@@ -1,0 +1,6 @@
+# Duartion path
+0x05       Mokha001.png
+0x05       Mokha002.png
+0x0A       Mokha003.png
+0x05       Mokha002.png
+0x05       Mokha001.png

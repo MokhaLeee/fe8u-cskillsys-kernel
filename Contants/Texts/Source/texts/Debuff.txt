@@ -1,0 +1,35 @@
+## MSG_DEBUFF_PIERCE_ARMOR_NAME
+Def-[X]
+
+## MSG_DEBUFF_PIERCE_ARMOR_DESC
+Armor pierced: Def-5[X]
+
+## MSG_DEBUFF_PIERCE_MAGIC_NAME
+Res-[X]
+
+## MSG_DEBUFF_PIERCE_MAGIC_DESC
+Pierce magic: Res-5[X]
+
+## MSG_DEBUFF_HEAVY_GRAVITY_NAME
+Mov-[X]
+
+## MSG_DEBUFF_HEAVY_GRAVITY_DESC
+Heavy gravity: cannot move[X]
+
+## MSG_DEBUFF_WEAKEN_NAME
+Weaken[X]
+
+## MSG_DEBUFF_WEAKEN_DESC
+Weaken: Pow-5, Mag-5[X]
+
+## MSG_DEBUFF_AVOID_NAME
+Avo+[X]
+
+## MSG_DEBUFF_AVOID_DESC
+Avoid: avoid + 15%[X]
+
+## MSG_DEBUFF_AVOID_PLUS_NAME
+Avo++[X]
+
+## MSG_DEBUFF_AVOID_PLUS_DESC
+Avoid+: avoid + 30%[X]

@@ -1,0 +1,15 @@
+## MSG_SKILL_Nullify
+Nullify: Unit is protected[NL]
+from all effective attacks.[X]
+
+## MSG_SKILL_Slayer
+Slayer: Deal effective damage[NL]
+to monster units.[X]
+
+## MSG_SKILL_Skybreaker
+Sky-K: Deal effective[NL]
+damage to flying units.[X]
+
+## MSG_SKILL_Resourceful
+Resourc: Double bonus[NL]
+effectiveness multipliers.[X]

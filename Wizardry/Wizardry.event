@@ -1,0 +1,54 @@
+ALIGN 4
+
+#include "Common/EventExpansion/EventExpansion.event"
+#include "Core/DebuffRework/DebuffRework.event"
+#include "Core/WeaponRange/WeaponRange.event"
+
+#include "Common/GameInitHook/GameInitHook.event"
+#include "Common/DebugKit/DebugKit.event"
+#include "Common/BanimHack/BanimHack.event"
+#include "Common/BwlRework/BwlRework.event"
+#include "Common/ItemSys/ItemSys.event"
+#include "Common/ClassChgExpansion/ClassChgExpansion.event"
+#include "Common/CommonLib/map.lyn.event"
+#include "Common/CommonLib/math.lyn.event"
+#include "Common/CommonLib/banim.lyn.event"
+#include "Common/CommonLib/list-verify.lyn.event"
+#include "Common/RN/RandNumberC.lyn.event"
+#include "Common/MoveLimitViewHack/MoveLimitViewHack.lyn.event"
+#include "Common/IconDisplay/IconDisplay.event"
+#include "Common/NegativeStatBoosts/NegativeStatBoosts.event"
+#include "Common/UnitMenu/UnitMenu.event"
+#include "Common/PostActionHook/PostActionHook.event"
+#include "Common/ChapterInitHook/ChapterInitHook.event"
+#include "Common/BattleUnitHook/BattleUnitHook.event"
+#include "Common/StrMagSplit/StrMagSplit.event"
+#include "Common/SaveData/SaveData.event"
+#include "Common/LoadUnitHook/LoadUnitHook.event"
+#include "Common/Lvupfx/Lvupfx.event"
+#include "Common/UnitExpa/UnitExpa.event"
+#include "Common/PhaseSwitchHook/PhaseSwitchHook.event"
+#include "Common/BanimSync/BanimSync.event"
+
+#include "Core/SkillSys/SkillSys.event"
+#include "Core/UnitStatusGetter/UnitStatusGetter.event"
+#include "Core/BattleSys/BattleSys.event"
+#include "Core/Lvup/Lvup.event"
+#include "Core/StatScreen/StatScreen.event"
+#include "Core/HpBar/HpBar.event"
+#include "Core/CombatArt/CombatArt.event"
+#include "Core/HelpBox/HelpBox.event"
+
+#include "QOL/StatScreenfx/StatScreenfx.event"
+#include "QOL/GameIntrofx/GameIntrofx.event"
+#include "QOL/ChapterIntrofx/ChapterIntrofx.event"
+
+#include "Mokha/MapAnims/MapAnims.event"
+#include "Mokha/MiscSkillEffects/MiscSkillEffects.event"
+#include "Mokha/ComboAttack/ComboAttack.event"
+
+#include "External/ExternalPatches.event"
+
+#ifdef CONFIG_USE_DEBUG
+    #include "debug.event"
+#endif

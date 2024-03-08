@@ -1,0 +1,16 @@
+#ifndef GAME_INIT_HOOK_H
+#define GAME_INIT_HOOK_H
+
+ALIGN 4
+#include "source/GameInit.lyn.event"
+
+ALIGN 4
+gGameInitHookTable:
+    POIN ResetUnitLearnedSkillLists InitRandC
+    POIN GameInitHookFuncPad
+    POIN GameInitHookFuncPad
+    POIN GameInitHookFuncPad
+    POIN GameInitHookFuncPad
+    WORD 0
+
+#endif /* GAME_INIT_HOOK_H */

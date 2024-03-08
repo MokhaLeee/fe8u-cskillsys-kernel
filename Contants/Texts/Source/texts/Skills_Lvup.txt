@@ -1,0 +1,15 @@
+## MSG_SKILL_Blossom
+Blossom: 2x growth rates,[NL]
+but 1/2 exp gain.[X]
+
+## MSG_SKILL_Paragon
+Paragon: Experience gain[NL]
+is doubled.[X]
+
+## MSG_SKILL_VoidCurse
+V-Curse: This unit gives[NL]
+no experience when defeated.[X]
+
+## MSG_SKILL_Aptitude
+Aptitude: +20% to[NL]
+all growth rates.[X]

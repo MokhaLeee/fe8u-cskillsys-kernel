@@ -1,0 +1,4 @@
+PUSH
+    ORG $95DFA4
+    #include "VanillaList.lyn.event"
+POP

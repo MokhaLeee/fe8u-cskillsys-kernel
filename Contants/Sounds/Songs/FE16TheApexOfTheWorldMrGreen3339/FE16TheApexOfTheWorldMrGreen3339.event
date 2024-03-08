@@ -1,0 +1,5 @@
+{
+    #include "Source/TheApexOfTheWorldMrGreen3339.lyn.event"
+
+    SongTable(SONG_TitleScreen, song0E, SG_MAP_MUSIC)
+}

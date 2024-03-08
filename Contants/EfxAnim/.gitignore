@@ -1,0 +1,10 @@
+# Spritans
+*.4bpp
+*.gbapal
+*.lz
+*.img.bin
+*.map.bin
+*.pal.bin
+
+# EfxAnims
+*.efx.event

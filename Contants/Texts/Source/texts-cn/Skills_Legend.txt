@@ -1,0 +1,14 @@
+## MSG_SKILL_LEGEND_InoriAtk
+Legend:(once per chapter)[NL]
+If attacked to 0 Hp, unit may[NL]
+not die but atk+10, crit+100%[X]
+
+## MSG_SKILL_LEGEND_InoriAvo
+Legend:(once per chapter)[NL]
+If attacked to 0 Hp, unit may[NL]
+not die but spd+10, avo+100%[X]
+
+## MSG_SKILL_LEGEND_InoriDef
+Legend:(once per chapter)[NL]
+If attacked to 0 Hp, unit may not[NL]
+die, recover hp and def/res +10[X]

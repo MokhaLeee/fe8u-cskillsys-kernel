@@ -1,0 +1,47 @@
+#0x578
+Skills[X]
+
+#0x580
+Manage your units' skills[X]
+
+#0xD4C MSG_FreeSpaceIndentifier
+.[X]
+
+## MSG_WIP
+W.I.P.[X]
+
+## MSG_ItemName_DustVial
+Dust Vial[X]
+
+## MSG_ItemDesc_DustVial
+Increases magic by[NL]
+2 points. Vanishes after use.[X]
+
+## MSG_ItemUseDesc_DustVial
+Raises magic.[X]
+
+#include texts/Statscreen.txt
+#include texts/PrepScreen.txt
+#include texts/Debuff.txt
+#include texts/Skills_StatusGetter.txt
+#include texts/Skills_BattleStatus.txt
+#include texts/Skills_WeaponTriangle.txt
+#include texts/Skills_Lvup.txt
+#include texts/Skills_BattleAct.txt
+#include texts/Skills_BattleOrder.txt
+#include texts/Skills_BattleEffective.txt
+#include texts/Skills_Blow.txt
+#include texts/Skills_Stance.txt
+#include texts/Skills_WeaponRange.txt
+#include texts/Skills_PostAction.txt
+#include texts/Skills_PrePhase.txt
+#include texts/Skills_RangeDebuff.txt
+#include texts/Skills_AI.txt
+#include texts/Skills_Menu.txt
+#include texts/Skills_Legend.txt
+#include texts/Skills_CombatArt.txt
+#include texts/CombatArt.txt
+#include texts/CombatArt_Sword.txt
+#include texts/CombatArt_Axe.txt
+#include texts/CombatArt_Lance.txt
+#include texts/CombatArt_Bow.txt

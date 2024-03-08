@@ -1,0 +1,13 @@
+#ifndef SOUNDS
+#define SOUNDS
+
+#ifndef SongTableOffset
+    #define SongTableOffset 0x224470
+    #define SongTable(index,SongPointer,Group) "PUSH; ORG SongTableOffset+(8*index); POIN SongPointer; SHORT Group Group; POP"
+#endif
+
+#include "SoundDefinitions.event"
+
+#include "Songs/Fe7ChapterOpen/Fe7ChapterOpen.event"
+
+#endif // SOUNDS

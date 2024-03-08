@@ -1,0 +1,27 @@
+#ifndef ITEM_SYS_INSTALLED
+#define ITEM_SYS_INSTALLED
+
+#include "Source/StaffAccuracy.lyn.event"
+#include "Source/StaffHeal.lyn.event"
+#include "Source/LynJump.event"
+
+#include "Remap/Remap.event"
+
+#define InjectItemUsabilityJpt(index, routine) "PUSH; ORG (ItemUsabilityJumpTable + 4 * index); POIN routine | 1; POP"
+#define InjectItemEffectJpt(index, routine)    "PUSH; ORG (ItemEffectJumpTable + 4 * index);    POIN routine | 1; POP"
+#define InjectItemActionJpt(index, routine)    "PUSH; ORG (ItemActionJumpTable + 4 * index);    POIN routine | 1; POP"
+
+#include "PrepItem/PrepItemUsability.lyn.event"
+#include "PrepItem/PrepItemEffect.lyn.event"
+#include "PrepItem/PrepItemUseScreen.lyn.event"
+#include "PrepItem/LynJump.event"
+
+PUSH
+ORG $A190D4
+PROC_YEILD
+POP
+
+#define InjectItemPrepUsabilityJpt(index, routine) "PUSH; ORG (gPrepItemUsabilityFuncs + 4 * index); POIN routine | 1; POP"
+#define InjectItemPrepEffectJpt(index, routine)    "PUSH; ORG (gPrepItemEffectFunc + 4 * index); POIN routine | 1; POP"
+
+#endif

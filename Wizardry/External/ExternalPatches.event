@@ -1,0 +1,6 @@
+#include "AutoGenLeftOAM/installer.txt"
+#include "01command_hack/01command_hack.event"
+#include "48command_hack/48command_hack.event"
+#include "FillAIDangerMap20220712/install.event"
+#include "DecideOnDangerMap/DecideOnDangerMap.event"
+// #include "MeleeAndMagicFix_ItemFix20220721/MeleeAndMagicFix_ItemFix20220721.event"

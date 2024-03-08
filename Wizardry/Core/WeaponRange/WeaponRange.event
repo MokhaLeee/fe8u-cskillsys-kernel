@@ -1,0 +1,36 @@
+#ifndef WEAPON_RANGE_INSTALLED
+#define WEAPON_RANGE_INSTALLED
+
+#include "Source/MiscHooksWeaponRange.event"
+
+#include "Source/RangeGetter.lyn.event"
+#include "Source/Utils.lyn.event"
+#include "Source/MiscHooks.lyn.event"
+#include "Source/StaffRange.lyn.event"
+#include "Source/RangeString.lyn.event"
+#include "Source/LynJump.event"
+
+ALIGN 4
+gWeaponRangeGetters:
+    POIN WeaponRangeGetterSkills WeaponRangeGetterCombatArt
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+PUSH
+ORG $0170D4
+    LynJump(GetItemReachBitsRework)
+    PROTECT $170D4 $171E4
+
+ORG $016B8C
+    LynJump(IsItemCoveringRangeRework)
+
+_thumb(_prGetUnitDisplayRangeString)
+    LynJump(GetUnitDisplayRangeString)
+    PROTECT $16B8C $16BBC
+
+ORG $87630
+    SHORT $2000 // mov r0, #0
+    BL(_prGetUnitDisplayRangeString)
+POP
+
+#endif /* WEAPON_RANGE_INSTALLED */

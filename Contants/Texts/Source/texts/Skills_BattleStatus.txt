@@ -1,0 +1,120 @@
+## MSG_SKILL_Lethality
+Lethality: [NL]
+Unit may casue Lethality in[NL]
+critical attack, Skl%[X]
+
+## MSG_SKILL_Crit
+Crit: [NL]
+Crit rate +15%[X]
+
+## MSG_SKILL_WatchfulEye
+W-Eye: [NL]
+Hit rate +20%[X]
+
+## MSG_SKILL_CritSword
+Crit Sword: [NL]
+Crit rate +10%,[NL]
+if equipped sword[X]
+
+## MSG_SKILL_CritAxe
+Crit Axe: [NL]
+Crit rate +10%,[NL]
+if equipped axe[X]
+
+## MSG_SKILL_CritLance
+Crit Lance: [NL]
+Crit rate +10%,[NL]
+if equipped lance[X]
+
+## MSG_SKILL_CritBow
+Crit Bow: [NL]
+Crit rate +10%,[NL]
+if equipped bow[X]
+
+## MSG_SKILL_FaireSword
+Faire Sword: [NL]
+Atk +5 if unit[NL]
+equips sword[X]
+
+## MSG_SKILL_FaireLance
+Faire Lance: [NL]
+Atk +5 if unit[NL]
+equips Lance[X]
+
+## MSG_SKILL_FaireAxe
+Faire Axe: [NL]
+Atk +5 if unit[NL]
+equips Axe[X]
+
+## MSG_SKILL_FaireBow
+Faire Bow: [NL]
+Atk +5 if unit[NL]
+equips Bow[X]
+
+## MSG_SKILL_FaireBMag
+Faire B.Mag: [NL]
+Atk +5 if unit[NL]
+equips B.Mag[X]
+
+## MSG_SKILL_Avoid
+Avoid+10:[NL]
+Avoid rate +10%[X]
+
+## MSG_SKILL_AvoidSword
+Avoid Sword: [NL]
+Grants avoid rate +20%[NL]
+if unit equips sword[X]
+
+## MSG_SKILL_RuinedBlade
+Ruined Blade: [NL]
+Str/Mag-5, Spd+5, casue[NL]
+5 real damge in combat[X]
+
+## MSG_SKILL_RuinedBladePlus
+Ruined Blade+:[NL]
+Spd +5, deal real damage +5,[NL]
+battle hit +1 but cannot crit[X]
+
+## MSG_SKILL_InfinityEdge
+Infinity Edge: [NL]
+Critical attack deal 300% damage[X]
+
+## MSG_SKILL_HeavyBlade
+Heavy Blade: [NL]
+If unit's attack is higher than[NL]
+foe, critical rate +15%[X]
+
+## MSG_SKILL_FlashingBlade
+Flashing Blade: [NL]
+If unit's AS is higher than[NL]
+foe, critical rate +15% [X]
+
+## MSG_SKILL_HeavyBladePlus
+Heavy Blade+: [NL]
+Str+5. If unit's attack is higher[NL]
+than foe, critical rate +25%[X]
+
+## MSG_SKILL_FlashingBladePlus
+Flash Blade+: [NL]
+Dmg+3. If unit's AS is higher[NL]
+than foe, critical rate +25%[X]
+
+## MSG_SKILL_LunaAttack
+Luna Attack: [NL]
+Grants real dmg bonus[NL]
+as foe's Def x25%[X]
+
+## MSG_SKILL_SorceryBlade
+Sorcery Blade: [NL]
+Target defense is calculated as[NL]
+lower value of Def or Res[X]
+
+## MSG_SKILL_Fortune
+Fortune:[NL]
+This unit[NL]
+cannot be crit.[X]
+
+## MSG_SKILL_BlueFlame
+Blue Flame: Attack +2 to this[NL]
+unit. When adjacent to an ally[NL]
+with this skill, gain Attack +2.[X]

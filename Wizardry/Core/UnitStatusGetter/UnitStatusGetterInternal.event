@@ -1,0 +1,75 @@
+
+#include "Extensions/Hack Installation.txt"
+
+ALIGN 4
+#include "source/HpGetter.lyn.event"
+#include "source/PowGetter.lyn.event"
+#include "source/MagGetter.lyn.event"
+#include "source/SklGetter.lyn.event"
+#include "source/SpdGetter.lyn.event"
+#include "source/LckGetter.lyn.event"
+#include "source/DefGetter.lyn.event"
+#include "source/ResGetter.lyn.event"
+#include "source/MovGetter.lyn.event"
+#include "source/ConGetter.lyn.event"
+#include "source/AidGetter.lyn.event"
+#include "source/MiscGetter.lyn.event"
+
+#include "source/InjectHPGetters.event"
+#include "source/InjectMovGetters.event"
+
+#include "source/StatusGetterExample.lyn.event"
+
+PUSH
+ORG $019190
+_thumb(HpMaxGetter)
+    jumpToHack(_GetUnitMaxHp)
+    PROTECT $19190 $191AC
+
+ORG $0191B0
+_thumb(PowGetter)
+    jumpToHack(_GetUnitPower)
+
+ORG CURRENTOFFSET
+_thumb(MagGetter)
+    jumpToHack(_GetUnitMagic)
+    PROTECT $191B0 $191CC
+
+ORG $0191D0
+_thumb(SklGetter)
+    jumpToHack(_GetUnitSkill)
+    PROTECT $191D0 $1920C
+
+ORG $019210
+_thumb(SpdGetter)
+    jumpToHack(_GetUnitSpeed)
+    PROTECT $19210 $1924C
+
+ORG $019250
+_thumb(DefGetter)
+    jumpToHack(_GetUnitDefense)
+    PROTECT $19250 $1926C
+
+ORG $019270
+_thumb(ResGetter)
+    jumpToHack(_GetUnitResistance)
+    PROTECT $19270 $19294
+    
+ORG $019298
+_thumb(LckGetter)
+    jumpToHack(_GetUnitLuck)
+    PROTECT $19298 $192B4
+
+ORG $0189B8
+_thumb(AidGetter)
+    jumpToHack(_GetUnitAid)
+    
+ORG CURRENTOFFSET
+_thumb(ConGetter)
+    jumpToHack(_GetUnitCon)
+
+ORG CURRENTOFFSET
+_thumb(MovGetter)
+    jumpToHack(_GetUnitMov)
+    PROTECT $189B8 $18A18
+POP

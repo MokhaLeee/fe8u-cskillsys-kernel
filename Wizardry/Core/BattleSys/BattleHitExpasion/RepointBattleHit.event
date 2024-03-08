@@ -1,0 +1,77 @@
+/* Align to usr-defined.ref.s */
+#define gBattleHitArrayRe 0x02026AD0
+
+PUSH
+    ORG $2C44C
+    WORD gBattleHitArrayRe
+
+    ORG $2C660
+    WORD gBattleHitArrayRe
+
+    ORG $2CB0C
+    WORD gBattleHitArrayRe
+
+    ORG $2CE98
+    WORD gBattleHitArrayRe
+
+    ORG $2CFA8
+    WORD gBattleHitArrayRe
+    PROTECT $2CF4C $2D0BC // Port from DebuffRework/Source/MiscHooks.event
+
+    ORG $2F658
+    WORD gBattleHitArrayRe
+
+    ORG $2F730
+    WORD gBattleHitArrayRe
+
+    ORG $2F7FC
+    WORD gBattleHitArrayRe
+
+    ORG $58244
+    WORD gBattleHitArrayRe
+
+    ORG $58930
+    WORD gBattleHitArrayRe
+
+    ORG $72564
+    WORD gBattleHitArrayRe
+
+    ORG $7B4CC
+    WORD gBattleHitArrayRe
+
+    ORG $7B574
+    WORD gBattleHitArrayRe
+
+    ORG $7B628
+    WORD gBattleHitArrayRe
+
+    ORG $7B680
+    WORD gBattleHitArrayRe
+
+    ORG $7B6D8
+    WORD gBattleHitArrayRe
+
+    ORG $7B738
+    WORD gBattleHitArrayRe
+
+    ORG $7B790
+    WORD gBattleHitArrayRe
+
+    ORG $7B7E8
+    WORD gBattleHitArrayRe
+
+    ORG $7B84C
+    WORD gBattleHitArrayRe
+
+    ORG $7B8B8
+    WORD gBattleHitArrayRe
+
+    ORG $7B9B0
+    WORD gBattleHitArrayRe
+
+    ORG $7C920
+    WORD gBattleHitArrayRe
+
+    ORG $A6D18
+    WORD gBattleHitArrayRe
+POP

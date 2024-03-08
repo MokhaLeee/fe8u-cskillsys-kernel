@@ -1,0 +1,16 @@
+#ifndef EVENT_EXPANSION_INSTALLED
+#define EVENT_EXPANSION_INSTALLED
+
+ALIGN 4
+#include "Source/EventTable.lyn.event"
+
+ORG gEventLoCmdTableRe + 0x80 * 4
+
+#define InjectEventLoCmd(index, routine) "PUSH; ORG gEventLoCmdTableRe + (index * 4); POIN routine;POP"
+
+PUSH
+    ORG $0CEE0
+    POIN gEventLoCmdTableRe
+POP
+
+#endif /* EVENT_EXPANSION_INSTALLED */

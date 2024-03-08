@@ -1,0 +1,256 @@
+PUSH
+    ORG $54A58 // NewEfxStatusUnit
+    SHORT 0x0680 // lsl r0, r0, #0x1A
+    SHORT 0x0E80 // lsr r0, r0, #0x1A
+    PROTECT $54A1C $54B18
+
+    ORG $70BA0 // RegisterEkrDragonStatusType
+    BYTE $3F
+    ORG $70C5E
+    BYTE $3F
+    PROTECT $70B3C $70D04
+
+    ORG $59A8C // UpdateBanimFrame
+    BYTE $3F
+    ORG $59AAA
+    BYTE $3F
+    // PROTECT $599E8 $59D28
+
+    ORG $31F58 // ArenaIsUnitAllowed
+    BYTE 0x3F
+    PROTECT $31F50 $31F74
+
+    ORG $2A8E4 // SetBattleUnitWeapon
+    SHORT 0x0680 // lsl r0, r0, #0x1A
+    SHORT 0x0E80 // lsr r0, r0, #0x1A
+    // PROTECT $2A730 $2A918
+
+    // ComputeBattleUnitStatusBonuses
+    // ComputeBattleUnitSpecialWeaponStats
+
+    ORG $2B152 // BattleCheckTriangleAttack
+    BYTE 0x3F
+    PROTECT $2B0CC $2B1C4
+
+    ORG $2C5B0 // BattleGenerateHitTriangleAttack
+    BYTE 0x3F
+    PROTECT $2B578 $2B600
+
+/*
+    ORG $2B664 // BattleGenerateHitEffects
+    BYTE 0x3F
+    PROTECT $2B600 $2B83C
+*/
+
+    ORG $2C88C // BattleInitTargetCanCounter
+    BYTE 0x3F
+    PROTECT $2C844 $2C8C4
+
+    ORG $2D046 // BattleUnwindScripted
+    BYTE 0x3F
+    // PROTECT $2CF4C $2D0BC
+
+    ORG $166F6 // CanUnitUseWeapon
+    BYTE 0x3F
+    PROTECT $16574 $16750
+
+    ORG $167CA // CanUnitUseStaff
+    BYTE 0x3F
+    PROTECT $167A4 $16800
+
+    ORG $16F32 // IsItemDisplayUsable
+    BYTE 0x3F
+    PROTECT $16EE4 $16F7C
+
+    ORG $290EA // CanUnitUseAntitoxinItem
+    BYTE 0x3F
+    PROTECT $290E4 $290FC
+
+    ORG $23CAE // TalkCommandUsability
+    BYTE 0x3F
+    PROTECT $23C80 $23CC4
+
+    ORG $23D4E // SupportCommandUsability
+    BYTE 0x3F
+    PROTECT $23D14 $23D64
+
+    ORG $24D18 // GetPhaseAbleUnitCount
+    BYTE 0x3F
+    PROTECT $24CEC $24D50
+
+    // EncodeSuspendSavePackedUnit
+    // ReadSuspendSavePackedUnit
+
+    ORG $25250 // TryAddUnitToTradeTargetList
+    BYTE 0x3F
+    PROTECT $2521C $252D0
+
+    ORG $25378 // TryAddUnitToRescueTargetList
+    BYTE 0x3F
+    PROTECT $25344 $253B4
+
+    ORG $25540 // TryAddUnitToGiveTargetList
+    BYTE 0x3F
+    PROTECT $25514 $25594
+
+    ORG $255D0 // TryAddUnitToTalkTargetList
+    BYTE 0x3F
+    PROTECT $255C8 $25610
+
+    ORG $256BE // MakeTargetListForSupport
+    BYTE 0x3F
+    PROTECT $25644 $256F0
+
+/*
+    ORG $259A0 // MakeTerrainHealTargetList
+    BYTE 0x3F
+    PROTECT $25904 $259EC
+*/
+
+    ORG $25A22 // MakePoisonDamageTargetList
+    BYTE 0x3F
+    PROTECT $259EC $25A64
+
+    ORG $25AA6 // MakeGorgonEggHatchTargetList
+    BYTE 0x3F
+    PROTECT $25A64 $25B18
+
+    ORG $25B44 // TryAddUnitToRefreshTargetList
+    BYTE 0x3F
+    PROTECT $25B18 $25B6C
+
+    ORG $25F20 // AddToTargetListIfNotAllied
+    BYTE 0x3F
+    PROTECT $25EFC $25F44
+
+    ORG $25FC4 // TryAddUnitToRestoreTargetList
+    BYTE 0x3F
+    PROTECT $25F98 $25FE8
+
+    ORG $26122 // TryAddUnitToSilenceTargetList
+    BYTE 0x3F
+    PROTECT $26100 $2614C
+
+    ORG $2616E // TryAddUnitToSleepTargetList
+    BYTE 0x3F
+    PROTECT $2614C $26198
+
+    ORG $261BA // TryAddUnitToBerserkTargetList
+    BYTE 0x3F
+    PROTECT $26198 $261E4
+
+    ORG $263DE // MakeTargetListForLatona
+    BYTE 0x3F
+    PROTECT $26388 $26414
+
+    ORG $265CA // TryAddUnitToDanceRingTargetList
+    BYTE 0x3F
+    PROTECT $265B4 $265E4
+
+    ORG $27200 // RefreshUnitSprites
+    BYTE 0x3F
+    // PROTECT $271A0 $2736C
+
+    // PutUnitSpriteIconsOam
+
+    ORG $27A8C // UnitSpriteHoverUpdate
+    BYTE 0x3F
+    PROTECT $27A4C $27B0C
+
+    ORG $27B42 // IsUnitSpriteHoverEnabledAt
+    BYTE 0x3F
+    PROTECT $27B0C $27B60
+
+    // SetUnitStatus
+    // SetUnitStatusExt
+    // GetUnitStatusName
+    // TickActiveFactionTurn
+
+    ORG $18D10 // IsUnitMagicSealed
+    BYTE 0x3F
+    PROTECT $18D08 $18D34
+
+/*
+    ORG $361C8 // StatusDecayDisplay_Display
+    SHORT 0x06A4 // lsl r4, r4, #0x1A
+    SHORT 0x0EA4 // lsr r4, r4, #0x1A
+    PROTECT $361AC $3623C
+*/
+
+    ORG $2EC46 // ExecRestore
+    BYTE 0x3F
+    PROTECT $2EC20 $2EC8C
+
+    ORG $2F254 // ApplyNightmareEffect
+    BYTE 0x3F
+    PROTECT $2F208 $2F274
+
+    ORG $3E91E // sub_803E900
+    BYTE 0x3F
+    PROTECT $3E900 $3E93C
+
+    ORG $397F0 // CpOrderBerserkInit
+    BYTE 0x3F
+    PROTECT $397B0 $39858
+
+    ORG $399F4 // BuildAiUnitList
+    BYTE 0x3F
+    PROTECT $399B0 $39A50
+
+    ORG $3FA54 // AiTryDoStaff
+    BYTE 0x3F
+    PROTECT $3FA40 $3FAE8
+
+    ORG $40214 // AiStaffRestore
+    BYTE 0x3F
+    PROTECT $40164 $402A8
+
+    ORG $403DA // AiStaffSilence
+    BYTE 0x3F
+    PROTECT $40354 $404E0
+
+    ORG $40566 // AiStaffSleepBerserk
+    BYTE 0x3F
+    PROTECT $404E0 $40664
+
+    ORG $40A96 // AiSpecialItemAntitoxin
+    BYTE 0x3F
+    PROTECT $40A78 $40AE0
+
+    ORG $41182 // AiDetermineNightmareEffectiveness
+    BYTE 0x3F
+    PROTECT $410F8 $411F8
+
+    ORG $7B38A // MakeBattleMOVEUNIT
+    SHORT 0x0680 // lsl r0, r0, #0x1A
+    SHORT 0x0E80 // lsr r0, r0, #0x1A
+    PROTECT $7B334 $7B3BC
+
+    ORG $7AC36 // SetBattleMuPaletteByIndex
+    SHORT 0x0680 // lsl r0, r0, #0x1A
+    SHORT 0x0E80 // lsr r0, r0, #0x1A
+    PROTECT $7ABE0 $7ACAC
+
+    // MMB_DrawStatusText
+
+    ORG $8C470 // DrawUnitDisplayHpOrStatus
+    BYTE 0x3F
+    ORG $8C536
+    BYTE 0x3F
+    PROTECT $8C45C $8C5D0
+
+    ORG $1D58E // GetUnitSelectionValueThing
+    BYTE 0x3F
+    PROTECT $1D51C $1D5A8
+
+    ORG $1D732 // MakeMoveunitForActiveUnit
+    BYTE 0x3F
+    PROTECT $1D70C $1D75C
+
+    ORG $1DAFE // TrySetCursorOn
+    BYTE 0x3F
+    PROTECT $1DADC $1DB4C
+
+    // DisplayPage0
+    // HbPopulate_SSStatus
+POP

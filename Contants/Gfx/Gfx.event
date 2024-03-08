@@ -1,0 +1,8 @@
+#ifndef GFX_INSTALLED
+#define GFX_INSTALLED
+
+ALIGN 4
+/* Auto generated */
+#include "GfxInstaller.event"
+
+#endif /* GFX_INSTALLED */

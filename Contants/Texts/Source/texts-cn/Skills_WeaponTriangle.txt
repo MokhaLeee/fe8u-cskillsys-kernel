@@ -1,0 +1,24 @@
+## MSG_SKILL_SwordBreaker
+破剑者:[NL]
+自己装备着枪与持剑的敌人[NL]
+战斗时，命中、回避+20。[X]
+
+## MSG_SKILL_AxeBreaker
+破斧者:[NL]
+自己装备着剑与持斧的敌人[NL]
+战斗时，命中、回避+20。[X]
+
+## MSG_SKILL_LanceBreaker
+破枪者:[NL]
+自己装备着斧与持枪的敌人[NL]
+战斗时，命中、回避+20。[X]
+
+## MSG_SKILL_BowBreaker
+破弓者: [NL]
+自己装备着魔法与持弓的敌人[NL]
+战斗时，命中、回避+20。[X]
+
+## MSG_SKILL_BMagBreaker
+破魔者: [NL]
+与使用魔法的敌人[NL]
+战斗时，命中、回避+20。[X]

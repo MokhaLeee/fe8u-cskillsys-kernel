@@ -1,0 +1,11 @@
+## MSG_SKILL_Shade
+隐藏: 敌人优先[NL]
+选择不攻击该单位[X]
+
+## MSG_SKILL_ShadePlus
+潜伏: 敌人总是[NL]
+选择不攻击该单位[X]
+
+## MSG_SKILL_Provoke
+嘲讽: 诱使敌人[NL]
+攻击当前角色[X]

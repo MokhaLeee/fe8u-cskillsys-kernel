@@ -1,0 +1,87 @@
+## MSG_SKILL_COMBAT_Grounder
+燕返: 角色获得[NL]
+战技『燕返』[X]
+
+## MSG_SKILL_COMBAT_BaneOfMonsters
+魔物斩击: 角色获得[NL]
+战技『魔物斩击』[X]
+
+## MSG_SKILL_COMBAT_Hexblade
+魔刃: 角色获得[NL]
+战技『魔刃』[X]
+
+## MSG_SKILL_COMBAT_FoudroyantStrike
+雷迅: 角色获得[NL]
+战技『雷迅』[X]
+
+## MSG_SKILL_COMBAT_TempestLance
+旋风枪: 角色获得[NL]
+战技『旋风枪』[X]
+
+## MSG_SKILL_COMBAT_SwiftStrikes
+连击: 角色获得[NL]
+战技『连击』[X]
+
+## MSG_SKILL_COMBAT_FrozenLance
+冰枪: 角色获得[NL]
+战技『冰枪』[X]
+
+## MSG_SKILL_COMBAT_Vengeance
+复仇: 角色获得[NL]
+战技『复仇』[X]
+
+## MSG_SKILL_COMBAT_HelmSplitter
+破盔: 角色获得[NL]
+战技『破盔』[X]
+
+## MSG_SKILL_COMBAT_LightningAxe
+雷斧: 角色获得[NL]
+战技『雷斧』[X]
+
+## MSG_SKILL_COMBAT_WarMasterStrike
+战鬼一击: 角色获得[NL]
+战技『战鬼一击』[X]
+
+## MSG_SKILL_COMBAT_CurvedShot
+曲射: 角色获得[NL]
+战技『曲射』[X]
+
+## MSG_SKILL_COMBAT_Deadeye
+狙击: 角色获得[NL]
+战技『狙击』[X]
+
+## MSG_SKILL_COMBAT_Encloser
+合围之箭: 角色获得[NL]
+战技『合围之箭』[X]
+
+## MSG_SKILL_COMBAT_EncloserPlus
+重压矢+: 角色获得[NL]
+战技『重压矢+』[X]
+
+## MSG_SKILL_COMBAT_MonsterBlast
+魔物射击: 角色获得[NL]
+战技『魔物射击』[X]
+
+## MSG_SKILL_COMBAT_SchismShot
+魔法射击: 角色获得[NL]
+战技『魔法射击』[X]
+
+## MSG_SKILL_COMBAT_BreakShot
+破坏射击: 角色获得[NL]
+战技『破坏射击』[X]
+
+## MSG_SKILL_COMBAT_BreakShotPlus
+破甲箭+: 角色获得[NL]
+战技『破甲箭+』[X]
+
+## MSG_SKILL_COMBAT_WaningShot
+弱化射击: 角色获得[NL]
+战技『弱化射击』[X]
+
+## MSG_SKILL_COMBAT_WaningShotPlus
+枯萎矢+: 角色获得[NL]
+战技『枯萎矢+』[X]
+
+## MSG_SKILL_COMBAT_HuntersVolley
+猎箭齐发: 角色获得[NL]
+战技『猎箭齐发』[X]

@@ -1,0 +1,25 @@
+#ifndef DEBUFF_REWORK_INSTALLED
+#define DEBUFF_REWORK_INSTALLED
+
+#include "Source/Core.lyn.event"
+#include "Source/MiscHooks.lyn.event"
+#include "Source/MiscHooks.event"
+#include "Source/DebuffIconBlink.lyn.event"
+#include "Source/StatusDepletion.lyn.event"
+#include "Source/EfxStatusUnit.lyn.event"
+#include "Source/ExternalHooks.lyn.event"
+
+#ifndef EVENT_EXPANSION_INSTALLED
+ERROR "Need module: EventExpansion installed!"
+#endif
+
+#include "Source/EventCmd.lyn.event"
+
+InjectEventLoCmd(EVENT_CMD_DEBUFF, EventDebuffOperation)
+
+#define EVT_SET_DEBUFF(pid, debuff)     "BYTE 0x41 EVENT_CMD_DEBUFF; SHORT pid debuff 0"
+#define EVT_SET_DEBUFF_AT(x, y, debuff) "BYTE 0x42 EVENT_CMD_DEBUFF; SHORT x y debuff"
+#define EVT_CLEAR_DEBUFF(pid, debuff)   "BYTE 0x43 EVENT_CMD_DEBUFF; SHORT pid debuff 0"
+#define EVT_CLEAR_DEBUFF_AT(x, y)       "BYTE 0x44 EVENT_CMD_DEBUFF; SHORT x y 0"
+
+#endif /* DEBUFF_REWORK_INSTALLED */

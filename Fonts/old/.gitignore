@@ -1,0 +1,5 @@
+Scripts/__pycache__
+FontInstaller
+FontData/*.fefont
+
+InstallGlyph.event

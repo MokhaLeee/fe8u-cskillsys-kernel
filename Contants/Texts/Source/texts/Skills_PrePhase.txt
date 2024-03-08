@@ -1,0 +1,4 @@
+## MSG_SKILL_Renewal
+Renewal:[NL]
+Restore 30% of max HP[NL]
+at the start of each turn.[X]

@@ -1,0 +1,15 @@
+#ifndef RETURN_0
+#define RETURN_0 "SHORT $2000 $4770"
+#endif
+
+PUSH
+
+/* LoadAndVerfySuspendSave */
+ORG $A6AA0
+RETURN_0
+
+/* ReadExtraMapSaveHead */
+ORG $A6AFC
+RETURN_0
+
+POP

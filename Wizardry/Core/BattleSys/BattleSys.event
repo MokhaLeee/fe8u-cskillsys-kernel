@@ -1,0 +1,45 @@
+#ifndef BATTLE_SYS_INSTALLED
+#define BATTLE_SYS_INSTALLED
+
+#include "Source/PreBattleCalc.lyn.event"
+#include "Source/BattleCalcReal.lyn.event"
+#include "Source/WeaponTriangle.lyn.event"
+#include "Source/BattleHit.lyn.event"
+#include "Source/BattleForcast.lyn.event"
+#include "Source/BattleOrder.lyn.event"
+#include "Source/BattleWeapon.lyn.event"
+#include "Source/CheckEffective.lyn.event"
+#include "Source/BattleExp.lyn.event"
+#include "Source/BattleSkillActRate.lyn.event"
+#include "Source/Misc.lyn.event"
+#include "Source/LynJump.event"
+
+#include "BattleHitExpasion/BattleHitExpa.lyn.event"
+#include "BattleHitExpasion/RepointEfxHp.event"
+#include "BattleHitExpasion/RepointBattleHit.event"
+#include "BattleHitExpasion/RepointAnimRound.event"
+#include "BattleHitExpasion/LynJump.event"
+
+ALIGN 4
+Gfx_BKSEL:
+    #incbin "Data/Gfx_BKSEL.4bpp"
+
+ALIGN 4
+Pal_BKSEL:
+    #incbin "Data/Gfx_BKSEL.gbapal"
+
+PUSH
+    // Make sure BKSEL always deiplay x2 or x4 obj
+    ORG $36F94
+    SHORT $2002    // MOV R0, #2
+    SHORT 0 0 0
+    ORG $36FB6
+    SHORT $2004    // MOV R0, #4
+    SHORT 0 0 0
+    
+    // Repoint Palette
+    ORG $36E14
+    POIN Pal_BKSEL
+POP
+
+#endif

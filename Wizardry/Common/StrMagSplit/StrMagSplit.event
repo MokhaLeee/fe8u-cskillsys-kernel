@@ -1,0 +1,38 @@
+#ifndef STR_MAG_SPLIT_INSTALLED
+#define STR_MAG_SPLIT_INSTALLED
+
+#ifndef ITEM_SYS_INSTALLED
+    ERROR "Need ItemSystem installed"
+#endif
+
+#include "MagBooster/BoosterHook.lyn.event"
+
+#ifndef ITEM_MAG_BOOSTER
+#define ITEM_MAG_BOOSTER 0xBC
+#endif
+
+/* Icon */
+#ifndef ICON_ITEM_MAG_BOOSTER
+#define ICON_ITEM_MAG_BOOSTER 0xCA
+#endif
+
+PUSH
+    ORG ($5926F4 + ICON_ITEM_MAG_BOOSTER * 0x80)
+        #incbin "Data/SpiritDust.4bpp"
+
+    ORG 0x809B10 + ITEM_MAG_BOOSTER * 0x24 + 0xC
+    POIN ItemStatBonusesMagBooster
+POP
+
+/* Boost bonus */
+ALIGN 4
+ItemStatBonusesMagBooster:
+    BYTE 0 0 0 0 0 0 0 0
+    BYTE 0 2 0 0
+
+InjectItemUsabilityJpt(ITEM_MAG_BOOSTER, 0x8028B4C)
+InjectItemActionJpt(ITEM_MAG_BOOSTER, 0x802FF40)
+InjectItemPrepUsabilityJpt(ITEM_MAG_BOOSTER, 0x0802940C)
+InjectItemPrepEffectJpt(ITEM_MAG_BOOSTER, PrepItemEffect_StatBooster)
+
+#endif /* STR_MAG_SPLIT_INSTALLED */

@@ -1,0 +1,67 @@
+#ifndef RETURN_0
+#define RETURN_0 "SHORT $2000 $4770"
+#endif
+
+PUSH
+
+/* IsExtraLinkArenaEnabled */
+ORG $A32F0
+RETURN_0
+
+/* WriteNewMultiArenaSave */
+ORG $A6560
+RETURN_0
+
+/* ReadMultiArenaSaveTeamRaw */
+ORG $A66C0
+RETURN_0
+
+/* ReadMultiArenaSaveTeamName */
+ORG $A66F4
+RETURN_0
+
+/* WriteMultiArenaSaveTeamName */
+ORG $A6738
+RETURN_0
+
+/* WipeMultiArenaSaveTeam */
+ORG $a6774
+RETURN_0
+
+/* CopyMultiArenaSaveTeam */
+ORG $a67c8
+RETURN_0
+
+/* SwapMultiArenaSaveTeams */
+ORG $a6840
+RETURN_0
+
+/* WriteMultiArenaSaveTeam */
+ORG $a68dc
+RETURN_0
+
+/* ReadMultiArenaSaveTeam */
+ORG $a693c
+RETURN_0
+
+/* WriteMultiArenaSaveRankings */
+ORG $a69a0
+RETURN_0
+
+/* ReadMultiArenaSaveRankings */
+ORG $a69dc
+RETURN_0
+
+/* WriteMultiArenaSaveConfig */
+ORG $a6a04
+RETURN_0
+
+/* ReadMultiArenaSaveConfig */
+ORG $a6a40
+RETURN_0
+
+/* IsMultiArenaSaveReady */
+ORG $a6a68
+RETURN_0
+
+POP

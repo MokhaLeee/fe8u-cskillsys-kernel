@@ -1,0 +1,7 @@
+#ifndef GAME_INIT_HOOK_H
+ERROR "Need module: GameInitHook installed!"
+#endif /* GAME_INIT_HOOK_H */
+
+ALIGN 4
+#include "source/mgba.lyn.event"
+#include "source/nocashgba.lyn.event"

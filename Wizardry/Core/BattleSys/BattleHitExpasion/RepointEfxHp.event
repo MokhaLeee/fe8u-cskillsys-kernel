@@ -1,0 +1,43 @@
+/* Align to usr-defined.ref.s */
+#define gEfxHpLutRe 0x02026BD8
+
+PUSH
+    ORG $058A6C
+    WORD gEfxHpLutRe
+
+    ORG $058A84
+    WORD gEfxHpLutRe
+
+    ORG $058258
+    WORD gEfxHpLutRe
+
+    ORG $05822A
+    BYTE 0x20
+
+    ORG $058350
+    WORD gEfxHpLutRe
+
+    ORG $05856C
+    WORD gEfxHpLutRe
+
+    ORG $0585AC
+    WORD gEfxHpLutRe
+
+    ORG $05862C
+    WORD gEfxHpLutRe
+
+    ORG $058698
+    WORD gEfxHpLutRe
+
+    ORG $058768
+    WORD gEfxHpLutRe
+
+    ORG $058844
+    WORD gEfxHpLutRe
+
+    ORG $058A6C
+    WORD gEfxHpLutRe
+
+    ORG $058A84
+    WORD gEfxHpLutRe
+POP

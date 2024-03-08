@@ -1,0 +1,49 @@
+{
+    #include "Source/song1A.lyn.event"
+
+    SongTable(SONG_Defense, song1A, SG_BATTLE_MUSIC)
+
+    ALIGN 4
+    ThisInstrument:
+    BYTE 0x80 0 0 0; POIN ThisInstrument; BYTE 0 0 0 0
+    BYTE 8 0x3C 0 0xD4; POIN ThisSound1; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0xDE; POIN ThisSound2; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0xDE; POIN ThisSound3; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0xA7; POIN ThisSound4; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 0 0x3C 0 0x00; POIN ThisSound5; BYTE 0xFF 0x00 0xFF 0xA5
+    BYTE 0 0x3C 0 0x00; POIN ThisSound6; BYTE 0xFF 0xFC 0x00 0xA5
+    BYTE 0 0x3C 0 0x00; POIN ThisSound7; BYTE 0xFF 0x00 0xFF 0xA5
+    BYTE 0 0x3C 0 0x00; POIN ThisSound8; BYTE 0x80 0x00 0xFF 0x59
+
+    ALIGN 4
+    ThisSound1:
+        #incbin "Source/song1A0x01.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound2:
+        #incbin "Source/song1A0x02.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound3:
+        #incbin "Source/song1A0x03.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound4:
+        #incbin "Source/song1A0x04.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound5:
+        #incbin "Source/song1A0x05.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound6:
+        #incbin "Source/song1A0x06.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound7:
+        #incbin "Source/song1A0x07.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound8:
+        #incbin "Source/song1A0x08.DirectSound.bin"
+}

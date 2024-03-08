@@ -1,0 +1,20 @@
+
+## MSG_SKILL_RangeBonusBMag1
+黑魔法射程+1:[NL]
+角色装备黑魔法时，[NL]
+武器最大射程+1[X]
+
+## MSG_SKILL_RangeBonusBMag2
+黑魔法射程+2:[NL]
+角色装备黑魔法时，[NL]
+武器最大射程+2[X]
+
+## MSG_SKILL_RangeBonusBow1
+弓射程+1:[NL]
+角色装备弓箭时，[NL]
+武器最大射程+1[X]
+
+## MSG_SKILL_RangeBonusBow2
+弓射程+2:[NL]
+角色装备弓箭时，[NL]
+武器最大射程+2[X]

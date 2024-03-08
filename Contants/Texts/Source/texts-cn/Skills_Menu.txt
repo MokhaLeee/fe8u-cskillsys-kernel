@@ -1,0 +1,19 @@
+## MSG_SKILL_Dance
+舞者:[NL]
+该单位可跳舞[X]
+
+## MSG_SKILL_LockTouch
+大盗:[NL]
+该单位可开锁[X]
+
+## MSG_SKILL_Summon
+召唤:[NL]
+该单位可召唤[X]
+
+## MSG_SKILL_Supply
+运输队:[NL]
+该单位携带运输队[X]
+
+## MSG_SKILL_Steal
+偷盗:[NL]
+该单位可偷窃[X]

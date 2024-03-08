@@ -1,0 +1,32 @@
+## MSG_SKILL_Vantage
+埋伏:[NL]
+若HP低于50%，受到敌人[NL]
+攻击时，可抢先攻击[X]
+
+## MSG_SKILL_Desperation
+强攻: [NL]
+若HP低于50%，攻击时，[NL]
+会在敌方反击前进行追击[X]
+
+## MSG_SKILL_QuickRiposte
+回击:[NL]
+若HP高于50%，受到敌人[NL]
+攻击时，必定会进行追击[X]
+
+## MSG_SKILL_WaryFighter
+防守队形:[NL]
+若HP高于50%，受到敌人[NL]
+攻击时，双方都不可追击[X]
+
+## MSG_SKILL_DoubleLion
+狮子连斩:[NL]
+满血状态下主动攻击[NL]
+必定追击，战斗后HP-1[X]
+
+## MSG_SKILL_Astra
+流星:[NL]
+攻击次数+4,但伤害减半[X]
+
+## MSG_SKILL_Adept
+连击:[NL]
+满血状态下攻击次数+1[X]

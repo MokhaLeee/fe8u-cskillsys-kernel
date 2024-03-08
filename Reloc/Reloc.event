@@ -1,0 +1,62 @@
+gpSkillInfos:
+    POIN gSkillInfos
+
+SkillTester:
+    POIN SkillTesterFast
+
+gpConstSkillPTable:
+    POIN gConstSkillPTable
+
+gpConstSkillJTable:
+    POIN gConstSkillJTable
+
+gpSkillAnimInfos:
+    POIN gSkillAnimInfos
+
+gpEfxSkillAnims:
+    POIN gEfxSkillAnims
+
+gpLegendSkillPool:
+    POIN gLegendSkillPool
+
+gpCombatArtInfos:
+    POIN gCombatArtInfos
+
+gpCombatArtRomPTable:
+    POIN gCombatArtRomPTable
+
+gpCombatArtRomJTable:
+    POIN gCombatArtRomJTable
+
+gpCombatArtDefaultTable:
+    POIN gCombatArtDefaultTable
+
+gpCombatArtWeaponTable:
+    POIN gCombatArtWeaponTable
+
+gpCombatArtSkillTable:
+    POIN gCombatArtSkillTable
+
+gpEfxCombatArtAnimInfos:
+    POIN gEfxCombatArtAnimInfos
+
+gpWeaponTriangleConfs:
+    POIN gWeaponTriangleConfs
+
+gpWeaponTriangleItemConf:
+    POIN gWeaponTriangleItemConf
+
+gpClassChgExpaMods:
+    POIN gClassChgExpaMods
+
+gpTraineesRe:
+    POIN gTraineesRe
+
+gpDebuffInfos:
+    POIN gDebuffInfos
+
+gpMagicPInfos:
+    POIN gMagicPInfos
+
+gpMagicJInfos:
+    POIN gMagicJInfos

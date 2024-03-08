@@ -1,0 +1,7 @@
+#ifndef EVENT_CONSTANTS
+#define EVENT_CONSTANTS
+
+#include "constants/event-cmds.h"
+#include "constants/texts.h"
+
+#endif

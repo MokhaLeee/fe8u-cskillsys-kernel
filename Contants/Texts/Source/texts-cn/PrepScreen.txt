@@ -1,0 +1,15 @@
+## MSG_PREPSKILL_RightTopBar
+已装备[X]
+
+## MSG_PREPSKILL_AddSkill
+     技能添加[X]
+
+## MSG_PREPSKILL_RemoveSkill
+     技能去除[X]
+
+## MSG_PREPSKILL_FailAddSkill
+无空间添加技能,[NL]
+请先去除技能[X]
+
+## MSG_PREPSKILL_FailRemoveSkill
+该技能无法去除[X]

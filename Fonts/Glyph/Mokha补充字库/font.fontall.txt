@@ -1,0 +1,33 @@
+//char	type	Width	Filename
+	item	0	FontItem_1F.png
+	text	0	FontText_1F.png
+ 	item	2	FontItem_20.png
+ 	text	2	FontText_20.png
+
+# 20230816
+
+堡	item	10	FontItem堡.png
+颤	item	10	FontItem颤.png
+横	item	9	FontItem横.png
+阶	item	9	FontItem阶.png
+警	item	9	FontItem警.png
+镜	item	9	FontItem镜.png
+盔	item	9	FontItem盔.png
+垒	item	9	FontItem垒.png
+抢	item	9	FontItem抢.png
+劈	item	9	FontItem劈.png
+扫	item	9	FontItem扫.png
+携	item	11	FontItem携.png
+
+堡	text	12	FontText堡.png
+颤	text	12	FontText颤.png
+横	text	12	FontText横.png
+阶	text	12	FontText阶.png
+警	text	12	FontText警.png
+镜	text	12	FontText镜.png
+盔	text	12	FontText盔.png
+垒	text	12	FontText垒.png
+抢	text	12	FontText抢.png
+劈	text	12	FontText劈.png
+扫	text	12	FontText扫.png
+携	text	12	FontText携.png

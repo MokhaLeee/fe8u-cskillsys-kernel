@@ -1,0 +1,37 @@
+## MSG_COMART_NAME_TempestLance
+Tempest[X]
+
+## MSG_COMART_NAME_Knightkneeler
+Knight-K[X]
+## MSG_COMART_DESC_Knightkneeler
+Effective against Cavalry enemies[X]
+
+## MSG_COMART_NAME_ShatterSlash
+S-Slash[X]
+## MSG_COMART_DESC_ShatterSlash
+Enimy's Def-5[X]
+
+## MSG_COMART_NAME_MonsterPiercer
+Monster-K[X]
+## MSG_COMART_DESC_MonsterPiercer
+Effective against monsters[X]
+
+## MSG_COMART_NAME_SwiftStrikes
+Swift Strike[X]
+## MSG_COMART_DESC_SwiftStrikes
+Twice consecutive hits[X]
+
+## MSG_COMART_NAME_FrozenLance
+Frozen[X]
+## MSG_COMART_DESC_FrozenLance
+Magic attack, damage + SKL bonus[X]
+
+## MSG_COMART_NAME_Vengeance
+Vengeance[X]
+## MSG_COMART_DESC_Vengeance
+Damage + lost HP[X]
+
+## MSG_COMART_NAME_LanceJab
+Lance Jab[X]
+## MSG_COMART_DESC_LanceJab
+Dmg + actor's Spd[X]

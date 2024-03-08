@@ -1,0 +1,44 @@
+## MSG_SKILL_Aegis
+圣盾: 有几率无效一次[NL]
+魔法攻击. （Skill %）[X]
+
+## MSG_SKILL_Pavise
+大盾: 有几率无效一次[NL]
+物理攻击. （Skill %）[X]
+
+## MSG_SKILL_Bane
+圣母: 战斗后可为敌方残留[NL]
+一点 HP (Skill/2 %)[X]
+
+## MSG_SKILL_Aether
+天空: 无视对方 80% 防御[NL]
+并吸血 (Skill/2 %)[X]
+
+## MSG_SKILL_Corona
+赤月+:[NL]
+无视对方魔防 (Skill %)[X]
+
+## MSG_SKILL_Luna
+青月:[NL]
+无视对方防御 (Skill %)[X]
+
+## MSG_SKILL_Flare
+赤月:[NL]
+无视 50 % 魔抗 (Skill %)[X]
+
+## MSG_SKILL_Foresight
+见切:[NL]
+无效敌方必杀与技能特效[X]
+
+## MSG_SKILL_Sol
+太阳:[NL]
+获得吸血效果 (Skill %)[X]
+
+## MSG_SKILL_DragonFang
+龙穿:[NL]
+造成 1.5 倍伤害 (Skill %)[X]
+
+## MSG_SKILL_Inori
+祈祷:[NL]
+角色受到攻击且 HP 降为 0[NL]
+后可能不会死亡 (luck%)[X]

@@ -1,0 +1,15 @@
+## MSG_SKILL_Nullify
+加护:[NL]
+角色不会被克制[X]
+
+## MSG_SKILL_Slayer
+圣者:[NL]
+克制魔物[X]
+
+## MSG_SKILL_Skybreaker
+破空:[NL]
+克制飞行单位[X]
+
+## MSG_SKILL_Resourceful
+特攻[NL]
+克制伤害翻倍[X]

@@ -1,0 +1,8 @@
+#ifndef BWL_REWORK_H
+#define BWL_REWORK_H
+
+#include "source/BriefBwl.lyn.event"
+#include "source/BwlSupport.lyn.event"
+#include "source/BwlHiddenLevel.lyn.event"
+
+#endif

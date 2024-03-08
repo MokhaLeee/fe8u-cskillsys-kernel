@@ -1,0 +1,36 @@
+#include "Source/DrawMorePage.lyn.event"
+#include "Source/LynJump.event"
+
+PUSH
+    ORG $88690
+        BYTE 4 //make 4 pages
+        PROTECT $88670 $8873c /* StatScreen_Display */
+
+    ORG $88650
+        POIN NewPageNameGraphic
+
+    ORG $87f38
+    gpSprites_PageNameRework:
+        POIN Sprites_PageNameRework
+    ORG $87f3c
+    gpPageNameChrOffsetLutRe:
+        POIN gPageNameChrOffsetLutRe
+    ORG $87f40
+    gpPageNamePaletteRe:
+        POIN NewPageNamePalette
+
+    /**
+     * Hacked functions:
+     *
+     * StartStatScreenHelp
+     * DisplayPageNameSprite
+     */
+POP
+
+ALIGN 4
+NewPageNameGraphic:
+    #incbin "Data/Gfx_StatScreenObj.4bpp.lz"
+
+ALIGN 4
+NewPageNamePalette:
+    #incbin "Data/palettecycler.bin"

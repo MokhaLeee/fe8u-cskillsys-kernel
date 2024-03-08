@@ -1,0 +1,10 @@
+#ifndef COMBO_ATTACK_INSTALLED
+#define COMBO_ATTACK_INSTALLED
+#ifdef CONFIG_USE_COMBO_ATTACK
+
+#include "Source/battle-order-combo.lyn.event"
+#include "Source/combo-atk.lyn.event"
+#include "Source/efx-combo.lyn.event"
+
+#endif /* CONFIG_USE_COMBO_ATTACK */
+#endif /* COMBO_ATTACK_INSTALLED */

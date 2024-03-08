@@ -1,0 +1,16 @@
+#ifndef BANIM_SYNC_INSTALLED
+#define BANIM_SYNC_INSTALLED
+
+ALIGN 4
+BanimSyncHandlerGetter:
+
+#ifdef CONFIG_USE_COMBO_ATTACK
+    POIN GetBanimSyncHandler_ComboAtk
+#endif
+
+    // POIN FindBanimSyncHandler_test
+    WORD 0 0 0 0
+
+#include "BanimSync_Internal.event"
+
+#endif

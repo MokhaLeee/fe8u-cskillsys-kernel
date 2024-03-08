@@ -1,0 +1,37 @@
+## MSG_COMART_NAME_TempestLance
+旋风枪[X]
+
+## MSG_COMART_NAME_Knightkneeler
+弑骑一击[X]
+## MSG_COMART_DESC_Knightkneeler
+骑兵特效[X]
+
+## MSG_COMART_NAME_ShatterSlash
+破坏强击[X]
+## MSG_COMART_DESC_ShatterSlash
+命中后敌方防御-5[X]
+
+## MSG_COMART_NAME_MonsterPiercer
+魔物刺击[X]
+## MSG_COMART_DESC_MonsterPiercer
+魔物特效[X]
+
+## MSG_COMART_NAME_SwiftStrikes
+连击[X]
+## MSG_COMART_DESC_SwiftStrikes
+攻击二次[X]
+
+## MSG_COMART_NAME_FrozenLance
+冰枪[X]
+## MSG_COMART_DESC_FrozenLance
+魔法攻击，根据技术提升威力[X]
+
+## MSG_COMART_NAME_Vengeance
+复仇[X]
+## MSG_COMART_DESC_Vengeance
+根据已失去HP提升威力[X]
+
+## MSG_COMART_NAME_LanceJab
+突枪[X]
+## MSG_COMART_DESC_LanceJab
+根据自身速度提升威力[X]

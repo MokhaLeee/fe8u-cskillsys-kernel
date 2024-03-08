@@ -1,0 +1,32 @@
+## MSG_SKILL_Vantage
+Vantage:[NL]
+When unit is defender with[NL]
+HP is <50%, attack first[X]
+
+## MSG_SKILL_Desperation
+Desper: When unit[NL]
+attacks with HP <50%,[NL]
+double attacks immediately[X]
+
+## MSG_SKILL_QuickRiposte
+Quick-R: [NL]
+If unit is attacked with HP[NL]
+>50%, double attacks[X]
+
+## MSG_SKILL_WaryFighter
+W-Fighter:[NL]
+Prevents follow up attack[NL]
+if unit's HP >50%[X]
+
+## MSG_SKILL_DoubleLion
+D-Lion:[NL]
+If unit attacks with full HP,[NL]
+enjoys Brave effect and lose 1 HP[X]
+
+## MSG_SKILL_Astra
+Astra:[NL]
+Battle +4 hit but damage is halved[X]
+
+## MSG_SKILL_Adept
+Adept:[NL]
+Battle +1 hit if full HP[X]

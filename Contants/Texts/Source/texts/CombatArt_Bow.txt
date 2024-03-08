@@ -1,0 +1,59 @@
+## MSG_COMART_NAME_CurvedShot
+Curve Shot[X]
+
+## MSG_COMART_NAME_Deadeye
+Dead Eye[X]
+
+## MSG_COMART_NAME_Encloser
+Encloser[X]
+
+## MSG_COMART_DESC_Encloser
+Enimy cannot move[X]
+
+## MSG_COMART_NAME_EncloserPlus
+Encloser+[X]
+
+## MSG_COMART_DESC_EncloserPlus
+Enimy and adjacent units cannot move[X]
+
+## MSG_COMART_NAME_MonsterBlast
+M-Blast[X]
+
+## MSG_COMART_DESC_MonsterBlast
+Effective against monsters[X]
+
+## MSG_COMART_NAME_SchismShot
+Schism Shot[X]
+
+## MSG_COMART_DESC_SchismShot
+Magic attack, enimy's Res-5[X]
+
+## MSG_COMART_NAME_BreakShot
+Break Shot[X]
+
+## MSG_COMART_DESC_BreakShot
+Enimy's Def-5[X]
+
+## MSG_COMART_NAME_BreakShotPlus
+Break Shot+[X]
+
+## MSG_COMART_DESC_BreakShotPlus
+Enimy and adjacent units Def-5[X]
+
+## MSG_COMART_NAME_WaningShot
+Waning Shot[X]
+
+## MSG_COMART_DESC_WaningShot
+enimy's Atk-5[X]
+
+## MSG_COMART_NAME_WaningShotPlus
+Waning Shot+[X]
+
+## MSG_COMART_DESC_WaningShotPlus
+Enimy and adjacent units Atk-5[X]
+
+## MSG_COMART_NAME_HuntersVolley
+H-Volley[X]
+
+## MSG_COMART_DESC_HuntersVolley
+Twice consecutive hits[X]

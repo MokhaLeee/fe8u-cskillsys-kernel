@@ -1,0 +1,99 @@
+## MSG_SKILL_LifeAndDeath
+Life-Death:[NL]
+Pow and Mag +5[NL]
+Def and Res -5[X]
+
+## MSG_SKILL_Fury
+Fury: [NL]
+Unit Status+3, HP-6 after combat[X]
+
+## MSG_SKILL_FuryPlus
+Fury+: [NL]
+Unit Status+4, HP-8 after combat[X]
+
+## MSG_SKILL_FortressDef
+Fortress Def: [NL]
+Str and Mag -3, Def +5[X]
+
+## MSG_SKILL_FortressRes
+Fortress Res: [NL]
+Str and Mag -3, Res +5[X]
+
+## MSG_SKILL_HpBonus
+Hp+5: [NL]
+Unit grants bonus Hp+2[X]
+
+## MSG_SKILL_StrBonus
+Str+2: [NL]
+Unit grants bonus Str+2[X]
+
+## MSG_SKILL_MagBonus
+Mag+2: [NL]
+Unit grants bonus Mag+2[X]
+
+## MSG_SKILL_SklBonus
+Skl+2: [NL]
+Unit grants bonus Skl+2[X]
+
+## MSG_SKILL_SpdBonus
+Spd+2: [NL]
+Unit grants bonus Spd+2[X]
+
+## MSG_SKILL_LukBonus
+Luk+2: [NL]
+Unit grants bonus Luk+2[X]
+
+## MSG_SKILL_DefBonus
+Def+2: [NL]
+Unit grants bonus Def+2[X]
+
+## MSG_SKILL_ResBonus
+Res+2: [NL]
+Unit grants bonus Res+2[X]
+
+## MSG_SKILL_MovBonus
+Mov+2: [NL]
+Unit grants bonus Mov+2[X]
+
+## MSG_SKILL_DefiantCrit
+Defiant Crit: [NL]
+Crit rate +50%,[NL]
+if HP <25%[X]
+
+## MSG_SKILL_DefiantAvoid
+Defiant Avoid: [NL]
+Avoid rate +30%,[NL]
+if HP <25%[X]
+
+## MSG_SKILL_DefiantStr
+Defiant Str: [NL]
+Pow +7 if HP <25%[X]
+
+## MSG_SKILL_DefiantMag
+Defiant Mag: [NL]
+Mag +7 if HP <25%[X]
+
+## MSG_SKILL_DefiantSkl
+Defiant Skl: [NL]
+Skl +7 if HP <25%[X]
+
+## MSG_SKILL_DefiantSpd
+Defiant Spd: [NL]
+Spd +7 if HP <25%[X]
+
+## MSG_SKILL_DefiantLck
+Defiant Luk: [NL]
+Luk +7 if HP <25%[X]
+
+## MSG_SKILL_DefiantDef
+Defiant Def: [NL]
+Def +7 if HP <25%[X]
+
+## MSG_SKILL_DefiantRes
+Defiant Res: [NL]
+Res +7 if HP <25%[X]
+
+## MSG_SKILL_LuckySeven
+Lucky 7: [NL]
+Unit get different bonus[NL]
+at each turn[X]

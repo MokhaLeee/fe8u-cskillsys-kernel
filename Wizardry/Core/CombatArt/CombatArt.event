@@ -1,0 +1,23 @@
+#ifndef COMBAT_ART_INSTALLED
+#define COMBAT_ART_INSTALLED
+
+#include "Source/CombatArtList.lyn.event"
+#include "Source/CombatArtStatus.lyn.event"
+#include "Source/SelectTarget.lyn.event"
+#include "Source/PostActionHooks.lyn.event"
+#include "Source/MiscHooks.lyn.event"
+#include "Source/EfxCombatArtAnim.lyn.event"
+#include "Source/LynJump.event"
+
+#include "BKSELfx/BKSELfx.event"
+
+#include "CombatArtMenu/ActionMenu.lyn.event"
+#include "CombatArtMenu/ItemSelectMenu.lyn.event"
+#include "CombatArtMenu/SelectTarget.lyn.event"
+
+PUSH
+    ORG $59E544
+    POIN BattleForecast_InitRework
+POP
+
+#endif /* COMBAT_ART_INSTALLED */

@@ -1,0 +1,7 @@
+#ifndef BATTLE_UNIT_HOOK_INSTALLED
+#define BATTLE_UNIT_HOOK_INSTALLED
+
+#include "Source/BattleUnitHook.lyn.event"
+#include "Source/LynJump.event"
+
+#endif

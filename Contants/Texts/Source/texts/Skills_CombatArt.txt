@@ -1,0 +1,87 @@
+## MSG_SKILL_COMBAT_Grounder
+Grounder: Unit get[NL]
+combat-art 『Grounder』[X]
+
+## MSG_SKILL_COMBAT_BaneOfMonsters
+B-Monster: Unit get[NL]
+combat-art 『B-Monster』[X]
+
+## MSG_SKILL_COMBAT_Hexblade
+Hexblade: Unit get[NL]
+combat-art 『Hexblade』[X]
+
+## MSG_SKILL_COMBAT_FoudroyantStrike
+Foudroyant: Unit get[NL]
+combat-art 『Foudroyant』[X]
+
+## MSG_SKILL_COMBAT_TempestLance
+Tempest: Unit get[NL]
+combat-art 『Tempest』[X]
+
+## MSG_SKILL_COMBAT_SwiftStrikes
+Swift Strike: Unit get[NL]
+combat-art 『Swift Strike』[X]
+
+## MSG_SKILL_COMBAT_FrozenLance
+Frozen: Unit get[NL]
+combat-art 『Frozen』[X]
+
+## MSG_SKILL_COMBAT_Vengeance
+Vengeance: Unit get[NL]
+combat-art 『Vengeance』[X]
+
+## MSG_SKILL_COMBAT_HelmSplitter
+HelmSplit: Unit get[NL]
+combat-art 『HelmSplit』[X]
+
+## MSG_SKILL_COMBAT_LightningAxe
+Lightning: Unit get[NL]
+combat-art 『Lightning』[X]
+
+## MSG_SKILL_COMBAT_WarMasterStrike
+W-M Strike: Unit get[NL]
+combat-art 『W-M Strike』[X]
+
+## MSG_SKILL_COMBAT_CurvedShot
+Curve Shot: Unit get[NL]
+combat-art 『Curve Shot』[X]
+
+## MSG_SKILL_COMBAT_Deadeye
+Dead Eye: Unit get[NL]
+combat-art 『Dead Eye』[X]
+
+## MSG_SKILL_COMBAT_Encloser
+Encloser: Unit get[NL]
+combat-art 『Encloser』[X]
+
+## MSG_SKILL_COMBAT_EncloserPlus
+Encloser+: Unit get[NL]
+combat-art 『Encloser+』[X]
+
+## MSG_SKILL_COMBAT_MonsterBlast
+M-Blast: Unit get[NL]
+combat-art 『M-Blast』[X]
+
+## MSG_SKILL_COMBAT_SchismShot
+Schism Shot: Unit get[NL]
+combat-art 『Schism Shot』[X]
+
+## MSG_SKILL_COMBAT_BreakShot
+Break Shot: Unit get[NL]
+combat-art 『Break Shot』[X]
+
+## MSG_SKILL_COMBAT_BreakShotPlus
+Break Shot+: Unit get[NL]
+combat-art 『Break Shot+』[X]
+
+## MSG_SKILL_COMBAT_WaningShot
+Waning Shot: Unit get[NL]
+combat-art 『Waning Shot』[X]
+
+## MSG_SKILL_COMBAT_WaningShotPlus
+Waning Shot+: Unit get[NL]
+combat-art 『Waning Shot+』[X]
+
+## MSG_SKILL_COMBAT_HuntersVolley
+H-Volley: Unit get[NL]
+combat-art 『H-Volley』[X]

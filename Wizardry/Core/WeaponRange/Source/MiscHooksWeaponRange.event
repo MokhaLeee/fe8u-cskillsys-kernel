@@ -1,0 +1,232 @@
+PUSH
+
+ORG 0x023A16
+    BL(_prMinFromActiveUnit)
+ORG 0x023A22
+    BL(_prMaxFromActiveUnit)
+    PROTECT $239cc $23a54
+
+ORG 0x0251DC
+    BL(_prMinFromSubjectUnit)
+ORG 0x0251E8
+    BL(_prMaxFromSubjectUnit)
+    PROTECT $239cc $23a54
+
+ORG 0x025758
+    BL(_prMinFromSubjectUnit)
+ORG 0x025764
+    BL(_prMaxFromSubjectUnit)
+    PROTECT $25728 $25794
+
+/*
+ORG 0x02A8C2 // SetBattleUnitWeapon
+    BL(_prIsCoveringRangeFromR5)
+    PROTECT $2a730 $2a918
+*/
+
+ORG 0x0398E8
+    BL(_prMaxFromR5)
+    PROTECT $39898 $39938
+
+ORG 0x03D014
+    BL(_prMinFromActiveUnit)
+ORG 0x03D020
+    BL(_prMaxFromActiveUnit)
+    PROTECT $3cfb4 $3d124
+
+ORG 0x03E9C0
+    BL(_prMinFromActiveUnit)
+ORG 0x03E9D2
+    BL(_prMaxFromActiveUnit)
+    PROTECT $3e93c $3ea58
+
+ORG 0x03EAF2
+    BL(_prMinFromR5)
+ORG 0x03EB06
+    BL(_prMaxFromR5)
+    PROTECT $3ea58 $3eba4
+
+ORG 0x03EF24 // Some AI Stuff
+    BL(_prMinFromActiveUnit)
+ORG 0x03EF30 // Some AI Stuff
+    BL(_prMaxFromActiveUnit)
+    PROTECT $3eeb0 $3efe0
+
+ORG 0x0412DE // Some Nightmare AI Stuff
+    BL(_prMinFromActiveUnit)
+ORG 0x0412EA // Some Nightmare AI Stuff
+    BL(_prMaxFromActiveUnit)
+ORG 0x04145C // Some Nightmare AI Stuff
+    BL(_prMinFromActiveUnit)
+ORG 0x041468 // Some Nightmare AI Stuff
+    BL(_prMaxFromActiveUnit)
+    PROTECT $411f8 $41584
+
+ORG 0x04A1F2
+    BL(_prMinFromActiveUnit)
+ORG 0x04A1FC
+    BL(_prMaxFromActiveUnit)
+ORG 0x04A212
+    BL(_prMinFromActiveUnit)
+ORG 0x04A21C
+    BL(_prMaxFromActiveUnit)
+ORG 0x04A232
+    BL(_prMinFromActiveUnit)
+ORG 0x04A23E
+    BL(_prMaxFromActiveUnit)
+ORG 0x04A27A
+    BL(_prMinFromSomewhereWeird)
+    PROTECT $4a1d0 $4a298
+
+ORG 0x04AF2C
+    SHORT 0xB530 // push {r4-r5, lr}
+    SHORT 0x1C0C // mov r4, r1
+    SHORT 0x1C20 // mov r0, r4
+    BL(0x016B28) // bl Unit_GetEquippedWeapon
+    SHORT 0x1C05 // mov r5, r0
+    SHORT 0xD00A // beq Return1
+    SHORT 0x1C21 // mov r1, r4
+    BL(_prMaxRangeGetterProxy) // bl Item_GetMaxRange
+    SHORT 0x2801 // cmp r0, #1
+    SHORT 0xD005 // beq Return1
+    SHORT 0x1C28 // mov r0, r5
+    SHORT 0x1C21 // mov r1, r4
+    BL(_prMinRangeGetterProxy) // bl Item_GetMinRange
+    SHORT 0x2801 // cmp r0, #1
+    SHORT 0xDC01 // bgt Return2
+    SHORT 0x2001 // mov r0, #1 @ Return1
+    SHORT 0xE000 // b End
+    SHORT 0x2002 // mov r0, #2 @ Return2
+    SHORT 0xBD30 // pop {r4-r5, pc} @ End
+    PROTECT $4af2c $4af5c
+
+ORG 0x04B012 // No clue
+    BL(_prMinFromActiveUnit)
+ORG 0x04B02E // No clue
+    BL(_prMinFromActiveUnit)
+ORG 0x04B03C // No clue
+    BL(_prMaxFromActiveUnit)
+    PROTECT $4af5c $4b190
+
+ORG 0x04D876
+    BL(_prMinFromActiveUnit)
+ORG 0x04D900
+    BL(_prMinFromActiveUnit)
+    PROTECT $4d858 $4d8a4
+
+/**
+ * GenerateUnitCompleteAttackRange
+ * This function is large enough as a BL range FreeSpace!
+ */
+ORG $1ACBC + 0x10
+    _thumb(_prMinFromActiveUnit)
+        SHORT 0xB500
+        SHORT 0x4905
+        SHORT 0x6809
+        BL(_prMinRangeGetterProxy)
+        SHORT 0xBD00
+
+    _thumb(_prMaxFromActiveUnit)
+        SHORT 0xB500
+        SHORT 0x4902
+        SHORT 0x6809
+        BL(_prMaxRangeGetterProxy)
+        SHORT 0xBD00
+
+        WORD 0x03004E50
+
+    _thumb(_prMinFromSubjectUnit)
+        SHORT 0xB500
+        SHORT 0x4905
+        SHORT 0x6809
+        BL(_prMinRangeGetterProxy)
+        SHORT 0xBD00
+
+    _thumb(_prMaxFromSubjectUnit)
+        SHORT 0xB500
+        SHORT 0x4902
+        SHORT 0x6809
+        BL(_prMaxRangeGetterProxy)
+        SHORT 0xBD00
+
+        WORD 0x02033F3C
+
+    _thumb(_prMaxFromR4)
+        SHORT 0xB500 // push {lr}
+        SHORT 0x1C21 // mov r1, r4
+        BL(_prMaxRangeGetterProxy) // bl Item_GetMaxRange
+        SHORT 0xBD00 // pop {pc}
+        
+    _thumb(_prMinFromR5)
+        SHORT 0xB500 // push {lr}
+        SHORT 0x1C29 // mov r1, r5
+        BL(_prMinRangeGetterProxy) // bl Item_GetMinRange
+        SHORT 0xBD00 // pop {pc}
+        
+    _thumb(_prMaxFromR5)
+        SHORT 0xB500 // push {lr}
+        SHORT 0x1C29 // mov r1, r5
+        BL(_prMaxRangeGetterProxy) // bl Item_GetMaxRange
+        SHORT 0xBD00 // pop {pc}
+
+    PUSH
+    ORG 0x016B8C
+    _prIsCoveingRangeProxy:
+    POP
+
+    _prIsCoveringRangeFromR5:
+        SHORT 0xB500 // push {lr}
+        SHORT 0x1C2A // mov r2, r5
+        BL(_prIsCoveingRangeProxy) // bl Item_GetMaxRange
+        SHORT 0xBD00 // pop {pc}
+
+    _thumb(_prMaxFromR6)
+        SHORT 0xB500 // push {lr}
+        SHORT 0x1C31 // mov r1, r6
+        BL(_prMaxRangeGetterProxy) // bl Item_GetMaxRange
+        SHORT 0xBD00 // pop {pc}
+
+    ALIGN 4
+    _thumb(_prMinFromSomewhereWeird)
+        SHORT 0xB510 // push {r4, lr}
+        SHORT 0x1C04 // mov r4, r0
+        SHORT 0x490D // ldr r1, =#0x3001818
+        SHORT 0x4A0D // ldr r2, =#0x203DD95
+        SHORT 0x7810 // ldrb r0, [r2]
+        SHORT 0x1840 // add  r0, r1
+        SHORT 0x7800 // ldrb r0, [r0]
+        BL(0x019430) // bl Unit_GetStruct
+        SHORT 0x1C01 // mov r1, r0
+        SHORT 0x1C20 // mov r0, r4
+        BL(_prMinRangeGetterProxy) // bl Item_GetMinRange
+        SHORT 0xBD10 // pop {r4, pc}
+
+    ALIGN 4
+    _thumb(_prMaxFromSomewhereWeird)
+        SHORT 0xB510 // push {r4, lr}
+        SHORT 0x1C04 // mov r4, r0
+        SHORT 0x4906 // ldr r1, =#0x3001818
+        SHORT 0x4A06 // ldr r2, =#0x203DD95
+        SHORT 0x7810 // ldrb r0, [r2]
+        SHORT 0x1840 // add  r0, r1
+        SHORT 0x7800 // ldrb r0, [r0]
+        BL(0x019430) // bl Unit_GetStruct
+        SHORT 0x1C01 // mov r1, r0
+        SHORT 0x1C20 // mov r0, r4
+        BL(_prMaxRangeGetterProxy) // bl Item_GetMaxRange
+        SHORT 0xBD10 // pop {r4, pc}
+        // SHORT 0x0000 // .align
+        WORD  0x03001818
+        WORD  0x0203DD95
+
+    ALIGN 4
+    _thumb(_prMinRangeGetterProxy)
+        jumpToHack(GetItemMinRangeRework)
+
+    _thumb(_prMaxRangeGetterProxy)
+        jumpToHack(GetItemMaxRangeRework)
+
+/* Overflow detection */
+ASSERT $1b460 - CURRENTOFFSET
+
+POP

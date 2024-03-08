@@ -1,0 +1,50 @@
+
+#include "Source/AtMenu.lyn.event"
+#include "Source/PrepSkill1.lyn.event"
+#include "Source/PrepSkill1fx.lyn.event"
+#include "Source/PrepSkill2.lyn.event"
+#include "Source/PrepSkill2fx.lyn.event"
+
+PUSH
+    ORG $952C0
+    jumpToHack(PrepScreenMenu_OnEquip)
+POP
+
+// Pick Skill Window
+ALIGN 4
+Gfx_PrepPickSkillScreen:
+    #incbin "Data/Gfx_PrepPickSkillScreen.4bpp.lz"
+
+ALIGN 4
+Tsa_PrepSubPickSkillScreen:
+    #incbin "Data/Tsa_PrepSubPickSkillScreen.tsa.lz"
+
+ALIGN 4
+Gfx_PrepSkillScreen:
+    #incbin "Data/Gfx_PrepSkillScreen.4bpp.lz"
+
+ALIGN 4
+Pal_PrepSkillScreen:
+    #incbin "Data/Gfx_PrepSkillScreen.gbapal"
+
+ALIGN 4
+Gfx_PrepSkillScreen2:
+    #incbin "Data/Gfx_PrepSkillScreen2.4bpp.lz"
+
+// Skill state Obj
+ALIGN 4
+Gfx_ObjSkill:
+    #incbin "Data/Obj_Skill.4bpp.lz"
+
+ALIGN 4
+Pal_ObjSkill:
+    #incbin "Data/Obj_Skill.gbapal"
+
+// Obj window
+ALIGN 4
+Gfx_ObjWindow:
+    #incbin "Data/Obj_Window.4bpp.lz"
+
+ALIGN 4
+Pal_ObjWindow:
+    #incbin "Data/Obj_Window.gbapal"

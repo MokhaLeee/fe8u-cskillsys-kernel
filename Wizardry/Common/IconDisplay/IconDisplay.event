@@ -1,0 +1,20 @@
+#ifndef ICON_DISPLAY_INSTALLED
+#define ICON_DISPLAY_INSTALLED
+
+#ifndef ICON_SHEET_AMT
+#define ICON_SHEET_AMT 4
+#endif
+
+#include "Source/Icon.lyn.event"
+#include "Source/UsrFunc.lyn.event"
+#include "Source/LynJump.event"
+
+ALIGN 4
+IconGetters:
+    POIN IconGetterVanilla  // Sheet #0, vanilla
+    POIN GetSkillIcon       // Sheet #1, skill
+    POIN GetCombatArtIcon   // sheet #2, combat art
+
+ORG (IconGetters + 4 * ICON_SHEET_AMT)
+
+#endif /* ICON_DISPLAY_INSTALLED */

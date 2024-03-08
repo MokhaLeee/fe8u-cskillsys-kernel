@@ -1,0 +1,118 @@
+## MSG_SKILL_Lethality
+瞬杀: [NL]
+攻击造成必杀时有几率，[NL]
+直接杀死对方，技%[X]
+
+## MSG_SKILL_Crit
+必杀: [NL]
+必杀概率提升15%[X]
+
+## MSG_SKILL_WatchfulEye
+命中+: [NL]
+命中概率+20%[X]
+
+## MSG_SKILL_CritSword
+剑必杀+10: [NL]
+装备武器为剑时,[NL]
+必杀概率提升10%[X]
+
+## MSG_SKILL_CritAxe
+斧必杀+10: [NL]
+装备武器为斧时,[NL]
+必杀概率提升10%[X]
+
+## MSG_SKILL_CritLance
+枪必杀+10: [NL]
+装备武器为枪时,[NL]
+必杀概率提升10%[X]
+
+## MSG_SKILL_CritBow
+弓必杀+10: [NL]
+装备武器为弓时,[NL]
+必杀概率提升10%[X]
+
+## MSG_SKILL_FaireSword
+剑术专家: [NL]
+装备武器为剑时,[NL]
+攻击+5[X]
+
+## MSG_SKILL_FaireLance
+枪术专家: [NL]
+装备武器为枪时,[NL]
+攻击+5[X]
+
+## MSG_SKILL_FaireAxe
+斧术专家: [NL]
+装备武器为斧时,[NL]
+攻击+5[X]
+
+## MSG_SKILL_FaireBow
+箭术专家: [NL]
+装备武器为弓时,[NL]
+攻击+5[X]
+
+## MSG_SKILL_FaireBMag
+黑魔法专家: [NL]
+装备武器为魔法时,[NL]
+攻击+5[X]
+
+## MSG_SKILL_Avoid
+回避+10: [NL]
+角色回避率+10%[X]
+
+## MSG_SKILL_AvoidSword
+剑回避+20: [NL]
+装备武器为剑时,[NL]
+回避率+20%[X]
+
+## MSG_SKILL_RuinedBlade
+破败之刃: [NL]
+攻击-5，速度+5，攻击时[NL]
+额外造成5点真实伤害[X]
+
+## MSG_SKILL_RuinedBladePlus
+破败之刃+:[NL]
+速度+5，额外造成5点真实伤[NL]
+害，攻击次数+1但无法暴击[X]
+
+## MSG_SKILL_InfinityEdge
+无尽之刃: [NL]
+暴击造成300%伤害[X]
+
+## MSG_SKILL_HeavyBlade
+刚剑: [NL]
+攻击高于敌方时，[NL]
+暴击几率+15%[X]
+
+## MSG_SKILL_FlashingBlade
+柔剑: [NL]
+攻速高于敌方时，[NL]
+暴击几率+15%[X]
+
+## MSG_SKILL_HeavyBladePlus
+刚剑+: [NL]
+攻击+5， 攻击高于[NL]
+敌方时，暴击几率+25%[X]
+
+## MSG_SKILL_FlashingBladePlus
+柔剑+: [NL]
+伤害+3，攻速高于[NL]
+敌方时，暴击几率+25%[X]
+
+## MSG_SKILL_LunaAttack
+月光: [NL]
+攻击附带敌方防御力[NL]
+25%的真实伤害[X]
+
+## MSG_SKILL_SorceryBlade
+魔道之刃: [NL]
+攻击敌方防御或[NL]
+魔防较低的数值[X]
+
+## MSG_SKILL_Fortune
+幸运:[NL]
+此单位无法被暴击[X]
+
+## MSG_SKILL_BlueFlame
+蓝炎: 自身[NL]
+与相邻友军攻击+2[X]

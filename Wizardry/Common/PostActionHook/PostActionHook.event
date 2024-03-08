@@ -1,0 +1,24 @@
+#ifndef POST_ACTION_HOOK_H
+#define POST_ACTION_HOOK_H
+
+#include "Extensions/ProcDefinitions.txt"
+#include "source/PostActionHook.lyn.event"
+
+ALIGN 4
+gPostActionFuncs:
+    POIN PostActionBattleActorSelfHurt PostActionBattleTargetSelfHurt
+    POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife
+    POIN PostActionAlertStance
+    POIN PostActionGaleForce
+    POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
+    WORD 0
+
+PUSH
+    ORG $59ABE0
+    PROC_JUMP(ProcScr_PostActionHookPlayPhase)
+
+    ORG $5A8074
+    PROC_JUMP(ProcScr_PostActionHookCpPerform)
+POP
+
+#endif

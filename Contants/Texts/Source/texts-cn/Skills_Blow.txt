@@ -1,0 +1,27 @@
+## MSG_SKILL_BlowDarting
+飞燕一击:[NL]
+由自己发动攻击时，攻速+6[X]
+
+## MSG_SKILL_BlowDeath
+鬼神一击:[NL]
+由自己发动攻击时，力量+6[X]
+
+## MSG_SKILL_BlowArmored
+金刚一击:[NL]
+由自己发动攻击时，防守+6[X]
+
+## MSG_SKILL_BlowFiendish
+魔神一击:[NL]
+由自己发动攻击时，魔力+6[X]
+
+## MSG_SKILL_BlowWarding
+明镜一击:[NL]
+由自己发动攻击时，魔防+6[X]
+
+## MSG_SKILL_BlowDuelist
+清流一击:[NL]
+由自己发动攻击时，回避20[X]
+
+## MSG_SKILL_BlowUncanny
+慧眼一击:[NL]
+由自己发动攻击时，命中+30[X]

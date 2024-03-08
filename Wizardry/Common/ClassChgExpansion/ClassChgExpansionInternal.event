@@ -1,0 +1,9 @@
+ALIGN 4
+/* Get promotion list core */
+#include "source/ClasschgList.lyn.event"
+#include "source/ClasschgListModularGetter.lyn.event"
+
+#include "source/Utils.lyn.event"
+#include "source/BmClassChg.lyn.event"
+
+#include "LynJump.event"

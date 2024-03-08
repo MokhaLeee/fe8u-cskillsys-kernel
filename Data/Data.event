@@ -1,0 +1,29 @@
+#ifndef GAME_DATA
+#define GAME_DATA
+
+#include "EAstdlib.event"
+
+#include "SkillSys/EfxSkills.lyn.event"
+#include "SkillSys/SkillInfo.lyn.event"
+#include "SkillSys/PreLoadConfig.lyn.event"
+#include "SkillSys/RomTable.lyn.event"
+#include "SkillSys/LegendSkill.lyn.event"
+
+#include "BattleSys/WeaponTriangle.lyn.event"
+
+#include "StrMag/UnitMagicInfos.lyn.event"
+
+#include "Debuff/DebuffInfo.lyn.event"
+
+#include "CombatArt/CombatArtInfo.lyn.event"
+#include "CombatArt/EfxCombatArtAnim.lyn.event"
+#include "CombatArt/CombatArtSkill.lyn.event"
+#include "CombatArt/CombatArtWeapon.lyn.event"
+#include "CombatArt/RomTables.lyn.event"
+
+#include "HiddenLevel/HiddenLevel.lyn.event"
+
+#include "Promote/ClassChgExpa.lyn.event"
+#include "Promote/VanillaList.event"
+
+#endif

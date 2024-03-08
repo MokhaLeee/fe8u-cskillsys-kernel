@@ -1,0 +1,23 @@
+ALIGN 4
+Img_ChapterIntroFogFE6:
+    #incbin "Gfx/ChapterIntroFog.4bpp.lz"
+
+ALIGN 4
+Pal_ChapterIntroFogFE6:
+    #incbin "Gfx/ChapterIntroFog.gbapal"
+
+ALIGN 4
+Img_ChapterIntroMotifFE6:
+    #incbin "Gfx/ChapterIntroMotif.img.bin"
+
+ALIGN 4
+Tm_ChapterIntroMotifFE6:
+    #incbin "Gfx/ChapterIntroMotif.map.bin"
+
+ALIGN 4
+Pal_ChapterIntroMotifFE6:
+    #incbin "Gfx/ChapterIntroMotif.pal.bin"
+
+ALIGN 4
+Pal_Unk_0830D5E4:
+    #incbin "Gfx/Pal_GameIntroTitleBG.bin"

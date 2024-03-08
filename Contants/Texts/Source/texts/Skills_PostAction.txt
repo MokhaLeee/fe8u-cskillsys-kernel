@@ -1,0 +1,32 @@
+## MSG_SKILL_Canto
+Canto:[NL]
+Unit can move again[X]
+
+## MSG_SKILL_CantoPlus
+Canto:[NL]
+Unit can move again after combat[X]
+
+## MSG_SKILL_AlertStance
+A-Stance:[NL]
+If unit takes no action[NL]
+except Wait, grants Avo +15%[X]
+
+## MSG_SKILL_AlertStancePlus
+A-Stance+:[NL]
+If unit takes no action[NL]
+except Wait, grants Avo +30%[X]
+
+## MSG_SKILL_Galeforce
+Galeforce: Move again after[NL]
+attacking and defeating an enemy.[NL]
+(Skill% activation)[X]
+
+## MSG_SKILL_SavageBlow
+Savage Blow:[NL]
+After attacking, enemies[NL]
+within 2 tiles take 20% damage.[X]
+
+## MSG_SKILL_BreathOfLife
+Breath Life:[NL]
+After attacking, allies[NL]
+in 2 tiles heal of 20% max HP.[X]

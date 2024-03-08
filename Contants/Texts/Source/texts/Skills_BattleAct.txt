@@ -1,0 +1,54 @@
+## MSG_SKILL_Aegis
+Aegis:[NL]
+Nullify a magic attack.[NL]
+(Skill % activation)[X]
+
+## MSG_SKILL_Pavise
+Pavise:[NL]
+Nullify a physical attack.[NL]
+(Skill % activation)[X]
+
+## MSG_SKILL_Bane
+Bane: Leave the opponent at[NL]
+1 HP if the attack would kill.[NL]
+(Skill/2 % activation)[X]
+
+## MSG_SKILL_Aether
+Aether:Negate 80 %[NL]
+defenses and absorb HP.[NL]
+(Skill/2 % activation)[X]
+
+## MSG_SKILL_Corona
+Corona:[NL]
+Negate enemy resistance.[NL]
+(Skill% activation)[X]
+
+## MSG_SKILL_Luna
+Luna:[NL]
+Negates enemy defenses.[NL]
+(Skill % activation)[X]
+
+## MSG_SKILL_Flare
+Flare:[NL]
+Halve enemy resistance.[NL]
+(Skill% activation)[X]
+
+## MSG_SKILL_Foresight
+Foresight: Avoid the damage[NL]
+from enemy Critical Hits and[NL]
+Skill Activations.[X]
+
+## MSG_SKILL_Sol
+Sol:[NL]
+Restore damage dealt as HP.[NL]
+(Skill % activation)[X]
+
+## MSG_SKILL_DragonFang
+DragonFang:[NL]
+1.5x damage.[NL]
+(Skill% activation)[X]
+
+## MSG_SKILL_Inori
+Inori:[NL]
+Unit may not die if attacked[NL]
+to 0 HP (luck%)[X]

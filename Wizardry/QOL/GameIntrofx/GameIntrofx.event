@@ -1,0 +1,21 @@
+#ifndef GAME_INTROFX_INSTALLED
+#define GAME_INTROFX_INSTALLED
+
+#include "Source/GameIntrofx.lyn.event"
+
+PUSH
+    // Skip H&S screen (credit Circles)
+    ORG $CC20C
+        SHORT 0
+
+    // Skip OpAnim
+    ORG $AA71C8
+    PROC_CALL_ROUTINE(AutoSkilOpAnim)
+    PROC_END
+
+    // TitleScreen may not fade in/out
+    ORG $C635A
+    SHORT 0
+POP
+
+#endif /* GAME_INTROFX_INSTALLED */

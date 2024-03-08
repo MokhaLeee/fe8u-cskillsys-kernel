@@ -1,0 +1,13 @@
+## MSG_SKILL_Blossom
+绽放: 成长率翻倍,[NL]
+经验获取量减半[X]
+
+## MSG_SKILL_Paragon
+快速成长: 经验获取翻倍[X]
+
+## MSG_SKILL_VoidCurse
+暗影: 无法通过与该单位战斗[NL]
+获得经验[X]
+
+## MSG_SKILL_Aptitude
+龙脉: 成长率 +20%[X]

@@ -1,0 +1,44 @@
+## MSG_COMART_NAME_Smash
+Smash[X]
+
+## MSG_COMART_NAME_HelmSplitter
+Helm-K[X]
+## MSG_COMART_DESC_HelmSplitter
+Effective against Armored enemies[X]
+
+## MSG_COMART_NAME_MonsterBreaker
+Monster-K[X]
+## MSG_COMART_DESC_MonsterBreaker
+Effective against Monsters[X]
+
+## MSG_COMART_NAME_FocusedStrike
+F-Strike[X]
+
+## MSG_COMART_NAME_WildAbandon
+Wild-A[X]
+
+## MSG_COMART_NAME_Spike
+Wild-A[X]
+
+## MSG_COMART_NAME_DiamondAxe
+Diamond[X]
+
+## MSG_COMART_NAME_ArmoredStrike
+A-Strike[X]
+## MSG_COMART_DESC_ArmoredStrike
+Dmg + actor's Def[X]
+
+## MSG_COMART_NAME_LightningAxe
+Lightning[X]
+## MSG_COMART_DESC_LightningAxe
+Magic attack + actor's Res[X]
+
+## MSG_COMART_NAME_WarMasterStrike
+W-M Strike[X]
+## MSG_COMART_DESC_WarMasterStrike
+Effective against all foes[X]
+
+## MSG_COMART_NAME_FlickeringFlower
+F-Flower[X]
+## MSG_COMART_DESC_FlickeringFlower
+Enimy cannot move[X]

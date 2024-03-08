@@ -1,0 +1,44 @@
+## MSG_COMART_NAME_Smash
+猛击[X]
+
+## MSG_COMART_NAME_HelmSplitter
+破盔[X]
+## MSG_COMART_DESC_HelmSplitter
+重装特效[X]
+
+## MSG_COMART_NAME_MonsterBreaker
+魔物猛击[X]
+## MSG_COMART_DESC_MonsterBreaker
+魔物特效[X]
+
+## MSG_COMART_NAME_FocusedStrike
+明镜止水[X]
+
+## MSG_COMART_NAME_WildAbandon
+无我境界[X]
+
+## MSG_COMART_NAME_Spike
+劈刺[X]
+
+## MSG_COMART_NAME_DiamondAxe
+金刚斧[X]
+
+## MSG_COMART_NAME_ArmoredStrike
+铠甲打击[X]
+## MSG_COMART_DESC_ArmoredStrike
+根据自身防御提升威力[X]
+
+## MSG_COMART_NAME_LightningAxe
+雷斧[X]
+## MSG_COMART_DESC_LightningAxe
+魔法攻击，根据魔防提升威力[X]
+
+## MSG_COMART_NAME_WarMasterStrike
+战鬼一击[X]
+## MSG_COMART_DESC_WarMasterStrike
+克制所有敌人[X]
+
+## MSG_COMART_NAME_FlickeringFlower
+闪花[X]
+## MSG_COMART_DESC_FlickeringFlower
+命中后敌人无法移动[X]

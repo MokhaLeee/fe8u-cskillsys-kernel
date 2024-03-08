@@ -1,0 +1,53 @@
+#ifndef _RMenu_Defined
+    #define _RMenu_Defined
+    #define _RMenu(up,down,left,right,xcoord,ycoord,TID) "POIN up down left right;BYTE xcoord ycoord; SHORT TID; WORD 0 0;"
+    #define _RMenu(up,down,left,right,xcoord,ycoord,TID,Getter) "POIN up down left right; BYTE xcoord ycoord; SHORT TID; POIN 0 Getter|1"
+    #define _RMenu(up,down,left,right,xcoord,ycoord,SlotID,Looper,Getter) "POIN up down left right; BYTE xcoord ycoord; SHORT SlotID; POIN Looper|1 Getter|1"
+    #define _NameDescGetter 0x88bd5
+    #define _ClassDescGetter 0x88c01
+#endif /* _RMenu_Defined */
+
+ALIGN 4
+RTextPageSupport:
+    POIN Rtext_Page4_Support
+
+RText_PageSupport:
+Rtext_Page4_Support:
+    _RMenu(0, Rtext_Page4_Atk, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x18, 0xD4F)
+
+Rtext_Page4_Atk:
+    _RMenu(Rtext_Page4_Support, Rtext_Page4_Def, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x28, 0x55C)
+
+Rtext_Page4_Def:
+    _RMenu(Rtext_Page4_Atk, Rtext_Page4_Hit, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x38, 0x573)
+
+Rtext_Page4_Hit:
+    _RMenu(Rtext_Page4_Def, Rtext_Page4_Avo, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x48, 0x55D)
+
+Rtext_Page4_Avo:
+    _RMenu(Rtext_Page4_Hit, Rtext_Page4_Crit, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x58, 0x560)
+
+Rtext_Page4_Crit:
+    _RMenu(Rtext_Page4_Avo, Rtext_Page4_Dodge, Rtext_Page4_Class, Rtext_Page4_SuppPInfo, 0x66, 0x68, 0x55F)
+
+Rtext_Page4_Dodge:
+    _RMenu(Rtext_Page4_Crit, 0, Rtext_Page4_Exp, Rtext_Page4_SuppPInfo, 0x66, 0x78, 0xD4E)
+
+Rtext_Page4_SuppPInfo:
+    _RMenu(0, 0, Rtext_Page4_Support, 0, 0xA6, 0x18, 0xD50)
+
+/* Left */
+Rtext_Page4_Name:
+    _RMenu(Rtext_Page4_Hp, Rtext_Page4_Class, 0, Rtext_Page4_Hit, 0x18, 0x50, 0x0, _NameDescGetter)
+
+Rtext_Page4_Class:
+    _RMenu(Rtext_Page4_Name, Rtext_Page4_Level, 0, Rtext_Page4_Crit, 0x6, 0x68, 0x6E8, _ClassDescGetter)
+
+Rtext_Page4_Level:
+    _RMenu(Rtext_Page4_Class, Rtext_Page4_Hp, 0, Rtext_Page4_Exp, 0x6, 0x78, 0x542)
+
+Rtext_Page4_Exp:
+    _RMenu(Rtext_Page4_Class, Rtext_Page4_Hp, Rtext_Page4_Level, Rtext_Page4_Dodge, 0x26, 0x78, 0x543)
+
+Rtext_Page4_Hp:
+    _RMenu(Rtext_Page4_Level, Rtext_Page4_Name, 0, Rtext_Page4_Dodge, 0x6, 0x88, 0x544)

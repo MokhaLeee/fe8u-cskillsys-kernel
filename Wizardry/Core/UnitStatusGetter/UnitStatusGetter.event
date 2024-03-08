@@ -1,0 +1,63 @@
+#ifndef UNIT_STATUS_GETTER_H
+#define UNIT_STATUS_GETTER_H
+
+ALIGN 4
+gHpGetters:
+    POIN HpGetterWeaponBonus HpGetterSkills
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gPowGetters:
+    POIN PowGetterWeaponBonus PowGetterSkills PowGetterDebuff
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gMagGetters:
+    POIN MagGetterSkills MagGetterDebuff
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gSklGetters:
+    POIN SklGetterWeaponBonus SklGetterSkills SklGetterDebuff
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gSpdGetters:
+    POIN SpdGetterWeaponBonus SpdGetterSkills SpdGetterDebuff
+    POIN SpdGetterLegendSkills
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gLckGetters:
+    POIN LckGetterWeaponBonus LckGetterSkills LckGetterDebuff
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gDefGetters:
+    POIN DefGetterWeaponBonus DefGetterSkills DefGetterDebuff
+    POIN DefGetterLegendSkills
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gResGetters:
+    POIN ResGetterWeaponBonus ResGetterSkills ResGetterDebuff
+    POIN ResGetterLegendSkills
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gMovGetters:
+    POIN MovGetterDebuff
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gConGetters:
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+gAidGetters:
+    POIN StatusGetterCheckCpas
+    WORD 0
+
+#include "UnitStatusGetterInternal.event"
+
+#endif

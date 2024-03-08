@@ -1,0 +1,7 @@
+#include "Source/ChapterIntrofx.lyn.event"
+#include "Gfx.event"
+
+PUSH
+    ORG 0x015540
+    POIN ProcScr_ChapterIntroRe
+POP

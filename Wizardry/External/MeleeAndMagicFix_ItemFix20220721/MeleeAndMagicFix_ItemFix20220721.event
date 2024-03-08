@@ -1,0 +1,4 @@
+PUSH
+    ORG 0x18a58
+    #incbin "MeleeAndMagicFix_FE8U.dmp"
+POP

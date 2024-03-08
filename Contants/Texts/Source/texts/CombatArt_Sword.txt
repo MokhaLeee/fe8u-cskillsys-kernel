@@ -1,0 +1,50 @@
+## MSG_COMART_NAME_WrathStrike
+W-Strike[X]
+
+## MSG_COMART_NAME_Soulblade
+Soulblade[X]
+
+## MSG_COMART_DESC_Soulblade
+Magic attack + actor's Res[X]
+
+## MSG_COMART_NAME_Grounder
+Grounder[X]
+
+## MSG_COMART_DESC_Grounder
+Effective against Flying enemies[X]
+
+## MSG_COMART_NAME_BaneOfMonsters
+B-Monster[X]
+
+## MSG_COMART_DESC_BaneOfMonsters
+Effective against monsters[X]
+
+## MSG_COMART_NAME_Sunder
+Sunder[X]
+
+## MSG_COMART_NAME_Hexblade
+Hexblade[X]
+
+## MSG_COMART_DESC_Hexblade
+Magic attack[X]
+
+## MSG_COMART_NAME_HazeSlice
+HazeSlice[X]
+
+## MSG_COMART_NAME_FinesseBlade
+F-Blade[X]
+
+## MSG_COMART_DESC_FinesseBlade
+Dmg + actor's Skl[X]
+
+## MSG_COMART_NAME_Assassinate
+Assassinate[X]
+
+## MSG_COMART_DESC_Assassinate
+Silencer rate +50%[X]
+
+## MSG_COMART_NAME_FoudroyantStrike
+Foudroyant[X]
+
+## MSG_COMART_DESC_FoudroyantStrike
+Effective against Armored enemies[X]

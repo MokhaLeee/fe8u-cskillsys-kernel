@@ -1,0 +1,13 @@
+## MSG_COMBATART_UM_NAME
+ Arts[X]
+
+## MSG_COMBATART_UM_DESC
+Combat Art:[NL]
+Gains battle bonus[NL]
+but null double attack.[X]
+
+## MSG_COMBATART_BKSEL_NO_ARTS
+Without Art[X]
+
+## MSG_COMBATART_BKSEL_HB_Cost
+Cost[X]

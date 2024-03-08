@@ -1,0 +1,32 @@
+## MSG_SKILL_Canto
+再动:[NL]
+若角色完成相应动作后仍有[NL]
+剩余移动力，则可再次移动[X]
+
+## MSG_SKILL_CantoPlus
+再动+:[NL]
+若角色完成攻击后仍有[NL]
+剩余移动力，则可再次移动[X]
+
+## MSG_SKILL_AlertStance
+警戒态势:[NL]
+若不行动并待机，[NL]
+回避+15%[X]
+
+## MSG_SKILL_AlertStancePlus
+警戒态势+:[NL]
+若不行动并待机，[NL]
+回避+30%[X]
+
+## MSG_SKILL_Galeforce
+疾风迅雷:[NL]
+击败敌人后有几率再次移动[NL]
+(Skill %)[X]
+
+## MSG_SKILL_SavageBlow
+死亡吐息:[NL]
+攻击后两格内敌军获得 20% 伤害[X]
+
+## MSG_SKILL_BreathOfLife
+生之息吹: 攻击后，[NL]
+使两格以内友军恢复20%HP[X]

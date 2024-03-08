@@ -1,0 +1,49 @@
+## MSG_SKILL_Anathema
+萨莉亚的祝福: [NL]
+三格以内敌军[NL]
+回避-10，必杀回避-10[X]
+
+## MSG_SKILL_Bond
+友情:[NL]
+三格以内友军命中+10 hit, 伤害+3[X]
+
+## MSG_SKILL_Intimidate
+Intimidate:[NL]
+-10 Avoid to all[NL]
+enemies within 2 tiles.[X]
+
+## MSG_SKILL_Tantivy
+Tantivy:[NL]
++10 Hit/Avoid if there are[NL]
+no allies within 3 tiles.[X]
+
+## MSG_SKILL_Focus
+Focus:[NL]
++10 Critical if there are[NL]
+no allies within 3 tiles.[X]
+
+## MSG_SKILL_Hex
+Hex:[NL]
+-15 avoid to all[NL]
+adjacent enemies.[X]
+
+## MSG_SKILL_Charm
+Charm: Allies within 2[NL]
+tiles deal +3 attack.[X]
+
+## MSG_SKILL_Infiltrator
+Infilt: If within 2 spaces[NL]
+of two or more enemies, gain +3[NL]
+damage and +15% hit.[X]
+
+## MSG_SKILL_Inspiration
+Inspir: Allies within 2 tiles[NL]
+deal +2 damage and receive -2 damage.[X]
+
+## MSG_SKILL_DivinelyInspiring
+D-Inspir: Adjacent allies[NL]
+deal +3 damage and receive -1 damage.[X]
+
+## MSG_SKILL_VoiceOfPeace
+V-Peace: Enemies within[NL]
+2 tiles deal -2 damage.[X]

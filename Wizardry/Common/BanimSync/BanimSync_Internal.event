@@ -1,0 +1,27 @@
+PUSH
+    ORG 0x5975C
+    jumpToHack(BanimSwitch_HookOnMainASM)
+
+    ORG 0x59280
+    jumpToHack(BanimSwitch_HookC0D_OnDefaultASM)
+
+    ORG 0x5937C
+    jumpToHack(BanimSwitch_HookC0D_OnStandingASM)
+
+    /* Hook at ekrBattleDaemon */
+    ORG 0x5B936C
+    POIN EkrBattleDeamonRework
+
+    /* Dynamic hooks */
+    ORG 0x0575B4
+    p_gAnimCharaPalConfig:
+
+    ORG 0x057394
+    p_gAnimCharaPalIt:
+POP
+
+#include "Source/BanimMainHookASM.lyn.event"
+#include "Source/BanimMainHook.lyn.event"
+#include "Source/ekrbattledeamon-hook.lyn.event"
+
+#include "Source/utils.lyn.event"

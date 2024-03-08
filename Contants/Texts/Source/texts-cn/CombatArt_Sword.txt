@@ -1,0 +1,50 @@
+## MSG_COMART_NAME_WrathStrike
+刚击[X]
+
+## MSG_COMART_NAME_Soulblade
+魔法剑[X]
+
+## MSG_COMART_DESC_Soulblade
+魔法攻击，根据自身魔防提升威力[X]
+
+## MSG_COMART_NAME_Grounder
+燕返[X]
+
+## MSG_COMART_DESC_Grounder
+克制飞行系敌人[X]
+
+## MSG_COMART_NAME_BaneOfMonsters
+魔物斩击[X]
+
+## MSG_COMART_DESC_BaneOfMonsters
+魔物特效[X]
+
+## MSG_COMART_NAME_Sunder
+一刀两断[X]
+
+## MSG_COMART_NAME_Hexblade
+魔刃[X]
+
+## MSG_COMART_DESC_Hexblade
+魔法攻击[X]
+
+## MSG_COMART_NAME_HazeSlice
+霞切[X]
+
+## MSG_COMART_NAME_FinesseBlade
+秘剑[X]
+
+## MSG_COMART_DESC_FinesseBlade
+根据自身技术提升威力[X]
+
+## MSG_COMART_NAME_Assassinate
+暗杀[X]
+
+## MSG_COMART_DESC_Assassinate
+瞬杀概率提升50%[X]
+
+## MSG_COMART_NAME_FoudroyantStrike
+雷迅[X]
+
+## MSG_COMART_DESC_FoudroyantStrike
+克制重装敌人[X]

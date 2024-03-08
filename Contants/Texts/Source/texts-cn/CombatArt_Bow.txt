@@ -1,0 +1,59 @@
+## MSG_COMART_NAME_CurvedShot
+曲射[X]
+
+## MSG_COMART_NAME_Deadeye
+狙击[X]
+
+## MSG_COMART_NAME_Encloser
+合围之箭[X]
+
+## MSG_COMART_DESC_Encloser
+封禁敌方移动[X]
+
+## MSG_COMART_NAME_EncloserPlus
+重压矢+[X]
+
+## MSG_COMART_DESC_EncloserPlus
+封禁敌方及其相邻单位的移动[X]
+
+## MSG_COMART_NAME_MonsterBlast
+魔物射击[X]
+
+## MSG_COMART_DESC_MonsterBlast
+魔物特效[X]
+
+## MSG_COMART_NAME_SchismShot
+魔法射击[X]
+
+## MSG_COMART_DESC_SchismShot
+魔法攻击，命中后敌方魔抗-5[X]
+
+## MSG_COMART_NAME_BreakShot
+破坏射击[X]
+
+## MSG_COMART_DESC_BreakShot
+命中后敌方防御-5[X]
+
+## MSG_COMART_NAME_BreakShotPlus
+破甲箭+[X]
+
+## MSG_COMART_DESC_BreakShotPlus
+敌方及其相邻单位防御-5[X]
+
+## MSG_COMART_NAME_WaningShot
+弱化射击[X]
+
+## MSG_COMART_DESC_WaningShot
+命中后敌方攻击-5[X]
+
+## MSG_COMART_NAME_WaningShotPlus
+枯萎矢+[X]
+
+## MSG_COMART_DESC_WaningShotPlus
+敌方及其相邻单位攻击-5[X]
+
+## MSG_COMART_NAME_HuntersVolley
+猎箭齐发[X]
+
+## MSG_COMART_DESC_HuntersVolley
+攻击二次[X]
