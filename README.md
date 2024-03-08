@@ -54,10 +54,10 @@ make
 ```
 
 Then it build such outputs:
-1. **fe8-kernel-<version>.gba**
-2. **fe8-kernel-<version>.sym**: to debug on NO$GBA
-3. **fe8-kernel-<version>.ref.s**: to make lyn-reference
-4. **fe8-kernel-<version>.ref.event**: to make EA reference
+1. **fe8-kernel-\[VERSION].gba**
+2. **fe8-kernel-\[VERSION].sym**: to debug on NO$GBA
+3. **fe8-kernel-\[VERSION].ref.s**: to make lyn-reference
+4. **fe8-kernel-\[VERSION].ref.event**: to make EA reference
 
 ## Build Chinese version
 
