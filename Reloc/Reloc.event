@@ -10,6 +10,12 @@ gpConstSkillPTable:
 gpConstSkillJTable:
     POIN gConstSkillJTable
 
+gpSkillPreloadPData:
+    POIN gSkillPreloadPData
+
+gpSkillPreloadJData:
+    POIN gSkillPreloadJData
+
 gpSkillAnimInfos:
     POIN gSkillAnimInfos
 

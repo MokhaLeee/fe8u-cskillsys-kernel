@@ -12,6 +12,12 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
             [5] = SID_DefiantAvoid,
         },
     },
+    [CHARACTER_EPHRAIM] = {
+        .skills = {
+            [0] = SID_StrBonus,
+            [5] = SID_DefiantCrit,
+        },
+    },
 };
 
 FEB_IDENTIFIER(gSkillPData);
