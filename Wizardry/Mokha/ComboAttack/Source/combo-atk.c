@@ -2,6 +2,17 @@
 #include "combo-attack.h"
 #include "weapon-range.h"
 
+void ResetComboAtkList(void)
+{
+    u32 i;
+    CpuFill16(0, gComboAtkList, sizeof(gComboAtkList));
+
+    for (i = 0; i < ARRAY_COUNT(gComboAtkList); i++)
+    {
+        gComboAtkList[i].uid = COMBO_ATK_UID_INVALID;
+    }
+}
+
 /* This is only valid in after battle unit inited */
 void BattleGenerateComboAtkList(void)
 {
@@ -11,7 +22,7 @@ void BattleGenerateComboAtkList(void)
 
     int i, cnt = 0;
 
-    CpuFill16(0, gComboAtkList, sizeof(gComboAtkList));
+    ResetComboAtkList();
 
     for (i = 1; i < 0x100; i++)
     {
@@ -45,6 +56,4 @@ void BattleGenerateComboAtkList(void)
         gComboAtkList[cnt].weapon = ITEM_INDEX(item);
         cnt++;
     }
-    gComboAtkList[cnt].uid = COMBO_ATK_UID_INVALID;
-    gComboAtkList[cnt].weapon = 0;
 }

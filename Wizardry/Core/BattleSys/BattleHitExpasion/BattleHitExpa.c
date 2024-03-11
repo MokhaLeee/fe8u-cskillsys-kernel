@@ -7,6 +7,7 @@
 #include "efx-skill.h"
 #include "combat-art.h"
 #include "battle-system.h"
+#include "combo-attack.h"
 
 bool CheckBattleHitOverflow(void)
 {
@@ -20,5 +21,6 @@ void ClearBattleHits(void)
     InitEfxCombatArtRoundData();
     InitEfxSkillRoundData();
     ClearBattleGlobalFlags();
+    ResetComboAtkList();
     gBattleHitIterator = gBattleHitArrayRe;
 }
