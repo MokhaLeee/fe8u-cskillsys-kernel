@@ -29,6 +29,7 @@ ALIGN 4
 #include "Common/UnitExpa/UnitExpa.event"
 #include "Common/PhaseSwitchHook/PhaseSwitchHook.event"
 #include "Common/BanimSync/BanimSync.event"
+#include "Common/KernelTutorial/KernelTutorial.event"
 
 #include "Core/SkillSys/SkillSys.event"
 #include "Core/UnitStatusGetter/UnitStatusGetter.event"

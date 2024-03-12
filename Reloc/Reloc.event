@@ -85,3 +85,9 @@ gpConfigUseComboAtk:
 #else
     WORD 0
 #endif
+
+gConfigKTutorialLevel:
+    WORD CONFIG_KTUT_LEVEL
+
+gpKTutorialConf:
+    POIN gKTutorialConf

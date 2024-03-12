@@ -6,7 +6,9 @@ ALIGN 4
 
 ALIGN 4
 gGameInitHookTable:
-    POIN ResetUnitLearnedSkillLists InitRandC
+    POIN ResetUnitLearnedSkillLists InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
+    POIN ResetKTutorialFlags
+
     POIN GameInitHookFuncPad
     POIN GameInitHookFuncPad
     POIN GameInitHookFuncPad

@@ -30,4 +30,11 @@
  */
 #define CONFIG_BATTLE_SURROUND
 
+/**
+ * 0: Not show any kernel tutorial
+ * 1: Only show kernel tutorial in tutorial mode
+ * 2: show kernel tutorial at anytime
+ */
+#define CONFIG_KTUT_LEVEL 2
+
 #endif /* CONFIG_INSTALLED */

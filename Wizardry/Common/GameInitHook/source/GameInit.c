@@ -42,8 +42,6 @@ void StartGame(void)
     LogInit();
 #endif
 
-    ClearBattleGlobalFlags();
-    ResetCombatArtStatus();
     FreeRamSpaceDetection();
 
     /* External hooks */

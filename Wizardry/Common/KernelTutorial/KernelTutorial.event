@@ -1,0 +1,6 @@
+#ifndef KTUTORIAL_INSTALLED
+#define KTUTORIAL_INSTALLED
+
+#include "KernelTutorial_Internal.event"
+
+#endif
