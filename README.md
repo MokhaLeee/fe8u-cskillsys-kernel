@@ -6,6 +6,10 @@ Main purpose to split kernel form c-build is to make it independent form the wiz
 
 ## Custom build
 
+<!>
+**You need a linux envirment!**
+For Windows user, it is recommended to use a ubuntu server or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+
 1. Install sub-modules
 
 ```bash
@@ -43,9 +47,26 @@ export PATH=${DEVKITPRO}/tools/bin:$PATH
 
 3. Build EA
 
-    Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler).
+    Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
 
-4. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the **./Kernel**.
+```bash
+# refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+chmod +x ./dotnet-install.sh
+./dotnet-install.sh --channel 6.0
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+```
+
+    Then build EA
+
+```bash
+cd Tools/EventAssembler
+./build.sh
+```
+
+5. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the repo directory.
 
 4. build:
 
@@ -54,10 +75,13 @@ make
 ```
 
 Then it build such outputs:
-1. **fe8-kernel-\[VERSION].gba**
-2. **fe8-kernel-\[VERSION].sym**: to debug on NO$GBA
-3. **fe8-kernel-\[VERSION].ref.s**: to make lyn-reference
-4. **fe8-kernel-\[VERSION].ref.event**: to make EA reference
+| Name      	| Desc 			|
+| :--------:	| :-----------:	|
+|fe8-kernel-beta.gba|ROM|
+|fe8-kernel-beta.sym|debug on NO$GBA|
+|fe8-kernel-beta.ref.s|lyn reference|
+|fe8-kernel-beta.ref.event|EA reference|
+
 
 ## Build Chinese version
 
