@@ -373,9 +373,6 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
     int enmies_range2 = 0;
     int enmies_range1 = 0;
 
-    if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
-        return;
-
     for (i = 0; i < 24; i++)
     {
         _x = attacker->unit.xPos + vec_range[i].x;
@@ -387,26 +384,30 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
 
         if (AreUnitsAllied(attacker->unit.index, unit->index))
         {
-            /* Buffs */
-            if (SkillTester(unit, SID_Bond) && range3[i] == 1)
+            /* Fasten pre-battle calc */
+            if (!(gBattleStats.config & BATTLE_CONFIG_SIMULATE))
             {
-                attacker->battleHitRate += 10;
-                attacker->battleAttack  += 2;
-            }
+                /* Buffs */
+                if (SkillTester(unit, SID_Bond) && range3[i] == 1)
+                {
+                    attacker->battleHitRate += 10;
+                    attacker->battleAttack  += 2;
+                }
 
-            if (SkillTester(unit, SID_Charm) && range2[i] == 1)
-                attacker->battleAttack  += 3;
+                if (SkillTester(unit, SID_Charm) && range2[i] == 1)
+                    attacker->battleAttack  += 3;
 
-            if (SkillTester(unit, SID_Inspiration) && range2[i] == 1)
-            {
-                attacker->battleAttack += 2;
-                attacker->battleDefense += 2;
-            }
+                if (SkillTester(unit, SID_Inspiration) && range2[i] == 1)
+                {
+                    attacker->battleAttack += 2;
+                    attacker->battleDefense += 2;
+                }
 
-            if (SkillTester(unit, SID_DivinelyInspiring) && range1[i] == 1)
-            {
-                attacker->battleAttack += 3;
-                attacker->battleDefense += 1;
+                if (SkillTester(unit, SID_DivinelyInspiring) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 3;
+                    attacker->battleDefense += 1;
+                }
             }
 
             if (range3[i])
@@ -420,21 +421,25 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
         }
         else
         {
-            /* Debuff */
-            if (SkillTester(unit, SID_Anathema) && range3[i] == 1)
+            /* Fasten pre-battle calc */
+            if (!(gBattleStats.config & BATTLE_CONFIG_SIMULATE))
             {
-                attacker->battleAvoidRate -= 10;
-                attacker->battleDodgeRate -= 10;
+                /* Debuff */
+                if (SkillTester(unit, SID_Anathema) && range3[i] == 1)
+                {
+                    attacker->battleAvoidRate -= 10;
+                    attacker->battleDodgeRate -= 10;
+                }
+
+                if (SkillTester(unit, SID_Intimidate) && range2[i] == 1)
+                    attacker->battleAvoidRate -= 10;
+
+                if (SkillTester(unit, SID_Hex) && range1[i] == 1)
+                    attacker->battleAvoidRate -= 10;
+
+                if (SkillTester(unit, SID_VoiceOfPeace) && range2[i] == 1)
+                    attacker->battleAttack -= 2;
             }
-
-            if (SkillTester(unit, SID_Intimidate) && range2[i] == 1)
-                attacker->battleAvoidRate -= 10;
-
-            if (SkillTester(unit, SID_Hex) && range1[i] == 1)
-                attacker->battleAvoidRate -= 10;
-
-            if (SkillTester(unit, SID_VoiceOfPeace) && range2[i] == 1)
-                attacker->battleAttack -= 2;
 
             if (range3[i])
                 enmies_range3++;
