@@ -48,3 +48,15 @@ deal +3 damage and receive -1 damage.[X]
 ## MSG_SKILL_VoiceOfPeace
 V-Peace: Enemies within[NL]
 2 tiles deal -2 damage.[X]
+
+## MSG_SKILL_BattleRange1
+Range Skill: Atk +10 if[NL]
+no ally with 3 tiles.[X]
+
+## MSG_SKILL_BattleRange2
+Range Skill: Atk +7 if[NL]
+no ally with 2 tiles.[X]
+
+## MSG_SKILL_BattleRange3
+Range Skill: Atk +5 if[NL]
+no ally with 1 tiles.[X]

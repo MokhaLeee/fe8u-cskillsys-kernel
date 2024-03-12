@@ -148,6 +148,10 @@ enum SkillIndex {
     SID_DivinelyInspiring,
     SID_VoiceOfPeace,
 
+    SID_BattleRange_Todo1,      /* +10 atk if no allies range-3 */
+    SID_BattleRange_Todo2,      /* +7  atk if no allies range-2 */
+    SID_BattleRange_Todo3,      /* +5  atk if no allies range-1 */
+
     /* AI skills */
     SID_Shade,      /* Less likely to be attacked */
     SID_ShadePlus,  /* Avoid to be a target */

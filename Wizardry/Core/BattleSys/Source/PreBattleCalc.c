@@ -366,10 +366,12 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
     struct Unit * unit;
 
     int allies_range3 = 0;
-    int enmies_range3 = 0;
-
-    int enmies_range2 = 0;
+    int allies_range2 = 0;
     int allies_range1 = 0;
+
+    int enmies_range3 = 0;
+    int enmies_range2 = 0;
+    int enmies_range1 = 0;
 
     for (i = 0; i < 24; i++)
     {
@@ -407,6 +409,9 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
             if (range3[i])
                 allies_range3++;
 
+            if (range2[i])
+                allies_range2++;
+
             if (range1[i])
                 allies_range1++;
         }
@@ -428,11 +433,14 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
             if (SkillTester(unit, SID_VoiceOfPeace) && range2[i] == 1)
                 attacker->battleAttack -= 2;
 
+            if (range3[i])
+                enmies_range3++;
+
             if (range2[i])
                 enmies_range2++;
 
-            if (range3[i])
-                enmies_range3++;
+            if (range1[i])
+                enmies_range1++;
         }
     }
 
@@ -479,6 +487,25 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
         if (SkillTester(&attacker->unit, SID_BlueFlame))
             attacker->battleAttack += 2;
     }
+
+    /* AND skills */
+    if (allies_range3 == 0)
+    {
+        if (SkillTester(&attacker->unit, SID_BattleRange_Todo1))
+            attacker->battleAttack += 10;
+    }
+    else if (allies_range2 == 0)
+    {
+        if (SkillTester(&attacker->unit, SID_BattleRange_Todo2))
+            attacker->battleAttack += 7;
+    }
+    else if (allies_range1 == 0)
+    {
+        if (SkillTester(&attacker->unit, SID_BattleRange_Todo3))
+            attacker->battleAttack += 5;
+    }
+    else
+    {}
 }
 
 STATIC_DECLAR void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)

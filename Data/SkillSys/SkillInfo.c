@@ -819,6 +819,27 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (MAX_SKILL_NUM != SID_BattleRange_Todo1)
+    [SID_BattleRange_Todo1] = {
+        .desc = MSG_SKILL_BattleRange1,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (MAX_SKILL_NUM != SID_BattleRange_Todo2)
+    [SID_BattleRange_Todo2] = {
+        .desc = MSG_SKILL_BattleRange2,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (MAX_SKILL_NUM != SID_BattleRange_Todo3)
+    [SID_BattleRange_Todo3] = {
+        .desc = MSG_SKILL_BattleRange3,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (MAX_SKILL_NUM != SID_Shade)
     [SID_Shade] = {
         .desc = MSG_SKILL_Shade,

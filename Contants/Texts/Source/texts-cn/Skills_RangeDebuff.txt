@@ -47,3 +47,15 @@ deal +3 damage and receive -1 damage.[X]
 ## MSG_SKILL_VoiceOfPeace
 V-Peace: Enemies within[NL]
 2 tiles deal -2 damage.[X]
+
+## MSG_SKILL_BattleRange1
+Range Skill: 三格内[NL]
+无友军则攻击 +10[X]
+
+## MSG_SKILL_BattleRange2
+Range Skill: 二格内[NL]
+无友军则攻击 +7[X]
+
+## MSG_SKILL_BattleRange3
+Range Skill: 一格内[NL]
+无友军则攻击 +5[X]
