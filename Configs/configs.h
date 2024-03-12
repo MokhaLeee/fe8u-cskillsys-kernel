@@ -18,4 +18,16 @@
 /* Engage style combo attack */
 #define CONFIG_USE_COMBO_ATTACK
 
+/**
+ * Surround:
+ * When a unit is attacked and adjacent to the enemy,
+ * each side with enemy may cause unit avoid -10%
+ *
+ * If completely surrounded (each side stands an enemy),
+ * unit may cause def-5 additionally.
+ * 
+ * Flyer in outdoor environments are not affected by this effect
+ */
+#define CONFIG_BATTLE_SURROUND
+
 #endif /* CONFIG_INSTALLED */

@@ -373,6 +373,9 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
     int enmies_range2 = 0;
     int enmies_range1 = 0;
 
+    if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+        return;
+
     for (i = 0; i < 24; i++)
     {
         _x = attacker->unit.xPos + vec_range[i].x;
@@ -506,6 +509,31 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
     }
     else
     {}
+
+#ifdef CONFIG_BATTLE_SURROUND
+    if (attacker == &gBattleTarget)
+    {
+        /* Flyer in outdoor environments are not affected by this effect (todo) */
+        if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FLYER) || (0))
+        {
+            int surround_enemies = enmies_range1 - 1;
+
+            /**
+             * When a unit is attacked and adjacent to the enemy,
+             * each side with enemy may cause unit avoid -10%
+             */
+            if (surround_enemies > 0)
+                attacker->battleAvoidRate -= 10 * surround_enemies;
+
+            /**
+             * If unit have been completely surrounded,
+             * unit may cause def-5 additionally.
+             */
+            if (surround_enemies == 3)
+                attacker->battleDefense -= 5;
+        }
+    }
+#endif /* CONFIG_BATTLE_SURROUND */
 }
 
 STATIC_DECLAR void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
