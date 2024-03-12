@@ -1,0 +1,20 @@
+/* SpellAssoc */
+ALIGN 4
+ITEM_SYS_SPELL_ASSOC_START:
+    #include "Source/SpellAssocAlloc.lyn.event"
+ITEM_SYS_SPELL_ASSOC_END:
+
+PUSH
+    ORG ITEM_SYS_SPELL_ASSOC_START
+    #include "Source/spellassoc-data.lyn.event"
+    ASSERT (ITEM_SYS_SPELL_ASSOC_END - CURRENTOFFSET)
+POP
+
+/* Repoint spell-assoc */
+PUSH
+    ORG 0x078240
+    POIN ITEM_SYS_SPELL_ASSOC_START
+
+    ORG 0x058014
+    POIN ITEM_SYS_SPELL_ASSOC_START
+POP
