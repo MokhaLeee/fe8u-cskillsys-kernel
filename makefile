@@ -15,7 +15,7 @@ FE8_REF  := $(LIB_DIR)/reference/fireemblem8.ref.o
 FE8_SYM  := $(LIB_DIR)/reference/fireemblem8.sym
 
 CONFIG_DIR := $(MK_DIR)/Configs
-EXT_REF    := $(CONFIG_DIR)/usr-defined.ref.s
+EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 
 WIZARDRY_DIR := $(MK_DIR)/Wizardry
 CONTANTS_DIR := $(MK_DIR)/Contants
