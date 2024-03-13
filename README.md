@@ -4,11 +4,19 @@ Engine-hacks for FE-Cbuild, including skillsys, battle-system hacks, etc.e.
 
 Main purpose to split kernel form c-build is to make it independent form the wizardry to the real game.
 
+It build such outputs:
+| Name      | Desc 			|
+| :--------	| :-----------	|
+|fe8-kernel-beta.gba|ROM|
+|fe8-kernel-beta.sym|debug on NO$GBA|
+|fe8-kernel-beta.ref.s|lyn reference|
+|fe8-kernel-beta.ref.event|EA reference|
+
 ## Custom build
 
-<!>
-**You need a linux envirment!**
-For Windows user, it is recommended to use a ubuntu server or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+> <!> You need a linux envirment!
+>
+> For Windows user, it is recommended to use a ubuntu server or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 1. Install sub-modules
 
@@ -50,6 +58,7 @@ export PATH=${DEVKITPRO}/tools/bin:$PATH
     Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
 
 ```bash
+# Install .NET
 # refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x ./dotnet-install.sh
@@ -59,9 +68,8 @@ export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 ```
 
-    Then build EA
-
 ```bash
+# Build EA
 cd Tools/EventAssembler
 ./build.sh
 ```
@@ -74,20 +82,12 @@ cd Tools/EventAssembler
 make
 ```
 
-Then it build such outputs:
-| Name      	| Desc 			|
-| :--------:	| :-----------:	|
-|fe8-kernel-beta.gba|ROM|
-|fe8-kernel-beta.sym|debug on NO$GBA|
-|fe8-kernel-beta.ref.s|lyn reference|
-|fe8-kernel-beta.ref.event|EA reference|
-
 
 ## Build Chinese version
 
 This repo support multi-language. For now, Chinese is supported, if you want to use Chinese version of kernel, follow these steps before `make`:
 
-- Uncomment `include Fonts/fonts.mk` in **./makefile**:
-- Uncomment `CONFIG_LANG_CHINESE` in **./Configs/configs.h**
-- Uncomment `#include "Fonts/Fonts.event"` in **./main.event**
-- Modify on **./Contants/Texts/Source/TextMain.txt**, use `texts-cn.txt` rather than `texts.txt`
+- Uncomment `include Fonts/fonts.mk` in [makefile](./makefile):
+- Uncomment `CONFIG_LANG_CHINESE` in [configs.h](./Configs/configs.h)
+- Uncomment `#include "Fonts/Fonts.event"` in [main.event](./main.event)
+- Modify on [TextMain.txt](./Contants/Texts/Source/TextMain.txt), use `texts-cn.txt` rather than `texts.txt`
