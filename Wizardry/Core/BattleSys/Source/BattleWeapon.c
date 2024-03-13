@@ -10,6 +10,7 @@
 #include "combat-art.h"
 #include "debuff.h"
 #include "weapon-range.h"
+#include "weapon-lockex.h"
 #include "constants/items.h"
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSlot)
@@ -159,5 +160,74 @@ void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
 
         if (info->magic_attack)
             bu->weaponAttributes |= IA_MAGICDAMAGE | IA_MAGIC;
+    }
+}
+
+/* LynJump */
+s8 CanUnitUseWeapon(struct Unit * unit, int item)
+{
+    if (item == 0)
+        return FALSE;
+
+    if (!(GetItemAttributes(item) & IA_WEAPON))
+        return FALSE;
+
+    if (GetItemAttributes(item) & IA_LOCK_ANY)
+    {
+        // Check for item locks
+
+        if ((GetItemAttributes(item) & IA_LOCK_1) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_1))
+            return FALSE;
+
+        if ((GetItemAttributes(item) & IA_LOCK_4) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_4))
+            return FALSE;
+
+        if ((GetItemAttributes(item) & IA_LOCK_5) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_5))
+            return FALSE;
+
+        if ((GetItemAttributes(item) & IA_LOCK_6) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_6))
+            return FALSE;
+
+        if ((GetItemAttributes(item) & IA_LOCK_7) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_7))
+            return FALSE;
+
+        if ((GetItemAttributes(item) & IA_LOCK_2) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_2))
+            return FALSE;
+
+        // Monster lock is special
+        if (GetItemAttributes(item) & IA_LOCK_3) {
+            if (!(UNIT_CATTRIBUTES(unit) & CA_LOCK_3))
+                return FALSE;
+
+            return TRUE;
+        }
+
+        if (GetItemAttributes(item) & IA_UNUSABLE)
+            if (!(IsItemUnsealedForUnit(unit, item)))
+                return FALSE;
+    }
+
+#if CHAX
+    if ((GetUnitStatusIndex(unit) == UNIT_STATUS_SILENCED) && (GetItemAttributes(item) & IA_MAGIC))
+#else
+    if ((unit->statusIndex == UNIT_STATUS_SILENCED) && (GetItemAttributes(item) & IA_MAGIC))
+#endif
+        return FALSE;
+
+#if CHAX
+    switch (CheckWeaponLockEx(unit, item)) {
+    case 1:
+        return true;
+
+    case -1:
+        return false;
+    }
+#endif
+
+    {
+        int wRank = GetItemRequiredExp(item);
+        int uRank = (unit->ranks[GetItemType(item)]);
+
+        return (uRank >= wRank) ? TRUE : FALSE;
     }
 }

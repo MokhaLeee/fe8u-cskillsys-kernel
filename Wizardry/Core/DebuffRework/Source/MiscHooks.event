@@ -50,9 +50,11 @@ PUSH
     BYTE 0x3F
     // PROTECT $2CF4C $2D0BC
 
+/*
     ORG $166F6 // CanUnitUseWeapon
     BYTE 0x3F
     PROTECT $16574 $16750
+*/
 
     ORG $167CA // CanUnitUseStaff
     BYTE 0x3F
