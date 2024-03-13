@@ -1,12 +1,13 @@
 #include "common-chax.h"
 #include "weapon-lockex.h"
+#include "wpnlockex-internal.h"
 
 int CheckWeaponLockEx(struct Unit * unit, u16 item)
 {
     int ret = 0;
     const struct WeaponLockExConf * it; 
 
-    for (it = gWeaponLockExConfs; it->iid != 0; it++)
+    for (it = gpWeaponLockExConfs; it->iid != 0; it++)
     {
         if (ITEM_INDEX(item) == it->iid)
         {
