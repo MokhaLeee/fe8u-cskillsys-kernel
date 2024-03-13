@@ -96,6 +96,11 @@ int GetTriggerKtutorial(void)
     return -1;
 }
 
+bool CheckKtutFlagTriggered(int flag)
+{
+    return check_bit(sKTutorialBitsHistory, flag);
+}
+
 void PutKtutHistory(int flag)
 {
     /**
