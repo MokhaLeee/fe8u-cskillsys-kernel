@@ -1,11 +1,7 @@
 #ifndef MAP_ANIMS_INSTALLED
 #define MAP_ANIMS_INSTALLED
 
-/* Heavy gravity */
-#include "HeavyGravity/HeavyGravity.lyn.event"
-
-ALIGN 4
-Img_HeavyGravity:
-    #incbin "HeavyGravity/Img_HeavyGravity.4bpp.lz"
+#include "HeavyGravity/HeavyGravityfx.event"
+#include "ThunderStorm/Thunderfx.event"
 
 #endif /* MAP_ANIMS_INSTALLED */

@@ -1,0 +1,5 @@
+#include "HeavyGravity.lyn.event"
+
+ALIGN 4
+Img_HeavyGravity:
+    #incbin "Img_HeavyGravity.4bpp.lz"
