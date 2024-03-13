@@ -53,7 +53,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EventThunderfx[] = {
     PROC_NAME("MapAnimThunderfx"),
     PROC_YIELD,
     // PROC_CALL(EventThunderfx_FadeIn),
-    PROC_YIELD,
+    // PROC_YIELD,
     // PROC_SLEEP(20),
     PROC_CALL(EventThunderfx_Init),
     PROC_YIELD,
@@ -61,7 +61,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EventThunderfx[] = {
     PROC_CALL(EventThunderfx_End),
     PROC_YIELD,
     // PROC_CALL(EventThunderfx_FadeOut),
-    PROC_YIELD,
+    // PROC_YIELD,
     PROC_END,
 };
 
