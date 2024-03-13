@@ -19,9 +19,14 @@ static inline bool check_bit(u32 * bits, int idx)
 }
 
 /* In GameInit */
-void ClearKtutorialFlags(void)
+static void ClearTrigKtutFlags(void)
 {
     memset(sKTutorialBits, 0, sizeof(sKTutorialBits));
+}
+
+void ClearKtutorialFlags(void)
+{
+    ClearTrigKtutFlags();
     memset(sKTutorialBitsHistory, 0, sizeof(sKTutorialBitsHistory));
 }
 
@@ -93,6 +98,13 @@ int GetTriggerKtutorial(void)
 
 void PutKtutHistory(int flag)
 {
+    /**
+     * If we triggered more than one k-tut,
+     * We can just trigger one tutorial, but other will be negleted.
+     * Here we clear all trigger flags.
+     */
+    ClearTrigKtutFlags();
+
     if (flag < KTUTORIAL_MAX)
         set_bit(sKTutorialBitsHistory, flag);
 }
