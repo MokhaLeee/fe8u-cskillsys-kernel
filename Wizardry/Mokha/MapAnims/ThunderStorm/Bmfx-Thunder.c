@@ -8,6 +8,16 @@ struct ProcEventThunderfx {
     /* 3C */ int x, y;
 };
 
+void EventThunderfx_FadeIn(struct ProcEventThunderfx * proc)
+{
+    NewEventFadefx(8, 0xFFFFFFFF, 128, 128, 128, proc);
+}
+
+void EventThunderfx_FadeOut(struct ProcEventThunderfx * proc)
+{
+    NewEventFadefx(4, 0xFFFFFFFF, 256, 256, 256, proc);
+}
+
 STATIC_DECLAR void EventThunderfx_Init(struct ProcEventThunderfx * proc)
 {
     gLCDControlBuffer.bg0cnt.priority = 0;
@@ -18,6 +28,8 @@ STATIC_DECLAR void EventThunderfx_Init(struct ProcEventThunderfx * proc)
     SetBlendAlpha(0x10, 0x10);
     SetBlendTargetA(0, 0, 1, 0, 0);
     SetBlendTargetB(0, 0, 0, 1, 1);
+
+    PlaySoundEffect(0x11A);
 
     StartBmBgfx(
         BmBgfxConf_EventThunder,
@@ -40,9 +52,16 @@ STATIC_DECLAR void EventThunderfx_End(struct ProcEventThunderfx * proc)
 STATIC_DECLAR const struct ProcCmd ProcScr_EventThunderfx[] = {
     PROC_NAME("MapAnimThunderfx"),
     PROC_YIELD,
+    // PROC_CALL(EventThunderfx_FadeIn),
+    PROC_YIELD,
+    // PROC_SLEEP(20),
     PROC_CALL(EventThunderfx_Init),
+    PROC_YIELD,
     PROC_WHILE(CheckBmBgfxDone),
     PROC_CALL(EventThunderfx_End),
+    PROC_YIELD,
+    // PROC_CALL(EventThunderfx_FadeOut),
+    PROC_YIELD,
     PROC_END,
 };
 
