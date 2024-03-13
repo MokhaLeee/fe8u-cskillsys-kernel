@@ -89,5 +89,5 @@ gpConfigUseComboAtk:
 gConfigKTutorialLevel:
     WORD CONFIG_KTUT_LEVEL
 
-gpKTutorialConf:
-    POIN gKTutorialConf
+gpKTutorialMsg:
+    POIN gKTutorialMsg

@@ -60,3 +60,4 @@ W.I.P.[X]
 #include texts-cn/CombatArt_Axe.txt
 #include texts-cn/CombatArt_Lance.txt
 #include texts-cn/CombatArt_Bow.txt
+#include texts-cn/kernel_tutorial.txt

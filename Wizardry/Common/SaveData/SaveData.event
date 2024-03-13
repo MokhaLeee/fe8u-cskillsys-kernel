@@ -89,4 +89,8 @@ gEmsSusChunks:
     EmsChunk($25B0, $2CD0 - $25B0, MSU_ExternalSaver, MSU_ExternalLoader)
     EmsChunkEnd
 
+gNewSaveHooks:
+    POIN ClearKtutorialFlags ResetUnitLearnedSkillLists
+    WORD 0 0 0 0
+
 #endif

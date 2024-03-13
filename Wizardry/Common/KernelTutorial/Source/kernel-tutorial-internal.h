@@ -3,7 +3,16 @@
 #include "common-chax.h"
 #include "kernel-tutorial.h"
 
-extern const u16 * gpKTutorialConf;
+enum kernel_tutorial_level {
+    KTUT_LEVEL_NEVER  = 0,
+    KTUT_LEVEL_MIDDLE = 1,
+    KTUT_LEVEL_HIGH   = 2,
+};
+extern const int gConfigKTutorialLevel;
 
-extern u32 sTriggeredKTutorialBits[3];
-int TryTriggerTutorialFlag(void);
+extern const u16 * gpKTutorialMsg;
+extern u32 sKTutorialBitsHistory[3];
+
+bool CanExecKTutorial(void);
+int GetTriggerKtutorial(void);
+void PutKtutHistory(int flag);

@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "combo-attack.h"
 #include "weapon-range.h"
+#include "kernel-tutorial.h"
 
 void ResetComboAtkList(void)
 {
@@ -56,4 +57,7 @@ void BattleGenerateComboAtkList(void)
         gComboAtkList[cnt].weapon = ITEM_INDEX(item);
         cnt++;
     }
+
+    if (cnt > 0)
+        TriggerKtutorial(KTUTORIAL_COMBO_ATK);
 }

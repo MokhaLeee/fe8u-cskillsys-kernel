@@ -1,7 +1,8 @@
 #include "common-chax.h"
+#include "constants/texts.h"
 #include "kernel-tutorial.h"
 
-const u16 gKTutorialConf[96] = {
-    [KTUTORIAL_COMBO_ATK] = 0,
-    [KTUTORIAL_BATTLE_SURROUNDER] = 0,
+const u16 gKTutorialMsg[KTUTORIAL_MAX] = {
+    [KTUTORIAL_COMBO_ATK] = MSG_KTUT_COMBO_ATK,
+    [KTUTORIAL_BATTLE_SURROUNDER] = MSG_KTUT_SURROUNDER,
 };

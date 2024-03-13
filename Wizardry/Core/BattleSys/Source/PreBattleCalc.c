@@ -9,6 +9,7 @@
 #include "debuff.h"
 #include "chax-glb.h"
 #include "combat-art.h"
+#include "kernel-tutorial.h"
 #include "constants/skills.h"
 
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
@@ -528,7 +529,10 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
              * each side with enemy may cause unit avoid -10%
              */
             if (surround_enemies > 0)
+            {
+                TriggerKtutorial(KTUTORIAL_BATTLE_SURROUNDER);
                 attacker->battleAvoidRate -= 10 * surround_enemies;
+            }
 
             /**
              * If unit have been completely surrounded,

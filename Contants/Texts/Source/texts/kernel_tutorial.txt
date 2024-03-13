@@ -1,0 +1,13 @@
+## MSG_KTUT_SURROUNDER
+If unit is surrounded,[.][NL]
+then he may be weakened.[.][A][NL]
+The more people surrounding him, the more[.][NL]
+severe this weakening will be.[.][A][NL]
+Flyers are immune to being surrounded[.][A][X]
+
+## MSG_KTUT_COMBO_ATK
+When attacking the enemy within[.][NL]
+the range of the companion,[.][NL]
+ally will participate in the combo attack.[.][A][NL]
+Use this mechanism to cause[.][NL]
+higher damage to the enemy![.][A][X]

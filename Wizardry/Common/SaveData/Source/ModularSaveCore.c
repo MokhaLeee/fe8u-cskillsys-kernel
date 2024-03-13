@@ -7,6 +7,9 @@
 
 #include "save-data.h"
 
+typedef void (* new_save_hook)(void);
+extern const new_save_hook gNewSaveHooks[];
+
 /* LynJump! */
 void WriteSaveBlockInfo(struct SaveBlockInfo * chunk, int index)
 {
@@ -112,6 +115,8 @@ void CopyGameSave(int index_src, int index_dst)
 /* LynJump! */
 void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial)
 {
+    const new_save_hook * it;
+
     if (0 == mode)
         mode = gPlaySt.chapterModeIndex;
 
@@ -138,6 +143,10 @@ void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial)
     gPlaySt.unk_2C_2 = GetGlobalCompletionCount();
 
     SetBonusContentClaimFlags(0);
+
+    /* External hooks */
+    for (it = gNewSaveHooks; *it != NULL; it++)
+        (*it)();
 
     /* Directlt save game! */
     WriteGameSave(index);
