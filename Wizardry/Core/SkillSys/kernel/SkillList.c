@@ -8,11 +8,13 @@
 extern u32 sSkillListNext;
 
 /**
- * 0 - 4: generic usage
+ * 0 - 3: generic usage
+ * 4: active unit
  * 5: battle actor
  * 6: battle target
  */
 #define SKILL_LIST_AMT 7
+#define SKILL_LIST_NEXT(idx) (((idx) - 1) & 3)
 extern struct SkillList sSkillLists[SKILL_LIST_AMT];
 
 STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
@@ -38,24 +40,17 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
 STATIC_DECLAR struct SkillList * GetExistingSkillList(struct Unit * unit)
 {
     int i;
-    for (i = 0; i < SKILL_LIST_AMT; i++)
+    for (i = SKILL_LIST_AMT - 1; i >= 0; i++)
     {
-        if (!JudgeUnitListHeader(unit, &sSkillLists[i].header))
-            continue;
-
-        switch (i) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-            sSkillListNext = i + 1;
-            break;
-
-        case 4:
-            sSkillListNext = 0;
-            break;
+        if (JudgeUnitListHeader(unit, &sSkillLists[i].header))
+        {
+            if (i <= 3)
+            {
+                /* Generic list */
+                sSkillListNext = SKILL_LIST_NEXT(i);
+            }
+            return &sSkillLists[i];
         }
-        return &sSkillLists[i];
     }
     return NULL;
 }
@@ -66,26 +61,16 @@ struct SkillList * GetUnitSkillList(struct Unit * unit)
 
     if (!list)
     {
-        if (unit->index == gBattleActor.unit.index)
+        if (unit->index == gActiveUnit->index)
+            list = &sSkillLists[SKILL_LIST_AMT - 3];
+        else if (unit->index == gBattleActor.unit.index)
             list = &sSkillLists[SKILL_LIST_AMT - 2];
         else if (unit->index == gBattleTarget.unit.index)
             list = &sSkillLists[SKILL_LIST_AMT - 1];
         else
         {
             list = &sSkillLists[sSkillListNext];
-
-            switch (sSkillListNext) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-                sSkillListNext = sSkillListNext + 1;
-                break;
-
-            case 4:
-                sSkillListNext = 0;
-                break;
-            }
+            sSkillListNext = SKILL_LIST_NEXT(sSkillListNext);
         }
         GenerateSkillListExt(unit, list);
     }
