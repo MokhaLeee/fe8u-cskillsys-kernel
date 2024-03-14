@@ -49,4 +49,11 @@ void EraseInvalidSaveData(void)
         /* Yeah, restart the game! */
         // SoftReset(0);
     }
+
+    /* Misc judgement */
+    Assert(sizeof(struct EmsPackedSavUnit) == SIZE_OF_SAV_UNIT_PACK);
+    Assert(sizeof(struct EmsPackedSusUnit) == SIZE_OF_SUS_UNIT_PACK);
 }
+
+const u32 size_EmsPackedSusUnit = sizeof(struct EmsPackedSusUnit);
+const u32 size_EmsPackedSavUnit = sizeof(struct EmsPackedSavUnit);

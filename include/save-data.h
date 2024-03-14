@@ -48,30 +48,39 @@ struct EmsPackedSusUnit {
              u32 exp   : 7;
              u32 xPos  : 6;
              u32 yPos  : 6;
-    /* 0F */ u8 ranks[0x8];
-
-    /* 17 */ u8 cur_hp;
-    /* 18 */ u8 rescue;
-    /* 19 */ u8 ballista;
 
 #if !CHAX
-    /* 1A */ u8 status   : 4;
-             u8 duration : 4;
+             u32 status   : 4;
+             u32 duration : 4;
 #else
-    /* 1A */ u8 status   : 6;
-             u8 duration : 2;
+             u32 status   : 6;
+             u32 duration : 2;
 #endif
-    /* 1B */ u8 torch    : 4;
-             u8 barrier  : 4;
 
-    /* 1C */ union {
+    /* 10 */ union {
                 struct {
                     u8 skills[7];
+                    u8 cur_hp;
+                    u8 ballista;
+
+                    /**
+                     * Enemy cannot:
+                     * 1. rescue unit
+                     * 2. use torch
+                     * 3. use barrier staff
+                     * 4. gain support
+                     */
+                    u8 rescue;
+                    u8 torch   : 4;
+                    u8 barrier : 4;
                     s8 support_gain;
                 } ally;
 
                 struct {
-                    u8 skill;
+                    u8 skills[3];
+                    u8 cur_hp;
+                    u8 ballista;
+
                     u8 ai1;
                     u8 ai2;
                     u8 ai1_cur;
@@ -80,6 +89,8 @@ struct EmsPackedSusUnit {
                     u16 ai_config;
                 } ai;
             } pad;
+
+    /* 1C */ u8 ranks[0x8];
 
     /* 24 */ u32 state;
     /* 28 */ u16 items[UNIT_ITEM_COUNT];
@@ -93,4 +104,5 @@ extern void (* const gpMsa_Loader)(u8 * src, const u32 size);
 extern void (* const gpMsu_Saver )(u8 * dst, const u32 size);
 extern void (* const gpMsu_Loader)(u8 * src, const u32 size);
 
+#define SIZE_OF_SAV_UNIT_PACK 0x2C
 #define SIZE_OF_SUS_UNIT_PACK 0x34

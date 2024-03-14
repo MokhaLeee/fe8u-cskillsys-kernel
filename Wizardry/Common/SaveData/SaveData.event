@@ -81,12 +81,12 @@ gEmsSusChunks:
 
     /* 51 * 0x20 */
     EmsChunk($1F28, $0660, SaveUnitLearnedSkillLists, LoadUnitLearnedSkillLists)
-    EmsChunk($2588, 0x20, SaveCombatArtStatus, LoadCombatArtStatus)
-    EmsChunk($25A8, 0x08, SaveRandC, LoadRandC)
+    EmsChunk($2588, $0020, SaveCombatArtStatus, LoadCombatArtStatus)
+    EmsChunk($25A8, $0008, SaveRandC, LoadRandC)
     EmsChunk($25B0, $0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
 
-    /* Free: $25B0 ~ $2CD0 */
-    EmsChunk($25B0, $2CD0 - $25B0, MSU_ExternalSaver, MSU_ExternalLoader)
+    /* Free: $25C8 ~ $2CD0 */
+    EmsChunk($25C8, $2CD0 - $25B0, MSU_ExternalSaver, MSU_ExternalLoader)
     EmsChunkEnd
 
 gNewSaveHooks:

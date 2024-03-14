@@ -116,7 +116,7 @@ void MSU_LoadBonusClaimWIP(void)
 
 static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
 {
-    int i;
+    u32 i;
     struct Unit tmp_unit;
 
     if (!dst)
@@ -157,9 +157,6 @@ static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
         dst->items[i] = src->items[i];
 
     dst->state = src->state;
-    dst->cur_hp = src->curHP;
-    dst->rescue = src->rescue;
-    dst->ballista = src->ballistaIndex;
 
 #if !CHAX
     dst->status = src->statusIndex;
@@ -169,25 +166,31 @@ static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
     dst->duration = UNIT_STATUS_DURATION(src);
 #endif
 
-    dst->torch = src->torchDuration;
-    dst->barrier = src->barrierDuration;
-
     if (UNIT_FACTION(src) == FACTION_BLUE)
     {
-        for (i = 0; i < 7; i++)
+        dst->pad.ally.rescue = src->rescue;
+        dst->pad.ally.ballista = src->ballistaIndex;
+        dst->pad.ally.torch = src->torchDuration;
+        dst->pad.ally.barrier = src->barrierDuration;
+
+        for (i = 0; i < ARRAY_COUNT(dst->pad.ally.skills); i++)
             dst->pad.ally.skills[i] = src->supports[i];
 
         dst->pad.ally.support_gain = src->supportBits;
+        dst->pad.ally.cur_hp = src->curHP;
     }
     else
     {
-        dst->pad.ai.skill = src->supports[0];
+        for (i = 0; i < ARRAY_COUNT(dst->pad.ai.skills); i++)
+            dst->pad.ai.skills[i] = src->supports[i];
+
         dst->pad.ai.ai1 = src->ai1;
         dst->pad.ai.ai1_cur = src->ai1data;
         dst->pad.ai.ai2 = src->ai2;
         dst->pad.ai.ai2_cur = src->ai2data;
         dst->pad.ai.ai_flag = src->aiFlags;
         dst->pad.ai.ai_config = src->ai3And4;
+        dst->pad.ai.cur_hp = src->curHP;
     }
     dst->_u3A = src->_u3A;
     dst->_u3B = src->_u3B;
@@ -195,7 +198,7 @@ static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
 
 static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit * dst)
 {
-    int i;
+    u32 i;
 
     if (!src || !dst)
         return;
@@ -220,10 +223,6 @@ static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit * ds
     for (i = 0; i < 8; i++)
         dst->ranks[i] = src->ranks[i];
 
-    dst->curHP = src->cur_hp;
-    dst->rescue = src->rescue;
-    dst->ballistaIndex = src->ballista;
-
 #if !CHAX
     dst->statusIndex = src->status;
     dst->statusDuration = src->duration;
@@ -232,25 +231,31 @@ static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit * ds
     UNIT_STATUS_DURATION(dst) = src->duration;
 #endif
 
-    dst->torchDuration = src->torch;
-    dst->barrierDuration = src->barrier;
-
     if (UNIT_FACTION(dst) == FACTION_BLUE)
     {
-        for (i = 0; i < 7; i++)
+        for (i = 0; i < ARRAY_COUNT(src->pad.ally.skills); i++)
             dst->supports[i] = src->pad.ally.skills[i];
 
+        dst->rescue = src->pad.ally.rescue;
+        dst->ballistaIndex = src->pad.ally.ballista;
+        dst->torchDuration = src->pad.ally.torch;
+        dst->barrierDuration = src->pad.ally.barrier;
+
         dst->supportBits = src->pad.ally.support_gain;
+        dst->curHP = src->pad.ally.cur_hp;
     }
     else
     {
-        dst->supports[0] = src->pad.ai.skill;
+        for (i = 0; i < ARRAY_COUNT(src->pad.ai.skills); i++)
+            dst->supports[i] = src->pad.ai.skills[i];
+
         dst->ai1 = src->pad.ai.ai1;
         dst->ai1data = src->pad.ai.ai1_cur;
         dst->ai2 = src->pad.ai.ai2;
         dst->ai2data = src->pad.ai.ai2_cur;
         dst->aiFlags = src->pad.ai.ai_flag;
         dst->ai3And4 = src->pad.ai.ai_config;
+        dst->curHP = src->pad.ai.cur_hp;
     }
 
     dst->state = src->state;
