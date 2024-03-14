@@ -12,6 +12,8 @@ It build such outputs:
 |fe8-kernel-beta.ref.s|lyn reference|
 |fe8-kernel-beta.ref.event|EA reference|
 
+For more notes for wizardry, see [Doc dir](./Doc/)
+
 ## Custom build
 
 > <!> You need a linux envirment!

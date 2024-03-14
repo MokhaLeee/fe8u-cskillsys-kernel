@@ -164,5 +164,3 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
         .img = GFX_DebuffMinibox_AvoidPlus,
     },
 };
-
-FEB_IDENTIFIER(gDebuffInfos);

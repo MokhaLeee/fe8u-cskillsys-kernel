@@ -7,8 +7,8 @@
 #include "include/Definitions.event"
 
 ORG FreeSpaceKernel
-    /* "MOKHA BUILD CHAX" */
-    BYTE $4D $4F $4B $48 $41 $20 $42 $55 $49 $4C $44 $20 $43 $48 $41 $58
+    /* "MOKHA SKILL BETA" */
+    BYTE $4D $4F $4B $48 $41 $20 $53 $4B $49 $4C $4C $20 $42 $45 $54 $41
 
 ORG FreeSpaceKernel_Reloc
     #include "Reloc/Reloc.event"

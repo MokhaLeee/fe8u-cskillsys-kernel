@@ -16,8 +16,6 @@ const struct CombatArtRomTable gCombatArtRomPTable[0x100] = {
     },
 };
 
-FEB_IDENTIFIER(gCombatArtRomPTable);
-
 const struct CombatArtRomTable gCombatArtRomJTable[0x100] = {
     [CLASS_EIRIKA_LORD] = {
         .cid_sword = {
@@ -45,8 +43,6 @@ const struct CombatArtRomTable gCombatArtRomJTable[0x100] = {
     },
 };
 
-FEB_IDENTIFIER(gCombatArtRomJTable);
-
 const struct CombatArtRomTable gCombatArtDefaultTable = {
     .cid_sword = {
         [WPN_LEVEL_D] = CID_WrathStrike,
@@ -72,5 +68,3 @@ const struct CombatArtRomTable gCombatArtDefaultTable = {
         [WPN_LEVEL_S] = CID_WaningShotPlus,
     },
 };
-
-FEB_IDENTIFIER(gCombatArtDefaultTable);

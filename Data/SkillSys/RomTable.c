@@ -11,10 +11,6 @@ const u8 gConstSkillPTable[0x100][2] = {
     [CHARACTER_SETH] = {SID_Vantage},
 };
 
-FEB_IDENTIFIER(gConstSkillPTable);
-
 const u8 gConstSkillJTable[0x100][2] = {
     [CLASS_ARCHER] = {SID_FlashingBlade, SID_Galeforce},
 };
-
-FEB_IDENTIFIER(gConstSkillJTable);

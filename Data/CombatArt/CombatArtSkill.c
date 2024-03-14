@@ -28,5 +28,3 @@ const u8 gCombatArtSkillTable[0x100] = {
     [SID_COMBAT_WaningShotPlus] = CID_WaningShotPlus,
     [SID_COMBAT_HuntersVolley] = CID_HuntersVolley,
 };
-
-FEB_IDENTIFIER(gCombatArtSkillTable);

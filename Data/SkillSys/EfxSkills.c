@@ -14,8 +14,6 @@ struct EfxAnimConf const * const gEfxSkillAnims[0x100] = {
     [EFX_SKILL_DRAGON_FANG] = &EfxSkillDragonFang,
 };
 
-FEB_IDENTIFIER(gEfxSkillAnims);
-
 const struct SkillAnimInfo gSkillAnimInfos[0x100] = {
     [SID_RuinedBlade] = {
         .aid = EFX_SKILL_DEFAULT,
@@ -113,5 +111,3 @@ const struct SkillAnimInfo gSkillAnimInfos[0x100] = {
         .sfx = 0x3D1,
     },
 };
-
-FEB_IDENTIFIER(gSkillAnimInfos);

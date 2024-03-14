@@ -202,5 +202,3 @@ const struct SkillAnimInfo gEfxCombatArtAnimInfos[0x100] = {
         .sfx = 0x3D1,
     },
 };
-
-FEB_IDENTIFIER(gEfxCombatArtAnimInfos);

@@ -415,5 +415,3 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .double_attack = true,
     },
 };
-
-FEB_IDENTIFIER(gCombatArtInfos);

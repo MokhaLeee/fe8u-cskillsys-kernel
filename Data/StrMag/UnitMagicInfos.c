@@ -17,8 +17,6 @@ const struct UnitMagicInfo gMagicPInfos[0x100] = {
     }
 };
 
-FEB_IDENTIFIER(gMagicPInfos);
-
 const struct UnitMagicInfo gMagicJInfos[0x100] = {
     [CLASS_EIRIKA_LORD] = {
         .base = 3,
@@ -32,5 +30,3 @@ const struct UnitMagicInfo gMagicJInfos[0x100] = {
         .cap = 27,
     },
 };
-
-FEB_IDENTIFIER(gMagicJInfos);

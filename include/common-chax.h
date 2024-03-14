@@ -8,9 +8,6 @@
 #define UNIT_LEVEL_MAX_RE 25
 #define UNIT_RECORDED_LEVEL_MAX 80
 
-/* Add a magic for FEB PATCH to auto find the pointer */
-#define FEB_IDENTIFIER(PTR) const char FEB_##PTR##_Identifier[] = #PTR
-
 /* Add an identifier so that we can figure out where we hacked inside C */
 #define CHAX 1
 

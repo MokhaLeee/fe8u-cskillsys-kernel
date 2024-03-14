@@ -59,4 +59,3 @@ const struct WeaponTriangleItemConf gWeaponTriangleItemConf[0x100] = {
         .battle_status.hit = 15,
     }
 };
-FEB_IDENTIFIER(gWeaponTriangleItemConf);

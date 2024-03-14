@@ -20,8 +20,6 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     },
 };
 
-FEB_IDENTIFIER(gSkillPData);
-
 const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {
     [CLASS_ASSASSIN] = {
         .skills = {
@@ -37,5 +35,3 @@ const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {
         },
     },
 };
-
-FEB_IDENTIFIER(gSkillJData);

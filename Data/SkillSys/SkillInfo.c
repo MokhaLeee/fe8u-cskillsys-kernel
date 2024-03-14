@@ -1113,5 +1113,3 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 };
-
-FEB_IDENTIFIER(gSkillInfos);
