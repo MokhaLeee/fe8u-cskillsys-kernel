@@ -1,7 +1,4 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-
+#include "common-chax.h"
 #include "classchg-expa.h"
 
 s8 CheckFlag(int);

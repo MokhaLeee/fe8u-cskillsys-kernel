@@ -1,8 +1,5 @@
 #pragma once
 
-#include "global.h"
-#include "icon.h"
-
 #include "common-chax.h"
 
 #define ICON_SHEET(icon) (((icon) >> 8) & 0xFF)

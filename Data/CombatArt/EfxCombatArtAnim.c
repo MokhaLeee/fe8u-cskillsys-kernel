@@ -1,6 +1,3 @@
-#include "global.h"
-#include "common-chax.h"
-
 #include "skill-system.h"
 #include "constants/efx-skills.h"
 #include "constants/combat-arts.h"

@@ -1,6 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-
 #include "common-chax.h"
 #include "debuff.h"
 #include "constants/texts.h"

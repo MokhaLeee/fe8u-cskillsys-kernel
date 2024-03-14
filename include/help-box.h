@@ -1,9 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "proc.h"
-#include "fontgrp.h"
-#include "statscreen.h"
+#include "common-chax.h"
 
 /* Hack */
 enum NewHelpBoxType {

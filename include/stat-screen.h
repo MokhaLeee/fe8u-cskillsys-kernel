@@ -1,6 +1,6 @@
 #pragma once
 
-#include "global.h"
+#include "common-chax.h"
 
 #define STAT_BAR_MAX_INDENTIFIER 41
 

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
+#include "common-chax.h"
 
 /**
  * We use unit->_u3A and unit->_u3B

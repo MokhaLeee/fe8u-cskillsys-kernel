@@ -1,4 +1,3 @@
-#include "global.h"
 #include "common-chax.h"
 
 u32 simple_div(u32 a, u32 b)

@@ -1,7 +1,4 @@
-#include "global.h"
-#include "constants/characters.h"
-#include "constants/classes.h"
-
+#include "common-chax.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 

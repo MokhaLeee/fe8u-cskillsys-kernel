@@ -1,8 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "proc.h"
-#include "anime.h"
+#include "common-chax.h"
 
 void NewEkrSkill(struct Anim * anim);
 void NewEfxSkill(struct Anim * anim, int sid);

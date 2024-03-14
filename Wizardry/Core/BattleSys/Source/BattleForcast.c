@@ -1,12 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "proc.h"
-#include "bmitem.h"
-#include "fontgrp.h"
-#include "bmlib.h"
-#include "bksel.h"
-
 #include "common-chax.h"
 #include "battle-system.h"
 

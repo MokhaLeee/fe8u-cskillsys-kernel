@@ -1,6 +1,4 @@
-#include "global.h"
-#include "bmmap.h"
-#include "bmunit.h"
+#include "common-chax.h"
 
 #include "common-chax.h"
 

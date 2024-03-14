@@ -1,9 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "proc.h"
-#include "prepscreen.h"
-
+#include "common-chax.h"
 #include "skill-system.h"
 
 void StartPrepEquipScreen(struct ProcAtMenu * parent);

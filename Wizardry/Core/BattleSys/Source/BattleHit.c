@@ -1,8 +1,3 @@
-#include "global.h"
-#include "rng.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "efx-skill.h"

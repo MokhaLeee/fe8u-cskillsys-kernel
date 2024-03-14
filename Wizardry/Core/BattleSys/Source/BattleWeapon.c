@@ -1,10 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "bmitem.h"
-#include "bmarena.h"
-#include "bmarch.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "combat-art.h"

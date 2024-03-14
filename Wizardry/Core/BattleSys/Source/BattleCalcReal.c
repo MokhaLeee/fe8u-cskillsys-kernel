@@ -1,8 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "strmag.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "global.h"
+#include "common-chax.h"
 
 /**
  * Usage:

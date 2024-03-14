@@ -1,7 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
+#include "common-chax.h"
 
 enum MoveLimitViewFlags {
     MOVLIMITV_MMAP_BLUE  = 1 << 0,

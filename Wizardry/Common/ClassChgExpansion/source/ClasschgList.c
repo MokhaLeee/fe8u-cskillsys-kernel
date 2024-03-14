@@ -1,6 +1,4 @@
-#include "global.h"
-#include "bmunit.h"
-#include "constants/classes.h"
+#include "common-chax.h"
 
 #include "classchg-expa.h"
 

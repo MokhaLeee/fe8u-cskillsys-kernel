@@ -1,9 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "bmsave.h"
-#include "bmitem.h"
-#include "sram-layout.h"
+#include "common-chax.h"
 
 #define EMS_CHUNK_INVALID_OFFSET ((u16)-1)
 

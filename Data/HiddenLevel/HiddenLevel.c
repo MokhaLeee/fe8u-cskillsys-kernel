@@ -1,6 +1,3 @@
-#include "global.h"
-#include "constants/classes.h"
-
 #include "common-chax.h"
 
 const s8 gClassPreLoadHiddenLevel[0x100] = {

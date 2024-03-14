@@ -1,7 +1,4 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "constants/items.h"
+#include "common-chax.h"
 
 u16 GetClassAnimWeapon(u8 jid)
 {

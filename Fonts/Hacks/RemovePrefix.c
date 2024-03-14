@@ -1,4 +1,4 @@
-#include "global.h"
+#include "common-chax.h"
 #include <string.h>
 
 void InsertPrefix(char * str, const char * insert_str, s8 c)

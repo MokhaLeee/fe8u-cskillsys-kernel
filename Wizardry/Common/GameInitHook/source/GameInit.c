@@ -1,9 +1,3 @@
-#include "global.h"
-#include "gamecontrol.h"
-#include "bm.h"
-#include "bmio.h"
-#include "hardware.h"
-
 #include "common-chax.h"
 #include "debug-kit.h"
 #include "combat-art.h"

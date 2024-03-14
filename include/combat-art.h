@@ -1,9 +1,5 @@
 #pragma once
 
-#include "global.h"
-#include "uimenu.h"
-#include "uiselecttarget.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 

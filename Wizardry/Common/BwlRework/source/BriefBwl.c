@@ -1,6 +1,4 @@
-#include "global.h"
-#include "bmsave.h"
-
+#include "common-chax.h"
 #include "bwl.h"
 
 /* LynJump! */

@@ -1,7 +1,4 @@
-#include "global.h"
-#include "constants/characters.h"
-#include "constants/classes.h"
-
+#include "common-chax.h"
 #include "classchg-expa.h"
 
 const u8 gPromoJidLutExpa[0x100][0x4] = {

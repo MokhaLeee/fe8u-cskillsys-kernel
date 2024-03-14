@@ -1,9 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "bmitem.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 #include "battle-system.h"
 #include "skill-system.h"

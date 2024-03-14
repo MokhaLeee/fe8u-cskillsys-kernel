@@ -1,6 +1,6 @@
 #pragma once
 
-#include "global.h"
+#include "common-chax.h"
 
 void InitRandC(void);
 bool Roll1RandC(int threshold, int amount);

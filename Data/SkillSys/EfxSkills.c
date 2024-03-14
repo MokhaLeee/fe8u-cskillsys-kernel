@@ -1,4 +1,3 @@
-#include "global.h"
 #include "common-chax.h"
 
 #include "efx-anim.h"

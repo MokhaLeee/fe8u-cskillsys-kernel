@@ -1,9 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "bmsave.h"
-#include "bmunit.h"
-#include "bmreliance.h"
+#include "common-chax.h"
 
 #define NEW_BWL_ARRAY_NUM BWL_ARRAY_NUM
 

@@ -1,11 +1,7 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "fontgrp.h"
-#include "bmarena.h"
-#include "bmarch.h"
+
+#include "debug-kit.h"
 
 /* WTA bonus */
 struct WeaponTriangleConf {

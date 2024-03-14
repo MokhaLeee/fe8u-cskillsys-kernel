@@ -1,6 +1,3 @@
-#include "global.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 #include "combat-art.h"
 #include "constants/combat-arts.h"

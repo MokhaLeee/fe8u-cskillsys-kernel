@@ -1,4 +1,4 @@
-#include "global.h"
+#include "common-chax.h"
 #include "constants/classes.h"
 
 const u8 _gPromoJidLut[0x80][2] = {

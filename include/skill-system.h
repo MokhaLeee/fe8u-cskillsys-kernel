@@ -1,9 +1,5 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
-#include "uimenu.h"
-
 #include "common-chax.h"
 #include "efx-anim.h"
 #include "list-verify.h"

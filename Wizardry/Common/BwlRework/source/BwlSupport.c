@@ -1,7 +1,4 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmsave.h"
-#include "bmmind.h"
+#include "common-chax.h"
 
 #include "bwl.h"
 

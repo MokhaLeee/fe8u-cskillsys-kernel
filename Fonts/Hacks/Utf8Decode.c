@@ -1,7 +1,4 @@
-#include "global.h"
-#include "fontgrp.h"
-
-#include "debug-kit.h"
+#include "common-chax.h"
 
 #define CHAR_NEWLINE 0x01
 extern struct Font * gActiveFont;

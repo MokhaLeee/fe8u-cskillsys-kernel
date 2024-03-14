@@ -1,6 +1,3 @@
-#include "global.h"
-#include "bm.h"
-
 #include "common-chax.h"
 
 typedef void (* ChapterInitHookFunc)(ProcPtr);

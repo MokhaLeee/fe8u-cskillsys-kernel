@@ -1,6 +1,6 @@
 #pragma once
 
-#include "global.h"
+#include "common-chax.h"
 #include "banim-sync.h"
 
 int BanimSync(int pos, u8 pid, u8 jid, const struct BattleAnimDef * animdef, u16 weapon, int type);

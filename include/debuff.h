@@ -1,7 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
+#include "common-chax.h"
 
 #define NEW_UNIT_STATUS_MAX_DURATION 4
 

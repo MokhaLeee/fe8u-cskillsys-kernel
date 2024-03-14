@@ -1,10 +1,5 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "bmbattle.h"
-
 #include "common-chax.h"
 #include "status-getter.h"
 

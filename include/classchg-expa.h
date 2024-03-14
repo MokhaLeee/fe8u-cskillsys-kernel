@@ -1,8 +1,6 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
-#include "proc.h"
+#include "common-chax.h"
 
 #define UNIT_PROMOT_LIST_MAX 6
 

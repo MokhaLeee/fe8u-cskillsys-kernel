@@ -1,4 +1,3 @@
-#include "global.h"
 #include "common-chax.h"
 #include "combat-art.h"
 #include "constants/skills.h"

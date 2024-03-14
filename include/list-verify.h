@@ -1,7 +1,5 @@
 #pragma once
 
-#include "global.h"
-#include "bmunit.h"
 #include "common-chax.h"
 
 struct UnitListHeader {
