@@ -1,18 +1,8 @@
 # FE-C-Build Kernel
 
-Engine-hacks for FE-Cbuild, including skillsys, battle-system hacks, etc.e.
+Modern CHAX for FE8U-SkillSystem, including skillsys, battle-system hacks, etc.e.
 
 Main purpose to split kernel form c-build is to make it independent form the wizardry to the real game.
-
-It build such outputs:
-| Name      | Desc 			|
-| :--------	| :-----------	|
-|fe8-kernel-beta.gba|ROM|
-|fe8-kernel-beta.sym|debug on NO$GBA|
-|fe8-kernel-beta.ref.s|lyn reference|
-|fe8-kernel-beta.ref.event|EA reference|
-
-For more notes for wizardry, see [Doc dir](./Doc/)
 
 ## Custom build
 
@@ -84,12 +74,13 @@ cd Tools/EventAssembler
 make
 ```
 
+It build such outputs
 
-## Build Chinese version
+| Name      | Desc 			|
+| :--------	| :-----------	|
+|fe8-kernel-beta.gba|ROM|
+|fe8-kernel-beta.sym|debug on NO$GBA|
+|fe8-kernel-beta.ref.s|lyn reference|
+|fe8-kernel-beta.ref.event|EA reference|
 
-This repo support multi-language. For now, Chinese is supported, if you want to use Chinese version of kernel, follow these steps before `make`:
-
-- Uncomment `include Fonts/fonts.mk` in [makefile](./makefile):
-- Uncomment `CONFIG_LANG_CHINESE` in [configs.h](./Configs/configs.h)
-- Uncomment `#include "Fonts/Fonts.event"` in [main.event](./main.event)
-- Modify on [TextMain.txt](./Contants/Texts/Source/TextMain.txt), use `texts-cn.txt` rather than `texts.txt`
+**For more notes, see [Doc dir](./Doc/)**

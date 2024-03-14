@@ -2,9 +2,20 @@
 
 It is origined from [StanHash/FE-CHAX](https://github.com/StanHash/FE-CHAX) with the main purpose to write EngineHacks in C rather than ASM. The early work mainly focus on how to achieve elf2ea (or say, [lyn utilly](https://feuniverse.us/t/ea-asm-tool-lyn-elf2ea-if-you-will/2986)). With the progress on [Decomp](https://github.com/FireEmblemUniverse/fireemblem8u) and other tools such as [ea-dep, a dependence generator](https://github.com/StanHash/ea-dep), now we may go further with the following goals:
 
-1. All components are all generated at once via a `make` command, rather than we compile each *.c* or *.s* file before intergrating to ColorzCore, which requires a better sorting on makefile dependency.
-2. Alignment on CHAX and Decomp, which means we could use the same header files and directly port source code from decomp output for our hack.
+## Main features for player:
+1. Up to **7** skills equipable for ally units, player can select skills on prepscreen.
+2. FE-Engage style combo-attack, enable allies participate on attacking.
+3. FE-ThreeHouses style combat-art, achieve higher damage by increasing weapon cost.
+4. Some other cool AOE effects and UI interfaces.
+
+## Main features for wizardries
+1. All components are all generated at once via a `make` command.
+2. Use the same *.h* headers and symbol list to decomp.
 3. More C-Hacks and less ASM-Hacks.
+4. A faster `SkillTester()` design via [SkillList](../Wizardry/Core/SkillSys/kernel/SkillList.c).
+5. Better [free-space](../Configs/config-memmap.h) and [free-ram-space](../Configs//usr-defined.s) control.
+6. A [fixed pointer list](../Reloc/Reloc.event) to get data location, which will facilitate collaborative development with FEB.
+7. Better battle-system design and battle-hit is expanded to 20.
 
 # Memory
 
