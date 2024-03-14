@@ -12,7 +12,7 @@
 #define SKILL_VALID(sid) ((sid > 0) && (sid < MAX_SKILL_NUM))
 #define SKILL_ICON(sid) ((1 << 8) + (sid))
 
-#define UNIT_RAM_SKILLS_LEN 6
+#define UNIT_RAM_SKILLS_LEN 7
 #define UNIT_RAM_SKILLS(unit) ((u8 *)((unit)->supports))
 
 #define STAT_SKILL_NUM_MAX 8
