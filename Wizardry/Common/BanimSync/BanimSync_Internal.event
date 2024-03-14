@@ -12,6 +12,13 @@ PUSH
     ORG 0x5B936C
     POIN EkrBattleDeamonRework
 
+    /**
+     * Fix function: GetBanimPalette
+     * I cannot understand
+     */
+    ORG 0x05999C
+    SHORT 0x4770
+
     /* Dynamic hooks */
     ORG 0x0575B4
     p_gAnimCharaPalConfig:
