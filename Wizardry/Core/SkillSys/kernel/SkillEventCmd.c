@@ -6,16 +6,6 @@
 #include "chax-glb.h"
 #include "skill-system.h"
 
-enum EventSkillSubOps {
-    EVSUBCMD_ADD_SKILL = 1,
-    EVSUBCMD_ADD_SKILL_AT,
-    EVSUBCMD_ADD_SKILL_SC,
-
-    EVSUBCMD_REMOVE_SKILL,
-    EVSUBCMD_REMOVE_SKILL_AT,
-    EVSUBCMD_REMOVE_SKILL_SC,
-};
-
 STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
