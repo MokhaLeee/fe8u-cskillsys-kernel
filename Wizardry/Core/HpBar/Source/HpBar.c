@@ -14,6 +14,10 @@ STATIC_DECLAR int GetUnitHpBarIndex(struct Unit * unit)
 
 void PutUnitHpBar(struct Unit * unit)
 {
+    if (unit->curHP == unit->maxHP){
+        return;
+    }
+
     int ix = unit->xPos * 16 - gBmSt.camera.x;
     int iy = unit->yPos * 16 - gBmSt.camera.y;
     int index;
