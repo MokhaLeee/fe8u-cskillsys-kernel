@@ -5,6 +5,15 @@
 
 #define NEW_UNIT_STATUS_MAX_DURATION 4
 
+struct UnitStatusRework {
+    u8 index : 6;
+    u8 duration: 2;
+};
+
+#define UNIT_STATUS(unit) ((struct UnitStatusRework *)((u8 *)(unit) + 0x30))
+#define UNIT_STATUS_INDEX(unit) (UNIT_STATUS(unit)->index)
+#define UNIT_STATUS_DURATION(unit) (UNIT_STATUS(unit)->duration)
+
 enum UNIT_STATUS_IDENTIFIER {
     /* Expand here */
     NEW_UNIT_STATUS_PIERCE_ARMOR = 14,

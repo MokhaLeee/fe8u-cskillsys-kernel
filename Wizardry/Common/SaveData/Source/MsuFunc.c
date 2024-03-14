@@ -10,6 +10,7 @@
 #include "debug-kit.h"
 #include "save-data.h"
 #include "strmag.h"
+#include "debuff.h"
 
 void MSU_SavePlaySt(u8 * dst, const u32 size)
 {
@@ -159,8 +160,15 @@ static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
     dst->cur_hp = src->curHP;
     dst->rescue = src->rescue;
     dst->ballista = src->ballistaIndex;
+
+#if !CHAX
     dst->status = src->statusIndex;
     dst->duration = src->statusDuration;
+#else
+    dst->status = UNIT_STATUS_INDEX(src);
+    dst->duration = UNIT_STATUS_DURATION(src);
+#endif
+
     dst->torch = src->torchDuration;
     dst->barrier = src->barrierDuration;
 
@@ -215,8 +223,15 @@ static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit * ds
     dst->curHP = src->cur_hp;
     dst->rescue = src->rescue;
     dst->ballistaIndex = src->ballista;
+
+#if !CHAX
     dst->statusIndex = src->status;
     dst->statusDuration = src->duration;
+#else
+    UNIT_STATUS_INDEX(dst) = src->status;
+    UNIT_STATUS_DURATION(dst) = src->duration;
+#endif
+
     dst->torchDuration = src->torch;
     dst->barrierDuration = src->barrier;
 

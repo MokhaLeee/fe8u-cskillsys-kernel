@@ -53,8 +53,14 @@ struct EmsPackedSusUnit {
     /* 17 */ u8 cur_hp;
     /* 18 */ u8 rescue;
     /* 19 */ u8 ballista;
+
+#if !CHAX
     /* 1A */ u8 status   : 4;
              u8 duration : 4;
+#else
+    /* 1A */ u8 status   : 6;
+             u8 duration : 2;
+#endif
     /* 1B */ u8 torch    : 4;
              u8 barrier  : 4;
 

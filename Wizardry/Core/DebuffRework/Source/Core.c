@@ -4,15 +4,6 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-struct UnitStatusRework {
-    u8 index : 6;
-    u8 duration: 2;
-};
-
-#define UNIT_STATUS(unit) ((struct UnitStatusRework *)((u8 *)(unit) + 0x30))
-#define UNIT_STATUS_INDEX(unit) (UNIT_STATUS(unit)->index)
-#define UNIT_STATUS_DURATION(unit) (UNIT_STATUS(unit)->duration)
-
 int GetUnitStatusIndex(struct Unit * unit)
 {
     return UNIT_STATUS_INDEX(unit);
