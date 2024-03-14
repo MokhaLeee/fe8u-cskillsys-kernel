@@ -40,7 +40,7 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
 STATIC_DECLAR struct SkillList * GetExistingSkillList(struct Unit * unit)
 {
     int i;
-    for (i = SKILL_LIST_AMT - 1; i >= 0; i++)
+    for (i = SKILL_LIST_AMT - 1; i >= 0; i--)
     {
         if (JudgeUnitListHeader(unit, &sSkillLists[i].header))
         {
