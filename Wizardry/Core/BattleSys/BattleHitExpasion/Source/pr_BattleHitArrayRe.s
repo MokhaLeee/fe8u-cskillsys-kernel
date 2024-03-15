@@ -1,0 +1,3 @@
+.section .rodata
+
+.word gBattleHitArrayRe

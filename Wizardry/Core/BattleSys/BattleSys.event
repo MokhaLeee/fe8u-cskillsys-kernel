@@ -14,11 +14,7 @@
 #include "Source/Misc.lyn.event"
 #include "Source/LynJump.event"
 
-#include "BattleHitExpasion/BattleHitExpa.lyn.event"
-#include "BattleHitExpasion/RepointEfxHp.event"
-#include "BattleHitExpasion/RepointBattleHit.event"
-#include "BattleHitExpasion/RepointAnimRound.event"
-#include "BattleHitExpasion/LynJump.event"
+#include "BattleHitExpasion/BattleHitExpasion.event"
 
 ALIGN 4
 Gfx_BKSEL:

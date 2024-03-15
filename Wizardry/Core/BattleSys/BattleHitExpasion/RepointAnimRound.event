@@ -1,22 +1,19 @@
-/* Align to usr-defined.ref.s */
-#define gAnimRoundDataRe 0x02026B54
-
 PUSH
     ORG $058248
-    WORD gAnimRoundDataRe
+    #include "Source/pr_AnimRoundDataRe.lyn.event"
 
     ORG $058212
     BYTE 0x20
 
     ORG $058564
-    WORD gAnimRoundDataRe
+    #include "Source/pr_AnimRoundDataRe.lyn.event"
 
     ORG $058A28
-    WORD gAnimRoundDataRe
+    #include "Source/pr_AnimRoundDataRe.lyn.event"
 
     ORG $058A54
-    WORD gAnimRoundDataRe
+    #include "Source/pr_AnimRoundDataRe.lyn.event"
 
     ORG $058B50
-    WORD gAnimRoundDataRe
+    #include "Source/pr_AnimRoundDataRe.lyn.event"
 POP

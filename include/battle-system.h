@@ -33,7 +33,7 @@ extern const struct WeaponTriangleItemConf gWeaponTriangleItemConf[0x100];
 extern struct WeaponTriangleItemConf const * const gpWeaponTriangleItemConf;
 
 /* Battle hit expansion */
-#define NEW_BATTLE_HIT_MAX 20 /* This should align to gAnimRoundData */
+#define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
 
 bool CheckBattleHitOverflow(void);
