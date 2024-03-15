@@ -13,7 +13,7 @@ Main purpose to split kernel form c-build is to make it independent form the wiz
 1. Install sub-modules
 
 ```bash
-cd Kernel/Tools
+cd Tools
 git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git
 git clone https://github.com/StanHash/EventAssembler.git --recursive
 git clone https://github.com/StanHash/FE-PyTools.git --recursive

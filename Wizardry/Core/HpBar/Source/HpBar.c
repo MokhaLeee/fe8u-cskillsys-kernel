@@ -14,7 +14,9 @@ STATIC_DECLAR int GetUnitHpBarIndex(struct Unit * unit)
 
 void PutUnitHpBar(struct Unit * unit)
 {
-    if (unit->curHP == unit->maxHP){
+    if (unit->curHP == unit->maxHP)
+    {
+        /* No Hp bar for full HP */
         return;
     }
 
