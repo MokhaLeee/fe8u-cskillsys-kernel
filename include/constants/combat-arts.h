@@ -2,6 +2,8 @@
 #define CONFIG_COMBAT_ARTS_INSTALLED
 
 enum CombatArtIndex {
+    CID_Default = 0,
+
     /* Sword arts */
     CID_WrathStrike,        /* √ */
     CID_Grounder,           /* √ */
