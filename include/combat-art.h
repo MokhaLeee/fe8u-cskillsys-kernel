@@ -124,6 +124,7 @@ u8 GetEfxCombatArt(int round);
 
 /* Menu */
 u8 CombatArtActionCommandUsability(const struct MenuItemDef * def, int number);
+int CombatArtActionCommandOnDarw(struct MenuProc * menu, struct MenuItemProc * item);
 u8 CombatArtActionCommandEffect(struct MenuProc * menu, struct MenuItemProc * menuItem);
 int CombatArtActionCommandHover(struct MenuProc * menu, struct MenuItemProc * menuItem);
 int CombatArtActionCommandUnhover(struct MenuProc * menu, struct MenuItemProc * menuItem);

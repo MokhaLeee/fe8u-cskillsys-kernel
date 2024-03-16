@@ -15,4 +15,3 @@ extern u32 sKTutorialBitsHistory[3];
 
 bool CanExecKTutorial(void);
 int GetTriggerKtutorial(void);
-void PutKtutHistory(int flag);

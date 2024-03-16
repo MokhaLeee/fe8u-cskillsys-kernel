@@ -5,6 +5,7 @@
 #include "strmag.h"
 #include "debuff.h"
 #include "combat-art.h"
+#include "kernel-tutorial.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -43,10 +44,18 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int attack, defense;
+    bool in_art_atk = false;
 
     struct Unit * unit = GetUnit(attacker->unit.index);
 
     gBattleStats.damage = 0;
+
+    /* Judge whether in combat-art attack */
+    if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
+    {
+        TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
+        in_art_atk = true;
+    }
 
     if (!BattleRoll2RN(gBattleStats.hitRate, TRUE))
     {
@@ -55,7 +64,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 
     /* Register combat-art hitted */
-    if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
+    if (in_art_atk)
         RegisterCombatArtHitted();
 
     attack = gBattleStats.attack;

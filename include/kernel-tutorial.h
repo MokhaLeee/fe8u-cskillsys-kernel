@@ -6,6 +6,7 @@ enum KTUTORIAL_flags {
     KTUTORIAL_COMBO_ATK = 1,
     KTUTORIAL_BATTLE_SURROUNDER,
     KTUTORIAL_PREP_SKILL,
+    KTUTORIAL_COMBATART_MENU,
 
     KTUTORIAL_MAX = 96,
 };
@@ -16,3 +17,4 @@ void EMS_LoadKTutorialFlags(u8 * src, const u32 size);
 
 void TriggerKtutorial(int flag);
 bool CheckKtutFlagTriggered(int flag);
+void PutKtutHistory(int flag);

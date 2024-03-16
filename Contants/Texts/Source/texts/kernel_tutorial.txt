@@ -11,3 +11,7 @@ the range of the companion,[.][NL]
 ally will participate in the combo attack.[.][A][NL]
 Use this mechanism to cause[.][NL]
 higher damage to the enemy![.][A][X]
+
+## MSG_KTUT_COMBATART_MENU
+Play combat-arts to deal more damage,[.][NL]
+but this may cause more cost on weapon[.][A][X]

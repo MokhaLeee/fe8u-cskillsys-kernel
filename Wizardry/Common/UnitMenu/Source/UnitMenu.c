@@ -23,7 +23,7 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
         TEXT_COLOR_SYSTEM_WHITE,
         0x6C,
         CombatArtActionCommandUsability,
-        NULL,
+        CombatArtActionCommandOnDarw,
         CombatArtActionCommandEffect,
         NULL,
         CombatArtActionCommandHover,

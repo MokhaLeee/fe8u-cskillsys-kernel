@@ -1,20 +1,8 @@
-#include "global.h"
-#include "uimenu.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "icon.h"
-#include "face.h"
-#include "bmidoten.h"
-#include "playerphase.h"
-#include "bmtarget.h"
-#include "bmmenu.h"
-#include "menuitempanel.h"
-#include "uiselecttarget.h"
-#include "constants/classes.h"
-
 #include "common-chax.h"
 #include "combat-art.h"
 #include "weapon-range.h"
+#include "kernel-tutorial.h"
+#include "constants/texts.h"
 
 u8 CombatArtActionCommandUsability(const struct MenuItemDef * def, int number)
 {
@@ -54,6 +42,22 @@ u8 CombatArtActionCommandUsability(const struct MenuItemDef * def, int number)
         return MENU_ENABLED;
     }
     return MENU_NOTSHOWN;
+}
+
+int CombatArtActionCommandOnDarw(struct MenuProc * menu, struct MenuItemProc * item)
+{
+    int color = TEXT_COLOR_SYSTEM_WHITE;
+    if (!CheckKtutFlagTriggered(KTUTORIAL_COMBATART_MENU))
+        color = TEXT_COLOR_SYSTEM_GREEN;
+
+    Text_SetColor(&item->text, color);
+    Text_DrawString(&item->text, GetStringFromIndex(MSG_COMBATART_UM_NAME));
+
+     PutText(
+        &item->text,
+        TILEMAP_LOCATED(BG_GetMapBuffer(menu->frontBg), item->xTile, item->yTile));
+
+    return 0;
 }
 
 u8 CombatArtActionCommandEffect(struct MenuProc * menu, struct MenuItemProc * menuItem)
