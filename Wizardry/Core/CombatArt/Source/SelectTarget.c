@@ -31,6 +31,9 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
     struct CombatArtList * list = GetCombatArtList(gActiveUnit, wtype);
     int new = old - 1;
 
+    if (old == 0)
+        return 0;
+
     if (new < 0)
         new = list->amt - 1;
 
