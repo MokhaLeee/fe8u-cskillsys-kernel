@@ -13,6 +13,9 @@
 
 #include "DrawMorePage/DrawMorePage.event"
 
+#include "MiscFix/HelpBoxFix.lyn.event"
+#include "MiscFix/LynJump.event"
+
 ALIGN 4
 gStatScreenDrawPages:
     POIN 0x08087185
