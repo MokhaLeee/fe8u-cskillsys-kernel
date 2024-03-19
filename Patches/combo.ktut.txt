@@ -1,0 +1,4 @@
+1=combat-attack
+2=battle-surrounder
+3=prep-skill
+4=combat-art
