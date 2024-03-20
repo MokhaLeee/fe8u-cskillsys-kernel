@@ -86,7 +86,7 @@ gEmsSusChunks:
     EmsChunk($25B0, $0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
 
     /* Free: $25C8 ~ $2CD0 */
-    EmsChunk($25C8, $2CD0 - $25B0, MSU_ExternalSaver, MSU_ExternalLoader)
+    EmsChunk($25C8, $2CD0 - $25C8, MSU_ExternalSaver, MSU_ExternalLoader)
     EmsChunkEnd
 
 gNewSaveHooks:
