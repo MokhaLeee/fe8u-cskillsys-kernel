@@ -92,3 +92,7 @@ gConfigKTutorialLevel:
 
 gpKTutorialMsg:
     POIN gKTutorialMsg
+
+/* void (*)(void) */
+gpExternalGameInitHook:
+    WORD 0

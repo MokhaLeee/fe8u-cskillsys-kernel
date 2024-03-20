@@ -5,6 +5,7 @@
 
 typedef void (* GameInitHookFunc_t)(void);
 extern const GameInitHookFunc_t gGameInitHookTable[];
+extern const GameInitHookFunc_t * gpExternalGameInitHook;
 
 extern u8 FreeRamSpaceEntry[], FreeRamSpaceTail[], FreeRamSpaceMax[];
 
@@ -40,6 +41,10 @@ void StartGame(void)
 
     /* External hooks */
     for (it = gGameInitHookTable; *it; it++)
+        (*it)();
+
+    it = gpExternalGameInitHook;
+    if (it)
         (*it)();
 
     return;
