@@ -1,5 +1,6 @@
 .vscode/
 .cache_dir/
+.release_dir/
 *__pycache__
 install-devkitpro-pacman
 

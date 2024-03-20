@@ -33,7 +33,7 @@ CACHE_DIR := $(MK_DIR).cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
 CLEAN_FILES :=
-CLEAN_DIRS  := $(CACHE_DIR) $(shell find -name __pycache__)
+CLEAN_DIRS  := $(CACHE_DIR) .release_dir $(shell find -name __pycache__)
 CLEAN_BUILD :=
 
 # =========
