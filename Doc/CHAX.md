@@ -14,18 +14,18 @@ It is origined from [StanHash/FE-CHAX](https://github.com/StanHash/FE-CHAX) with
 3. More C-Hacks and less ASM-Hacks.
 4. Useful debug kit.
 5. A faster `SkillTester()` design via [SkillList](../Wizardry/Core/SkillSys/kernel/SkillList.c).
-6. Better [free-space](../Configs/config-memmap.h) and [free-ram-space](../Configs//usr-defined.s) control.
+6. Better [free-space](../include/Configs/config-memmap.h) and [free-ram-space](../Configs//usr-defined.s) control.
 7. A [fixed pointer list](../Reloc/Reloc.event) to get data location, which will facilitate collaborative development with FEB.
 8. Better battle-system design and battle-hit is expanded to 20.
 
 # Memory
 
 Since all source codes are all compiled at once, CHAX can offer a better Free-RAM-Space control method.
-Free-RAM-Space, unused memory from vanilla is collected by wizardries and now can be refered by [StanH's DOC](https://github.com/StanHash/DOC/blob/master/FREE-RAM-SPACE.md). Here we mainly use space start at `0x02026E30` with size `0x2028`, which is the debug print buffer in vanilla (and unused). They are all defined in [./Configs/usr-defined.ref.s](../Configs/usr-defined.ref.s).
+Free-RAM-Space, unused memory from vanilla is collected by wizardries and now can be refered by [StanH's DOC](https://github.com/StanHash/DOC/blob/master/FREE-RAM-SPACE.md). Here we mainly use space start at `0x02026E30` with size `0x2028`, which is the debug print buffer in vanilla (and unused). They are all defined in [./include/Configs/usr-defined.ref.s](../include/Configs/usr-defined.ref.s).
 
 Suppose you want a 4 Byte RAM space (`u8 NewAlloc4Bytes[4]`), you need to do as following:
 
-1. Get into [./Configs/usr-defined.ref.s](../Configs/usr-defined.ref.s).
+1. Get into [./include/Configs/usr-defined.ref.s](../include/Configs/usr-defined.ref.s).
 2. Replace `FreeRamSpaceTail` to `NewAlloc4Bytes`.
 3. Update `FreeRamSpaceTail` to the end of `NewAlloc4Bytes` (aka `SET_DATA FreeRamSpaceTail, NewAlloc4Bytes + 0x4`).
 4. Declare such variable in your own C file, `extern u8 NewAlloc4Bytes[4];`

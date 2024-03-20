@@ -13,7 +13,7 @@ LIB_DIR  := $(TOOL_DIR)/FE-CLib-Mokha
 FE8_REF  := $(LIB_DIR)/reference/fireemblem8.ref.o
 FE8_SYM  := $(LIB_DIR)/reference/fireemblem8.sym
 
-CONFIG_DIR := $(MK_DIR)Configs
+CONFIG_DIR := $(MK_DIR)include/Configs
 EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 
 WIZARDRY_DIR := $(MK_DIR)Wizardry
@@ -98,17 +98,20 @@ CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
 CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
 
 post_chax: $(FE8_CHX)
+	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
 	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) >> $(CHAX_REFS)
 
+	@echo "[GEN]	$(CHAX_REFE)"
 	@echo '// Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFE)
 	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
 	@echo "PUSH" >> $(CHAX_REFE)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 #	@cat $(FE8_SYM) >> $(CHAX_SYM)
+	@echo "Done!"
 
 CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE)
 

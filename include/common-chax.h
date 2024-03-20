@@ -2,7 +2,7 @@
 
 #include "gbafe.h"
 
-#include "../Configs/configs.h"
+#include "Configs/configs.h"
 #include "debug-kit.h"
 
 #define UNIT_LEVEL_MAX_RE 25

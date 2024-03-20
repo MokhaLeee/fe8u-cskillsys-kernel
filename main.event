@@ -2,7 +2,7 @@
 #include "Extensions/Hack Installation.txt"
 #include "Extensions/ProcDefinitions.txt"
 
-#include "Configs/configs.h"
+#include "include/Configs/configs.h"
 #include "include/macros.event"
 #include "include/Definitions.event"
 
