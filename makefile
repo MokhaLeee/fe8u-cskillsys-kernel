@@ -3,23 +3,22 @@ include version.mk
 
 MK_PATH   := $(abspath $(lastword $(MAKEFILE_LIST)))
 MK_DIR    := $(dir $(MK_PATH))
-BUILD_DIR := $(shell pwd)
 
-MAIN    := $(MK_DIR)/main.event
-FE8_CHX := $(MK_DIR)/fe8-kernel-$(CONFIG_VERSION).gba
-FE8_GBA := $(MK_DIR)/fe8.gba
+MAIN    := $(MK_DIR)main.event
+FE8_CHX := $(MK_DIR)fe8-kernel-$(CONFIG_VERSION).gba
+FE8_GBA := $(MK_DIR)fe8.gba
 
-TOOL_DIR := $(MK_DIR)/Tools
+TOOL_DIR := $(MK_DIR)Tools
 LIB_DIR  := $(TOOL_DIR)/FE-CLib-Mokha
 FE8_REF  := $(LIB_DIR)/reference/fireemblem8.ref.o
 FE8_SYM  := $(LIB_DIR)/reference/fireemblem8.sym
 
-CONFIG_DIR := $(MK_DIR)/Configs
+CONFIG_DIR := $(MK_DIR)Configs
 EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 
-WIZARDRY_DIR := $(MK_DIR)/Wizardry
-CONTANTS_DIR := $(MK_DIR)/Contants
-GAMEDATA_DIR := $(MK_DIR)/Data
+WIZARDRY_DIR := $(MK_DIR)Wizardry
+CONTANTS_DIR := $(MK_DIR)Contants
+GAMEDATA_DIR := $(MK_DIR)Data
 
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR)
 
@@ -30,7 +29,7 @@ all:
 
 include Contants/contants.mk
 
-CACHE_DIR := $(MK_DIR)/.cache_dir
+CACHE_DIR := $(MK_DIR).cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
 CLEAN_FILES :=
@@ -99,8 +98,16 @@ CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
 CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
 
 post_chax: $(FE8_CHX)
-	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) > $(CHAX_REFS)
-	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) > $(CHAX_REFE)
+	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
+	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
+	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
+	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) >> $(CHAX_REFS)
+
+	@echo '// Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFE)
+	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
+	@echo "PUSH" >> $(CHAX_REFE)
+	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
+	@echo "POP" >> $(CHAX_REFE)
 #	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
 CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE)
@@ -206,7 +213,7 @@ CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES
 # = EfxAnims =
 # ============
 
-EFX_ANIM_DIR := $(MK_DIR)/Contants/EfxAnim
+EFX_ANIM_DIR := $(MK_DIR)Contants/EfxAnim
 EFX_ANIMTOR  := $(PYTHON3) $(EFX_ANIM_DIR)/Scripts/efx-anim-creator.py
 
 EFX_SCRIPTS  := $(shell find $(HACK_DIRS) -type f -name '*.efx.txt')
@@ -232,7 +239,7 @@ CLEAN_FILES += $(EFX_SCR_DEPS) $(EFX_TARGET)
 # = GFX =
 # =======
 
-GFX_DIR     := $(MK_DIR)/Contants/Gfx
+GFX_DIR     := $(MK_DIR)Contants/Gfx
 GFX_SOURCES := $(shell find $(GFX_DIR)/Sources -type f -name '*.png')
 
 export GFX_HEADER := $(GFX_DIR)/GfxDefs.h
