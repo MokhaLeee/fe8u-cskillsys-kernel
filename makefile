@@ -96,6 +96,7 @@ $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR)
 CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
 CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
+CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 
 post_chax: $(FE8_CHX)
 	@echo "[GEN]	$(CHAX_REFS)"
@@ -110,10 +111,15 @@ post_chax: $(FE8_CHX)
 	@echo "PUSH" >> $(CHAX_REFE)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
+
 #	@cat $(FE8_SYM) >> $(CHAX_SYM)
+
+	@echo "[GEN]	$(CHAX_DIFF)"
+	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
+
 	@echo "Done!"
 
-CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE)
+CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
 
 # ============
 # = Wizardry =
@@ -277,5 +283,5 @@ clean_basic:
 
 clean:
 	@for i in $(CLEAN_BUILD); do if test -e $$i/makefile ; then $(MAKE) -f $$i/makefile clean || { exit 1;} fi; done;
-	$(MAKE) clean_basic
+	@$(MAKE) clean_basic
 	@echo "Kernel cleaned .."

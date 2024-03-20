@@ -25,7 +25,7 @@ git clone https://github.com/StanHash/FE-PyTools.git --recursive
 sudo apt-get -y install binutils-arm-none-eabi \
     gcc-arm-none-eabi build-essential cmake re2c ghc \
     cabal-install libghc-vector-dev libghc-juicypixels-dev \
-    python3-pip pkg-config libpng*
+    python3-pip pkg-config libpng* bsidff
 
 pip install pyelftools PyInstaller tmx six
 ```
@@ -82,5 +82,6 @@ It build such outputs
 |fe8-kernel-beta.sym|debug on NO$GBA|
 |fe8-kernel-beta.ref.s|lyn reference|
 |fe8-kernel-beta.ref.event|EA reference|
+|fe8-kernel-beta.bsdiff|Binary patch used for bsdiff/bspatch|
 
 **For more notes, see [Doc dir](./Doc/)**
