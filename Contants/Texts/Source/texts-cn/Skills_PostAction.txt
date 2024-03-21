@@ -30,3 +30,8 @@
 ## MSG_SKILL_BreathOfLife
 生之息吹: 攻击后，[NL]
 使两格以内友军恢复20%HP[X]
+
+## MSG_SKILL_Thunderstorm
+雷暴:[NL]
+三格以外攻击命中时, 可[NL]
+在敌方脚下召唤AOE闪电[X]

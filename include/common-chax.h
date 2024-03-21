@@ -4,6 +4,7 @@
 
 #include "Configs/configs.h"
 #include "debug-kit.h"
+#include "vanilla.h"
 
 #define UNIT_LEVEL_MAX_RE 25
 #define UNIT_RECORDED_LEVEL_MAX 80

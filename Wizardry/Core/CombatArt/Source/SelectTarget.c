@@ -221,6 +221,9 @@ STATIC_DECLAR void TargetSelectionRework_Loop(struct SelectTargetProc * proc)
         RegisterCombatArtTargetPos(
             proc->currentTarget->x, proc->currentTarget->y);
 #endif
+        gBattleTargetPositionBackup.x = proc->currentTarget->x;
+        gBattleTargetPositionBackup.y = proc->currentTarget->y;
+
         EndTargetSelection(proc);
     }
     if ((TARGETSELECTION_ACTION_SE_6A & action) != 0)

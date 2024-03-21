@@ -7,6 +7,7 @@
 ALIGN 4
 gPostActionFuncs:
     POIN PostActionBattleActorSelfHurt PostActionBattleTargetSelfHurt
+    POIN PostActionThunderstorm
     POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife
     POIN PostActionAlertStance
     POIN PostActionGaleForce

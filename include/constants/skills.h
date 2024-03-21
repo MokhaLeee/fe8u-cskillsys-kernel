@@ -131,6 +131,7 @@ enum SkillIndex {
     SID_Galeforce,
     SID_SavageBlow,
     SID_BreathOfLife,
+    SID_Thunderstorm,
 
     /* Pre-phase */
     SID_Renewal,

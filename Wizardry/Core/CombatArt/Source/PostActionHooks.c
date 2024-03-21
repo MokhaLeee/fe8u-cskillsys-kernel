@@ -12,9 +12,6 @@
 #include "map-anims.h"
 #include "weapon-range.h"
 
-void ForEachUnitInRange(void(* func)(struct Unit * unit));
-void AddUnitToTargetListIfNotAllied(struct Unit * unit);
-
 STATIC_DECLAR void ExecCombatArtEffectAnim(ProcPtr proc)
 {
     int i;

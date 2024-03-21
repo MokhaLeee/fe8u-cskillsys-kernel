@@ -66,6 +66,7 @@ extern struct BattleGlobalFlags {
     u32 skill_activated_astra : 1;
     u32 enimy_defeated : 1;
     u32 skill_activated_galeforce : 1;
+    u32 hitted : 1;
 } gBattleActorGlobalFlag, gBattleTargetGlobalFlag;
 
 void ClearBattleGlobalFlags(void);
@@ -100,6 +101,8 @@ static inline int GetItemFormSlot(struct Unit * unit, int slot)
         return 0;
     }
 }
+
+extern struct Vec2 gBattleTargetPositionBackup;
 
 /* port form vanilla */
 struct WeaponTriangleRule {

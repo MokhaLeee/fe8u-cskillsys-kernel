@@ -15,6 +15,11 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
             [5] = SID_DefiantCrit,
         },
     },
+    [CHARACTER_RIEV] = {
+        .skills = {
+            [0] = SID_Thunderstorm,
+        },
+    },
 };
 
 const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {

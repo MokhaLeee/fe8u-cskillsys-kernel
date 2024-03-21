@@ -55,9 +55,6 @@ bool SkillTesterFast(struct Unit * unit, const u8 sid)
     int i;
     struct SkillList * list;
 
-    Printf("uid %#x, pid %#x, sid %#x",
-            unit->index & 0xFF, UNIT_CHAR_ID(unit), sid);
-
     list = GetUnitSkillList(unit);
     if (list)
     {

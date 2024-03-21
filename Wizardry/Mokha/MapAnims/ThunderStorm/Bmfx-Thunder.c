@@ -8,16 +8,6 @@ struct ProcEventThunderfx {
     /* 3C */ int x, y;
 };
 
-void EventThunderfx_FadeIn(struct ProcEventThunderfx * proc)
-{
-    NewEventFadefx(8, 0xFFFFFFFF, 128, 128, 128, proc);
-}
-
-void EventThunderfx_FadeOut(struct ProcEventThunderfx * proc)
-{
-    NewEventFadefx(4, 0xFFFFFFFF, 256, 256, 256, proc);
-}
-
 STATIC_DECLAR void EventThunderfx_Init(struct ProcEventThunderfx * proc)
 {
     gLCDControlBuffer.bg0cnt.priority = 0;
@@ -52,16 +42,11 @@ STATIC_DECLAR void EventThunderfx_End(struct ProcEventThunderfx * proc)
 STATIC_DECLAR const struct ProcCmd ProcScr_EventThunderfx[] = {
     PROC_NAME("MapAnimThunderfx"),
     PROC_YIELD,
-    // PROC_CALL(EventThunderfx_FadeIn),
-    // PROC_YIELD,
-    // PROC_SLEEP(20),
     PROC_CALL(EventThunderfx_Init),
     PROC_YIELD,
     PROC_WHILE(CheckBmBgfxDone),
     PROC_CALL(EventThunderfx_End),
     PROC_YIELD,
-    // PROC_CALL(EventThunderfx_FadeOut),
-    // PROC_YIELD,
     PROC_END,
 };
 
@@ -72,6 +57,8 @@ void CallMapAnim_ThunderStorm(ProcPtr parent, int x, int y)
         proc = Proc_StartBlocking(ProcScr_EventThunderfx, parent);
     else
         proc = Proc_Start(ProcScr_EventThunderfx, PROC_TREE_3);
+
+    Debugf("x %d, y %d", x, y);
 
     proc->x = SCREEN_TILE_IX(x) - 0x18;
     proc->y = SCREEN_TILE_IY(y) - 0x78;
