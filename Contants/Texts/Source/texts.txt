@@ -4,6 +4,9 @@ Skills[X]
 #0x580
 Manage your units' skills[X]
 
+#0x51E
+Ddg[X]
+
 #0xD4C MSG_FreeSpaceIndentifier
 .[X]
 

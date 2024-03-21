@@ -15,3 +15,11 @@ L[X]
 
 ## MSG_MSS_SupportBonus
 Bonus[X]
+
+## MSG_MSS_SupportBonusHelp
+Stat bonuses currently[NL]
+being granted by supports.[X]
+
+## MSG_MSS_DodgeHelp
+Ability to avoid enemy critical[NL]
+strikes. Affects enemy's crit %.[X]

@@ -13,28 +13,25 @@ RTextPageSupport:
 
 RText_PageSupport:
 Rtext_Page4_Support:
-    _RMenu(0, Rtext_Page4_Atk, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x18, 0xD4F)
+    _RMenu(0, Rtext_Page4_Atk, Rtext_Page4_Name, 0, 0x66, 0x18, MSG_MSS_SupportBonusHelp)
 
 Rtext_Page4_Atk:
-    _RMenu(Rtext_Page4_Support, Rtext_Page4_Def, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x28, 0x55C)
+    _RMenu(Rtext_Page4_Support, Rtext_Page4_Def, Rtext_Page4_Name, 0, 0x66, 0x28, 0x55C)
 
 Rtext_Page4_Def:
-    _RMenu(Rtext_Page4_Atk, Rtext_Page4_Hit, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x38, 0x573)
+    _RMenu(Rtext_Page4_Atk, Rtext_Page4_Hit, Rtext_Page4_Name, 0, 0x66, 0x38, 0x573)
 
 Rtext_Page4_Hit:
-    _RMenu(Rtext_Page4_Def, Rtext_Page4_Avo, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x48, 0x55D)
+    _RMenu(Rtext_Page4_Def, Rtext_Page4_Avo, Rtext_Page4_Name, 0, 0x66, 0x48, 0x55D)
 
 Rtext_Page4_Avo:
-    _RMenu(Rtext_Page4_Hit, Rtext_Page4_Crit, Rtext_Page4_Name, Rtext_Page4_SuppPInfo, 0x66, 0x58, 0x560)
+    _RMenu(Rtext_Page4_Hit, Rtext_Page4_Crit, Rtext_Page4_Name, 0, 0x66, 0x58, 0x560)
 
 Rtext_Page4_Crit:
-    _RMenu(Rtext_Page4_Avo, Rtext_Page4_Dodge, Rtext_Page4_Class, Rtext_Page4_SuppPInfo, 0x66, 0x68, 0x55F)
+    _RMenu(Rtext_Page4_Avo, Rtext_Page4_Dodge, Rtext_Page4_Class, 0, 0x66, 0x68, 0x55F)
 
 Rtext_Page4_Dodge:
-    _RMenu(Rtext_Page4_Crit, 0, Rtext_Page4_Exp, Rtext_Page4_SuppPInfo, 0x66, 0x78, 0xD4E)
-
-Rtext_Page4_SuppPInfo:
-    _RMenu(0, 0, Rtext_Page4_Support, 0, 0xA6, 0x18, 0xD50)
+    _RMenu(Rtext_Page4_Crit, 0, Rtext_Page4_Exp, 0, 0x66, 0x78, MSG_MSS_DodgeHelp)
 
 /* Left */
 Rtext_Page4_Name:
