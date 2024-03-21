@@ -45,6 +45,4 @@ However, the above rules introduce the following problems. Consider such a case:
 
 - **Lute** is promoted to **Sage** when she is level 15. Then she level up to lv-5 as a **Sage**, should she get new lv-20 character skills or lv-5?
 
-To solve such issue, units' gained level is recorded to BWL, and the real level is `recorded level + current level` to judge on which skill should she learn for character table.
-
-But the class skill table is still judged based on current level.
+We have also recorded unit level regardless he was promoted. Once one unit is promoted, his level will return to 1 but the record level will not change. Then when unit level-up, kernel may use `recorded level + current level` to judge on which skill should she learn for character table.
