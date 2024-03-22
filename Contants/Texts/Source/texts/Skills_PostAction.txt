@@ -35,3 +35,8 @@ in 2 tiles heal of 20% max HP.[X]
 Thunderstorm:[NL]
 When hit from 3 range away, call[NL]
 an AOE thunder at enemy location.[X]
+
+## MSG_SKILL_PosReturn
+Return:[NL]
+If enemy defeated, return[NL]
+to the original position.[X]

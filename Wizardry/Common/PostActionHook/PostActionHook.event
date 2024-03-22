@@ -11,6 +11,7 @@ gPostActionFuncs:
     POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife
     POIN PostActionAlertStance
     POIN PostActionGaleForce
+    POIN PostActionPositionReturn
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0
 
