@@ -1,0 +1,10 @@
+#ifndef KERNEL_LIB_INSTALLED
+#define KERNEL_LIB_INSTALLED
+
+#include "Source/map.lyn.event"
+#include "Source/math.lyn.event"
+#include "Source/banim.lyn.event"
+#include "Source/list-verify.lyn.event"
+#include "Source/event-call.lyn.event"
+
+#endif /* KERNEL_LIB_INSTALLED */

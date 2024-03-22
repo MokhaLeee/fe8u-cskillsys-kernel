@@ -3,7 +3,7 @@
 #include "event.h"
 
 #include "common-chax.h"
-#include "chax-glb.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 
 STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)

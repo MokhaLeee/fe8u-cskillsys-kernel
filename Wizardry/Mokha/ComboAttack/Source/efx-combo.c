@@ -1,5 +1,5 @@
 #include "common-chax.h"
-#include "chax-glb.h"
+#include "kernel-lib.h"
 #include "banim-sync.h"
 #include "efx-skill.h"
 #include "combo-attack.h"
