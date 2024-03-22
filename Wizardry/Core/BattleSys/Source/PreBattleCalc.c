@@ -2,7 +2,7 @@
 #include "skill-system.h"
 #include "strmag.h"
 #include "debuff.h"
-#include "chax-glb.h"
+#include "kernel-lib.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"

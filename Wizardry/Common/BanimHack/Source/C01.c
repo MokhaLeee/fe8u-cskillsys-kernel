@@ -1,6 +1,6 @@
 #include "common-chax.h"
 #include "battle-system.h"
-#include "chax-glb.h"
+#include "kernel-lib.h"
 
 STATIC_DECLAR void UpdateHpDrainForEkrGauge(struct Anim * anim)
 {

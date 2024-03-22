@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "battle-system.h"
 #include "skill-system.h"
 #include "map-anims.h"
@@ -54,19 +55,6 @@ STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
     ENDA
 };
 
-STATIC_DECLAR void CallEvent_ThunderfxAtPosition(ProcPtr proc)
-{
-    CallEvent((const void *)EventScr_CallThunderfxAtPosition, EV_EXEC_CUTSCENE);
-}
-
-STATIC_DECLAR const struct ProcCmd ProcScr_PostActionThunderstormHandler[] = {
-    PROC_YIELD,
-    PROC_CALL(CallEvent_ThunderfxAtPosition),
-    PROC_YIELD,
-    PROC_WHILE(EventEngineExists),
-    PROC_END
-};
-
 bool PostActionThunderstorm(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
@@ -80,7 +68,7 @@ bool PostActionThunderstorm(ProcPtr parent)
     {
         if (gBattleActorGlobalFlag.hitted == true)
         {
-            Proc_StartBlocking(ProcScr_PostActionThunderstormHandler, parent);
+            KernelCallEvent(EventScr_CallThunderfxAtPosition, EV_EXEC_CUTSCENE, parent);
             return true;
         }
     }

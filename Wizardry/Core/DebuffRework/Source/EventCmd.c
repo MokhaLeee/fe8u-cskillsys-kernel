@@ -3,7 +3,7 @@
 #include "event.h"
 
 #include "common-chax.h"
-#include "chax-glb.h"
+#include "kernel-lib.h"
 #include "debuff.h"
 
 enum EventDebuffSubOps {
