@@ -54,6 +54,19 @@ STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
     ENDA
 };
 
+STATIC_DECLAR void CallEvent_ThunderfxAtPosition(ProcPtr proc)
+{
+    CallEvent((const void *)EventScr_CallThunderfxAtPosition, EV_EXEC_CUTSCENE);
+}
+
+STATIC_DECLAR const struct ProcCmd ProcScr_PostActionThunderstormHandler[] = {
+    PROC_YIELD,
+    PROC_CALL(CallEvent_ThunderfxAtPosition),
+    PROC_YIELD,
+    PROC_WHILE(EventEngineExists),
+    PROC_END
+};
+
 bool PostActionThunderstorm(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
@@ -67,7 +80,7 @@ bool PostActionThunderstorm(ProcPtr parent)
     {
         if (gBattleActorGlobalFlag.hitted == true)
         {
-            CallEvent((const void *)EventScr_CallThunderfxAtPosition, EV_EXEC_CUTSCENE);
+            Proc_StartBlocking(ProcScr_PostActionThunderstormHandler, parent);
             return true;
         }
     }
