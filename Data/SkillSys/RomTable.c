@@ -9,4 +9,6 @@ const u8 gConstSkillPTable[0x100][2] = {
 
 const u8 gConstSkillJTable[0x100][2] = {
     [CLASS_ARCHER] = {SID_FlashingBlade, SID_Galeforce},
+    [CLASS_SNIPER] = {SID_RangeBonusBow1},
+    [CLASS_SNIPER_F] = {SID_RangeBonusBow1},
 };

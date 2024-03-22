@@ -1,1 +1,3 @@
 MESSAGE ___DEBUG___
+
+#include "Debug/debug-chapter.event"
