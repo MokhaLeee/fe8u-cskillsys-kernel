@@ -5,6 +5,7 @@
 #include "PostActionSkills/BreathOfLife.lyn.event"
 #include "PostActionSkills/Canto.lyn.event"
 #include "PostActionSkills/Thunderstorm.lyn.event"
+#include "PostActionSkills/Return.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
 #include "Misc/AiSkills.lyn.event"

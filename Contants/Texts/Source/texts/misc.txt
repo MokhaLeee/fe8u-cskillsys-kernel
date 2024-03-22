@@ -1,0 +1,2 @@
+## MSG_SkillEffect_PosReturn_Confirm
+Return?        [NL][Yes][X]

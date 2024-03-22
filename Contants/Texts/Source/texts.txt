@@ -49,3 +49,4 @@ Raises magic.[X]
 #include texts/CombatArt_Lance.txt
 #include texts/CombatArt_Bow.txt
 #include texts/kernel_tutorial.txt
+#include texts/misc.txt

@@ -740,6 +740,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (MAX_SKILL_NUM != SID_PosReturn)
+    [SID_PosReturn] = {
+        .desc = MSG_SKILL_PosReturn,
+        .icon = GFX_SkillIcon_PosReturn,
+    },
+#endif
+
 #if (MAX_SKILL_NUM != SID_Renewal)
     [SID_Renewal] = {
         .desc = MSG_SKILL_Renewal,
