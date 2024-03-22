@@ -215,3 +215,57 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc* proc, int width, int height)
     proc->wBoxFinal = width;
     proc->hBoxFinal = height;
 }
+
+/* LynJump */
+void StartHelpBoxExt(const struct HelpBoxInfo * info, int unk)
+{
+    struct HelpBoxProc* proc;
+    int wContent, hContent;
+
+    proc = (void*) Proc_Find(gProcScr_HelpBox);
+
+    if (!proc)
+    {
+        proc = (void*) Proc_Start(gProcScr_HelpBox, PROC_TREE_3);
+
+        proc->unk52 = unk;
+
+        SetHelpBoxInitPosition(proc, info->xDisplay, info->yDisplay);
+        ResetHelpBoxInitSize(proc);
+    }
+    else
+    {
+        proc->xBoxInit = proc->xBox;
+        proc->yBoxInit = proc->yBox;
+
+        proc->wBoxInit = proc->wBox;
+        proc->hBoxInit = proc->hBox;
+    }
+
+    proc->info = info;
+
+    proc->timer    = 0;
+    proc->timerMax = 12;
+
+    proc->item = 0;
+    proc->mid = info->mid;
+
+#if CHAX
+    sHelpBoxType = NEW_HB_DEFAULT;
+#endif
+
+    if (proc->info->populate)
+        proc->info->populate(proc);
+
+    SetTextFontGlyphs(1);
+    GetStringTextBox(GetStringFromIndex(proc->mid), &wContent, &hContent);
+    SetTextFontGlyphs(0);
+
+    ApplyHelpBoxContentSize(proc, wContent, hContent);
+    ApplyHelpBoxPosition(proc, info->xDisplay, info->yDisplay);
+
+    ClearHelpBoxText();
+    StartHelpBoxTextInit(proc->item, proc->mid);
+
+    sLastHbi = info;
+}
