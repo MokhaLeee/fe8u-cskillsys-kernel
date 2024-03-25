@@ -1,2 +1,5 @@
 ## MSG_SkillEffect_PosReturn_Confirm
 返回初始位置?        [NL][Yes]
+
+## MSG_SkillEffect_PosSwap_Confirm
+是否互换位置?        [NL][Yes][X]

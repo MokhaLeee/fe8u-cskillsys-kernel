@@ -20,7 +20,7 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     [CHARACTER_INNES] = {
         .skills = {
             [0] = SID_RangeBonusBow2,
-            [1] = SID_Thunderstorm,
+            [1] = SID_PosSwap,
         },
     },
 

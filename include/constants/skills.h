@@ -133,6 +133,7 @@ enum SkillIndex {
     SID_BreathOfLife,
     SID_Thunderstorm,
     SID_PosReturn,
+    SID_PosSwap,
 
     /* Pre-phase */
     SID_Renewal,

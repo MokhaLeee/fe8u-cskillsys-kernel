@@ -747,6 +747,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (MAX_SKILL_NUM != SID_PosSwap)
+    [SID_PosSwap] = {
+        .desc = MSG_SKILL_PosSwap,
+        .icon = GFX_SkillIcon_PosSwap,
+    },
+#endif
+
 #if (MAX_SKILL_NUM != SID_Renewal)
     [SID_Renewal] = {
         .desc = MSG_SKILL_Renewal,

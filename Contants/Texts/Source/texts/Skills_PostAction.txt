@@ -40,3 +40,8 @@ an AOE thunder at enemy location.[X]
 Return:[NL]
 If enemy defeated, return[NL]
 to the original position.[X]
+
+## MSG_SKILL_PosSwap
+Swap:[NL]
+Swap position after[NL]
+attacking enemy.[X]
