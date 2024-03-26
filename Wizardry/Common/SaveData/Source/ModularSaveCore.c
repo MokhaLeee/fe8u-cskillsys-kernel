@@ -10,6 +10,28 @@
 typedef void (* new_save_hook)(void);
 extern const new_save_hook gNewSaveHooks[];
 
+const struct EmsChunk * GetEmsChunkByIndex_Sav(int idx)
+{
+    const struct EmsChunk * chunk_sav;
+
+    for (chunk_sav = gEmsSavChunks; chunk_sav->offset != EMS_CHUNK_INVALID_OFFSET; chunk_sav++)
+        if (chunk_sav->chunk_idx == idx)
+            return chunk_sav;
+
+    return NULL;
+}
+
+const struct EmsChunk * GetEmsChunkByIndex_Sus(int idx)
+{
+    const struct EmsChunk * chunk_sus;
+
+    for (chunk_sus = gEmsSusChunks; chunk_sus->offset != EMS_CHUNK_INVALID_OFFSET; chunk_sus++)
+        if (chunk_sus->chunk_idx == idx)
+            return chunk_sus;
+
+    return NULL;
+}
+
 /* LynJump! */
 void WriteSaveBlockInfo(struct SaveBlockInfo * chunk, int index)
 {
@@ -123,12 +145,7 @@ void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial)
     if (isTutorial < 0)
         isTutorial = gPlaySt.config.controller;
 
-    SetGameTime(0);
     InitPlayConfig(isDifficult, isTutorial);
-    InitUnits();
-    ClearSupplyItems();
-    ResetPermanentFlags();
-    InvalidateSuspendSave(SAVE_ID_SUSPEND);
     
     gPlaySt.unk_2C_1 = 0;
     gPlaySt.unk_2C_04 = 0;
@@ -141,8 +158,6 @@ void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial)
     gPlaySt.playthroughIdentifier = GetNewPlaythroughId();
     gPlaySt.gameSaveSlot = index;
     gPlaySt.unk_2C_2 = GetGlobalCompletionCount();
-
-    SetBonusContentClaimFlags(0);
 
     /* External hooks */
     for (it = gNewSaveHooks; *it != NULL; it++)

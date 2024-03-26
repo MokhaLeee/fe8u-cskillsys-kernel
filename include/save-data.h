@@ -10,6 +10,7 @@ struct EmsChunk {
 
     /* 04 */ void (* save)(u8 * dst, const u32 size);
     /* 08 */ void (* load)(u8 * src, const u32 size);
+    /* 0C */ int chunk_idx;
 };
 
 extern const struct EmsChunk gEmsSavChunks[];
@@ -19,6 +20,20 @@ extern const u16 gEmsOffsets[SAVE_ID_MAX];
 extern const u16 gEmsSizes[2];
 #define EMS_SIZE_SAV (gEmsSizes[0])
 #define EMS_SIZE_SUS (gEmsSizes[1])
+
+/* Chunk index */
+#define EMS_CHUNK_CHAPTERSTATE   1
+#define EMS_CHUNK_SAVEUNITS      2
+#define EMS_CHUNK_CONVOYITEMS    3
+#define EMS_CHUNK_BWLENTRIES     4
+#define EMS_CHUNK_WINDATA        5
+#define EMS_CHUNK_EIDS_PERMANENT 6
+#define EMS_CHUNK_BONUSCLAIMDATA 7
+#define EMS_CHUNK_WMDATA         8
+#define EMS_CHUNK_DUNGEON        9
+
+const struct EmsChunk * GetEmsChunkByIndex_Sav(int idx);
+const struct EmsChunk * GetEmsChunkByIndex_Sus(int idx);
 
 struct EmsPackedSavUnit {
     /* 00 */ u8 jid;

@@ -109,8 +109,9 @@ void MSU_SaveBonusClaim(void)
 void MSU_LoadBonusClaimWIP(void)
 {
     u32 buf;
+    const struct EmsChunk * chunk = GetEmsChunkByIndex_Sav(EMS_CHUNK_BONUSCLAIMDATA);
     void * src = GetSaveReadAddr(gPlaySt.gameSaveSlot);
-    ReadSramFast(src + 0x0638, &buf, sizeof(buf));  /* 0x0638 is countered from gEmsSavChunks */
+    ReadSramFast(src + chunk->offset, &buf, sizeof(buf)); /* read from save data */
     SetBonusContentClaimFlags(buf);
 }
 
