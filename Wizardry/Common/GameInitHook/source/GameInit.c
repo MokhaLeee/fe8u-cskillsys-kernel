@@ -7,11 +7,11 @@ typedef void (* GameInitHookFunc_t)(void);
 extern const GameInitHookFunc_t gGameInitHookTable[];
 extern const GameInitHookFunc_t * gpExternalGameInitHook;
 
-extern u8 FreeRamSpaceEntry[], FreeRamSpaceTail[], FreeRamSpaceMax[];
+extern u8 FreeRamSpaceTop[], FreeRamSpaceBottom[], gKernelUsedFreeRamSpaceTop[];
 
 STATIC_DECLAR void FreeRamSpaceDetection(void)
 {
-    bool asseration = (&FreeRamSpaceTail[0] < &FreeRamSpaceMax[0]);
+    bool asseration = (&FreeRamSpaceTop[0] < &gKernelUsedFreeRamSpaceTop[0]);
 
     Assert(asseration);
     if (!asseration) while(1);
