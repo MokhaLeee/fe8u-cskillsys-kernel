@@ -38,4 +38,9 @@ InjectEventLoCmd(EVENT_CMD_SKILL, EventSkillOperation)
 #define Evt_RemoveSkillAt(sid, x, y) "BYTE 0x45 EVENT_CMD_SKILL; SHORT sid x y"
 #define Evt_RemoveSkillSC(sid)       "BYTE 0x46 EVENT_CMD_SKILL; SHORT sid 0 0"
 
+/* MapAnim */
+#include "SkillMapAnim/MapAnimSkill.lyn.event"
+#include "SkillMapAnim/MapAnimSkillfx.lyn.event"
+#include "SkillMapAnim/LynJump.event"
+
 #endif
