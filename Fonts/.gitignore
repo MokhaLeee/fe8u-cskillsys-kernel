@@ -1,5 +1,0 @@
-build
-*.o
-*.s
-
-GlyphInstaller.event

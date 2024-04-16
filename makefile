@@ -262,12 +262,6 @@ $(GFX_HEADER): $(GFX_SOURCES)
 CLEAN_BUILD += $(GFX_DIR)
 CLEAN_FILES += $(GFX_HEADER)
 
-# =========
-# = Glyph =
-# =========
-
-# include Fonts/fonts.mk
-
 # =============
 # = PRE-BUILD =
 # =============

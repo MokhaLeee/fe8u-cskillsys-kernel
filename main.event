@@ -28,9 +28,3 @@ ORG FreeSpaceKernel_TextTable
     #include "Contants/Contants.event"
 MESSAGE FreeSpace___Main___ end at (CURRENTOFFSET) max (FreeSpaceKernel + FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
-
-
-ORG FreeSpaceFont
-    // #include "Fonts/Fonts.event"
-MESSAGE FreeSpace__Fonts___ end at (CURRENTOFFSET) max (FreeSpaceFont + FreeSpaceFontSize)
-ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
