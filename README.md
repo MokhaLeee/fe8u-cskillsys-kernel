@@ -25,7 +25,7 @@ git clone https://github.com/StanHash/FE-PyTools.git --recursive
 sudo apt-get -y install binutils-arm-none-eabi \
     gcc-arm-none-eabi build-essential cmake re2c ghc \
     cabal-install libghc-vector-dev libghc-juicypixels-dev \
-    python3-pip pkg-config libpng* bsidff
+    python3-pip pkg-config libpng* bsdiff
 
 pip install pyelftools PyInstaller tmx six
 ```
@@ -35,14 +35,15 @@ pip install pyelftools PyInstaller tmx six
 ```bash
 wget https://apt.devkitpro.org/install-devkitpro-pacman
 chmod +x ./install-devkitpro-pacman
-./install-devkitpro-pacman
+sudo ./install-devkitpro-pacman
 sudo dkp-pacman -S gba-dev
 
 # Export vars
-export DEVKITPRO=/opt/devkitpro
-export DEVKITARM=${DEVKITPRO}/devkitARM
-export DEVKITPPC=${DEVKITPRO}/devkitPPC
-export PATH=${DEVKITPRO}/tools/bin:$PATH
+echo "export DEVKITPRO=/opt/devkitpro" >> ~/.bashrc
+echo "export DEVKITARM=\${DEVKITPRO}/devkitARM" >> ~/.bashrc
+echo "export DEVKITPPC=\${DEVKITPRO}/devkitPPC" >> ~/.bashrc
+echo "export PATH=\${DEVKITPRO}/tools/bin:\$PATH" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 3. Build EA
@@ -54,7 +55,7 @@ export PATH=${DEVKITPRO}/tools/bin:$PATH
 # refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x ./dotnet-install.sh
-./dotnet-install.sh --channel 6.0
+sudo ./dotnet-install.sh --channel 6.0
 
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
