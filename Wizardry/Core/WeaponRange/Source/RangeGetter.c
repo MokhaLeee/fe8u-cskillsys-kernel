@@ -28,6 +28,10 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit)
 {
     const WeaponRangeGetterFunc_t * it;
     int status = GetItemMaxRange(item);
+
+    if (status == 0)
+        status = GetUnitMagBy2Range(unit);
+
     if (IS_UNIT_PTR(unit))
     {
         for (it = gWeaponRangeGetters; *it; it++)

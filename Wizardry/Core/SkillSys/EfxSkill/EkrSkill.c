@@ -17,15 +17,12 @@ struct ProcEkrSkill {
 
 STATIC_DECLAR void EfxSkillSetAnimState(struct Anim * anim)
 {
-#if 0
     struct Anim * anim1, * anim2;
 
     anim1 = gAnims[GetAnimPosition(anim) * 2];
     anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
-#endif
 
     anim->state3 |= ANIM_BIT3_BLOCKING;
-#if 0
     anim->state |= ANIM_BIT_FROZEN;
 
     anim1->state3 |= ANIM_BIT3_BLOCKING;
@@ -33,20 +30,16 @@ STATIC_DECLAR void EfxSkillSetAnimState(struct Anim * anim)
 
     anim2->state3 |= ANIM_BIT3_BLOCKING;
     anim2->state |= ANIM_BIT_FROZEN;
-#endif
 }
 
 STATIC_DECLAR void EfxSkillResetAnimState(struct Anim * anim)
 {
-#if 0
     struct Anim * anim1, * anim2;
 
     anim1 = gAnims[GetAnimPosition(anim) * 2];
     anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
-#endif
 
     anim->state3 |= ANIM_BIT3_BLOCKEND;
-#if 0
     anim->state &= ~ANIM_BIT_FROZEN;
 
     anim1->state3 |= ANIM_BIT3_BLOCKEND;
@@ -54,7 +47,6 @@ STATIC_DECLAR void EfxSkillResetAnimState(struct Anim * anim)
 
     anim2->state3 |= ANIM_BIT3_BLOCKEND;
     anim2->state &= ~ANIM_BIT_FROZEN;
-#endif
 }
 
 STATIC_DECLAR void EkrSkillOnInit(struct ProcEkrSkill * proc)
