@@ -1,0 +1,10 @@
+#include "Source/PrePhaseHook.lyn.event"
+
+ALIGN 4
+gPrePhaseFuncs:
+    WORD 0 0 0 0 0
+
+PUSH
+    ORG 0x59A2C4
+    POIN ProcScr_PrePhaseHook
+POP
