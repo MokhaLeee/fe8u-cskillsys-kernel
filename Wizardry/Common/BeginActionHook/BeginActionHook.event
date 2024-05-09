@@ -1,0 +1,17 @@
+#ifndef BEGIN_ACTION_HOOK_INSTALLED
+#define BEGIN_ACTION_HOOK_INSTALLED
+
+#include "Source/BeginActionHook.lyn.event"
+#include "Source/usr-func.lyn.event"
+#include "Source/LynJump.event"
+
+/*
+ * Hook at function: UnitBeginAction()
+ *
+ * void (*func)(struct Unit * unit)
+ **/
+gBeginActionHooks:
+    POIN InitActionExpa
+    WORD 0 0 0 0
+
+#endif /* BEGIN_ACTION_HOOK_INSTALLED */
