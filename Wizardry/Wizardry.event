@@ -25,6 +25,7 @@ ALIGN 4
 #include "Common/Lvupfx/Lvupfx.event"
 #include "Common/UnitExpa/UnitExpa.event"
 #include "Common/PhaseSwitchHook/PhaseSwitchHook.event"
+#include "Common/PrePhaseHook/PrePhaseHook.event"
 #include "Common/BanimSync/BanimSync.event"
 #include "Common/KernelTutorial/KernelTutorial.event"
 #include "Common/BeginActionHook/BeginActionHook.event"
