@@ -25,6 +25,11 @@ STATIC_DECLAR void MapAnimRoundAnim_DisplaySkillIcon(void)
         Debugf("cid %#x, sid-atk %#x, sid-def %#x at round %d",
                     cid, sid_atk, sid_def, round);
 
+#if defined(CONFIG_USE_DEBUG) && defined(CONFIG_DEBUG_EFXSKILL)
+        sid_atk = 1;
+        sid_def = 2;
+#endif
+
         actor_icon = 0;
         if (COMBART_VALID(cid))
             actor_icon = COMBART_ICON(cid);

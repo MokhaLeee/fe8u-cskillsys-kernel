@@ -17,4 +17,9 @@ IconGetters:
 
 ORG (IconGetters + 4 * ICON_SHEET_AMT)
 
+PUSH
+    ORG 0x000036B4
+    pr_item_icon_tiles:
+POP
+
 #endif /* ICON_DISPLAY_INSTALLED */
