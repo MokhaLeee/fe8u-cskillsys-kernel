@@ -37,4 +37,10 @@
  */
 #define CONFIG_KTUT_LEVEL 2
 
+/**
+ * If uncommented, enable patch
+ * FEB: Character Custom Animation
+ */
+#define CONFIG_USE_CHAR_CUSTOM_ANIM
+
 #endif /* CONFIG_INSTALLED */

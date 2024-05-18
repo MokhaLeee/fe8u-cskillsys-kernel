@@ -4,3 +4,7 @@
 #include "FillAIDangerMap20220712/install.event"
 #include "DecideOnDangerMap/DecideOnDangerMap.event"
 // #include "MeleeAndMagicFix_ItemFix20220721/MeleeAndMagicFix_ItemFix20220721.event"
+
+#ifdef CONFIG_USE_CHAR_CUSTOM_ANIM
+    #include "Individual_animation_ea_2/Installer.event"
+#endif

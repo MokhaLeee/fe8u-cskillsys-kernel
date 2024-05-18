@@ -36,6 +36,32 @@ struct BanimSyncHandler * GetBanimSyncHandler_ComboAtk(struct Anim * anim)
     gBanimSyncHandler.pid = UNIT_CHAR_ID(unit);
     gBanimSyncHandler.jid = UNIT_CLASS_ID(unit);
     gBanimSyncHandler.weapon = ITEM_INDEX(gComboAtkList[round].weapon);
-    gBanimSyncHandler.animdef = unit->pClassData->pBattleAnimDef;
+
+    gBanimSyncHandler.animdef = NULL;
+
+#ifdef CONFIG_USE_CHAR_CUSTOM_ANIM
+    /* Port for Individual_animation_ea_2 */
+    extern const struct {
+        u8 pid, jid;
+        u8 __pad__[2];
+        void * anim_conf;
+    } CustomAnimeTable[];
+
+    int i;
+    for (i = 0; CustomAnimeTable[i].pid != 0 || CustomAnimeTable[i].jid != 0; i++)
+    {
+        u8 pid = CustomAnimeTable[i].pid;
+        u8 jid = CustomAnimeTable[i].jid;
+
+        if (pid == UNIT_CHAR_ID(unit) && jid == UNIT_CLASS_ID(unit)) {
+            gBanimSyncHandler.animdef = CustomAnimeTable[i].anim_conf;
+            break;
+        }
+    }
+#endif
+
+    if (gBanimSyncHandler.animdef == NULL)
+        gBanimSyncHandler.animdef = unit->pClassData->pBattleAnimDef;
+
     return &gBanimSyncHandler;
 }
