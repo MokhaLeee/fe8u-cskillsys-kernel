@@ -64,6 +64,7 @@ SET_DATA sKTutorialBits, gComboAtkList - 0xC
 SET_DATA sKTutorialBitsHistory, sKTutorialBits - 0xC
 SET_DATA gBattleTargetPositionBackup, sKTutorialBitsHistory - 0x4
 SET_DATA gActionDataExpa, gBattleTargetPositionBackup - 0x10
+SET_DATA gComboMapAnimBattleUnit, gActionDataExpa - 0x80
 
-SET_DATA gKernelUsedFreeRamSpaceTop, gActionDataExpa
+SET_DATA gKernelUsedFreeRamSpaceTop, gComboMapAnimBattleUnit
 /* Assert(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop) */

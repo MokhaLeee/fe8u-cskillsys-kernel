@@ -3,7 +3,7 @@
 RELEASE_DIR=.release_dir
 install -d $RELEASE_DIR
 
-make -j
+# make -j
 cp fe8-kernel-* $RELEASE_DIR
 
 cp -rf include $RELEASE_DIR
