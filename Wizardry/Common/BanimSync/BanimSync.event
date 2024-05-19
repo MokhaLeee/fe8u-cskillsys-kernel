@@ -9,6 +9,8 @@ BanimSyncHandlerGetter:
 #endif
 
     // POIN FindBanimSyncHandler_test
+
+    BanimSyncHandlerGetter_END:
     WORD 0 0 0 0
 
 #include "BanimSync_Internal.event"

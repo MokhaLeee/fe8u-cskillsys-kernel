@@ -6,6 +6,12 @@
 #include "combat-art.h"
 #include "constants/skills.h"
 
+typedef int (* BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit * unit);
+extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
+
+typedef int (* UnitToBattleFunc_t)(struct Unit * unit, struct BattleUnit * bu);
+extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
+
 STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit * unit)
 {
     if (!unit)
@@ -94,6 +100,8 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
 /* LynJump */
 void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 {
+    const BattleToUnitFunc_t * it;
+
     InitBattleUnitVanilla(bu, unit);
 
     UNIT_MAG(&bu->unit) = MagGetter(unit);
@@ -101,11 +109,16 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 
     bu->unit._u3A = unit->_u3A;
     bu->unit._u3B = unit->_u3B;
+
+    for (it = gExternalBattleToUnitHook; *it; it++)
+        (*it)(bu, unit);
 }
 
 /* LynJump */
 void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 {
+    const UnitToBattleFunc_t * it;
+
     UpdateUnitFromBattleVanilla(unit, bu);
 
     UNIT_MAG(unit) += BU_CHG_MAG(bu);
@@ -116,4 +129,7 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 
     ResetSkillLists();
     ResetCombatArtStatus();
+
+    for (it = gExternalUnitToBattleHook; *it; it++)
+        (*it)(unit, bu);
 }
