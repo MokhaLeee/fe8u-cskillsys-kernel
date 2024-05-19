@@ -35,7 +35,12 @@ STATIC_DECLAR void MapAnimSkillfx_DrawIconIDLE(struct ProcMapAnimSkillfx * proc)
     int chr, oam2;
 
     int ix = proc->x * 8;
-    int iy = proc->y * 8;
+    int iy = proc->y * 8 + 4;
+
+    if (proc->pos == POS_L)
+        ix = ix - 1;
+    else
+        ix = ix + 2;
 
     if (ix < -16 || ix > DISPLAY_WIDTH)
         return;
@@ -51,9 +56,9 @@ STATIC_DECLAR void MapAnimSkillfx_DrawIconIDLE(struct ProcMapAnimSkillfx * proc)
                     OAM2_LAYER(0b01) +
                     OAM2_CHR(chr);
 
-    PutSprite(4, OAM1_X(ix), OAM0_Y(iy), gObject_16x16, oam2);
+    PutSprite(4, OAM1_X(ix), OAM0_Y(iy) + ATTR0_TYPE_BLENDED, gObject_16x16, oam2);
 
-    if (++proc->timer == 0x28)
+    if (++proc->timer == 0x24)
         Proc_Break(proc);
 }
 

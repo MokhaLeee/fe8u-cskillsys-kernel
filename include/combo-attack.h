@@ -17,3 +17,11 @@ extern struct ComboAtkTarget gComboAtkList[COMBO_ATK_MAX + 1];
 void ResetComboAtkList(void);
 void BattleGenerateComboAtkList(void);
 bool BattleComboGenerateHits(void);
+
+static inline struct Unit * GetMapAnimComboUnit(int round)
+{
+    if (gComboAtkList[round].uid == COMBO_ATK_UID_INVALID)
+        return NULL;
+
+    return GetUnit(gComboAtkList[round].uid);
+}

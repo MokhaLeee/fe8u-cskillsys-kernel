@@ -5,6 +5,19 @@
 #include "Source/battle-order-combo.lyn.event"
 #include "Source/combo-atk.lyn.event"
 #include "Source/efx-combo.lyn.event"
+#include "Source/combo-mapanim.lyn.event"
+
+PUSH
+    // PROC_REPEAT(MapAnim_PrepareNextBattleRound), in ProcScr_MapAnimBattle
+    ORG 0x9A3508 + (14 * 8) // 0x9A3578
+    PROC_NEW_CHILD_BLOCKING(ProcScr_MapAnim_PrepareNextBattleHook)
+    PROC_YEILD
+POP
+
+ALIGN 4
+// Palette: gPal_MiscUiGraphics
+Img_MapAnimCOMBO:
+    #incbin "Data/combo-mapanimap.4bpp.lz"
 
 #endif /* CONFIG_USE_COMBO_ATTACK */
 #endif /* COMBO_ATTACK_INSTALLED */

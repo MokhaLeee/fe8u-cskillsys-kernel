@@ -6,3 +6,4 @@
 void ForEachUnitInRange(void(* func)(struct Unit * unit));
 void AddUnitToTargetListIfNotAllied(struct Unit * unit);
 extern struct Struct030017A0 gDungeonState;
+void SetupBattleMOVEUNITs(void);

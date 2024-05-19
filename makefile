@@ -112,7 +112,7 @@ post_chax: $(FE8_CHX)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 
-#	@cat $(FE8_SYM) >> $(CHAX_SYM)
+	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
