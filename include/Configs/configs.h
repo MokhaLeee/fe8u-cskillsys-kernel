@@ -50,4 +50,10 @@
  */
 #define CONFIG_INSTALL_EXT_MAP_ACTION_ANIM
 
+/**
+ * If uncommented, fasten function GenerateUnitCompleteAttackRange
+ * with lower accuracy.
+ */
+#define CONFIG_FASTER_MAP_RANGE
+
 #endif /* CONFIG_INSTALLED */

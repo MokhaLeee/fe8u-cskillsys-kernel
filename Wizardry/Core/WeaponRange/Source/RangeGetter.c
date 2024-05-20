@@ -63,3 +63,43 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
     }
     return range;
 }
+
+int GetUnitMinRange(struct Unit * unit)
+{
+    int i, item, _ret, ret = 1;
+     for (i = 0; i < UNIT_ITEM_COUNT; i++)
+    {
+        item = unit->items[i];
+
+        if (ITEM_INDEX(item) > 0 && CanUnitUseWeapon(unit, item))
+        {
+            _ret = GetItemMinRangeRework(item, unit);
+
+            Printf("item=%#x, rng=%d, min=%d", item, _ret, ret);
+
+            if (_ret < ret)
+                ret = _ret;
+        }
+    }
+    return ret;
+}
+
+int GetUnitMaxRange(struct Unit * unit)
+{
+    int i, item, _ret, ret = 1;
+     for (i = 0; i < UNIT_ITEM_COUNT; i++)
+    {
+        item = unit->items[i];
+
+        if (ITEM_INDEX(item) > 0 && CanUnitUseWeapon(unit, item))
+        {
+            _ret = GetItemMaxRangeRework(item, unit);
+
+            Printf("item=%#x, rng=%d, max=%d", item, _ret, ret);
+
+            if (_ret > ret)
+                ret = _ret;
+        }
+    }
+    return ret;
+}

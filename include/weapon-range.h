@@ -16,6 +16,9 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit);
 u32 GetItemReachBitsRework(u16 item, struct Unit * unit);
 bool IsItemCoveringRangeRework(int item, int range, struct Unit * unit);
 
+int GetUnitMinRange(struct Unit * unit);
+int GetUnitMaxRange(struct Unit * unit);
+
 void AddMap(int x, int y, u32 mask, int on, int off);
 void AddMapForItem(struct Unit * unit, u16 item);
 void ForEachUnit(void (*func)(struct Unit *), u8 ** map, const int off);

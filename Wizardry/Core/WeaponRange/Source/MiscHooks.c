@@ -208,15 +208,39 @@ void GenerateUnitMovementMap(struct Unit * unit)
 void GenerateUnitCompleteAttackRange(struct Unit * unit)
 {
     int ix, iy;
-    u32 mask = GetUnitWeaponReachBits(unit, -1);
+
+#ifdef CONFIG_FASTER_MAP_RANGE
+    int min, max;
+#else
+    u32 mask;
+#endif
 
     BmMapFill(gBmMapRange, 0);
+
+#ifdef CONFIG_FASTER_MAP_RANGE
+    min = GetUnitMinRange(unit);
+    max = GetUnitMaxRange(unit);
+
+    Printf("min=%d, max=%d", min, max);
+#else
+    mask = GetUnitWeaponReachBits(unit, -1);
+#endif
 
     if (UNIT_CATTRIBUTES(unit) & CA_BALLISTAE)
     {
         u16 item = GetBallistaItemAt(unit->xPos, unit->yPos);
         if (0 != item)
+        {
+#ifdef CONFIG_FASTER_MAP_RANGE
+            int _max = GetItemMaxRangeRework(item, unit);
+            int _min = GetItemMinRangeRework(item, unit);
+
+            if (_max > max) max = _max;
+            if (_min < min) min = _min;
+#else
             mask |= GetItemReachBitsRework(item, unit);
+#endif
+        }
     }
 
     for (iy = 0; iy < gBmMapSize.y; iy++)
@@ -232,7 +256,11 @@ void GenerateUnitCompleteAttackRange(struct Unit * unit)
             if (gBmMapOther[iy][ix])
                 continue;
 
+#ifdef CONFIG_FASTER_MAP_RANGE
+            MapAddInBoundedRange(ix, iy, min, max);
+#else
             AddMap(ix, iy, mask, 1, 0);
+#endif
         }
     }
     SetWorkingBmMap(gBmMapMovement);
