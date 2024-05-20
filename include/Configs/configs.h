@@ -43,4 +43,11 @@
  */
 #define CONFIG_USE_CHAR_CUSTOM_ANIM
 
+/**
+ * If uncommented, install external patch:
+ *
+ * ./Wizardry/External/DrawMapActionAnimation
+ */
+#define CONFIG_INSTALL_EXT_MAP_ACTION_ANIM
+
 #endif /* CONFIG_INSTALLED */
