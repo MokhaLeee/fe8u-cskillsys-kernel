@@ -8,21 +8,6 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-struct UnknownBMUSAilmentProc {
-    PROC_HEADER;
-
-    /* 29 */ u8 _pad1[0x2C-0x29];
-    /* 2C */ int unk_2C;
-    /* 30 */ int _pad2;
-    /* 34 */ int unk_34;
-    /* 38 */ u8 _pad3[0x4C-0x38];
-
-    /* 4C */ s16 unk_4C;
-    /* 4E */ u8 _pad4[0x58-0x4E];
-
-    /* 58 */ int unk_58;
-};
-
 void StartStatusHealEffect(struct Unit * unit, ProcPtr proc);
 
 /* LynJump */
@@ -75,16 +60,21 @@ void TickActiveFactionTurn(void)
         RefreshUnitSprites();
     }
 
-    #define DEC_STATUS(unit)                                        \
-        int _status = GetUnitStatusIndex(unit);                     \
-        int _duration = GetUnitStatusDuration(unit);                \
-        if (0 != _status && _duration != 0)                         \
-        {                                                           \
-            if (_status != UNIT_STATUS_RECOVER)                     \
-                TryTickUnitStatusDuration(unit);                    \
-            if (GetUnitStatusDuration(unit) == 0)                   \
-                AddTarget(unit->xPos, unit->yPos, unit->index, 0);  \
-        }
+    #define DEC_STATUS(unit)                                            \
+        do {                                                            \
+            int _status = GetUnitStatusIndex(unit);                     \
+            int _duration = GetUnitStatusDuration(unit);                \
+            if (0 != _status && _duration != 0)                         \
+            {                                                           \
+                if (_status != UNIT_STATUS_RECOVER)                     \
+                    TryTickUnitStatusDuration(unit);                    \
+                if (GetUnitStatusDuration(unit) == 0)                   \
+                    AddTarget(unit->xPos, unit->yPos, unit->index, 0);  \
+                                                                        \
+                if (gConfigUseStatDebuff == 1)                          \
+                    TickUnitStatDebuff(unit);                           \
+            }                                                           \
+        } while (0);
 
     if (FACTION_BLUE == gPlaySt.faction)
     {

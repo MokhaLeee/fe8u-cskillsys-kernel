@@ -99,5 +99,8 @@ gpKTutorialMsg:
 gpExternalGameInitHook:
     WORD 0
 
+gConfigUseStatDebuff:
+    WORD CONFIG_USE_STAT_DEBUFF
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)
