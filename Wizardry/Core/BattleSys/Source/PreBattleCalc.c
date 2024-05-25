@@ -314,6 +314,10 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
 
     if (SkillTester(unit, SID_BlueFlame))
         attacker->battleAttack += 2;
+
+    if (SkillTester(unit, SID_KillingMachine))
+        attacker->battleCritRate *= 2;
+    
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)

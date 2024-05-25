@@ -66,6 +66,7 @@ enum SkillIndex {
     SID_SorceryBlade,
     SID_Fortune,
     SID_BlueFlame,
+    SID_KillingMachine,
 
     /* Weapon triangle */
     SID_SwordBreaker,
