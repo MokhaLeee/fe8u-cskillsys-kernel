@@ -314,6 +314,15 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
 
     if (SkillTester(unit, SID_BlueFlame))
         attacker->battleAttack += 2;
+
+    if (SkillTester(unit, SID_Merciless))
+    {
+        //Check if the defending unit has the poison status
+        if(GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
+            //If so, then set an arbitrary high value for crit to 'gurantee' it.
+            attacker->battleCritRate = 255;
+    }
+
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)

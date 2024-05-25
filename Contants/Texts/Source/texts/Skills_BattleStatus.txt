@@ -118,3 +118,8 @@ cannot be crit.[X]
 Blue Flame: Attack +2 to this[NL]
 unit. When adjacent to an ally[NL]
 with this skill, gain Attack +2.[X]
+
+## MSG_SKILL_Merciless
+Merciless: [NL]
+Guranteed critical hit[NL]
+against poisoined foes.[X]
