@@ -118,3 +118,9 @@ cannot be crit.[X]
 Blue Flame: Attack +2 to this[NL]
 unit. When adjacent to an ally[NL]
 with this skill, gain Attack +2.[X]
+
+## MSG_SKILL_HeavyStrikes
+H-Strikes: [NL]
+Add weapon weight[NL]
+to critical chance.[X]
+

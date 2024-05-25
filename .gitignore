@@ -5,6 +5,7 @@
 install-devkitpro-pacman
 
 *.gba
+*.sav
 *.sym
 *.ref.s
 *.ref.event
@@ -14,6 +15,7 @@ install-devkitpro-pacman
 Tools/EventAssembler/
 Tools/FE-PyTools/
 Tools/FE-CLib-Mokha/
+Tools/dotnet-install.sh
 
 # Wizardry
 *.o
@@ -37,3 +39,5 @@ Tools/FE-CLib-Mokha/
 
 # EfxAnims
 *.efx.event
+
+packages-microsoft-prod.deb

@@ -1131,4 +1131,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_CombatArtIcon_BowArtAtk,
     },
 #endif
+
+#if (MAX_SKILL_NUM != SID_HeavyStrikes)
+    [SID_HeavyStrikes] = {
+        .desc = MSG_SKILL_HeavyStrikes,
+        .icon = GFX_SkillIcon_HeavyStrikes,
+    },
+#endif
+
 };
