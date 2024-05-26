@@ -189,6 +189,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
 
 #if (MAX_SKILL_NUM != SID_Skybreaker)
     [SID_Skybreaker] = {
+        .name = MSG_SKILL_Skybreaker_NAME,
         .desc = MSG_SKILL_Skybreaker,
         .icon = GFX_SkillIcon_Skybreaker,
     },
@@ -196,6 +197,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
 
 #if (MAX_SKILL_NUM != SID_Resourceful)
     [SID_Resourceful] = {
+        .name = MSG_SKILL_Resourceful_NAME,
         .desc = MSG_SKILL_Resourceful,
         .icon = GFX_SkillIcon_Resourceful,
     },
@@ -427,6 +429,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
 
 #if (MAX_SKILL_NUM != SID_QuickRiposte)
     [SID_QuickRiposte] = {
+        .name = MSA_SKILL_QuickRiposte_NAME,
         .desc = MSG_SKILL_QuickRiposte,
         .icon = GFX_SkillIcon_QuickRiposte,
     },
@@ -441,6 +444,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
 
 #if (MAX_SKILL_NUM != SID_DoubleLion)
     [SID_DoubleLion] = {
+        .name = MSG_SKILL_DoubleLion_NAME,
         .desc = MSG_SKILL_DoubleLion,
         .icon = GFX_SkillIcon_DoubleLion,
     },
