@@ -2,13 +2,11 @@
 #include "debuff.h"
 #include "save-data.h"
 
-struct StatDebuffStatus { u32 bitfile[2]; };
+extern u32 sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
+extern u32 sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
+extern u32 sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
 
-extern struct StatDebuffStatus sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
-extern struct StatDebuffStatus sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
-extern struct StatDebuffStatus sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
-
-static struct StatDebuffStatus * const sStatDebuffStatusPool[0x100] = {
+static u32 * const sStatDebuffStatusPool[0x100] = {
     [FACTION_BLUE + 0x01] = sStatDebuffStatusAlly + 0,
     [FACTION_BLUE + 0x02] = sStatDebuffStatusAlly + 1,
     [FACTION_BLUE + 0x03] = sStatDebuffStatusAlly + 2,
@@ -153,10 +151,6 @@ static inline bool _BIT_CHK(u32 * bits, int idx)
     return false;
 }
 
-#define STAT_SET(unit, stat) _BIT_SET(sStatDebuffStatusPool[(unit)->index]->bitfile, stat)
-#define STAT_CHK(unit, stat) _BIT_CHK(sStatDebuffStatusPool[(unit)->index]->bitfile, stat)
-#define STAT_CLR(unit, stat) _BIT_CLR(sStatDebuffStatusPool[(unit)->index]->bitfile, stat)
-
 void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 {
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
@@ -164,7 +158,7 @@ void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         Errorf("ENOTDIR: %d", debuff);
         abort();
     }
-    STAT_SET(unit, debuff);
+    _BIT_SET(sStatDebuffStatusPool[unit->index], debuff);
 }
 
 void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
@@ -174,7 +168,7 @@ void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         Errorf("ENOTDIR: %d", debuff);
         abort();
     }
-    STAT_CLR(unit, debuff);
+    _BIT_CLR(sStatDebuffStatusPool[unit->index], debuff);
 }
 
 void MSU_SaveStatDebuff(u8 * dst, const u32 size)
@@ -236,11 +230,40 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size)
 void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type)
 {
     int i;
+    u32 * bitfile = sStatDebuffStatusPool[unit->index];
     for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
-        if (STAT_CHK(unit, i) && gpStatDebuffInfos[i].type == type)
+        if (_BIT_CHK(bitfile, i) && gpStatDebuffInfos[i].type == type)
         {
-            STAT_CLR(unit, i);
+            _BIT_CLR(bitfile, i);
         }
     }
 }
+
+/**
+ * Pre-battle calc
+ */
+void PreBattleCalcStatDebuffs(struct BattleUnit * bu, struct BattleUnit * defender)
+{
+    int i;
+    u32 * bitfile = sStatDebuffStatusPool[bu->unit.index];
+    for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
+    {
+        if (_BIT_CHK(bitfile, i))
+        {
+            const struct DebuffInfo * info = &gpStatDebuffInfos[i];
+
+            bu->battleAttack       += info->battle_status.atk;
+            bu->battleDefense      += info->battle_status.def;
+            bu->battleHitRate      += info->battle_status.hit;
+            bu->battleAvoidRate    += info->battle_status.avo;
+            bu->battleCritRate     += info->battle_status.crit;
+            bu->battleSilencerRate += info->battle_status.silencer;
+            bu->battleDodgeRate    += info->battle_status.dodge;
+        }
+    }
+}
+
+/**
+ * Modular status-getter
+ */
