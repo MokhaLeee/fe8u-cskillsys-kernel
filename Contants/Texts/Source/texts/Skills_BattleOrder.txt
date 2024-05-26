@@ -8,8 +8,11 @@ Desper: When unit[NL]
 attacks with HP <50%,[NL]
 double attacks immediately[X]
 
+## MSA_SKILL_QuickRiposte_NAME
+Quick-R[X]
+
 ## MSG_SKILL_QuickRiposte
-Quick-R: [NL]
+Quick Riposte: [NL]
 If unit is attacked with HP[NL]
 >50%, double attacks[X]
 
@@ -18,8 +21,12 @@ W-Fighter:[NL]
 Prevents follow up attack[NL]
 if unit's HP >50%[X]
 
+
+## MSG_SKILL_DoubleLion_NAME
+D-Lion[X]
+
 ## MSG_SKILL_DoubleLion
-D-Lion:[NL]
+Double Lion:[NL]
 If unit attacks with full HP,[NL]
 enjoys Brave effect and lose 1 HP[X]
 
