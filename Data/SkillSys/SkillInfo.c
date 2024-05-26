@@ -656,6 +656,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (MAX_SKILL_NUM != SID_StanceSpectrum)
+    [SID_StanceSpectrum] = {
+        .desc = MSG_SKILL_StanceSpectrum,
+        .icon = GFX_SkillIcon_StanceSpectrum,
+    },
+#endif
+
 #if (MAX_SKILL_NUM != SID_RangeBonusBMag1)
     [SID_RangeBonusBMag1] = {
         .desc = MSG_SKILL_RangeBonusBMag1,

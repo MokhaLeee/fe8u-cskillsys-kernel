@@ -116,6 +116,7 @@ enum SkillIndex {
     SID_StanceSturdy,
     SID_StanceSwift,
     SID_StanceWarding,
+    SID_StanceSpectrum,
 
     /* Weapon range */
     SID_RangeBonusBMag1,

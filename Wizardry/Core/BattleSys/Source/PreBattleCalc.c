@@ -221,6 +221,13 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
             if (IsMagicAttack(defender))
                 attacker->battleDefense += 6;
         }
+
+        if (SkillTester(unit, SID_StanceSpectrum))
+        {
+            attacker->battleAttack += 2;
+            attacker->battleSpeed += 2;
+            attacker->battleDefense += 2;
+        }
     }
 
     /* Misc */

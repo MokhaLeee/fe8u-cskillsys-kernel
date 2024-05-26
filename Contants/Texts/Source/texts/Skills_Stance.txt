@@ -47,3 +47,8 @@ if attacked[X]
 S-Warding:[NL]
 Grants Res +6[NL]
 if attacked[X]
+
+## MSG_SKILL_StanceSpectrum
+S-Spectrum:[NL]
+Grants +2 Atk, Spd, Def[NL]
+and Res if attacked.[X]
