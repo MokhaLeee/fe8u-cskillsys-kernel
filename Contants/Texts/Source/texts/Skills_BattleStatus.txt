@@ -118,3 +118,8 @@ cannot be crit.[X]
 Blue Flame: Attack +2 to this[NL]
 unit. When adjacent to an ally[NL]
 with this skill, gain Attack +2.[X]
+
+## MSG_SKILL_SlowBurn
+Slow Burn: [NL]
++1 Hit and Avoid for[NL]
+each passing turn, up to 15.[X]

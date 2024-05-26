@@ -314,6 +314,23 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
 
     if (SkillTester(unit, SID_BlueFlame))
         attacker->battleAttack += 2;
+
+    if (SkillTester(unit, SID_SlowBurn))
+    {
+        int turnNumber;
+
+        if(gPlaySt.chapterTurnNumber > 15) 
+        {
+            turnNumber = 15;
+        }
+        else 
+        {
+            turnNumber = gPlaySt.chapterTurnNumber;
+        }
+
+        attacker->battleHitRate += turnNumber;
+        attacker->battleAvoidRate += turnNumber;
+    }
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)
