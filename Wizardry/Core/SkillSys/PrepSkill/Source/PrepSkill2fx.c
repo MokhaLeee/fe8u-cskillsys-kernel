@@ -282,7 +282,7 @@ void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 * proc)
         sid = rlist->sid[index];
     }
 
-    TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, X, Y), 0x10, 0x6, 0);
+    TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, X, Y), 0x14, 0x6, 0);
 
     str = GetSkillDescStr(sid);
 
