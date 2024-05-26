@@ -51,6 +51,19 @@ STATIC_DECLAR void PutUnitStatusDebuffIcon(struct Unit * unit)
         0);
 }
 
+static inline void PutUnitStatusDefaultIcon(struct Unit * unit, int type)
+{
+    switch (type) {
+    case STATUS_INFO_TYPE_DEBUFF:
+        PutUnitStatusDebuffIcon(unit);
+        break;
+
+    case STATUS_INFO_TYPE_BUFF:
+        PutUnitStatusBuffIcon(unit);
+        break;
+    }
+}
+
 /* Called from HpBar */
 void PutUnitStatusIcon(struct Unit * unit)
 {
@@ -61,17 +74,9 @@ void PutUnitStatusIcon(struct Unit * unit)
         if (info->on_draw)
             info->on_draw(unit);
         else
-        {
-            switch (info->type) {
-            case STATUS_INFO_TYPE_DEBUFF:
-                PutUnitStatusDebuffIcon(unit);
-                break;
+            PutUnitStatusDefaultIcon(unit, info->type);
 
-            case STATUS_INFO_TYPE_BUFF:
-                PutUnitStatusBuffIcon(unit);
-                break;
-            }
-        }
+        return;
     }
 }
 

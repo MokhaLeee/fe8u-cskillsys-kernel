@@ -68,6 +68,8 @@ SET_DATA gComboMapAnimBattleUnit, gActionDataExpa - 0x80
 SET_DATA sStatDebuffStatusAlly, gComboMapAnimBattleUnit - 51 * 4
 SET_DATA sStatDebuffStatusEnemy, sStatDebuffStatusAlly - 50 * 4
 SET_DATA sStatDebuffStatusNpc, sStatDebuffStatusEnemy - 8 * 4
+SET_DATA sStatDebuffMsgBuf, sStatDebuffStatusNpc - 0x1C * 6
+SET_DATA sStatDebuffMsgBufNext, sStatDebuffMsgBuf - 4
 
-SET_DATA gKernelUsedFreeRamSpaceTop, sStatDebuffStatusNpc
+SET_DATA gKernelUsedFreeRamSpaceTop, sStatDebuffMsgBufNext
 /* Assert(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop) */

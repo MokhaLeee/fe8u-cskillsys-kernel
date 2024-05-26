@@ -1,62 +1,88 @@
 #ifndef UNIT_STATUS_GETTER_H
 #define UNIT_STATUS_GETTER_H
 
+#define MSG_END "POIN StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc; WORD 0"
+
 ALIGN 4
 gHpGetters:
     POIN HpGetterWeaponBonus HpGetterSkills
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gPowGetters:
     POIN PowGetterWeaponBonus PowGetterSkills PowGetterDebuff
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN PowGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gMagGetters:
     POIN MagGetterSkills MagGetterDebuff
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN MagGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gSklGetters:
     POIN SklGetterWeaponBonus SklGetterSkills SklGetterDebuff
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN SklGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gSpdGetters:
     POIN SpdGetterWeaponBonus SpdGetterSkills SpdGetterDebuff
     POIN SpdGetterLegendSkills
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN SpdGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gLckGetters:
     POIN LckGetterWeaponBonus LckGetterSkills LckGetterDebuff
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN LckGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gDefGetters:
     POIN DefGetterWeaponBonus DefGetterSkills DefGetterDebuff
     POIN DefGetterLegendSkills
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN DefGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gResGetters:
     POIN ResGetterWeaponBonus ResGetterSkills ResGetterDebuff
     POIN ResGetterLegendSkills
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN ResGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gMovGetters:
     POIN MovGetterDebuff
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN MovGetterStatDebuff
+#endif
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gConGetters:
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 gAidGetters:
     POIN StatusGetterCheckCpas
-    WORD 0
+    MSG_END
 
 #include "UnitStatusGetterInternal.event"
 

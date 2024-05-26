@@ -182,7 +182,7 @@ void WriteGameSave(int slot)
     {
         if (cur->offset > chunk_size)
         {
-            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
+            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     cur->offset, cur->size, cur->save, cur->load);
 
             abort();
@@ -211,7 +211,7 @@ void ReadGameSave(int slot)
     {
         if (cur->offset > chunk_size)
         {
-            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
+            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     cur->offset, cur->size, cur->save, cur->load);
 
             abort();
@@ -239,11 +239,11 @@ void WriteSuspendSave(int slot)
     slot += GetNextSuspendSaveId();
     dst = GetSaveWriteAddr(slot);
         
-    for (cur = gEmsSavChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSusChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
         if (cur->offset > chunk_size)
         {
-            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
+            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     cur->offset, cur->size, cur->save, cur->load);
 
             abort();
@@ -268,11 +268,11 @@ void ReadSuspendSave(int slot)
 
     InitUnits();
 
-    for (cur = gEmsSavChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSusChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
         if (cur->offset > chunk_size)
         {
-            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
+            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     cur->offset, cur->size, cur->save, cur->load);
 
             abort();

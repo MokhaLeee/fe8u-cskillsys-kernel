@@ -14,8 +14,6 @@
     extra_map       ------          0x0
 */
 
-#include "SaveDataInternal.event"
-
 ALIGN 4
 gEmsOffsets:
     SHORT 0x30D4 /* SAVE_ID_GAME0 */
@@ -38,8 +36,9 @@ gEmsSizes:
 #define EmsChunkContinue(_size) "#ifdef EMU_CHUNK_OFFSET; #define _EMU_CHUNK_OFFSET (EMU_CHUNK_OFFSET + (_size)); #undef EMU_CHUNK_OFFSET; #else; #define EMU_CHUNK_OFFSET (_EMU_CHUNK_OFFSET + (_size)); #undef _EMU_CHUNK_OFFSET; #endif"
 #define EmsChunkOffset "#ifdef EMU_CHUNK_OFFSET; SHORT EMU_CHUNK_OFFSET; #else; SHORT _EMU_CHUNK_OFFSET; #endif"
 
-#define EmsChunk(size, save, load)      "EmsChunkOffset; SHORT (size); POIN (save) (load); WORD 0;   EmsChunkContinue(size)"
-#define EmsChunk(size, save, load, idx) "EmsChunkOffset; SHORT (size); POIN (save) (load); WORD idx; EmsChunkContinue(size)"
+#define EmsChunkDebug(size, load, save) "#ifdef EMU_CHUNK_OFFSET; MESSAGE EMS_CHUNK_DEBUG EMU_CHUNK_OFFSET (size) (load) (save); #else; MESSAGE EMS_CHUNK_DEBUG _EMU_CHUNK_OFFSET (size) (load) (save); #endif"
+#define EmsChunk(size, save, load)      "EmsChunkDebug(size, load, save); EmsChunkOffset; SHORT (size); POIN (save) (load); WORD 0;   EmsChunkContinue(size)"
+#define EmsChunk(size, save, load, idx) "EmsChunkDebug(size, load, save); EmsChunkOffset; SHORT (size); POIN (save) (load); WORD idx; EmsChunkContinue(size)"
 #define EmsChunkEnd(size, save, load) "#ifdef _EMU_CHUNK_OFFSET; #define EMU_CHUNK_OFFSET _EMU_CHUNK_OFFSET; #undef _EMU_CHUNK_OFFSET; #endif; SHORT EMU_CHUNK_OFFSET (size - EMU_CHUNK_OFFSET); POIN (save) (load); WORD 0; EmsChunkEndExt"
 
 // ================================
@@ -124,5 +123,7 @@ gEmsSusChunks:
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
     WORD 0 0 0 0
+
+#include "SaveDataInternal.event"
 
 #endif

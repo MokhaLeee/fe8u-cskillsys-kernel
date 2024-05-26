@@ -100,7 +100,7 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_DEBUFF_RES,
     UNIT_STAT_DEBUFF_MOV,
 
-    UNIT_STAT_DEBUFF_MAX = 32,
+    UNIT_STAT_DEBUFF_MAX = 32, /* If expand, fix */
 };
 
 extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
@@ -121,3 +121,5 @@ int DefGetterStatDebuff(int status, struct Unit * unit);
 int ResGetterStatDebuff(int status, struct Unit * unit);
 int LckGetterStatDebuff(int status, struct Unit * unit);
 int MovGetterStatDebuff(int status, struct Unit * unit);
+void StatDeuff_OnGameInit(void);
+void StatDeuff_OnLoadUnit(struct Unit * unit);
