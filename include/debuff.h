@@ -108,6 +108,8 @@ extern struct DebuffInfo const * const gpStatDebuffInfos;
 
 void MSU_SaveStatDebuff(u8 * dst, const u32 size);
 void MSU_LoadStatDebuff(u8 * src, const u32 size);
+void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
+void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type);
 
 void PreBattleCalcStatDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);

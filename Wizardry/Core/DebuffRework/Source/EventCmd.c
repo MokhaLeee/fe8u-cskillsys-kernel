@@ -39,13 +39,13 @@ u8 EventDebuffOperation(struct EventEngineProc * proc)
 
     default:
         Errorf("Event format error at %p", proc->pEventCurrent);
-        return EVC_ERROR;
+        abort();
     }
 
     if (!IS_UNIT_PTR(unit))
     {
         Errorf("Unit %p invalid at event %p", unit, proc->pEventCurrent);
-        return EVC_ERROR;
+        abort();
     }
 
     switch (subcmd) {

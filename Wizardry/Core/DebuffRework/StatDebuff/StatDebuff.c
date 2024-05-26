@@ -157,6 +157,26 @@ static inline bool _BIT_CHK(u32 * bits, int idx)
 #define STAT_CHK(unit, stat) _BIT_CHK(sStatDebuffStatusPool[(unit)->index]->bitfile, stat)
 #define STAT_CLR(unit, stat) _BIT_CLR(sStatDebuffStatusPool[(unit)->index]->bitfile, stat)
 
+void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
+{
+    if (debuff >= UNIT_STAT_DEBUFF_MAX)
+    {
+        Errorf("ENOTDIR: %d", debuff);
+        abort();
+    }
+    STAT_SET(unit, debuff);
+}
+
+void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
+{
+    if (debuff >= UNIT_STAT_DEBUFF_MAX)
+    {
+        Errorf("ENOTDIR: %d", debuff);
+        abort();
+    }
+    STAT_CLR(unit, debuff);
+}
+
 void MSU_SaveStatDebuff(u8 * dst, const u32 size)
 {
     if (size < (sizeof(sStatDebuffStatusAlly) + sizeof(sStatDebuffStatusEnemy) + sizeof(sStatDebuffStatusNpc)))
