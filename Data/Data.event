@@ -28,4 +28,8 @@
 
 #include "KernelTutorial/ktut.lyn.event"
 
+#ifdef CONFIG_USE_STAT_DEBUFF
+    #include "../Wizardry/Core/DebuffRework/StatDebuff/StatDebuffData.lyn.event"
+#endif
+
 #endif

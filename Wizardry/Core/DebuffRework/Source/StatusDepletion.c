@@ -70,9 +70,6 @@ void TickActiveFactionTurn(void)
                     TryTickUnitStatusDuration(unit);                    \
                 if (GetUnitStatusDuration(unit) == 0)                   \
                     AddTarget(unit->xPos, unit->yPos, unit->index, 0);  \
-                                                                        \
-                if (gConfigUseStatDebuff == 1)                          \
-                    TickUnitStatDebuff(unit);                           \
             }                                                           \
         } while (0);
 
@@ -82,22 +79,32 @@ void TickActiveFactionTurn(void)
         for (i = FACTION_BLUE + 1; i < (FACTION_BLUE + 0x40); i++)
         {
             struct Unit * unit = GetUnit(i);
-
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            if (!UNIT_IS_VALID(unit))
                 continue;
 
-            DEC_STATUS(unit);
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            {
+                DEC_STATUS(unit);
+            }
+#ifdef CONFIG_USE_STAT_DEBUFF
+            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
+#endif
         }
 
         /* Red debuff */
         for (i = FACTION_RED + 1; i < (FACTION_RED + 0x40); i++)
         {
             struct Unit * unit = GetUnit(i);
-
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            if (!UNIT_IS_VALID(unit))
                 continue;
 
-            DEC_STATUS(unit);
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            {
+                DEC_STATUS(unit);
+            }
+#ifdef CONFIG_USE_STAT_DEBUFF
+            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
+#endif
         }
     }
     else if (FACTION_RED == gPlaySt.faction)
@@ -106,33 +113,48 @@ void TickActiveFactionTurn(void)
         for (i = FACTION_RED + 1; i < (FACTION_RED + 0x40); i++)
         {
             struct Unit * unit = GetUnit(i);
-
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            if (!UNIT_IS_VALID(unit))
                 continue;
 
-            DEC_STATUS(unit);
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            {
+                DEC_STATUS(unit);
+            }
+#ifdef CONFIG_USE_STAT_DEBUFF
+            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
+#endif
         }
 
         /* Blue debuff */
         for (i = FACTION_BLUE + 1; i < (FACTION_BLUE + 0x40); i++)
         {
             struct Unit * unit = GetUnit(i);
-
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            if (!UNIT_IS_VALID(unit))
                 continue;
 
-            DEC_STATUS(unit);
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            {
+                DEC_STATUS(unit);
+            }
+#ifdef CONFIG_USE_STAT_DEBUFF
+            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
+#endif
         }
 
         /* Green debuff */
         for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + 0x40); i++)
         {
             struct Unit * unit = GetUnit(i);
-
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            if (!UNIT_IS_VALID(unit))
                 continue;
 
-            DEC_STATUS(unit);
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            {
+                DEC_STATUS(unit);
+            }
+#ifdef CONFIG_USE_STAT_DEBUFF
+            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
+#endif
         }
     }
     else if (FACTION_GREEN == gPlaySt.faction)
@@ -141,11 +163,16 @@ void TickActiveFactionTurn(void)
         for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + 0x40); i++)
         {
             struct Unit * unit = GetUnit(i);
-
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            if (!UNIT_IS_VALID(unit))
                 continue;
 
-            DEC_STATUS(unit);
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            {
+                DEC_STATUS(unit);
+            }
+#ifdef CONFIG_USE_STAT_DEBUFF
+            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
+#endif
         }
     }
 }

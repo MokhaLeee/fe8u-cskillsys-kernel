@@ -87,13 +87,6 @@ int MovGetterDebuff(int status, struct Unit * unit);
 /**
  * StatDebuff
  */
-extern const int gConfigUseStatDebuff;
-
-#ifdef CONFIG_USE_STAT_DEBUFF
-    void TickUnitStatDebuff(struct Unit * unit);
-#else
-    static inline void TickUnitStatDebuff(struct Unit * unit) {}
-#endif
 
 enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_DEBUFF_PANIC = 0,
@@ -112,6 +105,10 @@ enum UNIT_STAT_DEBUFF_IDX {
 
 extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
 extern struct DebuffInfo const * const gpStatDebuffInfos;
+
+void MSU_SaveStatDebuff(u8 * dst, const u32 size);
+void MSU_LoadStatDebuff(u8 * src, const u32 size);
+void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type);
 
 void PreBattleCalcStatDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
 int PowGetterStatDebuff(int status, struct Unit * unit);
