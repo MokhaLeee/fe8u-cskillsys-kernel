@@ -14,12 +14,15 @@
 /* LynJump */
 void SetUnitStatus(struct Unit * unit, int status)
 {
-    if (status == 0 || status >= NEW_UNIT_STATUS_MAX)
+    if (status == 0)
     {
-        Errorf("Status error: %d", status);
-
         SetUnitStatusIndex(unit, 0);
         SetUnitStatusDuration(unit, 0);
+    }
+    else if (status >= NEW_UNIT_STATUS_MAX)
+    {
+        Errorf("Status error: %d", status);
+        abort();
     }
     else
     {
@@ -38,7 +41,7 @@ void SetUnitStatusExt(struct Unit * unit, int status, int duration)
     if (status >= NEW_UNIT_STATUS_MAX)
     {
         Errorf("Status overflow: %d", status);
-        return;
+        abort();
     }
 
     if (duration == 0)

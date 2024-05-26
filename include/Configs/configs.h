@@ -56,4 +56,16 @@
  */
 #define CONFIG_FASTER_MAP_RANGE
 
+/**
+ * Enable StatDebuff
+ */
+#define CONFIG_USE_STAT_DEBUFF
+
+/**
+ * Unit amount, since it is hard to modify, it is recommanded not change this value
+ */
+#define CONFIG_UNIT_AMT_ALLY  51
+#define CONFIG_UNIT_AMT_ENEMY 50
+#define CONFIG_UNIT_AMT_NPC   8
+
 #endif /* CONFIG_INSTALLED */

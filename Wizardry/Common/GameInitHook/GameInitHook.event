@@ -9,6 +9,10 @@ gGameInitHookTable:
     POIN InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
     POIN ClearKtutorialFlags
 
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN StatDeuff_OnGameInit
+#endif
+
     POIN GameInitHookFuncPad
     POIN GameInitHookFuncPad
     POIN GameInitHookFuncPad

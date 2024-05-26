@@ -83,3 +83,43 @@ int DefGetterDebuff(int status, struct Unit * unit);
 int ResGetterDebuff(int status, struct Unit * unit);
 int LckGetterDebuff(int status, struct Unit * unit);
 int MovGetterDebuff(int status, struct Unit * unit);
+
+/**
+ * StatDebuff
+ */
+
+enum UNIT_STAT_DEBUFF_IDX {
+    UNIT_STAT_DEBUFF_PANIC = 0,
+
+    UNIT_STAT_DEBUFF_POW,
+    UNIT_STAT_DEBUFF_MAG,
+    UNIT_STAT_DEBUFF_SKL,
+    UNIT_STAT_DEBUFF_SPD,
+    UNIT_STAT_DEBUFF_LCK,
+    UNIT_STAT_DEBUFF_DEF,
+    UNIT_STAT_DEBUFF_RES,
+    UNIT_STAT_DEBUFF_MOV,
+
+    UNIT_STAT_DEBUFF_MAX = 32, /* If expand, fix */
+};
+
+extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
+extern struct DebuffInfo const * const gpStatDebuffInfos;
+
+void MSU_SaveStatDebuff(u8 * dst, const u32 size);
+void MSU_LoadStatDebuff(u8 * src, const u32 size);
+void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
+void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
+void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type);
+
+void PreBattleCalcStatDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
+int PowGetterStatDebuff(int status, struct Unit * unit);
+int MagGetterStatDebuff(int status, struct Unit * unit);
+int SklGetterStatDebuff(int status, struct Unit * unit);
+int SpdGetterStatDebuff(int status, struct Unit * unit);
+int DefGetterStatDebuff(int status, struct Unit * unit);
+int ResGetterStatDebuff(int status, struct Unit * unit);
+int LckGetterStatDebuff(int status, struct Unit * unit);
+int MovGetterStatDebuff(int status, struct Unit * unit);
+void StatDeuff_OnGameInit(void);
+void StatDeuff_OnLoadUnit(struct Unit * unit);

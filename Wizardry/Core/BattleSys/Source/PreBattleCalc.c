@@ -546,6 +546,8 @@ STATIC_DECLAR void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struc
         attacker->battleSilencerRate -= 25;
 }
 
+STATIC_DECLAR void PreBattleCalcPad(struct BattleUnit * attacker, struct BattleUnit * defender) {}
+
 STATIC_DECLAR const PreBattleCalcFunc PreBattleCalcFuncs[] = {
     PreBattleCalcInit,
 
@@ -558,9 +560,13 @@ STATIC_DECLAR const PreBattleCalcFunc PreBattleCalcFuncs[] = {
     PreBattleCalcCombatArt,
     PreBattlePostCalcRangeDebuffs,
 
+#ifdef CONFIG_USE_STAT_DEBUFF
+    PreBattleCalcStatDebuffs,
+#endif
+
     PreBattlePostCalcSkills,
     PreBattleCalcEnd,
-    NULL,
+    PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, NULL
 };
 
 /* LynJump */
