@@ -162,7 +162,7 @@ void MSU_SaveStatDebuff(u8 * dst, const u32 size)
     if (size < (sizeof(sStatDebuffStatusAlly) + sizeof(sStatDebuffStatusEnemy) + sizeof(sStatDebuffStatusNpc)))
     {
         Errorf("ENOMEM: %d", size);
-        return;
+        abort();
     }
 
     WriteAndVerifySramFast(
@@ -190,7 +190,7 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size)
     if (size < (sizeof(sStatDebuffStatusAlly) + sizeof(sStatDebuffStatusEnemy) + sizeof(sStatDebuffStatusNpc)))
     {
         Errorf("ENOMEM: %d", size);
-        return;
+        abort();
     }
 
     ReadSramFast(

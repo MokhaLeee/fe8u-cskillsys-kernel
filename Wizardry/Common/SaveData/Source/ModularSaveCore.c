@@ -185,7 +185,7 @@ void WriteGameSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
                     cur->offset, cur->size, cur->save, cur->load);
 
-            hang();
+            abort();
         }
         cur->save(dst + cur->offset, cur->size);
     }
@@ -214,7 +214,7 @@ void ReadGameSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
                     cur->offset, cur->size, cur->save, cur->load);
 
-            hang();
+            abort();
         }
         cur->load(src + cur->offset, cur->size);
     }
@@ -246,7 +246,7 @@ void WriteSuspendSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
                     cur->offset, cur->size, cur->save, cur->load);
 
-            hang();
+            abort();
         }
         cur->save(dst + cur->offset, cur->size);
     }
@@ -275,7 +275,7 @@ void ReadSuspendSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n"
                     cur->offset, cur->size, cur->save, cur->load);
 
-            hang();
+            abort();
         }
         cur->load(src + cur->offset, cur->size);
     }

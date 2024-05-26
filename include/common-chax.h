@@ -19,10 +19,6 @@
 #define STATIC_DECLAR static
 #endif
 
-#ifndef hang
-static inline __attribute__((optimize("O0"))) void hang() { while (1); }
-#endif
-
 /* Pointer valid judge */
 #define IS_IWRAM_PTR(ptr)    ((((u32)(ptr)) & 0xFF000000) == 0x03000000)
 #define IS_EWRAM_PTR(ptr)    ((((u32)(ptr)) & 0xFF000000) == 0x02000000)

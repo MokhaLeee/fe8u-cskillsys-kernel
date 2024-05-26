@@ -59,7 +59,7 @@
 /**
  * Enable StatDebuff
  */
-// #define CONFIG_USE_STAT_DEBUFF
+#define CONFIG_USE_STAT_DEBUFF
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value
