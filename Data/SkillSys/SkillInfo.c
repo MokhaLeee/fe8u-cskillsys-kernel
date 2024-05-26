@@ -1131,4 +1131,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_CombatArtIcon_BowArtAtk,
     },
 #endif
+
+#if (MAX_SKILL_NUM != SID_QuickBurn)
+    [SID_QuickBurn] = {
+        .desc = MSG_SKILL_QuickBurn,
+        .icon = GFX_SkillIcon_QuickBurn,
+    },
+#endif
 };

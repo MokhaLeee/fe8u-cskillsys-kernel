@@ -158,3 +158,4 @@
 9E=SID_COMBAT_WaningShot
 9F=SID_COMBAT_WaningShotPlus
 A0=SID_COMBAT_HuntersVolley
+A6=SID_QuickBurn
