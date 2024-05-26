@@ -1135,4 +1135,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_CombatArtIcon_BowArtAtk,
     },
 #endif
+
+#if (MAX_SKILL_NUM != SID_Petrify)
+    [SID_Petrify] = {
+        .desc = MSG_SKILL_Petrify,
+        .icon = GFX_SkillIcon_Petrify,
+    },
+#endif
 };

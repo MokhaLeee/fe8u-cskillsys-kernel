@@ -95,6 +95,7 @@ enum SkillIndex {
     SID_DragonFang,
     SID_Foresight,
     SID_Inori,
+    SID_Petrify,
 
     /* Blow skills */
     SID_BlowDarting,
