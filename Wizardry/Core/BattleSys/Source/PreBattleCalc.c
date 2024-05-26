@@ -314,6 +314,11 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
 
     if (SkillTester(unit, SID_BlueFlame))
         attacker->battleAttack += 2;
+
+    if (SkillTester(unit, SID_CriticalPierce))
+        // Add the defender's critical avoid rate to the attacker's.
+        // Thus effectively 'negating' it.
+        attacker->battleCritRate += defender->battleDodgeRate;
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)

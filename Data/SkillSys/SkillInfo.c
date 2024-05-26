@@ -1131,4 +1131,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_CombatArtIcon_BowArtAtk,
     },
 #endif
+
+#if (MAX_SKILL_NUM != SID_CriticalPierce)
+    [SID_CriticalPierce] = {
+        .name = 0,
+        .desc = MSG_SKILL_CriticalPierce,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
