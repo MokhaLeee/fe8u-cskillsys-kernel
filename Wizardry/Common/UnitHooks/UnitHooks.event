@@ -1,0 +1,41 @@
+#ifndef UNIT_HOOKS_INSTALLED
+#define UNIT_HOOKS_INSTALLED
+
+/**
+ * LoadUnitHook
+ */
+#include "Source/LoadUnit.lyn.event"
+
+/**
+ * BattleUnitHook
+ */
+#include "Source/BattleUnitHook.lyn.event"
+
+ALIGN 4
+gExternalBattleToUnitHook: // int (*)(struct BattleUnit * bu, struct Unit * unit);
+    WORD 0 0 0 0
+
+gExternalUnitToBattleHook: // int (*)(struct Unit * unit, struct BattleUnit * bu);
+    WORD 0 0 0 0
+
+/**
+ * CopyUnit
+ */
+#include "Source/CopyUnit.lyn.event"
+
+ALIGN 4
+gCopyUnitHooks: // void (*)(struct Unit * from, struct Unit * to)
+    WORD 0 0 0 0
+
+/**
+ * ClearUnit
+ */
+#include "Source/ClearUnit.lyn.event"
+
+ALIGN 4
+gClearUnitHooks: // void (*)(struct Unit * unit)
+    WORD 0 0 0 0
+
+#include "Source/LynJump.event"
+
+#endif
