@@ -25,6 +25,9 @@ gExternalUnitToBattleHook: // int (*)(struct Unit * unit, struct BattleUnit * bu
 
 ALIGN 4
 gCopyUnitHooks: // void (*)(struct Unit * from, struct Unit * to)
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN StatDeuff_OnCopyUnit
+#endif
     WORD 0 0 0 0
 
 /**
@@ -34,6 +37,9 @@ gCopyUnitHooks: // void (*)(struct Unit * from, struct Unit * to)
 
 ALIGN 4
 gClearUnitHooks: // void (*)(struct Unit * unit)
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN StatDeuff_OnClearUnit
+#endif
     WORD 0 0 0 0
 
 #include "Source/LynJump.event"

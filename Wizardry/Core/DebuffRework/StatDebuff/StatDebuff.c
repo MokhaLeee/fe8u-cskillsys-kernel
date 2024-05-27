@@ -431,3 +431,13 @@ void StatDeuff_OnLoadUnit(struct Unit * unit)
 {
     *GetUnitStatDebuffStatus(unit) = 0;
 }
+
+void StatDeuff_OnClearUnit(struct Unit * unit)
+{
+    *GetUnitStatDebuffStatus(unit) = 0;
+}
+
+void StatDeuff_OnCopyUnit(struct Unit * from, struct Unit * to)
+{
+    *GetUnitStatDebuffStatus(to) = *GetUnitStatDebuffStatus(from);
+}
