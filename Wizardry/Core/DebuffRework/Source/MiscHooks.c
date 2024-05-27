@@ -99,6 +99,6 @@ void MMB_DrawStatusText(s16 * buffer, struct Unit * unit)
         buffer[3] = tileIdx++;
         buffer[4] = tileIdx++;
         buffer[5] = 0;
-        buffer[6] = unit->statusDuration + 0x1128;
+        buffer[6] = GetUnitStatusDuration(unit) + 0x1128;
     }
 }
