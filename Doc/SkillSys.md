@@ -66,7 +66,7 @@ If you want to develop a new skill, you need to add such basic infos by the foll
 
 ### 1. Skill index
 
-Add skill index to in [constants/skills.enum.txt](../include/constants/skills.enum.txt). [enum2h.py](Tools/scripts/enum2h.py) may auto generate **include/constants/skills.h** and update [combo.skills.txt](../Patches/combo.skills.txt) for FEBuilder users.
+Add skill index to in [constants/skills.enum.txt](../include/constants/skills.enum.txt). [enum2h.py](../Tools/scripts/enum2h.py) may auto generate **include/constants/skills.h** and update [combo.skills.txt](../Patches/combo.skills.txt) for FEBuilder users.
 
 A valid skill index should range from 1 ~ 254 ([`SKILL_VALID`](../include/skill-system.h#L8)).
 
