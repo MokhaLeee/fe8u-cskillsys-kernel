@@ -70,6 +70,14 @@ Add skill index to in [constants/skills.enum.txt](../include/constants/skills.en
 
 A valid skill index should range from 1 ~ 254 ([`SKILL_VALID`](../include/skill-system.h#L8)).
 
+You'd better to add skill index detection on effect routine to fasten the game and avoid potential warnning on compiling:
+
+```c
+#if defined(SID_xxx) && (SID_xxx < MAX_SKILL_NUM)
+    // Some effects
+#endif
+```
+
 ### 2. Skill icon
 
 Add icon to [gfx directory](../Contants/Gfx/Sources/SkillIcon/), you just need to give the ***.png*** file a proper name, then kernel may automatically generate variable as `GFX_SkillIcon_*` in [constants/gfx.h](../include/constants/gfx.h).
