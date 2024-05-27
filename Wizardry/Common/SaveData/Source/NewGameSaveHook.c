@@ -14,7 +14,7 @@ void NewGameSaveGenericHook(void)
     InvalidateSuspendSave(SAVE_ID_SUSPEND);
     SetBonusContentClaimFlags(0);
 
-    ClearWorldMapStuff(dst + GetEmsChunkByIndex_Sav(EMS_CHUNK_WMDATA)->offset);
+    ClearWorldMapStuff(dst + CalcChunkOffset_Sav(GetEmsChunkByIndex_Sav(EMS_CHUNK_WMDATA)));
 
     if (CHAX)
     {
@@ -23,10 +23,10 @@ void NewGameSaveGenericHook(void)
         CpuFill16(0, gChapterStats, sizeof(gChapterStats));
 
         chunk = GetEmsChunkByIndex_Sav(EMS_CHUNK_BWLENTRIES);
-        chunk->save(dst + chunk->offset, chunk->size);
+        chunk->save(dst + CalcChunkOffset_Sav(chunk), chunk->size);
 
         chunk = GetEmsChunkByIndex_Sav(EMS_CHUNK_WINDATA);
-        chunk->save(dst + chunk->offset, chunk->size);
+        chunk->save(dst + CalcChunkOffset_Sav(chunk), chunk->size);
     }
     
     if (CHAX)
@@ -34,6 +34,6 @@ void NewGameSaveGenericHook(void)
         /* dungeon */
         CpuFill16(0, gDungeonState.dungeon, sizeof(gDungeonState.dungeon));
         chunk = GetEmsChunkByIndex_Sav(EMS_CHUNK_DUNGEON);
-        chunk->save(dst + chunk->offset, chunk->size);
+        chunk->save(dst + CalcChunkOffset_Sav(chunk), chunk->size);
     }
 }

@@ -14,7 +14,7 @@ const struct EmsChunk * GetEmsChunkByIndex_Sav(int idx)
 {
     const struct EmsChunk * chunk_sav;
 
-    for (chunk_sav = gEmsSavChunks; chunk_sav->offset != EMS_CHUNK_INVALID_OFFSET; chunk_sav++)
+    for (chunk_sav = gEmsSavChunks; chunk_sav->_identifier_ != EMS_CHUNK_INVALID_OFFSET; chunk_sav++)
         if (chunk_sav->chunk_idx == idx)
             return chunk_sav;
 
@@ -25,11 +25,55 @@ const struct EmsChunk * GetEmsChunkByIndex_Sus(int idx)
 {
     const struct EmsChunk * chunk_sus;
 
-    for (chunk_sus = gEmsSusChunks; chunk_sus->offset != EMS_CHUNK_INVALID_OFFSET; chunk_sus++)
+    for (chunk_sus = gEmsSusChunks; chunk_sus->_identifier_ != EMS_CHUNK_INVALID_OFFSET; chunk_sus++)
         if (chunk_sus->chunk_idx == idx)
             return chunk_sus;
 
     return NULL;
+}
+
+u32 CalcChunkOffset_Sav(const struct EmsChunk * chunk)
+{
+    u32 ret = 0;
+    const struct EmsChunk * chunk_cur = gEmsSavChunks;
+
+    while (1)
+    {
+        if (chunk_cur->_identifier_ == EMS_CHUNK_INVALID_OFFSET)
+        {
+            Errorf("Chunk:%p not found, idx=%d", chunk, chunk->chunk_idx);
+            abort();
+        }
+
+        if (chunk_cur == chunk)
+            break;
+
+        ret += chunk_cur->size;
+        chunk_cur++;
+    }
+    return ret;
+}
+
+u32 CalcChunkOffset_Sus(const struct EmsChunk * chunk)
+{
+    u32 ret = 0;
+    const struct EmsChunk * chunk_cur = gEmsSusChunks;
+
+    while (1)
+    {
+        if (chunk_cur->_identifier_ == EMS_CHUNK_INVALID_OFFSET)
+        {
+            Errorf("Chunk:%p not found, idx=%d", chunk, chunk->chunk_idx);
+            abort();
+        }
+
+        if (chunk_cur == chunk)
+            break;
+
+        ret += chunk_cur->size;
+        chunk_cur++;
+    }
+    return ret;
 }
 
 /* LynJump! */
@@ -42,11 +86,11 @@ void WriteSaveBlockInfo(struct SaveBlockInfo * chunk, int index)
     switch (chunk->kind)
     {
     case SAVEBLOCK_KIND_GAME:
-        chunk->size = gEmsSizes[0];
+        chunk->size = EMS_SIZE_SAV;
         break;
 
     case SAVEBLOCK_KIND_SUSPEND:
-        chunk->size = gEmsSizes[1];
+        chunk->size = EMS_SIZE_SUS;
         break;
 
     case SAVEBLOCK_KIND_ARENA:
@@ -172,14 +216,14 @@ void WriteGameSave(int slot)
 {
     const struct EmsChunk * cur;
     struct SaveBlockInfo chunk;
-    u16 chunk_size = gEmsSizes[0]; // SAV
+    u16 chunk_size = EMS_SIZE_SAV; // SAV
     u8 * dst = GetSaveWriteAddr(slot);
     u32 offset = 0;
 
     InvalidateSuspendSave(SAVE_ID_SUSPEND);
     gPlaySt.gameSaveSlot = slot;
 
-    for (cur = gEmsSavChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSavChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
         if (offset > chunk_size)
         {
@@ -191,6 +235,10 @@ void WriteGameSave(int slot)
         cur->save(dst + offset, cur->size);
         offset += cur->size;
     }
+
+    /* Terminator */
+    MSA_ExternalSaver(dst + offset, EMS_SIZE_SAV - offset);
+
     chunk.magic32 = SAVEMAGIC32;
     chunk.kind = SAVEBLOCK_KIND_GAME;
     WriteSaveBlockInfo(&chunk, slot);
@@ -202,7 +250,7 @@ void ReadGameSave(int slot)
 {
     const struct EmsChunk * cur;
     u8 * src = GetSaveReadAddr(slot);
-    u16 chunk_size = gEmsSizes[0]; // SAV
+    u16 chunk_size = EMS_SIZE_SAV; // SAV
     u32 offset = 0;
 
     if (!(PLAY_FLAG_HARD & gBmSt.gameStateBits))
@@ -210,7 +258,7 @@ void ReadGameSave(int slot)
 
     InitUnits();
 
-    for (cur = gEmsSavChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSavChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
         if (offset > chunk_size)
         {
@@ -222,6 +270,10 @@ void ReadGameSave(int slot)
         cur->load(src + offset, cur->size);
         offset += cur->size;
     }
+
+    /* Terminator */
+    MSA_ExternalLoader(src + offset, EMS_SIZE_SAV - offset);
+
     gPlaySt.gameSaveSlot = slot;
     WriteLastGameSaveId(slot);
 }
@@ -232,8 +284,8 @@ void WriteSuspendSave(int slot)
     u8 * dst;
     const struct EmsChunk * cur;
     struct SaveBlockInfo chunk;
-    u16 chunk_size = gEmsSizes[1]; // SUS
-    u32 offset;
+    u16 chunk_size = EMS_SIZE_SUS; // SUS
+    u32 offset = 0;
 
     if (PLAY_FLAG_TUTORIAL & gPlaySt.chapterStateBits)
         return;
@@ -244,7 +296,7 @@ void WriteSuspendSave(int slot)
     slot += GetNextSuspendSaveId();
     dst = GetSaveWriteAddr(slot);
         
-    for (cur = gEmsSusChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSusChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
         if (offset > chunk_size)
         {
@@ -256,6 +308,9 @@ void WriteSuspendSave(int slot)
         cur->save(dst + offset, cur->size);
         offset += cur->size;
     }
+
+    /* Terminator */
+    MSU_ExternalSaver(dst + offset, EMS_SIZE_SUS - offset);
 
     chunk.magic32 = SAVEMAGIC32;
     chunk.kind = SAVEBLOCK_KIND_SUSPEND;
@@ -270,17 +325,17 @@ void ReadSuspendSave(int slot)
 {
     const struct EmsChunk * cur;
     u8 * src = GetSaveReadAddr(slot + gSuspendSaveIdOffset);
-    u16 chunk_size = gEmsSizes[1]; // SUS
-    u32 offset;
+    u16 chunk_size = EMS_SIZE_SUS; // SUS
+    u32 offset = 0;
 
     InitUnits();
 
-    for (cur = gEmsSusChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSusChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
         if (offset > chunk_size)
         {
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
-                    cur->offset, cur->size, cur->save, cur->load);
+                    offset, cur->size, cur->save, cur->load);
 
             abort();
         }
@@ -288,6 +343,37 @@ void ReadSuspendSave(int slot)
         offset += cur->size;
     }
 
+    /* Terminator */
+    MSU_ExternalLoader(src + offset, EMS_SIZE_SUS - offset);
+
     LoadRNStateFromActionStruct();
     SetGameTime(gPlaySt.time_saved);
 }
+
+#ifdef CONFIG_USE_DEBUG
+
+void GameInitDumpEmsChunks(void)
+{
+    const struct EmsChunk * cur;
+    u32 offset;
+
+    Print("Dump SAV");
+    for (offset = 0, cur = gEmsSavChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; cur++)
+    {
+        Printf("Dump SAV: offset=0x%04X, size=0x%04X, saver=%p, loader=%p",
+                offset, cur->size, cur->save, cur->load);
+
+        offset += cur->size;
+    }
+
+    Print("Dump SUS");
+    for (offset = 0, cur = gEmsSusChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; cur++)
+    {
+        Printf("Dump SUS: offset=0x%04X, size=0x%04X, saver=%p, loader=%p",
+                offset, cur->size, cur->save, cur->load);
+
+        offset += cur->size;
+    }
+}
+
+#endif /* CONFIG_USE_DEBUG */
