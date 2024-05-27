@@ -2,6 +2,23 @@
 #include "debuff.h"
 
 const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
+    [UNIT_STAT_BUFF_RING_ATK] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .battle_status = { .atk = +10 }
+    },
+    [UNIT_STAT_BUFF_RING_DEF] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .battle_status = { .def = +10 }
+    },
+    [UNIT_STAT_BUFF_RING_CRT] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .battle_status = { .crit = +10 }
+    },
+    [UNIT_STAT_BUFF_RING_AVO] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .battle_status = { .avo = +10 }
+    },
+
     [UNIT_STAT_DEBUFF_POW] = {
         .type = STATUS_INFO_TYPE_DEBUFF,
         .unit_status = { .pow = -4 },

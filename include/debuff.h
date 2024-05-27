@@ -90,6 +90,11 @@ int MovGetterDebuff(int status, struct Unit * unit);
  */
 
 enum UNIT_STAT_DEBUFF_IDX {
+    UNIT_STAT_BUFF_RING_ATK,
+    UNIT_STAT_BUFF_RING_DEF,
+    UNIT_STAT_BUFF_RING_CRT,
+    UNIT_STAT_BUFF_RING_AVO,
+
     UNIT_STAT_DEBUFF_POW,
     UNIT_STAT_DEBUFF_MAG,
     UNIT_STAT_DEBUFF_SKL,

@@ -297,11 +297,10 @@ enum STAT_BUFF_MSG_BUF_SPECIAL_MASK {
     SP_STAT_CANNOT_MOVE = (1 << 0x00),
 };
 
-STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * _unit, u32 * bitfile, struct StatDebuffMsgBuf * buf)
+STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile, struct StatDebuffMsgBuf * buf)
 {
     int i;
     bool in_panic = false;
-    struct Unit * unit = GetUnit(_unit);
 
     memset(buf, 0, sizeof(*buf));
 
