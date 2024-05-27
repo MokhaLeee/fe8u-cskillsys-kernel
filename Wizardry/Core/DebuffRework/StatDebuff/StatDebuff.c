@@ -297,9 +297,11 @@ enum STAT_BUFF_MSG_BUF_SPECIAL_MASK {
     SP_STAT_CANNOT_MOVE = (1 << 0x00),
 };
 
-STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile, struct StatDebuffMsgBuf * buf)
+STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * _unit, u32 * bitfile, struct StatDebuffMsgBuf * buf)
 {
     int i;
+    bool in_panic = false;
+    struct Unit * unit = GetUnit(_unit);
 
     memset(buf, 0, sizeof(*buf));
 
@@ -308,20 +310,37 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
 
     Debugf("pid=%#x, bitfile [%p]=%#lx", UNIT_CHAR_ID(unit), bitfile, *bitfile);
 
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
+        in_panic = true;
+
     for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
         {
             const struct DebuffInfo * info = &gpStatDebuffInfos[i];
 
-            buf->pow += info->unit_status.pow;
-            buf->mag += info->unit_status.mag;
-            buf->skl += info->unit_status.skl;
-            buf->spd += info->unit_status.spd;
-            buf->def += info->unit_status.def;
-            buf->res += info->unit_status.res;
-            buf->lck += info->unit_status.lck;
-            buf->mov += info->unit_status.mov;
+            if (in_panic == true && info->type == STATUS_INFO_TYPE_BUFF)
+            {
+                buf->pow -= info->unit_status.pow;
+                buf->mag -= info->unit_status.mag;
+                buf->skl -= info->unit_status.skl;
+                buf->spd -= info->unit_status.spd;
+                buf->def -= info->unit_status.def;
+                buf->res -= info->unit_status.res;
+                buf->lck -= info->unit_status.lck;
+                buf->mov -= info->unit_status.mov;
+            }
+            else
+            {
+                buf->pow += info->unit_status.pow;
+                buf->mag += info->unit_status.mag;
+                buf->skl += info->unit_status.skl;
+                buf->spd += info->unit_status.spd;
+                buf->def += info->unit_status.def;
+                buf->res += info->unit_status.res;
+                buf->lck += info->unit_status.lck;
+                buf->mov += info->unit_status.mov;
+            }
 
             if (info->cannot_move == true)
                 buf->special_mask |= SP_STAT_CANNOT_MOVE;

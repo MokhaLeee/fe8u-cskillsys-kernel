@@ -34,4 +34,37 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         .type = STATUS_INFO_TYPE_DEBUFF,
         .unit_status = { .mov = -4 },
     },
+
+    [UNIT_STAT_BUFF_POW] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .pow = +4 },
+    },
+    [UNIT_STAT_BUFF_MAG] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .mag = +4 },
+    },
+    [UNIT_STAT_BUFF_SKL] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .skl = +4 },
+    },
+    [UNIT_STAT_BUFF_SPD] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .spd = +4 },
+    },
+    [UNIT_STAT_BUFF_LCK] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .lck = +4 },
+    },
+    [UNIT_STAT_BUFF_DEF] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .def = +4 },
+    },
+    [UNIT_STAT_BUFF_RES] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .res = +4 },
+    },
+    [UNIT_STAT_BUFF_MOV] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = { .mov = +4 },
+    },
 };

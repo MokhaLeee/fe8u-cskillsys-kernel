@@ -33,3 +33,9 @@ Avo++[X]
 
 ## MSG_DEBUFF_AVOID_PLUS_DESC
 Avoid+: avoid + 30%[X]
+
+## MSG_DEBUFF_PANIC_NAME
+Panic[X]
+
+## MSG_DEBUFF_PANIC_DESC
+Panic: reverse stat-buff[X]
