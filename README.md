@@ -1,8 +1,10 @@
-# FE-C-Build Kernel
+# FE8U C-SkillSys Kernel
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com) 
+
+[Contributing note](./CONTRIBUTING.md)
 
 Modern CHAX for FE8U-SkillSystem, including skillsys, battle-system hacks, etc.e.
-
-Main purpose to split kernel form c-build is to make it independent form the wizardry to the real game.
 
 ## Custom build
 
