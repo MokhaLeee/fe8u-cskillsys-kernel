@@ -8,10 +8,7 @@ ALIGN 4
 gGameInitHookTable:
     POIN InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
     POIN ClearKtutorialFlags
-
-#ifdef CONFIG_USE_DEBUG
-    POIN GameInitDumpEmsChunks
-#endif
+    POIN GameInit_DetectEmsChunks
 
     POIN GameInitHookFuncPad
     POIN GameInitHookFuncPad

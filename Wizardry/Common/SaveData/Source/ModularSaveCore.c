@@ -350,9 +350,7 @@ void ReadSuspendSave(int slot)
     SetGameTime(gPlaySt.time_saved);
 }
 
-#ifdef CONFIG_USE_DEBUG
-
-void GameInitDumpEmsChunks(void)
+void GameInit_DetectEmsChunks(void)
 {
     const struct EmsChunk * cur;
     u32 offset;
@@ -366,6 +364,12 @@ void GameInitDumpEmsChunks(void)
         offset += cur->size;
     }
 
+    if (offset > EMS_SIZE_SAV)
+    {
+        Errorf("SAV chunk overflowed: max=0x%04X, cur=0x%04X", EMS_SIZE_SAV, offset);
+        abort();
+    }
+
     Print("Dump SUS");
     for (offset = 0, cur = gEmsSusChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
@@ -374,6 +378,10 @@ void GameInitDumpEmsChunks(void)
 
         offset += cur->size;
     }
-}
 
-#endif /* CONFIG_USE_DEBUG */
+    if (offset > EMS_SIZE_SUS)
+    {
+        Errorf("SUS chunk overflowed: max=0x%04X, cur=0x%04X", EMS_SIZE_SUS, offset);
+        abort();
+    }
+}
