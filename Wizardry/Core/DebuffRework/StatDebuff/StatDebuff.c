@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "debuff.h"
-#include "save-data.h"
 
 extern u32 sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
 extern u32 sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];

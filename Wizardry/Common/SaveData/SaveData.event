@@ -31,15 +31,9 @@ gEmsSizes:
     SHORT 0x19B0 /* SAV */
     SHORT 0x3000 /* SUS */
 
-#define EmsChunkStart "#define EMU_CHUNK_OFFSET 0"
-#define EmsChunkEndExt "SHORT 0xFFFF 0 0 0 0 0 0 0; #ifdef EMU_CHUNK_OFFSET; #undef EMU_CHUNK_OFFSET; #endif; #ifdef _EMU_CHUNK_OFFSET; #undef _EMU_CHUNK_OFFSET; #endif"
-#define EmsChunkContinue(_size) "#ifdef EMU_CHUNK_OFFSET; #define _EMU_CHUNK_OFFSET (EMU_CHUNK_OFFSET + (_size)); #undef EMU_CHUNK_OFFSET; #else; #define EMU_CHUNK_OFFSET (_EMU_CHUNK_OFFSET + (_size)); #undef _EMU_CHUNK_OFFSET; #endif"
-#define EmsChunkOffset "#ifdef EMU_CHUNK_OFFSET; SHORT EMU_CHUNK_OFFSET; #else; SHORT _EMU_CHUNK_OFFSET; #endif"
-
-#define EmsChunkDebug(size, load, save) // "#ifdef EMU_CHUNK_OFFSET; MESSAGE EMS_CHUNK_DEBUG EMU_CHUNK_OFFSET (size) (load) (save); #else; MESSAGE EMS_CHUNK_DEBUG _EMU_CHUNK_OFFSET (size) (load) (save); #endif"
-#define EmsChunk(size, save, load)      "EmsChunkDebug(size, load, save); EmsChunkOffset; SHORT (size); POIN (save) (load); WORD 0;   EmsChunkContinue(size)"
-#define EmsChunk(size, save, load, idx) "EmsChunkDebug(size, load, save); EmsChunkOffset; SHORT (size); POIN (save) (load); WORD idx; EmsChunkContinue(size)"
-#define EmsChunkEnd(size, save, load) "#ifdef _EMU_CHUNK_OFFSET; #define EMU_CHUNK_OFFSET _EMU_CHUNK_OFFSET; #undef _EMU_CHUNK_OFFSET; #endif; SHORT EMU_CHUNK_OFFSET (size - EMU_CHUNK_OFFSET); POIN (save) (load); WORD 0; EmsChunkEndExt"
+#define EmsChunk(size, save, load)      "SHORT 0 (size); POIN (save) (load); WORD 0"
+#define EmsChunk(size, save, load, idx) "SHORT 0 (size); POIN (save) (load); WORD idx"
+#define EmsChunkEnd "SHORT 0xFFFF 0 0 0 0 0"
 
 // ================================
 // = CHUNK IDENTIFIER DEFINITIONS =
@@ -57,7 +51,6 @@ gEmsSizes:
 
 ALIGN 4
 gEmsSavChunks:
-    EmsChunkStart
     EmsChunk($004C, MSA_SavePlaySt,     MSA_LoadPlaySt,      EMS_CHUNK_CHAPTERSTATE)
     EmsChunk($00B0, $0A31E4+1,          $0A326C+1,           EMS_CHUNK_CONVOYITEMS)      /* Supply */
     EmsChunk($0019, $0A3150+1,          $0A3198+1,           EMS_CHUNK_EIDS_PERMANENT)   /* Permanent flags */
@@ -75,16 +68,10 @@ gEmsSavChunks:
     EmsChunk($0660, SaveUnitLearnedSkillLists, LoadUnitLearnedSkillLists)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
 
-    /* Free: $15BC ~ $19B0 */
-    // EmsChunkEnd($19B0, MSA_ExternalSaver, MSA_ExternalLoader)
-    #ifdef _EMU_CHUNK_OFFSET; #define EMU_CHUNK_OFFSET _EMU_CHUNK_OFFSET; #endif
-    SHORT EMU_CHUNK_OFFSET ($19B0 - EMU_CHUNK_OFFSET)
-    POIN MSA_ExternalSaver MSA_ExternalLoader; WORD 0
-    EmsChunkEndExt
+    EmsChunkEnd
 
 
 gEmsSusChunks:
-    EmsChunkStart
     EmsChunk($004C, MSU_SavePlaySt,     MSU_LoadPlaySt,      EMS_CHUNK_CHAPTERSTATE)
     EmsChunk($0038, MSU_SaveAction,     MSU_LoadAction)
     EmsChunk($0019, $0A3150+1,          $0A3198+1,           EMS_CHUNK_EIDS_PERMANENT)   /* Permanent flags */
@@ -114,11 +101,7 @@ gEmsSusChunks:
     EmsChunk((51 + 50 + 8) * 4, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
 #endif /* CONFIG_USE_STAT_DEBUFF */
 
-    // EmsChunkEnd($3000, MSU_ExternalSaver, MSU_ExternalLoader)
-    #ifdef _EMU_CHUNK_OFFSET; #define EMU_CHUNK_OFFSET _EMU_CHUNK_OFFSET; #undef _EMU_CHUNK_OFFSET; #endif
-    SHORT EMU_CHUNK_OFFSET ($3000 - EMU_CHUNK_OFFSET)
-    POIN MSA_ExternalSaver MSA_ExternalLoader; WORD 0
-    EmsChunkEndExt
+    EmsChunkEnd
 
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
