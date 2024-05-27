@@ -16,9 +16,11 @@ STATIC_DECLAR bool CheckUnitNullEffective(struct Unit * unit)
     if (attributes & IA_NEGATE_FLYING)
         return true;
 
+#if (defined(SID_Nullify) && (SID_Nullify < MAX_SKILL_NUM))
     /* Check unit */
     if (SkillTester(unit, SID_Nullify))
         return true;
+#endif
 
     return false;
 }
@@ -81,11 +83,15 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
     }
 
     /* Check skills */
+#if (defined(SID_Slayer) && (SID_Slayer < MAX_SKILL_NUM))
     if (SkillTester(actor, SID_Slayer))
         list = GetItemEffectiveness(ITEM_LIGHT_IVALDI);
+#endif
 
+#if (defined(SID_Skybreaker) && (SID_Skybreaker < MAX_SKILL_NUM))
     if (SkillTester(actor, SID_Skybreaker))
         list = GetItemEffectiveness(ITEM_BOW_IRON);
+#endif
 
     if (!list)
         return false;

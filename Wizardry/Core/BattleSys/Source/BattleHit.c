@@ -10,7 +10,7 @@
 
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-#if (SID_Aether < MAX_SKILL_NUM)
+#if (defined(SID_Aether) && (SID_Aether < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Aether, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
@@ -18,7 +18,7 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
     }
 #endif /* SID_Aether */
 
-#if (SID_Sol < MAX_SKILL_NUM)
+#if (defined(SID_Sol) && (SID_Sol < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Sol, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
@@ -104,27 +104,33 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     attack = gBattleStats.attack;
     defense = gBattleStats.defense;
 
+#if (defined(SID_Flare) && (SID_Flare < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Flare, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Flare);
         defense = defense / 2;
     }
+#endif
 
     if (IsMagicAttack(attacker))
     {
+#if (defined(SID_Corona) && (SID_Corona < MAX_SKILL_NUM))
         if (CheckBattleSkillActivte(attacker, defender, SID_Corona, GetUnitSkill(GetUnit(attacker->unit.index))))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corona);
             defense = 0;
         }
+#endif
     }
     else
     {
+#if (defined(SID_Luna) && (SID_Luna < MAX_SKILL_NUM))
         if (CheckBattleSkillActivte(attacker, defender, SID_Luna, GetUnitSkill(GetUnit(attacker->unit.index))))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Luna);
             defense = 0;
         }
+#endif
     }
 
     gBattleStats.damage = attack - defense;
@@ -195,19 +201,23 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         struct Unit * _tmpunit = GetUnit(defender->unit.index);
         if (IsMagicAttack(attacker))
         {
+#if (defined(SID_Aegis) && (SID_Aegis < MAX_SKILL_NUM))
             if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, GetUnitSkill(_tmpunit)))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
                 gBattleStats.damage = 0;
             }
+#endif
         }
         else
         {
+#if (defined(SID_Pavise) && (SID_Pavise < MAX_SKILL_NUM))
             if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, GetUnitSkill(_tmpunit)))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
                 gBattleStats.damage = 0;
             }
+#endif
         }
     }
 
@@ -347,18 +357,23 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
     struct Unit * uact = GetUnit(attacker->unit.index);
     struct Unit * utar = GetUnit(defender->unit.index);
 
+#if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Bane, GetUnitSkill(uact)))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
         return true;
     }
+#endif
 
+#if (defined(SID_Inori) && (SID_Inori < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_Inori, GetUnitLuck(utar)))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Inori);
         return true;
     }
+#endif
 
+#if (defined(SID_LEGEND_InoriAtk) && (SID_LEGEND_InoriAtk < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAtk, 100))
     {
         ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAtk);
@@ -368,7 +383,9 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
             return true;
         }
     }
+#endif
 
+#if (defined(SID_LEGEND_InoriAvo) && (SID_LEGEND_InoriAvo < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAvo, 100))
     {
         ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAvo);
@@ -378,7 +395,9 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
             return true;
         }
     }
+#endif
 
+#if (defined(SID_LEGEND_InoriDef) && (SID_LEGEND_InoriDef < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriDef, 100))
     {
         ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriDef);
@@ -388,6 +407,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
             return true;
         }
     }
+#endif
 
     return false;
 }
@@ -431,8 +451,10 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if CHAX
             gBattleActorGlobalFlag.enimy_defeated = true;
 
+#if (defined(SID_Galeforce) && (SID_Galeforce < MAX_SKILL_NUM))
             if (CheckBattleSkillActivte(&gBattleActor, &gBattleTarget, SID_Galeforce, GetUnitSkill(GetUnit(gBattleActor.unit.index))))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
+#endif
 #endif
             gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
         }
