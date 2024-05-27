@@ -121,5 +121,5 @@ int DefGetterStatDebuff(int status, struct Unit * unit);
 int ResGetterStatDebuff(int status, struct Unit * unit);
 int LckGetterStatDebuff(int status, struct Unit * unit);
 int MovGetterStatDebuff(int status, struct Unit * unit);
-void StatDeuff_OnGameInit(void);
+void StatDeuff_OnNewGameSave(void);
 void StatDeuff_OnLoadUnit(struct Unit * unit);

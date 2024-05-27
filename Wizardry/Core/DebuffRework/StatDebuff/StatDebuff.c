@@ -418,7 +418,7 @@ int MovGetterStatDebuff(int status, struct Unit * unit)
     return status + GetStatDebuffMsgBuf(unit)->mov;
 }
 
-void StatDeuff_OnGameInit(void)
+void StatDeuff_OnNewGameSave(void)
 {
     CpuFastFill16(0, sStatDebuffStatusAlly, sizeof(sStatDebuffStatusAlly));
     CpuFastFill16(0, sStatDebuffStatusEnemy, sizeof(sStatDebuffStatusEnemy));
