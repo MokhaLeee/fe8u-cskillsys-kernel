@@ -1,0 +1,7 @@
+## MSG_SKILL_DEBUFF_Aversa_NAME
+Aversa[X]
+
+## MSG_SKILL_DEBUFF_Aversa
+Aversa's Night: if enemy's HP < unit's[NL]
+HP -3 and have allies in 2x2, inflicts[NL]
+Atk/Spd/Def/Res-3 and caught Panic.[X]

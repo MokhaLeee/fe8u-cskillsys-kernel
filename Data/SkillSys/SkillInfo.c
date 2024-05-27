@@ -842,6 +842,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_AversaNight) && (SID_AversaNight < MAX_SKILL_NUM))
+    [SID_AversaNight] = {
+        .name = MSG_SKILL_DEBUFF_Aversa_NAME,
+        .desc = MSG_SKILL_DEBUFF_Aversa,
+        .icon = GFX_SkillIcon_AversaNight,
+    },
+#endif
+
 #if (defined(SID_BattleRange_Todo1) && (SID_BattleRange_Todo1 < MAX_SKILL_NUM))
     [SID_BattleRange_Todo1] = {
         .desc = MSG_SKILL_BattleRange1,

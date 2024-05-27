@@ -20,3 +20,5 @@ with open(sys.argv[1], "r") as fi:
 
         print(f"#define {line.split()[0]} {i}")
         i = i + 1
+
+    print(f"#define SID_MAX {i}")

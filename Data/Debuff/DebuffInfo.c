@@ -166,7 +166,6 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
         .type = STATUS_INFO_TYPE_DEBUFF,
         .duration = 1,
         .efx_config = {EFX_DEBUFF_NORMAL, 0x10, 0, 0},
-        .battle_status.avo = 30,
         .img = GFX_DebuffMinibox_Panic,
     },
 };

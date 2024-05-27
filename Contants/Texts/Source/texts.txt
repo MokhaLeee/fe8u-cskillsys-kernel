@@ -39,6 +39,7 @@ Raises magic.[X]
 #include texts/Skills_PostAction.txt
 #include texts/Skills_PrePhase.txt
 #include texts/Skills_RangeDebuff.txt
+#include texts/Skills_Debuff.txt
 #include texts/Skills_AI.txt
 #include texts/Skills_Menu.txt
 #include texts/Skills_Legend.txt

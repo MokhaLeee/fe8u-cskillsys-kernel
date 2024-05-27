@@ -2,6 +2,7 @@
 
 ALIGN 4
 gPrePhaseFuncs:
+    POIN PrePhaseFunc_AversaNight
     WORD 0 0 0 0 0
 
 PUSH

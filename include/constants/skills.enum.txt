@@ -144,6 +144,8 @@ SID_Inspiration
 SID_DivinelyInspiring
 SID_VoiceOfPeace
 
+SID_AversaNight
+
 SID_BattleRange_Todo1       // +10 atk if no allies range-3
 SID_BattleRange_Todo2       // +7  atk if no allies range-2
 SID_BattleRange_Todo3       // +5  atk if no allies range-1

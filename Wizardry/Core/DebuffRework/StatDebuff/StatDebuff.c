@@ -134,7 +134,7 @@ static u32 * const sStatDebuffStatusPool[0x100] = {
 
 static inline u32 * GetUnitStatDebuffStatus(struct Unit * unit)
 {
-    return sStatDebuffStatusPool[unit->index];
+    return sStatDebuffStatusPool[unit->index & 0xFF];
 }
 
 static inline void _BIT_SET(u32 * bits, int idx)
@@ -173,6 +173,16 @@ void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         abort();
     }
     _BIT_CLR(GetUnitStatDebuffStatus(unit), debuff);
+}
+
+bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
+{
+    if (debuff >= UNIT_STAT_DEBUFF_MAX)
+    {
+        Errorf("ENOTDIR: %d", debuff);
+        abort();
+    }
+    return _BIT_CHK(GetUnitStatDebuffStatus(unit), debuff);
 }
 
 void MSU_SaveStatDebuff(u8 * dst, const u32 size)
@@ -433,6 +443,15 @@ int LckGetterStatDebuff(int status, struct Unit * unit)
 int MovGetterStatDebuff(int status, struct Unit * unit)
 {
     return status + GetStatDebuffMsgBuf(unit)->mov;
+}
+
+void StatDeuff_OnNewGameInit(void)
+{
+    if (UNIT_STAT_DEBUFF_MAX_REAL >= UNIT_STAT_DEBUFF_MAX)
+    {
+        Errorf("StatDebuff overflowed: %d", UNIT_STAT_DEBUFF_MAX_REAL);
+        abort();
+    }
 }
 
 void StatDeuff_OnNewGameSave(void)

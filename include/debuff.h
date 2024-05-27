@@ -113,6 +113,9 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_BUFF_RES,
     UNIT_STAT_BUFF_MOV,
 
+    UNIT_STAT_DEBUFF_AversaNight,
+
+    UNIT_STAT_DEBUFF_MAX_REAL,
     UNIT_STAT_DEBUFF_MAX = 32, /* If expand, fix */
 };
 
@@ -123,6 +126,7 @@ void MSU_SaveStatDebuff(u8 * dst, const u32 size);
 void MSU_LoadStatDebuff(u8 * src, const u32 size);
 void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
+bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type);
 
 void PreBattleCalcStatDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
@@ -134,5 +138,7 @@ int DefGetterStatDebuff(int status, struct Unit * unit);
 int ResGetterStatDebuff(int status, struct Unit * unit);
 int LckGetterStatDebuff(int status, struct Unit * unit);
 int MovGetterStatDebuff(int status, struct Unit * unit);
+
+void StatDeuff_OnNewGameInit(void);
 void StatDeuff_OnNewGameSave(void);
 void StatDeuff_OnLoadUnit(struct Unit * unit);

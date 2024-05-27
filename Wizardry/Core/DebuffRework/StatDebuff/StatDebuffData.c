@@ -84,4 +84,15 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         .type = STATUS_INFO_TYPE_BUFF,
         .unit_status = { .mov = +4 },
     },
+
+    [UNIT_STAT_DEBUFF_AversaNight] = {
+        .type = STATUS_INFO_TYPE_DEBUFF,
+        .unit_status = {
+            .pow = -3,
+            .mag = -3,
+            .spd = -3,
+            .def = -3,
+            .res = -3,
+        },
+    },
 };
