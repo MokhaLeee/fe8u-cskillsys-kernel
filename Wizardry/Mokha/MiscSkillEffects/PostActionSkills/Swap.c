@@ -84,7 +84,12 @@ LABEL(99)
 bool PostActionSwap(ProcPtr proc)
 {
     struct Unit * unit = gActiveUnit;
+
+#if defined(SID_Thunderstorm) && (SID_Thunderstorm < MAX_SKILL_NUM)
     if (!SkillTester(unit, SID_PosSwap))
+#else
+    if (1)
+#endif
         return false;
 
     if (gActionData.unitActionType != UNIT_ACTION_COMBAT)

@@ -12,8 +12,10 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 {
     int ret = 0;
 
+#if defined(SID_Renewal) && (SID_Renewal < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Renewal))
         ret += Div(GetUnitMaxHp(unit) * 3, 10);
+#endif
 
     return ret;
 }

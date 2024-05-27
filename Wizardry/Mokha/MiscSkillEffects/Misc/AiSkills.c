@@ -90,15 +90,21 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
                 continue;
 
 #if CHAX
+
+#if defined(SID_Shade) && (SID_Shade < MAX_SKILL_NUM)
             /* Shade skill may make unit avoid to be target */
             if (SkillTester(unit, SID_Shade))
             {
                 if (Roll2RN(GetUnitLuck(unit)))
                     continue;
             }
+#endif
 
+#if defined(SID_ShadePlus) && (SID_ShadePlus < MAX_SKILL_NUM)
             if (SkillTester(unit, SID_ShadePlus))
                 continue;
+#endif
+
 #endif
 
             if (!isEnemy(unit))
@@ -169,8 +175,10 @@ int AiGetDamageDealtCombatScoreComponent(void)
 {
     int score = AiGetDamageDealtCombatScoreComponentVanilla();
 
+#if defined(SID_Provoke) && (SID_Provoke < MAX_SKILL_NUM)
     if (SkillTester(&gBattleTarget.unit, SID_Provoke))
         score += 50;
+#endif
 
     return score;
 }

@@ -28,21 +28,31 @@ int LckGetterWeaponBonus(int status, struct Unit * unit)
 
 int LckGetterSkills(int status, struct Unit * unit)
 {
+#if defined(SID_LckBonus) && (SID_LckBonus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_LckBonus))
         status += 2;
+#endif
 
+#if defined(SID_DefiantLck) && (SID_DefiantLck < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_DefiantLck))
         if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
             status += 7;
+#endif
 
+#if defined(SID_Fury) && (SID_Fury < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Fury))
         status += 3;
+#endif
 
+#if defined(SID_FuryPlus) && (SID_FuryPlus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_FuryPlus))
         status += 4;
+#endif
 
+#if defined(SID_LuckySeven) && (SID_LuckySeven < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_LCK)
         status += 7;
+#endif
 
     return status;
 }

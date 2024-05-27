@@ -63,7 +63,11 @@ bool PostActionPositionReturn(ProcPtr proc)
     if (gActiveUnit->state & US_UNAVAILABLE)
         return false;
 
+#if defined(SID_PosReturn) && (SID_PosReturn < MAX_SKILL_NUM)
     if (!SkillTester(gActiveUnit, SID_PosReturn))
+#else
+    if (1)
+#endif
         return false;
 
     if (gBattleActorGlobalFlag.enimy_defeated == false)

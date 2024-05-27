@@ -68,7 +68,11 @@ bool PostActionSkillBreathOfLife(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
 
+#if defined(SID_Canto) && (SID_Canto < MAX_SKILL_NUM)
     if (!SkillTester(unit, SID_BreathOfLife))
+#else
+    if (1)
+#endif
         return false;
 
     Proc_StartBlocking(ProcScr_PostActionSkillBreathOfLife, parent);

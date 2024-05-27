@@ -31,21 +31,31 @@ int SklGetterWeaponBonus(int status, struct Unit * unit)
 
 int SklGetterSkills(int status, struct Unit * unit)
 {
+#if defined(SID_SklBonus) && (SID_SklBonus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_SklBonus))
         status += 2;
+#endif
 
+#if defined(SID_DefiantSkl) && (SID_DefiantSkl < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_DefiantSkl))
         if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
             status += 7;
+#endif
 
+#if defined(SID_Fury) && (SID_Fury < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Fury))
         status += 3;
+#endif
 
+#if defined(SID_FuryPlus) && (SID_FuryPlus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_FuryPlus))
         status += 4;
+#endif
 
+#if defined(SID_LuckySeven) && (SID_LuckySeven < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_SKL)
         status += 7;
+#endif
 
     return status;
 }

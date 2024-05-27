@@ -12,11 +12,9 @@
 
 extern u8 gPostActionGaleforceFlag;
 
-/* Decomp port */
-void StartStatusHealEffect(struct Unit * unit, ProcPtr proc);
-
 bool PostActionGaleForce(ProcPtr parent)
 {
+#if defined(SID_Galeforce) && (SID_Galeforce < MAX_SKILL_NUM)
     struct Unit * unit = gActiveUnit;
 
     gPostActionGaleforceFlag = false;
@@ -32,5 +30,6 @@ bool PostActionGaleForce(ProcPtr parent)
         }
         break;
     }
+#endif /* defined(SID_Galeforce) */
     return false;
 }

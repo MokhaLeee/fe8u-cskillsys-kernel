@@ -65,14 +65,20 @@ bool PostActionBattleActorSelfHurt(ProcPtr parent)
     switch (gActionData.unitActionType) {
     case UNIT_ACTION_COMBAT:
     case UNIT_ACTION_STAFF:
+#if defined(SID_Fury) && (SID_Fury < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_Fury))
             damage += 6;
+#endif
 
+#if defined(SID_FuryPlus) && (SID_FuryPlus < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_FuryPlus))
             damage += 8;
+#endif
 
+#if defined(SID_DoubleLion) && (SID_DoubleLion < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_DoubleLion) && (gBattleActorGlobalFlag.skill_activated_double_lion))
             damage += 1;
+#endif
 
         break;
     };
@@ -96,11 +102,15 @@ bool PostActionBattleTargetSelfHurt(ProcPtr parent)
     switch (gActionData.unitActionType) {
     case UNIT_ACTION_COMBAT:
     case UNIT_ACTION_STAFF:
+#if defined(SID_Fury) && (SID_Fury < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_Fury))
             damage += 6;
+#endif
 
+#if defined(SID_FuryPlus) && (SID_FuryPlus < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_FuryPlus))
             damage += 8;
+#endif
 
         break;
     };

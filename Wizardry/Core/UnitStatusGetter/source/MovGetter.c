@@ -25,8 +25,10 @@ int _GetUnitMov(struct Unit * unit)
 
 int MovGetterSkills(int status, struct Unit * unit)
 {
+#if defined(SID_LuckySeven) && (SID_LuckySeven < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_MOV)
         status += 7;
+#endif
 
     return status;
 }

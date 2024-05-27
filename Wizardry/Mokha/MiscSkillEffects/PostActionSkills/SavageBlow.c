@@ -13,9 +13,6 @@
 #include "map-anims.h"
 #include "constants/skills.h"
 
-void ForEachUnitInRange(void(* func)(struct Unit * unit));
-void AddUnitToTargetListIfNotAllied(struct Unit * unit);
-
 STATIC_DECLAR void ExecSkillSavageBlowEffectAnim(ProcPtr proc)
 {
     int i;
@@ -67,7 +64,11 @@ bool PostActionSkillSavageBlow(ProcPtr parent)
     struct Unit * unit = gActiveUnit;
     struct Unit * target = GetUnit(gActionData.targetIndex);
 
+#if defined(SID_SavageBlow) && (SID_SavageBlow < MAX_SKILL_NUM)
     if (!SkillTester(unit, SID_SavageBlow) || !UNIT_IS_VALID(target))
+#else
+    if (1)
+#endif
         return false;
 
     Proc_StartBlocking(ProcScr_PostActionSkillSavageBlow, parent);

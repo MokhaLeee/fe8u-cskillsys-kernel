@@ -58,7 +58,12 @@ STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
 bool PostActionThunderstorm(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
+
+#if defined(SID_Thunderstorm) && (SID_Thunderstorm < MAX_SKILL_NUM)
     if (!SkillTester(unit, SID_Thunderstorm))
+#else
+    if (1)
+#endif
         return false;
 
     if (gBattleStats.range < 3)

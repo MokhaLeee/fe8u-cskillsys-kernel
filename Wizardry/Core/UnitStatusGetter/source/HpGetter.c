@@ -28,8 +28,10 @@ int HpGetterWeaponBonus(int status, struct Unit * unit)
 
 int HpGetterSkills(int status, struct Unit * unit)
 {
+#if defined(SID_HpBonus) && (SID_HpBonus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_HpBonus))
         status += 5;
+#endif
 
     return status;
 }

@@ -16,7 +16,11 @@
 
 u8 DanceCommandUsabilityRework(const struct MenuItemDef * def, int number)
 {
+#if defined(SID_Dance) && (SID_Dance < MAX_SKILL_NUM)
     if (!SkillTester(gActiveUnit, SID_Dance))
+#else
+    if (1)
+#endif
         return MENU_NOTSHOWN;
 
     gBmSt.um_tmp_item = ITEM_DANCE;
@@ -25,7 +29,11 @@ u8 DanceCommandUsabilityRework(const struct MenuItemDef * def, int number)
 
 u8 StealCommandUsabilityRework(const struct MenuItemDef * def, int number)
 {
+#if defined(SID_Steal) && (SID_Steal < MAX_SKILL_NUM)
     if (!SkillTester(gActiveUnit, SID_Steal))
+#else
+    if (1)
+#endif
         return MENU_NOTSHOWN;
 
     if (gActiveUnit->state & US_CANTOING)
@@ -46,7 +54,11 @@ u8 SummonCommandUsabilityRework(const struct MenuItemDef * def, int number)
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
+#if defined(SID_Summon) && (SID_Summon < MAX_SKILL_NUM)
     if (!SkillTester(gActiveUnit, SID_Summon))
+#else
+    if (1)
+#endif
         return MENU_NOTSHOWN;
 
     MakeTargetListForSummon(gActiveUnit);
@@ -61,7 +73,11 @@ u8 PickCommandUsabilityRework(const struct MenuItemDef * def, int number)
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
+#if defined(SID_LockTouch) && (SID_LockTouch < MAX_SKILL_NUM)
     if (!SkillTester(gActiveUnit, SID_LockTouch))
+#else
+    if (1)
+#endif
         return MENU_NOTSHOWN;
 
     MakeTargetListForPick(gActiveUnit);
@@ -89,7 +105,11 @@ u8 SupplyUsabilityRework(const struct MenuItemDef * def, int number)
     if (UNIT_CLASS_ID(gActiveUnit) == CLASS_PHANTOM)
         return MENU_NOTSHOWN;
 
+#if defined(SID_Supply) && (SID_Supply < MAX_SKILL_NUM)
     if (SkillTester(gActiveUnit, SID_Supply))
+#else
+    if (0)
+#endif
         return MENU_ENABLED;
 
     for (i = 0; i < 4; i++)
@@ -102,7 +122,11 @@ u8 SupplyUsabilityRework(const struct MenuItemDef * def, int number)
         if (!UNIT_IS_VALID(unit) || !AreUnitsAllied(gActiveUnit->index, unit->index))
             continue;
 
+#if defined(SID_Supply) && (SID_Supply < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_Supply))
+#else
+        if (0)
+#endif
             return MENU_ENABLED;
     }
     return MENU_NOTSHOWN;

@@ -25,8 +25,17 @@ STATIC_DECLAR bool CheckCanto(void)
     if (gActiveUnit->state & (US_DEAD | US_HAS_MOVED | US_BIT16))
         return false;
 
-    canto  = SkillTester(gActiveUnit, SID_Canto);
+#if defined(SID_Canto) && (SID_Canto < MAX_SKILL_NUM)
+    canto = SkillTester(gActiveUnit, SID_Canto);
+#else
+    canto = false;
+#endif
+
+#if defined(SID_CantoPlus) && (SID_CantoPlus < MAX_SKILL_NUM)
     cantop = SkillTester(gActiveUnit, SID_CantoPlus);
+#else
+    cantop = false;
+#endif
 
     if (!canto && !cantop)
         return false;
