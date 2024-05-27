@@ -5,7 +5,7 @@
 #define EMS_CHUNK_INVALID_OFFSET ((u16)-1)
 
 struct EmsChunk {
-    /* 00 */ u16 offset;
+    /* 00 */ u16 _unused_;
     /* 02 */ u16 size;
 
     /* 04 */ void (* save)(u8 * dst, const u32 size);

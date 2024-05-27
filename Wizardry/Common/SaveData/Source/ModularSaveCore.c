@@ -174,20 +174,22 @@ void WriteGameSave(int slot)
     struct SaveBlockInfo chunk;
     u16 chunk_size = gEmsSizes[0]; // SAV
     u8 * dst = GetSaveWriteAddr(slot);
+    u32 offset = 0;
 
     InvalidateSuspendSave(SAVE_ID_SUSPEND);
     gPlaySt.gameSaveSlot = slot;
 
-    for (cur = gEmsSavChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSavChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
-        if (cur->offset > chunk_size)
+        if (offset > chunk_size)
         {
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
-                    cur->offset, cur->size, cur->save, cur->load);
+                    offset, cur->size, cur->save, cur->load);
 
             abort();
         }
-        cur->save(dst + cur->offset, cur->size);
+        cur->save(dst + offset, cur->size);
+        offset += cur->size;
     }
     chunk.magic32 = SAVEMAGIC32;
     chunk.kind = SAVEBLOCK_KIND_GAME;
@@ -201,22 +203,24 @@ void ReadGameSave(int slot)
     const struct EmsChunk * cur;
     u8 * src = GetSaveReadAddr(slot);
     u16 chunk_size = gEmsSizes[0]; // SAV
+    u32 offset = 0;
 
     if (!(PLAY_FLAG_HARD & gBmSt.gameStateBits))
         InvalidateSuspendSave(SAVE_ID_SUSPEND);
 
     InitUnits();
 
-    for (cur = gEmsSavChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSavChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
-        if (cur->offset > chunk_size)
+        if (offset > chunk_size)
         {
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
-                    cur->offset, cur->size, cur->save, cur->load);
+                    offset, cur->size, cur->save, cur->load);
 
             abort();
         }
-        cur->load(src + cur->offset, cur->size);
+        cur->load(src + offset, cur->size);
+        offset += cur->size;
     }
     gPlaySt.gameSaveSlot = slot;
     WriteLastGameSaveId(slot);
@@ -229,6 +233,7 @@ void WriteSuspendSave(int slot)
     const struct EmsChunk * cur;
     struct SaveBlockInfo chunk;
     u16 chunk_size = gEmsSizes[1]; // SUS
+    u32 offset;
 
     if (PLAY_FLAG_TUTORIAL & gPlaySt.chapterStateBits)
         return;
@@ -239,16 +244,17 @@ void WriteSuspendSave(int slot)
     slot += GetNextSuspendSaveId();
     dst = GetSaveWriteAddr(slot);
         
-    for (cur = gEmsSusChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSusChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
-        if (cur->offset > chunk_size)
+        if (offset > chunk_size)
         {
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
-                    cur->offset, cur->size, cur->save, cur->load);
+                    offset, cur->size, cur->save, cur->load);
 
             abort();
         }
-        cur->save(dst + cur->offset, cur->size);
+        cur->save(dst + offset, cur->size);
+        offset += cur->size;
     }
 
     chunk.magic32 = SAVEMAGIC32;
@@ -265,19 +271,21 @@ void ReadSuspendSave(int slot)
     const struct EmsChunk * cur;
     u8 * src = GetSaveReadAddr(slot + gSuspendSaveIdOffset);
     u16 chunk_size = gEmsSizes[1]; // SUS
+    u32 offset;
 
     InitUnits();
 
-    for (cur = gEmsSusChunks; cur->offset != EMS_CHUNK_INVALID_OFFSET; cur++)
+    for (cur = gEmsSusChunks; cur->_unused_ != EMS_CHUNK_INVALID_OFFSET; cur++)
     {
-        if (cur->offset > chunk_size)
+        if (offset > chunk_size)
         {
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     cur->offset, cur->size, cur->save, cur->load);
 
             abort();
         }
-        cur->load(src + cur->offset, cur->size);
+        cur->load(src + offset, cur->size);
+        offset += cur->size;
     }
 
     LoadRNStateFromActionStruct();
