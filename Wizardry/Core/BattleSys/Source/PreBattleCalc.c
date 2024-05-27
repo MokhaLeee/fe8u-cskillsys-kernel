@@ -315,14 +315,16 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
     if (SkillTester(unit, SID_BlueFlame))
         attacker->battleAttack += 2;
 
-    //Check if the unit has Frenzy
-    if(SkillTester(unit, SID_Frenzy))
-    {   
-        //Check if their current HP is at least 4 points less than their max HP
-        if((GetUnitMaxHp(unit) - GetUnitCurrentHp(unit)) >= 4) {
-            //Find the difference between the two
-            //Divide by 4
-            //Add the resulting total to the unit's attack
+    if (SkillTester(unit, SID_Frenzy))
+    {
+        // Check if their current HP is at least 4 points less than their max HP
+        if ((GetUnitMaxHp(unit) - GetUnitCurrentHp(unit)) >= 4)
+        {
+            /**
+             * Find the difference between the two
+             * Divide by 4
+             * Add the resulting total to the unit's attack
+             */
             attacker->battleAttack += (GetUnitMaxHp(unit) - GetUnitCurrentHp(unit)) / 4;
         }
     }
