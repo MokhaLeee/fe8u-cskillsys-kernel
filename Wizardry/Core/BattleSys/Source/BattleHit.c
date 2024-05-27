@@ -10,16 +10,22 @@
 
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
+#if (SID_Aether < MAX_SKILL_NUM)
     if (CheckBattleSkillActivte(attacker, defender, SID_Aether, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         return true;
     }
+#endif /* SID_Aether */
+
+#if (SID_Sol < MAX_SKILL_NUM)
     if (CheckBattleSkillActivte(attacker, defender, SID_Sol, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
         return true;
     }
+#endif /* SID_Aether */
+
     return false;
 }
 
@@ -28,14 +34,20 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     struct Unit * unit = GetUnit(attacker->unit.index);
     int damage = 0;
 
+#if (SID_RuinedBlade < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_RuinedBlade))
         damage += 5;
+#endif // SID_RuinedBlade
 
+#if (SID_RuinedBladePlus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_RuinedBladePlus))
         damage += 5;
+#endif // SID_RuinedBladePlus
 
+#if (SID_LunaAttack < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_LunaAttack))
         damage += defender->battleDefense / 4;
+#endif // SID_LunaAttack
 
     return damage;
 }

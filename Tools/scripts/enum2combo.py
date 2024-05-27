@@ -14,7 +14,5 @@ with open(sys.argv[1], "r") as fi:
         if line[0] == '/':
             continue
 
-        pos = line.find(',', 1)
-
-        print(f"{i:02X}={line[:pos]}")
+        print(f"{i:02X}={line.split()[0]}")
         i = i + 1

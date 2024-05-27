@@ -262,6 +262,22 @@ $(GFX_HEADER): $(GFX_SOURCES)
 CLEAN_BUILD += $(GFX_DIR)
 CLEAN_FILES += $(GFX_HEADER)
 
+# ========
+# = ENUM =
+# ========
+
+SKILLS_ENUM := $(MK_DIR)include/constants/skills.enum.txt
+SKILLS_ENUM_H := $(MK_DIR)include/constants/skills.h
+SKILLS_ENUM_COMBO := $(MK_DIR)Patches/combo.skills.txt
+
+enum: $(SKILLS_ENUM)
+	@echo "[GEN]	$(SKILLS_ENUM_H) $(SKILLS_ENUM_COMBO)"
+	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2h.py $(SKILLS_ENUM) > $(SKILLS_ENUM_H)
+	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2combo.py $(SKILLS_ENUM) > $(SKILLS_ENUM_COMBO)
+
+PRE_BUILD += enum
+CLEAN_FILES += $(SKILLS_ENUM_H) # $(SKILLS_ENUM_COMBO)
+
 # =============
 # = PRE-BUILD =
 # =============
