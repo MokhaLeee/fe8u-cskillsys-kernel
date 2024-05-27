@@ -69,12 +69,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
     if (&gBattleActor == actor)
     {
+#if defined(SID_WaryFighter) && (SID_WaryFighter < MAX_SKILL_NUM)
         if (SkillTester(real_target, SID_WaryFighter))
             if ((GetUnitCurrentHp(real_target) * 2) > HpMaxGetter(real_target))
                 return false;
+#endif
 
         gBattleTemporaryFlag.order_dobule_lion = false;
 
+#if defined(SID_DoubleLion) && (SID_DoubleLion < MAX_SKILL_NUM)
         if (SkillTester(real_actor, SID_DoubleLion))
         {
             if (GetUnitCurrentHp(real_actor) == HpMaxGetter(real_actor))
@@ -84,11 +87,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
                 return true;
             }
         }
+#endif
     }
     else if (&gBattleTarget == actor)
     {
         gBattleTemporaryFlag.order_quick_riposte = false;
 
+#if defined(SID_QuickRiposte) && (SID_QuickRiposte < MAX_SKILL_NUM)
         if (SkillTester(real_actor, SID_QuickRiposte))
         {
             if ((GetUnitCurrentHp(real_target) * 2) > HpMaxGetter(real_target))
@@ -97,6 +102,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
                 return true;
             }
         }
+#endif
     }
 
     if ((actor->battleSpeed - target->battleSpeed) < BATTLE_FOLLOWUP_SPEED_THRESHOLD)
@@ -111,6 +117,7 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 
     gBattleTemporaryFlag.order_desperation = false;
 
+#if defined(SID_Desperation) && (SID_Desperation < MAX_SKILL_NUM)
     if (SkillTester(actor, SID_Desperation))
     {
         if ((GetUnitCurrentHp(actor) * 2) < HpMaxGetter(actor))
@@ -119,6 +126,7 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
             return true;
         }
     }
+#endif
     return false;
 }
 
@@ -132,6 +140,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
         return false;
 
+#if defined(SID_Vantage) && (SID_Vantage < MAX_SKILL_NUM)
     if (SkillTester(target, SID_Vantage))
     {
         if ((GetUnitCurrentHp(target) * 2) < HpMaxGetter(target))
@@ -140,6 +149,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
             return true;
         }
     }
+#endif
     return false;
 }
 
@@ -229,13 +239,16 @@ void BattleUnwind(void)
         if (i != 0 && config[i - 1] == config[i])
             gBattleHitIterator->attributes = BATTLE_HIT_ATTR_FOLLOWUP;
 
+#if defined(SID_Vantage) && (SID_Vantage < MAX_SKILL_NUM)
         /* Vantage */
         if (i == 0 && (round_mask & UNWIND_VANTAGE))
         {
             if (gBattleTemporaryFlag.order_vantage)
                 RegisterActorEfxSkill(GetBattleHitRound(old), SID_Vantage);
         }
+#endif
 
+#if defined(SID_Desperation) && (SID_Desperation < MAX_SKILL_NUM)
         /* Desperation */
         if (i == 1 && (round_mask & UNWIND_DESPERA))
         {
@@ -245,20 +258,25 @@ void BattleUnwind(void)
                     RegisterActorEfxSkill(GetBattleHitRound(old), SID_Desperation);
             }
         }
+#endif
 
+#if defined(SID_QuickRiposte) && (SID_QuickRiposte < MAX_SKILL_NUM)
         /* Target double attack */
         if (target_count > 1 && config[i] == TAR_ATTACK)
         {
             if (gBattleTemporaryFlag.order_quick_riposte)
                 RegisterActorEfxSkill(GetBattleHitRound(old), SID_QuickRiposte);
         }
+#endif
 
+#if defined(SID_DoubleLion) && (SID_DoubleLion < MAX_SKILL_NUM)
         /* Actor double attack */
         if (actor_count > 1 && config[i] == ACT_ATTACK)
         {
             if (gBattleTemporaryFlag.order_dobule_lion)
                 RegisterActorEfxSkill(GetBattleHitRound(old), SID_DoubleLion);
         }
+#endif
 
         if (ret)
             break;
@@ -283,15 +301,21 @@ bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * d
         int round = GetBattleHitRound(gBattleHitIterator);
         gBattleHitIterator->attributes |= attrs;
 
+#if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
         /* RuinedBladePlus */
         if (i == 1 && gBattleTemporaryFlag.order_ruined_blade_plus)
             RegisterActorEfxSkill(round, SID_RuinedBladePlus);
+#endif
 
+#if defined(SID_Adept) && (SID_Adept < MAX_SKILL_NUM)
         if (i == 1 && gBattleTemporaryFlag.order_adept)
             RegisterActorEfxSkill(round, SID_Adept);
+#endif
 
+#if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
         if (i == 2 && gBattleTemporaryFlag.order_astra)
             RegisterActorEfxSkill(round, SID_Astra);
+#endif
 
         if (BattleGenerateHit(attacker, defender))
             return true;
@@ -338,21 +362,30 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     if (BattleCheckBraveEffect(actor))
         result = result + 1;
 
+#if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_RuinedBladePlus))
     {
         gBattleTemporaryFlag.order_ruined_blade_plus = true;
         result = result + 1;
     }
+#endif
+
+#if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Astra) && BattleRoll2RN(GetUnitSpeed(unit) * 2, true))
     {
         gBattleTemporaryFlag.order_astra = true;
         gBattleActorGlobalFlag.skill_activated_astra = true;
         result = result + 4;
     }
+#endif
+
+#if defined(SID_Adept) && (SID_Adept < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Adept) && unit->curHP == unit->maxHP)
     {
         gBattleTemporaryFlag.order_adept = true;
         result = result + 1;
     }
+#endif
+
     return result;
 }

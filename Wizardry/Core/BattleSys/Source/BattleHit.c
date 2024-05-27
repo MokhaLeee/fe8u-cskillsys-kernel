@@ -34,17 +34,17 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     struct Unit * unit = GetUnit(attacker->unit.index);
     int damage = 0;
 
-#if (SID_RuinedBlade < MAX_SKILL_NUM)
+#if defined(SID_RuinedBlade) && (SID_RuinedBlade < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_RuinedBlade))
         damage += 5;
 #endif // SID_RuinedBlade
 
-#if (SID_RuinedBladePlus < MAX_SKILL_NUM)
+#if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_RuinedBladePlus))
         damage += 5;
 #endif // SID_RuinedBladePlus
 
-#if (SID_LunaAttack < MAX_SKILL_NUM)
+#if defined(SID_LunaAttack) && (SID_LunaAttack < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_LunaAttack))
         damage += defender->battleDefense / 4;
 #endif // SID_LunaAttack
@@ -129,13 +129,28 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     gBattleStats.damage = attack - defense;
 
+#if defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_FlashingBladePlus))
         gBattleStats.damage += 3;
+#endif
 
+#if defined(SID_DragonFang) && (SID_DragonFang < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_DragonFang))
         gBattleStats.damage = gBattleStats.damage * 3 / 2;
+#endif
 
-    if (BattleRoll1RN(gBattleStats.critRate, FALSE) == TRUE && !SkillTester(&defender->unit, SID_Foresight) && !SkillTester(&defender->unit, SID_Fortune))
+    if (BattleRoll1RN(gBattleStats.critRate, FALSE) == TRUE &&
+#if defined(SID_Foresight) && (SID_Foresight < MAX_SKILL_NUM)
+        !SkillTester(&defender->unit, SID_Foresight) &&
+#else
+        0 &&
+#endif // SID_Foresight
+#if defined(SID_Fortune) && (SID_Fortune < MAX_SKILL_NUM)
+        !SkillTester(&defender->unit, SID_Fortune)
+#else
+        0
+#endif // SID_Fortune
+    )
     {
         if (BattleRoll1RN(gBattleStats.silencerRate, FALSE))
         {
@@ -147,18 +162,26 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
 
+#if defined(SID_InfinityEdge) && (SID_InfinityEdge < MAX_SKILL_NUM)
             /* InfinityEdge */
             if (SkillTester(unit, SID_InfinityEdge))
+#else
+            if (0)
+#endif // SID_InfinityEdge
                 gBattleStats.damage = gBattleStats.damage * 3;
             else
                 gBattleStats.damage = gBattleStats.damage * 2;
         }
     }
 
+#if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
     /* SID_Astra may half the damage */
     if (attacker == &gBattleActor)
+    {
         if (SkillTester(unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
             gBattleStats.damage = gBattleStats.damage / 2;
+    }
+#endif // SID_Astra
 
     /* Minus zero */
     if (gBattleStats.damage < 0)
