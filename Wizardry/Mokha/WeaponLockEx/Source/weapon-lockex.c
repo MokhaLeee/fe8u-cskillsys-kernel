@@ -55,11 +55,3 @@ int CheckWeaponLockEx(struct Unit * unit, u16 item)
     /* This weapon is not configured in wpnlockex */
     return 0;
 }
-
-const struct WeaponLockExConf gWeaponLockExConfs[] = {
-    {
-        .iid = ITEM_SWORD_RAPIER,
-        .pid = CHARACTER_EIRIKA,
-    },
-    {}
-};

@@ -33,5 +33,6 @@
 #endif
 
 #include "../Wizardry/QOL/StatScreenfx/_data.event"
+#include "../Wizardry/Mokha/WeaponLockEx/data.event"
 
 #endif
