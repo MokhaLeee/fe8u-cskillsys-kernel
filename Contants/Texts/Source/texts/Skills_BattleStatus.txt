@@ -123,3 +123,11 @@ with this skill, gain Attack +2.[X]
 Frenzy: [NL]
 For every 4 damage taken,[N]
 +1 to damage dealt.[X]
+
+## MSG_SKILL_WonderGuard_NAME
+W-Guard[X]
+
+## MSG_SKILL_WonderGuard
+WonderGuard:[NL]
+Cannot be damaged by weapons of[NL]
+the same weapon type as the user's.[X]
