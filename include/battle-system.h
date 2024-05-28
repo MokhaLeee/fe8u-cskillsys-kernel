@@ -8,7 +8,7 @@ struct WeaponTriangleConf {
     s8 wtype_a;
     s8 wtype_b;
     u8 sid;
-    u8 _pad_;
+    bool is_buff;
 
     s8 bonus_atk;
     s8 bonus_def;
@@ -27,6 +27,9 @@ struct WeaponTriangleItemConf {
     struct {
         s8 atk, def, hit, avo, crit, silencer;
     } battle_status;
+
+    bool is_buff;
+    u8 _pad_[3];
 };
 
 extern const struct WeaponTriangleItemConf gWeaponTriangleItemConf[0x100];
@@ -103,12 +106,3 @@ static inline int GetItemFormSlot(struct Unit * unit, int slot)
 }
 
 extern struct Vec2 gBattleTargetPositionBackup;
-
-/* port form vanilla */
-struct WeaponTriangleRule {
-    s8 attackerWeaponType;
-    s8 defenderWeaponType;
-    s8 hitBonus;
-    s8 atkBonus;
-};
-extern const struct WeaponTriangleRule sWeaponTriangleRules[];

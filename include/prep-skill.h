@@ -105,21 +105,3 @@ void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 * proc);
 void PrepSkill2_InitTexts(void);
 void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 * proc);
 void PrepSkill2_DrawRightTopBar(struct ProcPrepSkill2 * proc);
-
-/* Some vanilla declaration */
-extern struct Text gPrepUnitTexts[];
-void PrepUnit_DrawSMSAndObjs(struct ProcPrepUnit * proc);
-void PrepUnit_InitSMS(struct ProcPrepUnit * proc);
-void PrepUnit_DrawUnitListNames(struct ProcPrepUnit * proc, int line);
-void PrepUnit_InitGfx(void);
-void PrepUnit_DrawUnitItems(struct Unit * unit);
-void PrepUnit_DrawLeftUnitName(struct Unit * unit);
-void PrepUnit_DrawLeftUnitNameCur(struct ProcPrepUnit * proc);
-s8 ShouldPrepUnitMenuScroll(struct ProcPrepUnit * proc);
-void sub_809AE10(struct ProcPrepUnit * proc);
-void PrepUpdateMenuTsaScroll(int val);
-void PrepUnitDisableDisp(void);
-void PrepUnitEnableDisp(void);
-void sub_809B504(struct ProcPrepUnit * proc);
-void sub_809B014(void);
-void sub_809B520(struct ProcPrepUnit * proc);

@@ -9,7 +9,7 @@ TAG=#ENGINE
 INFO=[CSKILL_K: gWeaponTriangleItemConf] Config weapon WTA effect (Lancereaver, etc.)
 
 POINTER=0xB2A658
-DATASIZE=8
+DATASIZE=12
 DATACOUNT=0x100
 
 LISTNAME=ITEM
@@ -21,3 +21,4 @@ b4:DECIMAL=hit
 b5:DECIMAL=avo
 b6:DECIMAL=crt
 b7:DECIMAL=silencer
+b8:$COMBO combo.bool.txt=is buff

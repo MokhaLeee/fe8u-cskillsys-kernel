@@ -12,6 +12,11 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
 
     if (item_conf->valid && item_conf->wtype == defender->weaponType)
     {
+        Printf("Find item_conf (%p-%p, %d): item=%X atk=%d, def=%d, hit=%d, avo=%d, crt=%d, sil=%d",
+            item_conf->wtype, attacker, defender, ITEM_INDEX(attacker->weaponBefore),
+            item_conf->battle_status.atk, item_conf->battle_status.def, item_conf->battle_status.hit,
+            item_conf->battle_status.avo, item_conf->battle_status.crit, item_conf->battle_status.silencer);
+
         attacker->battleAttack       += item_conf->battle_status.atk;
         attacker->battleDefense      += item_conf->battle_status.def;
         attacker->battleHitRate      += item_conf->battle_status.hit;
@@ -20,10 +25,20 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         attacker->battleSilencerRate += item_conf->battle_status.silencer;
 
         /* Just for UI */
-        attacker->wTriangleHitBonus = +1;
-        attacker->wTriangleDmgBonus = +1;
-        defender->wTriangleHitBonus = -1;
-        defender->wTriangleDmgBonus = -1;
+        if (item_conf->is_buff)
+        {
+            attacker->wTriangleHitBonus += 15;
+            attacker->wTriangleDmgBonus += 1;
+            defender->wTriangleHitBonus -= 15;
+            defender->wTriangleDmgBonus -= 1;
+        }
+        else
+        {
+            attacker->wTriangleHitBonus -= 15;
+            attacker->wTriangleDmgBonus -= 1;
+            defender->wTriangleHitBonus += 15;
+            defender->wTriangleDmgBonus += 1;
+        }
     }
     else
     {
@@ -33,14 +48,17 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         {
             if ((attacker->weaponType == it->attackerWeaponType) && (defender->weaponType == it->defenderWeaponType))
             {
+                Printf("Find vanilla (%p-%p, %d-%d): atk=%d, hit=%d",
+                        attacker, defender, it->attackerWeaponType, it->defenderWeaponType, it->atkBonus, it->hitBonus);
+
                 attacker->battleAttack  += it->atkBonus;
                 attacker->battleHitRate += it->hitBonus;
 
                 /* Just for UI */
-                attacker->wTriangleHitBonus = +1;
-                attacker->wTriangleDmgBonus = +1;
-                defender->wTriangleHitBonus = -1;
-                defender->wTriangleDmgBonus = -1;
+                attacker->wTriangleHitBonus += it->atkBonus;
+                attacker->wTriangleDmgBonus += it->hitBonus;
+                defender->wTriangleHitBonus -= it->atkBonus;
+                defender->wTriangleDmgBonus -= it->hitBonus;
                 break;
             }
         }
@@ -50,6 +68,12 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
     {
         if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType)
         {
+            Printf("Find conf (%p-%p, %d-%d): atk=%d, def=%d, as=%d, hit=%d, avo=%d, crt=%d, dog=%d, sil=%d",
+                    attacker, defender,
+                    it->wtype_a, it->wtype_b,
+                    it->bonus_atk, it->bonus_def, it->bonus_speed, it->bonus_hit,
+                    it->bonus_avoid, it->bonus_crit, it->bonus_dodge, it->bonus_silencer);
+
             if (SkillTester(unit, it->sid))
             {
                 attacker->battleAttack       += it->bonus_atk;
@@ -62,10 +86,20 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
                 attacker->battleSilencerRate += it->bonus_silencer;
 
                 /* Just for UI */
-                attacker->wTriangleHitBonus = +1;
-                attacker->wTriangleDmgBonus = +1;
-                defender->wTriangleHitBonus = -1;
-                defender->wTriangleDmgBonus = -1;
+                if (it->is_buff)
+                {
+                    attacker->wTriangleHitBonus += 15;
+                    attacker->wTriangleDmgBonus += 1;
+                    defender->wTriangleHitBonus -= 15;
+                    defender->wTriangleDmgBonus -= 1;
+                }
+                else
+                {
+                    attacker->wTriangleHitBonus -= 15;
+                    attacker->wTriangleDmgBonus -= 1;
+                    defender->wTriangleHitBonus += 15;
+                    defender->wTriangleDmgBonus += 1;
+                }
             }
             break;
         }
