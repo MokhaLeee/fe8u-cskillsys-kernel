@@ -21,15 +21,15 @@ static void LoadStatScreenUiFrame(void)
 {
     if (UNIT_FACTION(gStatScreen.unit) != FACTION_RED)
     {
-        Decompress(Img_StatScreenUI, BG_CHAR_ADDR(0));
-        ApplyPalette(Pal_StatScreenUI, BGPAL_WINDOW_FRAME);
+        Decompress(gpImg_StatScreenUI, BG_CHAR_ADDR(0));
+        ApplyPalette(gpPal_StatScreenUI, BGPAL_WINDOW_FRAME);
         ApplyPalette(sUiFramePaletteLookup[0], STATSCREEN_BGPAL_3);
         ApplyPalette(sStatBarPaletteLookup[0], STATSCREEN_BGPAL_6);
     }
     else
     {
-        Decompress(Img_StatScreenUIRed, BG_CHAR_ADDR(0));
-        ApplyPalette(Pal_StatScreenUIRed, BGPAL_WINDOW_FRAME);
+        Decompress(gpImg_StatScreenUIRed, BG_CHAR_ADDR(0));
+        ApplyPalette(gpPal_StatScreenUIRed, BGPAL_WINDOW_FRAME);
         ApplyPalette(sUiFramePaletteLookup[1], STATSCREEN_BGPAL_3);
         ApplyPalette(sStatBarPaletteLookup[1], STATSCREEN_BGPAL_6);
     }
@@ -37,9 +37,9 @@ static void LoadStatScreenUiFrame(void)
 
 static void LoadStatScreenMuAreaBackGround(void)
 {
-    Decompress(Img_StatScreenMuAreaBg, gGenericBuffer);
+    Decompress(gpImg_StatScreenMuAreaBg, gGenericBuffer);
     Copy2dChr(gGenericBuffer, OBJ_VRAM0 + STATSCREEN_MUAREA_CHR_BASE, 5, 4);
-    ApplyPalette(Pal_StatScreenMuAreaBg, 0x10 + STATSCREEN_MUAREA_PAL_BASE);
+    ApplyPalette(gpPal_StatScreenMuAreaBg, 0x10 + STATSCREEN_MUAREA_PAL_BASE);
 }
 
 /* LynJump */
@@ -79,8 +79,8 @@ static void StatScreenNewCallBack(ProcPtr proc)
 static void StatScreen_InitDisplayScrollingBG(void)
 {
     StartMuralBackground(NULL, (void *)VRAM + 0xB000, -1);
-    Decompress(Img_StatScreenScrollBG, (void *)0x0600B000);
-    ApplyPalettes(Pal_StatScreenScrollBG, 0xE, 2);
+    Decompress(gpImg_StatScreenScrollBG, (void *)0x0600B000);
+    ApplyPalettes(gpPal_StatScreenScrollBG, 0xE, 2);
 }
 
 

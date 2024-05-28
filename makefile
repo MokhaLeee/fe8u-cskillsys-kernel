@@ -98,7 +98,9 @@ CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
 CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
 CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 
-post_chax: $(FE8_CHX)
+post_chax: $(CHAX_DIFF)
+
+$(CHAX_DIFF): $(FE8_CHX)
 	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
@@ -112,7 +114,7 @@ post_chax: $(FE8_CHX)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 
-	@cat $(FE8_SYM) >> $(CHAX_SYM)
+#	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
@@ -266,17 +268,19 @@ CLEAN_FILES += $(GFX_HEADER)
 # = ENUM =
 # ========
 
-SKILLS_ENUM := $(MK_DIR)include/constants/skills.enum.txt
-SKILLS_ENUM_H := $(MK_DIR)include/constants/skills.h
+SKILLS_ENUM_CONFIG := $(MK_DIR)include/constants/skills.enum.txt
+SKILLS_ENUM_HEADER := $(MK_DIR)include/constants/skills.h
 SKILLS_ENUM_COMBO := $(MK_DIR)Patches/combo.skills.txt
 
-enum: $(SKILLS_ENUM)
-	@echo "[GEN]	$(SKILLS_ENUM_H) $(SKILLS_ENUM_COMBO)"
-	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2h.py $(SKILLS_ENUM) > $(SKILLS_ENUM_H)
-	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2combo.py $(SKILLS_ENUM) > $(SKILLS_ENUM_COMBO)
+enum: $(SKILLS_ENUM_HEADER)
+
+$(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_CONFIG)
+	@echo "[GEN]	$(SKILLS_ENUM_HEADER) $(SKILLS_ENUM_COMBO)"
+	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2h.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_HEADER)
+	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2combo.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_COMBO)
 
 PRE_BUILD += enum
-CLEAN_FILES += $(SKILLS_ENUM_H) $(SKILLS_ENUM_COMBO)
+CLEAN_FILES += $(SKILLS_ENUM_HEADER) $(SKILLS_ENUM_COMBO)
 
 # =============
 # = PRE-BUILD =

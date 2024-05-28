@@ -32,4 +32,6 @@
     #include "../Wizardry/Core/DebuffRework/StatDebuff/StatDebuffData.lyn.event"
 #endif
 
+#include "../Wizardry/QOL/StatScreenfx/_data.event"
+
 #endif

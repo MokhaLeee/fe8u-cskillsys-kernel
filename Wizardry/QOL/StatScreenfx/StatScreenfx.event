@@ -1,5 +1,5 @@
 #include "Source/StatScreenfx.lyn.event"
-#include "_data.event"
+// #include "_data.event"
 
 PUSH
     /* gProcScr_SSGlowyBlendCtrl */

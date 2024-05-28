@@ -22,18 +22,17 @@ extern const u8 ZTSA_StatScreenPageLeft[];
 
 #define STATSCREEN_MUAREA_CHR_BASE 0x7360
 #define STATSCREEN_MUAREA_PAL_BASE 2
-extern const u8  Img_StatScreenMuAreaBg[];
-extern const u16 Pal_StatScreenMuAreaBg[];
+
 extern const u16 Sprite_StatScreenMuAreaBackground[];
-extern const u8  Img_StatScreenScrollBG[];
-extern const u16 Pal_StatScreenScrollBG[];
 
-extern const u8 Img_StatScreenUI[];
-extern const u16 Pal_StatScreenUI[];
-extern const u8 Img_StatScreenUIRed[];
-extern const u16 Pal_StatScreenUIRed[];
-extern const u8 Img_StatScreenRedUI[];
-extern const u16 Pal_StatScreenRedUI[];
+extern u8 const * const gpImg_StatScreenMuAreaBg;
+extern u16 const * const gpPal_StatScreenMuAreaBg;
 
-extern const u16 * sUiFramePaletteLookup[];
-extern const u16 * sStatBarPaletteLookup[];
+extern u8 const * const gpImg_StatScreenScrollBG;
+extern u16 const * const gpPal_StatScreenScrollBG;
+
+extern u8 const * const gpImg_StatScreenUI;
+extern u16 const * const gpPal_StatScreenUI;
+
+extern u8 const * const gpImg_StatScreenUIRed;
+extern u16 const * const gpPal_StatScreenUIRed;
