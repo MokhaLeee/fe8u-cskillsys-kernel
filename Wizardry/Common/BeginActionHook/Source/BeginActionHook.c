@@ -1,7 +1,8 @@
 #include "common-chax.h"
 
 typedef void (* BeginActionFunc_t)(struct Unit * unit);
-extern const BeginActionFunc_t gBeginActionHooks[];
+// extern const BeginActionFunc_t gBeginActionHooks[];
+extern BeginActionFunc_t const * const gpBeginActionHooks;
 
 /* LynJump */
 void UnitBeginAction(struct Unit * unit)
@@ -27,7 +28,7 @@ void UnitBeginAction(struct Unit * unit)
 #if CHAX
 {
     const BeginActionFunc_t * it;
-    for (it = gBeginActionHooks; *it; it++)
+    for (it = gpBeginActionHooks; *it; it++)
         (*it)(unit);
 }
 #endif

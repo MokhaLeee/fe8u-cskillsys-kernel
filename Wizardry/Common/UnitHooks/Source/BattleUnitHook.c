@@ -7,10 +7,12 @@
 #include "constants/skills.h"
 
 typedef int (* BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit * unit);
-extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
+// extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
+extern BattleToUnitFunc_t const * const gpExternalBattleToUnitHook;
 
 typedef int (* UnitToBattleFunc_t)(struct Unit * unit, struct BattleUnit * bu);
-extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
+// extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
+extern UnitToBattleFunc_t const * const gpExternalUnitToBattleHook;
 
 STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit * unit)
 {
@@ -110,7 +112,7 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
     bu->unit._u3A = unit->_u3A;
     bu->unit._u3B = unit->_u3B;
 
-    for (it = gExternalBattleToUnitHook; *it; it++)
+    for (it = gpExternalBattleToUnitHook; *it; it++)
         (*it)(bu, unit);
 }
 
@@ -130,6 +132,6 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
     ResetSkillLists();
     ResetCombatArtStatus();
 
-    for (it = gExternalUnitToBattleHook; *it; it++)
+    for (it = gpExternalUnitToBattleHook; *it; it++)
         (*it)(unit, bu);
 }

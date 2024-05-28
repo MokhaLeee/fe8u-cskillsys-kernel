@@ -13,7 +13,8 @@ struct ProcPostAction {
 };
 
 typedef bool (* PostActionFunc_t)(struct ProcPostAction * proc);
-extern const PostActionFunc_t gPostActionFuncs[];
+// extern const PostActionFunc_t gPostActionFuncs[];
+extern PostActionFunc_t const * const gpPostActionFuncs;
 
 STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction * proc);
 STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction * proc);
@@ -46,7 +47,7 @@ STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction * proc)
 
     while (1)
     {
-        it = gPostActionFuncs[proc->index++];
+        it = gpPostActionFuncs[proc->index++];
         if (!it)
             goto post_action_done;
 

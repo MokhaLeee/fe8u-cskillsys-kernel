@@ -5,7 +5,8 @@
     ERROR "Need ItemSystem installed"
 #endif
 
-#include "MagBooster/BoosterHook.lyn.event"
+#include "Source/Hooks.lyn.event"
+#include "Source/BoosterHook.lyn.event"
 
 #ifndef ITEM_MAG_BOOSTER
 #define ITEM_MAG_BOOSTER 0xBC

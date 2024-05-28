@@ -4,7 +4,8 @@
 #include "battle-system.h"
 
 typedef void (* GameInitHookFunc_t)(void);
-extern const GameInitHookFunc_t gGameInitHookTable[];
+// extern const GameInitHookFunc_t gGameInitHookTable[];
+extern GameInitHookFunc_t const * const gpGameInitHookTable;
 extern const GameInitHookFunc_t * gpExternalGameInitHook;
 
 extern u8 FreeRamSpaceTop[], FreeRamSpaceBottom[], gKernelUsedFreeRamSpaceTop[];
@@ -40,7 +41,7 @@ void StartGame(void)
     FreeRamSpaceDetection();
 
     /* External hooks */
-    for (it = gGameInitHookTable; *it; it++)
+    for (it = gpGameInitHookTable; *it; it++)
         (*it)();
 
     it = gpExternalGameInitHook;

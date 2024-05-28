@@ -65,5 +65,17 @@ gpPal_StatScreenScrollBG:   POIN Pal_StatScreenScrollBG
 gpImg_StatScreenMuAreaBg:   POIN Img_StatScreenMuAreaBg
 gpPal_StatScreenMuAreaBg:   POIN Pal_StatScreenMuAreaBg
 
+gpBeginActionHooks: POIN gBeginActionHooks
+gpChapterInitHooks: POIN ChapterInitHooks
+gpGameInitHookTable: POIN gGameInitHookTable
+gpPhaseSwitchHooks: POIN gPhaseSwitchHooks
+gpPostActionFuncs: POIN gPostActionFuncs
+gpNewSaveHooks: POIN gNewSaveHooks
+gpExternalBattleToUnitHook: POIN gExternalBattleToUnitHook
+gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
+gpCopyUnitHooks: POIN gCopyUnitHooks
+gpClearUnitHooks: POIN gClearUnitHooks
+gpLoadUnitHooks: POIN gLoadUnitHooks
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

@@ -1,13 +1,14 @@
 #include "common-chax.h"
 
 typedef void (* ChapterInitHookFunc)(ProcPtr);
-extern ChapterInitHookFunc const ChapterInitHooks[];
+// extern ChapterInitHookFunc const ChapterInitHooks[];
+extern ChapterInitHookFunc const * const gpChapterInitHooks;
 
 void ChapterInitHook(ProcPtr proc)
 {
     int i;
-    for (i = 0; ChapterInitHooks[i]; i++)
-        ChapterInitHooks[i](proc);
+    for (i = 0; gpChapterInitHooks[i]; i++)
+        gpChapterInitHooks[i](proc);
 
     /* Vanilla */
     BmMain_StartIntroFx(proc);

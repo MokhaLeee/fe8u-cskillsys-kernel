@@ -2,9 +2,20 @@
 #define UNIT_HOOKS_INSTALLED
 
 /**
- * LoadUnitHook
+ * LoadUnit
  */
 #include "Source/LoadUnit.lyn.event"
+
+ALIGN 4
+gLoadUnitHooks:
+    POIN UnitLoadStatsFromChracterVanilla
+    POIN UnitLoadStatsFromCharacterMagic
+    POIN UnitAutoLoadSkills
+    POIN UnitHiddenLevelPreLoad
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN StatDeuff_OnLoadUnit
+#endif
+    WORD 0 0 0 0
 
 /**
  * BattleUnitHook

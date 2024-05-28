@@ -3,9 +3,9 @@
 
 #include "common-chax.h"
 
-extern struct {
-    void (*func)(void);
-} gPhaseSwitchHooks[];
+struct PhaseSwitchHook { void (*func)(void); };
+// extern const struct PhaseSwitchHook gPhaseSwitchHooks[];
+extern struct PhaseSwitchHook const * const gpPhaseSwitchHooks;
 
 /* LynJump */
 int BmMain_ChangePhase(void)
@@ -18,8 +18,8 @@ int BmMain_ChangePhase(void)
     SwitchPhases();
 
 #if CHAX
-    for (i = 0; !IS_ROM_THUMB(gPhaseSwitchHooks[i].func); i++)
-        gPhaseSwitchHooks[i].func();
+    for (i = 0; !IS_ROM_THUMB(gpPhaseSwitchHooks[i].func); i++)
+        gpPhaseSwitchHooks[i].func();
 #endif
 
     /* Vanilla */

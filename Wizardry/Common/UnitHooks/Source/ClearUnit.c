@@ -1,7 +1,8 @@
 #include "common-chax.h"
 
 typedef int (* ClearUnitFunc_t)(struct Unit * unit);
-extern const ClearUnitFunc_t gClearUnitHooks[];
+// extern const ClearUnitFunc_t gClearUnitHooks[];
+extern ClearUnitFunc_t const * const gpClearUnitHooks;
 
 /* LynJump */
 void ClearUnit(struct Unit * unit)
@@ -10,7 +11,7 @@ void ClearUnit(struct Unit * unit)
 
 #if CHAX
     const ClearUnitFunc_t * it;
-    for (it = gClearUnitHooks; *it; it++)
+    for (it = gpClearUnitHooks; *it; it++)
         (*it)(unit);
 #endif
 

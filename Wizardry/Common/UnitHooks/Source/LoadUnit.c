@@ -7,7 +7,11 @@
 #include "debuff.h"
 #include "skill-system.h"
 
-STATIC_DECLAR void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const struct CharacterData * character)
+typedef int (* LoadUnitFunc_t)(struct Unit * unit, const struct CharacterData * character);
+// extern const LoadUnitFunc_t gLoadUnitHooks[];
+extern LoadUnitFunc_t const * const gpLoadUnitHooks;
+
+void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const struct CharacterData * character)
 {
     int i;
 
@@ -34,22 +38,12 @@ STATIC_DECLAR void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const st
         unit->exp = UNIT_EXP_DISABLED;
 }
 
-STATIC_DECLAR void UnitLoadStatsFromCharacterMagic(struct Unit * unit, const struct CharacterData * character)
-{
-    UNIT_MAG(unit) = GetUnitBaseMagic(unit);
-}
-
 /* LynJump */
 void UnitLoadStatsFromChracter(struct Unit * unit, const struct CharacterData * character)
 {
-    UnitLoadStatsFromChracterVanilla(unit, character);
-    UnitLoadStatsFromCharacterMagic(unit, character);
-    UnitAutoLoadSkills(unit);
-    UnitHiddenLevelPreLoad(unit);
-
-#ifdef CONFIG_USE_STAT_DEBUFF
-    StatDeuff_OnLoadUnit(unit);
-#endif
+    const LoadUnitFunc_t * it;
+    for (it = gpLoadUnitHooks; *it; it++)
+        (*it)(unit, character);
 }
 
 /* LynJump */

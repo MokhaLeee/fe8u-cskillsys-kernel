@@ -8,7 +8,8 @@
 #include "save-data.h"
 
 typedef void (* new_save_hook)(void);
-extern const new_save_hook gNewSaveHooks[];
+// extern const new_save_hook gNewSaveHooks[];
+extern new_save_hook const * const gpNewSaveHooks;
 
 const struct EmsChunk * GetEmsChunkByIndex_Sav(int idx)
 {
@@ -204,7 +205,7 @@ void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial)
     gPlaySt.unk_2C_2 = GetGlobalCompletionCount();
 
     /* External hooks */
-    for (it = gNewSaveHooks; *it != NULL; it++)
+    for (it = gpNewSaveHooks; *it != NULL; it++)
         (*it)();
 
     /* Directlt save game! */
