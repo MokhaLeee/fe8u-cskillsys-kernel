@@ -276,7 +276,7 @@ enum: $(SKILLS_ENUM)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2combo.py $(SKILLS_ENUM) > $(SKILLS_ENUM_COMBO)
 
 PRE_BUILD += enum
-CLEAN_FILES += $(SKILLS_ENUM_H) # $(SKILLS_ENUM_COMBO)
+CLEAN_FILES += $(SKILLS_ENUM_H) $(SKILLS_ENUM_COMBO)
 
 # =============
 # = PRE-BUILD =
