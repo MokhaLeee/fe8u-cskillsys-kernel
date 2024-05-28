@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "debuff.h"
 
+#define LOCAL_TRACE 0
+
 extern u32 sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
 extern u32 sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
 extern u32 sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
@@ -398,7 +400,7 @@ STATIC_DECLAR struct StatDebuffMsgBuf * GetStatDebuffMsgBuf(struct Unit * unit)
         GenerateStatDebuffMsgBufExt(unit, GetUnitStatDebuffStatus(unit), buf);
     }
 
-    Debugf("unit %#x at buf %d: pow=%d, mag=%d, skl=%d, spd=%d, lck=%d, def=%d, res=%d, mov=%d", 
+    DPRINTF_LEVEL("unit %#x at buf %d: pow=%d, mag=%d, skl=%d, spd=%d, lck=%d, def=%d, res=%d, mov=%d", 
             UNIT_CHAR_ID(unit), buf - sStatDebuffMsgBuf,
             buf->pow, buf->mag, buf->skl, buf->spd, buf->lck, buf->def, buf->res, buf->mov);
 

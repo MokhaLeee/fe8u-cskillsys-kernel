@@ -100,3 +100,7 @@ static inline void LogInit(void)
 #define Assert(condition)
 
 #endif
+
+/* define LOCAL_TRACE in your local file, then you can use such API */
+#define DPRINT_LEVEL(x...)  do { if (LOCAL_TRACE != 0) { Print(x); } } while (0)
+#define DPRINTF_LEVEL(x...) do { if (LOCAL_TRACE != 0) { Printf(x); } } while (0)
