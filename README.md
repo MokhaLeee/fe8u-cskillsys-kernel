@@ -87,4 +87,4 @@ It build such outputs
 |fe8-kernel-beta.ref.event|EA reference|
 |fe8-kernel-beta.bsdiff|Binary patch used for bsdiff/bspatch|
 
-**For more notes, see [Doc dir](./Doc/)**
+**For more notes, see [docs dir](./docs/)**
