@@ -1150,4 +1150,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Frenzy,
     },
 #endif
+
+#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
+    [SID_PoisonPoint] = {
+        .name = MSG_SKILL_PoisonPoint_NAME,
+        .desc = MSG_SKILL_PoisonPoint,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };
