@@ -13,7 +13,7 @@ int _GetUnitMov(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = UNIT_MOV(unit);
 
-    for (it = gMovGetters; *it; it++)
+    for (it = gpMovGetters; *it; it++)
         status = (*it)(status, unit);
 
     /* Some special effects */

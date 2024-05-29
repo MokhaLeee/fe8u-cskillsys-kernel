@@ -12,7 +12,7 @@ int _GetUnitMaxHp(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->maxHP;
 
-    for (it = gHpGetters; *it; it++)
+    for (it = gpHpGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

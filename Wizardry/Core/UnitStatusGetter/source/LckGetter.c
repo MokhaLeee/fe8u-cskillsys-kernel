@@ -12,7 +12,7 @@ int _GetUnitLuck(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->lck;
 
-    for (it = gLckGetters; *it; it++)
+    for (it = gpLckGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

@@ -77,5 +77,19 @@ gpCopyUnitHooks: POIN gCopyUnitHooks
 gpClearUnitHooks: POIN gClearUnitHooks
 gpLoadUnitHooks: POIN gLoadUnitHooks
 
+gpHpGetters:    POIN gHpGetters
+gpPowGetters:   POIN gPowGetters
+gpMagGetters:   POIN gMagGetters
+gpSklGetters:   POIN gSklGetters
+gpSpdGetters:   POIN gSpdGetters
+gpLckGetters:   POIN gLckGetters
+gpDefGetters:   POIN gDefGetters
+gpResGetters:   POIN gResGetters
+gpMovGetters:   POIN gMovGetters
+gpConGetters:   POIN gConGetters
+gpAidGetters:   POIN gAidGetters
+
+gpWeaponRangeGetters: POIN gWeaponRangeGetters
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

@@ -11,7 +11,8 @@
 #include "constants/skills.h"
 
 typedef int (* WeaponRangeGetterFunc_t)(int old, struct Unit * unit, u16 item);
-extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
+// extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
+extern WeaponRangeGetterFunc_t const * const gpWeaponRangeGetters;
 
 int GetItemMinRangeRework(u16 item, struct Unit * unit)
 {
@@ -34,7 +35,7 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit)
 
     if (IS_UNIT_PTR(unit))
     {
-        for (it = gWeaponRangeGetters; *it; it++)
+        for (it = gpWeaponRangeGetters; *it; it++)
             status = (*it)(status, unit, item);
     }
     return status;
