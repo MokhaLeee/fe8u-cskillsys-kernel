@@ -6,7 +6,11 @@ import os, sys, re
 with open(sys.argv[1], "r") as fi:
     i = 1
 
-    print("#pragma once\n")
+    print("#pragma once")
+    print("#ifndef MAX_SKILL_NUM")
+    print("#define MAX_SKILL_NUM 0xFF")
+    print("#endif")
+    print("")
 
     for line in fi.readlines():
         line = line.strip()
