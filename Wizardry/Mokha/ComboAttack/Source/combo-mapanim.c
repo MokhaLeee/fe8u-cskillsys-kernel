@@ -68,25 +68,6 @@ STATIC_DECLAR void MapAnim_PrepareNextBattleRound_SetNewRoundCombo(void)
     gManimSt.specialProcScr = GetSpellAssocAlt6CPointer(GetUnitEquippedWeapon(unit));
 }
 
-/* External jump */
-STATIC_DECLAR void MapAnim_PrepareNextBattleRoundRework(ProcPtr proc)
-{
-    MapAnim_PrepareNextBattleRound_CleanPreRoundCombo();
-
-    /* Pre hook on MapAnim_PrepareNextBattleRound */
-    if (gManimSt.pCurrentRound->info & BATTLE_HIT_INFO_END)
-    {
-        Proc_End(proc);
-        Proc_GotoScript(((struct Proc *)proc)->proc_parent, gProc_MapAnimEnd);
-        return;
-    }
-    MapAnim_PrepareNextBattleRound(proc); /* Vanilla */
-
-    gManimSt.pCurrentRound--;
-    MapAnim_PrepareNextBattleRound_SetNewRoundCombo();
-    gManimSt.pCurrentRound++;
-}
-
 /**
  * Special combo map-anim effect
  */
@@ -117,14 +98,13 @@ STATIC_DECLAR void MapAnim_ShowComboSpecialEffect(ProcPtr proc)
             gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit->xPos * 0x10 - gBmSt.camera.x);
 }
 
-void MapAnim_PlayComboSE(ProcPtr proc)
+STATIC_DECLAR void MapAnim_PlayComboSE(ProcPtr proc)
 {
     PlaySeSpacial(0x2DA,
             gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit->xPos * 0x10 - gBmSt.camera.x);
 }
 
-const struct ProcCmd ProcScr_MapAnim_PrepareNextBattleHook[] = {
-    PROC_CALL(MapAnim_PrepareNextBattleRoundRework),
+STATIC_DECLAR const struct ProcCmd ProcScr_MapAnim_PrepareNextBattleHook[] = {
     PROC_YIELD,
     PROC_CALL(MapAnim_ShowComboSpecialEffect),
     PROC_SLEEP(5),
@@ -132,7 +112,48 @@ const struct ProcCmd ProcScr_MapAnim_PrepareNextBattleHook[] = {
     PROC_SLEEP(20),
 
 PROC_LABEL(99),
-    PROC_CALL(MapAnim_DisplayRoundAnim),
-    PROC_YIELD,
     PROC_END
 };
+
+static void _dummy_func(ProcPtr p)
+{
+    struct Proc * proc = p;
+
+    proc->proc_idleCb = NULL;
+    Proc_Break(proc);
+}
+
+/* LynJump */
+void MapAnim_PrepareNextBattleRound(ProcPtr p)
+{
+    u16 weapon;
+    struct BattleUnit * unit;
+    struct Proc * proc = p;
+    struct MapAnimState *state = &gManimSt;
+
+#if CHAX
+    MapAnim_PrepareNextBattleRound_CleanPreRoundCombo();
+#endif
+
+    if (state->pCurrentRound->info & 0x10) {
+        Proc_Break(proc);
+        Proc_GotoScript(proc, gProc_MapAnimEnd);
+        return;
+    }
+    MapAnim_AdvanceBattleRound();
+    unit = state->actor[state->subjectActorId].bu;
+    weapon = unit->weaponBefore;
+    state->specialProcScr = GetSpellAssocAlt6CPointer(weapon);
+
+#if CHAX
+    gManimSt.pCurrentRound--;
+    MapAnim_PrepareNextBattleRound_SetNewRoundCombo();
+    gManimSt.pCurrentRound++;
+    Proc_StartBlocking(ProcScr_MapAnim_PrepareNextBattleHook, proc);
+
+    /* Add a PROC_YIELD */
+    proc->proc_idleCb = _dummy_func;
+#else
+    Proc_Break(proc);
+#endif
+}
