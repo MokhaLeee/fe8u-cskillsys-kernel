@@ -12,7 +12,7 @@ int _GetUnitResistance(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->res;
 
-    for (it = gResGetters; *it; it++)
+    for (it = gpResGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

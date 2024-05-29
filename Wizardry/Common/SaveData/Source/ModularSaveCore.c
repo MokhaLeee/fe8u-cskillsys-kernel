@@ -43,7 +43,7 @@ u32 CalcChunkOffset_Sav(const struct EmsChunk * chunk)
         if (chunk_cur->_identifier_ == EMS_CHUNK_INVALID_OFFSET)
         {
             Errorf("Chunk:%p not found, idx=%d", chunk, chunk->chunk_idx);
-            abort();
+            hang();
         }
 
         if (chunk_cur == chunk)
@@ -65,7 +65,7 @@ u32 CalcChunkOffset_Sus(const struct EmsChunk * chunk)
         if (chunk_cur->_identifier_ == EMS_CHUNK_INVALID_OFFSET)
         {
             Errorf("Chunk:%p not found, idx=%d", chunk, chunk->chunk_idx);
-            abort();
+            hang();
         }
 
         if (chunk_cur == chunk)
@@ -231,7 +231,7 @@ void WriteGameSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     offset, cur->size, cur->save, cur->load);
 
-            abort();
+            hang();
         }
         cur->save(dst + offset, cur->size);
         offset += cur->size;
@@ -266,7 +266,7 @@ void ReadGameSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     offset, cur->size, cur->save, cur->load);
 
-            abort();
+            hang();
         }
         cur->load(src + offset, cur->size);
         offset += cur->size;
@@ -304,7 +304,7 @@ void WriteSuspendSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     offset, cur->size, cur->save, cur->load);
 
-            abort();
+            hang();
         }
         cur->save(dst + offset, cur->size);
         offset += cur->size;
@@ -338,7 +338,7 @@ void ReadSuspendSave(int slot)
             Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
                     offset, cur->size, cur->save, cur->load);
 
-            abort();
+            hang();
         }
         cur->load(src + offset, cur->size);
         offset += cur->size;
@@ -368,7 +368,7 @@ void GameInit_DetectEmsChunks(void)
     if (offset > EMS_SIZE_SAV)
     {
         Errorf("SAV chunk overflowed: max=0x%04X, cur=0x%04X", EMS_SIZE_SAV, offset);
-        abort();
+        hang();
     }
 
     Print("Dump SUS");
@@ -383,6 +383,6 @@ void GameInit_DetectEmsChunks(void)
     if (offset > EMS_SIZE_SUS)
     {
         Errorf("SUS chunk overflowed: max=0x%04X, cur=0x%04X", EMS_SIZE_SUS, offset);
-        abort();
+        hang();
     }
 }

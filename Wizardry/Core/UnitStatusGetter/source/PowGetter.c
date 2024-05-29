@@ -12,7 +12,7 @@ int _GetUnitPower(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->pow;
 
-    for (it = gPowGetters; *it; it++)
+    for (it = gpPowGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

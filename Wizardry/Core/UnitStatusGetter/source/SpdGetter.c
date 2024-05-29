@@ -15,7 +15,7 @@ int _GetUnitSpeed(struct Unit * unit)
     if (unit->state & US_RESCUING)
         status = unit->spd / 2;
 
-    for (it = gSpdGetters; *it; it++)
+    for (it = gpSpdGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

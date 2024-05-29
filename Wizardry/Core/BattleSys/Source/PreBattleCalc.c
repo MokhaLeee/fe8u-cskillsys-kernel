@@ -395,6 +395,11 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
         attacker->battleAttack += 2;
 #endif
 
+#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_PoisonPoint))
+        defender->statusOut = UNIT_STATUS_POISON;
+#endif
+
 #if (defined(SID_Frenzy) && (SID_Frenzy < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Frenzy))
     {

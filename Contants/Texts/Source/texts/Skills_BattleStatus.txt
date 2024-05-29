@@ -131,3 +131,10 @@ W-Guard[X]
 WonderGuard:[NL]
 Cannot be damaged by weapons of[NL]
 the same weapon type as the user's.[X]
+
+## MSG_SKILL_PoisonPoint_NAME
+PoisonPoint[X]
+
+## MSG_SKILL_PoisonPoint
+P-Point: Inflict poison[NL]
+on the opponent.[X]

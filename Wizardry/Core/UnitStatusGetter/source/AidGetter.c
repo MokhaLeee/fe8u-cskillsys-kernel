@@ -19,7 +19,7 @@ int _GetUnitAid(struct Unit * unit)
     else
         status = 25 - UNIT_CON(unit);
 
-    for (it = gAidGetters; *it; it++)
+    for (it = gpAidGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

@@ -70,6 +70,7 @@ SET_DATA sStatDebuffStatusEnemy, sStatDebuffStatusAlly - 50 * 4
 SET_DATA sStatDebuffStatusNpc, sStatDebuffStatusEnemy - 8 * 4
 SET_DATA sStatDebuffMsgBuf, sStatDebuffStatusNpc - 0x1C * 6
 SET_DATA sStatDebuffMsgBufNext, sStatDebuffMsgBuf - 4
+SET_DATA sPrepareNextBattleRoundTimer, sStatDebuffMsgBufNext - 4
 
-SET_DATA gKernelUsedFreeRamSpaceTop, sStatDebuffMsgBufNext
+SET_DATA gKernelUsedFreeRamSpaceTop, sPrepareNextBattleRoundTimer
 /* Assert(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop) */

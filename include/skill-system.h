@@ -4,7 +4,10 @@
 #include "efx-anim.h"
 #include "list-verify.h"
 
+#ifndef MAX_SKILL_NUM
 #define MAX_SKILL_NUM 0xFF
+#endif
+
 #define SKILL_VALID(sid) ((sid > 0) && (sid < MAX_SKILL_NUM))
 #define SKILL_ICON(sid) ((1 << 8) + (sid))
 
