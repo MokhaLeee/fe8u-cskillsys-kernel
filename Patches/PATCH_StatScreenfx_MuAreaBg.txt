@@ -1,4 +1,4 @@
-NAME=[CSKILL_K] StatScreenfx: MuAreaBG
+NAME=[CSKILL_K 0.3.0] StatScreenfx: MuAreaBG
 TYPE=IMAGE
 TAG=#ENGINE
 

@@ -1,4 +1,4 @@
-NAME=[CSKILL_K] StatScreenfx: ScrollBG
+NAME=[CSKILL_K 0.3.0] StatScreenfx: ScrollBG
 TYPE=IMAGE
 TAG=#ENGINE
 
