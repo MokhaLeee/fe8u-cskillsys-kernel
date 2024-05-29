@@ -53,6 +53,11 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
         if (SkillTester(unit, SID_RangeBonusBow2))
             range = range + 2;
 #endif
+
+#if defined(SID_RunningStart) && (SID_RunningStart < MAX_SKILL_NUM)
+        if (SkillTester(unit, SID_RunningStart))
+            range = range + gActionData.moveCount/2;
+#endif
         break;
 
     case ITYPE_ANIMA:

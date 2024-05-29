@@ -688,6 +688,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_RunningStart) && (SID_RunningStart < MAX_SKILL_NUM))
+    [SID_RunningStart] = {
+        .name = MSG_SKILL_RunningStart_NAME,
+        .desc = MSG_SKILL_RunningStart,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Canto) && (SID_Canto < MAX_SKILL_NUM))
     [SID_Canto] = {
         .desc = MSG_SKILL_Canto,

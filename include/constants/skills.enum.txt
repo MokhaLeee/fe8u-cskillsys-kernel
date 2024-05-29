@@ -115,6 +115,7 @@ SID_RangeBonusBMag1
 SID_RangeBonusBMag2
 SID_RangeBonusBow1
 SID_RangeBonusBow2
+SID_RunningStart
 
 // Post action
 SID_Canto
