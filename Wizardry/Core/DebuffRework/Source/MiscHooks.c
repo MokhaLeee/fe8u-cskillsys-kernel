@@ -22,7 +22,7 @@ void SetUnitStatus(struct Unit * unit, int status)
     else if (status >= NEW_UNIT_STATUS_MAX)
     {
         Errorf("Status error: %d", status);
-        abort();
+        hang();
     }
     else
     {
@@ -41,7 +41,7 @@ void SetUnitStatusExt(struct Unit * unit, int status, int duration)
     if (status >= NEW_UNIT_STATUS_MAX)
     {
         Errorf("Status overflow: %d", status);
-        abort();
+        hang();
     }
 
     if (duration == 0)

@@ -162,7 +162,7 @@ void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
     {
         Errorf("ENOTDIR: %d", debuff);
-        abort();
+        hang();
     }
     _BIT_SET(GetUnitStatDebuffStatus(unit), debuff);
 }
@@ -172,7 +172,7 @@ void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
     {
         Errorf("ENOTDIR: %d", debuff);
-        abort();
+        hang();
     }
     _BIT_CLR(GetUnitStatDebuffStatus(unit), debuff);
 }
@@ -182,7 +182,7 @@ bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
     {
         Errorf("ENOTDIR: %d", debuff);
-        abort();
+        hang();
     }
     return _BIT_CHK(GetUnitStatDebuffStatus(unit), debuff);
 }
@@ -192,7 +192,7 @@ void MSU_SaveStatDebuff(u8 * dst, const u32 size)
     if (size < (sizeof(sStatDebuffStatusAlly) + sizeof(sStatDebuffStatusEnemy) + sizeof(sStatDebuffStatusNpc)))
     {
         Errorf("ENOMEM: %d", size);
-        abort();
+        hang();
     }
 
     WriteAndVerifySramFast(
@@ -220,7 +220,7 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size)
     if (size < (sizeof(sStatDebuffStatusAlly) + sizeof(sStatDebuffStatusEnemy) + sizeof(sStatDebuffStatusNpc)))
     {
         Errorf("ENOMEM: %d", size);
-        abort();
+        hang();
     }
 
     ReadSramFast(
@@ -452,7 +452,7 @@ void StatDeuff_OnNewGameInit(void)
     if (UNIT_STAT_DEBUFF_MAX_REAL >= UNIT_STAT_DEBUFF_MAX)
     {
         Errorf("StatDebuff overflowed: %d", UNIT_STAT_DEBUFF_MAX_REAL);
-        abort();
+        hang();
     }
 }
 

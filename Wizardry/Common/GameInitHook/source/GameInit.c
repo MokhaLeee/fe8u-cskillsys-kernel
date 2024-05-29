@@ -15,7 +15,7 @@ STATIC_DECLAR void FreeRamSpaceDetection(void)
     bool asseration = (&FreeRamSpaceTop[0] < &gKernelUsedFreeRamSpaceTop[0]);
 
     Assert(asseration);
-    if (!asseration) abort();
+    if (!asseration) hang();
 }
 
 /* LynJump! */
