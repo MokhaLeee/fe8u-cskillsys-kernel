@@ -35,7 +35,7 @@ gpMsa_Saver:    WORD 0
 gpMsa_Loader:   WORD 0
 gpMsu_Saver:    WORD 0
 gpMsu_Loader:   WORD 0
-
+MESSAGE CURRENTOFFSET
 gpConfigUseComboAtk:
 #ifdef CONFIG_USE_COMBO_ATTACK
     WORD 1
@@ -90,6 +90,12 @@ gpConGetters:   POIN gConGetters
 gpAidGetters:   POIN gAidGetters
 
 gpWeaponRangeGetters: POIN gWeaponRangeGetters
+
+gpKernelClassList_Flier:    POIN KernelClassList_Flier
+gpKernelClassList_Cavalry:  POIN KernelClassList_Cavalry
+gpKernelClassList_Armor:    POIN KernelClassList_Armor
+gpKernelClassList_Dragon:   POIN KernelClassList_Dragon
+gpKernelClassList_Beast:    POIN KernelClassList_Beast
 
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

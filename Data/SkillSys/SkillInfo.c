@@ -906,6 +906,38 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_HoneCavalry) && (SID_HoneCavalry < MAX_SKILL_NUM))
+    [SID_HoneCavalry] = {
+        .name = MSG_SKILL_HoneCavalry_NAME,
+        .desc = MSG_SKILL_HoneCavalry,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_HoneFlier) && (SID_HoneFlier < MAX_SKILL_NUM))
+    [SID_HoneFlier] = {
+        .name = MSG_SKILL_HoneFlier_NAME,
+        .desc = MSG_SKILL_HoneFlier,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_HoneArmor) && (SID_HoneArmor < MAX_SKILL_NUM))
+    [SID_HoneArmor] = {
+        .name = MSG_SKILL_HoneArmor_NAME,
+        .desc = MSG_SKILL_HoneArmor,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_FortifyArmor) && (SID_FortifyArmor < MAX_SKILL_NUM))
+    [SID_FortifyArmor] = {
+        .name = MSG_SKILL_FortifyArmor_NAME,
+        .desc = MSG_SKILL_FortifyArmor,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
 #if (defined(SID_AversaNight) && (SID_AversaNight < MAX_SKILL_NUM))
     [SID_AversaNight] = {
         .name = MSG_SKILL_DEBUFF_Aversa_NAME,

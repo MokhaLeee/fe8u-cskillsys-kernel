@@ -154,6 +154,11 @@ SID_LckHone
 SID_DefHone
 SID_ResHone
 
+SID_HoneCavalry
+SID_HoneFlier
+SID_HoneArmor
+SID_FortifyArmor
+
 SID_Fortify
 
 SID_AversaNight

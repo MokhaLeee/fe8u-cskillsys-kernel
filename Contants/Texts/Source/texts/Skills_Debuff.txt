@@ -11,7 +11,7 @@ Pow Open[X]
 
 ## MSG_SKILL_PowHone
 Pow Hone: Grants allies in 2x2[NL]
-Pow+6 for one turn during each[NL]
+Pow+4 for one turn during each[NL]
 start of turn[X]
 
 ## MSG_SKILL_MagHone_NAME
@@ -19,7 +19,7 @@ Mag Open[X]
 
 ## MSG_SKILL_MagHone
 Mag Hone: Grants allies in 2x2[NL]
-Mag+6 for one turn during each[NL]
+Mag+4 for one turn during each[NL]
 start of turn[X]
 
 ## MSG_SKILL_SklHone_NAME
@@ -27,7 +27,7 @@ Skl Open[X]
 
 ## MSG_SKILL_SklHone
 Skl Hone: Grants allies in 2x2[NL]
-Skl+6 for one turn during each[NL]
+Skl+4 for one turn during each[NL]
 start of turn[X]
 
 ## MSG_SKILL_SpdHone_NAME
@@ -35,7 +35,7 @@ Spd Open[X]
 
 ## MSG_SKILL_SpdHone
 Spd Hone: Grants allies in 2x2[NL]
-Spd+6 for one turn during each[NL]
+Spd+4 for one turn during each[NL]
 start of turn[X]
 
 ## MSG_SKILL_LckHone_NAME
@@ -43,7 +43,7 @@ Lck Open[X]
 
 ## MSG_SKILL_LckHone
 Lck Hone: Grants allies in 2x2[NL]
-Lck+6 for one turn during each[NL]
+Lck+4 for one turn during each[NL]
 start of turn[X]
 
 ## MSG_SKILL_DefHone_NAME
@@ -51,7 +51,7 @@ Def Open[X]
 
 ## MSG_SKILL_DefHone
 Def Hone: Grants allies in 2x2[NL]
-Def+6 for one turn during each[NL]
+Def+4 for one turn during each[NL]
 start of turn[X]
 
 ## MSG_SKILL_ResHone_NAME
@@ -59,5 +59,37 @@ Res Open[X]
 
 ## MSG_SKILL_ResHone
 Res Hone: Grants allies in 2x2[NL]
-Res+6 for one turn during each[NL]
+Res+4 for one turn during each[NL]
 start of turn[X]
+
+## MSG_SKILL_HoneCavalry_NAME
+Hone Cavalry[X]
+
+## MSG_SKILL_HoneCavalry
+Hone Cavalry: Grants Cavalry allies[NL]
+in 2x2 get buff atk/spd+6 at[NL]
+each start of turn[X]
+
+## MSG_SKILL_HoneFlier_NAME
+Hone Flier[X]
+
+## MSG_SKILL_HoneFlier
+Hone Flier: Grants Flier allies[NL]
+in 2x2 get buff atk/spd+6 at[NL]
+each start of turn[X]
+
+## MSG_SKILL_HoneArmor_NAME
+Hone Armor[X]
+
+## MSG_SKILL_HoneArmor
+Hone Armor: Grants Armor allies[NL]
+in 2x2 get buff atk/spd+6 at[NL]
+each start of turn[X]
+
+## MSG_SKILL_FortifyArmor_NAME
+Fortify Armor[X]
+
+## MSG_SKILL_FortifyArmor
+Fortify Armor: Grants Armor allies[NL]
+in 2x2 get buff atk/spd+6 at[NL]
+each start of turn[X]
