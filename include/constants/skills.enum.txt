@@ -118,6 +118,10 @@ SID_RangeBonusBow1
 SID_RangeBonusBow2
 SID_RunningStart
 
+SID_BattleRange_Todo1       // +10 atk if no allies range-3
+SID_BattleRange_Todo2       // +7  atk if no allies range-2
+SID_BattleRange_Todo3       // +5  atk if no allies range-1
+
 // Post action
 SID_Canto
 SID_CantoPlus
@@ -159,13 +163,7 @@ SID_HoneFlier
 SID_HoneArmor
 SID_FortifyArmor
 
-SID_Fortify
-
 SID_AversaNight
-
-SID_BattleRange_Todo1       // +10 atk if no allies range-3
-SID_BattleRange_Todo2       // +7  atk if no allies range-2
-SID_BattleRange_Todo3       // +5  atk if no allies range-1
 
 // AI skills
 SID_Shade       // Less likely to be attacked

@@ -1,12 +1,15 @@
 #!/bin/bash
 
 RELEASE_DIR=.release_dir
-install -d $RELEASE_DIR
+
+rm -rf $RELEASE_DIR
+mkdir $RELEASE_DIR
 
 # make -j
 cp fe8-kernel-* $RELEASE_DIR
-
 cp -rf include $RELEASE_DIR
+cp -rf Patches $RELEASE_DIR
+
 TARGET_INCLUDE=$RELEASE_DIR/include
 
 # fix texts

@@ -23,8 +23,8 @@ gpEfxCombatArtAnimInfos:    POIN gEfxCombatArtAnimInfos
 gpWeaponTriangleConfs:      POIN gWeaponTriangleConfs
 gpWeaponTriangleItemConf:   POIN gWeaponTriangleItemConf
 
-gpClassChgExpaMods: POIN gClassChgExpaMods
-gpTraineesRe:       POIN gTraineesRe
+/* Some pad for historical reasons :) */
+WORD 0 0
 
 gpDebuffInfos:  POIN gDebuffInfos
 
