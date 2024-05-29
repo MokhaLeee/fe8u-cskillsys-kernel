@@ -850,6 +850,62 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_PowHone) && (SID_PowHone < MAX_SKILL_NUM))
+    [SID_PowHone] = {
+        .name = MSG_SKILL_PowHone_NAME,
+        .desc = MSG_SKILL_PowHone,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_MagHone) && (SID_MagHone < MAX_SKILL_NUM))
+    [SID_MagHone] = {
+        .name = MSG_SKILL_MagHone_NAME,
+        .desc = MSG_SKILL_MagHone,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_SklHone) && (SID_SklHone < MAX_SKILL_NUM))
+    [SID_SklHone] = {
+        .name = MSG_SKILL_SklHone_NAME,
+        .desc = MSG_SKILL_SklHone,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_SpdHone) && (SID_SpdHone < MAX_SKILL_NUM))
+    [SID_SpdHone] = {
+        .name = MSG_SKILL_SpdHone_NAME,
+        .desc = MSG_SKILL_SpdHone,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_LckHone) && (SID_LckHone < MAX_SKILL_NUM))
+    [SID_LckHone] = {
+        .name = MSG_SKILL_LckHone_NAME,
+        .desc = MSG_SKILL_LckHone,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_DefHone) && (SID_DefHone < MAX_SKILL_NUM))
+    [SID_DefHone] = {
+        .name = MSG_SKILL_DefHone_NAME,
+        .desc = MSG_SKILL_DefHone,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
+#if (defined(SID_ResHone) && (SID_ResHone < MAX_SKILL_NUM))
+    [SID_ResHone] = {
+        .name = MSG_SKILL_ResHone_NAME,
+        .desc = MSG_SKILL_ResHone,
+        .icon = GFX_SkillIcon_WIP
+    },
+#endif
+
 #if (defined(SID_AversaNight) && (SID_AversaNight < MAX_SKILL_NUM))
     [SID_AversaNight] = {
         .name = MSG_SKILL_DEBUFF_Aversa_NAME,

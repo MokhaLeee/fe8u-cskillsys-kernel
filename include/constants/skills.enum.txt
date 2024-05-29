@@ -146,13 +146,15 @@ SID_Inspiration
 SID_DivinelyInspiring
 SID_VoiceOfPeace
 
-SID_PowOpenning
-SID_MagOpenning
-SID_SklOpenning
-SID_SpdOpenning
-SID_LckOpenning
-SID_DefOpenning
-SID_ResOpenning
+SID_PowHone
+SID_MagHone
+SID_SklHone
+SID_SpdHone
+SID_LckHone
+SID_DefHone
+SID_ResHone
+
+SID_Fortify
 
 SID_AversaNight
 

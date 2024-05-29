@@ -19,5 +19,5 @@
 
 #ifdef CONFIG_USE_STAT_DEBUFF
     #include "PrePhaseSkills/AversaNight.lyn.event"
-    #include "PrePhaseSkills/StatDebuffOpenning.lyn.event"
+    #include "PrePhaseSkills/HoneFortify.lyn.event"
 #endif /* CONFIG_USE_STAT_DEBUFF */

@@ -4,7 +4,7 @@ ALIGN 4
 gPrePhaseFuncs:
 #ifdef CONFIG_USE_STAT_DEBUFF
     POIN PrePhaseFunc_AversaNight
-    POIN PrePhaseFunc_StatDebuffOpenning
+    POIN PrePhaseFunc_HoneFortify
 #endif
     WORD 0 0 0 0 0
 

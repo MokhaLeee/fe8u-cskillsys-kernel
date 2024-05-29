@@ -6,58 +6,58 @@ Aversa's Night: if enemy's HP < unit's[NL]
 HP -3 and have allies in 2x2, inflicts[NL]
 Atk/Spd/Def/Res-3 and caught Panic.[X]
 
-## MSG_SKILL_PowOpening_NAME
+## MSG_SKILL_PowHone_NAME
 Pow Open[X]
 
-## MSG_SKILL_PowOpening
-Pow Opening: Grants allies in 2x2[NL]
+## MSG_SKILL_PowHone
+Pow Hone: Grants allies in 2x2[NL]
 Pow+6 for one turn during each[NL]
 start of turn[X]
 
-## MSG_SKILL_MagOpening_NAME
+## MSG_SKILL_MagHone_NAME
 Mag Open[X]
 
-## MSG_SKILL_MagOpening
-Mag Opening: Grants allies in 2x2[NL]
+## MSG_SKILL_MagHone
+Mag Hone: Grants allies in 2x2[NL]
 Mag+6 for one turn during each[NL]
 start of turn[X]
 
-## MSG_SKILL_SklOpening_NAME
+## MSG_SKILL_SklHone_NAME
 Skl Open[X]
 
-## MSG_SKILL_SklOpening
-Skl Opening: Grants allies in 2x2[NL]
+## MSG_SKILL_SklHone
+Skl Hone: Grants allies in 2x2[NL]
 Skl+6 for one turn during each[NL]
 start of turn[X]
 
-## MSG_SKILL_SpdOpening_NAME
+## MSG_SKILL_SpdHone_NAME
 Spd Open[X]
 
-## MSG_SKILL_SpdOpening
-Spd Opening: Grants allies in 2x2[NL]
+## MSG_SKILL_SpdHone
+Spd Hone: Grants allies in 2x2[NL]
 Spd+6 for one turn during each[NL]
 start of turn[X]
 
-## MSG_SKILL_LckOpening_NAME
+## MSG_SKILL_LckHone_NAME
 Lck Open[X]
 
-## MSG_SKILL_LckOpening
-Lck Opening: Grants allies in 2x2[NL]
+## MSG_SKILL_LckHone
+Lck Hone: Grants allies in 2x2[NL]
 Lck+6 for one turn during each[NL]
 start of turn[X]
 
-## MSG_SKILL_DefOpening_NAME
+## MSG_SKILL_DefHone_NAME
 Def Open[X]
 
-## MSG_SKILL_DefOpening
-Def Opening: Grants allies in 2x2[NL]
+## MSG_SKILL_DefHone
+Def Hone: Grants allies in 2x2[NL]
 Def+6 for one turn during each[NL]
 start of turn[X]
 
-## MSG_SKILL_ResOpening_NAME
+## MSG_SKILL_ResHone_NAME
 Res Open[X]
 
-## MSG_SKILL_ResOpening
-Res Opening: Grants allies in 2x2[NL]
+## MSG_SKILL_ResHone
+Res Hone: Grants allies in 2x2[NL]
 Res+6 for one turn during each[NL]
 start of turn[X]
