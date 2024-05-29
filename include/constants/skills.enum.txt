@@ -59,6 +59,7 @@ SID_SorceryBlade
 SID_Fortune
 SID_BlueFlame
 SID_Frenzy
+SID_PoisonPoint
 
 // Weapon triangle
 SID_SwordBreaker
