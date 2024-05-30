@@ -138,3 +138,11 @@ PoisonPoint[X]
 ## MSG_SKILL_PoisonPoint
 P-Point: Inflict poison[NL]
 on the opponent.[X]
+
+## MSG_SKILL_KillingMachine_NAME
+K-Machine[X]
+
+## MSG_SKILL_KillingMachine
+KillingMachine: [NL]
+Double this unit's[NL]
+total crit rate.[X]
