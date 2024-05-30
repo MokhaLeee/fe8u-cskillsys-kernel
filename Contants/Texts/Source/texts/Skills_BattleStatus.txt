@@ -138,3 +138,11 @@ PoisonPoint[X]
 ## MSG_SKILL_PoisonPoint
 P-Point: Inflict poison[NL]
 on the opponent.[X]
+
+## MSG_SKILL_HeavyStrikes_NAME
+H-Strikes[X]
+
+## MSG_SKILL_HeavyStrikes
+HeavyStrikes:[NL]
+Add weapon weight[NL]
+to critical chance.[X]

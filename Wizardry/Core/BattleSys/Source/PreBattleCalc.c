@@ -428,6 +428,11 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
             attacker->battleDefense = INT16_MAX;
     }
 #endif
+
+#if (defined(SID_HeavyStrikes) && (SID_HeavyStrikes < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_HeavyStrikes))
+        attacker->battleCritRate += GetItemWeight(attacker->weapon);
+#endif
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)
