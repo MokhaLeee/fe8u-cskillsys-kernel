@@ -415,6 +415,16 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
         }
     }
 #endif
+
+#if (defined(SID_WonderGuard) && (SID_WonderGuard < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_WonderGuard))
+    {
+        // check if the attacker and defender have the same weapon type
+        if(defender->weaponType == attacker->weaponType) 
+            // if so, then increase the attacker's defense by the defender's attack to render the latter's attack harmless 
+            attacker->battleDefense += defender->battleAttack;
+    }
+#endif
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)

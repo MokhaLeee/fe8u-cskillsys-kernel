@@ -1247,6 +1247,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_WonderGuard) && (SID_WonderGuard < MAX_SKILL_NUM))
+    [SID_WonderGuard] = {
+        .name = MSG_SKILL_WonderGuard_NAME,
+        .desc = MSG_SKILL_WonderGuard,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
     [SID_PoisonPoint] = {
         .name = MSG_SKILL_PoisonPoint_NAME,
@@ -1254,5 +1262,4 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
-
 };
