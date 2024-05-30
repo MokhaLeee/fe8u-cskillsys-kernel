@@ -13,6 +13,7 @@ gPreMapAnimBattleRoundHooks:
 #ifdef CONFIG_USE_COMBO_ATTACK
     POIN PreMapAnimBattleRound_ComboAttack
 #endif
+    POIN MapAnimRoundAnim_DisplaySkillIcon
     WORD 0 0 0 0
 
 #endif /* MAP_ANIM_BATTLE_HOOK_INSTALLED */

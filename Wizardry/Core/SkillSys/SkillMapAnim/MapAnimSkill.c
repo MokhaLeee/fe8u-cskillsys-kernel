@@ -5,8 +5,14 @@
 #include "efx-skill.h"
 #include "skill-mapanim-internal.h"
 
-STATIC_DECLAR void MapAnimRoundAnim_DisplaySkillIcon(void)
+STATIC_DECLAR const struct ProcCmd ProcScr_PreMapAnimHitSkillIcon[] = {
+    PROC_SLEEP(20),
+    PROC_END
+};
+
+bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
 {
+    bool ret = false;
     int cid, sid_atk, sid_def;
     u32 actor_icon, target_icon;
     u32 left_icon, right_icon;
@@ -62,6 +68,7 @@ STATIC_DECLAR void MapAnimRoundAnim_DisplaySkillIcon(void)
             procfx->y = infoproc->y;
             procfx->icon_idx = left_icon;
             procfx->pos = POS_L;
+            ret = true;
         }
 
         /* Right */
@@ -72,13 +79,16 @@ STATIC_DECLAR void MapAnimRoundAnim_DisplaySkillIcon(void)
             procfx->y = infoproc->y;
             procfx->icon_idx = right_icon;
             procfx->pos = POS_R;
+            ret = true;
         }
     }
-}
 
-/* LynJump */
-void MapAnim_DisplayRoundAnim(ProcPtr proc)
-{
-    MapAnimRoundAnim_DisplaySkillIcon();
-    Proc_StartBlocking(GetItemAnim6CCode(), proc);
+    if (ret)
+    {
+        PlaySeSpacial(0x3D1,
+            gManimSt.actor[0].unit->xPos * 0x10 - gBmSt.camera.x);
+
+        Proc_StartBlocking(ProcScr_PreMapAnimHitSkillIcon, parent);
+    }
+    return ret;
 }

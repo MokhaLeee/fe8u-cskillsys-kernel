@@ -58,7 +58,7 @@ STATIC_DECLAR void MapAnimSkillfx_DrawIconIDLE(struct ProcMapAnimSkillfx * proc)
 
     PutSprite(4, OAM1_X(ix), OAM0_Y(iy) + ATTR0_TYPE_BLENDED, gObject_16x16, oam2);
 
-    if (++proc->timer == 0x24)
+    if (++proc->timer == 0x44)
         Proc_Break(proc);
 }
 
