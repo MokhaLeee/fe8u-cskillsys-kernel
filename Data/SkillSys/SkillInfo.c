@@ -1262,4 +1262,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_SlowBurn) && (SID_SlowBurn < MAX_SKILL_NUM))
+    [SID_SlowBurn] = {
+        .desc = MSG_SKILL_SlowBurn,
+        .icon = GFX_SkillIcon_SlowBurn,
+    },
+#endif
 };
