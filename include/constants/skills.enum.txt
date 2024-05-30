@@ -61,6 +61,7 @@ SID_BlueFlame
 SID_Frenzy
 SID_WonderGuard
 SID_PoisonPoint
+SID_QuickBurn
 
 // Weapon triangle
 SID_SwordBreaker
