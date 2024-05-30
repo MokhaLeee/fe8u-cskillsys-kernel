@@ -2,7 +2,7 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com) 
 
-[Contributing note](./CONTRIBUTING.md)
+[Contributing note](./docs/CONTRIBUTING.md)
 
 Modern CHAX for FE8U-SkillSystem, including skillsys, battle-system hacks, etc.e.
 
