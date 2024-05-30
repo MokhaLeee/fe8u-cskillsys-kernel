@@ -123,3 +123,8 @@ with this skill, gain Attack +2.[X]
 Frenzy: [NL]
 For every 4 damage taken,[N]
 +1 to damage dealt.[X]
+
+## MSG_SKILL_Multiscale
+Multiscale:[NL]
+Take half damage[NL]
+at full HP.[X]

@@ -410,6 +410,25 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
         }
     }
 #endif
+
+
+#if (defined(SID_Multiscale) && (SID_Multiscale < MAX_SKILL_NUM))
+	if (SkillTester(unit, SID_Multiscale)) { 
+        // Check if the skill holder's HP is at full
+		if (attacker->unit.curHP == attacker->unit.maxHP) { 
+            /**
+             * Find the difference between the defender's attack and the attacker's defense
+             * Check if it's less than 0, and set it to 0 if it is
+             * Otherwise half the result
+             * And then add it to the attacker's defense to simulate the effect of 'halving' the damage.
+             */
+            int dmg = defender->battleAttack - attacker->battleDefense;
+            if (dmg < 0) dmg = 0;
+                int subDmg = dmg/2;
+            attacker->battleDefense += subDmg;	
+		} 
+    }
+#endif
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)

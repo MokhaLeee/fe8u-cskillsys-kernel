@@ -1150,4 +1150,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Frenzy,
     },
 #endif
+
+#if (defined(SID_Multiscale) && (SID_Multiscale < MAX_SKILL_NUM))
+    [SID_Multiscale] = {
+        .desc = MSG_SKILL_Multiscale,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
