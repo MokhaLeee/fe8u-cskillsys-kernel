@@ -6,5 +6,6 @@
 #include "Source/banim.lyn.event"
 #include "Source/list-verify.lyn.event"
 #include "Source/event-call.lyn.event"
+#include "Source/hook-proc.lyn.event"
 
 #endif /* KERNEL_LIB_INSTALLED */

@@ -97,5 +97,7 @@ gpKernelClassList_Armor:    POIN KernelClassList_Armor
 gpKernelClassList_Dragon:   POIN KernelClassList_Dragon
 gpKernelClassList_Beast:    POIN KernelClassList_Beast
 
+gpPreMapAnimBattleRoundHooks: POIN gPreMapAnimBattleRoundHooks
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

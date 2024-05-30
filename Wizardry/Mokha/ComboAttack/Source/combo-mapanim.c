@@ -6,36 +6,6 @@
 
 extern struct BattleUnit gComboMapAnimBattleUnit;
 
-STATIC_DECLAR void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void)
-{
-    struct Unit * unit;
-    int round = GetBattleHitRound(gManimSt.pCurrentRound);
-
-    if (round != 0)
-    {
-        unit = GetMapAnimComboUnit(round - 1);
-        if (!UNIT_IS_VALID(unit))
-            return;
-
-        Printf("actor %d, pid %#x at round %d",
-                gManimSt.subjectActorId, UNIT_CHAR_ID(gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit), round);
-
-        if (gManimSt.subjectActorId != COMBO_MAPA_ACTOR_IDX)
-            return;
-
-        if (gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit != unit)
-            return;
-
-        MU_End(gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu);
-
-        gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit = NULL;
-        gManimSt.actor[COMBO_MAPA_ACTOR_IDX].bu   = NULL;
-        gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu = NULL;
-
-        ShowUnitSprite(unit);
-    }
-}
-
 STATIC_DECLAR void MapAnim_PrepareNextBattleRound_SetNewRoundCombo(void)
 {
     struct Unit * unit;
@@ -115,45 +85,41 @@ PROC_LABEL(99),
     PROC_END
 };
 
-static void _dummy_func(ProcPtr p)
+/* External hack */
+void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void)
 {
-    struct Proc * proc = p;
+    struct Unit * unit;
+    int round = GetBattleHitRound(gManimSt.pCurrentRound);
 
-    proc->proc_idleCb = NULL;
-    Proc_Break(proc);
+    if (round != 0)
+    {
+        unit = GetMapAnimComboUnit(round - 1);
+        if (!UNIT_IS_VALID(unit))
+            return;
+
+        Printf("actor %d, pid %#x at round %d",
+                gManimSt.subjectActorId, UNIT_CHAR_ID(gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit), round);
+
+        if (gManimSt.subjectActorId != COMBO_MAPA_ACTOR_IDX)
+            return;
+
+        if (gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit != unit)
+            return;
+
+        MU_End(gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu);
+
+        gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit = NULL;
+        gManimSt.actor[COMBO_MAPA_ACTOR_IDX].bu   = NULL;
+        gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu = NULL;
+
+        ShowUnitSprite(unit);
+    }
 }
 
-/* LynJump */
-void MapAnim_PrepareNextBattleRound(ProcPtr p)
+/* External hack */
+bool PreMapAnimBattleRound_ComboAttack(ProcPtr proc)
 {
-    u16 weapon;
-    struct BattleUnit * unit;
-    struct Proc * proc = p;
-    struct MapAnimState *state = &gManimSt;
-
-#if CHAX
-    MapAnim_PrepareNextBattleRound_CleanPreRoundCombo();
-#endif
-
-    if (state->pCurrentRound->info & 0x10) {
-        Proc_Break(proc);
-        Proc_GotoScript(proc, gProc_MapAnimEnd);
-        return;
-    }
-    MapAnim_AdvanceBattleRound();
-    unit = state->actor[state->subjectActorId].bu;
-    weapon = unit->weaponBefore;
-    state->specialProcScr = GetSpellAssocAlt6CPointer(weapon);
-
-#if CHAX
-    gManimSt.pCurrentRound--;
     MapAnim_PrepareNextBattleRound_SetNewRoundCombo();
-    gManimSt.pCurrentRound++;
     Proc_StartBlocking(ProcScr_MapAnim_PrepareNextBattleHook, proc);
-
-    /* Add a PROC_YIELD */
-    proc->proc_idleCb = _dummy_func;
-#else
-    Proc_Break(proc);
-#endif
+    return true;
 }
