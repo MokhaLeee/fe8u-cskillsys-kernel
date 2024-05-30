@@ -84,6 +84,23 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         .type = STATUS_INFO_TYPE_BUFF,
         .unit_status = { .mov = +4 },
     },
+    [UNIT_STAT_BUFF_JOB_HONE] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = {
+            .pow = 6,
+            .mag = 6,
+            .skl = 6,
+            .spd = 6,
+        },
+    },
+    [UNIT_STAT_BUFF_JOB_FORTIFY] = {
+        .type = STATUS_INFO_TYPE_BUFF,
+        .unit_status = {
+            .lck = 6,
+            .def = 6,
+            .res = 6,
+        },
+    },
 
     [UNIT_STAT_DEBUFF_AversaNight] = {
         .type = STATUS_INFO_TYPE_DEBUFF,

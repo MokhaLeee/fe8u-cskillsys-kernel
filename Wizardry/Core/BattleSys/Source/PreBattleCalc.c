@@ -395,6 +395,11 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
         attacker->battleAttack += 2;
 #endif
 
+#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_PoisonPoint))
+        defender->statusOut = UNIT_STATUS_POISON;
+#endif
+
 #if (defined(SID_Frenzy) && (SID_Frenzy < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Frenzy))
     {
@@ -411,6 +416,18 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
     }
 #endif
 
+#if (defined(SID_WonderGuard) && (SID_WonderGuard < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_WonderGuard))
+    {
+        // check if the attacker and defender have the same weapon type
+        if (defender->weaponType == attacker->weaponType) 
+            /**
+             * if so, then increase the attacker's defense by the
+             * defender's attack to render the latter's attack harmless 
+             */
+            attacker->battleDefense = INT16_MAX;
+    }
+#endif
 
 #if (defined(SID_Multiscale) && (SID_Multiscale < MAX_SKILL_NUM))
 	if (SkillTester(unit, SID_Multiscale)) { 
@@ -427,7 +444,7 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
                 int subDmg = dmg/2;
             attacker->battleDefense += subDmg;	
 		} 
-    }
+
 #endif
 }
 

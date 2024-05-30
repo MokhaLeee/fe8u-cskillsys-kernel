@@ -2,6 +2,7 @@
 #include "battle-system.h"
 #include "skill-system.h"
 #include "combat-art.h"
+#include "class-types.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR bool CheckUnitNullEffective(struct Unit * unit)
@@ -56,8 +57,7 @@ check_null_effective:
 /* LynJump */
 bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
 {
-    const u8 * list = NULL;
-    int i, jid = UNIT_CLASS_ID(target);
+    int jid_target = UNIT_CLASS_ID(target);
 
     /* Check combat-art */
     if (actor->index == gBattleActor.unit.index)
@@ -67,38 +67,52 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
         {
             const struct CombatArtInfo * info = &gpCombatArtInfos[cid];
             if (info->effective_all)
-                return true;
+                goto check_null_effective;
 
             if (info->effective_dragon)
-                list = GetItemEffectiveness(ITEM_ELIXIR);
+            {
+                if (CheckClassDragon(jid_target))
+                    goto check_null_effective;
+            }
             else if (info->effective_monster)
-                list = GetItemEffectiveness(ITEM_LIGHT_IVALDI);
+            {
+                if (CheckClassBeast(jid_target))
+                    goto check_null_effective;
+            }
             else if (info->effective_armor)
-                list = GetItemEffectiveness(ITEM_AXE_HAMMER);
+            {
+                if (CheckClassArmor(jid_target))
+                    goto check_null_effective;
+            }
             else if (info->effective_fly)
-                list = GetItemEffectiveness(ITEM_BOW_IRON);
+            {
+                if (CheckClassFlier(jid_target))
+                    goto check_null_effective;
+            }
             else if (info->effective_ride)
-                list = GetItemEffectiveness(ITEM_SWORD_ZANBATO);
+            {
+                if (CheckClassCavalry(jid_target))
+                    goto check_null_effective;
+            }
         }
     }
 
     /* Check skills */
 #if (defined(SID_Slayer) && (SID_Slayer < MAX_SKILL_NUM))
     if (SkillTester(actor, SID_Slayer))
-        list = GetItemEffectiveness(ITEM_LIGHT_IVALDI);
+    {
+        if (CheckClassBeast(jid_target))
+            goto check_null_effective;
+    }
 #endif
 
 #if (defined(SID_Skybreaker) && (SID_Skybreaker < MAX_SKILL_NUM))
     if (SkillTester(actor, SID_Skybreaker))
-        list = GetItemEffectiveness(ITEM_BOW_IRON);
-#endif
-
-    if (!list)
-        return false;
-
-    for (i = 0; list[i]; i++)
-        if (list[i] == jid)
+    {
+        if (CheckClassFlier(jid_target))
             goto check_null_effective;
+    }
+#endif
 
     return false;
 

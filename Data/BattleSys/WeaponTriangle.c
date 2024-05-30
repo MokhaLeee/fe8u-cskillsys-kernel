@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "battle-system.h"
+#include "skill-system.h"
 #include "constants/skills.h"
 
 const struct WeaponTriangleConf gWeaponTriangleConfs[] = {

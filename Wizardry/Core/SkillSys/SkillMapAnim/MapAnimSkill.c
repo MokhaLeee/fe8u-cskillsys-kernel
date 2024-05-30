@@ -5,80 +5,118 @@
 #include "efx-skill.h"
 #include "skill-mapanim-internal.h"
 
-STATIC_DECLAR void MapAnimRoundAnim_DisplaySkillIcon(void)
+extern u8 const * const gpImg_MapAnimSKILL;
+
+STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimDeamon[] = {
+    PROC_SLEEP(20),
+    PROC_END
+};
+
+bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
 {
-    int cid, sid_atk, sid_def;
+    int round, cid, sid_atk, sid_def;
     u32 actor_icon, target_icon;
     u32 left_icon, right_icon;
+    struct ProcMapAnimSkillfx * procfx;
 
     struct MAInfoFrameProc * infoproc;
     infoproc = Proc_Find(ProcScr_MapBattleInfoBox);
-    if (infoproc)
-    {
-        struct ProcMapAnimSkillfx * procfx;
-        int round = GetBattleHitRound(gManimSt.pCurrentRound) - 1;
+    if (!infoproc)
+        return false;
 
-        cid = GetEfxCombatArt(round);
-        sid_atk = GetActorEfxSkill(round);
-        sid_def = GetTargetEfxSkill(round);
+    round = GetBattleHitRound(gManimSt.pCurrentRound) - 1;
 
-        Debugf("cid %#x, sid-atk %#x, sid-def %#x at round %d",
-                    cid, sid_atk, sid_def, round);
+    cid = GetEfxCombatArt(round);
+    sid_atk = GetActorEfxSkill(round);
+    sid_def = GetTargetEfxSkill(round);
+
+    Debugf("cid %#x, sid-atk %#x, sid-def %#x at round %d",
+                cid, sid_atk, sid_def, round);
 
 #if defined(CONFIG_USE_DEBUG) && defined(CONFIG_DEBUG_EFXSKILL)
-        sid_atk = 1;
-        sid_def = 2;
+    sid_atk = 1;
+    sid_def = 2;
 #endif
 
-        actor_icon = 0;
-        if (COMBART_VALID(cid))
-            actor_icon = COMBART_ICON(cid);
-        else if (SKILL_VALID(sid_atk))
-            actor_icon = SKILL_ICON(sid_atk);
+    actor_icon = 0;
+    if (COMBART_VALID(cid))
+        actor_icon = COMBART_ICON(cid);
+    else if (SKILL_VALID(sid_atk))
+        actor_icon = SKILL_ICON(sid_atk);
 
-        target_icon = 0;
-        if (SKILL_VALID(sid_def))
-            target_icon = SKILL_ICON(sid_def);
+    target_icon = 0;
+    if (SKILL_VALID(sid_def))
+        target_icon = SKILL_ICON(sid_def);
 
-        if (gManimSt.subjectActorId == POS_L)
-        {
-            left_icon  = actor_icon;
-            right_icon = target_icon;
-        }
-        else
-        {
-            right_icon = actor_icon;
-            left_icon  = target_icon;
-        }
+    /* Terminator */
+    if (actor_icon == 0 && target_icon == 0)
+        return false;
 
-        Debugf("left_icon %#x right_icon %#x at round %d",
-                    left_icon, right_icon, round);
-
-        /* Left */
-        if (left_icon != 0)
-        {
-            procfx = Proc_Start(ProcScr_MapAnimSkillfx, infoproc);
-            procfx->x = infoproc->x;
-            procfx->y = infoproc->y;
-            procfx->icon_idx = left_icon;
-            procfx->pos = POS_L;
-        }
-
-        /* Right */
-        if (right_icon != 0)
-        {
-            procfx = Proc_Start(ProcScr_MapAnimSkillfx, infoproc);
-            procfx->x = infoproc->x;
-            procfx->y = infoproc->y;
-            procfx->icon_idx = right_icon;
-            procfx->pos = POS_R;
-        }
+    if (gManimSt.subjectActorId == POS_L)
+    {
+        left_icon  = actor_icon;
+        right_icon = target_icon;
     }
-}
+    else
+    {
+        right_icon = actor_icon;
+        left_icon  = target_icon;
+    }
 
-/* LynJump */
-void MapAnim_DisplayRoundAnim(ProcPtr proc)
-{
-    MapAnimRoundAnim_DisplaySkillIcon();
-    Proc_StartBlocking(GetItemAnim6CCode(), proc);
+    Debugf("left_icon %#x right_icon %#x at round %d",
+                left_icon, right_icon, round);
+
+    /* Left */
+    if (left_icon != 0)
+    {
+        procfx = Proc_Start(ProcScr_MapAnimSkillfx, infoproc);
+        procfx->x = infoproc->x;
+        procfx->y = infoproc->y;
+        procfx->icon_idx = left_icon;
+        procfx->pos = POS_L;
+    }
+
+    /* Right */
+    if (right_icon != 0)
+    {
+        procfx = Proc_Start(ProcScr_MapAnimSkillfx, infoproc);
+        procfx->x = infoproc->x;
+        procfx->y = infoproc->y;
+        procfx->icon_idx = right_icon;
+        procfx->pos = POS_R;
+    }
+
+    Decompress(
+        gpImg_MapAnimSKILL,
+        OBJ_VRAM0 + 0x20 * BM_OBJCHR_BANIM_EFFECT);
+
+    if (actor_icon != 0)
+    {
+        struct Unit * unit = gManimSt.actor[gManimSt.subjectActorId].unit;
+
+        APProc_Create(
+            Obj_MapAnimMISS,
+            16 * (SCREEN_TILE_X(unit->xPos)) + 8,
+            16 * (SCREEN_TILE_Y(unit->yPos)) + 16,
+            TILEREF(BM_OBJCHR_BANIM_EFFECT, 0), 0, 2);
+    }
+
+    if (target_icon != 0)
+    {
+        struct Unit * unit = gManimSt.actor[gManimSt.targetActorId].unit;
+
+        APProc_Create(
+            Obj_MapAnimMISS,
+            16 * (SCREEN_TILE_X(unit->xPos)) + 8,
+            16 * (SCREEN_TILE_Y(unit->yPos)) + 16,
+            TILEREF(BM_OBJCHR_BANIM_EFFECT, 0), 0, 2);
+    }
+
+    if (actor_icon != 0)
+        PlaySeSpacial(0x3D1, gManimSt.actor[gManimSt.subjectActorId].unit->xPos * 0x10 - gBmSt.camera.x);
+    else
+        PlaySeSpacial(0x3D1, gManimSt.actor[gManimSt.targetActorId].unit->xPos * 0x10 - gBmSt.camera.x);
+
+    Proc_StartBlocking(ProcScr_SkillMapAnimDeamon, parent);
+    return true;
 }

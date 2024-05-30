@@ -23,8 +23,8 @@ gpEfxCombatArtAnimInfos:    POIN gEfxCombatArtAnimInfos
 gpWeaponTriangleConfs:      POIN gWeaponTriangleConfs
 gpWeaponTriangleItemConf:   POIN gWeaponTriangleItemConf
 
-gpClassChgExpaMods: POIN gClassChgExpaMods
-gpTraineesRe:       POIN gTraineesRe
+/* Some pad for historical reasons :) */
+WORD 0 0
 
 gpDebuffInfos:  POIN gDebuffInfos
 
@@ -76,6 +76,30 @@ gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
 gpCopyUnitHooks: POIN gCopyUnitHooks
 gpClearUnitHooks: POIN gClearUnitHooks
 gpLoadUnitHooks: POIN gLoadUnitHooks
+
+gpHpGetters:    POIN gHpGetters
+gpPowGetters:   POIN gPowGetters
+gpMagGetters:   POIN gMagGetters
+gpSklGetters:   POIN gSklGetters
+gpSpdGetters:   POIN gSpdGetters
+gpLckGetters:   POIN gLckGetters
+gpDefGetters:   POIN gDefGetters
+gpResGetters:   POIN gResGetters
+gpMovGetters:   POIN gMovGetters
+gpConGetters:   POIN gConGetters
+gpAidGetters:   POIN gAidGetters
+
+gpWeaponRangeGetters: POIN gWeaponRangeGetters
+
+gpKernelClassList_Flier:    POIN KernelClassList_Flier
+gpKernelClassList_Cavalry:  POIN KernelClassList_Cavalry
+gpKernelClassList_Armor:    POIN KernelClassList_Armor
+gpKernelClassList_Dragon:   POIN KernelClassList_Dragon
+gpKernelClassList_Beast:    POIN KernelClassList_Beast
+
+gpPreMapAnimBattleRoundHooks: POIN gPreMapAnimBattleRoundHooks
+MESSAGE CURRENTOFFSET
+gpImg_MapAnimSKILL: POIN Img_MapAnimSKILL
 
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)
