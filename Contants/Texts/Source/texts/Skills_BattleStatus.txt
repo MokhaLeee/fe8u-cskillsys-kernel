@@ -138,3 +138,8 @@ PoisonPoint[X]
 ## MSG_SKILL_PoisonPoint
 P-Point: Inflict poison[NL]
 on the opponent.[X]
+
+## MSG_SKILL_Merciless
+Merciless: [NL]
+Guaranteed critical hit[NL]
+against poisoined foes.[X]
