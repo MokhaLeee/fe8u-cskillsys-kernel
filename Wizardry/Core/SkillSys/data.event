@@ -1,0 +1,8 @@
+#ifndef SKILLSYS_DATA_INSTALLED
+#define SKILLSYS_DATA_INSTALLED
+
+ALIGN 4
+Img_MapAnimSKILL:
+    #incbin "SkillMapAnim/skill-mapanimap.4bpp.lz"
+
+#endif /* SKILLSYS_DATA_INSTALLED */
