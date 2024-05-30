@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gbafe.h"
+#include <stdint.h>
 
 #include "Configs/configs.h"
 #include "debug-kit.h"

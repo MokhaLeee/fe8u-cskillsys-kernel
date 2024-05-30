@@ -420,9 +420,12 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
     if (SkillTester(unit, SID_WonderGuard))
     {
         // check if the attacker and defender have the same weapon type
-        if(defender->weaponType == attacker->weaponType) 
-            // if so, then increase the attacker's defense by the defender's attack to render the latter's attack harmless 
-            attacker->battleDefense += defender->battleAttack;
+        if (defender->weaponType == attacker->weaponType) 
+            /**
+             * if so, then increase the attacker's defense by the
+             * defender's attack to render the latter's attack harmless 
+             */
+            attacker->battleDefense = INT16_MAX;
     }
 #endif
 }
