@@ -1262,4 +1262,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
+    [SID_CriticalPierce] = {
+        .desc = MSG_SKILL_CriticalPierce,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
