@@ -5,47 +5,16 @@
 #define COMBO_MAPA_ACTOR_IDX 2
 
 extern struct BattleUnit gComboMapAnimBattleUnit;
-
-STATIC_DECLAR void MapAnim_PrepareNextBattleRound_SetNewRoundCombo(void)
-{
-    struct Unit * unit;
-    int round = GetBattleHitRound(gManimSt.pCurrentRound);
-
-    unit = GetMapAnimComboUnit(round);
-    if (!UNIT_IS_VALID(unit))
-    {
-        SetupBattleMOVEUNITs();
-        return;
-    }
-
-    /* Now we get the combo unit */
-    gComboMapAnimBattleUnit.unit = *unit;
-
-    // SetupMapBattleAnim
-    MakeBattleMOVEUNIT(COMBO_MAPA_ACTOR_IDX, &gComboMapAnimBattleUnit, unit);
-    HideUnitSprite(unit);
-
-    // SetupBattleMOVEUNITs
-    gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu->pAPHandle->objLayer = gUnknown_08205714[COMBO_MAPA_ACTOR_IDX];
-
-    // MapAnim_AdvanceBattleRound
-    gManimSt.subjectActorId = COMBO_MAPA_ACTOR_IDX;
-
-    SetBattleAnimFacing(COMBO_MAPA_ACTOR_IDX, 1, MA_FACING_OPPONENT);
-    SetBattleAnimFacing(1, COMBO_MAPA_ACTOR_IDX, MA_FACING_OPPONENT);
-
-    // MapAnim_PrepareNextBattleRound
-    gManimSt.specialProcScr = GetSpellAssocAlt6CPointer(GetUnitEquippedWeapon(unit));
-}
+extern const u8 Img_MapAnimCOMBO[];
+extern u8 const * const gpImg_MapAnimCOMBO;
 
 /**
  * Special combo map-anim effect
  */
-extern const u8 Img_MapAnimCOMBO[];
 
 STATIC_DECLAR void MapAnim_ShowComboSpecialEffect(ProcPtr proc)
 {
-    int round = GetBattleHitRound(gManimSt.pCurrentRound - 1);
+    int round = GetBattleHitRound(gManimSt.pCurrentRound);
     struct Unit * unit = GetMapAnimComboUnit(round);
 
     if (!UNIT_IS_VALID(unit) || unit != gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit)
@@ -55,7 +24,7 @@ STATIC_DECLAR void MapAnim_ShowComboSpecialEffect(ProcPtr proc)
     }
 
     Decompress(
-        Img_MapAnimCOMBO,
+        gpImg_MapAnimCOMBO,
         OBJ_VRAM0 + 0x20 * BM_OBJCHR_BANIM_EFFECT);
 
     APProc_Create(
@@ -119,7 +88,35 @@ void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void)
 /* External hack */
 bool PreMapAnimBattleRound_ComboAttack(ProcPtr proc)
 {
-    MapAnim_PrepareNextBattleRound_SetNewRoundCombo();
+    struct Unit * unit;
+    int round = GetBattleHitRound(gManimSt.pCurrentRound);
+
+    unit = GetMapAnimComboUnit(round);
+    if (!UNIT_IS_VALID(unit))
+    {
+        SetupBattleMOVEUNITs();
+        return true;
+    }
+
+    /* Now we get the combo unit */
+    gComboMapAnimBattleUnit.unit = *unit;
+
+    // SetupMapBattleAnim
+    MakeBattleMOVEUNIT(COMBO_MAPA_ACTOR_IDX, &gComboMapAnimBattleUnit, unit);
+    HideUnitSprite(unit);
+
+    // SetupBattleMOVEUNITs
+    gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu->pAPHandle->objLayer = gUnknown_08205714[COMBO_MAPA_ACTOR_IDX];
+
+    // MapAnim_AdvanceBattleRound
+    gManimSt.subjectActorId = COMBO_MAPA_ACTOR_IDX;
+
+    SetBattleAnimFacing(COMBO_MAPA_ACTOR_IDX, 1, MA_FACING_OPPONENT);
+    SetBattleAnimFacing(1, COMBO_MAPA_ACTOR_IDX, MA_FACING_OPPONENT);
+
+    // MapAnim_PrepareNextBattleRound
+    gManimSt.specialProcScr = GetSpellAssocAlt6CPointer(GetUnitEquippedWeapon(unit));
+
     Proc_StartBlocking(ProcScr_MapAnim_PrepareNextBattleHook, proc);
     return true;
 }

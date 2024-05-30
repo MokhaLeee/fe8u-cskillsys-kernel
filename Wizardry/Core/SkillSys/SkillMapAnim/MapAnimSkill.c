@@ -24,7 +24,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     if (!infoproc)
         return false;
 
-    round = GetBattleHitRound(gManimSt.pCurrentRound) - 1;
+    round = GetBattleHitRound(gManimSt.pCurrentRound);
 
     cid = GetEfxCombatArt(round);
     sid_atk = GetActorEfxSkill(round);

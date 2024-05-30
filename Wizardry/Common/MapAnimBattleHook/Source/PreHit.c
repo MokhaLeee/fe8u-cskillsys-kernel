@@ -14,6 +14,16 @@ STATIC_DECLAR void PreMapAnimBattleRound_OnStart(ProcPtr proc)
     MapAnim_PrepareNextBattleRound_CleanPreRoundCombo();
 #endif
 
+    /**
+     * This is part of function MapAnim_PrepareNextBattleRound()
+     * we need to put it external
+     */
+    if (gManimSt.pCurrentRound->info & BATTLE_HIT_INFO_END)
+    {
+        Proc_Break(proc);
+        Proc_GotoScript(proc, gProc_MapAnimEnd);
+        return;
+    }
     MapAnim_PrepareNextBattleRound(proc);
 
     gManimSt.pCurrentRound--;
