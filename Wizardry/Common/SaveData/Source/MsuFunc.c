@@ -186,11 +186,11 @@ static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
             dst->pad.ai.skills[i] = src->supports[i];
 
         dst->pad.ai.ai1 = src->ai1;
-        dst->pad.ai.ai1_cur = src->ai1data;
+        dst->pad.ai.ai1_cur = src->ai_a_pc;
         dst->pad.ai.ai2 = src->ai2;
-        dst->pad.ai.ai2_cur = src->ai2data;
+        dst->pad.ai.ai2_cur = src->ai_b_pc;
         dst->pad.ai.ai_flag = src->aiFlags;
-        dst->pad.ai.ai_config = src->ai3And4;
+        dst->pad.ai.ai_config = src->ai_config;
         dst->pad.ai.cur_hp = src->curHP;
     }
     dst->_u3A = src->_u3A;
@@ -251,11 +251,11 @@ static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit * ds
             dst->supports[i] = src->pad.ai.skills[i];
 
         dst->ai1 = src->pad.ai.ai1;
-        dst->ai1data = src->pad.ai.ai1_cur;
+        dst->ai_a_pc = src->pad.ai.ai1_cur;
         dst->ai2 = src->pad.ai.ai2;
-        dst->ai2data = src->pad.ai.ai2_cur;
+        dst->ai_b_pc = src->pad.ai.ai2_cur;
         dst->aiFlags = src->pad.ai.ai_flag;
-        dst->ai3And4 = src->pad.ai.ai_config;
+        dst->ai_config = src->pad.ai.ai_config;
         dst->curHP = src->pad.ai.cur_hp;
     }
 
