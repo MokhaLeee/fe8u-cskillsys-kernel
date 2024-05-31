@@ -143,3 +143,11 @@ on the opponent.[X]
 Quick Burn: [NL]
 +15 Hit and Avoid.[NL]
 This bonus decreases each turn.[X]
+
+## MSG_SKILL_StanceSpectrum_NAME
+S-Spectrum[X]
+
+## MSG_SKILL_StanceSpectrum
+StanceSpectrum:[NL]
+Grants +2 Atk, Spd, Def[NL]
+and Res if attacked.[X]

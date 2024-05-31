@@ -263,6 +263,15 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
                 attacker->battleDefense += 6;
         }
 #endif
+
+#if (defined(SID_StanceSpectrum) && (SID_StanceSpectrum < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_StanceSpectrum))
+    {
+            attacker->battleAttack += 2;
+            attacker->battleSpeed += 2;
+            attacker->battleDefense += 2;
+    }
+#endif
     }
 
     /* Misc */
