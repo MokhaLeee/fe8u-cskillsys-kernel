@@ -138,3 +138,8 @@ PoisonPoint[X]
 ## MSG_SKILL_PoisonPoint
 P-Point: Inflict poison[NL]
 on the opponent.[X]
+
+## MSG_SKILL_QuickBurn
+Quick Burn: [NL]
++15 Hit and Avoid.[NL]
+This bonus decreases each turn.[X]
