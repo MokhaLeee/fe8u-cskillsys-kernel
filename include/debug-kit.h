@@ -6,12 +6,18 @@
 #include "mgba.h"
 #include "no-cash-gba.h"
 
-#ifdef CONFIG_USE_DEBUG
+#if CONFIG_FORCE_PRIENT_ERROR
+    static inline void LogInit(void)
+    {
+        mgba_open();
+    }
 
-static inline void LogInit(void)
-{
-    mgba_open();
-}
+    #define Error(string) LogErrorf("(%s): %s", __func__, string)
+    #define Errorf(format, ...) LogErrorf("(%s): "format, __func__, __VA_ARGS__)
+    #define Assert(condition) if (!(condition)) { Fatal("Assertion failed: " #condition); }
+#endif
+
+#ifdef CONFIG_USE_DEBUG
 
 #define LogPrint(string) { mgba_printf(MGBA_LOG_INFO, string); \
                             NoCashGBAPrint(string); }
@@ -52,9 +58,6 @@ static inline void LogInit(void)
 #define Fatal(string) LogFatalf("(%s): %s", __func__, string)
 #define Fatalf(format, ...) LogFatalf("(%s): "format, __func__, __VA_ARGS__)
 
-#define Error(string) LogErrorf("(%s): %s", __func__, string)
-#define Errorf(format, ...) LogErrorf("(%s): "format, __func__, __VA_ARGS__)
-
 #define Warn(string) LogWarnf("(%s): %s", __func__, string)
 #define Warnf(format, ...) LogWarnf("(%s): "format, __func__, __VA_ARGS__)
 
@@ -64,14 +67,27 @@ static inline void LogInit(void)
 #define Debug(string) LogDebugf("(%s): %s", __func__, string)
 #define Debugf(format, ...) LogDebugf("(%s): "format, __func__, __VA_ARGS__)
 
-#define Assert(condition) if (!(condition)) { Fatal("Assertion failed: " #condition); }
+#if !CONFIG_FORCE_PRIENT_ERROR
+    static inline void LogInit(void)
+    {
+        mgba_open();
+    }
+    #define Error(string) LogErrorf("(%s): %s", __func__, string)
+    #define Errorf(format, ...) LogErrorf("(%s): "format, __func__, __VA_ARGS__)
+    #define Assert(condition) if (!(condition)) { Fatal("Assertion failed: " #condition); }
+#endif
 
 #else
 
-static inline void LogInit(void)
-{
-    return;
-}
+#if !CONFIG_FORCE_PRIENT_ERROR
+    static inline void LogInit(void)
+    {
+        return;
+    }
+    #define Error(string)
+    #define Errorf(format, ...)
+    #define Assert(condition)
+#endif
 
 #define LogPrint(string)
 #define LogPrintf(format, ...)
@@ -89,15 +105,12 @@ static inline void LogInit(void)
 #define Printf(format, ...)
 #define Fatal(string)
 #define Fatalf(format, ...)
-#define Error(string)
-#define Errorf(format, ...)
 #define Warn(string)
 #define Warnf(format, ...)
 #define Info(string)
 #define Infof(format, ...)
 #define Debug(string)
 #define Debugf(format, ...)
-#define Assert(condition)
 
 #endif
 
