@@ -143,8 +143,3 @@ on the opponent.[X]
 Quick Burn: [NL]
 +15 Hit and Avoid.[NL]
 This bonus decreases each turn.[X]
-
-## MSG_SKILL_Petrify
-Petrify:[NL]
-Inflict stone status.[NL] 
-(Skill% activation).[X]

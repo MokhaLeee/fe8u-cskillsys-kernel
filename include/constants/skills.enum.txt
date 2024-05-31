@@ -62,7 +62,6 @@ SID_Frenzy
 SID_WonderGuard
 SID_PoisonPoint
 SID_QuickBurn
-SID_Petrify
 
 // Weapon triangle
 SID_SwordBreaker
@@ -92,6 +91,7 @@ SID_Sol
 SID_DragonFang
 SID_Foresight
 SID_Inori
+SID_Petrify
 
 // Blow skills
 SID_BlowDarting
