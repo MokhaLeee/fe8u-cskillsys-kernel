@@ -1051,6 +1051,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Peacebringer) && (SID_VoiceOfPeace < MAX_SKILL_NUM))
+    [SID_Peacebringer] = {
+        .desc = MSG_SKILL_Peacebringer,
+        .icon = GFX_SkillIcon_Peacebringer,
+    },
+#endif
+
 #if (defined(SID_LEGEND_InoriAtk) && (SID_LEGEND_InoriAtk < MAX_SKILL_NUM))
     [SID_LEGEND_InoriAtk] = {
         .desc = MSG_SKILL_LEGEND_InoriAtk,
