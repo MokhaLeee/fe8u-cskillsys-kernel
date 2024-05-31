@@ -6,6 +6,11 @@
 #ifndef MOKHA_AI_HACK_INSTALLED
 #define MOKHA_AI_HACK_INSTALLED
 
+#include "AiAction/AiAction.event"
+
 #include "Source/MiscAiSkills.lyn.event"
+#include "Source/LynJump.event"
+
+// #include "Teleportation/Teleportation.event"
 
 #endif

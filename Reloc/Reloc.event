@@ -102,5 +102,7 @@ gpPreMapAnimBattleRoundHooks: POIN gPreMapAnimBattleRoundHooks
 gpImg_MapAnimSKILL: POIN Img_MapAnimSKILL
 gpImg_MapAnimCOMBO: POIN Img_MapAnimCOMBO
 
+gpAiActionTable: POIN gAiActionTable
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

@@ -1,0 +1,5 @@
+#include "Source/TeleportationAiAction.lyn.event"
+#include "Source/TeleportationAiDecide.lyn.event"
+#include "Source/LynJump.event"
+
+InjectAiAction(CONFIG_AI_ACTION_EXPA_Teleportation, AiAction_Teleportation, AiAction_TeleportationIdle)

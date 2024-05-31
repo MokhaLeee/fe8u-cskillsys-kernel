@@ -62,6 +62,12 @@
 #define CONFIG_USE_STAT_DEBUFF
 
 /**
+ * Ai action expansion
+ */
+#define CONFIG_AI_ACTION_AMT 20
+#define CONFIG_AI_ACTION_EXPA_Teleportation 14
+
+/**
  * Unit amount, since it is hard to modify, it is recommanded not change this value
  */
 #define CONFIG_UNIT_AMT_ALLY  51
