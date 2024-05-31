@@ -9,7 +9,6 @@
 #include "PostActionSkills/Swap.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
-#include "Misc/AiSkills.lyn.event"
 #include "Misc/MenuSkills.lyn.event"
 #include "Misc/LynJump.event"
 

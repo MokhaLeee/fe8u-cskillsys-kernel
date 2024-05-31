@@ -48,6 +48,7 @@ ALIGN 4
 #include "Mokha/MiscSkillEffects/MiscSkillEffects.event"
 #include "Mokha/ComboAttack/ComboAttack.event"
 #include "Mokha/WeaponLockEx/WeaponLockEx.event"
+#include "Mokha/AiHack/AiHack.event"
 
 #include "External/ExternalPatches.event"
 
