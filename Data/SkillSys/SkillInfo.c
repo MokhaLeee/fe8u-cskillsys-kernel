@@ -1269,4 +1269,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_QuickBurn,
     },
 #endif
+
+#if (defined(SID_Enrage) && (SID_Enrage < MAX_SKILL_NUM))
+    [SID_Enrage] = {
+        .desc = MSG_SKILL_Enrage,
+        .icon = GFX_SkillIcon_Enrage,
+    },
+#endif
 };

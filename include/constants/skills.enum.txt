@@ -91,6 +91,7 @@ SID_Sol
 SID_DragonFang
 SID_Foresight
 SID_Inori
+SID_Enrage
 
 // Blow skills
 SID_BlowDarting
