@@ -1269,4 +1269,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_QuickBurn,
     },
 #endif
+
+#if (defined(SID_StanceSpectrum) && (SID_StanceSpectrum < MAX_SKILL_NUM))
+    [SID_StanceSpectrum] = {
+        .name = MSG_SKILL_StanceSpectrum_NAME,
+        .desc = MSG_SKILL_StanceSpectrum,
+        .icon = GFX_SkillIcon_StanceSpectrum,
+    },
+#endif
 };
