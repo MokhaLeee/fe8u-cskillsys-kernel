@@ -145,6 +145,17 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         gBattleStats.damage = gBattleStats.damage * 3 / 2;
 #endif
 
+#if defined(SID_Petrify) && (SID_Petrify < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_Petrify))
+    {
+        //Roll a random number against the attacker's skill
+        //Then check if the defending unit has no status
+        if(BattleRoll1RN(attacker->unit.skl, FALSE) == TRUE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE)
+            //If so, then set it to petrify.
+            defender->statusOut = UNIT_STATUS_PETRIFY;
+    }
+#endif
+
     if (BattleRoll1RN(gBattleStats.critRate, FALSE) == TRUE &&
 #if defined(SID_Foresight) && (SID_Foresight < MAX_SKILL_NUM)
         !SkillTester(&defender->unit, SID_Foresight) &&
