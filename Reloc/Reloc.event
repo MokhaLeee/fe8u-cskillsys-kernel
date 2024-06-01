@@ -107,5 +107,7 @@ gpAiActionTable: POIN gAiActionTable
 gpPreAi1DecideHook: POIN gPreAi1DecideHook
 gpPreAi2DecideHook: POIN gPreAi2DecideHook
 
+gpUnitActionTable: POIN gUnitActionTable
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

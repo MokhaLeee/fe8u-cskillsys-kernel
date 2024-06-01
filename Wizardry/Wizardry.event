@@ -30,6 +30,7 @@ ALIGN 4
 #include "Common/KernelTutorial/KernelTutorial.event"
 #include "Common/BeginActionHook/BeginActionHook.event"
 #include "Common/MapAnimBattleHook/MapAnimBattleHook.event"
+#include "Common/UnitAction/UnitAction.event"
 
 #include "Core/SkillSys/SkillSys.event"
 #include "Core/UnitStatusGetter/UnitStatusGetter.event"

@@ -68,6 +68,12 @@
 #define CONFIG_AI_ACTION_EXPA_Teleportation 14
 
 /**
+ * Unit action expansion
+ */
+#define CONFIG_UNIT_ACTION_AMT 0x30
+#define CONFIG_UNIT_ACTION_EXPA_Teleportation 0x23
+
+/**
  * Unit amount, since it is hard to modify, it is recommanded not change this value
  */
 #define CONFIG_UNIT_AMT_ALLY  51
