@@ -22,6 +22,5 @@
 #endif /* CONFIG_USE_STAT_DEBUFF */
 #include "PrePhaseSkills/LynJump.event"
 
-#include "AiSkills/MiscAiSkills.lyn.event"
-#include "AiSkills/LynJump.event"
 #include "AiSkills/Teleportation.event"
+#include "AiSkills/MiscAiSkills.event"

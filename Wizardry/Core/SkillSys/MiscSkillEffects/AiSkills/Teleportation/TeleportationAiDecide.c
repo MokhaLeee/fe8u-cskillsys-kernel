@@ -33,7 +33,11 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
     if (GetUnitEquippedWeapon(gActiveUnit) == 0)
         return false;
 
+#if defined(SID_Teleportation) && (SID_Teleportation < MAX_SKILL_NUM)
     if (!SkillTester(gActiveUnit, SID_Teleportation))
+#else
+    if (1)
+#endif
         return false;
 
     enemy_faction = GetEnemyFaction(UNIT_FACTION(gActiveUnit));
@@ -51,7 +55,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
         SetWorkingMoveCosts(GetUnitMovementCost(unit));
         GenerateMovementMap(
             unit->xPos, unit->yPos,
-            GetUnitMaxRange(gActiveUnit) + MovGetter(gActiveUnit),
+            MovGetter(gActiveUnit),
             unit->index);
 
         break;
