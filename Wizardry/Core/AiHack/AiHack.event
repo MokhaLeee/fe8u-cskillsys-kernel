@@ -10,9 +10,4 @@
 #include "AiAction/AiAction.event"
 #include "AiDecide/AiDecide.event"
 
-#include "Source/MiscAiSkills.lyn.event"
-#include "Source/LynJump.event"
-
-#include "Teleportation/Teleportation.event"
-
 #endif
