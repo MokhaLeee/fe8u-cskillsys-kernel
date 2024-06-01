@@ -7,5 +7,4 @@
 #include "Source/AiPerformEnd.lyn.event"
 #include "Source/LynJump.event"
 
-#include "Source/AiActionConf.lyn.event"
-#define InjectAiAction(action_idx, exec, idle) "PUSH; ORG gAiActionTable + action_idx * 8; WORD exec idle; POP"
+// #include "AiActionData.event"

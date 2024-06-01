@@ -12,10 +12,10 @@ ORG FreeSpaceKernel
 
 ORG FreeSpaceKernel_Reloc
     #include "Reloc/Reloc.event"
-MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) max (FreeSpaceKernel_Reloc + FreeSpaceRelocSize)
+MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
 ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
 
-ORG FreeSpaceKernel_TextTable
+ORG FreeSpaceData
     #include "Repoint/Repoint.event"
 
     /* <!>
@@ -23,8 +23,12 @@ ORG FreeSpaceKernel_TextTable
      */
     #include "Tools/Tool Helpers.txt"
 
-    #include "Wizardry/Wizardry.event"
     #include "Data/Data.event"
     #include "Contants/Contants.event"
-MESSAGE FreeSpace___Main___ end at (CURRENTOFFSET) max (FreeSpaceKernel + FreeSpaceKernelSize)
+MESSAGE FreeSpace__Data____ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceData) max (FreeSpaceDataSize)
+ASSERT (FreeSpaceData + FreeSpaceDataSize - CURRENTOFFSET)
+
+ORG FreeSpaceKernelMain
+    #include "Wizardry/Wizardry.event"
+MESSAGE FreeSpace___Main___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelMain) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)

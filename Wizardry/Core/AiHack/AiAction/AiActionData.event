@@ -1,0 +1,7 @@
+#ifndef AI_ACTION_DATA_INSTALLED
+#define AI_ACTION_DATA_INSTALLED
+
+#include "Source/AiActionConf.lyn.event"
+#define InjectAiAction(action_idx, exec, idle) "PUSH; ORG gAiActionTable + action_idx * 8; WORD exec idle; POP"
+
+#endif /* AI_ACTION_DATA_INSTALLED */

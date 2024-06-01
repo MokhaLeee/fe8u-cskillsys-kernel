@@ -1,5 +1,4 @@
 #include "Source/UnitAction.lyn.event"
-#include "Source/UnitActionData.lyn.event"
 #include "Source/LynJump.event"
 
-#define InjectUnitAction(index, func) "PUSH; ORG gUnitActionTable + index * 4; POIN func; POP"
+// #include "Source/UnitActionData.lyn.event"

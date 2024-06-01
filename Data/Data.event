@@ -36,5 +36,7 @@
 #include "../Wizardry/Mokha/WeaponLockEx/data.event"
 #include "../Wizardry/Common/ClassTypes/Source/class-types-data.lyn.event"
 #include "../Wizardry/Core/SkillSys/data.event"
+#include "../Wizardry/Common/UnitAction/UnitActionData.event"
+#include "../Wizardry/Core/AiHack/AiAction/AiActionData.event"
 
 #endif
