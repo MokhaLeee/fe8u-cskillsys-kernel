@@ -2,7 +2,7 @@ KERNEL_RELOC_START:
 
 // MESSAGE CURRENTOFFSET
 gpSkillInfos:           POIN gSkillInfos
-SkillTester:            POIN SkillTesterFast
+SkillTester:            POIN SkillTesterFastFast // SkillTesterFast
 gpConstSkillPTable:     POIN gConstSkillPTable
 gpConstSkillJTable:     POIN gConstSkillJTable
 gpSkillPreloadPData:    POIN gSkillPreloadPData
