@@ -4,10 +4,29 @@
 
 #include "ai-hack.h"
 
+#define LOCAL_TRACE 1
+
+static inline int GetEnemyFaction(int faction)
+{
+    switch (faction) {
+    case FACTION_BLUE:
+    case FACTION_GREEN:
+        return FACTION_RED;
+
+    case FACTION_RED:
+        return FACTION_BLUE;
+
+    default:
+        return FACTION_BLUE;
+    }
+}
+
 bool AiTryTeleportation(void)
 {
+    #define RETRY_CNT 100
+
     int i, ix, iy;
-    int max_rng;
+    int enemy_faction;
 
     if (GetUnitEquippedWeapon(gActiveUnit) == 0)
         return false;
@@ -15,41 +34,37 @@ bool AiTryTeleportation(void)
     if (0)
         return false;
 
-    BmMapFill(gBmMapMovement, -1);
+    enemy_faction = GetEnemyFaction(UNIT_FACTION(gActiveUnit));
 
-    max_rng = GetUnitMaxRange(gActiveUnit) + MovGetter(gActiveUnit);
-
-    for (iy = 0; iy < gBmMapSize.y; iy++)
+    for (i = 1; i < RETRY_CNT; i++)
     {
-        for (ix = 0; ix < gBmMapSize.x; ix++)
-        {
-            s8 uid = gBmMapUnit[iy][ix];
-            struct Unit * unit;
-
-            if (uid == 0)
+        struct Unit * unit = GetUnit((enemy_faction + 1 + NextRN_N(CONFIG_UNIT_AMT_ALLY - 1)));
+        if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (AreUnitsAllied(gActiveUnitId, gBmMapUnit[iy][ix]) == 1)
-                continue;
+        if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+            continue;
 
-            unit = GetUnit(uid);
-            if (!UNIT_IS_VALID(unit))
-                continue;
+        BmMapFill(gBmMapMovement, -1);
+        SetWorkingMoveCosts(GetUnitMovementCost(unit));
+        GenerateMovementMap(
+            unit->xPos, unit->yPos,
+            GetUnitMaxRange(gActiveUnit) + MovGetter(gActiveUnit),
+            unit->index);
 
-            if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-                continue;
-
-            MapAddInRange(ix, iy, max_rng, 1);
-        }
+        break;
     }
 
+    if (i == RETRY_CNT)
+        return false;
+
     /* Polling a target position */
-    for (i = 0; i < 100; i++)
+    for (i = 0; i < RETRY_CNT; i++)
     {
         ix = NextRN_N(gBmMapSize.x);
         iy = NextRN_N(gBmMapSize.y);
 
-        if (gBmMapUnit[iy][ix] != 0 && (s8) gBmMapMovement[iy][ix] >= 0)
+        if (gBmMapUnit[iy][ix] == 0 && (s8) gBmMapMovement[iy][ix] >= 0)
         {
             /* Found it! */
             AiSetDecision(gActiveUnit->xPos, gActiveUnit->yPos, CONFIG_AI_ACTION_EXPA_Teleportation, 0, 0, ix, iy);
@@ -69,10 +84,11 @@ bool AiTryExecScriptA(void)
     gAiScriptEnded = 1;
     gAiScriptKind = AI_SCRIPT_AI1;
 
+    LTRACEF("uid=%x, ai1=%d, pc=%d", gActiveUnit->index & 0xFF, gActiveUnit->ai1, gActiveUnit->ai_a_pc);
+
 #if CHAX
-    if (!(gActiveUnit->ai_config & AI_UNIT_CONFIG_EXTFLAG_TELEPORTATION))
+    if (!(gActiveUnit->state & US_HAS_MOVED))
     {
-        Error("AiTryTeleportation");
         switch (gActiveUnit->ai1) {
         case 0:
         case 1:
@@ -80,7 +96,10 @@ bool AiTryExecScriptA(void)
         case 11:
             if (AiTryTeleportation())
             {
-                gActiveUnit->ai_config |= AI_UNIT_CONFIG_EXTFLAG_TELEPORTATION;
+                LTRACEF("Ai1: Teleportation to x=%d, y=%d", 
+                            gAiDecision.xTarget, gAiDecision.yTarget);
+
+                gActiveUnit->state |= US_HAS_MOVED;
                 return true;
             }
             break;
@@ -101,10 +120,11 @@ bool AiTryExecScriptB(void)
     gAiScriptEnded = 1;
     gAiScriptKind = AI_SCRIPT_AI2;
 
+    LTRACEF("uid=%x, ai2=%d, pc=%d", gActiveUnit->index & 0xFF, gActiveUnit->ai2, gActiveUnit->ai_a_pc);
+
 #if CHAX
-    if (!(gActiveUnit->ai_config & AI_UNIT_CONFIG_EXTFLAG_TELEPORTATION))
+    if (!(gActiveUnit->state & US_HAS_MOVED))
     {
-        Error("AiTryTeleportation2");
         switch (gActiveUnit->ai2) {
         case 0:
         case 1:
@@ -113,7 +133,10 @@ bool AiTryExecScriptB(void)
         case 7:
             if (AiTryTeleportation())
             {
-                gActiveUnit->ai_config |= AI_UNIT_CONFIG_EXTFLAG_TELEPORTATION;
+                LTRACEF("Ai2: Teleportation to x=%d, y=%d", 
+                            gAiDecision.xTarget, gAiDecision.yTarget);
+
+                gActiveUnit->state |= US_HAS_MOVED;
                 return true;
             }
             break;
