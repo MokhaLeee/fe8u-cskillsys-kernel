@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "weapon-range.h"
 #include "status-getter.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 #include "ai-hack.h"
 
@@ -31,7 +33,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
     if (GetUnitEquippedWeapon(gActiveUnit) == 0)
         return false;
 
-    if (1)
+    if (!SkillTester(gActiveUnit, SID_Teleportation))
         return false;
 
     enemy_faction = GetEnemyFaction(UNIT_FACTION(gActiveUnit));

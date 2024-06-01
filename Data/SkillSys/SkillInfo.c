@@ -988,6 +988,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Teleportation) && (SID_Teleportation < MAX_SKILL_NUM))
+    [SID_Teleportation] = {
+        .name = MSG_SKILL_Teleportation_NAME,
+        .desc = MSG_SKILL_Teleportation,
+        .icon = GFX_SkillIcon_Teleportation,
+    },
+#endif
+
 #if (defined(SID_Dance) && (SID_Dance < MAX_SKILL_NUM))
     [SID_Dance] = {
         .desc = MSG_SKILL_Dance,

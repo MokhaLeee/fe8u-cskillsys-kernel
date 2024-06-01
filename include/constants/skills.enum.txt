@@ -172,6 +172,7 @@ SID_AversaNight
 SID_Shade       // Less likely to be attacked
 SID_ShadePlus   // Avoid to be a target
 SID_Provoke     // More likely to be attacked
+SID_Teleportation
 
 // Menu skills
 SID_Dance

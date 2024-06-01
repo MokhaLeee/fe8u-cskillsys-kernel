@@ -9,3 +9,11 @@ target this unit.[X]
 ## MSG_SKILL_Provoke
 Provoke: Enemies are more[NL]
 likely to target this unit.[X]
+
+## MSG_SKILL_Teleportation_NAME
+Teleport[X]
+
+## MSG_SKILL_Teleportation
+Teleportation: Allows the user to[NL]
+teleport to anywhere and[NL]
+take another action.[X]
