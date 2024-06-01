@@ -360,3 +360,51 @@ void MSU_LoadGreenUnits(u8 * src, const u32 size)
         src += SIZE_OF_SUS_UNIT_PACK;
     }
 }
+
+void MSU_SaveRedUnitExtSkills(u8 * dst, const u32 size)
+{
+    int i, amt = size / 4;
+
+    for (i = 0; i < amt; i++)
+    {
+        struct Unit * unit = &gUnitArrayRed[i];
+        WriteAndVerifySramFast(&unit->supports[3], dst, 4);
+        dst += 4;
+    }
+}
+
+void MSU_LoadRedUnitExtSkills(u8 * src, const u32 size)
+{
+    int i, amt = size / 4;
+
+    for (i = 0; i < amt; i++)
+    {
+        struct Unit * unit = &gUnitArrayRed[i];
+        ReadSramFast(src, &unit->supports[3], 4);
+        src += 4;
+    }
+}
+
+void MSU_SaveGreenUnitExtSkills(u8 * dst, const u32 size)
+{
+    int i, amt = size / 4;
+
+    for (i = 0; i < amt; i++)
+    {
+        struct Unit * unit = &gUnitArrayGreen[i];
+        WriteAndVerifySramFast(&unit->supports[3], dst, 4);
+        dst += 4;
+    }
+}
+
+void MSU_LoadGreenUnitExtSkills(u8 * src, const u32 size)
+{
+    int i, amt = size / 4;
+
+    for (i = 0; i < amt; i++)
+    {
+        struct Unit * unit = &gUnitArrayGreen[i];
+        ReadSramFast(src, &unit->supports[3], 4);
+        src += 4;
+    }
+}

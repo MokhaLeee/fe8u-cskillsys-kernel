@@ -12,7 +12,7 @@ ROM table can be configured in [RomTable.c](../Data/SkillSys/RomTable.c).
 
 ## RAM table API
 
-As for RAM table, developers may use the following API to give unit skills. Each ally can get 7 RAM skills and enemy can get 3 skills limited by SRAM size.
+As for RAM table, developers may use the following API to give unit skills. Each unit can get 7 RAM skills.
 
 ```C
 #include "skill-system.h"

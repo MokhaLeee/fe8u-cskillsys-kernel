@@ -91,6 +91,9 @@ gEmsSusChunks:
     EmsChunk(50 * 0x34, MSU_SaveRedUnits,   MSU_LoadRedUnits)
     EmsChunk(8  * 0x34, MSU_SaveGreenUnits, MSU_LoadGreenUnits)
 
+    EmsChunk(50 * 4, MSU_SaveRedUnitExtSkills, MSU_LoadRedUnitExtSkills)
+    EmsChunk(8 * 4, MSU_SaveGreenUnitExtSkills, MSU_LoadGreenUnitExtSkills)
+
     /* 51 * 0x20 */
     EmsChunk($0660, SaveUnitLearnedSkillLists, LoadUnitLearnedSkillLists)
     EmsChunk($0020, SaveCombatArtStatus, LoadCombatArtStatus)
