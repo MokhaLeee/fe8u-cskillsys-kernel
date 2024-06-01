@@ -109,5 +109,12 @@ gpPreAi2DecideHook: POIN gPreAi2DecideHook
 
 gpUnitActionTable: POIN gUnitActionTable
 
+gConfigUseGlyph:
+#ifdef CONFIG_USE_UTF8_GLYPH
+    WORD 1
+#else
+    WORD 0
+#endif
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

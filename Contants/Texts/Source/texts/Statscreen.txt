@@ -13,6 +13,15 @@ W[X]
 ## MSG_MSS_BWL_LOSE
 L[X]
 
+## MSG_MSS_BWL_BATTLE_JP
+戦[X]
+
+## MSG_MSS_BWL_WIN_JP
+勝[X]
+
+## MSG_MSS_BWL_LOSE_JP
+敗[X]
+
 ## MSG_MSS_SupportBonus
 Bonus[X]
 

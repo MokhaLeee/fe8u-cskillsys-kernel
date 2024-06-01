@@ -1,0 +1,3 @@
+Glyph/fe7j/font.fontall.txt
+Glyph/fe8j/font.fontall.txt
+Glyph/fe8u/font.fontall.txt

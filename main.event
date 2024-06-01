@@ -25,7 +25,7 @@ ORG FreeSpaceData
 
     #include "Data/Data.event"
     #include "Contants/Contants.event"
-MESSAGE FreeSpace__Data____ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceData) max (FreeSpaceDataSize)
+MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceData) max (FreeSpaceDataSize)
 ASSERT (FreeSpaceData + FreeSpaceDataSize - CURRENTOFFSET)
 
 ORG FreeSpaceKernelMain
