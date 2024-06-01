@@ -319,7 +319,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
     buf->bitfile = *bitfile;
     buf->uid = unit->index;
 
-    Debugf("pid=%#x, bitfile [%p]=%#lx", UNIT_CHAR_ID(unit), bitfile, *bitfile);
+    LTRACEF("pid=%#x, bitfile [%p]=%#lx", UNIT_CHAR_ID(unit), bitfile, *bitfile);
 
     if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
         in_panic = true;

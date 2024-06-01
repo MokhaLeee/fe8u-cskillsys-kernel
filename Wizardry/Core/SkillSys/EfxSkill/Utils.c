@@ -6,6 +6,8 @@
 #include "battle-system.h"
 #include "combat-art.h"
 
+#define LOCAL_TRACE 0
+
 struct EfxSkillRoundData {
     u8 sid_actor;
     u8 sid_target;
@@ -27,7 +29,7 @@ void RegisterActorEfxSkill(int round, const u8 sid)
         if (SKILL_VALID(sid_old) && GetEfxSkillPriority(sid_old) >= GetEfxSkillPriority(sid))
             return;
 
-        Debugf("Skill %#x at round %d", sid, round);
+        LTRACEF("Skill %#x at round %d", sid, round);
         sEfxSkillRoundData[round].sid_actor = sid;
     }
 }
@@ -40,7 +42,7 @@ void RegisterTargetEfxSkill(int round, const u8 sid)
         if (SKILL_VALID(sid_old) && GetEfxSkillPriority(sid_old) >= GetEfxSkillPriority(sid))
             return;
 
-        Debugf("Skill %#x at round %d", sid, round);
+        LTRACEF("Skill %#x at round %d", sid, round);
         sEfxSkillRoundData[round].sid_target = sid;
     }
 }

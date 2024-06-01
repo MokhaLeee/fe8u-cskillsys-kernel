@@ -4,6 +4,7 @@
 
 #include "Source/AiAction.lyn.event"
 #include "Source/AiActionCursor.lyn.event"
+#include "Source/AiPerformEnd.lyn.event"
 #include "Source/LynJump.event"
 
 #include "Source/AiActionConf.lyn.event"

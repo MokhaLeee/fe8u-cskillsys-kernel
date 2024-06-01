@@ -3,14 +3,16 @@
  * it's really at a very early stage on these hacks.
  * Maybe later we can optimize on them.
  */
+
 #ifndef MOKHA_AI_HACK_INSTALLED
 #define MOKHA_AI_HACK_INSTALLED
 
 #include "AiAction/AiAction.event"
+#include "AiDecide/AiDecide.event"
 
 #include "Source/MiscAiSkills.lyn.event"
 #include "Source/LynJump.event"
 
-// #include "Teleportation/Teleportation.event"
+#include "Teleportation/Teleportation.event"
 
 #endif

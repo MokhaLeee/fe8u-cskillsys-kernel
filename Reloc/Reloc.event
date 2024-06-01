@@ -104,5 +104,8 @@ gpImg_MapAnimCOMBO: POIN Img_MapAnimCOMBO
 
 gpAiActionTable: POIN gAiActionTable
 
+gpPreAi1DecideHook: POIN gPreAi1DecideHook
+gpPreAi2DecideHook: POIN gPreAi2DecideHook
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

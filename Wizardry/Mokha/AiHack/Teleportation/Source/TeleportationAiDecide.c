@@ -4,7 +4,7 @@
 
 #include "ai-hack.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 static inline int GetEnemyFaction(int faction)
 {
@@ -21,7 +21,7 @@ static inline int GetEnemyFaction(int faction)
     }
 }
 
-bool AiTryTeleportation(void)
+STATIC_DECLAR bool AiTryTeleportationExt(void)
 {
     #define RETRY_CNT 100
 
@@ -31,7 +31,7 @@ bool AiTryTeleportation(void)
     if (GetUnitEquippedWeapon(gActiveUnit) == 0)
         return false;
 
-    if (0)
+    if (1)
         return false;
 
     enemy_faction = GetEnemyFaction(UNIT_FACTION(gActiveUnit));
@@ -76,74 +76,37 @@ bool AiTryTeleportation(void)
 }
 
 /* LynJump */
-bool AiTryExecScriptA(void)
+bool Ai2Decide_TryTeleportation(void)
 {
-    gpAiScriptCurrent = gpAi1Table[0][gActiveUnit->ai1];
-    gpAiScriptCurrent = gpAiScriptCurrent + gActiveUnit->ai_a_pc;
+    /**
+     * This function may just hook at AI-2 decided
+     */
+    if (gAiScriptKind != AI_SCRIPT_AI2)
+        return false;
 
-    gAiScriptEnded = 1;
-    gAiScriptKind = AI_SCRIPT_AI1;
+    if (gActiveUnit->state & US_HAS_MOVED)
+        return false;
 
-    LTRACEF("uid=%x, ai1=%d, pc=%d", gActiveUnit->index & 0xFF, gActiveUnit->ai1, gActiveUnit->ai_a_pc);
+    switch (gActiveUnit->ai2) {
+    case 0:
+    case 1:
+    case 2:
+    case 9:
+    case 10:
+    case 11:
+        break;
 
-#if CHAX
-    if (!(gActiveUnit->state & US_HAS_MOVED))
-    {
-        switch (gActiveUnit->ai1) {
-        case 0:
-        case 1:
-        case 2:
-        case 11:
-            if (AiTryTeleportation())
-            {
-                LTRACEF("Ai1: Teleportation to x=%d, y=%d", 
-                            gAiDecision.xTarget, gAiDecision.yTarget);
-
-                gActiveUnit->state |= US_HAS_MOVED;
-                return true;
-            }
-            break;
-        }
+    default:
+        return false;
     }
-#endif
 
-    AiScript_Exec(&gActiveUnit->ai_a_pc);
-    return gAiScriptEnded;
-}
-
-/* LynJump */
-bool AiTryExecScriptB(void)
-{
-    gpAiScriptCurrent = gpAi2Table[0][gActiveUnit->ai2];
-    gpAiScriptCurrent = gpAiScriptCurrent + gActiveUnit->ai_b_pc;
-
-    gAiScriptEnded = 1;
-    gAiScriptKind = AI_SCRIPT_AI2;
-
-    LTRACEF("uid=%x, ai2=%d, pc=%d", gActiveUnit->index & 0xFF, gActiveUnit->ai2, gActiveUnit->ai_a_pc);
-
-#if CHAX
-    if (!(gActiveUnit->state & US_HAS_MOVED))
+    if (AiTryTeleportationExt())
     {
-        switch (gActiveUnit->ai2) {
-        case 0:
-        case 1:
-        case 2:
-        case 6:
-        case 7:
-            if (AiTryTeleportation())
-            {
-                LTRACEF("Ai2: Teleportation to x=%d, y=%d", 
-                            gAiDecision.xTarget, gAiDecision.yTarget);
+        LTRACEF("Ai1: Teleportation to x=%d, y=%d", 
+                    gAiDecision.xTarget, gAiDecision.yTarget);
 
-                gActiveUnit->state |= US_HAS_MOVED;
-                return true;
-            }
-            break;
-        }
+        gActiveUnit->state |= US_HAS_MOVED;
+        return true;
     }
-#endif
-
-    AiScript_Exec(&gActiveUnit->ai_b_pc);
-    return gAiScriptEnded;
+    return false;
 }

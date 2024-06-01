@@ -12,6 +12,8 @@
 #include "strmag.h"
 #include "status-getter.h"
 
+#define LOCAL_TRACE 0
+
 /* LynJump */
 void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
 {
@@ -128,8 +130,8 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
         {
             int index = iy + 4 * ix; /* This is quite different */
 
-            LogDebugf("%s: [index %d]=%d, at x=%d y=%d",
-                    __func__, index, stat_pack[index], ix, iy);
+            LTRACEF("[index %d]=%d, at x=%d y=%d",
+                        index, stat_pack[index], ix, iy);
 
             DrawStatBarGfx(
                 0x380 + 0x8 * index, 4,

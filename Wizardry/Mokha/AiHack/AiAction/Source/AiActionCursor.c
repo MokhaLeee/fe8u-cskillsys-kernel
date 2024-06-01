@@ -24,6 +24,7 @@ void CpPerform_MoveCameraOntoTarget(struct CpPerformProc* proc) {
 
 #if CHAX
         case CONFIG_AI_ACTION_EXPA_Teleportation:
+        default:
 #endif
             return;
 
