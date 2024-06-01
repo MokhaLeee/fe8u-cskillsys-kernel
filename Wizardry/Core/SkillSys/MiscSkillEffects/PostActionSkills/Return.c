@@ -73,6 +73,9 @@ bool PostActionPositionReturn(ProcPtr proc)
     if (gBattleActorGlobalFlag.enimy_defeated == false)
         return false;
 
+    if (gActiveUnitMoveOrigin.x == gActiveUnit->xPos && gActiveUnitMoveOrigin.y == gActiveUnit->yPos)
+        return false;
+
     KernelCallEvent(EventScr_PostActionPositionReturn, EV_EXEC_CUTSCENE, proc);
     return true;
 }
