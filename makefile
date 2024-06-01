@@ -19,8 +19,9 @@ EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 WIZARDRY_DIR := $(MK_DIR)Wizardry
 CONTANTS_DIR := $(MK_DIR)Contants
 GAMEDATA_DIR := $(MK_DIR)Data
+FONT_DIR     := $(MK_DIR)Fonts
 
-HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR)
+HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR) $(FONT_DIR)
 
 all:
 	@$(MAKE) pre_build
@@ -196,7 +197,6 @@ CLEAN_BUILD += $(TEXT_DIR)
 # = Glyph =
 # =========
 
-FONT_DIR := $(CONTANTS_DIR)/Fonts
 GLYPH_INSTALLER := $(FONT_DIR)/GlyphInstaller.event
 GLYPH_DEPS := $(FONT_DIR)/FontList.txt
 

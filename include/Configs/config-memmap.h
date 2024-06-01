@@ -13,8 +13,8 @@
 #define FreeSpaceKernel 0xB2A604
 #define FreeSpaceKernelSize 0xD5DFC
 
-#define FreeSpaceData 0xEFB2E0
-#define FreeSpaceDataSize 0xE4D20
+#define FreeSpaceFont 0xEFB2E0
+#define FreeSpaceFontSize 0xE4D20
 
 #define FreeSpaceDEMO 0x1000000
 // #define FreeSpace FreeSpaceDEMO

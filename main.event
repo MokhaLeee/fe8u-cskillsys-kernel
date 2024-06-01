@@ -15,7 +15,7 @@ ORG FreeSpaceKernel_Reloc
 MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
 ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
 
-ORG FreeSpaceData
+ORG FreeSpaceKernelMain
     #include "Repoint/Repoint.event"
 
     /* <!>
@@ -23,12 +23,16 @@ ORG FreeSpaceData
      */
     #include "Tools/Tool Helpers.txt"
 
+    #include "Wizardry/Wizardry.event"
     #include "Data/Data.event"
     #include "Contants/Contants.event"
-MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceData) max (FreeSpaceDataSize)
-ASSERT (FreeSpaceData + FreeSpaceDataSize - CURRENTOFFSET)
 
-ORG FreeSpaceKernelMain
-    #include "Wizardry/Wizardry.event"
 MESSAGE FreeSpace___Main___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelMain) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
+
+#ifdef CONFIG_USE_UTF8_GLYPH
+ORG FreeSpaceFont
+    #include "Fonts/Fonts.event"
+MESSAGE FreeSpace___Font___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceFont) max (FreeSpaceFontSize)
+ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
+#endif /* CONFIG_USE_UTF8_GLYPH */

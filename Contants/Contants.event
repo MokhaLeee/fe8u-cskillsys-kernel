@@ -13,9 +13,4 @@ ALIGN 4
 ALIGN 4
 #include "Sounds/Sounds.event"
 
-ALIGN 4
-#ifdef CONFIG_USE_UTF8_GLYPH
-    #include "Fonts/Fonts.event"
-#endif
-
 #endif

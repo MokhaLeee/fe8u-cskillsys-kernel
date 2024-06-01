@@ -1,8 +1,0 @@
-#ifndef UNIT_ACTION_DATA_INSTALLED
-#define UNIT_ACTION_DATA_INSTALLED
-
-#include "Source/UnitActionData.lyn.event"
-
-#define InjectUnitAction(index, func) "PUSH; ORG gUnitActionTable + index * 4; POIN func; POP"
-
-#endif /* UNIT_ACTION_DATA_INSTALLED */

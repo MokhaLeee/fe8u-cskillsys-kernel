@@ -1,6 +1,8 @@
 ALIGN 4
 
 #include "Common/EventExpansion/EventExpansion.event"
+#include "Common/UnitAction/UnitAction.event"
+#include "Core/AiHack/AiHack.event"
 #include "Core/DebuffRework/DebuffRework.event"
 #include "Core/WeaponRange/WeaponRange.event"
 
@@ -30,12 +32,10 @@ ALIGN 4
 #include "Common/KernelTutorial/KernelTutorial.event"
 #include "Common/BeginActionHook/BeginActionHook.event"
 #include "Common/MapAnimBattleHook/MapAnimBattleHook.event"
-#include "Common/UnitAction/UnitAction.event"
 
 #include "Core/SkillSys/SkillSys.event"
 #include "Core/UnitStatusGetter/UnitStatusGetter.event"
 #include "Core/BattleSys/BattleSys.event"
-#include "Core/AiHack/AiHack.event"
 #include "Core/Lvup/Lvup.event"
 #include "Core/StatScreen/StatScreen.event"
 #include "Core/HpBar/HpBar.event"
