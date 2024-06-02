@@ -23,36 +23,3 @@ void InsertPrefix(char * str, const char * insert_str, s8 c)
 
     str[0] = ' ';
 }
-
-void SetMsgTerminator(signed char * str)
-{
-    short off = 0;
-    u8 ch;
-
-    while (str[off] != 0)
-    {
-        ch = str[off];
-        if (ch == CHFE_L_LoadFace)   /* [LoadFace] */
-            off += 2;
-
-        if (ch == '\x80')   /* [HalfCloseEyes] */
-            off += 1;
-
-        off++;
-    }
-
-    off--;
-    while (off >= 0)
-    {
-        ch = str[off];
-        if (ch != '\x1F')   /* [.] */
-            return;
-
-        /* <!> [.] --> \x0 */
-        ch = str[off - 1];
-        if (ch != '\x80')   /* [HalfCloseEyes] */
-            str[off] = '\0';
-
-        off--;
-    }
-}
