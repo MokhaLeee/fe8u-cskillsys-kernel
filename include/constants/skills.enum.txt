@@ -154,7 +154,6 @@ SID_DivinelyInspiring
 SID_VoiceOfPeace
 SID_Peacebringer
 SID_BloodTide
-SID_Peacebringer
 SID_WhitePool
 SID_NightTide
 
