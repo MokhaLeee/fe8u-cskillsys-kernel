@@ -319,7 +319,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
     buf->bitfile = *bitfile;
     buf->uid = unit->index;
 
-    Debugf("pid=%#x, bitfile [%p]=%#lx", UNIT_CHAR_ID(unit), bitfile, *bitfile);
+    LTRACEF("pid=%#x, bitfile [%p]=%#lx", UNIT_CHAR_ID(unit), bitfile, *bitfile);
 
     if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
         in_panic = true;
@@ -400,7 +400,7 @@ STATIC_DECLAR struct StatDebuffMsgBuf * GetStatDebuffMsgBuf(struct Unit * unit)
         GenerateStatDebuffMsgBufExt(unit, GetUnitStatDebuffStatus(unit), buf);
     }
 
-    DPRINTF_LEVEL("unit %#x at buf %d: pow=%d, mag=%d, skl=%d, spd=%d, lck=%d, def=%d, res=%d, mov=%d", 
+    LTRACEF("unit %#x at buf %d: pow=%d, mag=%d, skl=%d, spd=%d, lck=%d, def=%d, res=%d, mov=%d", 
             UNIT_CHAR_ID(unit), buf - sStatDebuffMsgBuf,
             buf->pow, buf->mag, buf->skl, buf->spd, buf->lck, buf->def, buf->res, buf->mov);
 

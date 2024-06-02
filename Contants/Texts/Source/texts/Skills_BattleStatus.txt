@@ -146,3 +146,39 @@ K-Machine[X]
 KillingMachine: [NL]
 Double this unit's[NL]
 total crit rate.[X]
+
+## MSG_SKILL_HeavyStrikes_NAME
+H-Strikes[X]
+
+## MSG_SKILL_HeavyStrikes
+HeavyStrikes:[NL]
+Add weapon weight[NL]
+to critical chance.[X]
+
+## MSG_SKILL_QuickBurn
+Quick Burn: [NL]
++15 Hit and Avoid.[NL]
+This bonus decreases each turn.[X]
+
+## MSG_SKILL_StanceSpectrum_NAME
+S-Spectrum[X]
+
+## MSG_SKILL_StanceSpectrum
+StanceSpectrum:[NL]
+Grants +2 Atk, Spd, Def[NL]
+and Res if attacked.[X]
+
+## MSG_SKILL_BloodTide
+Blood Tide:[NL]
+Grants Atk and Hit +5
+to adjacent allies.[X]
+
+## MSG_SKILL_WhitePool
+White Pool:[NL]
+Grants Atk and AS +5
+to adjacent allies.[X]
+
+## MSG_SKILL_NightTide
+Night Tide:[NL]
+Grants +5 Def and Res
+to adjacent allies[X]

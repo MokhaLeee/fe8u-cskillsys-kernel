@@ -1,1 +1,0 @@
-../../../docs/MiscSkillEffect.md

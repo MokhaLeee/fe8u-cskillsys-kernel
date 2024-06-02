@@ -5,6 +5,8 @@
 #include "skill-system.h"
 #include "combat-art.h"
 
+#define LOCAL_TRACE 0
+
 extern u8 sEfxCombatArtRoundData[NEW_BATTLE_HIT_MAX];
 
 void InitEfxCombatArtRoundData(void)
@@ -17,7 +19,7 @@ int GetEfxCombatArtIndex(const u8 cid)
     if (COMBART_VALID(cid))
         return gpEfxCombatArtAnimInfos[cid].aid;
 
-    LogPrintf("%s: Try get invalid CombatArt info: %#X", __func__, cid);
+    LTRACEF("Try get invalid CombatArt info: %#X", cid);
     return 0;
 }
 
@@ -26,7 +28,7 @@ int GetEfxCombatArtPriority(const u8 cid)
     if (COMBART_VALID(cid))
         return gpEfxCombatArtAnimInfos[cid].priority;
 
-    LogPrintf("%s: Try get invalid CombatArt info: %#X", __func__, cid);
+    LTRACEF("Try get invalid CombatArt info: %#X", cid);
     return 0;
 }
 
@@ -35,7 +37,7 @@ int GetEfxCombatArtSfx(const u8 cid)
     if (COMBART_VALID(cid))
         return gpEfxCombatArtAnimInfos[cid].sfx;
 
-    LogPrintf("%s: Try get invalid CombatArt info: %#X", __func__, cid);
+    LTRACEF("Try get invalid CombatArt info: %#X", cid);
     return 0;
 }
 
@@ -47,7 +49,7 @@ void RegisterEfxSkillCombatArt(int round, const u8 cid)
         if (COMBART_VALID(old) && GetEfxCombatArtPriority(old) >= GetEfxCombatArtPriority(cid))
             return;
 
-        Debugf("CombatArt %#x at round %d", cid, round);
+        LTRACEF("CombatArt %#x at round %d", cid, round);
         sEfxCombatArtRoundData[round] = cid;
     }
 }
