@@ -65,6 +65,7 @@ SID_CriticalPierce
 SID_KillingMachine
 SID_HeavyStrikes
 SID_QuickBurn
+SID_CatchingUp
 
 // Weapon triangle
 SID_SwordBreaker

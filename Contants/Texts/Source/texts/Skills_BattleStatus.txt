@@ -173,6 +173,11 @@ StanceSpectrum:[NL]
 Grants +2 Atk, Spd, Def[NL]
 and Res if attacked.[X]
 
+## MSG_SKILL_CatchingUp
+CatchingUp: If foe doubles unit[NL]
+increase their attack by the amount[NL]
+they're above the doubling threshold.[X]
+
 ## MSG_SKILL_BloodTide
 Blood Tide:[NL]
 Grants Atk and Hit +5
