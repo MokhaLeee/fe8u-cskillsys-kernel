@@ -153,6 +153,7 @@ SID_Inspiration
 SID_DivinelyInspiring
 SID_VoiceOfPeace
 //SID_Peacebringer
+SID_NightTide
 
 SID_PowHone
 SID_MagHone
