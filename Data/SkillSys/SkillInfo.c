@@ -1285,6 +1285,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Merciless) && (SID_Merciless < MAX_SKILL_NUM))
+    [SID_Merciless] = {
+        .desc = MSG_SKILL_Merciless,
+        .icon = GFX_SkillIcon_Merciless,
+    },
+#endif
+
 #if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
     [SID_CriticalPierce] = {
         .desc = MSG_SKILL_CriticalPierce,

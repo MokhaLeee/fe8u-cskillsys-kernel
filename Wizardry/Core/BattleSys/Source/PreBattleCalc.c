@@ -404,6 +404,16 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+#if (defined(SID_Merciless) && (SID_Merciless < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Merciless))
+    {
+        // Check if the defending unit has the poison status
+        if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
+            // If so, then set an arbitrary high value for crit to 'gurantee' it.
+            attacker->battleCritRate = 255;
+    }
+#endif
+
 #if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_CriticalPierce))
         // Add the defender's critical avoid rate to the attacker's.
