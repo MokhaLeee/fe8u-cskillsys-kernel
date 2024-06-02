@@ -88,18 +88,16 @@ void UnitAutoLoadSkills(struct Unit * unit)
         level = level - 5;
     }
 
-#ifdef CONFIG_USE_DEBUG
-
+#ifdef CONFIG_DEBUG_UNIT_LOAD_SKILL
     /* For debug, we enable unit learn all of skills */
     if (UNIT_FACTION(unit) == FACTION_BLUE)
     {
         LTRACEF("Character %#x auto learned skill %#x ~ %#x",
-                UNIT_CHAR_ID(unit), 1, SID_MAX);
+                UNIT_CHAR_ID(unit), 1, 150);
 
-        for (i = 1; i < SID_MAX; i++)
+        for (i = 1; i < 150; i++)
             LearnSkill(unit, i);
     }
-
 #endif
 }
 
