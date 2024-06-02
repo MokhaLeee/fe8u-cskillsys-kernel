@@ -173,6 +173,11 @@ StanceSpectrum:[NL]
 Grants +2 Atk, Spd, Def[NL]
 and Res if attacked.[X]
 
+## MSG_SKILL_Technician
+Technician: If the user is[NL]
+holding an E-ranked weapon,[NL]
+boost weapon damage by 50%.[X]
+
 ## MSG_SKILL_CatchingUp
 CatchingUp: If foe doubles unit[NL]
 increase their attack by the amount[NL]

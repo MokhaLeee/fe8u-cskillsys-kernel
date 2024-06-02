@@ -1323,6 +1323,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
+    [SID_Technician] = {
+        .desc = MSG_SKILL_Technician,
+        .icon = GFX_SkillIcon_Technician,
+    },
+#endif
+
 #if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
     [SID_CatchingUp] = {
         .desc = MSG_SKILL_CatchingUp,

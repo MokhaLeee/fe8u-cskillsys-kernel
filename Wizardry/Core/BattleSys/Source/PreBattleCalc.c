@@ -444,6 +444,18 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
         attacker->battleAvoidRate += (15 - (turnNumber-1));
     }
 #endif
+
+#if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Technician))
+    {
+        if (GetItemRequiredExp(attacker->weapon) < WPN_EXP_D)
+        {
+            int itemMight = GetItemMight(attacker->weapon);
+            attacker->battleAttack += itemMight / 2;
+        }
+    }
+#endif
+
 }
 
 STATIC_DECLAR void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
