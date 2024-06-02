@@ -7,6 +7,8 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
+#define NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL 0
+
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
@@ -522,8 +524,12 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
 
         if (AreUnitsAllied(attacker->unit.index, unit->index))
         {
+#if NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL
             /* Fasten pre-battle calc */
-            if (!(gBattleStats.config & BATTLE_CONFIG_SIMULATE))
+            if (gBattleStats.config & BATTLE_CONFIG_REAL)
+#else
+            if (1)
+#endif
             {
                 /* Buffs */
 #if (defined(SID_Bond) && (SID_Bond < MAX_SKILL_NUM))
@@ -573,8 +579,12 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
         }
         else
         {
+#if NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL
             /* Fasten pre-battle calc */
-            if (!(gBattleStats.config & BATTLE_CONFIG_SIMULATE))
+            if (gBattleStats.config & BATTLE_CONFIG_REAL)
+#else
+            if (1)
+#endif
             {
                 /* Debuff */
 #if (defined(SID_Anathema) && (SID_Anathema < MAX_SKILL_NUM))
@@ -695,7 +705,7 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
     {}
 
 #ifdef CONFIG_BATTLE_SURROUND
-    if (attacker == &gBattleTarget)
+    if (attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
     {
         /* Flyer in outdoor environments are not affected by this effect (todo) */
         if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FLYER) || (0))
