@@ -7,6 +7,7 @@
 #include "debuff.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "strmag.h"
 
 STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 {
@@ -15,6 +16,11 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 #if defined(SID_Renewal) && (SID_Renewal < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Renewal))
         ret += Div(GetUnitMaxHp(unit) * 3, 10);
+#endif
+
+#if defined(SID_Imbue) && (SID_Imbue < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_Imbue))
+        ret += GetUnitMagic(unit);
 #endif
 
     return ret;

@@ -773,6 +773,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Imbue) && (SID_Imbue < MAX_SKILL_NUM))
+    [SID_Imbue] = {
+        .desc = MSG_SKILL_Imbue,
+        .icon = GFX_SkillIcon_Imbue,
+    },
+#endif
+
 #if (defined(SID_Anathema) && (SID_Anathema < MAX_SKILL_NUM))
     [SID_Anathema] = {
         .desc = MSG_SKILL_Anathema,
