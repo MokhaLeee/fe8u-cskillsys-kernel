@@ -50,6 +50,9 @@ source ~/.bashrc
 
 3. Build EA
 
+> [!WARNING]
+> **DO NOT** directly copy a EventAssembler inside. Please **Strictly** follow the following steps to build EA by yourself.
+
     Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
 
 ```bash
