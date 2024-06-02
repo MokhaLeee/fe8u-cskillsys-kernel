@@ -61,6 +61,9 @@ SID_BlueFlame
 SID_Frenzy
 SID_WonderGuard
 SID_PoisonPoint
+SID_CriticalPierce
+SID_KillingMachine
+SID_HeavyStrikes
 SID_QuickBurn
 SID_CatchingUp
 
@@ -140,6 +143,7 @@ SID_PosSwap
 
 // Pre-phase
 SID_Renewal
+SID_Forager
 
 // Range debuff
 SID_Anathema
@@ -153,7 +157,10 @@ SID_Infiltrator
 SID_Inspiration
 SID_DivinelyInspiring
 SID_VoiceOfPeace
-//SID_Peacebringer
+SID_Peacebringer
+SID_BloodTide
+SID_WhitePool
+SID_NightTide
 
 SID_PowHone
 SID_MagHone

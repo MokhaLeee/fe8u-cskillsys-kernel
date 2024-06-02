@@ -409,6 +409,23 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+#if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_CriticalPierce))
+        // Add the defender's critical avoid rate to the attacker's.
+        // Thus effectively 'negating' it.
+        attacker->battleCritRate += defender->battleDodgeRate;
+#endif
+
+#if (defined(SID_KillingMachine) && (SID_KillingMachine < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_KillingMachine))
+        attacker->battleCritRate *= 2;
+#endif
+
+#if (defined(SID_HeavyStrikes) && (SID_HeavyStrikes < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_HeavyStrikes))
+        attacker->battleCritRate += GetItemWeight(attacker->weapon);
+#endif
+
 #if (defined(SID_QuickBurn) && (SID_QuickBurn < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_QuickBurn))
     {
@@ -575,6 +592,31 @@ STATIC_DECLAR void PreBattleCalcRangeDebuffs(struct BattleUnit * attacker, struc
                 {
                     attacker->battleAttack += 3;
                     attacker->battleDefense += 1;
+                }
+#endif
+
+
+#if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_BloodTide) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleHitRate += 5;
+                }
+#endif
+
+#if (defined(SID_WhitePool) && (SID_WhitePool < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_WhitePool) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleSpeed += 5;
+                }
+#endif
+
+#if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_NightTide) && range1[i] == 1)
+                {
+                    attacker->battleDefense += 5;
+
                 }
 #endif
 

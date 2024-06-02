@@ -139,6 +139,27 @@ PoisonPoint[X]
 P-Point: Inflict poison[NL]
 on the opponent.[X]
 
+## MSG_SKILL_CriticalPierce
+CriticalPierce: [NL]
+Set the opponent's critical[NL]
+hit avoid rate to zero.[X]
+
+## MSG_SKILL_KillingMachine_NAME
+K-Machine[X]
+
+## MSG_SKILL_KillingMachine
+KillingMachine: [NL]
+Double this unit's[NL]
+total crit rate.[X]
+
+## MSG_SKILL_HeavyStrikes_NAME
+H-Strikes[X]
+
+## MSG_SKILL_HeavyStrikes
+HeavyStrikes:[NL]
+Add weapon weight[NL]
+to critical chance.[X]
+
 ## MSG_SKILL_QuickBurn
 Quick Burn: [NL]
 +15 Hit and Avoid.[NL]
@@ -156,3 +177,18 @@ and Res if attacked.[X]
 CatchingUp: If foe doubles unit[NL]
 increase their attack by the amount[NL]
 they're above the doubling threshold.[X]
+
+## MSG_SKILL_BloodTide
+Blood Tide:[NL]
+Grants Atk and Hit +5
+to adjacent allies.[X]
+
+## MSG_SKILL_WhitePool
+White Pool:[NL]
+Grants Atk and AS +5
+to adjacent allies.[X]
+
+## MSG_SKILL_NightTide
+Night Tide:[NL]
+Grants +5 Def and Res
+to adjacent allies[X]
