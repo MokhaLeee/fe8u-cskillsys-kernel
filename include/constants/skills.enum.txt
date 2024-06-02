@@ -62,6 +62,7 @@ SID_Frenzy
 SID_WonderGuard
 SID_PoisonPoint
 SID_HeavyStrikes
+SID_QuickBurn
 
 // Weapon triangle
 SID_SwordBreaker
@@ -112,6 +113,7 @@ SID_StanceSteady
 SID_StanceSturdy
 SID_StanceSwift
 SID_StanceWarding
+SID_StanceSpectrum
 
 // Weapon range
 SID_RangeBonusBMag1
@@ -151,6 +153,10 @@ SID_Infiltrator
 SID_Inspiration
 SID_DivinelyInspiring
 SID_VoiceOfPeace
+SID_Peacebringer
+SID_BloodTide
+SID_WhitePool
+SID_NightTide
 
 SID_PowHone
 SID_MagHone
@@ -171,6 +177,7 @@ SID_AversaNight
 SID_Shade       // Less likely to be attacked
 SID_ShadePlus   // Avoid to be a target
 SID_Provoke     // More likely to be attacked
+SID_Teleportation
 
 // Menu skills
 SID_Dance

@@ -1,0 +1,10 @@
+#include "Source/PreAiDecide.lyn.event"
+#include "Source/LynJump.event"
+
+ALIGN 4
+gPreAi1DecideHook:
+    WORD 0 0 0 0
+
+gPreAi2DecideHook:
+    POIN Ai2Decide_TryTeleportation
+    WORD 0 0 0 0

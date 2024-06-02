@@ -221,7 +221,6 @@ void GenerateUnitCompleteAttackRange(struct Unit * unit)
     min = GetUnitMinRange(unit);
     max = GetUnitMaxRange(unit);
 
-    Printf("min=%d, max=%d", min, max);
 #else
     mask = GetUnitWeaponReachBits(unit, -1);
 #endif

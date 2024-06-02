@@ -7,6 +7,8 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 bool CanRemoveSkill(struct Unit * unit, const u8 sid)
 {
     int i;
@@ -91,7 +93,7 @@ void UnitAutoLoadSkills(struct Unit * unit)
     /* For debug, we enable unit learn all of skills */
     if (UNIT_FACTION(unit) == FACTION_BLUE)
     {
-        Debugf("Character %#x auto learned skill %#x ~ %#x",
+        LTRACEF("Character %#x auto learned skill %#x ~ %#x",
                 UNIT_CHAR_ID(unit), 1, SID_MAX);
 
         for (i = 1; i < SID_MAX; i++)

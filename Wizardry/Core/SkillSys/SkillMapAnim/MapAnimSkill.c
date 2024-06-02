@@ -5,6 +5,8 @@
 #include "efx-skill.h"
 #include "skill-mapanim-internal.h"
 
+#define LOCAL_TRACE 0
+
 extern u8 const * const gpImg_MapAnimSKILL;
 
 STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimDeamon[] = {
@@ -30,7 +32,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     sid_atk = GetActorEfxSkill(round);
     sid_def = GetTargetEfxSkill(round);
 
-    Debugf("cid %#x, sid-atk %#x, sid-def %#x at round %d",
+    LTRACEF("cid %#x, sid-atk %#x, sid-def %#x at round %d",
                 cid, sid_atk, sid_def, round);
 
 #if defined(CONFIG_USE_DEBUG) && defined(CONFIG_DEBUG_EFXSKILL)
@@ -63,7 +65,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
         left_icon  = target_icon;
     }
 
-    Debugf("left_icon %#x right_icon %#x at round %d",
+    LTRACEF("left_icon %#x right_icon %#x at round %d",
                 left_icon, right_icon, round);
 
     /* Left */

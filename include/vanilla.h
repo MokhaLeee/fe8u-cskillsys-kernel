@@ -3,6 +3,9 @@
 // Some functions/variables that not in decomp header
 // Later we need to fix them
 
+#define CHAR_NEWLINE 0x01
+extern struct Font * gActiveFont;
+
 struct UnknownBMUSAilmentProc {
     PROC_HEADER;
 
@@ -50,3 +53,48 @@ void PrepUnitEnableDisp(void);
 void sub_809B504(struct ProcPrepUnit * proc);
 void sub_809B014(void);
 void sub_809B520(struct ProcPrepUnit * proc);
+
+struct CpPerformProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ s8 (* func)(struct CpPerformProc * proc);
+    /* 30 */ u8 unk_30;
+    /* 31 */ u8 isUnitVisible;
+};
+
+bool AiDummyAction(struct CpPerformProc *);
+bool AiEscapeAction(struct CpPerformProc *);
+bool AiWaitAndClearScreenAction(struct CpPerformProc *);
+bool AiPillageAction(struct CpPerformProc *);
+bool AiStaffAction(struct CpPerformProc *);
+bool AiUseItemAction(struct CpPerformProc *);
+bool AiRefreshAction(struct CpPerformProc *);
+bool AiTalkAction(struct CpPerformProc *);
+bool AiRideBallistaAction(struct CpPerformProc *);
+bool AiExitBallistaAction(struct CpPerformProc *);
+bool AiPickAction(struct CpPerformProc *);
+
+void AiStartCombatAction(struct CpPerformProc * proc);
+void AiStartEscapeAction(struct CpPerformProc * proc);
+void AiStartStealAction(struct CpPerformProc * proc);
+void AiDKNightmareAction(struct CpPerformProc * proc);
+void AiDKSummonAction(struct CpPerformProc * proc);
+void AiStartCombatAction(struct CpPerformProc * proc);
+void AiStartCombatAction(struct CpPerformProc * proc);
+void AiStartCombatAction(struct CpPerformProc * proc);
+
+enum ScriptKind {
+    AI_SCRIPT_AI1,
+    AI_SCRIPT_AI2,
+};
+
+typedef void (* AiScrCmd)(u8 * pc);
+
+extern s8 gAiScriptEnded;
+extern int gAiScriptKind;
+extern struct AiScr * gpAiScriptCurrent;
+
+extern struct AiScr CONST_DATA gAiScript_FallbackAi1[];
+extern struct AiScr CONST_DATA gAiScript_FallbackAi2[];
+
+void AiScript_Exec(u8 *);
