@@ -554,6 +554,12 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
                     attacker->battleDefense += 1;
                 }
 #endif
+
+#if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Peacebringer) && range2[i] == 1)
+                    attacker->battleAttack -= 2;
+
+#endif
             }
 
             if (range3[i])
@@ -591,6 +597,11 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
 
 #if (defined(SID_VoiceOfPeace) && (SID_VoiceOfPeace < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_VoiceOfPeace) && range2[i] == 1)
+                    attacker->battleAttack -= 2;
+#endif
+
+#if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Peacebringer) && range2[i] == 1)
                     attacker->battleAttack -= 2;
 #endif
             }
