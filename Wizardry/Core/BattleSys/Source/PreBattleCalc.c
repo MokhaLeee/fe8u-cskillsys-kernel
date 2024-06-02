@@ -445,7 +445,7 @@ STATIC_DECLAR void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struc
              * if there's any additional speed above the doubling threshold
              * add that to the skillholder's attack
              */
-            if((defender->battleSpeed - attacker->battleSpeed) >=4)
+            if((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
                 attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
         }
 #endif
