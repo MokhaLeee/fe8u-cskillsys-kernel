@@ -121,8 +121,8 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
     stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit);
     stat_pack[4] = SklGetter(unit) * 24 / UNIT_SKL_MAX(unit);
     stat_pack[5] = SpdGetter(unit) * 24 / UNIT_SPD_MAX(unit);
-	stat_pack[6] = DefGetter(unit) * 24 / UNIT_DEF_MAX(unit);
-	stat_pack[7] = ResGetter(unit) * 24 / UNIT_RES_MAX(unit);
+    stat_pack[6] = DefGetter(unit) * 24 / UNIT_DEF_MAX(unit);
+    stat_pack[7] = ResGetter(unit) * 24 / UNIT_RES_MAX(unit);
 
     for (iy = 0; iy < 4; iy++)
     {

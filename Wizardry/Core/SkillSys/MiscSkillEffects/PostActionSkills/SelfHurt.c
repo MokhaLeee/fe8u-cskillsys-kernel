@@ -46,7 +46,7 @@ STATIC_DECLAR void PostActionSelfHurtCommon(ProcPtr parent, struct Unit * unit, 
         return;
 
     MU_EndAll();
-	RefreshUnitSprites();
+    RefreshUnitSprites();
     HideUnitSprite(unit);
 
     proc = Proc_StartBlocking(ProcScr_PostActionSelfHurt, parent);
