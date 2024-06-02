@@ -565,10 +565,19 @@ STATIC_DECLAR void PreBattleCalcRangeDebuffs(struct BattleUnit * attacker, struc
                 }
 #endif
 
+#if (defined(SID_WhitePool) && (SID_WhitePool < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_WhitePool) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleSpeed += 5;
+                }
+#endif
+
 #if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_NightTide) && range1[i] == 1)
                 {
                     attacker->battleDefense += 5;
+
                 }
 #endif
 

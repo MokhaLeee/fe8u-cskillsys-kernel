@@ -152,6 +152,12 @@ StanceSpectrum:[NL]
 Grants +2 Atk, Spd, Def[NL]
 and Res if attacked.[X]
 
+
+## MSG_SKILL_WhitePool
+White Pool:[NL]
+Grants Atk and AS +5
+to adjacent allies.[X]
+
 ## MSG_SKILL_NightTide
 Night Tide:[NL]
 Grants +5 Def and Res
