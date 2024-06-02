@@ -4,7 +4,7 @@
 
 [Contributing note](./docs/CONTRIBUTING.md)
 
-[Community discussion on FEUnivverse](https://feuniverse.us/t/fe8-modern-c-skillsystem-release/24614)
+[Community discussion on FEUniverse](https://feuniverse.us/t/fe8-modern-c-skillsystem-release/24614)
 
 Modern CHAX for FE8U-SkillSystem, including skillsys, battle-system hacks, etc.e.
 
