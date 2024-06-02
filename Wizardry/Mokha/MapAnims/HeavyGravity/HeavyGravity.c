@@ -9,6 +9,8 @@
 #include "common-chax.h"
 #include "map-anims.h"
 
+#define LOCAL_TRACE 0
+
 #define GRAVITYFX_VRAMOFF 0x53C0
 
 extern const u16 Img_HeavyGravity[];
@@ -84,7 +86,7 @@ void CallMapAnim_HeavyGravity(ProcPtr parent, int x, int y)
 {
     struct HeavyGravityProc * proc;
 
-    Debugf("x %d, y %d", x, y);
+    LTRACEF("x %d, y %d", x, y);
 
     proc = Proc_Start(ProcScr_MapAnimHeavyGravity, parent);
     proc->x = x;

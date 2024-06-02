@@ -6,6 +6,8 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 
+#define LOCAL_TRACE 0
+
 STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
@@ -15,7 +17,7 @@ STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
     u8 pid = argv[2];
     struct Unit * unit = GetUnitFromCharId(pid);
 
-    Debugf("sid %#x, pid %#x, unit %p", sid, pid, unit);
+    LTRACEF("sid %#x, pid %#x, unit %p", sid, pid, unit);
 
     if (argc < 3)
     {

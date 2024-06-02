@@ -6,6 +6,8 @@
 #include "common-chax.h"
 #include "weapon-range.h"
 
+#define LOCAL_TRACE 0
+
 extern struct MsgBuffer sMsgString;
 
 /* 96 ---> 9 6 */
@@ -91,7 +93,7 @@ const char * GetUnitDisplayRangeString(struct Unit * unit)
     min = GetItemMinRangeRework(item, unit);
     max = GetItemMaxRangeRework(item, unit);
 
-    LogDebugf("%s: %d - %d, item %#x", __func__, min, max, item);
+    LTRACEF("%d - %d, item %#x", min, max, item);
 
     return ItemRangeToString(min, max);
 }

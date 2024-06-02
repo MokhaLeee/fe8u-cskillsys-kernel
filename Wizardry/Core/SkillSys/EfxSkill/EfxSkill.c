@@ -11,6 +11,8 @@
 #include "combat-art.h"
 #include "constants/efx-skills.h"
 
+#define LOCAL_TRACE 0
+
 struct ProcEfxSkillRework {
     PROC_HEADER;
     int timer;
@@ -25,7 +27,7 @@ struct ProcEfxSkillRework {
 
 STATIC_DECLAR void EfxSkillOnInit(struct ProcEfxSkillRework * proc)
 {
-    Debugf("sid %d, icon %p", proc->sid, GetSkillIcon(proc->sid));
+    LTRACEF("sid %d, icon %p", proc->sid, GetSkillIcon(proc->sid));
     NewEfxSkillBox(proc->anim, 0,
         GetSkillIcon(proc->sid), proc->sid, EFX_SKILL_BOX_SKILL);
 }
@@ -97,7 +99,7 @@ void NewEfxSkill(struct Anim * anim, int sid)
     u8 aid = GetEfxSkillIndex(sid);
     const struct EfxAnimConf * conf = GetEfxSkillConf(aid);
 
-    Debugf("sid %#x, aid %#x, conf %p", sid, aid, conf);
+    LTRACEF("sid %#x, aid %#x, conf %p", sid, aid, conf);
 
     if (!(SKILL_VALID(sid)) || !IS_ROM_DATA(conf))
         return;
@@ -133,7 +135,7 @@ void NewEfxCombatArt(struct Anim * anim, int cid)
     u8 aid = GetEfxCombatArtIndex(cid);
     const struct EfxAnimConf * conf = GetEfxSkillConf(aid);
 
-    Debugf("cid %#x, aid %#x, conf %p", cid, aid, conf);
+    LTRACEF("cid %#x, aid %#x, conf %p", cid, aid, conf);
 
     if (!(COMBART_VALID(cid)) || !IS_ROM_DATA(conf))
         return;

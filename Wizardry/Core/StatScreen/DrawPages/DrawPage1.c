@@ -14,6 +14,7 @@
 #include "lvup.h"
 #include "bwl.h"
 #include "debuff.h"
+#include "kernel-glyph.h"
 #include "constants/texts.h"
 
 extern struct Font * gActiveFont;
@@ -382,20 +383,45 @@ STATIC_DECLAR void DrawPage1BWL(void)
 
     ClearText(&gStatScreen.text[STATSCREEN_TEXT_BWL]);
 
-    // Draw B label
-    Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
-        0, TEXT_COLOR_SYSTEM_GOLD,
-        GetStringFromIndex(MSG_MSS_BWL_BATTLE));
+#if 0
+    if (gConfigUseGlyph == true)
+    {
+        // Draw B label
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
+            0, TEXT_COLOR_SYSTEM_GOLD,
+            GetStringFromIndex(MSG_MSS_BWL_BATTLE_JP));
 
-    // Draw W label
-    Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
-        32, TEXT_COLOR_SYSTEM_GOLD,
-        GetStringFromIndex(MSG_MSS_BWL_WIN));
+        // Draw W label
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
+            32, TEXT_COLOR_SYSTEM_GOLD,
+            GetStringFromIndex(MSG_MSS_BWL_WIN_JP));
 
-    // Draw L label
-    Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
-        64, TEXT_COLOR_SYSTEM_GOLD,
-        GetStringFromIndex(MSG_MSS_BWL_LOSE));
+        // Draw L label
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
+            64, TEXT_COLOR_SYSTEM_GOLD,
+            GetStringFromIndex(MSG_MSS_BWL_LOSE_JP));
+    }
+    else
+#else
+    /* Well, no enought length */
+    if (1)
+#endif
+    {
+        // Draw B label
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
+            0, TEXT_COLOR_SYSTEM_GOLD,
+            GetStringFromIndex(MSG_MSS_BWL_BATTLE));
+
+        // Draw W label
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
+            32, TEXT_COLOR_SYSTEM_GOLD,
+            GetStringFromIndex(MSG_MSS_BWL_WIN));
+
+        // Draw L label
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
+            64, TEXT_COLOR_SYSTEM_GOLD,
+            GetStringFromIndex(MSG_MSS_BWL_LOSE));
+    }
 
     // Display labels
     PutText(&gStatScreen.text[STATSCREEN_TEXT_BWL],
@@ -419,7 +445,6 @@ STATIC_DECLAR void DrawPage1Affin(void)
     struct Unit * unit = gStatScreen.unit;
     int affin = unit->pCharacterData->affinity;
 
-#ifdef CONFIG_LANG_CHINESE
     const char * cn_affin[] = {
         [UNIT_AFFIN_FIRE]    = "炎",
         [UNIT_AFFIN_THUNDER] = "雷",
@@ -429,7 +454,6 @@ STATIC_DECLAR void DrawPage1Affin(void)
         [UNIT_AFFIN_LIGHT]   = "光",
         [UNIT_AFFIN_ANIMA]   = "理",
     };
-#endif
 
     if (affin)
     {
@@ -438,14 +462,15 @@ STATIC_DECLAR void DrawPage1Affin(void)
             GetUnitAffinityIcon(unit),
             TILEREF(0, STATSCREEN_BGPAL_EXTICONS));
 
-#ifdef CONFIG_LANG_CHINESE
-        PutDrawText(
-            &gStatScreen.text[STATSCREEN_TEXT_ITEM1],
-            gUiTmScratchA + TILEMAP_INDEX(0xE, 0x7),
-            TEXT_COLOR_SYSTEM_GOLD,
-            0, 0,
-            cn_affin[affin]);
-#endif
+        if (gConfigUseGlyph == true)
+        {
+            PutDrawText(
+                &gStatScreen.text[STATSCREEN_TEXT_ITEM1],
+                gUiTmScratchA + TILEMAP_INDEX(0xE, 0x7),
+                TEXT_COLOR_SYSTEM_GOLD,
+                0, 0,
+                cn_affin[affin]);
+        }
     }
     else
     {

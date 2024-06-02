@@ -1,6 +1,8 @@
 ALIGN 4
 
 #include "Common/EventExpansion/EventExpansion.event"
+#include "Common/UnitAction/UnitAction.event"
+#include "Core/AiHack/AiHack.event"
 #include "Core/DebuffRework/DebuffRework.event"
 #include "Core/WeaponRange/WeaponRange.event"
 
@@ -45,7 +47,6 @@ ALIGN 4
 #include "QOL/ChapterIntrofx/ChapterIntrofx.event"
 
 #include "Mokha/MapAnims/MapAnims.event"
-#include "Mokha/MiscSkillEffects/MiscSkillEffects.event"
 #include "Mokha/ComboAttack/ComboAttack.event"
 #include "Mokha/WeaponLockEx/WeaponLockEx.event"
 

@@ -7,6 +7,8 @@
 #include "efx-skill.h"
 #include "combat-art.h"
 
+#define LOCAL_TRACE 0
+
 struct ProcEkrSkill {
     PROC_HEADER;
     struct Anim * anim;
@@ -75,7 +77,7 @@ STATIC_DECLAR void NewEfxSkillForDefener(struct ProcEkrSkill * proc)
 
     if (SKILL_VALID(proc->sid_def))
     {
-        Debugf("sid %d", proc->sid_def);
+        LTRACEF("sid %d", proc->sid_def);
         NewEfxSkill(GetAnimAnotherSide(proc->anim), proc->sid_def);
     }
 }
@@ -110,7 +112,7 @@ void NewEkrSkill(struct Anim * anim)
     proc->sid_atk = GetActorEfxSkill(round);
     proc->sid_def = GetTargetEfxSkill(round);
 
-    Debugf("cid %#x, sid-atk %#x, sid-def %#x",
+    LTRACEF("cid %#x, sid-atk %#x, sid-def %#x",
         proc->cid, proc->sid_atk, proc->sid_def);
 
 #if defined(CONFIG_USE_DEBUG) && defined(CONFIG_DEBUG_EFXSKILL)

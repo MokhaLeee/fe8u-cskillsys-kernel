@@ -4,16 +4,14 @@
 #include "config-debug.h"
 #include "config-memmap.h"
 
-/* Memmap */
-
-/* If uncomment, use zh-cn language */
-// #define CONFIG_LANG_CHINESE
-
 /* Icon sheet amount */
 #define ICON_SHEET_AMT 4
 
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
+
+/* If uncomment, use utf-8 characters */
+#define CONFIG_USE_UTF8_GLYPH
 
 /* Engage style combo attack */
 #define CONFIG_USE_COMBO_ATTACK
@@ -60,6 +58,18 @@
  * Enable StatDebuff
  */
 #define CONFIG_USE_STAT_DEBUFF
+
+/**
+ * Ai action expansion
+ */
+#define CONFIG_AI_ACTION_AMT 20
+#define CONFIG_AI_ACTION_EXPA_Teleportation 14
+
+/**
+ * Unit action expansion
+ */
+#define CONFIG_UNIT_ACTION_AMT 0x30
+#define CONFIG_UNIT_ACTION_EXPA_Teleportation 0x23
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

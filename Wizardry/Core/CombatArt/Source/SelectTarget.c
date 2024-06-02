@@ -23,6 +23,8 @@
 #include "weapon-range.h"
 #include "combat-art.h"
 
+#define LOCAL_TRACE 0
+
 extern s8 sSelectedComatArtIndex;
 
 STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
@@ -46,7 +48,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
             break;
     }
 
-    Debugf("wtype %d, old %d, new %d", wtype, old, new);
+    LTRACEF("wtype %d, old %d, new %d", wtype, old, new);
     return new + 1;
 }
 
@@ -64,7 +66,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
         if (wtype == gpCombatArtInfos[list->cid[new]].wtype)
             break;
     }
-    Debugf("wtype %d, old %d, new %d", wtype, old, new);
+    LTRACEF("wtype %d, old %d, new %d", wtype, old, new);
     return new + 1;
 }
 
