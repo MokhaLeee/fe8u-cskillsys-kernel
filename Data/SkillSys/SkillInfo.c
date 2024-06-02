@@ -1322,6 +1322,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_SlowBurn) && (SID_SlowBurn < MAX_SKILL_NUM))
+    [SID_QuickBurn] = {
+        .desc = MSG_SKILL_SlowBurn,
+        .icon = GFX_SkillIcon_SlowBurn,
+    },
+#endif
+
 #if (defined(SID_StanceSpectrum) && (SID_StanceSpectrum < MAX_SKILL_NUM))
     [SID_StanceSpectrum] = {
         .name = MSG_SKILL_StanceSpectrum_NAME,
