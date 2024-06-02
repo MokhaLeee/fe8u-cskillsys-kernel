@@ -450,6 +450,25 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+#if (defined(SID_SlowBurn) && (SID_SlowBurn < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_SlowBurn))
+    {
+        int turnNumber;
+
+        if (gPlaySt.chapterTurnNumber > 15) 
+        {
+            turnNumber = 15;
+        }
+        else 
+        {
+            turnNumber = gPlaySt.chapterTurnNumber;
+        }
+
+        attacker->battleHitRate += turnNumber;
+        attacker->battleAvoidRate += turnNumber;
+    }
+#endif
+
 #if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Technician))
     {

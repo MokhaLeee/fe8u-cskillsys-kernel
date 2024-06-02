@@ -68,6 +68,7 @@ SID_HeavyStrikes
 SID_QuickBurn
 SID_Technician
 SID_CatchingUp
+SID_SlowBurn
 
 // Weapon triangle
 SID_SwordBreaker
