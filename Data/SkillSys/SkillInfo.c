@@ -773,6 +773,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Forager) && (SID_Forager < MAX_SKILL_NUM))
+    [SID_Forager] = {
+        .desc = MSG_SKILL_Forager,
+        .icon = GFX_SkillIcon_Forager,
+    },
+#endif
+
 #if (defined(SID_Anathema) && (SID_Anathema < MAX_SKILL_NUM))
     [SID_Anathema] = {
         .desc = MSG_SKILL_Anathema,
@@ -1059,6 +1066,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Peacebringer) && (SID_VoiceOfPeace < MAX_SKILL_NUM))
+    [SID_Peacebringer] = {
+        .desc = MSG_SKILL_Peacebringer,
+        .icon = GFX_SkillIcon_Peacebringer,
+    },
+#endif
+
 #if (defined(SID_LEGEND_InoriAtk) && (SID_LEGEND_InoriAtk < MAX_SKILL_NUM))
     [SID_LEGEND_InoriAtk] = {
         .desc = MSG_SKILL_LEGEND_InoriAtk,
@@ -1271,6 +1285,29 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
+    [SID_CriticalPierce] = {
+        .desc = MSG_SKILL_CriticalPierce,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KillingMachine) && (SID_KillingMachine < MAX_SKILL_NUM))
+    [SID_KillingMachine] = {
+        .name = MSG_SKILL_KillingMachine_NAME,
+        .desc = MSG_SKILL_KillingMachine,
+        .icon = GFX_SkillIcon_KillingMachine,
+    },
+#endif
+
+#if (defined(SID_HeavyStrikes) && (SID_HeavyStrikes < MAX_SKILL_NUM))
+    [SID_HeavyStrikes] = {
+        .name = MSG_SKILL_HeavyStrikes_NAME,
+        .desc = MSG_SKILL_HeavyStrikes,
+        .icon = GFX_SkillIcon_HeavyStrikes,
+    },
+#endif
+
 #if (defined(SID_QuickBurn) && (SID_QuickBurn < MAX_SKILL_NUM))
     [SID_QuickBurn] = {
         .desc = MSG_SKILL_QuickBurn,
@@ -1290,6 +1327,34 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_Technician] = {
         .desc = MSG_SKILL_Technician,
         .icon = GFX_SkillIcon_Technician,
+    },
+#endif
+
+#if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
+    [SID_CatchingUp] = {
+        .desc = MSG_SKILL_CatchingUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
+    [SID_BloodTide] = {
+        .desc = MSG_SKILL_BloodTide,
+        .icon = GFX_SkillIcon_BloodTide,
+    },
+#endif
+
+#if (defined(SID_WhitePool) && (SID_WhitePool < MAX_SKILL_NUM))
+    [SID_WhitePool] = {
+        .desc = MSG_SKILL_WhitePool,
+        .icon = GFX_SkillIcon_WhitePool,
+    },
+#endif
+
+#if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
+    [SID_NightTide] = {
+        .desc = MSG_SKILL_NightTide,
+        .icon = GFX_SkillIcon_NightTide,
     },
 #endif
 };

@@ -17,7 +17,7 @@ static void set_actor_unit(void)
 static void set_position(void)
 {
     gActiveUnit->xPos = gActionData.xMove;
-	gActiveUnit->yPos = gActionData.yMove;
+    gActiveUnit->yPos = gActionData.yMove;
 }
 
 STATIC_DECLAR const EventScr EventScr_ActionTeleportation[] = {
@@ -42,8 +42,8 @@ LABEL(99)
 /* Action */
 bool Action_Teleportation(ProcPtr parent)
 {
-	LTRACEF("Teleportation AiAction (uid=%x) to x=%d, y=%d",
-		gActiveUnit->index & 0xFF, gActionData.xMove, gActionData.xMove);
+    LTRACEF("Teleportation AiAction (uid=%x) to x=%d, y=%d",
+        gActiveUnit->index & 0xFF, gActionData.xMove, gActionData.xMove);
 
     KernelCallEvent(EventScr_ActionTeleportation, EV_EXEC_CUTSCENE, parent);
     return false;
@@ -55,7 +55,7 @@ void AiAction_Teleportation(ProcPtr parent)
     gActionData.xMove = gAiDecision.xTarget;
     gActionData.yMove = gAiDecision.yTarget;
 
-	Action_Teleportation(parent);
+    Action_Teleportation(parent);
 }
 
 /* AiActionConf:idle */
@@ -71,7 +71,7 @@ STATIC_DECLAR bool AiAction_TeleportationIdleExt(struct CpPerformProc * proc)
 
 bool AiAction_TeleportationIdle(struct CpPerformProc * proc)
 {
-	/* Force introduce a YIELD */
-	proc->func = AiAction_TeleportationIdleExt;
-	return false;
+    /* Force introduce a YIELD */
+    proc->func = AiAction_TeleportationIdleExt;
+    return false;
 }
