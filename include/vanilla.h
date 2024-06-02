@@ -3,6 +3,9 @@
 // Some functions/variables that not in decomp header
 // Later we need to fix them
 
+#define CHAR_NEWLINE 0x01
+extern struct Font * gActiveFont;
+
 struct UnknownBMUSAilmentProc {
     PROC_HEADER;
 
