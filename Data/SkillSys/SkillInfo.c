@@ -1293,6 +1293,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
+    [SID_BloodTide] = {
+        .desc = MSG_SKILL_BloodTide,
+        .icon = GFX_SkillIcon_BloodTide,
+    },
+#endif
 
 #if (defined(SID_WhitePool) && (SID_WhitePool < MAX_SKILL_NUM))
     [SID_WhitePool] = {
