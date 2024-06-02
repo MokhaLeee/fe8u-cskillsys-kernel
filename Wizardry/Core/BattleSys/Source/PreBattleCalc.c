@@ -409,6 +409,11 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+#if (defined(SID_HeavyStrikes) && (SID_HeavyStrikes < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_HeavyStrikes))
+        attacker->battleCritRate += GetItemWeight(attacker->weapon);
+#endif
+
 #if (defined(SID_QuickBurn) && (SID_QuickBurn < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_QuickBurn))
     {

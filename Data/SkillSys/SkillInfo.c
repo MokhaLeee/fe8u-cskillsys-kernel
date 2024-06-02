@@ -1278,6 +1278,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_HeavyStrikes) && (SID_HeavyStrikes < MAX_SKILL_NUM))
+    [SID_HeavyStrikes] = {
+        .name = MSG_SKILL_HeavyStrikes_NAME,
+        .desc = MSG_SKILL_HeavyStrikes,
+        .icon = GFX_SkillIcon_HeavyStrikes,
+    },
+#endif
+
 #if (defined(SID_QuickBurn) && (SID_QuickBurn < MAX_SKILL_NUM))
     [SID_QuickBurn] = {
         .desc = MSG_SKILL_QuickBurn,

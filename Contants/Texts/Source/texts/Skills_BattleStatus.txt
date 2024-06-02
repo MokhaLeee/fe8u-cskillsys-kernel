@@ -139,6 +139,14 @@ PoisonPoint[X]
 P-Point: Inflict poison[NL]
 on the opponent.[X]
 
+## MSG_SKILL_HeavyStrikes_NAME
+H-Strikes[X]
+
+## MSG_SKILL_HeavyStrikes
+HeavyStrikes:[NL]
+Add weapon weight[NL]
+to critical chance.[X]
+
 ## MSG_SKILL_QuickBurn
 Quick Burn: [NL]
 +15 Hit and Avoid.[NL]
@@ -166,3 +174,4 @@ to adjacent allies.[X]
 Night Tide:[NL]
 Grants +5 Def and Res
 to adjacent allies[X]
+
