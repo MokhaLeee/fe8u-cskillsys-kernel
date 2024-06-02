@@ -409,6 +409,13 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+#if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_CriticalPierce))
+        // Add the defender's critical avoid rate to the attacker's.
+        // Thus effectively 'negating' it.
+        attacker->battleCritRate += defender->battleDodgeRate;
+#endif
+
 #if (defined(SID_KillingMachine) && (SID_KillingMachine < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_KillingMachine))
         attacker->battleCritRate *= 2;

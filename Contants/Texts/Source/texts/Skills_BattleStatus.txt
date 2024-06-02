@@ -139,6 +139,11 @@ PoisonPoint[X]
 P-Point: Inflict poison[NL]
 on the opponent.[X]
 
+## MSG_SKILL_CriticalPierce
+CriticalPierce: [NL]
+Set the opponent's critical[NL]
+hit avoid rate to zero.[X]
+
 ## MSG_SKILL_KillingMachine_NAME
 K-Machine[X]
 
