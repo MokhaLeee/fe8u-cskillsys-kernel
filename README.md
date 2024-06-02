@@ -8,9 +8,10 @@ Modern CHAX for FE8U-SkillSystem, including skillsys, battle-system hacks, etc.e
 
 ## Custom build
 
-> <!> You need a linux envirment!
+> [!NOTE]
+> You need a linux envirment!
 >
-> For Windows user, it is recommended to use a ubuntu server or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+> For Windows user, it is recommended to use a [Ubuntu Server](https://ubuntu.com/aws) or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 1. Install sub-modules
 
@@ -51,9 +52,9 @@ source ~/.bashrc
 3. Build EA
 
 > [!WARNING]
-> **DO NOT** directly copy a EventAssembler inside. Please **Strictly** follow the following steps to build EA by yourself.
+> Please **Strictly** follow the following steps to build linux EA by yourself.
 
-    Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
+Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
 
 ```bash
 # Install .NET
