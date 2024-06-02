@@ -62,6 +62,7 @@ SID_Frenzy
 SID_WonderGuard
 SID_PoisonPoint
 SID_QuickBurn
+SID_CatchingUp
 
 // Weapon triangle
 SID_SwordBreaker

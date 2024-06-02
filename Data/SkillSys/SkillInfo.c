@@ -1292,4 +1292,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_StanceSpectrum,
     },
 #endif
+
+#if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
+    [SID_CatchingUp] = {
+        .desc = MSG_SKILL_CatchingUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

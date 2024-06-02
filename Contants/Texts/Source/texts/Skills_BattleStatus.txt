@@ -151,3 +151,8 @@ S-Spectrum[X]
 StanceSpectrum:[NL]
 Grants +2 Atk, Spd, Def[NL]
 and Res if attacked.[X]
+
+## MSG_SKILL_CatchingUp
+CatchingUp: If foe doubles unit[NL]
+increase their attack by the amount[NL]
+they're above the doubling threshold.[X]

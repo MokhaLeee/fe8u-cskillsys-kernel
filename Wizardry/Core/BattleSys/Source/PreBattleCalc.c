@@ -437,6 +437,19 @@ STATIC_DECLAR void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struc
      */
     struct Unit * unit = GetUnit(attacker->unit.index);
 
+#if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_CatchingUp))
+        {
+            /**
+             * Check if the enemy unit doubles the skill holder
+             * if there's any additional speed above the doubling threshold
+             * add that to the skillholder's attack
+             */
+            if((defender->battleSpeed - attacker->battleSpeed) >=4)
+                attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
+        }
+#endif
+
     if (attacker->battleAttack > defender->battleAttack)
     {
 #if (defined(SID_HeavyBlade) && (SID_HeavyBlade < MAX_SKILL_NUM))
