@@ -34,5 +34,7 @@
 
 #include "../Wizardry/QOL/StatScreenfx/_data.event"
 #include "../Wizardry/Mokha/WeaponLockEx/data.event"
+#include "../Wizardry/Common/ClassTypes/Source/class-types-data.lyn.event"
+#include "../Wizardry/Core/SkillSys/data.event"
 
 #endif

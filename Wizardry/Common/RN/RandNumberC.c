@@ -74,7 +74,7 @@ void SaveRandC(u8 * dst, const u32 size)
     if (size < sizeof(sRandSeedsC))
     {
         Errorf("ENOMEM: %d", size);
-        abort();
+        hang();
     }
 
     WriteAndVerifySramFast(
@@ -88,7 +88,7 @@ void LoadRandC(u8 * src, const u32 size)
     if (size < sizeof(sRandSeedsC))
     {
         Errorf("ENOMEM: %#x", size);
-        abort();
+        hang();
     }
 
     ReadSramFast(

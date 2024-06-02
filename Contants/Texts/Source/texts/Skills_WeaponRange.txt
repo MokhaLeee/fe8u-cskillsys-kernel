@@ -14,3 +14,11 @@ Increases bow range by 1[X]
 ## MSG_SKILL_RangeBonusBow2
 Bow RNG+2:[NL]
 Increases bow range by 2[X]
+
+## MSG_SKILL_RunningStart_NAME
+R-Start[X]
+
+## MSG_SKILL_RunningStart
+RunningStart:[NL]
++1 attack range for[NL]
+every two tiles moved.[X]

@@ -12,7 +12,7 @@ int _GetUnitDefense(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->def;
 
-    for (it = gDefGetters; *it; it++)
+    for (it = gpDefGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

@@ -15,7 +15,7 @@ int _GetUnitSkill(struct Unit * unit)
     if (unit->state & US_RESCUING)
         status = unit->skl / 2;
 
-    for (it = gSklGetters; *it; it++)
+    for (it = gpSklGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

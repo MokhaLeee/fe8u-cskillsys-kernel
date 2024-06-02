@@ -128,3 +128,18 @@ For every 4 damage taken,[N]
 Multiscale:[NL]
 Take half damage[NL]
 at full HP.[X]
+
+## MSG_SKILL_WonderGuard_NAME
+W-Guard[X]
+
+## MSG_SKILL_WonderGuard
+WonderGuard:[NL]
+Cannot be damaged by weapons of[NL]
+the same weapon type as the user's.[X]
+
+## MSG_SKILL_PoisonPoint_NAME
+PoisonPoint[X]
+
+## MSG_SKILL_PoisonPoint
+P-Point: Inflict poison[NL]
+on the opponent.[X]

@@ -11,7 +11,8 @@
 #include "constants/skills.h"
 
 typedef int (* WeaponRangeGetterFunc_t)(int old, struct Unit * unit, u16 item);
-extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
+// extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
+extern WeaponRangeGetterFunc_t const * const gpWeaponRangeGetters;
 
 int GetItemMinRangeRework(u16 item, struct Unit * unit)
 {
@@ -34,7 +35,7 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit)
 
     if (IS_UNIT_PTR(unit))
     {
-        for (it = gWeaponRangeGetters; *it; it++)
+        for (it = gpWeaponRangeGetters; *it; it++)
             status = (*it)(status, unit, item);
     }
     return status;
@@ -52,6 +53,11 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 #if defined(SID_RangeBonusBow2) && (SID_RangeBonusBow2 < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_RangeBonusBow2))
             range = range + 2;
+#endif
+
+#if defined(SID_RunningStart) && (SID_RunningStart < MAX_SKILL_NUM)
+        if (SkillTester(unit, SID_RunningStart))
+            range = range + gActionData.moveCount/2;
 #endif
         break;
 

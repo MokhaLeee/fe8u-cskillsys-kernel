@@ -1,8 +1,7 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 
-#include "common-chax.h"
-
-bool IsPositionValid(s8 x, s8 y)
+inline bool IsPositionValid(s8 x, s8 y)
 {
     if (x < 0)
         return false;

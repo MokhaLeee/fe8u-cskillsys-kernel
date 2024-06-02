@@ -17,6 +17,7 @@ extern struct ComboAtkTarget gComboAtkList[COMBO_ATK_MAX + 1];
 void ResetComboAtkList(void);
 void BattleGenerateComboAtkList(void);
 bool BattleComboGenerateHits(void);
+void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void);
 
 static inline struct Unit * GetMapAnimComboUnit(int round)
 {

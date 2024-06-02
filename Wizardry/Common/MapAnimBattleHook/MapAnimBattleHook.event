@@ -1,0 +1,19 @@
+#ifndef MAP_ANIM_BATTLE_HOOK_INSTALLED
+#define MAP_ANIM_BATTLE_HOOK_INSTALLED
+
+#include "Source/PreHit.lyn.event"
+
+PUSH
+    ORG 0x07B8BC
+    POIN ProcScr_MapAnimBattle_Rework
+POP
+
+ALIGN 4
+gPreMapAnimBattleRoundHooks:
+#ifdef CONFIG_USE_COMBO_ATTACK
+    POIN PreMapAnimBattleRound_ComboAttack
+#endif
+    POIN MapAnimRoundAnim_DisplaySkillIcon
+    WORD 0 0 0 0
+
+#endif /* MAP_ANIM_BATTLE_HOOK_INSTALLED */

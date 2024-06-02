@@ -13,7 +13,7 @@ int _GetUnitMagic(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = UNIT_MAG(unit);
 
-    for (it = gMagGetters; *it; it++)
+    for (it = gpMagGetters; *it; it++)
         status = (*it)(status, unit);
 
     return status;

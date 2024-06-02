@@ -8,8 +8,8 @@ At present, I am not proficient in specifying rules, so I will only mention two 
 
 1. Each PR needs to be compiled and approved in the following three cases:
     - On default
-    - Uncoment line-5 in [config-debug.h](include/Configs/config-debug.h): `#define CONFIG_USE_DEBUG`
-    - For PR with new skill, the skill-index be commented out in [skills.enum.txt](include/constants/skills.enum.txt)
+    - Uncoment line-5 in [config-debug.h](../include/Configs/config-debug.h): `#define CONFIG_USE_DEBUG`
+    - For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)
 
 ## Code style
 
