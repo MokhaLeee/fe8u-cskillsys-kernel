@@ -242,13 +242,13 @@ void ClassChgMenuExec(struct ProcClassChgMenuSel * proc)
     InitTextFont(&gFontClassChg, (void *)BG_VRAM + 0x1000, 0x1000 / 0x20, 5);
     SetTextFont(&gFontClassChg);
     proc->pmenu = StartMenuCore(
-		&MenuDef_PromoSelRe,
-		ClassChgMenuRectRe,
-		2,
-		0,
-		0,
-		0,
-		proc);
+        &MenuDef_PromoSelRe,
+        ClassChgMenuRectRe,
+        2,
+        0,
+        0,
+        0,
+        proc);
 }
 
 u8 ClassChgReMenuItem_CheckEnable(const struct MenuItemDef * mitemdef, int number);

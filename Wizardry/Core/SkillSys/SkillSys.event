@@ -6,6 +6,7 @@
 #include "kernel/LoadSkill.lyn.event"
 #include "kernel/EquipSkill.lyn.event"
 #include "kernel/JudgeSkill.lyn.event"
+#include "kernel/JudgeSkillFast.lyn.event"
 #include "kernel/SkillList.lyn.event"
 
 /* EfxSkill */
@@ -41,5 +42,7 @@ InjectEventLoCmd(EVENT_CMD_SKILL, EventSkillOperation)
 /* MapAnim */
 #include "SkillMapAnim/MapAnimSkill.lyn.event"
 #include "SkillMapAnim/MapAnimSkillfx.lyn.event"
+
+#include "MiscSkillEffects/MiscSkillEffects.event"
 
 #endif

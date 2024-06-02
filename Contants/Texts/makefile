@@ -34,5 +34,5 @@ $(TEXT_EVENT) $(TEXT_DEF): $(TEXT_MAIN) $(TEXT_SOURCE)
 	@$(PARSEFILE) -i $< -o $@ > /dev/null
 
 clean:
-	rm -rf $(mkfile_dir)Source/.TextEntries
-	rm -f $(TEXT_EVENT) $(TEXT_DEF)
+	@rm -rf $(mkfile_dir)Source/.TextEntries
+	@rm -f $(TEXT_EVENT) $(TEXT_DEF)

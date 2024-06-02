@@ -39,6 +39,14 @@ u8 * function(u32 * arg)
  */
 
 int a = 0; // Some comments ...
+int b = a + 1;
+
+if (b == 1)
+{
+    c = a + ((a + 1) * (b - 1));
+    return c;
+}
+return a;
 ```
 
 ## Suggestion

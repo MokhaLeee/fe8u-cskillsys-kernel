@@ -19,8 +19,9 @@ EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 WIZARDRY_DIR := $(MK_DIR)Wizardry
 CONTANTS_DIR := $(MK_DIR)Contants
 GAMEDATA_DIR := $(MK_DIR)Data
+FONT_DIR     := $(MK_DIR)Fonts
 
-HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR)
+HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR) $(FONT_DIR)
 
 all:
 	@$(MAKE) pre_build
@@ -175,7 +176,7 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # = Texts =
 # =========
 
-TEXT_DIR     := $(CONTANTS_DIR)/Texts
+TEXT_DIR    := $(CONTANTS_DIR)/Texts
 TEXT_MAIN   := $(TEXT_DIR)/Source/TextMain.txt
 TEXT_SOURCE := $(shell find $(TEXT_DIR) -type f -name '*.txt')
 
@@ -192,12 +193,31 @@ $(TEXT_DEF): $(TEXT_MAIN) $(TEXT_SOURCE)
 
 CLEAN_BUILD += $(TEXT_DIR)
 
+# =========
+# = Glyph =
+# =========
+
+GLYPH_INSTALLER := $(FONT_DIR)/GlyphInstaller.event
+GLYPH_DEPS := $(FONT_DIR)/FontList.txt
+
+font: $(GLYPH_INSTALLER)
+PRE_BUILD += font
+
+$(GLYPH_INSTALLER): $(GLYPH_DEPS)
+	@$(MAKE) -C $(FONT_DIR)
+
+%_font.img.bin: %_font.png
+	@echo "[GEN]	$@"
+	@$(GRIT) $< -gB2 -p! -tw16 -th16 -ftb -fh! -o $@
+
+CLEAN_BUILD += $(FONT_DIR)
+
 # ============
 # = Spritans =
 # ============
 
-PNG_FILES := $(shell find $(HACK_DIRS) -type f -name '*.png')
-TSA_FILES := $(shell find $(HACK_DIRS) -type f -name '*.tsa')
+PNG_FILES := $(shell find $(HACK_DIRS) -type f -name '*.png' -path $(FONT_DIR) -prune)
+TSA_FILES := $(shell find $(HACK_DIRS) -type f -name '*.tsa' -path $(FONT_DIR) -prune)
 
 %.4bpp: %.png
 	@echo "[GEN]	$@"

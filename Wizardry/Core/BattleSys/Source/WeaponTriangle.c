@@ -4,6 +4,8 @@
 #include "strmag.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     struct Unit * unit = GetUnit(attacker->unit.index);
@@ -12,7 +14,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
 
     if (item_conf->valid && item_conf->wtype == defender->weaponType)
     {
-        Printf("Find item_conf (%p-%p, %d): item=%X atk=%d, def=%d, hit=%d, avo=%d, crt=%d, sil=%d",
+        LTRACEF("Find item_conf (%p-%p, %d): item=%X atk=%d, def=%d, hit=%d, avo=%d, crt=%d, sil=%d",
             item_conf->wtype, attacker, defender, ITEM_INDEX(attacker->weaponBefore),
             item_conf->battle_status.atk, item_conf->battle_status.def, item_conf->battle_status.hit,
             item_conf->battle_status.avo, item_conf->battle_status.crit, item_conf->battle_status.silencer);
@@ -48,7 +50,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         {
             if ((attacker->weaponType == it->attackerWeaponType) && (defender->weaponType == it->defenderWeaponType))
             {
-                Printf("Find vanilla (%p-%p, %d-%d): atk=%d, hit=%d",
+                LTRACEF("Find vanilla (%p-%p, %d-%d): atk=%d, hit=%d",
                         attacker, defender, it->attackerWeaponType, it->defenderWeaponType, it->atkBonus, it->hitBonus);
 
                 attacker->battleAttack  += it->atkBonus;
@@ -68,7 +70,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
     {
         if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType)
         {
-            Printf("Find conf (%p-%p, %d-%d): atk=%d, def=%d, as=%d, hit=%d, avo=%d, crt=%d, dog=%d, sil=%d",
+            LTRACEF("Find conf (%p-%p, %d-%d): atk=%d, def=%d, as=%d, hit=%d, avo=%d, crt=%d, dog=%d, sil=%d",
                     attacker, defender,
                     it->wtype_a, it->wtype_b,
                     it->bonus_atk, it->bonus_def, it->bonus_speed, it->bonus_hit,

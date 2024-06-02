@@ -1,0 +1,26 @@
+#include "PostActionSkills/SelfHurt.lyn.event"
+#include "PostActionSkills/AlertStance.lyn.event"
+#include "PostActionSkills/Galeforce.lyn.event"
+#include "PostActionSkills/SavageBlow.lyn.event"
+#include "PostActionSkills/BreathOfLife.lyn.event"
+#include "PostActionSkills/Canto.lyn.event"
+#include "PostActionSkills/Thunderstorm.lyn.event"
+#include "PostActionSkills/Return.lyn.event"
+#include "PostActionSkills/Swap.lyn.event"
+#include "PostActionSkills/LynJump.event"
+
+#include "Misc/MenuSkills.lyn.event"
+#include "Misc/LynJump.event"
+
+#include "LegendarySkills/JudgeLegend.lyn.event"
+#include "LegendarySkills/LegendEffect.lyn.event"
+
+#include "PrePhaseSkills/PrePhaseHeal.lyn.event"
+#ifdef CONFIG_USE_STAT_DEBUFF
+    #include "PrePhaseSkills/AversaNight.lyn.event"
+    #include "PrePhaseSkills/HoneFortify.lyn.event"
+#endif /* CONFIG_USE_STAT_DEBUFF */
+#include "PrePhaseSkills/LynJump.event"
+
+#include "AiSkills/Teleportation.event"
+#include "AiSkills/MiscAiSkills.event"

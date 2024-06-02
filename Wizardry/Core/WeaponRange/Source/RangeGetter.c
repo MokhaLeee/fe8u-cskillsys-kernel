@@ -10,6 +10,8 @@
 #include "weapon-range.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 typedef int (* WeaponRangeGetterFunc_t)(int old, struct Unit * unit, u16 item);
 // extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
 extern WeaponRangeGetterFunc_t const * const gpWeaponRangeGetters;
@@ -89,7 +91,7 @@ int GetUnitMinRange(struct Unit * unit)
         {
             _ret = GetItemMinRangeRework(item, unit);
 
-            Printf("item=%#x, rng=%d, min=%d", item, _ret, ret);
+            LTRACEF("item=%#x, rng=%d, min=%d", item, _ret, ret);
 
             if (_ret < ret)
                 ret = _ret;
@@ -109,7 +111,7 @@ int GetUnitMaxRange(struct Unit * unit)
         {
             _ret = GetItemMaxRangeRework(item, unit);
 
-            Printf("item=%#x, rng=%d, max=%d", item, _ret, ret);
+            LTRACEF("item=%#x, rng=%d, max=%d", item, _ret, ret);
 
             if (_ret > ret)
                 ret = _ret;

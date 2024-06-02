@@ -91,4 +91,12 @@ const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {
 #endif
         },
     },
+
+    [CLASS_FIGHTER] = {
+        .skills = {
+#if (defined(SID_Teleportation) && (SID_Teleportation < MAX_SKILL_NUM))
+            [0] = SID_Teleportation,
+#endif
+        },
+    },
 };
