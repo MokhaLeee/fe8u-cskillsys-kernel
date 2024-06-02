@@ -1,0 +1,11 @@
+/**
+ * Expand: AI_ACTION in function CpPerform_PerformAction()
+ */
+
+#include "Source/AiAction.lyn.event"
+#include "Source/AiActionCursor.lyn.event"
+#include "Source/AiPerformEnd.lyn.event"
+#include "Source/LynJump.event"
+#include "Source/AiActionConf.lyn.event"
+
+#define InjectAiAction(action_idx, exec, idle) "PUSH; ORG gAiActionTable + action_idx * 8; WORD exec idle; POP"

@@ -319,6 +319,11 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             }
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
         }
+
+#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
+        if (defender->statusOut == UNIT_STATUS_NONE && SkillTester(&attacker->unit, SID_PoisonPoint))
+            defender->statusOut = UNIT_STATUS_POISON;
+#endif
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;

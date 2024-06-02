@@ -12,15 +12,13 @@
  * ldr r0, =0x080596CC + 1
  * bx r0
  */
-#define InjectBanimCmd(index, routine) "ALIGN 4; PUSH; ORG ($58C44 + 4 * index); POIN CURRENTOFFSET | 1; POP; WORD $B4081C38 $469E4B02 $BC08F800 $47004801; POIN routine; WORD $80596CD"
+#define PrBanimCmd(pr_label, routine) "ALIGN 4; pr_label: WORD $B4081C38 $469E4B02 $BC08F800 $47004801; POIN routine; WORD $80596CD"
+#define InjectBanimCmdExt(index, pr_label) "PUSH; ORG ($58C44 + 4 * index); POIN pr_label | 1; POP"
+
+#define InjectBanimCmd(index, routine, pr_label) "PrBanimCmd(pr_label, routine); InjectBanimCmdExt(index, pr_label)"
 
 ALIGN 4
-pBanim_C01:
-WORD $B4081C38 $469E4B02 $BC08F800 $47004801; POIN Banim_C01; WORD $80596CD
-PUSH; ORG ($58C44 + 4 * 0x1); POIN pBanim_C01 | 1; POP
-
-pBanim_C07:
-WORD $B4081C38 $469E4B02 $BC08F800 $47004801; POIN Banim_C07; WORD $80596CD
-PUSH; ORG ($58C44 + 4 * 0x7); POIN pBanim_C07 | 1; POP
+InjectBanimCmd(0x01, Banim_C01, pBanim_C01)
+InjectBanimCmd(0x07, Banim_C07, pBanim_C07)
 
 #endif /* BANIM_HACK_INSTALLED */

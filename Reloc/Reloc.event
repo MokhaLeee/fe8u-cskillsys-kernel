@@ -2,7 +2,7 @@ KERNEL_RELOC_START:
 
 // MESSAGE CURRENTOFFSET
 gpSkillInfos:           POIN gSkillInfos
-SkillTester:            POIN SkillTesterFast
+SkillTester:            POIN SkillTesterFastFast // SkillTesterFast
 gpConstSkillPTable:     POIN gConstSkillPTable
 gpConstSkillJTable:     POIN gConstSkillJTable
 gpSkillPreloadPData:    POIN gSkillPreloadPData
@@ -101,6 +101,20 @@ gpPreMapAnimBattleRoundHooks: POIN gPreMapAnimBattleRoundHooks
 
 gpImg_MapAnimSKILL: POIN Img_MapAnimSKILL
 gpImg_MapAnimCOMBO: POIN Img_MapAnimCOMBO
+
+gpAiActionTable: POIN gAiActionTable
+
+gpPreAi1DecideHook: POIN gPreAi1DecideHook
+gpPreAi2DecideHook: POIN gPreAi2DecideHook
+
+gpUnitActionTable: POIN gUnitActionTable
+
+gConfigUseGlyph:
+#ifdef CONFIG_USE_UTF8_GLYPH
+    WORD 1
+#else
+    WORD 0
+#endif
 
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

@@ -15,4 +15,4 @@ $(GFX_HEADER): $(ALL_SOURCES)
 	@cd $(dir $(mkfile_dir)..) && $(GFX_GENERATOR) $(GFX_HEADER) $(GFX_INSTALLER) && cd $(build_dir)
 
 clean:
-	rm -f $(GFX_HEADER) $(GFX_INSTALLER)
+	@rm -f $(GFX_HEADER) $(GFX_INSTALLER)

@@ -74,8 +74,8 @@ char * GetUnitRescueName(struct Unit * unit)
 /* LynJump */
 void HbPopulate_SSStatus(struct HelpBoxProc * proc)
 {
-	u8 index = GetUnitStatusIndex(gStatScreen.unit);
-	proc->mid = gpDebuffInfos[index].desc;
+    u8 index = GetUnitStatusIndex(gStatScreen.unit);
+    proc->mid = gpDebuffInfos[index].desc;
 }
 
 /* LynJump */

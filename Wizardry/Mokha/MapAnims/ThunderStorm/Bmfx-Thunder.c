@@ -1,5 +1,7 @@
 #include "common-chax.h"
 
+#define LOCAL_TRACE 0
+
 extern struct BmBgxConf BmBgfxConf_EventThunder[];
 
 struct ProcEventThunderfx {
@@ -58,7 +60,7 @@ void CallMapAnim_ThunderStorm(ProcPtr parent, int x, int y)
     else
         proc = Proc_Start(ProcScr_EventThunderfx, PROC_TREE_3);
 
-    Debugf("x %d, y %d", x, y);
+    LTRACEF("x %d, y %d", x, y);
 
     proc->x = SCREEN_TILE_IX(x) - 0x18;
     proc->y = SCREEN_TILE_IY(y) - 0x78;
