@@ -773,6 +773,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Forager) && (SID_Forager < MAX_SKILL_NUM))
+    [SID_Forager] = {
+        .desc = MSG_SKILL_Forager,
+        .icon = GFX_SkillIcon_Forager,
+    },
+#endif
+
 #if (defined(SID_Anathema) && (SID_Anathema < MAX_SKILL_NUM))
     [SID_Anathema] = {
         .desc = MSG_SKILL_Anathema,
