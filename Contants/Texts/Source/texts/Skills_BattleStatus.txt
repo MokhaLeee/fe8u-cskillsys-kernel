@@ -151,3 +151,8 @@ S-Spectrum[X]
 StanceSpectrum:[NL]
 Grants +2 Atk, Spd, Def[NL]
 and Res if attacked.[X]
+
+## MSG_SKILL_BloodTide
+Blood Tide:[NL]
+Grants Atk and Hit +5
+to adjacent allies.[X]

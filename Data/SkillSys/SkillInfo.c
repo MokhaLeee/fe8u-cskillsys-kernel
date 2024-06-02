@@ -1292,4 +1292,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_StanceSpectrum,
     },
 #endif
+
+#if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
+    [SID_BloodTide] = {
+        .desc = MSG_SKILL_BloodTide,
+        .icon = GFX_SkillIcon_BloodTide,
+    },
+#endif
 };
