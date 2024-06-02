@@ -369,37 +369,6 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
     default:
         break;
     }
-}
-
-STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-    struct Unit * unit = GetUnit(attacker->unit.index);
-
-    if (attacker->battleAttack > defender->battleAttack)
-    {
-#if (defined(SID_HeavyBlade) && (SID_HeavyBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBlade))
-            attacker->battleCritRate += 15;
-#endif
-
-#if (defined(SID_HeavyBladePlus) && (SID_HeavyBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBladePlus))
-            attacker->battleCritRate += 25;
-#endif
-    }
-
-    if (attacker->battleSpeed > defender->battleSpeed)
-    {
-#if (defined(SID_FlashingBlade) && (SID_FlashingBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBlade))
-            attacker->battleCritRate += 15;
-#endif
-
-#if (defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBladePlus))
-            attacker->battleCritRate += 25;
-#endif
-    }
 
 #if (defined(SID_BlueFlame) && (SID_BlueFlame < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_BlueFlame))
@@ -445,11 +414,11 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
     {
         int turnNumber;
 
-        if(gPlaySt.chapterTurnNumber > 15) 
+        if(gPlaySt.chapterTurnNumber > 15)
         {
             turnNumber = 16;
         }
-        else 
+        else
         {
             turnNumber = gPlaySt.chapterTurnNumber;
         }
@@ -460,7 +429,42 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
 #endif
 }
 
-STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)
+STATIC_DECLAR void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    /**
+     * Here we need to put some calculation at the end of the pre-battle calc.
+     * Thus the main part of calc should be positioned at berfore.
+     */
+    struct Unit * unit = GetUnit(attacker->unit.index);
+
+    if (attacker->battleAttack > defender->battleAttack)
+    {
+#if (defined(SID_HeavyBlade) && (SID_HeavyBlade < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_HeavyBlade))
+            attacker->battleCritRate += 15;
+#endif
+
+#if (defined(SID_HeavyBladePlus) && (SID_HeavyBladePlus < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_HeavyBladePlus))
+            attacker->battleCritRate += 25;
+#endif
+    }
+
+    if (attacker->battleSpeed > defender->battleSpeed)
+    {
+#if (defined(SID_FlashingBlade) && (SID_FlashingBlade < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_FlashingBlade))
+            attacker->battleCritRate += 15;
+#endif
+
+#if (defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_FlashingBladePlus))
+            attacker->battleCritRate += 25;
+#endif
+    }
+}
+
+STATIC_DECLAR void PreBattleCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const struct Vec2 vec_range[24] = {
                                       { 0, -3},
@@ -561,11 +565,28 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
                 }
 #endif
 
+
 #if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_BloodTide) && range1[i] == 1)
                 {
                     attacker->battleAttack += 5;
                     attacker->battleHitRate += 5;
+                }
+#endif
+
+#if (defined(SID_WhitePool) && (SID_WhitePool < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_WhitePool) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleSpeed += 5;
+                }
+#endif
+
+#if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_NightTide) && range1[i] == 1)
+                {
+                    attacker->battleDefense += 5;
+
                 }
 #endif
 
@@ -759,13 +780,13 @@ STATIC_DECLAR const PreBattleCalcFunc PreBattleCalcFuncs[] = {
     PreBattleCalcLegendSkills,
     PreBattleCalcDebuffs,
     PreBattleCalcCombatArt,
-    PreBattlePostCalcRangeDebuffs,
+    PreBattleCalcRangeDebuffs,
 
 #ifdef CONFIG_USE_STAT_DEBUFF
     PreBattleCalcStatDebuffs,
 #endif
 
-    PreBattlePostCalcSkills,
+    PreBattle_CalcSkillsOnEnd,
     PreBattleCalcEnd,
     PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, NULL
 };

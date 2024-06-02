@@ -156,3 +156,13 @@ and Res if attacked.[X]
 Blood Tide:[NL]
 Grants Atk and Hit +5
 to adjacent allies.[X]
+
+## MSG_SKILL_WhitePool
+White Pool:[NL]
+Grants Atk and AS +5
+to adjacent allies.[X]
+
+## MSG_SKILL_NightTide
+Night Tide:[NL]
+Grants +5 Def and Res
+to adjacent allies[X]

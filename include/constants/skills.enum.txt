@@ -152,8 +152,12 @@ SID_Infiltrator
 SID_Inspiration
 SID_DivinelyInspiring
 SID_VoiceOfPeace
-//SID_Peacebringer
+SID_Peacebringer
 SID_BloodTide
+SID_Peacebringer
+SID_WhitePool
+SID_NightTide
+
 SID_PowHone
 SID_MagHone
 SID_SklHone

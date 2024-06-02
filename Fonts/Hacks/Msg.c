@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "utf8.h"
 
 void InsertPrefix(char * str, const char * insert_str, s8 c)
 {
