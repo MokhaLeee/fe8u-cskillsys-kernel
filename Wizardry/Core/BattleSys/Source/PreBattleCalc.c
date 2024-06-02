@@ -449,7 +449,7 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
             int subDmg = dmg/2;
             attacker->battleDefense += subDmg;	
 		} 
-
+    }
 #endif
 }
 
