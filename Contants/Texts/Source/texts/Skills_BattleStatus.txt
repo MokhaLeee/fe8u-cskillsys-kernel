@@ -151,3 +151,8 @@ S-Spectrum[X]
 StanceSpectrum:[NL]
 Grants +2 Atk, Spd, Def[NL]
 and Res if attacked.[X]
+
+## MSG_SKILL_Technician
+Technician: If the user is[NL]
+holding an E-ranked weapon,[NL]
+boost weapon damage by 50%.[X]

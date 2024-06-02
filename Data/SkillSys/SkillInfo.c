@@ -1285,4 +1285,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_StanceSpectrum,
     },
 #endif
+
+#if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
+    [SID_Technician] = {
+        .desc = MSG_SKILL_Technician,
+        .icon = GFX_SkillIcon_Technician,
+    },
+#endif
 };

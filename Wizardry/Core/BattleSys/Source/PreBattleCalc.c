@@ -20,10 +20,10 @@ void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * d
     {
         status = status * 2;
 
-#if (defined(SID_Resourceful) && (SID_Resourceful < MAX_SKILL_NUM))
-        if (SkillTester(&attacker->unit, SID_Resourceful))
-            status = status * 2;
-#endif
+        #if (defined(SID_Resourceful) && (SID_Resourceful < MAX_SKILL_NUM))
+                if (SkillTester(&attacker->unit, SID_Resourceful))
+                    status = status * 2;
+        #endif
     }
 
     if (IsMagicAttack(attacker))
@@ -456,6 +456,18 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
         attacker->battleAvoidRate += (15 - (turnNumber-1));
     }
 #endif
+
+#if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Technician))
+    {
+        if (GetItemRequiredExp(attacker->weapon) < 31)
+        {
+            int itemMight = GetItemMight(attacker->weapon);
+            attacker->battleAttack += itemMight/2;
+        }
+    }
+#endif
+
 }
 
 STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)
