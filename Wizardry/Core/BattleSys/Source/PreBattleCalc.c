@@ -434,7 +434,7 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
     {
         int turnNumber;
 
-        if(gPlaySt.chapterTurnNumber > 15) 
+        if (gPlaySt.chapterTurnNumber > 15) 
         {
             turnNumber = 15;
         }
