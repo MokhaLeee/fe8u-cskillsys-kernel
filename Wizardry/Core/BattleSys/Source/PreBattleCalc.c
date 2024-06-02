@@ -460,7 +460,7 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
 #if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Technician))
     {
-        if (GetItemRequiredExp(attacker->weapon) < 31)
+        if (GetItemRequiredExp(attacker->weapon) < WPN_EXP_D)
         {
             int itemMight = GetItemMight(attacker->weapon);
             attacker->battleAttack += itemMight / 2;
