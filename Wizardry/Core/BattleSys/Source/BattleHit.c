@@ -148,10 +148,10 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #if defined(SID_Enrage) && (SID_Enrage < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Enrage))
     {
-        //Roll a random number against the attacker's skill
-        //Then check if the defending unit has no status
+        // Roll a random number against the attacker's skill
+        // Then check if the defending unit has no status
         if(BattleRoll1RN(attacker->unit.skl, FALSE) == TRUE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE)
-            //If so, then set it to berserk.
+            // If so, then set it to berserk.
             defender->statusOut = UNIT_STATUS_BERSERK;
     }
 #endif
