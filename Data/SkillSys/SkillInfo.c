@@ -1378,4 +1378,39 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Daunt,
       },
 #endif
+
+#if (defined(SID_SpurStr) && (SID_SpurStr < MAX_SKILL_NUM))
+    [SID_SpurStr] = {
+         .desc = MSG_SKILL_SpurStr,
+         .icon = GFX_SkillIcon_SpurStr,
+      },
+#endif
+
+#if (defined(SID_SpurMag) && (SID_SpurMag < MAX_SKILL_NUM))
+    [SID_SpurMag] = {
+         .desc = MSG_SKILL_SpurMag,
+         .icon = GFX_SkillIcon_SpurMag,
+      },
+#endif
+
+#if (defined(SID_SpurDef) && (SID_SpurDef < MAX_SKILL_NUM))
+    [SID_SpurDef] = {
+         .desc = MSG_SKILL_SpurDef,
+         .icon = GFX_SkillIcon_SpurDef,
+      },
+#endif
+
+#if (defined(SID_SpurRes) && (SID_SpurRes < MAX_SKILL_NUM))
+    [SID_SpurRes] = {
+         .desc = MSG_SKILL_SpurRes,
+         .icon = GFX_SkillIcon_SpurRes,
+      },
+#endif
+
+#if (defined(SID_SpurSpd) && (SID_SpurSpd < MAX_SKILL_NUM))
+    [SID_SpurSpd] = {
+         .desc = MSG_SKILL_SpurSpd,
+         .icon = GFX_SkillIcon_SpurSpd,
+      },
+#endif
 };
