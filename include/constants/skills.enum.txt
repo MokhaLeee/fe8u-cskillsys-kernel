@@ -69,6 +69,9 @@ SID_QuickBurn
 SID_Technician
 SID_CatchingUp
 SID_SlowBurn
+SID_Skyguard
+SID_Horseguard
+SID_Armorboost
 
 // Weapon triangle
 SID_SwordBreaker

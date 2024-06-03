@@ -1378,4 +1378,25 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Daunt,
       },
 #endif
+
+#if (defined(SID_Skyguard) && (SID_Skyguard < MAX_SKILL_NUM)) 
+    [SID_Skyguard] = {
+         .desc = MSG_SKILL_Skyguard,
+         .icon = GFX_SkillIcon_Skyguard,
+      },
+#endif
+
+#if (defined(SID_Horseguard) && (SID_Horseguard < MAX_SKILL_NUM)) 
+    [SID_Horseguard] = {
+         .desc = MSG_SKILL_Horseguard,
+         .icon = GFX_SkillIcon_Horseguard,
+      },
+#endif
+
+#if (defined(SID_Armorboost) && (SID_Armorboost < MAX_SKILL_NUM)) 
+    [SID_Armorboost] = {
+         .desc = MSG_SKILL_Armorboost,
+         .icon = GFX_SkillIcon_Armorboost,
+      },
+#endif
 };

@@ -6,6 +6,7 @@
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
+#include "class-types.h"
 
 #define NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL 0
 
@@ -529,6 +530,93 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
             attacker->battleCritRate += 25;
 #endif
     }
+#if (defined(SID_Skyguard) && (SID_Skyguard < MAX_SKILL_NUM))
+         if (SkillTester(unit, SID_Skyguard) && CheckClassFlier(UNIT_CLASS_ID(&defender->unit)))
+         {
+             const struct Vec2 vec_range[24] = {
+                                      { 0, -3},
+                            {-1, -2}, { 0, -2}, { 1, -1},
+                  {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
+        {-3,  0}, {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0}, { 3,  0},
+                  {-2,  1}, {-1,  1}, { 0,  1}, { 1,  1}, { 2,  1},
+                            {-1,  2}, { 0,  2}, { 1,  2},
+                                      { 0,  3}};
+            /*Search the presence of allied Sky unit.
+              Could probably be optimised with a Binary search */
+              u32 i, x, y;
+              for (i = 0; i < 24; i++)
+              {
+                  struct Unit * unit_to_check;
+                  x = attacker->unit.xPos + vec_range[i].x;
+                  y = attacker->unit.yPos + vec_range[i].y;
+                  unit_to_check = GetUnitAtPosition(x, y);
+                  if (AreUnitsAllied(attacker->unit.index, unit_to_check->index) && CheckClassFlier(UNIT_CLASS_ID(unit_to_check)))
+                  {
+                      attacker->battleAttack += 4;
+                      break;
+                  }
+              }
+        }
+#endif
+
+#if (defined(SID_Horseguard) && (SID_Horseguard < MAX_SKILL_NUM))
+         if (SkillTester(unit, SID_Horseguard) && CheckClassCavalry(UNIT_CLASS_ID(&defender->unit)))
+         {
+             const struct Vec2 vec_range[24] = {
+                                      { 0, -3},
+                            {-1, -2}, { 0, -2}, { 1, -1},
+                  {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
+        {-3,  0}, {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0}, { 3,  0},
+                  {-2,  1}, {-1,  1}, { 0,  1}, { 1,  1}, { 2,  1},
+                            {-1,  2}, { 0,  2}, { 1,  2},
+                                      { 0,  3}};
+            /*Search the presence of allied Cavalry unit.
+              Could probably be optimised with a Binary search */
+              u32 i, x, y;
+              for (i = 0; i < 24; i++)
+              {
+                  struct Unit * unit_to_check;
+                  x = attacker->unit.xPos + vec_range[i].x;
+                  y = attacker->unit.yPos + vec_range[i].y;
+                  unit_to_check = GetUnitAtPosition(x, y);
+                  if (AreUnitsAllied(attacker->unit.index, unit_to_check->index) && CheckClassCavalry(UNIT_CLASS_ID(unit_to_check)))
+                  {
+                      attacker->battleAttack += 4;
+                      break;
+                  }
+              }
+        }
+#endif
+
+#if (defined(SID_Armorboost) && (SID_Armorboost < MAX_SKILL_NUM))
+         if (SkillTester(unit, SID_Armorboost) && CheckClassArmor(UNIT_CLASS_ID(&defender->unit)))
+         {
+             const struct Vec2 vec_range[24] = {
+                                      { 0, -3},
+                            {-1, -2}, { 0, -2}, { 1, -1},
+                  {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
+        {-3,  0}, {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0}, { 3,  0},
+                  {-2,  1}, {-1,  1}, { 0,  1}, { 1,  1}, { 2,  1},
+                            {-1,  2}, { 0,  2}, { 1,  2},
+                                      { 0,  3}};
+            /*Search the presence of allied Armor unit.
+              Could probably be optimised with a Binary search */
+              u32 i, x, y;
+              for (i = 0; i < 24; i++)
+              {
+                  struct Unit * unit_to_check;
+                  x = attacker->unit.xPos + vec_range[i].x;
+                  y = attacker->unit.yPos + vec_range[i].y;
+                  unit_to_check = GetUnitAtPosition(x, y);
+                  if (AreUnitsAllied(attacker->unit.index, unit_to_check->index) && CheckClassArmor(UNIT_CLASS_ID(unit_to_check)))
+                  {
+                      attacker->battleAttack += 4;
+                      attacker->battleDefense += 4;
+                      break;
+                  }
+              }
+        }
+#endif
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -610,7 +698,6 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                     attacker->battleAttack  += 2;
                 }
 #endif
-
 #if (defined(SID_Charm) && (SID_Charm < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Charm) && range2[i] == 1)
                     attacker->battleAttack  += 3;

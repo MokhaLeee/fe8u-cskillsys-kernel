@@ -192,3 +192,18 @@ they're above the doubling threshold.[X]
 Slow Burn: [NL]
 +1 Hit and Avoid for[NL]
 each passing turn, up to 15.[X]
+
+## MSG_SKILL_Skyguard
+Skyguard:[NL]
++4 defense against flying enemies[NL]
+if within 3 spaces of an ally flier.[X]
+
+## MSG_SKILL_Horseguard
+Horseguard:[NL]
++4 defense against horseback enemies[NL]
+if within 3 spaces of an ally horse rider.[X]
+
+## MSG_SKILL_Armorboost
+Armorboost:[NL]
++4 attack and defense against armored[NL]
+enemies if within 3 spaces of an armored ally.[X]
