@@ -1378,4 +1378,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Daunt,
       },
 #endif
+
+#if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
+    [SID_Solidarity] = {
+         .desc = MSG_SKILL_Solidarity,
+         .icon = GFX_SkillIcon_Solidarity,
+      },
+#endif
+
 };
