@@ -62,5 +62,11 @@ Range Skill: Atk +5 if[NL]
 no ally with 1 tiles.[X]
 
 ## MSG_SKILL_Peacebringer
-Peacebringer: Allies and enemies within[NL]
+Peacebringer:[NL]
+Allies and enemies within[NL]
 2 tiles deal -2 damage.[X]
+
+## MSG_SKILL_Daunt
+Daunt:[NL]
+-5 Hit and Crit to all enemy[NL]
+units in a 3-tile radius.[X]
