@@ -164,6 +164,11 @@ SID_Peacebringer
 SID_BloodTide
 SID_WhitePool
 SID_NightTide
+SID_DriveStr
+SID_DriveMag
+SID_DriveDef
+SID_DriveRes
+SID_DriveSpd
 
 SID_PowHone
 SID_MagHone

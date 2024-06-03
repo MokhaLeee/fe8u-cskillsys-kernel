@@ -64,3 +64,23 @@ no ally with 1 tiles.[X]
 ## MSG_SKILL_Peacebringer
 Peacebringer: Allies and enemies within[NL]
 2 tiles deal -2 damage.[X]
+
+## MSG_SKILL_DriveStr
+Drive Str:[NL]
+Allies within 2 tiles receive +4 Strength.[X]
+
+## MSG_SKILL_DriveMag
+Drive Mag:[NL]
+Allies within 2 tiles receive +4 Magic.[X]
+
+## MSG_SKILL_DriveSpd
+Drive Spd:[NL]
+Allies within 2 tiles receive +4 Speed.[X]
+
+## MSG_SKILL_DriveDef
+Drive Def:[NL]
+Allies within 2 tiles receive +4 Defence.[X]
+
+## MSG_SKILL_DriveRes
+Drive Res:[NL]
+Allies within 2 tiles receive +4 Resistance.[X]

@@ -616,6 +616,45 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                     attacker->battleAttack  += 3;
 #endif
 
+#if (defined(SID_DriveStr) && (SID_DriveStr < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveStr) && range2[i] == 1)
+				{
+					if(!IsMagicAttack(attacker))
+                    attacker->battleAttack  += 4;
+				}
+#endif
+
+#if (defined(SID_DriveMag) && (SID_DriveMag < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveMag) && range2[i] == 1)
+				{
+					if(IsMagicAttack(attacker))
+                    attacker->battleAttack  += 4;
+				}
+#endif
+
+#if (defined(SID_DriveDef) && (SID_DriveDef < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveDef) && range2[i] == 1)
+                {
+					if(!IsMagicAttack(defender))
+                    attacker->battleDefense+= 4;
+				}
+#endif
+
+#if (defined(SID_DriveRes) && (SID_DriveRes < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveRes) && range2[i] == 1)
+                {
+					if(IsMagicAttack(defender))
+                    attacker->battleDefense+= 4;
+				}
+#endif
+
+#if (defined(SID_DriveSpeed) && (SID_DriveSpeed < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveSpeed) && range2[i] == 1)
+				{
+                    attacker->battleSpeed += 4;
+				}
+#endif
+
 #if (defined(SID_Inspiration) && (SID_Inspiration < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Inspiration) && range2[i] == 1)
                 {
