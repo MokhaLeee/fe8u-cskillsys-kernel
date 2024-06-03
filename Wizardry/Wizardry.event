@@ -44,7 +44,6 @@ ALIGN 4
 
 #include "QOL/StatScreenfx/StatScreenfx.event"
 #include "QOL/GameIntrofx/GameIntrofx.event"
-#include "QOL/ChapterIntrofx/ChapterIntrofx.event"
 
 #include "Mokha/MapAnims/MapAnims.event"
 #include "Mokha/ComboAttack/ComboAttack.event"
