@@ -17,6 +17,22 @@
 #include "BattleHitExpasion/BattleHitExpasion.event"
 
 ALIGN 4
+PreBattleCalcFuncs:
+    POIN PreBattleCalcInit
+
+    POIN PreBattleCalcSilencerRate PreBattleCalcWeaponTriangle PreBattleCalcSkills
+    POIN PreBattleCalcLegendSkills PreBattleCalcDebuffs PreBattleCalcCombatArt PreBattleCalcAuraEffect
+
+#ifdef CONFIG_USE_STAT_DEBUFF
+    POIN PreBattleCalcStatDebuffs
+#endif
+
+    POIN PreBattle_CalcSkillsOnEnd
+    POIN PreBattleCalcEnd
+    POIN PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad
+    WORD 0
+
+ALIGN 4
 Gfx_BKSEL:
     #incbin "Data/Gfx_BKSEL.4bpp"
 

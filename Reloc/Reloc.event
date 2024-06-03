@@ -116,5 +116,7 @@ gConfigUseGlyph:
     WORD 0
 #endif
 
+gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

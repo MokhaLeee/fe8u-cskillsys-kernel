@@ -10,6 +10,7 @@
 #define NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL 0
 
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
+extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
 /* LynJump */
@@ -56,7 +57,7 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
     attacker->battleDefense = status;
 }
 
-STATIC_DECLAR void PreBattleCalcInit(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcInit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     ComputeBattleUnitDefense(attacker, defender);
     ComputeBattleUnitAttack(attacker, defender);
@@ -73,7 +74,7 @@ STATIC_DECLAR void PreBattleCalcInit(struct BattleUnit * attacker, struct Battle
     attacker->battleSilencerRate = 0;
 }
 
-STATIC_DECLAR void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker->battleAttack < 0)
         attacker->battleAttack = 0;
@@ -115,7 +116,7 @@ STATIC_DECLAR void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleU
         attacker->battleSilencerRate = 0;
 }
 
-STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     struct Unit * unit = GetUnit(attacker->unit.index);
 
@@ -482,7 +483,7 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
 
 }
 
-STATIC_DECLAR void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     /**
      * Here we need to put some calculation at the end of the pre-battle calc.
@@ -530,7 +531,7 @@ STATIC_DECLAR void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struc
     }
 }
 
-STATIC_DECLAR void PreBattleCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const struct Vec2 vec_range[24] = {
                                       { 0, -3},
@@ -828,40 +829,19 @@ STATIC_DECLAR void PreBattleCalcRangeDebuffs(struct BattleUnit * attacker, struc
 #endif /* CONFIG_BATTLE_SURROUND */
 }
 
-STATIC_DECLAR void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (UNIT_CATTRIBUTES(&defender->unit) & CA_BOSS)
         attacker->battleSilencerRate -= 25;
 }
 
-STATIC_DECLAR void PreBattleCalcPad(struct BattleUnit * attacker, struct BattleUnit * defender) {}
-
-STATIC_DECLAR const PreBattleCalcFunc PreBattleCalcFuncs[] = {
-    PreBattleCalcInit,
-
-    /* Usr defined funcs */
-    PreBattleCalcSilencerRate,
-    PreBattleCalcWeaponTriangle,
-    PreBattleCalcSkills,
-    PreBattleCalcLegendSkills,
-    PreBattleCalcDebuffs,
-    PreBattleCalcCombatArt,
-    PreBattleCalcRangeDebuffs,
-
-#ifdef CONFIG_USE_STAT_DEBUFF
-    PreBattleCalcStatDebuffs,
-#endif
-
-    PreBattle_CalcSkillsOnEnd,
-    PreBattleCalcEnd,
-    PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, NULL
-};
+void PreBattleCalcPad(struct BattleUnit * attacker, struct BattleUnit * defender) {}
 
 /* LynJump */
 void ComputeBattleUnitStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const PreBattleCalcFunc * it;
-    for (it = PreBattleCalcFuncs; *it; it++)
+    for (it = gpPreBattleCalcFuncs; *it; it++)
         (*it)(attacker, defender);
 }
 
