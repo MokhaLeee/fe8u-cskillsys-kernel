@@ -64,3 +64,7 @@ no ally with 1 tiles.[X]
 ## MSG_SKILL_Peacebringer
 Peacebringer: Allies and enemies within[NL]
 2 tiles deal -2 damage.[X]
+
+## MSG_SKILL_Charisma
+Charisma:[NL]
+Grants +10 Hit/Avoid to all allies within three tiles.[X]
