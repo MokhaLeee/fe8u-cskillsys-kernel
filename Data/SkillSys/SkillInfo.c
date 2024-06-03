@@ -1370,5 +1370,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .desc = MSG_SKILL_NightTide,
         .icon = GFX_SkillIcon_NightTide,
     },
+
+#if (defined(SID_MaleficAura) && (SID_MaleficAura < MAX_SKILL_NUM))
+    [SID_MaleficAura] = {
+        .desc = MSG_SKILL_MaleficAura,
+        .icon = GFX_SkillIcon_MaleficAura,
+    },
+#endif
+
 #endif
 };

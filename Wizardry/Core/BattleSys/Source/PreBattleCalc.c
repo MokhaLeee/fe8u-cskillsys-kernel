@@ -696,6 +696,16 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                     attacker->battleAvoidRate -= 10;
 #endif
 
+#if (defined(SID_MaleficAura) && (SID_MaleficAura < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_MaleficAura) && range2[i] == 1)
+                {
+                    if (IsMagicAttack(defender))
+                    {
+                        attacker->battleDefense -= 2;
+                    }
+                }
+#endif
+
 #if (defined(SID_Hex) && (SID_Hex < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Hex) && range1[i] == 1)
                     attacker->battleAvoidRate -= 10;

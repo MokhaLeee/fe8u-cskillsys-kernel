@@ -164,6 +164,7 @@ SID_Peacebringer
 SID_BloodTide
 SID_WhitePool
 SID_NightTide
+SID_MaleficAura
 
 SID_PowHone
 SID_MagHone

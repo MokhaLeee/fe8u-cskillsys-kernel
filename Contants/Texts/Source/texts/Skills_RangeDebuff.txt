@@ -3,6 +3,7 @@ Anathema:[NL]
 -10 Avoid/Dodge to all[NL]
 enemies within 3 tiles.[X]
 
+
 ## MSG_SKILL_Bond
 Bond:[NL]
 +10 hit, +3 damage to all[NL]
@@ -64,3 +65,8 @@ no ally with 1 tiles.[X]
 ## MSG_SKILL_Peacebringer
 Peacebringer: Allies and enemies within[NL]
 2 tiles deal -2 damage.[X]
+
+## MSG_SKILL_MaleficAura
+Malefic Aura:[NL]
+Enemies within 2 tiles [NL]
+receive +2 magic damage..[X]
