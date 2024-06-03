@@ -85,3 +85,11 @@ to adjacent allies.[X]
 Night Tide:[NL]
 Grants +5 Def and Res
 to adjacent allies[X]
+
+## MSG_SKILL_Gentilhomme
+Gentilhomme:[NL]
+Female allies within 2 tiles receive -2 damage.[X]
+
+## MSG_SKILL_Demoiselle
+Demoiselle:[NL]
+Male allies within 2 tiles receive -2 damage.[X]

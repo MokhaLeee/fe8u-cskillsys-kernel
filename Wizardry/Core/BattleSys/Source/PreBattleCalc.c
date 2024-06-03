@@ -660,7 +660,16 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Peacebringer) && range2[i] == 1)
                     attacker->battleAttack -= 2;
+#endif
 
+#if (defined(SID_Gentilhomme) && (SID_Gentilhomme < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Gentilhomme) && range2[i] == 1 && (UNIT_CATTRIBUTES(GetUnit(attacker->unit.index)) && CA_FEMALE))
+                    attacker->battleDefense += 2;
+#endif
+
+#if (defined(SID_Demoiselle) && (SID_Demoiselle < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Demoiselle) && range2[i] == 1 && !(UNIT_CATTRIBUTES(GetUnit(attacker->unit.index)) && CA_FEMALE))
+                    attacker->battleDefense += 2;
 #endif
             }
 
