@@ -1371,4 +1371,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_NightTide,
     },
 #endif
+
+#if (defined(SID_LilysPoise) && (SID_LilysPoise < MAX_SKILL_NUM))
+    [SID_LilysPoise] = {
+        .desc = MSG_SKILL_LilysPoise,
+        .icon = GFX_SkillIcon_LilysPoise,
+    },
+#endif
 };
