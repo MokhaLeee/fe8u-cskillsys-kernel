@@ -1,10 +1,3 @@
-#include "AutoGenLeftOAM/installer.txt"
-#include "01command_hack/01command_hack.event"
-#include "48command_hack/48command_hack.event"
-#include "FillAIDangerMap20220712/install.event"
-#include "DecideOnDangerMap/DecideOnDangerMap.event"
-// #include "MeleeAndMagicFix_ItemFix20220721/MeleeAndMagicFix_ItemFix20220721.event"
-
 #ifdef CONFIG_INSTALL_EXT_MAP_ACTION_ANIM
     #include "DrawMapActionAnimation/Installer.event"
 #endif
