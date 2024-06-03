@@ -1,15 +1,15 @@
 #include "common-chax.h"
 
 /* LynJump */
-void CpPerform_MoveCameraOntoTarget(struct CpPerformProc* proc) {
-    struct Unit* unit;
+void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc)
+{
+    struct Unit * unit;
 
     int x = 0;
     int y = 0;
 
-    if (gActionData.unitActionType == UNIT_ACTION_TRAPPED) {
+    if (gActionData.unitActionType == UNIT_ACTION_TRAPPED)
         return;
-    }
 
     switch (gAiDecision.actionId) {
         case AI_ACTION_NONE:
