@@ -78,17 +78,17 @@ units in a 3-tile radius.[X]
 
 ## MSG_SKILL_BloodTide
 Blood Tide:[NL]
-Grants Atk and Hit +5
+Grants Atk and Hit +5[NL]
 to adjacent allies.[X]
 
 ## MSG_SKILL_WhitePool
 White Pool:[NL]
-Grants Atk and AS +5
+Grants Atk and AS +5[NL]
 to adjacent allies.[X]
 
 ## MSG_SKILL_NightTide
 Night Tide:[NL]
-Grants +5 Def and Res
+Grants +5 Def and Res[NL]
 to adjacent allies[X]
 
 ## MSG_SKILL_Gentilhomme
