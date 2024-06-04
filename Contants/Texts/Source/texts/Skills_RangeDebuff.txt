@@ -45,6 +45,11 @@ deal +2 damage and receive -2 damage.[X]
 D-Inspir: Adjacent allies[NL]
 deal +3 damage and receive -1 damage.[X]
 
+## MSG_SKILL_LilysPoise
+Lily's Poise: [NL]
+Adjacent allies deal +1 damage [NL]
+and receive -3 damage.[X]
+
 ## MSG_SKILL_VoiceOfPeace
 V-Peace: Enemies within[NL]
 2 tiles deal -2 damage.[X]
@@ -93,3 +98,7 @@ Female allies within 2 tiles receive -2 damage.[X]
 ## MSG_SKILL_Demoiselle
 Demoiselle:[NL]
 Male allies within 2 tiles receive -2 damage.[X]
+
+## MSG_SKILL_Solidarity
+Solidarity:[NL]
+Critical and Critical Avoid +10 to adjacent allies.[X]
