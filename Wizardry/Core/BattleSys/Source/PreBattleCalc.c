@@ -629,7 +629,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_DriveStr) && range2[i] == 1)
                 {
                     if (!IsMagicAttack(attacker))
-                    attacker->battleAttack  += 4;
+                        attacker->battleAttack  += 4;
                 }
 #endif
 
@@ -637,7 +637,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_DriveMag) && range2[i] == 1)
                 {
                     if (IsMagicAttack(attacker))
-                    attacker->battleAttack  += 4;
+                        attacker->battleAttack  += 4;
                 }
 #endif
 
@@ -645,7 +645,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_DriveDef) && range2[i] == 1)
                 {
                     if (!IsMagicAttack(defender))
-                    attacker->battleDefense+= 4;
+                        attacker->battleDefense+= 4;
                 }
 #endif
 
@@ -653,7 +653,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_DriveRes) && range2[i] == 1)
                 {
                     if (IsMagicAttack(defender))
-                    attacker->battleDefense+= 4;
+                        attacker->battleDefense+= 4;
                 }
 #endif
 
