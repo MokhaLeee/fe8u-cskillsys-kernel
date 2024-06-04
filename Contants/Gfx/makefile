@@ -16,3 +16,4 @@ $(GFX_HEADER): $(ALL_SOURCES)
 
 clean:
 	@rm -f $(GFX_HEADER) $(GFX_INSTALLER)
+	@find $(mkfile_dir)Sources/ -type f | grep -v png | xargs rm -f

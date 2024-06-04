@@ -50,4 +50,4 @@ PNG_FILES := $(shell find ./ -type f -name '*.png')
 CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES:.png=.pal.bin)
 
 clean:
-	rm -f $(CLEAN_FILES)
+	@rm -f $(CLEAN_FILES)

@@ -264,7 +264,8 @@ EFX_TARGET   := $(EFX_SCRIPTS:.efx.txt=.efx.event)
 efx: $(EFX_TARGET)
 PRE_BUILD += efx
 
-CLEAN_FILES += $(EFX_SCR_DEPS) $(EFX_TARGET)
+CLEAN_BUILD += $(EFX_ANIM_DIR)
+# CLEAN_FILES += $(EFX_SCR_DEPS) $(EFX_TARGET)
 
 # =======
 # = GFX =
