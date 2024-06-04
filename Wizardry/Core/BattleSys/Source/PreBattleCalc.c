@@ -625,6 +625,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                     attacker->battleAttack  += 3;
 #endif
 
+#if (defined(SID_Charisma) && (SID_Charisma < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Charisma) && range3[i] == 1)
+                {
+                    attacker->battleHitRate += 10;
+                    attacker->battleAvoidRate += 10;
+                }
+#endif
+
 #if (defined(SID_Inspiration) && (SID_Inspiration < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Inspiration) && range2[i] == 1)
                 {
