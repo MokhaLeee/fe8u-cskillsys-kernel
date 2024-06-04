@@ -632,6 +632,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 }
 #endif
 
+#if (defined(SID_LilysPoise) && (SID_LilysPoise < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_LilysPoise) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 1;
+                    attacker->battleDefense += 3;
+                }
+#endif
+
 
 #if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_BloodTide) && range1[i] == 1)

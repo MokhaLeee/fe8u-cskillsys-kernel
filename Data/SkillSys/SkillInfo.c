@@ -1372,6 +1372,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_LilysPoise) && (SID_LilysPoise < MAX_SKILL_NUM))
+    [SID_LilysPoise] = {
+        .desc = MSG_SKILL_LilysPoise,
+        .icon = GFX_SkillIcon_LilysPoise,
+    },
+#endif
+};
+
 #if (defined(SID_Daunt) && (SID_Daunt < MAX_SKILL_NUM)) 
     [SID_Daunt] = {
          .desc = MSG_SKILL_Daunt,
