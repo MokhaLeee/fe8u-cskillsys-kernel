@@ -1386,6 +1386,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_BattleVeteran) && (SID_BattleVeteran < MAX_SKILL_NUM)) 
+    [SID_BattleVeteran] = {
+         .desc = MSG_SKILL_BattleVeteran,
+         .icon = GFX_SkillIcon_BattleVeteran,
+      },
+#endif
+
 #if (defined(SID_Gentilhomme) && (SID_Gentilhomme < MAX_SKILL_NUM)) 
     [SID_Gentilhomme] = {
          .desc = MSG_SKILL_Gentilhomme,

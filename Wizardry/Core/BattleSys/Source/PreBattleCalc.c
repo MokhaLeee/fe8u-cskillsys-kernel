@@ -481,6 +481,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if (defined(SID_BattleVeteran) && (SID_BattleVeteran < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_BattleVeteran))
+    {
+       u32 n_level = unit->level/10 + 2 * (UNIT_CATTRIBUTES(unit) && CA_PROMOTED);
+       attacker->battleHitRate += 5*n_level;
+       attacker->battleAttack += n_level;
+    }
+#endif
+
 }
 
 void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
