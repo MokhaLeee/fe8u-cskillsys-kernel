@@ -147,6 +147,7 @@ SID_PosSwap
 
 // Pre-phase
 SID_Renewal
+SID_Imbue
 SID_Forager
 
 // Range debuff
