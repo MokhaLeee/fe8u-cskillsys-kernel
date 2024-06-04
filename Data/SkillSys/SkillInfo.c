@@ -1379,6 +1379,41 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_DriveStr) && (SID_DriveStr < MAX_SKILL_NUM))
+    [SID_DriveStr] = {
+        .desc = MSG_SKILL_DriveStr,
+        .icon = GFX_SkillIcon_DriveStr,
+    },
+#endif
+
+#if (defined(SID_DriveMag) && (SID_DriveMag < MAX_SKILL_NUM))
+    [SID_DriveMag] = {
+        .desc = MSG_SKILL_DriveMag,
+        .icon = GFX_SkillIcon_DriveMag,
+    },
+#endif
+
+#if (defined(SID_DriveSpd) && (SID_DriveSpd < MAX_SKILL_NUM))
+    [SID_DriveSpd] = {
+        .desc = MSG_SKILL_DriveSpd,
+        .icon = GFX_SkillIcon_DriveSpd,
+    },
+#endif
+
+#if (defined(SID_DriveDef) && (SID_DriveDef < MAX_SKILL_NUM))
+    [SID_DriveDef] = {
+        .desc = MSG_SKILL_DriveDef,
+        .icon = GFX_SkillIcon_DriveDef,
+    },
+#endif
+
+#if (defined(SID_DriveRes) && (SID_DriveRes < MAX_SKILL_NUM))
+    [SID_DriveRes] = {
+        .desc = MSG_SKILL_DriveRes,
+        .icon = GFX_SkillIcon_DriveRes,
+    },
+#endif
+
 #if (defined(SID_Charisma) && (SID_Charisma < MAX_SKILL_NUM)) 
     [SID_Charisma] = {
          .desc = MSG_SKILL_Charisma,

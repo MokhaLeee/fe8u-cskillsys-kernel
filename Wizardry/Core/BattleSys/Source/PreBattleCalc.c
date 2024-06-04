@@ -437,7 +437,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     {
         int turnNumber;
 
-        if(gPlaySt.chapterTurnNumber > 15)
+        if (gPlaySt.chapterTurnNumber > 15)
         {
             turnNumber = 16;
         }
@@ -623,6 +623,45 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_Charm) && (SID_Charm < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Charm) && range2[i] == 1)
                     attacker->battleAttack  += 3;
+#endif
+
+#if (defined(SID_DriveStr) && (SID_DriveStr < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveStr) && range2[i] == 1)
+                {
+                    if (!IsMagicAttack(attacker))
+                    attacker->battleAttack  += 4;
+                }
+#endif
+
+#if (defined(SID_DriveMag) && (SID_DriveMag < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveMag) && range2[i] == 1)
+                {
+                    if (IsMagicAttack(attacker))
+                    attacker->battleAttack  += 4;
+                }
+#endif
+
+#if (defined(SID_DriveDef) && (SID_DriveDef < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveDef) && range2[i] == 1)
+                {
+                    if (!IsMagicAttack(defender))
+                    attacker->battleDefense+= 4;
+                }
+#endif
+
+#if (defined(SID_DriveRes) && (SID_DriveRes < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveRes) && range2[i] == 1)
+                {
+                    if (IsMagicAttack(defender))
+                    attacker->battleDefense+= 4;
+                }
+#endif
+
+#if (defined(SID_DriveSpeed) && (SID_DriveSpeed < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_DriveSpeed) && range2[i] == 1)
+                {
+                    attacker->battleSpeed += 4;
+                }
 #endif
 
 #if (defined(SID_Charisma) && (SID_Charisma < MAX_SKILL_NUM))
