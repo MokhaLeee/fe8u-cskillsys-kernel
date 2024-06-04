@@ -712,8 +712,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 }
 #endif
 
-#if (defined(SID_SpurSpeed) && (SID_SpurSpeed < MAX_SKILL_NUM))
-                if (SkillTester(unit, SID_SpurSpeed) && range1[i] == 1)
+#if (defined(SID_SpurSpd) && (SID_SpurSpd < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_SpurSpd) && range1[i] == 1)
                 {
                     attacker->battleSpeed += 4;
                 }
