@@ -45,6 +45,11 @@ deal +2 damage and receive -2 damage.[X]
 D-Inspir: Adjacent allies[NL]
 deal +3 damage and receive -1 damage.[X]
 
+## MSG_SKILL_LilysPoise
+Lily's Poise: [NL]
+Adjacent allies deal +1 damage [NL]
+and receive -3 damage.[X]
+
 ## MSG_SKILL_VoiceOfPeace
 V-Peace: Enemies within[NL]
 2 tiles deal -2 damage.[X]
@@ -62,7 +67,8 @@ Range Skill: Atk +5 if[NL]
 no ally with 1 tiles.[X]
 
 ## MSG_SKILL_Peacebringer
-Peacebringer: Allies and enemies within[NL]
+Peacebringer:[NL]
+Allies and enemies within[NL]
 2 tiles deal -2 damage.[X]
 
 ## MSG_SKILL_DriveStr
@@ -84,3 +90,59 @@ Allies within 2 tiles receive +4 Defence.[X]
 ## MSG_SKILL_DriveRes
 Drive Res:[NL]
 Allies within 2 tiles receive +4 Resistance.[X]
+
+## MSG_SKILL_Charisma
+Charisma:[NL]
+Grants +10 Hit/Avoid to all allies within three tiles.[X]
+
+## MSG_SKILL_Daunt
+Daunt:[NL]
+-5 Hit and Crit to all enemy[NL]
+units in a 3-tile radius.[X]
+
+## MSG_SKILL_BloodTide
+Blood Tide:[NL]
+Grants Atk and Hit +5[NL]
+to adjacent allies.[X]
+
+## MSG_SKILL_WhitePool
+White Pool:[NL]
+Grants Atk and AS +5[NL]
+to adjacent allies.[X]
+
+## MSG_SKILL_NightTide
+Night Tide:[NL]
+Grants +5 Def and Res[NL]
+to adjacent allies[X]
+
+## MSG_SKILL_SpurStr
+Spur Str:[NL]
+Adjacent allies gain +4 Strength.[X]
+
+## MSG_SKILL_SpurMag
+Spur Mag:[NL]
+Adjacent allies gain +4 Magic.[X]
+
+## MSG_SKILL_SpurSpd
+Spur Spd:[NL]
+Adjacent allies gain +4 Speed.[X]
+
+## MSG_SKILL_SpurDef
+Spur Def:[NL]
+Adjacent allies gain +4 Defence.[X]
+
+## MSG_SKILL_SpurRes
+Spur Res:[NL]
+Adjacent allies gain +4 Resistance.[X]
+
+## MSG_SKILL_Gentilhomme
+Gentilhomme:[NL]
+Female allies within 2 tiles receive -2 damage.[X]
+
+## MSG_SKILL_Demoiselle
+Demoiselle:[NL]
+Male allies within 2 tiles receive -2 damage.[X]
+
+## MSG_SKILL_Solidarity
+Solidarity:[NL]
+Critical and Critical Avoid +10 to adjacent allies.[X]
