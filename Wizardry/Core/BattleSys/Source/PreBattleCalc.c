@@ -652,47 +652,46 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_NightTide) && range1[i] == 1)
                 {
                     attacker->battleDefense += 5;
-
                 }
 #endif
 
 #if (defined(SID_SpurStr) && (SID_SpurStr < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_SpurStr) && range1[i] == 1)
-				{
-					if(!IsMagicAttack(attacker))
+                {
+                    if(!IsMagicAttack(attacker))
                     attacker->battleAttack  += 4;
-				}
+                }
 #endif
 
 #if (defined(SID_SpurMag) && (SID_SpurMag < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_SpurMag) && range1[i] == 1)
-				{
-					if(IsMagicAttack(attacker))
+                {
+                    if(IsMagicAttack(attacker))
                     attacker->battleAttack  += 4;
-				}
+                }
 #endif
 
 #if (defined(SID_SpurDef) && (SID_SpurDef < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_SpurDef) && range1[i] == 1)
                 {
-					if(!IsMagicAttack(defender))
+                    if(!IsMagicAttack(defender))
                     attacker->battleDefense+= 4;
-				}
+                }
 #endif
 
 #if (defined(SID_SpurRes) && (SID_SpurRes < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_SpurRes) && range1[i] == 1)
                 {
-					if(IsMagicAttack(defender))
+                    if(IsMagicAttack(defender))
                     attacker->battleDefense+= 4;
-				}
+                }
 #endif
 
 #if (defined(SID_SpurSpeed) && (SID_SpurSpeed < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_SpurSpeed) && range1[i] == 1)
-				{
+                {
                     attacker->battleSpeed += 4;
-				}
+                }
 #endif
 
 #if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
