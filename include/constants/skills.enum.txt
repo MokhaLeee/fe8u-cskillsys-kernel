@@ -165,6 +165,7 @@ SID_BloodTide
 SID_WhitePool
 SID_NightTide
 SID_LilysPoise
+SID_Daunt
 
 SID_PowHone
 SID_MagHone

@@ -699,6 +699,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 }
 #endif
 
+#if (defined(SID_Daunt) && (SID_Daunt < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Daunt) && range3[i] == 1)
+                {
+                    attacker->battleHitRate -= 5;
+                    attacker->battleCritRate -= 5;
+                }
+#endif
+
 #if (defined(SID_Intimidate) && (SID_Intimidate < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Intimidate) && range2[i] == 1)
                     attacker->battleAvoidRate -= 10;
