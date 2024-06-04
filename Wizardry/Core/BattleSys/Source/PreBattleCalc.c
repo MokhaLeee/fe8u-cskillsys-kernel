@@ -599,8 +599,11 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
         _y = attacker->unit.yPos + vec_range[i].y;
 
         unit = GetUnitAtPosition(_x, _y);
-        if (!unit)
+        if (!UNIT_IS_VALID(unit))
             continue;
+
+        if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                continue;
 
         if (AreUnitsAllied(attacker->unit.index, unit->index))
         {
