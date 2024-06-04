@@ -95,6 +95,26 @@ Night Tide:[NL]
 Grants +5 Def and Res[NL]
 to adjacent allies[X]
 
+## MSG_SKILL_SpurStr
+Spur Str:[NL]
+Adjacent allies gain +4 Strength.[X]
+
+## MSG_SKILL_SpurMag
+Spur Mag:[NL]
+Adjacent allies gain +4 Magic.[X]
+
+## MSG_SKILL_SpurSpd
+Spur Spd:[NL]
+Adjacent allies gain +4 Speed.[X]
+
+## MSG_SKILL_SpurDef
+Spur Def:[NL]
+Adjacent allies gain +4 Defence.[X]
+
+## MSG_SKILL_SpurRes
+Spur Res:[NL]
+Adjacent allies gain +4 Resistance.[X]
+
 ## MSG_SKILL_Gentilhomme
 Gentilhomme:[NL]
 Female allies within 2 tiles receive -2 damage.[X]
