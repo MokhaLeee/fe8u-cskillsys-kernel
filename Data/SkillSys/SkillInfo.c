@@ -773,6 +773,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Imbue) && (SID_Imbue < MAX_SKILL_NUM))
+    [SID_Imbue] = {
+        .desc = MSG_SKILL_Imbue,
+        .icon = GFX_SkillIcon_Imbue,
+    },
+#endif
+
 #if (defined(SID_Forager) && (SID_Forager < MAX_SKILL_NUM))
     [SID_Forager] = {
         .desc = MSG_SKILL_Forager,
@@ -1376,6 +1383,48 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_Charisma] = {
          .desc = MSG_SKILL_Charisma,
          .icon = GFX_SkillIcon_Charisma,
+      },
+#endif
+
+#if (defined(SID_LilysPoise) && (SID_LilysPoise < MAX_SKILL_NUM))
+    [SID_LilysPoise] = {
+        .desc = MSG_SKILL_LilysPoise,
+        .icon = GFX_SkillIcon_LilysPoise,
+    },
+#endif
+
+#if (defined(SID_Daunt) && (SID_Daunt < MAX_SKILL_NUM)) 
+    [SID_Daunt] = {
+         .desc = MSG_SKILL_Daunt,
+         .icon = GFX_SkillIcon_Daunt,
+      },
+#endif
+
+#if (defined(SID_BattleVeteran) && (SID_BattleVeteran < MAX_SKILL_NUM)) 
+    [SID_BattleVeteran] = {
+         .desc = MSG_SKILL_BattleVeteran,
+         .icon = GFX_SkillIcon_BattleVeteran,
+      },
+#endif
+
+#if (defined(SID_Gentilhomme) && (SID_Gentilhomme < MAX_SKILL_NUM)) 
+    [SID_Gentilhomme] = {
+         .desc = MSG_SKILL_Gentilhomme,
+         .icon = GFX_SkillIcon_Gentilhomme,
+      },
+#endif
+
+#if (defined(SID_Demoiselle) && (SID_Demoiselle < MAX_SKILL_NUM)) 
+    [SID_Demoiselle] = {
+         .desc = MSG_SKILL_Demoiselle,
+         .icon = GFX_SkillIcon_Demoiselle,
+      },
+#endif
+
+#if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
+    [SID_Solidarity] = {
+         .desc = MSG_SKILL_Solidarity,
+         .icon = GFX_SkillIcon_Solidarity,
       },
 #endif
 };
