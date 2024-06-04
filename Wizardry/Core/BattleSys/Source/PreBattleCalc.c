@@ -481,6 +481,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if (defined(SID_BattleVeteran) && (SID_BattleVeteran < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_BattleVeteran))
+    {
+       u32 n_level = unit->level/10 + 2 * (UNIT_CATTRIBUTES(unit) && CA_PROMOTED);
+       attacker->battleHitRate += 5*n_level;
+       attacker->battleAttack += n_level;
+    }
+#endif
+
 }
 
 void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -616,6 +625,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                     attacker->battleAttack  += 3;
 #endif
 
+#if (defined(SID_Charisma) && (SID_Charisma < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Charisma) && range3[i] == 1)
+                {
+                    attacker->battleHitRate += 10;
+                    attacker->battleAvoidRate += 10;
+                }
+#endif
+
 #if (defined(SID_Inspiration) && (SID_Inspiration < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Inspiration) && range2[i] == 1)
                 {
@@ -629,6 +646,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 {
                     attacker->battleAttack += 3;
                     attacker->battleDefense += 1;
+                }
+#endif
+
+#if (defined(SID_LilysPoise) && (SID_LilysPoise < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_LilysPoise) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 1;
+                    attacker->battleDefense += 3;
                 }
 #endif
 
@@ -694,10 +719,27 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 }
 #endif
 
+#if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Solidarity) && range1[i] == 1)
+                {
+                    attacker->battleCritRate += 10;
+                    attacker->battleDodgeRate += 10;
+                }
+#endif
+
 #if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Peacebringer) && range2[i] == 1)
                     attacker->battleAttack -= 2;
+#endif
 
+#if (defined(SID_Gentilhomme) && (SID_Gentilhomme < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Gentilhomme) && range2[i] == 1 && (UNIT_CATTRIBUTES(GetUnit(attacker->unit.index)) && CA_FEMALE))
+                    attacker->battleDefense += 2;
+#endif
+
+#if (defined(SID_Demoiselle) && (SID_Demoiselle < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Demoiselle) && range2[i] == 1 && !(UNIT_CATTRIBUTES(GetUnit(attacker->unit.index)) && CA_FEMALE))
+                    attacker->battleDefense += 2;
 #endif
             }
 

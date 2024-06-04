@@ -192,3 +192,8 @@ they're above the doubling threshold.[X]
 Slow Burn: [NL]
 +1 Hit and Avoid for[NL]
 each passing turn, up to 15.[X]
+
+## MSG_SKILL_BattleVeteran
+Battle Vet:[NL]
+Gain +1 damage and +5% Hit[NL]
+per 10 levels unit has.[X]

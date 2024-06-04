@@ -69,6 +69,7 @@ SID_QuickBurn
 SID_Technician
 SID_CatchingUp
 SID_SlowBurn
+SID_BattleVeteran
 
 // Weapon triangle
 SID_SwordBreaker
@@ -146,6 +147,7 @@ SID_PosSwap
 
 // Pre-phase
 SID_Renewal
+SID_Imbue
 SID_Forager
 
 // Range debuff
@@ -164,12 +166,17 @@ SID_Peacebringer
 SID_BloodTide
 SID_WhitePool
 SID_NightTide
+SID_Charisma
+SID_Gentilhomme
+SID_Demoiselle
+SID_LilysPoise
 SID_Daunt
 SID_SpurStr
 SID_SpurMag
 SID_SpurDef
 SID_SpurRes
 SID_SpurSpd
+SID_Solidarity
 
 SID_PowHone
 SID_MagHone
