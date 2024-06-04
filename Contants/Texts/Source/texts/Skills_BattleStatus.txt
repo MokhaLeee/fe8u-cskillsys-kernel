@@ -197,3 +197,8 @@ each passing turn, up to 15.[X]
 Battle Vet:[NL]
 Gain +1 damage and +5% Hit[NL]
 per 10 levels unit has.[X]
+
+## MSG_SKILL_StoneBody
+StoneBody:[N]
+If the user's CON is greater than the[NL]
+enemy, boost damage by the difference.[X]

@@ -1497,4 +1497,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Solidarity,
       },
 #endif
+
+#if (defined(SID_StoneBody) && (SID_StoneBody < MAX_SKILL_NUM))
+    [SID_StoneBody] = {
+        .desc = MSG_SKILL_StoneBody,
+        .icon = GFX_SkillIcon_StoneBody,
+    },
+#endif
 };
