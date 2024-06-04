@@ -1386,6 +1386,20 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_Gentilhomme) && (SID_Gentilhomme < MAX_SKILL_NUM)) 
+    [SID_Gentilhomme] = {
+         .desc = MSG_SKILL_Gentilhomme,
+         .icon = GFX_SkillIcon_Gentilhomme,
+      },
+#endif
+
+#if (defined(SID_Demoiselle) && (SID_Demoiselle < MAX_SKILL_NUM)) 
+    [SID_Demoiselle] = {
+         .desc = MSG_SKILL_Demoiselle,
+         .icon = GFX_SkillIcon_Demoiselle,
+      },
+#endif
+
 #if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
     [SID_Solidarity] = {
          .desc = MSG_SKILL_Solidarity,

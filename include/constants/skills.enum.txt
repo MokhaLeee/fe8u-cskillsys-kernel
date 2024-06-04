@@ -164,6 +164,8 @@ SID_Peacebringer
 SID_BloodTide
 SID_WhitePool
 SID_NightTide
+SID_Gentilhomme
+SID_Demoiselle
 SID_LilysPoise
 SID_Daunt
 SID_Solidarity
