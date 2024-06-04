@@ -90,3 +90,7 @@ to adjacent allies.[X]
 Night Tide:[NL]
 Grants +5 Def and Res
 to adjacent allies[X]
+
+## MSG_SKILL_Solidarity
+Solidarity:[NL]
+Critical and Critical Avoid +10 to adjacent allies.[X]

@@ -166,6 +166,7 @@ SID_WhitePool
 SID_NightTide
 SID_LilysPoise
 SID_Daunt
+SID_Solidarity
 
 SID_PowHone
 SID_MagHone

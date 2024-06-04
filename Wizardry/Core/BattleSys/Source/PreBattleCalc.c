@@ -665,6 +665,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 }
 #endif
 
+#if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Solidarity) && range1[i] == 1)
+                {
+                    attacker->battleCritRate += 10;
+                    attacker->battleDodgeRate += 10;
+                }
+#endif
+
 #if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Peacebringer) && range2[i] == 1)
                     attacker->battleAttack -= 2;
