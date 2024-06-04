@@ -684,7 +684,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_SpurStr) && range1[i] == 1)
                 {
                     if(!IsMagicAttack(attacker))
-                    attacker->battleAttack  += 4;
+                        attacker->battleAttack  += 4;
                 }
 #endif
 
@@ -692,7 +692,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_SpurMag) && range1[i] == 1)
                 {
                     if(IsMagicAttack(attacker))
-                    attacker->battleAttack  += 4;
+                        attacker->battleAttack  += 4;
                 }
 #endif
 
@@ -700,7 +700,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_SpurDef) && range1[i] == 1)
                 {
                     if(!IsMagicAttack(defender))
-                    attacker->battleDefense+= 4;
+                        attacker->battleDefense+= 4;
                 }
 #endif
 
@@ -708,7 +708,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_SpurRes) && range1[i] == 1)
                 {
                     if(IsMagicAttack(defender))
-                    attacker->battleDefense+= 4;
+                        attacker->battleDefense+= 4;
                 }
 #endif
 
