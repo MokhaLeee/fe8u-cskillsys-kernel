@@ -7,3 +7,8 @@ at the start of each turn.[X]
 Imbue:[NL]
 Recover HP equal to Magic[NL]
 at the start of each turn.[X]
+
+## MSG_SKILL_Forager
+Forager:[NL]
+Recover 20% HP each turn if[NL]
+on a Plain, Forest or Mountain.[X]

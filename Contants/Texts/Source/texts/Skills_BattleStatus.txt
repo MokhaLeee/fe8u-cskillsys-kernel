@@ -139,6 +139,32 @@ PoisonPoint[X]
 P-Point: Inflict poison[NL]
 on the opponent.[X]
 
+## MSG_SKILL_Merciless
+Merciless: [NL]
+Guaranteed critical hit[NL]
+against poisoined foes.[X]
+
+## MSG_SKILL_CriticalPierce
+CriticalPierce: [NL]
+Set the opponent's critical[NL]
+hit avoid rate to zero.[X]
+
+## MSG_SKILL_KillingMachine_NAME
+K-Machine[X]
+
+## MSG_SKILL_KillingMachine
+KillingMachine: [NL]
+Double this unit's[NL]
+total crit rate.[X]
+
+## MSG_SKILL_HeavyStrikes_NAME
+H-Strikes[X]
+
+## MSG_SKILL_HeavyStrikes
+HeavyStrikes:[NL]
+Add weapon weight[NL]
+to critical chance.[X]
+
 ## MSG_SKILL_QuickBurn
 Quick Burn: [NL]
 +15 Hit and Avoid.[NL]
@@ -151,3 +177,23 @@ S-Spectrum[X]
 StanceSpectrum:[NL]
 Grants +2 Atk, Spd, Def[NL]
 and Res if attacked.[X]
+
+## MSG_SKILL_Technician
+Technician: If the user is[NL]
+holding an E-ranked weapon,[NL]
+boost weapon damage by 50%.[X]
+
+## MSG_SKILL_CatchingUp
+CatchingUp: If foe doubles unit[NL]
+increase their attack by the amount[NL]
+they're above the doubling threshold.[X]
+
+## MSG_SKILL_SlowBurn
+Slow Burn: [NL]
++1 Hit and Avoid for[NL]
+each passing turn, up to 15.[X]
+
+## MSG_SKILL_BattleVeteran
+Battle Vet:[NL]
+Gain +1 damage and +5% Hit[NL]
+per 10 levels unit has.[X]

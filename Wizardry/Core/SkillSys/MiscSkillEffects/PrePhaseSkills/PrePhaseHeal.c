@@ -23,6 +23,15 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
         ret += GetUnitMagic(unit);
 #endif
 
+#if defined(SID_Forager) && (SID_Forager < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_Forager))
+    {
+        const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
+        if(terrainId == 1/* plain */ || terrainId == 12 /* forest */ || terrainId == 17 /* mountain */)
+            ret += Div(GetUnitMaxHp(unit) * 2, 10);
+    }
+#endif
+
     return ret;
 }
 

@@ -7,7 +7,10 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
+#define NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL 0
+
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
+extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
 /* LynJump */
@@ -54,7 +57,7 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
     attacker->battleDefense = status;
 }
 
-STATIC_DECLAR void PreBattleCalcInit(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcInit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     ComputeBattleUnitDefense(attacker, defender);
     ComputeBattleUnitAttack(attacker, defender);
@@ -71,7 +74,7 @@ STATIC_DECLAR void PreBattleCalcInit(struct BattleUnit * attacker, struct Battle
     attacker->battleSilencerRate = 0;
 }
 
-STATIC_DECLAR void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker->battleAttack < 0)
         attacker->battleAttack = 0;
@@ -113,7 +116,7 @@ STATIC_DECLAR void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleU
         attacker->battleSilencerRate = 0;
 }
 
-STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     struct Unit * unit = GetUnit(attacker->unit.index);
 
@@ -367,46 +370,10 @@ STATIC_DECLAR void PreBattleCalcSkills(struct BattleUnit * attacker, struct Batt
     default:
         break;
     }
-}
-
-STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-    struct Unit * unit = GetUnit(attacker->unit.index);
-
-    if (attacker->battleAttack > defender->battleAttack)
-    {
-#if (defined(SID_HeavyBlade) && (SID_HeavyBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBlade))
-            attacker->battleCritRate += 15;
-#endif
-
-#if (defined(SID_HeavyBladePlus) && (SID_HeavyBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBladePlus))
-            attacker->battleCritRate += 25;
-#endif
-    }
-
-    if (attacker->battleSpeed > defender->battleSpeed)
-    {
-#if (defined(SID_FlashingBlade) && (SID_FlashingBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBlade))
-            attacker->battleCritRate += 15;
-#endif
-
-#if (defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBladePlus))
-            attacker->battleCritRate += 25;
-#endif
-    }
 
 #if (defined(SID_BlueFlame) && (SID_BlueFlame < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_BlueFlame))
         attacker->battleAttack += 2;
-#endif
-
-#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_PoisonPoint))
-        defender->statusOut = UNIT_STATUS_POISON;
 #endif
 
 #if (defined(SID_Frenzy) && (SID_Frenzy < MAX_SKILL_NUM))
@@ -438,16 +405,43 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
     }
 #endif
 
+#if (defined(SID_Merciless) && (SID_Merciless < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Merciless))
+    {
+        // Check if the defending unit has the poison status
+        if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
+            // If so, then set an arbitrary high value for crit to 'gurantee' it.
+            attacker->battleCritRate = 255;
+    }
+#endif
+
+#if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_CriticalPierce))
+        // Add the defender's critical avoid rate to the attacker's.
+        // Thus effectively 'negating' it.
+        attacker->battleCritRate += defender->battleDodgeRate;
+#endif
+
+#if (defined(SID_KillingMachine) && (SID_KillingMachine < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_KillingMachine))
+        attacker->battleCritRate *= 2;
+#endif
+
+#if (defined(SID_HeavyStrikes) && (SID_HeavyStrikes < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_HeavyStrikes))
+        attacker->battleCritRate += GetItemWeight(attacker->weapon);
+#endif
+
 #if (defined(SID_QuickBurn) && (SID_QuickBurn < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_QuickBurn))
     {
         int turnNumber;
 
-        if(gPlaySt.chapterTurnNumber > 15) 
+        if(gPlaySt.chapterTurnNumber > 15)
         {
             turnNumber = 16;
         }
-        else 
+        else
         {
             turnNumber = gPlaySt.chapterTurnNumber;
         }
@@ -456,9 +450,97 @@ STATIC_DECLAR void PreBattlePostCalcSkills(struct BattleUnit * attacker, struct 
         attacker->battleAvoidRate += (15 - (turnNumber-1));
     }
 #endif
+
+#if (defined(SID_SlowBurn) && (SID_SlowBurn < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_SlowBurn))
+    {
+        int turnNumber;
+
+        if (gPlaySt.chapterTurnNumber > 15) 
+        {
+            turnNumber = 15;
+        }
+        else 
+        {
+            turnNumber = gPlaySt.chapterTurnNumber;
+        }
+
+        attacker->battleHitRate += turnNumber;
+        attacker->battleAvoidRate += turnNumber;
+    }
+#endif
+
+#if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Technician))
+    {
+        if (GetItemRequiredExp(attacker->weapon) < WPN_EXP_D)
+        {
+            int itemMight = GetItemMight(attacker->weapon);
+            attacker->battleAttack += itemMight / 2;
+        }
+    }
+#endif
+
+#if (defined(SID_BattleVeteran) && (SID_BattleVeteran < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_BattleVeteran))
+    {
+       u32 n_level = unit->level/10 + 2 * (UNIT_CATTRIBUTES(unit) && CA_PROMOTED);
+       attacker->battleHitRate += 5*n_level;
+       attacker->battleAttack += n_level;
+    }
+#endif
+
 }
 
-STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    /**
+     * Here we need to put some calculation at the end of the pre-battle calc.
+     * Thus the main part of calc should be positioned at berfore.
+     */
+    struct Unit * unit = GetUnit(attacker->unit.index);
+
+#if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_CatchingUp))
+        {
+            /**
+             * Check if the enemy unit doubles the skill holder
+             * if there's any additional speed above the doubling threshold
+             * add that to the skillholder's attack
+             */
+            if((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+                attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
+        }
+#endif
+
+    if (attacker->battleAttack > defender->battleAttack)
+    {
+#if (defined(SID_HeavyBlade) && (SID_HeavyBlade < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_HeavyBlade))
+            attacker->battleCritRate += 15;
+#endif
+
+#if (defined(SID_HeavyBladePlus) && (SID_HeavyBladePlus < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_HeavyBladePlus))
+            attacker->battleCritRate += 25;
+#endif
+    }
+
+    if (attacker->battleSpeed > defender->battleSpeed)
+    {
+#if (defined(SID_FlashingBlade) && (SID_FlashingBlade < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_FlashingBlade))
+            attacker->battleCritRate += 15;
+#endif
+
+#if (defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_FlashingBladePlus))
+            attacker->battleCritRate += 25;
+#endif
+    }
+}
+
+void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const struct Vec2 vec_range[24] = {
                                       { 0, -3},
@@ -522,8 +604,12 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
 
         if (AreUnitsAllied(attacker->unit.index, unit->index))
         {
+#if NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL
             /* Fasten pre-battle calc */
-            if (!(gBattleStats.config & BATTLE_CONFIG_SIMULATE))
+            if (gBattleStats.config & BATTLE_CONFIG_REAL)
+#else
+            if (1)
+#endif
             {
                 /* Buffs */
 #if (defined(SID_Bond) && (SID_Bond < MAX_SKILL_NUM))
@@ -555,10 +641,60 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
                 }
 #endif
 
+#if (defined(SID_LilysPoise) && (SID_LilysPoise < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_LilysPoise) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 1;
+                    attacker->battleDefense += 3;
+                }
+#endif
+
+
+#if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_BloodTide) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleHitRate += 5;
+                }
+#endif
+
+#if (defined(SID_WhitePool) && (SID_WhitePool < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_WhitePool) && range1[i] == 1)
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleSpeed += 5;
+                }
+#endif
+
+#if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_NightTide) && range1[i] == 1)
+                {
+                    attacker->battleDefense += 5;
+
+                }
+#endif
+
+#if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Solidarity) && range1[i] == 1)
+                {
+                    attacker->battleCritRate += 10;
+                    attacker->battleDodgeRate += 10;
+                }
+#endif
+
 #if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
                 if (SkillTester(unit, SID_Peacebringer) && range2[i] == 1)
                     attacker->battleAttack -= 2;
+#endif
 
+#if (defined(SID_Gentilhomme) && (SID_Gentilhomme < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Gentilhomme) && range2[i] == 1 && (UNIT_CATTRIBUTES(GetUnit(attacker->unit.index)) && CA_FEMALE))
+                    attacker->battleDefense += 2;
+#endif
+
+#if (defined(SID_Demoiselle) && (SID_Demoiselle < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Demoiselle) && range2[i] == 1 && !(UNIT_CATTRIBUTES(GetUnit(attacker->unit.index)) && CA_FEMALE))
+                    attacker->battleDefense += 2;
 #endif
             }
 
@@ -573,8 +709,12 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
         }
         else
         {
+#if NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL
             /* Fasten pre-battle calc */
-            if (!(gBattleStats.config & BATTLE_CONFIG_SIMULATE))
+            if (gBattleStats.config & BATTLE_CONFIG_REAL)
+#else
+            if (1)
+#endif
             {
                 /* Debuff */
 #if (defined(SID_Anathema) && (SID_Anathema < MAX_SKILL_NUM))
@@ -582,6 +722,14 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
                 {
                     attacker->battleAvoidRate -= 10;
                     attacker->battleDodgeRate -= 10;
+                }
+#endif
+
+#if (defined(SID_Daunt) && (SID_Daunt < MAX_SKILL_NUM))
+                if (SkillTester(unit, SID_Daunt) && range3[i] == 1)
+                {
+                    attacker->battleHitRate -= 5;
+                    attacker->battleCritRate -= 5;
                 }
 #endif
 
@@ -695,7 +843,7 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
     {}
 
 #ifdef CONFIG_BATTLE_SURROUND
-    if (attacker == &gBattleTarget)
+    if (attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
     {
         /* Flyer in outdoor environments are not affected by this effect (todo) */
         if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FLYER) || (0))
@@ -723,40 +871,19 @@ STATIC_DECLAR void PreBattlePostCalcRangeDebuffs(struct BattleUnit * attacker, s
 #endif /* CONFIG_BATTLE_SURROUND */
 }
 
-STATIC_DECLAR void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (UNIT_CATTRIBUTES(&defender->unit) & CA_BOSS)
         attacker->battleSilencerRate -= 25;
 }
 
-STATIC_DECLAR void PreBattleCalcPad(struct BattleUnit * attacker, struct BattleUnit * defender) {}
-
-STATIC_DECLAR const PreBattleCalcFunc PreBattleCalcFuncs[] = {
-    PreBattleCalcInit,
-
-    /* Usr defined funcs */
-    PreBattleCalcSilencerRate,
-    PreBattleCalcWeaponTriangle,
-    PreBattleCalcSkills,
-    PreBattleCalcLegendSkills,
-    PreBattleCalcDebuffs,
-    PreBattleCalcCombatArt,
-    PreBattlePostCalcRangeDebuffs,
-
-#ifdef CONFIG_USE_STAT_DEBUFF
-    PreBattleCalcStatDebuffs,
-#endif
-
-    PreBattlePostCalcSkills,
-    PreBattleCalcEnd,
-    PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, PreBattleCalcPad, NULL
-};
+void PreBattleCalcPad(struct BattleUnit * attacker, struct BattleUnit * defender) {}
 
 /* LynJump */
 void ComputeBattleUnitStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const PreBattleCalcFunc * it;
-    for (it = PreBattleCalcFuncs; *it; it++)
+    for (it = gpPreBattleCalcFuncs; *it; it++)
         (*it)(attacker, defender);
 }
 
