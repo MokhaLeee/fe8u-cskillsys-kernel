@@ -494,8 +494,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StoneBody) && (SID_StoneBody < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_StoneBody))
     {
-        int attackerCon = UNIT_CON(unit);
-        int defenderCon = UNIT_CON(unit_def);
+        int attackerCon = ConGetter(unit);
+        int defenderCon = ConGetter(unit_def);
 
         if(attackerCon > defenderCon)
         {
