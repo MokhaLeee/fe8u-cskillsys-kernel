@@ -1497,4 +1497,18 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Solidarity,
       },
 #endif
+
+#if (defined(SID_Chivalry) && (SID_Chivalry < MAX_SKILL_NUM)) 
+    [SID_Chivalry] = {
+         .desc = MSG_SKILL_Chivalry,
+         .icon = GFX_SkillIcon_Chivalry,
+      },
+#endif
+
+#if (defined(SID_Pragmatic) && (SID_Pragmatic < MAX_SKILL_NUM)) 
+    [SID_Pragmatic] = {
+         .desc = MSG_SKILL_Pragmatic,
+         .icon = GFX_SkillIcon_Pragmatic,
+      },
+#endif
 };

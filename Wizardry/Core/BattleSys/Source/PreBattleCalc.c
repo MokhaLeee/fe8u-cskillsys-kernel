@@ -499,6 +499,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
      * Thus the main part of calc should be positioned at berfore.
      */
     struct Unit * unit = GetUnit(attacker->unit.index);
+    struct Unit * defender_unit = GetUnit(defender->unit.index);
 
 #if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_CatchingUp))
@@ -537,7 +538,29 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
         if (SkillTester(unit, SID_FlashingBladePlus))
             attacker->battleCritRate += 25;
 #endif
+
     }
+
+    if (defender_unit->curHP == defender_unit->maxHP)
+    {
+#if (defined(SID_Chivalry) && (SID_Chivalry < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Chivalry))
+        {
+            attacker->battleDefense += 2;
+            attacker->battleAttack += 2;
+        }
+#endif
+    }
+    else
+    {
+#if (defined(SID_Pragmatic) && (SID_Pragmatic < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Pragmatic))
+        {
+            attacker->battleDefense += 1;
+            attacker->battleAttack += 3;
+        }
+    }
+#endif
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
