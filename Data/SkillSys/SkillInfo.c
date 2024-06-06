@@ -1511,4 +1511,18 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Pragmatic,
       },
 #endif
+
+#if (defined(SID_WindDisciple) && (SID_WindDisciple < MAX_SKILL_NUM)) 
+    [SID_WindDisciple] = {
+         .desc = MSG_SKILL_WindDisciple,
+         .icon = GFX_SkillIcon_WindDisciple,
+      },
+#endif
+
+#if (defined(SID_Perfectionist) && (SID_Perfectionist < MAX_SKILL_NUM)) 
+    [SID_Perfectionist] = {
+         .desc = MSG_SKILL_Perfectionist,
+         .icon = GFX_SkillIcon_Perfectionist,
+      },
+#endif
 };
