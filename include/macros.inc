@@ -9,8 +9,6 @@
     .SIZE \name, .-\name
 .ENDM
 
-.set NULL, 0
-
 .MACRO THUMB_FUNC_START name
     .ALIGN 2, 0
     .GLOBAL \name

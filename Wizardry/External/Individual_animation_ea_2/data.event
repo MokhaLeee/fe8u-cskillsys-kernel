@@ -4,7 +4,7 @@ BYTE 0x01  //Unit: Eirika
 BYTE 0x01  //Class: Lord
 BYTE 0x00  //dummy
 BYTE 0x00  //dummy
-WORD 0x092567B0 // 0x088AEFFC //Eirika Master Load Battle Animation.
+WORD 0x088AEFFC //Eirika Master Load Battle Animation.
 
 BYTE 0x00  //Unit: term data
 BYTE 0x00  //dummy
