@@ -15,6 +15,7 @@ FE8_SYM  := $(LIB_DIR)/reference/fireemblem8.sym
 
 CONFIG_DIR := $(MK_DIR)include/Configs
 EXT_REF    := $(CONFIG_DIR)/usr-defined.s
+RAM_REF    := $(CONFIG_DIR)/config-memmap.s
 
 WIZARDRY_DIR := $(MK_DIR)Wizardry
 CONTANTS_DIR := $(MK_DIR)Contants
@@ -106,11 +107,13 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
 	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
+	@nm $(RAM_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) >> $(CHAX_REFS)
 
 	@echo "[GEN]	$(CHAX_REFE)"
 	@echo '// Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFE)
 	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
+	@nm $(RAM_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
 	@echo "PUSH" >> $(CHAX_REFE)
 	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
@@ -138,7 +141,7 @@ ASFLAGS := $(ARCH) $(INC_FLAG)
 CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
 SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 
-LYN_REF := $(EXT_REF:.s=.o) $(FE8_REF)
+LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 
 %.lyn.event: %.o $(LYN_REF)
 	@echo "[LYN]	$@"

@@ -36,7 +36,7 @@ Free space at `0x0EFB2E0` is used to [insert UTF8 characters](../Fonts/Fonts.eve
 
 # RAM space
 
-RAM space distribution is configured in [usr-defined.s](../include/Configs/usr-defined.s)
+RAM space distribution is configured in [config-memmap.s](../include/Configs/config-memmap.s)
 
 | Address    | Size    | Usage
 | -------    | ------  | -----
@@ -44,7 +44,7 @@ RAM space distribution is configured in [usr-defined.s](../include/Configs/usr-d
 | 0x0203F000 | 0x1000  | ***reserved for DEMO***
 
 Since all source codes are all compiled at once, CHAX can offer a better Free-RAM-Space control method.
-Free-RAM-Space, unused memory from vanilla is collected by wizardries and now can be refered by [StanH's DOC](https://github.com/StanHash/DOC/blob/master/FREE-RAM-SPACE.md). Here we mainly use space start at `0x02026E30` with size `0x2028`, which is the debug print buffer in vanilla (and unused). They are all defined in [usr-defined.s](../include/Configs/usr-defined.s).
+Free-RAM-Space, unused memory from vanilla is collected by wizardries and now can be refered by [StanH's DOC](https://github.com/StanHash/DOC/blob/master/FREE-RAM-SPACE.md). Here we mainly use space start at `0x02026E30` with size `0x2028`, which is the debug print buffer in vanilla (and unused).
 
 In kernel, free-ram space is alloced from the bottom to the top:
 
@@ -65,21 +65,13 @@ Here is an example to alloc ram spaces in kernel:
 
 Suppose you want a 4 Byte RAM space (`u8 NewAlloc4Bytes[4]`)
 
-1. Get into [usr-defined.ref.s](../include/Configs/usr-defined.s), find `gKernelUsedFreeRamSpaceTop` definition, assume that the old allocation is:
-```
-SET_DATA gKernelUsedFreeRamSpaceTop, some_used_space
-```
+1. Get into[config-memmap.s](../include/Configs/config-memmap.s)
+2. Insert new allocation
 
-2. Insert new allocation to the top:
 ```
-SET_DATA NewAlloc4Bytes, some_used_space - 4 @ since NewAlloc4Bytes is 4 Bytes
+_kernel_malloc NewAlloc4Bytes, 4
 ```
+> [!WARNING]
+> Make sure that the allocated space should be 32bits alligned
 
-**<!> Make sure that the allocated space should be 32bits alligned**.
-
-3. Update `gKernelUsedFreeRamSpaceTop`
-```
-SET_DATA gKernelUsedFreeRamSpaceTop, NewAlloc4Bytes
-```
-
-4. Declare such variable in your own C file, `extern u8 NewAlloc4Bytes[4];`
+3. Declare such variable in your own C file, `extern u8 NewAlloc4Bytes[4];`
