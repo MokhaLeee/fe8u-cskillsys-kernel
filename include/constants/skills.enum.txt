@@ -74,6 +74,7 @@ SID_Perfectionist
 SID_WindDisciple
 SID_Pragmatic
 SID_Chivalry
+SID_FieryBlood
 
 // Weapon triangle
 SID_SwordBreaker

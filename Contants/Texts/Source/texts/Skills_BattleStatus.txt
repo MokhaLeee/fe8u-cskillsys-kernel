@@ -217,3 +217,11 @@ when HP is not at max.[X]
 Perfectionist:[NL]
 +15 Hit and Avoid[NL]
 when user's HP is at maximum.[X]
+
+## MSG_SKILL_FieryBlood_NAME
+F-Blood.[X]
+
+## MSG_SKILL_FieryBlood
+FieryBlood:[NL]
++4 strength if HP[NL]
+is not at max.[X]

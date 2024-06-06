@@ -1525,4 +1525,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Perfectionist,
       },
 #endif
+
+#if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
+    [SID_FieryBlood] = {
+         .name = MSG_SKILL_FieryBlood_NAME,
+         .desc = MSG_SKILL_FieryBlood,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
 };
