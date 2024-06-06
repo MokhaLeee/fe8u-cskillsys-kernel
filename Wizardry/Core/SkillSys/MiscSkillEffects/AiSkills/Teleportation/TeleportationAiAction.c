@@ -55,7 +55,10 @@ void AiAction_Teleportation(ProcPtr parent)
     gActionData.xMove = gAiDecision.xTarget;
     gActionData.yMove = gAiDecision.yTarget;
 
-    Action_Teleportation(parent);
+    gActionData.subjectIndex = gActiveUnit->index;
+    gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_Teleportation;
+
+    ApplyUnitAction(parent);
 }
 
 /* AiActionConf:idle */
