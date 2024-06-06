@@ -1,13 +1,17 @@
-.include "macros.inc"
+.macro SET_DATA name, value
+    .global \name
+    .type \name, object
+    .set \name, \value
+.endm
 
-dat 0x02026E30, FreeRamSpaceTop
-dat 0x02028E58, FreeRamSpaceBottom
-dat FreeRamSpaceBottom, gKernelUsedFreeRamSpaceTop
+SET_DATA FreeRamSpaceTop, 0x02026E30
+SET_DATA FreeRamSpaceBottom, 0x02028E58
+SET_DATA gKernelUsedFreeRamSpaceTop, FreeRamSpaceBottom
 
 .macro _kernel_malloc name, size
     /* Assert(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop) */
     .set gKernelUsedFreeRamSpaceTop, gKernelUsedFreeRamSpaceTop - \size
-    dat gKernelUsedFreeRamSpaceTop, \name
+    SET_DATA \name, gKernelUsedFreeRamSpaceTop
 .endm
 
 /* From the bottom to the top */
