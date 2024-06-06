@@ -170,14 +170,6 @@ Quick Burn: [NL]
 +15 Hit and Avoid.[NL]
 This bonus decreases each turn.[X]
 
-## MSG_SKILL_StanceSpectrum_NAME
-S-Spectrum[X]
-
-## MSG_SKILL_StanceSpectrum
-StanceSpectrum:[NL]
-Grants +2 Atk, Spd, Def[NL]
-and Res if attacked.[X]
-
 ## MSG_SKILL_Technician
 Technician: If the user is[NL]
 holding an E-ranked weapon,[NL]
@@ -217,3 +209,18 @@ when HP is not at max.[X]
 Perfectionist:[NL]
 +15 Hit and Avoid[NL]
 when user's HP is at maximum.[X]
+
+## MSG_SKILL_StrongRiposte_NAME
+S-Riposte[X]
+
+## MSG_SKILL_StrongRiposte
+Strong Riposte:[NL]
+When under attack, damage +3.[X]
+
+## MSG_SKILL_Patience
+Patience:[NL]
+When under attack, avoid +10.[X]
+
+## MSG_SKILL_Pursuit
+Pursuit:[NL]
+When under attack, attack speed +2.[X]

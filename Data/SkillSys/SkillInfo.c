@@ -1525,4 +1525,26 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Perfectionist,
       },
 #endif
+
+#if (defined(SID_StrongRiposte) && (SID_StrongRiposte < MAX_SKILL_NUM)) 
+    [SID_StrongRiposte] = {
+         .name = MSG_SKILL_StrongRiposte_NAME,
+         .desc = MSG_SKILL_StrongRiposte,
+         .icon = GFX_SkillIcon_StrongRiposte,
+      },
+#endif
+
+#if (defined(SID_Patience) && (SID_Patience < MAX_SKILL_NUM)) 
+    [SID_Patience] = {
+         .desc = MSG_SKILL_Patience,
+         .icon = GFX_SkillIcon_Patience,
+      },
+#endif
+
+#if (defined(SID_Pursuit) && (SID_Pursuit < MAX_SKILL_NUM)) 
+    [SID_Pursuit] = {
+         .desc = MSG_SKILL_Pursuit,
+         .icon = GFX_SkillIcon_Pursuit,
+      },
+#endif
 };
