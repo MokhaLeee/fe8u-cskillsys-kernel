@@ -538,7 +538,6 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
         if (SkillTester(unit, SID_FlashingBladePlus))
             attacker->battleCritRate += 25;
 #endif
-
     }
 
     if (defender_unit->curHP == defender_unit->maxHP)
@@ -551,6 +550,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
         }
 #endif
     }
+
     else
     {
 #if (defined(SID_Pragmatic) && (SID_Pragmatic < MAX_SKILL_NUM))
@@ -559,8 +559,30 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
             attacker->battleDefense += 1;
             attacker->battleAttack += 3;
         }
-    }
 #endif
+    }
+    
+    if (unit->curHP == unit->maxHP)
+    {
+#if (defined(SID_Perfectionist) && (SID_Perfectionist < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Perfectionist))
+        {
+            attacker->battleHitRate += 15;
+            attacker->battleAvoidRate += 15;
+        }
+#endif
+    }
+
+    else
+    {
+#if (defined(SID_WindDisciple) && (SID_WindDisciple < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_WindDisciple))
+        {
+            attacker->battleHitRate += 10;
+            attacker->battleAvoidRate += 10;
+        }
+#endif
+    }
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
