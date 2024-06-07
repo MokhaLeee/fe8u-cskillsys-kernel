@@ -41,6 +41,10 @@ CLEAN_BUILD :=
 # = Tools =
 # =========
 
+ifeq ($(OS),Windows_NT)
+	$(error "need linux environment, abort)
+endif
+
 ifeq ($(strip $(DEVKITPRO)),)
 	$(error "Please set DEVKITPRO in your environment. export DEVKITPRO=<path to>devkitpro)
 endif
@@ -54,33 +58,21 @@ ifneq (,$(TOOLCHAIN))
 	export PATH := $(TOOLCHAIN)/bin:$(PATH)
 endif
 
-ifeq ($(OS),Windows_NT)
-	EXE := .exe
-else
-	EXE :=
-endif
-
-ifeq ($(shell python3 -c 'import sys; print(int(sys.version_info[0] > 2))'),1)
-	PYTHON3 := python3
-else
-	PYTHON3 := python
-endif
-
 PREFIX  ?= arm-none-eabi-
 CC      := $(PREFIX)gcc
 AS      := $(PREFIX)as
 OBJCOPY := $(PREFIX)objcopy
 
 EA_DIR            := $(TOOL_DIR)/EventAssembler
-EA                := $(EA_DIR)/ColorzCore$(EXE)
-PARSEFILE         := $(EA_DIR)/Tools/ParseFile$(EXE)
-PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp$(EXE)
-COMPRESS          := $(EA_DIR)/Tools/compress$(EXE)
-LYN               := $(EA_DIR)/Tools/lyn$(EXE) -longcalls
-EA_DEP            := $(EA_DIR)/ea-dep$(EXE)
+EA                := $(EA_DIR)/ColorzCore
+PARSEFILE         := $(EA_DIR)/Tools/ParseFile
+PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
+COMPRESS          := $(EA_DIR)/Tools/compress
+LYN               := $(EA_DIR)/Tools/lyn -longcalls
+EA_DEP            := $(EA_DIR)/ea-dep
 
-TEXT_PROCESS      := $(PYTHON3) $(TOOL_DIR)/FE-PyTools/text-process-classic.py
-GRIT              := $(DEVKITPRO)/tools/bin/grit$(EXE)
+TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
+GRIT              := $(DEVKITPRO)/tools/bin/grit
 
 # ========
 # = Main =
@@ -105,16 +97,16 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
-	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
-	@nm $(RAM_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
-	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) >> $(CHAX_REFS)
+	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
+	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
+	@python3 $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) >> $(CHAX_REFS)
 
 	@echo "[GEN]	$(CHAX_REFE)"
 	@echo '// Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFE)
-	@nm $(EXT_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
-	@nm $(RAM_REF:.s=.o) | $(PYTHON3) $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
+	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
+	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
 	@echo "PUSH" >> $(CHAX_REFE)
-	@$(PYTHON3) $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
+	@python3 $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
@@ -228,7 +220,7 @@ CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES
 # ============
 
 EFX_ANIM_DIR := $(MK_DIR)Contants/EfxAnim
-EFX_ANIMTOR  := $(PYTHON3) $(EFX_ANIM_DIR)/Scripts/efx-anim-creator.py
+EFX_ANIMTOR  := python3 $(EFX_ANIM_DIR)/Scripts/efx-anim-creator.py
 
 EFX_SCRIPTS  := $(shell find $(HACK_DIRS) -type f -name '*.efx.txt')
 EFX_SCR_DEPS := $(EFX_SCRIPTS:.efx.txt=.efx.txt.d)
@@ -280,8 +272,8 @@ enum: $(SKILLS_ENUM_HEADER)
 
 $(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_CONFIG)
 	@echo "[GEN]	$(SKILLS_ENUM_HEADER) $(SKILLS_ENUM_COMBO)"
-	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2h.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_HEADER)
-	@$(PYTHON3) $(TOOL_DIR)/scripts/enum2combo.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_COMBO)
+	@python3 $(TOOL_DIR)/scripts/enum2h.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_HEADER)
+	@python3 $(TOOL_DIR)/scripts/enum2combo.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_COMBO)
 
 PRE_BUILD += enum
 CLEAN_FILES += $(SKILLS_ENUM_HEADER) $(SKILLS_ENUM_COMBO)
