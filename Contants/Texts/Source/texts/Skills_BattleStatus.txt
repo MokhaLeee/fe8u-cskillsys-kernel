@@ -258,3 +258,4 @@ K-Fighter[X]
 Keen Fighter:[NL]
 Unit takes 75% damage[NL]
 if the opponent can double.[X]
+

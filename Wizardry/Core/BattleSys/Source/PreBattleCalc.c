@@ -11,7 +11,6 @@
 
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
-extern bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target);
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
 /* LynJump */
@@ -429,7 +428,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         // Check if the defending unit has the poison status
         if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
             // If so, then set an arbitrary high value for crit to 'gurantee' it.
-            attacker->battleCritRate = 255;
+            attacker->battleCritRate = INT16_MAX;
     }
 #endif
 
@@ -604,7 +603,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
 
 #if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_Hawkeye))
-           attacker->battleHitRate = 255;
+           attacker->battleHitRate = INT16_MAX;
 #endif
 
 }

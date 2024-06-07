@@ -221,24 +221,28 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
     if (gBattleStats.damage > 0)
     {
-#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
-        if (SkillTester(unit_def, SID_KeenFighter))
-        {
-            if (CheckCanTwiceAttackOrder(defender,attacker))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-                gBattleStats.damage = gBattleStats.damage*3/4;
-            }
-        }
-#endif
-
 #if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
         if (SkillTester(unit_def, SID_DragonSkin))
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
             gBattleStats.damage = gBattleStats.damage/2;
         }
+#else
+        if (0)
 #endif
+        else
+        {
+#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
+            if (SkillTester(unit_def, SID_KeenFighter))
+            {
+                if (CheckCanTwiceAttackOrder(attacker,defender))
+                {
+                    RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
+                    gBattleStats.damage = gBattleStats.damage*3/4;
+                }
+            }
+#endif
+        }
     }
     /* Post calc */
     if (gBattleStats.damage > BATTLE_MAX_DAMAGE)
