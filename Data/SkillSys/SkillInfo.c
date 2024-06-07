@@ -1564,6 +1564,29 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM)) 
+    [SID_DragonSkin] = {
+         .name = MSG_SKILL_DragonSkin_NAME,
+         .desc = MSG_SKILL_DragonSkin,
+         .icon = GFX_SkillIcon_DragonSkin,
+      },
+#endif
+
+#if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM)) 
+    [SID_Hawkeye] = {
+         .desc = MSG_SKILL_Hawkeye,
+         .icon = GFX_SkillIcon_Hawkeye,
+      },
+#endif
+
+#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM)) 
+    [SID_KeenFighter] = {
+         .name = MSG_SKILL_KeenFighter_NAME,
+         .desc = MSG_SKILL_KeenFighter,
+         .icon = GFX_SkillIcon_KeenFighter,
+      },
+#endif
+
 #if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM)) 
     [SID_FireBoost] = {
          .desc = MSG_SKILL_FireBoost,

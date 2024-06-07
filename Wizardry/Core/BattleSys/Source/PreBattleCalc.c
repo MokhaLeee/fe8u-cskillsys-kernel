@@ -428,7 +428,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         // Check if the defending unit has the poison status
         if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
             // If so, then set an arbitrary high value for crit to 'gurantee' it.
-            attacker->battleCritRate = 255;
+            attacker->battleCritRate = INT16_MAX;
     }
 #endif
 
@@ -479,7 +479,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         int attackerCon = ConGetter(unit);
         int defenderCon = ConGetter(unit_def);
 
-        if(attackerCon > defenderCon)
+        if (attackerCon > defenderCon)
             attacker->battleAttack += (attackerCon - defenderCon);
     }
 #endif
@@ -609,7 +609,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
              * if there's any additional speed above the doubling threshold
              * add that to the skillholder's attack
              */
-            if((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+            if ((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
                 attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
         }
 #endif
@@ -639,6 +639,12 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
             attacker->battleCritRate += 25;
 #endif
     }
+
+#if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Hawkeye))
+           attacker->battleHitRate = INT16_MAX;
+#endif
+
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -752,9 +758,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
 #if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
                     if (SkillTester(unit, SID_NightTide))
-                    {
                         attacker->battleDefense += 5;
-                    }
 #endif
 
 #if (defined(SID_SpurStr) && (SID_SpurStr < MAX_SKILL_NUM))
@@ -791,9 +795,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
 #if (defined(SID_SpurSpd) && (SID_SpurSpd < MAX_SKILL_NUM))
                     if (SkillTester(unit, SID_SpurSpd))
-                    {
                         attacker->battleSpeed += 4;
-                    }
 #endif
 
 #if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))

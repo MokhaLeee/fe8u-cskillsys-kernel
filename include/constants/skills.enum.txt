@@ -70,6 +70,9 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_KeenFighter
+SID_Hawkeye
+SID_DragonSkin
 SID_WaterBoost
 SID_EarthBoost
 SID_WindBoost
