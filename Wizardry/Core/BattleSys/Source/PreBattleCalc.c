@@ -269,36 +269,29 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_StanceSpectrum) && (SID_StanceSpectrum < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_StanceSpectrum))
-    {
-            attacker->battleAttack += 2;
-            attacker->battleSpeed += 2;
-            attacker->battleDefense += 2;
-    }
+        if (SkillTester(unit, SID_StanceSpectrum))
+        {
+                attacker->battleAttack += 2;
+                attacker->battleSpeed += 2;
+                attacker->battleDefense += 2;
+        }
 #endif
 
 // Non-Stance defender skill
 #if (defined(SID_StrongRiposte) && (SID_StrongRiposte < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_StrongRiposte))
-    {
-            attacker->battleAttack += 3;
-    }
+        if (SkillTester(unit, SID_StrongRiposte))
+                attacker->battleAttack += 3;
 #endif
 
 #if (defined(SID_Patience) && (SID_Patience < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_Patience))
-    {
-            attacker->battleAvoidRate += 10;
-    }
+        if (SkillTester(unit, SID_Patience))
+                attacker->battleAvoidRate += 10;
 #endif
 
 #if (defined(SID_Pursuit) && (SID_Pursuit < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_Pursuit))
-    {
-            attacker->battleSpeed += 2;
-    }
+        if (SkillTester(unit, SID_Pursuit))
+                attacker->battleSpeed += 2;
 #endif
-
     }
 
     /* Misc */
@@ -462,13 +455,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         int turnNumber;
 
         if (gPlaySt.chapterTurnNumber > 15)
-        {
             turnNumber = 16;
-        }
         else
-        {
             turnNumber = gPlaySt.chapterTurnNumber;
-        }
 
         attacker->battleHitRate += (15 - (turnNumber-1));
         attacker->battleAvoidRate += (15 - (turnNumber-1));
@@ -479,15 +468,10 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(unit, SID_SlowBurn))
     {
         int turnNumber;
-
         if (gPlaySt.chapterTurnNumber > 15) 
-        {
             turnNumber = 15;
-        }
         else 
-        {
             turnNumber = gPlaySt.chapterTurnNumber;
-        }
 
         attacker->battleHitRate += turnNumber;
         attacker->battleAvoidRate += turnNumber;
@@ -521,17 +505,13 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         int defenderCon = ConGetter(unit_def);
 
         if(attackerCon > defenderCon)
-        {
             attacker->battleAttack += (attackerCon - defenderCon);
-        }
     }
 #endif
 
 #if (defined(SID_CriticalForce) && (SID_CriticalForce < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_CriticalForce))
-    {
        attacker->battleCritRate += unit->skl;
-    }
 #endif
 
     if (GetUnitCurrentHp(unit_def) == GetUnitMaxHp(unit_def))
@@ -829,9 +809,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
 #if (defined(SID_DriveSpd) && (SID_DriveSpd < MAX_SKILL_NUM))
                     if (SkillTester(unit, SID_DriveSpd))
-                    {
                         attacker->battleSpeed += 4;
-                    }
 #endif
 
 #if (defined(SID_Inspiration) && (SID_Inspiration < MAX_SKILL_NUM))
@@ -967,9 +945,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
 #if (defined(SID_Focus) && (SID_Focus < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_Focus))
-        {
             attacker->battleCritRate += 10;
-        }
 #endif
     }
 
