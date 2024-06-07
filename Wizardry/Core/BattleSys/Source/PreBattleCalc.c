@@ -275,6 +275,29 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             attacker->battleDefense += 2;
     }
 #endif
+
+// Non-Stance defender skill
+#if (defined(SID_StrongRiposte) && (SID_StrongRiposte < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_StrongRiposte))
+    {
+            attacker->battleAttack += 3;
+    }
+#endif
+
+#if (defined(SID_Patience) && (SID_Patience < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Patience))
+    {
+            attacker->battleAvoidRate += 10;
+    }
+#endif
+
+#if (defined(SID_Pursuit) && (SID_Pursuit < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Pursuit))
+    {
+            attacker->battleSpeed += 2;
+    }
+#endif
+
     }
 
     /* Misc */
@@ -545,6 +568,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
         if (SkillTester(unit, SID_FlashingBladePlus))
             attacker->battleCritRate += 25;
 #endif
+
     }
 
     if (defender_unit->curHP == defender_unit->maxHP)
@@ -568,7 +592,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
         }
 #endif
     }
-    
+
     if (unit->curHP == unit->maxHP)
     {
 #if (defined(SID_Perfectionist) && (SID_Perfectionist < MAX_SKILL_NUM))
