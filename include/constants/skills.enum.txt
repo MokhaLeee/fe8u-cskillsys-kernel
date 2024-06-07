@@ -73,6 +73,10 @@ SID_BattleVeteran
 SID_KeenFighter
 SID_Hawkeye
 SID_DragonSkin
+SID_WaterBoost
+SID_EarthBoost
+SID_WindBoost
+SID_FireBoost
 SID_StoneBody
 SID_CriticalForce
 SID_Pursuit

@@ -11,68 +11,52 @@ gHpGetters:
 
 gPowGetters:
     POIN PowGetterWeaponBonus PowGetterSkills PowGetterDebuff
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN PowGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 
 gMagGetters:
     POIN MagGetterSkills MagGetterDebuff
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN MagGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 
 gSklGetters:
     POIN SklGetterWeaponBonus SklGetterSkills SklGetterDebuff
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN SklGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 
 gSpdGetters:
     POIN SpdGetterWeaponBonus SpdGetterSkills SpdGetterDebuff
     POIN SpdGetterLegendSkills
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN SpdGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 
 gLckGetters:
     POIN LckGetterWeaponBonus LckGetterSkills LckGetterDebuff
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN LckGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 
 gDefGetters:
     POIN DefGetterWeaponBonus DefGetterSkills DefGetterDebuff
     POIN DefGetterLegendSkills
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN DefGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 
 gResGetters:
     POIN ResGetterWeaponBonus ResGetterSkills ResGetterDebuff
     POIN ResGetterLegendSkills
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN ResGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 
 gMovGetters:
     POIN MovGetterDebuff
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN MovGetterStatDebuff
-#endif
     POIN StatusGetterCheckCpas
     MSG_END
 

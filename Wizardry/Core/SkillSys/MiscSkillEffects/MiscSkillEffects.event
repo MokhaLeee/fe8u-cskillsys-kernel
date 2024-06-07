@@ -16,10 +16,8 @@
 #include "LegendarySkills/LegendEffect.lyn.event"
 
 #include "PrePhaseSkills/PrePhaseHeal.lyn.event"
-#ifdef CONFIG_USE_STAT_DEBUFF
-    #include "PrePhaseSkills/AversaNight.lyn.event"
-    #include "PrePhaseSkills/HoneFortify.lyn.event"
-#endif /* CONFIG_USE_STAT_DEBUFF */
+#include "PrePhaseSkills/AversaNight.lyn.event"
+#include "PrePhaseSkills/HoneFortify.lyn.event"
 #include "PrePhaseSkills/LynJump.event"
 
 #include "AiSkills/Teleportation.event"

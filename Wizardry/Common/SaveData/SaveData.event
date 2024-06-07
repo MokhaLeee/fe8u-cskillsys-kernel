@@ -99,18 +99,13 @@ gEmsSusChunks:
     EmsChunk($0020, SaveCombatArtStatus, LoadCombatArtStatus)
     EmsChunk($0008, SaveRandC, LoadRandC)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
-
-#ifdef CONFIG_USE_STAT_DEBUFF
     EmsChunk((51 + 50 + 8) * 4, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
-#endif /* CONFIG_USE_STAT_DEBUFF */
 
     EmsChunkEnd
 
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
-#ifdef CONFIG_USE_STAT_DEBUFF
     POIN StatDeuff_OnNewGameSave
-#endif
     WORD 0 0 0 0
 
 #include "SaveDataInternal.event"

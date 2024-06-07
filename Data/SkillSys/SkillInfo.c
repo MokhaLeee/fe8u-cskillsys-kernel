@@ -1586,4 +1586,32 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_KeenFighter,
       },
 #endif
+
+#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM)) 
+    [SID_FireBoost] = {
+         .desc = MSG_SKILL_FireBoost,
+         .icon = GFX_SkillIcon_FireBoost,
+      },
+#endif
+
+#if (defined(SID_WindBoost) && (SID_WindBoost < MAX_SKILL_NUM)) 
+    [SID_WindBoost] = {
+         .desc = MSG_SKILL_WindBoost,
+         .icon = GFX_SkillIcon_WindBoost,
+      },
+#endif
+
+#if (defined(SID_EarthBoost) && (SID_EarthBoost < MAX_SKILL_NUM)) 
+    [SID_EarthBoost] = {
+         .desc = MSG_SKILL_EarthBoost,
+         .icon = GFX_SkillIcon_EarthBoost,
+      },
+#endif
+
+#if (defined(SID_WaterBoost) && (SID_WaterBoost < MAX_SKILL_NUM)) 
+    [SID_WaterBoost] = {
+         .desc = MSG_SKILL_WaterBoost,
+         .icon = GFX_SkillIcon_WaterBoost,
+      },
+#endif
 };
