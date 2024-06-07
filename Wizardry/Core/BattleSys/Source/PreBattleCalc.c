@@ -449,35 +449,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         attacker->battleCritRate += GetItemWeight(attacker->weapon);
 #endif
 
-#if (defined(SID_QuickBurn) && (SID_QuickBurn < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_QuickBurn))
-    {
-        int turnNumber;
-
-        if (gPlaySt.chapterTurnNumber > 15)
-            turnNumber = 16;
-        else
-            turnNumber = gPlaySt.chapterTurnNumber;
-
-        attacker->battleHitRate += (15 - (turnNumber-1));
-        attacker->battleAvoidRate += (15 - (turnNumber-1));
-    }
-#endif
-
-#if (defined(SID_SlowBurn) && (SID_SlowBurn < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_SlowBurn))
-    {
-        int turnNumber;
-        if (gPlaySt.chapterTurnNumber > 15) 
-            turnNumber = 15;
-        else 
-            turnNumber = gPlaySt.chapterTurnNumber;
-
-        attacker->battleHitRate += turnNumber;
-        attacker->battleAvoidRate += turnNumber;
-    }
-#endif
-
 #if (defined(SID_Technician) && (SID_Technician < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Technician))
     {
@@ -555,6 +526,28 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         }
 #endif
     }
+}
+
+void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    int trun_num = gPlaySt.chapterTurnNumber;
+    int trun_num_suppl = trun_num > 15 ? 15 : trun_num;
+
+#if (defined(SID_QuickBurn) && (SID_QuickBurn < MAX_SKILL_NUM))
+    if (SkillTester(&attacker->unit, SID_QuickBurn))
+    {
+        attacker->battleHitRate += (15 - (trun_num_suppl - 1));
+        attacker->battleAvoidRate += (15 - (trun_num_suppl - 1));
+    }
+#endif
+
+#if (defined(SID_SlowBurn) && (SID_SlowBurn < MAX_SKILL_NUM))
+    if (SkillTester(&attacker->unit, SID_SlowBurn))
+    {
+        attacker->battleHitRate += trun_num_suppl;
+        attacker->battleAvoidRate += trun_num_suppl;
+    }
+#endif
 }
 
 void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)

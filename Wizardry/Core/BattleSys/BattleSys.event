@@ -23,6 +23,7 @@ PreBattleCalcFuncs:
 
     POIN PreBattleCalcSilencerRate PreBattleCalcWeaponTriangle PreBattleCalcSkills
     POIN PreBattleCalcLegendSkills PreBattleCalcDebuffs PreBattleCalcCombatArt PreBattleCalcAuraEffect
+    POIN PreBattleCalcSkillsPhaseTurn
 
 #ifdef CONFIG_USE_STAT_DEBUFF
     POIN PreBattleCalcStatDebuffs
