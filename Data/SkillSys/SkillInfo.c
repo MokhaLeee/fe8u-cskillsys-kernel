@@ -1563,4 +1563,25 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Pursuit,
       },
 #endif
+
+#if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM)) 
+    [SID_DragonSkin] = {
+         .desc = MSG_SKILL_DragonSkin,
+         .icon = GFX_SkillIcon_DragonSkin,
+      },
+#endif
+
+#if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM)) 
+    [SID_Hawkeye] = {
+         .desc = MSG_SKILL_Hawkeye,
+         .icon = GFX_SkillIcon_Hawkeye,
+      },
+#endif
+
+#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM)) 
+    [SID_KeenFighter] = {
+         .desc = MSG_SKILL_KeenFighter,
+         .icon = GFX_SkillIcon_KeenFighter,
+      },
+#endif
 };

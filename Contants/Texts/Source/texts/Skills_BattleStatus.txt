@@ -239,3 +239,16 @@ When under attack, avoid +10.[X]
 ## MSG_SKILL_Pursuit
 Pursuit:[NL]
 When under attack, attack speed +2.[X]
+
+## MSG_SKILL_DragonSkin
+Dragon Skin:[NL]
+Halve damage taken.[X]
+
+## MSG_SKILL_Hawkeye
+Hawkeye:[NL]
+User will always hit the enemy.[X]
+
+## MSG_SKILL_KeenFighter
+Keen Fighter:[NL]
+Unit takes 75% damage[NL]
+if the opponent can double.[X]

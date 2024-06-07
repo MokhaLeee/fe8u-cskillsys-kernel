@@ -11,6 +11,7 @@
 
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
+extern bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target);
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
 /* LynJump */
@@ -479,7 +480,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         int attackerCon = ConGetter(unit);
         int defenderCon = ConGetter(unit_def);
 
-        if(attackerCon > defenderCon)
+        if (attackerCon > defenderCon)
             attacker->battleAttack += (attackerCon - defenderCon);
     }
 #endif
@@ -570,7 +571,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
              * if there's any additional speed above the doubling threshold
              * add that to the skillholder's attack
              */
-            if((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+            if ((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
                 attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
         }
 #endif
@@ -600,6 +601,35 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
             attacker->battleCritRate += 25;
 #endif
     }
+
+#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_KeenFighter))
+        {
+            if (CheckCanTwiceAttackOrder(defender,attacker))
+            {
+                short dmg = defender->battleAttack - attacker->battleDefense;
+                if (dmg < 0) 
+                    dmg = 0;
+                attacker->battleDefense += dmg - dmg*3/4;
+            }
+        }
+#endif
+
+#if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_DragonSkin))
+        {   
+            short dmg = defender->battleAttack - attacker->battleDefense;
+            if (dmg < 0) 
+                dmg = 0;
+            attacker->battleDefense += (dmg+1)/2;
+        }
+#endif
+
+#if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Hawkeye))
+           attacker->battleHitRate = 255;
+#endif
+
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -713,9 +743,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
 #if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
                     if (SkillTester(unit, SID_NightTide))
-                    {
                         attacker->battleDefense += 5;
-                    }
 #endif
 
 #if (defined(SID_SpurStr) && (SID_SpurStr < MAX_SKILL_NUM))
@@ -752,9 +780,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
 #if (defined(SID_SpurSpd) && (SID_SpurSpd < MAX_SKILL_NUM))
                     if (SkillTester(unit, SID_SpurSpd))
-                    {
                         attacker->battleSpeed += 4;
-                    }
 #endif
 
 #if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
