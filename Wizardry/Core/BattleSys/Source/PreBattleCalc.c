@@ -602,29 +602,6 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
 #endif
     }
 
-#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_KeenFighter))
-        {
-            if (CheckCanTwiceAttackOrder(defender,attacker))
-            {
-                short dmg = defender->battleAttack - attacker->battleDefense;
-                if (dmg < 0) 
-                    dmg = 0;
-                attacker->battleDefense += dmg - dmg*3/4;
-            }
-        }
-#endif
-
-#if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_DragonSkin))
-        {   
-            short dmg = defender->battleAttack - attacker->battleDefense;
-            if (dmg < 0) 
-                dmg = 0;
-            attacker->battleDefense += (dmg+1)/2;
-        }
-#endif
-
 #if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_Hawkeye))
            attacker->battleHitRate = 255;

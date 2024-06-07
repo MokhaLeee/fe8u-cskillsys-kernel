@@ -240,6 +240,9 @@ When under attack, avoid +10.[X]
 Pursuit:[NL]
 When under attack, attack speed +2.[X]
 
+## MSG_SKILL_DragonSkin_NAME
+D-Skin[X]
+
 ## MSG_SKILL_DragonSkin
 Dragon Skin:[NL]
 Halve damage taken.[X]
@@ -247,6 +250,9 @@ Halve damage taken.[X]
 ## MSG_SKILL_Hawkeye
 Hawkeye:[NL]
 User will always hit the enemy.[X]
+
+## MSG_SKILL_KeenFighter_NAME
+K-Fighter[X]
 
 ## MSG_SKILL_KeenFighter
 Keen Fighter:[NL]

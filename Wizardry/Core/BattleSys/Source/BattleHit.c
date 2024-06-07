@@ -48,7 +48,6 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(unit, SID_LunaAttack))
         damage += defender->battleDefense / 4;
 #endif // SID_LunaAttack
-
     return damage;
 }
 
@@ -59,6 +58,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     bool in_art_atk = false;
 
     struct Unit * unit = GetUnit(attacker->unit.index);
+    struct Unit * unit_def = GetUnit(defender->unit.index);
 
     gBattleStats.damage = 0;
 
@@ -198,11 +198,10 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     if (gBattleStats.damage > 0)
     {
-        struct Unit * _tmpunit = GetUnit(defender->unit.index);
         if (IsMagicAttack(attacker))
         {
 #if (defined(SID_Aegis) && (SID_Aegis < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, GetUnitSkill(_tmpunit)))
+            if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, GetUnitSkill(unit_def)))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
                 gBattleStats.damage = 0;
@@ -212,7 +211,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         else
         {
 #if (defined(SID_Pavise) && (SID_Pavise < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, GetUnitSkill(_tmpunit)))
+            if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, GetUnitSkill(unit_def)))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
                 gBattleStats.damage = 0;
@@ -220,7 +219,27 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
         }
     }
+    if (gBattleStats.damage > 0)
+    {
+#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
+        if (SkillTester(unit_def, SID_KeenFighter))
+        {
+            if (CheckCanTwiceAttackOrder(defender,attacker))
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
+                gBattleStats.damage = gBattleStats.damage*3/4;
+            }
+        }
+#endif
 
+#if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
+        if (SkillTester(unit_def, SID_DragonSkin))
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
+            gBattleStats.damage = gBattleStats.damage/2;
+        }
+#endif
+    }
     /* Post calc */
     if (gBattleStats.damage > BATTLE_MAX_DAMAGE)
         gBattleStats.damage = BATTLE_MAX_DAMAGE;
