@@ -70,6 +70,10 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_WaterBoost
+SID_EarthBoost
+SID_WindBoost
+SID_FireBoost
 SID_StoneBody
 SID_CriticalForce
 SID_Pursuit

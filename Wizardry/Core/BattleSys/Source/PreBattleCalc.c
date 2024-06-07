@@ -530,6 +530,45 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         }
 #endif
     }
+
+#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_FireBoost))
+    {
+        if (attacker->hpInitial - defender->hpInitial >= 3)
+            attacker->battleAttack += 6;
+    }
+#endif
+
+#if (defined(SID_WindBoost) && (SID_WindBoost < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_WindBoost))
+    {
+        if (attacker->hpInitial - defender->hpInitial >= 3)
+            attacker->battleSpeed += 6;
+    }
+#endif
+
+#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_FireBoost))
+    {
+        if (attacker->hpInitial - defender->hpInitial >= 3)
+        {
+            if (!IsMagicAttack(defender))
+                attacker->battleDefense += 6;
+        }
+        
+    }
+#endif
+
+#if (defined(SID_WaterBoost) && (SID_WaterBoost < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_WaterBoost))
+    {
+        if (attacker->hpInitial - defender->hpInitial >= 3)
+        {
+            if (IsMagicAttack(defender))
+                attacker->battleDefense += 6;
+        }
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
