@@ -193,8 +193,11 @@ Slow Burn: [NL]
 +1 Hit and Avoid for[NL]
 each passing turn, up to 15.[X]
 
+##MSG_SKILL_BattleVeteran_NAME
+Battle Vet[X]
+
 ## MSG_SKILL_BattleVeteran
-Battle Vet:[NL]
+Battle Veteran:[NL]
 Gain +1 damage and +5% Hit[NL]
 per 10 levels unit has.[X]
 
@@ -217,3 +220,10 @@ when HP is not at max.[X]
 Perfectionist:[NL]
 +15 Hit and Avoid[NL]
 when user's HP is at maximum.[X]
+
+## MSG_SKILL_CriticalForce_NAME
+Crit-Force[X]
+
+## MSG_SKILL_CriticalForce
+Critical Force:[NL]
+Base critical is Skl * 1.5.[X]

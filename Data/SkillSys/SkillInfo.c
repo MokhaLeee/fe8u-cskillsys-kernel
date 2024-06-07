@@ -1472,6 +1472,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
 
 #if (defined(SID_BattleVeteran) && (SID_BattleVeteran < MAX_SKILL_NUM)) 
     [SID_BattleVeteran] = {
+         .name = MSG_SKILL_BattleVeteran_NAME,
          .desc = MSG_SKILL_BattleVeteran,
          .icon = GFX_SkillIcon_BattleVeteran,
       },
@@ -1523,6 +1524,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_Perfectionist] = {
          .desc = MSG_SKILL_Perfectionist,
          .icon = GFX_SkillIcon_Perfectionist,
+      },
+#endif
+
+#if (defined(SID_CriticalForce) && (SID_CriticalForce < MAX_SKILL_NUM)) 
+    [SID_CriticalForce] = {
+         .name = MSG_SKILL_CriticalForce_NAME,
+         .desc = MSG_SKILL_CriticalForce,
+         .icon = GFX_SkillIcon_CriticalForce,
       },
 #endif
 };

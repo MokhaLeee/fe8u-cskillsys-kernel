@@ -490,6 +490,13 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if (defined(SID_CriticalForce) && (SID_CriticalForce < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_CriticalForce))
+    {
+       attacker->battleCritRate += unit->skl;
+    }
+#endif
+
 }
 
 void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
