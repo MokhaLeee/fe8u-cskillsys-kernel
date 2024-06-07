@@ -70,6 +70,7 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_StoneBody
 SID_CriticalForce
 SID_Pursuit
 SID_Patience

@@ -119,6 +119,7 @@ void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender
 void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     struct Unit * unit = GetUnit(attacker->unit.index);
+    struct Unit * unit_def = GetUnit(defender->unit.index);
 
     /* Defiant skills */
     if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
@@ -510,6 +511,19 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
        u32 n_level = unit->level/10 + 2 * (UNIT_CATTRIBUTES(unit) && CA_PROMOTED);
        attacker->battleHitRate += 5*n_level;
        attacker->battleAttack += n_level;
+    }
+#endif
+
+#if (defined(SID_StoneBody) && (SID_StoneBody < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_StoneBody))
+    {
+        int attackerCon = ConGetter(unit);
+        int defenderCon = ConGetter(unit_def);
+
+        if(attackerCon > defenderCon)
+        {
+            attacker->battleAttack += (attackerCon - defenderCon);
+        }
     }
 #endif
 
