@@ -170,14 +170,6 @@ Quick Burn: [NL]
 +15 Hit and Avoid.[NL]
 This bonus decreases each turn.[X]
 
-## MSG_SKILL_StanceSpectrum_NAME
-S-Spectrum[X]
-
-## MSG_SKILL_StanceSpectrum
-StanceSpectrum:[NL]
-Grants +2 Atk, Spd, Def[NL]
-and Res if attacked.[X]
-
 ## MSG_SKILL_Technician
 Technician: If the user is[NL]
 holding an E-ranked weapon,[NL]
@@ -193,12 +185,57 @@ Slow Burn: [NL]
 +1 Hit and Avoid for[NL]
 each passing turn, up to 15.[X]
 
+##MSG_SKILL_BattleVeteran_NAME
+Battle Vet[X]
+
 ## MSG_SKILL_BattleVeteran
-Battle Vet:[NL]
+Battle Veteran:[NL]
 Gain +1 damage and +5% Hit[NL]
 per 10 levels unit has.[X]
 
 ## MSG_SKILL_StoneBody
-StoneBody:[N]
+StoneBody:[NL]
 If the user's CON is greater than the[NL]
 enemy, boost damage by the difference.[X]
+
+## MSG_SKILL_Chivalry
+Chivalry:[NL]
+When foe is at full HP,[NL]
+attack and def/res +2.[X]
+
+## MSG_SKILL_Pragmatic
+Pragmatic:[NL]
+When foe is not at full HP,[NL]
+attack +3 and def/res+1.[X]
+
+## MSG_SKILL_WindDisciple
+WindDisciple:[NL]
++10 Hit and Avoid[NL]
+when HP is not at max.[X]
+
+## MSG_SKILL_Perfectionist
+Perfectionist:[NL]
++15 Hit and Avoid[NL]
+when user's HP is at maximum.[X]
+
+## MSG_SKILL_CriticalForce_NAME
+Crit-Force[X]
+
+## MSG_SKILL_CriticalForce
+Critical Force:[NL]
+Base critical is Skl * 1.5.[X]
+
+## MSG_SKILL_StrongRiposte_NAME
+S-Riposte[X]
+
+## MSG_SKILL_StrongRiposte
+Strong Riposte:[NL]
+When under attack, damage +3.[X]
+
+## MSG_SKILL_Patience
+Patience:[NL]
+When under attack, avoid +10.[X]
+
+## MSG_SKILL_Pursuit
+Pursuit:[NL]
+When under attack, attack speed +2.[X]

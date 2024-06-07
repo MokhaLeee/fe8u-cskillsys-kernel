@@ -9,8 +9,6 @@
     .SIZE \name, .-\name
 .ENDM
 
-.set NULL, 0
-
 .MACRO THUMB_FUNC_START name
     .ALIGN 2, 0
     .GLOBAL \name
@@ -60,8 +58,8 @@
 .endm
 
 @ todo
-ANFMT_NOT_FORCESPRITE = 0x80000000
-ANIM_INS_TYPE_END     = 1
+@ ANFMT_NOT_FORCESPRITE = 0x80000000
+
 .macro ANIMSCR_END
-    .4byte ANFMT_NOT_FORCESPRITE + ANFMT_INS_TYPE_END
+    .4byte 0x80000000 + ANFMT_INS_TYPE_END
 .endm

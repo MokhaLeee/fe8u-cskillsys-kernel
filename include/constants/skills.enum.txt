@@ -71,6 +71,14 @@ SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
 SID_StoneBody
+SID_CriticalForce
+SID_Pursuit
+SID_Patience
+SID_StrongRiposte
+SID_Perfectionist
+SID_WindDisciple
+SID_Pragmatic
+SID_Chivalry
 
 // Weapon triangle
 SID_SwordBreaker

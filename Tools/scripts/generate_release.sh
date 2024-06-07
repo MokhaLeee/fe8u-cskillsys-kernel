@@ -1,5 +1,22 @@
 #!/bin/bash
 
+function collect_header() {
+    cd $1
+
+    COMMON_HEADER="./gbafe-kernel.h"
+    rm -rf $COMMON_HEADER
+
+    echo "#pragma once" > $COMMON_HEADER
+    echo "#include <common-chax.h>" > $COMMON_HEADER
+
+    for file in $(find -type f -name "*.h")
+    do
+        echo "#include <${file#*/}>" >> $COMMON_HEADER
+    done
+
+    cd -
+}
+
 RELEASE_DIR=.release_dir
 
 rm -rf $RELEASE_DIR
@@ -10,20 +27,20 @@ cp fe8-kernel-* $RELEASE_DIR
 cp -rf include $RELEASE_DIR
 cp -rf Patches $RELEASE_DIR
 
-TARGET_INCLUDE=$RELEASE_DIR/include
-
 # fix texts
-TARGET_TEXTS_H=$TARGET_INCLUDE/constants/texts.h
-cp Contants/Texts/TextDefinitions.h $TARGET_INCLUDE/constants/
+TARGET_TEXTS_H=$RELEASE_DIR/include/constants/texts.h
+cp Contants/Texts/TextDefinitions.h $RELEASE_DIR/include/constants/
 echo '#ifndef TEXTS_H' > $TARGET_TEXTS_H
 echo '#define TEXTS_H' >> $TARGET_TEXTS_H
 echo '#include "TextDefinitions.h"' >> $TARGET_TEXTS_H
 echo '#endif // TEXTS_H' >> $TARGET_TEXTS_H
 
 # fix gfx
-TARGET_GFX_H=$TARGET_INCLUDE/constants/gfx.h
-cp Contants/Gfx/GfxDefs.h $TARGET_INCLUDE/constants/
+TARGET_GFX_H=$RELEASE_DIR/include/constants/gfx.h
+cp Contants/Gfx/GfxDefs.h $RELEASE_DIR/include/constants/
 echo '#ifndef GFX_H' > $TARGET_GFX_H
 echo '#define GFX_H' >> $TARGET_GFX_H
 echo '#include "GfxDefs.h"' >> $TARGET_GFX_H
 echo '#endif // GFX_H' >> $TARGET_GFX_H
+
+collect_header $RELEASE_DIR/include

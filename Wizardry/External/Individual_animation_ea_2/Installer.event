@@ -10,6 +10,7 @@ POP
 
 IndividualAnimation7743:
 #incbin "IndividualAnimation7743.dmp.bin"
+gpCustomAnimeTable1:
 POIN CustomAnimeTable
 
 
@@ -20,6 +21,7 @@ POP
 
 IndividualAnimation7743_CC:
 #incbin "IndividualAnimation7743_CC.dmp.bin"
+gpCustomAnimeTable2:
 POIN CustomAnimeTable
 
 #include "data.event"

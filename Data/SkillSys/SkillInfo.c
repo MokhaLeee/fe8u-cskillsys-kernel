@@ -1472,6 +1472,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
 
 #if (defined(SID_BattleVeteran) && (SID_BattleVeteran < MAX_SKILL_NUM)) 
     [SID_BattleVeteran] = {
+         .name = MSG_SKILL_BattleVeteran_NAME,
          .desc = MSG_SKILL_BattleVeteran,
          .icon = GFX_SkillIcon_BattleVeteran,
       },
@@ -1503,5 +1504,63 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .desc = MSG_SKILL_StoneBody,
         .icon = GFX_SkillIcon_StoneBody,
     },
+#endif
+
+#if (defined(SID_Chivalry) && (SID_Chivalry < MAX_SKILL_NUM)) 
+    [SID_Chivalry] = {
+         .desc = MSG_SKILL_Chivalry,
+         .icon = GFX_SkillIcon_Chivalry,
+      },
+#endif
+
+#if (defined(SID_Pragmatic) && (SID_Pragmatic < MAX_SKILL_NUM)) 
+    [SID_Pragmatic] = {
+         .desc = MSG_SKILL_Pragmatic,
+         .icon = GFX_SkillIcon_Pragmatic,
+      },
+#endif
+
+#if (defined(SID_WindDisciple) && (SID_WindDisciple < MAX_SKILL_NUM)) 
+    [SID_WindDisciple] = {
+         .desc = MSG_SKILL_WindDisciple,
+         .icon = GFX_SkillIcon_WindDisciple,
+      },
+#endif
+
+#if (defined(SID_Perfectionist) && (SID_Perfectionist < MAX_SKILL_NUM)) 
+    [SID_Perfectionist] = {
+         .desc = MSG_SKILL_Perfectionist,
+         .icon = GFX_SkillIcon_Perfectionist,
+      },
+#endif
+
+#if (defined(SID_CriticalForce) && (SID_CriticalForce < MAX_SKILL_NUM)) 
+    [SID_CriticalForce] = {
+         .name = MSG_SKILL_CriticalForce_NAME,
+         .desc = MSG_SKILL_CriticalForce,
+         .icon = GFX_SkillIcon_CriticalForce,
+      },
+#endif
+
+#if (defined(SID_StrongRiposte) && (SID_StrongRiposte < MAX_SKILL_NUM)) 
+    [SID_StrongRiposte] = {
+         .name = MSG_SKILL_StrongRiposte_NAME,
+         .desc = MSG_SKILL_StrongRiposte,
+         .icon = GFX_SkillIcon_StrongRiposte,
+      },
+#endif
+
+#if (defined(SID_Patience) && (SID_Patience < MAX_SKILL_NUM)) 
+    [SID_Patience] = {
+         .desc = MSG_SKILL_Patience,
+         .icon = GFX_SkillIcon_Patience,
+      },
+#endif
+
+#if (defined(SID_Pursuit) && (SID_Pursuit < MAX_SKILL_NUM)) 
+    [SID_Pursuit] = {
+         .desc = MSG_SKILL_Pursuit,
+         .icon = GFX_SkillIcon_Pursuit,
+      },
 #endif
 };

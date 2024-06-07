@@ -29,10 +29,3 @@ ORG FreeSpaceKernelMain
 
 MESSAGE FreeSpace___Main___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelMain) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
-
-#ifdef CONFIG_USE_UTF8_GLYPH
-ORG FreeSpaceFont
-    #include "Fonts/Fonts.event"
-MESSAGE FreeSpace___Font___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceFont) max (FreeSpaceFontSize)
-ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
-#endif /* CONFIG_USE_UTF8_GLYPH */
