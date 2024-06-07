@@ -48,12 +48,7 @@ gpKTutorialMsg:         POIN gKTutorialMsg
 
 gpExternalGameInitHook: WORD 0
 
-gpStatDebuffInfos:
-#ifdef CONFIG_USE_STAT_DEBUFF
-    POIN gStatDebuffInfos
-#else
-    WORD 0
-#endif
+gpStatDebuffInfos: POIN gStatDebuffInfos
 
 /* StatScreenfx */
 gpPal_StatScreenUIRed:      POIN Pal_StatScreenUIRed

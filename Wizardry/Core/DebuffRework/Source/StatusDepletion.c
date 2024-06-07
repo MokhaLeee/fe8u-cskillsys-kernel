@@ -86,9 +86,7 @@ void TickActiveFactionTurn(void)
             {
                 DEC_STATUS(unit);
             }
-#ifdef CONFIG_USE_STAT_DEBUFF
             TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
-#endif
         }
 
         /* Red debuff */
@@ -102,9 +100,7 @@ void TickActiveFactionTurn(void)
             {
                 DEC_STATUS(unit);
             }
-#ifdef CONFIG_USE_STAT_DEBUFF
             TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
-#endif
         }
     }
     else if (FACTION_RED == gPlaySt.faction)
@@ -120,9 +116,7 @@ void TickActiveFactionTurn(void)
             {
                 DEC_STATUS(unit);
             }
-#ifdef CONFIG_USE_STAT_DEBUFF
             TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
-#endif
         }
 
         /* Blue debuff */
@@ -136,9 +130,7 @@ void TickActiveFactionTurn(void)
             {
                 DEC_STATUS(unit);
             }
-#ifdef CONFIG_USE_STAT_DEBUFF
             TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
-#endif
         }
 
         /* Green debuff */
@@ -152,9 +144,7 @@ void TickActiveFactionTurn(void)
             {
                 DEC_STATUS(unit);
             }
-#ifdef CONFIG_USE_STAT_DEBUFF
             TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
-#endif
         }
     }
     else if (FACTION_GREEN == gPlaySt.faction)
@@ -170,9 +160,7 @@ void TickActiveFactionTurn(void)
             {
                 DEC_STATUS(unit);
             }
-#ifdef CONFIG_USE_STAT_DEBUFF
             TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
-#endif
         }
     }
 }

@@ -55,11 +55,6 @@
 #define CONFIG_FASTER_MAP_RANGE
 
 /**
- * Enable StatDebuff
- */
-#define CONFIG_USE_STAT_DEBUFF
-
-/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

@@ -11,7 +11,7 @@ void ExecDanceRing(ProcPtr proc)
 
     BattleInitItemEffectTarget(GetUnit(gActionData.targetIndex));
 
-#ifndef CONFIG_USE_STAT_DEBUFF
+#if CHAX
     switch (GetItemIndex(GetUnit(gActionData.subjectIndex)->items[gActionData.itemSlotIndex])) {
         case ITEM_FILLAS_MIGHT:
             status = UNIT_STATUS_ATTACK;

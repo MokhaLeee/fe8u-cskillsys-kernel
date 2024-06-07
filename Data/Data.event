@@ -28,10 +28,7 @@
 
 #include "KernelTutorial/ktut.lyn.event"
 
-#ifdef CONFIG_USE_STAT_DEBUFF
-    #include "../Wizardry/Core/DebuffRework/StatDebuff/StatDebuffData.lyn.event"
-#endif
-
+#include "../Wizardry/Core/DebuffRework/StatDebuff/StatDebuffData.lyn.event"
 #include "../Wizardry/QOL/StatScreenfx/_data.event"
 #include "../Wizardry/Core/BattleSys/WeaponLockEx/data.event"
 #include "../Wizardry/Common/ClassTypes/Source/class-types-data.lyn.event"
