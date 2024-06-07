@@ -225,7 +225,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         if (SkillTester(unit_def, SID_DragonSkin))
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-            gBattleStats.damage = gBattleStats.damage/2;
+            gBattleStats.damage = gBattleStats.damage / 2;
         }
 #else
         if (0)
@@ -238,7 +238,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
                 if (CheckCanTwiceAttackOrder(attacker,defender))
                 {
                     RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-                    gBattleStats.damage = gBattleStats.damage*3/4;
+                    gBattleStats.damage = gBattleStats.damage * 3 / 4;
                 }
             }
 #endif
