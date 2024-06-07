@@ -534,6 +534,47 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+    if (GetUnitCurrentHp(unit_def) == GetUnitMaxHp(unit_def))
+    {
+#if (defined(SID_Chivalry) && (SID_Chivalry < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Chivalry))
+        {
+            attacker->battleDefense += 2;
+            attacker->battleAttack += 2;
+        }
+#endif
+    }
+    else
+    {
+#if (defined(SID_Pragmatic) && (SID_Pragmatic < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Pragmatic))
+        {
+            attacker->battleDefense += 1;
+            attacker->battleAttack += 3;
+        }
+#endif
+    }
+
+    if (GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+    {
+#if (defined(SID_Perfectionist) && (SID_Perfectionist < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Perfectionist))
+        {
+            attacker->battleHitRate += 15;
+            attacker->battleAvoidRate += 15;
+        }
+#endif
+    }
+    else
+    {
+#if (defined(SID_WindDisciple) && (SID_WindDisciple < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_WindDisciple))
+        {
+            attacker->battleHitRate += 10;
+            attacker->battleAvoidRate += 10;
+        }
+#endif
+    }
 }
 
 void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -543,7 +584,6 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
      * Thus the main part of calc should be positioned at berfore.
      */
     struct Unit * unit = GetUnit(attacker->unit.index);
-    struct Unit * defender_unit = GetUnit(defender->unit.index);
 
 #if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_CatchingUp))
@@ -581,51 +621,6 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
 #if (defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_FlashingBladePlus))
             attacker->battleCritRate += 25;
-#endif
-
-    }
-
-    if (defender_unit->curHP == defender_unit->maxHP)
-    {
-#if (defined(SID_Chivalry) && (SID_Chivalry < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_Chivalry))
-        {
-            attacker->battleDefense += 2;
-            attacker->battleAttack += 2;
-        }
-#endif
-    }
-
-    else
-    {
-#if (defined(SID_Pragmatic) && (SID_Pragmatic < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_Pragmatic))
-        {
-            attacker->battleDefense += 1;
-            attacker->battleAttack += 3;
-        }
-#endif
-    }
-
-    if (unit->curHP == unit->maxHP)
-    {
-#if (defined(SID_Perfectionist) && (SID_Perfectionist < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_Perfectionist))
-        {
-            attacker->battleHitRate += 15;
-            attacker->battleAvoidRate += 15;
-        }
-#endif
-    }
-
-    else
-    {
-#if (defined(SID_WindDisciple) && (SID_WindDisciple < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_WindDisciple))
-        {
-            attacker->battleHitRate += 10;
-            attacker->battleAvoidRate += 10;
-        }
 #endif
     }
 }
