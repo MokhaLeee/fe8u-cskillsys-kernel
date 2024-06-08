@@ -97,3 +97,8 @@ Res +7 if HP <25%[X]
 Lucky 7: [NL]
 Unit get different bonus[NL]
 at each turn[X]
+
+## MSG_SKILL_EvenFooted
+EvenFooted:[NL]
++1 move on even[NL]
+numbered turns.[X]
