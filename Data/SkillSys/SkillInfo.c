@@ -1614,4 +1614,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_WaterBoost,
       },
 #endif
+
+#if (defined(SID_KnightAspirant) && (SID_KnightAspirant < MAX_SKILL_NUM)) 
+    [SID_KnightAspirant] = {
+         .name = MSG_SKILL_KnightAspirant_NAME,
+         .desc = MSG_SKILL_KnightAspirant,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
 };

@@ -569,6 +569,20 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         }
     }
 #endif
+
+#if (defined(SID_KnightAspirant) && (SID_KnightAspirant < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_KnightAspirant))
+    {
+        int threshold;
+        threshold = (GetUnitMaxHp(unit) / 2) + (GetUnitMaxHp(unit) / 4);
+
+        if (GetUnitCurrentHp(unit) > threshold)
+        {
+            attacker->battleAttack += 2;
+            attacker->battleAvoidRate += 15;
+        }
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)

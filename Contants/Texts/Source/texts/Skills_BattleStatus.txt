@@ -278,3 +278,11 @@ is at least 3 higher than the enemy's.[X]
 Water Boost:[NL]
 Grants +6 Resistance if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
+
+## MSG_SKILL_KnightAspirant_NAME
+K-Aspirant[X]
+
+## MSG_SKILL_KnightAspirant
+KnightAspirant:[NL]
+When above 75% health,[NL]
++2 damage, +15% avoid.[X]
