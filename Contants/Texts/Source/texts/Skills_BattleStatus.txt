@@ -278,3 +278,16 @@ is at least 3 higher than the enemy's.[X]
 Water Boost:[NL]
 Grants +6 Resistance if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
+
+## MSG_SKILL_Charge
+Charge:[NL]
++1 damage for every[NL]
+two tiles moved.[X]
+
+## MSG_SKILL_FieryBlood_NAME
+F-Blood[X]
+
+## MSG_SKILL_FieryBlood
+FieryBlood:[NL]
++4 strength if HP[NL]
+is not at max.[X]

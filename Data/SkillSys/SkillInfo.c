@@ -1615,10 +1615,25 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)) 
+    [SID_Charge] = {
+         .desc = MSG_SKILL_Charge,
+         .icon = GFX_SkillIcon_Charge,
+    }
+#endif
+
+#if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
+    [SID_FieryBlood] = {
+         .name = MSG_SKILL_FieryBlood_NAME,
+         .desc = MSG_SKILL_FieryBlood,
+         .icon = GFX_SkillIcon_FieryBlood,
+      },
+#endif
+
 #if (defined(SID_EvenFooted) && (SID_EvenFooted < MAX_SKILL_NUM)) 
     [SID_EvenFooted] = {
          .desc = MSG_SKILL_EvenFooted,
-         .icon = GFX_SkillIcon_WIP,
-      },
+         .icon = GFX_SkillIcon_EvenFooted,
+    }
 #endif
 };
