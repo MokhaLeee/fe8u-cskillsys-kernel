@@ -280,13 +280,13 @@ STATIC_DECLAR void DrawPage1ValueCommon(void)
     struct Unit * unit = gStatScreen.unit;
 
     DrawStatWithBarRework(7, 0xD, 0x1,
-                    MovGetter(unit),
+                    UNIT_MOV(unit),
                     MovGetter(unit),
                     UNIT_MOV_MAX(unit));
 
     DrawStatWithBarRework(8, 0xD, 0x3,
                     UNIT_CON_BASE(unit),
-                    UNIT_CON_BASE(unit),
+                    ConGetter(unit),
                     UNIT_CON_MAX(unit));
 
     // displaying unit aid
