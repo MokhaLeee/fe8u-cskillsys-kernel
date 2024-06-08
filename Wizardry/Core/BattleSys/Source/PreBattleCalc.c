@@ -572,7 +572,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_Charge))
-            attacker->battleAttack += gActionData.moveCount/2;
+            attacker->battleAttack += gActionData.moveCount / 2;
 #endif
 }
 
