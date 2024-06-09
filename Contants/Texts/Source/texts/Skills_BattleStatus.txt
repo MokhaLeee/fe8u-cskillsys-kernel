@@ -300,3 +300,8 @@ Quick Draw:[NL]
 Arcane Blade:[NL]
 When initiating battle at 1 range:[NL]
 Add 3+(Mag/2) to Hit and Crit[X]
+
+## MSG_SKILL_ChaosStyle
+Chaos Style:[NL]
++3 AS when using a physical weapon[NL]
+against a magical foe, or vice versa.[X]

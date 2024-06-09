@@ -70,6 +70,7 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_ChaosStyle
 SID_ArcaneBlade
 SID_QuickDraw
 SID_KeenFighter
