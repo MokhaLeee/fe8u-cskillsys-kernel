@@ -97,3 +97,8 @@ Res +7 if HP <25%[X]
 Lucky 7: [NL]
 Unit get different bonus[NL]
 at each turn[X]
+
+## MSG_SKILL_Guts
+Guts:[NL]
++5 attack if afflicted by[NL]
+any status condition.[X]

@@ -74,5 +74,10 @@ int PowGetterSkills(int status, struct Unit * unit)
         status += 7;
 #endif
 
+#if defined(SID_Guts) && (SID_Guts < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_Guts) && (unit->statusIndex != UNIT_STATUS_NONE))
+        status += 5;
+#endif
+
     return status;
 }
