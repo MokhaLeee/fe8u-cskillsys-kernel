@@ -305,3 +305,7 @@ Add 3+(Mag/2) to Hit and Crit[X]
 Chaos Style:[NL]
 +3 AS when using a physical weapon[NL]
 against a magical foe, or vice versa.[X]
+
+## MSG_SKILL_Vigilance
+Vigilance:[NL]
+Gain +20 avoid.[X]

@@ -1664,4 +1664,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_ChaosStyle,
       },
 #endif
+
+#if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM)) 
+    [SID_Vigilance] = {
+         .desc = MSG_SKILL_Vigilance,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
 };

@@ -614,6 +614,13 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
        }
     }
 #endif
+
+#if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Vigilance))
+    {
+       attacker->battleAvoidRate += 20;
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
