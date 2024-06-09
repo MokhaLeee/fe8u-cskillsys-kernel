@@ -1619,6 +1619,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_Charge] = {
          .desc = MSG_SKILL_Charge,
          .icon = GFX_SkillIcon_Charge,
+#endif
 
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
     [SID_FieryBlood] = {
@@ -1626,5 +1627,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .desc = MSG_SKILL_FieryBlood,
          .icon = GFX_SkillIcon_FieryBlood,
       },
+#endif
+
+#if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
+    [SID_Colossus] = {
+        .desc = MSG_SKILL_Colossus,
+        .icon = GFX_SkillIcon_Colossus,
+    },
 #endif
 };

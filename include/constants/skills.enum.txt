@@ -117,6 +117,7 @@ SID_Sol
 SID_DragonFang
 SID_Foresight
 SID_Inori
+SID_Colossus
 
 // Blow skills
 SID_BlowDarting
