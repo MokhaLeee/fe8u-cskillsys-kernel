@@ -569,6 +569,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         }
     }
 #endif
+
+#if (defined(SID_Outrider) && (SID_Outrider < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Outrider))
+    {
+        attacker->battleDefense += gActionData.moveCount;
+        attacker->battleCritRate += (gActionData.moveCount * 3);
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
