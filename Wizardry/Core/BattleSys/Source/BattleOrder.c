@@ -103,6 +103,14 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_VengefulFighter) && (SID_VengefulFighter < MAX_SKILL_NUM)
+        if (SkillTester(real_target, SID_VengefulFighter))
+        {
+            return true;
+        }
+#endif
+
     }
 
     if ((actor->battleSpeed - target->battleSpeed) < BATTLE_FOLLOWUP_SPEED_THRESHOLD)

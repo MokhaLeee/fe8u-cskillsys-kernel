@@ -106,6 +106,7 @@ SID_QuickRiposte
 SID_WaryFighter
 SID_DoubleLion
 SID_Adept // +1 hit if full HP
+SID_VengefulFighter
 
 // Battle activation skills
 SID_Astra // +4 hits with half damage (speed * 2%)

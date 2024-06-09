@@ -1664,4 +1664,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_ChaosStyle,
       },
 #endif
+
+#if (defined(SID_VengefulFighter) && (SID_VengefulFighter < MAX_SKILL_NUM)) 
+    [SID_VengefulFighter] = {
+         .name = MSG_SKILL_VengefulFighter_NAME,
+         .desc = MSG_SKILL_VengefulFighter,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
 };
