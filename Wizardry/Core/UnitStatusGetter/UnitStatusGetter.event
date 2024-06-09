@@ -55,6 +55,7 @@ gResGetters:
     MSG_END
 
 gMovGetters:
+    POIN MovGetterSkills
     POIN MovGetterDebuff
     POIN MovGetterStatDebuff
     POIN StatusGetterCheckCpas

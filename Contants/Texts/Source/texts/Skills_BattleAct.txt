@@ -52,3 +52,8 @@ DragonFang:[NL]
 Inori:[NL]
 Unit may not die if attacked[NL]
 to 0 HP (luck%)[X]
+
+## MSG_SKILL_Colossus
+Colossus:[NL]
+Triples attack.[NL]
+(Skill% activation).[X]
