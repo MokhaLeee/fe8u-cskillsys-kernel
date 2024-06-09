@@ -1669,7 +1669,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_VengefulFighter] = {
          .name = MSG_SKILL_VengefulFighter_NAME,
          .desc = MSG_SKILL_VengefulFighter,
-         .icon = GFX_SkillIcon_WIP,
+         .icon = GFX_SkillIcon_VengefulFighter,
       },
 #endif
 };
