@@ -70,6 +70,8 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_ArcaneBlade
+SID_QuickDraw
 SID_KeenFighter
 SID_Hawkeye
 SID_DragonSkin
@@ -127,6 +129,7 @@ SID_BlowFiendish
 SID_BlowWarding
 SID_BlowDuelist
 SID_BlowUncanny
+SID_BlowKilling
 
 // Stance skills
 SID_StanceBracing
