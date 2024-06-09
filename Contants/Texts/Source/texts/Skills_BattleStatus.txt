@@ -278,3 +278,30 @@ is at least 3 higher than the enemy's.[X]
 Water Boost:[NL]
 Grants +6 Resistance if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
+
+## MSG_SKILL_Charge
+Charge:[NL]
++1 damage for every[NL]
+two tiles moved.[X]
+
+## MSG_SKILL_FieryBlood_NAME
+F-Blood[X]
+
+## MSG_SKILL_FieryBlood
+FieryBlood:[NL]
++4 strength if HP[NL]
+is not at max.[X]
+
+## MSG_SKILL_QuickDraw
+Quick Draw:[NL]
++4 Damage when initiating battle.[X]
+
+## MSG_SKILL_ArcaneBlade
+Arcane Blade:[NL]
+When initiating battle at 1 range:[NL]
+Add 3+(Mag/2) to Hit and Crit[X]
+
+## MSG_SKILL_ChaosStyle
+Chaos Style:[NL]
++3 AS when using a physical weapon[NL]
+against a magical foe, or vice versa.[X]

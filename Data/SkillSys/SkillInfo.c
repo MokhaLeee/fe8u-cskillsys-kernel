@@ -590,6 +590,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(BlowKilling) && (BlowKilling < MAX_SKILL_NUM))
+    [BlowKilling] = {
+        .desc = MSG_SKILL_BlowKilling,
+        .icon = GFX_SkillIcon_BlowKilling,
+    },
+#endif
+
 #if (defined(SID_StanceBracing) && (SID_StanceBracing < MAX_SKILL_NUM))
     [SID_StanceBracing] = {
         .desc = MSG_SKILL_StanceBracing,
@@ -1615,6 +1622,42 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
+    [SID_FieryBlood] = {
+         .name = MSG_SKILL_FieryBlood_NAME,
+         .desc = MSG_SKILL_FieryBlood,
+         .icon = GFX_SkillIcon_FieryBlood,
+      },
+#endif
+
+#if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
+    [SID_Colossus] = {
+        .desc = MSG_SKILL_Colossus,
+        .icon = GFX_SkillIcon_Colossus,
+    },
+#endif
+
+#if (defined(SID_QuickDraw) && (SID_QuickDraw < MAX_SKILL_NUM)) 
+    [SID_QuickDraw] = {
+         .desc = MSG_SKILL_QuickDraw,
+         .icon = GFX_SkillIcon_QuickDraw,
+      },
+#endif
+
+#if (defined(SID_ArcaneBlade) && (SID_ArcaneBlade < MAX_SKILL_NUM)) 
+    [SID_ArcaneBlade] = {
+         .desc = MSG_SKILL_ArcaneBlade,
+         .icon = GFX_SkillIcon_ArcaneBlade,
+      },
+#endif
+
+#if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM)) 
+    [SID_ChaosStyle] = {
+         .desc = MSG_SKILL_ChaosStyle,
+         .icon = GFX_SkillIcon_ChaosStyle,
+      },
+#endif
+
 #if (defined(SID_PushDefense) && (SID_PushDefense < MAX_SKILL_NUM)) 
     [SID_PushDefense] = {
          .name = MSG_SKILL_PushDefense_NAME,
@@ -1684,6 +1727,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .name = MSG_SKILL_PushSpectrum_NAME,
          .desc = MSG_SKILL_PushSpectrum,
          .icon = GFX_SkillIcon_PushSpectrum,
-      },
+    }
+#endif
+
+#if (defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)) 
+    [SID_Charge] = {
+         .desc = MSG_SKILL_Charge,
+         .icon = GFX_SkillIcon_Charge,
+    },
 #endif
 };

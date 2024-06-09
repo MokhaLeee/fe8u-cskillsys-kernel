@@ -80,6 +80,9 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_ChaosStyle
+SID_ArcaneBlade
+SID_QuickDraw
 SID_KeenFighter
 SID_Hawkeye
 SID_DragonSkin
@@ -96,6 +99,8 @@ SID_Perfectionist
 SID_WindDisciple
 SID_Pragmatic
 SID_Chivalry
+SID_Charge
+SID_FieryBlood
 
 // Weapon triangle
 SID_SwordBreaker
@@ -125,6 +130,7 @@ SID_Sol
 SID_DragonFang
 SID_Foresight
 SID_Inori
+SID_Colossus
 
 // Blow skills
 SID_BlowDarting
@@ -134,6 +140,7 @@ SID_BlowFiendish
 SID_BlowWarding
 SID_BlowDuelist
 SID_BlowUncanny
+SID_BlowKilling
 
 // Stance skills
 SID_StanceBracing
