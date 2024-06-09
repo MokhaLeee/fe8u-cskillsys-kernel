@@ -614,6 +614,16 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
        }
     }
 #endif
+
+#if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Wrath))
+    {
+       if (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit)/2)
+       {
+            attacker->battleCritRate += 20;
+       }
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)

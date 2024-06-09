@@ -91,6 +91,7 @@ SID_Pragmatic
 SID_Chivalry
 SID_Charge
 SID_FieryBlood
+SID_Wrath
 
 // Weapon triangle
 SID_SwordBreaker
