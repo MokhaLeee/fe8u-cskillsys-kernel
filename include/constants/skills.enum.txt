@@ -19,6 +19,16 @@ SID_DefiantRes
 SID_DefiantCrit
 SID_DefiantAvoid
 
+SID_PushDefense
+SID_PushMagic
+SID_PushResistance
+SID_PushSkill
+SID_PushSpeed
+SID_PushStrength
+SID_PushLuck
+SID_PushMovement
+SID_PushSpectrum
+
 SID_Fury
 SID_FuryPlus
 SID_FortressDef
