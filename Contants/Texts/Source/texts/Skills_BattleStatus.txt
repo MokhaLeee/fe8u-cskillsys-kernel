@@ -300,3 +300,15 @@ Quick Draw:[NL]
 Arcane Blade:[NL]
 When initiating battle at 1 range:[NL]
 Add 3+(Mag/2) to Hit and Crit[X]
+
+## MSG_SKILL_ElbowRoom
+Elbow Room:[NL]
++3 damage dealt when on[NL]
+open terrain.[X]
+
+## MSG_SKILL_NaturalCover_NAME
+N-Cover[X]
+## MSG_SKILL_NaturalCover
+Natural Cover:[NL]
+-3 damage taken when on[NL]
+terrain with effects.[X]
