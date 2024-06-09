@@ -590,6 +590,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(BlowKilling) && (BlowKilling < MAX_SKILL_NUM))
+    [BlowKilling] = {
+        .desc = MSG_SKILL_BlowKilling,
+        .icon = GFX_SkillIcon_BlowKilling,
+    },
+#endif
+
 #if (defined(SID_StanceBracing) && (SID_StanceBracing < MAX_SKILL_NUM))
     [SID_StanceBracing] = {
         .desc = MSG_SKILL_StanceBracing,
@@ -1619,6 +1626,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_Charge] = {
          .desc = MSG_SKILL_Charge,
          .icon = GFX_SkillIcon_Charge,
+    },
 #endif
 
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
@@ -1634,5 +1642,19 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .desc = MSG_SKILL_Colossus,
         .icon = GFX_SkillIcon_Colossus,
     },
+#endif
+
+#if (defined(SID_QuickDraw) && (SID_QuickDraw < MAX_SKILL_NUM)) 
+    [SID_QuickDraw] = {
+         .desc = MSG_SKILL_QuickDraw,
+         .icon = GFX_SkillIcon_QuickDraw,
+      },
+#endif
+
+#if (defined(SID_ArcaneBlade) && (SID_ArcaneBlade < MAX_SKILL_NUM)) 
+    [SID_ArcaneBlade] = {
+         .desc = MSG_SKILL_ArcaneBlade,
+         .icon = GFX_SkillIcon_ArcaneBlade,
+      },
 #endif
 };

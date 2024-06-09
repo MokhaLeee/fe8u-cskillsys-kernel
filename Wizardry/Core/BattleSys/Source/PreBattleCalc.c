@@ -184,6 +184,26 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         if (SkillTester(unit, SID_BlowUncanny))
             attacker->battleHitRate += 30;
 #endif
+        /* Non-blow attacker skill*/
+
+#if (defined(SID_BlowKilling) && (SID_BlowKilling < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_BlowKilling))
+            attacker->battleCritRate += 20;
+#endif
+
+#if (defined(SID_QuickDraw) && (SID_QuickDraw < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_QuickDraw))
+           attacker->battleAttack += 4;
+#endif
+
+#if (defined(SID_ArcaneBlade) && (SID_ArcaneBlade < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_ArcaneBlade))
+           if(gBattleStats.range == 1)
+           {
+                attacker->battleCritRate += 3 + UNIT_MAG(unit) / 2;
+                attacker->battleHitRate += 3 + UNIT_MAG(unit) / 2;
+           }
+#endif
     }
 
     /* Stance skills */
@@ -573,6 +593,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_Charge))
             attacker->battleAttack += gActionData.moveCount / 2;
+#endif
 
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_FieryBlood))
