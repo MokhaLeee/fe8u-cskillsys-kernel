@@ -590,6 +590,16 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_ChaosStyle))
+    {
+        if ((IsMagicAttack(attacker) && !IsMagicAttack(defender)) || (!IsMagicAttack(attacker) && IsMagicAttack(defender)))
+        {
+            attacker->battleSpeed += 3;
+        }
+    }
+#endif
+
 #if defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_Charge))
             attacker->battleAttack += gActionData.moveCount / 2;

@@ -1657,4 +1657,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_ArcaneBlade,
       },
 #endif
+
+#if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM)) 
+    [SID_ChaosStyle] = {
+         .desc = MSG_SKILL_ChaosStyle,
+         .icon = GFX_SkillIcon_ChaosStyle,
+      },
+#endif
 };
