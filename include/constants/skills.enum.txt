@@ -92,6 +92,7 @@ SID_Chivalry
 SID_Charge
 SID_FieryBlood
 SID_Vigilance
+SID_OutdoorFighter
 
 // Weapon triangle
 SID_SwordBreaker

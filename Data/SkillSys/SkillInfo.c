@@ -1671,4 +1671,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Vigilance,
       },
 #endif
+
+#if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM)) 
+    [SID_OutdoorFighter] = {
+         .name = MSG_SKILL_OutdoorFighter_NAME,
+         .desc = MSG_SKILL_OutdoorFighter,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
 };
