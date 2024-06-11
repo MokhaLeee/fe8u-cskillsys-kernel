@@ -113,5 +113,7 @@ gConfigUseGlyph:
 
 gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
 
+gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

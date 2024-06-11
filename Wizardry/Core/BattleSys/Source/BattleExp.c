@@ -12,7 +12,7 @@ int GetUnitExpLevel(struct Unit * unit)
     if (CheckHasBwl(UNIT_CHAR_ID(unit)))
         bonus = GetUnitHiddenLevel(unit);
     else
-        bonus = gClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
+        bonus = gpClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
 
     return base + bonus;
 }

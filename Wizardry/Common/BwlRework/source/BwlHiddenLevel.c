@@ -31,5 +31,5 @@ void UnitHiddenLevelPreLoad(struct Unit * unit)
     if (!bwl)
         return;
 
-    bwl->levelGain = gClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
+    bwl->levelGain = gpClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
 }
