@@ -1622,13 +1622,6 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
-#if (defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)) 
-    [SID_Charge] = {
-         .desc = MSG_SKILL_Charge,
-         .icon = GFX_SkillIcon_Charge,
-    },
-#endif
-
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
     [SID_FieryBlood] = {
          .name = MSG_SKILL_FieryBlood_NAME,
@@ -1763,7 +1756,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .name = MSG_SKILL_PushSpectrum_NAME,
          .desc = MSG_SKILL_PushSpectrum,
          .icon = GFX_SkillIcon_PushSpectrum,
-    }
+    },
 #endif
 
 #if (defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)) 
@@ -1772,6 +1765,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Charge,
     },
 #endif
+
 #if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM)) 
     [SID_Wrath] = {
          .desc = MSG_SKILL_Wrath,
