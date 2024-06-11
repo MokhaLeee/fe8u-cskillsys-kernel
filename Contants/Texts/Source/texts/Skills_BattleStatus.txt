@@ -309,3 +309,11 @@ against a magical foe, or vice versa.[X]
 ## MSG_SKILL_Vigilance
 Vigilance:[NL]
 Gain +20 avoid.[X]
+
+## MSG_SKILL_OutdoorFighter_NAME
+Out-Fighter[X]
+
+## MSG_SKILL_OutdoorFighter
+OutdoorFighter:[NL]
++10 hit and avoid when[NL]
+fighting outdoors.[X]
