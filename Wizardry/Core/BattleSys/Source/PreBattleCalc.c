@@ -528,44 +528,30 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
     }
 
-#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_FireBoost))
+    if (attacker->hpInitial - defender->hpInitial >= 3)
     {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
+#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_FireBoost))
             attacker->battleAttack += 6;
-    }
 #endif
 
 #if (defined(SID_WindBoost) && (SID_WindBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_WindBoost))
-    {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
+        if (SkillTester(unit, SID_WindBoost))
             attacker->battleSpeed += 6;
-    }
 #endif
 
-#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_FireBoost))
-    {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
-        {
+#if (defined(SID_EarthBoost) && (SID_EarthBoost < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_EarthBoost))
             if (!IsMagicAttack(defender))
                 attacker->battleDefense += 6;
-        }
-        
-    }
 #endif
 
 #if (defined(SID_WaterBoost) && (SID_WaterBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_WaterBoost))
-    {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
-        {
+        if (SkillTester(unit, SID_WaterBoost))
             if (IsMagicAttack(defender))
                 attacker->battleDefense += 6;
-        }
-    }
 #endif
+    }
 
 #if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_ChaosStyle))
