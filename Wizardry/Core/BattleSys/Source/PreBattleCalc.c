@@ -121,6 +121,12 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     struct Unit * unit = GetUnit(attacker->unit.index);
     struct Unit * unit_def = GetUnit(defender->unit.index);
 
+    const unsigned int OutdoorTerrainList[] = {
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
+        22, 23, 26, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 48, 49, 50, 51, 52, 
+        53, 54, 55, 56, 57, 58, 59, 62, 63, 64, 65
+    };
+
     /* Defiant skills */
     if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
     {
@@ -612,6 +618,54 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
        {
             attacker->battleAttack += 4;
        }
+    }
+#endif
+
+#if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Wrath))
+    {
+       if (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit)/2)
+       {
+            attacker->battleCritRate += 20;
+       }
+    }
+#endif
+
+    if (attacker->terrainDefense || attacker->terrainAvoid || attacker->terrainResistance)
+    {
+#if (defined(SID_NaturalCover) && (SID_NaturalCover < MAX_SKILL_NUM)) 
+        if (SkillTester(unit, SID_NaturalCover))
+            attacker->battleDefense += 3;
+#endif
+    }
+    else
+    {
+#if (defined(SID_ElbowRoom) && (SID_ElbowRoom < MAX_SKILL_NUM)) 
+        if (SkillTester(unit, SID_ElbowRoom))
+            attacker->battleAttack += 3;
+#endif
+    }
+
+#if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Vigilance))
+    {
+       attacker->battleAvoidRate += 20;
+    }
+#endif
+
+#if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_OutdoorFighter))
+    {
+        const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
+        for (int i = 0; i < 48; i++)
+        {
+            if (OutdoorTerrainList[i] == terrainId)
+            {
+                attacker->battleHitRate += 10;
+                attacker->battleAvoidRate += 10;
+                break;
+            }
+        }
     }
 #endif
 }

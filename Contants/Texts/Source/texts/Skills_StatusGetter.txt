@@ -161,3 +161,9 @@ P-Spectrum[X]
 ## MSG_SKILL_PushSpectrum
 PushSpectrum:[NL]
 +5 to all stats if HP is full.[X]
+
+## MSG_SKILL_EvenFooted
+EvenFooted:[NL]
++1 move on even[NL]
+numbered turns.[X]
+

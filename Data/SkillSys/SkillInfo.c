@@ -1622,6 +1622,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)) 
+    [SID_Charge] = {
+         .desc = MSG_SKILL_Charge,
+         .icon = GFX_SkillIcon_Charge,
+    },
+#endif
+
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
     [SID_FieryBlood] = {
          .name = MSG_SKILL_FieryBlood_NAME,
@@ -1637,6 +1644,20 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_LightWeight) && (SID_LightWeight < MAX_SKILL_NUM)) 
+    [SID_LightWeight] = {
+         .desc = MSG_SKILL_LightWeight,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
+#if (defined(SID_EvenFooted) && (SID_EvenFooted < MAX_SKILL_NUM)) 
+    [SID_EvenFooted] = {
+         .desc = MSG_SKILL_EvenFooted,
+         .icon = GFX_SkillIcon_EvenFooted,
+    },
+#endif
+
 #if (defined(SID_QuickDraw) && (SID_QuickDraw < MAX_SKILL_NUM)) 
     [SID_QuickDraw] = {
          .desc = MSG_SKILL_QuickDraw,
@@ -1648,6 +1669,21 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_ArcaneBlade] = {
          .desc = MSG_SKILL_ArcaneBlade,
          .icon = GFX_SkillIcon_ArcaneBlade,
+      },
+#endif
+
+#if (defined(SID_ElbowRoom) && (SID_ElbowRoom < MAX_SKILL_NUM)) 
+    [SID_ElbowRoom] = {
+         .desc = MSG_SKILL_ElbowRoom,
+         .icon = GFX_SkillIcon_ElbowRoom,
+      },
+#endif
+
+#if (defined(SID_NaturalCover) && (SID_NaturalCover < MAX_SKILL_NUM)) 
+    [SID_NaturalCover] = {
+         .name = MSG_SKILL_NaturalCover_NAME,
+         .desc = MSG_SKILL_NaturalCover,
+         .icon = GFX_SkillIcon_NaturalCover,
       },
 #endif
 
@@ -1735,5 +1771,26 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .desc = MSG_SKILL_Charge,
          .icon = GFX_SkillIcon_Charge,
     },
+#endif
+#if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM)) 
+    [SID_Wrath] = {
+         .desc = MSG_SKILL_Wrath,
+         .icon = GFX_SkillIcon_Wrath,
+      },
+#endif
+
+#if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM)) 
+    [SID_Vigilance] = {
+         .desc = MSG_SKILL_Vigilance,
+         .icon = GFX_SkillIcon_Vigilance,
+      },
+#endif
+
+#if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM)) 
+    [SID_OutdoorFighter] = {
+         .name = MSG_SKILL_OutdoorFighter_NAME,
+         .desc = MSG_SKILL_OutdoorFighter,
+         .icon = GFX_SkillIcon_WIP,
+      },
 #endif
 };
