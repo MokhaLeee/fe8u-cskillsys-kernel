@@ -621,6 +621,16 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Wrath))
+    {
+       if (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit)/2)
+       {
+            attacker->battleCritRate += 20;
+       }
+    }
+#endif
+
     if (attacker->terrainDefense || attacker->terrainAvoid || attacker->terrainResistance)
     {
 #if (defined(SID_NaturalCover) && (SID_NaturalCover < MAX_SKILL_NUM)) 

@@ -1693,6 +1693,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM)) 
+    [SID_Wrath] = {
+         .desc = MSG_SKILL_Wrath,
+         .icon = GFX_SkillIcon_Wrath,
+      },
+#endif
+
 #if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM)) 
     [SID_Vigilance] = {
          .desc = MSG_SKILL_Vigilance,

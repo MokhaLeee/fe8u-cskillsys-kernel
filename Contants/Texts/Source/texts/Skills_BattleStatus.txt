@@ -323,6 +323,11 @@ Chaos Style:[NL]
 +3 AS when using a physical weapon[NL]
 against a magical foe, or vice versa.[X]
 
+## MSG_SKILL_Wrath
+Wrath:[NL]
+If current HP is < 50%[NL]
+of max, +20 crit rate.[X]
+
 ## MSG_SKILL_Vigilance
 Vigilance:[NL]
 Gain +20 avoid.[X]
