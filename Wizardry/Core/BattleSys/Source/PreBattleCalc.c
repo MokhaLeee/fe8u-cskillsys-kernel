@@ -184,6 +184,26 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         if (SkillTester(unit, SID_BlowUncanny))
             attacker->battleHitRate += 30;
 #endif
+        /* Non-blow attacker skill*/
+
+#if (defined(SID_BlowKilling) && (SID_BlowKilling < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_BlowKilling))
+            attacker->battleCritRate += 20;
+#endif
+
+#if (defined(SID_QuickDraw) && (SID_QuickDraw < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_QuickDraw))
+           attacker->battleAttack += 4;
+#endif
+
+#if (defined(SID_ArcaneBlade) && (SID_ArcaneBlade < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_ArcaneBlade))
+           if(gBattleStats.range == 1)
+           {
+                attacker->battleCritRate += 3 + UNIT_MAG(unit) / 2;
+                attacker->battleHitRate += 3 + UNIT_MAG(unit) / 2;
+           }
+#endif
     }
 
     /* Stance skills */
@@ -409,29 +429,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
-#if (defined(SID_WonderGuard) && (SID_WonderGuard < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_WonderGuard))
-    {
-        // check if the attacker and defender have the same weapon type
-        if (defender->weaponType == attacker->weaponType) 
-            /**
-             * if so, then increase the attacker's defense by the
-             * defender's attack to render the latter's attack harmless 
-             */
-            attacker->battleDefense = INT16_MAX;
-    }
-#endif
-
-#if (defined(SID_Merciless) && (SID_Merciless < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_Merciless))
-    {
-        // Check if the defending unit has the poison status
-        if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
-            // If so, then set an arbitrary high value for crit to 'gurantee' it.
-            attacker->battleCritRate = INT16_MAX;
-    }
-#endif
-
 #if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_CriticalPierce))
     {
@@ -531,41 +528,37 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
     }
 
-#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_FireBoost))
+    if (attacker->hpInitial - defender->hpInitial >= 3)
     {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
+#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_FireBoost))
             attacker->battleAttack += 6;
-    }
 #endif
 
 #if (defined(SID_WindBoost) && (SID_WindBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_WindBoost))
-    {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
+        if (SkillTester(unit, SID_WindBoost))
             attacker->battleSpeed += 6;
-    }
 #endif
 
-#if (defined(SID_FireBoost) && (SID_FireBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_FireBoost))
-    {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
-        {
+#if (defined(SID_EarthBoost) && (SID_EarthBoost < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_EarthBoost))
             if (!IsMagicAttack(defender))
                 attacker->battleDefense += 6;
-        }
-        
-    }
 #endif
 
 #if (defined(SID_WaterBoost) && (SID_WaterBoost < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_WaterBoost))
-    {
-        if (attacker->hpInitial - defender->hpInitial >= 3)
-        {
+        if (SkillTester(unit, SID_WaterBoost))
             if (IsMagicAttack(defender))
                 attacker->battleDefense += 6;
+#endif
+    }
+
+#if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_ChaosStyle))
+    {
+        if ((IsMagicAttack(attacker) && !IsMagicAttack(defender)) || (!IsMagicAttack(attacker) && IsMagicAttack(defender)))
+        {
+            attacker->battleSpeed += 3;
         }
     }
 #endif
@@ -573,6 +566,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_Charge))
             attacker->battleAttack += gActionData.moveCount / 2;
+#endif
 
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_FieryBlood))
@@ -581,6 +575,99 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
        {
             attacker->battleAttack += 4;
        }
+    }
+#endif
+
+#if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Wrath))
+    {
+       if (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit)/2)
+       {
+            attacker->battleCritRate += 20;
+       }
+    }
+#endif
+
+    if (attacker->terrainDefense || attacker->terrainAvoid || attacker->terrainResistance)
+    {
+#if (defined(SID_NaturalCover) && (SID_NaturalCover < MAX_SKILL_NUM)) 
+        if (SkillTester(unit, SID_NaturalCover))
+            attacker->battleDefense += 3;
+#endif
+    }
+    else
+    {
+#if (defined(SID_ElbowRoom) && (SID_ElbowRoom < MAX_SKILL_NUM)) 
+        if (SkillTester(unit, SID_ElbowRoom))
+            attacker->battleAttack += 3;
+#endif
+    }
+
+#if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Vigilance))
+    {
+       attacker->battleAvoidRate += 20;
+    }
+#endif
+
+#if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_OutdoorFighter))
+    {
+        switch (gBmMapTerrain[unit->yPos][unit->xPos]) {
+        case TERRAIN_PLAINS:
+        case TERRAIN_ROAD:
+        case TERRAIN_VILLAGE_03:
+        case TERRAIN_VILLAGE_04:
+        case TERRIAN_HOUSE:
+        case TERRAIN_ARMORY:
+        case TERRAIN_VENDOR:
+        case TERRAIN_ARENA_08:
+        case TERRAIN_C_ROOM_09:
+        case TERRAIN_GATE_0B:
+        case TERRAIN_FOREST:
+        case TERRAIN_THICKET:
+        case TERRAIN_SAND:
+        case TERRAIN_DESERT:
+        case TERRAIN_RIVER:
+        case TERRAIN_MOUNTAIN:
+        case TERRAIN_PEAK:
+        case TERRAIN_BRIDGE_13:
+        case TERRAIN_BRIDGE_14:
+        case TERRAIN_SEA:
+        case TERRAIN_LAKE:
+        case TERRAIN_GATE_23:
+        case TERRAIN_CHURCH:
+        case TERRAIN_RUINS_25:
+        case TERRAIN_CLIFF:
+        case TERRAIN_BALLISTA_REGULAR:
+        case TERRAIN_BALLISTA_LONG:
+        case TERRAIN_BALLISTA_KILLER:
+        case TERRAIN_SHIP_FLAT:
+        case TERRAIN_SHIP_WRECK:
+        case TERRAIN_TILE_2C:
+        case TERRAIN_ARENA_30:
+        case TERRAIN_VALLEY:
+        case TERRAIN_FENCE_32:
+        case TERRAIN_SNAG:
+        case TERRAIN_BRIDGE_34:
+        case TERRAIN_SKY:
+        case TERRAIN_DEEPS:
+        case TERRAIN_RUINS_37:
+        case TERRAIN_INN:
+        case TERRAIN_BARREL:
+        case TERRAIN_BONE:
+        case TERRAIN_DARK:
+        case TERRAIN_WATER:
+        case TERRAIN_DECK:
+        case TERRAIN_BRACE:
+        case TERRAIN_MAST:
+            attacker->battleHitRate += 10;
+            attacker->battleAvoidRate += 10;
+            break;
+
+        default:
+            break;
+        }
     }
 #endif
 }
@@ -653,12 +740,6 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
             attacker->battleCritRate += 25;
 #endif
     }
-
-#if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_Hawkeye))
-           attacker->battleHitRate = INT16_MAX;
-#endif
-
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)

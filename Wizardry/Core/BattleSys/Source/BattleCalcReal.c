@@ -49,3 +49,40 @@ void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct Ba
         }
     }
 }
+
+STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+#if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
+        if (SkillTester(&attacker->unit, SID_Hawkeye))
+           attacker->battleEffectiveHitRate = INT16_MAX;
+#endif
+
+#if (defined(SID_WonderGuard) && (SID_WonderGuard < MAX_SKILL_NUM))
+    if (SkillTester(&attacker->unit, SID_WonderGuard))
+    {
+        if (defender->weaponType == attacker->weaponType) 
+            attacker->battleDefense = INT16_MAX;
+    }
+#endif
+
+#if (defined(SID_Merciless) && (SID_Merciless < MAX_SKILL_NUM))
+    if (SkillTester(&attacker->unit, SID_Merciless))
+    {
+        if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
+            attacker->battleEffectiveCritRate = INT16_MAX;
+    }
+#endif
+}
+
+/* LynJump */
+void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    ComputeBattleUnitEffectiveHitRate(attacker, defender);
+    ComputeBattleUnitEffectiveCritRate(attacker, defender);
+    ComputeBattleUnitSilencerRate(attacker, defender);
+    ComputeBattleUnitSpecialWeaponStats(attacker, defender);
+
+#if CHAX
+    BattleCalcReal_ComputSkills(attacker, defender);
+#endif
+}

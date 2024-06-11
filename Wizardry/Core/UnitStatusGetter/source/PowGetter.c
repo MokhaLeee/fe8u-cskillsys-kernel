@@ -74,6 +74,19 @@ int PowGetterSkills(int status, struct Unit * unit)
         status += 7;
 #endif
 
+    if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+    {
+#if defined(SID_PushStrength) && (SID_PushStrength < MAX_SKILL_NUM)
+        if (SkillTester(unit, SID_PushStrength))
+            status += 5;
+#endif
+
+#if defined(SID_PushSpectrum) && (SID_PushSpectrum < MAX_SKILL_NUM)
+        if (SkillTester(unit, SID_PushSpectrum))
+            status += 5;
+#endif
+    }
+
 #if defined(SID_Guts) && (SID_Guts < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_Guts) && (GetUnitStatusIndex(unit) != UNIT_STATUS_NONE))
         status += 5;

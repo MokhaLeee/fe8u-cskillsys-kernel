@@ -98,6 +98,75 @@ Lucky 7: [NL]
 Unit get different bonus[NL]
 at each turn[X]
 
+## MSG_SKILL_PushDefense_NAME
+P-Defense[X]
+
+## MSG_SKILL_PushDefense
+PushDefense:[NL]
++5 defense if HP is full.[X]
+
+## MSG_SKILL_PushMagic_NAME
+P-Magic[X]
+
+## MSG_SKILL_PushMagic
+PushMagic:[NL]
++5 Magic if HP is full.[X]
+
+## MSG_SKILL_PushResistance_NAME
+P-Resistance[X]
+
+## MSG_SKILL_PushResistance
+PushResistance:[NL]
++5 resistance if[NL]
+HP is full.[X]
+
+## MSG_SKILL_PushSkill_NAME
+P-Skill[X]
+
+## MSG_SKILL_PushSkill
+PushSkill:[NL]
++5 skill if HP is full.[X]
+
+## MSG_SKILL_PushSpeed_NAME
+P-Speed[X]
+
+## MSG_SKILL_PushSpeed
+PushSpeed:[NL]
++5 speed if HP is full.[X]
+
+## MSG_SKILL_PushStrength_NAME
+P-Strength[X]
+
+## MSG_SKILL_PushStrength
+PushStrength:[NL]
++5 strength if HP is full.[X]
+
+## MSG_SKILL_PushLuck_NAME
+P-Luck[X]
+
+## MSG_SKILL_PushLuck
+PushLuck:[NL]
++5 to luck if HP is full.[X]
+
+## MSG_SKILL_PushMovement_NAME
+P-Movement[X]
+
+## MSG_SKILL_PushMovement
+PushMovement:[NL]
++5 movement if HP is full.[X]
+
+## MSG_SKILL_PushSpectrum_NAME
+P-Spectrum[X]
+
+## MSG_SKILL_PushSpectrum
+PushSpectrum:[NL]
++5 to all stats if HP is full.[X]
+
+## MSG_SKILL_EvenFooted
+EvenFooted:[NL]
++1 move on even[NL]
+numbered turns.[X]
+
 ## MSG_SKILL_Guts
 Guts:[NL]
 +5 attack if afflicted by[NL]

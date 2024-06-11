@@ -62,5 +62,18 @@ int MagGetterSkills(int status, struct Unit * unit)
         status += 7;
 #endif
 
+    if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+    {
+#if defined(SID_PushMagic) && (SID_PushMagic < MAX_SKILL_NUM)
+        if (SkillTester(unit, SID_PushMagic))
+            status += 5;
+#endif
+
+#if defined(SID_PushSpectrum) && (SID_PushSpectrum < MAX_SKILL_NUM)
+        if (SkillTester(unit, SID_PushSpectrum))
+            status += 5;
+#endif
+    }
+
     return status;
 }
