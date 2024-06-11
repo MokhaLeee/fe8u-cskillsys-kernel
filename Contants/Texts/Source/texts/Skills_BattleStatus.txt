@@ -292,6 +292,11 @@ FieryBlood:[NL]
 +4 strength if HP[NL]
 is not at max.[X]
 
+## MSG_SKILL_LightWeight
+LightWeight:[NL]
+If unit has 3 or less[NL]
+items, +3 speed.[X]
+
 ## MSG_SKILL_QuickDraw
 Quick Draw:[NL]
 +4 Damage when initiating battle.[X]
@@ -312,3 +317,20 @@ N-Cover[X]
 Natural Cover:[NL]
 -3 damage taken when on[NL]
 terrain with effects.[X]
+
+## MSG_SKILL_ChaosStyle
+Chaos Style:[NL]
++3 AS when using a physical weapon[NL]
+against a magical foe, or vice versa.[X]
+
+## MSG_SKILL_Vigilance
+Vigilance:[NL]
+Gain +20 avoid.[X]
+
+## MSG_SKILL_OutdoorFighter_NAME
+Out-Fighter[X]
+
+## MSG_SKILL_OutdoorFighter
+OutdoorFighter:[NL]
++10 hit and avoid when[NL]
+fighting outdoors.[X]
