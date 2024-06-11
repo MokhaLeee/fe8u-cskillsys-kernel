@@ -435,29 +435,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
-#if (defined(SID_WonderGuard) && (SID_WonderGuard < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_WonderGuard))
-    {
-        // check if the attacker and defender have the same weapon type
-        if (defender->weaponType == attacker->weaponType) 
-            /**
-             * if so, then increase the attacker's defense by the
-             * defender's attack to render the latter's attack harmless 
-             */
-            attacker->battleDefense = INT16_MAX;
-    }
-#endif
-
-#if (defined(SID_Merciless) && (SID_Merciless < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_Merciless))
-    {
-        // Check if the defending unit has the poison status
-        if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
-            // If so, then set an arbitrary high value for crit to 'gurantee' it.
-            attacker->battleCritRate = INT16_MAX;
-    }
-#endif
-
 #if (defined(SID_CriticalPierce) && (SID_CriticalPierce < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_CriticalPierce))
     {
@@ -738,12 +715,6 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
             attacker->battleCritRate += 25;
 #endif
     }
-
-#if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_Hawkeye))
-           attacker->battleHitRate = INT16_MAX;
-#endif
-
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
