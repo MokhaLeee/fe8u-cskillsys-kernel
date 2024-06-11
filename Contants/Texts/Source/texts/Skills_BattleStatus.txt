@@ -347,3 +347,15 @@ Dan-Blade:[X]
 Dancing Blade:[NL]
 +4 Attack Speed/-2 Damage when[NL]
 unit's Con. is lower than the enemy.[X]
+
+## MSG_SKILL_KnightAspirant_NAME
+K-Aspirant[X]
+
+## MSG_SKILL_KnightAspirant
+KnightAspirant:[NL]
+When above 75% health,[NL]
++2 damage, +15% avoid.[X]
+## MSG_SKILL_Outrider
+Outrider:[NL]
+-1 damage taken and[NL]
++3% crit per tile moved.[X]
