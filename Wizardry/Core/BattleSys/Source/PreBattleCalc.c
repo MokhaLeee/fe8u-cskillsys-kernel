@@ -570,6 +570,21 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)
+        if (SkillTester(unit, SID_Charge))
+            attacker->battleAttack += gActionData.moveCount / 2;
+#endif
+
+#if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_FieryBlood))
+    {
+       if (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit))
+       {
+            attacker->battleAttack += 4;
+       }
+    }
+#endif
+
 #if (defined(SID_KnightAspirant) && (SID_KnightAspirant < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_KnightAspirant))
     {
@@ -578,7 +593,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             attacker->battleAttack += 2;
             attacker->battleAvoidRate += 15;
         }
-    }
 #endif
 }
 

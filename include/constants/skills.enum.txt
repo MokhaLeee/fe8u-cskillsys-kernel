@@ -86,6 +86,8 @@ SID_Perfectionist
 SID_WindDisciple
 SID_Pragmatic
 SID_Chivalry
+SID_Charge
+SID_FieryBlood
 SID_KnightAspirant
 
 // Weapon triangle
@@ -116,6 +118,7 @@ SID_Sol
 SID_DragonFang
 SID_Foresight
 SID_Inori
+SID_Colossus
 
 // Blow skills
 SID_BlowDarting

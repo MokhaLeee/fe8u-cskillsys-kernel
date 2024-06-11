@@ -131,6 +131,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             defense = 0;
         }
 #endif
+
+#if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, GetUnitSkill(GetUnit(attacker->unit.index))))
+        {
+            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
+            attack *= 3;
+        }
+#endif
     }
 
     gBattleStats.damage = attack - defense;
