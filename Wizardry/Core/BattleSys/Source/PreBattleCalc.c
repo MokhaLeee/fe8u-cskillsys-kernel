@@ -121,12 +121,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     struct Unit * unit = GetUnit(attacker->unit.index);
     struct Unit * unit_def = GetUnit(defender->unit.index);
 
-    const unsigned int OutdoorTerrainList[] = {
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
-        22, 23, 26, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 48, 49, 50, 51, 52, 
-        53, 54, 55, 56, 57, 58, 59, 62, 63, 64, 65
-    };
-
     /* Defiant skills */
     if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
     {
@@ -633,15 +627,60 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_OutdoorFighter))
     {
-        const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
-        for (int i = 0; i < 48; i++)
-        {
-            if (OutdoorTerrainList[i] == terrainId)
-            {
-                attacker->battleHitRate += 10;
-                attacker->battleAvoidRate += 10;
-                break;
-            }
+        switch (gBmMapTerrain[unit->yPos][unit->xPos]) {
+        case TERRAIN_PLAINS:
+        case TERRAIN_ROAD:
+        case TERRAIN_VILLAGE_03:
+        case TERRAIN_VILLAGE_04:
+        case TERRIAN_HOUSE:
+        case TERRAIN_ARMORY:
+        case TERRAIN_VENDOR:
+        case TERRAIN_ARENA_08:
+        case TERRAIN_C_ROOM_09:
+        case TERRAIN_GATE_0B:
+        case TERRAIN_FOREST:
+        case TERRAIN_THICKET:
+        case TERRAIN_SAND:
+        case TERRAIN_DESERT:
+        case TERRAIN_RIVER:
+        case TERRAIN_MOUNTAIN:
+        case TERRAIN_PEAK:
+        case TERRAIN_BRIDGE_13:
+        case TERRAIN_BRIDGE_14:
+        case TERRAIN_SEA:
+        case TERRAIN_LAKE:
+        case TERRAIN_GATE_23:
+        case TERRAIN_CHURCH:
+        case TERRAIN_RUINS_25:
+        case TERRAIN_CLIFF:
+        case TERRAIN_BALLISTA_REGULAR:
+        case TERRAIN_BALLISTA_LONG:
+        case TERRAIN_BALLISTA_KILLER:
+        case TERRAIN_SHIP_FLAT:
+        case TERRAIN_SHIP_WRECK:
+        case TERRAIN_TILE_2C:
+        case TERRAIN_ARENA_30:
+        case TERRAIN_VALLEY:
+        case TERRAIN_FENCE_32:
+        case TERRAIN_SNAG:
+        case TERRAIN_BRIDGE_34:
+        case TERRAIN_SKY:
+        case TERRAIN_DEEPS:
+        case TERRAIN_RUINS_37:
+        case TERRAIN_INN:
+        case TERRAIN_BARREL:
+        case TERRAIN_BONE:
+        case TERRAIN_DARK:
+        case TERRAIN_WATER:
+        case TERRAIN_DECK:
+        case TERRAIN_BRACE:
+        case TERRAIN_MAST:
+            attacker->battleHitRate += 10;
+            attacker->battleAvoidRate += 10;
+            break;
+
+        default:
+            break;
         }
     }
 #endif
