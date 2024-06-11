@@ -1643,6 +1643,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_LightWeight) && (SID_LightWeight < MAX_SKILL_NUM)) 
+    [SID_LightWeight] = {
+         .desc = MSG_SKILL_LightWeight,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
 #if (defined(SID_EvenFooted) && (SID_EvenFooted < MAX_SKILL_NUM)) 
     [SID_EvenFooted] = {
          .desc = MSG_SKILL_EvenFooted,

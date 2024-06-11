@@ -292,6 +292,11 @@ FieryBlood:[NL]
 +4 strength if HP[NL]
 is not at max.[X]
 
+## MSG_SKILL_LightWeight
+LightWeight:[NL]
+If unit has 3 or less[NL]
+items, +3 speed.[X]
+
 ## MSG_SKILL_QuickDraw
 Quick Draw:[NL]
 +4 Damage when initiating battle.[X]
