@@ -8,6 +8,7 @@ SID_LckBonus
 SID_DefBonus
 SID_ResBonus
 SID_MovBonus
+SID_LightWeight
 
 SID_DefiantStr
 SID_DefiantMag
@@ -25,6 +26,7 @@ SID_FortressDef
 SID_FortressRes
 SID_LifeAndDeath
 SID_LuckySeven
+SID_EvenFooted
 
 // Battle effective
 SID_Nullify
@@ -70,6 +72,8 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_NaturalCover
+SID_ElbowRoom
 SID_ChaosStyle
 SID_ArcaneBlade
 SID_QuickDraw
@@ -92,6 +96,8 @@ SID_Chivalry
 SID_Charge
 SID_FieryBlood
 SID_Wrath
+SID_Vigilance
+SID_OutdoorFighter
 
 // Weapon triangle
 SID_SwordBreaker
