@@ -32,3 +32,8 @@ grants Avo +20 during combat[X]
 Uncanny Blow:[NL]
 If unit initiates combat,[NL]
 grants Hit +30 during combat[X]
+
+## MSG_SKILL_BlowKilling
+Killing Blow:[NL]
+If unit initiates combat,[NL]
+grants Crit +20 during combat[X]

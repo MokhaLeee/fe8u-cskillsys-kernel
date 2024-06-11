@@ -590,6 +590,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(BlowKilling) && (BlowKilling < MAX_SKILL_NUM))
+    [BlowKilling] = {
+        .desc = MSG_SKILL_BlowKilling,
+        .icon = GFX_SkillIcon_BlowKilling,
+    },
+#endif
+
 #if (defined(SID_StanceBracing) && (SID_StanceBracing < MAX_SKILL_NUM))
     [SID_StanceBracing] = {
         .desc = MSG_SKILL_StanceBracing,
@@ -1615,12 +1622,6 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
-#if (defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)) 
-    [SID_Charge] = {
-         .desc = MSG_SKILL_Charge,
-         .icon = GFX_SkillIcon_Charge,
-#endif
-
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
     [SID_FieryBlood] = {
          .name = MSG_SKILL_FieryBlood_NAME,
@@ -1636,10 +1637,161 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_LightWeight) && (SID_LightWeight < MAX_SKILL_NUM)) 
+    [SID_LightWeight] = {
+         .desc = MSG_SKILL_LightWeight,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
+#if (defined(SID_EvenFooted) && (SID_EvenFooted < MAX_SKILL_NUM)) 
+    [SID_EvenFooted] = {
+         .desc = MSG_SKILL_EvenFooted,
+         .icon = GFX_SkillIcon_EvenFooted,
+    },
+#endif
+
+#if (defined(SID_QuickDraw) && (SID_QuickDraw < MAX_SKILL_NUM)) 
+    [SID_QuickDraw] = {
+         .desc = MSG_SKILL_QuickDraw,
+         .icon = GFX_SkillIcon_QuickDraw,
+      },
+#endif
+
+#if (defined(SID_ArcaneBlade) && (SID_ArcaneBlade < MAX_SKILL_NUM)) 
+    [SID_ArcaneBlade] = {
+         .desc = MSG_SKILL_ArcaneBlade,
+         .icon = GFX_SkillIcon_ArcaneBlade,
+      },
+#endif
+
+#if (defined(SID_ElbowRoom) && (SID_ElbowRoom < MAX_SKILL_NUM)) 
+    [SID_ElbowRoom] = {
+         .desc = MSG_SKILL_ElbowRoom,
+         .icon = GFX_SkillIcon_ElbowRoom,
+      },
+#endif
+
+#if (defined(SID_NaturalCover) && (SID_NaturalCover < MAX_SKILL_NUM)) 
+    [SID_NaturalCover] = {
+         .name = MSG_SKILL_NaturalCover_NAME,
+         .desc = MSG_SKILL_NaturalCover,
+         .icon = GFX_SkillIcon_NaturalCover,
+      },
+#endif
+
+#if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM)) 
+    [SID_ChaosStyle] = {
+         .desc = MSG_SKILL_ChaosStyle,
+         .icon = GFX_SkillIcon_ChaosStyle,
+      },
+#endif
+
+#if (defined(SID_PushDefense) && (SID_PushDefense < MAX_SKILL_NUM)) 
+    [SID_PushDefense] = {
+         .name = MSG_SKILL_PushDefense_NAME,
+         .desc = MSG_SKILL_PushDefense,
+         .icon = GFX_SkillIcon_PushDefense,
+      },
+#endif
+
+#if (defined(SID_PushMagic) && (SID_PushMagic < MAX_SKILL_NUM)) 
+    [SID_PushMagic] = {
+         .name = MSG_SKILL_PushMagic_NAME,
+         .desc = MSG_SKILL_PushMagic,
+         .icon = GFX_SkillIcon_PushMagic,
+      },
+#endif
+
+#if (defined(SID_PushResistance) && (SID_PushResistance < MAX_SKILL_NUM)) 
+    [SID_PushResistance] = {
+         .name = MSG_SKILL_PushResistance_NAME,
+         .desc = MSG_SKILL_PushResistance,
+         .icon = GFX_SkillIcon_PushResistance,
+      },
+#endif
+
+#if (defined(SID_PushSkill) && (SID_PushSkill < MAX_SKILL_NUM)) 
+    [SID_PushSkill] = {
+         .name = MSG_SKILL_PushSkill_NAME,
+         .desc = MSG_SKILL_PushSkill,
+         .icon = GFX_SkillIcon_PushSkill,
+      },
+#endif
+
+#if (defined(SID_PushSpeed) && (SID_PushSpeed < MAX_SKILL_NUM)) 
+    [SID_PushSpeed] = {
+         .name = MSG_SKILL_PushSpeed_NAME,
+         .desc = MSG_SKILL_PushSpeed,
+         .icon = GFX_SkillIcon_PushSpeed,
+      },
+#endif
+
+#if (defined(SID_PushStrength) && (SID_PushStrength < MAX_SKILL_NUM)) 
+    [SID_PushStrength] = {
+         .name = MSG_SKILL_PushStrength_NAME,
+         .desc = MSG_SKILL_PushStrength,
+         .icon = GFX_SkillIcon_PushStrength,
+      },
+#endif
+
+#if (defined(SID_PushLuck) && (SID_PushLuck < MAX_SKILL_NUM)) 
+    [SID_PushLuck] = {
+         .name = MSG_SKILL_PushLuck_NAME,
+         .desc = MSG_SKILL_PushLuck,
+         .icon = GFX_SkillIcon_PushLuck,
+      },
+#endif
+
+#if (defined(SID_PushMovement) && (SID_PushMovement < MAX_SKILL_NUM)) 
+    [SID_PushMovement] = {
+         .name = MSG_SKILL_PushMovement_NAME,
+         .desc = MSG_SKILL_PushMovement,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
+#if (defined(SID_PushSpectrum) && (SID_PushSpectrum < MAX_SKILL_NUM)) 
+    [SID_PushSpectrum] = {
+         .name = MSG_SKILL_PushSpectrum_NAME,
+         .desc = MSG_SKILL_PushSpectrum,
+         .icon = GFX_SkillIcon_PushSpectrum,
+    },
+#endif
+
+#if (defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)) 
+    [SID_Charge] = {
+         .desc = MSG_SKILL_Charge,
+         .icon = GFX_SkillIcon_Charge,
+    },
+#endif
+
+#if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM)) 
+    [SID_Wrath] = {
+         .desc = MSG_SKILL_Wrath,
+         .icon = GFX_SkillIcon_Wrath,
+      },
+#endif
+
+#if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM)) 
+    [SID_Vigilance] = {
+         .desc = MSG_SKILL_Vigilance,
+         .icon = GFX_SkillIcon_Vigilance,
+      },
+#endif
+
+#if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM)) 
+    [SID_OutdoorFighter] = {
+         .name = MSG_SKILL_OutdoorFighter_NAME,
+         .desc = MSG_SKILL_OutdoorFighter,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
 #if (defined(SID_Outrider) && (SID_Outrider < MAX_SKILL_NUM)) 
     [SID_Outrider] = {
          .desc = MSG_SKILL_Outrider,
-         .icon = GFX_SkillIcon_WIP,
-      },
+         .icon = GFX_SkillIcon_Outrider
+    },
 #endif
 };
