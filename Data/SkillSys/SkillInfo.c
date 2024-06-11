@@ -1671,6 +1671,21 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_ElbowRoom) && (SID_ElbowRoom < MAX_SKILL_NUM)) 
+    [SID_ElbowRoom] = {
+         .desc = MSG_SKILL_ElbowRoom,
+         .icon = GFX_SkillIcon_ElbowRoom,
+      },
+#endif
+
+#if (defined(SID_NaturalCover) && (SID_NaturalCover < MAX_SKILL_NUM)) 
+    [SID_NaturalCover] = {
+         .name = MSG_SKILL_NaturalCover_NAME,
+         .desc = MSG_SKILL_NaturalCover,
+         .icon = GFX_SkillIcon_NaturalCover,
+      },
+#endif
+
 #if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM)) 
     [SID_ChaosStyle] = {
          .desc = MSG_SKILL_ChaosStyle,

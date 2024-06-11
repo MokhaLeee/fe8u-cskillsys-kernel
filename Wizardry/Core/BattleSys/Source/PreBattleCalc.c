@@ -621,6 +621,21 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+    if (attacker->terrainDefense || attacker->terrainAvoid || attacker->terrainResistance)
+    {
+#if (defined(SID_NaturalCover) && (SID_NaturalCover < MAX_SKILL_NUM)) 
+        if (SkillTester(unit, SID_NaturalCover))
+            attacker->battleDefense += 3;
+#endif
+    }
+    else
+    {
+#if (defined(SID_ElbowRoom) && (SID_ElbowRoom < MAX_SKILL_NUM)) 
+        if (SkillTester(unit, SID_ElbowRoom))
+            attacker->battleAttack += 3;
+#endif
+    }
+
 #if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Vigilance))
     {
@@ -641,7 +656,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 break;
             }
         }
-       
     }
 #endif
 }

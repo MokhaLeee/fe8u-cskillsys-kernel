@@ -72,6 +72,8 @@ SID_Technician
 SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
+SID_NaturalCover
+SID_ElbowRoom
 SID_ChaosStyle
 SID_ArcaneBlade
 SID_QuickDraw
