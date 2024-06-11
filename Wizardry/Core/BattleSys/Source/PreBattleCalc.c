@@ -726,6 +726,17 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
 #endif
     }
 
+    if (ConGetter(unit) < ConGetter(&defender->unit))
+    {
+#if (defined(SID_DancingBlade) && (SID_DancingBlade < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_DancingBlade))
+        {
+            attacker->battleSpeed += 4;
+            attacker->battleDefense += 2;
+        }
+#endif
+    }
+
     if (attacker->battleSpeed > defender->battleSpeed)
     {
 #if (defined(SID_FlashingBlade) && (SID_FlashingBlade < MAX_SKILL_NUM))
