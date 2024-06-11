@@ -340,6 +340,14 @@ OutdoorFighter:[NL]
 +10 hit and avoid when[NL]
 fighting outdoors.[X]
 
+## MSG_SKILL_DancingBlade_NAME
+Dan-Blade:[X]
+
+## MSG_SKILL_DancingBlade
+Dancing Blade:[NL]
++4 Attack Speed/-2 Damage when[NL]
+unit's Con. is lower than the enemy.[X]
+
 ## MSG_SKILL_KnightAspirant_NAME
 K-Aspirant[X]
 

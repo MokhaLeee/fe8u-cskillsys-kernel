@@ -1788,6 +1788,14 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_DancingBlade) && (SID_DancingBlade < MAX_SKILL_NUM)) 
+    [SID_DancingBlade] = {
+         .name = MSG_SKILL_DancingBlade_NAME,
+         .desc = MSG_SKILL_DancingBlade,
+         .icon = GFX_SkillIcon_DancingBlade,
+      },
+#endif
+
 #if (defined(SID_KnightAspirant) && (SID_KnightAspirant < MAX_SKILL_NUM)) 
     [SID_KnightAspirant] = {
          .name = MSG_SKILL_KnightAspirant_NAME,
