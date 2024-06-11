@@ -590,6 +590,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(BlowKilling) && (BlowKilling < MAX_SKILL_NUM))
+    [BlowKilling] = {
+        .desc = MSG_SKILL_BlowKilling,
+        .icon = GFX_SkillIcon_BlowKilling,
+    },
+#endif
+
 #if (defined(SID_StanceBracing) && (SID_StanceBracing < MAX_SKILL_NUM))
     [SID_StanceBracing] = {
         .desc = MSG_SKILL_StanceBracing,
@@ -1619,7 +1626,7 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_Charge] = {
          .desc = MSG_SKILL_Charge,
          .icon = GFX_SkillIcon_Charge,
-#endif
+    },
 
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM)) 
     [SID_FieryBlood] = {
@@ -1639,6 +1646,49 @@ const struct SkillInfo gSkillInfos[0x100] = {
 #if (defined(SID_LightWeight) && (SID_LightWeight < MAX_SKILL_NUM)) 
     [SID_LightWeight] = {
          .desc = MSG_SKILL_LightWeight,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
+#if (defined(SID_EvenFooted) && (SID_EvenFooted < MAX_SKILL_NUM)) 
+    [SID_EvenFooted] = {
+         .desc = MSG_SKILL_EvenFooted,
+         .icon = GFX_SkillIcon_EvenFooted,
+    },
+#endif
+
+#if (defined(SID_QuickDraw) && (SID_QuickDraw < MAX_SKILL_NUM)) 
+    [SID_QuickDraw] = {
+         .desc = MSG_SKILL_QuickDraw,
+         .icon = GFX_SkillIcon_QuickDraw,
+      },
+#endif
+
+#if (defined(SID_ArcaneBlade) && (SID_ArcaneBlade < MAX_SKILL_NUM)) 
+    [SID_ArcaneBlade] = {
+         .desc = MSG_SKILL_ArcaneBlade,
+         .icon = GFX_SkillIcon_ArcaneBlade,
+      },
+#endif
+
+#if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM)) 
+    [SID_ChaosStyle] = {
+         .desc = MSG_SKILL_ChaosStyle,
+         .icon = GFX_SkillIcon_ChaosStyle,
+      },
+#endif
+
+#if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM)) 
+    [SID_Vigilance] = {
+         .desc = MSG_SKILL_Vigilance,
+         .icon = GFX_SkillIcon_Vigilance,
+      },
+#endif
+
+#if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM)) 
+    [SID_OutdoorFighter] = {
+         .name = MSG_SKILL_OutdoorFighter_NAME,
+         .desc = MSG_SKILL_OutdoorFighter,
          .icon = GFX_SkillIcon_WIP,
       },
 #endif
