@@ -340,6 +340,13 @@ OutdoorFighter:[NL]
 +10 hit and avoid when[NL]
 fighting outdoors.[X]
 
+## MSG_SKILL_KnightAspirant_NAME
+K-Aspirant[X]
+
+## MSG_SKILL_KnightAspirant
+KnightAspirant:[NL]
+When above 75% health,[NL]
++2 damage, +15% avoid.[X]
 ## MSG_SKILL_Outrider
 Outrider:[NL]
 -1 damage taken and[NL]

@@ -671,6 +671,17 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if (defined(SID_KnightAspirant) && (SID_KnightAspirant < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_KnightAspirant))
+    {
+        if ((GetUnitMaxHp(unit) * 75) > (GetUnitCurrentHp(unit) * 100))
+        {
+            attacker->battleAttack += 2;
+            attacker->battleAvoidRate += 15;
+        }
+    }
+#endif
+
 #if (defined(SID_Outrider) && (SID_Outrider < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Outrider))
     {
