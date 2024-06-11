@@ -6,7 +6,7 @@
  * Address  | Size  | Usage
  * ---------------------------
  * 08B2A604 | D5DFC  | Kernel
- * 08EFB2E0 | E4D20  | Data 
+ * 08EFB2E0 | E4D20  | Font 
  * 09000000 | ----   | DEMO
  * ---------------------------
  */

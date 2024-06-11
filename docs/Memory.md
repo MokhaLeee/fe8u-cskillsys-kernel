@@ -5,7 +5,7 @@ ROM space distribution is configured in [config-memmap.h](../include/Configs/con
 | Address   | Size    | Usage
 | -------   | ------- | -----
 | 0x0B2A604 | 0xD5DFC | Kernel
-| 0x0EFB2E0 | 0xE4D20 | Data
+| 0x0EFB2E0 | 0xE4D20 | Font
 | 0x1000000 | ---     | ***reserved for DEMO***
 
 For kernel, we mainly use free-space starting from `0xB2A604`.
@@ -32,7 +32,7 @@ TextTable is repointed at a fixed location behind the pointer list, [0xB2AA14](.
 
 ## Font space
 
-Free space at `0x0EFB2E0` is used to [insert UTF8 characters](../Fonts/Fonts.event) for multi-languge support. You can config whether to install them through `CONFIG_USE_UTF8_GLYPH`.
+Free space at `0x0EFB2E0` is used to insert font data for further multi-languge support, which is also a reserved space.
 
 # RAM space
 
