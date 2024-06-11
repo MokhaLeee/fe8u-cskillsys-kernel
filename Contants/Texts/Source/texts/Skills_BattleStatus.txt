@@ -347,3 +347,7 @@ K-Aspirant[X]
 KnightAspirant:[NL]
 When above 75% health,[NL]
 +2 damage, +15% avoid.[X]
+## MSG_SKILL_Outrider
+Outrider:[NL]
+-1 damage taken and[NL]
++3% crit per tile moved.[X]
