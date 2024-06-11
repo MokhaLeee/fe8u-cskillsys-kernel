@@ -108,6 +108,7 @@ SID_FieryBlood
 SID_Wrath
 SID_Vigilance
 SID_OutdoorFighter
+SID_Outrider
 
 // Weapon triangle
 SID_SwordBreaker
