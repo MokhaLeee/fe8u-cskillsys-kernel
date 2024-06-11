@@ -57,5 +57,21 @@ int SklGetterSkills(int status, struct Unit * unit)
         status += 7;
 #endif
 
+#if defined(SID_PushSkill) && (SID_PushSkill < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_PushSkill))
+    {
+        if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+            status += 5;
+    }
+#endif
+
+#if defined(SID_PushSpectrum) && (SID_PushSpectrum < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_PushSpectrum))
+    {
+        if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+            status += 5;
+    }
+#endif
+
     return status;
 }
