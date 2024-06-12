@@ -285,7 +285,7 @@ void MSU_SaveBlueUnits(u8 * dst, const u32 size)
     {
         struct EmsPackedSusUnit pack;
 
-        NewPackSuspandUnit(&gUnitArrayBlue[i], &pack);
+        NewPackSuspandUnit(GetUnit(i + FACTION_BLUE), &pack);
         WriteAndVerifySramFast(&pack, dst, SIZE_OF_SUS_UNIT_PACK);
         dst += SIZE_OF_SUS_UNIT_PACK;
     }
@@ -300,7 +300,7 @@ void MSU_LoadBlueUnits(u8 * src, const u32 size)
         struct EmsPackedSusUnit pack;
 
         ReadSramFast(src, &pack, SIZE_OF_SUS_UNIT_PACK);
-        NewUnpackSuspandUnit(&pack, &gUnitArrayBlue[i]);
+        NewUnpackSuspandUnit(&pack, GetUnit(i + FACTION_BLUE));
         src += SIZE_OF_SUS_UNIT_PACK;
     }
 }
@@ -313,7 +313,7 @@ void MSU_SaveRedUnits(u8 * dst, const u32 size)
     {
         struct EmsPackedSusUnit pack;
 
-        NewPackSuspandUnit(&gUnitArrayRed[i], &pack);
+        NewPackSuspandUnit(GetUnit(i + FACTION_RED), &pack);
         WriteAndVerifySramFast(&pack, dst, SIZE_OF_SUS_UNIT_PACK);
         dst += SIZE_OF_SUS_UNIT_PACK;
     }
@@ -328,7 +328,7 @@ void MSU_LoadRedUnits(u8 * src, const u32 size)
         struct EmsPackedSusUnit pack;
 
         ReadSramFast(src, &pack, SIZE_OF_SUS_UNIT_PACK);
-        NewUnpackSuspandUnit(&pack, &gUnitArrayRed[i]);
+        NewUnpackSuspandUnit(&pack, GetUnit(i + FACTION_RED));
         src += SIZE_OF_SUS_UNIT_PACK;
     }
 }
@@ -341,7 +341,7 @@ void MSU_SaveGreenUnits(u8 * dst, const u32 size)
     {
         struct EmsPackedSusUnit pack;
 
-        NewPackSuspandUnit(&gUnitArrayGreen[i], &pack);
+        NewPackSuspandUnit(GetUnit(i + FACTION_GREEN), &pack);
         WriteAndVerifySramFast(&pack, dst, SIZE_OF_SUS_UNIT_PACK);
         dst += SIZE_OF_SUS_UNIT_PACK;
     }
@@ -356,7 +356,7 @@ void MSU_LoadGreenUnits(u8 * src, const u32 size)
         struct EmsPackedSusUnit pack;
 
         ReadSramFast(src, &pack, SIZE_OF_SUS_UNIT_PACK);
-        NewUnpackSuspandUnit(&pack, &gUnitArrayGreen[i]);
+        NewUnpackSuspandUnit(&pack, GetUnit(i + FACTION_GREEN));
         src += SIZE_OF_SUS_UNIT_PACK;
     }
 }
@@ -367,7 +367,7 @@ void MSU_SaveRedUnitExtSkills(u8 * dst, const u32 size)
 
     for (i = 0; i < amt; i++)
     {
-        struct Unit * unit = &gUnitArrayRed[i];
+        struct Unit * unit = GetUnit(i + FACTION_RED);
         WriteAndVerifySramFast(&unit->supports[3], dst, 4);
         dst += 4;
     }
@@ -379,7 +379,7 @@ void MSU_LoadRedUnitExtSkills(u8 * src, const u32 size)
 
     for (i = 0; i < amt; i++)
     {
-        struct Unit * unit = &gUnitArrayRed[i];
+        struct Unit * unit = GetUnit(i + FACTION_RED);
         ReadSramFast(src, &unit->supports[3], 4);
         src += 4;
     }
@@ -391,7 +391,7 @@ void MSU_SaveGreenUnitExtSkills(u8 * dst, const u32 size)
 
     for (i = 0; i < amt; i++)
     {
-        struct Unit * unit = &gUnitArrayGreen[i];
+        struct Unit * unit = GetUnit(i + FACTION_GREEN);
         WriteAndVerifySramFast(&unit->supports[3], dst, 4);
         dst += 4;
     }
@@ -403,7 +403,7 @@ void MSU_LoadGreenUnitExtSkills(u8 * src, const u32 size)
 
     for (i = 0; i < amt; i++)
     {
-        struct Unit * unit = &gUnitArrayGreen[i];
+        struct Unit * unit = GetUnit(i + FACTION_GREEN);
         ReadSramFast(src, &unit->supports[3], 4);
         src += 4;
     }

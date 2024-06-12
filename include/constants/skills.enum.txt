@@ -37,6 +37,7 @@ SID_FortressRes
 SID_LifeAndDeath
 SID_LuckySeven
 SID_EvenFooted
+SID_OddFooted
 
 // Battle effective
 SID_Nullify

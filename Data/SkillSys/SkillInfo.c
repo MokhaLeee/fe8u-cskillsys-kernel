@@ -1824,4 +1824,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_OddRhythm
     },
 #endif
+
+#if (defined(SID_OddFooted) && (SID_OddFooted < MAX_SKILL_NUM)) 
+    [SID_OddFooted] = {
+         .desc = MSG_SKILL_OddFooted,
+         .icon = GFX_SkillIcon_OddFooted,
+    },
+#endif
 };

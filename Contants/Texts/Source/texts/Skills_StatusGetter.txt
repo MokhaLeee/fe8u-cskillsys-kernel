@@ -167,3 +167,8 @@ EvenFooted:[NL]
 +1 move on even[NL]
 numbered turns.[X]
 
+## MSG_SKILL_OddFooted
+OddFooted:[NL]
++1 move on odd[NL]
+numbered turns.[X]
+
