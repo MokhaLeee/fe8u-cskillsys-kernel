@@ -1810,4 +1810,18 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Outrider
     },
 #endif
+
+#if (defined(SID_EvenRhythm) && (SID_EvenRhythm < MAX_SKILL_NUM)) 
+    [SID_EvenRhythm] = {
+         .desc = MSG_SKILL_EvenRhythm,
+         .icon = GFX_SkillIcon_EvenRhythm
+    },
+#endif
+
+#if (defined(SID_OddRhythm) && (SID_OddRhythm < MAX_SKILL_NUM)) 
+    [SID_OddRhythm] = {
+         .desc = MSG_SKILL_OddRhythm,
+         .icon = GFX_SkillIcon_OddRhythm
+    },
+#endif
 };

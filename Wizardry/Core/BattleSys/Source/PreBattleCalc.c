@@ -689,6 +689,22 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         attacker->battleCritRate += (gActionData.moveCount * 3);
     }
 #endif
+
+#if (defined(SID_EvenRhythm) && (SID_EvenRhythm < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_EvenRhythm) && (gPlaySt.chapterTurnNumber % 2) == 0)
+    {
+        attacker->battleAvoidRate += 10;
+        attacker->battleHitRate += 10;
+    }
+#endif
+
+#if (defined(SID_OddRhythm) && (SID_OddRhythm < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_OddRhythm) && (gPlaySt.chapterTurnNumber % 2) == 1)
+    {
+        attacker->battleAvoidRate += 10;
+        attacker->battleHitRate += 10;
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
