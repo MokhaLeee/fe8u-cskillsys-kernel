@@ -112,6 +112,8 @@ SID_Vigilance
 SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
+SID_EvenRhythm
+SID_OddRhythm
 
 // Weapon triangle
 SID_SwordBreaker
