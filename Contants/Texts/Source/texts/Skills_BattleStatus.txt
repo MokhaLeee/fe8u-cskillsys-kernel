@@ -359,3 +359,8 @@ When above 75% health,[NL]
 Outrider:[NL]
 -1 damage taken and[NL]
 +3% crit per tile moved.[X]
+
+## MSG_SKILL_NoGuard
+NoGuard:[NL]
+Both side have a[NL]
+100% hit rate.[X]

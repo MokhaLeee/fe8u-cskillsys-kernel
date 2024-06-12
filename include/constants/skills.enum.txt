@@ -111,6 +111,7 @@ SID_Vigilance
 SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
+SID_NoGuard
 
 // Weapon triangle
 SID_SwordBreaker

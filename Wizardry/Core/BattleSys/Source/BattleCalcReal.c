@@ -72,6 +72,15 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
             attacker->battleAttack = 0;
     }
 #endif
+
+#if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM))
+        if (SkillTester(&attacker->unit, SID_NoGuard))
+        {
+            attacker->battleHitRate = 100;
+            // I chose 10,000 as an abitrary value to allow for other skills reducing avoid, as INT16_MAX might cause an underflow?
+            attacker->battleAvoidRate -= 10000;
+        }
+#endif
 }
 
 /* LynJump */

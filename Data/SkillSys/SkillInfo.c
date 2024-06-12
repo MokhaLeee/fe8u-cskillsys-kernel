@@ -1810,4 +1810,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
          .icon = GFX_SkillIcon_Outrider
     },
 #endif
+
+#if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM)) 
+    [SID_NoGuard] = {
+         .desc = MSG_SKILL_NoGuard,
+         .icon = GFX_SkillIcon_WIP,
+      },
+#endif
 };
