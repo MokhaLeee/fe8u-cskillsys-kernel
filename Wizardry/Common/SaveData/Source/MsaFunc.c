@@ -161,7 +161,7 @@ void MSA_SaveUnits(u8 * dst, const u32 size)
     {
         struct EmsPackedSavUnit pack;
 
-        NewPackSaveUnit(&gUnitArrayBlue[i], &pack);
+        NewPackSaveUnit(GetUnit(i + FACTION_BLUE), &pack);
         WriteAndVerifySramFast(&pack, dst, sizeof(pack));
         dst += sizeof(pack);
     }
@@ -176,7 +176,7 @@ void MSA_LoadUnits(u8 * src, const u32 size)
         struct EmsPackedSavUnit pack;
 
         ReadSramFast(src, &pack, sizeof(pack));
-        NewUnpackSaveUnit(&pack, &gUnitArrayBlue[i]);
+        NewUnpackSaveUnit(&pack, GetUnit(i + FACTION_BLUE));
         src += sizeof(pack);
     }
 }
