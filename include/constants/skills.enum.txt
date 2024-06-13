@@ -114,6 +114,7 @@ SID_KnightAspirant
 SID_Outrider
 SID_EvenRhythm
 SID_OddRhythm
+SID_Corrosion
 
 // Weapon triangle
 SID_SwordBreaker

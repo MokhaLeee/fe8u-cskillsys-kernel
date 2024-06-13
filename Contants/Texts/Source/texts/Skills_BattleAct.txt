@@ -57,3 +57,8 @@ to 0 HP (luck%)[X]
 Colossus:[NL]
 Triples attack.[NL]
 (Skill% activation).[X]
+
+## MSG_SKILL_Corrosion
+Corrosion:[NL]
+Reduce enemy's weapon durability[NL]
+by user's level (Skill %).[X]
