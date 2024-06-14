@@ -172,3 +172,7 @@ OddFooted:[NL]
 +1 move on odd[NL]
 numbered turns.[X]
 
+## MSG_SKILL_Resolve
+Resolve:[NL]
+When HP is < 50%,[NL]
+Str, Skl and Spd x 1.5.[X]
