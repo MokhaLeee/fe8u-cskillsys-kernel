@@ -1845,4 +1845,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Puissance,
     },
 #endif
+
+#if (defined(SID_Prescience) && (SID_Prescience < MAX_SKILL_NUM))
+    [SID_Prescience] = {
+        .desc = MSG_SKILL_Prescience,
+        .icon = GFX_SkillIcon_Prescience,
+    },
+#endif
 };

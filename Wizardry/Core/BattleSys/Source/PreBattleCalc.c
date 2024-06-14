@@ -204,6 +204,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 attacker->battleHitRate += 3 + UNIT_MAG(unit) / 2;
            }
 #endif
+
+#if (defined(SID_Prescience) && (SID_Prescience < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_Prescience))
+           if(gBattleStats.range == 1)
+           {
+                attacker->battleHitRate += 15;
+                attacker->battleAvoidRate += 15;
+           }
+#endif
     }
 
     /* Stance skills */

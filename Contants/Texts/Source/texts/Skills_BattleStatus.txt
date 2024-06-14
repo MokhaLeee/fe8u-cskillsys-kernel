@@ -375,3 +375,8 @@ odd numbered turns.[X]
 Puissance:[NL]
 +3 attack if the user's attacker[NL]
 is greater than the enem's.[X]
+
+## MSG_SKILL_Prescience
+Prescience:[NL]
+If initiating,[NL]
++15 hit and avoid.[X]
