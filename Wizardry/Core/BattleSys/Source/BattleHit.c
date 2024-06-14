@@ -139,6 +139,26 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             attack *= 3;
         }
 #endif
+
+#if (defined(SID_Corrosion) && (SID_Corrosion < MAX_SKILL_NUM))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Corrosion, GetUnitSkill(GetUnit(attacker->unit.index))))
+        {
+            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
+            int cost = unit->level;
+        
+            while (cost-- > 0)
+            {
+                u16 weapon = GetItemAfterUse(defender->weapon);
+                defender->weapon = weapon;
+
+                if (!weapon)
+                    break;
+            }
+
+            if (!attacker->weapon)
+                attacker->weaponBroke = TRUE;
+        }
+#endif
     }
 
     gBattleStats.damage = attack - defense;
