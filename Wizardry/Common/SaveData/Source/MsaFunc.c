@@ -157,7 +157,7 @@ void MSA_SaveUnits(u8 * dst, const u32 size)
 {
     int i, amt = size / sizeof(struct EmsPackedSavUnit);
 
-    for (i = 0; i < amt; i++)
+    for (i = 1; i <= amt; i++)
     {
         struct EmsPackedSavUnit pack;
 
@@ -171,7 +171,7 @@ void MSA_LoadUnits(u8 * src, const u32 size)
 {
     int i, amt = size / sizeof(struct EmsPackedSavUnit);
 
-    for (i = 0; i < amt; i++)
+    for (i = 1; i <= amt; i++)
     {
         struct EmsPackedSavUnit pack;
 
