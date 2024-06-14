@@ -763,7 +763,7 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
 #endif
 
 #if (defined(SID_Puissance) && (SID_Puissance < MAX_SKILL_NUM))
-    if (SkillTester(unit, SID_Puissance))
+        if (SkillTester(unit, SID_Puissance))
             attacker->battleAttack += 3;
 #endif
     }
