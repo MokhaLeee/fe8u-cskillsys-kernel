@@ -1838,4 +1838,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Corrosion,
     },
 #endif
+
+#if (defined(SID_Puissance) && (SID_Puissance < MAX_SKILL_NUM))
+    [SID_Puissance] = {
+        .desc = MSG_SKILL_Puissance,
+        .icon = GFX_SkillIcon_Puissance,
+    },
+#endif
 };
