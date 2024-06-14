@@ -37,6 +37,7 @@ SID_FortressRes
 SID_LifeAndDeath
 SID_LuckySeven
 SID_EvenFooted
+SID_OddFooted
 
 // Battle effective
 SID_Nullify
@@ -111,6 +112,8 @@ SID_Vigilance
 SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
+SID_EvenRhythm
+SID_OddRhythm
 SID_NoGuard
 
 // Weapon triangle

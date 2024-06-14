@@ -1811,6 +1811,28 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_EvenRhythm) && (SID_EvenRhythm < MAX_SKILL_NUM)) 
+    [SID_EvenRhythm] = {
+         .desc = MSG_SKILL_EvenRhythm,
+         .icon = GFX_SkillIcon_EvenRhythm
+    },
+#endif
+
+#if (defined(SID_OddRhythm) && (SID_OddRhythm < MAX_SKILL_NUM)) 
+    [SID_OddRhythm] = {
+         .desc = MSG_SKILL_OddRhythm,
+         .icon = GFX_SkillIcon_OddRhythm
+    },
+#endif
+
+#if (defined(SID_OddFooted) && (SID_OddFooted < MAX_SKILL_NUM)) 
+    [SID_OddFooted] = {
+         .desc = MSG_SKILL_OddFooted,
+         .icon = GFX_SkillIcon_OddFooted,
+    },
+#endif
+
+
 #if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM)) 
     [SID_NoGuard] = {
          .desc = MSG_SKILL_NoGuard,

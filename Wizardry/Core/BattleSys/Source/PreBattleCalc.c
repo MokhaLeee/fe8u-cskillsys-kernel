@@ -689,6 +689,22 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         attacker->battleCritRate += (gActionData.moveCount * 3);
     }
 #endif
+
+#if (defined(SID_EvenRhythm) && (SID_EvenRhythm < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_EvenRhythm) && (gPlaySt.chapterTurnNumber % 2) == 0)
+    {
+        attacker->battleAvoidRate += 10;
+        attacker->battleHitRate += 10;
+    }
+#endif
+
+#if (defined(SID_OddRhythm) && (SID_OddRhythm < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_OddRhythm) && (gPlaySt.chapterTurnNumber % 2) == 1)
+    {
+        attacker->battleAvoidRate += 10;
+        attacker->battleHitRate += 10;
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -711,65 +727,6 @@ void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUni
         attacker->battleAvoidRate += trun_num_suppl;
     }
 #endif
-}
-
-void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-    /**
-     * Here we need to put some calculation at the end of the pre-battle calc.
-     * Thus the main part of calc should be positioned at berfore.
-     */
-    struct Unit * unit = GetUnit(attacker->unit.index);
-
-#if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_CatchingUp))
-        {
-            /**
-             * Check if the enemy unit doubles the skill holder
-             * if there's any additional speed above the doubling threshold
-             * add that to the skillholder's attack
-             */
-            if ((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
-                attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
-        }
-#endif
-
-    if (attacker->battleAttack > defender->battleAttack)
-    {
-#if (defined(SID_HeavyBlade) && (SID_HeavyBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBlade))
-            attacker->battleCritRate += 15;
-#endif
-
-#if (defined(SID_HeavyBladePlus) && (SID_HeavyBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBladePlus))
-            attacker->battleCritRate += 25;
-#endif
-    }
-
-    if (ConGetter(unit) < ConGetter(&defender->unit))
-    {
-#if (defined(SID_DancingBlade) && (SID_DancingBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_DancingBlade))
-        {
-            attacker->battleSpeed += 4;
-            attacker->battleDefense += 2;
-        }
-#endif
-    }
-
-    if (attacker->battleSpeed > defender->battleSpeed)
-    {
-#if (defined(SID_FlashingBlade) && (SID_FlashingBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBlade))
-            attacker->battleCritRate += 15;
-#endif
-
-#if (defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBladePlus))
-            attacker->battleCritRate += 25;
-#endif
-    }
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)

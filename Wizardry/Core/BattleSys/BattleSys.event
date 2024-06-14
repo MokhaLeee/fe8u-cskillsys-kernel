@@ -26,7 +26,6 @@ PreBattleCalcFuncs:
     POIN PreBattleCalcSkillsPhaseTurn
     POIN PreBattleCalcStatDebuffs
 
-    POIN PreBattle_CalcSkillsOnEnd
     POIN PreBattleCalcEnd
     POIN PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad
     WORD 0

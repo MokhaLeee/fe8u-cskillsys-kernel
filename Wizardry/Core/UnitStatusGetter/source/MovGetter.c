@@ -48,5 +48,10 @@ int MovGetterSkills(int status, struct Unit * unit)
         status += 1;
 #endif
 
+#if defined(SID_OddFooted) && (SID_OddFooted < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_OddFooted) && (gPlaySt.chapterTurnNumber % 2) == 1)
+        status += 1;
+#endif
+
     return status;
 }
