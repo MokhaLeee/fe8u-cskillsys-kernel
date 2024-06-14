@@ -150,7 +150,13 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             {
                 u16 weapon = GetItemAfterUse(defender->weapon);
                 defender->weapon = weapon;
+
+                if (!weapon)
+                    break;
             }
+
+            if (!attacker->weapon)
+                attacker->weaponBroke = TRUE;
         }
 #endif
     }
