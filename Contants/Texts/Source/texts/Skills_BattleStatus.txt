@@ -370,3 +370,8 @@ even numbered turns.[X]
 OddRhythm:[NL]
 +10 hit and avoid on[NL]
 odd numbered turns.[X]
+
+## MSG_SKILL_NoGuard
+NoGuard:[NL]
+Both sides have a[NL]
+100% chance of hitting.[X]

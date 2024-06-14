@@ -166,6 +166,14 @@ void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct Battle
     ComputeBattleUnitSilencerRate(attacker, defender);
     ComputeBattleUnitSpecialWeaponStats(attacker, defender);
 
+#if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM))
+        if (SkillTester(&attacker->unit, SID_NoGuard))
+        {
+            attacker->battleEffectiveHitRate = 100;
+            attacker->battleAvoidRate = -100;
+        }
+#endif
+
 #if CHAX
     BattleCalcReal_ComputSkills(attacker, defender);
 #endif
