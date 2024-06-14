@@ -761,6 +761,11 @@ void PreBattle_CalcSkillsOnEnd(struct BattleUnit * attacker, struct BattleUnit *
         if (SkillTester(unit, SID_HeavyBladePlus))
             attacker->battleCritRate += 25;
 #endif
+
+#if (defined(SID_Puissance) && (SID_Puissance < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_Puissance))
+            attacker->battleAttack += 3;
+#endif
     }
 
     if (ConGetter(unit) < ConGetter(&defender->unit))

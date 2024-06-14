@@ -370,3 +370,9 @@ even numbered turns.[X]
 OddRhythm:[NL]
 +10 hit and avoid on[NL]
 odd numbered turns.[X]
+
+## MSG_SKILL_Puissance
+Puissance:[NL]
++3 attack if unit's attack[NL]
+is higher than the enemy's.[X]
+
