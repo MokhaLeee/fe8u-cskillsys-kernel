@@ -174,5 +174,5 @@ numbered turns.[X]
 
 ## MSG_SKILL_Resolve
 Resolve:[NL]
-When HP is < 50%,[NL]
-Str, Skl and Spd x 1.5.[X]
+When HP < 50%,[NL]
+Str/Skl/Spd +50% bonus.[X]

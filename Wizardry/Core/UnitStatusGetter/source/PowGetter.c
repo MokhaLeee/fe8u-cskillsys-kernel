@@ -88,14 +88,11 @@ int PowGetterSkills(int status, struct Unit * unit)
     }
     
 #if (defined(SID_Resolve) && (SID_Resolve < MAX_SKILL_NUM)) 
-        if (SkillTester(unit, SID_Resolve))
-        {
-            if (((GetUnitMaxHp(unit) % 2 == 0) && (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit) / 2)) ||
-                ((GetUnitMaxHp(unit) % 2 != 0) && (GetUnitCurrentHp(unit) -1 < GetUnitMaxHp(unit) / 2)))
-                {
-                    status *= 1.5;
-                }
-        }
+    if (SkillTester(unit, SID_Resolve))
+    {
+        if ((GetUnitCurrentHp(unit) * 2) < GetUnitMaxHp(unit))
+            status += status / 2;
+    }
 #endif
 
     return status;
