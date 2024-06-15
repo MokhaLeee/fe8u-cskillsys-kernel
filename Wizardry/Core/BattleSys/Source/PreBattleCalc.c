@@ -52,8 +52,11 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
     else
         status = def;
 
+
+#if (defined(SID_SorceryBlade) && (SID_SorceryBlade < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_SorceryBlade))
         status = def < res ? def : res;
+#endif
 
     attacker->battleDefense = status;
 }
