@@ -1845,4 +1845,18 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Puissance) && (SID_Puissance < MAX_SKILL_NUM))
+    [SID_Puissance] = {
+        .desc = MSG_SKILL_Puissance,
+        .icon = GFX_SkillIcon_Puissance,
+    },
+#endif
+
+#if (defined(SID_SilentPride) && (SID_SilentPride < MAX_SKILL_NUM))
+    [SID_SilentPride] = {
+        .desc = MSG_SKILL_SilentPride,
+        .icon = GFX_SkillIcon_SilentPride,
+    },
+#endif
 };
