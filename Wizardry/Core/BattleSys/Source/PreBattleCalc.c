@@ -198,7 +198,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_ArcaneBlade) && (SID_ArcaneBlade < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_ArcaneBlade))
-           if(gBattleStats.range == 1)
+           if (gBattleStats.range == 1)
            {
                 attacker->battleCritRate += 3 + UNIT_MAG(unit) / 2;
                 attacker->battleHitRate += 3 + UNIT_MAG(unit) / 2;
@@ -207,7 +207,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_Prescience) && (SID_Prescience < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_Prescience))
-           if(gBattleStats.range == 1)
+           if (gBattleStats.range == 1)
            {
                 attacker->battleHitRate += 15;
                 attacker->battleAvoidRate += 15;
