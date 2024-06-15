@@ -705,6 +705,20 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         attacker->battleHitRate += 10;
     }
 #endif
+
+#if (defined(SID_SilentPride) && (SID_SilentPride < MAX_SKILL_NUM))
+    if (SkillTester(unit, SID_SilentPride))
+    {
+        int lostHP = GetUnitMaxHp(unit) - GetUnitCurrentHp(unit);
+
+        if (lostHP > 3)
+        {
+            int multiplier = lostHP % 4;
+            attacker->battleAttack += 2 * multiplier;
+            attacker->battleDefense += 2 * multiplier;
+        }
+    }
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)

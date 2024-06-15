@@ -116,6 +116,7 @@ SID_EvenRhythm
 SID_OddRhythm
 SID_Corrosion
 SID_Puissance
+SID_SilentPride
 
 // Weapon triangle
 SID_SwordBreaker
