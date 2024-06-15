@@ -131,6 +131,14 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
             attacker->battleAttack = 0;
     }
 #endif
+
+#if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM))
+        if (SkillTester(&attacker->unit, SID_NoGuard))
+        {
+            attacker->battleEffectiveHitRate = 100;
+            attacker->battleAvoidRate = -100;
+        }
+#endif
 }
 
 /* LynJump */
@@ -165,14 +173,6 @@ void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct Battle
     ComputeBattleUnitEffectiveCritRate(attacker, defender);
     ComputeBattleUnitSilencerRate(attacker, defender);
     ComputeBattleUnitSpecialWeaponStats(attacker, defender);
-
-#if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM))
-        if (SkillTester(&attacker->unit, SID_NoGuard))
-        {
-            attacker->battleEffectiveHitRate = 100;
-            attacker->battleAvoidRate = -100;
-        }
-#endif
 
 #if CHAX
     BattleCalcReal_ComputSkills(attacker, defender);
