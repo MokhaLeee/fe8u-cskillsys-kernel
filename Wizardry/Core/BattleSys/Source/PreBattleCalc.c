@@ -121,8 +121,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     struct Unit * unit = GetUnit(attacker->unit.index);
     struct Unit * unit_def = GetUnit(defender->unit.index);
 
+    int cur_hp = GetUnitCurrentHp(unit);
+    int max_hp = GetUnitMaxHp(unit);
+
     /* Defiant skills */
-    if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
+    if ((cur_hp * 4) < max_hp)
     {
 #if (defined(SID_DefiantCrit) && (SID_DefiantCrit < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_DefiantCrit))
@@ -417,14 +420,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(unit, SID_Frenzy))
     {
         // Check if their current HP is at least 4 points less than their max HP
-        if ((GetUnitMaxHp(unit) - GetUnitCurrentHp(unit)) >= 4)
+        if ((max_hp - cur_hp) >= 4)
         {
             /**
              * Find the difference between the two
              * Divide by 4
              * Add the resulting total to the unit's attack
              */
-            attacker->battleAttack += (GetUnitMaxHp(unit) - GetUnitCurrentHp(unit)) / 4;
+            attacker->battleAttack += (max_hp - cur_hp) / 4;
         }
     }
 #endif
@@ -507,7 +510,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
     }
 
-    if (GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+    if (cur_hp == max_hp)
     {
 #if (defined(SID_Perfectionist) && (SID_Perfectionist < MAX_SKILL_NUM))
         if (SkillTester(unit, SID_Perfectionist))
@@ -555,12 +558,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_ChaosStyle) && (SID_ChaosStyle < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_ChaosStyle))
-    {
         if ((IsMagicAttack(attacker) && !IsMagicAttack(defender)) || (!IsMagicAttack(attacker) && IsMagicAttack(defender)))
-        {
             attacker->battleSpeed += 3;
-        }
-    }
 #endif
 
 #if defined(SID_Charge) && (SID_Charge < MAX_SKILL_NUM)
@@ -570,22 +569,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_FieryBlood) && (SID_FieryBlood < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_FieryBlood))
-    {
-       if (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit))
-       {
+       if (cur_hp < max_hp)
             attacker->battleAttack += 4;
-       }
-    }
 #endif
 
 #if (defined(SID_Wrath) && (SID_Wrath < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Wrath))
-    {
-       if (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit)/2)
-       {
+       if ((cur_hp * 2) < max_hp)
             attacker->battleCritRate += 20;
-       }
-    }
 #endif
 
     if (attacker->terrainDefense || attacker->terrainAvoid || attacker->terrainResistance)
@@ -605,9 +596,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_Vigilance) && (SID_Vigilance < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_Vigilance))
-    {
        attacker->battleAvoidRate += 20;
-    }
 #endif
 
 #if (defined(SID_OutdoorFighter) && (SID_OutdoorFighter < MAX_SKILL_NUM))
@@ -674,7 +663,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_KnightAspirant) && (SID_KnightAspirant < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_KnightAspirant))
     {
-        if ((GetUnitMaxHp(unit) * 75) > (GetUnitCurrentHp(unit) * 100))
+        if ((max_hp * 75) > (cur_hp * 100))
         {
             attacker->battleAttack += 2;
             attacker->battleAvoidRate += 15;
@@ -709,14 +698,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_SilentPride) && (SID_SilentPride < MAX_SKILL_NUM))
     if (SkillTester(unit, SID_SilentPride))
     {
-        int lostHP = GetUnitMaxHp(unit) - GetUnitCurrentHp(unit);
-
-        if (lostHP > 3)
-        {
-            int multiplier = lostHP % 4;
-            attacker->battleAttack += 2 * multiplier;
-            attacker->battleDefense += 2 * multiplier;
-        }
+        int mult = simple_div(max_hp * 4, cur_hp);
+        attacker->battleAttack += 2 * mult;
+        attacker->battleDefense += 2 * mult;
     }
 #endif
 }
