@@ -28,6 +28,9 @@ int LckGetterWeaponBonus(int status, struct Unit * unit)
 
 int LckGetterSkills(int status, struct Unit * unit)
 {
+    int cur_hp = GetUnitCurrentHp(unit);
+    int max_hp = GetUnitMaxHp(unit);
+
 #if defined(SID_LckBonus) && (SID_LckBonus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_LckBonus))
         status += 2;
@@ -35,7 +38,7 @@ int LckGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_DefiantLck) && (SID_DefiantLck < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_DefiantLck))
-        if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
+        if ((cur_hp * 4) < max_hp)
             status += 7;
 #endif
 
@@ -54,7 +57,7 @@ int LckGetterSkills(int status, struct Unit * unit)
         status += 7;
 #endif
 
-    if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+    if(cur_hp == max_hp)
     {
 #if defined(SID_PushLuck) && (SID_PushLuck < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_PushLuck))

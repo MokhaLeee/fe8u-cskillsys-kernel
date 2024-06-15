@@ -1839,6 +1839,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM))
+    [SID_NoGuard] = {
+        .desc = MSG_SKILL_NoGuard,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Puissance) && (SID_Puissance < MAX_SKILL_NUM))
     [SID_Puissance] = {
         .desc = MSG_SKILL_Puissance,
@@ -1850,6 +1857,20 @@ const struct SkillInfo gSkillInfos[0x100] = {
     [SID_Prescience] = {
         .desc = MSG_SKILL_Prescience,
         .icon = GFX_SkillIcon_Prescience,
+    },
+#endif
+
+#if (defined(SID_Resolve) && (SID_Resolve < MAX_SKILL_NUM))
+    [SID_Resolve] = {
+        .desc = MSG_SKILL_Resolve,
+        .icon = GFX_SkillIcon_Resolve,
+    },
+#endif
+
+#if (defined(SID_SilentPride) && (SID_SilentPride < MAX_SKILL_NUM))
+    [SID_SilentPride] = {
+        .desc = MSG_SKILL_SilentPride,
+        .icon = GFX_SkillIcon_SilentPride,
     },
 #endif
 };

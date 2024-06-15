@@ -9,6 +9,7 @@ SID_DefBonus
 SID_ResBonus
 SID_MovBonus
 SID_LightWeight
+SID_Resolve
 
 SID_DefiantStr
 SID_DefiantMag
@@ -115,8 +116,10 @@ SID_Outrider
 SID_EvenRhythm
 SID_OddRhythm
 SID_Corrosion
+SID_NoGuard
 SID_Puissance
 SID_Prescience
+SID_SilentPride
 
 // Weapon triangle
 SID_SwordBreaker

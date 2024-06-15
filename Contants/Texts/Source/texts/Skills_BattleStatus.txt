@@ -371,6 +371,11 @@ OddRhythm:[NL]
 +10 hit and avoid on[NL]
 odd numbered turns.[X]
 
+## MSG_SKILL_NoGuard
+NoGuard:[NL]
+Both sides have a[NL]
+100% chance of hitting.[X]
+
 ## MSG_SKILL_Puissance
 Puissance:[NL]
 +3 attack if the user's attacker[NL]
@@ -380,3 +385,8 @@ is greater than the enem's.[X]
 Prescience:[NL]
 If initiating at melee range,[NL]
 +15 hit and avoid.[X]
+
+## MSG_SKILL_SilentPride
+SilentPride:[NL]
+Gain +2 damage and take[NL]
+-2 damage per 25% below max HP.[X]

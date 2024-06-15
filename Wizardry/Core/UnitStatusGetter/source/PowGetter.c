@@ -28,6 +28,9 @@ int PowGetterWeaponBonus(int status, struct Unit * unit)
 
 int PowGetterSkills(int status, struct Unit * unit)
 {
+    int cur_hp = GetUnitCurrentHp(unit);
+    int max_hp = GetUnitMaxHp(unit);
+
 #if defined(SID_StrBonus) && (SID_StrBonus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_StrBonus))
         status += 2;
@@ -35,7 +38,7 @@ int PowGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_DefiantStr) && (SID_DefiantStr < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_DefiantStr))
-        if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
+        if ((cur_hp * 4) < max_hp)
             status += 7;
 #endif
 
@@ -74,7 +77,7 @@ int PowGetterSkills(int status, struct Unit * unit)
         status += 7;
 #endif
 
-    if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+    if(cur_hp == max_hp)
     {
 #if defined(SID_PushStrength) && (SID_PushStrength < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_PushStrength))
@@ -86,6 +89,14 @@ int PowGetterSkills(int status, struct Unit * unit)
             status += 5;
 #endif
     }
+    
+#if (defined(SID_Resolve) && (SID_Resolve < MAX_SKILL_NUM)) 
+    if (SkillTester(unit, SID_Resolve))
+    {
+        if ((cur_hp * 2) < max_hp)
+            status += status / 2;
+    }
+#endif
 
     return status;
 }
