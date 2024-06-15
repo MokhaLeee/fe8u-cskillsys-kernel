@@ -93,7 +93,7 @@ int PowGetterSkills(int status, struct Unit * unit)
             if (((GetUnitMaxHp(unit) % 2 == 0) && (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit)/2)) ||
                 ((GetUnitMaxHp(unit) % 2 != 0) && (GetUnitCurrentHp(unit) -1 < GetUnitMaxHp(unit)/2)))
                 {
-                    status += status/2;
+                    status *= 1.5;
                 }
         }
 #endif
