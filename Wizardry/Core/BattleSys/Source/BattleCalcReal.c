@@ -117,8 +117,8 @@ void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct Ba
 STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Hawkeye) && (SID_Hawkeye < MAX_SKILL_NUM))
-        if (SkillTester(&attacker->unit, SID_Hawkeye))
-           attacker->battleEffectiveHitRate = 100;
+    if (SkillTester(&attacker->unit, SID_Hawkeye))
+        attacker->battleEffectiveHitRate = 100;
 #endif
 
 #if (defined(SID_Merciless) && (SID_Merciless < MAX_SKILL_NUM))
