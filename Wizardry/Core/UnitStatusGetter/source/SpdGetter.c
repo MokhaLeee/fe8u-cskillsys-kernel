@@ -93,5 +93,16 @@ int SpdGetterSkills(int status, struct Unit * unit)
     }
 #endif
 
+#if (defined(SID_Resolve) && (SID_Resolve < MAX_SKILL_NUM)) 
+        if (SkillTester(unit, SID_Resolve))
+        {
+            if (((GetUnitMaxHp(unit) % 2 == 0) && (GetUnitCurrentHp(unit) < GetUnitMaxHp(unit) / 2)) ||
+                ((GetUnitMaxHp(unit) % 2 != 0) && (GetUnitCurrentHp(unit) -1 < GetUnitMaxHp(unit) / 2)))
+                {
+                    status *= 1.5;
+                }
+        }
+#endif
+
     return status;
 }
