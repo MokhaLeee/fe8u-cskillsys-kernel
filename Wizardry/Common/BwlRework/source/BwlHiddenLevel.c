@@ -3,10 +3,16 @@
 
 STATIC_DECLAR int GetUnitStaticHiddenLevel(struct Unit * unit)
 {
+    int hidden_lv;
+
     if (!UNIT_IS_VALID(unit))
         return 0;
 
-    return gpClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
+    hidden_lv = gpClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
+    if (hidden_lv == 0)
+        hidden_lv = UNIT_CATTRIBUTES(unit) & CA_PROMOTED ? 15 : 0;
+
+    return hidden_lv;
 }
 
 void NewBwlRecordHiddenLevel(struct Unit * unit)
