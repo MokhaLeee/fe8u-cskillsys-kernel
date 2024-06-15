@@ -138,11 +138,8 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #endif
 
 #if (defined(SID_NoGuard) && (SID_NoGuard < MAX_SKILL_NUM))
-        if (SkillTester(&attacker->unit, SID_NoGuard))
-        {
-            attacker->battleEffectiveHitRate = 100;
-            attacker->battleAvoidRate = -100;
-        }
+    if (SkillTester(&attacker->unit, SID_NoGuard) || SkillTester(&defender->unit, SID_NoGuard))
+        attacker->battleEffectiveHitRate = 100;
 #endif
 }
 
