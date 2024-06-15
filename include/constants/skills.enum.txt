@@ -118,6 +118,7 @@ SID_OddRhythm
 SID_Corrosion
 SID_NoGuard
 SID_Puissance
+SID_Prescience
 SID_SilentPride
 
 // Weapon triangle
