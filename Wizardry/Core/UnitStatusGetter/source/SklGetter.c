@@ -31,6 +31,9 @@ int SklGetterWeaponBonus(int status, struct Unit * unit)
 
 int SklGetterSkills(int status, struct Unit * unit)
 {
+    int cur_hp = GetUnitCurrentHp(unit);
+    int max_hp = GetUnitMaxHp(unit);
+
 #if defined(SID_SklBonus) && (SID_SklBonus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_SklBonus))
         status += 2;
@@ -38,7 +41,7 @@ int SklGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_DefiantSkl) && (SID_DefiantSkl < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_DefiantSkl))
-        if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
+        if ((cur_hp * 4) < max_hp)
             status += 7;
 #endif
 
@@ -57,7 +60,7 @@ int SklGetterSkills(int status, struct Unit * unit)
         status += 7;
 #endif
 
-    if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+    if(cur_hp == max_hp)
     {
 #if defined(SID_PushSkill) && (SID_PushSkill < MAX_SKILL_NUM)
         if (SkillTester(unit, SID_PushSkill))
@@ -73,7 +76,7 @@ int SklGetterSkills(int status, struct Unit * unit)
 #if (defined(SID_Resolve) && (SID_Resolve < MAX_SKILL_NUM)) 
     if (SkillTester(unit, SID_Resolve))
     {
-        if ((GetUnitCurrentHp(unit) * 2) < GetUnitMaxHp(unit))
+        if ((cur_hp * 2) < max_hp)
             status += status / 2;
     }
 #endif

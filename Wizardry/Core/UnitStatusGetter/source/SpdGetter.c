@@ -31,6 +31,9 @@ int SpdGetterWeaponBonus(int status, struct Unit * unit)
 
 int SpdGetterSkills(int status, struct Unit * unit)
 {
+    int cur_hp = GetUnitCurrentHp(unit);
+    int max_hp = GetUnitMaxHp(unit);
+
 #if defined(SID_SpdBonus) && (SID_SpdBonus < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_SpdBonus))
         status += 2;
@@ -38,7 +41,7 @@ int SpdGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_DefiantSpd) && (SID_DefiantSpd < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_DefiantSpd))
-        if ((GetUnitCurrentHp(unit) * 4) < GetUnitMaxHp(unit))
+        if ((cur_hp * 4) < max_hp)
             status += 7;
 #endif
 
@@ -70,7 +73,7 @@ int SpdGetterSkills(int status, struct Unit * unit)
 #if defined(SID_PushSpeed) && (SID_PushSpeed < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_PushSpeed))
     {
-        if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+        if(cur_hp == max_hp)
             status += 5;
     }
 #endif
@@ -78,7 +81,7 @@ int SpdGetterSkills(int status, struct Unit * unit)
 #if defined(SID_PushSpectrum) && (SID_PushSpectrum < MAX_SKILL_NUM)
     if (SkillTester(unit, SID_PushSpectrum))
     {
-        if(GetUnitCurrentHp(unit) == GetUnitMaxHp(unit))
+        if(cur_hp == max_hp)
             status += 5;
     }
 #endif
@@ -96,7 +99,7 @@ int SpdGetterSkills(int status, struct Unit * unit)
 #if (defined(SID_Resolve) && (SID_Resolve < MAX_SKILL_NUM)) 
     if (SkillTester(unit, SID_Resolve))
     {
-        if ((GetUnitCurrentHp(unit) * 2) < GetUnitMaxHp(unit))
+        if ((cur_hp * 2) < max_hp)
             status += status / 2;
     }
 #endif
