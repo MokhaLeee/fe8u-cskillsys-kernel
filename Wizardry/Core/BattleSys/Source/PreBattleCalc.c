@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "bwl.h"
 #include "kernel-lib.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
