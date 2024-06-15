@@ -4,5 +4,6 @@
 #include "source/BriefBwl.lyn.event"
 #include "source/BwlSupport.lyn.event"
 #include "source/BwlHiddenLevel.lyn.event"
+#include "source/LynJump.event"
 
 #endif
