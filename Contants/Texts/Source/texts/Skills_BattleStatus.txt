@@ -378,5 +378,5 @@ is greater than the enem's.[X]
 
 ## MSG_SKILL_Prescience
 Prescience:[NL]
-If initiating,[NL]
+If initiating at melee range,[NL]
 +15 hit and avoid.[X]
