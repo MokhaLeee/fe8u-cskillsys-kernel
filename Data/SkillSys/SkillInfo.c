@@ -1901,4 +1901,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Guts,
     },
 #endif
+
+#if (defined(SID_Hero) && (SID_Hero < MAX_SKILL_NUM))
+    [SID_Hero] = {
+        .desc = MSG_SKILL_Hero,
+        .icon = GFX_SkillIcon_Hero,
+    },
+#endif
 };

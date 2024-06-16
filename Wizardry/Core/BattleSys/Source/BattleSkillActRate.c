@@ -26,6 +26,12 @@ bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * targ
         rate += 30;
 #endif
 
+#if (defined(SID_Hero) && (SID_Hero < MAX_SKILL_NUM))
+    if (SkillTester(&actor->unit, SID_RightfulGod))
+        if ((actor->hpInitial * 2) < actor->unit.maxHP)
+            rate += 30;
+#endif
+
 #if (defined(SID_RightfulArch) && (SID_RightfulArch < MAX_SKILL_NUM))
     if (SkillTester(&actor->unit, SID_RightfulArch))
         rate = 100;
