@@ -687,7 +687,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_Guts) && (SID_Guts < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_Guts) && (GetUnitStatusIndex(unit) != UNIT_STATUS_NONE))
+    if (SkillTester(&attacker->unit, SID_Guts) && (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE))
         attacker->battleAttack += 5;
 #endif
 }
