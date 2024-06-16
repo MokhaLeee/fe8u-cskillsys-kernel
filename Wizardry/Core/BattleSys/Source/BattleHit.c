@@ -47,6 +47,7 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(&attacker->unit, SID_LunaAttack))
         damage += defender->battleDefense / 4;
 #endif // SID_LunaAttack
+
     return damage;
 }
 
@@ -245,6 +246,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
     if (gBattleStats.damage > 0)
     {
+#if defined(SID_Impale) && (SID_Impale < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Impale, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
+        gBattleStats.damage *= 4;
+    }
+#endif
+
 #if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
         if (SkillTester(&defender->unit, SID_DragonSkin))
         {
