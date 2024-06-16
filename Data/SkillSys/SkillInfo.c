@@ -1873,4 +1873,25 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_SilentPride,
     },
 #endif
+
+#if (defined(SID_RightfulKing) && (SID_RightfulKing < MAX_SKILL_NUM))
+    [SID_RightfulKing] = {
+        .desc = MSG_SKILL_RightfulKing,
+        .icon = GFX_SkillIcon_RightfulKing,
+    },
+#endif
+
+#if (defined(SID_RightfulGod) && (SID_RightfulGod < MAX_SKILL_NUM))
+    [SID_RightfulGod] = {
+        .desc = MSG_SKILL_RightfulGod,
+        .icon = GFX_SkillIcon_RightfulGod,
+    },
+#endif
+
+#if (defined(SID_RightfulArch) && (SID_RightfulArch < MAX_SKILL_NUM))
+    [SID_RightfulArch] = {
+        .desc = MSG_SKILL_RightfulArch,
+        .icon = GFX_SkillIcon_RightfulArch,
+    },
+#endif
 };
