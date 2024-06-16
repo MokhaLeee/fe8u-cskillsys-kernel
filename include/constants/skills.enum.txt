@@ -123,6 +123,7 @@ SID_SilentPride
 SID_RightfulKing
 SID_RightfulGod
 SID_RightfulArch
+SID_Guts
 
 // Weapon triangle
 SID_SwordBreaker

@@ -405,3 +405,8 @@ rate of the unit's skills.[X]
 RightfulArch:[NL]
 Set activation rate of[NL]
 this unit's skills to 100%.[X]
+
+## MSG_SKILL_Guts
+Guts:[NL]
++5 attack if afflicted by[NL]
+any status condition.[X]
