@@ -8,17 +8,8 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
+STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
 {
-    int unit_power  = GetUnitPower(GetUnit(attacker->unit.index));
-    int unit_magic = GetUnitMagic(GetUnit(attacker->unit.index));
-    int unit_skill = GetUnitSkill(GetUnit(attacker->unit.index));
-    int unit_speed = GetUnitSpeed(GetUnit(attacker->unit.index));
-    int unit_luck = GetUnitLuck(GetUnit(attacker->unit.index));
-    int unit_defense = GetUnitDefense(GetUnit(attacker->unit.index));
-    int unit_resistance = GetUnitResistance(GetUnit(attacker->unit.index));
-
-    int activation_rates [7] = {unit_power, unit_magic, unit_skill, unit_speed, unit_luck, unit_defense, unit_resistance};
 
 #if (defined(SID_Aether) && (SID_Aether < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Aether, activation_rates[2]))
@@ -62,19 +53,9 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 }
 
 /* LynJump */
-void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
 {
     int attack, defense;
-
-    int unit_power  = GetUnitPower(GetUnit(attacker->unit.index));
-    int unit_magic = GetUnitMagic(GetUnit(attacker->unit.index));
-    int unit_skill = GetUnitSkill(GetUnit(attacker->unit.index));
-    int unit_speed = GetUnitSpeed(GetUnit(attacker->unit.index));
-    int unit_luck = GetUnitLuck(GetUnit(attacker->unit.index));
-    int unit_defense = GetUnitDefense(GetUnit(attacker->unit.index));
-    int unit_resistance = GetUnitResistance(GetUnit(attacker->unit.index));
-
-    int activation_rates [7] = {unit_power, unit_magic, unit_skill, unit_speed, unit_luck, unit_defense, unit_resistance};
 
     bool in_art_atk = false;
 
@@ -124,30 +105,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     attack = gBattleStats.attack;
     defense = gBattleStats.defense;
-
-#if (defined(SID_RightfulKing) && (SID_RightfulKing < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_RightfulKing))
-            for (int i = 0; i < 7; i++)
-            {
-                activation_rates[i] += 10;
-            }
-#endif
-
-#if (defined(SID_RightfulGod) && (SID_RightfulGod < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_RightfulGod))
-            for (int i = 0; i < 7; i++)
-            {
-                activation_rates[i] += 30;
-            }
-#endif
-
-#if (defined(SID_RightfulArch) && (SID_RightfulArch < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_RightfulArch))
-            for (int i = 0; i < 7; i++)
-            {
-                activation_rates[i] = 100;
-            }
-#endif
 
 #if (defined(SID_Flare) && (SID_Flare < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Flare, activation_rates[2]))
@@ -328,7 +285,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 }
 
 /* LynJump */
-void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
 {
     int debuff;
 
@@ -376,7 +333,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         }
 
 #ifdef CHAX
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN || CheckSkillHpDrain(attacker, defender))
+        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN || CheckSkillHpDrain(attacker, defender, activation_rates))
 #else
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 #endif
@@ -452,21 +409,9 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     }
 }
 
-STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
+STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
 {
     int ret;
-    struct Unit * uact = GetUnit(attacker->unit.index);
-    struct Unit * utar = GetUnit(defender->unit.index);
-
-    int unit_power  = GetUnitPower(GetUnit(attacker->unit.index));
-    int unit_magic = GetUnitMagic(GetUnit(attacker->unit.index));
-    int unit_skill = GetUnitSkill(GetUnit(attacker->unit.index));
-    int unit_speed = GetUnitSpeed(GetUnit(attacker->unit.index));
-    int unit_luck = GetUnitLuck(GetUnit(attacker->unit.index));
-    int unit_defense = GetUnitDefense(GetUnit(attacker->unit.index));
-    int unit_resistance = GetUnitResistance(GetUnit(attacker->unit.index));
-
-    int activation_rates [7] = {unit_power, unit_magic, unit_skill, unit_speed, unit_luck, unit_defense, unit_resistance};
 
 #if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Bane, activation_rates[2]))
@@ -526,24 +471,51 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 /* LynJump */
 bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int unit_power  = GetUnitPower(GetUnit(attacker->unit.index));
-    int unit_magic = GetUnitMagic(GetUnit(attacker->unit.index));
-    int unit_skill = GetUnitSkill(GetUnit(attacker->unit.index));
-    int unit_speed = GetUnitSpeed(GetUnit(attacker->unit.index));
-    int unit_luck = GetUnitLuck(GetUnit(attacker->unit.index));
-    int unit_defense = GetUnitDefense(GetUnit(attacker->unit.index));
-    int unit_resistance = GetUnitResistance(GetUnit(attacker->unit.index));
+    struct Unit * unit = GetUnit(attacker->unit.index);
 
+    int unit_power = GetUnitPower(unit);
+    int unit_magic = GetUnitMagic(unit);
+    int unit_skill = GetUnitSkill(unit);
+    int unit_speed = GetUnitSpeed(unit);
+    int unit_luck = GetUnitLuck(unit);
+    int unit_defense = GetUnitDefense(unit);
+    int unit_resistance = GetUnitResistance(unit);
+
+    // Assign values to the global array
     int activation_rates [7] = {unit_power, unit_magic, unit_skill, unit_speed, unit_luck, unit_defense, unit_resistance};
+
+#if (defined(SID_RightfulKing) && (SID_RightfulKing < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_RightfulKing))
+            for (int i = 0; i < 7; i++)
+            {
+                activation_rates[i] += 10;
+            }
+#endif
+
+#if (defined(SID_RightfulGod) && (SID_RightfulGod < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_RightfulGod))
+            for (int i = 0; i < 7; i++)
+            {
+                activation_rates[i] += 30;
+            }
+#endif
+
+#if (defined(SID_RightfulArch) && (SID_RightfulArch < MAX_SKILL_NUM))
+        if (SkillTester(unit, SID_RightfulArch))
+            for (int i = 0; i < 7; i++)
+            {
+                activation_rates[i] = 100;
+            }
+#endif
 
     if (attacker == &gBattleTarget)
         gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
 
-    BattleUpdateBattleStats(attacker, defender);
+    BattleUpdateBattleStats(attacker, defender, activation_rates);
 
-    BattleGenerateHitTriangleAttack(attacker, defender);
-    BattleGenerateHitAttributes(attacker, defender);
-    BattleGenerateHitEffects(attacker, defender);
+    BattleGenerateHitTriangleAttack(attacker, defender, activation_rates);
+    BattleGenerateHitAttributes(attacker, defender, activation_rates);
+    BattleGenerateHitEffects(attacker, defender, activation_rates);
 
     if (attacker->unit.curHP == 0 || defender->unit.curHP == 0)
     {
@@ -554,7 +526,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if CHAX
         if (defender->unit.curHP == 0)
         {
-            if (InoriCheck(attacker, defender))
+            if (InoriCheck(attacker, defender, activation_rates))
             {
                 gBattleStats.damage = gBattleStats.damage - 1;
                 gBattleHitIterator->hpChange = gBattleStats.damage;
