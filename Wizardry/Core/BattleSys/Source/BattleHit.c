@@ -11,7 +11,7 @@
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Aether) && (SID_Aether < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Aether, GetUnitSkill(GetUnit(attacker->unit.index))))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Aether, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         return true;
@@ -19,7 +19,7 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
 #endif /* SID_Aether */
 
 #if (defined(SID_Sol) && (SID_Sol < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Sol, GetUnitSkill(GetUnit(attacker->unit.index))))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Sol, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
         return true;
@@ -31,21 +31,20 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
 
 int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    struct Unit * unit = GetUnit(attacker->unit.index);
     int damage = 0;
 
 #if defined(SID_RuinedBlade) && (SID_RuinedBlade < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_RuinedBlade))
+    if (SkillTester(&attacker->unit, SID_RuinedBlade))
         damage += 5;
 #endif // SID_RuinedBlade
 
 #if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_RuinedBladePlus))
+    if (SkillTester(&attacker->unit, SID_RuinedBladePlus))
         damage += 5;
 #endif // SID_RuinedBladePlus
 
 #if defined(SID_LunaAttack) && (SID_LunaAttack < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_LunaAttack))
+    if (SkillTester(&attacker->unit, SID_LunaAttack))
         damage += defender->battleDefense / 4;
 #endif // SID_LunaAttack
     return damage;
@@ -56,9 +55,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 {
     int attack, defense;
     bool in_art_atk = false;
-
-    struct Unit * unit = GetUnit(attacker->unit.index);
-    struct Unit * unit_def = GetUnit(defender->unit.index);
 
     gBattleStats.damage = 0;
 
@@ -105,7 +101,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     defense = gBattleStats.defense;
 
 #if (defined(SID_Flare) && (SID_Flare < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Flare, GetUnitSkill(GetUnit(attacker->unit.index))))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Flare, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Flare);
         defense = defense / 2;
@@ -115,7 +111,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (IsMagicAttack(attacker))
     {
 #if (defined(SID_Corona) && (SID_Corona < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Corona, GetUnitSkill(GetUnit(attacker->unit.index))))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Corona, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corona);
             defense = 0;
@@ -125,7 +121,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     else
     {
 #if (defined(SID_Luna) && (SID_Luna < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Luna, GetUnitSkill(GetUnit(attacker->unit.index))))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Luna, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Luna);
             defense = 0;
@@ -133,7 +129,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, GetUnitSkill(GetUnit(attacker->unit.index))))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
             attack *= 3;
@@ -141,10 +137,10 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_Corrosion) && (SID_Corrosion < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Corrosion, GetUnitSkill(GetUnit(attacker->unit.index))))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Corrosion, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
-            int cost = unit->level;
+            int cost = attacker->levelPrevious;
         
             while (cost-- > 0)
             {
@@ -164,12 +160,12 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     gBattleStats.damage = attack - defense;
 
 #if defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_FlashingBladePlus))
+    if (SkillTester(&attacker->unit, SID_FlashingBladePlus))
         gBattleStats.damage += 3;
 #endif
 
 #if defined(SID_DragonFang) && (SID_DragonFang < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_DragonFang))
+    if (SkillTester(&attacker->unit, SID_DragonFang))
         gBattleStats.damage = gBattleStats.damage * 3 / 2;
 #endif
 
@@ -198,7 +194,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
 #if defined(SID_InfinityEdge) && (SID_InfinityEdge < MAX_SKILL_NUM)
             /* InfinityEdge */
-            if (SkillTester(unit, SID_InfinityEdge))
+            if (SkillTester(&attacker->unit, SID_InfinityEdge))
 #else
             if (0)
 #endif // SID_InfinityEdge
@@ -212,7 +208,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     /* SID_Astra may half the damage */
     if (attacker == &gBattleActor)
     {
-        if (SkillTester(unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
+        if (SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
             gBattleStats.damage = gBattleStats.damage / 2;
     }
 #endif // SID_Astra
@@ -229,7 +225,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         if (IsMagicAttack(attacker))
         {
 #if (defined(SID_Aegis) && (SID_Aegis < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, GetUnitSkill(unit_def)))
+            if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, defender->unit.skl))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
                 gBattleStats.damage = 0;
@@ -239,7 +235,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         else
         {
 #if (defined(SID_Pavise) && (SID_Pavise < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, GetUnitSkill(unit_def)))
+            if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, defender->unit.skl))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
                 gBattleStats.damage = 0;
@@ -250,7 +246,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (gBattleStats.damage > 0)
     {
 #if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
-        if (SkillTester(unit_def, SID_DragonSkin))
+        if (SkillTester(&defender->unit, SID_DragonSkin))
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
             gBattleStats.damage = gBattleStats.damage / 2;
@@ -261,7 +257,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         else
         {
 #if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
-            if (SkillTester(unit_def, SID_KeenFighter))
+            if (SkillTester(&defender->unit, SID_KeenFighter))
             {
                 if (CheckCanTwiceAttackOrder(attacker,defender))
                 {
@@ -410,11 +406,9 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int ret;
-    struct Unit * uact = GetUnit(attacker->unit.index);
-    struct Unit * utar = GetUnit(defender->unit.index);
 
 #if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Bane, GetUnitSkill(uact)))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Bane, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
         return true;
@@ -422,7 +416,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_Inori) && (SID_Inori < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(defender, attacker, SID_Inori, GetUnitLuck(utar)))
+    if (CheckBattleSkillActivte(defender, attacker, SID_Inori, defender->unit.lck))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Inori);
         return true;
@@ -508,7 +502,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
             gBattleActorGlobalFlag.enimy_defeated = true;
 
 #if (defined(SID_Galeforce) && (SID_Galeforce < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(&gBattleActor, &gBattleTarget, SID_Galeforce, GetUnitSkill(GetUnit(gBattleActor.unit.index))))
+            if (CheckBattleSkillActivte(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
 #endif
