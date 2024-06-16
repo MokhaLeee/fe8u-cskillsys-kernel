@@ -10,10 +10,9 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
      * Here we need to put some calculation at the end of the pre-battle calc.
      * Thus the main part of calc should be positioned at berfore.
      */
-    struct Unit * unit = GetUnit(attacker->unit.index);
 
 #if (defined(SID_CatchingUp) && (SID_CatchingUp < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_CatchingUp))
+        if (SkillTester(&attacker->unit, SID_CatchingUp))
         {
             /**
              * Check if the enemy unit doubles the skill holder
@@ -28,20 +27,20 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     if (attacker->battleAttack > defender->battleAttack)
     {
 #if (defined(SID_HeavyBlade) && (SID_HeavyBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBlade))
+        if (SkillTester(&attacker->unit, SID_HeavyBlade))
             attacker->battleCritRate += 15;
 #endif
 
 #if (defined(SID_HeavyBladePlus) && (SID_HeavyBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_HeavyBladePlus))
+        if (SkillTester(&attacker->unit, SID_HeavyBladePlus))
             attacker->battleCritRate += 25;
 #endif
     }
 
-    if (ConGetter(unit) < ConGetter(&defender->unit))
+    if (attacker->unit.conBonus < defender->unit.conBonus)
     {
 #if (defined(SID_DancingBlade) && (SID_DancingBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_DancingBlade))
+        if (SkillTester(&attacker->unit, SID_DancingBlade))
         {
             attacker->battleSpeed += 4;
             attacker->battleDefense += 2;
@@ -52,17 +51,17 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     if (attacker->battleSpeed > defender->battleSpeed)
     {
 #if (defined(SID_FlashingBlade) && (SID_FlashingBlade < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBlade))
+        if (SkillTester(&attacker->unit, SID_FlashingBlade))
             attacker->battleCritRate += 15;
 #endif
 
 #if (defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_FlashingBladePlus))
+        if (SkillTester(&attacker->unit, SID_FlashingBladePlus))
             attacker->battleCritRate += 25;
 #endif
 
 #if (defined(SID_Puissance) && (SID_Puissance < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_Puissance))
+        if (SkillTester(&attacker->unit, SID_Puissance))
             attacker->battleAttack += 3;
 #endif
     }

@@ -8,7 +8,6 @@
 
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    struct Unit * unit = GetUnit(attacker->unit.index);
     const struct WeaponTriangleConf * it;
     const struct WeaponTriangleItemConf * item_conf = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
 
@@ -76,7 +75,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
                     it->bonus_atk, it->bonus_def, it->bonus_speed, it->bonus_hit,
                     it->bonus_avoid, it->bonus_crit, it->bonus_dodge, it->bonus_silencer);
 
-            if (SkillTester(unit, it->sid))
+            if (SkillTester(&attacker->unit, it->sid))
             {
                 attacker->battleAttack       += it->bonus_atk;
                 attacker->battleDefense      += it->bonus_def;
