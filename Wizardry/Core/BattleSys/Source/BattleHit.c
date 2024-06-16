@@ -8,11 +8,10 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
+STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-
 #if (defined(SID_Aether) && (SID_Aether < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Aether, activation_rates[2]))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Aether, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         return true;
@@ -20,7 +19,7 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
 #endif /* SID_Aether */
 
 #if (defined(SID_Sol) && (SID_Sol < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Sol, activation_rates[2]))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Sol, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
         return true;
@@ -53,10 +52,9 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 }
 
 /* LynJump */
-void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
+void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int attack, defense;
-
     bool in_art_atk = false;
 
     struct Unit * unit = GetUnit(attacker->unit.index);
@@ -107,7 +105,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     defense = gBattleStats.defense;
 
 #if (defined(SID_Flare) && (SID_Flare < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Flare, activation_rates[2]))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Flare, GetUnitSkill(GetUnit(attacker->unit.index))))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Flare);
         defense = defense / 2;
@@ -117,7 +115,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (IsMagicAttack(attacker))
     {
 #if (defined(SID_Corona) && (SID_Corona < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Corona, activation_rates[2]))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Corona, GetUnitSkill(GetUnit(attacker->unit.index))))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corona);
             defense = 0;
@@ -127,7 +125,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     else
     {
 #if (defined(SID_Luna) && (SID_Luna < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Luna, activation_rates[2]))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Luna, GetUnitSkill(GetUnit(attacker->unit.index))))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Luna);
             defense = 0;
@@ -135,7 +133,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, activation_rates[2]))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, GetUnitSkill(GetUnit(attacker->unit.index))))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
             attack *= 3;
@@ -143,7 +141,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_Corrosion) && (SID_Corrosion < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Corrosion, activation_rates[2]))
+        if (CheckBattleSkillActivte(attacker, defender, SID_Corrosion, GetUnitSkill(GetUnit(attacker->unit.index))))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
             int cost = unit->level;
@@ -231,7 +229,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         if (IsMagicAttack(attacker))
         {
 #if (defined(SID_Aegis) && (SID_Aegis < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, activation_rates[2]))
+            if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, GetUnitSkill(unit_def)))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
                 gBattleStats.damage = 0;
@@ -241,7 +239,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         else
         {
 #if (defined(SID_Pavise) && (SID_Pavise < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, activation_rates[2]))
+            if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, GetUnitSkill(unit_def)))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
                 gBattleStats.damage = 0;
@@ -285,7 +283,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 }
 
 /* LynJump */
-void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
+void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int debuff;
 
@@ -333,7 +331,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         }
 
 #ifdef CHAX
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN || CheckSkillHpDrain(attacker, defender, activation_rates))
+        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN || CheckSkillHpDrain(attacker, defender))
 #else
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 #endif
@@ -409,12 +407,14 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     }
 }
 
-STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender, int activation_rates[])
+STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int ret;
+    struct Unit * uact = GetUnit(attacker->unit.index);
+    struct Unit * utar = GetUnit(defender->unit.index);
 
 #if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Bane, activation_rates[2]))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Bane, GetUnitSkill(uact)))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
         return true;
@@ -422,7 +422,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_Inori) && (SID_Inori < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(defender, attacker, SID_Inori, activation_rates[4]))
+    if (CheckBattleSkillActivte(defender, attacker, SID_Inori, GetUnitLuck(utar)))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Inori);
         return true;
@@ -471,51 +471,14 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 /* LynJump */
 bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    struct Unit * unit = GetUnit(attacker->unit.index);
-
-    int unit_power = GetUnitPower(unit);
-    int unit_magic = GetUnitMagic(unit);
-    int unit_skill = GetUnitSkill(unit);
-    int unit_speed = GetUnitSpeed(unit);
-    int unit_luck = GetUnitLuck(unit);
-    int unit_defense = GetUnitDefense(unit);
-    int unit_resistance = GetUnitResistance(unit);
-
-    // Assign values to the global array
-    int activation_rates [7] = {unit_power, unit_magic, unit_skill, unit_speed, unit_luck, unit_defense, unit_resistance};
-
-#if (defined(SID_RightfulKing) && (SID_RightfulKing < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_RightfulKing))
-            for (int i = 0; i < 7; i++)
-            {
-                activation_rates[i] += 10;
-            }
-#endif
-
-#if (defined(SID_RightfulGod) && (SID_RightfulGod < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_RightfulGod))
-            for (int i = 0; i < 7; i++)
-            {
-                activation_rates[i] += 30;
-            }
-#endif
-
-#if (defined(SID_RightfulArch) && (SID_RightfulArch < MAX_SKILL_NUM))
-        if (SkillTester(unit, SID_RightfulArch))
-            for (int i = 0; i < 7; i++)
-            {
-                activation_rates[i] = 100;
-            }
-#endif
-
     if (attacker == &gBattleTarget)
         gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
 
-    BattleUpdateBattleStats(attacker, defender, activation_rates);
+    BattleUpdateBattleStats(attacker, defender);
 
-    BattleGenerateHitTriangleAttack(attacker, defender, activation_rates);
-    BattleGenerateHitAttributes(attacker, defender, activation_rates);
-    BattleGenerateHitEffects(attacker, defender, activation_rates);
+    BattleGenerateHitTriangleAttack(attacker, defender);
+    BattleGenerateHitAttributes(attacker, defender);
+    BattleGenerateHitEffects(attacker, defender);
 
     if (attacker->unit.curHP == 0 || defender->unit.curHP == 0)
     {
@@ -526,7 +489,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if CHAX
         if (defender->unit.curHP == 0)
         {
-            if (InoriCheck(attacker, defender, activation_rates))
+            if (InoriCheck(attacker, defender))
             {
                 gBattleStats.damage = gBattleStats.damage - 1;
                 gBattleHitIterator->hpChange = gBattleStats.damage;
@@ -545,7 +508,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
             gBattleActorGlobalFlag.enimy_defeated = true;
 
 #if (defined(SID_Galeforce) && (SID_Galeforce < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(&gBattleActor, &gBattleTarget, SID_Galeforce, activation_rates[2]))
+            if (CheckBattleSkillActivte(&gBattleActor, &gBattleTarget, SID_Galeforce, GetUnitSkill(GetUnit(gBattleActor.unit.index))))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
 #endif

@@ -16,6 +16,21 @@ bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * targ
         return false;
 #endif
 
+#if (defined(SID_RightfulKing) && (SID_RightfulKing < MAX_SKILL_NUM))
+    if (SkillTester(&actor->unit, SID_RightfulKing))
+        rate += 10;
+#endif
+
+#if (defined(SID_RightfulGod) && (SID_RightfulGod < MAX_SKILL_NUM))
+    if (SkillTester(&actor->unit, SID_RightfulGod))
+        rate += 30;
+#endif
+
+#if (defined(SID_RightfulArch) && (SID_RightfulArch < MAX_SKILL_NUM))
+    if (SkillTester(&actor->unit, SID_RightfulArch))
+        rate = 100;
+#endif
+
     if (SkillTester(&actor->unit, sid))
         if (TryAutoActSkill(actor, target) || BattleRoll2RN(rate, false))
             return true;
