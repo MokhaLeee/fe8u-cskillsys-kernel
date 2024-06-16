@@ -6,7 +6,6 @@
 #include "kernel/LoadSkill.lyn.event"
 #include "kernel/EquipSkill.lyn.event"
 #include "kernel/JudgeSkill.lyn.event"
-#include "kernel/JudgeSkillFast.lyn.event"
 #include "kernel/SkillList.lyn.event"
 
 /* EfxSkill */
