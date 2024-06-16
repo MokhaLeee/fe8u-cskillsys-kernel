@@ -2,10 +2,7 @@
 
 #include "bwl.h"
 
-void StartSupportTalk(u8, u8, int);
-void SetSupportLevelGained(u8 charA, u8 charB);
-s8 HasUnitGainedSupportLevel(struct Unit * unit, int num);
-extern int sSupportMaxExpLookup[];
+#define LOCAL_TRACE 0
 
 static u8 * GetUnitBwlSupports(u8 pid)
 {
@@ -63,17 +60,17 @@ s8 ActionSupport(ProcPtr proc)
 /* LynJump! */
 int GetUnitSupportLevel(struct Unit * unit, int num)
 {
-    int supportExp;
+    int exp;
     u8 * supp;
 
     if (!UNIT_IS_VALID(unit))
         return SUPPORT_LEVEL_NONE;
 
     supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
-
     if (supp)
     {
-        supportExp = unit->supports[num];
+        exp = supp[num];
+        LTRACEF("[pid=%d, num=%d] exp=%d at BWL", UNIT_CHAR_ID(unit), num, exp);
     }
     else
     {
@@ -81,16 +78,17 @@ int GetUnitSupportLevel(struct Unit * unit, int num)
          * for none-BWL characters,
          * directly judge on its rom data
          */
-        supportExp = unit->pCharacterData->pSupportData->supportExpBase[num];
+        exp = unit->pCharacterData->pSupportData->supportExpBase[num];
+        LTRACEF("[pid=%d, num=%d] exp=%d at ROM", UNIT_CHAR_ID(unit), num, exp);
     }
 
-    if (supportExp > 240)
+    if (exp > 240)
         return SUPPORT_LEVEL_A;
 
-    if (supportExp > 160)
+    if (exp > 160)
         return SUPPORT_LEVEL_B;
 
-    if (supportExp > 80)
+    if (exp > 80)
         return SUPPORT_LEVEL_C;
 
     return SUPPORT_LEVEL_NONE;
@@ -189,7 +187,6 @@ void UnitLoadSupports(struct Unit * unit)
 {
     int i, count = GetUnitSupporterCount(unit);
     u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
-
     if (supp)
     {
         CpuFill16(0, supp, UNIT_SUPPORT_MAX_COUNT);

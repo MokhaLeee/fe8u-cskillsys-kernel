@@ -98,3 +98,7 @@ extern struct AiScr CONST_DATA gAiScript_FallbackAi1[];
 extern struct AiScr CONST_DATA gAiScript_FallbackAi2[];
 
 void AiScript_Exec(u8 *);
+
+void SetSupportLevelGained(u8 charA, u8 charB);
+s8 HasUnitGainedSupportLevel(struct Unit * unit, int num);
+extern int sSupportMaxExpLookup[];
