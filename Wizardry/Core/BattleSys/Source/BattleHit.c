@@ -422,7 +422,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_Inori) && (SID_Inori < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(defender, attacker, SID_Inori, activation_rates[2]))
+    if (CheckBattleSkillActivte(defender, attacker, SID_Inori, activation_rates[4]))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Inori);
         return true;
