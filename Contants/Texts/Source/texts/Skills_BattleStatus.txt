@@ -410,3 +410,8 @@ this unit's skills to 100%.[X]
 Guts:[NL]
 +5 attack if afflicted by[NL]
 any status condition.[X]
+
+## MSG_SKILL_Hero
+Hero:[NL]
+If unit HP < 50%, add +30% to[NL]
+unit's activation skill rate.[X]
