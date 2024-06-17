@@ -1922,4 +1922,12 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Loyalty,
       },
 #endif
+
+#if (defined(SID_StunningSmile) && (SID_StunningSmile < MAX_SKILL_NUM)) 
+    [SID_StunningSmile] = {
+        .name = MSG_SKILL_StunningSmile_NAME,
+        .desc = MSG_SKILL_StunningSmile,
+        .icon = GFX_SkillIcon_StunningSmile,
+      },
+#endif
 };

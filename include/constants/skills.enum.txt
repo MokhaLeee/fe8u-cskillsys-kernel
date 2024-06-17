@@ -70,6 +70,7 @@ SID_HeavyBladePlus
 SID_FlashingBladePlus
 SID_LunaAttack
 SID_SorceryBlade
+SID_StunningSmile
 SID_Loyalty
 SID_HolyAura
 SID_Fortune
