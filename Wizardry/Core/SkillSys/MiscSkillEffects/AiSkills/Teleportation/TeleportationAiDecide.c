@@ -108,8 +108,8 @@ bool Ai2Decide_TryTeleportation(void)
 
     if (AiTryTeleportationExt())
     {
-        LTRACEF("Ai1: Teleportation to x=%d, y=%d", 
-                    gAiDecision.xTarget, gAiDecision.yTarget);
+        LTRACEF("[uid=%x] Ai1 Teleportation to x=%d, y=%d", 
+                    gActiveUnit->index & 0xFF, gAiDecision.xTarget, gAiDecision.yTarget);
 
         gActiveUnit->state |= US_HAS_MOVED;
         return true;

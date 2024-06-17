@@ -7,6 +7,8 @@
 #include "combo-attack.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 enum {
     NOP_ATTACK = 0,
     ACT_ATTACK = 1,
@@ -211,7 +213,7 @@ void BattleUnwind(void)
 
                 /* Reload battle-hit */
                 old = gBattleHitIterator;
-                Printf("Combo end at round round %d", GetBattleHitRound(old));
+                LTRACEF("Combo end at round round %d", GetBattleHitRound(old));
             }
 #endif
             ret = BattleGenerateRoundHits(&gBattleActor, &gBattleTarget);

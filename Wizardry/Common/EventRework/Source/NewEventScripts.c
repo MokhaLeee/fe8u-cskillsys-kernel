@@ -1,0 +1,34 @@
+#include "common-chax.h"
+#include "kernel-lib.h"
+#include "event-rework.h"
+
+const EventListScr EventScr_UidWarpIN[] = {
+    SADD(EVT_SLOT_3, EVT_SLOT_2, EVT_SLOT_0)
+    REMU(CHAR_EVT_UID_AT_SLOT2)
+    CAMERA_CAHR(CHAR_EVT_UID_AT_SLOT2)
+
+    CHECK_COORDS(CHAR_EVT_UID_AT_SLOT2)
+    SADD(EVT_SLOT_B, EVT_SLOT_C, EVT_SLOT_0)
+    WARP_IN(-1, -1)
+
+    STAL2(10)
+    SADD(EVT_SLOT_2, EVT_SLOT_3, EVT_SLOT_0)
+    REVEAL(CHAR_EVT_UID_AT_SLOT2)
+    ENDWARP
+    ENDA
+};
+
+const EventListScr EventScr_UidWarpOUT[] = {
+    SADD(EVT_SLOT_3, EVT_SLOT_2, EVT_SLOT_0)
+    CAMERA_CAHR(CHAR_EVT_UID_AT_SLOT2)
+
+    CHECK_COORDS(CHAR_EVT_UID_AT_SLOT2)
+    SADD(EVT_SLOT_B, EVT_SLOT_C, EVT_SLOT_0)
+    WARP_OUT(-1, -1)
+
+    STAL2(20)
+    SADD(EVT_SLOT_2, EVT_SLOT_3, EVT_SLOT_0)
+    REMU(CHAR_EVT_UID_AT_SLOT2)
+    ENDWARP
+    ENDA
+};
