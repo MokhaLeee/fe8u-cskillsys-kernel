@@ -425,3 +425,7 @@ Gain +1 damage, +5% hit,[NL]
 Loyalty:[NL]
 When within 2 spaces of a Lord,[NL]
 -3 damage taken, +15% hit.[X]
+
+## MSG_SKILL_Trample
+Trample:[NL]
++5 damage to unmounted units.[X]
