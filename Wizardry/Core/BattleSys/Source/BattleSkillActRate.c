@@ -3,11 +3,6 @@
 #include "battle-system.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR bool TryAutoActSkill(struct BattleUnit * actor, struct BattleUnit * target)
-{
-    return false;
-}
-
 bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate)
 {
 #if (defined(SID_Foresight) && (SID_Foresight < MAX_SKILL_NUM))
@@ -37,9 +32,8 @@ bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * targ
         rate = 100;
 #endif
 
-    if (SkillTester(&actor->unit, sid))
-        if (TryAutoActSkill(actor, target) || BattleRoll2RN(rate, false))
-            return true;
+    if (SkillTester(&actor->unit, sid) && BattleRoll2RN(rate, false))
+        return true;
 
     return false;
 }
