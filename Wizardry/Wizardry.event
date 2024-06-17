@@ -44,7 +44,7 @@ ALIGN 4
 #include "Core/HelpBox/HelpBox.event"
 #include "Core/ComboAttack/ComboAttack.event"
 
-#include "QOL/StatScreenfx/StatScreenfx.event"
+// #include "QOL/StatScreenfx/StatScreenfx.event"
 #include "QOL/GameIntrofx/GameIntrofx.event"
 
 #include "External/ExternalPatches.event"
