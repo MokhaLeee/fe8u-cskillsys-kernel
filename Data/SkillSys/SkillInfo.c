@@ -1922,4 +1922,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Loyalty,
       },
 #endif
+
+#if (defined(SID_Eclipse) && (SID_Eclipse < MAX_SKILL_NUM)) 
+    [SID_Eclipse] = {
+        .desc = MSG_SKILL_Eclipse,
+        .icon = GFX_SkillIcon_Eclipse,
+      },
+#endif
 };
