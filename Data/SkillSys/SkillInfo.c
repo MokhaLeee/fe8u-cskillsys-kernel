@@ -1922,4 +1922,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Loyalty,
       },
 #endif
+
+#if (defined(SID_TowerShield) && (SID_TowerShield < MAX_SKILL_NUM)) 
+    [SID_TowerShield] = {
+        .desc = MSG_SKILL_TowerShield,
+        .icon = GFX_SkillIcon_TowerShield,
+      },
+#endif
 };
