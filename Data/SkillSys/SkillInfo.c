@@ -1908,4 +1908,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Hero,
     },
 #endif
+
+#if (defined(SID_HolyAura) && (SID_HolyAura < MAX_SKILL_NUM)) 
+    [SID_HolyAura] = {
+         .desc = MSG_SKILL_HolyAura,
+         .icon = GFX_SkillIcon_HolyAura,
+      },
+#endif
 };

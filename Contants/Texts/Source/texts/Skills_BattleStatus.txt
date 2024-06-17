@@ -415,3 +415,8 @@ any status condition.[X]
 Hero:[NL]
 If unit HP < 50%, add +30% to[NL]
 unit's activation skill rate.[X]
+
+## MSG_SKILL_HolyAura
+Holy Aura:[NL]
+Gain +1 damage, +5% hit,[NL]
++5% avoid, +5% crit when using light.[X]

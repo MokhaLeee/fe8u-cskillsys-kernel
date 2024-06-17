@@ -690,6 +690,18 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(&attacker->unit, SID_Guts) && (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE))
         attacker->battleAttack += 5;
 #endif
+
+
+#if defined(SID_HolyAura) && (SID_HolyAura < MAX_SKILL_NUM)
+    if (SkillTester(&attacker->unit, SID_HolyAura) && attacker->weaponType == ITYPE_LIGHT)
+    {
+        attacker->battleAttack += 1;
+        attacker->battleCritRate += 5;
+        attacker->battleHitRate += 5;
+        attacker->battleAvoidRate += 5;
+    }
+#endif
+
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
