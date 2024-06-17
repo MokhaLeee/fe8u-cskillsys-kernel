@@ -779,6 +779,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     int enmies_range2 = 0;
     int enmies_range1 = 0;
 
+    bool lord_range2 = false;
+
     for (i = 0; i < 24; i++)
     {
         _x = attacker->unit.xPos + vec_range[i].x;
@@ -975,8 +977,11 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 allies_range3++;
 
             if (range2[i])
+            {
+                if (UNIT_CATTRIBUTES(unit) && CA_LORD)
+                    lord_range2 = true;
                 allies_range2++;
-
+            }
             if (range1[i])
                 allies_range1++;
         }
@@ -1118,6 +1123,16 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     else
     {}
 
+    if (lord_range2)
+    {
+#if (defined(SID_Loyalty) && (SID_Loyalty < MAX_SKILL_NUM))
+        if (SkillTester(&attacker->unit, SID_Loyalty))
+        {   attacker->battleDefense += 3;
+            attacker->battleHitRate += 15;
+        }
+#endif   
+    }
+    
 #ifdef CONFIG_BATTLE_SURROUND
     if (attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
     {

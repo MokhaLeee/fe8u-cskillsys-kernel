@@ -420,3 +420,8 @@ unit's activation skill rate.[X]
 Holy Aura:[NL]
 Gain +1 damage, +5% hit,[NL]
 +5% avoid, +5% crit when using light.[X]
+
+## MSG_SKILL_Loyalty
+Loyalty:[NL]
+When within 2 spaces of a Lord,[NL]
+-3 damage taken, +15% hit.[X]
