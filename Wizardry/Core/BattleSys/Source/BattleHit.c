@@ -259,7 +259,8 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         if (CheckBattleSkillActivte(attacker, defender, SID_Eclipse, attacker->unit.skl))
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Eclipse);
-            gBattleStats.damage = defender->unit.curHP - 1;
+            if (gBattleStats.damage >= defender->unit.curHP)
+                gBattleStats.damage = defender->unit.curHP - 1;
         }
 #endif
         else
