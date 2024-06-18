@@ -446,3 +446,7 @@ Trample:[NL]
 ## MSG_SKILL_Opportunist
 Opportunist:[NL]
 +4 damage if the foe cannot counter.[X]
+
+## MSG_SKILL_SuperLuck
+SuperLuck:[NL]
+Use luck as crit rate.[X]

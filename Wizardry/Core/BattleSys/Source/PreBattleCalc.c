@@ -722,6 +722,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(&attacker->unit, SID_Opportunist) && !defender->canCounter)
         attacker->battleAttack += 4;
 #endif
+
+#if defined(SID_SuperLuck) && (SID_SuperLuck < MAX_SKILL_NUM)
+    if (SkillTester(&attacker->unit, SID_SuperLuck))
+        attacker->battleCritRate += (attacker->unit.lck - attacker->unit.skl/2);
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
