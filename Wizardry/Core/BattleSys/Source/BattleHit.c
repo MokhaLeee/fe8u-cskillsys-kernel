@@ -109,6 +109,15 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+#if defined(SID_Petrify) && (SID_Petrify < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Petrify, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Petrify);
+        if (GetUnit(gBattleTarget.unit.index)->statusIndex == UNIT_STATUS_NONE)
+            GetUnit(gBattleTarget.unit.index)->statusIndex = UNIT_STATUS_PETRIFY;
+    }
+#endif
+
     if (IsMagicAttack(attacker))
     {
 #if (defined(SID_Corona) && (SID_Corona < MAX_SKILL_NUM))

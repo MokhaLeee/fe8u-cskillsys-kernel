@@ -67,3 +67,8 @@ by user's level (Skill %).[X]
 Impale:[NL]
 Deal x4 damage.[NL]
 (Skill% activation).[X]
+
+## MSG_SKILL_Petrify
+Petrify:[NL]
+Inflict the stone status on[NL]
+the enemy. (Skill % activation).[X]

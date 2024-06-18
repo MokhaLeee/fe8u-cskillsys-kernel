@@ -1936,4 +1936,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Trample,
       },
 #endif
+
+#if (defined(SID_Petrify) && (SID_Petrify < MAX_SKILL_NUM)) 
+    [SID_Petrify] = {
+        .desc = MSG_SKILL_Petrify,
+        .icon = GFX_SkillIcon_Petrify
+      },
+#endif
 };
