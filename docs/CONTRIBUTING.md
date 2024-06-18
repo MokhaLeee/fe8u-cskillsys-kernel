@@ -11,7 +11,7 @@ At present, I am not proficient in specifying rules, so I will only mention two 
     - Uncoment line-5 in [config-debug.h](../include/Configs/config-debug.h): `#define CONFIG_USE_DEBUG`
     - For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)
 
-2. When hacking on then function originated from vanilla, make sure that the function definition and the basic functionality are not changed to avoid annoying other developers who may call the function.
+2. When hacking on function originated from vanilla, make sure that the function definition and the basic functionality are not changed to avoid annoying other developers who may call the function.
 
 3. **NEVER** change the C-LIB.
 
