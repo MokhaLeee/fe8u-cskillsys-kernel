@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
+#include "event-rework.h"
 
 #define LOCAL_TRACE 0
 
@@ -11,7 +12,7 @@ STATIC_DECLAR void clear_mus(void)
 
 static void set_actor_unit(void)
 {
-    gEventSlots[EVT_SLOT_2] = UNIT_CHAR_ID(gActiveUnit);
+    gEventSlots[EVT_SLOT_2] = gActiveUnit->index;
 }
 
 static void set_position(void)
@@ -27,11 +28,11 @@ STATIC_DECLAR const EventScr EventScr_ActionTeleportation[] = {
 LABEL(0)
     ASMC(clear_mus)
     ASMC(set_actor_unit)
-    CALL(EventScr_UnitWarpOUT)
+    CALL(EventScr_UidWarpOUT)
     STAL(60)
     ASMC(set_position)
     ASMC(set_actor_unit)
-    CALL(EventScr_UnitWarpIN)
+    CALL(EventScr_UidWarpIN)
     STAL(20)
 
 LABEL(99)
@@ -42,7 +43,7 @@ LABEL(99)
 /* Action */
 bool Action_Teleportation(ProcPtr parent)
 {
-    LTRACEF("Teleportation AiAction (uid=%x) to x=%d, y=%d",
+    LTRACEF("[uid=%x] Teleportation AiAction to x=%d, y=%d",
         gActiveUnit->index & 0xFF, gActionData.xMove, gActionData.xMove);
 
     KernelCallEvent(EventScr_ActionTeleportation, EV_EXEC_CUTSCENE, parent);

@@ -67,3 +67,9 @@ by user's level (Skill %).[X]
 Ignis:[NL]
 Add DEF/2 or RES/2 to attack based[NL]
 on weapon type (Skill % activation).[X]
+
+## MSG_SKILL_Impale
+Impale:[NL]
+Deal x4 damage.[NL]
+(Skill% activation).[X]
+

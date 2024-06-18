@@ -1,6 +1,6 @@
 #include "common-chax.h"
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 typedef bool (* PreAiDecideFunc_t)(void);
 // extern const PreAiDecideFunc_t gPreAi1DecideHook[];
