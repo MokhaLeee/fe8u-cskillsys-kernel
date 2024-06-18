@@ -62,3 +62,8 @@ Triples attack.[NL]
 Corrosion:[NL]
 Reduce enemy's weapon durability[NL]
 by user's level (Skill %).[X]
+
+## MSG_SKILL_Impale
+Impale:[NL]
+Deal x4 damage.[NL]
+(Skill% activation).[X]

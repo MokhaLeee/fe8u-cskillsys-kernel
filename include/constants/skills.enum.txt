@@ -158,6 +158,7 @@ SID_DragonFang
 SID_Foresight
 SID_Inori
 SID_Colossus
+SID_Impale
 
 // Blow skills
 SID_BlowDarting
