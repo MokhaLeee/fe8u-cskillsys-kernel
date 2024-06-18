@@ -717,6 +717,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(&attacker->unit, SID_Trample) && !CheckClassMounted(UNIT_CLASS_ID((&defender->unit))))
         attacker->battleAttack += 5;
 #endif
+
+#if defined(SID_Opportunist) && (SID_Opportunist < MAX_SKILL_NUM)
+    if (SkillTester(&attacker->unit, SID_Opportunist) && !defender->canCounter)
+        attacker->battleAttack += 4;
+#endif
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)

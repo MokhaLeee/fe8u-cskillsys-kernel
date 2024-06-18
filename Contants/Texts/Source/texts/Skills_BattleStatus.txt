@@ -442,3 +442,7 @@ on that foe during combat.[X]
 ## MSG_SKILL_Trample
 Trample:[NL]
 +5 damage to unmounted units.[X]
+
+## MSG_SKILL_Opportunist
+Opportunist:[NL]
++4 damage if the foe cannot counter.[X]
