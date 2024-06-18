@@ -590,8 +590,8 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
-#if (defined(BlowKilling) && (BlowKilling < MAX_SKILL_NUM))
-    [BlowKilling] = {
+#if (defined(SID_BlowKilling) && (SID_BlowKilling < MAX_SKILL_NUM))
+    [SID_BlowKilling] = {
         .desc = MSG_SKILL_BlowKilling,
         .icon = GFX_SkillIcon_BlowKilling,
     },
