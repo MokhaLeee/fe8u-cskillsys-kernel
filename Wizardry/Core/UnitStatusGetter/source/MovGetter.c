@@ -56,5 +56,15 @@ int MovGetterSkills(int status, struct Unit * unit)
         status += 1;
 #endif
 
+#if defined(SID_SpeedBoost) && (SID_SpeedBoost < MAX_SKILL_NUM)
+    if (SkillTester(unit, SID_SpeedBoost))
+    {
+        if (gPlaySt.chapterTurnNumber >= 6)
+            status += 6;
+        else
+            status += gPlaySt.chapterTurnNumber;
+    }
+#endif
+
     return status;
 }
