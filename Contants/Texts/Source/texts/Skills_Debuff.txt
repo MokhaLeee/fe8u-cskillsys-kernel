@@ -63,7 +63,7 @@ Res+4 for one turn during each[NL]
 start of turn[X]
 
 ## MSG_SKILL_HoneCavalry_NAME
-Hone Cavalry[X]
+H-Cavalry[X]
 
 ## MSG_SKILL_HoneCavalry
 Hone Cavalry: Grants Cavalry allies[NL]
