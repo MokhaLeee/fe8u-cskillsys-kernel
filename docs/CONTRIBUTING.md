@@ -11,6 +11,10 @@ At present, I am not proficient in specifying rules, so I will only mention two 
     - Uncoment line-5 in [config-debug.h](../include/Configs/config-debug.h): `#define CONFIG_USE_DEBUG`
     - For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)
 
+2. When hacking on function originated from vanilla, make sure that the function definition and the basic functionality are not changed to avoid annoying other developers who may call the function.
+
+3. **NEVER** change the C-LIB.
+
 ## Code style
 
 The code style should follow the standard in [fe6](https://github.com/StanHash/fe6)
@@ -51,11 +55,13 @@ return a;
 
 ## Suggestion
 
-1. More C and less ASM
+1. **Spend more time on studing [decomp](https://github.com/FireEmblemUniverse/fireemblem8u) studing rather than coding.**
+
+2. More C and less ASM
 
 We're not completely out of assembly language programming. However, for reasons such as code portability, it's best to use C as much as possible as the primary tool for implementing functionality. If too much ASM code is introduced into a PR without convincing reason, that PR may be most likely not merged.
 
-2. Concern the performance
+3. Concern the performance
 
 Some functions that may affect the operational experience should be especially taken care off. For now, the processes I can think of:
 

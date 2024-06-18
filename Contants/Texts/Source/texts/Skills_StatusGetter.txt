@@ -116,50 +116,49 @@ PushMagic:[NL]
 P-Resistance[X]
 
 ## MSG_SKILL_PushResistance
-PushResistance:[NL]
-+5 resistance if[NL]
-HP is full.[X]
+Push Resistance:[NL]
++5 resistance when HP is full.[X]
 
 ## MSG_SKILL_PushSkill_NAME
 P-Skill[X]
 
 ## MSG_SKILL_PushSkill
-PushSkill:[NL]
+Push Skill:[NL]
 +5 skill if HP is full.[X]
 
 ## MSG_SKILL_PushSpeed_NAME
 P-Speed[X]
 
 ## MSG_SKILL_PushSpeed
-PushSpeed:[NL]
+Push Speed:[NL]
 +5 speed if HP is full.[X]
 
 ## MSG_SKILL_PushStrength_NAME
 P-Strength[X]
 
 ## MSG_SKILL_PushStrength
-PushStrength:[NL]
+Push Strength:[NL]
 +5 strength if HP is full.[X]
 
 ## MSG_SKILL_PushLuck_NAME
 P-Luck[X]
 
 ## MSG_SKILL_PushLuck
-PushLuck:[NL]
+Push Luck:[NL]
 +5 to luck if HP is full.[X]
 
 ## MSG_SKILL_PushMovement_NAME
 P-Movement[X]
 
 ## MSG_SKILL_PushMovement
-PushMovement:[NL]
+Push Movement:[NL]
 +5 movement if HP is full.[X]
 
 ## MSG_SKILL_PushSpectrum_NAME
 P-Spectrum[X]
 
 ## MSG_SKILL_PushSpectrum
-PushSpectrum:[NL]
+Push Spectrum:[NL]
 +5 to all stats if HP is full.[X]
 
 ## MSG_SKILL_EvenFooted

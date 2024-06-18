@@ -1,5 +1,5 @@
 // Unit status skills
-SID_HpBonus
+// SID_HpBonus
 SID_StrBonus
 SID_MagBonus
 SID_SklBonus
@@ -8,7 +8,7 @@ SID_LckBonus
 SID_DefBonus
 SID_ResBonus
 SID_MovBonus
-SID_LightWeight
+// SID_LightWeight
 SID_Resolve
 
 SID_DefiantStr
@@ -18,8 +18,8 @@ SID_DefiantSpd
 SID_DefiantLck
 SID_DefiantDef
 SID_DefiantRes
-SID_DefiantCrit
-SID_DefiantAvoid
+// SID_DefiantCrit
+// SID_DefiantAvoid
 
 SID_PushDefense
 SID_PushMagic
@@ -28,7 +28,7 @@ SID_PushSkill
 SID_PushSpeed
 SID_PushStrength
 SID_PushLuck
-SID_PushMovement
+// SID_PushMovement
 SID_PushSpectrum
 
 SID_Fury
@@ -62,7 +62,7 @@ SID_FaireBMag
 SID_Avoid
 SID_AvoidSword
 SID_RuinedBlade
-SID_RuinedBladePlus
+// SID_RuinedBladePlus
 SID_InfinityEdge
 SID_HeavyBlade
 SID_FlashingBlade
@@ -71,21 +71,23 @@ SID_FlashingBladePlus
 SID_LunaAttack
 SID_SorceryBlade
 SID_TowerShield
+SID_StunningSmile
+SID_Trample
 SID_Loyalty
 SID_HolyAura
 SID_Fortune
 SID_BlueFlame
 SID_DancingBlade
 SID_Frenzy
-SID_WonderGuard
-SID_PoisonPoint
+// SID_WonderGuard
+// SID_PoisonPoint
 SID_Merciless
-SID_CriticalPierce
+// SID_CriticalPierce
 SID_KillingMachine
 SID_HeavyStrikes
 SID_QuickBurn
 SID_Technician
-SID_CatchingUp
+// SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
 SID_NaturalCover
@@ -113,13 +115,13 @@ SID_Charge
 SID_FieryBlood
 SID_Wrath
 SID_Vigilance
-SID_OutdoorFighter
+// SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
 SID_EvenRhythm
 SID_OddRhythm
 SID_Corrosion
-SID_NoGuard
+// SID_NoGuard
 SID_Puissance
 SID_Prescience
 SID_SilentPride
@@ -134,7 +136,7 @@ SID_SwordBreaker
 SID_AxeBreaker
 SID_LanceBreaker
 SID_BowBreaker
-SID_BMagBreaker
+// SID_BMagBreaker
 
 // Battle order
 SID_Vantage
@@ -142,10 +144,10 @@ SID_Desperation
 SID_QuickRiposte
 SID_WaryFighter
 SID_DoubleLion
-SID_Adept // +1 hit if full HP
+// SID_Adept
 
 // Battle activation skills
-SID_Astra // +4 hits with half damage (speed * 2%)
+SID_Astra
 SID_Aegis
 SID_Pavise
 SID_Bane
@@ -156,8 +158,10 @@ SID_Flare
 SID_Sol
 SID_DragonFang
 SID_Foresight
-SID_Inori
+// SID_Inori
 SID_Colossus
+SID_Ignis
+SID_Impale
 
 // Blow skills
 SID_BlowDarting
@@ -187,11 +191,11 @@ SID_RangeBonusBMag1
 SID_RangeBonusBMag2
 SID_RangeBonusBow1
 SID_RangeBonusBow2
-SID_RunningStart
+// SID_RunningStart
 
-SID_BattleRange_Todo1       // +10 atk if no allies range-3
-SID_BattleRange_Todo2       // +7  atk if no allies range-2
-SID_BattleRange_Todo3       // +5  atk if no allies range-1
+// SID_BattleRange_Todo1
+// SID_BattleRange_Todo2
+// SID_BattleRange_Todo3
 
 // Post action
 SID_Canto
@@ -259,9 +263,9 @@ SID_FortifyArmor
 SID_AversaNight
 
 // AI skills
-SID_Shade       // Less likely to be attacked
-SID_ShadePlus   // Avoid to be a target
-SID_Provoke     // More likely to be attacked
+SID_Shade
+SID_ShadePlus
+SID_Provoke
 SID_Teleportation
 
 // Menu skills
@@ -278,11 +282,11 @@ SID_VoidCurse
 SID_Aptitude
 
 // Legendary skill
-SID_LEGEND_InoriAtk    // Inori, then atk + 10, crit+100%
-SID_LEGEND_InoriAvo    // Inori, then speed + 10, Avoid + 100%
-SID_LEGEND_InoriDef    // Inori, then recover full HP, def/res + 10
-// SID_LEGEND_4         for now, unused
-// SID_LEGEND_5         for now, unused
+// SID_LEGEND_InoriAtk
+// SID_LEGEND_InoriAvo
+// SID_LEGEND_InoriDef
+// SID_LEGEND_4
+// SID_LEGEND_5
 
 // Combat-art skill
 SID_COMBAT_Grounder
