@@ -437,8 +437,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
 STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int ret;
-
 #if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Bane, attacker->unit.skl))
     {
@@ -458,8 +456,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #if (defined(SID_LEGEND_InoriAtk) && (SID_LEGEND_InoriAtk < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAtk, 100))
     {
-        ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAtk);
-        if (ret == 0)
+        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAtk) == 0)
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriAtk);
             return true;
@@ -470,8 +467,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #if (defined(SID_LEGEND_InoriAvo) && (SID_LEGEND_InoriAvo < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAvo, 100))
     {
-        ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAvo);
-        if (ret == 0)
+        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAvo) == 0)
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriAvo);
             return true;
@@ -482,8 +478,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #if (defined(SID_LEGEND_InoriDef) && (SID_LEGEND_InoriDef < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriDef, 100))
     {
-        ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriDef);
-        if (ret == 0)
+        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriDef) == 0)
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriDef);
             return true;
