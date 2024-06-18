@@ -703,7 +703,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_TowerShield) && (SID_TowerShield < MAX_SKILL_NUM))
-    if (SkillTester(&attacker->unit, SID_TowerShield) && gBattleStats.range == 2)
+    if (SkillTester(&attacker->unit, SID_TowerShield) && gBattleStats.range >= 2)
         attacker->battleDefense += 6;
 #endif
 
