@@ -708,6 +708,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         attacker->battleDefense += 6;
 #endif
 
+#if (defined(SID_ShortShield) && (SID_ShortShield < MAX_SKILL_NUM))
+    if (SkillTester(&attacker->unit, SID_ShortShield) && gBattleStats.range == 1)
+        attacker->battleDefense += 6;
+#endif
+
 #if (defined(SID_StunningSmile) && (SID_StunningSmile < MAX_SKILL_NUM))
     if (SkillTester(&defender->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
         attacker->battleAvoidRate -= 20;
@@ -721,6 +726,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if defined(SID_Opportunist) && (SID_Opportunist < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_Opportunist) && !defender->canCounter)
         attacker->battleAttack += 4;
+#endif
+
+#if (defined(SID_Vanity) && (SID_Vanity < MAX_SKILL_NUM))
+    if (SkillTester(&attacker->unit, SID_Vanity) && gBattleStats.range == 2)
+    {
+        attacker->battleAttack += 2;
+        attacker->battleHitRate += 10;
+    }
 #endif
 }
 
