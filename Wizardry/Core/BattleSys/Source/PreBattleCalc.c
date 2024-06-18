@@ -703,8 +703,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_StunningSmile) && (SID_StunningSmile < MAX_SKILL_NUM))
-    if (SkillTester(&attacker->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&defender->unit) && CA_FEMALE))
-        defender->battleAvoidRate -= 20;
+    if (SkillTester(&defender->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
+        attacker->battleAvoidRate -= 20;
 #endif
 
 }
