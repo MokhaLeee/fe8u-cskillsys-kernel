@@ -426,6 +426,11 @@ Loyalty:[NL]
 When within 2 spaces of a Lord,[NL]
 -3 damage taken, +15% hit.[X]
 
+## MSG_SKILL_TowerShield
+Tower Shield:[NL]
+Gain 6 defense against[NL]
+attacks recieved at range.[X]
+
 ## MSG_SKILL_StunningSmile_NAME
 Stun-Smile[X]
 
@@ -437,4 +442,3 @@ on that foe during combat.[X]
 ## MSG_SKILL_Trample
 Trample:[NL]
 +5 damage to unmounted units.[X]
-

@@ -1937,6 +1937,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_TowerShield) && (SID_TowerShield < MAX_SKILL_NUM)) 
+    [SID_TowerShield] = {
+        .desc = MSG_SKILL_TowerShield,
+        .icon = GFX_SkillIcon_TowerShield,
+      },
+#endif
+
 #if (defined(SID_StunningSmile) && (SID_StunningSmile < MAX_SKILL_NUM)) 
     [SID_StunningSmile] = {
         .name = MSG_SKILL_StunningSmile_NAME,

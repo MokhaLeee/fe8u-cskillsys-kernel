@@ -703,6 +703,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
+#if (defined(SID_TowerShield) && (SID_TowerShield < MAX_SKILL_NUM))
+    if (SkillTester(&attacker->unit, SID_TowerShield) && gBattleStats.range >= 2)
+        attacker->battleDefense += 6;
+#endif
+
 #if (defined(SID_StunningSmile) && (SID_StunningSmile < MAX_SKILL_NUM))
     if (SkillTester(&defender->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
         attacker->battleAvoidRate -= 20;
@@ -712,7 +717,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(&attacker->unit, SID_Trample) && !CheckClassMounted(UNIT_CLASS_ID((&defender->unit))))
         attacker->battleAttack += 5;
 #endif
-
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
