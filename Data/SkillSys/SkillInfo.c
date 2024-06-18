@@ -1908,4 +1908,32 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Impale,
     },
 #endif
+
+#if (defined(SID_Hero) && (SID_Hero < MAX_SKILL_NUM))
+    [SID_Hero] = {
+        .desc = MSG_SKILL_Hero,
+        .icon = GFX_SkillIcon_Hero,
+    },
+#endif
+
+#if (defined(SID_HolyAura) && (SID_HolyAura < MAX_SKILL_NUM)) 
+    [SID_HolyAura] = {
+        .desc = MSG_SKILL_HolyAura,
+        .icon = GFX_SkillIcon_HolyAura,
+    },
+#endif
+
+#if (defined(SID_Loyalty) && (SID_Loyalty < MAX_SKILL_NUM)) 
+    [SID_Loyalty] = {
+        .desc = MSG_SKILL_Loyalty,
+        .icon = GFX_SkillIcon_Loyalty,
+      },
+#endif
+
+#if (defined(SID_Trample) && (SID_Trample < MAX_SKILL_NUM)) 
+    [SID_Trample] = {
+        .desc = MSG_SKILL_Trample,
+        .icon = GFX_SkillIcon_Trample,
+      },
+#endif
 };

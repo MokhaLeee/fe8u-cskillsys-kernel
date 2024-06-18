@@ -2,7 +2,10 @@ KERNEL_RELOC_START:
 
 // MESSAGE CURRENTOFFSET
 gpSkillInfos:           POIN gSkillInfos
-SkillTester:            POIN SkillTesterFastFast // SkillTesterFast
+
+/* Some pad for historical reasons :) */
+WORD 0
+
 gpConstSkillPTable:     POIN gConstSkillPTable
 gpConstSkillJTable:     POIN gConstSkillJTable
 gpSkillPreloadPData:    POIN gSkillPreloadPData
@@ -50,15 +53,7 @@ gpExternalGameInitHook: WORD 0
 
 gpStatDebuffInfos: POIN gStatDebuffInfos
 
-/* StatScreenfx */
-gpPal_StatScreenUIRed:      POIN Pal_StatScreenUIRed
-gpImg_StatScreenUIRed:      POIN Img_StatScreenUIRed
-gpPal_StatScreenUI:         POIN Pal_StatScreenUI
-gpImg_StatScreenUI:         POIN Img_StatScreenUI
-gpImg_StatScreenScrollBG:   POIN Img_StatScreenScrollBG
-gpPal_StatScreenScrollBG:   POIN Pal_StatScreenScrollBG
-gpImg_StatScreenMuAreaBg:   POIN Img_StatScreenMuAreaBg
-gpPal_StatScreenMuAreaBg:   POIN Pal_StatScreenMuAreaBg
+WORD 0 0 0 0 0 0 0 0
 
 gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks

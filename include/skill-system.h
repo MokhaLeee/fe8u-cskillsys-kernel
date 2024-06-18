@@ -44,9 +44,8 @@ void ResetSkillLists(void);
 void DisableUnitSkills(struct Unit * unit);
 
 /* Skill tetsers */
-bool SkillTesterBasic(struct Unit * unit, const u8 sid);
-bool SkillTesterFast(struct Unit * unit, const u8 sid);
-extern bool (* const SkillTester)(struct Unit * unit, const int sid);
+bool _SkillTester(struct Unit * unit, const u8 sid);
+#define SkillTester _SkillTester
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {

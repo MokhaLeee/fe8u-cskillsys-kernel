@@ -13,4 +13,8 @@ PUSH
     POIN gEventLoCmdTableRe
 POP
 
+#include "Source/EventRework.lyn.event"
+#include "Source/NewEventScripts.lyn.event"
+#include "Source/LynJump.event"
+
 #endif /* EVENT_EXPANSION_INSTALLED */

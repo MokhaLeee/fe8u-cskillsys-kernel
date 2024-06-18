@@ -4,6 +4,7 @@
 #include "debuff.h"
 #include "bwl.h"
 #include "kernel-lib.h"
+#include "class-types.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
@@ -690,6 +691,23 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(&attacker->unit, SID_Guts) && (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE))
         attacker->battleAttack += 5;
 #endif
+
+
+#if defined(SID_HolyAura) && (SID_HolyAura < MAX_SKILL_NUM)
+    if (SkillTester(&attacker->unit, SID_HolyAura) && attacker->weaponType == ITYPE_LIGHT)
+    {
+        attacker->battleAttack += 1;
+        attacker->battleCritRate += 5;
+        attacker->battleHitRate += 5;
+        attacker->battleAvoidRate += 5;
+    }
+#endif
+
+#if defined(SID_Trample) && (SID_Trample < MAX_SKILL_NUM)
+    if (SkillTester(&attacker->unit, SID_Trample) && !CheckClassMounted(UNIT_CLASS_ID((&defender->unit))))
+        attacker->battleAttack += 5;
+#endif
+
 }
 
 void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -767,6 +785,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     int enmies_range2 = 0;
     int enmies_range1 = 0;
 
+    bool lord_range2 = false;
+
     for (i = 0; i < 24; i++)
     {
         _x = attacker->unit.xPos + vec_range[i].x;
@@ -792,7 +812,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (range1[i] == 1)
                 {
 #if (defined(SID_DivinelyInspiring) && (SID_DivinelyInspiring < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_DivinelyInspiring))
+                    if (SkillTester(unit, SID_DivinelyInspiring))
                     {
                         attacker->battleAttack += 3;
                         attacker->battleDefense += 1;
@@ -800,7 +820,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_LilysPoise) && (SID_LilysPoise < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_LilysPoise))
+                    if (SkillTester(unit, SID_LilysPoise))
                     {
                         attacker->battleAttack += 1;
                         attacker->battleDefense += 3;
@@ -808,7 +828,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_BloodTide) && (SID_BloodTide < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_BloodTide))
+                    if (SkillTester(unit, SID_BloodTide))
                     {
                         attacker->battleAttack += 5;
                         attacker->battleHitRate += 5;
@@ -816,7 +836,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_WhitePool) && (SID_WhitePool < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_WhitePool))
+                    if (SkillTester(unit, SID_WhitePool))
                     {
                         attacker->battleAttack += 5;
                         attacker->battleSpeed += 5;
@@ -824,12 +844,12 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_NightTide) && (SID_NightTide < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_NightTide))
+                    if (SkillTester(unit, SID_NightTide))
                         attacker->battleDefense += 5;
 #endif
 
 #if (defined(SID_SpurStr) && (SID_SpurStr < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_SpurStr))
+                    if (SkillTester(unit, SID_SpurStr))
                     {
                         if (!IsMagicAttack(attacker))
                             attacker->battleAttack  += 4;
@@ -837,7 +857,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_SpurMag) && (SID_SpurMag < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_SpurMag))
+                    if (SkillTester(unit, SID_SpurMag))
                     {
                         if (IsMagicAttack(attacker))
                             attacker->battleAttack  += 4;
@@ -845,7 +865,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_SpurDef) && (SID_SpurDef < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_SpurDef))
+                    if (SkillTester(unit, SID_SpurDef))
                     {
                         if (!IsMagicAttack(defender))
                             attacker->battleDefense+= 4;
@@ -853,7 +873,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_SpurRes) && (SID_SpurRes < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_SpurRes))
+                    if (SkillTester(unit, SID_SpurRes))
                     {
                         if (IsMagicAttack(defender))
                             attacker->battleDefense+= 4;
@@ -861,12 +881,12 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_SpurSpd) && (SID_SpurSpd < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_SpurSpd))
+                    if (SkillTester(unit, SID_SpurSpd))
                         attacker->battleSpeed += 4;
 #endif
 
 #if (defined(SID_Solidarity) && (SID_Solidarity < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Solidarity))
+                    if (SkillTester(unit, SID_Solidarity))
                     {
                         attacker->battleCritRate += 10;
                         attacker->battleDodgeRate += 10;
@@ -876,12 +896,12 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (range2[i] == 1)
                 {
 #if (defined(SID_Charm) && (SID_Charm < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Charm) )
+                    if (SkillTester(unit, SID_Charm) )
                         attacker->battleAttack  += 3;
 #endif
 
 #if (defined(SID_DriveStr) && (SID_DriveStr < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_DriveStr))
+                    if (SkillTester(unit, SID_DriveStr))
                     {
                         if (!IsMagicAttack(attacker))
                             attacker->battleAttack  += 4;
@@ -889,7 +909,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_DriveMag) && (SID_DriveMag < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_DriveMag))
+                    if (SkillTester(unit, SID_DriveMag))
                     {
                         if (IsMagicAttack(attacker))
                             attacker->battleAttack  += 4;
@@ -897,7 +917,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_DriveDef) && (SID_DriveDef < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_DriveDef))
+                    if (SkillTester(unit, SID_DriveDef))
                     {
                         if (!IsMagicAttack(defender))
                             attacker->battleDefense+= 4;
@@ -905,7 +925,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_DriveRes) && (SID_DriveRes < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_DriveRes))
+                    if (SkillTester(unit, SID_DriveRes))
                     {
                         if (IsMagicAttack(defender))
                             attacker->battleDefense+= 4;
@@ -913,12 +933,12 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_DriveSpd) && (SID_DriveSpd < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_DriveSpd))
+                    if (SkillTester(unit, SID_DriveSpd))
                         attacker->battleSpeed += 4;
 #endif
 
 #if (defined(SID_Inspiration) && (SID_Inspiration < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Inspiration))
+                    if (SkillTester(unit, SID_Inspiration))
                     {
                         attacker->battleAttack += 2;
                         attacker->battleDefense += 2;
@@ -926,24 +946,24 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Peacebringer) )
+                    if (SkillTester(unit, SID_Peacebringer) )
                         attacker->battleAttack -= 2;
 #endif
 
 #if (defined(SID_Gentilhomme) && (SID_Gentilhomme < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Gentilhomme)  && (UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
+                    if (SkillTester(unit, SID_Gentilhomme)  && (UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
                         attacker->battleDefense += 2;
 #endif
 
 #if (defined(SID_Demoiselle) && (SID_Demoiselle < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Demoiselle)  && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
+                    if (SkillTester(unit, SID_Demoiselle)  && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
                         attacker->battleDefense += 2;
 #endif
                 }
                 if (range3[i] == 1)
                 {                
 #if (defined(SID_Bond) && (SID_Bond < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Bond))
+                    if (SkillTester(unit, SID_Bond))
                     {
                         attacker->battleHitRate += 10;
                         attacker->battleAttack  += 2;
@@ -951,7 +971,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_Charisma) && (SID_Charisma < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Charisma))
+                    if (SkillTester(unit, SID_Charisma))
                     {
                         attacker->battleHitRate += 10;
                         attacker->battleAvoidRate += 10;
@@ -963,8 +983,11 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 allies_range3++;
 
             if (range2[i])
+            {
+                if (UNIT_CATTRIBUTES(unit) && CA_LORD)
+                    lord_range2 = true;
                 allies_range2++;
-
+            }
             if (range1[i])
                 allies_range1++;
         }
@@ -980,7 +1003,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (range1[i] == 1)
                 {
 #if (defined(SID_Hex) && (SID_Hex < MAX_SKILL_NUM))
-                if (SkillTester(&attacker->unit, SID_Hex))
+                if (SkillTester(unit, SID_Hex))
                     attacker->battleAvoidRate -= 10;
 #endif
             }
@@ -989,24 +1012,24 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 /* Debuff */
 
 #if (defined(SID_Intimidate) && (SID_Intimidate < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Intimidate) )
+                    if (SkillTester(unit, SID_Intimidate) )
                         attacker->battleAvoidRate -= 10;
 #endif
 
 #if (defined(SID_VoiceOfPeace) && (SID_VoiceOfPeace < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_VoiceOfPeace) )
+                    if (SkillTester(unit, SID_VoiceOfPeace) )
                         attacker->battleAttack -= 2;
 #endif
 
 #if (defined(SID_Peacebringer) && (SID_Peacebringer < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Peacebringer) )
+                    if (SkillTester(unit, SID_Peacebringer) )
                         attacker->battleAttack -= 2;
 #endif
                 }
                 if (range3[i] == 1)
                 {
 #if (defined(SID_Anathema) && (SID_Anathema < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Anathema) && range3[i] == 1)
+                    if (SkillTester(unit, SID_Anathema) && range3[i] == 1)
                     {
                         attacker->battleAvoidRate -= 10;
                         attacker->battleDodgeRate -= 10;
@@ -1014,7 +1037,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_Daunt) && (SID_Daunt < MAX_SKILL_NUM))
-                    if (SkillTester(&attacker->unit, SID_Daunt) && range3[i] == 1)
+                    if (SkillTester(unit, SID_Daunt) && range3[i] == 1)
                     {
                         attacker->battleHitRate -= 5;
                         attacker->battleCritRate -= 5;
@@ -1106,6 +1129,16 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     else
     {}
 
+    if (lord_range2)
+    {
+#if (defined(SID_Loyalty) && (SID_Loyalty < MAX_SKILL_NUM))
+        if (SkillTester(&attacker->unit, SID_Loyalty))
+        {   attacker->battleDefense += 3;
+            attacker->battleHitRate += 15;
+        }
+#endif   
+    }
+    
 #ifdef CONFIG_BATTLE_SURROUND
     if (attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
     {

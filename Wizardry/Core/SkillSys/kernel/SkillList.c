@@ -25,7 +25,7 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
 
     for (i = 1; i < MAX_SKILL_NUM; i++)
     {
-        if (SkillTesterBasic(unit, i) == true)
+        if (SkillTester(unit, i) == true)
         {
             list->sid[list->amt] = i;
 

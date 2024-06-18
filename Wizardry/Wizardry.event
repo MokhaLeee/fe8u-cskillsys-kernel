@@ -1,6 +1,6 @@
 ALIGN 4
 
-#include "Common/EventExpansion/EventExpansion.event"
+#include "Common/EventRework/EventRework.event"
 #include "Common/UnitAction/UnitAction.event"
 #include "Core/AiHack/AiHack.event"
 #include "Core/DebuffRework/DebuffRework.event"
@@ -43,9 +43,6 @@ ALIGN 4
 #include "Core/CombatArt/CombatArt.event"
 #include "Core/HelpBox/HelpBox.event"
 #include "Core/ComboAttack/ComboAttack.event"
-
-#include "QOL/StatScreenfx/StatScreenfx.event"
-#include "QOL/GameIntrofx/GameIntrofx.event"
 
 #include "External/ExternalPatches.event"
 
