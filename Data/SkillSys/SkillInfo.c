@@ -1965,4 +1965,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Opportunist,
       },
 #endif
+
+#if (defined(SID_ShortShield) && (SID_ShortShield < MAX_SKILL_NUM)) 
+    [SID_ShortShield] = {
+        .desc = MSG_SKILL_ShortShield,
+        .icon = GFX_SkillIcon_ShortShield,
+      },
+#endif
 };
