@@ -426,6 +426,15 @@ Loyalty:[NL]
 When within 2 spaces of a Lord,[NL]
 -3 damage taken, +15% hit.[X]
 
+## MSG_SKILL_StunningSmile_NAME
+Stun-Smile[X]
+
+## MSG_SKILL_StunningSmile
+Stunning Smile:[NL]
+If foe is male, inflicts Avo-20[NL]
+on that foe during combat.[X]
+
 ## MSG_SKILL_Trample
 Trample:[NL]
 +5 damage to unmounted units.[X]
+
