@@ -433,3 +433,8 @@ Stun-Smile[X]
 Stunning Smile:[NL]
 If foe is male, inflicts Avo-20[NL]
 on that foe during combat.[X]
+
+## MSG_SKILL_Trample
+Trample:[NL]
++5 damage to unmounted units.[X]
+

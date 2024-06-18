@@ -47,6 +47,7 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     if (SkillTester(&attacker->unit, SID_LunaAttack))
         damage += defender->battleDefense / 4;
 #endif // SID_LunaAttack
+
     return damage;
 }
 
@@ -155,6 +156,29 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
                 attacker->weaponBroke = TRUE;
         }
 #endif
+
+#if (defined(SID_Ignis) && (SID_Ignis < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Ignis, attacker->unit.skl))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
+        switch (attacker->weaponType) 
+        {
+        case ITYPE_SWORD:
+        case ITYPE_LANCE:
+        case ITYPE_AXE:
+        case ITYPE_BOW:
+            attack += attacker->unit.def / 2;
+            break;
+        case ITYPE_ANIMA:
+        case ITYPE_LIGHT:
+        case ITYPE_DARK:
+            attack += attacker->unit.res / 2;
+            break;
+        default:
+            break;
+        }
+    }
+#endif
     }
 
     gBattleStats.damage = attack - defense;
@@ -245,6 +269,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
     if (gBattleStats.damage > 0)
     {
+#if defined(SID_Impale) && (SID_Impale < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Impale, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
+        gBattleStats.damage *= 4;
+    }
+#endif
+
 #if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
         if (SkillTester(&defender->unit, SID_DragonSkin))
         {
@@ -405,8 +437,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
 STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int ret;
-
 #if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Bane, attacker->unit.skl))
     {
@@ -426,8 +456,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #if (defined(SID_LEGEND_InoriAtk) && (SID_LEGEND_InoriAtk < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAtk, 100))
     {
-        ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAtk);
-        if (ret == 0)
+        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAtk) == 0)
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriAtk);
             return true;
@@ -438,8 +467,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #if (defined(SID_LEGEND_InoriAvo) && (SID_LEGEND_InoriAvo < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAvo, 100))
     {
-        ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAvo);
-        if (ret == 0)
+        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAvo) == 0)
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriAvo);
             return true;
@@ -450,8 +478,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #if (defined(SID_LEGEND_InoriDef) && (SID_LEGEND_InoriDef < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriDef, 100))
     {
-        ret = TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriDef);
-        if (ret == 0)
+        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriDef) == 0)
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriDef);
             return true;

@@ -4,6 +4,7 @@
 #include "debuff.h"
 #include "bwl.h"
 #include "kernel-lib.h"
+#include "class-types.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
@@ -705,6 +706,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StunningSmile) && (SID_StunningSmile < MAX_SKILL_NUM))
     if (SkillTester(&defender->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
         attacker->battleAvoidRate -= 20;
+#endif
+
+#if defined(SID_Trample) && (SID_Trample < MAX_SKILL_NUM)
+    if (SkillTester(&attacker->unit, SID_Trample) && !CheckClassMounted(UNIT_CLASS_ID((&defender->unit))))
+        attacker->battleAttack += 5;
 #endif
 
 }
