@@ -156,6 +156,29 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
                 attacker->weaponBroke = TRUE;
         }
 #endif
+
+#if (defined(SID_Ignis) && (SID_Ignis < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Ignis, attacker->unit.skl))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
+        switch (attacker->weaponType) 
+        {
+        case ITYPE_SWORD:
+        case ITYPE_LANCE:
+        case ITYPE_AXE:
+        case ITYPE_BOW:
+            attack += attacker->unit.def / 2;
+            break;
+        case ITYPE_ANIMA:
+        case ITYPE_LIGHT:
+        case ITYPE_DARK:
+            attack += attacker->unit.res / 2;
+            break;
+        default:
+            break;
+        }
+    }
+#endif
     }
 
     gBattleStats.damage = attack - defense;

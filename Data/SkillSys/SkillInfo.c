@@ -1916,6 +1916,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Ignis) && (SID_Ignis < MAX_SKILL_NUM))
+    [SID_Ignis] = {
+        .desc = MSG_SKILL_Ignis,
+        .icon = GFX_SkillIcon_Ignis,
+    },
+#endif
+
 #if (defined(SID_HolyAura) && (SID_HolyAura < MAX_SKILL_NUM)) 
     [SID_HolyAura] = {
         .desc = MSG_SKILL_HolyAura,
