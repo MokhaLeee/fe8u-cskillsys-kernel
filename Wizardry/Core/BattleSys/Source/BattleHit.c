@@ -137,26 +137,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
         }
 #endif
-
-#if (defined(SID_Corrosion) && (SID_Corrosion < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Corrosion, attacker->unit.skl))
-        {
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
-            int cost = attacker->levelPrevious;
-        
-            while (cost-- > 0)
-            {
-                u16 weapon = GetItemAfterUse(defender->weapon);
-                defender->weapon = weapon;
-
-                if (!weapon)
-                    break;
-            }
-
-            if (!attacker->weapon)
-                attacker->weaponBroke = TRUE;
-        }
-#endif
+    }
 
 #if (defined(SID_Ignis) && (SID_Ignis < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Ignis, attacker->unit.skl))
@@ -180,7 +161,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         }
     }
 #endif
-    }
 
     damage = attack - defense;
 
@@ -418,6 +398,26 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
+
+#if (defined(SID_Corrosion) && (SID_Corrosion < MAX_SKILL_NUM))
+    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) && CheckBattleSkillActivte(attacker, defender, SID_Corrosion, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
+        int cost = attacker->levelPrevious;
+    
+        while (cost-- > 0)
+        {
+            u16 weapon = GetItemAfterUse(defender->weapon);
+            defender->weapon = weapon;
+
+            if (!weapon)
+                break;
+        }
+
+        if (!defender->weapon)
+            defender->weaponBroke = TRUE;
+    }
+#endif
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) || attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
     {
