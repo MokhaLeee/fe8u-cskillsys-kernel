@@ -321,9 +321,14 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
     {
-        switch (GetItemWeaponEffect(attacker->weapon)) {
-        case WPN_EFFECT_POISON:
-            // Poison defender
+        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON ||
+#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
+            SkillTester(&attacker->unit, SID_PoisonPoint)
+#else
+            0
+#endif
+        )
+        {
             defender->statusOut = UNIT_STATUS_POISON;
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
 
@@ -331,14 +336,10 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             debuff = GetUnitStatusIndex(&defender->unit);
             if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
-
-            break;
-
-        case WPN_EFFECT_HPHALVE:
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
-            break;
-
         }
+
+        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
 
         if ((GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL) && (BattleRoll1RN(31 - attacker->unit.lck, FALSE)))
         {
@@ -412,11 +413,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             }
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
         }
-
-#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
-        if (defender->statusOut == UNIT_STATUS_NONE && SkillTester(&attacker->unit, SID_PoisonPoint))
-            defender->statusOut = UNIT_STATUS_POISON;
-#endif
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
