@@ -8,7 +8,7 @@
     /* Enable a skill anim at all time */
     // #define CONFIG_DEBUG_EFXSKILL
 
-    /* Auto load 150 skills on loading unit */
+    /* Auto load 254 skills on loading unit */
     #define CONFIG_DEBUG_UNIT_LOAD_SKILL
 
     #define CONFIG_DEBUG_CHAPTER

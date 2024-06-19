@@ -92,10 +92,9 @@ void UnitAutoLoadSkills(struct Unit * unit)
     /* For debug, we enable unit learn all of skills */
     if (UNIT_FACTION(unit) == FACTION_BLUE)
     {
-        LTRACEF("Character %#x auto learned skill %#x ~ %#x",
-                UNIT_CHAR_ID(unit), 1, 150);
+        LTRACEF("Character %#x auto learned skill", UNIT_CHAR_ID(unit));
 
-        for (i = 1; i < 150; i++)
+        for (i = 1; i < 254; i++)
             LearnSkill(unit, i);
     }
 #endif
