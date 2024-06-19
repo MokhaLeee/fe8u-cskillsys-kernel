@@ -55,7 +55,7 @@ return a;
 
 ## Suggestion
 
-1. **Spend more time on studing [decomp](https://github.com/FireEmblemUniverse/fireemblem8u) studing rather than coding.**
+1. **Spend more time on [decomp](https://github.com/FireEmblemUniverse/fireemblem8u) studing rather than coding.**
 
 2. More C and less ASM
 
