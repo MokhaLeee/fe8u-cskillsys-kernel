@@ -31,7 +31,8 @@ enjoys Brave effect and lose 1 HP[X]
 
 ## MSG_SKILL_Astra
 Astra:[NL]
-Battle +4 hit but damage is halved[X]
+Battle +4 hit but damage is halved[NL]
+(spd%)[X]
 
 ## MSG_SKILL_Adept
 Adept:[NL]

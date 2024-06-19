@@ -356,7 +356,9 @@ bool BattleGetFollowUpOrder(struct BattleUnit ** outAttacker, struct BattleUnit 
 int GetBattleUnitHitCount(struct BattleUnit * actor)
 {
     int result = 1;
-    struct Unit * unit = GetUnit(actor->unit.index);
+    struct BattleUnit * target = (actor == &gBattleActor)
+                               ? &gBattleTarget
+                               : &gBattleActor;
 
     gBattleTemporaryFlag.order_ruined_blade_plus = false;
     gBattleTemporaryFlag.order_astra = false;
@@ -365,7 +367,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
         result = result + 1;
 
 #if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_RuinedBladePlus))
+    if (SkillTester(&actor->unit, SID_RuinedBladePlus))
     {
         gBattleTemporaryFlag.order_ruined_blade_plus = true;
         result = result + 1;
@@ -373,7 +375,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_Astra) && BattleRoll2RN(GetUnitSpeed(unit) * 2, true))
+    if (SkillTester(&actor->unit, SID_Astra) && CheckBattleSkillActivte(actor, target, SID_Astra, actor->unit.spd))
     {
         gBattleTemporaryFlag.order_astra = true;
         gBattleActorGlobalFlag.skill_activated_astra = true;
@@ -382,7 +384,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_Adept) && (SID_Adept < MAX_SKILL_NUM)
-    if (SkillTester(unit, SID_Adept) && unit->curHP == unit->maxHP)
+    if (SkillTester(&actor->unit, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
     {
         gBattleTemporaryFlag.order_adept = true;
         result = result + 1;
