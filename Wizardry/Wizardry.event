@@ -11,7 +11,6 @@ ALIGN 4
 #include "Common/BanimHack/BanimHack.event"
 #include "Common/BwlRework/BwlRework.event"
 #include "Common/ItemSys/ItemSys.event"
-#include "Common/ClassChgExpansion/ClassChgExpansion.event"
 #include "Common/KernelLib/KernelLib.event"
 #include "Common/ClassTypes/ClassTypes.event"
 #include "Common/RN/RandNumberC.lyn.event"

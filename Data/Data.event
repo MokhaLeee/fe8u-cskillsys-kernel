@@ -23,9 +23,6 @@
 
 #include "HiddenLevel/HiddenLevel.lyn.event"
 
-#include "Promote/ClassChgExpa.lyn.event"
-#include "Promote/VanillaList.event"
-
 #include "KernelTutorial/ktut.lyn.event"
 
 #include "../Wizardry/Core/DebuffRework/StatDebuff/StatDebuffData.lyn.event"
