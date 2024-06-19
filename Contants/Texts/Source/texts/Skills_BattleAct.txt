@@ -8,9 +8,14 @@ Pavise:[NL]
 Nullify a physical attack.[NL]
 (Skill % activation)[X]
 
-## MSG_SKILL_Bane
-Bane: Leave the opponent at[NL]
+## MSG_SKILL_Mercy
+Mercy: Leave the opponent at[NL]
 1 HP if the attack would kill.[NL]
+(Skill/2 % activation)[X]
+
+## MSG_SKILL_Bane
+Bane:[NL]
+Leave the opponent at 1Hp[NL]
 (Skill/2 % activation)[X]
 
 ## MSG_SKILL_Aether

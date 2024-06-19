@@ -492,6 +492,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
     },
 #endif
 
+#if (defined(SID_Mercy) && (SID_Mercy < MAX_SKILL_NUM)) 
+    [SID_Mercy] = {
+        .desc = MSG_SKILL_Mercy,
+        .icon = GFX_SkillIcon_Mercy,
+    },
+#endif
+
 #if (defined(SID_Aether) && (SID_Aether < MAX_SKILL_NUM))
     [SID_Aether] = {
         .desc = MSG_SKILL_Aether,

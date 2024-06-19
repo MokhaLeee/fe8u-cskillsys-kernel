@@ -352,6 +352,17 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (gBattleStats.damage > defender->unit.curHP)
                 gBattleStats.damage = defender->unit.curHP;
 
+#if defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM)
+            if (gBattleStats.damage < (defender->unit.curHP - 1))
+            {
+                if (SkillTester(&attacker->unit, SID_Bane))
+                {
+                    RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
+                    gBattleStats.damage = defender->unit.curHP - 1;
+                }
+            }
+#endif
+
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)
@@ -437,10 +448,10 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
 STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-#if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Bane, attacker->unit.skl))
+#if (defined(SID_Mercy) && (SID_Mercy < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Mercy, attacker->unit.skl))
     {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Mercy);
         return true;
     }
 #endif

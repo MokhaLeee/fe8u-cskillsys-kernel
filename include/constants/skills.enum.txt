@@ -156,6 +156,7 @@ SID_Astra
 SID_Aegis
 SID_Pavise
 SID_Bane
+SID_Mercy
 SID_Aether
 SID_Corona
 SID_Luna

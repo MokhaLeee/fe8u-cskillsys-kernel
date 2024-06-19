@@ -121,7 +121,15 @@ const struct SkillAnimInfo gSkillAnimInfos[0x100] = {
 #if defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM)
     [SID_Bane] = {
         .aid = EFX_SKILL_AETHER,
-        .priority = EFX_PRIORITY_NORMAL,
+        .priority = EFX_PRIORITY_HIGH,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if defined(SID_Mercy) && (SID_Mercy < MAX_SKILL_NUM)
+    [SID_Mercy] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_HIGH,
         .sfx = 0x3D1,
     },
 #endif
