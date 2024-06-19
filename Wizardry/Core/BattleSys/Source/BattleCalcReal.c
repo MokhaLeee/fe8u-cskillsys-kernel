@@ -70,7 +70,8 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 /* LynJump */
 void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    if (attacker->weaponAttributes & IA_MAGICDAMAGE) {
+    if (attacker->weaponAttributes & IA_MAGICDAMAGE)
+    {
         switch (GetItemIndex(attacker->weapon)) {
         case ITEM_SWORD_LIGHTBRAND:
         case ITEM_SWORD_RUNESWORD:

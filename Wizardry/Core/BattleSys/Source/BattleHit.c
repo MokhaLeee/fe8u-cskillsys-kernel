@@ -16,7 +16,7 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         return true;
     }
-#endif /* SID_Aether */
+#endif
 
 #if (defined(SID_Sol) && (SID_Sol < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Sol, attacker->unit.skl))
@@ -24,7 +24,7 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
         return true;
     }
-#endif /* SID_Aether */
+#endif
 
     return false;
 }
@@ -36,17 +36,17 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #if defined(SID_RuinedBlade) && (SID_RuinedBlade < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_RuinedBlade))
         damage += 5;
-#endif // SID_RuinedBlade
+#endif
 
 #if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_RuinedBladePlus))
         damage += 5;
-#endif // SID_RuinedBladePlus
+#endif
 
 #if defined(SID_LunaAttack) && (SID_LunaAttack < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_LunaAttack))
         damage += defender->battleDefense / 4;
-#endif // SID_LunaAttack
+#endif
 
     return damage;
 }
@@ -162,14 +162,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (CheckBattleSkillActivte(attacker, defender, SID_Ignis, attacker->unit.skl))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
-        switch (attacker->weaponType) 
-        {
+        switch (attacker->weaponType) {
         case ITYPE_SWORD:
         case ITYPE_LANCE:
         case ITYPE_AXE:
         case ITYPE_BOW:
             attack += attacker->unit.def / 2;
             break;
+
         case ITYPE_ANIMA:
         case ITYPE_LIGHT:
         case ITYPE_DARK:
