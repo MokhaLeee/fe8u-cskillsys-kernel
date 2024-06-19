@@ -175,3 +175,8 @@ numbered turns.[X]
 Resolve:[NL]
 When HP < 50%,[NL]
 Str/Skl/Spd +50% bonus.[X]
+
+## MSG_SKILL_SpeedBoost
+SpeedBoost:[NL]
++1 movement per turn up[NL]
+to a maximum of  turns.[X]

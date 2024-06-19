@@ -39,6 +39,7 @@ SID_LifeAndDeath
 SID_LuckySeven
 SID_EvenFooted
 SID_OddFooted
+// SID_SpeedBoost
 
 // Battle effective
 SID_Nullify
