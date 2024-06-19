@@ -5,7 +5,10 @@
 const u8 gConstSkillPTable[0x100][2] = {
     [CHARACTER_EIRIKA] = {
 #if (defined(SID_Supply) && (SID_Supply < MAX_SKILL_NUM))
-        SID_Supply
+        SID_Supply,
+#endif
+#if (defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM))
+        SID_Bane
 #endif
     },
 

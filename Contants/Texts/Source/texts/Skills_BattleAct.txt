@@ -11,12 +11,12 @@ Nullify a physical attack.[NL]
 ## MSG_SKILL_Mercy
 Mercy: Leave the opponent at[NL]
 1 HP if the attack would kill.[NL]
-(Skill/2 % activation)[X]
+(Skill % activation)[X]
 
 ## MSG_SKILL_Bane
 Bane:[NL]
 Leave the opponent at 1Hp[NL]
-(Skill/2 % activation)[X]
+(Skill % activation)[X]
 
 ## MSG_SKILL_Aether
 Aether:Negate 80 %[NL]

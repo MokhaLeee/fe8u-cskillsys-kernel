@@ -134,6 +134,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
             attack *= 3;
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
         }
 #endif
 
@@ -274,6 +275,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
         gBattleStats.damage *= 4;
+        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
 
@@ -355,10 +357,11 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 #if defined(SID_Bane) && (SID_Bane < MAX_SKILL_NUM)
             if (gBattleStats.damage < (defender->unit.curHP - 1))
             {
-                if (SkillTester(&attacker->unit, SID_Bane))
+                if (CheckBattleSkillActivte(attacker, defender, SID_Bane, attacker->unit.skl))
                 {
                     RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
                     gBattleStats.damage = defender->unit.curHP - 1;
+                    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
                 }
             }
 #endif
