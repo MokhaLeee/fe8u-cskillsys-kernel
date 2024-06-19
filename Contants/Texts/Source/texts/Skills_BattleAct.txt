@@ -73,3 +73,17 @@ Impale:[NL]
 Deal x4 damage.[NL]
 (Skill% activation).[X]
 
+## MSG_SKILL_RightfulKing
+RightfulKing:[NL]
+Add +10% to the activation[NL]
+rate of the unit's skills.[X]
+
+## MSG_SKILL_RightfulGod
+RightfulGod:[NL]
+Add +30% to the activation[NL]
+rate of the unit's skills.[X]
+
+## MSG_SKILL_RightfulArch
+RightfulArch:[NL]
+Set activation rate of[NL]
+this unit's skills to 100%.[X]

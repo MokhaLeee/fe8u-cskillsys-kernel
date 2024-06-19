@@ -391,21 +391,6 @@ SilentPride:[NL]
 Gain +2 damage and take[NL]
 -2 damage per 25% below max HP.[X]
 
-## MSG_SKILL_RightfulKing
-RightfulKing:[NL]
-Add +10% to the activation[NL]
-rate of the unit's skills.[X]
-
-## MSG_SKILL_RightfulGod
-RightfulGod:[NL]
-Add +30% to the activation[NL]
-rate of the unit's skills.[X]
-
-## MSG_SKILL_RightfulArch
-RightfulArch:[NL]
-Set activation rate of[NL]
-this unit's skills to 100%.[X]
-
 ## MSG_SKILL_Guts
 Guts:[NL]
 +5 attack if afflicted by[NL]
