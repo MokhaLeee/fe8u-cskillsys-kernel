@@ -61,6 +61,25 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
     attacker->battleDefense = status;
 }
 
+/* LynJump */
+void ComputeBattleUnitCritRate(struct BattleUnit * bu)
+{
+    int status;
+    status = bu->unit.skl / 2;
+
+#if defined(SID_SuperLuck) && (SID_SuperLuck < MAX_SKILL_NUM)
+    if (SkillTester(&bu->unit, SID_SuperLuck))
+        status = bu->unit.lck;
+#endif
+
+    status += GetItemCrit(bu->weapon);
+
+    if (UNIT_CATTRIBUTES(&bu->unit) & CA_CRITBONUS)
+        bu->battleCritRate += 15;
+    
+    bu->battleCritRate = status;
+}
+
 void PreBattleCalcInit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     ComputeBattleUnitDefense(attacker, defender);
@@ -726,11 +745,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if defined(SID_Opportunist) && (SID_Opportunist < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_Opportunist) && !defender->canCounter)
         attacker->battleAttack += 4;
-#endif
-
-#if defined(SID_SuperLuck) && (SID_SuperLuck < MAX_SKILL_NUM)
-    if (SkillTester(&attacker->unit, SID_SuperLuck))
-        attacker->battleCritRate += (attacker->unit.lck - attacker->unit.skl/2);
 #endif
 
 #if (defined(SID_Vanity) && (SID_Vanity < MAX_SKILL_NUM))
