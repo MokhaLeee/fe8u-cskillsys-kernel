@@ -1966,6 +1966,13 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
+#if (defined(SID_SuperLuck) && (SID_SuperLuck < MAX_SKILL_NUM)) 
+    [SID_SuperLuck] = {
+        .desc = MSG_SKILL_SuperLuck,
+        .icon = GFX_SkillIcon_SuperLuck,
+      },
+#endif
+
 #if (defined(SID_ShortShield) && (SID_ShortShield < MAX_SKILL_NUM)) 
     [SID_ShortShield] = {
         .desc = MSG_SKILL_ShortShield,

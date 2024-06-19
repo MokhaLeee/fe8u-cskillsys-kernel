@@ -447,6 +447,10 @@ Trample:[NL]
 Opportunist:[NL]
 +4 damage if the foe cannot counter.[X]
 
+## MSG_SKILL_SuperLuck
+SuperLuck:[NL]
+Use luck as crit rate.[X]
+
 ## MSG_SKILL_ShortShield
 Short Shield:[NL]
 Gain 6 defense against[NL]

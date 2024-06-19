@@ -728,6 +728,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         attacker->battleAttack += 4;
 #endif
 
+#if defined(SID_SuperLuck) && (SID_SuperLuck < MAX_SKILL_NUM)
+    if (SkillTester(&attacker->unit, SID_SuperLuck))
+        attacker->battleCritRate += (attacker->unit.lck - attacker->unit.skl/2);
+#endif
+
 #if (defined(SID_Vanity) && (SID_Vanity < MAX_SKILL_NUM))
     if (SkillTester(&attacker->unit, SID_Vanity) && gBattleStats.range == 2)
     {

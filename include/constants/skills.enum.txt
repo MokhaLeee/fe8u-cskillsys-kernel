@@ -134,6 +134,7 @@ SID_RightfulGod
 SID_RightfulArch
 SID_Guts
 SID_Hero
+SID_SuperLuck
 
 // Weapon triangle
 SID_SwordBreaker
