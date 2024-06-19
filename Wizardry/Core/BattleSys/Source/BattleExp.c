@@ -31,25 +31,21 @@ int GetBattleUnitExpGain(struct BattleUnit * actor, struct BattleUnit * target)
     result = GetUnitRoundExp(&actor->unit, &target->unit);
     result += GetUnitKillExpBonus(&actor->unit, &target->unit);
 
-#if CHAX
-
 #if defined(SID_Blossom) && (SID_Blossom < MAX_SKILL_NUM)
     if (SkillTester(&actor->unit, SID_Blossom))
         result = result / 2;
-#endif // SID_Blossom
+#endif
 
 #if defined(SID_Paragon) && (SID_Paragon < MAX_SKILL_NUM)
     if (SkillTester(&actor->unit, SID_Paragon))
         result = result * 2;
-#endif // SID_Paragon
+#endif
 
     /* Check last */
 #if defined(SID_VoidCurse) && (SID_VoidCurse < MAX_SKILL_NUM)
     if (SkillTester(&target->unit, SID_VoidCurse))
         result = 0;
-#endif // SID_VoidCurse
-
-#endif // CHAX
+#endif
 
     if (result > 100)
         result = 100;

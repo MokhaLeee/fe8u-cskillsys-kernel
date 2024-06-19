@@ -375,7 +375,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
-    if (SkillTester(&actor->unit, SID_Astra) && CheckBattleSkillActivte(actor, target, SID_Astra, actor->unit.spd))
+    if (actor == &gBattleActor && CheckBattleSkillActivte(actor, target, SID_Astra, actor->unit.spd))
     {
         gBattleTemporaryFlag.order_astra = true;
         gBattleActorGlobalFlag.skill_activated_astra = true;
