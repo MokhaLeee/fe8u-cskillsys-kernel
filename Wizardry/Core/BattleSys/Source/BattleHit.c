@@ -179,12 +179,12 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         !SkillTester(&defender->unit, SID_Foresight) &&
 #else
         0 &&
-#endif // SID_Foresight
+#endif
 #if defined(SID_Fortune) && (SID_Fortune < MAX_SKILL_NUM)
         !SkillTester(&defender->unit, SID_Fortune)
 #else
         0
-#endif // SID_Fortune
+#endif
     )
     {
         if (BattleRoll1RN(gBattleStats.silencerRate, FALSE))
@@ -214,7 +214,10 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (attacker == &gBattleActor)
     {
         if (SkillTester(&attacker->unit, SID_Astra) && gBattleTemporaryFlag.order_astra)
-            damage = damage / 2;
+        {
+            if (damage > 1)
+                damage = damage / 2;
+        }
     }
 #endif // SID_Astra
 
