@@ -9,4 +9,3 @@ bool CheckClassCavalry(u8 jid);
 bool CheckClassArmor(u8 jid);
 bool CheckClassDragon(u8 jid);
 bool CheckClassBeast(u8 jid);
-bool CheckClassMounted(u8 jid);

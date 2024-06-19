@@ -68,20 +68,6 @@ bool CheckClassCavalry(u8 jid)
     return false;
 }
 
-bool CheckClassMounted(u8 jid)
-{
-    const u8 * it;
-    for (it = gpKernelClassList_Cavalry; *it != CLASS_NONE; it++)
-        if (*it == jid)
-            return true;
-
-    for (it = gpKernelClassList_Flier; *it != CLASS_NONE; it++)
-        if (*it == jid)
-            return true;
-
-    return false;
-}
-
 bool CheckClassArmor(u8 jid)
 {
     const u8 * it;

@@ -738,7 +738,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_Trample) && (SID_Trample < MAX_SKILL_NUM)
-    if (SkillTester(&attacker->unit, SID_Trample) && !CheckClassMounted(UNIT_CLASS_ID((&defender->unit))))
+    if (SkillTester(&attacker->unit, SID_Trample) && !(UNIT_CATTRIBUTES(&defender->unit) & CA_MOUNTEDAID))
         attacker->battleAttack += 5;
 #endif
 
