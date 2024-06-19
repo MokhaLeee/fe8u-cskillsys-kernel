@@ -48,22 +48,6 @@ static inline int GetBattleHitRound(struct BattleHit * hit)
     return hit - gBattleHitArrayRe;
 }
 
-struct ExternalBattleHitArray {
-    u8 _pad_[4];
-};
-extern struct ExternalBattleHitArray gExternalBattleHitArray[NEW_BATTLE_HIT_MAX];
-
-/* Flags in .data section */
-extern struct {
-    u32 order_vantage : 1;
-    u32 order_desperation : 1;
-    u32 order_quick_riposte : 1;
-    u32 order_dobule_lion : 1;
-    u32 order_ruined_blade_plus : 1;
-    u32 order_astra : 1;
-    u32 order_adept : 1;
-} gBattleTemporaryFlag;
-
 extern struct BattleGlobalFlags {
     u32 skill_activated_double_lion : 1;
     u32 skill_activated_astra : 1;

@@ -120,3 +120,14 @@ void RegisterTargetEfxSkill(int round, const u8 sid);
 ```
 
 Then kernel may register a efxskill anim at specific round. If there has already been a skill anim registered, then we may compare the priority and let the higher one be displayed.
+
+## Battle order related skill
+
+Battle order calculation can be splited into:
+
+1. The order of battle between the enemy and ally
+2. Number of attacks per round
+
+Currently, the former, which is mainly handled in function `BattleUnwind`, is fixedly handled by four skills (`Vantage`, `Desperation`, `QuickRiposte`, `DoubleLion`), the display order of the skill animation is hardcoded.
+
+The later, which is mainly handled in function `BattleComboGenerateHits`, is now dynamically changing. Users may register a skill to display anim via function `EnqueueRoundEfxSkill`.

@@ -7,7 +7,7 @@
 #include "combo-attack.h"
 #include "constants/skills.h"
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 enum {
     NOP_ATTACK = 0,
@@ -21,7 +21,6 @@ enum {
     UNWIND_DOUBLE_ACT = 1 << 2,
     UNWIND_DOUBLE_TAR = 1 << 3,
 };
-
 
 static const u8 BattleUnwindConfig[14][4] = {
     { ACT_ATTACK, TAR_ATTACK, NOP_ATTACK, NOP_ATTACK }, // 0:default
@@ -41,6 +40,37 @@ static const u8 BattleUnwindConfig[14][4] = {
     { ACT_ATTACK, TAR_ATTACK, ACT_ATTACK, TAR_ATTACK }, // 34  = 12
     { TAR_ATTACK, ACT_ATTACK, TAR_ATTACK, ACT_ATTACK }  // 134 = 13
 };
+
+extern struct {
+    u32 order_vantage : 1;
+    u32 order_desperation : 1;
+    u32 order_quick_riposte : 1;
+    u32 order_dobule_lion : 1;
+} gBattleTemporaryFlag;
+
+extern struct {
+    u8 cur, max;
+    u8 skill_pool[14];
+} sEfxSkillQueue;
+
+static void ResetRoundEfxSkills(void)
+{
+    memset(&sEfxSkillQueue, 0, sizeof(sEfxSkillQueue));
+}
+
+static void EnqueueRoundEfxSkill(u8 sid)
+{
+    if (sEfxSkillQueue.max < (sizeof(sEfxSkillQueue.skill_pool) - 1))
+        sEfxSkillQueue.skill_pool[sEfxSkillQueue.max++] = sid;
+}
+
+static u8 DequeueRoundEfxSkill(void)
+{
+    if (sEfxSkillQueue.cur < sEfxSkillQueue.max)
+        return sEfxSkillQueue.skill_pool[sEfxSkillQueue.cur++];
+
+    return 0;
+}
 
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target)
@@ -142,7 +172,6 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
         return false;
 
-#if defined(SID_Vantage) && (SID_Vantage < MAX_SKILL_NUM)
     if (SkillTester(target, SID_Vantage))
     {
         if ((GetUnitCurrentHp(target) * 2) < HpMaxGetter(target))
@@ -151,7 +180,6 @@ STATIC_DECLAR bool CheckVantageOrder(void)
             return true;
         }
     }
-#endif
     return false;
 }
 
@@ -295,29 +323,27 @@ bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * d
     if (!attacker->weapon)
         return FALSE;
 
+    /* Clear the round related efx skill pool */
+    ResetRoundEfxSkills();
+
     attrs = gBattleHitIterator->attributes;
     count = GetBattleUnitHitCount(attacker);
 
     for (i = 0; i < count; ++i)
     {
-        int round = GetBattleHitRound(gBattleHitIterator);
+        int efx_sid, round = GetBattleHitRound(gBattleHitIterator);
+
         gBattleHitIterator->attributes |= attrs;
 
-#if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
-        /* RuinedBladePlus */
-        if (i == 1 && gBattleTemporaryFlag.order_ruined_blade_plus)
-            RegisterActorEfxSkill(round, SID_RuinedBladePlus);
-#endif
-
-#if defined(SID_Adept) && (SID_Adept < MAX_SKILL_NUM)
-        if (i == 1 && gBattleTemporaryFlag.order_adept)
-            RegisterActorEfxSkill(round, SID_Adept);
-#endif
-
-#if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
-        if (i == 2 && gBattleTemporaryFlag.order_astra)
-            RegisterActorEfxSkill(round, SID_Astra);
-#endif
+        if (i != 0)
+        {
+            efx_sid = DequeueRoundEfxSkill();
+            if (SKILL_VALID(efx_sid))
+            {
+                LTRACEF("Round skill %02x registered at round %d", efx_sid, round);
+                RegisterActorEfxSkill(round, efx_sid);
+            }
+        }
 
         if (BattleGenerateHit(attacker, defender))
             return true;
@@ -360,16 +386,13 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
                                ? &gBattleTarget
                                : &gBattleActor;
 
-    gBattleTemporaryFlag.order_ruined_blade_plus = false;
-    gBattleTemporaryFlag.order_astra = false;
-
     if (BattleCheckBraveEffect(actor))
         result = result + 1;
 
 #if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
     if (SkillTester(&actor->unit, SID_RuinedBladePlus))
     {
-        gBattleTemporaryFlag.order_ruined_blade_plus = true;
+        EnqueueRoundEfxSkill(SID_RuinedBladePlus);
         result = result + 1;
     }
 #endif
@@ -377,7 +400,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
     if (actor == &gBattleActor && CheckBattleSkillActivte(actor, target, SID_Astra, actor->unit.spd))
     {
-        gBattleTemporaryFlag.order_astra = true;
+        EnqueueRoundEfxSkill(SID_Astra);
         gBattleActorGlobalFlag.skill_activated_astra = true;
         result = result + 4;
     }
@@ -386,7 +409,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #if defined(SID_Adept) && (SID_Adept < MAX_SKILL_NUM)
     if (SkillTester(&actor->unit, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
     {
-        gBattleTemporaryFlag.order_adept = true;
+        EnqueueRoundEfxSkill(SID_Adept);
         result = result + 1;
     }
 #endif

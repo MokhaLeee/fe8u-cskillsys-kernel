@@ -213,7 +213,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     /* SID_Astra may half the damage */
     if (attacker == &gBattleActor)
     {
-        if (SkillTester(&attacker->unit, SID_Astra) && gBattleTemporaryFlag.order_astra)
+        if (SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
         {
             if (damage > 1)
                 damage = damage / 2;
@@ -540,13 +540,11 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 
         if (gBattleTarget.unit.curHP == 0)
         {
-#if CHAX
             gBattleActorGlobalFlag.enimy_defeated = true;
 
 #if (defined(SID_Galeforce) && (SID_Galeforce < MAX_SKILL_NUM))
             if (CheckBattleSkillActivte(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
-#endif
 #endif
             gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
         }

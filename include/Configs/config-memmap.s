@@ -22,6 +22,7 @@ _kernel_malloc sStatScreenPage1BarMax, 4
 _kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
 _kernel_malloc sEfxSkillRoundData, 4 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
+_kernel_malloc sEfxSkillQueue, 16
 _kernel_malloc gBattleTemporaryFlag, 8
 _kernel_malloc gBattleActorGlobalFlag, 8
 _kernel_malloc gBattleTargetGlobalFlag, 8
