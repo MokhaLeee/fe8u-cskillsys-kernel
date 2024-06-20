@@ -92,3 +92,8 @@ rate of the unit's skills.[X]
 RightfulArch:[NL]
 Set activation rate of[NL]
 this unit's skills to 100%.[X]
+
+## MSG_SKILL_Vengeance
+Vengeance:[NL]
+Add damage taken to attacl.[NL]
+(Skill % activation).[X]

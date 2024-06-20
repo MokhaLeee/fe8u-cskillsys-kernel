@@ -154,6 +154,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+#if defined(SID_Vengeance) && (SID_Vengeance < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Vengeance, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
+        attack += (attacker->unit.maxHP - attacker->unit.curHP);
+    }
+#endif
+
     amplificatier = 100;
     damage = attack - defense;
 
