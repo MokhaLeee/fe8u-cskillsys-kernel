@@ -5,8 +5,10 @@
 
 bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate)
 {
+    if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+        return false;
+
 #if (defined(SID_Foresight) && (SID_Foresight < MAX_SKILL_NUM))
-    /* Check skill Foresight */
     if (SkillTester(&target->unit, SID_Foresight))
         return false;
 #endif
@@ -32,7 +34,9 @@ bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * targ
         rate = 100;
 #endif
 
-    if (SkillTester(&actor->unit, sid) && BattleRoll2RN(rate, false))
+    LIMIT_AREA(rate, 0, 100);
+
+    if (SkillTester(&actor->unit, sid) && Roll2RN(rate))
         return true;
 
     return false;
