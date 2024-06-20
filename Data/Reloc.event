@@ -107,7 +107,7 @@ gConfigUseGlyph:
 #endif
 
 gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
-
+MESSAGE CURRENTOFFSET
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
 
 KERNEL_RELOC_END:
