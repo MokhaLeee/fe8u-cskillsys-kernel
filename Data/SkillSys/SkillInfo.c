@@ -2000,4 +2000,11 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Glacies) && (SID_Glacies < MAX_SKILL_NUM)) 
+    [SID_Glacies] = {
+        .desc = MSG_SKILL_Glacies,
+        .icon = GFX_SkillIcon_Glacies,
+    },
+#endif
 };

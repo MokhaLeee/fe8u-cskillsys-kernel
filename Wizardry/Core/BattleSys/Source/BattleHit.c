@@ -48,6 +48,14 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         damage += defender->battleDefense / 4;
 #endif
 
+#if defined(SID_Glacies) && (SID_Glacies < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Glacies, 100))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Glacies);
+        damage += attacker->unit.res;
+    }
+#endif
+
     return damage;
 }
 

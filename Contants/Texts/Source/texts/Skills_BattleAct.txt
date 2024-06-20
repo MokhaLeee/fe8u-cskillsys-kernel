@@ -92,3 +92,8 @@ rate of the unit's skills.[X]
 RightfulArch:[NL]
 Set activation rate of[NL]
 this unit's skills to 100%.[X]
+
+## MSG_SKILL_Glacies
+Glacies:[NL]
+Add unit resistance to damage[NL]
+dealt. (Skill % activation).[X]
