@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "kernel-tutorial.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -154,8 +155,14 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
 {
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
 
-    /* Distance +2, hit rate -20% */
-    attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
+    /* For non-ballista combat, Distance +2, hit rate -20% for actor */
+    if (gBattleStats.range > 2 && attacker == &gBattleActor && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA))
+    {
+        attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
+
+        if (gBattleStats.config & BATTLE_CONFIG_REAL)
+            TriggerKtutorial(KTUTORIAL_RANGED_FAILOFF);
+    }
 
     if (attacker->battleEffectiveHitRate > 100)
         attacker->battleEffectiveHitRate = 100;

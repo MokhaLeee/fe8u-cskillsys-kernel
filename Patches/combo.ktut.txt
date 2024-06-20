@@ -2,3 +2,4 @@
 2=battle-surrounder
 3=prep-skill
 4=combat-art
+5=range-attack

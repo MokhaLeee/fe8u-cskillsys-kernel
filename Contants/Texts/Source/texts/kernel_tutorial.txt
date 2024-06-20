@@ -15,3 +15,8 @@ higher damage to the enemy![.][A][X]
 ## MSG_KTUT_COMBATART_MENU
 Play combat-arts to deal more damage,[.][NL]
 but this may cause more cost on weapon[.][A][X]
+
+## MSG_KTUT_RANGED_FAILOFF
+For non-ballista combat, it will cause[.][NL]
+the battle actor lose hit rate with[.][NL]
+the attack distance increases.[.][A][X]
