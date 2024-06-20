@@ -256,7 +256,7 @@ K-Fighter[X]
 
 ## MSG_SKILL_KeenFighter
 Keen Fighter:[NL]
-Unit takes 75% damage[NL]
+Unit takes 50% damage[NL]
 if the opponent can double.[X]
 
 ## MSG_SKILL_FireBoost

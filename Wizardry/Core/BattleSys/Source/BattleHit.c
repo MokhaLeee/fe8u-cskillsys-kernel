@@ -54,7 +54,7 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 /* LynJump */
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int attack, defense, damage;
+    int attack, defense, amplificatier, damage;
     bool in_art_atk = false;
 
     gBattleStats.damage = 0;
@@ -128,15 +128,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             defense = 0;
         }
 #endif
-
-#if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, attacker->unit.skl))
-        {
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
-            attack *= 3;
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-        }
-#endif
     }
 
 #if (defined(SID_Ignis) && (SID_Ignis < MAX_SKILL_NUM))
@@ -162,6 +153,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+    amplificatier = 100;
     damage = attack - defense;
 
 #if defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM)
@@ -171,62 +163,51 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
 #if defined(SID_DragonFang) && (SID_DragonFang < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_DragonFang))
-        damage = damage * 3 / 2;
+        amplificatier += 75;
 #endif
 
-    if (BattleRoll1RN(gBattleStats.critRate, FALSE) == TRUE &&
-#if defined(SID_Foresight) && (SID_Foresight < MAX_SKILL_NUM)
-        !SkillTester(&defender->unit, SID_Foresight) &&
-#else
-        0 &&
-#endif
-#if defined(SID_Fortune) && (SID_Fortune < MAX_SKILL_NUM)
-        !SkillTester(&defender->unit, SID_Fortune)
-#else
-        0
-#endif
-    )
+#if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, attacker->unit.skl))
     {
-        if (BattleRoll1RN(gBattleStats.silencerRate, FALSE))
-        {
-            /* Silencer */
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_SILENCER;
-            damage = BATTLE_MAX_DAMAGE;
-        }
-        else
-        {
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-
-#if defined(SID_InfinityEdge) && (SID_InfinityEdge < MAX_SKILL_NUM)
-            /* InfinityEdge */
-            if (SkillTester(&attacker->unit, SID_InfinityEdge))
-#else
-            if (0)
-#endif // SID_InfinityEdge
-                damage = damage * 3;
-            else
-                damage = damage * 2;
-        }
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
+        amplificatier += 200;
+        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
+#endif
+
+#if defined(SID_Impale) && (SID_Impale < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Impale, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
+        amplificatier += 400;
+        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+    }
+#endif
 
 #if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
-    /* SID_Astra may half the damage */
-    if (attacker == &gBattleActor)
+    if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
     {
-        if (SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
-        {
-            if (damage > 1)
-                damage = damage / 2;
-        }
+        /* If we can deal damage, astra should not reduce it to 0 */
+        if (damage > 1)
+            amplificatier /= 2;
     }
-#endif // SID_Astra
+#endif
 
-    /* Minus zero */
-    if (damage < 0)
-        damage = 0;
+#if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
+    if (SkillTester(&defender->unit, SID_DragonSkin))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
+        amplificatier /= 2;
+    }
+#endif
 
-    /* Real damage */
-    damage += CalcBattleRealDamage(attacker, defender);
+#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
+    if (SkillTester(&defender->unit, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
+        amplificatier /= 2;
+    }
+#endif
 
     if (damage > 0)
     {
@@ -251,50 +232,68 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
         }
     }
-    if (damage > 0)
-    {
-#if defined(SID_Impale) && (SID_Impale < MAX_SKILL_NUM)
-    if (CheckBattleSkillActivte(attacker, defender, SID_Impale, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
-        damage *= 4;
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-    }
-#endif
 
-#if (defined(SID_DragonSkin) && (SID_DragonSkin < MAX_SKILL_NUM))
-        if (SkillTester(&defender->unit, SID_DragonSkin))
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-            damage = damage / 2;
-        }
+    /**
+     * Roll critical hit
+     */
+    if (BattleRoll1RN(gBattleStats.critRate, FALSE) == TRUE &&
+#if defined(SID_Foresight) && (SID_Foresight < MAX_SKILL_NUM)
+        !SkillTester(&defender->unit, SID_Foresight) &&
 #else
-        if (0)
+        0 &&
 #endif
+#if defined(SID_Fortune) && (SID_Fortune < MAX_SKILL_NUM)
+        !SkillTester(&defender->unit, SID_Fortune)
+#else
+        0
+#endif
+    )
+    {
+        if (BattleRoll1RN(gBattleStats.silencerRate, FALSE))
+        {
+            /* Silencer */
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_SILENCER;
+            damage = BATTLE_MAX_DAMAGE;
+        }
         else
         {
-#if (defined(SID_KeenFighter) && (SID_KeenFighter < MAX_SKILL_NUM))
-            if (SkillTester(&defender->unit, SID_KeenFighter))
-            {
-                if (CheckCanTwiceAttackOrder(attacker,defender))
-                {
-                    RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-                    damage = damage * 3 / 4;
-                }
-            }
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+
+#if defined(SID_InfinityEdge) && (SID_InfinityEdge < MAX_SKILL_NUM)
+            if (SkillTester(&attacker->unit, SID_InfinityEdge))
+#else
+            if (0)
 #endif
+                amplificatier += 300;
+            else
+                amplificatier += 200;
+
+            damage = Div(damage * amplificatier, 100);
         }
     }
+
+    /* Minus zero */
+    if (damage < 0)
+        damage = 0;
+
+    /**
+     * Real damage:
+     *  1. Ignore damage calculation
+     *  2. No damage increase
+     *  3. Cannot Crit
+     */
+    damage += CalcBattleRealDamage(attacker, defender);
+
     /* Post calc */
+    if (damage > BATTLE_MAX_DAMAGE)
+        damage = BATTLE_MAX_DAMAGE;
+
     gBattleStats.damage = damage;
-    if (gBattleStats.damage > BATTLE_MAX_DAMAGE)
-        gBattleStats.damage = BATTLE_MAX_DAMAGE;
 
     BattleCheckPetrify(attacker, defender);
 
     if (gBattleStats.damage != 0)
         attacker->nonZeroDamage = TRUE;
-
 }
 
 /* LynJump */
