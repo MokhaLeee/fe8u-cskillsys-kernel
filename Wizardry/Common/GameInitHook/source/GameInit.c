@@ -8,14 +8,15 @@ typedef void (* GameInitHookFunc_t)(void);
 extern GameInitHookFunc_t const * const gpGameInitHookTable;
 extern const GameInitHookFunc_t * gpExternalGameInitHook;
 
-extern u8 FreeRamSpaceTop[], FreeRamSpaceBottom[], gKernelUsedFreeRamSpaceTop[];
+extern u8 FreeRamSpaceTop[], UsedFreeRamSpaceTop[];
+extern u8 FreeRamSpace2Top[], UsedFreeRamSpace2Top[];
+extern u8 EwramOverlay0_FreeRamSpaceTop[], EwramOverlay0_UsedFreeRamSpaceTop[];
 
 STATIC_DECLAR void FreeRamSpaceDetection(void)
 {
-    bool asseration = (&FreeRamSpaceTop[0] < &gKernelUsedFreeRamSpaceTop[0]);
-
-    Assert(asseration);
-    if (!asseration) hang();
+    Assert(&FreeRamSpaceTop[0] < &UsedFreeRamSpaceTop[0]);
+    Assert(&FreeRamSpace2Top[0] < &UsedFreeRamSpace2Top[0]);
+    Assert(&EwramOverlay0_FreeRamSpaceTop[0] < &EwramOverlay0_UsedFreeRamSpaceTop[0]);
 }
 
 /* LynJump! */
