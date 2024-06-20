@@ -1923,10 +1923,10 @@ const struct SkillInfo gSkillInfos[0x100] = {
       },
 #endif
 
-#if (defined(SID_Eclipse) && (SID_Eclipse < MAX_SKILL_NUM)) 
-    [SID_Eclipse] = {
-        .desc = MSG_SKILL_Eclipse,
-        .icon = GFX_SkillIcon_Eclipse,
+#if (defined(SID_DeathsDoor) && (SID_DeathsDoor < MAX_SKILL_NUM)) 
+    [SID_DeathsDoor] = {
+        .desc = MSG_SKILL_DeathsDoor,
+        .icon = GFX_SkillIcon_DeathsDoor,
       },
 #endif
 };

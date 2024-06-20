@@ -157,7 +157,7 @@ SID_DragonFang
 SID_Foresight
 SID_Inori
 SID_Colossus
-SID_Eclipse
+SID_DeathsDoor
 
 // Blow skills
 SID_BlowDarting

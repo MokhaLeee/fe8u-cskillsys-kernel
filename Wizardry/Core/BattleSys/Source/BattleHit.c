@@ -7,6 +7,7 @@
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
+#include <stdio.h>
 
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
@@ -255,12 +256,16 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         if (0)
 #endif
 
-#if (defined(SID_Eclipse) && (SID_Eclipse < MAX_SKILL_NUM))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Eclipse, attacker->unit.skl))
+#if (defined(SID_DeathsDoor) && (SID_DeathsDoor < MAX_SKILL_NUM))
+        if (gBattleStats.damage < defender->unit.curHP)
         {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Eclipse);
-            if (gBattleStats.damage >= defender->unit.curHP)
-                gBattleStats.damage = defender->unit.curHP - 1;
+            if (CheckBattleSkillActivte(attacker, defender, SID_DeathsDoor, defender->unit.skl))
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DeathsDoor);
+                {
+                    gBattleStats.damage = defender->unit.curHP - 1;
+                }
+            }
         }
 #endif
         else

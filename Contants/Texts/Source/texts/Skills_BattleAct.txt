@@ -63,7 +63,7 @@ Corrosion:[NL]
 Reduce enemy's weapon durability[NL]
 by user's level (Skill %).[X]
 
-## MSG_SKILL_Eclipse
-Eclipse:[NL]
-Leave the opponent at 1 HP[NL]
-(Skill % activation).[X]
+## MSG_SKILL_DeathsDoor
+DeathsDoor:[NL]
+Leave the opponent at 1 HP if the[NL]
+attack wouldn't kill (Skill % activation).[X]

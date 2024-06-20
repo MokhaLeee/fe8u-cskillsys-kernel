@@ -198,8 +198,8 @@ const struct SkillAnimInfo gSkillAnimInfos[0x100] = {
     },
 #endif
 
-#if defined(SID_Eclipse) && (SID_Eclipse < MAX_SKILL_NUM)
-    [SID_Eclipse] = {
+#if defined(SID_DeathsDoor) && (SID_DeathsDoor < MAX_SKILL_NUM)
+    [SID_DeathsDoor] = {
         .aid = EFX_SKILL_DEFAULT,
         .priority = EFX_PRIORITY_NORMAL,
         .sfx = 0x3D1,
