@@ -20,3 +20,8 @@ but this may cause more cost on weapon[.][A][X]
 For non-ballista combat, it will cause[.][NL]
 the battle actor lose hit rate with[.][NL]
 the attack distance increases.[.][A][X]
+
+## MSG_KTUT_REAL_DAMAGE
+The real damage is different from normal[.][NL]
+damage, which will ignore atk/def calculation[.][NL]
+with no damage increase and cannot Crit.[.][A][X]

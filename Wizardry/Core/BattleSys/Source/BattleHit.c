@@ -54,7 +54,8 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 /* LynJump */
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int attack, defense, amplificatier, damage;
+    int attack, defense, amplificatier;
+    int damage, real_damage;
     bool in_art_atk = false;
 
     gBattleStats.damage = 0;
@@ -282,7 +283,11 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
      *  2. No damage increase
      *  3. Cannot Crit
      */
-    damage += CalcBattleRealDamage(attacker, defender);
+    real_damage = CalcBattleRealDamage(attacker, defender);
+    if (real_damage > 0 && gBattleStats.config & BATTLE_CONFIG_REAL)
+        TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
+
+    damage += real_damage;
 
     /* Post calc */
     if (damage > BATTLE_MAX_DAMAGE)
