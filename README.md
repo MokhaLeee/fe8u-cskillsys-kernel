@@ -87,10 +87,10 @@ It build such outputs
 
 | Name      | Desc 			|
 | :--------	| :-----------	|
-|fe8-kernel-beta.gba|ROM|
-|fe8-kernel-beta.sym|debug on NO$GBA|
-|fe8-kernel-beta.ref.s|lyn reference|
-|fe8-kernel-beta.ref.event|EA reference|
-|fe8-kernel-beta.bsdiff|Binary patch used for bsdiff/bspatch|
+|fe8-kernel-dev.gba|ROM|
+|fe8-kernel-dev.sym|debug on NO$GBA|
+|fe8-kernel-dev.ref.s|lyn reference|
+|fe8-kernel-dev.ref.event|EA reference|
+|fe8-kernel-dev.bsdiff|Binary patch used for bsdiff/bspatch|
 
 **For more notes, see [docs dir](./docs/)**
