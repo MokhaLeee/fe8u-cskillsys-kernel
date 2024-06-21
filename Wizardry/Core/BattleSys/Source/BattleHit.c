@@ -213,7 +213,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (damage > 0)
     {
 #if (defined(SID_GreatShield) && (SID_GreatShield < MAX_SKILL_NUM))
-            if (CheckBattleSkillActivte(defender, attacker, SID_GreatShield, 100))
+            if (CheckBattleSkillActivte(defender, attacker, SID_GreatShield, defender->unit.skl))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
                 damage = 0;
