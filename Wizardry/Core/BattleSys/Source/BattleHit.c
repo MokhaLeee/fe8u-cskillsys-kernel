@@ -67,6 +67,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         in_art_atk = true;
     }
 
+
     if (!BattleRoll2RN(gBattleStats.hitRate, TRUE))
     {
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
@@ -182,6 +183,15 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
         amplificatier += 400;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+    }
+#endif
+
+#if (defined(SID_SureShot) && (SID_SureShot < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, 100))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
+        attacker->battleEffectiveHitRate = 100;
+        amplificatier += 75;
     }
 #endif
 

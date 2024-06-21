@@ -92,3 +92,8 @@ rate of the unit's skills.[X]
 RightfulArch:[NL]
 Set activation rate of[NL]
 this unit's skills to 100%.[X]
+
+## MSG_SKILL_SureShot
+SureShot:[NL]
+100% hit rate and does 1.5x[NL]
+normal damage (Skill % activation).[X]

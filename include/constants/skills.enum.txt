@@ -168,6 +168,7 @@ SID_Foresight
 SID_Colossus
 SID_Ignis
 SID_Impale
+SID_SureShot
 
 // Blow skills
 SID_BlowDarting
