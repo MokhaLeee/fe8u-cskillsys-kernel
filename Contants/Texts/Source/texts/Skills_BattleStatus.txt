@@ -261,22 +261,22 @@ if the opponent can double.[X]
 
 ## MSG_SKILL_FireBoost
 Fire Boost:[NL]
-Grants +6 Attack if unit's current HP[NL]
+Grants +6 atk if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_WindBoost
 Wind Boost:[NL]
-Grants +6 Attack Speed if unit's current HP[NL]
+Grants +6 atk/spd if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_EarthBoost
 Earth Boost:[NL]
-Grants +6 Defense if unit's current HP[NL]
+Grants +6 def if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_WaterBoost
 Water Boost:[NL]
-Grants +6 Resistance if unit's current HP[NL]
+Grants +6 res if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_Charge
