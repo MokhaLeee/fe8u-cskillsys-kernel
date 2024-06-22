@@ -55,10 +55,10 @@ _SkillTester_Generic:
 
 _SkillTester_PInfo:
     ldr r4, =gpConstSkillTable_Person
+    ldr r0, [r0]
     adr lr, .Lend_false
 
 .LPJ_Tabtle:
-    ldr r0, [r0]
     ldrb r0, [r0, #4]
 
 .L_Table:
@@ -74,6 +74,7 @@ _SkillTester_PInfo:
 
 _SkillTester_JInfo:
     ldr r4, =gpConstSkillTable_Job
+    ldr r0, [r0, #4]
     adr lr, .Lend_false
     b .LPJ_Tabtle
 
