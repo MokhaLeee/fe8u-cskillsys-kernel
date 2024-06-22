@@ -4,17 +4,19 @@
 
 const u8 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
-#if (defined(SID_Supply) && PERSON_SKILL_VALID(SID_Supply))
         SKILL_INDEX_REAL(SID_Supply),
-#endif
-#if (defined(SID_Bane) && PERSON_SKILL_VALID(SID_Bane))
-        SKILL_INDEX_REAL(SID_Bane)
-#endif
+        SKILL_INDEX_REAL(SID_Inori),
     },
 
     [CHARACTER_SETH] = {
-#if (defined(SID_Vantage) && PERSON_SKILL_VALID(SID_Vantage))
-        SKILL_INDEX_REAL(SID_Vantage)
-#endif
+        SKILL_INDEX_REAL(SID_Vantage),
+    },
+
+    [CHARACTER_LYON_CC] = {
+        SKILL_INDEX_REAL(SID_AversaNight),
+    },
+
+    [CHARACTER_LYON] = {
+        SKILL_INDEX_REAL(SID_AversaNight),
     },
 };

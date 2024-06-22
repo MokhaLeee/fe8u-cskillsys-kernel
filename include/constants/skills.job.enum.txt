@@ -12,4 +12,7 @@ SID_LockTouch
 SID_Summon
 SID_Steal
 SID_Lethality
+SID_Crit
+SID_InfinityEdge
 SID_SureShot
+SID_WatchfulEye
