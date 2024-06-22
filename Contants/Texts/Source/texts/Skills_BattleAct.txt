@@ -93,6 +93,11 @@ RightfulArch:[NL]
 Set activation rate of[NL]
 this unit's skills to 100%.[X]
 
+## MSG_SKILL_Glacies
+Glacies:[NL]
+Add unit resistance to damage[NL]
+dealt. (Skill % activation).[X]
+
 ## MSG_SKILL_GreatShield
 GreatShield:[NL]
 Nullify all attacks.[NL]
