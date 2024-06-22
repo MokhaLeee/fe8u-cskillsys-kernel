@@ -211,4 +211,12 @@ const struct SkillAnimInfo gSkillAnimInfos_Generic[0x100] = {
         .sfx = 0x3D1,
     },
 #endif
+
+#if (defined(SID_Deadeye) && GENERIC_SKILL_VALID(SID_Deadeye))
+    [SKILL_INDEX_REAL(SID_Deadeye)] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
 };

@@ -172,6 +172,15 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+#if defined(SID_Deadeye) && (SID_Deadeye < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Deadeye, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Deadeye);
+        attacker->battleHitRate *= 2;
+        defender->statusOut = UNIT_STATUS_SLEEP;
+    }
+#endif
+
     amplifier = 100;
     damage = attack - defense;
 

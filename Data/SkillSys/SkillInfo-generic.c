@@ -1749,4 +1749,11 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
         .icon = GFX_SkillIcon_Vengeance,
     },
 #endif
+
+#if (defined(SID_Deadeye) && GENERIC_SKILL_VALID(SID_Deadeye))
+    [SKILL_INDEX_REAL(SID_Deadeye)] = {
+        .desc = MSG_SKILL_Deadeye,
+        .icon = GFX_SkillIcon_Deadeye,
+    },
+#endif
 };
