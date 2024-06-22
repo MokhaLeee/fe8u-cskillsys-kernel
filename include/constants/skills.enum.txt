@@ -169,6 +169,7 @@ SID_Colossus
 SID_Ignis
 SID_Impale
 SID_GreatShield
+SID_Vengeance
 
 // Blow skills
 SID_BlowDarting
