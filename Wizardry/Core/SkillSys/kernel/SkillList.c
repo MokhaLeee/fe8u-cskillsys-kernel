@@ -27,11 +27,11 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
     /* job */
     sid = gpConstSkillTable_Job[jid * 2];
     if (SKILL_EXT_VALID(sid))
-        list->sid[list->amt++] = sid | (Skill_INFO_PERSON << 8);
+        list->sid[list->amt++] = sid | (Skill_INFO_JOB << 8);
 
     sid = gpConstSkillTable_Job[jid * 2 + 1];
     if (SKILL_EXT_VALID(sid))
-        list->sid[list->amt++] = sid | (Skill_INFO_PERSON << 8);
+        list->sid[list->amt++] = sid | (Skill_INFO_JOB << 8);
 
     /* generic */
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
