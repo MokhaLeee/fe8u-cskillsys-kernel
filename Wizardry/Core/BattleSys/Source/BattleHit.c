@@ -55,7 +55,7 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 /* LynJump */
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int attack, defense, amplificatier;
+    int attack, defense, amplifier;
     int damage, real_damage;
     bool in_art_atk = false;
 
@@ -172,7 +172,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
-    amplificatier = 100;
+    amplifier = 100;
     damage = attack - defense;
 
 #if defined(SID_FlashingBladePlus) && (SID_FlashingBladePlus < MAX_SKILL_NUM)
@@ -182,14 +182,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
 #if defined(SID_DragonFang) && (SID_DragonFang < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_DragonFang))
-        amplificatier += 50;
+        amplifier += 50;
 #endif
 
 #if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
     if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
-        amplificatier += 200;
+        amplifier += 200;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
@@ -198,7 +198,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (CheckBattleSkillActivte(attacker, defender, SID_Impale, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
-        amplificatier += 300;
+        amplifier += 300;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
@@ -208,7 +208,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     {
         /* If we can deal damage, astra should not reduce it to 0 */
         if (damage > 1)
-            amplificatier /= 2;
+            amplifier /= 2;
     }
 #endif
 
@@ -216,7 +216,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (SkillTester(&defender->unit, SID_DragonSkin))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        amplificatier /= 2;
+        amplifier /= 2;
     }
 #endif
 
@@ -224,7 +224,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (SkillTester(&defender->unit, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        amplificatier /= 2;
+        amplifier /= 2;
     }
 #endif
 
@@ -294,14 +294,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #else
             if (0)
 #endif
-                amplificatier += 300;
+                amplifier += 300;
             else
-                amplificatier += 200;
+                amplifier += 200;
         }
     }
 
     if (damage < BATTLE_MAX_DAMAGE)
-        damage = simple_div(damage * amplificatier, 100);
+        damage = simple_div(damage * amplifier, 100);
 
     /**
      * Real damage:
