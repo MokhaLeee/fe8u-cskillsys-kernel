@@ -204,7 +204,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_SureShot) && (SID_SureShot < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, 100))
+    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
         attacker->battleEffectiveHitRate = 100;
