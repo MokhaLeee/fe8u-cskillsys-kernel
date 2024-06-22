@@ -212,8 +212,8 @@ const struct SkillAnimInfo gSkillAnimInfos_Generic[0x100] = {
     },
 #endif
 
-#if (defined(SID_Blessing) && GENERIC_SKILL_VALID(SID_Blessing))
-    [SKILL_INDEX_REAL(SID_Blessing)] = {
+#if (defined(SID_AxeFaith) && GENERIC_SKILL_VALID(SID_AxeFaith))
+    [SKILL_INDEX_REAL(SID_AxeFaith)] = {
         .aid = EFX_SKILL_DEFAULT,
         .priority = EFX_PRIORITY_NORMAL,
         .sfx = 0x3D1,

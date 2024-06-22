@@ -1750,10 +1750,10 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
     },
 #endif
 
-#if (defined(SID_Blessing) && GENERIC_SKILL_VALID(SID_Blessing))
-    [SKILL_INDEX_REAL(SID_Blessing)] = {
-        .desc = MSG_SKILL_Blessing,
-        .icon = GFX_SkillIcon_WIP,
+#if (defined(SID_AxeFaith) && GENERIC_SKILL_VALID(SID_AxeFaith))
+    [SKILL_INDEX_REAL(SID_AxeFaith)] = {
+        .desc = MSG_SKILL_AxeFaith,
+        .icon = GFX_SkillIcon_AxeFaith,
     },
 #endif
 };

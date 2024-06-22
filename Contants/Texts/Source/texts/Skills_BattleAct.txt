@@ -108,7 +108,7 @@ Vengeance:[NL]
 Add damage taken to attacl.[NL]
 (Skill % activation).[X]
 
-## MSG_SKILL_Blessing
-Blessing:[NL]
-Guaranteed to not consume[NL]
-weapon durability.[X]
+## MSG_SKILL_AxeFaith
+AxeFaith:[NL]
+User's axe weapons do not use[NL]
+durability. Hit rate + (luck * 1.5).[X]
