@@ -108,7 +108,7 @@ Vengeance:[NL]
 Add damage taken to attacl.[NL]
 (Skill % activation).[X]
 
-## MSG_SKILL_Armsthrift
-Armsthrift:[NL]
-Weapon durability not consumed[NL]
-this round (Skill % activation).[X]
+## MSG_SKILL_Blessing
+Blessing:[NL]
+Guaranteed to not consume[NL]
+weapon durability.[X]

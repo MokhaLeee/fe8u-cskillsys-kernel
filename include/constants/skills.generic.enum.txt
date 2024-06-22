@@ -167,7 +167,7 @@ SID_Ignis
 SID_Impale
 SID_Glacies
 SID_Vengeance
-SID_Armsthrift
+// SID_Blessing
 
 // Blow skills
 SID_BlowDarting
