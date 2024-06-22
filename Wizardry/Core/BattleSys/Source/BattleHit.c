@@ -453,7 +453,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if defined(SID_Armsthrift) && (SID_Armsthrift < MAX_SKILL_NUM)
-    if (CheckBattleSkillActivte(attacker, defender, SID_Armsthrift, attacker->unit.skl))
+    if (CheckBattleSkillActivte(attacker, defender, SID_Armsthrift, attacker->unit.lck))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Armsthrift);
         attacker->weapon += (1 << 8); // add one use back to the weapon
