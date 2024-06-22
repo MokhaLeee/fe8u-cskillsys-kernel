@@ -211,4 +211,12 @@ const struct SkillAnimInfo gSkillAnimInfos_Generic[0x100] = {
         .sfx = 0x3D1,
     },
 #endif
+
+#if (defined(SID_Armsthrift) && GENERIC_SKILL_VALID(SID_Armsthrift))
+    [SKILL_INDEX_REAL(SID_Armsthrift)] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
 };

@@ -452,6 +452,14 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     }
 #endif
 
+#if defined(SID_Armsthrift) && (SID_Armsthrift < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Armsthrift, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Armsthrift);
+        attacker->weapon += (1 << 8); // add one use back to the weapon
+    }
+#endif
+
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) || attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
     {
 #ifdef CHAX
