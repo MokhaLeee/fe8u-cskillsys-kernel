@@ -61,17 +61,18 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     gBattleStats.damage = 0;
 
+    /* Fasten simulation */
+    if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
+    {
+        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+        return;
+    }
+
     /* Judge whether in combat-art attack */
     if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
     {
         TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
         in_art_atk = true;
-    }
-
-    if (!BattleRoll2RN(gBattleStats.hitRate, TRUE))
-    {
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-        return;
     }
 
     if (gBattleStats.config & BATTLE_CONFIG_REAL)
