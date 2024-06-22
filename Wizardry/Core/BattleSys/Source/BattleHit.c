@@ -187,11 +187,11 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_SureShot) && (SID_SureShot < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, 100))
+    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
         attacker->battleEffectiveHitRate = 100;
-        amplificatier += 75;
+        amplificatier += 50;
     }
 #endif
 
@@ -278,7 +278,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
                 amplificatier += 300;
             else
                 amplificatier += 200;
-
+            
             damage = Div(damage * amplificatier, 100);
         }
     }
