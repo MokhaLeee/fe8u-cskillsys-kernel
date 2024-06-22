@@ -93,4 +93,11 @@ const struct SkillInfo gSkillInfos_Job[0x100] = {
         .icon = GFX_SkillIcon_Summon,
     },
 #endif
+
+#if (defined(SID_SureShot) && JOB_SKILL_VALID(SID_SureShot))
+    [SKILL_INDEX_REAL(SID_SureShot)] = {
+        .desc = MSG_SKILL_SureShot,
+        .icon = GFX_SkillIcon_SureShot,
+    },
+#endif
 };

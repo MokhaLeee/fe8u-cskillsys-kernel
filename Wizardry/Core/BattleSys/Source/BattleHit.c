@@ -203,6 +203,15 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+#if (defined(SID_SureShot) && (SID_SureShot < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, 100))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
+        attacker->battleEffectiveHitRate = 100;
+        amplifier += 75;
+    }
+#endif
+
 #if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
     if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
     {

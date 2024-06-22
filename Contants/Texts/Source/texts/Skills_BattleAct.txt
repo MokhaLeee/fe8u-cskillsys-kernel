@@ -107,3 +107,8 @@ Nullify all attacks.[NL]
 Vengeance:[NL]
 Add damage taken to attacl.[NL]
 (Skill % activation).[X]
+
+## MSG_SKILL_SureShot
+SureShot:[NL]
+100% hit rate, and attack deals[NL]
++50% damage (Skill % activation).[X]
