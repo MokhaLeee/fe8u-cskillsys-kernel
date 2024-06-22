@@ -6,13 +6,15 @@
 
 static bool _SkillTester_Generic(struct Unit * unit, const u16 sid)
 {
-    if (UNIT_RAM_SKILLS(unit)[0] == sid) return true;
-    if (UNIT_RAM_SKILLS(unit)[1] == sid) return true;
-    if (UNIT_RAM_SKILLS(unit)[2] == sid) return true;
-    if (UNIT_RAM_SKILLS(unit)[3] == sid) return true;
-    if (UNIT_RAM_SKILLS(unit)[4] == sid) return true;
-    if (UNIT_RAM_SKILLS(unit)[5] == sid) return true;
-    if (UNIT_RAM_SKILLS(unit)[6] == sid) return true;
+    u8 _sid = SKILL_INDEX_REAL(sid);
+
+    if (UNIT_RAM_SKILLS(unit)[0] == _sid) return true;
+    if (UNIT_RAM_SKILLS(unit)[1] == _sid) return true;
+    if (UNIT_RAM_SKILLS(unit)[2] == _sid) return true;
+    if (UNIT_RAM_SKILLS(unit)[3] == _sid) return true;
+    if (UNIT_RAM_SKILLS(unit)[4] == _sid) return true;
+    if (UNIT_RAM_SKILLS(unit)[5] == _sid) return true;
+    if (UNIT_RAM_SKILLS(unit)[6] == _sid) return true;
 
     return false;
 }
@@ -20,8 +22,10 @@ static bool _SkillTester_Generic(struct Unit * unit, const u16 sid)
 static bool _SkillTester_PInfo(struct Unit * unit, const u16 sid)
 {
     int pid = UNIT_CHAR_ID(unit);
-    if (gpConstSkillTable_Person[pid * 2 + 0] == sid) return true;
-    if (gpConstSkillTable_Person[pid * 2 + 1] == sid) return true;
+    u8 _sid = SKILL_INDEX_REAL(sid);
+
+    if (gpConstSkillTable_Person[pid * 2 + 0] == _sid) return true;
+    if (gpConstSkillTable_Person[pid * 2 + 1] == _sid) return true;
 
     return false;
 }
@@ -29,8 +33,10 @@ static bool _SkillTester_PInfo(struct Unit * unit, const u16 sid)
 static bool _SkillTester_JInfo(struct Unit * unit, const u16 sid)
 {
     int jid = UNIT_CLASS_ID(unit);
-    if (gpConstSkillTable_Job[jid * 2 + 0] == sid) return true;
-    if (gpConstSkillTable_Job[jid * 2 + 1] == sid) return true;
+    u8 _sid = SKILL_INDEX_REAL(sid);
+
+    if (gpConstSkillTable_Job[jid * 2 + 0] == _sid) return true;
+    if (gpConstSkillTable_Job[jid * 2 + 1] == _sid) return true;
 
     return false;
 }
@@ -38,12 +44,13 @@ static bool _SkillTester_JInfo(struct Unit * unit, const u16 sid)
 static bool _SkillTester_IInfo(struct Unit * unit, const u16 sid)
 {
     int i;
+    u8 _sid = SKILL_INDEX_REAL(sid);
 
     for (i = 0; i < UNIT_ITEM_COUNT; i++)
     {
         int iid = ITEM_INDEX(unit->items[i]);
-        if (gpConstSkillTable_Item[iid * 2 + 0] == sid) return true;
-        if (gpConstSkillTable_Item[iid * 2 + 1] == sid) return true;
+        if (gpConstSkillTable_Item[iid * 2 + 0] == _sid) return true;
+        if (gpConstSkillTable_Item[iid * 2 + 1] == _sid) return true;
     }
     return false;
 }
