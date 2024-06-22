@@ -181,7 +181,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
 #if defined(SID_DragonFang) && (SID_DragonFang < MAX_SKILL_NUM)
     if (SkillTester(&attacker->unit, SID_DragonFang))
-        amplificatier += 75;
+        amplificatier += 50;
 #endif
 
 #if (defined(SID_Colossus) && (SID_Colossus < MAX_SKILL_NUM))
@@ -197,7 +197,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (CheckBattleSkillActivte(attacker, defender, SID_Impale, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
-        amplificatier += 400;
+        amplificatier += 300;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif

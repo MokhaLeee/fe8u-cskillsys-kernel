@@ -50,18 +50,23 @@ Restore damage dealt as HP.[NL]
 
 ## MSG_SKILL_DragonFang
 DragonFang:[NL]
-1.5x damage.[NL]
+damage +50%.[NL]
 (Skill% activation)[X]
+
+## MSG_SKILL_Colossus
+Colossus:[NL]
+damage +200%.[NL]
+(Skill% activation).[X]
+
+## MSG_SKILL_Impale
+Impale:[NL]
+damage +300%.[NL]
+(Skill% activation).[X]
 
 ## MSG_SKILL_Inori
 Inori:[NL]
 Unit may not die if attacked[NL]
 to 0 HP (luck%)[X]
-
-## MSG_SKILL_Colossus
-Colossus:[NL]
-Triples attack.[NL]
-(Skill% activation).[X]
 
 ## MSG_SKILL_Corrosion
 Corrosion:[NL]
@@ -72,11 +77,6 @@ by user's level (Skill %).[X]
 Ignis:[NL]
 Add DEF/2 or RES/2 to attack based[NL]
 on weapon type (Skill % activation).[X]
-
-## MSG_SKILL_Impale
-Impale:[NL]
-Deal x4 damage.[NL]
-(Skill% activation).[X]
 
 ## MSG_SKILL_RightfulKing
 RightfulKing:[NL]
