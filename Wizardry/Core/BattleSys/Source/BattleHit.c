@@ -209,7 +209,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
         attacker->battleEffectiveHitRate = 100;
-        amplifier += 75;
+        amplifier += 50;
     }
 #endif
 
@@ -311,7 +311,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 
     if (damage < BATTLE_MAX_DAMAGE)
-        damage = simple_div(damage * amplifier, 100);
+        damage = (damage * amplifier / 100);
 
     /**
      * Real damage:
