@@ -2007,4 +2007,18 @@ const struct SkillInfo gSkillInfos[0x100] = {
         .icon = GFX_SkillIcon_Glacies,
     },
 #endif
+
+#if (defined(SID_GreatShield) && (SID_GreatShield < MAX_SKILL_NUM)) 
+    [SID_GreatShield] = {
+        .desc = MSG_SKILL_GreatShield,
+        .icon = GFX_SkillIcon_GreatShield,
+    },
+#endif
+
+#if (defined(SID_Vengeance) && (SID_Vengeance < MAX_SKILL_NUM)) 
+    [SID_Vengeance] = {
+        .desc = MSG_SKILL_Vengeance,
+        .icon = GFX_SkillIcon_Vengeance,
+    },
+#endif
 };

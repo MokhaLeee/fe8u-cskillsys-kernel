@@ -97,3 +97,13 @@ this unit's skills to 100%.[X]
 Glacies:[NL]
 Add unit resistance to damage[NL]
 dealt. (Skill % activation).[X]
+
+## MSG_SKILL_GreatShield
+GreatShield:[NL]
+Nullify all attacks.[NL]
+(Skill % activation).[X]
+
+## MSG_SKILL_Vengeance
+Vengeance:[NL]
+Add damage taken to attacl.[NL]
+(Skill % activation).[X]

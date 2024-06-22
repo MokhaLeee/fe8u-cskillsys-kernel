@@ -162,6 +162,15 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+#if defined(SID_Vengeance) && (SID_Vengeance < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Vengeance, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
+        attack += (attacker->unit.maxHP - attacker->unit.curHP);
+
+    }
+#endif
+
     amplificatier = 100;
     damage = attack - defense;
 
@@ -220,6 +229,13 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     if (damage > 0)
     {
+#if (defined(SID_GreatShield) && (SID_GreatShield < MAX_SKILL_NUM))
+            if (CheckBattleSkillActivte(defender, attacker, SID_GreatShield, defender->unit.skl))
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
+                damage = 0;
+            }
+#endif
         if (IsMagicAttack(attacker))
         {
 #if (defined(SID_Aegis) && (SID_Aegis < MAX_SKILL_NUM))
