@@ -719,6 +719,7 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
 
 #if (defined(SID_Thunderstorm) && GENERIC_SKILL_VALID(SID_Thunderstorm))
     [SKILL_INDEX_REAL(SID_Thunderstorm)] = {
+        .name = MSG_SKILL_Thunderstorm_NAME,
         .desc = MSG_SKILL_Thunderstorm,
         .icon = GFX_SkillIcon_Thunderstorm,
     },
