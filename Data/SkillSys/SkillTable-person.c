@@ -8,10 +8,6 @@ const u8 gConstSkillTable_Person[0x100][2] = {
         SKILL_INDEX_REAL(SID_Inori),
     },
 
-    [CHARACTER_SETH] = {
-        SKILL_INDEX_REAL(SID_Vantage),
-    },
-
     [CHARACTER_LYON_CC] = {
         SKILL_INDEX_REAL(SID_AversaNight),
     },
