@@ -4,6 +4,7 @@
 #include "battle-system.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
@@ -258,6 +259,10 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         }
     }
 
+    /* Minus zero */
+    if (damage < 0)
+        damage = 0;
+
     /**
      * Roll critical hit
      */
@@ -292,14 +297,11 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
                 amplificatier += 300;
             else
                 amplificatier += 200;
-
-            damage = Div(damage * amplificatier, 100);
         }
     }
 
-    /* Minus zero */
-    if (damage < 0)
-        damage = 0;
+    if (damage < BATTLE_MAX_DAMAGE)
+        damage = simple_div(damage * amplificatier, 100);
 
     /**
      * Real damage:
