@@ -1,0 +1,6 @@
+ALIGN 4
+JudgeSkillArmToCopy_Start:
+    #include "Source/JudgeSkill.lyn.event"
+JudgeSkillArmToCopy_End:
+
+#include "Source/armfunc.lyn.event"
