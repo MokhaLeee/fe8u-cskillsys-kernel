@@ -48,7 +48,6 @@ SID_Skybreaker
 SID_Resourceful
 
 // Battle status skills
-SID_Lethality
 SID_Crit
 SID_WatchfulEye
 SID_CritSword
@@ -63,7 +62,6 @@ SID_FaireBMag
 SID_Avoid
 SID_AvoidSword
 SID_RuinedBlade
-// SID_RuinedBladePlus
 SID_InfinityEdge
 SID_HeavyBlade
 SID_FlashingBlade
@@ -164,12 +162,10 @@ SID_Flare
 SID_Sol
 SID_DragonFang
 SID_Foresight
-// SID_Inori
 SID_Colossus
 SID_Ignis
 SID_Impale
 SID_Glacies
-SID_GreatShield
 SID_Vengeance
 
 // Blow skills
@@ -264,26 +260,6 @@ SID_LckHone
 SID_DefHone
 SID_ResHone
 
-SID_HoneCavalry
-SID_HoneFlier
-SID_HoneArmor
-SID_FortifyArmor
-
-SID_AversaNight
-
-// AI skills
-SID_Shade
-SID_ShadePlus
-SID_Provoke
-SID_Teleportation
-
-// Menu skills
-SID_Dance
-SID_LockTouch
-SID_Summon
-SID_Supply
-SID_Steal
-
 // Lvup skills
 SID_Blossom
 SID_Paragon
@@ -296,27 +272,3 @@ SID_Aptitude
 // SID_LEGEND_InoriDef
 // SID_LEGEND_4
 // SID_LEGEND_5
-
-// Combat-art skill
-SID_COMBAT_Grounder
-SID_COMBAT_BaneOfMonsters
-SID_COMBAT_Hexblade
-SID_COMBAT_FoudroyantStrike
-SID_COMBAT_TempestLance
-SID_COMBAT_SwiftStrikes
-SID_COMBAT_FrozenLance
-SID_COMBAT_Vengeance
-SID_COMBAT_HelmSplitter
-SID_COMBAT_LightningAxe
-SID_COMBAT_WarMasterStrike
-SID_COMBAT_CurvedShot
-SID_COMBAT_Deadeye
-SID_COMBAT_Encloser
-SID_COMBAT_EncloserPlus
-SID_COMBAT_MonsterBlast
-SID_COMBAT_SchismShot
-SID_COMBAT_BreakShot
-SID_COMBAT_BreakShotPlus
-SID_COMBAT_WaningShot
-SID_COMBAT_WaningShotPlus
-SID_COMBAT_HuntersVolley

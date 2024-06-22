@@ -36,11 +36,14 @@ void LoadUnitLearnedSkillLists(u8 * src, const u32 size)
     ReadSramFast(src, sLearnedSkillPLists, _size);
 }
 
-bool IsSkillLearned(struct Unit * unit, const u8 sid)
+bool IsSkillLearned(struct Unit * unit, const u16 sid)
 {
     u8 lo = (sid & 0x0F);
     u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
+
+    if (!GENERIC_SKILL_VALID(sid))
+        return false;
 
     if (pid < NEW_BWL_ARRAY_NUM)
         return !!(sLearnedSkillPLists[pid].data[hi] & (1 << lo));
@@ -48,22 +51,22 @@ bool IsSkillLearned(struct Unit * unit, const u8 sid)
     return false;
 }
 
-void LearnSkill(struct Unit * unit, const u8 sid)
+void LearnSkill(struct Unit * unit, const u16 sid)
 {
     u8 lo = (sid & 0x0F);
     u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
 
-    if (pid < NEW_BWL_ARRAY_NUM)
+    if (GENERIC_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
         sLearnedSkillPLists[pid].data[hi] |= 1 << lo;
 }
 
-void ForgetSkill(struct Unit * unit, const u8 sid)
+void ForgetSkill(struct Unit * unit, const u16 sid)
 {
     u8 lo = (sid & 0x0F);
     u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
 
-    if (pid < NEW_BWL_ARRAY_NUM)
+    if (GENERIC_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
         sLearnedSkillPLists[pid].data[hi] &= ~(1 << lo);
 }

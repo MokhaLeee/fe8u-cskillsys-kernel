@@ -1,0 +1,14 @@
+SID_GreatShield
+SID_HoneCavalry
+SID_HoneFlier
+SID_HoneArmor
+SID_FortifyArmor
+SID_Teleportation
+SID_Shade
+SID_ShadePlus
+SID_Provoke
+SID_Dance
+SID_LockTouch
+SID_Summon
+SID_Steal
+SID_Lethality

@@ -15,7 +15,7 @@
 
 struct ProcEfxskillbox {
     PROC_HEADER;
-    u8 sid;
+    u16 sid;
     int timer;
     int msg;
     const u8 * icon;
@@ -142,7 +142,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EfxSkillBox[] = {
     PROC_END
 };
 
-void NewEfxSkillBox(struct Anim * anim, int msg, const u8 * icon, u8 sid, int skill_or_combatart)
+void NewEfxSkillBox(struct Anim * anim, int msg, const u8 * icon, u16 sid, int skill_or_combatart)
 {
     struct ProcEfxskillbox * proc;
     proc = Proc_Start(ProcScr_EfxSkillBox, PROC_TREE_3);
@@ -156,9 +156,9 @@ void NewEfxSkillBox(struct Anim * anim, int msg, const u8 * icon, u8 sid, int sk
     if (proc->icon == NULL)
     {
         if (skill_or_combatart == EFX_SKILL_BOX_SKILL)
-            proc->icon = GetSkillIcon(sid);
+            proc->icon = GetIconGfx(SKILL_ICON(sid));
         else
-            proc->icon = GetCombatArtIcon(sid);
+            proc->icon = GetIconGfx(COMBART_ICON(sid));
     }
 }
 

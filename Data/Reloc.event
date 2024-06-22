@@ -1,16 +1,15 @@
 KERNEL_RELOC_START:
 
 // MESSAGE CURRENTOFFSET
-gpSkillInfos:           POIN gSkillInfos
+gpSkillInfos_Generic: POIN gSkillInfos_Generic
 
-/* Some pad for historical reasons :) */
-WORD 0
+gpConstSkillTable_Item:   POIN gConstSkillTable_Item
+gpConstSkillTable_Person: POIN gConstSkillTable_Person
+gpConstSkillTable_Job:    POIN gConstSkillTable_Job
 
-gpConstSkillPTable:     POIN gConstSkillPTable
-gpConstSkillJTable:     POIN gConstSkillJTable
-gpSkillPreloadPData:    POIN gSkillPreloadPData
-gpSkillPreloadJData:    POIN gSkillPreloadJData
-gpSkillAnimInfos:       POIN gSkillAnimInfos
+gpSkillPreloadPData:      POIN gSkillPreloadPData
+gpSkillPreloadJData:      POIN gSkillPreloadJData
+gpSkillAnimInfos_Generic: POIN gSkillAnimInfos_Generic
 
 gpEfxSkillAnims:    POIN gEfxSkillAnims
 gpLegendSkillPool:  POIN gLegendSkillPool
@@ -53,7 +52,15 @@ gpExternalGameInitHook: WORD 0
 
 gpStatDebuffInfos: POIN gStatDebuffInfos
 
-WORD 0 0 0 0 0 0 0 0
+gpSkillInfos_Person:        POIN gSkillInfos_Person
+gpSkillInfos_Job:           POIN gSkillInfos_Job
+gpSkillInfos_Item:          POIN gSkillInfos_Item
+
+gpSkillAnimInfos_Person:    POIN gSkillAnimInfos_Person
+gpSkillAnimInfos_Job:       POIN gSkillAnimInfos_Job
+gpSkillAnimInfos_Item:      POIN gSkillAnimInfos_Item
+
+WORD 0 0
 
 gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks

@@ -264,16 +264,34 @@ CLEAN_FILES += $(GFX_HEADER)
 # = ENUM =
 # ========
 
-SKILLS_ENUM_CONFIG := $(MK_DIR)include/constants/skills.enum.txt
-SKILLS_ENUM_HEADER := $(MK_DIR)include/constants/skills.h
+ENUM2H := $(TOOL_DIR)/scripts/enum2h.py
+ENUM2C := $(TOOL_DIR)/scripts/enum2combo.py
+
+SKILLS_ENUM_DIR  := $(MK_DIR)include/constants
+SKILLS_COMBO_DIR := $(MK_DIR)Patches
+
+SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills.generic.enum.txt $(SKILLS_ENUM_DIR)/skills.person.enum.txt $(SKILLS_ENUM_DIR)/skills.job.enum.txt $(SKILLS_ENUM_DIR)/skills.item.enum.txt
+
+SKILLS_ENUM_HEADER := $(SKILLS_ENUM_DIR)/skills.h
 SKILLS_ENUM_COMBO := $(MK_DIR)Patches/combo.skills.txt
 
 enum: $(SKILLS_ENUM_HEADER)
 
-$(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_CONFIG)
-	@echo "[GEN]	$(SKILLS_ENUM_HEADER) $(SKILLS_ENUM_COMBO)"
-	@python3 $(TOOL_DIR)/scripts/enum2h.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_HEADER)
-	@python3 $(TOOL_DIR)/scripts/enum2combo.py $(SKILLS_ENUM_CONFIG) > $(SKILLS_ENUM_COMBO)
+$(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_SRC)
+	@echo "[GEN]	$(SKILLS_ENUM_HEADER)"
+	@echo "#pragma once" > $(SKILLS_ENUM_HEADER)
+	@python3 $(ENUM2H) 0x000 $(SKILLS_ENUM_DIR)/skills.generic.enum.txt >> $(SKILLS_ENUM_HEADER)
+	@python3 $(ENUM2H) 0x100 $(SKILLS_ENUM_DIR)/skills.person.enum.txt  >> $(SKILLS_ENUM_HEADER)
+	@python3 $(ENUM2H) 0x200 $(SKILLS_ENUM_DIR)/skills.job.enum.txt     >> $(SKILLS_ENUM_HEADER)
+	@python3 $(ENUM2H) 0x300 $(SKILLS_ENUM_DIR)/skills.item.enum.txt    >> $(SKILLS_ENUM_HEADER)
+	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills.generic.enum.txt >  $(SKILLS_COMBO_DIR)/combo.skills_generic.txt
+	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills.person.enum.txt  >  $(SKILLS_COMBO_DIR)/combo.skills_person.txt
+	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills.job.enum.txt     >  $(SKILLS_COMBO_DIR)/combo.skills_job.txt
+	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills.item.enum.txt    >  $(SKILLS_COMBO_DIR)/combo.skills_item.txt
+	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills.generic.enum.txt >  $(SKILLS_COMBO_DIR)/combo.skills.txt
+	@python3 $(ENUM2C) 0x100 $(SKILLS_ENUM_DIR)/skills.person.enum.txt  >> $(SKILLS_COMBO_DIR)/combo.skills.txt
+	@python3 $(ENUM2C) 0x200 $(SKILLS_ENUM_DIR)/skills.job.enum.txt     >> $(SKILLS_COMBO_DIR)/combo.skills.txt
+	@python3 $(ENUM2C) 0x300 $(SKILLS_ENUM_DIR)/skills.item.enum.txt    >> $(SKILLS_COMBO_DIR)/combo.skills.txt
 
 PRE_BUILD += enum
 CLEAN_FILES += $(SKILLS_ENUM_HEADER) $(SKILLS_ENUM_COMBO)

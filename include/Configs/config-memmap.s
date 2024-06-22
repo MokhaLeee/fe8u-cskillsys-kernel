@@ -32,13 +32,12 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 .endm
 
 /* From the bottom to the top */
-_kernel_malloc sSkillListNext, 4
-_kernel_malloc sSkillLists, 0x100
+_kernel_malloc sSkillList, 0x30
 _kernel_malloc sStatScreenPage1BarMax, 4
 _kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
-_kernel_malloc sEfxSkillRoundData, 4 * 0x21
+_kernel_malloc sEfxSkillRoundData, 8 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
-_kernel_malloc sEfxSkillQueue, 16
+_kernel_malloc sEfxSkillQueue, 32
 _kernel_malloc gBattleTemporaryFlag, 8
 _kernel_malloc gBattleActorGlobalFlag, 8
 _kernel_malloc gBattleTargetGlobalFlag, 8

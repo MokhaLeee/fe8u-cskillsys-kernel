@@ -16,8 +16,8 @@ As for RAM table, developers may use the following API to give unit skills. Each
 
 ```C
 #include "skill-system.h"
-int AddSkill(struct Unit * unit, const u8 sid);
-int RemoveSkill(struct Unit * unit, const u8 sid);
+int AddSkill(struct Unit * unit, const u16 sid);
+int RemoveSkill(struct Unit * unit, const u16 sid);
 ```
 
 We have also offered event macros to add skill from event:
@@ -51,7 +51,7 @@ A skill need the following components:
 - Skill description
 - (optional) Skill name
 
-Such basic skill info is stored in `gSkillInfos` at [SkillInfo.c](../Data/SkillSys/SkillInfo.c).
+Such basic skill info is stored in `gSkillInfos_Generic` at [SkillInfo.c](../Data/SkillSys/SkillInfo.c).
 
 ```c
 struct SkillInfo {
@@ -59,7 +59,7 @@ struct SkillInfo {
     u16 name, desc;
 };
 
-extern const struct SkillInfo gSkillInfos[0x100];
+extern const struct SkillInfo gSkillInfos_Generic[0x100];
 ```
 
 If you want to develop a new skill, you need to add such basic infos by the following step:
@@ -115,8 +115,8 @@ The skill anim info is stored in `gSkillAnimInfos` at [EfxSkills.c](../Data/Skil
 After that, you need to call for the following API at [efx-skill.h](../include/efx-skill.h) to generate efxskill anim.
 
 ```c
-void RegisterActorEfxSkill(int round, const u8 sid);
-void RegisterTargetEfxSkill(int round, const u8 sid);
+void RegisterActorEfxSkill(int round, const u16 sid);
+void RegisterTargetEfxSkill(int round, const u16 sid);
 ```
 
 Then kernel may register a efxskill anim at specific round. If there has already been a skill anim registered, then we may compare the priority and let the higher one be displayed.

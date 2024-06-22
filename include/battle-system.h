@@ -7,8 +7,12 @@
 struct WeaponTriangleConf {
     s8 wtype_a;
     s8 wtype_b;
-    u8 sid;
+
+    u8 _pad_[3];
+
     bool is_buff;
+    u16 sid;
+
 
     s8 bonus_atk;
     s8 bonus_def;

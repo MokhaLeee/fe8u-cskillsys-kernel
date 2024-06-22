@@ -13,8 +13,8 @@ struct ProcEkrSkill {
     PROC_HEADER;
     struct Anim * anim;
     u8 cid;
-    u8 sid_atk;
-    u8 sid_def;
+    u16 sid_atk;
+    u16 sid_def;
 };
 
 STATIC_DECLAR void EfxSkillSetAnimState(struct Anim * anim)

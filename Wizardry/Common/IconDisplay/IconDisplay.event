@@ -2,7 +2,7 @@
 #define ICON_DISPLAY_INSTALLED
 
 #ifndef ICON_SHEET_AMT
-#define ICON_SHEET_AMT 4
+#define ICON_SHEET_AMT 7
 #endif
 
 #include "Source/Icon.lyn.event"
@@ -11,9 +11,12 @@
 
 ALIGN 4
 IconGetters:
-    POIN IconGetterVanilla  // Sheet #0, vanilla
-    POIN GetSkillIcon       // Sheet #1, skill
-    POIN GetCombatArtIcon   // sheet #2, combat art
+    POIN IconGetterVanilla      // Sheet #0, vanilla
+    POIN GetCombatArtIcon       // sheet #1, combat art
+    POIN GetSkillIcon_Generic   // Sheet #3+, skills
+    POIN GetSkillIcon_Person
+    POIN GetSkillIcon_Job
+    POIN GetSkillIcon_Item
 
 ORG (IconGetters + 4 * ICON_SHEET_AMT)
 

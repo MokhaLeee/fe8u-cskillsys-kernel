@@ -4,7 +4,7 @@
 #include "skill-system.h"
 
 #define COMBART_VALID(cid) (((cid) > 0) && ((cid) < 0xFF))
-#define COMBART_ICON(cid) ((2 << 8) + (cid))
+#define COMBART_ICON(cid) ((1 << 8) + (cid))
 
 struct CombatArtInfo {
     const u8 * icon;
@@ -89,12 +89,6 @@ struct CombatArtRomTable {
     u8 cid_axe[8];
     u8 cid_bow[8];
 };
-
-extern const struct CombatArtRomTable gCombatArtRomPTable[0x100];
-extern const struct CombatArtRomTable gCombatArtRomJTable[0x100];
-extern const struct CombatArtRomTable gCombatArtDefaultTable;
-extern const u8 gCombatArtWeaponTable[0x100];
-extern const u8 gCombatArtSkillTable[0x100];
 
 extern struct CombatArtRomTable const * const gpCombatArtRomPTable;
 extern struct CombatArtRomTable const * const gpCombatArtRomJTable;

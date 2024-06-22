@@ -50,7 +50,7 @@ extern struct {
 
 extern struct {
     u8 cur, max;
-    u8 skill_pool[14];
+    u16 skill_pool[14];
 } sEfxSkillQueue;
 
 static void ResetRoundEfxSkills(void)
@@ -58,13 +58,13 @@ static void ResetRoundEfxSkills(void)
     memset(&sEfxSkillQueue, 0, sizeof(sEfxSkillQueue));
 }
 
-static void EnqueueRoundEfxSkill(u8 sid)
+static void EnqueueRoundEfxSkill(u16 sid)
 {
     if (sEfxSkillQueue.max < (sizeof(sEfxSkillQueue.skill_pool) - 1))
         sEfxSkillQueue.skill_pool[sEfxSkillQueue.max++] = sid;
 }
 
-static u8 DequeueRoundEfxSkill(void)
+static u16 DequeueRoundEfxSkill(void)
 {
     if (sEfxSkillQueue.cur < sEfxSkillQueue.max)
         return sEfxSkillQueue.skill_pool[sEfxSkillQueue.cur++];

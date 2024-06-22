@@ -9,19 +9,19 @@ TAG=#ENGINE
 INFO=[CSKILL_K: gWeaponTriangleConfs] Config battle-system WTA
 
 POINTER=0xB2A654
-DATASIZE=12
+DATASIZE=16
 DATACOUNT=$GREP8 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 
 LISTNAME=DECIMAL
 B0:$COMBO combo.wtype.txt=attacker wtype
 B1:$COMBO combo.wtype.txt=defender wtype
-B2:$COMBO combo.skills.txt=skill, 0=ANY
-b3:$COMBO combo.bool.txt=is buff
-b4:DECIMAL=atk
-b5:DECIMAL=def
-b6:DECIMAL=as
-b7:DECIMAL=hit
-b8:DECIMAL=avo
-b9:DECIMAL=crt
-b10:DECIMAL=dodge
-b11:DECIMAL=silencer
+b5:$COMBO combo.bool.txt=is buff
+W6:$COMBO combo.skills.txt=skill, 0=ANY
+b8:DECIMAL=atk
+b9:DECIMAL=def
+b10:DECIMAL=as
+b11:DECIMAL=hit
+b12:DECIMAL=avo
+b13:DECIMAL=crt
+b14:DECIMAL=dodge
+b15:DECIMAL=silencer

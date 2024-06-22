@@ -3,7 +3,9 @@
 
 import os, sys, argparse
 
-with open(sys.argv[1], "r") as fi:
+start = eval(sys.argv[1])
+
+with open(sys.argv[2], "r") as fi:
     i = 1
     for line in fi.readlines():
         line = line.strip()
@@ -14,5 +16,8 @@ with open(sys.argv[1], "r") as fi:
         if line[0] == '/':
             continue
 
-        print(f"{i:02X}={line.split()[0]}")
+        print(f"{(i + start):02X}={line.split()[0]}")
+
         i = i + 1
+        if i >= 0xFF:
+            break

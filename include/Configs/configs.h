@@ -5,7 +5,7 @@
 #include "config-memmap.h"
 
 /* Icon sheet amount */
-#define ICON_SHEET_AMT 4
+#define ICON_SHEET_AMT 7
 
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM

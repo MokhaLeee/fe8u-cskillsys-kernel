@@ -168,7 +168,7 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 * proc)
         }
         else if (proc->hand_pos == POS_L)
         {
-            u8 sid =  llist->sid[PREP_SLLIST_OFFSET(proc->hand_x, proc->left_line + proc->hand_y)];
+            u16 sid =  llist->sid[PREP_SLLIST_OFFSET(proc->hand_x, proc->left_line + proc->hand_y)];
             ret = RemoveSkill(proc->unit, sid);
             if (ret)
             {
