@@ -3,14 +3,10 @@
 
 import os, sys, re
 
-with open(sys.argv[1], "r") as fi:
-    i = 1
+start = eval(sys.argv[1])
 
-    print("#pragma once")
-    print("#ifndef MAX_SKILL_NUM")
-    print("#define MAX_SKILL_NUM 0xFF")
-    print("#endif")
-    print("")
+with open(sys.argv[2], "r") as fi:
+    i = 1
 
     for line in fi.readlines():
         line = line.strip()
@@ -22,7 +18,8 @@ with open(sys.argv[1], "r") as fi:
             continue
 
 
-        print(f"#define {line.split()[0]} {i}")
-        i = i + 1
+        print(f"#define {line.split()[0]} 0x{(i + start):03X}")
 
-    print(f"#define SID_MAX {i}")
+        i = i + 1
+        if i >= 0xFF:
+            break

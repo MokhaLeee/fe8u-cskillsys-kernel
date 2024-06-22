@@ -10,6 +10,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "prep-skill.h"
+#include "icon-rework.h"
 #include "constants/texts.h"
 
 STATIC_DECLAR void ReloadPrepSkill2IconGfx(struct ProcPrepSkillObj * proc)
@@ -24,7 +25,7 @@ STATIC_DECLAR void ReloadPrepSkill2IconGfx(struct ProcPrepSkillObj * proc)
         {
             int off  = PREP_SRLIST_OFFSET(x, y);
             int real = PREP_SRLIST_OFFSET(x, pproc->right_line + y);
-            u8 sid = rlist->sid[real];
+            u16 sid = rlist->sid[real];
             u8 * dst = off < 0x10
                      ? OBJ_VRAM0 + VOBJ_SKILL_ICONS + 0x40 * off
                      : OBJ_VRAM0 + VOBJ_SKILL_ICONS + 0x40 * (off + 0x10);
@@ -33,7 +34,7 @@ STATIC_DECLAR void ReloadPrepSkill2IconGfx(struct ProcPrepSkillObj * proc)
                 break;
 
             /* Copy gfx to ObjTile */
-            Copy2dChr(GetSkillIcon(sid), dst, 2, 2);
+            Copy2dChr(GetIconGfx(SKILL_ICON(sid)), dst, 2, 2);
         }
     }
     proc->reload = false;
@@ -111,7 +112,7 @@ STATIC_DECLAR void PutPrepSkill2Suffix(struct ProcPrepSkillObj * proc)
         for (x = 0; x < PREP_SLLIST_LENGTH; x++)
         {
             int real = PREP_SLLIST_OFFSET(x, pproc->left_line + y);
-            u8 sid = llist->sid[real];
+            u16 sid = llist->sid[real];
 
             if (real >= llist->amt)
                 break;
@@ -262,7 +263,7 @@ void PrepSkill2_InitTexts(void)
 /* Skill desc */
 void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 * proc)
 {
-    u8 sid;
+    u16 sid;
     int i;
     const char * str;
 

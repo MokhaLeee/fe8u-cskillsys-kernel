@@ -8,7 +8,7 @@
 /* Only one lagendary skill is valid */
 STATIC_DECLAR u8 GetUnitLegendarySkill(struct Unit * unit)
 {
-    u8 sid;
+    u16 sid;
     int i;
 
     for (i = 0; ; i++)
@@ -23,7 +23,7 @@ STATIC_DECLAR u8 GetUnitLegendarySkill(struct Unit * unit)
     return 0;
 }
 
-int TryActivateLegendSkill(struct Unit * unit, const u8 sid)
+int TryActivateLegendSkill(struct Unit * unit, const u16 sid)
 {
     /**
      * Legend skill can only be
@@ -40,7 +40,7 @@ int TryActivateLegendSkill(struct Unit * unit, const u8 sid)
     return 0;
 }
 
-bool SkillTesterLegendActivated(struct Unit * unit, const u8 sid)
+bool SkillTesterLegendActivated(struct Unit * unit, const u16 sid)
 {
     if (sid != GetUnitLegendarySkill(unit))
         return false;

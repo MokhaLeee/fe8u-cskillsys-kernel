@@ -5,46 +5,78 @@
 #include "list-verify.h"
 
 #ifndef MAX_SKILL_NUM
-#define MAX_SKILL_NUM 0xFF
+#define MAX_SKILL_NUM 0x3FF
 #endif
 
-#define SKILL_VALID(sid) ((sid > 0) && (sid < MAX_SKILL_NUM))
-#define SKILL_ICON(sid) ((1 << 8) + (sid))
+#define MAX_GENERIC_SKILL_NUM 0xFF
 
+enum SkillInfoListss
+{
+    Skill_INFO_GENERIC,
+    Skill_INFO_PERSON,
+    Skill_INFO_JOB,
+    Skill_INFO_ITEM,
+
+    Skill_INFO_MAX
+};
+
+#define SKILL_INDEX_REAL(sid) ((sid) & 0xFF)
+#define SKILL_INDEX_LIST(sid) (((sid) >> 8) & 0xFF)
+
+#define GENERIC_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
+#define PERSON_SKILL_VALID(sid)  (sid > 0x100 && sid < 0x1FF)
+#define JOB_SKILL_VALID(sid)     (sid > 0x200 && sid < 0x2FF)
+#define ITEM_SKILL_VALID(sid)    (sid > 0x300 && sid < 0x3FF)
+
+#define SKILL_EXT_VALID(sid_ext) (((sid_ext) > 0) && ((sid_ext) < 0xFF))
+#define SKILL_VALID(sid) SKILL_EXT_VALID(SKILL_INDEX_REAL(sid))
+#define SKILL_ICON(sid) ((2 << 8) + (sid))
+
+/**
+ * Generic skills
+ */
 #define UNIT_RAM_SKILLS_LEN 7
 #define UNIT_RAM_SKILLS(unit) ((u8 *)((unit)->supports))
 
-#define STAT_SKILL_NUM_MAX 8
+extern u8 const * const gpConstSkillTable_Person;
+extern u8 const * const gpConstSkillTable_Job;
+extern u8 const * const gpConstSkillTable_Item;
 
 struct SkillInfo {
     const u8 * icon;
     u16 name, desc;
 };
 
-extern const struct SkillInfo gSkillInfos[0x100];
-extern struct SkillInfo const * const gpSkillInfos;
+extern struct SkillInfo const * const gpSkillInfos_Generic;
+extern struct SkillInfo const * const gpSkillInfos_Person;
+extern struct SkillInfo const * const gpSkillInfos_Job;
+extern struct SkillInfo const * const gpSkillInfos_Item;
 
-const u8 * GetSkillIcon(const u8 sid);
-u16 GetSkillDescMsg(const u8 sid);
-char * GetSkillDescStr(const u8 sid);
+const u8 * GetSkillIcon_Generic(const u8 sid);
+const u8 * GetSkillIcon_Person(const u8 sid);
+const u8 * GetSkillIcon_Job(const u8 sid);
+const u8 * GetSkillIcon_Item(const u8 sid);
+
+u16 GetSkillDescMsg(const u16 sid);
+u16 GetSkillNameMsg(const u16 sid);
+char * GetSkillDescStr(const u16 sid);
 char * SkillDescToName(char * str);
-char * GetSkillNameStrFormDesc(const u8 sid);
-char * GetSkillNameStr(const u8 sid);
+char * GetSkillNameStrFormDesc(const u16 sid);
+char * GetSkillNameStr(const u16 sid);
 
 /* Judge list */
 #define SKILL_LIST_MAX_AMT 15
 struct SkillList {
     struct UnitListHeader header;
     u8 amt;
-    u8 sid[SKILL_LIST_MAX_AMT];
+    u16 sid[SKILL_LIST_MAX_AMT];
 };
 
 struct SkillList * GetUnitSkillList(struct Unit * unit);
 void ResetSkillLists(void);
-void DisableUnitSkills(struct Unit * unit);
 
 /* Skill tetsers */
-bool _SkillTester(struct Unit * unit, const u8 sid);
+bool _SkillTester(struct Unit * unit, const u16 sid);
 #define SkillTester _SkillTester
 
 /* Prep equip skill list */
@@ -65,12 +97,6 @@ struct SkillPreloadPConf { u8 skills[SKILL_ROM_DATA_AMT * (UNIT_RECORDED_LEVEL_M
 extern const struct SkillPreloadJConf gSkillPreloadJData[0x100];
 extern const struct SkillPreloadPConf gSkillPreloadPData[0x100];
 
-extern const u8 gConstSkillPTable[0x100][2];
-extern const u8 gConstSkillJTable[0x100][2];
-
-extern u8 const * const gpConstSkillPTable;
-extern u8 const * const gpConstSkillJTable;
-
 struct SkillAnimInfo {
     u8 aid;
     u8 priority;
@@ -84,12 +110,14 @@ enum SkillAnimPriorityConfig {
     EFX_PRIORITY_HIGHHIGH,
 };
 
-extern const struct SkillAnimInfo gSkillAnimInfos[0x100];
-extern struct SkillAnimInfo const * const gpSkillAnimInfos;
+extern struct SkillAnimInfo const * const gpSkillAnimInfos_Generic;
+extern struct SkillAnimInfo const * const gpSkillAnimInfos_Person;
+extern struct SkillAnimInfo const * const gpSkillAnimInfos_Job;
+extern struct SkillAnimInfo const * const gpSkillAnimInfos_Item;
 
-int GetEfxSkillIndex(const u8 sid);
-int GetEfxSkillPriority(const u8 sid);
-int GetEfxSkillSfx(const u8 sid);
+int GetEfxSkillIndex(const u16 sid);
+int GetEfxSkillPriority(const u16 sid);
+int GetEfxSkillSfx(const u16 sid);
 
 /* Efx skill */
 extern struct EfxAnimConf const * const gEfxSkillAnims[0x100];
@@ -116,17 +144,17 @@ enum EventSkillSubOps {
 #define Evt_RemoveSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_SC, sid), _EvtParams2(0, 0),
 
 /* Miscs */
-bool IsSkillLearned(struct Unit * unit, const u8 sid);
-void LearnSkill(struct Unit * unit, const u8 sid);
-void ForgetSkill(struct Unit * unit, const u8 sid);
+bool IsSkillLearned(struct Unit * unit, const u16 sid);
+void LearnSkill(struct Unit * unit, const u16 sid);
+void ForgetSkill(struct Unit * unit, const u16 sid);
 void ResetUnitLearnedSkillLists(void);                      /* GameInitHook */
 void SaveUnitLearnedSkillLists(u8 * dst, const u32 size);   /* SaveData */
 void LoadUnitLearnedSkillLists(u8 * src, const u32 size);   /* LoadData */
 
 void UnitAutoLoadSkills(struct Unit * unit);
-bool CanRemoveSkill(struct Unit * unit, const u8 sid);
-int RemoveSkill(struct Unit * unit, const u8 sid);
-int AddSkill(struct Unit * unit, const u8 sid);
+bool CanRemoveSkill(struct Unit * unit, const u16 sid);
+int RemoveSkill(struct Unit * unit, const u16 sid);
+int AddSkill(struct Unit * unit, const u16 sid);
 void TryAddSkillLvup(struct Unit * unit, int level);
 void TryAddSkillPromotion(struct Unit * unit, int jid);
 
@@ -153,8 +181,8 @@ enum skill_lucky_seven_idx {
 
 /* Legendary skill */
 extern u8 const * const gpLegendSkillPool;
-int TryActivateLegendSkill(struct Unit * unit, const u8 sid);
-bool SkillTesterLegendActivated(struct Unit * unit, const u8 sid);
+int TryActivateLegendSkill(struct Unit * unit, const u16 sid);
+bool SkillTesterLegendActivated(struct Unit * unit, const u16 sid);
 void PhaseSwitchUpdateLengendSkillStatus(void);
 void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit * defender);
 int SpdGetterLegendSkills(int status, struct Unit * unit);

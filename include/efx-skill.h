@@ -13,16 +13,16 @@ enum efx_skill_box_style {
     EFX_SKILL_BOX_COMBATART = 1,
 };
 
-void NewEfxSkillBox(struct Anim * anim, int msg, const u8 * icon, u8 sid, int skill_or_combatart);
+void NewEfxSkillBox(struct Anim * anim, int msg, const u8 * icon, u16 sid, int skill_or_combatart);
 bool EfxSkillBoxExists(void);
 
 /* Utils */
 void InitEfxSkillRoundData(void);
-void RegisterActorEfxSkill(int round, const u8 sid);
-void RegisterTargetEfxSkill(int round, const u8 sid);
+void RegisterActorEfxSkill(int round, const u16 sid);
+void RegisterTargetEfxSkill(int round, const u16 sid);
 void RegisterEfxSkillCombatArt(int round, const u8 cid);
-u8 GetActorEfxSkill(int round);
-u8 GetTargetEfxSkill(int round);
+u16 GetActorEfxSkill(int round);
+u16 GetTargetEfxSkill(int round);
 
 extern AnimScr AnimScr_EfxSkillBoxIconRight[];
 extern AnimScr AnimScr_EfxSkillBoxIconLeft[];

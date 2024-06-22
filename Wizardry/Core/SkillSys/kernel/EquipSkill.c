@@ -14,7 +14,7 @@ void ResetPrepEquipSkillList(void)
     CpuFastFill16(0, &sPrepEquipSkillList,   sizeof(sPrepEquipSkillList));
 }
 
-STATIC_DECLAR void RegisterToPrepEquipSkillListExt(const u8 sid)
+STATIC_DECLAR void RegisterToPrepEquipSkillListExt(const u16 sid)
 {
     sPrepEquipSkillListExt[sid] |= 1;
 }
@@ -22,7 +22,7 @@ STATIC_DECLAR void RegisterToPrepEquipSkillListExt(const u8 sid)
 STATIC_DECLAR void SetupPrepEquipReal(void)
 {
     int i;
-    for (i = 1; i < MAX_SKILL_NUM; i++)
+    for (i = 1; i < MAX_GENERIC_SKILL_NUM; i++)
         if (sPrepEquipSkillListExt[i] & 1)
             sPrepEquipSkillList.sid[sPrepEquipSkillList.amt++] = i;
 }
@@ -33,7 +33,7 @@ STATIC_DECLAR void UpdatePrepEquipSkillList(struct Unit * unit)
 
     ResetPrepEquipSkillList();
 
-    for (i = 1; i < MAX_SKILL_NUM; i++)
+    for (i = 1; i < MAX_GENERIC_SKILL_NUM; i++)
         if (IsSkillLearned(unit, i))
             RegisterToPrepEquipSkillListExt(i);
 

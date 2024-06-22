@@ -13,7 +13,7 @@ STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
     const u16 * argv = proc->pEventCurrent;
 
-    u8 sid = argv[1];
+    u16 sid = argv[1];
     u8 pid = argv[2];
     struct Unit * unit = GetUnitFromCharId(pid);
 
@@ -24,6 +24,9 @@ STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
         Errorf("No enough argument at %p", proc->pEventCurrent);
         hang();
     }
+
+    if (!GENERIC_SKILL_VALID(sid))
+        return EVC_ADVANCE_CONTINUE;
 
     if (unit && SKILL_VALID(sid))
         AddSkill(unit, sid);
@@ -36,7 +39,7 @@ STATIC_DECLAR u8 EventAddSkillAt(struct EventEngineProc * proc)
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
     const u16 * argv = proc->pEventCurrent;
 
-    u8 sid = argv[1];
+    u16 sid = argv[1];
     s16 x = argv[2];
     s16 y = argv[3];
     struct Unit * unit = GetUnitAtPosition(x, y);
@@ -46,6 +49,9 @@ STATIC_DECLAR u8 EventAddSkillAt(struct EventEngineProc * proc)
         Errorf("Event format error at %p", proc->pEventCurrent);
         hang();
     }
+
+    if (!GENERIC_SKILL_VALID(sid))
+        return EVC_ADVANCE_CONTINUE;
 
     if (unit && SKILL_VALID(sid))
         AddSkill(unit, sid);
@@ -58,7 +64,7 @@ STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc * proc)
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
     const u16 * argv = proc->pEventCurrent;
 
-    u8 sid = argv[1];
+    u16 sid = argv[1];
     u8 pid = gEventSlots[0xC];
     struct Unit * unit = GetUnitFromCharId(pid);
 
@@ -67,6 +73,9 @@ STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc * proc)
         Errorf("Event format error at %p", proc->pEventCurrent);
         hang();
     }
+
+    if (!GENERIC_SKILL_VALID(sid))
+        return EVC_ADVANCE_CONTINUE;
 
     if (unit && SKILL_VALID(sid))
         AddSkill(unit, sid);
@@ -79,7 +88,7 @@ STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc * proc)
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
     const u16 * argv = proc->pEventCurrent;
 
-    u8 sid = argv[1];
+    u16 sid = argv[1];
     u8 pid = argv[2];
     struct Unit * unit = GetUnitFromCharId(pid);
 
@@ -88,6 +97,9 @@ STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc * proc)
         Errorf("No enough argument at %p", proc->pEventCurrent);
         hang();
     }
+
+    if (!GENERIC_SKILL_VALID(sid))
+        return EVC_ADVANCE_CONTINUE;
 
     if (unit && SKILL_VALID(sid))
         RemoveSkill(unit, sid);
@@ -100,7 +112,7 @@ STATIC_DECLAR u8 EventRemoveSkillAt(struct EventEngineProc * proc)
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
     const u16 * argv = proc->pEventCurrent;
 
-    u8 sid = argv[1];
+    u16 sid = argv[1];
     s16 x = argv[2];
     s16 y = argv[3];
     struct Unit * unit = GetUnitAtPosition(x, y);
@@ -110,6 +122,9 @@ STATIC_DECLAR u8 EventRemoveSkillAt(struct EventEngineProc * proc)
         Errorf("Event format error at %p", proc->pEventCurrent);
         hang();
     }
+
+    if (!GENERIC_SKILL_VALID(sid))
+        return EVC_ADVANCE_CONTINUE;
 
     if (unit && SKILL_VALID(sid))
         RemoveSkill(unit, sid);
@@ -122,7 +137,7 @@ STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc * proc)
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
     const u16 * argv = proc->pEventCurrent;
 
-    u8 sid = argv[1];
+    u16 sid = argv[1];
     u8 pid = gEventSlots[0xC];
     struct Unit * unit = GetUnitFromCharId(pid);
 
@@ -131,6 +146,9 @@ STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc * proc)
         Errorf("Event format error at %p", proc->pEventCurrent);
         hang();
     }
+
+    if (!GENERIC_SKILL_VALID(sid))
+        return EVC_ADVANCE_CONTINUE;
 
     if (unit && SKILL_VALID(sid))
         RemoveSkill(unit, sid);

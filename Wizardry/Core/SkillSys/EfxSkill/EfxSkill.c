@@ -8,6 +8,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "efx-skill.h"
+#include "icon-rework.h"
 #include "combat-art.h"
 #include "constants/efx-skills.h"
 
@@ -17,7 +18,7 @@ struct ProcEfxSkillRework {
     PROC_HEADER;
     int timer;
     int frame;
-    u8 sid;
+    u16 sid;
     struct Anim * anim;
     const u16 * const * imgs;
     const u16 * const * pals;
@@ -27,9 +28,8 @@ struct ProcEfxSkillRework {
 
 STATIC_DECLAR void EfxSkillOnInit(struct ProcEfxSkillRework * proc)
 {
-    LTRACEF("sid %d, icon %p", proc->sid, GetSkillIcon(proc->sid));
     NewEfxSkillBox(proc->anim, 0,
-        GetSkillIcon(proc->sid), proc->sid, EFX_SKILL_BOX_SKILL);
+        GetIconGfx(SKILL_ICON(proc->sid)), proc->sid, EFX_SKILL_BOX_SKILL);
 }
 
 STATIC_DECLAR void EfxCombatArtOnInit(struct ProcEfxSkillRework * proc)

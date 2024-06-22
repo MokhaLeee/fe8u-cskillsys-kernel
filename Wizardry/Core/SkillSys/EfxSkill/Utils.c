@@ -9,8 +9,8 @@
 #define LOCAL_TRACE 0
 
 struct EfxSkillRoundData {
-    u8 sid_actor;
-    u8 sid_target;
+    u16 sid_actor;
+    u16 sid_target;
 };
 
 extern struct EfxSkillRoundData sEfxSkillRoundData[NEW_BATTLE_HIT_MAX];
@@ -21,11 +21,11 @@ void InitEfxSkillRoundData(void)
     CpuFill16(0, sEfxSkillRoundData, sizeof(sEfxSkillRoundData));
 }
 
-void RegisterActorEfxSkill(int round, const u8 sid)
+void RegisterActorEfxSkill(int round, const u16 sid)
 {
     if (round < NEW_BATTLE_HIT_MAX)
     {
-        u8 sid_old = sEfxSkillRoundData[round].sid_actor;
+        u16 sid_old = sEfxSkillRoundData[round].sid_actor;
         if (SKILL_VALID(sid_old) && GetEfxSkillPriority(sid_old) >= GetEfxSkillPriority(sid))
             return;
 
@@ -34,11 +34,11 @@ void RegisterActorEfxSkill(int round, const u8 sid)
     }
 }
 
-void RegisterTargetEfxSkill(int round, const u8 sid)
+void RegisterTargetEfxSkill(int round, const u16 sid)
 {
     if (round < NEW_BATTLE_HIT_MAX)
     {
-        u8 sid_old = sEfxSkillRoundData[round].sid_target;
+        u16 sid_old = sEfxSkillRoundData[round].sid_target;
         if (SKILL_VALID(sid_old) && GetEfxSkillPriority(sid_old) >= GetEfxSkillPriority(sid))
             return;
 
@@ -47,7 +47,7 @@ void RegisterTargetEfxSkill(int round, const u8 sid)
     }
 }
 
-u8 GetActorEfxSkill(int round)
+u16 GetActorEfxSkill(int round)
 {
     if (round < NEW_BATTLE_HIT_MAX)
         return sEfxSkillRoundData[round].sid_actor;
@@ -55,7 +55,7 @@ u8 GetActorEfxSkill(int round)
     return 0;
 }
 
-u8 GetTargetEfxSkill(int round)
+u16 GetTargetEfxSkill(int round)
 {
     if (round < NEW_BATTLE_HIT_MAX)
         return sEfxSkillRoundData[round].sid_target;

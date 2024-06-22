@@ -1,9 +1,10 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "skill-system.h"
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
-const u8 gCombatArtSkillTable[0x100] = {
+const u8 gCombatArtSkillTable[MAX_SKILL_NUM + 1] = {
 #if defined(SID_COMBAT_Grounder) && (SID_COMBAT_Grounder < MAX_SKILL_NUM)
     [SID_COMBAT_Grounder] = CID_Grounder,
 #endif
