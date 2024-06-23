@@ -5,33 +5,9 @@
 #include "debug-kit.h"
 #include "constants/gfx.h"
 
-static const struct SkillInfo * GetSkillInfo(int list_idx)
+const u8 * _GetSkillIconExt(const u8 sid_real, int list_idx)
 {
-    switch (list_idx) {
-    case Skill_INFO_GENERIC:
-        return gpSkillInfos_Generic;
-
-    case Skill_INFO_PERSON:
-        return gpSkillInfos_Person;
-
-    case Skill_INFO_JOB:
-        return gpSkillInfos_Job;
-
-    case Skill_INFO_ITEM:
-        return gpSkillInfos_Item;
-    }
-    return NULL;
-}
-
-const u8 * _GetSkillIconExt(const u8 sid, int list_idx)
-{
-    const struct SkillInfo * info;
-    const u8 * icon = NULL;
-
-    info = GetSkillInfo(list_idx);
-    if (info)
-        icon = info[SKILL_INDEX_REAL(sid)].icon;
-
+    const u8 * icon = gpSkillInfos[sid_real + (list_idx << 8)].icon;
     if (!icon)
         icon = GFX_SkillIcon_WIP;
 
@@ -45,20 +21,12 @@ const u8 * GetSkillIcon_Item(const u8 sid)    { return _GetSkillIconExt(sid, Ski
 
 u16 GetSkillDescMsg(const u16 sid)
 {
-    const struct SkillInfo * info = GetSkillInfo(SKILL_INDEX_LIST(sid));
-    if (!info)
-        return 0;
-
-    return info[SKILL_INDEX_REAL(sid)].desc;
+    return gpSkillInfos[sid].desc;
 }
 
 u16 GetSkillNameMsg(const u16 sid)
 {
-    const struct SkillInfo * info = GetSkillInfo(SKILL_INDEX_LIST(sid));
-    if (!info)
-        return 0;
-
-    return info[SKILL_INDEX_REAL(sid)].name;
+    return gpSkillInfos[sid].name;
 }
 
 char * GetSkillDescStr(const u16 sid)
@@ -104,39 +72,14 @@ char * GetSkillNameStr(const u16 sid)
     return GetStringFromIndex(msg);
 }
 
-static const struct SkillAnimInfo * GetSkillAnimInfo(int list_idx)
-{
-    switch (list_idx) {
-    case Skill_INFO_GENERIC:
-        return gpSkillAnimInfos_Generic;
-
-    case Skill_INFO_PERSON:
-        return gpSkillAnimInfos_Person;
-
-    case Skill_INFO_JOB:
-        return gpSkillAnimInfos_Job;
-
-    case Skill_INFO_ITEM:
-        return gpSkillAnimInfos_Item;
-    }
-    return NULL;
-}
-
 int GetEfxSkillIndex(const u16 sid)
 {
-    const struct SkillAnimInfo * info = GetSkillAnimInfo(SKILL_INDEX_LIST(sid));
-    if (!info)
-        return 0;
-
-    return info[SKILL_INDEX_REAL(sid)].aid;
+    return gpSkillAnimInfos[sid].aid;
 }
 
 int GetEfxSkillPriority(const u16 sid)
 {
-    u8 priority = 0;
-    const struct SkillAnimInfo * info = GetSkillAnimInfo(SKILL_INDEX_LIST(sid));
-    if (info)
-        priority = info[SKILL_INDEX_REAL(sid)].priority;
+    u8 priority = gpSkillAnimInfos[sid].priority;
 
     if (priority == 0)
         priority = EFX_PRIORITY_NORMAL;
@@ -146,10 +89,7 @@ int GetEfxSkillPriority(const u16 sid)
 
 int GetEfxSkillSfx(const u16 sid)
 {
-    u16 sfx = 0;
-    const struct SkillAnimInfo * info = GetSkillAnimInfo(SKILL_INDEX_LIST(sid));
-    if (info)
-        sfx = info[SKILL_INDEX_REAL(sid)].sfx;
+    u16 sfx = gpSkillAnimInfos[sid].sfx;
 
     if (sfx == 0)
         sfx = 0x3D1;

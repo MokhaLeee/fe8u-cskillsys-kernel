@@ -28,6 +28,8 @@ enum SkillInfoListss
 #define JOB_SKILL_VALID(sid)     (sid > 0x200 && sid < 0x2FF)
 #define ITEM_SKILL_VALID(sid)    (sid > 0x300 && sid < 0x3FF)
 
+#define COMMON_SKILL_VALID(sid) (GENERIC_SKILL_VALID(sid) || PERSON_SKILL_VALID(sid) || JOB_SKILL_VALID(sid) || ITEM_SKILL_VALID(sid))
+
 #define SKILL_EXT_VALID(sid_ext) (((sid_ext) > 0) && ((sid_ext) < 0xFF))
 #define SKILL_VALID(sid) SKILL_EXT_VALID(SKILL_INDEX_REAL(sid))
 #define SKILL_ICON(sid) ((2 << 8) + (sid))
@@ -47,10 +49,7 @@ struct SkillInfo {
     u16 name, desc;
 };
 
-extern struct SkillInfo const * const gpSkillInfos_Generic;
-extern struct SkillInfo const * const gpSkillInfos_Person;
-extern struct SkillInfo const * const gpSkillInfos_Job;
-extern struct SkillInfo const * const gpSkillInfos_Item;
+extern struct SkillInfo const * const gpSkillInfos;
 
 const u8 * GetSkillIcon_Generic(const u8 sid);
 const u8 * GetSkillIcon_Person(const u8 sid);
@@ -115,10 +114,7 @@ enum SkillAnimPriorityConfig {
     EFX_PRIORITY_HIGHHIGH,
 };
 
-extern struct SkillAnimInfo const * const gpSkillAnimInfos_Generic;
-extern struct SkillAnimInfo const * const gpSkillAnimInfos_Person;
-extern struct SkillAnimInfo const * const gpSkillAnimInfos_Job;
-extern struct SkillAnimInfo const * const gpSkillAnimInfos_Item;
+extern struct SkillAnimInfo const * const gpSkillAnimInfos;
 
 int GetEfxSkillIndex(const u16 sid);
 int GetEfxSkillPriority(const u16 sid);

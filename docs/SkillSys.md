@@ -64,8 +64,6 @@ Since the skills are currently divided into four categories, developers need to 
 | category | generic | person | job | item |
 | :--------	| :-----------	| :-----------	| :-----------	| :-----------	|
 | index preconfig | [skills.generic.enum.txt](../include/constants/skills.generic.enum.txt) | [skills.person.enum.txt](../include/constants/skills.person.enum.txt) | [skills.job.enum.txt](../include/constants/skills.job.enum.txt) | [skills.item.enum.txt](../include/constants/skills.item.enum.txt) |
-| skill info | [SkillInfo-generic.c](../Data/SkillSys/SkillInfo-generic.c) | [SkillInfo-person.c](../Data/SkillSys/SkillInfo-person.c) | [SkillInfo-job.c](../Data/SkillSys/SkillInfo-job.c) | [SkillInfo-item.c](../Data/SkillSys/SkillInfo-item.c) |
-| anim info | [SkillAnimInfo-generic.c](../Data/SkillSys/SkillAnimInfo-generic.c) | [SkillAnimInfo-person.c](../Data/SkillSys/SkillAnimInfo-person.c) | [SkillAnimInfo-job.c](../Data/SkillSys/SkillAnimInfo-job.c) | [SkillAnimInfo-item.c](../Data/SkillSys/SkillAnimInfo-item.c) |
 
 ## Basic skill info
 
@@ -111,38 +109,10 @@ Add text to [texts.txt](../Contants/Texts/Source/texts.txt), then kernel may aut
 
 Skill name is optional. You can also add a msg to texts, but kernel may also directly find the skill name inside skill description (by finding the character "`:`" through function [SkillDescToName()](../Wizardry/Core/SkillSys/kernel/Infos.c#L40)).
 
-Once you have done all of the components, go to **skill info** files and append your info:
+Once you have done all of the components, go to [SkillInfo.c](../Data/SkillSys/SkillInfo.c) and append your info:
 
 ```c
-// for generic skills
-#if (defined(SID_TEST) && GENERIC_SKILL_VALID(SID_TEST))
-    [SKILL_INDEX_REAL(SID_TEST)] = {
-        .name = 0,
-        .desc = MSG_SKILL_TEST,
-        .icon = GFX_SkillIcon_TEST,
-    },
-#endif
-
-// for person skills
-#if (defined(SID_TEST) && PERSON_SKILL_VALID(SID_TEST))
-    [SKILL_INDEX_REAL(SID_TEST)] = {
-        .name = 0,
-        .desc = MSG_SKILL_TEST,
-        .icon = GFX_SkillIcon_TEST,
-    },
-#endif
-
-// for job skills
-#if (defined(SID_TEST) && JOB_SKILL_VALID(SID_TEST))
-    [SKILL_INDEX_REAL(SID_TEST)] = {
-        .name = 0,
-        .desc = MSG_SKILL_TEST,
-        .icon = GFX_SkillIcon_TEST,
-    },
-#endif
-
-// for item skills
-#if (defined(SID_TEST) && ITEM_SKILL_VALID(SID_TEST))
+#if (defined(SID_TEST) && COMMON_SKILL_VALID(SID_TEST))
     [SKILL_INDEX_REAL(SID_TEST)] = {
         .name = 0,
         .desc = MSG_SKILL_TEST,
@@ -171,7 +141,17 @@ struct SkillAnimInfo {
 };
 ```
 
-Also depend on your category selection, put your defined anim info to **anim info** files to give your skill an efxskill anim effect.
+Also depend on your category selection, put your defined anim info to [SkillAnimInfo.c](../Data/SkillSys/SkillAnimInfo.c) to give your skill an efxskill anim effect.
+
+```c
+#if (defined(SID_TEST) && COMMON_SKILL_VALID(SID_TEST))
+    [SID_TEST] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+```
 
 The common API to register a skill animation is shown as below:
 
