@@ -8,7 +8,7 @@
 #include "kernel/SkillList.lyn.event"
 
 #ifdef CONFIG_USE_ARM_SKILLTESTER
-    #include "JudgeSkill_ARM/JudgeSkill_ARM.event"
+    #include "kernel/JudgeSkill_ARM.event"
 #else
     #include "kernel/JudgeSkill.lyn.event"
 #endif
