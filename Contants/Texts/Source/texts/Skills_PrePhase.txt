@@ -12,3 +12,29 @@ at the start of each turn.[X]
 Forager:[NL]
 Recover 20% HP each turn if[NL]
 on a Plain, Forest or Mountain.[X]
+
+## MSG_SKILL_Airlock
+Airlock:[NL]
+Set weather to clear at[NL]
+the start of the turn.[X]
+
+## MSG_SKILL_Drizzle
+Drizzle:[NL]
+Set weather to rain at[NL]
+the start of the turn.[X]
+
+## MSG_SKILL_Drought
+Drought:[NL]
+Set weather to sunny at[NL]
+the start of the turn.[X]
+
+## MSG_SKILL_SnowWarning
+SnowWarning:[NL]
+Set weather to snowing at[NL]
+the start of the turn.[X]
+
+## MSG_SKILL_SandStream
+SandStream:[NL]
+Set weather to a sandstorm[NL]
+at the start of the turn.[X]
+
