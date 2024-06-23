@@ -17,16 +17,24 @@ _SkillTester:
      * 1. SKILL_VALID(sid)
      * 2. SKILL_INDEX_LIST(sid) valid
      */
-    and r2, r1, #0xFF       // r2 = sid_real
+    mov r2, r1
     lsr r3, r1, #8          // r3 = sid_list
     add pc, pc, r3, lsl #2
 
 .4byte 0
 
+    /**
+     * 1. If only skill index range from 0x01~0xFE can be found in RAM list
+     * 2. person/job list aims to support all 0x400 skills
+     * 3. item list is limited to judge only skill index 0x300~0x400 on consideration of performance issue 
+     */
+
 .Ltesters:
     b _SkillTester_Generic
-    b _SkillTester_PInfo
-    b _SkillTester_JInfo
+    // b _SkillTester_PInfo
+    // b _SkillTester_JInfo
+    b _SkillTester_COMMON
+    b _SkillTester_COMMON
     b _SkillTester_IInfo
 
 .Lend_true:
@@ -61,12 +69,14 @@ _SkillTester_Generic:
     ldrb r3, [r0, #0x38]
     cmp r2, r3
     beq .Lend_true
-    b .Lend_false
+    // b .Lend_false
 
+_SkillTester_COMMON:
 _SkillTester_PInfo:
     ldr r4, =gpConstSkillTable_Person
     ldr r0, [r0]
-    adr lr, .Lend_false
+    // adr lr, .Lend_false
+    adr lr, _SkillTester_JInfo
 
 .LPJ_Tabtle:
     ldrb r0, [r0, #4]
@@ -101,4 +111,5 @@ _SkillTester_IInfo:
     bl .L_Table
     ldrb r0, [r3, #8]
     bl .L_Table
-    b .Lend_false
+    // b .Lend_false
+    b _SkillTester_COMMON

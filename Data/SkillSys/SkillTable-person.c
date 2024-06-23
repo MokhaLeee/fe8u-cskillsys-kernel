@@ -2,21 +2,21 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-const u8 gConstSkillTable_Person[0x100][2] = {
+const u16 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
-        SKILL_INDEX_REAL(SID_Supply),
-        SKILL_INDEX_REAL(SID_Inori),
+        SID_Supply,
+        SID_Inori,
     },
 
     [CHARACTER_EPHRAIM] = {
-        SKILL_INDEX_REAL(SID_Armsthrift),
+        SID_Armsthrift,
     },
 
     [CHARACTER_LYON_CC] = {
-        SKILL_INDEX_REAL(SID_AversaNight),
+        SID_AversaNight,
     },
 
     [CHARACTER_LYON] = {
-        SKILL_INDEX_REAL(SID_AversaNight),
+        SID_AversaNight,
     },
 };

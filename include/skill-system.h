@@ -40,9 +40,9 @@ enum SkillInfoListss
 #define UNIT_RAM_SKILLS_LEN 7
 #define UNIT_RAM_SKILLS(unit) ((u8 *)((unit)->supports))
 
-extern u8 const * const gpConstSkillTable_Person;
-extern u8 const * const gpConstSkillTable_Job;
-extern u8 const * const gpConstSkillTable_Item;
+extern u16 const * const gpConstSkillTable_Person;
+extern u16 const * const gpConstSkillTable_Job;
+extern u16 const * const gpConstSkillTable_Item;
 
 struct SkillInfo {
     const u8 * icon;
