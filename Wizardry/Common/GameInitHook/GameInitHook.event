@@ -6,6 +6,10 @@ ALIGN 4
 
 ALIGN 4
 gGameInitHookTable:
+#ifdef CONFIG_USE_ARM_SKILLTESTER
+    POIN GameInit_CopySkillTesterArm
+#endif
+
     POIN InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
     POIN ClearKtutorialFlags
     POIN GameInit_DetectEmsChunks

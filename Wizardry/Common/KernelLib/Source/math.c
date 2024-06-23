@@ -8,7 +8,7 @@ u32 simple_div(u32 a, u32 b)
     if (b == 0)
         return 0;
 
-    while (a > b)
+    while (a >= b)
     {
         b = b + _b;
         i = i + 1;
@@ -23,7 +23,7 @@ u32 simple_mod(u32 a, u32 b)
     if (b == 0)
         return 0;
 
-    while (a > b)
+    while (a >= b)
         b = b + _b;
 
     return (a + _b) - b;

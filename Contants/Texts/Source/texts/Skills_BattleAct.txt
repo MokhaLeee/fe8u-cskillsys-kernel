@@ -112,3 +112,8 @@ Add damage taken to attacl.[NL]
 Armsthrift:[NL]
 Weapon durability not consumed[NL]
 this round (Skill % activation).[X]
+
+## MSG_SKILL_SureShot
+SureShot:[NL]
+100% hit rate, and attack deals[NL]
++50% damage (Skill % activation).[X]

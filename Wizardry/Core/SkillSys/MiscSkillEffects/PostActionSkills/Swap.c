@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
+#include "event-rework.h"
 #include "constants/texts.h"
 #include "constants/skills.h"
 #include "battle-system.h"
@@ -20,12 +21,12 @@ STATIC_DECLAR void PreparePositionSwap(void)
 
 static void set_target_unit(void)
 {
-    gEventSlots[EVT_SLOT_2] = UNIT_CHAR_ID(&gBattleTarget.unit);
+    gEventSlots[EVT_SLOT_2] = gBattleTarget.unit.index;
 }
 
 static void set_actor_unit(void)
 {
-    gEventSlots[EVT_SLOT_2] = UNIT_CHAR_ID(gActiveUnit);
+    gEventSlots[EVT_SLOT_2] = gActiveUnit->index;
 }
 
 static void set_position(void)
@@ -63,17 +64,17 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionSwap[] = {
 LABEL(0)
     ASMC(PreparePositionSwap)
     ASMC(set_actor_unit)
-    CALL(EventScr_UnitWarpOUT)
+    CALL(EventScr_UidWarpOUT)
     STAL(20)
     ASMC(set_target_unit)
-    CALL(EventScr_UnitFlushingOUT)
+    CALL(EventScr_UidFlushingOUT)
     STAL(60)
     ASMC(set_position)
     ASMC(set_target_unit)
-    CALL(EventScr_UnitFlushingIN)
+    CALL(EventScr_UidFlushingIN)
     STAL(20)
     ASMC(set_actor_unit)
-    CALL(EventScr_UnitWarpIN)
+    CALL(EventScr_UidWarpIN)
     STAL(20)
 
 LABEL(99)
