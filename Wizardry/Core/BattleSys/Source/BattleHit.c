@@ -33,21 +33,39 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
 /* LynJump */
 void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    gBattleStats.attack = attacker->battleAttack;
-    gBattleStats.defense = defender->battleDefense;
-    gBattleStats.hitRate = attacker->battleEffectiveHitRate;
-    gBattleStats.critRate = attacker->battleEffectiveCritRate;
-    gBattleStats.silencerRate = attacker->battleSilencerRate;
+    int attack = attacker->battleAttack;
+    int defense = defender->battleDefense;
+    int hitRate = attacker->battleEffectiveHitRate;
+    int critRate = attacker->battleEffectiveCritRate;
+    int silencerRate = attacker->battleSilencerRate;
 
     /* Fasten simulation */
     if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+    {
+        gBattleStats.attack = attack;
+        gBattleStats.defense = defense;
+        gBattleStats.hitRate = hitRate;
+        gBattleStats.critRate = critRate;
+        gBattleStats.silencerRate = silencerRate;
         return;
+    }
 
 #if defined(SID_AxeFaith) && (SID_AxeFaith < MAX_SKILL_NUM)
     if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivte(attacker, defender, SID_AxeFaith, attacker->battleAttack))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
-        gBattleStats.hitRate += attacker->battleAttack;
+        hitRate += attacker->battleAttack;
+    }
+#endif
+
+    gBattleTemporaryFlag.skill_activated_sure_shoot = false;
+
+#if (defined(SID_SureShot) && (SID_SureShot < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, attacker->unit.skl))
+    {
+        gBattleTemporaryFlag.skill_activated_sure_shoot = true;
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
+        hitRate = 100;
     }
 #endif
 
@@ -56,6 +74,12 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     LIMIT_AREA(gBattleStats.hitRate, 0, 100);
     LIMIT_AREA(gBattleStats.critRate, 0, 100);
     LIMIT_AREA(gBattleStats.silencerRate, 0, 100);
+
+    gBattleStats.attack = attack;
+    gBattleStats.defense = defense;
+    gBattleStats.hitRate = hitRate;
+    gBattleStats.critRate = critRate;
+    gBattleStats.silencerRate = silencerRate;
 }
 
 int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -232,14 +256,8 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
-#if (defined(SID_SureShot) && (SID_SureShot < MAX_SKILL_NUM))
-    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
-        attacker->battleEffectiveHitRate = 100;
+    if (gBattleTemporaryFlag.skill_activated_sure_shoot)
         amplifier += 50;
-    }
-#endif
 
 #if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
     if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
