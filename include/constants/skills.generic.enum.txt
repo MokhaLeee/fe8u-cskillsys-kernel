@@ -164,6 +164,7 @@ SID_Ignis
 SID_Impale
 SID_Glacies
 SID_Vengeance
+SID_Deadeye
 SID_AxeFaith
 
 // Blow skills

@@ -108,6 +108,11 @@ Vengeance:[NL]
 Add damage taken to attacl.[NL]
 (Skill % activation).[X]
 
+## MSG_SKILL_Deadeye
+Deadeye:[NL]
+Doubles hit rate.[NL]
+Skill % chance to inflict sleep.[X]
+
 ## MSG_SKILL_AxeFaith
 AxeFaith:[NL]
 When attack with Axe, hit + attack%.[NL]

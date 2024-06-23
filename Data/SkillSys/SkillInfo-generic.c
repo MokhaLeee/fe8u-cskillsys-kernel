@@ -1723,6 +1723,13 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
     },
 #endif
 
+#if (defined(SID_Deadeye) && GENERIC_SKILL_VALID(SID_Deadeye))
+    [SKILL_INDEX_REAL(SID_Deadeye)] = {
+        .desc = MSG_SKILL_Deadeye,
+        .icon = GFX_SkillIcon_Deadeye,
+    },
+#endif
+
 #if (defined(SID_AxeFaith) && GENERIC_SKILL_VALID(SID_AxeFaith))
     [SKILL_INDEX_REAL(SID_AxeFaith)] = {
         .desc = MSG_SKILL_AxeFaith,
