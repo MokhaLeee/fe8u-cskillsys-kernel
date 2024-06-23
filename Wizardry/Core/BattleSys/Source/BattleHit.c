@@ -30,6 +30,34 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
     return false;
 }
 
+/* LynJump */
+void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    gBattleStats.attack = attacker->battleAttack;
+    gBattleStats.defense = defender->battleDefense;
+    gBattleStats.hitRate = attacker->battleEffectiveHitRate;
+    gBattleStats.critRate = attacker->battleEffectiveCritRate;
+    gBattleStats.silencerRate = attacker->battleSilencerRate;
+
+    /* Fasten simulation */
+    if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+        return;
+
+#if defined(SID_AxeFaith) && (SID_AxeFaith < MAX_SKILL_NUM)
+    if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivte(attacker, defender, SID_AxeFaith, attacker->battleAttack))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
+        gBattleStats.hitRate += attacker->battleAttack;
+    }
+#endif
+
+    LIMIT_AREA(gBattleStats.attack, 0, 255);
+    LIMIT_AREA(gBattleStats.defense, 0, 255);
+    LIMIT_AREA(gBattleStats.hitRate, 0, 100);
+    LIMIT_AREA(gBattleStats.critRate, 0, 100);
+    LIMIT_AREA(gBattleStats.silencerRate, 0, 100);
+}
+
 int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int damage = 0;
@@ -463,18 +491,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
         if (!defender->weapon)
             defender->weaponBroke = TRUE;
-    }
-#endif
-
-#if defined(SID_AxeFaith) && (SID_AxeFaith < MAX_SKILL_NUM)
-    if (attacker->weaponType == ITYPE_AXE)
-    {
-        if (CheckBattleSkillActivte(attacker, defender, SID_AxeFaith, 100))
-        {
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
-            attacker->battleHitRate += (attacker->unit.lck + attacker->unit.lck / 2);
-            attacker->weapon += (1 << 8); // add one use back to the weapon
-        }
     }
 #endif
 

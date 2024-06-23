@@ -110,8 +110,8 @@ Add damage taken to attacl.[NL]
 
 ## MSG_SKILL_AxeFaith
 AxeFaith:[NL]
-User's axe weapons do not use[NL]
-durability. Hit rate + (luck * 1.5).[X]
+When attack with Axe, hit + attack%.[NL]
+(attack % activation).[X]
 
 ## MSG_SKILL_Armsthrift
 Armsthrift:[NL]
