@@ -83,7 +83,7 @@ _SkillTester_PInfo:
 
 .L_Table:
     ldr r1, [r4]
-    add r1, r1, r0, lsl #1
+    add r1, r1, r0, lsl #2
     ldrh r0, [r1]
     cmp r2, r0
     beq .Lend_true
