@@ -26,4 +26,11 @@ const struct SkillInfo gSkillInfos_Person[0x100] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Armsthrift) && PERSON_SKILL_VALID(SID_Armsthrift))
+    [SKILL_INDEX_REAL(SID_Armsthrift)] = {
+        .desc = MSG_SKILL_Armsthrift,
+        .icon = GFX_SkillIcon_Armsthrift,
+    },
+#endif
 };

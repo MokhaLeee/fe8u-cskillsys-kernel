@@ -1723,10 +1723,4 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
     },
 #endif
 
-#if (defined(SID_Armsthrift) && GENERIC_SKILL_VALID(SID_Armsthrift))
-    [SKILL_INDEX_REAL(SID_Armsthrift)] = {
-        .desc = MSG_SKILL_Armsthrift,
-        .icon = GFX_SkillIcon_Armsthrift,
-    },
-#endif
 };
