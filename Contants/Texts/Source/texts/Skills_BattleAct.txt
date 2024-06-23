@@ -112,3 +112,13 @@ Add damage taken to attacl.[NL]
 AxeFaith:[NL]
 User's axe weapons do not use[NL]
 durability. Hit rate + (luck * 1.5).[X]
+
+## MSG_SKILL_Armsthrift
+Armsthrift:[NL]
+Weapon durability not consumed[NL]
+this round (Skill % activation).[X]
+
+## MSG_SKILL_SureShot
+SureShot:[NL]
+100% hit rate, and attack deals[NL]
++50% damage (Skill % activation).[X]

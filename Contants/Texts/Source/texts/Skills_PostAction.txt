@@ -31,6 +31,9 @@ Breath Life:[NL]
 After attacking, allies[NL]
 in 2 tiles heal of 20% max HP.[X]
 
+## MSG_SKILL_Thunderstorm_NAME
+Thunder[X]
+
 ## MSG_SKILL_Thunderstorm
 Thunderstorm:[NL]
 When hit from 3 range away, call[NL]

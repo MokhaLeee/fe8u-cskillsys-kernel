@@ -5,40 +5,32 @@
 const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     [CHARACTER_EIRIKA] = {
         .skills = {
-#if defined(SID_SpdBonus) && GENERIC_SKILL_VALID(SID_SpdBonus)
-            [0] = SID_SpdBonus,
-#endif
-
-#if defined(SID_PosReturn) && GENERIC_SKILL_VALID(SID_PosReturn)
-            [1] = SID_PosReturn,
-#endif
+            [0] = SKILL_INDEX_REAL(SID_SpdBonus),
+            [1] = SKILL_INDEX_REAL(SID_PosReturn),
         },
     },
     [CHARACTER_EPHRAIM] = {
         .skills = {
-#if defined(SID_StrBonus) && GENERIC_SKILL_VALID(SID_StrBonus)
-            [0] = SID_StrBonus,
-#endif
+            [0] = SKILL_INDEX_REAL(SID_StrBonus),
+        },
+    },
+
+    [CHARACTER_SETH] = {
+        .skills = {
+            [0] = SKILL_INDEX_REAL(SID_Vantage),
         },
     },
 
     [CHARACTER_INNES] = {
         .skills = {
-#if defined(SID_RangeBonusBow2) && GENERIC_SKILL_VALID(SID_RangeBonusBow2)
-            [0] = SID_RangeBonusBow2,
-#endif
-
-#if defined(SID_PosSwap) && GENERIC_SKILL_VALID(SID_PosSwap)
-            [1] = SID_PosSwap,
-#endif
+            [0] = SKILL_INDEX_REAL(SID_RangeBonusBow2),
+            [1] = SKILL_INDEX_REAL(SID_PosSwap),
         },
     },
 
     [CHARACTER_RIEV] = {
         .skills = {
-#if defined(SID_Thunderstorm) && GENERIC_SKILL_VALID(SID_Thunderstorm)
-            [0] = SID_Thunderstorm,
-#endif
+            [0] = SKILL_INDEX_REAL(SID_Thunderstorm),
         },
     },
 };
@@ -46,17 +38,13 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
 const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {
     [CLASS_SNIPER] = {
         .skills = {
- #if defined(SID_RangeBonusBow2) && GENERIC_SKILL_VALID(SID_RangeBonusBow2)
-            [10] = SID_RangeBonusBow2,
-#endif
+            [10] = SKILL_INDEX_REAL(SID_RangeBonusBow2),
         },
     },
 
     [CLASS_SNIPER_F] = {
         .skills = {
-#if defined(SID_RangeBonusBow2) && GENERIC_SKILL_VALID(SID_RangeBonusBow2)
-            [10] = SID_RangeBonusBow2,
-#endif
+            [10] = SKILL_INDEX_REAL(SID_RangeBonusBow2),
         },
     },
 };
