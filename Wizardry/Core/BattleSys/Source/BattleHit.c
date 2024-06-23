@@ -466,6 +466,18 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     }
 #endif
 
+#if defined(SID_AxeFaith) && (SID_AxeFaith < MAX_SKILL_NUM)
+    if (attacker->weaponType == ITYPE_AXE)
+    {
+        if (CheckBattleSkillActivte(attacker, defender, SID_AxeFaith, 100))
+        {
+            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
+            attacker->battleHitRate += (attacker->unit.lck + attacker->unit.lck / 2);
+            attacker->weapon += (1 << 8); // add one use back to the weapon
+        }
+    }
+#endif
+
     /**
      * Consumes the durability of the own weapon
      */

@@ -108,6 +108,11 @@ Vengeance:[NL]
 Add damage taken to attacl.[NL]
 (Skill % activation).[X]
 
+## MSG_SKILL_AxeFaith
+AxeFaith:[NL]
+User's axe weapons do not use[NL]
+durability. Hit rate + (luck * 1.5).[X]
+
 ## MSG_SKILL_Armsthrift
 Armsthrift:[NL]
 Weapon durability not consumed[NL]
