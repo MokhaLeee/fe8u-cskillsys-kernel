@@ -65,7 +65,7 @@ STATIC_DECLAR void NewEfxSkillForAttacker(struct ProcEkrSkill * proc)
 {
     if (COMBART_VALID(proc->cid))
         NewEfxCombatArt(proc->anim, proc->cid);
-    else if (SKILL_VALID(proc->sid_atk))
+    else if (COMMON_SKILL_VALID(proc->sid_atk))
         NewEfxSkill(proc->anim, proc->sid_atk);
 }
 
@@ -75,7 +75,7 @@ STATIC_DECLAR void NewEfxSkillForDefener(struct ProcEkrSkill * proc)
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
         return;
 
-    if (SKILL_VALID(proc->sid_def))
+    if (COMMON_SKILL_VALID(proc->sid_def))
     {
         LTRACEF("sid %d", proc->sid_def);
         NewEfxSkill(GetAnimAnotherSide(proc->anim), proc->sid_def);

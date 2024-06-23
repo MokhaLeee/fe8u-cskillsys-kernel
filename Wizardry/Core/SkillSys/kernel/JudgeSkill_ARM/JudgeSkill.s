@@ -14,7 +14,7 @@ _SkillTester:
 
     /**
      * Here we may not judge:
-     * 1. SKILL_VALID(sid)
+     * 1. COMMON_SKILL_VALID(sid)
      * 2. SKILL_INDEX_LIST(sid) valid
      */
     mov r2, r1

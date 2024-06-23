@@ -331,7 +331,7 @@ bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * d
         if (i != 0)
         {
             efx_sid = DequeueRoundEfxSkill();
-            if (SKILL_VALID(efx_sid))
+            if (COMMON_SKILL_VALID(efx_sid))
             {
                 LTRACEF("Round skill %02x registered at round %d", efx_sid, round);
                 RegisterActorEfxSkill(round, efx_sid);

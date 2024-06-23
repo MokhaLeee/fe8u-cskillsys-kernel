@@ -43,11 +43,11 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     actor_icon = 0;
     if (COMBART_VALID(cid))
         actor_icon = COMBART_ICON(cid);
-    else if (SKILL_VALID(sid_atk))
+    else if (COMMON_SKILL_VALID(sid_atk))
         actor_icon = SKILL_ICON(sid_atk);
 
     target_icon = 0;
-    if (SKILL_VALID(sid_def))
+    if (COMMON_SKILL_VALID(sid_def))
         target_icon = SKILL_ICON(sid_def);
 
     /* Terminator */

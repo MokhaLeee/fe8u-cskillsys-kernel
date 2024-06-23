@@ -57,7 +57,7 @@ static bool _SkillTester_IInfo(struct Unit * unit, const u16 sid)
 
 bool _SkillTester(struct Unit * unit, const u16 sid)
 {
-    if (!UNIT_IS_VALID(unit) || !SKILL_VALID(sid))
+    if (!UNIT_IS_VALID(unit) || !COMMON_SKILL_VALID(sid))
         return false;
 
     switch (SKILL_INDEX_LIST(sid)) {

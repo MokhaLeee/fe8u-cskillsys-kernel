@@ -30,8 +30,6 @@ enum SkillInfoListss
 
 #define COMMON_SKILL_VALID(sid) (GENERIC_SKILL_VALID(sid) || PERSON_SKILL_VALID(sid) || JOB_SKILL_VALID(sid) || ITEM_SKILL_VALID(sid))
 
-#define SKILL_EXT_VALID(sid_ext) (((sid_ext) > 0) && ((sid_ext) < 0xFF))
-#define SKILL_VALID(sid) SKILL_EXT_VALID(SKILL_INDEX_REAL(sid))
 #define SKILL_ICON(sid) ((2 << 8) + (sid))
 
 /**

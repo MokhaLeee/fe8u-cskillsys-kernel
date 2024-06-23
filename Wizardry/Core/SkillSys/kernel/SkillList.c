@@ -17,28 +17,28 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
 
     /* person */
     sid = gpConstSkillTable_Person[pid * 2];
-    if (SKILL_EXT_VALID(sid))
-        list->sid[list->amt++] = sid | (Skill_INFO_PERSON << 8);
+    if (COMMON_SKILL_VALID(sid))
+        list->sid[list->amt++] = sid;
 
     sid = gpConstSkillTable_Person[pid * 2 + 1];
-    if (SKILL_EXT_VALID(sid))
-        list->sid[list->amt++] = sid | (Skill_INFO_PERSON << 8);
+    if (COMMON_SKILL_VALID(sid))
+        list->sid[list->amt++] = sid;
 
     /* job */
     sid = gpConstSkillTable_Job[jid * 2];
-    if (SKILL_EXT_VALID(sid))
-        list->sid[list->amt++] = sid | (Skill_INFO_JOB << 8);
+    if (COMMON_SKILL_VALID(sid))
+        list->sid[list->amt++] = sid;
 
     sid = gpConstSkillTable_Job[jid * 2 + 1];
-    if (SKILL_EXT_VALID(sid))
-        list->sid[list->amt++] = sid | (Skill_INFO_JOB << 8);
+    if (COMMON_SKILL_VALID(sid))
+        list->sid[list->amt++] = sid;
 
     /* generic */
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
     {
         sid = UNIT_RAM_SKILLS(unit)[i];
-        if (SKILL_EXT_VALID(sid))
-            list->sid[list->amt++] = sid | (Skill_INFO_GENERIC << 8);
+        if (COMMON_SKILL_VALID(sid))
+            list->sid[list->amt++] = sid;
     }
 
     WriteUnitListHeader(unit, &list->header);
