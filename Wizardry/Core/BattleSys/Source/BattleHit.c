@@ -69,6 +69,17 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     }
 #endif
 
+    gBattleTemporaryFlag.skill_activated_dead_eye = false;
+
+#if defined(SID_Deadeye) && (SID_Deadeye < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Deadeye, attacker->unit.skl))
+    {
+        gBattleTemporaryFlag.skill_activated_dead_eye = true;
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Deadeye);
+        hitRate *= 2;
+    }
+#endif
+
     LIMIT_AREA(gBattleStats.attack, 0, 255);
     LIMIT_AREA(gBattleStats.defense, 0, 255);
     LIMIT_AREA(gBattleStats.hitRate, 0, 100);
@@ -222,17 +233,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
         attack += (attacker->unit.maxHP - attacker->unit.curHP);
 
-    }
-#endif
-
-#if defined(SID_Deadeye) && (SID_Deadeye < MAX_SKILL_NUM)
-    
-    attacker->battleHitRate *= 2;
-
-    if (CheckBattleSkillActivte(attacker, defender, SID_Deadeye, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Deadeye);
-        defender->statusOut = UNIT_STATUS_SLEEP;
     }
 #endif
 
@@ -404,23 +404,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
     {
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON ||
-#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
-            SkillTester(&attacker->unit, SID_PoisonPoint)
-#else
-            0
-#endif
-        )
-        {
-            defender->statusOut = UNIT_STATUS_POISON;
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
-
-            // "Ungray" defender if it was petrified (as it won't be anymore)
-            debuff = GetUnitStatusIndex(&defender->unit);
-            if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
-                defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
-        }
-
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
 
@@ -495,6 +478,26 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 break;
             }
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
+        }
+        else if (gBattleTemporaryFlag.skill_activated_dead_eye)
+        {
+            defender->statusOut = UNIT_STATUS_SLEEP;
+        }
+        else if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON ||
+#if (defined(SID_PoisonPoint) && (SID_PoisonPoint < MAX_SKILL_NUM))
+            SkillTester(&attacker->unit, SID_PoisonPoint)
+#else
+            0
+#endif
+        )
+        {
+            defender->statusOut = UNIT_STATUS_POISON;
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
+
+            // "Ungray" defender if it was petrified (as it won't be anymore)
+            debuff = GetUnitStatusIndex(&defender->unit);
+            if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
+                defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
     }
 
@@ -670,7 +673,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
         gBattleHitIterator++;
         return true;
     }
-    else if (defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13)
+    else if (defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 || defender->statusOut == UNIT_STATUS_SLEEP)
     {
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
         gBattleHitIterator++;

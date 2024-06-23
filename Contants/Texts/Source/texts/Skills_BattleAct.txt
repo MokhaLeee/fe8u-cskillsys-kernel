@@ -110,8 +110,8 @@ Add damage taken to attacl.[NL]
 
 ## MSG_SKILL_Deadeye
 Deadeye:[NL]
-Doubles hit rate.[NL]
-Skill % chance to inflict sleep.[X]
+Doubles hit rate and inflict sleep.[NL]
+(Skill % activation).[X]
 
 ## MSG_SKILL_AxeFaith
 AxeFaith:[NL]
