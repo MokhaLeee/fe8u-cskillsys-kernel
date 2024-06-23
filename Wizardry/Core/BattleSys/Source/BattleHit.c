@@ -341,6 +341,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int debuff;
+    bool weapon_cost;
 
     attacker->wexpMultiplier++;
 
@@ -442,6 +443,9 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
 
+    /**
+     * Consume enemy weapons
+     */
 #if (defined(SID_Corrosion) && (SID_Corrosion < MAX_SKILL_NUM))
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) && CheckBattleSkillActivte(attacker, defender, SID_Corrosion, attacker->unit.skl))
     {
@@ -462,15 +466,24 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     }
 #endif
 
+    /**
+     * Consumes the durability of the own weapon
+     */
+    weapon_cost = false;
+    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
+        weapon_cost = true;
+    else if (attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
+        weapon_cost = true;
+
 #if defined(SID_Armsthrift) && (SID_Armsthrift < MAX_SKILL_NUM)
     if (CheckBattleSkillActivte(attacker, defender, SID_Armsthrift, attacker->unit.lck))
     {
+        weapon_cost = false;
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Armsthrift);
-        attacker->weapon += (1 << 8); // add one use back to the weapon
     }
 #endif
 
-    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) || attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
+    if (weapon_cost)
     {
 #ifdef CHAX
         /* Check on combat-art */
