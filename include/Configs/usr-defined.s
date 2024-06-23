@@ -13,3 +13,5 @@ dat 0x02026A90, gIconReSts @ DrawnIconLookupTable
 dat 0x02026AD0, gBattleHitArrayRe   /* 4 * 0x21 */
 dat 0x02026B54, gAnimRoundDataRe    /* 4 * 0x21 */
 dat 0x02026BD8, gEfxHpLutRe         /* 4 * 0x21 */
+
+dat 0x03003F48, _SkillTester_ARM    /* 520 Bytes left */

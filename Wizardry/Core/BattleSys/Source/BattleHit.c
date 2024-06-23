@@ -30,6 +30,58 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
     return false;
 }
 
+/* LynJump */
+void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    int attack = attacker->battleAttack;
+    int defense = defender->battleDefense;
+    int hitRate = attacker->battleEffectiveHitRate;
+    int critRate = attacker->battleEffectiveCritRate;
+    int silencerRate = attacker->battleSilencerRate;
+
+    /* Fasten simulation */
+    if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+    {
+        gBattleStats.attack = attack;
+        gBattleStats.defense = defense;
+        gBattleStats.hitRate = hitRate;
+        gBattleStats.critRate = critRate;
+        gBattleStats.silencerRate = silencerRate;
+        return;
+    }
+
+#if defined(SID_AxeFaith) && (SID_AxeFaith < MAX_SKILL_NUM)
+    if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivte(attacker, defender, SID_AxeFaith, attacker->battleAttack))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
+        hitRate += attacker->battleAttack;
+    }
+#endif
+
+    gBattleTemporaryFlag.skill_activated_sure_shoot = false;
+
+#if (defined(SID_SureShot) && (SID_SureShot < MAX_SKILL_NUM))
+    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, attacker->unit.skl))
+    {
+        gBattleTemporaryFlag.skill_activated_sure_shoot = true;
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
+        hitRate = 100;
+    }
+#endif
+
+    LIMIT_AREA(gBattleStats.attack, 0, 255);
+    LIMIT_AREA(gBattleStats.defense, 0, 255);
+    LIMIT_AREA(gBattleStats.hitRate, 0, 100);
+    LIMIT_AREA(gBattleStats.critRate, 0, 100);
+    LIMIT_AREA(gBattleStats.silencerRate, 0, 100);
+
+    gBattleStats.attack = attack;
+    gBattleStats.defense = defense;
+    gBattleStats.hitRate = hitRate;
+    gBattleStats.critRate = critRate;
+    gBattleStats.silencerRate = silencerRate;
+}
+
 int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int damage = 0;
@@ -61,17 +113,18 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     gBattleStats.damage = 0;
 
+    /* Fasten simulation */
+    if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
+    {
+        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+        return;
+    }
+
     /* Judge whether in combat-art attack */
     if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
     {
         TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
         in_art_atk = true;
-    }
-
-    if (!BattleRoll2RN(gBattleStats.hitRate, TRUE))
-    {
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-        return;
     }
 
     if (gBattleStats.config & BATTLE_CONFIG_REAL)
@@ -214,6 +267,9 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+    if (gBattleTemporaryFlag.skill_activated_sure_shoot)
+        amplifier += 50;
+
 #if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
     if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
     {
@@ -312,7 +368,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 
     if (damage < BATTLE_MAX_DAMAGE)
-        damage = simple_div(damage * amplifier, 100);
+        damage = (damage * amplifier / 100);
 
     /**
      * Real damage:
@@ -342,6 +398,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int debuff;
+    bool weapon_cost;
 
     attacker->wexpMultiplier++;
 
@@ -443,6 +500,9 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
 
+    /**
+     * Consume enemy weapons
+     */
 #if (defined(SID_Corrosion) && (SID_Corrosion < MAX_SKILL_NUM))
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) && CheckBattleSkillActivte(attacker, defender, SID_Corrosion, attacker->unit.skl))
     {
@@ -463,7 +523,24 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     }
 #endif
 
-    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) || attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
+    /**
+     * Consumes the durability of the own weapon
+     */
+    weapon_cost = false;
+    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
+        weapon_cost = true;
+    else if (attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
+        weapon_cost = true;
+
+#if defined(SID_Armsthrift) && (SID_Armsthrift < MAX_SKILL_NUM)
+    if (CheckBattleSkillActivte(attacker, defender, SID_Armsthrift, attacker->unit.lck))
+    {
+        weapon_cost = false;
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Armsthrift);
+    }
+#endif
+
+    if (weapon_cost)
     {
 #ifdef CHAX
         /* Check on combat-art */

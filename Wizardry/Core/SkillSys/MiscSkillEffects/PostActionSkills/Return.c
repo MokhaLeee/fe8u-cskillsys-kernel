@@ -2,6 +2,7 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 #include "battle-system.h"
+#include "event-rework.h"
 #include "constants/skills.h"
 #include "constants/texts.h"
 
@@ -14,7 +15,7 @@ STATIC_DECLAR void PostActionReturnSkipMenuIfNotAlly(struct EventEngineProc * pr
 
 STATIC_DECLAR void PrepareReturnPosition(void)
 {
-    gEventSlots[EVT_SLOT_2] = UNIT_CHAR_ID(gActiveUnit);
+    gEventSlots[EVT_SLOT_2] = gActiveUnit->index;
 
     MU_EndAll();
     RefreshUnitSprites();
@@ -22,6 +23,8 @@ STATIC_DECLAR void PrepareReturnPosition(void)
 
 STATIC_DECLAR void PostActionReturnToOrigin(void)
 {
+    gEventSlots[EVT_SLOT_2] = gActiveUnit->index;
+
     gActionData.xMove = gActiveUnitMoveOrigin.x;
     gActionData.yMove = gActiveUnitMoveOrigin.y;
 
@@ -44,10 +47,10 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionReturn[] = {
 
 LABEL(0)
     ASMC(PrepareReturnPosition)
-    CALL(EventScr_UnitWarpOUT)
+    CALL(EventScr_UidWarpOUT)
     STAL(20)
     ASMC(PostActionReturnToOrigin)
-    CALL(EventScr_UnitFlushingIN)
+    CALL(EventScr_UidFlushingIN)
     STAL(20)
 
 LABEL(99)

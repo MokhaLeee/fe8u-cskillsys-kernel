@@ -112,3 +112,18 @@ Add damage taken to attacl.[NL]
 Deadeye:[NL]
 Doubles hit rate.[NL]
 Skill % chance to inflict sleep.[X]
+
+## MSG_SKILL_AxeFaith
+AxeFaith:[NL]
+When attack with Axe, hit + attack%.[NL]
+(attack % activation).[X]
+
+## MSG_SKILL_Armsthrift
+Armsthrift:[NL]
+Weapon durability not consumed[NL]
+this round (Skill % activation).[X]
+
+## MSG_SKILL_SureShot
+SureShot:[NL]
+100% hit rate, and attack deals[NL]
++50% damage (Skill % activation).[X]

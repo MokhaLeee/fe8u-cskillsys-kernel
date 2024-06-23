@@ -203,27 +203,6 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
     },
 #endif
 
-#if (defined(SID_Lethality) && GENERIC_SKILL_VALID(SID_Lethality))
-    [SKILL_INDEX_REAL(SID_Lethality)] = {
-        .desc = MSG_SKILL_Lethality,
-        .icon = GFX_SkillIcon_Lethality,
-    },
-#endif
-
-#if (defined(SID_Crit) && GENERIC_SKILL_VALID(SID_Crit))
-    [SKILL_INDEX_REAL(SID_Crit)] = {
-        .desc = MSG_SKILL_Crit,
-        .icon = GFX_SkillIcon_Crit,
-    },
-#endif
-
-#if (defined(SID_WatchfulEye) && GENERIC_SKILL_VALID(SID_WatchfulEye))
-    [SKILL_INDEX_REAL(SID_WatchfulEye)] = {
-        .desc = MSG_SKILL_WatchfulEye,
-        .icon = GFX_SkillIcon_WatchfulEye,
-    },
-#endif
-
 #if (defined(SID_CritSword) && GENERIC_SKILL_VALID(SID_CritSword))
     [SKILL_INDEX_REAL(SID_CritSword)] = {
         .desc = MSG_SKILL_CritSword,
@@ -305,13 +284,6 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
     [SKILL_INDEX_REAL(SID_RuinedBlade)] = {
         .desc = MSG_SKILL_RuinedBlade,
         .icon = GFX_SkillIcon_RuinedBlade,
-    },
-#endif
-
-#if (defined(SID_InfinityEdge) && GENERIC_SKILL_VALID(SID_InfinityEdge))
-    [SKILL_INDEX_REAL(SID_InfinityEdge)] = {
-        .desc = MSG_SKILL_InfinityEdge,
-        .icon = GFX_SkillIcon_InfinityEdge,
     },
 #endif
 
@@ -747,6 +719,7 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
 
 #if (defined(SID_Thunderstorm) && GENERIC_SKILL_VALID(SID_Thunderstorm))
     [SKILL_INDEX_REAL(SID_Thunderstorm)] = {
+        .name = MSG_SKILL_Thunderstorm_NAME,
         .desc = MSG_SKILL_Thunderstorm,
         .icon = GFX_SkillIcon_Thunderstorm,
     },
@@ -1754,6 +1727,13 @@ const struct SkillInfo gSkillInfos_Generic[0x100] = {
     [SKILL_INDEX_REAL(SID_Deadeye)] = {
         .desc = MSG_SKILL_Deadeye,
         .icon = GFX_SkillIcon_Deadeye,
+    },
+#endif
+
+#if (defined(SID_AxeFaith) && GENERIC_SKILL_VALID(SID_AxeFaith))
+    [SKILL_INDEX_REAL(SID_AxeFaith)] = {
+        .desc = MSG_SKILL_AxeFaith,
+        .icon = GFX_SkillIcon_AxeFaith,
     },
 #endif
 };

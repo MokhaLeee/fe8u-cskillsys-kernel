@@ -11,3 +11,5 @@ enum char_identifier_event_expa {
 /* input: [slot-2]=uid */
 extern const EventListScr EventScr_UidWarpIN[];
 extern const EventListScr EventScr_UidWarpOUT[];
+extern const EventListScr EventScr_UidFlushingIN[];
+extern const EventListScr EventScr_UidFlushingOUT[];

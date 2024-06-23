@@ -42,13 +42,6 @@ static const u8 BattleUnwindConfig[14][4] = {
 };
 
 extern struct {
-    u32 order_vantage : 1;
-    u32 order_desperation : 1;
-    u32 order_quick_riposte : 1;
-    u32 order_dobule_lion : 1;
-} gBattleTemporaryFlag;
-
-extern struct {
     u8 cur, max;
     u16 skill_pool[14];
 } sEfxSkillQueue;

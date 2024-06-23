@@ -48,8 +48,6 @@ SID_Skybreaker
 SID_Resourceful
 
 // Battle status skills
-SID_Crit
-SID_WatchfulEye
 SID_CritSword
 SID_CritAxe
 SID_CritLance
@@ -62,7 +60,6 @@ SID_FaireBMag
 SID_Avoid
 SID_AvoidSword
 SID_RuinedBlade
-SID_InfinityEdge
 SID_HeavyBlade
 SID_FlashingBlade
 SID_HeavyBladePlus
@@ -168,6 +165,7 @@ SID_Impale
 SID_Glacies
 SID_Vengeance
 SID_Deadeye
+SID_AxeFaith
 
 // Blow skills
 SID_BlowDarting

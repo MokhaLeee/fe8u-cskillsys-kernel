@@ -62,6 +62,14 @@ extern struct BattleGlobalFlags {
 
 void ClearBattleGlobalFlags(void);
 
+extern struct {
+    u32 order_vantage : 1;
+    u32 order_desperation : 1;
+    u32 order_quick_riposte : 1;
+    u32 order_dobule_lion : 1;
+    u32 skill_activated_sure_shoot : 1;
+} gBattleTemporaryFlag;
+
 /* Battle skill act */
 bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
 
