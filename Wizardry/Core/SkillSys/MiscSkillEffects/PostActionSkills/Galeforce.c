@@ -14,7 +14,7 @@ extern u8 gPostActionGaleforceFlag;
 
 bool PostActionGaleForce(ProcPtr parent)
 {
-#if defined(SID_Galeforce) && (SID_Galeforce < MAX_SKILL_NUM)
+#if defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce))
     struct Unit * unit = gActiveUnit;
 
     gPostActionGaleforceFlag = false;

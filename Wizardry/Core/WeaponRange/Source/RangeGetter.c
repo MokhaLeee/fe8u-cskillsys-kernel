@@ -47,17 +47,17 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 {
     switch (GetItemType(item)) {
     case ITYPE_BOW:
-#if defined(SID_RangeBonusBow1) && (SID_RangeBonusBow1 < MAX_SKILL_NUM)
+#if defined(SID_RangeBonusBow1) && (COMMON_SKILL_VALID(SID_RangeBonusBow1))
         if (SkillTester(unit, SID_RangeBonusBow1))
             range = range + 1;
 #endif
 
-#if defined(SID_RangeBonusBow2) && (SID_RangeBonusBow2 < MAX_SKILL_NUM)
+#if defined(SID_RangeBonusBow2) && (COMMON_SKILL_VALID(SID_RangeBonusBow2))
         if (SkillTester(unit, SID_RangeBonusBow2))
             range = range + 2;
 #endif
 
-#if defined(SID_RunningStart) && (SID_RunningStart < MAX_SKILL_NUM)
+#if defined(SID_RunningStart) && (COMMON_SKILL_VALID(SID_RunningStart))
         if (SkillTester(unit, SID_RunningStart))
             range = range + gActionData.moveCount/2;
 #endif
@@ -66,12 +66,12 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
     case ITYPE_ANIMA:
     case ITYPE_LIGHT:
     case ITYPE_DARK:
-#if defined(SID_RangeBonusBMag1) && (SID_RangeBonusBMag1 < MAX_SKILL_NUM)
+#if defined(SID_RangeBonusBMag1) && (COMMON_SKILL_VALID(SID_RangeBonusBMag1))
         if (SkillTester(unit, SID_RangeBonusBMag1))
             range = range + 1;
 #endif
 
-#if defined(SID_RangeBonusBMag2) && (SID_RangeBonusBMag2 < MAX_SKILL_NUM)
+#if defined(SID_RangeBonusBMag2) && (COMMON_SKILL_VALID(SID_RangeBonusBMag2))
         if (SkillTester(unit, SID_RangeBonusBMag2))
             range = range + 2;
 #endif

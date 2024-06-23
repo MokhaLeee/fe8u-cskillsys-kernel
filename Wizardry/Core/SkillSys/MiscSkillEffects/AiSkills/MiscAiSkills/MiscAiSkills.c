@@ -91,7 +91,7 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 
 #if CHAX
 
-#if defined(SID_Shade) && (SID_Shade < MAX_SKILL_NUM)
+#if defined(SID_Shade) && (COMMON_SKILL_VALID(SID_Shade))
             /* Shade skill may make unit avoid to be target */
             if (SkillTester(unit, SID_Shade))
             {
@@ -100,7 +100,7 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
             }
 #endif
 
-#if defined(SID_ShadePlus) && (SID_ShadePlus < MAX_SKILL_NUM)
+#if defined(SID_ShadePlus) && (COMMON_SKILL_VALID(SID_ShadePlus))
             if (SkillTester(unit, SID_ShadePlus))
                 continue;
 #endif
@@ -175,7 +175,7 @@ int AiGetDamageDealtCombatScoreComponent(void)
 {
     int score = AiGetDamageDealtCombatScoreComponentVanilla();
 
-#if defined(SID_Provoke) && (SID_Provoke < MAX_SKILL_NUM)
+#if defined(SID_Provoke) && (COMMON_SKILL_VALID(SID_Provoke))
     if (SkillTester(&gBattleTarget.unit, SID_Provoke))
         score += 50;
 #endif

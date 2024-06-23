@@ -64,7 +64,7 @@ bool PostActionSkillSavageBlow(ProcPtr parent)
     struct Unit * unit = gActiveUnit;
     struct Unit * target = GetUnit(gActionData.targetIndex);
 
-#if defined(SID_SavageBlow) && (SID_SavageBlow < MAX_SKILL_NUM)
+#if defined(SID_SavageBlow) && (COMMON_SKILL_VALID(SID_SavageBlow))
     if (!SkillTester(unit, SID_SavageBlow) || !UNIT_IS_VALID(target))
 #else
     if (1)

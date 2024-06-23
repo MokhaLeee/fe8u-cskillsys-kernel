@@ -17,7 +17,7 @@ STATIC_DECLAR bool CheckUnitNullEffective(struct Unit * unit)
     if (attributes & IA_NEGATE_FLYING)
         return true;
 
-#if (defined(SID_Nullify) && (SID_Nullify < MAX_SKILL_NUM))
+#if (defined(SID_Nullify) && (COMMON_SKILL_VALID(SID_Nullify)))
     /* Check unit */
     if (SkillTester(unit, SID_Nullify))
         return true;
@@ -98,7 +98,7 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
     }
 
     /* Check skills */
-#if (defined(SID_Slayer) && (SID_Slayer < MAX_SKILL_NUM))
+#if (defined(SID_Slayer) && (COMMON_SKILL_VALID(SID_Slayer)))
     if (SkillTester(actor, SID_Slayer))
     {
         if (CheckClassBeast(jid_target))
@@ -106,7 +106,7 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
     }
 #endif
 
-#if (defined(SID_Skybreaker) && (SID_Skybreaker < MAX_SKILL_NUM))
+#if (defined(SID_Skybreaker) && (COMMON_SKILL_VALID(SID_Skybreaker)))
     if (SkillTester(actor, SID_Skybreaker))
     {
         if (CheckClassFlier(jid_target))

@@ -13,17 +13,17 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 {
     int ret = 0;
 
-#if defined(SID_Renewal) && (SID_Renewal < MAX_SKILL_NUM)
+#if defined(SID_Renewal) && (COMMON_SKILL_VALID(SID_Renewal))
     if (SkillTester(unit, SID_Renewal))
         ret += Div(GetUnitMaxHp(unit) * 3, 10);
 #endif
 
-#if defined(SID_Imbue) && (SID_Imbue < MAX_SKILL_NUM)
+#if defined(SID_Imbue) && (COMMON_SKILL_VALID(SID_Imbue))
     if (SkillTester(unit, SID_Imbue))
         ret += GetUnitMagic(unit);
 #endif
 
-#if defined(SID_Forager) && (SID_Forager < MAX_SKILL_NUM)
+#if defined(SID_Forager) && (COMMON_SKILL_VALID(SID_Forager))
     if (SkillTester(unit, SID_Forager))
     {
         const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];

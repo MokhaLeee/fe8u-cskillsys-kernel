@@ -40,7 +40,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
             continue;
 
-#if defined(SID_PowHone) && (SID_PowHone < MAX_SKILL_NUM)
+#if defined(SID_PowHone) && (COMMON_SKILL_VALID(SID_PowHone))
         if (SkillTester(unit, SID_PowHone))
         {
             PowHone_eff = true;
@@ -48,7 +48,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_MagHone) && (SID_MagHone < MAX_SKILL_NUM)
+#if defined(SID_MagHone) && (COMMON_SKILL_VALID(SID_MagHone))
         if (SkillTester(unit, SID_MagHone))
         {
             MagHone_eff = true;
@@ -56,7 +56,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_SklHone) && (SID_SklHone < MAX_SKILL_NUM)
+#if defined(SID_SklHone) && (COMMON_SKILL_VALID(SID_SklHone))
         if (SkillTester(unit, SID_SklHone))
         {
             SklHone_eff = true;
@@ -64,7 +64,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_SpdHone) && (SID_SpdHone < MAX_SKILL_NUM)
+#if defined(SID_SpdHone) && (COMMON_SKILL_VALID(SID_SpdHone))
         if (SkillTester(unit, SID_SpdHone))
         {
             SpdHone_eff = true;
@@ -72,7 +72,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_LckHone) && (SID_LckHone < MAX_SKILL_NUM)
+#if defined(SID_LckHone) && (COMMON_SKILL_VALID(SID_LckHone))
         if (SkillTester(unit, SID_LckHone))
         {
             LckHone_eff = true;
@@ -80,7 +80,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_DefHone) && (SID_DefHone < MAX_SKILL_NUM)
+#if defined(SID_DefHone) && (COMMON_SKILL_VALID(SID_DefHone))
         if (SkillTester(unit, SID_DefHone))
         {
             DefHone_eff = true;
@@ -88,7 +88,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_ResHone) && (SID_ResHone < MAX_SKILL_NUM)
+#if defined(SID_ResHone) && (COMMON_SKILL_VALID(SID_ResHone))
         if (SkillTester(unit, SID_ResHone))
         {
             ResHone_eff = true;
@@ -96,7 +96,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_HoneCavalry) && (SID_HoneCavalry < MAX_SKILL_NUM)
+#if defined(SID_HoneCavalry) && (COMMON_SKILL_VALID(SID_HoneCavalry))
         if (CheckClassCavalry(UNIT_CLASS_ID(unit)))
         {
             if (SkillTester(unit, SID_HoneCavalry))
@@ -107,7 +107,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_HoneFlier) && (SID_HoneFlier < MAX_SKILL_NUM)
+#if defined(SID_HoneFlier) && (COMMON_SKILL_VALID(SID_HoneFlier))
         if (CheckClassFlier(UNIT_CLASS_ID(unit)))
         {
             if (SkillTester(unit, SID_HoneFlier))
@@ -118,7 +118,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_HoneArmor) && (SID_HoneArmor < MAX_SKILL_NUM)
+#if defined(SID_HoneArmor) && (COMMON_SKILL_VALID(SID_HoneArmor))
         if (CheckClassArmor(UNIT_CLASS_ID(unit)))
         {
             if (SkillTester(unit, SID_HoneArmor))
@@ -129,7 +129,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         }
 #endif
 
-#if defined(SID_FortifyArmor) && (SID_FortifyArmor < MAX_SKILL_NUM)
+#if defined(SID_FortifyArmor) && (COMMON_SKILL_VALID(SID_FortifyArmor))
         if (CheckClassArmor(UNIT_CLASS_ID(unit)))
         {
             if (SkillTester(unit, SID_FortifyArmor))

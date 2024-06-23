@@ -8,7 +8,7 @@
 
 void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-#if defined(SID_LEGEND_InoriAtk) && (SID_LEGEND_InoriAtk < MAX_SKILL_NUM)
+#if defined(SID_LEGEND_InoriAtk) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAtk))
     if (SkillTesterLegendActivated(&attacker->unit, SID_LEGEND_InoriAtk))
     {
         attacker->battleAttack += 10;
@@ -16,7 +16,7 @@ void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit *
     }
 #endif
 
-#if defined(SID_LEGEND_InoriAvo) && (SID_LEGEND_InoriAvo < MAX_SKILL_NUM)
+#if defined(SID_LEGEND_InoriAvo) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAvo))
     if (SkillTesterLegendActivated(&attacker->unit, SID_LEGEND_InoriAvo))
     {
         attacker->battleAvoidRate += 100;
@@ -26,7 +26,7 @@ void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit *
 
 int SpdGetterLegendSkills(int status, struct Unit * unit)
 {
-#if defined(SID_LEGEND_InoriAvo) && (SID_LEGEND_InoriAvo < MAX_SKILL_NUM)
+#if defined(SID_LEGEND_InoriAvo) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAvo))
     if (SkillTesterLegendActivated(unit, SID_LEGEND_InoriAvo))
         status += 10;
 #endif
@@ -36,7 +36,7 @@ int SpdGetterLegendSkills(int status, struct Unit * unit)
 
 int DefGetterLegendSkills(int status, struct Unit * unit)
 {
-#if defined(SID_LEGEND_InoriDef) && (SID_LEGEND_InoriDef < MAX_SKILL_NUM)
+#if defined(SID_LEGEND_InoriDef) && (COMMON_SKILL_VALID(SID_LEGEND_InoriDef))
     if (SkillTesterLegendActivated(unit, SID_LEGEND_InoriDef))
         status += 10;
 #endif
@@ -46,7 +46,7 @@ int DefGetterLegendSkills(int status, struct Unit * unit)
 
 int ResGetterLegendSkills(int status, struct Unit * unit)
 {
-#if defined(SID_LEGEND_InoriDef) && (SID_LEGEND_InoriDef < MAX_SKILL_NUM)
+#if defined(SID_LEGEND_InoriDef) && (COMMON_SKILL_VALID(SID_LEGEND_InoriDef))
     if (SkillTesterLegendActivated(unit, SID_LEGEND_InoriDef))
         status += 10;
 #endif

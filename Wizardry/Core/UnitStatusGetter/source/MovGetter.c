@@ -28,35 +28,35 @@ int MovGetterSkills(int status, struct Unit * unit)
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);
 
-#if defined(SID_LuckySeven) && (SID_LuckySeven < MAX_SKILL_NUM)
+#if defined(SID_LuckySeven) && (COMMON_SKILL_VALID(SID_LuckySeven))
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_MOV)
         status += 7;
 #endif
 
     if(cur_hp == max_hp)
     {
-#if defined(SID_PushMovement) && (SID_PushMovement < MAX_SKILL_NUM)
+#if defined(SID_PushMovement) && (COMMON_SKILL_VALID(SID_PushMovement))
         if (SkillTester(unit, SID_PushMovement))
             status += 5;
 #endif
 
-#if defined(SID_PushSpectrum) && (SID_PushSpectrum < MAX_SKILL_NUM)
+#if defined(SID_PushSpectrum) && (COMMON_SKILL_VALID(SID_PushSpectrum))
         if (SkillTester(unit, SID_PushSpectrum))
             status += 5;
 #endif
     }
 
-#if defined(SID_EvenFooted) && (SID_EvenFooted < MAX_SKILL_NUM)
+#if defined(SID_EvenFooted) && (COMMON_SKILL_VALID(SID_EvenFooted))
     if (SkillTester(unit, SID_EvenFooted) && (gPlaySt.chapterTurnNumber % 2) == 0)
         status += 1;
 #endif
 
-#if defined(SID_OddFooted) && (SID_OddFooted < MAX_SKILL_NUM)
+#if defined(SID_OddFooted) && (COMMON_SKILL_VALID(SID_OddFooted))
     if (SkillTester(unit, SID_OddFooted) && (gPlaySt.chapterTurnNumber % 2) == 1)
         status += 1;
 #endif
 
-#if defined(SID_SpeedBoost) && (SID_SpeedBoost < MAX_SKILL_NUM)
+#if defined(SID_SpeedBoost) && (COMMON_SKILL_VALID(SID_SpeedBoost))
     if (SkillTester(unit, SID_SpeedBoost))
     {
         if (gPlaySt.chapterTurnNumber >= 6)

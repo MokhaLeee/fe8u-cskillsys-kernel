@@ -6,7 +6,7 @@
 
 bool PrePhaseFunc_AversaNight(ProcPtr proc)
 {
-#if defined(SID_AversaNight) && (SID_AversaNight < MAX_SKILL_NUM)
+#if defined(SID_AversaNight) && (COMMON_SKILL_VALID(SID_AversaNight))
     int uid;
     int max_hp = 0;
     bool AversaNight_eff = false;

@@ -94,7 +94,7 @@ It should be noted that each category can only accommodate **254** skills. If th
 To avoid compilation errors, you'd better to add skill index detection on effect routine to fasten the game and avoid potential warnning on compiling:
 
 ```c
-#if defined(SID_xxx) && (SID_xxx < MAX_SKILL_NUM)
+#if defined(SID_xxx) && (COMMON_SKILL_VALID(SID_xxx))
     // Some effects
 #endif
 ```

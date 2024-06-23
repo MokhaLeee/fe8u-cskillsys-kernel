@@ -4,7 +4,7 @@
 #include "constants/skills.h"
 
 const struct WeaponTriangleConf gWeaponTriangleConfs[] = {
-#if defined(SID_AxeBreaker) && (SID_AxeBreaker < MAX_SKILL_NUM)
+#if defined(SID_AxeBreaker) && (COMMON_SKILL_VALID(SID_AxeBreaker))
     {
         .wtype_a = ITYPE_SWORD,
         .wtype_b = ITYPE_AXE,
@@ -15,7 +15,7 @@ const struct WeaponTriangleConf gWeaponTriangleConfs[] = {
     },
 #endif
 
-#if defined(SID_LanceBreaker) && (SID_LanceBreaker < MAX_SKILL_NUM)
+#if defined(SID_LanceBreaker) && (COMMON_SKILL_VALID(SID_LanceBreaker))
     {
         .wtype_a = ITYPE_AXE,
         .wtype_b = ITYPE_LANCE,
@@ -26,7 +26,7 @@ const struct WeaponTriangleConf gWeaponTriangleConfs[] = {
     },
 #endif
 
-#if defined(SID_SwordBreaker) && (SID_SwordBreaker < MAX_SKILL_NUM)
+#if defined(SID_SwordBreaker) && (COMMON_SKILL_VALID(SID_SwordBreaker))
     {
         .wtype_a = ITYPE_LANCE,
         .wtype_b = ITYPE_SWORD,
@@ -37,7 +37,7 @@ const struct WeaponTriangleConf gWeaponTriangleConfs[] = {
     },
 #endif
 
-#if defined(SID_BowBreaker) && (SID_BowBreaker < MAX_SKILL_NUM)
+#if defined(SID_BowBreaker) && (COMMON_SKILL_VALID(SID_BowBreaker))
     {
         .wtype_a = ITYPE_ANIMA,
         .wtype_b = ITYPE_BOW,
@@ -64,7 +64,7 @@ const struct WeaponTriangleConf gWeaponTriangleConfs[] = {
     },
 #endif
 
-#if defined(SID_BMagBreaker) && (SID_BMagBreaker < MAX_SKILL_NUM)
+#if defined(SID_BMagBreaker) && (COMMON_SKILL_VALID(SID_BMagBreaker))
     {
         .wtype_a = ITYPE_BOW,
         .wtype_b = ITYPE_ANIMA,

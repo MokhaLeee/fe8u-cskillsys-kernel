@@ -68,7 +68,7 @@ bool PostActionSkillBreathOfLife(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
 
-#if defined(SID_Canto) && (SID_Canto < MAX_SKILL_NUM)
+#if defined(SID_Canto) && (COMMON_SKILL_VALID(SID_Canto))
     if (!SkillTester(unit, SID_BreathOfLife))
 #else
     if (1)

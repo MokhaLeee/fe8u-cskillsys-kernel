@@ -59,7 +59,7 @@ bool PostActionThunderstorm(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
 
-#if defined(SID_Thunderstorm) && (SID_Thunderstorm < MAX_SKILL_NUM)
+#if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
     if (!SkillTester(unit, SID_Thunderstorm))
 #else
     if (1)

@@ -94,7 +94,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
     if (&gBattleActor == actor)
     {
-#if defined(SID_WaryFighter) && (SID_WaryFighter < MAX_SKILL_NUM)
+#if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
         if (SkillTester(real_target, SID_WaryFighter))
             if ((GetUnitCurrentHp(real_target) * 2) > HpMaxGetter(real_target))
                 return false;
@@ -102,7 +102,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
         gBattleTemporaryFlag.order_dobule_lion = false;
 
-#if defined(SID_DoubleLion) && (SID_DoubleLion < MAX_SKILL_NUM)
+#if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
         if (SkillTester(real_actor, SID_DoubleLion))
         {
             if (GetUnitCurrentHp(real_actor) == HpMaxGetter(real_actor))
@@ -118,7 +118,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     {
         gBattleTemporaryFlag.order_quick_riposte = false;
 
-#if defined(SID_QuickRiposte) && (SID_QuickRiposte < MAX_SKILL_NUM)
+#if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
         if (SkillTester(real_actor, SID_QuickRiposte))
         {
             if ((GetUnitCurrentHp(real_target) * 2) > HpMaxGetter(real_target))
@@ -142,7 +142,7 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 
     gBattleTemporaryFlag.order_desperation = false;
 
-#if defined(SID_Desperation) && (SID_Desperation < MAX_SKILL_NUM)
+#if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
     if (SkillTester(actor, SID_Desperation))
     {
         if ((GetUnitCurrentHp(actor) * 2) < HpMaxGetter(actor))
@@ -262,7 +262,7 @@ void BattleUnwind(void)
         if (i != 0 && config[i - 1] == config[i])
             gBattleHitIterator->attributes = BATTLE_HIT_ATTR_FOLLOWUP;
 
-#if defined(SID_Vantage) && (SID_Vantage < MAX_SKILL_NUM)
+#if defined(SID_Vantage) && (COMMON_SKILL_VALID(SID_Vantage))
         /* Vantage */
         if (i == 0 && (round_mask & UNWIND_VANTAGE))
         {
@@ -271,7 +271,7 @@ void BattleUnwind(void)
         }
 #endif
 
-#if defined(SID_Desperation) && (SID_Desperation < MAX_SKILL_NUM)
+#if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
         /* Desperation */
         if (i == 1 && (round_mask & UNWIND_DESPERA))
         {
@@ -283,7 +283,7 @@ void BattleUnwind(void)
         }
 #endif
 
-#if defined(SID_QuickRiposte) && (SID_QuickRiposte < MAX_SKILL_NUM)
+#if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
         /* Target double attack */
         if (target_count > 1 && config[i] == TAR_ATTACK)
         {
@@ -292,7 +292,7 @@ void BattleUnwind(void)
         }
 #endif
 
-#if defined(SID_DoubleLion) && (SID_DoubleLion < MAX_SKILL_NUM)
+#if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
         /* Actor double attack */
         if (actor_count > 1 && config[i] == ACT_ATTACK)
         {
@@ -382,7 +382,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     if (BattleCheckBraveEffect(actor))
         result = result + 1;
 
-#if defined(SID_RuinedBladePlus) && (SID_RuinedBladePlus < MAX_SKILL_NUM)
+#if defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus))
     if (SkillTester(&actor->unit, SID_RuinedBladePlus))
     {
         EnqueueRoundEfxSkill(SID_RuinedBladePlus);
@@ -390,7 +390,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     }
 #endif
 
-#if defined(SID_Astra) && (SID_Astra < MAX_SKILL_NUM)
+#if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (actor == &gBattleActor && CheckBattleSkillActivte(actor, target, SID_Astra, actor->unit.spd))
     {
         EnqueueRoundEfxSkill(SID_Astra);
@@ -399,7 +399,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     }
 #endif
 
-#if defined(SID_Adept) && (SID_Adept < MAX_SKILL_NUM)
+#if defined(SID_Adept) && (COMMON_SKILL_VALID(SID_Adept))
     if (SkillTester(&actor->unit, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
     {
         EnqueueRoundEfxSkill(SID_Adept);

@@ -33,7 +33,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
     if (GetUnitEquippedWeapon(gActiveUnit) == 0)
         return false;
 
-#if defined(SID_Teleportation) && (SID_Teleportation < MAX_SKILL_NUM)
+#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
     if (!SkillTester(gActiveUnit, SID_Teleportation))
 #else
     if (1)

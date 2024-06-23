@@ -34,46 +34,46 @@ int SklGetterSkills(int status, struct Unit * unit)
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);
 
-#if defined(SID_SklBonus) && (SID_SklBonus < MAX_SKILL_NUM)
+#if defined(SID_SklBonus) && (COMMON_SKILL_VALID(SID_SklBonus))
     if (SkillTester(unit, SID_SklBonus))
         status += 2;
 #endif
 
-#if defined(SID_DefiantSkl) && (SID_DefiantSkl < MAX_SKILL_NUM)
+#if defined(SID_DefiantSkl) && (COMMON_SKILL_VALID(SID_DefiantSkl))
     if (SkillTester(unit, SID_DefiantSkl))
         if ((cur_hp * 4) < max_hp)
             status += 7;
 #endif
 
-#if defined(SID_Fury) && (SID_Fury < MAX_SKILL_NUM)
+#if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
     if (SkillTester(unit, SID_Fury))
         status += 3;
 #endif
 
-#if defined(SID_FuryPlus) && (SID_FuryPlus < MAX_SKILL_NUM)
+#if defined(SID_FuryPlus) && (COMMON_SKILL_VALID(SID_FuryPlus))
     if (SkillTester(unit, SID_FuryPlus))
         status += 4;
 #endif
 
-#if defined(SID_LuckySeven) && (SID_LuckySeven < MAX_SKILL_NUM)
+#if defined(SID_LuckySeven) && (COMMON_SKILL_VALID(SID_LuckySeven))
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_SKL)
         status += 7;
 #endif
 
     if(cur_hp == max_hp)
     {
-#if defined(SID_PushSkill) && (SID_PushSkill < MAX_SKILL_NUM)
+#if defined(SID_PushSkill) && (COMMON_SKILL_VALID(SID_PushSkill))
         if (SkillTester(unit, SID_PushSkill))
             status += 5;
 #endif
 
-#if defined(SID_PushSpectrum) && (SID_PushSpectrum < MAX_SKILL_NUM)
+#if defined(SID_PushSpectrum) && (COMMON_SKILL_VALID(SID_PushSpectrum))
         if (SkillTester(unit, SID_PushSpectrum))
             status += 5;
 #endif
     }
 
-#if (defined(SID_Resolve) && (SID_Resolve < MAX_SKILL_NUM)) 
+#if (defined(SID_Resolve) && (COMMON_SKILL_VALID(SID_Resolve))) 
     if (SkillTester(unit, SID_Resolve))
     {
         if ((cur_hp * 2) < max_hp)

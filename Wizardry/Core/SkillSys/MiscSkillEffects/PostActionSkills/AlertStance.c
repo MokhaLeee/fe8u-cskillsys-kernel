@@ -16,7 +16,7 @@ bool PostActionAlertStance(ProcPtr parent)
 
     if (gActionData.unitActionType == UNIT_ACTION_WAIT)
     {
-#if defined(SID_AlertStancePlus) && (SID_AlertStancePlus < MAX_SKILL_NUM)
+#if defined(SID_AlertStancePlus) && (COMMON_SKILL_VALID(SID_AlertStancePlus))
         if (SkillTester(unit, SID_AlertStancePlus))
         {
             SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID_PLUS);
@@ -26,7 +26,7 @@ bool PostActionAlertStance(ProcPtr parent)
         }
 #endif
 
-#if defined(SID_AlertStance) && (SID_AlertStance < MAX_SKILL_NUM)
+#if defined(SID_AlertStance) && (COMMON_SKILL_VALID(SID_AlertStance))
         if (SkillTester(unit, SID_AlertStance))
         {
             SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID);

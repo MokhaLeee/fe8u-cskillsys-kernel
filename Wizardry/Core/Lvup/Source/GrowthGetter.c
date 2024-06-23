@@ -11,12 +11,12 @@ STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit * unit)
 {
     int new = status;
 
-#if defined(SID_Blossom) && (SID_Blossom < MAX_SKILL_NUM)
+#if defined(SID_Blossom) && (COMMON_SKILL_VALID(SID_Blossom))
     if (SkillTester(unit, SID_Blossom))
         new = new + status * 2;
 #endif
 
-#if defined(SID_Aptitude) && (SID_Aptitude < MAX_SKILL_NUM)
+#if defined(SID_Aptitude) && (COMMON_SKILL_VALID(SID_Aptitude))
     if (SkillTester(unit, SID_Aptitude))
         new = new + Div(status * 2, 10);
 #endif

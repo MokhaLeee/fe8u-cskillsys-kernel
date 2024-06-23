@@ -66,7 +66,7 @@ bool PostActionPositionReturn(ProcPtr proc)
     if (gActiveUnit->state & US_UNAVAILABLE)
         return false;
 
-#if defined(SID_PosReturn) && (SID_PosReturn < MAX_SKILL_NUM)
+#if defined(SID_PosReturn) && (COMMON_SKILL_VALID(SID_PosReturn))
     if (!SkillTester(gActiveUnit, SID_PosReturn))
 #else
     if (1)
