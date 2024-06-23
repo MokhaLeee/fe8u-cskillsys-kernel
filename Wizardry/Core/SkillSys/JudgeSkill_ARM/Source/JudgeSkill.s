@@ -24,7 +24,7 @@ _SkillTester:
 .4byte 0
 
     /**
-     * 1. If only skill index range from 0x01~0xFE can be found in RAM list
+     * 1. Only skill index range from 0x01~0xFE can be found in RAM list
      * 2. person/job list aims to support all 0x400 skills
      * 3. item list is limited to judge only skill index 0x300~0x400 on consideration of performance issue 
      */
