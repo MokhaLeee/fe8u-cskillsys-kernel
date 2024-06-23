@@ -21,36 +21,46 @@ _SkillTester:
     lsr r3, r1, #8          // r3 = sid_list
     add pc, pc, r3, lsl #2
 
-.Lend_direct:
-    bx lr
+.4byte 0
 
-.testers:
+.Ltesters:
     b _SkillTester_Generic
     b _SkillTester_PInfo
     b _SkillTester_JInfo
     b _SkillTester_IInfo
 
-.Lend:
+.Lend_true:
+    mov r0, #1
     pop {r4, lr}
     bx lr
 
-.Lend_true:
-    mov r0, #1
-    b .Lend
-
 .Lend_false:
     mov r0, #0
-    b .Lend
+    pop {r4, lr}
+    bx lr
 
 _SkillTester_Generic:
-    mov r1, #0x32
-1:
-    ldrb r3, [r0, r1]
+    ldrb r3, [r0, #0x32]
     cmp r2, r3
     beq .Lend_true
-    add r1, #1
-    cmp r1, #0x38
-    bne 1b
+    ldrb r3, [r0, #0x33]
+    cmp r2, r3
+    beq .Lend_true
+    ldrb r3, [r0, #0x34]
+    cmp r2, r3
+    beq .Lend_true
+    ldrb r3, [r0, #0x35]
+    cmp r2, r3
+    beq .Lend_true
+    ldrb r3, [r0, #0x36]
+    cmp r2, r3
+    beq .Lend_true
+    ldrb r3, [r0, #0x37]
+    cmp r2, r3
+    beq .Lend_true
+    ldrb r3, [r0, #0x38]
+    cmp r2, r3
+    beq .Lend_true
     b .Lend_false
 
 _SkillTester_PInfo:
