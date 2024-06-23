@@ -84,10 +84,10 @@ _SkillTester_PInfo:
 .L_Table:
     ldr r1, [r4]
     add r1, r1, r0, lsl #1
-    ldrb r0, [r1]
+    ldrh r0, [r1]
     cmp r2, r0
     beq .Lend_true
-    ldrb r0, [r1, #1]
+    ldrh r0, [r1, #1]
     cmp r2, r0
     beq .Lend_true
     mov pc, lr
