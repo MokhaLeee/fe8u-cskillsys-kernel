@@ -2051,6 +2051,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_HighGround) && COMMON_SKILL_VALID(SID_HighGround))
+    [SID_HighGround] = {
+        .desc = MSG_SKILL_HighGround,
+        .icon = GFX_SkillIcon_HighGround,
+    },
+#endif
+
 #if (defined(SID_Airlock) && COMMON_SKILL_VALID(SID_Airlock))
     [SID_Airlock] = {
         .desc = MSG_SKILL_Airlock,
