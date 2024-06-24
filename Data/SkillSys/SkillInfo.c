@@ -2092,4 +2092,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_SandStream,
     },
 #endif
+
+#if (defined(SID_PointBlank) && COMMON_SKILL_VALID(SID_PointBlank))
+    [SID_PointBlank] = {
+        .desc = MSG_SKILL_PointBlank,
+        .icon = GFX_SkillIcon_PointBlank,
+    },
+#endif
 };

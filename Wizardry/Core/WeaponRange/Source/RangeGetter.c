@@ -24,6 +24,12 @@ int GetItemMinRangeRework(u16 item, struct Unit * unit)
     {
 
     }
+#if defined(SID_PointBlank) && (COMMON_SKILL_VALID(SID_PointBlank))
+        if (SkillTester(unit, SID_PointBlank) && GetItemType(item) == ITYPE_BOW)
+        {
+            status = 1;
+        }
+#endif
     return status;
 }
 
