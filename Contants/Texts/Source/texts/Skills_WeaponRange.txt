@@ -27,3 +27,8 @@ every two tiles moved.[X]
 HighGround:[NL]
 +2 range for bows and tomes[NL]
 when unit is atop forts.[X]
+
+## MSG_SKILL_PointBlank
+PointBlank:[NL]
+Set minimum range[NL]
+of bows to 1.[X]
