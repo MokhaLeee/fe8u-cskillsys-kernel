@@ -65,7 +65,13 @@ bool _SkillTester(struct Unit * unit, const u16 sid)
         if (_SkillTester_IInfo(unit, sid))
             return true;
 
-        /* fall through */
+        if (_SkillTester_PInfo(unit, sid))
+            return true;
+
+        if (_SkillTester_JInfo(unit, sid))
+            return true;
+
+        return false;
 
     case Skill_INFO_PERSON:
     case Skill_INFO_JOB:
@@ -75,10 +81,19 @@ bool _SkillTester(struct Unit * unit, const u16 sid)
         if (_SkillTester_JInfo(unit, sid))
             return true;
 
-        /* fall through */
+        return false;
 
     case Skill_INFO_GENERIC:
-        return _SkillTester_Generic(unit, sid);
+        if (_SkillTester_Generic(unit, sid))
+            return true;
+        
+        if (_SkillTester_PInfo(unit, sid))
+            return true;
+
+        if (_SkillTester_JInfo(unit, sid))
+            return true;
+
+        return false;
     }
 
     return false;
