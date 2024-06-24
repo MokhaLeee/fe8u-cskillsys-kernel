@@ -5,3 +5,4 @@ SID_Armsthrift
 
 // Weapon range
 SID_HighGround
+SID_Armsthrift

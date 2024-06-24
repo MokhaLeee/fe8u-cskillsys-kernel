@@ -4,6 +4,7 @@
 ALIGN 4
 #include "source/GameInit.lyn.event"
 
+/* void (*)(void) */
 ALIGN 4
 gGameInitHookTable:
 #ifdef CONFIG_USE_ARM_SKILLTESTER

@@ -54,7 +54,7 @@ int AddSkill(struct Unit * unit, const u16 sid)
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
     {
-        if (!SKILL_VALID(list[i]))
+        if (!GENERIC_SKILL_VALID(list[i]))
         {
             list[i] = sid;
             ResetSkillLists();
@@ -79,7 +79,7 @@ void UnitAutoLoadSkills(struct Unit * unit)
         for (i = 0; i < 5; i++)
         {
             sid = pConf->skills[level + i];
-            if (SKILL_VALID(sid))
+            if (GENERIC_SKILL_VALID(sid))
             {
                 if (UNIT_FACTION(unit) == FACTION_BLUE)
                     LearnSkill(unit, sid);
@@ -88,7 +88,7 @@ void UnitAutoLoadSkills(struct Unit * unit)
             }
 
             sid = jConf->skills[level + i];
-            if (SKILL_VALID(sid))
+            if (GENERIC_SKILL_VALID(sid))
             {
                 if (UNIT_FACTION(unit) == FACTION_BLUE)
                     LearnSkill(unit, sid);
@@ -123,7 +123,7 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
     {
         sid = pConf->skills[_level + i];
 
-        if (SKILL_VALID(sid))
+        if (GENERIC_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -140,7 +140,7 @@ STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
     {
         sid = jConf->skills[_level + i];
 
-        if (SKILL_VALID(sid))
+        if (GENERIC_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -175,7 +175,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid)
     {
         sid = jConf->skills[0 + i];
 
-        if (SKILL_VALID(sid))
+        if (GENERIC_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }

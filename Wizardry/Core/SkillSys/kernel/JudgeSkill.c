@@ -57,21 +57,43 @@ static bool _SkillTester_IInfo(struct Unit * unit, const u16 sid)
 
 bool _SkillTester(struct Unit * unit, const u16 sid)
 {
-    if (!UNIT_IS_VALID(unit) || !SKILL_VALID(sid))
+    if (!UNIT_IS_VALID(unit) || !COMMON_SKILL_VALID(sid))
         return false;
 
     switch (SKILL_INDEX_LIST(sid)) {
-    case Skill_INFO_GENERIC:
-        return _SkillTester_Generic(unit, sid);
+    case Skill_INFO_ITEM:
+        if (_SkillTester_IInfo(unit, sid))
+            return true;
+
+        if (_SkillTester_PInfo(unit, sid))
+            return true;
+
+        if (_SkillTester_JInfo(unit, sid))
+            return true;
+
+        return false;
 
     case Skill_INFO_PERSON:
-        return _SkillTester_PInfo(unit, sid);
-
     case Skill_INFO_JOB:
-        return _SkillTester_JInfo(unit, sid);
+        if (_SkillTester_PInfo(unit, sid))
+            return true;
 
-    case Skill_INFO_ITEM:
-        return _SkillTester_IInfo(unit, sid);
+        if (_SkillTester_JInfo(unit, sid))
+            return true;
+
+        return false;
+
+    case Skill_INFO_GENERIC:
+        if (_SkillTester_Generic(unit, sid))
+            return true;
+        
+        if (_SkillTester_PInfo(unit, sid))
+            return true;
+
+        if (_SkillTester_JInfo(unit, sid))
+            return true;
+
+        return false;
     }
 
     return false;

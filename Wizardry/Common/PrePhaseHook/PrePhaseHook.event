@@ -1,9 +1,11 @@
 #include "Source/PrePhaseHook.lyn.event"
 
+/* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPrePhaseFuncs:
     POIN PrePhaseFunc_AversaNight
     POIN PrePhaseFunc_HoneFortify
+    POIN PrePhaseFunc_SetWeatherType
     WORD 0 0 0 0 0
 
 PUSH

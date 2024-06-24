@@ -14,7 +14,7 @@ STATIC_DECLAR u8 GetUnitLegendarySkill(struct Unit * unit)
     for (i = 0; ; i++)
     {
         sid = gpLegendSkillPool[i];
-        if (!SKILL_VALID(sid))
+        if (!COMMON_SKILL_VALID(sid))
             break;
 
         if (SkillTester(unit, sid))

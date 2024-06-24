@@ -18,6 +18,7 @@
 #include "PrePhaseSkills/PrePhaseHeal.lyn.event"
 #include "PrePhaseSkills/AversaNight.lyn.event"
 #include "PrePhaseSkills/HoneFortify.lyn.event"
+#include "PrePhaseSkills/WeatherSkills.lyn.event"
 #include "PrePhaseSkills/LynJump.event"
 
 #include "AiSkills/Teleportation.event"
