@@ -2099,4 +2099,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_PointBlank,
     },
 #endif
+
+#if (defined(SID_StaffSavant) && COMMON_SKILL_VALID(SID_StaffSavant))
+    [SID_StaffSavant] = {
+        .desc = MSG_SKILL_StaffSavant,
+        .icon = GFX_SkillIcon_StaffSavant,
+    },
+#endif
 };
