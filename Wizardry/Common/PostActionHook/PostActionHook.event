@@ -4,6 +4,7 @@
 #include "Extensions/ProcDefinitions.txt"
 #include "source/PostActionHook.lyn.event"
 
+/* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPostActionFuncs:
     POIN PostActionBattleActorSelfHurt PostActionBattleTargetSelfHurt
