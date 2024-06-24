@@ -22,14 +22,11 @@ int GetItemMinRangeRework(u16 item, struct Unit * unit)
 
     if (IS_UNIT_PTR(unit))
     {
-
-    }
 #if defined(SID_PointBlank) && (COMMON_SKILL_VALID(SID_PointBlank))
         if (SkillTester(unit, SID_PointBlank) && GetItemType(item) == ITYPE_BOW)
-        {
             status = 1;
-        }
 #endif
+    }
     return status;
 }
 
@@ -65,7 +62,7 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 
 #if defined(SID_RunningStart) && (COMMON_SKILL_VALID(SID_RunningStart))
         if (SkillTester(unit, SID_RunningStart))
-            range = range + gActionData.moveCount/2;
+            range = range + gActionData.moveCount / 2;
 #endif
 
 #if defined(SID_HighGround) && (COMMON_SKILL_VALID(SID_HighGround))
