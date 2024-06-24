@@ -1,25 +1,29 @@
-#include "global.h"
-#include "proc.h"
-#include "uiselecttarget.h"
-#include "bmunit.h"
-
 #include "common-chax.h"
-#include "debuff.h"
 #include "skill-system.h"
 #include "constants/skills.h"
-#include "strmag.h"
 
-void PrePhaseFunc_SetWeatherType(ProcPtr proc)
+/**
+ * It seems still hold some problem to put such hook
+ * in pre-pahse (PROC_START_CHILD_BLOCKING(gProcScr_GorgonEggHatchDisplay) in BMAPMAIN).
+ * But since no problems for corner cases were found in the current test, let's leave it this way for now
+ */
+
+enum weather_skills_priority {
+    WEATHER_PRIORITY_0,
+    WEATHER_PRIORITY_SAND,
+    WEATHER_PRIORITY_SNOW,
+    WEATHER_PRIORITY_RAIN,
+    WEATHER_PRIORITY_FLAMES,
+};
+
+bool PrePhaseFunc_SetWeatherType(ProcPtr proc)
 {
     int uid;
+    int priv_level = WEATHER_PRIORITY_0;
+    int weather = gPlaySt.chapterWeatherId;
 
-    /* Flags to keep track of which weathers have been triggered.
-     * Airlock not provided as it has the highest priority.
-     * SandStream not provided as it has the lowest priority.  
-     */
-    bool Weather_Sunny_Set = false;
-    bool Weather_Rain_Set = false;
-    bool Weather_Snow_Set = false;
+    if (gPlaySt.chapterTurnNumber >= 2)
+        return false;
 
     for (uid = gPlaySt.faction + 1; uid < gPlaySt.faction + 0x40; uid++)
     {
@@ -31,44 +35,51 @@ void PrePhaseFunc_SetWeatherType(ProcPtr proc)
             continue;
 
 #if defined(SID_Airlock) && (COMMON_SKILL_VALID(SID_Airlock))
-    if (SkillTester(unit, SID_Airlock))
-    {
-        gPlaySt.chapterWeatherId = WEATHER_CLOUDS;
-        break;  // Exit the loop once this weather has been set, as it has the highest priority
-    }
+        if (SkillTester(unit, SID_Airlock))
+        {
+            /* Highest priority */
+            SetWeather(WEATHER_FINE);
+            return true;
+        }
 #endif
 
 #if defined(SID_Drought) && (COMMON_SKILL_VALID(SID_Drought))
-    if (SkillTester(unit, SID_Drought))
-    {
-        gPlaySt.chapterWeatherId = WEATHER_FLAMES;
-        Weather_Sunny_Set = true;
-    }
+        if (SkillTester(unit, SID_Drought))
+        {
+            weather = WEATHER_FLAMES;
+            priv_level = WEATHER_PRIORITY_FLAMES;
+        }
 #endif
 
 #if defined(SID_Drizzle) && (COMMON_SKILL_VALID(SID_Drizzle))
-    if (SkillTester(unit, SID_Drizzle) && !Weather_Sunny_Set)
-    {
-        gPlaySt.chapterWeatherId = WEATHER_RAIN;
-        Weather_Rain_Set = true;
-    }
+        if (SkillTester(unit, SID_Drizzle) && priv_level < WEATHER_PRIORITY_RAIN)
+        {
+            weather = WEATHER_RAIN;
+            priv_level = WEATHER_PRIORITY_RAIN;
+        }
 #endif
 
 #if defined(SID_SnowWarning) && (COMMON_SKILL_VALID(SID_SnowWarning))
-    if (SkillTester(unit, SID_SnowWarning) && !Weather_Rain_Set)
-    {
-        gPlaySt.chapterWeatherId = WEATHER_SNOWSTORM;
-        Weather_Snow_Set = true;
-    }
+        if (SkillTester(unit, SID_SnowWarning) && priv_level < WEATHER_PRIORITY_SNOW)
+        {
+            weather = WEATHER_SNOWSTORM;
+            priv_level = WEATHER_PRIORITY_SNOW;
+        }
 #endif
 
 #if defined(SID_SandStream) && (COMMON_SKILL_VALID(SID_SandStream))
-    if (SkillTester(unit, SID_SandStream) && !Weather_Snow_Set)
-    {
-        gPlaySt.chapterWeatherId = WEATHER_SANDSTORM;
-    }
+        if (SkillTester(unit, SID_SandStream) && priv_level < WEATHER_PRIORITY_SAND)
+        {
+            weather = WEATHER_SANDSTORM;
+            priv_level = WEATHER_PRIORITY_SAND;
+        }
 #endif
     }
 
-    return;
+    if (weather != gPlaySt.chapterWeatherId)
+    {
+        SetWeather(weather);
+        return true;
+    }
+    return false;
 }
