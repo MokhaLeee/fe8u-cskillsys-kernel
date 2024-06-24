@@ -2050,4 +2050,39 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Armsthrift,
     },
 #endif
+
+#if (defined(SID_Airlock) && COMMON_SKILL_VALID(SID_Airlock))
+    [SID_Airlock] = {
+        .desc = MSG_SKILL_Airlock,
+        .icon = GFX_SkillIcon_Airlock,
+    },
+#endif
+
+#if (defined(SID_Drought) && COMMON_SKILL_VALID(SID_Drought))
+    [SID_Drought] = {
+        .desc = MSG_SKILL_Drought,
+        .icon = GFX_SkillIcon_Drought,
+    },
+#endif
+
+#if (defined(SID_Drizzle) && COMMON_SKILL_VALID(SID_Drizzle))
+    [SID_Drizzle] = {
+        .desc = MSG_SKILL_Drizzle,
+        .icon = GFX_SkillIcon_Drizzle,
+    },
+#endif
+
+#if (defined(SID_SnowWarning) && COMMON_SKILL_VALID(SID_SnowWarning))
+    [SID_SnowWarning] = {
+        .desc = MSG_SKILL_SnowWarning,
+        .icon = GFX_SkillIcon_SnowWarning,
+    },
+#endif
+
+#if (defined(SID_SandStream) && COMMON_SKILL_VALID(SID_SandStream))
+    [SID_SandStream] = {
+        .desc = MSG_SKILL_SandStream,
+        .icon = GFX_SkillIcon_SandStream,
+    },
+#endif
 };
