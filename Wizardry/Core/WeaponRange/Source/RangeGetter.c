@@ -46,6 +46,17 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit)
 int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 {
     switch (GetItemType(item)) {
+        case ITYPE_BOW:
+        case ITYPE_ANIMA:
+        case ITYPE_LIGHT:
+        case ITYPE_DARK:
+#if defined(SID_HighGround) && (COMMON_SKILL_VALID(SID_HighGround))
+        if (SkillTester(unit, SID_HighGround) && gBmMapTerrain[unit->yPos][unit->xPos] == TERRAIN_FORT)
+            range = range + 2;
+#endif
+    }
+
+    switch (GetItemType(item)) {
     case ITYPE_BOW:
 #if defined(SID_RangeBonusBow1) && (COMMON_SKILL_VALID(SID_RangeBonusBow1))
         if (SkillTester(unit, SID_RangeBonusBow1))

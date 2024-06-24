@@ -22,3 +22,8 @@ R-Start[X]
 RunningStart:[NL]
 +1 attack range for[NL]
 every two tiles moved.[X]
+
+## MSG_SKILL_HighGround
+HighGround:[NL]
++2 range for bows and tomes[NL]
+when unit is atop forts.[X]

@@ -2050,4 +2050,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Armsthrift,
     },
 #endif
+
+#if (defined(SID_HighGround) && COMMON_SKILL_VALID(SID_HighGround))
+    [SID_HighGround] = {
+        .desc = MSG_SKILL_HighGround,
+        .icon = GFX_SkillIcon_HighGround,
+    },
+#endif
 };
