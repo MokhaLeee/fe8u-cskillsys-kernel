@@ -1,11 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "fontgrp.h"
-#include "statscreen.h"
-#include "hardware.h"
-#include "bmitem.h"
-#include "icon.h"
-
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "skill-system.h"

@@ -1,7 +1,3 @@
-#include "global.h"
-#include "icon.h"
-#include "hardware.h"
-
 #include "common-chax.h"
 #include "icon-rework.h"
 

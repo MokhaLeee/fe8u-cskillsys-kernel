@@ -1,8 +1,8 @@
     .INCLUDE "macro.inc"
 
     .SYNTAX UNIFIED
-    ARM_FUNC_START _SkillTester
-_SkillTester:
+    ARM_FUNC_START _SkillTester_ARM
+_SkillTester_ARM:
     push {r4, lr}
 
      @ UNIT_IS_VALID

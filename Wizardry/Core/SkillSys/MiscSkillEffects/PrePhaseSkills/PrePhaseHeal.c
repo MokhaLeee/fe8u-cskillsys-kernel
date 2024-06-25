@@ -1,8 +1,3 @@
-#include "global.h"
-#include "proc.h"
-#include "uiselecttarget.h"
-#include "bmunit.h"
-
 #include "common-chax.h"
 #include "debuff.h"
 #include "skill-system.h"

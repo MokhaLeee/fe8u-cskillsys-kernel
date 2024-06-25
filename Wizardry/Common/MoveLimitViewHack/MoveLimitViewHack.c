@@ -1,7 +1,3 @@
-#include "global.h"
-#include "playerphase.h"
-#include "hardware.h"
-
 #include "common-chax.h"
 #include "weapon-range.h"
 

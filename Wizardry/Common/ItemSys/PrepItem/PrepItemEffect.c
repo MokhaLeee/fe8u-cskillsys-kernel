@@ -1,10 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "prepscreen.h"
-#include "soundwrapper.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 
 void PrepItemEffect_StatBooster(struct ProcPrepItemUse * proc, u16 item);

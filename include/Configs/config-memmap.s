@@ -32,7 +32,7 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 .endm
 
 /* From the bottom to the top */
-_kernel_malloc sSkillList, 0x30
+_kernel_malloc sSkillList, 0x40
 _kernel_malloc sStatScreenPage1BarMax, 4
 _kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21

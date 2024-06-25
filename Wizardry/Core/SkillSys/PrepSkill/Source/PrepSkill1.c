@@ -1,17 +1,6 @@
 /**
  * On select unit
  */
-
-#include "global.h"
-#include "proc.h"
-#include "prepscreen.h"
-#include "hardware.h"
-#include "soundwrapper.h"
-#include "statscreen.h"
-#include "icon.h"
-#include "sysutil.h"
-#include "helpbox.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "prep-skill.h"

@@ -61,8 +61,16 @@ char * SkillDescToName(char * str);
 char * GetSkillNameStrFormDesc(const u16 sid);
 char * GetSkillNameStr(const u16 sid);
 
-/* Judge list */
-#define SKILL_LIST_MAX_AMT 15
+/**
+ * 7 generic skill
+ * 2 person skill
+ * 2 job skill
+ * 10 item skill
+ * 
+ * (maybe todo) 2 weapon skill
+ */
+#define SKILL_LIST_MAX_AMT 23
+
 struct SkillList {
     struct UnitListHeader header;
     u8 amt;
@@ -73,13 +81,8 @@ struct SkillList * GetUnitSkillList(struct Unit * unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */
-#ifndef CONFIG_USE_ARM_SKILLTESTER
-    bool _SkillTester(struct Unit * unit, const u16 sid);
-    #define SkillTester _SkillTester
-#else
-    bool _SkillTester_ARM(struct Unit * unit, const u16 sid);
-    #define SkillTester _SkillTester_ARM
-#endif
+bool _SkillTester(struct Unit * unit, const u16 sid);
+#define SkillTester _SkillTester
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {

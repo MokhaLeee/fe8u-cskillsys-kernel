@@ -1,8 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "agb_sram.h"
-
 #include "common-chax.h"
 #include "combat-art.h"
 

@@ -1,5 +1,3 @@
-#include "global.h"
-
 #include "common-chax.h"
 #include "battle-system.h"
 #include "skill-system.h"

@@ -1,11 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "prepscreen.h"
-#include "bmitemuse.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 
 STATIC_DECLAR bool CanUnitUseMetiStome(struct Unit * unit, int item);

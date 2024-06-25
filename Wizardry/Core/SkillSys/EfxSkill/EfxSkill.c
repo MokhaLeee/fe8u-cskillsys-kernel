@@ -1,10 +1,3 @@
-#include "global.h"
-#include "anime.h"
-#include "ekrbattle.h"
-#include "efxbattle.h"
-#include "proc.h"
-#include "hardware.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "efx-skill.h"

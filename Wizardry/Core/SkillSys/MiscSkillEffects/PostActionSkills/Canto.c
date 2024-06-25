@@ -1,15 +1,3 @@
-
-#include "global.h"
-#include "bmmap.h"
-#include "bmunit.h"
-#include "proc.h"
-#include "mu.h"
-#include "bm.h"
-#include "rng.h"
-#include "eventinfo.h"
-#include "bmudisp.h"
-#include "bmmind.h"
-
 #include "common-chax.h"
 #include "status-getter.h"
 #include "battle-system.h"

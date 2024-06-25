@@ -1,8 +1,3 @@
-#include "global.h"
-#include "uimenu.h"
-#include "bmmenu.h"
-#include "fontgrp.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "combat-art.h"

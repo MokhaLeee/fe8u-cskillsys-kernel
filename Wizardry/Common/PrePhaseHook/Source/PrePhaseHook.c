@@ -1,4 +1,4 @@
-#include "gbafe.h"
+#include "common-chax.h"
 
 struct ProcPrePhase {
     PROC_HEADER;

@@ -1,11 +1,3 @@
-#include "global.h"
-#include "proc.h"
-#include "ctc.h"
-#include "bmlib.h"
-#include "hardware.h"
-#include "bm.h"
-#include "soundwrapper.h"
-
 #include "common-chax.h"
 #include "map-anims.h"
 

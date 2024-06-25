@@ -1,7 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-
 #include "common-chax.h"
 #include "strmag.h"
 #include "lvup.h"

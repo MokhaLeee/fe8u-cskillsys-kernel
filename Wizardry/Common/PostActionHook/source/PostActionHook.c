@@ -1,7 +1,3 @@
-#include "global.h"
-#include "proc.h"
-#include "bmtrap.h"
-
 #include "common-chax.h"
 #include "combat-art.h"
 #include "skill-system.h"

@@ -1,9 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "mu.h"
-#include "proc.h"
-#include "bmmind.h"
-
 #include "common-chax.h"
 #include "debuff.h"
 #include "skill-system.h"

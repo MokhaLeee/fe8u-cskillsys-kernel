@@ -1,12 +1,3 @@
-#include "global.h"
-#include "icon.h"
-#include "ctc.h"
-#include "anime.h"
-#include "hardware.h"
-#include "fontgrp.h"
-#include "bmlib.h"
-#include "ekrbattle.h"
-
 #include "common-chax.h"
 #include "efx-skill.h"
 #include "icon-rework.h"

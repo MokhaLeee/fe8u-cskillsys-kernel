@@ -1,12 +1,4 @@
 #include "common-chax.h"
-#include "bmunit.h"
-#include "bmsave.h"
-#include "sram-layout.h"
-#include "uimenu.h"
-#include "bmmind.h"
-#include "event.h"
-#include "bmmind.h"
-
 #include "debug-kit.h"
 #include "save-data.h"
 #include "strmag.h"

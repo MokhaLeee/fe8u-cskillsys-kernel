@@ -1,9 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "bmusemind.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 #include "strmag.h"
 

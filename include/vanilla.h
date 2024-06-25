@@ -102,3 +102,13 @@ void AiScript_Exec(u8 *);
 void SetSupportLevelGained(u8 charA, u8 charB);
 s8 HasUnitGainedSupportLevel(struct Unit * unit, int num);
 extern int sSupportMaxExpLookup[];
+
+void TryAddUnitToHealTargetList(struct Unit * unit);
+void TryAddUnitToRestoreTargetList(struct Unit * unit);
+void TryAddUnitToBarrierTargetList(struct Unit * unit);
+void TryAddUnitToRescueStaffTargetList(struct Unit * unit);
+void TryAddUnitToSilenceTargetList(struct Unit * unit);
+void TryAddUnitToSleepTargetList(struct Unit * unit);
+void TryAddUnitToBerserkTargetList(struct Unit * unit);
+void TryAddUnitToWarpTargetList(struct Unit * unit);
+void TryAddUnitToHammerneTargetList(struct Unit * unit);

@@ -1,7 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "agb_sram.h"
-
 #include "common-chax.h"
 #include "bwl.h"
 #include "skill-system.h"

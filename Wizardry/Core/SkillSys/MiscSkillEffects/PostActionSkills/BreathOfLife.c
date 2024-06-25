@@ -1,12 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "uiselecttarget.h"
-#include "bmtarget.h"
-#include "bmmap.h"
-#include "proc.h"
-#include "bmidoten.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "map-anims.h"

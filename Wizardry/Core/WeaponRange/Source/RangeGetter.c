@@ -1,9 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "bmmap.h"
-#include "bmidoten.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "status-getter.h"
@@ -49,6 +43,13 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit)
 int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 {
     switch (GetItemType(item)) {
+    case ITYPE_STAFF:
+#if defined(SID_StaffSavant) && (COMMON_SKILL_VALID(SID_StaffSavant))
+        if (SkillTester(unit, SID_StaffSavant))
+            range = range + 1;
+#endif
+        break;
+        
     case ITYPE_BOW:
 #if defined(SID_RangeBonusBow1) && (COMMON_SKILL_VALID(SID_RangeBonusBow1))
         if (SkillTester(unit, SID_RangeBonusBow1))

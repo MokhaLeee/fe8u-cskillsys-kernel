@@ -2,20 +2,6 @@
  * On select skills
  */
 
-#include "global.h"
-#include "proc.h"
-#include "prepscreen.h"
-#include "hardware.h"
-#include "fontgrp.h"
-#include "soundwrapper.h"
-#include "statscreen.h"
-#include "bm.h"
-#include "icon.h"
-#include "bmlib.h"
-#include "uiutils.h"
-#include "sysutil.h"
-#include "constants/video-global.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "prep-skill.h"

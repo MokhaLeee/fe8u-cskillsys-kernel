@@ -7,3 +7,11 @@ SID_Synchronize
 // Weapon range
 SID_HighGround
 SID_PointBlank
+SID_StaffSavant
+
+// Weather skills
+SID_Airlock
+SID_Drought
+SID_Drizzle
+SID_SnowWarning
+SID_SandStream

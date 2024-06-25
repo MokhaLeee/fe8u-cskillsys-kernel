@@ -1,8 +1,3 @@
-#include "global.h"
-#include "bmsave.h"
-#include "agb_sram.h"
-#include "hardware.h"
-
 #include "common-chax.h"
 #include "save-data.h"
 

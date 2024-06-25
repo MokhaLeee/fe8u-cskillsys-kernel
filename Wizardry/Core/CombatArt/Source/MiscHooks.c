@@ -1,13 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-#include "hardware.h"
-#include "bmbattle.h"
-#include "uimenu.h"
-#include "bmmenu.h"
-#include "playerphase.h"
-#include "bksel.h"
-
 #include "common-chax.h"
 #include "combat-art.h"
 #include "constants/gfx.h"

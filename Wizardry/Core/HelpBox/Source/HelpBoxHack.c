@@ -1,10 +1,3 @@
-#include "global.h"
-#include "fontgrp.h"
-#include "statscreen.h"
-#include "soundwrapper.h"
-#include "bmitem.h"
-#include "helpbox.h"
-
 #include "common-chax.h"
 #include "help-box.h"
 #include "combat-art.h"

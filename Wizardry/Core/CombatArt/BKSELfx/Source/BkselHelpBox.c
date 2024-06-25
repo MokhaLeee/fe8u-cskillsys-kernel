@@ -1,10 +1,3 @@
-#include "global.h"
-#include "fontgrp.h"
-#include "bksel.h"
-#include "hardware.h"
-#include "statscreen.h"
-#include "helpbox.h"
-
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "help-box.h"

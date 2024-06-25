@@ -1,7 +1,3 @@
-#include "global.h"
-#include "fontgrp.h"
-#include "statscreen.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "stat-screen.h"
