@@ -259,13 +259,6 @@ SID_LckHone
 SID_DefHone
 SID_ResHone
 
-// Weather skills
-SID_Airlock
-SID_Drought
-SID_Drizzle
-SID_SnowWarning
-SID_SandStream
-
 // Lvup skills
 SID_Blossom
 SID_Paragon
