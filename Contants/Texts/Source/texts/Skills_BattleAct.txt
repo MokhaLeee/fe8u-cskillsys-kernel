@@ -127,3 +127,8 @@ this round (Skill % activation).[X]
 SureShot:[NL]
 100% hit rate, and attack deals[NL]
 +50% damage (Skill % activation).[X]
+
+## MSG_SKILL_Synchronize
+Synchronize:[NL]
+Copy this unit's status[NL]
+effect to the enemy.[X]
