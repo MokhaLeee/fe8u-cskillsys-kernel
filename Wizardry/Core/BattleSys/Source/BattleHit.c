@@ -85,10 +85,13 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
     if (SkillTester(&attacker->unit, SID_Synchronize))
     {
-        if(GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE)
+        if (UNIT_FACTION(&attacker->unit) != UNIT_FACTION(&defender->unit))
         {
-            gBattleTemporaryFlag.skill_activated_synchronize = true;
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
+            if(GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE)
+            {
+                gBattleTemporaryFlag.skill_activated_synchronize = true;
+                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
+            }
         }
     }
 #endif
@@ -498,8 +501,9 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         }
         else if (gBattleTemporaryFlag.skill_activated_synchronize) 
         {
-            /* At this stage, the attacker's unit status is reset
-            ** so we have to grab it from the unit struct to apply it.
+           /** 
+            * At this stage, the attacker's unit status is reset
+            * so we have to grab it from the unit struct to apply it.
             */
             defender->statusOut = GetUnitStatusIndex(&attacker->unit);
         }
