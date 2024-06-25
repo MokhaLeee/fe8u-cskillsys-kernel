@@ -73,9 +73,4 @@
 #define CONFIG_UNIT_AMT_ENEMY 50
 #define CONFIG_UNIT_AMT_NPC   8
 
-/**
- * Use ARM call for skill-tester
- */
-#define CONFIG_USE_ARM_SKILLTESTER
-
 #endif /* CONFIG_INSTALLED */

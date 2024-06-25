@@ -81,13 +81,8 @@ struct SkillList * GetUnitSkillList(struct Unit * unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */
-#ifndef CONFIG_USE_ARM_SKILLTESTER
-    bool _SkillTester(struct Unit * unit, const u16 sid);
-    #define SkillTester _SkillTester
-#else
-    bool _SkillTester_ARM(struct Unit * unit, const u16 sid);
-    #define SkillTester _SkillTester_ARM
-#endif
+bool _SkillTester(struct Unit * unit, const u16 sid);
+#define SkillTester _SkillTester
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {

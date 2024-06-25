@@ -6,12 +6,7 @@
 #include "kernel/LoadSkill.lyn.event"
 #include "kernel/EquipSkill.lyn.event"
 #include "kernel/SkillList.lyn.event"
-
-#ifdef CONFIG_USE_ARM_SKILLTESTER
-    #include "kernel/JudgeSkill_ARM.event"
-#else
-    #include "kernel/JudgeSkill.lyn.event"
-#endif
+#include "kernel/JudgeSkill_ARM.event"
 
 /* EfxSkill */
 #include "EfxSkill/EkrSkill.lyn.event"
