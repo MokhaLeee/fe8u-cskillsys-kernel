@@ -64,39 +64,47 @@ int AddSkill(struct Unit * unit, const u16 sid)
     return -1;
 }
 
+static inline void load_skill_ext(struct Unit * unit, u16 sid)
+{
+    if (GENERIC_SKILL_VALID(sid))
+    {
+        if (UNIT_FACTION(unit) == FACTION_BLUE)
+            LearnSkill(unit, sid);
+
+        AddSkill(unit, sid);
+    }
+}
+
 void UnitAutoLoadSkills(struct Unit * unit)
 {
-    u16 sid;
     int i;
+    int level_p, level_j;
     const struct SkillPreloadPConf * pConf = &gSkillPreloadPData[UNIT_CHAR_ID(unit)];
     const struct SkillPreloadJConf * jConf = &gSkillPreloadJData[UNIT_CLASS_ID(unit)];
-    int level = simple_div(unit->level, 5) * 5;
 
-    LIMIT_AREA(level, 0, UNIT_LEVEL_MAX_RE);
+    if (!UNIT_IS_VALID(unit))
+        return;
 
-    while (level >= 0)
+    level_p = simple_div(unit->level, 5) * 5;
+    level_j = simple_div(unit->level + GetUnitHiddenLevel(unit), 5) * 5;
+
+    LIMIT_AREA(level_p, 0, UNIT_LEVEL_MAX_RE);
+    LIMIT_AREA(level_j, 0, UNIT_RECORDED_LEVEL_MAX);
+
+    while (level_p >= 0)
     {
         for (i = 0; i < 5; i++)
-        {
-            sid = pConf->skills[level + i];
-            if (GENERIC_SKILL_VALID(sid))
-            {
-                if (UNIT_FACTION(unit) == FACTION_BLUE)
-                    LearnSkill(unit, sid);
+            load_skill_ext(unit, pConf->skills[level_p + i]);
 
-                AddSkill(unit, sid);
-            }
+        level_p = level_p - 5;
+    }
 
-            sid = jConf->skills[level + i];
-            if (GENERIC_SKILL_VALID(sid))
-            {
-                if (UNIT_FACTION(unit) == FACTION_BLUE)
-                    LearnSkill(unit, sid);
+    while (level_j >= 0)
+    {
+        for (i = 0; i < 5; i++)
+            load_skill_ext(unit, jConf->skills[level_j + i]);
 
-                AddSkill(unit, sid);
-            }
-        }
-        level = level - 5;
+        level_j = level_j - 5;
     }
 
 #ifdef CONFIG_DEBUG_UNIT_LOAD_SKILL
