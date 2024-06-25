@@ -156,7 +156,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 
     /* Blow skills */
-    if (attacker == &gBattleActor)
+    if (attacker == &gBattleActor && !(gBattleStats.config & BATTLE_CONFIG_ARENA))
     {
 #if (defined(SID_BlowDarting) && (COMMON_SKILL_VALID(SID_BlowDarting)))
         if (SkillTester(&attacker->unit, SID_BlowDarting))
@@ -236,7 +236,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 
     /* Stance skills */
-    if (attacker == &gBattleTarget)
+    if (attacker == &gBattleTarget && !(gBattleStats.config & BATTLE_CONFIG_ARENA))
     {
 #if (defined(SID_StanceBracing) && (COMMON_SKILL_VALID(SID_StanceBracing)))
         if (SkillTester(&attacker->unit, SID_StanceBracing))
@@ -326,7 +326,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         }
 #endif
 
-// Non-Stance defender skill
+        // Non-Stance defender skill
 #if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
         if (SkillTester(&attacker->unit, SID_StrongRiposte))
                 attacker->battleAttack += 3;

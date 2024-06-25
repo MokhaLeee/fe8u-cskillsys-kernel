@@ -156,7 +156,7 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
 
     /* For non-ballista combat, Distance +2, hit rate -20% for actor */
-    if (gBattleStats.range > 2 && attacker == &gBattleActor && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA))
+    if (gBattleStats.range > 2 && attacker == &gBattleActor && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA) && !(gBattleStats.config & BATTLE_CONFIG_ARENA))
     {
         attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
 
