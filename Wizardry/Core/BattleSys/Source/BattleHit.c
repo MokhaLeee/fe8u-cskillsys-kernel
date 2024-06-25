@@ -499,19 +499,23 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
-        
 #if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
-    if (SkillTester(&attacker->unit, SID_Synchronize))
-    {
-        if (UNIT_FACTION(&attacker->unit) != UNIT_FACTION(&defender->unit))
+        else if (SkillTester(&attacker->unit, SID_Synchronize))
         {
-            if(GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE)
+            int debuff_act = GetUnitStatusIndex(&attacker->unit);
+            if (debuff_act != UNIT_STATUS_NONE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE && (defender->statusOut != -1))
             {
-                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
-                defender->statusOut = GetUnitStatusIndex(&attacker->unit);
+                /**
+                 * For ally, share the buff
+                 * otherwise give debuff
+                 */
+                if ((UNIT_FACTION(&attacker->unit) != UNIT_FACTION(&defender->unit)) == (gpDebuffInfos[debuff_act].type == STATUS_INFO_TYPE_DEBUFF))
+                {
+                    RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
+                    defender->statusOut = debuff_act;
+                }
             }
         }
-    }
 #endif
     }
 
