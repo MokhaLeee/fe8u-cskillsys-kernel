@@ -2,6 +2,7 @@ SID_AversaNight
 SID_Supply
 SID_Inori
 SID_Armsthrift
+SID_Synchronize
 
 // Weapon range
 SID_HighGround

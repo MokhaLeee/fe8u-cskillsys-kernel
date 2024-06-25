@@ -2100,6 +2100,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Synchronize) && COMMON_SKILL_VALID(SID_Synchronize))
+    [SID_Synchronize] = {
+        .desc = MSG_SKILL_Synchronize,
+        .icon = GFX_SkillIcon_Synchronize,
+    },
+#endif
+
 #if (defined(SID_StaffSavant) && COMMON_SKILL_VALID(SID_StaffSavant))
     [SID_StaffSavant] = {
         .desc = MSG_SKILL_StaffSavant,
