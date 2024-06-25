@@ -506,7 +506,8 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
              * Share the buff to allies and debuff to enemy.
              */
             int debuff_act = GetUnitStatusIndex(&attacker->unit);
-            if (debuff_act != UNIT_STATUS_NONE && (AreUnitsAllied(attacker->unit.index, defender->unit.index) == IsDebuff(debuff_act)))
+            bool is_enemy = !AreUnitsAllied(attacker->unit.index, defender->unit.index);
+            if (debuff_act != UNIT_STATUS_NONE && (is_enemy == IsDebuff(debuff_act)))
             {
                 RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
                 defender->statusOut = debuff_act;
