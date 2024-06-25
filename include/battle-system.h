@@ -69,7 +69,6 @@ extern struct {
     u32 order_dobule_lion : 1;
     u32 skill_activated_sure_shoot : 1;
     u32 skill_activated_dead_eye : 1;
-    u32 skill_activated_synchronize : 1;
 } gBattleTemporaryFlag;
 
 /* Battle skill act */

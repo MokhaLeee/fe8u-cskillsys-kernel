@@ -80,22 +80,6 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     }
 #endif
 
-    gBattleTemporaryFlag.skill_activated_synchronize = false;
-
-#if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
-    if (SkillTester(&attacker->unit, SID_Synchronize))
-    {
-        if (UNIT_FACTION(&attacker->unit) != UNIT_FACTION(&defender->unit))
-        {
-            if(GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE)
-            {
-                gBattleTemporaryFlag.skill_activated_synchronize = true;
-                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
-            }
-        }
-    }
-#endif
-
     LIMIT_AREA(gBattleStats.attack, 0, 255);
     LIMIT_AREA(gBattleStats.defense, 0, 255);
     LIMIT_AREA(gBattleStats.hitRate, 0, 100);
@@ -499,14 +483,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         {
             defender->statusOut = UNIT_STATUS_SLEEP;
         }
-        else if (gBattleTemporaryFlag.skill_activated_synchronize) 
-        {
-           /** 
-            * At this stage, the attacker's unit status is reset
-            * so we have to grab it from the unit struct to apply it.
-            */
-            defender->statusOut = GetUnitStatusIndex(&attacker->unit);
-        }
         else if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON ||
 #if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
             SkillTester(&attacker->unit, SID_PoisonPoint)
@@ -523,6 +499,20 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
+        
+#if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
+    if (SkillTester(&attacker->unit, SID_Synchronize))
+    {
+        if (UNIT_FACTION(&attacker->unit) != UNIT_FACTION(&defender->unit))
+        {
+            if(GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE)
+            {
+                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
+                defender->statusOut = GetUnitStatusIndex(&attacker->unit);
+            }
+        }
+    }
+#endif
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
