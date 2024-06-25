@@ -36,6 +36,20 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
     if (COMMON_SKILL_VALID(sid))
         tmp_list[sid] = true;
 
+    /* item */
+    for (i = 0; i < UNIT_ITEM_COUNT; i++)
+    {
+        u8 iid = ITEM_INDEX(unit->items[i]);
+
+        sid = gpConstSkillTable_Item[iid * 2];
+        if (COMMON_SKILL_VALID(sid))
+            tmp_list[sid] = true;
+
+        sid = gpConstSkillTable_Item[iid * 2 + 1];
+        if (COMMON_SKILL_VALID(sid))
+            tmp_list[sid] = true;
+    }
+
     /* generic */
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
     {

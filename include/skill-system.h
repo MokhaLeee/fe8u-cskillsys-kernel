@@ -61,8 +61,16 @@ char * SkillDescToName(char * str);
 char * GetSkillNameStrFormDesc(const u16 sid);
 char * GetSkillNameStr(const u16 sid);
 
-/* Judge list */
-#define SKILL_LIST_MAX_AMT 15
+/**
+ * 7 generic skill
+ * 2 person skill
+ * 2 job skill
+ * 10 item skill
+ * 
+ * (maybe todo) 2 weapon skill
+ */
+#define SKILL_LIST_MAX_AMT 23
+
 struct SkillList {
     struct UnitListHeader header;
     u8 amt;

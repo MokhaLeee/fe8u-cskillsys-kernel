@@ -3,6 +3,8 @@
 
 bool JudgeUnitListHeader(struct Unit * unit, struct UnitListHeader * ref)
 {
+    int i;
+
     if (!UNIT_IS_VALID(unit) || !ref)
         return false;
 
@@ -18,14 +20,17 @@ bool JudgeUnitListHeader(struct Unit * unit, struct UnitListHeader * ref)
     if (ref->level != unit->level)
         return false;
 
-    if (ref->weapon != ITEM_INDEX(GetUnitEquippedWeapon(unit)))
-        return false;
+    for (i = 0; i < UNIT_ITEM_COUNT; i++)
+        if (ref->items[i] != ITEM_INDEX(unit->items[i]))
+            return false;
 
     return true;
 }
 
 void WriteUnitListHeader(struct Unit * unit, struct UnitListHeader * out)
 {
+    int i;
+
     if (!UNIT_IS_VALID(unit) || !out)
         return;
 
@@ -33,5 +38,7 @@ void WriteUnitListHeader(struct Unit * unit, struct UnitListHeader * out)
     out->pid = UNIT_CHAR_ID(unit);
     out->jid = UNIT_CLASS_ID(unit);
     out->level = unit->level;
-    out->weapon = ITEM_INDEX(GetUnitEquippedWeapon(unit));
+
+    for (i = 0; i < UNIT_ITEM_COUNT; i++)
+        out->items[i] = ITEM_INDEX(unit->items[i]);
 }

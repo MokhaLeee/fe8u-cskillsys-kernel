@@ -5,8 +5,9 @@
 struct UnitListHeader {
     s8 uid;
     u8 pid, jid, level;
-    u8 weapon;
-    u8 _pad_[11];
+    u8 items[UNIT_ITEM_COUNT];
+
+    u8 _pad_[7];
 };
 
 bool JudgeUnitListHeader(struct Unit * unit, struct UnitListHeader * ref);
