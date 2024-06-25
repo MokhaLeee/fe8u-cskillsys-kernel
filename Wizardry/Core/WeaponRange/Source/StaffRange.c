@@ -1,21 +1,5 @@
-#include "global.h"
-#include "bmmap.h"
-#include "bmtarget.h"
-#include "uiselecttarget.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 #include "weapon-range.h"
-
-void TryAddUnitToHealTargetList(struct Unit * unit);
-void TryAddUnitToRestoreTargetList(struct Unit * unit);
-void TryAddUnitToBarrierTargetList(struct Unit * unit);
-void TryAddUnitToRescueStaffTargetList(struct Unit * unit);
-void TryAddUnitToSilenceTargetList(struct Unit * unit);
-void TryAddUnitToSleepTargetList(struct Unit * unit);
-void TryAddUnitToBerserkTargetList(struct Unit * unit);
-void TryAddUnitToWarpTargetList(struct Unit * unit);
-void TryAddUnitToHammerneTargetList(struct Unit * unit);
 
 /* LynJump */
 void MakeTargetListForAdjacentHeal(struct Unit * unit)

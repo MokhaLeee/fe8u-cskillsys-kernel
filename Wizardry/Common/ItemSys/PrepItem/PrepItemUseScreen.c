@@ -1,13 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "prepscreen.h"
-#include "hardware.h"
-#include "fontgrp.h"
-#include "uiutils.h"
-#include "soundwrapper.h"
-#include "mapanim.h"
-#include "bmusemind.h"
-
 #include "common-chax.h"
 #include "strmag.h"
 #include "status-getter.h"

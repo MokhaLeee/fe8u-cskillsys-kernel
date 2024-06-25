@@ -1,13 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "fontgrp.h"
-#include "statscreen.h"
-#include "anime.h"
-#include "ekrbattle.h"
-#include "ekrdragon.h"
-#include "efxbattle.h"
-#include "hardware.h"
-
 #include "common-chax.h"
 #include "debuff.h"
 

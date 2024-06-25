@@ -1,8 +1,3 @@
-#include "global.h"
-#include "bmitem.h"
-#include "bmunit.h"
-#include "statscreen.h"
-
 #include "common-chax.h"
 #include "weapon-range.h"
 

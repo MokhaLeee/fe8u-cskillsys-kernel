@@ -1,7 +1,3 @@
-#include "global.h"
-#include "rng.h"
-#include "agb_sram.h"
-
 #include "common-chax.h"
 #include "rn.h"
 

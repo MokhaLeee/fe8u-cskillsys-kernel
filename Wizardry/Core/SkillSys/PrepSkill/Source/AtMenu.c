@@ -1,8 +1,3 @@
-#include "global.h"
-#include "proc.h"
-#include "prepscreen.h"
-#include "uichapterstatus.h"
-
 #include "common-chax.h"
 #include "prep-skill.h"
 

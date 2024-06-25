@@ -1,7 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "status-getter.h"

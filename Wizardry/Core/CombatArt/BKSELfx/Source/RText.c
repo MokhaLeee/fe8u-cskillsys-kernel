@@ -1,8 +1,3 @@
-#include "global.h"
-#include "bksel.h"
-#include "fontgrp.h"
-#include "statscreen.h"
-
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "battle-system.h"

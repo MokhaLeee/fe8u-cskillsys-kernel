@@ -1,8 +1,4 @@
-#include "global.h"
-#include "anime.h"
-#include "ekrbattle.h"
-#include "efxbattle.h"
-
+#include "common-chax.h"
 #include "skill-system.h"
 #include "efx-skill.h"
 #include "combat-art.h"

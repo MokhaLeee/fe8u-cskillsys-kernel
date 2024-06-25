@@ -1,10 +1,4 @@
 #include "common-chax.h"
-#include "bmsave.h"
-#include "sram-layout.h"
-#include "bmcontainer.h"
-#include "bmmind.h"
-#include "eventinfo.h"
-
 #include "save-data.h"
 
 typedef void (* new_save_hook)(void);

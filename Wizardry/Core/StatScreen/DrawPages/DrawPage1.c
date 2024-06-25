@@ -1,13 +1,3 @@
-#include "global.h"
-#include "fontgrp.h"
-#include "hardware.h"
-#include "bmunit.h"
-#include "statscreen.h"
-#include "bmreliance.h"
-#include "icon.h"
-#include "ctc.h"
-#include "bm.h"
-
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "strmag.h"

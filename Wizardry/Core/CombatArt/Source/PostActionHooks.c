@@ -1,11 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "proc.h"
-#include "bmmap.h"
-#include "uiselecttarget.h"
-#include "bmtarget.h"
-#include "bmidoten.h"
-
 #include "common-chax.h"
 #include "combat-art.h"
 #include "debuff.h"

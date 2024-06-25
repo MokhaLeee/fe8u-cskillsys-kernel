@@ -1,12 +1,3 @@
-#include "global.h"
-#include "hardware.h"
-#include "bmlib.h"
-#include "ctc.h"
-#include "ap.h"
-#include "icon.h"
-#include "fontgrp.h"
-#include "statscreen.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "prep-skill.h"

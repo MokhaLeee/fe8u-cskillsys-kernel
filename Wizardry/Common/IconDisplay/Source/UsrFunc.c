@@ -1,6 +1,4 @@
-#include "global.h"
-#include "hardware.h"
-#include "icon.h"
+#include "common-chax.h"
 
 extern u8 const * const pr_item_icon_tiles;
 

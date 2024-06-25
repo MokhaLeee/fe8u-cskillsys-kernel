@@ -1,10 +1,3 @@
-#include "global.h"
-#include "bmusailment.h"
-#include "bmunit.h"
-#include "bmudisp.h"
-#include "uiselecttarget.h"
-#include "bmmind.h"
-
 #include "common-chax.h"
 #include "debuff.h"
 

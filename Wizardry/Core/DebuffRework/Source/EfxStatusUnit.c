@@ -1,13 +1,3 @@
-#include "global.h"
-#include "anime.h"
-#include "ekrbattle.h"
-#include "efxbattle.h"
-#include "hardware.h"
-#include "mu.h"
-#include "bmudisp.h"
-#include "bmmap.h"
-#include "constants/video-banim.h"
-
 #include "common-chax.h"
 #include "debuff.h"
 

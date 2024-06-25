@@ -1,11 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmbattle.h"
-#include "bmlib.h"
-#include "hardware.h"
-#include "mapanim.h"
-#include "constants/video-global.h"
-
 #include "common-chax.h"
 #include "strmag.h"
 #include "lvup.h"

@@ -1,11 +1,5 @@
-#include "global.h"
-#include "bmunit.h"
-#include "hardware.h"
-#include "icon.h"
-#include "fontgrp.h"
-#include "statscreen.h"
-
 #include "common-chax.h"
+#include "skill-system.h"
 #include "prep-skill.h"
 #include "constants/texts.h"
 

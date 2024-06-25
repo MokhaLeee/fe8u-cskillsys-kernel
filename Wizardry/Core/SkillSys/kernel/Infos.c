@@ -1,5 +1,3 @@
-#include "global.h"
-
 #include "common-chax.h"
 #include "skill-system.h"
 #include "debug-kit.h"

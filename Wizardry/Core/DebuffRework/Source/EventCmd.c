@@ -1,7 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "event.h"
-
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "debuff.h"

@@ -1,10 +1,3 @@
-#include "global.h"
-#include "bmunit.h"
-#include "bmitem.h"
-
-#include "constants/characters.h"
-#include "constants/items.h"
-
 #include "common-chax.h"
 #include "debug-kit.h"
 #include "skill-system.h"
