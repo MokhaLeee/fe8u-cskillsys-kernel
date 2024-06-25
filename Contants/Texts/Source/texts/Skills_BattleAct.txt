@@ -120,15 +120,15 @@ When attack with Axe, hit + attack%.[NL]
 
 ## MSG_SKILL_Armsthrift
 Armsthrift:[NL]
-Weapon durability not consumed[NL]
-this round (Skill % activation).[X]
+weapon no consumed[NL]
+(Skill % activation).[X]
 
 ## MSG_SKILL_SureShot
 SureShot:[NL]
-100% hit rate, and attack deals[NL]
-+50% damage (Skill % activation).[X]
+100% hit rate, damage +50%.[NL]
+ (Skill % activation).[X]
 
 ## MSG_SKILL_Synchronize
-Synchronize:[NL]
-Copy this unit's status[NL]
-effect to the enemy.[X]
+Synchronize: put status of[NL]
+the character to the target[NL]
+(Skill % activation).[X]

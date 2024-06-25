@@ -500,20 +500,16 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
 #if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
-        else if (SkillTester(&attacker->unit, SID_Synchronize))
+        else if (CheckBattleSkillActivte(attacker, defender, SID_Synchronize, attacker->unit.skl))
         {
+            /**
+             * Share the buff to allies and debuff to enemy.
+             */
             int debuff_act = GetUnitStatusIndex(&attacker->unit);
-            if (debuff_act != UNIT_STATUS_NONE && GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_NONE && (defender->statusOut != -1))
+            if (debuff_act != UNIT_STATUS_NONE && (AreUnitsAllied(attacker->unit.index, defender->unit.index) == IsDebuff(debuff_act)))
             {
-                /**
-                 * For ally, share the buff
-                 * otherwise give debuff
-                 */
-                if ((UNIT_FACTION(&attacker->unit) != UNIT_FACTION(&defender->unit)) == (gpDebuffInfos[debuff_act].type == STATUS_INFO_TYPE_DEBUFF))
-                {
-                    RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
-                    defender->statusOut = debuff_act;
-                }
+                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
+                defender->statusOut = debuff_act;
             }
         }
 #endif

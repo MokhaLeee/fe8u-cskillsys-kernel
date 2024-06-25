@@ -72,6 +72,11 @@ void SetUnitStatusIndex(struct Unit * unit, int status);
 void SetUnitStatusDuration(struct Unit * unit, int duration);
 int TryTickUnitStatusDuration(struct Unit * unit);
 
+static inline bool IsDebuff(int status_idx)
+{
+    return (gpDebuffInfos[status_idx].type == STATUS_INFO_TYPE_DEBUFF);
+}
+
 void PutUnitStatusIcon(struct Unit * unit);
 void PutUnitDanceRingBuffIcon(struct Unit * unit);
 
