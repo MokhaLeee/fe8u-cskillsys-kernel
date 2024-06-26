@@ -5,7 +5,6 @@
 #include "map-anims.h"
 #include "constants/skills.h"
 
-
 STATIC_DECLAR void PostActionSynchronize_StartActor(ProcPtr proc)
 {
     struct Unit * unit_act = GetUnit(gActionData.subjectIndex);
@@ -38,6 +37,7 @@ STATIC_DECLAR void PostActionSynchronize_End(ProcPtr proc)
      */
     gActiveUnit = GetUnit(gActionData.subjectIndex);
 
+    ShowUnitSprite(gActiveUnit);
     RefreshUnitSprites();
 }
 
@@ -53,8 +53,8 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSynchronize[] = {
 
 bool PostActionSynchronize(ProcPtr parent)
 {
-    int debuff_act;
     struct Unit * unit_act, * unit_tar;
+    int debuff_act;
 
 #if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
     if (!SkillTester(gActiveUnit, SID_Synchronize))
@@ -104,5 +104,8 @@ bool PostActionSynchronize(ProcPtr parent)
         return false;
 
     Proc_StartBlocking(ProcScr_PostActionSynchronize, parent);
+
+    HideUnitSprite(unit_act);
+    ShowUnitSprite(unit_tar);
     return true;
 }
