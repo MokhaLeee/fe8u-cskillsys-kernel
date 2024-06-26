@@ -933,6 +933,9 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
     bool lord_range2 = false;
 
+    if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+        return;
+
     for (i = 0; i < 24; i++)
     {
         _x = attacker->unit.xPos + vec_range[i].x;
