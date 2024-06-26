@@ -146,8 +146,7 @@ against poisoined foes.[X]
 
 ## MSG_SKILL_CriticalPierce
 CriticalPierce: [NL]
-Set the opponent's critical[NL]
-hit avoid rate to zero.[X]
+Neglect opponent's dodge rate.[X]
 
 ## MSG_SKILL_KillingMachine_NAME
 K-Machine[X]

@@ -131,6 +131,11 @@ void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender
     }
 #endif
 
+#if (defined(SID_CriticalPierce) && (COMMON_SKILL_VALID(SID_CriticalPierce)))
+    if (SkillTester(&defender->unit, SID_CriticalPierce))
+        attacker->battleDodgeRate = 0;
+#endif
+
     /* If defender cannot get silencer */
     if (UNIT_CATTRIBUTES(&defender->unit) & CA_NEGATE_LETHALITY)
         attacker->battleSilencerRate = 0;
@@ -141,640 +146,735 @@ void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender
 
 void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    /* Defiant skills */
-    if ((attacker->hpInitial * 4) < attacker->unit.maxHP)
+    int i, tmp;
+    struct SkillList * list;
+
+    /**
+     * Skip arena judgement
+     */
+    if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+        return;
+
+    list = GetUnitSkillList(&attacker->unit);
+    for (i = 0; i < list->amt; i++)
     {
+        switch (list->sid[i]) {
 #if (defined(SID_DefiantCrit) && (COMMON_SKILL_VALID(SID_DefiantCrit)))
-        if (SkillTester(&attacker->unit, SID_DefiantCrit))
-            attacker->battleCritRate += 50;
+        case SID_DefiantCrit:
+            if ((attacker->hpInitial * 4) < attacker->unit.maxHP)
+                attacker->battleCritRate += 50;
+
+            break;
 #endif
 
 #if (defined(SID_DefiantAvoid) && (COMMON_SKILL_VALID(SID_DefiantAvoid)))
-        if (SkillTester(&attacker->unit, SID_DefiantAvoid))
-            attacker->battleAvoidRate += 30;
-#endif
-    }
+        case SID_DefiantCrit:
+            if ((attacker->hpInitial * 4) < attacker->unit.maxHP)
+                attacker->battleAvoidRate += 50; 
 
-    /* Blow skills */
-    if (attacker == &gBattleActor && !(gBattleStats.config & BATTLE_CONFIG_ARENA))
-    {
+            break;
+#endif
+
+        /* Blow skills */
 #if (defined(SID_BlowDarting) && (COMMON_SKILL_VALID(SID_BlowDarting)))
-        if (SkillTester(&attacker->unit, SID_BlowDarting))
-            attacker->battleSpeed += 6;
+        case SID_BlowDarting:
+            if (attacker == &gBattleActor)
+                attacker->battleSpeed += 6;
+
+            break;
 #endif
 
 #if (defined(SID_BlowDeath) && (COMMON_SKILL_VALID(SID_BlowDeath)))
-        if (SkillTester(&attacker->unit, SID_BlowDeath))
-        {
-            if (!IsMagicAttack(attacker))
+        case SID_BlowDeath:
+            if (attacker == &gBattleActor && !IsMagicAttack(attacker))
                 attacker->battleAttack += 6;
-        }
-#endif
 
-#if (defined(SID_BlowArmored) && (COMMON_SKILL_VALID(SID_BlowArmored)))
-        if (SkillTester(&attacker->unit, SID_BlowArmored))
-        {
-            if (!IsMagicAttack(defender))
-                attacker->battleDefense += 6;
-        }
+            break;
 #endif
 
 #if (defined(SID_BlowFiendish) && (COMMON_SKILL_VALID(SID_BlowFiendish)))
-        if (SkillTester(&attacker->unit, SID_BlowFiendish))
-        {
-            if (IsMagicAttack(attacker))
+        case SID_BlowFiendish:
+            if (attacker == &gBattleActor && IsMagicAttack(defender))
                 attacker->battleAttack += 6;
-        }
+
+            break;
+#endif
+
+#if (defined(SID_BlowArmored) && (COMMON_SKILL_VALID(SID_BlowArmored)))
+        case SID_BlowArmored:
+            if (attacker == &gBattleActor && !IsMagicAttack(defender))
+                attacker->battleDefense += 6;
+
+            break;
 #endif
 
 #if (defined(SID_BlowWarding) && (COMMON_SKILL_VALID(SID_BlowWarding)))
-        if (SkillTester(&attacker->unit, SID_BlowWarding))
-        {
-            if (IsMagicAttack(defender))
+        case SID_BlowWarding:
+            if (attacker == &gBattleActor && IsMagicAttack(defender))
                 attacker->battleDefense += 6;
-        }
+
+            break;
 #endif
 
 #if (defined(SID_BlowDuelist) && (COMMON_SKILL_VALID(SID_BlowDuelist)))
-        if (SkillTester(&attacker->unit, SID_BlowDuelist))
-           attacker->battleAvoidRate += 20;
+        case SID_BlowDuelist:
+            if (attacker == &gBattleActor)
+                attacker->battleAvoidRate += 20;
+
+            break;
 #endif
 
 #if (defined(SID_BlowUncanny) && (COMMON_SKILL_VALID(SID_BlowUncanny)))
-        if (SkillTester(&attacker->unit, SID_BlowUncanny))
-            attacker->battleHitRate += 30;
+        case SID_BlowUncanny:
+            if (attacker == &gBattleActor)
+                attacker->battleHitRate += 30;
+
+            break;
 #endif
-        /* Non-blow attacker skill*/
 
 #if (defined(SID_BlowKilling) && (COMMON_SKILL_VALID(SID_BlowKilling)))
-        if (SkillTester(&attacker->unit, SID_BlowKilling))
-            attacker->battleCritRate += 20;
-#endif
+        case SID_BlowKilling:
+            if (attacker == &gBattleActor)
+                attacker->battleCritRate += 20;
 
-#if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
-        if (SkillTester(&attacker->unit, SID_QuickDraw))
-           attacker->battleAttack += 4;
+            break;
 #endif
 
 #if (defined(SID_ArcaneBlade) && (COMMON_SKILL_VALID(SID_ArcaneBlade)))
-        if (SkillTester(&attacker->unit, SID_ArcaneBlade))
-           if (gBattleStats.range == 1)
-           {
+        case SID_ArcaneBlade:
+            if (attacker == &gBattleActor && gBattleStats.range == 1)
+            {
                 attacker->battleCritRate += 3 + UNIT_MAG(&attacker->unit) / 2;
                 attacker->battleHitRate += 3 + UNIT_MAG(&attacker->unit) / 2;
-           }
+            }
+            break;
 #endif
 
 #if (defined(SID_Prescience) && (COMMON_SKILL_VALID(SID_Prescience)))
-        if (SkillTester(&attacker->unit, SID_Prescience))
-           if (gBattleStats.range == 1)
-           {
+        case SID_Prescience:
+            if (attacker == &gBattleActor && gBattleStats.range == 1)
+            {
                 attacker->battleHitRate += 15;
                 attacker->battleAvoidRate += 15;
-           }
+            }
+            break;
 #endif
-    }
 
-    /* Stance skills */
-    if (attacker == &gBattleTarget && !(gBattleStats.config & BATTLE_CONFIG_ARENA))
-    {
+        /* Stance skills */
 #if (defined(SID_StanceBracing) && (COMMON_SKILL_VALID(SID_StanceBracing)))
-        if (SkillTester(&attacker->unit, SID_StanceBracing))
-            attacker->battleDefense += 4;
+        case SID_StanceBracing:
+            if (attacker == &gBattleTarget)
+                attacker->battleDefense += 4;
+
+            break;
 #endif
 
 #if (defined(SID_StanceDarting) && (COMMON_SKILL_VALID(SID_StanceDarting)))
-        if (SkillTester(&attacker->unit, SID_StanceDarting))
-            attacker->battleSpeed += 6;
+        case SID_StanceDarting:
+            if (attacker == &gBattleTarget)
+                attacker->battleSpeed += 6;
+
+            break;
 #endif
 
 #if (defined(SID_StanceFierce) && (COMMON_SKILL_VALID(SID_StanceFierce)))
-        if (SkillTester(&attacker->unit, SID_StanceFierce))
-            attacker->battleAttack += 6;
+        case SID_StanceFierce:
+            if (attacker == &gBattleTarget)
+                attacker->battleAttack += 6;
+
+            break;
 #endif
 
 #if (defined(SID_StanceKestrel) && (COMMON_SKILL_VALID(SID_StanceKestrel)))
-        if (SkillTester(&attacker->unit, SID_StanceKestrel))
-        {
-            attacker->battleAttack += 4;
-            attacker->battleSpeed += 4;
-        }
+        case SID_StanceKestrel:
+            if (attacker == &gBattleTarget)
+            {
+                attacker->battleAttack += 4;
+                attacker->battleSpeed += 4;
+            }
+            break;
 #endif
 
 #if (defined(SID_StanceMirror) && (COMMON_SKILL_VALID(SID_StanceMirror)))
-        if (SkillTester(&attacker->unit, SID_StanceMirror))
-        {
-            attacker->battleAttack += 4;
-
-            if (IsMagicAttack(defender))
-                attacker->battleDefense += 4;
-        }
-#endif
-
-#if (defined(SID_StanceReady) && (COMMON_SKILL_VALID(SID_StanceReady)))
-        if (SkillTester(&attacker->unit, SID_StanceReady))
-        {
-            attacker->battleSpeed += 4;
-
-            if (!IsMagicAttack(defender))
-                attacker->battleDefense += 4;
-        }
-#endif
-
-#if (defined(SID_StanceSteady) && (COMMON_SKILL_VALID(SID_StanceSteady)))
-        if (SkillTester(&attacker->unit, SID_StanceSteady))
-        {
-            if (!IsMagicAttack(defender))
-                attacker->battleDefense += 6;
-        }
-#endif
-
-#if (defined(SID_StanceSturdy) && (COMMON_SKILL_VALID(SID_StanceSturdy)))
-        if (SkillTester(&attacker->unit, SID_StanceSturdy))
-        {
-            attacker->battleAttack += 4;
-
-            if (!IsMagicAttack(defender))
-                attacker->battleDefense += 4;
-        }
+        case SID_StanceMirror:
+            if (attacker == &gBattleTarget)
+            {
+                attacker->battleAttack += 4;
+                if (IsMagicAttack(defender))
+                    attacker->battleDefense += 4;
+            }
+            break;
 #endif
 
 #if (defined(SID_StanceSwift) && (COMMON_SKILL_VALID(SID_StanceSwift)))
-        if (SkillTester(&attacker->unit, SID_StanceSwift))
-        {
-            attacker->battleSpeed += 4;
+        case SID_StanceSwift:
+            if (attacker == &gBattleTarget)
+            {
+                attacker->battleSpeed += 4;
+                if (IsMagicAttack(defender))
+                    attacker->battleDefense += 4;
+            }
+            break;
+#endif
 
-            if (IsMagicAttack(defender))
-                attacker->battleDefense += 4;
-        }
+#if (defined(SID_StanceReady) && (COMMON_SKILL_VALID(SID_StanceReady)))
+        case SID_StanceReady:
+            if (attacker == &gBattleTarget)
+            {
+                attacker->battleSpeed += 4;
+                if (!IsMagicAttack(defender))
+                    attacker->battleDefense += 4;
+            }
+            break;
+#endif
+
+#if (defined(SID_StanceSturdy) && (COMMON_SKILL_VALID(SID_StanceSturdy)))
+        case SID_StanceSturdy:
+            if (attacker == &gBattleTarget)
+            {
+                attacker->battleAttack += 4;
+                if (!IsMagicAttack(defender))
+                    attacker->battleDefense += 4;
+            }
+            break;
+#endif
+
+#if (defined(SID_StanceSteady) && (COMMON_SKILL_VALID(SID_StanceSteady)))
+        case SID_StanceSteady:
+            if (attacker == &gBattleTarget && !IsMagicAttack(defender))
+                attacker->battleDefense += 6;
+
+            break;
 #endif
 
 #if (defined(SID_StanceWarding) && (COMMON_SKILL_VALID(SID_StanceWarding)))
-        if (SkillTester(&attacker->unit, SID_StanceWarding))
-        {
-            if (IsMagicAttack(defender))
+        case SID_StanceWarding:
+            if (attacker == &gBattleTarget && IsMagicAttack(defender))
                 attacker->battleDefense += 6;
-        }
+
+            break;
 #endif
 
 #if (defined(SID_StanceSpectrum) && (COMMON_SKILL_VALID(SID_StanceSpectrum)))
-        if (SkillTester(&attacker->unit, SID_StanceSpectrum))
-        {
+        case SID_StanceSpectrum:
+            if (attacker == &gBattleTarget)
+            {
                 attacker->battleAttack += 2;
                 attacker->battleSpeed += 2;
                 attacker->battleDefense += 2;
-        }
-#endif
-
-        // Non-Stance defender skill
-#if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
-        if (SkillTester(&attacker->unit, SID_StrongRiposte))
-                attacker->battleAttack += 3;
+            }
+            break;
 #endif
 
 #if (defined(SID_Patience) && (COMMON_SKILL_VALID(SID_Patience)))
-        if (SkillTester(&attacker->unit, SID_Patience))
+        case SID_Patience:
+            if (attacker == &gBattleTarget)
                 attacker->battleAvoidRate += 10;
+
+            break;
 #endif
 
 #if (defined(SID_Pursuit) && (COMMON_SKILL_VALID(SID_Pursuit)))
-        if (SkillTester(&attacker->unit, SID_Pursuit))
+        case SID_Pursuit:
+            if (attacker == &gBattleTarget)
                 attacker->battleSpeed += 2;
-#endif
-    }
 
-    /* Misc */
+            break;
+#endif
+
+        /* Misc */
 #if (defined(SID_Lethality) && (COMMON_SKILL_VALID(SID_Lethality)))
-    if (SkillTester(&attacker->unit, SID_Lethality))
-        attacker->battleSilencerRate += attacker->unit.skl;
+        case SID_Lethality:
+            attacker->battleSilencerRate += attacker->unit.skl;
+            break;
 #endif
 
 #if (defined(SID_WatchfulEye) && (COMMON_SKILL_VALID(SID_WatchfulEye)))
-    if (SkillTester(&attacker->unit, SID_WatchfulEye))
-        attacker->battleHitRate += 20;
+        case SID_WatchfulEye:
+            attacker->battleHitRate += 20;
+            break;
 #endif
 
 #if (defined(SID_Crit) && (COMMON_SKILL_VALID(SID_Crit)))
-    if (SkillTester(&attacker->unit, SID_Crit))
-        attacker->battleCritRate += 15;
+        case SID_Crit:
+            attacker->battleCritRate += 15;
+            break;
 #endif
 
 #if (defined(SID_Avoid) && (COMMON_SKILL_VALID(SID_Avoid)))
-    if (SkillTester(&attacker->unit, SID_Avoid))
-        attacker->battleAvoidRate += 10;
+        case SID_Avoid:
+            attacker->battleAvoidRate += 10;
+            break;
 #endif
 
-    /* wType related */
-    switch (attacker->weaponType)
-    {
-    case ITYPE_SWORD:
+        /* wType related */
 #if (defined(SID_CritSword) && (COMMON_SKILL_VALID(SID_CritSword)))
-        if (SkillTester(&attacker->unit, SID_CritSword))
-            attacker->battleCritRate += 10;
+        case SID_CritSword:
+            if (attacker->weaponType == ITYPE_SWORD)
+                attacker->battleCritRate += 10;
+
+            break;
 #endif
 
 #if (defined(SID_FaireSword) && (COMMON_SKILL_VALID(SID_FaireSword)))
-        if (SkillTester(&attacker->unit, SID_FaireSword))
-            attacker->battleAttack += 5;
+        case SID_FaireSword:
+            if (attacker->weaponType == ITYPE_SWORD)
+                attacker->battleAttack += 5;
+
+            break;
 #endif
 
 #if (defined(SID_AvoidSword) && (COMMON_SKILL_VALID(SID_AvoidSword)))
-        if (SkillTester(&attacker->unit, SID_AvoidSword))
-            attacker->battleAvoidRate += 20;
-#endif
-        break;
+        case SID_AvoidSword:
+            if (attacker->weaponType == ITYPE_SWORD)
+                attacker->battleAvoidRate += 20;
 
-    case ITYPE_LANCE:
+            break;
+#endif
+
 #if (defined(SID_CritLance) && (COMMON_SKILL_VALID(SID_CritLance)))
-        if (SkillTester(&attacker->unit, SID_CritLance))
-            attacker->battleCritRate += 10;
+        case SID_CritLance:
+            if (attacker->weaponType == ITYPE_LANCE)
+                attacker->battleCritRate += 10;
+
+            break;
 #endif
 
 #if (defined(SID_FaireLance) && (COMMON_SKILL_VALID(SID_FaireLance)))
-        if (SkillTester(&attacker->unit, SID_FaireLance))
-            attacker->battleAttack += 5;
-#endif
-        break;
+        case SID_FaireLance:
+            if (attacker->weaponType == ITYPE_LANCE)
+                attacker->battleAttack += 5;
 
-    case ITYPE_AXE:
+            break;
+#endif
+
 #if (defined(SID_CritAxe) && (COMMON_SKILL_VALID(SID_CritAxe)))
-        if (SkillTester(&attacker->unit, SID_CritAxe))
-            attacker->battleCritRate += 10;
+        case SID_CritAxe:
+            if (attacker->weaponType == ITYPE_AXE)
+                attacker->battleCritRate += 10;
+
+            break;
 #endif
 
 #if (defined(SID_FaireAxe) && (COMMON_SKILL_VALID(SID_FaireAxe)))
-        if (SkillTester(&attacker->unit, SID_FaireAxe))
-            attacker->battleAttack += 5;
-#endif
-        break;
+        case SID_FaireAxe:
+            if (attacker->weaponType == ITYPE_AXE)
+                attacker->battleAttack += 5;
 
-    case ITYPE_BOW:
+            break;
+#endif
+
 #if (defined(SID_CritBow) && (COMMON_SKILL_VALID(SID_CritBow)))
-        if (SkillTester(&attacker->unit, SID_CritBow))
-            attacker->battleCritRate += 10;
+        case SID_CritBow:
+            if (attacker->weaponType == ITYPE_BOW)
+                attacker->battleCritRate += 10;
+
+            break;
 #endif
 
 #if (defined(SID_FaireBow) && (COMMON_SKILL_VALID(SID_FaireBow)))
-        if (SkillTester(&attacker->unit, SID_FaireBow))
-            attacker->battleAttack += 5;
-#endif
-        break;
+        case SID_FaireBow:
+            if (attacker->weaponType == ITYPE_BOW)
+                attacker->battleAttack += 5;
 
-    case ITYPE_ANIMA:
-    case ITYPE_LIGHT:
-    case ITYPE_DARK:
+            break;
+#endif
+
 #if (defined(SID_FaireBMag) && (COMMON_SKILL_VALID(SID_FaireBMag)))
-        if (SkillTester(&attacker->unit, SID_FaireBMag))
-            attacker->battleAttack += 5;
+        case SID_FaireBMag:
+            switch (attacker->weaponType) {
+            case ITYPE_ANIMA:
+            case ITYPE_LIGHT:
+            case ITYPE_DARK:
+                attacker->battleAttack += 5;
+                break;
+            }
+            break;
 #endif
-        break;
 
-    case ITYPE_STAFF:
-    case ITYPE_BLLST:
-    case ITYPE_ITEM:
-    case ITYPE_DRAGN:
-    default:
-        break;
-    }
+#if defined(SID_HolyAura) && (COMMON_SKILL_VALID(SID_HolyAura))
+        case SID_HolyAura:
+            if (attacker->weaponType == ITYPE_LIGHT)
+            {
+                attacker->battleAttack += 1;
+                attacker->battleCritRate += 5;
+                attacker->battleHitRate += 5;
+                attacker->battleAvoidRate += 5;
+            }
+            break;
+#endif
 
 #if (defined(SID_BlueFlame) && (COMMON_SKILL_VALID(SID_BlueFlame)))
-    if (SkillTester(&attacker->unit, SID_BlueFlame))
-        attacker->battleAttack += 2;
+        case SID_BlueFlame:
+            attacker->battleAttack += 2;
+            break;
 #endif
 
 #if (defined(SID_Frenzy) && (COMMON_SKILL_VALID(SID_Frenzy)))
-    if (SkillTester(&attacker->unit, SID_Frenzy))
-        if ((attacker->unit.maxHP - attacker->hpInitial) >= 4)
-            attacker->battleAttack += (attacker->unit.maxHP - attacker->hpInitial) / 4;
-#endif
+        case SID_Frenzy:
+            if ((attacker->unit.maxHP - attacker->hpInitial) >= 4)
+                attacker->battleAttack += (attacker->unit.maxHP - attacker->hpInitial) / 4;
 
-#if (defined(SID_CriticalPierce) && (COMMON_SKILL_VALID(SID_CriticalPierce)))
-    if (SkillTester(&attacker->unit, SID_CriticalPierce))
-        attacker->battleCritRate += defender->battleDodgeRate;
+            break;
 #endif
 
 #if (defined(SID_KillingMachine) && (COMMON_SKILL_VALID(SID_KillingMachine)))
-    if (SkillTester(&attacker->unit, SID_KillingMachine))
-        attacker->battleCritRate *= 2;
+        case SID_KillingMachine:
+            attacker->battleCritRate *= 2;
+            break;
 #endif
 
 #if (defined(SID_HeavyStrikes) && (COMMON_SKILL_VALID(SID_HeavyStrikes)))
-    if (SkillTester(&attacker->unit, SID_HeavyStrikes))
-        attacker->battleCritRate += GetItemWeight(attacker->weapon);
+        case SID_HeavyStrikes:
+            attacker->battleCritRate += GetItemWeight(attacker->weapon);
+            break;
 #endif
 
 #if (defined(SID_Technician) && (COMMON_SKILL_VALID(SID_Technician)))
-    if (SkillTester(&attacker->unit, SID_Technician))
-        if (GetItemRequiredExp(attacker->weapon) < WPN_EXP_D)
-            attacker->battleAttack += GetItemMight(attacker->weapon) / 2;
+        case SID_Technician:
+            if (GetItemRequiredExp(attacker->weapon) < WPN_EXP_D)
+                attacker->battleAttack += GetItemMight(attacker->weapon) / 2;
+            break;
 #endif
 
 #if (defined(SID_BattleVeteran) && (COMMON_SKILL_VALID(SID_BattleVeteran)))
-    if (SkillTester(&attacker->unit, SID_BattleVeteran))
-    {
-       int n_level = simple_div(attacker->levelPrevious + GetUnitHiddenLevel(&attacker->unit), 10);
-       attacker->battleHitRate += 5 * n_level;
-       attacker->battleAttack += n_level;
-    }
+        case SID_BattleVeteran:
+            tmp = simple_div(attacker->levelPrevious + GetUnitHiddenLevel(&attacker->unit), 10);
+            attacker->battleHitRate += 5 * tmp;
+            attacker->battleAttack += tmp;
+            break;
 #endif
 
 #if (defined(SID_StoneBody) && (COMMON_SKILL_VALID(SID_StoneBody)))
-    if (SkillTester(&attacker->unit, SID_StoneBody))
-    {
-        if (attacker->unit.conBonus > defender->unit.conBonus)
-            attacker->battleAttack += (attacker->unit.conBonus - defender->unit.conBonus);
-    }
+        case SID_StoneBody:
+            tmp = attacker->unit.conBonus - defender->unit.conBonus;
+            if (tmp > 0)
+                attacker->battleAttack += tmp;
+
+            break;
 #endif
 
 #if (defined(SID_CriticalForce) && (COMMON_SKILL_VALID(SID_CriticalForce)))
-    if (SkillTester(&attacker->unit, SID_CriticalForce))
-       attacker->battleCritRate += attacker->unit.skl;
+        case SID_CriticalForce:
+            attacker->battleCritRate += attacker->unit.skl;
+            break;
 #endif
 
-    if (defender->hpInitial == defender->unit.maxHP)
-    {
 #if (defined(SID_Chivalry) && (COMMON_SKILL_VALID(SID_Chivalry)))
-        if (SkillTester(&attacker->unit, SID_Chivalry))
-        {
-            attacker->battleDefense += 2;
-            attacker->battleAttack += 2;
-        }
+        case SID_Chivalry:
+            if (defender->hpInitial == defender->unit.maxHP)
+            {
+                attacker->battleDefense += 2;
+                attacker->battleAttack += 2;
+            }
+            break;
 #endif
-    }
-    else
-    {
+
 #if (defined(SID_Pragmatic) && (COMMON_SKILL_VALID(SID_Pragmatic)))
-        if (SkillTester(&attacker->unit, SID_Pragmatic))
-        {
-            attacker->battleDefense += 1;
-            attacker->battleAttack += 3;
-        }
+        case SID_Pragmatic:
+            if (defender->hpInitial < defender->unit.maxHP)
+            {
+                attacker->battleDefense += 1;
+                attacker->battleAttack += 3;
+            }
+            break;
 #endif
-    }
 
-    if (attacker->hpInitial == attacker->unit.maxHP)
-    {
 #if (defined(SID_Perfectionist) && (COMMON_SKILL_VALID(SID_Perfectionist)))
-        if (SkillTester(&attacker->unit, SID_Perfectionist))
-        {
-            attacker->battleHitRate += 15;
-            attacker->battleAvoidRate += 15;
-        }
+        case SID_Perfectionist:
+            if (attacker->hpInitial == attacker->unit.maxHP)
+            {
+                attacker->battleHitRate += 15;
+                attacker->battleAvoidRate += 15;
+            }
+            break;
 #endif
-    }
-    else
-    {
+
 #if (defined(SID_WindDisciple) && (COMMON_SKILL_VALID(SID_WindDisciple)))
-        if (SkillTester(&attacker->unit, SID_WindDisciple))
-        {
-            attacker->battleHitRate += 10;
-            attacker->battleAvoidRate += 10;
-        }
-#endif
-    }
-
-    if (attacker->hpInitial - defender->hpInitial >= 3)
-    {
-#if (defined(SID_FireBoost) && (COMMON_SKILL_VALID(SID_FireBoost)))
-        if (SkillTester(&attacker->unit, SID_FireBoost))
-            attacker->battleAttack += 6;
-#endif
-
-#if (defined(SID_WindBoost) && (COMMON_SKILL_VALID(SID_WindBoost)))
-        if (SkillTester(&attacker->unit, SID_WindBoost))
-            attacker->battleSpeed += 6;
-#endif
-
-#if (defined(SID_EarthBoost) && (COMMON_SKILL_VALID(SID_EarthBoost)))
-        if (SkillTester(&attacker->unit, SID_EarthBoost))
-            if (!IsMagicAttack(defender))
-                attacker->battleDefense += 6;
-#endif
-
-#if (defined(SID_WaterBoost) && (COMMON_SKILL_VALID(SID_WaterBoost)))
-        if (SkillTester(&attacker->unit, SID_WaterBoost))
-            if (IsMagicAttack(defender))
-                attacker->battleDefense += 6;
-#endif
-    }
-
-#if (defined(SID_ChaosStyle) && (COMMON_SKILL_VALID(SID_ChaosStyle)))
-    if (SkillTester(&attacker->unit, SID_ChaosStyle))
-        if ((IsMagicAttack(attacker) && !IsMagicAttack(defender)) || (!IsMagicAttack(attacker) && IsMagicAttack(defender)))
-            attacker->battleSpeed += 3;
-#endif
-
-#if defined(SID_Charge) && (COMMON_SKILL_VALID(SID_Charge))
-        if (SkillTester(&attacker->unit, SID_Charge))
-            attacker->battleAttack += gActionData.moveCount / 2;
+        case SID_WindDisciple:
+            if (attacker->hpInitial <= attacker->unit.maxHP)
+            {
+                attacker->battleHitRate += 10;
+                attacker->battleAvoidRate += 10;
+            }
+            break;
 #endif
 
 #if (defined(SID_FieryBlood) && (COMMON_SKILL_VALID(SID_FieryBlood)))
-    if (SkillTester(&attacker->unit, SID_FieryBlood))
-       if (attacker->hpInitial < attacker->unit.maxHP)
-            attacker->battleAttack += 4;
+        case SID_FieryBlood:
+            if (attacker->hpInitial <= attacker->unit.maxHP)
+                attacker->battleAttack += 4;
+
+            break;
+#endif
+
+#if (defined(SID_FireBoost) && (COMMON_SKILL_VALID(SID_FireBoost)))
+        case SID_FireBoost:
+            if (attacker->hpInitial >= (defender->hpInitial + 3))
+                attacker->battleAttack += 6;
+
+            break;
+#endif
+
+#if (defined(SID_WindBoost) && (COMMON_SKILL_VALID(SID_WindBoost)))
+        case SID_WindBoost:
+            if (attacker->hpInitial >= (defender->hpInitial + 3))
+                attacker->battleSpeed += 6;
+
+            break;
+#endif
+
+#if (defined(SID_EarthBoost) && (COMMON_SKILL_VALID(SID_EarthBoost)))
+        case SID_EarthBoost:
+            if (attacker->hpInitial >= (defender->hpInitial + 3) && !IsMagicAttack(defender))
+                attacker->battleDefense += 6;
+
+            break;
 #endif
 
 #if (defined(SID_Wrath) && (COMMON_SKILL_VALID(SID_Wrath)))
-    if (SkillTester(&attacker->unit, SID_Wrath))
-       if ((attacker->hpInitial * 2) < attacker->unit.maxHP)
-            attacker->battleCritRate += 20;
+        case SID_Wrath:
+            if (attacker->hpInitial > (attacker->hpInitial * 2))
+                attacker->battleCritRate += 20;
+
+            break;
 #endif
 
-    if (attacker->terrainDefense || attacker->terrainAvoid || attacker->terrainResistance)
-    {
+#if (defined(SID_WaterBoost) && (COMMON_SKILL_VALID(SID_WaterBoost)))
+        case SID_WaterBoost:
+            if (attacker->hpInitial >= (defender->hpInitial + 3) && IsMagicAttack(defender))
+                attacker->battleDefense += 6;
+
+            break;
+#endif
+
+#if (defined(SID_ChaosStyle) && (COMMON_SKILL_VALID(SID_ChaosStyle)))
+        case SID_ChaosStyle:
+            if (IsMagicAttack(attacker) != IsMagicAttack(defender))
+                attacker->battleSpeed += 6;
+
+            break;
+#endif
+
+#if (defined(SID_Charge) && (COMMON_SKILL_VALID(SID_Charge)))
+        case SID_Charge:
+            attacker->battleAttack += gActionData.moveCount / 2;
+            break;
+#endif
+
 #if (defined(SID_NaturalCover) && (COMMON_SKILL_VALID(SID_NaturalCover))) 
-        if (SkillTester(&attacker->unit, SID_NaturalCover))
-            attacker->battleDefense += 3;
+        case SID_NaturalCover:
+            if (attacker->terrainDefense > 0 || attacker->terrainAvoid > 0 || attacker->terrainResistance > 0)
+                attacker->battleDefense += 3;
+
+            break;
 #endif
-    }
-    else
-    {
+
 #if (defined(SID_ElbowRoom) && (COMMON_SKILL_VALID(SID_ElbowRoom))) 
-        if (SkillTester(&attacker->unit, SID_ElbowRoom))
-            attacker->battleAttack += 3;
+        case SID_ElbowRoom:
+            if (attacker->terrainDefense == 0 && attacker->terrainAvoid == 0 && attacker->terrainResistance == 0)
+                attacker->battleAttack += 3;
+
+            break;
 #endif
-    }
 
 #if (defined(SID_Vigilance) && (COMMON_SKILL_VALID(SID_Vigilance)))
-    if (SkillTester(&attacker->unit, SID_Vigilance))
-       attacker->battleAvoidRate += 20;
+        case SID_Vigilance:
+            attacker->battleAvoidRate += 20;
+            break;
 #endif
 
 #if (defined(SID_OutdoorFighter) && (COMMON_SKILL_VALID(SID_OutdoorFighter)))
-    if (SkillTester(&attacker->unit, SID_OutdoorFighter))
-    {
-        switch (gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) {
-        case TERRAIN_PLAINS:
-        case TERRAIN_ROAD:
-        case TERRAIN_VILLAGE_03:
-        case TERRAIN_VILLAGE_04:
-        case TERRIAN_HOUSE:
-        case TERRAIN_ARMORY:
-        case TERRAIN_VENDOR:
-        case TERRAIN_ARENA_08:
-        case TERRAIN_C_ROOM_09:
-        case TERRAIN_GATE_0B:
-        case TERRAIN_FOREST:
-        case TERRAIN_THICKET:
-        case TERRAIN_SAND:
-        case TERRAIN_DESERT:
-        case TERRAIN_RIVER:
-        case TERRAIN_MOUNTAIN:
-        case TERRAIN_PEAK:
-        case TERRAIN_BRIDGE_13:
-        case TERRAIN_BRIDGE_14:
-        case TERRAIN_SEA:
-        case TERRAIN_LAKE:
-        case TERRAIN_GATE_23:
-        case TERRAIN_CHURCH:
-        case TERRAIN_RUINS_25:
-        case TERRAIN_CLIFF:
-        case TERRAIN_BALLISTA_REGULAR:
-        case TERRAIN_BALLISTA_LONG:
-        case TERRAIN_BALLISTA_KILLER:
-        case TERRAIN_SHIP_FLAT:
-        case TERRAIN_SHIP_WRECK:
-        case TERRAIN_TILE_2C:
-        case TERRAIN_ARENA_30:
-        case TERRAIN_VALLEY:
-        case TERRAIN_FENCE_32:
-        case TERRAIN_SNAG:
-        case TERRAIN_BRIDGE_34:
-        case TERRAIN_SKY:
-        case TERRAIN_DEEPS:
-        case TERRAIN_RUINS_37:
-        case TERRAIN_INN:
-        case TERRAIN_BARREL:
-        case TERRAIN_BONE:
-        case TERRAIN_DARK:
-        case TERRAIN_WATER:
-        case TERRAIN_DECK:
-        case TERRAIN_BRACE:
-        case TERRAIN_MAST:
-            attacker->battleHitRate += 10;
-            attacker->battleAvoidRate += 10;
-            break;
+        case SID_OutdoorFighter:
+            switch (gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) {
+            case TERRAIN_PLAINS:
+            case TERRAIN_ROAD:
+            case TERRAIN_VILLAGE_03:
+            case TERRAIN_VILLAGE_04:
+            case TERRIAN_HOUSE:
+            case TERRAIN_ARMORY:
+            case TERRAIN_VENDOR:
+            case TERRAIN_ARENA_08:
+            case TERRAIN_C_ROOM_09:
+            case TERRAIN_GATE_0B:
+            case TERRAIN_FOREST:
+            case TERRAIN_THICKET:
+            case TERRAIN_SAND:
+            case TERRAIN_DESERT:
+            case TERRAIN_RIVER:
+            case TERRAIN_MOUNTAIN:
+            case TERRAIN_PEAK:
+            case TERRAIN_BRIDGE_13:
+            case TERRAIN_BRIDGE_14:
+            case TERRAIN_SEA:
+            case TERRAIN_LAKE:
+            case TERRAIN_GATE_23:
+            case TERRAIN_CHURCH:
+            case TERRAIN_RUINS_25:
+            case TERRAIN_CLIFF:
+            case TERRAIN_BALLISTA_REGULAR:
+            case TERRAIN_BALLISTA_LONG:
+            case TERRAIN_BALLISTA_KILLER:
+            case TERRAIN_SHIP_FLAT:
+            case TERRAIN_SHIP_WRECK:
+            case TERRAIN_TILE_2C:
+            case TERRAIN_ARENA_30:
+            case TERRAIN_VALLEY:
+            case TERRAIN_FENCE_32:
+            case TERRAIN_SNAG:
+            case TERRAIN_BRIDGE_34:
+            case TERRAIN_SKY:
+            case TERRAIN_DEEPS:
+            case TERRAIN_RUINS_37:
+            case TERRAIN_INN:
+            case TERRAIN_BARREL:
+            case TERRAIN_BONE:
+            case TERRAIN_DARK:
+            case TERRAIN_WATER:
+            case TERRAIN_DECK:
+            case TERRAIN_BRACE:
+            case TERRAIN_MAST:
+                attacker->battleHitRate += 10;
+                attacker->battleAvoidRate += 10;
+                break;
 
-        default:
+            default:
+                break;
+            }
             break;
-        }
-    }
 #endif
 
 #if (defined(SID_KnightAspirant) && (COMMON_SKILL_VALID(SID_KnightAspirant)))
-    if (SkillTester(&attacker->unit, SID_KnightAspirant))
-    {
-        if ((attacker->unit.maxHP * 75) > (attacker->hpInitial * 100))
-        {
-            attacker->battleAttack += 2;
-            attacker->battleAvoidRate += 15;
-        }
-    }
+        case SID_KnightAspirant:
+            if ((attacker->hpInitial * 4) > (attacker->unit.maxHP * 3))
+            {
+                attacker->battleAttack += 2;
+                attacker->battleAvoidRate += 15;
+            }
+            break;
 #endif
 
 #if (defined(SID_Outrider) && (COMMON_SKILL_VALID(SID_Outrider)))
-    if (SkillTester(&attacker->unit, SID_Outrider))
-    {
-        attacker->battleDefense += gActionData.moveCount;
-        attacker->battleCritRate += (gActionData.moveCount * 3);
-    }
-#endif
-
-#if (defined(SID_EvenRhythm) && (COMMON_SKILL_VALID(SID_EvenRhythm)))
-    if (SkillTester(&attacker->unit, SID_EvenRhythm) && (gPlaySt.chapterTurnNumber % 2) == 0)
-    {
-        attacker->battleAvoidRate += 10;
-        attacker->battleHitRate += 10;
-    }
-#endif
-
-#if (defined(SID_OddRhythm) && (COMMON_SKILL_VALID(SID_OddRhythm)))
-    if (SkillTester(&attacker->unit, SID_OddRhythm) && (gPlaySt.chapterTurnNumber % 2) == 1)
-    {
-        attacker->battleAvoidRate += 10;
-        attacker->battleHitRate += 10;
-    }
+        case SID_Outrider:
+            attacker->battleDefense += gActionData.moveCount;
+            attacker->battleCritRate += (gActionData.moveCount * 3);
+            break;
 #endif
 
 #if (defined(SID_SilentPride) && (COMMON_SKILL_VALID(SID_SilentPride)))
-    if (SkillTester(&attacker->unit, SID_SilentPride))
-    {
-        int mult = simple_div(attacker->unit.maxHP * 4, attacker->hpInitial);
-        attacker->battleAttack += 2 * mult;
-        attacker->battleDefense += 2 * mult;
-    }
+        case SID_SilentPride:
+            tmp = simple_div(attacker->unit.maxHP * 4, attacker->hpInitial);
+            attacker->battleAttack += 2 * tmp;
+            attacker->battleDefense += 2 * tmp;
+            break;
 #endif
 
-#if defined(SID_Guts) && (COMMON_SKILL_VALID(SID_Guts))
-    if (SkillTester(&attacker->unit, SID_Guts) && (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE))
-        attacker->battleAttack += 5;
-#endif
+#if (defined(SID_Guts) && (COMMON_SKILL_VALID(SID_Guts)))
+        case SID_Guts:
+            if (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE)
+                attacker->battleAttack += 5;
 
-
-#if defined(SID_HolyAura) && (COMMON_SKILL_VALID(SID_HolyAura))
-    if (SkillTester(&attacker->unit, SID_HolyAura) && attacker->weaponType == ITYPE_LIGHT)
-    {
-        attacker->battleAttack += 1;
-        attacker->battleCritRate += 5;
-        attacker->battleHitRate += 5;
-        attacker->battleAvoidRate += 5;
-    }
+            break;
 #endif
 
 #if (defined(SID_TowerShield) && (COMMON_SKILL_VALID(SID_TowerShield)))
-    if (SkillTester(&attacker->unit, SID_TowerShield) && gBattleStats.range >= 2)
-        attacker->battleDefense += 6;
+        case SID_TowerShield:
+            if (gBattleStats.range >= 2)
+                attacker->battleDefense += 6;
+
+            break;
 #endif
 
 #if (defined(SID_ShortShield) && (COMMON_SKILL_VALID(SID_ShortShield)))
-    if (SkillTester(&attacker->unit, SID_ShortShield) && gBattleStats.range == 1)
-        attacker->battleDefense += 6;
+        case SID_ShortShield:
+            if (gBattleStats.range == 1)
+                attacker->battleDefense += 6;
+
+            break;
 #endif
 
 #if (defined(SID_StunningSmile) && (COMMON_SKILL_VALID(SID_StunningSmile)))
-    if (SkillTester(&defender->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
-        attacker->battleAvoidRate -= 20;
+        case SID_StunningSmile:
+            if (!(UNIT_CATTRIBUTES(&defender->unit) & CA_FEMALE))
+                attacker->battleDefense += 6;
+
+            break;
 #endif
 
 #if defined(SID_Trample) && (COMMON_SKILL_VALID(SID_Trample))
-    if (SkillTester(&attacker->unit, SID_Trample) && !(UNIT_CATTRIBUTES(&defender->unit) & CA_MOUNTEDAID))
-        attacker->battleAttack += 5;
+        case SID_Trample:
+            if (!(UNIT_CATTRIBUTES(&defender->unit) & CA_MOUNTEDAID))
+                attacker->battleAttack += 5;
+
+            break;
 #endif
 
 #if defined(SID_Opportunist) && (COMMON_SKILL_VALID(SID_Opportunist))
-    if (SkillTester(&attacker->unit, SID_Opportunist) && !defender->canCounter)
-        attacker->battleAttack += 4;
+        case SID_Opportunist:
+            if (!defender->canCounter)
+                attacker->battleAttack += 4;
+
+            break;
 #endif
 
-#if (defined(SID_Vanity) && (COMMON_SKILL_VALID(SID_Vanity)))
-    if (SkillTester(&attacker->unit, SID_Vanity) && gBattleStats.range == 2)
-    {
-        attacker->battleAttack += 2;
-        attacker->battleHitRate += 10;
-    }
+#if defined(SID_Vanity) && (COMMON_SKILL_VALID(SID_Vanity))
+        case SID_Vanity:
+            if (gBattleStats.range == 2)
+            {
+                attacker->battleAttack += 2;
+                attacker->battleHitRate += 10;
+            }
+            break;
 #endif
-}
 
-void PreBattleCalcSkillsPhaseTurn(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-    int trun_num = gPlaySt.chapterTurnNumber;
-    int trun_num_suppl = trun_num > 15 ? 15 : trun_num;
+#if (defined(SID_EvenRhythm) && (COMMON_SKILL_VALID(SID_EvenRhythm)))
+        case SID_EvenRhythm:
+            if ((gPlaySt.chapterTurnNumber % 2) == 0)
+            {
+                attacker->battleAvoidRate += 10;
+                attacker->battleHitRate += 10;
+            }
+            break;
+#endif
+
+#if (defined(SID_OddRhythm) && (COMMON_SKILL_VALID(SID_OddRhythm)))
+        case SID_OddRhythm:
+            if ((gPlaySt.chapterTurnNumber % 2) == 1)
+            {
+                attacker->battleAvoidRate += 10;
+                attacker->battleHitRate += 10;
+            }
+            break;
+#endif
 
 #if (defined(SID_QuickBurn) && (COMMON_SKILL_VALID(SID_QuickBurn)))
-    if (SkillTester(&attacker->unit, SID_QuickBurn))
-    {
-        attacker->battleHitRate += (15 - (trun_num_suppl - 1));
-        attacker->battleAvoidRate += (15 - (trun_num_suppl - 1));
-    }
+        case SID_QuickBurn:
+            tmp = gPlaySt.chapterTurnNumber > 15
+                ? 0
+                : 15 - gPlaySt.chapterTurnNumber;
+
+            attacker->battleHitRate += tmp;
+            attacker->battleAvoidRate += tmp;
+            break;
 #endif
 
 #if (defined(SID_SlowBurn) && (COMMON_SKILL_VALID(SID_SlowBurn)))
-    if (SkillTester(&attacker->unit, SID_SlowBurn))
-    {
-        attacker->battleHitRate += trun_num_suppl;
-        attacker->battleAvoidRate += trun_num_suppl;
+        case SID_SlowBurn:
+            tmp = gPlaySt.chapterTurnNumber > 15
+                ? 15
+                : gPlaySt.chapterTurnNumber;
+
+            attacker->battleHitRate += tmp;
+            attacker->battleAvoidRate += tmp;
+            break;
+#endif
+        }
     }
+
+#if (defined(SID_StunningSmile) && (COMMON_SKILL_VALID(SID_StunningSmile)))
+    /* This is judging on defender */
+    if (SkillTester(&defender->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
+        attacker->battleAvoidRate -= 20;
 #endif
 }
 

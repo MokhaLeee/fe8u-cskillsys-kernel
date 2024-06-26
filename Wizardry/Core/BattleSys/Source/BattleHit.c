@@ -167,6 +167,16 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     attack = gBattleStats.attack;
     defense = gBattleStats.defense;
 
+#if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
+    if (SkillTester(&attacker->unit, SID_QuickDraw) && attacker == &gBattleTarget)
+        attack += 4;
+#endif
+
+#if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
+    if (SkillTester(&attacker->unit, SID_StrongRiposte) && attacker == &gBattleTarget)
+        attack += 3;
+#endif
+
 #if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
     if (CheckBattleSkillActivte(attacker, defender, SID_Flare, attacker->unit.skl))
     {
