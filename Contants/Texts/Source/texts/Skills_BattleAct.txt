@@ -130,5 +130,4 @@ SureShot:[NL]
 
 ## MSG_SKILL_Synchronize
 Synchronize: put status of[NL]
-the character to the target[NL]
-(Skill % activation).[X]
+the character to the target[X]

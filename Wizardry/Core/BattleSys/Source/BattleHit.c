@@ -509,16 +509,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
-#if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
-        else if (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE)
-        {
-            if (CheckBattleSkillActivte(attacker, defender, SID_Synchronize, attacker->unit.skl))
-            {
-                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Synchronize);
-                defender->statusOut = GetUnitStatusIndex(&attacker->unit);
-            }
-        }
-#endif
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
