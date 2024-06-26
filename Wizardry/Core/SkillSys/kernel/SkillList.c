@@ -1,7 +1,12 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
-extern struct SkillList sSkillList;
+/**
+ * 0: generic use
+ * 1: battle actor
+ * 2: battle target
+ */
+extern struct SkillList sSkillList[3];
 
 STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 {
@@ -63,7 +68,12 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
 
 struct SkillList * GetUnitSkillList(struct Unit * unit)
 {
-    struct SkillList * list = &sSkillList;
+    struct SkillList * list = &sSkillList[0];    
+    if (unit == &gBattleActor.unit)
+        list = &sSkillList[1];
+    else if (unit == &gBattleTarget.unit)
+        list = &sSkillList[2];
+
     if (!JudgeUnitListHeader(unit, &list->header))
         GenerateSkillListExt(unit, list);
 
