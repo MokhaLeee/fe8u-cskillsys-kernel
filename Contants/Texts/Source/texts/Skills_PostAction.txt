@@ -48,3 +48,7 @@ to the original position.[X]
 Swap:[NL]
 Swap position after[NL]
 attacking enemy.[X]
+
+## MSG_SKILL_Synchronize
+Synchronize: put status of[NL]
+the character to the target[X]

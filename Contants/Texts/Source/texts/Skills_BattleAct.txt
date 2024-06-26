@@ -127,7 +127,3 @@ weapon no consumed[NL]
 SureShot:[NL]
 100% hit rate, damage +50%.[NL]
  (Skill % activation).[X]
-
-## MSG_SKILL_Synchronize
-Synchronize: put status of[NL]
-the character to the target[X]
