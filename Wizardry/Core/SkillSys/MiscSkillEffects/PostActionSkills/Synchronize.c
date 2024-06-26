@@ -9,7 +9,6 @@ STATIC_DECLAR void PostActionSynchronize_StartActor(ProcPtr proc)
 {
     struct Unit * unit_act = GetUnit(gActionData.subjectIndex);
 
-    MU_EndAll();
     MU_StartActionAnim(MU_Create(unit_act));
 }
 
@@ -105,6 +104,7 @@ bool PostActionSynchronize(ProcPtr parent)
 
     Proc_StartBlocking(ProcScr_PostActionSynchronize, parent);
 
+    MU_EndAll();
     HideUnitSprite(unit_act);
     ShowUnitSprite(unit_tar);
     return true;
