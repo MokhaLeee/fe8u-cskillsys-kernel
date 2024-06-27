@@ -1,0 +1,20 @@
+## MSG_SKILL_GentleFlower_NAME
+G-Flower[X]
+
+## MSG_SKILL_GentleFlower
+Gentle Flower:[NL]
+Allies within 2 spaces restore ×1.5[NL]
+as much HP from healing items.[X]
+
+## MSG_SKILL_Admiration
+Admiration:[NL]
+-2 damage taken if two female allies[NL]
+are adjacent within 2 spaces.[X]
+
+## MSG_SKILL_FairyTaleFolk_NAME
+F-T Folk[X]
+
+## MSG_SKILL_FairyTaleFolk
+Fairy-Tale Folk:[NL]
++2 damage dealt if a male ally and a[NL]
+female ally are adjacent within 2 spaces.[X]

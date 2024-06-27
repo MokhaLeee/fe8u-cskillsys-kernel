@@ -193,8 +193,7 @@ void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender
 
 void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    FORCE_DECLARE int tmp, x, y, i, j;
-    FORCE_DECLARE struct Unit * _unit;
+    FORCE_DECLARE int tmp, i;
     int _skill_list_cnt;
     struct SkillList * list;
 
@@ -997,6 +996,92 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                     }
                 }
             }
+            break;
+#endif
+
+#if (defined(SID_Admiration) && COMMON_SKILL_VALID(SID_Admiration))
+        case SID_Admiration:
+            tmp = 0;
+            for (i = 0; i < 4; i++)
+            {
+                int _j;
+
+                int _x = attacker->unit.xPos + vec_range1[i].x;
+                int _y = attacker->unit.yPos + vec_range1[i].y;
+                struct Unit * _unit = GetUnitAtPosition(_x, _y);
+                if (!_unit)
+                    continue;
+
+                if (!AreUnitsAllied(attacker->unit.index, _unit->index))
+                    continue;
+
+                for (_j = 0; _j < 4; _j++)
+                {
+                    int _x2 = _unit->xPos + vec_range1[i].x;
+                    int _y2 = _unit->yPos + vec_range1[i].y;
+
+                    struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
+                    if (!_unit2)
+                        continue;
+
+                    if (!AreUnitsAllied(_unit2->index, _unit->index))
+                        continue;
+
+                    if (!!(UNIT_CATTRIBUTES(_unit2) & CA_FEMALE) == !!(UNIT_CATTRIBUTES(_unit) & CA_FEMALE))
+                    {
+                        tmp = 1;
+                        goto L_SID_Admiration_done;
+                    }
+                }
+            }
+
+            L_SID_Admiration_done:
+            if (tmp == 1)
+                attacker->battleDefense += 2;
+
+            break;
+#endif
+
+#if (defined(SID_FairyTaleFolk) && COMMON_SKILL_VALID(SID_FairyTaleFolk))
+        case SID_FairyTaleFolk:
+            tmp = 0;
+            for (i = 0; i < 4; i++)
+            {
+                int _j;
+
+                int _x = attacker->unit.xPos + vec_range1[i].x;
+                int _y = attacker->unit.yPos + vec_range1[i].y;
+                struct Unit * _unit = GetUnitAtPosition(_x, _y);
+                if (!_unit)
+                    continue;
+
+                if (!AreUnitsAllied(attacker->unit.index, _unit->index))
+                    continue;
+
+                for (_j = 0; _j < 4; _j++)
+                {
+                    int _x2 = _unit->xPos + vec_range1[i].x;
+                    int _y2 = _unit->yPos + vec_range1[i].y;
+
+                    struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
+                    if (!_unit2)
+                        continue;
+
+                    if (!AreUnitsAllied(_unit2->index, _unit->index))
+                        continue;
+
+                    if (!!(UNIT_CATTRIBUTES(_unit2) & CA_FEMALE) != !!(UNIT_CATTRIBUTES(_unit) & CA_FEMALE))
+                    {
+                        tmp = 1;
+                        goto L_FairyTaleFolk_done;
+                    }
+                }
+            }
+
+            L_FairyTaleFolk_done:
+            if (tmp == 1)
+                attacker->battleAttack += 2;
+
             break;
 #endif
         }

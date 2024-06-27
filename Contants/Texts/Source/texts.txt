@@ -44,6 +44,7 @@ Raises magic.[X]
 #include texts/Skills_Menu.txt
 #include texts/Skills_Legend.txt
 #include texts/Skills_CombatArt.txt
+#include texts/Skills_Misc.txt
 #include texts/CombatArt.txt
 #include texts/CombatArt_Sword.txt
 #include texts/CombatArt_Axe.txt

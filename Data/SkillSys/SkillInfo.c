@@ -2116,22 +2116,45 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Skyguard) && COMMON_SKILL_VALID(SID_Skyguard))
     [SID_Skyguard] = {
-         .desc = MSG_SKILL_Skyguard,
-         .icon = GFX_SkillIcon_Skyguard,
+        .desc = MSG_SKILL_Skyguard,
+        .icon = GFX_SkillIcon_Skyguard,
       },
 #endif
 
 #if (defined(SID_Horseguard) && COMMON_SKILL_VALID(SID_Horseguard))
     [SID_Horseguard] = {
-         .desc = MSG_SKILL_Horseguard,
-         .icon = GFX_SkillIcon_Horseguard,
+        .desc = MSG_SKILL_Horseguard,
+        .icon = GFX_SkillIcon_Horseguard,
       },
 #endif
 
 #if (defined(SID_Armorboost) && COMMON_SKILL_VALID(SID_Armorboost))
     [SID_Armorboost] = {
-         .desc = MSG_SKILL_Armorboost,
-         .icon = GFX_SkillIcon_Armorboost,
+        .desc = MSG_SKILL_Armorboost,
+        .icon = GFX_SkillIcon_Armorboost,
+      },
+#endif
+
+#if (defined(SID_GentleFlower) && COMMON_SKILL_VALID(SID_GentleFlower))
+    [SID_GentleFlower] = {
+        .name = MSG_SKILL_GentleFlower_NAME,
+        .desc = MSG_SKILL_GentleFlower,
+        .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
+#if (defined(SID_Admiration) && COMMON_SKILL_VALID(SID_Admiration))
+    [SID_Admiration] = {
+        .desc = MSG_SKILL_Admiration,
+        .icon = GFX_SkillIcon_WIP,
+      },
+#endif
+
+#if (defined(SID_FairyTaleFolk) && COMMON_SKILL_VALID(SID_FairyTaleFolk))
+    [SID_FairyTaleFolk] = {
+        .name = MSG_SKILL_FairyTaleFolk_NAME,
+        .desc = MSG_SKILL_FairyTaleFolk,
+        .icon = GFX_SkillIcon_WIP,
       },
 #endif
 };

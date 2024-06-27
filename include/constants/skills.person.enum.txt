@@ -4,6 +4,10 @@ SID_Inori
 SID_Armsthrift
 SID_Synchronize
 
+// SID_GentleFlower
+// SID_Admiration
+// SID_FairyTaleFolk
+
 // Weapon range
 SID_HighGround
 SID_PointBlank
