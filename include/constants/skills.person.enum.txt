@@ -9,6 +9,7 @@ SID_Admiration
 SID_FairyTaleFolk
 SID_PushMovement
 SID_LightWeight
+SID_Analytic
 
 // Weapon range
 SID_HighGround
