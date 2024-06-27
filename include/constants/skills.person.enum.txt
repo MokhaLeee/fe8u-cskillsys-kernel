@@ -3,10 +3,12 @@ SID_Supply
 SID_Inori
 SID_Armsthrift
 SID_Synchronize
-
-// SID_GentleFlower
-// SID_Admiration
-// SID_FairyTaleFolk
+SID_PoisonPoint
+SID_GentleFlower
+SID_Admiration
+SID_FairyTaleFolk
+SID_PushMovement
+SID_LightWeight
 
 // Weapon range
 SID_HighGround

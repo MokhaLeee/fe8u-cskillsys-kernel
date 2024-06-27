@@ -8,7 +8,6 @@ SID_LckBonus
 SID_DefBonus
 SID_ResBonus
 SID_MovBonus
-// SID_LightWeight
 SID_Resolve
 
 SID_DefiantStr
@@ -18,8 +17,8 @@ SID_DefiantSpd
 SID_DefiantLck
 SID_DefiantDef
 SID_DefiantRes
-// SID_DefiantCrit
-// SID_DefiantAvoid
+SID_DefiantCrit
+SID_DefiantAvoid
 
 SID_PushDefense
 SID_PushMagic
@@ -28,7 +27,6 @@ SID_PushSkill
 SID_PushSpeed
 SID_PushStrength
 SID_PushLuck
-// SID_PushMovement
 SID_PushSpectrum
 
 SID_Fury
@@ -39,7 +37,7 @@ SID_LifeAndDeath
 SID_LuckySeven
 SID_EvenFooted
 SID_OddFooted
-// SID_SpeedBoost
+SID_SpeedBoost
 
 // Battle effective
 SID_Nullify
@@ -78,15 +76,14 @@ SID_Fortune
 SID_BlueFlame
 SID_DancingBlade
 SID_Frenzy
-// SID_WonderGuard
-// SID_PoisonPoint
+SID_WonderGuard
 SID_Merciless
-// SID_CriticalPierce
+SID_CriticalPierce
 SID_KillingMachine
 SID_HeavyStrikes
 SID_QuickBurn
 SID_Technician
-// SID_CatchingUp
+SID_CatchingUp
 SID_SlowBurn
 SID_BattleVeteran
 SID_NaturalCover
@@ -114,13 +111,13 @@ SID_Charge
 SID_FieryBlood
 SID_Wrath
 SID_Vigilance
-// SID_OutdoorFighter
+SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
 SID_EvenRhythm
 SID_OddRhythm
 SID_Corrosion
-// SID_NoGuard
+SID_NoGuard
 SID_Puissance
 SID_Prescience
 SID_SilentPride
@@ -136,7 +133,7 @@ SID_SwordBreaker
 SID_AxeBreaker
 SID_LanceBreaker
 SID_BowBreaker
-// SID_BMagBreaker
+SID_BMagBreaker
 
 // Battle order
 SID_Vantage
@@ -144,7 +141,7 @@ SID_Desperation
 SID_QuickRiposte
 SID_WaryFighter
 SID_DoubleLion
-// SID_Adept
+SID_Adept
 
 // Battle activation skills
 SID_Astra
@@ -195,11 +192,11 @@ SID_RangeBonusBMag1
 SID_RangeBonusBMag2
 SID_RangeBonusBow1
 SID_RangeBonusBow2
-// SID_RunningStart
+SID_RunningStart
 
-// SID_BattleRange_Todo1
-// SID_BattleRange_Todo2
-// SID_BattleRange_Todo3
+SID_BattleRange_Todo1
+SID_BattleRange_Todo2
+SID_BattleRange_Todo3
 
 // Post action
 SID_Canto
@@ -266,8 +263,8 @@ SID_VoidCurse
 SID_Aptitude
 
 // Legendary skill
-// SID_LEGEND_InoriAtk
-// SID_LEGEND_InoriAvo
-// SID_LEGEND_InoriDef
-// SID_LEGEND_4
-// SID_LEGEND_5
+SID_LEGEND_InoriAtk
+SID_LEGEND_InoriAvo
+SID_LEGEND_InoriDef
+SID_LEGEND_4
+SID_LEGEND_5
