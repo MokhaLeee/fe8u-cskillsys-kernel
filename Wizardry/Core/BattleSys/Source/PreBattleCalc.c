@@ -168,7 +168,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_DefiantAvoid) && (COMMON_SKILL_VALID(SID_DefiantAvoid)))
-        case SID_DefiantCrit:
+        case SID_DefiantAvoid:
             if ((attacker->hpInitial * 4) < attacker->unit.maxHP)
                 attacker->battleAvoidRate += 50; 
 
