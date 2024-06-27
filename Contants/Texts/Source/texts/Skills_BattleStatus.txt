@@ -444,3 +444,18 @@ attacks recieved in melee.[X]
 Vanity:[NL]
 Gain +2 Damage and +10 Hit[NL]
 when fighting enemy at 2 range.[X]
+
+## MSG_SKILL_Skyguard
+Skyguard:[NL]
++4 defense against flying enemies[NL]
+if within 3 spaces of an ally flier.[X]
+
+## MSG_SKILL_Horseguard
+Horseguard:[NL]
++4 defense against horseback enemies[NL]
+if within 3 spaces of an ally horse rider.[X]
+
+## MSG_SKILL_Armorboost
+Armorboost:[NL]
++4 attack and defense against armored[NL]
+enemies if within 3 spaces of an armored ally.[X]

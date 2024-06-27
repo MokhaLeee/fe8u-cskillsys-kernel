@@ -21,6 +21,8 @@
 #define hang() do { while (1); } while (0);
 #endif
 
+#define FORCE_DECLARE __attribute__((unused))
+
 /* Pointer valid judge */
 #define IS_IWRAM_PTR(ptr)    ((((u32)(ptr)) & 0xFF000000) == 0x03000000)
 #define IS_EWRAM_PTR(ptr)    ((((u32)(ptr)) & 0xFF000000) == 0x02000000)

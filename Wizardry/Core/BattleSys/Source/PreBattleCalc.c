@@ -15,6 +15,53 @@ typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit *
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
+FORCE_DECLARE static const struct Vec2 vec_range3[24] = {
+                                  { 0, -3},
+                        {-1, -2}, { 0, -2}, { 1, -1},
+              {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
+    {-3,  0}, {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0}, { 3,  0},
+              {-2,  1}, {-1,  1}, { 0,  1}, { 1,  1}, { 2,  1},
+                        {-1,  2}, { 0,  2}, { 1,  2},
+                                  { 0,  3}
+};
+
+FORCE_DECLARE static const struct Vec2 vec_range1[4] = {
+
+              { 0, -1},
+    {-1,  0},           { 1,  0},
+              { 0,  1},
+};
+
+FORCE_DECLARE static const u8 range1[24] = {
+             0,
+          0, 0, 0,
+       0, 0, 1, 0, 0,
+    0, 0, 1,    1, 0, 0,
+       0, 0, 1, 0, 0,
+          0, 0, 0,
+             0
+};
+
+FORCE_DECLARE static const u8 range2[24] = {
+             0,
+          0, 1, 0,
+       0, 1, 1, 1, 0,
+    0, 1, 1,    1, 1, 0,
+       0, 1, 1, 1, 0,
+          0, 1, 0,
+             0
+};
+
+FORCE_DECLARE static const u8 range3[24] = {
+             1,
+          1, 1, 1,
+       1, 1, 1, 1, 1,
+    1, 1, 1,    1, 1, 1,
+       1, 1, 1, 1, 1,
+          1, 1, 1,
+             1
+};
+
 /* LynJump */
 void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
@@ -146,7 +193,8 @@ void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender
 
 void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int i, tmp;
+    FORCE_DECLARE int tmp;
+    int _skill_list_cnt;
     struct SkillList * list;
 
     /**
@@ -156,9 +204,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         return;
 
     list = GetUnitSkillList(&attacker->unit);
-    for (i = 0; i < list->amt; i++)
+    for (_skill_list_cnt = 0; _skill_list_cnt < list->amt; _skill_list_cnt++)
     {
-        switch (list->sid[i]) {
+        switch (list->sid[_skill_list_cnt]) {
 #if (defined(SID_DefiantCrit) && (COMMON_SKILL_VALID(SID_DefiantCrit)))
         case SID_DefiantCrit:
             if ((attacker->hpInitial * 4) < attacker->unit.maxHP)
@@ -880,46 +928,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    const struct Vec2 vec_range[24] = {
-                                      { 0, -3},
-                            {-1, -2}, { 0, -2}, { 1, -1},
-                  {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
-        {-3,  0}, {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0}, { 3,  0},
-                  {-2,  1}, {-1,  1}, { 0,  1}, { 1,  1}, { 2,  1},
-                            {-1,  2}, { 0,  2}, { 1,  2},
-                                      { 0,  3}
-    };
-
-    const u8 range1[24] = {
-                 0,
-              0, 0, 0,
-           0, 0, 1, 0, 0,
-        0, 0, 1,    1, 0, 0,
-           0, 0, 1, 0, 0,
-              0, 0, 0,
-                 0
-    };
-
-    const u8 range2[24] = {
-                 0,
-              0, 1, 0,
-           0, 1, 1, 1, 0,
-        0, 1, 1,    1, 1, 0,
-           0, 1, 1, 1, 0,
-              0, 1, 0,
-                 0
-    };
-
-    const u8 range3[24] = {
-                 1,
-              1, 1, 1,
-           1, 1, 1, 1, 1,
-        1, 1, 1,    1, 1, 1,
-           1, 1, 1, 1, 1,
-              1, 1, 1,
-                 1
-    };
-
     u32 i, _x, _y;
     struct Unit * unit;
 
@@ -938,8 +946,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
     for (i = 0; i < 24; i++)
     {
-        _x = attacker->unit.xPos + vec_range[i].x;
-        _y = attacker->unit.yPos + vec_range[i].y;
+        _x = attacker->unit.xPos + vec_range3[i].x;
+        _y = attacker->unit.yPos + vec_range3[i].y;
 
         unit = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit))

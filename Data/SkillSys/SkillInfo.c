@@ -2113,4 +2113,25 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_StaffSavant,
     },
 #endif
+
+#if (defined(SID_Skyguard) && COMMON_SKILL_VALID(SID_Skyguard))
+    [SID_Skyguard] = {
+         .desc = MSG_SKILL_Skyguard,
+         .icon = GFX_SkillIcon_Skyguard,
+      },
+#endif
+
+#if (defined(SID_Horseguard) && COMMON_SKILL_VALID(SID_Horseguard))
+    [SID_Horseguard] = {
+         .desc = MSG_SKILL_Horseguard,
+         .icon = GFX_SkillIcon_Horseguard,
+      },
+#endif
+
+#if (defined(SID_Armorboost) && COMMON_SKILL_VALID(SID_Armorboost))
+    [SID_Armorboost] = {
+         .desc = MSG_SKILL_Armorboost,
+         .icon = GFX_SkillIcon_Armorboost,
+      },
+#endif
 };
