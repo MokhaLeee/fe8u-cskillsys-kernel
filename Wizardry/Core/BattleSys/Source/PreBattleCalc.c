@@ -193,7 +193,8 @@ void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender
 
 void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    FORCE_DECLARE int tmp;
+    FORCE_DECLARE int tmp, x, y, i, j;
+    FORCE_DECLARE struct Unit * _unit;
     int _skill_list_cnt;
     struct SkillList * list;
 
@@ -914,6 +915,88 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
             attacker->battleHitRate += tmp;
             attacker->battleAvoidRate += tmp;
+            break;
+#endif
+
+#if (defined(SID_Skyguard) && COMMON_SKILL_VALID(SID_Skyguard))
+        case SID_Skyguard:
+            if (CheckClassFlier(UNIT_CLASS_ID(&defender->unit)))
+            {
+                for (i = 0; i < 24; i++)
+                {
+                    int _x = attacker->unit.xPos + vec_range3[i].x;
+                    int _y = attacker->unit.yPos + vec_range3[i].y;
+
+                    struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+                    if (!UNIT_IS_VALID(unit_ally))
+                        continue;
+
+                    if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                        continue;
+
+                    if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassFlier(UNIT_CLASS_ID(unit_ally)))
+                    {
+                        attacker->battleAttack += 4;
+                        break;
+                    }
+                }
+            }
+            break;
+#endif
+
+#if (defined(SID_Horseguard) && COMMON_SKILL_VALID(SID_Horseguard))
+        case SID_Horseguard:
+            if (CheckClassCavalry(UNIT_CLASS_ID(&defender->unit)))
+            {
+                for (i = 0; i < 24; i++)
+                {
+                    int _x = attacker->unit.xPos + vec_range3[i].x;
+                    int _y = attacker->unit.yPos + vec_range3[i].y;
+
+                    struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+                    if (!UNIT_IS_VALID(unit_ally))
+                        continue;
+
+                    if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                        continue;
+
+                    if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassCavalry(UNIT_CLASS_ID(unit_ally)))
+                    {
+                        attacker->battleAttack += 4;
+                        break;
+                    }
+                }
+            }
+            break;
+#endif
+
+#if (defined(SID_Armorboost) && COMMON_SKILL_VALID(SID_Armorboost))
+        case SID_Armorboost:
+            if (CheckClassArmor(UNIT_CLASS_ID(&defender->unit)))
+            {
+                for (i = 0; i < 24; i++)
+                {
+                    int _x = attacker->unit.xPos + vec_range3[i].x;
+                    int _y = attacker->unit.yPos + vec_range3[i].y;
+
+                    struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+                    if (!UNIT_IS_VALID(unit_ally))
+                        continue;
+
+                    if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                        continue;
+
+                    if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassArmor(UNIT_CLASS_ID(unit_ally)))
+                    {
+                        attacker->battleAttack += 4;
+
+                        if (!IsMagicAttack(defender))
+                            attacker->battleDefense += 4;
+
+                        break;
+                    }
+                }
+            }
             break;
 #endif
         }
