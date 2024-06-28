@@ -27,11 +27,13 @@ int HealAmount_SkillsGetter(int status, struct Unit * actor, struct Unit * targe
         if (!UNIT_IS_VALID(unit_ally))
             continue;
 
+#if 0
         if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
             continue;
 
         if (!AreUnitsAllied(actor->index, unit_ally->index))
             continue;
+#endif
 
         if (SkillTester(unit_ally, SID_GentleFlower))
         {
@@ -50,11 +52,13 @@ int HealAmount_SkillsGetter(int status, struct Unit * actor, struct Unit * targe
         if (!UNIT_IS_VALID(unit_ally))
             continue;
 
+#if 0
         if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
             continue;
 
         if (!AreUnitsAllied(target->index, unit_ally->index))
             continue;
+#endif
 
         if (SkillTester(unit_ally, SID_GentleFlower))
         {
