@@ -3,6 +3,22 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+typedef int (* HealAmountGetterFunc_t)(int old, struct Unit * actor, struct Unit * target);
+extern HealAmountGetterFunc_t const * const gpHealAmountGetters;
+
+static int HealAmountGetter(int base, struct Unit * actor, struct Unit * target)
+{
+    const HealAmountGetterFunc_t * it;
+    int status = base;
+
+    for (it = gpHealAmountGetters; *it; it++)
+        status = (*it)(status, actor, target);
+
+    LIMIT_AREA(status, 0, 80);
+    return status;
+}
+
+/* LynJump */
 int GetUnitItemHealAmount(struct Unit * unit, int item)
 {
     int result = 0;
@@ -30,13 +46,76 @@ int GetUnitItemHealAmount(struct Unit * unit, int item)
     if (GetItemAttributes(item) & IA_STAFF)
         result += MagGetter(unit);
 
-#if (defined(SID_GentleFlower) && COMMON_SKILL_VALID(SID_GentleFlower))
-    if (SkillTester(unit, SID_GentleFlower))
-        result += result / 2;
-#endif
-
     if (result > 80)
         result = 80;
 
     return result;
+}
+
+/* LynJump */
+void ExecStandardHeal(ProcPtr proc)
+{
+    int amount;
+
+    struct Unit * unit_act = GetUnit(gActionData.subjectIndex);
+    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+
+    BattleInitItemEffect(unit_act, gActionData.itemSlotIndex);
+
+    BattleInitItemEffectTarget(unit_tar);
+
+    amount = GetUnitItemHealAmount(
+        unit_act,
+        unit_act->items[gActionData.itemSlotIndex]
+    );
+
+#if CHAX
+    amount = HealAmountGetter(amount, unit_act, unit_tar);
+#endif
+
+    AddUnitHp(unit_tar, amount);
+    gBattleHitIterator->hpChange = gBattleTarget.unit.curHP - GetUnitCurrentHp(unit_tar);
+    gBattleTarget.unit.curHP = GetUnitCurrentHp(unit_tar);
+
+    BattleApplyItemEffect(proc);
+    BeginBattleAnimations();
+}
+
+/* LynJump */
+void ExecFortify(ProcPtr proc)
+{
+    int i;
+    int amount;
+    int targetCount;
+
+    struct Unit * unit_act = GetUnit(gActionData.subjectIndex);
+    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+
+    BattleInitItemEffect(unit_act,
+        gActionData.itemSlotIndex);
+
+    BattleInitItemEffectTarget(GetUnitFromCharId(GetPlayerLeaderUnitId()));
+    MakeTargetListForRangedHeal(unit_act);
+
+    amount = GetUnitItemHealAmount(
+        unit_act,
+        unit_act->items[gActionData.itemSlotIndex]
+    );
+
+    targetCount = GetSelectTargetCount();
+
+    for (i = 0; i < targetCount; i++)
+    {
+#if CHAX
+        int amound_real = HealAmountGetter(amount, unit_act, unit_tar);
+        AddUnitHp(GetUnit(GetTarget(i)->uid), amound_real);
+#else
+        AddUnitHp(GetUnit(GetTarget(i)->uid), amount);
+#endif
+    }
+
+    BattleApplyItemEffect(proc);
+    BeginBattleAnimations();
+
+    return;
 }

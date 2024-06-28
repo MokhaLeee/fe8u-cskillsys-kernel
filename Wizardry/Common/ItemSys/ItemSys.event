@@ -5,6 +5,12 @@
 #include "Source/StaffHeal.lyn.event"
 #include "Source/LynJump.event"
 
+/* int (*)(int old, struct Unit * actor, struct Unit * target); */
+ALIGN 4
+gHealAmountGetters:
+    POIN StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc
+    WORD 0
+
 #include "Remap/Remap.event"
 
 #define InjectItemUsabilityJpt(index, routine) "PUSH; ORG (ItemUsabilityJumpTable + 4 * index); POIN routine | 1; POP"
