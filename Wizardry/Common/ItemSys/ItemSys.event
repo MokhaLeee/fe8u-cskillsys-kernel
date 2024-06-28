@@ -8,6 +8,7 @@
 /* int (*)(int old, struct Unit * actor, struct Unit * target); */
 ALIGN 4
 gHealAmountGetters:
+    POIN HealAmount_SkillsGetter
     POIN StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc
     WORD 0
 

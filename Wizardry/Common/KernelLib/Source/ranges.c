@@ -25,7 +25,7 @@ const struct Vec1 gVecs_3x3[24] = {
                                   { 0,  3}
 };
 
-const u8 gRange1_In2x2[ARRAY_COUNT(gVecs_2x2)] = {
+const u8 gRange1_In2x2[ARRAY_COUNT_RANGE2x2] = {
           0,
        0, 1, 0,
     0, 1,    1, 0,
@@ -33,7 +33,7 @@ const u8 gRange1_In2x2[ARRAY_COUNT(gVecs_2x2)] = {
           0,
 };
 
-const u8 gRange1_In3x3[ARRAY_COUNT(gVecs_3x3)] = {
+const u8 gRange1_In3x3[ARRAY_COUNT_RANGE3x3] = {
              0,
           0, 0, 0,
        0, 0, 1, 0, 0,
@@ -43,7 +43,7 @@ const u8 gRange1_In3x3[ARRAY_COUNT(gVecs_3x3)] = {
              0
 };
 
-const u8 gRange2_In3x3[ARRAY_COUNT(gVecs_3x3)] = {
+const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3] = {
              0,
           0, 1, 0,
        0, 1, 1, 1, 0,

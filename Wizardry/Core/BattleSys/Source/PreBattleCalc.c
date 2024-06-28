@@ -872,7 +872,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Skyguard:
             if (CheckClassFlier(UNIT_CLASS_ID(&defender->unit)))
             {
-                for (i = 0; i < 24; i++)
+                for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
                 {
                     int _x = attacker->unit.xPos + gVecs_3x3[i].x;
                     int _y = attacker->unit.yPos + gVecs_3x3[i].y;
@@ -898,7 +898,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Horseguard:
             if (CheckClassCavalry(UNIT_CLASS_ID(&defender->unit)))
             {
-                for (i = 0; i < 24; i++)
+                for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
                 {
                     int _x = attacker->unit.xPos + gVecs_3x3[i].x;
                     int _y = attacker->unit.yPos + gVecs_3x3[i].y;
@@ -924,7 +924,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Armorboost:
             if (CheckClassArmor(UNIT_CLASS_ID(&defender->unit)))
             {
-                for (i = 0; i < 24; i++)
+                for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
                 {
                     int _x = attacker->unit.xPos + gVecs_3x3[i].x;
                     int _y = attacker->unit.yPos + gVecs_3x3[i].y;
@@ -1074,7 +1074,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     if (gBattleStats.config & BATTLE_CONFIG_ARENA)
         return;
 
-    for (i = 0; i < 24; i++)
+    for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
     {
         _x = attacker->unit.xPos + gVecs_3x3[i].x;
         _y = attacker->unit.yPos + gVecs_3x3[i].y;
