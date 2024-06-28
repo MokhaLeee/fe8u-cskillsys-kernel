@@ -112,3 +112,5 @@ void TryAddUnitToSleepTargetList(struct Unit * unit);
 void TryAddUnitToBerserkTargetList(struct Unit * unit);
 void TryAddUnitToWarpTargetList(struct Unit * unit);
 void TryAddUnitToHammerneTargetList(struct Unit * unit);
+
+void BeginUnitHealAnim(struct Unit * unit, int hp);
