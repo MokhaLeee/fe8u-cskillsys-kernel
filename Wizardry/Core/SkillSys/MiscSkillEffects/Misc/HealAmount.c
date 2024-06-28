@@ -20,8 +20,8 @@ int HealAmount_SkillsGetter(int status, struct Unit * actor, struct Unit * targe
     /* Judge on actor range 2x2 */
     for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
     {
-        int _x = actor->xPos + gVecs_3x3[i].x;
-        int _y = actor->yPos + gVecs_3x3[i].y;
+        int _x = actor->xPos + gVecs_2x2[i].x;
+        int _y = actor->yPos + gVecs_2x2[i].y;
 
         struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit_ally))
@@ -43,8 +43,8 @@ int HealAmount_SkillsGetter(int status, struct Unit * actor, struct Unit * targe
     /* Judge on target range 2x2 */
     for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
     {
-        int _x = target->xPos + gVecs_3x3[i].x;
-        int _y = target->yPos + gVecs_3x3[i].y;
+        int _x = target->xPos + gVecs_2x2[i].x;
+        int _y = target->yPos + gVecs_2x2[i].y;
 
         struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit_ally))
