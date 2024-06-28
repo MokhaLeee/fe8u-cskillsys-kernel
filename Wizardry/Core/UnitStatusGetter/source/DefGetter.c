@@ -71,5 +71,15 @@ int DefGetterSkills(int status, struct Unit * unit)
 #endif
     }
 
+#if defined(SID_InitSturdy) && (COMMON_SKILL_VALID(SID_InitSturdy))
+        if (SkillTester(unit, SID_InitSturdy))
+            status += 7;
+#endif
+
+#if defined(SID_InitSpectrum) && (COMMON_SKILL_VALID(SID_InitSpectrum))
+        if (SkillTester(unit, SID_InitSpectrum))
+            status += 7;
+#endif
+
     return status;
 }
