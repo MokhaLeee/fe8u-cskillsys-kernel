@@ -8,6 +8,7 @@
 #include "PostActionSkills/Return.lyn.event"
 #include "PostActionSkills/Swap.lyn.event"
 #include "PostActionSkills/Synchronize.lyn.event"
+#include "PostActionSkills/Lifetaker.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
 #include "Misc/MenuSkills.lyn.event"
