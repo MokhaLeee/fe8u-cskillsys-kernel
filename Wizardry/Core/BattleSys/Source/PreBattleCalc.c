@@ -15,53 +15,6 @@ typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit *
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
-FORCE_DECLARE static const struct Vec2 vec_range3[24] = {
-                                  { 0, -3},
-                        {-1, -2}, { 0, -2}, { 1, -1},
-              {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
-    {-3,  0}, {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0}, { 3,  0},
-              {-2,  1}, {-1,  1}, { 0,  1}, { 1,  1}, { 2,  1},
-                        {-1,  2}, { 0,  2}, { 1,  2},
-                                  { 0,  3}
-};
-
-FORCE_DECLARE static const struct Vec2 vec_range1[4] = {
-
-              { 0, -1},
-    {-1,  0},           { 1,  0},
-              { 0,  1},
-};
-
-FORCE_DECLARE static const u8 range1[24] = {
-             0,
-          0, 0, 0,
-       0, 0, 1, 0, 0,
-    0, 0, 1,    1, 0, 0,
-       0, 0, 1, 0, 0,
-          0, 0, 0,
-             0
-};
-
-FORCE_DECLARE static const u8 range2[24] = {
-             0,
-          0, 1, 0,
-       0, 1, 1, 1, 0,
-    0, 1, 1,    1, 1, 0,
-       0, 1, 1, 1, 0,
-          0, 1, 0,
-             0
-};
-
-FORCE_DECLARE static const u8 range3[24] = {
-             1,
-          1, 1, 1,
-       1, 1, 1, 1, 1,
-    1, 1, 1,    1, 1, 1,
-       1, 1, 1, 1, 1,
-          1, 1, 1,
-             1
-};
-
 /* LynJump */
 void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
@@ -923,8 +876,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             {
                 for (i = 0; i < 24; i++)
                 {
-                    int _x = attacker->unit.xPos + vec_range3[i].x;
-                    int _y = attacker->unit.yPos + vec_range3[i].y;
+                    int _x = attacker->unit.xPos + gVecs_3x3[i].x;
+                    int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
                     struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
@@ -949,8 +902,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             {
                 for (i = 0; i < 24; i++)
                 {
-                    int _x = attacker->unit.xPos + vec_range3[i].x;
-                    int _y = attacker->unit.yPos + vec_range3[i].y;
+                    int _x = attacker->unit.xPos + gVecs_3x3[i].x;
+                    int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
                     struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
@@ -975,8 +928,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             {
                 for (i = 0; i < 24; i++)
                 {
-                    int _x = attacker->unit.xPos + vec_range3[i].x;
-                    int _y = attacker->unit.yPos + vec_range3[i].y;
+                    int _x = attacker->unit.xPos + gVecs_3x3[i].x;
+                    int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
                     struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
@@ -1006,8 +959,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             {
                 int _j;
 
-                int _x = attacker->unit.xPos + vec_range1[i].x;
-                int _y = attacker->unit.yPos + vec_range1[i].y;
+                int _x = attacker->unit.xPos + gVecs_1x1[i].x;
+                int _y = attacker->unit.yPos + gVecs_1x1[i].y;
                 struct Unit * _unit = GetUnitAtPosition(_x, _y);
                 if (!_unit)
                     continue;
@@ -1017,8 +970,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                 for (_j = 0; _j < 4; _j++)
                 {
-                    int _x2 = _unit->xPos + vec_range1[i].x;
-                    int _y2 = _unit->yPos + vec_range1[i].y;
+                    int _x2 = _unit->xPos + gVecs_1x1[i].x;
+                    int _y2 = _unit->yPos + gVecs_1x1[i].y;
 
                     struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
                     if (!_unit2)
@@ -1049,8 +1002,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             {
                 int _j;
 
-                int _x = attacker->unit.xPos + vec_range1[i].x;
-                int _y = attacker->unit.yPos + vec_range1[i].y;
+                int _x = attacker->unit.xPos + gVecs_1x1[i].x;
+                int _y = attacker->unit.yPos + gVecs_1x1[i].y;
                 struct Unit * _unit = GetUnitAtPosition(_x, _y);
                 if (!_unit)
                     continue;
@@ -1060,8 +1013,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                 for (_j = 0; _j < 4; _j++)
                 {
-                    int _x2 = _unit->xPos + vec_range1[i].x;
-                    int _y2 = _unit->yPos + vec_range1[i].y;
+                    int _x2 = _unit->xPos + gVecs_1x1[i].x;
+                    int _y2 = _unit->yPos + gVecs_1x1[i].y;
 
                     struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
                     if (!_unit2)
@@ -1110,23 +1063,23 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     u32 i, _x, _y;
     struct Unit * unit;
 
-    int allies_range3 = 0;
-    int allies_range2 = 0;
-    int allies_range1 = 0;
+    int allies_gRange3_In3x3 = 0;
+    int allies_gRange2_In3x3 = 0;
+    int allies_gRange1_In3x3 = 0;
 
-    int enmies_range3 = 0;
-    int enmies_range2 = 0;
-    int enmies_range1 = 0;
+    int enmies_gRange3_In3x3 = 0;
+    int enmies_gRange2_In3x3 = 0;
+    int enmies_gRange1_In3x3 = 0;
 
-    bool lord_range2 = false;
+    bool lord_gRange2_In3x3 = false;
 
     if (gBattleStats.config & BATTLE_CONFIG_ARENA)
         return;
 
     for (i = 0; i < 24; i++)
     {
-        _x = attacker->unit.xPos + vec_range3[i].x;
-        _y = attacker->unit.yPos + vec_range3[i].y;
+        _x = attacker->unit.xPos + gVecs_3x3[i].x;
+        _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
         unit = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit))
@@ -1145,7 +1098,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
             {
                 /* Buffs */
-                if (range1[i] == 1)
+                if (gRange1_In3x3[i] == 1)
                 {
 #if (defined(SID_DivinelyInspiring) && (COMMON_SKILL_VALID(SID_DivinelyInspiring)))
                     if (SkillTester(unit, SID_DivinelyInspiring))
@@ -1229,7 +1182,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                     }
 #endif
                 }
-                if (range2[i] == 1)
+                if (gRange2_In3x3[i] == 1)
                 {
 #if (defined(SID_Charm) && (COMMON_SKILL_VALID(SID_Charm)))
                     if (SkillTester(unit, SID_Charm) )
@@ -1296,7 +1249,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                         attacker->battleDefense += 2;
 #endif
                 }
-                if (range3[i] == 1)
+                if (gRange3_In3x3[i] == 1)
                 {                
 #if (defined(SID_Bond) && (COMMON_SKILL_VALID(SID_Bond)))
                     if (SkillTester(unit, SID_Bond))
@@ -1315,17 +1268,17 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
                 }
             }
-            if (range3[i])
-                allies_range3++;
+            if (gRange3_In3x3[i])
+                allies_gRange3_In3x3++;
 
-            if (range2[i])
+            if (gRange2_In3x3[i])
             {
                 if (UNIT_CATTRIBUTES(unit) && CA_LORD)
-                    lord_range2 = true;
-                allies_range2++;
+                    lord_gRange2_In3x3 = true;
+                allies_gRange2_In3x3++;
             }
-            if (range1[i])
-                allies_range1++;
+            if (gRange1_In3x3[i])
+                allies_gRange1_In3x3++;
         }
         else
         {
@@ -1336,14 +1289,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
             if (1)
 #endif
             {
-                if (range1[i] == 1)
+                if (gRange1_In3x3[i] == 1)
                 {
 #if (defined(SID_Hex) && (COMMON_SKILL_VALID(SID_Hex)))
                 if (SkillTester(unit, SID_Hex))
                     attacker->battleAvoidRate -= 10;
 #endif
             }
-                if (range2[i] == 1)
+                if (gRange2_In3x3[i] == 1)
                 {
 /* Debuff */
 
@@ -1362,10 +1315,10 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                         attacker->battleAttack -= 2;
 #endif
                 }
-                if (range3[i] == 1)
+                if (gRange3_In3x3[i] == 1)
                 {
 #if (defined(SID_Anathema) && (COMMON_SKILL_VALID(SID_Anathema)))
-                    if (SkillTester(unit, SID_Anathema) && range3[i] == 1)
+                    if (SkillTester(unit, SID_Anathema) && gRange3_In3x3[i] == 1)
                     {
                         attacker->battleAvoidRate -= 10;
                         attacker->battleDodgeRate -= 10;
@@ -1373,7 +1326,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
 
 #if (defined(SID_Daunt) && (COMMON_SKILL_VALID(SID_Daunt)))
-                    if (SkillTester(unit, SID_Daunt) && range3[i] == 1)
+                    if (SkillTester(unit, SID_Daunt) && gRange3_In3x3[i] == 1)
                     {
                         attacker->battleHitRate -= 5;
                         attacker->battleCritRate -= 5;
@@ -1381,18 +1334,18 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
                 }
             }
-            if (range3[i])
-                enmies_range3++;
+            if (gRange3_In3x3[i])
+                enmies_gRange3_In3x3++;
 
-            if (range2[i])
-                enmies_range2++;
+            if (gRange2_In3x3[i])
+                enmies_gRange2_In3x3++;
 
-            if (range1[i])
-                enmies_range1++;
+            if (gRange1_In3x3[i])
+                enmies_gRange1_In3x3++;
         }
     }
 
-    if (allies_range3 != 0)
+    if (allies_gRange3_In3x3 != 0)
     {
         /* Todo */
     }
@@ -1412,7 +1365,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
     }
 
-    if (enmies_range3 != 0)
+    if (enmies_gRange3_In3x3 != 0)
     {
         /* Todo */
     }
@@ -1421,7 +1374,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
         /* Todo */
     }
 
-    if (enmies_range2 >= 2)
+    if (enmies_gRange2_In3x3 >= 2)
     {
 #if (defined(SID_Infiltrator) && (COMMON_SKILL_VALID(SID_Infiltrator)))
         if (SkillTester(&attacker->unit, SID_Infiltrator))
@@ -1432,7 +1385,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
     }
 
-    if (allies_range1 > 0)
+    if (allies_gRange1_In3x3 > 0)
     {
 #if (defined(SID_BlueFlame) && (COMMON_SKILL_VALID(SID_BlueFlame)))
         if (SkillTester(&attacker->unit, SID_BlueFlame))
@@ -1441,21 +1394,21 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     }
 
     /* AND skills */
-    if (allies_range3 == 0)
+    if (allies_gRange3_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo1) && (COMMON_SKILL_VALID(SID_BattleRange_Todo1)))
         if (SkillTester(&attacker->unit, SID_BattleRange_Todo1))
             attacker->battleAttack += 10;
 #endif
     }
-    else if (allies_range2 == 0)
+    else if (allies_gRange2_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo2) && (COMMON_SKILL_VALID(SID_BattleRange_Todo2)))
         if (SkillTester(&attacker->unit, SID_BattleRange_Todo2))
             attacker->battleAttack += 7;
 #endif
     }
-    else if (allies_range1 == 0)
+    else if (allies_gRange1_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo3) && (COMMON_SKILL_VALID(SID_BattleRange_Todo3)))
         if (SkillTester(&attacker->unit, SID_BattleRange_Todo3))
@@ -1465,7 +1418,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     else
     {}
 
-    if (lord_range2)
+    if (lord_gRange2_In3x3)
     {
 #if (defined(SID_Loyalty) && (COMMON_SKILL_VALID(SID_Loyalty)))
         if (SkillTester(&attacker->unit, SID_Loyalty))
@@ -1481,7 +1434,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
         /* Flyer in outdoor environments are not affected by this effect (todo) */
         if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FLYER) || (0))
         {
-            int surround_enemies = enmies_range1 - 1;
+            int surround_enemies = enmies_gRange1_In3x3 - 1;
 
             /**
              * When a unit is attacked and adjacent to the enemy,
