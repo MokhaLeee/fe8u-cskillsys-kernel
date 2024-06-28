@@ -1,5 +1,5 @@
 // Unit status skills
-// SID_HpBonus
+SID_HpBonus
 SID_StrBonus
 SID_MagBonus
 SID_SklBonus
