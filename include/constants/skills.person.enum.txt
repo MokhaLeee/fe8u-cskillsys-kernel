@@ -7,6 +7,7 @@ SID_PoisonPoint
 SID_PushMovement
 SID_LightWeight
 SID_Analytic
+SID_Lifetaker
 
 // Weapon range
 SID_HighGround
