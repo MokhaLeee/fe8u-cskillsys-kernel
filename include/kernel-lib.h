@@ -15,8 +15,9 @@ int GetBattleTargetHpAtRound(int round);
 ProcPtr KernelCallEvent(const EventScr * eventscr, u8 execType, ProcPtr parent);
 void KernelStartBlockingHookProc(HookProcFunc_t const * hook_list, ProcPtr parent);
 
-extern const struct Vec2 gVecs_3x3[24];
-extern const struct Vec2 gVecs_1x1[4];
-extern const u8 gRange1_In3x3[24];
-extern const u8 gRange2_In3x3[24];
-extern const u8 gRange3_In3x3[24];
+extern const struct Vec1 gVecs_1x1[4];
+extern const struct Vec1 gVecs_2x2[12];
+extern const struct Vec1 gVecs_3x3[24];
+extern const u8 gRange1_In2x2[ARRAY_COUNT(gVecs_2x2)];
+extern const u8 gRange1_In3x3[ARRAY_COUNT(gVecs_3x3)];
+extern const u8 gRange2_In3x3[ARRAY_COUNT(gVecs_3x3)];

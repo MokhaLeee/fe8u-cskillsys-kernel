@@ -1,7 +1,21 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 
-const struct Vec2 gVecs_3x3[24] = {
+const struct Vec1 gVecs_1x1[4] = {
+              { 0, -1},
+    {-1,  0},           { 1,  0},
+              { 0,  1},
+};
+
+const struct Vec1 gVecs_2x2[12] = {
+                        { 0, -2},
+              {-1, -1}, { 0, -1}, { 1, -1},
+    {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0},
+              {-1,  1}, { 0,  1}, { 1,  1},
+                        { 0,  2}
+};
+
+const struct Vec1 gVecs_3x3[24] = {
                                   { 0, -3},
                         {-1, -2}, { 0, -2}, { 1, -1},
               {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
@@ -11,13 +25,15 @@ const struct Vec2 gVecs_3x3[24] = {
                                   { 0,  3}
 };
 
-const struct Vec2 gVecs_1x1[4] = {
-              { 0, -1},
-    {-1,  0},           { 1,  0},
-              { 0,  1},
+const u8 gRange1_In2x2[ARRAY_COUNT(gVecs_2x2)] = {
+          0,
+       0, 1, 0,
+    0, 1,    1, 0,
+       0, 1, 0,
+          0,
 };
 
-const u8 gRange1_In3x3[24] = {
+const u8 gRange1_In3x3[ARRAY_COUNT(gVecs_3x3)] = {
              0,
           0, 0, 0,
        0, 0, 1, 0, 0,
@@ -27,7 +43,7 @@ const u8 gRange1_In3x3[24] = {
              0
 };
 
-const u8 gRange2_In3x3[24] = {
+const u8 gRange2_In3x3[ARRAY_COUNT(gVecs_3x3)] = {
              0,
           0, 1, 0,
        0, 1, 1, 1, 0,
@@ -35,14 +51,4 @@ const u8 gRange2_In3x3[24] = {
        0, 1, 1, 1, 0,
           0, 1, 0,
              0
-};
-
-const u8 gRange3_In3x3[24] = {
-             1,
-          1, 1, 1,
-       1, 1, 1, 1, 1,
-    1, 1, 1,    1, 1, 1,
-       1, 1, 1, 1, 1,
-          1, 1, 1,
-             1
 };

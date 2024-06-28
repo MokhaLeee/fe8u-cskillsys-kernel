@@ -6,6 +6,9 @@
 #define CHAR_NEWLINE 0x01
 extern struct Font * gActiveFont;
 
+struct Vec1  { s8 x, y; };
+struct Vec1u { u8 x, y; };
+
 struct UnknownBMUSAilmentProc {
     PROC_HEADER;
 
