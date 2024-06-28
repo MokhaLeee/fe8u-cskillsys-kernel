@@ -1087,11 +1087,12 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_Analytic) && (COMMON_SKILL_VALID(SID_Analytic)))
         case SID_Analytic:
-            int speedDifference = defender->battleSpeed - attacker->battleSpeed;
-            if(speedDifference >= 4)
+            tmp = defender->battleSpeed - attacker->battleSpeed;
+            if (tmp >= 4)
                 attacker->battleAttack += 10;
-            else if (speedDifference > 0)
+            else if (tmp > 0)
                 attacker->battleAttack += 5;
+
             break;
 #endif
         }
