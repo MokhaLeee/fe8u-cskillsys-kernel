@@ -2158,6 +2158,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
       },
 #endif
 
+#if (defined(SID_Lifetaker) && COMMON_SKILL_VALID(SID_Lifetaker))
+    [SID_Lifetaker] = {
+        .desc = MSG_SKILL_Lifetaker,
+        .icon = GFX_SkillIcon_Lifetaker,
+      },
+#endif
+
 #if (defined(SID_Analytic) && COMMON_SKILL_VALID(SID_Analytic))
     [SID_Analytic] = {
         .desc = MSG_SKILL_Analytic,

@@ -52,3 +52,8 @@ attacking enemy.[X]
 ## MSG_SKILL_Synchronize
 Synchronize: put status of[NL]
 the character to the target[X]
+
+## MSG_SKILL_Lifetaker
+Lifetaker:[NL]
+Restore up to 25% current HP after[NL]
+attacking and defeating an enemy.[X]
