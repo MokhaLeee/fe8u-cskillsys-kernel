@@ -248,22 +248,8 @@ void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
     int i;
     u32 * bitfile = GetUnitStatDebuffStatus(unit);
     for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
-    {
-        if (_BIT_CHK(bitfile, i))
-        {
-            if (type == STATUS_DEBUFF_TICK_ON_ENEMY)
-            {
-                if (gpStatDebuffInfos[i].type == STATUS_DEBUFF_TICK_ON_ENEMY)
-                {
-                    _BIT_CLR(bitfile, i);
-                }
-            }
-            else
-            {
-                _BIT_CLR(bitfile, i);
-            }
-        }
-    }
+        if (_BIT_CHK(bitfile, i) && type == gpStatDebuffInfos[i].type)
+            _BIT_CLR(bitfile, i);
 }
 
 /**
