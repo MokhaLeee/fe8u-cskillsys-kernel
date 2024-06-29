@@ -179,8 +179,6 @@ bool PrePhsae_TickOathSkillStatus(ProcPtr proc)
                 }
             }
 
-            NoCashGBAPrintf("The number of allied units are %d", allies_gRange1_In1x1);
-
             if (allies_gRange1_In1x1 == 0)
                 _ClearOathStatDebuf(unit);
             else
