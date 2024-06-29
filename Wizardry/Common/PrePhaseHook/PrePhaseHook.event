@@ -7,6 +7,7 @@ gPrePhaseFuncs:
     POIN PrePhaseFunc_HoneFortify
     POIN PrePhsae_TickInitativeSkillStatus
     POIN PrePhsae_TickOathSkillStatus
+    POIN PrePhase_ControlWeatherSkill
     POIN PrePhase_UpdateLengendSkillStatus
     WORD 0 0 0 0 0
 

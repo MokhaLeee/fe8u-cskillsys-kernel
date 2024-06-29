@@ -91,6 +91,7 @@ void PreBattleCalcCombatArt(struct BattleUnit * bu, struct BattleUnit * defender
     bu->battleDefense      += info->battle_status.def;
     bu->battleHitRate      += info->battle_status.hit;
     bu->battleAvoidRate    += info->battle_status.avo;
+    bu->battleCritRate     += info->battle_status.crit;
     bu->battleSilencerRate += info->battle_status.silencer;
     bu->battleDodgeRate    += info->battle_status.dodge;
 
