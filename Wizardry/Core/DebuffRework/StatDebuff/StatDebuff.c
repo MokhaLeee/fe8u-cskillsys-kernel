@@ -243,7 +243,7 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size)
         sizeof(sStatDebuffStatusNpc));
 }
 
-void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type)
+void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
 {
     int i;
     u32 * bitfile = GetUnitStatDebuffStatus(unit);
@@ -251,9 +251,9 @@ void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type)
     {
         if (_BIT_CHK(bitfile, i))
         {
-            if (type == STATUS_INFO_TYPE_DEBUFF)
+            if (type == STATUS_DEBUFF_TICK_ON_ENEMY)
             {
-                if (gpStatDebuffInfos[i].type == STATUS_INFO_TYPE_DEBUFF)
+                if (gpStatDebuffInfos[i].type == STATUS_DEBUFF_TICK_ON_ENEMY)
                 {
                     _BIT_CLR(bitfile, i);
                 }
@@ -330,7 +330,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
         {
             const struct DebuffInfo * info = &gpStatDebuffInfos[i];
 
-            if (in_panic == true && info->type == STATUS_INFO_TYPE_BUFF)
+            if (in_panic == true && info->type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 buf->pow -= info->unit_status.pow;
                 buf->mag -= info->unit_status.mag;

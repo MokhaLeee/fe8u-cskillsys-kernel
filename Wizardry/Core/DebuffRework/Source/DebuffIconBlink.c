@@ -49,11 +49,11 @@ STATIC_DECLAR void PutUnitStatusDebuffIcon(struct Unit * unit)
 static inline void PutUnitStatusDefaultIcon(struct Unit * unit, int type)
 {
     switch (type) {
-    case STATUS_INFO_TYPE_DEBUFF:
+    case STATUS_DEBUFF_TICK_ON_ENEMY:
         PutUnitStatusDebuffIcon(unit);
         break;
 
-    case STATUS_INFO_TYPE_BUFF:
+    case STATUS_DEBUFF_TICK_ON_ALLY:
         PutUnitStatusBuffIcon(unit);
         break;
     }

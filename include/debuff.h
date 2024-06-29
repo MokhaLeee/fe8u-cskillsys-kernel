@@ -26,10 +26,10 @@ enum UNIT_STATUS_IDENTIFIER {
     NEW_UNIT_STATUS_MAX = 64
 };
 
-enum DEBUFF_INFO_TYPE {
-    STATUS_INFO_TYPE_DEFAULT = 0,
-    STATUS_INFO_TYPE_DEBUFF = 1,
-    STATUS_INFO_TYPE_BUFF = 2,
+enum STATUS_DEBUFF_TICK_TYPE {
+    STATUS_DEBUFF_NO_TICK = 0,
+    STATUS_DEBUFF_TICK_ON_ENEMY = 1,
+    STATUS_DEBUFF_TICK_ON_ALLY = 2,
 };
 
 enum DEBUFF_INFO_EFX_SPEED {
@@ -74,7 +74,7 @@ int TryTickUnitStatusDuration(struct Unit * unit);
 
 static inline bool IsDebuff(int status_idx)
 {
-    return (gpDebuffInfos[status_idx].type == STATUS_INFO_TYPE_DEBUFF);
+    return (gpDebuffInfos[status_idx].type == STATUS_DEBUFF_TICK_ON_ENEMY);
 }
 
 void PutUnitStatusIcon(struct Unit * unit);
@@ -135,7 +135,7 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size);
 void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
-void TickUnitStatDebuff(struct Unit * unit, enum DEBUFF_INFO_TYPE type);
+void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type);
 
 void PreBattleCalcStatDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
 int PowGetterStatDebuff(int status, struct Unit * unit);

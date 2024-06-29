@@ -13,7 +13,7 @@ void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc * proc)
 
     SetUnitStatus(unit, 0);
 
-    if (gpDebuffInfos[status].type == STATUS_INFO_TYPE_DEBUFF)
+    if (gpDebuffInfos[status].type == STATUS_DEBUFF_TICK_ON_ENEMY)
         StartStatusHealEffect(GetUnit(target->uid), proc);
 }
 
@@ -75,11 +75,11 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
-            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
+            TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
         }
 
         /* Red debuff */
@@ -89,11 +89,11 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
-            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
+            TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
         }
     }
     else if (FACTION_RED == gPlaySt.faction)
@@ -105,11 +105,11 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
-            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
+            TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
         }
 
         /* Blue debuff */
@@ -119,11 +119,11 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
-            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
+            TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
         }
 
         /* Green debuff */
@@ -133,11 +133,11 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_DEBUFF)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
-            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_DEBUFF);
+            TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
         }
     }
     else if (FACTION_GREEN == gPlaySt.faction)
@@ -149,11 +149,11 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_INFO_TYPE_BUFF)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
-            TickUnitStatDebuff(unit, STATUS_INFO_TYPE_BUFF);
+            TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
         }
     }
 }
