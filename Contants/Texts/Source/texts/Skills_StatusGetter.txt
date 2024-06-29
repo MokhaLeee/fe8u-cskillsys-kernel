@@ -180,3 +180,76 @@ Str/Skl/Spd +50% bonus.[X]
 SpeedBoost:[NL]
 +1 movement per turn up[NL]
 to a maximum of  turns.[X]
+
+## MSG_SKILL_InitCalm_NAME
+Calm-Init.[X]
+
+## MSG_SKILL_InitCalm
+Calm Initiative:[NL]
++7 to RES at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitStrong_NAME
+Strong-Init.[X]
+
+## MSG_SKILL_InitStrong
+Strong Initiative:[NL]
++7 to STR at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitDeft_NAME
+Deft-Init.[X]
+
+## MSG_SKILL_InitDeft
+Deft Initiative:[NL]
++7 to SKL at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitQuick_NAME
+Quick-Init.[X]
+
+## MSG_SKILL_InitQuick
+Quick Initiative:[NL]
++7 to SPD at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitSturdy_NAME
+Sturdy-Init.[X]
+
+## MSG_SKILL_InitSturdy
+Sturdy Initiative:[NL]
++7 to DEF at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitClever_NAME
+Clever-Init.[X]
+
+## MSG_SKILL_InitClever
+Clever Initiative:[NL]
++7 to MAG at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitLucky_NAME
+Lucky-Init.[X]
+
+## MSG_SKILL_InitLucky
+Lucky Initiative:[NL]
++7 to LUCK at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitNimble_NAME
+Nimble-Init.[X]
+
+## MSG_SKILL_InitNimble
+Nimble Initiative:[NL]
++7 to MOV at the[NL]
+beginning of the turn.[X]
+
+## MSG_SKILL_InitSpectrum_NAME
+Spec-Init.[X]
+
+## MSG_SKILL_InitSpectrum
+Spectrum Initiative:[NL]
++7 to all stats at the[NL]
+beginning of the turn.[X]
+

@@ -74,5 +74,14 @@ int MagGetterSkills(int status, struct Unit * unit)
 #endif
     }
 
+#if defined(SID_InitClever) && (COMMON_SKILL_VALID(SID_InitClever))
+        if (SkillTester(unit, SID_InitClever))
+            status += 7;
+#endif
+#if defined(SID_InitSpectrum) && (COMMON_SKILL_VALID(SID_InitSpectrum))
+        if (SkillTester(unit, SID_InitSpectrum))
+            status += 7;
+#endif
+
     return status;
 }

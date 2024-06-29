@@ -21,6 +21,17 @@ SID_Drizzle
 SID_SnowWarning
 SID_SandStream
 
+// Initiative skills
+SID_InitCalm
+SID_InitClever
+SID_InitDeft
+SID_InitLucky
+SID_InitNimble
+SID_InitQuick
+SID_InitSpectrum
+SID_InitStrong
+SID_InitStrudy
+
 // Engage skills
 SID_GentleFlower // This skill can only set to ally!
 SID_Admiration

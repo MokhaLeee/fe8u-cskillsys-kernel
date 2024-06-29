@@ -2158,6 +2158,78 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
       },
 #endif
 
+#if (defined(SID_InitCalm) && COMMON_SKILL_VALID(SID_InitCalm))
+    [SID_InitCalm] = {
+        .name = MSG_SKILL_InitCalm_NAME,
+        .desc = MSG_SKILL_InitCalm,
+        .icon = GFX_SkillIcon_InitCalm,
+      },
+#endif
+
+#if (defined(SID_InitClever) && COMMON_SKILL_VALID(SID_InitClever))
+    [SID_InitClever] = {
+        .name = MSG_SKILL_InitClever_NAME,
+        .desc = MSG_SKILL_InitClever,
+        .icon = GFX_SkillIcon_InitClever,
+      },
+#endif
+
+#if (defined(SID_InitDeft) && COMMON_SKILL_VALID(SID_InitDeft))
+    [SID_InitDeft] = {
+        .name = MSG_SKILL_InitDeft_NAME,
+        .desc = MSG_SKILL_InitDeft,
+        .icon = GFX_SkillIcon_InitDeft,
+      },
+#endif
+
+#if (defined(SID_InitLucky) && COMMON_SKILL_VALID(SID_InitLucky))
+    [SID_InitLucky] = {
+        .name = MSG_SKILL_InitLucky_NAME,
+        .desc = MSG_SKILL_InitLucky,
+        .icon = GFX_SkillIcon_InitLucky,
+      },
+#endif
+
+#if (defined(SID_InitNimble) && COMMON_SKILL_VALID(SID_InitNimble))
+    [SID_InitNimble] = {
+        .name = MSG_SKILL_InitNimble_NAME,
+        .desc = MSG_SKILL_InitNimble,
+        .icon = GFX_SkillIcon_InitNimble,
+      },
+#endif
+
+#if (defined(SID_InitQuick) && COMMON_SKILL_VALID(SID_InitQuick))
+    [SID_InitQuick] = {
+        .name = MSG_SKILL_InitQuick_NAME,
+        .desc = MSG_SKILL_InitQuick,
+        .icon = GFX_SkillIcon_InitQuick,
+      },
+#endif
+
+#if (defined(SID_InitSpectrum) && COMMON_SKILL_VALID(SID_InitSpectrum))
+    [SID_InitSpectrum] = {
+        .name = MSG_SKILL_InitSpectrum_NAME,
+        .desc = MSG_SKILL_InitSpectrum,
+        .icon = GFX_SkillIcon_InitSpectrum,
+      },
+#endif
+
+#if (defined(SID_InitStrong) && COMMON_SKILL_VALID(SID_InitStrong))
+    [SID_InitStrong] = {
+        .name = MSG_SKILL_InitStrong_NAME,
+        .desc = MSG_SKILL_InitStrong,
+        .icon = GFX_SkillIcon_InitStrong,
+      },
+#endif
+
+#if (defined(SID_InitSturdy) && COMMON_SKILL_VALID(SID_InitSturdy))
+    [SID_InitSturdy] = {
+        .name = MSG_SKILL_InitSturdy_NAME,
+        .desc = MSG_SKILL_InitSturdy,
+        .icon = GFX_SkillIcon_InitSturdy,
+      },
+#endif
+
 #if (defined(SID_Lifetaker) && COMMON_SKILL_VALID(SID_Lifetaker))
     [SID_Lifetaker] = {
         .desc = MSG_SKILL_Lifetaker,
