@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "battle-system.h"
 #include "skill-system.h"
 #include "map-anims.h"
@@ -64,10 +65,7 @@ STATIC_DECLAR void PostActionSynchronize_End(ProcPtr proc)
         GetUnit(gActionData.targetIndex),
         GetUnitStatusIndex(GetUnit(gActionData.subjectIndex)));
 
-    MU_AllRestartAnimations();
-    InitBmBgLayers();
-	LoadUiFrameGraphics();
-	LoadObjUIGfx();
+    MapAnim_CommonEnd();
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSynchronize[] = {
