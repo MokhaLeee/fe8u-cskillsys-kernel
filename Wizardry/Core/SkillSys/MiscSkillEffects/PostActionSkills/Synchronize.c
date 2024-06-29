@@ -5,11 +5,29 @@
 #include "map-anims.h"
 #include "constants/skills.h"
 
+STATIC_DECLAR void PostActionSynchronize_Init(ProcPtr proc)
+{
+    struct Unit * unit;
+    struct MUProc * mu;
+
+    unit = GetUnit(gActionData.subjectIndex);
+
+    HideUnitSprite(unit);
+    mu = MU_Create(unit);
+
+    mu->pAPHandle->frameTimer = 0;
+    mu->pAPHandle->frameInterval = 0;
+
+    MU_SetDefaultFacing(mu);
+    SetDefaultColorEffects();
+
+    EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
+}
+
 STATIC_DECLAR void PostActionSynchronize_StartActor(ProcPtr proc)
 {
-    struct Unit * unit_act = GetUnit(gActionData.subjectIndex);
-
-    MU_StartActionAnim(MU_Create(unit_act));
+    struct Unit * unit = GetUnit(gActionData.subjectIndex);
+    MU_StartActionAnim(MU_GetByUnit(unit));
 }
 
 STATIC_DECLAR void PostActionSynchronize_StartTargetAnim(ProcPtr proc)
@@ -19,7 +37,25 @@ STATIC_DECLAR void PostActionSynchronize_StartTargetAnim(ProcPtr proc)
     if (IsDebuff(GetUnitStatusIndex(GetUnit(gActionData.subjectIndex))))
         CallMapAnim_HeavyGravity(proc, unit_tar->xPos, unit_tar->yPos);
     else
-        StartStatusHealEffect(unit_tar, proc);
+    {
+        Proc_StartBlocking(ProcScr_DanceringAnim, proc);
+
+        BG_SetPosition(
+            BG_0,
+            -SCREEN_TILE_IX(unit_tar->xPos - 1),
+            -SCREEN_TILE_IX(unit_tar->yPos - 1));
+    }
+}
+
+STATIC_DECLAR void PostActionSynchronize_ResetActor(ProcPtr proc)
+{
+    struct Unit * unit = GetUnit(gActionData.subjectIndex);
+    struct MUProc * mu = MU_GetByUnit(unit);
+
+    mu->pAPHandle->frameTimer = 0;
+    mu->pAPHandle->frameInterval = 0;
+
+    EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
 }
 
 STATIC_DECLAR void PostActionSynchronize_End(ProcPtr proc)
@@ -28,24 +64,23 @@ STATIC_DECLAR void PostActionSynchronize_End(ProcPtr proc)
         GetUnit(gActionData.targetIndex),
         GetUnitStatusIndex(GetUnit(gActionData.subjectIndex)));
 
-    MU_EndAll();
-
-    /**
-     * Since the StartStatusHealEffect() may change the active-unit,
-     * so here we need to recover it
-     */
-    gActiveUnit = GetUnit(gActionData.subjectIndex);
-
-    ShowUnitSprite(gActiveUnit);
-    RefreshUnitSprites();
+    MU_AllRestartAnimations();
+    InitBmBgLayers();
+	LoadUiFrameGraphics();
+	LoadObjUIGfx();
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSynchronize[] = {
-    PROC_YIELD,
+    PROC_CALL(LockGame),
+    PROC_CALL(PostActionSynchronize_Init),
+    PROC_SLEEP(2),
     PROC_CALL(PostActionSynchronize_StartActor),
     PROC_SLEEP(30),
     PROC_CALL(PostActionSynchronize_StartTargetAnim),
-    PROC_YIELD,
+    PROC_SLEEP(0xA),
+    PROC_CALL(PostActionSynchronize_ResetActor),
+    PROC_SLEEP(2),
+    PROC_CALL(UnlockGame),
     PROC_CALL(PostActionSynchronize_End),
     PROC_END
 };
@@ -102,10 +137,9 @@ bool PostActionSynchronize(ProcPtr parent)
     if (AreUnitsAllied(unit_act->index, unit_tar->index) == IsDebuff(debuff_act))
         return false;
 
-    Proc_StartBlocking(ProcScr_PostActionSynchronize, parent);
-
     MU_EndAll();
-    HideUnitSprite(unit_act);
-    ShowUnitSprite(unit_tar);
+    RenderBmMap();
+    ShowUnitSprite(GetUnit(gActionData.targetIndex));
+    Proc_Start(ProcScr_PostActionSynchronize, PROC_TREE_3);
     return true;
 }

@@ -12,6 +12,7 @@
 #include "PostActionSkills/LynJump.event"
 
 #include "Misc/MenuSkills.lyn.event"
+#include "Misc/HealAmount.lyn.event"
 #include "Misc/LynJump.event"
 
 #include "LegendarySkills/JudgeLegend.lyn.event"

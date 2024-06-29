@@ -6,6 +6,9 @@
 #define CHAR_NEWLINE 0x01
 extern struct Font * gActiveFont;
 
+struct Vec1  { s8 x, y; };
+struct Vec1u { u8 x, y; };
+
 struct UnknownBMUSAilmentProc {
     PROC_HEADER;
 
@@ -112,5 +115,7 @@ void TryAddUnitToSleepTargetList(struct Unit * unit);
 void TryAddUnitToBerserkTargetList(struct Unit * unit);
 void TryAddUnitToWarpTargetList(struct Unit * unit);
 void TryAddUnitToHammerneTargetList(struct Unit * unit);
+
+extern struct ProcCmd CONST_DATA ProcScr_DanceringAnim[];
 
 void BeginUnitHealAnim(struct Unit * unit, int hp);

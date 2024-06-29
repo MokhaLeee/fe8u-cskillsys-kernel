@@ -4,11 +4,9 @@ SID_Inori
 SID_Armsthrift
 SID_Synchronize
 SID_PoisonPoint
-SID_GentleFlower
-SID_Admiration
-SID_FairyTaleFolk
 SID_PushMovement
 SID_LightWeight
+SID_Analytic
 SID_Lifetaker
 
 // Weapon range
@@ -22,3 +20,8 @@ SID_Drought
 SID_Drizzle
 SID_SnowWarning
 SID_SandStream
+
+// Engage skills
+SID_GentleFlower // This skill can only set to ally!
+SID_Admiration
+SID_FairyTaleFolk

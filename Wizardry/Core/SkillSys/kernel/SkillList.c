@@ -22,20 +22,32 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
     /* person */
     sid = gpConstSkillTable_Person[pid * 2];
     if (COMMON_SKILL_VALID(sid))
+    {
         tmp_list[sid] = true;
+        list->sid[list->amt++] = sid;
+    }
 
     sid = gpConstSkillTable_Person[pid * 2 + 1];
-    if (COMMON_SKILL_VALID(sid))
+    if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+    {
         tmp_list[sid] = true;
+        list->sid[list->amt++] = sid;
+    }
 
     /* job */
     sid = gpConstSkillTable_Job[jid * 2];
-    if (COMMON_SKILL_VALID(sid))
+    if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+    {
         tmp_list[sid] = true;
+        list->sid[list->amt++] = sid;
+    }
 
     sid = gpConstSkillTable_Job[jid * 2 + 1];
-    if (COMMON_SKILL_VALID(sid))
+    if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+    {
         tmp_list[sid] = true;
+        list->sid[list->amt++] = sid;
+    }
 
     /* item */
     for (i = 0; i < UNIT_ITEM_COUNT; i++)
@@ -43,27 +55,30 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
         u8 iid = ITEM_INDEX(unit->items[i]);
 
         sid = gpConstSkillTable_Item[iid * 2];
-        if (COMMON_SKILL_VALID(sid))
+        if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+        {
             tmp_list[sid] = true;
+            list->sid[list->amt++] = sid;
+        }
 
         sid = gpConstSkillTable_Item[iid * 2 + 1];
-        if (COMMON_SKILL_VALID(sid))
+        if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+        {
             tmp_list[sid] = true;
+            list->sid[list->amt++] = sid;
+        }
     }
 
     /* generic */
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
     {
         sid = UNIT_RAM_SKILLS(unit)[i];
-        if (COMMON_SKILL_VALID(sid))
+        if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+        {
             tmp_list[sid] = true;
+            list->sid[list->amt++] = sid;
+        }
     }
-
-    for (i = 1; i < MAX_SKILL_NUM; i++)
-        if (tmp_list[i])
-            list->sid[list->amt++] = i;
-
-    WriteUnitListHeader(unit, &list->header);
 }
 
 struct SkillList * GetUnitSkillList(struct Unit * unit)
@@ -75,8 +90,10 @@ struct SkillList * GetUnitSkillList(struct Unit * unit)
         list = &sSkillList[2];
 
     if (!JudgeUnitListHeader(unit, &list->header))
+    {
         GenerateSkillListExt(unit, list);
-
+        WriteUnitListHeader(unit, &list->header);
+    }
     return list;
 }
 
