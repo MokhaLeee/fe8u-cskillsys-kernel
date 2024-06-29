@@ -13,6 +13,7 @@ ALIGN 4
 ChapterInitHooks:
     POIN InitRandC ResetUnitsExpaSus
     POIN ChapterInit_SetInitiativeStatus
+    POIN ChapterInit_SetOathStatus
     POIN ChapterInit_SetWeatherType
     WORD 0
 

@@ -19,6 +19,7 @@
 #include "LegendarySkills/LegendEffect.lyn.event"
 
 #include "ChapterInitSkills/Initiative.lyn.event"
+#include "ChapterInitSkills/OathSkills.lyn.event"
 #include "ChapterInitSkills/WeatherSkills.lyn.event"
 
 #include "PrePhaseSkills/PrePhaseHeal.lyn.event"

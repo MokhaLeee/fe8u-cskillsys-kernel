@@ -2243,4 +2243,68 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
       },
 #endif
+
+#if (defined(SID_OathDefense) && COMMON_SKILL_VALID(SID_OathDefense))
+    [SID_OathDefense] = {
+        .name = MSG_SKILL_OathDefense_NAME,
+        .desc = MSG_SKILL_OathDefense,
+        .icon = GFX_SkillIcon_OathDefense,
+      },
+#endif
+
+#if (defined(SID_OathLuck) && COMMON_SKILL_VALID(SID_OathLuck))
+    [SID_OathLuck] = {
+        .name = MSG_SKILL_OathLuck_NAME,
+        .desc = MSG_SKILL_OathLuck,
+        .icon = GFX_SkillIcon_OathLuck,
+      },
+#endif
+
+#if (defined(SID_OathMagic) && COMMON_SKILL_VALID(SID_OathMagic))
+    [SID_OathMagic] = {
+        .name = MSG_SKILL_OathMagic_NAME,
+        .desc = MSG_SKILL_OathMagic,
+        .icon = GFX_SkillIcon_OathMagic,
+      },
+#endif
+
+#if (defined(SID_OathMovement) && COMMON_SKILL_VALID(SID_OathMovement))
+    [SID_OathMovement] = {
+        .name = MSG_SKILL_OathMovement_NAME,
+        .desc = MSG_SKILL_OathMovement,
+        .icon = GFX_SkillIcon_OathMovement,
+      },
+#endif
+
+#if (defined(SID_OathResistance) && COMMON_SKILL_VALID(SID_OathResistance))
+    [SID_OathResistance] = {
+        .name = MSG_SKILL_OathResistance_NAME,
+        .desc = MSG_SKILL_OathResistance,
+        .icon = GFX_SkillIcon_OathResistance,
+      },
+#endif
+
+#if (defined(SID_OathSkill) && COMMON_SKILL_VALID(SID_OathSkill))
+    [SID_OathSkill] = {
+        .name = MSG_SKILL_OathSkill_NAME,
+        .desc = MSG_SKILL_OathSkill,
+        .icon = GFX_SkillIcon_OathSkill,
+      },
+#endif
+
+#if (defined(SID_OathSpeed) && COMMON_SKILL_VALID(SID_OathSpeed))
+    [SID_OathSpeed] = {
+        .name = MSG_SKILL_OathSpeed_NAME,
+        .desc = MSG_SKILL_OathSpeed,
+        .icon = GFX_SkillIcon_OathSpeed,
+      },
+#endif
+
+#if (defined(SID_OathStrength) && COMMON_SKILL_VALID(SID_OathStrength))
+    [SID_OathStrength] = {
+        .name = MSG_SKILL_OathStrength_NAME,
+        .desc = MSG_SKILL_OathStrength,
+        .icon = GFX_SkillIcon_OathStrength,
+      },
+#endif
 };
