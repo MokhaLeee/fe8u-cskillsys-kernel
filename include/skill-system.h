@@ -185,7 +185,6 @@ enum skill_lucky_seven_idx {
 extern u8 const * const gpLegendSkillPool;
 int TryActivateLegendSkill(struct Unit * unit, const u16 sid);
 bool SkillTesterLegendActivated(struct Unit * unit, const u16 sid);
-void PhaseSwitchUpdateLengendSkillStatus(void);
 void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit * defender);
 int SpdGetterLegendSkills(int status, struct Unit * unit);
 int DefGetterLegendSkills(int status, struct Unit * unit);

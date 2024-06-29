@@ -59,7 +59,9 @@ WORD 0 0 0 0 0 0 0
 gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks
 gpGameInitHookTable: POIN gGameInitHookTable
-gpPhaseSwitchHooks: POIN gPhaseSwitchHooks
+
+WORD 0
+
 gpPostActionFuncs: POIN gPostActionFuncs
 gpNewSaveHooks: POIN gNewSaveHooks
 gpExternalBattleToUnitHook: POIN gExternalBattleToUnitHook

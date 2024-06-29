@@ -48,7 +48,7 @@ bool SkillTesterLegendActivated(struct Unit * unit, const u16 sid)
     return true;
 }
 
-void PhaseSwitchUpdateLengendSkillStatus(void)
+bool PrePhase_UpdateLengendSkillStatus(ProcPtr proc)
 {
     int i;
     struct Unit * unit;
@@ -59,7 +59,8 @@ void PhaseSwitchUpdateLengendSkillStatus(void)
     for (i = gPlaySt.faction + 1; i < (gPlaySt.faction + 0x40); i++)
     {
         unit = GetUnit(i);
-        if (unit)
+        if (UNIT_IS_VALID(unit))
             ClearBitUES(unit, UES_BIT_LEGENDARY_SKILL_ACTIVE);
     }
+    return false;
 }

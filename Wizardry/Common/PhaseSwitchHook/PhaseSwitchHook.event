@@ -1,8 +1,0 @@
-#include "Source/PhaseSwitchHook.lyn.event"
-#include "Source/LynJump.event"
-
-ALIGN 4
-/* void (*)(void) */
-gPhaseSwitchHooks:
-    POIN PhaseSwitchUpdateLengendSkillStatus
-    WORD 0
