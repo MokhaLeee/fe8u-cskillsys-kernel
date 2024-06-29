@@ -9,58 +9,9 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-#define NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL 0
-
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
-
-FORCE_DECLARE static const struct Vec2 vec_range3[24] = {
-                                  { 0, -3},
-                        {-1, -2}, { 0, -2}, { 1, -1},
-              {-2, -1}, {-1, -1}, { 0, -1}, { 1, -1}, { 2, -1},
-    {-3,  0}, {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0}, { 3,  0},
-              {-2,  1}, {-1,  1}, { 0,  1}, { 1,  1}, { 2,  1},
-                        {-1,  2}, { 0,  2}, { 1,  2},
-                                  { 0,  3}
-};
-
-FORCE_DECLARE static const struct Vec2 vec_range1[4] = {
-
-              { 0, -1},
-    {-1,  0},           { 1,  0},
-              { 0,  1},
-};
-
-FORCE_DECLARE static const u8 range1[24] = {
-             0,
-          0, 0, 0,
-       0, 0, 1, 0, 0,
-    0, 0, 1,    1, 0, 0,
-       0, 0, 1, 0, 0,
-          0, 0, 0,
-             0
-};
-
-FORCE_DECLARE static const u8 range2[24] = {
-             0,
-          0, 1, 0,
-       0, 1, 1, 1, 0,
-    0, 1, 1,    1, 1, 0,
-       0, 1, 1, 1, 0,
-          0, 1, 0,
-             0
-};
-
-FORCE_DECLARE static const u8 range3[24] = {
-             1,
-          1, 1, 1,
-       1, 1, 1, 1, 1,
-    1, 1, 1,    1, 1, 1,
-       1, 1, 1, 1, 1,
-          1, 1, 1,
-             1
-};
 
 /* LynJump */
 void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -921,10 +872,10 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Skyguard:
             if (CheckClassFlier(UNIT_CLASS_ID(&defender->unit)))
             {
-                for (i = 0; i < 24; i++)
+                for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
                 {
-                    int _x = attacker->unit.xPos + vec_range3[i].x;
-                    int _y = attacker->unit.yPos + vec_range3[i].y;
+                    int _x = attacker->unit.xPos + gVecs_3x3[i].x;
+                    int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
                     struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
@@ -947,10 +898,10 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Horseguard:
             if (CheckClassCavalry(UNIT_CLASS_ID(&defender->unit)))
             {
-                for (i = 0; i < 24; i++)
+                for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
                 {
-                    int _x = attacker->unit.xPos + vec_range3[i].x;
-                    int _y = attacker->unit.yPos + vec_range3[i].y;
+                    int _x = attacker->unit.xPos + gVecs_3x3[i].x;
+                    int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
                     struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
@@ -973,10 +924,10 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Armorboost:
             if (CheckClassArmor(UNIT_CLASS_ID(&defender->unit)))
             {
-                for (i = 0; i < 24; i++)
+                for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
                 {
-                    int _x = attacker->unit.xPos + vec_range3[i].x;
-                    int _y = attacker->unit.yPos + vec_range3[i].y;
+                    int _x = attacker->unit.xPos + gVecs_3x3[i].x;
+                    int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
                     struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
@@ -1006,8 +957,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             {
                 int _j;
 
-                int _x = attacker->unit.xPos + vec_range1[i].x;
-                int _y = attacker->unit.yPos + vec_range1[i].y;
+                int _x = attacker->unit.xPos + gVecs_1x1[i].x;
+                int _y = attacker->unit.yPos + gVecs_1x1[i].y;
                 struct Unit * _unit = GetUnitAtPosition(_x, _y);
                 if (!_unit)
                     continue;
@@ -1017,8 +968,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                 for (_j = 0; _j < 4; _j++)
                 {
-                    int _x2 = _unit->xPos + vec_range1[i].x;
-                    int _y2 = _unit->yPos + vec_range1[i].y;
+                    int _x2 = _unit->xPos + gVecs_1x1[i].x;
+                    int _y2 = _unit->yPos + gVecs_1x1[i].y;
 
                     struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
                     if (!_unit2)
@@ -1049,8 +1000,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             {
                 int _j;
 
-                int _x = attacker->unit.xPos + vec_range1[i].x;
-                int _y = attacker->unit.yPos + vec_range1[i].y;
+                int _x = attacker->unit.xPos + gVecs_1x1[i].x;
+                int _y = attacker->unit.yPos + gVecs_1x1[i].y;
                 struct Unit * _unit = GetUnitAtPosition(_x, _y);
                 if (!_unit)
                     continue;
@@ -1060,8 +1011,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                 for (_j = 0; _j < 4; _j++)
                 {
-                    int _x2 = _unit->xPos + vec_range1[i].x;
-                    int _y2 = _unit->yPos + vec_range1[i].y;
+                    int _x2 = _unit->xPos + gVecs_1x1[i].x;
+                    int _y2 = _unit->yPos + gVecs_1x1[i].y;
 
                     struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
                     if (!_unit2)
@@ -1084,6 +1035,17 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
             break;
 #endif
+
+#if (defined(SID_Analytic) && (COMMON_SKILL_VALID(SID_Analytic)))
+        case SID_Analytic:
+            tmp = defender->battleSpeed - attacker->battleSpeed;
+            if (tmp >= 4)
+                attacker->battleAttack += 10;
+            else if (tmp > 0)
+                attacker->battleAttack += 5;
+
+            break;
+#endif
         }
     }
 
@@ -1099,23 +1061,23 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     u32 i, _x, _y;
     struct Unit * unit;
 
-    int allies_range3 = 0;
-    int allies_range2 = 0;
-    int allies_range1 = 0;
+    int allies_gRange3_In3x3 = 0;
+    int allies_gRange2_In3x3 = 0;
+    int allies_gRange1_In3x3 = 0;
 
-    int enmies_range3 = 0;
-    int enmies_range2 = 0;
-    int enmies_range1 = 0;
+    int enmies_gRange3_In3x3 = 0;
+    int enmies_gRange2_In3x3 = 0;
+    int enmies_gRange1_In3x3 = 0;
 
-    bool lord_range2 = false;
+    bool lord_gRange2_In3x3 = false;
 
     if (gBattleStats.config & BATTLE_CONFIG_ARENA)
         return;
 
-    for (i = 0; i < 24; i++)
+    for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
     {
-        _x = attacker->unit.xPos + vec_range3[i].x;
-        _y = attacker->unit.yPos + vec_range3[i].y;
+        _x = attacker->unit.xPos + gVecs_3x3[i].x;
+        _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
         unit = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit))
@@ -1126,262 +1088,243 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 
         if (AreUnitsAllied(attacker->unit.index, unit->index))
         {
-#if NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL
-            /* Fasten pre-battle calc */
-            if (gBattleStats.config & BATTLE_CONFIG_REAL)
-#else
-            if (1)
-#endif
+            /* Buffs */
+            if (gRange1_In3x3[i] == 1)
             {
-                /* Buffs */
-                if (range1[i] == 1)
-                {
 #if (defined(SID_DivinelyInspiring) && (COMMON_SKILL_VALID(SID_DivinelyInspiring)))
-                    if (SkillTester(unit, SID_DivinelyInspiring))
-                    {
-                        attacker->battleAttack += 3;
-                        attacker->battleDefense += 1;
-                    }
+                if (SkillTester(unit, SID_DivinelyInspiring))
+                {
+                    attacker->battleAttack += 3;
+                    attacker->battleDefense += 1;
+                }
 #endif
 
 #if (defined(SID_LilysPoise) && (COMMON_SKILL_VALID(SID_LilysPoise)))
-                    if (SkillTester(unit, SID_LilysPoise))
-                    {
-                        attacker->battleAttack += 1;
-                        attacker->battleDefense += 3;
-                    }
+                if (SkillTester(unit, SID_LilysPoise))
+                {
+                    attacker->battleAttack += 1;
+                    attacker->battleDefense += 3;
+                }
 #endif
 
 #if (defined(SID_BloodTide) && (COMMON_SKILL_VALID(SID_BloodTide)))
-                    if (SkillTester(unit, SID_BloodTide))
-                    {
-                        attacker->battleAttack += 5;
-                        attacker->battleHitRate += 5;
-                    }
+                if (SkillTester(unit, SID_BloodTide))
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleHitRate += 5;
+                }
 #endif
 
 #if (defined(SID_WhitePool) && (COMMON_SKILL_VALID(SID_WhitePool)))
-                    if (SkillTester(unit, SID_WhitePool))
-                    {
-                        attacker->battleAttack += 5;
-                        attacker->battleSpeed += 5;
-                    }
+                if (SkillTester(unit, SID_WhitePool))
+                {
+                    attacker->battleAttack += 5;
+                    attacker->battleSpeed += 5;
+                }
 #endif
 
 #if (defined(SID_NightTide) && (COMMON_SKILL_VALID(SID_NightTide)))
-                    if (SkillTester(unit, SID_NightTide))
-                        attacker->battleDefense += 5;
+                if (SkillTester(unit, SID_NightTide))
+                    attacker->battleDefense += 5;
 #endif
 
 #if (defined(SID_SpurStr) && (COMMON_SKILL_VALID(SID_SpurStr)))
-                    if (SkillTester(unit, SID_SpurStr))
-                    {
-                        if (!IsMagicAttack(attacker))
-                            attacker->battleAttack  += 4;
-                    }
+                if (SkillTester(unit, SID_SpurStr))
+                {
+                    if (!IsMagicAttack(attacker))
+                        attacker->battleAttack  += 4;
+                }
 #endif
 
 #if (defined(SID_SpurMag) && (COMMON_SKILL_VALID(SID_SpurMag)))
-                    if (SkillTester(unit, SID_SpurMag))
-                    {
-                        if (IsMagicAttack(attacker))
-                            attacker->battleAttack  += 4;
-                    }
+                if (SkillTester(unit, SID_SpurMag))
+                {
+                    if (IsMagicAttack(attacker))
+                        attacker->battleAttack  += 4;
+                }
 #endif
 
 #if (defined(SID_SpurDef) && (COMMON_SKILL_VALID(SID_SpurDef)))
-                    if (SkillTester(unit, SID_SpurDef))
-                    {
-                        if (!IsMagicAttack(defender))
-                            attacker->battleDefense+= 4;
-                    }
+                if (SkillTester(unit, SID_SpurDef))
+                {
+                    if (!IsMagicAttack(defender))
+                        attacker->battleDefense+= 4;
+                }
 #endif
 
 #if (defined(SID_SpurRes) && (COMMON_SKILL_VALID(SID_SpurRes)))
-                    if (SkillTester(unit, SID_SpurRes))
-                    {
-                        if (IsMagicAttack(defender))
-                            attacker->battleDefense+= 4;
-                    }
+                if (SkillTester(unit, SID_SpurRes))
+                {
+                    if (IsMagicAttack(defender))
+                        attacker->battleDefense+= 4;
+                }
 #endif
 
 #if (defined(SID_SpurSpd) && (COMMON_SKILL_VALID(SID_SpurSpd)))
-                    if (SkillTester(unit, SID_SpurSpd))
-                        attacker->battleSpeed += 4;
+                if (SkillTester(unit, SID_SpurSpd))
+                    attacker->battleSpeed += 4;
 #endif
 
 #if (defined(SID_Solidarity) && (COMMON_SKILL_VALID(SID_Solidarity)))
-                    if (SkillTester(unit, SID_Solidarity))
-                    {
-                        attacker->battleCritRate += 10;
-                        attacker->battleDodgeRate += 10;
-                    }
-#endif
-                }
-                if (range2[i] == 1)
+                if (SkillTester(unit, SID_Solidarity))
                 {
+                    attacker->battleCritRate += 10;
+                    attacker->battleDodgeRate += 10;
+                }
+#endif
+            }
+            if (gRange2_In3x3[i] == 1)
+            {
 #if (defined(SID_Charm) && (COMMON_SKILL_VALID(SID_Charm)))
-                    if (SkillTester(unit, SID_Charm) )
-                        attacker->battleAttack  += 3;
+                if (SkillTester(unit, SID_Charm) )
+                    attacker->battleAttack  += 3;
 #endif
 
 #if (defined(SID_DriveStr) && (COMMON_SKILL_VALID(SID_DriveStr)))
-                    if (SkillTester(unit, SID_DriveStr))
-                    {
-                        if (!IsMagicAttack(attacker))
-                            attacker->battleAttack  += 4;
-                    }
+                if (SkillTester(unit, SID_DriveStr))
+                {
+                    if (!IsMagicAttack(attacker))
+                        attacker->battleAttack  += 4;
+                }
 #endif
 
 #if (defined(SID_DriveMag) && (COMMON_SKILL_VALID(SID_DriveMag)))
-                    if (SkillTester(unit, SID_DriveMag))
-                    {
-                        if (IsMagicAttack(attacker))
-                            attacker->battleAttack  += 4;
-                    }
+                if (SkillTester(unit, SID_DriveMag))
+                {
+                    if (IsMagicAttack(attacker))
+                        attacker->battleAttack  += 4;
+                }
 #endif
 
 #if (defined(SID_DriveDef) && (COMMON_SKILL_VALID(SID_DriveDef)))
-                    if (SkillTester(unit, SID_DriveDef))
-                    {
-                        if (!IsMagicAttack(defender))
-                            attacker->battleDefense+= 4;
-                    }
+                if (SkillTester(unit, SID_DriveDef))
+                {
+                    if (!IsMagicAttack(defender))
+                        attacker->battleDefense+= 4;
+                }
 #endif
 
 #if (defined(SID_DriveRes) && (COMMON_SKILL_VALID(SID_DriveRes)))
-                    if (SkillTester(unit, SID_DriveRes))
-                    {
-                        if (IsMagicAttack(defender))
-                            attacker->battleDefense+= 4;
-                    }
+                if (SkillTester(unit, SID_DriveRes))
+                {
+                    if (IsMagicAttack(defender))
+                        attacker->battleDefense+= 4;
+                }
 #endif
 
 #if (defined(SID_DriveSpd) && (COMMON_SKILL_VALID(SID_DriveSpd)))
-                    if (SkillTester(unit, SID_DriveSpd))
-                        attacker->battleSpeed += 4;
+                if (SkillTester(unit, SID_DriveSpd))
+                    attacker->battleSpeed += 4;
 #endif
 
 #if (defined(SID_Inspiration) && (COMMON_SKILL_VALID(SID_Inspiration)))
-                    if (SkillTester(unit, SID_Inspiration))
-                    {
-                        attacker->battleAttack += 2;
-                        attacker->battleDefense += 2;
-                    }
+                if (SkillTester(unit, SID_Inspiration))
+                {
+                    attacker->battleAttack += 2;
+                    attacker->battleDefense += 2;
+                }
 #endif
 
 #if (defined(SID_Peacebringer) && (COMMON_SKILL_VALID(SID_Peacebringer)))
-                    if (SkillTester(unit, SID_Peacebringer) )
-                        attacker->battleAttack -= 2;
+                if (SkillTester(unit, SID_Peacebringer) )
+                    attacker->battleAttack -= 2;
 #endif
 
 #if (defined(SID_Gentilhomme) && (COMMON_SKILL_VALID(SID_Gentilhomme)))
-                    if (SkillTester(unit, SID_Gentilhomme)  && (UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
-                        attacker->battleDefense += 2;
+                if (SkillTester(unit, SID_Gentilhomme)  && (UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
+                    attacker->battleDefense += 2;
 #endif
 
 #if (defined(SID_Demoiselle) && (COMMON_SKILL_VALID(SID_Demoiselle)))
-                    if (SkillTester(unit, SID_Demoiselle)  && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
-                        attacker->battleDefense += 2;
+                if (SkillTester(unit, SID_Demoiselle)  && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
+                    attacker->battleDefense += 2;
 #endif
-                }
-                if (range3[i] == 1)
-                {                
+            }
+
+            /* Since we just calc in 3x3, so here is always true */             
 #if (defined(SID_Bond) && (COMMON_SKILL_VALID(SID_Bond)))
-                    if (SkillTester(unit, SID_Bond))
-                    {
-                        attacker->battleHitRate += 10;
-                        attacker->battleAttack  += 2;
-                    }
+            if (SkillTester(unit, SID_Bond))
+            {
+                attacker->battleHitRate += 10;
+                attacker->battleAttack  += 2;
+            }
 #endif
 
 #if (defined(SID_Charisma) && (COMMON_SKILL_VALID(SID_Charisma)))
-                    if (SkillTester(unit, SID_Charisma))
-                    {
-                        attacker->battleHitRate += 10;
-                        attacker->battleAvoidRate += 10;
-                    }
-#endif
-                }
-            }
-            if (range3[i])
-                allies_range3++;
-
-            if (range2[i])
+            if (SkillTester(unit, SID_Charisma))
             {
-                if (UNIT_CATTRIBUTES(unit) && CA_LORD)
-                    lord_range2 = true;
-                allies_range2++;
+                attacker->battleHitRate += 10;
+                attacker->battleAvoidRate += 10;
             }
-            if (range1[i])
-                allies_range1++;
+#endif
+
+            /* Since we just calc in 3x3, so here is always true */
+            allies_gRange3_In3x3++;
+
+            if (gRange2_In3x3[i])
+            {
+                allies_gRange2_In3x3++;
+                if (UNIT_CATTRIBUTES(unit) && CA_LORD)
+                    lord_gRange2_In3x3 = true;
+            }
+            if (gRange1_In3x3[i])
+                allies_gRange1_In3x3++;
         }
         else
         {
-#if NEGLECT_RANGE_DEBUFF_CALC_NOT_REAL
-            /* Fasten pre-battle calc */
-            if (gBattleStats.config & BATTLE_CONFIG_REAL)
-#else
-            if (1)
-#endif
+            if (gRange1_In3x3[i] == 1)
             {
-                if (range1[i] == 1)
-                {
 #if (defined(SID_Hex) && (COMMON_SKILL_VALID(SID_Hex)))
-                if (SkillTester(unit, SID_Hex))
-                    attacker->battleAvoidRate -= 10;
+            if (SkillTester(unit, SID_Hex))
+                attacker->battleAvoidRate -= 10;
 #endif
             }
-                if (range2[i] == 1)
-                {
-/* Debuff */
-
+            if (gRange2_In3x3[i] == 1)
+            {
 #if (defined(SID_Intimidate) && (COMMON_SKILL_VALID(SID_Intimidate)))
-                    if (SkillTester(unit, SID_Intimidate) )
-                        attacker->battleAvoidRate -= 10;
+                if (SkillTester(unit, SID_Intimidate) )
+                    attacker->battleAvoidRate -= 10;
 #endif
 
 #if (defined(SID_VoiceOfPeace) && (COMMON_SKILL_VALID(SID_VoiceOfPeace)))
-                    if (SkillTester(unit, SID_VoiceOfPeace) )
-                        attacker->battleAttack -= 2;
+                if (SkillTester(unit, SID_VoiceOfPeace) )
+                    attacker->battleAttack -= 2;
 #endif
 
 #if (defined(SID_Peacebringer) && (COMMON_SKILL_VALID(SID_Peacebringer)))
-                    if (SkillTester(unit, SID_Peacebringer) )
-                        attacker->battleAttack -= 2;
+                if (SkillTester(unit, SID_Peacebringer) )
+                    attacker->battleAttack -= 2;
 #endif
-                }
-                if (range3[i] == 1)
-                {
+            }
+
 #if (defined(SID_Anathema) && (COMMON_SKILL_VALID(SID_Anathema)))
-                    if (SkillTester(unit, SID_Anathema) && range3[i] == 1)
-                    {
-                        attacker->battleAvoidRate -= 10;
-                        attacker->battleDodgeRate -= 10;
-                    }
+            if (SkillTester(unit, SID_Anathema))
+            {
+                attacker->battleAvoidRate -= 10;
+                attacker->battleDodgeRate -= 10;
+            }
 #endif
 
 #if (defined(SID_Daunt) && (COMMON_SKILL_VALID(SID_Daunt)))
-                    if (SkillTester(unit, SID_Daunt) && range3[i] == 1)
-                    {
-                        attacker->battleHitRate -= 5;
-                        attacker->battleCritRate -= 5;
-                    }
-#endif
-                }
+            if (SkillTester(unit, SID_Daunt))
+            {
+                attacker->battleHitRate -= 5;
+                attacker->battleCritRate -= 5;
             }
-            if (range3[i])
-                enmies_range3++;
+#endif
 
-            if (range2[i])
-                enmies_range2++;
+            /* Since we just calc in 3x3, so here is always true */
+            enmies_gRange3_In3x3++;
 
-            if (range1[i])
-                enmies_range1++;
+            if (gRange2_In3x3[i])
+                enmies_gRange2_In3x3++;
+
+            if (gRange1_In3x3[i])
+                enmies_gRange1_In3x3++;
         }
     }
 
-    if (allies_range3 != 0)
+    if (allies_gRange3_In3x3 != 0)
     {
         /* Todo */
     }
@@ -1401,7 +1344,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
     }
 
-    if (enmies_range3 != 0)
+    if (enmies_gRange3_In3x3 != 0)
     {
         /* Todo */
     }
@@ -1410,7 +1353,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
         /* Todo */
     }
 
-    if (enmies_range2 >= 2)
+    if (enmies_gRange2_In3x3 >= 2)
     {
 #if (defined(SID_Infiltrator) && (COMMON_SKILL_VALID(SID_Infiltrator)))
         if (SkillTester(&attacker->unit, SID_Infiltrator))
@@ -1421,7 +1364,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #endif
     }
 
-    if (allies_range1 > 0)
+    if (allies_gRange1_In3x3 > 0)
     {
 #if (defined(SID_BlueFlame) && (COMMON_SKILL_VALID(SID_BlueFlame)))
         if (SkillTester(&attacker->unit, SID_BlueFlame))
@@ -1430,21 +1373,21 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     }
 
     /* AND skills */
-    if (allies_range3 == 0)
+    if (allies_gRange3_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo1) && (COMMON_SKILL_VALID(SID_BattleRange_Todo1)))
         if (SkillTester(&attacker->unit, SID_BattleRange_Todo1))
             attacker->battleAttack += 10;
 #endif
     }
-    else if (allies_range2 == 0)
+    else if (allies_gRange2_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo2) && (COMMON_SKILL_VALID(SID_BattleRange_Todo2)))
         if (SkillTester(&attacker->unit, SID_BattleRange_Todo2))
             attacker->battleAttack += 7;
 #endif
     }
-    else if (allies_range1 == 0)
+    else if (allies_gRange1_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo3) && (COMMON_SKILL_VALID(SID_BattleRange_Todo3)))
         if (SkillTester(&attacker->unit, SID_BattleRange_Todo3))
@@ -1454,7 +1397,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     else
     {}
 
-    if (lord_range2)
+    if (lord_gRange2_In3x3)
     {
 #if (defined(SID_Loyalty) && (COMMON_SKILL_VALID(SID_Loyalty)))
         if (SkillTester(&attacker->unit, SID_Loyalty))
@@ -1470,7 +1413,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
         /* Flyer in outdoor environments are not affected by this effect (todo) */
         if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FLYER) || (0))
         {
-            int surround_enemies = enmies_range1 - 1;
+            int surround_enemies = enmies_gRange1_In3x3 - 1;
 
             /**
              * When a unit is attacked and adjacent to the enemy,

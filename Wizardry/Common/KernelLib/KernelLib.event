@@ -7,5 +7,6 @@
 #include "Source/list-verify.lyn.event"
 #include "Source/event-call.lyn.event"
 #include "Source/hook-proc.lyn.event"
+#include "Source/ranges.lyn.event"
 
 #endif /* KERNEL_LIB_INSTALLED */

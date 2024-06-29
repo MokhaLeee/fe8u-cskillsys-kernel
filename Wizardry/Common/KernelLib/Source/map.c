@@ -31,3 +31,19 @@ struct Unit * GetUnitAtPosition(s8 x, s8 y)
 
     return GetUnit(uid);
 }
+
+void MapAnim_CommonInit(void)
+{
+    MU_EndAll();
+    RenderBmMap();
+    RefreshEntityBmMaps();
+    RefreshUnitSprites();
+}
+
+void MapAnim_CommonEnd(void)
+{
+    MU_AllRestartAnimations();
+    InitBmBgLayers();
+    LoadUiFrameGraphics();
+    LoadObjUIGfx();
+}
