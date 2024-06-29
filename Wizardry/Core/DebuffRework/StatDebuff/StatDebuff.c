@@ -330,7 +330,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
         {
             const struct DebuffInfo * info = &gpStatDebuffInfos[i];
 
-            if (in_panic == true && info->type == STATUS_DEBUFF_TICK_ON_ALLY)
+            if (in_panic == true && (info->type == STATUS_DEBUFF_TICK_ON_ALLY || info->type == STATUS_DEBUFF_TICK_TYPE_3))
             {
                 buf->pow -= info->unit_status.pow;
                 buf->mag -= info->unit_status.mag;

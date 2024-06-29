@@ -6,6 +6,7 @@ gPrePhaseFuncs:
     POIN PrePhaseFunc_AversaNight
     POIN PrePhaseFunc_HoneFortify
     POIN PrePhaseFunc_SetWeatherType
+    POIN PrePhsae_TickInitativeSkillStatus
     WORD 0 0 0 0 0
 
 PUSH

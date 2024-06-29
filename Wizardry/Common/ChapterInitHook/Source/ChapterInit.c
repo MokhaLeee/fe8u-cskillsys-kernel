@@ -11,5 +11,5 @@ void ChapterInitHook(ProcPtr proc)
         gpChapterInitHooks[i](proc);
 
     /* Vanilla */
-    BmMain_StartIntroFx(proc);
+    UndeployEveryone();
 }

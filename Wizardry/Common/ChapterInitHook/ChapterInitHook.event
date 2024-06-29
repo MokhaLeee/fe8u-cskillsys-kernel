@@ -2,7 +2,7 @@
 #define CHAPTER_INIT_HOOK_INSTALLED
 
 PUSH
-    ORG $59A224
+    ORG $59A254
     POIN ChapterInitHook
 POP
 
@@ -12,6 +12,7 @@ POP
 ALIGN 4
 ChapterInitHooks:
     POIN InitRandC ResetUnitsExpaSus
+    POIN ChapterInit_SetInitiativeStatus
     WORD 0
 
 #endif /* CHAPTER_INIT_HOOK_INSTALLED */

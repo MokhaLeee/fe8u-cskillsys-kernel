@@ -18,6 +18,8 @@
 #include "LegendarySkills/JudgeLegend.lyn.event"
 #include "LegendarySkills/LegendEffect.lyn.event"
 
+#include "ChapterInitSkills/Initiative.lyn.event"
+
 #include "PrePhaseSkills/PrePhaseHeal.lyn.event"
 #include "PrePhaseSkills/AversaNight.lyn.event"
 #include "PrePhaseSkills/HoneFortify.lyn.event"

@@ -87,7 +87,7 @@ _SkillTester_PInfo:
     ldrh r0, [r1]
     cmp r2, r0
     beq .Lend_true
-    ldrh r0, [r1, #1]
+    ldrh r0, [r1, #2]
     cmp r2, r0
     beq .Lend_true
     mov pc, lr

@@ -84,6 +84,40 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         .type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .mov = +4 },
     },
+
+    [UNIT_STAT_BUFF_INIT_POW] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .pow = +7 },
+    },
+    [UNIT_STAT_BUFF_INIT_MAG] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .mag = +7 },
+    },
+    [UNIT_STAT_BUFF_INIT_SKL] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .skl = +7 },
+    },
+    [UNIT_STAT_BUFF_INIT_SPD] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .spd = +7 },
+    },
+    [UNIT_STAT_BUFF_INIT_LCK] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .lck = +7 },
+    },
+    [UNIT_STAT_BUFF_INIT_DEF] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .def = +7 },
+    },
+    [UNIT_STAT_BUFF_INIT_RES] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .res = +7 },
+    },
+    [UNIT_STAT_BUFF_INIT_MOV] = {
+        .type = STATUS_DEBUFF_TICK_TYPE_3, /* tick it on manual */
+        .unit_status = { .mov = +7 },
+    },
+
     [UNIT_STAT_BUFF_JOB_HONE] = {
         .type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = {

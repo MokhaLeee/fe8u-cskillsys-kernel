@@ -77,15 +77,5 @@ int SklGetterSkills(int status, struct Unit * unit)
     }
 #endif
 
-#if defined(SID_InitDeft) && (COMMON_SKILL_VALID(SID_InitDeft))
-        if (SkillTester(unit, SID_InitDeft))
-            status += 7;
-#endif
-
-#if defined(SID_InitSpectrum) && (COMMON_SKILL_VALID(SID_InitSpectrum))
-        if (SkillTester(unit, SID_InitSpectrum))
-            status += 7;
-#endif
-
     return status;
 }
