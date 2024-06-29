@@ -21,8 +21,13 @@ int _GetUnitMov(struct Unit * unit)
 
 int MovGetterSkills(int status, struct Unit * unit)
 {
-    int cur_hp = GetUnitCurrentHp(unit);
-    int max_hp = GetUnitMaxHp(unit);
+    FORCE_DECLARE int cur_hp = GetUnitCurrentHp(unit);
+    FORCE_DECLARE int max_hp = GetUnitMaxHp(unit);
+
+#if defined(SID_MovBonus) && (COMMON_SKILL_VALID(SID_MovBonus))
+    if (SkillTester(unit, SID_MovBonus))
+        status += 2;
+#endif
 
 #if defined(SID_LuckySeven) && (COMMON_SKILL_VALID(SID_LuckySeven))
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_MOV)
