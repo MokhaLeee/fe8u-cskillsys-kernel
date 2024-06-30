@@ -4,7 +4,7 @@
 
 const u16 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
-        SID_Supply,
+        SID_ReMove,
         SID_InitSpectrum,
     },
 

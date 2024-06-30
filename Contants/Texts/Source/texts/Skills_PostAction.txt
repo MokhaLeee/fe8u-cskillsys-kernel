@@ -57,3 +57,8 @@ the character to the target[X]
 Lifetaker:[NL]
 Restore up to 25% current HP after[NL]
 attacking and defeating an enemy.[X]
+
+## MSG_SKILL_ReMove
+Re-Move:[NL]
+Gain an additional action at the end[NL]
+of this unit's turn (Skill % activation).[X]
