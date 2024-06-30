@@ -18,7 +18,7 @@ In order to collaborate with FEBuilderGBA and make DEMO based on kernel, we also
 
 ### b). Pointer list
 
-There is a pointer list after the magic pattern, start at `0xB2A614` with size = `0x400`. Both wizardry c-hacks and FEBuilder Patches may find the data via such list, so that you can expand the data via FEB.
+There is a pointer list after the magic pattern, starting at `0xB2A614` with size = `0x400`. Both wizard C-hacks and FEBuilder patches can find the data via this list, so that you can expand the data via FEB.
 
 ### c). Text table
 
