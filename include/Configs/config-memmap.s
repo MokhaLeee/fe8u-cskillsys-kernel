@@ -49,6 +49,7 @@ _kernel_malloc sHelpBoxType, 4
 _kernel_malloc sRandSeedsC, 8
 _kernel_malloc sRandBackup, 8
 _kernel_malloc gPostActionGaleforceFlag, 4
+_kernel_malloc gPostActionReMoveFlag, 4
 _kernel_malloc gBanimSyncHandler, 8
 _kernel_malloc gComboAtkList, 0x14
 _kernel_malloc sKTutorialBits, 0xC
