@@ -1,21 +1,24 @@
 ## MSG_SKILL_Dance
 Dance:[NL]
-Unit can dance[X]
+Unit can use
+"Dance" command.[X]
 
 ## MSG_SKILL_LockTouch
 Lock Touch:[NL]
 Unit can use[NL]
-"Pick" command[X]
+"Pick" command.[X]
 
 ## MSG_SKILL_Summon
 Summon:[NL]
 Unit can use[NL]
-"Summon" command[X]
+"Summon" command.[X]
 
 ## MSG_SKILL_Supply
 Supply:[NL]
-Unit has Supply[X]
+Unit can use[NL]
+"Supply" command.[X]
 
 ## MSG_SKILL_Steal
 Steal:[NL]
-Unit can steal items[X]
+Unit can use[NL]
+"Steal" command.[X]

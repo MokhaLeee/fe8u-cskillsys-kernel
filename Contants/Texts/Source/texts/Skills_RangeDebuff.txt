@@ -5,7 +5,7 @@ enemies within 3 tiles.[X]
 
 ## MSG_SKILL_Bond
 Bond:[NL]
-+10 hit, +3 damage to all[NL]
++10 Hit, +3 damage to all[NL]
 allies within 3 tiles.[X]
 
 ## MSG_SKILL_Intimidate
@@ -20,12 +20,12 @@ no allies within 3 tiles.[X]
 
 ## MSG_SKILL_Focus
 Focus:[NL]
-+10 Critical if there are[NL]
++10 Crit if there are[NL]
 no allies within 3 tiles.[X]
 
 ## MSG_SKILL_Hex
 Hex:[NL]
--15 avoid to all[NL]
+-15 Avoid to all[NL]
 adjacent enemies.[X]
 
 ## MSG_SKILL_Charm
@@ -35,7 +35,7 @@ tiles deal +3 attack.[X]
 ## MSG_SKILL_Infiltrator
 Infilt: If within 2 spaces[NL]
 of two or more enemies, gain +3[NL]
-damage and +15% hit.[X]
+damage and +15% Hit.[X]
 
 ## MSG_SKILL_Inspiration
 Inspir: Allies within 2 tiles[NL]
@@ -55,15 +55,15 @@ V-Peace: Enemies within[NL]
 2 tiles deal -2 damage.[X]
 
 ## MSG_SKILL_BattleRange1
-Range Skill: Atk +10 if[NL]
+Range Skill: ATK +10 if[NL]
 no ally with 3 tiles.[X]
 
 ## MSG_SKILL_BattleRange2
-Range Skill: Atk +7 if[NL]
+Range Skill: ATK +7 if[NL]
 no ally with 2 tiles.[X]
 
 ## MSG_SKILL_BattleRange3
-Range Skill: Atk +5 if[NL]
+Range Skill: ATK +5 if[NL]
 no ally with 1 tiles.[X]
 
 ## MSG_SKILL_Peacebringer
@@ -73,23 +73,23 @@ Allies and enemies within[NL]
 
 ## MSG_SKILL_DriveStr
 Drive Str:[NL]
-Allies within 2 tiles receive +4 Strength.[X]
+Allies within 2 tiles receive +4 STR.[X]
 
 ## MSG_SKILL_DriveMag
 Drive Mag:[NL]
-Allies within 2 tiles receive +4 Magic.[X]
+Allies within 2 tiles receive +4 MAG.[X]
 
 ## MSG_SKILL_DriveSpd
 Drive Spd:[NL]
-Allies within 2 tiles receive +4 Speed.[X]
+Allies within 2 tiles receive +4 SPD.[X]
 
 ## MSG_SKILL_DriveDef
 Drive Def:[NL]
-Allies within 2 tiles receive +4 Defence.[X]
+Allies within 2 tiles receive +4 DEF.[X]
 
 ## MSG_SKILL_DriveRes
 Drive Res:[NL]
-Allies within 2 tiles receive +4 Resistance.[X]
+Allies within 2 tiles receive +4 RES.[X]
 
 ## MSG_SKILL_Charisma
 Charisma:[NL]
@@ -102,38 +102,38 @@ units in a 3-tile radius.[X]
 
 ## MSG_SKILL_BloodTide
 Blood Tide:[NL]
-Grants Atk and Hit +5[NL]
+Grants +5 ATK and Hit[NL]
 to adjacent allies.[X]
 
 ## MSG_SKILL_WhitePool
 White Pool:[NL]
-Grants Atk and AS +5[NL]
+Grants +5 ATK and AS[NL]
 to adjacent allies.[X]
 
 ## MSG_SKILL_NightTide
 Night Tide:[NL]
-Grants +5 Def and Res[NL]
-to adjacent allies[X]
+Grants +5 DEF and RES[NL]
+to adjacent allies.[X]
 
 ## MSG_SKILL_SpurStr
 Spur Str:[NL]
-Adjacent allies gain +4 Strength.[X]
+Adjacent allies gain +4 STR.[X]
 
 ## MSG_SKILL_SpurMag
 Spur Mag:[NL]
-Adjacent allies gain +4 Magic.[X]
+Adjacent allies gain +4 MAG.[X]
 
 ## MSG_SKILL_SpurSpd
 Spur Spd:[NL]
-Adjacent allies gain +4 Speed.[X]
+Adjacent allies gain +4 SPD.[X]
 
 ## MSG_SKILL_SpurDef
 Spur Def:[NL]
-Adjacent allies gain +4 Defence.[X]
+Adjacent allies gain +4 DEF.[X]
 
 ## MSG_SKILL_SpurRes
 Spur Res:[NL]
-Adjacent allies gain +4 Resistance.[X]
+Adjacent allies gain +4 RES.[X]
 
 ## MSG_SKILL_Gentilhomme
 Gentilhomme:[NL]
@@ -145,4 +145,4 @@ Male allies within 2 tiles receive -2 damage.[X]
 
 ## MSG_SKILL_Solidarity
 Solidarity:[NL]
-Critical and Critical Avoid +10 to adjacent allies.[X]
++10 Crit and Crit Avoid to adjacent allies.[X]

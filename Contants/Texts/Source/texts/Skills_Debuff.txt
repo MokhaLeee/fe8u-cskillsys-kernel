@@ -2,94 +2,94 @@
 Aversa[X]
 
 ## MSG_SKILL_DEBUFF_Aversa
-Aversa's Night: if enemy's HP < unit's[NL]
+Aversa's Night: If enemy's HP < unit's[NL]
 HP -3 and have allies in 2x2, inflicts[NL]
-Atk/Spd/Def/Res-3 and caught Panic.[X]
+ATK/SPD/DEF/RES -3 and inflict Panic.[X]
 
 ## MSG_SKILL_PowHone_NAME
 Pow Open[X]
 
 ## MSG_SKILL_PowHone
 Pow Hone: Grants allies in 2x2[NL]
-Pow+4 for one turn during each[NL]
-start of turn[X]
++4 STR for one turn during the[NL]
+start of each turn.[X]
 
 ## MSG_SKILL_MagHone_NAME
 Mag Open[X]
 
 ## MSG_SKILL_MagHone
 Mag Hone: Grants allies in 2x2[NL]
-Mag+4 for one turn during each[NL]
-start of turn[X]
++4 MAG for one turn during the[NL]
+start of each turn.[X]
 
 ## MSG_SKILL_SklHone_NAME
 Skl Open[X]
 
 ## MSG_SKILL_SklHone
 Skl Hone: Grants allies in 2x2[NL]
-Skl+4 for one turn during each[NL]
-start of turn[X]
++4 SKL for one turn during the[NL]
+start of each turn.[X]
 
 ## MSG_SKILL_SpdHone_NAME
 Spd Open[X]
 
 ## MSG_SKILL_SpdHone
 Spd Hone: Grants allies in 2x2[NL]
-Spd+4 for one turn during each[NL]
-start of turn[X]
++4 SPD for one turn during the[NL]
+start of each turn.[X]
 
 ## MSG_SKILL_LckHone_NAME
 Lck Open[X]
 
 ## MSG_SKILL_LckHone
 Lck Hone: Grants allies in 2x2[NL]
-Lck+4 for one turn during each[NL]
-start of turn[X]
++4 LUCK for one turn during the[NL]
+start of each turn.[X]
 
 ## MSG_SKILL_DefHone_NAME
 Def Open[X]
 
 ## MSG_SKILL_DefHone
 Def Hone: Grants allies in 2x2[NL]
-Def+4 for one turn during each[NL]
-start of turn[X]
++4 DEF for one turn during the[NL]
+start of each turn.[X]
 
 ## MSG_SKILL_ResHone_NAME
 Res Open[X]
 
 ## MSG_SKILL_ResHone
 Res Hone: Grants allies in 2x2[NL]
-Res+4 for one turn during each[NL]
-start of turn[X]
+Res+4 for one turn during the[NL]
+start of each turn.[X]
 
 ## MSG_SKILL_HoneCavalry_NAME
 H-Cavalry[X]
 
 ## MSG_SKILL_HoneCavalry
 Hone Cavalry: Grants Cavalry allies[NL]
-in 2x2 get buff atk/spd+6 at[NL]
-each start of turn[X]
+in 2x2 +6 ATK/SPD at the start[NL]
+of each turn.[X]
 
 ## MSG_SKILL_HoneFlier_NAME
 Hone Flier[X]
 
 ## MSG_SKILL_HoneFlier
 Hone Flier: Grants Flier allies[NL]
-in 2x2 get buff atk/spd+6 at[NL]
-each start of turn[X]
+in 2x2 +6 ATK/SPD at the start[NL]
+of each turn.[X]
 
 ## MSG_SKILL_HoneArmor_NAME
 Hone Armor[X]
 
 ## MSG_SKILL_HoneArmor
 Hone Armor: Grants Armor allies[NL]
-in 2x2 get buff atk/spd+6 at[NL]
-each start of turn[X]
+in 2x2 +6 ATK/SPD at the start[NL]
+of each turn.[X]
 
 ## MSG_SKILL_FortifyArmor_NAME
 Fortify Armor[X]
 
 ## MSG_SKILL_FortifyArmor
 Fortify Armor: Grants Armor allies[NL]
-in 2x2 get buff atk/spd+6 at[NL]
-each start of turn[X]
+in 2x2 +6 ATK/SPD at the start[NL]
+of each turn.[X]

@@ -1,25 +1,25 @@
 ## MSG_SKILL_Canto
 Canto:[NL]
-Unit can move again[X]
+Unit can move again.[X]
 
 ## MSG_SKILL_CantoPlus
 Canto:[NL]
-Unit can move again after combat[X]
+Unit can move again after combat.[X]
 
 ## MSG_SKILL_AlertStance
 A-Stance:[NL]
 If unit takes no action[NL]
-except Wait, grants Avo +15%[X]
+except Wait, grants Avoid +15%.[X]
 
 ## MSG_SKILL_AlertStancePlus
 A-Stance+:[NL]
 If unit takes no action[NL]
-except Wait, grants Avo +30%[X]
+except Wait, grants Avoid +30%.[X]
 
 ## MSG_SKILL_Galeforce
 Galeforce: Move again after[NL]
 attacking and defeating an enemy.[NL]
-(Skill% activation)[X]
+(Skill % activation)[X]
 
 ## MSG_SKILL_SavageBlow
 Savage Blow:[NL]
@@ -29,29 +29,30 @@ within 2 tiles take 20% damage.[X]
 ## MSG_SKILL_BreathOfLife
 Breath Life:[NL]
 After attacking, allies[NL]
-in 2 tiles heal of 20% max HP.[X]
+in 2 tiles heal for 20% their max HP.[X]
 
 ## MSG_SKILL_Thunderstorm_NAME
 Thunder[X]
 
 ## MSG_SKILL_Thunderstorm
 Thunderstorm:[NL]
-When hit from 3 range away, call[NL]
-an AOE thunder at enemy location.[X]
+When targeting enemies from 3 tiles away,[NL]
+call an AOE thunder at the enemy location.[X]
 
 ## MSG_SKILL_PosReturn
 Return:[NL]
-If enemy defeated, return[NL]
-to the original position.[X]
+If the enemy is defeated, you can[NL]
+return to your starting position.[X]
 
 ## MSG_SKILL_PosSwap
 Swap:[NL]
-Swap position after[NL]
-attacking enemy.[X]
+Swap positions with the enemy[NL]
+after attacking them.[X]
 
 ## MSG_SKILL_Synchronize
-Synchronize: put status of[NL]
-the character to the target[X]
+Synchronize: 
+Copy status of unit to target.[NL]
+Allies only get buffs, and vice-versa.[X]
 
 ## MSG_SKILL_Lifetaker
 Lifetaker:[NL]
