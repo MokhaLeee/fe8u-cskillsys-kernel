@@ -163,6 +163,7 @@ SID_Glacies
 SID_Vengeance
 SID_Deadeye
 SID_AxeFaith
+SID_DivinePulse
 
 // Blow skills
 SID_BlowDarting
