@@ -116,7 +116,7 @@ Doubles hit rate and inflict sleep.[NL]
 ## MSG_SKILL_AxeFaith
 AxeFaith:[NL]
 When attacking with an Axe, hit + attack%.[NL]
-(attack % activation).[X]
+(Attack % activation).[X]
 
 ## MSG_SKILL_Armsthrift
 Armsthrift:[NL]
@@ -132,6 +132,6 @@ SureShot:[NL]
 D-Pulse[X]
 
 ## MSG_SKILL_DivinePulse
-Divine Pulse:
-May turn a missed attack into a hit.[NL]
-(30% + Skill % activation rate).[X]
+Divine Pulse:[NL]
+Turn a missed attack into a hit[NL]
+(30% + Luck % activation).[X]
