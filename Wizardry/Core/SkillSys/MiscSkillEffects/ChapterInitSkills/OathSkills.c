@@ -1,8 +1,8 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
-#include "kernel-lib.h"
 
 static void _SetOathStatDebuf(struct Unit * unit)
 {
@@ -62,12 +62,11 @@ static void _ClearOathStatDebuf(struct Unit * unit)
 bool PrePhsae_TickOathSkillStatus(ProcPtr proc)
 {
     int i, j;
-    struct Unit * unit;
     bool ally_in_range = false;
 
     for (i = gPlaySt.faction + 1; i < gPlaySt.faction + 0x40; ++i)
     {
-        unit = GetUnit(i);
+        struct Unit * unit = GetUnit(i);
         if (!UNIT_IS_VALID(unit))
             continue;
 
