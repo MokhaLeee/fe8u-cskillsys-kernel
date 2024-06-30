@@ -2315,4 +2315,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_ReMove) && COMMON_SKILL_VALID(SID_ReMove))
+    [SID_ReMove] = {
+        .desc = MSG_SKILL_ReMove,
+        .icon = GFX_SkillIcon_ReMove,
+    },
+#endif
 };

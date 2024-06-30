@@ -5,6 +5,7 @@
 #include "constants/skills.h"
 
 extern u8 gPostActionGaleforceFlag;
+extern u8 gPostActionReMoveFlag;
 
 STATIC_DECLAR bool CheckCanto(void)
 {
@@ -99,7 +100,7 @@ void PlayerPhase_FinishAction(ProcPtr proc)
     gPlaySt.yCursor = gBmSt.playerCursor.y;
 
 #if CHAX
-    if (gPostActionGaleforceFlag != 0)
+    if (gPostActionGaleforceFlag != 0 || gPostActionReMoveFlag != 0)
     {
         gActiveUnit->state &= ~(US_UNSELECTABLE | US_CANTOING);
     }
