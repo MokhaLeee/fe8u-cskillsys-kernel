@@ -56,10 +56,10 @@ _kernel_malloc sKTutorialBitsHistory, 0xC
 _kernel_malloc gBattleTargetPositionBackup, 0x4
 _kernel_malloc gActionDataExpa, 0x10
 _kernel_malloc gComboMapAnimBattleUnit, 0x80
-_kernel_malloc sStatDebuffStatusAlly, 51 * 4
-_kernel_malloc sStatDebuffStatusEnemy, 50 * 4
-_kernel_malloc sStatDebuffStatusNpc, 8 * 4
-_kernel_malloc sStatDebuffMsgBuf, 0x1C * 6
+_kernel_malloc sStatDebuffStatusAlly, 51 * 16
+_kernel_malloc sStatDebuffStatusEnemy, 50 * 16
+_kernel_malloc sStatDebuffStatusNpc, 8 * 16
+_kernel_malloc sStatDebuffMsgBuf, 0x2C * 6
 _kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sPrepareNextBattleRoundTimer, 4
 

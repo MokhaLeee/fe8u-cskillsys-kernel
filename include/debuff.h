@@ -143,7 +143,8 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_DEBUFF_AversaNight,
 
     UNIT_STAT_DEBUFF_MAX_REAL,
-    UNIT_STAT_DEBUFF_MAX = 64, /* If expand, fix */
+
+    UNIT_STAT_DEBUFF_MAX = 128, /* DO NOT modify this */
 };
 
 extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
