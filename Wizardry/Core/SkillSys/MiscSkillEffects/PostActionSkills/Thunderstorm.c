@@ -3,6 +3,7 @@
 #include "battle-system.h"
 #include "skill-system.h"
 #include "map-anims.h"
+#include "debuff.h"
 #include "combat-art.h"
 #include "weapon-range.h"
 #include "constants/skills.h"
@@ -58,6 +59,9 @@ STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
 bool PostActionThunderstorm(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
+
+    if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+        return false;
 
 #if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
     if (!SkillTester(unit, SID_Thunderstorm))

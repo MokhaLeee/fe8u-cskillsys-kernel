@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "debuff.h"
 #include "skill-system.h"
 #include "map-anims.h"
 #include "constants/skills.h"
@@ -53,6 +54,9 @@ bool PostActionSkillSavageBlow(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
     struct Unit * target = GetUnit(gActionData.targetIndex);
+
+    if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+        return false;
 
 #if defined(SID_SavageBlow) && (COMMON_SKILL_VALID(SID_SavageBlow))
     if (!SkillTester(unit, SID_SavageBlow) || !UNIT_IS_VALID(target))

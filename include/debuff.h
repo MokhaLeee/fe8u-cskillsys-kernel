@@ -13,6 +13,8 @@ struct UnitStatusRework {
 #define UNIT_STATUS_INDEX(unit) (UNIT_STATUS(unit)->index)
 #define UNIT_STATUS_DURATION(unit) (UNIT_STATUS(unit)->duration)
 
+#define UNIT_STONED(unit) (UNIT_STATUS_INDEX(unit) == UNIT_STATUS_PETRIFY || UNIT_STATUS_INDEX(unit) == UNIT_STATUS_13)
+
 enum UNIT_STATUS_IDENTIFIER {
     /* Expand here */
     NEW_UNIT_STATUS_PIERCE_ARMOR = 14,

@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "debuff.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
 #include "battle-system.h"
@@ -63,7 +64,7 @@ bool PostActionPositionReturn(ProcPtr proc)
     if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
         return false;
 
-    if (gActiveUnit->state & US_UNAVAILABLE)
+    if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;
 
 #if defined(SID_PosReturn) && (COMMON_SKILL_VALID(SID_PosReturn))

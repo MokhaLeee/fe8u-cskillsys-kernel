@@ -7,6 +7,9 @@ bool PostActionAlertStance(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
 
+    if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+        return false;
+
     if (gActionData.unitActionType == UNIT_ACTION_WAIT)
     {
 #if defined(SID_AlertStancePlus) && (COMMON_SKILL_VALID(SID_AlertStancePlus))

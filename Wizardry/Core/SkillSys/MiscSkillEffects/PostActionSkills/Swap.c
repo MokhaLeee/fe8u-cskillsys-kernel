@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
+#include "debuff.h"
 #include "skill-system.h"
 #include "event-rework.h"
 #include "constants/texts.h"
@@ -21,7 +22,8 @@ STATIC_DECLAR void PreparePositionSwap(void)
 
 static void set_target_unit(void)
 {
-    gEventSlots[EVT_SLOT_2] = gBattleTarget.unit.index;
+    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+    gEventSlots[EVT_SLOT_2] = unit_tar->index;
 }
 
 static void set_actor_unit(void)
@@ -32,7 +34,7 @@ static void set_actor_unit(void)
 static void set_position(void)
 {
     struct Unit * unita = gActiveUnit;
-    struct Unit * unitb = GetUnit(gBattleTarget.unit.index);
+    struct Unit * unitb = GetUnit(gActionData.targetIndex);
 
     int x = unita->xPos;
     int y = unita->yPos;
@@ -85,6 +87,13 @@ LABEL(99)
 bool PostActionSwap(ProcPtr proc)
 {
     struct Unit * unit = gActiveUnit;
+    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+
+    if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+        return false;
+
+    if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
+        return false;
 
 #if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
     if (!SkillTester(unit, SID_PosSwap))
@@ -94,9 +103,6 @@ bool PostActionSwap(ProcPtr proc)
         return false;
 
     if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
-        return false;
-
-    if (!UNIT_IS_VALID(unit) || unit->state & US_UNAVAILABLE)
         return false;
 
 #if 0

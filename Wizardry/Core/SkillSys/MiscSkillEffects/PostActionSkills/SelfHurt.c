@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "debuff.h"
 #include "battle-system.h"
 #include "constants/skills.h"
 
@@ -90,6 +91,9 @@ bool PostActionBattleTargetSelfHurt(ProcPtr parent)
     struct Unit * unit = GetUnit(gActionData.targetIndex);
 
     int damage = 0;
+
+    if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+        return false;
 
     switch (gActionData.unitActionType) {
     case UNIT_ACTION_COMBAT:

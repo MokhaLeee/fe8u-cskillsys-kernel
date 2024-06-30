@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "map-anims.h"
+#include "debuff.h"
 #include "constants/skills.h"
 
 void ForEachUnitInRange(void(* func)(struct Unit * unit));
@@ -58,6 +59,9 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillBreathOfLife[] = {
 bool PostActionSkillBreathOfLife(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
+
+    if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+        return false;
 
 #if defined(SID_Canto) && (COMMON_SKILL_VALID(SID_Canto))
     if (!SkillTester(unit, SID_BreathOfLife))

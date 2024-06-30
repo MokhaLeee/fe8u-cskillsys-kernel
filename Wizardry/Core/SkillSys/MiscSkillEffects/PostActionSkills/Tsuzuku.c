@@ -39,10 +39,7 @@ bool PostActionGaleForce(ProcPtr parent)
     return false;
 
 L_exec_rafrain_action_anim:
-    if (unit->state & (US_DEAD | US_HAS_MOVED | US_BIT16))
-        return false;
-
-    if (GetUnitStatusIndex(unit) == UNIT_STATUS_PETRIFY || GetUnitStatusIndex(unit) == UNIT_STATUS_13)
+    if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
         return false;
 
     gActionDataExpa.refrain_action = true;
