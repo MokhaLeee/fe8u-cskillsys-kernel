@@ -129,9 +129,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
         if (CheckBattleSkillActivte(attacker, defender, SID_DivinePulse, (30 + attacker->unit.skl)))
-        {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
-        }
         else
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
