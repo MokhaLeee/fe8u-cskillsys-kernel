@@ -89,7 +89,7 @@ bool PrePhsae_TickOathSkillStatus(ProcPtr proc)
             }
         }
 
-        if (ally_in_range)
+        if (!ally_in_range)
             _ClearOathStatDebuf(unit);
         else
             _SetOathStatDebuf(unit);
