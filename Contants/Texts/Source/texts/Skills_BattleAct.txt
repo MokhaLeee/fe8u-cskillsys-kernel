@@ -132,6 +132,6 @@ SureShot:[NL]
 D-Pulse[X]
 
 ## MSG_SKILL_DivinePulse
-Divine Pulse: May turn[NL]
-a missed attack into a hit. Trigger[NL]
-%=30. Chance increases with high Lck.[X]
+Divine Pulse:[NL]
+Turn a missed attack into a hit[NL]
+(30% + lck % activation).[X]
