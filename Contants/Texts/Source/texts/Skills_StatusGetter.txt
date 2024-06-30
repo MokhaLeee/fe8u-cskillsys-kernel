@@ -253,3 +253,68 @@ Spectrum Initiative:[NL]
 +7 to all stats at the[NL]
 beginning of the turn.[X]
 
+## MSG_SKILL_OathDefense_NAME
+O-Defense[X]
+
+## MSG_SKILL_OathDefense
+Oath Defense:[NL]
++4 DEF at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+## MSG_SKILL_OathLuck_NAME
+O-Luck[X]
+
+## MSG_SKILL_OathLuck
+Oath Luck:[NL]
++4 LUCK at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+## MSG_SKILL_OathMagic_NAME
+O-Magic[X]
+
+## MSG_SKILL_OathMagic
+Oath Magic:[NL]
++4 MAG at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+## MSG_SKILL_OathMovement_NAME
+O-Movement[X]
+
+## MSG_SKILL_OathMovement
+Oath Movement:[NL]
++4 MOV at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+## MSG_SKILL_OathResistance_NAME
+O-Resistance[X]
+
+## MSG_SKILL_OathResistance
+Oath Resistance:[NL]
++4 RES at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+## MSG_SKILL_OathSkill_NAME
+O-Skill[X]
+
+## MSG_SKILL_OathSkill
+Oath Skill:[NL]
++4 SKL at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+## MSG_SKILL_OathSpeed_NAME
+O-Speed[X]
+
+## MSG_SKILL_OathSpeed
+Oath Speed:[NL]
++4 SPD at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+## MSG_SKILL_OathStrength_NAME
+O-Strength[X]
+
+## MSG_SKILL_OathStrength
+Oath Strength:[NL]
++4 STR at the start of the turn[NL]
+if an adjacent ally is present.[X]
+
+

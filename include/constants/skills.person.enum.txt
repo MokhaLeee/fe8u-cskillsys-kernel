@@ -33,6 +33,16 @@ SID_InitLucky
 SID_InitNimble
 SID_InitSpectrum
 
+// Oath skills
+SID_OathDefense
+SID_OathLuck
+SID_OathMagic
+SID_OathMovement
+SID_OathResistance
+SID_OathSkill
+SID_OathSpeed
+SID_OathStrength
+
 // Engage skills
 SID_GentleFlower // This skill can only set to ally!
 SID_Admiration
