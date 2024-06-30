@@ -2118,21 +2118,21 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_Skyguard] = {
         .desc = MSG_SKILL_Skyguard,
         .icon = GFX_SkillIcon_Skyguard,
-      },
+    },
 #endif
 
 #if (defined(SID_Horseguard) && COMMON_SKILL_VALID(SID_Horseguard))
     [SID_Horseguard] = {
         .desc = MSG_SKILL_Horseguard,
         .icon = GFX_SkillIcon_Horseguard,
-      },
+    },
 #endif
 
 #if (defined(SID_Armorboost) && COMMON_SKILL_VALID(SID_Armorboost))
     [SID_Armorboost] = {
         .desc = MSG_SKILL_Armorboost,
         .icon = GFX_SkillIcon_Armorboost,
-      },
+    },
 #endif
 
 #if (defined(SID_GentleFlower) && COMMON_SKILL_VALID(SID_GentleFlower))
@@ -2140,14 +2140,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_GentleFlower_NAME,
         .desc = MSG_SKILL_GentleFlower,
         .icon = GFX_SkillIcon_WIP,
-      },
+    },
 #endif
 
 #if (defined(SID_Admiration) && COMMON_SKILL_VALID(SID_Admiration))
     [SID_Admiration] = {
         .desc = MSG_SKILL_Admiration,
         .icon = GFX_SkillIcon_WIP,
-      },
+    },
 #endif
 
 #if (defined(SID_FairyTaleFolk) && COMMON_SKILL_VALID(SID_FairyTaleFolk))
@@ -2155,7 +2155,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_FairyTaleFolk_NAME,
         .desc = MSG_SKILL_FairyTaleFolk,
         .icon = GFX_SkillIcon_WIP,
-      },
+    },
 #endif
 
 #if (defined(SID_InitCalm) && COMMON_SKILL_VALID(SID_InitCalm))
@@ -2163,7 +2163,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitCalm_NAME,
         .desc = MSG_SKILL_InitCalm,
         .icon = GFX_SkillIcon_InitCalm,
-      },
+    },
 #endif
 
 #if (defined(SID_InitClever) && COMMON_SKILL_VALID(SID_InitClever))
@@ -2171,7 +2171,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitClever_NAME,
         .desc = MSG_SKILL_InitClever,
         .icon = GFX_SkillIcon_InitClever,
-      },
+    },
 #endif
 
 #if (defined(SID_InitDeft) && COMMON_SKILL_VALID(SID_InitDeft))
@@ -2179,7 +2179,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitDeft_NAME,
         .desc = MSG_SKILL_InitDeft,
         .icon = GFX_SkillIcon_InitDeft,
-      },
+    },
 #endif
 
 #if (defined(SID_InitLucky) && COMMON_SKILL_VALID(SID_InitLucky))
@@ -2187,7 +2187,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitLucky_NAME,
         .desc = MSG_SKILL_InitLucky,
         .icon = GFX_SkillIcon_InitLucky,
-      },
+    },
 #endif
 
 #if (defined(SID_InitNimble) && COMMON_SKILL_VALID(SID_InitNimble))
@@ -2195,7 +2195,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitNimble_NAME,
         .desc = MSG_SKILL_InitNimble,
         .icon = GFX_SkillIcon_InitNimble,
-      },
+    },
 #endif
 
 #if (defined(SID_InitQuick) && COMMON_SKILL_VALID(SID_InitQuick))
@@ -2203,7 +2203,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitQuick_NAME,
         .desc = MSG_SKILL_InitQuick,
         .icon = GFX_SkillIcon_InitQuick,
-      },
+    },
 #endif
 
 #if (defined(SID_InitSpectrum) && COMMON_SKILL_VALID(SID_InitSpectrum))
@@ -2211,7 +2211,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitSpectrum_NAME,
         .desc = MSG_SKILL_InitSpectrum,
         .icon = GFX_SkillIcon_InitSpectrum,
-      },
+    },
 #endif
 
 #if (defined(SID_InitStrong) && COMMON_SKILL_VALID(SID_InitStrong))
@@ -2219,7 +2219,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitStrong_NAME,
         .desc = MSG_SKILL_InitStrong,
         .icon = GFX_SkillIcon_InitStrong,
-      },
+    },
 #endif
 
 #if (defined(SID_InitSturdy) && COMMON_SKILL_VALID(SID_InitSturdy))
@@ -2227,20 +2227,84 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_InitSturdy_NAME,
         .desc = MSG_SKILL_InitSturdy,
         .icon = GFX_SkillIcon_InitSturdy,
-      },
+    },
 #endif
 
 #if (defined(SID_Lifetaker) && COMMON_SKILL_VALID(SID_Lifetaker))
     [SID_Lifetaker] = {
         .desc = MSG_SKILL_Lifetaker,
         .icon = GFX_SkillIcon_Lifetaker,
-      },
+    },
 #endif
 
 #if (defined(SID_Analytic) && COMMON_SKILL_VALID(SID_Analytic))
     [SID_Analytic] = {
         .desc = MSG_SKILL_Analytic,
         .icon = GFX_SkillIcon_WIP,
-      },
+    },
+#endif
+
+#if (defined(SID_OathDefense) && COMMON_SKILL_VALID(SID_OathDefense))
+    [SID_OathDefense] = {
+        .name = MSG_SKILL_OathDefense_NAME,
+        .desc = MSG_SKILL_OathDefense,
+        .icon = GFX_SkillIcon_OathDefense,
+    },
+#endif
+
+#if (defined(SID_OathLuck) && COMMON_SKILL_VALID(SID_OathLuck))
+    [SID_OathLuck] = {
+        .name = MSG_SKILL_OathLuck_NAME,
+        .desc = MSG_SKILL_OathLuck,
+        .icon = GFX_SkillIcon_OathLuck,
+    },
+#endif
+
+#if (defined(SID_OathMagic) && COMMON_SKILL_VALID(SID_OathMagic))
+    [SID_OathMagic] = {
+        .name = MSG_SKILL_OathMagic_NAME,
+        .desc = MSG_SKILL_OathMagic,
+        .icon = GFX_SkillIcon_OathMagic,
+    },
+#endif
+
+#if (defined(SID_OathMovement) && COMMON_SKILL_VALID(SID_OathMovement))
+    [SID_OathMovement] = {
+        .name = MSG_SKILL_OathMovement_NAME,
+        .desc = MSG_SKILL_OathMovement,
+        .icon = GFX_SkillIcon_OathMovement,
+    },
+#endif
+
+#if (defined(SID_OathResistance) && COMMON_SKILL_VALID(SID_OathResistance))
+    [SID_OathResistance] = {
+        .name = MSG_SKILL_OathResistance_NAME,
+        .desc = MSG_SKILL_OathResistance,
+        .icon = GFX_SkillIcon_OathResistance,
+    },
+#endif
+
+#if (defined(SID_OathSkill) && COMMON_SKILL_VALID(SID_OathSkill))
+    [SID_OathSkill] = {
+        .name = MSG_SKILL_OathSkill_NAME,
+        .desc = MSG_SKILL_OathSkill,
+        .icon = GFX_SkillIcon_OathSkill,
+    },
+#endif
+
+#if (defined(SID_OathSpeed) && COMMON_SKILL_VALID(SID_OathSpeed))
+    [SID_OathSpeed] = {
+        .name = MSG_SKILL_OathSpeed_NAME,
+        .desc = MSG_SKILL_OathSpeed,
+        .icon = GFX_SkillIcon_OathSpeed,
+    },
+#endif
+
+#if (defined(SID_OathStrength) && COMMON_SKILL_VALID(SID_OathStrength))
+    [SID_OathStrength] = {
+        .name = MSG_SKILL_OathStrength_NAME,
+        .desc = MSG_SKILL_OathStrength,
+        .icon = GFX_SkillIcon_OathStrength,
+    },
 #endif
 };
