@@ -128,17 +128,17 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
     {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-        if (CheckBattleSkillActivte(attacker, defender, SID_DivinePulse, (30 + attacker->unit.skl)))
+        if (CheckBattleSkillActivte(attacker, defender, SID_DivinePulse, (30 + attacker->unit.lck)))
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
         else
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
             return;
         }
-#else 
+#else
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
         return;
-#endif   
+#endif
     }
 
     /* Judge whether in combat-art attack */
