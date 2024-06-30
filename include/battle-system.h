@@ -72,7 +72,7 @@ extern struct {
 } gBattleTemporaryFlag;
 
 /* Battle skill act */
-bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
+bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
 
 static inline int GetItemFormSlot(struct Unit * unit, int slot)
 {
