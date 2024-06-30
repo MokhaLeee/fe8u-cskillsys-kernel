@@ -47,3 +47,4 @@ SID_OathStrength
 SID_GentleFlower // This skill can only set to ally!
 SID_Admiration
 SID_FairyTaleFolk
+SID_DivinePulse

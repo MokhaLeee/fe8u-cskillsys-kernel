@@ -127,3 +127,11 @@ weapon no consumed[NL]
 SureShot:[NL]
 100% hit rate, damage +50%.[NL]
  (Skill % activation).[X]
+
+## MSG_SKILL_DivinePulse_NAME
+D-Pulse[X]
+
+## MSG_SKILL_DivinePulse
+Divine Pulse:[NL]
+Turn a missed attack into a hit[NL]
+(30% + Skill % activation).[X]
