@@ -2312,6 +2312,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_ReMove] = {
         .desc = MSG_SKILL_ReMove,
         .icon = GFX_SkillIcon_ReMove,
-      },
+    },
 #endif
 };
