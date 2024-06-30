@@ -26,8 +26,8 @@ bool PostActionGaleForce(ProcPtr parent)
     /* fall through */
 
     default:
-#if defined(SID_ReMove) && (COMMON_SKILL_VALID(SID_ReMove))
-        if (SkillTester(unit, SID_ReMove))
+#if defined(SID_Tsuzuku) && (COMMON_SKILL_VALID(SID_Tsuzuku))
+        if (SkillTester(unit, SID_Tsuzuku))
             goto L_exec_rafrain_action_anim;
 #endif
         break;

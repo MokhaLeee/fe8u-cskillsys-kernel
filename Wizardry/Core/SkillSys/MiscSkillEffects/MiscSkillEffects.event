@@ -1,6 +1,6 @@
 #include "PostActionSkills/SelfHurt.lyn.event"
 #include "PostActionSkills/AlertStance.lyn.event"
-#include "PostActionSkills/Galeforce.lyn.event"
+#include "PostActionSkills/Tsuzuku.lyn.event"
 #include "PostActionSkills/SavageBlow.lyn.event"
 #include "PostActionSkills/BreathOfLife.lyn.event"
 #include "PostActionSkills/Canto.lyn.event"

@@ -2316,10 +2316,10 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_ReMove) && COMMON_SKILL_VALID(SID_ReMove))
-    [SID_ReMove] = {
-        .desc = MSG_SKILL_ReMove,
-        .icon = GFX_SkillIcon_ReMove,
+#if (defined(SID_Tsuzuku) && COMMON_SKILL_VALID(SID_Tsuzuku))
+    [SID_Tsuzuku] = {
+        .desc = MSG_SKILL_Tsuzuku,
+        .icon = GFX_SkillIcon_Tsuzuku,
     },
 #endif
 };

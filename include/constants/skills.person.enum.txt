@@ -8,7 +8,7 @@ SID_PushMovement
 SID_LightWeight
 SID_Analytic
 SID_Lifetaker
-SID_ReMove
+SID_Tsuzuku
 
 // Weapon range
 SID_HighGround
