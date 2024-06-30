@@ -1,11 +1,9 @@
 #include "common-chax.h"
 #include "status-getter.h"
 #include "battle-system.h"
+#include "action-expa.h"
 #include "skill-system.h"
 #include "constants/skills.h"
-
-extern u8 gPostActionGaleforceFlag;
-extern u8 gPostActionReMoveFlag;
 
 STATIC_DECLAR bool CheckCanto(void)
 {
@@ -100,7 +98,7 @@ void PlayerPhase_FinishAction(ProcPtr proc)
     gPlaySt.yCursor = gBmSt.playerCursor.y;
 
 #if CHAX
-    if (gPostActionGaleforceFlag != 0 || gPostActionReMoveFlag != 0)
+    if (gActionDataExpa.refrain_action)
     {
         gActiveUnit->state &= ~(US_UNSELECTABLE | US_CANTOING);
     }

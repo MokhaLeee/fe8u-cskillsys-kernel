@@ -13,7 +13,6 @@ gPostActionFuncs:
     POIN PostActionSynchronize
     POIN PostActionAlertStance
     POIN PostActionGaleForce
-    POIN PostActionReMove
     POIN PostActionSwap
     POIN PostActionPositionReturn
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
