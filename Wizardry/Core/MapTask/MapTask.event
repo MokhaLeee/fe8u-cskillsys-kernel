@@ -1,7 +1,7 @@
 #ifndef HP_BAR_INSTALLED
 #define HP_BAR_INSTALLED
 
-#include "Source/bmudisp.lyn.event"
+#include "Source/map-task.lyn.event"
 #include "Source/LynJump.event"
 
 ALIGN 4
