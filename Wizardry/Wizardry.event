@@ -38,7 +38,7 @@ ALIGN 4
 #include "Core/BattleSys/BattleSys.event"
 #include "Core/Lvup/Lvup.event"
 #include "Core/StatScreen/StatScreen.event"
-#include "Core/HpBar/HpBar.event"
+#include "Core/MapTask/MapTask.event"
 #include "Core/CombatArt/CombatArt.event"
 #include "Core/HelpBox/HelpBox.event"
 #include "Core/ComboAttack/ComboAttack.event"

@@ -51,7 +51,7 @@ enum DEBUFF_INFO_EFX_SPEED {
 
 struct DebuffInfo {
     const u8 * img;
-    void (* on_draw)(struct Unit * unit);
+    void (* on_draw)(struct Unit * unit, int ix, int iy);
     u16 name, desc;
 
     u8 positive_type;
@@ -88,8 +88,7 @@ static inline bool IsDebuff(int status_idx)
     return (gpDebuffInfos[status_idx].positive_type == STATUS_DEBUFF_NEGATIVE);
 }
 
-void PutUnitStatusIcon(struct Unit * unit);
-void PutUnitDanceRingBuffIcon(struct Unit * unit);
+void PutUnitDanceRingBuffIcon(struct Unit * unit, int ix, int iy);
 
 void PreBattleCalcDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
 int PowGetterDebuff(int status, struct Unit * unit);

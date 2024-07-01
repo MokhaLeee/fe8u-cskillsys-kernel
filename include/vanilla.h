@@ -119,3 +119,8 @@ void TryAddUnitToHammerneTargetList(struct Unit * unit);
 extern struct ProcCmd CONST_DATA ProcScr_DanceringAnim[];
 
 void BeginUnitHealAnim(struct Unit * unit, int hp);
+
+extern u16 sSprite_SysUpArrowA[], sSprite_SysUpArrowB[], sSprite_SysUpArrowC[];
+extern u16 sSprite_SysDownArrowA[], sSprite_SysDownArrowB[], sSprite_SysDownArrowC[];
+
+void PutChapterMarkedTileIconOam(void);
