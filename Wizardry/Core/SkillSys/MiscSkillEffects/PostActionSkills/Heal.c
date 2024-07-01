@@ -54,6 +54,11 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
         heal += hp_max / 4;
 #endif
 
+#if defined(SID_MysticBoost) && (COMMON_SKILL_VALID(SID_MysticBoost))
+    if (SkillTester(unit, SID_MysticBoost))
+        heal += 6;
+#endif
+
     if (heal == 0)
         return false;
 

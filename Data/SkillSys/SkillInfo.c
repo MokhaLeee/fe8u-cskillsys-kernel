@@ -2322,4 +2322,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Tsuzuku,
     },
 #endif
+
+#if (defined(SID_MysticBoost) && COMMON_SKILL_VALID(SID_MysticBoost))
+    [SID_MysticBoost] = {
+        .desc = MSG_SKILL_MysticBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

@@ -50,12 +50,17 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
     else
         status = def;
 
-
-#if (defined(SID_SorceryBlade) && (COMMON_SKILL_VALID(SID_SorceryBlade)))
-    if (SkillTester(&attacker->unit, SID_SorceryBlade))
-        status = def < res ? def : res;
+#if (defined(SID_MysticBoost) && COMMON_SKILL_VALID(SID_MysticBoost))
+    if (!SkillTester(&attacker->unit, SID_MysticBoost))
+#else
+    if (1)
 #endif
-
+    {
+#if (defined(SID_SorceryBlade) && (COMMON_SKILL_VALID(SID_SorceryBlade)))
+        if (SkillTester(&defender->unit, SID_SorceryBlade))
+            status = def < res ? def : res;
+#endif
+    }
     attacker->battleDefense = status;
 }
 
