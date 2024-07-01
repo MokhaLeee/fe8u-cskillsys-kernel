@@ -2344,4 +2344,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_YuneWhispers) && COMMON_SKILL_VALID(SID_YuneWhispers))
+    [SID_YuneWhispers] = {
+        .name = MSG_SKILL_YuneWhispers_NAME,
+        .desc = MSG_SKILL_YuneWhispers,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

@@ -11,6 +11,7 @@ SID_Lifetaker
 SID_Tsuzuku
 SID_MysticBoost
 SID_GuardBearing
+SID_YuneWhispers
 
 // Weapon range
 SID_HighGround

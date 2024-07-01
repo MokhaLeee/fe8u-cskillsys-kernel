@@ -38,3 +38,11 @@ SandStream:[NL]
 Set weather to a sandstorm[NL]
 at the start of the turn.[X]
 
+## MSG_SKILL_YuneWhispers_NAME
+YuneWhis[X]
+
+## MSG_SKILL_YuneWhispers
+Yune's Whispers: Inflicts[NL]
+ATK/SPD -6 for enemys who's RES[NL]
+is less than unit RES -3[X]
+ 

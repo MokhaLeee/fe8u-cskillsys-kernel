@@ -151,6 +151,15 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         .unit_status = { .mov = +4 },
     },
 
+    [UNIT_STAT_DEBUFF_YuneWhispers] = {
+        .type = STATUS_DEBUFF_TICK_ON_ENEMY,
+        .unit_status = {
+            .pow = -6,
+            .mag = -6,
+            .spd = -6,
+        },
+    },
+
     [UNIT_STAT_BUFF_JOB_HONE] = {
         .type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = {
