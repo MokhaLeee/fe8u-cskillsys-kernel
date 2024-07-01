@@ -19,7 +19,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
                             { 0,  2},
     };
 
-    for (uid = gPlaySt.faction + 1; uid < gPlaySt.faction + 0x40; uid++)
+    for (uid = gPlaySt.faction + 1; uid <= gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction); uid++)
     {
         bool PowHone_eff = false;
         bool MagHone_eff = false;

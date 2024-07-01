@@ -48,3 +48,14 @@ extern const struct Vec1 gVecs_3x3[ARRAY_COUNT_RANGE3x3];
 extern const u8 gRange1_In2x2[ARRAY_COUNT_RANGE2x2];
 extern const u8 gRange1_In3x3[ARRAY_COUNT_RANGE3x3];
 extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
+
+/**
+ * faction
+ */
+#define GetFactionUnitAmount(faction)                    \
+(                                                        \
+    (faction) == FACTION_BLUE  ? CONFIG_UNIT_AMT_ALLY  : \
+    (faction) == FACTION_RED   ? CONFIG_UNIT_AMT_ENEMY : \
+    (faction) == FACTION_GREEN ? CONFIG_UNIT_AMT_NPC   : \
+    0                                                    \
+)

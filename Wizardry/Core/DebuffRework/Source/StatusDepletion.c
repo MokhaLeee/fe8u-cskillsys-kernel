@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 
 void StartStatusHealEffect(struct Unit * unit, ProcPtr proc);
 
@@ -24,7 +25,7 @@ void TickActiveFactionTurn(void)
 
     InitTargets(0, 0);
 
-    for (i = gPlaySt.faction + 1; i < gPlaySt.faction + 0x40; ++i)
+    for (i = gPlaySt.faction + 1; i <= gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction); ++i)
     {
         struct Unit * unit = GetUnit(i);
 
@@ -69,13 +70,13 @@ void TickActiveFactionTurn(void)
     if (FACTION_BLUE == gPlaySt.faction)
     {
         /* Blue buff */
-        for (i = FACTION_BLUE + 1; i < (FACTION_BLUE + 0x40); i++)
+        for (i = FACTION_BLUE + 1; i <= (FACTION_BLUE + CONFIG_UNIT_AMT_ALLY); i++)
         {
             struct Unit * unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ALLY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
@@ -83,13 +84,13 @@ void TickActiveFactionTurn(void)
         }
 
         /* Red debuff */
-        for (i = FACTION_RED + 1; i < (FACTION_RED + 0x40); i++)
+        for (i = FACTION_RED + 1; i <= (FACTION_RED + CONFIG_UNIT_AMT_ENEMY); i++)
         {
             struct Unit * unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ENEMY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
@@ -99,13 +100,13 @@ void TickActiveFactionTurn(void)
     else if (FACTION_RED == gPlaySt.faction)
     {
         /* Red buff */
-        for (i = FACTION_RED + 1; i < (FACTION_RED + 0x40); i++)
+        for (i = FACTION_RED + 1; i <= (FACTION_RED + CONFIG_UNIT_AMT_ENEMY); i++)
         {
             struct Unit * unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ALLY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
@@ -113,13 +114,13 @@ void TickActiveFactionTurn(void)
         }
 
         /* Blue debuff */
-        for (i = FACTION_BLUE + 1; i < (FACTION_BLUE + 0x40); i++)
+        for (i = FACTION_BLUE + 1; i <= (FACTION_BLUE + CONFIG_UNIT_AMT_ALLY); i++)
         {
             struct Unit * unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ENEMY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
@@ -127,13 +128,13 @@ void TickActiveFactionTurn(void)
         }
 
         /* Green debuff */
-        for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + 0x40); i++)
+        for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + CONFIG_UNIT_AMT_NPC); i++)
         {
             struct Unit * unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ENEMY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
@@ -143,13 +144,13 @@ void TickActiveFactionTurn(void)
     else if (FACTION_GREEN == gPlaySt.faction)
     {
         /* Green buff */
-        for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + 0x40); i++)
+        for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + CONFIG_UNIT_AMT_NPC); i++)
         {
             struct Unit * unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ALLY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }

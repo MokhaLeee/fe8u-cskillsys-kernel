@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 #include "strmag.h"
@@ -37,7 +38,7 @@ void MakeTerrainHealTargetList(int faction)
 
     InitTargets(0, 0);
 
-    for (i = faction + 1; i < faction + 0x40; i++)
+    for (i = faction + 1; i <= faction + GetFactionUnitAmount(gPlaySt.faction); i++)
     {
         struct Unit * unit = GetUnit(i);
         int terrainId;
