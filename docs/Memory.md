@@ -4,11 +4,14 @@ ROM space distribution is configured in [config-memmap.h](../include/Configs/con
 
 | Address   | Size    | Usage
 | -------   | ------- | -----
-| 0x0B2A604 | 0xD5DFC | Kernel
+| 0x00E8414 | 0x785A8 | Kernel text section (**in-BL range**)
+| 0x0B2A604 | 0xD5DFC | Kernel data section
 | 0x0EFB2E0 | 0xE4D20 | Font
 | 0x1000000 | ---     | ***reserved for DEMO***
 
-For the kernel, we mainly use free-space starting from `0xB2A604`.
+To improve program performance, the kernel use **in-BL range** space (start from `0xE8414`) for text section, which is quite different from the custom modifications.
+
+For other data and contants, we mainly use free-space starting from `0xB2A604`.
 
 In order to collaborate with FEBuilderGBA and make DEMO based on kernel, we also need to define some important data at these fixed locations:
 

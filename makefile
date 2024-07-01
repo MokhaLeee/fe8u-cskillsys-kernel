@@ -1,5 +1,6 @@
 MAKEFLAGS += --no-print-directory
-include version.mk
+
+include configs.mk
 
 MK_PATH   := $(abspath $(lastword $(MAKEFILE_LIST)))
 MK_DIR    := $(dir $(MK_PATH))
@@ -58,6 +59,14 @@ ifneq (,$(TOOLCHAIN))
 	export PATH := $(TOOLCHAIN)/bin:$(PATH)
 endif
 
+ifeq ($(CONFIG_LONG_CALL), 1)
+	LYN_LONG_CALL := -longcalls
+	GCC_LONG_CALL := -mlong-calls
+else
+	LYN_LONG_CALL :=
+	GCC_LONG_CALL :=
+endif
+
 PREFIX  ?= arm-none-eabi-
 CC      := $(PREFIX)gcc
 AS      := $(PREFIX)as
@@ -68,7 +77,7 @@ EA                := $(EA_DIR)/ColorzCore
 PARSEFILE         := $(EA_DIR)/Tools/ParseFile
 PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
 COMPRESS          := $(EA_DIR)/Tools/compress
-LYN               := $(EA_DIR)/Tools/lyn -longcalls
+LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
 EA_DEP            := $(EA_DIR)/ea-dep
 
 TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
@@ -126,7 +135,7 @@ INC_DIRS := include $(LIB_DIR)/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
 
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
-CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi -mlong-calls
+CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi $(GCC_LONG_CALL)
 ASFLAGS := $(ARCH) $(INC_FLAG)
 
 CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP

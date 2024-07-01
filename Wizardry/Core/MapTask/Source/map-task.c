@@ -12,7 +12,7 @@ static inline int GetUnitHpBarIndex(struct Unit * unit)
 
 static inline void PutUnitHpBar(struct Unit * unit, int ix, int iy)
 {
-    const int chrs[] = {
+    static const int chrs[] = {
               0x74, 0x74,
         0x56, 0x54, 0x52,
         0x36, 0x34, 0x32,
@@ -84,7 +84,7 @@ static inline void PutUnitDebuffIcon(struct Unit * unit, int ix, int iy)
  */
 static inline void PutRescuingIcon(struct Unit * unit, int ix, int iy)
 {
-    const u16 pal_idx[] = {
+    static const u16 pal_idx[] = {
         0xC, 0xE, 0xD,
     };
 

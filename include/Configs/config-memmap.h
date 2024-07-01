@@ -38,6 +38,6 @@
 #define FreeSpaceKernel_Reloc (FreeSpaceKernel_Magic + 0x10)
 #define FreeSpaceRelocSize 0x400
 
-#define FreeSpaceKernelMain (FreeSpaceKernel_Reloc + FreeSpaceRelocSize)
+#define FreeSpaceKernelData (FreeSpaceKernel_Reloc + FreeSpaceRelocSize)
 
 #endif

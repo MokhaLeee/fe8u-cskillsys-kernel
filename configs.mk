@@ -1,0 +1,2 @@
+export CONFIG_VERSION=dev
+export CONFIG_LONG_CALL=0

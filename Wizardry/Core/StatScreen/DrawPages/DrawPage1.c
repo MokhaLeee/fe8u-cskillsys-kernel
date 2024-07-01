@@ -509,7 +509,7 @@ void DisplayPage0(void)
 void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 {
     s8 displayIcon = (GetGameClock() % 32) < 20;
-    const u16 palidLut[3] = { 0xC, 0xE, 0xD }; // TODO: palid constants
+    static const u16 palidLut[3] = { 0xC, 0xE, 0xD }; // TODO: palid constants
 
     if (!gStatScreen.inTransition)
     {
