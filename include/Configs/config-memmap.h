@@ -12,7 +12,7 @@
  * ------------------------------------------
  */
 #define FreeSpaceKernelText 0x0E8414
-#define FreeSpaceKernelTextSize 0xD5DFC
+#define FreeSpaceKernelTextSize 0x785A8
 
 #define FreeSpaceKernel 0xB2A604
 #define FreeSpaceKernelSize 0xD5DFC
