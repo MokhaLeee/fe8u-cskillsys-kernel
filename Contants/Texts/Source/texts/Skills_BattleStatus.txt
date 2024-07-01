@@ -477,3 +477,8 @@ GuardBear[X]
 GuardBearing: During first combat[NL]
 in enemy phase, if attacked, reduces[NL]
 50 %damage from foe's first attack.[X]
+
+## MSG_SKILL_Spurn
+Spurn: Reduce damage as 4% AS diff[NL]
+(max 40%). Damage +5 for critical atk[NL]
+if unit HP is less than 75%[X]

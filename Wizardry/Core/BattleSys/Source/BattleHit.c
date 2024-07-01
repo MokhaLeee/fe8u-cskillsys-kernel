@@ -122,6 +122,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     int attack, defense, amplifier;
     int damage, real_damage;
     bool in_art_atk = false;
+    bool crit_atk = false;
 
     gBattleStats.damage = 0;
 
@@ -363,6 +364,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         else
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+            crit_atk = true;
 
 #if defined(SID_InfinityEdge) && (COMMON_SKILL_VALID(SID_InfinityEdge))
             if (SkillTester(&attacker->unit, SID_InfinityEdge))
@@ -404,6 +406,16 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
+    if (SkillTester(&defender->unit, SID_Spurn))
+    {
+        int as_diff = defender->battleSpeed - attacker->battleSpeed;
+        LIMIT_AREA(as_diff, 0, 10);
+
+        amplifier -= amplifier * as_diff / 25;
+    }
+#endif
+
     if (damage < BATTLE_MAX_DAMAGE)
     {
         int _damage = (damage * amplifier / 100);
@@ -411,6 +423,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             _damage = 0;
 
         damage = _damage;
+    }
+
+    if (crit_atk)
+    {
+#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
+        if (SkillTester(&attacker->unit, SID_Spurn))
+            damage += 5;
+#endif
     }
 
     /**

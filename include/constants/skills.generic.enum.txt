@@ -127,6 +127,7 @@ SID_RightfulArch
 SID_Guts
 SID_Hero
 SID_SuperLuck
+SID_Spurn
 
 // Weapon triangle
 SID_SwordBreaker
