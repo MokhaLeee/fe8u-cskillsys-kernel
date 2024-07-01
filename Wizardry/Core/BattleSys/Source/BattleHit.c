@@ -257,7 +257,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
         attack += (attacker->unit.maxHP - attacker->unit.curHP);
-
     }
 #endif
 
@@ -301,22 +300,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         /* If we can deal damage, astra should not reduce it to 0 */
         if (damage > 1)
             amplifier /= 2;
-    }
-#endif
-
-#if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
-    if (SkillTester(&defender->unit, SID_DragonSkin))
-    {
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        amplifier /= 2;
-    }
-#endif
-
-#if (defined(SID_KeenFighter) && (COMMON_SKILL_VALID(SID_KeenFighter)))
-    if (SkillTester(&defender->unit, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
-    {
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        amplifier /= 2;
     }
 #endif
 
@@ -392,6 +375,22 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         }
     }
 
+#if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
+    if (SkillTester(&defender->unit, SID_DragonSkin))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
+        amplifier /= 2;
+    }
+#endif
+
+#if (defined(SID_KeenFighter) && (COMMON_SKILL_VALID(SID_KeenFighter)))
+    if (SkillTester(&defender->unit, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
+        amplifier /= 2;
+    }
+#endif
+
 #if defined(SID_GuardBearing) && (COMMON_SKILL_VALID(SID_GuardBearing))
     if (SkillTester(&defender->unit, SID_GuardBearing))
     {
@@ -406,7 +405,13 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
     if (damage < BATTLE_MAX_DAMAGE)
-        damage = (damage * amplifier / 100);
+    {
+        int _damage = (damage * amplifier / 100);
+        if (damage > 0 && _damage <= 0)
+            _damage = 0;
+
+        damage = _damage;
+    }
 
     /**
      * Real damage:
