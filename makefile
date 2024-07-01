@@ -125,6 +125,10 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@python3 $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 
+	@cp -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym
+	@cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym-removethumb.py > $(CHAX_SYM)
+	@rm -f $(CACHE_DIR)/tmp_sym
+
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
 	@echo "[GEN]	$(CHAX_DIFF)"
