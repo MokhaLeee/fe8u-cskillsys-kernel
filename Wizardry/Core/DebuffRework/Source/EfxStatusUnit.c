@@ -91,14 +91,14 @@ void EfxStatusUnitMain(struct ProcEfxStatusUnit * proc)
         case UNIT_STATUS_13:
             if (GetAnimPosition(proc->anim) == EKR_POS_L)
                 EfxDecodeSplitedPalette(
-                    PAL_OBJ(OBPAL_EFX_UNK_7),
+                    PAL_OBJ(OBPAL_EFX_UNIT_L),
                     (s8 *)gFadeComponents,
                     (s8 *)&gFadeComponents[0x30],
                     (s16 *)&gFadeComponents[0x180],
                     16, proc->red, 16);
             else
                 EfxDecodeSplitedPalette(
-                    PAL_OBJ(OBPAL_EFX_UNK_9),
+                    PAL_OBJ(OBPAL_EFX_UNIT_R),
                     (s8 *)gFadeComponents,
                     (s8 *)&gFadeComponents[0x30],
                     (s16 *)&gFadeComponents[0x2A0],
