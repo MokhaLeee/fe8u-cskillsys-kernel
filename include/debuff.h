@@ -47,6 +47,7 @@ struct DebuffInfo {
     void (* on_draw)(struct Unit * unit);
     u16 name, desc;
 
+    bool is_debuff;
     u8 type;
     u8 duration;
 
@@ -63,7 +64,7 @@ struct DebuffInfo {
         s8 atk, def, hit, avo, crit, silencer, dodge;
     } battle_status;
 
-    u8 cannot_move : 1;
+    u8 cannot_move;
 };
 
 extern const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX];
