@@ -95,8 +95,8 @@ RES +7 if HP < 25%[X]
 
 ## MSG_SKILL_LuckySeven
 Lucky 7: [NL]
-Apply a fresh +7 stat bonus
-on each subsequent turn.[NL]
+Apply a fresh +7 stat bonus[NL]
+on each subsequent turn.[X]
 
 ## MSG_SKILL_PushDefense_NAME
 P-Defense[X]
@@ -316,5 +316,3 @@ O-Strength[X]
 Oath Strength:[NL]
 +4 STR at the start of the turn[NL]
 if an adjacent ally is present.[X]
-
-
