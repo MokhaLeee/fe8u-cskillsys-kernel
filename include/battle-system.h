@@ -54,13 +54,24 @@ static inline int GetBattleHitRound(struct BattleHit * hit)
 
 extern struct BattleGlobalFlags {
     u32 hitted : 1;
+    u32 round_cnt : 5;      // align to NEW_BATTLE_HIT_MAX
+    u32 round_cnt_hit : 5;  // align to NEW_BATTLE_HIT_MAX
+    u32 round_cnt_avo : 5;  // align to NEW_BATTLE_HIT_MAX
     u32 enimy_defeated : 1;
     u32 skill_activated_double_lion : 1;
     u32 skill_activated_astra : 1;
     u32 skill_activated_galeforce : 1;
 } gBattleActorGlobalFlag, gBattleTargetGlobalFlag;
 
+static inline struct BattleGlobalFlags * GetBattleGlobalFlags(struct BattleUnit * bu)
+{
+    return (bu == &gBattleActor)
+         ? &gBattleActorGlobalFlag
+         : &gBattleTargetGlobalFlag;
+}
+
 void ClearBattleGlobalFlags(void);
+void RegisterHitCnt(struct BattleUnit * bu, bool miss);
 
 extern struct {
     u32 order_vantage : 1;

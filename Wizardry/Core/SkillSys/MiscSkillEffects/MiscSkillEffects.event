@@ -20,6 +20,7 @@
 
 #include "ChapterInitSkills/Initiative.lyn.event"
 
+#include "PrePhaseSkills/PrePhaseMisc.lyn.event"
 #include "PrePhaseSkills/PrePhaseHeal.lyn.event"
 #include "PrePhaseSkills/AversaNight.lyn.event"
 #include "PrePhaseSkills/HoneFortify.lyn.event"

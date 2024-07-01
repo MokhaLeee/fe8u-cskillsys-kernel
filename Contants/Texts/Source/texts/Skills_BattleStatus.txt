@@ -466,6 +466,14 @@ Analytic:[NL]
 4 or more. If between 1-3, then +5 ATK.[X]
 
 ## MSG_SKILL_MysticBoost
-MysticBoost: Disables foe's skills that[NL]
-"calculate damage using the lower of foe's[NL]
-Def or Res". Restores 6 HP after combat.[X]
+MysticBoost: Disables foe's skills[NL]
+as "calculate on lower def/res for[NL]
+damage". Restores 6 HP after combat.[X]
+
+## MSG_SKILL_GuardBearing_NAME
+GuardBear[X]
+
+## MSG_SKILL_GuardBearing
+GuardBearing: During first combat[NL]
+in enemy phase, if attacked, reduces[NL]
+50 %damage from foe's first attack.[X]

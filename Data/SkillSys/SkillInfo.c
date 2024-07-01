@@ -2329,4 +2329,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_GuardBearing) && COMMON_SKILL_VALID(SID_GuardBearing))
+    [SID_GuardBearing] = {
+        .name = MSG_SKILL_GuardBearing_NAME,
+        .desc = MSG_SKILL_GuardBearing,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

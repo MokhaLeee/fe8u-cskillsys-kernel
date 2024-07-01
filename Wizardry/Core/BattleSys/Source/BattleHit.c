@@ -4,6 +4,7 @@
 #include "battle-system.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "unit-expa.h"
 #include "kernel-lib.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
@@ -132,14 +133,18 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
         else
         {
+            RegisterHitCnt(attacker, true);
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
             return;
         }
 #else
+        RegisterHitCnt(attacker, true);
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
         return;
 #endif
     }
+
+    RegisterHitCnt(attacker, false);
 
     /* Judge whether in combat-art attack */
     if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
@@ -386,6 +391,19 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
                 amplifier += 200;
         }
     }
+
+#if defined(SID_GuardBearing) && (COMMON_SKILL_VALID(SID_GuardBearing))
+    if (SkillTester(&defender->unit, SID_GuardBearing))
+    {
+        if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) &&
+            GetBattleGlobalFlags(attacker)->round_cnt == 1 &&
+            CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
+        {
+            SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
+            amplifier /= 2;
+        }
+    }
+#endif
 
     if (damage < BATTLE_MAX_DAMAGE)
         damage = (damage * amplifier / 100);

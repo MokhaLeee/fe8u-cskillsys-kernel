@@ -10,6 +10,7 @@ SID_Analytic
 SID_Lifetaker
 SID_Tsuzuku
 SID_MysticBoost
+SID_GuardBearing
 
 // Weapon range
 SID_HighGround

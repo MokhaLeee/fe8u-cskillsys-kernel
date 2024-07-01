@@ -3,6 +3,7 @@
 /* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPrePhaseFuncs:
+    POIN PrePhsae_ClearGuardBearingStatus
     POIN PrePhaseFunc_AversaNight
     POIN PrePhaseFunc_HoneFortify
     POIN PrePhsae_TickInitativeSkillStatus
