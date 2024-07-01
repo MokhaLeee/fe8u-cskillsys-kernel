@@ -397,7 +397,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (SkillTester(&defender->unit, SID_GuardBearing))
     {
         if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) &&
-            GetBattleGlobalFlags(attacker)->round_cnt == 1 &&
+            GetBattleGlobalFlags(attacker)->round_cnt_hit == 1 &&
             !CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
         {
             SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
