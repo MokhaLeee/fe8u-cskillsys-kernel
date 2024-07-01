@@ -116,6 +116,4 @@ void ExecFortify(ProcPtr proc)
 
     BattleApplyItemEffect(proc);
     BeginBattleAnimations();
-
-    return;
 }

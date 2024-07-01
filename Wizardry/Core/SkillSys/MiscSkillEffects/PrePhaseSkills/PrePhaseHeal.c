@@ -90,6 +90,4 @@ void MakeTerrainHealTargetList(int faction)
 
         AddTarget(unit->xPos, unit->yPos, unit->index, -1);
     }
-
-    return;
 }

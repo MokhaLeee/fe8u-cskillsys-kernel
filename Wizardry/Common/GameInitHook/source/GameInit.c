@@ -35,8 +35,6 @@ void StartGame(void)
     it = gpExternalGameInitHook;
     if (it)
         (*it)();
-
-    return;
 }
 
 void GameInitHookFuncPad(void)
