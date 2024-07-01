@@ -267,4 +267,12 @@ const struct SkillAnimInfo gSkillAnimInfos[MAX_SKILL_NUM + 1] = {
         .sfx = 0x3D1,
     },
 #endif
+
+#if (defined(SID_GuardBearing) && COMMON_SKILL_VALID(SID_GuardBearing))
+    [SID_GuardBearing] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
 };

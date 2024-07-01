@@ -400,6 +400,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             GetBattleGlobalFlags(attacker)->round_cnt_hit == 1 &&
             !CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
         {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
             SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
             amplifier /= 2;
         }
