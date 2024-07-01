@@ -2,14 +2,18 @@
 #define CONFIG_MEMMAP_H
 
 /**
- * ---------------------------
+ * ------------------------------------------
  * Address  | Size  | Usage
- * ---------------------------
- * 08B2A604 | D5DFC  | Kernel
- * 08EFB2E0 | E4D20  | Font 
- * 09000000 | ----   | DEMO
- * ---------------------------
+ * ------------------------------------------
+ * 080E8414 | 785A8 | Kernel (.section.text)
+ * 08B2A604 | D5DFC | Kernel (.section.data)
+ * 08EFB2E0 | E4D20 | Font   (reserved)
+ * 09000000 | ----  | DEMO
+ * ------------------------------------------
  */
+#define FreeSpaceKernelText 0x0E8414
+#define FreeSpaceKernelTextSize 0xD5DFC
+
 #define FreeSpaceKernel 0xB2A604
 #define FreeSpaceKernelSize 0xD5DFC
 

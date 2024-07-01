@@ -43,9 +43,6 @@
 #include "../Wizardry/Core/StatScreen/data.event"
 #include "../Wizardry/Core/UnitStatusGetter/data.event"
 #include "../Wizardry/Core/WeaponRange/data.event"
-
-/*
-#include "../"
-*/
+#include "RepointText/data.event"
 
 #endif
