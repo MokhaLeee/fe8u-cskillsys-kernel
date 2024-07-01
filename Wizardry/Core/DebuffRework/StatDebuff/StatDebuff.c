@@ -3,10 +3,6 @@
 
 #define LOCAL_TRACE 0
 
-struct StatDebuffStatus {
-    u32 bitmask[4];
-};
-
 extern struct StatDebuffStatus sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
 extern struct StatDebuffStatus sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
 extern struct StatDebuffStatus sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
@@ -168,7 +164,7 @@ void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         Errorf("ENOTDIR: %d", debuff);
         hang();
     }
-    _BIT_SET(GetUnitStatDebuffStatus(unit)->bitmask, debuff);
+    _BIT_SET(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
 }
 
 void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
@@ -178,7 +174,7 @@ void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         Errorf("ENOTDIR: %d", debuff);
         hang();
     }
-    _BIT_CLR(GetUnitStatDebuffStatus(unit)->bitmask, debuff);
+    _BIT_CLR(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
 }
 
 bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
@@ -188,7 +184,7 @@ bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         Errorf("ENOTDIR: %d", debuff);
         hang();
     }
-    return _BIT_CHK(GetUnitStatDebuffStatus(unit)->bitmask, debuff);
+    return _BIT_CHK(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
 }
 
 void MSU_SaveStatDebuff(u8 * dst, const u32 size)
@@ -250,9 +246,9 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size)
 void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
 {
     int i;
-    u32 * bitfile = GetUnitStatDebuffStatus(unit)->bitmask;
+    u32 * bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
     for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
-        if (_BIT_CHK(bitfile, i) && type == gpStatDebuffInfos[i].type)
+        if (_BIT_CHK(bitfile, i) && type == gpStatDebuffInfos[i].tick_type)
             _BIT_CLR(bitfile, i);
 }
 
@@ -262,7 +258,7 @@ void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
 void PreBattleCalcStatDebuffs(struct BattleUnit * bu, struct BattleUnit * defender)
 {
     int i;
-    u32 * bitfile = GetUnitStatDebuffStatus(&bu->unit)->bitmask;
+    u32 * bitfile = GetUnitStatDebuffStatus(&bu->unit)->st.bitmask;
     for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
@@ -324,7 +320,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
         {
             const struct DebuffInfo * info = &gpStatDebuffInfos[i];
 
-            if (in_panic == true && !info->is_debuff)
+            if (in_panic == true && info->positive_type == STATUS_DEBUFF_POSITIVE)
             {
                 buf->pow -= info->unit_status.pow;
                 buf->mag -= info->unit_status.mag;
@@ -356,7 +352,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
 STATIC_DECLAR struct StatDebuffMsgBuf * GetExistingStatDebuffMsgBuf(struct Unit * unit)
 {
     int i;
-    u32 * bitfile = GetUnitStatDebuffStatus(unit)->bitmask;
+    u32 * bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
 
     for (i = STAT_DEBUFF_MSG_BUF_AMT - 1; i >= 0; i--)
     {
@@ -395,7 +391,7 @@ STATIC_DECLAR struct StatDebuffMsgBuf * GetStatDebuffMsgBuf(struct Unit * unit)
             buf = &sStatDebuffMsgBuf[sStatDebuffMsgBufNext];
             sStatDebuffMsgBufNext = STAT_DEBUFF_MSG_BUF_NEXT(sStatDebuffMsgBufNext);
         }
-        GenerateStatDebuffMsgBufExt(unit, GetUnitStatDebuffStatus(unit)->bitmask, buf);
+        GenerateStatDebuffMsgBufExt(unit, GetUnitStatDebuffStatus(unit)->st.bitmask, buf);
     }
 
     LTRACEF("unit %#x at buf %d: pow=%d, mag=%d, skl=%d, spd=%d, lck=%d, def=%d, res=%d, mov=%d", 
@@ -463,7 +459,7 @@ void StatDeuff_OnNewGameSave(void)
 
 void StatDeuff_OnClearUnit(struct Unit * unit)
 {
-    memset(GetUnitStatDebuffStatus(unit)->bitmask, 0, sizeof(struct StatDebuffStatus));
+    memset(GetUnitStatDebuffStatus(unit)->st.bitmask, 0, sizeof(struct StatDebuffStatus));
 }
 
 void StatDeuff_OnLoadUnit(struct Unit * unit)
@@ -474,7 +470,7 @@ void StatDeuff_OnLoadUnit(struct Unit * unit)
 void StatDeuff_OnCopyUnit(struct Unit * from, struct Unit * to)
 {
     memcpy(
-        GetUnitStatDebuffStatus(to)->bitmask,
-        GetUnitStatDebuffStatus(from)->bitmask,
+        GetUnitStatDebuffStatus(to)->st.bitmask,
+        GetUnitStatDebuffStatus(from)->st.bitmask,
         sizeof(struct StatDebuffStatus));
 }

@@ -49,11 +49,11 @@ STATIC_DECLAR void PutUnitStatusDebuffIcon(struct Unit * unit)
 static inline void PutUnitStatusDefaultIcon(struct Unit * unit, int type)
 {
     switch (type) {
-    case STATUS_DEBUFF_TICK_ON_ENEMY:
+    case STATUS_DEBUFF_NEGATIVE:
         PutUnitStatusDebuffIcon(unit);
         break;
 
-    case STATUS_DEBUFF_TICK_ON_ALLY:
+    case STATUS_DEBUFF_POSITIVE:
         PutUnitStatusBuffIcon(unit);
         break;
     }
@@ -69,7 +69,7 @@ void PutUnitStatusIcon(struct Unit * unit)
         if (info->on_draw)
             info->on_draw(unit);
         else
-            PutUnitStatusDefaultIcon(unit, info->type);
+            PutUnitStatusDefaultIcon(unit, info->positive_type);
 
         return;
     }

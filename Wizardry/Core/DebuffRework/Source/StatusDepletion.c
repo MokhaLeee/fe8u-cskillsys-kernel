@@ -13,7 +13,7 @@ void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc * proc)
 
     SetUnitStatus(unit, 0);
 
-    if (gpDebuffInfos[status].type == STATUS_DEBUFF_TICK_ON_ENEMY)
+    if (gpDebuffInfos[status].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
         StartStatusHealEffect(GetUnit(target->uid), proc);
 }
 
@@ -75,7 +75,7 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ALLY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
@@ -89,7 +89,7 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ENEMY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
@@ -105,7 +105,7 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ALLY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
@@ -119,7 +119,7 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ENEMY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
@@ -133,7 +133,7 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ENEMY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
             }
@@ -149,7 +149,7 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (gpDebuffInfos[GetUnitStatusIndex(unit)].type != STATUS_DEBUFF_TICK_ON_ALLY)
+            if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type != STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
             }
