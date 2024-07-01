@@ -157,6 +157,70 @@ static inline bool _BIT_CHK(u32 * bits, int idx)
     return false;
 }
 
+int SimulateStatDebuffPositiveType(struct Unit * unit)
+{
+    int i, positive = 0;
+    struct StatDebuffStatus * stat;
+
+    if (!UNIT_IS_VALID(unit))
+        return STATUS_DEBUFF_NONE;
+
+    stat = GetUnitStatDebuffStatus(unit);
+    switch (stat->st.bitfile.is_buff_chk) {
+    case STATUS_DEBUFF_NEGATIVE:
+    case STATUS_DEBUFF_POSITIVE:
+        return stat->st.bitfile.is_buff_chk;;
+
+    case STATUS_DEBUFF_NONE_NO_CALC:
+        return STATUS_DEBUFF_NONE;
+
+    case STATUS_DEBUFF_NONE:
+    default:
+        break;
+    }
+
+    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
+    {
+        if (!_BIT_CHK(stat->st.bitmask, i))
+            continue;
+
+        switch (gpStatDebuffInfos[i].positive_type) {
+        case STATUS_DEBUFF_NEGATIVE:
+            positive--;
+            break;
+
+        case STATUS_DEBUFF_POSITIVE:
+            positive++;
+            break;
+
+        case STATUS_DEBUFF_NONE:
+        default:
+            break;
+        }
+    }
+
+    if (positive < 0)
+    {
+        stat->st.bitfile.is_buff_chk = STATUS_DEBUFF_NEGATIVE;
+        return STATUS_DEBUFF_NEGATIVE;
+    }
+    else if (positive > 0)
+    {
+        stat->st.bitfile.is_buff_chk = STATUS_DEBUFF_POSITIVE;
+        return STATUS_DEBUFF_POSITIVE;
+    }
+    else
+    {
+        stat->st.bitfile.is_buff_chk = STATUS_DEBUFF_NONE_NO_CALC;
+        return STATUS_DEBUFF_NONE;
+    }
+}
+
+void ResetStatDebuffPositiveType(struct Unit * unit)
+{
+    GetUnitStatDebuffStatus(unit)->st.bitfile.is_buff_chk = STATUS_DEBUFF_NONE;
+}
+
 void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 {
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
@@ -165,6 +229,7 @@ void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         hang();
     }
     _BIT_SET(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
+    ResetStatDebuffPositiveType(unit);
 }
 
 void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
@@ -175,6 +240,7 @@ void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
         hang();
     }
     _BIT_CLR(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
+    ResetStatDebuffPositiveType(unit);
 }
 
 bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
@@ -245,11 +311,18 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size)
 
 void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
 {
+    bool ticked = false;;
     int i;
     u32 * bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
-    for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
+    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
         if (_BIT_CHK(bitfile, i) && type == gpStatDebuffInfos[i].tick_type)
+        {
+            ticked = true;
             _BIT_CLR(bitfile, i);
+        }
+
+    if (ticked)
+        ResetStatDebuffPositiveType(unit);
 }
 
 /**
@@ -259,7 +332,7 @@ void PreBattleCalcStatDebuffs(struct BattleUnit * bu, struct BattleUnit * defend
 {
     int i;
     u32 * bitfile = GetUnitStatDebuffStatus(&bu->unit)->st.bitmask;
-    for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
+    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
         {
@@ -314,7 +387,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
     if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
         in_panic = true;
 
-    for (i = 0; i < UNIT_STAT_DEBUFF_MAX; i++)
+    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
         {
