@@ -67,12 +67,19 @@ void PutUnitStatusIcon(struct Unit * unit)
     {
         const struct DebuffInfo * info = &gpDebuffInfos[status];
         if (info->on_draw)
+        {
             info->on_draw(unit);
-        else
+            return;
+        }
+        else if (info->positive_type != STATUS_DEBUFF_NONE)
+        {
             PutUnitStatusDefaultIcon(unit, info->positive_type);
-
-        return;
+            return;
+        }
     }
+
+    /* If no draw on unit status */
+    PutUnitStatusDefaultIcon(unit, SimulateStatDebuffPositiveType(unit));
 }
 
 /* External on-draw functions */

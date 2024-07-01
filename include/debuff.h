@@ -32,13 +32,14 @@ enum DEBUFF_POSITIVE_TYPE {
     STATUS_DEBUFF_NONE,
     STATUS_DEBUFF_NEGATIVE,
     STATUS_DEBUFF_POSITIVE,
+
+    STATUS_DEBUFF_NONE_NO_CALC,
 };
 
 enum STATUS_DEBUFF_TICK_TYPE {
     STATUS_DEBUFF_NO_TICK = 0,
     STATUS_DEBUFF_TICK_ON_ENEMY = 1,
     STATUS_DEBUFF_TICK_ON_ALLY = 2,
-    STATUS_DEBUFF_TICK_TYPE_3 = 3,
 };
 
 enum DEBUFF_INFO_EFX_SPEED {
@@ -183,6 +184,7 @@ void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type);
+int SimulateStatDebuffPositiveType(struct Unit * unit);
 
 void PreBattleCalcStatDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
 int PowGetterStatDebuff(int status, struct Unit * unit);
