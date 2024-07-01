@@ -10,12 +10,12 @@ static inline int GetUnitHpBarIndex(struct Unit * unit)
     return Div(unit->curHP * 10, unit->maxHP);
 }
 
-void PutUnitHpBar(struct Unit * unit, int ix, int iy)
+static inline void PutUnitHpBar(struct Unit * unit, int ix, int iy)
 {
     if (unit->curHP != unit->maxHP)
     {
         const int vram_offsets[] = {
-                0xE80, 0xE40,
+                   0xE80, 0xE40,
             0xAC0, 0xA80, 0xA40,
             0x6C0, 0x680, 0x640,
             0x2C0, 0x280, 0x240
