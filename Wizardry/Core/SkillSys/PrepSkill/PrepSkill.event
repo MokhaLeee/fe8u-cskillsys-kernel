@@ -13,7 +13,7 @@ POP
 // Pick Skill Window
 ALIGN 4
 Gfx_PrepPickSkillScreen:
-    #incbin "Data/Gfx_PrepPickSkillScreen.4bpp.lz"
+    #incbin "Data/Gfx_PrepPickSkillScreen.lz77"
 
 ALIGN 4
 Tsa_PrepSubPickSkillScreen:
@@ -21,7 +21,7 @@ Tsa_PrepSubPickSkillScreen:
 
 ALIGN 4
 Gfx_PrepSkillScreen:
-    #incbin "Data/Gfx_PrepSkillScreen.4bpp.lz"
+    #incbin "Data/Gfx_PrepSkillScreen.lz77"
 
 ALIGN 4
 Pal_PrepSkillScreen:
@@ -29,12 +29,12 @@ Pal_PrepSkillScreen:
 
 ALIGN 4
 Gfx_PrepSkillScreen2:
-    #incbin "Data/Gfx_PrepSkillScreen2.4bpp.lz"
+    #incbin "Data/Gfx_PrepSkillScreen2.lz77"
 
 // Skill state Obj
 ALIGN 4
 Gfx_ObjSkill:
-    #incbin "Data/Obj_Skill.4bpp.lz"
+    #incbin "Data/Obj_Skill.lz77"
 
 ALIGN 4
 Pal_ObjSkill:
@@ -43,7 +43,7 @@ Pal_ObjSkill:
 // Obj window
 ALIGN 4
 Gfx_ObjWindow:
-    #incbin "Data/Obj_Window.4bpp.lz"
+    #incbin "Data/Obj_Window.lz77"
 
 ALIGN 4
 Pal_ObjWindow:

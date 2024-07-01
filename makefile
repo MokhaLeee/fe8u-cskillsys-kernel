@@ -83,6 +83,13 @@ EA_DEP            := $(EA_DIR)/ea-dep
 TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
 GRIT              := $(DEVKITPRO)/tools/bin/grit
 
+GRITLZ77ARGS      := -gu 16 -gzl -gB 4 -p! -m! -ft bin -fh!
+GRIT4BPPARGS      := -gu 16 -gB 4 -p! -m! -ft bin -fh!
+GRIT2BPPARGS      := -gu 16 -gb -gB 2 -p! -m! -ft bin -fh!
+GRITPALETTEARGS	  := -g! -m! -p -ft bin -fh!
+MAPPALETTEARGS    := -pn 160
+BTLPALETTEARGS    := -pn 80
+
 # ========
 # = Main =
 # ========
@@ -215,7 +222,13 @@ TSA_FILES := $(shell find $(HACK_DIRS) -type f -name '*.tsa')
 	@echo "[LZ ]	$@"
 	@$(COMPRESS) $< $@
 
+%.lz77: %.png
+	@echo "[LZ ]	$@"
+	@cd $(dir $<) && $(GRIT) $< $(GRITLZ77ARGS)
+	@mv $(basename $<).img.bin $@
+
 CLEAN_FILES += $(PNG_FILES:.png=.gbapal) $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
+CLEAN_FILES += $(PNG_FILES:.png=.lz77)
 CLEAN_FILES += $(TSA_FILES:.tsa=.tsa.lz)
 
 %.img.bin %.map.bin %.pal.bin: %.png

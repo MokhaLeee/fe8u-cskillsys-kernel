@@ -18,7 +18,7 @@
 
 ALIGN 4
 Img_EfxSkillBoxBG:
-    #incbin "EfxSkill/data/EfxSkillBoxBG.4bpp.lz"
+    #incbin "EfxSkill/data/EfxSkillBoxBG.lz77"
 
 /* PrepSkill */
 #include "PrepSkill/PrepSkill.event"

@@ -29,7 +29,7 @@ POP
 
 ALIGN 4
 NewPageNameGraphic:
-    #incbin "Data/Gfx_StatScreenObj.4bpp.lz"
+    #incbin "Data/Gfx_StatScreenObj.lz77"
 
 ALIGN 4
 NewPageNamePalette:

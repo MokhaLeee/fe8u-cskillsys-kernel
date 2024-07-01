@@ -6,7 +6,7 @@
 // Standard draw
 ALIGN 4
 Img_BkselObjArrow:
-    #incbin "Gfx_BKSEL/Img_ArrowBKSEL.4bpp.lz"
+    #incbin "Gfx_BKSEL/Img_ArrowBKSEL.lz77"
 
 ALIGN 4
 Pal_BkselObjArrow:

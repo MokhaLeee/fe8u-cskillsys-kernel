@@ -10,7 +10,7 @@
 ALIGN 4
 // Palette: gPal_MiscUiGraphics
 Img_MapAnimCOMBO:
-    #incbin "Data/combo-mapanimap.4bpp.lz"
+    #incbin "Data/combo-mapanimap.lz77"
 
 #endif /* CONFIG_USE_COMBO_ATTACK */
 #endif /* COMBO_ATTACK_INSTALLED */

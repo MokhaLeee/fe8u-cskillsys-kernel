@@ -1,6 +1,6 @@
 ALIGN 4
 Img_HpBar:
-    #incbin "Gfx/WarningHpSheet.4bpp.lz"
+    #incbin "Gfx/WarningHpSheet.lz77"
 
 PUSH
     ORG $156AC
