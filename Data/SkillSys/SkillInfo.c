@@ -2352,4 +2352,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Chlorophyll) && COMMON_SKILL_VALID(SID_Chlorophyll))
+    [SID_Chlorophyll] = {
+        .desc = MSG_SKILL_Chlorophyll,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
