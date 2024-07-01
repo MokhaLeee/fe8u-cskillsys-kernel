@@ -1051,6 +1051,13 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
             break;
 #endif
+
+#if (defined(SID_SwiftSwim) && (COMMON_SKILL_VALID(SID_SwiftSwim)))
+        case SID_SwiftSwim:
+            if(gPlaySt.chapterWeatherId == WEATHER_RAIN)
+                attacker->battleSpeed *= 2;
+            break;
+#endif
         }
     }
 
