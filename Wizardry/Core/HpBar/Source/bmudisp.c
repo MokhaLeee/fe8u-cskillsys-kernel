@@ -58,7 +58,7 @@ STATIC_DECLAR void PutProtectIcon(struct Unit * unit)
     );
 }
 
-static inline _PutUnitSpriteIconsOam(struct Unit * unit)
+static inline void _PutUnitSpriteIconsOam(struct Unit * unit)
 {
     if (!UNIT_IS_VALID(unit))
         return;
