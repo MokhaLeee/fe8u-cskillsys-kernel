@@ -30,6 +30,7 @@ Tools/dotnet-install.sh
 *.img.bin
 *.map.bin
 *.pal.bin
+*.lz77
 
 # Tables
 *.csv.event
