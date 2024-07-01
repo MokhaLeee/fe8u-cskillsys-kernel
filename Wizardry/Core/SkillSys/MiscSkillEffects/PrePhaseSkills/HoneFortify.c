@@ -8,16 +8,7 @@
 
 bool PrePhaseFunc_HoneFortify(ProcPtr proc)
 {
-    u32 i;
-    int uid;
-
-    static const struct Vec2 vec_range2[] = {
-                            { 0, -2},
-                  {-1, -1}, { 0, -1}, { 1, -1},
-        {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0},
-                  {-1,  1}, { 0,  1}, { 1,  1},
-                            { 0,  2},
-    };
+    int i, uid;
 
     for (uid = gPlaySt.faction + 1; uid <= gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction); uid++)
     {
@@ -142,10 +133,10 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
 
         if (Hone_eff)
         {
-            for (i = 0; i < ARRAY_COUNT(vec_range2); i++)
+            for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
             {
-                int x = unit->xPos + vec_range2[i].x;
-                int y = unit->yPos + vec_range2[i].y;
+                int x = unit->xPos + gVecs_2x2[i].x;
+                int y = unit->yPos + gVecs_2x2[i].y;
 
                 struct Unit * tunit = GetUnitAtPosition(x, y);
                 if (!tunit)
