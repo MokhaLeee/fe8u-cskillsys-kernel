@@ -398,7 +398,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     {
         if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) &&
             GetBattleGlobalFlags(attacker)->round_cnt == 1 &&
-            CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
+            !CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
         {
             SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
             amplifier /= 2;
