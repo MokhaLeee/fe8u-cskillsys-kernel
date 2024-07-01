@@ -560,7 +560,8 @@ TextTable:
 
 PUSH
     ORG TextTable
-        #incbin "NewTextTable.bin"
+        // #incbin "NewTextTable.bin"
+        #include "Source/msg_table.lyn.event"
 POP
 
 ALIGN 4
@@ -574,3 +575,6 @@ PUSH
     ORG 0xa2a0
         POIN TextTable
 POP
+
+// #include "data.event"
+// #include "contants.event"
