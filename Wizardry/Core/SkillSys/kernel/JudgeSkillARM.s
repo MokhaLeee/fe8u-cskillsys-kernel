@@ -1,8 +1,13 @@
     .INCLUDE "macro.inc"
 
     .SYNTAX UNIFIED
-    ARM_FUNC_START _SkillTester_ARM
-_SkillTester_ARM:
+
+    .arm
+
+.global _ARM_SkillTester_start
+_ARM_SkillTester_start:
+
+_ARM_SkillTester:
     push {r4, lr}
 
      @ UNIT_IS_VALID
@@ -73,7 +78,7 @@ _SkillTester_Generic:
 
 _SkillTester_COMMON:
 _SkillTester_PInfo:
-    ldr r4, =gpConstSkillTable_Person
+    ldr r4, .LgpConstSkillTable_Person
     ldr r0, [r0]
     // adr lr, .Lend_false
     adr lr, _SkillTester_JInfo
@@ -93,14 +98,14 @@ _SkillTester_PInfo:
     mov pc, lr
 
 _SkillTester_JInfo:
-    ldr r4, =gpConstSkillTable_Job
+    ldr r4, .LgpConstSkillTable_Job
     ldr r0, [r0, #4]
     adr lr, .Lend_false
     b .LPJ_Tabtle
 
 _SkillTester_IInfo:
     add r3, r0, #0x1E
-    ldr r4, =gpConstSkillTable_Item
+    ldr r4, .LgpConstSkillTable_Item
     ldrb r0, [r3]
     bl .L_Table
     ldrb r0, [r3, #2]
@@ -113,3 +118,13 @@ _SkillTester_IInfo:
     bl .L_Table
     // b .Lend_false
     b _SkillTester_COMMON
+
+.LgpConstSkillTable_Person:
+    .4byte gpConstSkillTable_Person
+.LgpConstSkillTable_Job:
+    .4byte gpConstSkillTable_Job
+.LgpConstSkillTable_Item:
+    .4byte gpConstSkillTable_Item
+
+.global _ARM_SkillTester_end
+_ARM_SkillTester_end:
