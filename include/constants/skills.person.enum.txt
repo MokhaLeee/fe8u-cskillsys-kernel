@@ -24,6 +24,7 @@ SID_Drought
 SID_Drizzle
 SID_SnowWarning
 SID_SandStream
+SID_SlushRush
 
 // Initiative skills
 SID_InitStrong
