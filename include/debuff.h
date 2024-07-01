@@ -28,6 +28,12 @@ enum UNIT_STATUS_IDENTIFIER {
     NEW_UNIT_STATUS_MAX = 64
 };
 
+enum DEBUFF_POSITIVE_TYPE {
+    STATUS_DEBUFF_NONE,
+    STATUS_DEBUFF_NEGATIVE,
+    STATUS_DEBUFF_POSITIVE,
+};
+
 enum STATUS_DEBUFF_TICK_TYPE {
     STATUS_DEBUFF_NO_TICK = 0,
     STATUS_DEBUFF_TICK_ON_ENEMY = 1,
@@ -47,8 +53,8 @@ struct DebuffInfo {
     void (* on_draw)(struct Unit * unit);
     u16 name, desc;
 
-    bool is_debuff;
-    u8 type;
+    u8 positive_type;
+    u8 tick_type;
     u8 duration;
 
     struct {
@@ -78,7 +84,7 @@ int TryTickUnitStatusDuration(struct Unit * unit);
 
 static inline bool IsDebuff(int status_idx)
 {
-    return (gpDebuffInfos[status_idx].type == STATUS_DEBUFF_TICK_ON_ENEMY);
+    return (gpDebuffInfos[status_idx].positive_type == STATUS_DEBUFF_NEGATIVE);
 }
 
 void PutUnitStatusIcon(struct Unit * unit);
@@ -99,6 +105,10 @@ int MovGetterDebuff(int status, struct Unit * unit);
  */
 
 enum UNIT_STAT_DEBUFF_IDX {
+    /* 0/1 is set as a bitmask to identify postive/negative status */
+    UNIT_STAT_POSITIVE_BIT0,
+    UNIT_STAT_POSITIVE_BIT1,
+
     UNIT_STAT_BUFF_RING_ATK,
     UNIT_STAT_BUFF_RING_DEF,
     UNIT_STAT_BUFF_RING_CRT,
@@ -151,9 +161,22 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_DEBUFF_MAX = 128, /* DO NOT modify this */
 };
 
+struct StatDebuffStatus {
+    union {
+        struct {
+            u32 is_buff_chk : 2;
+            u32 f1 : 29;
+            u32 f2, f3, f4;
+        } bitfile;
+
+        u32 bitmask[4];
+    } st;
+};
+
 extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
 extern struct DebuffInfo const * const gpStatDebuffInfos;
 
+int IsPositiveStatDebuff(struct Unit * unit);
 void MSU_SaveStatDebuff(u8 * dst, const u32 size);
 void MSU_LoadStatDebuff(u8 * src, const u32 size);
 void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
