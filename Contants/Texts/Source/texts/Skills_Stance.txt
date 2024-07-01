@@ -1,57 +1,57 @@
 ## MSG_SKILL_StanceBracing
 S-Bracing:[NL]
-Grants Def and Res +4[NL]
-if attacked[X]
+Grants +4 DEF and RES[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceDarting
 S-Darting:[NL]
-Grants AS +6[NL]
-if attacked[X]
+Grants +6 AS[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceFierce
 S-Fierce:[NL]
-Grants Atk +6[NL]
-if attacked[X]
+Grants +6 ATK[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceKestrel
 S-Kestrel:[NL]
-Grants Atk and AS +4[NL]
-if attacked[X]
+Grants +4 ATK and AS[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceMirror
 S-Mirror:[NL]
-Grants Atk and Res +4[NL]
-if attacked[X]
+Grants +4 ATK and RES[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceReady
 S-Ready:[NL]
-Grants AS and Def +4[NL]
-if attacked[X]
+Grants +4 AS and DEF[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceSteady
 S-Steady:[NL]
-Grants Def +6[NL]
-if attacked[X]
+Grants +6 DEF[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceSturdy
 S-Sturdy:[NL]
-Grants Atk and Def +4[NL]
-if attacked[X]
+Grants +4 ATK and DEF[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceSwift
 S-Swift:[NL]
-Grants AS and Res +4[NL]
-if attacked[X]
+Grants +4 AS and RES[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceWarding
 S-Warding:[NL]
-Grants Res +6[NL]
-if attacked[X]
+Grants +6 RES[NL]
+if attacked.[X]
 
 ## MSG_SKILL_StanceSpectrum_NAME
 S-Spectrum[X]
 
 ## MSG_SKILL_StanceSpectrum
 Stance Spectrum:[NL]
-Grants +2 Atk, Spd, Def[NL]
-and Res if attacked.[X]
+Grants +2 ATK, SPD, DEF[NL]
+and RES if attacked.[X]

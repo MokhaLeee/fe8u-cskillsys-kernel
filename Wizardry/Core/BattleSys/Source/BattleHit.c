@@ -12,7 +12,7 @@
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Aether, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         return true;
@@ -20,7 +20,7 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
 #endif
 
 #if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Sol, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
         return true;
@@ -51,7 +51,7 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     }
 
 #if defined(SID_AxeFaith) && (COMMON_SKILL_VALID(SID_AxeFaith))
-    if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivte(attacker, defender, SID_AxeFaith, attacker->battleAttack))
+    if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivate(attacker, defender, SID_AxeFaith, attacker->battleAttack))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
         hitRate += attacker->battleAttack;
@@ -61,7 +61,7 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     gBattleTemporaryFlag.skill_activated_sure_shoot = false;
 
 #if (defined(SID_SureShot) && (COMMON_SKILL_VALID(SID_SureShot)))
-    if (CheckBattleSkillActivte(attacker, defender, SID_SureShot, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_SureShot, attacker->unit.skl))
     {
         gBattleTemporaryFlag.skill_activated_sure_shoot = true;
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
@@ -72,7 +72,7 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     gBattleTemporaryFlag.skill_activated_dead_eye = false;
 
 #if defined(SID_Deadeye) && (COMMON_SKILL_VALID(SID_Deadeye))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Deadeye, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Deadeye, attacker->unit.skl))
     {
         gBattleTemporaryFlag.skill_activated_dead_eye = true;
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Deadeye);
@@ -128,7 +128,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
     {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-        if (CheckBattleSkillActivte(attacker, defender, SID_DivinePulse, 30 + attacker->unit.lck))
+        if (CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, 30 + attacker->unit.lck))
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
         else
         {
@@ -188,7 +188,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Flare, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Flare, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Flare);
         defense = defense / 2;
@@ -198,7 +198,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (IsMagicAttack(attacker))
     {
 #if (defined(SID_Corona) && (COMMON_SKILL_VALID(SID_Corona)))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Corona, attacker->unit.skl))
+        if (CheckBattleSkillActivate(attacker, defender, SID_Corona, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corona);
             defense = 0;
@@ -208,7 +208,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     else
     {
 #if (defined(SID_Luna) && (COMMON_SKILL_VALID(SID_Luna)))
-        if (CheckBattleSkillActivte(attacker, defender, SID_Luna, attacker->unit.skl))
+        if (CheckBattleSkillActivate(attacker, defender, SID_Luna, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Luna);
             defense = 0;
@@ -217,7 +217,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 
 #if (defined(SID_Ignis) && (COMMON_SKILL_VALID(SID_Ignis)))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Ignis, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Ignis, attacker->unit.skl))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
         switch (attacker->weaponType) {
@@ -240,7 +240,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if defined(SID_Glacies) && (COMMON_SKILL_VALID(SID_Glacies))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Glacies, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Glacies, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Glacies);
         attack += attacker->unit.res;
@@ -248,7 +248,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if defined(SID_Vengeance) && (COMMON_SKILL_VALID(SID_Vengeance))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Vengeance, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Vengeance, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
         attack += (attacker->unit.maxHP - attacker->unit.curHP);
@@ -270,7 +270,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if (defined(SID_Colossus) && (COMMON_SKILL_VALID(SID_Colossus)))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Colossus, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Colossus, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
         amplifier += 200;
@@ -279,7 +279,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #endif
 
 #if defined(SID_Impale) && (COMMON_SKILL_VALID(SID_Impale))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Impale, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Impale, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
         amplifier += 300;
@@ -318,7 +318,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (damage > 0)
     {
 #if (defined(SID_GreatShield) && (COMMON_SKILL_VALID(SID_GreatShield)))
-            if (CheckBattleSkillActivte(defender, attacker, SID_GreatShield, defender->unit.skl))
+            if (CheckBattleSkillActivate(defender, attacker, SID_GreatShield, defender->unit.skl))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
                 damage = 0;
@@ -327,7 +327,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         if (IsMagicAttack(attacker))
         {
 #if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Aegis, defender->unit.skl))
+            if (CheckBattleSkillActivate(defender, attacker, SID_Aegis, defender->unit.skl))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
                 damage = 0;
@@ -337,7 +337,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         else
         {
 #if (defined(SID_Pavise) && (COMMON_SKILL_VALID(SID_Pavise)))
-            if (CheckBattleSkillActivte(defender, attacker, SID_Pavise, defender->unit.skl))
+            if (CheckBattleSkillActivate(defender, attacker, SID_Pavise, defender->unit.skl))
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
                 damage = 0;
@@ -444,7 +444,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 #if defined(SID_Bane) && (COMMON_SKILL_VALID(SID_Bane))
             if (gBattleStats.damage < (defender->unit.curHP - 1))
             {
-                if (CheckBattleSkillActivte(attacker, defender, SID_Bane, attacker->unit.skl))
+                if (CheckBattleSkillActivate(attacker, defender, SID_Bane, attacker->unit.skl))
                 {
                     RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
                     gBattleStats.damage = defender->unit.curHP - 1;
@@ -527,7 +527,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
      * Consume enemy weapons
      */
 #if (defined(SID_Corrosion) && (COMMON_SKILL_VALID(SID_Corrosion)))
-    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) && CheckBattleSkillActivte(attacker, defender, SID_Corrosion, attacker->unit.skl))
+    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) && CheckBattleSkillActivate(attacker, defender, SID_Corrosion, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
         int cost = attacker->levelPrevious;
@@ -556,7 +556,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         weapon_cost = true;
 
 #if defined(SID_Armsthrift) && (COMMON_SKILL_VALID(SID_Armsthrift))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Armsthrift, attacker->unit.lck))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Armsthrift, attacker->unit.lck))
     {
         weapon_cost = false;
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Armsthrift);
@@ -594,7 +594,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Mercy) && (COMMON_SKILL_VALID(SID_Mercy)))
-    if (CheckBattleSkillActivte(attacker, defender, SID_Mercy, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Mercy, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Mercy);
         return true;
@@ -602,7 +602,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_Inori) && (COMMON_SKILL_VALID(SID_Inori)))
-    if (CheckBattleSkillActivte(defender, attacker, SID_Inori, defender->unit.lck))
+    if (CheckBattleSkillActivate(defender, attacker, SID_Inori, defender->unit.lck))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Inori);
         return true;
@@ -610,7 +610,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_LEGEND_InoriAtk) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAtk)))
-    if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAtk, 100))
+    if (CheckBattleSkillActivate(defender, attacker, SID_LEGEND_InoriAtk, 100))
     {
         if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAtk) == 0)
         {
@@ -621,7 +621,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_LEGEND_InoriAvo) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAvo)))
-    if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriAvo, 100))
+    if (CheckBattleSkillActivate(defender, attacker, SID_LEGEND_InoriAvo, 100))
     {
         if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAvo) == 0)
         {
@@ -632,7 +632,7 @@ STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_LEGEND_InoriDef) && (COMMON_SKILL_VALID(SID_LEGEND_InoriDef)))
-    if (CheckBattleSkillActivte(defender, attacker, SID_LEGEND_InoriDef, 100))
+    if (CheckBattleSkillActivate(defender, attacker, SID_LEGEND_InoriDef, 100))
     {
         if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriDef) == 0)
         {
@@ -684,7 +684,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
             gBattleActorGlobalFlag.enimy_defeated = true;
 
 #if (defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce)))
-            if (CheckBattleSkillActivte(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
+            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
             gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;

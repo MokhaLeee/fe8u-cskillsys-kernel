@@ -8,17 +8,17 @@ ROM space distribution is configured in [config-memmap.h](../include/Configs/con
 | 0x0EFB2E0 | 0xE4D20 | Font
 | 0x1000000 | ---     | ***reserved for DEMO***
 
-For kernel, we mainly use free-space starting from `0xB2A604`.
+For the kernel, we mainly use free-space starting from `0xB2A604`.
 
-In order to co-work on FEBuilderGBA and make DEMO based on kernel, we need also put some inportant data at the fixed location:
+In order to collaborate with FEBuilderGBA and make DEMO based on kernel, we also need to define some important data at these fixed locations:
 
 ### a). Magic pattern
 
-[A serial of characters](../main.event#L11) is set at the head of kernel free-space (`0xB2A604`), which can make it as an identifier for [FEBuilder patch](../Patches/PATCH_SkillInfo.txt#L4).
+[A serial of characters](../main.event#L11) is set at the head of kernel free-space (`0xB2A604`), which we can use as an identifier for [FEBuilder patch](../Patches/PATCH_SkillInfo.txt#L4).
 
 ### b). Pointer list
 
-There is a pointer list after magic pattern, start at `0xB2A614` with size = `0x400`. Both wizardry c-hacks and FEBuilder Patches may find the data via such list, so that you can expand the data via FEB.
+There is a pointer list after the magic pattern, starting at `0xB2A614` with size = `0x400`. Both wizard C-hacks and FEBuilder patches can find the data via this list, so that you can expand the data via FEB.
 
 ### c). Text table
 
@@ -32,7 +32,7 @@ TextTable is repointed at a fixed location behind the pointer list, [0xB2AA14](.
 
 ## Font space
 
-Free space at `0x0EFB2E0` is used to insert font data for further multi-languge support, which is also a reserved space.
+Free space at `0x0EFB2E0` is used to insert font data for further multi-language support, which is also a reserved space.
 
 # RAM space
 
@@ -43,10 +43,10 @@ RAM space distribution is configured in [config-memmap.s](../include/Configs/con
 | 0x02026E30 | 0x2028  | Kernel
 | 0x0203F000 | 0x1000  | ***reserved for DEMO***
 
-Since all source codes are all compiled at once, CHAX can offer a better Free-RAM-Space control method.
-Free-RAM-Space, unused memory from vanilla is collected by wizardries and now can be refered by [StanH's DOC](https://github.com/StanHash/DOC/blob/master/FREE-RAM-SPACE.md). Here we mainly use space start at `0x02026E30` with size `0x2028`, which is the debug print buffer in vanilla (and unused).
+Since the entire source code is compiled at once, CHAX can offer a better Free-RAM-Space control method.
+Free-RAM-Space (unused memory) from vanilla that has been previously identified by other wizards, can now can be referenced in [StanH's DOC](https://github.com/StanHash/DOC/blob/master/FREE-RAM-SPACE.md). Here we mainly use space starting at `0x02026E30` with size `0x2028`, which is the debug print buffer in vanilla (and unused).
 
-In kernel, free-ram space is alloced from the bottom to the top:
+In the kernel, free-RAM space is allocated from the bottom to the top:
 
 ```assembly
 0x02026E30, FreeRamSpaceTop
@@ -57,11 +57,11 @@ In kernel, free-ram space is alloced from the bottom to the top:
 0x02028E58, FreeRamSpaceBottom
 ```
 
-Developed should ensure that the free-ram space not overflowed, which means asseration `(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop)` should be valid. We have also add a detection for RAM space overflow, CHAX may auto detect on overflow error on [game-init](../Wizardry/Common/GameInitHook/source/GameInit.c#L14).
+Developers should ensure that used free-RAM space does not overflow, which means asseration `(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop)` should be valid. We have also added detection for RAM space overflows, CHAX will auto detect an overflow error on [game-init](../Wizardry/Common/GameInitHook/source/GameInit.c#L14).
 
 ## Example
 
-Here is an example to alloc ram spaces in kernel:
+Here is an example to allocate RAM space in the kernel:
 
 Suppose you want a 4 Byte RAM space (`u8 NewAlloc4Bytes[4]`)
 
@@ -72,6 +72,6 @@ Suppose you want a 4 Byte RAM space (`u8 NewAlloc4Bytes[4]`)
 _kernel_malloc NewAlloc4Bytes, 4
 ```
 > [!WARNING]
-> Make sure that the allocated space should be 32bits alligned
+> Make sure that the allocated space is 32 bits aligned
 
-3. Declare such variable in your own C file, `extern u8 NewAlloc4Bytes[4];`
+3. Declare the variable in your own C file, `extern u8 NewAlloc4Bytes[4];`

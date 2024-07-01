@@ -1,158 +1,158 @@
 ## MSG_SKILL_LifeAndDeath
 Life-Death:[NL]
-Pow and Mag +5[NL]
-Def and Res -5[X]
+For both unit and enemy,[NL]
+STR/MAG +5, DEF/RES -5.[X]
 
 ## MSG_SKILL_Fury
-Fury: [NL]
-Unit Status+3, HP-6 after combat[X]
+Fury:[NL]
+All stats +3, HP -6 after combat.[X]
 
 ## MSG_SKILL_FuryPlus
-Fury+: [NL]
-Unit Status+4, HP-8 after combat[X]
+Fury+:[NL]
+All stats +4, HP -8 after combat.[X]
 
 ## MSG_SKILL_FortressDef
-Fortress Def: [NL]
-Str and Mag -3, Def +5[X]
+Fortress Def:[NL]
+STR/MAG -3, DEF +5.[X]
 
 ## MSG_SKILL_FortressRes
-Fortress Res: [NL]
-Str and Mag -3, Res +5[X]
+Fortress Res:[NL]
+STR/MAG -3, RES +5.[X]
 
 ## MSG_SKILL_HpBonus
-Hp+5: [NL]
-Unit grants bonus Hp+2[X]
+Hp+5:[NL]
+Unit is granted HP +5.[X]
 
 ## MSG_SKILL_StrBonus
-Str+2: [NL]
-Unit grants bonus Str+2[X]
+Str+2:[NL]
+Unit is granted STR +2.[X]
 
 ## MSG_SKILL_MagBonus
-Mag+2: [NL]
-Unit grants bonus Mag+2[X]
+Mag+2:[NL]
+Unit is granted MAG +2.[X]
 
 ## MSG_SKILL_SklBonus
-Skl+2: [NL]
-Unit grants bonus Skl+2[X]
+Skl+2:[NL]
+Unit is granted SKL +2.[X]
 
 ## MSG_SKILL_SpdBonus
-Spd+2: [NL]
-Unit grants bonus Spd+2[X]
+Spd+2:[NL]
+Unit is granted SPD +2.[X]
 
 ## MSG_SKILL_LukBonus
-Luk+2: [NL]
-Unit grants bonus Luk+2[X]
+Luck+2:[NL]
+Unit is granted LUCK +2.[X]
 
 ## MSG_SKILL_DefBonus
-Def+2: [NL]
-Unit grants bonus Def+2[X]
+Def+2:[NL]
+Unit is granted DEF +2.[X]
 
 ## MSG_SKILL_ResBonus
-Res+2: [NL]
-Unit grants bonus Res+2[X]
+Res+2:[NL]
+Unit is granted RES +2.[X]
 
 ## MSG_SKILL_MovBonus
-Mov+2: [NL]
-Unit grants bonus Mov+2[X]
+Mov+2:[NL]
+Unit is granted MOV +2.[X]
 
 ## MSG_SKILL_DefiantCrit
-Defiant Crit: [NL]
-Crit rate +50%,[NL]
-if HP <25%[X]
+Defiant Crit:[NL]
+Crit Rate +50%,[NL]
+if HP < 25%.[X]
 
 ## MSG_SKILL_DefiantAvoid
-Defiant Avoid: [NL]
-Avoid rate +30%,[NL]
-if HP <25%[X]
+Defiant Avoid:[NL]
+Avoid Rate +30%,[NL]
+if HP < 25%.[X]
 
 ## MSG_SKILL_DefiantStr
-Defiant Str: [NL]
-Pow +7 if HP <25%[X]
+Defiant Str:[NL]
+STR +7 if HP < 25%[X]
 
 ## MSG_SKILL_DefiantMag
 Defiant Mag: [NL]
-Mag +7 if HP <25%[X]
+MAG +7 if HP < 25%[X]
 
 ## MSG_SKILL_DefiantSkl
 Defiant Skl: [NL]
-Skl +7 if HP <25%[X]
+SKL +7 if HP < 25%[X]
 
 ## MSG_SKILL_DefiantSpd
 Defiant Spd: [NL]
-Spd +7 if HP <25%[X]
+SPD +7 if HP < 25%[X]
 
 ## MSG_SKILL_DefiantLck
 Defiant Luk: [NL]
-Luk +7 if HP <25%[X]
+LUCK +7 if HP < 25%[X]
 
 ## MSG_SKILL_DefiantDef
 Defiant Def: [NL]
-Def +7 if HP <25%[X]
+DEF +7 if HP < 25%[X]
 
 ## MSG_SKILL_DefiantRes
 Defiant Res: [NL]
-Res +7 if HP <25%[X]
+RES +7 if HP < 25%[X]
 
 ## MSG_SKILL_LuckySeven
 Lucky 7: [NL]
-Unit get different bonus[NL]
-at each turn[X]
+Apply a fresh +7 stat bonus
+on each subsequent turn.[NL]
 
 ## MSG_SKILL_PushDefense_NAME
 P-Defense[X]
 
 ## MSG_SKILL_PushDefense
 PushDefense:[NL]
-+5 defense if HP is full.[X]
++5 DEF if HP is full.[X]
 
 ## MSG_SKILL_PushMagic_NAME
 P-Magic[X]
 
 ## MSG_SKILL_PushMagic
 PushMagic:[NL]
-+5 Magic if HP is full.[X]
++5 MAG if HP is full.[X]
 
 ## MSG_SKILL_PushResistance_NAME
 P-Resistance[X]
 
 ## MSG_SKILL_PushResistance
 Push Resistance:[NL]
-+5 resistance when HP is full.[X]
++5 RES when HP is full.[X]
 
 ## MSG_SKILL_PushSkill_NAME
 P-Skill[X]
 
 ## MSG_SKILL_PushSkill
 Push Skill:[NL]
-+5 skill if HP is full.[X]
++5 SKL if HP is full.[X]
 
 ## MSG_SKILL_PushSpeed_NAME
 P-Speed[X]
 
 ## MSG_SKILL_PushSpeed
 Push Speed:[NL]
-+5 speed if HP is full.[X]
++5 SPD if HP is full.[X]
 
 ## MSG_SKILL_PushStrength_NAME
 P-Strength[X]
 
 ## MSG_SKILL_PushStrength
 Push Strength:[NL]
-+5 strength if HP is full.[X]
++5 STR if HP is full.[X]
 
 ## MSG_SKILL_PushLuck_NAME
 P-Luck[X]
 
 ## MSG_SKILL_PushLuck
 Push Luck:[NL]
-+5 to luck if HP is full.[X]
++5 LUCK if HP is full.[X]
 
 ## MSG_SKILL_PushMovement_NAME
 P-Movement[X]
 
 ## MSG_SKILL_PushMovement
 Push Movement:[NL]
-+5 movement if HP is full.[X]
++5 MOV if HP is full.[X]
 
 ## MSG_SKILL_PushSpectrum_NAME
 P-Spectrum[X]
@@ -163,30 +163,30 @@ Push Spectrum:[NL]
 
 ## MSG_SKILL_EvenFooted
 EvenFooted:[NL]
-+1 move on even[NL]
++1 MOV on even[NL]
 numbered turns.[X]
 
 ## MSG_SKILL_OddFooted
 OddFooted:[NL]
-+1 move on odd[NL]
++1 MOV on odd[NL]
 numbered turns.[X]
 
 ## MSG_SKILL_Resolve
 Resolve:[NL]
 When HP < 50%,[NL]
-Str/Skl/Spd +50% bonus.[X]
+STR/SKL/SPD +50% bonus.[X]
 
 ## MSG_SKILL_SpeedBoost
 SpeedBoost:[NL]
-+1 movement per turn up[NL]
-to a maximum of  turns.[X]
++1 MOV per turn up[NL]
+to a maximum of 6 turns.[X]
 
 ## MSG_SKILL_InitCalm_NAME
 Calm-Init.[X]
 
 ## MSG_SKILL_InitCalm
 Calm Initiative:[NL]
-+7 to RES at the[NL]
++7 RES at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitStrong_NAME
@@ -194,7 +194,7 @@ Strong-Init.[X]
 
 ## MSG_SKILL_InitStrong
 Strong Initiative:[NL]
-+7 to STR at the[NL]
++7 STR at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitDeft_NAME
@@ -202,7 +202,7 @@ Deft-Init.[X]
 
 ## MSG_SKILL_InitDeft
 Deft Initiative:[NL]
-+7 to SKL at the[NL]
++7 SKL at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitQuick_NAME
@@ -210,7 +210,7 @@ Quick-Init.[X]
 
 ## MSG_SKILL_InitQuick
 Quick Initiative:[NL]
-+7 to SPD at the[NL]
++7 SPD at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitSturdy_NAME
@@ -218,7 +218,7 @@ Sturdy-Init.[X]
 
 ## MSG_SKILL_InitSturdy
 Sturdy Initiative:[NL]
-+7 to DEF at the[NL]
++7 DEF at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitClever_NAME
@@ -226,7 +226,7 @@ Clever-Init.[X]
 
 ## MSG_SKILL_InitClever
 Clever Initiative:[NL]
-+7 to MAG at the[NL]
++7 MAG at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitLucky_NAME
@@ -234,7 +234,7 @@ Lucky-Init.[X]
 
 ## MSG_SKILL_InitLucky
 Lucky Initiative:[NL]
-+7 to LUCK at the[NL]
++7 LUCK at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitNimble_NAME
@@ -242,7 +242,7 @@ Nimble-Init.[X]
 
 ## MSG_SKILL_InitNimble
 Nimble Initiative:[NL]
-+7 to MOV at the[NL]
++7 MOV at the[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitSpectrum_NAME

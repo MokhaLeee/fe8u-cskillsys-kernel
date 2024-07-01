@@ -1,23 +1,23 @@
 ## MSG_SKILL_SwordBreaker
-Sword Brek:[NL]
-Hit, avoid +20% if[NL]
-attack sowrd with lance[X]
+Sword Break:[NL]
+Hit and Avoid +20% if unit[NL]
+battles a Sword with a Lance.[X]
 
 ## MSG_SKILL_AxeBreaker
 Axe Break:[NL]
-Hit, avoid +20% if[NL]
-attack axe with sword[X]
+Hit and Avoid +20% if unit[NL]
+battles an Axe with a Sword.[X]
 
 ## MSG_SKILL_LanceBreaker
-Lance Brek:[NL]
-Hit, avoid +20% if[NL]
-attack lance with axe[X]
+Lance Break:[NL]
+Hit and Avoid +20% if unit[NL]
+battles a Lance with an Axe.[X]
 
 ## MSG_SKILL_BowBreaker
 Bow Break: [NL]
-Hit, avoid +20% if[NL]
-attack bow with B.mag[X]
+Hit and Avoid +20% if unit[NL]
+battles a Bow with B.mag.[X]
 
 ## MSG_SKILL_BMagBreaker
-B.Mag Brek: [NL]
-Hit, avoid +20%[X]
+B.Mag Break: [NL]
+Hit and Avoid +20%.[X]

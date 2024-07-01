@@ -1,42 +1,42 @@
 ## MSG_SKILL_Aegis
 Aegis:[NL]
 Nullify a magic attack.[NL]
-(Skill % activation)[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Pavise
 Pavise:[NL]
 Nullify a physical attack.[NL]
-(Skill % activation)[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Mercy
 Mercy: Leave the opponent at[NL]
 1 HP if the attack would kill.[NL]
-(Skill % activation)[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Bane
 Bane:[NL]
-Leave the opponent at 1Hp[NL]
-(Skill % activation)[X]
+Leave the opponent at 1 HP[NL]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Aether
-Aether:Negate 80 %[NL]
+Aether: Negate 80% of enemy[NL]
 defenses and absorb HP.[NL]
-(Skill/2 % activation)[X]
+(Skill/2 % activation).[X]
 
 ## MSG_SKILL_Corona
 Corona:[NL]
 Negate enemy resistance.[NL]
-(Skill% activation)[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Luna
 Luna:[NL]
-Negates enemy defenses.[NL]
-(Skill % activation)[X]
+Negates enemy defense.[NL]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Flare
 Flare:[NL]
 Halve enemy resistance.[NL]
-(Skill% activation)[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Foresight
 Foresight: Avoid the damage[NL]
@@ -46,32 +46,32 @@ Skill Activations.[X]
 ## MSG_SKILL_Sol
 Sol:[NL]
 Restore damage dealt as HP.[NL]
-(Skill % activation)[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_DragonFang
 DragonFang:[NL]
-damage +50%.[NL]
-(Skill% activation)[X]
+Damage +50%.[NL]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Colossus
 Colossus:[NL]
-damage +200%.[NL]
-(Skill% activation).[X]
+Damage +200%.[NL]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Impale
 Impale:[NL]
-damage +300%.[NL]
-(Skill% activation).[X]
+Damage +300%.[NL]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Inori
 Inori:[NL]
 Unit may not die if attacked[NL]
-to 0 HP (luck%)[X]
+to 0 HP (Luck % activation).[X]
 
 ## MSG_SKILL_Corrosion
 Corrosion:[NL]
 Reduce enemy's weapon durability[NL]
-by user's level (Skill %).[X]
+by user's level (Skill % activation).[X]
 
 ## MSG_SKILL_Ignis
 Ignis:[NL]
@@ -81,12 +81,12 @@ on weapon type (Skill % activation).[X]
 ## MSG_SKILL_RightfulKing
 RightfulKing:[NL]
 Add +10% to the activation[NL]
-rate of the unit's skills.[X]
+rate of this unit's skills.[X]
 
 ## MSG_SKILL_RightfulGod
 RightfulGod:[NL]
 Add +30% to the activation[NL]
-rate of the unit's skills.[X]
+rate of this unit's skills.[X]
 
 ## MSG_SKILL_RightfulArch
 RightfulArch:[NL]
@@ -95,8 +95,8 @@ this unit's skills to 100%.[X]
 
 ## MSG_SKILL_Glacies
 Glacies:[NL]
-Add unit resistance to damage[NL]
-dealt. (Skill % activation).[X]
+Add unit resistance to damage dealt.[NL] 
+(Skill % activation).[X]
 
 ## MSG_SKILL_GreatShield
 GreatShield:[NL]
@@ -105,7 +105,7 @@ Nullify all attacks.[NL]
 
 ## MSG_SKILL_Vengeance
 Vengeance:[NL]
-Add damage taken to attacl.[NL]
+Add damage taken to attack.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Deadeye
@@ -115,18 +115,18 @@ Doubles hit rate and inflict sleep.[NL]
 
 ## MSG_SKILL_AxeFaith
 AxeFaith:[NL]
-When attack with Axe, hit + attack%.[NL]
-(attack % activation).[X]
+When attacking with an Axe, hit + attack%.[NL]
+(Attack % activation).[X]
 
 ## MSG_SKILL_Armsthrift
 Armsthrift:[NL]
-weapon no consumed[NL]
+A weapon use is not consumed.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_SureShot
 SureShot:[NL]
 100% hit rate, damage +50%.[NL]
- (Skill % activation).[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_DivinePulse_NAME
 D-Pulse[X]
@@ -134,4 +134,4 @@ D-Pulse[X]
 ## MSG_SKILL_DivinePulse
 Divine Pulse:[NL]
 Turn a missed attack into a hit[NL]
-(30% + lck % activation).[X]
+(30% + Luck % activation).[X]

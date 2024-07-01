@@ -1,113 +1,113 @@
 ## MSG_SKILL_Lethality
 Lethality: [NL]
-Unit may casue Lethality in[NL]
-critical attack, Skl%[X]
+Unit may instantly kill enemy with a[NL]
+critical attack. (Skill % activation).[X]
 
 ## MSG_SKILL_Crit
 Crit: [NL]
-Crit rate +15%[X]
+Crit rate +15%.[X]
 
 ## MSG_SKILL_WatchfulEye
 W-Eye: [NL]
-Hit rate +20%[X]
+Hit rate +20%.[X]
 
 ## MSG_SKILL_CritSword
 Crit Sword: [NL]
 Crit rate +10%,[NL]
-if equipped sword[X]
+if a Sword is equipped.[X]
 
 ## MSG_SKILL_CritAxe
 Crit Axe: [NL]
 Crit rate +10%,[NL]
-if equipped axe[X]
+if an Axe is equipped.[X]
 
 ## MSG_SKILL_CritLance
 Crit Lance: [NL]
 Crit rate +10%,[NL]
-if equipped lance[X]
+if a Lance is equipped.[X]
 
 ## MSG_SKILL_CritBow
 Crit Bow: [NL]
 Crit rate +10%,[NL]
-if equipped bow[X]
+if a Bow is equipped.[X]
 
 ## MSG_SKILL_FaireSword
 Faire Sword: [NL]
 Atk +5 if unit[NL]
-equips sword[X]
+equips a Sword.[X]
 
 ## MSG_SKILL_FaireLance
 Faire Lance: [NL]
 Atk +5 if unit[NL]
-equips Lance[X]
+equips a Lance.[X]
 
 ## MSG_SKILL_FaireAxe
 Faire Axe: [NL]
 Atk +5 if unit[NL]
-equips Axe[X]
+equips an Axe.[X]
 
 ## MSG_SKILL_FaireBow
 Faire Bow: [NL]
 Atk +5 if unit[NL]
-equips Bow[X]
+equips a Bow.[X]
 
 ## MSG_SKILL_FaireBMag
 Faire B.Mag: [NL]
 Atk +5 if unit[NL]
-equips B.Mag[X]
+equips B.Mag.[X]
 
 ## MSG_SKILL_Avoid
 Avoid+10:[NL]
-Avoid rate +10%[X]
+Avoid rate +10%.[X]
 
 ## MSG_SKILL_AvoidSword
 Avoid Sword: [NL]
 Grants avoid rate +20%[NL]
-if unit equips sword[X]
+if unit equips a Sword.[X]
 
 ## MSG_SKILL_RuinedBlade
 Ruined Blade: [NL]
-Str/Mag-5, Spd+5, casue[NL]
-5 real damge in combat[X]
+Str/Mag-5, Spd+5, increases[NL]
+real damage by 5 in combat.[X]
 
 ## MSG_SKILL_RuinedBladePlus
 Ruined Blade+:[NL]
 Spd +5, deal real damage +5,[NL]
-battle hit +1 but cannot crit[X]
+battle hit +1 but cannot crit.[X]
 
 ## MSG_SKILL_InfinityEdge
 Infinity Edge: [NL]
-Critical attack deal 400% damage[X]
+Critical attacks deal 400% damage.[X]
 
 ## MSG_SKILL_HeavyBlade
 Heavy Blade: [NL]
 If unit's attack is higher than[NL]
-foe, critical rate +15%[X]
+foe, critical rate +15%.[X]
 
 ## MSG_SKILL_FlashingBlade
 Flashing Blade: [NL]
 If unit's AS is higher than[NL]
-foe, critical rate +15% [X]
+foe, critical rate +15%.[X]
 
 ## MSG_SKILL_HeavyBladePlus
 Heavy Blade+: [NL]
 Str+5. If unit's attack is higher[NL]
-than foe, critical rate +25%[X]
+than foe, critical rate +25%.[X]
 
 ## MSG_SKILL_FlashingBladePlus
 Flash Blade+: [NL]
 Dmg+3. If unit's AS is higher[NL]
-than foe, critical rate +25%[X]
+than foe, critical rate +25%.[X]
 
 ## MSG_SKILL_LunaAttack
 Luna Attack: [NL]
 Grants real dmg bonus[NL]
-as foe's Def x25%[X]
+of enemy's DEF / 4.[X]
 
 ## MSG_SKILL_SorceryBlade
 Sorcery Blade: [NL]
 Target defense is calculated as[NL]
-lower value of Def or Res[X]
+lower value of DEF or RES.[X]
 
 ## MSG_SKILL_Fortune
 Fortune:[NL]
@@ -142,11 +142,11 @@ on the opponent.[X]
 ## MSG_SKILL_Merciless
 Merciless: [NL]
 Guaranteed critical hit[NL]
-against poisoined foes.[X]
+against poisoned foes.[X]
 
 ## MSG_SKILL_CriticalPierce
 CriticalPierce: [NL]
-Neglect opponent's dodge rate.[X]
+Ignore enemy's dodge rate.[X]
 
 ## MSG_SKILL_KillingMachine_NAME
 K-Machine[X]
@@ -175,7 +175,7 @@ holding an E-ranked weapon,[NL]
 boost weapon damage by 50%.[X]
 
 ## MSG_SKILL_CatchingUp
-CatchingUp: If foe doubles unit[NL]
+CatchingUp: If foe doubles unit,[NL]
 increase their attack by the amount[NL]
 they're above the doubling threshold.[X]
 
@@ -200,12 +200,12 @@ enemy, boost damage by the difference.[X]
 ## MSG_SKILL_Chivalry
 Chivalry:[NL]
 When foe is at full HP,[NL]
-attack and def/res +2.[X]
+attack and DEF/RES +2.[X]
 
 ## MSG_SKILL_Pragmatic
 Pragmatic:[NL]
 When foe is not at full HP,[NL]
-attack +3 and def/res+1.[X]
+attack +3 and DEF/RES+1.[X]
 
 ## MSG_SKILL_WindDisciple
 WindDisciple:[NL]
@@ -222,7 +222,7 @@ Crit-Force[X]
 
 ## MSG_SKILL_CriticalForce
 Critical Force:[NL]
-Base critical is Skl * 1.5.[X]
+Base critical is SKL * 1.5.[X]
 
 ## MSG_SKILL_StrongRiposte_NAME
 S-Riposte[X]
@@ -260,22 +260,22 @@ if the opponent can double.[X]
 
 ## MSG_SKILL_FireBoost
 Fire Boost:[NL]
-Grants +6 atk if unit's current HP[NL]
+Grants +6 ATK if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_WindBoost
 Wind Boost:[NL]
-Grants +6 atk/spd if unit's current HP[NL]
+Grants +6 ATK/SPD if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_EarthBoost
 Earth Boost:[NL]
-Grants +6 def if unit's current HP[NL]
+Grants +6 DEF if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_WaterBoost
 Water Boost:[NL]
-Grants +6 res if unit's current HP[NL]
+Grants +6 RES if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_Charge
@@ -303,7 +303,7 @@ Quick Draw:[NL]
 ## MSG_SKILL_ArcaneBlade
 Arcane Blade:[NL]
 When initiating battle at 1 range:[NL]
-Add 3+(Mag/2) to Hit and Crit[X]
+Add 3+(MAG/2) to Hit and Crit[X]
 
 ## MSG_SKILL_ElbowRoom
 Elbow Room:[NL]
@@ -325,18 +325,18 @@ against a magical foe, or vice versa.[X]
 ## MSG_SKILL_Wrath
 Wrath:[NL]
 If current HP is < 50%[NL]
-of max, +20 crit rate.[X]
+of max, +20 Crit Rate.[X]
 
 ## MSG_SKILL_Vigilance
 Vigilance:[NL]
-Gain +20 avoid.[X]
+Gain +20 Avoid.[X]
 
 ## MSG_SKILL_OutdoorFighter_NAME
 Out-Fighter[X]
 
 ## MSG_SKILL_OutdoorFighter
 OutdoorFighter:[NL]
-+10 hit and avoid when[NL]
++10 Hit and Avoid when[NL]
 fighting outdoors.[X]
 
 ## MSG_SKILL_DancingBlade_NAME
@@ -345,7 +345,7 @@ Dan-Blade:[X]
 ## MSG_SKILL_DancingBlade
 Dancing Blade:[NL]
 +4 Attack Speed/-2 Damage when[NL]
-unit's Con. is lower than the enemy.[X]
+unit's CON. is lower than the enemy.[X]
 
 ## MSG_SKILL_KnightAspirant_NAME
 K-Aspirant[X]
@@ -362,12 +362,12 @@ Outrider:[NL]
 
 ## MSG_SKILL_EvenRhythm
 EvenRhythm:[NL]
-+10 hit and avoid on[NL]
++10 Hit and Avoid on[NL]
 even numbered turns.[X]
 
 ## MSG_SKILL_OddRhythm
 OddRhythm:[NL]
-+10 hit and avoid on[NL]
++10 Hit and Avoid on[NL]
 odd numbered turns.[X]
 
 ## MSG_SKILL_NoGuard
@@ -377,13 +377,13 @@ Both sides have a[NL]
 
 ## MSG_SKILL_Puissance
 Puissance:[NL]
-+3 attack if the user's attacker[NL]
-is greater than the enem's.[X]
++3 Attack if the unit's attack[NL]
+is greater than the enemy's.[X]
 
 ## MSG_SKILL_Prescience
 Prescience:[NL]
 If initiating at melee range,[NL]
-+15 hit and avoid.[X]
++15 Hit and Avoid.[X]
 
 ## MSG_SKILL_SilentPride
 SilentPride:[NL]
@@ -392,35 +392,35 @@ Gain +2 damage and take[NL]
 
 ## MSG_SKILL_Guts
 Guts:[NL]
-+5 attack if afflicted by[NL]
++5 Attack if afflicted by[NL]
 any status condition.[X]
 
 ## MSG_SKILL_Hero
 Hero:[NL]
-If unit HP < 50%, add +30% to[NL]
+If unit's HP < 50%, add +30% to[NL]
 unit's activation skill rate.[X]
 
 ## MSG_SKILL_HolyAura
 Holy Aura:[NL]
-Gain +1 damage, +5% hit,[NL]
-+5% avoid, +5% crit when using light.[X]
+Gain +1 damage, +5% Hit,[NL]
++5% Avoid, +5% Crit when using Light.[X]
 
 ## MSG_SKILL_Loyalty
 Loyalty:[NL]
 When within 2 spaces of a Lord,[NL]
--3 damage taken, +15% hit.[X]
+-3 damage taken, +15% Hit.[X]
 
 ## MSG_SKILL_TowerShield
 Tower Shield:[NL]
-Gain 6 defense against[NL]
-attacks recieved at range.[X]
+Gain 6 Defense against[NL]
+attacks received at range.[X]
 
 ## MSG_SKILL_StunningSmile_NAME
 Stun-Smile[X]
 
 ## MSG_SKILL_StunningSmile
 Stunning Smile:[NL]
-If foe is male, inflicts Avo-20[NL]
+If foe is male, inflicts -20 Avoid[NL]
 on that foe during combat.[X]
 
 ## MSG_SKILL_Trample
@@ -433,11 +433,11 @@ Opportunist:[NL]
 
 ## MSG_SKILL_SuperLuck
 SuperLuck:[NL]
-Use luck as crit rate.[X]
+Use Luck as crit rate.[X]
 
 ## MSG_SKILL_ShortShield
 Short Shield:[NL]
-Gain 6 defense against[NL]
+Gain 6 Defense against[NL]
 attacks recieved in melee.[X]
 
 ## MSG_SKILL_Vanity
@@ -447,17 +447,17 @@ when fighting enemy at 2 range.[X]
 
 ## MSG_SKILL_Skyguard
 Skyguard:[NL]
-+4 defense against flying enemies[NL]
++4 Defense against flying enemies[NL]
 if within 3 spaces of an ally flier.[X]
 
 ## MSG_SKILL_Horseguard
 Horseguard:[NL]
-+4 defense against horseback enemies[NL]
++4 Defense against horseback enemies[NL]
 if within 3 spaces of an ally horse rider.[X]
 
 ## MSG_SKILL_Armorboost
 Armorboost:[NL]
-+4 atk/def against armored enemies[NL]
++4 ATK/DEF against armored enemies[NL]
 if within 3 spaces of an armored ally.[X]
 
 ## MSG_SKILL_Analytic

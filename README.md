@@ -13,7 +13,7 @@ Modern CHAX for FE8U-SkillSystem, including skillsys, battle-system hacks, etc.e
 > [!NOTE]
 > You need a linux envirment!
 >
-> For Windows user, it is recommended to use a [Ubuntu Server](https://ubuntu.com/aws) or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+> For Windows users, it is recommended to use a [Ubuntu Server](https://ubuntu.com/aws) or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 1. Install sub-modules
 
@@ -24,7 +24,7 @@ git clone https://github.com/StanHash/EventAssembler.git --recursive
 git clone https://github.com/StanHash/FE-PyTools.git --recursive
 ```
 
-2. Install dependence
+2. Install dependencies
 
 ```bash
 sudo apt-get -y install binutils-arm-none-eabi \

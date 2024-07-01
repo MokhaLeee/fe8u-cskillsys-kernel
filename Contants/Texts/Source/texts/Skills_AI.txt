@@ -14,6 +14,6 @@ likely to target this unit.[X]
 Teleport[X]
 
 ## MSG_SKILL_Teleportation
-Teleportation: Allows to[NL]
-teleport to anywhere and[NL]
+Teleportation: Allows unit[NL]
+to teleport anywhere and[NL]
 take another action.[X]

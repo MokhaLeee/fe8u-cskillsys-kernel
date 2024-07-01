@@ -3,7 +3,7 @@
 #include "battle-system.h"
 #include "constants/skills.h"
 
-bool CheckBattleSkillActivte(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate)
+bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate)
 {
     if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
         return false;
