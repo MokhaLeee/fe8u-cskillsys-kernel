@@ -2,6 +2,8 @@
 #include "stat-screen.h"
 #include "skill-system.h"
 
+#include "StatScreenInternal.h"
+
 #define STAT_SKILL_NUM_MAX 8
 
 /* LynJump */

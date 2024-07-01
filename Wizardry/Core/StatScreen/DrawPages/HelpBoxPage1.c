@@ -2,6 +2,8 @@
 #include "stat-screen.h"
 #include "constants/texts.h"
 
+#include "StatScreenInternal.h"
+
 static _DECL_INFO RText_Pow, RText_Mag, RText_Skl, RText_Spd, RText_Lck, RText_Def, RText_Res;
 static _DECL_INFO RText_Mov, RText_Con, RText_Aid, RText_Affin, RText_Trv, RText_Cond, RText_BAmt;
 static _DECL_INFO RText_Name, RText_Class, RText_Level, RText_Exp, RText_Hp;

@@ -1,0 +1,5 @@
+ALIGN 4
+gWeaponRangeGetters:
+    POIN WeaponRangeGetterSkills WeaponRangeGetterCombatArt
+    POIN StatusGetterCheckCpas
+    WORD 0

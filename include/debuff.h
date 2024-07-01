@@ -161,18 +161,6 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_DEBUFF_MAX = 128, /* DO NOT modify this */
 };
 
-struct StatDebuffStatus {
-    union {
-        struct {
-            u32 is_buff_chk : 2;
-            u32 f1 : 29;
-            u32 f2, f3, f4;
-        } bitfile;
-
-        u32 bitmask[4];
-    } st;
-};
-
 extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
 extern struct DebuffInfo const * const gpStatDebuffInfos;
 

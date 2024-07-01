@@ -2,6 +2,6 @@
 #define CLASS_TYPES_INSTALLED
 
 #include "Source/class-types.lyn.event"
-// #include "Source/class-types-data.lyn.event"
+// #include "data.event"
 
 #endif /* CLASS_TYPES_INSTALLED */

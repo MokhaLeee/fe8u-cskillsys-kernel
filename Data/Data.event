@@ -3,6 +3,12 @@
 
 #include "EAstdlib.event"
 
+/**
+ * Some file should put at head since it holds some macros
+ */
+#include "../Wizardry/Common/ItemSys/data.event"
+#include "../Wizardry/Common/EventRework/data.event"
+
 #include "SkillSys/EfxSkills.lyn.event"
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
@@ -11,26 +17,35 @@
 #include "SkillSys/SkillTable-job.lyn.event"
 #include "SkillSys/SkillTable-item.lyn.event"
 #include "SkillSys/LegendSkill.lyn.event"
-
-#include "BattleSys/WeaponTriangle.lyn.event"
-
-#include "StrMag/UnitMagicInfos.lyn.event"
-
-#include "Debuff/DebuffInfo.lyn.event"
-
 #include "CombatArt/CombatArtInfo.lyn.event"
 #include "CombatArt/EfxCombatArtAnim.lyn.event"
 #include "CombatArt/CombatArtSkill.lyn.event"
 #include "CombatArt/CombatArtWeapon.lyn.event"
 #include "CombatArt/RomTables.lyn.event"
-
 #include "HiddenLevel/HiddenLevel.lyn.event"
-
 #include "KernelTutorial/ktut.lyn.event"
-
-#include "../Wizardry/Core/DebuffRework/StatDebuff/StatDebuffData.lyn.event"
-#include "../Wizardry/Core/BattleSys/WeaponLockEx/data.event"
-#include "../Wizardry/Common/ClassTypes/Source/class-types-data.lyn.event"
+#include "BattleSys/WeaponTriangle.lyn.event"
+#include "StrMag/UnitMagicInfos.lyn.event"
+#include "Debuff/DebuffInfo.lyn.event"
+#include "../Wizardry/Core/DebuffRework/data.event"
+#include "../Wizardry/Common/ClassTypes/data.event"
 #include "../Wizardry/Core/SkillSys/data.event"
+#include "../Wizardry/Common/GameInitHook/data.event"
+#include "../Wizardry/Common/IconDisplay/data.event"
+#include "../Wizardry/Common/KernelLib/data.event"
+#include "../Wizardry/Common/MapAnims/data.event"
+#include "../Wizardry/Common/PostActionHook/data.event"
+#include "../Wizardry/Common/PrePhaseHook/data.event"
+#include "../Wizardry/Common/SaveData/data.event"
+#include "../Wizardry/Common/UnitMenu/data.event"
+#include "../Wizardry/Core/BattleSys/data.event"
+#include "../Wizardry/Core/MapTask/data.event"
+#include "../Wizardry/Core/StatScreen/data.event"
+#include "../Wizardry/Core/UnitStatusGetter/data.event"
+#include "../Wizardry/Core/WeaponRange/data.event"
+
+/*
+#include "../"
+*/
 
 #endif

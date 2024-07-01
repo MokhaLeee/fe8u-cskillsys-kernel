@@ -10,11 +10,7 @@
 #include "Source/RangeString.lyn.event"
 #include "Source/LynJump.event"
 
-ALIGN 4
-gWeaponRangeGetters:
-    POIN WeaponRangeGetterSkills WeaponRangeGetterCombatArt
-    POIN StatusGetterCheckCpas
-    WORD 0
+// #include "data.event"
 
 PUSH
 ORG $0170D4

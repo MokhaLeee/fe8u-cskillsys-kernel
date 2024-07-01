@@ -10,9 +10,10 @@
 #include "Source/ExternalHooks.lyn.event"
 
 #include "StatDebuff/StatDebuff.lyn.event"
-// #include "StatDebuff/StatDebuffData.lyn.event"
 #include "StatDebuff/Hooks.lyn.event"
 #include "StatDebuff/LynJump.event"
+
+// #include "data.event"
 
 #ifndef EVENT_EXPANSION_INSTALLED
 ERROR "Need module: EventExpansion installed!"

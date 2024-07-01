@@ -1,74 +1,81 @@
 #ifndef UNIT_STATUS_GETTER_H
 #define UNIT_STATUS_GETTER_H
 
-#define MSG_END "POIN StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc; WORD 0"
+#include "Extensions/Hack Installation.txt"
 
 ALIGN 4
-gHpGetters:
-    POIN HpGetterWeaponBonus HpGetterSkills
-    POIN StatusGetterCheckCpas
-    MSG_END
+#include "source/HpGetter.lyn.event"
+#include "source/PowGetter.lyn.event"
+#include "source/MagGetter.lyn.event"
+#include "source/SklGetter.lyn.event"
+#include "source/SpdGetter.lyn.event"
+#include "source/LckGetter.lyn.event"
+#include "source/DefGetter.lyn.event"
+#include "source/ResGetter.lyn.event"
+#include "source/MovGetter.lyn.event"
+#include "source/ConGetter.lyn.event"
+#include "source/AidGetter.lyn.event"
+#include "source/MiscGetter.lyn.event"
 
-gPowGetters:
-    POIN PowGetterWeaponBonus PowGetterSkills PowGetterDebuff
-    POIN PowGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+#include "source/InjectHPGetters.event"
+#include "source/InjectMovGetters.event"
 
-gMagGetters:
-    POIN MagGetterSkills MagGetterDebuff
-    POIN MagGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+#include "source/StatusGetterExample.lyn.event"
 
-gSklGetters:
-    POIN SklGetterWeaponBonus SklGetterSkills SklGetterDebuff
-    POIN SklGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+PUSH
+ORG $019190
+_thumb(HpMaxGetter)
+    jumpToHack(_GetUnitMaxHp)
+    PROTECT $19190 $191AC
 
-gSpdGetters:
-    POIN SpdGetterWeaponBonus SpdGetterSkills SpdGetterDebuff
-    POIN SpdGetterLegendSkills
-    POIN SpdGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+ORG $0191B0
+_thumb(PowGetter)
+    jumpToHack(_GetUnitPower)
 
-gLckGetters:
-    POIN LckGetterWeaponBonus LckGetterSkills LckGetterDebuff
-    POIN LckGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+ORG CURRENTOFFSET
+_thumb(MagGetter)
+    jumpToHack(_GetUnitMagic)
+    PROTECT $191B0 $191CC
 
-gDefGetters:
-    POIN DefGetterWeaponBonus DefGetterSkills DefGetterDebuff
-    POIN DefGetterLegendSkills
-    POIN DefGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+ORG $0191D0
+_thumb(SklGetter)
+    jumpToHack(_GetUnitSkill)
+    PROTECT $191D0 $1920C
 
-gResGetters:
-    POIN ResGetterWeaponBonus ResGetterSkills ResGetterDebuff
-    POIN ResGetterLegendSkills
-    POIN ResGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+ORG $019210
+_thumb(SpdGetter)
+    jumpToHack(_GetUnitSpeed)
+    PROTECT $19210 $1924C
 
-gMovGetters:
-    POIN MovGetterSkills
-    POIN MovGetterDebuff
-    POIN MovGetterStatDebuff
-    POIN StatusGetterCheckCpas
-    MSG_END
+ORG $019250
+_thumb(DefGetter)
+    jumpToHack(_GetUnitDefense)
+    PROTECT $19250 $1926C
 
-gConGetters:
-    POIN StatusGetterCheckCpas
-    MSG_END
+ORG $019270
+_thumb(ResGetter)
+    jumpToHack(_GetUnitResistance)
+    PROTECT $19270 $19294
+    
+ORG $019298
+_thumb(LckGetter)
+    jumpToHack(_GetUnitLuck)
+    PROTECT $19298 $192B4
 
-gAidGetters:
-    POIN StatusGetterCheckCpas
-    MSG_END
+ORG $0189B8
+_thumb(AidGetter)
+    jumpToHack(_GetUnitAid)
+    
+ORG CURRENTOFFSET
+_thumb(ConGetter)
+    jumpToHack(_GetUnitCon)
 
-#include "UnitStatusGetterInternal.event"
+ORG CURRENTOFFSET
+_thumb(MovGetter)
+    jumpToHack(_GetUnitMov)
+    PROTECT $189B8 $18A18
+POP
+
+// #include "data.event"
 
 #endif

@@ -1,5 +1,8 @@
 #include "common-chax.h"
 #include "stat-screen.h"
+#include "skill-system.h"
+
+#include "StatScreenInternal.h"
 
 /* LynJump */
 void StartStatScreenHelp(int pageid, struct Proc * proc)
@@ -41,4 +44,35 @@ void DisplayPage(int pageid)
     CpuFastFill(0, gUiTmScratchC, sizeof(gUiTmScratchC));
 
     gStatScreenDrawPages[pageid]();
+}
+
+void HbPopuplate_Page3Skill(struct HelpBoxProc * proc)
+{
+    struct SkillList * list = GetUnitSkillList(gStatScreen.unit);
+    proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
+}
+
+void HbRedirect_Page3Skill(struct HelpBoxProc * proc)
+{
+    if (proc->info->mid < GetUnitSkillList(gStatScreen.unit)->amt)
+        return;
+
+    switch (proc->moveKey) {
+    case DPAD_DOWN:
+        TryRelocateHbDown(proc);
+        break;
+
+    case DPAD_UP:
+        TryRelocateHbUp(proc);
+        break;
+
+    case DPAD_LEFT:
+        TryRelocateHbLeft(proc);
+        break;
+
+    case DPAD_RIGHT:
+    default:
+        TryRelocateHbRight(proc);
+        break;
+    } // switch
 }

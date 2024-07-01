@@ -1,7 +1,3 @@
-#ifdef CONFIG_INSTALL_EXT_MAP_ACTION_ANIM
-    #include "DrawMapActionAnimation/Installer.event"
-#endif
-
 #ifdef CONFIG_USE_CHAR_CUSTOM_ANIM
     #include "Individual_animation_ea_2/Installer.event"
 #endif

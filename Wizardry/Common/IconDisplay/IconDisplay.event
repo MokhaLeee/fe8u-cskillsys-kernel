@@ -9,20 +9,11 @@
 #include "Source/UsrFunc.lyn.event"
 #include "Source/LynJump.event"
 
-ALIGN 4
-IconGetters:
-    POIN IconGetterVanilla      // Sheet #0, vanilla
-    POIN GetCombatArtIcon       // sheet #1, combat art
-    POIN GetSkillIcon_Generic   // Sheet #3+, skills
-    POIN GetSkillIcon_Person
-    POIN GetSkillIcon_Job
-    POIN GetSkillIcon_Item
-
-ORG (IconGetters + 4 * ICON_SHEET_AMT)
-
 PUSH
     ORG 0x000036B4
     pr_item_icon_tiles:
 POP
+
+// #include "data.event"
 
 #endif /* ICON_DISPLAY_INSTALLED */

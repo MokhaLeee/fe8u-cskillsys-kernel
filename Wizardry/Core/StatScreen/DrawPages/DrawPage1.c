@@ -7,6 +7,8 @@
 #include "kernel-glyph.h"
 #include "constants/texts.h"
 
+#include "StatScreenInternal.h"
+
 extern struct Font * gActiveFont;
 extern int sStatScreenPage1BarMax;
 

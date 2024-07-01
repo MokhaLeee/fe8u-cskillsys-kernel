@@ -1,0 +1,13 @@
+/* bool (*)(ProcPtr proc) */
+ALIGN 4
+gPostActionFuncs:
+    POIN PostActionBattleActorSelfHurt PostActionBattleTargetSelfHurt PostAction_BattleActorHeal
+    POIN PostActionThunderstorm
+    POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife
+    POIN PostActionSynchronize
+    POIN PostActionAlertStance
+    POIN PostActionGaleForce
+    POIN PostActionSwap
+    POIN PostActionPositionReturn
+    POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
+    WORD 0

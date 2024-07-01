@@ -22,9 +22,8 @@ ORG FreeSpaceKernelMain
      * Tool helpers should installed after repointing
      */
     #include "Tools/Tool Helpers.txt"
-
-    #include "Wizardry/Wizardry.event"
     #include "Data/Data.event"
+    #include "Wizardry/Wizardry.event"
     #include "Contants/Contants.event"
 
 MESSAGE FreeSpace___Main___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelMain) max (FreeSpaceKernelSize)

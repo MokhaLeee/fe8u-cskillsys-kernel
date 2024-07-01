@@ -1,0 +1,15 @@
+/* void (*)(void) */
+ALIGN 4
+gGameInitHookTable:
+    POIN GameInit_OverflowDetection
+    POIN GameInit_CopySkillTesterArm
+    POIN InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
+    POIN ClearKtutorialFlags
+    POIN GameInit_DetectEmsChunks
+    POIN StatDeuff_OnNewGameInit
+
+    POIN GameInitHookFuncPad
+    POIN GameInitHookFuncPad
+    POIN GameInitHookFuncPad
+    POIN GameInitHookFuncPad
+    WORD 0

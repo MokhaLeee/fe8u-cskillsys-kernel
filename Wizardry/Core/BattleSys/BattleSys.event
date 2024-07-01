@@ -17,25 +17,7 @@
 #include "BattleHitExpasion/BattleHitExpasion.event"
 #include "WeaponLockEx/WeaponLockEx.event"
 
-ALIGN 4
-PreBattleCalcFuncs:
-    POIN PreBattleCalcInit
-
-    POIN PreBattleCalcSilencerRate PreBattleCalcWeaponTriangle PreBattleCalcSkills
-    POIN PreBattleCalcLegendSkills PreBattleCalcDebuffs PreBattleCalcCombatArt PreBattleCalcAuraEffect
-    POIN PreBattleCalcStatDebuffs
-
-    POIN PreBattleCalcEnd
-    POIN PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad
-    WORD 0
-
-ALIGN 4
-Gfx_BKSEL:
-    #incbin "Data/Gfx_BKSEL.4bpp"
-
-ALIGN 4
-Pal_BKSEL:
-    #incbin "Data/Gfx_BKSEL.gbapal"
+// #include "data.event"
 
 PUSH
     // Make sure BKSEL always deiplay x2 or x4 obj
