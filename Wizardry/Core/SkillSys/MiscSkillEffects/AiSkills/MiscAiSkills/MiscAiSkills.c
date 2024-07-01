@@ -68,7 +68,7 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 
         for (uid = 1; uid < 0xC0; uid++)
         {
-            struct Unit* unit = GetUnit(uid);
+            struct Unit * unit = GetUnit(uid);
 
             if (!UNIT_IS_VALID(unit))
                 continue;

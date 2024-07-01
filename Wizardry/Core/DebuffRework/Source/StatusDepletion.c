@@ -25,7 +25,7 @@ void TickActiveFactionTurn(void)
 
     InitTargets(0, 0);
 
-    for (i = gPlaySt.faction + 1; i <= gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction); ++i)
+    for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
         struct Unit * unit = GetUnit(i);
 

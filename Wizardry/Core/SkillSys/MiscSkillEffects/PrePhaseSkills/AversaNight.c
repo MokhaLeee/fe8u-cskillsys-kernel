@@ -19,7 +19,7 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
                             { 0,  2},
     };
 
-    for (uid = gPlaySt.faction + 1; uid <= gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction); uid++)
+    for (uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
     {
         struct Unit * unit = GetUnit(uid);
         if (!UNIT_IS_VALID(unit))

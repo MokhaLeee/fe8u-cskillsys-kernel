@@ -64,7 +64,7 @@ bool PrePhsae_TickOathSkillStatus(ProcPtr proc)
     int i, j;
     bool ally_in_range = false;
 
-    for (i = gPlaySt.faction + 1; i <= gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction); ++i)
+    for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
         struct Unit * unit = GetUnit(i);
         if (!UNIT_IS_VALID(unit))

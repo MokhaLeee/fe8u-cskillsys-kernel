@@ -58,6 +58,31 @@ STATIC_DECLAR void PutProtectIcon(struct Unit * unit)
     );
 }
 
+static inline _PutUnitSpriteIconsOam(struct Unit * unit)
+{
+    if (!UNIT_IS_VALID(unit))
+        return;
+
+    if (unit->state & US_HIDDEN)
+        return;
+
+    if (GetUnitSpriteHideFlag(unit) != 0)
+        return;
+
+    /* Hp bar */
+    PutUnitHpBar(unit);
+
+    /* In DebuffRework */
+    PutUnitStatusIcon(unit);
+
+    if (unit->state & US_RESCUING)
+        PutRescuingIcon(unit);
+    else if ((UNIT_FACTION(unit) != FACTION_BLUE) && (UNIT_CATTRIBUTES(unit) & CA_BOSS))
+        PutBossIcon(unit);
+    else if (GetBattleMapKind() != 2 && UNIT_CHAR_ID(unit) == GetROMChapterStruct(gPlaySt.chapterIndex)->protectCharacterIndex)
+        PutProtectIcon(unit);
+}
+
 /* LynJump */
 void PutUnitSpriteIconsOam(void)
 {
@@ -68,30 +93,7 @@ void PutUnitSpriteIconsOam(void)
 
     PutChapterMarkedTileIconOam();
 
-    for (i = 1; i < 0xC0; i++)
-    {
-        struct Unit * unit = GetUnit(i);
-
-        if (!UNIT_IS_VALID(unit))
-            continue;
-
-        if (unit->state & US_HIDDEN)
-            continue;
-
-        if (GetUnitSpriteHideFlag(unit) != 0)
-            continue;
-
-        /* Hp bar */
-        PutUnitHpBar(unit);
-
-        /* In DebuffRework */
-        PutUnitStatusIcon(unit);
-
-        if (unit->state & US_RESCUING)
-            PutRescuingIcon(unit);
-        else if ((UNIT_FACTION(unit) != FACTION_BLUE) && (UNIT_CATTRIBUTES(unit) & CA_BOSS))
-            PutBossIcon(unit);
-        else if (GetBattleMapKind() != 2 && UNIT_CHAR_ID(unit) == GetROMChapterStruct(gPlaySt.chapterIndex)->protectCharacterIndex)
-            PutProtectIcon(unit);
-    }
+    for (i = FACTION_BLUE + 1;  i <= (FACTION_BLUE  + CONFIG_UNIT_AMT_ALLY);  i++) _PutUnitSpriteIconsOam(GetUnit(i));
+    for (i = FACTION_RED + 1;   i <= (FACTION_RED   + CONFIG_UNIT_AMT_ENEMY); i++) _PutUnitSpriteIconsOam(GetUnit(i));
+    for (i = FACTION_GREEN + 1; i <= (FACTION_GREEN + CONFIG_UNIT_AMT_NPC);   i++) _PutUnitSpriteIconsOam(GetUnit(i));
 }
