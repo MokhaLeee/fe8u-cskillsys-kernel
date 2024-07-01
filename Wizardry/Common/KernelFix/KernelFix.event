@@ -1,0 +1,8 @@
+#ifndef KERNEL_FIX_INSTALLED
+#define KERNEL_FIX_INSTALLED
+
+#include "Source/OverflowDetection.lyn.event"
+#include "Source/UnitLimitation.lyn.event"
+#include "Source/LynJump.event"
+
+#endif

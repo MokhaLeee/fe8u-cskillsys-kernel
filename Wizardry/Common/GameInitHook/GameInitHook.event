@@ -7,6 +7,7 @@ ALIGN 4
 /* void (*)(void) */
 ALIGN 4
 gGameInitHookTable:
+    POIN GameInit_OverflowDetection
     POIN GameInit_CopySkillTesterArm
     POIN InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
     POIN ClearKtutorialFlags

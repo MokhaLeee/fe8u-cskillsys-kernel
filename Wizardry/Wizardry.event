@@ -6,6 +6,7 @@ ALIGN 4
 #include "Core/DebuffRework/DebuffRework.event"
 #include "Core/WeaponRange/WeaponRange.event"
 
+#include "Common/KernelFix/KernelFix.event"
 #include "Common/GameInitHook/GameInitHook.event"
 #include "Common/DebugKit/DebugKit.event"
 #include "Common/BanimHack/BanimHack.event"

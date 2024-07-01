@@ -169,7 +169,7 @@ int SimulateStatDebuffPositiveType(struct Unit * unit)
     switch (stat->st.bitfile.is_buff_chk) {
     case STATUS_DEBUFF_NEGATIVE:
     case STATUS_DEBUFF_POSITIVE:
-        return stat->st.bitfile.is_buff_chk;;
+        return stat->st.bitfile.is_buff_chk;
 
     case STATUS_DEBUFF_NONE_NO_CALC:
         return STATUS_DEBUFF_NONE;
