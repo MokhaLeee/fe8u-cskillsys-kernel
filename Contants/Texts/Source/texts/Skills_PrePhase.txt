@@ -42,7 +42,7 @@ at the start of the turn.[X]
 YuneWhis[X]
 
 ## MSG_SKILL_YuneWhispers
-Yune's Whispers: Inflicts[NL]
-ATK/SPD -6 for enemys who's RES[NL]
-is less than unit RES -3[X]
+Yune's Whispers: At start[NL]
+of turn, put ATK/SPD -6 to enemy[NL]
+who's RES is 3 less than unit's[X]
  
