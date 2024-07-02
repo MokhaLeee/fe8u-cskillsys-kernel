@@ -2,6 +2,8 @@
 #include "DrawPages/HelpBoxPage3.lyn.event"
 #include "DrawPages/HelpBoxPage4.event"
 
+#include "DrawMorePage/data.event"
+
 ALIGN 4
 gStatScreenDrawPages:
     POIN 0x08087185
