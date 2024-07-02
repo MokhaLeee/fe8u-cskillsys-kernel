@@ -483,6 +483,11 @@ Spurn: Reduce damage as 4% AS diff[NL]
 (max 40%). Damage +5 for critical atk[NL]
 if unit HP is less than 75%[X]
 
+## MSG_SKILL_Chlorophyll
+Chlorophyll:[NL]
+If it is sunny, double this[NL]
+unit's battle speed.[X]
+
 ## MSG_SKILL_SlushRush
 SlushRush:[NL]
 If it is snowing, double this[NL]
