@@ -483,6 +483,11 @@ Spurn: Reduce damage as 4% AS diff[NL]
 (max 40%). Damage +5 for critical atk[NL]
 if unit HP is less than 75%[X]
 
+## MSG_SKILL_SandRush
+SwiftSwim:[NL]
+If there is a sandstorm, double[NL]
+this unit's battle speed.[X]
+
 ## MSG_SKILL_SwiftSwim
 SwiftSwim:[NL]
 If it is raining, double this[NL]
