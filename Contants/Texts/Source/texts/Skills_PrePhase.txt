@@ -45,3 +45,8 @@ YuneWhis[X]
 Yune's Whispers: At start[NL]
 of turn, put ATK/SPD -6 to enemy[NL]
 who's RES is 3 less than unit's[X]
+
+## MSG_SKILL_RainDish
+RainDish:[NL]
+If it is raining, then restore 30%[NL]
+of max HP at the start of each turn.[X]
