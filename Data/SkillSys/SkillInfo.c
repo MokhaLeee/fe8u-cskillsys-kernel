@@ -2353,6 +2353,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Plus) && COMMON_SKILL_VALID(SID_Plus))
+    [SID_Plus] = {
+        .desc = MSG_SKILL_Plus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+  #if (defined(SID_Minus) && COMMON_SKILL_VALID(SID_Minus))
+    [SID_Minus] = {
+        .desc = MSG_SKILL_Minus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Chlorophyll) && COMMON_SKILL_VALID(SID_Chlorophyll))
     [SID_Chlorophyll] = {
         .desc = MSG_SKILL_Chlorophyll,

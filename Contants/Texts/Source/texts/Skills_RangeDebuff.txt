@@ -146,3 +146,13 @@ Male allies within 2 tiles receive -2 damage.[X]
 ## MSG_SKILL_Solidarity
 Solidarity:[NL]
 +10 Crit and Crit Avoid to adjacent allies.[X]
+
+## MSG_SKILL_Plus
+Plus: At the start of the turn,[NL]
++4 to all combat stats for adjacent[NL]
+allies that have the 'Minus' skill.[X]
+
+## MSG_SKILL_Minus
+Minus: At the start of the turn,[NL]
++4 to all combat stats for adjacent[NL]
+allies that have the 'Plus' skill.[X]
