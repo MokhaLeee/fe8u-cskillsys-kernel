@@ -1054,7 +1054,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_Chlorophyll) && (COMMON_SKILL_VALID(SID_Chlorophyll)))
         case SID_Chlorophyll:
-            if(gPlaySt.chapterWeatherId == WEATHER_FLAMES)
+            if (gPlaySt.chapterWeatherId == WEATHER_FLAMES)
                 attacker->battleSpeed *= 2;
             break;
 #endif
