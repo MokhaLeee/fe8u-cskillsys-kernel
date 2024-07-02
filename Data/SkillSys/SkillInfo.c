@@ -2359,4 +2359,18 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_SwiftSwim) && COMMON_SKILL_VALID(SID_SwiftSwim))
+    [SID_SwiftSwim] = {
+        .desc = MSG_SKILL_SwiftSwim,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_RainDish) && COMMON_SKILL_VALID(SID_RainDish))
+    [SID_RainDish] = {
+        .desc = MSG_SKILL_RainDish,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
