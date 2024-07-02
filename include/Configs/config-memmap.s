@@ -39,8 +39,8 @@ _kernel_malloc sEfxSkillRoundData, 8 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
 _kernel_malloc sEfxSkillQueue, 32
 _kernel_malloc gBattleTemporaryFlag, 8
-_kernel_malloc gBattleActorGlobalFlag, 8
-_kernel_malloc gBattleTargetGlobalFlag, 8
+_kernel_malloc gBattleActorGlobalFlag, 0x10
+_kernel_malloc gBattleTargetGlobalFlag, 0x10
 _kernel_malloc gCombatArtStatus, 0x10
 _kernel_malloc sCombatArtList, 0x20
 _kernel_malloc sSelectedComatArtIndex, 4
