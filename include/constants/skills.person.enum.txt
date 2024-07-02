@@ -12,6 +12,8 @@ SID_Tsuzuku
 SID_MysticBoost
 SID_GuardBearing
 SID_YuneWhispers
+SID_Plus
+SID_Minus
 
 // Weapon range
 SID_HighGround
