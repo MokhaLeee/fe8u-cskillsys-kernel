@@ -131,6 +131,9 @@ static void NewUnpackSaveUnit(struct EmsPackedSavUnit * src, struct Unit * dst)
     for (i = 0; i < 8; i++)
         dst->ranks[i] = src->ranks[i];
 
+    for (i = 0; i < 7; i++)
+        dst->supports[i] = src->skills[i];
+
     for (i = 0; i < 0x5; i++)
         dst->items[i] = src->items[i];
 
