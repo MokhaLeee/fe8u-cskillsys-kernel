@@ -1,9 +1,7 @@
 #include "common-chax.h"
 #include "rn.h"
 
-extern u16 gRNSeeds[3];
-
-extern u16 sRandSeedsC[3], sRandBackup[3];
+extern u16 sRandSeedsC[4], sRandBackup[3];
 
 /* Game init hook */
 void InitRandC(void)
@@ -73,6 +71,8 @@ void SaveRandC(u8 * dst, const u32 size)
         hang();
     }
 
+    sRandSeedsC[3] = Checksum16(sRandSeedsC, 6);
+
     WriteAndVerifySramFast(
         sRandSeedsC,
         dst,
@@ -91,4 +91,7 @@ void LoadRandC(u8 * src, const u32 size)
         src,
         sRandSeedsC,
         sizeof(sRandSeedsC));
+
+    if (sRandSeedsC[3] != Checksum16(sRandSeedsC, 6))
+        InitRandC();
 }

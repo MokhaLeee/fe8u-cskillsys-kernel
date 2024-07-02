@@ -27,10 +27,4 @@ PUSH
      */
 POP
 
-ALIGN 4
-NewPageNameGraphic:
-    #incbin "Data/Gfx_StatScreenObj.lz77"
-
-ALIGN 4
-NewPageNamePalette:
-    #incbin "Data/palettecycler.bin"
+// #include "data.event"

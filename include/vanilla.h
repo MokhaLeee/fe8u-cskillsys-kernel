@@ -124,3 +124,5 @@ extern u16 sSprite_SysUpArrowA[], sSprite_SysUpArrowB[], sSprite_SysUpArrowC[];
 extern u16 sSprite_SysDownArrowA[], sSprite_SysDownArrowB[], sSprite_SysDownArrowC[];
 
 void PutChapterMarkedTileIconOam(void);
+
+extern u16 gRNSeeds[3];

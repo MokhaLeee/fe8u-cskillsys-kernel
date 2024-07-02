@@ -27,16 +27,6 @@ void RegisterCombatArtTargetPos(u8 x, u8 y)
     gCombatArtStatus.y = y;
 }
 
-void RegisterCombatArtHitted(void)
-{
-    gCombatArtStatus.hitted = true;
-}
-
-bool IsCombatArtHitted(void)
-{
-    return gCombatArtStatus.hitted;
-}
-
 void ResetCombatArtStatus(void)
 {
     CpuFill16(0, &gCombatArtStatus, sizeof(gCombatArtStatus));

@@ -14,7 +14,7 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
     if (bu->unit.state & US_IN_BALLISTA)
         itemSlot = BU_ISLOT_BALLISTA;
 
-    bu->canCounter = TRUE;
+    bu->canCounter = true;
 
     switch (itemSlot) {
     case 0:
@@ -34,25 +34,25 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
     case BU_ISLOT_ARENA_PLAYER:
         bu->weaponSlotIndex = 0;
         bu->weapon = gArenaState.playerWeapon;
-        bu->canCounter = FALSE;
+        bu->canCounter = false;
         break;
 
     case BU_ISLOT_ARENA_OPPONENT:
         bu->weaponSlotIndex = 0;
         bu->weapon = gArenaState.opponentWeapon;
-        bu->canCounter = FALSE;
+        bu->canCounter = false;
         break;
 
     case BU_ISLOT_BALLISTA:
         bu->weaponSlotIndex = 0xFF;
         bu->weapon = GetBallistaItemAt(bu->unit.xPos, bu->unit.yPos);
-        bu->canCounter = FALSE;
+        bu->canCounter = false;
         break;
 
     default:
         bu->weaponSlotIndex = 0xFF;
         bu->weapon = 0;
-        bu->canCounter = FALSE;
+        bu->canCounter = false;
         break;
 
     }
@@ -93,7 +93,7 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
         if (!IsItemCoveringRange(bu->weapon, gBattleStats.range) || bu->weaponSlotIndex == 0xFF)
         {
             bu->weapon = 0;
-            bu->canCounter = FALSE;
+            bu->canCounter = false;
         }
 
         switch (bu->unit.statusIndex) {
@@ -101,7 +101,7 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
         case UNIT_STATUS_PETRIFY:
         case UNIT_STATUS_13:
             bu->weapon = 0;
-            bu->canCounter = FALSE;
+            bu->canCounter = false;
 
             break;
 
@@ -117,13 +117,13 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
         if (!IsItemCoveringRangeRework(bu->weapon, gBattleStats.range, &bu->unit))
         {
             bu->weapon = 0;
-            bu->canCounter = FALSE;
+            bu->canCounter = false;
         }
 
         if (bu->weaponSlotIndex == 0xFF)
         {
             bu->weapon = 0;
-            bu->canCounter = FALSE;
+            bu->canCounter = false;
         }
 
         switch (GetUnitStatusIndex(&bu->unit)) {
@@ -131,7 +131,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
         case UNIT_STATUS_PETRIFY:
         case UNIT_STATUS_13:
             bu->weapon = 0;
-            bu->canCounter = FALSE;
+            bu->canCounter = false;
             break;
         };
     }
@@ -160,44 +160,45 @@ void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
 s8 CanUnitUseWeapon(struct Unit * unit, int item)
 {
     if (item == 0)
-        return FALSE;
+        return false;
 
     if (!(GetItemAttributes(item) & IA_WEAPON))
-        return FALSE;
+        return false;
 
     if (GetItemAttributes(item) & IA_LOCK_ANY)
     {
         // Check for item locks
 
         if ((GetItemAttributes(item) & IA_LOCK_1) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_1))
-            return FALSE;
+            return false;
 
         if ((GetItemAttributes(item) & IA_LOCK_4) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_4))
-            return FALSE;
+            return false;
 
         if ((GetItemAttributes(item) & IA_LOCK_5) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_5))
-            return FALSE;
+            return false;
 
         if ((GetItemAttributes(item) & IA_LOCK_6) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_6))
-            return FALSE;
+            return false;
 
         if ((GetItemAttributes(item) & IA_LOCK_7) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_7))
-            return FALSE;
+            return false;
 
         if ((GetItemAttributes(item) & IA_LOCK_2) && !(UNIT_CATTRIBUTES(unit) & CA_LOCK_2))
-            return FALSE;
+            return false;
 
         // Monster lock is special
-        if (GetItemAttributes(item) & IA_LOCK_3) {
+        if (GetItemAttributes(item) & IA_LOCK_3)
+        {
             if (!(UNIT_CATTRIBUTES(unit) & CA_LOCK_3))
-                return FALSE;
+                return false;
 
-            return TRUE;
+            return true;
         }
 
         if (GetItemAttributes(item) & IA_UNUSABLE)
             if (!(IsItemUnsealedForUnit(unit, item)))
-                return FALSE;
+                return false;
     }
 
 #if CHAX
@@ -205,7 +206,7 @@ s8 CanUnitUseWeapon(struct Unit * unit, int item)
 #else
     if ((unit->statusIndex == UNIT_STATUS_SILENCED) && (GetItemAttributes(item) & IA_MAGIC))
 #endif
-        return FALSE;
+        return false;
 
 #if CHAX
     switch (CheckWeaponLockEx(unit, item)) {
@@ -217,10 +218,5 @@ s8 CanUnitUseWeapon(struct Unit * unit, int item)
     }
 #endif
 
-    {
-        int wRank = GetItemRequiredExp(item);
-        int uRank = (unit->ranks[GetItemType(item)]);
-
-        return (uRank >= wRank) ? TRUE : FALSE;
-    }
+    return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
 }

@@ -26,6 +26,10 @@ SID_Drought
 SID_Drizzle
 SID_SnowWarning
 SID_SandStream
+SID_Chlorophyll
+SID_SlushRush
+SID_SandRush
+SID_SwiftSwim
 
 // Initiative skills
 SID_InitStrong
@@ -52,3 +56,7 @@ SID_OathStrength
 SID_GentleFlower // This skill can only set to ally!
 SID_Admiration
 SID_FairyTaleFolk
+
+
+// Pre-phase skills
+SID_RainDish

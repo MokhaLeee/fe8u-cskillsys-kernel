@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "combat-art.h"
 #include "debuff.h"
+#include "battle-system.h"
 #include "map-anims.h"
 #include "weapon-range.h"
 
@@ -60,7 +61,7 @@ bool PostActionCombatArtEffect(ProcPtr parent)
     u8 cid = GetCombatArtInForce(unit);
     const struct CombatArtInfo * info;
 
-    if (!COMBART_VALID(cid) || !IsCombatArtHitted())
+    if (!COMBART_VALID(cid) || !gBattleActorGlobalFlag.hitted)
         return false;
 
     info = &gpCombatArtInfos[cid];

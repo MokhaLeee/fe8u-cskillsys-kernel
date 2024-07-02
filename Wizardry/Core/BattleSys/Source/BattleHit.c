@@ -121,7 +121,6 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 {
     int attack, defense, amplifier;
     int damage, real_damage;
-    bool in_art_atk = false;
     bool crit_atk = false;
 
     gBattleStats.damage = 0;
@@ -149,36 +148,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     /* Judge whether in combat-art attack */
     if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
-    {
         TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
-        in_art_atk = true;
-    }
-
-    if (gBattleStats.config & BATTLE_CONFIG_REAL)
-    {
-        /**
-         * Register hitted
-         */
-        if (attacker == &gBattleActor)
-        {
-            gBattleActorGlobalFlag.hitted = true;
-        }
-        else
-        {
-            gBattleTargetGlobalFlag.hitted = true;
-        }
-
-        /**
-         * Well it's true that it seems no need to introduce an extra function
-         * for combat-art,
-         *
-         * I admit this is part of shit Mountain....
-         */
-        if (in_art_atk)
-        {
-            RegisterCombatArtHitted();
-        }
-    }
 
     attack = gBattleStats.attack;
     defense = gBattleStats.defense;

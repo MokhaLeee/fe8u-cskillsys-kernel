@@ -296,10 +296,12 @@ ENUM2C := $(TOOL_DIR)/scripts/enum2combo.py
 SKILLS_ENUM_DIR  := $(MK_DIR)include/constants
 SKILLS_COMBO_DIR := $(MK_DIR)Patches
 
-SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills.generic.enum.txt $(SKILLS_ENUM_DIR)/skills.person.enum.txt $(SKILLS_ENUM_DIR)/skills.job.enum.txt $(SKILLS_ENUM_DIR)/skills.item.enum.txt
+SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills.generic.enum.txt
+SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills.person.enum.txt
+SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills.job.enum.txt
+SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills.item.enum.txt
 
 SKILLS_ENUM_HEADER := $(SKILLS_ENUM_DIR)/skills.h
-SKILLS_ENUM_COMBO := $(MK_DIR)Patches/combo.skills.txt
 
 enum: $(SKILLS_ENUM_HEADER)
 
@@ -320,7 +322,12 @@ $(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_SRC)
 	@python3 $(ENUM2C) 0x300 $(SKILLS_ENUM_DIR)/skills.item.enum.txt    >> $(SKILLS_COMBO_DIR)/combo.skills.txt
 
 PRE_BUILD += enum
-CLEAN_FILES += $(SKILLS_ENUM_HEADER) $(SKILLS_ENUM_COMBO)
+CLEAN_FILES += $(SKILLS_ENUM_HEADER)
+CLEAN_FILES += $(MK_DIR)Patches/combo.skills.txt
+CLEAN_FILES += $(MK_DIR)Patches/combo.skills_generic.txt
+CLEAN_FILES += $(MK_DIR)Patches/combo.skills_person.txt
+CLEAN_FILES += $(MK_DIR)Patches/combo.skills_job.txt
+CLEAN_FILES += $(MK_DIR)Patches/combo.skills_item.txt
 
 # =============
 # = PRE-BUILD =

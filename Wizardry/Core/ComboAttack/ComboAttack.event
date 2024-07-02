@@ -7,10 +7,7 @@
 #include "Source/efx-combo.lyn.event"
 #include "Source/combo-mapanim.lyn.event"
 
-ALIGN 4
-// Palette: gPal_MiscUiGraphics
-Img_MapAnimCOMBO:
-    #incbin "Data/combo-mapanimap.lz77"
+// #include "data.event"
 
 #endif /* CONFIG_USE_COMBO_ATTACK */
 #endif /* COMBO_ATTACK_INSTALLED */

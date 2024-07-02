@@ -1,0 +1,4 @@
+ALIGN 4
+// Palette: gPal_MiscUiGraphics
+Img_MapAnimCOMBO:
+    #incbin "Data/combo-mapanimap.lz77"
