@@ -39,7 +39,7 @@ static inline void PutUnitStatusBuffIcon(struct Unit * unit, int ix, int iy)
         OAM1_X(0x200 + ix - 1),
         OAM0_Y(0x100 + iy),
         sSprite_SysUpArrowA,
-        0);
+        OAM2_LAYER(2));
 }
 
 static inline void PutUnitStatusDebuffIcon(struct Unit * unit, int ix, int iy)
@@ -48,7 +48,7 @@ static inline void PutUnitStatusDebuffIcon(struct Unit * unit, int ix, int iy)
         OAM1_X(0x200 + ix - 1),
         OAM0_Y(0x100 + iy),
         sSprite_SysDownArrowA,
-        0);
+        OAM2_LAYER(2));
 }
 
 static inline void PutUnitStatusDefaultIcon(struct Unit * unit, int type, int ix, int iy)
