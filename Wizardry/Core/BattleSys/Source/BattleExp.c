@@ -86,3 +86,32 @@ void BattleApplyMiscActionExpGains(void)
 
     CheckBattleUnitLevelUp(&gBattleActor);
 }
+
+/* LynJump */
+int GetBattleUnitStaffExp(struct BattleUnit * bu)
+{
+    int result;
+
+    if (!CanBattleUnitGainLevels(bu))
+        return 0;
+
+    if (gBattleHitArray->attributes & BATTLE_HIT_ATTR_MISS)
+        return 1;
+
+    result = 10 + GetItemCostPerUse(bu->weapon) / 20;
+
+    if (UNIT_CATTRIBUTES(&bu->unit) & CA_PROMOTED)
+        result = result / 2;
+
+    result = KernelModifyBattleUnitExp(
+        result,
+        bu,
+        bu == &gBattleActor
+            ? &gBattleTarget
+            : &gBattleActor);
+
+    if (result > 100)
+        result = 100;
+
+    return result;
+}
