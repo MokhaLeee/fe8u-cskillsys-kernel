@@ -2349,7 +2349,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_YuneWhispers] = {
         .name = MSG_SKILL_YuneWhispers_NAME,
         .desc = MSG_SKILL_YuneWhispers,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_YuneWhispers,
     },
 #endif
 
