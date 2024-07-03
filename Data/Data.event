@@ -33,6 +33,7 @@
 #include "../Wizardry/Common/GameInitHook/data.event"
 #include "../Wizardry/Common/IconDisplay/data.event"
 #include "../Wizardry/Common/KernelLib/data.event"
+#include "../Wizardry/Common/NegativeStatBoosts/data.event"
 #include "../Wizardry/Common/MapAnims/data.event"
 #include "../Wizardry/Common/PostActionHook/data.event"
 #include "../Wizardry/Common/PrePhaseHook/data.event"
