@@ -11,14 +11,6 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
     int max_hp = 0;
     bool AversaNight_eff = false;
 
-    static const struct Vec2 vec_range2[] = {
-                            { 0, -2},
-                  {-1, -1}, { 0, -1}, { 1, -1},
-        {-2,  0}, {-1,  0},           { 1,  0}, { 2,  0},
-                  {-1,  1}, { 0,  1}, { 1,  1},
-                            { 0,  2},
-    };
-
     for (uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
     {
         struct Unit * unit = GetUnit(uid);
@@ -57,10 +49,10 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
             if (tunit->curHP >= (max_hp - 3))
                 continue;
 
-            for (i = 0; i < ARRAY_COUNT(vec_range2); i++)
+            for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
             {
-                int x = tunit->xPos + vec_range2[i].x;
-                int y = tunit->yPos + vec_range2[i].y;
+                int x = tunit->xPos + gVecs_2x2[i].x;
+                int y = tunit->yPos + gVecs_2x2[i].y;
 
                 struct Unit * tunit2 = GetUnitAtPosition(x, y);
                 if (!tunit2)
