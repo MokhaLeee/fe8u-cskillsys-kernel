@@ -17,6 +17,30 @@ int GetUnitExpLevel(struct Unit * unit)
     return base + bonus;
 }
 
+STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit * actor, struct BattleUnit * target)
+{
+    int status = base;
+
+#if defined(SID_Blossom) && (COMMON_SKILL_VALID(SID_Blossom))
+    if (SkillTester(&actor->unit, SID_Blossom))
+        status = status / 2;
+#endif
+
+#if defined(SID_Paragon) && (COMMON_SKILL_VALID(SID_Paragon))
+    if (SkillTester(&actor->unit, SID_Paragon))
+        status = status * 2;
+#endif
+
+    /* Check last */
+#if defined(SID_VoidCurse) && (COMMON_SKILL_VALID(SID_VoidCurse))
+    if (SkillTester(&target->unit, SID_VoidCurse))
+        status = 0;
+#endif
+
+    LIMIT_AREA(status, 1, 100);
+    return status;
+}
+
 /* LynJump */
 int GetBattleUnitExpGain(struct BattleUnit * actor, struct BattleUnit * target)
 {
@@ -31,31 +55,34 @@ int GetBattleUnitExpGain(struct BattleUnit * actor, struct BattleUnit * target)
     result = GetUnitRoundExp(&actor->unit, &target->unit);
     result += GetUnitKillExpBonus(&actor->unit, &target->unit);
 
-#if defined(SID_Blossom) && (COMMON_SKILL_VALID(SID_Blossom))
-    if (SkillTester(&actor->unit, SID_Blossom))
-        result = result / 2;
-#endif
-
-#if defined(SID_Paragon) && (COMMON_SKILL_VALID(SID_Paragon))
-    if (SkillTester(&actor->unit, SID_Paragon))
-        result = result * 2;
-#endif
-
-    /* Check last */
-#if defined(SID_VoidCurse) && (COMMON_SKILL_VALID(SID_VoidCurse))
-    if (SkillTester(&target->unit, SID_VoidCurse))
-        result = 0;
-#endif
-
-    if (result > 100)
-        result = 100;
-
-    if (result < 1)
-        result = 1;
+    result = KernelModifyBattleUnitExp(result, actor, target);
 
 #if !CHAX
     ModifyUnitSpecialExp(&actor->unit, &target->unit, &result);
 #endif
 
     return result;
+}
+
+/* LynJump */
+void BattleApplyMiscActionExpGains(void)
+{
+    int exp;
+
+    if (UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE)
+        return;
+
+    if (!CanBattleUnitGainLevels(&gBattleActor))
+        return;
+
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)
+        return;
+
+    exp = 10;
+    exp = KernelModifyBattleUnitExp(exp, &gBattleActor, &gBattleTarget);
+
+    gBattleActor.expGain = exp;
+    gBattleActor.unit.exp += exp;
+
+    CheckBattleUnitLevelUp(&gBattleActor);
 }
