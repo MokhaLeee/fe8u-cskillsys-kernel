@@ -1,5 +1,5 @@
 #include "common-chax.h"
-#include "PrepItem.h"
+#include "item-sys.h"
 
 /* LynJump */
 void PrepItemUse_HandleItemEffect(struct ProcPrepItemUse * proc)

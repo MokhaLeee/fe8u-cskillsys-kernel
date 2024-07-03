@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "banim-sync.h"
-#include "banim-sync-static.h"
 
 STATIC_DECLAR void EkrBattleDeamonRework_PreInit(struct BanimSyncInfo * proc);
 STATIC_DECLAR void EkrBattleDeamonRework_Init(struct BanimSyncInfo * proc);

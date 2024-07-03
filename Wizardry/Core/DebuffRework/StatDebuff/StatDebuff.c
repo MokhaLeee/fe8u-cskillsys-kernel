@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "debuff.h"
-#include "StatDebuff.h"
 
 #define LOCAL_TRACE 0
 

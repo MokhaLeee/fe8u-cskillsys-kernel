@@ -3,7 +3,6 @@
 #include "combat-art.h"
 #include "skill-system.h"
 #include "efx-skill.h"
-#include "skill-mapanim-internal.h"
 
 #define LOCAL_TRACE 0
 

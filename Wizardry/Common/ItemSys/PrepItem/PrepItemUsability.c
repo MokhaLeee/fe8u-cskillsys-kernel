@@ -1,5 +1,5 @@
 #include "common-chax.h"
-#include "PrepItem.h"
+#include "item-sys.h"
 
 /* LynJump */
 bool CanUnitUseItemPrepScreen(struct Unit* unit, int item)

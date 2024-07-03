@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "kernel-tutorial.h"
-#include "kernel-tutorial-internal.h"
 
 extern u32 sKTutorialBits[3]; /* total 96 flags */
 extern u32 sKTutorialBitsHistory[3];

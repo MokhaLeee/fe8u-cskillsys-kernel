@@ -1,5 +1,5 @@
 #include "common-chax.h"
-#include "PrepItem.h"
+#include "item-sys.h"
 
 PrepItemEffectFunc_t const gPrepItemEffectFunc[0x100] = {
     [ITEM_HEAVENSEAL]  = PrepItemEffect_Promotion,

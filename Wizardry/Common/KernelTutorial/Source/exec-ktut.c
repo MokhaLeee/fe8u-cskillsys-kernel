@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "kernel-tutorial.h"
-#include "kernel-tutorial-internal.h"
 
 /**
  * 1. CheckForWaitEvents

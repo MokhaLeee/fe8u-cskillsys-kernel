@@ -165,6 +165,23 @@ enum UNIT_STAT_DEBUFF_IDX {
 extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
 extern struct DebuffInfo const * const gpStatDebuffInfos;
 
+struct StatDebuffStatus {
+    union {
+        struct {
+            u32 is_buff_chk : 2;
+            u32 f1 : 29;
+            u32 f2, f3, f4;
+        } bitfile;
+
+        u32 bitmask[4];
+    } st;
+};
+
+extern struct StatDebuffStatus sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
+extern struct StatDebuffStatus sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
+extern struct StatDebuffStatus sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
+extern struct StatDebuffStatus * const sStatDebuffStatusPool[0x100];
+
 int IsPositiveStatDebuff(struct Unit * unit);
 void MSU_SaveStatDebuff(u8 * dst, const u32 size);
 void MSU_LoadStatDebuff(u8 * src, const u32 size);

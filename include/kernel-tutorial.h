@@ -13,6 +13,19 @@ enum KTUTORIAL_flags {
     KTUTORIAL_MAX = 96,
 };
 
+enum kernel_tutorial_level {
+    KTUT_LEVEL_NEVER  = 0,
+    KTUT_LEVEL_MIDDLE = 1,
+    KTUT_LEVEL_HIGH   = 2,
+};
+extern const int gConfigKTutorialLevel;
+
+extern const u16 * gpKTutorialMsg;
+extern u32 sKTutorialBitsHistory[3];
+
+bool CanExecKTutorial(void);
+int GetTriggerKtutorial(void);
+
 void ClearKtutorialFlags(void);
 void EMS_SaveKTutorialFlags(u8 * dst, const u32 size); /* need 0x18 Bytes */
 void EMS_LoadKTutorialFlags(u8 * src, const u32 size);

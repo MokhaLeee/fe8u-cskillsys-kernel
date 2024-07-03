@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "skill-system.h"
-#include "skill-mapanim-internal.h"
 
 enum mapanimfx_idx {
     MAPANIMFX_CHR_L = 0x19C,

@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "banim-sync.h"
-#include "banim-sync-static.h"
 
 int  AnimInterpret(struct Anim * anim);
 

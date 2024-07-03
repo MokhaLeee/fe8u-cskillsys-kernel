@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "banim-sync.h"
-#include "banim-sync-static.h"
 
 STATIC_DECLAR int TrySwitchBanimInfo(int pos, u8 pid, u8 jid, const struct BattleAnimDef * animdef, u16 weapon);
 

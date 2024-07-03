@@ -127,7 +127,23 @@ extern struct EfxAnimConf const * const gEfxSkillAnims[0x100];
 extern struct EfxAnimConf const * const * const gpEfxSkillAnims;
 const struct EfxAnimConf * GetEfxSkillConf(const u8 aid);
 
-/* Event scripts */
+/**
+ * Skill mapanim
+ */
+struct ProcMapAnimSkillfx {
+    PROC_HEADER;
+
+    u8 pos;
+    u32 icon_idx;
+    int timer;
+    int x, y;
+};
+
+extern const struct ProcCmd ProcScr_MapAnimSkillfx[];
+
+/**
+ * Event scripts
+ */
 enum EventSkillSubOps {
     EVSUBCMD_ADD_SKILL = 1,
     EVSUBCMD_ADD_SKILL_AT,
@@ -146,7 +162,9 @@ enum EventSkillSubOps {
 #define Evt_RemoveSkillAt(sid, x, y) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_AT, sid), _EvtParams2(x, y),
 #define Evt_RemoveSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_SC, sid), _EvtParams2(0, 0),
 
-/* Miscs */
+/**
+ * Miscs
+ */
 bool IsSkillLearned(struct Unit * unit, const u16 sid);
 void LearnSkill(struct Unit * unit, const u16 sid);
 void ForgetSkill(struct Unit * unit, const u16 sid);

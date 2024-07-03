@@ -1,5 +1,4 @@
 #include "common-chax.h"
-#include "spell-assoc-common.h"
 
 const struct SpellAssoc gSpellAssocData_Rework[] = {
     SPELL_ASSOC_DATA_WPN_DEFAULT(ITEM_SWORD_IRON),
