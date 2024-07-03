@@ -6,20 +6,13 @@
 
 static void _SetPlusAndMinusStatDebuff(struct Unit * unit)
 {
-    u8 * bitmask = gGenericBuffer;
-    u8 _uid = unit->index & 0xFF;
-    if (bitmask[_uid])
-    {
-        SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_POW);
-        SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_MAG);
-        SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SKL);
-        SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SPD);
-        SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_LCK);
-        SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_DEF);
-        SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_RES);
-
-        bitmask[_uid] = 1;
-    }
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_POW);
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_MAG);
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SKL);
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SPD);
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_LCK);
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_DEF);
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_RES);
 }
 
 static void _ClearPlusAndMinusStatDebuff(struct Unit * unit)
@@ -36,10 +29,6 @@ static void _ClearPlusAndMinusStatDebuff(struct Unit * unit)
 bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
 {
     int i, j;
-
-    u8 * bitmask = gGenericBuffer;
-
-    CpuFastFill16(0, bitmask, 0x100);
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
