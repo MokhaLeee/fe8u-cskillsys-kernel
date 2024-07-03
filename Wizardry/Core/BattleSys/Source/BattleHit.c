@@ -122,6 +122,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     int attack, defense, amplifier;
     int damage, real_damage;
     bool crit_atk = false;
+    FORCE_DECLARE struct BattleGlobalFlags * act_flags, * tar_flags;
 
     gBattleStats.damage = 0;
 
@@ -145,6 +146,17 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 
     RegisterHitCnt(attacker, false);
+
+    if (attacker == &gBattleActor)
+    {
+        act_flags = &gBattleActorGlobalFlag;
+        tar_flags = &gBattleTargetGlobalFlag;
+    }
+    else
+    {
+        act_flags = &gBattleTargetGlobalFlag;
+        tar_flags = &gBattleActorGlobalFlag;
+    }
 
     /* Judge whether in combat-art attack */
     if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
@@ -231,7 +243,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
-    amplifier = 100;
+    amplifier = 10000;
     damage = attack - defense;
 
 #if defined(SID_FlashingBladePlus) && (COMMON_SKILL_VALID(SID_FlashingBladePlus))
@@ -241,14 +253,14 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
 #if defined(SID_DragonFang) && (COMMON_SKILL_VALID(SID_DragonFang))
     if (SkillTester(&attacker->unit, SID_DragonFang))
-        amplifier += 50;
+        amplifier += 5000;
 #endif
 
 #if (defined(SID_Colossus) && (COMMON_SKILL_VALID(SID_Colossus)))
     if (CheckBattleSkillActivate(attacker, defender, SID_Colossus, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
-        amplifier += 200;
+        amplifier += 20000;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
@@ -257,13 +269,13 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (CheckBattleSkillActivate(attacker, defender, SID_Impale, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
-        amplifier += 300;
+        amplifier += 30000;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
 
     if (gBattleTemporaryFlag.skill_activated_sure_shoot)
-        amplifier += 50;
+        amplifier += 5000;
 
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
@@ -341,9 +353,9 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 #else
             if (0)
 #endif
-                amplifier += 300;
+                amplifier += 30000;
             else
-                amplifier += 200;
+                amplifier += 20000;
         }
     }
 
@@ -377,6 +389,26 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
+    if (gBattleHitIterator->attributes & BATTLE_HIT_ATTR_CRIT)
+    {
+#if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
+    if (SkillTester(&defender->unit, SID_Gambit) && gBattleStats.range == 1)
+        amplifier /= 2;
+#endif
+
+#if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
+    if (SkillTester(&defender->unit, SID_MagicGambit) && gBattleStats.range > 1)
+        amplifier /= 2;
+#endif
+    }
+    else
+    {
+#if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
+    if (SkillTester(&defender->unit, SID_BeastAssault))
+        amplifier /= 2;
+#endif
+    }
+
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
     if (SkillTester(&defender->unit, SID_Spurn))
     {
@@ -387,9 +419,24 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     }
 #endif
 
-    if (damage < BATTLE_MAX_DAMAGE)
+#if (defined(SID_CounterRoar) && (COMMON_SKILL_VALID(SID_CounterRoar)))
+    if (SkillTester(&defender->unit, SID_CounterRoar))
     {
-        int _damage = (damage * amplifier / 100);
+        int _reduc = 3;
+        if (act_flags->round_cnt_hit > 1)
+            _reduc = 7;
+
+        amplifier -= amplifier * _reduc / 10;
+    }
+#endif
+
+    if (gBattleHitIterator->attributes & BATTLE_HIT_ATTR_SILENCER)
+    {
+        damage = BATTLE_MAX_DAMAGE;
+    }
+    else
+    {
+        int _damage = (damage * amplifier / 10000);
         if (damage > 0 && _damage <= 0)
             _damage = 0;
 

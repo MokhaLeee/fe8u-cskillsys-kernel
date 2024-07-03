@@ -2268,6 +2268,42 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_CounterRoar) && COMMON_SKILL_VALID(SID_CounterRoar))
+    [SID_CounterRoar] = {
+        .desc = MSG_SKILL_CounterRoar,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Gambit) && COMMON_SKILL_VALID(SID_Gambit))
+    [SID_Gambit] = {
+        .desc = MSG_SKILL_Gambit,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MagicGambit) && COMMON_SKILL_VALID(SID_MagicGambit))
+    [SID_MagicGambit] = {
+        .desc = MSG_SKILL_MagicGambit,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_BeastAssault) && COMMON_SKILL_VALID(SID_BeastAssault))
+    [SID_BeastAssault] = {
+        .name = MSG_SKILL_BeastAssault_NAME,
+        .desc = MSG_SKILL_BeastAssault,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LightAndDark) && COMMON_SKILL_VALID(SID_LightAndDark))
+    [SID_LightAndDark] = {
+        .desc = MSG_SKILL_LightAndDark,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_OathMovement) && COMMON_SKILL_VALID(SID_OathMovement))
     [SID_OathMovement] = {
         .name = MSG_SKILL_OathMovement_NAME,

@@ -258,6 +258,34 @@ Keen Fighter:[NL]
 Unit takes 50% damage[NL]
 if the opponent can double.[X]
 
+## MSG_SKILL_CounterRoar
+Counter Roar: Reduce 30% damage[NL]
+for fist attack from foe, and[NL]
+70% damage for the next attacks.[X]
+
+## MSG_SKILL_Gambit
+Gambit:[NL]
+Reduce 50% damage on critical[NL]
+attack from the foe in melee.[X]
+
+## MSG_SKILL_MagicGambit
+Magic Gambit:[NL]
+Reduce 50% damage on critical attack[NL]
+from the foe at 2+ ranges.[X]
+
+## MSG_SKILL_BeastAssault_NAME
+Bst Assault[X]
+
+## MSG_SKILL_BeastAssault
+Beast Assault:[NL]
+Reduce 40% damage on[NL]
+non-critical attack[X]
+
+## MSG_SKILL_LightAndDark
+Light & Dark:Inflicts Atk/Spd/[NL]
+Def/Res-5 on foe, neutralizes unit's[NL]
+penalties and foe's bonuses in battle[X]
+
 ## MSG_SKILL_FireBoost
 Fire Boost:[NL]
 Grants +6 ATK if unit's current HP[NL]

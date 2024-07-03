@@ -12,6 +12,11 @@ SID_Tsuzuku
 SID_MysticBoost
 SID_GuardBearing
 SID_YuneWhispers
+SID_CounterRoar
+SID_Gambit
+SID_MagicGambit
+SID_BeastAssault
+// SID_LightAndDark // todo
 SID_Plus
 SID_Minus
 
