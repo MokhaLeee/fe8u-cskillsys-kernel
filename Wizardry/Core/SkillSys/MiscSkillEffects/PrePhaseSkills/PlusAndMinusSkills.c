@@ -6,24 +6,7 @@
 
 static void _SetPlusAndMinusStatDebuff(struct Unit * unit)
 {
-    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_POW);
-    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_MAG);
-    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SKL);
-    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SPD);
-    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_LCK);
-    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_DEF);
-    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_RES);
-}
-
-static void _ClearPlusAndMinusStatDebuff(struct Unit * unit)
-{
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_POW);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_MAG);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SKL);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SPD);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_LCK);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_DEF);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_RES);
+    SetUnitStatDebuff(unit, UNIT_STAT_BUFF_PLUSMINUS);
 }
 
 bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
@@ -33,8 +16,6 @@ bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
         struct Unit * unit = GetUnit(i);
-
-        bool exec_buff = false;
 
         FORCE_DECLARE bool act_plus  = false;
         FORCE_DECLARE bool act_minus = false;
@@ -88,15 +69,10 @@ bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
 #endif
             )
             {
-                exec_buff = true;
+                _SetPlusAndMinusStatDebuff(unit);
                 _SetPlusAndMinusStatDebuff(unit_ally);
             }
         }
-
-        if (!exec_buff)
-            _ClearPlusAndMinusStatDebuff(unit);
-        else
-            _SetPlusAndMinusStatDebuff(unit);
     }
     return false;
 }
