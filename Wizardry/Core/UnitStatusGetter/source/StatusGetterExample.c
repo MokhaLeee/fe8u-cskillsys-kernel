@@ -7,12 +7,12 @@
 /* LynJump! */
 int StatusGetterTest(int status, struct Unit * unit)
 {
-    LogPrintf("%s: Unit got +1 bonus!", __func__);
+    Printf("%s: Unit got +1 bonus!", __func__);
     status += 1;
 
     if (UNIT_CHAR_ID(unit) == CHARACTER_EIRIKA)
     {
-        LogPrintf("%s: Eirika got +1 bonus!", __func__);
+        Printf("%s: Eirika got +1 bonus!", __func__);
         status += 1;
     }
 
