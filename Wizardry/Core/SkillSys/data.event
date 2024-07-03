@@ -1,8 +1,18 @@
 #ifndef SKILLSYS_DATA_INSTALLED
 #define SKILLSYS_DATA_INSTALLED
 
+#include "kernel/JudgeSkillArm.lyn.event"
+
 ALIGN 4
 Img_MapAnimSKILL:
     #incbin "SkillMapAnim/skill-mapanimap.lz77"
+
+#include "PrepSkill/data.event"
+
+#include "EfxSkill/data/EfxSkillBoxfx.lyn.event"
+
+ALIGN 4
+Img_EfxSkillBoxBG:
+    #incbin "EfxSkill/data/EfxSkillBoxBG.lz77"
 
 #endif /* SKILLSYS_DATA_INSTALLED */
