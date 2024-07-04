@@ -270,3 +270,6 @@ SID_LEGEND_InoriAvo
 SID_LEGEND_InoriDef
 // SID_LEGEND_4
 // SID_LEGEND_5
+
+SID_Assist
+SID_Synergism

@@ -2437,4 +2437,18 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
+    [SID_Assist] = {
+        .desc = MSG_SKILL_Assist,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Synergism) && COMMON_SKILL_VALID(SID_Synergism))
+    [SID_Synergism] = {
+        .desc = MSG_SKILL_Synergism,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

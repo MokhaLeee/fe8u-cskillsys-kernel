@@ -1,10 +1,15 @@
 #include "common-chax.h"
 #include "battle-system.h"
 #include "combo-attack.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 STATIC_DECLAR bool BattleComboGenerateHit(void)
 {
     int ret;
+    FORCE_DECLARE struct Unit * unit;
+    
+    unit = GetUnit(gComboAtkList[GetBattleHitRound(gBattleHitIterator)].uid);
 
     gBattleStats.hitRate = 80;
     gBattleStats.damage = 0;
@@ -21,6 +26,16 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
     {
         // Hitted
         gBattleStats.damage = 5;
+
+#if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
+        if (SkillTester(unit, SID_Assist))
+            gBattleStats.damage += 5;
+#endif
+
+#if (defined(SID_Synergism) && COMMON_SKILL_VALID(SID_Synergism))
+        if (SkillTester(&gBattleActor.unit, SID_Synergism))
+            gBattleStats.damage += 3;
+#endif
     }
 
     /* step2 BattleGenerateHitEffects */

@@ -18,3 +18,13 @@ F-T Folk[X]
 Fairy-Tale Folk:[NL]
 +2 damage dealt if a male ally and a[NL]
 female ally are adjacent within 2 spaces.[X]
+
+## MSG_SKILL_Assist
+Assist:[NL]
++5 damage dealt on assistance of[NL]
+allies' combo-attack[X]
+
+## MSG_SKILL_Synergism
+Synergism:[NL]
+Allies +3 damage dealt on[NL]
+assistance on combo-attack[X]

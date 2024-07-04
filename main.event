@@ -29,9 +29,7 @@ ORG FreeSpaceKernelData
     /**
      * Put vanilla text data to the end of kernel
      */
-     __loc:
     #include "Data/RepointText/RepointTextData.event"
-    MESSAGE CURRENTOFFSET - __loc
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
 
