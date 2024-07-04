@@ -8,7 +8,7 @@ inline struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit)
 {
     if (unit == &gBattleActor.unit)
         return &sStatDebuffStatusBattleUnit[0];
-    if (unit == &gBattleActor.unit)
+    else if (unit == &gBattleTarget.unit)
         return &sStatDebuffStatusBattleUnit[1];
 
     return sStatDebuffStatusPool[unit->index & 0xFF];
