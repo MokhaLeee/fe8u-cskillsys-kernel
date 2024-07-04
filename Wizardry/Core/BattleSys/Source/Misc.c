@@ -27,3 +27,22 @@ void RegisterHitCnt(struct BattleUnit * bu, bool miss)
     else
         flags->round_cnt_avo++;
 }
+
+void ResetRoundEfxSkills(void)
+{
+    memset(&sEfxSkillQueue, 0, sizeof(sEfxSkillQueue));
+}
+
+void EnqueueRoundEfxSkill(u16 sid)
+{
+    if (sEfxSkillQueue.max < (sizeof(sEfxSkillQueue.skill_pool) - 1))
+        sEfxSkillQueue.skill_pool[sEfxSkillQueue.max++] = sid;
+}
+
+u16 DequeueRoundEfxSkill(void)
+{
+    if (sEfxSkillQueue.cur < sEfxSkillQueue.max)
+        return sEfxSkillQueue.skill_pool[sEfxSkillQueue.cur++];
+
+    return 0;
+}

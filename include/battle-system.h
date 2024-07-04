@@ -115,4 +115,89 @@ static inline int GetItemFormSlot(struct Unit * unit, int slot)
 
 extern struct Vec2 gBattleTargetPositionBackup;
 
+/**
+ * BattleOrder
+ */
+enum {
+    NOP_ATTACK = 0,
+    ACT_ATTACK = 1,
+    TAR_ATTACK = 2,
+};
+
+enum {
+    UNWIND_VANTAGE = 1 << 0,
+    UNWIND_DESPERA = 1 << 1,
+    UNWIND_DOUBLE_ACT = 1 << 2,
+    UNWIND_DOUBLE_TAR = 1 << 3,
+};
+
+extern const u8 BattleUnwindConfig[14][4];
+
+struct EfxSkillQueue {
+    u8 cur, max;
+    u16 skill_pool[14];
+};
+extern struct EfxSkillQueue sEfxSkillQueue;
+
+void ResetRoundEfxSkills(void);
+void EnqueueRoundEfxSkill(u16 sid);
+u16 DequeueRoundEfxSkill(void);
+
+/**
+ * BattleHit
+ */
+enum damage_decrease_sheet_idx {
+    DMG_DECREASE_IDX_05Perc,
+    DMG_DECREASE_IDX_10Perc,
+    DMG_DECREASE_IDX_15Perc,
+    DMG_DECREASE_IDX_20Perc,
+    DMG_DECREASE_IDX_25Perc,
+    DMG_DECREASE_IDX_30Perc,
+    DMG_DECREASE_IDX_35Perc,
+    DMG_DECREASE_IDX_40Perc,
+    DMG_DECREASE_IDX_45Perc,
+    DMG_DECREASE_IDX_50Perc,
+    DMG_DECREASE_IDX_55Perc,
+    DMG_DECREASE_IDX_60Perc,
+    DMG_DECREASE_IDX_65Perc,
+    DMG_DECREASE_IDX_70Perc,
+    DMG_DECREASE_IDX_75Perc,
+    DMG_DECREASE_IDX_80Perc,
+    DMG_DECREASE_IDX_85Perc,
+    DMG_DECREASE_IDX_90Perc,
+    DMG_DECREASE_IDX_95Perc,
+
+    DMG_DECREASE_IDX_MAX
+};
+
+enum damage_decrease_cheat {
+    /**
+     * (1 - percentage%) = 1 / (100% + decrease%)
+     * decrease = 1/(1 - percentage%) - 1
+     * 
+     * here we calculate on (decrease * 0x100)
+     */
+    DMG_DECREASE_95Perc = 4864, // 19.00000
+    DMG_DECREASE_90Perc = 2304, // 9.00000
+    DMG_DECREASE_85Perc = 1451, // 5.66667
+    DMG_DECREASE_80Perc = 1024, // 4.00000
+    DMG_DECREASE_75Perc = 768,  // 3.00000
+    DMG_DECREASE_70Perc = 597,  // 2.33333
+    DMG_DECREASE_65Perc = 475,  // 1.85714
+    DMG_DECREASE_60Perc = 384,  // 2.50000
+    DMG_DECREASE_55Perc = 313,  // 1.22222
+    DMG_DECREASE_50Perc = 256,  // 1.00000
+    DMG_DECREASE_45Perc = 210,  // 0.81818
+    DMG_DECREASE_40Perc = 171,  // 0.66667
+    DMG_DECREASE_35Perc = 138,  // 0.53846
+    DMG_DECREASE_30Perc = 110,  // 0.42857
+    DMG_DECREASE_25Perc = 85,   // 0.33333
+    DMG_DECREASE_20Perc = 64,   // 0.25000
+    DMG_DECREASE_15Perc = 45,   // 0.17647
+    DMG_DECREASE_10Perc = 28,   // 0.11111
+    DMG_DECREASE_05Perc = 13,   // 0.05263
+};
+
+extern const u16 DmgDecreaseRef[DMG_DECREASE_IDX_MAX];
+
 void PreBattleGenerateHook(void);

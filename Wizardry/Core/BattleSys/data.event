@@ -1,3 +1,5 @@
+#include "Source/data.lyn.event"
+
 ALIGN 4
 PreBattleCalcFuncs:
     POIN PreBattleCalcInit

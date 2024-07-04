@@ -9,62 +9,6 @@
 
 #define LOCAL_TRACE 1
 
-enum {
-    NOP_ATTACK = 0,
-    ACT_ATTACK = 1,
-    TAR_ATTACK = 2,
-};
-
-enum {
-    UNWIND_VANTAGE = 1 << 0,
-    UNWIND_DESPERA = 1 << 1,
-    UNWIND_DOUBLE_ACT = 1 << 2,
-    UNWIND_DOUBLE_TAR = 1 << 3,
-};
-
-static const u8 BattleUnwindConfig[14][4] = {
-    { ACT_ATTACK, TAR_ATTACK, NOP_ATTACK, NOP_ATTACK }, // 0:default
-    { TAR_ATTACK, ACT_ATTACK, NOP_ATTACK, NOP_ATTACK }, // 1   = 1
-    { ACT_ATTACK, ACT_ATTACK, TAR_ATTACK, NOP_ATTACK }, // 2   = 2    
-
-    { TAR_ATTACK, ACT_ATTACK, ACT_ATTACK, NOP_ATTACK }, // 12  = 3
-    { ACT_ATTACK, TAR_ATTACK, ACT_ATTACK, NOP_ATTACK }, // 3   = 4
-    { TAR_ATTACK, ACT_ATTACK, ACT_ATTACK, NOP_ATTACK }, // 13  = 5
-    { ACT_ATTACK, TAR_ATTACK, NOP_ATTACK, NOP_ATTACK }, // 0:default
-    { ACT_ATTACK, TAR_ATTACK, NOP_ATTACK, NOP_ATTACK }, // 0:default
-    { ACT_ATTACK, TAR_ATTACK, TAR_ATTACK, NOP_ATTACK }, // 4   = 8
-    { TAR_ATTACK, ACT_ATTACK, TAR_ATTACK, NOP_ATTACK }, // 14  = 9
-    { ACT_ATTACK, ACT_ATTACK, TAR_ATTACK, TAR_ATTACK }, // 24  = 10
-
-    { TAR_ATTACK, ACT_ATTACK, ACT_ATTACK, TAR_ATTACK }, // 124 = 11
-    { ACT_ATTACK, TAR_ATTACK, ACT_ATTACK, TAR_ATTACK }, // 34  = 12
-    { TAR_ATTACK, ACT_ATTACK, TAR_ATTACK, ACT_ATTACK }  // 134 = 13
-};
-
-extern struct {
-    u8 cur, max;
-    u16 skill_pool[14];
-} sEfxSkillQueue;
-
-static void ResetRoundEfxSkills(void)
-{
-    memset(&sEfxSkillQueue, 0, sizeof(sEfxSkillQueue));
-}
-
-static void EnqueueRoundEfxSkill(u16 sid)
-{
-    if (sEfxSkillQueue.max < (sizeof(sEfxSkillQueue.skill_pool) - 1))
-        sEfxSkillQueue.skill_pool[sEfxSkillQueue.max++] = sid;
-}
-
-static u16 DequeueRoundEfxSkill(void)
-{
-    if (sEfxSkillQueue.cur < sEfxSkillQueue.max)
-        return sEfxSkillQueue.skill_pool[sEfxSkillQueue.cur++];
-
-    return 0;
-}
-
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target)
 {

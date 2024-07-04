@@ -59,8 +59,7 @@ void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
     gBattleTarget.battleAttack += CalcBattleRealDamage(&gBattleTarget, &gBattleActor);
 
     /* Prepare GFX here */
-    switch (proc->hitCountA)
-    {
+    switch (proc->hitCountA) {
     case 0 ... 9:
         Copy2dChr(Gfx_BKSEL[proc->hitCountA], OBJ_VRAM0 + 0x5D00, 2, 2);
         break;
@@ -70,8 +69,7 @@ void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
         break;
     }
 
-    switch (proc->hitCountB)
-    {
+    switch (proc->hitCountB) {
     case 0 ... 9:
         Copy2dChr(Gfx_BKSEL[proc->hitCountB], OBJ_VRAM0 + 0x5D40, 2, 2);
         break;

@@ -10,80 +10,6 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-enum damage_decrease_sheet_idx {
-    DMG_DECREASE_IDX_05Perc,
-    DMG_DECREASE_IDX_10Perc,
-    DMG_DECREASE_IDX_15Perc,
-    DMG_DECREASE_IDX_20Perc,
-    DMG_DECREASE_IDX_25Perc,
-    DMG_DECREASE_IDX_30Perc,
-    DMG_DECREASE_IDX_35Perc,
-    DMG_DECREASE_IDX_40Perc,
-    DMG_DECREASE_IDX_45Perc,
-    DMG_DECREASE_IDX_50Perc,
-    DMG_DECREASE_IDX_55Perc,
-    DMG_DECREASE_IDX_60Perc,
-    DMG_DECREASE_IDX_65Perc,
-    DMG_DECREASE_IDX_70Perc,
-    DMG_DECREASE_IDX_75Perc,
-    DMG_DECREASE_IDX_80Perc,
-    DMG_DECREASE_IDX_85Perc,
-    DMG_DECREASE_IDX_90Perc,
-    DMG_DECREASE_IDX_95Perc,
-
-    DMG_DECREASE_IDX_MAX
-};
-
-enum damage_decrease_cheat {
-    /**
-     * (1 - percentage%) = 1 / (100% + decrease%)
-     * decrease = 1/(1 - percentage%) - 1
-     * 
-     * here we calculate on (decrease * 0x100)
-     */
-    DMG_DECREASE_95Perc = 4864, // 19.00000
-    DMG_DECREASE_90Perc = 2304, // 9.00000
-    DMG_DECREASE_85Perc = 1451, // 5.66667
-    DMG_DECREASE_80Perc = 1024, // 4.00000
-    DMG_DECREASE_75Perc = 768,  // 3.00000
-    DMG_DECREASE_70Perc = 597,  // 2.33333
-    DMG_DECREASE_65Perc = 475,  // 1.85714
-    DMG_DECREASE_60Perc = 384,  // 2.50000
-    DMG_DECREASE_55Perc = 313,  // 1.22222
-    DMG_DECREASE_50Perc = 256,  // 1.00000
-    DMG_DECREASE_45Perc = 210,  // 0.81818
-    DMG_DECREASE_40Perc = 171,  // 0.66667
-    DMG_DECREASE_35Perc = 138,  // 0.53846
-    DMG_DECREASE_30Perc = 110,  // 0.42857
-    DMG_DECREASE_25Perc = 85,   // 0.33333
-    DMG_DECREASE_20Perc = 64,   // 0.25000
-    DMG_DECREASE_15Perc = 45,   // 0.17647
-    DMG_DECREASE_10Perc = 28,   // 0.11111
-    DMG_DECREASE_05Perc = 13,   // 0.05263
-};
-
-STATIC_DECLAR u16 damage_decrease_cheat_sheet[DMG_DECREASE_IDX_MAX] = {
-    [DMG_DECREASE_IDX_05Perc] = DMG_DECREASE_05Perc,
-    [DMG_DECREASE_IDX_10Perc] = DMG_DECREASE_10Perc,
-    [DMG_DECREASE_IDX_15Perc] = DMG_DECREASE_15Perc,
-    [DMG_DECREASE_IDX_20Perc] = DMG_DECREASE_20Perc,
-    [DMG_DECREASE_IDX_25Perc] = DMG_DECREASE_25Perc,
-    [DMG_DECREASE_IDX_30Perc] = DMG_DECREASE_30Perc,
-    [DMG_DECREASE_IDX_35Perc] = DMG_DECREASE_35Perc,
-    [DMG_DECREASE_IDX_40Perc] = DMG_DECREASE_40Perc,
-    [DMG_DECREASE_IDX_45Perc] = DMG_DECREASE_45Perc,
-    [DMG_DECREASE_IDX_50Perc] = DMG_DECREASE_50Perc,
-    [DMG_DECREASE_IDX_55Perc] = DMG_DECREASE_55Perc,
-    [DMG_DECREASE_IDX_60Perc] = DMG_DECREASE_60Perc,
-    [DMG_DECREASE_IDX_65Perc] = DMG_DECREASE_65Perc,
-    [DMG_DECREASE_IDX_70Perc] = DMG_DECREASE_70Perc,
-    [DMG_DECREASE_IDX_75Perc] = DMG_DECREASE_75Perc,
-    [DMG_DECREASE_IDX_80Perc] = DMG_DECREASE_80Perc,
-    [DMG_DECREASE_IDX_85Perc] = DMG_DECREASE_85Perc,
-    [DMG_DECREASE_IDX_90Perc] = DMG_DECREASE_90Perc,
-    [DMG_DECREASE_IDX_95Perc] = DMG_DECREASE_95Perc,
-};
-
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
@@ -402,14 +328,14 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
-        decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
+        decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
 #endif
 
 #if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
     if (SkillTester(&defender->unit, SID_DragonSkin))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
+        decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
     }
 #endif
 
@@ -417,7 +343,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (SkillTester(&defender->unit, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
+        decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
     }
 #endif
 
@@ -430,7 +356,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
             SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
-            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
+            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
         }
     }
 #endif
@@ -439,19 +365,19 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     {
 #if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
         if (SkillTester(&defender->unit, SID_Gambit) && gBattleStats.range == 1)
-            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
+            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
 #endif
 
 #if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
         if (SkillTester(&defender->unit, SID_MagicGambit) && gBattleStats.range > 1)
-            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
+            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
 #endif
     }
     else
     {
 #if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
         if (SkillTester(&defender->unit, SID_BeastAssault))
-            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
+            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
 #endif
     }
 
@@ -465,7 +391,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
         cheat_ref = (as_diff * 4) / 5;
         if (cheat_ref > 0)
-            decrease += damage_decrease_cheat_sheet[cheat_ref - 1];
+            decrease += DmgDecreaseRef[cheat_ref - 1];
     }
 #endif
 
@@ -473,9 +399,9 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (SkillTester(&attacker->unit, SID_CounterRoar))
     {
         if (act_flags->round_cnt_hit == 1)
-            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_30Perc];
+            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_30Perc];
         else
-            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_70Perc];
+            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_70Perc];
     }
 #endif
 
