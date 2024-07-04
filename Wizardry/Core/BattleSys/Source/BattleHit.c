@@ -228,7 +228,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #else
         (1)
 #endif
-        ||
+        &&
 #if defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight))
         !SkillTester(&defender->unit, SID_Foresight)
 #else
