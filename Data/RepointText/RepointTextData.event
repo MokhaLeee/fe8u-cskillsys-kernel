@@ -7,5 +7,7 @@ PUSH
 
     ORG 0x0006E0
     POIN gMsgHuffmanTableRe
-POP
 
+    ORG TextTable
+    #include "Source/msg_table.lyn.event"
+POP

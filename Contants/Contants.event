@@ -10,6 +10,4 @@ ALIGN 4
 ALIGN 4
 #include "Texts/Texts.event"
 
-#include "../Data/RepointText/contants.event"
-
 #endif
