@@ -77,7 +77,7 @@ battle hit +1 but cannot crit.[X]
 
 ## MSG_SKILL_InfinityEdge
 Infinity Edge: [NL]
-Critical attacks deal 400% damage.[X]
+Critical attacks damage +100%.[X]
 
 ## MSG_SKILL_HeavyBlade
 Heavy Blade: [NL]

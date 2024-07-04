@@ -50,7 +50,7 @@ ActionCombat
 # Damage calc formula
 
 ```
-result = ([atk + correction - def]) * (100% + increase%) * (200%  + crit_correction%) / (100% + decrease%) + real_damage
+result = ([atk + correction - def]) * (100% + increase%) * (100%  + crit_correction%) / (100% + decrease%) + real_damage
 ```
 
 # Combo-attack

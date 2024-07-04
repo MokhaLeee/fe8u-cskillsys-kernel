@@ -201,7 +201,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     /**
      * result = ([atk + correction - def])
      *              * (100% + increase%)
-     *              * (200%  + crit_correction%)
+     *              * (100% + crit_correction%)
      *              / (100% + decrease%)
      *              + real_damage
      */
