@@ -6,6 +6,11 @@
 
 inline struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit)
 {
+    if (unit == &gBattleActor.unit)
+        return &sStatDebuffStatusBattleUnit[0];
+    if (unit == &gBattleActor.unit)
+        return &sStatDebuffStatusBattleUnit[1];
+
     return sStatDebuffStatusPool[unit->index & 0xFF];
 }
 
@@ -398,4 +403,9 @@ void StatDeuff_OnCopyUnit(struct Unit * from, struct Unit * to)
         GetUnitStatDebuffStatus(to)->st.bitmask,
         GetUnitStatDebuffStatus(from)->st.bitmask,
         sizeof(struct StatDebuffStatus));
+}
+
+void StatDebuff_OnUnitToBattle(struct Unit * unit, struct BattleUnit * bu)
+{
+    *GetUnitStatDebuffStatus(&bu->unit) = *GetUnitStatDebuffStatus(unit);
 }

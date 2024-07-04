@@ -58,6 +58,7 @@ _kernel_malloc gComboMapAnimBattleUnit, 0x80
 _kernel_malloc sStatDebuffStatusAlly, 51 * 16
 _kernel_malloc sStatDebuffStatusEnemy, 50 * 16
 _kernel_malloc sStatDebuffStatusNpc, 8 * 16
+_kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
 _kernel_malloc sStatDebuffMsgBuf, 0x2C * 6
 _kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sPrepareNextBattleRoundTimer, 4

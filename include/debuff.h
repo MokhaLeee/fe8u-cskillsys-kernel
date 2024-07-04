@@ -182,6 +182,7 @@ struct StatDebuffStatus {
 extern struct StatDebuffStatus sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
 extern struct StatDebuffStatus sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
 extern struct StatDebuffStatus sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
+extern struct StatDebuffStatus sStatDebuffStatusBattleUnit[2];
 extern struct StatDebuffStatus * const sStatDebuffStatusPool[0x100];
 
 struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit);

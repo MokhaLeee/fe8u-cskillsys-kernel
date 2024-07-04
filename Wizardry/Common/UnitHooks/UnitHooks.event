@@ -25,6 +25,7 @@ gExternalBattleToUnitHook: // int (*)(struct BattleUnit * bu, struct Unit * unit
     WORD 0 0 0 0
 
 gExternalUnitToBattleHook: // int (*)(struct Unit * unit, struct BattleUnit * bu);
+    POIN StatDebuff_OnUnitToBattle
     WORD 0 0 0 0
 
 /**
