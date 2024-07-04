@@ -47,6 +47,12 @@ ActionCombat
     └── BATTLE_HandleCombatDeaths
 ```
 
+# Damage calc formula
+
+```
+result = ([atk + correction - def]) * (100% + increase%) * (200%  + crit_correction%) / (100% + decrease%) + real_damage
+```
+
 # Combo-attack
 
 When attacking the enemy within the range of the companion, ally will participate in the combo attack.
