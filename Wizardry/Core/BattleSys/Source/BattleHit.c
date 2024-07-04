@@ -328,14 +328,14 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
-        decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
+        decrease += DAMAGE_DECREASE(50);
 #endif
 
 #if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
     if (SkillTester(&defender->unit, SID_DragonSkin))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
+        decrease += DAMAGE_DECREASE(50);
     }
 #endif
 
@@ -343,7 +343,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (SkillTester(&defender->unit, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
+        decrease += DAMAGE_DECREASE(50);
     }
 #endif
 
@@ -356,7 +356,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
             SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
-            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
+            decrease += DAMAGE_DECREASE(50);
         }
     }
 #endif
@@ -365,33 +365,31 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     {
 #if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
         if (SkillTester(&defender->unit, SID_Gambit) && gBattleStats.range == 1)
-            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
+            decrease += DAMAGE_DECREASE(50);
 #endif
 
 #if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
         if (SkillTester(&defender->unit, SID_MagicGambit) && gBattleStats.range > 1)
-            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
+            decrease += DAMAGE_DECREASE(50);
 #endif
     }
     else
     {
 #if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
         if (SkillTester(&defender->unit, SID_BeastAssault))
-            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_50Perc];
+            decrease += DAMAGE_DECREASE(50);
 #endif
     }
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
     if (SkillTester(&defender->unit, SID_Spurn))
     {
-        int as_diff, cheat_ref;
+        int as_diff;
         
         as_diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(as_diff, 0, 10);
 
-        cheat_ref = (as_diff * 4) / 5;
-        if (cheat_ref > 0)
-            decrease += DmgDecreaseRef[cheat_ref - 1];
+        decrease += DAMAGE_DECREASE(as_diff * 4);
     }
 #endif
 
@@ -399,9 +397,9 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (SkillTester(&attacker->unit, SID_CounterRoar))
     {
         if (act_flags->round_cnt_hit == 1)
-            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_30Perc];
+            decrease += DAMAGE_DECREASE(30);
         else
-            decrease += DmgDecreaseRef[DMG_DECREASE_IDX_70Perc];
+            decrease += DAMAGE_DECREASE(70);
     }
 #endif
 
