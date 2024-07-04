@@ -114,3 +114,5 @@ static inline int GetItemFormSlot(struct Unit * unit, int slot)
 }
 
 extern struct Vec2 gBattleTargetPositionBackup;
+
+void PreBattleGenerateHook(void);

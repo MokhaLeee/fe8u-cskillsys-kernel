@@ -153,9 +153,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     int _skill_list_cnt;
     struct SkillList * list;
 
-    FORCE_DECLARE const struct DebuffInfo * debuff_act = &gpDebuffInfos[GetUnitStatusIndex(&attacker->unit)];
-    FORCE_DECLARE const struct DebuffInfo * debuff_tar = &gpDebuffInfos[GetUnitStatusIndex(&attacker->unit)];
-
     /**
      * Skip arena judgement
      */
@@ -1055,13 +1052,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
-#if (defined(SID_LightAndDark) && (COMMON_SKILL_VALID(SID_LightAndDark)))
-        case SID_LightAndDark:
-            if (gPlaySt.chapterWeatherId == WEATHER_FLAMES)
-                attacker->battleSpeed *= 2;
-            break;
-#endif
-
 #if (defined(SID_Chlorophyll) && (COMMON_SKILL_VALID(SID_Chlorophyll)))
         case SID_Chlorophyll:
             if (gPlaySt.chapterWeatherId == WEATHER_FLAMES)
@@ -1096,15 +1086,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     /* This is judging on defender */
     if (SkillTester(&defender->unit, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
         attacker->battleAvoidRate -= 20;
-#endif
-
-#if (defined(SID_LightAndDark) && (COMMON_SKILL_VALID(SID_LightAndDark)))
-        if (SkillTester(&defender->unit, SID_LightAndDark))
-        {
-            attacker->battleAttack -= 5;
-            attacker->battleSpeed -= 5;
-            attacker->battleDefense -= 5;
-        }
 #endif
 }
 

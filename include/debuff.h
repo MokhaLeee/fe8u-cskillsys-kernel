@@ -109,7 +109,9 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_POSITIVE_BIT0,
     UNIT_STAT_POSITIVE_BIT1,
 
-    UNIT_STAT_BUFF_RING_ATK,
+    UNIT_STAT_DEBUFF_IDX_START,
+
+    UNIT_STAT_BUFF_RING_ATK = UNIT_STAT_DEBUFF_IDX_START,
     UNIT_STAT_BUFF_RING_DEF,
     UNIT_STAT_BUFF_RING_CRT,
     UNIT_STAT_BUFF_RING_AVO,
@@ -181,6 +183,8 @@ extern struct StatDebuffStatus sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
 extern struct StatDebuffStatus sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
 extern struct StatDebuffStatus sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
 extern struct StatDebuffStatus * const sStatDebuffStatusPool[0x100];
+
+struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit);
 
 int IsPositiveStatDebuff(struct Unit * unit);
 void MSU_SaveStatDebuff(u8 * dst, const u32 size);

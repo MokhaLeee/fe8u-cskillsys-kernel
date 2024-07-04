@@ -16,7 +16,7 @@ SID_CounterRoar
 SID_Gambit
 SID_MagicGambit
 SID_BeastAssault
-// SID_LightAndDark // todo
+// SID_LightAndDark
 SID_Plus
 SID_Minus
 

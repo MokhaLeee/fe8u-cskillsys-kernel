@@ -59,3 +59,21 @@ extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
     (faction) == FACTION_GREEN ? CONFIG_UNIT_AMT_NPC   : \
     0                                                    \
 )
+
+/**
+ * Bits
+ */
+static inline void _BIT_SET(u32 * bits, int idx)
+{
+    bits[idx / 32] |= 1 << (idx % 32);
+}
+
+static inline void _BIT_CLR(u32 * bits, int idx)
+{
+    bits[idx / 32] &= ~(1 << (idx % 32));
+}
+
+static inline bool _BIT_CHK(u32 * bits, int idx)
+{
+    return !!(bits[idx / 32] & (1 << (idx % 32)));
+}

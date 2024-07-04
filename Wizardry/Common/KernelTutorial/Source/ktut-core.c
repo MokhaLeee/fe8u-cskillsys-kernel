@@ -1,21 +1,9 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "kernel-tutorial.h"
 
 extern u32 sKTutorialBits[3]; /* total 96 flags */
 extern u32 sKTutorialBitsHistory[3];
-
-static inline void set_bit(u32 * bits, int idx)
-{
-    bits[idx / 32] |= 1 << (idx % 32);
-}
-
-static inline bool check_bit(u32 * bits, int idx)
-{
-    if (bits[idx / 32] & (1 << (idx % 32)))
-        return true;
-
-    return false;
-}
 
 /* In GameInit */
 static void ClearTrigKtutFlags(void)
@@ -82,14 +70,14 @@ bool CanExecKTutorial(void)
 
 void TriggerKtutorial(int flag)
 {
-    set_bit(sKTutorialBits, flag);
+    _BIT_SET(sKTutorialBits, flag);
 }
 
 int GetTriggerKtutorial(void)
 {
     int i;
     for (i = 1; i < KTUTORIAL_MAX; i++)
-        if (check_bit(sKTutorialBits, i) && !check_bit(sKTutorialBitsHistory, i))
+        if (_BIT_CHK(sKTutorialBits, i) && !_BIT_CHK(sKTutorialBitsHistory, i))
             return i;
 
     return -1;
@@ -97,7 +85,7 @@ int GetTriggerKtutorial(void)
 
 bool CheckKtutFlagTriggered(int flag)
 {
-    return check_bit(sKTutorialBitsHistory, flag);
+    return _BIT_CHK(sKTutorialBitsHistory, flag);
 }
 
 void PutKtutHistory(int flag)
@@ -110,5 +98,5 @@ void PutKtutHistory(int flag)
     ClearTrigKtutFlags();
 
     if (flag < KTUTORIAL_MAX)
-        set_bit(sKTutorialBitsHistory, flag);
+        _BIT_SET(sKTutorialBitsHistory, flag);
 }

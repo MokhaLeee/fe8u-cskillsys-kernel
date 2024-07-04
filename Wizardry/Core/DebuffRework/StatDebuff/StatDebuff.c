@@ -1,29 +1,12 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "debuff.h"
 
 #define LOCAL_TRACE 0
 
-static inline struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit)
+inline struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit)
 {
     return sStatDebuffStatusPool[unit->index & 0xFF];
-}
-
-static inline void _BIT_SET(u32 * bits, int idx)
-{
-    bits[idx / 32] |= 1 << (idx % 32);
-}
-
-static inline void _BIT_CLR(u32 * bits, int idx)
-{
-    bits[idx / 32] &= ~(1 << (idx % 32));
-}
-
-static inline bool _BIT_CHK(u32 * bits, int idx)
-{
-    if (bits[idx / 32] & (1 << (idx % 32)))
-        return true;
-
-    return false;
 }
 
 int SimulateStatDebuffPositiveType(struct Unit * unit)
@@ -48,7 +31,7 @@ int SimulateStatDebuffPositiveType(struct Unit * unit)
         break;
     }
 
-    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
+    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (!_BIT_CHK(stat->st.bitmask, i))
             continue;
@@ -183,7 +166,7 @@ void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
     bool ticked = false;;
     int i;
     u32 * bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
-    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
+    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
         if (_BIT_CHK(bitfile, i) && type == gpStatDebuffInfos[i].tick_type)
         {
             ticked = true;
@@ -201,7 +184,7 @@ void PreBattleCalcStatDebuffs(struct BattleUnit * bu, struct BattleUnit * defend
 {
     int i;
     u32 * bitfile = GetUnitStatDebuffStatus(&bu->unit)->st.bitmask;
-    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
+    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
         {
@@ -256,7 +239,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
     if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
         in_panic = true;
 
-    for (i = 2; i < UNIT_STAT_DEBUFF_MAX; i++)
+    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
         {
