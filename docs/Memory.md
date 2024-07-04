@@ -33,6 +33,9 @@ TextTable is repointed at a fixed location behind the pointer list, [0xB2AA14](.
 #include "Tools/Tool Helpers.txt"    // EventAssembler helper
 ```
 
+> [!NOTE]
+> For now, we use the vanilla msg data location to put kernel .text section, so that the kernel can run at in-BL range space. In exchange, the vanilla TextTable and text content have been reduced and redirected to the .data section of the kernel. Since we've only cut the story text from the original game, this won't affect custom game development.
+
 ## Font space
 
 Free space at `0x0EFB2E0` is used to insert font data for further multi-language support, which is also a reserved space.
