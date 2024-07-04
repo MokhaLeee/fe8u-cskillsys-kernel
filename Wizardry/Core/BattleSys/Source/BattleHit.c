@@ -10,6 +10,80 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
+enum damage_decrease_sheet_idx {
+    DMG_DECREASE_IDX_05Perc,
+    DMG_DECREASE_IDX_10Perc,
+    DMG_DECREASE_IDX_15Perc,
+    DMG_DECREASE_IDX_20Perc,
+    DMG_DECREASE_IDX_25Perc,
+    DMG_DECREASE_IDX_30Perc,
+    DMG_DECREASE_IDX_35Perc,
+    DMG_DECREASE_IDX_40Perc,
+    DMG_DECREASE_IDX_45Perc,
+    DMG_DECREASE_IDX_50Perc,
+    DMG_DECREASE_IDX_55Perc,
+    DMG_DECREASE_IDX_60Perc,
+    DMG_DECREASE_IDX_65Perc,
+    DMG_DECREASE_IDX_70Perc,
+    DMG_DECREASE_IDX_75Perc,
+    DMG_DECREASE_IDX_80Perc,
+    DMG_DECREASE_IDX_85Perc,
+    DMG_DECREASE_IDX_90Perc,
+    DMG_DECREASE_IDX_95Perc,
+
+    DMG_DECREASE_IDX_MAX
+};
+
+enum damage_decrease_cheat {
+    /**
+     * (1 - percentage%) = 1 / (100% + decrease%)
+     * decrease = 1/(1 - percentage%) - 1
+     * 
+     * here we calculate on (decrease * 0x100)
+     */
+    DMG_DECREASE_95Perc = 4864, // 19.00000
+    DMG_DECREASE_90Perc = 2304, // 9.00000
+    DMG_DECREASE_85Perc = 1451, // 5.66667
+    DMG_DECREASE_80Perc = 1024, // 4.00000
+    DMG_DECREASE_75Perc = 768,  // 3.00000
+    DMG_DECREASE_70Perc = 597,  // 2.33333
+    DMG_DECREASE_65Perc = 475,  // 1.85714
+    DMG_DECREASE_60Perc = 384,  // 2.50000
+    DMG_DECREASE_55Perc = 313,  // 1.22222
+    DMG_DECREASE_50Perc = 256,  // 1.00000
+    DMG_DECREASE_45Perc = 210,  // 0.81818
+    DMG_DECREASE_40Perc = 171,  // 0.66667
+    DMG_DECREASE_35Perc = 138,  // 0.53846
+    DMG_DECREASE_30Perc = 110,  // 0.42857
+    DMG_DECREASE_25Perc = 85,   // 0.33333
+    DMG_DECREASE_20Perc = 64,   // 0.25000
+    DMG_DECREASE_15Perc = 45,   // 0.17647
+    DMG_DECREASE_10Perc = 28,   // 0.11111
+    DMG_DECREASE_05Perc = 13,   // 0.05263
+};
+
+STATIC_DECLAR u16 damage_decrease_cheat_sheet[DMG_DECREASE_IDX_MAX] = {
+    [DMG_DECREASE_IDX_05Perc] = DMG_DECREASE_05Perc,
+    [DMG_DECREASE_IDX_10Perc] = DMG_DECREASE_10Perc,
+    [DMG_DECREASE_IDX_15Perc] = DMG_DECREASE_15Perc,
+    [DMG_DECREASE_IDX_20Perc] = DMG_DECREASE_20Perc,
+    [DMG_DECREASE_IDX_25Perc] = DMG_DECREASE_25Perc,
+    [DMG_DECREASE_IDX_30Perc] = DMG_DECREASE_30Perc,
+    [DMG_DECREASE_IDX_35Perc] = DMG_DECREASE_35Perc,
+    [DMG_DECREASE_IDX_40Perc] = DMG_DECREASE_40Perc,
+    [DMG_DECREASE_IDX_45Perc] = DMG_DECREASE_45Perc,
+    [DMG_DECREASE_IDX_50Perc] = DMG_DECREASE_50Perc,
+    [DMG_DECREASE_IDX_55Perc] = DMG_DECREASE_55Perc,
+    [DMG_DECREASE_IDX_60Perc] = DMG_DECREASE_60Perc,
+    [DMG_DECREASE_IDX_65Perc] = DMG_DECREASE_65Perc,
+    [DMG_DECREASE_IDX_70Perc] = DMG_DECREASE_70Perc,
+    [DMG_DECREASE_IDX_75Perc] = DMG_DECREASE_75Perc,
+    [DMG_DECREASE_IDX_80Perc] = DMG_DECREASE_80Perc,
+    [DMG_DECREASE_IDX_85Perc] = DMG_DECREASE_85Perc,
+    [DMG_DECREASE_IDX_90Perc] = DMG_DECREASE_90Perc,
+    [DMG_DECREASE_IDX_95Perc] = DMG_DECREASE_95Perc,
+};
+
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
@@ -116,36 +190,21 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     return damage;
 }
 
-/* LynJump */
-void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
+STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int attack, defense, amplifier;
-    int damage, real_damage;
-    bool crit_atk = false;
+    bool crit_atk;
+    int result, damage_base, attack, defense;
+    int correction, real_damage, increase, decrease, crit_correction;
+
     FORCE_DECLARE struct BattleGlobalFlags * act_flags, * tar_flags;
 
-    gBattleStats.damage = 0;
-
-    /* Fasten simulation */
-    if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
-    {
-#if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, 30 + attacker->unit.lck))
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
-        else
-        {
-            RegisterHitCnt(attacker, true);
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-            return;
-        }
-#else
-        RegisterHitCnt(attacker, true);
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-        return;
-#endif
-    }
-
-    RegisterHitCnt(attacker, false);
+    /**
+     * result = ([atk + correction - def])
+     *              * (100% + increase%)
+     *              * (200%  + crit_correction%)
+     *              / (100% + decrease%)
+     *              + real_damage
+     */
 
     if (attacker == &gBattleActor)
     {
@@ -158,21 +217,54 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         tar_flags = &gBattleActorGlobalFlag;
     }
 
-    /* Judge whether in combat-art attack */
-    if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
-        TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
+    /**
+     * Step0: Roll critical and silencer attack
+     */
+    crit_atk = false;
 
+    if (
+#if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
+        !SkillTester(&defender->unit, SID_Fortune)
+#else
+        (1)
+#endif
+        ||
+#if defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight))
+        !SkillTester(&defender->unit, SID_Foresight)
+#else
+        (1)
+#endif
+    )
+    {
+        if (BattleRoll1RN(gBattleStats.critRate, false))
+        {
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+            crit_atk = true;
+
+            if (BattleRoll1RN(gBattleStats.silencerRate, false))
+            {
+                /* Directly return on silencer attack to fasten calc */
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_SILENCER;
+                return BATTLE_MAX_DAMAGE;
+            }
+        }
+    }
+
+    /**
+     * Step1: Calculate base damage (atk + correction - def)
+     */
     attack = gBattleStats.attack;
     defense = gBattleStats.defense;
+    correction = 0;
 
 #if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
     if (SkillTester(&attacker->unit, SID_QuickDraw) && attacker == &gBattleTarget)
-        attack += 4;
+        correction += 4;
 #endif
 
 #if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
     if (SkillTester(&attacker->unit, SID_StrongRiposte) && attacker == &gBattleTarget)
-        attack += 3;
+        correction += 3;
 #endif
 
 #if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
@@ -213,13 +305,13 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         case ITYPE_LANCE:
         case ITYPE_AXE:
         case ITYPE_BOW:
-            attack += attacker->unit.def / 2;
+            correction += attacker->unit.def / 2;
             break;
 
         case ITYPE_ANIMA:
         case ITYPE_LIGHT:
         case ITYPE_DARK:
-            attack += attacker->unit.res / 2;
+            correction += attacker->unit.res / 2;
             break;
         default:
             break;
@@ -231,7 +323,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (CheckBattleSkillActivate(attacker, defender, SID_Glacies, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Glacies);
-        attack += attacker->unit.res;
+        correction += attacker->unit.res;
     }
 #endif
 
@@ -239,28 +331,40 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (CheckBattleSkillActivate(attacker, defender, SID_Vengeance, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
-        attack += (attacker->unit.maxHP - attacker->unit.curHP);
+        correction += (attacker->unit.maxHP - attacker->unit.curHP);
     }
 #endif
 
-    amplifier = 10000;
-    damage = attack - defense;
-
-#if defined(SID_FlashingBladePlus) && (COMMON_SKILL_VALID(SID_FlashingBladePlus))
-    if (SkillTester(&attacker->unit, SID_FlashingBladePlus))
-        damage += 3;
+#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
+        if (SkillTester(&attacker->unit, SID_Spurn) && crit_atk)
+            correction += 5;
 #endif
 
+    /**
+     * Step1.1: fasten calculation!
+     */
+    damage_base = attack + correction - defense;
+    if (damage_base <= 0)
+        return 0;
+
+    /**
+     * Step2: Calculate damage increase amplifier (100% + increase%)
+     */
+    increase = 100;
+
 #if defined(SID_DragonFang) && (COMMON_SKILL_VALID(SID_DragonFang))
-    if (SkillTester(&attacker->unit, SID_DragonFang))
-        amplifier += 5000;
+    if (CheckBattleSkillActivate(attacker, defender, SID_DragonFang, attacker->unit.skl * 2))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonFang);
+        increase += 50;
+    }
 #endif
 
 #if (defined(SID_Colossus) && (COMMON_SKILL_VALID(SID_Colossus)))
     if (CheckBattleSkillActivate(attacker, defender, SID_Colossus, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
-        amplifier += 20000;
+        increase += 200;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
@@ -269,101 +373,43 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (CheckBattleSkillActivate(attacker, defender, SID_Impale, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
-        amplifier += 30000;
+        increase += 300;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
 
     if (gBattleTemporaryFlag.skill_activated_sure_shoot)
-        amplifier += 5000;
+        increase += 50;
+
+    /**
+     * Step3: Calculate critial damage amplifier (200%  + crit_correction%)
+     */
+    crit_correction = 100;
+    if (crit_atk)
+    {
+        crit_correction = 300;
+
+#if defined(SID_InfinityEdge) && (COMMON_SKILL_VALID(SID_InfinityEdge))
+        if (SkillTester(&attacker->unit, SID_InfinityEdge))
+            crit_correction += 100;
+#endif
+    }
+
+    /**
+     * Step4: Calculate damage decrease amplifier (100% + decrease%)
+     */
+    decrease = 0x100;
 
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (attacker == &gBattleActor && SkillTester(&attacker->unit, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
-    {
-        /* If we can deal damage, astra should not reduce it to 0 */
-        if (damage > 1)
-            amplifier /= 2;
-    }
+        decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
 #endif
-
-    if (damage > 0)
-    {
-#if (defined(SID_GreatShield) && (COMMON_SKILL_VALID(SID_GreatShield)))
-            if (CheckBattleSkillActivate(defender, attacker, SID_GreatShield, defender->unit.skl))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
-                damage = 0;
-            }
-#endif
-        if (IsMagicAttack(attacker))
-        {
-#if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
-            if (CheckBattleSkillActivate(defender, attacker, SID_Aegis, defender->unit.skl))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
-                damage = 0;
-            }
-#endif
-        }
-        else
-        {
-#if (defined(SID_Pavise) && (COMMON_SKILL_VALID(SID_Pavise)))
-            if (CheckBattleSkillActivate(defender, attacker, SID_Pavise, defender->unit.skl))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
-                damage = 0;
-            }
-#endif
-        }
-    }
-
-    /* Minus zero */
-    if (damage < 0)
-        damage = 0;
-
-    /**
-     * Roll critical hit
-     */
-    if (BattleRoll1RN(gBattleStats.critRate, FALSE) == TRUE &&
-#if defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight))
-        !SkillTester(&defender->unit, SID_Foresight) &&
-#else
-        0 &&
-#endif
-#if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
-        !SkillTester(&defender->unit, SID_Fortune)
-#else
-        0
-#endif
-    )
-    {
-        if (BattleRoll1RN(gBattleStats.silencerRate, FALSE))
-        {
-            /* Silencer */
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_SILENCER;
-            damage = BATTLE_MAX_DAMAGE;
-        }
-        else
-        {
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-            crit_atk = true;
-
-#if defined(SID_InfinityEdge) && (COMMON_SKILL_VALID(SID_InfinityEdge))
-            if (SkillTester(&attacker->unit, SID_InfinityEdge))
-#else
-            if (0)
-#endif
-                amplifier += 30000;
-            else
-                amplifier += 20000;
-        }
-    }
 
 #if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
     if (SkillTester(&defender->unit, SID_DragonSkin))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        amplifier /= 2;
+        decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
     }
 #endif
 
@@ -371,7 +417,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (SkillTester(&defender->unit, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        amplifier /= 2;
+        decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
     }
 #endif
 
@@ -384,90 +430,160 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
             SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
-            amplifier /= 2;
+            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
         }
     }
 #endif
 
-    if (gBattleHitIterator->attributes & BATTLE_HIT_ATTR_CRIT)
+    if (crit_atk)
     {
 #if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
-    if (SkillTester(&defender->unit, SID_Gambit) && gBattleStats.range == 1)
-        amplifier /= 2;
+        if (SkillTester(&defender->unit, SID_Gambit) && gBattleStats.range == 1)
+            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
 #endif
 
 #if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
-    if (SkillTester(&defender->unit, SID_MagicGambit) && gBattleStats.range > 1)
-        amplifier /= 2;
+        if (SkillTester(&defender->unit, SID_MagicGambit) && gBattleStats.range > 1)
+            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
 #endif
     }
     else
     {
 #if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
-    if (SkillTester(&defender->unit, SID_BeastAssault))
-        amplifier /= 2;
+        if (SkillTester(&defender->unit, SID_BeastAssault))
+            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_50Perc];
 #endif
     }
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
     if (SkillTester(&defender->unit, SID_Spurn))
     {
-        int as_diff = defender->battleSpeed - attacker->battleSpeed;
+        int as_diff, cheat_ref;
+        
+        as_diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(as_diff, 0, 10);
 
-        amplifier -= amplifier * as_diff / 25;
+        cheat_ref = (as_diff * 4) / 5;
+        if (cheat_ref > 0)
+            decrease += damage_decrease_cheat_sheet[cheat_ref - 1];
     }
 #endif
 
 #if (defined(SID_CounterRoar) && (COMMON_SKILL_VALID(SID_CounterRoar)))
-    if (SkillTester(&defender->unit, SID_CounterRoar))
+    if (SkillTester(&attacker->unit, SID_CounterRoar))
     {
-        int _reduc = 3;
-        if (act_flags->round_cnt_hit > 1)
-            _reduc = 7;
-
-        amplifier -= amplifier * _reduc / 10;
+        if (act_flags->round_cnt_hit == 1)
+            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_30Perc];
+        else
+            decrease += damage_decrease_cheat_sheet[DMG_DECREASE_IDX_70Perc];
     }
 #endif
-
-    if (gBattleHitIterator->attributes & BATTLE_HIT_ATTR_SILENCER)
-    {
-        damage = BATTLE_MAX_DAMAGE;
-    }
-    else
-    {
-        int _damage = (damage * amplifier / 10000);
-        if (damage > 0 && _damage <= 0)
-            _damage = 0;
-
-        damage = _damage;
-    }
-
-    if (crit_atk)
-    {
-#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-        if (SkillTester(&attacker->unit, SID_Spurn))
-            damage += 5;
-#endif
-    }
 
     /**
-     * Real damage:
-     *  1. Ignore damage calculation
-     *  2. No damage increase
-     *  3. Cannot Crit
+     * Step5: Calculate real damage
      */
     real_damage = CalcBattleRealDamage(attacker, defender);
     if (real_damage > 0 && gBattleStats.config & BATTLE_CONFIG_REAL)
         TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
 
-    damage += real_damage;
+    /**
+     * Step6: Calculate result
+     */
+    {
+        u32 dividend, divisor, quotient;
 
-    /* Post calc */
-    if (damage > BATTLE_MAX_DAMAGE)
-        damage = BATTLE_MAX_DAMAGE;
+        dividend = damage_base * increase * crit_correction * 0x100;
+        divisor  = 100 * 100 * decrease;
+        quotient = (dividend * 0x10) / divisor;
 
-    gBattleStats.damage = damage;
+        Debugf("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
+
+        if ((quotient & 0xF) >= 8)
+            quotient += 8;
+
+        result = quotient / 0x10;
+    }
+
+    if (result == 0 && damage_base > 0)
+        result = 1; // at least 1 damage left.
+
+    result += real_damage;
+
+    Printf("[round %d] dmg=%d: base=%d (atk=%d, def=%d, cor=%d), inc=%d, crt=%d, dec=%d, real=%d",
+                    GetBattleHitRound(gBattleHitIterator), result, damage_base,
+                    attack, defense, correction, increase, crit_correction, decrease, real_damage);
+
+    /**
+     * Others
+     */
+    if (result > 0)
+    {
+#if (defined(SID_GreatShield) && (COMMON_SKILL_VALID(SID_GreatShield)))
+        if (CheckBattleSkillActivate(defender, attacker, SID_GreatShield, defender->unit.skl))
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
+            result = 0;
+        }
+#endif
+        if (IsMagicAttack(attacker))
+        {
+#if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
+            if (CheckBattleSkillActivate(defender, attacker, SID_Aegis, defender->unit.skl))
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
+                result = 0;
+            }
+#endif
+        }
+        else
+        {
+#if (defined(SID_Pavise) && (COMMON_SKILL_VALID(SID_Pavise)))
+            if (CheckBattleSkillActivate(defender, attacker, SID_Pavise, defender->unit.skl))
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
+                result = 0;
+            }
+#endif
+        }
+    }
+
+    if (result > BATTLE_MAX_DAMAGE)
+        result = BATTLE_MAX_DAMAGE;
+
+    return result;
+}
+
+/* LynJump */
+void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    gBattleStats.damage = 0;
+
+    /* Fasten simulation */
+    if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
+    {
+#if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
+        if (CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, 30 + attacker->unit.lck))
+            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
+        else
+        {
+            RegisterHitCnt(attacker, true);
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+            return;
+        }
+#else
+        RegisterHitCnt(attacker, true);
+        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+        return;
+#endif
+    }
+
+    RegisterHitCnt(attacker, false);
+
+    /* Judge whether in combat-art attack */
+    if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
+        TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
+
+    gBattleStats.damage = BattleHit_CalcDamage(attacker, defender);
 
     BattleCheckPetrify(attacker, defender);
 
