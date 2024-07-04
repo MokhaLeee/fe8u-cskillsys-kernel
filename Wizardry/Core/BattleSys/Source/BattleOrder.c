@@ -69,8 +69,6 @@ static u16 DequeueRoundEfxSkill(void)
 bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target)
 {
     u8 cid;
-    struct Unit * real_actor = GetUnit(gBattleActor.unit.index);
-    struct Unit * real_target = GetUnit(gBattleTarget.unit.index);
 
     if (target->battleSpeed > 250)
         return false;
@@ -95,17 +93,17 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     if (&gBattleActor == actor)
     {
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
-        if (SkillTester(real_target, SID_WaryFighter))
-            if ((GetUnitCurrentHp(real_target) * 2) > HpMaxGetter(real_target))
+        if (SkillTester(&target->unit, SID_WaryFighter))
+            if ((target->hpInitial * 2) > target->unit.maxHP)
                 return false;
 #endif
 
         gBattleTemporaryFlag.order_dobule_lion = false;
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-        if (SkillTester(real_actor, SID_DoubleLion))
+        if (SkillTester(&actor->unit, SID_DoubleLion))
         {
-            if (GetUnitCurrentHp(real_actor) == HpMaxGetter(real_actor))
+            if (actor->hpInitial == actor->unit.maxHP)
             {
                 gBattleActorGlobalFlag.skill_activated_double_lion = true;
                 gBattleTemporaryFlag.order_dobule_lion = true;
@@ -119,9 +117,9 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         gBattleTemporaryFlag.order_quick_riposte = false;
 
 #if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
-        if (SkillTester(real_actor, SID_QuickRiposte))
+        if (SkillTester(&actor->unit, SID_QuickRiposte))
         {
-            if ((GetUnitCurrentHp(real_target) * 2) > HpMaxGetter(real_target))
+            if ((actor->hpInitial * 2) > actor->unit.maxHP)
             {
                 gBattleTemporaryFlag.order_quick_riposte = true;
                 return true;
@@ -138,14 +136,12 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
 STATIC_DECLAR bool CheckDesperationOrder(void)
 {
-    struct Unit * actor = GetUnit(gBattleActor.unit.index);
-
     gBattleTemporaryFlag.order_desperation = false;
 
 #if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
-    if (SkillTester(actor, SID_Desperation))
+    if (SkillTester(&gBattleActor.unit, SID_Desperation))
     {
-        if ((GetUnitCurrentHp(actor) * 2) < HpMaxGetter(actor))
+        if ((gBattleActor.hpInitial * 2) < gBattleActor.unit.maxHP)
         {
             gBattleTemporaryFlag.order_desperation = true;
             return true;
@@ -157,17 +153,15 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 
 STATIC_DECLAR bool CheckVantageOrder(void)
 {
-    struct Unit * target = GetUnit(gBattleTarget.unit.index);
-
     gBattleTemporaryFlag.order_vantage = false;
 
     /* Combat art will not allow vantage */
     if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
         return false;
 
-    if (SkillTester(target, SID_Vantage))
+    if (SkillTester(&gBattleTarget.unit, SID_Vantage))
     {
-        if ((GetUnitCurrentHp(target) * 2) < HpMaxGetter(target))
+        if ((gBattleTarget.hpInitial * 2) < gBattleTarget.unit.maxHP)
         {
             gBattleTemporaryFlag.order_vantage = true;
             return true;
