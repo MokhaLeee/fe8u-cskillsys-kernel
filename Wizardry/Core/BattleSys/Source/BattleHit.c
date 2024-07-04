@@ -494,14 +494,10 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
         dividend = damage_base * increase * crit_correction * 0x100;
         divisor  = 100 * 100 * decrease;
-        quotient = (dividend * 0x10) / divisor;
 
+        quotient = DIV_ROUND_CLOSEST(dividend, divisor);
         Debugf("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
-
-        if ((quotient & 0xF) >= 8)
-            quotient += 8;
-
-        result = quotient / 0x10;
+        result = quotient;
     }
 
     if (result == 0 && damage_base > 0)
