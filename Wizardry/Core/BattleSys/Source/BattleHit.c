@@ -273,6 +273,37 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (damage_base <= 0)
         return 0;
 
+    if (damage_base > 0)
+    {
+#if (defined(SID_GreatShield) && (COMMON_SKILL_VALID(SID_GreatShield)))
+        if (CheckBattleSkillActivate(defender, attacker, SID_GreatShield, defender->unit.skl))
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
+            return 0;
+        }
+#endif
+        if (IsMagicAttack(attacker))
+        {
+#if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
+            if (CheckBattleSkillActivate(defender, attacker, SID_Aegis, defender->unit.skl))
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
+                return 0;
+            }
+#endif
+        }
+        else
+        {
+#if (defined(SID_Pavise) && (COMMON_SKILL_VALID(SID_Pavise)))
+            if (CheckBattleSkillActivate(defender, attacker, SID_Pavise, defender->unit.skl))
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
+                return 0;
+            }
+#endif
+        }
+    }
+
     /**
      * Step2: Calculate damage increase amplifier (100% + increase%)
      */
@@ -432,40 +463,6 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     Printf("[round %d] dmg=%d: base=%d (atk=%d, def=%d, cor=%d), inc=%d, crt=%d, dec=%d, real=%d",
                     GetBattleHitRound(gBattleHitIterator), result, damage_base,
                     attack, defense, correction, increase, crit_correction, decrease, real_damage);
-
-    /**
-     * Others
-     */
-    if (result > 0)
-    {
-#if (defined(SID_GreatShield) && (COMMON_SKILL_VALID(SID_GreatShield)))
-        if (CheckBattleSkillActivate(defender, attacker, SID_GreatShield, defender->unit.skl))
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
-            result = 0;
-        }
-#endif
-        if (IsMagicAttack(attacker))
-        {
-#if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
-            if (CheckBattleSkillActivate(defender, attacker, SID_Aegis, defender->unit.skl))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
-                result = 0;
-            }
-#endif
-        }
-        else
-        {
-#if (defined(SID_Pavise) && (COMMON_SKILL_VALID(SID_Pavise)))
-            if (CheckBattleSkillActivate(defender, attacker, SID_Pavise, defender->unit.skl))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
-                result = 0;
-            }
-#endif
-        }
-    }
 
     if (result > BATTLE_MAX_DAMAGE)
         result = BATTLE_MAX_DAMAGE;
