@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "battle-system.h"
 #include "strmag.h"
 #include "debuff.h"
 #include "bwl.h"

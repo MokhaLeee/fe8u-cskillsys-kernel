@@ -113,6 +113,11 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         damage += defender->battleDefense / 4;
 #endif
 
+#if defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido))
+    if (SkillTester(&attacker->unit, SID_Bushido))
+        damage += 7;
+#endif
+
     return damage;
 }
 
@@ -262,8 +267,13 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #endif
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-        if (SkillTester(&attacker->unit, SID_Spurn) && crit_atk)
+        if (SkillTester(&attacker->unit, SID_Spurn) && crit_atk && (attacker->hpInitial * 4) < (attacker->unit.maxHP * 3))
             correction += 5;
+#endif
+
+#if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
+    if (SkillTester(&attacker->unit, SID_DragonWarth) && act_flags->round_cnt_hit == 1)
+        correction += attack / 5;
 #endif
 
     /**
@@ -382,7 +392,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (SkillTester(&defender->unit, SID_GuardBearing))
     {
         if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) &&
-            GetBattleGlobalFlags(attacker)->round_cnt_hit == 1 &&
+            act_flags->round_cnt_hit == 1 &&
             !CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
@@ -415,23 +425,71 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
     if (SkillTester(&defender->unit, SID_Spurn))
     {
-        int as_diff;
+        int _diff;
         
-        as_diff = defender->battleSpeed - attacker->battleSpeed;
-        LIMIT_AREA(as_diff, 0, 10);
+        _diff = defender->battleSpeed - attacker->battleSpeed;
+        LIMIT_AREA(_diff, 0, 10);
 
-        decrease += DAMAGE_DECREASE(as_diff * 4);
+        decrease += DAMAGE_DECREASE(_diff * 4);
+    }
+#endif
+
+#if (defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido)))
+    if (SkillTester(&defender->unit, SID_Bushido))
+    {
+        int _diff;
+        
+        _diff = defender->battleSpeed - attacker->battleSpeed;
+        LIMIT_AREA(_diff, 0, 10);
+
+        decrease += DAMAGE_DECREASE(_diff * 4);
+    }
+#endif
+
+#if (defined(SID_DragonWall) && (COMMON_SKILL_VALID(SID_DragonWall)))
+    if (SkillTester(&defender->unit, SID_DragonWall))
+    {
+        int _diff;
+        
+        _diff = defender->unit.res - attacker->unit.res;
+        LIMIT_AREA(_diff, 0, 10);
+
+        decrease += DAMAGE_DECREASE(_diff * 4);
+    }
+#endif
+
+#if (defined(SID_BlueLionRule) && (COMMON_SKILL_VALID(SID_BlueLionRule)))
+    if (SkillTester(&defender->unit, SID_BlueLionRule))
+    {
+        int _diff;
+        
+        _diff = defender->unit.def - attacker->unit.def;
+        LIMIT_AREA(_diff, 0, 10);
+
+        decrease += DAMAGE_DECREASE(_diff * 4);
     }
 #endif
 
 #if (defined(SID_CounterRoar) && (COMMON_SKILL_VALID(SID_CounterRoar)))
-    if (SkillTester(&attacker->unit, SID_CounterRoar))
+    if (SkillTester(&defender->unit, SID_CounterRoar))
     {
         if (act_flags->round_cnt_hit == 1)
             decrease += DAMAGE_DECREASE(30);
         else
             decrease += DAMAGE_DECREASE(70);
     }
+#endif
+
+#if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
+    if (SkillTester(&defender->unit, SID_DragonWarth) && tar_flags->round_cnt_hit == 1)
+        decrease += DAMAGE_DECREASE(20);
+#endif
+
+#if (defined(SID_CrusaderWard) && (COMMON_SKILL_VALID(SID_CrusaderWard)))
+    if (SkillTester(&defender->unit, SID_CrusaderWard) &&
+        tar_flags->round_cnt_hit == 1 &&
+        gBattleStats.range > 1)
+        decrease += DAMAGE_DECREASE(80);
 #endif
 
     /**

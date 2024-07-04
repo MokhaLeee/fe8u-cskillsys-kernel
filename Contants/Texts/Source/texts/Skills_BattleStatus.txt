@@ -511,6 +511,40 @@ Spurn: Reduce damage as 4% AS diff[NL]
 (max 40%). Damage +5 for critical atk[NL]
 if unit HP is less than 75%[X]
 
+## MSG_SKILL_Bushido
+Bushido:[NL]
+Reduce damage as 4% AS diff[NL]
+(max 40%). Damage +7[X]
+
+## MSG_SKILL_DragonWall
+Dragon Wall:[NL]
+Reduce damage as 4% RES diff[NL]
+(max 40%).[X]
+
+## MSG_SKILL_BlueLionRule_NAME
+Blue Lion[X]
+
+## MSG_SKILL_BlueLionRule
+Blue Lion Rule:[NL]
+Reduce damage as 4% DEF diff[NL]
+(max 40%).[X]
+
+## MSG_SKILL_DragonWarth_NAME
+DragonWarth[X]
+
+## MSG_SKILL_DragonWarth
+Dragon's Warth: Damage -20% of the[NL]
+first attack from the foe and[NL]
+attack+20% on first own attack[X]
+
+## MSG_SKILL_CrusaderWard_NAME
+Crusader-W[X]
+
+## MSG_SKILL_CrusaderWard
+Crusader's Ward:[NL]
+Reduces damage from foe's second[NL]
+ranged attack onward by 80%[X]
+
 ## MSG_SKILL_Chlorophyll
 Chlorophyll:[NL]
 If it is sunny, double this[NL]

@@ -58,6 +58,8 @@ extern struct BattleGlobalFlags {
     u32 round_cnt_hit : 5;  // align to NEW_BATTLE_HIT_MAX
     u32 round_cnt_avo : 5;  // align to NEW_BATTLE_HIT_MAX
     u32 enimy_defeated : 1;
+    u32 allies_in_range3x3 : 5;
+    u32 enemies_in_range3x3 : 5;
     u32 skill_activated_double_lion : 1;
     u32 skill_activated_astra : 1;
     u32 skill_activated_galeforce : 1;

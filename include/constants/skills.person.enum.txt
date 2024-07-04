@@ -16,7 +16,12 @@ SID_CounterRoar
 SID_Gambit
 SID_MagicGambit
 SID_BeastAssault
-// SID_LightAndDark
+SID_LightAndDark
+SID_Bushido
+SID_DragonWall
+SID_DragonWarth
+SID_BlueLionRule
+SID_CrusaderWard
 SID_Plus
 SID_Minus
 

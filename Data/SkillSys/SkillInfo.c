@@ -2381,6 +2381,44 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Bushido) && COMMON_SKILL_VALID(SID_Bushido))
+    [SID_Bushido] = {
+        .desc = MSG_SKILL_Bushido,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DragonWall) && COMMON_SKILL_VALID(SID_DragonWall))
+    [SID_DragonWall] = {
+        .desc = MSG_SKILL_DragonWall,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DragonWarth) && COMMON_SKILL_VALID(SID_DragonWarth))
+    [SID_DragonWarth] = {
+        .name = MSG_SKILL_DragonWarth_NAME,
+        .desc = MSG_SKILL_DragonWarth,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_BlueLionRule) && COMMON_SKILL_VALID(SID_BlueLionRule))
+    [SID_BlueLionRule] = {
+        .name = MSG_SKILL_BlueLionRule_NAME,
+        .desc = MSG_SKILL_BlueLionRule,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_CrusaderWard) && COMMON_SKILL_VALID(SID_CrusaderWard))
+    [SID_CrusaderWard] = {
+        .name = MSG_SKILL_CrusaderWard_NAME,
+        .desc = MSG_SKILL_CrusaderWard,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_YuneWhispers) && COMMON_SKILL_VALID(SID_YuneWhispers))
     [SID_YuneWhispers] = {
         .name = MSG_SKILL_YuneWhispers_NAME,
