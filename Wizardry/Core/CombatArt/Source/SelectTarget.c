@@ -21,10 +21,13 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
 
     for (; new != old; new--)
     {
+        const struct CombatArtInfo * info;
+
         if (new < 0)
             return 0;
 
-        if (wtype == gpCombatArtInfos[list->cid[new]].wtype)
+        info = &gpCombatArtInfos[list->cid[new]];
+        if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             break;
     }
 
@@ -40,10 +43,14 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
 
     for (; new != old; new++)
     {
+        const struct CombatArtInfo * info;
+
         if (new >= list->amt)
             return 0;
 
-        if (wtype == gpCombatArtInfos[list->cid[new]].wtype)
+        info = &gpCombatArtInfos[list->cid[new]];
+
+        if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             break;
     }
     LTRACEF("wtype %d, old %d, new %d", wtype, old, new);
