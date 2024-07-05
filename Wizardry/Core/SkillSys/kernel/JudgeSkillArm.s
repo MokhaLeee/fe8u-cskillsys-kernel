@@ -2,9 +2,17 @@
 
     .SYNTAX UNIFIED
 
+.global _SkillTester
+_SkillTester:
+    .4byte ARM_SkillTester
+
+.global _SkillTesterEnd
+_SkillTesterEnd:
+    .4byte ARM_SkillTesterEnd
+
     .arm
-    .global _ARM_SkillTester_start
-_ARM_SkillTester_start:
+    .global _ARM_SkillTester_CopyStart
+_ARM_SkillTester_CopyStart:
 _ARM_SkillTester:
     push {r4, lr}
 
@@ -124,5 +132,5 @@ _SkillTester_IInfo:
 .LgpConstSkillTable_Item:
     .4byte gpConstSkillTable_Item
 
-.global _ARM_SkillTester_end
-_ARM_SkillTester_end:
+.global _ARM_SkillTester_CopyEnd
+_ARM_SkillTester_CopyEnd:

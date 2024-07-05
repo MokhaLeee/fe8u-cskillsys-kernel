@@ -2,7 +2,7 @@
 ALIGN 4
 gGameInitHookTable:
     POIN GameInit_OverflowDetection
-    POIN GameInit_CopySkillTesterArm
+    POIN GameInit_CopyArmFuncs
     POIN InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
     POIN ClearKtutorialFlags
     POIN GameInit_DetectEmsChunks

@@ -81,3 +81,11 @@ _kernel_malloc NewAlloc4Bytes, 4
 > Make sure that the allocated space is 32 bits aligned
 
 3. Declare the variable in your own C file, `extern u8 NewAlloc4Bytes[4];`
+
+# Other kernel built-in RAM space usage
+
+| Address       | Size      | Usage                             | Vanilla usage
+| -------       | ------    | -----                             | ----
+| 0x03003F48    | 0x208     | ARM call for SkillTester          | End of ARM functions copy (vanilla: ramfunc.c)
+| 0x0300428C    | 0x6D4     | ARM call for BattleSkillTester    | End IntrMain_Buffer (vanilla: irq.c)
+|               |           |                                   |

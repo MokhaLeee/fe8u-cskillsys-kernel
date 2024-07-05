@@ -47,5 +47,6 @@
 #include "../Wizardry/Core/AiHack/data.event"
 #include "../Wizardry/Core/CombatArt/data.event"
 #include "../Wizardry/Core/ComboAttack/data.event"
+#include "../Wizardry/Common/ArmFunc/data.event"
 
 #endif

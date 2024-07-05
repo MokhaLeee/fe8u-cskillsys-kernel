@@ -14,4 +14,5 @@ dat 0x02026AD0, gBattleHitArrayRe   /* 4 * 0x21 */
 dat 0x02026B54, gAnimRoundDataRe    /* 4 * 0x21 */
 dat 0x02026BD8, gEfxHpLutRe         /* 4 * 0x21 */
 
-dat 0x03003F48, ARM_SkillTester    /* 520 Bytes left */
+dat 0x03003F48, ARM_SkillTester
+dat 0x03004150, ARM_SkillTesterEnd

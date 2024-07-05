@@ -81,7 +81,7 @@ struct SkillList * GetUnitSkillList(struct Unit * unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */
-bool _SkillTester(struct Unit * unit, const u16 sid);
+extern bool (* _SkillTester)(struct Unit * unit, const u16 sid);
 bool ARM_SkillTester(struct Unit * unit, const u16 sid);
 #define SkillTester _SkillTester
 
