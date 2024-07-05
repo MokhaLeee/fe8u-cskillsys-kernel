@@ -3,7 +3,13 @@
 #include "common-chax.h"
 
 struct UnitListHeader {
-    u32 ck32;
+    const void * pinfo;
+    const void * jinfo;
+    s8 level;
+    s8 uid;
+    u8 items[5];
+
+    u8 _pad_;
 };
 
 extern bool (* _JudgeUnitList)(struct Unit * unit, struct UnitListHeader * ref);

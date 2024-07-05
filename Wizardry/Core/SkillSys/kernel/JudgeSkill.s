@@ -39,8 +39,6 @@ _ARM_SkillTester_CopyStart:
 
 .Ltesters:
     b _SkillTester_Generic
-    // b _SkillTester_PInfo
-    // b _SkillTester_JInfo
     b _SkillTester_COMMON
     b _SkillTester_COMMON
     b _SkillTester_IInfo
@@ -56,25 +54,26 @@ _ARM_SkillTester_CopyStart:
     bx lr
 
 _SkillTester_Generic:
-    ldrb r3, [r0, #0x32]
+    add r1, r0, #0x32
+    ldrb r3, [r1], #1
     cmp r2, r3
     beq .Lend_true
-    ldrb r3, [r0, #0x33]
+    ldrb r3, [r1], #1
     cmp r2, r3
     beq .Lend_true
-    ldrb r3, [r0, #0x34]
+    ldrb r3, [r1], #1
     cmp r2, r3
     beq .Lend_true
-    ldrb r3, [r0, #0x35]
+    ldrb r3, [r1], #1
     cmp r2, r3
     beq .Lend_true
-    ldrb r3, [r0, #0x36]
+    ldrb r3, [r1], #1
     cmp r2, r3
     beq .Lend_true
-    ldrb r3, [r0, #0x37]
+    ldrb r3, [r1], #1
     cmp r2, r3
     beq .Lend_true
-    ldrb r3, [r0, #0x38]
+    ldrb r3, [r1], #1
     cmp r2, r3
     beq .Lend_true
     // b .Lend_false
@@ -92,10 +91,10 @@ _SkillTester_PInfo:
 .L_Table:
     ldr r1, [r4]
     add r1, r1, r0, lsl #2
-    ldrh r0, [r1]
+    ldrh r0, [r1], #2
     cmp r2, r0
     beq .Lend_true
-    ldrh r0, [r1, #2]
+    ldrh r0, [r1]
     cmp r2, r0
     beq .Lend_true
     mov pc, lr
@@ -109,15 +108,15 @@ _SkillTester_JInfo:
 _SkillTester_IInfo:
     add r3, r0, #0x1E
     ldr r4, .LgpConstSkillTable_Item
-    ldrb r0, [r3]
+    ldrb r0, [r3], #2
     bl .L_Table
-    ldrb r0, [r3, #2]
+    ldrb r0, [r3], #2
     bl .L_Table
-    ldrb r0, [r3, #4]
+    ldrb r0, [r3], #2
     bl .L_Table
-    ldrb r0, [r3, #6]
+    ldrb r0, [r3], #2
     bl .L_Table
-    ldrb r0, [r3, #8]
+    ldrb r0, [r3], #2
     bl .L_Table
     // b .Lend_false
     b _SkillTester_COMMON

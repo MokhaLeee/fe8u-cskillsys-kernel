@@ -7,9 +7,10 @@
  * 2: battle target
  */
 extern struct SkillList sSkillList[3];
-struct SkillList * const SkillListGeneric = &sSkillList[0];
-struct SkillList * const SkillListBattleActor = &sSkillList[1];
-struct SkillList * const SkillListBattleTarget = &sSkillList[2];
+
+#define SkillListGeneric &sSkillList[0]
+#define SkillListBattleActor &sSkillList[1]
+#define SkillListBattleTarget &sSkillList[2]
 
 void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 {

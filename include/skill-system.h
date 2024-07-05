@@ -74,19 +74,18 @@ struct SkillList {
     u8 amt;
     u16 sid[23];
 };
-#if 0
-    struct SkillList * GetUnitSkillList(struct Unit * unit);
-#else
-    extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
-    #define GetUnitSkillList _GetUnitSkillList
-#endif
+extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
+#define GetUnitSkillList _GetUnitSkillList
 
 void ResetSkillLists(void);
 
 /* Skill tetsers */
 extern bool (* _SkillTester)(struct Unit * unit, const u16 sid);
-bool ARM_SkillTester(struct Unit * unit, const u16 sid);
 #define SkillTester _SkillTester
+
+// Note this function can only exec for r0 = gBattleActor/gBattleTarget
+extern bool (* JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
+#define BattleSkillTester JudgeSkillViaList
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {
