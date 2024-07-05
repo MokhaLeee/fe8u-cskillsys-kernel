@@ -84,8 +84,8 @@ extern bool (* _SkillTester)(struct Unit * unit, const u16 sid);
 #define SkillTester _SkillTester
 
 // Note this function can only exec for r0 = gBattleActor/gBattleTarget
-extern bool (* JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
-#define BattleSkillTester JudgeSkillViaList
+extern bool (* _JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
+#define BattleSkillTester _JudgeSkillViaList
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {

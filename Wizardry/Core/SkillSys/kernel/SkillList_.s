@@ -7,8 +7,8 @@
 _GetUnitSkillList:
     .4byte ARM_SkillList + (.Lfun_get - _ARM_SkillList_CopyStart)
 
-.global JudgeSkillViaList
-JudgeSkillViaList:
+.global _JudgeSkillViaList
+_JudgeSkillViaList:
     .4byte ARM_SkillList + (.Lfun_judgeskill - _ARM_SkillList_CopyStart)
 
     .arm
@@ -19,9 +19,15 @@ _ARM_SkillList_CopyStart:
 
 .Lfun_get:
     push {r4, r5, lr}
-    mov r4, r0
-    bl .Lget_list_generic_unit
-    mov r5, r1
+    mov r4, r0                  @ r4 = unit
+    ldr r1, .LSkillList
+    ldr r2, .LgBattleActor
+    cmp r0, r2
+    addeq r1, #0x40             @ sizeof(struct SkillList)
+    add r2, #0x80               @ sizeof(struct BattleUnit)
+    cmp r0, r2
+    addeq r1, #0x80             @ sizeof(struct SkillList)
+    mov r5, r1                  @ r5 = list
     bl .Lfunc_JudgeUnitList
     cmp r0, #1
     beq 2f
@@ -40,59 +46,36 @@ _ARM_SkillList_CopyStart:
 .Lfun_judgeskill:
     @ r0 = unit
     @ r1 = sid
-    push {r4, r5, lr}
-    mov r4, r0
-    mov r5, r1
-    bl .Lget_list_battle_unit
-    bl .Lfunc_JudgeUnitList
-    cmp r0, #1
-    beq 1f
+    push {r4, lr}
+    mov r4, r1
+    bl .Lfun_get
 
-    @ This is a bad condition, should only exec once
-    push {r1}
-    mov r0, r4
-    mov r1, r5
-    bl .Lfunc_GenerateSkillListExt
-    pop {r1}
-
-1:
     add r0, #0x10
     ldrb r2, [r0], #2
-    add r3, r2          @ r3: &list->sid[list->amt]
+    lsl r2, #1
+    add r3, r0, r2      @ r3: &list->sid[list->amt]
+1:
     cmp r3, r0          @ r0: &list->sid[i]
     beq 2f
     ldrh r2, [r0], #2
-    cmp r2, r1
+    cmp r2, r4
     beq 3f
     b 1b
 
 2:
     mov r0, #0
-    pop {r4, r5}
+    pop {r4}
     pop {r1}
     bx r1
 
 3:
     mov r0, #1
+    pop {r4}
     pop {r1}
     bx r1
 
 .Lget_list_generic_unit:
-    ldr r1, .LSkillList
-    ldr r2, .LgBattleActor
-    cmp r0, r2
-    addeq r1, #0x40 @ sizeof(struct SkillList)
-    add r2, #0x80   @ sizeof(struct BattleUnit)
-    cmp r0, r2
-    addeq r1, #0x80 @ sizeof(struct SkillList)
-    mov pc, lr
 
-.Lget_list_battle_unit:
-    ldr r1, .LSkillList + 4
-    ldr r3, .LgBattleActor + 4
-    add r3, r0
-    lsr r3, #1
-    add r1, r3
     mov pc, lr
 
 .Lfunc_JudgeUnitList:

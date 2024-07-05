@@ -37,7 +37,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     if (&gBattleActor == actor)
     {
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
-        if (SkillTester(&target->unit, SID_WaryFighter))
+        if (BattleSkillTester(target, SID_WaryFighter))
             if ((target->hpInitial * 2) > target->unit.maxHP)
                 return false;
 #endif
@@ -45,7 +45,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         gBattleTemporaryFlag.order_dobule_lion = false;
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-        if (SkillTester(&actor->unit, SID_DoubleLion))
+        if (BattleSkillTester(actor, SID_DoubleLion))
         {
             if (actor->hpInitial == actor->unit.maxHP)
             {
@@ -61,7 +61,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         gBattleTemporaryFlag.order_quick_riposte = false;
 
 #if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
-        if (SkillTester(&actor->unit, SID_QuickRiposte))
+        if (BattleSkillTester(actor, SID_QuickRiposte))
         {
             if ((actor->hpInitial * 2) > actor->unit.maxHP)
             {
@@ -83,7 +83,7 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
     gBattleTemporaryFlag.order_desperation = false;
 
 #if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
-    if (SkillTester(&gBattleActor.unit, SID_Desperation))
+    if (BattleSkillTester(&gBattleActor, SID_Desperation))
     {
         if ((gBattleActor.hpInitial * 2) < gBattleActor.unit.maxHP)
         {
@@ -103,7 +103,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
         return false;
 
-    if (SkillTester(&gBattleTarget.unit, SID_Vantage))
+    if (BattleSkillTester(&gBattleTarget, SID_Vantage))
     {
         if ((gBattleTarget.hpInitial * 2) < gBattleTarget.unit.maxHP)
         {
@@ -321,7 +321,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
         result = result + 1;
 
 #if defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus))
-    if (SkillTester(&actor->unit, SID_RuinedBladePlus))
+    if (BattleSkillTester(actor, SID_RuinedBladePlus))
     {
         EnqueueRoundEfxSkill(SID_RuinedBladePlus);
         result = result + 1;
@@ -338,7 +338,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_Adept) && (COMMON_SKILL_VALID(SID_Adept))
-    if (SkillTester(&actor->unit, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
+    if (BattleSkillTester(actor, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
     {
         EnqueueRoundEfxSkill(SID_Adept);
         result = result + 1;

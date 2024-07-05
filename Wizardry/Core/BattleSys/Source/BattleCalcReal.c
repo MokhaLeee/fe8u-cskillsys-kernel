@@ -13,7 +13,7 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
      */
 
 #if (defined(SID_CatchingUp) && (COMMON_SKILL_VALID(SID_CatchingUp)))
-        if (SkillTester(&attacker->unit, SID_CatchingUp))
+        if (BattleSkillTester(attacker, SID_CatchingUp))
         {
             /**
              * Check if the enemy unit doubles the skill holder
@@ -28,12 +28,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     if (attacker->battleAttack > defender->battleAttack)
     {
 #if (defined(SID_HeavyBlade) && (COMMON_SKILL_VALID(SID_HeavyBlade)))
-        if (SkillTester(&attacker->unit, SID_HeavyBlade))
+        if (BattleSkillTester(attacker, SID_HeavyBlade))
             attacker->battleCritRate += 15;
 #endif
 
 #if (defined(SID_HeavyBladePlus) && (COMMON_SKILL_VALID(SID_HeavyBladePlus)))
-        if (SkillTester(&attacker->unit, SID_HeavyBladePlus))
+        if (BattleSkillTester(attacker, SID_HeavyBladePlus))
             attacker->battleCritRate += 25;
 #endif
     }
@@ -41,7 +41,7 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     if (attacker->unit.conBonus < defender->unit.conBonus)
     {
 #if (defined(SID_DancingBlade) && (COMMON_SKILL_VALID(SID_DancingBlade)))
-        if (SkillTester(&attacker->unit, SID_DancingBlade))
+        if (BattleSkillTester(attacker, SID_DancingBlade))
         {
             attacker->battleSpeed += 4;
             attacker->battleDefense += 2;
@@ -52,17 +52,17 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     if (attacker->battleSpeed > defender->battleSpeed)
     {
 #if (defined(SID_FlashingBlade) && (COMMON_SKILL_VALID(SID_FlashingBlade)))
-        if (SkillTester(&attacker->unit, SID_FlashingBlade))
+        if (BattleSkillTester(attacker, SID_FlashingBlade))
             attacker->battleCritRate += 15;
 #endif
 
 #if (defined(SID_FlashingBladePlus) && (COMMON_SKILL_VALID(SID_FlashingBladePlus)))
-        if (SkillTester(&attacker->unit, SID_FlashingBladePlus))
+        if (BattleSkillTester(attacker, SID_FlashingBladePlus))
             attacker->battleCritRate += 25;
 #endif
 
 #if (defined(SID_Puissance) && (COMMON_SKILL_VALID(SID_Puissance)))
-        if (SkillTester(&attacker->unit, SID_Puissance))
+        if (BattleSkillTester(attacker, SID_Puissance))
             attacker->battleAttack += 3;
 #endif
     }
@@ -118,12 +118,12 @@ void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct Ba
 STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Hawkeye) && (COMMON_SKILL_VALID(SID_Hawkeye)))
-    if (SkillTester(&attacker->unit, SID_Hawkeye))
+    if (BattleSkillTester(attacker, SID_Hawkeye))
         attacker->battleEffectiveHitRate = 100;
 #endif
 
 #if (defined(SID_Merciless) && (COMMON_SKILL_VALID(SID_Merciless)))
-    if (SkillTester(&attacker->unit, SID_Merciless))
+    if (BattleSkillTester(attacker, SID_Merciless))
     {
         if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_POISON)
             attacker->battleEffectiveCritRate = 100;
@@ -131,7 +131,7 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #endif
 
 #if (defined(SID_WonderGuard) && (COMMON_SKILL_VALID(SID_WonderGuard)))
-    if (SkillTester(&defender->unit, SID_WonderGuard))
+    if (BattleSkillTester(defender, SID_WonderGuard))
     {
         if (defender->weaponType == attacker->weaponType) 
             attacker->battleAttack = 0;
@@ -139,7 +139,7 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #endif
 
 #if (defined(SID_NoGuard) && (COMMON_SKILL_VALID(SID_NoGuard)))
-    if (SkillTester(&attacker->unit, SID_NoGuard) || SkillTester(&defender->unit, SID_NoGuard))
+    if (BattleSkillTester(attacker, SID_NoGuard) || BattleSkillTester(defender, SID_NoGuard))
         attacker->battleEffectiveHitRate = 100;
 #endif
 }

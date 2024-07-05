@@ -61,10 +61,10 @@ void PreBattleGenerateHook(void)
     FORCE_DECLARE struct BattleUnit * target = &gBattleTarget;
 
 #if (defined(SID_LightAndDark) && (COMMON_SKILL_VALID(SID_LightAndDark)))
-    if (SkillTester(&actor->unit, SID_LightAndDark))
+    if (BattleSkillTester(actor, SID_LightAndDark))
         ModifyBattleUnitStatus_LightAndDark(actor, target);
 
-    if (SkillTester(&target->unit, SID_LightAndDark))
+    if (BattleSkillTester(target, SID_LightAndDark))
         ModifyBattleUnitStatus_LightAndDark(target, actor);
 #endif
 }

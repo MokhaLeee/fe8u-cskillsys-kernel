@@ -22,18 +22,18 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit * actor,
     int status = base;
 
 #if defined(SID_Blossom) && (COMMON_SKILL_VALID(SID_Blossom))
-    if (SkillTester(&actor->unit, SID_Blossom))
+    if (BattleSkillTester(actor, SID_Blossom))
         status = status / 2;
 #endif
 
 #if defined(SID_Paragon) && (COMMON_SKILL_VALID(SID_Paragon))
-    if (SkillTester(&actor->unit, SID_Paragon))
+    if (BattleSkillTester(actor, SID_Paragon))
         status = status * 2;
 #endif
 
     /* Check last */
 #if defined(SID_VoidCurse) && (COMMON_SKILL_VALID(SID_VoidCurse))
-    if (SkillTester(&target->unit, SID_VoidCurse))
+    if (BattleSkillTester(target, SID_VoidCurse))
         status = 0;
 #endif
 
