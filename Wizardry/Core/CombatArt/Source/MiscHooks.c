@@ -9,9 +9,11 @@ bool CanUnitPlayCombatArt(struct Unit * unit, u16 item)
     struct CombatArtList * list = GetCombatArtList(unit, wtype);
 
     for (i = 0; i < list->amt; i++)
-        if (gpCombatArtInfos[list->cid[i]].wtype == wtype)
+    {
+        const struct CombatArtInfo * info = &gpCombatArtInfos[list->cid[i]];
+        if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             return true;
-
+    }
     return false;
 }
 
@@ -24,10 +26,12 @@ u8 GetBestRangeBonusCid(struct Unit * unit, u16 item)
 
     for (i = 0; i < list->amt; i++)
     {
-        if (gpCombatArtInfos[list->cid[i]].wtype != wtype)
+        const struct CombatArtInfo * info = &gpCombatArtInfos[list->cid[i]];
+
+        if (info->wtype != CA_WTYPE_ANY && info->wtype != wtype)
             continue;
 
-        if (gpCombatArtInfos[list->cid[i]].range_bonus > gpCombatArtInfos[ret].range_bonus)
+        if (info->range_bonus > gpCombatArtInfos[ret].range_bonus)
             ret = list->cid[i];
     }
     return ret;
@@ -55,6 +59,9 @@ const u8 * GetCombatArtIcon(const u8 cid)
         case ITYPE_AXE:
         case ITYPE_BOW:
             return default_icons[info->wtype];
+
+        case CA_WTYPE_ANY:
+            return default_icons[ITYPE_SWORD];
         }
     }
     return NULL;
@@ -68,7 +75,7 @@ int WeaponRangeGetterCombatArt(int range, struct Unit * unit, u16 item)
     if (COMBART_VALID(cid))
     {
         const struct CombatArtInfo * info = &gpCombatArtInfos[cid];
-        if (GetItemType(item) == info->wtype)
+        if (info->wtype == CA_WTYPE_ANY || info->wtype == GetItemType(item))
             range += info->range_bonus;
     }
     return range;
