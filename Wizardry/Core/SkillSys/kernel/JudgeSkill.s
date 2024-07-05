@@ -7,7 +7,7 @@ _SkillTester:
     .4byte ARM_SkillTester
 
     .arm
-    .section .text
+    .section .rodata
 
     .global _ARM_SkillTester_CopyStart
 _ARM_SkillTester_CopyStart:

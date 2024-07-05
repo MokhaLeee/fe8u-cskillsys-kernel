@@ -12,7 +12,7 @@ _JudgeSkillViaList:
     .4byte ARM_SkillList + (.Lfun_judgeskill - _ARM_SkillList_CopyStart)
 
     .arm
-    .section .text
+    .section .rodata
 
     .global _ARM_SkillList_CopyStart
 _ARM_SkillList_CopyStart:

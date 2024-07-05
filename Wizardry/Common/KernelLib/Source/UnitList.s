@@ -12,7 +12,7 @@ _WriteUnitList:
     .4byte ARM_UnitList + (.Lfun_write - _ARM_UnitList_CopyStart)
 
     .arm
-    .section .text
+    .section .rodata
 
     .global _ARM_UnitList_CopyStart
 _ARM_UnitList_CopyStart:

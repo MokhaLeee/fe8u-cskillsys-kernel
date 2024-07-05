@@ -3,6 +3,10 @@
 #include "constants/skills.h"
 
 const u16 gConstSkillTable_Job[0x100][2] = {
+    [CLASS_EIRIKA_LORD] = {
+        SID_Pass,
+    },
+
     [CLASS_PALADIN] = {
         SID_HoneCavalry,
     },

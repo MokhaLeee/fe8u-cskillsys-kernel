@@ -146,3 +146,5 @@ extern u16 gRNSeeds[3];
 
 #define SPELL_ASSOC_DATA_WPN_DEFAULT(_item) SPELL_ASSOC_DATA_WPN(_item, -1)
 #define SPELL_ASSOC_DATA_ITEM(_item) SPELL_ASSOC_DATA_WPN(_item, 0x32)
+
+extern void (* gUnknown_03003128)(void);
