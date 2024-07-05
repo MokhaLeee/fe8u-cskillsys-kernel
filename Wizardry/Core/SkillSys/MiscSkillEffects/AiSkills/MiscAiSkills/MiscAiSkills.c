@@ -163,7 +163,7 @@ int AiGetDamageDealtCombatScoreComponent(void)
     int score = AiGetDamageDealtCombatScoreComponentVanilla();
 
 #if defined(SID_Provoke) && (COMMON_SKILL_VALID(SID_Provoke))
-    if (SkillTester(&gBattleTarget.unit, SID_Provoke))
+    if (BattleSkillTester(&gBattleTarget, SID_Provoke))
         score += 50;
 #endif
 

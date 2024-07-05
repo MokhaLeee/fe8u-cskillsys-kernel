@@ -73,6 +73,26 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
         }
     }
 
+    /* Weapon */
+    if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
+    {
+        u8 weapon = ((struct BattleUnit *)unit)->weaponBefore;
+
+        sid = gpConstSkillTable_Weapon[weapon * 2];
+        if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+        {
+            tmp_list[sid] = true;
+            list->sid[list->amt++] = sid;
+        }
+
+        sid = gpConstSkillTable_Weapon[weapon * 2 + 1];
+        if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
+        {
+            tmp_list[sid] = true;
+            list->sid[list->amt++] = sid;
+        }
+    }
+
     /* generic */
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
     {

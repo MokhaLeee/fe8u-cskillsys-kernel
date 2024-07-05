@@ -86,8 +86,6 @@ _SkillTester_PInfo:
     ldr r0, [r5]
     // adr lr, .Lend_false
     adr lr, _SkillTester_JInfo
-
-.LPJ_Tabtle:
     ldrb r0, [r0, #4]
 
 .L_Table:
@@ -104,8 +102,9 @@ _SkillTester_PInfo:
 _SkillTester_JInfo:
     ldr r4, .LgpConstSkillTable_Job
     ldr r0, [r5, #4]
+    ldrb r0, [r0, #4]
     adr lr, .Lend_false
-    b .LPJ_Tabtle
+    b .L_Table
 
 _SkillTester_IInfo:
     add r3, r5, #0x1E
@@ -120,6 +119,21 @@ _SkillTester_IInfo:
     bl .L_Table
     ldrb r0, [r3], #2
     bl .L_Table
+
+    # judge on weapon skill for battle-unit
+    ldr r0, .LgBattleActor
+    cmp r0, r5
+    beq 1f
+    add r0, #0x80   @ sizeof(struct BattleUnit)
+    cmp r0, r5
+    bne 2f
+
+1:
+    ldrb r0, [r0, #0x48]
+    ldr r4, .LgpConstSkillTable_Item
+    bl .L_Table
+
+2:
     // b .Lend_false
     b _SkillTester_COMMON
 
@@ -129,6 +143,11 @@ _SkillTester_IInfo:
     .4byte gpConstSkillTable_Job
 .LgpConstSkillTable_Item:
     .4byte gpConstSkillTable_Item
+.LgpConstSkillTable_Weapon:
+    .4byte gpConstSkillTable_Weapon
+
+.LgBattleActor:
+    .4byte gBattleActor
 
 .global _ARM_SkillTester_CopyEnd
 _ARM_SkillTester_CopyEnd:

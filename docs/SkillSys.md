@@ -1,21 +1,29 @@
-C-Skillsys now supports up to **1016** skills which are divided into **four categories** as follows:
+Currently, C-Skillsys theoretically allows up to **1021** skills (0x01~0xFE, 0x100~0x3FF) to take effect at the same time. Each unit can carry up to **23** skills at the same time, which are distributed as follows:
 
-- 254 generic skills (`0x001 ~ 0x0FE`) which can be equipped or disassembled by player/event.
-- 254 person skills (`0x101 ~ 0x1FE`) which is fixed to ROM table and can only be pre-set for characters.
-- 254 job skills (`0x201 ~ 0x2FE`) which is fixed to ROM table and can only be pre-set for classes.
-- 254 item skills (`0x301 ~ 0x3FE`) which is fixed to ROM table and can only be pre-set for items.
+- **7 equipable skills**, which allows player to freely select in prepscreen, also allows the game-play designer dynamically assign skills to enemies through events.
+- **2 person skills**, fixed on ROM table and searched by unit character index.
+- **2 job skills**, fixed on ROM table and searched by unit class index.
+- **5x2 item skills**, fixed on ROM table and searched by item index. Just like an amulet, unit can obtain skills as long as they carry the corresponding items.
+- **2 weapon skills**, fixed on ROM table and searched by item index. These skills can only be obtained if the unit is equipped with the corresponding weapon.
 
-Note that the last three types of skills are NOT able to load and unload dynamically.
+Note that the skill index is also divided into certain parts of categories in order to save memory and optimize performance. The following rules are generally followed for the division of skill index:
 
-# 1. Skill lists
+- In order to save the RAM space especially SRAM space, **equipable skill** can only range in `0x01~0xFE`, which is consistent to tranditional SkillSystem_FE8.
+- In order to improve performance, only the skills ranging in `0x300-0x3FF` can involve on Item/weapon skills judgement.
+- Other skills, including person/job skills have no particular restrictions.
 
-Each unit can use no more than 10 skills in battle map as below:
+# 1. Judge skill
 
-- 7 generic skills in RAM table and equipable by player.
-- 2 fixed person skills binded to character.
-- 2 fixed job skills binded to class.
+In order to improve the performance of the skill system, we provide two judge-skill functions for developers:
 
-At the same time, characters can also gain item skills based on the items, each item can hold 2 different fixed item skills.
+- `SkillTester`
+- `BattleSkillTester`
+
+The work of the two is basically the same. Just as their name suggests, `SkillTester` is recommended to use for non-battle unit judgement, and `BattleSkillTester` for battle-units (specially for `gBattleActor` and `gBattleTarget`). If the developer violates this principle, although kernel may not run into bugs but there will be potential loss of performance.
+
+It is worth noting that `BattleSkillTester` will determine after all skills held by the unit are aggregated. Therefore, to a certain extent, it can ignore the principle of skill index distribution to determin more skills with greater efficiency. However, performance comes at cost on memory. There holds limitation on memory for the above optimization, so we only optimized it specifically for battle units.
+
+# 2. Skill lists
 
 ## ROM table
 
@@ -24,10 +32,11 @@ ROM table can be configured in:
 - [SkillTable-person.c](../Data/SkillSys/SkillTable-person.c)
 - [SkillTable-job.c](../Data/SkillSys/SkillTable-job.c)
 - [SkillTable-item.c](../Data/SkillSys/SkillTable-item.c)
+- [SkillTable-weapon.c](../Data/SkillSys/SkillTable-weapon.c)
 
 ## RAM table API
 
-As for RAM table, developers may use the following API to give unit generic skills. Each unit can get 7 RAM skills.
+As for RAM table, developers may use the following API to give unit quipable skills. Each unit can get 7 RAM skills.
 
 ```C
 #include "skill-system.h"
@@ -35,35 +44,35 @@ int AddSkill(struct Unit * unit, const u16 sid);
 int RemoveSkill(struct Unit * unit, const u16 sid);
 ```
 
-We have also offered event macros to add generic skill from event:
+We have also offered event macros to add quipable skill from event:
 
-- `Evt_AddSkill(sid, pid)`: give character [**pid**] a generic skill [**sid**].
-- `Evt_AddSkillAt(sid, x, y)`: give character at position [**x, y**] a generic skill [**sid**].
-- `Evt_AddSkillSC(sid)`: give character a generic skill [**sid**], character index is picked from slot-C.
+- `Evt_AddSkill(sid, pid)`: give character [**pid**] a quipable skill [**sid**].
+- `Evt_AddSkillAt(sid, x, y)`: give character at position [**x, y**] a quipable skill [**sid**].
+- `Evt_AddSkillSC(sid)`: give character a quipable skill [**sid**], character index is picked from slot-C.
 
-You may also use macro `Evt_RemoveSkill, Evt_RemoveSkillAt, Evt_RemoveSkillSC` to remove generic skills.
+You may also use macro `Evt_RemoveSkill, Evt_RemoveSkillAt, Evt_RemoveSkillSC` to remove quipable skills.
 
 RAM table use the support list inside unit struct, and the support data is lied inside BWL table by patch [BwlRework](../Wizardry/Common/BwlRework/BwlRework.event).
 
 ## Learn skills
 
-Every time you `AddSkill` to unit, he may learn that generic skill permanently. That is to say, he can always select the skill to equip in prep-screen, regardless whether you `RemoveSkill` from him. 
+Every time you `AddSkill` to unit, he may learn that quipable skill permanently. That is to say, he can always select the skill to equip in prep-screen, regardless whether you `RemoveSkill` from him. 
 
 The most important purpose of the modern C-SkillSys is to allow players to load and unload skills in prep-screen. To do this, each character is given a list to store the skills they have learned. This list is saved to SRAM, and may be used during prep-skill list screen.
 
-Character may learn 10 generic skills when they level-up to lv 5/10/15/20..., 5 from class and 5 from character himself. You may edit on such file to configure character/class to learn which skills:
+Character may learn 10 equipable skills when they level-up to lv 5/10/15/20..., 5 from class and 5 from character himself. You may edit on such file to configure character/class to learn which skills:
 
 - [SkillTable-generic.c](../Data/SkillSys/SkillTable-generic.c)
 
 We have also recorded unit level regardless he was promoted. Once one unit is promoted, his level will return to 1 but the record level will not change. When unit level-up, kernel may use `recorded level + current level` to judge on which skill should she learn for character table.
 
-# Develop new skill
+# 3. Develop new skill
 
 Since the skills are currently divided into four categories, developers need to select a category in advance to place new skills first:
 
-| category | generic | person | job | item |
-| :--------	| :-----------	| :-----------	| :-----------	| :-----------	|
-| index preconfig | [skills.generic.enum.txt](../include/constants/skills.generic.enum.txt) | [skills.person.enum.txt](../include/constants/skills.person.enum.txt) | [skills.job.enum.txt](../include/constants/skills.job.enum.txt) | [skills.item.enum.txt](../include/constants/skills.item.enum.txt) |
+| category | equipable | item/weapon | others |
+| :--------	| :-----------	| :-----------	| :----------- |
+| index preconfig | [skills-equip.enum.txt](../include/constants/skills-equip.enum.txt) | [skills-item.enum.txt](../include/constants/skills-item.enum.txt) | [skills-others.enum.txt](../include/constants/skills-others.enum.txt) |
 
 ## Basic skill info
 

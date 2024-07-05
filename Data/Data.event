@@ -16,6 +16,7 @@
 #include "SkillSys/SkillTable-person.lyn.event"
 #include "SkillSys/SkillTable-job.lyn.event"
 #include "SkillSys/SkillTable-item.lyn.event"
+#include "SkillSys/SkillTable-weapon.lyn.event"
 #include "SkillSys/LegendSkill.lyn.event"
 #include "CombatArt/CombatArtInfo.lyn.event"
 #include "CombatArt/EfxCombatArtAnim.lyn.event"

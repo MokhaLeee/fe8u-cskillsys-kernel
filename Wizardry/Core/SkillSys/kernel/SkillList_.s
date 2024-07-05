@@ -96,7 +96,6 @@ _ARM_SkillList_CopyStart:
 
 .LgBattleActor:
     .4byte gBattleActor
-    .4byte 0xFDFC5B14 // -gBattleActor
 
     .global _ARM_SkillList_CopyEnd
 _ARM_SkillList_CopyEnd:

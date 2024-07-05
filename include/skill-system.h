@@ -24,11 +24,7 @@ enum SkillInfoListss
 #define SKILL_INDEX_LIST(sid) (((sid) >> 8) & 0xFF)
 
 #define GENERIC_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
-#define PERSON_SKILL_VALID(sid)  (sid > 0x100 && sid < 0x1FF)
-#define JOB_SKILL_VALID(sid)     (sid > 0x200 && sid < 0x2FF)
-#define ITEM_SKILL_VALID(sid)    (sid > 0x300 && sid < 0x3FF)
-
-#define COMMON_SKILL_VALID(sid) (GENERIC_SKILL_VALID(sid) || PERSON_SKILL_VALID(sid) || JOB_SKILL_VALID(sid) || ITEM_SKILL_VALID(sid))
+#define COMMON_SKILL_VALID(sid) (sid > 0x000 && sid < 0x400)
 
 #define SKILL_ICON(sid) ((2 << 8) + (sid))
 
@@ -41,6 +37,7 @@ enum SkillInfoListss
 extern u16 const * const gpConstSkillTable_Person;
 extern u16 const * const gpConstSkillTable_Job;
 extern u16 const * const gpConstSkillTable_Item;
+extern u16 const * const gpConstSkillTable_Weapon;
 
 struct SkillInfo {
     const u8 * icon;
@@ -86,6 +83,7 @@ extern bool (* _SkillTester)(struct Unit * unit, const u16 sid);
 // Note this function can only exec for r0 = gBattleActor/gBattleTarget
 extern bool (* _JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
 #define BattleSkillTester _JudgeSkillViaList
+#define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {
