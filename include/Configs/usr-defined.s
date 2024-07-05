@@ -19,3 +19,5 @@ dat 0x03004150, ARM_SkillTesterEnd
 
 dat 0x0300428C, ARM_UnitList
 dat 0x0300438C, ARM_UnitListEnd
+dat 0x0300438C, ARM_SkillList
+dat 0x0300448C, ARM_SkillListEnd

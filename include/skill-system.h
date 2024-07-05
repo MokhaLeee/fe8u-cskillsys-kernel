@@ -74,8 +74,13 @@ struct SkillList {
     u8 amt;
     u16 sid[23];
 };
+#if 0
+    struct SkillList * GetUnitSkillList(struct Unit * unit);
+#else
+    extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
+    #define GetUnitSkillList _GetUnitSkillList
+#endif
 
-struct SkillList * GetUnitSkillList(struct Unit * unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */

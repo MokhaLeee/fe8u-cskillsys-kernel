@@ -50,48 +50,37 @@ _ARM_UnitList_CopyStart:
 
 .Lfun_cksum_unit:
     @ r0 = unit
-
-    mov r2, #0          @ r2 = add_acc
-    mov r3, #0          @ r3 = xor_acc
+    mov r2, r0
+    mov r0, #0
 
     # self
     mov r1, r0
-    add r2, r2, r1
-    eor r3, r3, r1
+    eor r0, r0, r1
 
     # pinfo
-    ldr r1, [r0, #0x0]
-    add r2, r2, r1
-    eor r3, r3, r1
+    ldr r1, [r2, #0x0]
+    eor r0, r0, r1
 
     # jinfo
-    ldr r1, [r0, #0x4]
-    add r2, r2, r1
-    eor r3, r3, r1
+    ldr r1, [r2, #0x4]
+    eor r0, r0, r1
 
     # level
-    ldrsb r1, [r0, #0x8]
-    add r2, r2, r1
-    eor r3, r3, r1
+    ldrsb r1, [r2, #0x8]
+    eor r0, r0, r1
 
     # items
-    ldrb r1, [r0, #0x1E]
-    add r2, r2, r1
-    eor r3, r3, r1
-    ldrb r1, [r0, #0x20]
-    add r2, r2, r1
-    eor r3, r3, r1
-    ldrb r1, [r0, #0x22]
-    add r2, r2, r1
-    eor r3, r3, r1
-    ldrb r1, [r0, #0x24]
-    add r2, r2, r1
-    eor r3, r3, r1
-    ldrb r1, [r0, #0x26]
-    add r2, r2, r1
-    eor r3, r3, r1
+    ldrb r1, [r2, #0x1E]
+    eor r0, r0, r1
+    ldrb r1, [r2, #0x20]
+    eor r0, r0, r1
+    ldrb r1, [r2, #0x22]
+    eor r0, r0, r1
+    ldrb r1, [r2, #0x24]
+    eor r0, r0, r1
+    ldrb r1, [r2, #0x26]
+    eor r0, r0, r1
 
-    add r0, r2, r3
     mov pc, lr
 
     .global _ARM_UnitList_CopyEnd

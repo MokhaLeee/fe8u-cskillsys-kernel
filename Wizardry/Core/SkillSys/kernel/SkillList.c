@@ -7,8 +7,11 @@
  * 2: battle target
  */
 extern struct SkillList sSkillList[3];
+struct SkillList * const SkillListGeneric = &sSkillList[0];
+struct SkillList * const SkillListBattleActor = &sSkillList[1];
+struct SkillList * const SkillListBattleTarget = &sSkillList[2];
 
-STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
+void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 {
     int i, sid;
     int pid = UNIT_CHAR_ID(unit);
@@ -79,23 +82,24 @@ STATIC_DECLAR void GenerateSkillListExt(struct Unit * unit, struct SkillList * l
             list->sid[list->amt++] = sid;
         }
     }
+    WriteUnitList(unit, &list->header);
 }
 
+#if 0
 struct SkillList * GetUnitSkillList(struct Unit * unit)
 {
-    struct SkillList * list = &sSkillList[0];    
+    struct SkillList * list = SkillListGeneric;
     if (unit == &gBattleActor.unit)
-        list = &sSkillList[1];
+        list = SkillListBattleActor;
     else if (unit == &gBattleTarget.unit)
-        list = &sSkillList[2];
+        list = SkillListBattleTarget;
 
     if (!JudgeUnitList(unit, &list->header))
-    {
         GenerateSkillListExt(unit, list);
-        WriteUnitList(unit, &list->header);
-    }
+
     return list;
 }
+#endif
 
 void ResetSkillLists(void)
 {

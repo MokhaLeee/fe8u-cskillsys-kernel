@@ -129,6 +129,8 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym-removethumb.py > $(CHAX_SYM)
 	@rm -f $(CACHE_DIR)/tmp_sym
 
+	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
+	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
 	@echo "[GEN]	$(CHAX_DIFF)"

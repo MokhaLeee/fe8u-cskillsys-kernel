@@ -2,6 +2,7 @@
 #define SKILLSYS_DATA_INSTALLED
 
 #include "kernel/JudgeSkill.lyn.event"
+#include "kernel/SkillList_.lyn.event"
 
 ALIGN 4
 Img_MapAnimSKILL:
