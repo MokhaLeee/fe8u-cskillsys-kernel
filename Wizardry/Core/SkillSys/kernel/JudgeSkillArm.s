@@ -1,6 +1,7 @@
     .INCLUDE "macro.inc"
-
     .SYNTAX UNIFIED
+
+    .section .rodata
 
 .global _SkillTester
 _SkillTester:
@@ -11,9 +12,10 @@ _SkillTesterEnd:
     .4byte ARM_SkillTesterEnd
 
     .arm
+    .section .text
+
     .global _ARM_SkillTester_CopyStart
 _ARM_SkillTester_CopyStart:
-_ARM_SkillTester:
     push {r4, lr}
 
      @ UNIT_IS_VALID

@@ -111,10 +111,10 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit * unit, u8 wtype)
 
 struct CombatArtList * GetCombatArtList(struct Unit * unit, u8 wtype)
 {
-    if (sCombatArtList.wtype != wtype || !JudgeUnitListHeader(unit, &sCombatArtList.ref))
+    if (sCombatArtList.wtype != wtype || !JudgeUnitList(unit, &sCombatArtList.ref))
     {
         CalcCombatArtListExt(unit, wtype);
-        WriteUnitListHeader(unit, &sCombatArtList.ref);
+        WriteUnitList(unit, &sCombatArtList.ref);
         sCombatArtList.wtype = wtype;
     }
     return &sCombatArtList;

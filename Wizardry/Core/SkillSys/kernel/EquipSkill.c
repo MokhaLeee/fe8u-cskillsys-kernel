@@ -39,10 +39,10 @@ STATIC_DECLAR void UpdatePrepEquipSkillList(struct Unit * unit)
 
 struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit * unit)
 {
-    if (!JudgeUnitListHeader(unit, &sPrepEquipSkillList.header))
+    if (!JudgeUnitList(unit, &sPrepEquipSkillList.header))
     {
         UpdatePrepEquipSkillList(unit);
-        WriteUnitListHeader(unit, &sPrepEquipSkillList.header);
+        WriteUnitList(unit, &sPrepEquipSkillList.header);
     }
     return &sPrepEquipSkillList;
 }

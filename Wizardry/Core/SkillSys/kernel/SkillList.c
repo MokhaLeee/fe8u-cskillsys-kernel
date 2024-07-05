@@ -89,10 +89,10 @@ struct SkillList * GetUnitSkillList(struct Unit * unit)
     else if (unit == &gBattleTarget.unit)
         list = &sSkillList[2];
 
-    if (!JudgeUnitListHeader(unit, &list->header))
+    if (!JudgeUnitList(unit, &list->header))
     {
         GenerateSkillListExt(unit, list);
-        WriteUnitListHeader(unit, &list->header);
+        WriteUnitList(unit, &list->header);
     }
     return list;
 }
