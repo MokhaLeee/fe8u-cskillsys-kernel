@@ -11,7 +11,7 @@ _SkillTester:
 
     .global _ARM_SkillTester_CopyStart
 _ARM_SkillTester_CopyStart:
-    push {r4, lr}
+    push {r4, r5, lr}
 
      @ UNIT_IS_VALID
     cmp r0, #0
@@ -19,6 +19,8 @@ _ARM_SkillTester_CopyStart:
     ldr r2, [r0]
     cmp r2, #0
     beq .Lend_false
+
+    mov r5, r0
 
     /**
      * Here we may not judge:
@@ -45,12 +47,12 @@ _ARM_SkillTester_CopyStart:
 
 .Lend_true:
     mov r0, #1
-    pop {r4, lr}
+    pop {r4, r5, lr}
     bx lr
 
 .Lend_false:
     mov r0, #0
-    pop {r4, lr}
+    pop {r4, r5, lr}
     bx lr
 
 _SkillTester_Generic:
@@ -81,7 +83,7 @@ _SkillTester_Generic:
 _SkillTester_COMMON:
 _SkillTester_PInfo:
     ldr r4, .LgpConstSkillTable_Person
-    ldr r0, [r0]
+    ldr r0, [r5]
     // adr lr, .Lend_false
     adr lr, _SkillTester_JInfo
 
@@ -101,12 +103,12 @@ _SkillTester_PInfo:
 
 _SkillTester_JInfo:
     ldr r4, .LgpConstSkillTable_Job
-    ldr r0, [r0, #4]
+    ldr r0, [r5, #4]
     adr lr, .Lend_false
     b .LPJ_Tabtle
 
 _SkillTester_IInfo:
-    add r3, r0, #0x1E
+    add r3, r5, #0x1E
     ldr r4, .LgpConstSkillTable_Item
     ldrb r0, [r3], #2
     bl .L_Table
