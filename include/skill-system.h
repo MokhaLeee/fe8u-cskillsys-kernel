@@ -69,12 +69,10 @@ char * GetSkillNameStr(const u16 sid);
  * 
  * (maybe todo) 2 weapon skill
  */
-#define SKILL_LIST_MAX_AMT 23
-
 struct SkillList {
     struct UnitListHeader header;
     u8 amt;
-    u16 sid[SKILL_LIST_MAX_AMT];
+    u16 sid[23];
 };
 
 struct SkillList * GetUnitSkillList(struct Unit * unit);

@@ -6,7 +6,7 @@
 #include "Source/banim.lyn.event"
 #include "Source/event-call.lyn.event"
 #include "Source/hook-proc.lyn.event"
-
+//#include "Source/JudgeList.lyn.event"
 // #include "data.event"
 
 #endif /* KERNEL_LIB_INSTALLED */

@@ -5,19 +5,11 @@
 
 .global _JudgeUnitList
 _JudgeUnitList:
-    .4byte ARM_UnitList
+    .4byte ARM_UnitList + (.Lfun_judge - _ARM_UnitList_CopyStart)
 
 .global _WriteUnitList
 _WriteUnitList:
-    .4byte ARM_UnitList + (.Lfun_write - .Lfun_judge)
-
-.global _JudgeUnitList_RamStart
-_JudgeUnitList_RamStart:
-    .4byte ARM_UnitList
-
-.global _JudgeUnitList_RamEnd
-_JudgeUnitList_RamEnd:
-    .4byte ARM_UnitListEnd
+    .4byte ARM_UnitList + (.Lfun_write - _ARM_UnitList_CopyStart)
 
     .arm
     .section .text
@@ -25,6 +17,8 @@ _JudgeUnitList_RamEnd:
     .global _ARM_UnitList_CopyStart
 _ARM_UnitList_CopyStart:
 
+@ r0 = unit
+@ r1 = ref
 .Lfun_judge:
     push {r4, lr}
     ldr r4, [r1]
@@ -43,6 +37,8 @@ _ARM_UnitList_CopyStart:
     pop {r1}
     bx r1
 
+@ r0 = unit
+@ r1 = ref
 .Lfun_write:
     push {r4, lr}
     mov r4, r1

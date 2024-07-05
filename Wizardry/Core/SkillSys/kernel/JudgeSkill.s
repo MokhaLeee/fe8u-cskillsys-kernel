@@ -1,15 +1,10 @@
     .INCLUDE "macro.inc"
     .SYNTAX UNIFIED
-
     .section .rodata
 
 .global _SkillTester
 _SkillTester:
     .4byte ARM_SkillTester
-
-.global _SkillTesterEnd
-_SkillTesterEnd:
-    .4byte ARM_SkillTesterEnd
 
     .arm
     .section .text
