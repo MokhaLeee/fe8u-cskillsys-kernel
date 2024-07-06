@@ -162,7 +162,7 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
 */
 
 MapFloodCoreReStep: @ 0x08000784
-    push {r4-r9, lr}
+    push {r4-r10, lr}
     ldr r4, .LMovMapFillState       @ r4 = st = &gMovMapFillState
 
     ldr r3, [r4]
@@ -171,6 +171,7 @@ MapFloodCoreReStep: @ 0x08000784
     add r7, r5, r1                  @ r7 = xdst = xsrc + xPos
     add r8, r3, r2                  @ r8 = ydst = ysrc + yPos
     mov r9, r0                      @ r9 = connexion
+    ldr r10, .LKernelMoveMapFlags
 
     ldr r0, .LBmMapTerrain
     ldr r0, [r0]
@@ -207,8 +208,11 @@ MapFloodCoreReStep: @ 0x08000784
     ands r0, r0, #0x80
     beq 1f
 
-    ldrb r0, [r4, #12]              @ <!> CHAX: judge flag: FMOVSTRE_PASS
-    ands r0, #1
+    /**
+     * Judge on Pass skill
+     */
+    ldr r0, [r10]
+    ands r0, #1                     @ <!> CHAX: FMOVSTRE_PASS
     beq .Lstep_end
 
 1:
@@ -226,16 +230,19 @@ MapFloodCoreReStep: @ 0x08000784
     strb r5, [r6, r7]               @ gWorkingBmMap[ydst][xdst] = cost
 
 .Lstep_end:
-    pop {r4-r9, pc}
+    pop {r4-r10, pc}
 
-.LMovMapFillStPool1: .4byte gMovMapFillStPool1 @ pool
-.LMovMapFillStPool2: .4byte gMovMapFillStPool2 @ pool
+.LMovMapFillStPool1: .4byte gMovMapFillStPool1
+.LMovMapFillStPool2: .4byte gMovMapFillStPool2
 
-.LWorkingTerrainMoveCosts: .4byte gWorkingTerrainMoveCosts @ pool
-.LMovMapFillState: .4byte gMovMapFillState @ pool
-.LWorkingBmMap: .4byte gWorkingBmMap @ pool
-.LBmMapTerrain: .4byte gBmMapTerrain @ pool
-.LBmMapUnit: .4byte gBmMapUnit @ pool
+.LWorkingTerrainMoveCosts: .4byte gWorkingTerrainMoveCosts
+.LMovMapFillState: .4byte gMovMapFillState
+.LWorkingBmMap: .4byte gWorkingBmMap
+.LBmMapTerrain: .4byte gBmMapTerrain
+.LBmMapUnit: .4byte gBmMapUnit
+
+@ Kernel related
+.LKernelMoveMapFlags: .4byte KernelMoveMapFlags
 
     .global _ARM_MapFloodCore_CopyEnd
 _ARM_MapFloodCore_CopyEnd:

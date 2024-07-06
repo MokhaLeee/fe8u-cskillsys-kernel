@@ -31,5 +31,10 @@ assistance on combo-attack[X]
 
 ## MSG_SKILL_Pass
 Pass:[NL]
-Unit can move through[NL]
-enemy units.[X]
+If unit's HP ≥ 25%, unit[NL]
+can move through foes' spaces.[X]
+
+## MSG_SKILL_Obstruct
+Obstruct: If unit's HP ≥ 50%,[NL]
+foes cannot move through spaces adjacent[NL]
+to unit. (No effect on Pass skills.)[X]

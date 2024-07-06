@@ -274,3 +274,4 @@ SID_LEGEND_InoriDef
 SID_Assist
 SID_Synergism
 SID_Pass
+// SID_Obstruct

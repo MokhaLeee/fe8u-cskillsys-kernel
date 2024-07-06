@@ -39,16 +39,18 @@ STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper * proc)
 
         for (i = 1; i < 0xC0; i++)
         {
-            struct Unit * unit_tar = GetUnit(i);
-            if (!UNIT_IS_VALID(unit_tar))
+            struct Unit * unit_tar;
+
+            if (AreUnitsAllied(unit->index, i))
                 continue;
 
-            if (AreUnitsAllied(unit->index, unit_tar->index))
+            unit_tar = GetUnit(i);
+            if (!UNIT_IS_VALID(unit_tar))
                 continue;
 
             res2 = GetUnitResistance(unit_tar);
             if (res1 > (res2 + 3))
-                AddTarget(unit_tar->xPos, unit_tar->yPos, unit_tar->index, 0);
+                AddTarget(unit_tar->xPos, unit_tar->yPos, i, 0);
         }
 
         if (GetSelectTargetCount() != 0)

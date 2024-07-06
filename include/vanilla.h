@@ -148,3 +148,5 @@ extern u16 gRNSeeds[3];
 #define SPELL_ASSOC_DATA_ITEM(_item) SPELL_ASSOC_DATA_WPN(_item, 0x32)
 
 extern void (* gUnknown_03003128)(void);
+
+void BmMapInit(void* buffer, u8*** outHandle, int width, int height);

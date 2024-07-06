@@ -1,22 +1,26 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "arm-func.h"
+#include "kernel-lib.h"
 #include "map-movement.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR void PreGenerateMovementMap(void)
 {
-    FORCE_DECLARE struct Unit * unit = GetUnit(gMovMapFillState.unitId);
+    FORCE_DECLARE struct Unit * unit;
 
-    MovMapFillStateRe->flag = 0;
+    KernelMoveMapFlags = 0;
 
-    if (gMovMapFillState.hasUnit)
-    {
+    /* Fasten calc! */
+    if (!gMovMapFillState.hasUnit)
+        return;
+
+    unit = GetUnit(gMovMapFillState.unitId);
+
 #if (defined(SID_Pass) && COMMON_SKILL_VALID(SID_Pass))
-        if (SkillTester(unit, SID_Pass))
-            MovMapFillStateRe->flag |= FMOVSTRE_PASS;
+    if (SkillTester(unit, SID_Pass) && ((GetUnitCurrentHp(unit) * 4) >= GetUnitMaxHp(unit)))
+        KernelMoveMapFlags |= FMOVSTRE_PASS;
 #endif
-    }
 }
 
 /* LynJump */

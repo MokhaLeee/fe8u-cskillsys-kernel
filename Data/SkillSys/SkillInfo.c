@@ -2496,4 +2496,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Pass,
     },
 #endif
+
+#if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
+    [SID_Obstruct] = {
+        .desc = MSG_SKILL_Obstruct,
+        .icon = GFX_SkillIcon_Obstruct,
+    },
+#endif
 };

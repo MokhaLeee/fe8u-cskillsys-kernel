@@ -108,4 +108,10 @@ const u16 gConstSkillTable_Job[0x100][2] = {
     [CLASS_DANCER] = {
         SID_Dance,
     },
+
+    [CLASS_SOLDIER] = {
+#if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
+        SID_Obstruct,
+#endif
+    },
 };
