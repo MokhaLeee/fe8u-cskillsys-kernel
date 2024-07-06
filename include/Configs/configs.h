@@ -13,8 +13,7 @@
  * introduce any bug in kernel.
  *
  * If you're planning to develop a new game based on C-skillsys instead of
- * making minor changes on vanilla, it is recommanded to uncommit this config.
- *  
+ * making minor changes on vanilla, it is recommanded to uncomment this config to save space.
  */
 // #define CONFIG_CROP_VANILLA_MSG
 

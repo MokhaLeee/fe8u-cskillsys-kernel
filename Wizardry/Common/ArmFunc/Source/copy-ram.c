@@ -11,7 +11,7 @@ void GameInit_CopyArmFuncs(void)
         if (!it->dst_start || !it->dst_end || !it->src_start || !it->src_end)
             break;
 
-        FPrintf("[%02d] src: %07X-%07X, dst: %07X-%07X",
+        Printf("[%02d] src: %07X-%07X, dst: %07X-%07X",
                     i, it->src_start, it->src_end, it->dst_start, it->dst_end);
 
         Assert((it->dst_end - it->dst_start) > (it->src_end - it->src_start));
