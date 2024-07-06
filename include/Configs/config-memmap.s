@@ -4,6 +4,13 @@
     .set \name, \value
 .endm
 
+.macro dat value, name
+    .global \name
+    .type \name, object
+    .set \name, \value
+.endm
+
+
 SET_DATA FreeRamSpaceTop,    0x02026E30
 SET_DATA FreeRamSpaceBottom, 0x02028E58
 SET_DATA UsedFreeRamSpaceTop, FreeRamSpaceBottom
@@ -70,3 +77,31 @@ _kernel_malloc sPrepareNextBattleRoundTimer, 4
  * Note that it is risky to use this area rashly
  */
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
+
+/**
+ * Usage of memory on IWRAM for arm-functions
+ *
+ * part     function name       start           end             max size    real size
+ * [a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x160       0x160
+ * [a]      ARM_MapFloodCoreRe  0x03003E0C      0x03004150      0x344       0x2B8
+ * [a]      no-free space
+ *
+ * [b]      ARM_UnitList        0x0300428C      0x0300438C      0x100       0xEC
+ * [b]      ARM_SkillList       0x0300438C      0x0300448C      0x100       0xCC
+ * [b]      __free__            ---             0x03004960      0x4D4       ---
+ *
+ * Note on part[a]:
+ * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
+ * But since MovementSkill has rewriten function: MapFloodCore/MapFloodCoreStep
+ * So we get antother space as 0x03003CAC - 0x03003F48
+ * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
+ */
+dat 0x03003CAC, ARM_SkillTester
+dat 0x03003E0C, ARM_SkillTesterEnd      @ size = 0x1A0
+dat 0x03003E0C, ARM_MapFloodCoreRe
+dat 0x03004150, ARM_MapFloodCoreReEnd   @ size = 0x304
+
+dat 0x0300428C, ARM_UnitList
+dat 0x0300438C, ARM_UnitListEnd
+dat 0x0300438C, ARM_SkillList
+dat 0x0300448C, ARM_SkillListEnd

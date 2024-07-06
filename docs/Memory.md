@@ -83,9 +83,14 @@ _kernel_malloc NewAlloc4Bytes, 4
 3. Declare the variable in your own C file, `extern u8 NewAlloc4Bytes[4];`
 
 # Other kernel built-in RAM space usage
+```
+part     function name       start           end             max size    real size
 
-| Address       | Size      | Usage                             | Vanilla usage
-| -------       | ------    | -----                             | ----
-| 0x03003F48    | 0x208     | ARM call for SkillTester          | End of ARM functions copy (vanilla: ramfunc.c)
-| 0x0300428C    | 0x6D4     | ARM call for BattleSkillTester    | End IntrMain_Buffer (vanilla: irq.c)
-|               |           |                                   |
+[a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x160       0x160
+[a]      ARM_MapFloodCoreRe  0x03003E0C      0x03004150      0x344       0x2B8
+[a]      no-free space
+
+[b]      ARM_UnitList        0x0300428C      0x0300438C      0x100       0xEC
+[b]      ARM_SkillList       0x0300438C      0x0300448C      0x100       0xCC
+[b]      __free__            ---             0x03004960      0x4D4       ---
+```
