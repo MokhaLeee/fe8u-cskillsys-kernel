@@ -30,18 +30,19 @@ _ARM_SkillList_CopyStart:
     mov r5, r1                  @ r5 = list
     bl .Lfunc_JudgeUnitList
     cmp r0, #1
-    beq 2f
-
-    @ This is a bad condition, should only exec once
-    mov r0, r4
-    mov r1, r5
-    bl .Lfunc_GenerateSkillListExt
-
-2:
+    bne 2f
+1:
     mov r0, r5
     pop {r4, r5}
     pop {r1}
     bx r1
+
+2:
+    @ This is a bad condition, should only exec once
+    mov r0, r4
+    mov r1, r5
+    bl .Lfunc_GenerateSkillListExt
+    b 1b
 
 .Lfun_judgeskill:
     @ r0 = unit

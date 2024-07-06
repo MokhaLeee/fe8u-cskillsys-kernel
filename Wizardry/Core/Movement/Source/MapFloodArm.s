@@ -213,7 +213,6 @@ MapFloodCoreReStep: @ 0x08000784
     add r5, r1
 
 1:
-
     ldr r6, [r6, r8, lsl #2]
     ldrb r1, [r6, r7]
     cmp r5, r1                      @ if (cost >= gWorkingBmMap[ydst][xdst]) return;
