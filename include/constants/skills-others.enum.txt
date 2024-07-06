@@ -46,6 +46,28 @@ SID_CrusaderWard
 SID_Plus
 SID_Minus
 SID_VengefulFighter
+SID_LuckySeven
+SID_EvenFooted
+SID_OddFooted
+SID_SpeedBoost
+SID_Slayer
+SID_Skybreaker
+SID_Nullify
+SID_AvoidSword
+SID_Vanity
+SID_ShortShield
+SID_Opportunist
+SID_TowerShield
+SID_StunningSmile
+SID_Trample
+SID_Loyalty
+SID_HolyAura
+SID_BlueFlame
+SID_DancingBlade
+SID_QuickBurn
+SID_SlowBurn
+SID_NaturalCover
+
 
 // Weapon range
 SID_HighGround

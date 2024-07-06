@@ -34,15 +34,8 @@ SID_FuryPlus
 SID_FortressDef
 SID_FortressRes
 SID_LifeAndDeath
-SID_LuckySeven
-SID_EvenFooted
-SID_OddFooted
-SID_SpeedBoost
 
 // Battle effective
-SID_Nullify
-SID_Slayer
-SID_Skybreaker
 SID_Resourceful
 
 // Battle status skills
@@ -56,7 +49,6 @@ SID_FaireAxe
 SID_FaireBow
 SID_FaireBMag
 SID_Avoid
-SID_AvoidSword
 SID_RuinedBlade
 SID_HeavyBlade
 SID_FlashingBlade
@@ -64,29 +56,16 @@ SID_HeavyBladePlus
 SID_FlashingBladePlus
 SID_LunaAttack
 SID_SorceryBlade
-SID_Vanity
-SID_ShortShield
-SID_Opportunist
-SID_TowerShield
-SID_StunningSmile
-SID_Trample
-SID_Loyalty
-SID_HolyAura
 SID_Fortune
-SID_BlueFlame
-SID_DancingBlade
 SID_Frenzy
 SID_WonderGuard
 SID_Merciless
 SID_CriticalPierce
 SID_KillingMachine
 SID_HeavyStrikes
-SID_QuickBurn
 SID_Technician
 SID_CatchingUp
-SID_SlowBurn
 SID_BattleVeteran
-SID_NaturalCover
 SID_ElbowRoom
 SID_ChaosStyle
 SID_ArcaneBlade
