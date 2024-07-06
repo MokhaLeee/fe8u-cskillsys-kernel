@@ -44,4 +44,11 @@ V-Fighter[X]
 
 ## MSG_SKILL_VengefulFighter
 VengefulFighter:[NL]
-Always attack twice when under attack[X]
+Always attack twice when under attack.[X]
+
+## MSG_SKILL_BoldFighter_NAME
+B-Fighter[X]
+
+## MSG_SKILL_BoldFighter
+BoldFighter:[NL]
+Always attack twice when attacking.[X]
