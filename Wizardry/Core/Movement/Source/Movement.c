@@ -1,31 +1,22 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "arm-func.h"
+#include "map-movement.h"
 #include "constants/skills.h"
-
-extern u8 ARM_MapFloodCoreRe[];
-
-struct MovMapFillStateRe {
-
-    u8 _pad_vanilla_[0xC]; // gMovMapFillState
-
-    /* 0C */ u8 flag;
-    /* 0D */ u8 _pad_[3];
-};
-
-enum MovMapFillStateRe_flags {
-    FMOVSTRE_PASS = 1 << 0,
-};
-
-static struct MovMapFillStateRe * const sMovMapFillStateRe = (void *)0x03004E60; // gMovMapFillState
 
 STATIC_DECLAR void PreGenerateMovementMap(void)
 {
-    struct Unit * unit = GetUnit(gMovMapFillState.unitId);
+    FORCE_DECLARE struct Unit * unit = GetUnit(gMovMapFillState.unitId);
 
-    sMovMapFillStateRe->flag = 0;
+    MovMapFillStateRe->flag = 0;
 
-    if (gMovMapFillState.hasUnit && SkillTester(unit, SID_Pass))
-        sMovMapFillStateRe->flag |= FMOVSTRE_PASS;
+    if (gMovMapFillState.hasUnit)
+    {
+#if (defined(SID_Pass) && COMMON_SKILL_VALID(SID_Pass))
+        if (SkillTester(unit, SID_Pass))
+            MovMapFillStateRe->flag |= FMOVSTRE_PASS;
+#endif
+    }
 }
 
 /* LynJump */

@@ -13,8 +13,6 @@
 
 #include "Misc/MenuSkills.lyn.event"
 #include "Misc/HealAmount.lyn.event"
-#include "Misc/MovementSkill.lyn.event"
-#include "Misc/LynJump.event"
 
 #include "LegendarySkills/JudgeLegend.lyn.event"
 #include "LegendarySkills/LegendEffect.lyn.event"
@@ -33,5 +31,3 @@
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"
-
-// #include "MiscSkillData.event"

@@ -43,6 +43,7 @@ ALIGN 4
 #include "Core/CombatArt/CombatArt.event"
 #include "Core/HelpBox/HelpBox.event"
 #include "Core/ComboAttack/ComboAttack.event"
+#include "Core/Movement/Movement.event"
 
 #include "External/ExternalPatches.event"
 

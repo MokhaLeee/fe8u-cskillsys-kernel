@@ -4,8 +4,6 @@
 #include "kernel/JudgeSkill.lyn.event"
 #include "kernel/SkillList_.lyn.event"
 
-#include "MiscSkillEffects/MiscSkillData.event"
-
 ALIGN 4
 Img_MapAnimSKILL:
     #incbin "SkillMapAnim/skill-mapanimap.lz77"
