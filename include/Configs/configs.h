@@ -4,6 +4,20 @@
 #include "config-debug.h"
 #include "config-memmap.h"
 
+/**
+ * If uncomment, kernel may remove vanilla dislogue text
+ * so that we can save ~470KByte ROM space in DEMO.
+ *
+ * Note that this uncomment this commit will make FEB this there are something wrong in
+ * ROM and report warnning and error. But it will be okay since this will not actually
+ * introduce any bug in kernel.
+ *
+ * If you're planning to develop a new game based on C-skillsys instead of
+ * making minor changes on vanilla, it is recommanded to uncommit this config.
+ *  
+ */
+// #define CONFIG_CROP_VANILLA_MSG
+
 /* Icon sheet amount */
 #define ICON_SHEET_AMT 7
 
