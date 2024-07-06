@@ -45,6 +45,7 @@ SID_BlueLionRule
 SID_CrusaderWard
 SID_Plus
 SID_Minus
+SID_VengefulFighter
 
 // Weapon range
 SID_HighGround

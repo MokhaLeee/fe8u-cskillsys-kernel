@@ -38,3 +38,10 @@ is halved. (SPD % activation).[X]
 Adept:[NL]
 Allow unit to perform another[NL]
 attack if HP is full.[X]
+
+## MSG_SKILL_VengefulFighter_NAME
+V-Fighter[X]
+
+## MSG_SKILL_VengefulFighter
+VengefulFighter:[NL]
+Always attack twice when under attack[X]

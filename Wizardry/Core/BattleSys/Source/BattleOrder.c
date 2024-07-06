@@ -12,6 +12,7 @@
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target)
 {
+    bool basic_judgement;
     u8 cid;
 
     if (target->battleSpeed > 250)
@@ -34,10 +35,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         return false;
     }
 
+    /* Basic judgement */
+    basic_judgement = (actor->battleSpeed - target->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD;
+
     if (&gBattleActor == actor)
     {
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
-        if (BattleSkillTester(target, SID_WaryFighter))
+        if (basic_judgement == true && BattleSkillTester(target, SID_WaryFighter))
             if ((target->hpInitial * 2) > target->unit.maxHP)
                 return false;
 #endif
@@ -45,7 +49,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         gBattleTemporaryFlag.act_force_twice_order = false;
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-        if (BattleSkillTester(actor, SID_DoubleLion))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_DoubleLion))
         {
             if (actor->hpInitial == actor->unit.maxHP)
             {
@@ -61,8 +65,17 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     {
         gBattleTemporaryFlag.tar_force_twice_order = false;
 
+#if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter))
+        {
+            gBattleTemporaryFlag.tar_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_VengefulFighter, BORDER_TAR_TWICE);
+            return true;
+        }
+#endif
+
 #if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
-        if (BattleSkillTester(actor, SID_QuickRiposte))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_QuickRiposte))
         {
             if ((actor->hpInitial * 2) > actor->unit.maxHP)
             {
@@ -74,10 +87,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
     }
 
-    if ((actor->battleSpeed - target->battleSpeed) < BATTLE_FOLLOWUP_SPEED_THRESHOLD)
-        return false;
-
-    return true;
+    return basic_judgement;
 }
 
 STATIC_DECLAR bool CheckDesperationOrder(void)
