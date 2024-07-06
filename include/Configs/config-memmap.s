@@ -82,8 +82,8 @@ _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
  * Usage of memory on IWRAM for arm-functions
  *
  * part     function name       start           end             max size    real size
- * [a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x160       0x160
- * [a]      ARM_MapFloodCoreRe  0x03003E0C      0x03004150      0x344       0x2B8
+ * [a]      ARM_SkillTester     0x03003CAC      0x03003E10      0x160       0x164
+ * [a]      ARM_MapFloodCoreRe  0x03003E10      0x03004150      0x344       0x2B4
  * [a]      no-free space
  *
  * [b]      ARM_UnitList        0x0300428C      0x0300438C      0x100       0xEC
@@ -97,8 +97,8 @@ _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
  * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
  */
 dat 0x03003CAC, ARM_SkillTester
-dat 0x03003E0C, ARM_SkillTesterEnd      @ size = 0x1A0
-dat 0x03003E0C, ARM_MapFloodCoreRe
+dat 0x03003E10, ARM_SkillTesterEnd      @ size = 0x1A0
+dat 0x03003E10, ARM_MapFloodCoreRe
 dat 0x03004150, ARM_MapFloodCoreReEnd   @ size = 0x304
 
 dat 0x0300428C, ARM_UnitList
