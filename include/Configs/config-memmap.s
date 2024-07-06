@@ -75,11 +75,11 @@ _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
 _kernel_malloc_overlay0 sStatScreenPage1BarMax, 4
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
 _kernel_malloc_overlay0 gBattleTemporaryFlag, 8
-_kernel_malloc_overlay0 BattleOrderSkills, 4
 _kernel_malloc_overlay0 sCombatArtList, 0x20
 _kernel_malloc_overlay0 sSelectedComatArtIndex, 4
 _kernel_malloc_overlay0 sCombatArtBKSELfxTimer, 4
 _kernel_malloc_overlay0 sHelpBoxType, 4
+_kernel_malloc_overlay0 BattleOrderSkills, 8
 
 /**
  * Usage of memory on IWRAM for arm-functions

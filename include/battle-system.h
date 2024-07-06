@@ -76,13 +76,26 @@ void ClearBattleGlobalFlags(void);
 void RegisterHitCnt(struct BattleUnit * bu, bool miss);
 
 extern struct {
-    u32 order_vantage : 1;
-    u32 order_desperation : 1;
-    u32 order_quick_riposte : 1;
-    u32 order_dobule_lion : 1;
+    u32 desperation_order : 1;
+    u32 vantage_order : 1;
+    u32 tar_force_twice_order : 1;
+    u32 act_force_twice_order : 1;
+
     u32 skill_activated_sure_shoot : 1;
     u32 skill_activated_dead_eye : 1;
 } gBattleTemporaryFlag;
+
+enum BattleOrderSkills_Type {
+    BORDER_DESPERATION,
+    BORDER_VANTAGE,
+    BORDER_ACT_TWICE,
+    BORDER_TAR_TWICE,
+
+    BORDER_MAX
+};
+extern u16 BattleOrderSkills[BORDER_MAX];
+
+#define RegisterBattleOrderSkill(sid, type) (BattleOrderSkills[type] = (sid))
 
 /* Battle skill act */
 bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);

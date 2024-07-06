@@ -21,7 +21,7 @@ void InitEfxSkillRoundData(void)
 
 void RegisterActorEfxSkill(int round, const u16 sid)
 {
-    if (round < NEW_BATTLE_HIT_MAX)
+    if (round < NEW_BATTLE_HIT_MAX && COMMON_SKILL_VALID(sid))
     {
         u16 sid_old = sEfxSkillRoundData[round].sid_actor;
         if (COMMON_SKILL_VALID(sid_old) && GetEfxSkillPriority(sid_old) >= GetEfxSkillPriority(sid))

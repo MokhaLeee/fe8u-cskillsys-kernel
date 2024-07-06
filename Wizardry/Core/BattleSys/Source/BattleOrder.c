@@ -42,7 +42,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
                 return false;
 #endif
 
-        gBattleTemporaryFlag.order_dobule_lion = false;
+        gBattleTemporaryFlag.act_force_twice_order = false;
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
         if (BattleSkillTester(actor, SID_DoubleLion))
@@ -50,7 +50,8 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             if (actor->hpInitial == actor->unit.maxHP)
             {
                 gBattleActorGlobalFlag.skill_activated_double_lion = true;
-                gBattleTemporaryFlag.order_dobule_lion = true;
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_DoubleLion, BORDER_ACT_TWICE);
                 return true;
             }
         }
@@ -58,14 +59,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     }
     else if (&gBattleTarget == actor)
     {
-        gBattleTemporaryFlag.order_quick_riposte = false;
+        gBattleTemporaryFlag.tar_force_twice_order = false;
 
 #if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
         if (BattleSkillTester(actor, SID_QuickRiposte))
         {
             if ((actor->hpInitial * 2) > actor->unit.maxHP)
             {
-                gBattleTemporaryFlag.order_quick_riposte = true;
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_QuickRiposte, BORDER_TAR_TWICE);
                 return true;
             }
         }
@@ -80,14 +82,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
 STATIC_DECLAR bool CheckDesperationOrder(void)
 {
-    gBattleTemporaryFlag.order_desperation = false;
+    gBattleTemporaryFlag.desperation_order = false;
 
 #if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
     if (BattleSkillTester(&gBattleActor, SID_Desperation))
     {
         if ((gBattleActor.hpInitial * 2) < gBattleActor.unit.maxHP)
         {
-            gBattleTemporaryFlag.order_desperation = true;
+            gBattleTemporaryFlag.desperation_order = true;
+            RegisterBattleOrderSkill(SID_Desperation, BORDER_DESPERATION);
             return true;
         }
     }
@@ -97,20 +100,24 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 
 STATIC_DECLAR bool CheckVantageOrder(void)
 {
-    gBattleTemporaryFlag.order_vantage = false;
+    gBattleTemporaryFlag.vantage_order = false;
 
     /* Combat art will not allow vantage */
     if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
         return false;
 
+#if defined(SID_Vantage) && (COMMON_SKILL_VALID(SID_Vantage))
     if (BattleSkillTester(&gBattleTarget, SID_Vantage))
     {
         if ((gBattleTarget.hpInitial * 2) < gBattleTarget.unit.maxHP)
         {
-            gBattleTemporaryFlag.order_vantage = true;
+            RegisterBattleOrderSkill(SID_Vantage, BORDER_VANTAGE);
+            gBattleTemporaryFlag.vantage_order = true;
             return true;
         }
     }
+#endif
+
     return false;
 }
 
@@ -130,6 +137,13 @@ void BattleUnwind(void)
 
     ClearBattleHits();
     gBattleHitIterator->info |= BATTLE_HIT_INFO_BEGIN;
+
+    /* fasten calc! */
+    if (!(gBattleStats.config & BATTLE_CONFIG_REAL))
+    {
+        gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+        return;
+    }
 
     /**
      * BattleGlobalFlag should not clear in battle routine
@@ -200,44 +214,26 @@ void BattleUnwind(void)
         if (i != 0 && config[i - 1] == config[i])
             gBattleHitIterator->attributes = BATTLE_HIT_ATTR_FOLLOWUP;
 
-#if defined(SID_Vantage) && (COMMON_SKILL_VALID(SID_Vantage))
         /* Vantage */
         if (i == 0 && (round_mask & UNWIND_VANTAGE))
-        {
-            if (gBattleTemporaryFlag.order_vantage)
-                RegisterActorEfxSkill(GetBattleHitRound(old), SID_Vantage);
-        }
-#endif
+            if (gBattleTemporaryFlag.vantage_order)
+                RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_VANTAGE]);
 
-#if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
         /* Desperation */
         if (i == 1 && (round_mask & UNWIND_DESPERA))
-        {
             if (config[0] == ACT_ATTACK && config[1] == ACT_ATTACK && config[2] == TAR_ATTACK)
-            {
-                if (gBattleTemporaryFlag.order_desperation)
-                    RegisterActorEfxSkill(GetBattleHitRound(old), SID_Desperation);
-            }
-        }
-#endif
+                if (gBattleTemporaryFlag.desperation_order)
+                    RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_DESPERATION]);
 
-#if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
         /* Target double attack */
         if (target_count > 1 && config[i] == TAR_ATTACK)
-        {
-            if (gBattleTemporaryFlag.order_quick_riposte)
-                RegisterActorEfxSkill(GetBattleHitRound(old), SID_QuickRiposte);
-        }
-#endif
+            if (gBattleTemporaryFlag.tar_force_twice_order)
+                RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_TAR_TWICE]);
 
-#if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
         /* Actor double attack */
         if (actor_count > 1 && config[i] == ACT_ATTACK)
-        {
-            if (gBattleTemporaryFlag.order_dobule_lion)
-                RegisterActorEfxSkill(GetBattleHitRound(old), SID_DoubleLion);
-        }
-#endif
+            if (gBattleTemporaryFlag.act_force_twice_order)
+                RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_ACT_TWICE]);
 
         if (ret)
             break;
