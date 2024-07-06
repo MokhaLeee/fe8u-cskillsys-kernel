@@ -8,7 +8,7 @@
  * If uncomment, kernel may remove vanilla dislogue text
  * so that we can save ~470KByte ROM space in DEMO.
  *
- * Note that this uncomment this commit will make FEB this there are something wrong in
+ * Note that enabling this config will make FEB this there are something wrong in
  * ROM and report warnning and error. But it will be okay since this will not actually
  * introduce any bug in kernel.
  *
