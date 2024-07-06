@@ -128,71 +128,109 @@ _08000A18:
     pop {r4, r5, r6, lr}
     bx lr
 
+/*
+void MapFloodCoreStep(int connexion, int xPos, int yPos)
+{
+    u8 uid1, uid2;
+    struct MovMapFillState * st = &gMovMapFillState;
+
+    int xsrc = st->src->xPos;
+    int xdst = xsrc + xPos;
+    int ysrc = st->src->yPos;
+    int ydst = ysrc + yPos;
+    u32 cost = gWorkingTerrainMoveCosts[gBmMapTerrain[ydst][xdst]] + gWorkingBmMap[ysrc][xsrc];
+
+    if (cost > gWorkingBmMap[ydst][xdst])
+        return;
+
+    uid1 = st->unitId;
+    uid2 = gBmMapUnit[ydst][xdst];
+    if (!st->hasUnit || !uid2 || (uid1 ^ uid2) & 0x80) // not allied
+        return;
+
+    if (cost > st->movement)
+        return;
+
+    st->dst->xPos = xdst;
+    st->dst->yPos = ydst;
+    st->dst->connexion = connexion;
+    st->dst->leastMoveCost = cost;
+    sr->dst++;
+
+    gWorkingBmMap[ydst][xdst] = cost;
+}
+*/
+
 MapFloodCoreReStep: @ 0x08000784
-    push {r4, r5, r6, r7, r8, r9, sl}
-    ldr r3, .LMovMapFillState
-    ldr r4, [r3]
-    ldrb r5, [r4]
-    add r1, r1, r5
-    ldrb r6, [r4, #1]
-    add r2, r2, r6
-    ldr r7, .LBmMapTerrain
-    ldr r7, [r7]
-    ldr r7, [r7, r2, lsl #2]
-    ldrb r7, [r7, r1]
-    ldr r8, .LWorkingTerrainMoveCosts
-    ldrb sl, [r8, r7]
-    ldr r7, .LWorkingBmMap
-    ldr r7, [r7]
-    ldr r9, [r7, r6, lsl #2]
-    ldrb r9, [r9, r5]
-    add sl, sl, r9
-    ldr r9, [r7, r2, lsl #2]
-    ldrb r9, [r9, r1]
-    cmp sl, r9
-    bhs .LMapFloodCoreReStepEnd
-    ldrb r4, [r3, #8]
-    tst r4, r4
-    beq _08000810
-    ldr r7, .LBmMapUnit
-    ldr r7, [r7]
-    ldr r7, [r7, r2, lsl #2]
-    ldrb r7, [r7, r1]
-    tst r7, r7
-    beq _08000810
+    push {r4-r9, lr}
+    ldr r4, .LMovMapFillState       @ r4 = st = &gMovMapFillState
 
-    @ judge on PASS
-    push {r0-r3, lr}
-    ldr r0, .LSID_Pass
+    ldr r3, [r4]
+    ldrb r5, [r3]                   @ r5 = xsrc = st->src->xPos
+    ldrb r3, [r3, #1]               @ r3 = ysrc = st->src->yPos
+    add r7, r5, r1                  @ r7 = xdst = xsrc + xPos
+    add r8, r3, r2                  @ r8 = ydst = ysrc + yPos
+    mov r9, r0                      @ r9 = connexion
+
+    ldr r0, .LBmMapTerrain
     ldr r0, [r0]
-    bl .Lfunc_MapFloodSkillTester
-    cmp r0, #1
-    pop {r0-r3, lr}
-    beq _08000810
+    ldr r0, [r0, r8, lsl #2]
+    ldrb r0, [r0, r7]               @ gBmMapTerrain[ydst][xdst]
+    ldr r1, .LWorkingTerrainMoveCosts
+    ldrb r0, [r1, r0]               @ gWorkingTerrainMoveCosts[gBmMapTerrain[ydst][xdst]]
 
-    ldrb r4, [r3, #0xa]
-    eor r4, r4, r7
-    ands r4, r4, #0x80
-    bne .LMapFloodCoreReStepEnd
-_08000810:
-    ldrb r4, [r3, #9]
-    cmp sl, r4
-    bhi .LMapFloodCoreReStepEnd
-    ldr r4, [r3, #4]
-    strb r1, [r4]
-    strb r2, [r4, #1]
-    strb r0, [r4, #2]
-    strb sl, [r4, #3]
-    add r4, r4, #4
-    str r4, [r3, #4]
-    ldr r7, .LWorkingBmMap
-    ldr r7, [r7]
-    ldr r7, [r7, r2, lsl #2]
-    strb sl, [r7, r1]
-.LMapFloodCoreReStepEnd:
-    pop {r4, r5, r6, r7, r8, r9, sl}
-    bx lr
-    .align 2, 0
+    ldr r1, .LWorkingBmMap
+    ldr r6, [r1]                    @ r6 = gWorkingBmMap
+    ldr r1, [r6, r3, lsl #2]
+    ldrb r1, [r1, r5]               @ gWorkingBmMap[ysrc][xsrc]
+
+    add r5, r0, r1                  @ r5 = cost = gWorkingTerrainMoveCosts[gBmMapTerrain[ydst][xdst]] + gWorkingBmMap[ysrc][xsrc]
+
+    ldr r6, [r6, r8, lsl #2]
+    ldrb r1, [r6, r7]
+    cmp r5, r1                      @ if (cost >= gWorkingBmMap[ydst][xdst]) return;
+    bhs .Lstep_end
+
+    ldrb r0, [r4, #8]               @ st->hasUnit
+    cmp r0, #0
+    beq 1f
+
+    ldr r1, .LBmMapUnit
+    ldr r1, [r1]
+    ldr r1, [r1, r8, lsl #2]
+    ldrb r1, [r1, r7]               @ uid2 = gBmMapUnit[ydst][xdst]
+    cmp r1, #0
+    beq 1f
+
+    ldrb r0, [r4, #10]              @ uid1 = st->unitId
+    eor r0, r0, r1
+    ands r0, r0, #0x80
+    beq 1f
+
+    ldrb r0, [r4, #10]              @ <!> CHAX: judge skill: SID_Pass
+    ldr r1, .LSID_Pass
+    ldr r1, [r1]
+    bl .Lfunc_SkillTesterForUid
+    cmp r0, #1
+    bne .Lstep_end
+
+1:
+    ldrb r0, [r4, #9]               @ if (cost > st->movement)
+    cmp r5, r0
+    bhi .Lstep_end
+
+    ldr r0, [r4, #4]
+    strb r7, [r0], #1               @ st->dst->xPos = xdst
+    strb r8, [r0], #1               @ st->dst->yPos = ydst
+    strb r9, [r0], #1               @ st->dst->connexion = connexion
+    strb r5, [r0], #1               @ st->dst->leastMoveCost = cost
+    str r0, [r4, #4]                @ sr->dst++
+
+    strb r5, [r6, r7]               @ gWorkingBmMap[ydst][xdst] = cost
+
+.Lstep_end:
+    pop {r4-r9, pc}
+
 .LMovMapFillStPool1: .4byte gMovMapFillStPool1 @ pool
 .LMovMapFillStPool2: .4byte gMovMapFillStPool2 @ pool
 
@@ -202,16 +240,13 @@ _08000810:
 .LBmMapTerrain: .4byte gBmMapTerrain @ pool
 .LBmMapUnit: .4byte gBmMapUnit @ pool
 
-.Lfunc_MapFloodSkillTester:
-    mov r1, r0
-    ldrb r0, [r3, #0xA]
+.Lfunc_SkillTesterForUid:
     ldr r2, 1f
     ldr r0, [r2, r0, lsl #2]
-    ldr r2, 2f
+    ldr r2, #4 + 1f
     ldr pc, [r2]
 1:
     .4byte gUnitLookup
-2:
     .4byte _SkillTester
 
 
