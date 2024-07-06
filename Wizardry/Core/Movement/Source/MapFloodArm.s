@@ -140,13 +140,25 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
     int ydst = ysrc + yPos;
     u32 cost = gWorkingTerrainMoveCosts[gBmMapTerrain[ydst][xdst]] + gWorkingBmMap[ysrc][xsrc];
 
+#if CHAX
+    if (KernelMoveMapFlags & FMOVSTRE_OBSTRUCT)
+        cost += KernelExtMoveCostMap[KERNEL_MOV_MAP_EXTCOST][ydst][xdst];
+#endif
+
     if (cost > gWorkingBmMap[ydst][xdst])
         return;
 
     uid1 = st->unitId;
     uid2 = gBmMapUnit[ydst][xdst];
     if (!st->hasUnit || !uid2 || (uid1 ^ uid2) & 0x80) // not allied
-        return;
+    {
+#if CHAX
+        if (!(KernelMoveMapFlags & FMOVSTRE_PASS))
+#else
+        if (1)
+#endif 
+            return;
+    }
 
     if (cost > st->movement)
         return;
