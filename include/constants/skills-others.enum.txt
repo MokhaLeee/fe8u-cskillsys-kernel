@@ -67,6 +67,7 @@ SID_DancingBlade
 SID_QuickBurn
 SID_SlowBurn
 SID_NaturalCover
+SID_RecklessFighter
 
 
 // Weapon range

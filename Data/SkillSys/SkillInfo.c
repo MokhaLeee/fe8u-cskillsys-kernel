@@ -2504,11 +2504,19 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
+#if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_))
     [SID_VengefulFighter] = {
          .name = MSG_SKILL_VengefulFighter_NAME,
          .desc = MSG_SKILL_VengefulFighter,
          .icon = GFX_SkillIcon_VengefulFighter,
+    },
+#endif
+
+#if (defined(SID_RecklessFighter) && COMMON_SKILL_VALID(SID_RecklessFighter))
+    [SID_RecklessFighter] = {
+         .name = MSG_SKILL_RecklessFighter_NAME,
+         .desc = MSG_SKILL_RecklessFighter,
+         .icon = GFX_SkillIcon_RecklessFighter,
     },
 #endif
 };
