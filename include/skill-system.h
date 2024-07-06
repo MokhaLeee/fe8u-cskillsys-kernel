@@ -103,6 +103,9 @@ struct SkillPreloadPConf { u8 skills[SKILL_ROM_DATA_AMT * (UNIT_RECORDED_LEVEL_M
 extern const struct SkillPreloadJConf gSkillPreloadJData[0x100];
 extern const struct SkillPreloadPConf gSkillPreloadPData[0x100];
 
+extern struct SkillPreloadJConf const * const gpSkillPreloadJData;
+extern struct SkillPreloadPConf const * const gpSkillPreloadPData;
+
 struct SkillAnimInfo {
     u8 aid;
     u8 priority;

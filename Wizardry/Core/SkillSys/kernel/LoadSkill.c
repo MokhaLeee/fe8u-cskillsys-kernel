@@ -76,8 +76,8 @@ void UnitAutoLoadSkills(struct Unit * unit)
 {
     int i;
     int level_p, level_j;
-    const struct SkillPreloadPConf * pConf = &gSkillPreloadPData[UNIT_CHAR_ID(unit)];
-    const struct SkillPreloadJConf * jConf = &gSkillPreloadJData[UNIT_CLASS_ID(unit)];
+    const struct SkillPreloadPConf * pConf = &gpSkillPreloadPData[UNIT_CHAR_ID(unit)];
+    const struct SkillPreloadJConf * jConf = &gpSkillPreloadJData[UNIT_CLASS_ID(unit)];
 
     if (!UNIT_IS_VALID(unit))
         return;
@@ -116,12 +116,12 @@ void UnitAutoLoadSkills(struct Unit * unit)
 #endif
 }
 
-STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
+STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
 {
     int i;
     u16 sid;
 
-    const struct SkillPreloadPConf * pConf = &gSkillPreloadPData[UNIT_CLASS_ID(unit)];
+    const struct SkillPreloadPConf * pConf = &gpSkillPreloadPData[UNIT_CHAR_ID(unit)];
     int _level = simple_div(level, 5) * 5;
 
     for (i = 0; i < 5; i++)
@@ -133,12 +133,12 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
     }
 }
 
-STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
+STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
 {
     int i;
     u16 sid;
 
-    const struct SkillPreloadJConf * jConf = &gSkillPreloadJData[UNIT_CLASS_ID(unit)];
+    const struct SkillPreloadJConf * jConf = &gpSkillPreloadJData[UNIT_CLASS_ID(unit)];
     int _level = simple_div(level, 5) * 5;
 
     for (i = 0; i < 5; i++)
@@ -171,7 +171,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid)
     int i;
     u16 sid;
 
-    const struct SkillPreloadJConf * jConf = &gSkillPreloadJData[jid];
+    const struct SkillPreloadJConf * jConf = &gpSkillPreloadJData[jid];
 
     if (!UNIT_IS_VALID(unit))
         return;
