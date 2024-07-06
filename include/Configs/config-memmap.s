@@ -40,19 +40,12 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 
 /* From the bottom to the top */
 _kernel_malloc sSkillList, 0x40 * 3
-_kernel_malloc sStatScreenPage1BarMax, 4
 _kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
-_kernel_malloc sEfxSkillQueue, 32
-_kernel_malloc gBattleTemporaryFlag, 8
 _kernel_malloc gBattleActorGlobalFlag, 0x10
 _kernel_malloc gBattleTargetGlobalFlag, 0x10
 _kernel_malloc gCombatArtStatus, 0x10
-_kernel_malloc sCombatArtList, 0x20
-_kernel_malloc sSelectedComatArtIndex, 4
-_kernel_malloc sCombatArtBKSELfxTimer, 4
-_kernel_malloc sHelpBoxType, 4
 _kernel_malloc sRandSeedsC, 8
 _kernel_malloc sRandBackup, 8
 _kernel_malloc gBanimSyncHandler, 8
@@ -79,6 +72,14 @@ _kernel_malloc KernelExtMoveCostMap, 4
  * Note that it is risky to use this area rashly
  */
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
+_kernel_malloc_overlay0 sStatScreenPage1BarMax, 4
+_kernel_malloc_overlay0 sEfxSkillQueue, 32
+_kernel_malloc_overlay0 gBattleTemporaryFlag, 8
+_kernel_malloc_overlay0 BattleOrderSkills, 4
+_kernel_malloc_overlay0 sCombatArtList, 0x20
+_kernel_malloc_overlay0 sSelectedComatArtIndex, 4
+_kernel_malloc_overlay0 sCombatArtBKSELfxTimer, 4
+_kernel_malloc_overlay0 sHelpBoxType, 4
 
 /**
  * Usage of memory on IWRAM for arm-functions
