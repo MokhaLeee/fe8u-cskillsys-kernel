@@ -1,0 +1,8 @@
+PUSH
+ORG $1a4ec
+ALIGN 4
+WORD $46C04778 $E59FC000 $E12FFF1C
+POIN GenerateMovementMap
+POP
+
+PROTECT $1a4ec $1a4ec + 0x10

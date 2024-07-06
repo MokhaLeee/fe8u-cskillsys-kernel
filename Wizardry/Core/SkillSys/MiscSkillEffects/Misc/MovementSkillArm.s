@@ -207,12 +207,9 @@ MapFloodCoreReStep: @ 0x08000784
     ands r0, r0, #0x80
     beq 1f
 
-    ldrb r0, [r4, #10]              @ <!> CHAX: judge skill: SID_Pass
-    ldr r1, .LSID_Pass
-    ldr r1, [r1]
-    bl .Lfunc_SkillTesterForUid
-    cmp r0, #1
-    bne .Lstep_end
+    ldrb r0, [r4, #12]              @ <!> CHAX: judge flag: FMOVSTRE_PASS
+    ands r0, #1
+    beq .Lstep_end
 
 1:
     ldrb r0, [r4, #9]               @ if (cost > st->movement)
@@ -239,19 +236,6 @@ MapFloodCoreReStep: @ 0x08000784
 .LWorkingBmMap: .4byte gWorkingBmMap @ pool
 .LBmMapTerrain: .4byte gBmMapTerrain @ pool
 .LBmMapUnit: .4byte gBmMapUnit @ pool
-
-.Lfunc_SkillTesterForUid:
-    ldr r2, 1f
-    ldr r0, [r2, r0, lsl #2]
-    ldr r2, #4 + 1f
-    ldr pc, [r2]
-1:
-    .4byte gUnitLookup
-    .4byte _SkillTester
-
-
-.LSID_Pass:
-    .4byte gSID_Pass
 
     .global _ARM_MapFloodCore_CopyEnd
 _ARM_MapFloodCore_CopyEnd:
