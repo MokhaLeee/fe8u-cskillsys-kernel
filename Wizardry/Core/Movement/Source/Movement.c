@@ -8,6 +8,7 @@
 STATIC_DECLAR void PreGenerateMovementMap(void)
 {
     FORCE_DECLARE struct Unit * unit;
+    FORCE_DECLARE int ix, iy;
 
     KernelMoveMapFlags = 0;
 
@@ -21,11 +22,50 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
     if (SkillTester(unit, SID_Pass) && ((GetUnitCurrentHp(unit) * 4) >= GetUnitMaxHp(unit)))
         KernelMoveMapFlags |= FMOVSTRE_PASS;
 #endif
+
+    /**
+     * Here we use generic buffer as a external cost buffer
+     */
+    BmMapInit(gGenericBuffer, &KernelExtMoveCostMap, gBmMapSize.x, gBmMapSize.y);
+    BmMapFill(KernelExtMoveCostMap, 0);
+
+    for (iy = 0; iy < gBmMapSize.y; ++iy)
+        for (ix = 0; ix < gBmMapSize.x; ++ix)
+        {
+            struct Unit * _unit = GetUnitAtPosition(ix, iy);
+            if (!UNIT_ALIVE(_unit))
+                continue;
+
+#if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
+            if
+            (
+                !AreUnitsAllied(unit->index, _unit->index) &&
+                !(KernelMoveMapFlags & FMOVSTRE_PASS) && // Obstruct is not effective on Pass skill
+                SkillTester(_unit, SID_Obstruct)
+            )
+            {
+                int _i;
+                for (_i = 0; _i < ARRAY_COUNT_RANGE1x1; _i++)
+                {
+                    int _x = _unit->xPos + gVecs_1x1[_i].x;
+                    int _y = _unit->yPos + gVecs_1x1[_i].y;
+
+                    if (IsPositionValid(_x, _y))
+                        KernelExtMoveCostMap[_y][_x] = -1;
+                }
+
+                KernelExtMoveCostMap[_unit->yPos][_unit->xPos] = -1;
+                KernelMoveMapFlags |= FMOVSTRE_OBSTRUCT;
+            }
+#endif
+        }
 }
 
 /* LynJump */
 void GenerateMovementMap(int x, int y, int movement, int uid)
 {
+    u8 ** working_map = gWorkingBmMap;
+
     gMovMapFillState.dst = gMovMapFillStPool1;
     gMovMapFillState.src = gMovMapFillStPool2;
 
@@ -57,6 +97,7 @@ void GenerateMovementMap(int x, int y, int movement, int uid)
 
 #if CHAX
     PreGenerateMovementMap();
+    SetWorkingBmMap(working_map);
 #endif
 
     CallARM_FillMovementMap();

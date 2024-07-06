@@ -187,6 +187,21 @@ MapFloodCoreReStep: @ 0x08000784
 
     add r5, r0, r1                  @ r5 = cost = gWorkingTerrainMoveCosts[gBmMapTerrain[ydst][xdst]] + gWorkingBmMap[ysrc][xsrc]
 
+    /**
+     * Judge on kernel external map (Obstruct skill):
+     * cost += KernelExtMoveCostMap[KERNEL_MOV_MAP_EXTCOST][ydst][xdst];
+     */
+    ldr r0, [r10]
+    ands r0, #2                     @ <!> CHAX: FMOVSTRE_OBSTRUCT
+    beq 1f
+    ldr r1, .LKernelExtMoveCostMap
+    ldr r1, [r1]
+    ldr r1, [r1, r8, lsl #2]
+    ldrb r1, [r1, r7]
+    add r5, r1
+
+1:
+
     ldr r6, [r6, r8, lsl #2]
     ldrb r1, [r6, r7]
     cmp r5, r1                      @ if (cost >= gWorkingBmMap[ydst][xdst]) return;
@@ -243,6 +258,7 @@ MapFloodCoreReStep: @ 0x08000784
 
 @ Kernel related
 .LKernelMoveMapFlags: .4byte KernelMoveMapFlags
+.LKernelExtMoveCostMap: .4byte KernelExtMoveCostMap
 
     .global _ARM_MapFloodCore_CopyEnd
 _ARM_MapFloodCore_CopyEnd:

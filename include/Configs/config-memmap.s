@@ -70,6 +70,7 @@ _kernel_malloc sStatDebuffMsgBuf, 0x2C * 6
 _kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sPrepareNextBattleRoundTimer, 4
 _kernel_malloc KernelMoveMapFlags, 4
+_kernel_malloc KernelExtMoveCostMap, 4
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
