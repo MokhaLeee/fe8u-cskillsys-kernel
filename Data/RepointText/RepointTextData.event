@@ -1,5 +1,10 @@
-#include "Source/msg_data.lyn.event"
-#include "Source/huffman_tree.lyn.event"
+#ifdef CONFIG_CROP_VANILLA_MSG
+    #include "Source/CroppedMsg/msg_data.lyn.event"
+    #include "Source/CroppedMsg/huffman_tree.lyn.event"
+#else
+    #include "Source/Vanilla/msg_data.lyn.event"
+    #include "Source/Vanilla/huffman_tree.lyn.event"
+#endif
 
 PUSH
     ORG 0x0006DC
