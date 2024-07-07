@@ -122,6 +122,8 @@ SID_GentleFlower // This skill can only set to ally!
 SID_Admiration
 SID_FairyTaleFolk
 
-
 // Pre-phase skills
 SID_RainDish
+
+// Battle activation skills
+SID_Counter

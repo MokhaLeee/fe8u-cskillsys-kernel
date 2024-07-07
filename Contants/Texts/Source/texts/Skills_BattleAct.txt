@@ -135,3 +135,8 @@ D-Pulse[X]
 Divine Pulse:[NL]
 Turn a missed attack into a hit[NL]
 (30% + Luck % activation).[X]
+
+## MSG_SKILL_Counter
+Counter:[NL]
+Reflect physical damage at[NL]
+melee range. (Skill % activation).[X]

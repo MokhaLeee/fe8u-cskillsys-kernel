@@ -605,10 +605,30 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             }
 #endif
 
+#if defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter))
+            if (!IsMagicAttack(attacker) && gBattleStats.range == 1 && BattleSkillTester(defender, SID_Counter))
+            {
+                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Counter);
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+
+                attacker->unit.curHP -= gBattleStats.damage;
+
+                if (attacker->unit.curHP < 0)
+                    attacker->unit.curHP = 0;
+            }
+            else 
+            {
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)
                 defender->unit.curHP = 0;
+            }
+#else 
+            defender->unit.curHP -= gBattleStats.damage;
+
+            if (defender->unit.curHP < 0)
+                defender->unit.curHP = 0;
+#endif
         }
 
 #ifdef CHAX
