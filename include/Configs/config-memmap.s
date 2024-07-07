@@ -80,6 +80,7 @@ _kernel_malloc_overlay0 BattleOrderSkills, 8
 _kernel_malloc_overlay0 gComboMapAnimBattleUnit, 0x80
 _kernel_malloc_overlay0 KernelMoveMapFlags, 4
 _kernel_malloc_overlay0 KernelExtMoveCostMap, 4
+_kernel_malloc_overlay0 KernelExtMoveGuideMap, 4
 
 /**
  * Usage of memory on IWRAM for arm-functions

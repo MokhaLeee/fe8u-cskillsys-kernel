@@ -173,6 +173,13 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
     st->dst->leastMoveCost = cost;
     sr->dst++;
 
+#if CHAX
+    if (KernelMoveMapFlags & FMOVSTRE_GUIDE)
+        cost -= KernelExtMoveGuideMap[ydst][xdst];
+        if (cost < 0)
+            cost = 0;
+#endif
+
     gWorkingBmMap[ydst][xdst] = cost;
 }
 */
@@ -258,6 +265,23 @@ MapFloodCoreReStep: @ 0x08000784
     strb r5, [r0], #1               @ st->dst->leastMoveCost = cost
     str r0, [r4, #4]                @ sr->dst++
 
+    /**
+     * Judge on kernel external guide map:
+     *
+     * cost -= KernelExtMoveCostMap[ydst][xdst];
+     */
+    ldr r0, [r10]
+    ands r0, #4                     @ <!> CHAX: FMOVSTRE_GUIDE
+    beq 1f
+    ldr r1, .LKernelExtMoveGuideMap
+    ldr r1, [r1]
+    ldr r1, [r1, r8, lsl #2]
+    ldrb r1, [r1, r7]
+    cmp r5, r1
+    subge r5, r5, r1
+    movls r5, #0
+1:
+
     strb r5, [r6, r7]               @ gWorkingBmMap[ydst][xdst] = cost
 
 .Lstep_end:
@@ -275,6 +299,7 @@ MapFloodCoreReStep: @ 0x08000784
 @ Kernel related
 .LKernelMoveMapFlags: .4byte KernelMoveMapFlags
 .LKernelExtMoveCostMap: .4byte KernelExtMoveCostMap
+.LKernelExtMoveGuideMap: .4byte KernelExtMoveGuideMap
 
     .global _ARM_MapFloodCore_CopyEnd
 _ARM_MapFloodCore_CopyEnd:
