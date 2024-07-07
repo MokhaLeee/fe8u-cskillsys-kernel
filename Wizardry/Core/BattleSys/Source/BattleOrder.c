@@ -69,6 +69,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
+        if ((basic_judgement == false && BattleSkillTester(actor, SID_RecklessFighter)) || (basic_judgement == false && BattleSkillTester(&gBattleTarget, SID_RecklessFighter)))
+        {
+            gBattleTemporaryFlag.act_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
+            return true;
+        }
+#endif
     }
     else if (&gBattleTarget == actor)
     {
@@ -79,6 +88,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         {
             gBattleTemporaryFlag.tar_force_twice_order = true;
             RegisterBattleOrderSkill(SID_VengefulFighter, BORDER_TAR_TWICE);
+            return true;
+        }
+#endif
+
+#if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
+        if ((basic_judgement == false && BattleSkillTester(actor, SID_RecklessFighter)) || (basic_judgement == false && BattleSkillTester(&gBattleActor, SID_RecklessFighter)))
+        {
+            gBattleTemporaryFlag.tar_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
             return true;
         }
 #endif

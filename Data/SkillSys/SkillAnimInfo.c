@@ -284,6 +284,14 @@ const struct SkillAnimInfo gSkillAnimInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_RecklessFighter) && COMMON_SKILL_VALID(SID_RecklessFighter))
+    [SID_RecklessFighter] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
 #if (defined(SID_BoldFighter) && COMMON_SKILL_VALID(SID_BoldFighter))
     [SID_BoldFighter] = {
         .aid = EFX_SKILL_DEFAULT,
