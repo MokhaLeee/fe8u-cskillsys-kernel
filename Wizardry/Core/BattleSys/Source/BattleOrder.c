@@ -93,7 +93,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             if (target->canCounter == false)
             {
                 gBattleTemporaryFlag.act_force_twice_order = true;
-                RegisterBattleOrderSkill(SID_BidingBlow, BORDER_TAR_TWICE);
+                RegisterBattleOrderSkill(SID_BidingBlow, BORDER_ACT_TWICE);
                 return true;
             }
         }
