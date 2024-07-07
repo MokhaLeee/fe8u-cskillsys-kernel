@@ -394,5 +394,13 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     }
 #endif
 
+#if defined(SID_Dazzle) && (COMMON_SKILL_VALID(SID_Dazzle))
+    if (BattleSkillTester(target, SID_Dazzle) && target == &gBattleActor)
+    {
+        EnqueueRoundEfxSkill(SID_Dazzle);
+        result = 0;
+    }
+#endif
+
     return result;
 }

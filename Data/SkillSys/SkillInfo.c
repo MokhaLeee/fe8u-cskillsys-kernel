@@ -2527,4 +2527,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_BoldFighter,
     },
 #endif
+
+#if (defined(SID_Dazzle) && COMMON_SKILL_VALID(SID_Dazzle))
+    [SID_Dazzle] = {
+         .desc = MSG_SKILL_Dazzle,
+         .icon = GFX_SkillIcon_Dazzle,
+    },
+#endif
 };
