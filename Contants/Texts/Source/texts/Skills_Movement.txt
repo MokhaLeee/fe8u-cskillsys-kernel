@@ -1,0 +1,51 @@
+## MSG_SKILL_Pass
+Pass:[NL]
+If HP more than 25% unit can[NL]
+move through foes' spaces.[X]
+
+## MSG_SKILL_Obstruct
+Obstruct: If HP more than 50%,[NL]
+foes cannot move through adjacent[NL]
+to unit. (Null on Pass skill)[X]
+
+## MSG_SKILL_Guidance
+Guidance:[NL]
+Provide two additional movement[NL]
+for non-flier allies[X]
+
+## MSG_SKILL_FlierGuidance_NAME
+F-Guidance[X]
+
+## MSG_SKILL_FlierGuidance
+Flier Guidance:[NL]
+Provide two additional movement[NL]
+for flier allies[X]
+
+## MSG_SKILL_SoaringGuidance_NAME
+S-Guidance[X]
+
+## MSG_SKILL_SoaringGuidance
+Soaring Guidance:[NL]
+Provide two additional movement[NL]
+for allies[X]
+
+## MSG_SKILL_Aerobatics
+Aerobatics:[NL]
+Non-flier allies can provides two[NL]
+additional movement for the unit[X]
+
+## MSG_SKILL_FlierFormation_NAME
+F-Formation[X]
+
+## MSG_SKILL_FlierFormation
+Flier Formation:[NL]
+Flier allies can provides two[NL]
+additional movement for the unit[X]
+
+## MSG_SKILL_SoaringWings_NAME
+SoarWing[X]
+
+## MSG_SKILL_SoaringWings
+Soaring Wings:[NL]
+Allies provides movement+2,[NL]
+Inflicts foe's SPD/DEF -movement x4.[X]

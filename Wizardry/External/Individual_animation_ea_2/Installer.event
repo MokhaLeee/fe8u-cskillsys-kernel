@@ -24,4 +24,4 @@ IndividualAnimation7743_CC:
 gpCustomAnimeTable2:
 POIN CustomAnimeTable
 
-#include "data.event"
+// #include "data.event"
