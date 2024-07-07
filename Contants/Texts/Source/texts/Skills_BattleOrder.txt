@@ -44,7 +44,7 @@ V-Fighter[X]
 
 ## MSG_SKILL_VengefulFighter
 VengefulFighter:[NL]
-Always attack twice when under attack[X]
+Always attack twice when under attack.[X]
 
 ## MSG_SKILL_RecklessFighter_NAME
 R-Fighter[X]
