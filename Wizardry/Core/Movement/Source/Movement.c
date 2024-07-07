@@ -7,8 +7,8 @@
 
 STATIC_DECLAR void PreGenerateMovementMap(void)
 {
-    FORCE_DECLARE struct Unit * unit;
-    FORCE_DECLARE int ix, iy;
+    struct Unit * unit;
+    int ix, iy;
 
     KernelMoveMapFlags = 0;
 
@@ -61,6 +61,48 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
         }
 }
 
+#if 0
+void PostGenerateMovementMap(void)
+{
+    struct Unit * unit;
+    int ix, iy;
+
+    /* Fasten calc! */
+    if (!gMovMapFillState.hasUnit)
+        return;
+
+    unit = GetUnit(gMovMapFillState.unitId);
+
+    for (iy = 0; iy < gBmMapSize.y; ++iy)
+        for (ix = 0; ix < gBmMapSize.x; ++ix)
+        {
+            int cost;
+            struct Unit * _unit;
+
+            cost = gWorkingBmMap[iy][ix];
+            if (cost == 0xFF)
+                continue;
+
+            _unit = GetUnitAtPosition(ix, iy);
+            if (!UNIT_ALIVE(_unit))
+                continue;
+
+            if (AreUnitsAllied(unit->index, _unit->index))
+            {
+                int _i;
+                for (_i = 0; _i < ARRAY_COUNT_RANGE1x1; _i++)
+                {
+                    int _x = _unit->xPos + gVecs_1x1[_i].x;
+                    int _y = _unit->yPos + gVecs_1x1[_i].y;
+
+                    if (IsPositionValid(_x, _y) && gWorkingBmMap[_y][_x] == 0xFF)
+                        gWorkingBmMap[_y][_x] = cost;
+                }
+            }
+        }
+}
+#endif
+
 /* LynJump */
 void GenerateMovementMap(int x, int y, int movement, int uid)
 {
@@ -101,9 +143,14 @@ void GenerateMovementMap(int x, int y, int movement, int uid)
 #endif
 
     CallARM_FillMovementMap();
+
+#if 0
+    PostGenerateMovementMap();
+    SetWorkingBmMap(working_map);
+#endif
 }
 
 void GameInit_RedirectMapFloodFunc(void)
 {
-    gUnknown_03003128 = (void *)ARM_MapFloodCoreRe;
+    gUnknown_03003128 = _MapFloodCoreRe;
 }

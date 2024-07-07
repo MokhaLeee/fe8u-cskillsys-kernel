@@ -4,6 +4,10 @@
     .arm
     .section .rodata
 
+    .global _MapFloodCoreRe
+_MapFloodCoreRe:
+    .4byte ARM_MapFloodCoreRe + (MapFloodCoreRe - _ARM_MapFloodCore_CopyStart)
+
     .global _ARM_MapFloodCore_CopyStart
 _ARM_MapFloodCore_CopyStart:
 
@@ -142,7 +146,7 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
 
 #if CHAX
     if (KernelMoveMapFlags & FMOVSTRE_OBSTRUCT)
-        cost += KernelExtMoveCostMap[KERNEL_MOV_MAP_EXTCOST][ydst][xdst];
+        cost += KernelExtMoveCostMap[ydst][xdst];
 #endif
 
     if (cost > gWorkingBmMap[ydst][xdst])
@@ -200,7 +204,8 @@ MapFloodCoreReStep: @ 0x08000784
     add r5, r0, r1                  @ r5 = cost = gWorkingTerrainMoveCosts[gBmMapTerrain[ydst][xdst]] + gWorkingBmMap[ysrc][xsrc]
 
     /**
-     * Judge on kernel external map (Obstruct skill):
+     * Judge on kernel external cost map (Obstruct skill):
+     *
      * cost += KernelExtMoveCostMap[KERNEL_MOV_MAP_EXTCOST][ydst][xdst];
      */
     ldr r0, [r10]

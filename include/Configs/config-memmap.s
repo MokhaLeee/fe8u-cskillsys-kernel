@@ -54,22 +54,19 @@ _kernel_malloc sKTutorialBits, 0xC
 _kernel_malloc sKTutorialBitsHistory, 0xC
 _kernel_malloc gBattleTargetPositionBackup, 0x4
 _kernel_malloc gActionDataExpa, 0x10
-_kernel_malloc gComboMapAnimBattleUnit, 0x80
 _kernel_malloc sStatDebuffStatusAlly, 51 * 16
 _kernel_malloc sStatDebuffStatusEnemy, 50 * 16
 _kernel_malloc sStatDebuffStatusNpc, 8 * 16
 _kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
 _kernel_malloc sStatDebuffMsgBuf, 0x2C * 6
 _kernel_malloc sStatDebuffMsgBufNext, 4
-_kernel_malloc sPrepareNextBattleRoundTimer, 4
-_kernel_malloc KernelMoveMapFlags, 4
-_kernel_malloc KernelExtMoveCostMap, 4
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
  * For more space, place refer to decomp ldscript.
  *
- * Note that it is risky to use this area rashly
+ * Note that since this space is in a time-sharing
+ * relationship with banim, it is risky to use this area rashly.
  */
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
 _kernel_malloc_overlay0 sStatScreenPage1BarMax, 4
@@ -80,6 +77,9 @@ _kernel_malloc_overlay0 sSelectedComatArtIndex, 4
 _kernel_malloc_overlay0 sCombatArtBKSELfxTimer, 4
 _kernel_malloc_overlay0 sHelpBoxType, 4
 _kernel_malloc_overlay0 BattleOrderSkills, 8
+_kernel_malloc_overlay0 gComboMapAnimBattleUnit, 0x80
+_kernel_malloc_overlay0 KernelMoveMapFlags, 4
+_kernel_malloc_overlay0 KernelExtMoveCostMap, 4
 
 /**
  * Usage of memory on IWRAM for arm-functions

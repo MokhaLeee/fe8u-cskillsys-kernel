@@ -70,6 +70,15 @@ SID_NaturalCover
 SID_RecklessFighter
 SID_BoldFighter
 
+// Mobility
+// SID_DetailedReport
+// SID_Guidance
+// SID_FlierGuidance
+// SID_SoaringGuidance
+// SID_OpeningRetainer
+// SID_Aerobatics
+// SID_FlierFormation
+// SID_SoaringWings
 
 // Weapon range
 SID_HighGround
