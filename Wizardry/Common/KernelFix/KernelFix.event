@@ -5,4 +5,6 @@
 #include "Source/UnitLimitation.lyn.event"
 #include "Source/LynJump.event"
 
+#include "LeaderFix/LeaderFix.event"
+
 #endif

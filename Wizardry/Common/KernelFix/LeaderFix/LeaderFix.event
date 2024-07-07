@@ -1,0 +1,16 @@
+/**
+ * In vanilla, it use unit->supports[6] as enemy leader (see function SetUnitLeaderCharId()).
+ * Since this Byte has been used as a skill slot, so here we may remove it.
+ * Now all unit will judge on BOSS
+ */
+
+PUSH
+    ORG 0x17C98
+    SHORT $3000 $3000 $3000 $3000
+
+    ORG 0x8472C
+    pr_gDefeatTalkList:
+POP
+
+#include "LeaderFix.lyn.event"
+#include "LynJump.event"
