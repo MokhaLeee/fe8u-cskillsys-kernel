@@ -50,3 +50,8 @@ who's RES is 3 less than unit's[X]
 RainDish:[NL]
 If it is raining, then restore 30%[NL]
 of max HP at the start of each turn.[X]
+
+## MSG_SKILL_Boon
+Boon:[NL]
+Heal bad status effects at the[NL]
+beginning of the turn.[X]

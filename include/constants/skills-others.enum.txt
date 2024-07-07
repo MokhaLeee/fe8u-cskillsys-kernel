@@ -125,3 +125,4 @@ SID_FairyTaleFolk
 
 // Pre-phase skills
 SID_RainDish
+SID_Boon
