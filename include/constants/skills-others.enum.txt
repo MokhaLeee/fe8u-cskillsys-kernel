@@ -68,6 +68,7 @@ SID_QuickBurn
 SID_SlowBurn
 SID_NaturalCover
 SID_RecklessFighter
+SID_BoldFighter
 
 
 // Weapon range

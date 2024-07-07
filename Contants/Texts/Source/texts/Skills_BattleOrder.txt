@@ -53,3 +53,9 @@ R-Fighter[X]
 RecklessFighter:[NL]
 Both sides always attack twice.[X]
 
+## MSG_SKILL_BoldFighter_NAME
+B-Fighter[X]
+
+## MSG_SKILL_BoldFighter
+BoldFighter:[NL]
+Always attack twice when attacking.[X]
