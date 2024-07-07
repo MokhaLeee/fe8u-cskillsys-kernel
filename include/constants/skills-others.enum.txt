@@ -72,13 +72,13 @@ SID_BoldFighter
 
 // Mobility
 // SID_DetailedReport
-// SID_Guidance
-// SID_FlierGuidance
-// SID_SoaringGuidance
+SID_Guidance
+SID_FlierGuidance
+SID_SoaringGuidance
 // SID_OpeningRetainer
-// SID_Aerobatics
-// SID_FlierFormation
-// SID_SoaringWings
+SID_Aerobatics
+SID_FlierFormation
+SID_SoaringWings // This skill is a bit too powerful, maybe better to set as a boss skill?
 
 // Weapon range
 SID_HighGround

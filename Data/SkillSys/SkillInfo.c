@@ -2504,6 +2504,52 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Guidance) && COMMON_SKILL_VALID(SID_Guidance))
+    [SID_Guidance] = {
+        .desc = MSG_SKILL_Guidance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
+    [SID_FlierGuidance] = {
+        .name = MSG_SKILL_FlierGuidance_NAME,
+        .desc = MSG_SKILL_FlierGuidance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SoaringGuidance) && COMMON_SKILL_VALID(SID_SoaringGuidance))
+    [SID_SoaringGuidance] = {
+        .name = MSG_SKILL_SoaringGuidance_NAME,
+        .desc = MSG_SKILL_SoaringGuidance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Aerobatics) && COMMON_SKILL_VALID(SID_Aerobatics))
+    [SID_Aerobatics] = {
+        .desc = MSG_SKILL_Aerobatics,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_FlierFormation) && COMMON_SKILL_VALID(SID_FlierFormation))
+    [SID_FlierFormation] = {
+        .name = MSG_SKILL_FlierFormation_NAME,
+        .desc = MSG_SKILL_FlierFormation,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SoaringWings) && COMMON_SKILL_VALID(SID_SoaringWings))
+    [SID_SoaringWings] = {
+        .name = MSG_SKILL_SoaringWings_NAME,
+        .desc = MSG_SKILL_SoaringWings,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
     [SID_VengefulFighter] = {
          .name = MSG_SKILL_VengefulFighter_NAME,

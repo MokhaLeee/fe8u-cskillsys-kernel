@@ -1,3 +1,4 @@
 #ifdef CONFIG_USE_CHAR_CUSTOM_ANIM
+    ALIGN 4
     #include "Individual_animation_ea_2/Installer.event"
 #endif

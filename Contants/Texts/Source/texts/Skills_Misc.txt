@@ -28,13 +28,3 @@ allies' combo-attack[X]
 Synergism:[NL]
 Allies +3 damage dealt on[NL]
 assistance on combo-attack[X]
-
-## MSG_SKILL_Pass
-Pass:[NL]
-If HP more than 25% unit can[NL]
-move through foes' spaces.[X]
-
-## MSG_SKILL_Obstruct
-Obstruct: If HP more than 50%,[NL]
-foes cannot move through adjacent[NL]
-to unit. (Null on Pass skill)[X]
