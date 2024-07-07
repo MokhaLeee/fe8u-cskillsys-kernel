@@ -17,7 +17,7 @@
  * in bmpatharrowdisp.c L236:
  *
  * #if CHAX
- *     if (gpPathArrowProc->pathCosts[gpPathArrowProc->pathLen] > 0)
+ *     if (gpPathArrowProc->pathCosts[gpPathArrowProc->pathLen] <= 0)
  * #else
  *     if (gpPathArrowProc->pathCosts[gpPathArrowProc->pathLen] == 0)
  * #endif
