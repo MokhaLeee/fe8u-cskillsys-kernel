@@ -145,7 +145,7 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
     u32 cost = gWorkingTerrainMoveCosts[gBmMapTerrain[ydst][xdst]] + gWorkingBmMap[ysrc][xsrc];
 
 #if CHAX
-    if (KernelMoveMapFlags & FMOVSTRE_OBSTRUCT)
+    if (KernelMoveMapFlags & FMOVSTRE_BARRIER)
         cost += KernelExtMoveBarrierMap[ydst][xdst];
 #endif
 
@@ -167,7 +167,7 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
     if (cost > st->movement)
     {
 #if CHAX
-        if (!((KernelMoveMapFlags & FMOVSTRE_GUIDE) || KernelExtMovePioneerMap[ydst][xdst] == 1))
+        if (!((KernelMoveMapFlags & FMOVSTRE_PIONEER) || KernelExtMovePioneerMap[ydst][xdst] == 1))
 #else
         if (1)
 #endif
@@ -216,7 +216,7 @@ MapFloodCoreReStep: @ 0x08000784
      * cost += KernelExtMoveBarrierMap[KERNEL_MOV_MAP_EXTCOST][ydst][xdst];
      */
     ldr r0, [r10]
-    ands r0, #2                     @ <!> CHAX: FMOVSTRE_OBSTRUCT
+    ands r0, #2                     @ <!> CHAX: FMOVSTRE_BARRIER
     beq 1f
     ldr r1, .LKernelExtMoveBarrierMap
     ldr r1, [r1]
@@ -266,7 +266,7 @@ MapFloodCoreReStep: @ 0x08000784
      */
 1:
     ldr r0, [r10]
-    ands r0, #4                     @ <!> CHAX: FMOVSTRE_GUIDE
+    ands r0, #4                     @ <!> CHAX: FMOVSTRE_PIONEER
     beq .Lstep_end
     ldr r0, .LKernelExtMovePioneerMap
     ldr r0, [r0]

@@ -92,6 +92,7 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
 
             switch (barrier_range) {
             case 0:
+            default:
                 break;
 
             case 1:
@@ -107,7 +108,7 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
                 }
 
                 KernelExtMoveBarrierMap[iy][ix] = -1;
-                KernelMoveMapFlags |= FMOVSTRE_OBSTRUCT;
+                KernelMoveMapFlags |= FMOVSTRE_BARRIER;
                 break;
             }
 
@@ -150,6 +151,7 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
 
             switch (pioneer_range) {
             case 0:
+            default:
                 break;
 
             case 1:
@@ -167,7 +169,7 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
                 if (gWorkingTerrainMoveCosts[gBmMapTerrain[iy][ix]] != (u8)-1)
                     KernelExtMovePioneerMap[iy][ix] = 1;
 
-                KernelMoveMapFlags |= FMOVSTRE_GUIDE;
+                KernelMoveMapFlags |= FMOVSTRE_PIONEER;
                 break;
             }
         }
