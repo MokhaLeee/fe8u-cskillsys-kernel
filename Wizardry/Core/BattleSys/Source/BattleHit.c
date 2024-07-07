@@ -572,7 +572,15 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     int debuff;
     bool weapon_cost;
 
-    attacker->wexpMultiplier++;
+#if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
+        if (BattleSkillTester(attacker, SID_Discipline))
+            attacker->wexpMultiplier += 2;
+        else
+            attacker->wexpMultiplier++;
+
+#else
+        attacker->wexpMultiplier++;
+#endif
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
     {
@@ -811,7 +819,14 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 
     if (attacker->unit.curHP == 0 || defender->unit.curHP == 0)
     {
+#if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
+        if (BattleSkillTester(attacker, SID_Discipline))
+            attacker->wexpMultiplier += 2;
+        else
+            attacker->wexpMultiplier++;
+#else
         attacker->wexpMultiplier++;
+#endif
 
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
 

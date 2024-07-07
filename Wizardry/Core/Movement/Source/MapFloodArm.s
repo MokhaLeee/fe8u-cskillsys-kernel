@@ -146,7 +146,7 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
 
 #if CHAX
     if (KernelMoveMapFlags & FMOVSTRE_OBSTRUCT)
-        cost += KernelExtMoveCostMap[ydst][xdst];
+        cost += KernelExtMoveBarrierMap[ydst][xdst];
 #endif
 
     if (cost > gWorkingBmMap[ydst][xdst])
@@ -165,7 +165,14 @@ void MapFloodCoreStep(int connexion, int xPos, int yPos)
     }
 
     if (cost > st->movement)
-        return;
+    {
+#if CHAX
+        if (!((KernelMoveMapFlags & FMOVSTRE_GUIDE) || KernelExtMovePioneerMap[ydst][xdst] == 1))
+#else
+        if (1)
+#endif
+            return;
+    }
 
     st->dst->xPos = xdst;
     st->dst->yPos = ydst;
@@ -206,12 +213,12 @@ MapFloodCoreReStep: @ 0x08000784
     /**
      * Judge on kernel external cost map (Obstruct skill):
      *
-     * cost += KernelExtMoveCostMap[KERNEL_MOV_MAP_EXTCOST][ydst][xdst];
+     * cost += KernelExtMoveBarrierMap[KERNEL_MOV_MAP_EXTCOST][ydst][xdst];
      */
     ldr r0, [r10]
     ands r0, #2                     @ <!> CHAX: FMOVSTRE_OBSTRUCT
     beq 1f
-    ldr r1, .LKernelExtMoveCostMap
+    ldr r1, .LKernelExtMoveBarrierMap
     ldr r1, [r1]
     ldr r1, [r1, r8, lsl #2]
     ldrb r1, [r1, r7]
@@ -249,8 +256,26 @@ MapFloodCoreReStep: @ 0x08000784
 1:
     ldrb r0, [r4, #9]               @ if (cost > st->movement)
     cmp r5, r0
-    bhi .Lstep_end
+    bhi 1f
+    b 2f
 
+    /**
+     * Judge on kernel external guide map:
+     *
+     * cost -= KernelExtMoveBarrierMap[ydst][xdst];
+     */
+1:
+    ldr r0, [r10]
+    ands r0, #4                     @ <!> CHAX: FMOVSTRE_GUIDE
+    beq .Lstep_end
+    ldr r0, .LKernelExtMovePioneerMap
+    ldr r0, [r0]
+    ldr r0, [r0, r8, lsl #2]
+    ldrb r0, [r0, r7]
+    cmp r0, #0
+    beq .Lstep_end
+
+2:
     ldr r0, [r4, #4]
     strb r7, [r0], #1               @ st->dst->xPos = xdst
     strb r8, [r0], #1               @ st->dst->yPos = ydst
@@ -274,7 +299,8 @@ MapFloodCoreReStep: @ 0x08000784
 
 @ Kernel related
 .LKernelMoveMapFlags: .4byte KernelMoveMapFlags
-.LKernelExtMoveCostMap: .4byte KernelExtMoveCostMap
+.LKernelExtMoveBarrierMap: .4byte KernelExtMoveBarrierMap
+.LKernelExtMovePioneerMap: .4byte KernelExtMovePioneerMap
 
     .global _ARM_MapFloodCore_CopyEnd
 _ARM_MapFloodCore_CopyEnd:
