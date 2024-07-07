@@ -135,3 +135,8 @@ D-Pulse[X]
 Divine Pulse:[NL]
 Turn a missed attack into a hit[NL]
 (30% + Luck % activation).[X]
+
+## MSG_SKILL_Discipline
+Discipline:[NL]
+Weapon experience gains are[NL]
+doubled for this unit.[X]
