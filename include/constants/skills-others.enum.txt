@@ -69,6 +69,7 @@ SID_SlowBurn
 SID_NaturalCover
 SID_RecklessFighter
 SID_BoldFighter
+SID_BidingBlow
 
 // Mobility
 // SID_DetailedReport

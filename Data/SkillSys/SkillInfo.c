@@ -2527,4 +2527,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_BoldFighter,
     },
 #endif
+
+#if (defined(SID_BidingBlow) && COMMON_SKILL_VALID(SID_BidingBlow))
+    [SID_BidingBlow] = {
+         .desc = MSG_SKILL_BidingBlow,
+         .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
