@@ -2573,4 +2573,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_BoldFighter,
     },
 #endif
+
+#if (defined(SID_Discipline) && COMMON_SKILL_VALID(SID_Discipline))
+    [SID_Discipline] = {
+         .desc = MSG_SKILL_Discipline,
+         .icon = GFX_SkillIcon_Discipline,
+    },
+#endif
 };
