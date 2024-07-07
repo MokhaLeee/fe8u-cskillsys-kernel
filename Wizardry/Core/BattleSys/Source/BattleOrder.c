@@ -71,11 +71,19 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
-        if ((basic_judgement == false && BattleSkillTester(actor, SID_RecklessFighter)) || (basic_judgement == false && BattleSkillTester(&gBattleTarget, SID_RecklessFighter)))
+        if (basic_judgement == false)
         {
-            gBattleTemporaryFlag.act_force_twice_order = true;
-            RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
-            return true;
+            if (BattleSkillTester(actor, SID_RecklessFighter))
+            {
+                RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_ACT_TWICE);
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                return true;
+            }
+            else if (BattleSkillTester(target, SID_RecklessFighter))
+            {
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                return true;
+            }
         }
 #endif
     }
@@ -93,11 +101,19 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
-        if ((basic_judgement == false && BattleSkillTester(actor, SID_RecklessFighter)) || (basic_judgement == false && BattleSkillTester(&gBattleActor, SID_RecklessFighter)))
+        if (basic_judgement == false)
         {
-            gBattleTemporaryFlag.tar_force_twice_order = true;
-            RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
-            return true;
+            if (BattleSkillTester(actor, SID_RecklessFighter))
+            {
+                RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                return true;
+            }
+            else if (BattleSkillTester(target, SID_RecklessFighter))
+            {
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                return true;
+            }
         }
 #endif
 
