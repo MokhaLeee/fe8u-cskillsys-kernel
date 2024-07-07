@@ -40,13 +40,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
     if (&gBattleActor == actor)
     {
+        gBattleTemporaryFlag.act_force_twice_order = false;
+
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
         if (basic_judgement == true && BattleSkillTester(target, SID_WaryFighter))
             if ((target->hpInitial * 2) > target->unit.maxHP)
                 return false;
 #endif
-
-        gBattleTemporaryFlag.act_force_twice_order = false;
 
 #if defined(SID_BoldFighter) && (COMMON_SKILL_VALID(SID_BoldFighter))
         if (basic_judgement == false && BattleSkillTester(actor, SID_BoldFighter))
