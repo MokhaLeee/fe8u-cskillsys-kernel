@@ -73,14 +73,14 @@ SID_BidingBlow
 SID_Discipline
 
 // Mobility
-// SID_DetailedReport
 SID_Guidance
 SID_FlierGuidance
 SID_SoaringGuidance
-// SID_OpeningRetainer
 SID_Aerobatics
 SID_FlierFormation
-SID_SoaringWings // This skill is a bit too powerful, maybe better to set as a boss skill?
+SID_SoaringWings
+// SID_DetailedReport
+// SID_OpeningRetainer
 
 // Weapon range
 SID_HighGround

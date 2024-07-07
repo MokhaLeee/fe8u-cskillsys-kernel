@@ -118,11 +118,25 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
             if (AreUnitsAllied(unit->index, _unit->index))
             {
                 bool ally_flier = CheckClassFlier(UNIT_CLASS_ID(_unit));
-                if (FlierFormation_activated || (Aerobatics_activated && !ally_flier) || (SoaringWings_activated && ally_flier))
-                {
+                if (FlierFormation_activated && ally_flier)
+                    if (pioneer_range < 3)
+                        pioneer_range = 3;
+
+                if (Aerobatics_activated && !ally_flier)
                     if (pioneer_range < 2)
                         pioneer_range = 2;
+
+                if (SoaringWings_activated)
+                    if (pioneer_range < 1)
+                        pioneer_range = 1;
+
+#if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
+                if (self_flier && SkillTester(_unit, SID_FlierGuidance))
+                {
+                    if (pioneer_range < 3)
+                        pioneer_range = 3;
                 }
+#endif
 
 #if (defined(SID_Guidance) && COMMON_SKILL_VALID(SID_Guidance))
                 if (!self_flier && SkillTester(_unit, SID_Guidance))
@@ -132,20 +146,10 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
                 }
 #endif
 
-#if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
-                if (self_flier && SkillTester(_unit, SID_FlierGuidance))
-                {
-                    if (pioneer_range < 2)
-                        pioneer_range = 2;
-                }
-#endif
-
 #if (defined(SID_SoaringGuidance) && COMMON_SKILL_VALID(SID_SoaringGuidance))
                 if (SkillTester(_unit, SID_SoaringGuidance))
-                {
-                    if (pioneer_range < 2)
-                        pioneer_range = 2;
-                }
+                    if (pioneer_range < 1)
+                        pioneer_range = 1;
 #endif
             }
 

@@ -667,13 +667,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
-#if (defined(SID_SoaringWings) && (COMMON_SKILL_VALID(SID_SoaringWings)))
-        case SID_SoaringWings:
-            attacker->battleAttack += gActionData.moveCount * 4;
-            attacker->battleSpeed  += gActionData.moveCount * 4;
-            break;
-#endif
-
 #if (defined(SID_NaturalCover) && (COMMON_SKILL_VALID(SID_NaturalCover))) 
         case SID_NaturalCover:
             if (attacker->terrainDefense > 0 || attacker->terrainAvoid > 0 || attacker->terrainResistance > 0)
