@@ -158,7 +158,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         {
             if (target->battleSpeed >= actor->battleSpeed + 4)
             {
-                gBattleTemporaryFlag.act_force_twice_order = true;
+                gBattleTemporaryFlag.tar_force_twice_order = true;
                 RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
                 return true;
             }
