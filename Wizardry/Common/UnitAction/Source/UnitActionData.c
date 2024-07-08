@@ -1,37 +1,10 @@
 #include "common-chax.h"
 #include "action-expa.h"
 
-STATIC_DECLAR bool _ActionWait(ProcPtr proc)
-{
-    gActiveUnit->state |= US_HAS_MOVED;
-    return true;
-}
-
-STATIC_DECLAR bool _ActionCombat(ProcPtr proc)
-{
-    if (gActionData.unitActionType == UNIT_ACTION_COMBAT)
-    {
-        int itemIdx = GetItemIndex(gActiveUnit->items[gActionData.itemSlotIndex]);
-        if (itemIdx == ITEM_NIGHTMARE)
-        {
-            ActionStaffDoorChestUseItem(proc);
-            return false;
-        }
-    }
-    return ActionCombat(proc);
-}
-
-STATIC_DECLAR bool _ActionStaffDoorChestUseItem(ProcPtr proc)
-{
-    ActionStaffDoorChestUseItem(proc);
-    return false;
-}
-
-STATIC_DECLAR bool _ActionPick(ProcPtr proc)
-{
-    ActionPick(proc);
-    return false;
-}
+bool _ActionWait(ProcPtr proc);
+bool _ActionCombat(ProcPtr proc);
+bool _ActionStaffDoorChestUseItem(ProcPtr proc);
+bool _ActionPick(ProcPtr proc);
 
 const UnitActionFunc_t gUnitActionTable[CONFIG_UNIT_ACTION_AMT] = {
     [UNIT_ACTION_WAIT] = _ActionWait,

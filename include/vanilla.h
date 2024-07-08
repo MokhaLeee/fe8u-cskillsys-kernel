@@ -164,3 +164,5 @@ static inline u8 GetTerrainAtCursor()
 {
     return TERRAIN_AT(gBmSt.playerCursor.x, gBmSt.playerCursor.y);
 }
+
+bool CanShowUnitStatScreen(struct Unit * unit);
