@@ -1,59 +1,104 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 #include "debuff.h"
 
-static void CheckStatus(struct Unit * unit, ProcPtr proc)
-{
-    if (!UNIT_IS_VALID(unit))
-        return;
+struct ProcPrePhaseBoon {
+    PROC_HEADER;
 
-    if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-        return;
+    u8 uid;
+};
+
+STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon * proc)
+{
+    while (++proc->uid < (gPlaySt.faction + 0x40))
+    {
+        struct Unit * unit = GetUnit(proc->uid);
+        if (!UNIT_ALIVE(unit))
+            continue;
 
 #if defined(SID_Boon) && (COMMON_SKILL_VALID(SID_Boon))
-    if (SkillTester(unit, SID_Boon))
-    {
-        switch (GetUnitStatusIndex(unit)) {
-        case UNIT_STATUS_POISON:
-        case UNIT_STATUS_SLEEP:
-        case UNIT_STATUS_PETRIFY:
-        case UNIT_STATUS_SILENCED:
-        case UNIT_STATUS_BERSERK:
-        case NEW_UNIT_STATUS_WEAKEN:
-        case NEW_UNIT_STATUS_PANIC:
-        case NEW_UNIT_STATUS_HEAVY_GRAVITY:
-            SetUnitStatus(unit, UNIT_STATUS_NONE);
-            MU_EndAll();
-            StartStatusHealEffect(unit, proc);
-            break;
+        if (!SkillTester(unit, SID_Boon))
+        {
+            int i;
+            struct StatDebuffStatus * sdebuff = GetUnitStatDebuffStatus(unit);
+
+            bool negative_status = IsDebuff(GetUnitStatusIndex(unit));
+            bool negative_statdebuff = false;
+
+            for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
+            {
+                if (!_BIT_CHK(sdebuff->st.bitmask, i))
+                    continue;
+
+                if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_NEGATIVE)
+                {
+                    negative_statdebuff = true;
+                    break;
+                }
+            }
+
+            if (negative_status || negative_statdebuff)
+            {
+                EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
+                return;
+            }
         }
-        return;
-    }
 #endif
+    }
+    Proc_Goto(proc, 99);
 }
 
-void PrePhase_UnitStatusEffectSkills(ProcPtr proc)
+STATIC_DECLAR void PrePhaseBoon_ExecAnim(struct ProcPrePhaseBoon * proc)
 {
-    int uid;
+    MU_EndAll();
+    StartStatusHealEffect(GetUnit(proc->uid), proc);
+}
 
-    switch (gPlaySt.faction) {
-    case FACTION_BLUE:
-        for (uid = FACTION_BLUE + 1; uid < FACTION_BLUE + 1 + CONFIG_UNIT_AMT_ALLY; uid++)
-            CheckStatus(GetUnit(uid), proc);
+STATIC_DECLAR void PrePhaseBoon_ClearStatus(struct ProcPrePhaseBoon * proc)
+{
+    int i;
+    struct Unit * unit = GetUnit(proc->uid);
+    struct StatDebuffStatus * sdebuff = GetUnitStatDebuffStatus(unit);
 
-        break;
+    if (IsDebuff(GetUnitStatusIndex(unit)))
+        SetUnitStatus(unit, UNIT_STATUS_NONE);
 
-    case FACTION_GREEN:
-        for (uid = FACTION_GREEN + 1; uid < FACTION_GREEN + 1 + CONFIG_UNIT_AMT_NPC; uid++)
-            CheckStatus(GetUnit(uid), proc);
+    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
+    {
+        if (!_BIT_CHK(sdebuff->st.bitmask, i))
+            continue;
 
-        break;
-
-    case FACTION_RED:
-        for (uid = FACTION_RED + 1; uid < FACTION_RED + 1 + CONFIG_UNIT_AMT_ENEMY; uid++)
-            CheckStatus(GetUnit(uid), proc);
-    
-        break;
+        if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_NEGATIVE)
+            _BIT_CLR(sdebuff->st.bitmask, i);
     }
+}
+
+STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseBoon[] = {
+    PROC_YIELD,
+
+PROC_LABEL(1),
+    PROC_CALL(PrePhaseBoon_FindNextCharacter),
+    PROC_YIELD,
+    PROC_CALL(PrePhaseBoon_ExecAnim),
+    PROC_YIELD,
+    PROC_CALL(PrePhaseBoon_ClearStatus),
+    PROC_GOTO(1),
+
+PROC_LABEL(99),
+    PROC_END
+};
+
+bool PrePhase_UnitStatusEffectSkills(ProcPtr parent)
+{
+    FORCE_DECLARE struct ProcPrePhaseBoon * proc;
+
+#if defined(SID_Boon) && (COMMON_SKILL_VALID(SID_Boon))
+    proc = Proc_StartBlocking(ProcScr_PrePhaseBoon, parent);
+    proc->uid = gPlaySt.faction;\
+    return true;
+#endif
+
+    return false;
 }
