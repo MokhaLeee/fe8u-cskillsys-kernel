@@ -61,7 +61,12 @@ gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks
 gpGameInitHookTable: POIN gGameInitHookTable
 
-WORD 0
+gConfigRemoveMovePath:
+#ifdef CONFIG_REMOVE_MOVE_PATH
+    WORD 1
+#else
+    WORD 0
+#endif
 
 gpPostActionFuncs: POIN gPostActionFuncs
 gpNewSaveHooks: POIN gNewSaveHooks

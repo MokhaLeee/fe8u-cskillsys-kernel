@@ -27,3 +27,6 @@ PUSH
     ORG 0x032FF6
     SHORT 0xDC02
 POP
+
+#include "Source/RemoveMovePath.lyn.event"
+#include "Source/LynJump.event"

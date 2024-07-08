@@ -2,6 +2,8 @@
 
 #include "common-chax.h"
 
+extern const int gConfigRemoveMovePath;
+
 extern u32 KernelMoveMapFlags;
 
 extern void (* _MapFloodCoreRe)(void);
