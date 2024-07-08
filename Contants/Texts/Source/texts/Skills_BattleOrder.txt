@@ -64,3 +64,8 @@ Always attack twice when attacking.[X]
 BidingBlow:[NL]
 Attack twice if the enemy[NL]
 cannot counterattack.[X]
+
+## MSG_SKILL_LastWord
+LastWord:[NL]
+When doubled, this unit[NL]
+also doubles.[X]

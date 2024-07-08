@@ -2594,4 +2594,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_Discipline,
     },
 #endif
+
+#if (defined(SID_LastWord) && COMMON_SKILL_VALID(SID_LastWord))
+    [SID_LastWord] = {
+         .desc = MSG_SKILL_LastWord,
+         .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
