@@ -88,13 +88,13 @@ _kernel_malloc_overlay0 MapTaskVec, 4
  *
  * part     function name       start           end             max size    real size
  * [a]      ARM_SkillTester     0x03003CAC      0x03003E10      0x160       0x164
- * [a]      ARM_MapFloodCoreRe  0x03003E10      0x03004150      0x344       0x2B4
+ * [a]      ARM_MapFloodCoreRe  0x03003E10      0x03004150      0x344       0x2E8
  * [a]      no-free space
  *
  * [b]      ARM_UnitList        0x0300428C      0x0300437C      0x0F0       0xEC
  * [b]      ARM_SkillList       0x0300437C      0x03004450      0x0D4       0xD0
- * [b]      ARM_MapTask         0x03004450      0x030044A8      0x058       0x54
- * [b]      __free__            0x030044A8      0x03004960      0x4B8       ---
+ * [b]      ARM_MapTask         0x03004450      0x030044B0      0x060       0x5C
+ * [b]      __free__            0x030044B0      0x03004960      0x4B8       ---
  *
  * Note on part[a]:
  * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
@@ -112,4 +112,4 @@ dat 0x0300437C, ARM_UnitListEnd
 dat 0x0300437C, ARM_SkillList
 dat 0x03004450, ARM_SkillListEnd
 dat 0x03004450, ARM_MapTask
-dat 0x03004558, ARM_MapTaskEnd
+dat 0x030044B0, ARM_MapTaskEnd
