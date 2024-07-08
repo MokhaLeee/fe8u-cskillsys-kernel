@@ -2574,6 +2574,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Boon) && COMMON_SKILL_VALID(SID_Boon))
+    [SID_Boon] = {
+         .desc = MSG_SKILL_Boon,
+         .icon = GFX_SkillIcon_Boon,
+    },
+#endif
+
 #if (defined(SID_BidingBlow) && COMMON_SKILL_VALID(SID_BidingBlow))
     [SID_BidingBlow] = {
          .desc = MSG_SKILL_BidingBlow,
