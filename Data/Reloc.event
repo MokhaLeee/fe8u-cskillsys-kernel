@@ -114,5 +114,8 @@ gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
 gpKernelArmFunConfig: POIN gKernelArmFunConfig
 
+gpMapTaskConfs: POIN gMapTaskConfs
+gpHpBarChr: POIN gHpBarChr
+
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

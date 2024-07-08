@@ -18,3 +18,5 @@ extern const u8 _ARM_SkillList_CopyStart[], _ARM_SkillList_CopyEnd[];
 extern u8 ARM_SkillList[], ARM_SkillListEnd[];
 extern const u8 _ARM_MapFloodCore_CopyStart[], _ARM_MapFloodCore_CopyEnd[];
 extern u8 ARM_MapFloodCoreRe[], ARM_MapFloodCoreReEnd[];
+extern const u8 _ARM_MapTask_CopyStart[], _ARM_MapTask_CopyEnd[];
+extern u8 ARM_MapTask[], ARM_MapTaskEnd[];

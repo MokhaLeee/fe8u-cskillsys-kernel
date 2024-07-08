@@ -26,5 +26,11 @@ struct ArmFunConfig const gKernelArmFunConfig[] = {
         .dst_start = ARM_MapFloodCoreRe,
         .dst_end   = ARM_MapFloodCoreReEnd,
     },
+    {
+        .src_start = _ARM_MapTask_CopyStart,
+        .src_end   = _ARM_MapTask_CopyEnd,
+        .dst_start = ARM_MapTask,
+        .dst_end   = ARM_MapTaskEnd,
+    },
     {}
 };

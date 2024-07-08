@@ -81,6 +81,7 @@ _kernel_malloc_overlay0 gComboMapAnimBattleUnit, 0x80
 _kernel_malloc_overlay0 KernelMoveMapFlags, 4
 _kernel_malloc_overlay0 KernelExtMoveBarrierMap, 4
 _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
+_kernel_malloc_overlay0 MapTaskVec, 4
 
 /**
  * Usage of memory on IWRAM for arm-functions
@@ -90,9 +91,10 @@ _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
  * [a]      ARM_MapFloodCoreRe  0x03003E10      0x03004150      0x344       0x2B4
  * [a]      no-free space
  *
- * [b]      ARM_UnitList        0x0300428C      0x0300438C      0x100       0xEC
- * [b]      ARM_SkillList       0x0300438C      0x0300448C      0x100       0xCC
- * [b]      __free__            ---             0x03004960      0x4D4       ---
+ * [b]      ARM_UnitList        0x0300428C      0x0300437C      0x0F0       0xEC
+ * [b]      ARM_SkillList       0x0300437C      0x03004450      0x0D4       0xD0
+ * [b]      ARM_MapTask         0x03004450      0x030044A8      0x058       0x54
+ * [b]      __free__            0x030044A8      0x03004960      0x4B8       ---
  *
  * Note on part[a]:
  * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
@@ -106,6 +108,8 @@ dat 0x03003E10, ARM_MapFloodCoreRe
 dat 0x03004150, ARM_MapFloodCoreReEnd   @ size = 0x304
 
 dat 0x0300428C, ARM_UnitList
-dat 0x0300438C, ARM_UnitListEnd
-dat 0x0300438C, ARM_SkillList
-dat 0x0300448C, ARM_SkillListEnd
+dat 0x0300437C, ARM_UnitListEnd
+dat 0x0300437C, ARM_SkillList
+dat 0x03004450, ARM_SkillListEnd
+dat 0x03004450, ARM_MapTask
+dat 0x03004558, ARM_MapTaskEnd
