@@ -353,7 +353,7 @@ void GameInit_DetectEmsChunks(void)
 
     i = 0;
 
-    FPrint("Dump SAV");
+    Print("Dump SAV");
     for (offset = 0, cur = gEmsSavChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; i++, cur++)
     {
         Printf("[%02d]: offset=0x%04X, size=0x%04X, saver=%p, loader=%p",
@@ -370,7 +370,7 @@ void GameInit_DetectEmsChunks(void)
 
     i = 0;
 
-    FPrint("Dump SUS");
+    Print("Dump SUS");
     for (offset = 0, cur = gEmsSusChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; i++, cur++)
     {
         Printf("[%02d]: offset=0x%04X, size=0x%04X, saver=%p, loader=%p",

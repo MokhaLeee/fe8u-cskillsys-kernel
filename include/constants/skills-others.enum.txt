@@ -69,16 +69,18 @@ SID_SlowBurn
 SID_NaturalCover
 SID_RecklessFighter
 SID_BoldFighter
+SID_BidingBlow
+SID_Discipline
 
 // Mobility
+SID_Guidance
+SID_FlierGuidance
+SID_SoaringGuidance
+SID_Aerobatics
+SID_FlierFormation
+SID_SoaringWings
 // SID_DetailedReport
-// SID_Guidance
-// SID_FlierGuidance
-// SID_SoaringGuidance
 // SID_OpeningRetainer
-// SID_Aerobatics
-// SID_FlierFormation
-// SID_SoaringWings
 
 // Weapon range
 SID_HighGround

@@ -1,0 +1,29 @@
+/**
+ * Although I do plan to redo the whole MovePath routine,
+ * but at the moment, we just need only a very small change and
+ * then all the problems are solved...
+ * Well, since the problem can be solved so concisely and clearly,
+ * then this solution is the optimal solution LOL...
+ *
+ * But also need to note that,
+ * since for now move-path can just support no more than 20 steps.
+ * If the character moves too far, there will still be in problem.
+ * We need to make more changes in the future.
+ * For example:
+ * 1. expand the move-path limitations to a large enough amount or
+ * 2. directly remove the move path, let unit directly move with cursor movement.
+ *
+ * Current Idea:
+ * in bmpatharrowdisp.c L236:
+ *
+ * #if CHAX
+ *     if (gpPathArrowProc->pathCosts[gpPathArrowProc->pathLen] <= 0)
+ * #else
+ *     if (gpPathArrowProc->pathCosts[gpPathArrowProc->pathLen] == 0)
+ * #endif
+ *         CutOffPathLength(1);
+ */
+PUSH
+    ORG 0x032FF6
+    SHORT 0xDC02
+POP

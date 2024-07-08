@@ -50,5 +50,6 @@
 #include "../Wizardry/Core/ComboAttack/data.event"
 #include "../Wizardry/Common/ArmFunc/data.event"
 #include "../Wizardry/Core/Movement/MovementData.event"
+#include "../Wizardry/External/Individual_animation_ea_2/data.event"
 
 #endif

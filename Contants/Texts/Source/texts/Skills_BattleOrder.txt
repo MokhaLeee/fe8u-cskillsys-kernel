@@ -59,3 +59,8 @@ B-Fighter[X]
 ## MSG_SKILL_BoldFighter
 BoldFighter:[NL]
 Always attack twice when attacking.[X]
+
+## MSG_SKILL_BidingBlow
+BidingBlow:[NL]
+Attack twice if the enemy[NL]
+cannot counterattack.[X]
