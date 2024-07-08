@@ -2594,4 +2594,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_Discipline,
     },
 #endif
+
+#if (defined(SID_AdvantageChaser) && COMMON_SKILL_VALID(SID_AdvantageChaser))
+    [SID_AdvantageChaser] = {
+         .name = MSG_SKILL_AdvantageChaser_NAME,
+         .desc = MSG_SKILL_AdvantageChaser,
+         .icon = GFX_SkillIcon_AdvantageChaser,
+    },
+#endif
 };

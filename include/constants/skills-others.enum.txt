@@ -71,6 +71,7 @@ SID_RecklessFighter
 SID_BoldFighter
 SID_BidingBlow
 SID_Discipline
+SID_AdvantageChaser
 
 // Mobility
 SID_Guidance
