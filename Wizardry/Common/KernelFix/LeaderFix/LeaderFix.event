@@ -5,8 +5,13 @@
  */
 
 PUSH
+
+#ifndef LOAD_UNIT_FUNC_LEADER_FIX_INSTALLED
+#define LOAD_UNIT_FUNC_LEADER_FIX_INSTALLED
+    // port to InjectHPGetters.event
     ORG 0x17C98
     SHORT $3000 $3000 $3000 $3000
+#endif
 
     ORG 0x8472C
     pr_gDefeatTalkList:

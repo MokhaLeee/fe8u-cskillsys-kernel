@@ -2,5 +2,3 @@
 #include "Source/EventTable.lyn.event"
 
 ORG gEventLoCmdTableRe + 0x80 * 4
-
-#define InjectEventLoCmd(index, routine) "PUSH; ORG gEventLoCmdTableRe + (index * 4); POIN routine;POP"

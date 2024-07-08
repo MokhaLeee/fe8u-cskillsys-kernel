@@ -1,11 +1,13 @@
 ALIGN 4
 
+// Some messed hooks
+#include "Core/DebuffRework/Source/MiscHooks.event"
+#include "Core/UnitStatusGetter/source/InjectHPGetters.event"
+#include "Core/UnitStatusGetter/source/InjectMovGetters.event"
+#include "Core/WeaponRange/Source/MiscHooksWeaponRange.event"
+
 #include "Common/EventRework/EventRework.event"
 #include "Common/UnitAction/UnitAction.event"
-#include "Core/AiHack/AiHack.event"
-#include "Core/DebuffRework/DebuffRework.event"
-#include "Core/WeaponRange/WeaponRange.event"
-
 #include "Common/KernelFix/KernelFix.event"
 #include "Common/GameInitHook/GameInitHook.event"
 #include "Common/DebugKit/DebugKit.event"
@@ -35,6 +37,8 @@ ALIGN 4
 #include "Common/MapAnims/MapAnims.event"
 
 #include "Core/SkillSys/SkillSys.event"
+#include "Core/DebuffRework/DebuffRework.event"
+#include "Core/WeaponRange/WeaponRange.event"
 #include "Core/UnitStatusGetter/UnitStatusGetter.event"
 #include "Core/BattleSys/BattleSys.event"
 #include "Core/Lvup/Lvup.event"
@@ -44,6 +48,7 @@ ALIGN 4
 #include "Core/HelpBox/HelpBox.event"
 #include "Core/ComboAttack/ComboAttack.event"
 #include "Core/Movement/Movement.event"
+#include "Core/AiHack/AiHack.event"
 
 #include "External/ExternalPatches.event"
 

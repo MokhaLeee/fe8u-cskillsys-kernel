@@ -1,0 +1,1 @@
+#define InjectEventLoCmd(index, routine) "PUSH; ORG gEventLoCmdTableRe + (index * 4); POIN routine;POP"

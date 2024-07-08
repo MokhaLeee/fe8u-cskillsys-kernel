@@ -1,3 +1,6 @@
+#ifndef DEBUFF_MESSED_HOOKS_INSTALLED
+#define DEBUFF_MESSED_HOOKS_INSTALLED
+
 PUSH
     ORG $54A58 // NewEfxStatusUnit
     SHORT 0x0680 // lsl r0, r0, #0x1A
@@ -256,3 +259,5 @@ PUSH
     // DisplayPage0
     // HbPopulate_SSStatus
 POP
+
+#endif /* DEBUFF_MESSED_HOOKS_INSTALLED */

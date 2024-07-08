@@ -1,0 +1,1 @@
+#define InjectUnitAction(index, func) "PUSH; ORG gUnitActionTable + index * 4; POIN func; POP"
