@@ -87,14 +87,14 @@ _kernel_malloc_overlay0 MapTaskVec, 4
  * Usage of memory on IWRAM for arm-functions
  *
  * part     function name       start           end             max size    real size
- * [a]      ARM_SkillTester     0x03003CAC      0x03003E10      0x160       0x164
- * [a]      ARM_MapFloodCoreRe  0x03003E10      0x03004150      0x344       0x2E8
+ * [a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x160       0x160
+ * [a]      ARM_MapFloodCoreRe  0x03003E0C      0x030040F4      0x2E8       0x2E8
+ * [a]      ARM_MapTask         0x030040F4      0x03004150      0x05C       0x05C
  * [a]      no-free space
  *
- * [b]      ARM_UnitList        0x0300428C      0x0300437C      0x0F0       0xEC
- * [b]      ARM_SkillList       0x0300437C      0x03004450      0x0D4       0xD0
- * [b]      ARM_MapTask         0x03004450      0x030044B0      0x060       0x5C
- * [b]      __free__            0x030044B0      0x03004960      0x4B8       ---
+ * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0xEC
+ * [b]      ARM_SkillList       0x03004378      0x03004448      0x0D0       0xD0
+ * [b]      __free__            0x03004448      0x03004960      0x518       ---
  *
  * Note on part[a]:
  * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
@@ -103,13 +103,13 @@ _kernel_malloc_overlay0 MapTaskVec, 4
  * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
  */
 dat 0x03003CAC, ARM_SkillTester
-dat 0x03003E10, ARM_SkillTesterEnd      @ size = 0x1A0
-dat 0x03003E10, ARM_MapFloodCoreRe
-dat 0x03004150, ARM_MapFloodCoreReEnd   @ size = 0x304
+dat 0x03003E0C, ARM_SkillTesterEnd
+dat 0x03003E0C, ARM_MapFloodCoreRe
+dat 0x030040F4, ARM_MapFloodCoreReEnd
+dat 0x030040F4, ARM_MapTask
+dat 0x03004150, ARM_MapTaskEnd
 
 dat 0x0300428C, ARM_UnitList
-dat 0x0300437C, ARM_UnitListEnd
-dat 0x0300437C, ARM_SkillList
-dat 0x03004450, ARM_SkillListEnd
-dat 0x03004450, ARM_MapTask
-dat 0x030044B0, ARM_MapTaskEnd
+dat 0x03004378, ARM_UnitListEnd
+dat 0x03004378, ARM_SkillList
+dat 0x03004448, ARM_SkillListEnd
