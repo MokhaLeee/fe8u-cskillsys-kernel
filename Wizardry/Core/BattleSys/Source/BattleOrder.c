@@ -152,6 +152,18 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_AdvantageChaser) && (COMMON_SKILL_VALID(SID_AdvantageChaser))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_AdvantageChaser))
+        {
+            if (actor->wTriangleDmgBonus > 0 || actor->wTriangleHitBonus > 0)
+            {
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_AdvantageChaser, BORDER_TAR_TWICE);
+                return true;
+            }
+        }
+#endif
     }
 
     return basic_judgement;
