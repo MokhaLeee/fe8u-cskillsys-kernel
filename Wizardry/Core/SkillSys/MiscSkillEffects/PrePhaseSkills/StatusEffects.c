@@ -96,7 +96,7 @@ bool PrePhase_UnitStatusEffectSkills(ProcPtr parent)
 
 #if defined(SID_Boon) && (COMMON_SKILL_VALID(SID_Boon))
     proc = Proc_StartBlocking(ProcScr_PrePhaseBoon, parent);
-    proc->uid = gPlaySt.faction;\
+    proc->uid = gPlaySt.faction;
     return true;
 #endif
 
