@@ -7,13 +7,16 @@
 void PutUnitSpriteIconsOam(void)
 {
     int i;
+    bool icon_blinking;
 
     if (CheckFlag(0x84) != 0)
         return;
 
+    icon_blinking = !((GetGameClock() & 0x3F) >= 0x28);
+
     PutChapterMarkedTileIconOam();
 
-    for (i = 1;  i <= 0xC0;  i++)
+    for (i = 1; i <= 0xC0; i++)
     {
         int ix, iy, status;
         struct Unit * unit = GetUnit(i);
@@ -49,7 +52,7 @@ void PutUnitSpriteIconsOam(void)
         /**
          * 2. Check on blinking icon
          */
-        if (!((GetGameClock() & 0x3F) >= 0x28))
+        if (icon_blinking)
         {
             /**
              * 3. Debuff icon
