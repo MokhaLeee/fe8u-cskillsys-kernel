@@ -119,12 +119,14 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
         {
             bu->weapon = 0;
             bu->canCounter = false;
+            return;
         }
 
         if (bu->weaponSlotIndex == 0xFF)
         {
             bu->weapon = 0;
             bu->canCounter = false;
+            return;
         }
 
 #if (defined(SID_Dazzle) && (COMMON_SKILL_VALID(SID_Dazzle)))
@@ -132,6 +134,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
         {
             bu->weapon = 0;
             bu->canCounter = false;
+            return;
         }
 #endif
 
@@ -141,6 +144,9 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
         case UNIT_STATUS_13:
             bu->weapon = 0;
             bu->canCounter = false;
+            return;
+
+        default:
             break;
         };
     }
