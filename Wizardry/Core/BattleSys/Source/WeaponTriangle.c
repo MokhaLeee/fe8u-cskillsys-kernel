@@ -10,6 +10,14 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
 {
     const struct WeaponTriangleConf * it;
     const struct WeaponTriangleItemConf * item_conf = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
+    int multiplier = 1;
+
+#if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
+    if (BattleSkillTester(attacker, SID_Nonconforming))
+        multiplier *= -1;
+    else if (BattleSkillTester(defender, SID_Nonconforming))
+        multiplier *= -1;
+#endif
 
     if (item_conf->valid && item_conf->wtype == defender->weaponType)
     {
@@ -28,17 +36,17 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         /* Just for UI */
         if (item_conf->is_buff)
         {
-            attacker->wTriangleHitBonus += 15;
-            attacker->wTriangleDmgBonus += 1;
-            defender->wTriangleHitBonus -= 15;
-            defender->wTriangleDmgBonus -= 1;
+            attacker->wTriangleHitBonus += 15 * multiplier;
+            attacker->wTriangleDmgBonus += 1 * multiplier;
+            defender->wTriangleHitBonus -= 15 * multiplier;
+            defender->wTriangleDmgBonus -= 1 * multiplier;
         }
         else
         {
-            attacker->wTriangleHitBonus -= 15;
-            attacker->wTriangleDmgBonus -= 1;
-            defender->wTriangleHitBonus += 15;
-            defender->wTriangleDmgBonus += 1;
+            attacker->wTriangleHitBonus -= 15 * multiplier;
+            attacker->wTriangleDmgBonus -= 1 * multiplier;
+            defender->wTriangleHitBonus += 15 * multiplier;
+            defender->wTriangleDmgBonus += 1 * multiplier;
         }
     }
     else
@@ -52,14 +60,14 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
                 LTRACEF("Find vanilla (%p-%p, %d-%d): atk=%d, hit=%d",
                         attacker, defender, it->attackerWeaponType, it->defenderWeaponType, it->atkBonus, it->hitBonus);
 
-                attacker->battleAttack  += it->atkBonus;
-                attacker->battleHitRate += it->hitBonus;
+                attacker->battleAttack  += it->atkBonus * multiplier;
+                attacker->battleHitRate += it->hitBonus * multiplier;
 
                 /* Just for UI */
-                attacker->wTriangleHitBonus += it->atkBonus;
-                attacker->wTriangleDmgBonus += it->hitBonus;
-                defender->wTriangleHitBonus -= it->atkBonus;
-                defender->wTriangleDmgBonus -= it->hitBonus;
+                attacker->wTriangleHitBonus += it->atkBonus * multiplier;
+                attacker->wTriangleDmgBonus += it->hitBonus * multiplier;
+                defender->wTriangleHitBonus -= it->atkBonus * multiplier;
+                defender->wTriangleDmgBonus -= it->hitBonus * multiplier;
                 break;
             }
         }
@@ -89,17 +97,17 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
                 /* Just for UI */
                 if (it->is_buff)
                 {
-                    attacker->wTriangleHitBonus += 15;
-                    attacker->wTriangleDmgBonus += 1;
-                    defender->wTriangleHitBonus -= 15;
-                    defender->wTriangleDmgBonus -= 1;
+                    attacker->wTriangleHitBonus += 15 * multiplier;
+                    attacker->wTriangleDmgBonus += 1 * multiplier;
+                    defender->wTriangleHitBonus -= 15 * multiplier;
+                    defender->wTriangleDmgBonus -= 1 * multiplier;
                 }
                 else
                 {
-                    attacker->wTriangleHitBonus -= 15;
-                    attacker->wTriangleDmgBonus -= 1;
-                    defender->wTriangleHitBonus += 15;
-                    defender->wTriangleDmgBonus += 1;
+                    attacker->wTriangleHitBonus -= 15 * multiplier;
+                    attacker->wTriangleDmgBonus -= 1 * multiplier;
+                    defender->wTriangleHitBonus += 15 * multiplier;
+                    defender->wTriangleDmgBonus += 1 * multiplier;
                 }
             }
             break;

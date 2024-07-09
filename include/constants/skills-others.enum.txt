@@ -73,6 +73,7 @@ SID_Dazzle
 SID_BidingBlow
 SID_Discipline
 SID_AdvantageChaser
+SID_Nonconforming
 
 // Mobility
 SID_Guidance

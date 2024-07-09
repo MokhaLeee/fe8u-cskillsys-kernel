@@ -2609,4 +2609,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_AdvantageChaser,
     },
 #endif
+
+#if (defined(SID_Nonconforming) && COMMON_SKILL_VALID(SID_Nonconforming))
+    [SID_Nonconforming] = {
+        .name = MSG_SKILL_Nonconforming_NAME,
+        .desc = MSG_SKILL_Nonconforming,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
