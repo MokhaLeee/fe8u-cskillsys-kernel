@@ -86,6 +86,30 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_BidingBlow) && (COMMON_SKILL_VALID(SID_BidingBlow))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_BidingBlow))
+        {
+            if (target->canCounter == false)
+            {
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_BidingBlow, BORDER_ACT_TWICE);
+                return true;
+            }
+        }
+#endif
+
+#if defined(SID_AdvantageChaser) && (COMMON_SKILL_VALID(SID_AdvantageChaser))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_AdvantageChaser))
+        {
+            if (actor->wTriangleDmgBonus > 0 || actor->wTriangleHitBonus > 0)
+            {
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_AdvantageChaser, BORDER_ACT_TWICE);
+                return true;
+            }
+        }
+#endif
     }
     else if (&gBattleTarget == actor)
     {
@@ -124,6 +148,18 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             {
                 gBattleTemporaryFlag.tar_force_twice_order = true;
                 RegisterBattleOrderSkill(SID_QuickRiposte, BORDER_TAR_TWICE);
+                return true;
+            }
+        }
+#endif
+
+#if defined(SID_AdvantageChaser) && (COMMON_SKILL_VALID(SID_AdvantageChaser))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_AdvantageChaser))
+        {
+            if (actor->wTriangleDmgBonus > 0 || actor->wTriangleHitBonus > 0)
+            {
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_AdvantageChaser, BORDER_TAR_TWICE);
                 return true;
             }
         }

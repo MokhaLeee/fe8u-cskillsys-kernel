@@ -1,0 +1,4 @@
+#define EVT_SET_DEBUFF(pid, debuff)     "BYTE 0x41 EVENT_CMD_DEBUFF; SHORT pid debuff 0"
+#define EVT_SET_DEBUFF_AT(x, y, debuff) "BYTE 0x42 EVENT_CMD_DEBUFF; SHORT x y debuff"
+#define EVT_CLEAR_DEBUFF(pid, debuff)   "BYTE 0x43 EVENT_CMD_DEBUFF; SHORT pid debuff 0"
+#define EVT_CLEAR_DEBUFF_AT(x, y)       "BYTE 0x44 EVENT_CMD_DEBUFF; SHORT x y 0"

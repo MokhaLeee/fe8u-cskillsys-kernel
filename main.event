@@ -3,6 +3,7 @@
 #include "Extensions/ProcDefinitions.txt"
 
 #include "include/Configs/configs.h"
+#include "include/Configs/CustomDefinitions.event"
 #include "include/macros.event"
 #include "include/Definitions.event"
 

@@ -70,16 +70,19 @@ SID_NaturalCover
 SID_RecklessFighter
 SID_BoldFighter
 SID_Dazzle
+SID_BidingBlow
+SID_Discipline
+SID_AdvantageChaser
 
 // Mobility
+SID_Guidance
+SID_FlierGuidance
+SID_SoaringGuidance
+SID_Aerobatics
+SID_FlierFormation
+SID_SoaringWings
 // SID_DetailedReport
-// SID_Guidance
-// SID_FlierGuidance
-// SID_SoaringGuidance
 // SID_OpeningRetainer
-// SID_Aerobatics
-// SID_FlierFormation
-// SID_SoaringWings
 
 // Weapon range
 SID_HighGround
@@ -126,3 +129,4 @@ SID_FairyTaleFolk
 
 // Pre-phase skills
 SID_RainDish
+SID_Boon

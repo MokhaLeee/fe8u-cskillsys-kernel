@@ -8,9 +8,17 @@ bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * tar
     if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
         return false;
 
+    if (!BattleSkillTester(actor, sid))
+        return false;
+
 #if (defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight)))
     if (BattleSkillTester(target, SID_Foresight))
         return false;
+#endif
+
+#if (defined(SID_RightfulArch) && (COMMON_SKILL_VALID(SID_RightfulArch)))
+    if (BattleSkillTester(actor, SID_RightfulArch))
+        return true;
 #endif
 
 #if (defined(SID_RightfulKing) && (COMMON_SKILL_VALID(SID_RightfulKing)))
@@ -29,14 +37,9 @@ bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * tar
             rate += 30;
 #endif
 
-#if (defined(SID_RightfulArch) && (COMMON_SKILL_VALID(SID_RightfulArch)))
-    if (BattleSkillTester(actor, SID_RightfulArch))
-        rate = 100;
-#endif
-
     LIMIT_AREA(rate, 0, 100);
 
-    if (BattleSkillTester(actor, sid) && Roll2RN(rate))
+    if (Roll2RN(rate))
         return true;
 
     return false;

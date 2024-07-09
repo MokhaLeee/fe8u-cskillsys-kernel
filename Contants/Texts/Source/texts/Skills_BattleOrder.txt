@@ -59,3 +59,16 @@ B-Fighter[X]
 ## MSG_SKILL_BoldFighter
 BoldFighter:[NL]
 Always attack twice when attacking.[X]
+
+## MSG_SKILL_BidingBlow
+BidingBlow:[NL]
+Attack twice if the enemy[NL]
+cannot counterattack.[X]
+
+## MSG_SKILL_AdvantageChaser_NAME
+Adv-Chaser[X]
+
+## MSG_SKILL_AdvantageChaser
+AdvantageChaser:[NL]
+Unit always doubles if they have[NL]
+Weapon Triangle Advantage.[X]

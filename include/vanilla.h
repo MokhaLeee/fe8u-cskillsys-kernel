@@ -149,4 +149,20 @@ extern u16 gRNSeeds[3];
 
 extern void (* gUnknown_03003128)(void);
 
-void BmMapInit(void* buffer, u8*** outHandle, int width, int height);
+void BmMapInit(void * buffer, u8 *** outHandle, int width, int height);
+void RevertMovementScript(u8 * begin, u8 * end);
+#define TERRAIN_AT(x, y) gBmMapTerrain[y][x]
+#define LAST_X_POINT gpPathArrowProc->pathX[gpPathArrowProc->pathLen]
+#define LAST_Y_POINT gpPathArrowProc->pathY[gpPathArrowProc->pathLen]
+
+static inline s8 GetBmMapPointAtCursor()
+{
+    return gWorkingBmMap[gBmSt.playerCursor.y][gBmSt.playerCursor.x];
+}
+
+static inline u8 GetTerrainAtCursor()
+{
+    return TERRAIN_AT(gBmSt.playerCursor.x, gBmSt.playerCursor.y);
+}
+
+bool CanShowUnitStatScreen(struct Unit * unit);

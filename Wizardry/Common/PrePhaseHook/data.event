@@ -6,6 +6,7 @@ gPrePhaseFuncs:
     POIN PrePhsae_TickPlusAndMinusSkillStatus
     POIN PrePhsae_ClearGuardBearingStatus
     POIN PrePhase_UpdateLengendSkillStatus
+    POIN PrePhase_UnitStatusEffectSkills
 
     POIN PrePhaseFunc_AversaNight
     POIN PrePhaseFunc_HoneFortify

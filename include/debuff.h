@@ -58,6 +58,8 @@ struct DebuffInfo {
     u8 tick_type;
     u8 duration;
 
+    u8 _pad_;
+
     struct {
         u8 speed;
         u8 r, g, b;

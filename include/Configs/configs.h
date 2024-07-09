@@ -61,6 +61,14 @@
 #define CONFIG_FASTER_MAP_RANGE
 
 /**
+ * If uncommented, this will disable move-path calculation and display.
+ * Since move-path can display no more than 20 steps in vanilla,
+ * with the increase of unit's mobility, this limitation may cause
+ * risk of overflow error. Thus we directly remove the move-path to avoid overflow.
+ */
+// #define CONFIG_REMOVE_MOVE_PATH
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

@@ -10,7 +10,7 @@ INFO=[CSKILL_K: gSkillInfos_Generic]Configure Skill infos
 
 POINTER=0xB2A614
 DATASIZE=0x8
-DATACOUNT=0x100
+DATACOUNT=0x400
 
 LISTNAME=$COMBO combo.skills.txt
 

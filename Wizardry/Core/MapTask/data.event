@@ -12,3 +12,6 @@ PUSH
     ORG $35718 // Force Subtitle Help (option replaced by hp bars toggle)
     SHORT $46C0
 POP
+
+#include "Source/MapTaskArm.lyn.event"
+#include "Source/MapTaskData.lyn.event"
