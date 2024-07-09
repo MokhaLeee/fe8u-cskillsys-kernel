@@ -10,7 +10,7 @@ INFO=[CSKILL_K: gCombatArtSkillTable] If unit has an skill, we can say that he h
 
 POINTER=0xB2A64C
 DATASIZE=1
-DATACOUNT=0x100
+DATACOUNT=0x400
 
 LISTNAME=$COMBO combo.skills.txt
 B0:$COMBO combo.arts.txt=art
