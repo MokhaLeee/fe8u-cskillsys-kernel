@@ -564,3 +564,8 @@ this unit's battle speed.[X]
 SwiftSwim:[NL]
 If it is raining, double this[NL]
 unit's battle speed.[X]
+
+## MSG_SKILL_Dazzle
+Dazzle:[NL]
+Enemy cannot counterattack[NL]
+this unit.[X]
