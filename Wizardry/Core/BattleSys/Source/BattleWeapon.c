@@ -17,14 +17,6 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
 
     bu->canCounter = true;
 
-#if (defined(SID_Dazzle) && (COMMON_SKILL_VALID(SID_Dazzle)))
-    if (BattleSkillTester(&gBattleActor, SID_Dazzle) && bu == &gBattleTarget)
-    {
-        itemSlot = BU_ISLOT_5;
-        bu->canCounter = false;
-    }
-#endif
-
     switch (itemSlot) {
     case 0:
     case 1:
@@ -134,6 +126,14 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
             bu->weapon = 0;
             bu->canCounter = false;
         }
+
+#if (defined(SID_Dazzle) && (COMMON_SKILL_VALID(SID_Dazzle)))
+        if (bu == &gBattleTarget && BattleSkillTester(&gBattleActor, SID_Dazzle))
+        {
+            bu->weapon = 0;
+            bu->canCounter = false;
+        }
+#endif
 
         switch (GetUnitStatusIndex(&bu->unit)) {
         case UNIT_STATUS_SLEEP:
