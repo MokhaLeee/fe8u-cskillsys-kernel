@@ -1,8 +1,6 @@
 #ifndef BANIM_HACK_INSTALLED
 #define BANIM_HACK_INSTALLED
 
-#include "EfxMagicDummyFix/EfxMagicDummyFix.event"
-
 #include "Source/C01.lyn.event"
 #include "Source/C07.lyn.event"
 

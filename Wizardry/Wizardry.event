@@ -6,9 +6,14 @@ ALIGN 4
 #include "Core/UnitStatusGetter/source/InjectMovGetters.event"
 #include "Core/WeaponRange/Source/MiscHooksWeaponRange.event"
 
+#include "Essentials/EfxMagicDummyFix/EfxMagicDummyFix.event"
+#include "Essentials/LeaderFix/LeaderFix.event"
+#include "Essentials/RemoveMovePath/RemoveMovePath.event"
+#include "Essentials/UnitLimitation/UnitLimitation.event"
+#include "Essentials/OverflowDetection/OverflowDetection.lyn.event"
+
 #include "Common/EventRework/EventRework.event"
 #include "Common/UnitAction/UnitAction.event"
-#include "Common/KernelFix/KernelFix.event"
 #include "Common/GameInitHook/GameInitHook.event"
 #include "Common/DebugKit/DebugKit.event"
 #include "Common/KernelLib/KernelLib.event"
