@@ -110,6 +110,11 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight))
+        if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
+            return false;
+#endif
     }
     else if (&gBattleTarget == actor)
     {

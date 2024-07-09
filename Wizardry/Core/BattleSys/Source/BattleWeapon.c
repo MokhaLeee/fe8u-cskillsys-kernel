@@ -138,6 +138,15 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
         }
 #endif
 
+#if (defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight)))
+        if (bu == &gBattleTarget && BattleSkillTester(&gBattleActor, SID_Moonlight))
+        {
+            bu->weapon = 0;
+            bu->canCounter = false;
+            return;
+        }
+#endif
+
         switch (GetUnitStatusIndex(&bu->unit)) {
         case UNIT_STATUS_SLEEP:
         case UNIT_STATUS_PETRIFY:
