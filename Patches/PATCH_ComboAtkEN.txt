@@ -12,4 +12,4 @@ ADDRESS=0xB2A680
 
 DATASIZE=1
 DATACOUNT=1
-B0:$COMBO combo.bool.txt:EN
+B0:$COMBO combo.bool.txt=EN
