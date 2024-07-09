@@ -2,3 +2,5 @@
     ALIGN 4
     #include "Individual_animation_ea_2/Installer.event"
 #endif
+
+#include "DrawMapActionAnimation/Installer.event"
