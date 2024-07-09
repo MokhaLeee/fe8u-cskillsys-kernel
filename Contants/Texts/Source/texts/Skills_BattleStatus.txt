@@ -569,3 +569,8 @@ unit's battle speed.[X]
 Dazzle:[NL]
 Enemy cannot counterattack[NL]
 this unit.[X]
+
+## MSG_SKILL_Moonlight
+Moonlight:[NL]
+This unit cannot double, but[NL]
+the enemy cannot counterattack.[X]

@@ -2609,4 +2609,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_AdvantageChaser,
     },
 #endif
+
+#if (defined(SID_Moonlight) && COMMON_SKILL_VALID(SID_Moonlight))
+    [SID_Moonlight] = {
+         .desc = MSG_SKILL_Moonlight,
+         .icon = GFX_SkillIcon_Moonlight,
+    },
+#endif
 };
