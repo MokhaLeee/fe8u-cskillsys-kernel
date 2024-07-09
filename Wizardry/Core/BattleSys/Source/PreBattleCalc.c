@@ -1088,11 +1088,6 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     if (BattleSkillTester(defender, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
         attacker->battleAvoidRate -= 20;
 #endif
-
-#if (defined(SID_Dazzle) && (COMMON_SKILL_VALID(SID_Dazzle)))
-    if (BattleSkillTester(defender, SID_Dazzle) && defender == &gBattleActor)
-        attacker->canCounter = false;
-#endif
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
