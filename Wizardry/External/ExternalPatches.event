@@ -4,3 +4,4 @@
 #endif
 
 #include "DrawMapActionAnimation/Installer.event"
+#include "StatScreenfx/StatScreenfx.event"
