@@ -316,3 +316,67 @@ O-Strength[X]
 Oath Strength:[NL]
 +4 STR at the start of the turn[NL]
 if an adjacent ally is present.[X]
+
+## MSG_SKILL_RouseDefense_NAME
+R-Defense[X]
+
+## MSG_SKILL_RouseDefense
+Rouse Defense:[NL]
++4 DEF at the start of the turn[NL]
+if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_RouseLuck_NAME
+R-Luck[X]
+
+## MSG_SKILL_RouseLuck
+Rouse Luck:[NL]
++4 LUCK at the start of the turn[NL]
+if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_RouseMagic_NAME
+R-Magic[X]
+
+## MSG_SKILL_RouseMagic
+Rouse Magic:[NL]
++4 MAG at the start of the turn[NL]
+if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_RouseMovement_NAME
+R-Movement[X]
+
+## MSG_SKILL_RouseMovement
+Rouse Movement:[NL]
++4 MOV at the start of the turn[NL]
+if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_RouseResistance_NAME
+R-Resistance[X]
+
+## MSG_SKILL_RouseResistance
+Rouse Resistance:[NL]
++4 RES at the start of the turn[NL]
+if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_RouseSkill_NAME
+R-Skill[X]
+
+## MSG_SKILL_RouseSkill
+Rouse Skill:[NL]
++4 SKL at the start of the turn[NL]
+if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_RouseSpeed_NAME
+R-Speed[X]
+
+## MSG_SKILL_RouseSpeed
+Rouse Speed:[NL]
++4 SPD at the start of the turn[NL]
+if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_RouseStrength_NAME
+R-Strength[X]
+
+## MSG_SKILL_RouseStrength
+Rouse Strength:[NL]
++4 STR at the start of the turn[NL]
+if an adjacent ally isn't present.[X]

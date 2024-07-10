@@ -122,6 +122,16 @@ SID_OathSkill
 SID_OathSpeed
 SID_OathStrength
 
+// Rouse skills
+SID_RouseDefense
+SID_RouseLuck
+SID_RouseMagic
+SID_RouseMovement
+SID_RouseResistance
+SID_RouseSkill
+SID_RouseSpeed
+SID_RouseStrength
+
 // Engage skills
 SID_GentleFlower // This skill can only set to ally!
 SID_Admiration
