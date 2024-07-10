@@ -24,6 +24,7 @@
 #include "PrePhaseSkills/AversaNight.lyn.event"
 #include "PrePhaseSkills/HoneFortify.lyn.event"
 #include "PrePhaseSkills/OathSkills.lyn.event"
+#include "PrePhaseSkills/RouseSkills.lyn.event"
 #include "PrePhaseSkills/PlusAndMinusSkills.lyn.event"
 #include "PrePhaseSkills/WeatherSkills.lyn.event"
 #include "PrePhaseSkills/StatusEffects.lyn.event"
