@@ -12,6 +12,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
     const struct WeaponTriangleItemConf * item_conf = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
     bool invert = false;
 
+// We run twice in case both units have nonconforming, so we revert back to the standard boosts
 #if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
     if (BattleSkillTester(attacker, SID_Nonconforming))
         invert = !invert;
