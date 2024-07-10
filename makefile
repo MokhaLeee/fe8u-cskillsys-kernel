@@ -133,8 +133,10 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
+ifeq ($(CONFIG_GEN_BSDIFF), 1)
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
+endif
 
 	@echo "Done!"
 
