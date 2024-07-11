@@ -34,7 +34,7 @@ struct Unit * GetUnitAtPosition(s8 x, s8 y)
 
 void MapAnim_CommonInit(void)
 {
-    MU_EndAll();
+    EndAllMus();
     RenderBmMap();
     RefreshEntityBmMaps();
     RefreshUnitSprites();
@@ -42,7 +42,7 @@ void MapAnim_CommonInit(void)
 
 void MapAnim_CommonEnd(void)
 {
-    MU_AllRestartAnimations();
+    ResetMuAnims();
     InitBmBgLayers();
     LoadUiFrameGraphics();
     LoadObjUIGfx();

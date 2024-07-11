@@ -43,15 +43,15 @@ void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc)
 
             if (((s8)gAiDecision.itemSlot == -1) && !(gActiveUnit->state & US_IN_BALLISTA))
             {
-                MU_EndAll();
+                EndAllMus();
 
                 gActiveUnit->xPos = gAiDecision.xMove;
                 gActiveUnit->yPos = gAiDecision.yMove;
 
                 RideBallista(gActiveUnit);
 
-                MU_Create(gActiveUnit);
-                MU_SetDefaultFacing_Auto();
+                StartMu(gActiveUnit);
+                SetAutoMuDefaultFacing();
             }
 
             break;

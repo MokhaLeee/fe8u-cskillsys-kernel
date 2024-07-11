@@ -13,7 +13,7 @@ void PlayerPhase_DisplayUnitMovement(void)
             gWorkingMovementScript);
 
     UnitApplyWorkingMovementScript(gActiveUnit, gActiveUnit->xPos, gActiveUnit->yPos);
-    MU_StartMoveScript_Auto(gWorkingMovementScript);
+    SetAutoMuMoveScript(gWorkingMovementScript);
 }
 
 /* LynJump */

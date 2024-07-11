@@ -16,7 +16,7 @@ STATIC_DECLAR void PostActionSwapSkipMenuIfNotAlly(struct EventEngineProc * proc
 
 STATIC_DECLAR void PreparePositionSwap(void)
 {
-    MU_EndAll();
+    EndAllMus();
     RefreshUnitSprites();
 }
 

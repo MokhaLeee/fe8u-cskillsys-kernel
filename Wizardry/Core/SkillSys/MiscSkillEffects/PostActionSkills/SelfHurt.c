@@ -38,7 +38,7 @@ STATIC_DECLAR void PostActionSelfHurtCommon(ProcPtr parent, struct Unit * unit, 
     if (damage <= 0)
         return;
 
-    MU_EndAll();
+    EndAllMus();
     RefreshUnitSprites();
     HideUnitSprite(unit);
 

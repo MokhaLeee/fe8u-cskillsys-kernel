@@ -16,7 +16,7 @@ bool PostActionAlertStance(ProcPtr parent)
         if (SkillTester(unit, SID_AlertStancePlus))
         {
             SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID_PLUS);
-            MU_EndAll();
+            EndAllMus();
             StartStatusHealEffect(unit, parent);
             return true;
         }
@@ -26,7 +26,7 @@ bool PostActionAlertStance(ProcPtr parent)
         if (SkillTester(unit, SID_AlertStance))
         {
             SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID);
-            MU_EndAll();
+            EndAllMus();
             StartStatusHealEffect(unit, parent);
             return true;
         }

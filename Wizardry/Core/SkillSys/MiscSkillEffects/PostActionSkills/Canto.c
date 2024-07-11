@@ -61,9 +61,9 @@ bool TryMakeCantoUnit(ProcPtr proc)
     gActiveUnit->state |= US_HAS_MOVED;
     gActiveUnit->state &= ~US_UNSELECTABLE;
 
-    MU_EndAll();
-    MU_Create(gActiveUnit);
-    MU_SetDefaultFacing_Auto();
+    EndAllMus();
+    StartMu(gActiveUnit);
+    SetAutoMuDefaultFacing();
 
     if (gPlaySt.chapterVisionRange != 0)
         Proc_Goto(proc, 4);
@@ -117,7 +117,7 @@ void PlayerPhase_FinishAction(ProcPtr proc)
 
     if (ShouldCallEndEvent())
     {
-        MU_EndAll();
+        EndAllMus();
         RefreshEntityBmMaps();
         RenderBmMap();
         RefreshUnitSprites();
@@ -125,5 +125,5 @@ void PlayerPhase_FinishAction(ProcPtr proc)
         Proc_Goto(proc, 8);
         return;
     }
-    MU_EndAll();
+    EndAllMus();
 }

@@ -106,7 +106,7 @@ void EfxStatusUnitMain(struct ProcEfxStatusUnit * proc)
 
             RefreshEntityBmMaps();
             RefreshUnitSprites();
-            MU_EndAll();
+            EndAllMus();
             break;
 
         default:
