@@ -50,10 +50,11 @@ static void _SetOathStatDebuf(struct Unit * unit)
 bool PrePhsae_TickOathSkillStatus(ProcPtr proc)
 {
     int i, j;
-    bool ally_in_range = false;
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
+        bool ally_in_range = false;
+
         struct Unit * unit = GetUnit(i);
         if (!UNIT_IS_VALID(unit))
             continue;
