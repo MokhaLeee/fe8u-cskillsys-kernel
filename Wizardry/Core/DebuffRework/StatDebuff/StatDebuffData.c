@@ -273,42 +273,42 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         .unit_status = { .mov = +7 },
     },
 
-    [UNIT_STAT_BUFF_OATH_POW] = {
+    [UNIT_STAT_BUFF_OATHROUSE_POW] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .pow = +4 },
     },
-    [UNIT_STAT_BUFF_OATH_MAG] = {
+    [UNIT_STAT_BUFF_OATHROUSE_MAG] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .mag = +4 },
     },
-    [UNIT_STAT_BUFF_OATH_SKL] = {
+    [UNIT_STAT_BUFF_OATHROUSE_SKL] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .skl = +4 },
     },
-    [UNIT_STAT_BUFF_OATH_SPD] = {
+    [UNIT_STAT_BUFF_OATHROUSE_SPD] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .spd = +4 },
     },
-    [UNIT_STAT_BUFF_OATH_LCK] = {
+    [UNIT_STAT_BUFF_OATHROUSE_LCK] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .lck = +4 },
     },
-    [UNIT_STAT_BUFF_OATH_DEF] = {
+    [UNIT_STAT_BUFF_OATHROUSE_DEF] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .def = +4 },
     },
-    [UNIT_STAT_BUFF_OATH_RES] = {
+    [UNIT_STAT_BUFF_OATHROUSE_RES] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .res = +4 },
     },
-    [UNIT_STAT_BUFF_OATH_MOV] = {
+    [UNIT_STAT_BUFF_OATHROUSE_MOV] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .mov = +4 },
