@@ -26,24 +26,24 @@ int MovGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_MovBonus) && (COMMON_SKILL_VALID(SID_MovBonus))
     if (SkillTester(unit, SID_MovBonus))
-        status += 2;
+        status += gpStatusConf_BonusSkills[SKILL_US_MOV];
 #endif
 
 #if defined(SID_LuckySeven) && (COMMON_SKILL_VALID(SID_LuckySeven))
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_MOV)
-        status += 7;
+        status += gpStatusConf_luckySevenSkill[SKILL_US_MOV];
 #endif
 
-    if(cur_hp == max_hp)
+    if (cur_hp == max_hp)
     {
 #if defined(SID_PushMovement) && (COMMON_SKILL_VALID(SID_PushMovement))
         if (SkillTester(unit, SID_PushMovement))
-            status += 5;
+            status += gpStatusConf_PushSkills[SKILL_US_MOV];
 #endif
 
 #if defined(SID_PushSpectrum) && (COMMON_SKILL_VALID(SID_PushSpectrum))
         if (SkillTester(unit, SID_PushSpectrum))
-            status += 5;
+            status += gpStatusConf_PushSkills[SKILL_US_MOV];
 #endif
     }
 

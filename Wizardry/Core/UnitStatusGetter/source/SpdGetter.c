@@ -32,23 +32,23 @@ int SpdGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_SpdBonus) && (COMMON_SKILL_VALID(SID_SpdBonus))
     if (SkillTester(unit, SID_SpdBonus))
-        status += 2;
+        status += gpStatusConf_BonusSkills[SKILL_US_SPD];
 #endif
 
 #if defined(SID_DefiantSpd) && (COMMON_SKILL_VALID(SID_DefiantSpd))
     if (SkillTester(unit, SID_DefiantSpd))
         if ((cur_hp * 4) < max_hp)
-            status += 7;
+            status += gpStatusConf_DefiantSkills[SKILL_US_SPD];
 #endif
 
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
     if (SkillTester(unit, SID_Fury))
-        status += 3;
+        status += gpSkillMiscConf->Bonus_Fury;
 #endif
 
 #if defined(SID_FuryPlus) && (COMMON_SKILL_VALID(SID_FuryPlus))
     if (SkillTester(unit, SID_FuryPlus))
-        status += 4;
+        status += gpSkillMiscConf->Bonus_FuryPlus;
 #endif
 
 #if defined(SID_RuinedBlade) && (COMMON_SKILL_VALID(SID_RuinedBlade))
@@ -63,33 +63,26 @@ int SpdGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_LuckySeven) && (COMMON_SKILL_VALID(SID_LuckySeven))
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_SPD)
-        status += 7;
+        status += gpStatusConf_luckySevenSkill[SKILL_US_SPD];
 #endif
 
-#if defined(SID_PushSpeed) && (COMMON_SKILL_VALID(SID_PushSpeed))
-    if (SkillTester(unit, SID_PushSpeed))
+    if (cur_hp == max_hp)
     {
-        if(cur_hp == max_hp)
-            status += 5;
-    }
+#if defined(SID_PushSpeed) && (COMMON_SKILL_VALID(SID_PushSpeed))
+        if (SkillTester(unit, SID_PushSpeed))
+            status += gpStatusConf_PushSkills[SKILL_US_SPD];
 #endif
 
 #if defined(SID_PushSpectrum) && (COMMON_SKILL_VALID(SID_PushSpectrum))
-    if (SkillTester(unit, SID_PushSpectrum))
-    {
-        if(cur_hp == max_hp)
-            status += 5;
-    }
+        if (SkillTester(unit, SID_PushSpectrum))
+            status += gpStatusConf_PushSkills[SKILL_US_SPD];
 #endif
+    }
 
 #if defined(SID_LightWeight) && (COMMON_SKILL_VALID(SID_LightWeight))
     if (SkillTester(unit, SID_LightWeight))
-    {
         if (unit->items[3] == 0)
-        {
             status += 3;
-        }
-    }
 #endif
 
 #if (defined(SID_Resolve) && (COMMON_SKILL_VALID(SID_Resolve))) 
