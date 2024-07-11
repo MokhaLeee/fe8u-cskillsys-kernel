@@ -168,6 +168,42 @@ enum EventSkillSubOps {
 /**
  * Miscs
  */
+
+enum common_misc_skill_status_idx {
+    SKILL_US_POW,
+    SKILL_US_MAG,
+    SKILL_US_SKL,
+    SKILL_US_SPD,
+    SKILL_US_LCK,
+    SKILL_US_DEF,
+    SKILL_US_RES,
+    SKILL_US_MOV,
+
+    SKILL_US_MAX
+};
+
+enum common_misc_skill_battle_status_idx {
+    SKILL_BS_ATK,
+    SKILL_BS_DEF,
+    SKILL_BS_HIT,
+    SKILL_BS_AVO,
+    SKILL_BS_CRT,
+    SKILL_BS_SIL,
+    SKILL_BS_DOG,
+
+    SKILL_BS_MAX
+};
+
+extern u8 const * const gpStatusConf_BonusSkills;
+extern u8 const * const gpStatusConf_DefiantSkills;
+extern u8 const * const gpStatusConf_luckySevenSkill;
+extern u8 const * const gpStatusConf_PushSkills;
+
+struct SkillMiscConf {
+    u8 Bonus_Fury, Bonus_FuryPlus;
+};
+extern struct SkillMiscConf const * const gpSkillMiscConf;
+
 bool IsSkillLearned(struct Unit * unit, const u16 sid);
 void LearnSkill(struct Unit * unit, const u16 sid);
 void ForgetSkill(struct Unit * unit, const u16 sid);
