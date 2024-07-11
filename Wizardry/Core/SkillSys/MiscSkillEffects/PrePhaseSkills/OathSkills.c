@@ -47,18 +47,6 @@ static void _SetOathStatDebuf(struct Unit * unit)
 #endif
 }
 
-static void _ClearOathStatDebuf(struct Unit * unit)
-{
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_POW);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_MAG);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SKL);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_SPD);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_LCK);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_DEF);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_RES);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_OATH_MOV);
-}
-
 bool PrePhsae_TickOathSkillStatus(ProcPtr proc)
 {
     int i, j;
@@ -89,9 +77,7 @@ bool PrePhsae_TickOathSkillStatus(ProcPtr proc)
             }
         }
 
-        if (!ally_in_range)
-            _ClearOathStatDebuf(unit);
-        else
+        if (ally_in_range)
             _SetOathStatDebuf(unit);
     }
     return false;
