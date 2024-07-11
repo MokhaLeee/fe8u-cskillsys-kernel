@@ -608,7 +608,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 #if defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter))
             if (!IsMagicAttack(attacker) && gBattleStats.range == 1 && BattleSkillTester(defender, SID_Counter))
             {
-                RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Counter);
                 gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
 
                 attacker->unit.curHP -= gBattleStats.damage;

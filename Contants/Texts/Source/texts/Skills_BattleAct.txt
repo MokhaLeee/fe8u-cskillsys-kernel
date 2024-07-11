@@ -138,5 +138,5 @@ Turn a missed attack into a hit[NL]
 
 ## MSG_SKILL_Counter
 Counter:[NL]
-Reflect physical damage at[NL]
-melee range. (Skill % activation).[X]
+Reflect physical damage[NL]
+at melee range.[X]
