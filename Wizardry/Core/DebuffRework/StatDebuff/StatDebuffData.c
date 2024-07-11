@@ -316,42 +316,42 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
 
     [UNIT_STAT_BUFF_ROUSE_POW] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .pow = +4 },
     },
     [UNIT_STAT_BUFF_ROUSE_MAG] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .mag = +4 },
     },
     [UNIT_STAT_BUFF_ROUSE_SKL] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .skl = +4 },
     },
     [UNIT_STAT_BUFF_ROUSE_SPD] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .spd = +4 },
     },
     [UNIT_STAT_BUFF_ROUSE_LCK] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .lck = +4 },
     },
     [UNIT_STAT_BUFF_ROUSE_DEF] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .def = +4 },
     },
     [UNIT_STAT_BUFF_ROUSE_RES] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .res = +4 },
     },
     [UNIT_STAT_BUFF_ROUSE_MOV] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
-        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .unit_status = { .mov = +4 },
     },
 

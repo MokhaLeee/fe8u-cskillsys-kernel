@@ -47,22 +47,10 @@ static void _SetRouseStatDebuf(struct Unit * unit)
 #endif
 }
 
-static void _ClearRouseStatDebuf(struct Unit * unit)
-{
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_POW);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_MAG);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_SKL);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_SPD);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_LCK);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_DEF);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_RES);
-    ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_ROUSE_MOV);
-}
-
 bool PrePhsae_TickRouseSkillStatus(ProcPtr proc)
 {
     int i, j;
-    bool ally_in_range = true;
+    bool ally_in_range = false;
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
@@ -84,14 +72,12 @@ bool PrePhsae_TickRouseSkillStatus(ProcPtr proc)
 
             if (AreUnitsAllied(unit->index, unit_ally->index))
             {
-                ally_in_range = false;
+                ally_in_range = true;
                 break;
             }
         }
 
-        if (!ally_in_range)
-            _ClearRouseStatDebuf(unit);
-        else
+        if (ally_in_range)
             _SetRouseStatDebuf(unit);
     }
     return false;
