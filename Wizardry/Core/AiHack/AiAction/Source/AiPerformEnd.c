@@ -31,7 +31,7 @@ void CpPerform_Cleanup(struct CpPerformProc * proc)
 
     NewBMXFADE(1);
 
-    MU_EndAll();
+    EndAllMus();
     RefreshEntityBmMaps();
 
     ShowUnitSprite(gActiveUnit);

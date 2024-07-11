@@ -52,7 +52,7 @@ STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon * proc
 
 STATIC_DECLAR void PrePhaseBoon_ExecAnim(struct ProcPrePhaseBoon * proc)
 {
-    MU_EndAll();
+    EndAllMus();
     StartStatusHealEffect(GetUnit(proc->uid), proc);
 }
 

@@ -9,26 +9,23 @@
 STATIC_DECLAR void PostActionSynchronize_Init(ProcPtr proc)
 {
     struct Unit * unit;
-    struct MUProc * mu;
+    struct MuProc * mu;
 
     unit = GetUnit(gActionData.subjectIndex);
 
     HideUnitSprite(unit);
-    mu = MU_Create(unit);
+    mu = StartMu(unit);
 
-    mu->pAPHandle->frameTimer = 0;
-    mu->pAPHandle->frameInterval = 0;
-
-    MU_SetDefaultFacing(mu);
+    FreezeSpriteAnim(mu->sprite_anim);
+    SetMuDefaultFacing(mu);
     SetDefaultColorEffects();
-
     EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
 }
 
 STATIC_DECLAR void PostActionSynchronize_StartActor(ProcPtr proc)
 {
     struct Unit * unit = GetUnit(gActionData.subjectIndex);
-    MU_StartActionAnim(MU_GetByUnit(unit));
+    StartMuActionAnim(GetUnitMu(unit));
 }
 
 STATIC_DECLAR void PostActionSynchronize_StartTargetAnim(ProcPtr proc)
@@ -51,11 +48,9 @@ STATIC_DECLAR void PostActionSynchronize_StartTargetAnim(ProcPtr proc)
 STATIC_DECLAR void PostActionSynchronize_ResetActor(ProcPtr proc)
 {
     struct Unit * unit = GetUnit(gActionData.subjectIndex);
-    struct MUProc * mu = MU_GetByUnit(unit);
+    struct MuProc * mu = GetUnitMu(unit);
 
-    mu->pAPHandle->frameTimer = 0;
-    mu->pAPHandle->frameInterval = 0;
-
+    FreezeSpriteAnim(mu->sprite_anim);
     EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
 }
 
@@ -135,7 +130,7 @@ bool PostActionSynchronize(ProcPtr parent)
     if (AreUnitsAllied(unit_act->index, unit_tar->index) == IsDebuff(debuff_act))
         return false;
 
-    MU_EndAll();
+    EndAllMus();
     RenderBmMap();
     ShowUnitSprite(GetUnit(gActionData.targetIndex));
     Proc_Start(ProcScr_PostActionSynchronize, PROC_TREE_3);

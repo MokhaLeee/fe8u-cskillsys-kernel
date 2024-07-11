@@ -43,7 +43,7 @@ L_exec_rafrain_action_anim:
         return false;
 
     gActionDataExpa.refrain_action = true;
-    MU_EndAll();
+    EndAllMus();
     StartStatusHealEffect(unit, parent);
     return true;
 }

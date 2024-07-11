@@ -6,7 +6,7 @@
 
 STATIC_DECLAR void clear_mus(void)
 {
-    MU_EndAll();
+    EndAllMus();
     RefreshUnitSprites();
 }
 

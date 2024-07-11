@@ -83,6 +83,9 @@ cd Tools/EventAssembler
 make
 ```
 
+> [!NOTE]
+> If gcc report error, update C-Lib and retry, see [#155](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/discussions/115)
+
 It build such outputs
 
 | Name      | Desc 			|
@@ -91,6 +94,5 @@ It build such outputs
 |fe8-kernel-dev.sym|debug on NO$GBA|
 |fe8-kernel-dev.ref.s|lyn reference|
 |fe8-kernel-dev.ref.event|EA reference|
-|fe8-kernel-dev.bsdiff|Binary patch used for bsdiff/bspatch|
 
 **For more notes, see [docs dir](./docs/)**

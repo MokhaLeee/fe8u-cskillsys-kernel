@@ -75,7 +75,7 @@ void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void)
         if (gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit != unit)
             return;
 
-        MU_End(gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu);
+        EndMu(gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu);
 
         gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit = NULL;
         gManimSt.actor[COMBO_MAPA_ACTOR_IDX].bu   = NULL;
@@ -106,7 +106,7 @@ bool PreMapAnimBattleRound_ComboAttack(ProcPtr proc)
     HideUnitSprite(unit);
 
     // SetupBattleMOVEUNITs
-    gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu->pAPHandle->objLayer = gUnknown_08205714[COMBO_MAPA_ACTOR_IDX];
+    gManimSt.actor[COMBO_MAPA_ACTOR_IDX].mu->sprite_anim->objLayer = gUnknown_08205714[COMBO_MAPA_ACTOR_IDX];
 
     // MapAnim_AdvanceBattleRound
     gManimSt.subjectActorId = COMBO_MAPA_ACTOR_IDX;

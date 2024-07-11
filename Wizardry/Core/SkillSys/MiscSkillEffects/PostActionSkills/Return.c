@@ -18,7 +18,7 @@ STATIC_DECLAR void PrepareReturnPosition(void)
 {
     gEventSlots[EVT_SLOT_2] = gActiveUnit->index;
 
-    MU_EndAll();
+    EndAllMus();
     RefreshUnitSprites();
 }
 
