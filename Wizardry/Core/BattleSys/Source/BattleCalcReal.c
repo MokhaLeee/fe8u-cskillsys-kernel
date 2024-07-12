@@ -63,7 +63,7 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 
 #if (defined(SID_Puissance) && (COMMON_SKILL_VALID(SID_Puissance)))
         if (BattleSkillTester(attacker, SID_Puissance))
-            attacker->battleAttack += 3;
+            attacker->battleAttack += SKILL_EFF0(SID_Puissance);
 #endif
     }
 }
