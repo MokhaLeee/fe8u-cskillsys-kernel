@@ -114,6 +114,31 @@ STATIC_DECLAR void DrawStatWithBarRework(int num, int x, int y, int base, int to
     DrawStatWithBarReworkExt(num, x, y, base, total, max, max_bar);
 }
 
+
+extern int DisplayGrowthsFlag; 
+STATIC_DECLAR int DisplayGrowths(void) { 
+	return CheckFlag(DisplayGrowthsFlag); 
+} 
+
+STATIC_DECLAR int GetGrowthBonusOffset(int diff) { 
+	diff = ABS(diff); 
+	int result = 1; 
+	//if (diff > 9) { result++; } 
+	if (diff > 99) { result++; } 
+	return result; 
+} 
+
+STATIC_DECLAR void DrawGrowthWithDifference(int x, int y, int base, int modified)
+{
+    int diff = modified - base;
+	int offset = 0; 
+	if (base > 99) { offset++; } 
+	if ((base < 100) && (diff < 100)) { offset++; } 
+    PutNumberOrBlank(gUiTmScratchA + TILEMAP_INDEX(x + offset, y), TEXT_COLOR_SYSTEM_BLUE, base);
+	offset += GetGrowthBonusOffset(diff); 
+    PutNumberBonus(diff, gUiTmScratchA + TILEMAP_INDEX(x + offset, y));
+}
+
 STATIC_DECLAR void DrawPage1TextCommon(void)
 {
     struct Unit * unit = gStatScreen.unit;
@@ -184,12 +209,14 @@ STATIC_DECLAR void DrawPage1TextCommon(void)
     /* All growth related value done */
     ResetActiveFontPal();
 
+	int MovOrHpTextID = 0x4F6; // Mov 
+	if (DisplayGrowths()) { MovOrHpTextID = 0x4E9; } // HP 
     PutDrawText(
         &gStatScreen.text[STATSCREEN_TEXT_MOVLABEL],
         gUiTmScratchA + TILEMAP_INDEX(0x9, 0x1),
         TEXT_COLOR_SYSTEM_GOLD,
         0, 0,
-        GetStringFromIndex(0x4F6)); // Mov
+        GetStringFromIndex(MovOrHpTextID)); // "Move" or "HP"
 
     PutDrawText(
         &gStatScreen.text[STATSCREEN_TEXT_CONLABEL],
@@ -227,10 +254,22 @@ STATIC_DECLAR void DrawPage1TextCommon(void)
         GetStringFromIndex(0x4FA)); // Cond
 }
 
+
 STATIC_DECLAR void DrawPage1ValueReal(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
+	if (DisplayGrowths()) { 
+		DrawGrowthWithDifference(0x4, 0x1, GetUnitBasePowGrowth(unit), GetUnitPowGrowth(unit));
+		DrawGrowthWithDifference(0x4, 0x3, GetUnitBaseMagGrowth(unit), GetUnitMagGrowth(unit));
+		DrawGrowthWithDifference(0x4, 0x5, GetUnitBaseSklGrowth(unit), GetUnitSklGrowth(unit));
+		DrawGrowthWithDifference(0x4, 0x7, GetUnitBaseSpdGrowth(unit), GetUnitSpdGrowth(unit));
+		DrawGrowthWithDifference(0x4, 0x9, GetUnitBaseLckGrowth(unit), GetUnitLckGrowth(unit));
+		DrawGrowthWithDifference(0x4, 0xB, GetUnitBaseDefGrowth(unit), GetUnitDefGrowth(unit));
+		DrawGrowthWithDifference(0x4, 0xD, GetUnitBaseResGrowth(unit), GetUnitResGrowth(unit));
+		DrawGrowthWithDifference(0xC, 0x1, GetUnitBaseHpGrowth(unit),  GetUnitHpGrowth(unit));
+	} 
+	else { 
     DrawStatWithBarRework(0, 0x5, 0x1,
                     unit->pow,
                     GetUnitPower(unit),
@@ -265,16 +304,17 @@ STATIC_DECLAR void DrawPage1ValueReal(void)
                     unit->res,
                     GetUnitResistance(unit),
                     UNIT_RES_MAX(unit));
+					
+    DrawStatWithBarRework(7, 0xD, 0x1,
+                    UNIT_MOV(unit),
+                    MovGetter(unit),
+                    UNIT_MOV_MAX(unit));
+	}
 }
 
 STATIC_DECLAR void DrawPage1ValueCommon(void)
 {
     struct Unit * unit = gStatScreen.unit;
-
-    DrawStatWithBarRework(7, 0xD, 0x1,
-                    UNIT_MOV(unit),
-                    MovGetter(unit),
-                    UNIT_MOV_MAX(unit));
 
     DrawStatWithBarRework(8, 0xD, 0x3,
                     UNIT_CON_BASE(unit),

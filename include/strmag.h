@@ -40,7 +40,7 @@ static inline int GetUnitBaseMagic(struct Unit * unit)
     return gpMagicPInfos[UNIT_CHAR_ID(unit)].base + gpMagicJInfos[UNIT_CLASS_ID(unit)].base;
 }
 
-static inline int GetUnitBasicMagGrowth(struct Unit * unit)
+static inline int GetUnitBaseMagGrowth(struct Unit * unit)
 {
     return gpMagicPInfos[UNIT_CHAR_ID(unit)].growth;
 }

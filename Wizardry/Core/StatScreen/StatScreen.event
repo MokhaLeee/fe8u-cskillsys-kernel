@@ -1,6 +1,7 @@
 #ifndef STATSCREEN_INSTALLED
 #define STATSCREEN_INSTALLED
 
+#include "OnIdle/OnIdle.lyn.event"
 #include "DrawPages/DrawPage1.lyn.event"
 #include "DrawPages/DrawPage3.lyn.event"
 #include "DrawPages/DrawPage4.lyn.event"

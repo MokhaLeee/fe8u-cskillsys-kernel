@@ -17,6 +17,7 @@ STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit * unit)
     if (SkillTester(unit, SID_Aptitude))
         new = new + Div(status * SKILL_EFF0(SID_Aptitude), 100);
 #endif
+	new += (unit->state & US_GROWTH_BOOST) ? 5: 0;
 
     return new;
 }
@@ -37,7 +38,7 @@ int GetUnitPowGrowth(struct Unit * unit)
 
 int GetUnitMagGrowth(struct Unit * unit)
 {
-    int status = GetUnitBasicMagGrowth(unit);
+    int status = GetUnitBaseMagGrowth(unit);
     status = GetUnitCommonGrowthBonus(status, unit);
     return status;
 }
@@ -76,3 +77,5 @@ int GetUnitResGrowth(struct Unit * unit)
     status = GetUnitCommonGrowthBonus(status, unit);
     return status;
 }
+
+
