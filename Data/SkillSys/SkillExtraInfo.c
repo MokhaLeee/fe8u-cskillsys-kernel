@@ -145,6 +145,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Renewal] = {{ 30 }},
     [SID_Forager] = {{ 20 }},
     [SID_RainDish] = {{ 30 }},
+    [SID_Relief] = {{ 20 }},
 
     [SID_Anathema] = {{ 10, 10 }},
     [SID_Bond] = {{ 2, 10 }},
