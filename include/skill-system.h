@@ -173,6 +173,10 @@ struct SkillExtraInfo {
     s8 priv[4];
 };
 extern struct SkillExtraInfo const * const gpSkillExtraInfo;
+#define SKILL_VAL0(sid) (gpSkillExtraInfo[sid].priv[0])
+#define SKILL_VAL1(sid) (gpSkillExtraInfo[sid].priv[1])
+#define SKILL_VAL2(sid) (gpSkillExtraInfo[sid].priv[2])
+#define SKILL_VAL3(sid) (gpSkillExtraInfo[sid].priv[3])
 
 bool IsSkillLearned(struct Unit * unit, const u16 sid);
 void LearnSkill(struct Unit * unit, const u16 sid);
