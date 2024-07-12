@@ -106,6 +106,7 @@ SID_Hero
 SID_Guts
 SID_SuperLuck
 SID_Spurn
+SID_Counter
 
 // Weapon triangle
 SID_SwordBreaker

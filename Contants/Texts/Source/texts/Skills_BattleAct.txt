@@ -140,3 +140,8 @@ Turn a missed attack into a hit[NL]
 Discipline:[NL]
 Weapon experience gains are[NL]
 doubled for this unit.[X]
+
+## MSG_SKILL_Counter
+Counter:[NL]
+Reflect physical damage[NL]
+dealt at melee range.[X]

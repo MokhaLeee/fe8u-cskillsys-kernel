@@ -572,6 +572,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 {
     int debuff;
     bool weapon_cost;
+    bool damage_reversal = false;
 
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
         if (BattleSkillTester(attacker, SID_Discipline))
@@ -614,10 +615,27 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             }
 #endif
 
-            defender->unit.curHP -= gBattleStats.damage;
+#if defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter))
+            if (!IsMagicAttack(attacker) && gBattleStats.range == 1 && BattleSkillTester(defender, SID_Counter))
+            {
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
 
-            if (defender->unit.curHP < 0)
-                defender->unit.curHP = 0;
+                attacker->unit.curHP -= gBattleStats.damage;
+
+                if (attacker->unit.curHP < 0)
+                    attacker->unit.curHP = 0;
+
+                damage_reversal = true;
+            }
+#endif
+
+            if (!damage_reversal) 
+            {
+                defender->unit.curHP -= gBattleStats.damage;
+
+                if (defender->unit.curHP < 0)
+                    defender->unit.curHP = 0;
+            }
         }
 
 #ifdef CHAX
