@@ -311,6 +311,11 @@ Charge:[NL]
 +1 damage for every[NL]
 two tiles moved.[X]
 
+## MSG_SKILL_ChargePlus
+ChargePlus:[NL]
+Apply brave effect if all[NL]
+movement used this turn.[X]
+
 ## MSG_SKILL_FieryBlood_NAME
 F-Blood[X]
 

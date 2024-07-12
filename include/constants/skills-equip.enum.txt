@@ -87,6 +87,7 @@ SID_WindDisciple
 SID_Pragmatic
 SID_Chivalry
 SID_Charge
+SID_ChargePlus
 SID_FieryBlood
 SID_Wrath
 SID_Vigilance
