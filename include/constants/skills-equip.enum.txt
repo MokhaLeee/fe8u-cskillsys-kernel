@@ -194,6 +194,7 @@ SID_PosSwap
 SID_Renewal
 SID_Imbue
 SID_Forager
+SID_Camaraderie
 
 // Range debuff
 SID_Anathema

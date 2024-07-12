@@ -33,6 +33,43 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
         ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
 #endif
 
+#if defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))
+    if (SkillTester(unit, SID_Camaraderie))
+    {
+        bool ally_in_range = false;
+        int i, j;
+
+        for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
+        {
+            struct Unit * unit = GetUnit(i);
+            if (!UNIT_IS_VALID(unit))
+                continue;
+
+            for (j = 0; j < ARRAY_COUNT_RANGE2x2; j++)
+            {
+                int _x = unit->xPos + gVecs_2x2[j].x;
+                int _y = unit->yPos + gVecs_2x2[j].y;
+
+                struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+                if (!UNIT_IS_VALID(unit_ally))
+                    continue;
+
+                if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                    continue;
+
+                if (AreUnitsAllied(unit->index, unit_ally->index))
+                {
+                    ally_in_range = true;
+                    break;
+                }
+            }
+        }
+
+        if(ally_in_range)
+            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Camaraderie), 100);
+    }
+#endif
+
     return ret;
 }
 
