@@ -38,7 +38,7 @@ bool IsSkillLearned(struct Unit * unit, const u16 sid)
     u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
 
-    if (!GENERIC_SKILL_VALID(sid))
+    if (!GENERIC_SKILL_EFFID(sid))
         return false;
 
     if (pid < NEW_BWL_ARRAY_NUM)
@@ -53,7 +53,7 @@ void LearnSkill(struct Unit * unit, const u16 sid)
     u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
 
-    if (GENERIC_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
+    if (GENERIC_SKILL_EFFID(sid) && pid < NEW_BWL_ARRAY_NUM)
         sLearnedSkillPLists[pid].data[hi] |= 1 << lo;
 }
 
@@ -63,6 +63,6 @@ void ForgetSkill(struct Unit * unit, const u16 sid)
     u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
 
-    if (GENERIC_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
+    if (GENERIC_SKILL_EFFID(sid) && pid < NEW_BWL_ARRAY_NUM)
         sLearnedSkillPLists[pid].data[hi] &= ~(1 << lo);
 }

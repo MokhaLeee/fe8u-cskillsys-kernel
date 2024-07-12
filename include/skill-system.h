@@ -23,7 +23,7 @@ enum SkillInfoListss
 #define SKILL_INDEX_REAL(sid) ((sid) & 0xFF)
 #define SKILL_INDEX_LIST(sid) (((sid) >> 8) & 0xFF)
 
-#define GENERIC_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
+#define GENERIC_SKILL_EFFID(sid) (sid > 0x000 && sid < 0x0FF)
 #define COMMON_SKILL_VALID(sid) (sid > 0x000 && sid < 0x400)
 
 #define SKILL_ICON(sid) ((2 << 8) + (sid))
@@ -169,40 +169,14 @@ enum EventSkillSubOps {
  * Miscs
  */
 
-enum common_misc_skill_status_idx {
-    SKILL_US_POW,
-    SKILL_US_MAG,
-    SKILL_US_SKL,
-    SKILL_US_SPD,
-    SKILL_US_LCK,
-    SKILL_US_DEF,
-    SKILL_US_RES,
-    SKILL_US_MOV,
-
-    SKILL_US_MAX
+struct SkillExtraInfo {
+    s8 priv[4];
 };
-
-enum common_misc_skill_battle_status_idx {
-    SKILL_BS_ATK,
-    SKILL_BS_DEF,
-    SKILL_BS_HIT,
-    SKILL_BS_AVO,
-    SKILL_BS_CRT,
-    SKILL_BS_SIL,
-    SKILL_BS_DOG,
-
-    SKILL_BS_MAX
-};
-
-extern u8 const * const gpStatusConf_BonusSkills;
-extern u8 const * const gpStatusConf_DefiantSkills;
-extern u8 const * const gpStatusConf_luckySevenSkill;
-extern u8 const * const gpStatusConf_PushSkills;
-
-struct SkillMiscConf {
-    u8 Bonus_Fury, Bonus_FuryPlus;
-};
-extern struct SkillMiscConf const * const gpSkillMiscConf;
+extern struct SkillExtraInfo const * const gpSkillExtraInfo;
+#define SKILL_EFF0(sid) (gpSkillExtraInfo[sid].priv[0])
+#define SKILL_EFF1(sid) (gpSkillExtraInfo[sid].priv[1])
+#define SKILL_EFF2(sid) (gpSkillExtraInfo[sid].priv[2])
+#define SKILL_EFF3(sid) (gpSkillExtraInfo[sid].priv[3])
 
 bool IsSkillLearned(struct Unit * unit, const u16 sid);
 void LearnSkill(struct Unit * unit, const u16 sid);
