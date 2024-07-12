@@ -116,20 +116,17 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             return false;
 #endif
 
-#if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
-        if (BattleSkillTester(actor, SID_ChargePlus))
-        {
-            NoCashGBAPrintf("Movement of unit is %d", MovGetter(gActiveUnit));
-            NoCashGBAPrintf("You have used all %d movement", gActionData.moveCount);
-            if (MovGetter(gActiveUnit) == gActionData.moveCount)
-            {
-                gBattleActorGlobalFlag.skill_activated_double_lion = true;
-                gBattleTemporaryFlag.act_force_twice_order = true;
-                RegisterBattleOrderSkill(SID_ChargePlus, BORDER_ACT_TWICE);
-                return true;
-            }
-        }
-#endif
+// #if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
+//         if (BattleSkillTester(actor, SID_ChargePlus))
+//         {
+//             if ((gActiveUnit->movBonus + gActiveUnit->pClassData->baseMov) == gActionData.moveCount)
+//             {
+//                 gBattleTemporaryFlag.act_force_twice_order = true;
+//                 RegisterBattleOrderSkill(SID_ChargePlus, BORDER_ACT_TWICE);
+//                 return true;
+//             }
+//         }
+// #endif
     }
     else if (&gBattleTarget == actor)
     {
@@ -448,6 +445,14 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
         EnqueueRoundEfxSkill(SID_Adept);
         result = result + 1;
     }
+#endif
+
+#if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
+        if (BattleSkillTester(actor, SID_ChargePlus))
+        {
+            if ((gActiveUnit->movBonus + gActiveUnit->pClassData->baseMov) == gActionData.moveCount)
+                result = result + 1;
+        }
 #endif
 
     return result;
