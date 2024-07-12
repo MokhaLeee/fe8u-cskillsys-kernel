@@ -252,6 +252,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         correction += defender->battleDefense * 4 / 5;
+    }
 #endif
 
 #if defined(SID_Glacies) && (COMMON_SKILL_VALID(SID_Glacies))
