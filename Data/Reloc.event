@@ -51,7 +51,7 @@ gpKTutorialMsg:         POIN gKTutorialMsg
 gpExternalGameInitHook: WORD 0
 
 gpHealAmountGetters: POIN gHealAmountGetters
-MESSAGE CURRENTOFFSET
+
 /* StatScreenfx */
 gpPal_StatScreenUIRed:      POIN Pal_StatScreenUIRed
 gpImg_StatScreenUIRed:      POIN Img_StatScreenUIRed
