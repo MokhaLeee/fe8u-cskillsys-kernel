@@ -29,12 +29,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_HeavyBlade) && (COMMON_SKILL_VALID(SID_HeavyBlade)))
         if (BattleSkillTester(attacker, SID_HeavyBlade))
-            attacker->battleCritRate += SKILL_VAL0(SID_HeavyBlade);
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBlade);
 #endif
 
 #if (defined(SID_HeavyBladePlus) && (COMMON_SKILL_VALID(SID_HeavyBladePlus)))
         if (BattleSkillTester(attacker, SID_HeavyBladePlus))
-            attacker->battleCritRate += SKILL_VAL0(SID_HeavyBladePlus);
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBladePlus);
 #endif
     }
 
@@ -53,12 +53,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_FlashingBlade) && (COMMON_SKILL_VALID(SID_FlashingBlade)))
         if (BattleSkillTester(attacker, SID_FlashingBlade))
-            attacker->battleCritRate += SKILL_VAL0(SID_HeavyBlade);
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBlade);
 #endif
 
 #if (defined(SID_FlashingBladePlus) && (COMMON_SKILL_VALID(SID_FlashingBladePlus)))
         if (BattleSkillTester(attacker, SID_FlashingBladePlus))
-            attacker->battleCritRate += SKILL_VAL1(SID_FlashingBladePlus);
+            attacker->battleCritRate += SKILL_EFF1(SID_FlashingBladePlus);
 #endif
 
 #if (defined(SID_Puissance) && (COMMON_SKILL_VALID(SID_Puissance)))

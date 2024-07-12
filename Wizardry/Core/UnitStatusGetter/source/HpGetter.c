@@ -26,7 +26,7 @@ int HpGetterSkills(int status, struct Unit * unit)
 {
 #if defined(SID_HpBonus) && (COMMON_SKILL_VALID(SID_HpBonus))
     if (SkillTester(unit, SID_HpBonus))
-        status += gpSkillExtraInfo[SID_HpBonus].priv[0];
+        status += SKILL_EFF0(SID_HpBonus);
 #endif
 
     return status;

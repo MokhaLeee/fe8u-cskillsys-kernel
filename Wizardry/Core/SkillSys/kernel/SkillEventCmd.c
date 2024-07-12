@@ -21,7 +21,7 @@ STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
         hang();
     }
 
-    if (unit && GENERIC_SKILL_VALID(sid))
+    if (unit && GENERIC_SKILL_EFFID(sid))
         AddSkill(unit, sid);
 
     return EVC_ADVANCE_CONTINUE;
@@ -43,7 +43,7 @@ STATIC_DECLAR u8 EventAddSkillAt(struct EventEngineProc * proc)
         hang();
     }
 
-    if (unit && GENERIC_SKILL_VALID(sid))
+    if (unit && GENERIC_SKILL_EFFID(sid))
         AddSkill(unit, sid);
 
     return EVC_ADVANCE_CONTINUE;
@@ -64,7 +64,7 @@ STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc * proc)
         hang();
     }
 
-    if (unit && GENERIC_SKILL_VALID(sid))
+    if (unit && GENERIC_SKILL_EFFID(sid))
         AddSkill(unit, sid);
 
     return EVC_ADVANCE_CONTINUE;
@@ -85,7 +85,7 @@ STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc * proc)
         hang();
     }
 
-    if (unit && GENERIC_SKILL_VALID(sid))
+    if (unit && GENERIC_SKILL_EFFID(sid))
         RemoveSkill(unit, sid);
 
     return EVC_ADVANCE_CONTINUE;
@@ -107,7 +107,7 @@ STATIC_DECLAR u8 EventRemoveSkillAt(struct EventEngineProc * proc)
         hang();
     }
 
-    if (unit && GENERIC_SKILL_VALID(sid))
+    if (unit && GENERIC_SKILL_EFFID(sid))
         RemoveSkill(unit, sid);
 
     return EVC_ADVANCE_CONTINUE;
@@ -128,7 +128,7 @@ STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc * proc)
         hang();
     }
 
-    if (unit && GENERIC_SKILL_VALID(sid))
+    if (unit && GENERIC_SKILL_EFFID(sid))
         RemoveSkill(unit, sid);
 
     return EVC_ADVANCE_CONTINUE;

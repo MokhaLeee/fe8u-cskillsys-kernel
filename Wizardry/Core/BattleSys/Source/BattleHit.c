@@ -100,12 +100,12 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if defined(SID_RuinedBlade) && (COMMON_SKILL_VALID(SID_RuinedBlade))
     if (BattleSkillTester(attacker, SID_RuinedBlade))
-        damage += SKILL_VAL2(SID_RuinedBlade);
+        damage += SKILL_EFF2(SID_RuinedBlade);
 #endif
 
 #if defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus))
     if (BattleSkillTester(attacker, SID_RuinedBladePlus))
-        damage += SKILL_VAL1(SID_RuinedBladePlus);
+        damage += SKILL_EFF1(SID_RuinedBladePlus);
 #endif
 
 #if defined(SID_LunaAttack) && (COMMON_SKILL_VALID(SID_LunaAttack))
@@ -190,12 +190,12 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 #if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
     if (BattleSkillTester(attacker, SID_QuickDraw) && attacker == &gBattleTarget)
-        correction += SKILL_VAL0(SID_QuickDraw);
+        correction += SKILL_EFF0(SID_QuickDraw);
 #endif
 
 #if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
     if (BattleSkillTester(attacker, SID_StrongRiposte) && attacker == &gBattleTarget)
-        correction += SKILL_VAL0(SID_StrongRiposte);
+        correction += SKILL_EFF0(SID_StrongRiposte);
 #endif
 
 #if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
@@ -376,7 +376,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (BattleSkillTester(defender, SID_DragonSkin))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        decrease += DAMAGE_DECREASE(SKILL_VAL0(SID_DragonSkin));
+        decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonSkin));
     }
 #endif
 
@@ -384,7 +384,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (BattleSkillTester(defender, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        decrease += DAMAGE_DECREASE(SKILL_VAL0(SID_KeenFighter));
+        decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_KeenFighter));
     }
 #endif
 

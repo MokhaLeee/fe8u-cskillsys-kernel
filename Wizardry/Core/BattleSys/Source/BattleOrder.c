@@ -414,7 +414,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     if (BattleSkillTester(actor, SID_RuinedBladePlus))
     {
         EnqueueRoundEfxSkill(SID_RuinedBladePlus);
-        result = result + SKILL_VAL2(SID_RuinedBladePlus);
+        result = result + SKILL_EFF2(SID_RuinedBladePlus);
     }
 #endif
 
