@@ -29,12 +29,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_HeavyBlade) && (COMMON_SKILL_VALID(SID_HeavyBlade)))
         if (BattleSkillTester(attacker, SID_HeavyBlade))
-            attacker->battleCritRate += 15;
+            attacker->battleCritRate += gpSkillExtraInfo[SID_HeavyBlade].priv[0];
 #endif
 
 #if (defined(SID_HeavyBladePlus) && (COMMON_SKILL_VALID(SID_HeavyBladePlus)))
         if (BattleSkillTester(attacker, SID_HeavyBladePlus))
-            attacker->battleCritRate += 25;
+            attacker->battleCritRate += gpSkillExtraInfo[SID_HeavyBladePlus].priv[1];
 #endif
     }
 
@@ -53,12 +53,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_FlashingBlade) && (COMMON_SKILL_VALID(SID_FlashingBlade)))
         if (BattleSkillTester(attacker, SID_FlashingBlade))
-            attacker->battleCritRate += 15;
+            attacker->battleCritRate += gpSkillExtraInfo[SID_HeavyBlade].priv[0];
 #endif
 
 #if (defined(SID_FlashingBladePlus) && (COMMON_SKILL_VALID(SID_FlashingBladePlus)))
         if (BattleSkillTester(attacker, SID_FlashingBladePlus))
-            attacker->battleCritRate += 25;
+            attacker->battleCritRate += gpSkillExtraInfo[SID_FlashingBladePlus].priv[1];
 #endif
 
 #if (defined(SID_Puissance) && (COMMON_SKILL_VALID(SID_Puissance)))

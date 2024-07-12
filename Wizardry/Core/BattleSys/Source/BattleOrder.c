@@ -414,7 +414,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     if (BattleSkillTester(actor, SID_RuinedBladePlus))
     {
         EnqueueRoundEfxSkill(SID_RuinedBladePlus);
-        result = result + 1;
+        result = result + gpSkillExtraInfo[SID_RuinedBladePlus].priv[2];
     }
 #endif
 
