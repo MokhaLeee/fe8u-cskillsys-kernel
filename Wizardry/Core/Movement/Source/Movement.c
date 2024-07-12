@@ -85,7 +85,8 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
             (
                 !AreUnitsAllied(unit->index, _unit->index) &&
                 !(KernelMoveMapFlags & FMOVSTRE_PASS) && // Obstruct is not effective on Pass skill
-                SkillTester(_unit, SID_Obstruct)
+                SkillTester(_unit, SID_Obstruct) &&
+                (GetUnitCurrentHp(_unit) * 4) >= GetUnitMaxHp(_unit)
             )
                 barrier_range = 1;
 #endif

@@ -181,9 +181,9 @@ SID_BattleRange_Todo3
 // Post action
 SID_Canto
 SID_CantoPlus
+SID_Galeforce
 SID_AlertStance
 SID_AlertStancePlus
-SID_Galeforce
 SID_SavageBlow
 SID_BreathOfLife
 SID_Thunderstorm

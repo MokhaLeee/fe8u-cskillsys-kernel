@@ -29,12 +29,12 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 
 #if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
         if (SkillTester(unit, SID_Assist))
-            gBattleStats.damage += 5;
+            gBattleStats.damage += SKILL_EFF0(SID_Assist);
 #endif
 
 #if (defined(SID_Synergism) && COMMON_SKILL_VALID(SID_Synergism))
         if (BattleSkillTester(&gBattleActor, SID_Synergism))
-            gBattleStats.damage += 3;
+            gBattleStats.damage += SKILL_EFF0(SID_Synergism);
 #endif
     }
 

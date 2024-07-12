@@ -11,7 +11,7 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 
 #if defined(SID_Renewal) && (COMMON_SKILL_VALID(SID_Renewal))
     if (SkillTester(unit, SID_Renewal))
-        ret += Div(GetUnitMaxHp(unit) * 3, 10);
+        ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
 #endif
 
 #if defined(SID_Imbue) && (COMMON_SKILL_VALID(SID_Imbue))
@@ -24,13 +24,13 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
     {
         const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
         if(terrainId == 1/* plain */ || terrainId == 12 /* forest */ || terrainId == 17 /* mountain */)
-            ret += Div(GetUnitMaxHp(unit) * 2, 10);
+            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Forager), 100);
     }
 #endif
 
 #if defined(SID_RainDish) && (COMMON_SKILL_VALID(SID_RainDish))
     if (SkillTester(unit, SID_RainDish) && gPlaySt.chapterWeatherId == WEATHER_RAIN)
-        ret += Div(GetUnitMaxHp(unit) * 3, 20);
+        ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
 #endif
 
     return ret;
