@@ -250,6 +250,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
     if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl))
     {
+        gBattleTemporaryFlag.skill_activated_aether = true;
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         correction += defender->battleDefense * 4 / 5;
     }
