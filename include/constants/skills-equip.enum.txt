@@ -89,7 +89,6 @@ SID_Chivalry
 SID_Charge
 SID_FieryBlood
 SID_Wrath
-SID_Vigilance
 SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
@@ -103,8 +102,8 @@ SID_SilentPride
 SID_RightfulKing
 SID_RightfulGod
 SID_RightfulArch
-SID_Guts
 SID_Hero
+SID_Guts
 SID_SuperLuck
 SID_Spurn
 

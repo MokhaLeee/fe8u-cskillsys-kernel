@@ -423,7 +423,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     {
         EnqueueRoundEfxSkill(SID_Astra);
         gBattleActorGlobalFlag.skill_activated_astra = true;
-        result = result + 4;
+        result = result + SKILL_EFF0(SID_Astra);
     }
 #endif
 
