@@ -43,8 +43,8 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 #if (defined(SID_DancingBlade) && (COMMON_SKILL_VALID(SID_DancingBlade)))
         if (BattleSkillTester(attacker, SID_DancingBlade))
         {
-            attacker->battleSpeed += 4;
-            attacker->battleDefense += 2;
+            attacker->battleSpeed   += SKILL_EFF0(SID_DancingBlade);
+            attacker->battleDefense += SKILL_EFF1(SID_DancingBlade);
         }
 #endif
     }

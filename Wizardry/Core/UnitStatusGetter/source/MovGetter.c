@@ -49,19 +49,20 @@ int MovGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_EvenFooted) && (COMMON_SKILL_VALID(SID_EvenFooted))
     if (SkillTester(unit, SID_EvenFooted) && (gPlaySt.chapterTurnNumber % 2) == 0)
-        status += 1;
+        status += SKILL_EFF0(SID_EvenFooted);
 #endif
 
 #if defined(SID_OddFooted) && (COMMON_SKILL_VALID(SID_OddFooted))
     if (SkillTester(unit, SID_OddFooted) && (gPlaySt.chapterTurnNumber % 2) == 1)
-        status += 1;
+        status += SKILL_EFF0(SID_OddFooted);
 #endif
 
 #if defined(SID_SpeedBoost) && (COMMON_SKILL_VALID(SID_SpeedBoost))
     if (SkillTester(unit, SID_SpeedBoost))
     {
-        if (gPlaySt.chapterTurnNumber >= 6)
-            status += 6;
+        int __buf = SKILL_EFF0(SID_SpeedBoost);
+        if (gPlaySt.chapterTurnNumber >= __buf)
+            status += __buf;
         else
             status += gPlaySt.chapterTurnNumber;
     }

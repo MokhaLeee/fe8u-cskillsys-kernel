@@ -87,7 +87,7 @@ int SpdGetterSkills(int status, struct Unit * unit)
 #if defined(SID_LightWeight) && (COMMON_SKILL_VALID(SID_LightWeight))
     if (SkillTester(unit, SID_LightWeight))
         if (unit->items[3] == 0)
-            status += 3;
+            status += SKILL_EFF0(SID_LightWeight);
 #endif
 
 #if (defined(SID_Resolve) && (COMMON_SKILL_VALID(SID_Resolve))) 

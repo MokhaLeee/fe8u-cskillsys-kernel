@@ -46,12 +46,12 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
         KernelMoveMapFlags |= FMOVSTRE_PASS;
 #endif
 
-#if (defined(SID_Aerobatics) && COMMON_SKILL_VALID(SID_Aerobatics))
-    Aerobatics_activated = SkillTester(unit, SID_Aerobatics);
-#endif
-
 #if (defined(SID_FlierFormation) && COMMON_SKILL_VALID(SID_FlierFormation))
     FlierFormation_activated = SkillTester(unit, SID_FlierFormation);
+#endif
+
+#if (defined(SID_Aerobatics) && COMMON_SKILL_VALID(SID_Aerobatics))
+    Aerobatics_activated = SkillTester(unit, SID_Aerobatics);
 #endif
 
 #if (defined(SID_SoaringWings) && COMMON_SKILL_VALID(SID_SoaringWings))
@@ -91,6 +91,9 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
                 barrier_range = 1;
 #endif
 
+            if (barrier_range > 3)
+                barrier_range = 3;
+
             switch (barrier_range) {
             case 0:
             default:
@@ -120,39 +123,66 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
             {
                 bool ally_flier = CheckClassFlier(UNIT_CLASS_ID(_unit));
                 if (FlierFormation_activated && ally_flier)
-                    if (pioneer_range < 3)
-                        pioneer_range = 3;
-
+                {
+#if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
+                    int __bonus = SKILL_EFF0(SID_FlierFormation);
+#else
+                    int __bonus = 3;
+#endif
+                    if (pioneer_range < __bonus)
+                        pioneer_range = __bonus;
+                }
                 if (Aerobatics_activated && !ally_flier)
-                    if (pioneer_range < 2)
-                        pioneer_range = 2;
-
+                {
+#if (defined(SID_Aerobatics) && COMMON_SKILL_VALID(SID_Aerobatics))
+                    int __bonus = SKILL_EFF0(SID_Aerobatics);
+#else
+                    int __bonus = 2;
+#endif
+                    if (pioneer_range < __bonus)
+                        pioneer_range = __bonus;
+                }
                 if (SoaringWings_activated)
-                    if (pioneer_range < 1)
-                        pioneer_range = 1;
+                {
+#if (defined(SID_SoaringWings) && COMMON_SKILL_VALID(SID_SoaringWings))
+                    int __bonus = SKILL_EFF0(SID_SoaringWings);
+#else
+                    int __bonus = 1;
+#endif
+                    if (pioneer_range < __bonus)
+                        pioneer_range = __bonus;
+                }
 
 #if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
                 if (self_flier && SkillTester(_unit, SID_FlierGuidance))
                 {
-                    if (pioneer_range < 3)
-                        pioneer_range = 3;
+                    int __bonus = SKILL_EFF0(SID_FlierGuidance);
+                    if (pioneer_range < __bonus)
+                        pioneer_range = __bonus;
                 }
 #endif
 
 #if (defined(SID_Guidance) && COMMON_SKILL_VALID(SID_Guidance))
                 if (!self_flier && SkillTester(_unit, SID_Guidance))
                 {
-                    if (pioneer_range < 2)
-                        pioneer_range = 2;
+                    int __bonus = SKILL_EFF0(SID_Guidance);
+                    if (pioneer_range < __bonus)
+                        pioneer_range = __bonus;
                 }
 #endif
 
 #if (defined(SID_SoaringGuidance) && COMMON_SKILL_VALID(SID_SoaringGuidance))
                 if (SkillTester(_unit, SID_SoaringGuidance))
-                    if (pioneer_range < 1)
-                        pioneer_range = 1;
+                {
+                    int __bonus = SKILL_EFF0(SID_SoaringGuidance);
+                    if (pioneer_range < __bonus)
+                        pioneer_range = __bonus;
+                }
 #endif
             }
+
+            if (pioneer_range > 3)
+                pioneer_range = 3;
 
             switch (pioneer_range) {
             case 0:
