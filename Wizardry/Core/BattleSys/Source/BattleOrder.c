@@ -57,19 +57,6 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         }
 #endif
 
-#if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-        if (basic_judgement == false && BattleSkillTester(actor, SID_DoubleLion))
-        {
-            if (actor->hpInitial == actor->unit.maxHP)
-            {
-                gBattleActorGlobalFlag.skill_activated_double_lion = true;
-                gBattleTemporaryFlag.act_force_twice_order = true;
-                RegisterBattleOrderSkill(SID_DoubleLion, BORDER_ACT_TWICE);
-                return true;
-            }
-        }
-#endif
-
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
         if (basic_judgement == false)
         {
@@ -433,6 +420,15 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
         EnqueueRoundEfxSkill(SID_Adept);
         result = result + 1;
     }
+#endif
+
+#if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
+        if (actor == &gBattleActor && BattleSkillTester(actor, SID_DoubleLion) && actor->hpInitial == actor->unit.maxHP)
+        {
+            gBattleActorGlobalFlag.skill_activated_double_lion = true;
+            EnqueueRoundEfxSkill(SID_DoubleLion);
+            result = result + 1;
+        }
 #endif
 
     return result;
