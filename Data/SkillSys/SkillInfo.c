@@ -2680,4 +2680,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_RouseStrength,
     },
 #endif
+
+#if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
+    [SID_Counter] = {
+        .desc = MSG_SKILL_Counter,
+        .icon = GFX_SkillIcon_Counter,
+    },
+#endif
 };

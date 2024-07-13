@@ -613,7 +613,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 }
             }
 #endif
-
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)
