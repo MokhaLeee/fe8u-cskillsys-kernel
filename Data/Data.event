@@ -12,6 +12,7 @@
 #include "SkillSys/EfxSkills.lyn.event"
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
+#include "SkillSys/SkillExtraInfo.lyn.event"
 #include "SkillSys/SkillTable-generic.lyn.event"
 #include "SkillSys/SkillTable-person.lyn.event"
 #include "SkillSys/SkillTable-job.lyn.event"
@@ -53,5 +54,7 @@
 #include "../Wizardry/Core/ComboAttack/data.event"
 #include "../Wizardry/Core/Movement/MovementData.event"
 #include "../Wizardry/External/Individual_animation_ea_2/data.event"
+#include "../Wizardry/External/DrawMapActionAnimation/data.event"
+#include "../Wizardry/External/StatScreenfx/_data.event"
 
 #endif

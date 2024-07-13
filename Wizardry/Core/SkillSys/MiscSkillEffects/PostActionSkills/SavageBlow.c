@@ -27,7 +27,12 @@ STATIC_DECLAR void ExecSkillSavageBlowEffectAnim(ProcPtr proc)
 STATIC_DECLAR void SkillSavageBlowPostAnimEffect(ProcPtr proc)
 {
     int i;
-    int damage = Div(gBattleStats.damage * 2, 10);
+#ifdef SID_SavageBlow
+    int perc = SKILL_EFF0(SID_SavageBlow);
+#else
+    int perc = 20;
+#endif
+    int damage = Div(gBattleStats.damage * perc, 100);
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {

@@ -184,7 +184,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowDarting) && (COMMON_SKILL_VALID(SID_BlowDarting)))
         case SID_BlowDarting:
             if (attacker == &gBattleActor)
-                attacker->battleSpeed += 6;
+                attacker->battleSpeed += SKILL_EFF0(SID_BlowDarting);
 
             break;
 #endif
@@ -192,7 +192,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowDeath) && (COMMON_SKILL_VALID(SID_BlowDeath)))
         case SID_BlowDeath:
             if (attacker == &gBattleActor && !IsMagicAttack(attacker))
-                attacker->battleAttack += 6;
+                attacker->battleAttack += SKILL_EFF0(SID_BlowDeath);
 
             break;
 #endif
@@ -200,7 +200,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowFiendish) && (COMMON_SKILL_VALID(SID_BlowFiendish)))
         case SID_BlowFiendish:
             if (attacker == &gBattleActor && IsMagicAttack(defender))
-                attacker->battleAttack += 6;
+                attacker->battleAttack += SKILL_EFF0(SID_BlowFiendish);
 
             break;
 #endif
@@ -208,7 +208,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowArmored) && (COMMON_SKILL_VALID(SID_BlowArmored)))
         case SID_BlowArmored:
             if (attacker == &gBattleActor && !IsMagicAttack(defender))
-                attacker->battleDefense += 6;
+                attacker->battleDefense += SKILL_EFF0(SID_BlowArmored);
 
             break;
 #endif
@@ -216,7 +216,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowWarding) && (COMMON_SKILL_VALID(SID_BlowWarding)))
         case SID_BlowWarding:
             if (attacker == &gBattleActor && IsMagicAttack(defender))
-                attacker->battleDefense += 6;
+                attacker->battleDefense += SKILL_EFF0(SID_BlowWarding);
 
             break;
 #endif
@@ -224,7 +224,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowDuelist) && (COMMON_SKILL_VALID(SID_BlowDuelist)))
         case SID_BlowDuelist:
             if (attacker == &gBattleActor)
-                attacker->battleAvoidRate += 20;
+                attacker->battleAvoidRate += SKILL_EFF0(SID_BlowDarting);
 
             break;
 #endif
@@ -232,7 +232,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowUncanny) && (COMMON_SKILL_VALID(SID_BlowUncanny)))
         case SID_BlowUncanny:
             if (attacker == &gBattleActor)
-                attacker->battleHitRate += 30;
+                attacker->battleHitRate += SKILL_EFF0(SID_BlowDarting);
 
             break;
 #endif
@@ -240,7 +240,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlowKilling) && (COMMON_SKILL_VALID(SID_BlowKilling)))
         case SID_BlowKilling:
             if (attacker == &gBattleActor)
-                attacker->battleCritRate += 20;
+                attacker->battleCritRate += SKILL_EFF0(SID_BlowDarting);
 
             break;
 #endif
@@ -249,8 +249,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_ArcaneBlade:
             if (attacker == &gBattleActor && gBattleStats.range == 1)
             {
-                attacker->battleCritRate += 3 + UNIT_MAG(&attacker->unit) / 2;
-                attacker->battleHitRate += 3 + UNIT_MAG(&attacker->unit) / 2;
+                attacker->battleCritRate += UNIT_MAG(&attacker->unit) / 2 + SKILL_EFF0(SID_ArcaneBlade);
+                attacker->battleHitRate  += UNIT_MAG(&attacker->unit) / 2 + SKILL_EFF0(SID_ArcaneBlade);
             }
             break;
 #endif
@@ -259,8 +259,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Prescience:
             if (attacker == &gBattleActor && gBattleStats.range == 1)
             {
-                attacker->battleHitRate += 15;
-                attacker->battleAvoidRate += 15;
+                attacker->battleHitRate   += SKILL_EFF0(SID_Prescience);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_Prescience);
             }
             break;
 #endif
@@ -269,7 +269,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StanceBracing) && (COMMON_SKILL_VALID(SID_StanceBracing)))
         case SID_StanceBracing:
             if (attacker == &gBattleTarget)
-                attacker->battleDefense += 4;
+                attacker->battleDefense += SKILL_EFF0(SID_StanceBracing);
 
             break;
 #endif
@@ -277,7 +277,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StanceDarting) && (COMMON_SKILL_VALID(SID_StanceDarting)))
         case SID_StanceDarting:
             if (attacker == &gBattleTarget)
-                attacker->battleSpeed += 6;
+                attacker->battleSpeed += SKILL_EFF0(SID_StanceDarting);
 
             break;
 #endif
@@ -285,7 +285,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StanceFierce) && (COMMON_SKILL_VALID(SID_StanceFierce)))
         case SID_StanceFierce:
             if (attacker == &gBattleTarget)
-                attacker->battleAttack += 6;
+                attacker->battleAttack += SKILL_EFF0(SID_StanceDarting);
 
             break;
 #endif
@@ -294,8 +294,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_StanceKestrel:
             if (attacker == &gBattleTarget)
             {
-                attacker->battleAttack += 4;
-                attacker->battleSpeed += 4;
+                attacker->battleAttack += SKILL_EFF0(SID_StanceKestrel);
+                attacker->battleSpeed  += SKILL_EFF1(SID_StanceKestrel);
             }
             break;
 #endif
@@ -304,9 +304,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_StanceMirror:
             if (attacker == &gBattleTarget)
             {
-                attacker->battleAttack += 4;
+                attacker->battleAttack += SKILL_EFF0(SID_StanceMirror);
                 if (IsMagicAttack(defender))
-                    attacker->battleDefense += 4;
+                    attacker->battleDefense += SKILL_EFF1(SID_StanceMirror);
             }
             break;
 #endif
@@ -315,9 +315,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_StanceSwift:
             if (attacker == &gBattleTarget)
             {
-                attacker->battleSpeed += 4;
+                attacker->battleSpeed += SKILL_EFF0(SID_StanceSwift);
                 if (IsMagicAttack(defender))
-                    attacker->battleDefense += 4;
+                    attacker->battleDefense += SKILL_EFF1(SID_StanceSwift);
             }
             break;
 #endif
@@ -326,9 +326,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_StanceReady:
             if (attacker == &gBattleTarget)
             {
-                attacker->battleSpeed += 4;
+                attacker->battleSpeed += SKILL_EFF0(SID_StanceReady);
                 if (!IsMagicAttack(defender))
-                    attacker->battleDefense += 4;
+                    attacker->battleDefense += SKILL_EFF1(SID_StanceReady);
             }
             break;
 #endif
@@ -337,9 +337,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_StanceSturdy:
             if (attacker == &gBattleTarget)
             {
-                attacker->battleAttack += 4;
+                attacker->battleAttack += SKILL_EFF0(SID_StanceSturdy);
                 if (!IsMagicAttack(defender))
-                    attacker->battleDefense += 4;
+                    attacker->battleDefense += SKILL_EFF1(SID_StanceSturdy);
             }
             break;
 #endif
@@ -347,7 +347,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StanceSteady) && (COMMON_SKILL_VALID(SID_StanceSteady)))
         case SID_StanceSteady:
             if (attacker == &gBattleTarget && !IsMagicAttack(defender))
-                attacker->battleDefense += 6;
+                attacker->battleDefense += SKILL_EFF0(SID_StanceSteady);
 
             break;
 #endif
@@ -355,7 +355,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StanceWarding) && (COMMON_SKILL_VALID(SID_StanceWarding)))
         case SID_StanceWarding:
             if (attacker == &gBattleTarget && IsMagicAttack(defender))
-                attacker->battleDefense += 6;
+                attacker->battleDefense += SKILL_EFF0(SID_StanceWarding);
 
             break;
 #endif
@@ -364,9 +364,9 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_StanceSpectrum:
             if (attacker == &gBattleTarget)
             {
-                attacker->battleAttack += 2;
-                attacker->battleSpeed += 2;
-                attacker->battleDefense += 2;
+                attacker->battleAttack  += SKILL_EFF0(SID_StanceSpectrum);
+                attacker->battleSpeed   += SKILL_EFF1(SID_StanceSpectrum);
+                attacker->battleDefense += SKILL_EFF2(SID_StanceSpectrum);
             }
             break;
 #endif
@@ -374,7 +374,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_Patience) && (COMMON_SKILL_VALID(SID_Patience)))
         case SID_Patience:
             if (attacker == &gBattleTarget)
-                attacker->battleAvoidRate += 10;
+                attacker->battleAvoidRate += SKILL_EFF0(SID_Patience);
 
             break;
 #endif
@@ -382,7 +382,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_Pursuit) && (COMMON_SKILL_VALID(SID_Pursuit)))
         case SID_Pursuit:
             if (attacker == &gBattleTarget)
-                attacker->battleSpeed += 2;
+                attacker->battleSpeed += SKILL_EFF0(SID_Pursuit);
 
             break;
 #endif
@@ -396,19 +396,19 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_WatchfulEye) && (COMMON_SKILL_VALID(SID_WatchfulEye)))
         case SID_WatchfulEye:
-            attacker->battleHitRate += 20;
+            attacker->battleHitRate += SKILL_EFF0(SID_WatchfulEye);
             break;
 #endif
 
 #if (defined(SID_Crit) && (COMMON_SKILL_VALID(SID_Crit)))
         case SID_Crit:
-            attacker->battleCritRate += 15;
+            attacker->battleCritRate += SKILL_EFF0(SID_Crit);
             break;
 #endif
 
 #if (defined(SID_Avoid) && (COMMON_SKILL_VALID(SID_Avoid)))
         case SID_Avoid:
-            attacker->battleAvoidRate += 10;
+            attacker->battleAvoidRate += SKILL_EFF0(SID_Avoid);
             break;
 #endif
 
@@ -416,7 +416,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_CritSword) && (COMMON_SKILL_VALID(SID_CritSword)))
         case SID_CritSword:
             if (attacker->weaponType == ITYPE_SWORD)
-                attacker->battleCritRate += 10;
+                attacker->battleCritRate += SKILL_EFF0(SID_CritSword);
 
             break;
 #endif
@@ -424,7 +424,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_FaireSword) && (COMMON_SKILL_VALID(SID_FaireSword)))
         case SID_FaireSword:
             if (attacker->weaponType == ITYPE_SWORD)
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF0(SID_FaireSword);
 
             break;
 #endif
@@ -432,7 +432,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AvoidSword) && (COMMON_SKILL_VALID(SID_AvoidSword)))
         case SID_AvoidSword:
             if (attacker->weaponType == ITYPE_SWORD)
-                attacker->battleAvoidRate += 20;
+                attacker->battleAvoidRate += SKILL_EFF0(SID_AvoidSword);
 
             break;
 #endif
@@ -440,7 +440,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_CritLance) && (COMMON_SKILL_VALID(SID_CritLance)))
         case SID_CritLance:
             if (attacker->weaponType == ITYPE_LANCE)
-                attacker->battleCritRate += 10;
+                attacker->battleCritRate += SKILL_EFF0(SID_CritLance);
 
             break;
 #endif
@@ -448,7 +448,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_FaireLance) && (COMMON_SKILL_VALID(SID_FaireLance)))
         case SID_FaireLance:
             if (attacker->weaponType == ITYPE_LANCE)
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF0(SID_FaireLance);
 
             break;
 #endif
@@ -456,7 +456,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_CritAxe) && (COMMON_SKILL_VALID(SID_CritAxe)))
         case SID_CritAxe:
             if (attacker->weaponType == ITYPE_AXE)
-                attacker->battleCritRate += 10;
+                attacker->battleCritRate += SKILL_EFF0(SID_CritAxe);
 
             break;
 #endif
@@ -464,7 +464,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_FaireAxe) && (COMMON_SKILL_VALID(SID_FaireAxe)))
         case SID_FaireAxe:
             if (attacker->weaponType == ITYPE_AXE)
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF0(SID_FaireAxe);
 
             break;
 #endif
@@ -472,7 +472,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_CritBow) && (COMMON_SKILL_VALID(SID_CritBow)))
         case SID_CritBow:
             if (attacker->weaponType == ITYPE_BOW)
-                attacker->battleCritRate += 10;
+                attacker->battleCritRate += SKILL_EFF0(SID_CritBow);
 
             break;
 #endif
@@ -480,7 +480,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_FaireBow) && (COMMON_SKILL_VALID(SID_FaireBow)))
         case SID_FaireBow:
             if (attacker->weaponType == ITYPE_BOW)
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF0(SID_FaireBow);
 
             break;
 #endif
@@ -491,7 +491,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             case ITYPE_ANIMA:
             case ITYPE_LIGHT:
             case ITYPE_DARK:
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF0(SID_FaireBMag);
                 break;
             }
             break;
@@ -501,17 +501,17 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_HolyAura:
             if (attacker->weaponType == ITYPE_LIGHT)
             {
-                attacker->battleAttack += 1;
-                attacker->battleCritRate += 5;
-                attacker->battleHitRate += 5;
-                attacker->battleAvoidRate += 5;
+                attacker->battleAttack    += SKILL_EFF0(SID_HolyAura);
+                attacker->battleCritRate  += SKILL_EFF1(SID_HolyAura);
+                attacker->battleHitRate   += SKILL_EFF2(SID_HolyAura);
+                attacker->battleAvoidRate += SKILL_EFF3(SID_HolyAura);
             }
             break;
 #endif
 
 #if (defined(SID_BlueFlame) && (COMMON_SKILL_VALID(SID_BlueFlame)))
         case SID_BlueFlame:
-            attacker->battleAttack += 2;
+            attacker->battleAttack += SKILL_EFF0(SID_BlueFlame);
             break;
 #endif
 
@@ -545,8 +545,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BattleVeteran) && (COMMON_SKILL_VALID(SID_BattleVeteran)))
         case SID_BattleVeteran:
             tmp = simple_div(attacker->levelPrevious + GetUnitHiddenLevel(&attacker->unit), 10);
-            attacker->battleHitRate += 5 * tmp;
-            attacker->battleAttack += tmp;
+            attacker->battleHitRate += SKILL_EFF0(SID_RuinedBlade) * tmp;
+            attacker->battleAttack  += SKILL_EFF1(SID_RuinedBlade) * tmp;
             break;
 #endif
 
@@ -561,7 +561,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_CriticalForce) && (COMMON_SKILL_VALID(SID_CriticalForce)))
         case SID_CriticalForce:
-            attacker->battleCritRate += attacker->unit.skl;
+            attacker->battleCritRate += attacker->unit.skl + (attacker->unit.skl / 2);
             break;
 #endif
 
@@ -569,8 +569,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Chivalry:
             if (defender->hpInitial == defender->unit.maxHP)
             {
-                attacker->battleDefense += 2;
-                attacker->battleAttack += 2;
+                attacker->battleAttack  += SKILL_EFF0(SID_Chivalry);
+                attacker->battleDefense += SKILL_EFF1(SID_Chivalry);
             }
             break;
 #endif
@@ -579,8 +579,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Pragmatic:
             if (defender->hpInitial < defender->unit.maxHP)
             {
-                attacker->battleDefense += 1;
-                attacker->battleAttack += 3;
+                attacker->battleAttack += SKILL_EFF0(SID_Pragmatic);
+                attacker->battleDefense += SKILL_EFF1(SID_Pragmatic);
             }
             break;
 #endif
@@ -589,8 +589,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Perfectionist:
             if (attacker->hpInitial == attacker->unit.maxHP)
             {
-                attacker->battleHitRate += 15;
-                attacker->battleAvoidRate += 15;
+                attacker->battleHitRate += SKILL_EFF0(SID_Perfectionist);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_Perfectionist);
             }
             break;
 #endif
@@ -599,8 +599,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_WindDisciple:
             if (attacker->hpInitial <= attacker->unit.maxHP)
             {
-                attacker->battleHitRate += 10;
-                attacker->battleAvoidRate += 10;
+                attacker->battleHitRate += SKILL_EFF0(SID_WindDisciple);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_WindDisciple);
             }
             break;
 #endif
@@ -608,31 +608,31 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_FieryBlood) && (COMMON_SKILL_VALID(SID_FieryBlood)))
         case SID_FieryBlood:
             if (attacker->hpInitial <= attacker->unit.maxHP)
-                attacker->battleAttack += 4;
+                attacker->battleAttack += SKILL_EFF0(SID_FieryBlood);
 
             break;
 #endif
 
 #if (defined(SID_FireBoost) && (COMMON_SKILL_VALID(SID_FireBoost)))
         case SID_FireBoost:
-            if (attacker->hpInitial >= (defender->hpInitial + 3))
-                attacker->battleAttack += 6;
+            if (attacker->hpInitial >= (defender->hpInitial + SKILL_EFF1(SID_FireBoost)))
+                attacker->battleAttack += SKILL_EFF0(SID_FireBoost);
 
             break;
 #endif
 
 #if (defined(SID_WindBoost) && (COMMON_SKILL_VALID(SID_WindBoost)))
         case SID_WindBoost:
-            if (attacker->hpInitial >= (defender->hpInitial + 3))
-                attacker->battleSpeed += 6;
+            if (attacker->hpInitial >= (defender->hpInitial + SKILL_EFF1(SID_WindBoost)))
+                attacker->battleSpeed += SKILL_EFF0(SID_WindBoost);
 
             break;
 #endif
 
 #if (defined(SID_EarthBoost) && (COMMON_SKILL_VALID(SID_EarthBoost)))
         case SID_EarthBoost:
-            if (attacker->hpInitial >= (defender->hpInitial + 3) && !IsMagicAttack(defender))
-                attacker->battleDefense += 6;
+            if (attacker->hpInitial >= (defender->hpInitial + SKILL_EFF1(SID_EarthBoost)) && !IsMagicAttack(defender))
+                attacker->battleDefense += SKILL_EFF0(SID_EarthBoost);
 
             break;
 #endif
@@ -640,15 +640,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_Wrath) && (COMMON_SKILL_VALID(SID_Wrath)))
         case SID_Wrath:
             if (attacker->hpInitial > (attacker->hpInitial * 2))
-                attacker->battleCritRate += 20;
+                attacker->battleCritRate += SKILL_EFF0(SID_Wrath);
 
             break;
 #endif
 
 #if (defined(SID_WaterBoost) && (COMMON_SKILL_VALID(SID_WaterBoost)))
         case SID_WaterBoost:
-            if (attacker->hpInitial >= (defender->hpInitial + 3) && IsMagicAttack(defender))
-                attacker->battleDefense += 6;
+            if (attacker->hpInitial >= (defender->hpInitial + SKILL_EFF1(SID_WaterBoost)) && IsMagicAttack(defender))
+                attacker->battleDefense += SKILL_EFF0(SID_WaterBoost);
 
             break;
 #endif
@@ -656,21 +656,21 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_ChaosStyle) && (COMMON_SKILL_VALID(SID_ChaosStyle)))
         case SID_ChaosStyle:
             if (IsMagicAttack(attacker) != IsMagicAttack(defender))
-                attacker->battleSpeed += 6;
+                attacker->battleSpeed += SKILL_EFF0(SID_ChaosStyle);
 
             break;
 #endif
 
 #if (defined(SID_Charge) && (COMMON_SKILL_VALID(SID_Charge)))
         case SID_Charge:
-            attacker->battleAttack += gActionData.moveCount / 2;
+            attacker->battleAttack += (gActionData.moveCount * SKILL_EFF0(SID_Charge)) / 2;
             break;
 #endif
 
 #if (defined(SID_NaturalCover) && (COMMON_SKILL_VALID(SID_NaturalCover))) 
         case SID_NaturalCover:
             if (attacker->terrainDefense > 0 || attacker->terrainAvoid > 0 || attacker->terrainResistance > 0)
-                attacker->battleDefense += 3;
+                attacker->battleDefense += SKILL_EFF0(SID_NaturalCover);
 
             break;
 #endif
@@ -678,7 +678,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_ElbowRoom) && (COMMON_SKILL_VALID(SID_ElbowRoom))) 
         case SID_ElbowRoom:
             if (attacker->terrainDefense == 0 && attacker->terrainAvoid == 0 && attacker->terrainResistance == 0)
-                attacker->battleAttack += 3;
+                attacker->battleAttack += SKILL_EFF0(SID_ElbowRoom);
 
             break;
 #endif
@@ -739,8 +739,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             case TERRAIN_DECK:
             case TERRAIN_BRACE:
             case TERRAIN_MAST:
-                attacker->battleHitRate += 10;
-                attacker->battleAvoidRate += 10;
+                attacker->battleHitRate   += SKILL_EFF0(SID_OutdoorFighter);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_OutdoorFighter);
                 break;
 
             default:
@@ -753,15 +753,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_KnightAspirant:
             if ((attacker->hpInitial * 4) > (attacker->unit.maxHP * 3))
             {
-                attacker->battleAttack += 2;
-                attacker->battleAvoidRate += 15;
+                attacker->battleAttack    += SKILL_EFF0(SID_KnightAspirant);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_KnightAspirant);
             }
             break;
 #endif
 
 #if (defined(SID_Outrider) && (COMMON_SKILL_VALID(SID_Outrider)))
         case SID_Outrider:
-            attacker->battleDefense += gActionData.moveCount;
+            attacker->battleDefense  += gActionData.moveCount;
             attacker->battleCritRate += (gActionData.moveCount * 3);
             break;
 #endif
@@ -769,15 +769,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_SilentPride) && (COMMON_SKILL_VALID(SID_SilentPride)))
         case SID_SilentPride:
             tmp = simple_div(attacker->unit.maxHP * 4, attacker->hpInitial);
-            attacker->battleAttack += 2 * tmp;
-            attacker->battleDefense += 2 * tmp;
+            attacker->battleAttack  += SKILL_EFF0(SID_SilentPride) * tmp;
+            attacker->battleDefense += SKILL_EFF1(SID_SilentPride) * tmp;
             break;
 #endif
 
 #if (defined(SID_Guts) && (COMMON_SKILL_VALID(SID_Guts)))
         case SID_Guts:
             if (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE)
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF0(SID_Guts);
 
             break;
 #endif
@@ -785,7 +785,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_TowerShield) && (COMMON_SKILL_VALID(SID_TowerShield)))
         case SID_TowerShield:
             if (gBattleStats.range >= 2)
-                attacker->battleDefense += 6;
+                attacker->battleDefense += SKILL_EFF0(SID_TowerShield);
 
             break;
 #endif
@@ -793,7 +793,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_ShortShield) && (COMMON_SKILL_VALID(SID_ShortShield)))
         case SID_ShortShield:
             if (gBattleStats.range == 1)
-                attacker->battleDefense += 6;
+                attacker->battleDefense += SKILL_EFF0(SID_ShortShield);
 
             break;
 #endif
@@ -801,7 +801,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_StunningSmile) && (COMMON_SKILL_VALID(SID_StunningSmile)))
         case SID_StunningSmile:
             if (!(UNIT_CATTRIBUTES(&defender->unit) & CA_FEMALE))
-                attacker->battleDefense += 6;
+                attacker->battleDefense += SKILL_EFF0(SID_StunningSmile);
 
             break;
 #endif
@@ -809,7 +809,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if defined(SID_Trample) && (COMMON_SKILL_VALID(SID_Trample))
         case SID_Trample:
             if (!(UNIT_CATTRIBUTES(&defender->unit) & CA_MOUNTEDAID))
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF0(SID_Trample);
 
             break;
 #endif
@@ -817,7 +817,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if defined(SID_Opportunist) && (COMMON_SKILL_VALID(SID_Opportunist))
         case SID_Opportunist:
             if (!defender->canCounter)
-                attacker->battleAttack += 4;
+                attacker->battleAttack += SKILL_EFF0(SID_Opportunist);
 
             break;
 #endif
@@ -826,8 +826,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Vanity:
             if (gBattleStats.range == 2)
             {
-                attacker->battleAttack += 2;
-                attacker->battleHitRate += 10;
+                attacker->battleAttack  += SKILL_EFF0(SID_Vanity);
+                attacker->battleHitRate += SKILL_EFF1(SID_Vanity);
             }
             break;
 #endif
@@ -836,8 +836,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_EvenRhythm:
             if ((gPlaySt.chapterTurnNumber % 2) == 0)
             {
-                attacker->battleAvoidRate += 10;
-                attacker->battleHitRate += 10;
+                attacker->battleHitRate   += SKILL_EFF0(SID_EvenRhythm);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_EvenRhythm);
             }
             break;
 #endif
@@ -846,17 +846,17 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_OddRhythm:
             if ((gPlaySt.chapterTurnNumber % 2) == 1)
             {
-                attacker->battleAvoidRate += 10;
-                attacker->battleHitRate += 10;
+                attacker->battleHitRate   += SKILL_EFF0(SID_OddRhythm);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_OddRhythm);
             }
             break;
 #endif
 
 #if (defined(SID_QuickBurn) && (COMMON_SKILL_VALID(SID_QuickBurn)))
         case SID_QuickBurn:
-            tmp = gPlaySt.chapterTurnNumber > 15
+            tmp = gPlaySt.chapterTurnNumber > SKILL_EFF0(SID_QuickBurn)
                 ? 0
-                : 15 - gPlaySt.chapterTurnNumber;
+                : SKILL_EFF0(SID_QuickBurn) - gPlaySt.chapterTurnNumber;
 
             attacker->battleHitRate += tmp;
             attacker->battleAvoidRate += tmp;
@@ -865,8 +865,8 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_SlowBurn) && (COMMON_SKILL_VALID(SID_SlowBurn)))
         case SID_SlowBurn:
-            tmp = gPlaySt.chapterTurnNumber > 15
-                ? 15
+            tmp = gPlaySt.chapterTurnNumber > SKILL_EFF0(SID_SlowBurn)
+                ? SKILL_EFF0(SID_SlowBurn)
                 : gPlaySt.chapterTurnNumber;
 
             attacker->battleHitRate += tmp;
@@ -892,7 +892,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                     if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassFlier(UNIT_CLASS_ID(unit_ally)))
                     {
-                        attacker->battleAttack += 4;
+                        attacker->battleAttack += SKILL_EFF0(SID_Skyguard);
                         break;
                     }
                 }
@@ -918,7 +918,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                     if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassCavalry(UNIT_CLASS_ID(unit_ally)))
                     {
-                        attacker->battleAttack += 4;
+                        attacker->battleAttack += SKILL_EFF0(SID_Horseguard);
                         break;
                     }
                 }
@@ -944,10 +944,10 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                     if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassArmor(UNIT_CLASS_ID(unit_ally)))
                     {
-                        attacker->battleAttack += 4;
+                        attacker->battleAttack += SKILL_EFF0(SID_Armorboost);
 
                         if (!IsMagicAttack(defender))
-                            attacker->battleDefense += 4;
+                            attacker->battleDefense += SKILL_EFF1(SID_Armorboost);
 
                         break;
                     }
@@ -1045,10 +1045,10 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_Analytic) && (COMMON_SKILL_VALID(SID_Analytic)))
         case SID_Analytic:
             tmp = defender->battleSpeed - attacker->battleSpeed;
-            if (tmp >= 4)
-                attacker->battleAttack += 10;
+            if (tmp >= SKILL_EFF0(SID_Analytic))
+                attacker->battleAttack += SKILL_EFF1(SID_Analytic);
             else if (tmp > 0)
-                attacker->battleAttack += 5;
+                attacker->battleAttack += SKILL_EFF2(SID_Analytic);
 
             break;
 #endif
@@ -1128,45 +1128,45 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_DivinelyInspiring) && (COMMON_SKILL_VALID(SID_DivinelyInspiring)))
                 if (SkillTester(unit, SID_DivinelyInspiring))
                 {
-                    attacker->battleAttack += 3;
-                    attacker->battleDefense += 1;
+                    attacker->battleAttack  += SKILL_EFF0(SID_DivinelyInspiring);
+                    attacker->battleDefense += SKILL_EFF1(SID_DivinelyInspiring);
                 }
 #endif
 
 #if (defined(SID_LilysPoise) && (COMMON_SKILL_VALID(SID_LilysPoise)))
                 if (SkillTester(unit, SID_LilysPoise))
                 {
-                    attacker->battleAttack += 1;
-                    attacker->battleDefense += 3;
+                    attacker->battleAttack  += SKILL_EFF0(SID_LilysPoise);
+                    attacker->battleDefense += SKILL_EFF1(SID_LilysPoise);
                 }
 #endif
 
 #if (defined(SID_BloodTide) && (COMMON_SKILL_VALID(SID_BloodTide)))
                 if (SkillTester(unit, SID_BloodTide))
                 {
-                    attacker->battleAttack += 5;
-                    attacker->battleHitRate += 5;
+                    attacker->battleAttack  += SKILL_EFF0(SID_BloodTide);
+                    attacker->battleHitRate += SKILL_EFF1(SID_BloodTide);
                 }
 #endif
 
 #if (defined(SID_WhitePool) && (COMMON_SKILL_VALID(SID_WhitePool)))
                 if (SkillTester(unit, SID_WhitePool))
                 {
-                    attacker->battleAttack += 5;
-                    attacker->battleSpeed += 5;
+                    attacker->battleAttack += SKILL_EFF0(SID_WhitePool);
+                    attacker->battleSpeed  += SKILL_EFF1(SID_WhitePool);
                 }
 #endif
 
 #if (defined(SID_NightTide) && (COMMON_SKILL_VALID(SID_NightTide)))
                 if (SkillTester(unit, SID_NightTide))
-                    attacker->battleDefense += 5;
+                    attacker->battleDefense += SKILL_EFF0(SID_NightTide);
 #endif
 
 #if (defined(SID_SpurStr) && (COMMON_SKILL_VALID(SID_SpurStr)))
                 if (SkillTester(unit, SID_SpurStr))
                 {
                     if (!IsMagicAttack(attacker))
-                        attacker->battleAttack  += 4;
+                        attacker->battleAttack  += SKILL_EFF0(SID_SpurStr);
                 }
 #endif
 
@@ -1174,7 +1174,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_SpurMag))
                 {
                     if (IsMagicAttack(attacker))
-                        attacker->battleAttack  += 4;
+                        attacker->battleAttack  += SKILL_EFF0(SID_SpurMag);
                 }
 #endif
 
@@ -1182,7 +1182,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_SpurDef))
                 {
                     if (!IsMagicAttack(defender))
-                        attacker->battleDefense+= 4;
+                        attacker->battleDefense+= SKILL_EFF0(SID_SpurDef);
                 }
 #endif
 
@@ -1190,20 +1190,20 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_SpurRes))
                 {
                     if (IsMagicAttack(defender))
-                        attacker->battleDefense+= 4;
+                        attacker->battleDefense+= SKILL_EFF0(SID_SpurRes);
                 }
 #endif
 
 #if (defined(SID_SpurSpd) && (COMMON_SKILL_VALID(SID_SpurSpd)))
                 if (SkillTester(unit, SID_SpurSpd))
-                    attacker->battleSpeed += 4;
+                    attacker->battleSpeed += SKILL_EFF0(SID_SpurSpd);
 #endif
 
 #if (defined(SID_Solidarity) && (COMMON_SKILL_VALID(SID_Solidarity)))
                 if (SkillTester(unit, SID_Solidarity))
                 {
-                    attacker->battleCritRate += 10;
-                    attacker->battleDodgeRate += 10;
+                    attacker->battleCritRate  += SKILL_EFF0(SID_Solidarity);
+                    attacker->battleDodgeRate += SKILL_EFF1(SID_Solidarity);
                 }
 #endif
             }
@@ -1211,14 +1211,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
             {
 #if (defined(SID_Charm) && (COMMON_SKILL_VALID(SID_Charm)))
                 if (SkillTester(unit, SID_Charm) )
-                    attacker->battleAttack  += 3;
+                    attacker->battleAttack  += SKILL_EFF0(SID_Charm);
 #endif
 
 #if (defined(SID_DriveStr) && (COMMON_SKILL_VALID(SID_DriveStr)))
                 if (SkillTester(unit, SID_DriveStr))
                 {
                     if (!IsMagicAttack(attacker))
-                        attacker->battleAttack  += 4;
+                        attacker->battleAttack  += SKILL_EFF0(SID_DriveStr);
                 }
 #endif
 
@@ -1226,7 +1226,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_DriveMag))
                 {
                     if (IsMagicAttack(attacker))
-                        attacker->battleAttack  += 4;
+                        attacker->battleAttack  += SKILL_EFF0(SID_DriveMag);
                 }
 #endif
 
@@ -1234,7 +1234,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_DriveDef))
                 {
                     if (!IsMagicAttack(defender))
-                        attacker->battleDefense+= 4;
+                        attacker->battleDefense+= SKILL_EFF0(SID_DriveDef);
                 }
 #endif
 
@@ -1242,36 +1242,36 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_DriveRes))
                 {
                     if (IsMagicAttack(defender))
-                        attacker->battleDefense+= 4;
+                        attacker->battleDefense+= SKILL_EFF0(SID_DriveRes);
                 }
 #endif
 
 #if (defined(SID_DriveSpd) && (COMMON_SKILL_VALID(SID_DriveSpd)))
                 if (SkillTester(unit, SID_DriveSpd))
-                    attacker->battleSpeed += 4;
+                    attacker->battleSpeed += SKILL_EFF0(SID_DriveSpd);
 #endif
 
 #if (defined(SID_Inspiration) && (COMMON_SKILL_VALID(SID_Inspiration)))
                 if (SkillTester(unit, SID_Inspiration))
                 {
-                    attacker->battleAttack += 2;
-                    attacker->battleDefense += 2;
+                    attacker->battleAttack  += SKILL_EFF0(SID_Inspiration);
+                    attacker->battleDefense += SKILL_EFF1(SID_Inspiration);
                 }
 #endif
 
 #if (defined(SID_Peacebringer) && (COMMON_SKILL_VALID(SID_Peacebringer)))
                 if (SkillTester(unit, SID_Peacebringer) )
-                    attacker->battleAttack -= 2;
+                    attacker->battleAttack -= SKILL_EFF0(SID_Peacebringer);
 #endif
 
 #if (defined(SID_Gentilhomme) && (COMMON_SKILL_VALID(SID_Gentilhomme)))
                 if (SkillTester(unit, SID_Gentilhomme)  && (UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
-                    attacker->battleDefense += 2;
+                    attacker->battleDefense += SKILL_EFF0(SID_Gentilhomme);
 #endif
 
 #if (defined(SID_Demoiselle) && (COMMON_SKILL_VALID(SID_Demoiselle)))
                 if (SkillTester(unit, SID_Demoiselle)  && !(UNIT_CATTRIBUTES(&attacker->unit) && CA_FEMALE))
-                    attacker->battleDefense += 2;
+                    attacker->battleDefense += SKILL_EFF0(SID_Demoiselle);
 #endif
             }
 
@@ -1279,16 +1279,16 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_Bond) && (COMMON_SKILL_VALID(SID_Bond)))
             if (SkillTester(unit, SID_Bond))
             {
-                attacker->battleHitRate += 10;
-                attacker->battleAttack  += 2;
+                attacker->battleAttack  += SKILL_EFF0(SID_Bond);
+                attacker->battleHitRate += SKILL_EFF1(SID_Bond);
             }
 #endif
 
 #if (defined(SID_Charisma) && (COMMON_SKILL_VALID(SID_Charisma)))
             if (SkillTester(unit, SID_Charisma))
             {
-                attacker->battleHitRate += 10;
-                attacker->battleAvoidRate += 10;
+                attacker->battleHitRate   += SKILL_EFF0(SID_Charisma);
+                attacker->battleAvoidRate += SKILL_EFF1(SID_Charisma);
             }
 #endif
 
@@ -1310,40 +1310,40 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
             {
 #if (defined(SID_Hex) && (COMMON_SKILL_VALID(SID_Hex)))
             if (SkillTester(unit, SID_Hex))
-                attacker->battleAvoidRate -= 10;
+                attacker->battleAvoidRate -= SKILL_EFF0(SID_Hex);
 #endif
             }
             if (gRange2_In3x3[i] == 1)
             {
 #if (defined(SID_Intimidate) && (COMMON_SKILL_VALID(SID_Intimidate)))
                 if (SkillTester(unit, SID_Intimidate) )
-                    attacker->battleAvoidRate -= 10;
+                    attacker->battleAvoidRate -= SKILL_EFF0(SID_Intimidate);
 #endif
 
 #if (defined(SID_VoiceOfPeace) && (COMMON_SKILL_VALID(SID_VoiceOfPeace)))
                 if (SkillTester(unit, SID_VoiceOfPeace) )
-                    attacker->battleAttack -= 2;
+                    attacker->battleAttack -= SKILL_EFF0(SID_VoiceOfPeace);
 #endif
 
 #if (defined(SID_Peacebringer) && (COMMON_SKILL_VALID(SID_Peacebringer)))
                 if (SkillTester(unit, SID_Peacebringer) )
-                    attacker->battleAttack -= 2;
+                    attacker->battleAttack -= SKILL_EFF0(SID_Peacebringer);
 #endif
             }
 
 #if (defined(SID_Anathema) && (COMMON_SKILL_VALID(SID_Anathema)))
             if (SkillTester(unit, SID_Anathema))
             {
-                attacker->battleAvoidRate -= 10;
-                attacker->battleDodgeRate -= 10;
+                attacker->battleAvoidRate -= SKILL_EFF0(SID_Anathema);
+                attacker->battleDodgeRate -= SKILL_EFF1(SID_Anathema);
             }
 #endif
 
 #if (defined(SID_Daunt) && (COMMON_SKILL_VALID(SID_Daunt)))
             if (SkillTester(unit, SID_Daunt))
             {
-                attacker->battleHitRate -= 5;
-                attacker->battleCritRate -= 5;
+                attacker->battleHitRate  -= SKILL_EFF0(SID_Daunt);
+                attacker->battleCritRate -= SKILL_EFF1(SID_Daunt);
             }
 #endif
 
@@ -1367,14 +1367,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_Tantivy) && (COMMON_SKILL_VALID(SID_Tantivy)))
         if (BattleSkillTester(attacker, SID_Tantivy))
         {
-            attacker->battleHitRate += 10;
-            attacker->battleAvoidRate += 10;
+            attacker->battleHitRate   += SKILL_EFF0(SID_Tantivy);
+            attacker->battleAvoidRate += SKILL_EFF1(SID_Tantivy);
         }
 #endif
 
 #if (defined(SID_Focus) && (COMMON_SKILL_VALID(SID_Focus)))
         if (BattleSkillTester(attacker, SID_Focus))
-            attacker->battleCritRate += 10;
+            attacker->battleCritRate += SKILL_EFF0(SID_Focus);
 #endif
     }
 
@@ -1392,8 +1392,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_Infiltrator) && (COMMON_SKILL_VALID(SID_Infiltrator)))
         if (BattleSkillTester(attacker, SID_Infiltrator))
         {
-            attacker->battleAttack += 3;
-            attacker->battleHitRate += 15;
+            attacker->battleAttack  += SKILL_EFF0(SID_Infiltrator);
+            attacker->battleHitRate += SKILL_EFF1(SID_Infiltrator);
         }
 #endif
     }
@@ -1402,7 +1402,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     {
 #if (defined(SID_BlueFlame) && (COMMON_SKILL_VALID(SID_BlueFlame)))
         if (BattleSkillTester(attacker, SID_BlueFlame))
-            attacker->battleAttack += 2;
+            attacker->battleAttack += SKILL_EFF1(SID_BlueFlame);
 #endif
     }
 
@@ -1411,21 +1411,21 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     {
 #if (defined(SID_BattleRange_Todo1) && (COMMON_SKILL_VALID(SID_BattleRange_Todo1)))
         if (BattleSkillTester(attacker, SID_BattleRange_Todo1))
-            attacker->battleAttack += 10;
+            attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo1);
 #endif
     }
     else if (allies_gRange2_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo2) && (COMMON_SKILL_VALID(SID_BattleRange_Todo2)))
         if (BattleSkillTester(attacker, SID_BattleRange_Todo2))
-            attacker->battleAttack += 7;
+            attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo2);
 #endif
     }
     else if (allies_gRange1_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo3) && (COMMON_SKILL_VALID(SID_BattleRange_Todo3)))
         if (BattleSkillTester(attacker, SID_BattleRange_Todo3))
-            attacker->battleAttack += 5;
+            attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo3);
 #endif
     }
     else
@@ -1435,8 +1435,9 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
     {
 #if (defined(SID_Loyalty) && (COMMON_SKILL_VALID(SID_Loyalty)))
         if (BattleSkillTester(attacker, SID_Loyalty))
-        {   attacker->battleDefense += 3;
-            attacker->battleHitRate += 15;
+        {
+            attacker->battleHitRate += SKILL_EFF0(SID_Loyalty);
+            attacker->battleDefense += SKILL_EFF1(SID_Loyalty);
         }
 #endif   
     }

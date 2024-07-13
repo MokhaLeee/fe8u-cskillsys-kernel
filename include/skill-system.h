@@ -23,7 +23,7 @@ enum SkillInfoListss
 #define SKILL_INDEX_REAL(sid) ((sid) & 0xFF)
 #define SKILL_INDEX_LIST(sid) (((sid) >> 8) & 0xFF)
 
-#define GENERIC_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
+#define GENERIC_SKILL_EFFID(sid) (sid > 0x000 && sid < 0x0FF)
 #define COMMON_SKILL_VALID(sid) (sid > 0x000 && sid < 0x400)
 
 #define SKILL_ICON(sid) ((2 << 8) + (sid))
@@ -168,6 +168,16 @@ enum EventSkillSubOps {
 /**
  * Miscs
  */
+
+struct SkillExtraInfo {
+    s8 priv[4];
+};
+extern struct SkillExtraInfo const * const gpSkillExtraInfo;
+#define SKILL_EFF0(sid) (gpSkillExtraInfo[sid].priv[0])
+#define SKILL_EFF1(sid) (gpSkillExtraInfo[sid].priv[1])
+#define SKILL_EFF2(sid) (gpSkillExtraInfo[sid].priv[2])
+#define SKILL_EFF3(sid) (gpSkillExtraInfo[sid].priv[3])
+
 bool IsSkillLearned(struct Unit * unit, const u16 sid);
 void LearnSkill(struct Unit * unit, const u16 sid);
 void ForgetSkill(struct Unit * unit, const u16 sid);

@@ -34,7 +34,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
         return false;
 
 #if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
-    if (!SkillTester(gActiveUnit, SID_Teleportation))
+    if (!SkillTester(gActiveUnit, SID_Teleportation) || ((GetUnitCurrentHp(gActiveUnit) * 100) < (GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_Teleportation))))
 #else
     if (1)
 #endif

@@ -2617,4 +2617,96 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Moonlight) && COMMON_SKILL_VALID(SID_Moonlight))
+    [SID_Moonlight] = {
+         .desc = MSG_SKILL_Moonlight,
+         .icon = GFX_SkillIcon_Moonlight,
+    },
+#endif
+
+#if (defined(SID_RouseDefense) && COMMON_SKILL_VALID(SID_RouseDefense))
+    [SID_RouseDefense] = {
+        .name = MSG_SKILL_RouseDefense_NAME,
+        .desc = MSG_SKILL_RouseDefense,
+        .icon = GFX_SkillIcon_RouseDefense,
+    },
+#endif
+
+#if (defined(SID_RouseLuck) && COMMON_SKILL_VALID(SID_RouseLuck))
+    [SID_RouseLuck] = {
+        .name = MSG_SKILL_RouseLuck_NAME,
+        .desc = MSG_SKILL_RouseLuck,
+        .icon = GFX_SkillIcon_RouseLuck,
+    },
+#endif
+
+#if (defined(SID_RouseMagic) && COMMON_SKILL_VALID(SID_RouseMagic))
+    [SID_RouseMagic] = {
+        .name = MSG_SKILL_RouseMagic_NAME,
+        .desc = MSG_SKILL_RouseMagic,
+        .icon = GFX_SkillIcon_RouseMagic,
+    },
+#endif
+
+#if (defined(SID_RouseMovement) && COMMON_SKILL_VALID(SID_RouseMovement))
+    [SID_RouseMovement] = {
+        .name = MSG_SKILL_RouseMovement_NAME,
+        .desc = MSG_SKILL_RouseMovement,
+        .icon = GFX_SkillIcon_RouseMovement,
+    },
+#endif
+
+#if (defined(SID_RouseResistance) && COMMON_SKILL_VALID(SID_RouseResistance))
+    [SID_RouseResistance] = {
+        .name = MSG_SKILL_RouseResistance_NAME,
+        .desc = MSG_SKILL_RouseResistance,
+        .icon = GFX_SkillIcon_RouseResistance,
+    },
+#endif
+
+#if (defined(SID_RouseSkill) && COMMON_SKILL_VALID(SID_RouseSkill))
+    [SID_RouseSkill] = {
+        .name = MSG_SKILL_RouseSkill_NAME,
+        .desc = MSG_SKILL_RouseSkill,
+        .icon = GFX_SkillIcon_RouseSkill,
+    },
+#endif
+
+#if (defined(SID_RouseSpeed) && COMMON_SKILL_VALID(SID_RouseSpeed))
+    [SID_RouseSpeed] = {
+        .name = MSG_SKILL_RouseSpeed_NAME,
+        .desc = MSG_SKILL_RouseSpeed,
+        .icon = GFX_SkillIcon_RouseSpeed,
+    },
+#endif
+
+#if (defined(SID_RouseStrength) && COMMON_SKILL_VALID(SID_RouseStrength))
+    [SID_RouseStrength] = {
+        .name = MSG_SKILL_RouseStrength_NAME,
+        .desc = MSG_SKILL_RouseStrength,
+        .icon = GFX_SkillIcon_RouseStrength,
+    },
+#endif
+
+#if (defined(SID_Relief) && COMMON_SKILL_VALID(SID_Relief))
+    [SID_Relief] = {
+        .desc = MSG_SKILL_Relief,
+        .icon = GFX_SkillIcon_Relief,
+    },
+#endif
+
+#if (defined(SID_Camaraderie) && COMMON_SKILL_VALID(SID_Camaraderie))
+    [SID_Camaraderie] = {
+        .desc = MSG_SKILL_Camaraderie,
+        .icon = GFX_SkillIcon_Camaraderie,
+    },
+#endif
+
+#if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
+    [SID_Counter] = {
+        .desc = MSG_SKILL_Counter,
+        .icon = GFX_SkillIcon_Counter,
+    },
+#endif
 };

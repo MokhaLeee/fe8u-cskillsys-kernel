@@ -50,11 +50,17 @@ gpKTutorialMsg:         POIN gKTutorialMsg
 
 gpExternalGameInitHook: WORD 0
 
-WORD 0
-
 gpHealAmountGetters: POIN gHealAmountGetters
 
-WORD 0 0 0 0 0 0 0
+/* StatScreenfx */
+gpPal_StatScreenUIRed:      POIN Pal_StatScreenUIRed
+gpImg_StatScreenUIRed:      POIN Img_StatScreenUIRed
+gpPal_StatScreenUI:         POIN Pal_StatScreenUI
+gpImg_StatScreenUI:         POIN Img_StatScreenUI
+gpImg_StatScreenScrollBG:   POIN Img_StatScreenScrollBG
+gpPal_StatScreenScrollBG:   POIN Pal_StatScreenScrollBG
+gpImg_StatScreenMuAreaBg:   POIN Img_StatScreenMuAreaBg
+gpPal_StatScreenMuAreaBg:   POIN Pal_StatScreenMuAreaBg
 
 gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks
@@ -120,6 +126,8 @@ gpKernelArmFunConfig: POIN gKernelArmFunConfig
 
 gpMapTaskConfs: POIN gMapTaskConfs
 gpHpBarChr: POIN gHpBarChr
+
+gpSkillExtraInfo: POIN gSkillExtraInfo
 
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

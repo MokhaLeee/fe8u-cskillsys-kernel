@@ -53,6 +53,7 @@ SID_SpeedBoost
 SID_Slayer
 SID_Skybreaker
 SID_Nullify
+SID_Vigilance
 SID_AvoidSword
 SID_Vanity
 SID_ShortShield
@@ -74,6 +75,7 @@ SID_BidingBlow
 SID_Discipline
 SID_AdvantageChaser
 SID_Nonconforming
+SID_Moonlight
 
 // Mobility
 SID_Guidance
@@ -121,6 +123,16 @@ SID_OathResistance
 SID_OathSkill
 SID_OathSpeed
 SID_OathStrength
+
+// Rouse skills
+SID_RouseDefense
+SID_RouseLuck
+SID_RouseMagic
+SID_RouseMovement
+SID_RouseResistance
+SID_RouseSkill
+SID_RouseSpeed
+SID_RouseStrength
 
 // Engage skills
 SID_GentleFlower // This skill can only set to ally!

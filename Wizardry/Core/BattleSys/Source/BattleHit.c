@@ -12,13 +12,8 @@
 
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-#if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
+    if (gBattleTemporaryFlag.skill_activated_aether)
         return true;
-    }
-#endif
 
 #if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
     if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl))
@@ -100,12 +95,12 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if defined(SID_RuinedBlade) && (COMMON_SKILL_VALID(SID_RuinedBlade))
     if (BattleSkillTester(attacker, SID_RuinedBlade))
-        damage += 5;
+        damage += SKILL_EFF2(SID_RuinedBlade);
 #endif
 
 #if defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus))
     if (BattleSkillTester(attacker, SID_RuinedBladePlus))
-        damage += 5;
+        damage += SKILL_EFF1(SID_RuinedBladePlus);
 #endif
 
 #if defined(SID_LunaAttack) && (COMMON_SKILL_VALID(SID_LunaAttack))
@@ -115,7 +110,7 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido))
     if (BattleSkillTester(attacker, SID_Bushido))
-        damage += 7;
+        damage += SKILL_EFF1(SID_Bushido);
 #endif
 
     return damage;
@@ -190,12 +185,12 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 #if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
     if (BattleSkillTester(attacker, SID_QuickDraw) && attacker == &gBattleTarget)
-        correction += 4;
+        correction += SKILL_EFF0(SID_QuickDraw);
 #endif
 
 #if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
     if (BattleSkillTester(attacker, SID_StrongRiposte) && attacker == &gBattleTarget)
-        correction += 3;
+        correction += SKILL_EFF0(SID_StrongRiposte);
 #endif
 
 #if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
@@ -250,6 +245,17 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+    gBattleTemporaryFlag.skill_activated_aether = false;
+
+#if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl))
+    {
+        gBattleTemporaryFlag.skill_activated_aether = true;
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
+        correction += defender->battleDefense * 4 / 5;
+    }
+#endif
+
 #if defined(SID_Glacies) && (COMMON_SKILL_VALID(SID_Glacies))
     if (CheckBattleSkillActivate(attacker, defender, SID_Glacies, attacker->unit.skl))
     {
@@ -268,12 +274,12 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
         if (BattleSkillTester(attacker, SID_Spurn) && crit_atk && (attacker->hpInitial * 4) < (attacker->unit.maxHP * 3))
-            correction += 5;
+            correction += SKILL_EFF0(SID_Spurn);
 #endif
 
 #if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
     if (BattleSkillTester(attacker, SID_DragonWarth) && act_flags->round_cnt_hit == 1)
-        correction += attack / 5;
+        correction += attack * SKILL_EFF0(SID_DragonWarth) / 100;
 #endif
 
     /**
@@ -323,7 +329,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (CheckBattleSkillActivate(attacker, defender, SID_DragonFang, attacker->unit.skl * 2))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonFang);
-        increase += 50;
+        increase += SKILL_EFF0(SID_DragonFang);
     }
 #endif
 
@@ -331,7 +337,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (CheckBattleSkillActivate(attacker, defender, SID_Colossus, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
-        increase += 200;
+        increase += 10 * SKILL_EFF0(SID_Colossus);
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
@@ -340,7 +346,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (CheckBattleSkillActivate(attacker, defender, SID_Impale, attacker->unit.skl))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
-        increase += 300;
+        increase += 10 * SKILL_EFF0(SID_Impale);
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
 #endif
@@ -358,7 +364,17 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 #if defined(SID_InfinityEdge) && (COMMON_SKILL_VALID(SID_InfinityEdge))
         if (BattleSkillTester(attacker, SID_InfinityEdge))
-            crit_correction += 100;
+            crit_correction += SKILL_EFF0(SID_InfinityEdge);
+#endif
+
+#if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
+        if (BattleSkillTester(defender, SID_Gambit) && gBattleStats.range == 1)
+            crit_correction -= SKILL_EFF0(SID_Gambit);
+#endif
+
+#if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
+        if (BattleSkillTester(defender, SID_MagicGambit) && gBattleStats.range > 1)
+            crit_correction -= SKILL_EFF0(SID_MagicGambit);
 #endif
     }
 
@@ -369,14 +385,14 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (attacker == &gBattleActor && BattleSkillTester(attacker, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
-        decrease += DAMAGE_DECREASE(50);
+        decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_Astra));
 #endif
 
 #if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
     if (BattleSkillTester(defender, SID_DragonSkin))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        decrease += DAMAGE_DECREASE(50);
+        decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonSkin));
     }
 #endif
 
@@ -384,7 +400,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (BattleSkillTester(defender, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        decrease += DAMAGE_DECREASE(50);
+        decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_KeenFighter));
     }
 #endif
 
@@ -397,30 +413,15 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
             SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
-            decrease += DAMAGE_DECREASE(50);
+            decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_GuardBearing));
         }
     }
 #endif
 
-    if (crit_atk)
-    {
-#if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
-        if (BattleSkillTester(defender, SID_Gambit) && gBattleStats.range == 1)
-            decrease += DAMAGE_DECREASE(50);
-#endif
-
-#if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
-        if (BattleSkillTester(defender, SID_MagicGambit) && gBattleStats.range > 1)
-            decrease += DAMAGE_DECREASE(50);
-#endif
-    }
-    else
-    {
 #if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
-        if (BattleSkillTester(defender, SID_BeastAssault))
-            decrease += DAMAGE_DECREASE(50);
+    if (BattleSkillTester(defender, SID_BeastAssault))
+        decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_BeastAssault));
 #endif
-    }
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
     if (BattleSkillTester(defender, SID_Spurn))
@@ -430,7 +431,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         _diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(_diff, 0, 10);
 
-        decrease += DAMAGE_DECREASE(_diff * 4);
+        decrease += DAMAGE_DECREASE(_diff * SKILL_EFF1(SID_Spurn));
     }
 #endif
 
@@ -442,7 +443,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         _diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(_diff, 0, 10);
 
-        decrease += DAMAGE_DECREASE(_diff * 4);
+        decrease += DAMAGE_DECREASE(_diff * SKILL_EFF0(SID_Bushido));
     }
 #endif
 
@@ -454,7 +455,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         _diff = defender->unit.res - attacker->unit.res;
         LIMIT_AREA(_diff, 0, 10);
 
-        decrease += DAMAGE_DECREASE(_diff * 4);
+        decrease += DAMAGE_DECREASE(_diff * SKILL_EFF0(SID_DragonWall));
     }
 #endif
 
@@ -466,7 +467,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         _diff = defender->unit.def - attacker->unit.def;
         LIMIT_AREA(_diff, 0, 10);
 
-        decrease += DAMAGE_DECREASE(_diff * 4);
+        decrease += DAMAGE_DECREASE(_diff * SKILL_EFF0(SID_BlueLionRule));
     }
 #endif
 
@@ -474,22 +475,22 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     if (BattleSkillTester(defender, SID_CounterRoar))
     {
         if (act_flags->round_cnt_hit == 1)
-            decrease += DAMAGE_DECREASE(30);
+            decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CounterRoar));
         else
-            decrease += DAMAGE_DECREASE(70);
+            decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_CounterRoar));
     }
 #endif
 
 #if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
     if (BattleSkillTester(defender, SID_DragonWarth) && tar_flags->round_cnt_hit == 1)
-        decrease += DAMAGE_DECREASE(20);
+        decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonWarth));
 #endif
 
 #if (defined(SID_CrusaderWard) && (COMMON_SKILL_VALID(SID_CrusaderWard)))
     if (BattleSkillTester(defender, SID_CrusaderWard) &&
-        tar_flags->round_cnt_hit == 1 &&
+        tar_flags->round_cnt_hit > 1 &&
         gBattleStats.range > 1)
-        decrease += DAMAGE_DECREASE(80);
+        decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CrusaderWard));
 #endif
 
     /**
@@ -537,7 +538,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
     {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, 30 + attacker->unit.lck))
+        if (CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
         else
         {
@@ -612,7 +613,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 }
             }
 #endif
-
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)

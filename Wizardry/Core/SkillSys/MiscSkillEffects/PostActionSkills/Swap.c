@@ -16,7 +16,7 @@ STATIC_DECLAR void PostActionSwapSkipMenuIfNotAlly(struct EventEngineProc * proc
 
 STATIC_DECLAR void PreparePositionSwap(void)
 {
-    MU_EndAll();
+    EndAllMus();
     RefreshUnitSprites();
 }
 
@@ -95,7 +95,7 @@ bool PostActionSwap(ProcPtr proc)
     if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
         return false;
 
-#if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
+#if defined(SID_PosSwap) && (COMMON_SKILL_VALID(SID_PosSwap))
     if (!SkillTester(unit, SID_PosSwap))
 #else
     if (1)

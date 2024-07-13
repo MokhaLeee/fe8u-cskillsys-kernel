@@ -29,12 +29,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_HeavyBlade) && (COMMON_SKILL_VALID(SID_HeavyBlade)))
         if (BattleSkillTester(attacker, SID_HeavyBlade))
-            attacker->battleCritRate += 15;
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBlade);
 #endif
 
 #if (defined(SID_HeavyBladePlus) && (COMMON_SKILL_VALID(SID_HeavyBladePlus)))
         if (BattleSkillTester(attacker, SID_HeavyBladePlus))
-            attacker->battleCritRate += 25;
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBladePlus);
 #endif
     }
 
@@ -43,8 +43,8 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 #if (defined(SID_DancingBlade) && (COMMON_SKILL_VALID(SID_DancingBlade)))
         if (BattleSkillTester(attacker, SID_DancingBlade))
         {
-            attacker->battleSpeed += 4;
-            attacker->battleDefense += 2;
+            attacker->battleSpeed   += SKILL_EFF0(SID_DancingBlade);
+            attacker->battleDefense += SKILL_EFF1(SID_DancingBlade);
         }
 #endif
     }
@@ -53,17 +53,17 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_FlashingBlade) && (COMMON_SKILL_VALID(SID_FlashingBlade)))
         if (BattleSkillTester(attacker, SID_FlashingBlade))
-            attacker->battleCritRate += 15;
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBlade);
 #endif
 
 #if (defined(SID_FlashingBladePlus) && (COMMON_SKILL_VALID(SID_FlashingBladePlus)))
         if (BattleSkillTester(attacker, SID_FlashingBladePlus))
-            attacker->battleCritRate += 25;
+            attacker->battleCritRate += SKILL_EFF1(SID_FlashingBladePlus);
 #endif
 
 #if (defined(SID_Puissance) && (COMMON_SKILL_VALID(SID_Puissance)))
         if (BattleSkillTester(attacker, SID_Puissance))
-            attacker->battleAttack += 3;
+            attacker->battleAttack += SKILL_EFF0(SID_Puissance);
 #endif
     }
 }

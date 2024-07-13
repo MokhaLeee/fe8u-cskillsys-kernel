@@ -5,13 +5,51 @@
 #include "constants/skills.h"
 #include "strmag.h"
 
+FORCE_DECLARE static bool has_ally(struct Unit * unit) 
+{
+    int i;
+    for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
+    {
+        int _x = unit->xPos + gVecs_2x2[i].x;
+        int _y = unit->yPos + gVecs_2x2[i].y;
+
+        struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+        if (!UNIT_IS_VALID(unit_ally))
+            continue;
+
+        if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+            continue;
+
+        if (AreUnitsAllied(unit->index, unit_ally->index))
+            return true;
+    }
+    return false;
+}
+
 STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 {
     int ret = 0;
 
+#if (defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))) || (defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief)))
+    if (has_ally(unit))
+    {
+#if defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))
+        if (SkillTester(unit, SID_Camaraderie))
+            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Camaraderie), 100);
+#endif
+    }
+    else 
+    {
+#if defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief))
+        if (SkillTester(unit, SID_Relief))
+            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Relief), 100);
+#endif
+    }
+#endif
+
 #if defined(SID_Renewal) && (COMMON_SKILL_VALID(SID_Renewal))
     if (SkillTester(unit, SID_Renewal))
-        ret += Div(GetUnitMaxHp(unit) * 3, 10);
+        ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
 #endif
 
 #if defined(SID_Imbue) && (COMMON_SKILL_VALID(SID_Imbue))
@@ -24,15 +62,14 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
     {
         const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
         if(terrainId == 1/* plain */ || terrainId == 12 /* forest */ || terrainId == 17 /* mountain */)
-            ret += Div(GetUnitMaxHp(unit) * 2, 10);
+            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Forager), 100);
     }
 #endif
 
 #if defined(SID_RainDish) && (COMMON_SKILL_VALID(SID_RainDish))
     if (SkillTester(unit, SID_RainDish) && gPlaySt.chapterWeatherId == WEATHER_RAIN)
-        ret += Div(GetUnitMaxHp(unit) * 3, 20);
-#endif
-
+        ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
+#endif 
     return ret;
 }
 

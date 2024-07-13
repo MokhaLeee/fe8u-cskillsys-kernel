@@ -16,11 +16,11 @@ STATIC_DECLAR FORCE_DECLARE void ModifyBattleUnitStatus_LightAndDark(struct Batt
     struct StatDebuffStatus * sdebuff_act = GetUnitStatDebuffStatus(&actor->unit);
     struct StatDebuffStatus * sdebuff_tar = GetUnitStatDebuffStatus(&target->unit);
 
-    target->unit.pow -= 5;
-    UNIT_MAG(&target->unit) -= 5;
-    target->unit.spd -= 5;
-    target->unit.def -= 5;
-    target->unit.res -= 5;
+    target->unit.pow -= SKILL_EFF0(SID_LightAndDark);
+    UNIT_MAG(&target->unit) -= SKILL_EFF0(SID_LightAndDark);
+    target->unit.spd -= SKILL_EFF1(SID_LightAndDark);
+    target->unit.def -= SKILL_EFF2(SID_LightAndDark);
+    target->unit.res -= SKILL_EFF3(SID_LightAndDark);
 
     /* Debuff */
     if (debuff_act->positive_type == STATUS_DEBUFF_NEGATIVE)

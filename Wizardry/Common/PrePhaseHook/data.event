@@ -2,7 +2,7 @@
 ALIGN 4
 gPrePhaseFuncs:
     POIN PrePhsae_TickInitativeSkillStatus
-    POIN PrePhsae_TickOathSkillStatus
+    POIN PrePhsae_TickOathRouthSkillStatus
     POIN PrePhsae_TickPlusAndMinusSkillStatus
     POIN PrePhsae_ClearGuardBearingStatus
     POIN PrePhase_UpdateLengendSkillStatus

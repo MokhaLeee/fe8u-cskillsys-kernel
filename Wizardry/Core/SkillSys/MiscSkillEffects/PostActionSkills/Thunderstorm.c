@@ -34,7 +34,13 @@ STATIC_DECLAR void SetThunderstormAoeDamage(ProcPtr proc)
             continue;
 
         hp = GetUnitCurrentHp(tunit);
+
+#if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
+        hp -= SKILL_EFF0(SID_Thunderstorm);
+#else
         hp -= 10;
+#endif
+
         if (hp <= 0)
             hp = 1;
 

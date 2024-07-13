@@ -110,6 +110,11 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight))
+        if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
+            return false;
+#endif
     }
     else if (&gBattleTarget == actor)
     {
@@ -409,7 +414,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     if (BattleSkillTester(actor, SID_RuinedBladePlus))
     {
         EnqueueRoundEfxSkill(SID_RuinedBladePlus);
-        result = result + 1;
+        result = result + SKILL_EFF2(SID_RuinedBladePlus);
     }
 #endif
 
@@ -418,7 +423,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     {
         EnqueueRoundEfxSkill(SID_Astra);
         gBattleActorGlobalFlag.skill_activated_astra = true;
-        result = result + 4;
+        result = result + SKILL_EFF0(SID_Astra);
     }
 #endif
 
