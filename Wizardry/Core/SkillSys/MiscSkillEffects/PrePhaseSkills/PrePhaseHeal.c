@@ -5,45 +5,33 @@
 #include "constants/skills.h"
 #include "strmag.h"
 
-bool PrePhaseHealRangeCheck() 
+FORCE_DECLARE static bool has_ally(struct Unit * unit) 
 {
-    bool ally_in_range = false;
-    int i, j;
-
-    for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
+    int i;
+    for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
     {
-        struct Unit * unit = GetUnit(i);
-        if (!UNIT_IS_VALID(unit))
+        int _x = unit->xPos + gVecs_2x2[i].x;
+        int _y = unit->yPos + gVecs_2x2[i].y;
+
+        struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+        if (!UNIT_IS_VALID(unit_ally))
             continue;
 
-        for (j = 0; j < ARRAY_COUNT_RANGE2x2; j++)
-        {
-            int _x = unit->xPos + gVecs_2x2[j].x;
-            int _y = unit->yPos + gVecs_2x2[j].y;
+        if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+            continue;
 
-            struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
-            if (!UNIT_IS_VALID(unit_ally))
-                continue;
-
-            if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-                continue;
-
-            if (AreUnitsAllied(unit->index, unit_ally->index))
-            {
-                ally_in_range = true;
-                break;
-            }
-        }
+        if (AreUnitsAllied(unit->index, unit_ally->index))
+            return true;
     }
-    return ally_in_range;
+    return false;
 }
 
 STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 {
     int ret = 0;
-    bool ally_in_range = PrePhaseHealRangeCheck();
 
-    if (ally_in_range)
+#if (defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))) || (defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief)))
+    if (has_ally(unit))
     {
 #if defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))
         if (SkillTester(unit, SID_Camaraderie))
@@ -57,6 +45,7 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
             ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Relief), 100);
 #endif
     }
+#endif
 
 #if defined(SID_Renewal) && (COMMON_SKILL_VALID(SID_Renewal))
     if (SkillTester(unit, SID_Renewal))
