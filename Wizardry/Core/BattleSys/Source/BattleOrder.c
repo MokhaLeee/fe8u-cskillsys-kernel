@@ -102,6 +102,18 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
             return false;
 #endif
+
+#if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
+        if (BattleSkillTester(actor, SID_LastWord))
+        {
+            if ((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+            {
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
+                return true;
+            }
+        }
+#endif
     }
     else if (&gBattleTarget == actor)
     {
@@ -152,6 +164,18 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             {
                 gBattleTemporaryFlag.tar_force_twice_order = true;
                 RegisterBattleOrderSkill(SID_AdvantageChaser, BORDER_TAR_TWICE);
+                return true;
+            }
+        }
+#endif
+
+#if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
+        if (BattleSkillTester(actor, SID_LastWord))
+        {
+            if ((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+            {
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
                 return true;
             }
         }
