@@ -2680,4 +2680,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_RouseStrength,
     },
 #endif
+
+#if (defined(SID_BlackMagic) && COMMON_SKILL_VALID(SID_BlackMagic))
+    [SID_BlackMagic] = {
+        .desc = MSG_SKILL_BlackMagic,
+        .icon = GFX_SkillIcon_BlackMagic,
+    },
+#endif
 };
