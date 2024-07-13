@@ -2681,6 +2681,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Relief) && COMMON_SKILL_VALID(SID_Relief))
+    [SID_Relief] = {
+        .desc = MSG_SKILL_Relief,
+        .icon = GFX_SkillIcon_Relief,
+    },
+#endif
+
+#if (defined(SID_Camaraderie) && COMMON_SKILL_VALID(SID_Camaraderie))
+    [SID_Camaraderie] = {
+        .desc = MSG_SKILL_Camaraderie,
+        .icon = GFX_SkillIcon_Camaraderie,
+    },
+#endif
+
 #if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
     [SID_Counter] = {
         .desc = MSG_SKILL_Counter,
