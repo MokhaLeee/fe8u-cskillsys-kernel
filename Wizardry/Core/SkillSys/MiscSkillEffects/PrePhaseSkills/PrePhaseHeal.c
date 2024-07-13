@@ -94,7 +94,6 @@ void MakeTerrainHealTargetList(int faction)
 
         terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
 
-#if CHAX
         if (GetUnitCurrentHp(unit) != GetUnitMaxHp(unit))
         {
             /* Heal */
@@ -105,30 +104,15 @@ void MakeTerrainHealTargetList(int faction)
             if (amount != 0)
                 AddTarget(unit->xPos, unit->yPos, unit->index, amount);
         }
-#else
-        if (GetTerrainHealAmount(terrainId) != 0 && (GetUnitCurrentHp(unit) != GetUnitMaxHp(unit)))
-        {
-            amount = (GetTerrainHealAmount(terrainId) * GetUnitMaxHp(unit)) / 100;
-            AddTarget(unit->xPos, unit->yPos, unit->index, amount);
-        }
-#endif
 
         if (GetTerrainHealsStatus(terrainId) == 0)
             continue;
 
-#if CHAX
         if (GetUnitStatusIndex(unit) == UNIT_STATUS_NONE)
             continue;
 
         if (GetUnitStatusIndex(unit) == UNIT_STATUS_13)
             SetUnitStatus(unit, UNIT_STATUS_PETRIFY);
-#else
-        if (unit->statusIndex == UNIT_STATUS_NONE)
-            continue;
-
-        if (unit->statusIndex == UNIT_STATUS_13)
-            unit->statusIndex = UNIT_STATUS_PETRIFY;
-#endif
 
         AddTarget(unit->xPos, unit->yPos, unit->index, -1);
     }
