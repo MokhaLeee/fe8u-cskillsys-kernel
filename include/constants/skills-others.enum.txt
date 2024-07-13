@@ -74,6 +74,7 @@ SID_Dazzle
 SID_BidingBlow
 SID_Discipline
 SID_AdvantageChaser
+SID_Nonconforming
 SID_Moonlight
 
 // Mobility
