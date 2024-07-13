@@ -60,3 +60,8 @@ beginning of the turn.[X]
 Relief:[NL]
 Restore 20% of max HP at the start of[NL]
 turn, if there are no allies within 2 tiles.[X]
+
+## MSG_SKILL_Camaraderie
+Camaraderie:[NL]
+Restore 10% of max HP at the start of[NL]
+turn, if there are allies within 2 tiles.[X]

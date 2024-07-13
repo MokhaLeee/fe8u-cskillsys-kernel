@@ -2687,4 +2687,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Relief,
     },
 #endif
+
+#if (defined(SID_Camaraderie) && COMMON_SKILL_VALID(SID_Camaraderie))
+    [SID_Camaraderie] = {
+        .desc = MSG_SKILL_Camaraderie,
+        .icon = GFX_SkillIcon_Camaraderie,
+    },
+#endif
 };
