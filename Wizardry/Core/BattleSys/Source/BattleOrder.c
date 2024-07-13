@@ -423,12 +423,12 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-        if (actor == &gBattleActor && BattleSkillTester(actor, SID_DoubleLion) && actor->hpInitial == actor->unit.maxHP)
-        {
-            gBattleActorGlobalFlag.skill_activated_double_lion = true;
-            EnqueueRoundEfxSkill(SID_DoubleLion);
-            result = result + 1;
-        }
+    if (actor == &gBattleActor && BattleSkillTester(actor, SID_DoubleLion) && actor->hpInitial == actor->unit.maxHP)
+    {
+        gBattleActorGlobalFlag.skill_activated_double_lion = true;
+        EnqueueRoundEfxSkill(SID_DoubleLion);
+        result = result + 1;
+    }
 #endif
 
     return result;
