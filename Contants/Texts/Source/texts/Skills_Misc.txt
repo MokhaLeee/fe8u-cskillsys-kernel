@@ -32,4 +32,4 @@ assistance on combo-attack[X]
 ## MSG_SKILL_LiveToServe
 LiveToServe:[NL]
 Heal unit by the same amount as[NL]
-target unit when using a staff.[X]
+the target when using a staff.[X]
