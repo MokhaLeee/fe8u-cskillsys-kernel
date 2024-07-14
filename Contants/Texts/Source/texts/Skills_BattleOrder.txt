@@ -72,3 +72,11 @@ Adv-Chaser[X]
 AdvantageChaser:[NL]
 Unit always doubles if they have[NL]
 Weapon Triangle Advantage.[X]
+
+## MSG_SKILL_PridefulWarrior_NAME
+P-Warrior[X]
+
+## MSG_SKILL_PridefulWarrior
+PridefulWarrior:[NL]
+Unit always attacks last in[NL]
+the round, but always doubles.[X]
