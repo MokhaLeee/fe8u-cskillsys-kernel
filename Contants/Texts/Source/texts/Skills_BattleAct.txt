@@ -145,3 +145,8 @@ doubled for this unit.[X]
 Counter:[NL]
 Reflect physical damage[NL]
 dealt at melee range.[X]
+
+## MSG_SKILL_Miracle
+Miracle:[NL]
+Survive a lethal hit if above 1 HP.[NL]
+(Skill % activation).[X]

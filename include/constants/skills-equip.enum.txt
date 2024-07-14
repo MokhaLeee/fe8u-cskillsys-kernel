@@ -144,6 +144,7 @@ SID_Vengeance
 SID_Deadeye
 SID_AxeFaith
 SID_DivinePulse
+SID_Miracle
 
 // Blow skills
 SID_BlowDarting

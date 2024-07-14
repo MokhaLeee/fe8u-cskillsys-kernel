@@ -613,6 +613,18 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 }
             }
 #endif
+
+#if defined(SID_Miracle) && (COMMON_SKILL_VALID(SID_Miracle))
+            if (gBattleStats.damage > defender->unit.curHP && defender->unit.curHP > 1)
+            {
+                if (CheckBattleSkillActivate(defender, attacker, SID_Miracle, attacker->unit.skl))
+                {
+                    // RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Miracle);
+                    gBattleStats.damage = defender->unit.curHP - 1;
+                    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+                }
+            }
+#endif
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)
