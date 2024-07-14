@@ -33,6 +33,15 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
         break;
 
     case BU_ISLOT_ARENA_PLAYER:
+#if (defined(SID_ConcealedWeapon) && (COMMON_SKILL_VALID(SID_ConcealedWeapon)))
+    if (BattleSkillTester(bu, SID_ConcealedWeapon))
+    {
+        bu->weaponSlotIndex = 0;
+        bu->weapon = bu->unit.items[GetUnitEquippedWeaponSlot(GetUnit(bu->unit.index))];
+        bu->canCounter = false;
+        break;
+    }
+#endif
         bu->weaponSlotIndex = 0;
         bu->weapon = gArenaState.playerWeapon;
         bu->canCounter = false;

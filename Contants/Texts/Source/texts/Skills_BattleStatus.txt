@@ -574,3 +574,11 @@ this unit.[X]
 Moonlight:[NL]
 This unit cannot double, but[NL]
 the enemy cannot counterattack.[X]
+
+## MSG_SKILL_ConcealedWeapon_NAME
+C-Weapon[X]
+
+## MSG_SKILL_ConcealedWeapon
+ConcealedWeapon:[NL]
+Smuggle your equipped[NL]
+weapon into an arena.[X]
