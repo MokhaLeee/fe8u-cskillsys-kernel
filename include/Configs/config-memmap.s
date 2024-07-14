@@ -60,6 +60,7 @@ _kernel_malloc sStatDebuffStatusNpc, 8 * 16
 _kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
 _kernel_malloc sStatDebuffMsgBuf, 0x2C * 6
 _kernel_malloc sStatDebuffMsgBufNext, 4
+_kernel_malloc gStatScreenStatsGrowthsToggle, 1
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

@@ -7,11 +7,18 @@
 #include "kernel-glyph.h"
 #include "constants/texts.h"
 
-//#include "StatScreenInternal.h"
-const int DisplayGrowthsFlag = 0x27; // Mokha, please change this as you see fit :-) 
-void ToggleStatScreenStatsGrowthsDisplay(void) { 
-	if (CheckFlag(DisplayGrowthsFlag)) { ClearFlag(DisplayGrowthsFlag); } 
-	else { SetFlag(DisplayGrowthsFlag); } 
+
+extern u8 gStatScreenStatsGrowthsToggle; 
+void ToggleStatScreenStatsGrowthsDisplay(void) 
+{ 
+	if (gStatScreenStatsGrowthsToggle) 
+    { 
+        gStatScreenStatsGrowthsToggle = false; 
+    } 
+	else 
+    { 
+        gStatScreenStatsGrowthsToggle = true; 
+    } 
 } 
 
 void StatScreen_OnIdle(struct Proc* proc)
@@ -43,6 +50,7 @@ void StatScreen_OnIdle(struct Proc* proc)
     else if (gKeyStatusPtr->repeatedKeys & DPAD_LEFT)
     {
         gStatScreen.page = (gStatScreen.page + gStatScreen.pageAmt - 1) % gStatScreen.pageAmt;
+		if (gStatScreen.page > 3) { asm("mov r11, r11"); } 
         StartPageSlide(DPAD_LEFT, gStatScreen.page, proc);
         return;
     }
@@ -50,6 +58,7 @@ void StatScreen_OnIdle(struct Proc* proc)
     else if (gKeyStatusPtr->repeatedKeys & DPAD_RIGHT)
     {
         gStatScreen.page = (gStatScreen.page + gStatScreen.pageAmt + 1) % gStatScreen.pageAmt;
+		if (gStatScreen.page > 3) { asm("mov r11, r11"); } 
         StartPageSlide(DPAD_RIGHT, gStatScreen.page, proc);
     }
 
@@ -79,7 +88,8 @@ void StatScreen_OnIdle(struct Proc* proc)
 	
     else if (gKeyStatusPtr->newKeys & SELECT_BUTTON)
     {
-		if (!gStatScreen.page) { // stats page only 
+		if (!gStatScreen.page) 
+        { // stats page only 
 			Proc_Goto(proc, 0); 
 			ToggleStatScreenStatsGrowthsDisplay(); 
 			StatScreen_Display(proc);
