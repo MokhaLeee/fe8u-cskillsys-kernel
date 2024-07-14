@@ -115,18 +115,6 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
             return false;
 #endif
-
-// #if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
-//         if (BattleSkillTester(actor, SID_ChargePlus))
-//         {
-//             if ((gActiveUnit->movBonus + gActiveUnit->pClassData->baseMov) == gActionData.moveCount)
-//             {
-//                 gBattleTemporaryFlag.act_force_twice_order = true;
-//                 RegisterBattleOrderSkill(SID_ChargePlus, BORDER_ACT_TWICE);
-//                 return true;
-//             }
-//         }
-// #endif
     }
     else if (&gBattleTarget == actor)
     {
