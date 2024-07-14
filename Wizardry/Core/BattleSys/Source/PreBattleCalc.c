@@ -1080,6 +1080,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 attacker->battleSpeed *= 2;
             break;
 #endif
+
+#if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
+        case SID_Shadowgift:
+            struct Unit * unit = GetUnit(attacker->unit.index);
+
+            if (unit->ranks[ITYPE_DARK] == 0)
+                unit->ranks[ITYPE_DARK] = 31;
+            break;
+#endif
         }
     }
 

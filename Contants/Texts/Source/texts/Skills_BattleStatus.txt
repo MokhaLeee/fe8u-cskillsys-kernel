@@ -574,3 +574,8 @@ this unit.[X]
 Moonlight:[NL]
 This unit cannot double, but[NL]
 the enemy cannot counterattack.[X]
+
+## MSG_SKILL_Shadowgift
+Shadowgift:[NL]
+Grants this unit the ability to use[NL]
+dark magic (starting at rank D).[X]
