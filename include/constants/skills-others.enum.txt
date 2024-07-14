@@ -76,6 +76,7 @@ SID_Discipline
 SID_AdvantageChaser
 SID_Nonconforming
 SID_Moonlight
+SID_Multiscale
 
 // Mobility
 SID_Guidance
