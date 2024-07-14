@@ -2709,4 +2709,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Counter,
     },
 #endif
+
+#if (defined(SID_LiveToServe) && COMMON_SKILL_VALID(SID_LiveToServe))
+    [SID_LiveToServe] = {
+        .desc = MSG_SKILL_LiveToServe,
+        .icon = GFX_SkillIcon_LiveToServe,
+    },
+#endif
 };

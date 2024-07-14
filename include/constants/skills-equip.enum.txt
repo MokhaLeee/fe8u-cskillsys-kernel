@@ -259,3 +259,6 @@ SID_Synergism
 // Mobility
 SID_Pass
 SID_Obstruct
+
+// Heal skill
+SID_LiveToServe

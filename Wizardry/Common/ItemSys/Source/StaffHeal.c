@@ -73,6 +73,15 @@ void ExecStandardHeal(ProcPtr proc)
     amount = HealAmountGetter(amount, unit_act, unit_tar);
 #endif
 
+
+#if defined(SID_LiveToServe) && (COMMON_SKILL_VALID(SID_LiveToServe))
+    if (SkillTester(unit_act, SID_LiveToServe))
+    {
+        AddUnitHp(unit_act, -(gBattleTarget.unit.curHP - GetUnitCurrentHp(unit_tar)));
+        gBattleActor.unit.curHP = GetUnitCurrentHp(unit_act);
+    }
+#endif
+
     AddUnitHp(unit_tar, amount);
     gBattleHitIterator->hpChange = gBattleTarget.unit.curHP - GetUnitCurrentHp(unit_tar);
     gBattleTarget.unit.curHP = GetUnitCurrentHp(unit_tar);
