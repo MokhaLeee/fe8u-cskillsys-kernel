@@ -70,6 +70,6 @@ Gain another action after[NL]
 using a staff.[X]
 
 ## MSG_SKILL_FailGale
-Fail Gale:
+Fail Gale:[NL]
 Move again after attacking and[NL]
 failing to harm an enemy.[X]
