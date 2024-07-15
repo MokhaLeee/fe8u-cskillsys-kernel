@@ -2745,4 +2745,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_LiveToServe,
     },
 #endif
+
+#if (defined(SID_MageSlayer) && COMMON_SKILL_VALID(SID_MageSlayer))
+    [SID_MageSlayer] = {
+        .desc = MSG_SKILL_MageSlayer,
+        .icon = GFX_SkillIcon_MageSlayer,
+    },
+#endif
 };
