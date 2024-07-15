@@ -79,6 +79,7 @@ SID_Moonlight
 SID_Multiscale
 SID_PridefulWarrior
 SID_MageSlayer
+SID_TowerShieldPlus
 
 // Mobility
 SID_Guidance
