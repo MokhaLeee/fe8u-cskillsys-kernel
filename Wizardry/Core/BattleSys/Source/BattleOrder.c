@@ -438,7 +438,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
         if (BattleSkillTester(actor, SID_ChargePlus))
         {
-            if ((gActiveUnit->movBonus + gActiveUnit->pClassData->baseMov) == gActionData.moveCount)
+            if (MovGetter(gActiveUnit) == gActionData.moveCount)
                 result = result + 1;
         }
 #endif
