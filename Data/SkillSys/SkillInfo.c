@@ -1481,6 +1481,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_ChargePlus) && COMMON_SKILL_VALID(SID_ChargePlus))
+    [SID_ChargePlus] = {
+        .desc = MSG_SKILL_ChargePlus,
+        .icon = GFX_SkillIcon_ChargePlus,
+    },
+#endif
+
 #if (defined(SID_Wrath) && COMMON_SKILL_VALID(SID_Wrath))
     [SID_Wrath] = {
         .desc = MSG_SKILL_Wrath,

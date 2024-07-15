@@ -440,6 +440,14 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     }
 #endif
 
+#if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
+        if (BattleSkillTester(actor, SID_ChargePlus))
+        {
+            if (MovGetter(gActiveUnit) == gActionData.moveCount)
+                result = result + 1;
+        }
+#endif
+
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
     if (actor == &gBattleActor && BattleSkillTester(actor, SID_DoubleLion) && actor->hpInitial == actor->unit.maxHP)
     {
