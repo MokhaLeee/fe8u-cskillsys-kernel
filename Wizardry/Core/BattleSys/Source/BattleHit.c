@@ -298,6 +298,17 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
             return 0;
         }
 #endif
+
+#if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
+    if (BattleSkillTester(defender, SID_TowerShieldPlus))
+    {
+        if(gBattleStats.range > 1)
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
+            return 0;
+        }
+    }
+#endif
         if (IsMagicAttack(attacker))
         {
 #if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
@@ -536,14 +547,6 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
     if (result > BATTLE_MAX_DAMAGE)
         result = BATTLE_MAX_DAMAGE;
-
-#if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
-    if (BattleSkillTester(defender, SID_TowerShieldPlus))
-    {
-        if(gBattleStats.range > 1)
-            result = 0;
-    }
-#endif
 
     return result;
 }
