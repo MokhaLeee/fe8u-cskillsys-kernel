@@ -190,6 +190,7 @@ SID_BreathOfLife
 SID_Thunderstorm
 SID_PosReturn
 SID_PosSwap
+SID_PowerStaff
 
 // Pre-phase
 SID_Renewal

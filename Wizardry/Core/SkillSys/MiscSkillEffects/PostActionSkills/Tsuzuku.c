@@ -21,7 +21,14 @@ bool PostActionGaleForce(ProcPtr parent)
 #if defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce))
         if (SkillTester(unit, SID_Galeforce) && gBattleActorGlobalFlag.skill_activated_galeforce)
             goto L_exec_rafrain_action_anim;
+        break;
 #endif
+    case UNIT_ACTION_STAFF:
+#if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
+        if (SkillTester(unit, SID_PowerStaff) && Roll1RN(unit->lck))
+            goto L_exec_rafrain_action_anim;
+        break;
+#endif  
 
     /* fall through */
 
