@@ -2752,4 +2752,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_MageSlayer,
     },
 #endif
+
+#if (defined(SID_TriangleAdept) && COMMON_SKILL_VALID(SID_TriangleAdept))
+    [SID_TriangleAdept] = {
+        .name = MSG_SKILL_TriangleAdept_NAME,
+        .desc = MSG_SKILL_TriangleAdept,
+        .icon = GFX_SkillIcon_TriangleAdept,
+    },
+#endif
+
+#if (defined(SID_TriangleAdeptPlus) && COMMON_SKILL_VALID(SID_TriangleAdeptPlus))
+    [SID_TriangleAdeptPlus] = {
+        .name = MSG_SKILL_TriangleAdeptPlus_NAME,
+        .desc = MSG_SKILL_TriangleAdeptPlus,
+        .icon = GFX_SkillIcon_TriangleAdeptPlus,
+    },
+#endif
 };

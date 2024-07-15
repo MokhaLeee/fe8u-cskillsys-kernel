@@ -29,3 +29,20 @@ N-conforming[X]
 Nonconforming:[NL]
 Invert the effect of the weapon[NL]
 triangle for both units in battle.[X]
+
+## MSG_SKILL_TriangleAdept_NAME
+T-Adapt[X]
+
+## MSG_SKILL_TriangleAdept
+Triangle Adapt:[NL]
+Doubles weapon triangle[NL]
+effects for this unit.[X]
+
+## MSG_SKILL_TriangleAdeptPlus_NAME
+T-Adapt+[X]
+
+## MSG_SKILL_TriangleAdeptPlus
+Triangle Adapt+:[NL]
+Doubles weapon triangle[NL]
+effects for both units.[X]
+
