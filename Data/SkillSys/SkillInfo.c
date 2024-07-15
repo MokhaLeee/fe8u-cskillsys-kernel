@@ -2710,6 +2710,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_PridefulWarrior) && COMMON_SKILL_VALID(SID_PridefulWarrior))
+    [SID_PridefulWarrior] = {
+         .name = MSG_SKILL_PridefulWarrior_NAME,
+         .desc = MSG_SKILL_PridefulWarrior,
+         .icon = GFX_SkillIcon_PridefulWarrior,
+    },
+#endif
+
 #if (defined(SID_LiveToServe) && COMMON_SKILL_VALID(SID_LiveToServe))
     [SID_LiveToServe] = {
         .desc = MSG_SKILL_LiveToServe,

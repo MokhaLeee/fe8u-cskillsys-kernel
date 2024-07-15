@@ -102,6 +102,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
             return false;
 #endif
+
+#if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
+        if (BattleSkillTester(actor, SID_PridefulWarrior))
+        {
+            gBattleTemporaryFlag.act_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_PridefulWarrior, BORDER_ACT_TWICE);
+            return true;
+        }
+#endif
     }
     else if (&gBattleTarget == actor)
     {
@@ -196,6 +205,15 @@ STATIC_DECLAR bool CheckVantageOrder(void)
             gBattleTemporaryFlag.vantage_order = true;
             return true;
         }
+    }
+#endif
+
+#if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
+    if (BattleSkillTester(&gBattleActor, SID_PridefulWarrior))
+    {
+        RegisterBattleOrderSkill(SID_PridefulWarrior, BORDER_VANTAGE);
+        gBattleTemporaryFlag.vantage_order = true;
+        return true;
     }
 #endif
 
