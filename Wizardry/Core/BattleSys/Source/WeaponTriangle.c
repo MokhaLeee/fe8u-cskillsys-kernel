@@ -10,6 +10,15 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
 {
     const struct WeaponTriangleConf * it;
     const struct WeaponTriangleItemConf * item_conf = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
+    bool invert = false;
+
+// We run twice in case both units have nonconforming, so we revert back to the standard boosts
+#if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
+    if (BattleSkillTester(attacker, SID_Nonconforming))
+        invert = !invert;
+    if (BattleSkillTester(defender, SID_Nonconforming))
+        invert = !invert;
+#endif
 
     if (item_conf->valid && item_conf->wtype == defender->weaponType)
     {
@@ -28,17 +37,17 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         /* Just for UI */
         if (item_conf->is_buff)
         {
-            attacker->wTriangleHitBonus += 15;
-            attacker->wTriangleDmgBonus += 1;
-            defender->wTriangleHitBonus -= 15;
-            defender->wTriangleDmgBonus -= 1;
+            attacker->wTriangleHitBonus += invert ? -15 : 15;
+            attacker->wTriangleDmgBonus += invert ? -1 : 1;
+            defender->wTriangleHitBonus -= invert ? -15 : 15;
+            defender->wTriangleDmgBonus -= invert ? -1 : 1;
         }
         else
         {
-            attacker->wTriangleHitBonus -= 15;
-            attacker->wTriangleDmgBonus -= 1;
-            defender->wTriangleHitBonus += 15;
-            defender->wTriangleDmgBonus += 1;
+            attacker->wTriangleHitBonus += invert ? -15 : 15;
+            attacker->wTriangleDmgBonus += invert ? -1 : 1;
+            defender->wTriangleHitBonus -= invert ? -15 : 15;
+            defender->wTriangleDmgBonus -= invert ? -1 : 1;
         }
     }
     else
@@ -52,14 +61,14 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
                 LTRACEF("Find vanilla (%p-%p, %d-%d): atk=%d, hit=%d",
                         attacker, defender, it->attackerWeaponType, it->defenderWeaponType, it->atkBonus, it->hitBonus);
 
-                attacker->battleAttack  += it->atkBonus;
-                attacker->battleHitRate += it->hitBonus;
+                attacker->battleAttack  += invert ? -it->atkBonus : it->atkBonus;
+                attacker->battleHitRate += invert ? -it->hitBonus : it->hitBonus;
 
                 /* Just for UI */
-                attacker->wTriangleHitBonus += it->atkBonus;
-                attacker->wTriangleDmgBonus += it->hitBonus;
-                defender->wTriangleHitBonus -= it->atkBonus;
-                defender->wTriangleDmgBonus -= it->hitBonus;
+                attacker->wTriangleHitBonus += invert ? -it->hitBonus : it->hitBonus;
+                attacker->wTriangleDmgBonus += invert ? -it->atkBonus : it->atkBonus;
+                defender->wTriangleHitBonus -= invert ? -it->hitBonus : it->hitBonus;
+                defender->wTriangleDmgBonus -= invert ? -it->atkBonus : it->atkBonus;
                 break;
             }
         }
@@ -89,17 +98,17 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
                 /* Just for UI */
                 if (it->is_buff)
                 {
-                    attacker->wTriangleHitBonus += 15;
-                    attacker->wTriangleDmgBonus += 1;
-                    defender->wTriangleHitBonus -= 15;
-                    defender->wTriangleDmgBonus -= 1;
+                    attacker->wTriangleHitBonus += invert ? -15 : 15;
+                    attacker->wTriangleDmgBonus += invert ? -1 : 1;
+                    defender->wTriangleHitBonus -= invert ? -15 : 15;
+                    defender->wTriangleDmgBonus -= invert ? -1 : 1;
                 }
                 else
                 {
-                    attacker->wTriangleHitBonus -= 15;
-                    attacker->wTriangleDmgBonus -= 1;
-                    defender->wTriangleHitBonus += 15;
-                    defender->wTriangleDmgBonus += 1;
+                    attacker->wTriangleHitBonus += invert ? -15 : 15;
+                    attacker->wTriangleDmgBonus += invert ? -1 : 1;
+                    defender->wTriangleHitBonus -= invert ? -15 : 15;
+                    defender->wTriangleDmgBonus -= invert ? -1 : 1;
                 }
             }
             break;

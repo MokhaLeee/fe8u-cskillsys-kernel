@@ -2617,6 +2617,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Nonconforming) && COMMON_SKILL_VALID(SID_Nonconforming))
+    [SID_Nonconforming] = {
+        .name = MSG_SKILL_Nonconforming_NAME,
+        .desc = MSG_SKILL_Nonconforming,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Moonlight) && COMMON_SKILL_VALID(SID_Moonlight))
     [SID_Moonlight] = {
          .desc = MSG_SKILL_Moonlight,
@@ -2685,6 +2693,56 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_RouseStrength_NAME,
         .desc = MSG_SKILL_RouseStrength,
         .icon = GFX_SkillIcon_RouseStrength,
+    },
+#endif
+
+#if (defined(SID_Relief) && COMMON_SKILL_VALID(SID_Relief))
+    [SID_Relief] = {
+        .desc = MSG_SKILL_Relief,
+        .icon = GFX_SkillIcon_Relief,
+    },
+#endif
+
+#if (defined(SID_Camaraderie) && COMMON_SKILL_VALID(SID_Camaraderie))
+    [SID_Camaraderie] = {
+        .desc = MSG_SKILL_Camaraderie,
+        .icon = GFX_SkillIcon_Camaraderie,
+    },
+#endif
+
+#if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
+    [SID_Counter] = {
+        .desc = MSG_SKILL_Counter,
+        .icon = GFX_SkillIcon_Counter,
+    },
+#endif
+
+#if (defined(SID_PowerStaff) && COMMON_SKILL_VALID(SID_PowerStaff))
+    [SID_PowerStaff] = {
+        .desc = MSG_SKILL_PowerStaff,
+        .icon = GFX_SkillIcon_PowerStaff,
+    },
+#endif
+
+#if (defined(SID_Multiscale) && COMMON_SKILL_VALID(SID_Multiscale))
+    [SID_Multiscale] = {
+        .desc = MSG_SKILL_Multiscale,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_PridefulWarrior) && COMMON_SKILL_VALID(SID_PridefulWarrior))
+    [SID_PridefulWarrior] = {
+         .name = MSG_SKILL_PridefulWarrior_NAME,
+         .desc = MSG_SKILL_PridefulWarrior,
+         .icon = GFX_SkillIcon_PridefulWarrior,
+    },
+#endif
+
+#if (defined(SID_LiveToServe) && COMMON_SKILL_VALID(SID_LiveToServe))
+    [SID_LiveToServe] = {
+        .desc = MSG_SKILL_LiveToServe,
+        .icon = GFX_SkillIcon_LiveToServe,
     },
 #endif
 };

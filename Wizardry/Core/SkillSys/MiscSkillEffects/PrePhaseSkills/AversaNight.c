@@ -46,7 +46,7 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
             if (tunit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
                 continue;
 
-            if (tunit->curHP >= (max_hp - 3))
+            if (tunit->curHP >= (max_hp - SKILL_EFF0(SID_AversaNight)))
                 continue;
 
             for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)

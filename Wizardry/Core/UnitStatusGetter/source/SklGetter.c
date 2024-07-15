@@ -30,42 +30,47 @@ int SklGetterSkills(int status, struct Unit * unit)
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);
 
+#if defined(SID_LifeAndDeath) && (COMMON_SKILL_VALID(SID_LifeAndDeath))
+    if (SkillTester(unit, SID_LifeAndDeath))
+        status += SKILL_EFF0(SID_LifeAndDeath);
+#endif
+
 #if defined(SID_SklBonus) && (COMMON_SKILL_VALID(SID_SklBonus))
     if (SkillTester(unit, SID_SklBonus))
-        status += gpStatusConf_BonusSkills[SKILL_US_SKL];
+        status += SKILL_EFF0(SID_SklBonus);
 #endif
 
 #if defined(SID_DefiantSkl) && (COMMON_SKILL_VALID(SID_DefiantSkl))
     if (SkillTester(unit, SID_DefiantSkl))
         if ((cur_hp * 4) < max_hp)
-            status += gpStatusConf_BonusSkills[SKILL_US_SKL];
+            status += SKILL_EFF0(SID_DefiantSkl);
 #endif
 
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
     if (SkillTester(unit, SID_Fury))
-        status += gpSkillMiscConf->Bonus_Fury;
+        status += SKILL_EFF0(SID_Fury);
 #endif
 
 #if defined(SID_FuryPlus) && (COMMON_SKILL_VALID(SID_FuryPlus))
     if (SkillTester(unit, SID_FuryPlus))
-        status += gpSkillMiscConf->Bonus_FuryPlus;
+        status += SKILL_EFF0(SID_FuryPlus);
 #endif
 
 #if defined(SID_LuckySeven) && (COMMON_SKILL_VALID(SID_LuckySeven))
     if (SkillTester(unit, SID_LuckySeven) && (gPlaySt.chapterTurnNumber & 0x7) == LUCKY7_SKL)
-        status += gpStatusConf_BonusSkills[SKILL_US_SKL];
+        status += SKILL_EFF0(SID_LuckySeven);
 #endif
 
     if (cur_hp == max_hp)
     {
 #if defined(SID_PushSkill) && (COMMON_SKILL_VALID(SID_PushSkill))
         if (SkillTester(unit, SID_PushSkill))
-            status += gpStatusConf_PushSkills[SKILL_US_SKL];
+            status += SKILL_EFF0(SID_PushSkill);
 #endif
 
 #if defined(SID_PushSpectrum) && (COMMON_SKILL_VALID(SID_PushSpectrum))
         if (SkillTester(unit, SID_PushSpectrum))
-            status += gpStatusConf_PushSkills[SKILL_US_SKL];
+            status += SKILL_EFF0(SID_PushSpectrum);
 #endif
     }
 

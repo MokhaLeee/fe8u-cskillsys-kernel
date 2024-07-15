@@ -293,7 +293,7 @@ is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_WindBoost
 Wind Boost:[NL]
-Grants +6 ATK/SPD if unit's current HP[NL]
+Grants +6 SPD if unit's current HP[NL]
 is at least 3 higher than the enemy's.[X]
 
 ## MSG_SKILL_EarthBoost
@@ -579,3 +579,8 @@ this unit.[X]
 Moonlight:[NL]
 This unit cannot double, but[NL]
 the enemy cannot counterattack.[X]
+
+## MSG_SKILL_Multiscale
+Multiscale:[NL]
+Halve damage taken if the[NL]
+user is at full HP.[X]

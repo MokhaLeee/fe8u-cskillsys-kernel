@@ -15,5 +15,5 @@ Teleport[X]
 
 ## MSG_SKILL_Teleportation
 Teleportation: Allows unit[NL]
-to teleport anywhere and[NL]
-take another action.[X]
+to teleport before attack if[NL]
+unit have more than 50% HP.[X]

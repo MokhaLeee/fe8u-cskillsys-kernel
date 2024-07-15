@@ -57,13 +57,13 @@ bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
             if
             (
 #if (defined(SID_Plus) && (COMMON_SKILL_VALID(SID_Plus)))
-                (SkillTester(unit_ally, SID_Plus) && act_plus)
+                (SkillTester(unit_ally, SID_Plus) && act_minus)
 #else
                 false
 #endif
                 ||
 #if (defined(SID_Minus) && (COMMON_SKILL_VALID(SID_Minus)))
-                (SkillTester(unit_ally, SID_Minus) && act_minus)
+                (SkillTester(unit_ally, SID_Minus) && act_plus)
 #else
                 false
 #endif

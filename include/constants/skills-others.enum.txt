@@ -53,6 +53,7 @@ SID_SpeedBoost
 SID_Slayer
 SID_Skybreaker
 SID_Nullify
+SID_Vigilance
 SID_AvoidSword
 SID_Vanity
 SID_ShortShield
@@ -73,7 +74,10 @@ SID_Dazzle
 SID_BidingBlow
 SID_Discipline
 SID_AdvantageChaser
+SID_Nonconforming
 SID_Moonlight
+SID_Multiscale
+SID_PridefulWarrior
 
 // Mobility
 SID_Guidance

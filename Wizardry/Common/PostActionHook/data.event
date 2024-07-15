@@ -1,7 +1,6 @@
 /* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPostActionFuncs:
-    POIN PostActionBattleActorSelfHurt PostActionBattleTargetSelfHurt PostAction_BattleActorHeal
     POIN PostActionThunderstorm
     POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife
     POIN PostActionSynchronize
@@ -9,5 +8,23 @@ gPostActionFuncs:
     POIN PostActionGaleForce
     POIN PostActionSwap
     POIN PostActionPositionReturn
+
+    /**
+     * Well I have to admit that these three effect hold bugs that we should not use
+     * common mapanim API since it will directly reset the battle-global flags.
+     * trace:
+     *
+     * - BeginUnitHealAnim() / BeginUnitCritDamageAnim() -->
+     * - BattleInitItemEffect() -->
+     * - ClearBattleHits() -->
+     * - ClearBattleGlobalFlags()
+     *
+     * I prefer to directly rewrite a new kernel mapanim API to completely decoupling
+     * it from the battle system. But the job is more difficult. For the time being,
+     * put this part of the code to the end for execution, so as to temporarily avoid
+     * conflicts with other parts.
+     *
+     */
+    POIN PostAction_BattleActorHeal PostActionBattleActorSelfHurt PostActionBattleTargetSelfHurt
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0

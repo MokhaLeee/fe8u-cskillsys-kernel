@@ -11,7 +11,7 @@ bool CanRemoveSkill(struct Unit * unit, const u16 sid)
     int i;
     u8 * list = UNIT_RAM_SKILLS(unit);
 
-    if (!GENERIC_SKILL_VALID(sid))
+    if (!GENERIC_SKILL_EFFID(sid))
         return false;
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
@@ -26,7 +26,7 @@ int RemoveSkill(struct Unit * unit, const u16 sid)
     int i;
     u8 * list = UNIT_RAM_SKILLS(unit);
 
-    if (!GENERIC_SKILL_VALID(sid))
+    if (!GENERIC_SKILL_EFFID(sid))
         return -1;
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
@@ -51,7 +51,7 @@ int AddSkill(struct Unit * unit, const u16 sid)
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
     {
-        if (!GENERIC_SKILL_VALID(list[i]))
+        if (!GENERIC_SKILL_EFFID(list[i]))
         {
             list[i] = sid;
             ResetSkillLists();
@@ -63,7 +63,7 @@ int AddSkill(struct Unit * unit, const u16 sid)
 
 static inline void load_skill_ext(struct Unit * unit, u16 sid)
 {
-    if (GENERIC_SKILL_VALID(sid))
+    if (GENERIC_SKILL_EFFID(sid))
     {
         if (UNIT_FACTION(unit) == FACTION_BLUE)
             LearnSkill(unit, sid);
@@ -128,7 +128,7 @@ STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
     {
         sid = pConf->skills[_level + i];
 
-        if (GENERIC_SKILL_VALID(sid))
+        if (GENERIC_SKILL_EFFID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -145,7 +145,7 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
     {
         sid = jConf->skills[_level + i];
 
-        if (GENERIC_SKILL_VALID(sid))
+        if (GENERIC_SKILL_EFFID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -180,7 +180,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid)
     {
         sid = jConf->skills[0 + i];
 
-        if (GENERIC_SKILL_VALID(sid))
+        if (GENERIC_SKILL_EFFID(sid))
             AddSkill(unit, sid);
     }
 }

@@ -90,7 +90,6 @@ SID_Charge
 SID_ChargePlus
 SID_FieryBlood
 SID_Wrath
-SID_Vigilance
 SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
@@ -104,10 +103,11 @@ SID_SilentPride
 SID_RightfulKing
 SID_RightfulGod
 SID_RightfulArch
-SID_Guts
 SID_Hero
+SID_Guts
 SID_SuperLuck
 SID_Spurn
+SID_Counter
 
 // Weapon triangle
 SID_SwordBreaker
@@ -183,19 +183,22 @@ SID_BattleRange_Todo3
 // Post action
 SID_Canto
 SID_CantoPlus
+SID_Galeforce
 SID_AlertStance
 SID_AlertStancePlus
-SID_Galeforce
 SID_SavageBlow
 SID_BreathOfLife
 SID_Thunderstorm
 SID_PosReturn
 SID_PosSwap
+SID_PowerStaff
 
 // Pre-phase
 SID_Renewal
 SID_Imbue
 SID_Forager
+SID_Relief
+SID_Camaraderie
 
 // Range debuff
 SID_Anathema
@@ -258,3 +261,6 @@ SID_Synergism
 // Mobility
 SID_Pass
 SID_Obstruct
+
+// Heal skill
+SID_LiveToServe

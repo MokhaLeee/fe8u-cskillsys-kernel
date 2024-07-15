@@ -25,6 +25,14 @@ bool PostActionGaleForce(ProcPtr parent)
 
     /* fall through */
 
+    case UNIT_ACTION_STAFF:
+#if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
+        if (SkillTester(unit, SID_PowerStaff) && Roll1RN(unit->lck))
+            goto L_exec_rafrain_action_anim;
+#endif
+
+    /* fall through */
+
     default:
 #if defined(SID_Tsuzuku) && (COMMON_SKILL_VALID(SID_Tsuzuku))
         if (SkillTester(unit, SID_Tsuzuku))

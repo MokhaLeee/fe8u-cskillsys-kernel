@@ -110,6 +110,7 @@ CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 post_chax: $(CHAX_DIFF)
 
 $(CHAX_DIFF): $(FE8_CHX)
+ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
@@ -125,19 +126,15 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@python3 $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 
-	@cp -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym
-	@cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym-removethumb.py > $(CHAX_SYM)
-	@rm -f $(CACHE_DIR)/tmp_sym
-
 	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
 	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
-	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
-ifeq ($(CONFIG_GEN_BSDIFF), 1)
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
 endif
 
+	@cp -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym && cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym-removethumb.py > $(CHAX_SYM) && rm -f $(CACHE_DIR)/tmp_sym
+	@cat $(FE8_SYM) >> $(CHAX_SYM)
 	@echo "Done!"
 
 CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)

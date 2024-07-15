@@ -1,10 +1,10 @@
 ## MSG_SKILL_Canto
 Canto:[NL]
-Unit can move again.[X]
+Unit can move again after combat.[X]
 
 ## MSG_SKILL_CantoPlus
-Canto:[NL]
-Unit can move again after combat.[X]
+Canto+:[NL]
+Unit can move again.[X]
 
 ## MSG_SKILL_AlertStance
 A-Stance:[NL]
@@ -63,3 +63,8 @@ attacking and defeating an enemy.[X]
 Tsuzuku:[NL]
 Gain an additional action at the end[NL]
 of this unit's turn (Skill % activation).[X]
+
+## MSG_SKILL_PowerStaff
+PowerStaff:[NL]
+Gain another action after[NL]
+using a staff.[X]

@@ -51,7 +51,7 @@ gpKTutorialMsg:         POIN gKTutorialMsg
 gpExternalGameInitHook: WORD 0
 
 gpHealAmountGetters: POIN gHealAmountGetters
-MESSAGE CURRENTOFFSET
+
 /* StatScreenfx */
 gpPal_StatScreenUIRed:      POIN Pal_StatScreenUIRed
 gpImg_StatScreenUIRed:      POIN Img_StatScreenUIRed
@@ -127,11 +127,7 @@ gpKernelArmFunConfig: POIN gKernelArmFunConfig
 gpMapTaskConfs: POIN gMapTaskConfs
 gpHpBarChr: POIN gHpBarChr
 
-gpSkillMiscConf:                POIN gSkillMiscConf
-gpStatusConf_BonusSkills:       POIN gStatusConf_BonusSkills
-gpStatusConf_DefiantSkills:     POIN gStatusConf_DefiantSkills
-gpStatusConf_PushSkills:        POIN gStatusConf_PushSkills
-gpStatusConf_luckySevenSkill:   POIN gStatusConf_luckySevenSkill
+gpSkillExtraInfo: POIN gSkillExtraInfo
 
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

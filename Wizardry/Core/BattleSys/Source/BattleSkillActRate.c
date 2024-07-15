@@ -23,18 +23,18 @@ bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * tar
 
 #if (defined(SID_RightfulKing) && (COMMON_SKILL_VALID(SID_RightfulKing)))
     if (BattleSkillTester(actor, SID_RightfulKing))
-        rate += 10;
+        rate += SKILL_EFF0(SID_RightfulKing);
 #endif
 
 #if (defined(SID_RightfulGod) && (COMMON_SKILL_VALID(SID_RightfulGod)))
     if (BattleSkillTester(actor, SID_RightfulGod))
-        rate += 30;
+        rate += SKILL_EFF0(SID_RightfulGod);
 #endif
 
 #if (defined(SID_Hero) && (COMMON_SKILL_VALID(SID_Hero)))
-    if (BattleSkillTester(actor, SID_RightfulGod))
+    if (BattleSkillTester(actor, SID_Hero))
         if ((actor->hpInitial * 2) < actor->unit.maxHP)
-            rate += 30;
+            rate += SKILL_EFF0(SID_Hero);
 #endif
 
     LIMIT_AREA(rate, 0, 100);
