@@ -78,6 +78,7 @@ SID_Nonconforming
 SID_Moonlight
 SID_Multiscale
 SID_PridefulWarrior
+SID_MageSlayer
 
 // Mobility
 SID_Guidance

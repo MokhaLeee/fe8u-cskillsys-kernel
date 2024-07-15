@@ -584,3 +584,8 @@ the enemy cannot counterattack.[X]
 Multiscale:[NL]
 Halve damage taken if the[NL]
 user is at full HP.[X]
+
+## MSG_SKILL_MageSlayer
+MageSlayer:[NL]
++2 damage and +10% crit[NL]
+against magical enemies.[X]

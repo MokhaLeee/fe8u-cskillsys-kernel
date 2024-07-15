@@ -1080,6 +1080,16 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 attacker->battleSpeed *= 2;
             break;
 #endif
+
+#if (defined(SID_MageSlayer) && (COMMON_SKILL_VALID(SID_MageSlayer)))
+        case SID_MageSlayer:
+            if (defender->unit.ranks[ITYPE_ANIMA] != 0 || defender->unit.ranks[ITYPE_LIGHT] != 0 || defender->unit.ranks[ITYPE_DARK] != 0 || defender->unit.ranks[ITYPE_STAFF])
+            {
+                attacker->battleAttack  += SKILL_EFF0(SID_MageSlayer);
+                attacker->battleCritRate += SKILL_EFF1(SID_MageSlayer);
+            }
+            break;
+#endif
         }
     }
 
