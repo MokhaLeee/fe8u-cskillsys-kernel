@@ -105,6 +105,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Colossus] = {{ 20 }},
     [SID_Impale] = {{ 30 }},
     [SID_DivinePulse] = {{ 30 }},
+    [SID_Multiscale] = {{ 50 }},
 
     [SID_BlowDarting] = {{ 6 }},
     [SID_BlowDeath] = {{ 6 }},

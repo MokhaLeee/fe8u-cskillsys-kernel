@@ -76,6 +76,8 @@ SID_Discipline
 SID_AdvantageChaser
 SID_Nonconforming
 SID_Moonlight
+SID_Multiscale
+SID_PridefulWarrior
 
 // Mobility
 SID_Guidance
