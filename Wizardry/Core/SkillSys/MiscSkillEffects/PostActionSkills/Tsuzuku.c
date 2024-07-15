@@ -27,6 +27,7 @@ bool PostActionGaleForce(ProcPtr parent)
 #if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
         if (SkillTester(unit, SID_PowerStaff) && Roll1RN(unit->lck))
             goto L_exec_rafrain_action_anim;
+        break;
 #endif  
 
     /* fall through */
