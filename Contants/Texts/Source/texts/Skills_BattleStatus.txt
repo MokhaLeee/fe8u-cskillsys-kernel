@@ -589,3 +589,8 @@ user is at full HP.[X]
 MageSlayer:[NL]
 +2 damage and +10% crit[NL]
 against magical enemies.[X]
+
+## MSG_SKILL_SolarPower
+Solar Power:[NL]
+If the weather is sunny, +25%[NL]
+damage when using magic.[X]
