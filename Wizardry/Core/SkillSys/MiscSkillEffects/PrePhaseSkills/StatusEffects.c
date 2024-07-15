@@ -19,7 +19,7 @@ STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon * proc
             continue;
 
 #if defined(SID_Boon) && (COMMON_SKILL_VALID(SID_Boon))
-        if (!SkillTester(unit, SID_Boon))
+        if (SkillTester(unit, SID_Boon))
         {
             int i;
             struct StatDebuffStatus * sdebuff = GetUnitStatDebuffStatus(unit);
