@@ -211,7 +211,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
 #if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
     if (BattleSkillTester(&gBattleActor, SID_PridefulWarrior))
     {
-        RegisterBattleOrderSkill(SID_PridefulWarrior, BORDER_VANTAGE);
+        /* actor can enable the foe to attack first */
         gBattleTemporaryFlag.vantage_order = true;
         return true;
     }
