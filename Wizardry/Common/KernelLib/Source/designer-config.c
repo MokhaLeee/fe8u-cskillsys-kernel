@@ -22,4 +22,6 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 #ifdef CONFIG_BATTLE_SURROUND
     .battle_surrend_en = true,
 #endif
+
+    .hit_decrease_on_range = true,
 };

@@ -13,6 +13,7 @@ struct KernelDesigerConfig {
     u8 kernel_tutorial_level;
     u8 combo_attack_en;
     u8 battle_surrend_en;
+    u8 hit_decrease_on_range;
 };
 
 extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;
