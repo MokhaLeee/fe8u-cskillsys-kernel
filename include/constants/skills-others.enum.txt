@@ -79,6 +79,9 @@ SID_Moonlight
 SID_Multiscale
 SID_PridefulWarrior
 SID_MageSlayer
+// SID_TriangleAdept
+// SID_TriangleAdeptPlus
+SID_TowerShieldPlus
 
 // Mobility
 SID_Guidance
@@ -105,6 +108,7 @@ SID_Chlorophyll
 SID_SlushRush
 SID_SandRush
 SID_SwiftSwim
+SID_SolarPower
 
 // Initiative skills
 SID_InitStrong

@@ -315,4 +315,12 @@ const struct SkillAnimInfo gSkillAnimInfos[MAX_SKILL_NUM + 1] = {
         .sfx = 0x3D1,
     },
 #endif
+
+#if (defined(SID_TowerShieldPlus) && COMMON_SKILL_VALID(SID_TowerShieldPlus))
+    [SID_TowerShieldPlus] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
 };
