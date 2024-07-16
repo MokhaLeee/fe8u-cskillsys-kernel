@@ -4,7 +4,9 @@
 #include "action-expa.h"
 #include "skill-system.h"
 #include "battle-system.h"
+#include "combat-art.h"
 #include "constants/skills.h"
+#include "constants/combat-arts.h"
 
 extern u8 gPostActionGaleforceFlag;
 
@@ -28,6 +30,9 @@ bool PostActionGaleForce(ProcPtr parent)
         if (SkillTester(unit, SID_FailGale) && !gBattleActor.nonZeroDamage)
             goto L_exec_rafrain_action_anim;
 #endif
+
+        if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enimy_defeated)
+            goto L_exec_rafrain_action_anim;
 
     /* fall through */
 

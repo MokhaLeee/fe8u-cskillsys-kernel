@@ -703,6 +703,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_CA_Galeforce) && COMMON_SKILL_VALID(SID_CA_Galeforce))
+    [SID_CA_Galeforce] = {
+        .desc = MSG_SKILL_CA_Galeforce,
+        .icon = GFX_SkillIcon_Galeforce,
+    },
+#endif
+
 #if (defined(SID_SavageBlow) && COMMON_SKILL_VALID(SID_SavageBlow))
     [SID_SavageBlow] = {
         .desc = MSG_SKILL_SavageBlow,

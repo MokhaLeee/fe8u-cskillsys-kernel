@@ -5,6 +5,7 @@
 const u16 gConstSkillTable_Job[0x100][2] = {
     [CLASS_EIRIKA_LORD] = {
         SID_Pass,
+        SID_CA_Galeforce,
     },
 
     [CLASS_PALADIN] = {

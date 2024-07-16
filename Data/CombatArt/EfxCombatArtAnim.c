@@ -199,4 +199,9 @@ const struct SkillAnimInfo gEfxCombatArtAnimInfos[0x100] = {
         .priority = EFX_PRIORITY_HIGHHIGH,
         .sfx = 0x3D1,
     },
+    [CID_Galeforce] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_HIGHHIGH,
+        .sfx = 0x3D1,
+    },
 };

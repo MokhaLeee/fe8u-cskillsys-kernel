@@ -57,3 +57,6 @@ H-Volley[X]
 
 ## MSG_COMART_DESC_HuntersVolley
 Twice consecutive hits[X]
+
+## MSG_COMART_NAME_Galeforce
+Galeforce[X]
