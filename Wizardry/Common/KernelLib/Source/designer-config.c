@@ -9,11 +9,17 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
     .remove_move_path = true,
 #endif
 
+#ifdef CONFIG_REMOVE_MOVE_PATH
+    .use_chinese_character = true,
+#endif
+
+    .kernel_tutorial_level = CONFIG_KTUT_LEVEL,
+
 #ifdef CONFIG_USE_COMBO_ATTACK
     .combo_attack_en = true,
 #endif
 
-#ifdef CONFIG_REMOVE_MOVE_PATH
-    .use_chinese_character = true,
+#ifdef CONFIG_BATTLE_SURROUND
+    .battle_surrend_en = true,
 #endif
 };

@@ -40,7 +40,8 @@ gpMsu_Loader:   WORD 0
 
 gpKernelDesigerConfig: POIN gKernelDesigerConfig
 
-gConfigKTutorialLevel:  WORD CONFIG_KTUT_LEVEL
+WORD 0
+
 gpKTutorialMsg:         POIN gKTutorialMsg
 
 gpExternalGameInitHook: WORD 0

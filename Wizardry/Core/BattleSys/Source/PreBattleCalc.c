@@ -1451,9 +1451,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
         }
 #endif   
     }
-    
-#ifdef CONFIG_BATTLE_SURROUND
-    if (attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
+
+    if (gpKernelDesigerConfig->battle_surrend_en && attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
     {
         /* Flyer in outdoor environments are not affected by this effect (todo) */
         if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FLYER) || (0))
@@ -1478,7 +1477,6 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 attacker->battleDefense -= 5;
         }
     }
-#endif /* CONFIG_BATTLE_SURROUND */
 }
 
 void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
