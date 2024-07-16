@@ -49,7 +49,7 @@ void LearnSkill(struct Unit * unit, const u16 sid)
     u8 pid = UNIT_CHAR_ID(unit);
 
     /* Make sure that the enemy is not effective on allies */
-    if (!UNIT_FACTION(unit) != FACTION_BLUE)
+    if (UNIT_FACTION(unit) != FACTION_BLUE)
         return;
 
     if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
