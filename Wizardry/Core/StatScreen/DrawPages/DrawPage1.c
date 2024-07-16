@@ -118,34 +118,34 @@ STATIC_DECLAR void DrawStatWithBarRework(int num, int x, int y, int base, int to
 extern u8 gStatScreenStatsGrowthsToggle; 
 inline STATIC_DECLAR int DisplayGrowths(void) 
 { 
-	return gStatScreenStatsGrowthsToggle;
+    return gStatScreenStatsGrowthsToggle;
 } 
 
 STATIC_DECLAR int GetGrowthBonusOffset(int diff) 
 { 
-	diff = ABS(diff); 
-	int result = 1; 
-	if (diff > 99) 
+    diff = ABS(diff); 
+    int result = 1; 
+    if (diff > 99) 
     { 
         result++; 
     } 
-	return result; 
+    return result; 
 } 
 
 STATIC_DECLAR void DrawGrowthWithDifference(int x, int y, int base, int modified)
 {
     int diff = modified - base;
-	int offset = 0; 
-	if (base > 99) 
+    int offset = 0; 
+    if (base > 99) 
     { 
         offset++; 
     } 
-	if ((base < 100) && (diff < 100)) 
+    if ((base < 100) && (diff < 100)) 
     { 
         offset++; 
     } 
     PutNumberOrBlank(gUiTmScratchA + TILEMAP_INDEX(x + offset, y), TEXT_COLOR_SYSTEM_BLUE, base);
-	offset += GetGrowthBonusOffset(diff); 
+    offset += GetGrowthBonusOffset(diff); 
     PutNumberBonus(diff, gUiTmScratchA + TILEMAP_INDEX(x + offset, y));
 }
 
@@ -153,80 +153,77 @@ struct TalkEventCond
 {
     u16 eventType;
     u16 flag;
-	u32 eventPointer;
+    u32 eventPointer;
     u8 pidA;
     u8 pidB;
     u16 fillerA;
-	#ifndef FE6 
+    #ifndef FE6 
     u16 unkC;
     u16 unkE;
-	#endif 
+    #endif 
 };
 
 STATIC_DECLAR int _GetTalkee(int unitID) 
 { 
-	const struct TalkEventCond* talkCond = GetChapterEventDataPointer(gPlaySt.chapterIndex)->characterBasedEvents;
-	int flag, pid; 
-	struct Unit* unit; 
-	for (int i = 0; i < 255; ++i) 
-	{ 
-		if (!talkCond[i].eventType) 
-		{ 
-			break; 
-		} 
-		if (talkCond[i].pidA != unitID) 
-		{ 
-			continue; 
-		} 
-		flag = talkCond[i].flag; 
-		if (flag) 
-		{ 
-			if (CheckFlag(flag)) 
-			{ 
-				continue; 
-			} 
-		} 
-		pid = talkCond[i].pidB; 
-		#ifdef FE7 
-		if (talkCond[i].unkC) // I don't know if this does anything in FE8 
-		{ 
-			if (gMode != talkCond[i].unkC) continue; // any / Eliwood / Hector mode 
-		} 
-		#endif 
-		if (pid) 
-		{ 
-			//unit = GetUnitStructFromEventParameter(pid); 
-			unit = GetUnitFromCharId(pid); 
-			if (!UNIT_IS_VALID(unit)) continue; 
-			
-			if (unit->state & (US_DEAD|US_NOT_DEPLOYED|US_BIT16)) continue; 
-			
-			return pid;
-		} 
-	} 
-	return 0; 
+    const struct TalkEventCond* talkCond = GetChapterEventDataPointer(gPlaySt.chapterIndex)->characterBasedEvents;
+    int flag, pid; 
+    struct Unit* unit; 
+    for (int i = 0; i < 255; ++i) 
+    { 
+        if (!talkCond[i].eventType) 
+        { 
+            break; 
+        } 
+        if (talkCond[i].pidA != unitID) 
+        { 
+            continue; 
+        } 
+        flag = talkCond[i].flag; 
+        if (flag) 
+        { 
+            if (CheckFlag(flag)) 
+            { 
+                continue; 
+            } 
+        } 
+        pid = talkCond[i].pidB; 
+        #ifdef FE7 
+        if (talkCond[i].unkC) // I don't know if this does anything in FE8 
+        { 
+            if (gMode != talkCond[i].unkC) continue; // any / Eliwood / Hector mode 
+        } 
+        #endif 
+        if (pid) 
+        { 
+            //unit = GetUnitStructFromEventParameter(pid); 
+            unit = GetUnitFromCharId(pid); 
+            if (!UNIT_IS_VALID(unit)) continue; 
+            
+            if (unit->state & (US_DEAD|US_NOT_DEPLOYED|US_BIT16)) continue; 
+            
+            return pid;
+        } 
+    } 
+    return 0; 
 } 
 
-STATIC_DECLAR void DrawTrvOrTalk(int x, int y, int col, struct Unit * unit) { 
-	ClearText(gStatScreen.text + STATSCREEN_TEXT_ITEM1); // clear wep1 text here 
-	//ClearText(gStatScreen.text + STATSCREEN_TEXT_RESCUENAME); // clear wep1 text here 
-	//if (!GetUnitRescueName(unit)) 
-	int other_uid = _GetTalkee(unit->pCharacterData->number);
-	if (other_uid) 
-	{ 
-		PutDrawText(gStatScreen.text + STATSCREEN_TEXT_ITEM1,   
-		//PutDrawText(gStatScreen.text + STATSCREEN_TEXT_RESCUENAME,   
-		gUiTmScratchA + TILEMAP_INDEX(x, y),  col, 0, 0, "Talk");
-		other_uid = GetCharacterData(other_uid)->nameTextId;
-		Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_ITEM1], 24, TEXT_COLOR_SYSTEM_BLUE, GetStringFromIndex(other_uid));
-		//Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_RESCUENAME], 24, TEXT_COLOR_SYSTEM_BLUE, GetStringFromIndex(other_uid));
-	} 
-	else 
-	{ 
-		PutDrawText(gStatScreen.text + STATSCREEN_TEXT_RESCUENAME,   gUiTmScratchA + TILEMAP_INDEX(x, y),  col, 0, 0, 
-		GetStringFromIndex(0x4F9)); // Trv
-		Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_RESCUENAME], 24, TEXT_COLOR_SYSTEM_BLUE, GetUnitRescueName(unit));
-	} 
+STATIC_DECLAR void DrawTrvOrTalk(int x, int y, int col, struct Unit * unit) 
+{ 
+    ClearText(gStatScreen.text + STATSCREEN_TEXT_ITEM1); 
+    int other_uid = _GetTalkee(unit->pCharacterData->number);
+    if (other_uid) 
+    { 
+        PutDrawText(gStatScreen.text + STATSCREEN_TEXT_ITEM1,   
+        gUiTmScratchA + TILEMAP_INDEX(x, y),  col, 0, 0, "Talk");
+        other_uid = GetCharacterData(other_uid)->nameTextId;
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_ITEM1], 24, TEXT_COLOR_SYSTEM_BLUE, GetStringFromIndex(other_uid));
+    } 
+    else 
+    { 
+        PutDrawText(gStatScreen.text + STATSCREEN_TEXT_RESCUENAME,   gUiTmScratchA + TILEMAP_INDEX(x, y),  col, 0, 0, 
+        GetStringFromIndex(0x4F9)); // Trv
+        Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_RESCUENAME], 24, TEXT_COLOR_SYSTEM_BLUE, GetUnitRescueName(unit));
+    } 
 } 
 
 
@@ -300,8 +297,8 @@ STATIC_DECLAR void DrawPage1TextCommon(void)
     /* All growth related value done */
     ResetActiveFontPal();
 
-	int MovOrHpTextID = 0x4F6; // Mov 
-	if (DisplayGrowths()) 
+    int MovOrHpTextID = 0x4F6; // Mov 
+    if (DisplayGrowths()) 
     { 
         MovOrHpTextID = 0x4E9; // HP
     } 
@@ -333,7 +330,7 @@ STATIC_DECLAR void DrawPage1TextCommon(void)
         0, 0,
         GetStringFromIndex(0x4F1)); // Affin
 
-	DrawTrvOrTalk(0x9, 0x9, TEXT_COLOR_SYSTEM_GOLD, unit);
+    DrawTrvOrTalk(0x9, 0x9, TEXT_COLOR_SYSTEM_GOLD, unit);
     //PutDrawText(
     //    &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
     //    gUiTmScratchA + TILEMAP_INDEX(0x9, 0x9),
@@ -353,18 +350,18 @@ STATIC_DECLAR void DrawPage1ValueReal(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
-	if (DisplayGrowths()) 
+    if (DisplayGrowths()) 
     { 
-		DrawGrowthWithDifference(0x4, 0x1, GetUnitBasePowGrowth(unit), GetUnitPowGrowth(unit));
-		DrawGrowthWithDifference(0x4, 0x3, GetUnitBaseMagGrowth(unit), GetUnitMagGrowth(unit));
-		DrawGrowthWithDifference(0x4, 0x5, GetUnitBaseSklGrowth(unit), GetUnitSklGrowth(unit));
-		DrawGrowthWithDifference(0x4, 0x7, GetUnitBaseSpdGrowth(unit), GetUnitSpdGrowth(unit));
-		DrawGrowthWithDifference(0x4, 0x9, GetUnitBaseLckGrowth(unit), GetUnitLckGrowth(unit));
-		DrawGrowthWithDifference(0x4, 0xB, GetUnitBaseDefGrowth(unit), GetUnitDefGrowth(unit));
-		DrawGrowthWithDifference(0x4, 0xD, GetUnitBaseResGrowth(unit), GetUnitResGrowth(unit));
-		DrawGrowthWithDifference(0xC, 0x1, GetUnitBaseHpGrowth(unit),  GetUnitHpGrowth(unit));
-	} 
-	else 
+        DrawGrowthWithDifference(0x4, 0x1, GetUnitBasePowGrowth(unit), GetUnitPowGrowth(unit));
+        DrawGrowthWithDifference(0x4, 0x3, GetUnitBaseMagGrowth(unit), GetUnitMagGrowth(unit));
+        DrawGrowthWithDifference(0x4, 0x5, GetUnitBaseSklGrowth(unit), GetUnitSklGrowth(unit));
+        DrawGrowthWithDifference(0x4, 0x7, GetUnitBaseSpdGrowth(unit), GetUnitSpdGrowth(unit));
+        DrawGrowthWithDifference(0x4, 0x9, GetUnitBaseLckGrowth(unit), GetUnitLckGrowth(unit));
+        DrawGrowthWithDifference(0x4, 0xB, GetUnitBaseDefGrowth(unit), GetUnitDefGrowth(unit));
+        DrawGrowthWithDifference(0x4, 0xD, GetUnitBaseResGrowth(unit), GetUnitResGrowth(unit));
+        DrawGrowthWithDifference(0xC, 0x1, GetUnitBaseHpGrowth(unit),  GetUnitHpGrowth(unit));
+    } 
+    else 
     { 
         DrawStatWithBarRework(0, 0x5, 0x1,
                         unit->pow,
@@ -405,7 +402,7 @@ STATIC_DECLAR void DrawPage1ValueReal(void)
                         UNIT_MOV(unit),
                         MovGetter(unit),
                         UNIT_MOV_MAX(unit));
-	}
+    }
 }
 
 STATIC_DECLAR void DrawPage1ValueCommon(void)
