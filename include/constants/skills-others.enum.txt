@@ -106,6 +106,7 @@ SID_Chlorophyll
 SID_SlushRush
 SID_SandRush
 SID_SwiftSwim
+SID_SolarPower
 
 // Initiative skills
 SID_InitStrong

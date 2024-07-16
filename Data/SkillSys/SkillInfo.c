@@ -2759,4 +2759,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_TowerShieldPlus,
     },
 #endif
+
+#if (defined(SID_SolarPower) && COMMON_SKILL_VALID(SID_SolarPower))
+    [SID_SolarPower] = {
+        .desc = MSG_SKILL_SolarPower,
+        .icon = GFX_SkillIcon_SolarPower,
+    },
+#endif
 };

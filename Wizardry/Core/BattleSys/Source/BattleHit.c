@@ -362,6 +362,13 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+
+#if defined(SID_SolarPower) && (COMMON_SKILL_VALID(SID_SolarPower))
+    if (BattleSkillTester(attacker, SID_SolarPower))
+        if(gPlaySt.chapterWeatherId == WEATHER_FLAMES && IsMagicAttack(attacker))
+            increase += SKILL_EFF0(SID_SolarPower);
+#endif
+
     if (gBattleTemporaryFlag.skill_activated_sure_shoot)
         increase += 50;
 
