@@ -20,10 +20,7 @@ bool PostActionGaleForce(ProcPtr parent)
     case UNIT_ACTION_COMBAT:
 #if defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce))
         if (SkillTester(unit, SID_Galeforce) && gBattleActorGlobalFlag.skill_activated_galeforce)
-        {
             goto L_exec_rafrain_action_anim;
-            break;
-        }
 #endif
 
 #if defined(SID_FailGale) && (COMMON_SKILL_VALID(SID_FailGale))
@@ -32,9 +29,8 @@ bool PostActionGaleForce(ProcPtr parent)
             struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
             struct BattleUnit * battle_target = &gBattleTarget;
 
-            if(unit_tar->curHP == battle_target->hpInitial)
+            if (unit_tar->curHP == battle_target->hpInitial)
                 goto L_exec_rafrain_action_anim;
-                break;
         }
 #endif
 
