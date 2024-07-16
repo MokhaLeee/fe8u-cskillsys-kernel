@@ -12,7 +12,7 @@ STATIC_DECLAR void ExecCombatArtEffectAnim(ProcPtr proc)
     u8 cid = GetCombatArtInForce(unit);
     const struct CombatArtInfo * info;
 
-    info = &gpCombatArtInfos[cid];
+    info = GetCombatArtInfo(cid);
     if (info->debuff == UNIT_STATUS_NONE)
         return;
 
@@ -56,7 +56,7 @@ bool PostActionCombatArtEffect(ProcPtr parent)
     if (!COMBART_VALID(cid) || !gBattleActorGlobalFlag.hitted)
         return false;
 
-    info = &gpCombatArtInfos[cid];
+    info = GetCombatArtInfo(cid);
 
     if (info->debuff == UNIT_STATUS_NONE)
         return false;

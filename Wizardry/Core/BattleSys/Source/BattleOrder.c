@@ -29,7 +29,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
     if (&gBattleActor == actor && COMBART_VALID(cid))
     {
-        if (gpCombatArtInfos[cid].double_attack)
+        if (GetCombatArtInfo(cid)->double_attack)
             return true;
 
         return false;

@@ -17,7 +17,7 @@ struct CombatArtInfo {
     s16 cost;
 
     struct {
-        s8 atk, def, hit, avo, crit, silencer, dodge, _pad_;
+        s8 atk, def, hit, avo, crit, silencer, dodge, display_en_n;
     } battle_status;
 
     bool8 double_attack;
@@ -45,17 +45,22 @@ enum combat_art_effectiveness {
 extern const struct CombatArtInfo gCombatArtInfos[0x100];
 extern struct CombatArtInfo const * const gpCombatArtInfos;
 
+static inline const struct CombatArtInfo * GetCombatArtInfo(u8 cid)
+{
+    return &gpCombatArtInfos[cid];
+}
+
 static inline u16 GetCombatArtName(u8 cid)
 {
-    return gpCombatArtInfos[cid].name;
+    return GetCombatArtInfo(cid)->name;
 }
 
 static inline u16 GetCombatArtDesc(u8 cid)
 {
-    if (0 == gpCombatArtInfos[cid].desc)
-        return gpCombatArtInfos[cid].name;
+    if (0 == GetCombatArtInfo(cid)->desc)
+        return GetCombatArtInfo(cid)->name;
 
-    return gpCombatArtInfos[cid].desc;
+    return GetCombatArtInfo(cid)->desc;
 }
 
 /* Combat-art status */

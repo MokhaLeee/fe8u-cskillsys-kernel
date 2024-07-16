@@ -100,7 +100,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit * unit, u8 wtype)
         if (tmp_list[i] == 0)
             continue;
 
-        if (wtype != CA_WTYPE_ANY && gpCombatArtInfos[i].wtype != CA_WTYPE_ANY && gpCombatArtInfos[i].wtype != wtype)
+        if (wtype != CA_WTYPE_ANY && GetCombatArtInfo(i)->wtype != CA_WTYPE_ANY && GetCombatArtInfo(i)->wtype != wtype)
             continue;
 
         sCombatArtList.cid[sCombatArtList.amt++] = i;

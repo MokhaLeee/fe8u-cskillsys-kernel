@@ -65,7 +65,7 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
         int cid = GetCombatArtInForce(actor);
         if (COMBART_VALID(cid))
         {
-            switch (gpCombatArtInfos[cid].effectiveness) {
+            switch (GetCombatArtInfo(cid)->effectiveness) {
             case COMBART_EFF_ALL:
                 goto check_null_effective;
 
