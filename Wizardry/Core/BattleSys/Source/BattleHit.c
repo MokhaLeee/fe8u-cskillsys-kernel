@@ -298,6 +298,17 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
             return 0;
         }
 #endif
+
+#if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
+    if (BattleSkillTester(defender, SID_TowerShieldPlus))
+    {
+        if(gBattleStats.range > 1)
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
+            return 0;
+        }
+    }
+#endif
         if (IsMagicAttack(attacker))
         {
 #if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
@@ -349,6 +360,13 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         increase += 10 * SKILL_EFF0(SID_Impale);
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
     }
+#endif
+
+
+#if defined(SID_SolarPower) && (COMMON_SKILL_VALID(SID_SolarPower))
+    if (BattleSkillTester(attacker, SID_SolarPower))
+        if(gPlaySt.chapterWeatherId == WEATHER_FLAMES && IsMagicAttack(attacker))
+            increase += SKILL_EFF0(SID_SolarPower);
 #endif
 
     if (gBattleTemporaryFlag.skill_activated_sure_shoot)
