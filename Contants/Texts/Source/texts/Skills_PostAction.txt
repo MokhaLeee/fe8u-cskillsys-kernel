@@ -78,3 +78,11 @@ using a staff.[X]
 Fail Gale:[NL]
 Move again after attacking and[NL]
 failing to harm an enemy.[X]
+
+## MSG_SKILL_PoisonStrike_NAME
+P-Strike[X]
+
+## MSG_SKILL_PoisonStrike
+Poison Strike:[NL]
+If user initiated combat, deal up to[NL]
+20% of enemy's current HP in damage.[X]
