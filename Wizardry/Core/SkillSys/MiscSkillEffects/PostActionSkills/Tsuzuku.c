@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "status-getter.h"
 #include "action-expa.h"
 #include "skill-system.h"
 #include "battle-system.h"
@@ -32,7 +33,7 @@ bool PostActionGaleForce(ProcPtr parent)
 
     case UNIT_ACTION_STAFF:
 #if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
-        if (SkillTester(unit, SID_PowerStaff) && Roll1RN(unit->lck))
+        if (SkillTester(unit, SID_PowerStaff) && Roll1RN(LckGetter(unit)))
             goto L_exec_rafrain_action_anim;
 #endif
 
@@ -40,7 +41,7 @@ bool PostActionGaleForce(ProcPtr parent)
 
     default:
 #if defined(SID_Tsuzuku) && (COMMON_SKILL_VALID(SID_Tsuzuku))
-        if (SkillTester(unit, SID_Tsuzuku))
+        if (SkillTester(unit, SID_Tsuzuku) && Roll1RN(SklGetter(unit)))
             goto L_exec_rafrain_action_anim;
 #endif
         break;
