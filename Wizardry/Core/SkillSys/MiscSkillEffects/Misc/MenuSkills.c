@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "kernel-lib.h"
 #include "constants/skills.h"
+#include "battle-system.h"
 
 u8 DanceCommandUsabilityRework(const struct MenuItemDef * def, int number)
 {
@@ -119,4 +120,55 @@ u8 SupplyUsabilityRework(const struct MenuItemDef * def, int number)
             return MENU_ENABLED;
     }
     return MENU_NOTSHOWN;
+}
+
+u8 GambleCommandUsability(const struct MenuItemDef* def, int number) 
+{
+//     int i;
+
+//     if (gActiveUnit->state & US_CANTOING)
+//         return MENU_NOTSHOWN;
+
+// #if defined(SID_Gamble) && (COMMON_SKILL_VALID(SID_Gamble))
+//     if (!SkillTester(gActiveUnit, SID_Gamble))
+// #else
+//     if (1)
+// #endif
+//     return MENU_NOTSHOWN;
+
+//     for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+//         int item = gActiveUnit->items[i];
+
+//         if (item == 0) {
+//             break;
+//         }
+
+//         if (!(GetItemAttributes(item) & IA_WEAPON)) {
+//             continue;
+//         }
+
+//         if (!CanUnitUseWeaponNow(gActiveUnit, item)) {
+//             continue;
+//         }
+
+//         MakeTargetListForWeapon(gActiveUnit, item);
+//         if (GetSelectTargetCount() == 0) {
+//             continue;
+//         }
+
+//         return MENU_ENABLED;
+//     }
+
+//     return MENU_NOTSHOWN;
+
+}
+
+u8 GambleCommandEffect(struct MenuProc* menu, struct MenuItemProc* menuItem) 
+{
+
+    // ResetIconGraphics();
+    // LoadIconPalettes(4);
+    // gBattleActorGlobalFlag.skill_activated_gamble = true;
+    
+    // return StartUnitWeaponSelect(menu, menuItem);
 }

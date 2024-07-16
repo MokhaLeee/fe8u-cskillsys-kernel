@@ -2789,4 +2789,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_SolarPower,
     },
 #endif
+
+#if (defined(SID_Gamble) && COMMON_SKILL_VALID(SID_Gamble))
+    [SID_Gamble] = {
+        .desc = MSG_SKILL_Gamble,
+        .icon = GFX_SkillIcon_Gamble,
+    },
+#endif
 };
