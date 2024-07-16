@@ -24,7 +24,7 @@ bool PostActionGaleForce(ProcPtr parent)
 #endif
 
 #if defined(SID_FailGale) && (COMMON_SKILL_VALID(SID_FailGale))
-        if (SkillTester(unit, SID_FailGale) && gBattleActor.nonZeroDamage)
+        if (SkillTester(unit, SID_FailGale) && !gBattleActor.nonZeroDamage)
             goto L_exec_rafrain_action_anim;
 #endif
 
