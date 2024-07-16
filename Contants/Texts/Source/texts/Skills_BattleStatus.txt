@@ -590,6 +590,11 @@ MageSlayer:[NL]
 +2 damage and +10% crit[NL]
 against magical enemies.[X]
 
+## MSG_SKILL_TowerShieldPlus
+TowerShield+:[NL]
+Take no damage from attacks[NL]
+received at range.[X]
+
 ## MSG_SKILL_SolarPower
 Solar Power:[NL]
 If the weather is sunny, +25%[NL]

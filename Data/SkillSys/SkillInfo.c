@@ -2753,6 +2753,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_TowerShieldPlus) && COMMON_SKILL_VALID(SID_TowerShieldPlus))
+    [SID_TowerShieldPlus] = {
+        .desc = MSG_SKILL_TowerShieldPlus,
+        .icon = GFX_SkillIcon_TowerShieldPlus,
+    },
+#endif
+
 #if (defined(SID_SolarPower) && COMMON_SKILL_VALID(SID_SolarPower))
     [SID_SolarPower] = {
         .desc = MSG_SKILL_SolarPower,
