@@ -3,6 +3,19 @@
 #include "common-chax.h"
 
 /**
+ * designer-config.c
+ */
+struct KernelDesigerConfig {
+    u8 equip_skill_en;
+    u8 max_equipable_skill;
+    u8 remove_move_path;
+    u8 combo_attack_en;
+    u8 use_chinese_character;
+};
+
+extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;
+
+/**
  * map.c
  */
 bool IsPositionValid(s8 x, s8 y);

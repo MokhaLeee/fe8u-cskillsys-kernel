@@ -1,10 +1,11 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "map-movement.h"
 
 /* LynJump */
 void PlayerPhase_DisplayUnitMovement(void)
 {
-    if (gConfigRemoveMovePath == false)
+    if (gpKernelDesigerConfig->remove_move_path == false)
         GetMovementScriptFromPath();
     else
         GenerateBestMovementScript(
@@ -19,7 +20,7 @@ void PlayerPhase_DisplayUnitMovement(void)
 /* LynJump */
 void DrawUpdatedPathArrow(void)
 {
-    if (gConfigRemoveMovePath == false)
+    if (gpKernelDesigerConfig->remove_move_path == false)
     {
         UpdatePathArrowWithCursor();
         DrawPathArrow();

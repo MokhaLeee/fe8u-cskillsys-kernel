@@ -4,6 +4,7 @@
 #include "lvup.h"
 #include "bwl.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "kernel-glyph.h"
 #include "constants/texts.h"
 
@@ -376,7 +377,7 @@ STATIC_DECLAR void DrawPage1BWL(void)
     ClearText(&gStatScreen.text[STATSCREEN_TEXT_BWL]);
 
 #if 0
-    if (gConfigUseGlyph == true)
+    if (gpKernelDesigerConfig->use_chinese_character == true)
     {
         // Draw B label
         Text_InsertDrawString(&gStatScreen.text[STATSCREEN_TEXT_BWL],
@@ -454,7 +455,7 @@ STATIC_DECLAR void DrawPage1Affin(void)
             GetUnitAffinityIcon(unit),
             TILEREF(0, STATSCREEN_BGPAL_EXTICONS));
 
-        if (gConfigUseGlyph == true)
+        if (gpKernelDesigerConfig->use_chinese_character == true)
         {
             PutDrawText(
                 &gStatScreen.text[STATSCREEN_TEXT_ITEM1],

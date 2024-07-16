@@ -49,7 +49,11 @@ int AddSkill(struct Unit * unit, const u16 sid)
 
     LearnSkill(unit, sid);
 
+#if 0
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
+#else
+    for (i = 0; i < (gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN ? gpKernelDesigerConfig->max_equipable_skill : UNIT_RAM_SKILLS_LEN); i++)
+#endif
     {
         if (!GENERIC_SKILL_EFFID(list[i]))
         {

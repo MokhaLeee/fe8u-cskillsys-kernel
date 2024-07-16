@@ -2,6 +2,7 @@
 #include "battle-system.h"
 #include "combo-attack.h"
 #include "skill-system.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR bool BattleComboGenerateHit(void)
@@ -68,7 +69,7 @@ bool BattleComboGenerateHits(void)
     int i;
     u32 attrs;
 
-    if (gpConfigUseComboAtk == 0)
+    if (!gpKernelDesigerConfig->combo_attack_en)
         return false;
 
     /* Not considering on simulation */
