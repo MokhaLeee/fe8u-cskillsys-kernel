@@ -17,24 +17,29 @@ struct CombatArtInfo {
     s16 cost;
 
     struct {
-        s8 atk, def, hit, avo, crit, silencer, dodge;
+        s8 atk, def, hit, avo, crit, silencer, dodge, _pad_;
     } battle_status;
 
-    /* flags */
-    u32 external_calc : 1;
-    u32 magic_attack : 1;
-    u32 effective_armor : 1;
-    u32 effective_ride : 1;
-    u32 effective_fly : 1;
-    u32 effective_dragon : 1;
-    u32 effective_monster : 1;
-    u32 effective_all : 1;
-    u32 double_attack : 1;
-    u32 debuff_gravity : 1;
-    u32 debuff_def : 1;
-    u32 debuff_res : 1;
-    u32 debuff_weaken : 1;
-    u32 aoe_debuff : 1;
+    bool double_attack;
+    bool magic_attack;
+    u8 effectiveness;
+
+    /* debuffs */
+    u8 debuff;
+    bool aoe_debuff;
+
+    u8 _pad_[7];
+};
+
+enum combat_art_effectiveness {
+    /* CombatArtInfo::effectiveness */
+    COMBART_EFF_NONE,
+    COMBART_EFF_ALL,
+    COMBART_EFF_ARMOR,
+    COMBART_EFF_CAVALRY,
+    COMBART_EFF_FLIER,
+    COMBART_EFF_DRAGON,
+    COMBART_EFF_MONSTER,
 };
 
 extern const struct CombatArtInfo gCombatArtInfos[0x100];

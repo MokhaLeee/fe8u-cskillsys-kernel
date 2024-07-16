@@ -13,6 +13,8 @@ STATIC_DECLAR void ExecCombatArtEffectAnim(ProcPtr proc)
     const struct CombatArtInfo * info;
 
     info = &gpCombatArtInfos[cid];
+    if (info->debuff == UNIT_STATUS_NONE)
+        return;
 
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -33,17 +35,7 @@ STATIC_DECLAR void ExecCombatArtEffectAnim(ProcPtr proc)
             continue;
 
         CallMapAnim_HeavyGravity(proc, starget->x, starget->y);
-
-        if (info->double_attack)
-            SetUnitStatusExt(tunit, NEW_UNIT_STATUS_WEAKEN, 1);
-        else if (info->debuff_gravity)
-            SetUnitStatusExt(tunit, NEW_UNIT_STATUS_HEAVY_GRAVITY, 1);
-        else if (info->debuff_def)
-            SetUnitStatusExt(tunit, NEW_UNIT_STATUS_PIERCE_ARMOR, 1);
-        else if (info->debuff_res)
-            SetUnitStatusExt(tunit, NEW_UNIT_STATUS_PIERCE_MAGIC, 1);
-        else if (info->debuff_weaken)
-            SetUnitStatusExt(tunit, NEW_UNIT_STATUS_WEAKEN, 1);
+        SetUnitStatusExt(tunit, info->debuff, 1);
     }
 }
 
@@ -66,10 +58,7 @@ bool PostActionCombatArtEffect(ProcPtr parent)
 
     info = &gpCombatArtInfos[cid];
 
-    if (!info->debuff_gravity &&
-        !info->debuff_def &&
-        !info->debuff_res &&
-        !info->debuff_weaken)
+    if (info->debuff == UNIT_STATUS_NONE)
         return false;
 
     Proc_StartBlocking(ProcScr_CombatArtPostActionEffect, parent);

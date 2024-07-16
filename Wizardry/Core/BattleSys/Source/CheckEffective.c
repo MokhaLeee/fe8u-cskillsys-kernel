@@ -65,34 +65,43 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
         int cid = GetCombatArtInForce(actor);
         if (COMBART_VALID(cid))
         {
-            const struct CombatArtInfo * info = &gpCombatArtInfos[cid];
-            if (info->effective_all)
+            switch (gpCombatArtInfos[cid].effectiveness) {
+            case COMBART_EFF_ALL:
                 goto check_null_effective;
 
-            if (info->effective_dragon)
-            {
-                if (CheckClassDragon(jid_target))
-                    goto check_null_effective;
-            }
-            else if (info->effective_monster)
-            {
-                if (CheckClassBeast(jid_target))
-                    goto check_null_effective;
-            }
-            else if (info->effective_armor)
-            {
+            case COMBART_EFF_ARMOR:
                 if (CheckClassArmor(jid_target))
                     goto check_null_effective;
-            }
-            else if (info->effective_fly)
-            {
-                if (CheckClassFlier(jid_target))
-                    goto check_null_effective;
-            }
-            else if (info->effective_ride)
-            {
+
+                break;
+
+            case COMBART_EFF_CAVALRY:
                 if (CheckClassCavalry(jid_target))
                     goto check_null_effective;
+
+                break;
+
+            case COMBART_EFF_FLIER:
+                if (CheckClassFlier(jid_target))
+                    goto check_null_effective;
+
+                break;
+
+            case COMBART_EFF_DRAGON:
+                if (CheckClassDragon(jid_target))
+                    goto check_null_effective;
+
+                break;
+
+            case COMBART_EFF_MONSTER:
+                if (CheckClassBeast(jid_target))
+                    goto check_null_effective;
+
+                break;
+
+            case COMBART_EFF_NONE:
+            default:
+                break;
             }
         }
     }
