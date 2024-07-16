@@ -20,13 +20,13 @@ struct CombatArtInfo {
         s8 atk, def, hit, avo, crit, silencer, dodge, _pad_;
     } battle_status;
 
-    bool double_attack;
-    bool magic_attack;
+    bool8 double_attack;
+    bool8 magic_attack;
     u8 effectiveness;
 
     /* debuffs */
     u8 debuff;
-    bool aoe_debuff;
+    bool8 aoe_debuff;
 
     u8 _pad_[7];
 };
