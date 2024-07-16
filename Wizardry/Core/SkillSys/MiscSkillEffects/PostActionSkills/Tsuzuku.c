@@ -24,14 +24,8 @@ bool PostActionGaleForce(ProcPtr parent)
 #endif
 
 #if defined(SID_FailGale) && (COMMON_SKILL_VALID(SID_FailGale))
-        if (SkillTester(unit, SID_FailGale))
-        {
-            struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
-            struct BattleUnit * battle_target = &gBattleTarget;
-
-            if (unit_tar->curHP == battle_target->hpInitial)
-                goto L_exec_rafrain_action_anim;
-        }
+        if (SkillTester(unit, SID_FailGale) && gBattleActor.nonZeroDamage)
+            goto L_exec_rafrain_action_anim;
 #endif
 
     /* fall through */
