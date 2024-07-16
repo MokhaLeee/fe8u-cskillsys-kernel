@@ -11,7 +11,7 @@ bool CanRemoveSkill(struct Unit * unit, const u16 sid)
     int i;
     u8 * list = UNIT_RAM_SKILLS(unit);
 
-    if (!GENERIC_SKILL_EFFID(sid))
+    if (!EQUIPE_SKILL_VALID(sid))
         return false;
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
@@ -26,7 +26,7 @@ int RemoveSkill(struct Unit * unit, const u16 sid)
     int i;
     u8 * list = UNIT_RAM_SKILLS(unit);
 
-    if (!GENERIC_SKILL_EFFID(sid))
+    if (!EQUIPE_SKILL_VALID(sid))
         return -1;
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
@@ -43,6 +43,9 @@ int AddSkill(struct Unit * unit, const u16 sid)
 {
     int i;
     u8 * list = UNIT_RAM_SKILLS(unit);
+    const int cnt = gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN
+                  ? gpKernelDesigerConfig->max_equipable_skill
+                  : UNIT_RAM_SKILLS_LEN;
 
     if (sid >= MAX_GENERIC_SKILL_NUM)
         return -1;
@@ -52,10 +55,10 @@ int AddSkill(struct Unit * unit, const u16 sid)
 #if 0
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
 #else
-    for (i = 0; i < (gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN ? gpKernelDesigerConfig->max_equipable_skill : UNIT_RAM_SKILLS_LEN); i++)
+    for (i = 0; i < cnt; i++)
 #endif
     {
-        if (!GENERIC_SKILL_EFFID(list[i]))
+        if (!EQUIPE_SKILL_VALID(list[i]))
         {
             list[i] = sid;
             ResetSkillLists();
@@ -67,7 +70,7 @@ int AddSkill(struct Unit * unit, const u16 sid)
 
 static inline void load_skill_ext(struct Unit * unit, u16 sid)
 {
-    if (GENERIC_SKILL_EFFID(sid))
+    if (EQUIPE_SKILL_VALID(sid))
     {
         if (UNIT_FACTION(unit) == FACTION_BLUE)
             LearnSkill(unit, sid);
@@ -132,7 +135,7 @@ STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
     {
         sid = pConf->skills[_level + i];
 
-        if (GENERIC_SKILL_EFFID(sid))
+        if (EQUIPE_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -149,7 +152,7 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
     {
         sid = jConf->skills[_level + i];
 
-        if (GENERIC_SKILL_EFFID(sid))
+        if (EQUIPE_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -184,7 +187,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid)
     {
         sid = jConf->skills[0 + i];
 
-        if (GENERIC_SKILL_EFFID(sid))
+        if (EQUIPE_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }
