@@ -130,7 +130,6 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
     unit->_u3B = bu->unit._u3B;
 
     ResetSkillLists();
-    ResetCombatArtStatus();
 
     for (it = gpExternalUnitToBattleHook; *it; it++)
         (*it)(unit, bu);

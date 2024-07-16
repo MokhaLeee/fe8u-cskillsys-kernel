@@ -50,3 +50,4 @@
 32=CID_WardArrow
 33=CID_WardArrowPlus
 34=CID_HuntersVolley
+35=CID_Galeforce

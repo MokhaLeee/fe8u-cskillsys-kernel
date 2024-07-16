@@ -405,4 +405,14 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.crit = 10,
         .double_attack = true,
     },
+    [CID_Galeforce] = {
+        .name = MSG_COMART_NAME_Galeforce,
+        .desc = MSG_SKILL_CA_Galeforce,
+        .icon = GFX_SkillIcon_Galeforce,
+        .wtype = CA_WTYPE_ANY,
+        .cost = 3,
+
+        .battle_status.atk = 3,
+        .battle_status.display_en_n = true,
+    },
 };
