@@ -20,7 +20,7 @@ struct CombatArtInfo {
         s8 atk, def, hit, avo, crit, silencer, dodge, display_en_n;
     } battle_status;
 
-    bool8 double_attack;
+    u8 double_attack;
     bool8 magic_attack;
     u8 effectiveness;
 
@@ -40,6 +40,13 @@ enum combat_art_effectiveness {
     COMBART_EFF_FLIER,
     COMBART_EFF_DRAGON,
     COMBART_EFF_MONSTER,
+};
+
+enum combat_art_double {
+    /* CombatArtInfo::double_attack */
+    COMBART_DOUBLE_DISABLED = 0,
+    COMBART_DOUBLE_ENABLED,
+    COMBART_DOUBLE_FORCE_ENABLED,
 };
 
 extern const struct CombatArtInfo gCombatArtInfos[0x100];

@@ -152,7 +152,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 2,
         .battle_status.atk = 2,
         .battle_status.crit = 5,
-        .double_attack = true,
+        .double_attack = COMBART_DOUBLE_FORCE_ENABLED,
     },
     [CID_FrozenLance] = {
         .name = MSG_COMART_NAME_FrozenLance,
@@ -403,7 +403,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 1,
         .battle_status.hit = 15,
         .battle_status.crit = 10,
-        .double_attack = true,
+        .double_attack = COMBART_DOUBLE_FORCE_ENABLED,
     },
     [CID_Galeforce] = {
         .name = MSG_COMART_NAME_Galeforce,
@@ -422,5 +422,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .wtype = CA_WTYPE_ANY,
         .cost = 1,
         .battle_status.display_en_n = true,
+        .double_attack = COMBART_DOUBLE_ENABLED,
     },
 };

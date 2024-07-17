@@ -26,13 +26,19 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
     /* Check combat-art */
     cid = GetCombatArtInForce(&actor->unit);
-
     if (&gBattleActor == actor && COMBART_VALID(cid))
     {
-        if (GetCombatArtInfo(cid)->double_attack)
+        switch (GetCombatArtInfo(cid)->double_attack) {
+        case COMBART_DOUBLE_DISABLED:
+            return false;
+
+        case COMBART_DOUBLE_FORCE_ENABLED:
             return true;
 
-        return false;
+        case COMBART_DOUBLE_ENABLED:
+        default:
+            break;
+        }
     }
 
     /* Basic judgement */
