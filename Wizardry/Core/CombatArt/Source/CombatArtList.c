@@ -21,7 +21,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit * unit, u8 wtype)
     {
         cid = gpCombatArtSkillTable[i];
         if (COMBART_VALID(cid))
-            if (_BattleSkillTester(unit, i))
+            if (SkillTester(unit, i))
                 tmp_list[cid] = true;
     }
 
