@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "debuff.h"
 #include "constants/combat-arts.h"
 #include "constants/texts.h"
 #include "constants/gfx.h"
@@ -23,7 +24,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 5,
         .battle_status.hit = 20,
         .battle_status.crit = 5,
-        .effective_fly = true,
+        .effectiveness = COMBART_EFF_FLIER,
     },
     [CID_Soulblade] = {
         .name = MSG_COMART_NAME_Soulblade,
@@ -34,7 +35,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 1,
         .battle_status.hit = 10,
         .magic_attack = true,
-        .external_calc = true,
     },
     [CID_BaneOfMonsters] = {
         .name = MSG_COMART_NAME_BaneOfMonsters,
@@ -44,7 +44,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 4,
         .battle_status.atk = 6,
         .battle_status.crit = 10,
-        .effective_monster = true,
+        .effectiveness = COMBART_EFF_MONSTER,
     },
     [CID_Sunder] = {
         .name = MSG_COMART_NAME_Sunder,
@@ -78,7 +78,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .icon = GFX_CombatArtIcon_SwordArtAtk,
         .wtype = ITYPE_SWORD,
         .cost = 4,
-        .external_calc = true,
         .battle_status.atk = 2,
         .battle_status.avo = 10,
     },
@@ -101,7 +100,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 6,
         .battle_status.hit = 30,
         .battle_status.crit = 30,
-        .effective_armor = true,
+        .effectiveness = COMBART_EFF_ARMOR,
     },
 
     /* Lance arts */
@@ -123,7 +122,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 5,
         .battle_status.hit = 15,
         .battle_status.crit = 10,
-        .effective_ride = true,
+        .effectiveness = COMBART_EFF_CAVALRY,
     },
     [CID_ShatterSlash] = {
         .name = MSG_COMART_NAME_ShatterSlash,
@@ -133,7 +132,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 3,
         .battle_status.atk = 4,
         .battle_status.hit = 10,
-        .debuff_def = true,
+        .debuff = NEW_UNIT_STATUS_PIERCE_ARMOR,
     },
     [CID_MonsterPiercer] = {
         .name = MSG_COMART_NAME_MonsterPiercer,
@@ -143,7 +142,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 4,
         .battle_status.atk = 5,
         .battle_status.crit = 10,
-        .effective_monster = true,
+        .effectiveness = COMBART_EFF_MONSTER,
     },
     [CID_SwiftStrikes] = {
         .name = MSG_COMART_NAME_SwiftStrikes,
@@ -163,7 +162,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 4,
         .battle_status.atk = 2,
         .battle_status.crit = 10,
-        .external_calc = true,
         .magic_attack = true,
     },
     [CID_Vengeance] = {
@@ -175,7 +173,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 5,
         .battle_status.hit = 20,
         .battle_status.crit = 5,
-        .external_calc = true,
     },
     [CID_LanceJab] = {
         .name = MSG_COMART_NAME_LanceJab,
@@ -185,7 +182,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 5,
         .battle_status.atk = 3,
         .battle_status.crit = 10,
-        .external_calc = true,
     },
 
     /* Axe arts */
@@ -206,7 +202,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 5,
         .battle_status.atk = 7,
         .battle_status.crit = 5,
-        .effective_armor = true,
+        .effectiveness = COMBART_EFF_ARMOR,
     },
     [CID_MonsterBreaker] = {
         .name = MSG_COMART_NAME_MonsterBreaker,
@@ -216,7 +212,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 5,
         .battle_status.atk = 5,
         .battle_status.crit = 15,
-        .effective_monster = true,
+        .effectiveness = COMBART_EFF_MONSTER,
     },
     [CID_FocusedStrike] = {
         .name = MSG_COMART_NAME_FocusedStrike,
@@ -259,7 +255,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 3,
         .battle_status.atk = 4,
         .magic_attack = true,
-        .external_calc = true
     },
     [CID_ArmoredStrike] = {
         .name = MSG_COMART_NAME_ArmoredStrike,
@@ -269,7 +264,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 4,
         .battle_status.atk = 3,
         .battle_status.hit = 10,
-        .external_calc = true,
     },
     [CID_WarMasterStrike] = {
         .name = MSG_COMART_NAME_WarMasterStrike,
@@ -280,7 +274,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 3,
         .battle_status.hit = 30,
         .battle_status.crit = 10,
-        .effective_all = true,
+        .effectiveness = COMBART_EFF_ALL,
     },
     [CID_FlickeringFlower] = {
         .name = MSG_COMART_NAME_FlickeringFlower,
@@ -290,7 +284,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 3,
         .battle_status.atk = 10,
         .battle_status.hit = 10,
-        .debuff_gravity = true,
+        .debuff = NEW_UNIT_STATUS_HEAVY_GRAVITY,
     },
 
     /* Bow arts */
@@ -321,7 +315,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 5,
         .range_bonus = 1,
         .battle_status.hit = 10,
-        .debuff_gravity = true,
+        .debuff = NEW_UNIT_STATUS_HEAVY_GRAVITY,
     },
     [CID_EncloserPlus] = {
         .name = MSG_COMART_NAME_EncloserPlus,
@@ -331,7 +325,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 7,
         .range_bonus = 2,
         .battle_status.hit = 20,
-        .debuff_gravity = true,
+        .debuff = NEW_UNIT_STATUS_HEAVY_GRAVITY,
         .aoe_debuff = true,
     },
     [CID_MonsterBlast] = {
@@ -342,7 +336,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 4,
         .battle_status.atk = 5,
         .battle_status.crit = 10,
-        .effective_monster = true,
+        .effectiveness = COMBART_EFF_MONSTER,
     },
     [CID_SchismShot] = {
         .name = MSG_COMART_NAME_SchismShot,
@@ -354,7 +348,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 4,
         .battle_status.hit = 15,
         .magic_attack = true,
-        .debuff_res = true,
+        .debuff = NEW_UNIT_STATUS_PIERCE_MAGIC,
     },
     [CID_BreakShot] = {
         .name = MSG_COMART_NAME_BaneOfMonsters,
@@ -364,7 +358,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 3,
         .range_bonus = 1,
         .battle_status.hit = 10,
-        .debuff_def = true,
+        .debuff = NEW_UNIT_STATUS_PIERCE_ARMOR,
     },
     [CID_BreakShotPlus] = {
         .name = MSG_COMART_NAME_BreakShotPlus,
@@ -374,7 +368,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 5,
         .range_bonus = 2,
         .battle_status.hit = 20,
-        .debuff_def = true,
+        .debuff = NEW_UNIT_STATUS_PIERCE_ARMOR,
         .aoe_debuff = true,
     },
     [CID_WaningShot] = {
@@ -386,7 +380,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .range_bonus = 1,
         .battle_status.atk = 4,
         .battle_status.hit = 10,
-        .debuff_weaken = true,
+        .debuff = NEW_UNIT_STATUS_WEAKEN,
     },
     [CID_WaningShotPlus] = {
         .name = MSG_COMART_NAME_WaningShotPlus,
@@ -396,7 +390,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .cost = 5,
         .range_bonus = 2,
         .battle_status.hit = 20,
-        .debuff_weaken = true,
+        .debuff = NEW_UNIT_STATUS_WEAKEN,
         .aoe_debuff = true,
     },
     [CID_HuntersVolley] = {
@@ -410,5 +404,15 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.hit = 15,
         .battle_status.crit = 10,
         .double_attack = true,
+    },
+    [CID_Galeforce] = {
+        .name = MSG_COMART_NAME_Galeforce,
+        .desc = MSG_SKILL_CA_Galeforce,
+        .icon = GFX_SkillIcon_Galeforce,
+        .wtype = CA_WTYPE_ANY,
+        .cost = 3,
+
+        .battle_status.atk = 3,
+        .battle_status.display_en_n = true,
     },
 };

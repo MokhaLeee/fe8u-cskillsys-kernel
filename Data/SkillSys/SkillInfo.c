@@ -703,6 +703,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_CA_Galeforce) && COMMON_SKILL_VALID(SID_CA_Galeforce))
+    [SID_CA_Galeforce] = {
+        .desc = MSG_SKILL_CA_Galeforce,
+        .icon = GFX_SkillIcon_Galeforce,
+    },
+#endif
+
 #if (defined(SID_SavageBlow) && COMMON_SKILL_VALID(SID_SavageBlow))
     [SID_SavageBlow] = {
         .desc = MSG_SKILL_SavageBlow,
@@ -2794,6 +2801,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_Gamble] = {
         .desc = MSG_SKILL_Gamble,
         .icon = GFX_SkillIcon_Gamble,
+    },
+#endif
+
+#if (defined(SID_PoisonStrike) && COMMON_SKILL_VALID(SID_PoisonStrike))
+    [SID_PoisonStrike] = {
+        .name = MSG_SKILL_PoisonStrike_NAME,
+        .desc = MSG_SKILL_PoisonStrike,
+        .icon = GFX_SkillIcon_PoisonStrike,
     },
 #endif
 };

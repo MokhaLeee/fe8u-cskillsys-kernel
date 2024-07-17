@@ -9,7 +9,7 @@ TAG=#ENGINE
 INFO=[CSKILL_K: gCombatArtInfos]Configure CombatArt infos
 
 POINTER=0xB2A638
-DATASIZE=0x18
+DATASIZE=32
 DATACOUNT=0x100
 
 LISTNAME=$COMBO combo.arts.txt

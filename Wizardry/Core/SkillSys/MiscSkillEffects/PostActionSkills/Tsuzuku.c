@@ -2,9 +2,12 @@
 #include "debuff.h"
 #include "status-getter.h"
 #include "action-expa.h"
+#include "unit-expa.h"
 #include "skill-system.h"
 #include "battle-system.h"
+#include "combat-art.h"
 #include "constants/skills.h"
+#include "constants/combat-arts.h"
 
 extern u8 gPostActionGaleforceFlag;
 
@@ -14,7 +17,7 @@ bool PostActionGaleForce(ProcPtr parent)
 
     gActionDataExpa.refrain_action = false;
 
-    if (!UNIT_IS_VALID(unit))
+    if (!UNIT_IS_VALID(unit) || CheckBitUES(unit, UES_BIT_TSZUKU_SKILL_USED))
         return false;
 
     switch (gActionData.unitActionType) {
@@ -28,6 +31,9 @@ bool PostActionGaleForce(ProcPtr parent)
         if (SkillTester(unit, SID_FailGale) && !gBattleActor.nonZeroDamage)
             goto L_exec_rafrain_action_anim;
 #endif
+
+        if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enimy_defeated)
+            goto L_exec_rafrain_action_anim;
 
     /* fall through */
 
@@ -56,6 +62,7 @@ L_exec_rafrain_action_anim:
     if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
         return false;
 
+    SetBitUES(unit, UES_BIT_TSZUKU_SKILL_USED);
     gActionDataExpa.refrain_action = true;
     EndAllMus();
     StartStatusHealEffect(unit, parent);

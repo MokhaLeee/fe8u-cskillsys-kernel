@@ -23,7 +23,7 @@ enum SkillInfoListss
 #define SKILL_INDEX_REAL(sid) ((sid) & 0xFF)
 #define SKILL_INDEX_LIST(sid) (((sid) >> 8) & 0xFF)
 
-#define GENERIC_SKILL_EFFID(sid) (sid > 0x000 && sid < 0x0FF)
+#define EQUIPE_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
 #define COMMON_SKILL_VALID(sid) (sid > 0x000 && sid < 0x400)
 
 #define SKILL_ICON(sid) ((2 << 8) + (sid))

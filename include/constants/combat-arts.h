@@ -63,6 +63,9 @@ enum CombatArtIndex {
     CID_WardArrow,
     CID_WardArrowPlus,
     CID_HuntersVolley,      /* √ */
+
+    /* Misc skill related arts */
+    CID_Galeforce,
 };
 
 #endif /* CONFIG_COMBAT_ARTS_INSTALLED */

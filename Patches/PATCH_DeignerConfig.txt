@@ -1,0 +1,22 @@
+NAME=[CSKILL_K dev] designer config
+AUTHOR=Mokha(悠木晓缺)
+
+IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x64 0x65 0x76 0x00
+
+TYPE=STRUCT
+TAG=#ENGINE
+
+DATASIZE=32
+DATACOUNT=1
+
+POINTER=0xB2A680
+B0:$COMBO combo.bool.txt=equip_skill_en
+B1:DECIMAL=max_equipable_skill (0-7)
+B2:$COMBO combo.bool.txt=remove_move_path
+B3:$COMBO combo.bool.txt=use_chinese_character
+B4:$COMBO combo.ktut_level.txt=kernel_tutorial_level
+B5:$COMBO combo.bool.txt=combo_attack_en
+B6:$COMBO combo.bool.txt=battle_surrend_en
+B7:$COMBO combo.bool.txt=hit_decrease_on_range
+
+INFO=Editor: gKernelDesigerConfig

@@ -2,7 +2,7 @@
 
 #include "common-chax.h"
 
-#define NEW_BWL_ARRAY_NUM BWL_ARRAY_NUM
+#define NEW_BWL_ARRAY_NUM CONFIG_UNIT_AMT_ALLY
 
 struct NewBwl {
     /* vanilla */

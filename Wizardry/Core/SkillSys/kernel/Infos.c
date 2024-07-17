@@ -3,9 +3,9 @@
 #include "debug-kit.h"
 #include "constants/gfx.h"
 
-const u8 * _GetSkillIconExt(const u8 sid_real, int list_idx)
+const u8 * _GetSkillIconExt(const u8 lo, int hi)
 {
-    const u8 * icon = gpSkillInfos[sid_real + (list_idx << 8)].icon;
+    const u8 * icon = gpSkillInfos[lo + (hi << 8)].icon;
     if (!icon)
         icon = GFX_SkillIcon_WIP;
 

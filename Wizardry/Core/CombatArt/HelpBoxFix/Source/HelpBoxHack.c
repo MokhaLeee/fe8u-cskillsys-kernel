@@ -88,8 +88,15 @@ void HelpBoxSetupstringLines(struct ProcHelpBoxIntro * proc)
         /* Hack here */
         if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType)
         {
-            DrawHelpBoxCombatArtBkselLabels();
-            proc->pretext_lines = 2;
+            if (!GetCombatArtInfo(proc->item)->battle_status.display_en_n)
+            {
+                DrawHelpBoxCombatArtBkselLabels();
+                proc->pretext_lines = 2;
+            }
+            else
+            {
+                proc->pretext_lines = 0;
+            }
         }
     }
 
@@ -119,7 +126,7 @@ void HelpBoxDrawstring(struct ProcHelpBoxIntro * proc)
     else
     {
         /* Hack here */
-        if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType)
+        if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType && !GetCombatArtInfo(proc->item)->battle_status.display_en_n)
         {
             DrawHelpBoxCombatArtBkselStats();
         }
@@ -150,7 +157,7 @@ int sub_808A454(int item) {
     else
     {
         /* Hack here */
-        if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType)
+        if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType && !GetCombatArtInfo(item)->battle_status.display_en_n)
             return 2;
     }
 
@@ -193,7 +200,7 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc* proc, int width, int height)
     else
     {
         /* Hack here */
-        if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType)
+        if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType && !GetCombatArtInfo(proc->item)->battle_status.display_en_n)
         {
             if (width < 0x90)
                 width = 0x90;
