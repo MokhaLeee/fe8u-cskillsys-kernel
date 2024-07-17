@@ -10,6 +10,7 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 
     [CLASS_PALADIN] = {
         SID_HoneCavalry,
+        SID_CA_Gamble,
     },
 
     [CLASS_PALADIN_F] = {

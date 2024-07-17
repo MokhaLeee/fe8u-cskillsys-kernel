@@ -415,4 +415,12 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.atk = 3,
         .battle_status.display_en_n = true,
     },
+    [CID_Gamble] = {
+        .name = MSG_SKILL_CA_Gamble_NAME,
+        .desc = MSG_SKILL_CA_Gamble,
+        .icon = GFX_SkillIcon_Gamble,
+        .wtype = CA_WTYPE_ANY,
+        .cost = 1,
+        .battle_status.display_en_n = true,
+    },
 };

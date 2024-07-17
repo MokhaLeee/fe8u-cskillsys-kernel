@@ -66,6 +66,7 @@ enum CombatArtIndex {
 
     /* Misc skill related arts */
     CID_Galeforce,
+    CID_Gamble,
 };
 
 #endif /* CONFIG_COMBAT_ARTS_INSTALLED */

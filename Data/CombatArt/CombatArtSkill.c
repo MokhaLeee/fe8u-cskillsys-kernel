@@ -96,4 +96,8 @@ const u8 gCombatArtSkillTable[MAX_SKILL_NUM + 1] = {
 #if defined(SID_CA_Galeforce) && (COMMON_SKILL_VALID(SID_CA_Galeforce))
     [SID_CA_Galeforce] = CID_Galeforce,
 #endif
+
+#if defined(SID_CA_Gamble) && (COMMON_SKILL_VALID(SID_CA_Gamble))
+    [SID_CA_Gamble] = CID_Gamble,
+#endif
 };

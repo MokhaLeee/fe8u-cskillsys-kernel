@@ -1,9 +1,11 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "combat-art.h"
 #include "strmag.h"
 #include "debuff.h"
 #include "kernel-lib.h"
 #include "kernel-tutorial.h"
+#include "constants/combat-arts.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -12,6 +14,19 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
      * Here we need to put some calculation at the end of the pre-battle calc.
      * Thus the main part of calc should be positioned at berfore.
      */
+
+    if (attacker == &gBattleActor)
+    {
+        switch (GetCombatArtInForce(&attacker->unit)) {
+        case CID_Gamble:
+            attacker->battleCritRate = attacker->battleCritRate * 2;
+            attacker->battleHitRate  = attacker->battleHitRate  / 2;
+            break;
+
+        default:
+            break;
+        }
+    }
 
 #if (defined(SID_CatchingUp) && (COMMON_SKILL_VALID(SID_CatchingUp)))
         if (BattleSkillTester(attacker, SID_CatchingUp))

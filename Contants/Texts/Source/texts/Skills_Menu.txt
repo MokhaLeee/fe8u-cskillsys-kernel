@@ -23,6 +23,9 @@ Steal:[NL]
 Unit can use[NL]
 "Steal" command.[X]
 
+## MSG_SKILL_CA_Gamble_NAME
+Gamble[X]
+
 ## MSG_SKILL_CA_Gamble
 Gamble:[NL]
 Art: A reckless attack with[NL]
