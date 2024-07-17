@@ -154,5 +154,8 @@ SID_Boon
 // Post action
 SID_FailGale
 
+// Unit menu skills
+SID_Gamble
+
 // Art skills
 SID_CA_Galeforce

@@ -2797,6 +2797,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Gamble) && COMMON_SKILL_VALID(SID_Gamble))
+    [SID_Gamble] = {
+        .desc = MSG_SKILL_Gamble,
+        .icon = GFX_SkillIcon_Gamble,
+    },
+#endif
+
 #if (defined(SID_PoisonStrike) && COMMON_SKILL_VALID(SID_PoisonStrike))
     [SID_PoisonStrike] = {
         .name = MSG_SKILL_PoisonStrike_NAME,
