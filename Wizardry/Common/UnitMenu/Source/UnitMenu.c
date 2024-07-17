@@ -7,7 +7,6 @@
 
 const struct MenuItemDef gUnitActionMenuItemsRework[] = {
     {"　制圧", 0x67A, 0x6CC, 0, 0x4E, UnitActionMenu_CanSeize, 0, UnitActionMenu_Seize, 0, 0, 0}, // Seize
-    {"　攻撃", MSG_SKILL_Gamble_UnitMenuName, MSG_SKILL_Gamble_UnitMenuDescription, 0, 0x4F, GambleCommandUsability, 0, GambleCommandEffect, 0, DisplayUnitStandingAttackRange, HideMoveRangeGraphicsWrapper}, // Gamble >
     {"　攻撃", 0x67B, 0x6C0, 0, 0x4F, AttackCommandUsability, 0, UnitActionMenu_Attack, 0, DisplayUnitStandingAttackRange, HideMoveRangeGraphicsWrapper}, // Attack >
     {"　攻撃", 0x67B, 0x6C0, 0, 0x50, AttackBallistaCommandUsability, 0, UnitActionMenu_Attack, 0, DisplayUnitStandingAttackRange, HideMoveRangeGraphicsWrapper}, // Attack w/Ballista >
 
