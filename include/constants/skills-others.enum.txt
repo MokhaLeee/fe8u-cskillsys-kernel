@@ -83,6 +83,7 @@ SID_MageSlayer
 // SID_TriangleAdeptPlus
 SID_TowerShieldPlus
 SID_PoisonStrike
+SID_GrislyWound
 
 // Mobility
 SID_Guidance

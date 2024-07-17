@@ -2811,4 +2811,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_PoisonStrike,
     },
 #endif
+
+#if (defined(SID_GrislyWound) && COMMON_SKILL_VALID(SID_GrislyWound))
+    [SID_GrislyWound] = {
+        .name = MSG_SKILL_GrislyWound_NAME,
+        .desc = MSG_SKILL_GrislyWound,
+        .icon = GFX_SkillIcon_GrislyWound,
+    },
+#endif
 };
