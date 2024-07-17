@@ -89,6 +89,7 @@ bool PostActionBattleActorSelfHurt(ProcPtr parent)
 bool PostActionBattleTargetSelfHurt(ProcPtr parent)
 {
     struct Unit * unit = GetUnit(gActionData.targetIndex);
+    struct Unit * actor = GetUnit(gActionData.subjectIndex);
 
     int damage = 0;
 
@@ -97,6 +98,18 @@ bool PostActionBattleTargetSelfHurt(ProcPtr parent)
 
     switch (gActionData.unitActionType) {
     case UNIT_ACTION_COMBAT:
+#if defined(SID_PoisonStrike) && (COMMON_SKILL_VALID(SID_PoisonStrike))
+        if (SkillTester(actor, SID_PoisonStrike))
+        {
+            int poisonStrikeDamage = unit->maxHP / 5;
+
+            if (poisonStrikeDamage > unit->curHP)
+                poisonStrikeDamage = unit->curHP - 1;
+
+            damage += poisonStrikeDamage;
+        }
+#endif
+        break;
     case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
         if (SkillTester(unit, SID_Fury))

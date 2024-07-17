@@ -2796,4 +2796,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_SolarPower,
     },
 #endif
+
+#if (defined(SID_PoisonStrike) && COMMON_SKILL_VALID(SID_PoisonStrike))
+    [SID_PoisonStrike] = {
+        .name = MSG_SKILL_PoisonStrike_NAME,
+        .desc = MSG_SKILL_PoisonStrike,
+        .icon = GFX_SkillIcon_PoisonStrike,
+    },
+#endif
 };
