@@ -232,6 +232,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_FlierFormation] = {{ 3 }},
     [SID_Aerobatics] = {{ 2 }},
     [SID_SoaringWings] = {{ 1 }},
-    [SID_MageSlayer] = {{2, 10}},
-    [SID_SolarPower]  {{ 25 }},
+    [SID_MageSlayer] = {{ 2, 10 }},
+    [SID_SolarPower] = {{ 25 }},
+    [SID_Obstruct] = {{ 25, 1 }},
+    [SID_DetailedReport] = {{ 50, 2, 2 }},
 };

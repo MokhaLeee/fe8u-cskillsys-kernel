@@ -86,16 +86,27 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
 #if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
                 if (SkillTester(_unit, SID_Obstruct))
                 {
-                    if (barrier_range <= 1 && (GetUnitCurrentHp(_unit) * 4) >= GetUnitMaxHp(_unit))
-                        barrier_range = 1;
+                    if ((GetUnitCurrentHp(_unit) * 100) >= (GetUnitMaxHp(_unit) * SKILL_EFF0(SID_Obstruct)))
+                    {
+                        int __barrier = SKILL_EFF1(SID_Obstruct);
+                        if (barrier_range < __barrier)
+                            barrier_range = __barrier;
+                    }
                 }
 #endif
 
 #if (defined(SID_DetailedReport) && COMMON_SKILL_VALID(SID_DetailedReport))
-                if (SkillTester(_unit, SID_DetailedReport) && GetUnitMaxRange(unit) >= 2)
+                if (SkillTester(_unit, SID_Obstruct))
                 {
-                    if (barrier_range <= 2 && (GetUnitCurrentHp(_unit) * 2) >= GetUnitMaxHp(_unit))
-                        barrier_range = 2;
+                    if ((GetUnitCurrentHp(_unit) * 100) >= (GetUnitMaxHp(_unit) * SKILL_EFF0(SID_DetailedReport)))
+                    {
+                        if (GetUnitMaxRange(unit) >= SKILL_EFF1(SID_DetailedReport))
+                        {
+                            int __barrier = SKILL_EFF2(SID_DetailedReport);
+                            if (barrier_range < __barrier)
+                                barrier_range = __barrier;
+                        }
+                    }
                 }
 #endif
             }
