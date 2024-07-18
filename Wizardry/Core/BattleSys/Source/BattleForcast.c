@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "battle-system.h"
+#include "combat-art.h"
 
 extern const u8 Gfx_BKSEL[12][0x80];
 
@@ -12,11 +13,26 @@ void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int 
 
     for (i = 0; i < count; i++)
     {
+        int _i, cost = 1;
+
         if (*usesCounter <= 0)
             break;
 
         *hitsCounter = *hitsCounter + 1;
-        *usesCounter = *usesCounter - 1;
+
+        if (bu == &gBattleActor)
+        {
+            int cid = GetCombatArtInForce(&bu->unit);
+            if (COMBART_VALID(cid))
+            {
+                int _cost = GetCombatArtInfo(cid)->cost;
+                if (_cost > 1)
+                    cost = _cost;
+            }
+        }
+
+        for (_i = 0; _i < cost; _i++)
+            *usesCounter = *usesCounter - 1;
     }
 }
 
