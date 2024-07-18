@@ -158,18 +158,6 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
     if (BattleSkillTester(attacker, SID_NoGuard) || BattleSkillTester(defender, SID_NoGuard))
         attacker->battleEffectiveHitRate = 100;
 #endif
-
-    if (GetCombatArtInForce(&attacker->unit) == CID_Detonate)
-    {
-        int equippedWeapon = GetUnitEquippedWeapon(GetUnit(attacker->unit.index));
-            
-        // The unit must have an equippable weapon and it must not be unbreakable
-        if(equippedWeapon != 0 && !(GetItemAttributes(equippedWeapon) & IA_UNBREAKABLE))
-        {
-            attacker->battleAttack = GetItemUses(equippedWeapon);
-            defender->battleDefense = 0;
-        }
-    }
 }
 
 /* LynJump */
