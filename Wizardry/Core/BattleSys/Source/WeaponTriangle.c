@@ -32,14 +32,14 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
 
     if (item_conf->valid && item_conf->wtype == defender->weaponType)
     {
-        ui  -= item_conf->is_buff ? +1 : -1;
+        ui  += item_conf->is_buff ? +1 : -1;
 
-        atk -= item_conf->battle_status.atk;
-        def -= item_conf->battle_status.def;
-        hit -= item_conf->battle_status.hit;
-        avo -= item_conf->battle_status.avo;
-        crt -= item_conf->battle_status.crit;
-        sil -= item_conf->battle_status.silencer;
+        atk += item_conf->battle_status.atk;
+        def += item_conf->battle_status.def;
+        hit += item_conf->battle_status.hit;
+        avo += item_conf->battle_status.avo;
+        crt += item_conf->battle_status.crit;
+        sil += item_conf->battle_status.silencer;
     }
     else
     {
@@ -63,14 +63,14 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         {
             if (BattleSkillTester(attacker, it->sid))
             {
-                ui  -= item_conf->is_buff ? +1 : -1;
+                ui  += item_conf->is_buff ? +1 : -1;
 
-                atk -= item_conf->battle_status.atk;
-                def -= item_conf->battle_status.def;
-                hit -= item_conf->battle_status.hit;
-                avo -= item_conf->battle_status.avo;
-                crt -= item_conf->battle_status.crit;
-                sil -= item_conf->battle_status.silencer;
+                atk += item_conf->battle_status.atk;
+                def += item_conf->battle_status.def;
+                hit += item_conf->battle_status.hit;
+                avo += item_conf->battle_status.avo;
+                crt += item_conf->battle_status.crit;
+                sil += item_conf->battle_status.silencer;
             }
             break;
         }
