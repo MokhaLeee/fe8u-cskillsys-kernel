@@ -212,7 +212,8 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
 
-    PREP
+    // PREP
+    CALL(EventScr_08591FD8)
 
     NoFade
     ENDA
