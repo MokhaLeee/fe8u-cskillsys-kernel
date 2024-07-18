@@ -97,10 +97,16 @@ BTLPALETTEARGS    := -pn 80
 PRE_BUILD ?=
 chax: $(FE8_CHX)
 
+EA_FLAG := A FE8
+
+ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
+	EA_FLAG += -werr
+endif
+
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
-	@$(EA) A FE8 -werr -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
+	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
 
 CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)

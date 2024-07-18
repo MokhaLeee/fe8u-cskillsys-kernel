@@ -261,6 +261,8 @@ SID_Synergism
 // Mobility
 SID_Pass
 SID_Obstruct
+SID_Aerobatics
+SID_FlierGuidance
 
 // Heal skill
 // SID_LiveToServe

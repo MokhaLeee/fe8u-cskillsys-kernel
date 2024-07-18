@@ -703,9 +703,9 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_CA_Galeforce) && COMMON_SKILL_VALID(SID_CA_Galeforce))
-    [SID_CA_Galeforce] = {
-        .desc = MSG_SKILL_CA_Galeforce,
+#if (defined(SID_COMBAT_Galeforce) && COMMON_SKILL_VALID(SID_COMBAT_Galeforce))
+    [SID_COMBAT_Galeforce] = {
+        .desc = MSG_SKILL_COMBAT_Galeforce,
         .icon = GFX_SkillIcon_Galeforce,
     },
 #endif
@@ -2564,6 +2564,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_DetailedReport) && COMMON_SKILL_VALID(SID_DetailedReport))
+    [SID_DetailedReport] = {
+        .name = MSG_SKILL_DetailedReport_NAME,
+        .desc = MSG_SKILL_DetailedReport,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
     [SID_VengefulFighter] = {
          .name = MSG_SKILL_VengefulFighter_NAME,
@@ -2797,9 +2805,9 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_CA_Gamble) && COMMON_SKILL_VALID(SID_CA_Gamble))
-    [SID_CA_Gamble] = {
-        .desc = MSG_SKILL_CA_Gamble,
+#if (defined(SID_COMBAT_Gamble) && COMMON_SKILL_VALID(SID_COMBAT_Gamble))
+    [SID_COMBAT_Gamble] = {
+        .desc = MSG_SKILL_COMBAT_Gamble,
         .icon = GFX_SkillIcon_Gamble,
     },
 #endif
@@ -2812,10 +2820,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_CA_Detonate) && COMMON_SKILL_VALID(SID_CA_Detonate))
-    [SID_CA_Detonate] = {
-        .desc = MSG_SKILL_CA_Detonate,
-        .icon = GFX_SkillIcon_Detonate,
+#if (defined(SID_GrislyWound) && COMMON_SKILL_VALID(SID_GrislyWound))
+    [SID_GrislyWound] = {
+        .name = MSG_SKILL_GrislyWound_NAME,
+        .desc = MSG_SKILL_GrislyWound,
+        .icon = GFX_SkillIcon_GrislyWound,
     },
 #endif
 };

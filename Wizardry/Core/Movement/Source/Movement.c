@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "arm-func.h"
 #include "class-types.h"
+#include "weapon-range.h"
 #include "kernel-lib.h"
 #include "map-movement.h"
 #include "constants/skills.h"
@@ -80,16 +81,35 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
             /**
              * 1. check for barrier map
              */
+            if (!AreUnitsAllied(unit->index, _unit->index) && !(KernelMoveMapFlags & FMOVSTRE_PASS)) // // Obstruct is not effective on Pass skill
+            {
 #if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
-            if
-            (
-                !AreUnitsAllied(unit->index, _unit->index) &&
-                !(KernelMoveMapFlags & FMOVSTRE_PASS) && // Obstruct is not effective on Pass skill
-                SkillTester(_unit, SID_Obstruct) &&
-                (GetUnitCurrentHp(_unit) * 4) >= GetUnitMaxHp(_unit)
-            )
-                barrier_range = 1;
+                if (SkillTester(_unit, SID_Obstruct))
+                {
+                    if ((GetUnitCurrentHp(_unit) * 100) >= (GetUnitMaxHp(_unit) * SKILL_EFF0(SID_Obstruct)))
+                    {
+                        int __barrier = SKILL_EFF1(SID_Obstruct);
+                        if (barrier_range < __barrier)
+                            barrier_range = __barrier;
+                    }
+                }
 #endif
+
+#if (defined(SID_DetailedReport) && COMMON_SKILL_VALID(SID_DetailedReport))
+                if (SkillTester(_unit, SID_Obstruct))
+                {
+                    if ((GetUnitCurrentHp(_unit) * 100) >= (GetUnitMaxHp(_unit) * SKILL_EFF0(SID_DetailedReport)))
+                    {
+                        if (GetUnitMaxRange(unit) >= SKILL_EFF1(SID_DetailedReport))
+                        {
+                            int __barrier = SKILL_EFF2(SID_DetailedReport);
+                            if (barrier_range < __barrier)
+                                barrier_range = __barrier;
+                        }
+                    }
+                }
+#endif
+            }
 
             if (barrier_range > 3)
                 barrier_range = 3;

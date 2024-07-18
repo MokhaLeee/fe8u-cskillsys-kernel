@@ -111,16 +111,12 @@ void UnitAutoLoadSkills(struct Unit * unit)
         level_j = level_j - 5;
     }
 
-#ifdef CONFIG_DEBUG_UNIT_LOAD_SKILL
     /* For debug, we enable unit learn all of skills */
-    if (UNIT_FACTION(unit) == FACTION_BLUE)
+    if (gpKernelDesigerConfig->debug_autoload_skills && UNIT_FACTION(unit) == FACTION_BLUE)
     {
-        LTRACEF("Character %#x auto learned skill", UNIT_CHAR_ID(unit));
-
         for (i = 1; i < 254; i++)
             LearnSkill(unit, i);
     }
-#endif
 }
 
 STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)

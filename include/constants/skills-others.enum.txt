@@ -79,20 +79,18 @@ SID_Moonlight
 SID_Multiscale
 SID_PridefulWarrior
 SID_MageSlayer
-// SID_TriangleAdept
-// SID_TriangleAdeptPlus
+SID_TriangleAdept
+SID_TriangleAdeptPlus
 SID_TowerShieldPlus
 SID_PoisonStrike
+SID_GrislyWound
 
 // Mobility
 SID_Guidance
-SID_FlierGuidance
 SID_SoaringGuidance
-SID_Aerobatics
 SID_FlierFormation
 SID_SoaringWings
-// SID_DetailedReport
-// SID_OpeningRetainer
+SID_DetailedReport
 
 // Weapon range
 SID_HighGround
@@ -155,6 +153,5 @@ SID_Boon
 SID_FailGale
 
 // Art skills
-SID_CA_Galeforce
-SID_CA_Gamble
-SID_CA_Detonate
+SID_COMBAT_Galeforce
+SID_COMBAT_Gamble

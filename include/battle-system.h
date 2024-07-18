@@ -13,7 +13,6 @@ struct WeaponTriangleConf {
     bool is_buff;
     u16 sid;
 
-
     s8 bonus_atk;
     s8 bonus_def;
     s8 bonus_speed;

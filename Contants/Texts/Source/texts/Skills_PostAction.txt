@@ -21,11 +21,6 @@ Galeforce: Move again after[NL]
 attacking and defeating an enemy.[NL]
 (Skill % activation)[X]
 
-## MSG_SKILL_CA_Galeforce
-Galeforce:[NL]
-Art: ATK +3, Move again[NL]
-after defeating enemy.[X]
-
 ## MSG_SKILL_SavageBlow
 Savage Blow:[NL]
 After attacking, enemies[NL]
@@ -86,3 +81,11 @@ P-Strike[X]
 Poison Strike:[NL]
 If user initiated combat, deal up to[NL]
 20% of enemy's current HP in damage.[X]
+
+## MSG_SKILL_GrislyWound_NAME
+G-Wound[X]
+
+## MSG_SKILL_GrislyWound
+Grisly Wound:[NL]
+Deal up to 20% of the enemy's current[NL]
+HP in damage, after combat.[X]

@@ -2,7 +2,7 @@
 
 2. Since move-path can display no more than 20 steps in vanilla, with the increase of unit's mobility, this limitation may cause risk of overflow and thus crush the game. If you get in error on move-path, you can directly remove it by FEB patch [designer config](../Patches/PATCH_DeignerConfig.txt)
 
-3. The following patches provided by FEBuilderGBA hold clear conflict with c-skillsys thus strictly forbiddened.
+3. The following patches provided by FEBuilderGBA hold clear conflict with c-skillsys thus strictly forbiddened (WIP).
     - Talk AI
     - Anima Triangle
     - AnimNumbers
@@ -60,5 +60,30 @@
     - Status given by Ninis's Grace
     - Status given by Set's Litany
     - Status given by Thor's Ire
+    - Great Shield Activation Rate
+    - Great Shield Damage Reduction
+    - Great Shield First Class
+    - Great Shield Last Class
+    - Silencer Activation Rate vs Boss
+    - Silencer Activation Rate vs Exp 0
+    - Silencer Activation Rate
+    - Silencer-Immune Class
+    - Slayer Skill First Class
+    - Slayer Skill Last Class
+    - Sure Strike Skill First Class
+    - Sure Strike Skill Last Class
+    - Stat Bar Max Length
+    - Modify Maximum Number Of Supports
+    - Metis's Tome Growth Bonus
+    - Skill Pick
+    - Skill Pierce from this class
+    - Skill Pierce to this class
 
-    Please note that this does not mean that other patches are safe.
+    **Please note that this does not mean that other patches are safe**. All patches related as below are dangerous, You need to carefully consider the risks on each patches.
+
+    - unit status calculation
+    - battle status calculation
+    - exp calculation
+    - staff
+    - ring
+    - skills

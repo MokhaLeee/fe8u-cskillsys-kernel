@@ -12,6 +12,16 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
     const struct WeaponTriangleItemConf * item_conf = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
     bool invert = false;
 
+    int ui, atk, def, hit, avo, crt, sil;
+
+    ui  = 0;
+    atk = 0;
+    def = 0;
+    hit = 0;
+    avo = 0;
+    crt = 0;
+    sil = 0;
+
 // We run twice in case both units have nonconforming, so we revert back to the standard boosts
 #if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
     if (BattleSkillTester(attacker, SID_Nonconforming))
@@ -22,33 +32,14 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
 
     if (item_conf->valid && item_conf->wtype == defender->weaponType)
     {
-        LTRACEF("Find item_conf (%p-%p, %d): item=%X atk=%d, def=%d, hit=%d, avo=%d, crt=%d, sil=%d",
-            item_conf->wtype, attacker, defender, ITEM_INDEX(attacker->weaponBefore),
-            item_conf->battle_status.atk, item_conf->battle_status.def, item_conf->battle_status.hit,
-            item_conf->battle_status.avo, item_conf->battle_status.crit, item_conf->battle_status.silencer);
+        ui  += item_conf->is_buff ? +1 : -1;
 
-        attacker->battleAttack       += item_conf->battle_status.atk;
-        attacker->battleDefense      += item_conf->battle_status.def;
-        attacker->battleHitRate      += item_conf->battle_status.hit;
-        attacker->battleAvoidRate    += item_conf->battle_status.avo;
-        attacker->battleCritRate     += item_conf->battle_status.crit;
-        attacker->battleSilencerRate += item_conf->battle_status.silencer;
-
-        /* Just for UI */
-        if (item_conf->is_buff)
-        {
-            attacker->wTriangleHitBonus += invert ? -15 : 15;
-            attacker->wTriangleDmgBonus += invert ? -1 : 1;
-            defender->wTriangleHitBonus -= invert ? -15 : 15;
-            defender->wTriangleDmgBonus -= invert ? -1 : 1;
-        }
-        else
-        {
-            attacker->wTriangleHitBonus += invert ? -15 : 15;
-            attacker->wTriangleDmgBonus += invert ? -1 : 1;
-            defender->wTriangleHitBonus -= invert ? -15 : 15;
-            defender->wTriangleDmgBonus -= invert ? -1 : 1;
-        }
+        atk += item_conf->battle_status.atk;
+        def += item_conf->battle_status.def;
+        hit += item_conf->battle_status.hit;
+        avo += item_conf->battle_status.avo;
+        crt += item_conf->battle_status.crit;
+        sil += item_conf->battle_status.silencer;
     }
     else
     {
@@ -58,17 +49,9 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         {
             if ((attacker->weaponType == it->attackerWeaponType) && (defender->weaponType == it->defenderWeaponType))
             {
-                LTRACEF("Find vanilla (%p-%p, %d-%d): atk=%d, hit=%d",
-                        attacker, defender, it->attackerWeaponType, it->defenderWeaponType, it->atkBonus, it->hitBonus);
-
-                attacker->battleAttack  += invert ? -it->atkBonus : it->atkBonus;
-                attacker->battleHitRate += invert ? -it->hitBonus : it->hitBonus;
-
-                /* Just for UI */
-                attacker->wTriangleHitBonus += invert ? -it->hitBonus : it->hitBonus;
-                attacker->wTriangleDmgBonus += invert ? -it->atkBonus : it->atkBonus;
-                defender->wTriangleHitBonus -= invert ? -it->hitBonus : it->hitBonus;
-                defender->wTriangleDmgBonus -= invert ? -it->atkBonus : it->atkBonus;
+                ui = it->atkBonus > 0 ? +1 : -1;
+                atk += it->atkBonus;
+                hit += it->hitBonus;
                 break;
             }
         }
@@ -78,41 +61,73 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
     {
         if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType)
         {
-            LTRACEF("Find conf (%p-%p, %d-%d): atk=%d, def=%d, as=%d, hit=%d, avo=%d, crt=%d, dog=%d, sil=%d",
-                    attacker, defender,
-                    it->wtype_a, it->wtype_b,
-                    it->bonus_atk, it->bonus_def, it->bonus_speed, it->bonus_hit,
-                    it->bonus_avoid, it->bonus_crit, it->bonus_dodge, it->bonus_silencer);
-
             if (BattleSkillTester(attacker, it->sid))
             {
-                attacker->battleAttack       += it->bonus_atk;
-                attacker->battleDefense      += it->bonus_def;
-                attacker->battleSpeed        += it->bonus_speed;
-                attacker->battleHitRate      += it->bonus_hit;
-                attacker->battleAvoidRate    += it->bonus_avoid;
-                attacker->battleCritRate     += it->bonus_crit;
-                attacker->battleDodgeRate    += it->bonus_dodge;
-                attacker->battleSilencerRate += it->bonus_silencer;
+                ui  += item_conf->is_buff ? +1 : -1;
 
-                /* Just for UI */
-                if (it->is_buff)
-                {
-                    attacker->wTriangleHitBonus += invert ? -15 : 15;
-                    attacker->wTriangleDmgBonus += invert ? -1 : 1;
-                    defender->wTriangleHitBonus -= invert ? -15 : 15;
-                    defender->wTriangleDmgBonus -= invert ? -1 : 1;
-                }
-                else
-                {
-                    attacker->wTriangleHitBonus += invert ? -15 : 15;
-                    attacker->wTriangleDmgBonus += invert ? -1 : 1;
-                    defender->wTriangleHitBonus -= invert ? -15 : 15;
-                    defender->wTriangleDmgBonus -= invert ? -1 : 1;
-                }
+                atk += item_conf->battle_status.atk;
+                def += item_conf->battle_status.def;
+                hit += item_conf->battle_status.hit;
+                avo += item_conf->battle_status.avo;
+                crt += item_conf->battle_status.crit;
+                sil += item_conf->battle_status.silencer;
             }
             break;
         }
+    }
+
+    if
+    (
+#if (defined(SID_TriangleAdept) && (COMMON_SKILL_VALID(SID_TriangleAdept)))
+        BattleSkillTester(attacker, SID_TriangleAdept)
+#else
+        0
+#endif
+        ||
+#if (defined(SID_TriangleAdeptPlus) && (COMMON_SKILL_VALID(SID_TriangleAdeptPlus)))
+        BattleSkillTester(attacker, SID_TriangleAdeptPlus) || BattleSkillTester(defender, SID_TriangleAdeptPlus)
+#else
+        0
+#endif
+    )
+    {
+        ui  *= 2;
+
+        atk *= 2;
+        def *= 2;
+        hit *= 2;
+        avo *= 2;
+        crt *= 2;
+        sil *= 2;
+    }
+
+    if (invert)
+    {
+        attacker->battleAttack       += atk;
+        attacker->battleDefense      += def;
+        attacker->battleHitRate      += hit;
+        attacker->battleAvoidRate    += avo;
+        attacker->battleCritRate     += crt;
+        attacker->battleSilencerRate += sil;
+
+        attacker->wTriangleHitBonus  += ui;
+        attacker->wTriangleDmgBonus  += ui;
+        defender->wTriangleHitBonus  -= ui;
+        defender->wTriangleDmgBonus  -= ui;
+    }
+    else
+    {
+        attacker->battleAttack       -= atk;
+        attacker->battleDefense      -= def;
+        attacker->battleHitRate      -= hit;
+        attacker->battleAvoidRate    -= avo;
+        attacker->battleCritRate     -= crt;
+        attacker->battleSilencerRate -= sil;
+
+        attacker->wTriangleHitBonus  -= ui;
+        attacker->wTriangleDmgBonus  -= ui;
+        defender->wTriangleHitBonus  += ui;
+        defender->wTriangleDmgBonus  += ui;
     }
 }
 

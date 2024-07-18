@@ -53,10 +53,23 @@ STATIC_DECLAR void PostActionSelfHurtCommon(ProcPtr parent, struct Unit * unit, 
 bool PostActionBattleActorSelfHurt(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
+    struct Unit * target = GetUnit(gActionData.targetIndex);
     int damage = 0;
 
     switch (gActionData.unitActionType) {
     case UNIT_ACTION_COMBAT:
+#if defined(SID_GrislyWound) && (COMMON_SKILL_VALID(SID_GrislyWound))
+        if (SkillTester(target, SID_GrislyWound))
+        {
+            int GrislyWoundDamage = unit->maxHP / 5;
+
+            if (GrislyWoundDamage > unit->curHP)
+                GrislyWoundDamage = unit->curHP - 1;
+
+            damage += GrislyWoundDamage;
+        }
+#endif
+        break;
     case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
         if (SkillTester(unit, SID_Fury))
@@ -107,6 +120,18 @@ bool PostActionBattleTargetSelfHurt(ProcPtr parent)
                 poisonStrikeDamage = unit->curHP - 1;
 
             damage += poisonStrikeDamage;
+        }
+#endif
+
+#if defined(SID_GrislyWound) && (COMMON_SKILL_VALID(SID_GrislyWound))
+        if (SkillTester(actor, SID_GrislyWound))
+        {
+            int GrislyWoundDamage = unit->maxHP / 5;
+
+            if (GrislyWoundDamage > unit->curHP)
+                GrislyWoundDamage = unit->curHP - 1;
+
+            damage += GrislyWoundDamage;
         }
 #endif
         break;

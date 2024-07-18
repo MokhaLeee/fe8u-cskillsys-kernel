@@ -214,13 +214,6 @@ STATIC_DECLAR void DrawPage1TextCommon(void)
         GetStringFromIndex(0x4F1)); // Affin
 
     PutDrawText(
-        &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
-        gUiTmScratchA + TILEMAP_INDEX(0x9, 0x9),
-        TEXT_COLOR_SYSTEM_GOLD,
-        0, 0,
-        GetStringFromIndex(0x4F9)); // Trv
-
-    PutDrawText(
         &gStatScreen.text[STATSCREEN_TEXT_STATUS],
         gUiTmScratchA + TILEMAP_INDEX(0x9, 0xB),
         TEXT_COLOR_SYSTEM_GOLD,
@@ -282,25 +275,15 @@ STATIC_DECLAR void DrawPage1ValueCommon(void)
                     ConGetter(unit),
                     UNIT_CON_MAX(unit));
 
-    // displaying unit aid
     PutNumberOrBlank(
         gUiTmScratchA + TILEMAP_INDEX(0xD, 0x5),
         TEXT_COLOR_SYSTEM_BLUE,
         GetUnitAid(unit));
 
-    // displaying unit aid icon
     DrawIcon(gUiTmScratchA + TILEMAP_INDEX(0xE, 0x5),
              GetUnitAidIconId(UNIT_CATTRIBUTES(unit)),
              TILEREF(0, STATSCREEN_BGPAL_EXTICONS));
 
-    // displaying unit rescue name
-    Text_InsertDrawString(
-        &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
-        24, TEXT_COLOR_SYSTEM_BLUE,
-        GetUnitRescueName(unit));
-
-    // displaying unit status name and turns
-    // if (unit->statusIndex == UNIT_STATUS_NONE)
     if (GetUnitStatusIndex(unit) == UNIT_STATUS_NONE)
     {
         Text_InsertDrawString(
@@ -316,14 +299,11 @@ STATIC_DECLAR void DrawPage1ValueCommon(void)
             GetUnitStatusName(unit));
     }
 
-    // display turns
-    // if (gStatScreen.unit->statusIndex != UNIT_STATUS_NONE)
     if (GetUnitStatusIndex(gStatScreen.unit) != UNIT_STATUS_NONE)
     {
         PutNumberSmall(
             gUiTmScratchA + TILEMAP_INDEX(0x10, 0xB),
             0,
-            // unit->statusDuration);
             GetUnitStatusDuration(unit));
     }
 }
@@ -474,6 +454,87 @@ STATIC_DECLAR void DrawPage1Affin(void)
     }
 }
 
+static u8 GetTalkee(struct Unit * unit)
+{
+    int i;
+    const struct EventListCmdInfo * cmd_info = &gEventListCmdInfoTable[EVT_LIST_CMD_CHAR];
+    const EventListScr * list = GetChapterEventDataPointer(gPlaySt.chapterIndex)->characterBasedEvents;
+
+    /* Talk */
+    for (;;)
+    {
+        u8 cmd = EVT_CMD_LO(list[0]);
+        if (cmd == EVT_LIST_CMD_END)
+            break;
+
+        if (cmd != EVT_LIST_CMD_CHAR)
+            continue;
+
+        if (!CheckFlag(EVT_CMD_HI(list[0])))
+        {
+            const struct EvCheck03 * _chunk = (const void * )list;
+            struct EventInfo info = {
+                .listScript = list,
+                .pidA = UNIT_CHAR_ID(unit),
+                .pidB = _chunk->pidB,
+            };
+
+            if (cmd_info->func(&info) == true)
+            {
+                struct Unit * talkee = GetUnitFromCharId(_chunk->pidB);
+                if (UNIT_ALIVE(talkee))
+                    return _chunk->pidB;
+            }
+        }
+        list += cmd_info->length;
+    }
+
+    /* Support */
+    for (i = 0; i < GetUnitSupporterCount(unit); i++)
+    {
+        struct Unit * talkee = GetUnitSupporterUnit(unit, i);
+        if (UNIT_ALIVE(talkee) && CanUnitSupportNow(unit, i))
+            return UNIT_CHAR_ID(talkee);
+    }
+    return 0;
+}
+
+STATIC_DECLAR void DrawPage1TalkTrv(void)
+{
+    gStatScreenStExpa.talkee = GetTalkee(gStatScreen.unit);
+
+    if (gStatScreenStExpa.talkee != 0)
+    {
+        /* Talk */
+        PutDrawText(
+            &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
+            gUiTmScratchA + TILEMAP_INDEX(0x9, 0x9),
+            TEXT_COLOR_SYSTEM_GOLD,
+            0, 0,
+            GetStringFromIndex(MSG_MSS_TALK));
+
+        Text_InsertDrawString(
+            &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
+            24, TEXT_COLOR_SYSTEM_BLUE,
+            GetStringFromIndex(UNIT_NAME_ID(GetUnitFromCharId(gStatScreenStExpa.talkee))));
+    }
+    else
+    {
+        /* Rescue */
+        PutDrawText(
+            &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
+            gUiTmScratchA + TILEMAP_INDEX(0x9, 0x9),
+            TEXT_COLOR_SYSTEM_GOLD,
+            0, 0,
+            GetStringFromIndex(0x4F9));
+
+        Text_InsertDrawString(
+            &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
+            24, TEXT_COLOR_SYSTEM_BLUE,
+            GetUnitRescueName(gStatScreen.unit));
+    }
+}
+
 /* LynJump */
 void DisplayPage0(void)
 {
@@ -504,6 +565,7 @@ void DisplayPage0(void)
     DrawPage1BattleAmt();
     DrawPage1BWL();
     DrawPage1Affin();
+    DrawPage1TalkTrv();
 }
 
 /* LynJump */
@@ -521,9 +583,18 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 
             if (displayIcon)
             {
-                PutSprite(4,
-                    184, 94, gObject_8x8,
-                    TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue >> 6]) + OAM2_LAYER(2));
+                if (gStatScreenStExpa.talkee == 2)
+                {
+                    PutSprite(4,
+                        184, 94, gObject_8x8,
+                        TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue >> 6]) + OAM2_LAYER(2));
+                }
+                else
+                {
+                    PutSprite(4,
+                        28, 86, gObject_8x8,
+                        TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue>>6]) + OAM2_LAYER(2));
+                }
             }
         }
 
@@ -532,7 +603,7 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
             if (displayIcon)
             {
                 PutSprite(4,
-                    10, 86, gObject_8x8,
+                    28, 86, gObject_8x8,
                     TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue>>6]) + OAM2_LAYER(2));
             }
         }

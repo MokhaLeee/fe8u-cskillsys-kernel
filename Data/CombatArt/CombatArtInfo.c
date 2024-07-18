@@ -407,7 +407,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
     },
     [CID_Galeforce] = {
         .name = MSG_COMART_NAME_Galeforce,
-        .desc = MSG_SKILL_CA_Galeforce,
+        .desc = MSG_SKILL_COMBAT_Galeforce,
         .icon = GFX_SkillIcon_Galeforce,
         .wtype = CA_WTYPE_ANY,
         .cost = 3,
@@ -416,8 +416,8 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.display_en_n = true,
     },
     [CID_Gamble] = {
-        .name = MSG_SKILL_CA_Gamble_NAME,
-        .desc = MSG_SKILL_CA_Gamble,
+        .name = MSG_SKILL_COMBAT_Gamble_NAME,
+        .desc = MSG_SKILL_COMBAT_Gamble,
         .icon = GFX_SkillIcon_Gamble,
         .wtype = CA_WTYPE_ANY,
         .cost = 1,
