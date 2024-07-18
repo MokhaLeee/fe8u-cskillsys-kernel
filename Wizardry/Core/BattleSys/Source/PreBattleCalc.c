@@ -62,9 +62,6 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
         if (BattleSkillTester(defender, SID_SorceryBlade))
             status = def < res ? def : res;
 #endif
-
-        if (GetCombatArtInForce(&defender->unit) == CID_Detonate)
-            status = 0;
     }
     attacker->battleDefense = status;
 }

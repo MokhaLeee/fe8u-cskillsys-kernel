@@ -419,9 +419,6 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
                                ? &gBattleTarget
                                : &gBattleActor;
 
-    if (GetCombatArtInForce(&actor->unit) == CID_Detonate)
-        return result;
-
     if (BattleCheckBraveEffect(actor))
         result = result + 1;
 

@@ -165,7 +165,10 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
             
         // The unit must have an equippable weapon and it must not be unbreakable
         if(equippedWeapon != 0 && !(GetItemAttributes(equippedWeapon) & IA_UNBREAKABLE))
+        {
             attacker->battleAttack = GetItemUses(equippedWeapon);
+            defender->battleDefense = 0;
+        }
     }
 }
 

@@ -431,8 +431,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .wtype = CA_WTYPE_ANY,
         .cost = 255,
         .battle_status.display_en_n = true,
+        .double_attack = COMBART_DOUBLE_DISABLED,
     },
-
-    //u16 weapon = GetItemAfterUse(defender->weapon);
-    //GetItemData(ITEM_INDEX(item))->maxUses
 };

@@ -104,6 +104,6 @@ Detonate[X]
 
 ## MSG_SKILL_COMBAT_Detonate
 Detonate:[NL]
-Art: Destroy the unit's equipped weapon[NL]
-to deal the remaining uses as damage.[X]
+Art: Destroy this unit's weapon. Set[NL]
+attack to uses. Set enemy defense to 0.[X]
 
