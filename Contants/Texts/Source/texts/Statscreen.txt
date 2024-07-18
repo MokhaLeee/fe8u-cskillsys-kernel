@@ -32,3 +32,6 @@ being granted by supports.[X]
 ## MSG_MSS_DodgeHelp
 Ability to avoid enemy critical[NL]
 strikes. Affects enemy's crit %.[X]
+
+## MSG_MSS_TALK
+Talk[X]

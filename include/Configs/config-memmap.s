@@ -82,6 +82,7 @@ _kernel_malloc_overlay0 KernelMoveMapFlags, 4
 _kernel_malloc_overlay0 KernelExtMoveBarrierMap, 4
 _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
 _kernel_malloc_overlay0 MapTaskVec, 4
+_kernel_malloc_overlay0 gStatScreenStExpa, 4
 
 /**
  * Usage of memory on IWRAM for arm-functions
