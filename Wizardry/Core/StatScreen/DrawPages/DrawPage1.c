@@ -282,25 +282,20 @@ STATIC_DECLAR void DrawPage1ValueCommon(void)
                     ConGetter(unit),
                     UNIT_CON_MAX(unit));
 
-    // displaying unit aid
     PutNumberOrBlank(
         gUiTmScratchA + TILEMAP_INDEX(0xD, 0x5),
         TEXT_COLOR_SYSTEM_BLUE,
         GetUnitAid(unit));
 
-    // displaying unit aid icon
     DrawIcon(gUiTmScratchA + TILEMAP_INDEX(0xE, 0x5),
              GetUnitAidIconId(UNIT_CATTRIBUTES(unit)),
              TILEREF(0, STATSCREEN_BGPAL_EXTICONS));
 
-    // displaying unit rescue name
     Text_InsertDrawString(
         &gStatScreen.text[STATSCREEN_TEXT_RESCUENAME],
         24, TEXT_COLOR_SYSTEM_BLUE,
         GetUnitRescueName(unit));
 
-    // displaying unit status name and turns
-    // if (unit->statusIndex == UNIT_STATUS_NONE)
     if (GetUnitStatusIndex(unit) == UNIT_STATUS_NONE)
     {
         Text_InsertDrawString(
@@ -316,14 +311,11 @@ STATIC_DECLAR void DrawPage1ValueCommon(void)
             GetUnitStatusName(unit));
     }
 
-    // display turns
-    // if (gStatScreen.unit->statusIndex != UNIT_STATUS_NONE)
     if (GetUnitStatusIndex(gStatScreen.unit) != UNIT_STATUS_NONE)
     {
         PutNumberSmall(
             gUiTmScratchA + TILEMAP_INDEX(0x10, 0xB),
             0,
-            // unit->statusDuration);
             GetUnitStatusDuration(unit));
     }
 }
