@@ -2,7 +2,7 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
 {
