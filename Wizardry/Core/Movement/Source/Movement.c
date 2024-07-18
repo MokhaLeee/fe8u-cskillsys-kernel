@@ -12,10 +12,9 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
     struct Unit * unit;
     int i, ix, iy;
 
-    bool Aerobatics_activated = false;
-    bool FlierFormation_activated = false;
-    bool SoaringWings_activated = false;
-
+    FORCE_DECLARE bool Aerobatics_activated;
+    FORCE_DECLARE bool FlierFormation_activated;
+    FORCE_DECLARE bool SoaringWings_activated;
     FORCE_DECLARE bool self_flier;
 
     static const struct Vec1 * vec_ref[4] = {
@@ -41,6 +40,9 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
     unit = GetUnit(gMovMapFillState.unitId);
 
     self_flier = CheckClassFlier(UNIT_CLASS_ID(unit));
+    Aerobatics_activated = false;
+    FlierFormation_activated = false;
+    SoaringWings_activated = false;
 
 #if (defined(SID_Pass) && COMMON_SKILL_VALID(SID_Pass))
     if (SkillTester(unit, SID_Pass) && ((GetUnitCurrentHp(unit) * 4) >= GetUnitMaxHp(unit)))
@@ -153,31 +155,25 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
                     {
 #if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
                         int __bonus = SKILL_EFF0(SID_FlierFormation);
-#else
-                        int __bonus = 3;
-#endif
                         if (pioneer_range < __bonus)
                             pioneer_range = __bonus;
+#endif
                     }
                     if (Aerobatics_activated && !ally_flier)
                     {
 #if (defined(SID_Aerobatics) && COMMON_SKILL_VALID(SID_Aerobatics))
                         int __bonus = SKILL_EFF0(SID_Aerobatics);
-#else
-                        int __bonus = 2;
-#endif
                         if (pioneer_range < __bonus)
                             pioneer_range = __bonus;
+#endif
                     }
                     if (SoaringWings_activated)
                     {
 #if (defined(SID_SoaringWings) && COMMON_SKILL_VALID(SID_SoaringWings))
                         int __bonus = SKILL_EFF0(SID_SoaringWings);
-#else
-                        int __bonus = 1;
-#endif
                         if (pioneer_range < __bonus)
                             pioneer_range = __bonus;
+#endif
                     }
                 }
 
