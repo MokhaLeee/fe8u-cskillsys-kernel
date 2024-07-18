@@ -21,11 +21,6 @@ Galeforce: Move again after[NL]
 attacking and defeating an enemy.[NL]
 (Skill % activation)[X]
 
-## MSG_SKILL_CA_Galeforce
-Galeforce:[NL]
-Art: ATK +3, Move again[NL]
-after defeating enemy.[X]
-
 ## MSG_SKILL_SavageBlow
 Savage Blow:[NL]
 After attacking, enemies[NL]

@@ -156,5 +156,5 @@ SID_Boon
 SID_FailGale
 
 // Art skills
-SID_CA_Galeforce
-SID_CA_Gamble
+SID_COMBAT_Galeforce
+SID_COMBAT_Gamble
