@@ -86,6 +86,14 @@ static const struct REDA REDA_Tana[] = {
     }
 };
 
+static const struct REDA REDA_Vanessa[] = {
+    {
+        .x = 17,
+        .y = 19,
+        .b = -1,
+    }
+};
+
 static const struct REDA REDA_Ephraim[] = {
     {
         .x = 17,
@@ -104,6 +112,20 @@ static const struct UnitDefinition UnitDef_Ally2[] = {
         .yPosition = 15,
         .redaCount = 1,
         .redas = REDA_Tana,
+        .items = {
+            ITEM_LANCE_SLIM,
+            ITEM_VULNERARY
+        },
+    },
+    {
+        .charIndex = CHARACTER_VANESSA,
+        .classIndex = CLASS_PEGASUS_KNIGHT,
+        .autolevel = true,
+        .level = 10,
+        .xPosition = 19,
+        .yPosition = 15,
+        .redaCount = 1,
+        .redas = REDA_Vanessa,
         .items = {
             ITEM_LANCE_SLIM,
             ITEM_VULNERARY
@@ -190,6 +212,7 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_Obstruct, CHARACTER_SAAR)
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
+    Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
 
     NoFade
     ENDA
