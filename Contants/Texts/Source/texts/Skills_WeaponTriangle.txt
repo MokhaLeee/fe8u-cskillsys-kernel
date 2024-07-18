@@ -45,4 +45,3 @@ T-Adapt+[X]
 Triangle Adapt+:[NL]
 Doubles weapon triangle[NL]
 effects for both units.[X]
-

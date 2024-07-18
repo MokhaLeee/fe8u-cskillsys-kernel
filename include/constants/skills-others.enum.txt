@@ -79,8 +79,8 @@ SID_Moonlight
 SID_Multiscale
 SID_PridefulWarrior
 SID_MageSlayer
-// SID_TriangleAdept
-// SID_TriangleAdeptPlus
+SID_TriangleAdept
+SID_TriangleAdeptPlus
 SID_TowerShieldPlus
 SID_PoisonStrike
 SID_GrislyWound
@@ -93,7 +93,6 @@ SID_Aerobatics
 SID_FlierFormation
 SID_SoaringWings
 SID_DetailedReport
-// SID_OpeningRetainer
 
 // Weapon range
 SID_HighGround
