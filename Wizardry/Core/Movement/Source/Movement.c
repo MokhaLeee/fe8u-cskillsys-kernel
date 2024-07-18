@@ -83,7 +83,7 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
             /**
              * 1. check for barrier map
              */
-            if (!AreUnitsAllied(unit->index, _unit->index) && !(KernelMoveMapFlags & FMOVSTRE_PASS)) // // Obstruct is not effective on Pass skill
+            if (!AreUnitsAllied(unit->index, _unit->index) && !(KernelMoveMapFlags & FMOVSTRE_PASS)) /* Pass skill can ignore barriers */
             {
 #if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
                 if (SkillTester(_unit, SID_Obstruct))
