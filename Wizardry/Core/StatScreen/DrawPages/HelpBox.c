@@ -2,8 +2,6 @@
 #include "stat-screen.h"
 #include "skill-system.h"
 
-#include "StatScreenInternal.h"
-
 /* LynJump */
 void StartStatScreenHelp(int pageid, struct Proc * proc)
 {
@@ -44,6 +42,14 @@ void DisplayPage(int pageid)
     CpuFastFill(0, gUiTmScratchC, sizeof(gUiTmScratchC));
 
     gStatScreenDrawPages[pageid]();
+}
+
+void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc)
+{
+    if (gStatScreenStExpa.talkee != 0)
+        proc->mid = 0x56A;
+    else
+        proc->mid = 0x550;
 }
 
 void HbPopuplate_Page3Skill(struct HelpBoxProc * proc)

@@ -8,8 +8,6 @@
 #include "kernel-glyph.h"
 #include "constants/texts.h"
 
-#include "StatScreenInternal.h"
-
 extern struct Font * gActiveFont;
 extern int sStatScreenPage1BarMax;
 
@@ -583,7 +581,7 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 
             if (displayIcon)
             {
-                if (gStatScreenStExpa.talkee == 2)
+                if (gStatScreenStExpa.talkee == 0)
                 {
                     PutSprite(4,
                         184, 94, gObject_8x8,
