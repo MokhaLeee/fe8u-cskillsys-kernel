@@ -24,4 +24,8 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 #endif
 
     .hit_decrease_on_range = true,
+
+#ifdef CONFIG_DEBUG_UNIT_LOAD_SKILL
+    .debug_autoload_skills = true,
+#endif
 };

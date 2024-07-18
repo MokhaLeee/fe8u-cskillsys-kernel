@@ -18,5 +18,6 @@ B4:$COMBO combo.ktut_level.txt=kernel_tutorial_level
 B5:$COMBO combo.bool.txt=combo_attack_en
 B6:$COMBO combo.bool.txt=battle_surrend_en
 B7:$COMBO combo.bool.txt=hit_decrease_on_range
+B8:$COMBO combo.bool.txt=debug_autoload_skills
 
 INFO=Editor: gKernelDesigerConfig
