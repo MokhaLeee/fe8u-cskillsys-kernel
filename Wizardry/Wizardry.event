@@ -55,7 +55,4 @@ ALIGN 4
 #include "Core/AiHack/AiHack.event"
 
 #include "External/ExternalPatches.event"
-
-#ifdef CONFIG_USE_DEBUG
-    #include "debug.event"
-#endif
+#include "Debug/Debug.event"

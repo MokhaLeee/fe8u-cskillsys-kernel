@@ -3,6 +3,7 @@
 #include "common-chax.h"
 #include "efx-anim.h"
 #include "list-verify.h"
+#include "constants/event-cmds.h"
 
 #ifndef MAX_SKILL_NUM
 #define MAX_SKILL_NUM 0x3FF

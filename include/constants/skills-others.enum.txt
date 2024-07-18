@@ -87,9 +87,7 @@ SID_GrislyWound
 
 // Mobility
 SID_Guidance
-SID_FlierGuidance
 SID_SoaringGuidance
-SID_Aerobatics
 SID_FlierFormation
 SID_SoaringWings
 SID_DetailedReport

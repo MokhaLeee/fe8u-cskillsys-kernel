@@ -1,0 +1,25 @@
+WARNING __World_map_removed__
+
+PUSH
+    ORG 0xA3D770
+    // PROC_GOTO(25)
+
+    /* MNC2 fix */
+    ORG 0xBD070
+    BYTE 0xB8 0xE0
+
+    ORG 0x897B2
+    BYTE 0 0 0 0
+
+    ORG 0x897C4
+    BYTE 0x0E 0x20 0x20 0x56
+
+    /* Remove Monologue */
+    ORG $09E00
+    SHORT $4770
+
+    ORG $A39768
+    EVBIT_MODIFY 0x1
+    SKIPWN
+    ENDA
+POP
