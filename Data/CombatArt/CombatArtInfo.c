@@ -424,4 +424,15 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.display_en_n = true,
         .double_attack = COMBART_DOUBLE_ENABLED,
     },
+    [CID_Detonate] = {
+        .name = MSG_SKILL_CA_Detonate_NAME,
+        .desc = MSG_SKILL_CA_Detonate,
+        .icon = GFX_SkillIcon_Detonate,
+        .wtype = CA_WTYPE_ANY,
+        .cost = 255,
+        .battle_status.display_en_n = true,
+    },
+
+    //u16 weapon = GetItemAfterUse(defender->weapon);
+    //GetItemData(ITEM_INDEX(item))->maxUses
 };

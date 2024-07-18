@@ -6,6 +6,7 @@
 #include "combat-art.h"
 #include "combo-attack.h"
 #include "constants/skills.h"
+#include "constants/combat-arts.h"
 
 #define LOCAL_TRACE 1
 
@@ -417,6 +418,9 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     struct BattleUnit * target = (actor == &gBattleActor)
                                ? &gBattleTarget
                                : &gBattleActor;
+
+    if (GetCombatArtInForce(&actor->unit) == CID_Detonate)
+        return result;
 
     if (BattleCheckBraveEffect(actor))
         result = result + 1;

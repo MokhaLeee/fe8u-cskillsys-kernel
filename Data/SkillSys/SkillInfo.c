@@ -2811,4 +2811,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_PoisonStrike,
     },
 #endif
+
+#if (defined(SID_CA_Detonate) && COMMON_SKILL_VALID(SID_CA_Detonate))
+    [SID_CA_Detonate] = {
+        .desc = MSG_SKILL_CA_Detonate,
+        .icon = GFX_SkillIcon_Detonate,
+    },
+#endif
 };

@@ -30,3 +30,11 @@ Gamble[X]
 Gamble:[NL]
 Art: A reckless attack with[NL]
 halved hit but doubled crit.[X]
+
+## MSG_SKILL_CA_Detonate_NAME
+Detonate[X]
+
+## MSG_SKILL_CA_Detonate
+Detonate:[NL]
+Art: Destroy equipped weapon to[NL]
+deal remaining uses as damage.[X]

@@ -9,6 +9,7 @@
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
+#include "constants/combat-arts.h"
 
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
@@ -61,6 +62,9 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
         if (BattleSkillTester(defender, SID_SorceryBlade))
             status = def < res ? def : res;
 #endif
+
+        if (GetCombatArtInForce(&defender->unit) == CID_Detonate)
+            status = 0;
     }
     attacker->battleDefense = status;
 }
