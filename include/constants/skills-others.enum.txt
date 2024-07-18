@@ -92,7 +92,7 @@ SID_SoaringGuidance
 SID_Aerobatics
 SID_FlierFormation
 SID_SoaringWings
-// SID_DetailedReport
+SID_DetailedReport
 // SID_OpeningRetainer
 
 // Weapon range

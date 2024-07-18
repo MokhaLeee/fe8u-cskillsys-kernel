@@ -2564,6 +2564,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_DetailedReport) && COMMON_SKILL_VALID(SID_DetailedReport))
+    [SID_DetailedReport] = {
+        .name = MSG_SKILL_DetailedReport_NAME,
+        .desc = MSG_SKILL_DetailedReport,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
     [SID_VengefulFighter] = {
          .name = MSG_SKILL_VengefulFighter_NAME,
