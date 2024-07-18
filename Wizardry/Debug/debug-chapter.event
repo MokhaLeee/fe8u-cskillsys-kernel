@@ -32,6 +32,7 @@ TurnBasedEvents:
 END_MAIN
 
 CharacterBasedEvents:
+CharacterEventBothWays(8, 0x089EFB38, Eirika, Seth)
 END_MAIN
 
 LocationBasedEvents:

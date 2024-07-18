@@ -463,9 +463,7 @@ static u8 GetTalkee(struct Unit * unit)
     /* Talk */
     for (;;)
     {
-        u8 cmd;
-
-        cmd = EVT_CMD_LO(list[0]);
+        u8 cmd = EVT_CMD_LO(list[0]);
         if (cmd == EVT_LIST_CMD_END)
             break;
 
