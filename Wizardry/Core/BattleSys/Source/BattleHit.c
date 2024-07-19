@@ -692,13 +692,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         {
             defender->statusOut = UNIT_STATUS_SLEEP;
         }
-        else if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON ||
-#if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
-            BattleSkillTester(attacker, SID_PoisonPoint)
-#else
-            0
-#endif
-        )
+        else if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON)
         {
             defender->statusOut = UNIT_STATUS_POISON;
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
@@ -708,18 +702,26 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
-        else if (
-#if (defined(SID_Petrify) && (COMMON_SKILL_VALID(SID_Petrify)))
-            CheckBattleSkillActivate(attacker, defender, SID_Petrify, attacker->unit.skl)
-#else
-            0
+#if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
+        else if (BattleSkillTester(attacker, SID_PoisonPoint))
+        {
+            defender->statusOut = UNIT_STATUS_POISON;
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
+
+            // "Ungray" defender if it was petrified (as it won't be anymore)
+            debuff = GetUnitStatusIndex(&defender->unit);
+            if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
+                defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
+        }
 #endif
-        )
+#if (defined(SID_Petrify) && (COMMON_SKILL_VALID(SID_Petrify)))
+        else if (CheckBattleSkillActivate(attacker, defender, SID_Petrify, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Petrify);
             defender->statusOut = UNIT_STATUS_PETRIFY;
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
         }
+#endif
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
