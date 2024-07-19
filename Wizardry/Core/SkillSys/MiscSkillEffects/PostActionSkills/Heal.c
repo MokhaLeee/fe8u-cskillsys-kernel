@@ -10,6 +10,11 @@ struct ProcPostActionHeal {
     int heal;
 };
 
+STATIC_DECLAR void PostActionHeal_Init(struct ProcPostActionHeal * proc)
+{
+    MapAnim_CommonInit();
+}
+
 STATIC_DECLAR void PostActionHeal_MoveCamera(ProcPtr proc)
 {
     EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
@@ -26,14 +31,20 @@ STATIC_DECLAR void PostActionHeal_ExecBmHeal(struct ProcPostActionHeal * proc)
     AddUnitHp(gActiveUnit, proc->heal);
 }
 
+STATIC_DECLAR void PostActionHeal_End(struct ProcPostActionHeal * proc)
+{
+    MapAnim_CommonEnd();
+    RestoreBattleRoundInfo();
+}
+
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionHeal[] = {
-    PROC_CALL(MapAnim_CommonInit),
+    PROC_CALL(PostActionHeal_Init),
     PROC_CALL(PostActionHeal_MoveCamera),
     PROC_YIELD,
     PROC_CALL(PostActionHeal_ExecAnim),
     PROC_YIELD,
     PROC_CALL(PostActionHeal_ExecBmHeal),
-    PROC_CALL(MapAnim_CommonEnd),
+    PROC_CALL(PostActionHeal_End),
     PROC_END
 };
 

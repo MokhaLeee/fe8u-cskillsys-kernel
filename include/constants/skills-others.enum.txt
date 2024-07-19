@@ -42,6 +42,7 @@ SID_Bushido
 SID_DragonWall
 SID_DragonWarth
 SID_BlueLionRule
+SID_FaerghusAncestry
 SID_CrusaderWard
 SID_Plus
 SID_Minus
@@ -85,6 +86,8 @@ SID_TowerShieldPlus
 SID_PoisonStrike
 SID_GrislyWound
 SID_Poise
+SID_Enrage
+SID_Petrify
 
 // Mobility
 SID_Guidance
@@ -156,3 +159,4 @@ SID_FailGale
 // Art skills
 SID_COMBAT_Galeforce
 SID_COMBAT_Gamble
+SID_COMBAT_Detonate

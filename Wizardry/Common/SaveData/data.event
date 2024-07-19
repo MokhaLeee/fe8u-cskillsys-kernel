@@ -86,6 +86,7 @@ gEmsSusChunks:
     EmsChunk($0008, SaveRandC, LoadRandC)
 #endif
 
+    EmsChunk($0008, MSU_SaveSelectionPos, MSU_LoadSelectionPos)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
     EmsChunk((51 + 50 + 8) * 16, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
 

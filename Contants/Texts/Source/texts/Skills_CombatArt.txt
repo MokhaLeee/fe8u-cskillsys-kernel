@@ -98,3 +98,11 @@ Gamble[X]
 Gamble:[NL]
 Art: A reckless attack with[NL]
 halved hit but doubled crit.[X]
+
+## MSG_SKILL_COMBAT_Detonate_NAME
+Detonate[X]
+
+## MSG_SKILL_COMBAT_Detonate
+Detonate:[NL]
+Art: Strike a powerful pierced[NL]
+blow by sacrificing own weapon[X]

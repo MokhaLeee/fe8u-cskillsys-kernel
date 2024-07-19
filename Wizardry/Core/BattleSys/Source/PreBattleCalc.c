@@ -515,6 +515,12 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_FaerghusAncestry) && (COMMON_SKILL_VALID(SID_FaerghusAncestry)))
+        case SID_FaerghusAncestry:
+            attacker->battleAttack += GetItemMight(attacker->weapon);
+            break;
+#endif
+
 #if (defined(SID_Frenzy) && (COMMON_SKILL_VALID(SID_Frenzy)))
         case SID_Frenzy:
             if ((attacker->unit.maxHP - attacker->hpInitial) >= 4)
@@ -686,6 +692,22 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_Vigilance) && (COMMON_SKILL_VALID(SID_Vigilance)))
         case SID_Vigilance:
             attacker->battleAvoidRate += 20;
+            break;
+#endif
+
+#if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
+        case SID_QuickDraw:
+            if (attacker == &gBattleActor)
+                attacker->battleAttack += SKILL_EFF0(SID_QuickDraw);
+
+            break;
+#endif
+
+#if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
+        case SID_StrongRiposte:
+            if (attacker == &gBattleTarget)
+                attacker->battleAttack += SKILL_EFF0(SID_StrongRiposte);
+
             break;
 #endif
 

@@ -35,9 +35,9 @@ in 2 tiles heal for 20% their max HP.[X]
 Thunder[X]
 
 ## MSG_SKILL_Thunderstorm
-Thunderstorm:[NL]
-When targeting enemies from 3 tiles away,[NL]
-call an AOE thunder at the enemy location.[X]
+Thunder Storm:[NL]
+Call thunder-storm with AOE damage[NL]
+on emey when attacking from distance.[X]
 
 ## MSG_SKILL_PosReturn
 Return:[NL]

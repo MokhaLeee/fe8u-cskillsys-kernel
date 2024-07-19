@@ -1,39 +1,53 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "battle-system.h"
 #include "constants/skills.h"
 
-struct ProcPostActionSelfHurt {
+struct ProcPostActionHurt {
     PROC_HEADER;
     struct Unit * unit;
     int damage;
     u32 lock;
 };
 
-STATIC_DECLAR void PostActionWaitSelfHurtAnimDone(struct ProcPostActionSelfHurt * proc)
+STATIC_DECLAR void PostActionHurt_Start(struct ProcPostActionHurt * proc)
 {
-    if (proc->lock == GetGameClock())
+    MapAnim_CommonInit();
+    proc->lock = GetGameLock();
+    BeginUnitCritDamageAnim(proc->unit, proc->damage);
+}
+
+STATIC_DECLAR void PostActionWaitHurtAnimDone(struct ProcPostActionHurt * proc)
+{
+    if (proc->lock == GetGameLock())
         Proc_Break(proc);
 }
 
-STATIC_DECLAR void PostActionWaitSelfHurtReal(struct ProcPostActionSelfHurt * proc)
+STATIC_DECLAR void PostActionHurt_End(struct ProcPostActionHurt * proc)
 {
     AddUnitHp(proc->unit, -proc->damage);
+
+    MapAnim_CommonEnd();
+    RestoreBattleRoundInfo();
 }
 
-STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSelfHurt[] = {
-    PROC_NAME("PostActionSelfHurt"),
+STATIC_DECLAR const struct ProcCmd ProcScr_PostActionHurt[] = {
+    PROC_NAME("PostActionHurt"),
+    PROC_YIELD,
+    PROC_CALL(PostActionHurt_Start),
     PROC_SLEEP(4),
-    PROC_WHILE(PostActionWaitSelfHurtAnimDone),
+    PROC_WHILE(PostActionWaitHurtAnimDone),
     PROC_SLEEP(4),
-    PROC_CALL(PostActionWaitSelfHurtReal),
+    PROC_CALL(PostActionHurt_End),
+    PROC_YIELD,
     PROC_END
 };
 
-STATIC_DECLAR void PostActionSelfHurtCommon(ProcPtr parent, struct Unit * unit, int damage)
+STATIC_DECLAR void PostActionHurtCommon(ProcPtr parent, struct Unit * unit, int damage)
 {
-    struct ProcPostActionSelfHurt * proc;
+    struct ProcPostActionHurt * proc;
 
     if (damage <= 0)
         return;
@@ -42,15 +56,13 @@ STATIC_DECLAR void PostActionSelfHurtCommon(ProcPtr parent, struct Unit * unit, 
     RefreshUnitSprites();
     HideUnitSprite(unit);
 
-    proc = Proc_StartBlocking(ProcScr_PostActionSelfHurt, parent);
+    proc = Proc_StartBlocking(ProcScr_PostActionHurt, parent);
+
     proc->unit = unit;
     proc->damage = damage;
-    proc->lock = GetGameClock();
-
-    BeginUnitCritDamageAnim(unit, damage);
 }
 
-bool PostActionBattleActorSelfHurt(ProcPtr parent)
+bool PostActionBattleActorHurt(ProcPtr parent)
 {
     struct Unit * unit = gActiveUnit;
     struct Unit * target = GetUnit(gActionData.targetIndex);
@@ -69,7 +81,9 @@ bool PostActionBattleActorSelfHurt(ProcPtr parent)
             damage += GrislyWoundDamage;
         }
 #endif
-        break;
+
+    /* fall through */
+
     case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
         if (SkillTester(unit, SID_Fury))
@@ -95,11 +109,11 @@ bool PostActionBattleActorSelfHurt(ProcPtr parent)
     if (damage >= GetUnitCurrentHp(unit))
         damage = GetUnitCurrentHp(unit) - 1;
 
-    PostActionSelfHurtCommon(parent, unit, damage);
+    PostActionHurtCommon(parent, unit, damage);
     return true;
 }
 
-bool PostActionBattleTargetSelfHurt(ProcPtr parent)
+bool PostActionBattleTargetHurt(ProcPtr parent)
 {
     struct Unit * unit = GetUnit(gActionData.targetIndex);
     struct Unit * actor = GetUnit(gActionData.subjectIndex);
@@ -134,7 +148,9 @@ bool PostActionBattleTargetSelfHurt(ProcPtr parent)
             damage += GrislyWoundDamage;
         }
 #endif
-        break;
+
+    /* fall through */
+
     case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
         if (SkillTester(unit, SID_Fury))
@@ -155,6 +171,6 @@ bool PostActionBattleTargetSelfHurt(ProcPtr parent)
     if (damage >= GetUnitCurrentHp(unit))
         damage = GetUnitCurrentHp(unit) - 1;
 
-    PostActionSelfHurtCommon(parent, unit, damage);
+    PostActionHurtCommon(parent, unit, damage);
     return true;
 }

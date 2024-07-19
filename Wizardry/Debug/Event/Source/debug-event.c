@@ -57,6 +57,15 @@ static const struct REDA REDA_Ephraim[] = {
     }
 };
 
+static const struct REDA REDA_Saleh[] = {
+    {
+        .x = 14,
+        .y = 26,
+        .b = -1,
+        .delayFrames = 64,
+    }
+};
+
 static const struct UnitDefinition UnitDef_Ally1[] = {
     {
         .charIndex = CHARACTER_EIRIKA,
@@ -145,6 +154,21 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
             ITEM_VULNERARY
         },
     },
+    {
+        .charIndex = CHARACTER_SALEH,
+        .classIndex = CLASS_SAGE,
+        .autolevel = true,
+        .level = 10,
+        .xPosition = 11,
+        .yPosition = 29,
+        .redaCount = 1,
+        .redas = REDA_Saleh,
+        .items = {
+            ITEM_ANIMA_BOLTING,
+            ITEM_ANIMA_ELFIRE,
+            ITEM_VULNERARY
+        },
+    },
     {}
 };
 
@@ -211,6 +235,9 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
+    Evt_AddSkill(SID_MovBonus, CHARACTER_EPHRAIM)
+    Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
+    Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
 
     // PREP
     CALL(EventScr_08591FD8)

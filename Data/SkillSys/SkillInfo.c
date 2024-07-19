@@ -1308,6 +1308,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_MagicEye) && COMMON_SKILL_VALID(SID_MagicEye))
+    [SID_MagicEye] = {
+        .desc = MSG_SKILL_MagicEye,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_KeenFighter) && COMMON_SKILL_VALID(SID_KeenFighter))
     [SID_KeenFighter] = {
         .name = MSG_SKILL_KeenFighter_NAME,
@@ -2425,6 +2432,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_FaerghusAncestry) && COMMON_SKILL_VALID(SID_FaerghusAncestry))
+    [SID_FaerghusAncestry] = {
+        .name = MSG_SKILL_FaerghusAncestry_NAME,
+        .desc = MSG_SKILL_FaerghusAncestry,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_CrusaderWard) && COMMON_SKILL_VALID(SID_CrusaderWard))
     [SID_CrusaderWard] = {
         .name = MSG_SKILL_CrusaderWard_NAME,
@@ -2832,6 +2847,27 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_Poise] = {
         .desc = MSG_SKILL_Poise,
         .icon = GFX_SkillIcon_Poise,
+    },
+#endif
+
+#if (defined(SID_COMBAT_Detonate) && COMMON_SKILL_VALID(SID_COMBAT_Detonate))
+    [SID_COMBAT_Detonate] = {
+        .desc = MSG_SKILL_COMBAT_Detonate,
+        .icon = GFX_SkillIcon_Detonate,
+    },
+#endif
+
+#if (defined(SID_Enrage) && COMMON_SKILL_VALID(SID_Enrage))
+    [SID_Enrage] = {
+        .desc = MSG_SKILL_Enrage,
+        .icon = GFX_SkillIcon_Enrage,
+    },
+#endif
+
+#if (defined(SID_Petrify) && COMMON_SKILL_VALID(SID_Petrify))
+    [SID_Petrify] = {
+        .desc = MSG_SKILL_Petrify,
+        .icon = GFX_SkillIcon_Petrify,
     },
 #endif
 };

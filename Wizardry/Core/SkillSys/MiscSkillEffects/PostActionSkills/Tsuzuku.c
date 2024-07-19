@@ -11,7 +11,7 @@
 
 extern u8 gPostActionGaleforceFlag;
 
-bool PostActionGaleForce(ProcPtr parent)
+bool PostActionTsuzuku(ProcPtr parent)
 {
     FORCE_DECLARE struct Unit * unit = gActiveUnit;
 

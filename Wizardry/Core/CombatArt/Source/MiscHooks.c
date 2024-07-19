@@ -130,6 +130,12 @@ void PreBattleCalcCombatArt(struct BattleUnit * bu, struct BattleUnit * defender
     case CID_LightningAxe:
         bu->battleAttack += GetUnitResistance(unit);
         break;
+
+    case CID_Detonate:
+        if (!(GetItemAttributes(bu->weapon) & IA_UNBREAKABLE))
+            bu->battleAttack += ITEM_USES(bu->weapon);
+
+        break;
     };
 }
 

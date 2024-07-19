@@ -32,6 +32,9 @@ STATIC_DECLAR void PreMapAnimBattleRound_OnStart(ProcPtr proc)
 
 STATIC_DECLAR void PreMapAnimBattleRound_OnEnd(ProcPtr proc)
 {
+    struct Unit * unit = gManimSt.actor[gManimSt.subjectActorId].unit;
+
+    EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
     gManimSt.pCurrentRound++;
 }
 

@@ -3,6 +3,7 @@
 #include "save-data.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "battle-system.h"
 
 void MSU_SavePlaySt(u8 * dst, const u32 size)
 {
@@ -399,4 +400,20 @@ void MSU_LoadGreenUnitExtSkills(u8 * src, const u32 size)
         ReadSramFast(src, &unit->supports[3], 4);
         src += 4;
     }
+}
+
+void MSU_SaveSelectionPos(u8 * dst, const u32 size)
+{
+    Assert(size >= sizeof(gActiveUnitMoveOrigin));
+    WriteAndVerifySramFast(&gActiveUnitMoveOrigin, dst, sizeof(gActiveUnitMoveOrigin));
+}
+
+void MSU_LoadSelectionPos(u8 * src, const u32 size)
+{
+    Assert(size >= (sizeof(gActiveUnitMoveOrigin) + sizeof(gBattleTargetPositionBackup)));
+
+    ReadSramFast(src, &gActiveUnitMoveOrigin, sizeof(gActiveUnitMoveOrigin));
+    src += sizeof(gActiveUnitMoveOrigin);
+
+    ReadSramFast(src, &gBattleTargetPositionBackup, sizeof(gBattleTargetPositionBackup));
 }
