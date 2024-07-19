@@ -13,6 +13,10 @@ const u16 gConstSkillTable_Person[0x100][2] = {
         SID_COMBAT_Detonate,
     },
 
+    [CHARACTER_SALEH] = {
+        SID_Thunderstorm,
+    },
+
     [CHARACTER_LYON_CC] = {
         SID_AversaNight,
     },

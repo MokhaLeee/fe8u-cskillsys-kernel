@@ -72,6 +72,7 @@ SID_ArcaneBlade
 SID_QuickDraw
 SID_KeenFighter
 SID_Hawkeye
+SID_MagicEye
 SID_DragonSkin
 SID_WaterBoost
 SID_EarthBoost

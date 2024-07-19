@@ -247,8 +247,13 @@ Dragon Skin:[NL]
 Halve damage taken.[X]
 
 ## MSG_SKILL_Hawkeye
-Hawkeye:[NL]
+Hawk Eye:[NL]
 User will always hit the enemy.[X]
+
+## MSG_SKILL_MagicEye
+Magic Eye:[NL]
+Unit will not lose hit range when[NL]
+attacking from distance[X]
 
 ## MSG_SKILL_KeenFighter_NAME
 K-Fighter[X]
