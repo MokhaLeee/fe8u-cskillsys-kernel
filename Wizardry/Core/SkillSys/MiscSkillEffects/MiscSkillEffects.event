@@ -1,4 +1,3 @@
-#include "PostActionSkills/SelfHurt.lyn.event"
 #include "PostActionSkills/AlertStance.lyn.event"
 #include "PostActionSkills/Tsuzuku.lyn.event"
 #include "PostActionSkills/SavageBlow.lyn.event"
@@ -8,6 +7,7 @@
 #include "PostActionSkills/Return.lyn.event"
 #include "PostActionSkills/Swap.lyn.event"
 #include "PostActionSkills/Heal.lyn.event"
+#include "PostActionSkills/Hurt.lyn.event"
 #include "PostActionSkills/Synchronize.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
