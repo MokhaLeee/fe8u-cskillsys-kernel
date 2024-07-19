@@ -7,7 +7,7 @@ gPostActionFuncs:
     POIN PostActionBattleActorHurt PostActionBattleTargetHurt
     POIN PostAction_BattleActorHeal
     POIN PostActionAlertStance
-    POIN PostActionGaleForce
+    POIN PostActionTsuzuku
     POIN PostActionSwap
     POIN PostActionPositionReturn
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
