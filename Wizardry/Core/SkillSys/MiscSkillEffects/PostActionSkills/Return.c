@@ -35,6 +35,7 @@ STATIC_DECLAR void PostActionReturnToOrigin(void)
 
 STATIC_DECLAR const EventScr EventScr_PostActionPositionReturn[] = {
     EVBIT_MODIFY(0x4)
+    ASMC(MapAnim_CommonInit)
     ASMC(PostActionReturnSkipMenuIfNotAlly)
     BEQ(0, EVT_SLOT_C, EVT_SLOT_0)
 
@@ -55,6 +56,7 @@ LABEL(0)
     STAL(20)
 
 LABEL(99)
+    ASMC(MapAnim_CommonEnd)
     NoFade
     ENDA
 };

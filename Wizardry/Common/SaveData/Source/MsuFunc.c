@@ -400,3 +400,15 @@ void MSU_LoadGreenUnitExtSkills(u8 * src, const u32 size)
         src += 4;
     }
 }
+
+void MSU_SaveOriginalPosition(u8 * dst, const u32 size)
+{
+    Assert(size >= sizeof(gActiveUnitMoveOrigin));
+    WriteAndVerifySramFast(&gActiveUnitMoveOrigin, dst, sizeof(gActiveUnitMoveOrigin));
+}
+
+void MSU_LoadOriginalPosition(u8 * src, const u32 size)
+{
+    Assert(size >= sizeof(gActiveUnitMoveOrigin));
+    ReadSramFast(src, &gActiveUnitMoveOrigin, sizeof(gActiveUnitMoveOrigin));
+}
