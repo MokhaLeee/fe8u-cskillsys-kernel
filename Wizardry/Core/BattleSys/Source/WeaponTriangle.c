@@ -9,8 +9,12 @@
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const struct WeaponTriangleConf * it;
-    const struct WeaponTriangleItemConf * item_conf = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
+    const struct WeaponTriangleRule * vanilla_it;
+    const struct WeaponTriangleItemConf * item_it;
     bool invert = false;
+
+    bool poise_self = false;
+    bool poise_foo  = false;
 
     int ui, atk, def, hit, avo, crt, sil;
 
@@ -22,7 +26,6 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
     crt = 0;
     sil = 0;
 
-// We run twice in case both units have nonconforming, so we revert back to the standard boosts
 #if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
     if (BattleSkillTester(attacker, SID_Nonconforming))
         invert = !invert;
@@ -30,28 +33,41 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         invert = !invert;
 #endif
 
-    if (item_conf->valid && item_conf->wtype == defender->weaponType)
-    {
-        ui  += item_conf->is_buff ? +1 : -1;
+#if (defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise)))
+    if (BattleSkillTester(attacker, SID_Poise))
+        poise_self = true;
+    if (BattleSkillTester(defender, SID_Poise))
+        poise_foo  = true;
+#endif
 
-        atk += item_conf->battle_status.atk;
-        def += item_conf->battle_status.def;
-        hit += item_conf->battle_status.hit;
-        avo += item_conf->battle_status.avo;
-        crt += item_conf->battle_status.crit;
-        sil += item_conf->battle_status.silencer;
+    item_it = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
+    if (item_it->valid && item_it->wtype == defender->weaponType)
+    {
+        if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self))
+        {
+            ui  += item_it->is_buff ? +1 : -1;
+
+            atk += item_it->battle_status.atk;
+            def += item_it->battle_status.def;
+            hit += item_it->battle_status.hit;
+            avo += item_it->battle_status.avo;
+            crt += item_it->battle_status.crit;
+            sil += item_it->battle_status.silencer;
+        }
     }
     else
     {
         /* vanilla */
-        const struct WeaponTriangleRule * it;
-        for (it = sWeaponTriangleRules; it->attackerWeaponType >= 0; ++it)
+        for (vanilla_it = sWeaponTriangleRules; vanilla_it->attackerWeaponType >= 0; ++vanilla_it)
         {
-            if ((attacker->weaponType == it->attackerWeaponType) && (defender->weaponType == it->defenderWeaponType))
+            if ((attacker->weaponType == vanilla_it->attackerWeaponType) && (defender->weaponType == vanilla_it->defenderWeaponType))
             {
-                ui = it->atkBonus > 0 ? +1 : -1;
-                atk += it->atkBonus;
-                hit += it->hitBonus;
+                if ((vanilla_it->atkBonus > 0 && !poise_foo) || (!(vanilla_it->atkBonus > 0) && !poise_self))
+                {
+                    ui = vanilla_it->atkBonus > 0 ? +1 : -1;
+                    atk += vanilla_it->atkBonus;
+                    hit += vanilla_it->hitBonus;
+                }
                 break;
             }
         }
@@ -63,14 +79,17 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         {
             if (BattleSkillTester(attacker, it->sid))
             {
-                ui  += item_conf->is_buff ? +1 : -1;
+                if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self))
+                {
+                    ui  += it->is_buff ? +1 : -1;
 
-                atk += item_conf->battle_status.atk;
-                def += item_conf->battle_status.def;
-                hit += item_conf->battle_status.hit;
-                avo += item_conf->battle_status.avo;
-                crt += item_conf->battle_status.crit;
-                sil += item_conf->battle_status.silencer;
+                    atk += it->bonus_atk;
+                    def += it->bonus_def;
+                    hit += it->bonus_hit;
+                    avo += it->bonus_avoid;
+                    crt += it->bonus_crit;
+                    sil += it->bonus_silencer;
+                }
             }
             break;
         }
@@ -100,38 +119,6 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         crt *= 2;
         sil *= 2;
     }
-
-
-#if (defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise)))
-        if (BattleSkillTester(attacker, SID_Poise))
-        {
-            if (ui < 0)
-            {
-                ui  = 0;
-
-                atk = 0;
-                def = 0;
-                hit = 0;
-                avo = 0;
-                crt = 0;
-                sil = 0;
-            }
-        }
-        else if (BattleSkillTester(defender, SID_Poise)) 
-        {
-            if (ui > 0)
-            {
-                ui  = 0;
-
-                atk = 0;
-                def = 0;
-                hit = 0;
-                avo = 0;
-                crt = 0;
-                sil = 0;   
-            }
-        }
-#endif
 
     if (!invert)
     {
