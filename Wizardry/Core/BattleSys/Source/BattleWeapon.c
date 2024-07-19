@@ -6,6 +6,7 @@
 #include "weapon-lockex.h"
 #include "constants/items.h"
 #include "constants/skills.h"
+#include "constants/combat-arts.h"
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSlot)
 {
@@ -268,5 +269,6 @@ int GetWeaponCost(struct BattleUnit * bu, u16 item)
         cost = cost * 2;
 #endif
 
+    LIMIT_AREA(cost, 0, 255);
     return cost;
 }

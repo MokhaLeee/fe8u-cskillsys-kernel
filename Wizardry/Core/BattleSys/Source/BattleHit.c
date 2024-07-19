@@ -9,6 +9,7 @@
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
+#include "constants/combat-arts.h"
 
 STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
@@ -182,6 +183,28 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     attack = gBattleStats.attack;
     defense = gBattleStats.defense;
     correction = 0;
+
+    if (attacker == &gBattleActor)
+    {
+        /**
+         * I don't think it's a good idea to put calculation here.
+         *
+         * Also for the combat-art, it is better to judge on round count,
+         * so that it can only take effect on first strike.
+         *
+         * Later we may optimize it.
+         */
+        switch (GetCombatArtInForce(&attacker->unit)) {
+        case CID_Detonate:
+            if (!(GetItemAttributes(attacker->weapon) & IA_UNBREAKABLE))
+                defense = 0;
+
+            break;
+
+        default:
+            break;
+        }
+    }
 
 #if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
     if (BattleSkillTester(attacker, SID_QuickDraw) && attacker == &gBattleTarget)

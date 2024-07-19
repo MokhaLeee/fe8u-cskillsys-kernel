@@ -211,6 +211,8 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
+    Evt_AddSkill(SID_MovBonus, CHARACTER_EPHRAIM)
+    Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
 
     // PREP
     CALL(EventScr_08591FD8)

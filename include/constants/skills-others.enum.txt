@@ -158,4 +158,4 @@ SID_FailGale
 // Art skills
 SID_COMBAT_Galeforce
 SID_COMBAT_Gamble
-// SID_COMBAT_Detonate
+SID_COMBAT_Detonate
