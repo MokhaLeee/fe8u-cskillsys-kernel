@@ -777,14 +777,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     {
 #ifdef CHAX
         /* Check on combat-art */
-        int cost = 1;
-        if (attacker == &gBattleActor)
-        {
-            int cid = GetCombatArtInForce(&attacker->unit);
-            if (COMBART_VALID(cid) && GetCombatArtInfo(cid)->cost > 0)
-                cost = GetCombatArtInfo(cid)->cost;
-        }
-
+        int cost = GetWeaponCost(attacker, attacker->weapon);
         while (cost-- > 0)
         {
             u16 weapon = GetItemAfterUse(attacker->weapon);

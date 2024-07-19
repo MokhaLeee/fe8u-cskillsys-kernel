@@ -13,25 +13,14 @@ void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int 
 
     for (i = 0; i < count; i++)
     {
-        int _i, cost = 1;
+        int _i;
 
         if (*usesCounter <= 0)
             break;
 
         *hitsCounter = *hitsCounter + 1;
 
-        if (bu == &gBattleActor)
-        {
-            int cid = GetCombatArtInForce(&bu->unit);
-            if (COMBART_VALID(cid))
-            {
-                int _cost = GetCombatArtInfo(cid)->cost;
-                if (_cost > 1)
-                    cost = _cost;
-            }
-        }
-
-        for (_i = 0; _i < cost; _i++)
+        for (_i = 0; _i < GetWeaponCost(bu, bu->weapon); _i++)
             *usesCounter = *usesCounter - 1;
     }
 }

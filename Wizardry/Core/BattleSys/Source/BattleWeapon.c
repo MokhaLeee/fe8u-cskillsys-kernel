@@ -242,3 +242,25 @@ s8 CanUnitUseWeapon(struct Unit * unit, int item)
 
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
 }
+
+int GetWeaponCost(struct BattleUnit * bu, u16 item)
+{
+    int cost;
+
+    if (GetItemAttributes(item) & IA_UNBREAKABLE)
+        return 0;
+
+    cost = 1;
+
+    if (bu == &gBattleActor)
+    {
+        int cid = GetCombatArtInForce(&bu->unit);
+        if (COMBART_VALID(cid))
+        {
+            int _cost = GetCombatArtInfo(cid)->cost;
+            if (_cost > 1)
+                cost = _cost;
+        }
+    }
+    return cost;
+}

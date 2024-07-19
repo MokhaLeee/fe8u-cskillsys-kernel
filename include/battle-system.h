@@ -100,6 +100,7 @@ extern u16 BattleOrderSkills[BORDER_MAX];
 /* Battle skill act */
 bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
 
+int GetWeaponCost(struct BattleUnit * bu, u16 item);
 static inline int GetItemFormSlot(struct Unit * unit, int slot)
 {
     switch (slot) {
