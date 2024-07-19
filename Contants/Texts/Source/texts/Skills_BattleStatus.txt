@@ -534,6 +534,14 @@ Blue Lion Rule:[NL]
 Reduce damage as 4% DEF diff[NL]
 (max 40%).[X]
 
+## MSG_SKILL_FaerghusAncestry_NAME
+Faerghus-A[X]
+
+## MSG_SKILL_FaerghusAncestry
+Faerghus Ancestry:[NL]
+Weapon damage doubled,[NL]
+weapon consumption doubled[X]
+
 ## MSG_SKILL_DragonWarth_NAME
 DragonWarth[X]
 

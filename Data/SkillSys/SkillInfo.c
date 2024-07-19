@@ -2425,6 +2425,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_FaerghusAncestry) && COMMON_SKILL_VALID(SID_FaerghusAncestry))
+    [SID_FaerghusAncestry] = {
+        .name = MSG_SKILL_FaerghusAncestry_NAME,
+        .desc = MSG_SKILL_FaerghusAncestry,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_CrusaderWard) && COMMON_SKILL_VALID(SID_CrusaderWard))
     [SID_CrusaderWard] = {
         .name = MSG_SKILL_CrusaderWard_NAME,

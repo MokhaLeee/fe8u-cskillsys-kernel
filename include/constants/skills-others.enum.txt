@@ -42,6 +42,7 @@ SID_Bushido
 SID_DragonWall
 SID_DragonWarth
 SID_BlueLionRule
+SID_FaerghusAncestry
 SID_CrusaderWard
 SID_Plus
 SID_Minus

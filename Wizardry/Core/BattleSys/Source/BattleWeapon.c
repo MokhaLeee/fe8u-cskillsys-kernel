@@ -262,5 +262,11 @@ int GetWeaponCost(struct BattleUnit * bu, u16 item)
                 cost = _cost;
         }
     }
+
+#if (defined(SID_FaerghusAncestry) && (COMMON_SKILL_VALID(SID_FaerghusAncestry)))
+    if (BattleSkillTester(bu, SID_FaerghusAncestry))
+        cost = cost * 2;
+#endif
+
     return cost;
 }

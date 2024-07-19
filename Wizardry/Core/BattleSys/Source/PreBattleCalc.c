@@ -515,6 +515,12 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_FaerghusAncestry) && (COMMON_SKILL_VALID(SID_FaerghusAncestry)))
+        case SID_FaerghusAncestry:
+            attacker->battleAttack += GetItemMight(attacker->weapon);
+            break;
+#endif
+
 #if (defined(SID_Frenzy) && (COMMON_SKILL_VALID(SID_Frenzy)))
         case SID_Frenzy:
             if ((attacker->unit.maxHP - attacker->hpInitial) >= 4)
