@@ -5,6 +5,7 @@
 #include "bwl.h"
 #include "skill-system.h"
 
+#ifdef CONFIG_USE_RAND_C
 STATIC_DECLAR int GetStatIncreaseRandC(int growth, int amount)
 {
     int result = 0;
@@ -20,6 +21,7 @@ STATIC_DECLAR int GetStatIncreaseRandC(int growth, int amount)
 
     return result;
 }
+#endif
 
 /* LynJump */
 int GetStatIncrease(int growth)
@@ -43,6 +45,7 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit * bu, int bonus)
     struct Unit * unit = GetUnit(bu->unit.index);
     int total;
 
+#ifdef CONFIG_USE_RAND_C
     if (gPlaySt.config.controller || (gPlaySt.chapterStateBits & PLAY_FLAG_HARD))
     {
         /* Use switch style lvup on default */
@@ -59,6 +62,7 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit * bu, int bonus)
         BU_CHG_MAG(bu) = GetStatIncreaseRandC(GetUnitMagGrowth(unit) + bonus, randc_ref++);
     }
     else
+#endif
     {
         /* for tutorial mode, use vanilla */
         bu->changeHP  = GetStatIncrease(GetUnitHpGrowth(unit)  + bonus);

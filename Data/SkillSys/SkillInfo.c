@@ -2834,4 +2834,18 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Detonate,
     },
 #endif
+
+#if (defined(SID_Enrage) && COMMON_SKILL_VALID(SID_Enrage))
+    [SID_Enrage] = {
+        .desc = MSG_SKILL_Enrage,
+        .icon = GFX_SkillIcon_Enrage,
+    },
+#endif
+
+#if (defined(SID_Petrify) && COMMON_SKILL_VALID(SID_Petrify))
+    [SID_Petrify] = {
+        .desc = MSG_SKILL_Petrify,
+        .icon = GFX_SkillIcon_Petrify,
+    },
+#endif
 };

@@ -599,3 +599,13 @@ received at range.[X]
 Solar Power:[NL]
 If the weather is sunny, +25%[NL]
 damage when using magic.[X]
+
+## MSG_SKILL_Enrage
+Enrage:[NL]
+Inflict Berserk on the opponent.[NL]
+(Skill % activation).[X]
+
+## MSG_SKILL_Petrify
+Petrify:[NL]
+Inflict stone on the opponent.[NL]
+(Skill % activation).[X]

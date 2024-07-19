@@ -69,6 +69,11 @@
 // #define CONFIG_REMOVE_MOVE_PATH
 
 /**
+ * If comment, use vanilla RNG on judgement of lvup
+ */
+// #define CONFIG_USE_RAND_C
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

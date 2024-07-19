@@ -389,6 +389,10 @@ bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * d
             gBattleHitIterator->info |= (BATTLE_HIT_INFO_FINISHES | BATTLE_HIT_INFO_END);
             return true;
         }
+
+        /* I think this is a bug-fix for vanilla */
+        if (!attacker->weapon)
+            return false;
     }
     return false;
 }

@@ -3,8 +3,6 @@
 #include "stat-screen.h"
 #include "constants/texts.h"
 
-#include "StatScreenInternal.h"
-
 #define PAGE4_PINFO_MAX 8
 
 STATIC_DECLAR void DrawPage4SupportBonus(void)

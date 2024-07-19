@@ -18,6 +18,7 @@ static const struct REDA REDA_Seth[] = {
         .x = 15,
         .y = 27,
         .b = -1,
+        .delayFrames = 8,
     }
 };
 
@@ -25,6 +26,33 @@ static const struct REDA REDA_Myrrh[] = {
     {
         .x = 13,
         .y = 25,
+        .b = -1,
+        .delayFrames = 16,
+    }
+};
+
+static const struct REDA REDA_Tana[] = {
+    {
+        .x = 16,
+        .y = 21,
+        .b = -1,
+        .delayFrames = 32,
+    }
+};
+
+static const struct REDA REDA_Vanessa[] = {
+    {
+        .x = 17,
+        .y = 19,
+        .b = -1,
+        .delayFrames = 48,
+    }
+};
+
+static const struct REDA REDA_Ephraim[] = {
+    {
+        .x = 17,
+        .y = 28,
         .b = -1,
     }
 };
@@ -75,26 +103,6 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
             ITEM_VULNERARY,
         },
     },
-    {}
-};
-
-static const struct REDA REDA_Tana[] = {
-    {
-        .x = 16,
-        .y = 21,
-        .b = -1,
-    }
-};
-
-static const struct REDA REDA_Ephraim[] = {
-    {
-        .x = 17,
-        .y = 28,
-        .b = -1,
-    }
-};
-
-static const struct UnitDefinition UnitDef_Ally2[] = {
     {
         .charIndex = CHARACTER_TANA,
         .classIndex = CLASS_PEGASUS_KNIGHT,
@@ -104,6 +112,20 @@ static const struct UnitDefinition UnitDef_Ally2[] = {
         .yPosition = 15,
         .redaCount = 1,
         .redas = REDA_Tana,
+        .items = {
+            ITEM_LANCE_SLIM,
+            ITEM_VULNERARY
+        },
+    },
+    {
+        .charIndex = CHARACTER_VANESSA,
+        .classIndex = CLASS_PEGASUS_KNIGHT,
+        .autolevel = true,
+        .level = 10,
+        .xPosition = 19,
+        .yPosition = 15,
+        .redaCount = 1,
+        .redas = REDA_Vanessa,
         .items = {
             ITEM_LANCE_SLIM,
             ITEM_VULNERARY
@@ -184,12 +206,14 @@ static const EventScr EventScr_Beginning[] = {
     ENUN
     LOAD1(0x1, UnitDef_Enemy1)
     ENUN
-    LOAD1(0x1, UnitDef_Ally2)
-    ENUN
 
     Evt_AddSkill(SID_Obstruct, CHARACTER_SAAR)
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
+    Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
+
+    // PREP
+    CALL(EventScr_08591FD8)
 
     NoFade
     ENDA

@@ -3,7 +3,10 @@ ALIGN 4
 gGameInitHookTable:
     POIN GameInit_OverflowDetection
     POIN GameInit_CopyArmFuncs GameInit_RedirectMapFloodFunc
-    POIN InitRandC ClearBattleGlobalFlags ResetCombatArtStatus
+#ifdef CONFIG_USE_RAND_C
+    POIN InitRandC
+#endif
+    POIN ClearBattleGlobalFlags ResetCombatArtStatus
     POIN ClearKtutorialFlags
     POIN GameInit_DetectEmsChunks
     POIN StatDeuff_OnNewGameInit
