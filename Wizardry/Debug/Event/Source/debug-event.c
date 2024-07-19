@@ -164,8 +164,8 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
         .redaCount = 1,
         .redas = REDA_Saleh,
         .items = {
-            ITEM_ANIMA_ELFIRE,
             ITEM_ANIMA_BOLTING,
+            ITEM_ANIMA_ELFIRE,
             ITEM_VULNERARY
         },
     },
