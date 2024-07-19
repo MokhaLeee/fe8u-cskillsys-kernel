@@ -5,7 +5,7 @@
 #include "constants/skills.h"
 #include "strmag.h"
 
-FORCE_DECLARE static bool has_ally(struct Unit * unit) 
+FORCE_DECLARE static int has_ally(struct Unit * unit) 
 {
     int i;
     for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
@@ -21,7 +21,14 @@ FORCE_DECLARE static bool has_ally(struct Unit * unit)
             continue;
 
         if (AreUnitsAllied(unit->index, unit_ally->index))
-            return true;
+        {
+            i = 1;
+#if defined(SID_Amaterasu) && (COMMON_SKILL_VALID(SID_Amaterasu))
+            if (SkillTester(unit_ally, SID_Amaterasu))
+                i += 1 << 2;
+#endif
+            return i;
+        }
     }
     return false;
 }
@@ -30,21 +37,28 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 {
     int ret = 0;
 
-#if (defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))) || (defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief)))
-    if (has_ally(unit))
+#if (defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))) || (defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief)) || defined(SID_Amaterasu) && (COMMON_SKILL_VALID(SID_Amaterasu)))
+    int res = has_ally(unit);
+    if (res)
     {
 #if defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))
         if (SkillTester(unit, SID_Camaraderie))
             ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Camaraderie), 100);
 #endif
+
+#if defined(SID_Amaterasu) && (COMMON_SKILL_VALID(SID_Amaterasu))
+        if (res & 1 << 2)
+            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Amaterasu), 100);
+#endif
     }
-    else 
+    else
     {
 #if defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief))
         if (SkillTester(unit, SID_Relief))
             ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Relief), 100);
 #endif
     }
+
 #endif
 
 #if defined(SID_Renewal) && (COMMON_SKILL_VALID(SID_Renewal))

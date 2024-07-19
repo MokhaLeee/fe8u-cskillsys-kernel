@@ -88,6 +88,7 @@ SID_GrislyWound
 SID_Poise
 SID_Enrage
 SID_Petrify
+SID_Amaterasu
 
 // Mobility
 SID_Guidance
