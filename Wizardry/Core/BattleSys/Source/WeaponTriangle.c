@@ -101,24 +101,37 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
         sil *= 2;
     }
 
-    if 
-    (
-#if (defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise)))
-        BattleSkillTester(defender, SID_Poise)
-#else
-        0
-#endif
-    )
-    {
-        ui  = 0;
 
-        atk = 0;
-        def = 0;
-        hit = 0;
-        avo = 0;
-        crt = 0;
-        sil = 0;
-    }
+#if (defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise)))
+        if (BattleSkillTester(attacker, SID_Poise))
+        {
+            if (ui < 0)
+            {
+                ui  = 0;
+
+                atk = 0;
+                def = 0;
+                hit = 0;
+                avo = 0;
+                crt = 0;
+                sil = 0;
+            }
+        }
+        else if (BattleSkillTester(defender, SID_Poise)) 
+        {
+            if (ui > 0)
+            {
+                ui  = 0;
+
+                atk = 0;
+                def = 0;
+                hit = 0;
+                avo = 0;
+                crt = 0;
+                sil = 0;   
+            }
+        }
+#endif
 
     if (!invert)
     {
