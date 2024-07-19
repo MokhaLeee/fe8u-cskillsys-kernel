@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "battle-system.h"
 #include "constants/skills.h"
 
@@ -11,23 +12,36 @@ struct ProcPostActionSelfHurt {
     u32 lock;
 };
 
+STATIC_DECLAR void PostActionHurt_Start(struct ProcPostActionSelfHurt * proc)
+{
+    MapAnim_CommonInit();
+    proc->lock = GetGameLock();
+    BeginUnitCritDamageAnim(proc->unit, proc->damage);
+}
+
 STATIC_DECLAR void PostActionWaitSelfHurtAnimDone(struct ProcPostActionSelfHurt * proc)
 {
-    if (proc->lock == GetGameClock())
+    if (proc->lock == GetGameLock())
         Proc_Break(proc);
 }
 
-STATIC_DECLAR void PostActionWaitSelfHurtReal(struct ProcPostActionSelfHurt * proc)
+STATIC_DECLAR void PostActionHurt_End(struct ProcPostActionSelfHurt * proc)
 {
     AddUnitHp(proc->unit, -proc->damage);
+
+    MapAnim_CommonEnd();
+    RestoreBattleRoundInfo();
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSelfHurt[] = {
     PROC_NAME("PostActionSelfHurt"),
+    PROC_YIELD,
+    PROC_CALL(PostActionHurt_Start),
     PROC_SLEEP(4),
     PROC_WHILE(PostActionWaitSelfHurtAnimDone),
     PROC_SLEEP(4),
-    PROC_CALL(PostActionWaitSelfHurtReal),
+    PROC_CALL(PostActionHurt_End),
+    PROC_YIELD,
     PROC_END
 };
 
@@ -43,11 +57,9 @@ STATIC_DECLAR void PostActionSelfHurtCommon(ProcPtr parent, struct Unit * unit, 
     HideUnitSprite(unit);
 
     proc = Proc_StartBlocking(ProcScr_PostActionSelfHurt, parent);
+
     proc->unit = unit;
     proc->damage = damage;
-    proc->lock = GetGameClock();
-
-    BeginUnitCritDamageAnim(unit, damage);
 }
 
 bool PostActionBattleActorSelfHurt(ProcPtr parent)
@@ -69,7 +81,9 @@ bool PostActionBattleActorSelfHurt(ProcPtr parent)
             damage += GrislyWoundDamage;
         }
 #endif
-        break;
+
+    /* fall through */
+
     case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
         if (SkillTester(unit, SID_Fury))
@@ -134,7 +148,9 @@ bool PostActionBattleTargetSelfHurt(ProcPtr parent)
             damage += GrislyWoundDamage;
         }
 #endif
-        break;
+
+    /* fall through */
+
     case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
         if (SkillTester(unit, SID_Fury))
