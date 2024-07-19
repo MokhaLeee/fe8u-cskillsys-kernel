@@ -721,21 +721,12 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
-        else if (
-#if (defined(SID_Enrage) && (COMMON_SKILL_VALID(SID_Enrage)))
-            CheckBattleSkillActivate(attacker, defender, SID_Enrage, attacker->unit.skl)
-#else
-            0
 #endif
-        )
+#if (defined(SID_Enrage) && (COMMON_SKILL_VALID(SID_Enrage)))
+        else if (CheckBattleSkillActivate(attacker, defender, SID_Enrage, attacker->unit.skl))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Enrage);
             defender->statusOut = UNIT_STATUS_BERSERK;
-
-            // "Ungray" defender if it was petrified (as it won't be anymore)
-            debuff = GetUnitStatusIndex(&defender->unit);
-            if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
-                defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
 #endif
     }
