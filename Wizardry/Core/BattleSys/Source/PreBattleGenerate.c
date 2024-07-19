@@ -6,6 +6,7 @@
 #include "battle-system.h"
 #include "constants/skills.h"
 
+#if (defined(SID_LightAndDark) && (COMMON_SKILL_VALID(SID_LightAndDark)))
 STATIC_DECLAR FORCE_DECLARE void ModifyBattleUnitStatus_LightAndDark(struct BattleUnit * actor, struct BattleUnit * target)
 {
     int i;
@@ -48,6 +49,7 @@ STATIC_DECLAR FORCE_DECLARE void ModifyBattleUnitStatus_LightAndDark(struct Batt
             _BIT_CLR(sdebuff_tar->st.bitmask, i);
     }
 }
+#endif
 
 /**
  * This is set an addition routine on start of function: `BattleGenerate()`
