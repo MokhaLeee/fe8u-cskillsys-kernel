@@ -36,7 +36,7 @@ Thunder[X]
 
 ## MSG_SKILL_Thunderstorm
 Thunder Storm:[NL]
-call thunder-storm with AOE damage[NL]
+Call thunder-storm with AOE damage[NL]
 on emey when attacking from distance.[X]
 
 ## MSG_SKILL_PosReturn
