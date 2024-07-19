@@ -6,7 +6,6 @@
 #include "combat-art.h"
 #include "combo-attack.h"
 #include "constants/skills.h"
-#include "constants/combat-arts.h"
 
 #define LOCAL_TRACE 1
 
