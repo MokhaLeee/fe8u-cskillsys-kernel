@@ -70,7 +70,7 @@ int MovGetterSkills(int status, struct Unit * unit)
 
 #if defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise))
     if (SkillTester(unit, SID_Poise))
-            status += 1;
+        status += SKILL_EFF0(SID_Poise);
 #endif
 
     return status;
