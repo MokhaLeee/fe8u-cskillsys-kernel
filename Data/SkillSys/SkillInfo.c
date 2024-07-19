@@ -2870,4 +2870,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Petrify,
     },
 #endif
+
+#if (defined(SID_Death) && COMMON_SKILL_VALID(SID_Death))
+    [SID_Death] = {
+        .desc = MSG_SKILL_Death,
+        .icon = GFX_SkillIcon_Death,
+    },
+#endif
 };

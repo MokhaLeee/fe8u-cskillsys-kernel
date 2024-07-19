@@ -647,6 +647,19 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 }
             }
 #endif
+
+#if defined(SID_Death) && (COMMON_SKILL_VALID(SID_Death))
+            if (BattleSkillTester(attacker, SID_Death))
+            {
+                char name[] = "Saar";
+                if(strcmp(GetStringFromIndex(GetUnit(defender->unit.index)->pCharacterData->nameTextId), name) == 0)
+                {
+                    RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Death);
+                    gBattleStats.damage = defender->unit.curHP;
+                    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+                }
+            }
+#endif
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)

@@ -146,6 +146,7 @@ SID_Vengeance
 SID_Deadeye
 SID_AxeFaith
 SID_DivinePulse
+SID_Death
 
 // Blow skills
 SID_BlowDarting
