@@ -604,3 +604,8 @@ damage when using magic.[X]
 Enrage:[NL]
 Inflict Berserk on the opponent.[NL]
 (Skill % activation).[X]
+
+## MSG_SKILL_Petrify
+Petrify:[NL]
+Inflict stone on the opponent.[NL]
+(Skill % activation).[X]
