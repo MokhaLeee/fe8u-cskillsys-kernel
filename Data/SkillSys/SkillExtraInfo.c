@@ -236,4 +236,5 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_SolarPower] = {{ 25 }},
     [SID_Obstruct] = {{ 25, 1 }},
     [SID_DetailedReport] = {{ 50, 2, 2 }},
+    [SID_AirRaidAttack] = {{ 5 }},
 };

@@ -1112,6 +1112,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             }
             break;
 #endif
+
+#if (defined(SID_AirRaidAttack) && (COMMON_SKILL_VALID(SID_AirRaidAttack)))
+        case SID_AirRaidAttack:
+            int skillHolderTile = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
+            if (canUnitCrossTerrain(GetUnit(defender->unit.index), skillHolderTile) < 0)
+                attacker->battleAttack += 5;
+            break;
+#endif
         }
     }
 

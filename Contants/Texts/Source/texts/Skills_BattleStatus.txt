@@ -622,3 +622,11 @@ Inflict Berserk on the opponent.[NL]
 Petrify:[NL]
 Inflict stone on the opponent.[NL]
 (Skill % activation).[X]
+
+## MSG_SKILL_AirRaidAttack_NAME
+AR-Attack[X]
+
+## MSG_SKILL_AirRaidAttack
+AirRaid-Attack:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, ATK + 5.[X]

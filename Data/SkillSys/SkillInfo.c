@@ -2863,4 +2863,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Petrify,
     },
 #endif
+
+#if (defined(SID_AirRaidAttack) && COMMON_SKILL_VALID(SID_AirRaidAttack))
+    [SID_AirRaidAttack] = {
+        .name = MSG_SKILL_AirRaidAttack_NAME,
+        .desc = MSG_SKILL_AirRaidAttack,
+        .icon = GFX_SkillIcon_AirRaidAttack,
+    },
+#endif
 };
