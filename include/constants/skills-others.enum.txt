@@ -88,6 +88,13 @@ SID_GrislyWound
 SID_Poise
 SID_Enrage
 SID_Petrify
+SID_AirRaidAttack
+SID_AirRaidAvoid
+SID_AirRaidCrit
+SID_AirRaidDefense
+SID_AirRaidHit
+SID_AirRaidResistance
+SID_AirRaidSpeed
 
 // Mobility
 SID_Guidance

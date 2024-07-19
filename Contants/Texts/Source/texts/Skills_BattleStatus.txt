@@ -622,3 +622,59 @@ Inflict Berserk on the opponent.[NL]
 Petrify:[NL]
 Inflict stone on the opponent.[NL]
 (Skill % activation).[X]
+
+## MSG_SKILL_AirRaidAttack_NAME
+AR-Attack[X]
+
+## MSG_SKILL_AirRaidAttack
+AirRaid-Attack:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, ATK + 5.[X]
+
+## MSG_SKILL_AirRaidAvoid_NAME
+AR-Avoid[X]
+
+## MSG_SKILL_AirRaidAvoid
+AirRaid-Avoid:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, AVO + 15.[X]
+
+## MSG_SKILL_AirRaidCrit_NAME
+AR-Crit[X]
+
+## MSG_SKILL_AirRaidCrit
+AirCrit-Attack:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, CRT + 5.[X]
+
+## MSG_SKILL_AirRaidDefense_NAME
+AR-Defense[X]
+
+## MSG_SKILL_AirRaidDefense
+AirRaid-Defense:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, DEF + 5.[X]
+
+## MSG_SKILL_AirRaidHit_NAME
+AR-Hit[X]
+
+## MSG_SKILL_AirRaidHit
+AirRaid-Hit:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, HIT + 15.[X]
+
+## MSG_SKILL_AirRaidResistance_NAME
+AR-Resist[X]
+
+## MSG_SKILL_AirRaidResistance
+AirRaid-Resistance:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, RES + 5.[X]
+
+## MSG_SKILL_AirRaidSpeed_NAME
+AR-Speed[X]
+
+## MSG_SKILL_AirRaidSpeed
+AirRaid-Speed:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, SPD + 5.[X]
