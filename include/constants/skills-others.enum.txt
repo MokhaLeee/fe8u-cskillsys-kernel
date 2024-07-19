@@ -85,6 +85,7 @@ SID_TriangleAdeptPlus
 SID_TowerShieldPlus
 SID_PoisonStrike
 SID_GrislyWound
+SID_Poise
 SID_Enrage
 SID_Petrify
 

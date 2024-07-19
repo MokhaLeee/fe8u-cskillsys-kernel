@@ -380,3 +380,8 @@ R-Strength[X]
 Rouse Strength:[NL]
 +4 STR at the start of the turn[NL]
 if an adjacent ally isn't present.[X]
+
+## MSG_SKILL_Poise
+Poise:[NL]
++1 MOV. Negates enemy weapon[NL]
+triangle advantage.[X]

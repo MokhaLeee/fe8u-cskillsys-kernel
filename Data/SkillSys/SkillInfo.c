@@ -2843,6 +2843,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Poise) && COMMON_SKILL_VALID(SID_Poise))
+    [SID_Poise] = {
+        .desc = MSG_SKILL_Poise,
+        .icon = GFX_SkillIcon_Poise,
+    },
+#endif
+
 #if (defined(SID_COMBAT_Detonate) && COMMON_SKILL_VALID(SID_COMBAT_Detonate))
     [SID_COMBAT_Detonate] = {
         .desc = MSG_SKILL_COMBAT_Detonate,
