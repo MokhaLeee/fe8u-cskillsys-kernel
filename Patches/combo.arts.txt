@@ -52,3 +52,4 @@
 34=CID_HuntersVolley
 35=CID_Galeforce
 36=CID_Gamble
+37=CID_Detonate
