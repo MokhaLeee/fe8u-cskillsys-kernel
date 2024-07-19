@@ -2827,4 +2827,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_GrislyWound,
     },
 #endif
+
+#if (defined(SID_Poise) && COMMON_SKILL_VALID(SID_Poise))
+    [SID_Poise] = {
+        .desc = MSG_SKILL_Poise,
+        .icon = GFX_SkillIcon_Poise,
+    },
+#endif
 };
