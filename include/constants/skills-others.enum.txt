@@ -84,6 +84,7 @@ SID_TriangleAdeptPlus
 SID_TowerShieldPlus
 SID_PoisonStrike
 SID_GrislyWound
+SID_Petrify
 
 // Mobility
 SID_Guidance
