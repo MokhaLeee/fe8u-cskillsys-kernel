@@ -237,4 +237,10 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Obstruct] = {{ 25, 1 }},
     [SID_DetailedReport] = {{ 50, 2, 2 }},
     [SID_AirRaidAttack] = {{ 5 }},
+    [SID_AirRaidAvoid] = {{ 15 }},
+    [SID_AirRaidCrit] = {{ 15 }},
+    [SID_AirRaidDefense] = {{ 5 }},
+    [SID_AirRaidHit] = {{ 15 }},
+    [SID_AirRaidResistance] = {{ 5 }},
+    [SID_AirRaidSpeed] = {{ 5 }},
 };
