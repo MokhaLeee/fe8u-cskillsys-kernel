@@ -206,16 +206,6 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         }
     }
 
-#if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
-    if (BattleSkillTester(attacker, SID_QuickDraw) && attacker == &gBattleTarget)
-        correction += SKILL_EFF0(SID_QuickDraw);
-#endif
-
-#if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
-    if (BattleSkillTester(attacker, SID_StrongRiposte) && attacker == &gBattleTarget)
-        correction += SKILL_EFF0(SID_StrongRiposte);
-#endif
-
 #if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
     if (CheckBattleSkillActivate(attacker, defender, SID_Flare, attacker->unit.skl))
     {
@@ -478,9 +468,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
     if (BattleSkillTester(defender, SID_Spurn))
     {
-        int _diff;
-        
-        _diff = defender->battleSpeed - attacker->battleSpeed;
+        int _diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(_diff, 0, 10);
 
         decrease += DAMAGE_DECREASE(_diff * SKILL_EFF1(SID_Spurn));
@@ -490,9 +478,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido)))
     if (BattleSkillTester(defender, SID_Bushido))
     {
-        int _diff;
-        
-        _diff = defender->battleSpeed - attacker->battleSpeed;
+        int _diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(_diff, 0, 10);
 
         decrease += DAMAGE_DECREASE(_diff * SKILL_EFF0(SID_Bushido));
@@ -502,9 +488,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_DragonWall) && (COMMON_SKILL_VALID(SID_DragonWall)))
     if (BattleSkillTester(defender, SID_DragonWall))
     {
-        int _diff;
-        
-        _diff = defender->unit.res - attacker->unit.res;
+        int _diff = defender->unit.res - attacker->unit.res;
         LIMIT_AREA(_diff, 0, 10);
 
         decrease += DAMAGE_DECREASE(_diff * SKILL_EFF0(SID_DragonWall));
@@ -514,9 +498,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_BlueLionRule) && (COMMON_SKILL_VALID(SID_BlueLionRule)))
     if (BattleSkillTester(defender, SID_BlueLionRule))
     {
-        int _diff;
-        
-        _diff = defender->unit.def - attacker->unit.def;
+        int _diff = defender->unit.def - attacker->unit.def;
         LIMIT_AREA(_diff, 0, 10);
 
         decrease += DAMAGE_DECREASE(_diff * SKILL_EFF0(SID_BlueLionRule));

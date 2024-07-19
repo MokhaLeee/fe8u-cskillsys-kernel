@@ -695,6 +695,22 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
+        case SID_QuickDraw:
+            if (attacker == &gBattleActor)
+                attacker->battleAttack += SKILL_EFF0(SID_QuickDraw);
+
+            break;
+#endif
+
+#if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
+        case SID_StrongRiposte:
+            if (attacker == &gBattleTarget)
+                attacker->battleAttack += SKILL_EFF0(SID_StrongRiposte);
+
+            break;
+#endif
+
 #if (defined(SID_OutdoorFighter) && (COMMON_SKILL_VALID(SID_OutdoorFighter)))
         case SID_OutdoorFighter:
             switch (gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) {
