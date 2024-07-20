@@ -167,6 +167,25 @@ enum EventSkillSubOps {
 #define Evt_RemoveSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_SC, sid), _EvtParams2(0, 0),
 
 /**
+ * Skill menu
+ */
+#define UNIT_MENU_SKILL_AMOUNT 4
+extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
+extern struct MenuItemDef const * const gpSkillMenuInfos;
+#define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
+
+u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_Usability(const struct MenuItemDef * self, int number);
+int MenuSkills_OnDraw(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_Idle(struct MenuProc * menu, struct MenuItemProc * item);
+int MenuSkills_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
+
+#define MENU_SKILL_INDEX(menu_item) ((menu_item)->helpMsgId) /* We use rtext msg as index */
+#define IS_SKILL_MENU_ITEM(menu_item) ((menu_item)->isAvailable == MenuSkills_Usability)
+
+/**
  * Miscs
  */
 
@@ -196,11 +215,6 @@ void TryAddSkillPromotion(struct Unit * unit, int jid);
 /**
  * External MiscSkillEffects
  */
-u8 DanceCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 StealCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SupplyUsabilityRework(const struct MenuItemDef * def, int number);
-u8 PickCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SummonCommandUsabilityRework(const struct MenuItemDef * def, int number);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {

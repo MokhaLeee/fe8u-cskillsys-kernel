@@ -13,6 +13,7 @@
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
 #include "SkillSys/SkillExtraInfo.lyn.event"
+#include "SkillSys/SkillMenuInfo.lyn.event"
 #include "SkillSys/SkillTable-generic.lyn.event"
 #include "SkillSys/SkillTable-person.lyn.event"
 #include "SkillSys/SkillTable-job.lyn.event"
