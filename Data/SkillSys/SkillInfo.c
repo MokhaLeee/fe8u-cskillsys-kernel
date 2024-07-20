@@ -1228,6 +1228,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_MaleficAura) && (SID_MaleficAura < MAX_SKILL_NUM)) 
+    [SID_MaleficAura] = {
+        .desc = MSG_SKILL_MaleficAura,
+        .icon = GFX_SkillIcon_MaleficAura,
+      },
+#endif
+
 #if (defined(SID_Solidarity) && COMMON_SKILL_VALID(SID_Solidarity))
     [SID_Solidarity] = {
         .desc = MSG_SKILL_Solidarity,

@@ -236,6 +236,7 @@ SID_SpurDef
 SID_SpurRes
 SID_SpurSpd
 SID_Solidarity
+SID_MaleficAura
 
 SID_PowHone
 SID_MagHone
