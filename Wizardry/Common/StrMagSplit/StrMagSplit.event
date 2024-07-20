@@ -18,16 +18,25 @@
 #endif
 
 PUSH
-    ORG ($5926F4 + ICON_ITEM_MAG_BOOSTER * 0x80)
+    ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_MAG_BOOSTER * 0x80
         #incbin "Data/SpiritDust.4bpp"
 
-    ORG 0x809B10 + ITEM_MAG_BOOSTER * 0x24 + 0xC
-    POIN ItemStatBonusesMagBooster
+    ORG CONFIG_PR_ITEM_TABLE + CONFIG_ITEM_INDEX_MAG_BOOSTER * 0x24
+        #include "Source/ItemData_MagBooster.lyn.event"
+
+    /**
+     * These hooks is used for FEBuilderGBA
+     * see: https://github.com/FEBuilderGBA/FEBuilderGBA/blob/master/FEBuilderGBA/MagicSplitUtil.cs#L53
+     */
+    ORG 0x2BB44
+    BYTE 0x01 0x4B 0xA5 0xF0 0xC1 0xFE
+    ORG 0x17E5C
+    BYTE 0x01 0x4B 0xB9 0xF0 0x35 0xFD
 POP
 
 /* Boost bonus */
 ALIGN 4
-ItemStatBonusesMagBooster:
+ItemBonus_MagBooster:
     BYTE 0 0 0 0 0 0 0 0
     BYTE 0 2 0 0
 
