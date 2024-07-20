@@ -17,6 +17,7 @@
 #include "MenuSkills/Skills/Steal.lyn.event"
 #include "MenuSkills/Skills/Summon.lyn.event"
 #include "MenuSkills/Skills/Supply.lyn.event"
+#include "MenuSkills/Skills/LynJump.event"
 
 #include "Misc/HealAmount.lyn.event"
 
