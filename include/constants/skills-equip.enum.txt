@@ -48,6 +48,9 @@ SID_FaireLance
 SID_FaireAxe
 SID_FaireBow
 SID_FaireBMag
+SID_FaireAnima
+SID_FaireLight
+SID_FaireDark
 SID_Avoid
 SID_RuinedBlade
 SID_HeavyBlade

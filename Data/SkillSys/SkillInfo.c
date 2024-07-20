@@ -2934,6 +2934,29 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_FaireAnima) && COMMON_SKILL_VALID(SID_FaireAnima))
+    [SID_FaireAnima] = {
+        .desc = MSG_SKILL_FaireAnima,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+
+#if (defined(SID_FaireLight) && COMMON_SKILL_VALID(SID_FaireLight))
+    [SID_FaireLight] = {
+        .desc = MSG_SKILL_FaireLight,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+
+#if (defined(SID_FaireDark) && COMMON_SKILL_VALID(SID_FaireDark))
+    [SID_FaireDark] = {
+        .desc = MSG_SKILL_FaireDark,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {
         .name = MSG_SKILL_SealDefense_NAME,

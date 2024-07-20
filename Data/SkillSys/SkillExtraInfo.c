@@ -55,6 +55,9 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_FaireAxe] = {{ 5 }},
     [SID_FaireBow] = {{ 5 }},
     [SID_FaireBMag] = {{ 5 }},
+    [SID_FaireAnima] = {{ 5 }},
+    [SID_FaireLight] = {{ 5 }},
+    [SID_FaireDark] = {{ 5 }},
 
     [SID_Avoid] = {{ 10 }},
     [SID_AvoidSword] = {{ 20 }},
