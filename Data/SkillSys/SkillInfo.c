@@ -2986,7 +2986,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_SealStrength] = {
         .name = MSG_SKILL_SealStrength_NAME,
         .desc = MSG_SKILL_SealStrength,
-        .icon = GFX_SkillIcon_Sealtrength
+        .icon = GFX_SkillIcon_SealStrength
     },
 #endif
 };
