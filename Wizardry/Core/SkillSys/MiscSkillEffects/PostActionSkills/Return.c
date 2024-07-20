@@ -40,15 +40,6 @@ STATIC_DECLAR void PostActionReturn_StartAction(ProcPtr proc)
     StartMuActionAnim(GetUnitMu(unit));
 }
 
-STATIC_DECLAR void PostActionReturn_ResetActor(ProcPtr proc)
-{
-    struct Unit * unit = GetUnit(gActionData.subjectIndex);
-    struct MuProc * mu = GetUnitMu(unit);
-
-    FreezeSpriteAnim(mu->sprite_anim);
-    EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
-}
-
 STATIC_DECLAR void PrepareReturnPosition(void)
 {
     gEventSlots[EVT_SLOT_2] = gActiveUnit->index;
