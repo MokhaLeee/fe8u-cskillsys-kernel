@@ -186,6 +186,12 @@ int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
 #define IS_SKILL_MENU_ITEM(menu_item) ((menu_item)->isAvailable == MenuSkills_Usability)
 
 /**
+ * Skill action
+ */
+typedef bool (* SkillActionFunc_t)(ProcPtr);
+extern SkillActionFunc_t const * const gpSkillActionFuncTable;
+
+/**
  * Miscs
  */
 
@@ -236,3 +242,8 @@ void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit *
 int SpdGetterLegendSkills(int status, struct Unit * unit);
 int DefGetterLegendSkills(int status, struct Unit * unit);
 int ResGetterLegendSkills(int status, struct Unit * unit);
+
+/* Menu skills */
+u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);
+u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+bool HealingFocus_Action(ProcPtr proc);

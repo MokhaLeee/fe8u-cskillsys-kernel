@@ -928,6 +928,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_HealingFocus) && COMMON_SKILL_VALID(SID_HealingFocus))
+    [SID_HealingFocus] = {
+        .desc = MSG_SKILL_HealingFocus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Blossom) && COMMON_SKILL_VALID(SID_Blossom))
     [SID_Blossom] = {
         .desc = MSG_SKILL_Blossom,

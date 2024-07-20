@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "constants/texts.h"
 
 const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     [SID_Dance] = {
@@ -50,6 +51,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .isAvailable = PickCommandUsability,
         .onDraw = NULL,
         .onSelected = PickCommandEffect,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+
+    [SID_HealingFocus] = {
+        .name = "　瞑想",
+        .nameMsgId = MSG_SkillEffect_HealingFocus,
+        .helpMsgId = MSG_SKILL_HealingFocus,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = HealingFocus_Usability,
+        .onDraw = NULL,
+        .onSelected = HealingFocus_OnSelected,
         .onIdle = NULL,
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,

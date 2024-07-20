@@ -283,9 +283,13 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_MovBonus, CHARACTER_EPHRAIM)
     Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
     Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
+    Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
 
     // PREP
     CALL(EventScr_08591FD8)
+
+    SVAL(EVT_SLOT_1, 12)
+    SET_HP(CHARACTER_KNOLL)
 
     NoFade
     ENDA

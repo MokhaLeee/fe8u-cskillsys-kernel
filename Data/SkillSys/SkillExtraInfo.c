@@ -248,6 +248,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_AirRaidHit] = {{ 15 }},
     [SID_AirRaidResistance] = {{ 5 }},
     [SID_AirRaidSpeed] = {{ 5 }},
+    [SID_HealingFocus] = {{ 50 }},
 
 #if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {{ 6 }},

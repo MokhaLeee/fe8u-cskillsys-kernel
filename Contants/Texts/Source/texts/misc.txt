@@ -3,3 +3,9 @@ Return?        [NL][Yes][X]
 
 ## MSG_SkillEffect_PosSwap_Confirm
 Swap position?        [NL][Yes][X]
+
+## MSG_SkillEffect_HealingFocus
+ Heal-F[X]
+
+## MSG_SkillEffect_HealingFocus_Fail
+Unit has already full on HP![X]

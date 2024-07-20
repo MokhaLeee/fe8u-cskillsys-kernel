@@ -11,13 +11,13 @@
 #include "PostActionSkills/Synchronize.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
-#include "MenuSkills/SkillMenu.lyn.event"
-#include "MenuSkills/Skills/Dance.lyn.event"
-#include "MenuSkills/Skills/Pick.lyn.event"
-#include "MenuSkills/Skills/Steal.lyn.event"
-#include "MenuSkills/Skills/Summon.lyn.event"
-#include "MenuSkills/Skills/Supply.lyn.event"
-#include "MenuSkills/Skills/LynJump.event"
+#include "MenuSkills/Dance.lyn.event"
+#include "MenuSkills/Pick.lyn.event"
+#include "MenuSkills/Steal.lyn.event"
+#include "MenuSkills/Summon.lyn.event"
+#include "MenuSkills/Supply.lyn.event"
+#include "MenuSkills/HealingFocus.lyn.event"
+#include "MenuSkills/LynJump.event"
 
 #include "Misc/HealAmount.lyn.event"
 

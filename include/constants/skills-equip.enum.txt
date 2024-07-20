@@ -270,3 +270,6 @@ SID_FlierGuidance
 
 // Heal skill
 // SID_LiveToServe
+
+// Menu skill
+SID_HealingFocus

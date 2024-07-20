@@ -62,7 +62,7 @@ gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks
 gpGameInitHookTable: POIN gGameInitHookTable
 
-WORD 0
+gpSkillActionFuncTable: POIN gSkillActionFuncTable
 
 gpPostActionFuncs: POIN gPostActionFuncs
 gpNewSaveHooks: POIN gNewSaveHooks
