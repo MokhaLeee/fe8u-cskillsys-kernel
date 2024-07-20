@@ -11,11 +11,8 @@ PUSH
     ORG $59D1F8
         POIN gUnitActionMenuItemsRework
 
-    ORG pr_UnitActionMenuDef + 0x0C
-        POIN UnitActionMenu_OnInitRe
-
     ORG pr_UnitActionMenuDef + 0x20
-        POIN UnitActionMenu_OnHelpBox
+        POIN UnitActionMenu_OnHelpBoxRe
 POP
 
 #endif // UNIT_MENU

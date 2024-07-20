@@ -1,17 +1,12 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
-/**
- * Design on SkillMenu:
- *
- * 1. Use .nameMsgId as index
- * 2. replace gUnitActionMenuDef.onHelpBox for skill help box
- */
-
 STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit * unit)
 {
     int i, cnt;
     struct SkillList * list = GetUnitSkillList(unit);
+
+    memset(UnitMenuSkills, 0, sizeof(UnitMenuSkills));
 
     cnt = 0;
     for (i = 0; i < list->amt; i++)
@@ -25,11 +20,6 @@ STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit * unit)
         if (GetSkillMenuInfo(sid)->isAvailable)
             UnitMenuSkills[cnt++] = sid;
     }
-}
-
-void MenuSkills_OnInit(struct MenuProc * menu)
-{
-    GenerateUnitMenuSkillList(gActiveUnit);
 }
 
 u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item)
@@ -46,7 +36,15 @@ u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item)
 
 u8 MenuSkills_Usability(const struct MenuItemDef * self, int number)
 {
-    u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(self)];
+    u16 sid;
+
+    if (MENU_SKILL_INDEX(self) == 0)
+    {
+        /* On init */
+        GenerateUnitMenuSkillList(gActiveUnit);
+    }
+
+    sid = UnitMenuSkills[MENU_SKILL_INDEX(self)];
     if (!COMMON_SKILL_VALID(sid) || !GetSkillMenuInfo(sid)->isAvailable)
         return MENU_NOTSHOWN;
 

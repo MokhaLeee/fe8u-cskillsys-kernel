@@ -169,12 +169,11 @@ enum EventSkillSubOps {
 /**
  * Skill menu
  */
-extern struct MenuItemDef const * const gpSkillMenuInfos;
-#define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
 #define UNIT_MENU_SKILL_AMOUNT 4
 extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
+extern struct MenuItemDef const * const gpSkillMenuInfos;
+#define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
 
-void MenuSkills_OnInit(struct MenuProc * menu);
 u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item);
 u8 MenuSkills_Usability(const struct MenuItemDef * self, int number);
 int MenuSkills_OnDraw(struct MenuProc * menu, struct MenuItemProc * item);
@@ -183,7 +182,7 @@ u8 MenuSkills_Idle(struct MenuProc * menu, struct MenuItemProc * item);
 int MenuSkills_Hover(struct MenuProc * menu, struct MenuItemProc * item);
 int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
 
-#define MENU_SKILL_INDEX(menu_item) ((menu_item)->nameMsgId)
+#define MENU_SKILL_INDEX(menu_item) ((menu_item)->helpMsgId) /* We use rtext msg as index */
 #define IS_SKILL_MENU_ITEM(menu_item) ((menu_item)->isAvailable == MenuSkills_Usability)
 
 /**

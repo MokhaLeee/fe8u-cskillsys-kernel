@@ -51,8 +51,8 @@ static const struct REDA REDA_Vanessa[] = {
 
 static const struct REDA REDA_Ephraim[] = {
     {
-        .x = 17,
-        .y = 28,
+        .x = 13,
+        .y = 27,
         .b = -1,
     }
 };
@@ -61,6 +61,24 @@ static const struct REDA REDA_Saleh[] = {
     {
         .x = 14,
         .y = 26,
+        .b = -1,
+        .delayFrames = 64,
+    }
+};
+
+static const struct REDA REDA_Tethys[] = {
+    {
+        .x = 12,
+        .y = 27,
+        .b = -1,
+        .delayFrames = 64,
+    }
+};
+
+static const struct REDA REDA_Knoll[] = {
+    {
+        .x = 17,
+        .y = 28,
         .b = -1,
         .delayFrames = 64,
     }
@@ -166,6 +184,33 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
         .items = {
             ITEM_ANIMA_BOLTING,
             ITEM_ANIMA_ELFIRE,
+            ITEM_VULNERARY
+        },
+    },
+    {
+        .charIndex = CHARACTER_TETHYS,
+        .classIndex = CLASS_DANCER,
+        .autolevel = true,
+        .level = 10,
+        .xPosition = 12,
+        .yPosition = 29,
+        .redaCount = 1,
+        .redas = REDA_Tethys,
+        .items = {
+            ITEM_VULNERARY
+        },
+    },
+    {
+        .charIndex = CHARACTER_KNOLL,
+        .classIndex = CLASS_SUMMONER,
+        .autolevel = true,
+        .level = 10,
+        .xPosition = 12,
+        .yPosition = 29,
+        .redaCount = 1,
+        .redas = REDA_Knoll,
+        .items = {
+            ITEM_DARK_FLUX,
             ITEM_VULNERARY
         },
     },

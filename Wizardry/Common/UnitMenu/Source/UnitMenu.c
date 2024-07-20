@@ -28,10 +28,67 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
     {"　杖", 0x67C, 0x6C1, 0, 0x51, StaffCommandUsability, 0, StaffCommandEffect, 0, StaffCommandRange, HideMoveRangeGraphicsWrapper2}, // Staff
     {"　乗る", 0x691, 0x6D6, 4, 0x52, RideCommandUsability, 0, RideCommandEffect, 0, 0, 0}, // Ride (Ballista) >
     {"　降りる", 0x692, 0x6D7, 4, 0x53, ExitCommandUsability, 0, ExitCommandEffect, 0, 0, 0}, // Exit (Ballista) >
+
+#if CHAX
+    {
+        "　特技",
+        0x4EC,
+        0,
+        TEXT_COLOR_SYSTEM_WHITE,
+        0x54,
+        MenuSkills_Usability,
+        MenuSkills_OnDraw,
+        MenuSkills_OnSelected,
+        MenuSkills_Idle,
+        MenuSkills_Hover,
+        MenuSkills_Unhover
+    },
+    {
+        "　特技",
+        0x4EC,
+        1,
+        TEXT_COLOR_SYSTEM_WHITE,
+        0x55,
+        MenuSkills_Usability,
+        MenuSkills_OnDraw,
+        MenuSkills_OnSelected,
+        MenuSkills_Idle,
+        MenuSkills_Hover,
+        MenuSkills_Unhover
+    },
+    {
+        "　特技",
+        0x4EC,
+        2,
+        TEXT_COLOR_SYSTEM_WHITE,
+        0x56,
+        MenuSkills_Usability,
+        MenuSkills_OnDraw,
+        MenuSkills_OnSelected,
+        MenuSkills_Idle,
+        MenuSkills_Hover,
+        MenuSkills_Unhover
+    },
+    {
+        "　特技",
+        0x4EC,
+        3,
+        TEXT_COLOR_SYSTEM_WHITE,
+        0x57,
+        MenuSkills_Usability,
+        MenuSkills_OnDraw,
+        MenuSkills_OnSelected,
+        MenuSkills_Idle,
+        MenuSkills_Hover,
+        MenuSkills_Unhover
+    },
+#else
     {"　奏でる", 0x67D, 0x6C3, 0, 0x54, PlayCommandUsability, 0, PlayCommandEffect, 0, 0, 0}, // Play >
     {"　踊る", 0x67E, 0x6C2, 0, 0x55, DanceCommandUsabilityRework /* DanceCommandUsability */, 0, PlayCommandEffect, 0, 0, 0}, // Dance
     {"　盗む", 0x67F, 0x6C4, 0, 0x56, StealCommandUsabilityRework /* StealCommandUsability */, 0, StealCommandEffect, 0, 0, 0}, // Steal
     {"　召喚", 0x693, 0x6DD, 0, 0x57, SummonCommandUsabilityRework /* SummonCommandUsability */, 0, SummonCommandEffect, 0, 0, 0}, // Summon (Shoukanshi) >
+#endif
+
     {"　呼魔", 0x693, 0x6DD, 0, 0x58, YobimaCommandUsability, 0, YobimaCommandEffect, 0, 0, 0}, // Summon (Deamon King) >
     {"　かぎ開", 0x694, 0x6DE, 0, 0x59, PickCommandUsabilityRework /* PickCommandUsability */, 0, PickCommandEffect, 0, 0, 0}, // Pick >
     {"　話す", 0x680, 0x6C9, 0, 0x5A, TalkCommandUsability, 0, TalkCommandEffect, 0, 0, 0}, // Talk >
