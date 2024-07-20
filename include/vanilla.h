@@ -185,3 +185,5 @@ struct EvCheck03 {
     u16 unkC;
     u16 unkE;
 };
+
+bool CanUnitCrossTerrain(struct Unit * unit, int terrain);
