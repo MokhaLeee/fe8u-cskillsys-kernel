@@ -93,3 +93,59 @@ Fortify Armor[X]
 Fortify Armor: Grants Armor allies[NL]
 in 2x2 +6 ATK/SPD at the start[NL]
 of each turn.[X]
+
+## MSG_SKILL_SealDefense_NAME
+S-Defense[X]
+
+## MSG_SKILL_SealDefense
+Seal-Defense:[NL]
+Debuff the enemy's DEF by 6[NL]
+after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_SealLuck_NAME
+S-Luck[X]
+
+## MSG_SKILL_SealLuck
+Seal-Luck:[NL]
+Debuff the enemy's LCK by 6[NL]
+after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_SealMagic_NAME
+S-Magic[X]
+
+## MSG_SKILL_SealMagic
+Seal-Magic:[NL]
+Debuff the enemy's MAG by 6[NL]
+after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_SealResistance_NAME
+S-Resist[X]
+
+## MSG_SKILL_SealResistance
+Seal-Resistance:[NL]
+Debuff the enemy's RES by 6[NL]
+after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_SealSkill_NAME
+S-Skill[X]
+
+## MSG_SKILL_SealSkill
+Seal-Skill:[NL]
+Debuff the enemy's SKL by 6[NL]
+after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_SealSpeed_NAME
+S-Speed[X]
+
+## MSG_SKILL_SealSpeed
+Seal-Speed:[NL]
+Debuff the enemy's SPD by 6[NL]
+after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_SealStrength_NAME
+S-Strength[X]
+
+## MSG_SKILL_SealStrength
+Seal-Strength:[NL]
+Debuff the enemy's STR by 6[NL]
+after combat. Recover 1/turn.[X]

@@ -2933,4 +2933,60 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_AirRaidSpeed,
     },
 #endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealDefense] = {
+        .name = MSG_SKILL_SealDefense_NAME,
+        .desc = MSG_SKILL_SealDefense,
+        .icon = GFX_SkillIcon_SealDefense
+    },
+#endif
+
+#if (defined(SID_SealLuck) && COMMON_SKILL_VALID(SID_SealLuck))
+    [SID_SealLuck] = {
+        .name = MSG_SKILL_SealLuck_NAME,
+        .desc = MSG_SKILL_SealLuck,
+        .icon = GFX_SkillIcon_SealLuck
+    },
+#endif
+
+#if (defined(SID_SealMagic) && COMMON_SKILL_VALID(SID_SealMagic))
+    [SID_SealMagic] = {
+        .name = MSG_SKILL_SealMagic_NAME,
+        .desc = MSG_SKILL_SealMagic,
+        .icon = GFX_SkillIcon_SealMagic
+    },
+#endif
+
+#if (defined(SID_SealResistance) && COMMON_SKILL_VALID(SID_SealResistance))
+    [SID_SealResistance] = {
+        .name = MSG_SKILL_SealResistance_NAME,
+        .desc = MSG_SKILL_SealResistance,
+        .icon = GFX_SkillIcon_SealResistance
+    },
+#endif
+
+#if (defined(SID_SealSkill) && COMMON_SKILL_VALID(SID_SealSkill))
+    [SID_SealSkill] = {
+        .name = MSG_SKILL_SealSkill_NAME,
+        .desc = MSG_SKILL_SealSkill,
+        .icon = GFX_SkillIcon_SealSkill
+    },
+#endif
+
+#if (defined(SID_SealSpeed) && COMMON_SKILL_VALID(SID_SealSpeed))
+    [SID_SealSpeed] = {
+        .name = MSG_SKILL_SealSpeed_NAME,
+        .desc = MSG_SKILL_SealSpeed,
+        .icon = GFX_SkillIcon_SealSpeed
+    },
+#endif
+
+#if (defined(SID_SealStrength) && COMMON_SKILL_VALID(SID_SealStrength))
+    [SID_SealStrength] = {
+        .name = MSG_SKILL_SealStrength_NAME,
+        .desc = MSG_SKILL_SealStrength,
+        .icon = GFX_SkillIcon_SealStrength
+    },
+#endif
 };
