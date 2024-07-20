@@ -187,3 +187,4 @@ struct EvCheck03 {
 };
 
 bool CanUnitCrossTerrain(struct Unit * unit, int terrain);
+extern CONST_DATA struct MenuItemDef gUnitActionMenuItems[];

@@ -11,7 +11,9 @@
 #include "PostActionSkills/Synchronize.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
-#include "Misc/MenuSkills.lyn.event"
+#include "MenuSkills/SkillMenu.lyn.event"
+#include "MenuSkills/Skills/MenuSkills.lyn.event"
+
 #include "Misc/HealAmount.lyn.event"
 
 #include "LegendarySkills/JudgeLegend.lyn.event"

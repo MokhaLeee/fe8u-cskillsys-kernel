@@ -70,6 +70,7 @@ _kernel_malloc sStatDebuffMsgBufNext, 4
  */
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
 _kernel_malloc_overlay0 sStatScreenPage1BarMax, 4
+_kernel_malloc_overlay0 UnitMenuSkills, 16
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
 _kernel_malloc_overlay0 gBattleTemporaryFlag, 8
 _kernel_malloc_overlay0 sCombatArtList, 0x20
