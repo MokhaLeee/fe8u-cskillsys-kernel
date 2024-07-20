@@ -78,6 +78,28 @@ int PowGetterSkills(int status, struct Unit * unit)
         status += SKILL_EFF0(SID_LuckySeven);
 #endif
 
+#if defined(SID_StrengthBoost) && (COMMON_SKILL_VALID(SID_StrengthBoost))
+    if (SkillTester(unit, SID_StrengthBoost))
+    {
+        int __buf = SKILL_EFF0(SID_StrengthBoost);
+        if (gPlaySt.chapterTurnNumber >= __buf)
+            status += __buf;
+        else
+            status += gPlaySt.chapterTurnNumber;
+    }
+#endif
+
+#if defined(SID_SpectrumBoost) && (COMMON_SKILL_VALID(SID_SpectrumBoost))
+    if (SkillTester(unit, SID_SpectrumBoost))
+    {
+        int __buf = SKILL_EFF0(SID_SpectrumBoost);
+        if (gPlaySt.chapterTurnNumber >= __buf)
+            status += __buf;
+        else
+            status += gPlaySt.chapterTurnNumber;
+    }
+#endif
+
     if (cur_hp == max_hp)
     {
 #if defined(SID_PushStrength) && (COMMON_SKILL_VALID(SID_PushStrength))
