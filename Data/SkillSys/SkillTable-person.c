@@ -17,6 +17,10 @@ const u16 gConstSkillTable_Person[0x100][2] = {
         SID_Thunderstorm,
     },
 
+    [CHARACTER_VANESSA] = {
+        SID_Lifetaker,
+    },
+
     [CHARACTER_LYON_CC] = {
         SID_AversaNight,
     },

@@ -291,6 +291,9 @@ static const EventScr EventScr_Beginning[] = {
     SVAL(EVT_SLOT_1, 12)
     SET_HP(CHARACTER_KNOLL)
 
+    SVAL(EVT_SLOT_1, 10)
+    SET_HP(CHARACTER_VANESSA)
+
     NoFade
     ENDA
 };
