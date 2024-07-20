@@ -37,7 +37,6 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 {
     int ret = 0;
 
-#if (defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))) || (defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief)) || defined(SID_Amaterasu) && (COMMON_SKILL_VALID(SID_Amaterasu)))
     int res = has_ally(unit);
     if (res)
     {
@@ -58,8 +57,6 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
             ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Relief), 100);
 #endif
     }
-
-#endif
 
 #if defined(SID_Renewal) && (COMMON_SKILL_VALID(SID_Renewal))
     if (SkillTester(unit, SID_Renewal))
