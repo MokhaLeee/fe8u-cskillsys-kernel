@@ -2877,4 +2877,60 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Petrify,
     },
 #endif
+
+#if (defined(SID_AirRaidAttack) && COMMON_SKILL_VALID(SID_AirRaidAttack))
+    [SID_AirRaidAttack] = {
+        .name = MSG_SKILL_AirRaidAttack_NAME,
+        .desc = MSG_SKILL_AirRaidAttack,
+        .icon = GFX_SkillIcon_AirRaidAttack,
+    },
+#endif
+
+#if (defined(SID_AirRaidAvoid) && COMMON_SKILL_VALID(SID_AirRaidAvoid))
+    [SID_AirRaidAvoid] = {
+        .name = MSG_SKILL_AirRaidAvoid_NAME,
+        .desc = MSG_SKILL_AirRaidAvoid,
+        .icon = GFX_SkillIcon_AirRaidAvoid,
+    },
+#endif
+
+#if (defined(SID_AirRaidCrit) && COMMON_SKILL_VALID(SID_AirRaidCrit))
+    [SID_AirRaidCrit] = {
+        .name = MSG_SKILL_AirRaidCrit_NAME,
+        .desc = MSG_SKILL_AirRaidCrit,
+        .icon = GFX_SkillIcon_AirRaidCrit,
+    },
+#endif
+
+#if (defined(SID_AirRaidDefense) && COMMON_SKILL_VALID(SID_AirRaidDefense))
+    [SID_AirRaidDefense] = {
+        .name = MSG_SKILL_AirRaidDefense_NAME,
+        .desc = MSG_SKILL_AirRaidDefense,
+        .icon = GFX_SkillIcon_AirRaidDefense,
+    },
+#endif
+
+#if (defined(SID_AirRaidHit) && COMMON_SKILL_VALID(SID_AirRaidHit))
+    [SID_AirRaidHit] = {
+        .name = MSG_SKILL_AirRaidHit_NAME,
+        .desc = MSG_SKILL_AirRaidHit,
+        .icon = GFX_SkillIcon_AirRaidHit,
+    },
+#endif
+
+#if (defined(SID_AirRaidResistance) && COMMON_SKILL_VALID(SID_AirRaidResistance))
+    [SID_AirRaidResistance] = {
+        .name = MSG_SKILL_AirRaidResistance_NAME,
+        .desc = MSG_SKILL_AirRaidResistance,
+        .icon = GFX_SkillIcon_AirRaidResistance,
+    },
+#endif
+
+#if (defined(SID_AirRaidSpeed) && COMMON_SKILL_VALID(SID_AirRaidSpeed))
+    [SID_AirRaidSpeed] = {
+        .name = MSG_SKILL_AirRaidSpeed_NAME,
+        .desc = MSG_SKILL_AirRaidSpeed,
+        .icon = GFX_SkillIcon_AirRaidSpeed,
+    },
+#endif
 };
