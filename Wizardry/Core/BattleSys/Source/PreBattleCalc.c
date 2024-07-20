@@ -1116,7 +1116,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AirRaidAttack) && (COMMON_SKILL_VALID(SID_AirRaidAttack)))
         case SID_AirRaidAttack:
             int terrain = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
-            const s8* lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
+            const s8 * lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
             bool CanUnitCrossTerrain = lookup[terrain] > 0 ? TRUE : FALSE;
 
             if (!CanUnitCrossTerrain)
@@ -1127,7 +1127,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AirRaidAvoid) && (COMMON_SKILL_VALID(SID_AirRaidAvoid)))
         case SID_AirRaidAvoid:
             int terrain = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
-            const s8* lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
+            const s8 * lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
             bool CanUnitCrossTerrain = lookup[terrain] > 0 ? TRUE : FALSE;
 
             if (!CanUnitCrossTerrain)
@@ -1138,7 +1138,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AirRaidCrit) && (COMMON_SKILL_VALID(SID_AirRaidCrit)))
         case SID_AirRaidCrit:
             int terrain = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
-            const s8* lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
+            const s8 * lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
             bool CanUnitCrossTerrain = lookup[terrain] > 0 ? TRUE : FALSE;
 
             if (!CanUnitCrossTerrain)
@@ -1149,7 +1149,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AirDefense) && (COMMON_SKILL_VALID(SID_AirRaidDefense)))
         case SID_AirRaidDefense:
             int terrain = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
-            const s8* lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
+            const s8 * lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
             bool CanUnitCrossTerrain = lookup[terrain] > 0 ? TRUE : FALSE;
 
             if (!CanUnitCrossTerrain)
@@ -1160,7 +1160,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AirRaidHit) && (COMMON_SKILL_VALID(SID_AirRaidHit)))
         case SID_AirRaidHit:
             int terrain = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
-            const s8* lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
+            const s8 * lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
             bool CanUnitCrossTerrain = lookup[terrain] > 0 ? TRUE : FALSE;
 
             if (!CanUnitCrossTerrain)
@@ -1171,7 +1171,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AirRaidResistance) && (COMMON_SKILL_VALID(SID_AirRaidResistance)))
         case SID_AirRaidResistance:
             int terrain = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
-            const s8* lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
+            const s8 * lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
             bool CanUnitCrossTerrain = lookup[terrain] > 0 ? TRUE : FALSE;
 
             if (!CanUnitCrossTerrain)
@@ -1182,7 +1182,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_AirRaidSpeed) && (COMMON_SKILL_VALID(SID_AirRaidSpeed)))
         case SID_AirRaidSpeed:
             int terrain = gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos];
-            const s8* lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
+            const s8 * lookup = GetUnitMovementCost(GetUnit(defender->unit.index));
             bool CanUnitCrossTerrain = lookup[terrain] > 0 ? TRUE : FALSE;
 
             if (!CanUnitCrossTerrain)
