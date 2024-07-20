@@ -88,6 +88,7 @@ SID_GrislyWound
 SID_Poise
 SID_Enrage
 SID_Petrify
+SID_Amaterasu
 SID_AirRaidAttack
 SID_AirRaidAvoid
 SID_AirRaidCrit

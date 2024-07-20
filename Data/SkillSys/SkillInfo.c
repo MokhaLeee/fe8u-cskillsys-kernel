@@ -2740,6 +2740,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Amaterasu) && (SID_Amaterasu < MAX_SKILL_NUM)) 
+    [SID_Amaterasu] = {
+        .desc = MSG_SKILL_Amaterasu,
+        .icon = GFX_SkillIcon_Amaterasu,
+      },
+#endif
+
 #if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
     [SID_Counter] = {
         .desc = MSG_SKILL_Counter,
