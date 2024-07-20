@@ -12,7 +12,11 @@
 #include "PostActionSkills/LynJump.event"
 
 #include "MenuSkills/SkillMenu.lyn.event"
-#include "MenuSkills/Skills/MenuSkills.lyn.event"
+#include "MenuSkills/Skills/Dance.lyn.event"
+#include "MenuSkills/Skills/Pick.lyn.event"
+#include "MenuSkills/Skills/Steal.lyn.event"
+#include "MenuSkills/Skills/Summon.lyn.event"
+#include "MenuSkills/Skills/Supply.lyn.event"
 
 #include "Misc/HealAmount.lyn.event"
 

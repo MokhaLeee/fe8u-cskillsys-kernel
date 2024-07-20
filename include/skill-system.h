@@ -215,11 +215,6 @@ void TryAddSkillPromotion(struct Unit * unit, int jid);
 /**
  * External MiscSkillEffects
  */
-u8 DanceCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 StealCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SupplyUsabilityRework(const struct MenuItemDef * def, int number);
-u8 PickCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SummonCommandUsabilityRework(const struct MenuItemDef * def, int number);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {

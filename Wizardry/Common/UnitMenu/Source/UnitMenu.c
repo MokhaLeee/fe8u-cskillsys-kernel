@@ -84,13 +84,13 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
     },
 #else
     {"　奏でる", 0x67D, 0x6C3, 0, 0x54, PlayCommandUsability, 0, PlayCommandEffect, 0, 0, 0}, // Play >
-    {"　踊る", 0x67E, 0x6C2, 0, 0x55, DanceCommandUsabilityRework /* DanceCommandUsability */, 0, PlayCommandEffect, 0, 0, 0}, // Dance
-    {"　盗む", 0x67F, 0x6C4, 0, 0x56, StealCommandUsabilityRework /* StealCommandUsability */, 0, StealCommandEffect, 0, 0, 0}, // Steal
-    {"　召喚", 0x693, 0x6DD, 0, 0x57, SummonCommandUsabilityRework /* SummonCommandUsability */, 0, SummonCommandEffect, 0, 0, 0}, // Summon (Shoukanshi) >
+    {"　踊る", 0x67E, 0x6C2, 0, 0x55, DanceCommandUsability, 0, PlayCommandEffect, 0, 0, 0}, // Dance
+    {"　盗む", 0x67F, 0x6C4, 0, 0x56, StealCommandUsability, 0, StealCommandEffect, 0, 0, 0}, // Steal
+    {"　召喚", 0x693, 0x6DD, 0, 0x57, SummonCommandUsability, 0, SummonCommandEffect, 0, 0, 0}, // Summon (Shoukanshi) >
+    {"　呼魔", 0x693, 0x6DD, 0, 0x58, YobimaCommandUsability, 0, YobimaCommandEffect, 0, 0, 0}, // Summon (Deamon King) >
+    {"　かぎ開", 0x694, 0x6DE, 0, 0x59, PickCommandUsability, 0, PickCommandEffect, 0, 0, 0}, // Pick >
 #endif
 
-    {"　呼魔", 0x693, 0x6DD, 0, 0x58, YobimaCommandUsability, 0, YobimaCommandEffect, 0, 0, 0}, // Summon (Deamon King) >
-    {"　かぎ開", 0x694, 0x6DE, 0, 0x59, PickCommandUsabilityRework /* PickCommandUsability */, 0, PickCommandEffect, 0, 0, 0}, // Pick >
     {"　話す", 0x680, 0x6C9, 0, 0x5A, TalkCommandUsability, 0, TalkCommandEffect, 0, 0, 0}, // Talk >
     {"　支援", 0x681, 0x6CA, 0, 0x5B, SupportCommandUsability, 0, SupportCommandEffect, 0, 0, 0}, // Support
     {"　訪問", 0x682, 0x6CB, 0, 0x5C, VisitCommandUsability, 0, VisitCommandEffect, 0, 0, 0}, // Visit
@@ -106,7 +106,7 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
     {"　引渡し", 0x68C, 0x6C7, 4, 0x66, GiveUsability, 0, GiveEffect, 0, 0, 0}, // Give > 
     {"　持ち物", 0x68D, 0x6D3, 0, 0x67, ItemCommandUsability, 0, ItemCommandEffect, 0, 0, 0}, // Item > 
     {"　交換", 0x68E, 0x6D4, 4, 0x68, ItemSubMenu_IsTradeAvailable, 0, TradeCommandEffect, 0, 0, 0}, // Trade > 
-    {"　輸送隊", 0x68F, 0x6D5, 4, 0x69, SupplyUsabilityRework /* SupplyUsability */, 0, SupplyCommandEffect, 0, 0, 0}, // Supply > 
+    {"　輸送隊", 0x68F, 0x6D5, 4, 0x69, SupplyUsability, 0, SupplyCommandEffect, 0, 0, 0}, // Supply > 
     {"　待機", 0x695, 0x6BF, 0, 0x6B, MenuAlwaysEnabled, 0, EffectWait, 0, 0, 0}, // Wait > 
     MenuItemsEnd
 };
