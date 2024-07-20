@@ -245,4 +245,11 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_AirRaidHit] = {{ 15 }},
     [SID_AirRaidResistance] = {{ 5 }},
     [SID_AirRaidSpeed] = {{ 5 }},
+    [SID_SealDefense] = {{ 6 }},
+    [SID_SealLuck] = {{ 6 }},
+    [SID_SealMagic] = {{ 6 }},
+    [SID_SealResistance] = {{ 6 }},
+    [SID_SealSkill] = {{ 6 }},
+    [SID_SealSpeed] = {{ 6 }},
+    [SID_SealStrength] = {{ 6 }},
 };

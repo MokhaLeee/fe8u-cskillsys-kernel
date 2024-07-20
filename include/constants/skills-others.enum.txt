@@ -121,6 +121,15 @@ SID_SandRush
 SID_SwiftSwim
 SID_SolarPower
 
+// Seal skills
+//SID_SealDefense
+//SID_SealLuck
+//SID_SealMagic
+//SID_SealResistance
+//SID_SealSkill
+//SID_SealSpeed
+//SID_SealStrength
+
 // Initiative skills
 SID_InitStrong
 SID_InitClever
