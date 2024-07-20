@@ -678,3 +678,27 @@ AR-Speed[X]
 AirRaid-Speed:[NL]
 When standing on a tile the enemy[NL]
 cannot enter, SPD + 5.[X]
+
+## MSG_SKILL_FaireAnima_NAME
+FaireAnima[X]
+
+## MSG_SKILL_FaireAnima
+Faire-Anima: [NL]
+ATK +5 if the unit[NL]
+has anima magic equipped.[X]
+
+## MSG_SKILL_FaireLight_NAME
+FaireLight[X]
+
+## MSG_SKILL_FaireLight
+Faire-Light: [NL]
+ATK +5 if the unit[NL]
+has light magic equipped.[X]
+
+## MSG_SKILL_FaireDark_NAME
+FaireDark[X]
+
+## MSG_SKILL_FaireDark
+Faire-Dark: [NL]
+ATK +5 if the unit[NL]
+has dark magic equipped.[X]

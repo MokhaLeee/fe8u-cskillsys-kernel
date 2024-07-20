@@ -497,6 +497,36 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_FaireAnima) && (COMMON_SKILL_VALID(SID_FaireAnima)))
+        case SID_FaireAnima:
+            switch (attacker->weaponType) {
+            case ITYPE_ANIMA:
+                attacker->battleAttack += SKILL_EFF0(SID_FaireAnima);
+                break;
+            }
+            break;
+#endif
+
+#if (defined(SID_FaireLight) && (COMMON_SKILL_VALID(SID_FaireLight)))
+        case SID_FaireLight:
+            switch (attacker->weaponType) {
+            case ITYPE_LIGHT:
+                attacker->battleAttack += SKILL_EFF0(SID_FaireLight);
+                break;
+            }
+            break;
+#endif
+
+#if (defined(SID_FaireDark) && (COMMON_SKILL_VALID(SID_FaireDark)))
+        case SID_FaireDark:
+            switch (attacker->weaponType) {
+            case ITYPE_DARK:
+                attacker->battleAttack += SKILL_EFF0(SID_FaireDark);
+                break;
+            }
+            break;
+#endif
+
 #if defined(SID_HolyAura) && (COMMON_SKILL_VALID(SID_HolyAura))
         case SID_HolyAura:
             if (attacker->weaponType == ITYPE_LIGHT)
