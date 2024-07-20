@@ -87,7 +87,7 @@ SID_PoisonStrike
 SID_GrislyWound
 SID_Poise
 SID_Enrage
-SID_Petrify
+SID_Amische
 
 // Mobility
 SID_Guidance

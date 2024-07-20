@@ -33,3 +33,8 @@ assistance on combo-attack[X]
 LiveToServe:[NL]
 Heal unit by the same amount as[NL]
 the target when using a staff.[X]
+
+## MSG_SKILL_Amische
+Amische:[NL]
+This unit's religion prevents[NL]
+them from using non-iron weaponry.[X]

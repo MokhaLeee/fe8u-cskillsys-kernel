@@ -188,6 +188,19 @@ s8 CanUnitUseWeapon(struct Unit * unit, int item)
     if (!(GetItemAttributes(item) & IA_WEAPON))
         return false;
 
+#if (defined(SID_Amische) && (COMMON_SKILL_VALID(SID_Amische)))
+    if (SkillTester(unit, SID_Amische))
+        switch(ITEM_INDEX(item)) {
+        case ITEM_SWORD_IRON:
+        case ITEM_LANCE_IRON:
+        case ITEM_AXE_IRON:
+        case ITEM_BOW_IRON:
+            break;
+        default:
+            return false;
+        } 
+#endif
+
     if (GetItemAttributes(item) & IA_LOCK_ANY)
     {
         // Check for item locks
