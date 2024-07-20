@@ -5,6 +5,7 @@
 
 struct ProcMapAnimHeal {
     PROC_HEADER;
+    u32 lock;
     struct Unit * unit;
     int heal;
 };
@@ -21,8 +22,16 @@ STATIC_DECLAR void MapAnimHeal_MoveCamera(struct ProcMapAnimHeal * proc)
 
 STATIC_DECLAR void MapAnimHeal_ExecAnim(struct ProcMapAnimHeal * proc)
 {
+    proc->lock = GetGameLock();
+
     HideUnitSprite(proc->unit);
     BeginUnitHealAnim(proc->unit, proc->heal);
+}
+
+STATIC_DECLAR void MapAnimHeal_Idle(struct ProcMapAnimHeal * proc)
+{
+    if (proc->lock == GetGameLock())
+        Proc_Break(proc);
 }
 
 STATIC_DECLAR void MapAnimHeal_ExecBmHeal(struct ProcMapAnimHeal * proc)
@@ -37,11 +46,13 @@ STATIC_DECLAR void MapAnimHeal_End(struct ProcMapAnimHeal * proc)
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimHeal[] = {
-    PROC_CALL(MapAnimHeal_Init),
     PROC_YIELD,
+    PROC_CALL(MapAnimHeal_Init),
     PROC_CALL(MapAnimHeal_MoveCamera),
     PROC_YIELD,
     PROC_CALL(MapAnimHeal_ExecAnim),
+    PROC_YIELD,
+    PROC_REPEAT(MapAnimHeal_Idle),
     PROC_YIELD,
     PROC_CALL(MapAnimHeal_ExecBmHeal),
     PROC_CALL(MapAnimHeal_End),

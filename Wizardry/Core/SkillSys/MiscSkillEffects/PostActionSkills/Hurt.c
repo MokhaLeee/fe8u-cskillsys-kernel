@@ -1,66 +1,9 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "debuff.h"
-#include "kernel-lib.h"
+#include "map-anims.h"
 #include "battle-system.h"
 #include "constants/skills.h"
-
-struct ProcPostActionHurt {
-    PROC_HEADER;
-    struct Unit * unit;
-    int damage;
-    u32 lock;
-};
-
-STATIC_DECLAR void PostActionHurt_Start(struct ProcPostActionHurt * proc)
-{
-    MapAnim_CommonInit();
-    proc->lock = GetGameLock();
-    BeginUnitCritDamageAnim(proc->unit, proc->damage);
-}
-
-STATIC_DECLAR void PostActionWaitHurtAnimDone(struct ProcPostActionHurt * proc)
-{
-    if (proc->lock == GetGameLock())
-        Proc_Break(proc);
-}
-
-STATIC_DECLAR void PostActionHurt_End(struct ProcPostActionHurt * proc)
-{
-    AddUnitHp(proc->unit, -proc->damage);
-
-    MapAnim_CommonEnd();
-    RestoreBattleRoundInfo();
-}
-
-STATIC_DECLAR const struct ProcCmd ProcScr_PostActionHurt[] = {
-    PROC_NAME("PostActionHurt"),
-    PROC_YIELD,
-    PROC_CALL(PostActionHurt_Start),
-    PROC_SLEEP(4),
-    PROC_WHILE(PostActionWaitHurtAnimDone),
-    PROC_SLEEP(4),
-    PROC_CALL(PostActionHurt_End),
-    PROC_YIELD,
-    PROC_END
-};
-
-STATIC_DECLAR void PostActionHurtCommon(ProcPtr parent, struct Unit * unit, int damage)
-{
-    struct ProcPostActionHurt * proc;
-
-    if (damage <= 0)
-        return;
-
-    EndAllMus();
-    RefreshUnitSprites();
-    HideUnitSprite(unit);
-
-    proc = Proc_StartBlocking(ProcScr_PostActionHurt, parent);
-
-    proc->unit = unit;
-    proc->damage = damage;
-}
 
 bool PostActionBattleActorHurt(ProcPtr parent)
 {
@@ -109,7 +52,7 @@ bool PostActionBattleActorHurt(ProcPtr parent)
     if (damage >= GetUnitCurrentHp(unit))
         damage = GetUnitCurrentHp(unit) - 1;
 
-    PostActionHurtCommon(parent, unit, damage);
+    CallMapAnim_Hurt(parent, unit, damage);
     return true;
 }
 
@@ -171,6 +114,6 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
     if (damage >= GetUnitCurrentHp(unit))
         damage = GetUnitCurrentHp(unit) - 1;
 
-    PostActionHurtCommon(parent, unit, damage);
+    CallMapAnim_Hurt(parent, unit, damage);
     return true;
 }
