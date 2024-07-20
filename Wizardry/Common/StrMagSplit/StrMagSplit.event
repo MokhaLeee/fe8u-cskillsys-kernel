@@ -1,21 +1,8 @@
 #ifndef STR_MAG_SPLIT_INSTALLED
 #define STR_MAG_SPLIT_INSTALLED
 
-#ifndef ITEM_SYS_INSTALLED
-    ERROR "Need ItemSystem installed"
-#endif
-
 #include "Source/Hooks.lyn.event"
 #include "Source/BoosterHook.lyn.event"
-
-#ifndef ITEM_MAG_BOOSTER
-#define ITEM_MAG_BOOSTER 0xBC
-#endif
-
-/* Icon */
-#ifndef ICON_ITEM_MAG_BOOSTER
-#define ICON_ITEM_MAG_BOOSTER 0xCA
-#endif
 
 PUSH
     ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_MAG_BOOSTER * 0x80
@@ -40,9 +27,9 @@ ItemBonus_MagBooster:
     BYTE 0 0 0 0 0 0 0 0
     BYTE 0 2 0 0
 
-InjectItemUsabilityJpt(ITEM_MAG_BOOSTER, 0x8028B4C)
-InjectItemActionJpt(ITEM_MAG_BOOSTER, 0x802FF40)
-InjectItemPrepUsabilityJpt(ITEM_MAG_BOOSTER, 0x0802940C)
-InjectItemPrepEffectJpt(ITEM_MAG_BOOSTER, PrepItemEffect_StatBooster)
+InjectItemUsabilityJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, 0x8028B4C)
+InjectItemActionJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, 0x802FF40)
+InjectItemPrepUsabilityJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, 0x0802940C)
+InjectItemPrepEffectJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, PrepItemEffect_StatBooster)
 
 #endif /* STR_MAG_SPLIT_INSTALLED */
