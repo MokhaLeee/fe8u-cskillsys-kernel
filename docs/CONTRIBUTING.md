@@ -1,5 +1,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
+[Discussion on PR review](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/issues/249)
+
 It is looked forward that this c-skillsys could be a community project and the PR's are welcome. To maintain the code quality, please understand that each PR will be subject to a strict review before merged.
 
 At present, I am not proficient in specifying rules, so I will only mention two requirements and one suggestion for the time being, which may be further refined according to specific needs.

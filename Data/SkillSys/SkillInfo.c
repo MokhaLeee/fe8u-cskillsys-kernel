@@ -2144,6 +2144,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Mine) && COMMON_SKILL_VALID(SID_Mine))
+    [SID_Mine] = {
+        .desc = MSG_SKILL_Mine,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
     [SID_Inori] = {
         .desc = MSG_SKILL_Inori,
@@ -2880,6 +2887,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_FailGale] = {
         .desc = MSG_SKILL_FailGale,
         .icon = GFX_SkillIcon_FailGale,
+    },
+#endif
+
+#if (defined(SID_Clearance) && COMMON_SKILL_VALID(SID_Clearance))
+    [SID_Clearance] = {
+        .desc = MSG_SKILL_Clearance,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 

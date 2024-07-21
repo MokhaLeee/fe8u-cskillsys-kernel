@@ -16,6 +16,8 @@
 #include "Source/EventCmd.lyn.event"
 InjectEventLoCmd(EVENT_CMD_DEBUFF, EventDebuffOperation)
 
+#include "api/api.lyn.event"
+
 // #include "data.event"
 // #include "def.event"
 

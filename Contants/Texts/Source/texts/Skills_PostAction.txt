@@ -89,3 +89,7 @@ G-Wound[X]
 Grisly Wound:[NL]
 Deal up to 20% of the enemy's current[NL]
 HP in damage, after combat.[X]
+
+## MSG_SKILL_Clearance
+Clearance:[NL]
+Clear own negative status after combat[X]

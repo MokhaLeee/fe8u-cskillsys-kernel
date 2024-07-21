@@ -259,6 +259,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_AirRaidSpeed] = {{ 5 }},
     [SID_HealingFocus] = {{ 50 }},
     [SID_LightRune] = {{ 20 }},
+    [SID_Mine] = {{ 20 }},
     [SID_RallyDefense] {{ 4 }},
     [SID_RallyLuck] {{ 4 }},
     [SID_RallyMagic] {{ 4 }},

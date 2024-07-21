@@ -176,6 +176,7 @@ SID_Boon
 
 // Post action
 SID_FailGale
+SID_Clearance
 
 // Menu skills
 SID_Dance
@@ -184,6 +185,7 @@ SID_Summon
 SID_Steal
 SID_Supply
 SID_LightRune
+SID_Mine
 SID_RallyDefense
 SID_RallyLuck
 SID_RallyMagic
