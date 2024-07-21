@@ -178,3 +178,8 @@ extern const u16 _DmgDecreaseRef[100];
 #define DAMAGE_DECREASE(rate) _DmgDecreaseRef[rate]
 
 void PreBattleGenerateHook(void);
+
+/**
+ * BattleUI
+ */
+void ModifyBattleStatusForUI(void);
