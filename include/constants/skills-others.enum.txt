@@ -9,17 +9,12 @@ SID_Armorboost
 SID_Shade
 SID_ShadePlus
 SID_Provoke
-SID_Dance
-SID_LockTouch
-SID_Summon
-SID_Steal
 SID_Lethality
 SID_Crit
 SID_InfinityEdge
 SID_SureShot
 SID_WatchfulEye
 SID_AversaNight
-SID_Supply
 SID_Inori
 SID_Armsthrift
 SID_Synchronize
@@ -181,6 +176,13 @@ SID_Boon
 
 // Post action
 SID_FailGale
+
+// Menu skills
+SID_Dance
+SID_LockTouch
+SID_Summon
+SID_Steal
+SID_Supply
 
 // Art skills
 SID_COMBAT_Galeforce
