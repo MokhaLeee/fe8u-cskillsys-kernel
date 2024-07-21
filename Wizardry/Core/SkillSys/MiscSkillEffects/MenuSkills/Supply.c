@@ -6,12 +6,6 @@
 /* LynJump */
 u8 SupplyUsability(const struct MenuItemDef * def, int number)
 {
-    const struct Vec2 vec_rang1[4] = {
-                  { 0, -1},
-        {-1,  0},           { 1,  0},
-                  { 0,  1}
-    };
-
     int i;
 
 #if 0
@@ -29,11 +23,11 @@ u8 SupplyUsability(const struct MenuItemDef * def, int number)
 #endif
         return MENU_ENABLED;
 
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < ARRAY_COUNT_RANGE1x1; i++)
     {
         struct Unit * unit = GetUnitAtPosition(
-            gActiveUnit->xPos + vec_rang1[i].x,
-            gActiveUnit->yPos + vec_rang1[i].y
+            gActiveUnit->xPos + gVecs_1x1[i].x,
+            gActiveUnit->yPos + gVecs_1x1[i].y
         );
 
         if (!UNIT_IS_VALID(unit) || !AreUnitsAllied(gActiveUnit->index, unit->index))
