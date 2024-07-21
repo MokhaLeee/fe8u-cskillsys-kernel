@@ -256,5 +256,6 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onIdle = NULL,
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,
+    }
 #endif
 };

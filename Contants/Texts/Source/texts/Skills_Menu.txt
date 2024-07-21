@@ -57,7 +57,7 @@ Art: Consumes 20 HP to[NL]
 plant a mine in an area[X]
 
 ## MSG_MenuSkill_MineName
- Mine
+ Mine[X]
 
 ## MSG_SKILL_RallyDefense
 Rally Defense:[NL]
