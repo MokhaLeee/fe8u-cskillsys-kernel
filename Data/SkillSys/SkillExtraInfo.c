@@ -110,6 +110,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_RightfulGod] = {{ 30 }},
     [SID_Hero] = {{ 30 }},
     [SID_Guts] = {{ 5 }},
+    [SID_StrongCon] = {{ 5, 5 }},
     [SID_Spurn] = {{ 5, 4 }},
     [SID_Astra] = {{ 4, 50 }},
     [SID_Aether] = {{ 80 }},
