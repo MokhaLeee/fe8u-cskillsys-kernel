@@ -46,6 +46,25 @@ void BattleGenerateComboAtkList(void)
         if (!item)
             continue;
 
+        /**
+         * Well I decide to directly lock the monster to combo
+         */
+        if (GetItemAttributes(item) & IA_LOCK_3)
+            continue;
+
+        switch (GetItemType(item)) {
+        case ITYPE_SWORD:
+        case ITYPE_AXE:
+        case ITYPE_LANCE:
+        case ITYPE_ANIMA:
+        case ITYPE_LIGHT:
+        case ITYPE_DARK:
+            break;
+
+        default:
+            continue;
+        }
+
         range = RECT_DISTANCE(
             unit->xPos, unit->yPos,
             gBattleTarget.unit.xPos, gBattleTarget.unit.yPos);
