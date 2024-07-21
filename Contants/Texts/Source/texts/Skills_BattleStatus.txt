@@ -713,3 +713,8 @@ FaireDark[X]
 Faire-Dark: [NL]
 ATK +5 if the unit[NL]
 has dark magic equipped.[X]
+
+## MSG_SKILL_Pickup
+Pickup: Obtain the last item in the[NL]
+enemy's inventory after attacking[NL]
+and killing them. (Luck % activation)[X]

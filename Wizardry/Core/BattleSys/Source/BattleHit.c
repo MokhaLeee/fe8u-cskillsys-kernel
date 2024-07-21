@@ -907,6 +907,14 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
+
+#if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
+            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
+            {
+                struct Unit * unit_tar = &gBattleTarget.unit;
+                unit_tar->state |= US_DROP_ITEM;
+            }
+#endif
             gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
         }
 
