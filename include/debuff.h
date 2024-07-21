@@ -220,3 +220,9 @@ int MovGetterStatDebuff(int status, struct Unit * unit);
 void StatDeuff_OnNewGameInit(void);
 void StatDeuff_OnNewGameSave(void);
 void StatDeuff_OnLoadUnit(struct Unit * unit);
+
+/* Misc API */
+bool UnitHasNegativeStatus(struct Unit * unit);
+bool UnitHasPositiveStatus(struct Unit * unit);
+void RemoveUnitNegativeStatus(struct Unit * unit);
+void RemoveUnitPositiveStatus(struct Unit * unit);

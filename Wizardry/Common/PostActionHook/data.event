@@ -6,6 +6,7 @@ gPostActionFuncs:
     POIN PostActionSynchronize
     POIN PostActionBattleActorHurt PostActionBattleTargetHurt
     POIN PostAction_BattleActorHeal
+    POIN PostAction_Clearance
     POIN PostActionAlertStance
     POIN PostActionTsuzuku
     POIN PostActionSwap

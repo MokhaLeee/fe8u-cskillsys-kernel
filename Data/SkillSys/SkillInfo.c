@@ -2890,6 +2890,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Clearance) && COMMON_SKILL_VALID(SID_Clearance))
+    [SID_Clearance] = {
+        .desc = MSG_SKILL_Clearance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_TriangleAdept) && COMMON_SKILL_VALID(SID_TriangleAdept))
     [SID_TriangleAdept] = {
         .name = MSG_SKILL_TriangleAdept_NAME,
