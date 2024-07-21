@@ -52,16 +52,14 @@ bool UnitHasPositiveStatus(struct Unit * unit)
 
 void RemoveUnitNegativeStatus(struct Unit * unit)
 {
-    int i;
-    const struct DebuffInfo * debuff;
+    int i, debuff;
     struct StatDebuffStatus * sdebuff;
 
     /* Debuff */
-    i = GetUnitStatusIndex(unit);
-    debuff = &gpDebuffInfos[i];
-    if (debuff->positive_type == STATUS_DEBUFF_NEGATIVE)
+    debuff = GetUnitStatusIndex(unit);
+    if (IsDebuff(debuff))
     {
-        switch (i) {
+        switch (debuff) {
         case UNIT_STATUS_PETRIFY:
         case UNIT_STATUS_13:
             unit->state = unit->state & ~US_UNSELECTABLE;
@@ -84,13 +82,12 @@ void RemoveUnitNegativeStatus(struct Unit * unit)
 
 void RemoveUnitPositiveStatus(struct Unit * unit)
 {
-    int i;
-    const struct DebuffInfo * debuff;
+    int i, debuff;
     struct StatDebuffStatus * sdebuff;
 
     /* Debuff */
-    debuff = &gpDebuffInfos[GetUnitStatusIndex(unit)];
-    if (debuff->positive_type == STATUS_DEBUFF_POSITIVE)
+    debuff = GetUnitStatusIndex(unit);
+    if (!IsDebuff(debuff))
         SetUnitStatus(unit, UNIT_STATUS_NONE);
 
     /* StatDebuff */
