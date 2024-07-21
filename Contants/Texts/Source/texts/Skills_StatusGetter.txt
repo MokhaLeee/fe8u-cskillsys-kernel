@@ -176,11 +176,6 @@ Resolve:[NL]
 When HP < 50%,[NL]
 STR/SKL/SPD +50% bonus.[X]
 
-## MSG_SKILL_SpeedBoost
-SpeedBoost:[NL]
-+1 MOV per turn up[NL]
-to a maximum of 6 turns.[X]
-
 ## MSG_SKILL_InitCalm_NAME
 Calm-Init.[X]
 
@@ -385,3 +380,75 @@ if an adjacent ally isn't present.[X]
 Poise:[NL]
 +1 MOV. Negates enemy weapon[NL]
 triangle advantage.[X]
+
+## MSG_SKILL_DefenseBoost_NAME
+Def-Boost[X]
+
+## MSG_SKILL_DefenseBoost
+Defense Boost:[NL]
++1 DEF per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_LuckBoost_NAME
+Lck-Boost[X]
+
+## MSG_SKILL_LuckBoost
+Luck Boost:[NL]
++1 LUCK per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_MagicBoost_NAME
+Mag-Boost[X]
+
+## MSG_SKILL_MagicBoost
+Magic Boost:[NL]
++1 MAG per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_MoveBoost_NAME
+Mov-Boost[X]
+
+## MSG_SKILL_MoveBoost
+Move Boost:[NL]
++1 MOV per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_ResistanceBoost_NAME
+Res-Boost[X]
+
+## MSG_SKILL_ResistanceBoost
+Resistance Boost:[NL]
++1 RES per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_SkillBoost_NAME
+Skl-Boost[X]
+
+## MSG_SKILL_SkillBoost
+Skill Boost:[NL]
++1 SKL per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_SpeedBoost_NAME
+Spd-Boost[X]
+
+## MSG_SKILL_SpeedBoost
+Speed Boost:[NL]
++1 SPD per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_StrengthBoost_NAME
+Str-Boost[X]
+
+## MSG_SKILL_StrengthBoost
+Strength Boost:[NL]
++1 STR per turn up[NL]
+to a maximum of 6 turns.[X]
+
+## MSG_SKILL_SpectrumBoost_NAME
+Spec-Boost[X]
+
+## MSG_SKILL_SpectrumBoost
+Spectrum Boost:[NL]
++1 to all stats per turn up[NL]
+to a maximum of 6 turns.[X]

@@ -50,7 +50,6 @@ SID_VengefulFighter
 SID_LuckySeven
 SID_EvenFooted
 SID_OddFooted
-SID_SpeedBoost
 SID_Slayer
 SID_Skybreaker
 SID_Nullify
@@ -160,6 +159,17 @@ SID_RouseResistance
 SID_RouseSkill
 SID_RouseSpeed
 SID_RouseStrength
+
+// Boost skills
+SID_DefenseBoost
+SID_LuckBoost
+SID_MagicBoost
+SID_MoveBoost
+SID_ResistanceBoost
+SID_SkillBoost
+SID_SpeedBoost
+SID_StrengthBoost
+SID_SpectrumBoost
 
 // Engage skills
 SID_GentleFlower // This skill can only set to ally!

@@ -1730,9 +1730,74 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_DefenseBoost) && COMMON_SKILL_VALID(SID_DefenseBoost))
+    [SID_DefenseBoost] = {
+        .name = MSG_SKILL_DefenseBoost_NAME,
+        .desc = MSG_SKILL_DefenseBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LuckBoost) && COMMON_SKILL_VALID(SID_LuckBoost))
+    [SID_LuckBoost] = {
+        .name = MSG_SKILL_LuckBoost_NAME,
+        .desc = MSG_SKILL_LuckBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MagicBoost) && COMMON_SKILL_VALID(SID_MagicBoost))
+    [SID_MagicBoost] = {
+        .name = MSG_SKILL_MagicBoost_NAME,
+        .desc = MSG_SKILL_MagicBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MoveBoost) && COMMON_SKILL_VALID(SID_MoveBoost))
+    [SID_MoveBoost] = {
+        .name = MSG_SKILL_MoveBoost_NAME,
+        .desc = MSG_SKILL_MoveBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_ResistanceBoost) && COMMON_SKILL_VALID(SID_ResistanceBoost))
+    [SID_ResistanceBoost] = {
+        .name = MSG_SKILL_ResistanceBoost_NAME,
+        .desc = MSG_SKILL_ResistanceBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SkillBoost) && COMMON_SKILL_VALID(SID_SkillBoost))
+    [SID_SkillBoost] = {
+        .name = MSG_SKILL_SkillBoost_NAME,
+        .desc = MSG_SKILL_SkillBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_SpeedBoost) && COMMON_SKILL_VALID(SID_SpeedBoost))
     [SID_SpeedBoost] = {
+        .name = MSG_SKILL_SpeedBoost_NAME,
         .desc = MSG_SKILL_SpeedBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_StrengthBoost) && COMMON_SKILL_VALID(SID_StrengthBoost))
+    [SID_StrengthBoost] = {
+        .name = MSG_SKILL_StrengthBoost_NAME,
+        .desc = MSG_SKILL_StrengthBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SpectrumBoost) && COMMON_SKILL_VALID(SID_SpectrumBoost))
+    [SID_SpectrumBoost] = {
+        .name = MSG_SKILL_SpectrumBoost_NAME,
+        .desc = MSG_SKILL_SpectrumBoost,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif

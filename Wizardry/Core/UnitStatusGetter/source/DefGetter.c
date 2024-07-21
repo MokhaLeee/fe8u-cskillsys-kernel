@@ -63,6 +63,28 @@ int DefGetterSkills(int status, struct Unit * unit)
         status += SKILL_EFF0(SID_LuckySeven);
 #endif
 
+#if defined(SID_DefenseBoost) && (COMMON_SKILL_VALID(SID_DefenseBoost))
+    if (SkillTester(unit, SID_DefenseBoost))
+    {
+        int __buf = SKILL_EFF0(SID_DefenseBoost);
+        if (gPlaySt.chapterTurnNumber >= __buf)
+            status += __buf;
+        else
+            status += gPlaySt.chapterTurnNumber;
+    }
+#endif
+
+#if defined(SID_SpectrumBoost) && (COMMON_SKILL_VALID(SID_SpectrumBoost))
+    if (SkillTester(unit, SID_SpectrumBoost))
+    {
+        int __buf = SKILL_EFF0(SID_SpectrumBoost);
+        if (gPlaySt.chapterTurnNumber >= __buf)
+            status += __buf;
+        else
+            status += gPlaySt.chapterTurnNumber;
+    }
+#endif
+
     if (cur_hp == max_hp)
     {
 #if defined(SID_PushDefense) && (COMMON_SKILL_VALID(SID_PushDefense))
