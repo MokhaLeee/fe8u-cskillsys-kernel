@@ -11,19 +11,14 @@ unsigned int ApplyUnitAction(ProcPtr proc)
     if (gActionData.unitActionType >= CONFIG_UNIT_ACTION_AMT)
         return true;
 
+    /* Well I think there should be set some data for action-expa during action routine */
+    memset(&gActionDataExpa, 0, sizeof(gActionDataExpa));
+
     it = gpUnitActionTable[gActionData.unitActionType];
     if (!it)
         return true;
 
     return it(proc);
-}
-
-/* External hook */
-bool PlayerPhase_PrepareActionRe(ProcPtr proc)
-{
-    memset(&gActionDataExpa, 0, sizeof(gActionDataExpa));
-
-    return PlayerPhase_PrepareAction(proc);
 }
 
 /* Misc action functions */
