@@ -2137,6 +2137,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_LightRune) && COMMON_SKILL_VALID(SID_LightRune))
+    [SID_LightRune] = {
+        .desc = MSG_SKILL_LightRune,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
     [SID_Inori] = {
         .desc = MSG_SKILL_Inori,

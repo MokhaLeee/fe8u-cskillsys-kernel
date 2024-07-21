@@ -67,7 +67,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_HealingFocus) && COMMON_SKILL_VALID(SID_HealingFocus))
     [SID_HealingFocus] = {
         .name = "　瞑想",
-        .nameMsgId = MSG_SkillEffect_HealingFocus,
+        .nameMsgId = MSG_MenuSkill_HealingFocusName,
         .helpMsgId = MSG_SKILL_HealingFocus,
         .color = TEXT_COLOR_SYSTEM_WHITE,
         .isAvailable = HealingFocus_Usability,
@@ -83,11 +83,26 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     [SID_Teleportation] = {
         .name = "　転移",
         .nameMsgId = MSG_SkillEffect_Teleportation,
-        .helpMsgId = MSG_SkillEffect_TeleportationRtext,
+        .helpMsgId = MSG_MenuSkill__Teleportation_Rtext,
         .color = TEXT_COLOR_SYSTEM_WHITE,
         .isAvailable = Teleportation_Usability,
         .onDraw = NULL,
         .onSelected = Teleportation_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_LightRune) && COMMON_SKILL_VALID(SID_LightRune))
+    [SID_LightRune] = {
+        .name = "　光の結界",
+        .nameMsgId = MSG_MenuSkill_LightRuneName,
+        .helpMsgId = MSG_SKILL_LightRune,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = LightRune_Usability,
+        .onDraw = NULL,
+        .onSelected = LightRune_OnSelected,
         .onIdle = NULL,
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,

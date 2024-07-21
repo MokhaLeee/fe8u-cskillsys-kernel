@@ -249,7 +249,10 @@ u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);
 u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Teleportation_Usability(const struct MenuItemDef * def, int number);
 u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 LightRune_Usability(const struct MenuItemDef * def, int number);
+u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
 bool Action_Teleportation(ProcPtr parent);
+bool Action_LightRune(ProcPtr parent);

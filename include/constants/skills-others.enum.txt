@@ -183,6 +183,7 @@ SID_LockTouch
 SID_Summon
 SID_Steal
 SID_Supply
+SID_LightRune
 
 // Art skills
 SID_COMBAT_Galeforce

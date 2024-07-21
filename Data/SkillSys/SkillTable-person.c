@@ -21,6 +21,10 @@ const u16 gConstSkillTable_Person[0x100][2] = {
         SID_Lifetaker,
     },
 
+    [CHARACTER_TETHYS] = {
+        SID_LightRune,
+    },
+
     [CHARACTER_LYON_CC] = {
         SID_AversaNight,
     },

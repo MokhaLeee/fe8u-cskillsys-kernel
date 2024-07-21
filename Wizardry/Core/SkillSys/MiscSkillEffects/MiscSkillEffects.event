@@ -17,6 +17,7 @@
 #include "MenuSkills/Summon.lyn.event"
 #include "MenuSkills/Supply.lyn.event"
 #include "MenuSkills/HealingFocus.lyn.event"
+#include "MenuSkills/LightRune.lyn.event"
 #include "MenuSkills/LynJump.event"
 
 #include "Misc/HealAmount.lyn.event"

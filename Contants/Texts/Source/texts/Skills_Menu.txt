@@ -1,3 +1,6 @@
+## MSG_MenuSkill_CommonFail
+This skill cannot be used for now![X]
+
 ## MSG_SKILL_Dance
 Dance:[NL]
 Art: Unit can use[NL]
@@ -26,3 +29,24 @@ Unit can use[NL]
 ## MSG_SKILL_HealingFocus
 Heal Focus:[NL]
 Art: Unit recovers 50% HP.[X]
+
+## MSG_MenuSkill_HealingFocusName
+ Heal-F[X]
+
+## MSG_MenuSkill_HealingFocus_FRtext
+Unit has already full on HP![X]
+
+## MSG_SkillEffect_Teleportation
+ Teleport[X]
+
+## MSG_MenuSkill__Teleportation_Rtext
+Randomly teleport to a place where[NL]
+you can hit someone..Good luck![X]
+
+## MSG_SKILL_LightRune
+Light Rune:[NL]
+Art: Consumes 20 HP to[NL]
+seal an area[X]
+
+## MSG_MenuSkill_LightRuneName
+ Light-R[X]

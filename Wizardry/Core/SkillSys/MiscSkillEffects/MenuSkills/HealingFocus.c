@@ -19,7 +19,7 @@ u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 {
     if (item->availability == MENU_DISABLED)
     {
-        MenuFrozenHelpBox(menu, MSG_SkillEffect_HealingFocus_Fail);
+        MenuFrozenHelpBox(menu, MSG_MenuSkill_HealingFocus_FRtext);
         return MENU_ACT_SND6B;
     }
 
