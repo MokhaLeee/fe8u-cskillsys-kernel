@@ -98,7 +98,7 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
 #endif
 
 #if (defined(SID_DetailedReport) && COMMON_SKILL_VALID(SID_DetailedReport))
-                if (SkillTester(_unit, SID_Obstruct))
+                if (SkillTester(_unit, SID_DetailedReport))
                 {
                     if ((GetUnitCurrentHp(_unit) * 100) >= (GetUnitMaxHp(_unit) * SKILL_EFF0(SID_DetailedReport)))
                     {
