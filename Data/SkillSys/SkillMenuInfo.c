@@ -4,6 +4,7 @@
 #include "constants/texts.h"
 
 const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
+#if (defined(SID_Dance) && COMMON_SKILL_VALID(SID_Dance))
     [SID_Dance] = {
         .name = "　踊る",
         .nameMsgId = 0x67E,
@@ -16,7 +17,9 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,
     },
+#endif
 
+#if (defined(SID_Steal) && COMMON_SKILL_VALID(SID_Steal))
     [SID_Steal] = {
         .name = "　盗む",
         .nameMsgId = 0x67F,
@@ -29,7 +32,9 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchIn = 0,
         .onSwitchOut = 0
     },
+#endif
 
+#if (defined(SID_Summon) && COMMON_SKILL_VALID(SID_Summon))
     [SID_Summon] = {
         .name = "　召喚",
         .nameMsgId = 0x693,
@@ -42,7 +47,9 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchIn = 0,
         .onSwitchOut = 0
     },
+#endif
 
+#if (defined(SID_LockTouch) && COMMON_SKILL_VALID(SID_LockTouch))
     [SID_LockTouch] = {
         .name = "　かぎ開",
         .nameMsgId = 0x694,
@@ -55,7 +62,9 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,
     },
+#endif
 
+#if (defined(SID_HealingFocus) && COMMON_SKILL_VALID(SID_HealingFocus))
     [SID_HealingFocus] = {
         .name = "　瞑想",
         .nameMsgId = MSG_SkillEffect_HealingFocus,
@@ -68,7 +77,9 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,
     },
+#endif
 
+#if (defined(SID_Teleportation) && COMMON_SKILL_VALID(SID_Teleportation))
     [SID_Teleportation] = {
         .name = "　転移",
         .nameMsgId = MSG_SkillEffect_Teleportation,
@@ -81,4 +92,5 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,
     },
+#endif
 };
