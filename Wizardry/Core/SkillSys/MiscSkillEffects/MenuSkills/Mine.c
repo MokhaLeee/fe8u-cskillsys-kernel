@@ -57,7 +57,12 @@ u8 Mine_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
 bool Action_Mine(ProcPtr parent)
 {
-    ExecMine(parent);
+    BattleInitItemEffect(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex);
+    gBattleActor.canCounter = false;
+    AddTrap(gActionData.xOther, gActionData.yOther, TRAP_MINE, 0);
+    BattleApplyItemEffect(parent);
+    gBattleTarget.statusOut = -1;
+    StartMineAnim(parent, gActionData.xOther, gActionData.yOther);
     gBattleActor.hasItemEffectTarget = 0; // seems unused?
     AddUnitHp(&gBattleActor.unit, -SKILL_EFF0(SID_Mine));
     return true;

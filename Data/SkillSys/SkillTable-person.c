@@ -23,6 +23,7 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 
     [CHARACTER_TETHYS] = {
         SID_LightRune,
+        SID_Mine,
     },
 
     [CHARACTER_LYON_CC] = {

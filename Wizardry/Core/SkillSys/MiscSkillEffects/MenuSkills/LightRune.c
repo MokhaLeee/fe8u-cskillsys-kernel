@@ -57,7 +57,12 @@ u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
 bool Action_LightRune(ProcPtr parent)
 {
-    ExecLightRune(parent);
+    BattleInitItemEffect(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex);
+    gBattleActor.canCounter = false;
+    AddLightRune(gActionData.xOther, gActionData.yOther);
+    BattleApplyItemEffect(parent);
+    StartLightRuneAnim(parent, gActionData.xOther, gActionData.yOther);
+    gBattleTarget.statusOut = -1;
     gBattleActor.hasItemEffectTarget = 0; // seems unused?
     AddUnitHp(&gBattleActor.unit, -SKILL_EFF0(SID_LightRune));
     return true;
