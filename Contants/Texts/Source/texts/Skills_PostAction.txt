@@ -93,3 +93,8 @@ HP in damage, after combat.[X]
 ## MSG_SKILL_Clearance
 Clearance:[NL]
 Clear own negative status after combat[X]
+
+## MSG_SKILL_Despoil
+Despoil:[NL]
+Gain a red gem after killing an[NL]
+enemy unit. (Skill % activation)[X]

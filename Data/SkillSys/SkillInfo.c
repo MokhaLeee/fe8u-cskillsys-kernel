@@ -3193,4 +3193,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_RallySpectrum,
     },
 #endif
+
+#if (defined(SID_Despoil) && COMMON_SKILL_VALID(SID_Despoil))
+    [SID_Despoil] = {
+        .desc = MSG_SKILL_Despoil,
+        .icon = GFX_SkillIcon_Despoil,
+    },
+#endif
 };

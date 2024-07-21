@@ -177,6 +177,7 @@ SID_Boon
 // Post action
 SID_FailGale
 SID_Clearance
+SID_Despoil
 
 // Menu skills
 SID_Dance
