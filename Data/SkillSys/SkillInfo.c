@@ -3193,4 +3193,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_RallySpectrum,
     },
 #endif
+
+#if (defined(SID_IndoorMarch) && COMMON_SKILL_VALID(SID_IndoorMarch))
+    [SID_IndoorMarch] = {
+        .name = MSG_SKILL_IndoorMarch_NAME,
+        .desc = MSG_SKILL_IndoorMarch,
+        .icon = GFX_SkillIcon_IndoorMarch,
+    },
+#endif
 };
