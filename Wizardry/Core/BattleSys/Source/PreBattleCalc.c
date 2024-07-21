@@ -834,6 +834,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_StrongCon) && (COMMON_SKILL_VALID(SID_StrongCon)))
+        case SID_StrongCon:
+            if (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE)
+                attacker->battleDefense += SKILL_EFF0(SID_StrongCon);
+
+            break;
+#endif
+
 #if (defined(SID_TowerShield) && (COMMON_SKILL_VALID(SID_TowerShield)))
         case SID_TowerShield:
             if (gBattleStats.range >= 2)

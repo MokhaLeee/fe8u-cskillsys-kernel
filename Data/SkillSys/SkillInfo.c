@@ -1652,6 +1652,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_StrongCon) && COMMON_SKILL_VALID(SID_StrongCon))
+    [SID_StrongCon] = {
+        .desc = MSG_SKILL_StrongCon,
+        .icon = GFX_SkillIcon_StrongCon,
+    },
+#endif
+
 #if (defined(SID_Impale) && COMMON_SKILL_VALID(SID_Impale))
     [SID_Impale] = {
         .desc = MSG_SKILL_Impale,

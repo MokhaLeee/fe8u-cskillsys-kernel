@@ -109,6 +109,7 @@ SID_RightfulGod
 SID_RightfulArch
 SID_Hero
 SID_Guts
+SID_StrongCon
 SID_SuperLuck
 SID_Spurn
 SID_Counter

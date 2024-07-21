@@ -433,6 +433,11 @@ Guts:[NL]
 +5 Attack if afflicted by[NL]
 any status condition.[X]
 
+## MSG_SKILL_StrongCon
+Strong Con.:[NL]
++5 Def/Res if afflicted by[NL]
+any status condition.[X]
+
 ## MSG_SKILL_Hero
 Hero:[NL]
 If unit's HP < 50%, add +30% to[NL]
