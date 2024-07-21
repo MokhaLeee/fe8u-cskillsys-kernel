@@ -39,9 +39,6 @@ void BattleGenerateComboAtkList(void)
         if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
             continue;
 
-        if (unit->state & (US_HIDDEN | US_DEAD | US_BIT16))
-            continue;
-
         if (unit->index == gBattleActor.unit.index)
             continue;
 
