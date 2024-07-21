@@ -63,7 +63,7 @@ bool PostAction_Clearance(ProcPtr parent)
 
     if (gActionData.unitActionType == UNIT_ACTION_COMBAT && UnitHasNegativeStatus(gActiveUnit))
     {
-        Proc_StartBlocking(ProcScr_PostActionClearance, PROC_TREE_3);
+        Proc_Start(ProcScr_PostActionClearance, PROC_TREE_3);
         return true;
     }
     return false;
