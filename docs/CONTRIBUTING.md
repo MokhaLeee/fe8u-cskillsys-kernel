@@ -11,7 +11,7 @@ At present, I am not proficient in specifying rules, so I will only mention two 
 1. Each PR needs to be compiled and approved in the following three cases:
     - On default
     - Uncoment line-5 in [config-debug.h](../include/Configs/config-debug.h): `#define CONFIG_USE_DEBUG`
-    - For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)
+    - ~~For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)~~ (Since skill index has been expanded to 1024, so it seems not necessary for this limitation for the time being LOL)
 
 2. When hacking on function originated from vanilla, make sure that the function definition and the basic functionality are not changed to avoid annoying other developers who may call the function.
 
