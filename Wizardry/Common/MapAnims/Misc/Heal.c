@@ -46,8 +46,8 @@ STATIC_DECLAR void MapAnimHeal_End(struct ProcMapAnimHeal * proc)
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimHeal[] = {
-    PROC_YIELD,
     PROC_CALL(MapAnimHeal_Init),
+    PROC_YIELD,
     PROC_CALL(MapAnimHeal_MoveCamera),
     PROC_YIELD,
     PROC_CALL(MapAnimHeal_ExecAnim),
