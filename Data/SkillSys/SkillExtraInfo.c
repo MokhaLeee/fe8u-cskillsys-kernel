@@ -189,6 +189,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Demoiselle] = {{ 2 }},
     [SID_LilysPoise] = {{ 1, 3 }},
     [SID_Daunt] = {{ 5, 5 }},
+    [SID_MaleficAura] = {{ 2}},
 
     [SID_SpurStr] = {{ 4 }},
     [SID_SpurMag] = {{ 4 }},
