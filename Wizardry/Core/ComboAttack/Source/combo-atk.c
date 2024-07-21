@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "debuff.h"
 #include "combo-attack.h"
 #include "weapon-range.h"
 #include "kernel-tutorial.h"
@@ -35,7 +36,10 @@ void BattleGenerateComboAtkList(void)
 
         /* If not valid unit */
         unit = GetUnit(i);
-        if (!UNIT_IS_VALID(unit))
+        if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+            continue;
+
+        if (unit->state & (US_HIDDEN | US_UNSELECTABLE | US_DEAD | US_BIT16))
             continue;
 
         if (unit->index == gBattleActor.unit.index)
