@@ -15,23 +15,23 @@ u8 RallySpectrum_Usability(const struct MenuItemDef * def, int number)
     bool allies_in_range = false;
 
     for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
-            {
-                int x = gActiveUnit->xPos + gVecs_2x2[i].x;
-                int y = gActiveUnit->yPos + gVecs_2x2[i].y;
+    {
+        int x = gActiveUnit->xPos + gVecs_2x2[i].x;
+        int y = gActiveUnit->yPos + gVecs_2x2[i].y;
 
-                struct Unit * tunit = GetUnitAtPosition(x, y);
-                if (!tunit)
-                    continue;
+        struct Unit * tunit = GetUnitAtPosition(x, y);
+        if (!tunit)
+            continue;
 
-                if (tunit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-                    continue;
+        if (tunit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+            continue;
 
-                if (AreUnitsAllied(gActiveUnit->index, tunit->index))
-                {
-                    allies_in_range = true;
-                    break;
-                }
-            }
+        if (AreUnitsAllied(gActiveUnit->index, tunit->index))
+        {
+            allies_in_range = true;
+            break;
+        }
+    }
     
     if (!allies_in_range)
         return MENU_DISABLED;
@@ -56,29 +56,29 @@ bool Action_RallySpectrum(ProcPtr parent)
 {
     int i;
     for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
-            {
-                int x = gActiveUnit->xPos + gVecs_2x2[i].x;
-                int y = gActiveUnit->yPos + gVecs_2x2[i].y;
+    {
+        int x = gActiveUnit->xPos + gVecs_2x2[i].x;
+        int y = gActiveUnit->yPos + gVecs_2x2[i].y;
 
-                struct Unit * tunit = GetUnitAtPosition(x, y);
-                if (!tunit)
-                    continue;
+        struct Unit * tunit = GetUnitAtPosition(x, y);
+        if (!tunit)
+            continue;
 
-                if (tunit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-                    continue;
+        if (tunit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+            continue;
 
-                if (AreUnitsAllied(gActiveUnit->index, tunit->index))
-                {
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_DEF);
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_LCK);
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_MOV);
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_RES);
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_SKL);
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_SPD);
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_POW);
-                    SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_MAG);
-                }
-            }
+        if (AreUnitsAllied(gActiveUnit->index, tunit->index))
+        {
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_DEF);
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_LCK);
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_MOV);
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_RES);
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_SKL);
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_SPD);
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_POW);
+            SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RALLY_MAG);
+        }
+    }
 
     return true;
 }
