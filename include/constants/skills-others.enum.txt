@@ -184,6 +184,15 @@ SID_Summon
 SID_Steal
 SID_Supply
 SID_LightRune
+SID_RallyDefense
+SID_RallyLuck
+SID_RallyMagic
+SID_RallyMovement
+SID_RallyResistance
+SID_RallySkill
+SID_RallySpeed
+SID_RallyStrength
+SID_RallySpectrum
 
 // Art skills
 SID_COMBAT_Galeforce

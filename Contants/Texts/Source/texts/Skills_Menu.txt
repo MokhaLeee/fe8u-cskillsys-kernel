@@ -50,3 +50,129 @@ seal an area[X]
 
 ## MSG_MenuSkill_LightRuneName
  Light-R[X]
+
+## MSG_SKILL_RallyDefense
+Rally Defense:[NL]
+Art: +4 DEF to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallyDefense_NAME
+Rally-Def[X]
+
+## MSG_MenuSkill_RallyDefenseName
+ R-Def[X]
+
+## MSG_MenuSkill_RallyDefense_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallyLuck
+Rally Luck:[NL]
+Art: +4 LCK to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallyLuck_NAME
+Rally-Lck[X]
+
+## MSG_MenuSkill_RallyLuckName
+ R-Lck[X]
+
+## MSG_MenuSkill_RallyLuck_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallyMagic
+Rally Magic:[NL]
+Art: +4 MAG to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallyMagic_NAME
+Rally-Mag[X]
+
+## MSG_MenuSkill_RallyMagicName
+ R-Mag[X]
+
+## MSG_MenuSkill_RallyMagic_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallyMovement
+Rally Movement:[NL]
+Art: +4 MOV to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallyMovement_NAME
+Rally-Mov[X]
+
+## MSG_MenuSkill_RallyMovementName
+ R-Mov[X]
+
+## MSG_MenuSkill_RallyMovement_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallyResistance
+Rally Resistance:[NL]
+Art: +4 RES to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallyResistance_NAME
+Rally-Res[X]
+
+## MSG_MenuSkill_RallyResistanceName
+ R-Res[X]
+
+## MSG_MenuSkill_RallyResistance_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallySkill
+Rally Skill:[NL]
+Art: +4 SKL to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallySkill_NAME
+Rally-Skl[X]
+
+## MSG_MenuSkill_RallySkillName
+ R-Skl[X]
+
+## MSG_MenuSkill_RallySkill_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallySpeed
+Rally Speed:[NL]
+Art: +4 SPD to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallySpeed_NAME
+Rally-Spd[X]
+
+## MSG_MenuSkill_RallySpeedName
+ R-Spd[X]
+
+## MSG_MenuSkill_RallySpeed_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallyStrength
+Rally Strength:[NL]
+Art: +4 STR to all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallyStrength_NAME
+Rally-Str[X]
+
+## MSG_MenuSkill_RallyStrengthName
+ R-Str[X]
+
+## MSG_MenuSkill_RallyStrength_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_RallySpectrum
+Rally Spectrum:[NL]
+Art: +4 all stats for all allies[NL]
+in a 2x2 radius of user.[X]
+
+## MSG_SKILL_RallySpectrum_NAME
+Rally-Spec[X]
+
+## MSG_MenuSkill_RallySpectrumName
+ R-Spec[X]
+
+## MSG_MenuSkill_RallySpectrum_FRtext
+No allies are in range![X]
