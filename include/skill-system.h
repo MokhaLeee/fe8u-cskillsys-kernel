@@ -221,6 +221,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid);
 /**
  * External MiscSkillEffects
  */
+bool GetTeleportationRandomPosition(struct Unit * unit, struct Vec2 * out);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {
@@ -246,6 +247,8 @@ int ResGetterLegendSkills(int status, struct Unit * unit);
 /* Menu skills */
 u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);
 u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Teleportation_Usability(const struct MenuItemDef * def, int number);
+u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);

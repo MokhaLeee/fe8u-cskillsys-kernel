@@ -68,4 +68,17 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchIn = NULL,
         .onSwitchOut = NULL,
     },
+
+    [SID_Teleportation] = {
+        .name = "　転移",
+        .nameMsgId = MSG_SkillEffect_Teleportation,
+        .helpMsgId = MSG_SKILL_Teleportation,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Teleportation_Usability,
+        .onDraw = NULL,
+        .onSelected = Teleportation_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
 };

@@ -9,3 +9,9 @@ Swap position?        [NL][Yes][X]
 
 ## MSG_SkillEffect_HealingFocus_Fail
 Unit has already full on HP![X]
+
+## MSG_SkillEffect_Teleportation
+ Teleport[X]
+
+## MSG_MenuSkill_CommonFail
+This skill cannot be used for now![X]
