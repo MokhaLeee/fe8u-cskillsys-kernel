@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "skill-system.h"
-#include "constants/skills.h"
 
 bool ActionExecSkill(ProcPtr proc)
 {

@@ -2,7 +2,6 @@
 #include "bwl.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
-#include "constants/skills.h"
 
 #define LOCAL_TRACE 0
 
