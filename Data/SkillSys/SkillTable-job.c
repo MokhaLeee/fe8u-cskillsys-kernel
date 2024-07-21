@@ -31,6 +31,10 @@ const u16 gConstSkillTable_Job[0x100][2] = {
         SID_HoneArmor,
     },
 
+    [CLASS_MYRMIDON_F] = {
+        SID_Astra
+    },
+
     [CLASS_SWORDMASTER] = {
         SID_Crit,
         SID_InfinityEdge,

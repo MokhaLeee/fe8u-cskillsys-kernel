@@ -65,10 +65,16 @@ Avoid Sword: [NL]
 Grants avoid rate +20%[NL]
 if unit equips a Sword.[X]
 
+## MSG_SKILL_RuinedBlade_NAME
+RuinBlade[X]
+
 ## MSG_SKILL_RuinedBlade
 Ruined Blade: [NL]
 Str/Mag-5, Spd+5, increases[NL]
 real damage by 5 in combat.[X]
+
+## MSG_SKILL_RuinedBladePlus_NAME
+RuinBlade+[X]
 
 ## MSG_SKILL_RuinedBladePlus
 Ruined Blade+:[NL]

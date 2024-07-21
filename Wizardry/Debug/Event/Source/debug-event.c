@@ -49,6 +49,15 @@ static const struct REDA REDA_Vanessa[] = {
     }
 };
 
+static const struct REDA REDA_Marisa[] = {
+    {
+        .x = 14,
+        .y = 24,
+        .b = -1,
+        .delayFrames = 48,
+    }
+};
+
 static const struct REDA REDA_Ephraim[] = {
     {
         .x = 13,
@@ -159,6 +168,20 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
         },
     },
     {
+        .charIndex = CHARACTER_MARISA,
+        .classIndex = CLASS_MYRMIDON_F,
+        .autolevel = true,
+        .level = 10,
+        .xPosition = 16,
+        .yPosition = 29,
+        .redaCount = 1,
+        .redas = REDA_Marisa,
+        .items = {
+            ITEM_SWORD_SLIM,
+            ITEM_VULNERARY
+        },
+    },
+    {
         .charIndex = CHARACTER_EPHRAIM,
         .classIndex = CLASS_EPHRAIM_LORD,
         .autolevel = true,
@@ -241,6 +264,14 @@ static const struct REDA REDA_Bazba[] = {
     }
 };
 
+static const struct REDA REDA_Vigarde[] = {
+    {
+        .x = 13,
+        .y = 23,
+        .b = -1,
+    },
+};
+
 static const struct UnitDefinition UnitDef_Enemy1[] = {
     {
         .charIndex = CHARACTER_ONEILL,
@@ -286,6 +317,23 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
             ITEM_SWORD_IRON,
         },
         .ai = { 0, 4, 9, 0 },
+    },
+    {
+        .charIndex = CHARACTER_VIGARDE,
+        .classIndex = CLASS_GENERAL,
+        .autolevel = true,
+        .allegiance = FACTION_ID_RED,
+        .level = 10,
+        .xPosition = 12,
+        .yPosition = 21,
+        .redaCount = 1,
+        .redas = REDA_Vigarde,
+        .items = {
+            ITEM_AXE_IRON,
+            ITEM_LANCE_SILVER,
+            ITEM_VULNERARY,
+        },
+        .ai = { NeverMoveAI },
     },
     {}
 };

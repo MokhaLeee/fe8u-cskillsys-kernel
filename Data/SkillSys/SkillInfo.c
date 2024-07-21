@@ -282,6 +282,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RuinedBlade) && COMMON_SKILL_VALID(SID_RuinedBlade))
     [SID_RuinedBlade] = {
+        .name = MSG_SKILL_RuinedBlade_NAME,
         .desc = MSG_SKILL_RuinedBlade,
         .icon = GFX_SkillIcon_RuinedBlade,
     },
@@ -1846,6 +1847,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RuinedBladePlus) && COMMON_SKILL_VALID(SID_RuinedBladePlus))
     [SID_RuinedBladePlus] = {
+        .name = MSG_SKILL_RuinedBladePlus_NAME,
         .desc = MSG_SKILL_RuinedBladePlus,
         .icon = GFX_SkillIcon_RuinedBlade,
     },

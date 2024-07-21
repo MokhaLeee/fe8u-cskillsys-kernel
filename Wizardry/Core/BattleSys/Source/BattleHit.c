@@ -178,7 +178,14 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     }
 
     /**
-     * Step1: Calculate base damage (atk + correction - def)
+     * Step1: Calculate real damage
+     */
+    real_damage = CalcBattleRealDamage(attacker, defender);
+    if (real_damage > 0 && gBattleStats.config & BATTLE_CONFIG_REAL)
+        TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
+
+    /**
+     * Step2: Calculate base damage (atk + correction - def)
      */
     attack = gBattleStats.attack;
     defense = gBattleStats.defense;
@@ -296,13 +303,18 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #endif
 
     /**
-     * Step1.1: fasten calculation!
+     * Step2.1: fasten calculation!
      */
     damage_base = attack + correction - defense;
     if (damage_base <= 0)
-        return 0;
+        damage_base = 0;
 
-    if (damage_base > 0)
+    if (damage_base <= 0 && real_damage <= 0)
+    {
+        /* If no damage taken, directly end the damage calculation */
+        return 0;
+    }
+    else
     {
 #if (defined(SID_GreatShield) && (COMMON_SKILL_VALID(SID_GreatShield)))
         if (CheckBattleSkillActivate(defender, attacker, SID_GreatShield, defender->unit.skl))
@@ -345,7 +357,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     }
 
     /**
-     * Step2: Calculate damage increase amplifier (100% + increase%)
+     * Step3: Calculate damage increase amplifier (100% + increase%)
      */
     increase = 100;
 
@@ -386,7 +398,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         increase += 50;
 
     /**
-     * Step3: Calculate critial damage amplifier (200%  + crit_correction%)
+     * Step4: Calculate critial damage amplifier (200%  + crit_correction%)
      */
     crit_correction = 100;
     if (crit_atk)
@@ -410,7 +422,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     }
 
     /**
-     * Step4: Calculate damage decrease amplifier (100% + decrease%)
+     * Step5: Calculate damage decrease amplifier (100% + decrease%)
      */
     decrease = 0x100;
 
@@ -526,13 +538,6 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         gBattleStats.range > 1)
         decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CrusaderWard));
 #endif
-
-    /**
-     * Step5: Calculate real damage
-     */
-    real_damage = CalcBattleRealDamage(attacker, defender);
-    if (real_damage > 0 && gBattleStats.config & BATTLE_CONFIG_REAL)
-        TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
 
     /**
      * Step6: Calculate result
