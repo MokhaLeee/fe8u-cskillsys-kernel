@@ -9,7 +9,6 @@
 #include "PostActionSkills/Heal.lyn.event"
 #include "PostActionSkills/Hurt.lyn.event"
 #include "PostActionSkills/Synchronize.lyn.event"
-#include "PostActionSkills/Clearance.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
 #include "MenuSkills/Dance.lyn.event"
@@ -19,7 +18,6 @@
 #include "MenuSkills/Supply.lyn.event"
 #include "MenuSkills/HealingFocus.lyn.event"
 #include "MenuSkills/LightRune.lyn.event"
-#include "MenuSkills/Mine.lyn.event"
 #include "MenuSkills/RallyDefense.lyn.event"
 #include "MenuSkills/RallyLuck.lyn.event"
 #include "MenuSkills/RallyMagic.lyn.event"
@@ -29,7 +27,6 @@
 #include "MenuSkills/RallySpeed.lyn.event"
 #include "MenuSkills/RallyStrength.lyn.event"
 #include "MenuSkills/RallySpectrum.lyn.event"
-#include "MenuSkills/Teleportation.lyn.event"
 #include "MenuSkills/LynJump.event"
 
 #include "Misc/HealAmount.lyn.event"

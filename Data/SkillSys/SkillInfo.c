@@ -3112,4 +3112,76 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_SealStrength
     },
 #endif
+
+#if (defined(SID_RallyDefense) && COMMON_SKILL_VALID(SID_RallyDefense))
+    [SID_RallyDefense] = {
+        .name = MSG_SKILL_RallyDefense_NAME,
+        .desc = MSG_SKILL_RallyDefense,
+        .icon = GFX_SkillIcon_RallyDefense,
+    },
+#endif
+
+#if (defined(SID_RallyLuck) && COMMON_SKILL_VALID(SID_RallyLuck))
+    [SID_RallyLuck] = {
+        .name = MSG_SKILL_RallyLuck_NAME,
+        .desc = MSG_SKILL_RallyLuck,
+        .icon = GFX_SkillIcon_RallyLuck,
+    },
+#endif
+
+#if (defined(SID_RallyMagic) && COMMON_SKILL_VALID(SID_RallyMagic))
+    [SID_RallyMagic] = {
+        .name = MSG_SKILL_RallyMagic_NAME,
+        .desc = MSG_SKILL_RallyMagic,
+        .icon = GFX_SkillIcon_RallyMagic,
+    },
+#endif
+
+#if (defined(SID_RallyMovement) && COMMON_SKILL_VALID(SID_RallyMovement))
+    [SID_RallyMovement] = {
+        .name = MSG_SKILL_RallyMovement_NAME,
+        .desc = MSG_SKILL_RallyMovement,
+        .icon = GFX_SkillIcon_RallyMovement,
+    },
+#endif
+
+#if (defined(SID_RallyResistance) && COMMON_SKILL_VALID(SID_RallyResistance))
+    [SID_RallyResistance] = {
+        .name = MSG_SKILL_RallyResistance_NAME,
+        .desc = MSG_SKILL_RallyResistance,
+        .icon = GFX_SkillIcon_RallyResistance,
+    },
+#endif
+
+#if (defined(SID_RallySkill) && COMMON_SKILL_VALID(SID_RallySkill))
+    [SID_RallySkill] = {
+        .name = MSG_SKILL_RallySkill_NAME,
+        .desc = MSG_SKILL_RallySkill,
+        .icon = GFX_SkillIcon_RallySkill,
+    },
+#endif
+
+#if (defined(SID_RallySpeed) && COMMON_SKILL_VALID(SID_RallySpeed))
+    [SID_RallySpeed] = {
+        .name = MSG_SKILL_RallySpeed_NAME,
+        .desc = MSG_SKILL_RallySpeed,
+        .icon = GFX_SkillIcon_RallySpeed,
+    },
+#endif
+
+#if (defined(SID_RallyStrength) && COMMON_SKILL_VALID(SID_RallyStrength))
+    [SID_RallyStrength] = {
+        .name = MSG_SKILL_RallyStrength_NAME,
+        .desc = MSG_SKILL_RallyStrength,
+        .icon = GFX_SkillIcon_RallyStrength,
+    },
+#endif
+
+#if (defined(SID_RallySpectrum) && COMMON_SKILL_VALID(SID_RallySpectrum))
+    [SID_RallySpectrum] = {
+        .name = MSG_SKILL_RallySpectrum_NAME,
+        .desc = MSG_SKILL_RallySpectrum,
+        .icon = GFX_SkillIcon_RallySpectrum,
+    },
+#endif
 };
