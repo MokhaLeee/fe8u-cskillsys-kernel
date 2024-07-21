@@ -189,3 +189,4 @@ struct EvCheck03 {
 bool CanUnitCrossTerrain(struct Unit * unit, int terrain);
 extern CONST_DATA struct MenuItemDef gUnitActionMenuItems[];
 void StartMineAnim(ProcPtr, int, int);
+void AddUnitToTargetListIfAllied(struct Unit * unit);

@@ -15,6 +15,7 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 
     [CHARACTER_SALEH] = {
         SID_Thunderstorm,
+        SID_RallyMovement,
     },
 
     [CHARACTER_VANESSA] = {
