@@ -50,3 +50,11 @@ seal an area[X]
 
 ## MSG_MenuSkill_LightRuneName
  Light-R[X]
+
+## MSG_SKILL_Mine
+Mine:[NL]
+Art: Consumes 20 HP to[NL]
+plant a mine in an area[X]
+
+## MSG_MenuSkill_MineName
+ Mine[X]

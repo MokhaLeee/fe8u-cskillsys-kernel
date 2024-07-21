@@ -108,4 +108,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Mine) && COMMON_SKILL_VALID(SID_Mine))
+    [SID_Mine] = {
+        .name = "　地雷",
+        .nameMsgId = MSG_MenuSkill_MineName,
+        .helpMsgId = MSG_SKILL_Mine,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Mine_Usability,
+        .onDraw = NULL,
+        .onSelected = Mine_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

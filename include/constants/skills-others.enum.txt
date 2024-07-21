@@ -184,6 +184,7 @@ SID_Summon
 SID_Steal
 SID_Supply
 SID_LightRune
+SID_Mine
 
 // Art skills
 SID_COMBAT_Galeforce
