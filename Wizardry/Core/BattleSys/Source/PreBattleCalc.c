@@ -1444,7 +1444,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
 #if (defined(SID_MaleficAura) && (COMMON_SKILL_VALID(SID_MaleficAura)))
                 if (SkillTester(unit, SID_MaleficAura) )
                 {
-                    if(IsMagicAttack(defender))
+                    if (IsMagicAttack(defender))
                         attacker->battleDefense -= SKILL_EFF0(SID_MaleficAura);
                 }
 #endif
