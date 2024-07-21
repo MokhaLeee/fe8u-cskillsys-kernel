@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "event-rework.h"
+#include "unit-expa.h"
+#include "action-expa.h"
 
 static void set_actor_unit(void)
 {
@@ -35,6 +37,9 @@ LABEL(99)
 /* Action */
 bool Action_Teleportation(ProcPtr parent)
 {
+    gActionDataExpa.refrain_action = true;
+    SetBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED);
+
     KernelCallEvent(EventScr_ActionTeleportation, EV_EXEC_CUTSCENE, parent);
     return false;
 }

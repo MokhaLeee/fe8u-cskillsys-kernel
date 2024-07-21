@@ -18,6 +18,14 @@ unsigned int ApplyUnitAction(ProcPtr proc)
     return it(proc);
 }
 
+/* External hook */
+bool PlayerPhase_PrepareActionRe(ProcPtr proc)
+{
+    memset(&gActionDataExpa, 0, sizeof(gActionDataExpa));
+
+    return PlayerPhase_PrepareAction(proc);
+}
+
 /* Misc action functions */
 bool _ActionWait(ProcPtr proc)
 {

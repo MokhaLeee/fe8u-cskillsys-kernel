@@ -3,3 +3,8 @@
 
 // #include "data.event"
 // #include "def.event"
+
+PUSH
+    ORG 0x59ABD4
+    POIN PlayerPhase_PrepareActionRe
+POP

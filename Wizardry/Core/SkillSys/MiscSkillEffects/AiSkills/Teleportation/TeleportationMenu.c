@@ -2,13 +2,19 @@
 #include "skill-system.h"
 #include "kernel-lib.h"
 #include "action-expa.h"
+#include "unit-expa.h"
 #include "constants/texts.h"
 #include "constants/skills.h"
 
 u8 Teleportation_Usability(const struct MenuItemDef * def, int number)
 {
-    if (gActiveUnit->state & US_CANTOING)
+    if (gActiveUnit->state & US_CANTOING || CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
         return MENU_NOTSHOWN;
+
+#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
+    if ((GetUnitCurrentHp(gActiveUnit) * 100) < (GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_Teleportation)))
+        return MENU_DISABLED;
+#endif
 
     if (!AreAnyEnemyUnitDead())
         return MENU_DISABLED;

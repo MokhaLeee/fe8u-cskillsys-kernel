@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "weapon-range.h"
 #include "status-getter.h"
+#include "unit-expa.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 
@@ -39,7 +40,7 @@ bool Ai2Decide_TryTeleportation(void)
     if (gAiScriptKind != AI_SCRIPT_AI2)
         return false;
 
-    if (gActiveUnit->state & US_HAS_MOVED)
+    if (CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
         return false;
 
     switch (gActiveUnit->ai2) {
@@ -60,7 +61,7 @@ bool Ai2Decide_TryTeleportation(void)
         LTRACEF("[uid=%x] Ai1 Teleportation to x=%d, y=%d", 
                     gActiveUnit->index & 0xFF, gAiDecision.xTarget, gAiDecision.yTarget);
 
-        gActiveUnit->state |= US_HAS_MOVED;
+        SetBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED);
         return true;
     }
     return false;
