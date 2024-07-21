@@ -19,6 +19,7 @@
 #include "MenuSkills/HealingFocus.lyn.event"
 #include "MenuSkills/LightRune.lyn.event"
 #include "MenuSkills/Mine.lyn.event"
+#include "MenuSkills/Teleportation.lyn.event"
 #include "MenuSkills/LynJump.event"
 
 #include "Misc/HealAmount.lyn.event"

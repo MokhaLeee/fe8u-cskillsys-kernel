@@ -2,7 +2,6 @@
 #include "Teleportation/TeleportationAiAction.lyn.event"
 #include "Teleportation/TeleportationAiDecide.lyn.event"
 #include "Teleportation/TeleportationAction.lyn.event"
-#include "Teleportation/TeleportationMenu.lyn.event"
 #include "Teleportation/LynJump.event"
 
 InjectAiAction(CONFIG_AI_ACTION_EXPA_Teleportation, AiAction_Teleportation, AiAction_TeleportationIdle)
