@@ -28,7 +28,7 @@ u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
-bool HealingFocus_Action(ProcPtr parent)
+bool Action_HealingFocus(ProcPtr parent)
 {
     CallMapAnim_Heal(parent, gActiveUnit, Div(GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_HealingFocus), 100));
     return true;

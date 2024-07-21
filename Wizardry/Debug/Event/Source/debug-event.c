@@ -233,6 +233,14 @@ static const struct REDA REDA_Saar[] = {
     }
 };
 
+static const struct REDA REDA_Bazba[] = {
+    {
+        .x = 8,
+        .y = 7,
+        .b = -1,
+    }
+};
+
 static const struct UnitDefinition UnitDef_Enemy1[] = {
     {
         .charIndex = CHARACTER_ONEILL,
@@ -264,6 +272,21 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
         },
         .ai = { 0, 4, 9, 0 },
     },
+    {
+        .charIndex = CHARACTER_BAZBA,
+        .classIndex = CLASS_MERCENARY,
+        .autolevel = true,
+        .allegiance = FACTION_ID_RED,
+        .level = 10,
+        .xPosition = 10,
+        .yPosition = 9,
+        .redaCount = 1,
+        .redas = REDA_Bazba,
+        .items = {
+            ITEM_SWORD_IRON,
+        },
+        .ai = { 0, 4, 9, 0 },
+    },
     {}
 };
 
@@ -277,11 +300,14 @@ static const EventScr EventScr_Beginning[] = {
     ENUN
 
     Evt_AddSkill(SID_Obstruct, CHARACTER_SAAR)
+    Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
+
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
     Evt_AddSkill(SID_MovBonus, CHARACTER_EPHRAIM)
     Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
+    Evt_AddSkill(SID_Teleportation, CHARACTER_EPHRAIM)
     Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
     Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
 

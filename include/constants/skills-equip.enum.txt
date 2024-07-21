@@ -274,3 +274,4 @@ SID_FlierGuidance
 
 // Menu skill
 SID_HealingFocus
+SID_Teleportation

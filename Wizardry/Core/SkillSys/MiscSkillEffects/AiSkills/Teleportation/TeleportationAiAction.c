@@ -1,14 +1,9 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "event-rework.h"
+#include "constants/skills.h"
 
 #define LOCAL_TRACE 0
-
-STATIC_DECLAR void clear_mus(void)
-{
-    EndAllMus();
-    RefreshUnitSprites();
-}
 
 static void set_actor_unit(void)
 {
@@ -26,7 +21,7 @@ STATIC_DECLAR const EventScr EventScr_ActionTeleportation[] = {
     STAL(20)
 
 LABEL(0)
-    ASMC(clear_mus)
+    ASMC(MapAnim_CommonInit)
     ASMC(set_actor_unit)
     CALL(EventScr_UidWarpOUT)
     STAL(60)
@@ -57,7 +52,8 @@ void AiAction_Teleportation(ProcPtr parent)
     gActionData.yMove = gAiDecision.yTarget;
 
     gActionData.subjectIndex = gActiveUnit->index;
-    gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_Teleportation;
+    gActionData.unk08 = SID_Teleportation;
+    gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
 
     ApplyUnitAction(parent);
 }

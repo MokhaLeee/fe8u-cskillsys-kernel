@@ -246,4 +246,7 @@ int ResGetterLegendSkills(int status, struct Unit * unit);
 /* Menu skills */
 u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);
 u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-bool HealingFocus_Action(ProcPtr proc);
+
+/* Skill actions */
+bool Action_HealingFocus(ProcPtr proc);
+bool Action_Teleportation(ProcPtr parent);

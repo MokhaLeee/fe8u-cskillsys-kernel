@@ -70,7 +70,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
         ix = NextRN_N(gBmMapSize.x);
         iy = NextRN_N(gBmMapSize.y);
 
-        if (gBmMapUnit[iy][ix] == 0 && (s8) gBmMapMovement[iy][ix] >= 0)
+        if (gBmMapUnit[iy][ix] == 0 && (s8) gBmMapMovement[iy][ix] >= 0 && CanUnitCrossTerrain(gActiveUnit, gBmMapTerrain[iy][ix]))
         {
             /* Found it! */
             AiSetDecision(gActiveUnit->xPos, gActiveUnit->yPos, CONFIG_AI_ACTION_EXPA_Teleportation, 0, 0, ix, iy);

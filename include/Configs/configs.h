@@ -84,7 +84,6 @@
  */
 #define CONFIG_UNIT_ACTION_AMT 0x30
 #define CONFIG_UNIT_ACTION_EXPA_ExecSkill 0x23
-#define CONFIG_UNIT_ACTION_EXPA_Teleportation 0x24
 
 /**
  * Str/Mag related config
