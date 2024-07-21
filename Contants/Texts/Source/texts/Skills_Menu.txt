@@ -1,17 +1,17 @@
 ## MSG_SKILL_Dance
 Dance:[NL]
-Unit can use
+Art: Unit can use[NL]
 "Dance" command.[X]
 
 ## MSG_SKILL_LockTouch
 Lock Touch:[NL]
-Unit can use[NL]
+Art: Unit can use[NL]
 "Pick" command.[X]
 
 ## MSG_SKILL_Summon
 Summon:[NL]
-Unit can use[NL]
-"Summon" command.[X]
+Art: Unit summon a[NL]
+monter on assistance[X]
 
 ## MSG_SKILL_Supply
 Supply:[NL]
