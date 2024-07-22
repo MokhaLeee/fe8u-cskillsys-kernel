@@ -3200,4 +3200,19 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Despoil,
     },
 #endif
+
+#if (defined(SID_Pickup) && COMMON_SKILL_VALID(SID_Pickup))
+    [SID_Pickup] = {
+        .desc = MSG_SKILL_Pickup,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_IndoorMarch) && COMMON_SKILL_VALID(SID_IndoorMarch))
+    [SID_IndoorMarch] = {
+        .name = MSG_SKILL_IndoorMarch_NAME,
+        .desc = MSG_SKILL_IndoorMarch,
+        .icon = GFX_SkillIcon_IndoorMarch,
+    },
+#endif
 };
