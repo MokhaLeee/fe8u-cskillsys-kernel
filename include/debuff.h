@@ -29,6 +29,7 @@ enum UNIT_STATUS_IDENTIFIER {
 };
 
 enum DEBUFF_POSITIVE_TYPE {
+    /* DebuffInfo::positive_type */
     STATUS_DEBUFF_NONE,
     STATUS_DEBUFF_NEGATIVE,
     STATUS_DEBUFF_POSITIVE,
@@ -37,12 +38,14 @@ enum DEBUFF_POSITIVE_TYPE {
 };
 
 enum STATUS_DEBUFF_TICK_TYPE {
+    /* DebuffInfo::tick_type */
     STATUS_DEBUFF_NO_TICK = 0,
     STATUS_DEBUFF_TICK_ON_ENEMY = 1,
     STATUS_DEBUFF_TICK_ON_ALLY = 2,
 };
 
 enum DEBUFF_INFO_EFX_SPEED {
+    /* DebuffInfo::efx_config::speed */
     EFX_DEBUFF_LOWLOW,
     EFX_DEBUFF_LOW,
     EFX_DEBUFF_NORMAL,

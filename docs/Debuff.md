@@ -1,4 +1,4 @@
-For now (2024.05.28), kernel supports 64 debuff, and 32 superposable debuff. The former use `[Unit + 0x30]` 8 bits and the latter use an allocated memory.
+For now (2024.07.22), kernel supports 64 debuff, and 126 superposable debuff. The former use `[Unit + 0x30]` 8 bits and the latter use an allocated memory.
 
 # 1. Unit status expansion
 
@@ -9,13 +9,32 @@ For now, we have expanded unit status index to 6 bits, which can support up to 6
 At the same time, a table is build to store status informations, such as, how unit’s atk decrese during suffering this status or how long will this status continue, etc, which can be found from the pointer `gpDebuffInfos`.
 
 ```c
+enum DEBUFF_POSITIVE_TYPE {
+    /* DebuffInfo::positive_type */
+    STATUS_DEBUFF_NONE,
+    STATUS_DEBUFF_NEGATIVE,
+    STATUS_DEBUFF_POSITIVE,
+
+    STATUS_DEBUFF_NONE_NO_CALC,
+};
+
+enum STATUS_DEBUFF_TICK_TYPE {
+    /* DebuffInfo::tick_type */
+    STATUS_DEBUFF_NO_TICK = 0,
+    STATUS_DEBUFF_TICK_ON_ENEMY = 1,
+    STATUS_DEBUFF_TICK_ON_ALLY = 2,
+};
+
 struct DebuffInfo {
     const u8 * img;
-    void (* on_draw)(struct Unit * unit);
+    void (* on_draw)(struct Unit * unit, int ix, int iy);
     u16 name, desc;
 
-    u8 type;
+    u8 positive_type;
+    u8 tick_type;
     u8 duration;
+
+    u8 _pad_;
 
     struct {
         u8 speed;
@@ -30,7 +49,7 @@ struct DebuffInfo {
         s8 atk, def, hit, avo, crit, silencer, dodge;
     } battle_status;
 
-    u8 cannot_move : 1;
+    u8 cannot_move;
 };
 
 extern struct DebuffInfo const * const gpDebuffInfos;
@@ -72,7 +91,13 @@ Common API:
 ```c
 // <debuff.h>
 enum UNIT_STAT_DEBUFF_IDX {
-    UNIT_STAT_BUFF_RING_ATK,
+    /* 0/1 is set as a bitmask to identify postive/negative status */
+    UNIT_STAT_POSITIVE_BIT0,
+    UNIT_STAT_POSITIVE_BIT1,
+
+    UNIT_STAT_DEBUFF_IDX_START,
+
+    UNIT_STAT_BUFF_RING_ATK = UNIT_STAT_DEBUFF_IDX_START,
     UNIT_STAT_BUFF_RING_DEF,
     UNIT_STAT_BUFF_RING_CRT,
     UNIT_STAT_BUFF_RING_AVO,
@@ -95,10 +120,54 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_BUFF_RES,
     UNIT_STAT_BUFF_MOV,
 
+    UNIT_STAT_BUFF_INIT_POW,
+    UNIT_STAT_BUFF_INIT_MAG,
+    UNIT_STAT_BUFF_INIT_SKL,
+    UNIT_STAT_BUFF_INIT_SPD,
+    UNIT_STAT_BUFF_INIT_LCK,
+    UNIT_STAT_BUFF_INIT_DEF,
+    UNIT_STAT_BUFF_INIT_RES,
+    UNIT_STAT_BUFF_INIT_MOV,
+
+    UNIT_STAT_BUFF_OATHROUSE_POW,
+    UNIT_STAT_BUFF_OATHROUSE_MAG,
+    UNIT_STAT_BUFF_OATHROUSE_SKL,
+    UNIT_STAT_BUFF_OATHROUSE_SPD,
+    UNIT_STAT_BUFF_OATHROUSE_LCK,
+    UNIT_STAT_BUFF_OATHROUSE_DEF,
+    UNIT_STAT_BUFF_OATHROUSE_RES,
+    UNIT_STAT_BUFF_OATHROUSE_MOV,
+
+    UNIT_STAT_BUFF_JOB_HONE,
+    UNIT_STAT_BUFF_JOB_FORTIFY,
+
     UNIT_STAT_DEBUFF_AversaNight,
+    UNIT_STAT_DEBUFF_YuneWhispers,
+
+    UNIT_STAT_BUFF_PLUSMINUS,
+
+    UNIT_STAT_BUFF_ROUSE_POW,
+    UNIT_STAT_BUFF_ROUSE_MAG,
+    UNIT_STAT_BUFF_ROUSE_SKL,
+    UNIT_STAT_BUFF_ROUSE_SPD,
+    UNIT_STAT_BUFF_ROUSE_LCK,
+    UNIT_STAT_BUFF_ROUSE_DEF,
+    UNIT_STAT_BUFF_ROUSE_RES,
+    UNIT_STAT_BUFF_ROUSE_MOV,
+
+    UNIT_STAT_BUFF_RALLY_POW,
+    UNIT_STAT_BUFF_RALLY_MAG,
+    UNIT_STAT_BUFF_RALLY_SKL,
+    UNIT_STAT_BUFF_RALLY_SPD,
+    UNIT_STAT_BUFF_RALLY_LCK,
+    UNIT_STAT_BUFF_RALLY_DEF,
+    UNIT_STAT_BUFF_RALLY_RES,
+    UNIT_STAT_BUFF_RALLY_MOV,
+
+    UNIT_STAT_BUFF_INDOOR_MARCH_MOV,
 
     UNIT_STAT_DEBUFF_MAX_REAL,
-    UNIT_STAT_DEBUFF_MAX = 32, /* If expand, fix */
+    UNIT_STAT_DEBUFF_MAX = 128, /* DO NOT modify this */
 };
 
 void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
