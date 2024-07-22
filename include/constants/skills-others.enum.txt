@@ -89,6 +89,7 @@ SID_AirRaidDefense
 SID_AirRaidHit
 SID_AirRaidResistance
 SID_AirRaidSpeed
+SID_Pickup
 SID_IndoorMarch
 
 // Mobility
