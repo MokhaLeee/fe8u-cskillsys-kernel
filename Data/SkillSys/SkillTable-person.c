@@ -22,6 +22,10 @@ const u16 gConstSkillTable_Person[0x100][2] = {
         SID_Lifetaker,
     },
 
+    [CHARACTER_TANA] = {
+        SID_AlertStancePlus,
+    },
+
     [CHARACTER_MARISA] = {
         SID_DoubleLion,
         SID_Adept
