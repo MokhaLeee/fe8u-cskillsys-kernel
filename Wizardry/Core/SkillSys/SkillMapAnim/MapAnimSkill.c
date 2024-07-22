@@ -4,7 +4,7 @@
 #include "skill-system.h"
 #include "efx-skill.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimDeamon[] = {
     PROC_SLEEP(20),
@@ -51,7 +51,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     if (actor_icon == 0 && target_icon == 0)
         return false;
 
-    if (gManimSt.subjectActorId == POS_L)
+    if (gManimSt.subjectActorId == 1)
     {
         left_icon  = actor_icon;
         right_icon = target_icon;
