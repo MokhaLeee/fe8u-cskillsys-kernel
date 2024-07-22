@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 
 struct ProcSkillMapAnimMini {
@@ -45,7 +46,7 @@ STATIC_DECLAR void SkillMapAnimMini_Loop(struct ProcSkillMapAnimMini * proc)
         gObject_16x16,
         OAM2_PAL(MAPANIMFX_PAL) + OAM2_LAYER(0b01) + OAM2_CHR(MAPANIMFX_CHR_L));
 
-    if (++proc->timer == 0x44)
+    if (++proc->timer == 40)
         Proc_Break(proc);
 }
 
@@ -78,4 +79,83 @@ void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent)
 bool SkillMapAnimMiniExists(void)
 {
     return Proc_Exists(ProcScr_SkillMapAnimMini);
+}
+
+/**
+ * Mu anim
+ */
+struct ProcMuSkillAnim {
+    PROC_HEADER;
+
+    u16 sid;
+    void (* callback1)(ProcPtr proc);
+    void (* callback2)(ProcPtr proc);
+};
+
+static void anim_init(ProcPtr proc)
+{
+    struct MuProc * mu;
+
+    HideUnitSprite(gActiveUnit);
+    mu = StartMu(gActiveUnit);
+
+    FreezeSpriteAnim(mu->sprite_anim);
+    SetMuDefaultFacing(mu);
+    SetDefaultColorEffects();
+    EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
+}
+
+static void anim_act(ProcPtr proc)
+{
+    StartMuActionAnim(GetUnitMu(gActiveUnit));
+}
+
+static void skill_anim(struct ProcMuSkillAnim * proc)
+{
+    NewSkillMapAnimMini(gActiveUnit->xPos, gActiveUnit->yPos, proc->sid, proc);
+}
+
+static void _callback1(struct ProcMuSkillAnim * proc)
+{
+    proc->callback1(proc);
+}
+
+static void _callback2(struct ProcMuSkillAnim * proc)
+{
+    proc->callback2(proc);
+}
+
+STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {
+    PROC_CALL(LockGame),
+    PROC_CALL(MapAnim_CommonInit),
+    PROC_CALL(EnsureCameraOntoActiveUnitPosition),
+    PROC_YIELD,
+    PROC_CALL(anim_init),
+    PROC_YIELD,
+    PROC_CALL(anim_act),
+    PROC_YIELD,
+    PROC_CALL(skill_anim),
+    PROC_YIELD,
+    PROC_CALL(_callback1),
+    PROC_YIELD,
+    PROC_CALL(_callback2),
+    PROC_YIELD,
+    PROC_CALL(UnlockGame),
+    PROC_CALL(MapAnim_CommonEnd),
+    PROC_END
+};
+
+void NewMuSkillAnimOnActiveUnit(u16 sid, void (* callback1)(ProcPtr proc), void (* callback2)(ProcPtr proc))
+{
+    struct ProcMuSkillAnim * proc;
+    proc = Proc_Start(ProcScr_MuSkillAnim, PROC_TREE_3);
+
+    proc->sid = sid;
+    proc->callback1 = callback1;
+    proc->callback2 = callback2;
+}
+
+bool MuSkillAnimExists(void)
+{
+    return Proc_Exists(ProcScr_MuSkillAnim);
 }

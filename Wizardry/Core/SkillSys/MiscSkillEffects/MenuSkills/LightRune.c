@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "map-anims.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 #include "constants/texts.h"
@@ -55,15 +56,19 @@ u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
 }
 
+static void callback_anim(ProcPtr proc)
+{
+    StartLightRuneAnim(proc, gActionData.xOther, gActionData.yOther);
+}
+
+static void callback_exec(ProcPtr proc)
+{
+    AddLightRune(gActionData.xOther, gActionData.yOther);
+    AddUnitHp(gActiveUnit, -SKILL_EFF0(SID_LightRune));
+}
+
 bool Action_LightRune(ProcPtr parent)
 {
-    BattleInitItemEffect(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex);
-    gBattleActor.canCounter = false;
-    AddLightRune(gActionData.xOther, gActionData.yOther);
-    BattleApplyItemEffect(parent);
-    StartLightRuneAnim(parent, gActionData.xOther, gActionData.yOther);
-    gBattleTarget.statusOut = -1;
-    gBattleActor.hasItemEffectTarget = 0; // seems unused?
-    AddUnitHp(&gBattleActor.unit, -SKILL_EFF0(SID_LightRune));
+    NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
