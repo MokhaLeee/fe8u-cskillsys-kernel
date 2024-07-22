@@ -28,8 +28,27 @@ u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
+static void call_skillanim(ProcPtr proc)
+{
+    NewSkillMapAnimMini(gActiveUnit->xPos, gActiveUnit->yPos, gActionData.unk08, proc);
+}
+
+static void call_heal(ProcPtr proc)
+{
+    CallMapAnim_Heal(proc, gActiveUnit, Div(GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_HealingFocus), 100));
+}
+
+STATIC_DECLAR const struct ProcCmd ProcScr_ActionHealingFocus[] = {
+    PROC_YIELD,
+    PROC_CALL(call_skillanim),
+    PROC_YIELD,
+    PROC_CALL(call_heal),
+    PROC_YIELD,
+    PROC_END
+};
+
 bool Action_HealingFocus(ProcPtr parent)
 {
-    CallMapAnim_Heal(parent, gActiveUnit, Div(GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_HealingFocus), 100));
+    Proc_StartBlocking(ProcScr_ActionHealingFocus, parent);
     return true;
 }

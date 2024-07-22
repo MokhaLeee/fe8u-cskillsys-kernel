@@ -1,0 +1,81 @@
+#include "common-chax.h"
+#include "skill-system.h"
+
+struct ProcSkillMapAnimMini {
+    PROC_HEADER;
+
+    int timer;
+    int x, y;
+    int x_disp, y_disp;
+    u16 sid;
+};
+
+static void move_camera(struct ProcSkillMapAnimMini * proc)
+{
+    EnsureCameraOntoPosition(proc, proc->x, proc->y);
+}
+
+STATIC_DECLAR void SkillMapAnimMini_Init(struct ProcSkillMapAnimMini * proc)
+{
+    /* Sprite anim */
+    Decompress(
+        gpImg_MapAnimSKILL,
+        OBJ_VRAM0 + 0x20 * BM_OBJCHR_BANIM_EFFECT);
+
+    APProc_Create(
+        Obj_MapAnimMISS,
+        16 * (SCREEN_TILE_X(proc->x)) + 8,
+        16 * (SCREEN_TILE_Y(proc->y)) + 16,
+        TILEREF(BM_OBJCHR_BANIM_EFFECT, 0), 0, 2);
+
+    PlaySeSpacial(0x3D1, SCREEN_TILE_IX(proc->x));
+
+    /* Icon */
+    LoadIconObjectGraphics(SKILL_ICON(proc->sid), MAPANIMFX_CHR_L);
+    LoadIconPalette(0, 0x10 + MAPANIMFX_PAL);
+    proc->timer = 0;
+}
+
+STATIC_DECLAR void SkillMapAnimMini_Loop(struct ProcSkillMapAnimMini * proc)
+{
+    PutSprite(
+        4,
+        OAM1_X(SCREEN_TILE_IX(proc->x_disp)),
+        OAM0_Y(SCREEN_TILE_IY(proc->y_disp)) + ATTR0_TYPE_BLENDED,
+        gObject_16x16,
+        OAM2_PAL(MAPANIMFX_PAL) + OAM2_LAYER(0b01) + OAM2_CHR(MAPANIMFX_CHR_L));
+
+    if (++proc->timer == 0x44)
+        Proc_Break(proc);
+}
+
+STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimMini[] = {
+    PROC_YIELD,
+    PROC_CALL(move_camera),
+    PROC_YIELD,
+    PROC_CALL(SkillMapAnimMini_Init),
+    PROC_YIELD,
+    PROC_REPEAT(SkillMapAnimMini_Loop),
+    PROC_END
+};
+
+void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent)
+{
+    struct ProcSkillMapAnimMini * proc;
+
+    if (parent)
+        proc = Proc_StartBlocking(ProcScr_SkillMapAnimMini, parent);
+    else
+        proc = Proc_Start(ProcScr_SkillMapAnimMini, PROC_TREE_3);
+
+    proc->sid = sid;
+    proc->x = x;
+    proc->y = y;
+    proc->x_disp = (x == 0) ? x + 1 : x - 1;
+    proc->y_disp = y;
+}
+
+bool SkillMapAnimMiniExists(void)
+{
+    return Proc_Exists(ProcScr_SkillMapAnimMini);
+}

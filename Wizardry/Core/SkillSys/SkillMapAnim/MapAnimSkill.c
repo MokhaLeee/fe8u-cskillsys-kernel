@@ -6,8 +6,6 @@
 
 #define LOCAL_TRACE 0
 
-extern u8 const * const gpImg_MapAnimSKILL;
-
 STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimDeamon[] = {
     PROC_SLEEP(20),
     PROC_END
@@ -114,9 +112,9 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     }
 
     if (actor_icon != 0)
-        PlaySeSpacial(0x3D1, gManimSt.actor[gManimSt.subjectActorId].unit->xPos * 0x10 - gBmSt.camera.x);
+        PlaySeSpacial(0x3D1, SCREEN_TILE_IX(gManimSt.actor[gManimSt.subjectActorId].unit->xPos));
     else
-        PlaySeSpacial(0x3D1, gManimSt.actor[gManimSt.targetActorId].unit->xPos * 0x10 - gBmSt.camera.x);
+        PlaySeSpacial(0x3D1, SCREEN_TILE_IX(gManimSt.actor[gManimSt.targetActorId].unit->xPos));
 
     Proc_StartBlocking(ProcScr_SkillMapAnimDeamon, parent);
     return true;

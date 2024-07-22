@@ -134,6 +134,13 @@ const struct EfxAnimConf * GetEfxSkillConf(const u8 aid);
 /**
  * Skill mapanim
  */
+enum mapanimskillfx_idx {
+    MAPANIMFX_CHR_L = 0x19C,
+    MAPANIMFX_CHR_R = 0x19E,
+
+    MAPANIMFX_PAL = 4,
+};
+
 struct ProcMapAnimSkillfx {
     PROC_HEADER;
 
@@ -143,7 +150,11 @@ struct ProcMapAnimSkillfx {
     int x, y;
 };
 
+extern u8 const * const gpImg_MapAnimSKILL;
 extern const struct ProcCmd ProcScr_MapAnimSkillfx[];
+
+void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent);
+bool SkillMapAnimMiniExists(void);
 
 /**
  * Event scripts
