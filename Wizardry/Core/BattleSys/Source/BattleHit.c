@@ -908,13 +908,6 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
 
-#if (defined(SID_Despoil) && (COMMON_SKILL_VALID(SID_Despoil)))
-            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Despoil, gBattleActor.unit.skl))
-            {
-                gBattleActorGlobalFlag.skill_activated_despoil = true;
-            }
-#endif
-
 #if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
             {

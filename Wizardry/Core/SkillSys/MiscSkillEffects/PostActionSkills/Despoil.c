@@ -9,31 +9,20 @@
 
 bool PostActionItemAcquisition(ProcPtr parent)
 {
-    u16 item_index;
     FORCE_DECLARE struct Unit * unit = gActiveUnit;
 
     if (!UNIT_IS_VALID(unit) || UNIT_STONED(unit))
         return false;
 
-    switch (gActionData.unitActionType) {
-    case UNIT_ACTION_COMBAT:
+    if (gActionData.unitActionType == UNIT_ACTION_COMBAT && gBattleActorGlobalFlag.enimy_defeated)
+    {
 #if defined(SID_Despoil) && (COMMON_SKILL_VALID(SID_Despoil))
-        if (SkillTester(unit, SID_Despoil) && gBattleActorGlobalFlag.skill_activated_despoil)
+        if (SkillTester(unit, SID_Despoil) && gBattleActorGlobalFlag.enimy_defeated)
         {
-            item_index = ITEM_REDGEM;
-            goto L_exec_produce_item;
+            NewPopup_ItemGot(parent, unit, ITEM_REDGEM);
+            return true;
         }
 #endif
-
-    /* fall through */
-
-    default:
-        break;
     }
-
     return false;
-
-L_exec_produce_item:
-    NewPopup_ItemGot(parent, unit, item_index);
-    return true;
 }
