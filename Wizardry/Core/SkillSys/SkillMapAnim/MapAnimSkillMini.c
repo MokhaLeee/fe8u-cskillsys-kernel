@@ -97,7 +97,11 @@ static void anim_init(ProcPtr proc)
     struct MuProc * mu;
 
     HideUnitSprite(gActiveUnit);
-    mu = StartMu(gActiveUnit);
+
+    mu = GetUnitMu(gActiveUnit);
+    if (!mu)
+        mu = StartMu(gActiveUnit);
+
     SetMuDefaultFacing(mu);
     FreezeSpriteAnim(mu->sprite_anim);
     SetDefaultColorEffects();

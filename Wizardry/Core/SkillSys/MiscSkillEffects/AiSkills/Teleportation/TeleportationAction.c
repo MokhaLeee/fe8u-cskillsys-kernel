@@ -8,7 +8,6 @@
 static void _skill_anim(ProcPtr proc)
 {
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, NULL, NULL);
-    StartTemporaryLock(proc, 30);
 }
 
 static void remove_mu(ProcPtr proc)
