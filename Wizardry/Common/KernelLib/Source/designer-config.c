@@ -9,7 +9,7 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
     .remove_move_path = true,
 #endif
 
-#ifdef CONFIG_REMOVE_MOVE_PATH
+#ifdef CONFIG_USE_UTF8_GLYPH
     .use_chinese_character = true,
 #endif
 
