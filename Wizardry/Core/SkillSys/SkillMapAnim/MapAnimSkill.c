@@ -4,7 +4,7 @@
 #include "skill-system.h"
 #include "efx-skill.h"
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimDeamon[] = {
     PROC_SLEEP(20),
