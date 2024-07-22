@@ -9,10 +9,10 @@
 STATIC_DECLAR bool AreAnyEnemyExists(void)
 {
     int i;
-    for (i = FACTION_RED + 1; i < GetFactionUnitAmount(FACTION_RED); i++)
+    for (i = 1; i < 0xC0; i++)
     {
         struct Unit * unit = GetUnit(i);
-        if (UNIT_IS_VALID(unit) && !(unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16)))
+        if (UNIT_ALIVE(unit) && !AreUnitsAllied(gActiveUnit->index, i))
             return true;
     }
     return false;

@@ -55,15 +55,19 @@ u8 Mine_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
 }
 
+static void callback_anim(ProcPtr proc)
+{
+    StartMineAnim(proc, gActionData.xOther, gActionData.yOther);
+}
+
+static void callback_exec(ProcPtr proc)
+{
+    AddTrap(gActionData.xOther, gActionData.yOther, TRAP_MINE, 0);
+    AddUnitHp(gActiveUnit, -SKILL_EFF0(SID_Mine));
+}
+
 bool Action_Mine(ProcPtr parent)
 {
-    BattleInitItemEffect(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex);
-    gBattleActor.canCounter = false;
-    AddTrap(gActionData.xOther, gActionData.yOther, TRAP_MINE, 0);
-    BattleApplyItemEffect(parent);
-    gBattleTarget.statusOut = -1;
-    StartMineAnim(parent, gActionData.xOther, gActionData.yOther);
-    gBattleActor.hasItemEffectTarget = 0; // seems unused?
-    AddUnitHp(&gBattleActor.unit, -SKILL_EFF0(SID_Mine));
+    NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }

@@ -3,6 +3,30 @@
 #include "event-rework.h"
 #include "unit-expa.h"
 #include "action-expa.h"
+#include "skill-system.h"
+
+static void _skill_anim(ProcPtr proc)
+{
+    NewMuSkillAnimOnActiveUnit(gActionData.unk08, NULL, NULL);
+    StartTemporaryLock(proc, 30);
+}
+
+static void remove_mu(ProcPtr proc)
+{
+    EndMu(GetUnitMu(gActiveUnit));
+}
+
+static const struct ProcCmd local_proc[] = {
+    PROC_CALL(_skill_anim),
+    PROC_SLEEP(40),
+    PROC_CALL(remove_mu),
+    PROC_END
+};
+
+static void skill_anim(ProcPtr proc)
+{
+    Proc_StartBlocking(local_proc, proc);
+}
 
 static void set_actor_unit(void)
 {
@@ -20,7 +44,8 @@ STATIC_DECLAR const EventScr EventScr_ActionTeleportation[] = {
     STAL(20)
 
 LABEL(0)
-    ASMC(MapAnim_CommonInit)
+    ASMC(skill_anim)
+    STAL(1)
     ASMC(set_actor_unit)
     CALL(EventScr_UidWarpOUT)
     STAL(60)

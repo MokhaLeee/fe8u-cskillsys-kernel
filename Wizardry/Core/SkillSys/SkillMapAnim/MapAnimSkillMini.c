@@ -98,9 +98,8 @@ static void anim_init(ProcPtr proc)
 
     HideUnitSprite(gActiveUnit);
     mu = StartMu(gActiveUnit);
-
-    FreezeSpriteAnim(mu->sprite_anim);
     SetMuDefaultFacing(mu);
+    FreezeSpriteAnim(mu->sprite_anim);
     SetDefaultColorEffects();
     EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
 }
@@ -117,12 +116,14 @@ static void skill_anim(struct ProcMuSkillAnim * proc)
 
 static void _callback1(struct ProcMuSkillAnim * proc)
 {
-    proc->callback1(proc);
+    if (proc->callback1)
+        proc->callback1(proc);
 }
 
 static void _callback2(struct ProcMuSkillAnim * proc)
 {
-    proc->callback2(proc);
+    if (proc->callback2)
+        proc->callback2(proc);
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {

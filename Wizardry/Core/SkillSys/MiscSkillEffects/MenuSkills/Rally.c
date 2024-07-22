@@ -64,30 +64,12 @@ u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
-static void anim_init(ProcPtr proc)
-{
-    struct MuProc * mu;
-
-    HideUnitSprite(gActiveUnit);
-    mu = StartMu(gActiveUnit);
-
-    FreezeSpriteAnim(mu->sprite_anim);
-    SetMuDefaultFacing(mu);
-    SetDefaultColorEffects();
-    EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
-}
-
-static void anim_act(ProcPtr proc)
-{
-    StartMuActionAnim(GetUnitMu(gActiveUnit));
-}
-
-static void anim_core(ProcPtr proc)
+static void callback_anim(ProcPtr proc)
 {
     StartLightRuneAnim(proc, gActiveUnit->xPos, gActiveUnit->yPos);
 }
 
-static void exec(ProcPtr proc)
+static void callback_exec(ProcPtr proc)
 {
     int i;
 
@@ -146,25 +128,8 @@ static void exec(ProcPtr proc)
     }
 }
 
-STATIC_DECLAR const struct ProcCmd ProcScr_ActionRally[] = {
-    PROC_CALL(LockGame),
-    PROC_CALL(MapAnim_CommonInit),
-    PROC_CALL(EnsureCameraOntoActiveUnitPosition),
-    PROC_YIELD,
-    PROC_CALL(anim_init),
-    PROC_YIELD,
-    PROC_CALL(anim_act),
-    PROC_SLEEP(30),
-    PROC_CALL(anim_core),
-    PROC_YIELD,
-    PROC_CALL(exec),
-    PROC_CALL(UnlockGame),
-    PROC_CALL(MapAnim_CommonEnd),
-    PROC_END
-};
-
 bool Action_Rally(ProcPtr parent)
 {
-    Proc_Start(ProcScr_ActionRally, PROC_TREE_3);
+    NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
