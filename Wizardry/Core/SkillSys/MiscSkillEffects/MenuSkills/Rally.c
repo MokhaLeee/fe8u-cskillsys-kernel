@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "weapon-range.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
@@ -33,6 +34,21 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
         return MENU_DISABLED;
 
     return MENU_ENABLED;
+}
+
+int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item)
+{
+    BmMapFill(gBmMapMovement, -1);
+    BmMapFill(gBmMapRange, 0);
+    GenerateUnitStandingReachRange(gActiveUnit, 0b110);
+    DisplayMoveRangeGraphics(MOVLIMITV_MMAP_BLUE | MOVLIMITV_RMAP_GREEN);
+    return 0;
+}
+
+int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem)
+{
+    HideMoveRangeGraphics();
+    return 0;
 }
 
 u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)

@@ -252,6 +252,8 @@ u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 LightRune_Usability(const struct MenuItemDef * def, int number);
 u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Mine_Usability(const struct MenuItemDef * def, int number);
+int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
 u8 Mine_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Rally_Usability(const struct MenuItemDef * def, int number);
 u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);

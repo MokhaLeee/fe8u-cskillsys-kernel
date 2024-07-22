@@ -134,8 +134,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -149,8 +149,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -164,8 +164,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -179,8 +179,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -194,8 +194,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -209,8 +209,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -224,8 +224,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -239,8 +239,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 
@@ -254,8 +254,8 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onDraw = NULL,
         .onSelected = Rally_OnSelected,
         .onIdle = NULL,
-        .onSwitchIn = NULL,
-        .onSwitchOut = NULL,
+        .onSwitchIn = Rally_Hover,
+        .onSwitchOut = Rally_Unhover,
     },
 #endif
 };
