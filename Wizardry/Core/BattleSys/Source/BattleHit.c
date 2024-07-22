@@ -627,6 +627,19 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
 
+#if (defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact)))
+        if (CheckBattleSkillActivate(defender, attacker, SID_DevilsPact, 100))
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsPact);
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+
+            attacker->unit.curHP -= gBattleStats.damage;
+
+            if (attacker->unit.curHP < 0)
+                attacker->unit.curHP = 0;
+        }
+#endif
+
         if ((GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL) && (BattleRoll1RN(31 - attacker->unit.lck, FALSE)))
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
