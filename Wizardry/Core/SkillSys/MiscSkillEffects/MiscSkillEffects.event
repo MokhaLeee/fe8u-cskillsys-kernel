@@ -10,6 +10,7 @@
 #include "PostActionSkills/Hurt.lyn.event"
 #include "PostActionSkills/Synchronize.lyn.event"
 #include "PostActionSkills/Clearance.lyn.event"
+#include "PostActionSkills/Despoil.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
 #include "MenuSkills/Dance.lyn.event"
