@@ -6,6 +6,18 @@
 #include "constants/texts.h"
 #include "constants/skills.h"
 
+STATIC_DECLAR bool AreAnyEnemyExists(void)
+{
+    int i;
+    for (i = FACTION_RED + 1; i < GetFactionUnitAmount(FACTION_RED); i++)
+    {
+        struct Unit * unit = GetUnit(i);
+        if (UNIT_IS_VALID(unit) && !(unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16)))
+            return true;
+    }
+    return false;
+}
+
 u8 Teleportation_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING || CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
@@ -16,7 +28,7 @@ u8 Teleportation_Usability(const struct MenuItemDef * def, int number)
         return MENU_DISABLED;
 #endif
 
-    if (!AreAnyEnemyUnitDead())
+    if (!AreAnyEnemyExists())
         return MENU_DISABLED;
 
     return MENU_ENABLED;
