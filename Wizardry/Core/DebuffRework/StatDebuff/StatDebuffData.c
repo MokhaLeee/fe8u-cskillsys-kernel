@@ -451,4 +451,10 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
             .res = +4,
         },
     },
+
+    [UNIT_STAT_BUFF_INDOOR_MARCH_MOV] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
+        .unit_status = { .mov = +2 },
+    },
 };
