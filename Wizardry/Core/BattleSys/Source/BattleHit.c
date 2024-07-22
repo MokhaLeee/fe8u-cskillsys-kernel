@@ -628,7 +628,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
 
 #if (defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact)))
-        if (CheckBattleSkillActivate(defender, attacker, SID_DevilsPact, 100))
+        if (CheckBattleSkillActivate(defender, attacker, SID_DevilsPact, 31 - attacker->unit.lck))
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsPact);
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
