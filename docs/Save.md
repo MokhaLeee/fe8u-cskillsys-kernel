@@ -19,7 +19,7 @@ SRAM space allocation is set in [SaveData](../Wizardry/Common/SaveData/data.even
 
 2. A set of hook functions are reserved so that users can decide the remaining space allocation by themselves.
 
-    We have offered such APIs in reloc so that users may handler on their EMS function:
+    We have offered such APIs in [Reloc.event](../Data/Reloc.event) so that users may handler on their EMS function:
 
     ```c
     extern void (* const gpMsa_Saver )(u8 * dst, const u32 size);
@@ -28,7 +28,7 @@ SRAM space allocation is set in [SaveData](../Wizardry/Common/SaveData/data.even
     extern void (* const gpMsu_Loader)(u8 * src, const u32 size);
     ```
 
-    These hooks is set in reloc, a fixed pointer list, if a user has written his own functions (for example, `Demo_MsaSaver`, `Demo_MsaLoader`, `Demo_MsuSaver`, `Demo_MsuLoader`), he may insert them by:
+    These hooks is set in [Reloc.event](../Data/Reloc.event), a [fixed pointer list](./Memory.md#L22), if a user has written his own functions (for example, `Demo_MsaSaver`, `Demo_MsaLoader`, `Demo_MsuSaver`, `Demo_MsuLoader`), he may insert them by:
 
     ```
     #include "fe8-kernel-060beta.ref.event" // this is dependent on release version
