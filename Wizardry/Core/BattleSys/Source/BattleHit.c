@@ -643,7 +643,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 #endif
 
 #if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
-        if (CheckBattleSkillActivate(defender, attacker, SID_DevilsWhim, 31 - attacker->unit.lck) || CheckBattleSkillActivate(attacker, defender, SID_DevilsWhim, 31 - attacker->unit.lck))
+        else if (CheckBattleSkillActivate(defender, attacker, SID_DevilsWhim, 31 - attacker->unit.lck) || CheckBattleSkillActivate(attacker, defender, SID_DevilsWhim, 31 - attacker->unit.lck))
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
 
