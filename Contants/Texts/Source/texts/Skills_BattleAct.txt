@@ -145,3 +145,11 @@ doubled for this unit.[X]
 Counter:[NL]
 Reflect physical damage[NL]
 dealt at melee range.[X]
+
+## MSG_SKILL_DevilsPact_NAME
+D-Pact[X]
+
+## MSG_SKILL_DevilsPact
+Devil's Pact:[NL]
+Inflict the Devil effect[NL]
+upon the enemy unit.[X]

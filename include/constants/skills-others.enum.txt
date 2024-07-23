@@ -92,6 +92,9 @@ SID_AirRaidSpeed
 SID_Pickup
 SID_IndoorMarch
 
+// Devil skills
+SID_DevilsPact
+
 // Mobility
 SID_Guidance
 SID_SoaringGuidance
