@@ -568,6 +568,44 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     return result;
 }
 
+STATIC_DECLAR bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+    if (!BattleRoll1RN(31 - attacker->unit.lck, FALSE))
+    {
+        /* Lucky */
+        return false;
+    }
+
+    if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL)
+        return true;
+
+#if (defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact)))
+    if (BattleSkillTester(defender, SID_DevilsPact))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsPact);
+        return true;
+    }
+#endif
+
+#if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
+    if (BattleSkillTester(defender, SID_DevilsWhim))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
+        return true;
+    }
+#endif
+
+#if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
+    if (BattleSkillTester(attacker, SID_DevilsWhim))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
+        return true;
+    }
+#endif
+
+    return false;
+}
+
 /* LynJump */
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
@@ -627,37 +665,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
 
-#if (defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact)))
-        if (CheckBattleSkillActivate(defender, attacker, SID_DevilsPact, 31 - attacker->unit.lck))
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsPact);
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
-
-            attacker->unit.curHP -= gBattleStats.damage;
-
-            if (attacker->unit.curHP < 0)
-                attacker->unit.curHP = 0;
-        }
-#else
-        if (0) {}
-#endif
-
-#if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
-        else if (CheckBattleSkillActivate(defender, attacker, SID_DevilsWhim, 31 - attacker->unit.lck) || CheckBattleSkillActivate(attacker, defender, SID_DevilsWhim, 31 - attacker->unit.lck))
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
-
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
-
-            attacker->unit.curHP -= gBattleStats.damage;
-
-            if (attacker->unit.curHP < 0)
-                attacker->unit.curHP = 0;
-        }
-#else
-        if (0) {}
-#endif
-        else if ((GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL) && (BattleRoll1RN(31 - attacker->unit.lck, FALSE)))
+        if (CheckDevilAttack(attacker, defender))
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
 
