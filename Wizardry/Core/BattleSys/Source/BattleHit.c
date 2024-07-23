@@ -571,6 +571,14 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 STATIC_DECLAR bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 
+#if (defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter)))
+    if (BattleSkillTester(defender, SID_Counter) && gBattleStats.range == 1 && !IsMagicAttack(attacker))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Counter);
+        return true;
+    }
+#endif
+
     if (!BattleRoll1RN(31 - attacker->unit.lck, FALSE))
     {
         /* Lucky */
