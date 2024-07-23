@@ -92,6 +92,7 @@ SID_AirRaidSpeed
 SID_Pickup
 SID_IndoorMarch
 SID_Expertise
+SID_PassionsFlow
 
 // Devil skills
 SID_DevilsPact
