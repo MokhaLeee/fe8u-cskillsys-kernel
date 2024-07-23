@@ -164,3 +164,43 @@ bool MuSkillAnimExists(void)
 {
     return Proc_Exists(ProcScr_MuSkillAnim);
 }
+
+static void event_callcamera(ProcPtr proc)
+{
+    EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
+}
+
+static void event_act(ProcPtr proc)
+{
+    struct Unit * unit;
+    struct MuProc * mu;
+
+    unit = gActiveUnit;
+
+    MapAnim_CommonInit();
+
+    HideUnitSprite(unit);
+    mu = StartMu(unit);
+
+    FreezeSpriteAnim(mu->sprite_anim);
+    SetMuDefaultFacing(mu);
+    SetDefaultColorEffects();
+}
+
+static void event_callskill(ProcPtr proc)
+{
+    StartMuActionAnim(GetUnitMu(gActiveUnit));
+    NewSkillMapAnimMini(gActiveUnit->xPos, gActiveUnit->yPos, gEventSlots[EVT_SLOT_B], proc);
+}
+
+const EventScr EventScr_MuSkillAnim[] = {
+    STAL(1)
+    ASMC(event_callcamera)
+    STAL(1)
+    ASMC(event_act)
+    STAL(1)
+    ASMC(event_callskill)
+    STAL(10)
+    NoFade
+    ENDA
+};

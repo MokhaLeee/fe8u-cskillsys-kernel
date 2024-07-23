@@ -16,30 +16,6 @@ STATIC_DECLAR void PostActionReturnSkipMenuIfNotAlly(struct EventEngineProc * pr
         gEventSlots[EVT_SLOT_C] = true;
 }
 
-STATIC_DECLAR void PostActionReturn_Init(ProcPtr proc)
-{
-    struct Unit * unit;
-    struct MuProc * mu;
-
-    unit = GetUnit(gActionData.subjectIndex);
-
-    MapAnim_CommonInit();
-
-    HideUnitSprite(unit);
-    mu = StartMu(unit);
-
-    FreezeSpriteAnim(mu->sprite_anim);
-    SetMuDefaultFacing(mu);
-    SetDefaultColorEffects();
-    EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
-}
-
-STATIC_DECLAR void PostActionReturn_StartAction(ProcPtr proc)
-{
-    struct Unit * unit = GetUnit(gActionData.subjectIndex);
-    StartMuActionAnim(GetUnitMu(unit));
-}
-
 STATIC_DECLAR void PrepareReturnPosition(void)
 {
     gEventSlots[EVT_SLOT_2] = gActiveUnit->index;
@@ -74,10 +50,11 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionReturn[] = {
     BNE(99, EVT_SLOT_C, EVT_SLOT_7)
 
 LABEL(0)
-    ASMC(PostActionReturn_Init)
-    STAL(2)
-    ASMC(PostActionReturn_StartAction)
-    STAL(60)
+#if defined(SID_PosReturn) && (COMMON_SKILL_VALID(SID_PosReturn))
+    SVAL(EVT_SLOT_B, SID_PosReturn)
+    CALL(EventScr_MuSkillAnim)
+#endif
+    STAL(20)
     ASMC(PrepareReturnPosition)
     CALL(EventScr_UidWarpOUT)
     STAL(20)

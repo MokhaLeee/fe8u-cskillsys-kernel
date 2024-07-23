@@ -29,6 +29,14 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
         },
     },
 
+    [CHARACTER_SALEH] = {
+        .skills = {
+            [0] = SID_RangeBonusBMag1,
+            [1] = SID_RangeBonusBMag2,
+            [2] = SID_PosSwap,
+        },
+    },
+
     [CHARACTER_RIEV] = {
         .skills = {
             [0] = SID_Thunderstorm,

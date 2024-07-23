@@ -18,32 +18,6 @@ STATIC_DECLAR void PostActionThunder_CameraOnTarget(ProcPtr proc)
     EnsureCameraOntoPosition(proc, gBattleTargetPositionBackup.x, gBattleTargetPositionBackup.y);
 }
 
-STATIC_DECLAR void PostActionThunder_Init(ProcPtr proc)
-{
-    struct Unit * unit;
-    struct MuProc * mu;
-
-    unit = gActiveUnit;
-
-    MapAnim_CommonInit();
-
-    HideUnitSprite(unit);
-    mu = StartMu(unit);
-
-    FreezeSpriteAnim(mu->sprite_anim);
-    SetMuDefaultFacing(mu);
-    SetDefaultColorEffects();
-}
-
-STATIC_DECLAR void PostActionThunder_StartAction(ProcPtr proc)
-{
-    StartMuActionAnim(GetUnitMu(gActiveUnit));
-
-#if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
-    NewSkillMapAnimMini(gActiveUnit->xPos, gActiveUnit->yPos, SID_Thunderstorm, proc);
-#endif
-}
-
 STATIC_DECLAR void PostActionThunder_ResetActor(ProcPtr proc)
 {
     struct MuProc * mu = GetUnitMu(gActiveUnit);
@@ -95,10 +69,11 @@ STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
     STAL(1)
     ASMC(PostActionThunder_CameraOnActor)
     STAL(1)
-    ASMC(PostActionThunder_Init)
-    STAL(2)
-    ASMC(PostActionThunder_StartAction)
-    STAL(10)
+#if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
+    SVAL(EVT_SLOT_B, SID_Thunderstorm)
+    CALL(EventScr_MuSkillAnim)
+#endif
+    STAL(1)
     ASMC(PostActionThunder_CameraOnTarget)
     STAL(10)
     STARTFADE
