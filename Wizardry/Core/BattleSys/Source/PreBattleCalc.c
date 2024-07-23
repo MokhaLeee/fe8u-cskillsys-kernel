@@ -20,6 +20,11 @@ void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * d
     int status;
     status = GetItemMight(attacker->weapon);
 
+#if (defined(SID_LadyBlade) && (COMMON_SKILL_VALID(SID_LadyBlade)))
+    if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
+        status += GetItemMight(attacker->weapon);
+#endif
+
     if (IsUnitEffectiveAgainst(&attacker->unit, &defender->unit) || IsItemEffectiveAgainst(attacker->weapon, &defender->unit))
     {
         status = status * 2;
