@@ -718,3 +718,8 @@ has dark magic equipped.[X]
 Pickup: Obtain the last item in the[NL]
 enemy's inventory after attacking[NL]
 and killing them. (Luck % activation)[X]
+
+## MSG_SKILL_Expertise
+Expertise:[NL]
+Halve damage taken from[NL]
+critical hits.[X]

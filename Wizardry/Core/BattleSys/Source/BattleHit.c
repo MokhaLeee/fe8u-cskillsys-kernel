@@ -450,6 +450,15 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     }
 #endif
 
+#if defined(SID_Expertise) && (COMMON_SKILL_VALID(SID_Expertise))
+    if (BattleSkillTester(defender, SID_Expertise))
+    {
+        if(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_CRIT)
+            decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Expertise));
+    }
+#endif
+
+
 #if (defined(SID_KeenFighter) && (COMMON_SKILL_VALID(SID_KeenFighter)))
     if (BattleSkillTester(defender, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
