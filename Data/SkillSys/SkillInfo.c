@@ -3231,4 +3231,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_DevilsWhim,
     },
 #endif
+
+#if (defined(SID_DevilsLuck) && COMMON_SKILL_VALID(SID_DevilsLuck))
+    [SID_DevilsLuck] = {
+        .name = MSG_SKILL_DevilsLuck_NAME,
+        .desc = MSG_SKILL_DevilsLuck,
+        .icon = GFX_SkillIcon_DevilsLuck,
+    },
+#endif
 };

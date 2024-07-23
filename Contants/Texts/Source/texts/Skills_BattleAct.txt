@@ -161,3 +161,11 @@ D-Whim[X]
 Devil's Whim:[NL]
 Inflict the Devil effect[NL]
 upon both units.[X]
+
+## MSG_SKILL_DevilsLuck_NAME
+D-Luck[X]
+
+## MSG_SKILL_DevilsLuck
+Devil's Luck:[NL]
+Give the unit's devil effect[NL]
+to the enemy in battle.[X]

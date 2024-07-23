@@ -570,11 +570,22 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 
 STATIC_DECLAR bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    if (!BattleRoll1RN(31 - attacker->unit.lck, FALSE))
+
+    if (!BattleRoll1RN(100, FALSE))
     {
         /* Lucky */
         return false;
     }
+
+#if (defined(SID_DevilsLuck) && (COMMON_SKILL_VALID(SID_DevilsLuck)))
+    if (BattleSkillTester(defender, SID_DevilsLuck) && GetItemWeaponEffect(defender->weapon) == WPN_EFFECT_DEVIL)
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsLuck);
+        return true;
+    }
+    if (BattleSkillTester(attacker, SID_DevilsLuck) && GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL)
+        return false;
+#endif
 
     if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL)
         return true;

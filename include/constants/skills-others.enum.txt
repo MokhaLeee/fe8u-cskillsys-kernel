@@ -95,6 +95,7 @@ SID_IndoorMarch
 // Devil skills
 SID_DevilsPact
 SID_DevilsWhim
+SID_DevilsLuck
 
 // Mobility
 SID_Guidance
