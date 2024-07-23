@@ -113,6 +113,7 @@ SID_StrongCon
 SID_SuperLuck
 SID_Spurn
 SID_Counter
+SID_CounterMagic
 
 // Weapon triangle
 SID_SwordBreaker
