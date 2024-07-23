@@ -8,6 +8,8 @@ struct ProcMapAnimHurt {
     u32 lock;
     struct Unit * unit;
     int damage;
+    void (* callback1)(ProcPtr);
+    void (* callback2)(ProcPtr);
 };
 
 STATIC_DECLAR void MapAnimHurt_Init(struct ProcMapAnimHurt * proc)
@@ -18,6 +20,18 @@ STATIC_DECLAR void MapAnimHurt_Init(struct ProcMapAnimHurt * proc)
 STATIC_DECLAR void MapAnimHurt_MoveCamera(struct ProcMapAnimHurt * proc)
 {
     EnsureCameraOntoPosition(proc, proc->unit->xPos, proc->unit->yPos);
+}
+
+STATIC_DECLAR void MapAnimHurt_ExecCallBack1(struct ProcMapAnimHurt * proc)
+{
+    if (proc->callback1)
+        proc->callback1(proc);
+}
+
+STATIC_DECLAR void MapAnimHurt_ExecCallBack2(struct ProcMapAnimHurt * proc)
+{
+    if (proc->callback2)
+        proc->callback2(proc);
 }
 
 STATIC_DECLAR void MapAnimHurt_ExecAnim(struct ProcMapAnimHurt * proc)
@@ -50,16 +64,20 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimHurt[] = {
     PROC_YIELD,
     PROC_CALL(MapAnimHurt_MoveCamera),
     PROC_YIELD,
+    PROC_CALL(MapAnimHurt_ExecCallBack1),
+    PROC_YIELD,
     PROC_CALL(MapAnimHurt_ExecAnim),
     PROC_YIELD,
     PROC_REPEAT(MapAnimHurt_Idle),
     PROC_YIELD,
     PROC_CALL(MapAnimHurt_ExecBmHeal),
+    PROC_CALL(MapAnimHurt_ExecCallBack2),
+    PROC_YIELD,
     PROC_CALL(MapAnimHurt_End),
     PROC_END
 };
 
-void CallMapAnim_Hurt(ProcPtr parent, struct Unit * unit, int damage)
+void CallMapAnim_HurtExt(ProcPtr parent, struct Unit * unit, int damage, void (* callback1)(ProcPtr), void (* callback2)(ProcPtr))
 {
     struct ProcMapAnimHurt * proc;
 
@@ -70,6 +88,13 @@ void CallMapAnim_Hurt(ProcPtr parent, struct Unit * unit, int damage)
 
     proc->unit = unit;
     proc->damage = damage;
+    proc->callback1 = callback1;
+    proc->callback2 = callback2;
+}
+
+void CallMapAnim_Hurt(ProcPtr parent, struct Unit * unit, int damage)
+{
+    CallMapAnim_HurtExt(parent, unit, damage, NULL, NULL);
 }
 
 bool MapAnimHurtExists(void)

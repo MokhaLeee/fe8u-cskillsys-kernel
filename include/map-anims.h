@@ -12,5 +12,6 @@ void CallMapAnim_HealExt(ProcPtr parent, struct Unit * unit, int heal, void (* c
 void CallMapAnim_Heal(ProcPtr parent, struct Unit * unit, int heal);
 bool MapAnimHealExists(void);
 
+void CallMapAnim_HurtExt(ProcPtr parent, struct Unit * unit, int damage, void (* callback1)(ProcPtr), void (* callback2)(ProcPtr));
 void CallMapAnim_Hurt(ProcPtr parent, struct Unit * unit, int damage);
 bool MapAnimHurtExists(void);
