@@ -641,6 +641,22 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 #else
         if (0) {}
 #endif
+
+#if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
+        if (CheckBattleSkillActivate(defender, attacker, SID_DevilsWhim, 31 - attacker->unit.lck) || CheckBattleSkillActivate(attacker, defender, SID_DevilsWhim, 31 - attacker->unit.lck))
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
+
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+
+            attacker->unit.curHP -= gBattleStats.damage;
+
+            if (attacker->unit.curHP < 0)
+                attacker->unit.curHP = 0;
+        }
+#else
+        if (0) {}
+#endif
         else if ((GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL) && (BattleRoll1RN(31 - attacker->unit.lck, FALSE)))
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;

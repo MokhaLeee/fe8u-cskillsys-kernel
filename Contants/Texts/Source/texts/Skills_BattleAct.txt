@@ -153,3 +153,11 @@ D-Pact[X]
 Devil's Pact:[NL]
 Inflict the Devil effect[NL]
 upon the enemy unit.[X]
+
+## MSG_SKILL_DevilsWhim_NAME
+D-Whim[X]
+
+## MSG_SKILL_DevilsWhim
+Devil's Whim:[NL]
+Inflict the Devil effect[NL]
+upon both units.[X]
