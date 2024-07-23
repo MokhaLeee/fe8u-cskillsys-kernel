@@ -593,9 +593,7 @@ STATIC_DECLAR bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleU
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
         return true;
     }
-#endif
 
-#if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
     if (BattleSkillTester(attacker, SID_DevilsWhim))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
