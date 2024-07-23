@@ -638,9 +638,10 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (attacker->unit.curHP < 0)
                 attacker->unit.curHP = 0;
         }
+#else
+        if (0) {}
 #endif
-
-        if ((GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL) && (BattleRoll1RN(31 - attacker->unit.lck, FALSE)))
+        else if ((GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL) && (BattleRoll1RN(31 - attacker->unit.lck, FALSE)))
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
 
