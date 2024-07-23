@@ -134,7 +134,6 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {
     PROC_CALL(LockGame),
     PROC_CALL(MapAnim_CommonInit),
     PROC_CALL(EnsureCameraOntoActiveUnitPosition),
-    PROC_YIELD,
     PROC_CALL(anim_init),
     PROC_YIELD,
     PROC_CALL(anim_act),

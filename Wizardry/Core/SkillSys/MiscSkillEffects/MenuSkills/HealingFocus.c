@@ -28,25 +28,28 @@ u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
-static void post_skill(ProcPtr proc)
+static void ActionHealingFocus_CallBack1(ProcPtr proc)
 {
     struct MuProc * mu;
-    HideUnitSprite(gActiveUnit);
 
     mu = GetUnitMu(gActiveUnit);
     if (!mu)
         mu = StartMu(gActiveUnit);
 
+    FreezeSpriteAnim(mu->sprite_anim);
     SetMuDefaultFacing(mu);
-}
+    SetDefaultColorEffects();
 
-static void call_heal(ProcPtr proc)
-{
-    CallMapAnim_Heal(proc, gActiveUnit, Div(GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_HealingFocus), 100));
+    NewSkillMapAnimMini(gActiveUnit->xPos, gActiveUnit->yPos, SID_HealingFocus, proc);
 }
 
 bool Action_HealingFocus(ProcPtr parent)
 {
-    NewMuSkillAnimOnActiveUnit(gActionData.unk08, post_skill, call_heal);
+    CallMapAnim_HealExt(
+        parent,
+        gActiveUnit,
+        Div(GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_HealingFocus), 100),
+        ActionHealingFocus_CallBack1,
+        NULL);
     return true;
 }
