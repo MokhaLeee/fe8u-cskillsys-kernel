@@ -38,6 +38,10 @@ STATIC_DECLAR void PostActionThunder_Init(ProcPtr proc)
 STATIC_DECLAR void PostActionThunder_StartAction(ProcPtr proc)
 {
     StartMuActionAnim(GetUnitMu(gActiveUnit));
+
+#if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
+    NewSkillMapAnimMini(gActiveUnit->xPos, gActiveUnit->yPos, SID_Thunderstorm, proc);
+#endif
 }
 
 STATIC_DECLAR void PostActionThunder_ResetActor(ProcPtr proc)
@@ -98,14 +102,14 @@ STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
     ASMC(PostActionThunder_CameraOnTarget)
     STAL(10)
     STARTFADE
-    EvtColorFadeSetup(0x0, 0x20, 8, 128, 128, 128) // ENOSUPP in EAstdlib
+    EvtColorFadeSetup(0x0, 0x20, 0x10, 128, 128, 128) // ENOSUPP in EAstdlib
     STAL(30)
     SOUN(0x11A)
     ASMC(CallEventThunderfx)
     STAL(1)
     ASMC(SetThunderstormAoeDamage)
     STAL(60)
-    EvtColorFadeSetup(0x0, 0x20, 4, 256, 256, 256) // ENOSUPP in EAstdlib
+    EvtColorFadeSetup(0x0, 0x20, 0x20, 256, 256, 256) // ENOSUPP in EAstdlib
     STAL(1)
     ASMC(PostActionThunder_ResetActor)
     STAL(1)
