@@ -571,7 +571,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 STATIC_DECLAR bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 
-    if (!BattleRoll1RN(100, FALSE))
+    if (!BattleRoll1RN(31 - attacker->unit.lck, FALSE))
     {
         /* Lucky */
         return false;
