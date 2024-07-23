@@ -11,6 +11,6 @@ gPrePhaseFuncs:
     POIN PrePhaseFunc_AversaNight
     POIN PrePhaseFunc_HoneFortify
     POIN PrePhase_ControlWeatherSkill
-    POIN PrePhase_CheckIndoorMarch
+    POIN PrePhase_CheckTile
     POIN PrePhsae_ExecYuneWhisperSkills
     WORD 0 0 0 0 0

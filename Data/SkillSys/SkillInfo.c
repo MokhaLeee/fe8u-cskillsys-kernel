@@ -3246,4 +3246,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Expertise,
     },
 #endif
+
+#if (defined(SID_NatureRush) && COMMON_SKILL_VALID(SID_NatureRush))
+    [SID_NatureRush] = {
+        .name = MSG_SKILL_NatureRush_NAME,
+        .desc = MSG_SKILL_NatureRush,
+        .icon = GFX_SkillIcon_NatureRush,
+    },
+#endif
 };
