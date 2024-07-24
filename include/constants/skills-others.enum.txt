@@ -91,8 +91,20 @@ SID_AirRaidResistance
 SID_AirRaidSpeed
 SID_Pickup
 SID_IndoorMarch
+SID_NatureRush
 SID_Expertise
 SID_PassionsFlow
+SID_LadyBlade
+// Lull skills
+// SID_LullDefense
+// SID_LullLuck
+// SID_LullMagic
+// SID_LullMovement
+// SID_LullResistance
+// SID_LullSkill
+// SID_LullSpectrum
+// SID_LullSpeed
+// SID_LullStregth
 
 // Devil skills
 SID_DevilsPact

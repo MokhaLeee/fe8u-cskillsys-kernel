@@ -41,7 +41,7 @@
 #include "PrePhaseSkills/WeatherSkills.lyn.event"
 #include "PrePhaseSkills/StatusEffects.lyn.event"
 #include "PrePhaseSkills/YuneWhisper.lyn.event"
-#include "PrePhaseSkills/IndoorMarch.lyn.event"
+#include "PrePhaseSkills/TileCheck.lyn.event"
 #include "PrePhaseSkills/LynJump.event"
 
 #include "AiSkills/Teleportation.event"

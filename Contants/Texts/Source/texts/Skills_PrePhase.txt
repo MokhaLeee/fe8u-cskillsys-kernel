@@ -78,3 +78,11 @@ Indoor-M[X]
 Indoor March:[NL]
 +2 MOV at the start of the turn,[NL]
 if the unit is on indoor terrain.[X]
+
+## MSG_SKILL_NatureRush_NAME
+Nature-R[X]
+
+## MSG_SKILL_NatureRush
+Nature Rush:[NL]
++2 MOV at the start of the turn,[NL]
+if the unit is on outdoor terrain.[X]

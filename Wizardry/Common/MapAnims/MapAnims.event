@@ -3,6 +3,7 @@
 
 #include "HeavyGravity/HeavyGravityfx.event"
 #include "ThunderStorm/Thunderfx.event"
+#include "NinianPray/NinianPray.event"
 #include "Misc/Heal.lyn.event"
 #include "Misc/Hurt.lyn.event"
 

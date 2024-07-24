@@ -169,3 +169,11 @@ D-Luck[X]
 Devil's Luck:[NL]
 Give the unit's devil effect[NL]
 to the enemy in battle.[X]
+
+## MSG_SKILL_CounterMagic_NAME
+C-Magic:[X]
+
+## MSG_SKILL_CounterMagic
+Counter Magic:[NL]
+Reflect magical damage[NL]
+dealt at range.[X]
