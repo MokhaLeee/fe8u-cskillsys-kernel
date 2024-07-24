@@ -95,6 +95,17 @@ SID_NatureRush
 SID_Expertise
 SID_LadyBlade
 
+// Lull skills
+// SID_LullDefense
+// SID_LullLuck
+// SID_LullMagic
+// SID_LullMovement
+// SID_LullResistance
+// SID_LullSkill
+// SID_LullSpectrum
+// SID_LullSpeed
+// SID_LullStregth
+
 // Devil skills
 SID_DevilsPact
 SID_DevilsWhim
