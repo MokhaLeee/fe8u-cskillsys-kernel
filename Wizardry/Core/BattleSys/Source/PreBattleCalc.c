@@ -20,11 +20,6 @@ void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * d
     int status;
     status = GetItemMight(attacker->weapon);
 
-#if (defined(SID_LadyBlade) && (COMMON_SKILL_VALID(SID_LadyBlade)))
-    if ((UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
-        status += GetItemMight(attacker->weapon);
-#endif
-
     if (IsUnitEffectiveAgainst(&attacker->unit, &defender->unit) || IsItemEffectiveAgainst(attacker->weapon, &defender->unit))
     {
         status = status * 2;
@@ -553,6 +548,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_FaerghusAncestry) && (COMMON_SKILL_VALID(SID_FaerghusAncestry)))
         case SID_FaerghusAncestry:
             attacker->battleAttack += GetItemMight(attacker->weapon);
+            break;
+#endif
+
+#if (defined(SID_LadyBlade) && (COMMON_SKILL_VALID(SID_LadyBlade)))
+        case SID_LadyBlade:
+            if ((UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
+                attacker->battleAttack += GetItemMight(attacker->weapon);
+
             break;
 #endif
 
