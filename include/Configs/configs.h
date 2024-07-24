@@ -74,6 +74,11 @@
 // #define CONFIG_USE_RAND_C
 
 /**
+ * Install DrawMapActionAnimation
+ */
+// #define CONFIG_INSTALL_MAPACTIONANIM
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

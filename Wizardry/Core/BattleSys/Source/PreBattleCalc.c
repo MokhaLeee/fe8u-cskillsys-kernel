@@ -551,6 +551,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_LadyBlade) && (COMMON_SKILL_VALID(SID_LadyBlade)))
+        case SID_LadyBlade:
+            if ((UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
+                attacker->battleAttack += GetItemMight(attacker->weapon);
+
+            break;
+#endif
+
 #if (defined(SID_Frenzy) && (COMMON_SKILL_VALID(SID_Frenzy)))
         case SID_Frenzy:
             if ((attacker->unit.maxHP - attacker->hpInitial) >= 4)
