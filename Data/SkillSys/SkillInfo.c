@@ -3270,4 +3270,76 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_LadyBlade,
     },
 #endif
+
+#if (defined(SID_LullDefense) && COMMON_SKILL_VALID(SID_LullDefense))
+    [SID_LullDefense] = {
+        .name = MSG_SKILL_LullDefense_NAME,
+        .desc = MSG_SKILL_LullDefense,
+        .icon = GFX_SkillIcon_LullDefense,
+    },
+#endif
+
+#if (defined(SID_LullLuck) && COMMON_SKILL_VALID(SID_LullLuck))
+    [SID_LullLuck] = {
+        .name = MSG_SKILL_LullLuck_NAME,
+        .desc = MSG_SKILL_LullLuck,
+        .icon = GFX_SkillIcon_LullLuck,
+    },
+#endif
+
+#if (defined(SID_LullMagic) && COMMON_SKILL_VALID(SID_LullMagic))
+    [SID_LullMagic] = {
+        .name = MSG_SKILL_LullMagic_NAME,
+        .desc = MSG_SKILL_LullMagic,
+        .icon = GFX_SkillIcon_LullMagic,
+    },
+#endif
+
+#if (defined(SID_LullMovement) && COMMON_SKILL_VALID(SID_LullMovement))
+    [SID_LullMovement] = {
+        .name = MSG_SKILL_LullMovement_NAME,
+        .desc = MSG_SKILL_LullMovement,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LullResistance) && COMMON_SKILL_VALID(SID_LullResistance))
+    [SID_LullResistance] = {
+        .name = MSG_SKILL_LullResistance_NAME,
+        .desc = MSG_SKILL_LullResistance,
+        .icon = GFX_SkillIcon_LullResistance,
+    },
+#endif
+
+#if (defined(SID_LullSkill) && COMMON_SKILL_VALID(SID_LullSkill))
+    [SID_LullSkill] = {
+        .name = MSG_SKILL_LullSkill_NAME,
+        .desc = MSG_SKILL_LullSkill,
+        .icon = GFX_SkillIcon_LullSkill,
+    },
+#endif
+
+#if (defined(SID_LullSpectrum) && COMMON_SKILL_VALID(SID_LullSpectrum))
+    [SID_LullSpectrum] = {
+        .name = MSG_SKILL_LullSpectrum_NAME,
+        .desc = MSG_SKILL_LullSpectrum,
+        .icon = GFX_SkillIcon_LullSpectrum,
+    },
+#endif
+
+#if (defined(SID_LullSpeed) && COMMON_SKILL_VALID(SID_LullSpeed))
+    [SID_LullSpeed] = {
+        .name = MSG_SKILL_LullSpeed_NAME,
+        .desc = MSG_SKILL_LullSpeed,
+        .icon = GFX_SkillIcon_LullSpeed,
+    },
+#endif
+
+#if (defined(SID_LullStrength) && COMMON_SKILL_VALID(SID_LullStrength))
+    [SID_LullStrength] = {
+        .name = MSG_SKILL_LullStrength_NAME,
+        .desc = MSG_SKILL_LullStrength,
+        .icon = GFX_SkillIcon_LullStrength,
+    },
+#endif
 };

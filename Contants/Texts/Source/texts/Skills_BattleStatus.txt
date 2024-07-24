@@ -731,3 +731,75 @@ L-Blade[X]
 LadyBlade:[NL]
 If this unit is female,[NL]
 double weapon might.[X]
+
+## MSG_SKILL_LullDefense_NAME
+Lull-Def[X]
+
+## MSG_SKILL_LullDefense
+Lull Defense:[NL]
+Negated the effects of DEF[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullLuck_NAME
+Lull-Lck[X]
+
+## MSG_SKILL_LullLuck
+Lull Luck:[NL]
+Negated the effects of LCK[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullMagic_NAME
+Lull-Mag[X]
+
+## MSG_SKILL_LullMagic
+Lull Magic:[NL]
+Negated the effects of MAG[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullMovement_NAME
+Lull-Mov[X]
+
+## MSG_SKILL_LullMovement
+Lull Movement:[NL]
+Negated the effects of MOV[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullResistance_NAME
+Lull-Res[X]
+
+## MSG_SKILL_LullResistance
+Lull Resistance:[NL]
+Negated the effects of RES[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullSkill_NAME
+Lull-Skl[X]
+
+## MSG_SKILL_LullSkill
+Lull Skill:[NL]
+Negated the effects of SKL[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullSpectrum_NAME
+Lull-Spec[X]
+
+## MSG_SKILL_LullSpectrum
+Lull Spectrum:[NL]
+Negated the effects of any[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullSpeed_NAME
+Lull-Spd[X]
+
+## MSG_SKILL_LullSpeed
+Lull Speed:[NL]
+Negated the effects of SPD[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullStrength_NAME
+Lull-Str[X]
+
+## MSG_SKILL_LullStrength
+Lull Strength:[NL]
+Negated the effects of STR[NL]
+boosting rally skills on the enemy.[X]
