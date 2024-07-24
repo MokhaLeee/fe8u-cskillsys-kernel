@@ -121,7 +121,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
         if (basic_judgement == false && BattleSkillTester(actor, SID_PassionsFlow))
         {
-            struct SupportBonuses* bonuses = 0; 
+            struct SupportBonuses * bonuses = 0; 
 
             if(GetUnitSupportBonuses(GetUnit(actor->unit.index), bonuses))
             {
@@ -189,7 +189,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
         if (basic_judgement == false && BattleSkillTester(actor, SID_PassionsFlow))
         {
-            struct SupportBonuses* bonuses = 0;
+            struct SupportBonuses * bonuses = 0;
              
             if(GetUnitSupportBonuses(GetUnit(actor->unit.index), bonuses))
             {
