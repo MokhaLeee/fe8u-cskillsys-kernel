@@ -93,8 +93,8 @@ SID_Pickup
 SID_IndoorMarch
 SID_NatureRush
 SID_Expertise
+SID_PassionsFlow
 SID_LadyBlade
-
 // Lull skills
 // SID_LullDefense
 // SID_LullLuck
