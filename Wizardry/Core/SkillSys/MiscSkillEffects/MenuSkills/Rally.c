@@ -2,6 +2,7 @@
 #include "debuff.h"
 #include "weapon-range.h"
 #include "kernel-lib.h"
+#include "map-anims.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 #include "constants/texts.h"
@@ -66,7 +67,8 @@ u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
 static void callback_anim(ProcPtr proc)
 {
-    StartLightRuneAnim(proc, gActiveUnit->xPos, gActiveUnit->yPos);
+    // StartLightRuneAnim(proc, gActiveUnit->xPos, gActiveUnit->yPos);
+    StartNinianPrayfx(proc, SCREEN_TILE_X(gActiveUnit->xPos), SCREEN_TILE_Y(gActiveUnit->yPos));
 }
 
 static void callback_exec(ProcPtr proc)

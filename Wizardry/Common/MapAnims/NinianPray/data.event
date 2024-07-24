@@ -1,4 +1,7 @@
+ALIGN 4
 #include "Source/ap_ninianprayfx.lyn.event"
+
+ALIGN 4
 #include "Source/SpriteAnimConf.lyn.event"
 
 ALIGN 4
