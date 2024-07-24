@@ -3,5 +3,8 @@
     #include "Individual_animation_ea_2/Installer.event"
 #endif
 
-#include "DrawMapActionAnimation/Installer.event"
+#ifdef CONFIG_INSTALL_MAPACTIONANIM
+    #include "DrawMapActionAnimation/Installer.event"
+#endif
+
 #include "StatScreenfx/StatScreenfx.event"

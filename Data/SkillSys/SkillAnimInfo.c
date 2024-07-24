@@ -379,4 +379,12 @@ const struct SkillAnimInfo gSkillAnimInfos[MAX_SKILL_NUM + 1] = {
         .sfx = 0x3D1,
     },
 #endif
+
+#if (defined(SID_CounterMagic) && COMMON_SKILL_VALID(SID_CounterMagic))
+    [SID_CounterMagic] = {
+        .aid = EFX_SKILL_AETHER,
+        .priority = EFX_PRIORITY_HIGH,
+        .sfx = 0x3D1,
+    },
+#endif
 };

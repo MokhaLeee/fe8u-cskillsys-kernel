@@ -3254,4 +3254,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_NatureRush,
     },
 #endif
+
+#if (defined(SID_CounterMagic) && COMMON_SKILL_VALID(SID_CounterMagic))
+    [SID_CounterMagic] = {
+        .name = MSG_SKILL_CounterMagic_NAME,
+        .desc = MSG_SKILL_CounterMagic,
+        .icon = GFX_SkillIcon_CounterMagic,
+    },
+#endif
+
+#if (defined(SID_LadyBlade) && COMMON_SKILL_VALID(SID_LadyBlade))
+    [SID_LadyBlade] = {
+        .name = MSG_SKILL_LadyBlade_NAME,
+        .desc = MSG_SKILL_LadyBlade,
+        .icon = GFX_SkillIcon_LadyBlade,
+    },
+#endif
 };

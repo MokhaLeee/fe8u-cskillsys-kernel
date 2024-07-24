@@ -723,3 +723,11 @@ and killing them. (Luck % activation)[X]
 Expertise:[NL]
 Halve damage taken from[NL]
 critical hits.[X]
+
+## MSG_SKILL_LadyBlade_NAME
+L-Blade[X]
+
+## MSG_SKILL_LadyBlade
+LadyBlade:[NL]
+If this unit is female,[NL]
+double weapon might.[X]
