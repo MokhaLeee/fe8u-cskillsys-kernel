@@ -94,6 +94,7 @@ SID_IndoorMarch
 SID_NatureRush
 SID_Expertise
 SID_LadyBlade
+SID_RallyChaos
 
 // Devil skills
 SID_DevilsPact

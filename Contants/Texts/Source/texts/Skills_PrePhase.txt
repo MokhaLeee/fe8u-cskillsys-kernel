@@ -86,3 +86,11 @@ Nature-R[X]
 Nature Rush:[NL]
 +2 MOV at the start of the turn,[NL]
 if the unit is on outdoor terrain.[X]
+
+## MSG_SKILL_RallyChaos_NAME
+R-Chaos[X]
+
+## MSG_SKILL_RallyChaos
+Rally Chaos:[NL]
+At the start of your turn,[NL]
+perform a random rally.[X]
