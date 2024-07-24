@@ -122,7 +122,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         if (basic_judgement == false && BattleSkillTester(actor, SID_PassionsFlow))
         {
             struct SupportBonuses bonuses;
-            if (GetUnitSupportBonuses(GetUnit(actor->unit.index), bonuses) != 0)
+            if (GetUnitSupportBonuses(GetUnit(actor->unit.index), &bonuses) != 0)
             {
                 gBattleTemporaryFlag.act_force_twice_order = true;
                 RegisterBattleOrderSkill(SID_PassionsFlow, BORDER_ACT_TWICE);
