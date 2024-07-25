@@ -23,10 +23,6 @@ int ApplyStatBoostItem(struct Unit * unit, int itemIdx)
 #if (defined(SID_ShrewdPotential) && COMMON_SKILL_VALID(SID_ShrewdPotential))
     if (SkillTester(unit, SID_ShrewdPotential))
     {
-        /**
-         * Right now, we have no vanilla item for magic boosting, so not sure
-         * how increase that for magic units as energy ring will always boost strength
-         */
         switch(GetItemIndex(item)) {
         case ITEM_BOOSTER_HP:
             unit->maxHP += SKILL_EFF0(SID_ShrewdPotential);
@@ -34,6 +30,9 @@ int ApplyStatBoostItem(struct Unit * unit, int itemIdx)
             break;
         case ITEM_BOOSTER_POW:
             unit->pow += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case CONFIG_ITEM_INDEX_MAG_BOOSTER:
+            UNIT_MAG(unit) += SKILL_EFF0(SID_ShrewdPotential);
             break;
         case ITEM_BOOSTER_SKL:
             unit->skl += SKILL_EFF0(SID_ShrewdPotential);
