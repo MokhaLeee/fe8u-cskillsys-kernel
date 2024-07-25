@@ -27,9 +27,9 @@ ItemBonus_MagBooster:
     BYTE 0 0 0 0 0 0 0 0
     BYTE 0 2 0 0
 
-InjectItemUsabilityJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, 0x8028B4C)
-InjectItemActionJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, 0x802FF40)
-InjectItemPrepUsabilityJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, 0x0802940C)
-InjectItemPrepEffectJpt(CONFIG_ICON_INDEX_MAG_BOOSTER, PrepItemEffect_StatBooster)
+InjectItemUsabilityJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, 0x8028B4C)
+InjectItemActionJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, 0x802FF40)
+InjectItemPrepUsabilityJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, 0x0802940C)
+InjectItemPrepEffectJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, PrepItemEffect_StatBooster)
 
 #endif /* STR_MAG_SPLIT_INSTALLED */

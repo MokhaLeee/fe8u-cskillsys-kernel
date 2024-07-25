@@ -178,7 +178,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
         .redas = REDA_Marisa,
         .items = {
             ITEM_SWORD_SLIM,
-            ITEM_VULNERARY
+            CONFIG_ITEM_INDEX_MAG_BOOSTER
         },
     },
     {
