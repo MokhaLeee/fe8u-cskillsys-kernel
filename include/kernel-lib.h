@@ -15,6 +15,11 @@ struct KernelDesigerConfig {
     u8 battle_surrend_en;
     u8 hit_decrease_on_range;
     u8 debug_autoload_skills;
+
+    u8 guaranteed_lvup;
+    u8 lvup_mode_tutorial;
+    u8 lvup_mode_normal;
+    u8 lvup_mode_hard;
 };
 
 extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;

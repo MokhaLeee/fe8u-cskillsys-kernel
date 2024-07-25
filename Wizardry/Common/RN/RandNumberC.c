@@ -1,7 +1,25 @@
 #include "common-chax.h"
 #include "rn.h"
 
-extern u16 sRandSeedsC[4], sRandBackup[3];
+extern u16 sRandSeedsC[4];
+
+static u16 KernelRandRoll(u16 seeds[])
+{
+    u16 rn = (seeds[1] << 11) + (seeds[0] >> 5);
+
+    seeds[2] *= 2;
+
+    if (seeds[1] & 0x8000)
+        seeds[2]++;
+
+    rn ^= seeds[2];
+
+    seeds[2] = seeds[1];
+    seeds[1] = seeds[0];
+    seeds[0] = rn;
+
+    return rn;
+}
 
 /* Game init hook */
 void InitRandC(void)
@@ -11,56 +29,25 @@ void InitRandC(void)
         sRandSeedsC[i] = NextRN();
 }
 
-STATIC_DECLAR void PrepareRandC(int amount)
+STATIC_DECLAR int RandNextC(void)
 {
-    int i;
-    for (i = 0; i < 3; i++)
-        sRandBackup[i] = gRNSeeds[i];
-
-    for (i = 0; i < 3; i++)
-        gRNSeeds[i] = sRandSeedsC[i];
-
-    for (i = 0; i < amount; i++)
-        (void)NextRN();
+    return KernelRandRoll(sRandSeedsC);
 }
 
-STATIC_DECLAR void RestoreRnState(void)
+STATIC_DECLAR int RandNextC_100(void)
 {
-    int i;
-    for (i = 0; i < 3; i++)
-        gRNSeeds[i] = sRandBackup[i];
+    return Div(RandNextC() * 100, 0x10000);
 }
 
-STATIC_DECLAR int RandNextC(int amount)
+bool Roll1RandC(int threshold)
 {
-    u16 ret;
-    PrepareRandC(amount);
-    ret = NextRN();
-    RestoreRnState();
-    return ret;
+    return threshold > RandNextC_100();
 }
 
-STATIC_DECLAR int RandNextC_100(int amount)
+bool Roll2RandC(int threshold)
 {
-    return Div(RandNextC(amount) * 100, 0x10000);
-}
-
-bool Roll1RandC(int threshold, int amount)
-{
-    return threshold > RandNextC_100(amount);
-}
-
-bool Roll2RandC(int threshold, int amount)
-{
-    int average, rn1, rn2;
-    PrepareRandC(amount);
-
-    rn1 = Div(NextRN() * 100, 0x10000);
-    rn2 = Div(NextRN() * 100, 0x10000);
-    average = (rn1 + rn2) / 2;
-
-    RestoreRnState();
-    return threshold > average;
+    int average = (RandNextC_100() + RandNextC_100()) / 2;
+    return (threshold > average);
 }
 
 void SaveRandC(u8 * dst, const u32 size)

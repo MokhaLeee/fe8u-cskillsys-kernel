@@ -1,11 +1,12 @@
 #include "common-chax.h"
+#include "constants/texts.h"
 
 extern const struct ItemStatBonuses ItemBonus_MagBooster;
 
 const struct ItemData ItemData_MagBooster = {
-    .nameTextId = 0x3d5,
-    .descTextId = 0x484,
-    .useDescTextId = 0x4c2,
+    .nameTextId = MSG_ITEM_MAGBOOSTER_NAME,
+    .descTextId = MSG_ITEM_MAGBOOSTER_DESC,
+    .useDescTextId = MSG_ITEM_MAGBOOSTER_USEDESC,
     .number = CONFIG_ITEM_INDEX_MAG_BOOSTER,
     .weaponType = ITYPE_ITEM,
     .pStatBonuses = &ItemBonus_MagBooster,
