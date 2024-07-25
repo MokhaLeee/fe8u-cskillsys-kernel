@@ -102,7 +102,7 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
 /* LynJump */
 void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 {
-    const BattleToUnitFunc_t * it;
+    const UnitToBattleFunc_t * it;
 
     InitBattleUnitVanilla(bu, unit);
 
@@ -112,14 +112,14 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
     bu->unit._u3A = unit->_u3A;
     bu->unit._u3B = unit->_u3B;
 
-    for (it = gpExternalBattleToUnitHook; *it; it++)
-        (*it)(bu, unit);
+    for (it = gpExternalUnitToBattleHook; *it; it++)
+        (*it)(unit, bu);
 }
 
 /* LynJump */
 void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 {
-    const UnitToBattleFunc_t * it;
+    const BattleToUnitFunc_t * it;
 
     UpdateUnitFromBattleVanilla(unit, bu);
 
@@ -131,6 +131,6 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 
     ResetSkillLists();
 
-    for (it = gpExternalUnitToBattleHook; *it; it++)
-        (*it)(unit, bu);
+    for (it = gpExternalBattleToUnitHook; *it; it++)
+        (*it)(bu, unit);
 }
