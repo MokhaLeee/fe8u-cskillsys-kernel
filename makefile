@@ -139,8 +139,8 @@ ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
 endif
 
-	@cp -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym && cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym-removethumb.py > $(CHAX_SYM) && rm -f $(CACHE_DIR)/tmp_sym
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
+	@mv -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym && cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym_modify.py > $(CHAX_SYM) && rm -f $(CACHE_DIR)/tmp_sym
 	@echo "Done!"
 
 CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
