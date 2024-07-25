@@ -3357,4 +3357,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_LullStrength,
     },
 #endif
+
+#if (defined(SID_ShrewdPotential) && COMMON_SKILL_VALID(SID_ShrewdPotential))
+    [SID_ShrewdPotential] = {
+        .name = MSG_SKILL_ShrewdPotential_NAME,
+        .desc = MSG_SKILL_ShrewdPotential,
+        .icon = GFX_SkillIcon_ShrewdPotential,
+    },
+#endif
 };

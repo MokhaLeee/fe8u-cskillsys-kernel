@@ -1,5 +1,7 @@
 #include "common-chax.h"
 #include "strmag.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 extern struct Unit gStatGainSimUnit;
 
@@ -17,6 +19,44 @@ int ApplyStatBoostItem(struct Unit * unit, int itemIdx)
     }
 
     statBonuses = GetItemStatBonuses(item);
+
+#if (defined(SID_ShrewdPotential) && COMMON_SKILL_VALID(SID_ShrewdPotential))
+    if (SkillTester(unit, SID_ShrewdPotential))
+    {
+        /**
+         * Right now, we have no vanilla item for magic boosting, so not sure
+         * how increase that for magic units as energy ring will always boost strength
+         */
+        switch(GetItemIndex(item)) {
+        case ITEM_BOOSTER_POW:
+            unit->pow += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case ITEM_BOOSTER_SKL:
+            unit->skl += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case ITEM_BOOSTER_SPD:
+            unit->spd += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case ITEM_BOOSTER_LCK:
+            unit->lck += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case ITEM_BOOSTER_DEF:
+            unit->def += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case ITEM_BOOSTER_RES:
+            unit->res += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case ITEM_BOOSTER_CON:
+            unit->conBonus += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        case ITEM_BOOSTER_MOV:
+            unit->movBonus += SKILL_EFF0(SID_ShrewdPotential);
+            break;
+        default:
+            break;
+        }
+    }
+#endif
 
     unit->maxHP += statBonuses->hpBonus;
     unit->curHP += statBonuses->hpBonus;
