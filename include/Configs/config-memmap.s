@@ -47,7 +47,6 @@ _kernel_malloc gBattleActorGlobalFlag, 0x10
 _kernel_malloc gBattleTargetGlobalFlag, 0x10
 _kernel_malloc gCombatArtStatus, 0x10
 _kernel_malloc sRandSeedsC, 8
-_kernel_malloc sRandBackup, 8
 _kernel_malloc gBanimSyncHandler, 8
 _kernel_malloc gComboAtkList, 0x14
 _kernel_malloc sKTutorialBits, 0xC

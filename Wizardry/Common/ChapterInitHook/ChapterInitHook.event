@@ -11,9 +11,7 @@ POP
 /* void (*)(void) */
 ALIGN 4
 ChapterInitHooks:
-#ifdef CONFIG_USE_RAND_C
     POIN InitRandC
-#endif
     POIN ResetUnitsExpaSus
     POIN ChapterInit_SetInitiativeStatus
     WORD 0
