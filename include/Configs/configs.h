@@ -69,9 +69,16 @@
 // #define CONFIG_REMOVE_MOVE_PATH
 
 /**
- * If comment, use vanilla RNG on judgement of lvup
+ * Levelup mode
+ * 0: vanilla
+ * 1: uncontrollable
+ * 2: fixed
+ * 3: 100%
+ * 4: 0%
  */
-// #define CONFIG_USE_RAND_C
+#define CONFIG_LVUP_MODE_TUTORIAL 2
+#define CONFIG_LVUP_MODE_NORMAL 0
+#define CONFIG_LVUP_MODE_HARD 1
 
 /**
  * Install DrawMapActionAnimation

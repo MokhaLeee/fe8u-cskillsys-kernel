@@ -3,10 +3,10 @@
 #include "lvup.h"
 #include "rn.h"
 #include "bwl.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 
-#ifdef CONFIG_USE_RAND_C
-STATIC_DECLAR int GetStatIncreaseRandC(int growth, int amount)
+STATIC_DECLAR int GetStatIncreaseRandC(int growth)
 {
     int result = 0;
 
@@ -16,77 +16,122 @@ STATIC_DECLAR int GetStatIncreaseRandC(int growth, int amount)
         growth -= 100;
     }
 
-    if (Roll1RandC(growth, amount * 4))
+    if (Roll1RandC(growth))
         result++;
 
     return result;
 }
-#endif
 
-/* LynJump */
-int GetStatIncrease(int growth)
+static int GetStatIncreaseFixed(int growth, int ref)
 {
-    int result = 0;
-
-    while (growth > 100)
-    {
-        result++;
-        growth -= 100;
-    }
-
-    if (Roll1RN(growth))
-        result++;
-
-    return result;
+    return simple_div(growth + simple_mod(growth * ref, 100), 100);
 }
+
+static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
+{
+    struct Unit * unit = GetUnit(bu->unit.index);
+
+    bu->changeHP  = GetStatIncrease(GetUnitHpGrowth(unit)  + bonus);
+    bu->changePow = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
+    bu->changeSkl = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
+    bu->changeSpd = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
+    bu->changeLck = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
+    bu->changeDef = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
+    bu->changeRes = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
+
+    BU_CHG_MAG(bu) = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
+}
+
+static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)
+{
+    struct Unit * unit = GetUnit(bu->unit.index);
+
+    bu->changeHP  = GetStatIncreaseRandC(GetUnitHpGrowth(unit)  + bonus);
+    bu->changePow = GetStatIncreaseRandC(GetUnitPowGrowth(unit) + bonus);
+    bu->changeSkl = GetStatIncreaseRandC(GetUnitSklGrowth(unit) + bonus);
+    bu->changeSpd = GetStatIncreaseRandC(GetUnitSpdGrowth(unit) + bonus);
+    bu->changeLck = GetStatIncreaseRandC(GetUnitLckGrowth(unit) + bonus);
+    bu->changeDef = GetStatIncreaseRandC(GetUnitDefGrowth(unit) + bonus);
+    bu->changeRes = GetStatIncreaseRandC(GetUnitResGrowth(unit) + bonus);
+
+    BU_CHG_MAG(bu) = GetStatIncreaseRandC(GetUnitMagGrowth(unit) + bonus);
+}
+
+static void UnitLvup_Fixed(struct BattleUnit * bu, int bonus)
+{
+    struct Unit * unit = GetUnit(bu->unit.index);
+
+    int ref = unit->level - 1;
+    if (CA_PROMOTED & UNIT_CATTRIBUTES(unit))
+        ref = ref + 19;
+
+    bu->changeHP  = GetStatIncreaseFixed(GetUnitHpGrowth(unit)  + bonus, ref += 5);
+    bu->changePow = GetStatIncreaseFixed(GetUnitPowGrowth(unit) + bonus, ref += 5);
+    bu->changeSkl = GetStatIncreaseFixed(GetUnitSklGrowth(unit) + bonus, ref += 5);
+    bu->changeSpd = GetStatIncreaseFixed(GetUnitSpdGrowth(unit) + bonus, ref += 5);
+    bu->changeLck = GetStatIncreaseFixed(GetUnitLckGrowth(unit) + bonus, ref += 5);
+    bu->changeDef = GetStatIncreaseFixed(GetUnitDefGrowth(unit) + bonus, ref += 5);
+    bu->changeRes = GetStatIncreaseFixed(GetUnitResGrowth(unit) + bonus, ref += 5);
+
+    BU_CHG_MAG(bu) = GetStatIncreaseFixed(GetUnitMagGrowth(unit) + bonus, ref += 5);
+}
+
+static void UnitLvup_100(struct BattleUnit * bu, int bonus)
+{
+    bu->changeHP  = 1;
+    bu->changePow = 1;
+    bu->changeSkl = 1;
+    bu->changeSpd = 1;
+    bu->changeLck = 1;
+    bu->changeDef = 1;
+    bu->changeRes = 1;
+    BU_CHG_MAG(bu) = 1;
+}
+
+static void UnitLvup_0(struct BattleUnit * bu, int bonus)
+{
+    return;
+}
+
 
 STATIC_DECLAR void UnitLvupCore(struct BattleUnit * bu, int bonus)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
-    int total;
+    static void (* const funcs[])(struct BattleUnit * bu, int bonus) = {
+        [0] = UnitLvup_Vanilla,
+        [1] = UnitLvup_RandC,
+        [2] = UnitLvup_Fixed,
+        [3] = UnitLvup_100,
+        [4] = UnitLvup_0
+    };
 
-#ifdef CONFIG_USE_RAND_C
+    int mode;
+
+    if (TUTORIAL_MODE())
+        mode = gpKernelDesigerConfig->lvup_mode_tutorial;
     if (gPlaySt.config.controller || (gPlaySt.chapterStateBits & PLAY_FLAG_HARD))
-    {
-        /* Use switch style lvup on default */
-        int randc_ref = 10 + 5 * UNIT_CHAR_ID(unit) + 4 * UNIT_CLASS_ID(unit) + 6 * unit->level;
-
-        bu->changeHP  = GetStatIncreaseRandC(GetUnitHpGrowth(unit)  + bonus, randc_ref++);
-        bu->changePow = GetStatIncreaseRandC(GetUnitPowGrowth(unit) + bonus, randc_ref++);
-        bu->changeSkl = GetStatIncreaseRandC(GetUnitSklGrowth(unit) + bonus, randc_ref++);
-        bu->changeSpd = GetStatIncreaseRandC(GetUnitSpdGrowth(unit) + bonus, randc_ref++);
-        bu->changeLck = GetStatIncreaseRandC(GetUnitLckGrowth(unit) + bonus, randc_ref++);
-        bu->changeDef = GetStatIncreaseRandC(GetUnitDefGrowth(unit) + bonus, randc_ref++);
-        bu->changeRes = GetStatIncreaseRandC(GetUnitResGrowth(unit) + bonus, randc_ref++);
-
-        BU_CHG_MAG(bu) = GetStatIncreaseRandC(GetUnitMagGrowth(unit) + bonus, randc_ref++);
-    }
+        mode = gpKernelDesigerConfig->lvup_mode_hard;
     else
-#endif
+        mode = gpKernelDesigerConfig->lvup_mode_normal;
+
+    if (mode > 4)
+        mode = 0;
+
+    funcs[mode](bu, bonus);
+
+    if (gpKernelDesigerConfig->guaranteed_lvup)
     {
-        /* for tutorial mode, use vanilla */
-        bu->changeHP  = GetStatIncrease(GetUnitHpGrowth(unit)  + bonus);
-        bu->changePow = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
-        bu->changeSkl = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
-        bu->changeSpd = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
-        bu->changeLck = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
-        bu->changeDef = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
-        bu->changeRes = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
+        int total = bu->changeHP +
+                    bu->changePow +
+                    bu->changeSkl +
+                    bu->changeSpd +
+                    bu->changeLck +
+                    bu->changeDef +
+                    bu->changeRes +
+                    BU_CHG_MAG(bu);
 
-        BU_CHG_MAG(bu) = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
+        if (total == 0)
+            UnitLvupCore(bu, bonus + 5);
     }
-
-    total = bu->changeHP +
-            bu->changePow +
-            bu->changeSkl +
-            bu->changeSpd +
-            bu->changeLck +
-            bu->changeDef +
-            bu->changeRes +
-            BU_CHG_MAG(bu);
-
-    if (total == 0)
-        UnitLvupCore(bu, bonus + 5);
 }
 
 /* LynJump */
