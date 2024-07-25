@@ -23,41 +23,29 @@ int ApplyStatBoostItem(struct Unit * unit, int itemIdx)
 #if (defined(SID_ShrewdPotential) && COMMON_SKILL_VALID(SID_ShrewdPotential))
     if (SkillTester(unit, SID_ShrewdPotential))
     {
-        switch(GetItemIndex(item)) {
-        case ITEM_BOOSTER_HP:
+        if (statBonuses->hpBonus > 0)
+        {
             unit->maxHP += SKILL_EFF0(SID_ShrewdPotential);
             unit->curHP += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_POW:
-            unit->pow += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case CONFIG_ITEM_INDEX_MAG_BOOSTER:
-            UNIT_MAG(unit) += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_SKL:
-            unit->skl += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_SPD:
-            unit->spd += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_LCK:
-            unit->lck += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_DEF:
-            unit->def += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_RES:
-            unit->res += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_CON:
-            unit->conBonus += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        case ITEM_BOOSTER_MOV:
-            unit->movBonus += SKILL_EFF0(SID_ShrewdPotential);
-            break;
-        default:
-            break;
         }
+        if (statBonuses->powBonus > 0)
+            unit->pow += SKILL_EFF0(SID_ShrewdPotential);
+        if (ITEM_MAG_BONUS(statBonuses) > 0)
+            UNIT_MAG(unit) += SKILL_EFF0(SID_ShrewdPotential);
+        if (statBonuses->sklBonus > 0)
+            unit->skl += SKILL_EFF0(SID_ShrewdPotential);
+        if (statBonuses->spdBonus > 0)
+            unit->spd += SKILL_EFF0(SID_ShrewdPotential);
+        if (statBonuses->lckBonus > 0)
+            unit->lck += SKILL_EFF0(SID_ShrewdPotential);
+        if (statBonuses->defBonus > 0)
+            unit->def += SKILL_EFF0(SID_ShrewdPotential);
+        if (statBonuses->resBonus > 0)
+            unit->res += SKILL_EFF0(SID_ShrewdPotential);
+        if (statBonuses->conBonus > 0)
+            unit->conBonus += SKILL_EFF0(SID_ShrewdPotential);
+        if (statBonuses->movBonus > 0)
+            unit->movBonus += SKILL_EFF0(SID_ShrewdPotential);
     }
 #endif
 
