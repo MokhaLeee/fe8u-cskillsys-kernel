@@ -28,6 +28,10 @@ int ApplyStatBoostItem(struct Unit * unit, int itemIdx)
          * how increase that for magic units as energy ring will always boost strength
          */
         switch(GetItemIndex(item)) {
+        case ITEM_BOOSTER_HP:
+            unit->maxHP += SKILL_EFF1(SID_ShrewdPotential);
+            unit->curHP += SKILL_EFF1(SID_ShrewdPotential);
+            break;
         case ITEM_BOOSTER_POW:
             unit->pow += SKILL_EFF0(SID_ShrewdPotential);
             break;
