@@ -348,6 +348,7 @@ static const EventScr EventScr_Beginning[] = {
     ENUN
 
     Evt_AddSkill(SID_Obstruct, CHARACTER_SAAR)
+    Evt_AddSkill(SID_Nihil, CHARACTER_SAAR)
     Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
 
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)

@@ -39,6 +39,7 @@ SID_LifeAndDeath
 SID_Resourceful
 
 // Battle status skills
+SID_Nihil
 SID_CritSword
 SID_CritAxe
 SID_CritLance

@@ -203,6 +203,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Nihil) && COMMON_SKILL_VALID(SID_Nihil))
+    [SID_Nihil] = {
+        .desc = MSG_SKILL_Nihil,
+        .icon = GFX_SkillIcon_Nihil,
+    },
+#endif
+
 #if (defined(SID_CritSword) && COMMON_SKILL_VALID(SID_CritSword))
     [SID_CritSword] = {
         .desc = MSG_SKILL_CritSword,

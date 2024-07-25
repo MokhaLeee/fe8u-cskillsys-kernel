@@ -33,6 +33,7 @@ Raises magic.[X]
 #include texts/Skills_BattleAct.txt
 #include texts/Skills_BattleOrder.txt
 #include texts/Skills_BattleEffective.txt
+#include texts/Skills_BattleNihil.txt
 #include texts/Skills_Blow.txt
 #include texts/Skills_Stance.txt
 #include texts/Skills_WeaponRange.txt

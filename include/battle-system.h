@@ -87,6 +87,9 @@ void ClearBattleGlobalFlags(void);
 void RegisterHitCnt(struct BattleUnit * bu, bool miss);
 
 extern struct {
+    u32 nihil_on_actor  : 1;
+    u32 nihil_on_target : 1;
+
     u32 desperation_order : 1;
     u32 vantage_order : 1;
     u32 tar_force_twice_order : 1;
