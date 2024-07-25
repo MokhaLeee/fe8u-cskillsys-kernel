@@ -44,6 +44,7 @@
 #include "../Wizardry/Common/PrePhaseHook/data.event"
 #include "../Wizardry/Common/SaveData/data.event"
 #include "../Wizardry/Common/UnitMenu/data.event"
+#include "../Wizardry/Common/UnitHooks/data.event"
 #include "../Wizardry/Core/SkillSys/data.event"
 #include "../Wizardry/Core/BattleSys/data.event"
 #include "../Wizardry/Core/MapTask/data.event"
