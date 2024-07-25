@@ -48,7 +48,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_SpectrumBoost] = {{ 6 }},
     [SID_LuckySeven] = {{ 7 }},
     [SID_Poise] = {{ 1 }},
-    [SID_ShrewdPotential] = {{ 1, 3 }},
+    [SID_ShrewdPotential] = {{ 1 }},
 
     [SID_FortressDef] = {{ -3, +5 }},
     [SID_FortressRes] = {{ -3, +5 }},
