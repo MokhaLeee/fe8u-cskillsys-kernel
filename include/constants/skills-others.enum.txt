@@ -105,6 +105,7 @@ SID_LadyBlade
 // SID_LullSpectrum
 // SID_LullSpeed
 // SID_LullStregth
+SID_ShrewdPotential
 
 // Devil skills
 SID_DevilsPact

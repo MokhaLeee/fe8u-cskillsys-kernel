@@ -452,3 +452,11 @@ Spec-Boost[X]
 Spectrum Boost:[NL]
 +1 to all stats per turn up[NL]
 to a maximum of 6 turns.[X]
+
+## MSG_SKILL_ShrewdPotential_NAME
+Shrewd-P[X]
+
+## MSG_SKILL_ShrewdPotential
+Shrewd Potential:[NL]
++1 to stat boosters used[NL]
+by this unit.[X]
