@@ -1207,6 +1207,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 attacker->battleSpeed += SKILL_EFF0(SID_AirRaidSpeed);
             break;
 #endif
+
+#if (defined(SID_SteadyBrawler) && (COMMON_SKILL_VALID(SID_SteadyBrawler)))
+        case SID_SteadyBrawler:
+            if (attacker->battleSpeed - defender->battleSpeed >= BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+                attacker->battleAttack += attacker->battleAttack / SKILL_EFF0(SID_SteadyBrawler);
+            else
+                attacker->battleAttack -= attacker->battleAttack / SKILL_EFF0(SID_SteadyBrawler);
+            break;
+#endif
         }
     }
 

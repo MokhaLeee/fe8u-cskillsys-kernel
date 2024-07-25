@@ -3365,4 +3365,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_ShrewdPotential,
     },
 #endif
+
+#if (defined(SID_SteadyBrawler) && COMMON_SKILL_VALID(SID_SteadyBrawler))
+    [SID_SteadyBrawler] = {
+        .name = MSG_SKILL_SteadyBrawler_NAME,
+        .desc = MSG_SKILL_SteadyBrawler,
+        .icon = GFX_SkillIcon_SteadyBrawler,
+    },
+#endif
 };
