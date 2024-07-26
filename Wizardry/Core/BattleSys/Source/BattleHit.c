@@ -680,50 +680,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
                 defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
         }
-        else if (
-#if (defined(SID_BlackMagic) && (COMMON_SKILL_VALID(SID_BlackMagic)))
-            CheckBattleSkillActivate(attacker, defender, SID_BlackMagic, attacker->unit.skl)
-#else
-            0
-#endif 
-        )
-        {
-            int random_number = NextRN_100();
-            int statuses [8] = {
-                UNIT_STATUS_POISON,
-                UNIT_STATUS_PETRIFY,
-                UNIT_STATUS_SILENCED,
-                UNIT_STATUS_SLEEP,
-                UNIT_STATUS_BERSERK,
-                NEW_UNIT_STATUS_HEAVY_GRAVITY,
-                NEW_UNIT_STATUS_PANIC,
-                NEW_UNIT_STATUS_WEAKEN,
-            };
-            int remainder = random_number / sizeof(statuses);
-
-            switch (remainder) {
-            case 0:
-                defender->statusOut = statuses[remainder];
-                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
-                break;
-            case 1:
-                defender->statusOut = statuses[remainder];
-                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
-                break;
-            case 2:
-                defender->statusOut = statuses[remainder];
-                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_SILENCER;
-                break;
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-                defender->statusOut = statuses[remainder];
-            }
-
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_BlackMagic);
-        }
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
