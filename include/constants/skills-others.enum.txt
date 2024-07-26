@@ -75,7 +75,7 @@ SID_BidingBlow
 SID_Discipline
 SID_AdvantageChaser
 SID_Moonlight
-SID_BlackMagic
+// SID_BlackMagic
 
 // Mobility
 SID_Guidance
