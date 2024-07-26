@@ -1,0 +1,7 @@
+PUSH
+{
+    WARNING __Prologue_chapter_rewritten__
+    ORG 0x8B0890
+    #include "Source/debug-chapter.lyn.event"
+}
+POP

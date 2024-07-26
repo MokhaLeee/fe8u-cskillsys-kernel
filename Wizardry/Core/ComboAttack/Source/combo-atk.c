@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "debuff.h"
 #include "combo-attack.h"
 #include "weapon-range.h"
 #include "kernel-tutorial.h"
@@ -35,7 +36,7 @@ void BattleGenerateComboAtkList(void)
 
         /* If not valid unit */
         unit = GetUnit(i);
-        if (!UNIT_IS_VALID(unit))
+        if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
             continue;
 
         if (unit->index == gBattleActor.unit.index)
@@ -45,6 +46,25 @@ void BattleGenerateComboAtkList(void)
         item = GetUnitEquippedWeapon(unit);
         if (!item)
             continue;
+
+        /**
+         * Well I decide to directly lock the monster to combo
+         */
+        if (GetItemAttributes(item) & IA_LOCK_3)
+            continue;
+
+        switch (GetItemType(item)) {
+        case ITYPE_SWORD:
+        case ITYPE_AXE:
+        case ITYPE_LANCE:
+        case ITYPE_ANIMA:
+        case ITYPE_LIGHT:
+        case ITYPE_DARK:
+            break;
+
+        default:
+            continue;
+        }
 
         range = RECT_DISTANCE(
             unit->xPos, unit->yPos,

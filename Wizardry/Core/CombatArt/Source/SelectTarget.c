@@ -26,7 +26,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
         if (new < 0)
             return 0;
 
-        info = &gpCombatArtInfos[list->cid[new]];
+        info = GetCombatArtInfo(list->cid[new]);
         if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             break;
     }
@@ -48,7 +48,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
         if (new >= list->amt)
             return 0;
 
-        info = &gpCombatArtInfos[list->cid[new]];
+        info = GetCombatArtInfo(list->cid[new]);
 
         if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             break;

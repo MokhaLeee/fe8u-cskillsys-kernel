@@ -9,6 +9,8 @@
 
 STATIC_DECLAR void PostActionReturnSkipMenuIfNotAlly(struct EventEngineProc * proc)
 {
+    ShowUnitSprite(gActiveUnit);
+
     gEventSlots[EVT_SLOT_C] = false;
     if (UNIT_FACTION(gActiveUnit) == FACTION_BLUE)
         gEventSlots[EVT_SLOT_C] = true;
@@ -35,6 +37,7 @@ STATIC_DECLAR void PostActionReturnToOrigin(void)
 
 STATIC_DECLAR const EventScr EventScr_PostActionPositionReturn[] = {
     EVBIT_MODIFY(0x4)
+    // ASMC(MapAnim_CommonInit)
     ASMC(PostActionReturnSkipMenuIfNotAlly)
     BEQ(0, EVT_SLOT_C, EVT_SLOT_0)
 
@@ -47,6 +50,11 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionReturn[] = {
     BNE(99, EVT_SLOT_C, EVT_SLOT_7)
 
 LABEL(0)
+#if defined(SID_PosReturn) && (COMMON_SKILL_VALID(SID_PosReturn))
+    SVAL(EVT_SLOT_B, SID_PosReturn)
+    CALL(EventScr_MuSkillAnim)
+#endif
+    STAL(20)
     ASMC(PrepareReturnPosition)
     CALL(EventScr_UidWarpOUT)
     STAL(20)
@@ -55,6 +63,7 @@ LABEL(0)
     STAL(20)
 
 LABEL(99)
+    ASMC(MapAnim_CommonEnd)
     NoFade
     ENDA
 };

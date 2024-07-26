@@ -497,6 +497,36 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_FaireAnima) && (COMMON_SKILL_VALID(SID_FaireAnima)))
+        case SID_FaireAnima:
+            switch (attacker->weaponType) {
+            case ITYPE_ANIMA:
+                attacker->battleAttack += SKILL_EFF0(SID_FaireAnima);
+                break;
+            }
+            break;
+#endif
+
+#if (defined(SID_FaireLight) && (COMMON_SKILL_VALID(SID_FaireLight)))
+        case SID_FaireLight:
+            switch (attacker->weaponType) {
+            case ITYPE_LIGHT:
+                attacker->battleAttack += SKILL_EFF0(SID_FaireLight);
+                break;
+            }
+            break;
+#endif
+
+#if (defined(SID_FaireDark) && (COMMON_SKILL_VALID(SID_FaireDark)))
+        case SID_FaireDark:
+            switch (attacker->weaponType) {
+            case ITYPE_DARK:
+                attacker->battleAttack += SKILL_EFF0(SID_FaireDark);
+                break;
+            }
+            break;
+#endif
+
 #if defined(SID_HolyAura) && (COMMON_SKILL_VALID(SID_HolyAura))
         case SID_HolyAura:
             if (attacker->weaponType == ITYPE_LIGHT)
@@ -512,6 +542,20 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_BlueFlame) && (COMMON_SKILL_VALID(SID_BlueFlame)))
         case SID_BlueFlame:
             attacker->battleAttack += SKILL_EFF0(SID_BlueFlame);
+            break;
+#endif
+
+#if (defined(SID_FaerghusAncestry) && (COMMON_SKILL_VALID(SID_FaerghusAncestry)))
+        case SID_FaerghusAncestry:
+            attacker->battleAttack += GetItemMight(attacker->weapon);
+            break;
+#endif
+
+#if (defined(SID_LadyBlade) && (COMMON_SKILL_VALID(SID_LadyBlade)))
+        case SID_LadyBlade:
+            if ((UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
+                attacker->battleAttack += GetItemMight(attacker->weapon);
+
             break;
 #endif
 
@@ -689,6 +733,22 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
+        case SID_QuickDraw:
+            if (attacker == &gBattleActor)
+                attacker->battleAttack += SKILL_EFF0(SID_QuickDraw);
+
+            break;
+#endif
+
+#if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
+        case SID_StrongRiposte:
+            if (attacker == &gBattleTarget)
+                attacker->battleAttack += SKILL_EFF0(SID_StrongRiposte);
+
+            break;
+#endif
+
 #if (defined(SID_OutdoorFighter) && (COMMON_SKILL_VALID(SID_OutdoorFighter)))
         case SID_OutdoorFighter:
             switch (gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) {
@@ -778,6 +838,14 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         case SID_Guts:
             if (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE)
                 attacker->battleAttack += SKILL_EFF0(SID_Guts);
+
+            break;
+#endif
+
+#if (defined(SID_StrongCon) && (COMMON_SKILL_VALID(SID_StrongCon)))
+        case SID_StrongCon:
+            if (GetUnitStatusIndex(&attacker->unit) != UNIT_STATUS_NONE)
+                attacker->battleDefense += SKILL_EFF0(SID_StrongCon);
 
             break;
 #endif
@@ -1080,6 +1148,65 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 attacker->battleSpeed *= 2;
             break;
 #endif
+
+#if (defined(SID_MageSlayer) && (COMMON_SKILL_VALID(SID_MageSlayer)))
+        case SID_MageSlayer:
+            if (defender->unit.ranks[ITYPE_ANIMA] != 0 || defender->unit.ranks[ITYPE_LIGHT] != 0 || defender->unit.ranks[ITYPE_DARK] != 0 || defender->unit.ranks[ITYPE_STAFF])
+            {
+                attacker->battleAttack  += SKILL_EFF0(SID_MageSlayer);
+                attacker->battleCritRate += SKILL_EFF1(SID_MageSlayer);
+            }
+            break;
+#endif
+
+#if (defined(SID_AirRaidAttack) && (COMMON_SKILL_VALID(SID_AirRaidAttack)))
+        case SID_AirRaidAttack:
+            if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]))
+                attacker->battleAttack += SKILL_EFF0(SID_AirRaidAttack);
+            break;
+#endif
+
+#if (defined(SID_AirRaidAvoid) && (COMMON_SKILL_VALID(SID_AirRaidAvoid)))
+        case SID_AirRaidAvoid:
+            if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]))
+                attacker->battleAvoidRate += SKILL_EFF0(SID_AirRaidAvoid);
+            break;
+#endif
+
+#if (defined(SID_AirRaidCrit) && (COMMON_SKILL_VALID(SID_AirRaidCrit)))
+        case SID_AirRaidCrit:
+            if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]))
+                attacker->battleCritRate += SKILL_EFF0(SID_AirRaidCrit);
+            break;
+#endif
+
+#if (defined(SID_AirDefense) && (COMMON_SKILL_VALID(SID_AirRaidDefense)))
+        case SID_AirRaidDefense:
+            if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) && !IsMagicAttack(attacker))
+                attacker->battleDefense += SKILL_EFF0(SID_AirRaidDefense);
+            break;
+#endif
+
+#if (defined(SID_AirRaidHit) && (COMMON_SKILL_VALID(SID_AirRaidHit)))
+        case SID_AirRaidHit:
+            if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]))
+                attacker->battleHitRate += SKILL_EFF0(SID_AirRaidHit);
+            break;
+#endif
+
+#if (defined(SID_AirRaidResistance) && (COMMON_SKILL_VALID(SID_AirRaidResistance)))
+        case SID_AirRaidResistance:
+            if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) && IsMagicAttack(attacker))
+                attacker->battleDefense += SKILL_EFF0(SID_AirRaidResistance);
+            break;
+#endif
+
+#if (defined(SID_AirRaidSpeed) && (COMMON_SKILL_VALID(SID_AirRaidSpeed)))
+        case SID_AirRaidSpeed:
+            if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]))
+                attacker->battleSpeed += SKILL_EFF0(SID_AirRaidSpeed);
+            break;
+#endif
         }
     }
 
@@ -1329,6 +1456,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 if (SkillTester(unit, SID_Peacebringer) )
                     attacker->battleAttack -= SKILL_EFF0(SID_Peacebringer);
 #endif
+
+#if (defined(SID_MaleficAura) && (COMMON_SKILL_VALID(SID_MaleficAura)))
+                if (SkillTester(unit, SID_MaleficAura) )
+                {
+                    if (IsMagicAttack(defender))
+                        attacker->battleDefense -= SKILL_EFF0(SID_MaleficAura);
+                }
+#endif
             }
 
 #if (defined(SID_Anathema) && (COMMON_SKILL_VALID(SID_Anathema)))
@@ -1441,9 +1576,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
         }
 #endif   
     }
-    
-#ifdef CONFIG_BATTLE_SURROUND
-    if (attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
+
+    if (gpKernelDesigerConfig->battle_surrend_en && attacker == &gBattleTarget && (gBattleStats.config & BATTLE_CONFIG_REAL))
     {
         /* Flyer in outdoor environments are not affected by this effect (todo) */
         if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FLYER) || (0))
@@ -1468,7 +1602,6 @@ void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * d
                 attacker->battleDefense -= 5;
         }
     }
-#endif /* CONFIG_BATTLE_SURROUND */
 }
 
 void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)

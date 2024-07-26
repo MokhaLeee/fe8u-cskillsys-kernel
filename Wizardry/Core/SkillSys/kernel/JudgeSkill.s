@@ -9,7 +9,7 @@ _SkillTester:
     .arm
     .section .rodata
 
-    .global _ARM_SkillTester_CopyStart
+.global _ARM_SkillTester_CopyStart
 _ARM_SkillTester_CopyStart:
     push {r4, r5, lr}
 

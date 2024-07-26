@@ -21,4 +21,7 @@ void BattleGenerate(struct Unit * actor, struct Unit * target)
         BattleUnwindScripted();
     else
         BattleUnwind();
+
+    /* Finally fix on UI */
+    ModifyBattleStatusForUI();
 }

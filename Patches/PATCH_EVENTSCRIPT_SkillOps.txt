@@ -11,8 +11,8 @@ EA=nop.event
 INFO=dynamicly give unit skills
 
 EVENTSCRIPT:1=4146YY00XX000000	(CSKILL_K) add skill[YY:skill] for unit [XX:UNIT:character]
-EVENTSCRIPT:2=4246ZZ00XX00YY00	(CSKILL_K) add skill[XX:skill] forunit on map [XX:x][YY:y]
+EVENTSCRIPT:2=4246ZZ00XX00YY00	(CSKILL_K) add skill[XX:skill] for unit on map [XX:x][YY:y]
 EVENTSCRIPT:3=4346ZZ00XX000000	(CSKILL_K) add skill[XX:skill] for unit in slot-C
 EVENTSCRIPT:4=4446YY00XX000000	(CSKILL_K) remove skill[YY:skill] for unit [XX:UNIT:character]
-EVENTSCRIPT:5=4546ZZ00XX00YY00	(CSKILL_K) remove skill[XX:skill] forunit on map [XX:x][YY:y]
+EVENTSCRIPT:5=4546ZZ00XX00YY00	(CSKILL_K) remove skill[XX:skill] for unit on map [XX:x][YY:y]
 EVENTSCRIPT:6=4646ZZ00XX000000	(CSKILL_K) remove skill[XX:skill] for unit in slot-C

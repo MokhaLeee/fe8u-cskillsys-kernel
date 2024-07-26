@@ -3,11 +3,36 @@
 #include "common-chax.h"
 
 /**
+ * designer-config.c
+ */
+struct KernelDesigerConfig {
+    u8 equip_skill_en;
+    u8 max_equipable_skill;
+    u8 remove_move_path;
+    u8 use_chinese_character;
+    u8 kernel_tutorial_level;
+    u8 combo_attack_en;
+    u8 battle_surrend_en;
+    u8 hit_decrease_on_range;
+    u8 debug_autoload_skills;
+
+    u8 guaranteed_lvup;
+    u8 lvup_mode_tutorial;
+    u8 lvup_mode_normal;
+    u8 lvup_mode_hard;
+};
+
+extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;
+
+/**
  * map.c
  */
 bool IsPositionValid(s8 x, s8 y);
 struct Unit * GetUnitAtPosition(s8 x, s8 y);
 
+/**
+ * mapanim.c
+ */
 void MapAnim_CommonInit(void);
 void MapAnim_CommonEnd(void);
 

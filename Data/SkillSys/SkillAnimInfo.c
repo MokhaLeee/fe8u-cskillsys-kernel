@@ -307,4 +307,84 @@ const struct SkillAnimInfo gSkillAnimInfos[MAX_SKILL_NUM + 1] = {
         .sfx = 0x3D1,
     },
 #endif
+
+#if (defined(SID_Multiscale) && COMMON_SKILL_VALID(SID_Multiscale))
+    [SID_Multiscale] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_TowerShieldPlus) && COMMON_SKILL_VALID(SID_TowerShieldPlus))
+    [SID_TowerShieldPlus] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_Petrify) && COMMON_SKILL_VALID(SID_Petrify))
+    [SID_Petrify] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_Enrage) && COMMON_SKILL_VALID(SID_Enrage))
+    [SID_Enrage] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_Pickup) && COMMON_SKILL_VALID(SID_Pickup))
+    [SID_Pickup] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_DevilsPact) && COMMON_SKILL_VALID(SID_DevilsPact))
+    [SID_DevilsPact] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_DevilsWhim) && COMMON_SKILL_VALID(SID_DevilsWhim))
+    [SID_DevilsWhim] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_DevilsLuck) && COMMON_SKILL_VALID(SID_DevilsLuck))
+    [SID_DevilsLuck] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_Expertise) && COMMON_SKILL_VALID(SID_Expertise))
+    [SID_Expertise] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
+#if (defined(SID_CounterMagic) && COMMON_SKILL_VALID(SID_CounterMagic))
+    [SID_CounterMagic] = {
+        .aid = EFX_SKILL_AETHER,
+        .priority = EFX_PRIORITY_HIGH,
+        .sfx = 0x3D1,
+    },
+#endif
 };

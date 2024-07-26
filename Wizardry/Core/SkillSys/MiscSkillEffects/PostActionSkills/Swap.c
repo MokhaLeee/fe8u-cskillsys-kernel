@@ -64,6 +64,10 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionSwap[] = {
     BNE(99, EVT_SLOT_C, EVT_SLOT_7)
 
 LABEL(0)
+#if defined(SID_PosSwap) && (COMMON_SKILL_VALID(SID_PosSwap))
+    SVAL(EVT_SLOT_B, SID_PosSwap)
+    CALL(EventScr_MuSkillAnim)
+#endif
     ASMC(PreparePositionSwap)
     ASMC(set_actor_unit)
     CALL(EventScr_UidWarpOUT)

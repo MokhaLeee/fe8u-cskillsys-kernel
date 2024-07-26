@@ -8,6 +8,23 @@
 #include "weapon-range.h"
 #include "constants/skills.h"
 
+STATIC_DECLAR void PostActionThunder_CameraOnActor(ProcPtr proc)
+{
+    EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
+}
+
+STATIC_DECLAR void PostActionThunder_CameraOnTarget(ProcPtr proc)
+{
+    EnsureCameraOntoPosition(proc, gBattleTargetPositionBackup.x, gBattleTargetPositionBackup.y);
+}
+
+STATIC_DECLAR void PostActionThunder_ResetActor(ProcPtr proc)
+{
+    struct MuProc * mu = GetUnitMu(gActiveUnit);
+    FreezeSpriteAnim(mu->sprite_anim);
+    SetMuDefaultFacing(mu);
+}
+
 STATIC_DECLAR void CallEventThunderfx(ProcPtr proc)
 {
     CallMapAnim_ThunderStorm(proc, gBattleTargetPositionBackup.x, gBattleTargetPositionBackup.y);
@@ -49,15 +66,32 @@ STATIC_DECLAR void SetThunderstormAoeDamage(ProcPtr proc)
 }
 
 STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
+    STAL(1)
+    ASMC(PostActionThunder_CameraOnActor)
+    STAL(1)
+#if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
+    SVAL(EVT_SLOT_B, SID_Thunderstorm)
+    CALL(EventScr_MuSkillAnim)
+#endif
+    STAL(1)
+    ASMC(PostActionThunder_CameraOnTarget)
+    STAL(10)
     STARTFADE
-    EvtColorFadeSetup(0x0, 0x20, 8, 128, 128, 128) // ENOSUPP in EAstdlib
+    EvtColorFadeSetup(0x0, 0x20, 0x10, 128, 128, 128) // ENOSUPP in EAstdlib
     STAL(30)
     SOUN(0x11A)
     ASMC(CallEventThunderfx)
     STAL(1)
     ASMC(SetThunderstormAoeDamage)
     STAL(60)
-    EvtColorFadeSetup(0x0, 0x20, 4, 256, 256, 256) // ENOSUPP in EAstdlib
+    EvtColorFadeSetup(0x0, 0x20, 0x20, 256, 256, 256) // ENOSUPP in EAstdlib
+    STAL(1)
+    ASMC(PostActionThunder_ResetActor)
+    STAL(1)
+    ASMC(PostActionThunder_CameraOnActor)
+    STAL(1)
+    ASMC(MapAnim_CommonEnd)
+    STAL(10)
     NoFade
     ENDA
 };

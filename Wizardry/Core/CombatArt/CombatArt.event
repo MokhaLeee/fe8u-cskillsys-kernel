@@ -10,6 +10,7 @@
 #include "Source/LynJump.event"
 
 #include "BKSELfx/BKSELfx.event"
+#include "HelpBoxFix/HelpBoxFix.event"
 
 #include "CombatArtMenu/ActionMenu.lyn.event"
 #include "CombatArtMenu/ItemSelectMenu.lyn.event"

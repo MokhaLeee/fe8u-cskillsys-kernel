@@ -93,4 +93,15 @@ const u8 gCombatArtSkillTable[MAX_SKILL_NUM + 1] = {
     [SID_COMBAT_HuntersVolley] = CID_HuntersVolley,
 #endif
 
+#if defined(SID_COMBAT_Galeforce) && (COMMON_SKILL_VALID(SID_COMBAT_Galeforce))
+    [SID_COMBAT_Galeforce] = CID_Galeforce,
+#endif
+
+#if defined(SID_COMBAT_Gamble) && (COMMON_SKILL_VALID(SID_COMBAT_Gamble))
+    [SID_COMBAT_Gamble] = CID_Gamble,
+#endif
+
+#if defined(SID_COMBAT_Detonate) && (COMMON_SKILL_VALID(SID_COMBAT_Detonate))
+    [SID_COMBAT_Detonate] = CID_Detonate,
+#endif
 };

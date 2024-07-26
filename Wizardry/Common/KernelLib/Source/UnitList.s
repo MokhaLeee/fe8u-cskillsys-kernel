@@ -14,7 +14,7 @@ _WriteUnitList:
     .arm
     .section .rodata
 
-    .global _ARM_UnitList_CopyStart
+.global _ARM_UnitList_CopyStart
 _ARM_UnitList_CopyStart:
 
 @ r0 = unit
@@ -107,5 +107,5 @@ _ARM_UnitList_CopyStart:
 
     bx lr
 
-    .global _ARM_UnitList_CopyEnd
+.global _ARM_UnitList_CopyEnd
 _ARM_UnitList_CopyEnd:

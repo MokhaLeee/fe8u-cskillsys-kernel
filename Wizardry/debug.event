@@ -1,6 +1,0 @@
-MESSAGE ___DEBUG___
-
-#ifdef CONFIG_DEBUG_CHAPTER
-    MESSAGE DEBUG chapter installed
-    #include "Debug/debug-chapter.event"
-#endif

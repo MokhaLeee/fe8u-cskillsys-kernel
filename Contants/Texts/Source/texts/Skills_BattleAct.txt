@@ -145,3 +145,35 @@ doubled for this unit.[X]
 Counter:[NL]
 Reflect physical damage[NL]
 dealt at melee range.[X]
+
+## MSG_SKILL_DevilsPact_NAME
+D-Pact[X]
+
+## MSG_SKILL_DevilsPact
+Devil's Pact:[NL]
+Inflict the Devil effect[NL]
+upon the enemy unit.[X]
+
+## MSG_SKILL_DevilsWhim_NAME
+D-Whim[X]
+
+## MSG_SKILL_DevilsWhim
+Devil's Whim:[NL]
+Inflict the Devil effect[NL]
+upon both units.[X]
+
+## MSG_SKILL_DevilsLuck_NAME
+D-Luck[X]
+
+## MSG_SKILL_DevilsLuck
+Devil's Luck:[NL]
+Give the unit's devil effect[NL]
+to the enemy in battle.[X]
+
+## MSG_SKILL_CounterMagic_NAME
+C-Magic:[X]
+
+## MSG_SKILL_CounterMagic
+Counter Magic:[NL]
+Reflect magical damage[NL]
+dealt at range.[X]

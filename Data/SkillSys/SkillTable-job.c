@@ -5,10 +5,12 @@
 const u16 gConstSkillTable_Job[0x100][2] = {
     [CLASS_EIRIKA_LORD] = {
         SID_Pass,
+        SID_COMBAT_Galeforce,
     },
 
     [CLASS_PALADIN] = {
         SID_HoneCavalry,
+        SID_COMBAT_Gamble,
     },
 
     [CLASS_PALADIN_F] = {
@@ -27,6 +29,10 @@ const u16 gConstSkillTable_Job[0x100][2] = {
     [CLASS_GENERAL_F] = {
         SID_GreatShield,
         SID_HoneArmor,
+    },
+
+    [CLASS_MYRMIDON_F] = {
+        SID_Astra
     },
 
     [CLASS_SWORDMASTER] = {

@@ -1,13 +1,6 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
-enum mapanimfx_idx {
-    MAPANIMFX_CHR_L = 0x19C,
-    MAPANIMFX_CHR_R = 0x19E,
-
-    MAPANIMFX_PAL = 4,
-};
-
 STATIC_DECLAR void MapAnimSkillfx_Initfx(struct ProcMapAnimSkillfx * proc)
 {
     proc->timer = 0;

@@ -3,6 +3,7 @@
 #include "common-chax.h"
 #include "efx-anim.h"
 #include "list-verify.h"
+#include "constants/event-cmds.h"
 
 #ifndef MAX_SKILL_NUM
 #define MAX_SKILL_NUM 0x3FF
@@ -23,7 +24,7 @@ enum SkillInfoListss
 #define SKILL_INDEX_REAL(sid) ((sid) & 0xFF)
 #define SKILL_INDEX_LIST(sid) (((sid) >> 8) & 0xFF)
 
-#define GENERIC_SKILL_EFFID(sid) (sid > 0x000 && sid < 0x0FF)
+#define EQUIPE_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
 #define COMMON_SKILL_VALID(sid) (sid > 0x000 && sid < 0x400)
 
 #define SKILL_ICON(sid) ((2 << 8) + (sid))
@@ -74,6 +75,7 @@ struct SkillList {
 extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
 #define GetUnitSkillList _GetUnitSkillList
 
+void DisableUnitSkilLList(struct Unit * unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */
@@ -133,6 +135,13 @@ const struct EfxAnimConf * GetEfxSkillConf(const u8 aid);
 /**
  * Skill mapanim
  */
+enum mapanimskillfx_idx {
+    MAPANIMFX_CHR_L = 0x19C,
+    MAPANIMFX_CHR_R = 0x19E,
+
+    MAPANIMFX_PAL = 4,
+};
+
 struct ProcMapAnimSkillfx {
     PROC_HEADER;
 
@@ -142,7 +151,16 @@ struct ProcMapAnimSkillfx {
     int x, y;
 };
 
+extern u8 const * const gpImg_MapAnimSKILL;
 extern const struct ProcCmd ProcScr_MapAnimSkillfx[];
+
+void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent);
+bool SkillMapAnimMiniExists(void);
+
+void NewMuSkillAnimOnActiveUnit(u16 sid, void (* callback1)(ProcPtr proc), void (* callback2)(ProcPtr proc));
+bool MuSkillAnimExists(void);
+
+extern const EventScr EventScr_MuSkillAnim[];
 
 /**
  * Event scripts
@@ -164,6 +182,31 @@ enum EventSkillSubOps {
 #define Evt_RemoveSkill(sid, pid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL, sid), _EvtParams2(pid, 0),
 #define Evt_RemoveSkillAt(sid, x, y) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_AT, sid), _EvtParams2(x, y),
 #define Evt_RemoveSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_SC, sid), _EvtParams2(0, 0),
+
+/**
+ * Skill menu
+ */
+#define UNIT_MENU_SKILL_AMOUNT 4
+extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
+extern struct MenuItemDef const * const gpSkillMenuInfos;
+#define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
+
+u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_Usability(const struct MenuItemDef * self, int number);
+int MenuSkills_OnDraw(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_Idle(struct MenuProc * menu, struct MenuItemProc * item);
+int MenuSkills_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
+
+#define MENU_SKILL_INDEX(menu_item) ((menu_item)->helpMsgId) /* We use rtext msg as index */
+#define IS_SKILL_MENU_ITEM(menu_item) ((menu_item)->isAvailable == MenuSkills_Usability)
+
+/**
+ * Skill action
+ */
+typedef bool (* SkillActionFunc_t)(ProcPtr);
+extern SkillActionFunc_t const * const gpSkillActionFuncTable;
 
 /**
  * Miscs
@@ -195,11 +238,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid);
 /**
  * External MiscSkillEffects
  */
-u8 DanceCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 StealCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SupplyUsabilityRework(const struct MenuItemDef * def, int number);
-u8 PickCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SummonCommandUsabilityRework(const struct MenuItemDef * def, int number);
+bool GetTeleportationRandomPosition(struct Unit * unit, struct Vec2 * out);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {
@@ -221,3 +260,24 @@ void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit *
 int SpdGetterLegendSkills(int status, struct Unit * unit);
 int DefGetterLegendSkills(int status, struct Unit * unit);
 int ResGetterLegendSkills(int status, struct Unit * unit);
+
+/* Menu skills */
+u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);
+u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Teleportation_Usability(const struct MenuItemDef * def, int number);
+u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 LightRune_Usability(const struct MenuItemDef * def, int number);
+u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Mine_Usability(const struct MenuItemDef * def, int number);
+int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
+u8 Mine_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Rally_Usability(const struct MenuItemDef * def, int number);
+u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+
+/* Skill actions */
+bool Action_HealingFocus(ProcPtr proc);
+bool Action_Teleportation(ProcPtr parent);
+bool Action_LightRune(ProcPtr parent);
+bool Action_Mine(ProcPtr parent);
+bool Action_Rally(ProcPtr parent);

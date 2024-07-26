@@ -38,14 +38,10 @@ gpMsa_Loader:   WORD 0
 gpMsu_Saver:    WORD 0
 gpMsu_Loader:   WORD 0
 
-gpConfigUseComboAtk:
-#ifdef CONFIG_USE_COMBO_ATTACK
-    WORD 1
-#else
-    WORD 0
-#endif
+gpKernelDesigerConfig: POIN gKernelDesigerConfig
 
-gConfigKTutorialLevel:  WORD CONFIG_KTUT_LEVEL
+gpSkillMenuInfos: POIN gSkillMenuInfos
+
 gpKTutorialMsg:         POIN gKTutorialMsg
 
 gpExternalGameInitHook: WORD 0
@@ -66,12 +62,7 @@ gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks
 gpGameInitHookTable: POIN gGameInitHookTable
 
-gConfigRemoveMovePath:
-#ifdef CONFIG_REMOVE_MOVE_PATH
-    WORD 1
-#else
-    WORD 0
-#endif
+gpSkillActionFuncTable: POIN gSkillActionFuncTable
 
 gpPostActionFuncs: POIN gPostActionFuncs
 gpNewSaveHooks: POIN gNewSaveHooks
@@ -113,12 +104,7 @@ gpPreAi2DecideHook: POIN gPreAi2DecideHook
 
 gpUnitActionTable: POIN gUnitActionTable
 
-gConfigUseGlyph:
-#ifdef CONFIG_USE_UTF8_GLYPH
-    WORD 1
-#else
-    WORD 0
-#endif
+WORD 0
 
 gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel

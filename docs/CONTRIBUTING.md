@@ -1,5 +1,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
+[Discussion on PR review](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/issues/249)
+
 It is looked forward that this c-skillsys could be a community project and the PR's are welcome. To maintain the code quality, please understand that each PR will be subject to a strict review before merged.
 
 At present, I am not proficient in specifying rules, so I will only mention two requirements and one suggestion for the time being, which may be further refined according to specific needs.
@@ -9,7 +11,7 @@ At present, I am not proficient in specifying rules, so I will only mention two 
 1. Each PR needs to be compiled and approved in the following three cases:
     - On default
     - Uncoment line-5 in [config-debug.h](../include/Configs/config-debug.h): `#define CONFIG_USE_DEBUG`
-    - For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)
+    - ~~For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)~~ (Since skill index has been expanded to 1024, so it seems not necessary for this limitation for the time being LOL)
 
 2. When hacking on function originated from vanilla, make sure that the function definition and the basic functionality are not changed to avoid annoying other developers who may call the function.
 

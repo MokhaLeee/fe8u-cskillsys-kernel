@@ -38,7 +38,7 @@ gEmsSavChunks:
     EmsChunk($004C, MSA_SavePlaySt,     MSA_LoadPlaySt,      EMS_CHUNK_CHAPTERSTATE)
     EmsChunk($00B0, $0A31E4+1,          $0A326C+1,           EMS_CHUNK_CONVOYITEMS)      /* Supply */
     EmsChunk($0019, $0A3150+1,          $0A3198+1,           EMS_CHUNK_EIDS_PERMANENT)   /* Permanent flags */
-    EmsChunk($0460, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
+    EmsChunk($0330, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
     EmsChunk($00C0, $0a4248+1,          $0a4288+1,           EMS_CHUNK_WINDATA)          /* Chapter states */
     EmsChunk($0004, MSA_SaveBonusClaim, MSA_LoadBonusClaim,  EMS_CHUNK_BONUSCLAIMDATA)   /* Bonus claim */
     EmsChunk($0021, MSA_SaveWorldMap,   MSA_LoadWorldMap,    EMS_CHUNK_WMDATA)           /* World map */
@@ -61,7 +61,7 @@ gEmsSusChunks:
     EmsChunk($0019, $0A3150+1,          $0A3198+1,           EMS_CHUNK_EIDS_PERMANENT)   /* Permanent flags */
     EmsChunk($0005, $0A3130+1,          $0A3170+1)                                       /* Chapter flags */
     EmsChunk($00B0, $0A31E4+1,          $0A326C+1,           EMS_CHUNK_CONVOYITEMS)      /* Supply */
-    EmsChunk($0460, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
+    EmsChunk($0330, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
     EmsChunk($00C0, $0a4248+1,          $0a4288+1,           EMS_CHUNK_WINDATA)          /* Chapter states */
     EmsChunk($0200, $0A6370+1,          $0A638C+1)                                       /* Traps */
     EmsChunk($0010, MSU_SaveMenuMask,   MSU_LoadMenuMask)                                /* BM menu mask */
@@ -82,6 +82,7 @@ gEmsSusChunks:
     EmsChunk($0660, SaveUnitLearnedSkillLists, LoadUnitLearnedSkillLists)
     EmsChunk($0020, SaveCombatArtStatus, LoadCombatArtStatus)
     EmsChunk($0008, SaveRandC, LoadRandC)
+    EmsChunk($0008, MSU_SaveSelectionPos, MSU_LoadSelectionPos)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
     EmsChunk((51 + 50 + 8) * 16, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
 

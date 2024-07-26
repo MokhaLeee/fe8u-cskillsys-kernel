@@ -1,0 +1,8 @@
+## MSG_ITEM_MAGBOOSTER_NAME
+Spirit Dust[X]
+
+## MSG_ITEM_MAGBOOSTER_DESC
+Incease Mag +2[X]
+
+## MSG_ITEM_MAGBOOSTER_USEDESC
+Raises magic.[X]

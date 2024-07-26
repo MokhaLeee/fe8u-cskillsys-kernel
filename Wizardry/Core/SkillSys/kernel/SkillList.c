@@ -122,6 +122,12 @@ struct SkillList * GetUnitSkillList(struct Unit * unit)
 }
 #endif
 
+void DisableUnitSkilLList(struct Unit * unit)
+{
+    struct SkillList * list = GetUnitSkillList(unit);
+    list->amt = 0;
+}
+
 void ResetSkillLists(void)
 {
     memset(&sSkillList, 0, sizeof(sSkillList));

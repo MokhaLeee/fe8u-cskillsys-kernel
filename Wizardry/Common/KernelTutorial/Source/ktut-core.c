@@ -52,17 +52,17 @@ void EMS_LoadKTutorialFlags(u8 * src, const u32 size)
 /* API */
 bool CanExecKTutorial(void)
 {
-    if (gConfigKTutorialLevel == KTUT_LEVEL_NEVER)
+    if (gpKernelDesigerConfig->kernel_tutorial_level == KTUT_LEVEL_NEVER)
         return false;
 
-    if (gConfigKTutorialLevel == KTUT_LEVEL_MIDDLE)
+    if (gpKernelDesigerConfig->kernel_tutorial_level == KTUT_LEVEL_MIDDLE)
     {
         /* Only in tutorial mode */
         if (!TUTORIAL_MODE())
             return false;
     }
 
-    if (gConfigKTutorialLevel == KTUT_LEVEL_HIGH)
+    if (gpKernelDesigerConfig->kernel_tutorial_level == KTUT_LEVEL_HIGH)
         return true;
 
     return true;

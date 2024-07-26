@@ -1,0 +1,24 @@
+ALIGN 4
+gLoadUnitHooks:
+    POIN UnitLoadStatsFromChracterVanilla
+    POIN UnitLoadStatsFromCharacterMagic
+    POIN UnitHiddenLevelPreLoad /* this should be ahead of auto-load skill */
+    POIN UnitAutoLoadSkills
+    POIN StatDeuff_OnLoadUnit
+    WORD 0 0 0 0
+
+gExternalBattleToUnitHook: // int (*)(struct BattleUnit * bu, struct Unit * unit);
+    WORD 0 0 0 0
+
+gExternalUnitToBattleHook: // int (*)(struct Unit * unit, struct BattleUnit * bu);
+    POIN StatDebuff_OnUnitToBattle
+    POIN UnitToBattle_ExecNihilSkills
+    WORD 0 0 0 0
+
+gCopyUnitHooks: // void (*)(struct Unit * from, struct Unit * to)
+    POIN StatDeuff_OnCopyUnit
+    WORD 0 0 0 0
+
+gClearUnitHooks: // void (*)(struct Unit * unit)
+    POIN StatDeuff_OnClearUnit
+    WORD 0 0 0 0
