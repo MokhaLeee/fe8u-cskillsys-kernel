@@ -85,7 +85,6 @@ static void callback_exec(ProcPtr proc)
         if (!UNIT_ALIVE(unit) && unit != gActiveUnit)
             continue;
 
-        SetBitUES(unit, UES_BIT_TSZUKU_SKILL_USED);
         unit->state &= ~(US_UNSELECTABLE);
     }
 }
