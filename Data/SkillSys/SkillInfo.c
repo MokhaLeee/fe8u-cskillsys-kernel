@@ -3373,4 +3373,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_SteadyBrawler,
     },
 #endif
+
+#if (defined(SID_KeepUp) && COMMON_SKILL_VALID(SID_KeepUp))
+    [SID_KeepUp] = {
+        .desc = MSG_SKILL_KeepUp,
+        .icon = GFX_SkillIcon_KeepUp,
+    },
+#endif
 };
