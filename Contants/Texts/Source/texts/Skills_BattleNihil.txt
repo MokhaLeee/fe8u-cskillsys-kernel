@@ -1,0 +1,4 @@
+## MSG_SKILL_Nihil
+Nihil:[NL]
+Negates enemy's[NL]
+combat-related skills.[X]

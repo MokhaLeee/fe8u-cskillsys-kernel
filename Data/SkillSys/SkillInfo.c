@@ -203,6 +203,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Nihil) && COMMON_SKILL_VALID(SID_Nihil))
+    [SID_Nihil] = {
+        .desc = MSG_SKILL_Nihil,
+        .icon = GFX_SkillIcon_Nihil,
+    },
+#endif
+
 #if (defined(SID_CritSword) && COMMON_SKILL_VALID(SID_CritSword))
     [SID_CritSword] = {
         .desc = MSG_SKILL_CritSword,
@@ -282,6 +289,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RuinedBlade) && COMMON_SKILL_VALID(SID_RuinedBlade))
     [SID_RuinedBlade] = {
+        .name = MSG_SKILL_RuinedBlade_NAME,
         .desc = MSG_SKILL_RuinedBlade,
         .icon = GFX_SkillIcon_RuinedBlade,
     },
@@ -703,6 +711,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_COMBAT_Galeforce) && COMMON_SKILL_VALID(SID_COMBAT_Galeforce))
+    [SID_COMBAT_Galeforce] = {
+        .desc = MSG_SKILL_COMBAT_Galeforce,
+        .icon = GFX_SkillIcon_Galeforce,
+    },
+#endif
+
 #if (defined(SID_SavageBlow) && COMMON_SKILL_VALID(SID_SavageBlow))
     [SID_SavageBlow] = {
         .desc = MSG_SKILL_SavageBlow,
@@ -918,6 +933,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_Steal] = {
         .desc = MSG_SKILL_Steal,
         .icon = GFX_SkillIcon_Steal,
+    },
+#endif
+
+#if (defined(SID_HealingFocus) && COMMON_SKILL_VALID(SID_HealingFocus))
+    [SID_HealingFocus] = {
+        .desc = MSG_SKILL_HealingFocus,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -1214,6 +1236,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_MaleficAura) && (SID_MaleficAura < MAX_SKILL_NUM)) 
+    [SID_MaleficAura] = {
+        .desc = MSG_SKILL_MaleficAura,
+        .icon = GFX_SkillIcon_MaleficAura,
+      },
+#endif
+
 #if (defined(SID_Solidarity) && COMMON_SKILL_VALID(SID_Solidarity))
     [SID_Solidarity] = {
         .desc = MSG_SKILL_Solidarity,
@@ -1298,6 +1327,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_Hawkeye] = {
         .desc = MSG_SKILL_Hawkeye,
         .icon = GFX_SkillIcon_Hawkeye,
+    },
+#endif
+
+#if (defined(SID_MagicEye) && COMMON_SKILL_VALID(SID_MagicEye))
+    [SID_MagicEye] = {
+        .desc = MSG_SKILL_MagicEye,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -1481,6 +1517,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_ChargePlus) && COMMON_SKILL_VALID(SID_ChargePlus))
+    [SID_ChargePlus] = {
+        .desc = MSG_SKILL_ChargePlus,
+        .icon = GFX_SkillIcon_ChargePlus,
+    },
+#endif
+
 #if (defined(SID_Wrath) && COMMON_SKILL_VALID(SID_Wrath))
     [SID_Wrath] = {
         .desc = MSG_SKILL_Wrath,
@@ -1617,6 +1660,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_StrongCon) && COMMON_SKILL_VALID(SID_StrongCon))
+    [SID_StrongCon] = {
+        .desc = MSG_SKILL_StrongCon,
+        .icon = GFX_SkillIcon_StrongCon,
+    },
+#endif
+
 #if (defined(SID_Impale) && COMMON_SKILL_VALID(SID_Impale))
     [SID_Impale] = {
         .desc = MSG_SKILL_Impale,
@@ -1702,9 +1752,74 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_DefenseBoost) && COMMON_SKILL_VALID(SID_DefenseBoost))
+    [SID_DefenseBoost] = {
+        .name = MSG_SKILL_DefenseBoost_NAME,
+        .desc = MSG_SKILL_DefenseBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LuckBoost) && COMMON_SKILL_VALID(SID_LuckBoost))
+    [SID_LuckBoost] = {
+        .name = MSG_SKILL_LuckBoost_NAME,
+        .desc = MSG_SKILL_LuckBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MagicBoost) && COMMON_SKILL_VALID(SID_MagicBoost))
+    [SID_MagicBoost] = {
+        .name = MSG_SKILL_MagicBoost_NAME,
+        .desc = MSG_SKILL_MagicBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MoveBoost) && COMMON_SKILL_VALID(SID_MoveBoost))
+    [SID_MoveBoost] = {
+        .name = MSG_SKILL_MoveBoost_NAME,
+        .desc = MSG_SKILL_MoveBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_ResistanceBoost) && COMMON_SKILL_VALID(SID_ResistanceBoost))
+    [SID_ResistanceBoost] = {
+        .name = MSG_SKILL_ResistanceBoost_NAME,
+        .desc = MSG_SKILL_ResistanceBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SkillBoost) && COMMON_SKILL_VALID(SID_SkillBoost))
+    [SID_SkillBoost] = {
+        .name = MSG_SKILL_SkillBoost_NAME,
+        .desc = MSG_SKILL_SkillBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_SpeedBoost) && COMMON_SKILL_VALID(SID_SpeedBoost))
     [SID_SpeedBoost] = {
+        .name = MSG_SKILL_SpeedBoost_NAME,
         .desc = MSG_SKILL_SpeedBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_StrengthBoost) && COMMON_SKILL_VALID(SID_StrengthBoost))
+    [SID_StrengthBoost] = {
+        .name = MSG_SKILL_StrengthBoost_NAME,
+        .desc = MSG_SKILL_StrengthBoost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SpectrumBoost) && COMMON_SKILL_VALID(SID_SpectrumBoost))
+    [SID_SpectrumBoost] = {
+        .name = MSG_SKILL_SpectrumBoost_NAME,
+        .desc = MSG_SKILL_SpectrumBoost,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
@@ -1739,6 +1854,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RuinedBladePlus) && COMMON_SKILL_VALID(SID_RuinedBladePlus))
     [SID_RuinedBladePlus] = {
+        .name = MSG_SKILL_RuinedBladePlus_NAME,
         .desc = MSG_SKILL_RuinedBladePlus,
         .icon = GFX_SkillIcon_RuinedBlade,
     },
@@ -2034,6 +2150,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_Supply] = {
         .desc = MSG_SKILL_Supply,
         .icon = GFX_SkillIcon_Supply,
+    },
+#endif
+
+#if (defined(SID_LightRune) && COMMON_SKILL_VALID(SID_LightRune))
+    [SID_LightRune] = {
+        .desc = MSG_SKILL_LightRune,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Mine) && COMMON_SKILL_VALID(SID_Mine))
+    [SID_Mine] = {
+        .desc = MSG_SKILL_Mine,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -2411,6 +2541,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_FaerghusAncestry) && COMMON_SKILL_VALID(SID_FaerghusAncestry))
+    [SID_FaerghusAncestry] = {
+        .name = MSG_SKILL_FaerghusAncestry_NAME,
+        .desc = MSG_SKILL_FaerghusAncestry,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_CrusaderWard) && COMMON_SKILL_VALID(SID_CrusaderWard))
     [SID_CrusaderWard] = {
         .name = MSG_SKILL_CrusaderWard_NAME,
@@ -2550,6 +2688,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_DetailedReport) && COMMON_SKILL_VALID(SID_DetailedReport))
+    [SID_DetailedReport] = {
+        .name = MSG_SKILL_DetailedReport_NAME,
+        .desc = MSG_SKILL_DetailedReport,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
     [SID_VengefulFighter] = {
          .name = MSG_SKILL_VengefulFighter_NAME,
@@ -2607,6 +2753,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .name = MSG_SKILL_AdvantageChaser_NAME,
          .desc = MSG_SKILL_AdvantageChaser,
          .icon = GFX_SkillIcon_AdvantageChaser,
+    },
+#endif
+
+#if (defined(SID_Nonconforming) && COMMON_SKILL_VALID(SID_Nonconforming))
+    [SID_Nonconforming] = {
+        .name = MSG_SKILL_Nonconforming_NAME,
+        .desc = MSG_SKILL_Nonconforming,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -2685,6 +2839,543 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_BlackMagic] = {
         .desc = MSG_SKILL_BlackMagic,
         .icon = GFX_SkillIcon_BlackMagic,
+
+#if (defined(SID_Relief) && COMMON_SKILL_VALID(SID_Relief))
+    [SID_Relief] = {
+        .desc = MSG_SKILL_Relief,
+        .icon = GFX_SkillIcon_Relief,
+    },
+#endif
+
+#if (defined(SID_Camaraderie) && COMMON_SKILL_VALID(SID_Camaraderie))
+    [SID_Camaraderie] = {
+        .desc = MSG_SKILL_Camaraderie,
+        .icon = GFX_SkillIcon_Camaraderie,
+    },
+#endif
+
+#if (defined(SID_Amaterasu) && (SID_Amaterasu < MAX_SKILL_NUM)) 
+    [SID_Amaterasu] = {
+        .desc = MSG_SKILL_Amaterasu,
+        .icon = GFX_SkillIcon_Amaterasu,
+      },
+#endif
+
+#if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
+    [SID_Counter] = {
+        .desc = MSG_SKILL_Counter,
+        .icon = GFX_SkillIcon_Counter,
+    },
+#endif
+
+#if (defined(SID_PowerStaff) && COMMON_SKILL_VALID(SID_PowerStaff))
+    [SID_PowerStaff] = {
+        .desc = MSG_SKILL_PowerStaff,
+        .icon = GFX_SkillIcon_PowerStaff,
+    },
+#endif
+
+#if (defined(SID_Multiscale) && COMMON_SKILL_VALID(SID_Multiscale))
+    [SID_Multiscale] = {
+        .desc = MSG_SKILL_Multiscale,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_PridefulWarrior) && COMMON_SKILL_VALID(SID_PridefulWarrior))
+    [SID_PridefulWarrior] = {
+         .name = MSG_SKILL_PridefulWarrior_NAME,
+         .desc = MSG_SKILL_PridefulWarrior,
+         .icon = GFX_SkillIcon_PridefulWarrior,
+    },
+#endif
+
+#if (defined(SID_LiveToServe) && COMMON_SKILL_VALID(SID_LiveToServe))
+    [SID_LiveToServe] = {
+        .desc = MSG_SKILL_LiveToServe,
+        .icon = GFX_SkillIcon_LiveToServe,
+    },
+#endif
+
+#if (defined(SID_MageSlayer) && COMMON_SKILL_VALID(SID_MageSlayer))
+    [SID_MageSlayer] = {
+        .desc = MSG_SKILL_MageSlayer,
+        .icon = GFX_SkillIcon_MageSlayer,
+    },
+#endif
+
+#if (defined(SID_FailGale) && COMMON_SKILL_VALID(SID_FailGale))
+    [SID_FailGale] = {
+        .desc = MSG_SKILL_FailGale,
+        .icon = GFX_SkillIcon_FailGale,
+    },
+#endif
+
+#if (defined(SID_Clearance) && COMMON_SKILL_VALID(SID_Clearance))
+    [SID_Clearance] = {
+        .desc = MSG_SKILL_Clearance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TriangleAdept) && COMMON_SKILL_VALID(SID_TriangleAdept))
+    [SID_TriangleAdept] = {
+        .name = MSG_SKILL_TriangleAdept_NAME,
+        .desc = MSG_SKILL_TriangleAdept,
+        .icon = GFX_SkillIcon_TriangleAdept,
+    },
+#endif
+
+#if (defined(SID_TriangleAdeptPlus) && COMMON_SKILL_VALID(SID_TriangleAdeptPlus))
+    [SID_TriangleAdeptPlus] = {
+        .name = MSG_SKILL_TriangleAdeptPlus_NAME,
+        .desc = MSG_SKILL_TriangleAdeptPlus,
+        .icon = GFX_SkillIcon_TriangleAdeptPlus,
+    },
+#endif
+
+#if (defined(SID_TowerShieldPlus) && COMMON_SKILL_VALID(SID_TowerShieldPlus))
+    [SID_TowerShieldPlus] = {
+        .desc = MSG_SKILL_TowerShieldPlus,
+        .icon = GFX_SkillIcon_TowerShieldPlus,
+    },
+#endif
+
+#if (defined(SID_SolarPower) && COMMON_SKILL_VALID(SID_SolarPower))
+    [SID_SolarPower] = {
+        .desc = MSG_SKILL_SolarPower,
+        .icon = GFX_SkillIcon_SolarPower,
+    },
+#endif
+
+#if (defined(SID_COMBAT_Gamble) && COMMON_SKILL_VALID(SID_COMBAT_Gamble))
+    [SID_COMBAT_Gamble] = {
+        .desc = MSG_SKILL_COMBAT_Gamble,
+        .icon = GFX_SkillIcon_Gamble,
+    },
+#endif
+
+#if (defined(SID_PoisonStrike) && COMMON_SKILL_VALID(SID_PoisonStrike))
+    [SID_PoisonStrike] = {
+        .name = MSG_SKILL_PoisonStrike_NAME,
+        .desc = MSG_SKILL_PoisonStrike,
+        .icon = GFX_SkillIcon_PoisonStrike,
+    },
+#endif
+
+#if (defined(SID_GrislyWound) && COMMON_SKILL_VALID(SID_GrislyWound))
+    [SID_GrislyWound] = {
+        .name = MSG_SKILL_GrislyWound_NAME,
+        .desc = MSG_SKILL_GrislyWound,
+        .icon = GFX_SkillIcon_GrislyWound,
+    },
+#endif
+
+#if (defined(SID_Poise) && COMMON_SKILL_VALID(SID_Poise))
+    [SID_Poise] = {
+        .desc = MSG_SKILL_Poise,
+        .icon = GFX_SkillIcon_Poise,
+    },
+#endif
+
+#if (defined(SID_COMBAT_Detonate) && COMMON_SKILL_VALID(SID_COMBAT_Detonate))
+    [SID_COMBAT_Detonate] = {
+        .desc = MSG_SKILL_COMBAT_Detonate,
+        .icon = GFX_SkillIcon_Detonate,
+    },
+#endif
+
+#if (defined(SID_Enrage) && COMMON_SKILL_VALID(SID_Enrage))
+    [SID_Enrage] = {
+        .desc = MSG_SKILL_Enrage,
+        .icon = GFX_SkillIcon_Enrage,
+    },
+#endif
+
+#if (defined(SID_Petrify) && COMMON_SKILL_VALID(SID_Petrify))
+    [SID_Petrify] = {
+        .desc = MSG_SKILL_Petrify,
+        .icon = GFX_SkillIcon_Petrify,
+    },
+#endif
+
+#if (defined(SID_AirRaidAttack) && COMMON_SKILL_VALID(SID_AirRaidAttack))
+    [SID_AirRaidAttack] = {
+        .name = MSG_SKILL_AirRaidAttack_NAME,
+        .desc = MSG_SKILL_AirRaidAttack,
+        .icon = GFX_SkillIcon_AirRaidAttack,
+    },
+#endif
+
+#if (defined(SID_AirRaidAvoid) && COMMON_SKILL_VALID(SID_AirRaidAvoid))
+    [SID_AirRaidAvoid] = {
+        .name = MSG_SKILL_AirRaidAvoid_NAME,
+        .desc = MSG_SKILL_AirRaidAvoid,
+        .icon = GFX_SkillIcon_AirRaidAvoid,
+    },
+#endif
+
+#if (defined(SID_AirRaidCrit) && COMMON_SKILL_VALID(SID_AirRaidCrit))
+    [SID_AirRaidCrit] = {
+        .name = MSG_SKILL_AirRaidCrit_NAME,
+        .desc = MSG_SKILL_AirRaidCrit,
+        .icon = GFX_SkillIcon_AirRaidCrit,
+    },
+#endif
+
+#if (defined(SID_AirRaidDefense) && COMMON_SKILL_VALID(SID_AirRaidDefense))
+    [SID_AirRaidDefense] = {
+        .name = MSG_SKILL_AirRaidDefense_NAME,
+        .desc = MSG_SKILL_AirRaidDefense,
+        .icon = GFX_SkillIcon_AirRaidDefense,
+    },
+#endif
+
+#if (defined(SID_AirRaidHit) && COMMON_SKILL_VALID(SID_AirRaidHit))
+    [SID_AirRaidHit] = {
+        .name = MSG_SKILL_AirRaidHit_NAME,
+        .desc = MSG_SKILL_AirRaidHit,
+        .icon = GFX_SkillIcon_AirRaidHit,
+    },
+#endif
+
+#if (defined(SID_AirRaidResistance) && COMMON_SKILL_VALID(SID_AirRaidResistance))
+    [SID_AirRaidResistance] = {
+        .name = MSG_SKILL_AirRaidResistance_NAME,
+        .desc = MSG_SKILL_AirRaidResistance,
+        .icon = GFX_SkillIcon_AirRaidResistance,
+    },
+#endif
+
+#if (defined(SID_AirRaidSpeed) && COMMON_SKILL_VALID(SID_AirRaidSpeed))
+    [SID_AirRaidSpeed] = {
+        .name = MSG_SKILL_AirRaidSpeed_NAME,
+        .desc = MSG_SKILL_AirRaidSpeed,
+        .icon = GFX_SkillIcon_AirRaidSpeed,
+    },
+#endif
+
+#if (defined(SID_FaireAnima) && COMMON_SKILL_VALID(SID_FaireAnima))
+    [SID_FaireAnima] = {
+        .desc = MSG_SKILL_FaireAnima,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+
+#if (defined(SID_FaireLight) && COMMON_SKILL_VALID(SID_FaireLight))
+    [SID_FaireLight] = {
+        .desc = MSG_SKILL_FaireLight,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+
+#if (defined(SID_FaireDark) && COMMON_SKILL_VALID(SID_FaireDark))
+    [SID_FaireDark] = {
+        .desc = MSG_SKILL_FaireDark,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealDefense] = {
+        .name = MSG_SKILL_SealDefense_NAME,
+        .desc = MSG_SKILL_SealDefense,
+        .icon = GFX_SkillIcon_SealDefense
+    },
+#endif
+
+#if (defined(SID_SealLuck) && COMMON_SKILL_VALID(SID_SealLuck))
+    [SID_SealLuck] = {
+        .name = MSG_SKILL_SealLuck_NAME,
+        .desc = MSG_SKILL_SealLuck,
+        .icon = GFX_SkillIcon_SealLuck
+    },
+#endif
+
+#if (defined(SID_SealMagic) && COMMON_SKILL_VALID(SID_SealMagic))
+    [SID_SealMagic] = {
+        .name = MSG_SKILL_SealMagic_NAME,
+        .desc = MSG_SKILL_SealMagic,
+        .icon = GFX_SkillIcon_SealMagic
+    },
+#endif
+
+#if (defined(SID_SealResistance) && COMMON_SKILL_VALID(SID_SealResistance))
+    [SID_SealResistance] = {
+        .name = MSG_SKILL_SealResistance_NAME,
+        .desc = MSG_SKILL_SealResistance,
+        .icon = GFX_SkillIcon_SealResistance
+    },
+#endif
+
+#if (defined(SID_SealSkill) && COMMON_SKILL_VALID(SID_SealSkill))
+    [SID_SealSkill] = {
+        .name = MSG_SKILL_SealSkill_NAME,
+        .desc = MSG_SKILL_SealSkill,
+        .icon = GFX_SkillIcon_SealSkill
+    },
+#endif
+
+#if (defined(SID_SealSpeed) && COMMON_SKILL_VALID(SID_SealSpeed))
+    [SID_SealSpeed] = {
+        .name = MSG_SKILL_SealSpeed_NAME,
+        .desc = MSG_SKILL_SealSpeed,
+        .icon = GFX_SkillIcon_SealSpeed
+    },
+#endif
+
+#if (defined(SID_SealStrength) && COMMON_SKILL_VALID(SID_SealStrength))
+    [SID_SealStrength] = {
+        .name = MSG_SKILL_SealStrength_NAME,
+        .desc = MSG_SKILL_SealStrength,
+        .icon = GFX_SkillIcon_SealStrength
+    },
+#endif
+
+#if (defined(SID_RallyDefense) && COMMON_SKILL_VALID(SID_RallyDefense))
+    [SID_RallyDefense] = {
+        .name = MSG_SKILL_RallyDefense_NAME,
+        .desc = MSG_SKILL_RallyDefense,
+        .icon = GFX_SkillIcon_RallyDefense,
+    },
+#endif
+
+#if (defined(SID_RallyLuck) && COMMON_SKILL_VALID(SID_RallyLuck))
+    [SID_RallyLuck] = {
+        .name = MSG_SKILL_RallyLuck_NAME,
+        .desc = MSG_SKILL_RallyLuck,
+        .icon = GFX_SkillIcon_RallyLuck,
+    },
+#endif
+
+#if (defined(SID_RallyMagic) && COMMON_SKILL_VALID(SID_RallyMagic))
+    [SID_RallyMagic] = {
+        .name = MSG_SKILL_RallyMagic_NAME,
+        .desc = MSG_SKILL_RallyMagic,
+        .icon = GFX_SkillIcon_RallyMagic,
+    },
+#endif
+
+#if (defined(SID_RallyMovement) && COMMON_SKILL_VALID(SID_RallyMovement))
+    [SID_RallyMovement] = {
+        .name = MSG_SKILL_RallyMovement_NAME,
+        .desc = MSG_SKILL_RallyMovement,
+        .icon = GFX_SkillIcon_RallyMovement,
+    },
+#endif
+
+#if (defined(SID_RallyResistance) && COMMON_SKILL_VALID(SID_RallyResistance))
+    [SID_RallyResistance] = {
+        .name = MSG_SKILL_RallyResistance_NAME,
+        .desc = MSG_SKILL_RallyResistance,
+        .icon = GFX_SkillIcon_RallyResistance,
+    },
+#endif
+
+#if (defined(SID_RallySkill) && COMMON_SKILL_VALID(SID_RallySkill))
+    [SID_RallySkill] = {
+        .name = MSG_SKILL_RallySkill_NAME,
+        .desc = MSG_SKILL_RallySkill,
+        .icon = GFX_SkillIcon_RallySkill,
+    },
+#endif
+
+#if (defined(SID_RallySpeed) && COMMON_SKILL_VALID(SID_RallySpeed))
+    [SID_RallySpeed] = {
+        .name = MSG_SKILL_RallySpeed_NAME,
+        .desc = MSG_SKILL_RallySpeed,
+        .icon = GFX_SkillIcon_RallySpeed,
+    },
+#endif
+
+#if (defined(SID_RallyStrength) && COMMON_SKILL_VALID(SID_RallyStrength))
+    [SID_RallyStrength] = {
+        .name = MSG_SKILL_RallyStrength_NAME,
+        .desc = MSG_SKILL_RallyStrength,
+        .icon = GFX_SkillIcon_RallyStrength,
+    },
+#endif
+
+#if (defined(SID_RallySpectrum) && COMMON_SKILL_VALID(SID_RallySpectrum))
+    [SID_RallySpectrum] = {
+        .name = MSG_SKILL_RallySpectrum_NAME,
+        .desc = MSG_SKILL_RallySpectrum,
+        .icon = GFX_SkillIcon_RallySpectrum,
+    },
+#endif
+
+#if (defined(SID_Despoil) && COMMON_SKILL_VALID(SID_Despoil))
+    [SID_Despoil] = {
+        .desc = MSG_SKILL_Despoil,
+        .icon = GFX_SkillIcon_Despoil,
+    },
+#endif
+
+#if (defined(SID_Pickup) && COMMON_SKILL_VALID(SID_Pickup))
+    [SID_Pickup] = {
+        .desc = MSG_SKILL_Pickup,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_IndoorMarch) && COMMON_SKILL_VALID(SID_IndoorMarch))
+    [SID_IndoorMarch] = {
+        .name = MSG_SKILL_IndoorMarch_NAME,
+        .desc = MSG_SKILL_IndoorMarch,
+        .icon = GFX_SkillIcon_IndoorMarch,
+    },
+#endif
+
+#if (defined(SID_DevilsPact) && COMMON_SKILL_VALID(SID_DevilsPact))
+    [SID_DevilsPact] = {
+        .name = MSG_SKILL_DevilsPact_NAME,
+        .desc = MSG_SKILL_DevilsPact,
+        .icon = GFX_SkillIcon_DevilsPact,
+    },
+#endif
+
+#if (defined(SID_DevilsWhim) && COMMON_SKILL_VALID(SID_DevilsWhim))
+    [SID_DevilsWhim] = {
+        .name = MSG_SKILL_DevilsWhim_NAME,
+        .desc = MSG_SKILL_DevilsWhim,
+        .icon = GFX_SkillIcon_DevilsWhim,
+    },
+#endif
+
+#if (defined(SID_DevilsLuck) && COMMON_SKILL_VALID(SID_DevilsLuck))
+    [SID_DevilsLuck] = {
+        .name = MSG_SKILL_DevilsLuck_NAME,
+        .desc = MSG_SKILL_DevilsLuck,
+        .icon = GFX_SkillIcon_DevilsLuck,
+    },
+#endif
+
+#if (defined(SID_Expertise) && COMMON_SKILL_VALID(SID_Expertise))
+    [SID_Expertise] = {
+        .desc = MSG_SKILL_Expertise,
+        .icon = GFX_SkillIcon_Expertise,
+    },
+#endif
+
+#if (defined(SID_PassionsFlow) && COMMON_SKILL_VALID(SID_PassionsFlow))
+    [SID_PassionsFlow] = {
+         .name = MSG_SKILL_PassionsFlow_NAME,
+         .desc = MSG_SKILL_PassionsFlow,
+         .icon = GFX_SkillIcon_PassionsFlow,
+    },
+#endif
+
+#if (defined(SID_NatureRush) && COMMON_SKILL_VALID(SID_NatureRush))
+    [SID_NatureRush] = {
+        .name = MSG_SKILL_NatureRush_NAME,
+        .desc = MSG_SKILL_NatureRush,
+        .icon = GFX_SkillIcon_NatureRush,
+    },
+#endif
+
+#if (defined(SID_CounterMagic) && COMMON_SKILL_VALID(SID_CounterMagic))
+    [SID_CounterMagic] = {
+        .name = MSG_SKILL_CounterMagic_NAME,
+        .desc = MSG_SKILL_CounterMagic,
+        .icon = GFX_SkillIcon_CounterMagic,
+    },
+#endif
+
+#if (defined(SID_LadyBlade) && COMMON_SKILL_VALID(SID_LadyBlade))
+    [SID_LadyBlade] = {
+        .name = MSG_SKILL_LadyBlade_NAME,
+        .desc = MSG_SKILL_LadyBlade,
+        .icon = GFX_SkillIcon_LadyBlade,
+    },
+#endif
+
+#if (defined(SID_LullDefense) && COMMON_SKILL_VALID(SID_LullDefense))
+    [SID_LullDefense] = {
+        .name = MSG_SKILL_LullDefense_NAME,
+        .desc = MSG_SKILL_LullDefense,
+        .icon = GFX_SkillIcon_LullDefense,
+    },
+#endif
+
+#if (defined(SID_LullLuck) && COMMON_SKILL_VALID(SID_LullLuck))
+    [SID_LullLuck] = {
+        .name = MSG_SKILL_LullLuck_NAME,
+        .desc = MSG_SKILL_LullLuck,
+        .icon = GFX_SkillIcon_LullLuck,
+    },
+#endif
+
+#if (defined(SID_LullMagic) && COMMON_SKILL_VALID(SID_LullMagic))
+    [SID_LullMagic] = {
+        .name = MSG_SKILL_LullMagic_NAME,
+        .desc = MSG_SKILL_LullMagic,
+        .icon = GFX_SkillIcon_LullMagic,
+    },
+#endif
+
+#if (defined(SID_LullMovement) && COMMON_SKILL_VALID(SID_LullMovement))
+    [SID_LullMovement] = {
+        .name = MSG_SKILL_LullMovement_NAME,
+        .desc = MSG_SKILL_LullMovement,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LullResistance) && COMMON_SKILL_VALID(SID_LullResistance))
+    [SID_LullResistance] = {
+        .name = MSG_SKILL_LullResistance_NAME,
+        .desc = MSG_SKILL_LullResistance,
+        .icon = GFX_SkillIcon_LullResistance,
+    },
+#endif
+
+#if (defined(SID_LullSkill) && COMMON_SKILL_VALID(SID_LullSkill))
+    [SID_LullSkill] = {
+        .name = MSG_SKILL_LullSkill_NAME,
+        .desc = MSG_SKILL_LullSkill,
+        .icon = GFX_SkillIcon_LullSkill,
+    },
+#endif
+
+#if (defined(SID_LullSpectrum) && COMMON_SKILL_VALID(SID_LullSpectrum))
+    [SID_LullSpectrum] = {
+        .name = MSG_SKILL_LullSpectrum_NAME,
+        .desc = MSG_SKILL_LullSpectrum,
+        .icon = GFX_SkillIcon_LullSpectrum,
+    },
+#endif
+
+#if (defined(SID_LullSpeed) && COMMON_SKILL_VALID(SID_LullSpeed))
+    [SID_LullSpeed] = {
+        .name = MSG_SKILL_LullSpeed_NAME,
+        .desc = MSG_SKILL_LullSpeed,
+        .icon = GFX_SkillIcon_LullSpeed,
+    },
+#endif
+
+#if (defined(SID_LullStrength) && COMMON_SKILL_VALID(SID_LullStrength))
+    [SID_LullStrength] = {
+        .name = MSG_SKILL_LullStrength_NAME,
+        .desc = MSG_SKILL_LullStrength,
+        .icon = GFX_SkillIcon_LullStrength,
+    },
+#endif
+
+#if (defined(SID_ShrewdPotential) && COMMON_SKILL_VALID(SID_ShrewdPotential))
+    [SID_ShrewdPotential] = {
+        .name = MSG_SKILL_ShrewdPotential_NAME,
+        .desc = MSG_SKILL_ShrewdPotential,
+        .icon = GFX_SkillIcon_ShrewdPotential,
+    },
+#endif
+
+#if (defined(SID_SteadyBrawler) && COMMON_SKILL_VALID(SID_SteadyBrawler))
+    [SID_SteadyBrawler] = {
+        .name = MSG_SKILL_SteadyBrawler_NAME,
+        .desc = MSG_SKILL_SteadyBrawler,
+        .icon = GFX_SkillIcon_SteadyBrawler,
     },
 #endif
 };

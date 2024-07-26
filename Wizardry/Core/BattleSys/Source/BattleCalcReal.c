@@ -1,8 +1,11 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "combat-art.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "kernel-tutorial.h"
+#include "constants/combat-arts.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -11,6 +14,19 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
      * Here we need to put some calculation at the end of the pre-battle calc.
      * Thus the main part of calc should be positioned at berfore.
      */
+
+    if (attacker == &gBattleActor)
+    {
+        switch (GetCombatArtInForce(&attacker->unit)) {
+        case CID_Gamble:
+            attacker->battleCritRate = attacker->battleCritRate * 2;
+            attacker->battleHitRate  = attacker->battleHitRate  / 2;
+            break;
+
+        default:
+            break;
+        }
+    }
 
 #if (defined(SID_CatchingUp) && (COMMON_SKILL_VALID(SID_CatchingUp)))
         if (BattleSkillTester(attacker, SID_CatchingUp))
@@ -156,12 +172,15 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
 
     /* For non-ballista combat, Distance +2, hit rate -20% for actor */
-    if (gBattleStats.range > 2 && attacker == &gBattleActor && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA) && !(gBattleStats.config & BATTLE_CONFIG_ARENA))
+    if (gpKernelDesigerConfig->hit_decrease_on_range && gBattleStats.range > 2 && attacker == &gBattleActor)
     {
-        attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
+        if (!BattleSkillTester(attacker, SID_MagicEye) && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA))
+        {
+            attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
 
-        if (gBattleStats.config & BATTLE_CONFIG_REAL)
-            TriggerKtutorial(KTUTORIAL_RANGED_FAILOFF);
+            if (gBattleStats.config & BATTLE_CONFIG_REAL)
+                TriggerKtutorial(KTUTORIAL_RANGED_FAILOFF);
+        }
     }
 
     if (attacker->battleEffectiveHitRate > 100)

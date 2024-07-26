@@ -26,13 +26,19 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
     /* Check combat-art */
     cid = GetCombatArtInForce(&actor->unit);
-
     if (&gBattleActor == actor && COMBART_VALID(cid))
     {
-        if (gpCombatArtInfos[cid].double_attack)
+        switch (GetCombatArtInfo(cid)->double_attack) {
+        case COMBART_DOUBLE_DISABLED:
+            return false;
+
+        case COMBART_DOUBLE_FORCE_ENABLED:
             return true;
 
-        return false;
+        case COMBART_DOUBLE_ENABLED:
+        default:
+            break;
+        }
     }
 
     /* Basic judgement */
@@ -54,19 +60,6 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
             return true;
-        }
-#endif
-
-#if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-        if (basic_judgement == false && BattleSkillTester(actor, SID_DoubleLion))
-        {
-            if (actor->hpInitial == actor->unit.maxHP)
-            {
-                gBattleActorGlobalFlag.skill_activated_double_lion = true;
-                gBattleTemporaryFlag.act_force_twice_order = true;
-                RegisterBattleOrderSkill(SID_DoubleLion, BORDER_ACT_TWICE);
-                return true;
-            }
         }
 #endif
 
@@ -114,6 +107,28 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #if defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight))
         if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
             return false;
+#endif
+
+#if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
+        if (BattleSkillTester(actor, SID_PridefulWarrior))
+        {
+            gBattleTemporaryFlag.act_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_PridefulWarrior, BORDER_ACT_TWICE);
+            return true;
+        }
+#endif
+
+#if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_PassionsFlow))
+        {
+            struct SupportBonuses bonuses;
+            if (GetUnitSupportBonuses(GetUnit(actor->unit.index), &bonuses) != 0)
+            {
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_PassionsFlow, BORDER_ACT_TWICE);
+                return true;
+            }
+        }
 #endif
     }
     else if (&gBattleTarget == actor)
@@ -169,6 +184,19 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_PassionsFlow))
+        {
+            struct SupportBonuses bonuses;
+            if (GetUnitSupportBonuses(GetUnit(actor->unit.index), &bonuses) != 0)
+            {
+                gBattleTemporaryFlag.tar_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_PassionsFlow, BORDER_TAR_TWICE);
+                return true;
+            }
+        }
+#endif
     }
 
     return basic_judgement;
@@ -209,6 +237,15 @@ STATIC_DECLAR bool CheckVantageOrder(void)
             gBattleTemporaryFlag.vantage_order = true;
             return true;
         }
+    }
+#endif
+
+#if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
+    if (BattleSkillTester(&gBattleActor, SID_PridefulWarrior))
+    {
+        /* actor can enable the foe to attack first */
+        gBattleTemporaryFlag.vantage_order = true;
+        return true;
     }
 #endif
 
@@ -377,6 +414,10 @@ bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * d
             gBattleHitIterator->info |= (BATTLE_HIT_INFO_FINISHES | BATTLE_HIT_INFO_END);
             return true;
         }
+
+        /* I think this is a bug-fix for vanilla */
+        if (!attacker->weapon)
+            return false;
     }
     return false;
 }
@@ -431,6 +472,23 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     if (BattleSkillTester(actor, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
     {
         EnqueueRoundEfxSkill(SID_Adept);
+        result = result + 1;
+    }
+#endif
+
+#if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
+        if (BattleSkillTester(actor, SID_ChargePlus))
+        {
+            if (MovGetter(gActiveUnit) == gActionData.moveCount)
+                result = result + 1;
+        }
+#endif
+
+#if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
+    if (actor == &gBattleActor && BattleSkillTester(actor, SID_DoubleLion) && actor->hpInitial == actor->unit.maxHP)
+    {
+        gBattleActorGlobalFlag.skill_activated_double_lion = true;
+        EnqueueRoundEfxSkill(SID_DoubleLion);
         result = result + 1;
     }
 #endif

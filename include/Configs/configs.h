@@ -69,6 +69,23 @@
 // #define CONFIG_REMOVE_MOVE_PATH
 
 /**
+ * Levelup mode
+ * 0: vanilla
+ * 1: uncontrollable
+ * 2: fixed
+ * 3: 100%
+ * 4: 0%
+ */
+#define CONFIG_LVUP_MODE_TUTORIAL 2
+#define CONFIG_LVUP_MODE_NORMAL 0
+#define CONFIG_LVUP_MODE_HARD 1
+
+/**
+ * Install DrawMapActionAnimation
+ */
+// #define CONFIG_INSTALL_MAPACTIONANIM
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20
@@ -78,7 +95,19 @@
  * Unit action expansion
  */
 #define CONFIG_UNIT_ACTION_AMT 0x30
-#define CONFIG_UNIT_ACTION_EXPA_Teleportation 0x23
+#define CONFIG_UNIT_ACTION_EXPA_ExecSkill 0x23
+
+/**
+ * Str/Mag related config
+ */
+#define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
+#define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
+
+/**
+ * Some pointers
+ */
+#define CONFIG_PR_ITEM_ICON  0x5926F4
+#define CONFIG_PR_ITEM_TABLE 0x809B10
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

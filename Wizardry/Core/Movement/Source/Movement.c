@@ -2,19 +2,19 @@
 #include "skill-system.h"
 #include "arm-func.h"
 #include "class-types.h"
+#include "weapon-range.h"
 #include "kernel-lib.h"
 #include "map-movement.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR void PreGenerateMovementMap(void)
+STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
 {
     struct Unit * unit;
     int i, ix, iy;
 
-    bool Aerobatics_activated = false;
-    bool FlierFormation_activated = false;
-    bool SoaringWings_activated = false;
-
+    FORCE_DECLARE bool Aerobatics_activated;
+    FORCE_DECLARE bool FlierFormation_activated;
+    FORCE_DECLARE bool SoaringWings_activated;
     FORCE_DECLARE bool self_flier;
 
     static const struct Vec1 * vec_ref[4] = {
@@ -40,6 +40,9 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
     unit = GetUnit(gMovMapFillState.unitId);
 
     self_flier = CheckClassFlier(UNIT_CLASS_ID(unit));
+    Aerobatics_activated = false;
+    FlierFormation_activated = false;
+    SoaringWings_activated = false;
 
 #if (defined(SID_Pass) && COMMON_SKILL_VALID(SID_Pass))
     if (SkillTester(unit, SID_Pass) && ((GetUnitCurrentHp(unit) * 4) >= GetUnitMaxHp(unit)))
@@ -80,16 +83,35 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
             /**
              * 1. check for barrier map
              */
+            if (!AreUnitsAllied(unit->index, _unit->index) && !(KernelMoveMapFlags & FMOVSTRE_PASS)) /* Pass skill can ignore barriers */
+            {
 #if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
-            if
-            (
-                !AreUnitsAllied(unit->index, _unit->index) &&
-                !(KernelMoveMapFlags & FMOVSTRE_PASS) && // Obstruct is not effective on Pass skill
-                SkillTester(_unit, SID_Obstruct) &&
-                (GetUnitCurrentHp(_unit) * 4) >= GetUnitMaxHp(_unit)
-            )
-                barrier_range = 1;
+                if (SkillTester(_unit, SID_Obstruct))
+                {
+                    if ((GetUnitCurrentHp(_unit) * 100) >= (GetUnitMaxHp(_unit) * SKILL_EFF0(SID_Obstruct)))
+                    {
+                        int __barrier = SKILL_EFF1(SID_Obstruct);
+                        if (barrier_range < __barrier)
+                            barrier_range = __barrier;
+                    }
+                }
 #endif
+
+#if (defined(SID_DetailedReport) && COMMON_SKILL_VALID(SID_DetailedReport))
+                if (SkillTester(_unit, SID_DetailedReport))
+                {
+                    if ((GetUnitCurrentHp(_unit) * 100) >= (GetUnitMaxHp(_unit) * SKILL_EFF0(SID_DetailedReport)))
+                    {
+                        if (GetUnitMaxRange(unit) >= SKILL_EFF1(SID_DetailedReport))
+                        {
+                            int __barrier = SKILL_EFF2(SID_DetailedReport);
+                            if (barrier_range < __barrier)
+                                barrier_range = __barrier;
+                        }
+                    }
+                }
+#endif
+            }
 
             if (barrier_range > 3)
                 barrier_range = 3;
@@ -122,35 +144,37 @@ STATIC_DECLAR void PreGenerateMovementMap(void)
             if (AreUnitsAllied(unit->index, _unit->index))
             {
                 bool ally_flier = CheckClassFlier(UNIT_CLASS_ID(_unit));
-                if (FlierFormation_activated && ally_flier)
+
+                /**
+                 * A limitation on balancing:
+                 * Self bonus can only apply to allies in move range
+                 */
+                if (RECT_DISTANCE(unit->xPos, unit->yPos, _unit->xPos, _unit->yPos) <= (default_mov + 1))
                 {
+                    if (FlierFormation_activated && ally_flier)
+                    {
 #if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
-                    int __bonus = SKILL_EFF0(SID_FlierFormation);
-#else
-                    int __bonus = 3;
+                        int __bonus = SKILL_EFF0(SID_FlierFormation);
+                        if (pioneer_range < __bonus)
+                            pioneer_range = __bonus;
 #endif
-                    if (pioneer_range < __bonus)
-                        pioneer_range = __bonus;
-                }
-                if (Aerobatics_activated && !ally_flier)
-                {
+                    }
+                    if (Aerobatics_activated && !ally_flier)
+                    {
 #if (defined(SID_Aerobatics) && COMMON_SKILL_VALID(SID_Aerobatics))
-                    int __bonus = SKILL_EFF0(SID_Aerobatics);
-#else
-                    int __bonus = 2;
+                        int __bonus = SKILL_EFF0(SID_Aerobatics);
+                        if (pioneer_range < __bonus)
+                            pioneer_range = __bonus;
 #endif
-                    if (pioneer_range < __bonus)
-                        pioneer_range = __bonus;
-                }
-                if (SoaringWings_activated)
-                {
+                    }
+                    if (SoaringWings_activated)
+                    {
 #if (defined(SID_SoaringWings) && COMMON_SKILL_VALID(SID_SoaringWings))
-                    int __bonus = SKILL_EFF0(SID_SoaringWings);
-#else
-                    int __bonus = 1;
+                        int __bonus = SKILL_EFF0(SID_SoaringWings);
+                        if (pioneer_range < __bonus)
+                            pioneer_range = __bonus;
 #endif
-                    if (pioneer_range < __bonus)
-                        pioneer_range = __bonus;
+                    }
                 }
 
 #if (defined(SID_FlierGuidance) && COMMON_SKILL_VALID(SID_FlierGuidance))
@@ -245,7 +269,7 @@ void GenerateMovementMap(int x, int y, int movement, int uid)
     gMovMapFillState.dst->connexion = 4;
 
 #if CHAX
-    PreGenerateMovementMap();
+    PreGenerateMovementMap(movement);
     SetWorkingBmMap(working_map);
 #endif
 

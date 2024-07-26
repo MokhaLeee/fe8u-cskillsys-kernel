@@ -166,3 +166,27 @@ static inline u8 GetTerrainAtCursor()
 }
 
 bool CanShowUnitStatScreen(struct Unit * unit);
+
+#define EVT_CMD_LO(cmd) (((cmd) & 0x0000FFFF))
+#define EVT_CMD_HI(cmd) (((cmd) & 0xFFFF0000) >> 16)
+#define EVT_CMD_B1(cmd) (((cmd) & 0x000000FF))
+#define EVT_CMD_B2(cmd) (((cmd) & 0x0000FF00) >> 8)
+#define EVT_CMD_B3(cmd) (((cmd) & 0x00FF0000) >> 16)
+#define EVT_CMD_B4(cmd) (((cmd) & 0xFF000000) >> 24)
+
+extern struct EventListCmdInfo CONST_DATA gEventListCmdInfoTable[];
+
+struct EvCheck03 {
+    u32 unk0;
+    u32 script;
+    u8 pidA;
+    u8 pidB;
+    u16 fillerA;
+    u16 unkC;
+    u16 unkE;
+};
+
+bool CanUnitCrossTerrain(struct Unit * unit, int terrain);
+extern CONST_DATA struct MenuItemDef gUnitActionMenuItems[];
+void StartMineAnim(ProcPtr, int, int);
+void AddUnitToTargetListIfAllied(struct Unit * unit);

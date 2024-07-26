@@ -50,13 +50,9 @@ ALIGN 4
 #include "Core/StatScreen/StatScreen.event"
 #include "Core/MapTask/MapTask.event"
 #include "Core/CombatArt/CombatArt.event"
-#include "Core/HelpBox/HelpBox.event"
 #include "Core/ComboAttack/ComboAttack.event"
 #include "Core/Movement/Movement.event"
 #include "Core/AiHack/AiHack.event"
 
 #include "External/ExternalPatches.event"
-
-#ifdef CONFIG_USE_DEBUG
-    #include "debug.event"
-#endif
+#include "Debug/Debug.event"

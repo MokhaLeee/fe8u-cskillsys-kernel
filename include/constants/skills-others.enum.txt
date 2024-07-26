@@ -6,21 +6,15 @@ SID_FortifyArmor
 SID_Skyguard
 SID_Horseguard
 SID_Armorboost
-SID_Teleportation
 SID_Shade
 SID_ShadePlus
 SID_Provoke
-SID_Dance
-SID_LockTouch
-SID_Summon
-SID_Steal
 SID_Lethality
 SID_Crit
 SID_InfinityEdge
 SID_SureShot
 SID_WatchfulEye
 SID_AversaNight
-SID_Supply
 SID_Inori
 SID_Armsthrift
 SID_Synchronize
@@ -42,6 +36,7 @@ SID_Bushido
 SID_DragonWall
 SID_DragonWarth
 SID_BlueLionRule
+SID_FaerghusAncestry
 SID_CrusaderWard
 SID_Plus
 SID_Minus
@@ -49,7 +44,6 @@ SID_VengefulFighter
 SID_LuckySeven
 SID_EvenFooted
 SID_OddFooted
-SID_SpeedBoost
 SID_Slayer
 SID_Skybreaker
 SID_Nullify
@@ -74,18 +68,58 @@ SID_Dazzle
 SID_BidingBlow
 SID_Discipline
 SID_AdvantageChaser
+SID_Nonconforming
 SID_Moonlight
 // SID_BlackMagic
+SID_Multiscale
+SID_PridefulWarrior
+SID_MageSlayer
+SID_TriangleAdept
+SID_TriangleAdeptPlus
+SID_TowerShieldPlus
+SID_PoisonStrike
+SID_GrislyWound
+SID_Poise
+SID_Enrage
+SID_Petrify
+SID_Amaterasu
+SID_AirRaidAttack
+SID_AirRaidAvoid
+SID_AirRaidCrit
+SID_AirRaidDefense
+SID_AirRaidHit
+SID_AirRaidResistance
+SID_AirRaidSpeed
+SID_Pickup
+SID_IndoorMarch
+SID_NatureRush
+SID_Expertise
+SID_PassionsFlow
+SID_LadyBlade
+// Lull skills
+// SID_LullDefense
+// SID_LullLuck
+// SID_LullMagic
+// SID_LullMovement
+// SID_LullResistance
+// SID_LullSkill
+// SID_LullSpectrum
+// SID_LullSpeed
+// SID_LullStregth
+SID_ShrewdPotential
+// SID_SteadyBrawler
+
+// Devil skills
+SID_DevilsPact
+SID_DevilsWhim
+SID_DevilsLuck
 
 // Mobility
 SID_Guidance
-SID_FlierGuidance
 SID_SoaringGuidance
-SID_Aerobatics
 SID_FlierFormation
 SID_SoaringWings
-// SID_DetailedReport
-// SID_OpeningRetainer
+SID_DetailedReport
 
 // Weapon range
 SID_HighGround
@@ -102,6 +136,16 @@ SID_Chlorophyll
 SID_SlushRush
 SID_SandRush
 SID_SwiftSwim
+SID_SolarPower
+
+// Seal skills
+// SID_SealDefense
+// SID_SealLuck
+// SID_SealMagic
+// SID_SealResistance
+// SID_SealSkill
+// SID_SealSpeed
+// SID_SealStrength
 
 // Initiative skills
 SID_InitStrong
@@ -134,12 +178,50 @@ SID_RouseSkill
 SID_RouseSpeed
 SID_RouseStrength
 
+// Boost skills
+SID_DefenseBoost
+SID_LuckBoost
+SID_MagicBoost
+SID_MoveBoost
+SID_ResistanceBoost
+SID_SkillBoost
+SID_SpeedBoost
+SID_StrengthBoost
+SID_SpectrumBoost
+
 // Engage skills
 SID_GentleFlower // This skill can only set to ally!
 SID_Admiration
 SID_FairyTaleFolk
 
-
 // Pre-phase skills
 SID_RainDish
 SID_Boon
+
+// Post action
+SID_FailGale
+SID_Clearance
+SID_Despoil
+
+// Menu skills
+SID_Dance
+SID_LockTouch
+SID_Summon
+SID_Steal
+SID_Supply
+SID_LightRune
+SID_Mine
+SID_RallyDefense
+SID_RallyLuck
+SID_RallyMagic
+SID_RallyMovement
+SID_RallyResistance
+SID_RallySkill
+SID_RallySpeed
+SID_RallyStrength
+SID_RallySpectrum
+
+// Art skills
+SID_COMBAT_Galeforce
+SID_COMBAT_Gamble
+SID_COMBAT_Detonate

@@ -13,7 +13,6 @@ struct WeaponTriangleConf {
     bool is_buff;
     u16 sid;
 
-
     s8 bonus_atk;
     s8 bonus_def;
     s8 bonus_speed;
@@ -42,6 +41,18 @@ extern struct WeaponTriangleItemConf const * const gpWeaponTriangleItemConf;
 /* Battle hit expansion */
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
+
+/**
+ * Used for post-action
+ *
+ * 1. gBattleHitArrayRe: 0x80
+ * 2. gBattleActorGlobalFlag: 0x10
+ * 3: gBattleTargetGlobalFlag: 0x10
+ */
+extern u8 BattleRoundInfoBak[0xA0];
+void RestoreBattleRoundInfo(void);
+
+extern struct BattleHit gBattleHitArrayBak[NEW_BATTLE_HIT_MAX]; // used for post-action banim
 
 bool CheckBattleHitOverflow(void);
 bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target);
@@ -76,6 +87,9 @@ void ClearBattleGlobalFlags(void);
 void RegisterHitCnt(struct BattleUnit * bu, bool miss);
 
 extern struct {
+    u32 nihil_on_actor  : 1;
+    u32 nihil_on_target : 1;
+
     u32 desperation_order : 1;
     u32 vantage_order : 1;
     u32 tar_force_twice_order : 1;
@@ -101,6 +115,7 @@ extern u16 BattleOrderSkills[BORDER_MAX];
 /* Battle skill act */
 bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
 
+int GetWeaponCost(struct BattleUnit * bu, u16 item);
 static inline int GetItemFormSlot(struct Unit * unit, int slot)
 {
     switch (slot) {
@@ -166,3 +181,8 @@ extern const u16 _DmgDecreaseRef[100];
 #define DAMAGE_DECREASE(rate) _DmgDecreaseRef[rate]
 
 void PreBattleGenerateHook(void);
+
+/**
+ * BattleUI
+ */
+void ModifyBattleStatusForUI(void);

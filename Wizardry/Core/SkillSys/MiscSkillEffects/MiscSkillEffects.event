@@ -1,4 +1,3 @@
-#include "PostActionSkills/SelfHurt.lyn.event"
 #include "PostActionSkills/AlertStance.lyn.event"
 #include "PostActionSkills/Tsuzuku.lyn.event"
 #include "PostActionSkills/SavageBlow.lyn.event"
@@ -8,10 +7,24 @@
 #include "PostActionSkills/Return.lyn.event"
 #include "PostActionSkills/Swap.lyn.event"
 #include "PostActionSkills/Heal.lyn.event"
+#include "PostActionSkills/Hurt.lyn.event"
 #include "PostActionSkills/Synchronize.lyn.event"
+#include "PostActionSkills/Clearance.lyn.event"
+#include "PostActionSkills/Despoil.lyn.event"
 #include "PostActionSkills/LynJump.event"
 
-#include "Misc/MenuSkills.lyn.event"
+#include "MenuSkills/Dance.lyn.event"
+#include "MenuSkills/Pick.lyn.event"
+#include "MenuSkills/Steal.lyn.event"
+#include "MenuSkills/Summon.lyn.event"
+#include "MenuSkills/Supply.lyn.event"
+#include "MenuSkills/HealingFocus.lyn.event"
+#include "MenuSkills/LightRune.lyn.event"
+#include "MenuSkills/Mine.lyn.event"
+#include "MenuSkills/Rally.lyn.event"
+#include "MenuSkills/Teleportation.lyn.event"
+#include "MenuSkills/LynJump.event"
+
 #include "Misc/HealAmount.lyn.event"
 
 #include "LegendarySkills/JudgeLegend.lyn.event"
@@ -28,7 +41,10 @@
 #include "PrePhaseSkills/WeatherSkills.lyn.event"
 #include "PrePhaseSkills/StatusEffects.lyn.event"
 #include "PrePhaseSkills/YuneWhisper.lyn.event"
+#include "PrePhaseSkills/TileCheck.lyn.event"
 #include "PrePhaseSkills/LynJump.event"
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"
+
+#include "Nihil/Nihil.event"

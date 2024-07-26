@@ -1,0 +1,20 @@
+#ifdef CONFIG_USE_DEBUG
+#ifndef KERNEL_DEBUG_INSTALLED
+#define KERNEL_DEBUG_INSTALLED
+
+WARNING ___________________________________________________
+WARNING ___________________IN_DEBUG_MODE___________________
+WARNING ___________If_you_want_uninstall_debug_____________
+WARNING ________________comment_out_in_config______________
+WARNING _________________CONFIG_USE_DEBUG__________________
+WARNING
+
+#include "RemoveWM/RemoveWM.event"
+#include "Event/Event.event"
+#include "Chapter/Chapter.event"
+
+WARNING
+WARNING ___________________________________________________
+
+#endif // KERNEL_DEBUG_INSTALLED
+#endif // CONFIG_USE_DEBUG

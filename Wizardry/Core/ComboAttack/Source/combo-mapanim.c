@@ -12,6 +12,14 @@ extern u8 const * const gpImg_MapAnimCOMBO;
  * Special combo map-anim effect
  */
 
+STATIC_DECLAR void MapAnim_MoveCameraForCombo(ProcPtr proc)
+{
+    int round = GetBattleHitRound(gManimSt.pCurrentRound);
+    struct Unit * unit = GetMapAnimComboUnit(round);
+
+    EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
+}
+
 STATIC_DECLAR void MapAnim_ShowComboSpecialEffect(ProcPtr proc)
 {
     int round = GetBattleHitRound(gManimSt.pCurrentRound);
@@ -44,6 +52,8 @@ STATIC_DECLAR void MapAnim_PlayComboSE(ProcPtr proc)
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_MapAnim_PrepareNextBattleHook[] = {
+    PROC_YIELD,
+    PROC_CALL(MapAnim_MoveCameraForCombo),
     PROC_YIELD,
     PROC_CALL(MapAnim_ShowComboSpecialEffect),
     PROC_SLEEP(5),

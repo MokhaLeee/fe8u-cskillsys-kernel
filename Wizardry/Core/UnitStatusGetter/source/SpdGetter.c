@@ -71,6 +71,28 @@ int SpdGetterSkills(int status, struct Unit * unit)
         status += SKILL_EFF0(SID_LuckySeven);
 #endif
 
+#if defined(SID_SpeedBoost) && (COMMON_SKILL_VALID(SID_SpeedBoost))
+    if (SkillTester(unit, SID_SpeedBoost))
+    {
+        int __buf = SKILL_EFF0(SID_SpeedBoost);
+        if (gPlaySt.chapterTurnNumber >= __buf)
+            status += __buf;
+        else
+            status += gPlaySt.chapterTurnNumber;
+    }
+#endif
+
+#if defined(SID_SpectrumBoost) && (COMMON_SKILL_VALID(SID_SpectrumBoost))
+    if (SkillTester(unit, SID_SpectrumBoost))
+    {
+        int __buf = SKILL_EFF0(SID_SpectrumBoost);
+        if (gPlaySt.chapterTurnNumber >= __buf)
+            status += __buf;
+        else
+            status += gPlaySt.chapterTurnNumber;
+    }
+#endif
+
     if (cur_hp == max_hp)
     {
 #if defined(SID_PushSpeed) && (COMMON_SKILL_VALID(SID_PushSpeed))

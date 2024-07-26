@@ -6,48 +6,19 @@
 #include "battle-system.h"
 #include "constants/skills.h"
 
+#if (defined(SID_LightAndDark) && (COMMON_SKILL_VALID(SID_LightAndDark)))
 STATIC_DECLAR FORCE_DECLARE void ModifyBattleUnitStatus_LightAndDark(struct BattleUnit * actor, struct BattleUnit * target)
 {
-    int i;
-
-    const struct DebuffInfo * debuff_act = &gpDebuffInfos[GetUnitStatusIndex(&actor->unit)];
-    const struct DebuffInfo * debuff_tar = &gpDebuffInfos[GetUnitStatusIndex(&target->unit)];
-
-    struct StatDebuffStatus * sdebuff_act = GetUnitStatDebuffStatus(&actor->unit);
-    struct StatDebuffStatus * sdebuff_tar = GetUnitStatDebuffStatus(&target->unit);
-
     target->unit.pow -= SKILL_EFF0(SID_LightAndDark);
     UNIT_MAG(&target->unit) -= SKILL_EFF0(SID_LightAndDark);
     target->unit.spd -= SKILL_EFF1(SID_LightAndDark);
     target->unit.def -= SKILL_EFF2(SID_LightAndDark);
     target->unit.res -= SKILL_EFF3(SID_LightAndDark);
 
-    /* Debuff */
-    if (debuff_act->positive_type == STATUS_DEBUFF_NEGATIVE)
-        SetUnitStatus(&actor->unit, UNIT_STATUS_NONE);
-
-    if (debuff_tar->positive_type == STATUS_DEBUFF_POSITIVE)
-        SetUnitStatus(&target->unit, UNIT_STATUS_NONE);
-
-    /* StatDebuff */
-    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
-    {
-        if (!_BIT_CHK(sdebuff_act->st.bitmask, i))
-            continue;
-
-        if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_NEGATIVE)
-            _BIT_CLR(sdebuff_act->st.bitmask, i);
-    }
-
-    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
-    {
-        if (!_BIT_CHK(sdebuff_tar->st.bitmask, i))
-            continue;
-
-        if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_POSITIVE)
-            _BIT_CLR(sdebuff_tar->st.bitmask, i);
-    }
+    RemoveUnitNegativeStatus(&actor->unit);
+    RemoveUnitPositiveStatus(&target->unit);
 }
+#endif
 
 /**
  * This is set an addition routine on start of function: `BattleGenerate()`

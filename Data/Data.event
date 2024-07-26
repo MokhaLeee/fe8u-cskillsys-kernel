@@ -13,6 +13,8 @@
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
 #include "SkillSys/SkillExtraInfo.lyn.event"
+#include "SkillSys/SkillMenuInfo.lyn.event"
+#include "SkillSys/SkillActionInfo.lyn.event"
 #include "SkillSys/SkillTable-generic.lyn.event"
 #include "SkillSys/SkillTable-person.lyn.event"
 #include "SkillSys/SkillTable-job.lyn.event"
@@ -33,6 +35,7 @@
 #include "../Wizardry/Common/ArmFunc/data.event"
 #include "../Wizardry/Common/UnitAction/data.event"
 #include "../Wizardry/Common/ClassTypes/data.event"
+#include "../Wizardry/Common/ChapterInitHook/data.event"
 #include "../Wizardry/Common/GameInitHook/data.event"
 #include "../Wizardry/Common/IconDisplay/data.event"
 #include "../Wizardry/Common/KernelLib/data.event"
@@ -42,6 +45,7 @@
 #include "../Wizardry/Common/PrePhaseHook/data.event"
 #include "../Wizardry/Common/SaveData/data.event"
 #include "../Wizardry/Common/UnitMenu/data.event"
+#include "../Wizardry/Common/UnitHooks/data.event"
 #include "../Wizardry/Core/SkillSys/data.event"
 #include "../Wizardry/Core/BattleSys/data.event"
 #include "../Wizardry/Core/MapTask/data.event"
@@ -54,7 +58,10 @@
 #include "../Wizardry/Core/ComboAttack/data.event"
 #include "../Wizardry/Core/Movement/MovementData.event"
 #include "../Wizardry/External/Individual_animation_ea_2/data.event"
-#include "../Wizardry/External/DrawMapActionAnimation/data.event"
 #include "../Wizardry/External/StatScreenfx/_data.event"
+
+#ifdef CONFIG_INSTALL_MAPACTIONANIM
+    #include "../Wizardry/External/DrawMapActionAnimation/data.event"
+#endif
 
 #endif

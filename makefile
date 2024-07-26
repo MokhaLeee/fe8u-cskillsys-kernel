@@ -97,10 +97,16 @@ BTLPALETTEARGS    := -pn 80
 PRE_BUILD ?=
 chax: $(FE8_CHX)
 
+EA_FLAG := A FE8
+
+ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
+	EA_FLAG += -werr
+endif
+
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
-	@$(EA) A FE8 -werr -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
+	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
 
 CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
@@ -110,6 +116,7 @@ CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 post_chax: $(CHAX_DIFF)
 
 $(CHAX_DIFF): $(FE8_CHX)
+ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
@@ -125,19 +132,15 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@python3 $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 
-	@cp -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym
-	@cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym-removethumb.py > $(CHAX_SYM)
-	@rm -f $(CACHE_DIR)/tmp_sym
-
 	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
 	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
-	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
-ifeq ($(CONFIG_GEN_BSDIFF), 1)
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
 endif
 
+	@cat $(FE8_SYM) >> $(CHAX_SYM)
+	@mv -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym && cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym_modify.py > $(CHAX_SYM) && rm -f $(CACHE_DIR)/tmp_sym
 	@echo "Done!"
 
 CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)

@@ -65,10 +65,16 @@ Avoid Sword: [NL]
 Grants avoid rate +20%[NL]
 if unit equips a Sword.[X]
 
+## MSG_SKILL_RuinedBlade_NAME
+RuinBlade[X]
+
 ## MSG_SKILL_RuinedBlade
 Ruined Blade: [NL]
 Str/Mag-5, Spd+5, increases[NL]
 real damage by 5 in combat.[X]
+
+## MSG_SKILL_RuinedBladePlus_NAME
+RuinBlade+[X]
 
 ## MSG_SKILL_RuinedBladePlus
 Ruined Blade+:[NL]
@@ -247,8 +253,13 @@ Dragon Skin:[NL]
 Halve damage taken.[X]
 
 ## MSG_SKILL_Hawkeye
-Hawkeye:[NL]
+Hawk Eye:[NL]
 User will always hit the enemy.[X]
+
+## MSG_SKILL_MagicEye
+Magic Eye:[NL]
+Unit will not lose hit range when[NL]
+attacking from distance[X]
 
 ## MSG_SKILL_KeenFighter_NAME
 K-Fighter[X]
@@ -310,6 +321,11 @@ is at least 3 higher than the enemy's.[X]
 Charge:[NL]
 +1 damage for every[NL]
 two tiles moved.[X]
+
+## MSG_SKILL_ChargePlus
+ChargePlus:[NL]
+Apply brave effect if all[NL]
+movement used this turn.[X]
 
 ## MSG_SKILL_FieryBlood_NAME
 F-Blood[X]
@@ -423,6 +439,11 @@ Guts:[NL]
 +5 Attack if afflicted by[NL]
 any status condition.[X]
 
+## MSG_SKILL_StrongCon
+Strong Con.:[NL]
++5 Def/Res if afflicted by[NL]
+any status condition.[X]
+
 ## MSG_SKILL_Hero
 Hero:[NL]
 If unit's HP < 50%, add +30% to[NL]
@@ -529,6 +550,14 @@ Blue Lion Rule:[NL]
 Reduce damage as 4% DEF diff[NL]
 (max 40%).[X]
 
+## MSG_SKILL_FaerghusAncestry_NAME
+Faerghus-A[X]
+
+## MSG_SKILL_FaerghusAncestry
+Faerghus Ancestry:[NL]
+Weapon damage doubled,[NL]
+weapon consumption doubled[X]
+
 ## MSG_SKILL_DragonWarth_NAME
 DragonWarth[X]
 
@@ -579,3 +608,212 @@ the enemy cannot counterattack.[X]
 BlackMagic:[NL]
 Inflict a random bad status on the enemy.[NL]
 (Skill % activation).[X]
+
+## MSG_SKILL_Multiscale
+Multiscale:[NL]
+Halve damage taken if the[NL]
+user is at full HP.[X]
+
+## MSG_SKILL_MageSlayer
+MageSlayer:[NL]
++2 damage and +10% crit[NL]
+against magical enemies.[X]
+
+## MSG_SKILL_TowerShieldPlus
+TowerShield+:[NL]
+Take no damage from attacks[NL]
+received at range.[X]
+
+## MSG_SKILL_SolarPower
+Solar Power:[NL]
+If the weather is sunny, +25%[NL]
+damage when using magic.[X]
+
+## MSG_SKILL_Enrage
+Enrage:[NL]
+Inflict Berserk on the opponent.[NL]
+(Skill % activation).[X]
+
+## MSG_SKILL_Petrify
+Petrify:[NL]
+Inflict stone on the opponent.[NL]
+(Skill % activation).[X]
+
+## MSG_SKILL_AirRaidAttack_NAME
+AR-Attack[X]
+
+## MSG_SKILL_AirRaidAttack
+AirRaid-Attack:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, ATK + 5.[X]
+
+## MSG_SKILL_AirRaidAvoid_NAME
+AR-Avoid[X]
+
+## MSG_SKILL_AirRaidAvoid
+AirRaid-Avoid:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, AVO + 15.[X]
+
+## MSG_SKILL_AirRaidCrit_NAME
+AR-Crit[X]
+
+## MSG_SKILL_AirRaidCrit
+AirCrit-Attack:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, CRT + 5.[X]
+
+## MSG_SKILL_AirRaidDefense_NAME
+AR-Defense[X]
+
+## MSG_SKILL_AirRaidDefense
+AirRaid-Defense:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, DEF + 5.[X]
+
+## MSG_SKILL_AirRaidHit_NAME
+AR-Hit[X]
+
+## MSG_SKILL_AirRaidHit
+AirRaid-Hit:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, HIT + 15.[X]
+
+## MSG_SKILL_AirRaidResistance_NAME
+AR-Resist[X]
+
+## MSG_SKILL_AirRaidResistance
+AirRaid-Resistance:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, RES + 5.[X]
+
+## MSG_SKILL_AirRaidSpeed_NAME
+AR-Speed[X]
+
+## MSG_SKILL_AirRaidSpeed
+AirRaid-Speed:[NL]
+When standing on a tile the enemy[NL]
+cannot enter, SPD + 5.[X]
+
+## MSG_SKILL_FaireAnima_NAME
+FaireAnima[X]
+
+## MSG_SKILL_FaireAnima
+Faire-Anima: [NL]
+ATK +5 if the unit[NL]
+has anima magic equipped.[X]
+
+## MSG_SKILL_FaireLight_NAME
+FaireLight[X]
+
+## MSG_SKILL_FaireLight
+Faire-Light: [NL]
+ATK +5 if the unit[NL]
+has light magic equipped.[X]
+
+## MSG_SKILL_FaireDark_NAME
+FaireDark[X]
+
+## MSG_SKILL_FaireDark
+Faire-Dark: [NL]
+ATK +5 if the unit[NL]
+has dark magic equipped.[X]
+
+## MSG_SKILL_Pickup
+Pickup: Obtain the last item in the[NL]
+enemy's inventory after attacking[NL]
+and killing them. (Luck % activation)[X]
+
+## MSG_SKILL_Expertise
+Expertise:[NL]
+Halve damage taken from[NL]
+critical hits.[X]
+
+## MSG_SKILL_LadyBlade_NAME
+L-Blade[X]
+
+## MSG_SKILL_LadyBlade
+LadyBlade:[NL]
+If this unit is female,[NL]
+double weapon might.[X]
+
+## MSG_SKILL_LullDefense_NAME
+Lull-Def[X]
+
+## MSG_SKILL_LullDefense
+Lull Defense:[NL]
+Negated the effects of DEF[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullLuck_NAME
+Lull-Lck[X]
+
+## MSG_SKILL_LullLuck
+Lull Luck:[NL]
+Negated the effects of LCK[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullMagic_NAME
+Lull-Mag[X]
+
+## MSG_SKILL_LullMagic
+Lull Magic:[NL]
+Negated the effects of MAG[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullMovement_NAME
+Lull-Mov[X]
+
+## MSG_SKILL_LullMovement
+Lull Movement:[NL]
+Negated the effects of MOV[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullResistance_NAME
+Lull-Res[X]
+
+## MSG_SKILL_LullResistance
+Lull Resistance:[NL]
+Negated the effects of RES[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullSkill_NAME
+Lull-Skl[X]
+
+## MSG_SKILL_LullSkill
+Lull Skill:[NL]
+Negated the effects of SKL[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullSpectrum_NAME
+Lull-Spec[X]
+
+## MSG_SKILL_LullSpectrum
+Lull Spectrum:[NL]
+Negated the effects of any[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullSpeed_NAME
+Lull-Spd[X]
+
+## MSG_SKILL_LullSpeed
+Lull Speed:[NL]
+Negated the effects of SPD[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_LullStrength_NAME
+Lull-Str[X]
+
+## MSG_SKILL_LullStrength
+Lull Strength:[NL]
+Negated the effects of STR[NL]
+boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_SteadyBrawler_NAME
+Steady-B[X]
+
+## MSG_SKILL_SteadyBrawler
+Steady Brawler:[NL]
++25% damage if this unit can[NL]
+double, -25% damage if not.[X]
+

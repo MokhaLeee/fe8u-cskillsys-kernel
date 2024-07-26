@@ -3,14 +3,10 @@
 
 ALIGN 4
 BanimSyncHandlerGetter:
-
 #ifdef CONFIG_USE_COMBO_ATTACK
     POIN GetBanimSyncHandler_ComboAtk
 #endif
-
     // POIN FindBanimSyncHandler_test
-
-    BanimSyncHandlerGetter_END:
     WORD 0 0 0 0
 
 #include "BanimSync_Internal.event"

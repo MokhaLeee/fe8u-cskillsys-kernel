@@ -37,8 +37,18 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_FuryPlus] = {{ 4 }},
     [SID_EvenFooted] = {{ 1 }},
     [SID_OddFooted] = {{ 1 }},
+    [SID_DefenseBoost] = {{ 6 }},
+    [SID_LuckBoost] = {{ 6 }},
+    [SID_MagicBoost] = {{ 6 }},
+    [SID_MoveBoost] = {{ 6 }},
+    [SID_ResistanceBoost] = {{ 6 }},
     [SID_SpeedBoost] = {{ 6 }},
+    [SID_SkillBoost] = {{ 6 }},
+    [SID_StrengthBoost] = {{ 6 }},
+    [SID_SpectrumBoost] = {{ 6 }},
     [SID_LuckySeven] = {{ 7 }},
+    [SID_Poise] = {{ 1 }},
+    [SID_ShrewdPotential] = {{ 1 }},
 
     [SID_FortressDef] = {{ -3, +5 }},
     [SID_FortressRes] = {{ -3, +5 }},
@@ -54,6 +64,9 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_FaireAxe] = {{ 5 }},
     [SID_FaireBow] = {{ 5 }},
     [SID_FaireBMag] = {{ 5 }},
+    [SID_FaireAnima] = {{ 5 }},
+    [SID_FaireLight] = {{ 5 }},
+    [SID_FaireDark] = {{ 5 }},
 
     [SID_Avoid] = {{ 10 }},
     [SID_AvoidSword] = {{ 20 }},
@@ -98,6 +111,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_RightfulGod] = {{ 30 }},
     [SID_Hero] = {{ 30 }},
     [SID_Guts] = {{ 5 }},
+    [SID_StrongCon] = {{ 5, 5 }},
     [SID_Spurn] = {{ 5, 4 }},
     [SID_Astra] = {{ 4, 50 }},
     [SID_Aether] = {{ 80 }},
@@ -105,6 +119,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Colossus] = {{ 20 }},
     [SID_Impale] = {{ 30 }},
     [SID_DivinePulse] = {{ 30 }},
+    [SID_Multiscale] = {{ 50 }},
+    [SID_Expertise] = {{ 50 }},
 
     [SID_BlowDarting] = {{ 6 }},
     [SID_BlowDeath] = {{ 6 }},
@@ -145,6 +161,9 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Renewal] = {{ 30 }},
     [SID_Forager] = {{ 20 }},
     [SID_RainDish] = {{ 30 }},
+    [SID_Relief] = {{ 20 }},
+    [SID_Camaraderie] = {{ 10 }},
+    [SID_Amaterasu] = {{ 20 }},
 
     [SID_Anathema] = {{ 10, 10 }},
     [SID_Bond] = {{ 2, 10 }},
@@ -173,6 +192,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Demoiselle] = {{ 2 }},
     [SID_LilysPoise] = {{ 1, 3 }},
     [SID_Daunt] = {{ 5, 5 }},
+    [SID_MaleficAura] = {{ 2}},
 
     [SID_SpurStr] = {{ 4 }},
     [SID_SpurMag] = {{ 4 }},
@@ -229,4 +249,55 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_FlierFormation] = {{ 3 }},
     [SID_Aerobatics] = {{ 2 }},
     [SID_SoaringWings] = {{ 1 }},
+    [SID_MageSlayer] = {{ 2, 10 }},
+    [SID_SolarPower] = {{ 25 }},
+    [SID_Obstruct] = {{ 25, 1 }},
+    [SID_DetailedReport] = {{ 50, 2, 2 }},
+    [SID_AirRaidAttack] = {{ 5 }},
+    [SID_AirRaidAvoid] = {{ 15 }},
+    [SID_AirRaidCrit] = {{ 15 }},
+    [SID_AirRaidDefense] = {{ 5 }},
+    [SID_AirRaidHit] = {{ 15 }},
+    [SID_AirRaidResistance] = {{ 5 }},
+    [SID_AirRaidSpeed] = {{ 5 }},
+    [SID_HealingFocus] = {{ 50 }},
+    [SID_LightRune] = {{ 20 }},
+    [SID_Mine] = {{ 20 }},
+    [SID_RallyDefense] = {{ 4 }},
+    [SID_RallyLuck] = {{ 4 }},
+    [SID_RallyMagic] = {{ 4 }},
+    [SID_RallyMovement] = {{ 4 }},
+    [SID_RallyResistance] = {{ 4 }},
+    [SID_RallySkill] = {{ 4 }},
+    [SID_RallySpeed] = {{ 4 }},
+    [SID_RallyStrength] = {{ 4 }},
+    // [SID_SteadyBrawler] = {{ 4 }},
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealDefense] = {{ 6 }},
+#endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealLuck] = {{ 6 }},
+#endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealMagic] = {{ 6 }},
+#endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealResistance] = {{ 6 }},
+#endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealSkill] = {{ 6 }},
+#endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealSpeed] = {{ 6 }},
+#endif
+
+#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
+    [SID_SealStrength] = {{ 6 }},
+#endif
 };
