@@ -174,3 +174,4 @@ G-Dance[X]
 
 ## MSG_MenuSkill_GoddessDance_FRtext
 No allies are in range![X]
+
