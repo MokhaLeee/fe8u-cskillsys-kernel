@@ -240,6 +240,15 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     }
 #endif
 
+#if defined(SID_CloseCombat) && (COMMON_SKILL_VALID(SID_CloseCombat))
+    if (BattleSkillTester(&gBattleTarget, SID_CloseCombat) && gBattleStats.range == 1)
+    {
+        RegisterBattleOrderSkill(SID_CloseCombat, BORDER_VANTAGE);
+        gBattleTemporaryFlag.vantage_order = true;
+        return true;
+    }
+#endif
+
 #if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
     if (BattleSkillTester(&gBattleActor, SID_PridefulWarrior))
     {

@@ -88,3 +88,11 @@ P-Flow[X]
 Passions Flow:[NL]
 Unit doubles if currently[NL]
 gaining support bonuses.[X]
+
+## MSG_SKILL_CloseCombat_NAME
+C-Combat[X]
+
+## MSG_SKILL_CloseCombat
+Close Combat:[NL]
++2 damage if at 1 range. Your[NL]
+double attacks occur before countering.[X]
