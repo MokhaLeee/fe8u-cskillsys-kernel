@@ -271,7 +271,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_RallySkill] = {{ 4 }},
     [SID_RallySpeed] = {{ 4 }},
     [SID_RallyStrength] = {{ 4 }},
-    [SID_SteadyBrawler] = {{ 4 }},
+    // [SID_SteadyBrawler] = {{ 4 }},
 
 #if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {{ 6 }},
