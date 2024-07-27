@@ -219,6 +219,7 @@ SID_RallySkill
 SID_RallySpeed
 SID_RallyStrength
 SID_RallySpectrum
+SID_GoddessDance
 
 // Art skills
 SID_COMBAT_Galeforce

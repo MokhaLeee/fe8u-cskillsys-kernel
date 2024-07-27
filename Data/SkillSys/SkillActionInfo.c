@@ -16,4 +16,5 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
     [SID_RallySpeed] = Action_Rally,
     [SID_RallyStrength] = Action_Rally,
     [SID_RallySpectrum] = Action_Rally,
+    [SID_GoddessDance] = Action_GoddessDance,
 };

@@ -258,4 +258,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = Rally_Unhover,
     },
 #endif
+
+#if (defined(SID_GoddessDance) && COMMON_SKILL_VALID(SID_GoddessDance))
+    [SID_GoddessDance] = {
+        .name = "　女神の踊り",
+        .nameMsgId = MSG_MenuSkill_GoddessDanceName,
+        .helpMsgId = MSG_SKILL_GoddessDance,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = GoddessDance_Usability,
+        .onDraw = NULL,
+        .onSelected = GoddessDance_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = GoddessDance_Hover,
+        .onSwitchOut = GoddessDance_Unhover,
+    },
+#endif
 };

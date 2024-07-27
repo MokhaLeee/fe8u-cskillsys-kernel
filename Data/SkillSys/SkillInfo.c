@@ -3366,6 +3366,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_GoddessDance) && COMMON_SKILL_VALID(SID_GoddessDance))
+    [SID_GoddessDance] = {
+        .name = MSG_SKILL_GoddessDance_NAME,
+        .desc = MSG_SKILL_GoddessDance,
+        .icon = GFX_SkillIcon_GoddessDance,
+    },
+#endif
+
 #if (defined(SID_SteadyBrawler) && COMMON_SKILL_VALID(SID_SteadyBrawler))
     [SID_SteadyBrawler] = {
         .name = MSG_SKILL_SteadyBrawler_NAME,
