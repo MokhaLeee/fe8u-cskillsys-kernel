@@ -604,6 +604,11 @@ Moonlight:[NL]
 This unit cannot double, but[NL]
 the enemy cannot counterattack.[X]
 
+## MSG_SKILL_BlackMagic
+BlackMagic:[NL]
+Inflict a random bad status on the enemy.[NL]
+(Skill % activation).[X]
+
 ## MSG_SKILL_LastWord
 LastWord:[NL]
 If the enemy doubles,[NL]
