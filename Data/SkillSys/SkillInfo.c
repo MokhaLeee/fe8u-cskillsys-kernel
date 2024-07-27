@@ -2867,6 +2867,8 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_LastWord] = {
          .desc = MSG_SKILL_LastWord,
          .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 
 #if (defined(SID_PowerStaff) && COMMON_SKILL_VALID(SID_PowerStaff))
     [SID_PowerStaff] = {
