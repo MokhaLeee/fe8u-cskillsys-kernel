@@ -821,3 +821,11 @@ Steady-B[X]
 Steady Brawler:[NL]
 +25% damage if this unit can[NL]
 double, -25% damage if not.[X]
+
+## MSG_SKILL_LiquidOoze_NAME
+Liquid-O[X]
+
+## MSG_SKILL_LiquidOoze
+Liquid Ooze:[NL]
+Attackers trying to gain HP from[NL]
+this unit lose as much instead.[X]

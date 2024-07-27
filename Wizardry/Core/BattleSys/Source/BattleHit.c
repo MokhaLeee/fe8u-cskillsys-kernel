@@ -732,12 +732,33 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 #endif
         {
+#if (defined(SID_LiquidOoze) && (COMMON_SKILL_VALID(SID_LiquidOoze)))
+            if (BattleSkillTester(defender, SID_LiquidOoze))
+            {
+                if ((attacker->unit.curHP - gBattleStats.damage) <= 0)
+                    attacker->unit.curHP = 1;
+                else
+                    attacker->unit.curHP -= gBattleStats.damage;
+
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+            }
+            else 
+            {
+                if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
+                    attacker->unit.curHP = attacker->unit.maxHP;
+                else
+                    attacker->unit.curHP += gBattleStats.damage;
+
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+            }
+#else
             if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
                 attacker->unit.curHP = attacker->unit.maxHP;
             else
                 attacker->unit.curHP += gBattleStats.damage;
 
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+#endif      
         }
 
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_PETRIFY)
