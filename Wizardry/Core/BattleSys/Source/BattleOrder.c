@@ -276,16 +276,6 @@ void BattleUnwind(void)
         return;
     }
 
-    /**
-     * BattleGlobalFlag should not clear in battle routine
-     * because combat art flag is configured in pre-combat.
-     * It is cleared in:
-     *  a). post action
-     *  b). game init
-     */
-
-    // ClearBattleGlobalFlags();
-
     if (CheckDesperationOrder())
         round_mask |= UNWIND_DESPERA;
 

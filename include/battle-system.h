@@ -42,18 +42,6 @@ extern struct WeaponTriangleItemConf const * const gpWeaponTriangleItemConf;
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
 
-/**
- * Used for post-action
- *
- * 1. gBattleHitArrayRe: 0x80
- * 2. gBattleActorGlobalFlag: 0x10
- * 3: gBattleTargetGlobalFlag: 0x10
- */
-extern u8 BattleRoundInfoBak[0xA0];
-void RestoreBattleRoundInfo(void);
-
-extern struct BattleHit gBattleHitArrayBak[NEW_BATTLE_HIT_MAX]; // used for post-action banim
-
 bool CheckBattleHitOverflow(void);
 bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target);
 int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender);

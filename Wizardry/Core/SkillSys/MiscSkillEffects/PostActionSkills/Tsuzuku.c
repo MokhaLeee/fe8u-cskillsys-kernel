@@ -29,7 +29,6 @@ bool PostActionTsuzuku(ProcPtr parent)
         if (SkillTester(unit, SID_FailGale) && !gBattleActor.nonZeroDamage)
             goto L_exec_rafrain_action_anim;
 #endif
-
         if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enimy_defeated)
             goto L_exec_rafrain_action_anim;
 
