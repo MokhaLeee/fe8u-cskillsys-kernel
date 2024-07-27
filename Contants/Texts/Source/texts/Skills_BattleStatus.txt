@@ -609,6 +609,11 @@ BlackMagic:[NL]
 Inflict a random bad status on the enemy.[NL]
 (Skill % activation).[X]
 
+## MSG_SKILL_LastWord
+LastWord:[NL]
+If the enemy doubles,[NL]
+this unit doubles.[X]
+
 ## MSG_SKILL_Multiscale
 Multiscale:[NL]
 Halve damage taken if the[NL]
@@ -816,4 +821,3 @@ Steady-B[X]
 Steady Brawler:[NL]
 +25% damage if this unit can[NL]
 double, -25% damage if not.[X]
-

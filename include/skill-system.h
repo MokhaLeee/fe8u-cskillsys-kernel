@@ -274,6 +274,10 @@ int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
 u8 Mine_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Rally_Usability(const struct MenuItemDef * def, int number);
 u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+int GoddessDance_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int GoddessDance_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
+u8 GoddessDance_Usability(const struct MenuItemDef * def, int number);
+u8 GoddessDance_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -281,3 +285,4 @@ bool Action_Teleportation(ProcPtr parent);
 bool Action_LightRune(ProcPtr parent);
 bool Action_Mine(ProcPtr parent);
 bool Action_Rally(ProcPtr parent);
+bool Action_GoddessDance(ProcPtr parent);

@@ -113,6 +113,7 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 
     [CLASS_DANCER] = {
         SID_Dance,
+        SID_GoddessDance,
     },
 
     [CLASS_SOLDIER] = {

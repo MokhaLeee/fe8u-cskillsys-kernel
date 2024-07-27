@@ -71,6 +71,7 @@ SID_AdvantageChaser
 SID_Nonconforming
 SID_Moonlight
 // SID_BlackMagic
+// SID_LastWord
 SID_Multiscale
 SID_PridefulWarrior
 SID_MageSlayer
@@ -220,6 +221,7 @@ SID_RallySkill
 SID_RallySpeed
 SID_RallyStrength
 SID_RallySpectrum
+SID_GoddessDance
 
 // Art skills
 SID_COMBAT_Galeforce

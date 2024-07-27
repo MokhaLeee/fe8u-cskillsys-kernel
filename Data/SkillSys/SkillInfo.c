@@ -2868,6 +2868,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_LastWord) && COMMON_SKILL_VALID(SID_LastWord))
+    [SID_LastWord] = {
+         .desc = MSG_SKILL_LastWord,
+         .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_PowerStaff) && COMMON_SKILL_VALID(SID_PowerStaff))
     [SID_PowerStaff] = {
         .desc = MSG_SKILL_PowerStaff,
@@ -3368,6 +3375,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_ShrewdPotential_NAME,
         .desc = MSG_SKILL_ShrewdPotential,
         .icon = GFX_SkillIcon_ShrewdPotential,
+    },
+#endif
+
+#if (defined(SID_GoddessDance) && COMMON_SKILL_VALID(SID_GoddessDance))
+    [SID_GoddessDance] = {
+        .name = MSG_SKILL_GoddessDance_NAME,
+        .desc = MSG_SKILL_GoddessDance,
+        .icon = GFX_SkillIcon_GoddessDance,
     },
 #endif
 
