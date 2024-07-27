@@ -604,6 +604,11 @@ Moonlight:[NL]
 This unit cannot double, but[NL]
 the enemy cannot counterattack.[X]
 
+## MSG_SKILL_LastWord
+LastWord:[NL]
+If the enemy doubles,[NL]
+this unit doubles.[X]
+
 ## MSG_SKILL_Multiscale
 Multiscale:[NL]
 Halve damage taken if the[NL]
