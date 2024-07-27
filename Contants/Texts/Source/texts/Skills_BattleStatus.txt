@@ -803,3 +803,11 @@ Lull-Str[X]
 Lull Strength:[NL]
 Negated the effects of STR[NL]
 boosting rally skills on the enemy.[X]
+
+## MSG_SKILL_SteadyBrawler_NAME
+Steady-B[X]
+
+## MSG_SKILL_SteadyBrawler
+Steady Brawler:[NL]
++25% damage if this unit can[NL]
+double, -25% damage if not.[X]
