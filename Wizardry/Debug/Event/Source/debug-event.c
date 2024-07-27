@@ -363,6 +363,9 @@ static const EventScr EventScr_Beginning[] = {
     // PREP
     CALL(EventScr_08591FD8)
 
+    SVAL(EVT_SLOT_1, 2)
+    SET_HP(CHARACTER_EIRIKA)
+
     SVAL(EVT_SLOT_1, 12)
     SET_HP(CHARACTER_KNOLL)
 

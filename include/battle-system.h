@@ -162,7 +162,7 @@ enum {
     UNWIND_DOUBLE_TAR = 1 << 3,
 };
 
-extern const u8 BattleUnwindConfig[14][4];
+extern const u8 BattleUnwindConfig[16][4];
 
 struct EfxSkillQueue {
     u8 cur, max;
