@@ -1,17 +1,13 @@
 #include "common-chax.h"
-#include "debuff.h"
 #include "weapon-range.h"
 #include "kernel-lib.h"
-#include "map-anims.h"
 #include "skill-system.h"
-#include "unit-expa.h"
-#include "action-expa.h"
 #include "constants/skills.h"
 #include "constants/texts.h"
 
 STATIC_DECLAR void AddTargetForGoddessDance(struct Unit * unit)
 {
-    if (UNIT_ALIVE(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index))
+    if (UNIT_ALIVE(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index) && !!(unit->state & US_UNSELECTABLE))
         AddTarget(unit->xPos, unit->yPos, unit->index, 1);
 }
 
@@ -70,7 +66,13 @@ u8 GoddessDance_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
 static void callback_anim(ProcPtr proc)
 {
-    StartNinianPrayfx(proc, SCREEN_TILE_X(gActiveUnit->xPos), SCREEN_TILE_Y(gActiveUnit->yPos));
+    PlaySoundEffect(0x269);
+    Proc_StartBlocking(ProcScr_DanceringAnim, proc);
+
+    BG_SetPosition(
+        BG_0,
+        -SCREEN_TILE_IX(gActiveUnit->xPos - 1),
+        -SCREEN_TILE_IX(gActiveUnit->yPos - 2));
 }
 
 static void callback_exec(ProcPtr proc)

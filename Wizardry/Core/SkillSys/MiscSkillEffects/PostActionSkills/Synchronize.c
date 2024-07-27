@@ -40,8 +40,8 @@ STATIC_DECLAR void PostActionSynchronize_StartTargetAnim(ProcPtr proc)
 
         BG_SetPosition(
             BG_0,
-            -SCREEN_TILE_IX(unit_tar->xPos - 1),
-            -SCREEN_TILE_IX(unit_tar->yPos - 1));
+            -SCREEN_TILE_IX(unit_tar->xPos),
+            -SCREEN_TILE_IX(unit_tar->yPos));
     }
 }
 
