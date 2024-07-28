@@ -2,11 +2,11 @@
 #define STATSCREEN_INSTALLED
 
 #include "DrawPages/DrawPage1.lyn.event"
-#include "DrawPages/DrawPage3.lyn.event"
 #include "DrawPages/DrawPage4.lyn.event"
 #include "DrawPages/HelpBox.lyn.event"
 #include "DrawPages/LynJump.event"
 
+#include "DrawSkillPage/DrawSkillPage.event"
 #include "DrawMorePage/DrawMorePage.event"
 
 #include "MiscFix/HelpBoxFix.lyn.event"
