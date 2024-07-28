@@ -16,7 +16,7 @@ void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc);
 
 void StartSkillScreenHelp(int pageid, struct Proc * proc);
 
-void DrawPage4_MokhaPlan(void);
+void DrawSkillPage_MokhaPlan(void);
 void HbPopuplate_Page4MokhaPlan(struct HelpBoxProc * proc);
 void HbRedirect_Page4MokhaPlan(struct HelpBoxProc * proc);
-extern _DECL_INFO * const RTextPage4_MokhaPlan;
+extern _DECL_INFO * const RTextSkillPage_MokhaPlan;
