@@ -93,6 +93,6 @@ gaining support bonuses.[X]
 C-Combat[X]
 
 ## MSG_SKILL_CloseCombat
-Close Combat:[NL]
-+2 damage if at 1 range. Your[NL]
-double attacks occur before countering.[X]
+Close Combat: +2 damage if at[NL]
+1 range. Your double attacks[NL]
+occur before countering.[X]
