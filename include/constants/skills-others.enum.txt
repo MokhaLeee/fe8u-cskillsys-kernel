@@ -111,6 +111,7 @@ SID_ShrewdPotential
 // SID_SteadyBrawler
 SID_KeepUp
 SID_LiquidOoze
+SID_CloseCombat
 
 // Devil skills
 SID_DevilsPact

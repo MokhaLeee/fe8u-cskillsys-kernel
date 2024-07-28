@@ -23,5 +23,6 @@ B9:$COMBO combo.bool.txt=guaranteed_lvup
 B10:$COMBO combo.lvupmode.txt=lvup_mode_tutorial
 B11:$COMBO combo.lvupmode.txt=lvup_mode_normal
 B12:$COMBO combo.lvupmode.txt=lvup_mode_hard
+B13:$COMBO combo.page4style.txt=page4_style
 
 INFO=Editor: gKernelDesigerConfig

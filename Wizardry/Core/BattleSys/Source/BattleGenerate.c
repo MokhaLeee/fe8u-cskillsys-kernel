@@ -5,6 +5,7 @@
 void BattleGenerate(struct Unit * actor, struct Unit * target)
 {
 #if CHAX
+    ClearBattleGlobalFlags();
     PreBattleGenerateHook();
 #endif
 
