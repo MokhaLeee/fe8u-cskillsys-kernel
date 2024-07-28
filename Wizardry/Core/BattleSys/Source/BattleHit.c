@@ -685,7 +685,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             attacker->wexpMultiplier += 2;
         else
             attacker->wexpMultiplier++;
-
 #else
         attacker->wexpMultiplier++;
 #endif
