@@ -217,6 +217,15 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
         }
     }
 #endif
+
+#if defined(SID_CloseCombat) && (COMMON_SKILL_VALID(SID_CloseCombat))
+    if (BattleSkillTester(&gBattleActor, SID_CloseCombat) && gBattleStats.range == 1)
+    {
+        gBattleTemporaryFlag.desperation_order = true;
+        RegisterBattleOrderSkill(SID_CloseCombat, BORDER_DESPERATION);
+        return true;
+    }
+#endif
     return false;
 }
 
