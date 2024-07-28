@@ -81,6 +81,11 @@
 #define CONFIG_LVUP_MODE_HARD 1
 
 /**
+ * Page4 styles
+ */
+#define CONFIG_PAGE4_MOKHA_PLAN 0
+
+/**
  * Install DrawMapActionAnimation
  */
 // #define CONFIG_INSTALL_MAPACTIONANIM

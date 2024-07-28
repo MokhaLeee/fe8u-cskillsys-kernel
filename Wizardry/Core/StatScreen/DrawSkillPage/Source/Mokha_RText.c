@@ -6,7 +6,7 @@ static _DECL_INFO RText_Sword, RText_Lance, RText_Axe, RText_Bow, RText_Anima, R
 static _DECL_INFO RText_Skill1, RText_Skill2, RText_Skill3, RText_Skill4, RText_Skill5, RText_Skill6, RText_Skill7, RText_Skill8;
 static _DECL_INFO RText_Name, RText_Class, RText_Level, RText_Exp, RText_Hp;
 
-_DECL_INFO * const RTextPageSkill = &RText_Sword;
+_DECL_INFO * const RTextPage4_MokhaPlan = &RText_Sword;
 
 static _DECL_INFO RText_Sword = {
     NULL, &RText_Lance, &RText_Name, &RText_Skill1,
@@ -60,49 +60,49 @@ static _DECL_INFO RText_Staff = {
 static _DECL_INFO RText_Skill1 = {
     &RText_Skill8, &RText_Skill2, &RText_Sword, &RText_Name,
     0xA6, 0x18, 0,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 static _DECL_INFO RText_Skill2 = {
     &RText_Skill1, &RText_Skill3, &RText_Lance, &RText_Name,
     0xA6, 0x28, 1,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 static _DECL_INFO RText_Skill3 = {
     &RText_Skill2, &RText_Skill4, &RText_Axe, &RText_Name,
     0xA6, 0x38, 2,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 static _DECL_INFO RText_Skill4 = {
     &RText_Skill3, &RText_Skill5, &RText_Bow, &RText_Name,
     0xA6, 0x48, 3,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 static _DECL_INFO RText_Skill5 = {
     &RText_Skill4, &RText_Skill6, &RText_Anima, &RText_Name,
     0xA6, 0x58, 4,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 static _DECL_INFO RText_Skill6 = {
     &RText_Skill5, &RText_Skill7, &RText_Light, &RText_Class,
     0xA6, 0x68, 5,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 static _DECL_INFO RText_Skill7 = {
     &RText_Skill6, &RText_Skill8, &RText_Dark, &RText_Level,
     0xA6, 0x78, 6,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 static _DECL_INFO RText_Skill8 = {
     &RText_Skill7, &RText_Skill1, &RText_Staff, &RText_Hp,
     0xA6, 0x88, 7,
-    HbRedirect_Page3Skill, HbPopuplate_Page3Skill
+    HbRedirect_Page4MokhaPlan, HbPopuplate_Page4MokhaPlan
 };
 
 /* Page left */

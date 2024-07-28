@@ -1,11 +1,12 @@
 #include "common-chax.h"
 #include "hooks.h"
 #include "stat-screen.h"
+#include "skill-system.h"
 #include "constants/texts.h"
 
 #define PAGE4_PINFO_MAX 8
 
-STATIC_DECLAR void DrawPage4SupportBonus(void)
+static void DrawPage4SupportBonus(void)
 {
     struct SupportBonuses bonuses;
     struct Unit * unit = gStatScreen.unit;
@@ -94,7 +95,7 @@ STATIC_DECLAR void DrawPage4SupportBonus(void)
         bonuses.bonusDodge);
 }
 
-STATIC_DECLAR void DrawPage4SupportPInfo(void)
+static void DrawPage4SupportPInfo(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
@@ -148,7 +149,7 @@ STATIC_DECLAR void DrawPage4SupportPInfo(void)
     }
 }
 
-void DrawPage4Rework(void)
+void DrawPage4_MokhaPlan(void)
 {
     int i;
     for (i = STATSCREEN_TEXT_POWLABEL; i < STATSCREEN_TEXT_BSRANGE; i++)
@@ -164,4 +165,36 @@ void DrawPage4Rework(void)
 
     DrawPage4SupportBonus();
     DrawPage4SupportPInfo();
+}
+
+/* HelpBox API */
+void HbPopuplate_Page4MokhaPlan(struct HelpBoxProc * proc)
+{
+    struct SkillList * list = GetUnitSkillList(gStatScreen.unit);
+    proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
+}
+
+void HbRedirect_Page4MokhaPlan(struct HelpBoxProc * proc)
+{
+    if (proc->info->mid < GetUnitSkillList(gStatScreen.unit)->amt)
+        return;
+
+    switch (proc->moveKey) {
+    case DPAD_DOWN:
+        TryRelocateHbDown(proc);
+        break;
+
+    case DPAD_UP:
+        TryRelocateHbUp(proc);
+        break;
+
+    case DPAD_LEFT:
+        TryRelocateHbLeft(proc);
+        break;
+
+    case DPAD_RIGHT:
+    default:
+        TryRelocateHbRight(proc);
+        break;
+    } // switch
 }
