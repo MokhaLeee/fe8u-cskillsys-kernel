@@ -56,7 +56,6 @@ STATIC_DECLAR void MapAnimHurt_ExecBmHeal(struct ProcMapAnimHurt * proc)
 STATIC_DECLAR void MapAnimHurt_End(struct ProcMapAnimHurt * proc)
 {
     MapAnim_CommonEnd();
-    RestoreBattleRoundInfo();
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimHurt[] = {

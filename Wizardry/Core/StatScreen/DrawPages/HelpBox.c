@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "stat-screen.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 
 /* LynJump */
@@ -20,7 +21,7 @@ void StartStatScreenHelp(int pageid, struct Proc * proc)
             break;
 
         case STATSCREEN_PAGE_2:
-            gStatScreen.help = RTextPageSkill;
+            StartSkillScreenHelp(pageid, proc);
             break;
 
         case 3:

@@ -1,8 +1,8 @@
 #include "DrawPages/HelpBoxPage1.lyn.event"
-#include "DrawPages/HelpBoxPage3.lyn.event"
 #include "DrawPages/HelpBoxPage4.event"
 
 #include "DrawMorePage/data.event"
+#include "DrawSkillPage/data.event"
 
 ALIGN 4
 gStatScreenDrawPages:

@@ -4,8 +4,7 @@
 
 #define STAT_SKILL_NUM_MAX 8
 
-/* LynJump */
-void DisplayPage2(void)
+void DrawSkillPage_MokhaPlan(void)
 {
     int i;
     const u8 text_id[8] = {
@@ -49,4 +48,37 @@ void DisplayPage2(void)
             TEXT_COLOR_SYSTEM_WHITE, 0, 0,
             GetSkillNameStr(list->sid[i]));
     }
+}
+
+
+/* HelpBox API */
+void HbPopuplate_Page4MokhaPlan(struct HelpBoxProc * proc)
+{
+    struct SkillList * list = GetUnitSkillList(gStatScreen.unit);
+    proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
+}
+
+void HbRedirect_Page4MokhaPlan(struct HelpBoxProc * proc)
+{
+    if (proc->info->mid < GetUnitSkillList(gStatScreen.unit)->amt)
+        return;
+
+    switch (proc->moveKey) {
+    case DPAD_DOWN:
+        TryRelocateHbDown(proc);
+        break;
+
+    case DPAD_UP:
+        TryRelocateHbUp(proc);
+        break;
+
+    case DPAD_LEFT:
+        TryRelocateHbLeft(proc);
+        break;
+
+    case DPAD_RIGHT:
+    default:
+        TryRelocateHbRight(proc);
+        break;
+    } // switch
 }

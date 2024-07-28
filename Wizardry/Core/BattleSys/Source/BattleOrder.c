@@ -217,6 +217,15 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
         }
     }
 #endif
+
+#if defined(SID_CloseCombat) && (COMMON_SKILL_VALID(SID_CloseCombat))
+    if (BattleSkillTester(&gBattleActor, SID_CloseCombat) && gBattleStats.range == 1)
+    {
+        gBattleTemporaryFlag.desperation_order = true;
+        RegisterBattleOrderSkill(SID_CloseCombat, BORDER_DESPERATION);
+        return true;
+    }
+#endif
     return false;
 }
 
@@ -275,16 +284,6 @@ void BattleUnwind(void)
         gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
         return;
     }
-
-    /**
-     * BattleGlobalFlag should not clear in battle routine
-     * because combat art flag is configured in pre-combat.
-     * It is cleared in:
-     *  a). post action
-     *  b). game init
-     */
-
-    // ClearBattleGlobalFlags();
 
     if (CheckDesperationOrder())
         round_mask |= UNWIND_DESPERA;

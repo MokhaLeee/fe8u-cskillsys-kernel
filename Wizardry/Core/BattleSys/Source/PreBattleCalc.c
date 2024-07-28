@@ -1207,6 +1207,13 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 attacker->battleSpeed += SKILL_EFF0(SID_AirRaidSpeed);
             break;
 #endif
+
+#if defined(SID_CloseCombat) && (COMMON_SKILL_VALID(SID_CloseCombat))
+        case SID_CloseCombat:
+            if (gBattleStats.range == 1)
+                attacker->battleAttack += SKILL_EFF0(SID_CloseCombat);
+            break;
+#endif
         }
     }
 
