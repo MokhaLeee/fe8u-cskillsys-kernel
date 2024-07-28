@@ -645,8 +645,11 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
     {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
+        if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
+            CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
+        {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
+        }
         else
         {
             RegisterHitCnt(attacker, true);
