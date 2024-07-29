@@ -1,5 +1,5 @@
 ## MSG_SkillEffect_PosReturn_Confirm
 Return?        [NL][Yes][X]
 
-## MSG_SkillEffect_PosSwap_Confirm
+## MSG_SkillEffect_Lunge_Confirm
 Swap position?        [NL][Yes][X]

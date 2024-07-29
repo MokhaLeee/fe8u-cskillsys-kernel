@@ -747,10 +747,10 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_PosSwap) && COMMON_SKILL_VALID(SID_PosSwap))
-    [SID_PosSwap] = {
-        .desc = MSG_SKILL_PosSwap,
-        .icon = GFX_SkillIcon_PosSwap,
+#if (defined(SID_Lunge) && COMMON_SKILL_VALID(SID_Lunge))
+    [SID_Lunge] = {
+        .desc = MSG_SKILL_Lunge,
+        .icon = GFX_SkillIcon_Lunge,
     },
 #endif
 
