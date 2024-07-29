@@ -2,6 +2,8 @@
 #include "stat-screen.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
+#include "combat-art.h"
+#include "help-box.h"
 
 /* LynJump */
 void DisplayPage2(void)
@@ -10,6 +12,10 @@ void DisplayPage2(void)
     case CONFIG_PAGE4_MOKHA_PLAN_A:
     default:
         DrawSkillPage_MokhaPlanA();
+        break;
+
+    case CONFIG_PAGE4_MOKHA_PLAN_B:
+        DrawSkillPage_MokhaPlanB();
         break;
     }
 }
@@ -20,6 +26,10 @@ void StartSkillScreenHelp(int pageid, struct Proc * proc)
     case CONFIG_PAGE4_MOKHA_PLAN_A:
     default:
         gStatScreen.help = RTextSkillPage_MokhaPlanA;
+        break;
+
+    case CONFIG_PAGE4_MOKHA_PLAN_B:
+        gStatScreen.help = RTextSkillPage_MokhaPlanB;
         break;
     }
 }
@@ -53,5 +63,40 @@ void HbRedirect_SkillPageCommon(struct HelpBoxProc * proc)
     default:
         TryRelocateHbRight(proc);
         break;
-    } // switch
+    }
+}
+
+void HbPopuplate_ArtPageCommon(struct HelpBoxProc * proc)
+{
+    struct CombatArtList * list = AutoGetCombatArtList(gStatScreen.unit);
+    int cid = list->cid[proc->info->mid];
+
+    proc->item = cid;
+    proc->mid = GetCombatArtDesc(cid);
+    sHelpBoxType = NEW_HB_COMBAT_ART_BKSEL;
+}
+
+void HbRedirect_ArtPageCommon(struct HelpBoxProc * proc)
+{
+    if (proc->info->mid < AutoGetCombatArtList(gStatScreen.unit)->amt)
+        return;
+
+    switch (proc->moveKey) {
+    case DPAD_DOWN:
+        TryRelocateHbDown(proc);
+        break;
+
+    case DPAD_UP:
+        TryRelocateHbUp(proc);
+        break;
+
+    case DPAD_LEFT:
+        TryRelocateHbLeft(proc);
+        break;
+
+    case DPAD_RIGHT:
+    default:
+        TryRelocateHbRight(proc);
+        break;
+    }
 }

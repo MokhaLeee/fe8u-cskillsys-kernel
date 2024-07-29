@@ -101,6 +101,11 @@ struct CombatArtList {
 struct CombatArtList * GetCombatArtList(struct Unit * unit, u8 wtype);
 void ResetCombatArtList(void);
 
+static inline struct CombatArtList * AutoGetCombatArtList(struct Unit * unit)
+{
+    return GetCombatArtList(unit, GetItemType(GetUnitEquippedWeapon(unit)));
+}
+
 struct CombatArtRomTable {
     u8 cid_sword[8];
     u8 cid_lance[8];
@@ -121,7 +126,7 @@ u8 GetCombatArtByTargetSelIndex(void);
 
 /* HelpBox related */
 void DrawHelpBoxCombatArtBkselLabels(void);
-void DrawHelpBoxCombatArtBkselStats(void);
+void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro * proc);
 
 /* EfxSkill */
 extern const struct SkillAnimInfo gEfxCombatArtAnimInfos[0x100];

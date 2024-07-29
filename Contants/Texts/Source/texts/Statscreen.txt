@@ -35,3 +35,9 @@ strikes. Affects enemy's crit %.[X]
 
 ## MSG_MSS_TALK
 Talk[X]
+
+## MSG_MSS_SKILLS
+Skills[X]
+
+## MSG_MSS_ARTS
+Arts[X]
