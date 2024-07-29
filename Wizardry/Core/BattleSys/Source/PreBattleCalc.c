@@ -1214,6 +1214,10 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 attacker->battleAttack += SKILL_EFF0(SID_CloseCombat);
             break;
 #endif
+
+        case MAX_SKILL_NUM:
+        default:
+            break;
         }
     }
 
