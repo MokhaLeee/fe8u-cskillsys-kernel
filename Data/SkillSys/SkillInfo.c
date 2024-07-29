@@ -3418,4 +3418,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_CloseCombat,
     },
 #endif
+
+#if (defined(SID_Eclipse) && COMMON_SKILL_VALID(SID_Eclipse))
+    [SID_Eclipse] = {
+        .desc = MSG_SKILL_Eclipse,
+        .icon = GFX_SkillIcon_Eclipse,
+    },
+#endif
 };
