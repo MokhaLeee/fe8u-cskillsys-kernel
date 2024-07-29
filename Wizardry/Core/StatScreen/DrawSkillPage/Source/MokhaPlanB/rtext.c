@@ -114,19 +114,19 @@ static _DECL_INFO RText_Skill9 = {
 };
 
 static _DECL_INFO RText_Skill10 = {
-    &RText_Skill2, &RText_Skill14, &RText_Skill9, &RText_Skill11,
+    &RText_Skill6, &RText_Skill14, &RText_Skill9, &RText_Skill11,
     0xB6, 0x48, 9,
     HbRedirect_SkillPageCommon, HbPopuplate_SkillPageCommon
 };
 
 static _DECL_INFO RText_Skill11 = {
-    &RText_Skill3, &RText_Skill15, &RText_Skill10, &RText_Skill12,
+    &RText_Skill7, &RText_Skill15, &RText_Skill10, &RText_Skill12,
     0xC6, 0x48, 10,
     HbRedirect_SkillPageCommon, HbPopuplate_SkillPageCommon
 };
 
 static _DECL_INFO RText_Skill12 = {
-    &RText_Skill4, &RText_Skill16, &RText_Skill11, &RText_Name,
+    &RText_Skill8, &RText_Skill16, &RText_Skill11, &RText_Name,
     0xD6, 0x48, 11,
     HbRedirect_SkillPageCommon, HbPopuplate_SkillPageCommon
 };
