@@ -69,6 +69,8 @@ bool BattleComboGenerateHits(void)
     int i;
     u32 attrs;
 
+    ResetComboAtkList();
+
     if (!gpKernelDesigerConfig->combo_attack_en)
         return false;
 
