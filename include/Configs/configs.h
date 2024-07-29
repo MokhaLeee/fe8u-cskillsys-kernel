@@ -83,7 +83,7 @@
 /**
  * Page4 styles
  */
-#define CONFIG_PAGE4_MOKHA_PLAN 0
+#define CONFIG_PAGE4_MOKHA_PLAN_A 0
 
 /**
  * Install DrawMapActionAnimation

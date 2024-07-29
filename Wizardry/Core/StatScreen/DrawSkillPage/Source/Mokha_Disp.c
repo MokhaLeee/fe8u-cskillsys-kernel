@@ -4,7 +4,7 @@
 
 #define STAT_SKILL_NUM_MAX 8
 
-void DrawSkillPage_MokhaPlan(void)
+void DrawSkillPage_MokhaPlanA(void)
 {
     int i;
     const u8 text_id[8] = {
@@ -52,13 +52,13 @@ void DrawSkillPage_MokhaPlan(void)
 
 
 /* HelpBox API */
-void HbPopuplate_Page4MokhaPlan(struct HelpBoxProc * proc)
+void HbPopuplate_SkillPageMokhaPlanA(struct HelpBoxProc * proc)
 {
     struct SkillList * list = GetUnitSkillList(gStatScreen.unit);
     proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
 }
 
-void HbRedirect_Page4MokhaPlan(struct HelpBoxProc * proc)
+void HbRedirect_SkillPageMokhaPlanA(struct HelpBoxProc * proc)
 {
     if (proc->info->mid < GetUnitSkillList(gStatScreen.unit)->amt)
         return;

@@ -6,9 +6,9 @@
 void DisplayPage2(void)
 {
     switch (gpKernelDesigerConfig->page4_style) {
-    case CONFIG_PAGE4_MOKHA_PLAN:
+    case CONFIG_PAGE4_MOKHA_PLAN_A:
     default:
-        DrawSkillPage_MokhaPlan();
+        DrawSkillPage_MokhaPlanA();
         break;
     }
 }
@@ -16,9 +16,9 @@ void DisplayPage2(void)
 void StartSkillScreenHelp(int pageid, struct Proc * proc)
 {
     switch (gpKernelDesigerConfig->page4_style) {
-    case CONFIG_PAGE4_MOKHA_PLAN:
+    case CONFIG_PAGE4_MOKHA_PLAN_A:
     default:
-        gStatScreen.help = RTextSkillPage_MokhaPlan;
+        gStatScreen.help = RTextSkillPage_MokhaPlanA;
         break;
     }
 }

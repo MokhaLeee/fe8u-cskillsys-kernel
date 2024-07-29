@@ -34,5 +34,5 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
     .lvup_mode_normal   = CONFIG_LVUP_MODE_NORMAL,
     .lvup_mode_hard     = CONFIG_LVUP_MODE_HARD,
 
-    .page4_style = CONFIG_PAGE4_MOKHA_PLAN,
+    .page4_style = CONFIG_PAGE4_MOKHA_PLAN_A,
 };
