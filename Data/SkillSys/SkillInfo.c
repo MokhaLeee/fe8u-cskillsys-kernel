@@ -3408,6 +3408,8 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_LiquidOoze_NAME,
         .desc = MSG_SKILL_LiquidOoze,
         .icon = GFX_SkillIcon_LiquidOoze,
+    },
+#endif
 
 #if (defined(SID_CloseCombat) && COMMON_SKILL_VALID(SID_CloseCombat))
     [SID_CloseCombat] = {
