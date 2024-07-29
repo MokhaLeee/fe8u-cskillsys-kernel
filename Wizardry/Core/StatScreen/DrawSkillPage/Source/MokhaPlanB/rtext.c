@@ -182,25 +182,25 @@ static _DECL_INFO RText_Art4 = {
 
 static _DECL_INFO RText_Art5 = {
     &RText_Art1, &RText_Skill1, &RText_Dark, &RText_Art6,
-    0xA6, 0x78, 4,
+    0xA6, 0x88, 4,
     HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art6 = {
     &RText_Art2, &RText_Skill2, &RText_Art5, &RText_Art7,
-    0xB6, 0x78, 5,
+    0xB6, 0x88, 5,
     HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art7 = {
     &RText_Art3, &RText_Skill3, &RText_Art6, &RText_Art8,
-    0xC6, 0x78, 6,
+    0xC6, 0x88, 6,
     HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art8 = {
     &RText_Art4, &RText_Skill4, &RText_Art7, &RText_Hp,
-    0xD6, 0x78, 7,
+    0xD6, 0x88, 7,
     HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
 };
 
