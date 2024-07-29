@@ -128,7 +128,7 @@ void HelpBoxDrawstring(struct ProcHelpBoxIntro * proc)
         /* Hack here */
         if (NEW_HB_COMBAT_ART_BKSEL == sHelpBoxType && !GetCombatArtInfo(proc->item)->battle_status.display_en_n)
         {
-            DrawHelpBoxCombatArtBkselStats();
+            DrawHelpBoxCombatArtBkselStats(proc);
         }
     }
 

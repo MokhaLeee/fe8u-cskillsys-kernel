@@ -13,10 +13,14 @@ extern struct {
 } gStatScreenStExpa;
 
 void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc);
-
 void StartSkillScreenHelp(int pageid, struct Proc * proc);
-
-void DrawSkillPage_MokhaPlanA(void);
 void HbPopuplate_SkillPageCommon(struct HelpBoxProc * proc);
 void HbRedirect_SkillPageCommon(struct HelpBoxProc * proc);
+void HbPopuplate_ArtPageCommon(struct HelpBoxProc * proc);
+void HbRedirect_ArtPageCommon(struct HelpBoxProc * proc);
+
+void DrawSkillPage_MokhaPlanA(void);
 extern _DECL_INFO * const RTextSkillPage_MokhaPlanA;
+
+void DrawSkillPage_MokhaPlanB(void);
+extern _DECL_INFO * const RTextSkillPage_MokhaPlanB;

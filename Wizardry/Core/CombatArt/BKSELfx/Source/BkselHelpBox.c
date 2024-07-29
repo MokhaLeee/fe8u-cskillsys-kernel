@@ -61,10 +61,9 @@ void DrawHelpBoxCombatArtBkselLabels(void)
     Text_InsertDrawString(&gHelpBoxSt.text[1], 0x60, TEXT_COLOR_47CF, GetStringFromIndex(0x51E)); // "dodge"
 }
 
-void DrawHelpBoxCombatArtBkselStats(void)
+void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro * proc)
 {
-    int cid = GetCombatArtInForce(gActiveUnit);
-    const struct CombatArtInfo * info = GetCombatArtInfo(cid);
+    const struct CombatArtInfo * info = GetCombatArtInfo(proc->item);
 
     Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[0], 0x20, TEXT_COLOR_456F, info->battle_status.atk);
     Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[0], 0x50, TEXT_COLOR_456F, info->cost);

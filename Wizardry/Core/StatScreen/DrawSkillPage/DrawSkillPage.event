@@ -3,3 +3,4 @@
 
 /* Misc plans */
 #include "Source/MokhaPlanA/disp.lyn.event"
+#include "Source/MokhaPlanB/disp.lyn.event"
