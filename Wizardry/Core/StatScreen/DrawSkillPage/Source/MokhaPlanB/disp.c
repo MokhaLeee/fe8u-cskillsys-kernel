@@ -31,6 +31,17 @@ void DrawSkillPage_MokhaPlanB(void)
         TEXT_COLOR_SYSTEM_GOLD, 0, 0,
         GetStringFromIndex(MSG_MSS_SKILLS));
 
+    if (slist->amt == 0)
+    {
+        text = &gStatScreen.text[STATSCREEN_TEXT_ITEM1];
+        ClearText(text);
+        PutDrawText(
+            text,
+            gUiTmScratchA + TILEMAP_INDEX(9, 3),
+            TEXT_COLOR_SYSTEM_GRAY, 0, 0,
+            GetStringFromIndex(MSG_MSS_NOSKILLS));
+    }
+
     for (iy = 0; iy < 4; iy++)
     {
         for (ix = 0; ix < 4; ix++)
@@ -46,13 +57,24 @@ void DrawSkillPage_MokhaPlanB(void)
     }
 
     /* Arts */
-    text = &gStatScreen.text[STATSCREEN_TEXT_ITEM1];
+    text = &gStatScreen.text[STATSCREEN_TEXT_ITEM2];
     ClearText(text);
     PutDrawText(
         text,
         gUiTmScratchA + TILEMAP_INDEX(9, 11),
         TEXT_COLOR_SYSTEM_GOLD, 0, 0,
         GetStringFromIndex(MSG_MSS_ARTS));
+
+    if (clist->amt == 0)
+    {
+        text = &gStatScreen.text[STATSCREEN_TEXT_ITEM3];
+        ClearText(text);
+        PutDrawText(
+            text,
+            gUiTmScratchA + TILEMAP_INDEX(9, 13),
+            TEXT_COLOR_SYSTEM_GRAY, 0, 0,
+            GetStringFromIndex(MSG_MSS_NOARTS));
+    }
 
     for (iy = 0; iy < 2; iy++)
     {

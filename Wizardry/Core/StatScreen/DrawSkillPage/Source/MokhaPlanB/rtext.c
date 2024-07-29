@@ -78,7 +78,7 @@ static _DECL_INFO RText_Skill3 = {
 };
 
 static _DECL_INFO RText_Skill4 = {
-    &RText_Art8, &RText_Skill8, &RText_Skill3, &RText_Lance,
+    &RText_Art8, &RText_Skill8, &RText_Skill3, &RText_Name,
     0xD6, 0x28, 3,
     HbRedirect_SkillPageCommon, HbPopuplate_SkillPageCommon
 };
@@ -102,7 +102,7 @@ static _DECL_INFO RText_Skill7 = {
 };
 
 static _DECL_INFO RText_Skill8 = {
-    &RText_Skill4, &RText_Skill12, &RText_Skill7, &RText_Axe,
+    &RText_Skill4, &RText_Skill12, &RText_Skill7, &RText_Name,
     0xD6, 0x38, 7,
     HbRedirect_SkillPageCommon, HbPopuplate_SkillPageCommon
 };
@@ -126,7 +126,7 @@ static _DECL_INFO RText_Skill11 = {
 };
 
 static _DECL_INFO RText_Skill12 = {
-    &RText_Skill4, &RText_Skill16, &RText_Skill11, &RText_Bow,
+    &RText_Skill4, &RText_Skill16, &RText_Skill11, &RText_Name,
     0xD6, 0x48, 11,
     HbRedirect_SkillPageCommon, HbPopuplate_SkillPageCommon
 };
@@ -150,7 +150,7 @@ static _DECL_INFO RText_Skill15 = {
 };
 
 static _DECL_INFO RText_Skill16 = {
-    &RText_Skill12, &RText_Art4, &RText_Skill16, &RText_Anima,
+    &RText_Skill12, &RText_Art4, &RText_Skill16, &RText_Name,
     0xD6, 0x58, 15,
     HbRedirect_SkillPageCommon, HbPopuplate_SkillPageCommon
 };

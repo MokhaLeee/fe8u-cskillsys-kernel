@@ -39,5 +39,11 @@ Talk[X]
 ## MSG_MSS_SKILLS
 Skills[X]
 
+## MSG_MSS_NOSKILLS
+No skills...[X]
+
 ## MSG_MSS_ARTS
 Arts[X]
+
+## MSG_MSS_NOARTS
+No arts...[X]
