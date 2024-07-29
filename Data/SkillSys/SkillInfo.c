@@ -908,6 +908,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_MovHone) && COMMON_SKILL_VALID(SID_MovHone))
+    [SID_MovHone] = {
+        .name = MSG_SKILL_MovHone_NAME,
+        .desc = MSG_SKILL_MovHone,
+        .icon = GFX_SkillIcon_HoneMov
+    },
+#endif
+
 #if (defined(SID_BattleRange_Todo1) && COMMON_SKILL_VALID(SID_BattleRange_Todo1))
     [SID_BattleRange_Todo1] = {
         .desc = MSG_SKILL_BattleRange1,

@@ -62,6 +62,14 @@ Res Hone: Grants allies in 2x2[NL]
 Res+4 for one turn during the[NL]
 start of each turn.[X]
 
+## MSG_SKILL_MovHone_NAME
+Mov Open[X]
+
+## MSG_SKILL_MovHone
+Mov Hone: Grants allies in 2x2[NL]
++4 MOV for one turn during the[NL]
+start of each turn.[X]
+
 ## MSG_SKILL_HoneCavalry_NAME
 H-Cavalry[X]
 
