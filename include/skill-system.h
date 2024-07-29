@@ -75,6 +75,8 @@ struct SkillList {
 extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
 #define GetUnitSkillList _GetUnitSkillList
 
+void GenerateSkillListExt(struct Unit * unit, struct SkillList * list);
+void ForceUpdateUnitSkillList(struct Unit * unit);
 void DisableUnitSkilLList(struct Unit * unit);
 void ResetSkillLists(void);
 

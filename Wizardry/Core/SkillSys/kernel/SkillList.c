@@ -106,6 +106,17 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     WriteUnitList(unit, &list->header);
 }
 
+void ForceUpdateUnitSkillList(struct Unit * unit)
+{
+    struct SkillList * list = SkillListGeneric;
+    if (unit == &gBattleActor.unit)
+        list = SkillListBattleActor;
+    else if (unit == &gBattleTarget.unit)
+        list = SkillListBattleTarget;
+
+    GenerateSkillListExt(unit, list);
+}
+
 #if 0
 struct SkillList * GetUnitSkillList(struct Unit * unit)
 {

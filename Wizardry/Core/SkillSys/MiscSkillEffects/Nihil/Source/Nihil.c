@@ -25,6 +25,8 @@ STATIC_DECLAR void ExecNihilSkills(struct BattleUnit * actor, struct BattleUnit 
 
 void UnitToBattle_ExecNihilSkills(struct Unit * unit, struct BattleUnit * bu)
 {
+    ForceUpdateUnitSkillList(&bu->unit);
+
     /**
      * Here we hold 3 assumption:
      *
