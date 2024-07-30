@@ -94,6 +94,12 @@
 // #define CONFIG_INSTALL_STATSCREENFX
 
 /**
+ * Install ConvoyExpa
+ */
+#define CONFIG_INSTALL_CONVOYEXPA
+#define CONFIG_INSTALL_CONVOYEXPA_AMT 200 // better not to touch this since it will affact on size of gExpaConvoyItemArray
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

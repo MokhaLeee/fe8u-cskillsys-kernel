@@ -192,3 +192,10 @@ void StartMineAnim(ProcPtr, int, int);
 void AddUnitToTargetListIfAllied(struct Unit * unit);
 
 extern CONST_DATA AnimScr AnimScr_EkrPopup[2];
+
+struct Struct02013648 {
+    /* 00 */ struct Font font;
+    /* 18 */ struct Text th[16];
+};
+
+extern struct Struct02013648 gUnknown_02013648;
