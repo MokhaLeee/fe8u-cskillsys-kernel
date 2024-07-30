@@ -112,6 +112,7 @@ SID_ShrewdPotential
 SID_KeepUp
 // SID_LiquidOoze
 SID_CloseCombat
+SID_Eclipse
 
 // Devil skills
 SID_DevilsPact
