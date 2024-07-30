@@ -4,8 +4,6 @@
 #include "skill-system.h"
 
 #define COMBART_VALID(cid) (((cid) > 0) && ((cid) < 0xFF))
-#define COMBART_ICON(cid) ((1 << 8) + (cid))
-
 #define CA_WTYPE_ANY ((u8)(-1))
 
 struct CombatArtInfo {

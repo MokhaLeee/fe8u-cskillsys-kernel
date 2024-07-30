@@ -12,10 +12,10 @@ const u8 * _GetSkillIconExt(const u8 lo, int hi)
     return icon;
 }
 
-const u8 * GetSkillIcon_Generic(const u8 sid) { return _GetSkillIconExt(sid, Skill_INFO_GENERIC); }
-const u8 * GetSkillIcon_Person(const u8 sid)  { return _GetSkillIconExt(sid, Skill_INFO_PERSON); }
-const u8 * GetSkillIcon_Job(const u8 sid)     { return _GetSkillIconExt(sid, Skill_INFO_JOB); }
-const u8 * GetSkillIcon_Item(const u8 sid)    { return _GetSkillIconExt(sid, Skill_INFO_ITEM); }
+const u8 * GetSkillIcon1(const u8 sid) { return _GetSkillIconExt(sid, Skill_INFO_GENERIC); }
+const u8 * GetSkillIcon2(const u8 sid)  { return _GetSkillIconExt(sid, Skill_INFO_PERSON); }
+const u8 * GetSkillIcon3(const u8 sid)     { return _GetSkillIconExt(sid, Skill_INFO_JOB); }
+const u8 * GetSkillIcon4(const u8 sid)    { return _GetSkillIconExt(sid, Skill_INFO_ITEM); }
 
 u16 GetSkillDescMsg(const u16 sid)
 {

@@ -27,8 +27,6 @@ enum SkillInfoListss
 #define EQUIPE_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
 #define COMMON_SKILL_VALID(sid) (sid > 0x000 && sid < 0x400)
 
-#define SKILL_ICON(sid) ((2 << 8) + (sid))
-
 /**
  * Generic skills
  */
@@ -47,10 +45,10 @@ struct SkillInfo {
 
 extern struct SkillInfo const * const gpSkillInfos;
 
-const u8 * GetSkillIcon_Generic(const u8 sid);
-const u8 * GetSkillIcon_Person(const u8 sid);
-const u8 * GetSkillIcon_Job(const u8 sid);
-const u8 * GetSkillIcon_Item(const u8 sid);
+const u8 * GetSkillIcon1(const u8 sid);
+const u8 * GetSkillIcon2(const u8 sid);
+const u8 * GetSkillIcon3(const u8 sid);
+const u8 * GetSkillIcon4(const u8 sid);
 
 u16 GetSkillDescMsg(const u16 sid);
 u16 GetSkillNameMsg(const u16 sid);

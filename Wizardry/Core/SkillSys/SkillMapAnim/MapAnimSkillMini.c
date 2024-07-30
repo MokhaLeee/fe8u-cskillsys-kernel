@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
+#include "icon-rework.h"
 #include "skill-system.h"
 
 struct ProcSkillMapAnimMini {
