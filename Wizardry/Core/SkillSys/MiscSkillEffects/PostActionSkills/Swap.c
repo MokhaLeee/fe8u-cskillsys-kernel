@@ -57,15 +57,15 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionSwap[] = {
 
     TUTORIALTEXTBOXSTART
     SVAL(EVT_SLOT_B, 0xffffffff)
-    TEXTSHOW(MSG_SkillEffect_PosSwap_Confirm)
+    TEXTSHOW(MSG_SkillEffect_Lunge_Confirm)
     TEXTEND
     REMA
     SVAL(EVT_SLOT_7, 0x1)
     BNE(99, EVT_SLOT_C, EVT_SLOT_7)
 
 LABEL(0)
-#if defined(SID_PosSwap) && (COMMON_SKILL_VALID(SID_PosSwap))
-    SVAL(EVT_SLOT_B, SID_PosSwap)
+#if defined(SID_Lunge) && (COMMON_SKILL_VALID(SID_Lunge))
+    SVAL(EVT_SLOT_B, SID_Lunge)
     CALL(EventScr_MuSkillAnim)
 #endif
     ASMC(PreparePositionSwap)
@@ -99,8 +99,8 @@ bool PostActionSwap(ProcPtr proc)
     if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
         return false;
 
-#if defined(SID_PosSwap) && (COMMON_SKILL_VALID(SID_PosSwap))
-    if (!SkillTester(unit, SID_PosSwap))
+#if defined(SID_Lunge) && (COMMON_SKILL_VALID(SID_Lunge))
+    if (!SkillTester(unit, SID_Lunge))
 #else
     if (1)
 #endif

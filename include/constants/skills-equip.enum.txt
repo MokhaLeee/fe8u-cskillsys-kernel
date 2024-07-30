@@ -197,7 +197,7 @@ SID_SavageBlow
 SID_BreathOfLife
 SID_Thunderstorm
 SID_PosReturn
-SID_PosSwap
+SID_Lunge
 SID_PowerStaff
 
 // Pre-phase

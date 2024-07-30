@@ -44,7 +44,7 @@ Return:[NL]
 If the enemy is defeated, you can[NL]
 return to your starting position.[X]
 
-## MSG_SKILL_PosSwap
+## MSG_SKILL_Lunge
 Swap:[NL]
 Swap positions with the enemy[NL]
 after attacking them.[X]
