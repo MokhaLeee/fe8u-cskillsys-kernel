@@ -11,7 +11,7 @@
 extern struct Font * gActiveFont;
 extern int sStatScreenPage1BarMax;
 
-STATIC_DECLAR void InstallExpandedTextPal(void)
+void InstallExpandedTextPal(void)
 {
     extern const u16 ExpandedTextPals[];
     ApplyPalettes(ExpandedTextPals, 0x8, 2);

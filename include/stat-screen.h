@@ -13,6 +13,7 @@ extern struct {
     u8 _pad_[2];
 } gStatScreenStExpa;
 
+void InstallExpandedTextPal(void);
 void ResetActiveFontPal(void);
 int GetTextColorFromGrowth(int growth);
 void ToggleUnitLeftPage(bool toggle);

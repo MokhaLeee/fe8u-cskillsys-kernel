@@ -95,6 +95,7 @@ void DisplayLeftPanel(void)
     const char * namestr = GetStringFromIndex(UNIT_NAME_ID(gStatScreen.unit));
     unsigned namexoff = GetStringTextCenteredPos(0x30, namestr);
 
+    InstallExpandedTextPal();
     BG_Fill(gBG0TilemapBuffer, 0);
 
     // Generate battle stats for unit for display later
