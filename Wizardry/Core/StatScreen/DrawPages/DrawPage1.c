@@ -17,43 +17,25 @@ STATIC_DECLAR void InstallExpandedTextPal(void)
     ApplyPalettes(ExpandedTextPals, 0x8, 2);
 };
 
-STATIC_DECLAR void ResetActiveFontPal(void)
+void ResetActiveFontPal(void)
 {
     gActiveFont->tileref = gActiveFont->tileref & 0xFFF;
 }
 
-STATIC_DECLAR void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str)
-{
-    int palid;
-    switch (color) {
-    case 0 ... 4:
-        palid = 0;
-        break;
-
-    case 5 ... 9:
-        palid = 8;
-        color = color - 5;
-        break;
-
-    case 10 ... 14:
-        palid = 9;
-        color = color - 10;
-        break;
-
-    default:
-        palid = 0;
-        color = 0;
-    }
-
-    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, palid);
-    PutDrawText(text, tm, color, x, tile_width, str);
-}
-
-STATIC_DECLAR int GetTextColorFromGrowth(int growth)
+int GetTextColorFromGrowth(int growth)
 {
     int _mod10 = growth / 10;
     LIMIT_AREA(_mod10, 0, 9);
     return (9 - _mod10) + 5;
+}
+
+STATIC_DECLAR void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str)
+{
+    int bank;
+    ModifyTextPal(bank, color);
+
+    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
+    PutDrawText(text, tm, color, x, tile_width, str);
 }
 
 STATIC_DECLAR int SortMax(const int * buf, int size)

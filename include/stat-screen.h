@@ -12,6 +12,27 @@ extern struct {
     u8 _pad_[3];
 } gStatScreenStExpa;
 
+void ResetActiveFontPal(void);
+int GetTextColorFromGrowth(int growth);
+
+#define ModifyTextPal(bank, color)      \
+    switch (color) {                    \
+    case 0 ... 4:                       \
+        bank  = 0;                      \
+        break;                          \
+    case 5 ... 9:                       \
+        bank  = 8;                      \
+        color = color - 5;              \
+        break;                          \
+    case 10 ... 14:                     \
+        bank  = 9;                      \
+        color = color - 10;             \
+        break;                          \
+    default:                            \
+        bank  = 0;                      \
+        color = 0;                      \
+    }
+
 void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc);
 void StartSkillScreenHelp(int pageid, struct Proc * proc);
 void HbPopuplate_SkillPageCommon(struct HelpBoxProc * proc);

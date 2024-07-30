@@ -12,7 +12,7 @@ void SaveExpaConvoy(u8 * dst, const u32 size)
 
 void LoadExpaConvoy(u8 * src, const u32 size)
 {
-    Assert(size == sizeof(sExpaConvoyItemArray));
+    Assert(size >= sizeof(sExpaConvoyItemArray));
     ReadSramFast(src, sExpaConvoyItemArray, size);
 }
 
