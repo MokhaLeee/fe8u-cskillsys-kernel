@@ -24,7 +24,7 @@ static void DisplayHpStr(void)
     ResetActiveFontPal();
 }
 
-void DisplayHpGrowthValue(void)
+STATIC_DECLAR void DisplayHpGrowthValue(void)
 {
     int bank, color = GetTextColorFromGrowth(GetUnitHpGrowth(gStatScreen.unit));
     ModifyTextPal(bank, color);
@@ -38,7 +38,7 @@ void DisplayHpGrowthValue(void)
     ResetActiveFontPal();
 }
 
-void DisplayHpBmValue(void)
+STATIC_DECLAR void DisplayHpBmValue(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
@@ -71,6 +71,16 @@ void DisplayHpBmValue(void)
         PutNumberOrBlank(
             gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
             color, hpmax);
+}
+
+void ToggleUnitLeftPage(bool toggle)
+{
+    TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 3, 17), 5, 2, 0);
+
+    if (toggle == false)
+        DisplayHpBmValue();
+    else
+        DisplayHpGrowthValue();
 }
 
 STATIC_DECLAR void DisplayLeftPanelHp(void)

@@ -640,25 +640,23 @@ STATIC_DECLAR void ToggleUnitPageBm(void)
                     UNIT_RES_MAX(unit));
 }
 
+
+
 STATIC_DECLAR void ToggleUnitPage(bool toggle)
 {
     gStatScreenStExpa.toggle = toggle;
 
-    TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 3, 17), 5, 2, 0);
     TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 16, 3), 4, 13, 0);
-
     if (toggle == false)
     {
-        DisplayHpBmValue();
         ToggleUnitPageBm();
     }
     else
     {
         TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 15, 3), 6, 13, 0);
-
-        DisplayHpGrowthValue();
         ToggleUnitPageGrowth();
     }
+    ToggleUnitLeftPage(toggle);
     BG_EnableSyncByMask(BG0_SYNC_BIT | BG2_SYNC_BIT);
 }
 
@@ -720,8 +718,12 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
     }
 
     /* Refrain left panel */
-    if (gStatScreenStExpa.toggle == true && gStatScreen.page != STATSCREEN_PAGE_0)
-        ToggleUnitPage(false);
+    if (gStatScreenStExpa.toggle && gStatScreen.page != STATSCREEN_PAGE_0)
+    {
+        gStatScreenStExpa.toggle = false;
+        ToggleUnitLeftPage(false);
+        BG_EnableSyncByMask(BG0_SYNC_BIT);
+    }
 }
 
 /* LynJump */

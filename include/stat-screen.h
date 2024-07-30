@@ -15,8 +15,7 @@ extern struct {
 
 void ResetActiveFontPal(void);
 int GetTextColorFromGrowth(int growth);
-void DisplayHpGrowthValue(void);
-void DisplayHpBmValue(void);
+void ToggleUnitLeftPage(bool toggle);
 
 #define ModifyTextPal(bank, color)      \
     switch (color) {                    \
