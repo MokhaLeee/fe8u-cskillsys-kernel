@@ -2,6 +2,7 @@
 #include "stat-screen.h"
 #include "skill-system.h"
 #include "combat-art.h"
+#include "icon-rework.h"
 #include "constants/texts.h"
 
 void DrawSkillPage_MokhaPlanB(void)

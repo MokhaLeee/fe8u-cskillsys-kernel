@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "prep-skill.h"
+#include "icon-rework.h"
 #include "constants/texts.h"
 
 void PrepSkill1_DrawLeftSkillIcon(struct ProcPrepSkill1 * proc)

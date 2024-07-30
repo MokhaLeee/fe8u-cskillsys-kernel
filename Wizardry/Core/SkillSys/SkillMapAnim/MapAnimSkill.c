@@ -3,6 +3,7 @@
 #include "combat-art.h"
 #include "skill-system.h"
 #include "efx-skill.h"
+#include "icon-rework.h"
 
 #define LOCAL_TRACE 0
 

@@ -49,7 +49,11 @@ gpExternalGameInitHook: WORD 0
 gpHealAmountGetters: POIN gHealAmountGetters
 
 /* StatScreenfx (abandoned) */
-WORD 0 0 0 0 0 0 0 0
+gpAffinIcons: POIN gAffinIcons
+gpMountIcons: POIN gMountIcons
+gpWTypeIcons: POIN gWTypeIcons
+
+WORD 0 0 0 0 0
 
 gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks

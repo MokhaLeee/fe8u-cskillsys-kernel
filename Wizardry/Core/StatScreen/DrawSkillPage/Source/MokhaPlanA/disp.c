@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "skill-system.h"
+#include "icon-rework.h"
 
 #define STAT_SKILL_NUM_MAX 8
 
