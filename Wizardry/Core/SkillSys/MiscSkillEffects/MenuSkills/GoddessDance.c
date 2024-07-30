@@ -68,7 +68,7 @@ static void callback_exec(ProcPtr proc)
         if (!UNIT_ALIVE(unit) && unit != gActiveUnit)
             continue;
 
-        unit->state &= ~( US_UNSELECTABLE | US_HAS_MOVED | US_HAS_MOVED_AI);
+        unit->state &= ~(US_UNSELECTABLE | US_HAS_MOVED | US_HAS_MOVED_AI);
     }
 }
 
