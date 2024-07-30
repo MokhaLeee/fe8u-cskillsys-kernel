@@ -9,3 +9,7 @@
 #ifdef CONFIG_INSTALL_STATSCREENFX
     #include "StatScreenfx/StatScreenfx.event"
 #endif
+
+#ifdef CONFIG_INSTALL_CONVOYEXPA
+    #include "ConvoyExpa/ConvoyExpa.event"
+#endif
