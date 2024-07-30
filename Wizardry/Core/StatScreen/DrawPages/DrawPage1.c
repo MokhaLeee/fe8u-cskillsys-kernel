@@ -723,3 +723,13 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
     if (gStatScreenStExpa.toggle == true && gStatScreen.page != STATSCREEN_PAGE_0)
         ToggleUnitPage(false);
 }
+
+/* LynJump */
+void GlowBlendCtrl_OnLoop(struct StatScreenEffectProc * proc)
+{
+    /**
+     * Since BG1 may also consume chr resource on texts,
+     * so I think it is better to directly remove them.
+     */
+    return;
+}
