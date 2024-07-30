@@ -48,12 +48,6 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
             if (!armor_march)
                 continue;
 
-            NoCashGBAPrintf("The current adjacent class is %d", unit_ally->pClassData->number);
-            NoCashGBAPrintf("The current skill holder class is %d", unit->pClassData->number);
-            NoCashGBAPrintf("The general class is %d", CLASS_GENERAL);
-
-            // So right now, if you're next to an armored unit you and them get the boost but the skill holder doesn't
-            // and you don' even need to be anywhere near the skill holder apparently?
             switch (unit_ally->pClassData->number) {
             case CLASS_ARMOR_KNIGHT:
             case CLASS_ARMOR_KNIGHT_F:
