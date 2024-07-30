@@ -9,11 +9,14 @@ extern _DECL_INFO * const RTextPageUnit, * const RTextPageSupport;
 
 extern struct {
     u8 talkee;
-    u8 _pad_[3];
+    u8 toggle : 1;
+    u8 _pad_[2];
 } gStatScreenStExpa;
 
 void ResetActiveFontPal(void);
 int GetTextColorFromGrowth(int growth);
+void DisplayHpGrowthValue(void);
+void DisplayHpBmValue(void);
 
 #define ModifyTextPal(bank, color)      \
     switch (color) {                    \

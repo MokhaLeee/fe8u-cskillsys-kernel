@@ -24,7 +24,21 @@ static void DisplayHpStr(void)
     ResetActiveFontPal();
 }
 
-STATIC_DECLAR void DisplayLeftPanelHp(void)
+void DisplayHpGrowthValue(void)
+{
+    int bank, color = GetTextColorFromGrowth(GetUnitHpGrowth(gStatScreen.unit));
+    ModifyTextPal(bank, color);
+    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
+
+    PutNumberOrBlank(
+        gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
+        TEXT_COLOR_SYSTEM_GOLD,
+        GetUnitHpGrowth(gStatScreen.unit));
+
+    ResetActiveFontPal();
+}
+
+void DisplayHpBmValue(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
@@ -35,7 +49,8 @@ STATIC_DECLAR void DisplayLeftPanelHp(void)
               ? TEXT_COLOR_SYSTEM_GREEN
               : TEXT_COLOR_SYSTEM_BLUE;
 
-    DisplayHpStr();
+    // Display '/' labels
+    PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
 
     /* Display current hp */
     if (hpcur > 99)
@@ -56,6 +71,12 @@ STATIC_DECLAR void DisplayLeftPanelHp(void)
         PutNumberOrBlank(
             gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
             color, hpmax);
+}
+
+STATIC_DECLAR void DisplayLeftPanelHp(void)
+{
+    DisplayHpStr();
+    DisplayHpBmValue();
 }
 
 /* LynJump */
@@ -99,8 +120,7 @@ void DisplayLeftPanel(void)
 #if CHAX
     DisplayLeftPanelHp();
 #else
-    // Display Hp/'/' labels
-    PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
+    // Display Hp label
     PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(1, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_A, TEXT_SPECIAL_HP_B);
 
     // Display current hp
