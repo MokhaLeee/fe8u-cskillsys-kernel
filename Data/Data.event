@@ -58,7 +58,10 @@
 #include "../Wizardry/Core/ComboAttack/data.event"
 #include "../Wizardry/Core/Movement/MovementData.event"
 #include "../Wizardry/External/Individual_animation_ea_2/data.event"
-#include "../Wizardry/External/StatScreenfx/_data.event"
+
+#ifdef CONFIG_INSTALL_STATSCREENFX
+    #include "../Wizardry/External/StatScreenfx/_data.event"
+#endif
 
 #ifdef CONFIG_INSTALL_MAPACTIONANIM
     #include "../Wizardry/External/DrawMapActionAnimation/data.event"

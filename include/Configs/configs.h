@@ -92,6 +92,11 @@
 // #define CONFIG_INSTALL_MAPACTIONANIM
 
 /**
+ * Install StatScreenfx
+ */
+// #define CONFIG_INSTALL_STATSCREENFX
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

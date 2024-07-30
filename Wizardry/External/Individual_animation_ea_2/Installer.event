@@ -1,3 +1,5 @@
+ALIGN 4
+
 #include "Extensions/Hack Installation.txt"
 
 //Hook with r0 for compatibility.
