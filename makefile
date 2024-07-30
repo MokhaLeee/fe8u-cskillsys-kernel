@@ -99,7 +99,7 @@ chax: $(FE8_CHX)
 
 EA_FLAG := A FE8
 
-ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
+ifeq ($(CONFIG_EA_WERR), 1)
 	EA_FLAG += -werr
 endif
 
