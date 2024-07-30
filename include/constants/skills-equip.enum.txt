@@ -248,6 +248,7 @@ SID_SpdHone
 SID_LckHone
 SID_DefHone
 SID_ResHone
+SID_MovHone
 
 // Lvup skills
 SID_Blossom
