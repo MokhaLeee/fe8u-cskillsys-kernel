@@ -3433,4 +3433,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Eclipse,
     },
 #endif
+
+#if (defined(SID_Barricade) && COMMON_SKILL_VALID(SID_Barricade))
+    [SID_Barricade] = {
+        .desc = MSG_SKILL_Barricade,
+        .icon = GFX_SkillIcon_Barricade,
+    },
+#endif
 };
