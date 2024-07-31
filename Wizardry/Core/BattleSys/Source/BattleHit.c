@@ -569,8 +569,34 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CrusaderWard));
 #endif
 
+    bool barricadePlus_activated = false;
+
+#if (defined(SID_BarricadePlus) && (COMMON_SKILL_VALID(SID_BarricadePlus)))
+    if (BattleSkillTester(defender, SID_BarricadePlus))
+    {
+        if (defender->unit.curHP < defender->hpInitial)
+        {
+            barricadePlus_activated = true;
+            int reduction_amount = SKILL_EFF0(SID_BarricadePlus);
+
+            if (act_flags->round_cnt_hit > 2)
+            {
+                int halved_value = reduction_amount;
+                
+                for (int i = 0; i < act_flags->round_cnt_hit - 2; i++)
+                {
+                    halved_value = halved_value / 2;
+                    reduction_amount += halved_value;
+                }
+            }
+            
+            decrease += DAMAGE_DECREASE(reduction_amount);
+        }
+    }
+#endif
+
 #if (defined(SID_Barricade) && (COMMON_SKILL_VALID(SID_Barricade)))
-    if (BattleSkillTester(defender, SID_Barricade))
+    if (BattleSkillTester(defender, SID_Barricade) && !barricadePlus_activated)
     {
         if (defender->unit.curHP < defender->hpInitial)
             decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Barricade));

@@ -3449,6 +3449,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_BarricadePlus) && COMMON_SKILL_VALID(SID_BarricadePlus))
+    [SID_BarricadePlus] = {
+        .desc = MSG_SKILL_BarricadePlus,
+        .icon = GFX_SkillIcon_BarricadePlus,
+    },
+#endif
+
 #if (defined(SID_LunarBrace) && COMMON_SKILL_VALID(SID_LunarBrace))
     [SID_LunarBrace] = {
         .name = MSG_SKILL_LunarBrace_NAME,
