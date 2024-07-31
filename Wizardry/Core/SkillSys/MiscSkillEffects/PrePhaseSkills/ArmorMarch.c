@@ -15,8 +15,6 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
-        bool armor_march  = false;
-
         struct Unit * unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
@@ -26,8 +24,8 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
             continue;
 
 #if (defined(SID_ArmorMarch) && (COMMON_SKILL_VALID(SID_ArmorMarch)))
-        if (SkillTester(unit, SID_ArmorMarch))
-            armor_march = true;
+        if (!SkillTester(unit, SID_ArmorMarch))
+            continue;
 #endif
 
         for (j = 0; j < ARRAY_COUNT_RANGE1x1; j++)
@@ -43,9 +41,6 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
                 continue;
 
             if (!AreUnitsAllied(unit->index, unit_ally->index))
-                continue;
-
-            if (!armor_march)
                 continue;
 
             switch (unit_ally->pClassData->number) {
