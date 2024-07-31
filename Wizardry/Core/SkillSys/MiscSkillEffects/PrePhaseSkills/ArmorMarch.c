@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 #include "kernel-lib.h"
+#include "class-types.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 
@@ -27,6 +28,8 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
         if (!SkillTester(unit, SID_ArmorMarch))
             continue;
 
+        if (!CheckClassArmor(UNIT_CLASS_ID(unit)))
+            continue;
 
         for (j = 0; j < ARRAY_COUNT_RANGE1x1; j++)
         {
@@ -43,18 +46,10 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
             if (!AreUnitsAllied(unit->index, unit_ally->index))
                 continue;
 
-            switch (unit_ally->pClassData->number) {
-            case CLASS_ARMOR_KNIGHT:
-            case CLASS_ARMOR_KNIGHT_F:
-            case CLASS_GENERAL:
-            case CLASS_GENERAL_F:
-            case CLASS_GREAT_KNIGHT:
-            case CLASS_GREAT_KNIGHT_F:
+            if (CheckClassArmor(UNIT_CLASS_ID(unit_ally)))
+            {
                 _SetArmorMarchStatDebuff(unit);
                 _SetArmorMarchStatDebuff(unit_ally);
-                break;
-            default:
-                break;
             }
         }
     }
