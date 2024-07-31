@@ -199,6 +199,7 @@ SID_Thunderstorm
 SID_PosReturn
 SID_Lunge
 SID_PowerStaff
+SID_SoulSap
 
 // Pre-phase
 SID_Renewal

@@ -2,6 +2,7 @@
 #include "PostActionSkills/Tsuzuku.lyn.event"
 #include "PostActionSkills/SavageBlow.lyn.event"
 #include "PostActionSkills/BreathOfLife.lyn.event"
+#include "PostActionSkills/SoulSap.lyn.event"
 #include "PostActionSkills/Canto.lyn.event"
 #include "PostActionSkills/Thunderstorm.lyn.event"
 #include "PostActionSkills/Return.lyn.event"

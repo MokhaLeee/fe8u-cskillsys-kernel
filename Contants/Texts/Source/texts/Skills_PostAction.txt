@@ -98,3 +98,8 @@ Clear own negative status after combat[X]
 Despoil:[NL]
 Gain a red gem after killing an[NL]
 enemy unit. (Skill % activation)[X]
+
+## MSG_SKILL_SoulSap
+Soul Sap: At the end of this unit's[NL]
+action, drain up to 10% HP from each[NL]
+enemy within two tiles for healing.[X]
