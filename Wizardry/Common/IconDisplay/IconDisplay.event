@@ -1,12 +1,9 @@
 #ifndef ICON_DISPLAY_INSTALLED
 #define ICON_DISPLAY_INSTALLED
 
-#ifndef ICON_SHEET_AMT
-#define ICON_SHEET_AMT 7
-#endif
-
 #include "Source/Icon.lyn.event"
 #include "Source/UsrFunc.lyn.event"
+#include "Source/hooks.lyn.event"
 #include "Source/LynJump.event"
 
 PUSH

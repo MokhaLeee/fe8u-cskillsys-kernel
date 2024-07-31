@@ -11,49 +11,31 @@
 extern struct Font * gActiveFont;
 extern int sStatScreenPage1BarMax;
 
-STATIC_DECLAR void InstallExpandedTextPal(void)
+void InstallExpandedTextPal(void)
 {
     extern const u16 ExpandedTextPals[];
     ApplyPalettes(ExpandedTextPals, 0x8, 2);
 };
 
-STATIC_DECLAR void ResetActiveFontPal(void)
+void ResetActiveFontPal(void)
 {
     gActiveFont->tileref = gActiveFont->tileref & 0xFFF;
 }
 
-STATIC_DECLAR void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str)
-{
-    int palid;
-    switch (color) {
-    case 0 ... 4:
-        palid = 0;
-        break;
-
-    case 5 ... 9:
-        palid = 8;
-        color = color - 5;
-        break;
-
-    case 10 ... 14:
-        palid = 9;
-        color = color - 10;
-        break;
-
-    default:
-        palid = 0;
-        color = 0;
-    }
-
-    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, palid);
-    PutDrawText(text, tm, color, x, tile_width, str);
-}
-
-STATIC_DECLAR int GetTextColorFromGrowth(int growth)
+int GetTextColorFromGrowth(int growth)
 {
     int _mod10 = growth / 10;
     LIMIT_AREA(_mod10, 0, 9);
     return (9 - _mod10) + 5;
+}
+
+STATIC_DECLAR void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str)
+{
+    int bank;
+    ModifyTextPal(bank, color);
+
+    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
+    PutDrawText(text, tm, color, x, tile_width, str);
 }
 
 STATIC_DECLAR int SortMax(const int * buf, int size)
@@ -68,7 +50,7 @@ STATIC_DECLAR int SortMax(const int * buf, int size)
     return max;
 }
 
-STATIC_DECLAR void DrawStatWithBarReworkExt(int num, int x, int y, int base, int total, int max, int max_ref)
+STATIC_DECLAR void DrawStatWithBarReworkExt(int num, int x, int y, u16 * tm, int base, int total, int max, int max_ref)
 {
     int diff = total - base;
 
@@ -83,14 +65,14 @@ STATIC_DECLAR void DrawStatWithBarReworkExt(int num, int x, int y, int base, int
 
     DrawStatBarGfx(
         0x401 + num * 6, 6,
-        gUiTmScratchC + TILEMAP_INDEX(x - 2, y + 1),
+        tm + TILEMAP_INDEX(x - 2, y + 1),
         TILEREF(0, STATSCREEN_BGPAL_6),
         max,
         base,
         diff);
 }
 
-STATIC_DECLAR void DrawStatWithBarRework(int num, int x, int y, int base, int total, int max)
+STATIC_DECLAR void DrawStatWithBarRework(int num, int x, int y, u16 * tm1, u16 * tm2, int base, int total, int max)
 {
     /**
      * Here the max value maybe more than 35,
@@ -100,7 +82,7 @@ STATIC_DECLAR void DrawStatWithBarRework(int num, int x, int y, int base, int to
     int max_bar = sStatScreenPage1BarMax;
 
     PutNumberOrBlank(
-        gUiTmScratchA + TILEMAP_INDEX(x, y),
+        tm1 + TILEMAP_INDEX(x, y),
         base == max
             ? TEXT_COLOR_SYSTEM_GREEN
             : TEXT_COLOR_SYSTEM_BLUE,
@@ -108,9 +90,9 @@ STATIC_DECLAR void DrawStatWithBarRework(int num, int x, int y, int base, int to
 
     PutNumberBonus(
         diff,
-        gUiTmScratchA + TILEMAP_INDEX(x + 1, y));
+        tm1 + TILEMAP_INDEX(x + 1, y));
 
-    DrawStatWithBarReworkExt(num, x, y, base, total, max, max_bar);
+    DrawStatWithBarReworkExt(num, x, y, tm2, base, total, max, max_bar);
 }
 
 STATIC_DECLAR void DrawPage1TextCommon(void)
@@ -224,36 +206,43 @@ STATIC_DECLAR void DrawPage1ValueReal(void)
     struct Unit * unit = gStatScreen.unit;
 
     DrawStatWithBarRework(0, 0x5, 0x1,
+                    gUiTmScratchA, gUiTmScratchC,
                     unit->pow,
                     GetUnitPower(unit),
                     UNIT_POW_MAX(unit));
 
     DrawStatWithBarRework(1, 0x5, 0x3,
+                    gUiTmScratchA, gUiTmScratchC,
                     UNIT_MAG(unit),
                     GetUnitMagic(unit),
                     GetUnitMaxMagic(unit));
 
     DrawStatWithBarRework(2, 0x5, 0x5,
+                    gUiTmScratchA, gUiTmScratchC,
                     unit->skl,
                     GetUnitSkill(unit),
                     UNIT_SKL_MAX(unit));
 
     DrawStatWithBarRework(3, 0x5, 0x7,
+                    gUiTmScratchA, gUiTmScratchC,
                     unit->spd,
                     GetUnitSpeed(unit),
                     UNIT_SPD_MAX(unit));
 
     DrawStatWithBarRework(4, 0x5, 0x9,
+                    gUiTmScratchA, gUiTmScratchC,
                     unit->lck,
                     GetUnitLuck(unit),
                     UNIT_LCK_MAX(unit));
 
     DrawStatWithBarRework(5, 0x5, 0xB,
+                    gUiTmScratchA, gUiTmScratchC,
                     unit->def,
                     GetUnitDefense(unit),
                     UNIT_DEF_MAX(unit));
 
     DrawStatWithBarRework(6, 0x5, 0xD,
+                    gUiTmScratchA, gUiTmScratchC,
                     unit->res,
                     GetUnitResistance(unit),
                     UNIT_RES_MAX(unit));
@@ -264,11 +253,13 @@ STATIC_DECLAR void DrawPage1ValueCommon(void)
     struct Unit * unit = gStatScreen.unit;
 
     DrawStatWithBarRework(7, 0xD, 0x1,
+                    gUiTmScratchA, gUiTmScratchC,
                     UNIT_MOV(unit),
                     MovGetter(unit),
                     UNIT_MOV_MAX(unit));
 
     DrawStatWithBarRework(8, 0xD, 0x3,
+                    gUiTmScratchA, gUiTmScratchC,
                     UNIT_CON_BASE(unit),
                     ConGetter(unit),
                     UNIT_CON_MAX(unit));
@@ -339,6 +330,7 @@ STATIC_DECLAR void DrawPage1BattleAmt(void)
 
     DrawStatWithBarReworkExt(
         0x9, 0xD, 0xD,
+        gUiTmScratchC,
         amt, amt, max, max);
 }
 
@@ -566,20 +558,128 @@ void DisplayPage0(void)
     DrawPage1TalkTrv();
 }
 
+static inline void _growth_disp(int x, int y, int growth)
+{
+    int bank, color = GetTextColorFromGrowth(growth);
+
+    ModifyTextPal(bank, color);
+    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
+
+    PutNumberOrBlank(
+        gBG0TilemapBuffer + TILEMAP_INDEX(x, y),
+        color,
+        growth);
+}
+
+STATIC_DECLAR void ToggleUnitPageGrowth(void)
+{
+    struct Unit * unit = gStatScreen.unit;
+
+    _growth_disp(18, 3,  GetUnitPowGrowth(unit));
+    _growth_disp(18, 5,  GetUnitMagGrowth(unit));
+    _growth_disp(18, 7,  GetUnitSklGrowth(unit));
+    _growth_disp(18, 9,  GetUnitSpdGrowth(unit));
+    _growth_disp(18, 11, GetUnitLckGrowth(unit));
+    _growth_disp(18, 13, GetUnitDefGrowth(unit));
+    _growth_disp(18, 15, GetUnitResGrowth(unit));
+
+    ResetActiveFontPal();
+}
+
+STATIC_DECLAR void ToggleUnitPageBm(void)
+{
+    struct Unit * unit = gStatScreen.unit;
+
+    DrawStatWithBarRework(0, 0x5, 0x1,
+                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    unit->pow,
+                    GetUnitPower(unit),
+                    UNIT_POW_MAX(unit));
+
+    DrawStatWithBarRework(1, 0x5, 0x3,
+                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    UNIT_MAG(unit),
+                    GetUnitMagic(unit),
+                    GetUnitMaxMagic(unit));
+
+    DrawStatWithBarRework(2, 0x5, 0x5,
+                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    unit->skl,
+                    GetUnitSkill(unit),
+                    UNIT_SKL_MAX(unit));
+
+    DrawStatWithBarRework(3, 0x5, 0x7,
+                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    unit->spd,
+                    GetUnitSpeed(unit),
+                    UNIT_SPD_MAX(unit));
+
+    DrawStatWithBarRework(4, 0x5, 0x9,
+                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    unit->lck,
+                    GetUnitLuck(unit),
+                    UNIT_LCK_MAX(unit));
+
+    DrawStatWithBarRework(5, 0x5, 0xB,
+                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    unit->def,
+                    GetUnitDefense(unit),
+                    UNIT_DEF_MAX(unit));
+
+    DrawStatWithBarRework(6, 0x5, 0xD,
+                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
+                    unit->res,
+                    GetUnitResistance(unit),
+                    UNIT_RES_MAX(unit));
+}
+
+
+
+STATIC_DECLAR void ToggleUnitPage(bool toggle)
+{
+    gStatScreenStExpa.toggle = toggle;
+
+    TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 16, 3), 4, 13, 0);
+    if (toggle == false)
+    {
+        ToggleUnitPageBm();
+    }
+    else
+    {
+        TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 15, 3), 6, 13, 0);
+        ToggleUnitPageGrowth();
+    }
+    ToggleUnitLeftPage(toggle);
+    BG_EnableSyncByMask(BG0_SYNC_BIT | BG2_SYNC_BIT);
+}
+
 /* LynJump */
 void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 {
-    s8 displayIcon = (GetGameClock() % 32) < 20;
+    bool blinking;
     static const u16 palidLut[3] = { 0xC, 0xE, 0xD }; // TODO: palid constants
 
-    if (!gStatScreen.inTransition)
+    /* No idle in transition */
+    if (gStatScreen.inTransition)
+        return;
+
+    blinking = (GetGameClock() % 32) < 20;
+
+    if (gStatScreen.page == STATSCREEN_PAGE_0)
     {
-        if ((gStatScreen.page == STATSCREEN_PAGE_0) && (gStatScreen.unit->state & US_RESCUING))
+        if (gStatScreen.unit->state & US_RESCUING)
         {
             UpdateStatArrowSprites(120, 56, 1);
             UpdateStatArrowSprites(120, 72, 1);
 
-            if (displayIcon)
+            if (blinking)
             {
                 if (gStatScreenStExpa.talkee == 0)
                 {
@@ -595,15 +695,43 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
                 }
             }
         }
+    }
 
-        if (gStatScreen.unit->state & US_RESCUED)
+    if (gStatScreen.unit->state & US_RESCUED)
+    {
+        if (blinking)
         {
-            if (displayIcon)
-            {
-                PutSprite(4,
-                    28, 86, gObject_8x8,
-                    TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue>>6]) + OAM2_LAYER(2));
-            }
+            PutSprite(4,
+                28, 86, gObject_8x8,
+                TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue>>6]) + OAM2_LAYER(2));
         }
     }
+
+    /**
+     * We direcly put page toggle here since here has been a hook during statscreen IDLE.
+     * It's true that better to put such process into StatScreen_OnIdle(), but both are okay.
+     */
+    if ((gKeyStatusPtr->newKeys & SELECT_BUTTON))
+    {
+        if ((gStatScreen.page == STATSCREEN_PAGE_0) && (FACTION_BLUE == UNIT_FACTION(gStatScreen.unit)))
+            ToggleUnitPage(!gStatScreenStExpa.toggle);
+    }
+
+    /* Refrain left panel */
+    if (gStatScreenStExpa.toggle && gStatScreen.page != STATSCREEN_PAGE_0)
+    {
+        gStatScreenStExpa.toggle = false;
+        ToggleUnitLeftPage(false);
+        BG_EnableSyncByMask(BG0_SYNC_BIT);
+    }
+}
+
+/* LynJump */
+void GlowBlendCtrl_OnLoop(struct StatScreenEffectProc * proc)
+{
+    /**
+     * Since BG1 may also consume chr resource on texts,
+     * so I think it is better to directly remove them.
+     */
+    return;
 }

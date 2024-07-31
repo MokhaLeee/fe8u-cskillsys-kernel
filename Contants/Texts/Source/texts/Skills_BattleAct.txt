@@ -177,3 +177,15 @@ C-Magic:[X]
 Counter Magic:[NL]
 Reflect magical damage[NL]
 dealt at range.[X]
+
+## MSG_SKILL_Eclipse
+Eclipse:[NL]
+Halve the opponent's current HP.[NL]
+(Skill % activation).[X]
+
+## MSG_SKILL_LunarBrace_NAME
+L-Brace[X]
+
+## MSG_SKILL_LunarBrace
+Lunar Brace:[NL]
+Negate 25% of enemy defense.[X]

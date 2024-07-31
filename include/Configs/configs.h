@@ -17,9 +17,6 @@
  */
 // #define CONFIG_CROP_VANILLA_MSG
 
-/* Icon sheet amount */
-#define ICON_SHEET_AMT 7
-
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 
@@ -90,6 +87,17 @@
  * Install DrawMapActionAnimation
  */
 // #define CONFIG_INSTALL_MAPACTIONANIM
+
+/**
+ * Install StatScreenfx
+ */
+// #define CONFIG_INSTALL_STATSCREENFX
+
+/**
+ * Install ConvoyExpa
+ */
+#define CONFIG_INSTALL_CONVOYEXPA
+#define CONFIG_INSTALL_CONVOYEXPA_AMT 200 // better not to touch this since it will affact on size of gExpaConvoyItemArray
 
 /**
  * Ai action expansion

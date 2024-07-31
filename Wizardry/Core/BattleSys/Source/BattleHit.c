@@ -27,6 +27,20 @@ STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct Battle
     return false;
 }
 
+STATIC_DECLAR bool CheckSkillHpHalve(struct BattleUnit * attacker, struct BattleUnit * defender)
+{
+
+#if (defined(SID_Eclipse) && (COMMON_SKILL_VALID(SID_Eclipse)))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Eclipse, attacker->unit.skl))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Eclipse);
+        return true;
+    }
+#endif
+
+    return false;
+}
+
 /* LynJump */
 void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
@@ -273,6 +287,17 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         gBattleTemporaryFlag.skill_activated_aether = true;
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
         correction += defender->battleDefense * 4 / 5;
+    }
+#endif
+
+#if (defined(SID_LunarBrace) && (COMMON_SKILL_VALID(SID_LunarBrace)))
+    if (BattleSkillTester(attacker, SID_LunarBrace))
+    {
+        if (&gBattleActor == attacker)
+        {
+            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LunarBrace);
+            correction += defender->battleDefense * 1 / 4;
+        }
     }
 #endif
 
@@ -694,8 +719,11 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
     {
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
+        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE || CheckSkillHpHalve(attacker, defender))
+        {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
+            gBattleStats.damage = defender->unit.curHP / 2;
+        }
 
         if (CheckDevilAttack(attacker, defender))
         {

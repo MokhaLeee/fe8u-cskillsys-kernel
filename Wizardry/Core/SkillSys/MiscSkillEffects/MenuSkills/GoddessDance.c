@@ -5,31 +5,12 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
-STATIC_DECLAR void AddTargetForGoddessDance(struct Unit * unit)
-{
-    if (UNIT_ALIVE(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index) && !!(unit->state & US_UNSELECTABLE))
-        AddTarget(unit->xPos, unit->yPos, unit->index, 1);
-}
-
-STATIC_DECLAR void MakeTargetListForGoddessDance(struct Unit * unit)
-{
-    int x = unit->xPos;
-    int y = unit->yPos;
-
-    gSubjectUnit = unit;
-    BmMapFill(gBmMapRange, 0);
-    MapAddInBoundedRange(x, y, 1, 1);
-
-    InitTargets(x, y);
-    ForEachUnitInRange(AddTargetForGoddessDance);
-}
-
 u8 GoddessDance_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
-    if (!HasSelectTarget(gActiveUnit, MakeTargetListForGoddessDance))
+    if (!HasSelectTarget(gActiveUnit, MakeTargetListForRefresh))
         return MENU_DISABLED;
 
     return MENU_ENABLED;
@@ -79,7 +60,7 @@ static void callback_exec(ProcPtr proc)
 {
     int i;
 
-    MakeTargetListForGoddessDance(gActiveUnit);
+    MakeTargetListForRefresh(gActiveUnit);
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
@@ -87,7 +68,7 @@ static void callback_exec(ProcPtr proc)
         if (!UNIT_ALIVE(unit) && unit != gActiveUnit)
             continue;
 
-        unit->state &= ~(US_UNSELECTABLE);
+        unit->state &= ~(US_UNSELECTABLE | US_HAS_MOVED | US_HAS_MOVED_AI);
     }
 }
 

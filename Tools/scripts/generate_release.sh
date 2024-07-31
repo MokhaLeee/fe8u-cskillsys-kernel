@@ -28,19 +28,9 @@ cp -rf include $RELEASE_DIR
 cp -rf Patches $RELEASE_DIR
 
 # fix texts
-TARGET_TEXTS_H=$RELEASE_DIR/include/constants/texts.h
-cp Contants/Texts/TextDefinitions.h $RELEASE_DIR/include/constants/
-echo '#ifndef TEXTS_H' > $TARGET_TEXTS_H
-echo '#define TEXTS_H' >> $TARGET_TEXTS_H
-echo '#include "TextDefinitions.h"' >> $TARGET_TEXTS_H
-echo '#endif // TEXTS_H' >> $TARGET_TEXTS_H
+cat Contants/Texts/TextDefinitions.h > $RELEASE_DIR/include/constants/texts.h
 
 # fix gfx
-TARGET_GFX_H=$RELEASE_DIR/include/constants/gfx.h
-cp Contants/Gfx/GfxDefs.h $RELEASE_DIR/include/constants/
-echo '#ifndef GFX_H' > $TARGET_GFX_H
-echo '#define GFX_H' >> $TARGET_GFX_H
-echo '#include "GfxDefs.h"' >> $TARGET_GFX_H
-echo '#endif // GFX_H' >> $TARGET_GFX_H
+cat Contants/Gfx/GfxDefs.h > $RELEASE_DIR/include/constants/gfx.h
 
 collect_header $RELEASE_DIR/include

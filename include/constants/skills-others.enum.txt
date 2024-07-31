@@ -113,6 +113,8 @@ SID_KeepUp
 // SID_LiquidOoze
 SID_CloseCombat
 SID_ArmorMarch
+SID_Eclipse
+SID_LunarBrace
 
 // Devil skills
 SID_DevilsPact

@@ -19,7 +19,7 @@ For now, we have defined 5 legend-skills in [LegendSkill.c](../Data/SkillSys/Leg
 
 ```
 SID_PosReturn
-SID_PosSwap
+SID_Lunge
 ```
 
 Unit can change position on post-action stage. For allies, players can choose whether or not to use the skill effect if possible. For enemies, they will automatically enable the skill effect and change the position if possible.

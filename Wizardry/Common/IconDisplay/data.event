@@ -1,10 +1,1 @@
-ALIGN 4
-IconGetters:
-    POIN IconGetterVanilla      // Sheet #0, vanilla
-    POIN GetCombatArtIcon       // sheet #1, combat art
-    POIN GetSkillIcon_Generic   // Sheet #3+, skills
-    POIN GetSkillIcon_Person
-    POIN GetSkillIcon_Job
-    POIN GetSkillIcon_Item
-
-ORG (IconGetters + 4 * ICON_SHEET_AMT)
+#include "Source/data.lyn.event"

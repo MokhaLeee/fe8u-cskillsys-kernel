@@ -12,6 +12,7 @@
 InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_ExecSkill, ActionExecSkill)
 
 // #include "data.event"
+// #include "def.event"
 
 /* EfxSkill */
 #include "EfxSkill/EkrSkill.lyn.event"
@@ -30,13 +31,6 @@ ERROR "Need module: EventExpansion installed!"
 #include "kernel/SkillEventCmd.lyn.event"
 
 InjectEventLoCmd(EVENT_CMD_SKILL, EventSkillOperation)
-
-#define Evt_AddSkill(sid, pid)       "BYTE 0x41 EVENT_CMD_SKILL; SHORT sid pid 0"
-#define Evt_AddSkillAt(sid, x, y)    "BYTE 0x42 EVENT_CMD_SKILL; SHORT sid x y"
-#define Evt_AddSkillSC(sid)          "BYTE 0x43 EVENT_CMD_SKILL; SHORT sid 0 0"
-#define Evt_RemoveSkill(sid, pid)    "BYTE 0x44 EVENT_CMD_SKILL; SHORT sid pid 0"
-#define Evt_RemoveSkillAt(sid, x, y) "BYTE 0x45 EVENT_CMD_SKILL; SHORT sid x y"
-#define Evt_RemoveSkillSC(sid)       "BYTE 0x46 EVENT_CMD_SKILL; SHORT sid 0 0"
 
 /* MapAnim */
 #include "SkillMapAnim/MapAnimSkill.lyn.event"
