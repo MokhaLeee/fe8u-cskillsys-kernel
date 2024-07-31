@@ -101,5 +101,5 @@ gEmsSusChunks:
 ALIGN 4
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
-    POIN StatDeuff_OnNewGameSave
+    POIN ResetStatDeuffBuf
     WORD 0 0 0 0

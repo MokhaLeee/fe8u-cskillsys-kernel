@@ -38,7 +38,7 @@ int MagGetterDebuff(int status, struct Unit * unit)
 
 int SklGetterDebuff(int status, struct Unit * unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.skl;
+    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.skl;;
 }
 
 int SpdGetterDebuff(int status, struct Unit * unit)
