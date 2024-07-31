@@ -114,6 +114,7 @@ SID_KeepUp
 SID_CloseCombat
 SID_ArmorMarch
 SID_Eclipse
+SID_Barricade
 SID_LunarBrace
 
 // Devil skills

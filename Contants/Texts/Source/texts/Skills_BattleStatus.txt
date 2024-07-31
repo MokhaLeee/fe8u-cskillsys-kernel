@@ -829,3 +829,8 @@ Liquid-O[X]
 Liquid Ooze:[NL]
 Attackers trying to gain HP from[NL]
 this unit lose as much instead.[X]
+
+## MSG_SKILL_Barricade
+Barricade: Damage taken is halved[NL]
+in this combat only, after first[NL]
+being struck.[X]
