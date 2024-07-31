@@ -561,7 +561,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_Barricade) && (COMMON_SKILL_VALID(SID_Barricade)))
     if (BattleSkillTester(defender, SID_Barricade))
     {
-        if(defender->unit.curHP < defender->hpInitial)
+        if (defender->unit.curHP < defender->hpInitial)
             decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Barricade));
     }
 #endif
