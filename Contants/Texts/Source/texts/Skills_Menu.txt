@@ -175,3 +175,13 @@ G-Dance[X]
 ## MSG_MenuSkill_GoddessDance_FRtext
 No allies are in range![X]
 
+## MSG_SKILL_Stride
+Stride:[NL]
+Increase the movement of all[NL]
+allies within 3 tiles by 3.[X]
+
+## MSG_MenuSkill_StrideName
+ Stride[X]
+
+## MSG_MenuSkill_Stride_FRtext
+No allies are in range![X]
