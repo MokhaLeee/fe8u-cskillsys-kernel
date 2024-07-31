@@ -4,13 +4,14 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-static void _SetArmorMarchStatDebuff(struct Unit * unit)
+FORCE_DECLARE static void _SetArmorMarchStatDebuff(struct Unit * unit)
 {
     SetUnitStatDebuff(unit, UNIT_STAT_BUFF_ARMOR_MARCH);
 }
 
 bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
 {
+#if (defined(SID_ArmorMarch) && (COMMON_SKILL_VALID(SID_ArmorMarch)))
     int i, j;
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
@@ -23,10 +24,9 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
         if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
             continue;
 
-#if (defined(SID_ArmorMarch) && (COMMON_SKILL_VALID(SID_ArmorMarch)))
         if (!SkillTester(unit, SID_ArmorMarch))
             continue;
-#endif
+
 
         for (j = 0; j < ARRAY_COUNT_RANGE1x1; j++)
         {
@@ -58,5 +58,6 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
             }
         }
     }
+#endif
     return false;
 }
