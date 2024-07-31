@@ -293,7 +293,7 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_LunarBrace) && (COMMON_SKILL_VALID(SID_LunarBrace)))
     if (BattleSkillTester(attacker, SID_LunarBrace))
     {
-        if(&gBattleActor == attacker)
+        if (&gBattleActor == attacker)
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LunarBrace);
             correction += defender->battleDefense * 1 / 4;
