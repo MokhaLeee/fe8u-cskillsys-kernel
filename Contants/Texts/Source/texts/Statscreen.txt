@@ -2,7 +2,7 @@
 Total[X]
 
 ## MSG_MSS_BattleAmtDesc
-Total battle amount.[X]
+Total battle amount[X]
 
 ## MSG_MSS_BWL_BATTLE
 B[X]
