@@ -3427,6 +3427,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_ArmorMarch) && COMMON_SKILL_VALID(SID_ArmorMarch))
+    [SID_ArmorMarch] = {
+        .name = MSG_SKILL_ArmorMarch_NAME,
+        .desc = MSG_SKILL_ArmorMarch,
+        .icon = GFX_SkillIcon_ArmorMarch,
+    },
+#endif
+
 #if (defined(SID_Eclipse) && COMMON_SKILL_VALID(SID_Eclipse))
     [SID_Eclipse] = {
         .desc = MSG_SKILL_Eclipse,
@@ -3438,6 +3446,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_Barricade] = {
         .desc = MSG_SKILL_Barricade,
         .icon = GFX_SkillIcon_Barricade,
+    },
+#endif
+
+#if (defined(SID_LunarBrace) && COMMON_SKILL_VALID(SID_LunarBrace))
+    [SID_LunarBrace] = {
+        .name = MSG_SKILL_LunarBrace_NAME,
+        .desc = MSG_SKILL_LunarBrace,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 };
