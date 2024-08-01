@@ -273,4 +273,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = GoddessDance_Unhover,
     },
 #endif
+
+#if (defined(SID_Stride) && COMMON_SKILL_VALID(SID_Stride))
+    [SID_Stride] = {
+        .name = "　大股",
+        .nameMsgId = MSG_MenuSkill_StrideName,
+        .helpMsgId = MSG_SKILL_Stride,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Stride_Usability,
+        .onDraw = NULL,
+        .onSelected = Stride_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = Stride_Hover,
+        .onSwitchOut = Stride_Unhover,
+    },
+#endif
 };
