@@ -3,13 +3,15 @@
 function collect_header() {
     cd $1
 
+    all_headers=$(find -type f -name "*.h")
+
     COMMON_HEADER="./gbafe-kernel.h"
     rm -rf $COMMON_HEADER
 
     echo "#pragma once" > $COMMON_HEADER
     echo "#include <common-chax.h>" > $COMMON_HEADER
 
-    for file in $(find -type f -name "*.h")
+    for file in $all_headers
     do
         echo "#include <${file#*/}>" >> $COMMON_HEADER
     done
