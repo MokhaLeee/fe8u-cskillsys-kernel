@@ -85,6 +85,7 @@ _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
 _kernel_malloc_overlay0 MapTaskVec, 4
 _kernel_malloc_overlay0 gStatScreenStExpa, 4
 _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
+_kernel_malloc_overlay0 gDmg, 36
 
 /**
  * Usage of memory on IWRAM for arm-functions
