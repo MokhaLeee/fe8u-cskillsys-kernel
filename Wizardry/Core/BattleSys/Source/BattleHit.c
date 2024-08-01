@@ -579,11 +579,10 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_BarricadePlus) && (COMMON_SKILL_VALID(SID_BarricadePlus)))
     if (BattleSkillTester(defender, SID_BarricadePlus))
     {
-        barricadePlus_activated = true;
-        reduction_amount = SKILL_EFF0(SID_BarricadePlus);
-
         if (act_flags->round_cnt_hit > 2)
         {
+            barricadePlus_activated = true;
+            reduction_amount = SKILL_EFF0(SID_BarricadePlus);
             halved_value = reduction_amount;
             
             for (int i = 0; i < act_flags->round_cnt_hit - 2; i++)
