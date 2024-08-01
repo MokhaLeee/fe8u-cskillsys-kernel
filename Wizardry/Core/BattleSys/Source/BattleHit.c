@@ -350,14 +350,14 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #endif
 
 #if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
-    if (BattleSkillTester(defender, SID_TowerShieldPlus))
-    {
-        if(gBattleStats.range > 1)
+        if (BattleSkillTester(defender, SID_TowerShieldPlus))
         {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
-            return 0;
+            if(gBattleStats.range > 1)
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
+                return 0;
+            }
         }
-    }
 #endif
         if (IsMagicAttack(attacker))
         {

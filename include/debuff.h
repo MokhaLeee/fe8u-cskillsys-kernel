@@ -239,7 +239,7 @@ int LckGetterStatDebuff(int status, struct Unit * unit);
 int MovGetterStatDebuff(int status, struct Unit * unit);
 
 void StatDeuff_OnNewGameInit(void);
-void StatDeuff_OnNewGameSave(void);
+void ResetStatDeuffBuf(void);
 void StatDeuff_OnLoadUnit(struct Unit * unit);
 
 /* Misc API */
