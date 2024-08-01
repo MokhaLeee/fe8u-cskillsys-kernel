@@ -10,10 +10,9 @@ void StartStatScreenHelp(int pageid, struct Proc * proc)
 
     if (!gStatScreen.help)
     {
-        switch (pageid)
-        {
+        switch (pageid) {
         case STATSCREEN_PAGE_0:
-            gStatScreen.help = RTextPageUnit;
+            StartUnitScreenHelp(pageid, proc);
             break;
 
         case STATSCREEN_PAGE_1:
@@ -29,7 +28,6 @@ void StartStatScreenHelp(int pageid, struct Proc * proc)
             break;
         } // switch (pageid)
     }
-
     StartMovingHelpBox(gStatScreen.help, proc);
 }
 
@@ -43,14 +41,6 @@ void DisplayPage(int pageid)
     CpuFastFill(0, gUiTmScratchC, sizeof(gUiTmScratchC));
 
     gStatScreenDrawPages[pageid]();
-}
-
-void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc)
-{
-    if (gStatScreenStExpa.talkee != 0)
-        proc->mid = 0x56A;
-    else
-        proc->mid = 0x550;
 }
 
 void HbPopuplate_Page3Skill(struct HelpBoxProc * proc)

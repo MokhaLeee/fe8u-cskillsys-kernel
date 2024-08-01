@@ -5,18 +5,14 @@
 #define STAT_BAR_MAX_INDENTIFIER 41
 
 typedef const struct HelpBoxInfo _DECL_INFO;
-extern _DECL_INFO * const RTextPageUnit, * const RTextPageSupport;
+extern _DECL_INFO * const RTextPageSupport;
 
 extern struct {
     u8 talkee;
+    u8 unitpage_max;
     u8 toggle : 1;
-    u8 _pad_[2];
+    u8 _pad_[1];
 } gStatScreenStExpa;
-
-void InstallExpandedTextPal(void);
-void ResetActiveFontPal(void);
-int GetTextColorFromGrowth(int growth);
-void ToggleUnitLeftPage(bool toggle);
 
 #define ModifyTextPal(bank, color)      \
     switch (color) {                    \
@@ -36,7 +32,25 @@ void ToggleUnitLeftPage(bool toggle);
         color = 0;                      \
     }
 
+/* unit page */
+int GetUnitBattleAmt(struct Unit * unit);
+u8 SortMax(const u8 * buf, int size);
+u8 GetTalkee(struct Unit * unit);
+void InstallExpandedTextPal(void);
+void ResetActiveFontPal(void);
+int GetTextColorFromGrowth(int growth);
 void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc);
+void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str);
+void DrawStatWithBarReworkExt(int num, int x, int y, u16 * tm, int base, int total, int max, int max_ref);
+void DrawStatWithBarRework(int num, int x, int y, u16 * tm1, u16 * tm2, int base, int total, int max);
+void StartUnitScreenHelp(int pageid, struct Proc * proc);
+void ToggleUnitLeftPage(bool toggle);
+
+void DisplayPage_WithBWL(void);
+
+extern _DECL_INFO * const RTextPageUnit_WithBWL;
+
+/* skill page */
 void StartSkillScreenHelp(int pageid, struct Proc * proc);
 void HbPopuplate_SkillPageCommon(struct HelpBoxProc * proc);
 void HbRedirect_SkillPageCommon(struct HelpBoxProc * proc);
@@ -44,7 +58,7 @@ void HbPopuplate_ArtPageCommon(struct HelpBoxProc * proc);
 void HbRedirect_ArtPageCommon(struct HelpBoxProc * proc);
 
 void DrawSkillPage_MokhaPlanA(void);
-extern _DECL_INFO * const RTextSkillPage_MokhaPlanA;
-
 void DrawSkillPage_MokhaPlanB(void);
+
+extern _DECL_INFO * const RTextSkillPage_MokhaPlanA;
 extern _DECL_INFO * const RTextSkillPage_MokhaPlanB;

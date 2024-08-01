@@ -70,7 +70,6 @@ _kernel_malloc sExpaConvoyItemArray, 2 * 300
  * relationship with banim, it is risky to use this area rashly.
  */
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
-_kernel_malloc_overlay0 sStatScreenPage1BarMax, 4
 _kernel_malloc_overlay0 UnitMenuSkills, 16
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
 _kernel_malloc_overlay0 gBattleTemporaryFlag, 8

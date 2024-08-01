@@ -83,6 +83,12 @@
 #define CONFIG_LVUP_MODE_HARD 1
 
 /**
+ * Page1 styles
+ */
+#define CONFIG_PAGE1_WITH_BWL 0
+#define CONFIG_PAGE1_WITH_LEADERSHIP 1
+
+/**
  * Page4 styles
  */
 #define CONFIG_PAGE4_MOKHA_PLAN_A 0
