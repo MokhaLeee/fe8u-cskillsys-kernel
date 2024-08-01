@@ -3449,6 +3449,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_BarricadePlus) && COMMON_SKILL_VALID(SID_BarricadePlus))
+    [SID_BarricadePlus] = {
+        .desc = MSG_SKILL_BarricadePlus,
+        .icon = GFX_SkillIcon_BarricadePlus,
+    },
+#endif
+
 #if (defined(SID_LunarBrace) && COMMON_SKILL_VALID(SID_LunarBrace))
     [SID_LunarBrace] = {
         .name = MSG_SKILL_LunarBrace_NAME,
@@ -3461,6 +3468,28 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_SoulSap] = {
         .desc = MSG_SKILL_SoulSap,
         .icon = GFX_SkillIcon_SoulSap,
+    },
+#endif
+
+#if (defined(SID_Pursuer) && COMMON_SKILL_VALID(SID_Pursuer))
+    [SID_Pursuer] = {
+        .desc = MSG_SKILL_Pursuer,
+        .icon = GFX_SkillIcon_Pursuer,
+    },
+#endif
+
+#if (defined(SID_Stride) && COMMON_SKILL_VALID(SID_Stride))
+    [SID_Stride] = {
+        .desc = MSG_SKILL_Stride,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_QuickLearner) && COMMON_SKILL_VALID(SID_QuickLearner))
+    [SID_QuickLearner] = {
+         .name = MSG_SKILL_QuickLearner_NAME,
+         .desc = MSG_SKILL_QuickLearner,
+         .icon = GFX_SkillIcon_QuickLearner,
     },
 #endif
 };

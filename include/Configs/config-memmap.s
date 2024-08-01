@@ -57,7 +57,7 @@ _kernel_malloc sStatDebuffStatusAlly, 51 * 16
 _kernel_malloc sStatDebuffStatusEnemy, 50 * 16
 _kernel_malloc sStatDebuffStatusNpc, 8 * 16
 _kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
-_kernel_malloc sStatDebuffMsgBuf, 0x2C * 6
+_kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
 _kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sExpaConvoyItemCount, 4
 _kernel_malloc sExpaConvoyItemArray, 2 * 300
@@ -70,7 +70,6 @@ _kernel_malloc sExpaConvoyItemArray, 2 * 300
  * relationship with banim, it is risky to use this area rashly.
  */
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
-_kernel_malloc_overlay0 sStatScreenPage1BarMax, 4
 _kernel_malloc_overlay0 UnitMenuSkills, 16
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
 _kernel_malloc_overlay0 gBattleTemporaryFlag, 8

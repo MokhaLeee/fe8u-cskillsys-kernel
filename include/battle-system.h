@@ -174,3 +174,22 @@ void PreBattleGenerateHook(void);
  * BattleUI
  */
 void ModifyBattleStatusForUI(void);
+
+/**
+ * Leadership
+ */
+struct LeaderShipConf {
+    bool8 en;
+    bool8 cancel_out_opposing;
+    struct {
+        u8 hit, avo;
+    } ally_bonus, enemy_bonus, npc_bonus;
+};
+
+extern struct LeaderShipConf const * const gpLeaderShipConf;
+
+extern u8 const * const gpLeaderShipPConf;
+extern u8 const * const gpLeaderShipJConf;
+
+int GetUnitLeaderShip(struct Unit * unit);
+void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit * target);

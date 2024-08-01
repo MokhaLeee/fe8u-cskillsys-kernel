@@ -21,7 +21,7 @@ struct KernelDesigerConfig {
     u8 lvup_mode_normal;
     u8 lvup_mode_hard;
 
-    u8 page4_style;
+    u8 unit_page_style, skil_page_style;
 };
 
 extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;

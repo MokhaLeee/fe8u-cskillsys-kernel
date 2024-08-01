@@ -58,6 +58,11 @@
 #define CONFIG_FASTER_MAP_RANGE
 
 /**
+ * Enable leader-ship features
+ */
+// #define CONFIG_LEADER_SHIP_EN
+
+/**
  * If uncommented, this will disable move-path calculation and display.
  * Since move-path can display no more than 20 steps in vanilla,
  * with the increase of unit's mobility, this limitation may cause
@@ -76,6 +81,12 @@
 #define CONFIG_LVUP_MODE_TUTORIAL 2
 #define CONFIG_LVUP_MODE_NORMAL 0
 #define CONFIG_LVUP_MODE_HARD 1
+
+/**
+ * Page1 styles
+ */
+#define CONFIG_PAGE1_WITH_BWL 0
+#define CONFIG_PAGE1_WITH_LEADERSHIP 1
 
 /**
  * Page4 styles
@@ -112,16 +123,17 @@
 #define CONFIG_UNIT_ACTION_EXPA_ExecSkill 0x23
 
 /**
- * Str/Mag related config
- */
-#define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
-#define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
-
-/**
- * Some pointers
+ * Icon config
  */
 #define CONFIG_PR_ITEM_ICON  0x5926F4
+#define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
+#define CONFIG_ICON_INDEX_STAR 0xCB
+
+/**
+ * Item config
+ */
 #define CONFIG_PR_ITEM_TABLE 0x809B10
+#define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

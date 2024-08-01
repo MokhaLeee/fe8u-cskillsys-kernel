@@ -115,7 +115,10 @@ SID_CloseCombat
 SID_ArmorMarch
 SID_Eclipse
 SID_Barricade
+SID_BarricadePlus
 SID_LunarBrace
+SID_Pursuer
+// SID_QuickLearner
 
 // Devil skills
 SID_DevilsPact
@@ -229,6 +232,7 @@ SID_RallySpeed
 SID_RallyStrength
 SID_RallySpectrum
 SID_GoddessDance
+SID_Stride
 
 // Art skills
 SID_COMBAT_Galeforce

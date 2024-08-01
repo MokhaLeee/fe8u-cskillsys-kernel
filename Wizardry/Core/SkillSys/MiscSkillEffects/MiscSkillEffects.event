@@ -24,6 +24,7 @@
 #include "MenuSkills/Mine.lyn.event"
 #include "MenuSkills/Rally.lyn.event"
 #include "MenuSkills/GoddessDance.lyn.event"
+#include "MenuSkills/Stride.lyn.event"
 #include "MenuSkills/Teleportation.lyn.event"
 #include "MenuSkills/LynJump.event"
 

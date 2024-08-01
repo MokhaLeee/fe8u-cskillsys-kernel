@@ -134,6 +134,7 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     bool crit_atk;
+    bool barricadePlus_activated;
     int result, damage_base, attack, defense;
     int correction, real_damage, increase, decrease, crit_correction;
 
@@ -350,14 +351,14 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 #endif
 
 #if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
-    if (BattleSkillTester(defender, SID_TowerShieldPlus))
-    {
-        if(gBattleStats.range > 1)
+        if (BattleSkillTester(defender, SID_TowerShieldPlus))
         {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
-            return 0;
+            if(gBattleStats.range > 1)
+            {
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
+                return 0;
+            }
         }
-    }
 #endif
         if (IsMagicAttack(attacker))
         {
@@ -569,8 +570,32 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
         decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CrusaderWard));
 #endif
 
+    /**
+     * Boolean check to prevent Barricade+ and Barricade from stacking
+     */
+    barricadePlus_activated = false;
+
+#if (defined(SID_BarricadePlus) && (COMMON_SKILL_VALID(SID_BarricadePlus)))
+    if (BattleSkillTester(defender, SID_BarricadePlus))
+    {
+        if (act_flags->round_cnt_hit > 2)
+        {
+            int _i, _reduction = SKILL_EFF0(SID_BarricadePlus);
+            int _base = _reduction;
+            barricadePlus_activated = true;
+
+            for (_i = 0; _i < act_flags->round_cnt_hit - 2; _i++)
+            {
+                _base = _base / 2;
+                _reduction += _base;
+            }
+            decrease += DAMAGE_DECREASE(_reduction);
+        }
+    }
+#endif
+
 #if (defined(SID_Barricade) && (COMMON_SKILL_VALID(SID_Barricade)))
-    if (BattleSkillTester(defender, SID_Barricade))
+    if (BattleSkillTester(defender, SID_Barricade) && !barricadePlus_activated)
     {
         if (defender->unit.curHP < defender->hpInitial)
             decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Barricade));

@@ -834,3 +834,13 @@ this unit lose as much instead.[X]
 Barricade: Damage taken is halved[NL]
 in this combat only, after first[NL]
 being struck.[X]
+
+## MSG_SKILL_BarricadePlus
+Barricade+: Damage taken is halved[NL]
+in this combat only, after every[NL]
+strike against this unit.[X]
+
+## MSG_SKILL_Pursuer
+Pursuer: If initiating combat,[NL]
+attack speed +5, attack + 25% of unit[NL]
+speed, double attack immediately.[X]
