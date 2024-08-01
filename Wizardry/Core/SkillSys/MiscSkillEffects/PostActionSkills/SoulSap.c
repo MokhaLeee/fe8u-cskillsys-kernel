@@ -41,8 +41,8 @@ STATIC_DECLAR void SkillSoulSapPostAnimEffect(ProcPtr proc)
         // Make sure enemy units don't die from this skill
         if (tunit->curHP <= damage_amt)
         {
-            tunit->curHP = 1;
             heal_amt += tunit->curHP - 1;
+            tunit->curHP = 1;
         }
         else
         {
