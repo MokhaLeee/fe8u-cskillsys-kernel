@@ -1,101 +1,14 @@
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "strmag.h"
-#include "lvup.h"
 #include "bwl.h"
+#include "lvup.h"
 #include "debuff.h"
 #include "kernel-lib.h"
 #include "kernel-glyph.h"
 #include "constants/texts.h"
 
-extern struct Font * gActiveFont;
-extern int sStatScreenPage1BarMax;
-
-void InstallExpandedTextPal(void)
-{
-    extern const u16 ExpandedTextPals[];
-    ApplyPalettes(ExpandedTextPals, 0x8, 2);
-};
-
-void ResetActiveFontPal(void)
-{
-    gActiveFont->tileref = gActiveFont->tileref & 0xFFF;
-}
-
-int GetTextColorFromGrowth(int growth)
-{
-    int _mod10 = growth / 10;
-    LIMIT_AREA(_mod10, 0, 9);
-    return (9 - _mod10) + 5;
-}
-
-STATIC_DECLAR void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str)
-{
-    int bank;
-    ModifyTextPal(bank, color);
-
-    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
-    PutDrawText(text, tm, color, x, tile_width, str);
-}
-
-STATIC_DECLAR int SortMax(const int * buf, int size)
-{
-    int i, max = 0;
-    for (i = 0; i < size; i++)
-    {
-        if (max < buf[i])
-            max = buf[i];
-    }
-
-    return max;
-}
-
-STATIC_DECLAR void DrawStatWithBarReworkExt(int num, int x, int y, u16 * tm, int base, int total, int max, int max_ref)
-{
-    int diff = total - base;
-
-    LIMIT_AREA(base, 0, max);
-    LIMIT_AREA(total, 0, max);
-
-    base  = base * STAT_BAR_MAX_INDENTIFIER / max_ref;
-    total = total * STAT_BAR_MAX_INDENTIFIER / max_ref;
-    max   = max * STAT_BAR_MAX_INDENTIFIER / max_ref;
-
-    diff = total - base;
-
-    DrawStatBarGfx(
-        0x401 + num * 6, 6,
-        tm + TILEMAP_INDEX(x - 2, y + 1),
-        TILEREF(0, STATSCREEN_BGPAL_6),
-        max,
-        base,
-        diff);
-}
-
-STATIC_DECLAR void DrawStatWithBarRework(int num, int x, int y, u16 * tm1, u16 * tm2, int base, int total, int max)
-{
-    /**
-     * Here the max value maybe more than 35,
-     * but we need to fix the bar's length shorter than 35
-     */
-    int diff = total - base;
-    int max_bar = sStatScreenPage1BarMax;
-
-    PutNumberOrBlank(
-        tm1 + TILEMAP_INDEX(x, y),
-        base == max
-            ? TEXT_COLOR_SYSTEM_GREEN
-            : TEXT_COLOR_SYSTEM_BLUE,
-        base);
-
-    PutNumberBonus(
-        diff,
-        tm1 + TILEMAP_INDEX(x + 1, y));
-
-    DrawStatWithBarReworkExt(num, x, y, tm2, base, total, max, max_bar);
-}
-
-STATIC_DECLAR void DrawPage1TextCommon(void)
+static void DrawPage1TextCommon(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
@@ -201,7 +114,7 @@ STATIC_DECLAR void DrawPage1TextCommon(void)
         GetStringFromIndex(0x4FA)); // Cond
 }
 
-STATIC_DECLAR void DrawPage1ValueReal(void)
+static void DrawPage1ValueReal(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
@@ -248,7 +161,7 @@ STATIC_DECLAR void DrawPage1ValueReal(void)
                     UNIT_RES_MAX(unit));
 }
 
-STATIC_DECLAR void DrawPage1ValueCommon(void)
+static void DrawPage1ValueCommon(void)
 {
     struct Unit * unit = gStatScreen.unit;
 
@@ -297,21 +210,7 @@ STATIC_DECLAR void DrawPage1ValueCommon(void)
     }
 }
 
-STATIC_DECLAR int GetUnitBattleAmt(struct Unit * unit)
-{
-    int status = 0;
-    status += GetUnitPower(unit);
-    status += GetUnitMagic(unit);
-    status += GetUnitSkill(unit);
-    status += GetUnitSpeed(unit);
-    status += GetUnitLuck(unit);
-    status += GetUnitDefense(unit);
-    status += GetUnitResistance(unit);
-
-    return status;
-}
-
-STATIC_DECLAR void DrawPage1BattleAmt(void)
+static void DrawPage1BattleAmt(void)
 {
     int amt = GetUnitBattleAmt(gStatScreen.unit);
     int max = 50 * 7;
@@ -335,7 +234,7 @@ STATIC_DECLAR void DrawPage1BattleAmt(void)
 }
 
 /* BWL */
-STATIC_DECLAR void DrawPage1BWL(void)
+static void DrawPage1BWL(void)
 {
     struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(gStatScreen.unit));
     if (!bwl)
@@ -403,7 +302,7 @@ STATIC_DECLAR void DrawPage1BWL(void)
         TEXT_COLOR_SYSTEM_BLUE, bwl->lossAmt);
 }
 
-STATIC_DECLAR void DrawPage1Affin(void)
+static void DrawPage1Affin(void)
 {
     struct Unit * unit = gStatScreen.unit;
     int affin = unit->pCharacterData->affinity;
@@ -444,55 +343,8 @@ STATIC_DECLAR void DrawPage1Affin(void)
     }
 }
 
-static u8 GetTalkee(struct Unit * unit)
+static void DrawPage1TalkTrv(void)
 {
-    int i;
-    const struct EventListCmdInfo * cmd_info = &gEventListCmdInfoTable[EVT_LIST_CMD_CHAR];
-    const EventListScr * list = GetChapterEventDataPointer(gPlaySt.chapterIndex)->characterBasedEvents;
-
-    /* Talk */
-    for (;;)
-    {
-        u8 cmd = EVT_CMD_LO(list[0]);
-        if (cmd == EVT_LIST_CMD_END)
-            break;
-
-        if (cmd != EVT_LIST_CMD_CHAR)
-            continue;
-
-        if (!CheckFlag(EVT_CMD_HI(list[0])))
-        {
-            const struct EvCheck03 * _chunk = (const void * )list;
-            struct EventInfo info = {
-                .listScript = list,
-                .pidA = UNIT_CHAR_ID(unit),
-                .pidB = _chunk->pidB,
-            };
-
-            if (cmd_info->func(&info) == true)
-            {
-                struct Unit * talkee = GetUnitFromCharId(_chunk->pidB);
-                if (UNIT_ALIVE(talkee))
-                    return _chunk->pidB;
-            }
-        }
-        list += cmd_info->length;
-    }
-
-    /* Support */
-    for (i = 0; i < GetUnitSupporterCount(unit); i++)
-    {
-        struct Unit * talkee = GetUnitSupporterUnit(unit, i);
-        if (UNIT_ALIVE(talkee) && CanUnitSupportNow(unit, i))
-            return UNIT_CHAR_ID(talkee);
-    }
-    return 0;
-}
-
-STATIC_DECLAR void DrawPage1TalkTrv(void)
-{
-    gStatScreenStExpa.talkee = GetTalkee(gStatScreen.unit);
-
     if (gStatScreenStExpa.talkee != 0)
     {
         /* Talk */
@@ -525,22 +377,10 @@ STATIC_DECLAR void DrawPage1TalkTrv(void)
     }
 }
 
-/* LynJump */
-void DisplayPage0(void)
+/* External hook */
+void DisplayPage_WithBWL(void)
 {
-    struct Unit * unit = gStatScreen.unit;
-
-    int i, max_vals[] = {
-        UNIT_POW_MAX(unit),
-        GetUnitMaxMagic(unit),
-        UNIT_SKL_MAX(unit),
-        UNIT_SPD_MAX(unit),
-        UNIT_LCK_MAX(unit),
-        UNIT_DEF_MAX(unit),
-        UNIT_RES_MAX(unit),
-    };
-
-    sStatScreenPage1BarMax = SortMax(max_vals, sizeof(max_vals) / sizeof(int));
+    int i;
 
     for (i = STATSCREEN_TEXT_POWLABEL; i < STATSCREEN_TEXT_BSATKLABEL; i++)
         ClearText(&gStatScreen.text[i]);
@@ -548,7 +388,6 @@ void DisplayPage0(void)
     ClearText(&gStatScreen.text[STATSCREEN_TEXT_SUPPORT3]);
     ClearText(&gStatScreen.text[STATSCREEN_TEXT_SUPPORT4]);
 
-    InstallExpandedTextPal();
     DrawPage1TextCommon();
     DrawPage1ValueReal();
     DrawPage1ValueCommon();
@@ -556,182 +395,4 @@ void DisplayPage0(void)
     DrawPage1BWL();
     DrawPage1Affin();
     DrawPage1TalkTrv();
-}
-
-static inline void _growth_disp(int x, int y, int growth)
-{
-    int bank, color = GetTextColorFromGrowth(growth);
-
-    ModifyTextPal(bank, color);
-    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
-
-    PutNumberOrBlank(
-        gBG0TilemapBuffer + TILEMAP_INDEX(x, y),
-        color,
-        growth);
-}
-
-STATIC_DECLAR void ToggleUnitPageGrowth(void)
-{
-    struct Unit * unit = gStatScreen.unit;
-
-    _growth_disp(18, 3,  GetUnitPowGrowth(unit));
-    _growth_disp(18, 5,  GetUnitMagGrowth(unit));
-    _growth_disp(18, 7,  GetUnitSklGrowth(unit));
-    _growth_disp(18, 9,  GetUnitSpdGrowth(unit));
-    _growth_disp(18, 11, GetUnitLckGrowth(unit));
-    _growth_disp(18, 13, GetUnitDefGrowth(unit));
-    _growth_disp(18, 15, GetUnitResGrowth(unit));
-
-    ResetActiveFontPal();
-}
-
-STATIC_DECLAR void ToggleUnitPageBm(void)
-{
-    struct Unit * unit = gStatScreen.unit;
-
-    DrawStatWithBarRework(0, 0x5, 0x1,
-                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    unit->pow,
-                    GetUnitPower(unit),
-                    UNIT_POW_MAX(unit));
-
-    DrawStatWithBarRework(1, 0x5, 0x3,
-                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    UNIT_MAG(unit),
-                    GetUnitMagic(unit),
-                    GetUnitMaxMagic(unit));
-
-    DrawStatWithBarRework(2, 0x5, 0x5,
-                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    unit->skl,
-                    GetUnitSkill(unit),
-                    UNIT_SKL_MAX(unit));
-
-    DrawStatWithBarRework(3, 0x5, 0x7,
-                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    unit->spd,
-                    GetUnitSpeed(unit),
-                    UNIT_SPD_MAX(unit));
-
-    DrawStatWithBarRework(4, 0x5, 0x9,
-                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    unit->lck,
-                    GetUnitLuck(unit),
-                    UNIT_LCK_MAX(unit));
-
-    DrawStatWithBarRework(5, 0x5, 0xB,
-                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    unit->def,
-                    GetUnitDefense(unit),
-                    UNIT_DEF_MAX(unit));
-
-    DrawStatWithBarRework(6, 0x5, 0xD,
-                    gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),
-                    unit->res,
-                    GetUnitResistance(unit),
-                    UNIT_RES_MAX(unit));
-}
-
-
-
-STATIC_DECLAR void ToggleUnitPage(bool toggle)
-{
-    gStatScreenStExpa.toggle = toggle;
-
-    TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 16, 3), 4, 13, 0);
-    if (toggle == false)
-    {
-        ToggleUnitPageBm();
-    }
-    else
-    {
-        TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 15, 3), 6, 13, 0);
-        ToggleUnitPageGrowth();
-    }
-    ToggleUnitLeftPage(toggle);
-    BG_EnableSyncByMask(BG0_SYNC_BIT | BG2_SYNC_BIT);
-}
-
-/* LynJump */
-void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
-{
-    bool blinking;
-    static const u16 palidLut[3] = { 0xC, 0xE, 0xD }; // TODO: palid constants
-
-    /* No idle in transition */
-    if (gStatScreen.inTransition)
-        return;
-
-    blinking = (GetGameClock() % 32) < 20;
-
-    if (gStatScreen.page == STATSCREEN_PAGE_0)
-    {
-        if (gStatScreen.unit->state & US_RESCUING)
-        {
-            UpdateStatArrowSprites(120, 56, 1);
-            UpdateStatArrowSprites(120, 72, 1);
-
-            if (blinking)
-            {
-                if (gStatScreenStExpa.talkee == 0)
-                {
-                    PutSprite(4,
-                        184, 94, gObject_8x8,
-                        TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue >> 6]) + OAM2_LAYER(2));
-                }
-                else
-                {
-                    PutSprite(4,
-                        28, 86, gObject_8x8,
-                        TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue>>6]) + OAM2_LAYER(2));
-                }
-            }
-        }
-    }
-
-    if (gStatScreen.unit->state & US_RESCUED)
-    {
-        if (blinking)
-        {
-            PutSprite(4,
-                28, 86, gObject_8x8,
-                TILEREF(3, 0xF & palidLut[gStatScreen.unit->rescue>>6]) + OAM2_LAYER(2));
-        }
-    }
-
-    /**
-     * We direcly put page toggle here since here has been a hook during statscreen IDLE.
-     * It's true that better to put such process into StatScreen_OnIdle(), but both are okay.
-     */
-    if ((gKeyStatusPtr->newKeys & SELECT_BUTTON))
-    {
-        if ((gStatScreen.page == STATSCREEN_PAGE_0) && (FACTION_BLUE == UNIT_FACTION(gStatScreen.unit)))
-            ToggleUnitPage(!gStatScreenStExpa.toggle);
-    }
-
-    /* Refrain left panel */
-    if (gStatScreenStExpa.toggle && gStatScreen.page != STATSCREEN_PAGE_0)
-    {
-        gStatScreenStExpa.toggle = false;
-        ToggleUnitLeftPage(false);
-        BG_EnableSyncByMask(BG0_SYNC_BIT);
-    }
-}
-
-/* LynJump */
-void GlowBlendCtrl_OnLoop(struct StatScreenEffectProc * proc)
-{
-    /**
-     * Since BG1 may also consume chr resource on texts,
-     * so I think it is better to directly remove them.
-     */
-    return;
 }

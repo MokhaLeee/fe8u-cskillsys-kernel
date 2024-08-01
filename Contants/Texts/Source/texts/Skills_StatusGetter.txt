@@ -177,7 +177,7 @@ When HP < 50%,[NL]
 STR/SKL/SPD +50% bonus.[X]
 
 ## MSG_SKILL_InitCalm_NAME
-Calm-Init.[X]
+Calm-Init[X]
 
 ## MSG_SKILL_InitCalm
 Calm Initiative:[NL]
@@ -185,7 +185,7 @@ Calm Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitStrong_NAME
-Strong-Init.[X]
+Strong-Init[X]
 
 ## MSG_SKILL_InitStrong
 Strong Initiative:[NL]
@@ -193,7 +193,7 @@ Strong Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitDeft_NAME
-Deft-Init.[X]
+Deft-Init[X]
 
 ## MSG_SKILL_InitDeft
 Deft Initiative:[NL]
@@ -201,7 +201,7 @@ Deft Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitQuick_NAME
-Quick-Init.[X]
+Quick-Init[X]
 
 ## MSG_SKILL_InitQuick
 Quick Initiative:[NL]
@@ -209,7 +209,7 @@ Quick Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitSturdy_NAME
-Sturdy-Init.[X]
+Sturdy-Init[X]
 
 ## MSG_SKILL_InitSturdy
 Sturdy Initiative:[NL]
@@ -217,7 +217,7 @@ Sturdy Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitClever_NAME
-Clever-Init.[X]
+Clever-Init[X]
 
 ## MSG_SKILL_InitClever
 Clever Initiative:[NL]
@@ -225,7 +225,7 @@ Clever Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitLucky_NAME
-Lucky-Init.[X]
+Lucky-Init[X]
 
 ## MSG_SKILL_InitLucky
 Lucky Initiative:[NL]
@@ -233,7 +233,7 @@ Lucky Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitNimble_NAME
-Nimble-Init.[X]
+Nimble-Init[X]
 
 ## MSG_SKILL_InitNimble
 Nimble Initiative:[NL]
@@ -241,7 +241,7 @@ Nimble Initiative:[NL]
 beginning of the turn.[X]
 
 ## MSG_SKILL_InitSpectrum_NAME
-Spec-Init.[X]
+Spec-Init[X]
 
 ## MSG_SKILL_InitSpectrum
 Spectrum Initiative:[NL]

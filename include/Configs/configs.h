@@ -58,6 +58,11 @@
 #define CONFIG_FASTER_MAP_RANGE
 
 /**
+ * Enable leader-ship features
+ */
+// #define CONFIG_LEADER_SHIP_EN
+
+/**
  * If uncommented, this will disable move-path calculation and display.
  * Since move-path can display no more than 20 steps in vanilla,
  * with the increase of unit's mobility, this limitation may cause
@@ -76,6 +81,12 @@
 #define CONFIG_LVUP_MODE_TUTORIAL 2
 #define CONFIG_LVUP_MODE_NORMAL 0
 #define CONFIG_LVUP_MODE_HARD 1
+
+/**
+ * Page1 styles
+ */
+#define CONFIG_PAGE1_WITH_BWL 0
+#define CONFIG_PAGE1_WITH_LEADERSHIP 1
 
 /**
  * Page4 styles

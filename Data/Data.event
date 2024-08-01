@@ -29,6 +29,7 @@
 #include "HiddenLevel/HiddenLevel.lyn.event"
 #include "KernelTutorial/ktut.lyn.event"
 #include "BattleSys/WeaponTriangle.lyn.event"
+#include "BattleSys/LeaderShip.lyn.event"
 #include "StrMag/UnitMagicInfos.lyn.event"
 #include "Debuff/DebuffInfo.lyn.event"
 

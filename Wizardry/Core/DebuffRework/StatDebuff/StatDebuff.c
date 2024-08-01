@@ -220,7 +220,8 @@ struct StatDebuffMsgBuf {
 };
 extern struct StatDebuffMsgBuf sStatDebuffMsgBuf[STAT_DEBUFF_MSG_BUF_AMT];
 extern int sStatDebuffMsgBufNext;
-
+void * const i = sStatDebuffMsgBuf;
+const int j = sizeof(struct StatDebuffMsgBuf);
 enum STAT_BUFF_MSG_BUF_SPECIAL_MASK {
     SP_STAT_CANNOT_MOVE = (1 << 0x00),
 };
@@ -371,13 +372,7 @@ int MovGetterStatDebuff(int status, struct Unit * unit)
     return status + GetStatDebuffMsgBuf(unit)->mov;
 }
 
-void StatDeuff_OnNewGameInit(void)
-{
-    Assert(UNIT_STAT_DEBUFF_MAX == 128);
-    Assert(UNIT_STAT_DEBUFF_MAX_REAL < 128);
-}
-
-void StatDeuff_OnNewGameSave(void)
+void ResetStatDeuffBuf(void)
 {
     CpuFastFill16(0, sStatDebuffStatusAlly, sizeof(sStatDebuffStatusAlly));
     CpuFastFill16(0, sStatDebuffStatusEnemy, sizeof(sStatDebuffStatusEnemy));
@@ -385,6 +380,14 @@ void StatDeuff_OnNewGameSave(void)
 
     memset(sStatDebuffMsgBuf, 0, sizeof(sStatDebuffMsgBuf));
     sStatDebuffMsgBufNext = 0;
+}
+
+void StatDeuff_OnNewGameInit(void)
+{
+    Assert(UNIT_STAT_DEBUFF_MAX == 128);
+    Assert(UNIT_STAT_DEBUFF_MAX_REAL < 128);
+
+    ResetStatDeuffBuf();
 }
 
 void StatDeuff_OnClearUnit(struct Unit * unit)

@@ -275,6 +275,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_CloseCombat] = {{ 2 }},
     [SID_Barricade] = {{ 50 }},
     [SID_BarricadePlus] = {{ 50 }},
+    [SID_Pursuer] = {{ 5, 4 }},
 
 #if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {{ 6 }},

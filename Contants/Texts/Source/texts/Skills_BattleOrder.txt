@@ -96,3 +96,11 @@ C-Combat[X]
 Close Combat: +2 damage if at[NL]
 1 range. Your double attacks[NL]
 occur before countering.[X]
+
+## MSG_SKILL_QuickLearner_NAME
+Q-Leaner[X]
+
+## MSG_SKILL_QuickLearner
+Quick Learner:[NL]
+When attacking a higher level[NL]
+enemy, this unit doubles.[X]
