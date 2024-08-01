@@ -135,7 +135,6 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
 {
     bool crit_atk;
     bool barricadePlus_activated;
-    int reduction_amount, halved_value;
     int result, damage_base, attack, defense;
     int correction, real_damage, increase, decrease, crit_correction;
 
@@ -581,18 +580,17 @@ STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct Batt
     {
         if (act_flags->round_cnt_hit > 2)
         {
+            int _i, _reduction = SKILL_EFF0(SID_BarricadePlus);
+            int _base = _reduction;
             barricadePlus_activated = true;
-            reduction_amount = SKILL_EFF0(SID_BarricadePlus);
-            halved_value = reduction_amount;
-            
-            for (int i = 0; i < act_flags->round_cnt_hit - 2; i++)
+
+            for (_i = 0; _i < act_flags->round_cnt_hit - 2; _i++)
             {
-                halved_value = halved_value / 2;
-                reduction_amount += halved_value;
+                _base = _base / 2;
+                _reduction += _base;
             }
+            decrease += DAMAGE_DECREASE(_reduction);
         }
-        
-        decrease += DAMAGE_DECREASE(reduction_amount);
     }
 #endif
 
