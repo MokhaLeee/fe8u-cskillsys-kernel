@@ -1,0 +1,6 @@
+#include "Source/LeaderShip.lyn.event"
+
+PUSH
+    ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_STAR * 0x80
+        #incbin "Source/StarIcon.4bpp"
+POP

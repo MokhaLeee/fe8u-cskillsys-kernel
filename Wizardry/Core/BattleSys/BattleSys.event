@@ -19,7 +19,7 @@
 
 #include "BattleHitExpasion/BattleHitExpasion.event"
 #include "WeaponLockEx/WeaponLockEx.event"
-#include "LeaderShip/LeaderShip.lyn.event"
+#include "LeaderShip/LeaderShip.event"
 
 // #include "data.event"
 

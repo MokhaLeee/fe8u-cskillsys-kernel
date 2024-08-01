@@ -36,6 +36,13 @@ strikes. Affects enemy's crit %.[X]
 ## MSG_MSS_TALK
 Talk[X]
 
+## MSG_MSS_LEADERSHIP
+Lead[X]
+
+## MSG_MSS_LEADERSHIP_DESC
+Unit leadership to give bonus[NL]
+on battle status for allies[X]
+
 ## MSG_MSS_SKILLS
 Skills[X]
 

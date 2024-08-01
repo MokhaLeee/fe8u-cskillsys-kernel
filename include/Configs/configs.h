@@ -123,16 +123,17 @@
 #define CONFIG_UNIT_ACTION_EXPA_ExecSkill 0x23
 
 /**
- * Str/Mag related config
- */
-#define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
-#define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
-
-/**
- * Some pointers
+ * Icon config
  */
 #define CONFIG_PR_ITEM_ICON  0x5926F4
+#define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
+#define CONFIG_ICON_INDEX_STAR 0xCB
+
+/**
+ * Item config
+ */
 #define CONFIG_PR_ITEM_TABLE 0x809B10
+#define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

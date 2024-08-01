@@ -47,8 +47,10 @@ void StartUnitScreenHelp(int pageid, struct Proc * proc);
 void ToggleUnitLeftPage(bool toggle);
 
 void DisplayPage_WithBWL(void);
+void DisplayPage_WithLeadership(void);
 
 extern _DECL_INFO * const RTextPageUnit_WithBWL;
+extern _DECL_INFO * const RTextPageUnit_WithLeadership;
 
 /* skill page */
 void StartSkillScreenHelp(int pageid, struct Proc * proc);

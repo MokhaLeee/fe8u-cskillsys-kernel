@@ -30,6 +30,7 @@ void DisplayPage0(void)
         break;
 
     case CONFIG_PAGE1_WITH_LEADERSHIP:
+        DisplayPage_WithLeadership();
         break;
     }
 }
@@ -44,6 +45,7 @@ void StartUnitScreenHelp(int pageid, struct Proc * proc)
         break;
 
     case CONFIG_PAGE1_WITH_LEADERSHIP:
+        gStatScreen.help = RTextPageUnit_WithLeadership;
         break;
     }
 }
