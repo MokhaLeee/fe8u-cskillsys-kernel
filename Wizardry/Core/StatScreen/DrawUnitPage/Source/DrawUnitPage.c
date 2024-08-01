@@ -18,7 +18,7 @@ void DisplayPage0(void)
         UNIT_RES_MAX(unit),
     };
 
-    gStatScreenStExpa.unitpage_max = SortMax(max_vals, sizeof(max_vals) / sizeof(int));
+    gStatScreenStExpa.unitpage_max = SortMax(max_vals, ARRAY_COUNT(max_vals));
     gStatScreenStExpa.talkee = GetTalkee(gStatScreen.unit);
 
     InstallExpandedTextPal();
