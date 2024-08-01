@@ -3457,6 +3457,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Pursuer) && COMMON_SKILL_VALID(SID_Pursuer))
+    [SID_Pursuer] = {
+        .desc = MSG_SKILL_Pursuer,
+        .icon = GFX_SkillIcon_Pursuer,
+    },
+#endif
+
 #if (defined(SID_Stride) && COMMON_SKILL_VALID(SID_Stride))
     [SID_Stride] = {
         .desc = MSG_SKILL_Stride,

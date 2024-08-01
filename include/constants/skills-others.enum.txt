@@ -116,6 +116,7 @@ SID_ArmorMarch
 SID_Eclipse
 SID_Barricade
 SID_LunarBrace
+SID_Pursuer
 // SID_QuickLearner
 
 // Devil skills

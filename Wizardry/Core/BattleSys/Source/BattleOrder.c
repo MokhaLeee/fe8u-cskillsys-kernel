@@ -226,6 +226,15 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
         return true;
     }
 #endif
+
+#if defined(SID_Pursuer) && (COMMON_SKILL_VALID(SID_Pursuer))
+    if (BattleSkillTester(&gBattleActor, SID_Pursuer))
+    {
+        gBattleTemporaryFlag.desperation_order = true;
+        RegisterBattleOrderSkill(SID_Pursuer, BORDER_DESPERATION);
+        return true;
+    }
+#endif
     return false;
 }
 

@@ -412,6 +412,14 @@ const struct SkillAnimInfo gSkillAnimInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Pursuer) && COMMON_SKILL_VALID(SID_Pursuer))
+    [SID_Pursuer] = {
+        .aid = EFX_SKILL_DEFAULT,
+        .priority = EFX_PRIORITY_NORMAL,
+        .sfx = 0x3D1,
+    },
+#endif
+
 #if (defined(SID_QuickLearner) && COMMON_SKILL_VALID(SID_QuickLearner))
     [SID_QuickLearner] = {
         .aid = EFX_SKILL_DEFAULT,

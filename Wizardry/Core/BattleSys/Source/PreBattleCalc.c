@@ -1215,6 +1215,16 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_Pursuer) && (COMMON_SKILL_VALID(SID_Pursuer)))
+        case SID_Pursuer:
+            if (attacker == &gBattleActor)
+            {
+                attacker->battleSpeed += SKILL_EFF0(SID_Pursuer);
+                attacker->battleAttack += attacker->unit.spd / SKILL_EFF1(SID_Pursuer);
+            }
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
