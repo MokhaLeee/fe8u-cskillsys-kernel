@@ -14,9 +14,6 @@ STATIC_DECLAR void ExecSkillSoulSapEffectAnim(ProcPtr proc)
 
     InitTargets(unit->xPos, unit->yPos);
     ForEachUnitInRange(AddUnitToTargetListIfNotAllied);
-
-#if 0
-#endif
 }
 
 STATIC_DECLAR void SkillSoulSapPostAnimEffect(ProcPtr proc)
@@ -51,11 +48,7 @@ STATIC_DECLAR void SkillSoulSapPostAnimEffect(ProcPtr proc)
         }
     }
 
-    // Now we take the combined sapped HP and restore the skill holder's HP with it.
-    if ((unit->curHP + heal_amt) > unit->maxHP)
-        unit->curHP = unit->maxHP;
-    else
-        unit->curHP += heal_amt;
+    AddUnitHp(unit, heal_amt);
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillSoulSap[] = {
