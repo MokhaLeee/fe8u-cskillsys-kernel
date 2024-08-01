@@ -56,7 +56,8 @@ gpLeaderShipConf: POIN gLeaderShipConf
 gpLeaderShipPConf: POIN gLeaderShipPConf
 gpLeaderShipJConf: POIN gLeaderShipJConf
 
-WORD 0 0
+gpBattleDamageCalcFuncs: POIN BattleDamageCalcFuncs
+gpBattleRealDamageCalcFuncs: POIN BattleRealDamageCalcFuncs
 
 gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks

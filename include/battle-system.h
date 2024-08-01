@@ -171,6 +171,17 @@ extern const u16 _DmgDecreaseRef[100];
 void PreBattleGenerateHook(void);
 
 /**
+ * BattleDamage
+ */
+extern struct {
+    bool8 crit_atk;
+    int damage_base, attack, defense;
+    int correction, real_damage, increase, decrease, crit_correction;
+} gDmg;
+
+int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defender);
+
+/**
  * BattleUI
  */
 void ModifyBattleStatusForUI(void);

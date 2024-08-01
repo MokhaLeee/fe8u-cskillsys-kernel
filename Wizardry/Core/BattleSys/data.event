@@ -12,6 +12,14 @@ PreBattleCalcFuncs:
     POIN PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad
     WORD 0
 
+BattleDamageCalcFuncs:
+    POIN PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad PreBattleCalcPad
+    WORD 0
+
+BattleRealDamageCalcFuncs:
+    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
+    WORD 0
+
 ALIGN 4
 Gfx_BKSEL:
     #incbin "Data/Gfx_BKSEL.4bpp"
