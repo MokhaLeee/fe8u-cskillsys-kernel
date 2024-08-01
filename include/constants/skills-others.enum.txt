@@ -115,6 +115,7 @@ SID_CloseCombat
 SID_ArmorMarch
 SID_Eclipse
 SID_Barricade
+SID_BarricadePlus
 SID_LunarBrace
 SID_Pursuer
 // SID_QuickLearner
