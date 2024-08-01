@@ -3464,6 +3464,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_SoulSap) && COMMON_SKILL_VALID(SID_SoulSap))
+    [SID_SoulSap] = {
+        .desc = MSG_SKILL_SoulSap,
+        .icon = GFX_SkillIcon_SoulSap,
+    },
+#endif
+
 #if (defined(SID_Pursuer) && COMMON_SKILL_VALID(SID_Pursuer))
     [SID_Pursuer] = {
         .desc = MSG_SKILL_Pursuer,

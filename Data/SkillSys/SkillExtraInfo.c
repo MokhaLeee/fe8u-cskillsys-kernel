@@ -157,6 +157,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_SavageBlow] = {{ 20 }},
     [SID_BreathOfLife] = {{ 20 }},
     [SID_Thunderstorm] = {{ 10 }},
+    [SID_SoulSap] = {{ 10 }},
 
     [SID_Renewal] = {{ 30 }},
     [SID_Forager] = {{ 20 }},

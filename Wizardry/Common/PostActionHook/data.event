@@ -2,7 +2,7 @@
 ALIGN 4
 gPostActionFuncs:
     POIN PostActionThunderstorm
-    POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife
+    POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife PostActionSkillSoulSap
     POIN PostActionSynchronize
     POIN PostActionBattleActorHurt PostActionBattleTargetHurt
     POIN PostAction_BattleActorHeal
