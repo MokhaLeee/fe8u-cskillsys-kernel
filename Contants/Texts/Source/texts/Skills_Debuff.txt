@@ -99,7 +99,7 @@ Fortify Armor[X]
 
 ## MSG_SKILL_FortifyArmor
 Fortify Armor: Grants Armor allies[NL]
-in 2x2 +6 ATK/SPD at the start[NL]
+in 2x2 +6 LCK/DEF/RES at the start[NL]
 of each turn.[X]
 
 ## MSG_SKILL_SealDefense_NAME
