@@ -1,30 +1,26 @@
-#define MSG_END "POIN StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc; WORD 0"
+#define MSG_END "POIN KernelPad2 KernelPad2 KernelPad2 KernelPad2; WORD 0"
 
 ALIGN 4
 gHpGetters:
     POIN HpGetterWeaponBonus HpGetterSkills
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
 gPowGetters:
     POIN PowGetterWeaponBonus PowGetterSkills PowGetterDebuff
     POIN PowGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
 gMagGetters:
     POIN MagGetterSkills MagGetterDebuff
     POIN MagGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
 gSklGetters:
     POIN SklGetterWeaponBonus SklGetterSkills SklGetterDebuff
     POIN SklGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
@@ -32,14 +28,12 @@ gSpdGetters:
     POIN SpdGetterWeaponBonus SpdGetterSkills SpdGetterDebuff
     POIN SpdGetterLegendSkills
     POIN SpdGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
 gLckGetters:
     POIN LckGetterWeaponBonus LckGetterSkills LckGetterDebuff
     POIN LckGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
@@ -47,7 +41,6 @@ gDefGetters:
     POIN DefGetterWeaponBonus DefGetterSkills DefGetterDebuff
     POIN DefGetterLegendSkills
     POIN DefGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
@@ -55,7 +48,6 @@ gResGetters:
     POIN ResGetterWeaponBonus ResGetterSkills ResGetterDebuff
     POIN ResGetterLegendSkills
     POIN ResGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 
@@ -63,7 +55,6 @@ gMovGetters:
     POIN MovGetterSkills
     POIN MovGetterDebuff
     POIN MovGetterStatDebuff
-    POIN StatusGetterPad StatusGetterPad StatusGetterPad StatusGetterPad
     POIN StatusGetterCheckCpas
     MSG_END
 

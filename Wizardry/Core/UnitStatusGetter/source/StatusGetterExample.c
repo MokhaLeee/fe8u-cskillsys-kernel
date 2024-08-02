@@ -17,8 +17,3 @@ int StatusGetterTest(int status, struct Unit * unit)
 
     return status;
 }
-
-int StatusGetterPad(int status)
-{
-    return status;
-}

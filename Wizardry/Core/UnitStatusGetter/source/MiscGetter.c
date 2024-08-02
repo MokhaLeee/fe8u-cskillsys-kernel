@@ -3,11 +3,6 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int StatusGetterPadFunc(int status, struct Unit * unit)
-{
-    return status;
-}
-
 int StatusGetterCheckCpas(int status, struct Unit * unit)
 {
     LIMIT_AREA(status, 0, 127);

@@ -115,3 +115,11 @@ static inline bool _BIT_CHK(u32 * bits, int idx)
 {
     return !!(bits[idx / 32] & (1 << (idx % 32)));
 }
+
+/**
+ * pad.c
+ */
+void KernelPad1(void);
+int KernelPad2(int val);
+bool KernelPad3(void);
+bool KernelPad4(void);

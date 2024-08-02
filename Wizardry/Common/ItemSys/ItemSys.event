@@ -9,7 +9,7 @@
 ALIGN 4
 gHealAmountGetters:
     POIN HealAmount_SkillsGetter
-    POIN StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc
+    POIN KernelPad2 KernelPad2 KernelPad2 KernelPad2
     WORD 0
 
 
