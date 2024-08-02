@@ -55,7 +55,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_BoldFighter) && (COMMON_SKILL_VALID(SID_BoldFighter))
-        if (basic_judgement == false && BattleSkillTester(actor, SID_BoldFighter))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_BoldFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
         {
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
@@ -66,13 +66,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
         if (basic_judgement == false)
         {
-            if (BattleSkillTester(actor, SID_RecklessFighter))
+            if (BattleSkillTester(actor, SID_RecklessFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
             {
                 RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_ACT_TWICE);
                 gBattleTemporaryFlag.act_force_twice_order = true;
                 return true;
             }
-            else if (BattleSkillTester(target, SID_RecklessFighter))
+            else if (BattleSkillTester(target, SID_RecklessFighter) && (target->hpInitial * 2) >= target->unit.maxHP)
             {
                 gBattleTemporaryFlag.act_force_twice_order = true;
                 return true;
@@ -136,7 +136,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         gBattleTemporaryFlag.tar_force_twice_order = false;
 
 #if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
-        if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
         {
             gBattleTemporaryFlag.tar_force_twice_order = true;
             RegisterBattleOrderSkill(SID_VengefulFighter, BORDER_TAR_TWICE);

@@ -44,6 +44,7 @@ V-Fighter[X]
 
 ## MSG_SKILL_VengefulFighter
 VengefulFighter:[NL]
+If HP is higher than 50%[NL]
 Always attack twice when under attack.[X]
 
 ## MSG_SKILL_RecklessFighter_NAME
@@ -51,6 +52,7 @@ R-Fighter[X]
 
 ## MSG_SKILL_RecklessFighter
 RecklessFighter:[NL]
+If HP is higher than 50%[NL]
 Both sides always attack twice.[X]
 
 ## MSG_SKILL_BoldFighter_NAME
@@ -58,6 +60,7 @@ B-Fighter[X]
 
 ## MSG_SKILL_BoldFighter
 BoldFighter:[NL]
+If HP is higher than 50%[NL]
 Always attack twice when attacking.[X]
 
 ## MSG_SKILL_BidingBlow
