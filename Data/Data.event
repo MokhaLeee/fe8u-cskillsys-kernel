@@ -32,6 +32,7 @@
 #include "BattleSys/LeaderShip.lyn.event"
 #include "StrMag/UnitMagicInfos.lyn.event"
 #include "Debuff/DebuffInfo.lyn.event"
+#include "Debuff/StatDebuffInfo.lyn.event"
 
 #include "../Wizardry/Common/ArmFunc/data.event"
 #include "../Wizardry/Common/UnitAction/data.event"
