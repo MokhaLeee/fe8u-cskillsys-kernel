@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "kernel-tutorial.h"
 #include "constants/gfx.h"
 #include "constants/combat-arts.h"
 
@@ -137,6 +138,16 @@ void PreBattleCalcCombatArt(struct BattleUnit * bu, struct BattleUnit * defender
 
         break;
     };
+}
+
+/* Pre-battle generate */
+void PreBattleGenerate_TrigCombartKTut(void)
+{
+    if (gBattleStats.config & BATTLE_CONFIG_REAL)
+    {
+        if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
+            TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
+    }
 }
 
 /* LynJump */

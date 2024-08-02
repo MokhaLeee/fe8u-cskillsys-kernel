@@ -105,7 +105,7 @@ gpPreAi2DecideHook: POIN gPreAi2DecideHook
 
 gpUnitActionTable: POIN gUnitActionTable
 
-WORD 0
+gpPreBattleGenerateFuncs: POIN PreBattleGenerateFuncs
 
 gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel

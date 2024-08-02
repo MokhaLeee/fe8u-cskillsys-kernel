@@ -113,8 +113,6 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
      * Step1: Calculate real damage
      */
     gDmg.real_damage = CalcBattleRealDamage(attacker, defender);
-    if (gDmg.real_damage > 0 && gBattleStats.config & BATTLE_CONFIG_REAL)
-        TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
 
     /**
      * Step2: Calculate base damage (atk + gDmg.correction - def)

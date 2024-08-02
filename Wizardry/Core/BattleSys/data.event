@@ -20,6 +20,14 @@ BattleRealDamageCalcFuncs:
     POIN KernelPad2 KernelPad2 KernelPad2 KernelPad2
     WORD 0
 
+PreBattleGenerateFuncs:
+    POIN ClearBattleGlobalFlags
+    POIN PreBattleGenerate_LightAndDark
+    POIN PreBattleGenerate_TrigCombartKTut
+
+    POIN KernelPad1 KernelPad1 KernelPad1 KernelPad1
+    WORD 0
+
 ALIGN 4
 Gfx_BKSEL:
     #incbin "Data/Gfx_BKSEL.4bpp"
