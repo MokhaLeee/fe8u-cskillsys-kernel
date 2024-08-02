@@ -90,8 +90,6 @@ STATIC_DECLAR void ToggleUnitPageBm(void)
 
 STATIC_DECLAR void ToggleUnitPage(bool toggle)
 {
-    gStatScreenStExpa.toggle = toggle;
-
     TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 16, 3), 4, 13, 0);
     if (toggle == false)
     {
@@ -160,15 +158,32 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
     switch (gpKernelDesigerConfig->unit_page_style) {
     case CONFIG_PAGE1_WITH_BWL:
     case CONFIG_PAGE1_WITH_LEADERSHIP:
-        if ((gKeyStatusPtr->newKeys & SELECT_BUTTON))
+        if ((gStatScreen.page == STATSCREEN_PAGE_0) && (FACTION_BLUE == UNIT_FACTION(gStatScreen.unit)))
         {
-            if ((gStatScreen.page == STATSCREEN_PAGE_0) && (FACTION_BLUE == UNIT_FACTION(gStatScreen.unit)))
-                ToggleUnitPage(!gStatScreenStExpa.toggle);
+            if (gStatScreenStExpa.toggle_timer == 0)
+            {
+                if ((gKeyStatusPtr->newKeys & SELECT_BUTTON))
+                {
+                    gStatScreenStExpa.toggle_timer = STATSCREEN_TOGGLE_DURATION;
+                }
+            }
+            else
+            {
+                gStatScreenStExpa.toggle_timer--;
+                if (gStatScreenStExpa.toggle_timer == (STATSCREEN_TOGGLE_DURATION / 2))
+                {
+                    PlaySoundEffect(0x6A);
+
+                    gStatScreenStExpa.toggle = ~gStatScreenStExpa.toggle;
+                    ToggleUnitPage(gStatScreenStExpa.toggle);
+                }
+            }
         }
 
         /* Refrain left panel */
         if (gStatScreenStExpa.toggle && gStatScreen.page != STATSCREEN_PAGE_0)
         {
+            gStatScreenStExpa.toggle_timer = 0;
             gStatScreenStExpa.toggle = false;
             ToggleUnitLeftPage(false);
             BG_EnableSyncByMask(BG0_SYNC_BIT);

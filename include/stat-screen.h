@@ -10,9 +10,14 @@ extern _DECL_INFO * const RTextPageSupport;
 extern struct {
     u8 talkee;
     u8 unitpage_max;
+
+    u8 toggle_timer : 7;
     u8 toggle : 1;
+
     u8 _pad_[1];
 } gStatScreenStExpa;
+
+#define STATSCREEN_TOGGLE_DURATION 20
 
 #define ModifyTextPal(bank, color)      \
     switch (color) {                    \
