@@ -2,7 +2,6 @@
 #define BATTLE_SYS_INSTALLED
 
 #include "Source/BattleGenerate.lyn.event"
-#include "Source/PreBattleGenerate.lyn.event"
 #include "Source/PreBattleCalc.lyn.event"
 #include "Source/BattleCalcReal.lyn.event"
 #include "Source/WeaponTriangle.lyn.event"
