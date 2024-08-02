@@ -15,8 +15,8 @@ def main(args):
             offset = line[2:8]
             name   = line[9:-1]
 
-            if (eval(f"0x{offset}") & 0x1) == 1:
-                continue
+            # if (eval(f"0x{offset}") & 0x1) == 1:
+            #     continue
 
             print(f"    ORG 0x{offset}")
             print(f"    {name}:\n")
