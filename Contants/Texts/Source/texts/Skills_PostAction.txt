@@ -103,3 +103,11 @@ enemy unit. (Skill % activation)[X]
 Soul Sap: At the end of this unit's[NL]
 action, drain up to 10% HP from each[NL]
 enemy within two tiles for healing.[X]
+
+## MSG_SKILL_GoldDigger_NAME
+G-Digger[X]
+
+## MSG_SKILL_GoldDigger
+Gold Digger:[NL]
+Gain 100 gold after[NL]
+killing an enemy.[X]

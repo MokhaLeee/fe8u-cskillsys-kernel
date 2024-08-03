@@ -9,7 +9,7 @@ gPostActionFuncs:
     POIN PostAction_Clearance
     POIN PostActionAlertStance
     POIN PostActionTsuzuku
-    POIN PostActionItemAcquisition
+    POIN PostActionGetItem
     POIN PostActionSwap
     POIN PostActionPositionReturn
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
