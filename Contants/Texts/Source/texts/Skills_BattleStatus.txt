@@ -851,3 +851,8 @@ L-Brace[X]
 ## MSG_SKILL_LunarBrace
 Lunar Brace:[NL]
 Negate 25% of enemy defense.[X]
+
+## MSG_SKILL_ArenaTrap
+Arena Trap:[NL]
+Enemy units within 2 tiles[NL]
+are prevented from moving.[X]

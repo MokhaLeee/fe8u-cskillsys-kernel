@@ -3,6 +3,7 @@
 #include "status-getter.h"
 #include "debuff.h"
 #include "constants/skills.h"
+#include "kernel-lib.h"
 
 int _GetUnitMov(struct Unit * unit)
 {
@@ -83,6 +84,37 @@ int MovGetterSkills(int status, struct Unit * unit)
     if (SkillTester(unit, SID_Poise))
         status += SKILL_EFF0(SID_Poise);
 #endif
+
+    int i;
+    FORCE_DECLARE bool arena_trap  = false;
+
+    for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
+    {
+        int _x = unit->xPos + gVecs_2x2[i].x;
+        int _y = unit->yPos + gVecs_2x2[i].y;
+
+        struct Unit * unit_enemy = GetUnitAtPosition(_x, _y);
+
+        if (!UNIT_IS_VALID(unit_enemy))
+            continue;
+
+        if (unit_enemy->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+            continue;
+
+        if (AreUnitsAllied(unit->index, unit_enemy->index))
+            continue;
+
+#if defined(SID_ArenaTrap) && (COMMON_SKILL_VALID(SID_ArenaTrap))
+            if (SkillTester(unit_enemy, SID_ArenaTrap))
+                arena_trap = true;
+#endif
+
+        if (!arena_trap)
+            continue;
+
+        status = SKILL_EFF0(SID_ArenaTrap);
+        break;
+    }
 
     return status;
 }

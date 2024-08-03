@@ -131,6 +131,7 @@ SID_SoaringGuidance
 SID_FlierFormation
 SID_SoaringWings
 SID_DetailedReport
+SID_ArenaTrap
 
 // Weapon range
 SID_HighGround
