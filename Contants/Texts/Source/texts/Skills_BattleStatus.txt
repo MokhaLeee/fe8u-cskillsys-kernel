@@ -56,6 +56,30 @@ Faire B.Mag: [NL]
 Atk +5 if unit[NL]
 equips B.Mag.[X]
 
+## MSG_SKILL_FaireAnima_NAME
+FaireAnima[X]
+
+## MSG_SKILL_FaireAnima
+Faire-Anima: [NL]
+ATK +5 if the unit[NL]
+has anima magic equipped.[X]
+
+## MSG_SKILL_FaireLight_NAME
+FaireLight[X]
+
+## MSG_SKILL_FaireLight
+Faire-Light: [NL]
+ATK +5 if the unit[NL]
+has light magic equipped.[X]
+
+## MSG_SKILL_FaireDark_NAME
+FaireDark[X]
+
+## MSG_SKILL_FaireDark
+Faire-Dark: [NL]
+ATK +5 if the unit[NL]
+has dark magic equipped.[X]
+
 ## MSG_SKILL_Avoid
 Avoid+10:[NL]
 Avoid rate +10%.[X]
@@ -440,7 +464,7 @@ Guts:[NL]
 any status condition.[X]
 
 ## MSG_SKILL_StrongCon
-Strong Con.:[NL]
+Strong Con:[NL]
 +5 Def/Res if afflicted by[NL]
 any status condition.[X]
 
@@ -700,30 +724,6 @@ AirRaid-Speed:[NL]
 When standing on a tile the enemy[NL]
 cannot enter, SPD + 5.[X]
 
-## MSG_SKILL_FaireAnima_NAME
-FaireAnima[X]
-
-## MSG_SKILL_FaireAnima
-Faire-Anima: [NL]
-ATK +5 if the unit[NL]
-has anima magic equipped.[X]
-
-## MSG_SKILL_FaireLight_NAME
-FaireLight[X]
-
-## MSG_SKILL_FaireLight
-Faire-Light: [NL]
-ATK +5 if the unit[NL]
-has light magic equipped.[X]
-
-## MSG_SKILL_FaireDark_NAME
-FaireDark[X]
-
-## MSG_SKILL_FaireDark
-Faire-Dark: [NL]
-ATK +5 if the unit[NL]
-has dark magic equipped.[X]
-
 ## MSG_SKILL_Pickup
 Pickup: Obtain the last item in the[NL]
 enemy's inventory after attacking[NL]
@@ -844,3 +844,10 @@ strike against this unit.[X]
 Pursuer: If initiating combat,[NL]
 attack speed +5, attack + 25% of unit[NL]
 speed, double attack immediately.[X]
+
+## MSG_SKILL_LunarBrace_NAME
+L-Brace[X]
+
+## MSG_SKILL_LunarBrace
+Lunar Brace:[NL]
+Negate 25% of enemy defense.[X]

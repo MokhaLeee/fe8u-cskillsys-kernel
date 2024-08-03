@@ -50,7 +50,7 @@ Swap positions with the enemy[NL]
 after attacking them.[X]
 
 ## MSG_SKILL_Synchronize
-Synchronize: 
+Synchronize: [NL]
 Copy status of unit to target.[NL]
 Allies only get buffs, and vice-versa.[X]
 
