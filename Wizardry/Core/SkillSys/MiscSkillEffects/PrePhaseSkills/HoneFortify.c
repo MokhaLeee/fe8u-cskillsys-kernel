@@ -191,8 +191,6 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
                         if (CheckSameClassType(UNIT_CLASS_ID(unit), UNIT_CLASS_ID(tunit)))
                             SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_JOB_FORTIFY);
                     }
-
-                    break;
                 }
             }
         }

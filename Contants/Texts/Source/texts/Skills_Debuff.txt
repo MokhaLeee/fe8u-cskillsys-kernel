@@ -7,7 +7,7 @@ HP -3 and have allies in 2x2, inflicts[NL]
 ATK/SPD/DEF/RES -3 and inflict Panic.[X]
 
 ## MSG_SKILL_PowHone_NAME
-Pow Open[X]
+Pow Hone[X]
 
 ## MSG_SKILL_PowHone
 Pow Hone: Grants allies in 2x2[NL]
@@ -15,7 +15,7 @@ Pow Hone: Grants allies in 2x2[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_MagHone_NAME
-Mag Open[X]
+Mag Hone[X]
 
 ## MSG_SKILL_MagHone
 Mag Hone: Grants allies in 2x2[NL]
@@ -23,7 +23,7 @@ Mag Hone: Grants allies in 2x2[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_SklHone_NAME
-Skl Open[X]
+Skl Hone[X]
 
 ## MSG_SKILL_SklHone
 Skl Hone: Grants allies in 2x2[NL]
@@ -31,7 +31,7 @@ Skl Hone: Grants allies in 2x2[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_SpdHone_NAME
-Spd Open[X]
+Spd Hone[X]
 
 ## MSG_SKILL_SpdHone
 Spd Hone: Grants allies in 2x2[NL]
@@ -39,7 +39,7 @@ Spd Hone: Grants allies in 2x2[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_LckHone_NAME
-Lck Open[X]
+Lck Hone[X]
 
 ## MSG_SKILL_LckHone
 Lck Hone: Grants allies in 2x2[NL]
@@ -47,7 +47,7 @@ Lck Hone: Grants allies in 2x2[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_DefHone_NAME
-Def Open[X]
+Def Hone[X]
 
 ## MSG_SKILL_DefHone
 Def Hone: Grants allies in 2x2[NL]
@@ -55,7 +55,7 @@ Def Hone: Grants allies in 2x2[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_ResHone_NAME
-Res Open[X]
+Res Hone[X]
 
 ## MSG_SKILL_ResHone
 Res Hone: Grants allies in 2x2[NL]
@@ -63,7 +63,7 @@ Res+4 for one turn during the[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_MovHone_NAME
-Mov Open[X]
+Mov Hone[X]
 
 ## MSG_SKILL_MovHone
 Mov Hone: Grants allies in 2x2[NL]

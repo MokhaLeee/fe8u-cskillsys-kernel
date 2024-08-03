@@ -358,6 +358,7 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
     Evt_AddSkill(SID_Teleportation, CHARACTER_EPHRAIM)
     Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
+    Evt_AddSkill(SID_MovHone, CHARACTER_SALEH)
     Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
 
     // PREP
