@@ -266,3 +266,31 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 priv)
     SetDefaultColorEffects();
     SetWinEnable(0, 0, 0);
 }
+
+/* LynJump */
+void DisplayWeaponExp(int num, int x, int y, int wtype)
+{
+    int progress, progressMax, color;
+
+    int wexp = gStatScreen.unit->ranks[wtype];
+
+    // Display weapon type icon
+    DrawIcon(gUiTmScratchA + TILEMAP_INDEX(x, y),
+        WTYPE_ICON(wtype),
+        TILEREF(0, STATSCREEN_BGPAL_EXTICONS));
+
+    color = wexp >= WPN_EXP_S
+        ? TEXT_COLOR_SYSTEM_GREEN
+        : TEXT_COLOR_SYSTEM_BLUE;
+
+    // Display rank letter
+    PutSpecialChar(gUiTmScratchA + TILEMAP_INDEX(x + 4, y),
+        color,
+        GetDisplayRankStringFromExp(wexp));
+
+    GetWeaponExpProgressState(wexp, &progress, &progressMax);
+
+    DrawStatBarGfx(0x401 + num*6, 5,
+        gUiTmScratchC + TILEMAP_INDEX(x + 2, y + 1), TILEREF(0, STATSCREEN_BGPAL_6),
+        0x22, (progress*34)/(progressMax-1), 0);
+}
