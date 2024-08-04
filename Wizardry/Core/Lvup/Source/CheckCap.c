@@ -4,8 +4,13 @@
 
 STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit * unit, struct BattleUnit * bu)
 {
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit))
+        bu->changeHP = KUNIT_MHP_MAX(unit) - unit->maxHP;
+#else
     if ((unit->maxHP + bu->changeHP) > UNIT_MHP_MAX(unit))
         bu->changeHP = UNIT_MHP_MAX(unit) - unit->maxHP;
+#endif
 
     if ((unit->pow + bu->changePow) > UNIT_POW_MAX(unit))
         bu->changePow = UNIT_POW_MAX(unit) - unit->pow;
@@ -28,8 +33,13 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit * unit, struct Bat
 
 STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit * unit)
 {
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    if (unit->maxHP > KUNIT_MHP_MAX(unit))
+        unit->maxHP = KUNIT_MHP_MAX(unit);
+#else
     if (unit->maxHP > UNIT_MHP_MAX(unit))
         unit->maxHP = UNIT_MHP_MAX(unit);
+#endif
 
     if (unit->pow > UNIT_POW_MAX(unit))
         unit->pow = UNIT_POW_MAX(unit);

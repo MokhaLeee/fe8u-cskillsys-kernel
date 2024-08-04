@@ -105,7 +105,12 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
     int ix, iy, stat_pack[8];
     UnpackUiBarPalette(2);
 
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
+#else
     stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit);
+#endif
+
     stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit);
     stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit);
     stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit);
@@ -141,7 +146,11 @@ void DrawPrepScreenItemUseStatValues(struct Unit* unit)
     // HP
     PutNumberOrBlank( 
         TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 3),
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+        (GetUnitCurrentHp(unit) == KUNIT_MHP_MAX(unit)) 
+#else
         (GetUnitCurrentHp(unit) == UNIT_MHP_MAX(unit)) 
+#endif
             ? TEXT_COLOR_SYSTEM_GREEN
             : TEXT_COLOR_SYSTEM_BLUE,
         GetUnitCurrentHp(unit)

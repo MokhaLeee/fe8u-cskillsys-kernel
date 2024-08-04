@@ -71,6 +71,11 @@
 // #define CONFIG_REMOVE_MOVE_PATH
 
 /**
+ * Install FEB patch: SetHPClassLimit
+ */
+// #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable

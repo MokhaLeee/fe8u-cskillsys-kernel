@@ -2,6 +2,11 @@
 
 #include "common-chax.h"
 
+// A replacement of vanilla UNIT_MHP_MAX()
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+#define KUNIT_MHP_MAX(unit) 120
+#endif
+
 typedef int (* StatusGetterFunc_t)(int old, struct Unit * unit);
 
 extern StatusGetterFunc_t const * const gpHpGetters;
