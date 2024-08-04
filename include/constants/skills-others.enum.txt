@@ -213,6 +213,7 @@ SID_Boon
 SID_FailGale
 SID_Clearance
 SID_Despoil
+SID_GoldDigger
 
 // Menu skills
 SID_Dance

@@ -3492,4 +3492,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
          .icon = GFX_SkillIcon_QuickLearner,
     },
 #endif
+
+#if (defined(SID_GoldDigger) && COMMON_SKILL_VALID(SID_GoldDigger))
+    [SID_GoldDigger] = {
+        .name = MSG_SKILL_GoldDigger_NAME,
+        .desc = MSG_SKILL_GoldDigger,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

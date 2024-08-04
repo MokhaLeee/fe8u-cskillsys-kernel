@@ -7,7 +7,7 @@
 #include "battle-system.h"
 #include "constants/skills.h"
 
-bool PostActionItemAcquisition(ProcPtr parent)
+bool PostActionGetItem(ProcPtr parent)
 {
     FORCE_DECLARE struct Unit * unit = gActiveUnit;
 
@@ -23,6 +23,14 @@ bool PostActionItemAcquisition(ProcPtr parent)
             return true;
         }
 #endif
-    }
+
+#if defined(SID_GoldDigger) && (COMMON_SKILL_VALID(SID_GoldDigger))
+        if (SkillTester(unit, SID_GoldDigger) && gBattleActorGlobalFlag.enimy_defeated)
+        {
+            NewPopup_GoldGot(parent, unit, SKILL_EFF0(SID_GoldDigger));
+            return true;
+        }
+#endif
+    }   
     return false;
 }
