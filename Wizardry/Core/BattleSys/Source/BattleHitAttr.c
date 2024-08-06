@@ -230,6 +230,29 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
         defender->statusOut = UNIT_STATUS_BERSERK;
     }
 #endif
+
+#if (defined(SID_EffectSpore) && (COMMON_SKILL_VALID(SID_EffectSpore)))
+    else if (CheckBattleSkillActivate(defender, attacker, SID_EffectSpore, 100))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
+        int effectID = NextRN_100() % 3; 
+
+        switch(effectID) {
+        case 0:
+            attacker->statusOut = UNIT_STATUS_POISON;
+            break;
+        case 1:
+            attacker->statusOut = UNIT_STATUS_SILENCED;
+            break;
+        case 2:
+            attacker->statusOut = UNIT_STATUS_SLEEP;
+            break;
+        
+        default:
+            break;
+        }
+    }
+#endif
 }
 
 void BattleHit_ConsumeWeapon(struct BattleUnit * attacker, struct BattleUnit * defender)
