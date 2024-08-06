@@ -851,3 +851,11 @@ L-Brace[X]
 ## MSG_SKILL_LunarBrace
 Lunar Brace:[NL]
 Negate 25% of enemy defense.[X]
+
+## MSG_SKILL_DominantArm_NAME
+D-Arm[X]
+
+## MSG_SKILL_DominantArm
+Dominant Arm: If the unit's equipped[NL]
+weapon is the same type as their[NL]
+highest weapon rank, +50% weapon ATK.[X]

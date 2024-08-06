@@ -268,10 +268,21 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
         if (BattleSkillTester(defender, SID_TowerShieldPlus))
         {
-            if(gBattleStats.range > 1)
+            if (gBattleStats.range > 1)
             {
                 RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
                 return 0;
+            }
+        }
+#endif
+
+#if (defined(SID_Dazzling) && (COMMON_SKILL_VALID(SID_Dazzling)))
+        if (BattleSkillTester(defender, SID_Dazzling))
+        {
+            if (gBattleStats.range >= 3)
+            {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Dazzling);
+            return 0;
             }
         }
 #endif
