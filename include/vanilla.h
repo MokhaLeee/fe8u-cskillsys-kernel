@@ -199,3 +199,5 @@ struct Struct02013648 {
 };
 
 extern struct Struct02013648 gUnknown_02013648;
+
+int GetUnitBestWRankType(struct Unit * unit);
