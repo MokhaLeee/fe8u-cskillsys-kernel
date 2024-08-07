@@ -11,7 +11,6 @@ void DrawSkillPage_MokhaPlanB(void)
     struct Text * text;
 
     struct SkillList * slist = GetUnitSkillList(gStatScreen.unit);
-    struct CombatArtList * clist = AutoGetCombatArtList(gStatScreen.unit);
 
     DisplayWeaponExp(0, 1, 0x1, ITYPE_SWORD);
     DisplayWeaponExp(1, 1, 0x3, ITYPE_LANCE);
@@ -58,36 +57,69 @@ void DrawSkillPage_MokhaPlanB(void)
     }
 
     /* Arts */
-    text = &gStatScreen.text[STATSCREEN_TEXT_ITEM2];
-    ClearText(text);
-    PutDrawText(
-        text,
-        gUiTmScratchA + TILEMAP_INDEX(9, 11),
-        TEXT_COLOR_SYSTEM_GOLD, 0, 0,
-        GetStringFromIndex(MSG_MSS_ARTS));
-
-    if (clist->amt == 0)
+    if (UNIT_FACTION(gStatScreen.unit) == FACTION_BLUE)
     {
-        text = &gStatScreen.text[STATSCREEN_TEXT_ITEM3];
+        struct CombatArtList * clist = AutoGetCombatArtList(gStatScreen.unit);
+
+        text = &gStatScreen.text[STATSCREEN_TEXT_ITEM2];
         ClearText(text);
         PutDrawText(
             text,
-            gUiTmScratchA + TILEMAP_INDEX(9, 13),
-            TEXT_COLOR_SYSTEM_GRAY, 0, 0,
-            GetStringFromIndex(MSG_MSS_NOARTS));
+            gUiTmScratchA + TILEMAP_INDEX(9, 11),
+            TEXT_COLOR_SYSTEM_GOLD, 0, 0,
+            GetStringFromIndex(MSG_MSS_ARTS));
+
+        if (clist->amt == 0)
+        {
+            text = &gStatScreen.text[STATSCREEN_TEXT_ITEM3];
+            ClearText(text);
+            PutDrawText(
+                text,
+                gUiTmScratchA + TILEMAP_INDEX(9, 13),
+                TEXT_COLOR_SYSTEM_GRAY, 0, 0,
+                GetStringFromIndex(MSG_MSS_NOARTS));
+        }
+
+        for (iy = 0; iy < 2; iy++)
+        {
+            for (ix = 0; ix < 4; ix++)
+            {
+                int _index = ix + iy * 4;
+                if (_index >= clist->amt)
+                    break;
+
+                DrawIcon(gUiTmScratchA + TILEMAP_INDEX(9 + 2 * ix, 13 + 2 * iy),
+                        COMBART_ICON(clist->cid[_index]),
+                        TILEREF(0, STATSCREEN_BGPAL_ITEMICONS));
+            }
+        }
+    }
+}
+
+void HbRedirect_ArtPageOnlyAlly(struct HelpBoxProc * proc)
+{
+    if (UNIT_FACTION(gStatScreen.unit) == FACTION_BLUE)
+    {
+        HbRedirect_ArtPageCommon(proc);
+        return;
     }
 
-    for (iy = 0; iy < 2; iy++)
-    {
-        for (ix = 0; ix < 4; ix++)
-        {
-            int _index = ix + iy * 4;
-            if (_index >= clist->amt)
-                break;
+    switch (proc->moveKey) {
+    case DPAD_DOWN:
+        TryRelocateHbDown(proc);
+        break;
 
-            DrawIcon(gUiTmScratchA + TILEMAP_INDEX(9 + 2 * ix, 13 + 2 * iy),
-                    COMBART_ICON(clist->cid[_index]),
-                    TILEREF(0, STATSCREEN_BGPAL_ITEMICONS));
-        }
+    case DPAD_UP:
+        TryRelocateHbUp(proc);
+        break;
+
+    case DPAD_LEFT:
+        TryRelocateHbLeft(proc);
+        break;
+
+    case DPAD_RIGHT:
+    default:
+        TryRelocateHbRight(proc);
+        break;
     }
 }
