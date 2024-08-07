@@ -1225,6 +1225,27 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_DominantArm) && (COMMON_SKILL_VALID(SID_DominantArm)))
+        case SID_DominantArm:
+            int weaponType = GetItemType(attacker->weapon);
+            int highestRank = 0;
+            int weaponRankType = 0;
+
+            for (int i = 0; i < 7; i++) 
+            {
+                if(attacker->unit.ranks[i] > highestRank)
+                {
+                    highestRank = attacker->unit.ranks[i];
+                    weaponRankType = i;
+                }
+            }
+
+            if (weaponType == weaponRankType)
+                attacker->battleAttack += GetItemMight(attacker->weapon) / 2;
+
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
