@@ -159,49 +159,49 @@ static _DECL_INFO RText_Skill16 = {
 static _DECL_INFO RText_Art1 = {
     &RText_Skill13, &RText_Art5, &RText_Dark, &RText_Art2,
     0xA6, 0x78, 0,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art2 = {
     &RText_Skill14, &RText_Art6, &RText_Art1, &RText_Art3,
     0xB6, 0x78, 1,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art3 = {
     &RText_Skill15, &RText_Art7, &RText_Art2, &RText_Art4,
     0xC6, 0x78, 2,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art4 = {
     &RText_Skill16, &RText_Art8, &RText_Art3, &RText_Level,
     0xD6, 0x78, 3,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art5 = {
     &RText_Art1, &RText_Skill1, &RText_Dark, &RText_Art6,
     0xA6, 0x88, 4,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art6 = {
     &RText_Art2, &RText_Skill2, &RText_Art5, &RText_Art7,
     0xB6, 0x88, 5,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art7 = {
     &RText_Art3, &RText_Skill3, &RText_Art6, &RText_Art8,
     0xC6, 0x88, 6,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 static _DECL_INFO RText_Art8 = {
     &RText_Art4, &RText_Skill4, &RText_Art7, &RText_Hp,
     0xD6, 0x88, 7,
-    HbRedirect_ArtPageCommon, HbPopuplate_ArtPageCommon
+    HbRedirect_ArtPageOnlyAlly, HbPopuplate_ArtPageCommon
 };
 
 /* Page left */

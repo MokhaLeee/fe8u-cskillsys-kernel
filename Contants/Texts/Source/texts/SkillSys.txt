@@ -14,3 +14,12 @@ please remve skill first.[X]
 ## MSG_PREPSKILL_FailRemoveSkill
 This skill is[NL]
 not removable.[X]
+
+## MSG_ITEM_SkillScrollName
+Skill Scroll[X]
+
+## MSG_ITEM_SkillScrollUseDesc
+Learn skill[X]
+
+## MSG_SkillLearned
+Skill learned.[X]

@@ -63,6 +63,7 @@ void HbPopuplate_SkillPageCommon(struct HelpBoxProc * proc);
 void HbRedirect_SkillPageCommon(struct HelpBoxProc * proc);
 void HbPopuplate_ArtPageCommon(struct HelpBoxProc * proc);
 void HbRedirect_ArtPageCommon(struct HelpBoxProc * proc);
+void HbRedirect_ArtPageOnlyAlly(struct HelpBoxProc * proc);
 
 void DrawSkillPage_MokhaPlanA(void);
 void DrawSkillPage_MokhaPlanB(void);

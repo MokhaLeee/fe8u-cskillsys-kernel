@@ -106,8 +106,10 @@ STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc * proc)
     }
 
     if (UNIT_ALIVE(unit) && EQUIPE_SKILL_VALID(sid))
+    {
+        ForgetSkill(unit, sid);
         RemoveSkill(unit, sid);
-
+    }
     return EVC_ADVANCE_CONTINUE;
 }
 
@@ -126,7 +128,10 @@ STATIC_DECLAR u8 EventRemoveSkillOnActive(struct EventEngineProc * proc)
     }
 
     if (UNIT_ALIVE(unit) && EQUIPE_SKILL_VALID(sid))
+    {
+        ForgetSkill(unit, sid);
         RemoveSkill(unit, sid);
+    }
 
     return EVC_ADVANCE_CONTINUE;
 }
@@ -148,7 +153,10 @@ STATIC_DECLAR u8 EventRemoveSkillAt(struct EventEngineProc * proc)
     }
 
     if (UNIT_ALIVE(unit) && EQUIPE_SKILL_VALID(sid))
+    {
+        ForgetSkill(unit, sid);
         RemoveSkill(unit, sid);
+    }
 
     return EVC_ADVANCE_CONTINUE;
 }
@@ -169,7 +177,10 @@ STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc * proc)
     }
 
     if (UNIT_ALIVE(unit) && EQUIPE_SKILL_VALID(sid))
+    {
+        ForgetSkill(unit, sid);
         RemoveSkill(unit, sid);
+    }
 
     return EVC_ADVANCE_CONTINUE;
 }

@@ -859,3 +859,11 @@ E-Spore[X]
 Effect Spore:[NL]
 If attacked, 50% chance of inflicting[NL]
 poison, silence or sleep.[X]
+
+## MSG_SKILL_DominantArm_NAME
+D-Arm[X]
+
+## MSG_SKILL_DominantArm
+Dominant Arm: If the unit's equipped[NL]
+weapon is the same type as their[NL]
+highest weapon rank, +50% weapon ATK.[X]

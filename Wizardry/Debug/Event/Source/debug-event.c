@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "debug-event.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 
@@ -360,6 +361,10 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
     Evt_AddSkill(SID_MovHone, CHARACTER_SALEH)
     Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
+
+    Evt_RemoveSkill(SID_Fury, CHARACTER_EPHRAIM)
+
+    ASMC(PrologueCallBack)
 
     // PREP
     CALL(EventScr_08591FD8)
