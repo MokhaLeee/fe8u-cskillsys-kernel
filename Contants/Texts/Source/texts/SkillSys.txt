@@ -16,10 +16,19 @@ This skill is[NL]
 not removable.[X]
 
 ## MSG_ITEM_SkillScrollName
-Skill Scroll[X]
+Occult Scroll[X]
+
+## MSG_ITEM_RemoveSkillScrollName
+Oblivion Scroll[X]
 
 ## MSG_ITEM_SkillScrollUseDesc
 Learn skill[X]
 
+## MSG_ITEM_RemoveSkillScrollDesc
+Remove skill back to scroll[X]
+
 ## MSG_SkillLearned
 Skill learned.[X]
+
+## MSG_SkillRemoved
+Skill Removed.[X]
