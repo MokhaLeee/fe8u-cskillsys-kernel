@@ -234,40 +234,12 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
 #if (defined(SID_EffectSpore) && (COMMON_SKILL_VALID(SID_EffectSpore)))
     else if (CheckBattleSkillActivate(defender, attacker, SID_EffectSpore, SKILL_EFF0(SID_EffectSpore)))
     {
-        /*
-        ** Check if the attacking unit has a negative status already
-        ** if they have a positive status, or none, then proceed
-        */
-        int attackerStatus = attacker->statusOut;
+        if (!IsDebuff(GetUnitStatusIndex(&attacker->unit)) && !IsDebuff(attacker->statusOut))
+        {
+            static const u8 _debuffs[3] = { UNIT_STATUS_POISON, UNIT_STATUS_SILENCED, UNIT_STATUS_SLEEP };
+            attacker->statusOut = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
 
-        switch(attackerStatus) {
-        case UNIT_STATUS_NONE:
-        case UNIT_STATUS_ATTACK:
-        case UNIT_STATUS_DEFENSE:
-        case UNIT_STATUS_CRIT:
-        case UNIT_STATUS_AVOID:
-            break;
-            
-        default:
-            return;
-        }
-        
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
-        int effectID = NextRN_N(3); 
-
-        switch(effectID) {
-        case 0:
-            attacker->statusOut = UNIT_STATUS_POISON;
-            break;
-        case 1:
-            attacker->statusOut = UNIT_STATUS_SILENCED;
-            break;
-        case 2:
-            attacker->statusOut = UNIT_STATUS_SLEEP;
-            break;
-        
-        default:
-            break;
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
         }
     }
 #endif
