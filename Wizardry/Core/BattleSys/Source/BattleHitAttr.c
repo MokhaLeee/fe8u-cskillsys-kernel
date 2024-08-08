@@ -232,7 +232,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
 #endif
 
 #if (defined(SID_EffectSpore) && (COMMON_SKILL_VALID(SID_EffectSpore)))
-    else if (CheckBattleSkillActivate(defender, attacker, SID_EffectSpore, 100))
+    else if (CheckBattleSkillActivate(defender, attacker, SID_EffectSpore, SKILL_EFF0(SID_EffectSpore)))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
         int effectID = NextRN_N(3); 
