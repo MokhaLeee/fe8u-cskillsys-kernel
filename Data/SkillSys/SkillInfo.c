@@ -3501,6 +3501,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_EffectSpore) && COMMON_SKILL_VALID(SID_EffectSpore))
+    [SID_EffectSpore] = {
+        .name = MSG_SKILL_EffectSpore_NAME,
+        .desc = MSG_SKILL_EffectSpore,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_DominantArm) && COMMON_SKILL_VALID(SID_DominantArm))
     [SID_DominantArm] = {
         .name = MSG_SKILL_DominantArm_NAME,

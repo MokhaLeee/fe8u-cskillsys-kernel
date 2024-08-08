@@ -852,6 +852,14 @@ L-Brace[X]
 Lunar Brace:[NL]
 Negate 25% of enemy defense.[X]
 
+## MSG_SKILL_EffectSpore_NAME
+E-Spore[X]
+
+## MSG_SKILL_EffectSpore
+Effect Spore:[NL]
+If attacked, 50% chance of inflicting[NL]
+poison, silence or sleep.[X]
+
 ## MSG_SKILL_DominantArm_NAME
 D-Arm[X]
 
