@@ -234,6 +234,24 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
 #if (defined(SID_EffectSpore) && (COMMON_SKILL_VALID(SID_EffectSpore)))
     else if (CheckBattleSkillActivate(defender, attacker, SID_EffectSpore, SKILL_EFF0(SID_EffectSpore)))
     {
+        /*
+        ** Check if the attacking unit has a negative status already
+        ** if they have a positive status, or none, then proceed
+        */
+        int attackerStatus = attacker->statusOut;
+
+        switch(attackerStatus) {
+        case UNIT_STATUS_NONE:
+        case UNIT_STATUS_ATTACK:
+        case UNIT_STATUS_DEFENSE:
+        case UNIT_STATUS_CRIT:
+        case UNIT_STATUS_AVOID:
+            break;
+            
+        default:
+            return;
+        }
+        
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
         int effectID = NextRN_N(3); 
 
