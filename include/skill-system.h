@@ -213,6 +213,14 @@ typedef bool (* SkillActionFunc_t)(ProcPtr);
 extern SkillActionFunc_t const * const gpSkillActionFuncTable;
 
 /**
+ * Skill scroll
+ */
+char * GetSkillScrollItemName(int item);
+int GetSkillScrollItemDescId(int item);
+int GetSkillScrollItemUseDescId(int item);
+int GetSkillScrollItemIconId(int item);
+
+/**
  * Miscs
  */
 

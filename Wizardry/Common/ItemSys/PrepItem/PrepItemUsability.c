@@ -2,7 +2,7 @@
 #include "item-sys.h"
 
 /* LynJump */
-bool CanUnitUseItemPrepScreen(struct Unit* unit, int item)
+bool CanUnitUseItemPrepScreen(struct Unit * unit, int item)
 {
     PrepItemUsabilityFunc_t it = gPrepItemUsabilityFuncs[ITEM_INDEX(item)];
 
