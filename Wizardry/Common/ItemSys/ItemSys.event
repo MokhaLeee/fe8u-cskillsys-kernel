@@ -5,6 +5,8 @@
 #include "Source/StaffHeal.lyn.event"
 #include "Source/LynJump.event"
 
+#include "ItemInfoRemap/ItemInfoRemap.event"
+
 /* int (*)(int old, struct Unit * actor, struct Unit * target); */
 ALIGN 4
 gHealAmountGetters:

@@ -1,14 +1,14 @@
 #include texts/_vanilla.txt
 
-#0xD4C MSG_FreeSpaceIndentifier
-.[X]
+#0xD4C MSG_Reserved
+_reserved[X]
 
 ## MSG_WIP
 W.I.P.[X]
 
 #include texts/StrMag.txt
 #include texts/Statscreen.txt
-#include texts/PrepScreen.txt
+#include texts/SkillSys.txt
 #include texts/Debuff.txt
 #include texts/Skills_StatusGetter.txt
 #include texts/Skills_BattleStatus.txt
