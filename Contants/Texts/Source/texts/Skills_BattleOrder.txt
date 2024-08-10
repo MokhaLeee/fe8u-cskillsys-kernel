@@ -101,9 +101,14 @@ Close Combat: +2 damage if at[NL]
 occur before countering.[X]
 
 ## MSG_SKILL_QuickLearner_NAME
-Q-Leaner[X]
+Q-Learner[X]
 
 ## MSG_SKILL_QuickLearner
 Quick Learner:[NL]
 When attacking a higher level[NL]
 enemy, this unit doubles.[X]
+
+## MSG_SKILL_GaleWings
+Gale Wings:[NL]
+When unit is defender while[NL]
+their HP is 100%, attack first.[X]
