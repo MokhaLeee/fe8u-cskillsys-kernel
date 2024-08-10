@@ -100,6 +100,11 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
             gDmg.crit_atk = true;
 
+#if (defined(SID_AngerPoint) && (COMMON_SKILL_VALID(SID_AngerPoint))) 
+            if (BattleSkillTester(defender, SID_AngerPoint))
+                gBattleActorGlobalFlag.skill_activated_anger_point = true;
+#endif
+
             if (BattleRoll1RN(gBattleStats.silencerRate, false))
             {
                 /* Directly return on silencer attack to fasten calc */

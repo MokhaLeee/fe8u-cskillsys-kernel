@@ -121,6 +121,7 @@ SID_Pursuer
 // SID_QuickLearner
 SID_EffectSpore
 SID_DominantArm
+SID_AngerPoint
 
 // Devil skills
 SID_DevilsPact

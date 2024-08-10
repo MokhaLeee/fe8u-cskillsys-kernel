@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "status-getter.h"
 #include "constants/skills.h"
+#include "battle-system.h"
 
 int _GetUnitPower(struct Unit * unit)
 {
@@ -118,6 +119,14 @@ int PowGetterSkills(int status, struct Unit * unit)
     {
         if ((cur_hp * 2) < max_hp)
             status += status / 2;
+    }
+#endif
+
+#if (defined(SID_AngerPoint) && (COMMON_SKILL_VALID(SID_AngerPoint))) 
+    if (SkillTester(unit, SID_AngerPoint))
+    {
+        if(gBattleActorGlobalFlag.skill_activated_anger_point)
+            status += SKILL_EFF0(SID_AngerPoint);
     }
 #endif
 
