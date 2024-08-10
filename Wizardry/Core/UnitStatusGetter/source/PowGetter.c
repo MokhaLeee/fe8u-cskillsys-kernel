@@ -116,18 +116,14 @@ int PowGetterSkills(int status, struct Unit * unit)
     
 #if (defined(SID_Resolve) && (COMMON_SKILL_VALID(SID_Resolve))) 
     if (SkillTester(unit, SID_Resolve))
-    {
         if ((cur_hp * 2) < max_hp)
             status += status / 2;
-    }
 #endif
 
 #if (defined(SID_AngerPoint) && (COMMON_SKILL_VALID(SID_AngerPoint))) 
     if (SkillTester(unit, SID_AngerPoint))
-    {
         if(gBattleActorGlobalFlag.skill_activated_anger_point)
             status += SKILL_EFF0(SID_AngerPoint);
-    }
 #endif
 
     return status;
