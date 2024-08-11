@@ -258,6 +258,18 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     }
 #endif
 
+#if defined(SID_GaleWings) && (COMMON_SKILL_VALID(SID_GaleWings))
+    if (BattleSkillTester(&gBattleTarget, SID_GaleWings))
+    {
+        if (gBattleTarget.hpInitial == gBattleTarget.unit.maxHP)
+        {
+            RegisterBattleOrderSkill(SID_GaleWings, BORDER_VANTAGE);
+            gBattleTemporaryFlag.vantage_order = true;
+            return true;
+        }
+    }
+#endif
+
 #if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
     if (BattleSkillTester(&gBattleActor, SID_PridefulWarrior))
     {

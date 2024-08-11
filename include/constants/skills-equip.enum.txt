@@ -130,6 +130,7 @@ SID_QuickRiposte
 SID_WaryFighter
 SID_DoubleLion
 SID_Adept
+SID_GaleWings
 
 // Battle activation skills
 SID_Astra
