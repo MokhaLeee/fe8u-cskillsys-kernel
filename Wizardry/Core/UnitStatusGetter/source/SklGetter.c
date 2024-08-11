@@ -20,6 +20,24 @@ int _GetUnitSkill(struct Unit * unit)
 /* Hooks */
 int SklGetterWeaponBonus(int status, struct Unit * unit)
 {
+    struct Unit * target = GetUnit(gBattleTarget.unit.index);
+    struct Unit * actor = GetUnit(gBattleActor.unit.index);
+/*
+** This needs to be first, as it returns the status value before changes are applied
+*/
+#if defined(SID_Unaware) && (COMMON_SKILL_VALID(SID_Unaware))
+        if (unit == target)
+        {
+            if (SkillTester(actor, SID_Unaware))
+                return status;
+        }
+        else if (unit == actor)
+        {
+            if (SkillTester(target, SID_Unaware))
+                return status;
+        }
+#endif
+
     u16 weapon = GetUnitEquippedWeapon(unit);
     status += GetItemSklBonus(weapon);
     return status;
@@ -29,6 +47,24 @@ int SklGetterSkills(int status, struct Unit * unit)
 {
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);
+
+    struct Unit * target = GetUnit(gBattleTarget.unit.index);
+    struct Unit * actor = GetUnit(gBattleActor.unit.index);
+/*
+** This needs to be first, as it returns the status value before changes are applied
+*/
+#if defined(SID_Unaware) && (COMMON_SKILL_VALID(SID_Unaware))
+        if (unit == target)
+        {
+            if (SkillTester(actor, SID_Unaware))
+                return status;
+        }
+        else if (unit == actor)
+        {
+            if (SkillTester(target, SID_Unaware))
+                return status;
+        }
+#endif
 
 #if defined(SID_LifeAndDeath) && (COMMON_SKILL_VALID(SID_LifeAndDeath))
     if (SkillTester(unit, SID_LifeAndDeath))
