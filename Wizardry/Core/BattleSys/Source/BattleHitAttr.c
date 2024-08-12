@@ -123,6 +123,17 @@ bool CheckBattleInori(struct BattleUnit * attacker, struct BattleUnit * defender
     }
 #endif
 
+#if (defined(SID_Sturdy) && (COMMON_SKILL_VALID(SID_Sturdy)))
+    if (BattleSkillTester(defender, SID_Sturdy))
+    {
+        if(defender->unit.maxHP == defender->hpInitial)
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sturdy);
+            return true;
+        }
+    }
+#endif
+
 #if (defined(SID_LEGEND_InoriAtk) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAtk)))
     if (CheckBattleSkillActivate(defender, attacker, SID_LEGEND_InoriAtk, 100))
     {
