@@ -867,3 +867,11 @@ D-Arm[X]
 Dominant Arm: If the unit's equipped[NL]
 weapon is the same type as their[NL]
 highest weapon rank, +50% weapon ATK.[X]
+
+## MSG_SKILL_FranticSwing_NAME
+F-Swing[X]
+
+## MSG_SKILL_FranticSwing
+Frantic Swing:[NL]
+If hit rate is less than or[NL]
+equal to 50%, +50 crit.[X]

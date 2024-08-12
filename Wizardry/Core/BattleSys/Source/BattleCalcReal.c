@@ -188,6 +188,18 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
 
     if (attacker->battleEffectiveHitRate < 0)
         attacker->battleEffectiveHitRate = 0;
+
+#if (defined(SID_FranticSwing) && (COMMON_SKILL_VALID(SID_FranticSwing)))
+    if (BattleSkillTester(attacker, SID_FranticSwing))
+    {
+        NoCashGBAPrint("Frantic swing check has passed");
+        if(attacker->battleEffectiveHitRate <= 50)
+        {
+            NoCashGBAPrint("Effective hit rate is less then 50%");
+            attacker->battleCritRate += 50;
+        }
+    }
+#endif
 }
 
 /* LynJump */
