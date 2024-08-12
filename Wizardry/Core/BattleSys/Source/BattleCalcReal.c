@@ -192,7 +192,7 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
 #if (defined(SID_FranticSwing) && (COMMON_SKILL_VALID(SID_FranticSwing)))
     if (BattleSkillTester(attacker, SID_FranticSwing))
     {
-        if(attacker->battleEffectiveHitRate <= 50)
+        if (attacker->battleEffectiveHitRate <= 50)
             attacker->battleCritRate += 50;
     }
 #endif
