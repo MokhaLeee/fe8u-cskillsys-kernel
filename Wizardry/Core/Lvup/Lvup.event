@@ -1,11 +1,11 @@
 #ifndef LVUP_INSTALLED
 #define LVUP_INSTALLED
 
+#include "Source/LynJump.event"
 #include "Source/GrowthGetter.lyn.event"
 #include "Source/Promotion.lyn.event"
 #include "Source/AutoLevel.lyn.event"
 #include "Source/CheckCap.lyn.event"
 #include "Source/Levelup.lyn.event"
-#include "Source/LynJump.event"
 
 #endif /* LVUP_INSTALLED */

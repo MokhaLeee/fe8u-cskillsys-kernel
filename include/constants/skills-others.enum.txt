@@ -122,6 +122,7 @@ SID_Pursuer
 SID_EffectSpore
 SID_DominantArm
 SID_Sturdy
+SID_FranticSwing
 
 // Devil skills
 SID_DevilsPact

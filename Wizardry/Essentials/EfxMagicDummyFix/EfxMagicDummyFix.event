@@ -1,7 +1,7 @@
 #ifndef EFX_MAGIC_DUMMY_FIXED
 #define EFX_MAGIC_DUMMY_FIXED
 
-#include "Source/EfxMagicDummy.lyn.event"
 #include "Source/LynJump.event"
+#include "Source/EfxMagicDummy.lyn.event"
 
 #endif // EFX_MAGIC_DUMMY_FIXED

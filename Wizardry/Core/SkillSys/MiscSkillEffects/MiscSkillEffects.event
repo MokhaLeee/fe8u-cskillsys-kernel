@@ -1,3 +1,4 @@
+#include "PostActionSkills/LynJump.event"
 #include "PostActionSkills/AlertStance.lyn.event"
 #include "PostActionSkills/Tsuzuku.lyn.event"
 #include "PostActionSkills/SavageBlow.lyn.event"
@@ -12,8 +13,8 @@
 #include "PostActionSkills/Synchronize.lyn.event"
 #include "PostActionSkills/Clearance.lyn.event"
 #include "PostActionSkills/GetItem.lyn.event"
-#include "PostActionSkills/LynJump.event"
 
+#include "MenuSkills/LynJump.event"
 #include "MenuSkills/Dance.lyn.event"
 #include "MenuSkills/Pick.lyn.event"
 #include "MenuSkills/Steal.lyn.event"
@@ -26,7 +27,6 @@
 #include "MenuSkills/GoddessDance.lyn.event"
 #include "MenuSkills/Stride.lyn.event"
 #include "MenuSkills/Teleportation.lyn.event"
-#include "MenuSkills/LynJump.event"
 
 #include "Misc/HealAmount.lyn.event"
 
@@ -35,6 +35,7 @@
 
 #include "ChapterInitSkills/Initiative.lyn.event"
 
+#include "PrePhaseSkills/LynJump.event"
 #include "PrePhaseSkills/PrePhaseMisc.lyn.event"
 #include "PrePhaseSkills/PrePhaseHeal.lyn.event"
 #include "PrePhaseSkills/AversaNight.lyn.event"
@@ -47,7 +48,6 @@
 #include "PrePhaseSkills/YuneWhisper.lyn.event"
 #include "PrePhaseSkills/TileCheck.lyn.event"
 #include "PrePhaseSkills/KeepUp.lyn.event"
-#include "PrePhaseSkills/LynJump.event"
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"
