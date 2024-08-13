@@ -19,3 +19,8 @@ Resourc[X]
 ## MSG_SKILL_Resourceful
 Resourceful: Double bonus[NL]
 effectiveness multipliers.[X]
+
+## MSG_SKILL_SolidRock
+Solid Rock:[NL]
+Halves effective damage[NL]
+against this unit.[X]

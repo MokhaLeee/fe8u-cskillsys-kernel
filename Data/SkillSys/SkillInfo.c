@@ -3523,4 +3523,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_SolidRock) && COMMON_SKILL_VALID(SID_SolidRock))
+    [SID_SolidRock] = {
+        .desc = MSG_SKILL_SolidRock,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
