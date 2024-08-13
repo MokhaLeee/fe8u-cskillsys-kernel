@@ -119,8 +119,11 @@ CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 post_chax: $(CHAX_DIFF)
 
 $(CHAX_DIFF): $(FE8_CHX)
-ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
+	@echo "[SEC]	Lyn-jump detection..."
 	@$(LYN_DETECTOR) || exit "$$?"
+	@echo "[SEC]	Lyn-jump detection passed"
+
+ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 
 	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
