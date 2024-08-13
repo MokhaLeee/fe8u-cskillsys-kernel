@@ -31,7 +31,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
     return false;
 }
 
-/* LynJump */
+/* External hook */
 bool Ai2Decide_TryTeleportation(void)
 {
     /**

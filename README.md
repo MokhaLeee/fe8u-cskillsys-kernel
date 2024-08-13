@@ -58,7 +58,7 @@ git clone https://github.com/StanHash/FE-PyTools.git --recursive
 2. Install dependencies
 
 ```bash
-sudo apt-get -y install binutils-arm-none-eabi \
+sudo apt-get -y install binutils-arm-none-eabi ctags \
     gcc-arm-none-eabi build-essential cmake re2c ghc \
     cabal-install libghc-vector-dev libghc-juicypixels-dev \
     python3-pip pkg-config libpng* bsdiff
