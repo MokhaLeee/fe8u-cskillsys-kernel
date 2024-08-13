@@ -4,7 +4,7 @@ LYN_EVT=$1
 FE8_SYM=$2
 
 LYN_JUMP=$(grep '^ORG \$' $LYN_EVT)
-if [ -z $LYN_JUMP ]
+if [ -z "$LYN_JUMP" ]
 then
     exit 0
 fi
