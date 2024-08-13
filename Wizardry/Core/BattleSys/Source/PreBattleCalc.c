@@ -31,7 +31,7 @@ void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * d
 
 #if (defined(SID_SolidRock) && (COMMON_SKILL_VALID(SID_SolidRock)))
         if (BattleSkillTester(defender, SID_SolidRock))
-            status = status * 0.5;
+            status = status / 2;
 #endif
     }
 
