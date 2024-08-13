@@ -3545,4 +3545,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+    [SID_MeleeManiac] = {
+        .name = MSG_SKILL_MeleeManiac_NAME,
+        .desc = MSG_SKILL_MeleeManiac,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

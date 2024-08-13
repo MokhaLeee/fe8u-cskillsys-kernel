@@ -158,6 +158,11 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
     if (BattleSkillTester(attacker, SID_NoGuard) || BattleSkillTester(defender, SID_NoGuard))
         attacker->battleEffectiveHitRate = 100;
 #endif
+
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+    if ((BattleSkillTester(attacker, SID_MeleeManiac) && gBattleStats.range == 1) || (BattleSkillTester(defender, SID_MeleeManiac) && gBattleStats.range != 1))
+        attacker->battleAttack += (attacker->battleAttack - defender->battleDefense);
+#endif
 }
 
 /* LynJump */
