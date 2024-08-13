@@ -16,6 +16,7 @@
 
 // include "data.event"
 
+#include "Source/LynJump.event"
 #include "Source/ModularSaveCore.lyn.event"
 #include "Source/NewGameSaveHook.lyn.event"
 #include "Source/MsaFunc.lyn.event"

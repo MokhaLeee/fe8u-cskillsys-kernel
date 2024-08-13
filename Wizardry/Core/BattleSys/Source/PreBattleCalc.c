@@ -28,6 +28,11 @@ void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * d
         if (BattleSkillTester(attacker, SID_Resourceful))
             status = status * 2;
 #endif
+
+#if (defined(SID_SolidRock) && (COMMON_SKILL_VALID(SID_SolidRock)))
+        if (BattleSkillTester(defender, SID_SolidRock))
+            status = status / 2;
+#endif
     }
 
     if (IsMagicAttack(attacker))
