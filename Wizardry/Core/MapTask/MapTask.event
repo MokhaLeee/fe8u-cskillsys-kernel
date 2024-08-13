@@ -1,8 +1,8 @@
 #ifndef HP_BAR_INSTALLED
 #define HP_BAR_INSTALLED
 
-#include "Source/map-task.lyn.event"
 #include "Source/LynJump.event"
+#include "Source/map-task.lyn.event"
 
 // #include "data.event"
 

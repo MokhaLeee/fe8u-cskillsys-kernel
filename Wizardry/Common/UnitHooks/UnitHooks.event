@@ -1,6 +1,8 @@
 #ifndef UNIT_HOOKS_INSTALLED
 #define UNIT_HOOKS_INSTALLED
 
+#include "Source/LynJump.event"
+
 /* LoadUnit */
 #include "Source/LoadUnit.lyn.event"
 
@@ -13,7 +15,6 @@
 /* ClearUnit */
 #include "Source/ClearUnit.lyn.event"
 
-#include "Source/LynJump.event"
 // #include "data.event"
 
 #endif

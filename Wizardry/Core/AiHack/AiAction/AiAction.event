@@ -1,11 +1,11 @@
 /**
  * Expand: AI_ACTION in function CpPerform_PerformAction()
  */
+#include "Source/LynJump.event"
 
 #include "Source/AiAction.lyn.event"
 #include "Source/AiActionCursor.lyn.event"
 #include "Source/AiPerformEnd.lyn.event"
-#include "Source/LynJump.event"
 
 // #include "data.event"
 // #include "def.event"
