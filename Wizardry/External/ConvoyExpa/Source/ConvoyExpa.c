@@ -16,7 +16,7 @@ void LoadExpaConvoy(u8 * src, const u32 size)
     ReadSramFast(src, sExpaConvoyItemArray, size);
 }
 
-/* External hook: this function is too short to inject LynJump! */
+/* External hook: this function is too short to inject lyn-jump! */
 u16 * __GetConvoyItemArray(void)
 {
 #if CHAX

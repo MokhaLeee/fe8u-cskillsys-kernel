@@ -185,7 +185,7 @@ STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-/* LynJump */
+/* External hook */
 u8 EventSkillOperation(struct EventEngineProc * proc)
 {
     switch (EVT_SUB_CMD(proc->pEventCurrent)) {

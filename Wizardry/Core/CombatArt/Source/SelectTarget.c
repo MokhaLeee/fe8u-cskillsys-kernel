@@ -309,7 +309,7 @@ STATIC_DECLAR int SelectTargetInfoOnEndVanilla(void)
 }
 
 /* LynJump */
-int sub_8022F10(void)
+int AttackMapSelect_End(ProcPtr proc)
 {
     /* SelectTarget on end */   
     EndGreenText();
