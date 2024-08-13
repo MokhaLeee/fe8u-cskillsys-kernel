@@ -6,8 +6,8 @@ PUSH
     POIN gEventLoCmdTableRe
 POP
 
-#include "Source/EventRework.lyn.event"
 #include "Source/LynJump.event"
+#include "Source/EventRework.lyn.event"
 
 // #include "data.event"
 // #include "def.event"

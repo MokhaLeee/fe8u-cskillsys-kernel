@@ -182,3 +182,8 @@ dealt at range.[X]
 Eclipse:[NL]
 Halve the opponent's current HP.[NL]
 (Skill % activation).[X]
+
+## MSG_SKILL_Sturdy
+Sturdy:[NL]
+If the unit has full HP at the[NL]
+start of the fight, they cannot die.[X]

@@ -83,6 +83,9 @@ EA_DEP            := $(EA_DIR)/ea-dep
 TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
 GRIT              := $(DEVKITPRO)/tools/bin/grit
 
+LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
+LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
+
 GRITLZ77ARGS      := -gu 16 -gzl -gB 4 -p! -m! -ft bin -fh!
 GRIT4BPPARGS      := -gu 16 -gB 4 -p! -m! -ft bin -fh!
 GRIT2BPPARGS      := -gu 16 -gb -gB 2 -p! -m! -ft bin -fh!
@@ -106,7 +109,7 @@ endif
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
-	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
+	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX); exit "$$?"
 
 CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
@@ -117,6 +120,8 @@ post_chax: $(CHAX_DIFF)
 
 $(CHAX_DIFF): $(FE8_CHX)
 ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
+	@$(LYN_DETECTOR) || exit "$$?"
+
 	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
@@ -161,9 +166,10 @@ SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 
 LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 
-%.lyn.event: %.o $(LYN_REF)
+%.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
 	@$(LYN) $< $(LYN_REF) > $@
+	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
 
 %.dmp: %.o
 	@echo "[GEN]	$@"

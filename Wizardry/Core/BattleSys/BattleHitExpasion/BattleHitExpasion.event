@@ -2,5 +2,5 @@
 #include "RepointBattleHit.event"
 #include "RepointAnimRound.event"
 
-#include "Source/BattleHitExpa.lyn.event"
 #include "Source/LynJump.event"
+#include "Source/BattleHitExpa.lyn.event"

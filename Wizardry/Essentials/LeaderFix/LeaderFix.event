@@ -17,5 +17,5 @@ PUSH
     pr_gDefeatTalkList:
 POP
 
-#include "Source/LeaderFix.lyn.event"
 #include "Source/LynJump.event"
+#include "Source/LeaderFix.lyn.event"

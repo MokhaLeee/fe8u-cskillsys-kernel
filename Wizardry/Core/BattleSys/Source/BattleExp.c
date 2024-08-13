@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "battle-system.h"
 #include "bwl.h"
 #include "constants/skills.h"
 
@@ -95,7 +96,7 @@ int GetBattleUnitStaffExp(struct BattleUnit * bu)
     if (!CanBattleUnitGainLevels(bu))
         return 0;
 
-    if (gBattleHitArray->attributes & BATTLE_HIT_ATTR_MISS)
+    if (gBattleHitArrayRe->attributes & BATTLE_HIT_ATTR_MISS)
         return 1;
 
     result = 10 + GetItemCostPerUse(bu->weapon) / 20;

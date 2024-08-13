@@ -27,9 +27,10 @@ PUSH
     p_gAnimCharaPalIt:
 POP
 
+#include "Source/LynJump.event"
+
 #include "Source/BanimMainHookASM.lyn.event"
 #include "Source/BanimMainHook.lyn.event"
 #include "Source/ekrbattledeamon-hook.lyn.event"
 
 #include "Source/utils.lyn.event"
-#include "Source/LynJump.event"
