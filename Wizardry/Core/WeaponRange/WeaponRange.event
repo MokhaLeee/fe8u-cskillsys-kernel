@@ -3,12 +3,12 @@
 
 #include "Source/MiscHooksWeaponRange.event"
 
+#include "Source/LynJump.event"
 #include "Source/RangeGetter.lyn.event"
 #include "Source/Utils.lyn.event"
 #include "Source/MiscHooks.lyn.event"
 #include "Source/StaffRange.lyn.event"
 #include "Source/RangeString.lyn.event"
-#include "Source/LynJump.event"
 
 // #include "data.event"
 

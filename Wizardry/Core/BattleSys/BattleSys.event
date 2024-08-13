@@ -1,6 +1,7 @@
 #ifndef BATTLE_SYS_INSTALLED
 #define BATTLE_SYS_INSTALLED
 
+#include "Source/LynJump.event"
 #include "Source/BattleGenerate.lyn.event"
 #include "Source/PreBattleCalc.lyn.event"
 #include "Source/BattleCalcReal.lyn.event"
@@ -16,7 +17,6 @@
 #include "Source/BattleSkillActRate.lyn.event"
 #include "Source/BattleUI.lyn.event"
 #include "Source/Misc.lyn.event"
-#include "Source/LynJump.event"
 
 #include "BattleHitExpasion/BattleHitExpasion.event"
 #include "WeaponLockEx/WeaponLockEx.event"

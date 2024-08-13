@@ -1,5 +1,5 @@
-#include "Source/ConvoyExpa.lyn.event"
 #include "Source/LynJump.event"
+#include "Source/ConvoyExpa.lyn.event"
 
 PUSH
     ORG $31500

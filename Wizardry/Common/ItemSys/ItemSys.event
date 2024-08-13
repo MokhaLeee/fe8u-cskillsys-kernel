@@ -1,9 +1,9 @@
 #ifndef ITEM_SYS_INSTALLED
 #define ITEM_SYS_INSTALLED
 
+#include "Source/LynJump.event"
 #include "Source/StaffAccuracy.lyn.event"
 #include "Source/StaffHeal.lyn.event"
-#include "Source/LynJump.event"
 
 #include "ItemInfoRemap/ItemInfoRemap.event"
 
@@ -14,11 +14,10 @@ gHealAmountGetters:
     POIN KernelPad2 KernelPad2 KernelPad2 KernelPad2
     WORD 0
 
-
+#include "PrepItem/LynJump.event"
 #include "PrepItem/PrepItemUsability.lyn.event"
 #include "PrepItem/PrepItemEffect.lyn.event"
 #include "PrepItem/PrepItemUseScreen.lyn.event"
-#include "PrepItem/LynJump.event"
 
 PUSH
 ORG $A190D4
