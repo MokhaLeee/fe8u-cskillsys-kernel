@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
+LYN_REPLACE_CHECK(StealCommandUsability);
 u8 StealCommandUsability(const struct MenuItemDef * def, int number)
 {
 #if !CHAX

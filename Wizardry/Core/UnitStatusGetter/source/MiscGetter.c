@@ -9,7 +9,7 @@ int StatusGetterCheckCpas(int status, struct Unit * unit)
     return status;
 }
 
-/* Vanilla hooks */
+LYN_REPLACE_CHECK(GetUnitMagBy2Range);
 int GetUnitMagBy2Range(struct Unit * unit)
 {
     int range;
@@ -25,6 +25,7 @@ int GetUnitMagBy2Range(struct Unit * unit)
     return range;
 }
 
+LYN_REPLACE_CHECK(GetUnitCurrentHp);
 int GetUnitCurrentHp(struct Unit * unit)
 {
     if (unit->curHP > GetUnitMaxHp(unit))

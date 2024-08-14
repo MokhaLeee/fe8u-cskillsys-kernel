@@ -2,6 +2,7 @@
 
 s16 GetAnimRoundType(struct Anim * anim);
 
+LYN_REPLACE_CHECK(EfxDummymagicMain);
 void EfxDummymagicMain(struct ProcEfx * proc)
 {
     struct Anim * animc = GetAnimAnotherSide(proc->anim);

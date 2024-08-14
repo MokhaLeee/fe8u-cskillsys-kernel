@@ -162,6 +162,7 @@ int GetConvoyItemCostSum(void)
     return result;
 }
 
+LYN_REPLACE_CHECK(Shop_CheckIfConvoyFull);
 void Shop_CheckIfConvoyFull(struct ProcShop * proc)
 {
 #if CHAX
