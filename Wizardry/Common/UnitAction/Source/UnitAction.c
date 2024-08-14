@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "action-expa.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(ApplyUnitAction);
 unsigned int ApplyUnitAction(ProcPtr proc)
 {
     UnitActionFunc_t it;

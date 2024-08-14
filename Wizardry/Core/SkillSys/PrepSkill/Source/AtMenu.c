@@ -17,7 +17,7 @@ void PrepScreenMenu_OnEquip(struct ProcAtMenu * proc)
     Proc_Goto(proc, 0xA);
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(AtMenu_StartSubmenu);
 void AtMenu_StartSubmenu(struct ProcAtMenu * proc)
 {
     sub_8095C2C(proc);

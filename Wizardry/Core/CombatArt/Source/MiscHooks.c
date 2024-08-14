@@ -150,7 +150,7 @@ void PreBattleGenerate_TrigCombartKTut(void)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_8022E54);
 void sub_8022E54(void)
 {
     /* During reload from B pressed in select-target */

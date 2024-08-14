@@ -3,7 +3,7 @@
 #include "kernel-lib.h"
 #include "strmag.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayPage0);
 void DisplayPage0(void)
 {
     struct Unit * unit = gStatScreen.unit;

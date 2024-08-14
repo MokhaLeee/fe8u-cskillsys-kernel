@@ -26,13 +26,13 @@ u16 * __GetConvoyItemArray(void)
 #endif
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(HasConvoyAccess);
 bool8 HasConvoyAccess(void)
 {
     return true;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ClearSupplyItems);
 void ClearSupplyItems(void)
 {
 #if CHAX
@@ -42,7 +42,7 @@ void ClearSupplyItems(void)
 #endif
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ShrinkConvoyItemList);
 void ShrinkConvoyItemList(void)
 {
     u16 i;
@@ -69,7 +69,7 @@ void ShrinkConvoyItemList(void)
     CpuCopy16(buffer, GetConvoyItemArray(), i * sizeof(u16));
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetConvoyItemCount);
 int GetConvoyItemCount(void)
 {
     int i;
@@ -88,7 +88,7 @@ int GetConvoyItemCount(void)
     return count;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(RemoveItemFromConvoy);
 void RemoveItemFromConvoy(int index)
 {
 #if CHAX
@@ -100,7 +100,7 @@ void RemoveItemFromConvoy(int index)
     ShrinkConvoyItemList();
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetConvoyItemSlot);
 int GetConvoyItemSlot(int item)
 {
     int i;
@@ -119,7 +119,7 @@ int GetConvoyItemSlot(int item)
     return -1;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AddItemToConvoy);
 int AddItemToConvoy(int item)
 {
     int i;
@@ -144,7 +144,7 @@ int AddItemToConvoy(int item)
     return -1;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetConvoyItemCostSum);
 int GetConvoyItemCostSum(void)
 {
     int i, result = 0;
@@ -172,7 +172,7 @@ void Shop_CheckIfConvoyFull(struct ProcShop * proc)
         Proc_Goto(proc, PL_SHOP_SENDTO_INVENTORY_EXT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BonusClaim_StartSelectTargetSubMenu);
 void BonusClaim_StartSelectTargetSubMenu(struct BonusClaimProc * proc)
 {
     int i;
@@ -250,7 +250,7 @@ void BonusClaim_StartSelectTargetSubMenu(struct BonusClaimProc * proc)
     proc->unk_34 = StartParallelWorker(BonusClaim_DrawTargetUnitSprites, proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ConvoyMenuProc_StarMenu);
 int ConvoyMenuProc_StarMenu(ProcPtr proc)
 {
 #if CHAX
@@ -273,7 +273,7 @@ int ConvoyMenuProc_StarMenu(ProcPtr proc)
     return 0;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ConvoyMenuProc_ExecBootlegPopup);
 void ConvoyMenuProc_ExecBootlegPopup(ProcPtr proc)
 {
     if (HasConvoyAccess())
@@ -287,7 +287,7 @@ void ConvoyMenuProc_ExecBootlegPopup(ProcPtr proc)
         NewPopup2_DropItem(proc, gActionData.item);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(HandleNewItemGetFromDrop);
 void HandleNewItemGetFromDrop(struct Unit* unit, int item, ProcPtr proc)
 {
     u8 ret = UnitAddItem(unit, item);
@@ -315,7 +315,7 @@ void HandleNewItemGetFromDrop(struct Unit* unit, int item, ProcPtr proc)
     Proc_StartBlocking(gProcCmd_ConvoyMenu, proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PrepItemScreen_GiveAll);
 bool PrepItemScreen_GiveAll(struct Unit * unit)
 {
     int i;
@@ -338,7 +338,7 @@ bool PrepItemScreen_GiveAll(struct Unit * unit)
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_809D644);
 void sub_809D644(struct PrepItemSupplyProc * proc)
 {
     int color;
@@ -382,7 +382,7 @@ void sub_809D644(struct PrepItemSupplyProc * proc)
     SetTextFont(NULL);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_809D6CC);
 void sub_809D6CC(void)
 {
     SetTextFont(NULL);
@@ -413,7 +413,7 @@ void sub_809D6CC(void)
     BG_EnableSyncByMask(1);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PrepItemSupply_Loop_GiveTakeKeyHandler);
 void PrepItemSupply_Loop_GiveTakeKeyHandler(struct PrepItemSupplyProc * proc)
 {
     int idx = proc->unk_33;
@@ -504,7 +504,7 @@ void PrepItemSupply_Loop_GiveTakeKeyHandler(struct PrepItemSupplyProc * proc)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PrepItemSupply_GiveItemToSupply);
 void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc * proc)
 {
     int unitItemCount;
@@ -551,7 +551,7 @@ void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc * proc)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(SomethingPrepListRelated);
 void SomethingPrepListRelated(struct Unit * pUnit, int page, int flags)
 {
     struct PrepScreenItemListEnt * pPrepItemList = gPrepScreenItemList;
@@ -612,7 +612,7 @@ void SomethingPrepListRelated(struct Unit * pUnit, int page, int flags)
     sub_8098048(page);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_80982FC);
 void sub_80982FC(void)
 {
     u16 i;

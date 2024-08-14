@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "weapon-range.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForAdjacentHeal);
 void MakeTargetListForAdjacentHeal(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -12,7 +12,7 @@ void MakeTargetListForAdjacentHeal(struct Unit * unit)
     ForEachUnit(TryAddUnitToHealTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForRangedHeal);
 void MakeTargetListForRangedHeal(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -23,7 +23,7 @@ void MakeTargetListForRangedHeal(struct Unit * unit)
     ForEachUnit(TryAddUnitToHealTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForRestore);
 void MakeTargetListForRestore(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -34,7 +34,7 @@ void MakeTargetListForRestore(struct Unit * unit)
     ForEachUnit(TryAddUnitToRestoreTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForBarrier);
 void MakeTargetListForBarrier(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -45,7 +45,7 @@ void MakeTargetListForBarrier(struct Unit * unit)
     ForEachUnit(TryAddUnitToBarrierTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForRescueStaff);
 void MakeTargetListForRescueStaff(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -56,7 +56,7 @@ void MakeTargetListForRescueStaff(struct Unit * unit)
     ForEachUnit(TryAddUnitToRescueStaffTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForSilence);
 void MakeTargetListForSilence(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -67,7 +67,7 @@ void MakeTargetListForSilence(struct Unit * unit)
     ForEachUnit(TryAddUnitToSilenceTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForSleep);
 void MakeTargetListForSleep(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -78,7 +78,7 @@ void MakeTargetListForSleep(struct Unit * unit)
     ForEachUnit(TryAddUnitToSleepTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForBerserk);
 void MakeTargetListForBerserk(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -89,7 +89,7 @@ void MakeTargetListForBerserk(struct Unit * unit)
     ForEachUnit(TryAddUnitToBerserkTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForWarp);
 void MakeTargetListForWarp(struct Unit * unit)
 {
     gSubjectUnit = unit;
@@ -100,7 +100,7 @@ void MakeTargetListForWarp(struct Unit * unit)
     ForEachUnit(TryAddUnitToWarpTargetList, gBmMapRange, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTargetListForHammerne);
 void MakeTargetListForHammerne(struct Unit * unit)
 {
     gSubjectUnit = unit;

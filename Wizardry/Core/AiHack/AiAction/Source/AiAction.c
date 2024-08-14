@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "AiAction.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(CpPerform_PerformAction);
 void CpPerform_PerformAction(struct CpPerformProc * proc)
 {
     const struct AiActionConf * it;

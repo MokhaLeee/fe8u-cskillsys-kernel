@@ -18,7 +18,7 @@ void PreBattleGenerateHook(void)
         (*it)();
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerate);
 void BattleGenerate(struct Unit * actor, struct Unit * target)
 {
 #if CHAX

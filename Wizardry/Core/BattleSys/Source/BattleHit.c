@@ -8,7 +8,7 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleUpdateBattleStats);
 void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int attack = attacker->battleAttack;
@@ -71,7 +71,7 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     gBattleStats.silencerRate = silencerRate;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     gBattleStats.damage = 0;
@@ -114,7 +114,7 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         attacker->nonZeroDamage = TRUE;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerateHitEffects);
 void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
@@ -189,7 +189,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     BattleHit_ConsumeWeapon(attacker, defender);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerateHit);
 bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker == &gBattleTarget)

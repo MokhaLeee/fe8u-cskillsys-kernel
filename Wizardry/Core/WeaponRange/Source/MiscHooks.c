@@ -3,7 +3,7 @@
 #include "status-getter.h"
 #include "weapon-range.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiReachesByBirdsEyeDistance);
 bool AiReachesByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 item)
 {
     int distance = RECT_DISTANCE(unit->xPos, unit->yPos, other->xPos, other->yPos);
@@ -13,7 +13,7 @@ bool AiReachesByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 it
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiCouldReachByBirdsEyeDistance);
 bool AiCouldReachByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 item)
 {
 
@@ -24,7 +24,7 @@ bool AiCouldReachByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitWeaponReachBits);
 int GetUnitWeaponReachBits(struct Unit * unit, int slot)
 {
     int i, item, result = 0;
@@ -45,7 +45,7 @@ int GetUnitWeaponReachBits(struct Unit * unit, int slot)
     return result;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitItemUseReachBits);
 int GetUnitItemUseReachBits(struct Unit * unit, int slot)
 {
     int i;
@@ -74,7 +74,7 @@ int GetUnitItemUseReachBits(struct Unit * unit, int slot)
     return mask;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitStaffReachBits);
 int GetUnitStaffReachBits(struct Unit * unit)
 {
     int i;
@@ -91,7 +91,7 @@ int GetUnitStaffReachBits(struct Unit * unit)
     return mask;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiFillReversedAttackRangeMap);
 void AiFillReversedAttackRangeMap(struct Unit * unit, u16 item)
 {
     BmMapFill(gBmMapRange, 0);
@@ -100,7 +100,7 @@ void AiFillReversedAttackRangeMap(struct Unit * unit, u16 item)
     AddMap(unit->xPos, unit->yPos, GetItemReachBitsRework(item, gActiveUnit), 1, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiFloodMovementAndRange);
 void AiFloodMovementAndRange(struct Unit * unit, u16 move, u16 item) {
     int ix, iy;
     u32 mask;
@@ -124,7 +124,7 @@ void AiFloodMovementAndRange(struct Unit * unit, u16 move, u16 item) {
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiGetInRangeCombatPositionScoreComponent);
 int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit * unit)
 {
     int dist = RECT_DISTANCE(unit->xPos, unit->yPos, x, y);
@@ -140,7 +140,7 @@ int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit * unit)
     return 0;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayUnitEffectRange);
 void DisplayUnitEffectRange(struct Unit * unit)
 {
     u32 movelimitv_flag = MOVLIMITV_MMAP_BLUE;
@@ -183,7 +183,7 @@ void DisplayUnitEffectRange(struct Unit * unit)
     DisplayMoveRangeGraphics(movelimitv_flag);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GenerateUnitMovementMap);
 void GenerateUnitMovementMap(struct Unit * unit)
 {
     SetWorkingMoveCosts(GetUnitMovementCost(unit));
@@ -192,7 +192,7 @@ void GenerateUnitMovementMap(struct Unit * unit)
     GenerateMovementMap(unit->xPos, unit->yPos, MovGetter(unit), unit->index);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GenerateUnitCompleteAttackRange);
 void GenerateUnitCompleteAttackRange(struct Unit * unit)
 {
     int ix, iy;
@@ -253,14 +253,14 @@ void GenerateUnitCompleteAttackRange(struct Unit * unit)
     SetWorkingBmMap(gBmMapMovement);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GenerateUnitStandingReachRange);
 void GenerateUnitStandingReachRange(struct Unit * unit, int mask)
 {
     BmMapFill(gBmMapRange, 0);
     AddMap(unit->xPos, unit->yPos, mask, 1, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GenerateUnitCompleteStaffRange);
 void GenerateUnitCompleteStaffRange(struct Unit * unit)
 {
     int ix, iy;
@@ -294,7 +294,7 @@ void GenerateUnitCompleteStaffRange(struct Unit * unit)
     SetWorkingBmMap(gBmMapMovement);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GenerateDangerZoneRange);
 void GenerateDangerZoneRange(bool boolDisplayStaffRange)
 {
     int i, enemyFaction;
@@ -354,7 +354,7 @@ void GenerateDangerZoneRange(bool boolDisplayStaffRange)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(FillMovementAndRangeMapForItem);
 void FillMovementAndRangeMapForItem(struct Unit * unit, u16 item)
 {
     int ix, iy;
@@ -374,7 +374,7 @@ void FillMovementAndRangeMapForItem(struct Unit * unit, u16 item)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_803B678);
 void sub_803B678(struct Unit * unit, u16 item)
 {
     int ix, iy;
@@ -394,7 +394,7 @@ void sub_803B678(struct Unit * unit, u16 item)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(SetupUnitHealStaffAIFlags);
 void SetupUnitHealStaffAIFlags(struct Unit * unit, u16 item)
 {
     int flags = 0;

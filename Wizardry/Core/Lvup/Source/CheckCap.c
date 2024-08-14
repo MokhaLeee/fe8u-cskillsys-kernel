@@ -66,7 +66,7 @@ STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit * unit)
         unit->movBonus = (UNIT_MOV_MAX(unit) - UNIT_MOV_BASE(unit));
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(CheckBattleUnitStatCaps);
 void CheckBattleUnitStatCaps(struct Unit * unit, struct BattleUnit * bu)
 {
     CheckBattleUnitStatCapsVanilla(unit, bu);
@@ -76,7 +76,7 @@ void CheckBattleUnitStatCaps(struct Unit * unit, struct BattleUnit * bu)
         BU_CHG_MAG(bu) = GetUnitMaxMagic(unit) - UNIT_MAG(unit);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UnitCheckStatCaps);
 void UnitCheckStatCaps(struct Unit * unit)
 {
     UnitCheckStatCapsVanilla(unit);

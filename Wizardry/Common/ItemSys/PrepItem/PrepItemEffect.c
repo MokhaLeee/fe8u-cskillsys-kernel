@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "item-sys.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(PrepItemUse_HandleItemEffect);
 void PrepItemUse_HandleItemEffect(struct ProcPrepItemUse * proc)
 {
     u16 item = proc->unit->items[proc->slot];

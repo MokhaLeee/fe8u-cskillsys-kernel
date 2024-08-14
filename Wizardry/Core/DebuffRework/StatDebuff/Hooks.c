@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(ExecDanceRing);
 void ExecDanceRing(ProcPtr proc)
 {
     int status = 0;

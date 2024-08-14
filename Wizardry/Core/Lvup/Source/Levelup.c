@@ -134,7 +134,7 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit * bu, int bonus)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(CheckBattleUnitLevelUp);
 void CheckBattleUnitLevelUp(struct BattleUnit * bu)
 {
     if (CanBattleUnitGainLevels(bu) && bu->unit.exp >= 100)

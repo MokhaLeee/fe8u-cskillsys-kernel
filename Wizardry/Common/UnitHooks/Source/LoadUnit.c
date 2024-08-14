@@ -35,7 +35,7 @@ void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const struct Character
         unit->exp = UNIT_EXP_DISABLED;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UnitLoadStatsFromChracter);
 void UnitLoadStatsFromChracter(struct Unit * unit, const struct CharacterData * character)
 {
     const LoadUnitFunc_t * it;
@@ -43,6 +43,5 @@ void UnitLoadStatsFromChracter(struct Unit * unit, const struct CharacterData * 
         (*it)(unit, character);
 }
 
-/* LynJump */
 // For now, no need to hack this funcion
 // struct Unit * LoadUnit(const struct UnitDefinition * uDef)

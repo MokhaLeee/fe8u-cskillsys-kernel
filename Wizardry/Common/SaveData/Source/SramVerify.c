@@ -31,7 +31,7 @@ STATIC_DECLAR void WipeSkillSysSRAM(void)
         SKILLSYS_MAGIC_LEN);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(EraseInvalidSaveData);
 void EraseInvalidSaveData(void)
 {
     int ret;

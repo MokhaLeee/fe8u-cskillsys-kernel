@@ -84,7 +84,7 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
     return ret;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MakeTerrainHealTargetList);
 void MakeTerrainHealTargetList(int faction)
 {
     int i;

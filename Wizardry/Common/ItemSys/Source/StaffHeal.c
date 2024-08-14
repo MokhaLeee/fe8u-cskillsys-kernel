@@ -18,7 +18,7 @@ static int HealAmountGetter(int base, struct Unit * actor, struct Unit * target)
     return status;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitItemHealAmount);
 int GetUnitItemHealAmount(struct Unit * unit, int item)
 {
     int result = 0;
@@ -52,7 +52,7 @@ int GetUnitItemHealAmount(struct Unit * unit, int item)
     return result;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ExecStandardHeal);
 void ExecStandardHeal(ProcPtr proc)
 {
     int amount;
@@ -81,7 +81,7 @@ void ExecStandardHeal(ProcPtr proc)
     BeginBattleAnimations();
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ExecFortify);
 void ExecFortify(ProcPtr proc)
 {
     int i;

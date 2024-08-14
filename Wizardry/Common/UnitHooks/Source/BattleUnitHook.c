@@ -99,7 +99,7 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
         PidStatsAddExpGained(unit->pCharacterData->number, bu->expGain);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(InitBattleUnit);
 void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 {
     const UnitToBattleFunc_t * it;
@@ -116,7 +116,7 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
         (*it)(unit, bu);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UpdateUnitFromBattle);
 void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 {
     const BattleToUnitFunc_t * it;

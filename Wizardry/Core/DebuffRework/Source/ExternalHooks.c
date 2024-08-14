@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitStatusBonuses);
 void ComputeBattleUnitStatusBonuses(struct BattleUnit * bu)
 {
     /**

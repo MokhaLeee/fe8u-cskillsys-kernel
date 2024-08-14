@@ -4,7 +4,7 @@
 
 #define LOCAL_TRACE 0
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatLabels);
 void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
 {
     int i;
@@ -99,7 +99,7 @@ void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
     PutTwoSpecialChar(TILEMAP_LOCATED(gBG2TilemapBuffer, 17, 1), 3, 0x24, 0x25);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatBars);
 void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
 {
     int ix, iy, stat_pack[8];
@@ -140,7 +140,7 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
     BG_EnableSyncByMask(BG0_SYNC_BIT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatValues);
 void DrawPrepScreenItemUseStatValues(struct Unit* unit)
 {
     // HP
@@ -230,7 +230,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit* unit)
     BG_EnableSyncByMask(BG2_SYNC_BIT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PrepItemUseBooster_OnInit);
 void PrepItemUseBooster_OnInit(struct ProcPrepItemUseBooster * proc)
 {
     int i, item, msg;

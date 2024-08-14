@@ -1,13 +1,13 @@
 #include "common-chax.h"
 #include "item-sys.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemNameWithArticle);
 char * GetItemNameWithArticle(int item, s8 capitalize)
 {
     return GetItemName(item);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemName);
 char * GetItemName(int item)
 {
     char * result;
@@ -22,7 +22,7 @@ char * GetItemName(int item)
     return result;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemDescId);
 int GetItemDescId(int item)
 {
 #if CHAX
@@ -33,7 +33,7 @@ int GetItemDescId(int item)
     return GetItemData(ITEM_INDEX(item))->descTextId;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemUseDescId);
 int GetItemUseDescId(int item)
 {
 #if CHAX
@@ -44,7 +44,7 @@ int GetItemUseDescId(int item)
     return GetItemData(ITEM_INDEX(item))->useDescTextId;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemUses);
 int GetItemUses(int item)
 {
     if (GetItemAttributes(item) & IA_UNBREAKABLE)
@@ -58,7 +58,7 @@ int GetItemUses(int item)
     return ITEM_USES(item);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemMaxUses);
 int GetItemMaxUses(int item)
 {
     if (GetItemAttributes(item) & IA_UNBREAKABLE)
@@ -72,7 +72,7 @@ int GetItemMaxUses(int item)
     return GetItemData(ITEM_INDEX(item))->maxUses;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemIconId);
 int GetItemIconId(int item)
 {
     if (!item)
@@ -86,7 +86,7 @@ int GetItemIconId(int item)
     return GetItemData(ITEM_INDEX(item))->iconId;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemCost);
 int GetItemCost(int item)
 {
     if (GetItemAttributes(item) & IA_UNBREAKABLE)
@@ -95,13 +95,13 @@ int GetItemCost(int item)
         return GetItemData(ITEM_INDEX(item))->costPerUse * GetItemUses(item);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemMaxCost);
 int GetItemMaxCost(int item)
 {
     return GetItemData(ITEM_INDEX(item))->costPerUse * GetItemMaxUses(item);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawItemMenuLine);
 void DrawItemMenuLine(struct Text * text, int item, s8 isUsable, u16 * mapOut)
 {
     Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
@@ -116,7 +116,7 @@ void DrawItemMenuLine(struct Text * text, int item, s8 isUsable, u16 * mapOut)
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawItemMenuLineLong);
 void DrawItemMenuLineLong(struct Text * text, int item, s8 isUsable, u16 * mapOut)
 {
     Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
@@ -133,7 +133,7 @@ void DrawItemMenuLineLong(struct Text * text, int item, s8 isUsable, u16 * mapOu
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawItemMenuLineNoColor);
 void DrawItemMenuLineNoColor(struct Text * text, int item, u16 * mapOut)
 {
     Text_SetCursor(text, 0);
@@ -148,7 +148,7 @@ void DrawItemMenuLineNoColor(struct Text * text, int item, u16 * mapOut)
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawItemStatScreenLine);
 void DrawItemStatScreenLine(struct Text * text, int item, int nameColor, u16 * mapOut)
 {
     int color;
@@ -174,7 +174,7 @@ void DrawItemStatScreenLine(struct Text * text, int item, int nameColor, u16 * m
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemAfterUse);
 u16 GetItemAfterUse(int item)
 {
     if (GetItemAttributes(item) & IA_UNBREAKABLE)

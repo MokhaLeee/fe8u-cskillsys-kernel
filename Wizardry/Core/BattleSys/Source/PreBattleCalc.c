@@ -14,7 +14,7 @@ typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit *
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
 void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int status;
@@ -43,7 +43,7 @@ void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * d
     attacker->battleAttack = status;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitDefense);
 void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int status, def, res;
@@ -70,7 +70,7 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
     attacker->battleDefense = status;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitCritRate);
 void ComputeBattleUnitCritRate(struct BattleUnit * bu)
 {
     int status;
@@ -1646,7 +1646,7 @@ void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit *
 
 void PreBattleCalcPad(struct BattleUnit * attacker, struct BattleUnit * defender) {}
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitStats);
 void ComputeBattleUnitStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const PreBattleCalcFunc * it;

@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "event-rework.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitStructFromEventParameter);
 struct Unit * GetUnitStructFromEventParameter(s16 pid)
 {
 #if CHAX

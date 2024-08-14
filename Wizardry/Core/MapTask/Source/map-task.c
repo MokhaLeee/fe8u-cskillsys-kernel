@@ -3,7 +3,7 @@
 #include "map-task.h"
 #include "kernel-lib.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(PutUnitSpriteIconsOam);
 void PutUnitSpriteIconsOam(void)
 {
     int i;

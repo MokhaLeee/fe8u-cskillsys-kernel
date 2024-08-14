@@ -3,7 +3,7 @@
 #include "kernel-lib.h"
 #include "constants/skills.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(SupplyUsability);
 u8 SupplyUsability(const struct MenuItemDef * def, int number)
 {
     int i;

@@ -17,7 +17,7 @@ const EventScr EventScr_KTutorial[] = {
     ENDA
 };
 
-/* LynJump */
+LYN_REPLACE_CHECK(CheckTutorialEvent);
 bool CheckTutorialEvent(u8 type)
 {
     /* Vanilla */
@@ -37,7 +37,7 @@ bool CheckTutorialEvent(u8 type)
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(RunTutorialEvent);
 bool RunTutorialEvent(u8 type)
 {
     int counter, ret = false;

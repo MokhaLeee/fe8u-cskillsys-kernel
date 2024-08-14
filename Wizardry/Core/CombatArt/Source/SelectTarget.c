@@ -281,7 +281,7 @@ ProcPtr NewTargetSelectionRework(const struct SelectInfo * selectInfo)
     return proc;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UnknownMenu_Selected);
 u8 UnknownMenu_Selected(struct MenuProc * menu, struct MenuItemProc * menuItem)
 {
     EquipUnitItemSlot(gActiveUnit, menuItem->itemNumber);
@@ -308,7 +308,7 @@ STATIC_DECLAR int SelectTargetInfoOnEndVanilla(void)
     return 0;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AttackMapSelect_End);
 int AttackMapSelect_End(ProcPtr proc)
 {
     /* SelectTarget on end */   

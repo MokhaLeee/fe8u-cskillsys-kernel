@@ -282,7 +282,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleUnwind);
 void BattleUnwind(void)
 {
     int i, ret;
@@ -392,7 +392,7 @@ void BattleUnwind(void)
     gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerateRoundHits);
 bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int i, count;
@@ -442,7 +442,7 @@ bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * d
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGetFollowUpOrder);
 bool BattleGetFollowUpOrder(struct BattleUnit ** outAttacker, struct BattleUnit ** outDefender)
 {
     if (CheckCanTwiceAttackOrder(&gBattleActor, &gBattleTarget))
@@ -460,7 +460,7 @@ bool BattleGetFollowUpOrder(struct BattleUnit ** outAttacker, struct BattleUnit 
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetBattleUnitHitCount);
 int GetBattleUnitHitCount(struct BattleUnit * actor)
 {
     int result = 1;

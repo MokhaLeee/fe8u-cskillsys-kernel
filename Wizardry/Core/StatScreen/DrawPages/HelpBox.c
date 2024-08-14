@@ -3,7 +3,7 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(StartStatScreenHelp);
 void StartStatScreenHelp(int pageid, struct Proc * proc)
 {
     LoadHelpBoxGfx(NULL, -1); // default
@@ -31,7 +31,7 @@ void StartStatScreenHelp(int pageid, struct Proc * proc)
     StartMovingHelpBox(gStatScreen.help, proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayPage);
 void DisplayPage(int pageid)
 {
     typedef void(* func_type)(void);

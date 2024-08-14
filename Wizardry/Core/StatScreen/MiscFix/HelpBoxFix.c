@@ -2,7 +2,7 @@
 
 /* Reset helpbox when switching unit */
 
-/* LynJump */
+LYN_REPLACE_CHECK(StartGlowBlendCtrl);
 void StartGlowBlendCtrl(void)
 {
 #if CHAX
