@@ -875,3 +875,11 @@ F-Swing[X]
 Frantic Swing:[NL]
 If hit rate is less than or[NL]
 equal to 50%, +50 crit.[X]
+
+## MSG_SKILL_CriticalOverload_NAME
+C-Overload[X]
+
+## MSG_SKILL_CriticalOverload
+Critical Overload:[NL]
++1% crit for every +3%[NL]
+hit over 100%.[X]
