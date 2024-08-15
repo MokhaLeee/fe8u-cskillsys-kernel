@@ -1238,6 +1238,12 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
+        case SID_CriticalOverload:
+            if (attacker->battleHitRate > 100)
+                attacker->battleCritRate += ((attacker->battleHitRate - 100) / SKILL_EFF0(SID_CriticalOverload));
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;

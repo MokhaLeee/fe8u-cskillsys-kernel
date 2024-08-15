@@ -183,14 +183,6 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
         }
     }
 
-#if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
-    if (BattleSkillTester(attacker, SID_CriticalOverload))
-    {
-        if (attacker->battleEffectiveHitRate > 100)
-            attacker->battleCritRate += ((attacker->battleEffectiveHitRate - 100) / SKILL_EFF0(SID_CriticalOverload));
-    }
-#endif
-
     if (attacker->battleEffectiveHitRate > 100)
         attacker->battleEffectiveHitRate = 100;
 
