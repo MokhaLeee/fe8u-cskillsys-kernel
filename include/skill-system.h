@@ -3,6 +3,7 @@
 #include "common-chax.h"
 #include "efx-anim.h"
 #include "list-verify.h"
+#include "kernel-lib.h"
 #include "constants/event-cmds.h"
 
 #ifndef MAX_SKILL_NUM
@@ -32,6 +33,11 @@ enum SkillInfoListss
  */
 #define UNIT_RAM_SKILLS_LEN 7
 #define UNIT_RAM_SKILLS(unit) ((u8 *)((unit)->supports))
+
+#define RAM_SKILL_LEN_EXT (                                             \
+    gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN    \
+        ? gpKernelDesigerConfig->max_equipable_skill                    \
+        : UNIT_RAM_SKILLS_LEN)
 
 extern u16 const * const gpConstSkillTable_Person;
 extern u16 const * const gpConstSkillTable_Job;
@@ -220,6 +226,8 @@ int GetSkillScrollItemDescId(int item);
 int GetSkillScrollItemUseDescId(int item);
 int GetSkillScrollItemIconId(int item);
 
+extern const struct MenuDef RemoveSkillMenuDef;
+
 /**
  * Miscs
  */
@@ -241,6 +249,8 @@ void SaveUnitLearnedSkillLists(u8 * dst, const u32 size);   /* SaveData */
 void LoadUnitLearnedSkillLists(u8 * src, const u32 size);   /* LoadData */
 
 void UnitAutoLoadSkills(struct Unit * unit);
+int GetSkillSlot(struct Unit * unit, int sid);
+int GetFreeSkillSlot(struct Unit * unit);
 bool CanRemoveSkill(struct Unit * unit, const u16 sid);
 int RemoveSkill(struct Unit * unit, const u16 sid);
 int AddSkill(struct Unit * unit, const u16 sid);

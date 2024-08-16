@@ -5,6 +5,50 @@
 
 #define LOCAL_TRACE 0
 
+static void SortRamSkillList(struct Unit * unit)
+{
+    int i;
+    u8 * list = UNIT_RAM_SKILLS(unit);
+
+    for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
+    {
+        if (!EQUIPE_SKILL_VALID(list[i]))
+        {
+            int j;
+            for (j = i; j < (UNIT_RAM_SKILLS_LEN - 1); j++)
+                list[j] = list[j + 1];
+
+            list[UNIT_RAM_SKILLS_LEN - 1] = 0;
+        }
+    }
+}
+
+inline int GetSkillSlot(struct Unit * unit, int sid)
+{
+    int i;
+    const int cnt = RAM_SKILL_LEN_EXT;
+    u8 * list = UNIT_RAM_SKILLS(unit);
+
+    for (i = 0; i < cnt; i++)
+        if (list[i] == sid)
+            return i;
+
+    return -1;
+}
+
+inline int GetFreeSkillSlot(struct Unit * unit)
+{
+    int i;
+    const int cnt = RAM_SKILL_LEN_EXT;
+    u8 * list = UNIT_RAM_SKILLS(unit);
+
+    for (i = 0; i < cnt; i++)
+        if (!EQUIPE_SKILL_VALID(list[i]))
+            return i;
+
+    return -1;
+}
+
 bool CanRemoveSkill(struct Unit * unit, const u16 sid)
 {
     int i;
@@ -32,6 +76,7 @@ int RemoveSkill(struct Unit * unit, const u16 sid)
         if (sid == list[i])
         {
             list[i] = 0;
+            SortRamSkillList(unit);
             ResetSkillLists();
             return 0;
         }
@@ -40,34 +85,25 @@ int RemoveSkill(struct Unit * unit, const u16 sid)
 
 int AddSkill(struct Unit * unit, const u16 sid)
 {
-    int i;
+    int slot;
     u8 * list = UNIT_RAM_SKILLS(unit);
-    const int cnt = gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN
-                  ? gpKernelDesigerConfig->max_equipable_skill
-                  : UNIT_RAM_SKILLS_LEN;
 
     if (sid >= MAX_GENERIC_SKILL_NUM)
         return -1;
 
     LearnSkill(unit, sid);
 
-    for (i = 0; i < cnt; i++)
-    {
-        /* Already loaded */
-        if (list[i] == sid)
-            return 0;
-    }
+    slot = GetSkillSlot(unit, sid);
+    if (slot != -1)
+        return 0;
 
-    for (i = 0; i < cnt; i++)
-    {
-        if (!EQUIPE_SKILL_VALID(list[i]))
-        {
-            list[i] = sid;
-            ResetSkillLists();
-            return 0;
-        }
-    }
-    return -1;
+    slot = GetFreeSkillSlot(unit);
+    if (slot == -1)
+        return -1;
+
+    list[slot] = sid;
+    ResetSkillLists();
+    return 0;
 }
 
 static inline void load_skill_ext(struct Unit * unit, u16 sid)

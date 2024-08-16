@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "icon-rework.h"
+#include "kernel-lib.h"
 #include "constants/texts.h"
 
 /* External hooks */
@@ -26,16 +27,63 @@ int GetSkillScrollItemIconId(int item)
 }
 
 /* Item use */
+static void call_remove_skill_menu(void)
+{
+    StartSubtitleHelp(
+        StartOrphanMenu(&RemoveSkillMenuDef),
+        GetStringFromIndex(MSG_RemoveSkillSubtitle)
+    );
+}
+
+static const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
+    PROC_YIELD,
+    PROC_CALL(call_remove_skill_menu),
+    PROC_END
+};
+
+void ItemUseEffect_SkillScroll(struct Unit * unit)
+{
+    gActionData.unk08 = -1;
+    if (gpKernelDesigerConfig->equip_skill_en == false)
+    {
+        /**
+         * If skillsys is set unequipable,
+         * then we need to find a free slot.
+         * Otherwise player need to select to remove a equipped skill.
+         **/
+        if (GetFreeSkillSlot(unit) == -1)
+            Proc_StartBlocking(ProcScr_SkillScrollUseSoftLock, Proc_Find(gProcScr_PlayerPhase));
+    }
+}
+
 void ItemUseAction_SkillScroll(ProcPtr proc)
 {
     struct Unit * unit = GetUnit(gActionData.subjectIndex);
     int slot = gActionData.itemSlotIndex;
-    int item = unit->items[gActionData.itemSlotIndex];
+    int item = unit->items[slot];
 
-    AddSkill(unit, ITEM_USES(item));
-    UnitUpdateUsedItem(unit, slot);
+    if (gActionData.unk08 != (u16)-1)
+    {
+        /* Replace skill */
+        int slot_rep = gActionData.unk08;
+        int sid_rep = UNIT_RAM_SKILLS(unit)[slot_rep];
+
+        unit->items[slot] = ITEM_INDEX(item) | (sid_rep << 8);
+        UNIT_RAM_SKILLS(unit)[slot_rep] = ITEM_USES(item);
+    }
+    else
+    {
+        /* Simply add a new skill */
+        AddSkill(unit, ITEM_USES(item));
+        UnitUpdateUsedItem(unit, slot);
+    }
 
     NewPopup_VerySimple(MSG_SkillLearned, 0x5A, proc);
+}
+
+bool ItemUsbility_SkillScroll(struct Unit * unit, int item)
+{
+    return !IsSkillLearned(unit, ITEM_USES(item));
 }
 
 /* Prep item use */
@@ -98,7 +146,23 @@ void PrepItemEffect_SkillScroll(struct ProcPrepItemUse * proc, u16 item)
     Proc_StartBlocking(ProcScr_PrepItemUseScroll, proc);
 }
 
-bool ItemUsbility_SkillScroll(struct Unit * unit, int item)
+bool PrepItemUsbility_SkillScroll(struct Unit * unit, int item)
 {
+    if (gpKernelDesigerConfig->equip_skill_en == false)
+    {
+        /**
+         * If skillsys is configured unequipable,
+         * then we need to find a free-slot to equip the skill.
+         */
+        if (GetFreeSkillSlot(unit) == -1)
+            return false;
+
+        return true;
+    }
+
+    /**
+     * If player can equip skill by themself,
+     * then they just need to avoid from learned skill.
+     */
     return !IsSkillLearned(unit, ITEM_USES(item));
 }
