@@ -91,6 +91,8 @@ void ComputeBattleUnitCritRate(struct BattleUnit * bu)
 
 void PreBattleCalcInit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
+    struct BattleStatus * st;
+
     ComputeBattleUnitDefense(attacker, defender);
     ComputeBattleUnitAttack(attacker, defender);
     ComputeBattleUnitSpeed(attacker);
@@ -104,6 +106,16 @@ void PreBattleCalcInit(struct BattleUnit * attacker, struct BattleUnit * defende
 
     /* Calc silencer rate at pre-battle-calc rather than battle-calc-real */
     attacker->battleSilencerRate = 0;
+
+    st = BattleUnitOriginalStatus(attacker);
+    st->atk = attacker->battleAttack;
+    st->def = attacker->battleDefense;
+    st->as = attacker->battleSpeed;
+    st->hit = attacker->battleHitRate;
+    st->avo = attacker->battleAvoidRate;
+    st->crit = attacker->battleCritRate;
+    st->dodge = attacker->battleDodgeRate;
+    st->silencer = attacker->battleSilencerRate;
 }
 
 void PreBattleCalcEnd(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -1129,28 +1141,28 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_Chlorophyll) && (COMMON_SKILL_VALID(SID_Chlorophyll)))
         case SID_Chlorophyll:
             if (gPlaySt.chapterWeatherId == WEATHER_FLAMES)
-                attacker->battleSpeed *= 2;
+                attacker->battleSpeed += BattleUnitOriginalStatus(attacker)->as;
             break;
 #endif
 
 #if (defined(SID_SlushRush) && (COMMON_SKILL_VALID(SID_SlushRush)))
         case SID_SlushRush:
             if (gPlaySt.chapterWeatherId == WEATHER_SNOW)
-                attacker->battleSpeed *= 2;
+                attacker->battleSpeed += BattleUnitOriginalStatus(attacker)->as;
             break;
 #endif
 
 #if (defined(SID_SandRush) && (COMMON_SKILL_VALID(SID_SandRush)))
         case SID_SandRush:
             if (gPlaySt.chapterWeatherId == WEATHER_SANDSTORM)
-                attacker->battleSpeed *= 2;
+                attacker->battleSpeed += BattleUnitOriginalStatus(attacker)->as;
             break;
 #endif
 
 #if (defined(SID_SwiftSwim) && (COMMON_SKILL_VALID(SID_SwiftSwim)))
         case SID_SwiftSwim:
             if (gPlaySt.chapterWeatherId == WEATHER_RAIN)
-                attacker->battleSpeed *= 2;
+                attacker->battleSpeed += BattleUnitOriginalStatus(attacker)->as;
             break;
 #endif
 
@@ -1238,6 +1250,27 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+        case SID_MeleeManiac:
+            if (gBattleStats.range == 1)
+            {
+                int _dmg_tmp = BattleUnitOriginalStatus(attacker)->atk - BattleUnitOriginalStatus(defender)->def;
+                if (_dmg_tmp > 0)
+                    attacker->battleAttack += _dmg_tmp;
+            }
+            break;
+#endif
+
+#if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
+        case SID_CriticalOverload:
+            if (attacker->battleHitRate > 100)
+            {
+                int _crit_overflow = BattleUnitOriginalStatus(attacker)->crit - 100;
+                if (_crit_overflow > 0)
+                    attacker->battleCritRate += _crit_overflow / SKILL_EFF0(SID_CriticalOverload);
+            }
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
@@ -1248,6 +1281,15 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     /* This is judging on defender */
     if (BattleSkillTester(defender, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
         attacker->battleAvoidRate -= 20;
+#endif
+
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+    if (BattleSkillTester(defender, SID_MeleeManiac && gBattleStats.range != 1))
+    {
+        int _dmg_tmp = BattleUnitOriginalStatus(attacker)->atk - BattleUnitOriginalStatus(defender)->def;
+        if (_dmg_tmp > 0)
+            attacker->battleAttack += _dmg_tmp;
+    }
 #endif
 }
 

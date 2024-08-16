@@ -3,6 +3,13 @@
 
 #include "debug-kit.h"
 
+struct BattleStatus {
+    s16 atk, def, as, hit, avo, crit, dodge, silencer;
+};
+
+extern struct BattleStatus BattleSysBattleStatusBackup[2];
+#define BattleUnitOriginalStatus(bu) (((bu) == &gBattleTarget) ? &BattleSysBattleStatusBackup[1] : &BattleSysBattleStatusBackup[0])
+
 /* WTA bonus */
 struct WeaponTriangleConf {
     s8 wtype_a;
