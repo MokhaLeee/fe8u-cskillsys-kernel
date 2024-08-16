@@ -1238,6 +1238,13 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+        case SID_MeleeManiac:
+            if (gBattleStats.range == 1)
+                attacker->battleAttack += (attacker->battleAttack - defender->battleDefense);
+            break;
+#endif
+
 #if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
         case SID_CriticalOverload:
             if (attacker->battleHitRate > 100)
@@ -1254,6 +1261,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
     /* This is judging on defender */
     if (BattleSkillTester(defender, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
         attacker->battleAvoidRate -= 20;
+#endif
+
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+    if (BattleSkillTester(defender, SID_MeleeManiac && gBattleStats.range != 1))
+        attacker->battleAttack += (attacker->battleAttack - defender->battleDefense);
 #endif
 }
 
