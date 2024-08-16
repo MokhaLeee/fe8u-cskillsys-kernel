@@ -6,7 +6,7 @@ ALIGN 4
 
 ALIGN 4
 Img_NinianPrayfx:
-    #incbin "Source/NinianPrayfx.4bpp.lz"
+    #incbin "Source/NinianPrayfx.lz77"
 
 ALIGN 4
 Pal_NinianPrayfx:

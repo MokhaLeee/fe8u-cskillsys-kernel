@@ -4,7 +4,7 @@
 
 extern const u8 Gfx_BKSEL[12][0x80];
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleForecastHitCountUpdate);
 void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int * usesCounter)
 {
     int i;
@@ -25,7 +25,7 @@ void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int 
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(InitBattleForecastBattleStats);
 void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
 {
     int usesA = GetItemUses(gBattleActor.weaponBefore);

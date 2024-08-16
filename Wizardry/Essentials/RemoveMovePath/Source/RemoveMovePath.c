@@ -2,7 +2,7 @@
 #include "kernel-lib.h"
 #include "map-movement.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(PlayerPhase_DisplayUnitMovement);
 void PlayerPhase_DisplayUnitMovement(void)
 {
     if (gpKernelDesigerConfig->remove_move_path == false)
@@ -17,7 +17,7 @@ void PlayerPhase_DisplayUnitMovement(void)
     SetAutoMuMoveScript(gWorkingMovementScript);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawUpdatedPathArrow);
 void DrawUpdatedPathArrow(void)
 {
     if (gpKernelDesigerConfig->remove_move_path == false)

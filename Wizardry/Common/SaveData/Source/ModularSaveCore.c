@@ -71,7 +71,7 @@ u32 CalcChunkOffset_Sus(const struct EmsChunk * chunk)
     return ret;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(WriteSaveBlockInfo);
 void WriteSaveBlockInfo(struct SaveBlockInfo * chunk, int index)
 {
 
@@ -110,7 +110,7 @@ void WriteSaveBlockInfo(struct SaveBlockInfo * chunk, int index)
     WriteAndVerifySramFast(chunk, &gSram->saveBlockInfo[index], sizeof(struct SaveBlockInfo));
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(GetSaveWriteAddr);
 void * GetSaveWriteAddr(int index)
 {
     switch (index) {
@@ -128,7 +128,7 @@ void * GetSaveWriteAddr(int index)
     }
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(SramChecksum32);
 int SramChecksum32(void * sram_src, int size)
 {
     size_t _size = size;
@@ -139,7 +139,7 @@ int SramChecksum32(void * sram_src, int size)
     return ComputeChecksum32((const u32 *)gGenericBuffer, _size);
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(CopyGameSave);
 void CopyGameSave(int index_src, int index_dst)
 {
     struct SaveBlockInfo chunk;
@@ -173,7 +173,7 @@ void CopyGameSave(int index_src, int index_dst)
     WriteSaveBlockInfo(&chunk, index_dst);
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(WriteNewGameSave);
 void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial)
 {
     const new_save_hook * it;
@@ -206,7 +206,7 @@ void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial)
     WriteGameSave(index);
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(WriteGameSave);
 void WriteGameSave(int slot)
 {
     const struct EmsChunk * cur;
@@ -240,7 +240,7 @@ void WriteGameSave(int slot)
     WriteLastGameSaveId(slot);
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(ReadGameSave);
 void ReadGameSave(int slot)
 {
     const struct EmsChunk * cur;
@@ -273,7 +273,7 @@ void ReadGameSave(int slot)
     WriteLastGameSaveId(slot);
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(WriteSuspendSave);
 void WriteSuspendSave(int slot)
 {
     u8 * dst;
@@ -315,7 +315,7 @@ void WriteSuspendSave(int slot)
     WriteSwappedSuspendSaveId();
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(ReadSuspendSave);
 void ReadSuspendSave(int slot)
 {
     const struct EmsChunk * cur;

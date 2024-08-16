@@ -234,7 +234,7 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
         }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GenerateMovementMap);
 void GenerateMovementMap(int x, int y, int movement, int uid)
 {
     u8 ** working_map = gWorkingBmMap;

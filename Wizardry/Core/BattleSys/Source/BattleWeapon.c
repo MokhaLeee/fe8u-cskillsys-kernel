@@ -162,7 +162,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(SetBattleUnitWeapon);
 void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
 {
     int cid;
@@ -179,7 +179,7 @@ void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(CanUnitUseWeapon);
 s8 CanUnitUseWeapon(struct Unit * unit, int item)
 {
     if (item == 0)

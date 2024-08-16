@@ -150,7 +150,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleApplyWeaponTriangleEffect);
 void BattleApplyWeaponTriangleEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     /*

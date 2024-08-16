@@ -3,7 +3,7 @@
 
 extern struct DefeatTalkEnt * pr_gDefeatTalkList;
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitLeaderCharId);
 int GetUnitLeaderCharId(struct Unit * unit)
 {
     int i;

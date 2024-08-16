@@ -143,7 +143,7 @@ STATIC_DECLAR void DrawBattleForecastContentsVanilla(struct BattleForecastProc *
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawBattleForecastContents);
 void DrawBattleForecastContents(struct BattleForecastProc * proc)
 {
     u8 cid;

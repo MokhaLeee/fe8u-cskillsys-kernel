@@ -4,7 +4,7 @@
 
 void StartStatusHealEffect(struct Unit * unit, ProcPtr proc);
 
-/* LynJump */
+LYN_REPLACE_CHECK(StatusDecayDisplay_Display);
 void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc * proc)
 {
     struct SelectTarget * target = GetTarget(proc->unk_4C);
@@ -18,7 +18,7 @@ void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc * proc)
         StartStatusHealEffect(GetUnit(target->uid), proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(TickActiveFactionTurn);
 void TickActiveFactionTurn(void)
 {
     int i, displayMapChange = FALSE;

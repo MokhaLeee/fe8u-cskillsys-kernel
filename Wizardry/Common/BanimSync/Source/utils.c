@@ -99,7 +99,7 @@ STATIC_DECLAR int TrySwitchBanimInfo(int pos,
     return 1;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(EkrPrepareBanimfx);
 void EkrPrepareBanimfx(struct Anim * anim, u16 index)
 {
     gBanimIdx[GetAnimPosition(anim)] = index;

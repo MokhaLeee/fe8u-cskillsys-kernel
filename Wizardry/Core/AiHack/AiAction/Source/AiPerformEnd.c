@@ -1,6 +1,6 @@
 #include "common-chax.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(CpPerform_Cleanup);
 void CpPerform_Cleanup(struct CpPerformProc * proc)
 {
     UpdateAllPhaseHealingAIStatus();

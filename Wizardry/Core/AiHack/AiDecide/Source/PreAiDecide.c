@@ -8,7 +8,7 @@ extern PreAiDecideFunc_t const * const gpPreAi1DecideHook;
 // extern const PreAiDecideFunc_t gPreAi2DecideHook[];
 extern PreAiDecideFunc_t const * const gpPreAi2DecideHook;
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiTryExecScriptA);
 bool AiTryExecScriptA(void)
 {
     gpAiScriptCurrent = gpAi1Table[0][gActiveUnit->ai1];
@@ -32,7 +32,7 @@ bool AiTryExecScriptA(void)
     return gAiScriptEnded;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiTryExecScriptB);
 bool AiTryExecScriptB(void)
 {
     gpAiScriptCurrent = gpAi2Table[0][gActiveUnit->ai2];

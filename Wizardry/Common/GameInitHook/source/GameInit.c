@@ -8,7 +8,7 @@ typedef void (* GameInitHookFunc_t)(void);
 extern GameInitHookFunc_t const * const gpGameInitHookTable;
 extern const GameInitHookFunc_t * gpExternalGameInitHook;
 
-/* LynJump! */
+LYN_REPLACE_CHECK(StartGame);
 void StartGame(void)
 {
     const GameInitHookFunc_t * it;

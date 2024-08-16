@@ -883,3 +883,11 @@ M-Maniac[X]
 Melee Maniac:[NL]
 Deal 2x damage at 1 range,[NL]
 take 2x damage otherwise.[X]
+
+## MSG_SKILL_CriticalOverload_NAME
+C-Overload[X]
+
+## MSG_SKILL_CriticalOverload
+Critical Overload:[NL]
++1% crit for every +3%[NL]
+hit over 100%.[X]

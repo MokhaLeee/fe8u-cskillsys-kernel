@@ -26,7 +26,7 @@ STATIC_DECLAR bool CheckUnitNullEffective(struct Unit * unit)
     return false;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(IsItemEffectiveAgainst);
 bool IsItemEffectiveAgainst(u16 item, struct Unit * unit)
 {
     int i, jid;
@@ -54,7 +54,7 @@ check_null_effective:
     return true;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(IsUnitEffectiveAgainst);
 bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
 {
     int jid_target = UNIT_CLASS_ID(target);

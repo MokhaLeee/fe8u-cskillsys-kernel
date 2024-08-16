@@ -57,7 +57,7 @@ STATIC_DECLAR void EkrLvup_InitStatusTextVanilla(struct ProcEkrLevelup * proc)
     PutText(th, TILEMAP_LOCATED(gBG2TilemapBuffer, 13, 7));
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(EkrLvup_InitStatusText);
 void EkrLvup_InitStatusText(struct ProcEkrLevelup * proc)
 {
     int i;

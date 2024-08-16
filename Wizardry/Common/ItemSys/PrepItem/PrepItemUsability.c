@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "item-sys.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(CanUnitUseItemPrepScreen);
 bool CanUnitUseItemPrepScreen(struct Unit * unit, int item)
 {
     PrepItemUsabilityFunc_t it = gPrepItemUsabilityFuncs[ITEM_INDEX(item)];

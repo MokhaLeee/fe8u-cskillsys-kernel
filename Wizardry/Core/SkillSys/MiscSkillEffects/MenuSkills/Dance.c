@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
+LYN_REPLACE_CHECK(DanceCommandUsability);
 u8 DanceCommandUsability(const struct MenuItemDef * def, int number)
 {
 #if !CHAX

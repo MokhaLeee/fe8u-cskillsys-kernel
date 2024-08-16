@@ -5,7 +5,7 @@
 #include "combat-art.h"
 #include "help-box.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayPage2);
 void DisplayPage2(void)
 {
     switch (gpKernelDesigerConfig->skil_page_style) {

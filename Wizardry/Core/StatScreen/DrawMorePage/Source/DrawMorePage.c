@@ -1,8 +1,4 @@
-#include "global.h"
-#include "hardware.h"
-#include "bmlib.h"
-#include "ctc.h"
-#include "statscreen.h"
+#include "common-chax.h"
 
 static const u16 Sprite_Page0NameRework[] =
 {
@@ -62,7 +58,7 @@ extern u16 const * const * const gpSprites_PageNameRework;
 extern u16 const * const gpPageNameChrOffsetLutRe;
 extern u16 const * const gpPageNamePaletteRe;
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayPageNameSprite);
 void DisplayPageNameSprite(int pageid)
 {
     int colorid;

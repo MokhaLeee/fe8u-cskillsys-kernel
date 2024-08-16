@@ -2,7 +2,7 @@
 #include "strmag.h"
 #include "lvup.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetManimLevelUpStatGain);
 int GetManimLevelUpStatGain(int actor_id, int stat_num)
 {
     switch (stat_num) {
@@ -41,7 +41,7 @@ int GetManimLevelUpStatGain(int actor_id, int stat_num)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetManimLevelUpBaseStat);
 int GetManimLevelUpBaseStat(int actor_id, int stat_num)
 {
     struct Unit * unit = GetUnit(gManimSt.actor[actor_id].unit->index);
@@ -100,7 +100,7 @@ STATIC_DECLAR const struct MapLvupInfo NewMapLvupInfos[] = {
     {-1, -1, 0}
 };
 
-/* LynJump */
+LYN_REPLACE_CHECK(PutManimLevelUpFrame);
 void PutManimLevelUpFrame(int actor_id, int x, int y)
 {
     int i;
@@ -128,7 +128,7 @@ void PutManimLevelUpFrame(int actor_id, int x, int y)
     BG_EnableSyncByMask(BG0_SYNC_BIT + BG1_SYNC_BIT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PutManimLevelUpStat);
 void PutManimLevelUpStat(int actor_id, int x, int y, int stat_num, bool after_gain)
 {
     PutNumberOrBlank(

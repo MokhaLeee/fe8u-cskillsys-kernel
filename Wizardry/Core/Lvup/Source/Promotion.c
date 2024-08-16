@@ -90,7 +90,7 @@ void GenerateBattleUnitStatGainsComparativelyVanilla(struct BattleUnit * bu, str
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ApplyUnitPromotion);
 void ApplyUnitPromotion(struct Unit * unit, u8 jid)
 {
     NewBwlRecordHiddenLevel(unit);
@@ -103,13 +103,13 @@ void ApplyUnitPromotion(struct Unit * unit, u8 jid)
         UNIT_MAG(unit) = GetUnitMaxMagic(unit);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ApplyUnitDefaultPromotion);
 void ApplyUnitDefaultPromotion(struct Unit * unit)
 {
     ApplyUnitPromotion(unit, GetClassData(unit->pClassData->promotion)->number);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GenerateBattleUnitStatGainsComparatively);
 void GenerateBattleUnitStatGainsComparatively(struct BattleUnit * bu, struct Unit * unit)
 {
     GenerateBattleUnitStatGainsComparativelyVanilla(bu, unit);

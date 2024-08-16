@@ -8,7 +8,7 @@
 extern _DECL_INFO * const RTextCombatBkselStandard, * const RTextCombatBkselExtended;
 extern _DECL_INFO * const RTextCombatBkselStandardNoArts, * const RTextCombatBkselExtendedNoArts;
 
-/* LynJump */
+LYN_REPLACE_CHECK(StartBattleForecastHelpBox);
 u8 StartBattleForecastHelpBox(ProcPtr parent, struct SelectTarget * target)
 {
     int x;

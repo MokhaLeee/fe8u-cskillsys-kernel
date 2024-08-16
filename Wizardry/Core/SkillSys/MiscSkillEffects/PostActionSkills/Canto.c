@@ -48,7 +48,7 @@ STATIC_DECLAR bool CheckCanto(void)
     return true;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(TryMakeCantoUnit);
 bool TryMakeCantoUnit(ProcPtr proc)
 {
     if (!CheckCanto())
@@ -73,7 +73,7 @@ bool TryMakeCantoUnit(ProcPtr proc)
     return true;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PlayerPhase_FinishAction);
 void PlayerPhase_FinishAction(ProcPtr proc)
 {
     if (gPlaySt.chapterVisionRange != 0)

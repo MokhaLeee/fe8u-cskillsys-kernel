@@ -104,7 +104,7 @@ STATIC_DECLAR void ToggleUnitPage(bool toggle)
     BG_EnableSyncByMask(BG0_SYNC_BIT | BG2_SYNC_BIT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PageNumCtrl_DisplayBlinkIcons);
 void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 {
     bool blinking;
@@ -195,7 +195,7 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GlowBlendCtrl_OnLoop);
 void GlowBlendCtrl_OnLoop(struct StatScreenEffectProc * proc)
 {
     /**

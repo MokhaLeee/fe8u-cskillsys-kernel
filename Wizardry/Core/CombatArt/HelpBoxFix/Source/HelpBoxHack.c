@@ -44,14 +44,14 @@ STATIC_DECLAR void sub_808A200_vanilla(const struct HelpBoxInfo * info)
     gpHelpBoxCurrentInfo = info;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_808A200);
 void sub_808A200(const struct HelpBoxInfo * info)
 {
     sHelpBoxType = 0;
     sub_808A200_vanilla(info);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(HelpBoxSetupstringLines);
 void HelpBoxSetupstringLines(struct ProcHelpBoxIntro * proc)
 {
     int item = proc->item;
@@ -104,7 +104,7 @@ void HelpBoxSetupstringLines(struct ProcHelpBoxIntro * proc)
     Proc_Break(proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(HelpBoxDrawstring);
 void HelpBoxDrawstring(struct ProcHelpBoxIntro * proc)
 {
     int item = proc->item;
@@ -136,7 +136,7 @@ void HelpBoxDrawstring(struct ProcHelpBoxIntro * proc)
     Proc_Break(proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_808A454);
 int sub_808A454(int item) {
 
     if (sHelpBoxType == 0)
@@ -164,7 +164,7 @@ int sub_808A454(int item) {
     return 0;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ApplyHelpBoxContentSize);
 void ApplyHelpBoxContentSize(struct HelpBoxProc* proc, int width, int height)
 {
     width = 0xF0 & (width + 15); // align to 16 pixel multiple
@@ -216,7 +216,7 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc* proc, int width, int height)
     proc->hBoxFinal = height;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(StartHelpBoxExt);
 void StartHelpBoxExt(const struct HelpBoxInfo * info, int unk)
 {
     struct HelpBoxProc* proc;

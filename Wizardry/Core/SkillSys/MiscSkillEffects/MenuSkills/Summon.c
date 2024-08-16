@@ -1,6 +1,6 @@
 #include "common-chax.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(SummonCommandUsability);
 u8 SummonCommandUsability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)

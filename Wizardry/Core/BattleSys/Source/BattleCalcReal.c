@@ -84,7 +84,7 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitSpecialWeaponStats);
 void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker->weaponAttributes & IA_MAGICDAMAGE)
@@ -160,13 +160,13 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #endif
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitSilencerRate);
 void ComputeBattleUnitSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     return;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveHitRate);
 void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
@@ -193,12 +193,12 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
     if (BattleSkillTester(attacker, SID_FranticSwing))
     {
         if (attacker->battleEffectiveHitRate <= 50)
-            attacker->battleCritRate += 50;
+            attacker->battleCritRate += SKILL_EFF0(SID_FranticSwing);
     }
 #endif
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveStats);
 void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if CHAX

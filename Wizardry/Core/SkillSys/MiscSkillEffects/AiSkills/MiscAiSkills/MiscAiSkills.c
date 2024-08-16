@@ -4,7 +4,7 @@
 
 extern const struct AiCombatScoreCoefficients * sCombatScoreCoefficients;
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiAttemptOffensiveAction);
 s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 {
     struct AiCombatSimulationSt tmpResult = {0};
@@ -157,7 +157,7 @@ STATIC_DECLAR int AiGetDamageDealtCombatScoreComponentVanilla(void)
     return score;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(AiGetDamageDealtCombatScoreComponent);
 int AiGetDamageDealtCombatScoreComponent(void)
 {
     int score = AiGetDamageDealtCombatScoreComponentVanilla();

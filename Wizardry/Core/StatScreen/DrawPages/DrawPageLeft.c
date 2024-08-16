@@ -89,7 +89,7 @@ STATIC_DECLAR void DisplayLeftPanelHp(void)
     DisplayHpBmValue();
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayLeftPanel);
 void DisplayLeftPanel(void)
 {
     const char * namestr = GetStringFromIndex(UNIT_NAME_ID(gStatScreen.unit));

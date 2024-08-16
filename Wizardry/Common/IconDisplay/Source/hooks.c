@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "icon-rework.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitAidIconId);
 int GetUnitAidIconId(u32 attributes)
 {
     if (attributes & CA_MOUNTED)
@@ -16,7 +16,7 @@ int GetUnitAidIconId(u32 attributes)
     return (-1);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitAffinityIcon);
 int GetUnitAffinityIcon(struct Unit * unit)
 {
     int affinity = unit->pCharacterData->affinity;
@@ -26,7 +26,7 @@ int GetUnitAffinityIcon(struct Unit * unit)
     return AFFIN_ICON(affinity);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UpdateMenuItemPanel);
 void UpdateMenuItemPanel(int slot_or_item)
 {
     struct MenuItemPanelProc * proc = Proc_Find(gProcCmd_MenuItemPanel);
@@ -131,7 +131,7 @@ void UpdateMenuItemPanel(int slot_or_item)
     BG_EnableSyncByMask(BG0_SYNC_BIT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawBattlePopup);
 void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 priv)
 {
     const char * str;
@@ -267,7 +267,7 @@ void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 priv)
     SetWinEnable(0, 0, 0);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayWeaponExp);
 void DisplayWeaponExp(int num, int x, int y, int wtype)
 {
     int progress, progressMax, color;

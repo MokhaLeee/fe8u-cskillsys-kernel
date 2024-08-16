@@ -13,7 +13,7 @@ static u8 * GetUnitBwlSupports(u8 pid)
     return NULL;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(ActionSupport);
 s8 ActionSupport(ProcPtr proc)
 {
     int subjectExp;
@@ -57,7 +57,7 @@ s8 ActionSupport(ProcPtr proc)
     return 0;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(GetUnitSupportLevel);
 int GetUnitSupportLevel(struct Unit * unit, int num)
 {
     int exp;
@@ -94,7 +94,7 @@ int GetUnitSupportLevel(struct Unit * unit, int num)
     return SUPPORT_LEVEL_NONE;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(UnitGainSupportExp);
 void UnitGainSupportExp(struct Unit * unit, int num)
 {
     u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
@@ -113,7 +113,7 @@ void UnitGainSupportExp(struct Unit * unit, int num)
     }
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(UnitGainSupportLevel);
 void UnitGainSupportLevel(struct Unit* unit, int num)
 {
     u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
@@ -125,7 +125,7 @@ void UnitGainSupportLevel(struct Unit* unit, int num)
     SetSupportLevelGained(unit->pCharacterData->number, GetUnitSupporterCharacter(unit, num));
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(CanUnitSupportNow);
 s8 CanUnitSupportNow(struct Unit * unit, int num)
 {
     int exp, maxExp;
@@ -158,7 +158,7 @@ s8 CanUnitSupportNow(struct Unit * unit, int num)
     return (exp == maxExp) ? TRUE : FALSE;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(InitUnitsupports);
 void InitUnitsupports(struct Unit * unit)
 {
     u8 * supp1, * supp2;
@@ -182,7 +182,7 @@ void InitUnitsupports(struct Unit * unit)
     }
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(UnitLoadSupports);
 void UnitLoadSupports(struct Unit * unit)
 {
     int i, count = GetUnitSupporterCount(unit);

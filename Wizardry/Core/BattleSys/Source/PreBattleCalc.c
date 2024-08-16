@@ -14,7 +14,7 @@ typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit *
 extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
 void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int status;
@@ -43,7 +43,7 @@ void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * d
     attacker->battleAttack = status;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitDefense);
 void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int status, def, res;
@@ -70,7 +70,7 @@ void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * 
     attacker->battleDefense = status;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitCritRate);
 void ComputeBattleUnitCritRate(struct BattleUnit * bu)
 {
     int status;
@@ -1245,6 +1245,12 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
             break;
 #endif
 
+#if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
+        case SID_CriticalOverload:
+            if (attacker->battleHitRate > 100)
+                attacker->battleCritRate += ((attacker->battleHitRate - 100) / SKILL_EFF0(SID_CriticalOverload));
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
@@ -1658,7 +1664,7 @@ void PreBattleCalcSilencerRate(struct BattleUnit * attacker, struct BattleUnit *
 
 void PreBattleCalcPad(struct BattleUnit * attacker, struct BattleUnit * defender) {}
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitStats);
 void ComputeBattleUnitStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const PreBattleCalcFunc * it;
