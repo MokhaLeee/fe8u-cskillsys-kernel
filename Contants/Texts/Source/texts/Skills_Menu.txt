@@ -185,3 +185,17 @@ allies within 3 tiles by 3.[X]
 
 ## MSG_MenuSkill_Stride_FRtext
 No allies are in range![X]
+
+## MSG_SKILL_Blacksmith
+Blacksmith: Pay 1000 gold to[NL]
+restore the user's equipped weapon,[NL]
+if from armory and C rank or less.[X]
+
+## MSG_MenuSkill_BlacksmithName
+ B-smith[X]
+
+## MSG_MenuSkill_Blacksmith_FRtext
+No restorable weapons[NL]
+or enough gold![X]
+
+

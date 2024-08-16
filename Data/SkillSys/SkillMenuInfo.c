@@ -288,4 +288,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = Stride_Unhover,
     },
 #endif
+
+#if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
+    [SID_Blacksmith] = {
+        .name = "　鍛冶屋",
+        .nameMsgId = MSG_MenuSkill_BlacksmithName,
+        .helpMsgId = MSG_SKILL_Blacksmith,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Blacksmith_Usability,
+        .onDraw = NULL,
+        .onSelected = Blacksmith_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };
