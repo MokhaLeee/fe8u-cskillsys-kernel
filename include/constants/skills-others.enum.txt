@@ -124,6 +124,7 @@ SID_DominantArm
 SID_SolidRock
 SID_Sturdy
 SID_FranticSwing
+SID_SocialButterfly
 SID_MeleeManiac
 SID_CriticalOverload
 

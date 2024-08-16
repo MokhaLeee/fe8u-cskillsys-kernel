@@ -3546,6 +3546,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_SocialButterfly) && COMMON_SKILL_VALID(SID_SocialButterfly))
+    [SID_SocialButterfly] = {
+        .name = MSG_SKILL_SocialButterfly_NAME,
+        .desc = MSG_SKILL_SocialButterfly,
+    },
+#endif
+
 #if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
     [SID_MeleeManiac] = {
         .name = MSG_SKILL_MeleeManiac_NAME,
