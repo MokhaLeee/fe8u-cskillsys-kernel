@@ -106,8 +106,10 @@ void UnitGainSupportExp(struct Unit * unit, int num)
         int currentExp = supp[num];
         int maxExp = sSupportMaxExpLookup[GetUnitSupportLevel(unit, num)];
 
+        FORCE_DECLARE struct Unit * other = GetUnitSupporterUnit(unit, num);
+
 #if defined(SID_SocialButterfly) && (COMMON_SKILL_VALID(SID_SocialButterfly))
-        if (SkillTester(unit, SID_SocialButterfly))
+        if (SkillTester(unit, SID_SocialButterfly) || SkillTester(other, SID_SocialButterfly))
             gain *= 2;
 #endif
 
