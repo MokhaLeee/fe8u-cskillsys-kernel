@@ -1285,7 +1285,11 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
 #if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
     if (BattleSkillTester(defender, SID_MeleeManiac && gBattleStats.range != 1))
-        attacker->battleAttack += (attacker->battleAttack - defender->battleDefense);
+    {
+        int _dmg_tmp = BattleUnitOriginalStatus(attacker)->atk - BattleUnitOriginalStatus(defender)->def;
+        if (_dmg_tmp > 0)
+            attacker->battleAttack += _dmg_tmp;
+    }
 #endif
 }
 
