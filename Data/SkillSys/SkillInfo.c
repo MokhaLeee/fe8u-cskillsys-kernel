@@ -3545,4 +3545,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_SocialButterfly) && COMMON_SKILL_VALID(SID_SocialButterfly))
+    [SID_SocialButterfly] = {
+        .name = MSG_SKILL_SocialButterfly_NAME,
+        .desc = MSG_SKILL_SocialButterfly,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

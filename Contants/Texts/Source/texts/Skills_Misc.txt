@@ -33,3 +33,11 @@ assistance on combo-attack[X]
 LiveToServe:[NL]
 Heal unit by the same amount as[NL]
 the target when using a staff.[X]
+
+## MSG_SKILL_SocialButterfly_NAME
+S-Butterfly[X]
+
+## MSG_SKILL_SocialButterfly
+Social Butterfly:[NL]
+This unit gains support points[NL]
+at twice the usual rate.[X]

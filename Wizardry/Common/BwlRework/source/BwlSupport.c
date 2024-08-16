@@ -1,6 +1,7 @@
 #include "common-chax.h"
-
 #include "bwl.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 #define LOCAL_TRACE 0
 
@@ -102,6 +103,12 @@ void UnitGainSupportExp(struct Unit * unit, int num)
     if (UNIT_SUPPORT_DATA(unit) && supp)
     {
         int gain = UNIT_SUPPORT_DATA(unit)->supportExpGrowth[num];
+
+#if defined(SID_SocialButterfly) && (COMMON_SKILL_VALID(SID_SocialButterfly))
+        if (SkillTester(unit, SID_SocialButterfly))
+            gain *= 2;
+#endif
+
         int currentExp = supp[num];
         int maxExp = sSupportMaxExpLookup[GetUnitSupportLevel(unit, num)];
 
