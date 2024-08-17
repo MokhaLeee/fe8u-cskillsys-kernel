@@ -3571,6 +3571,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Swarp) && COMMON_SKILL_VALID(SID_Swarp))
     [SID_Swarp] = {
         .desc = MSG_SKILL_Swarp,
+#endif
+
+#if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
+    [SID_Blacksmith] = {
+        .desc = MSG_SKILL_Blacksmith,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
