@@ -15,7 +15,7 @@ u8 Blacksmith_Usability(const struct MenuItemDef * def, int number)
     if (!weapon)
         return MENU_NOTSHOWN;
     
-    if (partyGold < SKILL_EFF0(SID_Blacksmith)) 
+    if (partyGold < 1000) 
         return MENU_NOTSHOWN;
     
     if (GetItemRequiredExp(weapon) >= WPN_EXP_B)
@@ -64,7 +64,7 @@ static void callback_exec(ProcPtr proc)
     int partyGold = GetPartyGoldAmount();
     u16 weapon = gActiveUnit->items[weaponSlot];
 
-    SetPartyGoldAmount(partyGold - SKILL_EFF0(SID_Blacksmith));
+    SetPartyGoldAmount(partyGold - 1000);
     gActiveUnit->items[weaponSlot] = MakeNewItem(weapon);
 
     NewPopup_VerySimple(MSG_ThousandGoldSpent, 0x5A, proc);
