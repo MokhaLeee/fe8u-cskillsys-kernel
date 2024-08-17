@@ -3576,7 +3576,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_ArdentSacrifice) && COMMON_SKILL_VALID(SID_ArdentSacrifice))
-    [SID_HealingFocus] = {
+    [SID_ArdentSacrifice] = {
         .name = MSG_SKILL_ArdentSacrifice_NAME,
         .desc = MSG_SKILL_ArdentSacrifice,
         .icon = GFX_SkillIcon_WIP,

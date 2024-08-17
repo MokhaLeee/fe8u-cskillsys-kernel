@@ -4,7 +4,7 @@
 
 const u16 gConstSkillTable_Job[0x100][2] = {
     [CLASS_EIRIKA_LORD] = {
-        SID_ArdentSacrifice,
+        SID_Pass,
         SID_COMBAT_Galeforce,
     },
 

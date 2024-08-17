@@ -28,7 +28,7 @@
 #include "MenuSkills/Stride.lyn.event"
 #include "MenuSkills/Teleportation.lyn.event"
 #include "MenuSkills/Repair.lyn.event"
-#Include "MenuSkills/ArdentSacrifice.lyn.event"
+#include "MenuSkills/ArdentSacrifice.lyn.event"
 
 #include "Misc/HealAmount.lyn.event"
 
