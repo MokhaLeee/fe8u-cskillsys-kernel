@@ -35,3 +35,6 @@ Skill Removed.[X]
 
 ## MSG_RemoveSkillSubtitle
 Select a skill to remove and generate scroll[X]
+
+## MSG_ThousandGoldSpent
+Spent 1000 Gold.[X]
