@@ -298,6 +298,10 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .isAvailable = Swarp_Usability,
         .onDraw = NULL,
         .onSelected = Swarp_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
 #endif
 
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
