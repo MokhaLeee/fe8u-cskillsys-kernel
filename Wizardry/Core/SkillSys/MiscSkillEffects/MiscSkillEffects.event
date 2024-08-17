@@ -56,3 +56,6 @@
 #include "Nihil/Nihil.event"
 
 #include "BattleSkills/LightAndDark.lyn.event"
+
+#include "ShopSkills/LynJump.event"
+#include "ShopSkills/Price.lyn.event"
