@@ -27,6 +27,7 @@
 #include "MenuSkills/GoddessDance.lyn.event"
 #include "MenuSkills/Stride.lyn.event"
 #include "MenuSkills/Teleportation.lyn.event"
+#include "MenuSkills/Swarp.lyn.event"
 #include "MenuSkills/Repair.lyn.event"
 
 #include "Misc/HealAmount.lyn.event"
