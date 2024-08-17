@@ -288,4 +288,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = Stride_Unhover,
     },
 #endif
+
+#if (defined(SID_Swarp) && COMMON_SKILL_VALID(SID_Swarp))
+    [SID_Swarp] = {
+        .name = "　スワープ",
+        .nameMsgId = MSG_MenuSkill_SwarpName,
+        .helpMsgId = MSG_SKILL_Swarp,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Swarp_Usability,
+        .onDraw = NULL,
+        .onSelected = Swarp_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

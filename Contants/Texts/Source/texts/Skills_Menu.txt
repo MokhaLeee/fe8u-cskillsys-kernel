@@ -185,3 +185,17 @@ allies within 3 tiles by 3.[X]
 
 ## MSG_MenuSkill_Stride_FRtext
 No allies are in range![X]
+
+## MSG_MenuSkill_Swarp_Target
+Select a unit to swap.[X]
+
+## MSG_MenuSkill_SwarpName
+ Swarp[X]
+
+## MSG_SKILL_Swarp
+Swarp:[NL]
+Swap positions with[NL]
+a distant ally.[X]
+
+## MSG_MenuSkill_Swarp_FRtext
+No allies are in range![X]
