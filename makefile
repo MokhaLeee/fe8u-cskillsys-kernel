@@ -83,8 +83,8 @@ EA_DEP            := $(EA_DIR)/ea-dep
 TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
 GRIT              := $(DEVKITPRO)/tools/bin/grit
 
-# LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
-# LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
+LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
+LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
 
 GRITLZ77ARGS      := -gu 16 -gzl -gB 4 -p! -m! -ft bin -fh!
 GRIT4BPPARGS      := -gu 16 -gB 4 -p! -m! -ft bin -fh!
@@ -120,7 +120,7 @@ post_chax: $(CHAX_DIFF)
 
 $(CHAX_DIFF): $(FE8_CHX)
 	@echo "[SEC]	Lyn-jump detection..."
-#	@$(LYN_DETECTOR) || exit "$$?"
+	@$(LYN_DETECTOR) || exit "$$?"
 	@echo "[SEC]	Lyn-jump detection passed"
 
 ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
@@ -172,7 +172,7 @@ LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 %.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
 	@$(LYN) $< $(LYN_REF) > $@
-#	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
+	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
 
 %.dmp: %.o
 	@echo "[GEN]	$@"
