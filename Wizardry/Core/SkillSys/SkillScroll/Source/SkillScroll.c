@@ -44,12 +44,11 @@ static const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
 void ItemUseEffect_SkillScroll(struct Unit * unit)
 {
     gActionData.unk08 = -1;
-    if (gpKernelDesigerConfig->equip_skill_en == false)
+    if (gpKernelDesigerConfig->gen_new_scroll == false)
     {
         /**
-         * If skillsys is set unequipable,
-         * then we need to find a free slot.
-         * Otherwise player need to select to remove a equipped skill.
+         * If the unit has been filled with equipable skills,
+         * player need to select to remove a equipped skill.
          **/
         if (GetFreeSkillSlot(unit) == -1)
             Proc_StartBlocking(ProcScr_SkillScrollUseSoftLock, Proc_Find(gProcScr_PlayerPhase));
@@ -69,7 +68,8 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
         int sid_rep = UNIT_RAM_SKILLS(unit)[slot_rep];
 
         unit->items[slot] = ITEM_INDEX(item) | (sid_rep << 8);
-        UNIT_RAM_SKILLS(unit)[slot_rep] = ITEM_USES(item);
+        RemoveSkill(unit, sid_rep);
+        AddSkill(unit, ITEM_USES(item));
     }
     else
     {
@@ -148,7 +148,7 @@ void PrepItemEffect_SkillScroll(struct ProcPrepItemUse * proc, u16 item)
 
 bool PrepItemUsbility_SkillScroll(struct Unit * unit, int item)
 {
-    if (gpKernelDesigerConfig->equip_skill_en == false)
+    if (gpKernelDesigerConfig->gen_new_scroll == false)
     {
         /**
          * If skillsys is configured unequipable,

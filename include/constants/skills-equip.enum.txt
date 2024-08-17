@@ -282,3 +282,4 @@ SID_FlierGuidance
 SID_HealingFocus
 SID_Teleportation
 SID_ArdentSacrifice
+SID_Swarp

@@ -2,7 +2,25 @@
 #include "kernel-lib.h"
 
 const struct KernelDesigerConfig gKernelDesigerConfig = {
+
+    /**
+     * If set, player can use prep-skill screen to
+     * select skills to equip for each character.
+     */
     .equip_skill_en = true,
+
+    /**
+     * Deside whether to allow players to generate a new skill scroll,
+     * if he try to use skill scroll to a unit who has already filled with skills.
+     * 
+     * 1: choose a equipped skill to replace
+     * 0: just learn the skill (equippable in prep-skill screen)
+     */
+    .gen_new_scroll = false,
+
+    /**
+     * Max amount of equip able skill for each unit (0-7)
+     */
     .max_equipable_skill = 7,
 
 #ifdef CONFIG_REMOVE_MOVE_PATH

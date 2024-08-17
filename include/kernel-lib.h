@@ -7,6 +7,7 @@
  */
 struct KernelDesigerConfig {
     u8 equip_skill_en;
+    u8 gen_new_scroll;
     u8 max_equipable_skill;
     u8 remove_move_path;
     u8 use_chinese_character;

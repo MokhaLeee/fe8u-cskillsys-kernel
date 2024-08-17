@@ -24,6 +24,11 @@ RELEASE_DIR=.release_dir
 rm -rf $RELEASE_DIR
 mkdir $RELEASE_DIR
 
+# generate lyn-jump to refe
+for GENERATED_LYNFILE in $(find . -type f -name "*.event"); do
+    cat $GENERATED_LYNFILE | grep "PROTECT " >> *.ref.event
+done
+
 # make -j
 cp fe8-kernel-* $RELEASE_DIR
 cp -rf include $RELEASE_DIR
