@@ -19,4 +19,5 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
     [SID_GoddessDance] = Action_GoddessDance,
     [SID_Stride] = Action_Stride,
     [SID_Blacksmith] = Action_Blacksmith,
+    [SID_ArdentSacrifice] = Action_ArdentSacrifice,
 };

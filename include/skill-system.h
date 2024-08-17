@@ -306,6 +306,8 @@ u8 Stride_Usability(const struct MenuItemDef * def, int number);
 u8 Stride_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Blacksmith_Usability(const struct MenuItemDef * def, int number);
 u8 Blacksmith_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 ArdentSacrifice_Usability(const struct MenuItemDef * def, int number);
+u8 ArdentSacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -316,3 +318,4 @@ bool Action_Rally(ProcPtr parent);
 bool Action_GoddessDance(ProcPtr parent);
 bool Action_Stride(ProcPtr parent);
 bool Action_Blacksmith(ProcPtr parent);
+bool Action_ArdentSacrifice(ProcPtr proc);

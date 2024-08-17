@@ -198,4 +198,13 @@ if from armory and C rank or less.[X]
 No restorable weapons[NL]
 or enough gold![X]
 
+## MSG_SKILL_ArdentSacrifice
+Ardent Sacrifice:[NL]
+Restore 10 HP to an adjacent unit,[NL]
+at a 10 HP cost to this unit.[X]
 
+## MSG_MenuSkill_ArdentSacrificeName
+ Ardent-S[X]
+
+## MSG_MenuSkill_ArdentSacrifice_FRtext
+No hurt units in range![X]
