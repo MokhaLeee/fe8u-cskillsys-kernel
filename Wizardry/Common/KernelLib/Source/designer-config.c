@@ -16,7 +16,7 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
      * 1: choose a equipped skill to replace
      * 0: just learn the skill (equippable in prep-skill screen)
      */
-    .gen_new_scroll = true,
+    .gen_new_scroll = false,
 
     /**
      * Max amount of equip able skill for each unit (0-7)
