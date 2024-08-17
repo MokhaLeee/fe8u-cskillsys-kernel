@@ -55,7 +55,7 @@ u8 ArdentSacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item
 
     StartSubtitleHelp(
         NewTargetSelection_Specialized(&gSelectInfo_Heal, ArdentSacrifice_OnSelectTarget),
-        GetStringFromIndex(MSG_MenuSkill_ArdentSacrifice_Target));
+        GetStringFromIndex(0x874));
 
     PlaySoundEffect(0x6A);
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
@@ -86,8 +86,9 @@ bool Action_ArdentSacrifice(ProcPtr parent)
         parent,
         unit_tar,
         SKILL_EFF1(SID_ArdentSacrifice),
+        ActionArdentSacrifice_CallBack1,
         NULL);
 
-    SetUnitHp(gActiveUnit, GetUnitCurrentHp(gActiveUnit) - SKILL_EFF0(SID_ArdentSacrifice));
+    CallMapAnim_Hurt(parent, gActiveUnit, SKILL_EFF0(SID_ArdentSacrifice));
     return true;
 }
