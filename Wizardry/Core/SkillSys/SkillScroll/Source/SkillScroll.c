@@ -68,7 +68,8 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
         int sid_rep = UNIT_RAM_SKILLS(unit)[slot_rep];
 
         unit->items[slot] = ITEM_INDEX(item) | (sid_rep << 8);
-        UNIT_RAM_SKILLS(unit)[slot_rep] = ITEM_USES(item);
+        RemoveSkill(unit, sid_rep);
+        AddSkill(unit, ITEM_USES(item));
     }
     else
     {
