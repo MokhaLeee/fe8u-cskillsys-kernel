@@ -45,7 +45,6 @@ u8 ArdentSacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item
 {
     if (item->availability == MENU_DISABLED)
     {
-        MenuFrozenHelpBox(menu, MSG_MenuSkill_ArdentSacrifice_FRtext);
         return MENU_ACT_SND6B;
     }
 
@@ -87,7 +86,6 @@ bool Action_ArdentSacrifice(ProcPtr parent)
         parent,
         unit_tar,
         SKILL_EFF1(SID_ArdentSacrifice),
-        ActionArdentSacrifice_CallBack1,
         NULL);
 
     SetUnitHp(gActiveUnit, GetUnitCurrentHp(gActiveUnit) - SKILL_EFF0(SID_ArdentSacrifice));

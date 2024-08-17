@@ -209,8 +209,5 @@ Ardent-S[X]
 ## MSG_MenuSkill_ArdentSacrificeName
  Ardent-S[X]
 
-## MSG_MenuSkill_ArdentSacrifice_FRtext
-No hurt allied units in range![X]
-
 ## MSG_MenuSkill_ArdentSacrifice_Target
 Select a unit to heal.[X]
