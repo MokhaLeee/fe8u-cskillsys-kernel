@@ -11,10 +11,25 @@ u16 GetItemPurchasePrice(struct Unit * unit, int item)
         cost = cost + (cost / 2);
 
     if (UnitHasItem(unit, ITEM_SILVERCARD))
-        cost = cost / 2;
+    {
+        cost = cost / 2;   
+        return cost;
+    }
 
-#if (defined(SID_ShopSkill_Undefined) && COMMON_SKILL_VALID(SID_ShopSkill_Undefined))
-    cost = Div(cost * 80, 100);
+#if (defined(SID_Bargain) && COMMON_SKILL_VALID(SID_Bargain))
+    if (SkillTester(unit, SID_Bargain))
+    {
+        cost = Div(cost * 50, 100);
+        return cost;
+    }
+#endif
+
+#if (defined(SID_Deal) && COMMON_SKILL_VALID(SID_Deal))
+    if (SkillTester(unit, SID_Deal))
+    {
+        cost = Div(cost * 80, 100);
+        return cost;
+    }
 #endif
 
     return cost;
