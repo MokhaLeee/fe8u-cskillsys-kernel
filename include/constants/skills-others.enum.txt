@@ -130,6 +130,7 @@ SID_CriticalOverload
 
 // Shop skills
 SID_Deal
+SID_Bargain
 
 // Devil skills
 SID_DevilsPact
