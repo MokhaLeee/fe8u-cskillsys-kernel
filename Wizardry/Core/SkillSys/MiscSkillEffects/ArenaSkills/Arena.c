@@ -28,16 +28,23 @@ void ArenaGenerateBaseWeapons(void) {
         gArenaState.range = 2;
     }
 
+    /*
+    ** If the opponent is using a bow, the skill holder's equipped weapon must
+    ** allow the opponent to counter in order for the skill to activate
+    */
 #if (defined(SID_ConcealedWeapon) && COMMON_SKILL_VALID(SID_ConcealedWeapon))
     if (SkillTester(gActiveUnit, SID_ConcealedWeapon))
     {
         if (GetUnitEquippedWeapon(gActiveUnit) != 0)
         {
-            if ((gArenaState.playerWpnType == ITYPE_BOW && GetItemType(GetUnitEquippedWeapon(gActiveUnit)) == ITYPE_BOW) ||
-                (gArenaState.opponentWpnType != ITYPE_BOW && GetItemType(GetUnitEquippedWeapon(gActiveUnit)) != ITYPE_BOW))
-                {
-                    gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
-                }
+            if ((GetItemMinRange(gArenaState.opponentWeapon) == GetItemMinRange(GetUnitEquippedWeapon(gActiveUnit))) ||
+                (GetItemMaxRange(gArenaState.opponentWeapon) == GetItemMaxRange(GetUnitEquippedWeapon(gActiveUnit))))
+            {
+                gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
+
+                if (gArenaState.opponentWpnType != ITYPE_BOW && GetItemType(GetUnitEquippedWeapon(gActiveUnit)) != ITYPE_BOW)
+                    gArenaState.range = 1;
+            }
         }
     }
 #endif
