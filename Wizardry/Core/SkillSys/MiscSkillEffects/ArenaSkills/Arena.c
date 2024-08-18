@@ -39,6 +39,5 @@ void ArenaGenerateBaseWeapons(void) {
     }
     #endif
 
-
     return;
 }
