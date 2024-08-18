@@ -46,3 +46,11 @@ at twice the usual rate.[X]
 Deal:[NL]
 Reduce cost of items bought[NL]
 by this unit by 20%.[X]
+
+## MSG_SKILL_ConcealedWeapon_NAME
+C-Weapon[X]
+
+## MSG_SKILL_ConcealedWeapon
+Concealed Weapon:[NL]
+Smuggle the unit's equipped[NL]
+weapon into an arena.[X]
