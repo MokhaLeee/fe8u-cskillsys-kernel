@@ -31,9 +31,9 @@ void ArenaGenerateBaseWeapons(void) {
 #if (defined(SID_ConcealedWeapon) && COMMON_SKILL_VALID(SID_ConcealedWeapon))
     if (SkillTester(gActiveUnit, SID_ConcealedWeapon))
     {
-        if(GetUnitEquippedWeapon(gActiveUnit) != 0)
+        if (GetUnitEquippedWeapon(gActiveUnit) != 0)
         {
-            if(GetItemType(GetUnitEquippedWeapon(gActiveUnit)) == ITYPE_BOW || gArenaState.opponentWpnType != ITYPE_BOW)
+            if ((gArenaState.playerWpnType == ITYPE_BOW && GetItemType(GetUnitEquippedWeapon(gActiveUnit)) == ITYPE_BOW) || gArenaState.opponentWpnType != ITYPE_BOW)
                 gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
         }
     }
