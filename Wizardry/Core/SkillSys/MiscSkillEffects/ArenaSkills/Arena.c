@@ -33,8 +33,11 @@ void ArenaGenerateBaseWeapons(void) {
     {
         if (GetUnitEquippedWeapon(gActiveUnit) != 0)
         {
-            if ((gArenaState.playerWpnType == ITYPE_BOW && GetItemType(GetUnitEquippedWeapon(gActiveUnit)) == ITYPE_BOW) || gArenaState.opponentWpnType != ITYPE_BOW)
-                gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
+            if ((gArenaState.playerWpnType == ITYPE_BOW && GetItemType(GetUnitEquippedWeapon(gActiveUnit)) == ITYPE_BOW) ||
+                (gArenaState.opponentWpnType != ITYPE_BOW && GetItemType(GetUnitEquippedWeapon(gActiveUnit)) != ITYPE_BOW))
+                {
+                    gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
+                }
         }
     }
 #endif
