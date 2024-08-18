@@ -16,6 +16,14 @@ u16 GetItemPurchasePrice(struct Unit * unit, int item)
         return cost;
     }
 
+#if (defined(SID_Bargain) && COMMON_SKILL_VALID(SID_Bargain))
+    if (SkillTester(unit, SID_Bargain))
+    {
+        cost = Div(cost * 50, 100);
+        return cost;
+    }
+#endif
+
 #if (defined(SID_Deal) && COMMON_SKILL_VALID(SID_Deal))
     if (SkillTester(unit, SID_Deal))
     {
