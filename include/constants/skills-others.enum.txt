@@ -128,6 +128,9 @@ SID_SocialButterfly
 SID_MeleeManiac
 SID_CriticalOverload
 
+// Shop skills
+SID_Deal
+
 // Devil skills
 SID_DevilsPact
 SID_DevilsWhim
