@@ -28,7 +28,7 @@ void ArenaGenerateBaseWeapons(void) {
         gArenaState.range = 2;
     }
 
-    #if (defined(SID_ConcealedWeapon) && COMMON_SKILL_VALID(SID_ConcealedWeapon))
+#if (defined(SID_ConcealedWeapon) && COMMON_SKILL_VALID(SID_ConcealedWeapon))
     if (SkillTester(gActiveUnit, SID_ConcealedWeapon))
     {
         if(GetUnitEquippedWeapon(gActiveUnit) != 0)
@@ -37,7 +37,7 @@ void ArenaGenerateBaseWeapons(void) {
                 gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
         }
     }
-    #endif
+#endif
 
     return;
 }
