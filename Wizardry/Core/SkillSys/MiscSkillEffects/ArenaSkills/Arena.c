@@ -18,14 +18,6 @@ void ArenaGenerateBaseWeapons(void) {
 
     gArenaState.opponentWeapon = MakeNewItem(arenaWeapons[gArenaState.opponentWpnType]);
 
-#if (defined(SID_ConcealedWeapon) && COMMON_SKILL_VALID(SID_ConcealedWeapon))
-    if (SkillTester(gActiveUnit, SID_ConcealedWeapon))
-    {
-        if(GetUnitEquippedWeapon(gActiveUnit) != 0)
-            gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
-    }
-#endif
-
     gArenaState.range = 1;
 
     if (gArenaState.playerWpnType == ITYPE_BOW) {
@@ -35,6 +27,18 @@ void ArenaGenerateBaseWeapons(void) {
     if (gArenaState.opponentWpnType == ITYPE_BOW) {
         gArenaState.range = 2;
     }
+
+    #if (defined(SID_ConcealedWeapon) && COMMON_SKILL_VALID(SID_ConcealedWeapon))
+    if (SkillTester(gActiveUnit, SID_ConcealedWeapon))
+    {
+        if(GetUnitEquippedWeapon(gActiveUnit) != 0)
+        {
+            if(GetItemType(GetUnitEquippedWeapon(gActiveUnit)) == ITYPE_BOW || gArenaState.opponentWpnType != ITYPE_BOW)
+                gArenaState.playerWeapon = GetUnitEquippedWeapon(gActiveUnit); 
+        }
+    }
+    #endif
+
 
     return;
 }
