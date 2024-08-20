@@ -225,3 +225,8 @@ an adjacent ally.[X]
 
 ## MSG_MenuSkill_Swap_FRtext
 No allies are in range![X]
+
+## MSG_SKILL_VigorDance
+Vigor Dance:[NL]
+Boost ally's POW/DEF +2 for[NL]
+1 turn after dancing.[X]
