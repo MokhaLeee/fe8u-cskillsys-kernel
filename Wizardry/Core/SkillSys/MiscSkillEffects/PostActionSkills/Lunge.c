@@ -88,7 +88,7 @@ LABEL(99)
     ENDA
 };
 
-bool PostActionSwap(ProcPtr proc)
+bool PostActionLunge(ProcPtr proc)
 {
     struct Unit * unit = gActiveUnit;
     struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
