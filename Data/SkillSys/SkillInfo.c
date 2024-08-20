@@ -3594,6 +3594,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_ConcealedWeapon_NAME,
         .desc = MSG_SKILL_ConcealedWeapon,
         .icon = GFX_SkillIcon_ConcealedWeapon,
+    },
 #endif
 
 #if (defined(SID_Bargain) && COMMON_SKILL_VALID(SID_Bargain))
