@@ -61,4 +61,5 @@
 #include "ShopSkills/LynJump.event"
 #include "ShopSkills/Price.lyn.event"
 
+#include "ArenaSkills/LynJump.event"
 #include "ArenaSkills/Arena.lyn.event"
