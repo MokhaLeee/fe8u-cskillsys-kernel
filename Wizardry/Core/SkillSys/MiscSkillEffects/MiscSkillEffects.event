@@ -7,7 +7,7 @@
 #include "PostActionSkills/Canto.lyn.event"
 #include "PostActionSkills/Thunderstorm.lyn.event"
 #include "PostActionSkills/Return.lyn.event"
-#include "PostActionSkills/Swap.lyn.event"
+#include "PostActionSkills/Lunge.lyn.event"
 #include "PostActionSkills/Heal.lyn.event"
 #include "PostActionSkills/Hurt.lyn.event"
 #include "PostActionSkills/Synchronize.lyn.event"
@@ -29,6 +29,7 @@
 #include "MenuSkills/Teleportation.lyn.event"
 #include "MenuSkills/Swarp.lyn.event"
 #include "MenuSkills/Repair.lyn.event"
+#include "MenuSkills/Swap.lyn.event"
 
 #include "Misc/HealAmount.lyn.event"
 

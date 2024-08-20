@@ -211,3 +211,17 @@ if from armory and C rank or less.[X]
 ## MSG_MenuSkill_Blacksmith_FRtext
 No restorable weapons[NL]
 or enough gold![X]
+
+## MSG_MenuSkill_Swap_Target
+Select a unit to swap.[X]
+
+## MSG_MenuSkill_SwapName
+ Swap[X]
+
+## MSG_SKILL_Swap
+Swap:[NL]
+Swap positions with[NL]
+an adjacent ally.[X]
+
+## MSG_MenuSkill_Swap_FRtext
+No allies are in range![X]

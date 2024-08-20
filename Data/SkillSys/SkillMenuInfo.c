@@ -318,4 +318,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
+    [SID_Swap] = {
+        .name = "　交換",
+        .nameMsgId = MSG_MenuSkill_SwapName,
+        .helpMsgId = MSG_SKILL_Swap,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Swap_Usability,
+        .onDraw = NULL,
+        .onSelected = Swap_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

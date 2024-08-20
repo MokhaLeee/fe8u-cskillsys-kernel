@@ -10,7 +10,7 @@ gPostActionFuncs:
     POIN PostActionAlertStance
     POIN PostActionTsuzuku
     POIN PostActionGetItem
-    POIN PostActionSwap
+    POIN PostActionLunge
     POIN PostActionPositionReturn
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0
