@@ -3616,4 +3616,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Swap,
     },
 #endif
+
+#if (defined(SID_VigorDance) && COMMON_SKILL_VALID(SID_VigorDance))
+    [SID_VigorDance] = {
+        .desc = MSG_SKILL_VigorDance,
+        .icon = GFX_SkillIcon_VigorDance,
+    },
+#endif
 };
