@@ -187,3 +187,7 @@ Halve the opponent's current HP.[NL]
 Sturdy:[NL]
 If the unit has full HP at the[NL]
 start of the fight, they cannot die.[X]
+
+## MSG_SKILL_Blessing
+Blessing:[NL]
+Weapon uses are not consumed.[X]
