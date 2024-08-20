@@ -57,3 +57,8 @@ D-Report[X]
 Detailed Report:[NL]
 if HP>50%, ranged foes cannot[NL]
 move throgh 2x2 spaces adjacent.[X]
+
+## MSG_SKILL_GridMaster
+Grid Master:[NL]
+Menu movement skills do not[NL]
+end this unit's turn.[X]

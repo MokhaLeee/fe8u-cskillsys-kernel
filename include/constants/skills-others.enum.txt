@@ -143,6 +143,7 @@ SID_SoaringGuidance
 SID_FlierFormation
 SID_SoaringWings
 SID_DetailedReport
+SID_GridMaster
 
 // Weapon range
 SID_HighGround
