@@ -2,6 +2,8 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+
+LYN_REPLACE_CHECK(ArenaGenerateBaseWeapons);
 void ArenaGenerateBaseWeapons(void) {
     u8 arenaWeapons[] = {
         [ITYPE_SWORD] = ITEM_SWORD_IRON,
@@ -51,10 +53,3 @@ void ArenaGenerateBaseWeapons(void) {
 
     return;
 }
-
-/*
-** The lyn check for this function needs to be placed after the function
-** definition as bmarena.h has commented out this function (for some reason?)
-** so it's not declared in advance.
-*/
-LYN_REPLACE_CHECK(ArenaGenerateBaseWeapons);
