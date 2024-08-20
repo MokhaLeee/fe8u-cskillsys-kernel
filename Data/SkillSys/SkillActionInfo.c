@@ -20,4 +20,5 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
     [SID_Stride] = Action_Stride,
     [SID_Swarp] = Action_Swarp,
     [SID_Blacksmith] = Action_Blacksmith,
+    [SID_Swap] = Action_Swap,
 };

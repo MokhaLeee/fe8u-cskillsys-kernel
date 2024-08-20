@@ -14,6 +14,8 @@ bool PrePhsae_ClearMiscUES(ProcPtr proc)
             ClearBitUES(unit, UES_BIT_GUARDBEAR_SKILL_USED);
             ClearBitUES(unit, UES_BIT_TSZUKU_SKILL_USED);
             ClearBitUES(unit, UES_BIT_TELEPOTRATION_SKILL_USED);
+            ClearBitUES(unit, UES_BIT_SWARP_SKILL_USED);
+            ClearBitUES(unit, UES_BIT_SWAP_SKILL_USED);
         }
     }
     return false;

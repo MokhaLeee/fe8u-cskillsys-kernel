@@ -3594,6 +3594,40 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .name = MSG_SKILL_ConcealedWeapon_NAME,
         .desc = MSG_SKILL_ConcealedWeapon,
         .icon = GFX_SkillIcon_ConcealedWeapon,
+#endif
+
+#if (defined(SID_Bargain) && COMMON_SKILL_VALID(SID_Bargain))
+    [SID_Bargain] = {
+        .desc = MSG_SKILL_Bargain,
+        .icon = GFX_SkillIcon_Bargain,
+    },
+#endif
+
+#if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
+    [SID_Blessing] = {
+        .desc = MSG_SKILL_Blessing,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_GridMaster) && COMMON_SKILL_VALID(SID_GridMaster))
+    [SID_GridMaster] = {
+        .desc = MSG_SKILL_GridMaster,
+        .icon = GFX_SkillIcon_GridMaster,
+    },
+#endif
+
+#if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
+    [SID_Swap] = {
+        .desc = MSG_SKILL_Swap,
+        .icon = GFX_SkillIcon_Swap,
+    },
+#endif
+
+#if (defined(SID_VigorDance) && COMMON_SKILL_VALID(SID_VigorDance))
+    [SID_VigorDance] = {
+        .desc = MSG_SKILL_VigorDance,
+        .icon = GFX_SkillIcon_VigorDance,
     },
 #endif
 };

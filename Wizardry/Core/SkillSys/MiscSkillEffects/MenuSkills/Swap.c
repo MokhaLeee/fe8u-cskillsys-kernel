@@ -8,15 +8,15 @@
 #include "unit-expa.h"
 #include "action-expa.h"
 
-u8 Swarp_Usability(const struct MenuItemDef * def, int number)
+u8 Swap_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
-    if (!HasSelectTarget(gActiveUnit, MakeTargetListForRescueStaff))
+    if (!HasSelectTarget(gActiveUnit, MakeTargetListForWarp))
         return MENU_DISABLED;
 
-    if (CheckBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED))
+    if (CheckBitUES(gActiveUnit, UES_BIT_SWAP_SKILL_USED))
         return MENU_NOTSHOWN;
 
     return MENU_ENABLED;
@@ -57,7 +57,7 @@ static void set_position(void)
     unitb->yPos = y;
 }
 
-static u8 Swarp_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
+static u8 Swap_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
 {
     gActionData.targetIndex = target->uid;
 
@@ -69,28 +69,28 @@ static u8 Swarp_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
     BG_Fill(gBG2TilemapBuffer, 0);
     BG_EnableSyncByMask(BG2_SYNC_BIT);
 
-    gActionData.unk08 = SID_Swarp;
+    gActionData.unk08 = SID_Swap;
     gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
 
     return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A | TARGETSELECTION_ACTION_CLEARBGS;
 }
 
-u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 Swap_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 {
     if (item->availability == MENU_DISABLED)
     {
-        MenuFrozenHelpBox(menu, MSG_MenuSkill_Swarp_FRtext);
+        MenuFrozenHelpBox(menu, MSG_MenuSkill_Swap_FRtext);
         return MENU_ACT_SND6B;
     }
 
     ClearBg0Bg1();
 
-    MakeTargetListForRescueStaff(gActiveUnit);
+    MakeTargetListForWarp(gActiveUnit);
     BmMapFill(gBmMapMovement, -1);
 
     StartSubtitleHelp(
-        NewTargetSelection_Specialized(&gSelectInfo_Rescue, Swarp_OnSelectTarget),
-        GetStringFromIndex(MSG_MenuSkill_Swarp_Target));
+        NewTargetSelection_Specialized(&gSelectInfo_Rescue, Swap_OnSelectTarget),
+        GetStringFromIndex(MSG_MenuSkill_Swap_Target));
 
     PlaySoundEffect(0x6A);
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
@@ -99,7 +99,7 @@ u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 STATIC_DECLAR const EventScr EventScr_MenuPositionSwap[] = {
 
 LABEL(0)
-    SVAL(EVT_SLOT_B, SID_Swarp)
+    SVAL(EVT_SLOT_B, SID_Swap)
     CALL(EventScr_MuSkillAnim)
     ASMC(PrepareMenuPositionSwap)
     ASMC(set_actor_unit)
@@ -121,9 +121,9 @@ LABEL(99)
     ENDA
 };
 
-bool Action_Swarp(ProcPtr parent)
+bool Action_Swap(ProcPtr parent)
 {
-    SetBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED);
+    SetBitUES(gActiveUnit, UES_BIT_SWAP_SKILL_USED);
     KernelCallEvent(EventScr_MenuPositionSwap, EV_EXEC_CUTSCENE, parent);
     
 #if defined(SID_GridMaster) && (COMMON_SKILL_VALID(SID_GridMaster))
