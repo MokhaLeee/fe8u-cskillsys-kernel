@@ -16,7 +16,7 @@ u8 Swarp_Usability(const struct MenuItemDef * def, int number)
     if (!HasSelectTarget(gActiveUnit, MakeTargetListForRescueStaff))
         return MENU_DISABLED;
 
-    if (CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
+    if (CheckBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED))
         return MENU_NOTSHOWN;
 
     return MENU_ENABLED;
@@ -123,7 +123,7 @@ LABEL(99)
 
 bool Action_Swarp(ProcPtr parent)
 {
-    SetBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED);
+    SetBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED);
     KernelCallEvent(EventScr_MenuPositionSwap, EV_EXEC_CUTSCENE, parent);
     
 #if defined(SID_GridMaster) && (COMMON_SKILL_VALID(SID_GridMaster))

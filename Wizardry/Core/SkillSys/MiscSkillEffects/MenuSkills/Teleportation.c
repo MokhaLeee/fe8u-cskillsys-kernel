@@ -20,7 +20,7 @@ STATIC_DECLAR bool AreAnyEnemyExists(void)
 
 u8 Teleportation_Usability(const struct MenuItemDef * def, int number)
 {
-    if (gActiveUnit->state & US_CANTOING || CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
+    if (gActiveUnit->state & US_CANTOING || CheckBitUES(gActiveUnit, UES_BIT_TELEPOTRATION_SKILL_USED))
         return MENU_NOTSHOWN;
 
 #if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))

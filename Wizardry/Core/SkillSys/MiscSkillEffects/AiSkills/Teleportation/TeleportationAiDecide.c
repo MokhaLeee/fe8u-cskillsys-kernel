@@ -40,7 +40,7 @@ bool Ai2Decide_TryTeleportation(void)
     if (gAiScriptKind != AI_SCRIPT_AI2)
         return false;
 
-    if (CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
+    if (CheckBitUES(gActiveUnit, UES_BIT_TELEPOTRATION_SKILL_USED))
         return false;
 
     switch (gActiveUnit->ai2) {
@@ -61,7 +61,7 @@ bool Ai2Decide_TryTeleportation(void)
         LTRACEF("[uid=%x] Ai1 Teleportation to x=%d, y=%d", 
                     gActiveUnit->index & 0xFF, gAiDecision.xTarget, gAiDecision.yTarget);
 
-        SetBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED);
+        SetBitUES(gActiveUnit, UES_BIT_TELEPOTRATION_SKILL_USED);
         return true;
     }
     return false;
