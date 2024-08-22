@@ -8,7 +8,7 @@
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
-STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSlot)
+STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlot)
 {
     if (itemSlot == BU_ISLOT_AUTO)
         itemSlot = GetUnitEquippedWeaponSlot(&bu->unit);
@@ -18,7 +18,8 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
 
     bu->canCounter = true;
 
-    switch (itemSlot) {
+    switch (itemSlot)
+    {
     case 0:
     case 1:
     case 2:
@@ -56,7 +57,6 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
         bu->weapon = 0;
         bu->canCounter = false;
         break;
-
     }
 
     bu->weaponBefore = bu->weapon;
@@ -67,14 +67,15 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
     {
         if (bu->weaponAttributes & IA_MAGICDAMAGE)
         {
-            switch (GetItemIndex(bu->weapon)) {
+            switch (GetItemIndex(bu->weapon))
+            {
 
             case ITEM_SWORD_WINDSWORD:
                 // if (gBattleStats.range == 2)
                 if (gBattleStats.range >= 2)
                     bu->weaponType = ITYPE_ANIMA;
                 else
-                    bu->weaponAttributes = bu->weaponAttributes &~ IA_MAGICDAMAGE;
+                    bu->weaponAttributes = bu->weaponAttributes & ~IA_MAGICDAMAGE;
                 break;
 
             case ITEM_SWORD_LIGHTBRAND:
@@ -82,7 +83,7 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
                 if (gBattleStats.range >= 2)
                     bu->weaponType = ITYPE_LIGHT;
                 else
-                    bu->weaponAttributes = bu->weaponAttributes &~ IA_MAGICDAMAGE;
+                    bu->weaponAttributes = bu->weaponAttributes & ~IA_MAGICDAMAGE;
                 break;
 
             case ITEM_SWORD_RUNESWORD:
@@ -98,7 +99,8 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
             bu->canCounter = false;
         }
 
-        switch (bu->unit.statusIndex) {
+        switch (bu->unit.statusIndex)
+        {
         case UNIT_STATUS_SLEEP:
         case UNIT_STATUS_PETRIFY:
         case UNIT_STATUS_13:
@@ -106,14 +108,16 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSl
             bu->canCounter = false;
 
             break;
-
         }
 #endif
     }
 }
 
-STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, int slot)
+STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit *bu, int slot)
 {
+    int gBattleActorWeapon;
+    int gBattleTargetWeapon;
+
     if (!(gBattleStats.config & BATTLE_CONFIG_BIT2))
     {
         if (!IsItemCoveringRangeRework(bu->weapon, gBattleStats.range, &bu->unit))
@@ -129,6 +133,27 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
             bu->canCounter = false;
             return;
         }
+
+#if (defined(SID_Mimic) && (COMMON_SKILL_VALID(SID_Mimic)))
+        if (BattleSkillTester(bu, SID_Mimic))
+        {
+            gBattleTargetWeapon = GetUnitEquippedWeapon(GetUnit(gBattleTarget.unit.index));
+            gBattleActorWeapon = GetUnitEquippedWeapon(GetUnit(gBattleActor.unit.index));
+
+            if (bu == &gBattleActor)
+            {
+                bu->weapon = gBattleTargetWeapon;
+                bu->weaponBefore = gBattleTargetWeapon;
+                bu->weaponType = gBattleTargetWeapon;
+            }
+            else
+            {
+                bu->weapon = gBattleActorWeapon;
+                bu->weaponBefore = gBattleActorWeapon;
+                bu->weaponType = gBattleActorWeapon;
+            }
+        }
+#endif
 
 #if (defined(SID_Dazzle) && (COMMON_SKILL_VALID(SID_Dazzle)))
         if (bu == &gBattleTarget && BattleSkillTester(&gBattleActor, SID_Dazzle))
@@ -148,7 +173,8 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
         }
 #endif
 
-        switch (GetUnitStatusIndex(&bu->unit)) {
+        switch (GetUnitStatusIndex(&bu->unit))
+        {
         case UNIT_STATUS_SLEEP:
         case UNIT_STATUS_PETRIFY:
         case UNIT_STATUS_13:
@@ -163,7 +189,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
 }
 
 LYN_REPLACE_CHECK(SetBattleUnitWeapon);
-void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
+void SetBattleUnitWeapon(struct BattleUnit *bu, int slot)
 {
     int cid;
 
@@ -180,7 +206,7 @@ void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
 }
 
 LYN_REPLACE_CHECK(CanUnitUseWeapon);
-s8 CanUnitUseWeapon(struct Unit * unit, int item)
+s8 CanUnitUseWeapon(struct Unit *unit, int item)
 {
     if (item == 0)
         return false;
@@ -232,7 +258,8 @@ s8 CanUnitUseWeapon(struct Unit * unit, int item)
         return false;
 
 #if CHAX
-    switch (CheckWeaponLockEx(unit, item)) {
+    switch (CheckWeaponLockEx(unit, item))
+    {
     case 1:
         return true;
 
@@ -244,7 +271,7 @@ s8 CanUnitUseWeapon(struct Unit * unit, int item)
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
 }
 
-int GetWeaponCost(struct BattleUnit * bu, u16 item)
+int GetWeaponCost(struct BattleUnit *bu, u16 item)
 {
     int cost;
 

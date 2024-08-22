@@ -1269,6 +1269,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                 if (_crit_overflow > 0)
                     attacker->battleCritRate += _crit_overflow / SKILL_EFF0(SID_CriticalOverload);
             }
+        break;
 #endif
 
         case MAX_SKILL_NUM:

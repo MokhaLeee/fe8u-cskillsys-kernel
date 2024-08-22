@@ -6,15 +6,15 @@
 #include "combat-art.h"
 #include "constants/skills.h"
 
-typedef int (* BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit * unit);
+typedef int (*BattleToUnitFunc_t)(struct BattleUnit *bu, struct Unit *unit);
 // extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
-extern BattleToUnitFunc_t const * const gpExternalBattleToUnitHook;
+extern BattleToUnitFunc_t const *const gpExternalBattleToUnitHook;
 
-typedef int (* UnitToBattleFunc_t)(struct Unit * unit, struct BattleUnit * bu);
+typedef int (*UnitToBattleFunc_t)(struct Unit *unit, struct BattleUnit *bu);
 // extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
-extern UnitToBattleFunc_t const * const gpExternalUnitToBattleHook;
+extern UnitToBattleFunc_t const *const gpExternalUnitToBattleHook;
 
-STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit * unit)
+STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit *bu, struct Unit *unit)
 {
     if (!unit)
         return;
@@ -61,12 +61,12 @@ STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit * u
     gBattleTarget.expGain = 0;
 }
 
-STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct BattleUnit * bu)
+STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit *unit, struct BattleUnit *bu)
 {
     int tmp;
 
     unit->level = bu->unit.level;
-    unit->exp   = bu->unit.exp;
+    unit->exp = bu->unit.exp;
     unit->curHP = bu->unit.curHP;
     unit->state = bu->unit.state;
 
@@ -76,12 +76,12 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
         SetUnitStatus(unit, bu->statusOut);
 
     unit->maxHP += bu->changeHP;
-    unit->pow   += bu->changePow;
-    unit->skl   += bu->changeSkl;
-    unit->spd   += bu->changeSpd;
-    unit->def   += bu->changeDef;
-    unit->res   += bu->changeRes;
-    unit->lck   += bu->changeLck;
+    unit->pow += bu->changePow;
+    unit->skl += bu->changeSkl;
+    unit->spd += bu->changeSpd;
+    unit->def += bu->changeDef;
+    unit->res += bu->changeRes;
+    unit->lck += bu->changeLck;
 
     UnitCheckStatCaps(unit);
 
@@ -100,9 +100,9 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
 }
 
 LYN_REPLACE_CHECK(InitBattleUnit);
-void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
+void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit)
 {
-    const UnitToBattleFunc_t * it;
+    const UnitToBattleFunc_t *it;
 
     InitBattleUnitVanilla(bu, unit);
 
@@ -117,9 +117,9 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(UpdateUnitFromBattle);
-void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
+void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu)
 {
-    const BattleToUnitFunc_t * it;
+    const BattleToUnitFunc_t *it;
 
     UpdateUnitFromBattleVanilla(unit, bu);
 
@@ -133,4 +133,43 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 
     for (it = gpExternalBattleToUnitHook; *it; it++)
         (*it)(bu, unit);
+}
+
+LYN_REPLACE_CHECK(BattleApplyUnitUpdates);
+void BattleApplyUnitUpdates(void)
+{
+    struct Unit *actor = GetUnit(gBattleActor.unit.index);
+    struct Unit *target = GetUnit(gBattleTarget.unit.index);
+
+/**
+ * We check the skill here to restore a mimic user's original weapon
+ */
+#if (defined(SID_Mimic) && (COMMON_SKILL_VALID(SID_Mimic)))
+    if (SkillTester(target, SID_Mimic))
+        gBattleTarget.unit.items[gBattleTarget.weaponSlotIndex] = GetUnitEquippedWeapon(target);
+    else if (SkillTester(actor, SID_Mimic))
+        gBattleActor.unit.items[gBattleActor.weaponSlotIndex] = GetUnitEquippedWeapon(actor);
+    else
+    {
+        if (gBattleActor.canCounter)
+            gBattleActor.unit.items[gBattleActor.weaponSlotIndex] = gBattleActor.weapon;
+
+        if (gBattleTarget.canCounter)
+            gBattleTarget.unit.items[gBattleTarget.weaponSlotIndex] = gBattleTarget.weapon;
+    }
+
+#else
+    if (gBattleActor.canCounter)
+        gBattleActor.unit.items[gBattleActor.weaponSlotIndex] = gBattleActor.weapon;
+
+    if (gBattleTarget.canCounter)
+        gBattleTarget.unit.items[gBattleTarget.weaponSlotIndex] = gBattleTarget.weapon;
+#endif
+
+    UpdateUnitFromBattle(actor, &gBattleActor);
+
+    if (target)
+        UpdateUnitFromBattle(target, &gBattleTarget);
+    else
+        UpdateObstacleFromBattle(&gBattleTarget);
 }
