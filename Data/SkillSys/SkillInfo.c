@@ -3631,4 +3631,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_VigorDance,
     },
 #endif
+
+#if (defined(SID_MagicSeal) && COMMON_SKILL_VALID(SID_MagicSeal))
+    [SID_MagicSeal] = {
+        .desc = MSG_SKILL_MagicSeal,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

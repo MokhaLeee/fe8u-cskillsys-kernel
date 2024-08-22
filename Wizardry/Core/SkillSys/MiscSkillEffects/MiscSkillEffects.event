@@ -64,3 +64,6 @@
 
 #include "ArenaSkills/LynJump.event"
 #include "ArenaSkills/Arena.lyn.event"
+
+#include "MapSkills/LynJump.event"
+#include "MapSkills/MapSkills.lyn.event"

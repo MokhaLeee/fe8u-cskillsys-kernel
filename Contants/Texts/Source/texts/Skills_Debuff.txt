@@ -157,3 +157,8 @@ S-Strength[X]
 Seal-Strength:[NL]
 Debuff the enemy's STR by 6[NL]
 after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_MagicSeal
+Magic Seal:[NL]
+Prevent use of magic by all[NL]
+units in MAG/2 radius of user.[X]
