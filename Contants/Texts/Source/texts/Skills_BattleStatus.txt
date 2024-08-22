@@ -891,3 +891,8 @@ C-Overload[X]
 Critical Overload:[NL]
 +1% crit for every +3%[NL]
 hit over 100%.[X]
+
+## MSG_SKILL_Mimic
+Mimic:[NL]
+The unit copies the enemy's[NL]
+equipped weapon during battle.[X]
