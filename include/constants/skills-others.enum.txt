@@ -130,6 +130,7 @@ SID_CriticalOverload
 SID_ConcealedWeapon
 SID_Blessing
 SID_VigorDance
+SID_MagicSeal
 SID_Mimic
 
 // Shop skills

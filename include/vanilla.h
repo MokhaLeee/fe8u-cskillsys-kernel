@@ -276,3 +276,6 @@ void CpPerform_Cleanup(struct CpPerformProc * proc);
 void CpPerform_PerformAction(struct CpPerformProc * proc);
 void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc);
 void ArenaGenerateBaseWeapons(void);
+void RefreshUnitsOnBmMap(void);
+
+extern u16 sTilesetConfig[0x1000 + 0x200];

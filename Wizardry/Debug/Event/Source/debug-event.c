@@ -273,6 +273,14 @@ static const struct REDA REDA_Vigarde[] = {
     },
 };
 
+static const struct REDA REDA_Selena[] = {
+    {
+        .x = 11,
+        .y = 23,
+        .b = -1,
+    },
+};
+
 static const struct UnitDefinition UnitDef_Enemy1[] = {
     {
         .charIndex = CHARACTER_ONEILL,
@@ -335,6 +343,23 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
             ITEM_VULNERARY,
         },
         .ai = { NeverMoveAI },
+    },
+    {
+        .charIndex = CHARACTER_SELENA,
+        .classIndex = CLASS_MAGE_KNIGHT_F,
+        .autolevel = true,
+        .allegiance = FACTION_ID_RED,
+        .level = 10,
+        .xPosition = 11,
+        .yPosition = 23,
+        .redaCount = 1,
+        .redas = REDA_Selena,
+        .items = {
+            ITEM_ANIMA_THUNDER,
+            ITEM_ANIMA_ELFIRE,
+            ITEM_VULNERARY,
+        },
+        .ai = { 0, 4, 9, 0 },
     },
     {}
 };
