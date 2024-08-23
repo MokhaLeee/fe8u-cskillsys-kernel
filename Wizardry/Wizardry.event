@@ -41,6 +41,7 @@ ALIGN 4
 #include "Common/MapAnimBattleHook/MapAnimBattleHook.event"
 #include "Common/MapAnims/MapAnims.event"
 #include "Common/UnitTarget/UnitTarget.event"
+#include "Common/UnitSelection/UnitSelection.event"
 
 #include "Core/SkillSys/SkillSys.event"
 #include "Core/DebuffRework/DebuffRework.event"

@@ -59,3 +59,8 @@ weapon into an arena.[X]
 Bargain:[NL]
 Reduce cost of items bought[NL]
 by this unit by 50%.[X]
+
+## MSG_SKILL_Comatose
+Comatose:[NL]
+This unit can still act[NL]
+while asleep.[X]

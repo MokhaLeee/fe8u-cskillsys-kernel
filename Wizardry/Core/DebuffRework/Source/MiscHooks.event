@@ -252,13 +252,16 @@ PUSH
     BYTE 0x3F
     PROTECT $8C45C $8C5D0
 
-    ORG $1D58E // GetUnitSelectionValueThing
-    BYTE 0x3F
-    PROTECT $1D51C $1D5A8
+    /*
+    ** Need to unprotect these for Comatose skill
+    */
+    // ORG $1D58E // GetUnitSelectionValueThing
+    // BYTE 0x3F
+    // PROTECT $1D51C $1D5A8
 
-    ORG $1D732 // MakeMoveunitForActiveUnit
-    BYTE 0x3F
-    PROTECT $1D70C $1D75C
+    // ORG $1D732 // MakeMoveunitForActiveUnit
+    // BYTE 0x3F
+    // PROTECT $1D70C $1D75C
 
     ORG $1DAFE // TrySetCursorOn
     BYTE 0x3F

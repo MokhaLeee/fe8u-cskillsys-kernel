@@ -3651,4 +3651,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Comatose) && COMMON_SKILL_VALID(SID_Comatose))
+    [SID_Comatose] = {
+        .desc = MSG_SKILL_Comatose,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
