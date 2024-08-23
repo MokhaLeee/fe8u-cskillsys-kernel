@@ -132,6 +132,7 @@ SID_Blessing
 SID_VigorDance
 SID_MagicSeal
 SID_Mimic
+SID_Insomnia
 
 // Shop skills
 SID_Deal

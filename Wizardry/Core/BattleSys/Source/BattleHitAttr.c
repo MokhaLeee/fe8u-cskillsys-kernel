@@ -234,6 +234,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
             defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
     }
 #endif
+
 #if (defined(SID_Enrage) && (COMMON_SKILL_VALID(SID_Enrage)))
     else if (CheckBattleSkillActivate(attacker, defender, SID_Enrage, attacker->unit.skl))
     {
@@ -253,6 +254,12 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
         }
     }
+#endif
+
+#if (defined(SID_Insomnia) && (COMMON_SKILL_VALID(SID_Insomnia)))
+    if (BattleSkillTester(defender, SID_Insomnia))
+        if (defender->statusOut == UNIT_STATUS_SLEEP)
+            defender->statusOut = UNIT_STATUS_NONE;
 #endif
 }
 

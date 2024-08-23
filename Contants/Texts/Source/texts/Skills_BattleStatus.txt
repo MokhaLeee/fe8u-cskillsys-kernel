@@ -896,3 +896,8 @@ hit over 100%.[X]
 Mimic:[NL]
 The unit copies the enemy's[NL]
 equipped weapon during battle.[X]
+
+## MSG_SKILL_Insomnia
+Insomnia:[NL]
+This unit is immune to[NL]
+the sleep status.[X]
