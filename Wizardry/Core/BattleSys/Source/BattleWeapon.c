@@ -173,6 +173,25 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit *bu, int
         }
 #endif
 
+#if (defined(SID_Comatose) && (COMMON_SKILL_VALID(SID_Comatose)))
+        if (BattleSkillTester(bu, SID_Comatose))
+            return;
+        else
+        {
+            switch (GetUnitStatusIndex(&bu->unit))
+            {
+            case UNIT_STATUS_SLEEP:
+            case UNIT_STATUS_PETRIFY:
+            case UNIT_STATUS_13:
+                bu->weapon = 0;
+                bu->canCounter = false;
+                return;
+
+            default:
+                break;
+            };
+        }
+#else
         switch (GetUnitStatusIndex(&bu->unit))
         {
         case UNIT_STATUS_SLEEP:
@@ -185,6 +204,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit *bu, int
         default:
             break;
         };
+#endif
     }
 }
 

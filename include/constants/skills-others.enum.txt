@@ -133,6 +133,7 @@ SID_VigorDance
 SID_MagicSeal
 SID_Mimic
 SID_Insomnia
+SID_Comatose
 
 // Shop skills
 SID_Deal
