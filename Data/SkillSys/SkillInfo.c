@@ -3635,11 +3635,19 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_MagicSeal) && COMMON_SKILL_VALID(SID_MagicSeal))
     [SID_MagicSeal] = {
         .desc = MSG_SKILL_MagicSeal,
+    },
 #endif
 
 #if (defined(SID_Mimic) && COMMON_SKILL_VALID(SID_Mimic))
     [SID_Mimic] = {
         .desc = MSG_SKILL_Mimic,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Insomnia) && COMMON_SKILL_VALID(SID_Insomnia))
+    [SID_Insomnia] = {
+        .desc = MSG_SKILL_Insomnia,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif

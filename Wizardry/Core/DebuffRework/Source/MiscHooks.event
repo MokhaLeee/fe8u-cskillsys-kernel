@@ -136,9 +136,12 @@ PUSH
     BYTE 0x3F
     PROTECT $26100 $2614C
 
-    ORG $2616E // TryAddUnitToSleepTargetList
-    BYTE 0x3F
-    PROTECT $2614C $26198
+    /*
+    ** Need to unprotect this for Insomnia skill
+    */
+    // ORG $2616E // TryAddUnitToSleepTargetList
+    // BYTE 0x3F
+    // PROTECT $2614C $26198
 
     ORG $261BA // TryAddUnitToBerserkTargetList
     BYTE 0x3F

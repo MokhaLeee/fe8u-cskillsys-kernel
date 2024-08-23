@@ -1272,6 +1272,13 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
         break;
 #endif
 
+#if (defined(SID_Insomnia) && (COMMON_SKILL_VALID(SID_Insomnia)))
+        case SID_Insomnia:
+            if (GetUnitStatusIndex(GetUnit(attacker->unit.index)) == UNIT_STATUS_SLEEP)
+                SetUnitStatus(GetUnit(attacker->unit.index), UNIT_STATUS_NONE);
+        break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
