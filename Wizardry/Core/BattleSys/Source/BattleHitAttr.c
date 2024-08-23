@@ -261,6 +261,31 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
         if (defender->statusOut == UNIT_STATUS_SLEEP)
             defender->statusOut = UNIT_STATUS_NONE;
 #endif
+
+#if (defined(SID_MagicBounce) && (COMMON_SKILL_VALID(SID_MagicBounce)))
+    if (BattleSkillTester(defender, SID_MagicBounce))
+    {
+        static const u8 _debuffs[5] = { 
+            UNIT_STATUS_POISON, 
+            UNIT_STATUS_SILENCED, 
+            UNIT_STATUS_SLEEP,
+            UNIT_STATUS_BERSERK,
+            UNIT_STATUS_PETRIFY,
+        };
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (defender->statusOut == _debuffs[i])
+            {
+                defender->statusOut = UNIT_STATUS_NONE;
+                attacker->statusOut = _debuffs[i];
+                break;
+            }
+        }
+
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_MagicBounce);
+    }
+#endif
 }
 
 void BattleHit_ConsumeWeapon(struct BattleUnit * attacker, struct BattleUnit * defender)

@@ -134,6 +134,7 @@ SID_MagicSeal
 SID_Mimic
 SID_Insomnia
 SID_Comatose
+SID_MagicBounce
 
 // Shop skills
 SID_Deal

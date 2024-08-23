@@ -901,3 +901,11 @@ equipped weapon during battle.[X]
 Insomnia:[NL]
 This unit is immune to[NL]
 the sleep status.[X]
+
+## MSG_SKILL_MagicBounce_NAME
+M-Bounce[X]
+
+## MSG_SKILL_MagicBounce
+Magic Bounce:[NL]
+Reflect back any status condition[NL]
+inflicted on this unit.[X]
