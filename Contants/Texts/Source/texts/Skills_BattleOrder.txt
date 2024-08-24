@@ -114,6 +114,6 @@ When unit is defender while[NL]
 their HP is 100%, attack first.[X]
 
 ## MSG_SKILL_Accost
-Accost:[NL]
-Continue the current fight[NL]
-until a unit dies.[X]
+Accost: Engage in up to 20[NL]
+rounds of combat. Conditions:[NL]
+(unitSPD + unitHP/2 ) - enemySPD.[X]
