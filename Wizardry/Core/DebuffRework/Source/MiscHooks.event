@@ -202,9 +202,12 @@ PUSH
     BYTE 0x3F
     PROTECT $3E900 $3E93C
 
-    ORG $397F0 // CpOrderBerserkInit
-    BYTE 0x3F
-    PROTECT $397B0 $39858
+    /*
+    ** Needed for berserk skill
+    */
+    // ORG $397F0 // CpOrderBerserkInit
+    // BYTE 0x3F
+    // PROTECT $397B0 $39858
 
     ORG $399F4 // BuildAiUnitList
     BYTE 0x3F

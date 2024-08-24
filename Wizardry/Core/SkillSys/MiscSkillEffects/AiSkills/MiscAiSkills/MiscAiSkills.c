@@ -1,11 +1,12 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "battle-system.h"
 #include "constants/skills.h"
 
-extern const struct AiCombatScoreCoefficients * sCombatScoreCoefficients;
+extern const struct AiCombatScoreCoefficients *sCombatScoreCoefficients;
 
 LYN_REPLACE_CHECK(AiAttemptOffensiveAction);
-s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
+s8 AiAttemptOffensiveAction(s8 (*isEnemy)(struct Unit *unit))
 {
     struct AiCombatSimulationSt tmpResult = {0};
     struct AiCombatSimulationSt finalResult = {0};
@@ -48,7 +49,6 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
         if (UnitHasMagicRank(gActiveUnit))
             GenerateMagicSealMap(-1);
     }
-
     SetWorkingBmMap(gBmMapRange);
 
     for (i = 0; i < UNIT_ITEM_COUNT; i++)
@@ -68,7 +68,7 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 
         for (uid = 1; uid < 0xC0; uid++)
         {
-            struct Unit * unit = GetUnit(uid);
+            struct Unit *unit = GetUnit(uid);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -94,8 +94,23 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 
 #endif
 
+#if defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage))
+            if (SkillTester(gActiveUnit, SID_Rampage))
+            {
+                if (AreUnitsAllied(gActiveUnit->index, unit->index))
+                    continue;
+                if (gActiveUnit->index == unit->index)
+                    continue;
+            }
+            else
+            {
+                if (!isEnemy(unit))
+                    continue;
+            }
+#else
             if (!isEnemy(unit))
                 continue;
+#endif
 
             if (!AiReachesByBirdsEyeDistance(gActiveUnit, unit, item))
                 continue;
@@ -168,4 +183,82 @@ int AiGetDamageDealtCombatScoreComponent(void)
 #endif
 
     return score;
+}
+
+/**
+ * Add unit to AI list
+ */
+LYN_REPLACE_CHECK(CpOrderBerserkInit);
+void CpOrderBerserkInit(ProcPtr proc)
+{
+    int i, aiNum = 0;
+
+    u32 faction = gPlaySt.faction;
+
+    int factionUnitCountLut[3] = {62, 20, 50}; // TODO: named constant for those
+
+    for (i = 0; i < factionUnitCountLut[faction >> 6]; ++i)
+    {
+        struct Unit *unit = GetUnit(faction + i + 1);
+
+        if (!unit->pCharacterData)
+            continue;
+
+        if 
+        (
+            unit->statusIndex != UNIT_STATUS_BERSERK &&
+#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage)))
+                !SkillTester(unit, SID_Rampage)
+#endif
+        )
+            continue;
+
+        if (unit->state & (US_HIDDEN | US_UNSELECTABLE | US_DEAD | US_RESCUED | US_HAS_MOVED_AI))
+            continue;
+
+        gAiState.units[aiNum++] = faction + i + 1;
+    }
+
+    if (aiNum != 0)
+    {
+        gAiState.units[aiNum] = 0;
+        gAiState.unitIt = gAiState.units;
+
+        AiDecideMainFunc = AiDecideMain;
+
+        Proc_StartBlocking(gProcScr_CpDecide, proc);
+    }
+}
+
+LYN_REPLACE_CHECK(DecideScriptA);
+void DecideScriptA(void)
+{
+    int i = 0;
+
+    if (UNIT_IS_GORGON_EGG(gActiveUnit))
+        return;
+
+    if (gAiState.flags & AI_FLAG_BERSERKED)
+    {
+        AiDoBerserkAction();
+        return;
+    }
+    else
+    {
+#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage)))
+        if (SkillTester(gActiveUnit, SID_Rampage))
+        {
+            AiDoBerserkAction();
+            return;
+        }
+#endif
+    }
+
+    for (i = 0; i < 0x100; ++i)
+    {
+        if (AiTryExecScriptA() == TRUE)
+            return;
+    }
+
+    AiExecFallbackScriptA();
 }

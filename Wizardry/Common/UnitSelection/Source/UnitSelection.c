@@ -43,6 +43,11 @@ int GetPlayerSelectKind(struct Unit * unit)
         return PLAYER_SELECT_TURNENDED;
     }
 
+#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage)))
+    if (SkillTester(unit, SID_Rampage))
+        return PLAYER_SELECT_NOCONTROL;
+#endif
+
     if ((unit->statusIndex != UNIT_STATUS_SLEEP) && (unit->statusIndex != UNIT_STATUS_BERSERK))
     {
         return PLAYER_SELECT_CONTROL;
