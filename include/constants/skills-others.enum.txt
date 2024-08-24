@@ -138,6 +138,7 @@ SID_MagicBounce
 SID_Accost
 SID_HazeHunter
 SID_Rampage
+SID_ArenaTrap
 
 // Shop skills
 SID_Deal
