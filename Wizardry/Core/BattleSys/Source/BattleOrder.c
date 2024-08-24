@@ -283,23 +283,29 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     return false;
 }
 
-bool ContinueIfAccost(struct BattleUnit *attacker, struct BattleUnit *defender) 
+STATIC_DECLAR bool ContinueIfAccost(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+    int activationChance = 0;
 
-    if (attacker->unit.curHP == 0 || defender->unit.curHP == 0) {
-        gBattleHitIterator->info |= (BATTLE_HIT_INFO_FINISHES | BATTLE_HIT_INFO_END);
-        return false;
-    }
+    if (BattleSkillTester(attacker, SID_Accost))
+        activationChance = (attacker->battleSpeed + attacker->unit.curHP / 2) - defender->battleSpeed;
 
-    return true;
+    else if (defender->unit.curHP >= 25 && BattleSkillTester(defender, SID_Accost))
+        activationChance = (defender->battleSpeed + defender->unit.curHP / 2) - attacker->battleSpeed;
+
+    if (activationChance < 0)
+        activationChance = 0;
+
+    return BattleRoll1RN(activationChance, FALSE);
 }
 
 LYN_REPLACE_CHECK(BattleUnwind);
 void BattleUnwind(void)
 {
-    int i, ret;
+    int i;
+    int ret = 0;
     int round_counter = 1;
-    bool end_round_loop = false;
+    bool accost_active;
 #ifdef CONFIG_USE_COMBO_ATTACK
     bool combo_atk_done = false;
 #endif
@@ -333,6 +339,13 @@ void BattleUnwind(void)
         round_mask |= UNWIND_DOUBLE_TAR;
 
     config = BattleUnwindConfig[round_mask];
+
+#if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
+    if (BattleSkillTester(&gBattleActor, SID_Accost) || BattleSkillTester(&gBattleTarget, SID_Accost))
+        accost_active = true;
+    else
+        accost_active = false;
+#endif
 
     do
     {
@@ -402,21 +415,33 @@ void BattleUnwind(void)
                 if (gBattleTemporaryFlag.act_force_twice_order)
                     RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_ACT_TWICE]);
 
-            // if (ret)
-            //     break;
-
-            if (!ContinueIfAccost(&gBattleActor, &gBattleTarget))
+            if (ret)
             {
-                end_round_loop = true;
-                break;
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
+            }
+
+            if (gBattleActor.unit.curHP == 0 || gBattleTarget.unit.curHP == 0)
+            {
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
             }
         }
-        if (end_round_loop)
-            break;
+        if (!accost_active)
+        {
+            gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+            return;
+        }
+        else
+        {
+            if (!ContinueIfAccost(&gBattleActor, &gBattleTarget))
+            {
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
+            }
+        }
         ++round_counter;
     } while (round_counter < 20);
-
-    gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
 }
 
 LYN_REPLACE_CHECK(BattleGenerateRoundHits);
