@@ -283,6 +283,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_FranticSwing] = {{ 50 }},
     [SID_CriticalOverload] = {{ 3 }},
     [SID_VigorDance] = {{ 2, 2}},
+    [SID_Accost] = {{ 20 }},
 
 #if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {{ 6 }},
