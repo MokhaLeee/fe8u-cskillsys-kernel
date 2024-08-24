@@ -64,3 +64,8 @@ by this unit by 50%.[X]
 Comatose:[NL]
 This unit can still act[NL]
 while asleep.[X]
+
+## MSG_SKILL_HazeHunter
+Haze Hunter:[NL]
+Allows unit to see 5[NL]
+additional spaces in fog.[X]
