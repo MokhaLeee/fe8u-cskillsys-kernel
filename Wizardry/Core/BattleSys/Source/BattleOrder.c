@@ -287,7 +287,7 @@ STATIC_DECLAR bool ContinueIfAccost(struct BattleUnit *attacker, struct BattleUn
 {
     int activationChance = 0;
 
-    if (attacker->unit.curHP >= 25 && (attacker, SID_Accost))
+    if (attacker->unit.curHP >= 25 && BattleSkillTester(attacker, SID_Accost))
         activationChance = (attacker->battleSpeed + attacker->unit.curHP / 2) - defender->battleSpeed;
 
     else if (defender->unit.curHP >= 25 && BattleSkillTester(defender, SID_Accost))

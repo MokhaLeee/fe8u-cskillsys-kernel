@@ -136,6 +136,7 @@ SID_Insomnia
 SID_Comatose
 SID_MagicBounce
 SID_Accost
+SID_HazeHunter
 
 // Shop skills
 SID_Deal

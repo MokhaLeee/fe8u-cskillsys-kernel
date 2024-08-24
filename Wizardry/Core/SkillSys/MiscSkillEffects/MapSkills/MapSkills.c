@@ -5,7 +5,7 @@
 /*
 ** This array is static in the decomp, but it wouldn't compile for me otherwise
 ** I also had to define it in the vanilla.h file
-*/ 
+*/
 EWRAM_DATA u16 sTilesetConfig[0x1000 + 0x200] = {};
 
 LYN_REPLACE_CHECK(RefreshUnitsOnBmMap);
@@ -29,7 +29,6 @@ void RefreshUnitsOnBmMap(void)
 #if defined(SID_MagicSeal) && (COMMON_SKILL_VALID(SID_MagicSeal))
         if (SkillTester(unit, SID_MagicSeal))
         {
-            NoCashGBAPrint("Magic Seal check is reached");
             MapAddInRange(unit->xPos, unit->yPos, 10, -1);
             gBmMapUnit[unit->yPos][unit->xPos] = i;
 
@@ -124,9 +123,10 @@ void RefreshUnitsOnBmMap(void)
 }
 
 LYN_REPLACE_CHECK(DisplayBmTile);
-void DisplayBmTile(u16* bg, int xTileMap, int yTileMap, int xBmMap, int yBmMap) {
-    u16* out = bg + yTileMap * 0x40 + xTileMap * 2; // TODO: BG_LOCATED_TILE?
-    u16* tile = sTilesetConfig + gBmMapBaseTiles[yBmMap][xBmMap];
+void DisplayBmTile(u16 *bg, int xTileMap, int yTileMap, int xBmMap, int yBmMap)
+{
+    u16 *out = bg + yTileMap * 0x40 + xTileMap * 2; // TODO: BG_LOCATED_TILE?
+    u16 *tile = sTilesetConfig + gBmMapBaseTiles[yBmMap][xBmMap];
 
     // TODO: palette id constants
     u16 base = gBmMapFog[yBmMap][xBmMap] ? (6 << 12) : (11 << 12);
@@ -135,4 +135,22 @@ void DisplayBmTile(u16* bg, int xTileMap, int yTileMap, int xBmMap, int yBmMap) 
     out[0x00 + 1] = base + *tile++;
     out[0x20 + 0] = base + *tile++;
     out[0x20 + 1] = base + *tile++;
+}
+
+LYN_REPLACE_CHECK(GetUnitFogViewRange);
+int GetUnitFogViewRange(struct Unit *unit)
+{
+    int result = gPlaySt.chapterVisionRange;
+
+    if (UNIT_CATTRIBUTES(unit) & CA_THIEF)
+        result += 5;
+    else
+    {
+#if defined(SID_HazeHunter) && (COMMON_SKILL_VALID(SID_HazeHunter))
+        if (SkillTester(unit, SID_HazeHunter))
+            result += 5;
+#endif
+    }
+
+    return result + unit->torchDuration;
 }
