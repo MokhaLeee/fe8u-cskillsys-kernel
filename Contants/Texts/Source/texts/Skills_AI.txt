@@ -17,3 +17,8 @@ Teleport[X]
 Teleportation: Allows unit[NL]
 to teleport before attack if[NL]
 unit have more than 50% HP.[X]
+
+## MSG_SKILL_Rampage
+Rampage:[NL]
++50% STR/SPD/SKL but unit[NL]
+will move independently.[X]

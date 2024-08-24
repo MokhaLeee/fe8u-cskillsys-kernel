@@ -137,6 +137,7 @@ SID_Comatose
 SID_MagicBounce
 SID_Accost
 SID_HazeHunter
+SID_Rampage
 
 // Shop skills
 SID_Deal

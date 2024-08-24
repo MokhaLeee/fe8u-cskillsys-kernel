@@ -222,3 +222,10 @@ extern u8 const * const gpLeaderShipJConf;
 
 int GetUnitLeaderShip(struct Unit * unit);
 void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit * target);
+
+/**
+ * AI checks
+ */
+
+void DecideScriptA(void);
+void CpOrderBerserkInit(ProcPtr proc);

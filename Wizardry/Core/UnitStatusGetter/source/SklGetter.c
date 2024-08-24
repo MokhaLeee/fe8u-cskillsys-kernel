@@ -104,5 +104,10 @@ int SklGetterSkills(int status, struct Unit * unit)
     }
 #endif
 
+#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage))) 
+    if (SkillTester(unit, SID_Rampage))
+            status += status / 2;
+#endif
+
     return status;
 }
