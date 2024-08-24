@@ -3688,4 +3688,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_ArenaTrap) && COMMON_SKILL_VALID(SID_ArenaTrap))
+    [SID_ArenaTrap] = {
+        .desc = MSG_SKILL_ArenaTrap,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
