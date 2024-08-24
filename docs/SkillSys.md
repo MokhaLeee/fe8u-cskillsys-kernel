@@ -140,28 +140,6 @@ A skill anim need the following components:
 - Priority
 - Sound index
 
-The skill anim info is stored in `SkillAnimInfos` in kernel which is defined as:
-
-```c
-struct SkillAnimInfo {
-    u8 aid;
-    u8 priority;
-    u16 sfx;
-};
-```
-
-Also depend on your category selection, put your defined anim info to [SkillAnimInfo.c](../Data/SkillSys/SkillAnimInfo.c) to give your skill an efxskill anim effect.
-
-```c
-#if (defined(SID_TEST) && COMMON_SKILL_VALID(SID_TEST))
-    [SID_TEST] = {
-        .aid = EFX_SKILL_DEFAULT,
-        .priority = EFX_PRIORITY_NORMAL,
-        .sfx = 0x3D1,
-    },
-#endif
-```
-
 The common API to register a skill animation is shown as below:
 
 ```c

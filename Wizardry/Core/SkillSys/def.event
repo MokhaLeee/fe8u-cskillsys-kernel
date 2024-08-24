@@ -8,4 +8,3 @@
 #define Evt_RemoveSkillSC(sid)       "BYTE 0x48 EVENT_CMD_SKILL; SHORT sid 0 0"
 
 #define InjectSkillInfo(sid, icon, name, desc) "PUSH ; ORG gSkillInfos + 8 * sid ; WORD ICON; SHORT name desc ; POP"
-#define InjectSkillAnimInfo(sid, aid, priority, sfx) "PUSH ; ORG gpSkillAnimInfos + 4 * sid ; BYTE aid priority ; SHORT sfx ; POP"

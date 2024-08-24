@@ -12,31 +12,9 @@ void InitEfxCombatArtRoundData(void)
     CpuFill16(0, sEfxCombatArtRoundData, sizeof(sEfxCombatArtRoundData));
 }
 
-int GetEfxCombatArtIndex(const u8 cid)
-{
-    if (COMBART_VALID(cid))
-        return gpEfxCombatArtAnimInfos[cid].aid;
-
-    LTRACEF("Try get invalid CombatArt info: %#X", cid);
-    return 0;
-}
-
 int GetEfxCombatArtPriority(const u8 cid)
 {
-    if (COMBART_VALID(cid))
-        return gpEfxCombatArtAnimInfos[cid].priority;
-
-    LTRACEF("Try get invalid CombatArt info: %#X", cid);
-    return 0;
-}
-
-int GetEfxCombatArtSfx(const u8 cid)
-{
-    if (COMBART_VALID(cid))
-        return gpEfxCombatArtAnimInfos[cid].sfx;
-
-    LTRACEF("Try get invalid CombatArt info: %#X", cid);
-    return 0;
+    return gpEfxCombatArtAnimPriority[cid];
 }
 
 void RegisterEfxSkillCombatArt(int round, const u8 cid)

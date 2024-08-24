@@ -95,10 +95,14 @@ def gen_header():
     yield ' *     u16 const * const * imgs;\n'
     yield ' *     u16 const * const * tsas;\n'
     yield ' *     u16 const * const * pals;\n'
+    yield ' *     u16 sfx; // default: 0x3D1\n'
+    yield ' *     u8 _pad_[2];\n'
     yield ' * };\n'
     yield ' */\n\n'
     yield 'ALIGN 4\n'
     yield 'POIN FRAMEs IMGs TSAs PALs\n'
+    yield 'SHORT 0x3D1\n'
+    yield 'SHORT 0\n'
 
 def main(args):
     sys.excepthook = show_exception_and_exit

@@ -9,7 +9,6 @@
 #include "../Wizardry/Common/ItemSys/data.event"
 #include "../Wizardry/Common/EventRework/data.event"
 
-#include "SkillSys/EfxSkills.lyn.event"
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
 #include "SkillSys/SkillExtraInfo.lyn.event"

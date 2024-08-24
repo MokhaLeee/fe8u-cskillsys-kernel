@@ -9,9 +9,9 @@ gpConstSkillTable_Job:    POIN gConstSkillTable_Job
 
 gpSkillPreloadPData:      POIN gSkillPreloadPData
 gpSkillPreloadJData:      POIN gSkillPreloadJData
-gpSkillAnimInfos: POIN gSkillAnimInfos
+gpEfxSkillAnimPriority:   POIN EfxSkillAnimPriority
+gpEfxSkillAnims:          POIN EfxSkillAnims
 
-gpEfxSkillAnims:    POIN gEfxSkillAnims
 gpLegendSkillPool:  POIN gLegendSkillPool
 
 gpCombatArtInfos:           POIN gCombatArtInfos
@@ -20,7 +20,7 @@ gpCombatArtRomJTable:       POIN gCombatArtRomJTable
 gpCombatArtDefaultTable:    POIN gCombatArtDefaultTable
 gpCombatArtWeaponTable:     POIN gCombatArtWeaponTable
 gpCombatArtSkillTable:      POIN gCombatArtSkillTable
-gpEfxCombatArtAnimInfos:    POIN gEfxCombatArtAnimInfos
+gpEfxCombatArtAnims:        POIN EfxCombatArtAnims
 
 gpWeaponTriangleConfs:      POIN gWeaponTriangleConfs
 gpWeaponTriangleItemConf:   POIN gWeaponTriangleItemConf
@@ -115,6 +115,8 @@ gpMapTaskConfs: POIN gMapTaskConfs
 gpHpBarChr: POIN gHpBarChr
 
 gpSkillExtraInfo: POIN gSkillExtraInfo
+
+gpEfxCombatArtAnimPriority: POIN EfxCombatArtAnimPriority
 
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)
