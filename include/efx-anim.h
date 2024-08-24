@@ -7,7 +7,8 @@ struct EfxAnimConf {
     u16 const * const * imgs;
     u16 const * const * tsas;
     u16 const * const * pals;
+    u16 sfx;
+    u8 _pad_[2];
 };
 
-extern const struct EfxAnimConf EfxSkillVanilla, EfxSkillMokha, EfxSkillAether;
-extern const struct EfxAnimConf EfxSkillCombat, EfxSkillDragonFang;
+extern const struct EfxAnimConf EfxSkillVanilla, EfxSkillCombat;

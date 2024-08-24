@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common-chax.h"
+#include "efx-anim.h"
 #include "skill-system.h"
 
 #define COMBART_VALID(cid) (((cid) > 0) && ((cid) < 0xFF))
@@ -127,13 +128,11 @@ void DrawHelpBoxCombatArtBkselLabels(void);
 void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro * proc);
 
 /* EfxSkill */
-extern const struct SkillAnimInfo gEfxCombatArtAnimInfos[0x100];
-extern struct SkillAnimInfo const * const gpEfxCombatArtAnimInfos;
+extern u8 const * const gpEfxCombatArtAnimPriority;
+extern struct EfxAnimConf const * const * const gpEfxCombatArtAnims;
 
 void InitEfxCombatArtRoundData(void);
-int GetEfxCombatArtIndex(const u8 cid);
 int GetEfxCombatArtPriority(const u8 cid);
-int GetEfxCombatArtSfx(const u8 cid);
 void RegisterEfxSkillCombatArt(int round, const u8 cid);
 u8 GetEfxCombatArt(int round);
 

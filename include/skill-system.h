@@ -114,12 +114,6 @@ extern const struct SkillPreloadPConf gSkillPreloadPData[0x100];
 extern struct SkillPreloadJConf const * const gpSkillPreloadJData;
 extern struct SkillPreloadPConf const * const gpSkillPreloadPData;
 
-struct SkillAnimInfo {
-    u8 aid;
-    u8 priority;
-    u16 sfx;
-};
-
 enum SkillAnimPriorityConfig {
     EFX_PRIORITY_LOW = 0x1,
     EFX_PRIORITY_NORMAL,
@@ -127,16 +121,10 @@ enum SkillAnimPriorityConfig {
     EFX_PRIORITY_HIGHHIGH,
 };
 
-extern struct SkillAnimInfo const * const gpSkillAnimInfos;
-
-int GetEfxSkillIndex(const u16 sid);
-int GetEfxSkillPriority(const u16 sid);
-int GetEfxSkillSfx(const u16 sid);
-
-/* Efx skill */
-extern struct EfxAnimConf const * const gEfxSkillAnims[0x100];
+extern u8 const * const gpEfxSkillAnimPriority;
 extern struct EfxAnimConf const * const * const gpEfxSkillAnims;
-const struct EfxAnimConf * GetEfxSkillConf(const u8 aid);
+
+int GetEfxSkillPriority(const u16 sid);
 
 /**
  * Skill mapanim

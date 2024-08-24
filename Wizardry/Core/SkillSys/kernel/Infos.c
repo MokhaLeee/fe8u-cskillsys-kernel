@@ -70,29 +70,9 @@ char * GetSkillNameStr(const u16 sid)
     return GetStringFromIndex(msg);
 }
 
-int GetEfxSkillIndex(const u16 sid)
-{
-    return gpSkillAnimInfos[sid].aid;
-}
-
 int GetEfxSkillPriority(const u16 sid)
 {
-    u8 priority = gpSkillAnimInfos[sid].priority;
-
-    if (priority == 0)
-        priority = EFX_PRIORITY_NORMAL;
-
-    return priority;
-}
-
-int GetEfxSkillSfx(const u16 sid)
-{
-    u16 sfx = gpSkillAnimInfos[sid].sfx;
-
-    if (sfx == 0)
-        sfx = 0x3D1;
-
-    return sfx;
+    return gpEfxSkillAnimPriority[sid];
 }
 
 const struct EfxAnimConf * GetEfxSkillConf(const u8 aid)
