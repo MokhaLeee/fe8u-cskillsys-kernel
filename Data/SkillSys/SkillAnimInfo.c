@@ -455,18 +455,10 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
-    [SID_Blessing] = {
-        .aid = EFX_SKILL_DEFAULT,
-        .priority = EFX_PRIORITY_NORMAL,
-        .sfx = 0x3D1,
-    },
+    [SID_Blessing] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_MagicBounce) && COMMON_SKILL_VALID(SID_MagicBounce))
-    [SID_MagicBounce] = {
-        .aid = EFX_SKILL_DEFAULT,
-        .priority = EFX_PRIORITY_NORMAL,
-        .sfx = 0x3D1,
-    },
+    [SID_MagicBounce] = &EfxSkillVanilla,
 #endif
 };

@@ -3695,4 +3695,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Mentorship) && COMMON_SKILL_VALID(SID_Mentorship))
+    [SID_Mentorship] = {
+        .desc = MSG_SKILL_Mentorship,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
