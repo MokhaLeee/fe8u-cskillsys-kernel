@@ -35,41 +35,84 @@ int PowGetterDebuff(int status, struct Unit *unit)
         if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.pow < 0)
             return status;
 #endif
+
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.pow < 0)
+            return status;
+#endif
+
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.pow;
 }
 
 int MagGetterDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mag < 0)
+            return status;
+#endif
+
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mag;
 }
 
 int SklGetterDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.skl < 0)
+            return status;
+#endif
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.skl;
     ;
 }
 
 int SpdGetterDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.spd < 0)
+            return status;
+#endif
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.spd;
 }
 
 int DefGetterDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.def < 0)
+            return status;
+#endif
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.def;
 }
 
 int ResGetterDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.res < 0)
+            return status;
+#endif
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.res;
 }
 
 int LckGetterDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.lck < 0)
+            return status;
+#endif
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.lck;
 }
 
 int MovGetterDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mov < 0)
+            return status;
+#endif
     return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mov;
 }

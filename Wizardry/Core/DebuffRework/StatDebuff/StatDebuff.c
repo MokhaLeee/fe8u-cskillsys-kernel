@@ -251,6 +251,16 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit *unit, u32 *bitfile, 
 
     if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
         in_panic = true;
+        
+#if (defined(SID_HyperCutter) && (COMMON_SKILL_VALID(SID_HyperCutter)))
+    if (SkillTester(unit, SID_HyperCutter))
+        in_panic = false;
+#endif
+
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        in_panic = false;
+#endif
 
     for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
@@ -347,41 +357,83 @@ int PowGetterStatDebuff(int status, struct Unit *unit)
             return status;
 #endif
 
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->pow < 0)
+            return status;
+#endif
+
     return status + GetStatDebuffMsgBuf(unit)->pow;
 }
 
 int MagGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->mag < 0)
+            return status;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->mag;
 }
 
 int SklGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->skl < 0)
+            return status;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->skl;
 }
 
 int SpdGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->spd < 0)
+            return status;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->spd;
 }
 
 int DefGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->def < 0)
+            return status;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->def;
 }
 
 int ResGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->res < 0)
+            return status;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->res;
 }
 
 int LckGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->lck < 0)
+            return status;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->lck;
 }
 
 int MovGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->mov < 0)
+            return status;
+#endif
+
 #if defined(SID_ArenaTrap) && (COMMON_SKILL_VALID(SID_ArenaTrap))
     int i;
     FORCE_DECLARE bool arena_trap = false;
