@@ -239,6 +239,11 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
 
+#if (defined(SID_LeadByExample) && (COMMON_SKILL_VALID(SID_LeadByExample)))
+            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_LeadByExample, 100))
+                gBattleActorGlobalFlag.skill_activated_lead_by_example = true;
+#endif
+
 #if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
             {
