@@ -478,3 +478,8 @@ spaces cannot move.[X]
 Hyper Cutter:[NL]
 This unit is immune[NL]
 to STR reductions.[X]
+
+## MSG_SKILL_ClearBody
+Clear Body:[NL]
+This unit is immune to[NL]
+all stat reductions.[X]

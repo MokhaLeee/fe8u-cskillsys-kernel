@@ -141,6 +141,7 @@ SID_Rampage
 SID_ArenaTrap
 SID_Mentorship
 SID_HyperCutter
+SID_ClearBody
 
 // Shop skills
 SID_Deal
