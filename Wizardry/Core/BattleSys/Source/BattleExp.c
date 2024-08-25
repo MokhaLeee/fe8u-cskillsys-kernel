@@ -34,7 +34,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 
 #if defined(SID_Mentorship) && (COMMON_SKILL_VALID(SID_Mentorship))
     if (BattleSkillTester(actor, SID_Mentorship))
-        status = status * 1.2;
+        status = status + Div(status * SKILL_EFF0(SID_Mentorship), 100);
     else
     {
         for (int i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
@@ -55,7 +55,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 
             if (SkillTester(unit_ally, SID_Mentorship))
             {
-                status = status * 1.2;
+                status = status * Div(status * SKILL_EFF0(SID_Mentorship), 100);;
                 break;
             }
         }
