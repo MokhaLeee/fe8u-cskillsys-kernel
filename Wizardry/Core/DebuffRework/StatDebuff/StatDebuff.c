@@ -341,6 +341,12 @@ STATIC_DECLAR struct StatDebuffMsgBuf *GetStatDebuffMsgBuf(struct Unit *unit)
 
 int PowGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_HyperCutter) && (COMMON_SKILL_VALID(SID_HyperCutter)))
+    if (SkillTester(unit, SID_HyperCutter))
+        if (GetStatDebuffMsgBuf(unit)->pow < 0)
+            return status;
+#endif
+
     return status + GetStatDebuffMsgBuf(unit)->pow;
 }
 

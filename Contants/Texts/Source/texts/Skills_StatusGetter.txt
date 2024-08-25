@@ -473,3 +473,8 @@ unit and adjacent armor allies +2 MOV.[X]
 Arena Trap:[NL]
 Enemy units within 2[NL]
 spaces cannot move.[X]
+
+## MSG_SKILL_HyperCutter
+Hyper Cutter:[NL]
+This unit is immune[NL]
+to STR reductions.[X]
