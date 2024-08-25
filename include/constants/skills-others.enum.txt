@@ -139,6 +139,7 @@ SID_Accost
 SID_HazeHunter
 SID_Rampage
 SID_ArenaTrap
+SID_Mentorship
 
 // Shop skills
 SID_Deal
