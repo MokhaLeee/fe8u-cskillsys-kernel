@@ -242,6 +242,7 @@ SID_FailGale
 SID_Clearance
 SID_Despoil
 SID_GoldDigger
+SID_LeadByExample
 
 // Menu skills
 SID_Dance

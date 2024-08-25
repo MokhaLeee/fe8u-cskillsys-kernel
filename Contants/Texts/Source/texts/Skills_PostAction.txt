@@ -111,3 +111,11 @@ G-Digger[X]
 Gold Digger:[NL]
 Gain 100 gold after[NL]
 killing an enemy.[X]
+
+## MSG_SKILL_LeadByExample_NAME
+L-Example[X]
+
+## MSG_SKILL_LeadByExample
+Lead By Example:[NL]
+On a successful kill, adjacent[NL]
+allies can move again this turn.[X]

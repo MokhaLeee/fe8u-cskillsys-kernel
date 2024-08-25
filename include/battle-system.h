@@ -70,6 +70,7 @@ extern struct BattleGlobalFlags {
     u32 skill_activated_astra : 1;
     u32 skill_activated_galeforce : 1;
     u32 skill_activated_vigor_dance : 1;
+    u32 skill_activated_lead_by_example : 1;
 } gBattleActorGlobalFlag, gBattleTargetGlobalFlag;
 
 static inline struct BattleGlobalFlags * GetBattleGlobalFlags(struct BattleUnit * bu)
