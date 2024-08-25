@@ -909,3 +909,11 @@ M-Bounce[X]
 Magic Bounce:[NL]
 Reflect back any status condition[NL]
 inflicted on this unit.[X]
+
+## MSG_SKILL_GoodAsGold_NAME
+G-Gold[X]
+
+## MSG_SKILL_GoodAsGold
+Good As Gold:[NL]
+This unit is immune to all[NL]
+harmful status conditions.[X]

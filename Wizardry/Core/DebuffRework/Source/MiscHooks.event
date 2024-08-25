@@ -132,9 +132,12 @@ PUSH
     BYTE 0x3F
     PROTECT $25F98 $25FE8
 
-    ORG $26122 // TryAddUnitToSilenceTargetList
-    BYTE 0x3F
-    PROTECT $26100 $2614C
+    /*
+    ** Needed for Good as gold
+    */
+    // ORG $26122 // TryAddUnitToSilenceTargetList
+    // BYTE 0x3F
+    // PROTECT $26100 $2614C
 
     /*
     ** Need to unprotect this for Insomnia skill
@@ -143,9 +146,12 @@ PUSH
     // BYTE 0x3F
     // PROTECT $2614C $26198
 
-    ORG $261BA // TryAddUnitToBerserkTargetList
-    BYTE 0x3F
-    PROTECT $26198 $261E4
+    /*
+    ** Needed for Good as gold
+    */
+    // ORG $261BA // TryAddUnitToBerserkTargetList
+    // BYTE 0x3F
+    // PROTECT $26198 $261E4
 
     ORG $263DE // MakeTargetListForLatona
     BYTE 0x3F
