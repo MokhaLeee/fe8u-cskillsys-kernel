@@ -142,6 +142,7 @@ SID_ArenaTrap
 SID_Mentorship
 SID_HyperCutter
 SID_ClearBody
+SID_GoodAsGold
 
 // Shop skills
 SID_Deal

@@ -7,7 +7,7 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-bool CheckBattleHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool CheckBattleHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
         return true;
@@ -26,7 +26,7 @@ bool CheckBattleHpDrain(struct BattleUnit * attacker, struct BattleUnit * defend
     return false;
 }
 
-bool CheckBattleHpHalve(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
         return true;
@@ -42,7 +42,7 @@ bool CheckBattleHpHalve(struct BattleUnit * attacker, struct BattleUnit * defend
     return false;
 }
 
-bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 
 #if (defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter)))
@@ -105,7 +105,7 @@ bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleUnit * defender
     return false;
 }
 
-bool CheckBattleInori(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if (defined(SID_Mercy) && (COMMON_SKILL_VALID(SID_Mercy)))
     if (CheckBattleSkillActivate(attacker, defender, SID_Mercy, attacker->unit.skl))
@@ -170,13 +170,14 @@ bool CheckBattleInori(struct BattleUnit * attacker, struct BattleUnit * defender
     return false;
 }
 
-void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     int debuff;
 
     if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_PETRIFY)
     {
-        switch (gPlaySt.faction) {
+        switch (gPlaySt.faction)
+        {
         case FACTION_BLUE:
             if (UNIT_FACTION(&defender->unit) == FACTION_BLUE)
                 defender->statusOut = UNIT_STATUS_13;
@@ -220,7 +221,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
         // "Ungray" defender if it was petrified (as it won't be anymore)
         debuff = GetUnitStatusIndex(&defender->unit);
         if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
-            defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
+            defender->unit.state = defender->unit.state & ~US_UNSELECTABLE;
     }
 #if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
     else if (BattleSkillTester(attacker, SID_PoisonPoint))
@@ -231,7 +232,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
         // "Ungray" defender if it was petrified (as it won't be anymore)
         debuff = GetUnitStatusIndex(&defender->unit);
         if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
-            defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
+            defender->unit.state = defender->unit.state & ~US_UNSELECTABLE;
     }
 #endif
 
@@ -248,7 +249,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
     {
         if (!IsDebuff(GetUnitStatusIndex(&attacker->unit)) && !IsDebuff(attacker->statusOut))
         {
-            static const u8 _debuffs[3] = { UNIT_STATUS_POISON, UNIT_STATUS_SILENCED, UNIT_STATUS_SLEEP };
+            static const u8 _debuffs[3] = {UNIT_STATUS_POISON, UNIT_STATUS_SILENCED, UNIT_STATUS_SLEEP};
             attacker->statusOut = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
 
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
@@ -256,24 +257,20 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
     }
 #endif
 
-#if (defined(SID_Insomnia) && (COMMON_SKILL_VALID(SID_Insomnia)))
-    if (BattleSkillTester(defender, SID_Insomnia))
-        if (defender->statusOut == UNIT_STATUS_SLEEP)
-            defender->statusOut = UNIT_STATUS_NONE;
-#endif
-
 #if (defined(SID_MagicBounce) && (COMMON_SKILL_VALID(SID_MagicBounce)))
     if (BattleSkillTester(defender, SID_MagicBounce))
     {
-        static const u8 _debuffs[5] = { 
-            UNIT_STATUS_POISON, 
-            UNIT_STATUS_SILENCED, 
+        static const u8 _debuffs[8] = {
+            UNIT_STATUS_POISON,
             UNIT_STATUS_SLEEP,
+            UNIT_STATUS_SILENCED,
             UNIT_STATUS_BERSERK,
             UNIT_STATUS_PETRIFY,
-        };
+            NEW_UNIT_STATUS_HEAVY_GRAVITY,
+            NEW_UNIT_STATUS_WEAKEN,
+            NEW_UNIT_STATUS_PANIC};
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
             if (defender->statusOut == _debuffs[i])
             {
@@ -286,9 +283,39 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleU
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_MagicBounce);
     }
 #endif
+
+#if (defined(SID_Insomnia) && (COMMON_SKILL_VALID(SID_Insomnia)))
+    if (BattleSkillTester(defender, SID_Insomnia))
+        if (defender->statusOut == UNIT_STATUS_SLEEP)
+            defender->statusOut = UNIT_STATUS_NONE;
+#endif
+
+#if (defined(SID_GoodAsGold) && (COMMON_SKILL_VALID(SID_GoodAsGold)))
+    if (BattleSkillTester(defender, SID_GoodAsGold))
+    {
+        static const u8 _debuffs[8] = {
+            UNIT_STATUS_POISON,
+            UNIT_STATUS_SLEEP,
+            UNIT_STATUS_SILENCED,
+            UNIT_STATUS_BERSERK,
+            UNIT_STATUS_PETRIFY,
+            NEW_UNIT_STATUS_HEAVY_GRAVITY,
+            NEW_UNIT_STATUS_WEAKEN,
+            NEW_UNIT_STATUS_PANIC};
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (defender->statusOut == _debuffs[i])
+            {
+                defender->statusOut = UNIT_STATUS_NONE;
+                break;
+            }
+        }
+    }
+#endif
 }
 
-void BattleHit_ConsumeWeapon(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     bool weapon_cost;
 
@@ -300,7 +327,7 @@ void BattleHit_ConsumeWeapon(struct BattleUnit * attacker, struct BattleUnit * d
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
         int cost = attacker->levelPrevious;
-    
+
         while (cost-- > 0)
         {
             u16 weapon = GetItemAfterUse(defender->weapon);
