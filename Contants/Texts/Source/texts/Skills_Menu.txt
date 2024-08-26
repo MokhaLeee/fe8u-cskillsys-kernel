@@ -60,7 +60,8 @@ plant a mine in an area[X]
  Mine[X]
 
 ## MSG_MenuSkill_Rally_FRtext
-No allies are in range![X]
+No allies are in range,[NL]
+or Lull skill in effect.[X]
 
 ## MSG_SKILL_RallyDefense
 Rally Defense:[NL]

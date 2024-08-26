@@ -97,16 +97,6 @@ SID_NatureRush
 SID_Expertise
 SID_PassionsFlow
 SID_LadyBlade
-// Lull skills
-// SID_LullDefense
-// SID_LullLuck
-// SID_LullMagic
-// SID_LullMovement
-// SID_LullResistance
-// SID_LullSkill
-// SID_LullSpectrum
-// SID_LullSpeed
-// SID_LullStregth
 SID_ShrewdPotential
 // SID_SteadyBrawler
 SID_KeepUp
@@ -147,6 +137,17 @@ SID_PsychUp
 SID_Moody
 SID_Amische
 SID_DownWithArch
+
+// Lull skills
+SID_LullDefense
+SID_LullLuck
+SID_LullMagic
+SID_LullMovement
+SID_LullResistance
+SID_LullSkill
+SID_LullSpectrum
+SID_LullSpeed
+SID_LullStrength
 
 // Shop skills
 SID_Deal
