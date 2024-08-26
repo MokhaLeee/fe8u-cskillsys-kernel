@@ -96,22 +96,18 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
                 continue;
 #endif
 
+#if defined(SID_ShadePlus) && (COMMON_SKILL_VALID(SID_ShadePlus))
+            if (SkillTester(unit, SID_ShadePlus))
+                continue;
+#endif
+
 #if defined(SID_Shade) && (COMMON_SKILL_VALID(SID_Shade))
             /* Shade skill may make unit avoid to be target */
             if (SkillTester(unit, SID_Shade))
             {
-#ifdef CONFIG_PERFORMANCE_OPTIMIZATION
                 if (Roll1RN(unit->lck))
-#else
-                if (Roll2RN(GetUnitLuck(unit)))
-#endif
                     continue;
             }
-#endif
-
-#if defined(SID_ShadePlus) && (COMMON_SKILL_VALID(SID_ShadePlus))
-            if (SkillTester(unit, SID_ShadePlus))
-                continue;
 #endif
 
             if (!isEnemy(unit))
