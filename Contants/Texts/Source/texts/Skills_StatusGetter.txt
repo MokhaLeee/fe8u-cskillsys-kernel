@@ -488,3 +488,8 @@ all stat reductions.[X]
 Psych Up:[NL]
 Copy the enemy's stat[NL]
 boosts during battle.[X]
+
+## MSG_SKILL_Moody
+Moody:[NL]
+Buff one stat by 8 and debuff[NL]
+another by 4 every turn.[X]

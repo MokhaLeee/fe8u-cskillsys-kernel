@@ -3,8 +3,9 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-static void _SetInitiativeStatDebuf(struct Unit * unit)
+static void _SetInitiativeStatDebuf(struct Unit *unit)
 {
+
 #if (defined(SID_InitSturdy) && COMMON_SKILL_VALID(SID_InitSturdy))
     if (SkillTester(unit, SID_InitStrong))
         SetUnitStatDebuff(unit, UNIT_STAT_BUFF_INIT_POW);
@@ -60,7 +61,7 @@ static void _SetInitiativeStatDebuf(struct Unit * unit)
 #endif
 }
 
-static void _ClearInitiativeStatDebuf(struct Unit * unit)
+static void _ClearInitiativeStatDebuf(struct Unit *unit)
 {
     ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_INIT_POW);
     ClearUnitStatDebuff(unit, UNIT_STAT_BUFF_INIT_MAG);
@@ -75,7 +76,7 @@ static void _ClearInitiativeStatDebuf(struct Unit * unit)
 bool ChapterInit_SetInitiativeStatus(ProcPtr proc)
 {
     int i;
-    struct Unit * unit;
+    struct Unit *unit;
 
     for (i = FACTION_BLUE + 1; i < FACTION_BLUE + 1 + CONFIG_UNIT_AMT_ALLY; i++)
     {
@@ -110,7 +111,7 @@ bool ChapterInit_SetInitiativeStatus(ProcPtr proc)
 bool PrePhsae_TickInitativeSkillStatus(ProcPtr proc)
 {
     int i;
-    struct Unit * unit;
+    struct Unit *unit;
 
     if (gPlaySt.chapterTurnNumber == 2 && gPlaySt.faction == FACTION_BLUE)
     {
