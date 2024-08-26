@@ -3753,4 +3753,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Amische,
     },
 #endif
+
+#if (defined(SID_DownWithArch) && COMMON_SKILL_VALID(SID_DownWithArch))
+    [SID_Amische] = {
+        .name = MSG_SKILL_DownWithArch_NAME
+        .desc = MSG_SKILL_DownWithArch,
+        .icon = GFX_SkillIcon_DownWithArch,
+    },
+#endif
 };

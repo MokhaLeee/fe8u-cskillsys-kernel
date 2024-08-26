@@ -146,6 +146,7 @@ SID_GoodAsGold
 SID_PsychUp
 SID_Moody
 SID_Amische
+SID_DownWithArch
 
 // Shop skills
 SID_Deal
