@@ -1,0 +1,9 @@
+/**
+ * This is a very good idea on optimize function: AiFillDangerMap(),
+ * I don't think I need to make any changes.
+ */
+#include "FillAIDangerMap20220712/install.event"
+PROTECT 0x3E320 0x3E448 // AiFillDangerMap
+
+#include "Source/LynJump.event"
+#include "Source/AiOptimization.lyn.event"

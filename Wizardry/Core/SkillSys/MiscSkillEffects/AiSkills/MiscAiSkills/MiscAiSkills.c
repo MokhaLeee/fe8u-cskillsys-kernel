@@ -2,6 +2,8 @@
 #include "skill-system.h"
 #include "battle-system.h"
 #include "constants/skills.h"
+#include "weapon-range.h"
+#include "status-getter.h"
 
 extern const struct AiCombatScoreCoefficients *sCombatScoreCoefficients;
 

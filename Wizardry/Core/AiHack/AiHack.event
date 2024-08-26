@@ -9,6 +9,7 @@
 
 #include "AiAction/AiAction.event"
 #include "AiDecide/AiDecide.event"
+#include "AiOptimization/AiOptimization.event"
 
 // #include "data.event"
 
