@@ -6,6 +6,7 @@ gPrePhaseFuncs:
     POIN PrePhsae_TickPlusAndMinusSkillStatus
     POIN PrePhase_TickKeepUpSkillStatus
     POIN PrePhase_TickArmorMarchSkillStatus
+    POIN PrePhase_TickMoodySkillStatus
     POIN PrePhsae_ClearMiscUES
     POIN PrePhase_UpdateLengendSkillStatus
     POIN PrePhase_UnitStatusEffectSkills

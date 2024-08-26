@@ -146,6 +146,47 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         .unit_status = { .mov = +7 },
     },
 
+    [UNIT_STAT_BUFF_MOODY_POW] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .pow = +8 },
+    },
+    [UNIT_STAT_BUFF_MOODY_MAG] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .mag = +8 },
+    },
+    [UNIT_STAT_BUFF_MOODY_SKL] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .skl = +8 },
+    },
+    [UNIT_STAT_BUFF_MOODY_SPD] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .spd = +8 },
+    },
+    [UNIT_STAT_BUFF_MOODY_LCK] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .lck = +8 },
+    },
+    [UNIT_STAT_BUFF_MOODY_DEF] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .def = +8 },
+    },
+    [UNIT_STAT_BUFF_MOODY_RES] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .res = +8 },
+    },
+    [UNIT_STAT_BUFF_MOODY_MOV] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE,
+        .tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+        .unit_status = { .mov = +8 },
+    },
+
     [UNIT_STAT_BUFF_OATHROUSE_POW] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
