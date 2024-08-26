@@ -7,13 +7,13 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
-STATIC_DECLAR void AddTargetForRally(struct Unit * unit)
+STATIC_DECLAR void AddTargetForRally(struct Unit *unit)
 {
     if (UNIT_ALIVE(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index))
         AddTarget(unit->xPos, unit->yPos, unit->index, 1);
 }
 
-STATIC_DECLAR void MakeTargetListForRally(struct Unit * unit)
+STATIC_DECLAR void MakeTargetListForRally(struct Unit *unit)
 {
     int x = unit->xPos;
     int y = unit->yPos;
@@ -26,7 +26,7 @@ STATIC_DECLAR void MakeTargetListForRally(struct Unit * unit)
     ForEachUnitInRange(AddTargetForRally);
 }
 
-u8 Rally_Usability(const struct MenuItemDef * def, int number)
+u8 Rally_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
@@ -34,10 +34,125 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
     if (!HasSelectTarget(gActiveUnit, MakeTargetListForRally))
         return MENU_DISABLED;
 
+    for (int i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
+    {
+        int _x = gActiveUnit->xPos + gVecs_3x3[i].x;
+        int _y = gActiveUnit->yPos + gVecs_3x3[i].y;
+
+        struct Unit *unit_enemy = GetUnitAtPosition(_x, _y);
+
+        if (!UNIT_IS_VALID(unit_enemy) || UNIT_STONED(unit_enemy) || AreUnitsAllied(gActiveUnit->index, unit_enemy->index))
+            continue;
+
+#if (defined(SID_RallyStrength) && (COMMON_SKILL_VALID(SID_RallyStrength)))
+        if (SkillTester(gActiveUnit, SID_RallyStrength))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullStrength) && (COMMON_SKILL_VALID(SID_LullStrength)))
+            if (SkillTester(unit_enemy, SID_LullStrength))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallyMagic) && (COMMON_SKILL_VALID(SID_RallyMagic)))
+        if (SkillTester(gActiveUnit, SID_RallyMagic))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullMagic) && (COMMON_SKILL_VALID(SID_LullMagic)))
+            if (SkillTester(unit_enemy, SID_LullMagic))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallySkill) && (COMMON_SKILL_VALID(SID_RallySkill)))
+        if (SkillTester(gActiveUnit, SID_RallySkill))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullSkill) && (COMMON_SKILL_VALID(SID_LullSkill)))
+            if (SkillTester(unit_enemy, SID_LullSkill))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallySpeed) && (COMMON_SKILL_VALID(SID_RallySpeed)))
+        if (SkillTester(gActiveUnit, SID_RallySpeed))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullSpeed) && (COMMON_SKILL_VALID(SID_LullSpeed)))
+            if (SkillTester(unit_enemy, SID_LullSpeed))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallyLuck) && (COMMON_SKILL_VALID(SID_RallyLuck)))
+        if (SkillTester(gActiveUnit, SID_RallyLuck))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullLuck) && (COMMON_SKILL_VALID(SID_LullLuck)))
+            if (SkillTester(unit_enemy, SID_LullLuck))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallyDefense) && (COMMON_SKILL_VALID(SID_RallyDefense)))
+        if (SkillTester(gActiveUnit, SID_RallyDefense))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullDefense) && (COMMON_SKILL_VALID(SID_LullDefense)))
+            if (SkillTester(unit_enemy, SID_LullDefense))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallyResistance) && (COMMON_SKILL_VALID(SID_RallyResistance)))
+        if (SkillTester(gActiveUnit, SID_RallyResistance))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullResistance) && (COMMON_SKILL_VALID(SID_LullResistance)))
+            if (SkillTester(unit_enemy, SID_LullResistance))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallyMovement) && (COMMON_SKILL_VALID(SID_RallyMovement)))
+        if (SkillTester(gActiveUnit, SID_RallyMovement))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#if (defined(SID_LullMovement) && (COMMON_SKILL_VALID(SID_LullMovement)))
+            if (SkillTester(unit_enemy, SID_LullMovement))
+                return MENU_DISABLED;
+#endif
+#endif
+
+#if (defined(SID_RallySpectrum) && (COMMON_SKILL_VALID(SID_RallySpectrum)))
+        if (SkillTester(gActiveUnit, SID_RallySpectrum))
+#if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
+            if (SkillTester(unit_enemy, SID_LullSpectrum))
+                return MENU_DISABLED;
+#endif
+#endif
+    }
+
     return MENU_ENABLED;
 }
 
-int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item)
+int Rally_Hover(struct MenuProc *menu, struct MenuItemProc *item)
 {
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -46,13 +161,13 @@ int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem)
+int Rally_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
     HideMoveRangeGraphics();
     return 0;
 }
 
-u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 Rally_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {
@@ -78,11 +193,12 @@ static void callback_exec(ProcPtr proc)
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
-        struct Unit * unit = GetUnit(GetTarget(i)->uid);
+        struct Unit *unit = GetUnit(GetTarget(i)->uid);
         if (!UNIT_ALIVE(unit))
             continue;
 
-        switch (gActionData.unk08) {
+        switch (gActionData.unk08)
+        {
         case SID_RallyStrength:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_POW);
             break;
