@@ -4,6 +4,7 @@ ALIGN 4
 #include "Core/DebuffRework/Source/MiscHooks.event"
 #include "Core/UnitStatusGetter/source/InjectHPGetters.event"
 #include "Core/UnitStatusGetter/source/InjectMovGetters.event"
+#include "Core/UnitStatusGetter/source/InjectConGetters.event"
 #include "Core/WeaponRange/Source/MiscHooksWeaponRange.event"
 
 #include "Essentials/EfxMagicDummyFix/EfxMagicDummyFix.event"

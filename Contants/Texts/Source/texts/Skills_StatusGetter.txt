@@ -493,3 +493,8 @@ boosts during battle.[X]
 Moody:[NL]
 Buff one stat by 8 and debuff[NL]
 another by 4 every turn.[X]
+
+## MSG_SKILL_HeavyMetal
+Heavy Metal:[NL]
+Increase this unit's[NL]
+CON by 5.[X]
