@@ -127,3 +127,22 @@ int SpdGetterSkills(int status, struct Unit * unit)
 
     return status;
 }
+
+int SpdPsychUpCheck(int status, struct Unit *unit)
+{
+    int stolen_status = 0;
+
+#if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
+    if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = SpdGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) + SpdGetterSkills(0, GetUnit(gBattleTarget.unit.index));
+        return status + stolen_status;
+    }
+    else if (unit == GetUnit(gBattleTarget.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = SpdGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) + SpdGetterSkills(0, GetUnit(gBattleActor.unit.index));
+        return status + stolen_status;
+    }
+#endif
+    return status;
+}

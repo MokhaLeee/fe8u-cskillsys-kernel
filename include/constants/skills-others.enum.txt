@@ -143,6 +143,7 @@ SID_Mentorship
 SID_HyperCutter
 SID_ClearBody
 SID_GoodAsGold
+SID_PsychUp
 
 // Shop skills
 SID_Deal

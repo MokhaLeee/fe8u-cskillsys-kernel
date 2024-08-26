@@ -483,3 +483,8 @@ to STR reductions.[X]
 Clear Body:[NL]
 This unit is immune to[NL]
 all stat reductions.[X]
+
+## MSG_SKILL_PsychUp
+Psych Up:[NL]
+Copy the enemy's stat[NL]
+boosts during battle.[X]
