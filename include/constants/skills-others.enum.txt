@@ -145,6 +145,7 @@ SID_ClearBody
 SID_GoodAsGold
 SID_PsychUp
 SID_Moody
+SID_Amische
 
 // Shop skills
 SID_Deal
