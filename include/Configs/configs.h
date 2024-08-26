@@ -100,6 +100,11 @@
 #define CONFIG_PAGE4_MOKHA_PLAN_B 1
 
 /**
+ * Install some performance hooks
+ */
+#define CONFIG_PERFORMANCE_OPTIMIZATION
+
+/**
  * Install DrawMapActionAnimation
  */
 // #define CONFIG_INSTALL_MAPACTIONANIM

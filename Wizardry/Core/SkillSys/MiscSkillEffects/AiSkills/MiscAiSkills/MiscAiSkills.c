@@ -1,15 +1,22 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "weapon-range.h"
+#include "status-getter.h"
 
 extern const struct AiCombatScoreCoefficients * sCombatScoreCoefficients;
 
 LYN_REPLACE_CHECK(AiAttemptOffensiveAction);
 s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 {
+    enum { TARGET_COUNT_TRIGLEVEL = 5, };
+
     struct AiCombatSimulationSt tmpResult = {0};
     struct AiCombatSimulationSt finalResult = {0};
 
+#ifdef CONFIG_PERFORMANCE_OPTIMIZATION
+    int target_count = 0;
+#endif
     int i, uid;
     bool ret = 0;
 
@@ -53,6 +60,9 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 
     for (i = 0; i < UNIT_ITEM_COUNT; i++)
     {
+#ifdef CONFIG_PERFORMANCE_OPTIMIZATION
+        int move_distance;
+#endif
         u16 item = gActiveUnit->items[i];
 
         if (item == 0)
@@ -66,6 +76,10 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 
         tmpResult.itemSlot = i;
 
+#ifdef CONFIG_PERFORMANCE_OPTIMIZATION
+        move_distance = MovGetter(gActiveUnit) + GetItemMaxRangeRework(item, gActiveUnit);
+#endif
+
         for (uid = 1; uid < 0xC0; uid++)
         {
             struct Unit * unit = GetUnit(uid);
@@ -76,13 +90,23 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
             if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
                 continue;
 
-#if CHAX
+#ifdef CONFIG_PERFORMANCE_OPTIMIZATION
+            if (move_distance < RECT_DISTANCE(unit->xPos, unit->yPos, gActiveUnit->xPos, gActiveUnit->yPos))
+                continue;
+#else
+            if (!AiReachesByBirdsEyeDistance(gActiveUnit, unit, item))
+                continue;
+#endif
 
 #if defined(SID_Shade) && (COMMON_SKILL_VALID(SID_Shade))
             /* Shade skill may make unit avoid to be target */
             if (SkillTester(unit, SID_Shade))
             {
+#ifdef CONFIG_PERFORMANCE_OPTIMIZATION
+                if (Roll1RN(unit->lck))
+#else
                 if (Roll2RN(GetUnitLuck(unit)))
+#endif
                     continue;
             }
 #endif
@@ -92,12 +116,7 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
                 continue;
 #endif
 
-#endif
-
             if (!isEnemy(unit))
-                continue;
-
-            if (!AiReachesByBirdsEyeDistance(gActiveUnit, unit, item))
                 continue;
 
             AiFillReversedAttackRangeMap(unit, item);
@@ -113,6 +132,11 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
                 finalResult = tmpResult;
                 finalResult.itemSlot = i;
             }
+
+#ifdef CONFIG_PERFORMANCE_OPTIMIZATION
+            if (++target_count >= TARGET_COUNT_TRIGLEVEL)
+                break;
+#endif
         }
     }
 
