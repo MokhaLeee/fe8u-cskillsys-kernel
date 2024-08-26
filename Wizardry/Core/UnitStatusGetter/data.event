@@ -59,6 +59,7 @@ gMovGetters:
     MSG_END
 
 gConGetters:
+    POIN ConGetterSkills
     POIN StatusGetterCheckCpas
     MSG_END
 

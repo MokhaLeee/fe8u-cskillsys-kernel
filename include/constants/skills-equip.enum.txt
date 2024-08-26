@@ -9,6 +9,7 @@ SID_DefBonus
 SID_ResBonus
 SID_MovBonus
 SID_Resolve
+SID_HeavyMetal
 
 SID_DefiantStr
 SID_DefiantMag

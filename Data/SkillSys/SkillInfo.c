@@ -3755,10 +3755,17 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_DownWithArch) && COMMON_SKILL_VALID(SID_DownWithArch))
-    [SID_Amische] = {
-        .name = MSG_SKILL_DownWithArch_NAME
+    [SID_DownWithArch] = {
+        .name = MSG_SKILL_DownWithArch_NAME,
         .desc = MSG_SKILL_DownWithArch,
         .icon = GFX_SkillIcon_DownWithArch,
+    },
+#endif
+
+#if (defined(SID_HeavyMetal) && COMMON_SKILL_VALID(SID_HeavyMetal))
+    [SID_HeavyMetal] = {
+        .desc = MSG_SKILL_HeavyMetal,
+        .icon = GFX_SkillIcon_HeavyMetal,
     },
 #endif
 };

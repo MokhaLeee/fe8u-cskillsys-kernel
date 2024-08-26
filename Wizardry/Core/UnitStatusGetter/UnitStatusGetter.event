@@ -20,6 +20,7 @@ ALIGN 4
 
 #include "source/InjectHPGetters.event"
 #include "source/InjectMovGetters.event"
+#include "source/InjectConGetters.event"
 
 #include "source/StatusGetterExample.lyn.event"
 

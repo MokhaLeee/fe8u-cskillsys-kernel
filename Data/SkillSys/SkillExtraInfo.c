@@ -285,6 +285,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_VigorDance] = {{ 2, 2}},
     [SID_Accost] = {{ 20 }},
     [SID_Mentorship] = {{ 20 }},
+    [SID_HeavyMetal] = {{ 5 }},
 
 #if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {{ 6 }},
