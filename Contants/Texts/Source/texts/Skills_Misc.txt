@@ -69,3 +69,8 @@ while asleep.[X]
 Haze Hunter:[NL]
 Allows unit to see 5[NL]
 additional spaces in fog.[X]
+
+## MSG_SKILL_Amische
+Amische:[NL]
+This unit's religion prevents[NL]
+them from using non-iron weaponry.[X]
