@@ -191,3 +191,11 @@ start of the fight, they cannot die.[X]
 ## MSG_SKILL_Blessing
 Blessing:[NL]
 Weapon uses are not consumed.[X]
+
+## MSG_SKILL_DownWithArch_NAME
+Down-Arch[X]
+
+## MSG_SKILL_DownWithArch
+Down With Arch:[NL]
+Instantly kill enemy if their[NL]
+name is the specified name.[X]
