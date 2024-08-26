@@ -257,6 +257,19 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
     }
 #endif
 
+#if (defined(SID_BlackMagic) && (COMMON_SKILL_VALID(SID_BlackMagic)))
+    else if (BattleSkillTester(defender, SID_BlackMagic))
+    {
+        if (!IsDebuff(GetUnitStatusIndex(&attacker->unit)) && !IsDebuff(attacker->statusOut))
+        {
+            static const u8 _debuffs[5] = {UNIT_STATUS_POISON, UNIT_STATUS_SILENCED, UNIT_STATUS_SLEEP, UNIT_STATUS_BERSERK, UNIT_STATUS_PETRIFY};
+            attacker->statusOut = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
+
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_BlackMagic);
+        }
+    }
+#endif
+
 #if (defined(SID_MagicBounce) && (COMMON_SKILL_VALID(SID_MagicBounce)))
     if (BattleSkillTester(defender, SID_MagicBounce))
     {

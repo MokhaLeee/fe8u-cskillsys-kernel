@@ -5,7 +5,7 @@
 const u16 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
         SID_Accost,
-        SID_Moody,
+        SID_InitSpectrum,
     },
 
     [CHARACTER_EPHRAIM] = {

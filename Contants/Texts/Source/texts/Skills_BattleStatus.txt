@@ -630,8 +630,8 @@ the enemy cannot counterattack.[X]
 
 ## MSG_SKILL_BlackMagic
 BlackMagic:[NL]
-Inflict a random bad status on the enemy.[NL]
-(Skill % activation).[X]
+Inflict a random bad[NL] 
+status on the enemy.[X]
 
 ## MSG_SKILL_LastWord
 LastWord:[NL]
