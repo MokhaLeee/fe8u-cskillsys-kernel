@@ -25,6 +25,23 @@ void PreBattleCalcDebuffs(struct BattleUnit *bu, struct BattleUnit *defender)
     bu->battleCritRate += info->battle_status.crit;
     bu->battleSilencerRate += info->battle_status.silencer;
     bu->battleDodgeRate += info->battle_status.dodge;
+
+#if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
+    if (BattleSkillTester(bu, SID_PsychUp))
+    {
+        struct Unit *unit_enemy = GetUnit(defender->unit.index);
+        int debuff = GetUnitStatusIndex(unit_enemy);
+        const struct DebuffInfo *info_enemy = &gpDebuffInfos[debuff];
+
+        bu->battleAttack += info_enemy->battle_status.atk;
+        bu->battleDefense += info_enemy->battle_status.def;
+        bu->battleHitRate += info_enemy->battle_status.hit;
+        bu->battleAvoidRate += info_enemy->battle_status.avo;
+        bu->battleCritRate += info_enemy->battle_status.crit;
+        bu->battleSilencerRate += info_enemy->battle_status.silencer;
+        bu->battleDodgeRate += info_enemy->battle_status.dodge;
+    }
+#endif
 }
 
 /* Unit status getter */

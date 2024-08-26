@@ -3,9 +3,9 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int _GetUnitPower(struct Unit * unit)
+int _GetUnitPower(struct Unit *unit)
 {
-    const StatusGetterFunc_t * it;
+    const StatusGetterFunc_t *it;
     int status = unit->pow;
 
     for (it = gpPowGetters; *it; it++)
@@ -15,14 +15,14 @@ int _GetUnitPower(struct Unit * unit)
 }
 
 /* Hooks */
-int PowGetterWeaponBonus(int status, struct Unit * unit)
+int PowGetterWeaponBonus(int status, struct Unit *unit)
 {
     u16 weapon = GetUnitEquippedWeapon(unit);
     status += GetItemPowBonus(weapon);
     return status;
 }
 
-int PowGetterSkills(int status, struct Unit * unit)
+int PowGetterSkills(int status, struct Unit *unit)
 {
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);
@@ -112,19 +112,38 @@ int PowGetterSkills(int status, struct Unit * unit)
             status += SKILL_EFF0(SID_PushSpectrum);
 #endif
     }
-    
-#if (defined(SID_Resolve) && (COMMON_SKILL_VALID(SID_Resolve))) 
+
+#if (defined(SID_Resolve) && (COMMON_SKILL_VALID(SID_Resolve)))
     if (SkillTester(unit, SID_Resolve))
     {
         if ((cur_hp * 2) < max_hp)
-            status += status / 2;
+            status += _GetUnitPower(unit) / 2;
     }
 #endif
 
-#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage))) 
+#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage)))
     if (SkillTester(unit, SID_Rampage))
-            status += status / 2;
+        status += _GetUnitPower(unit) / 2;
 #endif
 
+    return status;
+}
+
+int PowPsychUpCheck(int status, struct Unit *unit)
+{
+    int stolen_status = 0;
+
+#if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
+    if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = PowGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) + PowGetterSkills(0, GetUnit(gBattleTarget.unit.index));
+        return status + stolen_status;
+    }
+    else if (unit == GetUnit(gBattleTarget.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = PowGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) + PowGetterSkills(0, GetUnit(gBattleActor.unit.index));
+        return status + stolen_status;
+    }
+#endif
     return status;
 }
