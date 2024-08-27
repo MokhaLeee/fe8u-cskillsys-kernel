@@ -99,17 +99,30 @@ void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
     PutTwoSpecialChar(TILEMAP_LOCATED(gBG2TilemapBuffer, 17, 1), 3, 0x24, 0x25);
 }
 
+static bool CheckUnlockAllyMhpLimit(void)
+{
+    extern const u8 pr_SetHPClassLimitJudgement[];
+
+    /* See FEB patch: SetHPClassLimit */
+    if (pr_SetHPClassLimitJudgement[0] == 0x00 &&
+        pr_SetHPClassLimitJudgement[1] == 0x4A &&
+        pr_SetHPClassLimitJudgement[2] == 0x97 &&
+        pr_SetHPClassLimitJudgement[3] == 0x46)
+        return true;
+
+    return false;
+}
+
 LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatBars);
 void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
 {
     int ix, iy, stat_pack[8];
     UnpackUiBarPalette(2);
 
-#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
-#else
-    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit);
-#endif
+    if (!CheckUnlockAllyMhpLimit())
+        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit);
+    else
+        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
 
     stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit);
     stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit);
