@@ -76,6 +76,12 @@
 // #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
 
 /**
+ * Allow another line for all R button text
+ * Installed in: Wizardry->Comman->ItemSys->ItemDesc->ItemDesc.event
+ */
+#define CONFIG_EXTEND_R_TEXT_DESC
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable

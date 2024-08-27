@@ -1,0 +1,5 @@
+#ifdef CONFIG_EXTEND_R_TEXT_DESC
+
+#include "Source/Installer.event"
+
+#endif
