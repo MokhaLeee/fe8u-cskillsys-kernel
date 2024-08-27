@@ -17,3 +17,9 @@ gPreMapAnimBattleRoundHooks:
     WORD 0 0 0 0
 
 #endif /* MAP_ANIM_BATTLE_HOOK_INSTALLED */
+
+#ifdef CONFIG_MAP_BATTLE_ANIM_FRAMES
+
+#include "MapAnimBattleFrames/MapAnimBattleFrames.event"
+
+#endif
