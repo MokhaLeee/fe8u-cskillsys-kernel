@@ -76,8 +76,13 @@ void CheckBattleUnitStatCaps(struct Unit * unit, struct BattleUnit * bu)
         BU_CHG_MAG(bu) = GetUnitMaxMagic(unit) - UNIT_MAG(unit);
 }
 
-LYN_REPLACE_CHECK(UnitCheckStatCaps);
+#if 0
+LYN_UNUSED_REPLACE_CHECK(UnitCheckStatCaps);
 void UnitCheckStatCaps(struct Unit * unit)
+#else
+/* External hook to save spaces */
+void _UnitCheckStatCaps(struct Unit * unit)
+#endif
 {
     UnitCheckStatCapsVanilla(unit);
 

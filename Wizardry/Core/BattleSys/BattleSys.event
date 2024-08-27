@@ -36,6 +36,9 @@ PUSH
     // Repoint Palette
     ORG $36E14
     POIN Pal_BKSEL
+
+    ORG $2C7C0 // BattleApplyWeaponTriangleEffect
+    jumpToHack(_BattleApplyWeaponTriangleEffect)
 POP
 
 #endif

@@ -8,4 +8,21 @@
 #include "Source/CheckCap.lyn.event"
 #include "Source/Levelup.lyn.event"
 
+PUSH
+    ORG $181c8
+    /**
+    * Here is a little bit complicated.
+    * Since we need to make FEBuilder identify the patch "SetHPClassLimit" has been installed
+    */
+    B(0x181D0)
+    SHORT 0
+    ORG 0x0181CC // patch: SetHPClassLimit
+    #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+        BYTE 0x00 0x4A 0x97 0x46
+    #endif
+    ORG 0x0181D0
+    WORD $46C04778 $E59FC000 $E12FFF1C
+    POIN _UnitCheckStatCaps
+POP
+
 #endif /* LVUP_INSTALLED */
