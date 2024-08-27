@@ -90,6 +90,13 @@
 #define CONFIG_TARGETTING_CURSOR_FRAMES
 
 /**
+ * By: Vesly
+ * Set a number of frames for some battle anims (defaults are 30 30 30 10 30), 60 frames = 1 second
+ * Installed in: Wizardry->Common->MapAnimBattleHook->MapAnimBattleFrames->MapAnimBattleFrames.event
+ */
+#define CONFIG_MAP_BATTLE_ANIM_FRAMES
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable
