@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "strmag.h"
+#include "lvup.h"
 #include "status-getter.h"
 
 #define LOCAL_TRACE 0
@@ -99,31 +100,13 @@ void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
     PutTwoSpecialChar(TILEMAP_LOCATED(gBG2TilemapBuffer, 17, 1), 3, 0x24, 0x25);
 }
 
-static bool CheckUnlockAllyMhpLimit(void)
-{
-    extern const u8 pr_SetHPClassLimitJudgement[];
-
-    /* See FEB patch: SetHPClassLimit */
-    if (pr_SetHPClassLimitJudgement[0] == 0x00 &&
-        pr_SetHPClassLimitJudgement[1] == 0x4A &&
-        pr_SetHPClassLimitJudgement[2] == 0x97 &&
-        pr_SetHPClassLimitJudgement[3] == 0x46)
-        return true;
-
-    return false;
-}
-
 LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatBars);
 void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
 {
     int ix, iy, stat_pack[8];
     UnpackUiBarPalette(2);
 
-    if (!CheckUnlockAllyMhpLimit())
-        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit);
-    else
-        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
-
+    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
     stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit);
     stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit);
     stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit);
@@ -159,11 +142,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit* unit)
     // HP
     PutNumberOrBlank( 
         TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 3),
-#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-        (GetUnitCurrentHp(unit) == KUNIT_MHP_MAX(unit)) 
-#else
-        (GetUnitCurrentHp(unit) == UNIT_MHP_MAX(unit)) 
-#endif
+        (GetUnitCurrentHp(unit) == KUNIT_MHP_MAX(unit))
             ? TEXT_COLOR_SYSTEM_GREEN
             : TEXT_COLOR_SYSTEM_BLUE,
         GetUnitCurrentHp(unit)
