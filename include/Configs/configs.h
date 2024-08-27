@@ -76,10 +76,18 @@
 // #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
 
 /**
+ * By: Vesly
  * Allow another line for all R button text
- * Installed in: Wizardry->Comman->ItemSys->ItemDesc->ItemDesc.event
+ * Installed in: Wizardry->Common->ItemSys->ItemDesc->ItemDesc.event
  */
 #define CONFIG_EXTEND_R_TEXT_DESC
+
+/**
+ * By: Vesly
+ * Set a number of frames to hold the targetting cursor for (default is 45), 60 frames = 1 second
+ * Installed in: Wizardry->Common->UnitTarget->TargetCursor->TargetCursor.event
+ */
+#define CONFIG_TARGETTING_CURSOR_FRAMES
 
 /**
  * Levelup mode
