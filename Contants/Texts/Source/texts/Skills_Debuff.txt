@@ -70,6 +70,11 @@ Mov Hone: Grants allies in 2x2[NL]
 +4 MOV for one turn during the[NL]
 start of each turn.[X]
 
+## MSG_SKILL_HoneChaos
+Hone Chaos: Randomly boost an[NL]
+allied stat by +4 in a 2x2[NL]
+radius at the start of the turn.[X]
+
 ## MSG_SKILL_HoneCavalry_NAME
 H-Cavalry[X]
 

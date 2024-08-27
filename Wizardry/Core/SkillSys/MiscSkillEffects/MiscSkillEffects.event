@@ -53,6 +53,7 @@
 #include "PrePhaseSkills/TileCheck.lyn.event"
 #include "PrePhaseSkills/KeepUp.lyn.event"
 #include "PrePhaseSkills/Moody.lyn.event"
+#include "PrePhaseSkills/HoneChaos.lyn.event"
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"

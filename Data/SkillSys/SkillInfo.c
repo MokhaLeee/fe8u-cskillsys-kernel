@@ -916,6 +916,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_HoneChaos) && COMMON_SKILL_VALID(SID_HoneChaos))
+    [SID_HoneChaos] = {
+        .desc = MSG_SKILL_HoneChaos,
+        .icon = GFX_SkillIcon_HoneChaos
+    },
+#endif
+
 #if (defined(SID_BattleRange_Todo1) && COMMON_SKILL_VALID(SID_BattleRange_Todo1))
     [SID_BattleRange_Todo1] = {
         .desc = MSG_SKILL_BattleRange1,
