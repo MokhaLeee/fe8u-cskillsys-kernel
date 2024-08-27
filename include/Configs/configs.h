@@ -73,7 +73,7 @@
 /**
  * Install FEB patch: SetHPClassLimit
  */
-// #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
+#define CONFIG_UNLOCK_ALLY_MHP_LIMIT
 
 /**
  * Levelup mode
