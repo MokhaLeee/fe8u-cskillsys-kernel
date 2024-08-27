@@ -286,32 +286,11 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Accost] = {{ 20 }},
     [SID_Mentorship] = {{ 20 }},
     [SID_HeavyMetal] = {{ 5 }},
-
-#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {{ 6 }},
-#endif
-
-#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealLuck] = {{ 6 }},
-#endif
-
-#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealMagic] = {{ 6 }},
-#endif
-
-#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealResistance] = {{ 6 }},
-#endif
-
-#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealSkill] = {{ 6 }},
-#endif
-
-#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealSpeed] = {{ 6 }},
-#endif
-
-#if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealStrength] = {{ 6 }},
-#endif
 };
