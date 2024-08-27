@@ -22,7 +22,7 @@ u8 Swarp_Usability(const struct MenuItemDef * def, int number)
     return MENU_ENABLED;
 }
 
-STATIC_DECLAR void PrepareMenuPositionSwap(void)
+STATIC_DECLAR void PrepareMenuPositionSwarp(void)
 {
     EndAllMus();
     RefreshUnitSprites();
@@ -96,12 +96,12 @@ u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
 }
 
-STATIC_DECLAR const EventScr EventScr_MenuPositionSwap[] = {
+STATIC_DECLAR const EventScr EventScr_MenuPositionSwarp[] = {
 
 LABEL(0)
     SVAL(EVT_SLOT_B, SID_Swarp)
     CALL(EventScr_MuSkillAnim)
-    ASMC(PrepareMenuPositionSwap)
+    ASMC(PrepareMenuPositionSwarp)
     ASMC(set_actor_unit)
     CALL(EventScr_UidWarpOUT)
     STAL(20)
@@ -124,7 +124,7 @@ LABEL(99)
 bool Action_Swarp(ProcPtr parent)
 {
     SetBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED);
-    KernelCallEvent(EventScr_MenuPositionSwap, EV_EXEC_CUTSCENE, parent);
+    KernelCallEvent(EventScr_MenuPositionSwarp, EV_EXEC_CUTSCENE, parent);
     
 #if defined(SID_GridMaster) && (COMMON_SKILL_VALID(SID_GridMaster))
     if (SkillTester(gActiveUnit, SID_GridMaster))

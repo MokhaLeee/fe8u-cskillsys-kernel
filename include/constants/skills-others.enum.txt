@@ -137,6 +137,7 @@ SID_PsychUp
 SID_Moody
 SID_Amische
 SID_DownWithArch
+SID_HoneChaos
 
 // Lull skills
 SID_LullDefense
