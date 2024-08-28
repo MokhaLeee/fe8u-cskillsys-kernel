@@ -97,6 +97,14 @@
 #define CONFIG_MAP_BATTLE_ANIM_FRAMES
 
 /**
+ * By: Contro
+ * Send a user's inventory to the supply when they die
+ * Installed in: Wizardry->External->SendInventoryOnDeath->Installer.event
+ */
+
+#define CONFIG_INSTALL_SENDINVENTORYONDEATH
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable
