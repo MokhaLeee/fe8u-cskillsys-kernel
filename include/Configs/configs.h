@@ -111,6 +111,13 @@
  */
 #define CONFIG_INSTALL_RES_TERRAIN_WINDOW
 
+
+/**
+ * By Mokha:
+ * Allow units to perform all their regular actions after trading
+ */
+#define CONFIG_INSTALL_NO_WAIT_AFTER_TRADING
+
 /**
  * Levelup mode
  * 0: vanilla
