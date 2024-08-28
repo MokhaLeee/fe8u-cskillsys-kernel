@@ -14,7 +14,11 @@
     #include "ConvoyExpa/ConvoyExpa.event"
 #endif
 
-#ifdef CONFIG_INSTALL_SENDINVENTORYONDEATH
+#ifdef CONFIG_INSTALL_SEND_INVENTORY_ON_DEATH
     #include "SendInventoryOnDeath/Installer.event"
+#endif
+
+#ifdef CONFIG_INSTALL_RES_TERRAIN_WINDOW
+    #include "ResTerrainWindow/Installer.event"
 #endif
 

@@ -102,7 +102,14 @@
  * Installed in: Wizardry->External->SendInventoryOnDeath->Installer.event
  */
 
-#define CONFIG_INSTALL_SENDINVENTORYONDEATH
+#define CONFIG_INSTALL_SEND_INVENTORY_ON_DEATH
+
+/**
+ * By: Contro
+ * Display the hidden RES stat of some map tiles like thrones
+ * Installed in: Wizardry->External->ResTerrainWindow->Installer.event
+ */
+#define CONFIG_INSTALL_RES_TERRAIN_WINDOW
 
 /**
  * Levelup mode
