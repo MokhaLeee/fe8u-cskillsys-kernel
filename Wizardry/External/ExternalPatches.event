@@ -13,3 +13,8 @@
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "ConvoyExpa/ConvoyExpa.event"
 #endif
+
+#ifdef CONFIG_INSTALL_SENDINVENTORYONDEATH
+    #include "SendInventoryOnDeath/Installer.event"
+#endif
+
