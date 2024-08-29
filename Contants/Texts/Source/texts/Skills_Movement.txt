@@ -62,3 +62,8 @@ move throgh 2x2 spaces adjacent.[X]
 Grid Master:[NL]
 Menu movement skills do not[NL]
 end this unit's turn.[X]
+
+## MSG_SKILL_Acrobat
+Acrobat:[NL]
+All traversable terrain for[NL]
+this unit costs 1 movement.[X]

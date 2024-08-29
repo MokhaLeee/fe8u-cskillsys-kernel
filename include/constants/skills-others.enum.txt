@@ -138,6 +138,7 @@ SID_Moody
 SID_Amische
 SID_DownWithArch
 SID_HoneChaos
+SID_Acrobat
 
 // Lull skills
 SID_LullDefense
