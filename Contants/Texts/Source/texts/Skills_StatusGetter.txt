@@ -498,3 +498,8 @@ another by 4 every turn.[X]
 Heavy Metal:[NL]
 Increase this unit's[NL]
 CON by 5.[X]
+
+## MSG_SKILL_Contrary
+Contrary:[NL]
+Invert the effects of all[NL]
+buffs and debuffs to this unit.[X]

@@ -139,6 +139,7 @@ SID_Amische
 SID_DownWithArch
 SID_HoneChaos
 SID_Acrobat
+SID_Contrary
 
 // Lull skills
 SID_LullDefense
