@@ -44,6 +44,43 @@ int SimulateStatDebuffPositiveType(struct Unit *unit)
         if (!_BIT_CHK(stat->st.bitmask, i))
             continue;
 
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+        if (SkillTester(unit, SID_Contrary))
+        {
+            switch (gpStatDebuffInfos[i].positive_type)
+            {
+            case STATUS_DEBUFF_NEGATIVE:
+                positive++;
+                break;
+
+            case STATUS_DEBUFF_POSITIVE:
+                positive++;
+                break;
+
+            case STATUS_DEBUFF_NONE:
+            default:
+                break;
+            }
+        }
+        else
+        {
+            switch (gpStatDebuffInfos[i].positive_type)
+            {
+            case STATUS_DEBUFF_NEGATIVE:
+                positive--;
+                break;
+
+            case STATUS_DEBUFF_POSITIVE:
+                positive++;
+                break;
+
+            case STATUS_DEBUFF_NONE:
+            default:
+                break;
+            }
+        }
+
+#else
         switch (gpStatDebuffInfos[i].positive_type)
         {
         case STATUS_DEBUFF_NEGATIVE:
@@ -58,6 +95,7 @@ int SimulateStatDebuffPositiveType(struct Unit *unit)
         default:
             break;
         }
+#endif
     }
 
     if (positive < 0)
@@ -251,7 +289,7 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit *unit, u32 *bitfile, 
 
     if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
         in_panic = true;
-        
+
 #if (defined(SID_HyperCutter) && (COMMON_SKILL_VALID(SID_HyperCutter)))
     if (SkillTester(unit, SID_HyperCutter))
         in_panic = false;
@@ -363,6 +401,12 @@ int PowGetterStatDebuff(int status, struct Unit *unit)
             return status;
 #endif
 
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->pow < 0)
+            return status - GetStatDebuffMsgBuf(unit)->pow;
+#endif
+
     return status + GetStatDebuffMsgBuf(unit)->pow;
 }
 
@@ -372,6 +416,12 @@ int MagGetterStatDebuff(int status, struct Unit *unit)
     if (SkillTester(unit, SID_ClearBody))
         if (GetStatDebuffMsgBuf(unit)->mag < 0)
             return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->mag < 0)
+            return status - GetStatDebuffMsgBuf(unit)->mag;
 #endif
     return status + GetStatDebuffMsgBuf(unit)->mag;
 }
@@ -383,6 +433,12 @@ int SklGetterStatDebuff(int status, struct Unit *unit)
         if (GetStatDebuffMsgBuf(unit)->skl < 0)
             return status;
 #endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->skl < 0)
+            return status - GetStatDebuffMsgBuf(unit)->skl;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->skl;
 }
 
@@ -392,6 +448,12 @@ int SpdGetterStatDebuff(int status, struct Unit *unit)
     if (SkillTester(unit, SID_ClearBody))
         if (GetStatDebuffMsgBuf(unit)->spd < 0)
             return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->spd < 0)
+            return status - GetStatDebuffMsgBuf(unit)->spd;
 #endif
     return status + GetStatDebuffMsgBuf(unit)->spd;
 }
@@ -403,6 +465,12 @@ int DefGetterStatDebuff(int status, struct Unit *unit)
         if (GetStatDebuffMsgBuf(unit)->def < 0)
             return status;
 #endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->def < 0)
+            return status - GetStatDebuffMsgBuf(unit)->def;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->def;
 }
 
@@ -412,6 +480,12 @@ int ResGetterStatDebuff(int status, struct Unit *unit)
     if (SkillTester(unit, SID_ClearBody))
         if (GetStatDebuffMsgBuf(unit)->res < 0)
             return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->res < 0)
+            return status - GetStatDebuffMsgBuf(unit)->res;
 #endif
     return status + GetStatDebuffMsgBuf(unit)->res;
 }
@@ -423,6 +497,12 @@ int LckGetterStatDebuff(int status, struct Unit *unit)
         if (GetStatDebuffMsgBuf(unit)->lck < 0)
             return status;
 #endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->lck < 0)
+            return status - GetStatDebuffMsgBuf(unit)->lck;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->lck;
 }
 
@@ -432,6 +512,12 @@ int MovGetterStatDebuff(int status, struct Unit *unit)
     if (SkillTester(unit, SID_ClearBody))
         if (GetStatDebuffMsgBuf(unit)->mov < 0)
             return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->mov < 0)
+            return status - GetStatDebuffMsgBuf(unit)->mov;
 #endif
 
 #if defined(SID_ArenaTrap) && (COMMON_SKILL_VALID(SID_ArenaTrap))
