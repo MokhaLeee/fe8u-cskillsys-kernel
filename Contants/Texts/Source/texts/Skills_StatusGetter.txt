@@ -502,4 +502,4 @@ CON by 5.[X]
 ## MSG_SKILL_Contrary
 Contrary:[NL]
 Invert the effects of all[NL]
-buffs and debuffs to this unit.[X]
+debuffs to this unit.[X]
