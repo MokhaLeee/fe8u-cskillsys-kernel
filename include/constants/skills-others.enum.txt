@@ -273,6 +273,7 @@ SID_RallySpectrum
 SID_GoddessDance
 SID_Stride
 SID_Blacksmith
+SID_PairUp
 
 // Art skills
 SID_COMBAT_Galeforce

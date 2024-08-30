@@ -3,6 +3,8 @@
 #include "lvup.h"
 #include "strmag.h"
 #include "kernel-lib.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 static inline void _growth_disp(int x, int y, int growth)
 {
@@ -108,6 +110,7 @@ LYN_REPLACE_CHECK(PageNumCtrl_DisplayBlinkIcons);
 void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 {
     bool blinking;
+    bool saviour_pairup = false;
     static const u16 palidLut[3] = { 0xC, 0xE, 0xD }; // TODO: palid constants
 
     /* No idle in transition */
@@ -118,7 +121,11 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 
     if (gStatScreen.page == STATSCREEN_PAGE_0)
     {
-        if (gStatScreen.unit->state & US_RESCUING)
+#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
+    if (SkillTester(gStatScreen.unit, SID_PairUp))
+        saviour_pairup = true;
+#endif
+        if (gStatScreen.unit->state & US_RESCUING & !saviour_pairup)
         {
             UpdateStatArrowSprites(120, 56, 1);
             UpdateStatArrowSprites(120, 72, 1);

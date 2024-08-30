@@ -9,7 +9,12 @@ int _GetUnitSkill(struct Unit * unit)
     int status = unit->skl;
 
     if (unit->state & US_RESCUING)
-        status = unit->skl / 2;
+#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
+        if (!SkillTester(unit, SID_PairUp))
+            status = unit->skl / 2;
+#else 
+    status = unit->skl / 2;
+#endif
 
     for (it = gpSklGetters; *it; it++)
         status = (*it)(status, unit);
@@ -107,6 +112,12 @@ int SklGetterSkills(int status, struct Unit * unit)
 #if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage))) 
     if (SkillTester(unit, SID_Rampage))
             status += status / 2;
+#endif
+
+#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
+    if (SkillTester(unit, SID_PairUp))
+        if (unit->state & US_RESCUING)
+            status += Div(_GetUnitSkill(GetUnit(unit->rescue)) * SKILL_EFF0(SID_PairUp), 100);
 #endif
 
     return status;
