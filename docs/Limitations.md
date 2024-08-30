@@ -72,7 +72,6 @@
     - Sure Strike Skill Last Class
     - Stat Bar Max Length
     - Modify Maximum Number Of Supports
-    - Metis's Tome Growth Bonus
     - Skill Pick
     - Skill Pierce from this class
     - Skill Pierce to this class
