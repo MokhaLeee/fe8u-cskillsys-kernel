@@ -43,6 +43,12 @@ void CopyProcVariables(DebuggerProc* dst, DebuggerProc* src) {
     dst->unit = src->unit; 
 } 
 
+int Mod(int a, int b)
+{
+    return a % b;
+}
+
+
 void SetBootType(int id) { 
     struct GlobalSaveInfo info;
     ReadGlobalSaveInfo(&info);
@@ -56,7 +62,7 @@ int GetBootType(void) {
     return info.charKnownFlags[0x10]; 
 } 
 
-
+//LYN_REPLACE_CHECK(EventCallGameOverExt);
 void EventCallGameOverExt(ProcPtr proc)
 {
     Proc_StartBlocking(ProcScr_BmGameOver, proc);
@@ -64,6 +70,7 @@ void EventCallGameOverExt(ProcPtr proc)
 }
 
 #define LGAMECTRL_EXEC_BM_EXT 6  // Directly goto bmmap 
+LYN_REPLACE_CHECK(GameControl_CallEraseSaveEventWithKeyCombo);
 void GameControl_CallEraseSaveEventWithKeyCombo(ProcPtr proc)
 {
     if (gKeyStatusPtr->heldKeys == (L_BUTTON | DPAD_RIGHT | SELECT_BUTTON)) { 
@@ -2256,45 +2263,50 @@ u8 PageIncrementNow(struct MenuProc * menu, struct MenuItemProc * menuItem) {
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
+/**
+ * Keeping this function turned off for now as it's used elsewhere in the skill system
+ * so we'd end up with conflicting definitions. So Godmode is unavailble for now.
+ */
 
-void ComputeBattleUnitEffectiveStats(struct BattleUnit* attacker, struct BattleUnit* defender) {
-    ComputeBattleUnitEffectiveHitRate(attacker, defender);
-    ComputeBattleUnitEffectiveCritRate(attacker, defender);
-    ComputeBattleUnitSilencerRate(attacker, defender);
-    ComputeBattleUnitSpecialWeaponStats(attacker, defender);
-	DebuggerProc* proc; 
-	proc = Proc_Find(DebuggerProcCmdIdler); 
-    if (!proc) { return; } 
-    #define MaxStat 99 
-    if (proc->godMode) { 
-        struct BattleUnit* bunitA = attacker; 
-        struct BattleUnit* bunitB = defender; 
-        if (UNIT_FACTION(&attacker->unit) == FACTION_RED) { 
-            bunitA = defender; bunitB = attacker; 
-        } 
-        bunitA->battleAttack = bunitB->unit.maxHP;
-        bunitA->battleDefense = MaxStat;
-        bunitA->battleSpeed = MaxStat;
-        bunitA->battleHitRate = MaxStat*2;
-        bunitA->battleAvoidRate = MaxStat;
-        bunitA->battleEffectiveHitRate = 100;
-        bunitA->battleCritRate = MaxStat*2;
-        bunitA->battleDodgeRate = 100;
-        bunitA->battleEffectiveCritRate = 100;
+// LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveStats);
+// void ComputeBattleUnitEffectiveStats(struct BattleUnit* attacker, struct BattleUnit* defender) {
+//     ComputeBattleUnitEffectiveHitRate(attacker, defender);
+//     ComputeBattleUnitEffectiveCritRate(attacker, defender);
+//     ComputeBattleUnitSilencerRate(attacker, defender);
+//     ComputeBattleUnitSpecialWeaponStats(attacker, defender);
+// 	DebuggerProc* proc; 
+// 	proc = Proc_Find(DebuggerProcCmdIdler); 
+//     if (!proc) { return; } 
+//     #define MaxStat 99 
+//     if (proc->godMode) { 
+//         struct BattleUnit* bunitA = attacker; 
+//         struct BattleUnit* bunitB = defender; 
+//         if (UNIT_FACTION(&attacker->unit) == FACTION_RED) { 
+//             bunitA = defender; bunitB = attacker; 
+//         } 
+//         bunitA->battleAttack = bunitB->unit.maxHP;
+//         bunitA->battleDefense = MaxStat;
+//         bunitA->battleSpeed = MaxStat;
+//         bunitA->battleHitRate = MaxStat*2;
+//         bunitA->battleAvoidRate = MaxStat;
+//         bunitA->battleEffectiveHitRate = 100;
+//         bunitA->battleCritRate = MaxStat*2;
+//         bunitA->battleDodgeRate = 100;
+//         bunitA->battleEffectiveCritRate = 100;
 
-        bunitB->hpInitial = 1; 
-        bunitB->battleAttack = 0;
-        bunitB->battleDefense = 0;
-        bunitB->battleSpeed = 0;
-        bunitB->battleHitRate = 0;
-        bunitB->battleAvoidRate = 0;
-        bunitB->battleEffectiveHitRate = 0;
-        bunitB->battleCritRate = 0;
-        bunitB->battleDodgeRate = 0;
-        bunitB->battleEffectiveCritRate = 0;
-    }
+//         bunitB->hpInitial = 1; 
+//         bunitB->battleAttack = 0;
+//         bunitB->battleDefense = 0;
+//         bunitB->battleSpeed = 0;
+//         bunitB->battleHitRate = 0;
+//         bunitB->battleAvoidRate = 0;
+//         bunitB->battleEffectiveHitRate = 0;
+//         bunitB->battleCritRate = 0;
+//         bunitB->battleDodgeRate = 0;
+//         bunitB->battleEffectiveCritRate = 0;
+//     }
     
-}
+// }
 
 u8 PickupUnitNow(struct MenuProc * menu, struct MenuItemProc * menuItem) {
     //SetupUnitFunc(); 
@@ -2737,6 +2749,7 @@ void InitProc(DebuggerProc* proc) {
 }
 
 //! FE8U = 0x08015450
+LYN_REPLACE_CHECK(BmMain_StartPhase);
 void BmMain_StartPhase(ProcPtr proc)
 {
     int phaseControl = gPlaySt.faction;
@@ -2988,6 +3001,7 @@ struct ProcCmd const ProcScr_HelpBoxIntroString[] = {
     PROC_END,
 };
 
+LYN_REPLACE_CHECK(ClearHelpBoxText);
 void ClearHelpBoxText(void) { // replaces original function 
 
     SetTextFont(&gHelpBoxSt.font);
@@ -3277,9 +3291,4 @@ void PutNumberHex(u16 *tm, int color, int number)
 
         tm--;
     }
-}
-
-int Mod(int a, int b)
-{
-    return a % b;
 }

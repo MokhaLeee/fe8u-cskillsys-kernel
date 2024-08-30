@@ -2,6 +2,7 @@
 #ifndef callHackNew 
 	#define callHackNew(offset) 		"BYTE $01 $4B $9E $46 $00 $F8 $01 $E0; POIN (offset|0x1)"
 #endif 
+#include "LynJump.event"
 #include "Hooks.lyn.event" 
 #include "C_Code.lyn.event" 
 
