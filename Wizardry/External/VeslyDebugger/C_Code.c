@@ -25,6 +25,62 @@ typedef struct {
     struct Unit* unit; 
 } DebuggerProc;
 
+typedef struct { 
+    /* 00 */ PROC_HEADER;
+    int id; 
+} CheatCodeKeyListenerProc;
+
+const u16 KonamiCodeSequence[] = { DPAD_UP, DPAD_UP, DPAD_DOWN, DPAD_DOWN, DPAD_LEFT, DPAD_RIGHT, DPAD_LEFT, DPAD_RIGHT, B_BUTTON, A_BUTTON, 0, 0 }; 
+extern int DebuggerTurnedOff_Flag; 
+extern int KeyComboToDisableFlag; 
+extern int KonamiCodeEnabled; 
+
+void ToggleFlag(int flag) { 
+    if (CheckFlag(flag)) { ClearFlag(flag); } 
+    else { SetFlag(flag); } 
+} 
+
+void CheckKeysForCheatCode(CheatCodeKeyListenerProc* proc) { 
+    int keys = gKeyStatusPtr->newKeys; 
+    if (!keys) { return; } 
+
+    if (KonamiCodeEnabled) { 
+        if (KonamiCodeSequence[proc->id] & keys) { proc->id++; } 
+        else {  if (keys & DPAD_UP) { proc->id = 2; } 
+                else { proc->id = 0; } 
+        }
+        if (!KonamiCodeSequence[proc->id]) { ToggleFlag(DebuggerTurnedOff_Flag); proc->id = 0; } 
+    }
+    keys |= gKeyStatusPtr->heldKeys; 
+    if (KeyComboToDisableFlag) { 
+        if ((keys&KEYS_MASK) == KeyComboToDisableFlag) { 
+            ToggleFlag(DebuggerTurnedOff_Flag); 
+        } 
+    } 
+
+} 
+
+const struct ProcCmd CheatCodeKeyListenerCmd[] =
+{
+	PROC_NAME("CheatCodeKeyListenerProc"), 
+    PROC_YIELD,
+    PROC_REPEAT(CheckKeysForCheatCode), 
+    PROC_END, 
+}; 
+
+
+int StartKeyListenerProc(void) { 
+    int keys = gKeyStatusPtr->newKeys; 
+    if (!keys) { return 0; } 
+    CheatCodeKeyListenerProc* proc = Proc_Find(CheatCodeKeyListenerCmd); 
+    if (proc) { 
+        return 0; 
+    } 
+    proc = Proc_Start(CheatCodeKeyListenerCmd, PROC_TREE_3); 
+    proc->id = 0; 
+    return true; 
+} 
+
 void CopyProcVariables(DebuggerProc* dst, DebuggerProc* src) { 
     dst->tileID = src->tileID; 
     dst->mainID = src->mainID; 
@@ -1528,7 +1584,7 @@ void EditMiscIdle(DebuggerProc* proc) {
 } 
 
 
-#define NumberOfLoad 4 
+#define NumberOfLoad 6
 #define LoadNameWidth 12 
 
 
@@ -1590,10 +1646,12 @@ static void ReinitUnitDef(struct UnitDefinition* uDef, struct Unit* unit) {
 	uDef->ai[3] = (unit->ai3And4>>8);
 } 
 
-#define SingleUnit 0 
-#define PlayerUnits 1 
-#define BossUnits 2 
-#define ExistingUnits 3 
+#define SinglePlayer 0 
+#define SingleNPC 1 
+#define SingleEnemy 2 
+#define PlayerUnits 3 
+#define BossUnits 4 
+#define ExistingUnits 5
 
 int FindNextBoss(int c) { 
     const struct CharacterData* data; 
@@ -1602,6 +1660,97 @@ int FindNextBoss(int c) {
         if (data->attributes & CA_BOSS) { return c; } 
     } 
     return 0; 
+}
+
+const u8 BasicWeaponsByType[] = { ITEM_SWORD_IRON,  ITEM_LANCE_IRON, ITEM_AXE_IRON, ITEM_BOW_IRON, ITEM_STAFF_HEAL, ITEM_ANIMA_FIRE, ITEM_LIGHT_LIGHTNING, ITEM_DARK_FLUX, ITEM_MONSTER_ROTTENCLW, ITEM_LOCKPICK, ITEM_ELIXIR, ITEM_VULNERARY}; 
+static void SilentTryAddItem(struct Unit* unit, int itemType) { 
+    for (int i = 0; i < 5; ++i) { 
+        if (!unit->items[i]) { 
+            unit->items[i] = MakeNewItem(BasicWeaponsByType[itemType]); 
+            break; 
+        } 
+    } 
+} 
+
+void GrantWeapons(struct Unit* unit) { 
+    if (unit->items[0]) { return; } 
+    for (int i = 0; i < 8; ++i) { 
+        if (unit->ranks[i]) { 
+            SilentTryAddItem(unit, i); 
+        } 
+    } 
+    if (UNIT_CATTRIBUTES(unit) & CA_LOCK_3) { 
+        SilentTryAddItem(unit, 8); 
+    } 
+    if (UNIT_CATTRIBUTES(unit) & CA_THIEF) { 
+        SilentTryAddItem(unit, 9); 
+    } 
+    if (UNIT_FACTION(unit) == FACTION_RED) { return; } 
+    if (UNIT_CATTRIBUTES(unit) & CA_PROMOTED) { 
+        SilentTryAddItem(unit, 10); // elixir 
+    } 
+    else { 
+    SilentTryAddItem(unit, 11); // vuln 
+    } 
+} 
+
+inline s8 CanUnitCrossTerrain2(struct Unit* unit, int terrain) {
+    const s8* lookup = GetUnitMovementCost(unit);
+    return (lookup[terrain] > 0) ? TRUE : FALSE;
+}
+
+void FindNearestTile(struct Unit* unit) { 
+    if (unit->state & (US_DEAD | US_NOT_DEPLOYED | US_BIT16)) { return; }  
+    int xOut = -1; 
+    int yOut = -1;
+    int iy, ix, minDistance = 9999;
+
+    unit->xPos = gActiveUnit->xPos; 
+    unit->yPos = gActiveUnit->yPos; 
+    // Fill the movement map
+    GenerateExtendedMovementMap(unit->xPos, unit->yPos, TerrainTable_MovCost_FlyNormal);
+
+    // Put the active unit on the unit map (kinda, just marking its spot)
+    // // gBmMapUnit[gActiveUnit->yPos][gActiveUnit->xPos] = 0xFF;
+
+    // Remove the actor unit from the unit map (why?)
+    // // gBmMapUnit[unit->yPos][unit->xPos] = 0;
+
+    for (iy = gBmMapSize.y - 1; iy >= 0; --iy) {
+        for (ix = gBmMapSize.x - 1; ix >= 0; --ix) {
+            int distance;
+
+            if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
+                continue;
+
+            if (gBmMapUnit[iy][ix] != 0)
+                continue;
+
+            if (gBmMapHidden[iy][ix] & HIDDEN_BIT_UNIT)
+                continue;
+
+            if (!CanUnitCrossTerrain2(unit, gBmMapTerrain[iy][ix]))
+                continue;
+
+            distance = RECT_DISTANCE(ix, iy, unit->xPos, unit->yPos);
+
+            if (minDistance >= distance) {
+                minDistance = distance;
+
+                xOut = ix;
+                yOut = iy;
+            }
+        }
+    }
+
+    // Remove the active unit from the unit map again
+    // gBmMapUnit[gActiveUnit->yPos][gActiveUnit->xPos] = 0;
+    if (xOut >= 0) { unit->xPos = xOut; } 
+    else { unit->xPos = 0; } 
+    if (yOut >= 0) { unit->yPos = yOut; } 
+    else { unit->yPos = 0; } 
+    gBmMapUnit[unit->yPos][unit->xPos] = unit->index; 
+
 } 
 
 
@@ -1616,7 +1765,9 @@ void LoadAllUnits(int type, int uid) {
     int c_end = 0xFD; // last BWL is 0x45  
 	if (type == BossUnits) { i = 0x80; attr = CA_BOSS; c_end = 0xFD; } 
 	if (type == PlayerUnits) { end = 0x80; c_end = 50; } 
-	if (type == SingleUnit) { c = uid; c_end = uid + 1; } 
+    if (type == SinglePlayer) { c = uid; c_end = uid + 1; } 
+	if (type == SingleNPC) { c = uid; c_end = uid + 1; i = 0x40; } 
+	if (type == SingleEnemy) { c = uid; c_end = uid + 1; i = 0x80; } 
     
     int deployedPlayers = 0; 
     int deployedNPCs = 0; 
@@ -1674,26 +1825,17 @@ void LoadAllUnits(int type, int uid) {
             InitUnitDef(&uDef, unit, GetCharacterData(c)); 
         } 
 		LoadUnit(&uDef); 
+        GrantWeapons(unit); 
 		unit->state = state; 
+        FindNearestTile(unit); 
         c++; 
 	} 
 } 
 
-void SaveLoadUnit(DebuggerProc* proc) { 
-
-    
-    //struct Unit* unit = proc->unit; 
-    LoadAllUnits(proc->id, proc->tmp[0]);
-
-
-}  
-
 void SaveLoadUnits(DebuggerProc* proc) { 
 
-    //struct Unit* unit = proc->unit; 
-    LoadAllUnits(proc->id, proc->tmp[0]);
-
-
+    int id = proc->id; 
+    LoadAllUnits(id, proc->tmp[id]);
 }  
 
 int GetLoadMax(int val) { 
@@ -1709,11 +1851,13 @@ void LoadUnitsInit(DebuggerProc* proc) {
     SomeMenuInit(proc); 
     LoadIconPalettes(4);
     //struct Unit* unit = proc->unit; 
-    for (int i = 0; i < NumberOfLoad; ++i) { 
+    for (int i = 0; i < NumberOfLoad+3; ++i) { 
         proc->tmp[i] = 0; 
     }
     
     proc->tmp[0] = 1; // Eirika default 
+    proc->tmp[1] = 0xCC; // Messenger
+    proc->tmp[2] = 0x68; // O'Neil 
     // proc->tmp[0] = unit->pCharacterData->number; 
     // proc->tmp[1] = unit->pClassData->number; 
     // proc->tmp[2] = unit->level; 
@@ -1735,7 +1879,7 @@ void LoadUnitsInit(DebuggerProc* proc) {
 
     struct Text* th = gStatScreen.text;
     
-    for (int i = 0; i <= NumberOfLoad; ++i) { 
+    for (int i = 0; i <= NumberOfLoad+3; ++i) { 
         InitText(&th[i], LoadNameWidth);
     } 
 
@@ -1753,26 +1897,32 @@ void RedrawLoadMenu(DebuggerProc* proc) {
     //struct Unit* unit = proc->unit; 
     struct Text* th = gStatScreen.text;
     int i = 0; 
-    for (i = 0; i <= NumberOfLoad; ++i) { 
+    for (i = 0; i <= NumberOfLoad+3; ++i) { 
         ClearText(&th[i]); 
     } 
     
     
     i = 0; 
     
-    Text_DrawString(&th[i], "Load Unit"); i++; 
+    Text_DrawString(&th[i], "Load Player"); i++; 
+    Text_DrawString(&th[i], "Load NPC"); i++; 
+    Text_DrawString(&th[i], "Load Enemy"); i++; 
     Text_DrawString(&th[i], "Load all players"); i++; 
     Text_DrawString(&th[i], "Load all bosses"); i++; 
     Text_DrawString(&th[i], "Reload units"); i++; 
     //Text_DrawString(&th[i], "Preparations menu"); i++; 
     Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(proc->tmp[0])->nameTextId)); i++; 
+    Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(proc->tmp[1])->nameTextId)); i++; 
+    Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(proc->tmp[2])->nameTextId)); i++; 
     
     int x = NUMBER_X - (LoadNameWidth); 
     for (i = 0; i < NumberOfLoad; ++i) { 
         PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x, Y_HAND + (i*2))); 
     } 
-    PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x + 6, Y_HAND)); 
-    for (i = 0; i < 1; ++i) { 
+    PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x + 7, Y_HAND)); i++; 
+    PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x + 7, Y_HAND+2)); i++; 
+    PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x + 7, Y_HAND+4)); i++; 
+    for (i = 0; i < 3; ++i) { 
         //PutNumber(gBG0TilemapBuffer + TILEMAP_INDEX(START_X, Y_HAND + (i*2)), TEXT_COLOR_SYSTEM_GOLD, proc->tmp[i]); 
         PutNumberHex(gBG0TilemapBuffer + TILEMAP_INDEX(START_X, Y_HAND + (i*2)), TEXT_COLOR_SYSTEM_GOLD, proc->tmp[i]); 
     } 
@@ -1842,12 +1992,12 @@ void LoadUnitsIdle(DebuggerProc* proc) {
         if (keys & DPAD_RIGHT) {
             proc->digit = 1; 
             proc->editing = true; 
-            proc->id = 0; 
+            if (proc->id > 2) { proc->id = 2; } 
         }
         if (keys & DPAD_LEFT) {
             proc->digit = 0; 
             proc->editing = true; 
-            proc->id = 0; 
+            if (proc->id > 2) { proc->id = 2; } 
         }
         
         if (keys & DPAD_UP) {
@@ -2359,7 +2509,7 @@ u8 EditStateNow(struct MenuProc * menu, struct MenuItemProc * menuItem) {
 
 
 
-extern int DebuggerTurnedOff_Flag; 
+// extern int DebuggerTurnedOff_Flag; 
 int ShouldStartDebugger(void) { 
     if (CheckFlag(DebuggerTurnedOff_Flag)) { return false; } 
     return true; 
@@ -2508,9 +2658,9 @@ void PageMenuItemDrawSprites(struct MenuProc* menu) {
     int y = (menu->menuItems[menu->itemCount - 1]->yTile * 8) + 4; 
 
     
-    PutSprite(0, x, y, gObject_8x8, TILEREF(chr, 4) + OAM2_LAYER(0) + proc->page + 1); x+=8; 
-    PutSprite(0, x, y, gObject_8x8, TILEREF(chr, 4) + OAM2_LAYER(0)); x+=8; 
-    PutSprite(0, x, y, gObject_8x8, TILEREF(chr, 4) + OAM2_LAYER(0) + NumberOfPages); x+=8; 
+    PutSprite(0, x, y, gObject_8x8, TILEREF(chr, 0) + OAM2_LAYER(0) + proc->page + 1); x+=8; 
+    PutSprite(0, x, y, gObject_8x8, TILEREF(chr, 0) + OAM2_LAYER(0)); x+=8; 
+    PutSprite(0, x, y, gObject_8x8, TILEREF(chr, 0) + OAM2_LAYER(0) + NumberOfPages); x+=8; 
 
 } 
 
@@ -2739,6 +2889,7 @@ void InitProc(DebuggerProc* proc) {
     proc->page = 0; 
     proc->editing = false; 
     proc->actionID = 0; 
+    proc->lastFlag = 1; 
     proc->godMode = 0; 
     proc->tileID = 1; 
     proc->id = 0; 

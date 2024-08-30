@@ -5,6 +5,7 @@
 .type CallDebuggerProc, %function 
 CallDebuggerProc: 
 push  {r14}
+bl StartKeyListenerProc
 ldr r0, =0x858791c 
 ldr r0, [r0] @ 0x2024cc0
 ldrh r1, [r0, #8] @ new button 

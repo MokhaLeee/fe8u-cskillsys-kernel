@@ -10,6 +10,24 @@ ALIGN 4
 DebuggerTurnedOff_Flag:
 WORD 0xEC // if this flag is on, the debugger is off 
 
+#define A_BUTTON        0x0001
+#define B_BUTTON        0x0002
+#define SELECT_BUTTON   0x0004
+#define START_BUTTON    0x0008
+#define DPAD_RIGHT      0x0010
+#define DPAD_LEFT       0x0020
+#define DPAD_UP         0x0040
+#define DPAD_DOWN       0x0080
+#define R_BUTTON        0x0100
+#define L_BUTTON        0x0200
+
+ALIGN 4 
+KeyComboToDisableFlag:
+WORD DPAD_UP|DPAD_LEFT|L_BUTTON 
+
+ALIGN 4 
+KonamiCodeEnabled:
+WORD 1 // if 0, it is disabled 
 
 PUSH 
 ORG 0x1ca0c
