@@ -10,7 +10,6 @@
     - Auto save function
     - Status Ailment Swords
     - Base stat based promotion for reclassing
-    - Lose bow durability on miss
     - When calculating the attack speed, calculate with CON + Skill / 4.
     - Change from death to HP1 with Lethality
     - Use magic motion when physical attack hits
@@ -37,7 +36,6 @@
     - Change weapon's range text
     - HeroesMovement
     - Increase Enemy's hit rate
-    - HPBars
     - Icon Display
     - Lose Weapon Ranks on Promotion
     - Magic Sword

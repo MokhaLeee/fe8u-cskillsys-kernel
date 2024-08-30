@@ -221,3 +221,8 @@ extern u8 const * const gpLeaderShipJConf;
 
 int GetUnitLeaderShip(struct Unit * unit);
 void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit * target);
+
+/**
+ * Bow2Decrease patch
+ */
+bool CheckWeaponCostForMissedBowAttack(struct BattleUnit * actor);

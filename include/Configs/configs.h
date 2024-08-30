@@ -115,6 +115,11 @@
 // #define CONFIG_INSTALL_STATSCREENFX
 
 /**
+ * Install Bow2Decrease
+ */
+#define CONFIG_INSTALL_BOW2DECREASE
+
+/**
  * Install ConvoyExpa
  */
 #define CONFIG_INSTALL_CONVOYEXPA
