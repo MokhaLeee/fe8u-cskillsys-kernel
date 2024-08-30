@@ -101,6 +101,12 @@ int MagGetterSkills(int status, struct Unit * unit)
 #endif
     }
 
+#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
+    if (SkillTester(unit, SID_PairUp))
+        if (unit->state & US_RESCUING)
+            status += Div(_GetUnitMagic(GetUnit(unit->rescue)) * SKILL_EFF0(SID_PairUp), 100);
+#endif
+
     return status;
 }
 

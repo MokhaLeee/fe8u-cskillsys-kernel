@@ -74,3 +74,8 @@ additional spaces in fog.[X]
 Amische:[NL]
 This unit's religion prevents[NL]
 them from using non-iron weaponry.[X]
+
+## MSG_SKILL_PairUp
+Pair Up:[NL]
+Rescue a unit and gain 20%[NL]
+of their stats as boosts.[X]
