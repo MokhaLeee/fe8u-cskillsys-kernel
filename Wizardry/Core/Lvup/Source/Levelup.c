@@ -134,12 +134,18 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit * bu, int bonus)
     }
 }
 
+static inline int get_metis_tome_growth_bonus(void)
+{
+    extern const u8 MetisTomeGrowthBonus;
+    return MetisTomeGrowthBonus;
+}
+
 LYN_REPLACE_CHECK(CheckBattleUnitLevelUp);
 void CheckBattleUnitLevelUp(struct BattleUnit * bu)
 {
     if (CanBattleUnitGainLevels(bu) && bu->unit.exp >= 100)
     {
-        int bonus = (bu->unit.state & US_GROWTH_BOOST) ? 5: 0;
+        int bonus = (bu->unit.state & US_GROWTH_BOOST) ? get_metis_tome_growth_bonus(): 0;
 
         bu->unit.exp -= 100;
         bu->unit.level++;
