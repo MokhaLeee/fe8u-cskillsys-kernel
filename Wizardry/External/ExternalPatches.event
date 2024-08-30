@@ -25,3 +25,7 @@
 #ifdef CONFIG_INSTALL_NO_WAIT_AFTER_TRADING
     #include "NoWaitAfterTrading/Installer.event"
 #endif
+
+#ifdef CONFIG_INSTALL_VESLY_DEBUGGER
+    #include "VeslyDebugger/Installer.event"
+#endif

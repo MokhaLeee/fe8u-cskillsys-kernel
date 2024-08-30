@@ -119,6 +119,14 @@
 #define CONFIG_INSTALL_NO_WAIT_AFTER_TRADING
 
 /**
+ * By Vesly:
+ * Speed up your rom hack testing with this tool kit of
+ * menu options that lets you test everything from promotions to
+ * chapter warps to arena battles all from the start.
+ */
+#define CONFIG_INSTALL_VESLY_DEBUGGER
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable
