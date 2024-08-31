@@ -127,6 +127,14 @@
 #define CONFIG_INSTALL_VESLY_DEBUGGER
 
 /**
+ * DO NOT ENABLE
+ * Increase the caps of the stat bars for units
+ * IN_PROGRESS - currently need to integrate https://github.com/FireEmblemUniverse/fireemblem8u/blob/12004dfd31c8f860804b811fc110394747dbcd12/src/data_classes.c#L1
+ * to preprocess new stat caps for each class
+ */
+// #define CONFIG_INSTALL_EXTENDED_STAT_BARS
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable
