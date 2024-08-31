@@ -128,7 +128,11 @@ void DrawStatWithBarRework(int num, int x, int y, u16 * tm1, u16 * tm2, int base
      * Here the max value maybe more than 35,
      * but we need to fix the bar's length shorter than 35
      */
+
+    // This shows the bonus numbers
     int diff = total - base;
+
+    // Length of stat bar, higher values reduce the size?
     int max_bar = gStatScreenStExpa.unitpage_max;
 
     PutNumberOrBlank(
@@ -151,4 +155,47 @@ void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc)
         proc->mid = 0x56A;
     else
         proc->mid = 0x550;
+}
+
+LYN_REPLACE_CHECK(DrawStatBar);
+void DrawStatBar(
+    int tile, int padding, int bufWidth, int barWidth, int progressLength, int cappedLength)
+{
+    //int i, j, val, val1; //k, val and val1 not used apparently?
+    int i;
+    u8 *buf = gGenericBuffer;
+    int divisor = 1;
+    CpuFastFill(0, buf, 0x40 * bufWidth);
+
+#ifdef CONFIG_INSTALL_EXTENDED_STAT_BARS
+    divisor = 2;
+#endif
+
+    for (i = 1; i < (barWidth + 1)/divisor; i++)
+        DrawStatBarUnfilledCol(buf, 8 * bufWidth, i + ({padding + 1;}));
+
+    DrawStatBarLeftBorder(buf, 8 * bufWidth, padding + 1);
+    DrawStatBarRightBorder(buf, 8 * bufWidth, padding + (barWidth + 2)/divisor);
+    DrawStatBarShadow(buf, 8 * bufWidth, padding + (barWidth + 3)/divisor);
+
+    for (i = 0; i < progressLength/divisor; i++)
+        DrawStatBarFilledCol(buf, 8 * bufWidth, i + ({padding + 2;}));
+
+    for (i = 0; i < cappedLength/divisor; i++)
+        DrawStatBarCappedCol(buf, 8 * bufWidth, i + progressLength/divisor + padding + 2);
+
+    ApplyBitmap(buf, (void*)(32 * tile + 0x6000000), bufWidth, 1);
+}
+
+// bufWidth: The width of the allocated buffer canvas
+// barWidth: The width of the bar itself (in tiles)
+// progressLength: The length of the "progress" of the bar (the yellow part)
+// cappedLength: Same as above, controls the part that flashes green when stat capped
+LYN_REPLACE_CHECK(DrawStatBarGfx);
+void DrawStatBarGfx(
+    int tile, int bufWidth, u16* buf, int tileBase,
+    int barWidth, int progressLength, int cappedLength)
+{
+    DrawStatBar(tile, 1, bufWidth, barWidth, progressLength, cappedLength);
+    PutAppliedBitmap(buf, tileBase + (tile & 0x3FF), bufWidth, 1);
 }
