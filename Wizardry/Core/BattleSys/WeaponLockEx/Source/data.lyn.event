@@ -1,0 +1,5 @@
+ALIGN 4
+PUSH
+ORG CURRENTOFFSET+$0;gWeaponLockExConfs:
+POP
+WORD $109 $0 $0 $0

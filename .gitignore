@@ -20,8 +20,6 @@ Tools/dotnet-install.sh
 # Wizardry
 *.o
 *.d
-*.dmp
-*.lyn.event
 
 # Spritans
 *.4bpp
