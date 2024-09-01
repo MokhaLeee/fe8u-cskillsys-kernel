@@ -79,3 +79,8 @@ them from using non-iron weaponry.[X]
 Pair Up:[NL]
 Rescue a unit and gain 20%[NL]
 of their stats as boosts.[X]
+
+## MSG_SKILL_Reflex
+Reflex:[NL]
+This unit's turn isn't ended[NL]
+when surprised by enemies in fog.[X]

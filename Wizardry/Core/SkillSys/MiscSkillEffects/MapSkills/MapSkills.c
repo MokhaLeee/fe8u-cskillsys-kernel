@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "mu.h"
 
 /*
 ** This array is static in the decomp, but it wouldn't compile for me otherwise
@@ -153,4 +154,69 @@ int GetUnitFogViewRange(struct Unit *unit)
     }
 
     return result + unit->torchDuration;
+}
+
+LYN_REPLACE_CHECK(UnitApplyWorkingMovementScript);
+void UnitApplyWorkingMovementScript(struct Unit *unit, int x, int y)
+{
+    u8 *it = gWorkingMovementScript;
+
+    for (;;)
+    {
+        gActionData.xMove = x;
+        gActionData.yMove = y;
+
+        switch (*it)
+        {
+
+        case MOVE_CMD_MOVE_UP: // up
+            y--;
+            break;
+
+        case MOVE_CMD_MOVE_DOWN: // down
+            y++;
+            break;
+
+        case MOVE_CMD_MOVE_LEFT: // left
+            x--;
+            break;
+
+        case MOVE_CMD_MOVE_RIGHT: // right
+            x++;
+            break;
+
+        } // switch (*it)
+
+        if (!(UNIT_CATTRIBUTES(unit) & (CA_THIEF | CA_FLYER | CA_ASSASSIN)))
+        {
+            if (gBmMapHidden[y][x] & HIDDEN_BIT_TRAP)
+            {
+                *++it = MOVE_CMD_HALT;
+
+                gActionData.unitActionType = UNIT_ACTION_TRAPPED;
+                gActionData.xMove = x;
+                gActionData.yMove = y;
+
+                return;
+            }
+        }
+        if (gBmMapHidden[y][x] & HIDDEN_BIT_UNIT)
+        {
+            *it++ = MOVE_CMD_BUMP;
+            *it++ = MOVE_CMD_HALT;
+
+#if defined(SID_Reflex) && (COMMON_SKILL_VALID(SID_Reflex))
+        if (!SkillTester(unit, SID_Reflex))
+            gActionData.unitActionType = UNIT_ACTION_TRAPPED;   
+#else
+        gActionData.unitActionType = UNIT_ACTION_TRAPPED;
+#endif
+            return;
+        }
+
+        if (*it == MOVE_CMD_HALT)
+            break;
+
+        it++;
+    }
 }

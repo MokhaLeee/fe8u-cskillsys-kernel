@@ -69,6 +69,7 @@ u8 GetCombatArtByTargetSelIndex(void)
     return calist->cid[sSelectedComatArtIndex - 1];
 }
 
+
 STATIC_DECLAR void RegisterCombatArtStatusInTargetSel(int sel_index)
 {
     int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
