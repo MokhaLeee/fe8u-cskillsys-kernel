@@ -141,6 +141,7 @@ SID_HoneChaos
 SID_Acrobat
 SID_Contrary
 SID_Reflex
+SID_RampUp
 
 // Lull skills
 SID_LullDefense
