@@ -51,6 +51,7 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     const BattleDamageCalcFunc * it;
+    bool alteredCrit = false;
 
     bool barricadePlus_activated;
     int result;
@@ -120,6 +121,14 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     gDmg.attack = gBattleStats.attack;
     gDmg.defense = gBattleStats.defense;
     gDmg.correction = 0;
+
+#if defined(SID_RampUp) && (COMMON_SKILL_VALID(SID_RampUp))
+    if (BattleSkillTester(attacker, SID_RampUp) && gDmg.crit_atk)
+    {
+        alteredCrit = true;
+        gDmg.attack *= 2;
+    }
+#endif
 
     if (attacker == &gBattleActor)
     {
@@ -353,7 +362,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
      * Step4: Calculate critial damage amplifier (200%  + crit_correction%)
      */
     gDmg.crit_correction = 100;
-    if (gDmg.crit_atk)
+    if (gDmg.crit_atk && !alteredCrit)
     {
         gDmg.crit_correction = 300;
 
