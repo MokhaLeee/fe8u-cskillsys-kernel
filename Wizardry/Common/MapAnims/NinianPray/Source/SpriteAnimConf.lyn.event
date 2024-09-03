@@ -1,8 +1,0 @@
-ALIGN 4
-PUSH
-ORG CURRENTOFFSET+$0;EventSpriteAnimConf_NinianPray:
-POP
-POIN Pal_NinianPrayfx
-POIN Img_NinianPrayfx
-POIN SpritAnim_NinianPrayfx
-WORD $2800000 $105
