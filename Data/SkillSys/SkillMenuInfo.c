@@ -333,4 +333,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Transform) && COMMON_SKILL_VALID(SID_Transform))
+    [SID_Transform] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_TransformName,
+        .helpMsgId = MSG_SKILL_Transform,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Transform_Usability,
+        .onDraw = NULL,
+        .onSelected = Transform_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

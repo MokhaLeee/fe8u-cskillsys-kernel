@@ -276,6 +276,7 @@ SID_GoddessDance
 SID_Stride
 SID_Blacksmith
 SID_PairUp
+SID_Transform
 
 // Art skills
 SID_COMBAT_Galeforce
