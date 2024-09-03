@@ -142,6 +142,7 @@ SID_Acrobat
 SID_Contrary
 SID_Reflex
 SID_RampUp
+SID_DarkBargain
 
 // Lull skills
 SID_LullDefense

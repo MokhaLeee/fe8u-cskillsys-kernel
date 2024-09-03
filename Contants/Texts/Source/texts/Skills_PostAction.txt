@@ -120,3 +120,8 @@ L-Example[X]
 Lead By Example:[NL]
 On a successful kill, adjacent[NL]
 allies can move again this turn.[X]
+
+## MSG_SKILL_DarkBargain
+Dark Bargain:[NL]
+At the end of this unit's turn,[NL]
+heal missing HP by using EXP.[X]
