@@ -231,3 +231,15 @@ No allies are in range![X]
 Vigor Dance:[NL]
 Boost ally's POW/DEF +2 for[NL]
 1 turn after dancing.[X]
+
+## MSG_SKILL_Transform
+Transform:[NL]
+Allows the unit to transform[NL]
+into a selected class.[X]
+
+## MSG_MenuSkill_TransformName
+ Transform[X]
+
+## MSG_SKILL_Transform_FRtext
+This unit is already[NL]
+transformed![X]

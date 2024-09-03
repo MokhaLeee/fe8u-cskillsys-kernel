@@ -2,12 +2,16 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 #include "mu.h"
+#include "debuff.h"
 
 /*
 ** This array is static in the decomp, but it wouldn't compile for me otherwise
 ** I also had to define it in the vanilla.h file
 */
 EWRAM_DATA u16 sTilesetConfig[0x1000 + 0x200] = {};
+
+extern const int transformationPairs[1][2];
+extern const int numKeyValuePairs;
 
 LYN_REPLACE_CHECK(RefreshUnitsOnBmMap);
 void RefreshUnitsOnBmMap(void)
@@ -206,10 +210,10 @@ void UnitApplyWorkingMovementScript(struct Unit *unit, int x, int y)
             *it++ = MOVE_CMD_HALT;
 
 #if defined(SID_Reflex) && (COMMON_SKILL_VALID(SID_Reflex))
-        if (!SkillTester(unit, SID_Reflex))
-            gActionData.unitActionType = UNIT_ACTION_TRAPPED;   
+            if (!SkillTester(unit, SID_Reflex))
+                gActionData.unitActionType = UNIT_ACTION_TRAPPED;
 #else
-        gActionData.unitActionType = UNIT_ACTION_TRAPPED;
+            gActionData.unitActionType = UNIT_ACTION_TRAPPED;
 #endif
             return;
         }
@@ -219,4 +223,78 @@ void UnitApplyWorkingMovementScript(struct Unit *unit, int x, int y)
 
         it++;
     }
+}
+
+LYN_REPLACE_CHECK(ChapterChangeUnitCleanup);
+void ChapterChangeUnitCleanup(void)
+{
+    int i, j;
+
+    // Clear phantoms
+    for (i = 1; i < 0x40; ++i)
+    {
+        struct Unit *unit = GetUnit(i);
+
+        if (unit && unit->pCharacterData)
+            if (UNIT_IS_PHANTOM(unit))
+                ClearUnit(unit);
+    }
+
+    // Clear all non player units (green & red units)
+    for (i = 0x41; i < 0xC0; ++i)
+    {
+        struct Unit *unit = GetUnit(i);
+
+        if (unit && unit->pCharacterData)
+            ClearUnit(unit);
+    }
+
+    // Reset player unit "temporary" states (HP, status, some state flags, etc)
+    for (j = 1; j < 0x40; ++j)
+    {
+        struct Unit *unit = GetUnit(j);
+
+    // Reset the transformed state of any units with the skill
+#if defined(SID_Transform) && (COMMON_SKILL_VALID(SID_Transform))
+        if (SkillTester(unit, SID_Transform))
+        {
+            for (int i = 0; i < numKeyValuePairs; i++)
+            {
+                if (gActiveUnit->pClassData->number == transformationPairs[i][1])
+                {
+                    unit->pClassData = GetClassData(transformationPairs[i][0]);
+                    ClearUnitStatDebuff(gActiveUnit, UNIT_STAT_BUFF_TRANSFORM);
+                    unit->maxHP -= 7;
+                }
+            }
+        }
+#endif
+
+        if (unit && unit->pCharacterData)
+        {
+            SetUnitHp(unit, GetUnitMaxHp(unit));
+            SetUnitStatus(unit, UNIT_STATUS_NONE);
+
+            unit->torchDuration = 0;
+            unit->barrierDuration = 0;
+
+            if (unit->state & US_NOT_DEPLOYED)
+                unit->state = unit->state | US_BIT21;
+            else
+                unit->state = unit->state & ~US_BIT21;
+
+            unit->state &= (US_DEAD | US_GROWTH_BOOST | US_SOLOANIM_1 | US_SOLOANIM_2 |
+                            US_BIT16 | US_BIT20 | US_BIT21 | US_BIT25 | US_BIT26);
+
+            if (UNIT_CATTRIBUTES(unit) & CA_SUPPLY)
+                unit->state = unit->state & ~US_DEAD;
+
+            unit->state |= US_HIDDEN | US_NOT_DEPLOYED;
+
+            unit->rescue = 0;
+            unit->supportBits = 0;
+        }
+    }
+
+    gPlaySt.chapterStateBits = gPlaySt.chapterStateBits & ~PLAY_FLAG_PREPSCREEN;
 }

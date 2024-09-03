@@ -135,6 +135,13 @@
 // #define CONFIG_INSTALL_EXTENDED_STAT_BARS
 
 /**
+ * Set the widths of the various popup menus (in pixels)
+ * Popup widths defined in: Wizardry/External/PopupMenuWidths/PopupMenuWidths.h
+ */
+#define CONFIG_INSTALL_MENU_WIDTHS
+
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable

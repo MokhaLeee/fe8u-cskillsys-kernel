@@ -29,3 +29,7 @@
 #ifdef CONFIG_INSTALL_VESLY_DEBUGGER
     #include "VeslyDebugger/Installer.event"
 #endif
+
+#ifdef CONFIG_INSTALL_MENU_WIDTHS
+    #include "PopupMenuWidths/Installer.event"
+#endif
