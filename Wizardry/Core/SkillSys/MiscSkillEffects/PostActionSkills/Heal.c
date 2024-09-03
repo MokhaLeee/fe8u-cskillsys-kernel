@@ -12,6 +12,8 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     int hp_cur = GetUnitCurrentHp(gActiveUnit);
     int hp_max = GetUnitMaxHp(gActiveUnit);
 
+    int missingHP = hp_max - hp_cur;
+
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;
 
@@ -23,6 +25,22 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
 #if defined(SID_MysticBoost) && (COMMON_SKILL_VALID(SID_MysticBoost))
     if (SkillTester(gActiveUnit, SID_MysticBoost))
         heal += SKILL_EFF0(SID_MysticBoost);
+#endif
+
+#if defined(SID_DarkBargain) && (COMMON_SKILL_VALID(SID_DarkBargain))
+        if (SkillTester(gActiveUnit, SID_DarkBargain))
+        {
+            if (gActiveUnit->exp >= missingHP)
+            {
+                gActiveUnit->exp -= missingHP;
+                heal += missingHP;
+            }
+            else
+            {
+                heal += gActiveUnit->exp;
+                gActiveUnit->exp = 0;
+            }
+        }
 #endif
 
     if (heal == 0)
