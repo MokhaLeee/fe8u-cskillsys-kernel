@@ -300,6 +300,8 @@ u8 Swap_Usability(const struct MenuItemDef * def, int number);
 u8 Swap_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Transform_Usability(const struct MenuItemDef * def, int number);
 u8 Transform_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 DrawBack_Usability(const struct MenuItemDef * def, int number);
+u8 DrawBack_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -313,3 +315,4 @@ bool Action_Swarp(ProcPtr parent);
 bool Action_Blacksmith(ProcPtr parent);
 bool Action_Swap(ProcPtr parent);
 bool Action_Transform(ProcPtr parent);
+bool Action_DrawBack(ProcPtr parent);

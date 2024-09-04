@@ -243,3 +243,17 @@ into a selected class.[X]
 ## MSG_SKILL_Transform_FRtext
 This unit is already[NL]
 transformed![X]
+
+## MSG_MenuSkill_DrawBack_Target
+Select a unit to pull back.[X]
+
+## MSG_MenuSkill_DrawBackName
+ DrawBack[X]
+
+## MSG_MenuSkill_DrawBack_FRtext
+Cannot safetly draw back.[X]
+
+## MSG_SKILL_DrawBack
+DrawBack: Unit moves 1 space[NL]
+away from target ally. Ally moves[NL]
+to unit's previous space.[X]
