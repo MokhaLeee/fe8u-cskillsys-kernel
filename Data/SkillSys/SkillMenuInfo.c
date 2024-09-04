@@ -348,4 +348,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_DrawBack) && COMMON_SKILL_VALID(SID_DrawBack))
+    [SID_DrawBack] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_DrawBackName,
+        .helpMsgId = MSG_SKILL_DrawBack,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = DrawBack_Usability,
+        .onDraw = NULL,
+        .onSelected = DrawBack_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

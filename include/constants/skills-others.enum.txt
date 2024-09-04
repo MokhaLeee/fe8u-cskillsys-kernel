@@ -143,6 +143,7 @@ SID_Contrary
 SID_Reflex
 SID_RampUp
 SID_DarkBargain
+SID_DrawBack
 
 // Lull skills
 SID_LullDefense
