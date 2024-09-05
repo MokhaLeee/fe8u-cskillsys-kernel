@@ -283,4 +283,15 @@ Cannot safely shove.[X]
 ## MSG_SKILL_Shove
 Shove:[NL]
 Allows unit to push other[NL]
-units one tile away.[X]
+allied units one tile away.[X]
+
+## MSG_MenuSkill_SmiteName
+ Smite[X]
+
+## MSG_MenuSkill_Smite_FRtext
+Cannot safely smite.[X]
+
+## MSG_SKILL_Smite
+Smite:[NL]
+Allows unit to push other[NL]
+allied units two tiles away.[X]
