@@ -363,4 +363,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
+    [SID_Pivot] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_PivotName,
+        .helpMsgId = MSG_SKILL_Pivot,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Pivot_Usability,
+        .onDraw = NULL,
+        .onSelected = Pivot_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

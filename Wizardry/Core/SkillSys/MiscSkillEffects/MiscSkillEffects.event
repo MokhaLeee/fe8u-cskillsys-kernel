@@ -33,6 +33,7 @@
 #include "MenuSkills/Swap.lyn.event"
 #include "MenuSkills/Transform.lyn.event"
 #include "MenuSkills/DrawBack.lyn.event"
+#include "MenuSkills/Pivot.lyn.event"
 
 #include "Misc/HealAmount.lyn.event"
 
