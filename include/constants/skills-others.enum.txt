@@ -98,7 +98,7 @@ SID_Expertise
 SID_PassionsFlow
 SID_LadyBlade
 SID_ShrewdPotential
-// SID_SteadyBrawler
+SID_SteadyBrawler
 SID_KeepUp
 // SID_LiquidOoze
 SID_CloseCombat
@@ -283,8 +283,3 @@ SID_Stride
 SID_Blacksmith
 SID_PairUp
 SID_Transform
-
-// Art skills
-SID_COMBAT_Galeforce
-SID_COMBAT_Gamble
-SID_COMBAT_Detonate
