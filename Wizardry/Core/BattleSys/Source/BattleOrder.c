@@ -85,6 +85,27 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
         }
 #endif
 
+#if defined(SID_SteadyBrawler) && (COMMON_SKILL_VALID(SID_SteadyBrawler))
+        if (BattleSkillTester(actor, SID_SteadyBrawler))
+        {
+            int dmg = actor->battleAttack - target->battleDefense;
+
+            if (basic_judgement)
+                dmg -= (dmg+2) / 4; // for rounding
+            else
+            {
+                dmg += dmg / 4;
+                if (dmg < 0)
+                    dmg = 0;
+            }
+
+            actor->battleAttack += dmg;
+            gBattleTemporaryFlag.act_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_SteadyBrawler, BORDER_ACT_TWICE);
+            return true;
+        }
+#endif
+
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
         if (basic_judgement == false)
         {
