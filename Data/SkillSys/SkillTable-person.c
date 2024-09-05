@@ -10,7 +10,7 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 
     [CHARACTER_EPHRAIM] = {
         SID_InitNimble,
-        SID_COMBAT_Detonate,
+        SID_Acrobat,
     },
 
     [CHARACTER_SALEH] = {

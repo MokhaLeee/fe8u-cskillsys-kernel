@@ -917,3 +917,8 @@ G-Gold[X]
 Good As Gold:[NL]
 This unit is immune to all[NL]
 harmful status conditions.[X]
+
+## MSG_SKILL_Shadowgift
+Shadowgift:[NL]
+Grants this unit the ability to use[NL]
+dark magic (starting at rank D).[X]
