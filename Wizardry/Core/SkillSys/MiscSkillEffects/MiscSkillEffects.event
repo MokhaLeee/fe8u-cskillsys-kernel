@@ -36,6 +36,7 @@
 #include "MenuSkills/Pivot.lyn.event"
 #include "MenuSkills/Reposition.lyn.event"
 #include "MenuSkills/Shove.lyn.event"
+#include "MenuSkills/Smite.lyn.event"
 
 #include "Misc/HealAmount.lyn.event"
 

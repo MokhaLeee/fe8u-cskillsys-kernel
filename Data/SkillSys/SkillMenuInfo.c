@@ -408,4 +408,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Smite) && COMMON_SKILL_VALID(SID_Smite))
+    [SID_Smite] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_SmiteName,
+        .helpMsgId = MSG_SKILL_Smite,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Smite_Usability,
+        .onDraw = NULL,
+        .onSelected = Smite_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

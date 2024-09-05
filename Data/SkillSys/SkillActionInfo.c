@@ -26,4 +26,5 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
     [SID_Pivot] = Action_Pivot,
     [SID_Reposition] = Action_Reposition,
     [SID_Shove] = Action_Shove,
+    [SID_Smite] = Action_Smite,
 };
