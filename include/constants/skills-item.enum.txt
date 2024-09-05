@@ -21,3 +21,6 @@ SID_COMBAT_BreakShotPlus
 SID_COMBAT_WaningShot
 SID_COMBAT_WaningShotPlus
 SID_COMBAT_HuntersVolley
+
+// Skills
+SID_Shadowgift
