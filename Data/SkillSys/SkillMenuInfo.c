@@ -393,4 +393,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Shove) && COMMON_SKILL_VALID(SID_Shove))
+    [SID_Shove] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_ShoveName,
+        .helpMsgId = MSG_SKILL_Shove,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Shove_Usability,
+        .onDraw = NULL,
+        .onSelected = Shove_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

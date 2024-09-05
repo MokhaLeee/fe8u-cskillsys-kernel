@@ -146,6 +146,7 @@ SID_DarkBargain
 SID_DrawBack
 SID_Pivot
 SID_Reposition
+SID_Shove
 
 // Lull skills
 SID_LullDefense

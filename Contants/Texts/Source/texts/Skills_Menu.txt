@@ -245,7 +245,7 @@ transformed![X]
  DrawBack[X]
 
 ## MSG_MenuSkill_DrawBack_FRtext
-Cannot safetly draw back.[X]
+Cannot safely draw back.[X]
 
 ## MSG_SKILL_DrawBack
 DrawBack: Unit moves 1 space[NL]
@@ -256,7 +256,7 @@ to unit's previous space.[X]
  Pivot[X]
 
 ## MSG_MenuSkill_Pivot_FRtext
-Cannot safetly pivot.[X]
+Cannot safely pivot.[X]
 
 ## MSG_SKILL_Pivot
 Pivot:[NL]
@@ -267,9 +267,20 @@ opposite side of an adjacent ally.[X]
  Reposition[X]
 
 ## MSG_MenuSkill_Reposition_FRtext
-Cannot safetly reposition.[X]
+Cannot safely reposition.[X]
 
 ## MSG_SKILL_Reposition
 Reposition:[NL]
 Allows unit to pull an adjacent[NL]
 ally to its opposite side.[X]
+
+## MSG_MenuSkill_ShoveName
+ Shove[X]
+
+## MSG_MenuSkill_Shove_FRtext
+Cannot safely shove.[X]
+
+## MSG_SKILL_Shove
+Shove:[NL]
+Allows unit to push other[NL]
+units one tile away.[X]
