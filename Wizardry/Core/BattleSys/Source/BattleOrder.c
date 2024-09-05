@@ -9,6 +9,15 @@
 
 #define LOCAL_TRACE 1
 
+int GetEffLvl(struct BattleUnit *actor)
+{
+    u32 attrb = UNIT_CATTRIBUTES(&actor->unit);
+    int result = actor->unit.level + 10;
+    result -= 10 * (attrb & CA_MAXLEVEL10);
+    result += 20 * (attrb & CA_PROMOTED);
+    return result;
+}
+
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target)
 {
@@ -61,6 +70,18 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
             return true;
+        }
+#endif
+
+#if defined(SID_QuickLearner) && (COMMON_SKILL_VALID(SID_QuickLearner))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_QuickLearner))
+        {
+            if (GetEffLvl(actor) < GetEffLvl(target))
+            {
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
+                return true;
+            }
         }
 #endif
 
