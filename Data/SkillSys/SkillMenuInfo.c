@@ -378,4 +378,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
+    [SID_Reposition] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_RepositionName,
+        .helpMsgId = MSG_SKILL_Reposition,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Reposition_Usability,
+        .onDraw = NULL,
+        .onSelected = Reposition_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };
