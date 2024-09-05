@@ -262,3 +262,14 @@ Cannot safetly pivot.[X]
 Pivot:[NL]
 Allows unit to move to the[NL]
 opposite side of an adjacent ally.[X]
+
+## MSG_MenuSkill_RepositionName
+ Reposition[X]
+
+## MSG_MenuSkill_Reposition_FRtext
+Cannot safetly reposition.[X]
+
+## MSG_SKILL_Reposition
+Reposition:[NL]
+Allows unit to pull an adjacent[NL]
+ally to its opposite side.[X]
