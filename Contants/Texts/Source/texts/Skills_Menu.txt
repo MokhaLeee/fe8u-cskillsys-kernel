@@ -1,6 +1,9 @@
 ## MSG_MenuSkill_CommonFail
 This skill cannot be used for now![X]
 
+## MSG_MenuSkill_Common_Target
+Select a unit.[X]
+
 ## MSG_SKILL_Dance
 Dance:[NL]
 Art: Unit can use[NL]
@@ -187,9 +190,6 @@ allies within 3 tiles by 3.[X]
 ## MSG_MenuSkill_Stride_FRtext
 No allies are in range![X]
 
-## MSG_MenuSkill_Swarp_Target
-Select a unit to swap.[X]
-
 ## MSG_MenuSkill_SwarpName
  Swarp[X]
 
@@ -212,9 +212,6 @@ if from armory and C rank or less.[X]
 ## MSG_MenuSkill_Blacksmith_FRtext
 No restorable weapons[NL]
 or enough gold![X]
-
-## MSG_MenuSkill_Swap_Target
-Select a unit to swap.[X]
 
 ## MSG_MenuSkill_SwapName
  Swap[X]
@@ -244,9 +241,6 @@ into a selected class.[X]
 This unit is already[NL]
 transformed![X]
 
-## MSG_MenuSkill_DrawBack_Target
-Select a unit to pull back.[X]
-
 ## MSG_MenuSkill_DrawBackName
  DrawBack[X]
 
@@ -257,3 +251,14 @@ Cannot safetly draw back.[X]
 DrawBack: Unit moves 1 space[NL]
 away from target ally. Ally moves[NL]
 to unit's previous space.[X]
+
+## MSG_MenuSkill_PivotName
+ Pivot[X]
+
+## MSG_MenuSkill_Pivot_FRtext
+Cannot safetly pivot.[X]
+
+## MSG_SKILL_Pivot
+Pivot:[NL]
+Allows unit to move to the[NL]
+opposite side of an adjacent ally.[X]

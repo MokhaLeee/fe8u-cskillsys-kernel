@@ -90,7 +90,7 @@ u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
     StartSubtitleHelp(
         NewTargetSelection_Specialized(&gSelectInfo_Rescue, Swarp_OnSelectTarget),
-        GetStringFromIndex(MSG_MenuSkill_Swarp_Target));
+        GetStringFromIndex(MSG_MenuSkill_Common_Target));
 
     PlaySoundEffect(0x6A);
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
