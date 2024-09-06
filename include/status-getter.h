@@ -32,3 +32,5 @@ int LckGetter(struct Unit * unit);
 int AidGetter(struct Unit * unit);
 int ConGetter(struct Unit * unit);
 int MovGetter(struct Unit * unit);
+
+extern int _GetUnitCon(struct Unit *unit);
