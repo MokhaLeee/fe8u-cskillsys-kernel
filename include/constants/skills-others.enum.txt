@@ -143,11 +143,6 @@ SID_Contrary
 SID_Reflex
 SID_RampUp
 SID_DarkBargain
-SID_DrawBack
-SID_Pivot
-SID_Reposition
-SID_Shove
-SID_Smite
 
 // Lull skills
 SID_LullDefense
@@ -283,3 +278,10 @@ SID_Stride
 SID_Blacksmith
 SID_PairUp
 SID_Transform
+SID_StealPlus
+SID_DrawBack
+SID_Pivot
+SID_Reposition
+SID_Shove
+SID_Smite
+SID_StealPlus

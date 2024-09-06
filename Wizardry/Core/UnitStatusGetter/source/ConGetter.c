@@ -11,7 +11,8 @@ int _GetUnitCon(struct Unit * unit)
     for (it = gpConGetters; *it; it++)
         status = (*it)(status, unit);
 
-    return status;}
+    return status;
+}
 
 int ConGetterSkills(int status, struct Unit * unit)
 {

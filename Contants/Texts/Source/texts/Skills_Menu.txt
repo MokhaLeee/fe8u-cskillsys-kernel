@@ -295,3 +295,14 @@ Cannot safely smite.[X]
 Smite:[NL]
 Allows unit to push other[NL]
 allied units two tiles away.[X]
+
+## MSG_MenuSkill_StealPlusName
+ Steal+[X]
+
+## MSG_MenuSkill_StealPlus_FRtext
+Cannot steal.[X]
+
+## MSG_SKILL_StealPlus
+Steal+:[NL]
+Unit can steal unequipped weapons[NL]
+and staves if CON > Weight.[X]
