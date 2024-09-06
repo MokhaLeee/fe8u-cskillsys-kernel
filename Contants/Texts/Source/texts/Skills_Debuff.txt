@@ -167,3 +167,11 @@ after combat. Doesn't stack.[X]
 Magic Seal:[NL]
 Prevent use of magic by all[NL]
 units in a 10 tiles of user.[X]
+
+## MSG_SKILL_FullMetalBody_NAME
+FM-Body[X]
+
+## MSG_SKILL_FullMetalBody
+Full Metal Body:[NL]
+This unit is immune to all[NL]
+the seal skills.[X]

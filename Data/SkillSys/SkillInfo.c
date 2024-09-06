@@ -3918,4 +3918,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_ForeignPrincess,
     },
 #endif
+
+#if (defined(SID_FullMetalBody) && COMMON_SKILL_VALID(SID_FullMetalBody))
+    [SID_FullMetalBody] = {
+        .name = MSG_SKILL_FullMetalBody_NAME,
+        .desc = MSG_SKILL_FullMetalBody,
+        .icon = GFX_SkillIcon_FullMetalBody,
+    },
+#endif
 };
