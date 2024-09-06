@@ -922,3 +922,15 @@ harmful status conditions.[X]
 Shadowgift:[NL]
 Grants this unit the ability to use[NL]
 dark magic (starting at rank D).[X]
+
+## MSG_SKILL_Cultured
+Cultured: If unit attacks next to a[NL]
+unit with Nice Thighs, move again.[NL]
+-50 hit against units with Nice Thighs.[X]
+
+## MSG_SKILL_NiceThighs_NAME
+N-Thighs[X]
+
+## MSG_SKILL_NiceThighs
+Nice Thighs:[NL]
+Doesn't do anything.[X]

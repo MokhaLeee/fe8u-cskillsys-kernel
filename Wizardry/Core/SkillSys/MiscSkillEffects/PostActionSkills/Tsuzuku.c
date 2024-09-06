@@ -18,6 +18,30 @@ bool PostActionTsuzuku(ProcPtr parent)
     if (!UNIT_IS_VALID(unit) || CheckBitUES(unit, UES_BIT_TSZUKU_SKILL_USED))
         return false;
 
+#if defined(SID_Cultured) && (COMMON_SKILL_VALID(SID_Cultured))
+    bool nice_thighs = false;
+
+    if (SkillTester(unit, SID_Cultured))
+        for (int i = 0; i < ARRAY_COUNT_RANGE1x1; i++)
+        {
+            int _x = unit->xPos + gVecs_1x1[i].x;
+            int _y = unit->yPos + gVecs_1x1[i].y;
+
+            struct Unit *unit = GetUnitAtPosition(_x, _y);
+
+#if defined(SID_NiceThighs) && (COMMON_SKILL_VALID(SID_NiceThighs))
+            if (SkillTester(unit, SID_NiceThighs))
+            {
+                nice_thighs = true;
+                break;
+            }
+#endif
+        }
+
+    if (nice_thighs)
+        goto L_exec_rafrain_action_anim;
+#endif
+
     switch (gActionData.unitActionType)
     {
     case UNIT_ACTION_COMBAT:
@@ -84,7 +108,7 @@ L_exec_rafrain_action_anim_aura:
             continue;
 
         SetBitUES(unit_ally, UES_BIT_TSZUKU_SKILL_USED);
-        unit_ally->state &= ~( US_UNSELECTABLE | US_HAS_MOVED | US_HAS_MOVED_AI );
+        unit_ally->state &= ~(US_UNSELECTABLE | US_HAS_MOVED | US_HAS_MOVED_AI);
     }
     SetBitUES(unit, UES_BIT_TSZUKU_SKILL_USED);
     return true;

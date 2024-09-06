@@ -1317,6 +1317,13 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_Cultured) && (COMMON_SKILL_VALID(SID_Cultured)))
+        case SID_Cultured:
+            if (BattleSkillTester(defender, SID_NiceThighs))
+                attacker->battleHitRate -= 50;
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
