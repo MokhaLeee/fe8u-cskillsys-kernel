@@ -3910,4 +3910,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_ForeignPrincess) && COMMON_SKILL_VALID(SID_ForeignPrincess))
+    [SID_ForeignPrincess] = {
+        .name = MSG_SKILL_ForeignPrincess_NAME,
+        .desc = MSG_SKILL_ForeignPrincess,
+        .icon = GFX_SkillIcon_ForeignPrincess,
+    },
+#endif
 };

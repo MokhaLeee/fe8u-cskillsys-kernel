@@ -1590,6 +1590,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
             }
 #endif
 
+#if (defined(SID_ForeignPrincess) && (COMMON_SKILL_VALID(SID_ForeignPrincess)))
+            if (SkillTester(unit, SID_ForeignPrincess) && CA_FEMALE)
+            {
+                attacker->battleAttack += SKILL_EFF0(SID_ForeignPrincess);
+                attacker->battleDefense += SKILL_EFF0(SID_ForeignPrincess);
+            }
+#endif
+
             /* Since we just calc in 3x3, so here is always true */
             allies_gRange3_In3x3++;
 
