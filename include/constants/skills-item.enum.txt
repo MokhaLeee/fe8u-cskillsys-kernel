@@ -34,3 +34,4 @@ SID_ArdentSacrifice
 SID_Cultured
 SID_NiceThighs
 SID_Flank
+SID_ForeignPrincess
