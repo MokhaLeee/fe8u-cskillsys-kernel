@@ -1299,7 +1299,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
             for (int i = 0; i < 8; i++)
             {
-                if (GetUnitStatusIndex(GetUnit(attacker->unit.index))  == _debuffs[i])
+                if (GetUnitStatusIndex(GetUnit(attacker->unit.index)) == _debuffs[i])
                 {
                     SetUnitStatus(GetUnit(attacker->unit.index), UNIT_STATUS_NONE);
                     break;
@@ -1310,7 +1310,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
         case SID_Shadowgift:
-            struct Unit * unit = GetUnit(attacker->unit.index);
+            struct Unit *unit = GetUnit(attacker->unit.index);
 
             if (unit->ranks[ITYPE_DARK] == 0)
                 unit->ranks[ITYPE_DARK] = 31;
@@ -1453,6 +1453,15 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
                 {
                     attacker->battleCritRate += SKILL_EFF0(SID_Solidarity);
                     attacker->battleDodgeRate += SKILL_EFF1(SID_Solidarity);
+                }
+#endif
+
+#if defined(SID_UpWithArch) && (COMMON_SKILL_VALID(SID_UpWithArch))
+                if (SkillTester(unit, SID_UpWithArch))
+                {
+                    char name[] = "Arch";
+                    if (strcmp(GetStringFromIndex(GetUnit(attacker->unit.index)->pCharacterData->nameTextId), name) == 0)
+                        attacker->battleAttack += GetUnitPower(unit);
                 }
 #endif
             }

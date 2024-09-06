@@ -166,3 +166,8 @@ receive +2 magic damage.[X]
 Keep Up: +2 to MOV at the start of[NL]
 the turn, if within 3 tiles of an[NL]
 ally with Canto or Canto+.[X]
+
+## MSG_SKILL_UpWithArch
+Up With Arch: Adjacent ally units[NL]
+gain might equal to half this unit's[NL]
+might. (Only if name starts with "Arch").[X]

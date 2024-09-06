@@ -3873,4 +3873,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_StealPlus,
     },
 #endif
+
+#if (defined(SID_UpWithArch) && COMMON_SKILL_VALID(SID_UpWithArch))
+    [SID_UpWithArch] = {
+        .desc = MSG_SKILL_UpWithArch,
+        .icon = GFX_SkillIcon_UpWithArch,
+    },
+#endif
 };
