@@ -934,3 +934,8 @@ N-Thighs[X]
 ## MSG_SKILL_NiceThighs
 Nice Thighs:[NL]
 Doesn't do anything.[X]
+
+## MSG_SKILL_Flank
+Flank: If an ally is on the[NL]
+opposite side of an adjacent[NL] 
+target, deal 25% more damage.[X]
