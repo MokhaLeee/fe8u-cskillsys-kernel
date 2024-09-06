@@ -6,4 +6,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
     [ITEM_SWORD_SLIM] = {
         SID_RuinedBladePlus,
     },
+    [ITEM_SWORD_RAPIER] = {
+        SID_ArdentSacrifice,
+    }
 };

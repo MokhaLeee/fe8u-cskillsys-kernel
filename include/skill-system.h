@@ -312,6 +312,8 @@ u8 Smite_Usability(const struct MenuItemDef * def, int number);
 u8 Smite_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 StealPlus_Usability(const struct MenuItemDef * def, int number);
 u8 StealPlus_Effect(struct MenuProc* menu, struct MenuItemProc* menuItem);
+u8 ArdentSacrifice_Usability(const struct MenuItemDef * def, int number);
+u8 ArdentSacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -331,3 +333,4 @@ bool Action_Reposition(ProcPtr parent);
 bool Action_Shove(ProcPtr parent);
 bool Action_Smite(ProcPtr parent);
 bool Action_StealPlus(ProcPtr parent);
+bool Action_ArdentSacrifice(ProcPtr parent);
