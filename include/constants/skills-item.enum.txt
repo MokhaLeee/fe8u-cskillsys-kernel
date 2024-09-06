@@ -29,3 +29,4 @@ SID_COMBAT_Detonate
 
 // Skills
 SID_Shadowgift
+SID_UpWithArch
