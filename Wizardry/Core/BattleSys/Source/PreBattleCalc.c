@@ -1320,7 +1320,40 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_Cultured) && (COMMON_SKILL_VALID(SID_Cultured)))
         case SID_Cultured:
             if (BattleSkillTester(defender, SID_NiceThighs))
-                attacker->battleHitRate -= 50;
+                attacker->battleHitRate -= SKILL_EFF0(SID_Cultured);
+            break;
+#endif
+
+#if (defined(SID_Flank) && (COMMON_SKILL_VALID(SID_Flank)))
+        case SID_Flank:
+            if (gBattleStats.range == 1)
+            {
+                int activeX = attacker->unit.xPos;
+                int targetX = defender->unit.xPos;
+                int activeY = attacker->unit.yPos;
+                int targetY = defender->unit.yPos;
+                int dirX = activeX - targetX;
+                int dirY = activeY - targetY;
+                int deploymentID = attacker->unit.index;
+                int allyID = 0;
+                if ((dirX > 0) && (activeX > 1))
+                    allyID = gBmMapUnit[activeY][activeX - 2];
+                if (dirX < 0)
+                    allyID = gBmMapUnit[activeY][activeX + 2];
+                if ((dirY > 0) && (activeY > 1))
+                    allyID = gBmMapUnit[activeY - 2][activeX];
+                if (dirY < 0)
+                    allyID = gBmMapUnit[activeY + 2][activeX];
+
+                if ((allyID) && (AreUnitsAllied(deploymentID, allyID)))
+                {
+                    int dmg = attacker->battleAttack - defender->battleDefense;
+                    if (dmg < 0)
+                        dmg = 0;
+                    int addDmg = ((dmg) * (SKILL_EFF0(SID_Flank))) / 100;
+                    attacker->battleAttack += addDmg;
+                }
+            }
             break;
 #endif
 

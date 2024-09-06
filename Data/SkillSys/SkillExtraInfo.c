@@ -296,4 +296,5 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_PairUp] = {{ 20 }},
     [SID_ArdentSacrifice] {{ 10 }},
     [SID_Cultured] = {{ 50 }},
+    [SID_Flank] = {{ 25 }},
 };
