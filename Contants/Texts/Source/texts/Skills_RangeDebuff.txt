@@ -170,4 +170,4 @@ ally with Canto or Canto+.[X]
 ## MSG_SKILL_UpWithArch
 Up With Arch: Adjacent ally units[NL]
 gain might equal to half this unit's[NL]
-might. (Only if name starts with "Arch").[NL]
+might. (Only if name starts with "Arch").[X]
