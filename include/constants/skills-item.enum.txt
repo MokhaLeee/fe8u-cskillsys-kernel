@@ -31,3 +31,5 @@ SID_COMBAT_Detonate
 SID_Shadowgift
 SID_UpWithArch
 SID_ArdentSacrifice
+SID_Cultured
+SID_NiceThighs
