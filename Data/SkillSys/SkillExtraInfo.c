@@ -294,4 +294,5 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_SealSpeed] = {{ 6 }},
     [SID_SealStrength] = {{ 6 }},
     [SID_PairUp] = {{ 20 }},
+    [SID_ArdentSacrifice] {{ 10 }},
 };

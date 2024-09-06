@@ -192,5 +192,14 @@ void MakeSmiteTargetListForAdjacentAlly(struct Unit *unit)
 bool Action_Smite(ProcPtr parent)
 {
 	NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
+
+#if defined(SID_GridMaster) && (COMMON_SKILL_VALID(SID_GridMaster))
+    if (SkillTester(gActiveUnit, SID_GridMaster))
+    {
+        gActionDataExpa.refrain_action = true;
+        EndAllMus();
+    }
+#endif
+
 	return true;
 }

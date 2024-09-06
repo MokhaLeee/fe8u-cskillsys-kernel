@@ -438,4 +438,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = 0
     },
 #endif
+
+#if (defined(SID_ArdentSacrifice) && COMMON_SKILL_VALID(SID_ArdentSacrifice))
+    [SID_ArdentSacrifice] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_ArdentSacrificeName,
+        .helpMsgId = MSG_SKILL_ArdentSacrifice,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = ArdentSacrifice_Usability,
+        .onDraw = NULL,
+        .onSelected = ArdentSacrifice_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

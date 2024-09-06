@@ -306,3 +306,18 @@ Cannot steal.[X]
 Steal+:[NL]
 Unit can steal unequipped weapons[NL]
 and staves if CON > Weight.[X]
+
+## MSG_SKILL_ArdentSacrifice
+Ardent Sacrifice:[NL]
+Restores 10 HP to target,[NL]
+but drops user’s HP by 10.[X]
+
+## MSG_SKILL_ArdentSacrifice_NAME
+Ardent-S[X]
+
+## MSG_MenuSkill_ArdentSacrificeName
+ Ardent-S[X]
+
+## MSG_MenuSkill_ArdentSacrifice_FRtext
+Unit is below HP threshold or[NL]
+no healable targets in range.[X]
