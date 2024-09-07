@@ -106,7 +106,12 @@ int GetConvoyItemSlot(int item)
     int i;
     u16 * convoy;
     item = GetItemIndex(item);
+
+#if CHAX
+    convoy = GetConvoyItemArray();
+#else
     convoy = gConvoyItemArray;
+#endif
 
 #if CHAX
     for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
