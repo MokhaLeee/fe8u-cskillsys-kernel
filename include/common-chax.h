@@ -40,4 +40,6 @@
 #define UNIT_LEVEL_MAX_RE 25
 #define UNIT_RECORDED_LEVEL_MAX 80
 
+extern void SetGameOption(u8 index, u8 newValue);
+
 typedef bool (* HookProcFunc_t)(ProcPtr);

@@ -100,7 +100,6 @@ SID_LadyBlade
 SID_ShrewdPotential
 SID_SteadyBrawler
 SID_KeepUp
-// SID_LiquidOoze
 SID_CloseCombat
 SID_ArmorMarch
 SID_Eclipse
