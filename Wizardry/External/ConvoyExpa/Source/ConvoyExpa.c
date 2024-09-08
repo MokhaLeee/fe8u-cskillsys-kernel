@@ -4,20 +4,20 @@ extern int sExpaConvoyItemCount; // gConvoyItemCount is just a u8 that can be no
 extern u16 sExpaConvoyItemArray[CONFIG_INSTALL_CONVOYEXPA_AMT];
 
 /* Save API */
-void SaveExpaConvoy(u8 * dst, const u32 size)
+void SaveExpaConvoy(u8 *dst, const u32 size)
 {
     Assert(size >= sizeof(sExpaConvoyItemArray));
     WriteAndVerifySramFast(sExpaConvoyItemArray, dst, size);
 }
 
-void LoadExpaConvoy(u8 * src, const u32 size)
+void LoadExpaConvoy(u8 *src, const u32 size)
 {
     Assert(size >= sizeof(sExpaConvoyItemArray));
     ReadSramFast(src, sExpaConvoyItemArray, size);
 }
 
 /* External hook: this function is too short to inject lyn-jump! */
-u16 * __GetConvoyItemArray(void)
+u16 *__GetConvoyItemArray(void)
 {
 #if CHAX
     return sExpaConvoyItemArray;
@@ -46,9 +46,9 @@ LYN_REPLACE_CHECK(ShrinkConvoyItemList);
 void ShrinkConvoyItemList(void)
 {
     u16 i;
-    u16 * buffer = (void*) gGenericBuffer;
-    u16 * bufferIt = buffer;
-    u16 * convoy = GetConvoyItemArray();
+    u16 *buffer = (void *)gGenericBuffer;
+    u16 *bufferIt = buffer;
+    u16 *convoy = GetConvoyItemArray();
 
 #if CHAX
     for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
@@ -66,7 +66,8 @@ void ShrinkConvoyItemList(void)
 
     *bufferIt = 0;
     ClearSupplyItems();
-    CpuCopy16(buffer, GetConvoyItemArray(), i * sizeof(u16));
+    CpuCopy16(buffer, GetConvoyItemArray(), (bufferIt - buffer) * sizeof(u16)); // Corrected line
+    return;
 }
 
 LYN_REPLACE_CHECK(GetConvoyItemCount);
@@ -76,10 +77,10 @@ int GetConvoyItemCount(void)
     int count = 0;
 
 #if CHAX
-    u16 * convoy = sExpaConvoyItemArray;
+    u16 *convoy = sExpaConvoyItemArray;
     for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
 #else
-    u16 * convoy = gConvoyItemArray;
+    u16 *convoy = gConvoyItemArray;
     for (i = 0; i < CONVOY_ITEM_COUNT; i++)
 #endif
         if (convoy[i] != 0)
@@ -104,9 +105,14 @@ LYN_REPLACE_CHECK(GetConvoyItemSlot);
 int GetConvoyItemSlot(int item)
 {
     int i;
-    u16 * convoy;
+    u16 *convoy;
     item = GetItemIndex(item);
+
+#if CHAX
+    convoy = GetConvoyItemArray();
+#else
     convoy = gConvoyItemArray;
+#endif
 
 #if CHAX
     for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
@@ -123,7 +129,7 @@ LYN_REPLACE_CHECK(AddItemToConvoy);
 int AddItemToConvoy(int item)
 {
     int i;
-    u16 * convoy;
+    u16 *convoy;
     gBmSt.itemUnk2E = 0;
 
 #if CHAX
@@ -148,7 +154,7 @@ LYN_REPLACE_CHECK(GetConvoyItemCostSum);
 int GetConvoyItemCostSum(void)
 {
     int i, result = 0;
-    const u16 * convoy = GetConvoyItemArray();
+    const u16 *convoy = GetConvoyItemArray();
 
 #if CHAX
     for (i = 0; (i < CONFIG_INSTALL_CONVOYEXPA_AMT) && (*convoy); i++)
@@ -163,7 +169,7 @@ int GetConvoyItemCostSum(void)
 }
 
 LYN_REPLACE_CHECK(Shop_CheckIfConvoyFull);
-void Shop_CheckIfConvoyFull(struct ProcShop * proc)
+void Shop_CheckIfConvoyFull(struct ProcShop *proc)
 {
 #if CHAX
     if (GetConvoyItemCount() < CONFIG_INSTALL_CONVOYEXPA_AMT)
@@ -174,11 +180,11 @@ void Shop_CheckIfConvoyFull(struct ProcShop * proc)
 }
 
 LYN_REPLACE_CHECK(BonusClaim_StartSelectTargetSubMenu);
-void BonusClaim_StartSelectTargetSubMenu(struct BonusClaimProc * proc)
+void BonusClaim_StartSelectTargetSubMenu(struct BonusClaimProc *proc)
 {
     int i;
 
-    struct Text* th = gpBonusClaimText + 12;
+    struct Text *th = gpBonusClaimText + 12;
     int sl = proc->targets;
     int tmp = (proc->targets * 2);
 
@@ -207,8 +213,8 @@ void BonusClaim_StartSelectTargetSubMenu(struct BonusClaimProc * proc)
     {
         int count;
         int color = 0;
-        struct Unit * unit = gpBonusClaimConfig[i].unit;
-        u16 * tm = gBG0TilemapBuffer + 14;
+        struct Unit *unit = gpBonusClaimConfig[i].unit;
+        u16 *tm = gBG0TilemapBuffer + 14;
 
         ClearText(th);
         Text_SetCursor(th, 0);
@@ -244,8 +250,7 @@ void BonusClaim_StartSelectTargetSubMenu(struct BonusClaimProc * proc)
         PutNumber(
             tm + 0xc9 + 0x40 * i,
             color == 0 ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
-            count
-        );
+            count);
     }
 
     proc->unk_34 = StartParallelWorker(BonusClaim_DrawTargetUnitSprites, proc);
@@ -289,7 +294,7 @@ void ConvoyMenuProc_ExecBootlegPopup(ProcPtr proc)
 }
 
 LYN_REPLACE_CHECK(HandleNewItemGetFromDrop);
-void HandleNewItemGetFromDrop(struct Unit* unit, int item, ProcPtr proc)
+void HandleNewItemGetFromDrop(struct Unit *unit, int item, ProcPtr proc)
 {
     u8 ret = UnitAddItem(unit, item);
     if (FALSE != ret)
@@ -317,7 +322,7 @@ void HandleNewItemGetFromDrop(struct Unit* unit, int item, ProcPtr proc)
 }
 
 LYN_REPLACE_CHECK(PrepItemScreen_GiveAll);
-bool PrepItemScreen_GiveAll(struct Unit * unit)
+bool PrepItemScreen_GiveAll(struct Unit *unit)
 {
     int i;
     int unitItemCount = GetUnitItemCount(unit);
@@ -340,10 +345,10 @@ bool PrepItemScreen_GiveAll(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(sub_809D644);
-void sub_809D644(struct PrepItemSupplyProc * proc)
+void sub_809D644(struct PrepItemSupplyProc *proc)
 {
     int color;
-    struct Text * th;
+    struct Text *th;
 #if CHAX
     int convoyItemCount = GetConvoyItemCount();
 #else
@@ -415,14 +420,15 @@ void sub_809D6CC(void)
 }
 
 LYN_REPLACE_CHECK(PrepItemSupply_Loop_GiveTakeKeyHandler);
-void PrepItemSupply_Loop_GiveTakeKeyHandler(struct PrepItemSupplyProc * proc)
+void PrepItemSupply_Loop_GiveTakeKeyHandler(struct PrepItemSupplyProc *proc)
 {
     int idx = proc->unk_33;
     if (proc->unk_38 == 0)
     {
         if (gKeyStatusPtr->newKeys & A_BUTTON)
         {
-            switch (idx) {
+            switch (idx)
+            {
             case 0:
 #if CHAX
                 if ((GetConvoyItemCount() < CONFIG_INSTALL_CONVOYEXPA_AMT) && (GetUnitItemCount(proc->unit) > 0))
@@ -506,7 +512,7 @@ void PrepItemSupply_Loop_GiveTakeKeyHandler(struct PrepItemSupplyProc * proc)
 }
 
 LYN_REPLACE_CHECK(PrepItemSupply_GiveItemToSupply);
-void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc * proc)
+void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc *proc)
 {
     int unitItemCount;
 
@@ -553,9 +559,9 @@ void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc * proc)
 }
 
 LYN_REPLACE_CHECK(SomethingPrepListRelated);
-void SomethingPrepListRelated(struct Unit * pUnit, int page, int flags)
+void SomethingPrepListRelated(struct Unit *pUnit, int page, int flags)
 {
-    struct PrepScreenItemListEnt * pPrepItemList = gPrepScreenItemList;
+    struct PrepScreenItemListEnt *pPrepItemList = gPrepScreenItemList;
 
     gUnknown_02012F54 = 0;
 
@@ -566,7 +572,7 @@ void SomethingPrepListRelated(struct Unit * pUnit, int page, int flags)
         {
             int j;
             int itemCount;
-            struct Unit* unit = GetUnit(i);
+            struct Unit *unit = GetUnit(i);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -594,7 +600,7 @@ void SomethingPrepListRelated(struct Unit * pUnit, int page, int flags)
     if (flags & 1)
     {
         int j;
-        u16 * convoy = GetConvoyItemArray();
+        u16 *convoy = GetConvoyItemArray();
 
 #if CHAX
         for (j = 0; j < CONFIG_INSTALL_CONVOYEXPA_AMT && convoy[j] != 0; j++)
