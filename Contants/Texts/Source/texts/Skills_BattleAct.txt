@@ -204,3 +204,11 @@ name is the specified name.[X]
 RampUp:[NL]
 Crits deal x2 damage, but[NL]
 apply before enemy defense.[X]
+
+## MSG_SKILL_TriangleAttack_NAME
+Tri-Atk[X]
+
+## MSG_SKILL_TriangleAttack
+Triangle Attack: Two other units with[NL]
+this skill adjacent to an enemy can[NL]
+perform a triangle attack.[X]

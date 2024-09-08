@@ -5,14 +5,19 @@
 const u16 gConstSkillTable_Item[0x100][2] = {
     [ITEM_SWORD_SLIM] = {
         SID_RuinedBladePlus,
+        SID_TriangleAttack,
     },
     [ITEM_SWORD_RAPIER] = {
         SID_ThotSlayer,
+        SID_TriangleAttack,
     },
     [ITEM_AXE_IRON] = {
         SID_NiceThighs,
     },
     [ITEM_STAFF_HEAL] = {
         SID_LiveToServe,
+    },
+    [ITEM_ANIMA_ELFIRE] = {
+        SID_TriangleAttack,
     }
 };

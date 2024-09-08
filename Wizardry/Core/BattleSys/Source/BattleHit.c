@@ -71,6 +71,112 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
     gBattleStats.silencerRate = silencerRate;
 }
 
+LYN_REPLACE_CHECK(BattleCheckTriangleAttack);
+s8 BattleCheckTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+    s8 adjacentLookup[] = {
+        -1, 0,
+        0, -1,
+        +1, 0,
+        0, +1};
+
+    int i, count = 0;
+
+    int triangleAttackAttr = CA_TRIANGLEATTACK_ANY & UNIT_CATTRIBUTES(&attacker->unit);
+
+    int x = defender->unit.xPos;
+    int y = defender->unit.yPos;
+
+    int faction = UNIT_FACTION(&attacker->unit);
+
+    gBattleStats.taUnitA = NULL;
+    gBattleStats.taUnitB = NULL;
+
+    for (i = 0; i < 4; ++i)
+    {
+        int uId = gBmMapUnit[adjacentLookup[i * 2 + 1] + y][adjacentLookup[i * 2 + 0] + x];
+        struct Unit *unit;
+
+        if (!uId)
+            continue;
+
+        unit = GetUnit(uId);
+
+        if ((uId & 0xC0) != faction)
+            continue;
+
+#if (defined(SID_TriangleAttack) && (COMMON_SKILL_VALID(SID_TriangleAttack)))
+        if (SkillTester(unit, SID_TriangleAttack))
+        {
+            ++count;
+
+            if (!gBattleStats.taUnitA)
+                gBattleStats.taUnitA = unit;
+            else if (!gBattleStats.taUnitB)
+                gBattleStats.taUnitB = unit;
+
+            continue;
+        }
+#endif
+
+        if (unit->statusIndex == UNIT_STATUS_SLEEP)
+            continue;
+
+        if (unit->statusIndex == UNIT_STATUS_PETRIFY)
+            continue;
+
+        if (unit->statusIndex == UNIT_STATUS_13)
+            continue;
+
+        if (unit->pClassData->number == CLASS_WYVERN_KNIGHT_F)
+            continue;
+
+        if (UNIT_CATTRIBUTES(unit) & triangleAttackAttr)
+        {
+            ++count;
+
+            if (!gBattleStats.taUnitA)
+                gBattleStats.taUnitA = unit;
+            else if (!gBattleStats.taUnitB)
+                gBattleStats.taUnitB = unit;
+        }
+    }
+    NoCashGBAPrintf("Count is: %d", count);
+    return count >= 2 ? TRUE : FALSE;
+}
+
+LYN_REPLACE_CHECK(BattleGenerateHitTriangleAttack);
+void BattleGenerateHitTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+
+    /**
+     * Since we're no longer limiting ourselves to just checking a 
+     * hardcoded attribute we can turn this off.
+     */
+    // if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_TRIANGLEATTACK_ANY))
+    //    return;
+
+    if (gBattleStats.range != 1)
+        return;
+
+    if (!(gBattleHitIterator->info & BATTLE_HIT_INFO_BEGIN))
+        return;
+
+    if (attacker->unit.statusIndex == UNIT_STATUS_BERSERK)
+        return;
+
+    if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+        return;
+
+    if (!BattleCheckTriangleAttack(attacker, defender))
+        return;
+
+    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_TATTACK;
+
+    gBattleStats.critRate = 100;
+    gBattleStats.hitRate = 100;
+}
+
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
 void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
