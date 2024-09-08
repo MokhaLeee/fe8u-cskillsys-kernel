@@ -25,9 +25,9 @@ GAMEDATA_DIR := $(MK_DIR)Data
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR)
 
 all:
-	@$(MAKE) pre_build
-	@$(MAKE) chax
-	@$(MAKE) post_chax
+	@$(MAKE) pre_build	|| exit 1
+	@$(MAKE) chax		|| exit 1
+	@$(MAKE) post_chax	|| exit 1
 
 include Contants/contants.mk
 
@@ -81,10 +81,12 @@ LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
 EA_DEP            := $(EA_DIR)/ea-dep
 
 TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
-GRIT              := $(DEVKITPRO)/tools/bin/grit
 
 LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
 LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
+
+GRIT := $(DEVKITPRO)/tools/bin/grit
+LZSS := $(DEVKITPRO)/tools/bin/gbalzss
 
 GRITLZ77ARGS      := -gu 16 -gzl -gB 4 -p! -m! -ft bin -fh!
 GRIT4BPPARGS      := -gu 16 -gB 4 -p! -m! -ft bin -fh!
@@ -109,7 +111,7 @@ endif
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
-	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX); exit "$$?"
+	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || { rm -f $(FE8_CHX); exit 1; }
 
 CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
@@ -120,7 +122,7 @@ post_chax: $(CHAX_DIFF)
 
 $(CHAX_DIFF): $(FE8_CHX)
 	@echo "[SEC]	Lyn-jump detection..."
-	@$(LYN_DETECTOR) || exit "$$?"
+	@$(LYN_DETECTOR) || exit 1
 	@echo "[SEC]	Lyn-jump detection passed"
 
 ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
@@ -232,15 +234,17 @@ TSA_FILES := $(shell find $(HACK_DIRS) -type f -name '*.tsa')
 
 %.4bpp: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -o $@
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRIT4BPPARGS)
+	@mv $(basename $<).img.bin $@
 
 %.gbapal: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -po $@ --palette-only
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRITPALETTEARGS)
+	@mv $(basename $<).pal.bin $@
 
 %.lz: %
 	@echo "[LZ ]	$@"
-	@$(COMPRESS) $< $@
+	@$(LZSS) e $< $@
 
 %.lz77: %.png
 	@echo "[LZ ]	$@"
