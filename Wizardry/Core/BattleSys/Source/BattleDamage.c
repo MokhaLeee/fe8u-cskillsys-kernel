@@ -55,6 +55,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 
     bool barricadePlus_activated;
     int result;
+    int roll12_ID = 15; // Set it to the maximum value for its bitfield, so it won't be accidentally triggered
 
     FORCE_DECLARE struct BattleGlobalFlags * act_flags, * tar_flags;
 
@@ -76,6 +77,14 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         act_flags = &gBattleTargetGlobalFlag;
         tar_flags = &gBattleActorGlobalFlag;
     }
+
+#if defined(SID_Roll12) && (COMMON_SKILL_VALID(SID_Roll12))
+    if (BattleSkillTester(attacker, SID_Roll12) && !CheckBitUES(GetUnit(attacker->unit.index), UES_BIT_ROLL12_SKILL_USED))
+    {
+        SetBitUES(GetUnit(attacker->unit.index), UES_BIT_ROLL12_SKILL_USED);
+        roll12_ID = NextRN_N(9);
+    }
+#endif
 
     /**
      * Step0: Roll critical and silencer attack
@@ -153,7 +162,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 
 #if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Flare, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Flare, attacker->unit.skl) || roll12_ID == 0)
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Flare);
         gDmg.defense = gDmg.defense / 2;
@@ -163,7 +172,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     if (IsMagicAttack(attacker))
     {
 #if (defined(SID_Corona) && (COMMON_SKILL_VALID(SID_Corona)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_Corona, attacker->unit.skl))
+        if (CheckBattleSkillActivate(attacker, defender, SID_Corona, attacker->unit.skl) || roll12_ID == 1)
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corona);
             gDmg.defense = 0;
@@ -173,7 +182,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     else
     {
 #if (defined(SID_Luna) && (COMMON_SKILL_VALID(SID_Luna)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_Luna, attacker->unit.skl))
+        if (CheckBattleSkillActivate(attacker, defender, SID_Luna, attacker->unit.skl) || roll12_ID == 2)
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Luna);
             gDmg.defense = 0;
@@ -182,9 +191,9 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 
 #if (defined(SID_Ignis) && (COMMON_SKILL_VALID(SID_Ignis)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Ignis, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Ignis, attacker->unit.skl) || roll12_ID == 3)
     {
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
         switch (attacker->weaponType) {
         case ITYPE_SWORD:
         case ITYPE_LANCE:
@@ -207,7 +216,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     gBattleTemporaryFlag.skill_activated_aether = false;
 
 #if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl) || roll12_ID == 4)
     {
         gBattleTemporaryFlag.skill_activated_aether = true;
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
@@ -227,7 +236,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_Glacies) && (COMMON_SKILL_VALID(SID_Glacies))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Glacies, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Glacies, attacker->unit.skl) || roll12_ID == 5)
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Glacies);
         gDmg.correction += attacker->unit.res;
@@ -235,7 +244,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_Vengeance) && (COMMON_SKILL_VALID(SID_Vengeance))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Vengeance, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Vengeance, attacker->unit.skl) || roll12_ID == 6)
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
         gDmg.correction += (attacker->unit.maxHP - attacker->unit.curHP);
@@ -323,7 +332,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     gDmg.increase = 100;
 
 #if defined(SID_DragonFang) && (COMMON_SKILL_VALID(SID_DragonFang))
-    if (CheckBattleSkillActivate(attacker, defender, SID_DragonFang, attacker->unit.skl * 2))
+    if (CheckBattleSkillActivate(attacker, defender, SID_DragonFang, attacker->unit.skl * 2) || roll12_ID == 7)
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonFang);
         gDmg.increase += SKILL_EFF0(SID_DragonFang);
@@ -331,7 +340,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Colossus) && (COMMON_SKILL_VALID(SID_Colossus)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Colossus, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Colossus, attacker->unit.skl) || roll12_ID == 8)
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
         gDmg.increase += 10 * SKILL_EFF0(SID_Colossus);
@@ -340,7 +349,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_Impale) && (COMMON_SKILL_VALID(SID_Impale))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Impale, attacker->unit.skl))
+    if (CheckBattleSkillActivate(attacker, defender, SID_Impale, attacker->unit.skl) || roll12_ID == 9)
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
         gDmg.increase += 10 * SKILL_EFF0(SID_Impale);
