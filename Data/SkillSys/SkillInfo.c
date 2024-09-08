@@ -3966,12 +3966,19 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-
 #if (defined(SID_Sacrifice) && COMMON_SKILL_VALID(SID_Sacrifice))
     [SID_Sacrifice] = {
         .name = MSG_SKILL_Sacrifice_NAME,
         .desc = MSG_SKILL_Sacrifice,
         .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Thighdeology) && COMMON_SKILL_VALID(SID_Thighdeology))
+    [SID_Thighdeology] = {
+        .name = MSG_SKILL_Thighdeology_NAME,
+        .desc = MSG_SKILL_Thighdeology,
+        .icon = GFX_SkillIcon_Thighdeology,
     },
 #endif
 };

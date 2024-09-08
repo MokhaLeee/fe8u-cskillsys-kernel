@@ -7,10 +7,10 @@ const u16 gConstSkillTable_Item[0x100][2] = {
         SID_RuinedBladePlus,
     },
     [ITEM_SWORD_RAPIER] = {
-        SID_Sacrifice,
+        SID_Thighdeology,
     },
     [ITEM_AXE_IRON] = {
-        SID_FullMetalBody,
+        SID_NiceThighs,
     },
     [ITEM_STAFF_HEAL] = {
         SID_LiveToServe,

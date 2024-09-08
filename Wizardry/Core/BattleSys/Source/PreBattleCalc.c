@@ -1598,6 +1598,19 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
             }
 #endif
 
+#if (defined(SID_NiceThighs) && (COMMON_SKILL_VALID(SID_NiceThighs)))
+            if (SkillTester(unit, SID_NiceThighs))
+            {
+#if (defined(SID_Thighdeology) && (COMMON_SKILL_VALID(SID_Thighdeology)))
+                if (SkillTester(GetUnit(attacker->unit.index), SID_Thighdeology))
+                {
+                    attacker->battleAttack += 2;
+                    attacker->battleHitRate += 20;
+                }
+#endif
+            }
+#endif
+
             /* Since we just calc in 3x3, so here is always true */
             allies_gRange3_In3x3++;
 
@@ -1658,6 +1671,19 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
             {
                 attacker->battleHitRate -= SKILL_EFF0(SID_Daunt);
                 attacker->battleCritRate -= SKILL_EFF1(SID_Daunt);
+            }
+#endif
+
+#if (defined(SID_NiceThighs) && (COMMON_SKILL_VALID(SID_NiceThighs)))
+            if (SkillTester(unit, SID_NiceThighs))
+            {
+#if (defined(SID_Thighdeology) && (COMMON_SKILL_VALID(SID_Thighdeology)))
+                if (SkillTester(GetUnit(attacker->unit.index), SID_Thighdeology))
+                {
+                    attacker->battleAttack += SKILL_EFF0(SID_Thighdeology);
+                    attacker->battleHitRate += SKILL_EFF1(SID_Thighdeology);
+                }
+#endif
             }
 #endif
 
