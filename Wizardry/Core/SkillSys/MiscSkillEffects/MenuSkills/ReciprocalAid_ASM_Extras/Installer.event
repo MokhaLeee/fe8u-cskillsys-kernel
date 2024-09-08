@@ -1,0 +1,38 @@
+ALIGN 4
+ASMC_HealLikeVulnerary:
+#incbin "ASMC_HealLikeVulnerary.dmp"
+POIN WaitForMotionEndProc
+
+ALIGN 4
+ASMC_SelfDamageLikeBomb:
+#incbin "ASMC_SelfDamageLikeBomb.dmp"
+POIN WaitForMotionEndProc
+
+ALIGN 4
+WaitForMotionEnd:
+#incbin "WaitForMotionEnd.dmp"
+
+#include "ProcDefinitions.event"
+ALIGN 4
+WaitForMotionEndProc:	//HINT=PROCS
+PROC_SET_NAME(WaitForMotionEndName)
+PROC_LOOP_ROUTINE(WaitForMotionEnd|1)
+PROC_END
+
+ALIGN 4
+WaitForMotionEndName:
+String(WaitForMotionEnd);	BYTE 0x0
+
+ALIGN 4  
+HarmAndHealEvent:
+ASMC ASMC_SelfDamageLikeBomb|1
+SADD s1 s2 s0 // unit to heal 
+ASMC ASMC_HealLikeVulnerary|1
+NoFade 
+ENDA 
+
+ALIGN 4  
+HealTargetEvent:
+ASMC ASMC_HealLikeVulnerary|1
+NoFade 
+ENDA 

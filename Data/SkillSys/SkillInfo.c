@@ -3950,4 +3950,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Pathfinder,
     },
 #endif
+
+#if (defined(SID_ReciprocalAid) && COMMON_SKILL_VALID(SID_ReciprocalAid))
+    [SID_ReciprocalAid] = {
+        .name = MSG_SKILL_ReciprocalAid_NAME,
+        .desc = MSG_SKILL_ReciprocalAid,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

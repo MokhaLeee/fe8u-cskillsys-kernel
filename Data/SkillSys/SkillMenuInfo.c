@@ -453,4 +453,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_ReciprocalAid) && COMMON_SKILL_VALID(SID_ReciprocalAid))
+    [SID_ReciprocalAid] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_ReciprocalAidName,
+        .helpMsgId = MSG_SKILL_ReciprocalAid,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = ReciprocalAid_Usability,
+        .onDraw = NULL,
+        .onSelected = ReciprocalAid_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };
