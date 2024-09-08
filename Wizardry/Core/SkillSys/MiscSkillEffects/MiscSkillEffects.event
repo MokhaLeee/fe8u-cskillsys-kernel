@@ -39,6 +39,7 @@
 #include "MenuSkills/Smite.lyn.event"
 #include "MenuSkills/StealPlus.lyn.event"
 #include "MenuSkills/ArdentSacrifice.lyn.event"
+#include "MenuSkills/Sacrifice.lyn.event"
 
 #include "MenuSkills/ReciprocalAid.lyn.event"
 #include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"

@@ -316,6 +316,8 @@ u8 ArdentSacrifice_Usability(const struct MenuItemDef * def, int number);
 u8 ArdentSacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 ReciprocalAid_Usability(const struct MenuItemDef * def, int number);
 u8 ReciprocalAid_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Sacrifice_Usability(const struct MenuItemDef * def, int number);
+u8 Sacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -337,3 +339,4 @@ bool Action_Smite(ProcPtr parent);
 bool Action_StealPlus(ProcPtr parent);
 bool Action_ArdentSacrifice(ProcPtr parent);
 bool Action_ReciprocalAid(ProcPtr parent);
+bool Action_Sacrifice(ProcPtr parent);

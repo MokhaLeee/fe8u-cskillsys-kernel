@@ -43,3 +43,4 @@ SID_LiveToServe
 SID_Pathfinder
 SID_ReciprocalAid
 SID_Roll12
+SID_Sacrifice

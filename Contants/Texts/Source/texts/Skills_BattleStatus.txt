@@ -951,4 +951,4 @@ a 3x3 range take -2 & deal +2 damage.[X]
 ## MSG_SKILL_Roll12
 Roll12:[NL]
 Randomly apply 1 proc skill[NL]
-from a list of 12 every battle[X]
+from a list of 12 once per turn.[X]
