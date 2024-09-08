@@ -3942,4 +3942,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_IdentityProblems,
     },
 #endif
+
+#if (defined(SID_Pathfinder) && COMMON_SKILL_VALID(SID_Pathfinder))
+    [SID_Pathfinder] = {
+        .name = MSG_SKILL_Pathfinder_NAME,
+        .desc = MSG_SKILL_Pathfinder,
+        .icon = GFX_SkillIcon_Pathfinder,
+    },
+#endif
 };

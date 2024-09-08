@@ -92,3 +92,11 @@ I-Problems[X]
 Identity Problems:[NL]
 This unit can't decide[NL]
 on a name or face.[X]
+
+## MSG_SKILL_Pathfinder_NAME
+P-Finder[X]
+
+## MSG_SKILL_Pathfinder
+Pathfinder:[NL]
+Allied units within[NL]
+3 tiles can Canto.[X]

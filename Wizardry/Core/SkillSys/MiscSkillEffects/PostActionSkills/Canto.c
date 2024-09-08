@@ -24,10 +24,39 @@ STATIC_DECLAR bool CheckCanto(void)
     cantop = false;
 #endif
 
+    if (!canto || !cantop)
+    {
+        int i;
+        for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
+        {
+            int _x = gActiveUnit->xPos + gVecs_3x3[i].x;
+            int _y = gActiveUnit->yPos + gVecs_3x3[i].y;
+
+            struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
+            if (!UNIT_IS_VALID(unit_ally))
+                continue;
+
+            if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                continue;
+
+            if (!AreUnitsAllied(gActiveUnit->index, unit_ally->index))
+                continue;
+
+#if (defined(SID_Pathfinder) && (COMMON_SKILL_VALID(SID_Pathfinder)))
+            if (SkillTester(unit_ally, SID_Pathfinder))
+            {
+                canto = true;
+                break;
+            }
+#endif
+        }
+    }
+
     if (!canto && !cantop)
         return false;
 
-    switch (gActionData.unitActionType) {
+    switch (gActionData.unitActionType)
+    {
     case UNIT_ACTION_WAIT:
         return false;
 
