@@ -952,3 +952,11 @@ a 3x3 range take -2 & deal +2 damage.[X]
 Roll12:[NL]
 Randomly apply 1 proc skill[NL]
 from a list of 12 once per turn.[X]
+
+## MSG_SKILL_Thighdeology_NAME
+Thigh-Deo[X]
+
+## MSG_SKILL_Thighdeology
+Thighdeology:[NL]
+If a unit within 3 tiles has Nice[NL]
+Thighs, gain +2 Attack and +20 Hit.[X]
