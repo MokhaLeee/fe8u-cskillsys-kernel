@@ -960,3 +960,8 @@ Thigh-Deo[X]
 Thighdeology:[NL]
 If a unit within 3 tiles has Nice[NL]
 Thighs, gain +2 Attack and +20 Hit.[X]
+
+## MSG_SKILL_ThotSlayer
+ThotSlayer:[NL]
+Gain +15 crit against[NL]
+units with Nice Thighs.[X]

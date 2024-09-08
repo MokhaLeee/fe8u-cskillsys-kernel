@@ -1604,9 +1604,14 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
 #if (defined(SID_Thighdeology) && (COMMON_SKILL_VALID(SID_Thighdeology)))
                 if (SkillTester(GetUnit(attacker->unit.index), SID_Thighdeology))
                 {
-                    attacker->battleAttack += 2;
-                    attacker->battleHitRate += 20;
+                    attacker->battleAttack += SKILL_EFF0(SID_Thighdeology);
+                    attacker->battleHitRate += SKILL_EFF1(SID_Thighdeology);
                 }
+#endif
+
+#if (defined(SID_ThotSlayer) && (COMMON_SKILL_VALID(SID_ThotSlayer)))
+                if (SkillTester(GetUnit(attacker->unit.index), SID_ThotSlayer))
+                    attacker->battleCritRate += SKILL_EFF0(SID_ThotSlayer);
 #endif
             }
 #endif
@@ -1683,6 +1688,11 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
                     attacker->battleAttack += SKILL_EFF0(SID_Thighdeology);
                     attacker->battleHitRate += SKILL_EFF1(SID_Thighdeology);
                 }
+#endif
+
+#if (defined(SID_ThotSlayer) && (COMMON_SKILL_VALID(SID_ThotSlayer)))
+                if (SkillTester(GetUnit(attacker->unit.index), SID_ThotSlayer))
+                    attacker->battleCritRate += SKILL_EFF0(SID_ThotSlayer);
 #endif
             }
 #endif
