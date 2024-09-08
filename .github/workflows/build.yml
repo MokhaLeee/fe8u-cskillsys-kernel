@@ -54,7 +54,7 @@ jobs:
 
   Build:
     runs-on: ubuntu-latest
-    needs: build
+    needs: Setup
     steps:
     - name: Debug build
       run: make all
