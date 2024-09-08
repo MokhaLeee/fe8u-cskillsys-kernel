@@ -16,8 +16,6 @@ jobs:
 
     - name: Install deps
       run: |
-    - name: Install deps
-      run: |
         sudo apt-get update
         sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake
         sudo apt-get install -y re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
