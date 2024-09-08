@@ -3981,4 +3981,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Thighdeology,
     },
 #endif
+
+#if (defined(SID_ThotSlayer) && COMMON_SKILL_VALID(SID_ThotSlayer))
+    [SID_ThotSlayer] = {
+        .desc = MSG_SKILL_ThotSlayer,
+        .icon = GFX_SkillIcon_ThotSlayer,
+    },
+#endif
 };
