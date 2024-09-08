@@ -3152,23 +3152,23 @@ struct ProcCmd const ProcScr_HelpBoxIntroString[] = {
     PROC_END,
 };
 
-LYN_REPLACE_CHECK(ClearHelpBoxText);
-void ClearHelpBoxText(void) { // replaces original function 
+// LYN_REPLACE_CHECK(ClearHelpBoxText);
+// void ClearHelpBoxText(void) { // replaces original function 
 
-    SetTextFont(&gHelpBoxSt.font);
+//     SetTextFont(&gHelpBoxSt.font);
 
-    SpriteText_DrawBackground(&gHelpBoxSt.text[0]);
-    SpriteText_DrawBackground(&gHelpBoxSt.text[1]);
-    SpriteText_DrawBackground(&gHelpBoxSt.text[2]);
+//     SpriteText_DrawBackground(&gHelpBoxSt.text[0]);
+//     SpriteText_DrawBackground(&gHelpBoxSt.text[1]);
+//     SpriteText_DrawBackground(&gHelpBoxSt.text[2]);
 
-    Proc_EndEach(gProcScr_HelpBoxTextScroll);
-    Proc_EndEach(ProcScr_HelpBoxIntro);
-    Proc_EndEach(ProcScr_HelpBoxIntroString);
+//     Proc_EndEach(gProcScr_HelpBoxTextScroll);
+//     Proc_EndEach(ProcScr_HelpBoxIntro);
+//     Proc_EndEach(ProcScr_HelpBoxIntroString);
 
-    SetTextFont(0);
+//     SetTextFont(0);
 
-    return;
-}
+//     return;
+// }
 
 
 void StartHelpBoxTextInitWithString(int item, int msgId, char* string)
@@ -3345,7 +3345,7 @@ void StartHelpBoxString(int x, int y, char* string)
     ApplyHelpBoxContentSizeString(proc, wContent, hContent, string);
     ApplyHelpBoxPosition(proc, info->xDisplay, info->yDisplay);
 
-    ClearHelpBoxText();
+    //ClearHelpBoxText();
     StartHelpBoxTextInitWithString(proc->item, proc->mid, string);
 
     sLastHbi = info;

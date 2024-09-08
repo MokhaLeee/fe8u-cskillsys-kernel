@@ -11,5 +11,8 @@ const u16 gConstSkillTable_Item[0x100][2] = {
     },
     [ITEM_AXE_IRON] = {
         SID_FullMetalBody,
+    },
+    [ITEM_STAFF_HEAL] = {
+        SID_LiveToServe,
     }
 };
