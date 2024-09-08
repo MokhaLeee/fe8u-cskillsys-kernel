@@ -84,3 +84,11 @@ of their stats as boosts.[X]
 Reflex:[NL]
 This unit's turn isn't ended[NL]
 when surprised by enemies in fog.[X]
+
+## MSG_SKILL_IdentityProblems_NAME
+I-Problems[X]
+
+## MSG_SKILL_IdentityProblems
+Identity Problems:[NL]
+This unit can't decide[NL]
+on a name or face.[X]
