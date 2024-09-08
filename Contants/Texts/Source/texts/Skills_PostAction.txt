@@ -125,3 +125,11 @@ allies can move again this turn.[X]
 Dark Bargain:[NL]
 At the end of this unit's turn,[NL]
 heal missing HP by using EXP.[X]
+
+## MSG_SKILL_HoardersBane_NAME
+H-Bane[X]
+
+## MSG_SKILL_HoardersBane
+Hoarder's Bane:[NL]
+At the end of your turn, consume a[NL]
+vulnerary from supply if cur HP < max HP.[X]

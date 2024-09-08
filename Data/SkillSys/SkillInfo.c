@@ -3926,4 +3926,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_FullMetalBody,
     },
 #endif
+
+#if (defined(SID_HoardersBane) && COMMON_SKILL_VALID(SID_HoardersBane))
+    [SID_HoardersBane] = {
+        .name = MSG_SKILL_HoardersBane_NAME,
+        .desc = MSG_SKILL_HoardersBane,
+        .icon = GFX_SkillIcon_HoardersBane,
+    },
+#endif
 };
