@@ -6,7 +6,6 @@
 #include "Source/StaffHeal.lyn.event"
 
 #include "ItemInfoRemap/ItemInfoRemap.event"
-#include "ItemDesc/ItemDesc.event"
 
 /* int (*)(int old, struct Unit * actor, struct Unit * target); */
 ALIGN 4

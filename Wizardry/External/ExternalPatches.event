@@ -33,3 +33,7 @@
 #ifdef CONFIG_INSTALL_MENU_WIDTHS
     #include "PopupMenuWidths/Installer.event"
 #endif
+
+#ifdef CONFIG_EXTEND_R_TEXT_DESC
+    #include "ItemDesc/Installer.event"
+#endif
