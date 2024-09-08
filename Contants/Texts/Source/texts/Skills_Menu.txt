@@ -335,3 +335,17 @@ their current HP totals.[X]
 
 ## MSG_SKILL_ReciprocalAid_NAME
 R-Aid[X]
+
+## MSG_MenuSkill_Sacrifice_FRtext
+No allies to heal.[X]
+
+## MSG_MenuSkill_SacrificeName
+ Sacrifice[X]
+
+## MSG_SKILL_Sacrifice
+Sacrifice: Drains HP from the[N]
+user to restore the HP and cure[N]
+status of another allied unit.[X]
+
+## MSG_SKILL_Sacrifice_NAME
+Sacrifice[X]

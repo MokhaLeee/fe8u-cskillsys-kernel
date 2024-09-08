@@ -3965,4 +3965,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Roll12,
     },
 #endif
+
+
+#if (defined(SID_Sacrifice) && COMMON_SKILL_VALID(SID_Sacrifice))
+    [SID_Sacrifice] = {
+        .name = MSG_SKILL_Sacrifice_NAME,
+        .desc = MSG_SKILL_Sacrifice,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

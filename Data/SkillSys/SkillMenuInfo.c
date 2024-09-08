@@ -468,4 +468,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Sacrifice) && COMMON_SKILL_VALID(SID_Sacrifice))
+    [SID_Sacrifice] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_SacrificeName,
+        .helpMsgId = MSG_SKILL_Sacrifice,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Sacrifice_Usability,
+        .onDraw = NULL,
+        .onSelected = Sacrifice_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };
