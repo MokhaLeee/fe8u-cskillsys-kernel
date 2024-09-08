@@ -321,3 +321,17 @@ Ardent-S[X]
 ## MSG_MenuSkill_ArdentSacrifice_FRtext
 Unit is below HP threshold or[NL]
 no healable targets in range.[X]
+
+## MSG_MenuSkill_ReciprocalAidName
+ R-Aid[X]
+
+## MSG_MenuSkill_ReciprocalAid_FRtext
+No allies to switch HP with.[X]
+
+## MSG_SKILL_ReciprocalAid
+Reciprocal Aid:[NL]
+The user and target switch[NL]
+their current HP totals.[X]
+
+## MSG_SKILL_ReciprocalAid_NAME
+R-Aid[X]
