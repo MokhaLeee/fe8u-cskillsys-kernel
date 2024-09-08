@@ -9,7 +9,7 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
-void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     int attack = attacker->battleAttack;
     int defense = defender->battleDefense;
@@ -72,7 +72,7 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
-void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     gBattleStats.damage = 0;
 
@@ -115,15 +115,15 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitEffects);
-void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-        if (BattleSkillTester(attacker, SID_Discipline))
-            attacker->wexpMultiplier += 2;
-        else
-            attacker->wexpMultiplier++;
-#else
+    if (BattleSkillTester(attacker, SID_Discipline))
+        attacker->wexpMultiplier += 2;
+    else
         attacker->wexpMultiplier++;
+#else
+    attacker->wexpMultiplier++;
 #endif
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
@@ -166,7 +166,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             if (BattleSkillTester(attacker, SID_DownWithArch))
             {
                 char name[] = "Arch";
-                if(strcmp(GetStringFromIndex(GetUnit(defender->unit.index)->pCharacterData->nameTextId), name) == 0)
+                if (strcmp(GetStringFromIndex(GetUnit(defender->unit.index)->pCharacterData->nameTextId), name) == 0)
                 {
                     RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DownWithArch);
                     gBattleStats.damage = defender->unit.curHP;
@@ -186,12 +186,44 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 #endif
         {
+#if (defined(SID_LiquidOoze) && (COMMON_SKILL_VALID(SID_LiquidOoze)))
+            if (BattleSkillTester(defender, SID_LiquidOoze))
+            {
+                if ((attacker->unit.curHP - gBattleStats.damage) <= 0)
+                    attacker->unit.curHP = 1;
+                else
+                {
+                    attacker->unit.curHP -= gBattleStats.damage;
+                    defender->unit.curHP += gBattleStats.damage;
+                }
+
+                /**
+                 * I tried every trick in the book, but there's a visual bug with this skill
+                 * where the skill holder's HP will keep ticking up to the byte limit when it's triggered.
+                 * So as a band aid fix, I force battle animations off in this instance.
+                 * This does come with the caveat of forcing off everyone's animations
+                 * and reversing what I did is a pain without storing the previous configuration, sorry : (
+                 */
+                SetGameOption(0, 2);
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+            }
+            else
+            {
+                if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
+                    attacker->unit.curHP = attacker->unit.maxHP;
+                else
+                    attacker->unit.curHP += gBattleStats.damage;
+
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+            }
+#else
             if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
                 attacker->unit.curHP = attacker->unit.maxHP;
             else
                 attacker->unit.curHP += gBattleStats.damage;
 
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+#endif
         }
 
         BattleHit_InjectNegativeStatus(attacker, defender);
@@ -203,7 +235,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHit);
-bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     if (attacker == &gBattleTarget)
         gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
@@ -260,7 +292,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
             {
-                struct Unit * unit_tar = &gBattleTarget.unit;
+                struct Unit *unit_tar = &gBattleTarget.unit;
                 unit_tar->state |= US_DROP_ITEM;
             }
 #endif

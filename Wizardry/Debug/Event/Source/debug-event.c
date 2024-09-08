@@ -281,6 +281,14 @@ static const struct REDA REDA_Selena[] = {
     },
 };
 
+static const struct REDA REDA_Lyon[] = {
+    {
+        .x = 12,
+        .y = 24,
+        .b = -1,
+    },
+};
+
 static const struct UnitDefinition UnitDef_Enemy1[] = {
     {
         .charIndex = CHARACTER_ONEILL,
@@ -357,6 +365,23 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
         .items = {
             ITEM_ANIMA_THUNDER,
             ITEM_ANIMA_ELFIRE,
+            ITEM_VULNERARY,
+        },
+        .ai = { 0, 4, 9, 0 },
+    },
+
+     {
+        .charIndex = CHARACTER_LYON,
+        .classIndex = CLASS_NECROMANCER,
+        .autolevel = true,
+        .allegiance = FACTION_ID_RED,
+        .level = 30,
+        .xPosition = 12,
+        .yPosition = 24,
+        .redaCount = 1,
+        .redas = REDA_Lyon,
+        .items = {
+            ITEM_DARK_NOSFERATU,
             ITEM_VULNERARY,
         },
         .ai = { 0, 4, 9, 0 },
