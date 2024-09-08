@@ -7,7 +7,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
         SID_RuinedBladePlus,
     },
     [ITEM_SWORD_RAPIER] = {
-        SID_LiquidOoze,
+        SID_Pathfinder,
     },
     [ITEM_AXE_IRON] = {
         SID_FullMetalBody,
