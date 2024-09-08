@@ -32,11 +32,16 @@ bool8 HasConvoyAccess(void)
     return true;
 }
 
+static void ClearSupplyItemsExt(void * dst)
+{
+    CpuFill16(0, dst, CONFIG_INSTALL_CONVOYEXPA_AMT * sizeof(u16));
+}
+
 LYN_REPLACE_CHECK(ClearSupplyItems);
 void ClearSupplyItems(void)
 {
 #if CHAX
-    CpuFill16(0, sExpaConvoyItemArray, sizeof(sExpaConvoyItemArray));
+    ClearSupplyItemsExt(sExpaConvoyItemArray);
 #else
     CpuFill16(0, gConvoyItemArray, CONVOY_ITEM_COUNT * sizeof(u16));
 #endif
@@ -49,6 +54,8 @@ void ShrinkConvoyItemList(void)
     u16 * buffer = (void*) gGenericBuffer;
     u16 * bufferIt = buffer;
     u16 * convoy = GetConvoyItemArray();
+
+    ClearSupplyItemsExt(buffer);
 
 #if CHAX
     for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
@@ -64,9 +71,8 @@ void ShrinkConvoyItemList(void)
         convoy++;
     }
 
-    *bufferIt = 0;
     ClearSupplyItems();
-    CpuCopy16(buffer, GetConvoyItemArray(), i * sizeof(u16));
+    memcpy(GetConvoyItemArray(), buffer, CONFIG_INSTALL_CONVOYEXPA_AMT * sizeof(u16));
 }
 
 LYN_REPLACE_CHECK(GetConvoyItemCount);
