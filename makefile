@@ -337,6 +337,12 @@ ifeq ($(CONFIG_CI_NO_SKILL_TEST), 0)
 	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills-equip.enum.txt 	>  $(SKILLS_COMBO_DIR)/combo.skills.txt
 	@python3 $(ENUM2C) 0x100 $(SKILLS_ENUM_DIR)/skills-others.enum.txt  >> $(SKILLS_COMBO_DIR)/combo.skills.txt
 	@python3 $(ENUM2C) 0x300 $(SKILLS_ENUM_DIR)/skills-item.enum.txt    >> $(SKILLS_COMBO_DIR)/combo.skills.txt
+else
+	@echo "[WARNNING] ======================================"
+	@echo "[WARNNING] ======================================"
+	@echo "[WARNNING] Build on removing all skills for debug"
+	@echo "[WARNNING] ======================================"
+	@echo "[WARNNING] ======================================"
 endif
 
 PRE_BUILD += enum
