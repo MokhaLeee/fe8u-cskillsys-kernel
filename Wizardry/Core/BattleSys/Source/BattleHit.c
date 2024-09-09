@@ -141,7 +141,6 @@ s8 BattleCheckTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *def
                 gBattleStats.taUnitB = unit;
         }
     }
-    NoCashGBAPrintf("Count is: %d", count);
     return count >= 2 ? TRUE : FALSE;
 }
 

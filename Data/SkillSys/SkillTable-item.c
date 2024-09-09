@@ -8,7 +8,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
         SID_TriangleAttack,
     },
     [ITEM_SWORD_RAPIER] = {
-        SID_ThotSlayer,
+        SID_Swarm,
         SID_TriangleAttack,
     },
     [ITEM_AXE_IRON] = {
@@ -19,5 +19,11 @@ const u16 gConstSkillTable_Item[0x100][2] = {
     },
     [ITEM_ANIMA_ELFIRE] = {
         SID_TriangleAttack,
+    },
+    [ITEM_LANCE_SLIM] = {
+        SID_Swarm,
+    },
+    [ITEM_LANCE_SILVER] = {
+        SID_Swarm,
     }
 };

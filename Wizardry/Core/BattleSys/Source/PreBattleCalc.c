@@ -1357,6 +1357,34 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_Swarm) && (COMMON_SKILL_VALID(SID_Swarm)))
+        case SID_Swarm:
+            if (gBattleStats.range == 1)
+            {
+                struct Unit *unit = GetUnit(attacker->unit.index);
+                int x = unit->xPos;
+                int y = unit->yPos;
+
+                // If there is no unit in any of these positions, do nothing
+                if (gBmMapUnit[y][x + 1] == 0)
+                    return;
+                if (gBmMapUnit[y][x - 1] == 0)
+                    return;
+                if (gBmMapUnit[y + 1][x] == 0)
+                    return;
+                if (gBmMapUnit[y - 1][x] == 0)
+                    return;
+
+                int dmg = attacker->battleAttack - defender->battleDefense;
+                if (dmg < 0)
+                    dmg = 0;
+                int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
+                attacker->battleAttack += addDmg;
+                NoCashGBAPrintf("Attack of swarm unit is now: %d", attacker->battleAttack);
+            }
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
