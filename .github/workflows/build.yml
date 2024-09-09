@@ -53,5 +53,8 @@ jobs:
     - name: Debug build
       run: make -j
 
+    - name: Clean build
+      run: make clean
+
     - name: Debug remove skill build
       run: make -j CONFIG_CI_NO_SKILL_TEST=1
