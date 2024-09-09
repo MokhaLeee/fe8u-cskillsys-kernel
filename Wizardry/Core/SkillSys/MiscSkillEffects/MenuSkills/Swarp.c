@@ -6,6 +6,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_Swarp) && (COMMON_SKILL_VALID(SID_Swarp))
 u8 Swarp_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
@@ -121,3 +122,4 @@ bool Action_Swarp(ProcPtr parent)
     KernelCallEvent(EventScr_MenuPositionSwap, EV_EXEC_CUTSCENE, parent);
     return true;
 }
+#endif

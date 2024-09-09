@@ -5,6 +5,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_GoddessDance) && (COMMON_SKILL_VALID(SID_GoddessDance))
 u8 GoddessDance_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
@@ -77,3 +78,4 @@ bool Action_GoddessDance(ProcPtr parent)
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
+#endif

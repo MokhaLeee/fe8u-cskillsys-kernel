@@ -83,38 +83,55 @@ static void callback_exec(ProcPtr proc)
             continue;
 
         switch (gActionData.unk08) {
+#if defined(SID_RallyStrength) && (COMMON_SKILL_VALID(SID_RallyStrength))
         case SID_RallyStrength:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_POW);
             break;
+#endif
 
+#if defined(SID_RallyMagic) && (COMMON_SKILL_VALID(SID_RallyMagic))
         case SID_RallyMagic:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_MAG);
             break;
+#endif
 
+#if defined(SID_RallySkill) && (COMMON_SKILL_VALID(SID_RallySkill))
         case SID_RallySkill:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_SKL);
             break;
+#endif
 
+#if defined(SID_RallySpeed) && (COMMON_SKILL_VALID(SID_RallySpeed))
         case SID_RallySpeed:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_SPD);
             break;
+#endif
 
+#if defined(SID_RallyLuck) && (COMMON_SKILL_VALID(SID_RallyLuck))
         case SID_RallyLuck:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_LCK);
             break;
+#endif
 
+#if defined(SID_RallyDefense) && (COMMON_SKILL_VALID(SID_RallyDefense))
         case SID_RallyDefense:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_DEF);
             break;
+#endif
 
+#if defined(SID_RallyResistance) && (COMMON_SKILL_VALID(SID_RallyResistance))
         case SID_RallyResistance:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_RES);
             break;
+#endif
 
+#if defined(SID_RallyMovement) && (COMMON_SKILL_VALID(SID_RallyMovement))
         case SID_RallyMovement:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_MOV);
             break;
+#endif
 
+#if defined(SID_RallySpectrum) && (COMMON_SKILL_VALID(SID_RallySpectrum))
         case SID_RallySpectrum:
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_POW);
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_MAG);
@@ -125,6 +142,7 @@ static void callback_exec(ProcPtr proc)
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_RES);
             SetUnitStatDebuff(unit, UNIT_STAT_BUFF_RALLY_MOV);
             break;
+#endif
         }
     }
 }

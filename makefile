@@ -327,6 +327,7 @@ enum: $(SKILLS_ENUM_HEADER)
 $(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_SRC)
 	@echo "[GEN]	$(SKILLS_ENUM_HEADER)"
 	@echo "#pragma once" > $(SKILLS_ENUM_HEADER)
+ifeq ($(CONFIG_CI_NO_SKILL_TEST), 0)
 	@python3 $(ENUM2H) 0x000 $(SKILLS_ENUM_DIR)/skills-equip.enum.txt 	>> $(SKILLS_ENUM_HEADER)
 	@python3 $(ENUM2H) 0x100 $(SKILLS_ENUM_DIR)/skills-others.enum.txt  >> $(SKILLS_ENUM_HEADER)
 	@python3 $(ENUM2H) 0x300 $(SKILLS_ENUM_DIR)/skills-item.enum.txt    >> $(SKILLS_ENUM_HEADER)
@@ -336,6 +337,7 @@ $(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_SRC)
 	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills-equip.enum.txt 	>  $(SKILLS_COMBO_DIR)/combo.skills.txt
 	@python3 $(ENUM2C) 0x100 $(SKILLS_ENUM_DIR)/skills-others.enum.txt  >> $(SKILLS_COMBO_DIR)/combo.skills.txt
 	@python3 $(ENUM2C) 0x300 $(SKILLS_ENUM_DIR)/skills-item.enum.txt    >> $(SKILLS_COMBO_DIR)/combo.skills.txt
+endif
 
 PRE_BUILD += enum
 CLEAN_FILES += $(SKILLS_ENUM_HEADER)

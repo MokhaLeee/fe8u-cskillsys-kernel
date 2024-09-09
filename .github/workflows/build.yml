@@ -51,4 +51,7 @@ jobs:
       run: head -c 16M /dev/urandom > fe8.gba
 
     - name: Debug build
-      run: make all
+      run: make -j
+
+    - name: Debug remove skill build
+      run: make -j CONFIG_CI_NO_SKILL_TEST=1

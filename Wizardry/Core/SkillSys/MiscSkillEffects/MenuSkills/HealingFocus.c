@@ -4,6 +4,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_HealingFocus) && (COMMON_SKILL_VALID(SID_HealingFocus))
 u8 HealingFocus_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
@@ -53,3 +54,4 @@ bool Action_HealingFocus(ProcPtr parent)
         NULL);
     return true;
 }
+#endif

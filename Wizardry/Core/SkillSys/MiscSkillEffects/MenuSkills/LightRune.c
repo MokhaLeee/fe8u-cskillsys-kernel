@@ -5,6 +5,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_LightRune) && (COMMON_SKILL_VALID(SID_LightRune))
 u8 LightRune_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
@@ -72,3 +73,4 @@ bool Action_LightRune(ProcPtr parent)
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
+#endif

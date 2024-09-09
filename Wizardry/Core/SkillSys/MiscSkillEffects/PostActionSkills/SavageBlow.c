@@ -57,8 +57,8 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillSavageBlow[] = {
 
 bool PostActionSkillSavageBlow(ProcPtr parent)
 {
-    struct Unit * unit = gActiveUnit;
-    struct Unit * target = GetUnit(gActionData.targetIndex);
+    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit * target = GetUnit(gActionData.targetIndex);
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

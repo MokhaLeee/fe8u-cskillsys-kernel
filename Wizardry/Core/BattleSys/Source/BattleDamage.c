@@ -52,7 +52,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 {
     const BattleDamageCalcFunc * it;
 
-    bool barricadePlus_activated;
+    FORCE_DECLARE bool barricadePlus_activated;
     int result;
 
     FORCE_DECLARE struct BattleGlobalFlags * act_flags, * tar_flags;

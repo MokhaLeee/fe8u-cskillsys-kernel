@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "skill-system.h"
 #include "constants/skills.h"
 
 /* AiActionConf::exec */
@@ -7,11 +8,13 @@ void AiAction_Teleportation(ProcPtr parent)
     gActionData.xMove = gAiDecision.xTarget;
     gActionData.yMove = gAiDecision.yTarget;
 
+#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
     gActionData.subjectIndex = gActiveUnit->index;
     gActionData.unk08 = SID_Teleportation;
     gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
 
     ApplyUnitAction(parent);
+#endif
 }
 
 /* AiActionConf:idle */

@@ -7,8 +7,8 @@
 
 bool PostActionBattleActorHurt(ProcPtr parent)
 {
-    struct Unit * unit = gActiveUnit;
-    struct Unit * target = GetUnit(gActionData.targetIndex);
+    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit * target = GetUnit(gActionData.targetIndex);
     int damage = 0;
 
     switch (gActionData.unitActionType) {
@@ -58,8 +58,8 @@ bool PostActionBattleActorHurt(ProcPtr parent)
 
 bool PostActionBattleTargetHurt(ProcPtr parent)
 {
-    struct Unit * unit = GetUnit(gActionData.targetIndex);
-    struct Unit * actor = GetUnit(gActionData.subjectIndex);
+    FORCE_DECLARE struct Unit * unit = GetUnit(gActionData.targetIndex);
+    FORCE_DECLARE struct Unit * actor = GetUnit(gActionData.subjectIndex);
 
     int damage = 0;
 

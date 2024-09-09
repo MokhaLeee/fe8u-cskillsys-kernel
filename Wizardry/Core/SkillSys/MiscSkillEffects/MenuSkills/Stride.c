@@ -6,6 +6,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_Stride) && (COMMON_SKILL_VALID(SID_Stride))
 STATIC_DECLAR void AddTargetForStride(struct Unit * unit)
 {
     if (UNIT_ALIVE(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index))
@@ -97,3 +98,4 @@ bool Action_Stride(ProcPtr parent)
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
+#endif
