@@ -1,4 +1,4 @@
-NAME=[CSKILL_K dev] StatScreenfx: UI (ally)
+NAME=[CSKILL] (100LTS) StatScreenfx: UI (ally)
 TYPE=IMAGE
 TAG=#ENGINE
 

@@ -1,4 +1,4 @@
-NAME=[CSKILL_K dev] SkillSys: MapAnimApfx
+NAME=[CSKILL] (100LTS) SkillSys: MapAnimApfx
 TYPE=IMAGE
 TAG=#ENGINE
 

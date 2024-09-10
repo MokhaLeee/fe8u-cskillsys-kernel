@@ -1,4 +1,4 @@
-NAME=[CSKILL_K dev] ComboAttack: MapAnimApfx
+NAME=[CSKILL] (100LTS) ComboAttack: MapAnimApfx
 TYPE=IMAGE
 TAG=#ENGINE
 
