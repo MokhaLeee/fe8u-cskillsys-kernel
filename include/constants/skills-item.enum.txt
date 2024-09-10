@@ -47,3 +47,4 @@ SID_Sacrifice
 SID_Thighdeology
 SID_ThotSlayer
 SID_TriangleAttack
+SID_Capture

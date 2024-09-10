@@ -150,7 +150,7 @@ void BattleGenerateHitTriangleAttack(struct BattleUnit *attacker, struct BattleU
 {
 
     /**
-     * Since we're no longer limiting ourselves to just checking a 
+     * Since we're no longer limiting ourselves to just checking a
      * hardcoded attribute we can turn this off.
      */
     // if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_TRIANGLEATTACK_ANY))

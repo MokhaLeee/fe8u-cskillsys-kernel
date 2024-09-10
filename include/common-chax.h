@@ -41,5 +41,9 @@
 #define UNIT_RECORDED_LEVEL_MAX 80
 
 extern void SetGameOption(u8 index, u8 newValue);
+extern void TryAddUnitToTradeTargetList(struct Unit* unit);
+extern void MakeTradeTargetList(struct Unit* unit);
+extern void TryAddUnitToRescueTargetList(struct Unit* unit);
+
 
 typedef bool (* HookProcFunc_t)(ProcPtr);

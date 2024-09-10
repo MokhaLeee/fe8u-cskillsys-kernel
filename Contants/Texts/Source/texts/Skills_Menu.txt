@@ -349,3 +349,17 @@ status of another allied unit.[X]
 
 ## MSG_SKILL_Sacrifice_NAME
 Sacrifice[X]
+
+## MSG_MenuSkill_Capture_FRtext
+No enemies to capture.[X]
+
+## MSG_MenuSkill_CaptureName
+ Capture[X]
+
+## MSG_SKILL_Capture
+Capture:[NL]
+Capture an enemy after defeating[NL]
+it with reduced stats.[X]
+
+## MSG_SKILL_Capture_NAME
+Capture[X]

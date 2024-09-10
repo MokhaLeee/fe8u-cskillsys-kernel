@@ -483,4 +483,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Capture) && COMMON_SKILL_VALID(SID_Capture))
+    [SID_Capture] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_CaptureName,
+        .helpMsgId = MSG_SKILL_Capture,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Capture_Usability,
+        .onDraw = NULL,
+        .onSelected = Capture_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

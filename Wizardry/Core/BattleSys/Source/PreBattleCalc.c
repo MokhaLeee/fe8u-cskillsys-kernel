@@ -1357,6 +1357,21 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_Capture) && (COMMON_SKILL_VALID(SID_Capture)))
+        /**
+         * I should be using CheckBitUES but it won't persist, so I check _3A directly
+         */
+        case SID_Capture:
+            if (BattleSkillTester(attacker, SID_Capture) && GetUnit(attacker->unit.index)->_u3A == 8)
+            {
+                attacker->battleAttack -= Div(attacker->battleAttack * SKILL_EFF0(SID_Capture), 100);
+                attacker->battleHitRate -= Div(attacker->battleHitRate * SKILL_EFF0(SID_Capture), 100);
+                attacker->battleSpeed -= Div(attacker->battleSpeed * SKILL_EFF0(SID_Capture), 100);
+                ;
+            }
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
