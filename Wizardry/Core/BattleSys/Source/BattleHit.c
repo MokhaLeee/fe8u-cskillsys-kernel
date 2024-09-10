@@ -308,7 +308,7 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
                  * where the skill holder's HP will keep ticking up to the byte limit when it's triggered.
                  * So as a band aid fix, I force battle animations off in this instance.
                  * This does come with the caveat of forcing off everyone's animations
-                 * and reversing what I did is a pain without storing the previous configuration, sorry : (
+                 * and reversing what I did is a pain without storing the previous configuration, sorry :(
                  */
                 SetGameOption(0, 2);
                 gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;

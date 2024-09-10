@@ -4003,4 +4003,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_Capture,
     },
 #endif
+
+#if (defined(SID_MoonBow) && COMMON_SKILL_VALID(SID_MoonBow))
+    [SID_MoonBow] = {
+        .desc = MSG_SKILL_MoonBow,
+        .icon = GFX_SkillIcon_MoonBow,
+    },
+#endif
 };

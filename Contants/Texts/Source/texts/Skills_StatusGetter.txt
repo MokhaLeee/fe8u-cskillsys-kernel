@@ -503,3 +503,7 @@ CON by 5.[X]
 Contrary:[NL]
 Invert the effects of all[NL]
 debuffs to this unit.[X]
+
+## MSG_SKILL_MoonBow
+Moon Bow:[NL]
+Reduce enemy's DEF/RES by 25%.[X]
