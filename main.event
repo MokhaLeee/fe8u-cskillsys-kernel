@@ -16,29 +16,27 @@ ORG FreeSpaceKernel_Reloc
 MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
 ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
 
-ORG FreeSpaceDEMO
+ORG FreeSpaceKernelData
     /**
      * Put vanilla text data to the user space
      */
     #include "Contants/Texts/RepointText/RepointText.event"
-    #include "Contants/Texts/RepointText/RepointTextData.event"
+    // #include "Contants/Texts/RepointText/RepointTextData.event"
     /* <!>
      * Tool helpers should installed after repointing
      */
     #include "Tools/Tool Helpers.txt"
-MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO)
 
-ORG FreeSpaceKernelData
     #include "Data/Data.event"
     #include "Contants/Contants.event"
-MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
-ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
+MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData)
+ASSERT (0xBC0000 - CURRENTOFFSET)
 
-ORG FreeSpaceKernelText
+ORG 0xBC0000
     /**
      * .text section for kernel.
      * This part of code is put at in-BL range space
      */
     #include "Wizardry/Wizardry.event"
-MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelText) max (FreeSpaceKernelTextSize)
-ASSERT (FreeSpaceKernelText + FreeSpaceKernelTextSize - CURRENTOFFSET)
+MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - 0xBC0000)
+ASSERT (0xC00000 - CURRENTOFFSET)
