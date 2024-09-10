@@ -301,4 +301,5 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_HoardersBane] = {{ 10 }},
     [SID_Thighdeology] = {{ 2, 20 }},
     [SID_ThotSlayer] = {{ 15 }},
+    [SID_Capture] = {{ 50 }},
 };

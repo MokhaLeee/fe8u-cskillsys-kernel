@@ -88,11 +88,11 @@ PUSH
 
     ORG $25250 // TryAddUnitToTradeTargetList
     BYTE 0x3F
-    PROTECT $2521C $252D0
+    // PROTECT $2521C $252D0
 
     ORG $25378 // TryAddUnitToRescueTargetList
     BYTE 0x3F
-    PROTECT $25344 $253B4
+    // PROTECT $25344 $253B4
 
     ORG $25540 // TryAddUnitToGiveTargetList
     BYTE 0x3F

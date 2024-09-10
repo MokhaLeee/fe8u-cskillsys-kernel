@@ -3996,4 +3996,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_TriangleAttack,
     },
 #endif
+
+#if (defined(SID_Capture) && COMMON_SKILL_VALID(SID_Capture))
+    [SID_Capture] = {
+        .desc = MSG_SKILL_Capture,
+        .icon = GFX_SkillIcon_Capture,
+    },
+#endif
 };
