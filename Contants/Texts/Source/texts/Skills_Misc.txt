@@ -100,3 +100,11 @@ P-Finder[X]
 Pathfinder:[NL]
 Allied units within[NL]
 3 tiles can Canto.[X]
+
+## MSG_SKILL_PastelVeil_NAME
+P-Veil[X]
+
+## MSG_SKILL_PastelVeil
+Pastel Veil:[NL]
+Allies in a 3 tile radius[NL]
+are immune to poison.[X]

@@ -4010,4 +4010,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_MoonBow,
     },
 #endif
+
+#if (defined(SID_PastelVeil) && COMMON_SKILL_VALID(SID_PastelVeil))
+    [SID_PastelVeil] = {
+        .name = MSG_SKILL_PastelVeil_NAME,
+        .desc = MSG_SKILL_PastelVeil,
+        .icon = GFX_SkillIcon_PastelVeil,
+    },
+#endif
 };
