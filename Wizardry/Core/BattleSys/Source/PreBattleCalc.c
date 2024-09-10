@@ -1357,31 +1357,74 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
-#if (defined(SID_Swarm) && (COMMON_SKILL_VALID(SID_Swarm)))
-        case SID_Swarm:
-            if (gBattleStats.range == 1)
-            {
-                struct Unit *unit = GetUnit(attacker->unit.index);
-                int x = unit->xPos;
-                int y = unit->yPos;
+// #if (defined(SID_Swarm) && (COMMON_SKILL_VALID(SID_Swarm)))
+//         case SID_Swarm:
+//             if (gBattleStats.range == 1 && UNIT_FACTION(GetUnit(defender->unit.index)) == gPlaySt.faction)
+//             {
+//                 struct Unit *unit = GetUnit(attacker->unit.index);
+//                 int x = unit->xPos;
+//                 int x2 = defender->unit.xPos;
+//                 int y = unit->yPos;
+//                 int y2 = defender->unit.yPos;
 
-                // If there is no unit in any of these positions, do nothing
-                if (gBmMapUnit[y][x + 1] == 0)
-                    return;
-                if (gBmMapUnit[y][x - 1] == 0)
-                    return;
-                if (gBmMapUnit[y + 1][x] == 0)
-                    return;
-                if (gBmMapUnit[y - 1][x] == 0)
-                    return;
+//                 // if the target can be on any adjacent position, do nothing
+//                 if (Generic_CanUnitBeOnPos(unit, x + 1, y, x2, y2))
+//                 {
+//                     return;
+//                 }
+//                 if (Generic_CanUnitBeOnPos(unit, x - 1, y, x2, y2))
+//                 {
+//                     return;
+//                 }
+//                 if (Generic_CanUnitBeOnPos(unit, x, y + 1, x2, y2))
+//                 {
+//                     return;
+//                 }
+//                 if (Generic_CanUnitBeOnPos(unit, x, y - 1, x2, y2))
+//                 {
+//                     return;
+//                 }
 
-                int dmg = attacker->battleAttack - defender->battleDefense;
-                if (dmg < 0)
-                    dmg = 0;
-                int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
-                attacker->battleAttack += addDmg;
-                NoCashGBAPrintf("Attack of swarm unit is now: %d", attacker->battleAttack);
-#endif
+//                 int dmg = defender->battleAttack - attacker->battleDefense;
+//                 if (dmg < 0)
+//                     dmg = 0;
+//                 int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
+//                 defender->battleAttack += addDmg;
+//             }
+//             else if (gBattleStats.range == 1 && UNIT_FACTION(GetUnit(defender->unit.index)) != gPlaySt.faction)
+//             {
+//                 struct Unit *unit = GetUnit(attacker->unit.index);
+//                 int x = unit->xPos;
+//                 int x2 = defender->unit.xPos;
+//                 int y = unit->yPos;
+//                 int y2 = defender->unit.yPos;
+
+//                 // if the target can be on any adjacent position, do nothing
+//                 if (Generic_CanUnitBeOnPos(unit, x + 1, y, x2, y2))
+//                 {
+//                     return;
+//                 }
+//                 if (Generic_CanUnitBeOnPos(unit, x - 1, y, x2, y2))
+//                 {
+//                     return;
+//                 }
+//                 if (Generic_CanUnitBeOnPos(unit, x, y + 1, x2, y2))
+//                 {
+//                     return;
+//                 }
+//                 if (Generic_CanUnitBeOnPos(unit, x, y - 1, x2, y2))
+//                 {
+//                     return;
+//                 }
+
+//                 int dmg = attacker->battleAttack - defender->battleDefense;
+//                 if (dmg < 0)
+//                     dmg = 0;
+//                 int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
+//                 attacker->battleAttack += addDmg;
+//             }
+//             break;
+// #endif
 
 #if (defined(SID_Capture) && (COMMON_SKILL_VALID(SID_Capture)))
         /**

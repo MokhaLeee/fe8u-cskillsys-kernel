@@ -10,15 +10,15 @@
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
-typedef void (* BattleDamageCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
-extern BattleDamageCalcFunc const * const gpBattleDamageCalcFuncs;
+typedef void (*BattleDamageCalcFunc)(struct BattleUnit *buA, struct BattleUnit *buB);
+extern BattleDamageCalcFunc const *const gpBattleDamageCalcFuncs;
 
-typedef int (* BattleRealDamageCalcFunc) (int old, struct BattleUnit * buA, struct BattleUnit * buB);
-extern BattleRealDamageCalcFunc const * const gpBattleRealDamageCalcFuncs;
+typedef int (*BattleRealDamageCalcFunc)(int old, struct BattleUnit *buA, struct BattleUnit *buB);
+extern BattleRealDamageCalcFunc const *const gpBattleRealDamageCalcFuncs;
 
-int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
+int CalcBattleRealDamage(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    const BattleRealDamageCalcFunc * it;
+    const BattleRealDamageCalcFunc *it;
 
     int damage = 0;
 
@@ -48,16 +48,16 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     return damage;
 }
 
-int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
+int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    const BattleDamageCalcFunc * it;
+    const BattleDamageCalcFunc *it;
     bool alteredCrit = false;
 
     bool barricadePlus_activated;
     int result;
     int roll12_ID = 15; // Set it to the maximum value for its bitfield, so it won't be accidentally triggered
 
-    FORCE_DECLARE struct BattleGlobalFlags * act_flags, * tar_flags;
+    FORCE_DECLARE struct BattleGlobalFlags *act_flags, *tar_flags;
 
     /**
      * result = ([atk + gDmg.correction - def])
@@ -131,6 +131,48 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     gDmg.defense = gBattleStats.defense;
     gDmg.correction = 0;
 
+#if (defined(SID_Swarm) && (COMMON_SKILL_VALID(SID_Swarm)))
+    if (BattleSkillTester(attacker, SID_Swarm))
+    {
+        if (gBattleStats.range == 1)
+        {
+            struct Unit *unit = GetUnit(defender->unit.index);
+            int x = unit->xPos;
+            int x2 = attacker->unit.xPos;
+            int y = unit->yPos;
+            int y2 = attacker->unit.yPos;
+            bool noUnit = false;
+
+            // if the target can be on any adjacent position, do nothing
+            if (Generic_CanUnitBeOnPos(unit, x + 1, y, x2, y2))
+            {
+                noUnit = true;
+            }
+            if (noUnit || Generic_CanUnitBeOnPos(unit, x - 1, y, x2, y2))
+            {
+                noUnit = true;
+            }
+            if (noUnit || Generic_CanUnitBeOnPos(unit, x, y + 1, x2, y2))
+            {
+                noUnit = true;
+            }
+            if (noUnit || Generic_CanUnitBeOnPos(unit, x, y - 1, x2, y2))
+            {
+                noUnit = true;
+            }
+
+            if (!noUnit)
+            {
+                int dmg = attacker->battleAttack - defender->battleDefense;
+                if (dmg < 0)
+                    dmg = 0;
+                int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
+                attacker->battleAttack += addDmg;
+            }
+        }
+    }
+#endif
+
 #if defined(SID_RampUp) && (COMMON_SKILL_VALID(SID_RampUp))
     if (BattleSkillTester(attacker, SID_RampUp) && gDmg.crit_atk)
     {
@@ -149,7 +191,8 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
          *
          * Later we may optimize it.
          */
-        switch (GetCombatArtInForce(&attacker->unit)) {
+        switch (GetCombatArtInForce(&attacker->unit))
+        {
         case CID_Detonate:
             if (!(GetItemAttributes(attacker->weapon) & IA_UNBREAKABLE))
                 gDmg.defense = 0;
@@ -194,7 +237,8 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     if (CheckBattleSkillActivate(attacker, defender, SID_Ignis, attacker->unit.skl) || roll12_ID == 3)
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
-        switch (attacker->weaponType) {
+        switch (attacker->weaponType)
+        {
         case ITYPE_SWORD:
         case ITYPE_LANCE:
         case ITYPE_AXE:
@@ -252,8 +296,8 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-        if (BattleSkillTester(attacker, SID_Spurn) && gDmg.crit_atk && (attacker->hpInitial * 4) < (attacker->unit.maxHP * 3))
-            gDmg.correction += SKILL_EFF0(SID_Spurn);
+    if (BattleSkillTester(attacker, SID_Spurn) && gDmg.crit_atk && (attacker->hpInitial * 4) < (attacker->unit.maxHP * 3))
+        gDmg.correction += SKILL_EFF0(SID_Spurn);
 #endif
 
 #if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
@@ -288,7 +332,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         {
             if (gBattleStats.range > 1)
             {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus); 
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_TowerShieldPlus);
                 return 0;
             }
         }
@@ -299,8 +343,8 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         {
             if (gBattleStats.range >= 3)
             {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Dazzling);
-            return 0;
+                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Dazzling);
+                return 0;
             }
         }
 #endif
@@ -357,10 +401,9 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 #endif
 
-
 #if defined(SID_SolarPower) && (COMMON_SKILL_VALID(SID_SolarPower))
     if (BattleSkillTester(attacker, SID_SolarPower))
-        if(gPlaySt.chapterWeatherId == WEATHER_FLAMES && IsMagicAttack(attacker))
+        if (gPlaySt.chapterWeatherId == WEATHER_FLAMES && IsMagicAttack(attacker))
             gDmg.increase += SKILL_EFF0(SID_SolarPower);
 #endif
 
@@ -412,7 +455,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #if (defined(SID_Multiscale) && (COMMON_SKILL_VALID(SID_Multiscale)))
     if (BattleSkillTester(defender, SID_Multiscale))
     {
-        if(defender->unit.curHP == defender->unit.maxHP)
+        if (defender->unit.curHP == defender->unit.maxHP)
         {
             RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Multiscale);
             gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Multiscale));
@@ -559,7 +602,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         u32 dividend, divisor, quotient;
 
         dividend = gDmg.damage_base * gDmg.increase * gDmg.crit_correction * 0x100;
-        divisor  = 100 * 100 * gDmg.decrease;
+        divisor = 100 * 100 * gDmg.decrease;
 
         quotient = DIV_ROUND_CLOSEST(dividend, divisor);
         Debugf("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
@@ -572,8 +615,8 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     result += gDmg.real_damage;
 
     Printf("[round %d] dmg=%d: base=%d (atk=%d, def=%d, cor=%d), inc=%d, crt=%d, dec=%d, real=%d",
-                    GetBattleHitRound(gBattleHitIterator), result, gDmg.damage_base,
-                    gDmg.attack, gDmg.defense, gDmg.correction, gDmg.increase, gDmg.crit_correction, gDmg.decrease, gDmg.real_damage);
+           GetBattleHitRound(gBattleHitIterator), result, gDmg.damage_base,
+           gDmg.attack, gDmg.defense, gDmg.correction, gDmg.increase, gDmg.crit_correction, gDmg.decrease, gDmg.real_damage);
 
     if (result > BATTLE_MAX_DAMAGE)
         result = BATTLE_MAX_DAMAGE;

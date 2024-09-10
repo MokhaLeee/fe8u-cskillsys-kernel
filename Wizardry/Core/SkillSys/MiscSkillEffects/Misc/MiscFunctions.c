@@ -286,3 +286,24 @@ void UnitDrop(struct Unit *actor, int xTarget, int yTarget)
         UnitKill(target);
     }
 }
+
+// use vanilla version so we don't lag by using hooked versions that accounts for pass etc 
+s8 Vanilla_CanUnitCrossTerrain(struct Unit* unit, int terrain) {
+    const s8* lookup = (s8*)GetUnitMovementCost(unit);
+    return (lookup[terrain] > 0) ? TRUE : FALSE;
+}
+
+bool Generic_CanUnitBeOnPos(struct Unit *unit, s8 x, s8 y, int x2, int y2)
+{
+    if (x < 0 || y < 0)
+        return 0; // position out of bounds
+    if (x >= gBmMapSize.x || y >= gBmMapSize.y)
+        return 0; // position out of bounds
+    if (gBmMapUnit[y][x])
+        return 0;
+    if (gBmMapHidden[y][x] & 1)
+        return 0; // a hidden unit is occupying this position
+    if ((x2 == x) && (y2 == y))
+        return 0;                                                  // exception / a battle unit is on this tile
+    return Vanilla_CanUnitCrossTerrain(unit, gBmMapTerrain[y][x]); // CanUnitCrossTerrain(unit, gMapTerrain[y][x]);
+}

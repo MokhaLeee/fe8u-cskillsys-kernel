@@ -44,6 +44,8 @@ extern void SetGameOption(u8 index, u8 newValue);
 extern void TryAddUnitToTradeTargetList(struct Unit* unit);
 extern void MakeTradeTargetList(struct Unit* unit);
 extern void TryAddUnitToRescueTargetList(struct Unit* unit);
+extern s8 Vanilla_CanUnitCrossTerrain(struct Unit* unit, int terrain);
+extern bool Generic_CanUnitBeOnPos(struct Unit *unit, s8 x, s8 y, int x2, int y2);
 
 
 typedef bool (* HookProcFunc_t)(ProcPtr);
