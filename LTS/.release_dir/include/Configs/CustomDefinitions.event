@@ -1,0 +1,10 @@
+#ifndef CUSTOM_DEFINITIONS_INSTALLED
+#define CUSTOM_DEFINITIONS_INSTALLED
+
+#include "../../Wizardry/Core/DebuffRework/def.event"
+#include "../../Wizardry/Core/AiHack/AiAction/def.event"
+#include "../../Wizardry/Common/UnitAction/def.event"
+#include "../../Wizardry/Common/EventRework/def.event"
+#include "../../Wizardry/Core/SkillSys/def.event"
+
+#endif
