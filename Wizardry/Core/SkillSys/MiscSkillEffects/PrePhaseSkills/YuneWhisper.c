@@ -91,7 +91,7 @@ STATIC_DECLAR void YuneWhisper_Exec(struct ProcYuneWhisper * proc)
     }
 }
 
-STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseYuneWhisper[] = {
+FORCE_DECLARE STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseYuneWhisper[] = {
     PROC_CALL(YuneWhisper_Init),
 
 PROC_LABEL(0),
