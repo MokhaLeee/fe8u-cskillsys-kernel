@@ -49,3 +49,4 @@ SID_ThotSlayer
 SID_TriangleAttack
 SID_Capture
 SID_MoonBow
+SID_PastelVeil
