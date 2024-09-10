@@ -4003,4 +4003,26 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Capture) && COMMON_SKILL_VALID(SID_Capture))
+    [SID_Capture] = {
+        .desc = MSG_SKILL_Capture,
+        .icon = GFX_SkillIcon_Capture,
+    },
+#endif
+
+#if (defined(SID_MoonBow) && COMMON_SKILL_VALID(SID_MoonBow))
+    [SID_MoonBow] = {
+        .desc = MSG_SKILL_MoonBow,
+        .icon = GFX_SkillIcon_MoonBow,
+    },
+#endif
+
+#if (defined(SID_PastelVeil) && COMMON_SKILL_VALID(SID_PastelVeil))
+    [SID_PastelVeil] = {
+        .name = MSG_SKILL_PastelVeil_NAME,
+        .desc = MSG_SKILL_PastelVeil,
+        .icon = GFX_SkillIcon_PastelVeil,
+    },
+#endif
 };

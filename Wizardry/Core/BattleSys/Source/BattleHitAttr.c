@@ -326,6 +326,35 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
         }
     }
 #endif
+
+#if (defined(SID_PastelVeil) && (COMMON_SKILL_VALID(SID_PastelVeil)))
+    if (defender->statusOut == UNIT_STATUS_POISON)
+    {
+        for (int i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
+        {
+            int _x = GetUnit(defender->unit.index)->xPos + gVecs_3x3[i].x;
+            int _y = GetUnit(defender->unit.index)->yPos + gVecs_3x3[i].y;
+
+            struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
+
+            if (!UNIT_IS_VALID(unit_ally))
+                continue;
+
+            if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                continue;
+
+            if (!AreUnitsAllied(defender->unit.index, unit_ally->index))
+                continue;
+
+            if (SkillTester(unit_ally, SID_PastelVeil))
+            {
+                defender->statusOut = UNIT_STATUS_NONE;
+                gBattleHitIterator->attributes &= ~BATTLE_HIT_ATTR_POISON;
+                break;
+            }
+        }
+    }
+#endif
 }
 
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender)

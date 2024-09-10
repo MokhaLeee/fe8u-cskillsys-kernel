@@ -9,7 +9,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
     },
     [ITEM_SWORD_RAPIER] = {
         SID_Swarm,
-        SID_TriangleAttack,
+        SID_LastWord,
     },
     [ITEM_AXE_IRON] = {
         SID_NiceThighs,
@@ -25,5 +25,6 @@ const u16 gConstSkillTable_Item[0x100][2] = {
     },
     [ITEM_LANCE_SILVER] = {
         SID_Swarm,
+        SID_Capture,
     }
 };
