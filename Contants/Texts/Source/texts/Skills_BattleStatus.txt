@@ -965,3 +965,8 @@ Thighs, gain +2 Attack and +20 Hit.[X]
 ThotSlayer:[NL]
 Gain +15 crit against[NL]
 units with Nice Thighs.[X]
+
+## MSG_SKILL_Swarm
+Swarm:[NL]
+If an adjacent target is[NL]
+surrounded, deal 50% more damage.[X]

@@ -47,6 +47,7 @@ SID_Sacrifice
 SID_Thighdeology
 SID_ThotSlayer
 SID_TriangleAttack
+SID_Swarm
 SID_Capture
 SID_MoonBow
 SID_PastelVeil

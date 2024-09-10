@@ -1357,6 +1357,32 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_Swarm) && (COMMON_SKILL_VALID(SID_Swarm)))
+        case SID_Swarm:
+            if (gBattleStats.range == 1)
+            {
+                struct Unit *unit = GetUnit(attacker->unit.index);
+                int x = unit->xPos;
+                int y = unit->yPos;
+
+                // If there is no unit in any of these positions, do nothing
+                if (gBmMapUnit[y][x + 1] == 0)
+                    return;
+                if (gBmMapUnit[y][x - 1] == 0)
+                    return;
+                if (gBmMapUnit[y + 1][x] == 0)
+                    return;
+                if (gBmMapUnit[y - 1][x] == 0)
+                    return;
+
+                int dmg = attacker->battleAttack - defender->battleDefense;
+                if (dmg < 0)
+                    dmg = 0;
+                int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
+                attacker->battleAttack += addDmg;
+                NoCashGBAPrintf("Attack of swarm unit is now: %d", attacker->battleAttack);
+#endif
+
 #if (defined(SID_Capture) && (COMMON_SKILL_VALID(SID_Capture)))
         /**
          * I should be using CheckBitUES but it won't persist, so I check _3A directly
@@ -1367,7 +1393,6 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
                 attacker->battleAttack -= Div(attacker->battleAttack * SKILL_EFF0(SID_Capture), 100);
                 attacker->battleHitRate -= Div(attacker->battleHitRate * SKILL_EFF0(SID_Capture), 100);
                 attacker->battleSpeed -= Div(attacker->battleSpeed * SKILL_EFF0(SID_Capture), 100);
-                ;
             }
             break;
 #endif

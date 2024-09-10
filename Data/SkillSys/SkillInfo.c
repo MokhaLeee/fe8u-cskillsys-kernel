@@ -3997,6 +3997,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Swarm) && COMMON_SKILL_VALID(SID_Swarm))
+    [SID_Swarm] = {
+        .desc = MSG_SKILL_Swarm,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Capture) && COMMON_SKILL_VALID(SID_Capture))
     [SID_Capture] = {
         .desc = MSG_SKILL_Capture,
