@@ -146,6 +146,11 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
     }
 #endif
 
+#if (defined(SID_MoonBow) && (COMMON_SKILL_VALID(SID_MoonBow)))
+    if (BattleSkillTester(attacker, SID_MoonBow))
+        attacker->battleAttack += Div(defender->battleDefense * SKILL_EFF0(SID_MoonBow), 100);
+#endif
+
 #if (defined(SID_WonderGuard) && (COMMON_SKILL_VALID(SID_WonderGuard)))
     if (BattleSkillTester(defender, SID_WonderGuard))
     {
