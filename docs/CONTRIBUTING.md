@@ -4,55 +4,42 @@
 
 It is looked forward that this c-skillsys could be a community project and the PR's are welcome. To maintain the code quality, please understand that each PR will be subject to a strict review before merged.
 
-At present, I am not proficient in specifying rules, so I will only mention two requirements and one suggestion for the time being, which may be further refined according to specific needs.
+1. **Mandatory Requirement**: To minimize the impact on potential bugs in each skill effects.For PRs with new skills, you need make sure that the Kernel can still compile and run even if the skill ID is commented out. To achieve this, all skill-related code should be processed by the following macro (please refer to section 3.1 of [SkillSys.md](./SkillSys.md) for details):
 
-## Functionality
-
-1. Each PR needs to be compiled and approved in the following three cases:
-    - On default
-    - Uncoment line-5 in [config-debug.h](../include/Configs/config-debug.h): `#define CONFIG_USE_DEBUG`
-    - ~~For PR with new skill, the skill-index be commented out in [skills.enum.txt](../include/constants/skills.enum.txt)~~ (Since skill index has been expanded to 1024, so it seems not necessary for this limitation for the time being LOL)
-
-2. When hacking on function originated from vanilla, make sure that the function definition and the basic functionality are not changed to avoid annoying other developers who may call the function.
-
-3. **NEVER** change the C-LIB.
-
-## Code style
-
-The code style should follow the standard in [fe6](https://github.com/StanHash/fe6)
-
-1. `if`
 ```c
-if (condition)
-{
-    // block
-}
+#if defined(SID_xxx) && (COMMON_SKILL_VALID(SID_xxx))
+    // Some effects
+#endif
 ```
 
-2. `*`
-```c
-u8 * function(u32 * arg)
-{
-    // block
-}
+2. **Mandatory Requirement**: To avoid implicit bugs in the kernel due to updates in the C-Lib, defensive programming must be applied to `lynjump`.
+    - 2.1. You must inject `LYN_REPLACE_CHECK` before rewriten functions:
+	```c
+	LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
+	void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
+	{
+		// ...
+	}
+	```
+
+    - 2.2. You must create a file named `LynJump.event` in the same directory and copy the lynjump related code inside:
+	```event
+	PUSH
+	ORG $2aabc
+	ALIGN 4
+	WORD $46C04778 $E59FC000 $E12FFF1C
+	POIN ComputeBattleUnitAttack
+	POP
+	```
+
+3. Code style
+
+Code style standards is generated from discussion on [decomp issue #411](https://github.com/FireEmblemUniverse/fireemblem8u/issues/411). It is recommended to align the code style with the existing code. There is also a [clang-format](../.clang-format) assisting developers for self-checking:
+
 ```
-
-3. comment
-```c
-/**
- * Some comments ...
- * Some comments ...
- */
-
-int a = 0; // Some comments ...
-int b = a + 1;
-
-if (b == 1)
-{
-    c = a + ((a + 1) * (b - 1));
-    return c;
-}
-return a;
+sudo apt-get install clang-format
+cd <path to cskillsys-kernel>
+clang-format -i <relative path to your c file>
 ```
 
 ## Suggestion
