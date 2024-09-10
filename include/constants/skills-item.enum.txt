@@ -50,3 +50,4 @@ SID_TriangleAttack
 SID_Capture
 SID_MoonBow
 SID_PastelVeil
+SID_LastWord

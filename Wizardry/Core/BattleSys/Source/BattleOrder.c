@@ -58,6 +58,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
     {
         gBattleTemporaryFlag.act_force_twice_order = false;
 
+#if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
+        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) && BattleSkillTester(actor, SID_LastWord))
+        {
+            gBattleTemporaryFlag.act_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_LastWord, BORDER_ACT_TWICE);
+            return true;
+        }
+#endif
+
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
         if (basic_judgement == true && BattleSkillTester(target, SID_WaryFighter))
             if ((target->hpInitial * 2) > target->unit.maxHP)
@@ -91,7 +100,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
             int dmg = actor->battleAttack - target->battleDefense;
 
             if (basic_judgement)
-                dmg -= (dmg+2) / 4; // for rounding
+                dmg -= (dmg + 2) / 4; // for rounding
             else
             {
                 dmg += dmg / 4;
@@ -177,6 +186,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
     else if (&gBattleTarget == actor)
     {
         gBattleTemporaryFlag.tar_force_twice_order = false;
+
+#if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
+        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) && BattleSkillTester(actor, SID_LastWord))
+        {
+            gBattleTemporaryFlag.tar_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
+            return true;
+        }
+#endif
 
 #if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
         if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
