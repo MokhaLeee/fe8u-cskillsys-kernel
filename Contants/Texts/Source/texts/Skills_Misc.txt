@@ -108,3 +108,8 @@ P-Veil[X]
 Pastel Veil:[NL]
 Allies in a 3 tile radius[NL]
 are immune to poison.[X]
+
+## MSG_SKILL_CatchEmAll
+CatchEmAll:[NL]
+Gives this unit[NL]
+every skill.[X]
