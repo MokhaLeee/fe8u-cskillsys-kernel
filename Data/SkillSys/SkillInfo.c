@@ -4025,4 +4025,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_PastelVeil,
     },
 #endif
+
+#if (defined(SID_CatchEmAll) && COMMON_SKILL_VALID(SID_CatchEmAll))
+    [SID_CatchEmAll] = {
+        .desc = MSG_SKILL_CatchEmAll,
+        .icon = GFX_SkillIcon_CatchEmAll,
+    },
+#endif
 };
