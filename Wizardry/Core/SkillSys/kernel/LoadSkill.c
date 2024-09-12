@@ -7,20 +7,17 @@
 
 static void SortRamSkillList(struct Unit * unit)
 {
-    int i;
+    int i, cnt = 0;
     u8 * list = UNIT_RAM_SKILLS(unit);
+    u8 * buf = gGenericBuffer;
+
+    memset(buf, 0, UNIT_RAM_SKILLS_LEN);
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
-    {
-        if (!EQUIPE_SKILL_VALID(list[i]))
-        {
-            int j;
-            for (j = i; j < (UNIT_RAM_SKILLS_LEN - 1); j++)
-                list[j] = list[j + 1];
+        if (EQUIPE_SKILL_VALID(list[i]))
+            buf[cnt++] = list[i];
 
-            list[UNIT_RAM_SKILLS_LEN - 1] = 0;
-        }
-    }
+    memcpy(list, buf, UNIT_RAM_SKILLS_LEN);
 }
 
 inline int GetSkillSlot(struct Unit * unit, int sid)
