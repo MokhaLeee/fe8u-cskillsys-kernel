@@ -48,8 +48,20 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
 {
     int status, def, res;
 
-    def = attacker->unit.def + attacker->terrainDefense;
-    res = attacker->unit.res + attacker->terrainResistance;
+    int terrainDefense = attacker->terrainDefense;
+    int terrainResistance = attacker->terrainResistance;
+
+#if defined(SID_TripUp) && (COMMON_SKILL_VALID(SID_TripUp))
+    if (BattleSkillTester(defender, SID_TripUp))
+    {
+        terrainDefense = 0;
+        terrainResistance = 0;
+    }
+#endif
+
+
+    def = attacker->unit.def + terrainDefense;
+    res = attacker->unit.res + terrainResistance;
 
     if (IsMagicAttack(defender))
         status = res;
@@ -68,6 +80,25 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
 #endif
     }
     attacker->battleDefense = status;
+}
+
+LYN_REPLACE_CHECK(ComputeBattleUnitAvoidRate);
+void ComputeBattleUnitAvoidRate(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+
+    int terrainAvoid = attacker->terrainAvoid;
+
+#if defined(SID_TripUp) && (COMMON_SKILL_VALID(SID_TripUp))
+    if (BattleSkillTester(defender, SID_TripUp))
+    {
+        terrainAvoid = 0;
+    }
+#endif
+
+    attacker->battleAvoidRate = (attacker->battleSpeed * 2) + terrainAvoid + (attacker->unit.lck);
+
+    if (attacker->battleAvoidRate < 0)
+        attacker->battleAvoidRate = 0;
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitCritRate);
@@ -97,7 +128,7 @@ void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
     ComputeBattleUnitAttack(attacker, defender);
     ComputeBattleUnitSpeed(attacker);
     ComputeBattleUnitHitRate(attacker);
-    ComputeBattleUnitAvoidRate(attacker);
+    ComputeBattleUnitAvoidRate(attacker, defender);
     ComputeBattleUnitCritRate(attacker);
     ComputeBattleUnitDodgeRate(attacker);
     ComputeBattleUnitSupportBonuses(attacker, defender);
@@ -1371,14 +1402,13 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
-
 #if (defined(SID_AdaptiveStance) && (COMMON_SKILL_VALID(SID_AdaptiveStance)))
         case SID_AdaptiveStance:
             int attackerRes = GetUnit(attacker->unit.index)->res;
             int attackerDef = GetUnit(attacker->unit.index)->def;
 
             attacker->battleDefense = (attackerRes >= attackerDef) ? attackerRes : attackerDef;
-        break;
+            break;
 #endif
 
         case MAX_SKILL_NUM:

@@ -56,3 +56,4 @@ SID_CatchEmAll
 SID_DarkHorse
 SID_AdaptiveStance
 SID_AdrenalineRush
+SID_TripUp
