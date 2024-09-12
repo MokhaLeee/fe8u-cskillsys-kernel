@@ -9,7 +9,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
     },
     [ITEM_SWORD_RAPIER] = {
         SID_Swarm,
-        SID_LastWord,
+        SID_DarkHorse,
     },
     [ITEM_AXE_IRON] = {
         SID_NiceThighs,
