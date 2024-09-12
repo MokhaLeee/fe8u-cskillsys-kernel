@@ -25,5 +25,5 @@ allies within 2 tiles by 1.2x.[X]
 
 ## MSG_SKILL_DarkHorse
 Dark Horse:[NL]
-Increase unit's growths by
-their base stats.[X]
+Increase unit's growths[NL]
+by their base stats.[X]
