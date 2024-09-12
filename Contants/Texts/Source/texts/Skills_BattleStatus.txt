@@ -978,3 +978,8 @@ A-Stance[X]
 Adaptive Stance:[NL]
 The enemy is made to attack whichever[NL]
 defense stat is higher for the unit.[X]
+
+## MSG_SKILL_TripUp
+Trip Up:[NL]
+Ignore the enemy's[NL]
+terrain bonuses.[X]
