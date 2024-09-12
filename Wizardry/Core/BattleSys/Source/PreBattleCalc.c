@@ -1357,75 +1357,6 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
-// #if (defined(SID_Swarm) && (COMMON_SKILL_VALID(SID_Swarm)))
-//         case SID_Swarm:
-//             if (gBattleStats.range == 1 && UNIT_FACTION(GetUnit(defender->unit.index)) == gPlaySt.faction)
-//             {
-//                 struct Unit *unit = GetUnit(attacker->unit.index);
-//                 int x = unit->xPos;
-//                 int x2 = defender->unit.xPos;
-//                 int y = unit->yPos;
-//                 int y2 = defender->unit.yPos;
-
-//                 // if the target can be on any adjacent position, do nothing
-//                 if (Generic_CanUnitBeOnPos(unit, x + 1, y, x2, y2))
-//                 {
-//                     return;
-//                 }
-//                 if (Generic_CanUnitBeOnPos(unit, x - 1, y, x2, y2))
-//                 {
-//                     return;
-//                 }
-//                 if (Generic_CanUnitBeOnPos(unit, x, y + 1, x2, y2))
-//                 {
-//                     return;
-//                 }
-//                 if (Generic_CanUnitBeOnPos(unit, x, y - 1, x2, y2))
-//                 {
-//                     return;
-//                 }
-
-//                 int dmg = defender->battleAttack - attacker->battleDefense;
-//                 if (dmg < 0)
-//                     dmg = 0;
-//                 int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
-//                 defender->battleAttack += addDmg;
-//             }
-//             else if (gBattleStats.range == 1 && UNIT_FACTION(GetUnit(defender->unit.index)) != gPlaySt.faction)
-//             {
-//                 struct Unit *unit = GetUnit(attacker->unit.index);
-//                 int x = unit->xPos;
-//                 int x2 = defender->unit.xPos;
-//                 int y = unit->yPos;
-//                 int y2 = defender->unit.yPos;
-
-//                 // if the target can be on any adjacent position, do nothing
-//                 if (Generic_CanUnitBeOnPos(unit, x + 1, y, x2, y2))
-//                 {
-//                     return;
-//                 }
-//                 if (Generic_CanUnitBeOnPos(unit, x - 1, y, x2, y2))
-//                 {
-//                     return;
-//                 }
-//                 if (Generic_CanUnitBeOnPos(unit, x, y + 1, x2, y2))
-//                 {
-//                     return;
-//                 }
-//                 if (Generic_CanUnitBeOnPos(unit, x, y - 1, x2, y2))
-//                 {
-//                     return;
-//                 }
-
-//                 int dmg = attacker->battleAttack - defender->battleDefense;
-//                 if (dmg < 0)
-//                     dmg = 0;
-//                 int addDmg = Div(dmg * SKILL_EFF0(SID_Swarm), 100);
-//                 attacker->battleAttack += addDmg;
-//             }
-//             break;
-// #endif
-
 #if (defined(SID_Capture) && (COMMON_SKILL_VALID(SID_Capture)))
         /**
          * I should be using CheckBitUES but it won't persist, so I check _3A directly
@@ -1438,6 +1369,16 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
                 attacker->battleSpeed -= Div(attacker->battleSpeed * SKILL_EFF0(SID_Capture), 100);
             }
             break;
+#endif
+
+
+#if (defined(SID_AdaptiveStance) && (COMMON_SKILL_VALID(SID_AdaptiveStance)))
+        case SID_AdaptiveStance:
+            int attackerRes = GetUnit(attacker->unit.index)->res;
+            int attackerDef = GetUnit(attacker->unit.index)->def;
+
+            attacker->battleDefense = (attackerRes >= attackerDef) ? attackerRes : attackerDef;
+        break;
 #endif
 
         case MAX_SKILL_NUM:

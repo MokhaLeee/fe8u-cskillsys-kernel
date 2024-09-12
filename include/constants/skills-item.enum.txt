@@ -54,3 +54,4 @@ SID_PastelVeil
 SID_LastWord
 SID_CatchEmAll
 SID_DarkHorse
+SID_AdaptiveStance

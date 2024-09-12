@@ -4039,4 +4039,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_AdaptiveStance) && COMMON_SKILL_VALID(SID_AdaptiveStance))
+    [SID_AdaptiveStance] = {
+        .name = MSG_SKILL_AdaptiveStance_NAME,
+        .desc = MSG_SKILL_AdaptiveStance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
