@@ -970,3 +970,11 @@ units with Nice Thighs.[X]
 Swarm:[NL]
 If an adjacent target is[NL]
 surrounded, deal 50% more damage.[X]
+
+## MSG_SKILL_AdaptiveStance_NAME
+A-Stance[X]
+
+## MSG_SKILL_AdaptiveStance
+Adaptive Stance:[NL]
+The enemy is made to attack whichever[NL]
+defense stat is higher for the unit.[X]
