@@ -42,6 +42,14 @@ bool PostActionTsuzuku(ProcPtr parent)
         goto L_exec_rafrain_action_anim;
 #endif
 
+#if defined(SID_AdrenalineRush) && (COMMON_SKILL_VALID(SID_AdrenalineRush))
+            if (SkillTester(unit, SID_AdrenalineRush))
+            {
+                if (unit->curHP <= unit->maxHP / 4)
+                    goto L_exec_rafrain_action_anim;
+            }
+#endif
+
     switch (gActionData.unitActionType)
     {
     case UNIT_ACTION_COMBAT:

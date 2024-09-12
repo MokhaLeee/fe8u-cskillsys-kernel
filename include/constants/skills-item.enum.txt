@@ -55,3 +55,4 @@ SID_LastWord
 SID_CatchEmAll
 SID_DarkHorse
 SID_AdaptiveStance
+SID_AdrenalineRush

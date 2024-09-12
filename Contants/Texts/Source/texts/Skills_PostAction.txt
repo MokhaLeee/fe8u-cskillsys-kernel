@@ -133,3 +133,11 @@ H-Bane[X]
 Hoarder's Bane:[NL]
 At the end of your turn, consume a[NL]
 vulnerary from supply if cur HP < max HP.[X]
+
+## MSG_SKILL_AdrenalineRush_NAME
+A-Rush[X]
+
+## MSG_SKILL_AdrenalineRush
+Adrenaline Rush:[NL]
+The unit gains another action[NL]
+once per turn if <= 25% max HP.[X]
