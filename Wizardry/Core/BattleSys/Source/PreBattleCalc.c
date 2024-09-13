@@ -46,7 +46,9 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 LYN_REPLACE_CHECK(ComputeBattleUnitDefense);
 void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    int status, def, res;
+    int status;
+    int def = attacker->unit.def;
+    int res = attacker->unit.res;
 
     int terrainDefense = attacker->terrainDefense;
     int terrainResistance = attacker->terrainResistance;
@@ -59,9 +61,17 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
     }
 #endif
 
+#if defined(SID_AdaptiveLunge) && (COMMON_SKILL_VALID(SID_AdaptiveLunge))
+    if (BattleSkillTester(defender, SID_AdaptiveLunge) && (gPlaySt.chapterTurnNumber % 2 == 0))
+    {
+        def = attacker->unit.res;
+        res = attacker->unit.def;
+    }
+#endif
 
-    def = attacker->unit.def + terrainDefense;
-    res = attacker->unit.res + terrainResistance;
+
+    def += terrainDefense;
+    res += terrainResistance;
 
     if (IsMagicAttack(defender))
         status = res;
@@ -1234,7 +1244,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
-#if (defined(SID_AirDefense) && (COMMON_SKILL_VALID(SID_AirRaidDefense)))
+#if (defined(SID_AirRaidDefense) && (COMMON_SKILL_VALID(SID_AirRaidDefense)))
         case SID_AirRaidDefense:
             if (!CanUnitCrossTerrain(&defender->unit, gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) && !IsMagicAttack(attacker))
                 attacker->battleDefense += SKILL_EFF0(SID_AirRaidDefense);

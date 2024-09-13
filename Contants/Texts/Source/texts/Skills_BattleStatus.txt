@@ -991,3 +991,11 @@ D-Expert[X]
 Demolition Expert:[NL]
 The unit can destroy walls and[NL]
 barricades with one attack.[X]
+
+## MSG_SKILL_AdaptiveLunge_NAME
+A-Lunge[X]
+
+## MSG_SKILL_AdaptiveLunge
+Adaptive Lunge:[NL]
+This unit alternates which defensive[NL]
+stat it targets each turn.[X]
