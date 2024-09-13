@@ -27,23 +27,8 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
     crt = 0;
     sil = 0;
 
-#if (defined(SID_Onimaru) && (COMMON_SKILL_VALID(SID_Onimaru)))
-    if (BattleSkillTester(attacker, SID_Onimaru))
-    {
-        ui += 1;
-        attacker->battleAttack += atk;
-        attacker->battleDefense += def;
-        attacker->battleHitRate += hit;
-        attacker->battleAvoidRate += avo;
-        attacker->battleCritRate += crt;
-        attacker->battleSilencerRate += sil;
-
-        onimaru = true;
-    }
-#endif
-
 #if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
-    if (BattleSkillTester(attacker, SID_Nonconforming) && !onimaru)
+    if (BattleSkillTester(attacker, SID_Nonconforming))
         invert = !invert;
     if (BattleSkillTester(defender, SID_Nonconforming))
         invert = !invert;
@@ -57,44 +42,53 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 #endif
 
     item_it = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
-    if (item_it->valid && item_it->wtype == defender->weaponType)
-    {
-        if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self))
-        {
-            ui += item_it->is_buff ? +1 : -1;
 
-            atk += item_it->battle_status.atk;
-            def += item_it->battle_status.def;
-            hit += item_it->battle_status.hit;
-            avo += item_it->battle_status.avo;
-            crt += item_it->battle_status.crit;
-            sil += item_it->battle_status.silencer;
-        }
-    }
-    else
+#if (defined(SID_Onimaru) && (COMMON_SKILL_VALID(SID_Onimaru)))
+    if (BattleSkillTester(attacker, SID_Onimaru))
     {
-        /* vanilla */
-        for (vanilla_it = sWeaponTriangleRules; vanilla_it->attackerWeaponType >= 0; ++vanilla_it)
-        {
-            if ((attacker->weaponType == vanilla_it->attackerWeaponType) && (defender->weaponType == vanilla_it->defenderWeaponType))
-            {
-                if ((vanilla_it->atkBonus > 0 && !poise_foo) || (!(vanilla_it->atkBonus > 0) && !poise_self))
-                {
-                    if (!onimaru)
-                        ui = vanilla_it->atkBonus > 0 ? +1 : -1;
-                    else 
-                        ui += 1;
+        ui += 2;
+        attacker->battleAttack += 1;
+        attacker->battleHitRate += 15;
 
-                    atk += vanilla_it->atkBonus;
-                    hit += vanilla_it->hitBonus;
-                }
-                break;
-            }
-        }
+        onimaru = true;
     }
+#endif
 
     if (!onimaru)
     {
+        if ((item_it->valid && item_it->wtype == defender->weaponType))
+        {
+            if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self))
+            {
+                ui += item_it->is_buff ? +1 : -1;
+
+                atk += item_it->battle_status.atk;
+                def += item_it->battle_status.def;
+                hit += item_it->battle_status.hit;
+                avo += item_it->battle_status.avo;
+                crt += item_it->battle_status.crit;
+                sil += item_it->battle_status.silencer;
+            }
+        }
+        else
+        {
+            /* vanilla */
+            for (vanilla_it = sWeaponTriangleRules; vanilla_it->attackerWeaponType >= 0; ++vanilla_it)
+            {
+                if ((attacker->weaponType == vanilla_it->attackerWeaponType) && (defender->weaponType == vanilla_it->defenderWeaponType))
+                {
+                    if ((vanilla_it->atkBonus > 0 && !poise_foo) || (!(vanilla_it->atkBonus > 0) && !poise_self))
+                    {
+                        ui = vanilla_it->atkBonus > 0 ? +1 : -1;
+
+                        atk += vanilla_it->atkBonus;
+                        hit += vanilla_it->hitBonus;
+                    }
+                    break;
+                }
+            }
+        }
+
         for (it = gpWeaponTriangleConfs; it->wtype_a != it->wtype_b; it++)
         {
             if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType)
@@ -143,15 +137,12 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
     }
     if (!invert)
     {
-        if (!onimaru)
-        {
-            attacker->battleAttack += atk;
-            attacker->battleDefense += def;
-            attacker->battleHitRate += hit;
-            attacker->battleAvoidRate += avo;
-            attacker->battleCritRate += crt;
-            attacker->battleSilencerRate += sil;
-        }
+        attacker->battleAttack += atk;
+        attacker->battleDefense += def;
+        attacker->battleHitRate += hit;
+        attacker->battleAvoidRate += avo;
+        attacker->battleCritRate += crt;
+        attacker->battleSilencerRate += sil;
 
         attacker->wTriangleHitBonus += ui;
         attacker->wTriangleDmgBonus += ui;
@@ -160,15 +151,13 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
     }
     else
     {
-        if (!onimaru)
-        {
-            attacker->battleAttack -= atk;
-            attacker->battleDefense -= def;
-            attacker->battleHitRate -= hit;
-            attacker->battleAvoidRate -= avo;
-            attacker->battleCritRate -= crt;
-            attacker->battleSilencerRate -= sil;
-        }
+
+        attacker->battleAttack -= atk;
+        attacker->battleDefense -= def;
+        attacker->battleHitRate -= hit;
+        attacker->battleAvoidRate -= avo;
+        attacker->battleCritRate -= crt;
+        attacker->battleSilencerRate -= sil;
 
         attacker->wTriangleHitBonus -= ui;
         attacker->wTriangleDmgBonus -= ui;
