@@ -45,3 +45,8 @@ T-Adapt+[X]
 Triangle Adapt+:[NL]
 Doubles weapon triangle[NL]
 effects for both units.[X]
+
+## MSG_SKILL_Onimaru
+Onimaru:[NL]
+This unit always has weapon[NL]
+triangle advantage.[X]
