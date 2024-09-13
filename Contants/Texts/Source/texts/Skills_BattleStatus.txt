@@ -983,3 +983,11 @@ defense stat is higher for the unit.[X]
 Trip Up:[NL]
 Ignore the enemy's[NL]
 terrain bonuses.[X]
+
+## MSG_SKILL_DemolitionExpert_NAME
+D-Expert[X]
+
+## MSG_SKILL_DemolitionExpert
+Demolition Expert:[NL]
+The unit can destroy walls and[NL]
+barricades with one attack.[X]

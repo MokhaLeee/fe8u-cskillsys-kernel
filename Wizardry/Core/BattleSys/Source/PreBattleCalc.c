@@ -1411,6 +1411,16 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_DemolitionExpert) && (COMMON_SKILL_VALID(SID_DemolitionExpert)))
+        case SID_DemolitionExpert:
+            if (defender->unit.pCharacterData == GetCharacterData(CHARACTER_WALL) || 
+                defender->unit.pCharacterData == GetCharacterData(CHARACTER_SNAG))
+                {
+                    attacker->battleAttack = defender->hpInitial;
+                }
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;
