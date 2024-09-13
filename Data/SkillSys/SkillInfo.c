@@ -4062,4 +4062,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_DemolitionExpert) && COMMON_SKILL_VALID(SID_DemolitionExpert))
+    [SID_DemolitionExpert] = {
+        .name = MSG_SKILL_DemolitionExpert_NAME,
+        .desc = MSG_SKILL_DemolitionExpert,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };

@@ -8,7 +8,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
         SID_TriangleAttack,
     },
     [ITEM_SWORD_RAPIER] = {
-        SID_TripUp,
+        SID_DemolitionExpert,
         SID_DarkHorse,
     },
     [ITEM_AXE_IRON] = {
