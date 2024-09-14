@@ -34,15 +34,15 @@ static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
     int statCounter = 0;
 
     // Create an array of stat pointers
-    s8 statChanges[] = {
-        bu->changeHP,
-        bu->changePow,
-        bu->changeSkl,
-        bu->changeSpd,
-        bu->changeLck,
-        bu->changeDef,
-        bu->changeRes,
-        BU_CHG_MAG(bu)};
+    s8 *statChanges[] = {
+        &bu->changeHP,
+        &bu->changePow,
+        &bu->changeSkl,
+        &bu->changeSpd,
+        &bu->changeLck,
+        &bu->changeDef,
+        &bu->changeRes,
+        &BU_CHG_MAG(bu)};
 
     /*
     ** Right now, if a unit has over a 100% growth and gets more than one
@@ -52,81 +52,96 @@ static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
     ** If there's a smarter way to write all this, please do.
     */
     if (unit->maxHP < unit->pClassData->maxHP)
-        bu->changeHP = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+        *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
     if (unit->pow < unit->pClassData->maxPow)
-        bu->changePow = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
+        *statChanges[1] = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
     if (unit->skl < unit->pClassData->maxSkl)
-        bu->changeSkl = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
+        *statChanges[2] = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
     if (unit->spd < unit->pClassData->maxSpd)
-        bu->changeSpd = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
+        *statChanges[3] = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
     if (unit->lck < 30) // subject to change
-        bu->changeLck = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
+        *statChanges[4] = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
     if (unit->def < unit->pClassData->maxDef)
-        bu->changeDef = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
+        *statChanges[5] = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
     if (unit->res < unit->pClassData->maxRes)
-        bu->changeRes = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
+        *statChanges[6] = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
     if (GetUnitMagic(unit) < GetUnitMaxMagic(unit))
-        BU_CHG_MAG(bu) = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
+        *statChanges[7] = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
 
     // For each increased stat, increment statCounter
-    statCounter += bu->changeHP > 0 ? 1 : 0;
-    statCounter += bu->changePow > 0 ? 1 : 0;
-    statCounter += bu->changeSkl > 0 ? 1 : 0;
-    statCounter += bu->changeSpd > 0 ? 1 : 0;
-    statCounter += bu->changeLck > 0 ? 1 : 0;
-    statCounter += bu->changeDef > 0 ? 1 : 0;
-    statCounter += bu->changeRes > 0 ? 1 : 0;
-    statCounter += BU_CHG_MAG(bu) > 0 ? 1 : 0;
+    statCounter += *statChanges[0] > 0 ? 1 : 0;
+    statCounter += *statChanges[1] > 0 ? 1 : 0;
+    statCounter += *statChanges[2] > 0 ? 1 : 0;
+    statCounter += *statChanges[3] > 0 ? 1 : 0;
+    statCounter += *statChanges[4] > 0 ? 1 : 0;
+    statCounter += *statChanges[5] > 0 ? 1 : 0;
+    statCounter += *statChanges[6] > 0 ? 1 : 0;
+    statCounter += *statChanges[7] > 0 ? 1 : 0;
+
+#if (defined(SID_TripleUp) && (COMMON_SKILL_VALID(SID_TripleUp)))
+    if (BattleSkillTester(bu, SID_TripleUp))
+    {
+        // Check if any values are greater than 0
+        int anyStatIncrease = 0; // Flag to track if there's any stats to increase
+        for (u8 i = 0; i < ARRAY_COUNT(statChanges); i++)
+        {
+            if (*statChanges[i] == 0)
+            {
+                anyStatIncrease = 1; // Set the flag if any stat is greater than 0
+                break;               // No need to continue checking once we find a positive value
+            }
+        }
+
+        if (anyStatIncrease)
+        {
+            // Set the upper limit of stats to increase (accounting for previous increases before this skill)
+            while (statCounter < 3)
+            {
+                // Get a random index using NextRN_N and ARRAY_COUNT
+                int randIndex = NextRN_N(ARRAY_COUNT(statChanges));
+
+                // If the randomly chosen stat hasn't increased, force it to increase
+                if (*statChanges[randIndex] == 0)
+                {
+                    *statChanges[randIndex] = 1;
+                    statCounter++;
+                }
+            }
+            return;
+        }
+    }
+#endif
 
 #if (defined(SID_DoubleUp) && (COMMON_SKILL_VALID(SID_DoubleUp)))
     if (BattleSkillTester(bu, SID_DoubleUp))
     {
-        if (statCounter < 2)
+        // Check if any values are greater than 0
+        int anyStatIncrease = 0; // Flag to track if there's any stat greater than 0
+        for (u8 i = 0; i < ARRAY_COUNT(statChanges); i++)
         {
-            // Check if any values are greater than 0
-            int anyStatIncrease = 0; // Flag to track if there's any stat greater than 0
-            for (u8 i = 0; i < ARRAY_COUNT(statChanges); i++)
+            if (*statChanges[i] > 0)
             {
-                if (statChanges[i] > 0)
+                anyStatIncrease = 1; // Set the flag if any stat is greater than 0
+                break;               // No need to continue checking once we find a positive value
+            }
+        }
+
+        if (anyStatIncrease)
+        {
+            // Set the upper limit of stats to increase (accounting for previous increases before this skill)
+            while (statCounter < 2)
+            {
+                // Get a random index using NextRN_N and ARRAY_COUNT
+                int randIndex = NextRN_N(ARRAY_COUNT(statChanges));
+
+                // If the randomly chosen stat hasn't increased, force it to increase
+                if (*statChanges[randIndex] == 0)
                 {
-                    anyStatIncrease = 1; // Set the flag if any stat is greater than 0
-                    break;               // No need to continue checking once we find a positive value
+                    *statChanges[randIndex] = 1;
+                    statCounter++;
                 }
             }
-            if (anyStatIncrease)
-            {
-                // Set the upper limit of stats to increase (accounting for previous increases before this skill)
-                while (statCounter < 2)
-                {
-                    // Get a random index using NextRN_N and ARRAY_COUNT
-                    int randIndex = NextRN_N(ARRAY_COUNT(statChanges));
-
-                    // If the randomly chosen stat hasn't increased, force it to increase
-                    if (statChanges[randIndex] == 0)
-                    {
-                        if (randIndex == 0)
-                            bu->changeHP += 1;
-                        else if (randIndex == 1)
-                            bu->changePow += 1;
-                        else if (randIndex == 2)
-                            bu->changeSkl += 1;
-                        else if (randIndex == 3)
-                            bu->changeSpd += 1;
-                        else if (randIndex == 4)
-                            bu->changeLck += 1;
-                        else if (randIndex == 5)
-                            bu->changeDef += 1;
-                        else if (randIndex == 6)
-                            bu->changeRes += 1;
-                        else if (randIndex == 7)
-                            BU_CHG_MAG(bu) += 1;
-
-                        // Set the increased stat in the array, so it isn't chosen again
-                        statChanges[randIndex] = 1;
-                        statCounter++;
-                    }
-                }
-            }
+            return;
         }
     }
 #endif

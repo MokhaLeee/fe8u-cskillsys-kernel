@@ -117,4 +117,9 @@ every skill.[X]
 ## MSG_SKILL_DoubleUp
 Double Up:[NL]
 Guarantees this unit gains at[NL]
-least two stats per levelup.[X]
+least two stats per level up.[X]
+
+## MSG_SKILL_TripleUp
+Triple Up:[NL]
+Guarantees this unit gains at[NL]
+least three stats per level up.[X]
