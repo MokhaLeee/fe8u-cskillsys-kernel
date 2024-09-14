@@ -363,3 +363,14 @@ it with reduced stats.[X]
 
 ## MSG_SKILL_Capture_NAME
 Capture[X]
+
+## MSG_MenuSkill_DopplegangerName
+ D-Ganger[X]
+
+## MSG_MenuSkill_Doppleganger_FRtext
+No allies in range to copy![X]
+
+## MSG_SKILL_Doppleganger
+Doppleganger:[NL]
+Copy the class of an[NL]
+adjacent ally for a turn.[X]

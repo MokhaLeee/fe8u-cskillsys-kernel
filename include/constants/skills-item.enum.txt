@@ -63,3 +63,4 @@ SID_AdaptiveLunge
 SID_DoubleUp
 SID_TripleUp
 SID_Casual
+SID_Doppleganger

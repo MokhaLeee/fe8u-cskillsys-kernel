@@ -4,14 +4,14 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 #include "debuff.h"
-#include "transform-pairs.h"
+#include "class-pairs.h"
 
 // Predefine an array of key-value pairs
 const int transformationPairs[1][2] = {
     {CLASS_EIRIKA_LORD, CLASS_DEATHGOYLE}};
 
 // Define the size of the array
-const int numKeyValuePairs = sizeof(transformationPairs) / sizeof(transformationPairs[0]);
+const int transformationListSize = sizeof(transformationPairs) / sizeof(transformationPairs[0]);
 
 u8 Transform_Usability(const struct MenuItemDef *def, int number)
 {
@@ -48,7 +48,7 @@ static void callback_anim(ProcPtr proc)
 
 static void callback_exec(ProcPtr proc)
 {
-    for (int i = 0; i < numKeyValuePairs; i++)
+    for (int i = 0; i < transformationListSize; i++)
     {
         if (gActiveUnit->pClassData->number == transformationPairs[i][0])
         {
