@@ -113,3 +113,8 @@ are immune to poison.[X]
 CatchEmAll:[NL]
 Gives this unit[NL]
 every skill.[X]
+
+## MSG_SKILL_DoubleUp
+Double Up:[NL]
+Guarantees this unit gains at[NL]
+least two stats per levelup.[X]

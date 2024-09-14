@@ -19,6 +19,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
     },
     [ITEM_ANIMA_ELFIRE] = {
         SID_TriangleAttack,
+        SID_DoubleUp,
     },
     [ITEM_LANCE_SLIM] = {
         SID_Swarm,
