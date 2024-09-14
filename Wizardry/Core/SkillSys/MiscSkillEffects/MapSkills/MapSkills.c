@@ -3,15 +3,13 @@
 #include "constants/skills.h"
 #include "mu.h"
 #include "debuff.h"
+#include "class-pairs.h"
 
 /*
 ** This array is static in the decomp, but it wouldn't compile for me otherwise
 ** I also had to define it in the vanilla.h file
 */
 EWRAM_DATA u16 sTilesetConfig[0x1000 + 0x200] = {};
-
-extern const int transformationPairs[1][2];
-extern const int numKeyValuePairs;
 
 LYN_REPLACE_CHECK(RefreshUnitsOnBmMap);
 void RefreshUnitsOnBmMap(void)
@@ -258,13 +256,29 @@ void ChapterChangeUnitCleanup(void)
 #if defined(SID_Transform) && (COMMON_SKILL_VALID(SID_Transform))
         if (SkillTester(unit, SID_Transform))
         {
-            for (int i = 0; i < numKeyValuePairs; i++)
+            for (int i = 0; i < transformationListSize; i++)
             {
                 if (gActiveUnit->pClassData->number == transformationPairs[i][1])
                 {
                     unit->pClassData = GetClassData(transformationPairs[i][0]);
                     ClearUnitStatDebuff(gActiveUnit, UNIT_STAT_BUFF_TRANSFORM);
                     unit->maxHP -= 7;
+                    break;
+                }
+            }
+        }
+#endif
+
+    // Reset the doppleganger state of any units with the skill
+#if defined(SID_Doppleganger) && (COMMON_SKILL_VALID(SID_Doppleganger))
+        if (SkillTester(unit, SID_Doppleganger))
+        {
+            for (int i = 0; i < dopplegangerListSize; i++)
+            {
+                if (gActiveUnit->pCharacterData->number == dopplegangerPairs[i][0])
+                {
+                    unit->pClassData = GetClassData(dopplegangerPairs[i][1]);
+                    break;
                 }
             }
         }

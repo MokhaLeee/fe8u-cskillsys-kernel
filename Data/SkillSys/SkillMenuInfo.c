@@ -498,4 +498,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
+    [SID_Doppleganger] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_DopplegangerName,
+        .helpMsgId = MSG_SKILL_Doppleganger,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Doppleganger_Usability,
+        .onDraw = NULL,
+        .onSelected = Doppleganger_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

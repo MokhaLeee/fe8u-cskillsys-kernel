@@ -41,6 +41,7 @@
 #include "MenuSkills/ArdentSacrifice.lyn.event"
 #include "MenuSkills/Sacrifice.lyn.event"
 #include "MenuSkills/Capture.lyn.event"
+#include "MenuSkills/Doppleganger.lyn.event"
 
 #include "MenuSkills/ReciprocalAid.lyn.event"
 #include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"
@@ -69,6 +70,7 @@
 #include "PrePhaseSkills/KeepUp.lyn.event"
 #include "PrePhaseSkills/Moody.lyn.event"
 #include "PrePhaseSkills/HoneChaos.lyn.event"
+#include "PrePhaseSkills/Doppleganger.lyn.event"
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"

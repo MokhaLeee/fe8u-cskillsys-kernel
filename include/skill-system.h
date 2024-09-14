@@ -320,6 +320,8 @@ u8 Sacrifice_Usability(const struct MenuItemDef * def, int number);
 u8 Sacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Capture_Usability(const struct MenuItemDef * def, int number);
 u8 Capture_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Doppleganger_Usability(const struct MenuItemDef * def, int number);
+u8 Doppleganger_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -343,3 +345,4 @@ bool Action_ArdentSacrifice(ProcPtr parent);
 bool Action_ReciprocalAid(ProcPtr parent);
 bool Action_Sacrifice(ProcPtr parent);
 bool Action_Capture(ProcPtr parent);
+bool Action_Doppleganger(ProcPtr parent);

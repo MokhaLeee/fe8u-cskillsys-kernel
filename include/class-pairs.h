@@ -3,4 +3,7 @@
 
 // Declare extern variables
 extern const int transformationPairs[1][2];
-extern const int numKeyValuePairs;
+extern const int transformationListSize;
+
+extern const int dopplegangerPairs[1][2];
+extern const int dopplegangerListSize;
