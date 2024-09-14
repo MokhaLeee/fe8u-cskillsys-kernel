@@ -123,3 +123,8 @@ least two stats per level up.[X]
 Triple Up:[NL]
 Guarantees this unit gains at[NL]
 least three stats per level up.[X]
+
+## MSG_SKILL_Casual
+Casual:[NL]
+If unit dies, they revive[NL]
+at the end of the chapter.[X]
