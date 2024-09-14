@@ -4087,10 +4087,16 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-
 #if (defined(SID_DoubleUp) && COMMON_SKILL_VALID(SID_DoubleUp))
     [SID_DoubleUp] = {
         .desc = MSG_SKILL_DoubleUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TripleUp) && COMMON_SKILL_VALID(SID_TripleUp))
+    [SID_TripleUp] = {
+        .desc = MSG_SKILL_TripleUp,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
