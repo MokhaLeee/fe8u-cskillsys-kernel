@@ -219,6 +219,15 @@ void KillUnitOnCombatDeath(struct Unit *unitA, struct Unit *unitB)
     }
 #endif
 
+// Can still be viewed in the stat screen, but eh it's fine.
+#if defined(SID_Casual) && (COMMON_SKILL_VALID(SID_Casual))
+        if (SkillTester(unitA, SID_Casual))
+        {
+            unitA->state |= US_HIDDEN;
+            return;
+        }
+#endif
+
     PidStatsRecordDefeatInfo(unitA->pCharacterData->number, unitB->pCharacterData->number, DEFEAT_CAUSE_COMBAT);
 
     UnitKill(unitA);
