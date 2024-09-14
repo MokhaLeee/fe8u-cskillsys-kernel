@@ -60,3 +60,4 @@ SID_TripUp
 SID_DemolitionExpert
 SID_Onimaru
 SID_AdaptiveLunge
+SID_DoubleUp

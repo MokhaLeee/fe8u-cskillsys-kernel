@@ -375,7 +375,7 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
         .classIndex = CLASS_NECROMANCER,
         .autolevel = true,
         .allegiance = FACTION_ID_RED,
-        .level = 30,
+        .level = 10,
         .xPosition = 12,
         .yPosition = 24,
         .redaCount = 1,
@@ -401,6 +401,7 @@ static const EventScr EventScr_Beginning[] = {
     Evt_AddSkill(SID_Obstruct, CHARACTER_SAAR)
     Evt_AddSkill(SID_Nihil, CHARACTER_SAAR)
     Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
+    Evt_AddSkill(SID_DoubleUp, CHARACTER_LYON)
 
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
     Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
