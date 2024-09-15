@@ -1,6 +1,7 @@
 /* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPostActionFuncs:
+    POIN PostActionTurncoat
     POIN PostActionThunderstorm
     POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife PostActionSkillSoulSap
     POIN PostActionSynchronize
