@@ -221,11 +221,11 @@ void KillUnitOnCombatDeath(struct Unit *unitA, struct Unit *unitB)
 
 // Can still be viewed in the stat screen, but eh it's fine.
 #if defined(SID_Casual) && (COMMON_SKILL_VALID(SID_Casual))
-        if (SkillTester(unitA, SID_Casual))
-        {
-            unitA->state |= US_HIDDEN;
-            return;
-        }
+    if (SkillTester(unitA, SID_Casual))
+    {
+        unitA->state |= US_HIDDEN;
+        return;
+    }
 #endif
 
     PidStatsRecordDefeatInfo(unitA->pCharacterData->number, unitB->pCharacterData->number, DEFEAT_CAUSE_COMBAT);
@@ -296,9 +296,10 @@ void UnitDrop(struct Unit *actor, int xTarget, int yTarget)
     }
 }
 
-// use vanilla version so we don't lag by using hooked versions that accounts for pass etc 
-s8 Vanilla_CanUnitCrossTerrain(struct Unit* unit, int terrain) {
-    const s8* lookup = (s8*)GetUnitMovementCost(unit);
+// use vanilla version so we don't lag by using hooked versions that accounts for pass etc
+s8 Vanilla_CanUnitCrossTerrain(struct Unit *unit, int terrain)
+{
+    const s8 *lookup = (s8 *)GetUnitMovementCost(unit);
     return (lookup[terrain] > 0) ? TRUE : FALSE;
 }
 
@@ -315,4 +316,64 @@ bool Generic_CanUnitBeOnPos(struct Unit *unit, s8 x, s8 y, int x2, int y2)
     if ((x2 == x) && (y2 == y))
         return 0;                                                  // exception / a battle unit is on this tile
     return Vanilla_CanUnitCrossTerrain(unit, gBmMapTerrain[y][x]); // CanUnitCrossTerrain(unit, gMapTerrain[y][x]);
+}
+
+//! FE8U = 0x0801538C
+LYN_REPLACE_CHECK(SwitchPhases);
+void SwitchPhases(void)
+{
+    switch (gPlaySt.faction)
+    {
+    case FACTION_BLUE:
+
+        /**
+         * There's probably a more efficient way to do this,
+         * but this is all I've found to work right now.
+         * I change back the unit faction for a 'turncoat' unit
+         * if they haven't moved after switching factions initially.
+         */
+#if defined(SID_Turncoat) && (COMMON_SKILL_VALID(SID_Turncoat))
+        for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
+        {
+            struct Unit *unit = GetUnit(uid);
+
+            if (unit->_u3A == UES_BIT_TURNCOAT)
+                UnitChangeFaction(unit, FACTION_RED);
+        }
+#endif
+        gPlaySt.faction = FACTION_RED;
+
+        break;
+
+    case FACTION_RED:
+        gPlaySt.faction = FACTION_GREEN;
+#if defined(SID_Turncoat) && (COMMON_SKILL_VALID(SID_Turncoat))
+        for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
+        {
+            struct Unit *unit = GetUnit(uid);
+
+            if (unit->_u3A == UES_BIT_TURNCOAT)
+                UnitChangeFaction(unit, FACTION_BLUE);
+        }
+#endif
+        break;
+
+    case FACTION_GREEN:
+        gPlaySt.faction = FACTION_BLUE;
+
+#if defined(SID_Turncoat) && (COMMON_SKILL_VALID(SID_Turncoat))
+        for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
+        {
+            struct Unit *unit = GetUnit(uid);
+
+            if (unit->_u3A == UES_BIT_TURNCOAT)
+                UnitChangeFaction(unit, FACTION_RED);
+        }
+#endif
+
+        if (gPlaySt.chapterTurnNumber < 999)
+            gPlaySt.chapterTurnNumber++;
+
+        ProcessTurnSupportExp();
+    }
 }
