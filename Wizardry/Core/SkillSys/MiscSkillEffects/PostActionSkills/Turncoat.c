@@ -5,6 +5,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 #include "unit-expa.h"
+#include "action-expa.h"
 
 bool PostActionTurncoat(ProcPtr parent)
 {
@@ -18,11 +19,14 @@ bool PostActionTurncoat(ProcPtr parent)
         else
             UnitChangeFaction(unit, FACTION_RED);
 
+        gActionDataExpa.refrain_action = true;
+        EndAllMus();
+
         /**
          * Looks like I don't need to bother with ClearBitUES as it's
          * not copied over when switching factions anyway
          */
-        //ClearBitUES(unit, UES_BIT_TURNCOAT);
+        // ClearBitUES(unit, UES_BIT_TURNCOAT);
     }
 
     if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
@@ -36,10 +40,10 @@ bool PostActionTurncoat(ProcPtr parent)
     {
         // Something is wrong with SetBitUES, it's not correctly setting
         // the bits for capture or this
-        if (!(UNIT_CATTRIBUTES(unit_tar) & CA_BOSS))
-            unit_tar->_u3A = UES_BIT_TURNCOAT;
-        
-        if (UNIT_FACTION(unit_tar) == FACTION_RED && !(UNIT_CATTRIBUTES(unit_tar) & CA_BOSS))
+        // if (!(UNIT_CATTRIBUTES(unit_tar) & CA_BOSS))
+        unit_tar->_u3A = UES_BIT_TURNCOAT;
+
+        if (UNIT_FACTION(unit_tar) == FACTION_RED)
             UnitChangeFaction(unit_tar, FACTION_BLUE);
         else
             UnitChangeFaction(unit_tar, FACTION_RED);

@@ -144,5 +144,5 @@ once per turn if <= 25% max HP.[X]
 
 ## MSG_SKILL_Turncoat
 Turncoat:[NL]
-Turn a beaten enemy into[NL]
-an ally for a turn.[X]
+Turn an attacked enemy[NL]
+into an ally for a turn.[X]

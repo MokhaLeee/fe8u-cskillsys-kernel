@@ -40,4 +40,10 @@ Tools/dotnet-install.sh
 # EfxAnims
 *.efx.event
 
+# Don't ignore these
+!Wizardry/External/**/*.s
+!Wizardry/External/**/* */.asm
+!Wizardry/External/**/*.lyn.event
+!Wizardry/External/**/*.o
+
 packages-microsoft-prod.deb
