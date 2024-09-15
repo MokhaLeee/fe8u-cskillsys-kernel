@@ -36,10 +36,10 @@ bool PostActionTurncoat(ProcPtr parent)
     {
         // Something is wrong with SetBitUES, it's not correctly setting
         // the bits for capture or this
-        unit_tar->_u3A = UES_BIT_TURNCOAT;
+        if (!(UNIT_CATTRIBUTES(unit_tar) & CA_BOSS))
+            unit_tar->_u3A = UES_BIT_TURNCOAT;
         
-        // && !(UNIT_CATTRIBUTES(unit_tar) & CA_BOSS
-        if (UNIT_FACTION(unit_tar) == FACTION_RED)
+        if (UNIT_FACTION(unit_tar) == FACTION_RED && !(UNIT_CATTRIBUTES(unit_tar) & CA_BOSS))
             UnitChangeFaction(unit_tar, FACTION_BLUE);
         else
             UnitChangeFaction(unit_tar, FACTION_RED);
