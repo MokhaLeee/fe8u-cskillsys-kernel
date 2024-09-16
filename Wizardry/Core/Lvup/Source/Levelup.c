@@ -33,6 +33,13 @@ static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
     struct Unit *unit = GetUnit(bu->unit.index);
     int statCounter = 0;
 
+    int limitBreaker = 0;
+
+#if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
+    if (SkillTester(unit, SID_LimitBreaker))
+        limitBreaker = SKILL_EFF0(SID_LimitBreaker);
+#endif
+
     // Create an array of stat pointers
     s8 *statChanges[] = {
         &bu->changeHP,
@@ -51,21 +58,21 @@ static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
     ** I could fix it, but it'd just make this function even chunkier.
     ** If there's a smarter way to write all this, please do.
     */
-    if (unit->maxHP < unit->pClassData->maxHP)
+    if (unit->maxHP < unit->pClassData->maxHP + limitBreaker)
         *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
-    if (unit->pow < unit->pClassData->maxPow)
+    if (unit->pow < unit->pClassData->maxPow + limitBreaker)
         *statChanges[1] = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
-    if (unit->skl < unit->pClassData->maxSkl)
+    if (unit->skl < unit->pClassData->maxSkl + limitBreaker)
         *statChanges[2] = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
-    if (unit->spd < unit->pClassData->maxSpd)
+    if (unit->spd < unit->pClassData->maxSpd + limitBreaker)
         *statChanges[3] = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
-    if (unit->lck < 30) // subject to change
+    if (unit->lck < 30 + limitBreaker) // subject to change
         *statChanges[4] = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
-    if (unit->def < unit->pClassData->maxDef)
+    if (unit->def < unit->pClassData->maxDef + limitBreaker)
         *statChanges[5] = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
-    if (unit->res < unit->pClassData->maxRes)
+    if (unit->res < unit->pClassData->maxRes + limitBreaker)
         *statChanges[6] = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
-    if (GetUnitMagic(unit) < GetUnitMaxMagic(unit))
+    if (GetUnitMagic(unit) < GetUnitMaxMagic(unit) + limitBreaker)
         *statChanges[7] = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
 
     // For each increased stat, increment statCounter
