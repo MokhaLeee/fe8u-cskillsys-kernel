@@ -252,7 +252,7 @@ void ChapterChangeUnitCleanup(void)
     {
         struct Unit *unit = GetUnit(j);
 
-    // Reset the transformed state of any units with the skill
+        // Reset the transformed state of any units with the skill
 #if defined(SID_Transform) && (COMMON_SKILL_VALID(SID_Transform))
         if (SkillTester(unit, SID_Transform))
         {
@@ -269,7 +269,7 @@ void ChapterChangeUnitCleanup(void)
         }
 #endif
 
-    // Reset the doppleganger state of any units with the skill
+        // Reset the doppleganger state of any units with the skill
 #if defined(SID_Doppleganger) && (COMMON_SKILL_VALID(SID_Doppleganger))
         if (SkillTester(unit, SID_Doppleganger))
         {
@@ -278,6 +278,21 @@ void ChapterChangeUnitCleanup(void)
                 if (gActiveUnit->pCharacterData->number == dopplegangerPairs[i][0])
                 {
                     unit->pClassData = GetClassData(dopplegangerPairs[i][1]);
+                    break;
+                }
+            }
+        }
+#endif
+
+        // Reset the class of any dismounted unit
+#if defined(SID_Dismount) && (COMMON_SKILL_VALID(SID_Dismount))
+        if (SkillTester(unit, SID_Dismount))
+        {
+            for (int i = 0; i < dismountListSize; i++)
+            {
+                if (gActiveUnit->pClassData->number == dismountPairs[i][1])
+                {
+                    unit->pClassData = GetClassData(dismountPairs[i][0]);
                     break;
                 }
             }

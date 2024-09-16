@@ -79,8 +79,10 @@
  * By: Vesly
  * Allow another line for all R button text
  * Installed in: Wizardry->Common->ItemSys->ItemDesc->ItemDesc.event
+ * 
+ * CURRENTLY BROKEN as I had to disable line 69/70/71 in order for Vesly's debugger to work
  */
-#define CONFIG_EXTEND_R_TEXT_DESC
+// #define CONFIG_EXTEND_R_TEXT_DESC
 
 /**
  * By: Vesly

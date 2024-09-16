@@ -32,4 +32,5 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
     [SID_Sacrifice] = Action_Sacrifice,
     [SID_Capture] = Action_Capture,
     [SID_Doppleganger] = Action_Doppleganger,
+    [SID_Dismount] = Action_Dismount,
 };

@@ -513,4 +513,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Dismount) && COMMON_SKILL_VALID(SID_Dismount))
+    [SID_Dismount] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_DismountName,
+        .helpMsgId = MSG_SKILL_Dismount,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Dismount_Usability,
+        .onDraw = NULL,
+        .onSelected = Dismount_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

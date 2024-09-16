@@ -117,7 +117,7 @@ int GetBootType(void) {
     return info.charKnownFlags[0x10]; 
 } 
 
-
+//LYN_REPLACE_CHECK(EventCallGameOverExt);
 void EventCallGameOverExt(ProcPtr proc)
 {
     Proc_StartBlocking(ProcScr_BmGameOver, proc);
@@ -125,6 +125,7 @@ void EventCallGameOverExt(ProcPtr proc)
 }
 
 #define LGAMECTRL_EXEC_BM_EXT 6  // Directly goto bmmap 
+LYN_REPLACE_CHECK(GameControl_CallEraseSaveEventWithKeyCombo);
 void GameControl_CallEraseSaveEventWithKeyCombo(ProcPtr proc)
 {
     if (gKeyStatusPtr->heldKeys == (L_BUTTON | DPAD_RIGHT | SELECT_BUTTON)) { 
@@ -3238,6 +3239,7 @@ void InitProc(DebuggerProc* proc) {
 }
 
 //! FE8U = 0x08015450
+LYN_REPLACE_CHECK(BmMain_StartPhase);
 void BmMain_StartPhase(ProcPtr proc)
 {
     int phaseControl = gPlaySt.faction;
@@ -3489,6 +3491,7 @@ struct ProcCmd const ProcScr_HelpBoxIntroString[] = {
     PROC_END,
 };
 
+LYN_REPLACE_CHECK(ClearHelpBoxText);
 void ClearHelpBoxText(void) { // replaces original function 
 
     SetTextFont(&gHelpBoxSt.font);
