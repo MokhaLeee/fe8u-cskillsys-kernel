@@ -37,3 +37,7 @@
 #ifdef CONFIG_EXTEND_R_TEXT_DESC
     #include "ItemDesc/Installer.event"
 #endif
+
+#ifdef CONFIG_INSTALL_BASE_CONVERSATIONS
+    #include "BaseConversations/Installer.event"
+#endif
