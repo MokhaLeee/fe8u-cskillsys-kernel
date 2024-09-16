@@ -142,6 +142,13 @@
  */
 #define CONFIG_INSTALL_MENU_WIDTHS
 
+/**
+ * By Snakey1:
+ * Allow units to have base conversations Tellius style
+ * IN PROGRESS - Requires input from creator, so do not enable yet
+ */
+//#define CONFIG_INSTALL_BASE_CONVERSATIONS
+
 
 /**
  * Levelup mode
