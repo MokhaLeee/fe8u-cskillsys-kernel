@@ -1,6 +1,9 @@
 #include "common-chax.h"
 #include "strmag.h"
 #include "status-getter.h"
+#include "skill-system.h"
+#include "constants/skills.h"
+#include "kernel-lib.h"
 
 #define LOCAL_TRACE 0
 
@@ -105,19 +108,26 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
     int ix, iy, stat_pack[8];
     UnpackUiBarPalette(2);
 
-#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
-#else
-    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit);
+    int limitBreaker = 0;
+
+#if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
+    if (SkillTester(unit, SID_LimitBreaker))
+        limitBreaker = SKILL_EFF0(SID_LimitBreaker);
 #endif
 
-    stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit);
-    stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit);
-    stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit);
-    stat_pack[4] = SklGetter(unit) * 24 / UNIT_SKL_MAX(unit);
-    stat_pack[5] = SpdGetter(unit) * 24 / UNIT_SPD_MAX(unit);
-    stat_pack[6] = DefGetter(unit) * 24 / UNIT_DEF_MAX(unit);
-    stat_pack[7] = ResGetter(unit) * 24 / UNIT_RES_MAX(unit);
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit) + limitBreaker;
+#else
+    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit) + limitBreaker;
+#endif
+
+    stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit) + limitBreaker;
+    stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit) + limitBreaker;
+    stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit) + limitBreaker;
+    stat_pack[4] = SklGetter(unit) * 24 / UNIT_SKL_MAX(unit) + limitBreaker;
+    stat_pack[5] = SpdGetter(unit) * 24 / UNIT_SPD_MAX(unit) + limitBreaker;
+    stat_pack[6] = DefGetter(unit) * 24 / UNIT_DEF_MAX(unit) + limitBreaker;
+    stat_pack[7] = ResGetter(unit) * 24 / UNIT_RES_MAX(unit) + limitBreaker;
 
     for (iy = 0; iy < 4; iy++)
     {

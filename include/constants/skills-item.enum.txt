@@ -65,3 +65,4 @@ SID_TripleUp
 SID_Casual
 SID_Doppleganger
 SID_Turncoat
+SID_LimitBreaker

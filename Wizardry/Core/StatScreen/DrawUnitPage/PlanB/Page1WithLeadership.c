@@ -11,7 +11,7 @@
 
 static void DrawPage1TextCommon(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     PutDrawTextRework(
         &gStatScreen.text[STATSCREEN_TEXT_POWLABEL],
@@ -117,66 +117,73 @@ static void DrawPage1TextCommon(void)
 
 static void DrawPage1ValueReal(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
+
+    int limitBreaker = 0;
+
+#if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
+    if (SkillTester(unit, SID_LimitBreaker))
+        limitBreaker = SKILL_EFF0(SID_LimitBreaker);
+#endif
 
     DrawStatWithBarRework(0, 0x5, 0x1,
-                    gUiTmScratchA, gUiTmScratchC,
-                    unit->pow,
-                    GetUnitPower(unit),
-                    UNIT_POW_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          unit->pow,
+                          GetUnitPower(unit),
+                          UNIT_POW_MAX(unit) + limitBreaker);
 
     DrawStatWithBarRework(1, 0x5, 0x3,
-                    gUiTmScratchA, gUiTmScratchC,
-                    UNIT_MAG(unit),
-                    GetUnitMagic(unit),
-                    GetUnitMaxMagic(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          UNIT_MAG(unit),
+                          GetUnitMagic(unit),
+                          GetUnitMaxMagic(unit) + limitBreaker);
 
     DrawStatWithBarRework(2, 0x5, 0x5,
-                    gUiTmScratchA, gUiTmScratchC,
-                    unit->skl,
-                    GetUnitSkill(unit),
-                    UNIT_SKL_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          unit->skl,
+                          GetUnitSkill(unit),
+                          UNIT_SKL_MAX(unit) + limitBreaker);
 
     DrawStatWithBarRework(3, 0x5, 0x7,
-                    gUiTmScratchA, gUiTmScratchC,
-                    unit->spd,
-                    GetUnitSpeed(unit),
-                    UNIT_SPD_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          unit->spd,
+                          GetUnitSpeed(unit),
+                          UNIT_SPD_MAX(unit) + limitBreaker);
 
     DrawStatWithBarRework(4, 0x5, 0x9,
-                    gUiTmScratchA, gUiTmScratchC,
-                    unit->lck,
-                    GetUnitLuck(unit),
-                    UNIT_LCK_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          unit->lck,
+                          GetUnitLuck(unit),
+                          UNIT_LCK_MAX(unit) + limitBreaker);
 
     DrawStatWithBarRework(5, 0x5, 0xB,
-                    gUiTmScratchA, gUiTmScratchC,
-                    unit->def,
-                    GetUnitDefense(unit),
-                    UNIT_DEF_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          unit->def,
+                          GetUnitDefense(unit),
+                          UNIT_DEF_MAX(unit) + limitBreaker);
 
     DrawStatWithBarRework(6, 0x5, 0xD,
-                    gUiTmScratchA, gUiTmScratchC,
-                    unit->res,
-                    GetUnitResistance(unit),
-                    UNIT_RES_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          unit->res,
+                          GetUnitResistance(unit),
+                          UNIT_RES_MAX(unit) + limitBreaker);
 }
 
 static void DrawPage1ValueCommon(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     DrawStatWithBarRework(7, 0xD, 0x1,
-                    gUiTmScratchA, gUiTmScratchC,
-                    UNIT_MOV(unit),
-                    MovGetter(unit),
-                    UNIT_MOV_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          UNIT_MOV(unit),
+                          MovGetter(unit),
+                          UNIT_MOV_MAX(unit));
 
     DrawStatWithBarRework(8, 0xD, 0x3,
-                    gUiTmScratchA, gUiTmScratchC,
-                    UNIT_CON_BASE(unit),
-                    ConGetter(unit),
-                    UNIT_CON_MAX(unit));
+                          gUiTmScratchA, gUiTmScratchC,
+                          UNIT_CON_BASE(unit),
+                          ConGetter(unit),
+                          UNIT_CON_MAX(unit));
 
     PutNumberOrBlank(
         gUiTmScratchA + TILEMAP_INDEX(0xD, 0x5),
@@ -226,7 +233,7 @@ static void DrawPage1BattleAmt(void)
         GetStringFromIndex(MSG_MSS_BattleAmt));
 
     PutNumber(gUiTmScratchA + TILEMAP_INDEX(0x4 + CountDigits(amt), 0xF),
-        TEXT_COLOR_SYSTEM_BLUE, amt);
+              TEXT_COLOR_SYSTEM_BLUE, amt);
 
     DrawStatWithBarReworkExt(
         0x9, 0x5, 0xF,
@@ -236,17 +243,17 @@ static void DrawPage1BattleAmt(void)
 
 static void DrawPage1Affin(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
     int affin = unit->pCharacterData->affinity;
 
-    const char * cn_affin[] = {
-        [UNIT_AFFIN_FIRE]    = "炎",
+    const char *cn_affin[] = {
+        [UNIT_AFFIN_FIRE] = "炎",
         [UNIT_AFFIN_THUNDER] = "雷",
-        [UNIT_AFFIN_WIND]    = "風",
-        [UNIT_AFFIN_ICE]     = "冰",
-        [UNIT_AFFIN_DARK]    = "闇",
-        [UNIT_AFFIN_LIGHT]   = "光",
-        [UNIT_AFFIN_ANIMA]   = "理",
+        [UNIT_AFFIN_WIND] = "風",
+        [UNIT_AFFIN_ICE] = "冰",
+        [UNIT_AFFIN_DARK] = "闇",
+        [UNIT_AFFIN_LIGHT] = "光",
+        [UNIT_AFFIN_ANIMA] = "理",
     };
 
     if (affin)
@@ -299,7 +306,7 @@ static void DrawPage1LeaderShip(void)
             gUiTmScratchA + TILEMAP_INDEX(0xC, 0x9),
             CONFIG_ICON_INDEX_STAR,
             TILEREF(0, STATSCREEN_BGPAL_EXTICONS));
-        
+
         PutNumberOrBlank(
             gUiTmScratchA + TILEMAP_INDEX(0xE, 0x9),
             TEXT_COLOR_SYSTEM_BLUE,
@@ -336,8 +343,7 @@ static void DrawPage1TalkTrv(void)
         GetStringFromIndex(
             gStatScreenStExpa.talkee == 0
                 ? 0x536
-                : UNIT_NAME_ID(GetUnitFromCharId(gStatScreenStExpa.talkee)
-        )));
+                : UNIT_NAME_ID(GetUnitFromCharId(gStatScreenStExpa.talkee))));
 }
 
 /* External hook */

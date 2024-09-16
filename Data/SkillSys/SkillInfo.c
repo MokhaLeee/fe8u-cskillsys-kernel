@@ -4121,4 +4121,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_LimitBreaker) && COMMON_SKILL_VALID(SID_LimitBreaker))
+    [SID_LimitBreaker] = {
+        .name = MSG_SKILL_LimitBreaker_NAME,
+        .desc = MSG_SKILL_LimitBreaker,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
