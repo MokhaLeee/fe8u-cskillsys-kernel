@@ -14,6 +14,11 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct Batt
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
 #endif
 
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
+#endif
+
 #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
     if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit) + limitBreaker)
         bu->changeHP = (KUNIT_MHP_MAX(unit) + limitBreaker) - unit->maxHP;
@@ -48,6 +53,11 @@ STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
     if (SkillTester(unit, SID_LimitBreaker))
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
+#endif
+
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
 #endif
 
 #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
@@ -95,6 +105,11 @@ void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu)
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
 #endif
 
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
+#endif
+
     /* Hooks */
     if ((UNIT_MAG(unit) + BU_CHG_MAG(bu)) > GetUnitMaxMagic(unit) + limitBreaker)
         BU_CHG_MAG(bu) = (GetUnitMaxMagic(unit) + limitBreaker) - UNIT_MAG(unit);
@@ -110,6 +125,11 @@ void UnitCheckStatCaps(struct Unit *unit)
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
     if (SkillTester(unit, SID_LimitBreaker))
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
+#endif
+
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
 #endif
 
     /* Hooks */
