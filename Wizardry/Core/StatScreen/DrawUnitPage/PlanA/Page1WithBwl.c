@@ -127,6 +127,11 @@ static void DrawPage1ValueReal(void)
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
 #endif
 
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
+#endif
+
     DrawStatWithBarRework(0, 0x5, 0x1,
                     gUiTmScratchA, gUiTmScratchC,
                     unit->pow,

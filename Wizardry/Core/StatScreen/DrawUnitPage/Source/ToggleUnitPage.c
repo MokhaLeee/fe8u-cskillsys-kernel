@@ -45,6 +45,11 @@ STATIC_DECLAR void ToggleUnitPageBm(void)
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
 #endif
 
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
+#endif
+
     DrawStatWithBarRework(0, 0x5, 0x1,
                           gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
                           gBG2TilemapBuffer + TILEMAP_INDEX(12, 2),

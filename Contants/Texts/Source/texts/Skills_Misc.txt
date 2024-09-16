@@ -136,3 +136,11 @@ L-Breaker[X]
 Limit Breaker:[NL]
 Add +5 to this unit's[NL]
 stat caps.[X]
+
+## MSG_SKILL_LimitBreakerPlus_NAME
+L-Breaker+[X]
+
+## MSG_SKILL_LimitBreakerPlus
+Limit Breaker+:[NL]
+Add +10 to this unit's[NL]
+stat caps.[X]

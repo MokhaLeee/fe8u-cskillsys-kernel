@@ -8,6 +8,8 @@
 #include "kernel-lib.h"
 #include "kernel-glyph.h"
 #include "constants/texts.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 static void DrawPage1TextCommon(void)
 {
@@ -124,6 +126,11 @@ static void DrawPage1ValueReal(void)
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
     if (SkillTester(unit, SID_LimitBreaker))
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
+#endif
+
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
 #endif
 
     DrawStatWithBarRework(0, 0x5, 0x1,

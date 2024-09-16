@@ -115,6 +115,11 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
         limitBreaker = SKILL_EFF0(SID_LimitBreaker);
 #endif
 
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
+#endif
+
 #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
     stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit) + limitBreaker;
 #else
