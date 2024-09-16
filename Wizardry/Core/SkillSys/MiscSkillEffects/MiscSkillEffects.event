@@ -43,6 +43,7 @@
 #include "MenuSkills/Sacrifice.lyn.event"
 #include "MenuSkills/Capture.lyn.event"
 #include "MenuSkills/Doppleganger.lyn.event"
+#include "MenuSkills/Dismount.lyn.event"
 
 #include "MenuSkills/ReciprocalAid.lyn.event"
 #include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"

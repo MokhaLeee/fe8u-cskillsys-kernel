@@ -374,3 +374,11 @@ No allies in range to copy![X]
 Doppleganger:[NL]
 Copy the class of an[NL]
 adjacent ally for a turn.[X]
+
+## MSG_SKILL_Dismount
+Dismount:[NL]
+Allow mounted classes to[NL]
+dismount, and revert.[X]
+
+## MSG_MenuSkill_DismountName
+ Dismount[X]
