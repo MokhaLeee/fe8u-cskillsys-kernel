@@ -445,6 +445,20 @@ void SetWorkingMoveCosts(const s8 mct[])
     }
 #endif
 
+#if (defined(SID_WaterWalkingPlus) && COMMON_SKILL_VALID(SID_WaterWalkingPlus))
+    if (SkillTester(gActiveUnit, SID_WaterWalkingPlus))
+    {
+        for (i = 0; i < TERRAIN_COUNT; ++i)
+        {
+            if (i == TERRAIN_WATER || i == TERRAIN_RIVER || i == TERRAIN_SEA || i == TERRAIN_LAKE)
+                gWorkingTerrainMoveCosts[i] = 1;
+            else
+                gWorkingTerrainMoveCosts[i] = mct[i];
+        }
+        return;
+    }
+#endif
+
 #if (defined(SID_WaterWalking) && COMMON_SKILL_VALID(SID_WaterWalking))
     if (SkillTester(gActiveUnit, SID_WaterWalking))
     {

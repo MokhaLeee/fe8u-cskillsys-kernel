@@ -18,7 +18,7 @@ const u16 gConstSkillTable_Item[0x100][2] = {
         SID_LiveToServe,
     },
     [ITEM_ANIMA_ELFIRE] = {
-        SID_WaterWalking,
+        SID_WaterWalkingPlus,
         SID_Ludopathy,
     },
     [ITEM_LANCE_SLIM] = {

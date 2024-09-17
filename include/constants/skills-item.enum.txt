@@ -73,3 +73,4 @@ SID_DestinyBond
 SID_Secret
 SID_Ludopathy
 SID_WaterWalking
+SID_WaterWalkingPlus
