@@ -306,4 +306,5 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_MoonBow] = {{ 25 }},
     [SID_LimitBreaker] = {{ 5 }},
     [SID_LimitBreakerPlus] = {{ 10 }},
+    [SID_RiskItAll] = {{ 100 }},
 };

@@ -163,6 +163,11 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
     if (BattleSkillTester(attacker, SID_NoGuard) || BattleSkillTester(defender, SID_NoGuard))
         attacker->battleEffectiveHitRate = 100;
 #endif
+
+#if (defined(SID_RiskItAll) && (COMMON_SKILL_VALID(SID_RiskItAll)))
+    if (BattleSkillTester(attacker, SID_RiskItAll) || BattleSkillTester(defender, SID_RiskItAll))
+        attacker->battleEffectiveCritRate = SKILL_EFF0(SID_RiskItAll);
+#endif
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSilencerRate);
