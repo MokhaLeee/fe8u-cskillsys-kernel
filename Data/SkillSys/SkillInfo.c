@@ -4151,4 +4151,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_DestinyBond) && COMMON_SKILL_VALID(SID_DestinyBond))
+    [SID_DestinyBond] = {
+        .desc = MSG_SKILL_DestinyBond,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
