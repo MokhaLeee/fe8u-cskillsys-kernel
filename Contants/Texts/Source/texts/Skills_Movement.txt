@@ -67,3 +67,8 @@ end this unit's turn.[X]
 Acrobat:[NL]
 All traversable terrain for[NL]
 this unit costs 1 movement.[X]
+
+## MSG_SKILL_WaterWalking
+Water Walking:[NL]
+Allows the unit to[NL]
+walk on water tiles.[X]

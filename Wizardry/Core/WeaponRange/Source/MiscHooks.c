@@ -441,14 +441,25 @@ void SetWorkingMoveCosts(const s8 mct[])
             else
                 gWorkingTerrainMoveCosts[i] = mct[i];
         }
+        return;
     }
-    else
+#endif
+
+#if (defined(SID_WaterWalking) && COMMON_SKILL_VALID(SID_WaterWalking))
+    if (SkillTester(gActiveUnit, SID_WaterWalking))
     {
         for (i = 0; i < TERRAIN_COUNT; ++i)
-            gWorkingTerrainMoveCosts[i] = mct[i];
+        {
+            if (i == TERRAIN_WATER || i == TERRAIN_RIVER || i == TERRAIN_SEA || i == TERRAIN_LAKE)
+                gWorkingTerrainMoveCosts[i] = 3;
+            else
+                gWorkingTerrainMoveCosts[i] = mct[i];
+        }
+        return;
     }
-#else
+#endif
+
     for (i = 0; i < TERRAIN_COUNT; ++i)
         gWorkingTerrainMoveCosts[i] = mct[i];
-#endif
+
 }
