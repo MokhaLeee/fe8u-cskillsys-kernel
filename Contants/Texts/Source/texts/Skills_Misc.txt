@@ -144,3 +144,8 @@ L-Breaker+[X]
 Limit Breaker+:[NL]
 Add +10 to this unit's[NL]
 stat caps.[X]
+
+## MSG_SKILL_DestinyBond
+Destiny Bond:[NL]
+If this unit dies in combat,[NL]
+the enemy dies as well.[X]

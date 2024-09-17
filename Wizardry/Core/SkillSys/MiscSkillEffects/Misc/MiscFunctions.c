@@ -228,6 +228,11 @@ void KillUnitOnCombatDeath(struct Unit *unitA, struct Unit *unitB)
     }
 #endif
 
+#if defined(SID_DestinyBond) && (COMMON_SKILL_VALID(SID_DestinyBond))
+    if (SkillTester(unitA, SID_DestinyBond))
+        UnitKill(unitB);
+#endif
+
     PidStatsRecordDefeatInfo(unitA->pCharacterData->number, unitB->pCharacterData->number, DEFEAT_CAUSE_COMBAT);
 
     UnitKill(unitA);
