@@ -154,3 +154,8 @@ the enemy dies as well.[X]
 Secret:[NL]
 Grants this unit access[NL]
 to the secret shop.[X]
+
+## MSG_SKILL_Ludopathy
+Ludopathy:[NL]
+Double gambling[NL]
+bets and wins.[X]
