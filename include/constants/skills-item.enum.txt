@@ -70,3 +70,4 @@ SID_LimitBreakerPlus
 SID_Dismount
 SID_RiskItAll
 SID_DestinyBond
+SID_Secret
