@@ -382,3 +382,43 @@ void SwitchPhases(void)
         ProcessTurnSupportExp();
     }
 }
+
+struct EvCheck0A {
+    u32 unk0;
+    u32 script;
+    u8 x;
+    u8 y;
+    u16 tileCommand;
+};
+
+//! FE8U = 0x08083A58
+LYN_REPLACE_CHECK(EvCheck0A_SHOP);
+int EvCheck0A_SHOP(struct EventInfo* info) {
+    struct EvCheck0A* listScript = (void *)info->listScript;
+
+    int x = listScript->x;
+    int y = listScript->y;
+
+    int tileCommand = listScript->tileCommand;
+
+#if defined(SID_Secret) && (COMMON_SKILL_VALID(SID_Secret))
+    if (SkillTester(gActiveUnit, SID_Secret))
+        {
+            info->script = listScript->script;
+            info->flag = listScript->unk0 >> 16;
+            info->commandId = tileCommand;
+            return 1;
+        }
+#endif
+
+    if ((x == info->xPos) && (y == info->yPos)) {
+        if ((tileCommand != TILE_COMMAND_SECRET || (GetUnitItemSlot(gActiveUnit, ITEM_MEMBERCARD) != -1))) {
+            info->script = listScript->script;
+            info->flag = listScript->unk0 >> 16;
+            info->commandId = tileCommand;
+            return 1;
+        }
+    }
+
+    return 0;
+}

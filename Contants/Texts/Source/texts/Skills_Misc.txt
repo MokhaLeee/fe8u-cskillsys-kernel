@@ -149,3 +149,8 @@ stat caps.[X]
 Destiny Bond:[NL]
 If this unit dies in combat,[NL]
 the enemy dies as well.[X]
+
+## MSG_SKILL_Secret
+Secret:[NL]
+Grants this unit access[NL]
+to the secret shop.[X]
