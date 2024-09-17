@@ -507,3 +507,7 @@ debuffs to this unit.[X]
 ## MSG_SKILL_MoonBow
 Moon Bow:[NL]
 Reduce enemy's DEF/RES by 25%.[X]
+
+## MSG_SKILL_RiskItAll
+Risk It All:[NL]
+Both sides have 100% crit.[X]

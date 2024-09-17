@@ -68,3 +68,4 @@ SID_Turncoat
 SID_LimitBreaker
 SID_LimitBreakerPlus
 SID_Dismount
+SID_RiskItAll
