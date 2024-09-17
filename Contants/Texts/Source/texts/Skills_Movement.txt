@@ -72,3 +72,8 @@ this unit costs 1 movement.[X]
 Water Walking:[NL]
 Allows the unit to[NL]
 walk on water tiles.[X]
+
+## MSG_SKILL_WaterWalkingPlus
+Water Walking+:[NL]
+Allows the unit to walk on water[NL]
+tiles with no move penalty.[X]
