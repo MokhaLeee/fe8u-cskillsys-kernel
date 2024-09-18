@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "kernel-tutorial.h"
 #include "constants/gfx.h"
 #include "constants/combat-arts.h"
 
@@ -10,7 +11,7 @@ bool CanUnitPlayCombatArt(struct Unit * unit, u16 item)
 
     for (i = 0; i < list->amt; i++)
     {
-        const struct CombatArtInfo * info = &gpCombatArtInfos[list->cid[i]];
+        const struct CombatArtInfo * info = GetCombatArtInfo(list->cid[i]);
         if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             return true;
     }
@@ -26,12 +27,12 @@ u8 GetBestRangeBonusCid(struct Unit * unit, u16 item)
 
     for (i = 0; i < list->amt; i++)
     {
-        const struct CombatArtInfo * info = &gpCombatArtInfos[list->cid[i]];
+        const struct CombatArtInfo * info = GetCombatArtInfo(list->cid[i]);
 
         if (info->wtype != CA_WTYPE_ANY && info->wtype != wtype)
             continue;
 
-        if (info->range_bonus > gpCombatArtInfos[ret].range_bonus)
+        if (info->range_bonus > GetCombatArtInfo(ret)->range_bonus)
             ret = list->cid[i];
     }
     return ret;
@@ -49,7 +50,7 @@ const u8 * GetCombatArtIcon(const u8 cid)
 
     if (COMBART_VALID(cid))
     {
-        const struct CombatArtInfo * info = &gpCombatArtInfos[cid];
+        const struct CombatArtInfo * info = GetCombatArtInfo(cid);
         if (info->icon)
             return info->icon;
 
@@ -74,7 +75,7 @@ int WeaponRangeGetterCombatArt(int range, struct Unit * unit, u16 item)
 
     if (COMBART_VALID(cid))
     {
-        const struct CombatArtInfo * info = &gpCombatArtInfos[cid];
+        const struct CombatArtInfo * info = GetCombatArtInfo(cid);
         if (info->wtype == CA_WTYPE_ANY || info->wtype == GetItemType(item))
             range += info->range_bonus;
     }
@@ -91,7 +92,7 @@ void PreBattleCalcCombatArt(struct BattleUnit * bu, struct BattleUnit * defender
     if (!COMBART_VALID(cid))
         return;
 
-    info = &gpCombatArtInfos[cid];
+    info = GetCombatArtInfo(cid);
     unit = GetUnit(bu->unit.index);
 
     bu->battleAttack       += info->battle_status.atk;
@@ -102,41 +103,54 @@ void PreBattleCalcCombatArt(struct BattleUnit * bu, struct BattleUnit * defender
     bu->battleSilencerRate += info->battle_status.silencer;
     bu->battleDodgeRate    += info->battle_status.dodge;
 
-    if (info->external_calc)
+    switch (cid) {
+    case CID_Soulblade:
+        bu->battleAttack += GetUnitResistance(unit);
+        break;
+
+    case CID_FinesseBlade:
+        bu->battleAttack += GetUnitSkill(unit);
+        break;
+
+    case CID_FrozenLance:
+        bu->battleAttack += GetUnitSkill(unit);
+        break;
+
+    case CID_LanceJab:
+        bu->battleAttack += GetUnitSpeed(unit);
+        break;
+
+    case CID_Vengeance:
+        bu->battleAttack += GetUnitMaxHp(unit) - GetUnitCurrentHp(unit);
+        break;
+
+    case CID_ArmoredStrike:
+        bu->battleAttack += GetUnitDefense(unit);
+        break;
+
+    case CID_LightningAxe:
+        bu->battleAttack += GetUnitResistance(unit);
+        break;
+
+    case CID_Detonate:
+        if (!(GetItemAttributes(bu->weapon) & IA_UNBREAKABLE))
+            bu->battleAttack += ITEM_USES(bu->weapon);
+
+        break;
+    };
+}
+
+/* Pre-battle generate */
+void PreBattleGenerate_TrigCombartKTut(void)
+{
+    if (gBattleStats.config & BATTLE_CONFIG_REAL)
     {
-        switch (cid) {
-        case CID_Soulblade:
-            bu->battleAttack += GetUnitResistance(unit);
-            break;
-
-        case CID_FinesseBlade:
-            bu->battleAttack += GetUnitSkill(unit);
-            break;
-
-        case CID_FrozenLance:
-            bu->battleAttack += GetUnitSkill(unit);
-            break;
-
-        case CID_LanceJab:
-            bu->battleAttack += GetUnitSpeed(unit);
-            break;
-
-        case CID_Vengeance:
-            bu->battleAttack += GetUnitMaxHp(unit) - GetUnitCurrentHp(unit);
-            break;
-
-        case CID_ArmoredStrike:
-            bu->battleAttack += GetUnitDefense(unit);
-            break;
-
-        case CID_LightningAxe:
-            bu->battleAttack += GetUnitResistance(unit);
-            break;
-        };
+        if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
+            TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(sub_8022E54);
 void sub_8022E54(void)
 {
     /* During reload from B pressed in select-target */

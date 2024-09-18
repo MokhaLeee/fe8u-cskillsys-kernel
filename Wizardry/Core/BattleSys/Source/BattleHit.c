@@ -4,34 +4,11 @@
 #include "battle-system.h"
 #include "strmag.h"
 #include "debuff.h"
-#include "unit-expa.h"
-#include "kernel-lib.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR bool CheckSkillHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-#if (defined(SID_Aether) && (COMMON_SKILL_VALID(SID_Aether)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
-        return true;
-    }
-#endif
-
-#if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
-        return true;
-    }
-#endif
-
-    return false;
-}
-
-/* LynJump */
+LYN_REPLACE_CHECK(BattleUpdateBattleStats);
 void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int attack = attacker->battleAttack;
@@ -94,441 +71,7 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     gBattleStats.silencerRate = silencerRate;
 }
 
-int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-    int damage = 0;
-
-#if defined(SID_RuinedBlade) && (COMMON_SKILL_VALID(SID_RuinedBlade))
-    if (BattleSkillTester(attacker, SID_RuinedBlade))
-        damage += 5;
-#endif
-
-#if defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus))
-    if (BattleSkillTester(attacker, SID_RuinedBladePlus))
-        damage += 5;
-#endif
-
-#if defined(SID_LunaAttack) && (COMMON_SKILL_VALID(SID_LunaAttack))
-    if (BattleSkillTester(attacker, SID_LunaAttack))
-        damage += defender->battleDefense / 4;
-#endif
-
-#if defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido))
-    if (BattleSkillTester(attacker, SID_Bushido))
-        damage += 7;
-#endif
-
-    return damage;
-}
-
-STATIC_DECLAR int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-    bool crit_atk;
-    int result, damage_base, attack, defense;
-    int correction, real_damage, increase, decrease, crit_correction;
-
-    FORCE_DECLARE struct BattleGlobalFlags * act_flags, * tar_flags;
-
-    /**
-     * result = ([atk + correction - def])
-     *              * (100% + increase%)
-     *              * (100% + crit_correction%)
-     *              / (100% + decrease%)
-     *              + real_damage
-     */
-
-    if (attacker == &gBattleActor)
-    {
-        act_flags = &gBattleActorGlobalFlag;
-        tar_flags = &gBattleTargetGlobalFlag;
-    }
-    else
-    {
-        act_flags = &gBattleTargetGlobalFlag;
-        tar_flags = &gBattleActorGlobalFlag;
-    }
-
-    /**
-     * Step0: Roll critical and silencer attack
-     */
-    crit_atk = false;
-
-    if (
-#if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
-        !BattleSkillTester(defender, SID_Fortune)
-#else
-        (1)
-#endif
-        &&
-#if defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight))
-        !BattleSkillTester(defender, SID_Foresight)
-#else
-        (1)
-#endif
-    )
-    {
-        if (BattleRoll1RN(gBattleStats.critRate, false))
-        {
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-            crit_atk = true;
-
-            if (BattleRoll1RN(gBattleStats.silencerRate, false))
-            {
-                /* Directly return on silencer attack to fasten calc */
-                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_SILENCER;
-                return BATTLE_MAX_DAMAGE;
-            }
-        }
-    }
-
-    /**
-     * Step1: Calculate base damage (atk + correction - def)
-     */
-    attack = gBattleStats.attack;
-    defense = gBattleStats.defense;
-    correction = 0;
-
-#if (defined(SID_QuickDraw) && (COMMON_SKILL_VALID(SID_QuickDraw)))
-    if (BattleSkillTester(attacker, SID_QuickDraw) && attacker == &gBattleTarget)
-        correction += 4;
-#endif
-
-#if (defined(SID_StrongRiposte) && (COMMON_SKILL_VALID(SID_StrongRiposte)))
-    if (BattleSkillTester(attacker, SID_StrongRiposte) && attacker == &gBattleTarget)
-        correction += 3;
-#endif
-
-#if (defined(SID_Flare) && (COMMON_SKILL_VALID(SID_Flare)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Flare, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Flare);
-        defense = defense / 2;
-    }
-#endif
-
-    if (IsMagicAttack(attacker))
-    {
-#if (defined(SID_Corona) && (COMMON_SKILL_VALID(SID_Corona)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_Corona, attacker->unit.skl))
-        {
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corona);
-            defense = 0;
-        }
-#endif
-    }
-    else
-    {
-#if (defined(SID_Luna) && (COMMON_SKILL_VALID(SID_Luna)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_Luna, attacker->unit.skl))
-        {
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Luna);
-            defense = 0;
-        }
-#endif
-    }
-
-#if (defined(SID_Ignis) && (COMMON_SKILL_VALID(SID_Ignis)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Ignis, attacker->unit.skl))
-    {
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Ignis);
-        switch (attacker->weaponType) {
-        case ITYPE_SWORD:
-        case ITYPE_LANCE:
-        case ITYPE_AXE:
-        case ITYPE_BOW:
-            correction += attacker->unit.def / 2;
-            break;
-
-        case ITYPE_ANIMA:
-        case ITYPE_LIGHT:
-        case ITYPE_DARK:
-            correction += attacker->unit.res / 2;
-            break;
-        default:
-            break;
-        }
-    }
-#endif
-
-#if defined(SID_Glacies) && (COMMON_SKILL_VALID(SID_Glacies))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Glacies, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Glacies);
-        correction += attacker->unit.res;
-    }
-#endif
-
-#if defined(SID_Vengeance) && (COMMON_SKILL_VALID(SID_Vengeance))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Vengeance, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Vengeance);
-        correction += (attacker->unit.maxHP - attacker->unit.curHP);
-    }
-#endif
-
-#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-        if (BattleSkillTester(attacker, SID_Spurn) && crit_atk && (attacker->hpInitial * 4) < (attacker->unit.maxHP * 3))
-            correction += 5;
-#endif
-
-#if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
-    if (BattleSkillTester(attacker, SID_DragonWarth) && act_flags->round_cnt_hit == 1)
-        correction += attack / 5;
-#endif
-
-    /**
-     * Step1.1: fasten calculation!
-     */
-    damage_base = attack + correction - defense;
-    if (damage_base <= 0)
-        return 0;
-
-    if (damage_base > 0)
-    {
-#if (defined(SID_GreatShield) && (COMMON_SKILL_VALID(SID_GreatShield)))
-        if (CheckBattleSkillActivate(defender, attacker, SID_GreatShield, defender->unit.skl))
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GreatShield);
-            return 0;
-        }
-#endif
-        if (IsMagicAttack(attacker))
-        {
-#if (defined(SID_Aegis) && (COMMON_SKILL_VALID(SID_Aegis)))
-            if (CheckBattleSkillActivate(defender, attacker, SID_Aegis, defender->unit.skl))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aegis);
-                return 0;
-            }
-#endif
-        }
-        else
-        {
-#if (defined(SID_Pavise) && (COMMON_SKILL_VALID(SID_Pavise)))
-            if (CheckBattleSkillActivate(defender, attacker, SID_Pavise, defender->unit.skl))
-            {
-                RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Pavise);
-                return 0;
-            }
-#endif
-        }
-    }
-
-    /**
-     * Step2: Calculate damage increase amplifier (100% + increase%)
-     */
-    increase = 100;
-
-#if defined(SID_DragonFang) && (COMMON_SKILL_VALID(SID_DragonFang))
-    if (CheckBattleSkillActivate(attacker, defender, SID_DragonFang, attacker->unit.skl * 2))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonFang);
-        increase += 50;
-    }
-#endif
-
-#if (defined(SID_Colossus) && (COMMON_SKILL_VALID(SID_Colossus)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Colossus, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Colossus);
-        increase += 200;
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-    }
-#endif
-
-#if defined(SID_Impale) && (COMMON_SKILL_VALID(SID_Impale))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Impale, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Impale);
-        increase += 300;
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-    }
-#endif
-
-    if (gBattleTemporaryFlag.skill_activated_sure_shoot)
-        increase += 50;
-
-    /**
-     * Step3: Calculate critial damage amplifier (200%  + crit_correction%)
-     */
-    crit_correction = 100;
-    if (crit_atk)
-    {
-        crit_correction = 300;
-
-#if defined(SID_InfinityEdge) && (COMMON_SKILL_VALID(SID_InfinityEdge))
-        if (BattleSkillTester(attacker, SID_InfinityEdge))
-            crit_correction += 100;
-#endif
-    }
-
-    /**
-     * Step4: Calculate damage decrease amplifier (100% + decrease%)
-     */
-    decrease = 0x100;
-
-#if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
-    if (attacker == &gBattleActor && BattleSkillTester(attacker, SID_Astra) && gBattleActorGlobalFlag.skill_activated_astra)
-        decrease += DAMAGE_DECREASE(50);
-#endif
-
-#if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
-    if (BattleSkillTester(defender, SID_DragonSkin))
-    {
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-        decrease += DAMAGE_DECREASE(50);
-    }
-#endif
-
-#if (defined(SID_KeenFighter) && (COMMON_SKILL_VALID(SID_KeenFighter)))
-    if (BattleSkillTester(defender, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
-    {
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-        decrease += DAMAGE_DECREASE(50);
-    }
-#endif
-
-#if defined(SID_GuardBearing) && (COMMON_SKILL_VALID(SID_GuardBearing))
-    if (BattleSkillTester(defender, SID_GuardBearing))
-    {
-        if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) &&
-            act_flags->round_cnt_hit == 1 &&
-            !CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
-            SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
-            decrease += DAMAGE_DECREASE(50);
-        }
-    }
-#endif
-
-    if (crit_atk)
-    {
-#if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
-        if (BattleSkillTester(defender, SID_Gambit) && gBattleStats.range == 1)
-            decrease += DAMAGE_DECREASE(50);
-#endif
-
-#if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
-        if (BattleSkillTester(defender, SID_MagicGambit) && gBattleStats.range > 1)
-            decrease += DAMAGE_DECREASE(50);
-#endif
-    }
-    else
-    {
-#if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
-        if (BattleSkillTester(defender, SID_BeastAssault))
-            decrease += DAMAGE_DECREASE(50);
-#endif
-    }
-
-#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-    if (BattleSkillTester(defender, SID_Spurn))
-    {
-        int _diff;
-        
-        _diff = defender->battleSpeed - attacker->battleSpeed;
-        LIMIT_AREA(_diff, 0, 10);
-
-        decrease += DAMAGE_DECREASE(_diff * 4);
-    }
-#endif
-
-#if (defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido)))
-    if (BattleSkillTester(defender, SID_Bushido))
-    {
-        int _diff;
-        
-        _diff = defender->battleSpeed - attacker->battleSpeed;
-        LIMIT_AREA(_diff, 0, 10);
-
-        decrease += DAMAGE_DECREASE(_diff * 4);
-    }
-#endif
-
-#if (defined(SID_DragonWall) && (COMMON_SKILL_VALID(SID_DragonWall)))
-    if (BattleSkillTester(defender, SID_DragonWall))
-    {
-        int _diff;
-        
-        _diff = defender->unit.res - attacker->unit.res;
-        LIMIT_AREA(_diff, 0, 10);
-
-        decrease += DAMAGE_DECREASE(_diff * 4);
-    }
-#endif
-
-#if (defined(SID_BlueLionRule) && (COMMON_SKILL_VALID(SID_BlueLionRule)))
-    if (BattleSkillTester(defender, SID_BlueLionRule))
-    {
-        int _diff;
-        
-        _diff = defender->unit.def - attacker->unit.def;
-        LIMIT_AREA(_diff, 0, 10);
-
-        decrease += DAMAGE_DECREASE(_diff * 4);
-    }
-#endif
-
-#if (defined(SID_CounterRoar) && (COMMON_SKILL_VALID(SID_CounterRoar)))
-    if (BattleSkillTester(defender, SID_CounterRoar))
-    {
-        if (act_flags->round_cnt_hit == 1)
-            decrease += DAMAGE_DECREASE(30);
-        else
-            decrease += DAMAGE_DECREASE(70);
-    }
-#endif
-
-#if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
-    if (BattleSkillTester(defender, SID_DragonWarth) && tar_flags->round_cnt_hit == 1)
-        decrease += DAMAGE_DECREASE(20);
-#endif
-
-#if (defined(SID_CrusaderWard) && (COMMON_SKILL_VALID(SID_CrusaderWard)))
-    if (BattleSkillTester(defender, SID_CrusaderWard) &&
-        tar_flags->round_cnt_hit == 1 &&
-        gBattleStats.range > 1)
-        decrease += DAMAGE_DECREASE(80);
-#endif
-
-    /**
-     * Step5: Calculate real damage
-     */
-    real_damage = CalcBattleRealDamage(attacker, defender);
-    if (real_damage > 0 && gBattleStats.config & BATTLE_CONFIG_REAL)
-        TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
-
-    /**
-     * Step6: Calculate result
-     */
-    {
-        u32 dividend, divisor, quotient;
-
-        dividend = damage_base * increase * crit_correction * 0x100;
-        divisor  = 100 * 100 * decrease;
-
-        quotient = DIV_ROUND_CLOSEST(dividend, divisor);
-        Debugf("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
-        result = quotient;
-    }
-
-    if (result == 0 && damage_base > 0)
-        result = 1; // at least 1 damage left.
-
-    result += real_damage;
-
-    Printf("[round %d] dmg=%d: base=%d (atk=%d, def=%d, cor=%d), inc=%d, crt=%d, dec=%d, real=%d",
-                    GetBattleHitRound(gBattleHitIterator), result, damage_base,
-                    attack, defense, correction, increase, crit_correction, decrease, real_damage);
-
-    if (result > BATTLE_MAX_DAMAGE)
-        result = BATTLE_MAX_DAMAGE;
-
-    return result;
-}
-
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     gBattleStats.damage = 0;
@@ -537,8 +80,11 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
     if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
     {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-        if (CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, 30 + attacker->unit.lck))
+        if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
+            CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
+        {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
+        }
         else
         {
             RegisterHitCnt(attacker, true);
@@ -554,11 +100,13 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 
     RegisterHitCnt(attacker, false);
 
-    /* Judge whether in combat-art attack */
-    if (!!(gBattleStats.config & BATTLE_CONFIG_REAL) && attacker == &gBattleActor && COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
-        TriggerKtutorial(KTUTORIAL_COMBATART_MENU);
-
     gBattleStats.damage = BattleHit_CalcDamage(attacker, defender);
+
+    if (gBattleStats.config & BATTLE_CONFIG_REAL)
+    {
+        if (gDmg.real_damage > 0)
+            TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
+    }
 
     BattleCheckPetrify(attacker, defender);
 
@@ -566,30 +114,31 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         attacker->nonZeroDamage = TRUE;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerateHitEffects);
 void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int debuff;
-    bool weapon_cost;
-
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
         if (BattleSkillTester(attacker, SID_Discipline))
             attacker->wexpMultiplier += 2;
         else
             attacker->wexpMultiplier++;
-
 #else
         attacker->wexpMultiplier++;
 #endif
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
     {
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
+        if (CheckBattleHpHalve(attacker, defender))
+        {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
+            gBattleStats.damage = defender->unit.curHP / 2;
+        }
 
-        if ((GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL) && (BattleRoll1RN(31 - attacker->unit.lck, FALSE)))
+        if (CheckDevilAttack(attacker, defender))
         {
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+            if (gBattleStats.damage > attacker->unit.curHP)
+                gBattleStats.damage = attacker->unit.curHP;
 
             attacker->unit.curHP -= gBattleStats.damage;
 
@@ -612,7 +161,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 }
             }
 #endif
-
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)
@@ -620,7 +168,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         }
 
 #ifdef CHAX
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN || CheckSkillHpDrain(attacker, defender))
+        if (CheckBattleHpDrain(attacker, defender))
 #else
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 #endif
@@ -633,179 +181,15 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
         }
 
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_PETRIFY)
-        {
-            switch (gPlaySt.faction) {
-            case FACTION_BLUE:
-                if (UNIT_FACTION(&defender->unit) == FACTION_BLUE)
-                    defender->statusOut = UNIT_STATUS_13;
-                else
-                    defender->statusOut = UNIT_STATUS_PETRIFY;
-                break;
-
-            case FACTION_RED:
-                if (UNIT_FACTION(&defender->unit) == FACTION_RED)
-                    defender->statusOut = UNIT_STATUS_13;
-                else
-                    defender->statusOut = UNIT_STATUS_PETRIFY;
-                break;
-
-            case FACTION_GREEN:
-                if (UNIT_FACTION(&defender->unit) == FACTION_GREEN)
-                    defender->statusOut = UNIT_STATUS_13;
-                else
-                    defender->statusOut = UNIT_STATUS_PETRIFY;
-                break;
-            }
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
-        }
-        else if (gBattleTemporaryFlag.skill_activated_dead_eye)
-        {
-            defender->statusOut = UNIT_STATUS_SLEEP;
-        }
-        else if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON ||
-#if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
-            BattleSkillTester(attacker, SID_PoisonPoint)
-#else
-            0
-#endif
-        )
-        {
-            defender->statusOut = UNIT_STATUS_POISON;
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
-
-            // "Ungray" defender if it was petrified (as it won't be anymore)
-            debuff = GetUnitStatusIndex(&defender->unit);
-            if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
-                defender->unit.state = defender->unit.state &~ US_UNSELECTABLE;
-        }
+        BattleHit_InjectNegativeStatus(attacker, defender);
     }
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
 
-    /**
-     * Consume enemy weapons
-     */
-#if (defined(SID_Corrosion) && (COMMON_SKILL_VALID(SID_Corrosion)))
-    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) && CheckBattleSkillActivate(attacker, defender, SID_Corrosion, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
-        int cost = attacker->levelPrevious;
-    
-        while (cost-- > 0)
-        {
-            u16 weapon = GetItemAfterUse(defender->weapon);
-            defender->weapon = weapon;
-
-            if (!weapon)
-                break;
-        }
-
-        if (!defender->weapon)
-            defender->weaponBroke = TRUE;
-    }
-#endif
-
-    /**
-     * Consumes the durability of the own weapon
-     */
-    weapon_cost = false;
-    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
-        weapon_cost = true;
-    else if (attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
-        weapon_cost = true;
-
-#if defined(SID_Armsthrift) && (COMMON_SKILL_VALID(SID_Armsthrift))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Armsthrift, attacker->unit.lck))
-    {
-        weapon_cost = false;
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Armsthrift);
-    }
-#endif
-
-    if (weapon_cost)
-    {
-#ifdef CHAX
-        /* Check on combat-art */
-        int cost = 1;
-        if (attacker == &gBattleActor)
-        {
-            int cid = GetCombatArtInForce(&attacker->unit);
-            if (COMBART_VALID(cid) && gpCombatArtInfos[cid].cost > 0)
-                cost = gpCombatArtInfos[cid].cost;
-        }
-
-        while (cost-- > 0)
-        {
-            u16 weapon = GetItemAfterUse(attacker->weapon);
-            attacker->weapon = weapon;
-
-            if (!weapon)
-                break;
-        }
-#else
-        attacker->weapon = GetItemAfterUse(attacker->weapon);
-#endif
-        if (!attacker->weapon)
-            attacker->weaponBroke = TRUE;
-    }
+    BattleHit_ConsumeWeapon(attacker, defender);
 }
 
-STATIC_DECLAR bool InoriCheck(struct BattleUnit * attacker, struct BattleUnit * defender)
-{
-#if (defined(SID_Mercy) && (COMMON_SKILL_VALID(SID_Mercy)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Mercy, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Mercy);
-        return true;
-    }
-#endif
-
-#if (defined(SID_Inori) && (COMMON_SKILL_VALID(SID_Inori)))
-    if (CheckBattleSkillActivate(defender, attacker, SID_Inori, defender->unit.lck))
-    {
-        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Inori);
-        return true;
-    }
-#endif
-
-#if (defined(SID_LEGEND_InoriAtk) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAtk)))
-    if (CheckBattleSkillActivate(defender, attacker, SID_LEGEND_InoriAtk, 100))
-    {
-        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAtk) == 0)
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriAtk);
-            return true;
-        }
-    }
-#endif
-
-#if (defined(SID_LEGEND_InoriAvo) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAvo)))
-    if (CheckBattleSkillActivate(defender, attacker, SID_LEGEND_InoriAvo, 100))
-    {
-        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriAvo) == 0)
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriAvo);
-            return true;
-        }
-    }
-#endif
-
-#if (defined(SID_LEGEND_InoriDef) && (COMMON_SKILL_VALID(SID_LEGEND_InoriDef)))
-    if (CheckBattleSkillActivate(defender, attacker, SID_LEGEND_InoriDef, 100))
-    {
-        if (TryActivateLegendSkill(&defender->unit, SID_LEGEND_InoriDef) == 0)
-        {
-            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LEGEND_InoriDef);
-            return true;
-        }
-    }
-#endif
-
-    return false;
-}
-
-/* LynJump */
+LYN_REPLACE_CHECK(BattleGenerateHit);
 bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker == &gBattleTarget)
@@ -833,7 +217,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if CHAX
         if (defender->unit.curHP == 0)
         {
-            if (InoriCheck(attacker, defender))
+            if (CheckBattleInori(attacker, defender))
             {
                 gBattleStats.damage = gBattleStats.damage - 1;
                 gBattleHitIterator->hpChange = gBattleStats.damage;
@@ -853,6 +237,14 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if (defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
+#endif
+
+#if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
+            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
+            {
+                struct Unit * unit_tar = &gBattleTarget.unit;
+                unit_tar->state |= US_DROP_ITEM;
+            }
 #endif
             gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
         }

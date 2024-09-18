@@ -32,7 +32,7 @@ STATIC_DECLAR void BKSELfxUpdateAoeSprits(struct BattleForecastProc * proc)
     int i;
     u8 cid = GetCombatArtByTargetSelIndex();
 
-    if (!COMBART_VALID(cid) || !gpCombatArtInfos[cid].aoe_debuff)
+    if (!COMBART_VALID(cid) || !GetCombatArtInfo(cid)->aoe_debuff)
         return;
 
     for (i = 0; i < 5; i++)
@@ -143,7 +143,7 @@ STATIC_DECLAR void DrawBattleForecastContentsVanilla(struct BattleForecastProc *
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawBattleForecastContents);
 void DrawBattleForecastContents(struct BattleForecastProc * proc)
 {
     u8 cid;

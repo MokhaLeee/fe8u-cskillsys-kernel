@@ -16,7 +16,7 @@ with open(sys.argv[2], "r") as fi:
         if line[0] == '/':
             continue
 
-        print(f"{(i + start):02X}={line.split()[0]}")
+        print(f"{(i + start):02X}={line.split()[0][4:]}")
 
         i = i + 1
         if i >= 0xFF:

@@ -1,7 +1,7 @@
+#include "Source/LynJump.event"
 #include "Source/BattleForcast.lyn.event"
 #include "Source/BkselHelpBox.lyn.event"
 #include "Source/RText_.lyn.event"
-#include "Source/LynJump.event"
 
 // #include "data.event"
 

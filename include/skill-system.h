@@ -3,6 +3,8 @@
 #include "common-chax.h"
 #include "efx-anim.h"
 #include "list-verify.h"
+#include "kernel-lib.h"
+#include "constants/event-cmds.h"
 
 #ifndef MAX_SKILL_NUM
 #define MAX_SKILL_NUM 0x3FF
@@ -23,16 +25,19 @@ enum SkillInfoListss
 #define SKILL_INDEX_REAL(sid) ((sid) & 0xFF)
 #define SKILL_INDEX_LIST(sid) (((sid) >> 8) & 0xFF)
 
-#define GENERIC_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
+#define EQUIPE_SKILL_VALID(sid) (sid > 0x000 && sid < 0x0FF)
 #define COMMON_SKILL_VALID(sid) (sid > 0x000 && sid < 0x400)
-
-#define SKILL_ICON(sid) ((2 << 8) + (sid))
 
 /**
  * Generic skills
  */
 #define UNIT_RAM_SKILLS_LEN 7
 #define UNIT_RAM_SKILLS(unit) ((u8 *)((unit)->supports))
+
+#define RAM_SKILL_LEN_EXT (                                             \
+    gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN    \
+        ? gpKernelDesigerConfig->max_equipable_skill                    \
+        : UNIT_RAM_SKILLS_LEN)
 
 extern u16 const * const gpConstSkillTable_Person;
 extern u16 const * const gpConstSkillTable_Job;
@@ -46,10 +51,10 @@ struct SkillInfo {
 
 extern struct SkillInfo const * const gpSkillInfos;
 
-const u8 * GetSkillIcon_Generic(const u8 sid);
-const u8 * GetSkillIcon_Person(const u8 sid);
-const u8 * GetSkillIcon_Job(const u8 sid);
-const u8 * GetSkillIcon_Item(const u8 sid);
+const u8 * GetSkillIcon1(const u8 sid);
+const u8 * GetSkillIcon2(const u8 sid);
+const u8 * GetSkillIcon3(const u8 sid);
+const u8 * GetSkillIcon4(const u8 sid);
 
 u16 GetSkillDescMsg(const u16 sid);
 u16 GetSkillNameMsg(const u16 sid);
@@ -74,6 +79,9 @@ struct SkillList {
 extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
 #define GetUnitSkillList _GetUnitSkillList
 
+void GenerateSkillListExt(struct Unit * unit, struct SkillList * list);
+void ForceUpdateUnitSkillList(struct Unit * unit);
+void DisableUnitSkilLList(struct Unit * unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */
@@ -106,12 +114,6 @@ extern const struct SkillPreloadPConf gSkillPreloadPData[0x100];
 extern struct SkillPreloadJConf const * const gpSkillPreloadJData;
 extern struct SkillPreloadPConf const * const gpSkillPreloadPData;
 
-struct SkillAnimInfo {
-    u8 aid;
-    u8 priority;
-    u16 sfx;
-};
-
 enum SkillAnimPriorityConfig {
     EFX_PRIORITY_LOW = 0x1,
     EFX_PRIORITY_NORMAL,
@@ -119,20 +121,21 @@ enum SkillAnimPriorityConfig {
     EFX_PRIORITY_HIGHHIGH,
 };
 
-extern struct SkillAnimInfo const * const gpSkillAnimInfos;
-
-int GetEfxSkillIndex(const u16 sid);
-int GetEfxSkillPriority(const u16 sid);
-int GetEfxSkillSfx(const u16 sid);
-
-/* Efx skill */
-extern struct EfxAnimConf const * const gEfxSkillAnims[0x100];
+extern u8 const * const gpEfxSkillAnimPriority;
 extern struct EfxAnimConf const * const * const gpEfxSkillAnims;
-const struct EfxAnimConf * GetEfxSkillConf(const u8 aid);
+
+int GetEfxSkillPriority(const u16 sid);
 
 /**
  * Skill mapanim
  */
+enum mapanimskillfx_idx {
+    MAPANIMFX_CHR_L = 0x19C,
+    MAPANIMFX_CHR_R = 0x19E,
+
+    MAPANIMFX_PAL = 4,
+};
+
 struct ProcMapAnimSkillfx {
     PROC_HEADER;
 
@@ -142,67 +145,89 @@ struct ProcMapAnimSkillfx {
     int x, y;
 };
 
+extern u8 const * const gpImg_MapAnimSKILL;
 extern const struct ProcCmd ProcScr_MapAnimSkillfx[];
+
+void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent);
+bool SkillMapAnimMiniExists(void);
+
+void NewMuSkillAnimOnActiveUnit(u16 sid, void (* callback1)(ProcPtr proc), void (* callback2)(ProcPtr proc));
+bool MuSkillAnimExists(void);
+
+extern const EventScr EventScr_MuSkillAnim[];
 
 /**
  * Event scripts
  */
 enum EventSkillSubOps {
     EVSUBCMD_ADD_SKILL = 1,
+    EVSUBCMD_ADD_SKILL_ACTIVE,
     EVSUBCMD_ADD_SKILL_AT,
     EVSUBCMD_ADD_SKILL_SC,
 
     EVSUBCMD_REMOVE_SKILL,
+    EVSUBCMD_REMOVE_SKILL_ACTIVE,
     EVSUBCMD_REMOVE_SKILL_AT,
     EVSUBCMD_REMOVE_SKILL_SC,
 };
 
 #define Evt_AddSkill(sid, pid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL, sid), _EvtParams2(pid, 0),
+#define Evt_AddSkillActive(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL_ACTIVE, sid), _EvtParams2(0, 0),
 #define Evt_AddSkillAt(sid, x, y) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL_AT, sid), _EvtParams2(x, y),
 #define Evt_AddSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL_SC, sid), _EvtParams2(0, 0),
 
 #define Evt_RemoveSkill(sid, pid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL, sid), _EvtParams2(pid, 0),
+#define Evt_RemoveSkillActive(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_ACTIVE, sid), _EvtParams2(0, 0),
 #define Evt_RemoveSkillAt(sid, x, y) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_AT, sid), _EvtParams2(x, y),
 #define Evt_RemoveSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_SC, sid), _EvtParams2(0, 0),
+
+/**
+ * Skill menu
+ */
+#define UNIT_MENU_SKILL_AMOUNT 4
+extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
+extern struct MenuItemDef const * const gpSkillMenuInfos;
+#define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
+
+u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_Usability(const struct MenuItemDef * self, int number);
+int MenuSkills_OnDraw(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_Idle(struct MenuProc * menu, struct MenuItemProc * item);
+int MenuSkills_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
+
+#define MENU_SKILL_INDEX(menu_item) ((menu_item)->helpMsgId) /* We use rtext msg as index */
+#define IS_SKILL_MENU_ITEM(menu_item) ((menu_item)->isAvailable == MenuSkills_Usability)
+
+/**
+ * Skill action
+ */
+typedef bool (* SkillActionFunc_t)(ProcPtr);
+extern SkillActionFunc_t const * const gpSkillActionFuncTable;
+
+/**
+ * Skill scroll
+ */
+char * GetSkillScrollItemName(int item);
+int GetSkillScrollItemDescId(int item);
+int GetSkillScrollItemUseDescId(int item);
+int GetSkillScrollItemIconId(int item);
+
+extern const struct MenuDef RemoveSkillMenuDef;
 
 /**
  * Miscs
  */
 
-enum common_misc_skill_status_idx {
-    SKILL_US_POW,
-    SKILL_US_MAG,
-    SKILL_US_SKL,
-    SKILL_US_SPD,
-    SKILL_US_LCK,
-    SKILL_US_DEF,
-    SKILL_US_RES,
-    SKILL_US_MOV,
-
-    SKILL_US_MAX
+struct SkillExtraInfo {
+    s8 priv[4];
 };
-
-enum common_misc_skill_battle_status_idx {
-    SKILL_BS_ATK,
-    SKILL_BS_DEF,
-    SKILL_BS_HIT,
-    SKILL_BS_AVO,
-    SKILL_BS_CRT,
-    SKILL_BS_SIL,
-    SKILL_BS_DOG,
-
-    SKILL_BS_MAX
-};
-
-extern u8 const * const gpStatusConf_BonusSkills;
-extern u8 const * const gpStatusConf_DefiantSkills;
-extern u8 const * const gpStatusConf_luckySevenSkill;
-extern u8 const * const gpStatusConf_PushSkills;
-
-struct SkillMiscConf {
-    u8 Bonus_Fury, Bonus_FuryPlus;
-};
-extern struct SkillMiscConf const * const gpSkillMiscConf;
+extern struct SkillExtraInfo const * const gpSkillExtraInfo;
+#define SKILL_EFF0(sid) (gpSkillExtraInfo[sid].priv[0])
+#define SKILL_EFF1(sid) (gpSkillExtraInfo[sid].priv[1])
+#define SKILL_EFF2(sid) (gpSkillExtraInfo[sid].priv[2])
+#define SKILL_EFF3(sid) (gpSkillExtraInfo[sid].priv[3])
 
 bool IsSkillLearned(struct Unit * unit, const u16 sid);
 void LearnSkill(struct Unit * unit, const u16 sid);
@@ -212,6 +237,8 @@ void SaveUnitLearnedSkillLists(u8 * dst, const u32 size);   /* SaveData */
 void LoadUnitLearnedSkillLists(u8 * src, const u32 size);   /* LoadData */
 
 void UnitAutoLoadSkills(struct Unit * unit);
+int GetSkillSlot(struct Unit * unit, int sid);
+int GetFreeSkillSlot(struct Unit * unit);
 bool CanRemoveSkill(struct Unit * unit, const u16 sid);
 int RemoveSkill(struct Unit * unit, const u16 sid);
 int AddSkill(struct Unit * unit, const u16 sid);
@@ -221,11 +248,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid);
 /**
  * External MiscSkillEffects
  */
-u8 DanceCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 StealCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SupplyUsabilityRework(const struct MenuItemDef * def, int number);
-u8 PickCommandUsabilityRework(const struct MenuItemDef * def, int number);
-u8 SummonCommandUsabilityRework(const struct MenuItemDef * def, int number);
+bool GetTeleportationRandomPosition(struct Unit * unit, struct Vec2 * out);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {
@@ -247,3 +270,40 @@ void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit *
 int SpdGetterLegendSkills(int status, struct Unit * unit);
 int DefGetterLegendSkills(int status, struct Unit * unit);
 int ResGetterLegendSkills(int status, struct Unit * unit);
+
+/* Menu skills */
+u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);
+u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Teleportation_Usability(const struct MenuItemDef * def, int number);
+u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 LightRune_Usability(const struct MenuItemDef * def, int number);
+u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Mine_Usability(const struct MenuItemDef * def, int number);
+u8 Mine_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
+u8 Rally_Usability(const struct MenuItemDef * def, int number);
+u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+int GoddessDance_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int GoddessDance_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
+u8 GoddessDance_Usability(const struct MenuItemDef * def, int number);
+u8 GoddessDance_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+int Stride_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int Stride_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
+u8 Stride_Usability(const struct MenuItemDef * def, int number);
+u8 Stride_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Swarp_Usability(const struct MenuItemDef * def, int number);
+u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Blacksmith_Usability(const struct MenuItemDef * def, int number);
+u8 Blacksmith_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+
+/* Skill actions */
+bool Action_HealingFocus(ProcPtr proc);
+bool Action_Teleportation(ProcPtr parent);
+bool Action_LightRune(ProcPtr parent);
+bool Action_Mine(ProcPtr parent);
+bool Action_Rally(ProcPtr parent);
+bool Action_GoddessDance(ProcPtr parent);
+bool Action_Stride(ProcPtr parent);
+bool Action_Swarp(ProcPtr parent);
+bool Action_Blacksmith(ProcPtr parent);

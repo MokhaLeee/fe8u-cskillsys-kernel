@@ -4,7 +4,7 @@ typedef void (* BeginActionFunc_t)(struct Unit * unit);
 // extern const BeginActionFunc_t gBeginActionHooks[];
 extern BeginActionFunc_t const * const gpBeginActionHooks;
 
-/* LynJump */
+LYN_REPLACE_CHECK(UnitBeginAction);
 void UnitBeginAction(struct Unit * unit)
 {
     gActiveUnit = unit;

@@ -49,7 +49,7 @@ static s16 const * const frams_config[] = {
     frames_fast
 };
 
-/* LynJump */
+LYN_REPLACE_CHECK(EfxStatusUnitMain);
 void EfxStatusUnitMain(struct ProcEfxStatusUnit * proc)
 {
     int ret, speed;

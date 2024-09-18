@@ -1,15 +1,16 @@
 #ifndef COMBAT_ART_INSTALLED
 #define COMBAT_ART_INSTALLED
 
+#include "Source/LynJump.event"
 #include "Source/CombatArtList.lyn.event"
 #include "Source/CombatArtStatus.lyn.event"
 #include "Source/SelectTarget.lyn.event"
 #include "Source/PostActionHooks.lyn.event"
 #include "Source/MiscHooks.lyn.event"
 #include "Source/EfxCombatArtAnim.lyn.event"
-#include "Source/LynJump.event"
 
 #include "BKSELfx/BKSELfx.event"
+#include "HelpBoxFix/HelpBoxFix.event"
 
 #include "CombatArtMenu/ActionMenu.lyn.event"
 #include "CombatArtMenu/ItemSelectMenu.lyn.event"

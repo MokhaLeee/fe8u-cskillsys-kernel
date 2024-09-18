@@ -3,18 +3,13 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int StatusGetterPadFunc(int status, struct Unit * unit)
-{
-    return status;
-}
-
 int StatusGetterCheckCpas(int status, struct Unit * unit)
 {
     LIMIT_AREA(status, 0, 127);
     return status;
 }
 
-/* Vanilla hooks */
+LYN_REPLACE_CHECK(GetUnitMagBy2Range);
 int GetUnitMagBy2Range(struct Unit * unit)
 {
     int range;
@@ -30,6 +25,7 @@ int GetUnitMagBy2Range(struct Unit * unit)
     return range;
 }
 
+LYN_REPLACE_CHECK(GetUnitCurrentHp);
 int GetUnitCurrentHp(struct Unit * unit)
 {
     if (unit->curHP > GetUnitMaxHp(unit))

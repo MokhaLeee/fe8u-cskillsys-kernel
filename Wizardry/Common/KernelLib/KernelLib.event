@@ -6,6 +6,8 @@
 #include "Source/banim.lyn.event"
 #include "Source/event-call.lyn.event"
 #include "Source/hook-proc.lyn.event"
+#include "Source/mapanim.lyn.event"
+#include "Source/pad.lyn.event"
 //#include "Source/UnitList.lyn.event"
 // #include "data.event"
 

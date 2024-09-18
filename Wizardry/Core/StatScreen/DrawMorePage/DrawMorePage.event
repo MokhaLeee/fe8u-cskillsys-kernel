@@ -1,6 +1,3 @@
-#include "Source/DrawMorePage.lyn.event"
-#include "Source/LynJump.event"
-
 PUSH
     ORG $88690
         BYTE 4 //make 4 pages
@@ -26,5 +23,8 @@ PUSH
      * DisplayPageNameSprite
      */
 POP
+
+#include "Source/LynJump.event"
+#include "Source/DrawMorePage.lyn.event"
 
 // #include "data.event"

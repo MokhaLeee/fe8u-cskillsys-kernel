@@ -4,7 +4,6 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-/* LynJump! */
 int StatusGetterTest(int status, struct Unit * unit)
 {
     Printf("%s: Unit got +1 bonus!", __func__);

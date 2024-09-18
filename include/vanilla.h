@@ -9,6 +9,63 @@ extern struct Font * gActiveFont;
 struct Vec1  { s8 x, y; };
 struct Vec1u { u8 x, y; };
 
+struct CharacterEndingProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 29 */ u8 _pad[0x2E - 0x29];
+    /* 2E */ u16 unk_2e;
+    /* 30 */ struct CharacterEndingEnt* unk_30;
+    /* 34 */ struct CharacterEndingEnt* unk_34;
+    /* 38 */ struct Unit* unitA;
+    /* 3C */ struct Unit* unitB;
+    /* 40 */ u32 unk_40[8]; // flags for characters who have already been shown in an ending
+};
+
+struct EndingBattleDisplayProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct Unit* units[2];
+    /* 34 */ int unk_34;
+    /* 38 */ struct CharacterEndingEnt* pCharacterEnding;
+    /* 3C */ u16 battleAmounts[2];
+    /* 40 */ u16 winAmounts[2];
+    /* 44 */ u16 lossAmounts[2];
+};
+
+struct EndingBattleTextProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct CharacterEndingEnt* pCharacterEnding;
+    /* 30 */ struct Unit* unitA;
+    /* 34 */ struct Unit* unitB;
+    /* 38 */ u32 unk_38;
+    /* 3C */ int pauseTimer;
+    /* 40 */ int defaultPauseDelay;
+    /* 44 */ const char* str;
+    /* 48 */ struct Text* Text;
+};
+
+struct FinScreenProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 29 */ u8 _pad[0x4c-0x29];
+    /* 4C */ u16 unk_4c;
+    /* 4E */ u8 _pad2[0x58-0x4e];
+    /* 58 */ int unk_58;
+};
+
+struct EndingTurnRecordProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ int unk_2c;
+    /* 30 */ int unk_30;
+    /* 34 */ int unk_34;
+    /* 38 */ u8 unk_38;
+    /* 39 */ u8 unk_39;
+    /* 3A */ u8 _pad[0x4c-0x3a];
+    /* 4C */ s16 unk_4c;
+};
+
 struct UnknownBMUSAilmentProc {
     PROC_HEADER;
 
@@ -166,3 +223,55 @@ static inline u8 GetTerrainAtCursor()
 }
 
 bool CanShowUnitStatScreen(struct Unit * unit);
+
+#define EVT_CMD_LO(cmd) (((cmd) & 0x0000FFFF))
+#define EVT_CMD_HI(cmd) (((cmd) & 0xFFFF0000) >> 16)
+#define EVT_CMD_B1(cmd) (((cmd) & 0x000000FF))
+#define EVT_CMD_B2(cmd) (((cmd) & 0x0000FF00) >> 8)
+#define EVT_CMD_B3(cmd) (((cmd) & 0x00FF0000) >> 16)
+#define EVT_CMD_B4(cmd) (((cmd) & 0xFF000000) >> 24)
+
+extern struct EventListCmdInfo CONST_DATA gEventListCmdInfoTable[];
+
+struct EvCheck03 {
+    u32 unk0;
+    u32 script;
+    u8 pidA;
+    u8 pidB;
+    u16 fillerA;
+    u16 unkC;
+    u16 unkE;
+};
+
+bool CanUnitCrossTerrain(struct Unit * unit, int terrain);
+extern CONST_DATA struct MenuItemDef gUnitActionMenuItems[];
+void StartMineAnim(ProcPtr, int, int);
+void AddUnitToTargetListIfAllied(struct Unit * unit);
+
+extern CONST_DATA AnimScr AnimScr_EkrPopup[2];
+
+struct Struct02013648 {
+    /* 00 */ struct Font font;
+    /* 18 */ struct Text th[16];
+};
+
+extern struct Struct02013648 gUnknown_02013648;
+
+int GetUnitBestWRankType(struct Unit * unit);
+u16 GetChapterDeathCount(void);
+char * GetPidDefeatedEndingString(int pid);
+
+void sub_80B6CA8(struct EndingBattleDisplayProc * proc);
+
+bool CheckTutorialEvent(u8 type);
+void MMB_DrawStatusText(s16 * buffer, struct Unit * unit);
+void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc * proc);
+void sub_803B678(struct Unit * unit, u16 item);
+void SetupUnitHealStaffAIFlags(struct Unit *, u16);
+void DisplayPageNameSprite(int pageid);
+void sub_808A200(const struct HelpBoxInfo * info);
+void HelpBoxSetupstringLines(struct ProcHelpBoxIntro * proc);
+void HelpBoxDrawstring(struct ProcHelpBoxIntro * proc);
+void CpPerform_Cleanup(struct CpPerformProc * proc);
+void CpPerform_PerformAction(struct CpPerformProc * proc);
+void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc);

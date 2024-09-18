@@ -1,0 +1,15 @@
+#include "Source/SkillScroll.lyn.event"
+#include "Source/RemoveSkillMenu.lyn.event"
+
+PUSH
+    ORG CONFIG_PR_ITEM_TABLE + CONFIG_ITEM_INDEX_SKILL_SCROLL * 0x24
+        #include "Source/ItemData_Scroll.lyn.event"
+POP
+
+#include "Source/ItemSysJpt.lyn.event"
+
+InjectItemPrepUsabilityJpt(CONFIG_ITEM_INDEX_SKILL_SCROLL, ItemUsbility_SkillScroll)
+InjectItemPrepEffectJpt(CONFIG_ITEM_INDEX_SKILL_SCROLL, PrepItemEffect_SkillScroll)
+InjectItemUsabilityJpt(CONFIG_ITEM_INDEX_SKILL_SCROLL, ItemUsbilityJpt_SkillScroll)
+InjectItemEffectJpt(CONFIG_ITEM_INDEX_SKILL_SCROLL, ItemUseEffectJpt_SkillScroll)
+InjectItemActionJpt(CONFIG_ITEM_INDEX_SKILL_SCROLL, ItemUseActionJpt_SkillScroll)

@@ -3,6 +3,13 @@
 
 #include "debug-kit.h"
 
+struct BattleStatus {
+    s16 atk, def, as, hit, avo, crit, dodge, silencer;
+};
+
+extern struct BattleStatus BattleSysBattleStatusBackup[2];
+#define BattleUnitOriginalStatus(bu) (((bu) == &gBattleTarget) ? &BattleSysBattleStatusBackup[1] : &BattleSysBattleStatusBackup[0])
+
 /* WTA bonus */
 struct WeaponTriangleConf {
     s8 wtype_a;
@@ -12,7 +19,6 @@ struct WeaponTriangleConf {
 
     bool is_buff;
     u16 sid;
-
 
     s8 bonus_atk;
     s8 bonus_def;
@@ -76,6 +82,9 @@ void ClearBattleGlobalFlags(void);
 void RegisterHitCnt(struct BattleUnit * bu, bool miss);
 
 extern struct {
+    u32 nihil_on_actor  : 1;
+    u32 nihil_on_target : 1;
+
     u32 desperation_order : 1;
     u32 vantage_order : 1;
     u32 tar_force_twice_order : 1;
@@ -83,6 +92,7 @@ extern struct {
 
     u32 skill_activated_sure_shoot : 1;
     u32 skill_activated_dead_eye : 1;
+    u32 skill_activated_aether : 1;
 } gBattleTemporaryFlag;
 
 enum BattleOrderSkills_Type {
@@ -100,6 +110,7 @@ extern u16 BattleOrderSkills[BORDER_MAX];
 /* Battle skill act */
 bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
 
+int GetWeaponCost(struct BattleUnit * bu, u16 item);
 static inline int GetItemFormSlot(struct Unit * unit, int slot)
 {
     switch (slot) {
@@ -146,7 +157,7 @@ enum {
     UNWIND_DOUBLE_TAR = 1 << 3,
 };
 
-extern const u8 BattleUnwindConfig[14][4];
+extern const u8 BattleUnwindConfig[16][4];
 
 struct EfxSkillQueue {
     u8 cur, max;
@@ -165,3 +176,53 @@ extern const u16 _DmgDecreaseRef[100];
 #define DAMAGE_DECREASE(rate) _DmgDecreaseRef[rate]
 
 void PreBattleGenerateHook(void);
+
+/**
+ * BattleHitAttr
+ */
+bool CheckBattleHpDrain(struct BattleUnit * attacker, struct BattleUnit * defender);
+bool CheckBattleHpHalve(struct BattleUnit * attacker, struct BattleUnit * defender);
+bool CheckDevilAttack(struct BattleUnit * attacker, struct BattleUnit * defender);
+bool CheckBattleInori(struct BattleUnit * attacker, struct BattleUnit * defender);
+void BattleHit_InjectNegativeStatus(struct BattleUnit * attacker, struct BattleUnit * defender);
+void BattleHit_ConsumeWeapon(struct BattleUnit * attacker, struct BattleUnit * defender);
+
+/**
+ * BattleDamage
+ */
+extern struct {
+    bool8 crit_atk;
+    int damage_base, attack, defense;
+    int correction, real_damage, increase, decrease, crit_correction;
+} gDmg;
+
+int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defender);
+
+/**
+ * BattleUI
+ */
+void ModifyBattleStatusForUI(void);
+
+/**
+ * Leadership
+ */
+struct LeaderShipConf {
+    bool8 en;
+    bool8 cancel_out_opposing;
+    struct {
+        u8 hit, avo;
+    } ally_bonus, enemy_bonus, npc_bonus;
+};
+
+extern struct LeaderShipConf const * const gpLeaderShipConf;
+
+extern u8 const * const gpLeaderShipPConf;
+extern u8 const * const gpLeaderShipJConf;
+
+int GetUnitLeaderShip(struct Unit * unit);
+void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit * target);
+
+/**
+ * Bow2Decrease patch
+ */
+bool CheckWeaponCostForMissedBowAttack(struct BattleUnit * actor);

@@ -2,6 +2,7 @@
 #define GAME_INIT_HOOK_H
 
 ALIGN 4
+#include "source/LynJump.event"
 #include "source/GameInit.lyn.event"
 
 // #include "data.event"

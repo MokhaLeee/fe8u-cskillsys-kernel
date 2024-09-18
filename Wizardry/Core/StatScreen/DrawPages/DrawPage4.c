@@ -1,13 +1,12 @@
 #include "common-chax.h"
 #include "hooks.h"
 #include "stat-screen.h"
+#include "skill-system.h"
 #include "constants/texts.h"
-
-#include "StatScreenInternal.h"
 
 #define PAGE4_PINFO_MAX 8
 
-STATIC_DECLAR void DrawPage4SupportBonus(void)
+static void DrawPage4SupportBonus(void)
 {
     struct SupportBonuses bonuses;
     struct Unit * unit = gStatScreen.unit;
@@ -96,7 +95,7 @@ STATIC_DECLAR void DrawPage4SupportBonus(void)
         bonuses.bonusDodge);
 }
 
-STATIC_DECLAR void DrawPage4SupportPInfo(void)
+static void DrawPage4SupportPInfo(void)
 {
     struct Unit * unit = gStatScreen.unit;
 

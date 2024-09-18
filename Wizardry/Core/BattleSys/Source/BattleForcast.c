@@ -1,9 +1,10 @@
 #include "common-chax.h"
 #include "battle-system.h"
+#include "combat-art.h"
 
 extern const u8 Gfx_BKSEL[12][0x80];
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleForecastHitCountUpdate);
 void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int * usesCounter)
 {
     int i;
@@ -12,15 +13,19 @@ void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int 
 
     for (i = 0; i < count; i++)
     {
+        int _i;
+
         if (*usesCounter <= 0)
             break;
 
         *hitsCounter = *hitsCounter + 1;
-        *usesCounter = *usesCounter - 1;
+
+        for (_i = 0; _i < GetWeaponCost(bu, bu->weapon); _i++)
+            *usesCounter = *usesCounter - 1;
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(InitBattleForecastBattleStats);
 void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
 {
     int usesA = GetItemUses(gBattleActor.weaponBefore);
@@ -53,10 +58,6 @@ void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
         if (IsItemEffectiveAgainst(gBattleTarget.weaponBefore, &gBattleActor.unit))
             proc->isEffectiveB = true;
     }
-
-    /* Fix on real dmg */
-    gBattleActor.battleAttack += CalcBattleRealDamage(&gBattleActor, &gBattleTarget);
-    gBattleTarget.battleAttack += CalcBattleRealDamage(&gBattleTarget, &gBattleActor);
 
     /* Prepare GFX here */
     switch (proc->hitCountA) {

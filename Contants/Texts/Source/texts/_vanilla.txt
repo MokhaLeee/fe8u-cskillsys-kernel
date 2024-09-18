@@ -1,0 +1,11 @@
+#0x578
+Skills[X]
+
+#0x580
+Manage your units' skills[X]
+
+#0x51E
+Ddg[X]
+
+#0x484
+Incease Str +2[X]

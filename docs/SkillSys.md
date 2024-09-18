@@ -98,8 +98,6 @@ If you want to develop a new skill, you need to add such basic infos by the foll
 
 Add skill index to **index preconfig** files, which is depend on your selection which categories to place. Kernel may auto generate a unique skill index and put them to **include/constants/skills.h**.
 
-It should be noted that each category can only accommodate **254** skills. If there are too many skills in a category, the skills that exceed the limit will be considered as illegal and will not take effect.
-
 To avoid compilation errors, you'd better to add skill index detection on effect routine to fasten the game and avoid potential warnning on compiling:
 
 ```c
@@ -139,28 +137,6 @@ A skill anim need the following components:
 - Anim index
 - Priority
 - Sound index
-
-The skill anim info is stored in `SkillAnimInfos` in kernel which is defined as:
-
-```c
-struct SkillAnimInfo {
-    u8 aid;
-    u8 priority;
-    u16 sfx;
-};
-```
-
-Also depend on your category selection, put your defined anim info to [SkillAnimInfo.c](../Data/SkillSys/SkillAnimInfo.c) to give your skill an efxskill anim effect.
-
-```c
-#if (defined(SID_TEST) && COMMON_SKILL_VALID(SID_TEST))
-    [SID_TEST] = {
-        .aid = EFX_SKILL_DEFAULT,
-        .priority = EFX_PRIORITY_NORMAL,
-        .sfx = 0x3D1,
-    },
-#endif
-```
 
 The common API to register a skill animation is shown as below:
 

@@ -46,19 +46,19 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
     case ITYPE_STAFF:
 #if defined(SID_StaffSavant) && (COMMON_SKILL_VALID(SID_StaffSavant))
         if (SkillTester(unit, SID_StaffSavant))
-            range = range + 1;
+            range = range + SKILL_EFF0(SID_StaffSavant);
 #endif
         break;
 
     case ITYPE_BOW:
 #if defined(SID_RangeBonusBow1) && (COMMON_SKILL_VALID(SID_RangeBonusBow1))
         if (SkillTester(unit, SID_RangeBonusBow1))
-            range = range + 1;
+            range = range + SKILL_EFF0(SID_RangeBonusBow1);
 #endif
 
 #if defined(SID_RangeBonusBow2) && (COMMON_SKILL_VALID(SID_RangeBonusBow2))
         if (SkillTester(unit, SID_RangeBonusBow2))
-            range = range + 2;
+            range = range + SKILL_EFF0(SID_RangeBonusBow2);
 #endif
 
 #if defined(SID_RunningStart) && (COMMON_SKILL_VALID(SID_RunningStart))
@@ -68,7 +68,7 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 
 #if defined(SID_HighGround) && (COMMON_SKILL_VALID(SID_HighGround))
         if (SkillTester(unit, SID_HighGround) && gBmMapTerrain[unit->yPos][unit->xPos] == TERRAIN_FORT)
-            range = range + 2;
+            range = range + SKILL_EFF0(SID_HighGround);
 #endif
         break;
 
@@ -77,17 +77,17 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
     case ITYPE_DARK:
 #if defined(SID_RangeBonusBMag1) && (COMMON_SKILL_VALID(SID_RangeBonusBMag1))
         if (SkillTester(unit, SID_RangeBonusBMag1))
-            range = range + 1;
+            range = range + SKILL_EFF0(SID_RangeBonusBMag1);
 #endif
 
 #if defined(SID_RangeBonusBMag2) && (COMMON_SKILL_VALID(SID_RangeBonusBMag2))
         if (SkillTester(unit, SID_RangeBonusBMag2))
-            range = range + 2;
+            range = range + SKILL_EFF0(SID_RangeBonusBMag2);
 #endif
 
 #if defined(SID_HighGround) && (COMMON_SKILL_VALID(SID_HighGround))
         if (SkillTester(unit, SID_HighGround) && gBmMapTerrain[unit->yPos][unit->xPos] == TERRAIN_FORT)
-            range = range + 2;
+            range = range + SKILL_EFF0(SID_HighGround);
 #endif
         break;
     }

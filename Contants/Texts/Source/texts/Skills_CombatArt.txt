@@ -85,3 +85,24 @@ combat-art: Waning Shot+[X]
 ## MSG_SKILL_COMBAT_HuntersVolley
 H-Volley: Unit get[NL]
 combat-art: H-Volley[X]
+
+## MSG_SKILL_COMBAT_Galeforce
+Galeforce:[NL]
+Art: ATK +3, Move again[NL]
+after defeating enemy.[X]
+
+## MSG_SKILL_COMBAT_Gamble_NAME
+Gamble[X]
+
+## MSG_SKILL_COMBAT_Gamble
+Gamble:[NL]
+Art: A reckless attack with[NL]
+halved hit but doubled crit.[X]
+
+## MSG_SKILL_COMBAT_Detonate_NAME
+Detonate[X]
+
+## MSG_SKILL_COMBAT_Detonate
+Detonate:[NL]
+Art: Strike a powerful pierced[NL]
+blow by sacrificing own weapon[X]

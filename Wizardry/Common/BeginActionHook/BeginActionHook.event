@@ -1,9 +1,10 @@
 #ifndef BEGIN_ACTION_HOOK_INSTALLED
 #define BEGIN_ACTION_HOOK_INSTALLED
 
+#include "Source/LynJump.event"
+
 #include "Source/BeginActionHook.lyn.event"
 #include "Source/usr-func.lyn.event"
-#include "Source/LynJump.event"
 
 /*
  * Hook at function: UnitBeginAction()

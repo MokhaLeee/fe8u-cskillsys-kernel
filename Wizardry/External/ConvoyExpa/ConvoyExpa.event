@@ -1,0 +1,7 @@
+#include "Source/LynJump.event"
+#include "Source/ConvoyExpa.lyn.event"
+
+PUSH
+    ORG $31500
+    jumpToHack(__GetConvoyItemArray)
+POP

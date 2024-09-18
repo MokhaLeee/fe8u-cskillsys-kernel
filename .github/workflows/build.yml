@@ -1,0 +1,60 @@
+name: Build Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  CI-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install deps
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake
+        sudo apt-get install -y re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
+        sudo apt-get install -y python3-pip pkg-config libpng* bsdiff moreutils
+        pip install pyelftools PyInstaller tmx six
+
+    - name: Install DEVKITPRO
+      run: |
+        curl -L -o devkit.gz https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/devkit.gz
+        tar -xzvf devkit.gz -C $HOME/
+
+        echo "DEVKITPRO=$HOME/opt/devkitpro" >> $GITHUB_ENV
+        echo "DEVKITARM=\${DEVKITPRO}/devkitARM" >> $GITHUB_ENV
+        echo "DEVKITPPC=\${DEVKITPRO}/devkitPPC" >> $GITHUB_ENV
+        echo "\${DEVKITPRO}/tools/bin" >> $GITHUB_PATH
+
+    - name: Install submodules
+      run: |
+        git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git Tools/FE-CLib-Mokha
+        git clone https://github.com/StanHash/FE-PyTools.git --recursive Tools/FE-PyTools
+        git clone https://github.com/StanHash/EventAssembler.git --recursive Tools/EventAssembler
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0'
+
+    - name: Build EA
+      run: |
+        cd Tools/EventAssembler && ./build.sh && cd ../..
+
+    - name: Fake generate baserom
+      run: head -c 16M /dev/urandom > fe8.gba
+
+    - name: Debug build
+      run: make -j
+
+    - name: Clean build
+      run: make clean
+
+    - name: Debug remove skill build
+      run: make -j CONFIG_CI_NO_SKILL_TEST=1

@@ -1,9 +1,10 @@
 #include "common-chax.h"
 #include "bwl.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 
 struct LearnedSkillList {
-    u16 data[0x10];
+    u32 data[8]; /* 8 * 32 = 0x100 */
 };
 
 extern struct LearnedSkillList sLearnedSkillPLists[NEW_BWL_ARRAY_NUM];
@@ -21,48 +22,43 @@ void ResetUnitLearnedSkillLists(void)
 /* SaveData */
 void SaveUnitLearnedSkillLists(u8 * dst, const u32 size)
 {
-    size_t _size = size > sizeof(sLearnedSkillPLists) ? sizeof(sLearnedSkillPLists) : size;
-    WriteAndVerifySramFast(sLearnedSkillPLists, dst, _size);
+    Assert(size == sizeof(sLearnedSkillPLists));
+
+    WriteAndVerifySramFast(sLearnedSkillPLists, dst, size);
 }
 
 /* LoadData */
 void LoadUnitLearnedSkillLists(u8 * src, const u32 size)
 {
-    size_t _size = size > sizeof(sLearnedSkillPLists) ? sizeof(sLearnedSkillPLists) : size;
-    ReadSramFast(src, sLearnedSkillPLists, _size);
+    Assert(size == sizeof(sLearnedSkillPLists));
+
+    ReadSramFast(src, sLearnedSkillPLists, size);
 }
 
 bool IsSkillLearned(struct Unit * unit, const u16 sid)
 {
-    u8 lo = (sid & 0x0F);
-    u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
-
-    if (!GENERIC_SKILL_VALID(sid))
-        return false;
-
-    if (pid < NEW_BWL_ARRAY_NUM)
-        return !!(sLearnedSkillPLists[pid].data[hi] & (1 << lo));
+    if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
+        return _BIT_CHK(sLearnedSkillPLists[pid].data, sid);
 
     return false;
 }
 
 void LearnSkill(struct Unit * unit, const u16 sid)
 {
-    u8 lo = (sid & 0x0F);
-    u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
 
-    if (GENERIC_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
-        sLearnedSkillPLists[pid].data[hi] |= 1 << lo;
+    /* Make sure that the enemy is not effective on allies */
+    if (UNIT_FACTION(unit) != FACTION_BLUE)
+        return;
+
+    if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
+        _BIT_SET(sLearnedSkillPLists[pid].data, sid);
 }
 
 void ForgetSkill(struct Unit * unit, const u16 sid)
 {
-    u8 lo = (sid & 0x0F);
-    u8 hi = (sid & 0xF0) >> 4;
     u8 pid = UNIT_CHAR_ID(unit);
-
-    if (GENERIC_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
-        sLearnedSkillPLists[pid].data[hi] &= ~(1 << lo);
+    if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
+        _BIT_CLR(sLearnedSkillPLists[pid].data, sid);
 }

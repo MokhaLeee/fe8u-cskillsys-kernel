@@ -1,6 +1,6 @@
 #include "common-chax.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(CpPerform_MoveCameraOntoTarget);
 void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc)
 {
     struct Unit * unit;

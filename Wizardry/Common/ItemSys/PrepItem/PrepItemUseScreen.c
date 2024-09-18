@@ -1,10 +1,11 @@
 #include "common-chax.h"
 #include "strmag.h"
+#include "lvup.h"
 #include "status-getter.h"
 
 #define LOCAL_TRACE 0
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatLabels);
 void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
 {
     int i;
@@ -99,13 +100,13 @@ void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
     PutTwoSpecialChar(TILEMAP_LOCATED(gBG2TilemapBuffer, 17, 1), 3, 0x24, 0x25);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatBars);
 void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
 {
     int ix, iy, stat_pack[8];
     UnpackUiBarPalette(2);
 
-    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit);
+    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
     stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit);
     stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit);
     stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit);
@@ -135,13 +136,13 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
     BG_EnableSyncByMask(BG0_SYNC_BIT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatValues);
 void DrawPrepScreenItemUseStatValues(struct Unit* unit)
 {
     // HP
     PutNumberOrBlank( 
         TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 3),
-        (GetUnitCurrentHp(unit) == UNIT_MHP_MAX(unit)) 
+        (GetUnitCurrentHp(unit) == KUNIT_MHP_MAX(unit))
             ? TEXT_COLOR_SYSTEM_GREEN
             : TEXT_COLOR_SYSTEM_BLUE,
         GetUnitCurrentHp(unit)
@@ -221,7 +222,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit* unit)
     BG_EnableSyncByMask(BG2_SYNC_BIT);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PrepItemUseBooster_OnInit);
 void PrepItemUseBooster_OnInit(struct ProcPrepItemUseBooster * proc)
 {
     int i, item, msg;

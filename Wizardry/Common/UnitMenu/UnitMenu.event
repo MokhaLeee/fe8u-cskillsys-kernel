@@ -1,13 +1,18 @@
 #ifndef UNIT_MENU
 #define UNIT_MENU
 
+#define pr_UnitActionMenuDef 0x59D1F0
+
+#include "Source/hooks.lyn.event"
 // #include "data.event"
-// #include "Source/UnitMenuRect.event"
 
 PUSH
     // Repoint Unit Menu
     ORG $59D1F8
         POIN gUnitActionMenuItemsRework
+
+    ORG pr_UnitActionMenuDef + 0x20
+        POIN UnitActionMenu_OnHelpBoxRe
 POP
 
 #endif // UNIT_MENU

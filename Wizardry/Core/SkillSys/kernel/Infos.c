@@ -3,19 +3,19 @@
 #include "debug-kit.h"
 #include "constants/gfx.h"
 
-const u8 * _GetSkillIconExt(const u8 sid_real, int list_idx)
+const u8 * _GetSkillIconExt(const u8 lo, int hi)
 {
-    const u8 * icon = gpSkillInfos[sid_real + (list_idx << 8)].icon;
+    const u8 * icon = gpSkillInfos[lo + (hi << 8)].icon;
     if (!icon)
         icon = GFX_SkillIcon_WIP;
 
     return icon;
 }
 
-const u8 * GetSkillIcon_Generic(const u8 sid) { return _GetSkillIconExt(sid, Skill_INFO_GENERIC); }
-const u8 * GetSkillIcon_Person(const u8 sid)  { return _GetSkillIconExt(sid, Skill_INFO_PERSON); }
-const u8 * GetSkillIcon_Job(const u8 sid)     { return _GetSkillIconExt(sid, Skill_INFO_JOB); }
-const u8 * GetSkillIcon_Item(const u8 sid)    { return _GetSkillIconExt(sid, Skill_INFO_ITEM); }
+const u8 * GetSkillIcon1(const u8 sid) { return _GetSkillIconExt(sid, Skill_INFO_GENERIC); }
+const u8 * GetSkillIcon2(const u8 sid)  { return _GetSkillIconExt(sid, Skill_INFO_PERSON); }
+const u8 * GetSkillIcon3(const u8 sid)     { return _GetSkillIconExt(sid, Skill_INFO_JOB); }
+const u8 * GetSkillIcon4(const u8 sid)    { return _GetSkillIconExt(sid, Skill_INFO_ITEM); }
 
 u16 GetSkillDescMsg(const u16 sid)
 {
@@ -70,29 +70,9 @@ char * GetSkillNameStr(const u16 sid)
     return GetStringFromIndex(msg);
 }
 
-int GetEfxSkillIndex(const u16 sid)
-{
-    return gpSkillAnimInfos[sid].aid;
-}
-
 int GetEfxSkillPriority(const u16 sid)
 {
-    u8 priority = gpSkillAnimInfos[sid].priority;
-
-    if (priority == 0)
-        priority = EFX_PRIORITY_NORMAL;
-
-    return priority;
-}
-
-int GetEfxSkillSfx(const u16 sid)
-{
-    u16 sfx = gpSkillAnimInfos[sid].sfx;
-
-    if (sfx == 0)
-        sfx = 0x3D1;
-
-    return sfx;
+    return gpEfxSkillAnimPriority[sid];
 }
 
 const struct EfxAnimConf * GetEfxSkillConf(const u8 aid)

@@ -17,9 +17,6 @@
  */
 // #define CONFIG_CROP_VANILLA_MSG
 
-/* Icon sheet amount */
-#define ICON_SHEET_AMT 7
-
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 
@@ -61,12 +58,72 @@
 #define CONFIG_FASTER_MAP_RANGE
 
 /**
+ * Enable leader-ship features
+ */
+// #define CONFIG_LEADER_SHIP_EN
+
+/**
  * If uncommented, this will disable move-path calculation and display.
  * Since move-path can display no more than 20 steps in vanilla,
  * with the increase of unit's mobility, this limitation may cause
  * risk of overflow error. Thus we directly remove the move-path to avoid overflow.
  */
 // #define CONFIG_REMOVE_MOVE_PATH
+
+/**
+ * Install FEB patch: SetHPClassLimit
+ */
+#define CONFIG_UNLOCK_ALLY_MHP_LIMIT
+
+/**
+ * Levelup mode
+ * 0: vanilla
+ * 1: uncontrollable
+ * 2: fixed
+ * 3: 100%
+ * 4: 0%
+ */
+#define CONFIG_LVUP_MODE_TUTORIAL 2
+#define CONFIG_LVUP_MODE_NORMAL 0
+#define CONFIG_LVUP_MODE_HARD 1
+
+/**
+ * Page1 styles
+ */
+#define CONFIG_PAGE1_WITH_BWL 0
+#define CONFIG_PAGE1_WITH_LEADERSHIP 1
+
+/**
+ * Page4 styles
+ */
+#define CONFIG_PAGE4_MOKHA_PLAN_A 0
+#define CONFIG_PAGE4_MOKHA_PLAN_B 1
+
+/**
+ * Install some performance hooks
+ */
+#define CONFIG_PERFORMANCE_OPTIMIZATION
+
+/**
+ * Install DrawMapActionAnimation
+ */
+// #define CONFIG_INSTALL_MAPACTIONANIM
+
+/**
+ * Install StatScreenfx
+ */
+// #define CONFIG_INSTALL_STATSCREENFX
+
+/**
+ * Install Bow2Decrease
+ */
+#define CONFIG_INSTALL_BOW2DECREASE
+
+/**
+ * Install ConvoyExpa
+ */
+#define CONFIG_INSTALL_CONVOYEXPA
+#define CONFIG_INSTALL_CONVOYEXPA_AMT 200 // better not to touch this since it will affact on size of gExpaConvoyItemArray
 
 /**
  * Ai action expansion
@@ -78,7 +135,21 @@
  * Unit action expansion
  */
 #define CONFIG_UNIT_ACTION_AMT 0x30
-#define CONFIG_UNIT_ACTION_EXPA_Teleportation 0x23
+#define CONFIG_UNIT_ACTION_EXPA_ExecSkill 0x23
+
+/**
+ * Icon config
+ */
+#define CONFIG_PR_ITEM_ICON  0x5926F4
+#define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
+#define CONFIG_ICON_INDEX_STAR 0xCB
+
+/**
+ * Item config
+ */
+#define CONFIG_PR_ITEM_TABLE 0x809B10
+#define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
+#define CONFIG_ITEM_INDEX_SKILL_SCROLL 0xBD
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

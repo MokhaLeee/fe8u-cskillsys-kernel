@@ -1,0 +1,7 @@
+#include "Source/LynJump.event"
+#include "Source/DrawSkillPage.lyn.event"
+// #include "data.event"
+
+/* Misc plans */
+#include "Source/MokhaPlanA/disp.lyn.event"
+#include "Source/MokhaPlanB/disp.lyn.event"

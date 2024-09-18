@@ -1,0 +1,7 @@
+{
+    WARNING __Prologue_event_rewritten__
+    EventPointerTable(7, ThisEvent)
+
+    #include "Source/debug-event.lyn.event"
+    #include "Source/event-call.lyn.event"
+}

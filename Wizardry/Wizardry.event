@@ -23,7 +23,7 @@ ALIGN 4
 #include "Common/ItemSys/ItemSys.event"
 #include "Common/ClassTypes/ClassTypes.event"
 #include "Common/RN/RandNumberC.lyn.event"
-#include "Common/MoveLimitViewHack/MoveLimitViewHack.lyn.event"
+#include "Common/MoveLimitViewHack/MoveLimitViewHack.event"
 #include "Common/IconDisplay/IconDisplay.event"
 #include "Common/NegativeStatBoosts/NegativeStatBoosts.event"
 #include "Common/UnitMenu/UnitMenu.event"
@@ -50,13 +50,9 @@ ALIGN 4
 #include "Core/StatScreen/StatScreen.event"
 #include "Core/MapTask/MapTask.event"
 #include "Core/CombatArt/CombatArt.event"
-#include "Core/HelpBox/HelpBox.event"
 #include "Core/ComboAttack/ComboAttack.event"
 #include "Core/Movement/Movement.event"
 #include "Core/AiHack/AiHack.event"
 
 #include "External/ExternalPatches.event"
-
-#ifdef CONFIG_USE_DEBUG
-    #include "debug.event"
-#endif
+#include "Debug/Debug.event"

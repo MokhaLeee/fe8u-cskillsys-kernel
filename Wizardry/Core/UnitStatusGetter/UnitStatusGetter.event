@@ -4,6 +4,7 @@
 #include "Extensions/Hack Installation.txt"
 
 ALIGN 4
+#include "source/LynJump.event"
 #include "source/HpGetter.lyn.event"
 #include "source/PowGetter.lyn.event"
 #include "source/MagGetter.lyn.event"

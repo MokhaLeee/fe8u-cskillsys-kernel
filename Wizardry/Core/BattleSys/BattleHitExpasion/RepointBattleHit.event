@@ -2,8 +2,9 @@ PUSH
     ORG $2C44C
     #include "Source/pr_BattleHitArrayRe.lyn.event"
 
+    // Already covered in function: GetBattleUnitStaffExp
     ORG $2C660
-    #include "Source/pr_BattleHitArrayRe.lyn.event"
+    // #include "Source/pr_BattleHitArrayRe.lyn.event"
 
     ORG $2CB0C
     #include "Source/pr_BattleHitArrayRe.lyn.event"

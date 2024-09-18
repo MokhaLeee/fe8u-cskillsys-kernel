@@ -1,13 +1,10 @@
 #ifndef ICON_DISPLAY_INSTALLED
 #define ICON_DISPLAY_INSTALLED
 
-#ifndef ICON_SHEET_AMT
-#define ICON_SHEET_AMT 7
-#endif
-
+#include "Source/LynJump.event"
 #include "Source/Icon.lyn.event"
 #include "Source/UsrFunc.lyn.event"
-#include "Source/LynJump.event"
+#include "Source/hooks.lyn.event"
 
 PUSH
     ORG 0x000036B4

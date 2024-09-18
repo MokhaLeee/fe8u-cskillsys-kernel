@@ -1,9 +1,10 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "battle-system.h"
 #include "bwl.h"
 #include "constants/skills.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitExpLevel);
 int GetUnitExpLevel(struct Unit * unit)
 {
     int base, bonus;
@@ -41,7 +42,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit * actor,
     return status;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetBattleUnitExpGain);
 int GetBattleUnitExpGain(struct BattleUnit * actor, struct BattleUnit * target)
 {
     int result;
@@ -64,7 +65,7 @@ int GetBattleUnitExpGain(struct BattleUnit * actor, struct BattleUnit * target)
     return result;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(BattleApplyMiscActionExpGains);
 void BattleApplyMiscActionExpGains(void)
 {
     int exp;
@@ -87,7 +88,7 @@ void BattleApplyMiscActionExpGains(void)
     CheckBattleUnitLevelUp(&gBattleActor);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetBattleUnitStaffExp);
 int GetBattleUnitStaffExp(struct BattleUnit * bu)
 {
     int result;
@@ -95,7 +96,7 @@ int GetBattleUnitStaffExp(struct BattleUnit * bu)
     if (!CanBattleUnitGainLevels(bu))
         return 0;
 
-    if (gBattleHitArray->attributes & BATTLE_HIT_ATTR_MISS)
+    if (gBattleHitArrayRe->attributes & BATTLE_HIT_ATTR_MISS)
         return 1;
 
     result = 10 + GetItemCostPerUse(bu->weapon) / 20;

@@ -89,10 +89,7 @@ void NewEfxSkill(struct Anim * anim, int sid)
 {
     u16 sfx;
     struct ProcEfxSkillRework * proc;
-    u8 aid = GetEfxSkillIndex(sid);
-    const struct EfxAnimConf * conf = GetEfxSkillConf(aid);
-
-    LTRACEF("sid %#x, aid %#x, conf %p", sid, aid, conf);
+    const struct EfxAnimConf * conf = gpEfxSkillAnims[sid];
 
     if (!(COMMON_SKILL_VALID(sid)) || !IS_ROM_DATA(conf))
         return;
@@ -108,7 +105,7 @@ void NewEfxSkill(struct Anim * anim, int sid)
     proc->tsas = conf->tsas;
     proc->frames = conf->frame_confs;
 
-    sfx = GetEfxSkillSfx(sid);
+    sfx = conf->sfx;
     if (sfx != 0)
         PlaySFX(sfx, 0x100, anim->xPosition, 0x1);
 
@@ -125,10 +122,7 @@ void NewEfxCombatArt(struct Anim * anim, int cid)
 {
     u16 sfx;
     struct ProcEfxSkillRework * proc;
-    u8 aid = GetEfxCombatArtIndex(cid);
-    const struct EfxAnimConf * conf = GetEfxSkillConf(aid);
-
-    LTRACEF("cid %#x, aid %#x, conf %p", cid, aid, conf);
+    const struct EfxAnimConf * conf = gpEfxCombatArtAnims[cid];
 
     if (!(COMBART_VALID(cid)) || !IS_ROM_DATA(conf))
         return;
@@ -144,7 +138,7 @@ void NewEfxCombatArt(struct Anim * anim, int cid)
     proc->tsas = conf->tsas;
     proc->frames = conf->frame_confs;
 
-    sfx = GetEfxCombatArtSfx(cid);
+    sfx = conf->sfx;
     if (sfx != 0)
         PlaySFX(sfx, 0x100, anim->xPosition, 0x1);
 

@@ -19,6 +19,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         bool LckHone_eff = false;
         bool DefHone_eff = false;
         bool ResHone_eff = false;
+        bool MovHone_eff = false;
         bool JobHone_eff = false;
         bool JobFortify_eff = false;
 
@@ -83,6 +84,14 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
         if (SkillTester(unit, SID_ResHone))
         {
             ResHone_eff = true;
+            Hone_eff = true;
+        }
+#endif
+
+#if defined(SID_MovHone) && (COMMON_SKILL_VALID(SID_MovHone))
+        if (SkillTester(unit, SID_MovHone))
+        {
+            MovHone_eff = true;
             Hone_eff = true;
         }
 #endif
@@ -168,6 +177,9 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
                     if (ResHone_eff)
                         SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_RES);
 
+                    if (MovHone_eff)
+                        SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_MOV);
+
                     if (JobHone_eff)
                     {
                         if (CheckSameClassType(UNIT_CLASS_ID(unit), UNIT_CLASS_ID(tunit)))
@@ -179,8 +191,6 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
                         if (CheckSameClassType(UNIT_CLASS_ID(unit), UNIT_CLASS_ID(tunit)))
                             SetUnitStatDebuff(tunit, UNIT_STAT_BUFF_JOB_FORTIFY);
                     }
-
-                    break;
                 }
             }
         }

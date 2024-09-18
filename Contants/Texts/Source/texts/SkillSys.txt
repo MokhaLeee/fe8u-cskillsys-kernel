@@ -1,0 +1,40 @@
+## MSG_PREPSKILL_RightTopBar
+Equiped[X]
+
+## MSG_PREPSKILL_AddSkill
+     Skill added[X]
+
+## MSG_PREPSKILL_RemoveSkill
+     Skill removed[X]
+
+## MSG_PREPSKILL_FailAddSkill
+No enough space to equip,[NL]
+please remve skill first.[X]
+
+## MSG_PREPSKILL_FailRemoveSkill
+This skill is[NL]
+not removable.[X]
+
+## MSG_ITEM_SkillScrollName
+Occult Scroll[X]
+
+## MSG_ITEM_RemoveSkillScrollName
+Oblivion Scroll[X]
+
+## MSG_ITEM_SkillScrollUseDesc
+Learn skill[X]
+
+## MSG_ITEM_RemoveSkillScrollDesc
+Remove skill back to scroll[X]
+
+## MSG_SkillLearned
+Skill learned.[X]
+
+## MSG_SkillRemoved
+Skill Removed.[X]
+
+## MSG_RemoveSkillSubtitle
+Select a skill to remove and generate scroll[X]
+
+## MSG_ThousandGoldSpent
+Spent 1000 Gold.[X]

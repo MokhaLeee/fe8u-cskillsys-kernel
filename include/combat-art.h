@@ -1,11 +1,10 @@
 #pragma once
 
 #include "common-chax.h"
+#include "efx-anim.h"
 #include "skill-system.h"
 
 #define COMBART_VALID(cid) (((cid) > 0) && ((cid) < 0xFF))
-#define COMBART_ICON(cid) ((1 << 8) + (cid))
-
 #define CA_WTYPE_ANY ((u8)(-1))
 
 struct CombatArtInfo {
@@ -17,40 +16,57 @@ struct CombatArtInfo {
     s16 cost;
 
     struct {
-        s8 atk, def, hit, avo, crit, silencer, dodge;
+        s8 atk, def, hit, avo, crit, silencer, dodge, display_en_n;
     } battle_status;
 
-    /* flags */
-    u32 external_calc : 1;
-    u32 magic_attack : 1;
-    u32 effective_armor : 1;
-    u32 effective_ride : 1;
-    u32 effective_fly : 1;
-    u32 effective_dragon : 1;
-    u32 effective_monster : 1;
-    u32 effective_all : 1;
-    u32 double_attack : 1;
-    u32 debuff_gravity : 1;
-    u32 debuff_def : 1;
-    u32 debuff_res : 1;
-    u32 debuff_weaken : 1;
-    u32 aoe_debuff : 1;
+    u8 double_attack;
+    bool8 magic_attack;
+    u8 effectiveness;
+
+    /* debuffs */
+    u8 debuff;
+    bool8 aoe_debuff;
+
+    u8 _pad_[7];
+};
+
+enum combat_art_effectiveness {
+    /* CombatArtInfo::effectiveness */
+    COMBART_EFF_NONE,
+    COMBART_EFF_ALL,
+    COMBART_EFF_ARMOR,
+    COMBART_EFF_CAVALRY,
+    COMBART_EFF_FLIER,
+    COMBART_EFF_DRAGON,
+    COMBART_EFF_MONSTER,
+};
+
+enum combat_art_double {
+    /* CombatArtInfo::double_attack */
+    COMBART_DOUBLE_DISABLED = 0,
+    COMBART_DOUBLE_ENABLED,
+    COMBART_DOUBLE_FORCE_ENABLED,
 };
 
 extern const struct CombatArtInfo gCombatArtInfos[0x100];
 extern struct CombatArtInfo const * const gpCombatArtInfos;
 
+static inline const struct CombatArtInfo * GetCombatArtInfo(u8 cid)
+{
+    return &gpCombatArtInfos[cid];
+}
+
 static inline u16 GetCombatArtName(u8 cid)
 {
-    return gpCombatArtInfos[cid].name;
+    return GetCombatArtInfo(cid)->name;
 }
 
 static inline u16 GetCombatArtDesc(u8 cid)
 {
-    if (0 == gpCombatArtInfos[cid].desc)
-        return gpCombatArtInfos[cid].name;
+    if (0 == GetCombatArtInfo(cid)->desc)
+        return GetCombatArtInfo(cid)->name;
 
-    return gpCombatArtInfos[cid].desc;
+    return GetCombatArtInfo(cid)->desc;
 }
 
 /* Combat-art status */
@@ -84,6 +100,11 @@ struct CombatArtList {
 struct CombatArtList * GetCombatArtList(struct Unit * unit, u8 wtype);
 void ResetCombatArtList(void);
 
+static inline struct CombatArtList * AutoGetCombatArtList(struct Unit * unit)
+{
+    return GetCombatArtList(unit, GetItemType(GetUnitEquippedWeapon(unit)));
+}
+
 struct CombatArtRomTable {
     u8 cid_sword[8];
     u8 cid_lance[8];
@@ -104,16 +125,14 @@ u8 GetCombatArtByTargetSelIndex(void);
 
 /* HelpBox related */
 void DrawHelpBoxCombatArtBkselLabels(void);
-void DrawHelpBoxCombatArtBkselStats(void);
+void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro * proc);
 
 /* EfxSkill */
-extern const struct SkillAnimInfo gEfxCombatArtAnimInfos[0x100];
-extern struct SkillAnimInfo const * const gpEfxCombatArtAnimInfos;
+extern u8 const * const gpEfxCombatArtAnimPriority;
+extern struct EfxAnimConf const * const * const gpEfxCombatArtAnims;
 
 void InitEfxCombatArtRoundData(void);
-int GetEfxCombatArtIndex(const u8 cid);
 int GetEfxCombatArtPriority(const u8 cid);
-int GetEfxCombatArtSfx(const u8 cid);
 void RegisterEfxSkillCombatArt(int round, const u8 cid);
 u8 GetEfxCombatArt(int round);
 

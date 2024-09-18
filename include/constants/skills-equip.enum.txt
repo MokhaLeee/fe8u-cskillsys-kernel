@@ -39,6 +39,7 @@ SID_LifeAndDeath
 SID_Resourceful
 
 // Battle status skills
+SID_Nihil
 SID_CritSword
 SID_CritAxe
 SID_CritLance
@@ -48,6 +49,9 @@ SID_FaireLance
 SID_FaireAxe
 SID_FaireBow
 SID_FaireBMag
+SID_FaireAnima
+SID_FaireLight
+SID_FaireDark
 SID_Avoid
 SID_RuinedBlade
 SID_HeavyBlade
@@ -72,6 +76,7 @@ SID_ArcaneBlade
 SID_QuickDraw
 SID_KeenFighter
 SID_Hawkeye
+SID_MagicEye
 SID_DragonSkin
 SID_WaterBoost
 SID_EarthBoost
@@ -87,9 +92,9 @@ SID_WindDisciple
 SID_Pragmatic
 SID_Chivalry
 SID_Charge
+SID_ChargePlus
 SID_FieryBlood
 SID_Wrath
-SID_Vigilance
 SID_OutdoorFighter
 SID_KnightAspirant
 SID_Outrider
@@ -103,10 +108,13 @@ SID_SilentPride
 SID_RightfulKing
 SID_RightfulGod
 SID_RightfulArch
-SID_Guts
 SID_Hero
+SID_Guts
+SID_StrongCon
 SID_SuperLuck
 SID_Spurn
+SID_Counter
+SID_CounterMagic
 
 // Weapon triangle
 SID_SwordBreaker
@@ -122,6 +130,7 @@ SID_QuickRiposte
 SID_WaryFighter
 SID_DoubleLion
 SID_Adept
+SID_GaleWings
 
 // Battle activation skills
 SID_Astra
@@ -182,19 +191,23 @@ SID_BattleRange_Todo3
 // Post action
 SID_Canto
 SID_CantoPlus
+SID_Galeforce
 SID_AlertStance
 SID_AlertStancePlus
-SID_Galeforce
 SID_SavageBlow
 SID_BreathOfLife
 SID_Thunderstorm
 SID_PosReturn
-SID_PosSwap
+SID_Lunge
+SID_PowerStaff
+SID_SoulSap
 
 // Pre-phase
 SID_Renewal
 SID_Imbue
 SID_Forager
+SID_Relief
+SID_Camaraderie
 
 // Range debuff
 SID_Anathema
@@ -228,6 +241,7 @@ SID_SpurDef
 SID_SpurRes
 SID_SpurSpd
 SID_Solidarity
+SID_MaleficAura
 
 SID_PowHone
 SID_MagHone
@@ -236,6 +250,7 @@ SID_SpdHone
 SID_LckHone
 SID_DefHone
 SID_ResHone
+SID_MovHone
 
 // Lvup skills
 SID_Blossom
@@ -257,3 +272,13 @@ SID_Synergism
 // Mobility
 SID_Pass
 SID_Obstruct
+SID_Aerobatics
+SID_FlierGuidance
+
+// Heal skill
+// SID_LiveToServe
+
+// Menu skill
+SID_HealingFocus
+SID_Teleportation
+SID_Swarp

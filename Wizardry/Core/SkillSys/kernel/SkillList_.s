@@ -14,7 +14,7 @@ _JudgeSkillViaList:
     .arm
     .section .rodata
 
-    .global _ARM_SkillList_CopyStart
+.global _ARM_SkillList_CopyStart
 _ARM_SkillList_CopyStart:
 
 .Lfun_get:
@@ -98,5 +98,5 @@ _ARM_SkillList_CopyStart:
 .LgBattleActor:
     .4byte gBattleActor
 
-    .global _ARM_SkillList_CopyEnd
+.global _ARM_SkillList_CopyEnd
 _ARM_SkillList_CopyEnd:

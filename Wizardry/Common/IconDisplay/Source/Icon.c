@@ -36,13 +36,13 @@ STATIC_DECLAR int GetIconNewSlot(const u32 icon)
     return 0;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ResetIconGraphics);
 void ResetIconGraphics(void)
 {
     CpuFill32(-1, gIconReSts, sizeof(gIconReSts));
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ClearIconGfx);
 void ClearIconGfx(u32 icon)
 {
     int i;
@@ -57,7 +57,7 @@ void ClearIconGfx(u32 icon)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetIconTileIndex);
 u16 GetIconTileIndex(int icon)
 {
     int slot, tile;
@@ -84,7 +84,7 @@ u16 GetIconTileIndex(int icon)
 }
 
 
-/* LynJump */
+LYN_REPLACE_CHECK(LoadIconObjectGraphics);
 void LoadIconObjectGraphics(int icon, int chr)
 {
     const u8 * src = GetIconGfx(icon);

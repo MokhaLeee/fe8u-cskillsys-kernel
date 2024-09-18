@@ -1,0 +1,13 @@
+ALIGN 4
+#include "Source/ap_ninianprayfx.lyn.event"
+
+ALIGN 4
+#include "Source/SpriteAnimConf.lyn.event"
+
+ALIGN 4
+Img_NinianPrayfx:
+    #incbin "Source/NinianPrayfx.lz77"
+
+ALIGN 4
+Pal_NinianPrayfx:
+    #incbin "Source/NinianPrayfx.gbapal"

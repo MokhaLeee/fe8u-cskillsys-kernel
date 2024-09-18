@@ -1,8 +1,14 @@
 #ifndef HP_BAR_INSTALLED
 #define HP_BAR_INSTALLED
 
-#include "Source/map-task.lyn.event"
+PUSH
+    /* Fake FEB hpbar patch */
+    ORG 0x276b4
+    BYTE 0x00 0x4B 0x18 0x47
+POP
+
 #include "Source/LynJump.event"
+#include "Source/map-task.lyn.event"
 
 // #include "data.event"
 

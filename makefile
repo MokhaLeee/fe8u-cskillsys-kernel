@@ -25,9 +25,9 @@ GAMEDATA_DIR := $(MK_DIR)Data
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR)
 
 all:
-	@$(MAKE) pre_build
-	@$(MAKE) chax
-	@$(MAKE) post_chax
+	@$(MAKE) pre_build	|| exit 1
+	@$(MAKE) chax		|| exit 1
+	@$(MAKE) post_chax	|| exit 1
 
 include Contants/contants.mk
 
@@ -81,7 +81,12 @@ LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
 EA_DEP            := $(EA_DIR)/ea-dep
 
 TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
-GRIT              := $(DEVKITPRO)/tools/bin/grit
+
+LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
+LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
+
+GRIT := $(DEVKITPRO)/tools/bin/grit
+LZSS := $(DEVKITPRO)/tools/bin/gbalzss
 
 GRITLZ77ARGS      := -gu 16 -gzl -gB 4 -p! -m! -ft bin -fh!
 GRIT4BPPARGS      := -gu 16 -gB 4 -p! -m! -ft bin -fh!
@@ -97,10 +102,16 @@ BTLPALETTEARGS    := -pn 80
 PRE_BUILD ?=
 chax: $(FE8_CHX)
 
+EA_FLAG := A FE8
+
+ifeq ($(CONFIG_EA_WERR), 1)
+	EA_FLAG += -werr
+endif
+
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
-	@$(EA) A FE8 -werr -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
+	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || { rm -f $(FE8_CHX); exit 1; }
 
 CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
@@ -110,6 +121,12 @@ CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 post_chax: $(CHAX_DIFF)
 
 $(CHAX_DIFF): $(FE8_CHX)
+	@echo "[SEC]	Lyn-jump detection..."
+	@$(LYN_DETECTOR) || exit 1
+	@echo "[SEC]	Lyn-jump detection passed"
+
+ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
+
 	@echo "[GEN]	$(CHAX_REFS)"
 	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
 	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
@@ -125,19 +142,15 @@ $(CHAX_DIFF): $(FE8_CHX)
 	@python3 $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
 	@echo "POP" >> $(CHAX_REFE)
 
-	@cp -f $(CHAX_SYM) $(CACHE_DIR)/tmp_sym
-	@cat $(CACHE_DIR)/tmp_sym | python3 $(TOOL_DIR)/scripts/sym-removethumb.py > $(CHAX_SYM)
-	@rm -f $(CACHE_DIR)/tmp_sym
-
 	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
 	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
-	@cat $(FE8_SYM) >> $(CHAX_SYM)
 
-ifeq ($(CONFIG_GEN_BSDIFF), 1)
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
 endif
 
+	@cat $(FE8_SYM) >> $(CHAX_SYM)
+	@cat $(CHAX_SYM) | python3 $(TOOL_DIR)/scripts/sym_modify.py | sponge $(CHAX_SYM)
 	@echo "Done!"
 
 CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
@@ -158,9 +171,10 @@ SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 
 LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 
-%.lyn.event: %.o $(LYN_REF)
+%.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
 	@$(LYN) $< $(LYN_REF) > $@
+	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
 
 %.dmp: %.o
 	@echo "[GEN]	$@"
@@ -220,15 +234,17 @@ TSA_FILES := $(shell find $(HACK_DIRS) -type f -name '*.tsa')
 
 %.4bpp: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -o $@
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRIT4BPPARGS)
+	@mv $(basename $<).img.bin $@
 
 %.gbapal: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -po $@ --palette-only
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRITPALETTEARGS)
+	@mv $(basename $<).pal.bin $@
 
 %.lz: %
 	@echo "[LZ ]	$@"
-	@$(COMPRESS) $< $@
+	@$(LZSS) e $< $@
 
 %.lz77: %.png
 	@echo "[LZ ]	$@"
@@ -311,6 +327,7 @@ enum: $(SKILLS_ENUM_HEADER)
 $(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_SRC)
 	@echo "[GEN]	$(SKILLS_ENUM_HEADER)"
 	@echo "#pragma once" > $(SKILLS_ENUM_HEADER)
+ifeq ($(CONFIG_CI_NO_SKILL_TEST), 0)
 	@python3 $(ENUM2H) 0x000 $(SKILLS_ENUM_DIR)/skills-equip.enum.txt 	>> $(SKILLS_ENUM_HEADER)
 	@python3 $(ENUM2H) 0x100 $(SKILLS_ENUM_DIR)/skills-others.enum.txt  >> $(SKILLS_ENUM_HEADER)
 	@python3 $(ENUM2H) 0x300 $(SKILLS_ENUM_DIR)/skills-item.enum.txt    >> $(SKILLS_ENUM_HEADER)
@@ -320,6 +337,13 @@ $(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_SRC)
 	@python3 $(ENUM2C) 0x000 $(SKILLS_ENUM_DIR)/skills-equip.enum.txt 	>  $(SKILLS_COMBO_DIR)/combo.skills.txt
 	@python3 $(ENUM2C) 0x100 $(SKILLS_ENUM_DIR)/skills-others.enum.txt  >> $(SKILLS_COMBO_DIR)/combo.skills.txt
 	@python3 $(ENUM2C) 0x300 $(SKILLS_ENUM_DIR)/skills-item.enum.txt    >> $(SKILLS_COMBO_DIR)/combo.skills.txt
+else
+	@echo "[WARNNING] ======================================"
+	@echo "[WARNNING] ======================================"
+	@echo "[WARNNING] Build on removing all skills for debug"
+	@echo "[WARNNING] ======================================"
+	@echo "[WARNNING] ======================================"
+endif
 
 PRE_BUILD += enum
 CLEAN_FILES += $(SKILLS_ENUM_HEADER)

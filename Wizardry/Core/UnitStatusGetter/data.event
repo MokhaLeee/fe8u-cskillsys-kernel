@@ -1,4 +1,4 @@
-#define MSG_END "POIN StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc StatusGetterPadFunc; WORD 0"
+#define MSG_END "POIN KernelPad2 KernelPad2 KernelPad2 KernelPad2; WORD 0"
 
 ALIGN 4
 gHpGetters:

@@ -21,3 +21,27 @@ battles a Bow with B.mag.[X]
 ## MSG_SKILL_BMagBreaker
 B.Mag Break: [NL]
 Hit and Avoid +20%.[X]
+
+## MSG_SKILL_Nonconforming_NAME
+N-conforming[X]
+
+## MSG_SKILL_Nonconforming
+Nonconforming:[NL]
+Invert the effect of the weapon[NL]
+triangle for both units in battle.[X]
+
+## MSG_SKILL_TriangleAdept_NAME
+T-Adapt[X]
+
+## MSG_SKILL_TriangleAdept
+Triangle Adapt:[NL]
+Doubles weapon triangle[NL]
+effects for this unit.[X]
+
+## MSG_SKILL_TriangleAdeptPlus_NAME
+T-Adapt+[X]
+
+## MSG_SKILL_TriangleAdeptPlus
+Triangle Adapt+:[NL]
+Doubles weapon triangle[NL]
+effects for both units.[X]

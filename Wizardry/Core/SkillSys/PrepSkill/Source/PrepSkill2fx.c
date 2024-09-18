@@ -214,6 +214,18 @@ void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 * proc)
     ResetIconGraphics_();
     TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 1, 6), 0xA, 0x6, 0);
 
+    if (list->amt == 0)
+    {
+        struct Text * text = &gPrepUnitTexts[0x16];
+        ClearText(text);
+        PutDrawText(
+            text,
+            TILEMAP_LOCATED(gBG0TilemapBuffer, 2, 6),
+            TEXT_COLOR_SYSTEM_GRAY, 0, 0,
+            GetStringFromIndex(MSG_MSS_NOSKILLS)
+        );
+    }
+
     for (y = 0; y < PREP_SLLIST_HEIGHT; y++)
     {
         for (x = 0; x < PREP_SLLIST_LENGTH; x++)
@@ -245,10 +257,13 @@ void PrepSkill2_InitTexts(void)
     InitText(&gPrepUnitTexts[0x03], 0x12);
     InitText(&gPrepUnitTexts[0x04], 0x12);
 
-    /* Don't touch: Left unit name & Right top bar*/
+    /* Don't touch: Left unit name & Right top bar, misc*/
     InitText(&gPrepUnitTexts[0x13], 7);
     InitText(&gPrepUnitTexts[0x14], 10);
     InitText(&gPrepUnitTexts[0x15], 5);
+
+    /* Left no-skills */
+    InitText(&gPrepUnitTexts[0x16], 7);
 }
 
 /* Skill desc */

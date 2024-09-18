@@ -6,6 +6,7 @@
 #include "weapon-lockex.h"
 #include "constants/items.h"
 #include "constants/skills.h"
+#include "constants/combat-arts.h"
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit * bu, int itemSlot)
 {
@@ -161,7 +162,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit * bu, in
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(SetBattleUnitWeapon);
 void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
 {
     int cid;
@@ -173,14 +174,12 @@ void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
     cid = GetCombatArtInForce(&bu->unit);
     if (COMBART_VALID(cid))
     {
-        const struct CombatArtInfo * info = &gpCombatArtInfos[cid];
-
-        if (info->magic_attack)
+        if (GetCombatArtInfo(cid)->magic_attack)
             bu->weaponAttributes |= IA_MAGICDAMAGE | IA_MAGIC;
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(CanUnitUseWeapon);
 s8 CanUnitUseWeapon(struct Unit * unit, int item)
 {
     if (item == 0)
@@ -243,4 +242,33 @@ s8 CanUnitUseWeapon(struct Unit * unit, int item)
 #endif
 
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
+}
+
+int GetWeaponCost(struct BattleUnit * bu, u16 item)
+{
+    int cost;
+
+    if (GetItemAttributes(item) & IA_UNBREAKABLE)
+        return 0;
+
+    cost = 1;
+
+    if (bu == &gBattleActor)
+    {
+        int cid = GetCombatArtInForce(&bu->unit);
+        if (COMBART_VALID(cid))
+        {
+            int _cost = GetCombatArtInfo(cid)->cost;
+            if (_cost > 1)
+                cost = _cost;
+        }
+    }
+
+#if (defined(SID_FaerghusAncestry) && (COMMON_SKILL_VALID(SID_FaerghusAncestry)))
+    if (BattleSkillTester(bu, SID_FaerghusAncestry))
+        cost = cost * 2;
+#endif
+
+    LIMIT_AREA(cost, 0, 255);
+    return cost;
 }

@@ -44,6 +44,7 @@ V-Fighter[X]
 
 ## MSG_SKILL_VengefulFighter
 VengefulFighter:[NL]
+If HP is higher than 50%[NL]
 Always attack twice when under attack.[X]
 
 ## MSG_SKILL_RecklessFighter_NAME
@@ -51,6 +52,7 @@ R-Fighter[X]
 
 ## MSG_SKILL_RecklessFighter
 RecklessFighter:[NL]
+If HP is higher than 50%[NL]
 Both sides always attack twice.[X]
 
 ## MSG_SKILL_BoldFighter_NAME
@@ -58,6 +60,7 @@ B-Fighter[X]
 
 ## MSG_SKILL_BoldFighter
 BoldFighter:[NL]
+If HP is higher than 50%[NL]
 Always attack twice when attacking.[X]
 
 ## MSG_SKILL_BidingBlow
@@ -72,3 +75,40 @@ Adv-Chaser[X]
 AdvantageChaser:[NL]
 Unit always doubles if they have[NL]
 Weapon Triangle Advantage.[X]
+
+## MSG_SKILL_PridefulWarrior_NAME
+P-Warrior[X]
+
+## MSG_SKILL_PridefulWarrior
+PridefulWarrior:[NL]
+Unit always attacks last in[NL]
+the round, but always doubles.[X]
+
+## MSG_SKILL_PassionsFlow_NAME
+P-Flow[X]
+
+## MSG_SKILL_PassionsFlow
+Passions Flow:[NL]
+Unit doubles if currently[NL]
+gaining support bonuses.[X]
+
+## MSG_SKILL_CloseCombat_NAME
+C-Combat[X]
+
+## MSG_SKILL_CloseCombat
+Close Combat: +2 damage if at[NL]
+1 range. Your double attacks[NL]
+occur before countering.[X]
+
+## MSG_SKILL_QuickLearner_NAME
+Q-Learner[X]
+
+## MSG_SKILL_QuickLearner
+Quick Learner:[NL]
+When attacking a higher level[NL]
+enemy, this unit doubles.[X]
+
+## MSG_SKILL_GaleWings
+Gale Wings:[NL]
+When unit is defender while[NL]
+their HP is 100%, attack first.[X]

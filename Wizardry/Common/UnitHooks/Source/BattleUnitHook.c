@@ -99,10 +99,10 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
         PidStatsAddExpGained(unit->pCharacterData->number, bu->expGain);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(InitBattleUnit);
 void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 {
-    const BattleToUnitFunc_t * it;
+    const UnitToBattleFunc_t * it;
 
     InitBattleUnitVanilla(bu, unit);
 
@@ -112,14 +112,14 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
     bu->unit._u3A = unit->_u3A;
     bu->unit._u3B = unit->_u3B;
 
-    for (it = gpExternalBattleToUnitHook; *it; it++)
-        (*it)(bu, unit);
+    for (it = gpExternalUnitToBattleHook; *it; it++)
+        (*it)(unit, bu);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UpdateUnitFromBattle);
 void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 {
-    const UnitToBattleFunc_t * it;
+    const BattleToUnitFunc_t * it;
 
     UpdateUnitFromBattleVanilla(unit, bu);
 
@@ -130,8 +130,7 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
     unit->_u3B = bu->unit._u3B;
 
     ResetSkillLists();
-    ResetCombatArtStatus();
 
-    for (it = gpExternalUnitToBattleHook; *it; it++)
-        (*it)(unit, bu);
+    for (it = gpExternalBattleToUnitHook; *it; it++)
+        (*it)(bu, unit);
 }

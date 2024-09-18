@@ -38,7 +38,12 @@ STATIC_DECLAR void SkillBreathOfLifePostAnimEffect(ProcPtr proc)
         struct Unit * tunit = GetUnit(starget->uid);
 
         int max_hp = GetUnitMaxHp(tunit);
-        int heal_amt = Div(max_hp * 2, 10);
+#if defined(SID_BreathOfLife) && (COMMON_SKILL_VALID(SID_BreathOfLife))
+        int perc = SKILL_EFF0(SID_BreathOfLife);
+#else
+        int perc = 20;
+#endif
+        int heal_amt = Div(max_hp * perc, 100);
 
         if ((tunit->curHP + heal_amt) <= max_hp)
             tunit->curHP = tunit->curHP + heal_amt;
@@ -58,12 +63,12 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillBreathOfLife[] = {
 
 bool PostActionSkillBreathOfLife(ProcPtr parent)
 {
-    struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit * unit = gActiveUnit;
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;
 
-#if defined(SID_Canto) && (COMMON_SKILL_VALID(SID_Canto))
+#if defined(SID_BreathOfLife) && (COMMON_SKILL_VALID(SID_BreathOfLife))
     if (!SkillTester(unit, SID_BreathOfLife))
 #else
     if (1)

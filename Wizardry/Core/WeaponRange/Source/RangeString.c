@@ -57,7 +57,7 @@ STATIC_DECLAR char * ItemRangeToString(int min, int max)
     return (char *)sMsgString.buffer1;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetItemDisplayRangeString);
 char * GetItemDisplayRangeString(int item)
 {
     if ((ITEM_INDEX(item) == 0))

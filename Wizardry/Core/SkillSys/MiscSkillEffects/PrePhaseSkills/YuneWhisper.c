@@ -49,7 +49,12 @@ STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper * proc)
                 continue;
 
             res2 = GetUnitResistance(unit_tar);
+
+#if (defined(SID_YuneWhispers) && (COMMON_SKILL_VALID(SID_YuneWhispers)))
+            if (res1 > (res2 + SKILL_EFF0(SID_YuneWhispers)))
+#else
             if (res1 > (res2 + 3))
+#endif
                 AddTarget(unit_tar->xPos, unit_tar->yPos, i, 0);
         }
 
@@ -86,7 +91,7 @@ STATIC_DECLAR void YuneWhisper_Exec(struct ProcYuneWhisper * proc)
     }
 }
 
-STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseYuneWhisper[] = {
+FORCE_DECLARE STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseYuneWhisper[] = {
     PROC_CALL(YuneWhisper_Init),
 
 PROC_LABEL(0),

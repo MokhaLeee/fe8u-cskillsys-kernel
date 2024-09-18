@@ -2,6 +2,7 @@
 #include "battle-system.h"
 #include "combo-attack.h"
 #include "skill-system.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR bool BattleComboGenerateHit(void)
@@ -29,12 +30,12 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 
 #if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
         if (SkillTester(unit, SID_Assist))
-            gBattleStats.damage += 5;
+            gBattleStats.damage += SKILL_EFF0(SID_Assist);
 #endif
 
 #if (defined(SID_Synergism) && COMMON_SKILL_VALID(SID_Synergism))
         if (BattleSkillTester(&gBattleActor, SID_Synergism))
-            gBattleStats.damage += 3;
+            gBattleStats.damage += SKILL_EFF0(SID_Synergism);
 #endif
     }
 
@@ -68,7 +69,9 @@ bool BattleComboGenerateHits(void)
     int i;
     u32 attrs;
 
-    if (gpConfigUseComboAtk == 0)
+    ResetComboAtkList();
+
+    if (!gpKernelDesigerConfig->combo_attack_en)
         return false;
 
     /* Not considering on simulation */

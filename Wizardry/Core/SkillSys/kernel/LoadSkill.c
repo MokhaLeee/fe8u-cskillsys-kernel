@@ -2,16 +2,56 @@
 #include "bwl.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
-#include "constants/skills.h"
 
 #define LOCAL_TRACE 0
+
+static void SortRamSkillList(struct Unit * unit)
+{
+    int i, cnt = 0;
+    u8 * list = UNIT_RAM_SKILLS(unit);
+    u8 * buf = gGenericBuffer;
+
+    memset(buf, 0, UNIT_RAM_SKILLS_LEN);
+
+    for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
+        if (EQUIPE_SKILL_VALID(list[i]))
+            buf[cnt++] = list[i];
+
+    memcpy(list, buf, UNIT_RAM_SKILLS_LEN);
+}
+
+inline int GetSkillSlot(struct Unit * unit, int sid)
+{
+    int i;
+    const int cnt = RAM_SKILL_LEN_EXT;
+    u8 * list = UNIT_RAM_SKILLS(unit);
+
+    for (i = 0; i < cnt; i++)
+        if (list[i] == sid)
+            return i;
+
+    return -1;
+}
+
+inline int GetFreeSkillSlot(struct Unit * unit)
+{
+    int i;
+    const int cnt = RAM_SKILL_LEN_EXT;
+    u8 * list = UNIT_RAM_SKILLS(unit);
+
+    for (i = 0; i < cnt; i++)
+        if (!EQUIPE_SKILL_VALID(list[i]))
+            return i;
+
+    return -1;
+}
 
 bool CanRemoveSkill(struct Unit * unit, const u16 sid)
 {
     int i;
     u8 * list = UNIT_RAM_SKILLS(unit);
 
-    if (!GENERIC_SKILL_VALID(sid))
+    if (!EQUIPE_SKILL_VALID(sid))
         return false;
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
@@ -26,13 +66,14 @@ int RemoveSkill(struct Unit * unit, const u16 sid)
     int i;
     u8 * list = UNIT_RAM_SKILLS(unit);
 
-    if (!GENERIC_SKILL_VALID(sid))
+    if (!EQUIPE_SKILL_VALID(sid))
         return -1;
 
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
         if (sid == list[i])
         {
             list[i] = 0;
+            SortRamSkillList(unit);
             ResetSkillLists();
             return 0;
         }
@@ -41,7 +82,7 @@ int RemoveSkill(struct Unit * unit, const u16 sid)
 
 int AddSkill(struct Unit * unit, const u16 sid)
 {
-    int i;
+    int slot;
     u8 * list = UNIT_RAM_SKILLS(unit);
 
     if (sid >= MAX_GENERIC_SKILL_NUM)
@@ -49,21 +90,22 @@ int AddSkill(struct Unit * unit, const u16 sid)
 
     LearnSkill(unit, sid);
 
-    for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
-    {
-        if (!GENERIC_SKILL_VALID(list[i]))
-        {
-            list[i] = sid;
-            ResetSkillLists();
-            return 0;
-        }
-    }
-    return -1;
+    slot = GetSkillSlot(unit, sid);
+    if (slot != -1)
+        return 0;
+
+    slot = GetFreeSkillSlot(unit);
+    if (slot == -1)
+        return -1;
+
+    list[slot] = sid;
+    ResetSkillLists();
+    return 0;
 }
 
 static inline void load_skill_ext(struct Unit * unit, u16 sid)
 {
-    if (GENERIC_SKILL_VALID(sid))
+    if (EQUIPE_SKILL_VALID(sid))
     {
         if (UNIT_FACTION(unit) == FACTION_BLUE)
             LearnSkill(unit, sid);
@@ -104,16 +146,12 @@ void UnitAutoLoadSkills(struct Unit * unit)
         level_j = level_j - 5;
     }
 
-#ifdef CONFIG_DEBUG_UNIT_LOAD_SKILL
     /* For debug, we enable unit learn all of skills */
-    if (UNIT_FACTION(unit) == FACTION_BLUE)
+    if (gpKernelDesigerConfig->debug_autoload_skills && UNIT_FACTION(unit) == FACTION_BLUE)
     {
-        LTRACEF("Character %#x auto learned skill", UNIT_CHAR_ID(unit));
-
         for (i = 1; i < 254; i++)
             LearnSkill(unit, i);
     }
-#endif
 }
 
 STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
@@ -128,7 +166,7 @@ STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
     {
         sid = pConf->skills[_level + i];
 
-        if (GENERIC_SKILL_VALID(sid))
+        if (EQUIPE_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -145,7 +183,7 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
     {
         sid = jConf->skills[_level + i];
 
-        if (GENERIC_SKILL_VALID(sid))
+        if (EQUIPE_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }
@@ -180,7 +218,7 @@ void TryAddSkillPromotion(struct Unit * unit, int jid)
     {
         sid = jConf->skills[0 + i];
 
-        if (GENERIC_SKILL_VALID(sid))
+        if (EQUIPE_SKILL_VALID(sid))
             AddSkill(unit, sid);
     }
 }

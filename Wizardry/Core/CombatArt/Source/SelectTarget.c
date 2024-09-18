@@ -26,7 +26,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
         if (new < 0)
             return 0;
 
-        info = &gpCombatArtInfos[list->cid[new]];
+        info = GetCombatArtInfo(list->cid[new]);
         if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             break;
     }
@@ -48,7 +48,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
         if (new >= list->amt)
             return 0;
 
-        info = &gpCombatArtInfos[list->cid[new]];
+        info = GetCombatArtInfo(list->cid[new]);
 
         if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
             break;
@@ -281,7 +281,7 @@ ProcPtr NewTargetSelectionRework(const struct SelectInfo * selectInfo)
     return proc;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UnknownMenu_Selected);
 u8 UnknownMenu_Selected(struct MenuProc * menu, struct MenuItemProc * menuItem)
 {
     EquipUnitItemSlot(gActiveUnit, menuItem->itemNumber);
@@ -308,8 +308,8 @@ STATIC_DECLAR int SelectTargetInfoOnEndVanilla(void)
     return 0;
 }
 
-/* LynJump */
-int sub_8022F10(void)
+LYN_REPLACE_CHECK(AttackMapSelect_End);
+int AttackMapSelect_End(ProcPtr proc)
 {
     /* SelectTarget on end */   
     EndGreenText();

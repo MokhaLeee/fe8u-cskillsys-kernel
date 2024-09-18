@@ -1,6 +1,7 @@
 #include "common-chax.h"
-
 #include "bwl.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 #define LOCAL_TRACE 0
 
@@ -13,7 +14,7 @@ static u8 * GetUnitBwlSupports(u8 pid)
     return NULL;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(ActionSupport);
 s8 ActionSupport(ProcPtr proc)
 {
     int subjectExp;
@@ -57,7 +58,7 @@ s8 ActionSupport(ProcPtr proc)
     return 0;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(GetUnitSupportLevel);
 int GetUnitSupportLevel(struct Unit * unit, int num)
 {
     int exp;
@@ -94,7 +95,7 @@ int GetUnitSupportLevel(struct Unit * unit, int num)
     return SUPPORT_LEVEL_NONE;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(UnitGainSupportExp);
 void UnitGainSupportExp(struct Unit * unit, int num)
 {
     u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
@@ -105,6 +106,13 @@ void UnitGainSupportExp(struct Unit * unit, int num)
         int currentExp = supp[num];
         int maxExp = sSupportMaxExpLookup[GetUnitSupportLevel(unit, num)];
 
+        FORCE_DECLARE struct Unit * other = GetUnitSupporterUnit(unit, num);
+
+#if defined(SID_SocialButterfly) && (COMMON_SKILL_VALID(SID_SocialButterfly))
+        if (SkillTester(unit, SID_SocialButterfly) || SkillTester(other, SID_SocialButterfly))
+            gain *= 2;
+#endif
+
         if (currentExp + gain > maxExp)
             gain = maxExp - currentExp;
 
@@ -113,7 +121,7 @@ void UnitGainSupportExp(struct Unit * unit, int num)
     }
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(UnitGainSupportLevel);
 void UnitGainSupportLevel(struct Unit* unit, int num)
 {
     u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
@@ -125,7 +133,7 @@ void UnitGainSupportLevel(struct Unit* unit, int num)
     SetSupportLevelGained(unit->pCharacterData->number, GetUnitSupporterCharacter(unit, num));
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(CanUnitSupportNow);
 s8 CanUnitSupportNow(struct Unit * unit, int num)
 {
     int exp, maxExp;
@@ -158,7 +166,7 @@ s8 CanUnitSupportNow(struct Unit * unit, int num)
     return (exp == maxExp) ? TRUE : FALSE;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(InitUnitsupports);
 void InitUnitsupports(struct Unit * unit)
 {
     u8 * supp1, * supp2;
@@ -182,7 +190,7 @@ void InitUnitsupports(struct Unit * unit)
     }
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(UnitLoadSupports);
 void UnitLoadSupports(struct Unit * unit)
 {
     int i, count = GetUnitSupporterCount(unit);

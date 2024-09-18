@@ -1,7 +1,0 @@
-#ifndef HELP_BOX_INSTALLED
-#define HELP_BOX_INSTALLED
-
-#include "Source/HelpBoxHack.lyn.event"
-#include "Source/LynJump.event"
-
-#endif /* HELP_BOX_INSTALLED */

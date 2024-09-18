@@ -1,0 +1,7 @@
+/* void (*)(void) */
+ALIGN 4
+ChapterInitHooks:
+    POIN InitRandC
+    POIN ResetUnitsExpaSus
+    POIN ChapterInit_SetInitiativeStatus
+    WORD 0

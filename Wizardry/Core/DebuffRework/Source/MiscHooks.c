@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(SetUnitStatus);
 void SetUnitStatus(struct Unit * unit, int status)
 {
     if (status == 0)
@@ -25,7 +25,7 @@ void SetUnitStatus(struct Unit * unit, int status)
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(SetUnitStatusExt);
 void SetUnitStatusExt(struct Unit * unit, int status, int duration)
 {
     if (status >= NEW_UNIT_STATUS_MAX)
@@ -41,7 +41,7 @@ void SetUnitStatusExt(struct Unit * unit, int status, int duration)
     SetUnitStatusDuration(unit, duration);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitStatusName);
 char * GetUnitStatusName(struct Unit * unit)
 {
     int msg = gpDebuffInfos[GetUnitStatusIndex(unit)].name;
@@ -52,7 +52,7 @@ char * GetUnitStatusName(struct Unit * unit)
     return GetStringFromIndex(msg);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(GetUnitRescueName);
 char * GetUnitRescueName(struct Unit * unit)
 {
     if (!unit->rescue)
@@ -61,14 +61,14 @@ char * GetUnitRescueName(struct Unit * unit)
     return GetStringFromIndex(GetUnit(unit->rescue)->pCharacterData->nameTextId);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(HbPopulate_SSStatus);
 void HbPopulate_SSStatus(struct HelpBoxProc * proc)
 {
     u8 index = GetUnitStatusIndex(gStatScreen.unit);
     proc->mid = gpDebuffInfos[index].desc;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(MMB_DrawStatusText);
 void MMB_DrawStatusText(s16 * buffer, struct Unit * unit)
 {
     int tileIdx = 0x16F;

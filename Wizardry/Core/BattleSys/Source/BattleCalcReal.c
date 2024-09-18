@@ -1,8 +1,11 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "combat-art.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "kernel-tutorial.h"
+#include "constants/combat-arts.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -11,6 +14,19 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
      * Here we need to put some calculation at the end of the pre-battle calc.
      * Thus the main part of calc should be positioned at berfore.
      */
+
+    if (attacker == &gBattleActor)
+    {
+        switch (GetCombatArtInForce(&attacker->unit)) {
+        case CID_Gamble:
+            attacker->battleCritRate = attacker->battleCritRate * 2;
+            attacker->battleHitRate  = attacker->battleHitRate  / 2;
+            break;
+
+        default:
+            break;
+        }
+    }
 
 #if (defined(SID_CatchingUp) && (COMMON_SKILL_VALID(SID_CatchingUp)))
         if (BattleSkillTester(attacker, SID_CatchingUp))
@@ -29,12 +45,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_HeavyBlade) && (COMMON_SKILL_VALID(SID_HeavyBlade)))
         if (BattleSkillTester(attacker, SID_HeavyBlade))
-            attacker->battleCritRate += 15;
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBlade);
 #endif
 
 #if (defined(SID_HeavyBladePlus) && (COMMON_SKILL_VALID(SID_HeavyBladePlus)))
         if (BattleSkillTester(attacker, SID_HeavyBladePlus))
-            attacker->battleCritRate += 25;
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBladePlus);
 #endif
     }
 
@@ -43,8 +59,8 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 #if (defined(SID_DancingBlade) && (COMMON_SKILL_VALID(SID_DancingBlade)))
         if (BattleSkillTester(attacker, SID_DancingBlade))
         {
-            attacker->battleSpeed += 4;
-            attacker->battleDefense += 2;
+            attacker->battleSpeed   += SKILL_EFF0(SID_DancingBlade);
+            attacker->battleDefense += SKILL_EFF1(SID_DancingBlade);
         }
 #endif
     }
@@ -53,22 +69,22 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     {
 #if (defined(SID_FlashingBlade) && (COMMON_SKILL_VALID(SID_FlashingBlade)))
         if (BattleSkillTester(attacker, SID_FlashingBlade))
-            attacker->battleCritRate += 15;
+            attacker->battleCritRate += SKILL_EFF0(SID_HeavyBlade);
 #endif
 
 #if (defined(SID_FlashingBladePlus) && (COMMON_SKILL_VALID(SID_FlashingBladePlus)))
         if (BattleSkillTester(attacker, SID_FlashingBladePlus))
-            attacker->battleCritRate += 25;
+            attacker->battleCritRate += SKILL_EFF1(SID_FlashingBladePlus);
 #endif
 
 #if (defined(SID_Puissance) && (COMMON_SKILL_VALID(SID_Puissance)))
         if (BattleSkillTester(attacker, SID_Puissance))
-            attacker->battleAttack += 3;
+            attacker->battleAttack += SKILL_EFF0(SID_Puissance);
 #endif
     }
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitSpecialWeaponStats);
 void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker->weaponAttributes & IA_MAGICDAMAGE)
@@ -144,24 +160,36 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #endif
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitSilencerRate);
 void ComputeBattleUnitSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     return;
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveHitRate);
 void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
 
     /* For non-ballista combat, Distance +2, hit rate -20% for actor */
-    if (gBattleStats.range > 2 && attacker == &gBattleActor && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA) && !(gBattleStats.config & BATTLE_CONFIG_ARENA))
+    if (gpKernelDesigerConfig->hit_decrease_on_range && gBattleStats.range > 2 && attacker == &gBattleActor)
     {
-        attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
+        if
+        (
+#if defined(SID_MagicEye) && (COMMON_SKILL_VALID(SID_MagicEye))
+            !BattleSkillTester(attacker, SID_MagicEye)
+#else
+            1
+#endif
+            &&
+            !(gBattleStats.config & BATTLE_CONFIG_BALLISTA)
+        )
+        {
+            attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
 
-        if (gBattleStats.config & BATTLE_CONFIG_REAL)
-            TriggerKtutorial(KTUTORIAL_RANGED_FAILOFF);
+            if (gBattleStats.config & BATTLE_CONFIG_REAL)
+                TriggerKtutorial(KTUTORIAL_RANGED_FAILOFF);
+        }
     }
 
     if (attacker->battleEffectiveHitRate > 100)
@@ -169,9 +197,17 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
 
     if (attacker->battleEffectiveHitRate < 0)
         attacker->battleEffectiveHitRate = 0;
+
+#if (defined(SID_FranticSwing) && (COMMON_SKILL_VALID(SID_FranticSwing)))
+    if (BattleSkillTester(attacker, SID_FranticSwing))
+    {
+        if (attacker->battleEffectiveHitRate <= 50)
+            attacker->battleCritRate += SKILL_EFF0(SID_FranticSwing);
+    }
+#endif
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveStats);
 void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if CHAX

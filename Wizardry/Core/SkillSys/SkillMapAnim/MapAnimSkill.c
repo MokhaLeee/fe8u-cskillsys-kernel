@@ -3,10 +3,9 @@
 #include "combat-art.h"
 #include "skill-system.h"
 #include "efx-skill.h"
+#include "icon-rework.h"
 
 #define LOCAL_TRACE 0
-
-extern u8 const * const gpImg_MapAnimSKILL;
 
 STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimDeamon[] = {
     PROC_SLEEP(20),
@@ -53,7 +52,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     if (actor_icon == 0 && target_icon == 0)
         return false;
 
-    if (gManimSt.subjectActorId == POS_L)
+    if (gManimSt.subjectActorId == 1)
     {
         left_icon  = actor_icon;
         right_icon = target_icon;
@@ -114,9 +113,9 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     }
 
     if (actor_icon != 0)
-        PlaySeSpacial(0x3D1, gManimSt.actor[gManimSt.subjectActorId].unit->xPos * 0x10 - gBmSt.camera.x);
+        PlaySeSpacial(0x3D1, SCREEN_TILE_IX(gManimSt.actor[gManimSt.subjectActorId].unit->xPos));
     else
-        PlaySeSpacial(0x3D1, gManimSt.actor[gManimSt.targetActorId].unit->xPos * 0x10 - gBmSt.camera.x);
+        PlaySeSpacial(0x3D1, SCREEN_TILE_IX(gManimSt.actor[gManimSt.targetActorId].unit->xPos));
 
     Proc_StartBlocking(ProcScr_SkillMapAnimDeamon, parent);
     return true;

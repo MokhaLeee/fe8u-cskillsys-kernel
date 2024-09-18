@@ -49,3 +49,11 @@ SoarWing[X]
 Soaring Wings:[NL]
 Allies can provides 1[NL]
 additional movement for the unit[X]
+
+## MSG_SKILL_DetailedReport_NAME
+D-Report[X]
+
+## MSG_SKILL_DetailedReport
+Detailed Report:[NL]
+if HP>50%, ranged foes cannot[NL]
+move throgh 2x2 spaces adjacent.[X]

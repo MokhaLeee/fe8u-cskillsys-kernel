@@ -47,7 +47,6 @@ _kernel_malloc gBattleActorGlobalFlag, 0x10
 _kernel_malloc gBattleTargetGlobalFlag, 0x10
 _kernel_malloc gCombatArtStatus, 0x10
 _kernel_malloc sRandSeedsC, 8
-_kernel_malloc sRandBackup, 8
 _kernel_malloc gBanimSyncHandler, 8
 _kernel_malloc gComboAtkList, 0x14
 _kernel_malloc sKTutorialBits, 0xC
@@ -58,8 +57,10 @@ _kernel_malloc sStatDebuffStatusAlly, 51 * 16
 _kernel_malloc sStatDebuffStatusEnemy, 50 * 16
 _kernel_malloc sStatDebuffStatusNpc, 8 * 16
 _kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
-_kernel_malloc sStatDebuffMsgBuf, 0x2C * 6
+_kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
 _kernel_malloc sStatDebuffMsgBufNext, 4
+_kernel_malloc sExpaConvoyItemCount, 4
+_kernel_malloc sExpaConvoyItemArray, 2 * 300
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
@@ -69,7 +70,7 @@ _kernel_malloc sStatDebuffMsgBufNext, 4
  * relationship with banim, it is risky to use this area rashly.
  */
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
-_kernel_malloc_overlay0 sStatScreenPage1BarMax, 4
+_kernel_malloc_overlay0 UnitMenuSkills, 16
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
 _kernel_malloc_overlay0 gBattleTemporaryFlag, 8
 _kernel_malloc_overlay0 sCombatArtList, 0x20
@@ -82,6 +83,10 @@ _kernel_malloc_overlay0 KernelMoveMapFlags, 4
 _kernel_malloc_overlay0 KernelExtMoveBarrierMap, 4
 _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
 _kernel_malloc_overlay0 MapTaskVec, 4
+_kernel_malloc_overlay0 gStatScreenStExpa, 4
+_kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
+_kernel_malloc_overlay0 gDmg, 36
+_kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
 
 /**
  * Usage of memory on IWRAM for arm-functions

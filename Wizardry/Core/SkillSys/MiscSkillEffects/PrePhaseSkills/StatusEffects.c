@@ -19,31 +19,10 @@ STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon * proc
             continue;
 
 #if defined(SID_Boon) && (COMMON_SKILL_VALID(SID_Boon))
-        if (!SkillTester(unit, SID_Boon))
+        if (SkillTester(unit, SID_Boon) && UnitHasNegativeStatus(unit))
         {
-            int i;
-            struct StatDebuffStatus * sdebuff = GetUnitStatDebuffStatus(unit);
-
-            bool negative_status = IsDebuff(GetUnitStatusIndex(unit));
-            bool negative_statdebuff = false;
-
-            for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
-            {
-                if (!_BIT_CHK(sdebuff->st.bitmask, i))
-                    continue;
-
-                if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_NEGATIVE)
-                {
-                    negative_statdebuff = true;
-                    break;
-                }
-            }
-
-            if (negative_status || negative_statdebuff)
-            {
-                EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
-                return;
-            }
+            EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
+            return;
         }
 #endif
     }
@@ -58,24 +37,10 @@ STATIC_DECLAR void PrePhaseBoon_ExecAnim(struct ProcPrePhaseBoon * proc)
 
 STATIC_DECLAR void PrePhaseBoon_ClearStatus(struct ProcPrePhaseBoon * proc)
 {
-    int i;
-    struct Unit * unit = GetUnit(proc->uid);
-    struct StatDebuffStatus * sdebuff = GetUnitStatDebuffStatus(unit);
-
-    if (IsDebuff(GetUnitStatusIndex(unit)))
-        SetUnitStatus(unit, UNIT_STATUS_NONE);
-
-    for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
-    {
-        if (!_BIT_CHK(sdebuff->st.bitmask, i))
-            continue;
-
-        if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_NEGATIVE)
-            _BIT_CLR(sdebuff->st.bitmask, i);
-    }
+    RemoveUnitNegativeStatus(GetUnit(proc->uid));
 }
 
-STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseBoon[] = {
+FORCE_DECLARE STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseBoon[] = {
     PROC_YIELD,
 
 PROC_LABEL(1),

@@ -9,9 +9,9 @@ gpConstSkillTable_Job:    POIN gConstSkillTable_Job
 
 gpSkillPreloadPData:      POIN gSkillPreloadPData
 gpSkillPreloadJData:      POIN gSkillPreloadJData
-gpSkillAnimInfos: POIN gSkillAnimInfos
+gpEfxSkillAnimPriority:   POIN EfxSkillAnimPriority
+gpEfxSkillAnims:          POIN EfxSkillAnims
 
-gpEfxSkillAnims:    POIN gEfxSkillAnims
 gpLegendSkillPool:  POIN gLegendSkillPool
 
 gpCombatArtInfos:           POIN gCombatArtInfos
@@ -20,7 +20,7 @@ gpCombatArtRomJTable:       POIN gCombatArtRomJTable
 gpCombatArtDefaultTable:    POIN gCombatArtDefaultTable
 gpCombatArtWeaponTable:     POIN gCombatArtWeaponTable
 gpCombatArtSkillTable:      POIN gCombatArtSkillTable
-gpEfxCombatArtAnimInfos:    POIN gEfxCombatArtAnimInfos
+gpEfxCombatArtAnims:        POIN EfxCombatArtAnims
 
 gpWeaponTriangleConfs:      POIN gWeaponTriangleConfs
 gpWeaponTriangleItemConf:   POIN gWeaponTriangleItemConf
@@ -38,40 +38,32 @@ gpMsa_Loader:   WORD 0
 gpMsu_Saver:    WORD 0
 gpMsu_Loader:   WORD 0
 
-gpConfigUseComboAtk:
-#ifdef CONFIG_USE_COMBO_ATTACK
-    WORD 1
-#else
-    WORD 0
-#endif
+gpKernelDesigerConfig: POIN gKernelDesigerConfig
 
-gConfigKTutorialLevel:  WORD CONFIG_KTUT_LEVEL
+gpSkillMenuInfos: POIN gSkillMenuInfos
+
 gpKTutorialMsg:         POIN gKTutorialMsg
 
 gpExternalGameInitHook: WORD 0
 
 gpHealAmountGetters: POIN gHealAmountGetters
-MESSAGE CURRENTOFFSET
-/* StatScreenfx */
-gpPal_StatScreenUIRed:      POIN Pal_StatScreenUIRed
-gpImg_StatScreenUIRed:      POIN Img_StatScreenUIRed
-gpPal_StatScreenUI:         POIN Pal_StatScreenUI
-gpImg_StatScreenUI:         POIN Img_StatScreenUI
-gpImg_StatScreenScrollBG:   POIN Img_StatScreenScrollBG
-gpPal_StatScreenScrollBG:   POIN Pal_StatScreenScrollBG
-gpImg_StatScreenMuAreaBg:   POIN Img_StatScreenMuAreaBg
-gpPal_StatScreenMuAreaBg:   POIN Pal_StatScreenMuAreaBg
+
+gpAffinIcons: POIN gAffinIcons
+gpMountIcons: POIN gMountIcons
+gpWTypeIcons: POIN gWTypeIcons
+
+gpLeaderShipConf: POIN gLeaderShipConf
+gpLeaderShipPConf: POIN gLeaderShipPConf
+gpLeaderShipJConf: POIN gLeaderShipJConf
+
+gpBattleDamageCalcFuncs: POIN BattleDamageCalcFuncs
+gpBattleRealDamageCalcFuncs: POIN BattleRealDamageCalcFuncs
 
 gpBeginActionHooks: POIN gBeginActionHooks
 gpChapterInitHooks: POIN ChapterInitHooks
 gpGameInitHookTable: POIN gGameInitHookTable
 
-gConfigRemoveMovePath:
-#ifdef CONFIG_REMOVE_MOVE_PATH
-    WORD 1
-#else
-    WORD 0
-#endif
+gpSkillActionFuncTable: POIN gSkillActionFuncTable
 
 gpPostActionFuncs: POIN gPostActionFuncs
 gpNewSaveHooks: POIN gNewSaveHooks
@@ -113,12 +105,7 @@ gpPreAi2DecideHook: POIN gPreAi2DecideHook
 
 gpUnitActionTable: POIN gUnitActionTable
 
-gConfigUseGlyph:
-#ifdef CONFIG_USE_UTF8_GLYPH
-    WORD 1
-#else
-    WORD 0
-#endif
+gpPreBattleGenerateFuncs: POIN PreBattleGenerateFuncs
 
 gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
@@ -127,11 +114,11 @@ gpKernelArmFunConfig: POIN gKernelArmFunConfig
 gpMapTaskConfs: POIN gMapTaskConfs
 gpHpBarChr: POIN gHpBarChr
 
-gpSkillMiscConf:                POIN gSkillMiscConf
-gpStatusConf_BonusSkills:       POIN gStatusConf_BonusSkills
-gpStatusConf_DefiantSkills:     POIN gStatusConf_DefiantSkills
-gpStatusConf_PushSkills:        POIN gStatusConf_PushSkills
-gpStatusConf_luckySevenSkill:   POIN gStatusConf_luckySevenSkill
+gpSkillExtraInfo: POIN gSkillExtraInfo
+
+gpEfxCombatArtAnimPriority: POIN EfxCombatArtAnimPriority
+
+gpSkillInfos_Desc: POIN gSkillInfos + 6 // This is limited by FEB function: InputFormRef.init()
 
 KERNEL_RELOC_END:
 ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)

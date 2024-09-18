@@ -14,7 +14,7 @@ extern struct SkillList sSkillList[3];
 
 void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 {
-    int i, sid;
+    int i, weapon, sid;
     int pid = UNIT_CHAR_ID(unit);
     int jid = UNIT_CLASS_ID(unit);
 
@@ -74,10 +74,15 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     }
 
     /* Weapon */
-    if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
-    {
-        u8 weapon = ((struct BattleUnit *)unit)->weaponBefore;
+    weapon = ITEM_NONE;
 
+    if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
+        weapon = ITEM_INDEX(((struct BattleUnit *)unit)->weaponBefore);
+    else
+        weapon = ITEM_INDEX(GetUnitEquippedWeapon(unit));
+
+    if (weapon != ITEM_NONE)
+    {
         sid = gpConstSkillTable_Weapon[weapon * 2];
         if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
         {
@@ -106,6 +111,17 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     WriteUnitList(unit, &list->header);
 }
 
+void ForceUpdateUnitSkillList(struct Unit * unit)
+{
+    struct SkillList * list = SkillListGeneric;
+    if (unit == &gBattleActor.unit)
+        list = SkillListBattleActor;
+    else if (unit == &gBattleTarget.unit)
+        list = SkillListBattleTarget;
+
+    GenerateSkillListExt(unit, list);
+}
+
 #if 0
 struct SkillList * GetUnitSkillList(struct Unit * unit)
 {
@@ -121,6 +137,12 @@ struct SkillList * GetUnitSkillList(struct Unit * unit)
     return list;
 }
 #endif
+
+void DisableUnitSkilLList(struct Unit * unit)
+{
+    struct SkillList * list = GetUnitSkillList(unit);
+    list->amt = 0;
+}
 
 void ResetSkillLists(void)
 {

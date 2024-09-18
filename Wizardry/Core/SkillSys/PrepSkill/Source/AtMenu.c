@@ -1,15 +1,23 @@
 #include "common-chax.h"
 #include "prep-skill.h"
+#include "kernel-lib.h"
 
 void sub_8095C2C(struct ProcAtMenu * proc);
 
 void PrepScreenMenu_OnEquip(struct ProcAtMenu * proc)
 {
+    if (gpKernelDesigerConfig->equip_skill_en == false)
+    {
+        /* Check map */
+        Proc_Goto(proc, 0x5);
+        return;
+    }
+
     proc->state = 6;
     Proc_Goto(proc, 0xA);
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(AtMenu_StartSubmenu);
 void AtMenu_StartSubmenu(struct ProcAtMenu * proc)
 {
     sub_8095C2C(proc);

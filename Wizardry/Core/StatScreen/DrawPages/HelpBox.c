@@ -1,20 +1,18 @@
 #include "common-chax.h"
 #include "stat-screen.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 
-#include "StatScreenInternal.h"
-
-/* LynJump */
+LYN_REPLACE_CHECK(StartStatScreenHelp);
 void StartStatScreenHelp(int pageid, struct Proc * proc)
 {
     LoadHelpBoxGfx(NULL, -1); // default
 
     if (!gStatScreen.help)
     {
-        switch (pageid)
-        {
+        switch (pageid) {
         case STATSCREEN_PAGE_0:
-            gStatScreen.help = RTextPageUnit;
+            StartUnitScreenHelp(pageid, proc);
             break;
 
         case STATSCREEN_PAGE_1:
@@ -22,7 +20,7 @@ void StartStatScreenHelp(int pageid, struct Proc * proc)
             break;
 
         case STATSCREEN_PAGE_2:
-            gStatScreen.help = RTextPageSkill;
+            StartSkillScreenHelp(pageid, proc);
             break;
 
         case 3:
@@ -30,11 +28,10 @@ void StartStatScreenHelp(int pageid, struct Proc * proc)
             break;
         } // switch (pageid)
     }
-
     StartMovingHelpBox(gStatScreen.help, proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(DisplayPage);
 void DisplayPage(int pageid)
 {
     typedef void(* func_type)(void);

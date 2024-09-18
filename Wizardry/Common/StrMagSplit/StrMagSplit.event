@@ -1,39 +1,35 @@
 #ifndef STR_MAG_SPLIT_INSTALLED
 #define STR_MAG_SPLIT_INSTALLED
 
-#ifndef ITEM_SYS_INSTALLED
-    ERROR "Need ItemSystem installed"
-#endif
-
 #include "Source/Hooks.lyn.event"
 #include "Source/BoosterHook.lyn.event"
 
-#ifndef ITEM_MAG_BOOSTER
-#define ITEM_MAG_BOOSTER 0xBC
-#endif
-
-/* Icon */
-#ifndef ICON_ITEM_MAG_BOOSTER
-#define ICON_ITEM_MAG_BOOSTER 0xCA
-#endif
-
 PUSH
-    ORG ($5926F4 + ICON_ITEM_MAG_BOOSTER * 0x80)
+    ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_MAG_BOOSTER * 0x80
         #incbin "Data/SpiritDust.4bpp"
 
-    ORG 0x809B10 + ITEM_MAG_BOOSTER * 0x24 + 0xC
-    POIN ItemStatBonusesMagBooster
+    ORG CONFIG_PR_ITEM_TABLE + CONFIG_ITEM_INDEX_MAG_BOOSTER * 0x24
+        #include "Source/ItemData_MagBooster.lyn.event"
+
+    /**
+     * These hooks is used for FEBuilderGBA
+     * see: https://github.com/FEBuilderGBA/FEBuilderGBA/blob/master/FEBuilderGBA/MagicSplitUtil.cs#L53
+     */
+    ORG 0x2BB44
+    BYTE 0x01 0x4B 0xA5 0xF0 0xC1 0xFE
+    ORG 0x17E5C
+    BYTE 0x01 0x4B 0xB9 0xF0 0x35 0xFD
 POP
 
 /* Boost bonus */
 ALIGN 4
-ItemStatBonusesMagBooster:
+ItemBonus_MagBooster:
     BYTE 0 0 0 0 0 0 0 0
     BYTE 0 2 0 0
 
-InjectItemUsabilityJpt(ITEM_MAG_BOOSTER, 0x8028B4C)
-InjectItemActionJpt(ITEM_MAG_BOOSTER, 0x802FF40)
-InjectItemPrepUsabilityJpt(ITEM_MAG_BOOSTER, 0x0802940C)
-InjectItemPrepEffectJpt(ITEM_MAG_BOOSTER, PrepItemEffect_StatBooster)
+InjectItemUsabilityJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, 0x8028B4C)
+InjectItemActionJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, 0x802FF40)
+InjectItemPrepUsabilityJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, 0x0802940C)
+InjectItemPrepEffectJpt(CONFIG_ITEM_INDEX_MAG_BOOSTER, PrepItemEffect_StatBooster)
 
 #endif /* STR_MAG_SPLIT_INSTALLED */

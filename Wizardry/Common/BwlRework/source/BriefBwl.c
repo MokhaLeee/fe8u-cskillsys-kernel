@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "bwl.h"
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddBattleAmt);
 void PidStatsAddBattleAmt(struct Unit * unit)
 {
     u32 pid;
@@ -20,7 +20,7 @@ void PidStatsAddBattleAmt(struct Unit * unit)
         bwl->battleAmt++;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddWinAmt);
 void PidStatsAddWinAmt(u8 pid)
 {
     struct NewBwl * bwl = GetNewBwl(pid);
@@ -31,7 +31,7 @@ void PidStatsAddWinAmt(u8 pid)
         bwl->winAmt++;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsRecordLoseData);
 void PidStatsRecordLoseData(u8 pid)
 {
     struct NewBwl * bwl;
@@ -44,55 +44,55 @@ void PidStatsRecordLoseData(u8 pid)
         bwl->lossAmt++;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsRecordDefeatInfo);
 void PidStatsRecordDefeatInfo(u8 pid, u8 killerPid, int deathCause)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddActAmt);
 void PidStatsAddActAmt(u8 pid)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddStatViewAmt);
 void PidStatsAddStatViewAmt(u8 pid)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddDeployAmt);
 void PidStatsAddDeployAmt(u8 pid)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddSquaresMoved);
 void PidStatsAddSquaresMoved(u8 pid, int amount)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddExpGained);
 void PidStatsAddExpGained(u8 pid, int expGain)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsSubFavval08);
 void PidStatsSubFavval08(u8 pid)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsSubFavval100);
 void PidStatsSubFavval100(u8 pid)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsGetTotalBattleAmt);
 int PidStatsGetTotalBattleAmt(void)
 {
     int i, ret = 0;
@@ -108,7 +108,7 @@ int PidStatsGetTotalBattleAmt(void)
     return ret;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsGetTotalWinAmt);
 int PidStatsGetTotalWinAmt(void)
 {
     int i, ret = 0;
@@ -124,7 +124,7 @@ int PidStatsGetTotalWinAmt(void)
     return ret;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsGetTotalLossAmt);
 int PidStatsGetTotalLossAmt(void)
 {
     int i, ret = 0;
@@ -140,31 +140,31 @@ int PidStatsGetTotalLossAmt(void)
     return ret;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsGetTotalLevel);
 int PidStatsGetTotalLevel(void)
 {
     return 1;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsGetTotalExpGain);
 int PidStatsGetTotalExpGain(void)
 {
     return 0;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsGetExpGain);
 int PidStatsGetExpGain(u8 pid)
 {
     return 0;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsGetFavval);
 int PidStatsGetFavval(u8 pid)
 {
     return 0;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(PidStatsAddFavval);
 void PidStatsAddFavval(u8 pid, int val)
 {
     return;
@@ -172,25 +172,25 @@ void PidStatsAddFavval(u8 pid, int val)
 
 // void PidStatsRecordBattleRes(void)
 
-/* LynJump! */
+LYN_REPLACE_CHECK(GetPidDefeatedEndingString);
 char * GetPidDefeatedEndingString(int pid)
 {
     return "Died at unknown";
 }
 
-/* LynJump! */
-void sub_80B6CA8(ProcPtr proc)
+LYN_REPLACE_CHECK(sub_80B6CA8);
+void sub_80B6CA8(struct EndingBattleDisplayProc * proc)
 {
     return;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(GetChapterDeathCount);
 u16 GetChapterDeathCount(void)
 {
     return 0;
 }
 
-/* LynJump! */
+LYN_REPLACE_CHECK(DisplayBwl);
 void DisplayBwl(void)
 {
     return;

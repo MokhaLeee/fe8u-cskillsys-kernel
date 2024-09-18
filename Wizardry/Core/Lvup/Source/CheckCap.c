@@ -4,8 +4,8 @@
 
 STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit * unit, struct BattleUnit * bu)
 {
-    if ((unit->maxHP + bu->changeHP) > UNIT_MHP_MAX(unit))
-        bu->changeHP = UNIT_MHP_MAX(unit) - unit->maxHP;
+    if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit))
+        bu->changeHP = KUNIT_MHP_MAX(unit) - unit->maxHP;
 
     if ((unit->pow + bu->changePow) > UNIT_POW_MAX(unit))
         bu->changePow = UNIT_POW_MAX(unit) - unit->pow;
@@ -28,8 +28,8 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit * unit, struct Bat
 
 STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit * unit)
 {
-    if (unit->maxHP > UNIT_MHP_MAX(unit))
-        unit->maxHP = UNIT_MHP_MAX(unit);
+    if (unit->maxHP > KUNIT_MHP_MAX(unit))
+        unit->maxHP = KUNIT_MHP_MAX(unit);
 
     if (unit->pow > UNIT_POW_MAX(unit))
         unit->pow = UNIT_POW_MAX(unit);
@@ -56,7 +56,7 @@ STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit * unit)
         unit->movBonus = (UNIT_MOV_MAX(unit) - UNIT_MOV_BASE(unit));
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(CheckBattleUnitStatCaps);
 void CheckBattleUnitStatCaps(struct Unit * unit, struct BattleUnit * bu)
 {
     CheckBattleUnitStatCapsVanilla(unit, bu);
@@ -66,8 +66,13 @@ void CheckBattleUnitStatCaps(struct Unit * unit, struct BattleUnit * bu)
         BU_CHG_MAG(bu) = GetUnitMaxMagic(unit) - UNIT_MAG(unit);
 }
 
-/* LynJump */
+#if 0
+LYN_UNUSED_REPLACE_CHECK(UnitCheckStatCaps);
 void UnitCheckStatCaps(struct Unit * unit)
+#else
+/* External hook to save spaces */
+void _UnitCheckStatCaps(struct Unit * unit)
+#endif
 {
     UnitCheckStatCapsVanilla(unit);
 

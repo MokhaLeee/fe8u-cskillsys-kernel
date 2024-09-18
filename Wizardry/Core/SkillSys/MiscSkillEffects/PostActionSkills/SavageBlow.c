@@ -27,7 +27,12 @@ STATIC_DECLAR void ExecSkillSavageBlowEffectAnim(ProcPtr proc)
 STATIC_DECLAR void SkillSavageBlowPostAnimEffect(ProcPtr proc)
 {
     int i;
-    int damage = Div(gBattleStats.damage * 2, 10);
+#ifdef SID_SavageBlow
+    int perc = SKILL_EFF0(SID_SavageBlow);
+#else
+    int perc = 20;
+#endif
+    int damage = Div(gBattleStats.damage * perc, 100);
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
@@ -52,8 +57,8 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillSavageBlow[] = {
 
 bool PostActionSkillSavageBlow(ProcPtr parent)
 {
-    struct Unit * unit = gActiveUnit;
-    struct Unit * target = GetUnit(gActionData.targetIndex);
+    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit * target = GetUnit(gActionData.targetIndex);
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

@@ -1,10 +1,10 @@
 ## MSG_SKILL_Canto
 Canto:[NL]
-Unit can move again.[X]
+Unit can move again after combat.[X]
 
 ## MSG_SKILL_CantoPlus
-Canto:[NL]
-Unit can move again after combat.[X]
+Canto+:[NL]
+Unit can move again.[X]
 
 ## MSG_SKILL_AlertStance
 A-Stance:[NL]
@@ -35,22 +35,22 @@ in 2 tiles heal for 20% their max HP.[X]
 Thunder[X]
 
 ## MSG_SKILL_Thunderstorm
-Thunderstorm:[NL]
-When targeting enemies from 3 tiles away,[NL]
-call an AOE thunder at the enemy location.[X]
+Thunder Storm:[NL]
+Call thunder-storm with AOE damage[NL]
+on emey when attacking from distance.[X]
 
 ## MSG_SKILL_PosReturn
 Return:[NL]
 If the enemy is defeated, you can[NL]
 return to your starting position.[X]
 
-## MSG_SKILL_PosSwap
+## MSG_SKILL_Lunge
 Swap:[NL]
 Swap positions with the enemy[NL]
 after attacking them.[X]
 
 ## MSG_SKILL_Synchronize
-Synchronize: 
+Synchronize: [NL]
 Copy status of unit to target.[NL]
 Allies only get buffs, and vice-versa.[X]
 
@@ -63,3 +63,51 @@ attacking and defeating an enemy.[X]
 Tsuzuku:[NL]
 Gain an additional action at the end[NL]
 of this unit's turn (Skill % activation).[X]
+
+## MSG_SKILL_PowerStaff
+PowerStaff:[NL]
+Gain another action after[NL]
+using a staff.[X]
+
+## MSG_SKILL_FailGale
+Fail Gale:[NL]
+Move again after attacking and[NL]
+failing to harm an enemy.[X]
+
+## MSG_SKILL_PoisonStrike_NAME
+P-Strike[X]
+
+## MSG_SKILL_PoisonStrike
+Poison Strike:[NL]
+If user initiated combat, deal up to[NL]
+20% of enemy's current HP in damage.[X]
+
+## MSG_SKILL_GrislyWound_NAME
+G-Wound[X]
+
+## MSG_SKILL_GrislyWound
+Grisly Wound:[NL]
+Deal up to 20% of the enemy's current[NL]
+HP in damage, after combat.[X]
+
+## MSG_SKILL_Clearance
+Clearance:[NL]
+Clear own negative status after combat[X]
+
+## MSG_SKILL_Despoil
+Despoil:[NL]
+Gain a red gem after killing an[NL]
+enemy unit. (Skill % activation)[X]
+
+## MSG_SKILL_SoulSap
+Soul Sap: At the end of this unit's[NL]
+action, drain up to 10% HP from each[NL]
+enemy within two tiles for healing.[X]
+
+## MSG_SKILL_GoldDigger_NAME
+G-Digger[X]
+
+## MSG_SKILL_GoldDigger
+Gold Digger:[NL]
+Gain 100 gold after[NL]
+killing an enemy.[X]

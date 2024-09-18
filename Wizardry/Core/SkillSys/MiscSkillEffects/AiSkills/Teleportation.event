@@ -1,6 +1,7 @@
+#include "Teleportation/LynJump.event"
+#include "Teleportation/Teleportation.lyn.event"
 #include "Teleportation/TeleportationAiAction.lyn.event"
 #include "Teleportation/TeleportationAiDecide.lyn.event"
-#include "Teleportation/LynJump.event"
+#include "Teleportation/TeleportationAction.lyn.event"
 
 InjectAiAction(CONFIG_AI_ACTION_EXPA_Teleportation, AiAction_Teleportation, AiAction_TeleportationIdle)
-InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_Teleportation, Action_Teleportation)

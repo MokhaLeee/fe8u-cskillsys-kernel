@@ -1,21 +1,24 @@
 #include "common-chax.h"
 #include "action-expa.h"
 
-/* LynJump */
+LYN_REPLACE_CHECK(ApplyUnitAction);
 unsigned int ApplyUnitAction(ProcPtr proc)
 {
-    const UnitActionFunc_t * it;
+    UnitActionFunc_t it;
 
     gActiveUnit = GetUnit(gActionData.subjectIndex);
 
     if (gActionData.unitActionType >= CONFIG_UNIT_ACTION_AMT)
         return true;
 
-    it = gpUnitActionTable + gActionData.unitActionType;
+    /* Well I think there should be set some data for action-expa during action routine */
+    memset(&gActionDataExpa, 0, sizeof(gActionDataExpa));
+
+    it = gpUnitActionTable[gActionData.unitActionType];
     if (!it)
         return true;
 
-    return (*it)(proc);
+    return it(proc);
 }
 
 /* Misc action functions */

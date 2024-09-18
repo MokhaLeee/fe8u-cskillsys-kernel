@@ -29,6 +29,7 @@ enum UNIT_STATUS_IDENTIFIER {
 };
 
 enum DEBUFF_POSITIVE_TYPE {
+    /* DebuffInfo::positive_type */
     STATUS_DEBUFF_NONE,
     STATUS_DEBUFF_NEGATIVE,
     STATUS_DEBUFF_POSITIVE,
@@ -37,12 +38,14 @@ enum DEBUFF_POSITIVE_TYPE {
 };
 
 enum STATUS_DEBUFF_TICK_TYPE {
+    /* DebuffInfo::tick_type */
     STATUS_DEBUFF_NO_TICK = 0,
     STATUS_DEBUFF_TICK_ON_ENEMY = 1,
     STATUS_DEBUFF_TICK_ON_ALLY = 2,
 };
 
 enum DEBUFF_INFO_EFX_SPEED {
+    /* DebuffInfo::efx_config::speed */
     EFX_DEBUFF_LOWLOW,
     EFX_DEBUFF_LOW,
     EFX_DEBUFF_NORMAL,
@@ -171,6 +174,24 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_BUFF_ROUSE_RES,
     UNIT_STAT_BUFF_ROUSE_MOV,
 
+    UNIT_STAT_BUFF_RALLY_POW,
+    UNIT_STAT_BUFF_RALLY_MAG,
+    UNIT_STAT_BUFF_RALLY_SKL,
+    UNIT_STAT_BUFF_RALLY_SPD,
+    UNIT_STAT_BUFF_RALLY_LCK,
+    UNIT_STAT_BUFF_RALLY_DEF,
+    UNIT_STAT_BUFF_RALLY_RES,
+    UNIT_STAT_BUFF_RALLY_MOV,
+
+    UNIT_STAT_BUFF_INDOOR_MARCH_MOV,
+    UNIT_STAT_BUFF_NATURE_RUSH_MOV,
+
+    UNIT_STAT_BUFF_KEEPUP,
+
+    UNIT_STAT_BUFF_ARMOR_MARCH,
+
+    UNIT_STAT_BUFF_STRIDE,
+
     UNIT_STAT_DEBUFF_MAX_REAL,
     UNIT_STAT_DEBUFF_MAX = 128, /* DO NOT modify this */
 };
@@ -218,5 +239,11 @@ int LckGetterStatDebuff(int status, struct Unit * unit);
 int MovGetterStatDebuff(int status, struct Unit * unit);
 
 void StatDeuff_OnNewGameInit(void);
-void StatDeuff_OnNewGameSave(void);
+void ResetStatDeuffBuf(void);
 void StatDeuff_OnLoadUnit(struct Unit * unit);
+
+/* Misc API */
+bool UnitHasNegativeStatus(struct Unit * unit);
+bool UnitHasPositiveStatus(struct Unit * unit);
+void RemoveUnitNegativeStatus(struct Unit * unit);
+void RemoveUnitPositiveStatus(struct Unit * unit);

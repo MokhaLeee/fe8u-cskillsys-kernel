@@ -18,7 +18,7 @@ F-Strike[X]
 Wild-A[X]
 
 ## MSG_COMART_NAME_Spike
-Wild-A[X]
+Spike[X]
 
 ## MSG_COMART_NAME_DiamondAxe
 Diamond[X]

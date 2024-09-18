@@ -98,3 +98,16 @@ STATIC_DECLAR int TrySwitchBanimInfo(int pos,
 
     return 1;
 }
+
+LYN_REPLACE_CHECK(EkrPrepareBanimfx);
+void EkrPrepareBanimfx(struct Anim * anim, u16 index)
+{
+    gBanimIdx[GetAnimPosition(anim)] = index;
+    UpdateBanimFrame();
+    SwitchAISFrameDataFromBARoundType(anim, 6);
+
+#if CHAX
+    /* Fix bugs on dragon switch banim */
+    gpBanimSyncInfo->banim_idx[GetAnimPosition(anim)] = index;
+#endif
+}

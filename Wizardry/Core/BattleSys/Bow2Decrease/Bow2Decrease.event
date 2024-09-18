@@ -1,0 +1,10 @@
+#include "Source/Bow2Decrease.lyn.event"
+
+PUSH
+    ORG 0x2B804
+    pr_Bow2DecreaseJdg:
+#ifdef CONFIG_INSTALL_BOW2DECREASE
+    // Fake FEB patch: Bow2Decrease
+    BYTE 0x00 0x4B 0x9F 0x46
+#endif
+POP

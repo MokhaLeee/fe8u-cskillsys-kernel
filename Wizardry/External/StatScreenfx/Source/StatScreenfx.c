@@ -42,7 +42,7 @@ static void LoadStatScreenMuAreaBackGround(void)
     ApplyPalette(gpPal_StatScreenMuAreaBg, 0x10 + STATSCREEN_MUAREA_PAL_BASE);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(PageNumCtrl_DisplayMuPlatform);
 void PageNumCtrl_DisplayMuPlatform(struct StatScreenPageNameProc * proc)
 {
     SetBlendTargetA(0, 0, 1, 0, 0);
@@ -186,7 +186,7 @@ void PageSlide_OnLoopRework(struct StatScreenEffectProc* proc)
         Proc_Break(proc);
 }
 
-/* LynJump */
+LYN_REPLACE_CHECK(UnitSlide_SetNewUnit);
 void UnitSlide_SetNewUnit(struct StatScreenEffectProc* proc)
 {
     gStatScreen.unit = GetUnit(proc->newItem);

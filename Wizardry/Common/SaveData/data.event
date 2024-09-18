@@ -36,14 +36,19 @@ gEmsSizes:
 ALIGN 4
 gEmsSavChunks:
     EmsChunk($004C, MSA_SavePlaySt,     MSA_LoadPlaySt,      EMS_CHUNK_CHAPTERSTATE)
-    EmsChunk($00B0, $0A31E4+1,          $0A326C+1,           EMS_CHUNK_CONVOYITEMS)      /* Supply */
     EmsChunk($0019, $0A3150+1,          $0A3198+1,           EMS_CHUNK_EIDS_PERMANENT)   /* Permanent flags */
-    EmsChunk($0460, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
+    EmsChunk($0330, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
     EmsChunk($00C0, $0a4248+1,          $0a4288+1,           EMS_CHUNK_WINDATA)          /* Chapter states */
     EmsChunk($0004, MSA_SaveBonusClaim, MSA_LoadBonusClaim,  EMS_CHUNK_BONUSCLAIMDATA)   /* Bonus claim */
     EmsChunk($0021, MSA_SaveWorldMap,   MSA_LoadWorldMap,    EMS_CHUNK_WMDATA)           /* World map */
     EmsChunk($0018, MSA_SaveDungeon,    MSA_LoadDungeon,     EMS_CHUNK_DUNGEON)          /* Dungeon */
     EmsChunk($0008, $0A59E0+1,          $0A5A00+1)           /* Skirmish RN state */
+
+#ifdef CONFIG_INSTALL_CONVOYEXPA
+    EmsChunk($0258, SaveExpaConvoy, LoadExpaConvoy, EMS_CHUNK_CONVOYITEMS)
+#else
+    EmsChunk($00B0, $0A31E4+1, $0A326C+1, EMS_CHUNK_CONVOYITEMS)      /* Supply */
+#endif
 
     /* 51 * 0x2C */
     EmsChunk($08C4, MSA_SaveUnits, MSA_LoadUnits, EMS_CHUNK_SAVEUNITS)
@@ -60,8 +65,7 @@ gEmsSusChunks:
     EmsChunk($0038, MSU_SaveAction,     MSU_LoadAction)
     EmsChunk($0019, $0A3150+1,          $0A3198+1,           EMS_CHUNK_EIDS_PERMANENT)   /* Permanent flags */
     EmsChunk($0005, $0A3130+1,          $0A3170+1)                                       /* Chapter flags */
-    EmsChunk($00B0, $0A31E4+1,          $0A326C+1,           EMS_CHUNK_CONVOYITEMS)      /* Supply */
-    EmsChunk($0460, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
+    EmsChunk($0330, $0A4264+1,          $0A421C+1,           EMS_CHUNK_BWLENTRIES)       /* BWL */
     EmsChunk($00C0, $0a4248+1,          $0a4288+1,           EMS_CHUNK_WINDATA)          /* Chapter states */
     EmsChunk($0200, $0A6370+1,          $0A638C+1)                                       /* Traps */
     EmsChunk($0010, MSU_SaveMenuMask,   MSU_LoadMenuMask)                                /* BM menu mask */
@@ -70,6 +74,12 @@ gEmsSusChunks:
     EmsChunk($000C, MSU_SaveDungeon2,   MSU_LoadDungeon2)                                /* Dungeon state */
     EmsChunk($0004, MSU_SaveEvtCounter, MSU_LoadEvtCounter)                              /* Event slot counter */
     EmsChunk($0000, MSU_SaveBonusClaim, MSU_LoadBonusClaimWIP)
+
+#ifdef CONFIG_INSTALL_CONVOYEXPA
+    EmsChunk($0258, SaveExpaConvoy, LoadExpaConvoy, EMS_CHUNK_CONVOYITEMS)
+#else
+    EmsChunk($00B0, $0A31E4+1, $0A326C+1, EMS_CHUNK_CONVOYITEMS) /* Supply */
+#endif
 
     EmsChunk(51 * 0x34, MSU_SaveBlueUnits,  MSU_LoadBlueUnits, EMS_CHUNK_SAVEUNITS)
     EmsChunk(50 * 0x34, MSU_SaveRedUnits,   MSU_LoadRedUnits)
@@ -82,6 +92,7 @@ gEmsSusChunks:
     EmsChunk($0660, SaveUnitLearnedSkillLists, LoadUnitLearnedSkillLists)
     EmsChunk($0020, SaveCombatArtStatus, LoadCombatArtStatus)
     EmsChunk($0008, SaveRandC, LoadRandC)
+    EmsChunk($0008, MSU_SaveSelectionPos, MSU_LoadSelectionPos)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
     EmsChunk((51 + 50 + 8) * 16, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
 
@@ -90,5 +101,5 @@ gEmsSusChunks:
 ALIGN 4
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
-    POIN StatDeuff_OnNewGameSave
+    POIN ResetStatDeuffBuf
     WORD 0 0 0 0
