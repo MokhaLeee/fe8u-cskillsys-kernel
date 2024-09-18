@@ -11,7 +11,7 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 #if (defined(SID_InitSpectrum) && COMMON_SKILL_VALID(SID_InitSpectrum))
         SID_InitSpectrum,
 #endif
-        SID_Acrobat,
+        //SID_Acrobat,
     },
 
     [CHARACTER_EPHRAIM] = {
@@ -22,7 +22,7 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 #if (defined(SID_COMBAT_Detonate) && COMMON_SKILL_VALID(SID_COMBAT_Detonate))
         SID_COMBAT_Detonate,
 #endif
-        SID_Acrobat,
+        //SID_Acrobat,
     },
 
     [CHARACTER_SALEH] = {

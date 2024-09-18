@@ -173,6 +173,8 @@ try_ballist_combat:
 /**
  * Add unit to AI list
  */
+extern void DecideScriptA(void);
+extern void CpOrderBerserkInit(ProcPtr proc);
 LYN_REPLACE_CHECK(CpOrderBerserkInit);
 void CpOrderBerserkInit(ProcPtr proc)
 {
