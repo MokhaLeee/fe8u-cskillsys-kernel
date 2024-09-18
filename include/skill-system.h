@@ -93,6 +93,9 @@ extern bool (* _JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
 #define BattleSkillTester _JudgeSkillViaList
 #define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
 
+bool CheckSkillActivate(struct Unit * unit, int sid, int rate);
+bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
+
 /* Prep equip skill list */
 struct PrepEquipSkillList {
     struct UnitListHeader header;

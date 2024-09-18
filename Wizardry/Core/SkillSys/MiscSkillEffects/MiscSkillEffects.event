@@ -31,6 +31,7 @@
 #include "MenuSkills/Repair.lyn.event"
 
 #include "Misc/HealAmount.lyn.event"
+#include "Misc/SkillActRate.lyn.event"
 
 #include "LegendarySkills/JudgeLegend.lyn.event"
 #include "LegendarySkills/LegendEffect.lyn.event"

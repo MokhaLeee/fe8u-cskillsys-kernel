@@ -36,7 +36,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 
     case UNIT_ACTION_STAFF:
 #if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
-        if (SkillTester(unit, SID_PowerStaff) && Roll1RN(LckGetter(unit)))
+        if (CheckSkillActivate(unit, SID_PowerStaff, GetUnitLuck(unit)))
             goto L_exec_rafrain_action_anim;
 #endif
 
@@ -44,7 +44,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 
     default:
 #if defined(SID_Tsuzuku) && (COMMON_SKILL_VALID(SID_Tsuzuku))
-        if (SkillTester(unit, SID_Tsuzuku) && Roll1RN(SklGetter(unit)))
+        if (CheckSkillActivate(unit, SID_Tsuzuku, GetUnitSkill(unit)))
             goto L_exec_rafrain_action_anim;
 #endif
         break;
