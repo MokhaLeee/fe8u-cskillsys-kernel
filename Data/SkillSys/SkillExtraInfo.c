@@ -307,4 +307,5 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_LimitBreaker] = {{ 5 }},
     [SID_LimitBreakerPlus] = {{ 10 }},
     [SID_RiskItAll] = {{ 100 }},
+    [SID_BoundlessVitality] = {{ 20 }},
 };
