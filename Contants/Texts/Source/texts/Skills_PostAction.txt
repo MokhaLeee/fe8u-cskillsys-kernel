@@ -146,3 +146,8 @@ once per turn if <= 25% max HP.[X]
 Turncoat:[NL]
 Turn an attacked enemy[NL]
 into an ally for a turn.[X]
+
+## MSG_SKILL_BoundlessVitality
+Boundless Vitality:[NL]
+Restore 20% of the unit's[NL]
+health after every battle.[X]

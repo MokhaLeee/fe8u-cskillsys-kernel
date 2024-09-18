@@ -17,6 +17,15 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;
 
+    switch (gActionData.unitActionType)
+    {
+    case UNIT_ACTION_COMBAT:
+#if defined(SID_BoundlessVitality) && (COMMON_SKILL_VALID(SID_BoundlessVitality))
+        if (SkillTester(gActiveUnit, SID_BoundlessVitality))
+            heal += hp_max * SKILL_EFF0(SID_BoundlessVitality) / 100;
+#endif
+    }
+
 #if defined(SID_Lifetaker) && (COMMON_SKILL_VALID(SID_Lifetaker))
     if (SkillTester(gActiveUnit, SID_Lifetaker) && gBattleActorGlobalFlag.enimy_defeated)
         heal += hp_max * SKILL_EFF0(SID_Lifetaker) / 100;
@@ -75,3 +84,35 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     CallMapAnim_Heal(parent, gActiveUnit, heal);
     return true;
 }
+
+bool PostAction_BattleTargetHeal(ProcPtr parent)
+{
+    int heal = 0;
+
+    int hp_cur = GetUnitCurrentHp(GetUnit(gBattleTarget.unit.index));
+    int hp_max = GetUnitMaxHp(GetUnit(gBattleTarget.unit.index));
+
+    // int missingHP = hp_max - hp_cur;
+
+    if (!UNIT_ALIVE(GetUnit(gBattleTarget.unit.index)) || UNIT_STONED(GetUnit(gBattleTarget.unit.index)))
+        return false;
+
+    switch (gActionData.unitActionType)
+    {
+    case UNIT_ACTION_COMBAT:
+#if defined(SID_BoundlessVitality) && (COMMON_SKILL_VALID(SID_BoundlessVitality))
+        if (SkillTester(GetUnit(gBattleTarget.unit.index), SID_BoundlessVitality))
+            heal += hp_max * SKILL_EFF0(SID_BoundlessVitality) / 100;
+#endif
+    }
+
+    if (heal == 0)
+        return false;
+
+    if ((heal >= (hp_max - hp_cur)))
+        heal = hp_max - hp_cur;
+
+    CallMapAnim_Heal(parent, GetUnit(gBattleTarget.unit.index), heal);
+    return true;
+}
+

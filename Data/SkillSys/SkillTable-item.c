@@ -8,11 +8,12 @@ const u16 gConstSkillTable_Item[0x100][2] = {
         SID_TriangleAttack,
     },
     [ITEM_SWORD_RAPIER] = {
-        SID_PoisonHeal,
+        SID_BoundlessVitality,
         SID_DarkHorse,
     },
     [ITEM_AXE_IRON] = {
         SID_NiceThighs,
+        SID_BoundlessVitality,
     },
     [ITEM_STAFF_HEAL] = {
         SID_LiveToServe,

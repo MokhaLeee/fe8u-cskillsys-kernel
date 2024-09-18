@@ -75,3 +75,4 @@ SID_Ludopathy
 SID_WaterWalking
 SID_WaterWalkingPlus
 SID_PoisonHeal
+SID_BoundlessVitality
