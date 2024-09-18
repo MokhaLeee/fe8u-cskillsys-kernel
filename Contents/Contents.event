@@ -1,5 +1,5 @@
-#ifndef CONTANTS_INSTALLED
-#define CONTANTS_INSTALLED
+#ifndef CONTENTS_INSTALLED
+#define CONTENTS_INSTALLED
 
 ALIGN 4
 #include "EfxAnim/EfxAnim.event"

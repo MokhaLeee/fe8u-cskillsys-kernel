@@ -108,11 +108,11 @@ To avoid compilation errors, you'd better to add skill index detection on effect
 
 ### 2. Skill icon
 
-Add icon to [gfx directory](../Contants/Gfx/Sources/SkillIcon/), you just need to give the ***.png*** file a proper name, then kernel may automatically generate variable as `GFX_SkillIcon_*` in [constants/gfx.h](../include/constants/gfx.h).
+Add icon to [gfx directory](../Contents/Gfx/Sources/SkillIcon/), you just need to give the ***.png*** file a proper name, then kernel may automatically generate variable as `GFX_SkillIcon_*` in [constants/gfx.h](../include/constants/gfx.h).
 
 ### 3. Skill description & name
 
-Add text to [texts.txt](../Contants/Texts/Source/texts.txt), then kernel may automatically generate msg index in [constants/texts.h](../include/constants/texts.h).
+Add text to [texts.txt](../Contents/Texts/Source/texts.txt), then kernel may automatically generate msg index in [constants/texts.h](../include/constants/texts.h).
 
 Skill name is optional. You can also add a msg to texts, but kernel may also directly find the skill name inside skill description (by finding the character "`:`" through function [SkillDescToName()](../Wizardry/Core/SkillSys/kernel/Infos.c#L40)).
 

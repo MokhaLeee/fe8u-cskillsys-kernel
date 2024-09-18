@@ -19,17 +19,17 @@ EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 RAM_REF    := $(CONFIG_DIR)/config-memmap.s
 
 WIZARDRY_DIR := $(MK_DIR)Wizardry
-CONTANTS_DIR := $(MK_DIR)Contants
+CONTENTS_DIR := $(MK_DIR)Contents
 GAMEDATA_DIR := $(MK_DIR)Data
 
-HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTANTS_DIR) $(GAMEDATA_DIR)
+HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
 
 all:
 	@$(MAKE) pre_build	|| exit 1
 	@$(MAKE) chax		|| exit 1
 	@$(MAKE) post_chax	|| exit 1
 
-include Contants/contants.mk
+include Contents/contents.mk
 
 CACHE_DIR := $(MK_DIR).cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
@@ -208,7 +208,7 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # = Texts =
 # =========
 
-TEXT_DIR    := $(CONTANTS_DIR)/Texts
+TEXT_DIR    := $(CONTENTS_DIR)/Texts
 TEXT_MAIN   := $(TEXT_DIR)/Source/TextMain.txt
 TEXT_SOURCE := $(shell find $(TEXT_DIR) -type f -name '*.txt')
 
@@ -265,7 +265,7 @@ CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES
 # = EfxAnims =
 # ============
 
-EFX_ANIM_DIR := $(MK_DIR)Contants/EfxAnim
+EFX_ANIM_DIR := $(MK_DIR)Contents/EfxAnim
 EFX_ANIMTOR  := python3 $(EFX_ANIM_DIR)/Scripts/efx-anim-creator.py
 
 EFX_SCRIPTS  := $(shell find $(HACK_DIRS) -type f -name '*.efx.txt')
@@ -292,7 +292,7 @@ CLEAN_BUILD += $(EFX_ANIM_DIR)
 # = GFX =
 # =======
 
-GFX_DIR     := $(MK_DIR)Contants/Gfx
+GFX_DIR     := $(MK_DIR)Contents/Gfx
 GFX_SOURCES := $(shell find $(GFX_DIR)/Sources -type f -name '*.png')
 
 export GFX_HEADER := $(GFX_DIR)/GfxDefs.h

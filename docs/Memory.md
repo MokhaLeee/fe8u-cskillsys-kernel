@@ -11,7 +11,7 @@ ROM space distribution is configured in [config-memmap.h](../include/Configs/con
 
 To improve program performance, the kernel use **in-BL range** space (start from `0xE8414`) for text section, which is quite different from the custom modifications.
 
-For other data and contants, we mainly use free-space starting from `0xB2A604`.
+For other data and contents, we mainly use free-space starting from `0xB2A604`.
 
 In order to collaborate with FEBuilderGBA and make DEMO based on kernel, we also need to define some important data at these fixed locations:
 

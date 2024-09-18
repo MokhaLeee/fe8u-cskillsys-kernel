@@ -20,8 +20,8 @@ ORG FreeSpaceDEMO
     /**
      * Put vanilla text data to the user space
      */
-    #include "Contants/Texts/RepointText/RepointText.event"
-    #include "Contants/Texts/RepointText/RepointTextData.event"
+    #include "Contents/Texts/RepointText/RepointText.event"
+    #include "Contents/Texts/RepointText/RepointTextData.event"
     /* <!>
      * Tool helpers should installed after repointing
      */
@@ -30,7 +30,7 @@ MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - Free
 
 ORG FreeSpaceKernelData
     #include "Data/Data.event"
-    #include "Contants/Contants.event"
+    #include "Contents/Contents.event"
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
 
