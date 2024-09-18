@@ -558,6 +558,7 @@ void SetBattleAnimFacing(int actorId1, int actorId2, int facing);
 // ??? SetupBattleMOVEUNITs(???);
 void sub_807B4D0(void);
 // ??? BeginMapAnimForPoisonDmg(???);
+void BeginMapAnimForPoisonDmg(void);
 // ??? BeginMapAnimForEggDmg(???);
 // ??? BeginMapAnimForCritAtk(???);
 void BeginMapAnimForSteal(void);

@@ -3,8 +3,10 @@
 
 void ApplyHazardHealing(ProcPtr, struct Unit*, int, int);
 // ??? RenderMapForFogFadeIfUnitDied(???);
+void RenderMapForFogFadeIfUnitDied(struct Unit* unit);
 // ??? BeginUnitHealAnim(???);
 // ??? BeginUnitPoisonDamageAnim(???);
+void BeginUnitPoisonDamageAnim(struct Unit* unit, int damage);
 // ??? BeginGorgonEggHatchDamageAnim(???);
 void BeginUnitCritDamageAnim(struct Unit*, int);
 // ??? KillAllRedUnits_Init(???);

@@ -159,3 +159,8 @@ to the secret shop.[X]
 Ludopathy:[NL]
 Double gambling[NL]
 bets and wins.[X]
+
+## MSG_SKILL_PoisonHeal
+Poison Heal:[NL]
+Unit instead heals whatever[NL]
+damage taken when poisoned.[X]
