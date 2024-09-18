@@ -47,7 +47,115 @@ Deal:[NL]
 Reduce cost of items bought[NL]
 by this unit by 20%.[X]
 
+## MSG_SKILL_ConcealedWeapon_NAME
+C-Weapon[X]
+
+## MSG_SKILL_ConcealedWeapon
+Concealed Weapon:[NL]
+Smuggle the unit's equipped[NL]
+weapon into an arena.[X]
+
 ## MSG_SKILL_Bargain
 Bargain:[NL]
 Reduce cost of items bought[NL]
 by this unit by 50%.[X]
+
+## MSG_SKILL_Comatose
+Comatose:[NL]
+This unit can still act[NL]
+while asleep.[X]
+
+## MSG_SKILL_HazeHunter
+Haze Hunter:[NL]
+Allows unit to see 5[NL]
+additional spaces in fog.[X]
+
+## MSG_SKILL_Amische
+Amische:[NL]
+This unit's religion prevents[NL]
+them from using non-iron weaponry.[X]
+
+## MSG_SKILL_PairUp
+Pair Up:[NL]
+Rescue a unit and gain 20%[NL]
+of their stats as boosts.[X]
+
+## MSG_SKILL_Reflex
+Reflex:[NL]
+This unit's turn isn't ended[NL]
+when surprised by enemies in fog.[X]
+
+## MSG_SKILL_IdentityProblems_NAME
+I-Problems[X]
+
+## MSG_SKILL_IdentityProblems
+Identity Problems:[NL]
+This unit can't decide[NL]
+on a name or face.[X]
+
+## MSG_SKILL_Pathfinder_NAME
+P-Finder[X]
+
+## MSG_SKILL_Pathfinder
+Pathfinder:[NL]
+Allied units within[NL]
+3 tiles can Canto.[X]
+
+## MSG_SKILL_PastelVeil_NAME
+P-Veil[X]
+
+## MSG_SKILL_PastelVeil
+Pastel Veil:[NL]
+Allies in a 3 tile radius[NL]
+are immune to poison.[X]
+
+## MSG_SKILL_CatchEmAll
+CatchEmAll:[NL]
+Gives this unit[NL]
+every skill.[X]
+
+## MSG_SKILL_DoubleUp
+Double Up:[NL]
+Guarantees this unit gains at[NL]
+least two stats per level up.[X]
+
+## MSG_SKILL_TripleUp
+Triple Up:[NL]
+Guarantees this unit gains at[NL]
+least three stats per level up.[X]
+
+## MSG_SKILL_Casual
+Casual:[NL]
+If unit dies, they revive[NL]
+at the end of the chapter.[X]
+
+## MSG_SKILL_LimitBreaker_NAME
+L-Breaker[X]
+
+## MSG_SKILL_LimitBreaker
+Limit Breaker:[NL]
+Add +5 to this unit's[NL]
+stat caps.[X]
+
+## MSG_SKILL_LimitBreakerPlus_NAME
+L-Breaker+[X]
+
+## MSG_SKILL_LimitBreakerPlus
+Limit Breaker+:[NL]
+Add +10 to this unit's[NL]
+stat caps.[X]
+
+## MSG_SKILL_DestinyBond
+Destiny Bond:[NL]
+If this unit dies in combat,[NL]
+the enemy dies as well.[X]
+
+## MSG_SKILL_Secret
+Secret:[NL]
+Grants this unit access[NL]
+to the secret shop.[X]
+
+## MSG_SKILL_Ludopathy
+Ludopathy:[NL]
+Double gambling[NL]
+bets and wins.[X]

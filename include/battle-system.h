@@ -69,6 +69,9 @@ extern struct BattleGlobalFlags {
     u32 skill_activated_double_lion : 1;
     u32 skill_activated_astra : 1;
     u32 skill_activated_galeforce : 1;
+    u32 skill_activated_vigor_dance : 1;
+    u32 skill_activated_lead_by_example : 1;
+    u32 skill_activated_capture : 1;
 } gBattleActorGlobalFlag, gBattleTargetGlobalFlag;
 
 static inline struct BattleGlobalFlags * GetBattleGlobalFlags(struct BattleUnit * bu)
@@ -93,6 +96,8 @@ extern struct {
     u32 skill_activated_sure_shoot : 1;
     u32 skill_activated_dead_eye : 1;
     u32 skill_activated_aether : 1;
+
+    u32 skill_roll12 : 4;
 } gBattleTemporaryFlag;
 
 enum BattleOrderSkills_Type {

@@ -146,6 +146,11 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
     }
 #endif
 
+#if (defined(SID_MoonBow) && (COMMON_SKILL_VALID(SID_MoonBow)))
+    if (BattleSkillTester(attacker, SID_MoonBow))
+        attacker->battleAttack += Div(defender->battleDefense * SKILL_EFF0(SID_MoonBow), 100);
+#endif
+
 #if (defined(SID_WonderGuard) && (COMMON_SKILL_VALID(SID_WonderGuard)))
     if (BattleSkillTester(defender, SID_WonderGuard))
     {
@@ -157,6 +162,11 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #if (defined(SID_NoGuard) && (COMMON_SKILL_VALID(SID_NoGuard)))
     if (BattleSkillTester(attacker, SID_NoGuard) || BattleSkillTester(defender, SID_NoGuard))
         attacker->battleEffectiveHitRate = 100;
+#endif
+
+#if (defined(SID_RiskItAll) && (COMMON_SKILL_VALID(SID_RiskItAll)))
+    if (BattleSkillTester(attacker, SID_RiskItAll) || BattleSkillTester(defender, SID_RiskItAll))
+        attacker->battleEffectiveCritRate = SKILL_EFF0(SID_RiskItAll);
 #endif
 }
 

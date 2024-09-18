@@ -5,6 +5,8 @@
 #include "event-rework.h"
 #include "constants/skills.h"
 #include "constants/texts.h"
+#include "unit-expa.h"
+#include "action-expa.h"
 
 #if defined(SID_Swarp) && (COMMON_SKILL_VALID(SID_Swarp))
 u8 Swarp_Usability(const struct MenuItemDef * def, int number)
@@ -15,10 +17,13 @@ u8 Swarp_Usability(const struct MenuItemDef * def, int number)
     if (!HasSelectTarget(gActiveUnit, MakeTargetListForRescueStaff))
         return MENU_DISABLED;
 
+    if (CheckBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED))
+        return MENU_NOTSHOWN;
+
     return MENU_ENABLED;
 }
 
-STATIC_DECLAR void PrepareMenuPositionSwap(void)
+STATIC_DECLAR void PrepareMenuPositionSwarp(void)
 {
     EndAllMus();
     RefreshUnitSprites();
@@ -86,18 +91,18 @@ u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
     StartSubtitleHelp(
         NewTargetSelection_Specialized(&gSelectInfo_Rescue, Swarp_OnSelectTarget),
-        GetStringFromIndex(MSG_MenuSkill_Swarp_Target));
+        GetStringFromIndex(MSG_MenuSkill_Common_Target));
 
     PlaySoundEffect(0x6A);
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
 }
 
-STATIC_DECLAR const EventScr EventScr_MenuPositionSwap[] = {
+STATIC_DECLAR const EventScr EventScr_MenuPositionSwarp[] = {
 
 LABEL(0)
     SVAL(EVT_SLOT_B, SID_Swarp)
     CALL(EventScr_MuSkillAnim)
-    ASMC(PrepareMenuPositionSwap)
+    ASMC(PrepareMenuPositionSwarp)
     ASMC(set_actor_unit)
     CALL(EventScr_UidWarpOUT)
     STAL(20)
@@ -119,7 +124,17 @@ LABEL(99)
 
 bool Action_Swarp(ProcPtr parent)
 {
-    KernelCallEvent(EventScr_MenuPositionSwap, EV_EXEC_CUTSCENE, parent);
+    SetBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED);
+    KernelCallEvent(EventScr_MenuPositionSwarp, EV_EXEC_CUTSCENE, parent);
+    
+#if defined(SID_GridMaster) && (COMMON_SKILL_VALID(SID_GridMaster))
+    if (SkillTester(gActiveUnit, SID_GridMaster))
+    {
+        gActionDataExpa.refrain_action = true;
+        EndAllMus();
+    }
+#endif
+
     return true;
 }
 #endif

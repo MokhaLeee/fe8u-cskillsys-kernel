@@ -45,7 +45,7 @@ u8 Blacksmith_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     gActionData.unk08 = SID_Blacksmith;
     gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
     
-    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
+    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
 static void callback_anim(ProcPtr proc)

@@ -916,6 +916,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_HoneChaos) && COMMON_SKILL_VALID(SID_HoneChaos))
+    [SID_HoneChaos] = {
+        .desc = MSG_SKILL_HoneChaos,
+        .icon = GFX_SkillIcon_HoneChaos
+    },
+#endif
+
 #if (defined(SID_BattleRange_Todo1) && COMMON_SKILL_VALID(SID_BattleRange_Todo1))
     [SID_BattleRange_Todo1] = {
         .desc = MSG_SKILL_BattleRange1,
@@ -3589,10 +3596,594 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_ConcealedWeapon) && COMMON_SKILL_VALID(SID_ConcealedWeapon))
+    [SID_ConcealedWeapon] = {
+        .name = MSG_SKILL_ConcealedWeapon_NAME,
+        .desc = MSG_SKILL_ConcealedWeapon,
+        .icon = GFX_SkillIcon_ConcealedWeapon,
+    },
+#endif
+
 #if (defined(SID_Bargain) && COMMON_SKILL_VALID(SID_Bargain))
     [SID_Bargain] = {
         .desc = MSG_SKILL_Bargain,
         .icon = GFX_SkillIcon_Bargain,
+    },
+#endif
+
+#if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
+    [SID_Blessing] = {
+        .desc = MSG_SKILL_Blessing,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_GridMaster) && COMMON_SKILL_VALID(SID_GridMaster))
+    [SID_GridMaster] = {
+        .desc = MSG_SKILL_GridMaster,
+        .icon = GFX_SkillIcon_GridMaster,
+    },
+#endif
+
+#if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
+    [SID_Swap] = {
+        .desc = MSG_SKILL_Swap,
+        .icon = GFX_SkillIcon_Swap,
+    },
+#endif
+
+#if (defined(SID_VigorDance) && COMMON_SKILL_VALID(SID_VigorDance))
+    [SID_VigorDance] = {
+        .desc = MSG_SKILL_VigorDance,
+        .icon = GFX_SkillIcon_VigorDance,
+    },
+#endif
+
+#if (defined(SID_MagicSeal) && COMMON_SKILL_VALID(SID_MagicSeal))
+    [SID_MagicSeal] = {
+        .desc = MSG_SKILL_MagicSeal,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Mimic) && COMMON_SKILL_VALID(SID_Mimic))
+    [SID_Mimic] = {
+        .desc = MSG_SKILL_Mimic,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Insomnia) && COMMON_SKILL_VALID(SID_Insomnia))
+    [SID_Insomnia] = {
+        .desc = MSG_SKILL_Insomnia,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Comatose) && COMMON_SKILL_VALID(SID_Comatose))
+    [SID_Comatose] = {
+        .desc = MSG_SKILL_Comatose,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MagicBounce) && COMMON_SKILL_VALID(SID_MagicBounce))
+    [SID_MagicBounce] = {
+        .name = MSG_SKILL_MagicBounce_NAME,
+        .desc = MSG_SKILL_MagicBounce,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
+    [SID_Accost] = {
+        .desc = MSG_SKILL_Accost,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_HazeHunter) && COMMON_SKILL_VALID(SID_HazeHunter))
+    [SID_HazeHunter] = {
+        .desc = MSG_SKILL_HazeHunter,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Rampage) && COMMON_SKILL_VALID(SID_Rampage))
+    [SID_Rampage] = {
+        .desc = MSG_SKILL_Rampage,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_ArenaTrap) && COMMON_SKILL_VALID(SID_ArenaTrap))
+    [SID_ArenaTrap] = {
+        .desc = MSG_SKILL_ArenaTrap,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Mentorship) && COMMON_SKILL_VALID(SID_Mentorship))
+    [SID_Mentorship] = {
+        .desc = MSG_SKILL_Mentorship,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_HyperCutter) && COMMON_SKILL_VALID(SID_HyperCutter))
+    [SID_HyperCutter] = {
+        .desc = MSG_SKILL_HyperCutter,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_ClearBody) && COMMON_SKILL_VALID(SID_ClearBody))
+    [SID_ClearBody] = {
+        .desc = MSG_SKILL_ClearBody,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LeadByExample) && COMMON_SKILL_VALID(SID_LeadByExample))
+    [SID_LeadByExample] = {
+        .name = MSG_SKILL_LeadByExample_NAME,
+        .desc = MSG_SKILL_LeadByExample,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_GoodAsGold) && COMMON_SKILL_VALID(SID_GoodAsGold))
+    [SID_GoodAsGold] = {
+        .name = MSG_SKILL_GoodAsGold_NAME,
+        .desc = MSG_SKILL_GoodAsGold,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_PsychUp) && COMMON_SKILL_VALID(SID_PsychUp))
+    [SID_PsychUp] = {
+        .desc = MSG_SKILL_PsychUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Moody) && COMMON_SKILL_VALID(SID_Moody))
+    [SID_Moody] = {
+        .desc = MSG_SKILL_Moody,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Amische) && COMMON_SKILL_VALID(SID_Amische))
+    [SID_Amische] = {
+        .desc = MSG_SKILL_Amische,
+        .icon = GFX_SkillIcon_Amische,
+    },
+#endif
+
+#if (defined(SID_DownWithArch) && COMMON_SKILL_VALID(SID_DownWithArch))
+    [SID_DownWithArch] = {
+        .name = MSG_SKILL_DownWithArch_NAME,
+        .desc = MSG_SKILL_DownWithArch,
+        .icon = GFX_SkillIcon_DownWithArch,
+    },
+#endif
+
+#if (defined(SID_HeavyMetal) && COMMON_SKILL_VALID(SID_HeavyMetal))
+    [SID_HeavyMetal] = {
+        .desc = MSG_SKILL_HeavyMetal,
+        .icon = GFX_SkillIcon_HeavyMetal,
+    },
+#endif
+
+#if (defined(SID_Acrobat) && COMMON_SKILL_VALID(SID_Acrobat))
+    [SID_Acrobat] = {
+        .desc = MSG_SKILL_Acrobat,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Contrary) && COMMON_SKILL_VALID(SID_Contrary))
+    [SID_Contrary] = {
+        .desc = MSG_SKILL_Contrary,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_PairUp) && COMMON_SKILL_VALID(SID_PairUp))
+    [SID_PairUp] = {
+        .desc = MSG_SKILL_PairUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Reflex) && COMMON_SKILL_VALID(SID_Reflex))
+    [SID_Reflex] = {
+        .desc = MSG_SKILL_Reflex,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_RampUp) && COMMON_SKILL_VALID(SID_RampUp))
+    [SID_RampUp] = {
+        .desc = MSG_SKILL_RampUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Transform) && COMMON_SKILL_VALID(SID_Transform))
+    [SID_Transform] = {
+        .desc = MSG_SKILL_Transform,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DarkBargain) && COMMON_SKILL_VALID(SID_DarkBargain))
+    [SID_DarkBargain] = {
+        .desc = MSG_SKILL_DarkBargain,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DrawBack) && COMMON_SKILL_VALID(SID_DrawBack))
+    [SID_DrawBack] = {
+        .desc = MSG_SKILL_DrawBack,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
+    [SID_Pivot] = {
+        .desc = MSG_SKILL_Pivot,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
+    [SID_Reposition] = {
+        .desc = MSG_SKILL_Reposition,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Shove) && COMMON_SKILL_VALID(SID_Shove))
+    [SID_Shove] = {
+        .desc = MSG_SKILL_Shove,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Smite) && COMMON_SKILL_VALID(SID_Smite))
+    [SID_Smite] = {
+        .desc = MSG_SKILL_Smite,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Shadowgift) && COMMON_SKILL_VALID(SID_Shadowgift))
+    [SID_Shadowgift] = {
+        .desc = MSG_SKILL_Shadowgift,
+        .icon = GFX_SkillIcon_Shadowgift,
+    },
+#endif
+
+#if (defined(SID_StealPlus) && COMMON_SKILL_VALID(SID_StealPlus))
+    [SID_StealPlus] = {
+        .desc = MSG_SKILL_StealPlus,
+        .icon = GFX_SkillIcon_StealPlus,
+    },
+#endif
+
+#if (defined(SID_UpWithArch) && COMMON_SKILL_VALID(SID_UpWithArch))
+    [SID_UpWithArch] = {
+        .desc = MSG_SKILL_UpWithArch,
+        .icon = GFX_SkillIcon_UpWithArch,
+    },
+#endif
+
+#if (defined(SID_ArdentSacrifice) && COMMON_SKILL_VALID(SID_ArdentSacrifice))
+    [SID_ArdentSacrifice] = {
+        .name = MSG_SKILL_ArdentSacrifice_NAME,
+        .desc = MSG_SKILL_ArdentSacrifice,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Cultured) && COMMON_SKILL_VALID(SID_Cultured))
+    [SID_Cultured] = {
+        .desc = MSG_SKILL_Cultured,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_NiceThighs) && COMMON_SKILL_VALID(SID_NiceThighs))
+    [SID_NiceThighs] = {
+        .name = MSG_SKILL_NiceThighs_NAME,
+        .desc = MSG_SKILL_NiceThighs,
+        .icon = GFX_SkillIcon_NiceThighs,
+    },
+#endif
+
+#if (defined(SID_Flank) && COMMON_SKILL_VALID(SID_Flank))
+    [SID_Flank] = {
+        .desc = MSG_SKILL_Flank,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_ForeignPrincess) && COMMON_SKILL_VALID(SID_ForeignPrincess))
+    [SID_ForeignPrincess] = {
+        .name = MSG_SKILL_ForeignPrincess_NAME,
+        .desc = MSG_SKILL_ForeignPrincess,
+        .icon = GFX_SkillIcon_ForeignPrincess,
+    },
+#endif
+
+#if (defined(SID_FullMetalBody) && COMMON_SKILL_VALID(SID_FullMetalBody))
+    [SID_FullMetalBody] = {
+        .name = MSG_SKILL_FullMetalBody_NAME,
+        .desc = MSG_SKILL_FullMetalBody,
+        .icon = GFX_SkillIcon_FullMetalBody,
+    },
+#endif
+
+#if (defined(SID_HoardersBane) && COMMON_SKILL_VALID(SID_HoardersBane))
+    [SID_HoardersBane] = {
+        .name = MSG_SKILL_HoardersBane_NAME,
+        .desc = MSG_SKILL_HoardersBane,
+        .icon = GFX_SkillIcon_HoardersBane,
+    },
+#endif
+
+#if (defined(SID_IdentityProblems) && COMMON_SKILL_VALID(SID_IdentityProblems))
+    [SID_IdentityProblems] = {
+        .name = MSG_SKILL_IdentityProblems_NAME,
+        .desc = MSG_SKILL_IdentityProblems,
+        .icon = GFX_SkillIcon_IdentityProblems,
+    },
+#endif
+
+#if (defined(SID_Pathfinder) && COMMON_SKILL_VALID(SID_Pathfinder))
+    [SID_Pathfinder] = {
+        .name = MSG_SKILL_Pathfinder_NAME,
+        .desc = MSG_SKILL_Pathfinder,
+        .icon = GFX_SkillIcon_Pathfinder,
+    },
+#endif
+
+#if (defined(SID_ReciprocalAid) && COMMON_SKILL_VALID(SID_ReciprocalAid))
+    [SID_ReciprocalAid] = {
+        .name = MSG_SKILL_ReciprocalAid_NAME,
+        .desc = MSG_SKILL_ReciprocalAid,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Roll12) && COMMON_SKILL_VALID(SID_Roll12))
+    [SID_Roll12] = {
+        .desc = MSG_SKILL_Roll12,
+        .icon = GFX_SkillIcon_Roll12,
+    },
+#endif
+
+#if (defined(SID_Sacrifice) && COMMON_SKILL_VALID(SID_Sacrifice))
+    [SID_Sacrifice] = {
+        .name = MSG_SKILL_Sacrifice_NAME,
+        .desc = MSG_SKILL_Sacrifice,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Thighdeology) && COMMON_SKILL_VALID(SID_Thighdeology))
+    [SID_Thighdeology] = {
+        .name = MSG_SKILL_Thighdeology_NAME,
+        .desc = MSG_SKILL_Thighdeology,
+        .icon = GFX_SkillIcon_Thighdeology,
+    },
+#endif
+
+#if (defined(SID_ThotSlayer) && COMMON_SKILL_VALID(SID_ThotSlayer))
+    [SID_ThotSlayer] = {
+        .desc = MSG_SKILL_ThotSlayer,
+        .icon = GFX_SkillIcon_ThotSlayer,
+    },
+#endif
+
+#if (defined(SID_TriangleAttack) && COMMON_SKILL_VALID(SID_TriangleAttack))
+    [SID_TriangleAttack] = {
+        .name = MSG_SKILL_TriangleAttack_NAME,
+        .desc = MSG_SKILL_TriangleAttack,
+        .icon = GFX_SkillIcon_TriangleAttack,
+    },
+#endif
+
+#if (defined(SID_Swarm) && COMMON_SKILL_VALID(SID_Swarm))
+    [SID_Swarm] = {
+        .desc = MSG_SKILL_Swarm,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Capture) && COMMON_SKILL_VALID(SID_Capture))
+    [SID_Capture] = {
+        .desc = MSG_SKILL_Capture,
+        .icon = GFX_SkillIcon_Capture,
+    },
+#endif
+
+#if (defined(SID_MoonBow) && COMMON_SKILL_VALID(SID_MoonBow))
+    [SID_MoonBow] = {
+        .desc = MSG_SKILL_MoonBow,
+        .icon = GFX_SkillIcon_MoonBow,
+    },
+#endif
+
+#if (defined(SID_PastelVeil) && COMMON_SKILL_VALID(SID_PastelVeil))
+    [SID_PastelVeil] = {
+        .name = MSG_SKILL_PastelVeil_NAME,
+        .desc = MSG_SKILL_PastelVeil,
+        .icon = GFX_SkillIcon_PastelVeil,
+    },
+#endif
+
+#if (defined(SID_CatchEmAll) && COMMON_SKILL_VALID(SID_CatchEmAll))
+    [SID_CatchEmAll] = {
+        .desc = MSG_SKILL_CatchEmAll,
+        .icon = GFX_SkillIcon_CatchEmAll,
+    },
+#endif
+
+#if (defined(SID_DarkHorse) && COMMON_SKILL_VALID(SID_DarkHorse))
+    [SID_DarkHorse] = {
+        .desc = MSG_SKILL_DarkHorse,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_AdaptiveStance) && COMMON_SKILL_VALID(SID_AdaptiveStance))
+    [SID_AdaptiveStance] = {
+        .name = MSG_SKILL_AdaptiveStance_NAME,
+        .desc = MSG_SKILL_AdaptiveStance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_AdrenalineRush) && COMMON_SKILL_VALID(SID_AdrenalineRush))
+    [SID_AdrenalineRush] = {
+        .name = MSG_SKILL_AdrenalineRush_NAME,
+        .desc = MSG_SKILL_AdrenalineRush,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TripUp) && COMMON_SKILL_VALID(SID_TripUp))
+    [SID_TripUp] = {
+        .desc = MSG_SKILL_TripUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DemolitionExpert) && COMMON_SKILL_VALID(SID_DemolitionExpert))
+    [SID_DemolitionExpert] = {
+        .name = MSG_SKILL_DemolitionExpert_NAME,
+        .desc = MSG_SKILL_DemolitionExpert,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+
+#if (defined(SID_Onimaru) && COMMON_SKILL_VALID(SID_Onimaru))
+    [SID_Onimaru] = {
+        .desc = MSG_SKILL_Onimaru,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_AdaptiveLunge) && COMMON_SKILL_VALID(SID_AdaptiveLunge))
+    [SID_AdaptiveLunge] = {
+        .name = MSG_SKILL_AdaptiveLunge_NAME,
+        .desc = MSG_SKILL_AdaptiveLunge,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DoubleUp) && COMMON_SKILL_VALID(SID_DoubleUp))
+    [SID_DoubleUp] = {
+        .desc = MSG_SKILL_DoubleUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TripleUp) && COMMON_SKILL_VALID(SID_TripleUp))
+    [SID_TripleUp] = {
+        .desc = MSG_SKILL_TripleUp,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Casual) && COMMON_SKILL_VALID(SID_Casual))
+    [SID_Casual] = {
+        .desc = MSG_SKILL_Casual,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
+    [SID_Doppleganger] = {
+        .desc = MSG_SKILL_Doppleganger,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Turncoat) && COMMON_SKILL_VALID(SID_Turncoat))
+    [SID_Turncoat] = {
+        .desc = MSG_SKILL_Turncoat,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LimitBreaker) && COMMON_SKILL_VALID(SID_LimitBreaker))
+    [SID_LimitBreaker] = {
+        .name = MSG_SKILL_LimitBreaker_NAME,
+        .desc = MSG_SKILL_LimitBreaker,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LimitBreakerPlus) && COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    [SID_LimitBreakerPlus] = {
+        .name = MSG_SKILL_LimitBreakerPlus_NAME,
+        .desc = MSG_SKILL_LimitBreakerPlus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Dismount) && COMMON_SKILL_VALID(SID_Dismount))
+    [SID_Dismount] = {
+        .desc = MSG_SKILL_Dismount,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_RiskItAll) && COMMON_SKILL_VALID(SID_RiskItAll))
+    [SID_RiskItAll] = {
+        .desc = MSG_SKILL_RiskItAll,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DestinyBond) && COMMON_SKILL_VALID(SID_DestinyBond))
+    [SID_DestinyBond] = {
+        .desc = MSG_SKILL_DestinyBond,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Secret) && COMMON_SKILL_VALID(SID_Secret))
+    [SID_Secret] = {
+        .desc = MSG_SKILL_Secret,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Ludopathy) && COMMON_SKILL_VALID(SID_Ludopathy))
+    [SID_Ludopathy] = {
+        .desc = MSG_SKILL_Ludopathy,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_WaterWalking) && COMMON_SKILL_VALID(SID_WaterWalking))
+    [SID_WaterWalking] = {
+        .desc = MSG_SKILL_WaterWalking,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_WaterWalkingPlus) && COMMON_SKILL_VALID(SID_WaterWalkingPlus))
+    [SID_WaterWalkingPlus] = {
+        .desc = MSG_SKILL_WaterWalkingPlus,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 };

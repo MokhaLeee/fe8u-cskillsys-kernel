@@ -453,4 +453,12 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
     [SID_Sturdy] = &EfxSkillVanilla,
 #endif
+
+#if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
+    [SID_Blessing] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_MagicBounce) && COMMON_SKILL_VALID(SID_MagicBounce))
+    [SID_MagicBounce] = &EfxSkillVanilla,
+#endif
 };

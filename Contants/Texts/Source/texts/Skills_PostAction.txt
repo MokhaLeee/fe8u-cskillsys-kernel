@@ -36,8 +36,9 @@ Thunder[X]
 
 ## MSG_SKILL_Thunderstorm
 Thunder Storm:[NL]
-Call thunder-storm with AOE damage[NL]
-on emey when attacking from distance.[X]
+Call thunder-storm with AOE (2x2)[NL]
+damage on enemy when attacking[NL]
+from a 3 tile or greater range.[X]
 
 ## MSG_SKILL_PosReturn
 Return:[NL]
@@ -111,3 +112,37 @@ G-Digger[X]
 Gold Digger:[NL]
 Gain 100 gold after[NL]
 killing an enemy.[X]
+
+## MSG_SKILL_LeadByExample_NAME
+L-Example[X]
+
+## MSG_SKILL_LeadByExample
+Lead By Example:[NL]
+On a successful kill, adjacent[NL]
+allies can move again this turn.[X]
+
+## MSG_SKILL_DarkBargain
+Dark Bargain:[NL]
+At the end of this unit's turn,[NL]
+heal missing HP by using EXP.[X]
+
+## MSG_SKILL_HoardersBane_NAME
+H-Bane[X]
+
+## MSG_SKILL_HoardersBane
+Hoarder's Bane:[NL]
+At the end of your turn, consume a[NL]
+vulnerary from supply if cur HP < max HP.[X]
+
+## MSG_SKILL_AdrenalineRush_NAME
+A-Rush[X]
+
+## MSG_SKILL_AdrenalineRush
+Adrenaline Rush:[NL]
+The unit gains another action[NL]
+once per turn if <= 25% max HP.[X]
+
+## MSG_SKILL_Turncoat
+Turncoat:[NL]
+Turn an attacked enemy[NL]
+into an ally for a turn.[X]

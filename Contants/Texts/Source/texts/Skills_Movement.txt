@@ -57,3 +57,23 @@ D-Report[X]
 Detailed Report:[NL]
 if HP>50%, ranged foes cannot[NL]
 move throgh 2x2 spaces adjacent.[X]
+
+## MSG_SKILL_GridMaster
+Grid Master:[NL]
+Menu movement skills do not[NL]
+end this unit's turn.[X]
+
+## MSG_SKILL_Acrobat
+Acrobat:[NL]
+All traversable terrain for[NL]
+this unit costs 1 movement.[X]
+
+## MSG_SKILL_WaterWalking
+Water Walking:[NL]
+Allows the unit to[NL]
+walk on water tiles.[X]
+
+## MSG_SKILL_WaterWalkingPlus
+Water Walking+:[NL]
+Allows the unit to walk on water[NL]
+tiles with no move penalty.[X]

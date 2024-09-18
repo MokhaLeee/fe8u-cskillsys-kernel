@@ -62,7 +62,7 @@ LABEL(99)
 bool Action_Teleportation(ProcPtr parent)
 {
     gActionDataExpa.refrain_action = true;
-    SetBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED);
+    SetBitUES(gActiveUnit, UES_BIT_TELEPOTRATION_SKILL_USED);
 
     KernelCallEvent(EventScr_ActionTeleportation, EV_EXEC_CUTSCENE, parent);
     return false;

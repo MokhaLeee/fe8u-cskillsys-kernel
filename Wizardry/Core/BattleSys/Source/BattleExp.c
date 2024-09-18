@@ -5,7 +5,7 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(GetUnitExpLevel);
-int GetUnitExpLevel(struct Unit * unit)
+int GetUnitExpLevel(struct Unit *unit)
 {
     int base, bonus;
     base = unit->level;
@@ -18,7 +18,7 @@ int GetUnitExpLevel(struct Unit * unit)
     return base + bonus;
 }
 
-STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit * actor, struct BattleUnit * target)
+STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, struct BattleUnit *target)
 {
     int status = base;
 
@@ -32,6 +32,36 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit * actor,
         status = status * 2;
 #endif
 
+#if defined(SID_Mentorship) && (COMMON_SKILL_VALID(SID_Mentorship))
+    if (BattleSkillTester(actor, SID_Mentorship))
+        status = status + Div(status * SKILL_EFF0(SID_Mentorship), 100);
+    else
+    {
+        for (int i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
+        {
+            int _x = actor->unit.xPos + gVecs_2x2[i].x;
+            int _y = actor->unit.yPos + gVecs_2x2[i].y;
+
+            struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
+
+            if (!UNIT_IS_VALID(unit_ally))
+                continue;
+
+            if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                continue;
+
+            if (!AreUnitsAllied(actor->unit.index, unit_ally->index))
+                continue;
+
+            if (SkillTester(unit_ally, SID_Mentorship))
+            {
+                status = status * Div(status * SKILL_EFF0(SID_Mentorship), 100);;
+                break;
+            }
+        }
+    }
+#endif
+
     /* Check last */
 #if defined(SID_VoidCurse) && (COMMON_SKILL_VALID(SID_VoidCurse))
     if (BattleSkillTester(target, SID_VoidCurse))
@@ -43,7 +73,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit * actor,
 }
 
 LYN_REPLACE_CHECK(GetBattleUnitExpGain);
-int GetBattleUnitExpGain(struct BattleUnit * actor, struct BattleUnit * target)
+int GetBattleUnitExpGain(struct BattleUnit *actor, struct BattleUnit *target)
 {
     int result;
 
@@ -89,7 +119,7 @@ void BattleApplyMiscActionExpGains(void)
 }
 
 LYN_REPLACE_CHECK(GetBattleUnitStaffExp);
-int GetBattleUnitStaffExp(struct BattleUnit * bu)
+int GetBattleUnitStaffExp(struct BattleUnit *bu)
 {
     int result;
 

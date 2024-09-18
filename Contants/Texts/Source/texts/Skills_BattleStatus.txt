@@ -630,8 +630,8 @@ the enemy cannot counterattack.[X]
 
 ## MSG_SKILL_BlackMagic
 BlackMagic:[NL]
-Inflict a random bad status on the enemy.[NL]
-(Skill % activation).[X]
+Inflict a random bad[NL] 
+status on the enemy.[X]
 
 ## MSG_SKILL_LastWord
 LastWord:[NL]
@@ -747,72 +747,72 @@ Lull-Def[X]
 
 ## MSG_SKILL_LullDefense
 Lull Defense:[NL]
-Negated the effects of DEF[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+DEF rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullLuck_NAME
 Lull-Lck[X]
 
 ## MSG_SKILL_LullLuck
 Lull Luck:[NL]
-Negated the effects of LCK[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+LCK rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullMagic_NAME
 Lull-Mag[X]
 
 ## MSG_SKILL_LullMagic
 Lull Magic:[NL]
-Negated the effects of MAG[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+MAG rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullMovement_NAME
 Lull-Mov[X]
 
 ## MSG_SKILL_LullMovement
 Lull Movement:[NL]
-Negated the effects of MOV[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+MOV rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullResistance_NAME
 Lull-Res[X]
 
 ## MSG_SKILL_LullResistance
 Lull Resistance:[NL]
-Negated the effects of RES[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+RES rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullSkill_NAME
 Lull-Skl[X]
 
 ## MSG_SKILL_LullSkill
 Lull Skill:[NL]
-Negated the effects of SKL[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+SKL rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullSpectrum_NAME
 Lull-Spec[X]
 
 ## MSG_SKILL_LullSpectrum
 Lull Spectrum:[NL]
-Negated the effects of any[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+ALL rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullSpeed_NAME
 Lull-Spd[X]
 
 ## MSG_SKILL_LullSpeed
 Lull Speed:[NL]
-Negated the effects of SPD[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+SPD rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_LullStrength_NAME
 Lull-Str[X]
 
 ## MSG_SKILL_LullStrength
 Lull Strength:[NL]
-Negated the effects of STR[NL]
-boosting rally skills on the enemy.[X]
+Negates the application of
+STR rallies in a 3 tile range.[X]
 
 ## MSG_SKILL_SteadyBrawler_NAME
 Steady-B[X]
@@ -891,3 +891,111 @@ C-Overload[X]
 Critical Overload:[NL]
 +1% crit for every +3%[NL]
 hit over 100%.[X]
+
+## MSG_SKILL_Mimic
+Mimic:[NL]
+The unit copies the enemy's[NL]
+equipped weapon during battle.[X]
+
+## MSG_SKILL_Insomnia
+Insomnia:[NL]
+This unit is immune to[NL]
+the sleep status.[X]
+
+## MSG_SKILL_MagicBounce_NAME
+M-Bounce[X]
+
+## MSG_SKILL_MagicBounce
+Magic Bounce:[NL]
+Reflect back any status condition[NL]
+inflicted on this unit.[X]
+
+## MSG_SKILL_GoodAsGold_NAME
+G-Gold[X]
+
+## MSG_SKILL_GoodAsGold
+Good As Gold:[NL]
+This unit is immune to all[NL]
+harmful status conditions.[X]
+
+## MSG_SKILL_Shadowgift
+Shadowgift:[NL]
+Grants this unit the ability to use[NL]
+dark magic (starting at rank D).[X]
+
+## MSG_SKILL_Cultured
+Cultured: If unit attacks next to a[NL]
+unit with Nice Thighs, move again.[NL]
+-50 hit against units with Nice Thighs.[X]
+
+## MSG_SKILL_NiceThighs_NAME
+N-Thighs[X]
+
+## MSG_SKILL_NiceThighs
+Nice Thighs:[NL]
+Doesn't do anything.[X]
+
+## MSG_SKILL_Flank
+Flank: If an ally is on the[NL]
+opposite side of an adjacent[NL] 
+target, deal 25% more damage.[X]
+
+## MSG_SKILL_ForeignPrincess_NAME
+F-Princess[X]
+
+## MSG_SKILL_ForeignPrincess
+Foreign Princess:[NL]
+If the unit is female, allied units in[NL]
+a 3x3 range take -2 & deal +2 damage.[X]
+
+## MSG_SKILL_Roll12
+Roll12:[NL]
+Randomly apply 1 proc skill[NL]
+from a list of 12 once per turn.[X]
+
+## MSG_SKILL_Thighdeology_NAME
+Thigh-Deo[X]
+
+## MSG_SKILL_Thighdeology
+Thighdeology:[NL]
+If a unit within 3 tiles has Nice[NL]
+Thighs, gain +2 Attack and +20 Hit.[X]
+
+## MSG_SKILL_ThotSlayer
+ThotSlayer:[NL]
+Gain +15 crit against[NL]
+units with Nice Thighs.[X]
+
+## MSG_SKILL_Swarm
+Swarm:[NL]
+If an adjacent target is[NL]
+surrounded, deal 50% more damage.[X]
+
+## MSG_SKILL_AdaptiveStance_NAME
+A-Stance[X]
+
+## MSG_SKILL_AdaptiveStance
+Adaptive Stance:[NL]
+The enemy is made to attack whichever[NL]
+defense stat is higher for the unit.[X]
+
+## MSG_SKILL_TripUp
+Trip Up:[NL]
+Ignore the enemy's[NL]
+terrain bonuses.[X]
+
+## MSG_SKILL_DemolitionExpert_NAME
+D-Expert[X]
+
+## MSG_SKILL_DemolitionExpert
+Demolition Expert:[NL]
+The unit can destroy walls and[NL]
+barricades with one attack.[X]
+
+## MSG_SKILL_AdaptiveLunge_NAME
+A-Lunge[X]
+
+## MSG_SKILL_AdaptiveLunge
+Adaptive Lunge:[NL]
+This unit alternates which defensive[NL]
+stat it targets each turn.[X]

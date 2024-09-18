@@ -9,7 +9,7 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
-void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     int attack = attacker->battleAttack;
     int defense = defender->battleDefense;
@@ -71,8 +71,113 @@ void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * d
     gBattleStats.silencerRate = silencerRate;
 }
 
+LYN_REPLACE_CHECK(BattleCheckTriangleAttack);
+s8 BattleCheckTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+    s8 adjacentLookup[] = {
+        -1, 0,
+        0, -1,
+        +1, 0,
+        0, +1};
+
+    int i, count = 0;
+
+    int triangleAttackAttr = CA_TRIANGLEATTACK_ANY & UNIT_CATTRIBUTES(&attacker->unit);
+
+    int x = defender->unit.xPos;
+    int y = defender->unit.yPos;
+
+    int faction = UNIT_FACTION(&attacker->unit);
+
+    gBattleStats.taUnitA = NULL;
+    gBattleStats.taUnitB = NULL;
+
+    for (i = 0; i < 4; ++i)
+    {
+        int uId = gBmMapUnit[adjacentLookup[i * 2 + 1] + y][adjacentLookup[i * 2 + 0] + x];
+        struct Unit *unit;
+
+        if (!uId)
+            continue;
+
+        unit = GetUnit(uId);
+
+        if ((uId & 0xC0) != faction)
+            continue;
+
+#if (defined(SID_TriangleAttack) && (COMMON_SKILL_VALID(SID_TriangleAttack)))
+        if (SkillTester(unit, SID_TriangleAttack))
+        {
+            ++count;
+
+            if (!gBattleStats.taUnitA)
+                gBattleStats.taUnitA = unit;
+            else if (!gBattleStats.taUnitB)
+                gBattleStats.taUnitB = unit;
+
+            continue;
+        }
+#endif
+
+        if (unit->statusIndex == UNIT_STATUS_SLEEP)
+            continue;
+
+        if (unit->statusIndex == UNIT_STATUS_PETRIFY)
+            continue;
+
+        if (unit->statusIndex == UNIT_STATUS_13)
+            continue;
+
+        if (unit->pClassData->number == CLASS_WYVERN_KNIGHT_F)
+            continue;
+
+        if (UNIT_CATTRIBUTES(unit) & triangleAttackAttr)
+        {
+            ++count;
+
+            if (!gBattleStats.taUnitA)
+                gBattleStats.taUnitA = unit;
+            else if (!gBattleStats.taUnitB)
+                gBattleStats.taUnitB = unit;
+        }
+    }
+    return count >= 2 ? TRUE : FALSE;
+}
+
+LYN_REPLACE_CHECK(BattleGenerateHitTriangleAttack);
+void BattleGenerateHitTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+
+    /**
+     * Since we're no longer limiting ourselves to just checking a
+     * hardcoded attribute we can turn this off.
+     */
+    // if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_TRIANGLEATTACK_ANY))
+    //    return;
+
+    if (gBattleStats.range != 1)
+        return;
+
+    if (!(gBattleHitIterator->info & BATTLE_HIT_INFO_BEGIN))
+        return;
+
+    if (attacker->unit.statusIndex == UNIT_STATUS_BERSERK)
+        return;
+
+    if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+        return;
+
+    if (!BattleCheckTriangleAttack(attacker, defender))
+        return;
+
+    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_TATTACK;
+
+    gBattleStats.critRate = 100;
+    gBattleStats.hitRate = 100;
+}
+
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
-void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     gBattleStats.damage = 0;
 
@@ -115,15 +220,15 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitEffects);
-void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-        if (BattleSkillTester(attacker, SID_Discipline))
-            attacker->wexpMultiplier += 2;
-        else
-            attacker->wexpMultiplier++;
-#else
+    if (BattleSkillTester(attacker, SID_Discipline))
+        attacker->wexpMultiplier += 2;
+    else
         attacker->wexpMultiplier++;
+#else
+    attacker->wexpMultiplier++;
 #endif
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
@@ -161,6 +266,19 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 }
             }
 #endif
+
+#if defined(SID_DownWithArch) && (COMMON_SKILL_VALID(SID_DownWithArch))
+            if (BattleSkillTester(attacker, SID_DownWithArch))
+            {
+                char name[] = "Arch";
+                if (strcmp(GetStringFromIndex(GetUnit(defender->unit.index)->pCharacterData->nameTextId), name) == 0)
+                {
+                    RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DownWithArch);
+                    gBattleStats.damage = defender->unit.curHP;
+                    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+                }
+            }
+#endif
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)
@@ -173,12 +291,44 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 #endif
         {
+#if (defined(SID_LiquidOoze) && (COMMON_SKILL_VALID(SID_LiquidOoze)))
+            if (BattleSkillTester(defender, SID_LiquidOoze))
+            {
+                if ((attacker->unit.curHP - gBattleStats.damage) <= 0)
+                    attacker->unit.curHP = 1;
+                else
+                {
+                    attacker->unit.curHP -= gBattleStats.damage;
+                    defender->unit.curHP += gBattleStats.damage;
+                }
+
+                /**
+                 * I tried every trick in the book, but there's a visual bug with this skill
+                 * where the skill holder's HP will keep ticking up to the byte limit when it's triggered.
+                 * So as a band aid fix, I force battle animations off in this instance.
+                 * This does come with the caveat of forcing off everyone's animations
+                 * and reversing what I did is a pain without storing the previous configuration, sorry :(
+                 */
+                SetGameOption(0, 2);
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+            }
+            else
+            {
+                if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
+                    attacker->unit.curHP = attacker->unit.maxHP;
+                else
+                    attacker->unit.curHP += gBattleStats.damage;
+
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+            }
+#else
             if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
                 attacker->unit.curHP = attacker->unit.maxHP;
             else
                 attacker->unit.curHP += gBattleStats.damage;
 
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+#endif
         }
 
         BattleHit_InjectNegativeStatus(attacker, defender);
@@ -190,7 +340,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHit);
-bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     if (attacker == &gBattleTarget)
         gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
@@ -239,10 +389,15 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
 
+#if (defined(SID_LeadByExample) && (COMMON_SKILL_VALID(SID_LeadByExample)))
+            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_LeadByExample, 100))
+                gBattleActorGlobalFlag.skill_activated_lead_by_example = true;
+#endif
+
 #if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
             {
-                struct Unit * unit_tar = &gBattleTarget.unit;
+                struct Unit *unit_tar = &gBattleTarget.unit;
                 unit_tar->state |= US_DROP_ITEM;
             }
 #endif

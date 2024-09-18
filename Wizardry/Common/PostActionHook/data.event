@@ -1,6 +1,7 @@
 /* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPostActionFuncs:
+    POIN PostActionTurncoat
     POIN PostActionThunderstorm
     POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife PostActionSkillSoulSap
     POIN PostActionSynchronize
@@ -10,7 +11,8 @@ gPostActionFuncs:
     POIN PostActionAlertStance
     POIN PostActionTsuzuku
     POIN PostActionGetItem
-    POIN PostActionSwap
+    POIN PostActionLunge
+    POIN PostActionSealSkills
     POIN PostActionPositionReturn
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0

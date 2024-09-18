@@ -17,3 +17,13 @@ experience when defeated.[X]
 Aptitude:[NL]
 +20% to all[NL]
 growth rates.[X]
+
+## MSG_SKILL_Mentorship
+Mentorship:[NL]
+Increase experience of this unit[NL]
+allies within 2 tiles by 1.2x.[X]
+
+## MSG_SKILL_DarkHorse
+Dark Horse:[NL]
+Increase unit's growths[NL]
+by their base stats.[X]

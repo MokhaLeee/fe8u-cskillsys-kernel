@@ -2,9 +2,11 @@
 #include "battle-system.h"
 #include "status-getter.h"
 #include "weapon-range.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 LYN_REPLACE_CHECK(AiReachesByBirdsEyeDistance);
-bool AiReachesByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 item)
+bool AiReachesByBirdsEyeDistance(struct Unit *unit, struct Unit *other, u16 item)
 {
     int distance = RECT_DISTANCE(unit->xPos, unit->yPos, other->xPos, other->yPos);
     if (distance <= MovGetter(unit) + GetItemMaxRangeRework(item, unit))
@@ -14,7 +16,7 @@ bool AiReachesByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 it
 }
 
 LYN_REPLACE_CHECK(AiCouldReachByBirdsEyeDistance);
-bool AiCouldReachByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 item)
+bool AiCouldReachByBirdsEyeDistance(struct Unit *unit, struct Unit *other, u16 item)
 {
 
     int distance = RECT_DISTANCE(unit->xPos, unit->yPos, other->xPos, other->yPos);
@@ -25,11 +27,12 @@ bool AiCouldReachByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16
 }
 
 LYN_REPLACE_CHECK(GetUnitWeaponReachBits);
-int GetUnitWeaponReachBits(struct Unit * unit, int slot)
+int GetUnitWeaponReachBits(struct Unit *unit, int slot)
 {
     int i, item, result = 0;
 
-    switch (slot) {
+    switch (slot)
+    {
     case -1:
         for (i = 0; (i < UNIT_ITEM_COUNT) && (item = unit->items[i]); ++i)
             if (CanUnitUseWeapon(unit, item))
@@ -46,13 +49,14 @@ int GetUnitWeaponReachBits(struct Unit * unit, int slot)
 }
 
 LYN_REPLACE_CHECK(GetUnitItemUseReachBits);
-int GetUnitItemUseReachBits(struct Unit * unit, int slot)
+int GetUnitItemUseReachBits(struct Unit *unit, int slot)
 {
     int i;
     u16 item;
     u32 mask = 0;
 
-    switch (slot) {
+    switch (slot)
+    {
     case -1:
         for (i = 0; i < UNIT_ITEM_COUNT; i++)
         {
@@ -75,7 +79,7 @@ int GetUnitItemUseReachBits(struct Unit * unit, int slot)
 }
 
 LYN_REPLACE_CHECK(GetUnitStaffReachBits);
-int GetUnitStaffReachBits(struct Unit * unit)
+int GetUnitStaffReachBits(struct Unit *unit)
 {
     int i;
     u16 item;
@@ -92,7 +96,7 @@ int GetUnitStaffReachBits(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(AiFillReversedAttackRangeMap);
-void AiFillReversedAttackRangeMap(struct Unit * unit, u16 item)
+void AiFillReversedAttackRangeMap(struct Unit *unit, u16 item)
 {
     BmMapFill(gBmMapRange, 0);
 
@@ -101,7 +105,8 @@ void AiFillReversedAttackRangeMap(struct Unit * unit, u16 item)
 }
 
 LYN_REPLACE_CHECK(AiFloodMovementAndRange);
-void AiFloodMovementAndRange(struct Unit * unit, u16 move, u16 item) {
+void AiFloodMovementAndRange(struct Unit *unit, u16 move, u16 item)
+{
     int ix, iy;
     u32 mask;
 
@@ -125,7 +130,7 @@ void AiFloodMovementAndRange(struct Unit * unit, u16 move, u16 item) {
 }
 
 LYN_REPLACE_CHECK(AiGetInRangeCombatPositionScoreComponent);
-int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit * unit)
+int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit *unit)
 {
     int dist = RECT_DISTANCE(unit->xPos, unit->yPos, x, y);
     u16 item = GetUnitEquippedWeapon(unit);
@@ -141,7 +146,7 @@ int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(DisplayUnitEffectRange);
-void DisplayUnitEffectRange(struct Unit * unit)
+void DisplayUnitEffectRange(struct Unit *unit)
 {
     u32 movelimitv_flag = MOVLIMITV_MMAP_BLUE;
 
@@ -156,7 +161,8 @@ void DisplayUnitEffectRange(struct Unit * unit)
 
         BmMapFill(gBmMapRange, 0);
 
-        switch (GetUnitWeaponUsabilityBits(gActiveUnit)) {
+        switch (GetUnitWeaponUsabilityBits(gActiveUnit))
+        {
         case (UNIT_USEBIT_STAFF | UNIT_USEBIT_WEAPON):
             if (gBmSt.swapActionRangeCount & 1)
             {
@@ -184,7 +190,7 @@ void DisplayUnitEffectRange(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(GenerateUnitMovementMap);
-void GenerateUnitMovementMap(struct Unit * unit)
+void GenerateUnitMovementMap(struct Unit *unit)
 {
     SetWorkingMoveCosts(GetUnitMovementCost(unit));
     SetWorkingBmMap(gBmMapMovement);
@@ -193,7 +199,7 @@ void GenerateUnitMovementMap(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(GenerateUnitCompleteAttackRange);
-void GenerateUnitCompleteAttackRange(struct Unit * unit)
+void GenerateUnitCompleteAttackRange(struct Unit *unit)
 {
     int ix, iy;
 
@@ -222,8 +228,10 @@ void GenerateUnitCompleteAttackRange(struct Unit * unit)
             int _max = GetItemMaxRangeRework(item, unit);
             int _min = GetItemMinRangeRework(item, unit);
 
-            if (_max > max) max = _max;
-            if (_min < min) min = _min;
+            if (_max > max)
+                max = _max;
+            if (_min < min)
+                min = _min;
 #else
             mask |= GetItemReachBitsRework(item, unit);
 #endif
@@ -254,14 +262,14 @@ void GenerateUnitCompleteAttackRange(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(GenerateUnitStandingReachRange);
-void GenerateUnitStandingReachRange(struct Unit * unit, int mask)
+void GenerateUnitStandingReachRange(struct Unit *unit, int mask)
 {
     BmMapFill(gBmMapRange, 0);
     AddMap(unit->xPos, unit->yPos, mask, 1, 0);
 }
 
 LYN_REPLACE_CHECK(GenerateUnitCompleteStaffRange);
-void GenerateUnitCompleteStaffRange(struct Unit * unit)
+void GenerateUnitCompleteStaffRange(struct Unit *unit)
 {
     int ix, iy;
     u32 mask = GetUnitStaffReachBits(unit);
@@ -309,7 +317,7 @@ void GenerateDangerZoneRange(bool boolDisplayStaffRange)
 
     for (i = enemyFaction + 1; i < enemyFaction + 0x80; ++i)
     {
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue; // not a unit
@@ -355,7 +363,7 @@ void GenerateDangerZoneRange(bool boolDisplayStaffRange)
 }
 
 LYN_REPLACE_CHECK(FillMovementAndRangeMapForItem);
-void FillMovementAndRangeMapForItem(struct Unit * unit, u16 item)
+void FillMovementAndRangeMapForItem(struct Unit *unit, u16 item)
 {
     int ix, iy;
 
@@ -375,7 +383,7 @@ void FillMovementAndRangeMapForItem(struct Unit * unit, u16 item)
 }
 
 LYN_REPLACE_CHECK(sub_803B678);
-void sub_803B678(struct Unit * unit, u16 item)
+void sub_803B678(struct Unit *unit, u16 item)
 {
     int ix, iy;
 
@@ -395,14 +403,15 @@ void sub_803B678(struct Unit * unit, u16 item)
 }
 
 LYN_REPLACE_CHECK(SetupUnitHealStaffAIFlags);
-void SetupUnitHealStaffAIFlags(struct Unit * unit, u16 item)
+void SetupUnitHealStaffAIFlags(struct Unit *unit, u16 item)
 {
     int flags = 0;
 
     if ((GetItemAttributes(item) & IA_WEAPON) && (GetItemMaxRangeRework(item, unit) > 1))
         flags = AI_UNIT_FLAG_6;
 
-    switch (GetItemUseEffect(item)) {
+    switch (GetItemUseEffect(item))
+    {
     case 0x01:
     case 0x02:
     case 0x03:
@@ -415,4 +424,56 @@ void SetupUnitHealStaffAIFlags(struct Unit * unit, u16 item)
     }
 
     unit->aiFlags |= flags;
+}
+
+LYN_REPLACE_CHECK(SetWorkingMoveCosts);
+void SetWorkingMoveCosts(const s8 mct[])
+{
+    int i;
+
+#if (defined(SID_Acrobat) && COMMON_SKILL_VALID(SID_Acrobat))
+    if (SkillTester(gActiveUnit, SID_Acrobat))
+    {
+        for (i = 0; i < TERRAIN_COUNT; ++i)
+        {
+            if (mct[i] > 1)
+                gWorkingTerrainMoveCosts[i] = 1;
+            else
+                gWorkingTerrainMoveCosts[i] = mct[i];
+        }
+        return;
+    }
+#endif
+
+#if (defined(SID_WaterWalkingPlus) && COMMON_SKILL_VALID(SID_WaterWalkingPlus))
+    if (SkillTester(gActiveUnit, SID_WaterWalkingPlus))
+    {
+        for (i = 0; i < TERRAIN_COUNT; ++i)
+        {
+            if (i == TERRAIN_WATER || i == TERRAIN_RIVER || i == TERRAIN_SEA || i == TERRAIN_LAKE)
+                gWorkingTerrainMoveCosts[i] = 1;
+            else
+                gWorkingTerrainMoveCosts[i] = mct[i];
+        }
+        return;
+    }
+#endif
+
+#if (defined(SID_WaterWalking) && COMMON_SKILL_VALID(SID_WaterWalking))
+    if (SkillTester(gActiveUnit, SID_WaterWalking))
+    {
+        for (i = 0; i < TERRAIN_COUNT; ++i)
+        {
+            if (i == TERRAIN_WATER || i == TERRAIN_RIVER || i == TERRAIN_SEA || i == TERRAIN_LAKE)
+                gWorkingTerrainMoveCosts[i] = 3;
+            else
+                gWorkingTerrainMoveCosts[i] = mct[i];
+        }
+        return;
+    }
+#endif
+
+    for (i = 0; i < TERRAIN_COUNT; ++i)
+        gWorkingTerrainMoveCosts[i] = mct[i];
+
 }

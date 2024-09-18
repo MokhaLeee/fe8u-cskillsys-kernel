@@ -88,5 +88,30 @@ int LckGetterSkills(int status, struct Unit * unit)
 #endif
     }
 
+#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
+    if (SkillTester(unit, SID_PairUp))
+        if (unit->state & US_RESCUING)
+            status += Div(_GetUnitLuck(GetUnit(unit->rescue)) * SKILL_EFF0(SID_PairUp), 100);
+#endif
+
+    return status;
+}
+
+int LckPsychUpCheck(int status, struct Unit *unit)
+{
+    int stolen_status = 0;
+
+#if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
+    if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = LckGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) + LckGetterSkills(0, GetUnit(gBattleTarget.unit.index));
+        return status + stolen_status;
+    }
+    else if (unit == GetUnit(gBattleTarget.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = LckGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) + LckGetterSkills(0, GetUnit(gBattleActor.unit.index));
+        return status + stolen_status;
+    }
+#endif
     return status;
 }

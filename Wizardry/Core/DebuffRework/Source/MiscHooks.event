@@ -33,11 +33,11 @@ PUSH
 
     ORG $2B152 // BattleCheckTriangleAttack
     BYTE 0x3F
-    PROTECT $2B0CC $2B1C4
+    // PROTECT $2B0CC $2B1C4
 
     ORG $2C5B0 // BattleGenerateHitTriangleAttack
     BYTE 0x3F
-    PROTECT $2B578 $2B600
+    // PROTECT $2B578 $2B600
 
 /*
     ORG $2B664 // BattleGenerateHitEffects
@@ -88,11 +88,11 @@ PUSH
 
     ORG $25250 // TryAddUnitToTradeTargetList
     BYTE 0x3F
-    PROTECT $2521C $252D0
+    // PROTECT $2521C $252D0
 
     ORG $25378 // TryAddUnitToRescueTargetList
     BYTE 0x3F
-    PROTECT $25344 $253B4
+    // PROTECT $25344 $253B4
 
     ORG $25540 // TryAddUnitToGiveTargetList
     BYTE 0x3F
@@ -132,17 +132,26 @@ PUSH
     BYTE 0x3F
     PROTECT $25F98 $25FE8
 
-    ORG $26122 // TryAddUnitToSilenceTargetList
-    BYTE 0x3F
-    PROTECT $26100 $2614C
+    /*
+    ** Needed for Good as gold
+    */
+    // ORG $26122 // TryAddUnitToSilenceTargetList
+    // BYTE 0x3F
+    // PROTECT $26100 $2614C
 
-    ORG $2616E // TryAddUnitToSleepTargetList
-    BYTE 0x3F
-    PROTECT $2614C $26198
+    /*
+    ** Need to unprotect this for Insomnia skill
+    */
+    // ORG $2616E // TryAddUnitToSleepTargetList
+    // BYTE 0x3F
+    // PROTECT $2614C $26198
 
-    ORG $261BA // TryAddUnitToBerserkTargetList
-    BYTE 0x3F
-    PROTECT $26198 $261E4
+    /*
+    ** Needed for Good as gold
+    */
+    // ORG $261BA // TryAddUnitToBerserkTargetList
+    // BYTE 0x3F
+    // PROTECT $26198 $261E4
 
     ORG $263DE // MakeTargetListForLatona
     BYTE 0x3F
@@ -171,9 +180,14 @@ PUSH
     // GetUnitStatusName
     // TickActiveFactionTurn
 
-    ORG $18D10 // IsUnitMagicSealed
-    BYTE 0x3F
-    PROTECT $18D08 $18D34
+
+    /* 
+    ** No idea why Mokha protected this, but I need it
+    ** for magic seal, so it's getting commented out.
+    */
+    // ORG $18D10 // IsUnitMagicSealed
+    // BYTE 0x3F
+    // PROTECT $18D08 $18D34
 
 /*
     ORG $361C8 // StatusDecayDisplay_Display
@@ -194,9 +208,12 @@ PUSH
     BYTE 0x3F
     PROTECT $3E900 $3E93C
 
-    ORG $397F0 // CpOrderBerserkInit
-    BYTE 0x3F
-    PROTECT $397B0 $39858
+    /*
+    ** Needed for berserk skill
+    */
+    // ORG $397F0 // CpOrderBerserkInit
+    // BYTE 0x3F
+    // PROTECT $397B0 $39858
 
     ORG $399F4 // BuildAiUnitList
     BYTE 0x3F
@@ -244,13 +261,16 @@ PUSH
     BYTE 0x3F
     PROTECT $8C45C $8C5D0
 
-    ORG $1D58E // GetUnitSelectionValueThing
-    BYTE 0x3F
-    PROTECT $1D51C $1D5A8
+    /*
+    ** Need to unprotect these for Comatose skill
+    */
+    // ORG $1D58E // GetUnitSelectionValueThing
+    // BYTE 0x3F
+    // PROTECT $1D51C $1D5A8
 
-    ORG $1D732 // MakeMoveunitForActiveUnit
-    BYTE 0x3F
-    PROTECT $1D70C $1D75C
+    // ORG $1D732 // MakeMoveunitForActiveUnit
+    // BYTE 0x3F
+    // PROTECT $1D70C $1D75C
 
     ORG $1DAFE // TrySetCursorOn
     BYTE 0x3F

@@ -1,6 +1,9 @@
 ## MSG_MenuSkill_CommonFail
 This skill cannot be used for now![X]
 
+## MSG_MenuSkill_Common_Target
+Select a unit.[X]
+
 ## MSG_SKILL_Dance
 Dance:[NL]
 Art: Unit can use[NL]
@@ -60,7 +63,8 @@ plant a mine in an area[X]
  Mine[X]
 
 ## MSG_MenuSkill_Rally_FRtext
-No allies are in range![X]
+No allies are in range,[NL]
+or Lull skill in effect.[X]
 
 ## MSG_SKILL_RallyDefense
 Rally Defense:[NL]
@@ -186,9 +190,6 @@ allies within 3 tiles by 3.[X]
 ## MSG_MenuSkill_Stride_FRtext
 No allies are in range![X]
 
-## MSG_MenuSkill_Swarp_Target
-Select a unit to swap.[X]
-
 ## MSG_MenuSkill_SwarpName
  Swarp[X]
 
@@ -211,3 +212,173 @@ if from armory and C rank or less.[X]
 ## MSG_MenuSkill_Blacksmith_FRtext
 No restorable weapons[NL]
 or enough gold![X]
+
+## MSG_MenuSkill_SwapName
+ Swap[X]
+
+## MSG_SKILL_Swap
+Swap:[NL]
+Swap positions with[NL]
+an adjacent ally.[X]
+
+## MSG_MenuSkill_Swap_FRtext
+No allies are in range![X]
+
+## MSG_SKILL_VigorDance
+Vigor Dance:[NL]
+Boost ally's POW/DEF +2 for[NL]
+1 turn after dancing.[X]
+
+## MSG_SKILL_Transform
+Transform:[NL]
+Allows the unit to transform[NL]
+into a selected class.[X]
+
+## MSG_MenuSkill_TransformName
+ Transform[X]
+
+## MSG_SKILL_Transform_FRtext
+This unit is already[NL]
+transformed![X]
+
+## MSG_MenuSkill_DrawBackName
+ DrawBack[X]
+
+## MSG_MenuSkill_DrawBack_FRtext
+Cannot safely draw back.[X]
+
+## MSG_SKILL_DrawBack
+DrawBack: Unit moves 1 space[NL]
+away from target ally. Ally moves[NL]
+to unit's previous space.[X]
+
+## MSG_MenuSkill_PivotName
+ Pivot[X]
+
+## MSG_MenuSkill_Pivot_FRtext
+Cannot safely pivot.[X]
+
+## MSG_SKILL_Pivot
+Pivot:[NL]
+Allows unit to move to the[NL]
+opposite side of an adjacent ally.[X]
+
+## MSG_MenuSkill_RepositionName
+ Reposition[X]
+
+## MSG_MenuSkill_Reposition_FRtext
+Cannot safely reposition.[X]
+
+## MSG_SKILL_Reposition
+Reposition:[NL]
+Allows unit to pull an adjacent[NL]
+ally to its opposite side.[X]
+
+## MSG_MenuSkill_ShoveName
+ Shove[X]
+
+## MSG_MenuSkill_Shove_FRtext
+Cannot safely shove.[X]
+
+## MSG_SKILL_Shove
+Shove:[NL]
+Allows unit to push other[NL]
+allied units one tile away.[X]
+
+## MSG_MenuSkill_SmiteName
+ Smite[X]
+
+## MSG_MenuSkill_Smite_FRtext
+Cannot safely smite.[X]
+
+## MSG_SKILL_Smite
+Smite:[NL]
+Allows unit to push other[NL]
+allied units two tiles away.[X]
+
+## MSG_MenuSkill_StealPlusName
+ Steal+[X]
+
+## MSG_MenuSkill_StealPlus_FRtext
+Cannot steal.[X]
+
+## MSG_SKILL_StealPlus
+Steal+:[NL]
+Unit can steal unequipped weapons[NL]
+and staves if CON > Weight.[X]
+
+## MSG_SKILL_ArdentSacrifice
+Ardent Sacrifice:[NL]
+Restores 10 HP to target,[NL]
+but drops user’s HP by 10.[X]
+
+## MSG_SKILL_ArdentSacrifice_NAME
+Ardent-S[X]
+
+## MSG_MenuSkill_ArdentSacrificeName
+ Ardent-S[X]
+
+## MSG_MenuSkill_ArdentSacrifice_FRtext
+Unit is below HP threshold or[NL]
+no healable targets in range.[X]
+
+## MSG_MenuSkill_ReciprocalAidName
+ R-Aid[X]
+
+## MSG_MenuSkill_ReciprocalAid_FRtext
+No allies to switch HP with.[X]
+
+## MSG_SKILL_ReciprocalAid
+Reciprocal Aid:[NL]
+The user and target switch[NL]
+their current HP totals.[X]
+
+## MSG_SKILL_ReciprocalAid_NAME
+R-Aid[X]
+
+## MSG_MenuSkill_Sacrifice_FRtext
+No allies to heal.[X]
+
+## MSG_MenuSkill_SacrificeName
+ Sacrifice[X]
+
+## MSG_SKILL_Sacrifice
+Sacrifice: Drains HP from the[N]
+user to restore the HP and cure[N]
+status of another allied unit.[X]
+
+## MSG_SKILL_Sacrifice_NAME
+Sacrifice[X]
+
+## MSG_MenuSkill_Capture_FRtext
+No enemies to capture.[X]
+
+## MSG_MenuSkill_CaptureName
+ Capture[X]
+
+## MSG_SKILL_Capture
+Capture:[NL]
+Capture an enemy after defeating[NL]
+it with reduced stats.[X]
+
+## MSG_SKILL_Capture_NAME
+Capture[X]
+
+## MSG_MenuSkill_DopplegangerName
+ D-Ganger[X]
+
+## MSG_MenuSkill_Doppleganger_FRtext
+No allies in range to copy![X]
+
+## MSG_SKILL_Doppleganger
+Doppleganger:[NL]
+Copy the class of an[NL]
+adjacent ally for a turn.[X]
+
+## MSG_SKILL_Dismount
+Dismount:[NL]
+Allow mounted classes to[NL]
+dismount, and revert.[X]
+
+## MSG_MenuSkill_DismountName
+ Dismount[X]

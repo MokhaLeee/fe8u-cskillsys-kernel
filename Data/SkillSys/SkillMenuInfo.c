@@ -318,4 +318,214 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
+    [SID_Swap] = {
+        .name = "　交換",
+        .nameMsgId = MSG_MenuSkill_SwapName,
+        .helpMsgId = MSG_SKILL_Swap,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Swap_Usability,
+        .onDraw = NULL,
+        .onSelected = Swap_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Transform) && COMMON_SKILL_VALID(SID_Transform))
+    [SID_Transform] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_TransformName,
+        .helpMsgId = MSG_SKILL_Transform,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Transform_Usability,
+        .onDraw = NULL,
+        .onSelected = Transform_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_DrawBack) && COMMON_SKILL_VALID(SID_DrawBack))
+    [SID_DrawBack] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_DrawBackName,
+        .helpMsgId = MSG_SKILL_DrawBack,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = DrawBack_Usability,
+        .onDraw = NULL,
+        .onSelected = DrawBack_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
+    [SID_Pivot] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_PivotName,
+        .helpMsgId = MSG_SKILL_Pivot,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Pivot_Usability,
+        .onDraw = NULL,
+        .onSelected = Pivot_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
+    [SID_Reposition] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_RepositionName,
+        .helpMsgId = MSG_SKILL_Reposition,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Reposition_Usability,
+        .onDraw = NULL,
+        .onSelected = Reposition_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Shove) && COMMON_SKILL_VALID(SID_Shove))
+    [SID_Shove] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_ShoveName,
+        .helpMsgId = MSG_SKILL_Shove,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Shove_Usability,
+        .onDraw = NULL,
+        .onSelected = Shove_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Smite) && COMMON_SKILL_VALID(SID_Smite))
+    [SID_Smite] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_SmiteName,
+        .helpMsgId = MSG_SKILL_Smite,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Smite_Usability,
+        .onDraw = NULL,
+        .onSelected = Smite_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_StealPlus) && COMMON_SKILL_VALID(SID_StealPlus))
+    [SID_StealPlus] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_StealPlusName,
+        .helpMsgId = MSG_SKILL_StealPlus,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = StealPlus_Usability,
+        .onDraw = NULL,
+        .onSelected = StealPlus_Effect,
+        .onIdle = 0,
+        .onSwitchIn = 0,
+        .onSwitchOut = 0
+    },
+#endif
+
+#if (defined(SID_ArdentSacrifice) && COMMON_SKILL_VALID(SID_ArdentSacrifice))
+    [SID_ArdentSacrifice] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_ArdentSacrificeName,
+        .helpMsgId = MSG_SKILL_ArdentSacrifice,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = ArdentSacrifice_Usability,
+        .onDraw = NULL,
+        .onSelected = ArdentSacrifice_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_ReciprocalAid) && COMMON_SKILL_VALID(SID_ReciprocalAid))
+    [SID_ReciprocalAid] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_ReciprocalAidName,
+        .helpMsgId = MSG_SKILL_ReciprocalAid,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = ReciprocalAid_Usability,
+        .onDraw = NULL,
+        .onSelected = ReciprocalAid_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Sacrifice) && COMMON_SKILL_VALID(SID_Sacrifice))
+    [SID_Sacrifice] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_SacrificeName,
+        .helpMsgId = MSG_SKILL_Sacrifice,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Sacrifice_Usability,
+        .onDraw = NULL,
+        .onSelected = Sacrifice_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Capture) && COMMON_SKILL_VALID(SID_Capture))
+    [SID_Capture] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_CaptureName,
+        .helpMsgId = MSG_SKILL_Capture,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Capture_Usability,
+        .onDraw = NULL,
+        .onSelected = Capture_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
+    [SID_Doppleganger] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_DopplegangerName,
+        .helpMsgId = MSG_SKILL_Doppleganger,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Doppleganger_Usability,
+        .onDraw = NULL,
+        .onSelected = Doppleganger_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
+#if (defined(SID_Dismount) && COMMON_SKILL_VALID(SID_Dismount))
+    [SID_Dismount] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_DismountName,
+        .helpMsgId = MSG_SKILL_Dismount,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Dismount_Usability,
+        .onDraw = NULL,
+        .onSelected = Dismount_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

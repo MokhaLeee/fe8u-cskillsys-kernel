@@ -24,7 +24,7 @@
 // #define CONFIG_USE_UTF8_GLYPH
 
 /* Engage style combo attack */
-#define CONFIG_USE_COMBO_ATTACK
+/* #define CONFIG_USE_COMBO_ATTACK */
 
 /**
  * Surround:
@@ -36,14 +36,14 @@
  * 
  * Flyer in outdoor environments are not affected by this effect
  */
-#define CONFIG_BATTLE_SURROUND
+// #define CONFIG_BATTLE_SURROUND
 
 /**
  * 0: Not show any kernel tutorial
  * 1: Only show kernel tutorial in tutorial mode
  * 2: show kernel tutorial at anytime
  */
-#define CONFIG_KTUT_LEVEL 2
+#define CONFIG_KTUT_LEVEL 0
 
 /**
  * If uncommented, enable patch
@@ -76,6 +76,81 @@
 #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
 
 /**
+ * By: Vesly
+ * Allow another line for all R button text
+ * Installed in: Wizardry->Common->ItemSys->ItemDesc->ItemDesc.event
+ * 
+ * CURRENTLY BROKEN as I had to disable line 69/70/71 in order for Vesly's debugger to work
+ */
+// #define CONFIG_EXTEND_R_TEXT_DESC
+
+/**
+ * By: Vesly
+ * Set a number of frames to hold the targetting cursor for (default is 45), 60 frames = 1 second
+ * Installed in: Wizardry->Common->UnitTarget->TargetCursor->TargetCursor.event
+ */
+#define CONFIG_TARGETTING_CURSOR_FRAMES
+
+/**
+ * By: Vesly
+ * Set a number of frames for some battle anims (defaults are 30 30 30 10 30), 60 frames = 1 second
+ * Installed in: Wizardry->Common->MapAnimBattleHook->MapAnimBattleFrames->MapAnimBattleFrames.event
+ */
+#define CONFIG_MAP_BATTLE_ANIM_FRAMES
+
+/**
+ * By: Contro
+ * Send a user's inventory to the supply when they die
+ * Installed in: Wizardry->External->SendInventoryOnDeath->Installer.event
+ */
+
+#define CONFIG_INSTALL_SEND_INVENTORY_ON_DEATH
+
+/**
+ * By: Contro
+ * Display the hidden RES stat of some map tiles like thrones
+ * Installed in: Wizardry->External->ResTerrainWindow->Installer.event
+ */
+#define CONFIG_INSTALL_RES_TERRAIN_WINDOW
+
+
+/**
+ * By Mokha:
+ * Allow units to perform all their regular actions after trading
+ */
+#define CONFIG_INSTALL_NO_WAIT_AFTER_TRADING
+
+/**
+ * By Vesly:
+ * Speed up your rom hack testing with this tool kit of
+ * menu options that lets you test everything from promotions to
+ * chapter warps to arena battles all from the start.
+ */
+#define CONFIG_INSTALL_VESLY_DEBUGGER
+
+/**
+ * DO NOT ENABLE
+ * Increase the caps of the stat bars for units
+ * IN_PROGRESS - currently need to integrate https://github.com/FireEmblemUniverse/fireemblem8u/blob/12004dfd31c8f860804b811fc110394747dbcd12/src/data_classes.c#L1
+ * to preprocess new stat caps for each class
+ */
+// #define CONFIG_INSTALL_EXTENDED_STAT_BARS
+
+/**
+ * Set the widths of the various popup menus (in pixels)
+ * Popup widths defined in: Wizardry/External/PopupMenuWidths/PopupMenuWidths.h
+ */
+#define CONFIG_INSTALL_MENU_WIDTHS
+
+/**
+ * By Snakey1:
+ * Allow units to have base conversations Tellius style
+ * IN PROGRESS - Requires input from creator, so do not enable yet
+ */
+//#define CONFIG_INSTALL_BASE_CONVERSATIONS
+
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable
@@ -83,9 +158,9 @@
  * 3: 100%
  * 4: 0%
  */
-#define CONFIG_LVUP_MODE_TUTORIAL 2
+#define CONFIG_LVUP_MODE_TUTORIAL 0
 #define CONFIG_LVUP_MODE_NORMAL 0
-#define CONFIG_LVUP_MODE_HARD 1
+#define CONFIG_LVUP_MODE_HARD 0
 
 /**
  * Page1 styles

@@ -1,4 +1,5 @@
 #include "PostActionSkills/LynJump.event"
+#include "PostActionSkills/Turncoat.lyn.event"
 #include "PostActionSkills/AlertStance.lyn.event"
 #include "PostActionSkills/Tsuzuku.lyn.event"
 #include "PostActionSkills/SavageBlow.lyn.event"
@@ -7,12 +8,13 @@
 #include "PostActionSkills/Canto.lyn.event"
 #include "PostActionSkills/Thunderstorm.lyn.event"
 #include "PostActionSkills/Return.lyn.event"
-#include "PostActionSkills/Swap.lyn.event"
+#include "PostActionSkills/Lunge.lyn.event"
 #include "PostActionSkills/Heal.lyn.event"
 #include "PostActionSkills/Hurt.lyn.event"
 #include "PostActionSkills/Synchronize.lyn.event"
 #include "PostActionSkills/Clearance.lyn.event"
 #include "PostActionSkills/GetItem.lyn.event"
+#include "PostActionSkills/SealSkills.lyn.event"
 
 #include "MenuSkills/LynJump.event"
 #include "MenuSkills/Dance.lyn.event"
@@ -29,8 +31,26 @@
 #include "MenuSkills/Teleportation.lyn.event"
 #include "MenuSkills/Swarp.lyn.event"
 #include "MenuSkills/Repair.lyn.event"
+#include "MenuSkills/Swap.lyn.event"
+#include "MenuSkills/Transform.lyn.event"
+#include "MenuSkills/DrawBack.lyn.event"
+#include "MenuSkills/Pivot.lyn.event"
+#include "MenuSkills/Reposition.lyn.event"
+#include "MenuSkills/Shove.lyn.event"
+#include "MenuSkills/Smite.lyn.event"
+#include "MenuSkills/StealPlus.lyn.event"
+#include "MenuSkills/ArdentSacrifice.lyn.event"
+#include "MenuSkills/Sacrifice.lyn.event"
+#include "MenuSkills/Capture.lyn.event"
+#include "MenuSkills/Doppleganger.lyn.event"
+#include "MenuSkills/Dismount.lyn.event"
 
+#include "MenuSkills/ReciprocalAid.lyn.event"
+#include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"
+
+#include "Misc/LynJump.event"
 #include "Misc/HealAmount.lyn.event"
+#include "Misc/MiscFunctions.lyn.event"
 
 #include "LegendarySkills/JudgeLegend.lyn.event"
 #include "LegendarySkills/LegendEffect.lyn.event"
@@ -50,6 +70,9 @@
 #include "PrePhaseSkills/YuneWhisper.lyn.event"
 #include "PrePhaseSkills/TileCheck.lyn.event"
 #include "PrePhaseSkills/KeepUp.lyn.event"
+#include "PrePhaseSkills/Moody.lyn.event"
+#include "PrePhaseSkills/HoneChaos.lyn.event"
+#include "PrePhaseSkills/Doppleganger.lyn.event"
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"
@@ -60,3 +83,9 @@
 
 #include "ShopSkills/LynJump.event"
 #include "ShopSkills/Price.lyn.event"
+
+#include "ArenaSkills/LynJump.event"
+#include "ArenaSkills/Arena.lyn.event"
+
+#include "MapSkills/LynJump.event"
+#include "MapSkills/MapSkills.lyn.event"

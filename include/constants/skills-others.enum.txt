@@ -70,8 +70,7 @@ SID_Discipline
 SID_AdvantageChaser
 SID_Nonconforming
 SID_Moonlight
-// SID_BlackMagic
-// SID_LastWord
+SID_BlackMagic
 SID_Multiscale
 SID_PridefulWarrior
 SID_MageSlayer
@@ -97,20 +96,9 @@ SID_NatureRush
 SID_Expertise
 SID_PassionsFlow
 SID_LadyBlade
-// Lull skills
-// SID_LullDefense
-// SID_LullLuck
-// SID_LullMagic
-// SID_LullMovement
-// SID_LullResistance
-// SID_LullSkill
-// SID_LullSpectrum
-// SID_LullSpeed
-// SID_LullStregth
 SID_ShrewdPotential
-// SID_SteadyBrawler
+SID_SteadyBrawler
 SID_KeepUp
-// SID_LiquidOoze
 SID_CloseCombat
 SID_ArmorMarch
 SID_Eclipse
@@ -118,7 +106,7 @@ SID_Barricade
 SID_BarricadePlus
 SID_LunarBrace
 SID_Pursuer
-// SID_QuickLearner
+SID_QuickLearner
 SID_EffectSpore
 SID_DominantArm
 SID_SolidRock
@@ -127,6 +115,43 @@ SID_FranticSwing
 SID_SocialButterfly
 SID_MeleeManiac
 SID_CriticalOverload
+SID_ConcealedWeapon
+SID_Blessing
+SID_VigorDance
+SID_MagicSeal
+SID_Mimic
+SID_Insomnia
+SID_Comatose
+SID_MagicBounce
+SID_Accost
+SID_HazeHunter
+SID_Rampage
+SID_ArenaTrap
+SID_Mentorship
+SID_HyperCutter
+SID_ClearBody
+SID_GoodAsGold
+SID_PsychUp
+SID_Moody
+SID_Amische
+SID_DownWithArch
+SID_HoneChaos
+SID_Acrobat
+SID_Contrary
+SID_Reflex
+SID_RampUp
+SID_DarkBargain
+
+// Lull skills
+SID_LullDefense
+SID_LullLuck
+SID_LullMagic
+SID_LullMovement
+SID_LullResistance
+SID_LullSkill
+SID_LullSpectrum
+SID_LullSpeed
+SID_LullStrength
 
 // Shop skills
 SID_Deal
@@ -143,6 +168,7 @@ SID_SoaringGuidance
 SID_FlierFormation
 SID_SoaringWings
 SID_DetailedReport
+SID_GridMaster
 
 // Weapon range
 SID_HighGround
@@ -162,13 +188,13 @@ SID_SwiftSwim
 SID_SolarPower
 
 // Seal skills
-// SID_SealDefense
-// SID_SealLuck
-// SID_SealMagic
-// SID_SealResistance
-// SID_SealSkill
-// SID_SealSpeed
-// SID_SealStrength
+SID_SealDefense
+SID_SealLuck
+SID_SealMagic
+SID_SealResistance
+SID_SealSkill
+SID_SealSpeed
+SID_SealStrength
 
 // Initiative skills
 SID_InitStrong
@@ -226,6 +252,7 @@ SID_FailGale
 SID_Clearance
 SID_Despoil
 SID_GoldDigger
+SID_LeadByExample
 
 // Menu skills
 SID_Dance
@@ -247,8 +274,12 @@ SID_RallySpectrum
 SID_GoddessDance
 SID_Stride
 SID_Blacksmith
-
-// Art skills
-SID_COMBAT_Galeforce
-SID_COMBAT_Gamble
-SID_COMBAT_Detonate
+SID_PairUp
+SID_Transform
+SID_StealPlus
+SID_DrawBack
+SID_Pivot
+SID_Reposition
+SID_Shove
+SID_Smite
+SID_StealPlus

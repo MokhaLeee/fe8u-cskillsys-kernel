@@ -273,6 +273,22 @@ static const struct REDA REDA_Vigarde[] = {
     },
 };
 
+static const struct REDA REDA_Selena[] = {
+    {
+        .x = 11,
+        .y = 23,
+        .b = -1,
+    },
+};
+
+static const struct REDA REDA_Lyon[] = {
+    {
+        .x = 12,
+        .y = 24,
+        .b = -1,
+    },
+};
+
 static const struct UnitDefinition UnitDef_Enemy1[] = {
     {
         .charIndex = CHARACTER_ONEILL,
@@ -336,7 +352,52 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
         },
         .ai = { NeverMoveAI },
     },
+    {
+        .charIndex = CHARACTER_SELENA,
+        .classIndex = CLASS_MAGE_KNIGHT_F,
+        .autolevel = true,
+        .allegiance = FACTION_ID_RED,
+        .level = 10,
+        .xPosition = 11,
+        .yPosition = 23,
+        .redaCount = 1,
+        .redas = REDA_Selena,
+        .items = {
+            ITEM_ANIMA_THUNDER,
+            ITEM_ANIMA_ELFIRE,
+            ITEM_VULNERARY,
+        },
+        .ai = { 0, 4, 9, 0 },
+    },
+
+     {
+        .charIndex = CHARACTER_LYON,
+        .classIndex = CLASS_NECROMANCER,
+        .autolevel = true,
+        .allegiance = FACTION_ID_RED,
+        .level = 10,
+        .xPosition = 12,
+        .yPosition = 24,
+        .redaCount = 1,
+        .redas = REDA_Lyon,
+        .items = {
+            ITEM_DARK_NOSFERATU,
+            ITEM_VULNERARY,
+        },
+        .ai = { 0, 4, 9, 0 },
+    },
     {}
+};
+
+static const int ShopList_Event_Skills[] = {
+    (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    (SID_Adept << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    (SID_BlowArmored << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    (SID_BloodTide << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    (SID_Charge << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    (SID_AlertStance << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+
+    ITEM_NONE,
 };
 
 /**
@@ -359,6 +420,7 @@ static const EventScr EventScr_Beginning[] = {
 #if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
     Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
 #endif
+    Evt_AddSkill(SID_DoubleUp, CHARACTER_LYON)
 
 #if defined(SID_Aerobatics) && (COMMON_SKILL_VALID(SID_Aerobatics))
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
@@ -440,6 +502,7 @@ static const EventListScr EventListScr_Character[] = {
 };
 
 static const EventListScr EventListScr_Location[] = {
+    Vendor(ShopList_Event_Skills, 11, 26)
     END_MAIN
 };
 

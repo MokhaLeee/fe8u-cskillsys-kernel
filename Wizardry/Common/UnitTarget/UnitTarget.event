@@ -1,0 +1,8 @@
+#include "UnitTarget/Source/LynJump.event"
+#include "UnitTarget/Source/UnitTarget.lyn.event"
+
+#ifdef CONFIG_TARGETTING_CURSOR_FRAMES
+
+#include "TargetCursor/TargetCursor.event"
+
+#endif

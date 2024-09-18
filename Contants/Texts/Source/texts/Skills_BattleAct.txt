@@ -187,3 +187,28 @@ Halve the opponent's current HP.[NL]
 Sturdy:[NL]
 If the unit has full HP at the[NL]
 start of the fight, they cannot die.[X]
+
+## MSG_SKILL_Blessing
+Blessing:[NL]
+Weapon uses are not consumed.[X]
+
+## MSG_SKILL_DownWithArch_NAME
+Down-Arch[X]
+
+## MSG_SKILL_DownWithArch
+Down With Arch:[NL]
+Instantly kill enemy if their[NL]
+name is the specified name.[X]
+
+## MSG_SKILL_RampUp
+RampUp:[NL]
+Crits deal x2 damage, but[NL]
+apply before enemy defense.[X]
+
+## MSG_SKILL_TriangleAttack_NAME
+Tri-Atk[X]
+
+## MSG_SKILL_TriangleAttack
+Triangle Attack: Two other units with[NL]
+this skill adjacent to an enemy can[NL]
+perform a triangle attack.[X]

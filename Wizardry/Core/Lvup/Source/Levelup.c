@@ -5,6 +5,7 @@
 #include "bwl.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
+#include "constants/skills.h"
 
 STATIC_DECLAR int GetStatIncreaseRandC(int growth)
 {
@@ -27,26 +28,142 @@ static int GetStatIncreaseFixed(int growth, int ref)
     return simple_div(growth + simple_mod(growth * ref, 100), 100);
 }
 
-static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
+static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
+    struct Unit *unit = GetUnit(bu->unit.index);
+    int statCounter = 0;
 
-    bu->changeHP  = GetStatIncrease(GetUnitHpGrowth(unit)  + bonus);
-    bu->changePow = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
-    bu->changeSkl = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
-    bu->changeSpd = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
-    bu->changeLck = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
-    bu->changeDef = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
-    bu->changeRes = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
+    int limitBreaker = 0;
 
-    BU_CHG_MAG(bu) = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
+#if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
+    if (SkillTester(unit, SID_LimitBreaker))
+        limitBreaker = SKILL_EFF0(SID_LimitBreaker);
+#endif
+
+#if defined(SID_LimitBreakerPlus) && (COMMON_SKILL_VALID(SID_LimitBreakerPlus))
+    if (SkillTester(unit, SID_LimitBreakerPlus))
+        limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
+#endif
+
+    // Create an array of stat pointers
+    s8 *statChanges[] = {
+        &bu->changeHP,
+        &bu->changePow,
+        &bu->changeSkl,
+        &bu->changeSpd,
+        &bu->changeLck,
+        &bu->changeDef,
+        &bu->changeRes,
+        &BU_CHG_MAG(bu)};
+
+    /*
+    ** Right now, if a unit has over a 100% growth and gets more than one
+    ** stat from it when they're only 1 point away from their cap, the
+    ** level up screen will still show the bonus stats.
+    ** I could fix it, but it'd just make this function even chunkier.
+    ** If there's a smarter way to write all this, please do.
+    */
+    if (unit->maxHP < unit->pClassData->maxHP + limitBreaker)
+        *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+    if (unit->pow < unit->pClassData->maxPow + limitBreaker)
+        *statChanges[1] = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
+    if (unit->skl < unit->pClassData->maxSkl + limitBreaker)
+        *statChanges[2] = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
+    if (unit->spd < unit->pClassData->maxSpd + limitBreaker)
+        *statChanges[3] = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
+    if (unit->lck < 30 + limitBreaker) // subject to change
+        *statChanges[4] = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
+    if (unit->def < unit->pClassData->maxDef + limitBreaker)
+        *statChanges[5] = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
+    if (unit->res < unit->pClassData->maxRes + limitBreaker)
+        *statChanges[6] = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
+    if (GetUnitMagic(unit) < GetUnitMaxMagic(unit) + limitBreaker)
+        *statChanges[7] = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
+
+    // For each increased stat, increment statCounter
+    statCounter += *statChanges[0] > 0 ? 1 : 0;
+    statCounter += *statChanges[1] > 0 ? 1 : 0;
+    statCounter += *statChanges[2] > 0 ? 1 : 0;
+    statCounter += *statChanges[3] > 0 ? 1 : 0;
+    statCounter += *statChanges[4] > 0 ? 1 : 0;
+    statCounter += *statChanges[5] > 0 ? 1 : 0;
+    statCounter += *statChanges[6] > 0 ? 1 : 0;
+    statCounter += *statChanges[7] > 0 ? 1 : 0;
+
+#if (defined(SID_TripleUp) && (COMMON_SKILL_VALID(SID_TripleUp)))
+    if (BattleSkillTester(bu, SID_TripleUp))
+    {
+        // Check if any values are greater than 0
+        int anyStatIncrease = 0; // Flag to track if there's any stats to increase
+        for (u8 i = 0; i < ARRAY_COUNT(statChanges); i++)
+        {
+            if (*statChanges[i] == 0)
+            {
+                anyStatIncrease = 1; // Set the flag if any stat is greater than 0
+                break;               // No need to continue checking once we find a positive value
+            }
+        }
+
+        if (anyStatIncrease)
+        {
+            // Set the upper limit of stats to increase (accounting for previous increases before this skill)
+            while (statCounter < 3)
+            {
+                // Get a random index using NextRN_N and ARRAY_COUNT
+                int randIndex = NextRN_N(ARRAY_COUNT(statChanges));
+
+                // If the randomly chosen stat hasn't increased, force it to increase
+                if (*statChanges[randIndex] == 0)
+                {
+                    *statChanges[randIndex] = 1;
+                    statCounter++;
+                }
+            }
+            return;
+        }
+    }
+#endif
+
+#if (defined(SID_DoubleUp) && (COMMON_SKILL_VALID(SID_DoubleUp)))
+    if (BattleSkillTester(bu, SID_DoubleUp))
+    {
+        // Check if any values are greater than 0
+        int anyStatIncrease = 0; // Flag to track if there's any stat greater than 0
+        for (u8 i = 0; i < ARRAY_COUNT(statChanges); i++)
+        {
+            if (*statChanges[i] > 0)
+            {
+                anyStatIncrease = 1; // Set the flag if any stat is greater than 0
+                break;               // No need to continue checking once we find a positive value
+            }
+        }
+
+        if (anyStatIncrease)
+        {
+            // Set the upper limit of stats to increase (accounting for previous increases before this skill)
+            while (statCounter < 2)
+            {
+                // Get a random index using NextRN_N and ARRAY_COUNT
+                int randIndex = NextRN_N(ARRAY_COUNT(statChanges));
+
+                // If the randomly chosen stat hasn't increased, force it to increase
+                if (*statChanges[randIndex] == 0)
+                {
+                    *statChanges[randIndex] = 1;
+                    statCounter++;
+                }
+            }
+            return;
+        }
+    }
+#endif
 }
 
-static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)
+static void UnitLvup_RandC(struct BattleUnit *bu, int bonus)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
+    struct Unit *unit = GetUnit(bu->unit.index);
 
-    bu->changeHP  = GetStatIncreaseRandC(GetUnitHpGrowth(unit)  + bonus);
+    bu->changeHP = GetStatIncreaseRandC(GetUnitHpGrowth(unit) + bonus);
     bu->changePow = GetStatIncreaseRandC(GetUnitPowGrowth(unit) + bonus);
     bu->changeSkl = GetStatIncreaseRandC(GetUnitSklGrowth(unit) + bonus);
     bu->changeSpd = GetStatIncreaseRandC(GetUnitSpdGrowth(unit) + bonus);
@@ -57,15 +174,15 @@ static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)
     BU_CHG_MAG(bu) = GetStatIncreaseRandC(GetUnitMagGrowth(unit) + bonus);
 }
 
-static void UnitLvup_Fixed(struct BattleUnit * bu, int bonus)
+static void UnitLvup_Fixed(struct BattleUnit *bu, int bonus)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
+    struct Unit *unit = GetUnit(bu->unit.index);
 
     int ref = unit->level - 1;
     if (CA_PROMOTED & UNIT_CATTRIBUTES(unit))
         ref = ref + 19;
 
-    bu->changeHP  = GetStatIncreaseFixed(GetUnitHpGrowth(unit)  + bonus, ref += 5);
+    bu->changeHP = GetStatIncreaseFixed(GetUnitHpGrowth(unit) + bonus, ref += 5);
     bu->changePow = GetStatIncreaseFixed(GetUnitPowGrowth(unit) + bonus, ref += 5);
     bu->changeSkl = GetStatIncreaseFixed(GetUnitSklGrowth(unit) + bonus, ref += 5);
     bu->changeSpd = GetStatIncreaseFixed(GetUnitSpdGrowth(unit) + bonus, ref += 5);
@@ -76,9 +193,9 @@ static void UnitLvup_Fixed(struct BattleUnit * bu, int bonus)
     BU_CHG_MAG(bu) = GetStatIncreaseFixed(GetUnitMagGrowth(unit) + bonus, ref += 5);
 }
 
-static void UnitLvup_100(struct BattleUnit * bu, int bonus)
+static void UnitLvup_100(struct BattleUnit *bu, int bonus)
 {
-    bu->changeHP  = 1;
+    bu->changeHP = 1;
     bu->changePow = 1;
     bu->changeSkl = 1;
     bu->changeSpd = 1;
@@ -88,21 +205,19 @@ static void UnitLvup_100(struct BattleUnit * bu, int bonus)
     BU_CHG_MAG(bu) = 1;
 }
 
-static void UnitLvup_0(struct BattleUnit * bu, int bonus)
+static void UnitLvup_0(struct BattleUnit *bu, int bonus)
 {
     return;
 }
 
-
-STATIC_DECLAR void UnitLvupCore(struct BattleUnit * bu, int bonus)
+STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 {
-    static void (* const funcs[])(struct BattleUnit * bu, int bonus) = {
+    static void (*const funcs[])(struct BattleUnit *bu, int bonus) = {
         [0] = UnitLvup_Vanilla,
         [1] = UnitLvup_RandC,
         [2] = UnitLvup_Fixed,
         [3] = UnitLvup_100,
-        [4] = UnitLvup_0
-    };
+        [4] = UnitLvup_0};
 
     int mode;
 
@@ -141,7 +256,7 @@ static inline int get_metis_tome_growth_bonus(void)
 }
 
 LYN_REPLACE_CHECK(CheckBattleUnitLevelUp);
-void CheckBattleUnitLevelUp(struct BattleUnit * bu)
+void CheckBattleUnitLevelUp(struct BattleUnit *bu)
 {
     if (CanBattleUnitGainLevels(bu) && bu->unit.exp >= 100)
     {

@@ -1,0 +1,6 @@
+Grab the tmx2tsa file here if you want to make tileset edits.
+
+Not includes because it's 7mb and I want to keep the project
+size as small as possible.
+
+https://github.com/masterofcontroversy/ASM/tree/main/FE8/ResTerrainWindow/gfx/tmx2tsa

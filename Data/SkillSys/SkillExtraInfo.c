@@ -1061,5 +1061,23 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealStrength) && COMMON_SKILL_VALID(SID_SealStrength))
     [SID_SealStrength] = {{ 6 }},
-#endif
+#endif 
+    [SID_VigorDance] = {{ 2, 2}},
+    [SID_Accost] = {{ 20 }},
+    [SID_Mentorship] = {{ 20 }},
+    [SID_HeavyMetal] = {{ 5 }},
+    [SID_PairUp] = {{ 20 }},
+    [SID_ArdentSacrifice] {{ 10 }},
+    [SID_Cultured] = {{ 50 }},
+    [SID_Flank] = {{ 25 }},
+    [SID_ForeignPrincess] = {{ 2 }},
+    [SID_HoardersBane] = {{ 10 }},
+    [SID_Thighdeology] = {{ 2, 20 }},
+    [SID_ThotSlayer] = {{ 15 }},
+    [SID_Swarm] = {{ 50 }},
+    [SID_Capture] = {{ 50 }},
+    [SID_MoonBow] = {{ 25 }},
+    [SID_LimitBreaker] = {{ 5 }},
+    [SID_LimitBreakerPlus] = {{ 10 }},
+    [SID_RiskItAll] = {{ 100 }},
 };

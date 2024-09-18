@@ -9,7 +9,12 @@ int _GetUnitSpeed(struct Unit * unit)
     int status = unit->spd;
 
     if (unit->state & US_RESCUING)
+#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
+    if (!SkillTester(unit, SID_PairUp))
         status = unit->spd / 2;
+#else 
+    status = unit->spd / 2;
+#endif
 
     for (it = gpSpdGetters; *it; it++)
         status = (*it)(status, unit);
@@ -120,5 +125,35 @@ int SpdGetterSkills(int status, struct Unit * unit)
     }
 #endif
 
+#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage))) 
+    if (SkillTester(unit, SID_Rampage))
+            status += status / 2;
+#endif
+
+#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
+    if (SkillTester(unit, SID_PairUp))
+        if (unit->state & US_RESCUING)
+            status += Div(_GetUnitSpeed(GetUnit(unit->rescue)) * SKILL_EFF0(SID_PairUp), 100);
+#endif
+
+    return status;
+}
+
+int SpdPsychUpCheck(int status, struct Unit *unit)
+{
+    int stolen_status = 0;
+
+#if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
+    if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = SpdGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) + SpdGetterSkills(0, GetUnit(gBattleTarget.unit.index));
+        return status + stolen_status;
+    }
+    else if (unit == GetUnit(gBattleTarget.unit.index) && SkillTester(unit, SID_PsychUp))
+    {
+        stolen_status = SpdGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) + SpdGetterSkills(0, GetUnit(gBattleActor.unit.index));
+        return status + stolen_status;
+    }
+#endif
     return status;
 }

@@ -4,7 +4,7 @@
 #include "weapon-range.h"
 #include "status-getter.h"
 
-extern const struct AiCombatScoreCoefficients * sCombatScoreCoefficients;
+extern const struct AiCombatScoreCoefficients *sCombatScoreCoefficients;
 
 STATIC_DECLAR int AiGetDamageDealtCombatScoreComponentVanilla(void)
 {

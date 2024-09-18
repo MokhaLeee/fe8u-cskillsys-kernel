@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "strmag.h"
 
 LYN_REPLACE_CHECK(CpPerform_MoveCameraOntoTarget);
 void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc)
@@ -7,9 +8,19 @@ void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc)
 
     int x = 0;
     int y = 0;
+    int magic_seal_set = false;
 
     if (gActionData.unitActionType == UNIT_ACTION_TRAPPED)
         return;
+
+    /**
+     * Magic seal AI fix to prevent softlocks when it's used on the enemy
+     */
+    if (IsUnitMagicSealed(gActiveUnit) && IsMagicAttack(&gBattleActor))
+    {
+        gAiDecision.actionId = AI_CMD_ACTION_IN_PLACE;
+        magic_seal_set = true;
+    }
 
     switch (gAiDecision.actionId) {
         case AI_ACTION_NONE:
@@ -91,6 +102,12 @@ void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc)
 
             break;
     }
+
+    /**
+     * If this is set, we don't want to bother setting the target red cursor
+     */
+    if(magic_seal_set)
+        return;
 
     EnsureCameraOntoPosition(proc, x, y);
     StartAiTargetCursor(x * 16, y * 16, 2, proc);

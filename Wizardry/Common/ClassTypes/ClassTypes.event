@@ -1,7 +1,12 @@
 #ifndef CLASS_TYPES_INSTALLED
 #define CLASS_TYPES_INSTALLED
 
+// #include "Source/LynJump.event"
 #include "Source/class-types.lyn.event"
+
+#ifdef CONFIG_INSTALL_EXTENDED_STAT_BARS
+    #include "Source/class-battle-data.lyn.event"
+#endif
 // #include "data.event"
 
 #endif /* CLASS_TYPES_INSTALLED */

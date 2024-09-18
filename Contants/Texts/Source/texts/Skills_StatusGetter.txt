@@ -468,3 +468,46 @@ Armor-M[X]
 Armor March: At the start of the turn,[NL]
 if unit is adjacent to an armor ally,[NL]
 unit and adjacent armor allies +2 MOV.[X]
+
+## MSG_SKILL_ArenaTrap
+Arena Trap:[NL]
+Enemy units within 2[NL]
+spaces cannot move.[X]
+
+## MSG_SKILL_HyperCutter
+Hyper Cutter:[NL]
+This unit is immune[NL]
+to STR reductions.[X]
+
+## MSG_SKILL_ClearBody
+Clear Body:[NL]
+This unit is immune to[NL]
+all stat reductions.[X]
+
+## MSG_SKILL_PsychUp
+Psych Up:[NL]
+Copy the enemy's stat[NL]
+boosts during battle.[X]
+
+## MSG_SKILL_Moody
+Moody:[NL]
+Buff one stat by 8 and debuff[NL]
+another by 4 every turn.[X]
+
+## MSG_SKILL_HeavyMetal
+Heavy Metal:[NL]
+Increase this unit's[NL]
+CON by 5.[X]
+
+## MSG_SKILL_Contrary
+Contrary:[NL]
+Invert the effects of all[NL]
+debuffs to this unit.[X]
+
+## MSG_SKILL_MoonBow
+Moon Bow:[NL]
+Reduce enemy's DEF/RES by 25%.[X]
+
+## MSG_SKILL_RiskItAll
+Risk It All:[NL]
+Both sides have 100% crit.[X]

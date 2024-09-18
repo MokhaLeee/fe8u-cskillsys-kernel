@@ -70,4 +70,17 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
     [SID_Blacksmith] = Action_Blacksmith,
 #endif
+    [SID_Swap] = Action_Swap,
+    [SID_Transform] = Action_Transform,
+    [SID_DrawBack] = Action_DrawBack,
+    [SID_Pivot] = Action_Pivot,
+    [SID_Reposition] = Action_Reposition,
+    [SID_Shove] = Action_Shove,
+    [SID_Smite] = Action_Smite,
+    [SID_ArdentSacrifice] = Action_ArdentSacrifice,
+    [SID_ReciprocalAid] = Action_ReciprocalAid,
+    [SID_Sacrifice] = Action_Sacrifice,
+    [SID_Capture] = Action_Capture,
+    [SID_Doppleganger] = Action_Doppleganger,
+    [SID_Dismount] = Action_Dismount,
 };

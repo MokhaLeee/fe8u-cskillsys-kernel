@@ -13,3 +13,31 @@
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "ConvoyExpa/ConvoyExpa.event"
 #endif
+
+#ifdef CONFIG_INSTALL_SEND_INVENTORY_ON_DEATH
+    #include "SendInventoryOnDeath/Installer.event"
+#endif
+
+#ifdef CONFIG_INSTALL_RES_TERRAIN_WINDOW
+    #include "ResTerrainWindow/Installer.event"
+#endif
+
+#ifdef CONFIG_INSTALL_NO_WAIT_AFTER_TRADING
+    #include "NoWaitAfterTrading/Installer.event"
+#endif
+
+#ifdef CONFIG_INSTALL_VESLY_DEBUGGER
+    #include "VeslyDebugger/Installer.event"
+#endif
+
+#ifdef CONFIG_INSTALL_MENU_WIDTHS
+    #include "PopupMenuWidths/Installer.event"
+#endif
+
+#ifdef CONFIG_EXTEND_R_TEXT_DESC
+    #include "ItemDesc/Installer.event"
+#endif
+
+#ifdef CONFIG_INSTALL_BASE_CONVERSATIONS
+    #include "BaseConversations/Installer.event"
+#endif

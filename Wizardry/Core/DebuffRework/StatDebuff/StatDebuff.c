@@ -1,10 +1,12 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "debuff.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 #define LOCAL_TRACE 0
 
-inline struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit)
+inline struct StatDebuffStatus *GetUnitStatDebuffStatus(struct Unit *unit)
 {
     if (unit == &gBattleActor.unit)
         return &sStatDebuffStatusBattleUnit[0];
@@ -14,16 +16,17 @@ inline struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit * unit)
     return sStatDebuffStatusPool[unit->index & 0xFF];
 }
 
-int SimulateStatDebuffPositiveType(struct Unit * unit)
+int SimulateStatDebuffPositiveType(struct Unit *unit)
 {
     int i, positive = 0;
-    struct StatDebuffStatus * stat;
+    struct StatDebuffStatus *stat;
 
     if (!UNIT_IS_VALID(unit))
         return STATUS_DEBUFF_NONE;
 
     stat = GetUnitStatDebuffStatus(unit);
-    switch (stat->st.bitfile.is_buff_chk) {
+    switch (stat->st.bitfile.is_buff_chk)
+    {
     case STATUS_DEBUFF_NEGATIVE:
     case STATUS_DEBUFF_POSITIVE:
         return stat->st.bitfile.is_buff_chk;
@@ -41,7 +44,45 @@ int SimulateStatDebuffPositiveType(struct Unit * unit)
         if (!_BIT_CHK(stat->st.bitmask, i))
             continue;
 
-        switch (gpStatDebuffInfos[i].positive_type) {
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+        if (SkillTester(unit, SID_Contrary))
+        {
+            switch (gpStatDebuffInfos[i].positive_type)
+            {
+            case STATUS_DEBUFF_NEGATIVE:
+                positive++;
+                break;
+
+            case STATUS_DEBUFF_POSITIVE:
+                positive++;
+                break;
+
+            case STATUS_DEBUFF_NONE:
+            default:
+                break;
+            }
+        }
+        else
+        {
+            switch (gpStatDebuffInfos[i].positive_type)
+            {
+            case STATUS_DEBUFF_NEGATIVE:
+                positive--;
+                break;
+
+            case STATUS_DEBUFF_POSITIVE:
+                positive++;
+                break;
+
+            case STATUS_DEBUFF_NONE:
+            default:
+                break;
+            }
+        }
+
+#else
+        switch (gpStatDebuffInfos[i].positive_type)
+        {
         case STATUS_DEBUFF_NEGATIVE:
             positive--;
             break;
@@ -54,6 +95,7 @@ int SimulateStatDebuffPositiveType(struct Unit * unit)
         default:
             break;
         }
+#endif
     }
 
     if (positive < 0)
@@ -73,12 +115,12 @@ int SimulateStatDebuffPositiveType(struct Unit * unit)
     }
 }
 
-void ResetStatDebuffPositiveType(struct Unit * unit)
+void ResetStatDebuffPositiveType(struct Unit *unit)
 {
     GetUnitStatDebuffStatus(unit)->st.bitfile.is_buff_chk = STATUS_DEBUFF_NONE;
 }
 
-void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
+void SetUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 {
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
     {
@@ -89,7 +131,7 @@ void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
     ResetStatDebuffPositiveType(unit);
 }
 
-void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
+void ClearUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 {
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
     {
@@ -100,7 +142,7 @@ void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
     ResetStatDebuffPositiveType(unit);
 }
 
-bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
+bool CheckUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 {
     if (debuff >= UNIT_STAT_DEBUFF_MAX)
     {
@@ -110,7 +152,7 @@ bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff)
     return _BIT_CHK(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
 }
 
-void MSU_SaveStatDebuff(u8 * dst, const u32 size)
+void MSU_SaveStatDebuff(u8 *dst, const u32 size)
 {
     if (size < (sizeof(sStatDebuffStatusAlly) + sizeof(sStatDebuffStatusEnemy) + sizeof(sStatDebuffStatusNpc)))
     {
@@ -138,7 +180,7 @@ void MSU_SaveStatDebuff(u8 * dst, const u32 size)
         sizeof(sStatDebuffStatusNpc));
 }
 
-void MSU_LoadStatDebuff(u8 * src, const u32 size)
+void MSU_LoadStatDebuff(u8 *src, const u32 size)
 {
     if (size < (sizeof(sStatDebuffStatusAlly) + sizeof(sStatDebuffStatusEnemy) + sizeof(sStatDebuffStatusNpc)))
     {
@@ -166,11 +208,12 @@ void MSU_LoadStatDebuff(u8 * src, const u32 size)
         sizeof(sStatDebuffStatusNpc));
 }
 
-void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
+void TickUnitStatDebuff(struct Unit *unit, enum STATUS_DEBUFF_TICK_TYPE type)
 {
-    bool ticked = false;;
+    bool ticked = false;
+    ;
     int i;
-    u32 * bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
+    u32 *bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
     for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
         if (_BIT_CHK(bitfile, i) && type == gpStatDebuffInfos[i].tick_type)
         {
@@ -185,23 +228,23 @@ void TickUnitStatDebuff(struct Unit * unit, enum STATUS_DEBUFF_TICK_TYPE type)
 /**
  * Pre-battle calc
  */
-void PreBattleCalcStatDebuffs(struct BattleUnit * bu, struct BattleUnit * defender)
+void PreBattleCalcStatDebuffs(struct BattleUnit *bu, struct BattleUnit *defender)
 {
     int i;
-    u32 * bitfile = GetUnitStatDebuffStatus(&bu->unit)->st.bitmask;
+    u32 *bitfile = GetUnitStatDebuffStatus(&bu->unit)->st.bitmask;
     for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
         {
-            const struct DebuffInfo * info = &gpStatDebuffInfos[i];
+            const struct DebuffInfo *info = &gpStatDebuffInfos[i];
 
-            bu->battleAttack       += info->battle_status.atk;
-            bu->battleDefense      += info->battle_status.def;
-            bu->battleHitRate      += info->battle_status.hit;
-            bu->battleAvoidRate    += info->battle_status.avo;
-            bu->battleCritRate     += info->battle_status.crit;
+            bu->battleAttack += info->battle_status.atk;
+            bu->battleDefense += info->battle_status.def;
+            bu->battleHitRate += info->battle_status.hit;
+            bu->battleAvoidRate += info->battle_status.avo;
+            bu->battleCritRate += info->battle_status.crit;
             bu->battleSilencerRate += info->battle_status.silencer;
-            bu->battleDodgeRate    += info->battle_status.dodge;
+            bu->battleDodgeRate += info->battle_status.dodge;
         }
     }
 }
@@ -212,7 +255,8 @@ void PreBattleCalcStatDebuffs(struct BattleUnit * bu, struct BattleUnit * defend
 #define STAT_DEBUFF_MSG_BUF_AMT 7
 #define STAT_DEBUFF_MSG_BUF_NEXT(idx) (((idx) - 1) & 3)
 
-struct StatDebuffMsgBuf {
+struct StatDebuffMsgBuf
+{
     u32 bitfile[4];
     u32 special_mask;
     s8 uid;
@@ -220,13 +264,14 @@ struct StatDebuffMsgBuf {
 };
 extern struct StatDebuffMsgBuf sStatDebuffMsgBuf[STAT_DEBUFF_MSG_BUF_AMT];
 extern int sStatDebuffMsgBufNext;
-void * const i = sStatDebuffMsgBuf;
+void *const i = sStatDebuffMsgBuf;
 const int j = sizeof(struct StatDebuffMsgBuf);
-enum STAT_BUFF_MSG_BUF_SPECIAL_MASK {
+enum STAT_BUFF_MSG_BUF_SPECIAL_MASK
+{
     SP_STAT_CANNOT_MOVE = (1 << 0x00),
 };
 
-STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile, struct StatDebuffMsgBuf * buf)
+STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit *unit, u32 *bitfile, struct StatDebuffMsgBuf *buf)
 {
     int i;
     bool in_panic = false;
@@ -245,11 +290,21 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
     if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_PANIC)
         in_panic = true;
 
+#if (defined(SID_HyperCutter) && (COMMON_SKILL_VALID(SID_HyperCutter)))
+    if (SkillTester(unit, SID_HyperCutter))
+        in_panic = false;
+#endif
+
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        in_panic = false;
+#endif
+
     for (i = UNIT_STAT_DEBUFF_IDX_START; i < UNIT_STAT_DEBUFF_MAX; i++)
     {
         if (_BIT_CHK(bitfile, i))
         {
-            const struct DebuffInfo * info = &gpStatDebuffInfos[i];
+            const struct DebuffInfo *info = &gpStatDebuffInfos[i];
 
             if (in_panic == true && info->positive_type == STATUS_DEBUFF_POSITIVE)
             {
@@ -280,14 +335,14 @@ STATIC_DECLAR void GenerateStatDebuffMsgBufExt(struct Unit * unit, u32 * bitfile
     }
 }
 
-STATIC_DECLAR struct StatDebuffMsgBuf * GetExistingStatDebuffMsgBuf(struct Unit * unit)
+STATIC_DECLAR struct StatDebuffMsgBuf *GetExistingStatDebuffMsgBuf(struct Unit *unit)
 {
     int i;
-    u32 * bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
+    u32 *bitfile = GetUnitStatDebuffStatus(unit)->st.bitmask;
 
     for (i = STAT_DEBUFF_MSG_BUF_AMT - 1; i >= 0; i--)
     {
-        struct StatDebuffMsgBuf * buf = &sStatDebuffMsgBuf[i];
+        struct StatDebuffMsgBuf *buf = &sStatDebuffMsgBuf[i];
 
         if (buf->uid == unit->index &&
             buf->bitfile[0] == bitfile[0] &&
@@ -306,9 +361,9 @@ STATIC_DECLAR struct StatDebuffMsgBuf * GetExistingStatDebuffMsgBuf(struct Unit 
     return NULL;
 }
 
-STATIC_DECLAR struct StatDebuffMsgBuf * GetStatDebuffMsgBuf(struct Unit * unit)
+STATIC_DECLAR struct StatDebuffMsgBuf *GetStatDebuffMsgBuf(struct Unit *unit)
 {
-    struct StatDebuffMsgBuf * buf = GetExistingStatDebuffMsgBuf(unit);
+    struct StatDebuffMsgBuf *buf = GetExistingStatDebuffMsgBuf(unit);
     if (!buf)
     {
         if (unit->index == gActiveUnit->index)
@@ -325,50 +380,175 @@ STATIC_DECLAR struct StatDebuffMsgBuf * GetStatDebuffMsgBuf(struct Unit * unit)
         GenerateStatDebuffMsgBufExt(unit, GetUnitStatDebuffStatus(unit)->st.bitmask, buf);
     }
 
-    LTRACEF("unit %#x at buf %d: pow=%d, mag=%d, skl=%d, spd=%d, lck=%d, def=%d, res=%d, mov=%d", 
+    LTRACEF("unit %#x at buf %d: pow=%d, mag=%d, skl=%d, spd=%d, lck=%d, def=%d, res=%d, mov=%d",
             UNIT_CHAR_ID(unit), buf - sStatDebuffMsgBuf,
             buf->pow, buf->mag, buf->skl, buf->spd, buf->lck, buf->def, buf->res, buf->mov);
 
     return buf;
 }
 
-int PowGetterStatDebuff(int status, struct Unit * unit)
+int PowGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_HyperCutter) && (COMMON_SKILL_VALID(SID_HyperCutter)))
+    if (SkillTester(unit, SID_HyperCutter))
+        if (GetStatDebuffMsgBuf(unit)->pow < 0)
+            return status;
+#endif
+
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->pow < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->pow < 0)
+            return status - GetStatDebuffMsgBuf(unit)->pow;
+#endif
+
     return status + GetStatDebuffMsgBuf(unit)->pow;
 }
 
-int MagGetterStatDebuff(int status, struct Unit * unit)
+int MagGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->mag < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->mag < 0)
+            return status - GetStatDebuffMsgBuf(unit)->mag;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->mag;
 }
 
-int SklGetterStatDebuff(int status, struct Unit * unit)
+int SklGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->skl < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->skl < 0)
+            return status - GetStatDebuffMsgBuf(unit)->skl;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->skl;
 }
 
-int SpdGetterStatDebuff(int status, struct Unit * unit)
+int SpdGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->spd < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->spd < 0)
+            return status - GetStatDebuffMsgBuf(unit)->spd;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->spd;
 }
 
-int DefGetterStatDebuff(int status, struct Unit * unit)
+int DefGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->def < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->def < 0)
+            return status - GetStatDebuffMsgBuf(unit)->def;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->def;
 }
 
-int ResGetterStatDebuff(int status, struct Unit * unit)
+int ResGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->res < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->res < 0)
+            return status - GetStatDebuffMsgBuf(unit)->res;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->res;
 }
 
-int LckGetterStatDebuff(int status, struct Unit * unit)
+int LckGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->lck < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->lck < 0)
+            return status - GetStatDebuffMsgBuf(unit)->lck;
+#endif
     return status + GetStatDebuffMsgBuf(unit)->lck;
 }
 
-int MovGetterStatDebuff(int status, struct Unit * unit)
+int MovGetterStatDebuff(int status, struct Unit *unit)
 {
+#if (defined(SID_ClearBody) && (COMMON_SKILL_VALID(SID_ClearBody)))
+    if (SkillTester(unit, SID_ClearBody))
+        if (GetStatDebuffMsgBuf(unit)->mov < 0)
+            return status;
+#endif
+
+#if (defined(SID_Contrary) && (COMMON_SKILL_VALID(SID_Contrary)))
+    if (SkillTester(unit, SID_Contrary))
+        if (GetStatDebuffMsgBuf(unit)->mov < 0)
+            return status - GetStatDebuffMsgBuf(unit)->mov;
+#endif
+
+#if defined(SID_ArenaTrap) && (COMMON_SKILL_VALID(SID_ArenaTrap))
+    int i;
+    FORCE_DECLARE bool arena_trap = false;
+
+    for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
+    {
+        int _x = unit->xPos + gVecs_2x2[i].x;
+        int _y = unit->yPos + gVecs_2x2[i].y;
+
+        struct Unit *unit_enemy = GetUnitAtPosition(_x, _y);
+
+        if (!UNIT_IS_VALID(unit_enemy))
+            continue;
+
+        if (unit_enemy->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+            continue;
+
+        if (AreUnitsAllied(unit->index, unit_enemy->index))
+            continue;
+
+        if (SkillTester(unit_enemy, SID_ArenaTrap))
+            arena_trap = true;
+
+        if (!arena_trap)
+            continue;
+
+        return 0;
+    }
+#endif
     return status + GetStatDebuffMsgBuf(unit)->mov;
 }
 
@@ -390,17 +570,17 @@ void StatDeuff_OnNewGameInit(void)
     ResetStatDeuffBuf();
 }
 
-void StatDeuff_OnClearUnit(struct Unit * unit)
+void StatDeuff_OnClearUnit(struct Unit *unit)
 {
     memset(GetUnitStatDebuffStatus(unit)->st.bitmask, 0, sizeof(struct StatDebuffStatus));
 }
 
-void StatDeuff_OnLoadUnit(struct Unit * unit)
+void StatDeuff_OnLoadUnit(struct Unit *unit)
 {
     StatDeuff_OnClearUnit(unit);
 }
 
-void StatDeuff_OnCopyUnit(struct Unit * from, struct Unit * to)
+void StatDeuff_OnCopyUnit(struct Unit *from, struct Unit *to)
 {
     memcpy(
         GetUnitStatDebuffStatus(to)->st.bitmask,
@@ -408,7 +588,7 @@ void StatDeuff_OnCopyUnit(struct Unit * from, struct Unit * to)
         sizeof(struct StatDebuffStatus));
 }
 
-void StatDebuff_OnUnitToBattle(struct Unit * unit, struct BattleUnit * bu)
+void StatDebuff_OnUnitToBattle(struct Unit *unit, struct BattleUnit *bu)
 {
     *GetUnitStatDebuffStatus(&bu->unit) = *GetUnitStatDebuffStatus(unit);
 }

@@ -9,8 +9,17 @@
 
 #define LOCAL_TRACE 1
 
+int GetEffLvl(struct BattleUnit *actor)
+{
+    u32 attrb = UNIT_CATTRIBUTES(&actor->unit);
+    int result = actor->unit.level + 10;
+    result -= 10 * (attrb & CA_MAXLEVEL10);
+    result += 20 * (attrb & CA_PROMOTED);
+    return result;
+}
+
 /* This function should also be called by BKSEL, so non static */
-bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target)
+bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target)
 {
     bool basic_judgement;
     u8 cid;
@@ -28,7 +37,8 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     cid = GetCombatArtInForce(&actor->unit);
     if (&gBattleActor == actor && COMBART_VALID(cid))
     {
-        switch (GetCombatArtInfo(cid)->double_attack) {
+        switch (GetCombatArtInfo(cid)->double_attack)
+        {
         case COMBART_DOUBLE_DISABLED:
             return false;
 
@@ -48,6 +58,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     {
         gBattleTemporaryFlag.act_force_twice_order = false;
 
+#if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
+        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) && BattleSkillTester(actor, SID_LastWord))
+        {
+            gBattleTemporaryFlag.act_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_LastWord, BORDER_ACT_TWICE);
+            return true;
+        }
+#endif
+
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
         if (basic_judgement == true && BattleSkillTester(target, SID_WaryFighter))
             if ((target->hpInitial * 2) > target->unit.maxHP)
@@ -59,6 +78,39 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
         {
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
+            return true;
+        }
+#endif
+
+#if defined(SID_QuickLearner) && (COMMON_SKILL_VALID(SID_QuickLearner))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_QuickLearner))
+        {
+            if (GetEffLvl(actor) < GetEffLvl(target))
+            {
+                gBattleTemporaryFlag.act_force_twice_order = true;
+                RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
+                return true;
+            }
+        }
+#endif
+
+#if defined(SID_SteadyBrawler) && (COMMON_SKILL_VALID(SID_SteadyBrawler))
+        if (BattleSkillTester(actor, SID_SteadyBrawler))
+        {
+            int dmg = actor->battleAttack - target->battleDefense;
+
+            if (basic_judgement)
+                dmg -= (dmg + 2) / 4; // for rounding
+            else
+            {
+                dmg += dmg / 4;
+                if (dmg < 0)
+                    dmg = 0;
+            }
+
+            actor->battleAttack += dmg;
+            gBattleTemporaryFlag.act_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_SteadyBrawler, BORDER_ACT_TWICE);
             return true;
         }
 #endif
@@ -134,6 +186,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
     else if (&gBattleTarget == actor)
     {
         gBattleTemporaryFlag.tar_force_twice_order = false;
+
+#if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
+        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) && BattleSkillTester(actor, SID_LastWord))
+        {
+            gBattleTemporaryFlag.tar_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
+            return true;
+        }
+#endif
 
 #if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
         if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
@@ -282,15 +343,34 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     return false;
 }
 
+STATIC_DECLAR bool ContinueIfAccost(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+    int activationChance = 0;
+
+    if (attacker->unit.curHP >= 25 && BattleSkillTester(attacker, SID_Accost))
+        activationChance = (attacker->battleSpeed + attacker->unit.curHP / 2) - defender->battleSpeed;
+
+    else if (defender->unit.curHP >= 25 && BattleSkillTester(defender, SID_Accost))
+        activationChance = (defender->battleSpeed + defender->unit.curHP / 2) - attacker->battleSpeed;
+
+    if (activationChance < 0)
+        activationChance = 0;
+
+    return BattleRoll1RN(activationChance, FALSE);
+}
+
 LYN_REPLACE_CHECK(BattleUnwind);
 void BattleUnwind(void)
 {
-    int i, ret;
+    int i;
+    int ret = 0;
+    int round_counter = 1;
+    bool accost_active;
 #ifdef CONFIG_USE_COMBO_ATTACK
     bool combo_atk_done = false;
 #endif
     u8 round_mask = 0;
-    const u8 * config;
+    const u8 *config;
 
     /* Identifier to record attack amount for skill anim triger */
     int actor_count = 0;
@@ -320,80 +400,112 @@ void BattleUnwind(void)
 
     config = BattleUnwindConfig[round_mask];
 
-    for (i = 0; i < 4; i++)
-    {
-        struct BattleHit * old = gBattleHitIterator;
-
-        if (ACT_ATTACK == config[i])
-        {
-#ifdef CONFIG_USE_COMBO_ATTACK
-            /* Combo-attack first */
-            if (!combo_atk_done)
-            {
-                combo_atk_done = true;
-                ret = BattleComboGenerateHits();
-                if (ret)
-                    break;
-
-                /* Reload battle-hit */
-                old = gBattleHitIterator;
-                LTRACEF("Combo end at round round %d", GetBattleHitRound(old));
-            }
+#if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
+    if (BattleSkillTester(&gBattleActor, SID_Accost) || BattleSkillTester(&gBattleTarget, SID_Accost))
+        accost_active = true;
+    else
+        accost_active = false;
 #endif
-            ret = BattleGenerateRoundHits(&gBattleActor, &gBattleTarget);
-            actor_count++;
-        }
-        else if (TAR_ATTACK == config[i])
+
+    do
+    {
+        for (i = 0; i < 4; i++)
         {
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_RETALIATE;
-            ret = BattleGenerateRoundHits(&gBattleTarget, &gBattleActor);
-            target_count++;
+            struct BattleHit *old = gBattleHitIterator;
+
+            if (ACT_ATTACK == config[i])
+            {
+#ifdef CONFIG_USE_COMBO_ATTACK
+                /* Combo-attack first */
+                if (!combo_atk_done)
+                {
+                    combo_atk_done = true;
+                    ret = BattleComboGenerateHits();
+                    if (ret)
+                        break;
+
+                    /* Reload battle-hit */
+                    old = gBattleHitIterator;
+                    LTRACEF("Combo end at round round %d", GetBattleHitRound(old));
+                }
+#endif
+                ret = BattleGenerateRoundHits(&gBattleActor, &gBattleTarget);
+                actor_count++;
+            }
+            else if (TAR_ATTACK == config[i])
+            {
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_RETALIATE;
+                ret = BattleGenerateRoundHits(&gBattleTarget, &gBattleActor);
+                target_count++;
+            }
+            else if (NOP_ATTACK == config[i])
+            {
+                break;
+            }
+
+            /* Combat art first */
+            if (i == 0)
+            {
+                int cid = GetCombatArtInForce(&gBattleActor.unit);
+                if (COMBART_VALID(cid))
+                    RegisterEfxSkillCombatArt(GetBattleHitRound(old), cid);
+            }
+
+            if (i != 0 && config[i - 1] == config[i])
+                gBattleHitIterator->attributes = BATTLE_HIT_ATTR_FOLLOWUP;
+
+            /* Vantage */
+            if (i == 0 && (round_mask & UNWIND_VANTAGE))
+                if (gBattleTemporaryFlag.vantage_order)
+                    RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_VANTAGE]);
+
+            /* Desperation */
+            if (i == 1 && (round_mask & UNWIND_DESPERA))
+                if (config[0] == ACT_ATTACK && config[1] == ACT_ATTACK && config[2] == TAR_ATTACK)
+                    if (gBattleTemporaryFlag.desperation_order)
+                        RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_DESPERATION]);
+
+            /* Target double attack */
+            if (target_count > 1 && config[i] == TAR_ATTACK)
+                if (gBattleTemporaryFlag.tar_force_twice_order)
+                    RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_TAR_TWICE]);
+
+            /* Actor double attack */
+            if (actor_count > 1 && config[i] == ACT_ATTACK)
+                if (gBattleTemporaryFlag.act_force_twice_order)
+                    RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_ACT_TWICE]);
+
+            if (ret)
+            {
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
+            }
+
+            if (gBattleActor.unit.curHP == 0 || gBattleTarget.unit.curHP == 0)
+            {
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
+            }
         }
-        else if (NOP_ATTACK == config[i])
+        if (!accost_active)
         {
-            break;
+            gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+            return;
         }
-
-        /* Combat art first */
-        if (i == 0)
+        else
         {
-            int cid = GetCombatArtInForce(&gBattleActor.unit);
-            if (COMBART_VALID(cid))
-                RegisterEfxSkillCombatArt(GetBattleHitRound(old), cid);
+            if (!ContinueIfAccost(&gBattleActor, &gBattleTarget))
+            {
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
+            }
         }
-
-        if (i != 0 && config[i - 1] == config[i])
-            gBattleHitIterator->attributes = BATTLE_HIT_ATTR_FOLLOWUP;
-
-        /* Vantage */
-        if (i == 0 && (round_mask & UNWIND_VANTAGE))
-            if (gBattleTemporaryFlag.vantage_order)
-                RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_VANTAGE]);
-
-        /* Desperation */
-        if (i == 1 && (round_mask & UNWIND_DESPERA))
-            if (config[0] == ACT_ATTACK && config[1] == ACT_ATTACK && config[2] == TAR_ATTACK)
-                if (gBattleTemporaryFlag.desperation_order)
-                    RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_DESPERATION]);
-
-        /* Target double attack */
-        if (target_count > 1 && config[i] == TAR_ATTACK)
-            if (gBattleTemporaryFlag.tar_force_twice_order)
-                RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_TAR_TWICE]);
-
-        /* Actor double attack */
-        if (actor_count > 1 && config[i] == ACT_ATTACK)
-            if (gBattleTemporaryFlag.act_force_twice_order)
-                RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_ACT_TWICE]);
-
-        if (ret)
-            break;
-    }
-    gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+        ++round_counter;
+    } while (round_counter < 20);
 }
 
 LYN_REPLACE_CHECK(BattleGenerateRoundHits);
-bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool BattleGenerateRoundHits(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     int i, count;
     u32 attrs;
@@ -443,7 +555,7 @@ bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * d
 }
 
 LYN_REPLACE_CHECK(BattleGetFollowUpOrder);
-bool BattleGetFollowUpOrder(struct BattleUnit ** outAttacker, struct BattleUnit ** outDefender)
+bool BattleGetFollowUpOrder(struct BattleUnit **outAttacker, struct BattleUnit **outDefender)
 {
     if (CheckCanTwiceAttackOrder(&gBattleActor, &gBattleTarget))
     {
@@ -461,7 +573,7 @@ bool BattleGetFollowUpOrder(struct BattleUnit ** outAttacker, struct BattleUnit 
 }
 
 LYN_REPLACE_CHECK(GetBattleUnitHitCount);
-int GetBattleUnitHitCount(struct BattleUnit * actor)
+int GetBattleUnitHitCount(struct BattleUnit *actor)
 {
     int result = 1;
     FORCE_DECLARE struct BattleUnit * target = (actor == &gBattleActor)
@@ -497,11 +609,11 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
-        if (BattleSkillTester(actor, SID_ChargePlus))
-        {
-            if (MovGetter(gActiveUnit) == gActionData.moveCount)
-                result = result + 1;
-        }
+    if (BattleSkillTester(actor, SID_ChargePlus))
+    {
+        if (MovGetter(gActiveUnit) == gActionData.moveCount)
+            result = result + 1;
+    }
 #endif
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
