@@ -77,3 +77,4 @@ SID_WaterWalkingPlus
 SID_PoisonHeal
 SID_BoundlessVitality
 SID_Fluffy
+SID_MountainClimber
