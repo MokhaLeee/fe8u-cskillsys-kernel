@@ -407,6 +407,17 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
             gDmg.increase += SKILL_EFF0(SID_SolarPower);
 #endif
 
+#if (defined(SID_Fluffy) && (COMMON_SKILL_VALID(SID_Fluffy)))
+    if (BattleSkillTester(defender, SID_Fluffy))
+    {
+        if (gBattleStats.range != 1)
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Fluffy);
+            gDmg.increase += SKILL_EFF0(SID_Fluffy);
+        }
+    }
+#endif
+
     if (gBattleTemporaryFlag.skill_activated_sure_shoot)
         gDmg.increase += 50;
 
@@ -586,6 +597,17 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
     {
         if (defender->unit.curHP < defender->hpInitial)
             gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Barricade));
+    }
+#endif
+
+#if (defined(SID_Fluffy) && (COMMON_SKILL_VALID(SID_Fluffy)))
+    if (BattleSkillTester(defender, SID_Fluffy))
+    {
+        if (gBattleStats.range == 1)
+        {
+            RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Fluffy);
+            gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_Fluffy));
+        }
     }
 #endif
 
