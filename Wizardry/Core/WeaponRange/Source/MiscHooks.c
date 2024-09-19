@@ -473,6 +473,20 @@ void SetWorkingMoveCosts(const s8 mct[])
     }
 #endif
 
+#if (defined(SID_MountainClimber) && COMMON_SKILL_VALID(SID_MountainClimber))
+    if (SkillTester(gActiveUnit, SID_MountainClimber))
+    {
+        for (i = 0; i < TERRAIN_COUNT; ++i)
+        {
+            if (i == TERRAIN_MOUNTAIN || i == TERRAIN_PEAK)
+                gWorkingTerrainMoveCosts[i] = 3;
+            else
+                gWorkingTerrainMoveCosts[i] = mct[i];
+        }
+        return;
+    }
+#endif
+
     for (i = 0; i < TERRAIN_COUNT; ++i)
         gWorkingTerrainMoveCosts[i] = mct[i];
 

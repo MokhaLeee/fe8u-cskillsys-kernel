@@ -77,3 +77,8 @@ walk on water tiles.[X]
 Water Walking+:[NL]
 Allows the unit to walk on water[NL]
 tiles with no move penalty.[X]
+
+## MSG_SKILL_MountainClimber
+Mountain Climber:[NL]
+Allows the unit to[NL]
+walk on mountain tiles.[X]
