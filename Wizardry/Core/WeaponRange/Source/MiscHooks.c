@@ -431,6 +431,14 @@ void SetWorkingMoveCosts(const s8 mct[])
 {
     int i;
 
+    /**
+     * Right now these skills interfere with each other as
+     * they all read the tile table seperately.
+     * So a short term fix is to return after finishing 
+     * applying the first skill here the unit has.
+     * I'll look into a better way to do it at some point.
+     */
+
 #if (defined(SID_Acrobat) && COMMON_SKILL_VALID(SID_Acrobat))
     if (SkillTester(gActiveUnit, SID_Acrobat))
     {
@@ -466,6 +474,20 @@ void SetWorkingMoveCosts(const s8 mct[])
         {
             if (i == TERRAIN_WATER || i == TERRAIN_RIVER || i == TERRAIN_SEA || i == TERRAIN_LAKE)
                 gWorkingTerrainMoveCosts[i] = 3;
+            else
+                gWorkingTerrainMoveCosts[i] = mct[i];
+        }
+        return;
+    }
+#endif
+
+#if (defined(SID_MountainClimberPlus) && COMMON_SKILL_VALID(SID_MountainClimberPlus))
+    if (SkillTester(gActiveUnit, SID_MountainClimberPlus))
+    {
+        for (i = 0; i < TERRAIN_COUNT; ++i)
+        {
+            if (i == TERRAIN_MOUNTAIN || i == TERRAIN_PEAK)
+                gWorkingTerrainMoveCosts[i] = 1;
             else
                 gWorkingTerrainMoveCosts[i] = mct[i];
         }
