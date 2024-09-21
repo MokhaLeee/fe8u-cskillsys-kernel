@@ -25,9 +25,12 @@ rm -rf $RELEASE_DIR
 mkdir $RELEASE_DIR
 
 # generate lyn-jump to refe
+echo "// #define PROTECT_EN PROCTECT_EN" >> *.ref.event
+echo "#ifdef PROCTECT_EN" >> *.ref.event
 for GENERATED_LYNFILE in $(find . -type f -name "*.event"); do
     cat $GENERATED_LYNFILE | grep "PROTECT " >> *.ref.event
 done
+echo "#endif /* PROCTECT_EN */" >> *.ref.event
 
 # make -j
 cp fe8-kernel-* $RELEASE_DIR

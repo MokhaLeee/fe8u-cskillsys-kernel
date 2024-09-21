@@ -12,13 +12,13 @@ def main(args):
 
     with open(sym, 'r') as f:
         for line in f.readlines():
-            offset = line[2:8]
+            offset = eval(f"0x{line[0:8]}")
             name   = line[9:-1]
 
             # if (eval(f"0x{offset}") & 0x1) == 1:
             #     continue
 
-            print(f"    ORG 0x{offset}")
+            print(f"    ORG 0x{(offset - 0x08000000):08X}")
             print(f"    {name}:\n")
 
 
