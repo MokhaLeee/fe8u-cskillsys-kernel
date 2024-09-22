@@ -1,7 +1,10 @@
+/**
+ * Hotfix for 1.0.0LTS at 2024.09.22
+ *
+ * Fix:
+ *  1. Fix statscreenfx issue on enemies' screen
+ */
 PUSH
-    /**
-     * TsaLut_StatScreenBgPlayer[0]
-     */
-    ORG 0xB582BC
+    ORG 0xB582BC // TsaLut_StatScreenBgPlayer[0]
         WORD 0x08B58894
 POP
