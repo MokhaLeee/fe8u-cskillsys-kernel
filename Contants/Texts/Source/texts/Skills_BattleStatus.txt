@@ -999,3 +999,8 @@ A-Lunge[X]
 Adaptive Lunge:[NL]
 This unit alternates which defensive[NL]
 stat it targets each turn.[X]
+
+## MSG_SKILL_Fluffy
+Fluffy:[NL]
+Halve damage taken by melee[NL]
+attacks, double damage at range.[X]

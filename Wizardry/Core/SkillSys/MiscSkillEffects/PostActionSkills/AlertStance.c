@@ -3,13 +3,13 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-FORCE_DECLARE static void callback_anim(ProcPtr proc)
+FORCE_DECLARE void callback_anim(ProcPtr proc)
 {
     EndMu(GetUnitMu(gActiveUnit));
     StartStatusHealEffect(gActiveUnit, proc);
 }
 
-FORCE_DECLARE static void callback_refrain(ProcPtr proc)
+FORCE_DECLARE void callback_refrain(ProcPtr proc)
 {
     struct MuProc * mu;
     HideUnitSprite(gActiveUnit);
@@ -24,7 +24,7 @@ FORCE_DECLARE static void callback_refrain(ProcPtr proc)
 
 bool PostActionAlertStance(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+   FORCE_DECLARE struct Unit * unit = gActiveUnit;
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

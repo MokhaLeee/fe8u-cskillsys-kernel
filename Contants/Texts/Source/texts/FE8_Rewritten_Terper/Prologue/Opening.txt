@@ -1,0 +1,6 @@
+## TestMessage
+[OpenRight][LoadPortrait][1][1]
+[OpenLeft][LoadPortrait][2][2]
+[OpenRight]
+Eliwood, let me tell you[NL]
+about a lost art.[A][X]

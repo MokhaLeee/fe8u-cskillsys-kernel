@@ -171,8 +171,8 @@
 /**
  * Page4 styles
  */
-#define CONFIG_PAGE4_MOKHA_PLAN_A 0
-#define CONFIG_PAGE4_MOKHA_PLAN_B 1
+#define CONFIG_PAGE4_MOKHA_PLAN_A 1
+#define CONFIG_PAGE4_MOKHA_PLAN_B 0
 
 /**
  * Install some performance hooks

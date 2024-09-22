@@ -4186,4 +4186,39 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_PoisonHeal) && COMMON_SKILL_VALID(SID_PoisonHeal))
+    [SID_PoisonHeal] = {
+        .desc = MSG_SKILL_PoisonHeal,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_BoundlessVitality) && COMMON_SKILL_VALID(SID_BoundlessVitality))
+    [SID_BoundlessVitality] = {
+        .desc = MSG_SKILL_BoundlessVitality,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Fluffy) && COMMON_SKILL_VALID(SID_Fluffy))
+    [SID_Fluffy] = {
+        .desc = MSG_SKILL_Fluffy,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MountainClimber) && COMMON_SKILL_VALID(SID_MountainClimber))
+    [SID_MountainClimber] = {
+        .desc = MSG_SKILL_MountainClimber,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MountainClimberPlus) && COMMON_SKILL_VALID(SID_MountainClimberPlus))
+    [SID_MountainClimberPlus] = {
+        .desc = MSG_SKILL_MountainClimberPlus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

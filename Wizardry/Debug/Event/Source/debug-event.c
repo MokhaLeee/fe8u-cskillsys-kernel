@@ -2,6 +2,7 @@
 #include "debug-event.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "constants/texts.h"
 
 /**
  * Udefs
@@ -472,7 +473,9 @@ static const EventScr EventScr_Beginning[] = {
 
     SVAL(EVT_SLOT_1, 10)
     SET_HP(CHARACTER_VANESSA)
-
+    
+    // SetBackground(1)
+    // CharacterEvent(EVFLAG_TMP(7), TestMessage, CHARACTER_EIRIKA, CHARACTER_SETH)
     NoFade
     ENDA
 };

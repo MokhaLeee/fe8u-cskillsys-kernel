@@ -70,17 +70,56 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
     [SID_Blacksmith] = Action_Blacksmith,
 #endif
+
+#if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
     [SID_Swap] = Action_Swap,
+#endif
+
+#if (defined(SID_Transform) && COMMON_SKILL_VALID(SID_Transform))
     [SID_Transform] = Action_Transform,
+#endif
+
+#if (defined(SID_DrawBack) && COMMON_SKILL_VALID(SID_DrawBack))
     [SID_DrawBack] = Action_DrawBack,
+#endif
+
+#if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
     [SID_Pivot] = Action_Pivot,
+#endif
+
+#if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
     [SID_Reposition] = Action_Reposition,
+#endif
+
+#if (defined(SID_Shove) && COMMON_SKILL_VALID(SID_Shove))
     [SID_Shove] = Action_Shove,
+#endif
+
+#if (defined(SID_Smite) && COMMON_SKILL_VALID(SID_Smite))
     [SID_Smite] = Action_Smite,
+#endif
+
+#if (defined(SID_ArdentSacrifice) && COMMON_SKILL_VALID(SID_ArdentSacrifice))
     [SID_ArdentSacrifice] = Action_ArdentSacrifice,
+#endif
+
+#if (defined(SID_ReciprocalAid) && COMMON_SKILL_VALID(SID_ReciprocalAid))
     [SID_ReciprocalAid] = Action_ReciprocalAid,
+#endif
+
+#if (defined(SID_Sacrifice) && COMMON_SKILL_VALID(SID_Sacrifice))
     [SID_Sacrifice] = Action_Sacrifice,
+#endif
+
+#if (defined(SID_Capture) && COMMON_SKILL_VALID(SID_Capture))
     [SID_Capture] = Action_Capture,
+#endif
+
+#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
     [SID_Doppleganger] = Action_Doppleganger,
+#endif
+
+#if (defined(SID_Dismount) && COMMON_SKILL_VALID(SID_Dismount))
     [SID_Dismount] = Action_Dismount,
+#endif
 };

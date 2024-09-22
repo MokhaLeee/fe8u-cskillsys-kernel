@@ -8,7 +8,7 @@
 #include "constants/combat-arts.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
+STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     /**
      * Here we need to put some calculation at the end of the pre-battle calc.
@@ -17,10 +17,11 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 
     if (attacker == &gBattleActor)
     {
-        switch (GetCombatArtInForce(&attacker->unit)) {
+        switch (GetCombatArtInForce(&attacker->unit))
+        {
         case CID_Gamble:
             attacker->battleCritRate = attacker->battleCritRate * 2;
-            attacker->battleHitRate  = attacker->battleHitRate  / 2;
+            attacker->battleHitRate = attacker->battleHitRate / 2;
             break;
 
         default:
@@ -29,16 +30,16 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
     }
 
 #if (defined(SID_CatchingUp) && (COMMON_SKILL_VALID(SID_CatchingUp)))
-        if (BattleSkillTester(attacker, SID_CatchingUp))
-        {
-            /**
-             * Check if the enemy unit doubles the skill holder
-             * if there's any additional speed above the doubling threshold
-             * add that to the skillholder's attack
-             */
-            if ((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
-                attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
-        }
+    if (BattleSkillTester(attacker, SID_CatchingUp))
+    {
+        /**
+         * Check if the enemy unit doubles the skill holder
+         * if there's any additional speed above the doubling threshold
+         * add that to the skillholder's attack
+         */
+        if ((defender->battleSpeed - attacker->battleSpeed) > BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+            attacker->battleAttack += (defender->battleSpeed - attacker->battleSpeed);
+    }
 #endif
 
     if (attacker->battleAttack > defender->battleAttack)
@@ -59,7 +60,7 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 #if (defined(SID_DancingBlade) && (COMMON_SKILL_VALID(SID_DancingBlade)))
         if (BattleSkillTester(attacker, SID_DancingBlade))
         {
-            attacker->battleSpeed   += SKILL_EFF0(SID_DancingBlade);
+            attacker->battleSpeed += SKILL_EFF0(SID_DancingBlade);
             attacker->battleDefense += SKILL_EFF1(SID_DancingBlade);
         }
 #endif
@@ -85,11 +86,12 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * a
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSpecialWeaponStats);
-void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     if (attacker->weaponAttributes & IA_MAGICDAMAGE)
     {
-        switch (GetItemIndex(attacker->weapon)) {
+        switch (GetItemIndex(attacker->weapon))
+        {
         case ITEM_SWORD_LIGHTBRAND:
         case ITEM_SWORD_RUNESWORD:
         case ITEM_SWORD_WINDSWORD:
@@ -131,7 +133,7 @@ void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct Ba
     }
 }
 
-STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
+STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if (defined(SID_Hawkeye) && (COMMON_SKILL_VALID(SID_Hawkeye)))
     if (BattleSkillTester(attacker, SID_Hawkeye))
@@ -154,7 +156,7 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #if (defined(SID_WonderGuard) && (COMMON_SKILL_VALID(SID_WonderGuard)))
     if (BattleSkillTester(defender, SID_WonderGuard))
     {
-        if (defender->weaponType == attacker->weaponType) 
+        if (defender->weaponType == attacker->weaponType)
             attacker->battleAttack = 0;
     }
 #endif
@@ -171,13 +173,13 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSilencerRate);
-void ComputeBattleUnitSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
+void ComputeBattleUnitSilencerRate(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     return;
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveHitRate);
-void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct BattleUnit * defender)
+void ComputeBattleUnitEffectiveHitRate(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
 
@@ -218,7 +220,7 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveStats);
-void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+void ComputeBattleUnitEffectiveStats(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if CHAX
     BattleCalcReal_ModifyBattleStatusSkills(attacker, defender);
