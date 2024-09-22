@@ -8,4 +8,4 @@ Manage your units' skills[X]
 Ddg[X]
 
 #0x484
-Incease Str +2[X]
+Increase Str +2[X]

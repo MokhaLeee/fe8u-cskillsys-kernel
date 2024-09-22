@@ -1,5 +1,5 @@
 ## MSG_PREPSKILL_RightTopBar
-Equiped[X]
+Equipped[X]
 
 ## MSG_PREPSKILL_AddSkill
      Skill added[X]
