@@ -4,6 +4,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_Mine) && (COMMON_SKILL_VALID(SID_Mine))
 u8 Mine_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
@@ -71,3 +72,4 @@ bool Action_Mine(ProcPtr parent)
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
+#endif

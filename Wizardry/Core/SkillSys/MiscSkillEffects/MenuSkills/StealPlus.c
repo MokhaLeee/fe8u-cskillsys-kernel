@@ -48,7 +48,7 @@ u8 StealPlus_Usability(const struct MenuItemDef *def, int number)
 
     return MENU_ENABLED;
 }
-
+extern int _GetUnitCon(struct Unit * unit); 
 LYN_REPLACE_CHECK(RefreshUnitStealInventoryInfoWindow);
 void RefreshUnitStealInventoryInfoWindow(struct Unit *unit)
 {

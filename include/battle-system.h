@@ -228,8 +228,6 @@ int GetUnitLeaderShip(struct Unit * unit);
 void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit * target);
 
 /**
- * AI checks
+ * Bow2Decrease patch
  */
-
-void DecideScriptA(void);
-void CpOrderBerserkInit(ProcPtr proc);
+bool CheckWeaponCostForMissedBowAttack(struct BattleUnit * actor);

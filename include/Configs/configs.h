@@ -73,7 +73,7 @@
 /**
  * Install FEB patch: SetHPClassLimit
  */
-// #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
+#define CONFIG_UNLOCK_ALLY_MHP_LIMIT
 
 /**
  * By: Vesly
@@ -188,6 +188,11 @@
  * Install StatScreenfx
  */
 // #define CONFIG_INSTALL_STATSCREENFX
+
+/**
+ * Install Bow2Decrease
+ */
+#define CONFIG_INSTALL_BOW2DECREASE
 
 /**
  * Install ConvoyExpa

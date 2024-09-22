@@ -186,7 +186,16 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit *attacker, struct Battl
     /* For non-ballista combat, Distance +2, hit rate -20% for actor */
     if (gpKernelDesigerConfig->hit_decrease_on_range && gBattleStats.range > 2 && attacker == &gBattleActor)
     {
-        if (!BattleSkillTester(attacker, SID_MagicEye) && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA))
+        if
+        (
+#if defined(SID_MagicEye) && (COMMON_SKILL_VALID(SID_MagicEye))
+            !BattleSkillTester(attacker, SID_MagicEye)
+#else
+            1
+#endif
+            &&
+            !(gBattleStats.config & BATTLE_CONFIG_BALLISTA)
+        )
         {
             attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
 

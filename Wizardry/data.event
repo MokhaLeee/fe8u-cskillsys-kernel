@@ -1,0 +1,34 @@
+#include "Common/ArmFunc/data.event"
+#include "Common/UnitAction/data.event"
+#include "Common/ClassTypes/data.event"
+#include "Common/ChapterInitHook/data.event"
+#include "Common/GameInitHook/data.event"
+#include "Common/IconDisplay/data.event"
+#include "Common/KernelLib/data.event"
+#include "Common/NegativeStatBoosts/data.event"
+#include "Common/MapAnims/data.event"
+#include "Common/PostActionHook/data.event"
+#include "Common/PrePhaseHook/data.event"
+#include "Common/SaveData/data.event"
+#include "Common/UnitMenu/data.event"
+#include "Common/UnitHooks/data.event"
+#include "Core/SkillSys/data.event"
+#include "Core/BattleSys/data.event"
+#include "Core/MapTask/data.event"
+#include "Core/DebuffRework/data.event"
+#include "Core/StatScreen/data.event"
+#include "Core/UnitStatusGetter/data.event"
+#include "Core/WeaponRange/data.event"
+#include "Core/AiHack/data.event"
+#include "Core/CombatArt/data.event"
+#include "Core/ComboAttack/data.event"
+#include "Core/Movement/MovementData.event"
+#include "External/Individual_animation_ea_2/data.event"
+
+#ifdef CONFIG_INSTALL_STATSCREENFX
+    #include "External/StatScreenfx/_data.event"
+#endif
+
+#ifdef CONFIG_INSTALL_MAPACTIONANIM
+    #include "External/DrawMapActionAnimation/data.event"
+#endif

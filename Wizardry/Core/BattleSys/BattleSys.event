@@ -1,6 +1,11 @@
 #ifndef BATTLE_SYS_INSTALLED
 #define BATTLE_SYS_INSTALLED
 
+#include "BattleHitExpasion/BattleHitExpasion.event"
+#include "WeaponLockEx/WeaponLockEx.event"
+#include "LeaderShip/LeaderShip.event"
+#include "Bow2Decrease/Bow2Decrease.event"
+
 #include "Source/LynJump.event"
 #include "Source/BattleGenerate.lyn.event"
 #include "Source/PreBattleCalc.lyn.event"
@@ -18,10 +23,6 @@
 #include "Source/BattleUI.lyn.event"
 #include "Source/Misc.lyn.event"
 
-#include "BattleHitExpasion/BattleHitExpasion.event"
-#include "WeaponLockEx/WeaponLockEx.event"
-#include "LeaderShip/LeaderShip.event"
-
 // #include "data.event"
 
 PUSH
@@ -36,6 +37,9 @@ PUSH
     // Repoint Palette
     ORG $36E14
     POIN Pal_BKSEL
+
+    ORG $2C7C0 // BattleApplyWeaponTriangleEffect
+    jumpToHack(_BattleApplyWeaponTriangleEffect)
 POP
 
 #endif

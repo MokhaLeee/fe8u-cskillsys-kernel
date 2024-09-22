@@ -410,22 +410,58 @@ static const EventScr EventScr_Beginning[] = {
     LOAD1(0x1, UnitDef_Enemy1)
     ENUN
 
+#if defined(SID_Obstruct) && (COMMON_SKILL_VALID(SID_Obstruct))
     Evt_AddSkill(SID_Obstruct, CHARACTER_SAAR)
+#endif
+
+#if defined(SID_Nihil) && (COMMON_SKILL_VALID(SID_Nihil))
     Evt_AddSkill(SID_Nihil, CHARACTER_SAAR)
+#endif
+
+#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
     Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
+#endif
     Evt_AddSkill(SID_DoubleUp, CHARACTER_LYON)
 
+#if defined(SID_Aerobatics) && (COMMON_SKILL_VALID(SID_Aerobatics))
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
-    Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
-    Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
-    Evt_AddSkill(SID_MovBonus, CHARACTER_EPHRAIM)
-    Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
-    Evt_AddSkill(SID_Teleportation, CHARACTER_EPHRAIM)
-    Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
-    Evt_AddSkill(SID_MovHone, CHARACTER_SALEH)
-    Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
+#endif
 
+#if defined(SID_FlierGuidance) && (COMMON_SKILL_VALID(SID_FlierGuidance))
+    Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
+#endif
+
+#if defined(SID_FlierGuidance) && (COMMON_SKILL_VALID(SID_FlierGuidance))
+    Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
+#endif
+
+#if defined(SID_MovBonus) && (COMMON_SKILL_VALID(SID_MovBonus))
+    Evt_AddSkill(SID_MovBonus, CHARACTER_EPHRAIM)
+#endif
+
+#if defined(SID_Pass) && (COMMON_SKILL_VALID(SID_Pass))
+    Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
+#endif
+
+#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
+    Evt_AddSkill(SID_Teleportation, CHARACTER_EPHRAIM)
+#endif
+
+#if defined(SID_MagicEye) && (COMMON_SKILL_VALID(SID_MagicEye))
+    Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
+#endif
+
+#if defined(SID_MovHone) && (COMMON_SKILL_VALID(SID_MovHone))
+    Evt_AddSkill(SID_MovHone, CHARACTER_SALEH)
+#endif
+
+#if defined(SID_HealingFocus) && (COMMON_SKILL_VALID(SID_HealingFocus))
+    Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
+#endif
+
+#if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
     Evt_RemoveSkill(SID_Fury, CHARACTER_EPHRAIM)
+#endif
 
     ASMC(PrologueCallBack)
 

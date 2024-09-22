@@ -392,6 +392,8 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
         weapon_cost = true;
     else if (attacker->weaponAttributes & (IA_UNCOUNTERABLE | IA_MAGIC))
         weapon_cost = true;
+    else if (CheckWeaponCostForMissedBowAttack(attacker) == true)
+        weapon_cost = true;
 
 #if defined(SID_Blessing) && (COMMON_SKILL_VALID(SID_Blessing))
     if (CheckBattleSkillActivate(attacker, defender, SID_Blessing, 100))

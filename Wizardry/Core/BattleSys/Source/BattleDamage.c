@@ -53,7 +53,7 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
     const BattleDamageCalcFunc *it;
     bool alteredCrit = false;
 
-    bool barricadePlus_activated;
+    FORCE_DECLARE bool barricadePlus_activated;
     int result;
     int roll12_ID = 15; // Set it to the maximum value for its bitfield, so it won't be accidentally triggered
 

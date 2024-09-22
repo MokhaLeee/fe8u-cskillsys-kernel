@@ -98,8 +98,6 @@ If you want to develop a new skill, you need to add such basic infos by the foll
 
 Add skill index to **index preconfig** files, which is depend on your selection which categories to place. Kernel may auto generate a unique skill index and put them to **include/constants/skills.h**.
 
-It should be noted that each category can only accommodate **254** skills. If there are too many skills in a category, the skills that exceed the limit will be considered as illegal and will not take effect.
-
 To avoid compilation errors, you'd better to add skill index detection on effect routine to fasten the game and avoid potential warnning on compiling:
 
 ```c

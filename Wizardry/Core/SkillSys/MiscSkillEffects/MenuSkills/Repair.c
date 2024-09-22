@@ -4,6 +4,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_Blacksmith) && (COMMON_SKILL_VALID(SID_Blacksmith))
 u8 Blacksmith_Usability(const struct MenuItemDef * def, int number)
 {
     int partyGold = GetPartyGoldAmount();
@@ -75,3 +76,4 @@ bool Action_Blacksmith(ProcPtr parent)
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
+#endif

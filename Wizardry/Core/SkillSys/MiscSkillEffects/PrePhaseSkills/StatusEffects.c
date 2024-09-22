@@ -40,7 +40,7 @@ STATIC_DECLAR void PrePhaseBoon_ClearStatus(struct ProcPrePhaseBoon * proc)
     RemoveUnitNegativeStatus(GetUnit(proc->uid));
 }
 
-STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseBoon[] = {
+FORCE_DECLARE STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseBoon[] = {
     PROC_YIELD,
 
 PROC_LABEL(1),

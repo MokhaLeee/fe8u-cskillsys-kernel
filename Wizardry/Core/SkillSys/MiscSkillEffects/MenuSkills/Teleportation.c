@@ -6,6 +6,7 @@
 #include "constants/texts.h"
 #include "constants/skills.h"
 
+#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
 STATIC_DECLAR bool AreAnyEnemyExists(void)
 {
     int i;
@@ -23,10 +24,8 @@ u8 Teleportation_Usability(const struct MenuItemDef * def, int number)
     if (gActiveUnit->state & US_CANTOING || CheckBitUES(gActiveUnit, UES_BIT_TELEPOTRATION_SKILL_USED))
         return MENU_NOTSHOWN;
 
-#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
     if ((GetUnitCurrentHp(gActiveUnit) * 100) < (GetUnitMaxHp(gActiveUnit) * SKILL_EFF0(SID_Teleportation)))
         return MENU_DISABLED;
-#endif
 
     if (!AreAnyEnemyExists())
         return MENU_DISABLED;
@@ -61,3 +60,4 @@ u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
+#endif

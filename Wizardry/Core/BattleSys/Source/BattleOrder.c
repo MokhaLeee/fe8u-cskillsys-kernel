@@ -576,9 +576,9 @@ LYN_REPLACE_CHECK(GetBattleUnitHitCount);
 int GetBattleUnitHitCount(struct BattleUnit *actor)
 {
     int result = 1;
-    struct BattleUnit *target = (actor == &gBattleActor)
-                                    ? &gBattleTarget
-                                    : &gBattleActor;
+    FORCE_DECLARE struct BattleUnit * target = (actor == &gBattleActor)
+                               ? &gBattleTarget
+                               : &gBattleActor;
 
     if (BattleCheckBraveEffect(actor))
         result = result + 1;

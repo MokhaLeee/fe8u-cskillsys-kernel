@@ -7,6 +7,8 @@
 
 STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct BattleUnit *bu)
 {
+    if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit))
+        bu->changeHP = KUNIT_MHP_MAX(unit) - unit->maxHP;
     int limitBreaker = 0;
 
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
@@ -48,6 +50,8 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct Batt
 
 STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
 {
+    if (unit->maxHP > KUNIT_MHP_MAX(unit))
+        unit->maxHP = KUNIT_MHP_MAX(unit);
     int limitBreaker = 0;
 
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
@@ -115,8 +119,13 @@ void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu)
         BU_CHG_MAG(bu) = (GetUnitMaxMagic(unit) + limitBreaker) - UNIT_MAG(unit);
 }
 
-LYN_REPLACE_CHECK(UnitCheckStatCaps);
-void UnitCheckStatCaps(struct Unit *unit)
+#if 0
+LYN_UNUSED_REPLACE_CHECK(UnitCheckStatCaps);
+void UnitCheckStatCaps(struct Unit * unit)
+#else
+/* External hook to save spaces */
+void _UnitCheckStatCaps(struct Unit * unit)
+#endif
 {
     UnitCheckStatCapsVanilla(unit);
 

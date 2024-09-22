@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "strmag.h"
+#include "lvup.h"
 #include "status-getter.h"
 #include "skill-system.h"
 #include "constants/skills.h"
@@ -161,11 +162,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit* unit)
     // HP
     PutNumberOrBlank( 
         TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 3),
-#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-        (GetUnitCurrentHp(unit) == KUNIT_MHP_MAX(unit)) 
-#else
-        (GetUnitCurrentHp(unit) == UNIT_MHP_MAX(unit)) 
-#endif
+        (GetUnitCurrentHp(unit) == KUNIT_MHP_MAX(unit))
             ? TEXT_COLOR_SYSTEM_GREEN
             : TEXT_COLOR_SYSTEM_BLUE,
         GetUnitCurrentHp(unit)

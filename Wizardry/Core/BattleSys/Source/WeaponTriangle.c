@@ -166,8 +166,16 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
     }
 }
 
-LYN_REPLACE_CHECK(BattleApplyWeaponTriangleEffect);
-void BattleApplyWeaponTriangleEffect(struct BattleUnit *attacker, struct BattleUnit *defender)
+#if 0
+/**
+ * On consideration of FEB WTA config,
+ * Here we should not use LynJump as this may use 0x10 length 
+ **/
+LYN_UNUSED_REPLACE_CHECK(BattleApplyWeaponTriangleEffect);
+void BattleApplyWeaponTriangleEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
+#else
+void _BattleApplyWeaponTriangleEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
+#endif
 {
     /*
      * Idea:
