@@ -1,0 +1,7 @@
+PUSH
+    /**
+     * TsaLut_StatScreenBgPlayer[0]
+     */
+    ORG 0xB582BC
+        WORD 0x08B58894
+POP
