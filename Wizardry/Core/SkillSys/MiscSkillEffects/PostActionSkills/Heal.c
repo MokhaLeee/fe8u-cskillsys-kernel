@@ -12,7 +12,7 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     int hp_cur = GetUnitCurrentHp(gActiveUnit);
     int hp_max = GetUnitMaxHp(gActiveUnit);
 
-    int missingHP = hp_max - hp_cur;
+    FORCE_DECLARE int missingHP = hp_max - hp_cur;
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

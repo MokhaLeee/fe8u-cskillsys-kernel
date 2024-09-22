@@ -61,7 +61,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillSoulSap[] = {
 
 bool PostActionSkillSoulSap(ProcPtr parent)
 {
-    struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit * unit = gActiveUnit;
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;
