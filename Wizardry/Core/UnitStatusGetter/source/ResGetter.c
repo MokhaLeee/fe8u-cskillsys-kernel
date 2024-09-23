@@ -109,7 +109,7 @@ int ResGetterSkills(int status, struct Unit * unit)
 
 int ResPsychUpCheck(int status, struct Unit *unit)
 {
-    int stolen_status = 0;
+    FORCE_DECLARE int stolen_status = 0;
 
 #if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
     if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
@@ -123,5 +123,6 @@ int ResPsychUpCheck(int status, struct Unit *unit)
         return status + stolen_status;
     }
 #endif
+
     return status;
 }

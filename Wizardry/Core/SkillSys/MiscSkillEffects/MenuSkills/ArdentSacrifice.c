@@ -4,13 +4,14 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+#if defined(SID_ArdentSacrifice) && (COMMON_SKILL_VALID(SID_ArdentSacrifice))
 u8 ArdentSacrifice_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
     if (!HasSelectTarget(gActiveUnit, MakeTargetListForAdjacentHeal))
-		return MENU_DISABLED;
+        return MENU_DISABLED;
 
     if (GetUnitCurrentHp(gActiveUnit) <= SKILL_EFF0(SID_ArdentSacrifice))
         return MENU_DISABLED;
@@ -33,12 +34,13 @@ static u8 ArdentSacrifice_OnSelectTarget(ProcPtr proc, struct SelectTarget * tar
     gActionData.unk08 = SID_ArdentSacrifice;
     gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
 
-    return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A | TARGETSELECTION_ACTION_CLEARBGS;
+    return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A |
+        TARGETSELECTION_ACTION_CLEARBGS;
 }
 
 u8 ArdentSacrifice_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 {
- if (item->availability == MENU_DISABLED)
+    if (item->availability == MENU_DISABLED)
     {
         MenuFrozenHelpBox(menu, MSG_MenuSkill_ArdentSacrifice_FRtext);
         return MENU_ACT_SND6B;
@@ -76,12 +78,10 @@ static void ActionArdentSacrifice_CallBack1(ProcPtr proc)
 bool Action_ArdentSacrifice(ProcPtr parent)
 {
     CallMapAnim_HealExt(
-        parent,
-        GetUnit(gActionData.targetIndex),
-        SKILL_EFF0(SID_ArdentSacrifice),
-        ActionArdentSacrifice_CallBack1,
+        parent, GetUnit(gActionData.targetIndex), SKILL_EFF0(SID_ArdentSacrifice), ActionArdentSacrifice_CallBack1,
         NULL);
 
     CallMapAnim_HurtExt(parent, gActiveUnit, SKILL_EFF0(SID_ArdentSacrifice), NULL, NULL);
     return true;
 }
+#endif

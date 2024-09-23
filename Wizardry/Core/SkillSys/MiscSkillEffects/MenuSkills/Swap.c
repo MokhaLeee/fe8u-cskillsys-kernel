@@ -8,6 +8,8 @@
 #include "unit-expa.h"
 #include "action-expa.h"
 
+
+#if defined(SID_Swap) && (COMMON_SKILL_VALID(SID_Swap))
 u8 Swap_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
@@ -136,3 +138,4 @@ bool Action_Swap(ProcPtr parent)
 
     return true;
 }
+#endif

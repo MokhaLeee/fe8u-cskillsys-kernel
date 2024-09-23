@@ -104,6 +104,8 @@ L_exec_rafrain_action_anim:
     StartStatusHealEffect(unit, parent);
     return true;
 
+// This is a stopgap measure to ensure the branch isn't unused when all skills are disabled
+#if defined(SID_LeadByExample) && (COMMON_SKILL_VALID(SID_LeadByExample))
 L_exec_rafrain_action_anim_aura:
     for (int i = 0; i < ARRAY_COUNT_RANGE1x1; i++)
     {
@@ -120,4 +122,5 @@ L_exec_rafrain_action_anim_aura:
     }
     SetBitUES(unit, UES_BIT_TSZUKU_SKILL_USED);
     return true;
+#endif
 }

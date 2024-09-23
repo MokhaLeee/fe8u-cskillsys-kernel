@@ -6,6 +6,7 @@
 #include "debuff.h"
 #include "class-pairs.h"
 
+#if defined(SID_Transform) && (COMMON_SKILL_VALID(SID_Transform))
 // Predefine an array of key-value pairs
 const int transformationPairs[1][2] = {
     {CLASS_EIRIKA_LORD, CLASS_DEATHGOYLE}};
@@ -72,3 +73,4 @@ bool Action_Transform(ProcPtr parent)
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
+#endif

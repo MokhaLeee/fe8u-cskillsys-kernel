@@ -104,7 +104,7 @@ inline int GetUnitPortraitId(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitMiniPortraitId);
 inline int GetUnitMiniPortraitId(struct Unit *unit)
 {
-    int miniMugId = 0;
+    FORCE_DECLARE int miniMugId = 0;
 
 #if (defined(SID_IdentityProblems) && (COMMON_SKILL_VALID(SID_IdentityProblems)))
     if (SkillTester(unit, SID_IdentityProblems))

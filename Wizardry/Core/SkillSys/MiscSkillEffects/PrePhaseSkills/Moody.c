@@ -4,6 +4,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+#if (defined(SID_Moody) && COMMON_SKILL_VALID(SID_Moody))
 static void _SetMoodyStatDebuff(struct Unit *unit)
 {
     int buff = NextRN_N(8);
@@ -70,6 +71,7 @@ static void _SetMoodyStatDebuff(struct Unit *unit)
         break;
     }
 }
+#endif
 
 bool PrePhase_TickMoodySkillStatus(ProcPtr proc)
 {
@@ -84,11 +86,11 @@ bool PrePhase_TickMoodySkillStatus(ProcPtr proc)
 
         if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
             continue;
-
 #if (defined(SID_Moody) && COMMON_SKILL_VALID(SID_Moody))
         if (SkillTester(unit, SID_Moody))
             _SetMoodyStatDebuff(unit);
 #endif
+
     }
     return false;
 }

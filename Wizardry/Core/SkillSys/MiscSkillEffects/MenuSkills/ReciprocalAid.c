@@ -8,6 +8,8 @@
 #include "unit-expa.h"
 #include "action-expa.h"
 
+
+#if defined(SID_ReciprocalAid) && (COMMON_SKILL_VALID(SID_ReciprocalAid))
 void TryAddToReciprocalAidTargetList(struct Unit *unit);
 void MakeReciprocalAidTargetList(struct Unit *unit);
 extern void ForEachAdjacentUnit(int x, int y, void(*)(struct Unit*));
@@ -155,3 +157,4 @@ bool Action_ReciprocalAid(ProcPtr parent)
 	NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
 	return true;
 }
+#endif

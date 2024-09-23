@@ -109,7 +109,7 @@ int DefGetterSkills(int status, struct Unit * unit)
 
 int DefPsychUpCheck(int status, struct Unit *unit)
 {
-    int stolen_status = 0;
+   FORCE_DECLARE int stolen_status = 0;
 
 #if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
     if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
@@ -122,6 +122,7 @@ int DefPsychUpCheck(int status, struct Unit *unit)
         stolen_status = DefGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) + DefGetterSkills(0, GetUnit(gBattleActor.unit.index));
         return status + stolen_status;
     }
-#endif
+#endif    
+
     return status;
 }

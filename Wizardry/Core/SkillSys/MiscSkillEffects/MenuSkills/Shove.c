@@ -8,6 +8,7 @@
 #include "unit-expa.h"
 #include "action-expa.h"
 
+#if defined(SID_Shove) && (COMMON_SKILL_VALID(SID_Shove))
 struct Vec2u GetShoveCoord(int x1, int x2, int y1, int y2);
 void TryShoveAllyToTargetList(struct Unit *unit);
 void MakeShoveTargetListForAdjacentAlly(struct Unit *unit);
@@ -203,3 +204,4 @@ bool Action_Shove(ProcPtr parent)
 
 	return true;
 }
+#endif
