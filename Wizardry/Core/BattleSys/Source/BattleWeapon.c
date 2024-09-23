@@ -115,8 +115,8 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlo
 
 STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit *bu, int slot)
 {
-    int gBattleActorWeapon;
-    int gBattleTargetWeapon;
+    FORCE_DECLARE int gBattleActorWeapon;
+    FORCE_DECLARE int gBattleTargetWeapon;
 
     if (!(gBattleStats.config & BATTLE_CONFIG_BIT2))
     {

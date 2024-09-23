@@ -4,6 +4,8 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
+
+#if defined(SID_Sacrifice) && (COMMON_SKILL_VALID(SID_Sacrifice))
 extern u16 HarmAndHealEvent; 
 
 u8 Sacrifice_Usability(const struct MenuItemDef * def, int number)
@@ -104,3 +106,4 @@ bool Action_Sacrifice(ProcPtr parent)
 	NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
 	return true;
 }
+#endif

@@ -9,7 +9,7 @@
 
 #define LOCAL_TRACE 1
 
-int GetEffLvl(struct BattleUnit *actor)
+int GetEffLvl(struct BattleUnit * actor)
 {
     u32 attrb = UNIT_CATTRIBUTES(&actor->unit);
     int result = actor->unit.level + 10;
@@ -19,7 +19,7 @@ int GetEffLvl(struct BattleUnit *actor)
 }
 
 /* This function should also be called by BKSEL, so non static */
-bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target)
+bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target)
 {
     bool basic_judgement;
     u8 cid;
@@ -39,15 +39,15 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
     {
         switch (GetCombatArtInfo(cid)->double_attack)
         {
-        case COMBART_DOUBLE_DISABLED:
-            return false;
+            case COMBART_DOUBLE_DISABLED:
+                return false;
 
-        case COMBART_DOUBLE_FORCE_ENABLED:
-            return true;
+            case COMBART_DOUBLE_FORCE_ENABLED:
+                return true;
 
-        case COMBART_DOUBLE_ENABLED:
-        default:
-            break;
+            case COMBART_DOUBLE_ENABLED:
+            default:
+                break;
         }
     }
 
@@ -59,7 +59,8 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
         gBattleTemporaryFlag.act_force_twice_order = false;
 
 #if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
-        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) && BattleSkillTester(actor, SID_LastWord))
+        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) &&
+            BattleSkillTester(actor, SID_LastWord))
         {
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_LastWord, BORDER_ACT_TWICE);
@@ -74,7 +75,8 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_BoldFighter) && (COMMON_SKILL_VALID(SID_BoldFighter))
-        if (basic_judgement == false && BattleSkillTester(actor, SID_BoldFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
+        if (basic_judgement == false && BattleSkillTester(actor, SID_BoldFighter) &&
+            (actor->hpInitial * 2) >= actor->unit.maxHP)
         {
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
@@ -188,7 +190,8 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
         gBattleTemporaryFlag.tar_force_twice_order = false;
 
 #if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
-        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) && BattleSkillTester(actor, SID_LastWord))
+        if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) &&
+            BattleSkillTester(actor, SID_LastWord))
         {
             gBattleTemporaryFlag.tar_force_twice_order = true;
             RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
@@ -197,7 +200,8 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
-        if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
+        if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter) &&
+            (actor->hpInitial * 2) >= actor->unit.maxHP)
         {
             gBattleTemporaryFlag.tar_force_twice_order = true;
             RegisterBattleOrderSkill(SID_VengefulFighter, BORDER_TAR_TWICE);
@@ -343,9 +347,10 @@ STATIC_DECLAR bool CheckVantageOrder(void)
     return false;
 }
 
-STATIC_DECLAR bool ContinueIfAccost(struct BattleUnit *attacker, struct BattleUnit *defender)
+#if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
+STATIC_DECLAR bool ContinueIfAccost(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    int activationChance = 0;
+    FORCE_DECLARE int activationChance = 0;
 
     if (attacker->unit.curHP >= 25 && BattleSkillTester(attacker, SID_Accost))
         activationChance = (attacker->battleSpeed + attacker->unit.curHP / 2) - defender->battleSpeed;
@@ -358,6 +363,7 @@ STATIC_DECLAR bool ContinueIfAccost(struct BattleUnit *attacker, struct BattleUn
 
     return BattleRoll1RN(activationChance, FALSE);
 }
+#endif
 
 LYN_REPLACE_CHECK(BattleUnwind);
 void BattleUnwind(void)
@@ -365,12 +371,14 @@ void BattleUnwind(void)
     int i;
     int ret = 0;
     int round_counter = 1;
-    bool accost_active;
+    FORCE_DECLARE bool accost_active;
+
 #ifdef CONFIG_USE_COMBO_ATTACK
     bool combo_atk_done = false;
 #endif
+
     u8 round_mask = 0;
-    const u8 *config;
+    const u8 * config;
 
     /* Identifier to record attack amount for skill anim triger */
     int actor_count = 0;
@@ -411,7 +419,7 @@ void BattleUnwind(void)
     {
         for (i = 0; i < 4; i++)
         {
-            struct BattleHit *old = gBattleHitIterator;
+            struct BattleHit * old = gBattleHitIterator;
 
             if (ACT_ATTACK == config[i])
             {
@@ -487,6 +495,7 @@ void BattleUnwind(void)
                 return;
             }
         }
+#if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
         if (!accost_active)
         {
             gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
@@ -501,11 +510,15 @@ void BattleUnwind(void)
             }
         }
         ++round_counter;
+#else
+        gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+        return;
+#endif
     } while (round_counter < 20);
 }
 
 LYN_REPLACE_CHECK(BattleGenerateRoundHits);
-bool BattleGenerateRoundHits(struct BattleUnit *attacker, struct BattleUnit *defender)
+bool BattleGenerateRoundHits(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int i, count;
     u32 attrs;
@@ -555,7 +568,7 @@ bool BattleGenerateRoundHits(struct BattleUnit *attacker, struct BattleUnit *def
 }
 
 LYN_REPLACE_CHECK(BattleGetFollowUpOrder);
-bool BattleGetFollowUpOrder(struct BattleUnit **outAttacker, struct BattleUnit **outDefender)
+bool BattleGetFollowUpOrder(struct BattleUnit ** outAttacker, struct BattleUnit ** outDefender)
 {
     if (CheckCanTwiceAttackOrder(&gBattleActor, &gBattleTarget))
     {
@@ -573,12 +586,10 @@ bool BattleGetFollowUpOrder(struct BattleUnit **outAttacker, struct BattleUnit *
 }
 
 LYN_REPLACE_CHECK(GetBattleUnitHitCount);
-int GetBattleUnitHitCount(struct BattleUnit *actor)
+int GetBattleUnitHitCount(struct BattleUnit * actor)
 {
     int result = 1;
-    FORCE_DECLARE struct BattleUnit * target = (actor == &gBattleActor)
-                               ? &gBattleTarget
-                               : &gBattleActor;
+    FORCE_DECLARE struct BattleUnit * target = (actor == &gBattleActor) ? &gBattleTarget : &gBattleActor;
 
     if (BattleCheckBraveEffect(actor))
         result = result + 1;

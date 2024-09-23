@@ -391,12 +391,12 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 };
 
 static const int ShopList_Event_Skills[] = {
-    (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    (SID_Adept << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    (SID_BlowArmored << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    (SID_BloodTide << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    (SID_Charge << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    (SID_AlertStance << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    // (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    // (SID_Adept << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    // (SID_BlowArmored << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    // (SID_BloodTide << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    // (SID_Charge << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    // (SID_AlertStance << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
 
     ITEM_NONE,
 };
@@ -421,7 +421,6 @@ static const EventScr EventScr_Beginning[] = {
 #if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
     Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
 #endif
-    Evt_AddSkill(SID_DoubleUp, CHARACTER_LYON)
 
 #if defined(SID_Aerobatics) && (COMMON_SKILL_VALID(SID_Aerobatics))
     Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)

@@ -14,128 +14,125 @@ void SetGameOption(u8 index, u8 newValue)
 
     switch (index)
     {
-    case GAME_OPTION_ANIMATION:
-        switch (newValue)
-        {
-        case 0:
-            gPlaySt.config.animationType = 0;
-            return;
+        case GAME_OPTION_ANIMATION:
+            switch (newValue)
+            {
+                case 0:
+                    gPlaySt.config.animationType = 0;
+                    return;
 
-        case 1:
-            gPlaySt.config.animationType = 3;
-            return;
+                case 1:
+                    gPlaySt.config.animationType = 3;
+                    return;
 
-        case 2:
-            gPlaySt.config.animationType = 1;
-            return;
+                case 2:
+                    gPlaySt.config.animationType = 1;
+                    return;
 
-        case 3:
-            gPlaySt.config.animationType = 2;
-            return;
-        }
+                case 3:
+                    gPlaySt.config.animationType = 2;
+                    return;
+            }
 
-        // fallthrough
+            // fallthrough
 
-    case GAME_OPTION_TERRAIN:
-        gPlaySt.config.disableTerrainDisplay = newValue;
+        case GAME_OPTION_TERRAIN:
+            gPlaySt.config.disableTerrainDisplay = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_UNIT:
-        gPlaySt.config.unitDisplayType = newValue;
+        case GAME_OPTION_UNIT:
+            gPlaySt.config.unitDisplayType = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_AUTOCURSOR:
-        gPlaySt.config.autoCursor = newValue;
+        case GAME_OPTION_AUTOCURSOR:
+            gPlaySt.config.autoCursor = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_TEXT_SPEED:
-        gPlaySt.config.textSpeed = newValue;
+        case GAME_OPTION_TEXT_SPEED:
+            gPlaySt.config.textSpeed = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_GAME_SPEED:
-        gPlaySt.config.gameSpeed = newValue;
+        case GAME_OPTION_GAME_SPEED:
+            gPlaySt.config.gameSpeed = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_MUSIC:
-        gPlaySt.config.disableBgm = newValue;
+        case GAME_OPTION_MUSIC:
+            gPlaySt.config.disableBgm = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_SOUND_EFFECTS:
-        gPlaySt.config.disableSoundEffects = newValue;
+        case GAME_OPTION_SOUND_EFFECTS:
+            gPlaySt.config.disableSoundEffects = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_WINDOW_COLOR:
-        gPlaySt.config.windowColor = newValue;
+        case GAME_OPTION_WINDOW_COLOR:
+            gPlaySt.config.windowColor = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_COMBAT:
-        gPlaySt.config.battleForecastType = newValue;
+        case GAME_OPTION_COMBAT:
+            gPlaySt.config.battleForecastType = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_SUBTITLE_HELP:
-        gPlaySt.config.noSubtitleHelp = newValue;
+        case GAME_OPTION_SUBTITLE_HELP:
+            gPlaySt.config.noSubtitleHelp = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_AUTOEND_TURNS:
-        gPlaySt.config.disableAutoEndTurns = newValue;
+        case GAME_OPTION_AUTOEND_TURNS:
+            gPlaySt.config.disableAutoEndTurns = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_UNIT_COLOR:
-        gPlaySt.config.unitColor = newValue;
+        case GAME_OPTION_UNIT_COLOR:
+            gPlaySt.config.unitColor = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_OBJECTIVE:
-        gPlaySt.config.disableGoalDisplay = newValue;
+        case GAME_OPTION_OBJECTIVE:
+            gPlaySt.config.disableGoalDisplay = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_CONTROLLER:
-        gPlaySt.config.controller = newValue;
+        case GAME_OPTION_CONTROLLER:
+            gPlaySt.config.controller = newValue;
 
-        break;
+            break;
 
-    case GAME_OPTION_RANK_DISPLAY:
-        gPlaySt.config.rankDisplay = newValue;
+        case GAME_OPTION_RANK_DISPLAY:
+            gPlaySt.config.rankDisplay = newValue;
 
-        break;
+            break;
     }
 
     return;
 }
 
 LYN_REPLACE_CHECK(TryAddUnitToTradeTargetList);
-void TryAddUnitToTradeTargetList(struct Unit *unit)
+void TryAddUnitToTradeTargetList(struct Unit * unit)
 {
+    FORCE_DECLARE bool capture_active = false;
 
     /**
      *  With capture, a unit should be able to trade with rescued enemies
      */
-    if (
-        !IsSameAllegiance(gSubjectUnit->index, unit->index) &&
 #if (defined(SID_Capture) && (COMMON_SKILL_VALID(SID_Capture)))
-        !SkillTester(gSubjectUnit, SID_Capture)
+    if (!SkillTester(gSubjectUnit, SID_Capture))
+        capture_active = true;
 #endif
-    )
-    {
+
+    if (!IsSameAllegiance(gSubjectUnit->index, unit->index) && capture_active)
         return;
-    }
 
     if (gSubjectUnit->pClassData->number == CLASS_PHANTOM || unit->pClassData->number == CLASS_PHANTOM)
-    {
         return;
-    }
 
     if (unit->statusIndex != UNIT_STATUS_BERSERK)
     {
@@ -152,7 +149,7 @@ void TryAddUnitToTradeTargetList(struct Unit *unit)
 
     if (unit->state & US_RESCUING)
     {
-        struct Unit *rescue = GetUnit(unit->rescue);
+        struct Unit * rescue = GetUnit(unit->rescue);
 
         if (UNIT_FACTION(rescue) != FACTION_BLUE)
         {
@@ -173,7 +170,7 @@ void TryAddUnitToTradeTargetList(struct Unit *unit)
 }
 
 LYN_REPLACE_CHECK(MakeTradeTargetList);
-void MakeTradeTargetList(struct Unit *unit)
+void MakeTradeTargetList(struct Unit * unit)
 {
     int x = unit->xPos;
     int y = unit->yPos;
@@ -200,7 +197,7 @@ void MakeTradeTargetList(struct Unit *unit)
 
 //! FE8U = 0x08032728
 LYN_REPLACE_CHECK(KillUnitOnCombatDeath);
-void KillUnitOnCombatDeath(struct Unit *unitA, struct Unit *unitB)
+void KillUnitOnCombatDeath(struct Unit * unitA, struct Unit * unitB)
 {
     if (GetUnitCurrentHp(unitA) != 0)
     {
@@ -241,7 +238,7 @@ void KillUnitOnCombatDeath(struct Unit *unitA, struct Unit *unitB)
 }
 
 LYN_REPLACE_CHECK(TryAddUnitToRescueTargetList);
-void TryAddUnitToRescueTargetList(struct Unit *unit)
+void TryAddUnitToRescueTargetList(struct Unit * unit)
 {
 
     if (!AreUnitsAllied(gSubjectUnit->index, unit->index))
@@ -275,9 +272,9 @@ void TryAddUnitToRescueTargetList(struct Unit *unit)
 }
 
 LYN_REPLACE_CHECK(UnitDrop);
-void UnitDrop(struct Unit *actor, int xTarget, int yTarget)
+void UnitDrop(struct Unit * actor, int xTarget, int yTarget)
 {
-    struct Unit *target = GetUnit(actor->rescue);
+    struct Unit * target = GetUnit(actor->rescue);
 
     actor->state = actor->state & ~(US_RESCUING | US_RESCUED);
     target->state = target->state & ~(US_RESCUING | US_RESCUED | US_HIDDEN);
@@ -302,13 +299,13 @@ void UnitDrop(struct Unit *actor, int xTarget, int yTarget)
 }
 
 // use vanilla version so we don't lag by using hooked versions that accounts for pass etc
-s8 Vanilla_CanUnitCrossTerrain(struct Unit *unit, int terrain)
+s8 Vanilla_CanUnitCrossTerrain(struct Unit * unit, int terrain)
 {
-    const s8 *lookup = (s8 *)GetUnitMovementCost(unit);
+    const s8 * lookup = (s8 *)GetUnitMovementCost(unit);
     return (lookup[terrain] > 0) ? TRUE : FALSE;
 }
 
-bool Generic_CanUnitBeOnPos(struct Unit *unit, s8 x, s8 y, int x2, int y2)
+bool Generic_CanUnitBeOnPos(struct Unit * unit, s8 x, s8 y, int x2, int y2)
 {
     if (x < 0 || y < 0)
         return 0; // position out of bounds
@@ -329,61 +326,62 @@ void SwitchPhases(void)
 {
     switch (gPlaySt.faction)
     {
-    case FACTION_BLUE:
+        case FACTION_BLUE:
 
-        /**
-         * There's probably a more efficient way to do this,
-         * but this is all I've found to work right now.
-         * I change back the unit faction for a 'turncoat' unit
-         * if they haven't moved after switching factions initially.
-         */
+            /**
+             * There's probably a more efficient way to do this,
+             * but this is all I've found to work right now.
+             * I change back the unit faction for a 'turncoat' unit
+             * if they haven't moved after switching factions initially.
+             */
 #if defined(SID_Turncoat) && (COMMON_SKILL_VALID(SID_Turncoat))
-        for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
-        {
-            struct Unit *unit = GetUnit(uid);
+            for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
+            {
+                struct Unit * unit = GetUnit(uid);
 
-            if (unit->_u3A == UES_BIT_TURNCOAT)
-                UnitChangeFaction(unit, FACTION_RED);
-        }
+                if (unit->_u3A == UES_BIT_TURNCOAT)
+                    UnitChangeFaction(unit, FACTION_RED);
+            }
 #endif
-        gPlaySt.faction = FACTION_RED;
+            gPlaySt.faction = FACTION_RED;
 
-        break;
+            break;
 
-    case FACTION_RED:
-        gPlaySt.faction = FACTION_GREEN;
+        case FACTION_RED:
+            gPlaySt.faction = FACTION_GREEN;
 #if defined(SID_Turncoat) && (COMMON_SKILL_VALID(SID_Turncoat))
-        for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
-        {
-            struct Unit *unit = GetUnit(uid);
+            for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
+            {
+                struct Unit * unit = GetUnit(uid);
 
-            if (unit->_u3A == UES_BIT_TURNCOAT)
-                UnitChangeFaction(unit, FACTION_BLUE);
-        }
+                if (unit->_u3A == UES_BIT_TURNCOAT)
+                    UnitChangeFaction(unit, FACTION_BLUE);
+            }
 #endif
-        break;
+            break;
 
-    case FACTION_GREEN:
-        gPlaySt.faction = FACTION_BLUE;
+        case FACTION_GREEN:
+            gPlaySt.faction = FACTION_BLUE;
 
 #if defined(SID_Turncoat) && (COMMON_SKILL_VALID(SID_Turncoat))
-        for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
-        {
-            struct Unit *unit = GetUnit(uid);
+            for (int uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
+            {
+                struct Unit * unit = GetUnit(uid);
 
-            if (unit->_u3A == UES_BIT_TURNCOAT)
-                UnitChangeFaction(unit, FACTION_RED);
-        }
+                if (unit->_u3A == UES_BIT_TURNCOAT)
+                    UnitChangeFaction(unit, FACTION_RED);
+            }
 #endif
 
-        if (gPlaySt.chapterTurnNumber < 999)
-            gPlaySt.chapterTurnNumber++;
+            if (gPlaySt.chapterTurnNumber < 999)
+                gPlaySt.chapterTurnNumber++;
 
-        ProcessTurnSupportExp();
+            ProcessTurnSupportExp();
     }
 }
 
-struct EvCheck0A {
+struct EvCheck0A
+{
     u32 unk0;
     u32 script;
     u8 x;
@@ -393,8 +391,9 @@ struct EvCheck0A {
 
 //! FE8U = 0x08083A58
 LYN_REPLACE_CHECK(EvCheck0A_SHOP);
-int EvCheck0A_SHOP(struct EventInfo* info) {
-    struct EvCheck0A* listScript = (void *)info->listScript;
+int EvCheck0A_SHOP(struct EventInfo * info)
+{
+    struct EvCheck0A * listScript = (void *)info->listScript;
 
     int x = listScript->x;
     int y = listScript->y;
@@ -403,16 +402,18 @@ int EvCheck0A_SHOP(struct EventInfo* info) {
 
 #if defined(SID_Secret) && (COMMON_SKILL_VALID(SID_Secret))
     if (SkillTester(gActiveUnit, SID_Secret))
-        {
-            info->script = listScript->script;
-            info->flag = listScript->unk0 >> 16;
-            info->commandId = tileCommand;
-            return 1;
-        }
+    {
+        info->script = listScript->script;
+        info->flag = listScript->unk0 >> 16;
+        info->commandId = tileCommand;
+        return 1;
+    }
 #endif
 
-    if ((x == info->xPos) && (y == info->yPos)) {
-        if ((tileCommand != TILE_COMMAND_SECRET || (GetUnitItemSlot(gActiveUnit, ITEM_MEMBERCARD) != -1))) {
+    if ((x == info->xPos) && (y == info->yPos))
+    {
+        if ((tileCommand != TILE_COMMAND_SECRET || (GetUnitItemSlot(gActiveUnit, ITEM_MEMBERCARD) != -1)))
+        {
             info->script = listScript->script;
             info->flag = listScript->unk0 >> 16;
             info->commandId = tileCommand;
@@ -424,13 +425,14 @@ int EvCheck0A_SHOP(struct EventInfo* info) {
 }
 
 LYN_REPLACE_CHECK(BeginUnitPoisonDamageAnim);
-void BeginUnitPoisonDamageAnim(struct Unit* unit, int damage) {
+void BeginUnitPoisonDamageAnim(struct Unit * unit, int damage)
+{
 
 #if (defined(SID_PoisonHeal) && COMMON_SKILL_VALID(SID_PoisonHeal))
     if (SkillTester(gActiveUnit, SID_PoisonHeal))
     {
         BeginUnitHealAnim(gActiveUnit, damage);
-        AddUnitHp(gActiveUnit, damage*2); // A quick fix for poison damage applying, double the damage and heal it
+        AddUnitHp(gActiveUnit, damage * 2); // A quick fix for poison damage applying, double the damage and heal it
         return;
     }
 #endif
@@ -439,13 +441,15 @@ void BeginUnitPoisonDamageAnim(struct Unit* unit, int damage) {
 
     AddUnitHp(&gBattleActor.unit, -damage);
 
-    if (gBattleActor.unit.curHP < 0) {
+    if (gBattleActor.unit.curHP < 0)
+    {
         gBattleActor.unit.curHP = 0;
     }
 
     gBattleHitIterator->hpChange = gBattleActor.hpInitial - gBattleActor.unit.curHP;
 
-    if (gBattleActor.unit.curHP == 0) {
+    if (gBattleActor.unit.curHP == 0)
+    {
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
     }
 

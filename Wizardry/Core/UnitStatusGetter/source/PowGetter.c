@@ -3,9 +3,9 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int _GetUnitPower(struct Unit *unit)
+int _GetUnitPower(struct Unit * unit)
 {
-    const StatusGetterFunc_t *it;
+    const StatusGetterFunc_t * it;
     int status = unit->pow;
 
     for (it = gpPowGetters; *it; it++)
@@ -15,14 +15,14 @@ int _GetUnitPower(struct Unit *unit)
 }
 
 /* Hooks */
-int PowGetterWeaponBonus(int status, struct Unit *unit)
+int PowGetterWeaponBonus(int status, struct Unit * unit)
 {
     u16 weapon = GetUnitEquippedWeapon(unit);
     status += GetItemPowBonus(weapon);
     return status;
 }
 
-int PowGetterSkills(int status, struct Unit *unit)
+int PowGetterSkills(int status, struct Unit * unit)
 {
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);
@@ -135,21 +135,24 @@ int PowGetterSkills(int status, struct Unit *unit)
     return status;
 }
 
-int PowPsychUpCheck(int status, struct Unit *unit)
+int PowPsychUpCheck(int status, struct Unit * unit)
 {
-    int stolen_status = 0;
+    FORCE_DECLARE int stolen_status = 0;
 
 #if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
     if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
     {
-        stolen_status = PowGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) + PowGetterSkills(0, GetUnit(gBattleTarget.unit.index));
+        stolen_status = PowGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) +
+            PowGetterSkills(0, GetUnit(gBattleTarget.unit.index));
         return status + stolen_status;
     }
     else if (unit == GetUnit(gBattleTarget.unit.index) && SkillTester(unit, SID_PsychUp))
     {
-        stolen_status = PowGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) + PowGetterSkills(0, GetUnit(gBattleActor.unit.index));
+        stolen_status = PowGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) +
+            PowGetterSkills(0, GetUnit(gBattleActor.unit.index));
         return status + stolen_status;
     }
 #endif
+
     return status;
 }

@@ -196,6 +196,8 @@ void CpOrderBerserkInit(ProcPtr proc)
             unit->statusIndex != UNIT_STATUS_BERSERK &&
 #if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage)))
                 !SkillTester(unit, SID_Rampage)
+#else
+                1
 #endif
         )
             continue;
