@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "status-getter.h"
@@ -5,7 +7,7 @@
 
 int _GetUnitSpeed(struct Unit *unit)
 {
-    const StatusGetterFunc_t * it;
+    const StatusGetterFunc_t *it;
     int status = unit->spd;
 
     if (unit->state & US_RESCUING)

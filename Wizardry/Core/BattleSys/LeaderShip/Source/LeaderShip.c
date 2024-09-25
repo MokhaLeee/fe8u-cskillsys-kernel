@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "battle-system.h"
 #include "kernel-lib.h"
@@ -40,18 +42,18 @@ void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit *
 
     switch (UNIT_FACTION(&actor->unit)) {
     case FACTION_BLUE:
-        actor->battleHitRate   += leadership * gpLeaderShipConf->ally_bonus.hit;
-        actor->battleAvoidRate += leadership * gpLeaderShipConf->ally_bonus.avo;
+        actor->battleHitRate   += leadership *gpLeaderShipConf->ally_bonus.hit;
+        actor->battleAvoidRate += leadership *gpLeaderShipConf->ally_bonus.avo;
         break;
 
     case FACTION_RED:
-        actor->battleHitRate   += leadership * gpLeaderShipConf->enemy_bonus.hit;
-        actor->battleAvoidRate += leadership * gpLeaderShipConf->enemy_bonus.avo;
+        actor->battleHitRate   += leadership *gpLeaderShipConf->enemy_bonus.hit;
+        actor->battleAvoidRate += leadership *gpLeaderShipConf->enemy_bonus.avo;
         break;
 
     case FACTION_GREEN:
-        actor->battleHitRate   += leadership * gpLeaderShipConf->npc_bonus.hit;
-        actor->battleAvoidRate += leadership * gpLeaderShipConf->npc_bonus.avo;
+        actor->battleHitRate   += leadership *gpLeaderShipConf->npc_bonus.hit;
+        actor->battleAvoidRate += leadership *gpLeaderShipConf->npc_bonus.avo;
         break;
 
     default:

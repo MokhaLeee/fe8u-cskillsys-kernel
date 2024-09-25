@@ -152,7 +152,7 @@ typedef void (* AiScrCmd)(u8 *pc);
 
 extern s8 gAiScriptEnded;
 extern int gAiScriptKind;
-extern struct AiScr * gpAiScriptCurrent;
+extern struct AiScr *gpAiScriptCurrent;
 
 extern struct AiScr CONST_DATA gAiScript_FallbackAi1[];
 extern struct AiScr CONST_DATA gAiScript_FallbackAi2[];

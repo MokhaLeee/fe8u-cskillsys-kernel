@@ -1,26 +1,24 @@
-#include "common-chax.h"
+// SPDX-License-Identifier: GPL-2.0-only
 
-extern u8 const * const pr_item_icon_tiles;
-extern u8 const * const * const gpAffinIcons;
-extern u8 const * const * const gpMountIcons;
-extern u8 const * const * const gpWTypeIcons;
+#include "common-chax.h"
+#include "icon-rework.h"
 
 const u8 *IconGetterVanilla(const u8 index)
 {
-    return pr_item_icon_tiles + (index * CHR_SIZE * 4);
+	return pr_item_icon_tiles + (index * CHR_SIZE * 4);
 }
 
 const u8 *GetAffinIcon(const u8 index)
 {
-    return gpAffinIcons[index];
+	return gpAffinIcons[index];
 }
 
 const u8 *GetMountIcon(const u8 index)
 {
-    return gpMountIcons[index];
+	return gpMountIcons[index];
 }
 
 const u8 *GetWTypeIcon(const u8 index)
 {
-    return gpWTypeIcons[index];
+	return gpWTypeIcons[index];
 }

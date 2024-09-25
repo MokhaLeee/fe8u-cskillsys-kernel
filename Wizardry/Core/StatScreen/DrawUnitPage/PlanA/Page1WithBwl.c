@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "strmag.h"
@@ -236,7 +238,7 @@ static void DrawPage1BattleAmt(void)
 /* BWL */
 static void DrawPage1BWL(void)
 {
-    struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(gStatScreen.unit));
+    struct NewBwl *bwl = GetNewBwl(UNIT_CHAR_ID(gStatScreen.unit));
     if (!bwl)
         return;
 

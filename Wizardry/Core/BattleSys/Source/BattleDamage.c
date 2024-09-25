@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "battle-system.h"
 #include "skill-system.h"
@@ -11,10 +13,10 @@
 #include "constants/combat-arts.h"
 
 typedef void (* BattleDamageCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
-extern BattleDamageCalcFunc const * const gpBattleDamageCalcFuncs;
+extern BattleDamageCalcFunc const *const gpBattleDamageCalcFuncs;
 
 typedef int (* BattleRealDamageCalcFunc) (int old, struct BattleUnit * buA, struct BattleUnit * buB);
-extern BattleRealDamageCalcFunc const * const gpBattleRealDamageCalcFuncs;
+extern BattleRealDamageCalcFunc const *const gpBattleRealDamageCalcFuncs;
 
 int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender)
 {

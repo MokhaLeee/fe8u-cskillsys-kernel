@@ -1,9 +1,11 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "battle-system.h"
 #include "kernel-lib.h"
 
 typedef void (* PreBattleGenerateFunc) (void);
-extern PreBattleGenerateFunc const * const gpPreBattleGenerateFuncs;
+extern PreBattleGenerateFunc const *const gpPreBattleGenerateFuncs;
 
 /**
  * This is set an addition routine on start of function: `BattleGenerate()`

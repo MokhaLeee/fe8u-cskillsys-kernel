@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 
 extern int sExpaConvoyItemCount; // gConvoyItemCount is just a u8 that can be no more than 255, not enough
@@ -354,7 +356,7 @@ LYN_REPLACE_CHECK(sub_809D644);
 void sub_809D644(struct PrepItemSupplyProc *proc)
 {
     int color;
-    struct Text * th;
+    struct Text *th;
 #if CHAX
     int convoyItemCount = GetConvoyItemCount();
 #else

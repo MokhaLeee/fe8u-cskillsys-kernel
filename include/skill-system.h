@@ -39,17 +39,17 @@ enum SkillInfoListss
         ? gpKernelDesigerConfig->max_equipable_skill                    \
         : UNIT_RAM_SKILLS_LEN)
 
-extern u16 const * const gpConstSkillTable_Person;
-extern u16 const * const gpConstSkillTable_Job;
-extern u16 const * const gpConstSkillTable_Item;
-extern u16 const * const gpConstSkillTable_Weapon;
+extern u16 const *const gpConstSkillTable_Person;
+extern u16 const *const gpConstSkillTable_Job;
+extern u16 const *const gpConstSkillTable_Item;
+extern u16 const *const gpConstSkillTable_Weapon;
 
 struct SkillInfo {
     const u8 *icon;
     u16 name, desc;
 };
 
-extern struct SkillInfo const * const gpSkillInfos;
+extern struct SkillInfo const *const gpSkillInfos;
 
 const u8 *GetSkillIcon1(const u8 sid);
 const u8 *GetSkillIcon2(const u8 sid);
@@ -114,8 +114,8 @@ struct SkillPreloadPConf { u8 skills[SKILL_ROM_DATA_AMT * (UNIT_RECORDED_LEVEL_M
 extern const struct SkillPreloadJConf gSkillPreloadJData[0x100];
 extern const struct SkillPreloadPConf gSkillPreloadPData[0x100];
 
-extern struct SkillPreloadJConf const * const gpSkillPreloadJData;
-extern struct SkillPreloadPConf const * const gpSkillPreloadPData;
+extern struct SkillPreloadJConf const *const gpSkillPreloadJData;
+extern struct SkillPreloadPConf const *const gpSkillPreloadPData;
 
 enum SkillAnimPriorityConfig {
     EFX_PRIORITY_LOW = 0x1,
@@ -124,8 +124,8 @@ enum SkillAnimPriorityConfig {
     EFX_PRIORITY_HIGHHIGH,
 };
 
-extern u8 const * const gpEfxSkillAnimPriority;
-extern struct EfxAnimConf const * const * const gpEfxSkillAnims;
+extern u8 const *const gpEfxSkillAnimPriority;
+extern struct EfxAnimConf const *const * const gpEfxSkillAnims;
 
 int GetEfxSkillPriority(const u16 sid);
 
@@ -148,7 +148,7 @@ struct ProcMapAnimSkillfx {
     int x, y;
 };
 
-extern u8 const * const gpImg_MapAnimSKILL;
+extern u8 const *const gpImg_MapAnimSKILL;
 extern const struct ProcCmd ProcScr_MapAnimSkillfx[];
 
 void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent);
@@ -189,7 +189,7 @@ enum EventSkillSubOps {
  */
 #define UNIT_MENU_SKILL_AMOUNT 4
 extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
-extern struct MenuItemDef const * const gpSkillMenuInfos;
+extern struct MenuItemDef const *const gpSkillMenuInfos;
 #define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
 
 u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item);
@@ -207,7 +207,7 @@ int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
  * Skill action
  */
 typedef bool (* SkillActionFunc_t)(ProcPtr);
-extern SkillActionFunc_t const * const gpSkillActionFuncTable;
+extern SkillActionFunc_t const *const gpSkillActionFuncTable;
 
 /**
  * Skill scroll
@@ -226,7 +226,7 @@ extern const struct MenuDef RemoveSkillMenuDef;
 struct SkillExtraInfo {
     s8 priv[4];
 };
-extern struct SkillExtraInfo const * const gpSkillExtraInfo;
+extern struct SkillExtraInfo const *const gpSkillExtraInfo;
 #define SKILL_EFF0(sid) (gpSkillExtraInfo[sid].priv[0])
 #define SKILL_EFF1(sid) (gpSkillExtraInfo[sid].priv[1])
 #define SKILL_EFF2(sid) (gpSkillExtraInfo[sid].priv[2])
@@ -266,7 +266,7 @@ enum skill_lucky_seven_idx {
 };
 
 /* Legendary skill */
-extern u8 const * const gpLegendSkillPool;
+extern u8 const *const gpLegendSkillPool;
 int TryActivateLegendSkill(struct Unit *unit, const u16 sid);
 bool SkillTesterLegendActivated(struct Unit *unit, const u16 sid);
 void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit * defender);

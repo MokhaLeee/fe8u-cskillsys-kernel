@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "combat-art.h"
 #include "battle-system.h"
@@ -148,7 +150,7 @@ void DrawBattleForecastContents(struct BattleForecastProc *proc)
 {
     u8 cid;
     char *str;
-    struct Text * text = &proc->itemNameText;
+    struct Text *text = &proc->itemNameText;
     const int Y = proc->frameKind ==  1 ? 0x0D : 0x11;
 
     /* Vanilla */

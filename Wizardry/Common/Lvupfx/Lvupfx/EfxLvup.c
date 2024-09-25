@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "strmag.h"
 #include "lvup.h"
@@ -24,7 +26,7 @@ STATIC_DECLAR const struct EfxLvupInfo NewEfxLvupInfos[] = {
 STATIC_DECLAR void EkrLvup_InitStatusTextVanilla(struct ProcEkrLevelup *proc)
 {
     int i;
-    struct Text * th, * th_base = gBanimText + EKRLVUP_STAT_MAX;
+    struct Text *th, * th_base = gBanimText + EKRLVUP_STAT_MAX;
 
     for (i = 0; i < EKRLVUP_STAT_MAX; i++)
     {

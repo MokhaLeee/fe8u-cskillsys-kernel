@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "efx-anim.h"
 #include "skill-system.h"
@@ -49,7 +51,7 @@ const u8 EfxCombatArtAnimPriority[0x100] = {
     [CID_Detonate] = EFX_PRIORITY_HIGHHIGH,
 };
 
-struct EfxAnimConf const * const EfxCombatArtAnims[0x100] = {
+struct EfxAnimConf const *const EfxCombatArtAnims[0x100] = {
     [CID_WrathStrike] = &EfxSkillCombat,
     [CID_Grounder] = &EfxSkillCombat,
     [CID_Soulblade] = &EfxSkillCombat,

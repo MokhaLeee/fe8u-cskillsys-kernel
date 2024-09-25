@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "combo-attack.h"
@@ -6,7 +8,7 @@
  * Pre-hit
  */
 extern HookProcFunc_t const gPreMapAnimBattleRoundHooks[];
-extern HookProcFunc_t const * const gpPreMapAnimBattleRoundHooks;
+extern HookProcFunc_t const *const gpPreMapAnimBattleRoundHooks;
 
 STATIC_DECLAR void PreMapAnimBattleRound_OnStart(ProcPtr proc)
 {

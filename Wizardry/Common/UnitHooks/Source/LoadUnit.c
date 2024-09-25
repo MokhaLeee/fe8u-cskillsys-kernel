@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "strmag.h"
 #include "bwl.h"
@@ -6,7 +8,7 @@
 
 typedef int (* LoadUnitFunc_t)(struct Unit *unit, const struct CharacterData * character);
 // extern const LoadUnitFunc_t gLoadUnitHooks[];
-extern LoadUnitFunc_t const * const gpLoadUnitHooks;
+extern LoadUnitFunc_t const *const gpLoadUnitHooks;
 
 void UnitLoadStatsFromChracterVanilla(struct Unit *unit, const struct CharacterData * character)
 {
@@ -38,7 +40,7 @@ void UnitLoadStatsFromChracterVanilla(struct Unit *unit, const struct CharacterD
 LYN_REPLACE_CHECK(UnitLoadStatsFromChracter);
 void UnitLoadStatsFromChracter(struct Unit *unit, const struct CharacterData * character)
 {
-    const LoadUnitFunc_t * it;
+    const LoadUnitFunc_t *it;
     for (it = gpLoadUnitHooks; *it; it++)
         (*it)(unit, character);
 }

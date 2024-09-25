@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "battle-system.h"
@@ -11,7 +13,7 @@
 #include "constants/skills.h"
 
 typedef void (* PreBattleCalcFunc) (struct BattleUnit * buA, struct BattleUnit * buB);
-extern PreBattleCalcFunc const * const gpPreBattleCalcFuncs;
+extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit * attacker, struct BattleUnit * defender);
 
 LYN_REPLACE_CHECK(ComputeBattleUnitAttack);

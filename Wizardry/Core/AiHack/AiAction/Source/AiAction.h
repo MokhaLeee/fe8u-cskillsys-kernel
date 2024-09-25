@@ -8,4 +8,4 @@ struct AiActionConf {
 };
 
 // extern const struct AiActionConf gAiActionTable[];
-extern struct AiActionConf const * const gpAiActionTable;
+extern struct AiActionConf const *const gpAiActionTable;

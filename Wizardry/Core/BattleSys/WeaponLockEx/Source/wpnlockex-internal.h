@@ -9,4 +9,4 @@ struct WeaponLockExConf {
 };
 
 extern struct WeaponLockExConf const gWeaponLockExConfs[];
-extern struct WeaponLockExConf const * const gpWeaponLockExConfs;
+extern struct WeaponLockExConf const *const gpWeaponLockExConfs;

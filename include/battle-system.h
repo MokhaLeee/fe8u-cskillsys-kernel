@@ -30,7 +30,7 @@ struct WeaponTriangleConf {
     s8 bonus_silencer;
 };
 
-extern struct WeaponTriangleConf const * const gpWeaponTriangleConfs;
+extern struct WeaponTriangleConf const *const gpWeaponTriangleConfs;
 
 struct WeaponTriangleItemConf {
     s8 valid, wtype;
@@ -43,7 +43,7 @@ struct WeaponTriangleItemConf {
 };
 
 extern const struct WeaponTriangleItemConf gWeaponTriangleItemConf[0x100];
-extern struct WeaponTriangleItemConf const * const gpWeaponTriangleItemConf;
+extern struct WeaponTriangleItemConf const *const gpWeaponTriangleItemConf;
 
 /* Battle hit expansion */
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
@@ -53,7 +53,7 @@ bool CheckBattleHitOverflow(void);
 bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * target);
 int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defender);
 
-static inline int GetBattleHitRound(struct BattleHit * hit)
+static inline int GetBattleHitRound(struct BattleHit *hit)
 {
     return hit - gBattleHitArrayRe;
 }
@@ -211,10 +211,10 @@ struct LeaderShipConf {
     } ally_bonus, enemy_bonus, npc_bonus;
 };
 
-extern struct LeaderShipConf const * const gpLeaderShipConf;
+extern struct LeaderShipConf const *const gpLeaderShipConf;
 
-extern u8 const * const gpLeaderShipPConf;
-extern u8 const * const gpLeaderShipJConf;
+extern u8 const *const gpLeaderShipPConf;
+extern u8 const *const gpLeaderShipJConf;
 
 int GetUnitLeaderShip(struct Unit *unit);
 void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit * target);

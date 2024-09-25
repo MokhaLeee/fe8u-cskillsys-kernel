@@ -49,7 +49,7 @@ enum combat_art_double {
 };
 
 extern const struct CombatArtInfo gCombatArtInfos[0x100];
-extern struct CombatArtInfo const * const gpCombatArtInfos;
+extern struct CombatArtInfo const *const gpCombatArtInfos;
 
 static inline const struct CombatArtInfo * GetCombatArtInfo(u8 cid)
 {
@@ -112,11 +112,11 @@ struct CombatArtRomTable {
     u8 cid_bow[8];
 };
 
-extern struct CombatArtRomTable const * const gpCombatArtRomPTable;
-extern struct CombatArtRomTable const * const gpCombatArtRomJTable;
-extern struct CombatArtRomTable const * const gpCombatArtDefaultTable;
-extern u8 const * const gpCombatArtWeaponTable;
-extern u8 const * const gpCombatArtSkillTable;
+extern struct CombatArtRomTable const *const gpCombatArtRomPTable;
+extern struct CombatArtRomTable const *const gpCombatArtRomJTable;
+extern struct CombatArtRomTable const *const gpCombatArtDefaultTable;
+extern u8 const *const gpCombatArtWeaponTable;
+extern u8 const *const gpCombatArtSkillTable;
 
 /* TargetSel & BKSEL */
 ProcPtr NewTargetSelectionRework(const struct SelectInfo * selectInfo);
@@ -128,8 +128,8 @@ void DrawHelpBoxCombatArtBkselLabels(void);
 void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro *proc);
 
 /* EfxSkill */
-extern u8 const * const gpEfxCombatArtAnimPriority;
-extern struct EfxAnimConf const * const * const gpEfxCombatArtAnims;
+extern u8 const *const gpEfxCombatArtAnimPriority;
+extern struct EfxAnimConf const *const * const gpEfxCombatArtAnims;
 
 void InitEfxCombatArtRoundData(void);
 int GetEfxCombatArtPriority(const u8 cid);

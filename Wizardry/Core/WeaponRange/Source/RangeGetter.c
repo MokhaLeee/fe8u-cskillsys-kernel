@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "status-getter.h"
@@ -8,7 +10,7 @@
 
 typedef int (* WeaponRangeGetterFunc_t)(int old, struct Unit *unit, u16 item);
 // extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
-extern WeaponRangeGetterFunc_t const * const gpWeaponRangeGetters;
+extern WeaponRangeGetterFunc_t const *const gpWeaponRangeGetters;
 
 int GetItemMinRangeRework(u16 item, struct Unit *unit)
 {
@@ -26,7 +28,7 @@ int GetItemMinRangeRework(u16 item, struct Unit *unit)
 
 int GetItemMaxRangeRework(u16 item, struct Unit *unit)
 {
-    const WeaponRangeGetterFunc_t * it;
+    const WeaponRangeGetterFunc_t *it;
     int status = GetItemMaxRange(item);
 
     if (status == 0)

@@ -80,7 +80,7 @@ struct DebuffInfo {
 };
 
 extern const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX];
-extern struct DebuffInfo const * const gpDebuffInfos;
+extern struct DebuffInfo const *const gpDebuffInfos;
 
 int GetUnitStatusIndex(struct Unit *unit);
 int GetUnitStatusDuration(struct Unit *unit);
@@ -197,7 +197,7 @@ enum UNIT_STAT_DEBUFF_IDX {
 };
 
 extern const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX];
-extern struct DebuffInfo const * const gpStatDebuffInfos;
+extern struct DebuffInfo const *const gpStatDebuffInfos;
 
 struct StatDebuffStatus {
     union {

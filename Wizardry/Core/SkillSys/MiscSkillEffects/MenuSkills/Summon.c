@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 
 LYN_REPLACE_CHECK(SummonCommandUsability);

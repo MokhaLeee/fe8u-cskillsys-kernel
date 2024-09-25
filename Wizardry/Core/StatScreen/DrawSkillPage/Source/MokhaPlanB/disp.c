@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "skill-system.h"
@@ -8,7 +10,7 @@
 void DrawSkillPage_MokhaPlanB(void)
 {
     int iy, ix;
-    struct Text * text;
+    struct Text *text;
 
     struct SkillList * slist = GetUnitSkillList(gStatScreen.unit);
 

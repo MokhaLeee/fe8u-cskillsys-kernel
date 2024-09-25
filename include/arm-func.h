@@ -8,7 +8,7 @@ struct ArmFunConfig {
 };
 
 extern struct ArmFunConfig const gKernelArmFunConfig[];
-extern struct ArmFunConfig const * const gpKernelArmFunConfig;
+extern struct ArmFunConfig const *const gpKernelArmFunConfig;
 
 extern const u8 _ARM_SkillTester_CopyStart[], _ARM_SkillTester_CopyEnd[];
 extern const u8 _ARM_UnitList_CopyStart[], _ARM_UnitList_CopyEnd[];

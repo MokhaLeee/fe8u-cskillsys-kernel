@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "save-data.h"
 
@@ -222,7 +224,7 @@ void WriteGameSave(int slot)
     {
         if (offset > chunk_size)
         {
-            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p\n",
+            Errorf("Offset overflow: offset=%#x, size=%#x, saver=%p, loader=%p",
                     offset, cur->size, cur->save, cur->load);
 
             hang();

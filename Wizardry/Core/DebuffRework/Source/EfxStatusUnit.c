@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "debuff.h"
 
@@ -42,7 +44,7 @@ static const s16 frames_fast[] = {
 };
 
 
-static s16 const * const frams_config[] = {
+static s16 const *const frams_config[] = {
     frames_lowlow,
     frames_low,
     frames_normal,

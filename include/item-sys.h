@@ -20,3 +20,6 @@ int GetDuraItemIconId(int item);
 void PrepItemEffect_StatBooster(struct ProcPrepItemUse *proc, u16 item);
 void PrepItemEffect_Promotion(struct ProcPrepItemUse *proc, u16 item);
 void PrepItemEffect_JunaFruit(struct ProcPrepItemUse *proc, u16 item);
+
+typedef int (* HealAmountGetterFunc_t)(int old, struct Unit *actor, struct Unit *target);
+extern HealAmountGetterFunc_t const *const gpHealAmountGetters;

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "icon-rework.h"
@@ -91,7 +93,7 @@ static void PrepItemUseScroll_OnDraw(struct ProcPrepItemUseJunaFruit *proc, int 
 {
     int skill = ITEM_USES(item);
     const char *str = GetStringFromIndex(MSG_SkillLearned);
-    struct Text * text = &gPrepItemTexts[TEXT_PREPITEM_POPUP];
+    struct Text *text = &gPrepItemTexts[TEXT_PREPITEM_POPUP];
     int icon = SKILL_ICON(skill);
     int width = GetStringTextLen(str);
 
@@ -115,7 +117,7 @@ static void PrepItemUseScroll_OnDraw(struct ProcPrepItemUseJunaFruit *proc, int 
 
 STATIC_DECLAR void PrepItemUseScroll_OnInit(struct ProcPrepItemUseJunaFruit *proc)
 {
-    struct ProcPrepItemUse * parent = proc->proc_parent;
+    struct ProcPrepItemUse *parent = proc->proc_parent;
 
     DrawPrepScreenItemUseStatBars(parent->unit, 0);
     DrawPrepScreenItemUseStatValues(parent->unit);
@@ -128,7 +130,7 @@ STATIC_DECLAR void PrepItemUseScroll_OnInit(struct ProcPrepItemUseJunaFruit *pro
 
 STATIC_DECLAR void PrepItemUseScroll_OnEnd(struct ProcPrepItemUseJunaFruit *proc)
 {
-    struct ProcPrepItemUse * parent = proc->proc_parent;
+    struct ProcPrepItemUse *parent = proc->proc_parent;
     AddSkill(parent->unit, ITEM_USES(parent->unit->items[parent->slot]));
     UnitUpdateUsedItem(parent->unit, parent->slot);
     PrepItemUseJuna_OnEnd(proc);

@@ -17,8 +17,8 @@ struct UnitMagicInfo {
 extern const struct UnitMagicInfo gMagicPInfos[0x100];
 extern const struct UnitMagicInfo gMagicJInfos[0x100];
 
-extern struct UnitMagicInfo const * const gpMagicPInfos;
-extern struct UnitMagicInfo const * const gpMagicJInfos;
+extern struct UnitMagicInfo const *const gpMagicPInfos;
+extern struct UnitMagicInfo const *const gpMagicJInfos;
 
 static inline bool IsMagicAttack(struct BattleUnit * bu)
 {

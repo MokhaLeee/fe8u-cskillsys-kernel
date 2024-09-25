@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "banim-sync.h"
@@ -45,7 +47,7 @@ struct BanimSyncHandler * GetBanimSyncHandler_ComboAtk(struct Anim *anim)
         u8 pid, jid;
         u8 __pad__[2];
         void *anim_conf;
-    } const * const gpCustomAnimeTable1;
+    } const *const gpCustomAnimeTable1;
 
     int i;
     for (i = 0; gpCustomAnimeTable1[i].pid != 0 || gpCustomAnimeTable1[i].jid != 0; i++)

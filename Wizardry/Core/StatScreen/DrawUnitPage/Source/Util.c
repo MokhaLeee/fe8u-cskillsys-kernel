@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "strmag.h"
@@ -91,7 +93,7 @@ int GetTextColorFromGrowth(int growth)
     return (9 - _mod10) + 5;
 }
 
-void PutDrawTextRework(struct Text * text, u16 *tm, int color, int x, int tile_width, char const * str)
+void PutDrawTextRework(struct Text *text, u16 *tm, int color, int x, int tile_width, char const * str)
 {
     int bank;
     ModifyTextPal(bank, color);

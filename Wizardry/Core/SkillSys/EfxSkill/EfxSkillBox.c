@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "efx-skill.h"
 #include "icon-rework.h"
@@ -27,7 +29,7 @@ struct ProcEfxskillbox {
 STATIC_DECLAR void DrawEfxSkillName(struct ProcEfxskillbox *proc)
 {
     struct Font _font;
-    struct Text * text = &proc->text;
+    struct Text *text = &proc->text;
     struct Font * font = &_font;
     char *str;
 

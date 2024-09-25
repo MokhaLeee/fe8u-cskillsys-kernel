@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 
 static const u16 Sprite_Page0NameRework[] =
@@ -41,7 +43,7 @@ static const u16 Sprite_Page4NameRework[] =
     0x4104, 0x9048, TILEREF(22, 0),
 };
 
-u16 const * const Sprites_PageNameRework[] =
+u16 const *const Sprites_PageNameRework[] =
 {
     Sprite_Page0NameRework,
     Sprite_Page1NameRework,
@@ -54,9 +56,9 @@ const u16 gPageNameChrOffsetLutRe[] = {
     0x00, 0x40, 0x0E, 0x80, 0x80
 };
 
-extern u16 const * const * const gpSprites_PageNameRework;
-extern u16 const * const gpPageNameChrOffsetLutRe;
-extern u16 const * const gpPageNamePaletteRe;
+extern u16 const *const * const gpSprites_PageNameRework;
+extern u16 const *const gpPageNameChrOffsetLutRe;
+extern u16 const *const gpPageNamePaletteRe;
 
 LYN_REPLACE_CHECK(DisplayPageNameSprite);
 void DisplayPageNameSprite(int pageid)

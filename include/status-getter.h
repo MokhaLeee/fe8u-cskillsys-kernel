@@ -4,17 +4,17 @@
 
 typedef int (* StatusGetterFunc_t)(int old, struct Unit *unit);
 
-extern StatusGetterFunc_t const * const gpHpGetters;
-extern StatusGetterFunc_t const * const gpPowGetters;
-extern StatusGetterFunc_t const * const gpMagGetters;
-extern StatusGetterFunc_t const * const gpSklGetters;
-extern StatusGetterFunc_t const * const gpSpdGetters;
-extern StatusGetterFunc_t const * const gpLckGetters;
-extern StatusGetterFunc_t const * const gpDefGetters;
-extern StatusGetterFunc_t const * const gpResGetters;
-extern StatusGetterFunc_t const * const gpMovGetters;
-extern StatusGetterFunc_t const * const gpConGetters;
-extern StatusGetterFunc_t const * const gpAidGetters;
+extern StatusGetterFunc_t const *const gpHpGetters;
+extern StatusGetterFunc_t const *const gpPowGetters;
+extern StatusGetterFunc_t const *const gpMagGetters;
+extern StatusGetterFunc_t const *const gpSklGetters;
+extern StatusGetterFunc_t const *const gpSpdGetters;
+extern StatusGetterFunc_t const *const gpLckGetters;
+extern StatusGetterFunc_t const *const gpDefGetters;
+extern StatusGetterFunc_t const *const gpResGetters;
+extern StatusGetterFunc_t const *const gpMovGetters;
+extern StatusGetterFunc_t const *const gpConGetters;
+extern StatusGetterFunc_t const *const gpAidGetters;
 
 int HpMaxGetter(struct Unit *unit);
 int PowGetter(struct Unit *unit);

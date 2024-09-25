@@ -52,7 +52,7 @@ struct DebuffInfo {
     u8 cannot_move;
 };
 
-extern struct DebuffInfo const * const gpDebuffInfos;
+extern struct DebuffInfo const *const gpDebuffInfos;
 ```
 
 Common API:

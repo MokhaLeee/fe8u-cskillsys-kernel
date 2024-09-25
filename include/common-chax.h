@@ -24,7 +24,7 @@
 #define FORCE_DECLARE __attribute__((unused))
 
 #define LYN_REPLACE_CHECK(name) \
-    static void const * const __attribute__((unused)) lyn_exists_check_ ## name = &name
+    static void const *const __attribute__((unused)) lyn_exists_check_ ## name = &name
 
 /* Pointer valid judge */
 #define IS_IWRAM_PTR(ptr)    ((((u32)(ptr)) & 0xFF000000) == 0x03000000)

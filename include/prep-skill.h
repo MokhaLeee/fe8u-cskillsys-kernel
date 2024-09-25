@@ -3,7 +3,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
-void StartPrepEquipScreen(struct ProcAtMenu * parent);
+void StartPrepEquipScreen(struct ProcAtMenu *parent);
 
 /* On select unit */
 #define ProcPrepSkill1 ProcPrepUnit /* Yeah, we directlt use PrepUnitList */

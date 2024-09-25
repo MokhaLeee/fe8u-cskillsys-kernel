@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "debug-event.h"
 #include "skill-system.h"
@@ -461,7 +463,7 @@ static const EventListScr EventListScr_UnitMove[] = {
     END_MAIN
 };
 
-static void const * const EventListScr_Tutorial[] = {
+static void const *const EventListScr_Tutorial[] = {
     NULL
 };
 

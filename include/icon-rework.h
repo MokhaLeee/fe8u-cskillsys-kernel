@@ -3,17 +3,17 @@
 #include "common-chax.h"
 
 enum icon_sheet_idx {
-    ICON_SHEET_VANILLA,
-    ICON_SHEET_AFFIN,
-    ICON_SHEET_MOUNT,
-    ICON_SHEET_WTYPE,
-    ICON_SHEET_COMBATART,
-    ICON_SHEET_SKILL0,
-    ICON_SHEET_SKILL1,
-    ICON_SHEET_SKILL2,
-    ICON_SHEET_SKILL3,
+	ICON_SHEET_VANILLA,
+	ICON_SHEET_AFFIN,
+	ICON_SHEET_MOUNT,
+	ICON_SHEET_WTYPE,
+	ICON_SHEET_COMBATART,
+	ICON_SHEET_SKILL0,
+	ICON_SHEET_SKILL1,
+	ICON_SHEET_SKILL2,
+	ICON_SHEET_SKILL3,
 
-    ICON_SHEET_AMT = 16
+	ICON_SHEET_AMT = 16
 };
 
 #define AFFIN_ICON(affin) ((ICON_SHEET_AFFIN << 8) + (affin))
@@ -37,3 +37,8 @@ const u8 *IconGetterVanilla(const u8 index);
 const u8 *GetAffinIcon(const u8 index);
 const u8 *GetMountIcon(const u8 index);
 const u8 *GetWTypeIcon(const u8 index);
+
+extern u8 const *const pr_item_icon_tiles;
+extern u8 const *const *const gpAffinIcons;
+extern u8 const *const *const gpMountIcons;
+extern u8 const *const *const gpWTypeIcons;

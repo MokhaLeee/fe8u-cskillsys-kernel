@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
@@ -41,7 +43,7 @@ u8 GetBestRangeBonusCid(struct Unit *unit, u16 item)
 /* Icon Getter */
 const u8 *GetCombatArtIcon(const u8 cid)
 {
-    u8 const * const default_icons[] = {
+    u8 const *const default_icons[] = {
         [ITYPE_SWORD] = GFX_CombatArtIcon_SwordArtAtk,
         [ITYPE_LANCE] = GFX_CombatArtIcon_LanceArtAtk,
         [ITYPE_AXE]   = GFX_CombatArtIcon_AxeArtAtk,

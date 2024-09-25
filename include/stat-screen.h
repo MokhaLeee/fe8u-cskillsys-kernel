@@ -45,7 +45,7 @@ void InstallExpandedTextPal(void);
 void ResetActiveFontPal(void);
 int GetTextColorFromGrowth(int growth);
 void HbPopuplate_Page1TrvTalk(struct HelpBoxProc *proc);
-void PutDrawTextRework(struct Text * text, u16 *tm, int color, int x, int tile_width, char const * str);
+void PutDrawTextRework(struct Text *text, u16 *tm, int color, int x, int tile_width, char const * str);
 void DrawStatWithBarReworkExt(int num, int x, int y, u16 *tm, int base, int total, int max, int max_ref);
 void DrawStatWithBarRework(int num, int x, int y, u16 *tm1, u16 *tm2, int base, int total, int max);
 void StartUnitScreenHelp(int pageid, struct Proc *proc);

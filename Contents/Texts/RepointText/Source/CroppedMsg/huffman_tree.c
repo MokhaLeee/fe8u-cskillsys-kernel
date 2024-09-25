@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "global.h"
 
 const u32 gMsgHuffmanTableRe[] =

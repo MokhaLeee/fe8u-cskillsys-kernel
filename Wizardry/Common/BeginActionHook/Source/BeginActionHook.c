@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 
 typedef void (*BeginActionFunc_t)(struct Unit *unit);

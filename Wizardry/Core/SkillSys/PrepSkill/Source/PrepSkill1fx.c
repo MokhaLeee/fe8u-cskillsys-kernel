@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "prep-skill.h"
@@ -14,7 +16,7 @@ void PrepSkill1_DrawLeftSkillIcon(struct ProcPrepSkill1 *proc)
 
     if (list->amt == 0)
     {
-        struct Text * text = &gPrepUnitTexts[0x16];
+        struct Text *text = &gPrepUnitTexts[0x16];
         ClearText(text);
         PutDrawText(
             text,
@@ -64,7 +66,7 @@ void PrepSkill1_InitTexts(void)
 
 void PrepSkill1_DrawRightTopBar(struct ProcPrepSkill1 *proc)
 {
-    struct Text * text = &gPrepUnitTexts[0x15];
+    struct Text *text = &gPrepUnitTexts[0x15];
     struct Unit *unit = GetUnitFromPrepList(proc->list_num_cur);
     int color = AddSkill(unit, 0) == 0
               ? TEXT_COLOR_SYSTEM_WHITE

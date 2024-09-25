@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "strmag.h"
@@ -8,11 +10,11 @@
 
 typedef int (* BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit *unit);
 // extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
-extern BattleToUnitFunc_t const * const gpExternalBattleToUnitHook;
+extern BattleToUnitFunc_t const *const gpExternalBattleToUnitHook;
 
 typedef int (* UnitToBattleFunc_t)(struct Unit *unit, struct BattleUnit * bu);
 // extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
-extern UnitToBattleFunc_t const * const gpExternalUnitToBattleHook;
+extern UnitToBattleFunc_t const *const gpExternalUnitToBattleHook;
 
 STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit *unit)
 {
@@ -102,7 +104,7 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit *unit, struct BattleU
 LYN_REPLACE_CHECK(InitBattleUnit);
 void InitBattleUnit(struct BattleUnit * bu, struct Unit *unit)
 {
-    const UnitToBattleFunc_t * it;
+    const UnitToBattleFunc_t *it;
 
     InitBattleUnitVanilla(bu, unit);
 
@@ -119,7 +121,7 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit *unit)
 LYN_REPLACE_CHECK(UpdateUnitFromBattle);
 void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit * bu)
 {
-    const BattleToUnitFunc_t * it;
+    const BattleToUnitFunc_t *it;
 
     UpdateUnitFromBattleVanilla(unit, bu);
 

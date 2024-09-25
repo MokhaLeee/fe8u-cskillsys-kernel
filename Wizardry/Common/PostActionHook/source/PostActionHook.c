@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "combat-art.h"
 #include "skill-system.h"
@@ -10,7 +12,7 @@ struct ProcPostAction {
 
 typedef bool (* PostActionFunc_t)(struct ProcPostAction *proc);
 // extern const PostActionFunc_t gPostActionFuncs[];
-extern PostActionFunc_t const * const gpPostActionFuncs;
+extern PostActionFunc_t const *const gpPostActionFuncs;
 
 STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction *proc);
 STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction *proc);

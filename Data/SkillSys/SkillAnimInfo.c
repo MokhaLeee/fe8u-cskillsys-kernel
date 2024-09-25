@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "constants/skills.h"
@@ -229,7 +231,7 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 #endif
 };
 
-struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
+struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RuinedBlade) && COMMON_SKILL_VALID(SID_RuinedBlade))
     [SID_RuinedBlade] = &EfxSkillVanilla,
 #endif

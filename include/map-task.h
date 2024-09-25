@@ -17,10 +17,10 @@ struct MapTaskConf {
 };
 
 // extern struct MapTaskConf const gMapTaskConfs[];
-extern struct MapTaskConf const * const gpMapTaskConfs;
+extern struct MapTaskConf const *const gpMapTaskConfs;
 
 // extern u8 const gHpBarChr[];
-extern u8 const * const gpHpBarChr;
+extern u8 const *const gpHpBarChr;
 
 extern struct Vec2u MapTaskVec;
 

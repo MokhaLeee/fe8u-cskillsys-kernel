@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "status-getter.h"
@@ -6,7 +8,7 @@
 
 int _GetUnitMov(struct Unit *unit)
 {
-    const StatusGetterFunc_t * it;
+    const StatusGetterFunc_t *it;
     int status = UNIT_MOV(unit);
 
     for (it = gpMovGetters; *it; it++)

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "skill-system.h"
@@ -33,7 +35,7 @@ void DrawSkillPage_MokhaPlanA(void)
 
     for (i = 0; i < STAT_SKILL_NUM_MAX; i++)
     {
-        struct Text * text = &gStatScreen.text[text_id[i]];
+        struct Text *text = &gStatScreen.text[text_id[i]];
         if (i >= list->amt)
             break;
 

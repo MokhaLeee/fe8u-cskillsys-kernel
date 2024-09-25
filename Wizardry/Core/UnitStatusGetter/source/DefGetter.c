@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
 #include "common-chax.h"
 #include "skill-system.h"
 #include "status-getter.h"
@@ -5,7 +7,7 @@
 
 int _GetUnitDefense(struct Unit *unit)
 {
-    const StatusGetterFunc_t * it;
+    const StatusGetterFunc_t *it;
     int status = unit->def;
 
     for (it = gpDefGetters; *it; it++)
