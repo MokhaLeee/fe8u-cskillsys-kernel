@@ -2,7 +2,7 @@
 #include "item-sys.h"
 
 LYN_REPLACE_CHECK(CanUnitUseItemPrepScreen);
-bool CanUnitUseItemPrepScreen(struct Unit * unit, int item)
+bool CanUnitUseItemPrepScreen(struct Unit *unit, int item)
 {
     PrepItemUsabilityFunc_t it = gPrepItemUsabilityFuncs[ITEM_INDEX(item)];
 
@@ -12,7 +12,7 @@ bool CanUnitUseItemPrepScreen(struct Unit * unit, int item)
     return false;
 }
 
-bool CanUnitUseMetiStome(struct Unit * unit, int item)
+bool CanUnitUseMetiStome(struct Unit *unit, int item)
 {
     if (unit->state & US_GROWTH_BOOST)
         return false;

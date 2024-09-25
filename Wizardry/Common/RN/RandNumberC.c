@@ -50,7 +50,7 @@ bool Roll2RandC(int threshold)
     return (threshold > average);
 }
 
-void SaveRandC(u8 * dst, const u32 size)
+void SaveRandC(u8 *dst, const u32 size)
 {
     if (size < sizeof(sRandSeedsC))
     {
@@ -66,7 +66,7 @@ void SaveRandC(u8 * dst, const u32 size)
         sizeof(sRandSeedsC));
 }
 
-void LoadRandC(u8 * src, const u32 size)
+void LoadRandC(u8 *src, const u32 size)
 {
     if (size < sizeof(sRandSeedsC))
     {

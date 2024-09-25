@@ -8,8 +8,8 @@ struct EmsChunk {
     /* 00 */ u16 _identifier_;
     /* 02 */ u16 size;
 
-    /* 04 */ void (* save)(u8 * dst, const u32 size);
-    /* 08 */ void (* load)(u8 * src, const u32 size);
+    /* 04 */ void (* save)(u8 *dst, const u32 size);
+    /* 08 */ void (* load)(u8 *src, const u32 size);
     /* 0C */ int chunk_idx;
 };
 
@@ -117,12 +117,12 @@ struct EmsPackedSusUnit {
 #define SIZE_OF_SAV_UNIT_PACK 0x2C
 #define SIZE_OF_SUS_UNIT_PACK 0x34
 
-extern void (* const gpMsa_Saver )(u8 * dst, const u32 size);
-extern void (* const gpMsa_Loader)(u8 * src, const u32 size);
-extern void (* const gpMsu_Saver )(u8 * dst, const u32 size);
-extern void (* const gpMsu_Loader)(u8 * src, const u32 size);
+extern void (* const gpMsa_Saver )(u8 *dst, const u32 size);
+extern void (* const gpMsa_Loader)(u8 *src, const u32 size);
+extern void (* const gpMsu_Saver )(u8 *dst, const u32 size);
+extern void (* const gpMsu_Loader)(u8 *src, const u32 size);
 
-void MSA_ExternalSaver(u8 * dst, const u32 size);
-void MSA_ExternalLoader(u8 * src, const u32 size);
-void MSU_ExternalSaver(u8 * dst, const u32 size);
-void MSU_ExternalLoader(u8 * src, const u32 size);
+void MSA_ExternalSaver(u8 *dst, const u32 size);
+void MSA_ExternalLoader(u8 *src, const u32 size);
+void MSU_ExternalSaver(u8 *dst, const u32 size);
+void MSU_ExternalLoader(u8 *src, const u32 size);

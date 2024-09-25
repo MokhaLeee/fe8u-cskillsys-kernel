@@ -12,13 +12,13 @@ extern struct SkillList sSkillList[3];
 #define SkillListBattleActor &sSkillList[1]
 #define SkillListBattleTarget &sSkillList[2]
 
-void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
+void GenerateSkillListExt(struct Unit *unit, struct SkillList * list)
 {
     int i, weapon, sid;
     int pid = UNIT_CHAR_ID(unit);
     int jid = UNIT_CLASS_ID(unit);
 
-    u8 * tmp_list = gGenericBuffer;
+    u8 *tmp_list = gGenericBuffer;
 
     memset(list, 0, sizeof(*list));
     memset(tmp_list, 0, MAX_SKILL_NUM + 1);
@@ -111,7 +111,7 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     WriteUnitList(unit, &list->header);
 }
 
-void ForceUpdateUnitSkillList(struct Unit * unit)
+void ForceUpdateUnitSkillList(struct Unit *unit)
 {
     struct SkillList * list = SkillListGeneric;
     if (unit == &gBattleActor.unit)
@@ -123,7 +123,7 @@ void ForceUpdateUnitSkillList(struct Unit * unit)
 }
 
 #if 0
-struct SkillList * GetUnitSkillList(struct Unit * unit)
+struct SkillList * GetUnitSkillList(struct Unit *unit)
 {
     struct SkillList * list = SkillListGeneric;
     if (unit == &gBattleActor.unit)
@@ -138,7 +138,7 @@ struct SkillList * GetUnitSkillList(struct Unit * unit)
 }
 #endif
 
-void DisableUnitSkilLList(struct Unit * unit)
+void DisableUnitSkilLList(struct Unit *unit)
 {
     struct SkillList * list = GetUnitSkillList(unit);
     list->amt = 0;

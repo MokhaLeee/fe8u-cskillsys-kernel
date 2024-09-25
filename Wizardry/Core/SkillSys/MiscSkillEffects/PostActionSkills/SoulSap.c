@@ -6,7 +6,7 @@
 
 STATIC_DECLAR void ExecSkillSoulSapEffectAnim(ProcPtr proc)
 {
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
 
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -20,12 +20,12 @@ STATIC_DECLAR void SkillSoulSapPostAnimEffect(ProcPtr proc)
 {
     int i;
     int heal_amt = 0;
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
         struct SelectTarget * starget = GetTarget(i);
-        struct Unit * tunit = GetUnit(starget->uid);
+        struct Unit *tunit = GetUnit(starget->uid);
 
         int max_hp = GetUnitMaxHp(tunit);
 #if defined(SID_SoulSap) && (COMMON_SKILL_VALID(SID_SoulSap))
@@ -61,7 +61,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillSoulSap[] = {
 
 bool PostActionSkillSoulSap(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

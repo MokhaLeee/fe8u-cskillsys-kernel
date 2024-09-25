@@ -96,7 +96,7 @@ void DrawSkillPage_MokhaPlanB(void)
     }
 }
 
-void HbRedirect_ArtPageOnlyAlly(struct HelpBoxProc * proc)
+void HbRedirect_ArtPageOnlyAlly(struct HelpBoxProc *proc)
 {
     if (UNIT_FACTION(gStatScreen.unit) == FACTION_BLUE)
     {

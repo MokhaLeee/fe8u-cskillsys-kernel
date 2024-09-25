@@ -5,7 +5,7 @@
 
 #define LOCAL_TRACE 0
 
-static u8 * GetUnitBwlSupports(u8 pid)
+static u8 *GetUnitBwlSupports(u8 pid)
 {
     struct NewBwl * bwl = GetNewBwl(pid);
     if (bwl)
@@ -19,9 +19,9 @@ s8 ActionSupport(ProcPtr proc)
 {
     int subjectExp;
     int targetExp;
-    u8 * supp1, * supp2;
+    u8 *supp1, * supp2;
 
-    struct Unit * target = GetUnit(gActionData.targetIndex);
+    struct Unit *target = GetUnit(gActionData.targetIndex);
 
     int targetSupportNum = GetUnitSupporterNum(gActiveUnit, target->pCharacterData->number);
     int subjectSupportNum = GetUnitSupporterNum(target, gActiveUnit->pCharacterData->number);
@@ -59,10 +59,10 @@ s8 ActionSupport(ProcPtr proc)
 }
 
 LYN_REPLACE_CHECK(GetUnitSupportLevel);
-int GetUnitSupportLevel(struct Unit * unit, int num)
+int GetUnitSupportLevel(struct Unit *unit, int num)
 {
     int exp;
-    u8 * supp;
+    u8 *supp;
 
     if (!UNIT_IS_VALID(unit))
         return SUPPORT_LEVEL_NONE;
@@ -96,9 +96,9 @@ int GetUnitSupportLevel(struct Unit * unit, int num)
 }
 
 LYN_REPLACE_CHECK(UnitGainSupportExp);
-void UnitGainSupportExp(struct Unit * unit, int num)
+void UnitGainSupportExp(struct Unit *unit, int num)
 {
-    u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
+    u8 *supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
 
     if (UNIT_SUPPORT_DATA(unit) && supp)
     {
@@ -106,7 +106,7 @@ void UnitGainSupportExp(struct Unit * unit, int num)
         int currentExp = supp[num];
         int maxExp = sSupportMaxExpLookup[GetUnitSupportLevel(unit, num)];
 
-        FORCE_DECLARE struct Unit * other = GetUnitSupporterUnit(unit, num);
+        FORCE_DECLARE struct Unit *other = GetUnitSupporterUnit(unit, num);
 
 #if defined(SID_SocialButterfly) && (COMMON_SKILL_VALID(SID_SocialButterfly))
         if (SkillTester(unit, SID_SocialButterfly) || SkillTester(other, SID_SocialButterfly))
@@ -124,7 +124,7 @@ void UnitGainSupportExp(struct Unit * unit, int num)
 LYN_REPLACE_CHECK(UnitGainSupportLevel);
 void UnitGainSupportLevel(struct Unit* unit, int num)
 {
-    u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
+    u8 *supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
     if (supp)
         supp[num]++;
 
@@ -134,10 +134,10 @@ void UnitGainSupportLevel(struct Unit* unit, int num)
 }
 
 LYN_REPLACE_CHECK(CanUnitSupportNow);
-s8 CanUnitSupportNow(struct Unit * unit, int num)
+s8 CanUnitSupportNow(struct Unit *unit, int num)
 {
     int exp, maxExp;
-    u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
+    u8 *supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
 
     if (gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)
         return FALSE;
@@ -167,14 +167,14 @@ s8 CanUnitSupportNow(struct Unit * unit, int num)
 }
 
 LYN_REPLACE_CHECK(InitUnitsupports);
-void InitUnitsupports(struct Unit * unit)
+void InitUnitsupports(struct Unit *unit)
 {
-    u8 * supp1, * supp2;
+    u8 *supp1, * supp2;
     int i, count = GetUnitSupporterCount(unit);
 
     for (i = 0; i < count; ++i)
     {
-        struct Unit * other = GetUnitSupporterUnit(unit, i);
+        struct Unit *other = GetUnitSupporterUnit(unit, i);
 
         if (!other)
             continue;
@@ -191,10 +191,10 @@ void InitUnitsupports(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(UnitLoadSupports);
-void UnitLoadSupports(struct Unit * unit)
+void UnitLoadSupports(struct Unit *unit)
 {
     int i, count = GetUnitSupporterCount(unit);
-    u8 * supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
+    u8 *supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
     if (supp)
     {
         CpuFill16(0, supp, UNIT_SUPPORT_MAX_COUNT);

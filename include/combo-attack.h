@@ -16,7 +16,7 @@ void BattleGenerateComboAtkList(void);
 bool BattleComboGenerateHits(void);
 void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void);
 
-static inline struct Unit * GetMapAnimComboUnit(int round)
+static inline struct Unit *GetMapAnimComboUnit(int round)
 {
     if (gComboAtkList[round].uid == COMBO_ATK_UID_INVALID)
         return NULL;

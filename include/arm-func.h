@@ -3,8 +3,8 @@
 #include "common-chax.h"
 
 struct ArmFunConfig {
-    u8 * dst_start, * dst_end;
-    const u8 * src_start, * src_end;
+    u8 *dst_start, * dst_end;
+    const u8 *src_start, * src_end;
 };
 
 extern struct ArmFunConfig const gKernelArmFunConfig[];

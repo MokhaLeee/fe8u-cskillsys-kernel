@@ -17,7 +17,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     int round, cid, sid_atk, sid_def;
     u32 actor_icon, target_icon;
     u32 left_icon, right_icon;
-    struct ProcMapAnimSkillfx * procfx;
+    struct ProcMapAnimSkillfx *procfx;
 
     struct MAInfoFrameProc * infoproc;
     infoproc = Proc_Find(ProcScr_MapBattleInfoBox);
@@ -92,7 +92,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
 
     if (actor_icon != 0)
     {
-        struct Unit * unit = gManimSt.actor[gManimSt.subjectActorId].unit;
+        struct Unit *unit = gManimSt.actor[gManimSt.subjectActorId].unit;
 
         APProc_Create(
             Obj_MapAnimMISS,
@@ -103,7 +103,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
 
     if (target_icon != 0)
     {
-        struct Unit * unit = gManimSt.actor[gManimSt.targetActorId].unit;
+        struct Unit *unit = gManimSt.actor[gManimSt.targetActorId].unit;
 
         APProc_Create(
             Obj_MapAnimMISS,

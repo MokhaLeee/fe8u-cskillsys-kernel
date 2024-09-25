@@ -9,7 +9,7 @@
 
 bool PostActionGetItem(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
     if (!UNIT_IS_VALID(unit) || UNIT_STONED(unit))
         return false;

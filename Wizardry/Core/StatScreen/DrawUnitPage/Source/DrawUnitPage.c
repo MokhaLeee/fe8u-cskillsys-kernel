@@ -6,7 +6,7 @@
 LYN_REPLACE_CHECK(DisplayPage0);
 void DisplayPage0(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     u8 max_vals[] = {
         UNIT_POW_MAX(unit),
@@ -36,7 +36,7 @@ void DisplayPage0(void)
 }
 
 /* External hook */
-void StartUnitScreenHelp(int pageid, struct Proc * proc)
+void StartUnitScreenHelp(int pageid, struct Proc *proc)
 {
     switch (gpKernelDesigerConfig->unit_page_style) {
     case CONFIG_PAGE1_WITH_BWL:

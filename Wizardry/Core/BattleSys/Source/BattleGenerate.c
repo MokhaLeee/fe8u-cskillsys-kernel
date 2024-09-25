@@ -19,7 +19,7 @@ void PreBattleGenerateHook(void)
 }
 
 LYN_REPLACE_CHECK(BattleGenerate);
-void BattleGenerate(struct Unit * actor, struct Unit * target)
+void BattleGenerate(struct Unit *actor, struct Unit *target)
 {
 #if CHAX
     PreBattleGenerateHook();

@@ -7,14 +7,14 @@
 #include "prep-skill.h"
 #include "constants/texts.h"
 
-STATIC_DECLAR void ProcPrepSkill2_OnEnd(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_OnEnd(struct ProcPrepSkill2 *proc)
 {
     PrepSetLatestCharId(proc->unit->pCharacterData->number);
     EndGreenText();
     EndPrepSkillObj();
 }
 
-STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 *proc)
 {
     u16 BgConfig[12] = {
         // tile offset    map offset    screen size
@@ -70,13 +70,13 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
 
     if (proc->hand_pos == POS_R)
         ShowSysHandCursor(
-            0x74 + 0x10 * proc->hand_x,
-            0x20 + 0x10 * proc->hand_y,
+            0x74 + 0x10 *proc->hand_x,
+            0x20 + 0x10 *proc->hand_y,
             0x0, 0x800);
     else
         ShowSysHandCursor(
-            0x10 + 0x10 * proc->hand_x,
-            0x30 + 0x10 * proc->hand_y,
+            0x10 + 0x10 *proc->hand_x,
+            0x30 + 0x10 *proc->hand_y,
             0x0, 0x800);
 
     NewPrepSkillObj(proc);
@@ -90,15 +90,15 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
     RestartMuralBackground();
 }
 
-STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 *proc)
 {
     bool hand_moved = false;
     int ret, next;
     int repeated = gKeyStatusPtr->repeatedKeys;
 
     /**
-     * L-list: struct SkillList * GetUnitSkillList(struct Unit * unit)
-     * R-list: struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit * unit)
+     * L-list: struct SkillList * GetUnitSkillList(struct Unit *unit)
+     * R-list: struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit *unit)
      */
 
     struct SkillList * llist = GetUnitSkillList(proc->unit);
@@ -353,13 +353,13 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 * proc)
 
         if (proc->hand_pos == POS_R)
             ShowSysHandCursor(
-                0x74 + 0x10 * proc->hand_x,
-                0x20 + 0x10 * proc->hand_y,
+                0x74 + 0x10 *proc->hand_x,
+                0x20 + 0x10 *proc->hand_y,
                 0x0, 0x800);
         else
             ShowSysHandCursor(
-                0x10 + 0x10 * proc->hand_x,
-                0x30 + 0x10 * proc->hand_y,
+                0x10 + 0x10 *proc->hand_x,
+                0x30 + 0x10 *proc->hand_y,
                 0x0, 0x800);
 
         StartParallelFiniteLoop(PrepSkill2_DrawDrawSkillDesc, 0, proc);
@@ -367,7 +367,7 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 * proc)
 }
 
 /* Statscreen */
-STATIC_DECLAR void ProcPrepSkill2_EndMiscEffectForStatScreen(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_EndMiscEffectForStatScreen(struct ProcPrepSkill2 *proc)
 {
     EndMenuScrollBar();
     EndAllParallelWorkers();
@@ -380,13 +380,13 @@ STATIC_DECLAR void ProcPrepSkill2_EndMiscEffectForStatScreen(struct ProcPrepSkil
     EndPrepSkillObj();
 }
 
-STATIC_DECLAR void ProcPrepSkill2_NewStatScreen(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_NewStatScreen(struct ProcPrepSkill2 *proc)
 {
     SetStatScreenConfig(STATSCREEN_CONFIG_NONUNK16 | STATSCREEN_CONFIG_NONDEAD);
     StartStatScreen(proc->unit, proc);
 }
 
-STATIC_DECLAR void ProcPrepSkill2_UpdateListFromStatScreen(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_UpdateListFromStatScreen(struct ProcPrepSkill2 *proc)
 {
     int num;
     struct ProcPrepSkill1 * pproc = proc->proc_parent;
@@ -414,7 +414,7 @@ STATIC_DECLAR void ProcPrepSkill2_UpdateListFromStatScreen(struct ProcPrepSkill2
 STATIC_DECLAR void ProcPrepSkill2_MsgOnDraw(int msg)
 {
     int i;
-    const char * str = GetStringFromIndex(msg);
+    const char *str = GetStringFromIndex(msg);
 
     TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 0xD, 0x6), 0xC, 0x4, 0);
 
@@ -435,7 +435,7 @@ STATIC_DECLAR void ProcPrepSkill2_MsgOnDraw(int msg)
     BG_EnableSyncByMask(BG0_SYNC_BIT);
 }
 
-STATIC_DECLAR void ProcPrepSkill2_MsgWindowIDLE(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_MsgWindowIDLE(struct ProcPrepSkill2 *proc)
 {
     if ((A_BUTTON | B_BUTTON) & gKeyStatusPtr->newKeys)
     {
@@ -448,25 +448,25 @@ STATIC_DECLAR void ProcPrepSkill2_MsgWindowIDLE(struct ProcPrepSkill2 * proc)
     PutPrepSkill2PopupBox(0x60, 0x2E, 0x0E, 0x04, 0x1);
 }
 
-STATIC_DECLAR void ProcPrepSkill2_AddOnDraw(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_AddOnDraw(struct ProcPrepSkill2 *proc)
 {
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_AddSkill);
     HideSysHandCursor();
 }
 
-STATIC_DECLAR void ProcPrepSkill2_RemoveOnDraw(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_RemoveOnDraw(struct ProcPrepSkill2 *proc)
 {
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_RemoveSkill);
     HideSysHandCursor();
 }
 
-STATIC_DECLAR void ProcPrepSkill2_FailedAddOnDraw(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_FailedAddOnDraw(struct ProcPrepSkill2 *proc)
 {
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_FailAddSkill);
     HideSysHandCursor();
 }
 
-STATIC_DECLAR void ProcPrepSkill2_FailedRemoveOnDraw(struct ProcPrepSkill2 * proc)
+STATIC_DECLAR void ProcPrepSkill2_FailedRemoveOnDraw(struct ProcPrepSkill2 *proc)
 {
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_FailRemoveSkill);
     HideSysHandCursor();
@@ -531,7 +531,7 @@ PROC_LABEL(PL_PREPSKILL2_END),
 
 void StartPrepSelectSkillScreen(struct ProcPrepSkill1 * pproc)
 {
-    struct ProcPrepSkill2 * proc;
+    struct ProcPrepSkill2 *proc;
     EndAllParallelWorkers();
     proc = Proc_StartBlocking(ProcScr_PrepSkillSkillSel, pproc);
     proc->unit = GetUnitFromPrepList(pproc->list_num_cur);

@@ -4,7 +4,7 @@
 #include "icon-rework.h"
 #include "constants/texts.h"
 
-STATIC_DECLAR void ReloadPrepSkill2IconGfx(struct ProcPrepSkillObj * proc)
+STATIC_DECLAR void ReloadPrepSkill2IconGfx(struct ProcPrepSkillObj *proc)
 {
     int x, y;
     struct ProcPrepSkill2 * pproc = proc->proc_parent;
@@ -17,7 +17,7 @@ STATIC_DECLAR void ReloadPrepSkill2IconGfx(struct ProcPrepSkillObj * proc)
             int off  = PREP_SRLIST_OFFSET(x, y);
             int real = PREP_SRLIST_OFFSET(x, pproc->right_line + y);
             u16 sid = rlist->sid[real];
-            u8 * dst = off < 0x10
+            u8 *dst = off < 0x10
                      ? OBJ_VRAM0 + VOBJ_SKILL_ICONS + 0x40 * off
                      : OBJ_VRAM0 + VOBJ_SKILL_ICONS + 0x40 * (off + 0x10);
 
@@ -31,7 +31,7 @@ STATIC_DECLAR void ReloadPrepSkill2IconGfx(struct ProcPrepSkillObj * proc)
     proc->reload = false;
 }
 
-STATIC_DECLAR void PutPrepSkill2IconSprits(struct ProcPrepSkillObj * proc)
+STATIC_DECLAR void PutPrepSkill2IconSprits(struct ProcPrepSkillObj *proc)
 {
     int x, y;
     struct ProcPrepSkill2 * pproc = proc->proc_parent;
@@ -43,7 +43,7 @@ STATIC_DECLAR void PutPrepSkill2IconSprits(struct ProcPrepSkillObj * proc)
         {
             int off  = PREP_SRLIST_OFFSET(x, y);
             int real = PREP_SRLIST_OFFSET(x, pproc->right_line + y);
-            u8 * src = off < 0x10
+            u8 *src = off < 0x10
                      ? OBJ_VRAM0 + VOBJ_SKILL_ICONS + 0x40 * off
                      : OBJ_VRAM0 + VOBJ_SKILL_ICONS + 0x40 * (off + 0x10);
 
@@ -62,13 +62,13 @@ STATIC_DECLAR void PutPrepSkill2IconSprits(struct ProcPrepSkillObj * proc)
     }
 }
 
-STATIC_DECLAR void PutPrepSkill2Suffix(struct ProcPrepSkillObj * proc)
+STATIC_DECLAR void PutPrepSkill2Suffix(struct ProcPrepSkillObj *proc)
 {
     int x, y;
     struct ProcPrepSkill2 * pproc = proc->proc_parent;
     struct SkillList * llist = GetUnitSkillList(proc->unit);
     struct PrepEquipSkillList * rlist = GetPrepEquipSkillList(proc->unit);
-    struct Unit * unit = pproc->unit;
+    struct Unit *unit = pproc->unit;
 
     /* Draw R-list suffix */
     for (y = 0; y < PREP_SRLIST_HEIGHT; y++)
@@ -125,7 +125,7 @@ STATIC_DECLAR void PutPrepSkill2Suffix(struct ProcPrepSkillObj * proc)
     }
 }
 
-STATIC_DECLAR void PrepSkillObj_OnInit(struct ProcPrepSkillObj * proc)
+STATIC_DECLAR void PrepSkillObj_OnInit(struct ProcPrepSkillObj *proc)
 {
     Decompress(Gfx_ObjSkill, OBJ_VRAM0 + SKILLOBJ_VOBJ);
     ApplyPalette(Pal_ObjSkill, SKILLOBJ_PAL + 0x10);
@@ -134,7 +134,7 @@ STATIC_DECLAR void PrepSkillObj_OnInit(struct ProcPrepSkillObj * proc)
     ApplyPalette(Pal_ObjWindow, OBJWINDOW_PAL + 0x10);
 }
 
-STATIC_DECLAR void PrepSkillObjMain(struct ProcPrepSkillObj * proc)
+STATIC_DECLAR void PrepSkillObjMain(struct ProcPrepSkillObj *proc)
 {
     if (proc->reload)
         ReloadPrepSkill2IconGfx(proc);
@@ -157,7 +157,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PrepSkillObj[] = {
 
 void NewPrepSkillObj(struct ProcPrepSkill2 * pproc)
 {
-    struct ProcPrepSkillObj * proc;
+    struct ProcPrepSkillObj *proc;
 
     proc = Proc_Find(ProcScr_PrepSkillObj);
 
@@ -176,7 +176,7 @@ void EndPrepSkillObj(void)
 
 void RegisterPrepSkillObjReload(void)
 {
-    struct ProcPrepSkillObj * proc;
+    struct ProcPrepSkillObj *proc;
     proc = Proc_Find(ProcScr_PrepSkillObj);
 
     if (proc)
@@ -185,7 +185,7 @@ void RegisterPrepSkillObjReload(void)
 
 void EnablePrepSkillObj(void)
 {
-    struct ProcPrepSkillObj * proc;
+    struct ProcPrepSkillObj *proc;
     proc = Proc_Find(ProcScr_PrepSkillObj);
 
     if (proc)
@@ -194,7 +194,7 @@ void EnablePrepSkillObj(void)
 
 void DisablePrepSkillObj(void)
 {
-    struct ProcPrepSkillObj * proc;
+    struct ProcPrepSkillObj *proc;
     proc = Proc_Find(ProcScr_PrepSkillObj);
 
     if (proc)
@@ -206,10 +206,10 @@ void PutPrepSkill2PopupBox(int x, int y, int w, int h, int priority)
     PrepItemDrawPopupBox(x, y, w, h, OAM2_PAL(OBJWINDOW_PAL) + OAM2_LAYER(priority) + OAM2_CHR(OBJWINDOW_VOBJ / 0x20));
 }
 
-void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 * proc)
+void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 *proc)
 {
     int x, y;
-    struct Unit * unit = proc->unit;
+    struct Unit *unit = proc->unit;
     struct SkillList * list = GetUnitSkillList(unit);
     ResetIconGraphics_();
     TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 1, 6), 0xA, 0x6, 0);
@@ -267,11 +267,11 @@ void PrepSkill2_InitTexts(void)
 }
 
 /* Skill desc */
-void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 * proc)
+void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 *proc)
 {
     u16 sid;
     int i;
-    const char * str;
+    const char *str;
 
     const int X = 0x5;
     const int Y = 0xD;
@@ -313,10 +313,10 @@ void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 * proc)
     BG_EnableSyncByMask(BG0_SYNC_BIT);
 }
 
-void PrepSkill2_DrawRightTopBar(struct ProcPrepSkill2 * proc)
+void PrepSkill2_DrawRightTopBar(struct ProcPrepSkill2 *proc)
 {
     struct Text * text = &gPrepUnitTexts[0x15];
-    struct Unit * unit = proc->unit;
+    struct Unit *unit = proc->unit;
     int color = AddSkill(unit, 0) == 0
               ? TEXT_COLOR_SYSTEM_WHITE
               : TEXT_COLOR_SYSTEM_GREEN;

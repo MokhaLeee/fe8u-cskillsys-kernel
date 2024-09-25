@@ -10,9 +10,9 @@
  * 
  * another side may block at C01
  */
-struct BanimSyncHandler * GetBanimSyncHandler_ComboAtk(struct Anim * anim)
+struct BanimSyncHandler * GetBanimSyncHandler_ComboAtk(struct Anim *anim)
 {
-    struct Unit * unit;
+    struct Unit *unit;
     int round;
 
     /* User defined switch */
@@ -44,7 +44,7 @@ struct BanimSyncHandler * GetBanimSyncHandler_ComboAtk(struct Anim * anim)
     extern struct {
         u8 pid, jid;
         u8 __pad__[2];
-        void * anim_conf;
+        void *anim_conf;
     } const * const gpCustomAnimeTable1;
 
     int i;

@@ -81,13 +81,13 @@ STATIC_DECLAR void RegisterCombatArtStatusInTargetSel(int sel_index)
         RegisterCombatArtStatus(gActiveUnit, calist->cid[sel_index - 1]);
 }
 
-STATIC_DECLAR bool TargetSelectionRework_HandleCombatArt(struct SelectTargetProc * proc)
+STATIC_DECLAR bool TargetSelectionRework_HandleCombatArt(struct SelectTargetProc *proc)
 {
     int i, new;
     s8 uid_pre;
     u16 repeated;
     struct SelectTarget * it, * cur = proc->currentTarget;
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
     u16 weapon = GetItemFormSlot(unit, gActionData.itemSlotIndex);
 
     repeated = gKeyStatusPtr->repeatedKeys;
@@ -162,7 +162,7 @@ update_combat_art:
     return true;
 }
 
-STATIC_DECLAR void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc * proc)
+STATIC_DECLAR void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc *proc)
 {
     struct SelectTarget * current = proc->currentTarget;
 
@@ -189,7 +189,7 @@ STATIC_DECLAR void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc
     PlaySoundEffect(0x67);
 }
 
-STATIC_DECLAR void TargetSelectionRework_Loop(struct SelectTargetProc * proc)
+STATIC_DECLAR void TargetSelectionRework_Loop(struct SelectTargetProc *proc)
 {
     int x, y;
     int action;
@@ -251,7 +251,7 @@ ProcPtr NewTargetSelectionRework(const struct SelectInfo * selectInfo)
     int i, cid;
     int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
     struct CombatArtList * list = GetCombatArtList(gActiveUnit, wtype);
-    struct SelectTargetProc * proc;
+    struct SelectTargetProc *proc;
 
     LockGame();
     proc = Proc_Start(ProcScr_TargetSelectionRework, PROC_TREE_3);

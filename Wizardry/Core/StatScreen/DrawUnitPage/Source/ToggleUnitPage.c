@@ -19,7 +19,7 @@ static inline void _growth_disp(int x, int y, int growth)
 
 STATIC_DECLAR void ToggleUnitPageGrowth(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     _growth_disp(18, 3,  GetUnitPowGrowth(unit));
     _growth_disp(18, 5,  GetUnitMagGrowth(unit));
@@ -34,7 +34,7 @@ STATIC_DECLAR void ToggleUnitPageGrowth(void)
 
 STATIC_DECLAR void ToggleUnitPageBm(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     DrawStatWithBarRework(0, 0x5, 0x1,
                     gBG0TilemapBuffer + TILEMAP_INDEX(12, 2),
@@ -105,7 +105,7 @@ STATIC_DECLAR void ToggleUnitPage(bool toggle)
 }
 
 LYN_REPLACE_CHECK(PageNumCtrl_DisplayBlinkIcons);
-void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
+void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc *proc)
 {
     bool blinking;
     static const u16 palidLut[3] = { 0xC, 0xE, 0xD }; // TODO: palid constants
@@ -196,7 +196,7 @@ void PageNumCtrl_DisplayBlinkIcons(struct StatScreenPageNameProc * proc)
 }
 
 LYN_REPLACE_CHECK(GlowBlendCtrl_OnLoop);
-void GlowBlendCtrl_OnLoop(struct StatScreenEffectProc * proc)
+void GlowBlendCtrl_OnLoop(struct StatScreenEffectProc *proc)
 {
     /**
      * Since BG1 may also consume chr resource on texts,

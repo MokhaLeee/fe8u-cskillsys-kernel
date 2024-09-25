@@ -1,11 +1,11 @@
 #include "common-chax.h"
 
-typedef int (* ClearUnitFunc_t)(struct Unit * unit);
+typedef int (* ClearUnitFunc_t)(struct Unit *unit);
 // extern const ClearUnitFunc_t gClearUnitHooks[];
 extern ClearUnitFunc_t const * const gpClearUnitHooks;
 
 LYN_REPLACE_CHECK(ClearUnit);
-void ClearUnit(struct Unit * unit)
+void ClearUnit(struct Unit *unit)
 {
     u8 id = unit->index;
 

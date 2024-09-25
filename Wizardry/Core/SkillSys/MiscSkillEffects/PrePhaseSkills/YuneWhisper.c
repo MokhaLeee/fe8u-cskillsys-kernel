@@ -7,23 +7,23 @@ struct ProcYuneWhisper {
     PROC_HEADER;
 
     int uid;
-    struct Unit * unit;
+    struct Unit *unit;
     struct SelectTarget * target;
 };
 
-STATIC_DECLAR void YuneWhisper_Init(struct ProcYuneWhisper * proc)
+STATIC_DECLAR void YuneWhisper_Init(struct ProcYuneWhisper *proc)
 {
     proc->uid = gPlaySt.faction + 1;
     proc->unit = NULL;
 }
 
-STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper * proc)
+STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper *proc)
 {
     int i;
     int res1, res2;
     while (proc->uid < (gPlaySt.faction + 0x40))
     {
-        struct Unit * unit = proc->unit = GetUnit(proc->uid++);
+        struct Unit *unit = proc->unit = GetUnit(proc->uid++);
         if (!UNIT_IS_VALID(unit))
             continue;
 
@@ -39,7 +39,7 @@ STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper * proc)
 
         for (i = 1; i < 0xC0; i++)
         {
-            struct Unit * unit_tar;
+            struct Unit *unit_tar;
 
             if (AreUnitsAllied(unit->index, i))
                 continue;
@@ -67,7 +67,7 @@ STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper * proc)
     }
 }
 
-STATIC_DECLAR void YuneWhisper_Exec(struct ProcYuneWhisper * proc)
+STATIC_DECLAR void YuneWhisper_Exec(struct ProcYuneWhisper *proc)
 {
     if (!UNIT_IS_VALID(proc->unit) || proc->uid >= (gPlaySt.faction + 0x40))
     {
@@ -77,7 +77,7 @@ STATIC_DECLAR void YuneWhisper_Exec(struct ProcYuneWhisper * proc)
 
     while (1)
     {
-        struct Unit * unit_tar = GetUnit(proc->target->uid);
+        struct Unit *unit_tar = GetUnit(proc->target->uid);
         proc->target = proc->target->next;
 
         if (UNIT_IS_VALID(unit_tar))

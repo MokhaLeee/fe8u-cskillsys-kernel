@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
-STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit * unit)
+STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit *unit)
 {
     int i, cnt;
     struct SkillList * list = GetUnitSkillList(unit);

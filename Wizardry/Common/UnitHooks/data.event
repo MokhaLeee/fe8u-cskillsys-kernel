@@ -7,18 +7,18 @@ gLoadUnitHooks:
     POIN StatDeuff_OnLoadUnit
     WORD 0 0 0 0
 
-gExternalBattleToUnitHook: // int (*)(struct BattleUnit * bu, struct Unit * unit);
+gExternalBattleToUnitHook: // int (*)(struct BattleUnit * bu, struct Unit *unit);
     WORD 0 0 0 0
 
-gExternalUnitToBattleHook: // int (*)(struct Unit * unit, struct BattleUnit * bu);
+gExternalUnitToBattleHook: // int (*)(struct Unit *unit, struct BattleUnit * bu);
     POIN StatDebuff_OnUnitToBattle
     POIN UnitToBattle_ExecNihilSkills
     WORD 0 0 0 0
 
-gCopyUnitHooks: // void (*)(struct Unit * from, struct Unit * to)
+gCopyUnitHooks: // void (*)(struct Unit *from, struct Unit *to)
     POIN StatDeuff_OnCopyUnit
     WORD 0 0 0 0
 
-gClearUnitHooks: // void (*)(struct Unit * unit)
+gClearUnitHooks: // void (*)(struct Unit *unit)
     POIN StatDeuff_OnClearUnit
     WORD 0 0 0 0

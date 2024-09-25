@@ -4,7 +4,7 @@
 #include "strmag.h"
 #include "constants/skills.h"
 
-int _GetUnitMagic(struct Unit * unit)
+int _GetUnitMagic(struct Unit *unit)
 {
     const StatusGetterFunc_t * it;
     int status = UNIT_MAG(unit);
@@ -15,7 +15,7 @@ int _GetUnitMagic(struct Unit * unit)
     return status;
 }
 
-int MagGetterSkills(int status, struct Unit * unit)
+int MagGetterSkills(int status, struct Unit *unit)
 {
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);

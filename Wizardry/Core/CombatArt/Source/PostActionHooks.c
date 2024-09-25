@@ -8,7 +8,7 @@
 STATIC_DECLAR void ExecCombatArtEffectAnim(ProcPtr proc)
 {
     int i;
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
     u8 cid = GetCombatArtInForce(unit);
     const struct CombatArtInfo * info;
 
@@ -30,7 +30,7 @@ STATIC_DECLAR void ExecCombatArtEffectAnim(ProcPtr proc)
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
         struct SelectTarget * starget = GetTarget(i);
-        struct Unit * tunit = GetUnit(starget->uid);
+        struct Unit *tunit = GetUnit(starget->uid);
         if (!UNIT_IS_VALID(tunit))
             continue;
 
@@ -49,7 +49,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_CombatArtPostActionEffect[] = {
 
 bool PostActionCombatArtEffect(ProcPtr parent)
 {
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
     u8 cid = GetCombatArtInForce(unit);
     const struct CombatArtInfo * info;
 

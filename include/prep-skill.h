@@ -18,9 +18,9 @@ enum ProcPrepSkill1Label {
     PL_PREPSKILL1_END,
 };
 
-void PrepSkill1_DrawLeftSkillIcon(struct ProcPrepSkill1 * proc);
+void PrepSkill1_DrawLeftSkillIcon(struct ProcPrepSkill1 *proc);
 void PrepSkill1_InitTexts(void);
-void PrepSkill1_DrawRightTopBar(struct ProcPrepSkill1 * proc);
+void PrepSkill1_DrawRightTopBar(struct ProcPrepSkill1 *proc);
 
 /* On select skills */
 enum PrepSkill2ScrollType {
@@ -31,7 +31,7 @@ enum PrepSkill2ScrollType {
 
 struct ProcPrepSkill2 {
     PROC_HEADER;
-    struct Unit * unit;
+    struct Unit *unit;
     u8 hand_pos;
     u8 hand_x, hand_y;
     u8 left_line, right_line;
@@ -83,7 +83,7 @@ enum PrepSkillObjConfigs {
 
 struct ProcPrepSkillObj {
     PROC_HEADER;
-    struct Unit * unit;
+    struct Unit *unit;
     bool active;
     bool reload;
 };
@@ -101,7 +101,7 @@ extern const u16 Pal_ObjSkill[];
 extern const u8 Gfx_ObjWindow[];
 extern const u16 Pal_ObjWindow[];
 
-void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 * proc);
+void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 *proc);
 void PrepSkill2_InitTexts(void);
-void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 * proc);
-void PrepSkill2_DrawRightTopBar(struct ProcPrepSkill2 * proc);
+void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 *proc);
+void PrepSkill2_DrawRightTopBar(struct ProcPrepSkill2 *proc);

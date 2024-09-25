@@ -2,7 +2,7 @@
 #include "weapon-range.h"
 
 LYN_REPLACE_CHECK(MakeTargetListForAdjacentHeal);
-void MakeTargetListForAdjacentHeal(struct Unit * unit)
+void MakeTargetListForAdjacentHeal(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -13,7 +13,7 @@ void MakeTargetListForAdjacentHeal(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForRangedHeal);
-void MakeTargetListForRangedHeal(struct Unit * unit)
+void MakeTargetListForRangedHeal(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -24,7 +24,7 @@ void MakeTargetListForRangedHeal(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForRestore);
-void MakeTargetListForRestore(struct Unit * unit)
+void MakeTargetListForRestore(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -35,7 +35,7 @@ void MakeTargetListForRestore(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForBarrier);
-void MakeTargetListForBarrier(struct Unit * unit)
+void MakeTargetListForBarrier(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -46,7 +46,7 @@ void MakeTargetListForBarrier(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForRescueStaff);
-void MakeTargetListForRescueStaff(struct Unit * unit)
+void MakeTargetListForRescueStaff(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -57,7 +57,7 @@ void MakeTargetListForRescueStaff(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForSilence);
-void MakeTargetListForSilence(struct Unit * unit)
+void MakeTargetListForSilence(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -68,7 +68,7 @@ void MakeTargetListForSilence(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForSleep);
-void MakeTargetListForSleep(struct Unit * unit)
+void MakeTargetListForSleep(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -79,7 +79,7 @@ void MakeTargetListForSleep(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForBerserk);
-void MakeTargetListForBerserk(struct Unit * unit)
+void MakeTargetListForBerserk(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -90,7 +90,7 @@ void MakeTargetListForBerserk(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForWarp);
-void MakeTargetListForWarp(struct Unit * unit)
+void MakeTargetListForWarp(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);
@@ -101,7 +101,7 @@ void MakeTargetListForWarp(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForHammerne);
-void MakeTargetListForHammerne(struct Unit * unit)
+void MakeTargetListForHammerne(struct Unit *unit)
 {
     gSubjectUnit = unit;
     InitTargets(unit->xPos, unit->yPos);

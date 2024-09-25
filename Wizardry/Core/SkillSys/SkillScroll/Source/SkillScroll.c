@@ -5,7 +5,7 @@
 #include "constants/texts.h"
 
 /* External hooks */
-char * GetSkillScrollItemName(int item)
+char *GetSkillScrollItemName(int item)
 {
     return GetSkillNameStr(ITEM_USES(item));
 }
@@ -41,7 +41,7 @@ static const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
     PROC_END
 };
 
-void ItemUseEffect_SkillScroll(struct Unit * unit)
+void ItemUseEffect_SkillScroll(struct Unit *unit)
 {
     gActionData.unk08 = -1;
     if (gpKernelDesigerConfig->gen_new_scroll == false)
@@ -57,7 +57,7 @@ void ItemUseEffect_SkillScroll(struct Unit * unit)
 
 void ItemUseAction_SkillScroll(ProcPtr proc)
 {
-    struct Unit * unit = GetUnit(gActionData.subjectIndex);
+    struct Unit *unit = GetUnit(gActionData.subjectIndex);
     int slot = gActionData.itemSlotIndex;
     int item = unit->items[slot];
 
@@ -81,16 +81,16 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
     NewPopup_VerySimple(MSG_SkillLearned, 0x5A, proc);
 }
 
-bool ItemUsbility_SkillScroll(struct Unit * unit, int item)
+bool ItemUsbility_SkillScroll(struct Unit *unit, int item)
 {
     return !IsSkillLearned(unit, ITEM_USES(item));
 }
 
 /* Prep item use */
-static void PrepItemUseScroll_OnDraw(struct ProcPrepItemUseJunaFruit * proc, int item, int x, int y)
+static void PrepItemUseScroll_OnDraw(struct ProcPrepItemUseJunaFruit *proc, int item, int x, int y)
 {
     int skill = ITEM_USES(item);
-    const char * str = GetStringFromIndex(MSG_SkillLearned);
+    const char *str = GetStringFromIndex(MSG_SkillLearned);
     struct Text * text = &gPrepItemTexts[TEXT_PREPITEM_POPUP];
     int icon = SKILL_ICON(skill);
     int width = GetStringTextLen(str);
@@ -113,7 +113,7 @@ static void PrepItemUseScroll_OnDraw(struct ProcPrepItemUseJunaFruit * proc, int
     proc->height = 2;
 }
 
-STATIC_DECLAR void PrepItemUseScroll_OnInit(struct ProcPrepItemUseJunaFruit * proc)
+STATIC_DECLAR void PrepItemUseScroll_OnInit(struct ProcPrepItemUseJunaFruit *proc)
 {
     struct ProcPrepItemUse * parent = proc->proc_parent;
 
@@ -126,7 +126,7 @@ STATIC_DECLAR void PrepItemUseScroll_OnInit(struct ProcPrepItemUseJunaFruit * pr
     PlaySoundEffect(0x5A);
 }
 
-STATIC_DECLAR void PrepItemUseScroll_OnEnd(struct ProcPrepItemUseJunaFruit * proc)
+STATIC_DECLAR void PrepItemUseScroll_OnEnd(struct ProcPrepItemUseJunaFruit *proc)
 {
     struct ProcPrepItemUse * parent = proc->proc_parent;
     AddSkill(parent->unit, ITEM_USES(parent->unit->items[parent->slot]));
@@ -141,12 +141,12 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PrepItemUseScroll[] = {
     PROC_END
 };
 
-void PrepItemEffect_SkillScroll(struct ProcPrepItemUse * proc, u16 item)
+void PrepItemEffect_SkillScroll(struct ProcPrepItemUse *proc, u16 item)
 {
     Proc_StartBlocking(ProcScr_PrepItemUseScroll, proc);
 }
 
-bool PrepItemUsbility_SkillScroll(struct Unit * unit, int item)
+bool PrepItemUsbility_SkillScroll(struct Unit *unit, int item)
 {
     if (gpKernelDesigerConfig->gen_new_scroll == false)
     {

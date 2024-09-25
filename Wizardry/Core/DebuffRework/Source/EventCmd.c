@@ -9,13 +9,13 @@ enum EventDebuffSubOps {
     EVSUBCMD_CLEAR_DEBUFF_AT,
 };
 
-u8 EventDebuffOperation(struct EventEngineProc * proc)
+u8 EventDebuffOperation(struct EventEngineProc *proc)
 {
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
     u8 subcmd = EVT_SUB_CMD(proc->pEventCurrent);
 
     int x, y, pid, debuff;
-    struct Unit * unit;
+    struct Unit *unit;
 
     switch (subcmd) {
     case EVSUBCMD_SET_DEBUFF:

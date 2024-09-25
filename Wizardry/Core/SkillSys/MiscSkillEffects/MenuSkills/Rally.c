@@ -7,13 +7,13 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
-STATIC_DECLAR void AddTargetForRally(struct Unit * unit)
+STATIC_DECLAR void AddTargetForRally(struct Unit *unit)
 {
     if (UNIT_ALIVE(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index))
         AddTarget(unit->xPos, unit->yPos, unit->index, 1);
 }
 
-STATIC_DECLAR void MakeTargetListForRally(struct Unit * unit)
+STATIC_DECLAR void MakeTargetListForRally(struct Unit *unit)
 {
     int x = unit->xPos;
     int y = unit->yPos;
@@ -78,7 +78,7 @@ static void callback_exec(ProcPtr proc)
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
-        struct Unit * unit = GetUnit(GetTarget(i)->uid);
+        struct Unit *unit = GetUnit(GetTarget(i)->uid);
         if (!UNIT_ALIVE(unit))
             continue;
 

@@ -3,10 +3,10 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-typedef int (* HealAmountGetterFunc_t)(int old, struct Unit * actor, struct Unit * target);
+typedef int (* HealAmountGetterFunc_t)(int old, struct Unit *actor, struct Unit *target);
 extern HealAmountGetterFunc_t const * const gpHealAmountGetters;
 
-static int HealAmountGetter(int base, struct Unit * actor, struct Unit * target)
+static int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
 {
     const HealAmountGetterFunc_t * it;
     int status = base;
@@ -19,7 +19,7 @@ static int HealAmountGetter(int base, struct Unit * actor, struct Unit * target)
 }
 
 LYN_REPLACE_CHECK(GetUnitItemHealAmount);
-int GetUnitItemHealAmount(struct Unit * unit, int item)
+int GetUnitItemHealAmount(struct Unit *unit, int item)
 {
     int result = 0;
 
@@ -57,8 +57,8 @@ void ExecStandardHeal(ProcPtr proc)
 {
     int amount;
 
-    struct Unit * unit_act = GetUnit(gActionData.subjectIndex);
-    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+    struct Unit *unit_act = GetUnit(gActionData.subjectIndex);
+    struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
 
     BattleInitItemEffect(unit_act, gActionData.itemSlotIndex);
 
@@ -88,8 +88,8 @@ void ExecFortify(ProcPtr proc)
     int amount;
     int targetCount;
 
-    struct Unit * unit_act = GetUnit(gActionData.subjectIndex);
-    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+    struct Unit *unit_act = GetUnit(gActionData.subjectIndex);
+    struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
 
     BattleInitItemEffect(unit_act,
         gActionData.itemSlotIndex);

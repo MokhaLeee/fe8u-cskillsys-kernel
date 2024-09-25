@@ -4,14 +4,14 @@
 
 #define LOCAL_TRACE 0
 
-STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
     u8 pid = argv[2];
-    struct Unit * unit = GetUnitFromCharId(pid);
+    struct Unit *unit = GetUnitFromCharId(pid);
 
     LTRACEF("sid %#x, pid %#x, unit %p", sid, pid, unit);
 
@@ -27,13 +27,13 @@ STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-STATIC_DECLAR u8 EventAddSkillOnActive(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventAddSkillOnActive(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
 
     if (argc < 2)
     {
@@ -47,15 +47,15 @@ STATIC_DECLAR u8 EventAddSkillOnActive(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-STATIC_DECLAR u8 EventAddSkillAt(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventAddSkillAt(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
     s16 x = argv[2];
     s16 y = argv[3];
-    struct Unit * unit = GetUnitAtPosition(x, y);
+    struct Unit *unit = GetUnitAtPosition(x, y);
 
     if (argc < 4)
     {
@@ -69,14 +69,14 @@ STATIC_DECLAR u8 EventAddSkillAt(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
     u8 pid = gEventSlots[0xC];
-    struct Unit * unit = GetUnitFromCharId(pid);
+    struct Unit *unit = GetUnitFromCharId(pid);
 
     if (argc < 2)
     {
@@ -90,14 +90,14 @@ STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
     u8 pid = argv[2];
-    struct Unit * unit = GetUnitFromCharId(pid);
+    struct Unit *unit = GetUnitFromCharId(pid);
 
     if (argc < 3)
     {
@@ -113,13 +113,13 @@ STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-STATIC_DECLAR u8 EventRemoveSkillOnActive(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventRemoveSkillOnActive(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
 
     if (argc < 2)
     {
@@ -136,15 +136,15 @@ STATIC_DECLAR u8 EventRemoveSkillOnActive(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-STATIC_DECLAR u8 EventRemoveSkillAt(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventRemoveSkillAt(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
     s16 x = argv[2];
     s16 y = argv[3];
-    struct Unit * unit = GetUnitAtPosition(x, y);
+    struct Unit *unit = GetUnitAtPosition(x, y);
 
     if (argc < 4)
     {
@@ -161,14 +161,14 @@ STATIC_DECLAR u8 EventRemoveSkillAt(struct EventEngineProc * proc)
     return EVC_ADVANCE_CONTINUE;
 }
 
-STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc * proc)
+STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc *proc)
 {
     u16 argc = EVT_CMD_LEN(proc->pEventCurrent);
-    const u16 * argv = proc->pEventCurrent;
+    const u16 *argv = proc->pEventCurrent;
 
     u16 sid = argv[1];
     u8 pid = gEventSlots[0xC];
-    struct Unit * unit = GetUnitFromCharId(pid);
+    struct Unit *unit = GetUnitFromCharId(pid);
 
     if (argc < 2)
     {
@@ -186,7 +186,7 @@ STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc * proc)
 }
 
 /* External hook */
-u8 EventSkillOperation(struct EventEngineProc * proc)
+u8 EventSkillOperation(struct EventEngineProc *proc)
 {
     switch (EVT_SUB_CMD(proc->pEventCurrent)) {
     case EVSUBCMD_ADD_SKILL:

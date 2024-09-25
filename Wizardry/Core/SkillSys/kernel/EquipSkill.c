@@ -24,7 +24,7 @@ STATIC_DECLAR void SetupPrepEquipReal(void)
             sPrepEquipSkillList.sid[sPrepEquipSkillList.amt++] = i;
 }
 
-STATIC_DECLAR void UpdatePrepEquipSkillList(struct Unit * unit)
+STATIC_DECLAR void UpdatePrepEquipSkillList(struct Unit *unit)
 {
     int i;
 
@@ -37,7 +37,7 @@ STATIC_DECLAR void UpdatePrepEquipSkillList(struct Unit * unit)
     SetupPrepEquipReal();
 }
 
-struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit * unit)
+struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit *unit)
 {
     if (!JudgeUnitList(unit, &sPrepEquipSkillList.header))
     {

@@ -24,7 +24,7 @@ FORCE_DECLARE static void callback_refrain(ProcPtr proc)
 
 bool PostActionAlertStance(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

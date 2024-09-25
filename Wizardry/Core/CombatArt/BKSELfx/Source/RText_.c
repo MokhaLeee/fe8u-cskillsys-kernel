@@ -2,7 +2,7 @@
 #include "combat-art.h"
 #include "help-box.h"
 
-void HbPopuplate_CombatArtBKSEL(struct HelpBoxProc * proc)
+void HbPopuplate_CombatArtBKSEL(struct HelpBoxProc *proc)
 {
     int cid = GetCombatArtInForce(gActiveUnit);
 
@@ -11,12 +11,12 @@ void HbPopuplate_CombatArtBKSEL(struct HelpBoxProc * proc)
     sHelpBoxType = NEW_HB_COMBAT_ART_BKSEL;
 }
 
-void HbPopuplate_NotCombatArtBKSEL(struct HelpBoxProc * proc)
+void HbPopuplate_NotCombatArtBKSEL(struct HelpBoxProc *proc)
 {
     sHelpBoxType = 0;
 }
 
-void HbRedirect_CombatArtBKSEL(struct HelpBoxProc * proc)
+void HbRedirect_CombatArtBKSEL(struct HelpBoxProc *proc)
 {
     int cid = GetCombatArtInForce(gActiveUnit);
     if (COMBART_VALID(cid))

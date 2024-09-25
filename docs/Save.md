@@ -22,10 +22,10 @@ SRAM space allocation is set in [SaveData](../Wizardry/Common/SaveData/data.even
     We have offered such APIs in [Reloc.event](../Data/Reloc.event) so that users may handler on their EMS function:
 
     ```c
-    extern void (* const gpMsa_Saver )(u8 * dst, const u32 size);
-    extern void (* const gpMsa_Loader)(u8 * src, const u32 size);
-    extern void (* const gpMsu_Saver )(u8 * dst, const u32 size);
-    extern void (* const gpMsu_Loader)(u8 * src, const u32 size);
+    extern void (* const gpMsa_Saver )(u8 *dst, const u32 size);
+    extern void (* const gpMsa_Loader)(u8 *src, const u32 size);
+    extern void (* const gpMsu_Saver )(u8 *dst, const u32 size);
+    extern void (* const gpMsu_Loader)(u8 *src, const u32 size);
     ```
 
     These hooks is set in [Reloc.event](../Data/Reloc.event), a [fixed pointer list](./Memory.md#L22), if a user has written his own functions (for example, `Demo_MsaSaver`, `Demo_MsaLoader`, `Demo_MsuSaver`, `Demo_MsuLoader`), he may insert them by:

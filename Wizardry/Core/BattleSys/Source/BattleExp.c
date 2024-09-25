@@ -5,7 +5,7 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(GetUnitExpLevel);
-int GetUnitExpLevel(struct Unit * unit)
+int GetUnitExpLevel(struct Unit *unit)
 {
     int base, bonus;
     base = unit->level;

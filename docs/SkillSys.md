@@ -40,8 +40,8 @@ As for RAM table, developers may use the following API to give unit quipable ski
 
 ```C
 #include "skill-system.h"
-int AddSkill(struct Unit * unit, const u16 sid);
-int RemoveSkill(struct Unit * unit, const u16 sid);
+int AddSkill(struct Unit *unit, const u16 sid);
+int RemoveSkill(struct Unit *unit, const u16 sid);
 ```
 
 We have also offered event macros to add quipable skill from event:
@@ -87,7 +87,7 @@ A skill need the following components:
 
 ```c
 struct SkillInfo {
-    const u8 * icon;
+    const u8 *icon;
     u16 name, desc;
 };
 ```

@@ -41,6 +41,6 @@ static inline struct NewBwl * GetNewBwl(u8 pid)
 // extern const s8 gClassPreLoadHiddenLevel[0x100];
 extern s8 const * const gpClassPreLoadHiddenLevel;
 
-void NewBwlRecordHiddenLevel(struct Unit * unit);
-int GetUnitHiddenLevel(struct Unit * unit);
-void UnitHiddenLevelPreLoad(struct Unit * unit);
+void NewBwlRecordHiddenLevel(struct Unit *unit);
+int GetUnitHiddenLevel(struct Unit *unit);
+void UnitHiddenLevelPreLoad(struct Unit *unit);

@@ -8,7 +8,7 @@ struct ProcKernelEventCaller {
     const EventScr * eventscr;
 };
 
-STATIC_DECLAR void KernelEventCaller_Ext(struct ProcKernelEventCaller * proc)
+STATIC_DECLAR void KernelEventCaller_Ext(struct ProcKernelEventCaller *proc)
 {
     CallEvent((const void *)proc->eventscr, proc->exec_type);
 }
@@ -23,7 +23,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_KernelEventCaller[] = {
 
 ProcPtr KernelCallEvent(const EventScr * eventscr, u8 exec_type, ProcPtr parent)
 {
-    struct ProcKernelEventCaller * proc;
+    struct ProcKernelEventCaller *proc;
 
     if (!parent)
     {

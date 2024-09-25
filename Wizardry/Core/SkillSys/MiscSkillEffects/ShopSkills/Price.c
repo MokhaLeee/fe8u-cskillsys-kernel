@@ -3,7 +3,7 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(GetItemPurchasePrice);
-u16 GetItemPurchasePrice(struct Unit * unit, int item)
+u16 GetItemPurchasePrice(struct Unit *unit, int item)
 {
     int cost = GetItemCost(item);
 

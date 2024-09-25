@@ -17,7 +17,7 @@ int GetUnitAidIconId(u32 attributes)
 }
 
 LYN_REPLACE_CHECK(GetUnitAffinityIcon);
-int GetUnitAffinityIcon(struct Unit * unit)
+int GetUnitAffinityIcon(struct Unit *unit)
 {
     int affinity = unit->pCharacterData->affinity;
     if (!affinity)
@@ -29,12 +29,12 @@ int GetUnitAffinityIcon(struct Unit * unit)
 LYN_REPLACE_CHECK(UpdateMenuItemPanel);
 void UpdateMenuItemPanel(int slot_or_item)
 {
-    struct MenuItemPanelProc * proc = Proc_Find(gProcCmd_MenuItemPanel);
-    u16 * bg_base = BG_GetMapBuffer(0) + proc->x + 0x20 * proc->y;
+    struct MenuItemPanelProc *proc = Proc_Find(gProcCmd_MenuItemPanel);
+    u16 *bg_base = BG_GetMapBuffer(0) + proc->x + 0x20 *proc->y;
     struct Text * texts = &proc->text[0];
-    struct Unit * unit = proc->unit;
+    struct Unit *unit = proc->unit;
     int i, item, color, icon_pal = proc->IconPalIndex;
-    char * str;
+    char *str;
 
     ClearText(&proc->text[0]);
     ClearText(&proc->text[1]);
@@ -132,13 +132,13 @@ void UpdateMenuItemPanel(int slot_or_item)
 }
 
 LYN_REPLACE_CHECK(DrawBattlePopup);
-void DrawBattlePopup(struct ProcEkrPopup * proc, int type, u32 priv)
+void DrawBattlePopup(struct ProcEkrPopup *proc, int type, u32 priv)
 {
-    const char * str;
+    const char *str;
     int width1, width2, width3, width_popupbox, width5, xcursor, tmpr0;
 
     struct Text * text;
-    struct Anim * anim;
+    struct Anim *anim;
 
     LZ77UnCompVram(Img_EkrPopup, (void *)BG_VRAM + 0x2000);
     LZ77UnCompWram(Tsa_EkrPopup, (void *)gEkrTsaBuffer);

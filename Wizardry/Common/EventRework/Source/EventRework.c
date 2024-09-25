@@ -2,7 +2,7 @@
 #include "event-rework.h"
 
 LYN_REPLACE_CHECK(GetUnitStructFromEventParameter);
-struct Unit * GetUnitStructFromEventParameter(s16 pid)
+struct Unit *GetUnitStructFromEventParameter(s16 pid)
 {
 #if CHAX
     if (pid <= CHAR_EVT_K_MAX)

@@ -6,10 +6,10 @@
 #define LOCAL_TRACE 0
 
 LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatLabels);
-void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
+void DrawPrepScreenItemUseStatLabels(struct Unit *unit)
 {
     int i;
-    char * str;
+    char *str;
     struct Text * text = gPrepItemTexts;
 
     for (i = 0; i < 8; i++)
@@ -101,7 +101,7 @@ void DrawPrepScreenItemUseStatLabels(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(DrawPrepScreenItemUseStatBars);
-void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
+void DrawPrepScreenItemUseStatBars(struct Unit *unit, int mask)
 {
     int ix, iy, stat_pack[8];
     UnpackUiBarPalette(2);
@@ -223,7 +223,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit* unit)
 }
 
 LYN_REPLACE_CHECK(PrepItemUseBooster_OnInit);
-void PrepItemUseBooster_OnInit(struct ProcPrepItemUseBooster * proc)
+void PrepItemUseBooster_OnInit(struct ProcPrepItemUseBooster *proc)
 {
     int i, item, msg;
     struct ProcPrepItemUse * parent = proc->proc_parent;

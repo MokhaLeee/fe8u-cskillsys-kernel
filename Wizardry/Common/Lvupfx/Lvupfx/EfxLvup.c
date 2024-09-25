@@ -21,7 +21,7 @@ STATIC_DECLAR const struct EfxLvupInfo NewEfxLvupInfos[] = {
     {-1, -1, 0}
 };
 
-STATIC_DECLAR void EkrLvup_InitStatusTextVanilla(struct ProcEkrLevelup * proc)
+STATIC_DECLAR void EkrLvup_InitStatusTextVanilla(struct ProcEkrLevelup *proc)
 {
     int i;
     struct Text * th, * th_base = gBanimText + EKRLVUP_STAT_MAX;
@@ -58,11 +58,11 @@ STATIC_DECLAR void EkrLvup_InitStatusTextVanilla(struct ProcEkrLevelup * proc)
 }
 
 LYN_REPLACE_CHECK(EkrLvup_InitStatusText);
-void EkrLvup_InitStatusText(struct ProcEkrLevelup * proc)
+void EkrLvup_InitStatusText(struct ProcEkrLevelup *proc)
 {
     int i;
     struct BattleUnit * bunit, * bunit2;
-    struct Unit * unit;
+    struct Unit *unit;
 
     if (proc->ais_main == NULL)
     {
@@ -128,7 +128,7 @@ void EkrLvup_InitStatusText(struct ProcEkrLevelup * proc)
 
     for (i = 0; i < EKRLVUP_STAT_MAX; i++)
     {
-        const char * str = GetStringFromIndex(NewEfxLvupInfos[i].msg);
+        const char *str = GetStringFromIndex(NewEfxLvupInfos[i].msg);
 
         InitText(&gBanimText[i], 3);
         Text_SetCursor(&gBanimText[i], 0);

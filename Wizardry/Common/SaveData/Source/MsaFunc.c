@@ -3,19 +3,19 @@
 #include "save-data.h"
 #include "strmag.h"
 
-void MSA_SavePlaySt(u8 * dst, const u32 size)
+void MSA_SavePlaySt(u8 *dst, const u32 size)
 {
     gPlaySt.time_saved = GetGameClock();
     WriteAndVerifySramFast(&gPlaySt, dst, sizeof(gPlaySt));
 }
 
-void MSA_LoadPlaySt(u8 * src, const u32 size)
+void MSA_LoadPlaySt(u8 *src, const u32 size)
 {
     ReadSramFast(src, &gPlaySt, sizeof(gPlaySt));
     SetGameTime(gPlaySt.time_saved);
 }
 
-void MSA_SaveBonusClaim(u8 * dst, const u32 size)
+void MSA_SaveBonusClaim(u8 *dst, const u32 size)
 {
     WriteAndVerifySramFast(
         &gBonusContentClaimFlags,
@@ -23,7 +23,7 @@ void MSA_SaveBonusClaim(u8 * dst, const u32 size)
         sizeof(gBonusContentClaimFlags));
 }
 
-void MSA_LoadBonusClaim(u8 * src, const u32 size)
+void MSA_LoadBonusClaim(u8 *src, const u32 size)
 {
     ReadSramFast(
         src,
@@ -31,31 +31,31 @@ void MSA_LoadBonusClaim(u8 * src, const u32 size)
         sizeof(gBonusContentClaimFlags));
 }
 
-void MSA_SaveWorldMap(u8 * dst, const u32 size)
+void MSA_SaveWorldMap(u8 *dst, const u32 size)
 {
     WriteWorldMapStuff(dst, &gGMData);
 }
 
-void MSA_LoadWorldMap(u8 * src, const u32 size)
+void MSA_LoadWorldMap(u8 *src, const u32 size)
 {
     ReadWorldMapStuff(src, &gGMData);
 }
 
-void MSA_SaveDungeon(u8 * dst, const u32 size)
+void MSA_SaveDungeon(u8 *dst, const u32 size)
 {
     struct Dungeon dungeon[2];
     SaveDungeonRecords(dungeon);
     WriteAndVerifySramFast(dungeon, dst, sizeof(dungeon));
 }
 
-void MSA_LoadDungeon(u8 * src, const u32 size)
+void MSA_LoadDungeon(u8 *src, const u32 size)
 {
     struct Dungeon dungeon[2];
     ReadSramFast(src, dungeon, sizeof(dungeon));
     LoadDungeonRecords(dungeon);
 }
 
-static void NewPackSaveUnit(struct Unit * src, struct EmsPackedSavUnit * dst)
+static void NewPackSaveUnit(struct Unit *src, struct EmsPackedSavUnit * dst)
 {
     int i;
     struct Unit tmp_unit;
@@ -104,7 +104,7 @@ static void NewPackSaveUnit(struct Unit * src, struct EmsPackedSavUnit * dst)
     dst->state = src->state;
 }
 
-static void NewUnpackSaveUnit(struct EmsPackedSavUnit * src, struct Unit * dst)
+static void NewUnpackSaveUnit(struct EmsPackedSavUnit * src, struct Unit *dst)
 {
     int i;
 
@@ -152,7 +152,7 @@ static void NewUnpackSaveUnit(struct EmsPackedSavUnit * src, struct Unit * dst)
         dst->yPos = -1;
 }
 
-void MSA_SaveUnits(u8 * dst, const u32 size)
+void MSA_SaveUnits(u8 *dst, const u32 size)
 {
     int i, amt = size / sizeof(struct EmsPackedSavUnit);
 
@@ -166,7 +166,7 @@ void MSA_SaveUnits(u8 * dst, const u32 size)
     }
 }
 
-void MSA_LoadUnits(u8 * src, const u32 size)
+void MSA_LoadUnits(u8 *src, const u32 size)
 {
     int i, amt = size / sizeof(struct EmsPackedSavUnit);
 

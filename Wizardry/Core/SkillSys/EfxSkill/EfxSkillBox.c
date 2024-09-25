@@ -9,9 +9,9 @@ struct ProcEfxskillbox {
     u16 sid;
     int timer;
     int msg;
-    const u8 * icon;
-    struct Anim * anim;
-    struct Anim * anim_icon, * anim_text, * anim_bg;
+    const u8 *icon;
+    struct Anim *anim;
+    struct Anim *anim_icon, *anim_text, *anim_bg;
     int skill_or_combatart;
     struct Text text;
 };
@@ -24,12 +24,12 @@ struct ProcEfxskillbox {
 
 #define TEXT_BG_OBJ_CHR 0x00
 
-STATIC_DECLAR void DrawEfxSkillName(struct ProcEfxskillbox * proc)
+STATIC_DECLAR void DrawEfxSkillName(struct ProcEfxskillbox *proc)
 {
     struct Font _font;
     struct Text * text = &proc->text;
     struct Font * font = &_font;
-    char * str;
+    char *str;
 
     ApplyPalette((u16 *)Pal_Text, 0x10 + TEXT_OBJ_PAL);
 
@@ -53,9 +53,9 @@ STATIC_DECLAR void DrawEfxSkillName(struct ProcEfxskillbox * proc)
     SetTextFont(NULL);
 }
 
-STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox * proc)
+STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox *proc)
 {
-    struct Anim * anim;
+    struct Anim *anim;
 
     LoadIconPalette(0, 0x10 + ICON_OBJ_PAL);
     Copy2dChr(proc->icon, OBJ_VRAM0 + ICON_OBJ_CHR * 0x20, 2, 2);
@@ -111,7 +111,7 @@ STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox * proc)
     proc->anim_bg = anim;
 }
 
-STATIC_DECLAR void EfxSkillBoxIdle(struct ProcEfxskillbox * proc)
+STATIC_DECLAR void EfxSkillBoxIdle(struct ProcEfxskillbox *proc)
 {
     if (proc->anim_text && proc->anim_text->state != 0)
         return;
@@ -133,9 +133,9 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EfxSkillBox[] = {
     PROC_END
 };
 
-void NewEfxSkillBox(struct Anim * anim, int msg, const u8 * icon, u16 sid, int skill_or_combatart)
+void NewEfxSkillBox(struct Anim *anim, int msg, const u8 *icon, u16 sid, int skill_or_combatart)
 {
-    struct ProcEfxskillbox * proc;
+    struct ProcEfxskillbox *proc;
     proc = Proc_Start(ProcScr_EfxSkillBox, PROC_TREE_3);
     proc->timer = 0;
     proc->anim = anim;

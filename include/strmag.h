@@ -25,7 +25,7 @@ static inline bool IsMagicAttack(struct BattleUnit * bu)
     return !!((IA_MAGICDAMAGE | IA_MAGIC) & bu->weaponAttributes);
 }
 
-static inline int GetUnitMaxMagic(struct Unit * unit)
+static inline int GetUnitMaxMagic(struct Unit *unit)
 {
     int status = gpMagicJInfos[UNIT_CLASS_ID(unit)].cap;
 
@@ -35,12 +35,12 @@ static inline int GetUnitMaxMagic(struct Unit * unit)
     return status;
 }
 
-static inline int GetUnitBaseMagic(struct Unit * unit)
+static inline int GetUnitBaseMagic(struct Unit *unit)
 {
     return gpMagicPInfos[UNIT_CHAR_ID(unit)].base + gpMagicJInfos[UNIT_CLASS_ID(unit)].base;
 }
 
-static inline int GetUnitBasicMagGrowth(struct Unit * unit)
+static inline int GetUnitBasicMagGrowth(struct Unit *unit)
 {
     return gpMagicPInfos[UNIT_CHAR_ID(unit)].growth;
 }
@@ -50,7 +50,7 @@ static inline int GetClassChgMagicBonus(u8 jid)
     return gpMagicJInfos[jid].bonus;
 }
 
-static inline int GetUnitMagic(struct Unit * unit)
+static inline int GetUnitMagic(struct Unit *unit)
 {
     return MagGetter(unit);
 }

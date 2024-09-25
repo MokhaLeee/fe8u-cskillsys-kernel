@@ -108,7 +108,7 @@ extern u16 BattleOrderSkills[BORDER_MAX];
 #define RegisterBattleOrderSkill(sid, type) (BattleOrderSkills[type] = (sid))
 
 int GetWeaponCost(struct BattleUnit * bu, u16 item);
-static inline int GetItemFormSlot(struct Unit * unit, int slot)
+static inline int GetItemFormSlot(struct Unit *unit, int slot)
 {
     switch (slot) {
     case 0:
@@ -216,7 +216,7 @@ extern struct LeaderShipConf const * const gpLeaderShipConf;
 extern u8 const * const gpLeaderShipPConf;
 extern u8 const * const gpLeaderShipJConf;
 
-int GetUnitLeaderShip(struct Unit * unit);
+int GetUnitLeaderShip(struct Unit *unit);
 void PreBattleCalcLeadershipBonus(struct BattleUnit * actor, struct BattleUnit * target);
 
 /**

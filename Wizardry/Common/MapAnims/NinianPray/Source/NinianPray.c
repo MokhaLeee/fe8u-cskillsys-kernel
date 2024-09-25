@@ -5,7 +5,7 @@ extern const struct EventSpriteAnimConf EventSpriteAnimConf_NinianPray;
 
 void StartNinianPrayfx(ProcPtr proc, int x, int y)
 {
-    struct ProcEventSpriteAnim * procfx;
+    struct ProcEventSpriteAnim *procfx;
     if (proc)
         procfx = Proc_StartBlocking(ProcScr_EventSpriteAnim, proc);
     else

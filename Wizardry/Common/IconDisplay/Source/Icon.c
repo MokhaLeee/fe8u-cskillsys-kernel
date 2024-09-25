@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "icon-rework.h"
 
-const u8 * GetIconGfx(u32 icon)
+const u8 *GetIconGfx(u32 icon)
 {
     if (ICON_SHEET(icon) < ICON_SHEET_AMT)
         return IconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
@@ -61,8 +61,8 @@ LYN_REPLACE_CHECK(GetIconTileIndex);
 u16 GetIconTileIndex(int icon)
 {
     int slot, tile;
-    const u8 * src;
-    u8 * dst;
+    const u8 *src;
+    u8 *dst;
 
     slot = GetIconUsedSlot(icon);
     if (slot != 0)
@@ -87,8 +87,8 @@ u16 GetIconTileIndex(int icon)
 LYN_REPLACE_CHECK(LoadIconObjectGraphics);
 void LoadIconObjectGraphics(int icon, int chr)
 {
-    const u8 * src = GetIconGfx(icon);
-    u8 * dst = OBJ_VRAM0 + CHR_SIZE * (chr & 0x3FF);
+    const u8 *src = GetIconGfx(icon);
+    u8 *dst = OBJ_VRAM0 + CHR_SIZE * (chr & 0x3FF);
 
     if (!src)
     {

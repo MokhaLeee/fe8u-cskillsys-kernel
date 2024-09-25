@@ -33,7 +33,7 @@ STATIC_DECLAR void CallEventThunderfx(ProcPtr proc)
 STATIC_DECLAR void SetThunderstormAoeDamage(ProcPtr proc)
 {
     int i;
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
 
@@ -46,7 +46,7 @@ STATIC_DECLAR void SetThunderstormAoeDamage(ProcPtr proc)
     {
         int hp;
         struct SelectTarget * starget = GetTarget(i);
-        struct Unit * tunit = GetUnit(starget->uid);
+        struct Unit *tunit = GetUnit(starget->uid);
         if (!UNIT_IS_VALID(tunit))
             continue;
 
@@ -98,7 +98,7 @@ STATIC_DECLAR const EventScr EventScr_CallThunderfxAtPosition[] = {
 
 bool PostActionThunderstorm(ProcPtr parent)
 {
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
 
     if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
         return false;

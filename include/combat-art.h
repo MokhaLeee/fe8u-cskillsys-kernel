@@ -8,7 +8,7 @@
 #define CA_WTYPE_ANY ((u8)(-1))
 
 struct CombatArtInfo {
-    const u8 * icon;
+    const u8 *icon;
     u16 name, desc;
 
     u8 wtype;
@@ -80,13 +80,13 @@ struct CombatArtStatus {
 
 extern struct CombatArtStatus gCombatArtStatus;
 
-u8 GetCombatArtInForce(struct Unit * unit);
-void RegisterCombatArtStatus(struct Unit * unit, u8 cid);
+u8 GetCombatArtInForce(struct Unit *unit);
+void RegisterCombatArtStatus(struct Unit *unit, u8 cid);
 void RegisterCombatArtHitted(void);
 void RegisterCombatArtTargetPos(u8 x, u8 y);
 void ResetCombatArtStatus(void);
-void SaveCombatArtStatus(u8 * dst, const u32 size);
-void LoadCombatArtStatus(u8 * src, const u32 size);
+void SaveCombatArtStatus(u8 *dst, const u32 size);
+void LoadCombatArtStatus(u8 *src, const u32 size);
 
 /* Combat-art list */
 #define COMBART_LIST_MAX_AMT 6
@@ -97,10 +97,10 @@ struct CombatArtList {
     u8 cid[COMBART_LIST_MAX_AMT];
 };
 
-struct CombatArtList * GetCombatArtList(struct Unit * unit, u8 wtype);
+struct CombatArtList * GetCombatArtList(struct Unit *unit, u8 wtype);
 void ResetCombatArtList(void);
 
-static inline struct CombatArtList * AutoGetCombatArtList(struct Unit * unit)
+static inline struct CombatArtList * AutoGetCombatArtList(struct Unit *unit)
 {
     return GetCombatArtList(unit, GetItemType(GetUnitEquippedWeapon(unit)));
 }
@@ -125,7 +125,7 @@ u8 GetCombatArtByTargetSelIndex(void);
 
 /* HelpBox related */
 void DrawHelpBoxCombatArtBkselLabels(void);
-void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro * proc);
+void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro *proc);
 
 /* EfxSkill */
 extern u8 const * const gpEfxCombatArtAnimPriority;
@@ -146,9 +146,9 @@ extern const struct MenuDef gCombatArtItemMenuDef;
 extern const struct SelectInfo gSelectInfoCombatArt;
 
 /* Misc */
-bool CanUnitPlayCombatArt(struct Unit * unit, u16 item);
-u8 GetBestRangeBonusCid(struct Unit * unit, u16 item);
-const u8 * GetCombatArtIcon(const u8 cid);
-int WeaponRangeGetterCombatArt(int range, struct Unit * unit, u16 item);
+bool CanUnitPlayCombatArt(struct Unit *unit, u16 item);
+u8 GetBestRangeBonusCid(struct Unit *unit, u16 item);
+const u8 *GetCombatArtIcon(const u8 cid);
+int WeaponRangeGetterCombatArt(int range, struct Unit *unit, u16 item);
 void PreBattleCalcCombatArt(struct BattleUnit * bu, struct BattleUnit * defender);
 bool PostActionCombatArtEffect(ProcPtr parent);

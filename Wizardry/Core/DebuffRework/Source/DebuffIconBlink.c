@@ -2,7 +2,7 @@
 #include "debuff.h"
 
 /* External on-draw functions */
-void PutUnitDanceRingBuffIcon(struct Unit * unit, int ix, int iy)
+void PutUnitDanceRingBuffIcon(struct Unit *unit, int ix, int iy)
 {
     const u16 obj[] = {
         2,

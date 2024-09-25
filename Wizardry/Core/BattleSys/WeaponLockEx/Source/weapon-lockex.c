@@ -2,7 +2,7 @@
 #include "weapon-lockex.h"
 #include "wpnlockex-internal.h"
 
-int CheckWeaponLockEx(struct Unit * unit, u16 item)
+int CheckWeaponLockEx(struct Unit *unit, u16 item)
 {
     int ret = 0;
     const struct WeaponLockExConf * it; 

@@ -4,7 +4,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-static void _SetPlusAndMinusStatDebuff(struct Unit * unit)
+static void _SetPlusAndMinusStatDebuff(struct Unit *unit)
 {
     SetUnitStatDebuff(unit, UNIT_STAT_BUFF_PLUSMINUS);
 }
@@ -15,7 +15,7 @@ bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         FORCE_DECLARE bool act_plus  = false;
         FORCE_DECLARE bool act_minus = false;
@@ -44,7 +44,7 @@ bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
             int _x = unit->xPos + gVecs_1x1[j].x;
             int _y = unit->yPos + gVecs_1x1[j].y;
 
-            struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+            struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
             if (!UNIT_IS_VALID(unit_ally))
                 continue;
 

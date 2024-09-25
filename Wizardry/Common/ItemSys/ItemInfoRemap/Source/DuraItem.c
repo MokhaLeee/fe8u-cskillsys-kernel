@@ -13,7 +13,7 @@ bool IsDuraItem(int item)
     }
 }
 
-char * GetDuraItemName(int item)
+char *GetDuraItemName(int item)
 {
     if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
         return GetSkillScrollItemName(item);

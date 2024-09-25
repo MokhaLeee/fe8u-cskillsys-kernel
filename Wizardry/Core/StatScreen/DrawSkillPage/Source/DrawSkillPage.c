@@ -20,7 +20,7 @@ void DisplayPage2(void)
     }
 }
 
-void StartSkillScreenHelp(int pageid, struct Proc * proc)
+void StartSkillScreenHelp(int pageid, struct Proc *proc)
 {
     switch (gpKernelDesigerConfig->skil_page_style) {
     case CONFIG_PAGE4_MOKHA_PLAN_A:
@@ -35,13 +35,13 @@ void StartSkillScreenHelp(int pageid, struct Proc * proc)
 }
 
 /* HelpBox API */
-void HbPopuplate_SkillPageCommon(struct HelpBoxProc * proc)
+void HbPopuplate_SkillPageCommon(struct HelpBoxProc *proc)
 {
     struct SkillList * list = GetUnitSkillList(gStatScreen.unit);
     proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
 }
 
-void HbRedirect_SkillPageCommon(struct HelpBoxProc * proc)
+void HbRedirect_SkillPageCommon(struct HelpBoxProc *proc)
 {
     if (proc->info->mid < GetUnitSkillList(gStatScreen.unit)->amt)
         return;
@@ -66,7 +66,7 @@ void HbRedirect_SkillPageCommon(struct HelpBoxProc * proc)
     }
 }
 
-void HbPopuplate_ArtPageCommon(struct HelpBoxProc * proc)
+void HbPopuplate_ArtPageCommon(struct HelpBoxProc *proc)
 {
     struct CombatArtList * list = AutoGetCombatArtList(gStatScreen.unit);
     int cid = list->cid[proc->info->mid];
@@ -76,7 +76,7 @@ void HbPopuplate_ArtPageCommon(struct HelpBoxProc * proc)
     sHelpBoxType = NEW_HB_COMBAT_ART_BKSEL;
 }
 
-void HbRedirect_ArtPageCommon(struct HelpBoxProc * proc)
+void HbRedirect_ArtPageCommon(struct HelpBoxProc *proc)
 {
     if (proc->info->mid < AutoGetCombatArtList(gStatScreen.unit)->amt)
         return;

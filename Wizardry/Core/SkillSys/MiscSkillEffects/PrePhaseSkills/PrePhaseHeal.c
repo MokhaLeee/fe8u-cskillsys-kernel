@@ -5,7 +5,7 @@
 #include "constants/skills.h"
 #include "strmag.h"
 
-FORCE_DECLARE static int has_ally(struct Unit * unit) 
+FORCE_DECLARE static int has_ally(struct Unit *unit) 
 {
     int i;
     for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
@@ -13,7 +13,7 @@ FORCE_DECLARE static int has_ally(struct Unit * unit)
         int _x = unit->xPos + gVecs_2x2[i].x;
         int _y = unit->yPos + gVecs_2x2[i].y;
 
-        struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+        struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit_ally))
             continue;
 
@@ -33,7 +33,7 @@ FORCE_DECLARE static int has_ally(struct Unit * unit)
     return false;
 }
 
-STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
+STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit *unit)
 {
     int ret = 0;
 
@@ -93,7 +93,7 @@ void MakeTerrainHealTargetList(int faction)
 
     for (i = faction + 1; i <= (faction + GetFactionUnitAmount(gPlaySt.faction)); i++)
     {
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
         int terrainId;
         int amount;
 

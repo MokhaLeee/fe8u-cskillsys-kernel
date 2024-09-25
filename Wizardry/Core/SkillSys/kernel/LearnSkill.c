@@ -20,7 +20,7 @@ void ResetUnitLearnedSkillLists(void)
 }
 
 /* SaveData */
-void SaveUnitLearnedSkillLists(u8 * dst, const u32 size)
+void SaveUnitLearnedSkillLists(u8 *dst, const u32 size)
 {
     Assert(size == sizeof(sLearnedSkillPLists));
 
@@ -28,14 +28,14 @@ void SaveUnitLearnedSkillLists(u8 * dst, const u32 size)
 }
 
 /* LoadData */
-void LoadUnitLearnedSkillLists(u8 * src, const u32 size)
+void LoadUnitLearnedSkillLists(u8 *src, const u32 size)
 {
     Assert(size == sizeof(sLearnedSkillPLists));
 
     ReadSramFast(src, sLearnedSkillPLists, size);
 }
 
-bool IsSkillLearned(struct Unit * unit, const u16 sid)
+bool IsSkillLearned(struct Unit *unit, const u16 sid)
 {
     u8 pid = UNIT_CHAR_ID(unit);
     if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
@@ -44,7 +44,7 @@ bool IsSkillLearned(struct Unit * unit, const u16 sid)
     return false;
 }
 
-void LearnSkill(struct Unit * unit, const u16 sid)
+void LearnSkill(struct Unit *unit, const u16 sid)
 {
     u8 pid = UNIT_CHAR_ID(unit);
 
@@ -56,7 +56,7 @@ void LearnSkill(struct Unit * unit, const u16 sid)
         _BIT_SET(sLearnedSkillPLists[pid].data, sid);
 }
 
-void ForgetSkill(struct Unit * unit, const u16 sid)
+void ForgetSkill(struct Unit *unit, const u16 sid)
 {
     u8 pid = UNIT_CHAR_ID(unit);
     if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)

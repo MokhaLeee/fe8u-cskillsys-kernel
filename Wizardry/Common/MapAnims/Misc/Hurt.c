@@ -6,35 +6,35 @@
 struct ProcMapAnimHurt {
     PROC_HEADER;
     u32 lock;
-    struct Unit * unit;
+    struct Unit *unit;
     int damage;
     void (* callback1)(ProcPtr);
     void (* callback2)(ProcPtr);
 };
 
-STATIC_DECLAR void MapAnimHurt_Init(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_Init(struct ProcMapAnimHurt *proc)
 {
     MapAnim_CommonInit();
 }
 
-STATIC_DECLAR void MapAnimHurt_MoveCamera(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_MoveCamera(struct ProcMapAnimHurt *proc)
 {
     EnsureCameraOntoPosition(proc, proc->unit->xPos, proc->unit->yPos);
 }
 
-STATIC_DECLAR void MapAnimHurt_ExecCallBack1(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_ExecCallBack1(struct ProcMapAnimHurt *proc)
 {
     if (proc->callback1)
         proc->callback1(proc);
 }
 
-STATIC_DECLAR void MapAnimHurt_ExecCallBack2(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_ExecCallBack2(struct ProcMapAnimHurt *proc)
 {
     if (proc->callback2)
         proc->callback2(proc);
 }
 
-STATIC_DECLAR void MapAnimHurt_ExecAnim(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_ExecAnim(struct ProcMapAnimHurt *proc)
 {
     proc->lock = GetGameLock();
 
@@ -42,18 +42,18 @@ STATIC_DECLAR void MapAnimHurt_ExecAnim(struct ProcMapAnimHurt * proc)
     BeginUnitCritDamageAnim(proc->unit, proc->damage);
 }
 
-STATIC_DECLAR void MapAnimHurt_Idle(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_Idle(struct ProcMapAnimHurt *proc)
 {
     if (proc->lock == GetGameLock())
         Proc_Break(proc);
 }
 
-STATIC_DECLAR void MapAnimHurt_ExecBmHeal(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_ExecBmHeal(struct ProcMapAnimHurt *proc)
 {
     AddUnitHp(proc->unit, -proc->damage);
 }
 
-STATIC_DECLAR void MapAnimHurt_End(struct ProcMapAnimHurt * proc)
+STATIC_DECLAR void MapAnimHurt_End(struct ProcMapAnimHurt *proc)
 {
     MapAnim_CommonEnd();
 }
@@ -76,9 +76,9 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimHurt[] = {
     PROC_END
 };
 
-void CallMapAnim_HurtExt(ProcPtr parent, struct Unit * unit, int damage, void (* callback1)(ProcPtr), void (* callback2)(ProcPtr))
+void CallMapAnim_HurtExt(ProcPtr parent, struct Unit *unit, int damage, void (* callback1)(ProcPtr), void (* callback2)(ProcPtr))
 {
-    struct ProcMapAnimHurt * proc;
+    struct ProcMapAnimHurt *proc;
 
     if (!parent)
         proc = Proc_Start(ProcScr_MapAnimHurt, PROC_TREE_3);
@@ -91,7 +91,7 @@ void CallMapAnim_HurtExt(ProcPtr parent, struct Unit * unit, int damage, void (*
     proc->callback2 = callback2;
 }
 
-void CallMapAnim_Hurt(ProcPtr parent, struct Unit * unit, int damage)
+void CallMapAnim_Hurt(ProcPtr parent, struct Unit *unit, int damage)
 {
     CallMapAnim_HurtExt(parent, unit, damage, NULL, NULL);
 }

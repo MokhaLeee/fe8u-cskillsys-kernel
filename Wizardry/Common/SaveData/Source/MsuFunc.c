@@ -5,89 +5,89 @@
 #include "debuff.h"
 #include "battle-system.h"
 
-void MSU_SavePlaySt(u8 * dst, const u32 size)
+void MSU_SavePlaySt(u8 *dst, const u32 size)
 {
     gPlaySt.time_saved = GetGameClock();
     WriteAndVerifySramFast(&gPlaySt, dst, sizeof(gPlaySt));
 }
 
-void MSU_LoadPlaySt(u8 * src, const u32 size)
+void MSU_LoadPlaySt(u8 *src, const u32 size)
 {
     ReadSramFast(src, &gPlaySt, sizeof(gPlaySt));
     SetGameTime(gPlaySt.time_saved);
 }
 
-void MSU_SaveAction(u8 * dst, const u32 size)
+void MSU_SaveAction(u8 *dst, const u32 size)
 {
     StoreRNStateToActionStruct();
     WriteAndVerifySramFast(&gActionData, dst, sizeof(struct ActionData));
 }
 
-void MSU_LoadAction(u8 * src, const u32 size)
+void MSU_LoadAction(u8 *src, const u32 size)
 {
     ReadSramFast(src, &gActionData, sizeof(struct ActionData));
     LoadRNStateFromActionStruct();
 }
 
-void MSU_SaveMenuMask(u8 * dst, const u32 size)
+void MSU_SaveMenuMask(u8 *dst, const u32 size)
 {
     u8 list[MENU_OVERRIDE_MAX];
     GetForceDisabledMenuItems(list);
     WriteAndVerifySramFast(list, dst, sizeof(list));
 }
 
-void MSU_LoadMenuMask(u8 * src, const u32 size)
+void MSU_LoadMenuMask(u8 *src, const u32 size)
 {
     u8 list[MENU_OVERRIDE_MAX];
     ReadSramFast(src, list, sizeof(list));
     SetForceDisabledMenuItems(list);
 }
 
-void MSU_SaveWorldMap(u8 * dst, const u32 size)
+void MSU_SaveWorldMap(u8 *dst, const u32 size)
 {
     WriteWorldMapStuff(dst, &gGMData);
 }
 
-void MSU_LoadWorldMap(u8 * src, const u32 size)
+void MSU_LoadWorldMap(u8 *src, const u32 size)
 {
     ReadWorldMapStuff(src, &gGMData);
 }
 
-void MSU_SaveDungeon(u8 * dst, const u32 size)
+void MSU_SaveDungeon(u8 *dst, const u32 size)
 {
     struct Dungeon dungeon[2];
     SaveDungeonRecords(dungeon);
     WriteAndVerifySramFast(dungeon, dst, sizeof(dungeon));
 }
 
-void MSU_LoadDungeon(u8 * src, const u32 size)
+void MSU_LoadDungeon(u8 *src, const u32 size)
 {
     struct Dungeon dungeon[2];
     ReadSramFast(src, dungeon, sizeof(dungeon));
     LoadDungeonRecords(dungeon);
 }
 
-void MSU_SaveDungeon2(u8 * dst, const u32 size)
+void MSU_SaveDungeon2(u8 *dst, const u32 size)
 {
     struct Dungeon dungeon;
     SaveDungeonState(&dungeon);
     WriteAndVerifySramFast(&dungeon, dst, sizeof(struct Dungeon));
 }
 
-void MSU_LoadDungeon2(u8 * src, const u32 size)
+void MSU_LoadDungeon2(u8 *src, const u32 size)
 {
     struct Dungeon dungeon;
     ReadSramFast(src, &dungeon, sizeof(struct Dungeon));
     LoadDungeonState(&dungeon);
 }
 
-void MSU_SaveEvtCounter(u8 * dst, const u32 size)
+void MSU_SaveEvtCounter(u8 *dst, const u32 size)
 {
     int val = GetEventSlotCounter();
     WriteAndVerifySramFast(&val, dst, sizeof(int));
 }
 
-void MSU_LoadEvtCounter(u8 * src, const u32 size)
+void MSU_LoadEvtCounter(u8 *src, const u32 size)
 {
     int val;
     ReadSramFast(src, &val, sizeof(int));
@@ -108,7 +108,7 @@ void MSU_LoadBonusClaimWIP(void)
     SetBonusContentClaimFlags(buf);
 }
 
-static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
+static void NewPackSuspandUnit(struct Unit *src, struct EmsPackedSusUnit * dst)
 {
     u32 i;
     struct Unit tmp_unit;
@@ -190,7 +190,7 @@ static void NewPackSuspandUnit(struct Unit * src, struct EmsPackedSusUnit * dst)
     dst->_u3B = src->_u3B;
 }
 
-static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit * dst)
+static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit *dst)
 {
     u32 i;
 
@@ -270,7 +270,7 @@ static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit * ds
         dst->yPos = -1;
 }
 
-void MSU_SaveBlueUnits(u8 * dst, const u32 size)
+void MSU_SaveBlueUnits(u8 *dst, const u32 size)
 {
     int i, amt = size / SIZE_OF_SUS_UNIT_PACK;
 
@@ -284,7 +284,7 @@ void MSU_SaveBlueUnits(u8 * dst, const u32 size)
     }
 }
 
-void MSU_LoadBlueUnits(u8 * src, const u32 size)
+void MSU_LoadBlueUnits(u8 *src, const u32 size)
 {
     int i, amt = size / SIZE_OF_SUS_UNIT_PACK;
 
@@ -298,7 +298,7 @@ void MSU_LoadBlueUnits(u8 * src, const u32 size)
     }
 }
 
-void MSU_SaveRedUnits(u8 * dst, const u32 size)
+void MSU_SaveRedUnits(u8 *dst, const u32 size)
 {
     int i, amt = size / SIZE_OF_SUS_UNIT_PACK;
 
@@ -312,7 +312,7 @@ void MSU_SaveRedUnits(u8 * dst, const u32 size)
     }
 }
 
-void MSU_LoadRedUnits(u8 * src, const u32 size)
+void MSU_LoadRedUnits(u8 *src, const u32 size)
 {
     int i, amt = size / SIZE_OF_SUS_UNIT_PACK;
 
@@ -326,7 +326,7 @@ void MSU_LoadRedUnits(u8 * src, const u32 size)
     }
 }
 
-void MSU_SaveGreenUnits(u8 * dst, const u32 size)
+void MSU_SaveGreenUnits(u8 *dst, const u32 size)
 {
     int i, amt = size / SIZE_OF_SUS_UNIT_PACK;
 
@@ -340,7 +340,7 @@ void MSU_SaveGreenUnits(u8 * dst, const u32 size)
     }
 }
 
-void MSU_LoadGreenUnits(u8 * src, const u32 size)
+void MSU_LoadGreenUnits(u8 *src, const u32 size)
 {
     int i, amt = size / SIZE_OF_SUS_UNIT_PACK;
 
@@ -354,61 +354,61 @@ void MSU_LoadGreenUnits(u8 * src, const u32 size)
     }
 }
 
-void MSU_SaveRedUnitExtSkills(u8 * dst, const u32 size)
+void MSU_SaveRedUnitExtSkills(u8 *dst, const u32 size)
 {
     int i, amt = size / 4;
 
     for (i = 1; i <= amt; i++)
     {
-        struct Unit * unit = GetUnit(i + FACTION_RED);
+        struct Unit *unit = GetUnit(i + FACTION_RED);
         WriteAndVerifySramFast(&unit->supports[3], dst, 4);
         dst += 4;
     }
 }
 
-void MSU_LoadRedUnitExtSkills(u8 * src, const u32 size)
+void MSU_LoadRedUnitExtSkills(u8 *src, const u32 size)
 {
     int i, amt = size / 4;
 
     for (i = 1; i <= amt; i++)
     {
-        struct Unit * unit = GetUnit(i + FACTION_RED);
+        struct Unit *unit = GetUnit(i + FACTION_RED);
         ReadSramFast(src, &unit->supports[3], 4);
         src += 4;
     }
 }
 
-void MSU_SaveGreenUnitExtSkills(u8 * dst, const u32 size)
+void MSU_SaveGreenUnitExtSkills(u8 *dst, const u32 size)
 {
     int i, amt = size / 4;
 
     for (i = 1; i <= amt; i++)
     {
-        struct Unit * unit = GetUnit(i + FACTION_GREEN);
+        struct Unit *unit = GetUnit(i + FACTION_GREEN);
         WriteAndVerifySramFast(&unit->supports[3], dst, 4);
         dst += 4;
     }
 }
 
-void MSU_LoadGreenUnitExtSkills(u8 * src, const u32 size)
+void MSU_LoadGreenUnitExtSkills(u8 *src, const u32 size)
 {
     int i, amt = size / 4;
 
     for (i = 1; i <= amt; i++)
     {
-        struct Unit * unit = GetUnit(i + FACTION_GREEN);
+        struct Unit *unit = GetUnit(i + FACTION_GREEN);
         ReadSramFast(src, &unit->supports[3], 4);
         src += 4;
     }
 }
 
-void MSU_SaveSelectionPos(u8 * dst, const u32 size)
+void MSU_SaveSelectionPos(u8 *dst, const u32 size)
 {
     Assert(size >= sizeof(gActiveUnitMoveOrigin));
     WriteAndVerifySramFast(&gActiveUnitMoveOrigin, dst, sizeof(gActiveUnitMoveOrigin));
 }
 
-void MSU_LoadSelectionPos(u8 * src, const u32 size)
+void MSU_LoadSelectionPos(u8 *src, const u32 size)
 {
     Assert(size >= (sizeof(gActiveUnitMoveOrigin) + sizeof(gBattleTargetPositionBackup)));
 

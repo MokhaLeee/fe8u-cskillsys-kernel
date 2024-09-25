@@ -2,13 +2,13 @@
 #include "debuff.h"
 #include "kernel-lib.h"
 
-void StartStatusHealEffect(struct Unit * unit, ProcPtr proc);
+void StartStatusHealEffect(struct Unit *unit, ProcPtr proc);
 
 LYN_REPLACE_CHECK(StatusDecayDisplay_Display);
-void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc * proc)
+void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc *proc)
 {
     struct SelectTarget * target = GetTarget(proc->unk_4C);
-    struct Unit * unit = GetUnit(gActionData.subjectIndex);
+    struct Unit *unit = GetUnit(gActionData.subjectIndex);
     int status = GetUnitStatusIndex(unit);
     proc->unk_58 = status;
 
@@ -27,7 +27,7 @@ void TickActiveFactionTurn(void)
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -72,7 +72,7 @@ void TickActiveFactionTurn(void)
         /* Blue buff */
         for (i = FACTION_BLUE + 1; i <= (FACTION_BLUE + CONFIG_UNIT_AMT_ALLY); i++)
         {
-            struct Unit * unit = GetUnit(i);
+            struct Unit *unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
@@ -86,7 +86,7 @@ void TickActiveFactionTurn(void)
         /* Red debuff */
         for (i = FACTION_RED + 1; i <= (FACTION_RED + CONFIG_UNIT_AMT_ENEMY); i++)
         {
-            struct Unit * unit = GetUnit(i);
+            struct Unit *unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
@@ -102,7 +102,7 @@ void TickActiveFactionTurn(void)
         /* Red buff */
         for (i = FACTION_RED + 1; i <= (FACTION_RED + CONFIG_UNIT_AMT_ENEMY); i++)
         {
-            struct Unit * unit = GetUnit(i);
+            struct Unit *unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
@@ -116,7 +116,7 @@ void TickActiveFactionTurn(void)
         /* Blue debuff */
         for (i = FACTION_BLUE + 1; i <= (FACTION_BLUE + CONFIG_UNIT_AMT_ALLY); i++)
         {
-            struct Unit * unit = GetUnit(i);
+            struct Unit *unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
@@ -130,7 +130,7 @@ void TickActiveFactionTurn(void)
         /* Green debuff */
         for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + CONFIG_UNIT_AMT_NPC); i++)
         {
-            struct Unit * unit = GetUnit(i);
+            struct Unit *unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 
@@ -146,7 +146,7 @@ void TickActiveFactionTurn(void)
         /* Green buff */
         for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + CONFIG_UNIT_AMT_NPC); i++)
         {
-            struct Unit * unit = GetUnit(i);
+            struct Unit *unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
 

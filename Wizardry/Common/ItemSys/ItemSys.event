@@ -7,7 +7,7 @@
 
 #include "ItemInfoRemap/ItemInfoRemap.event"
 
-/* int (*)(int old, struct Unit * actor, struct Unit * target); */
+/* int (*)(int old, struct Unit *actor, struct Unit *target); */
 ALIGN 4
 gHealAmountGetters:
     POIN HealAmount_SkillsGetter

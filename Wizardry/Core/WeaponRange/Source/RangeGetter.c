@@ -6,11 +6,11 @@
 
 #define LOCAL_TRACE 0
 
-typedef int (* WeaponRangeGetterFunc_t)(int old, struct Unit * unit, u16 item);
+typedef int (* WeaponRangeGetterFunc_t)(int old, struct Unit *unit, u16 item);
 // extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
 extern WeaponRangeGetterFunc_t const * const gpWeaponRangeGetters;
 
-int GetItemMinRangeRework(u16 item, struct Unit * unit)
+int GetItemMinRangeRework(u16 item, struct Unit *unit)
 {
     int status = GetItemMinRange(item);
 
@@ -24,7 +24,7 @@ int GetItemMinRangeRework(u16 item, struct Unit * unit)
     return status;
 }
 
-int GetItemMaxRangeRework(u16 item, struct Unit * unit)
+int GetItemMaxRangeRework(u16 item, struct Unit *unit)
 {
     const WeaponRangeGetterFunc_t * it;
     int status = GetItemMaxRange(item);
@@ -40,7 +40,7 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit)
     return status;
 }
 
-int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
+int WeaponRangeGetterSkills(int range, struct Unit *unit, u16 item)
 {
     switch (GetItemType(item)) {
     case ITYPE_STAFF:
@@ -94,7 +94,7 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
     return range;
 }
 
-int GetUnitMinRange(struct Unit * unit)
+int GetUnitMinRange(struct Unit *unit)
 {
     int i, item, _ret, ret = 1;
      for (i = 0; i < UNIT_ITEM_COUNT; i++)
@@ -114,7 +114,7 @@ int GetUnitMinRange(struct Unit * unit)
     return ret;
 }
 
-int GetUnitMaxRange(struct Unit * unit)
+int GetUnitMaxRange(struct Unit *unit)
 {
     int i, item, _ret, ret = 1;
      for (i = 0; i < UNIT_ITEM_COUNT; i++)

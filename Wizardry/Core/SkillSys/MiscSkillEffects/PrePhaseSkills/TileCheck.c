@@ -3,7 +3,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-static void TileCheck(struct Unit * unit)
+static void TileCheck(struct Unit *unit)
 {
 #if defined(SID_IndoorMarch) && (COMMON_SKILL_VALID(SID_IndoorMarch))
     if (SkillTester(unit, SID_IndoorMarch))
@@ -99,7 +99,7 @@ bool PrePhase_CheckTile(ProcPtr proc)
     case FACTION_BLUE:
         for (uid = FACTION_BLUE + 1; uid < FACTION_BLUE + 1 + CONFIG_UNIT_AMT_ALLY; uid++)
         {
-            struct Unit * unit = GetUnit(uid);
+            struct Unit *unit = GetUnit(uid);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -114,7 +114,7 @@ bool PrePhase_CheckTile(ProcPtr proc)
     case FACTION_GREEN:
         for (uid = FACTION_GREEN + 1; uid < FACTION_GREEN + 1 + CONFIG_UNIT_AMT_NPC; uid++)
         {
-            struct Unit * unit = GetUnit(uid);
+            struct Unit *unit = GetUnit(uid);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -129,7 +129,7 @@ bool PrePhase_CheckTile(ProcPtr proc)
     case FACTION_RED:
         for (uid = FACTION_RED + 1; uid < FACTION_RED + 1 + CONFIG_UNIT_AMT_ENEMY; uid++)
         {
-            struct Unit * unit = GetUnit(uid);
+            struct Unit *unit = GetUnit(uid);
 
             if (!UNIT_IS_VALID(unit))
                 continue;

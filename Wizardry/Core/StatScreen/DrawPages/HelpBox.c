@@ -4,7 +4,7 @@
 #include "skill-system.h"
 
 LYN_REPLACE_CHECK(StartStatScreenHelp);
-void StartStatScreenHelp(int pageid, struct Proc * proc)
+void StartStatScreenHelp(int pageid, struct Proc *proc)
 {
     LoadHelpBoxGfx(NULL, -1); // default
 
@@ -43,13 +43,13 @@ void DisplayPage(int pageid)
     gStatScreenDrawPages[pageid]();
 }
 
-void HbPopuplate_Page3Skill(struct HelpBoxProc * proc)
+void HbPopuplate_Page3Skill(struct HelpBoxProc *proc)
 {
     struct SkillList * list = GetUnitSkillList(gStatScreen.unit);
     proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
 }
 
-void HbRedirect_Page3Skill(struct HelpBoxProc * proc)
+void HbRedirect_Page3Skill(struct HelpBoxProc *proc)
 {
     if (proc->info->mid < GetUnitSkillList(gStatScreen.unit)->amt)
         return;

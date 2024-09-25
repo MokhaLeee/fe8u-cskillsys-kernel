@@ -7,15 +7,15 @@
 
 struct ProcEkrSkill {
     PROC_HEADER;
-    struct Anim * anim;
+    struct Anim *anim;
     u8 cid;
     u16 sid_atk;
     u16 sid_def;
 };
 
-STATIC_DECLAR void EfxSkillSetAnimState(struct Anim * anim)
+STATIC_DECLAR void EfxSkillSetAnimState(struct Anim *anim)
 {
-    struct Anim * anim1, * anim2;
+    struct Anim *anim1, *anim2;
 
     anim1 = gAnims[GetAnimPosition(anim) * 2];
     anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
@@ -30,9 +30,9 @@ STATIC_DECLAR void EfxSkillSetAnimState(struct Anim * anim)
     anim2->state |= ANIM_BIT_FROZEN;
 }
 
-STATIC_DECLAR void EfxSkillResetAnimState(struct Anim * anim)
+STATIC_DECLAR void EfxSkillResetAnimState(struct Anim *anim)
 {
-    struct Anim * anim1, * anim2;
+    struct Anim *anim1, *anim2;
 
     anim1 = gAnims[GetAnimPosition(anim) * 2];
     anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
@@ -47,17 +47,17 @@ STATIC_DECLAR void EfxSkillResetAnimState(struct Anim * anim)
     anim2->state &= ~ANIM_BIT_FROZEN;
 }
 
-STATIC_DECLAR void EkrSkillOnInit(struct ProcEkrSkill * proc)
+STATIC_DECLAR void EkrSkillOnInit(struct ProcEkrSkill *proc)
 {
     return;
 }
 
-STATIC_DECLAR void EkrSkillOnEnd(struct ProcEkrSkill * proc)
+STATIC_DECLAR void EkrSkillOnEnd(struct ProcEkrSkill *proc)
 {
     EfxSkillResetAnimState(proc->anim);
 }
 
-STATIC_DECLAR void NewEfxSkillForAttacker(struct ProcEkrSkill * proc)
+STATIC_DECLAR void NewEfxSkillForAttacker(struct ProcEkrSkill *proc)
 {
     if (COMBART_VALID(proc->cid))
         NewEfxCombatArt(proc->anim, proc->cid);
@@ -65,7 +65,7 @@ STATIC_DECLAR void NewEfxSkillForAttacker(struct ProcEkrSkill * proc)
         NewEfxSkill(proc->anim, proc->sid_atk);
 }
 
-STATIC_DECLAR void NewEfxSkillForDefener(struct ProcEkrSkill * proc)
+STATIC_DECLAR void NewEfxSkillForDefener(struct ProcEkrSkill *proc)
 {
     /* For now, far-far anim is not supported */
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
@@ -94,10 +94,10 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EkrSkill[] = {
 };
 
 /* Called from BanimHack */
-void NewEkrSkill(struct Anim * anim)
+void NewEkrSkill(struct Anim *anim)
 {
     int round;
-    struct ProcEkrSkill * proc;
+    struct ProcEkrSkill *proc;
     
     proc = Proc_Start(ProcScr_EkrSkill, PROC_TREE_3);
     proc->anim = anim;

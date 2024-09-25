@@ -3,14 +3,14 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int StatusGetterCheckCpas(int status, struct Unit * unit)
+int StatusGetterCheckCpas(int status, struct Unit *unit)
 {
     LIMIT_AREA(status, 0, 127);
     return status;
 }
 
 LYN_REPLACE_CHECK(GetUnitMagBy2Range);
-int GetUnitMagBy2Range(struct Unit * unit)
+int GetUnitMagBy2Range(struct Unit *unit)
 {
     int range;
 
@@ -26,7 +26,7 @@ int GetUnitMagBy2Range(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(GetUnitCurrentHp);
-int GetUnitCurrentHp(struct Unit * unit)
+int GetUnitCurrentHp(struct Unit *unit)
 {
     if (unit->curHP > GetUnitMaxHp(unit))
         unit->curHP = GetUnitMaxHp(unit);

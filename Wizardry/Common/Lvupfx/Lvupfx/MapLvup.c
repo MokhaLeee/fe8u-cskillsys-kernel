@@ -44,7 +44,7 @@ int GetManimLevelUpStatGain(int actor_id, int stat_num)
 LYN_REPLACE_CHECK(GetManimLevelUpBaseStat);
 int GetManimLevelUpBaseStat(int actor_id, int stat_num)
 {
-    struct Unit * unit = GetUnit(gManimSt.actor[actor_id].unit->index);
+    struct Unit *unit = GetUnit(gManimSt.actor[actor_id].unit->index);
 
     switch (stat_num) {
     case 0:

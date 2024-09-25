@@ -5,7 +5,7 @@
 #include "status-getter.h"
 
 LYN_REPLACE_CHECK(AiAttemptOffensiveAction);
-s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
+s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit *unit))
 {
     enum { TARGET_COUNT_TRIGLEVEL = 5, };
 
@@ -80,7 +80,7 @@ s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 
         for (uid = 1; uid < 0xC0; uid++)
         {
-            struct Unit * unit = GetUnit(uid);
+            struct Unit *unit = GetUnit(uid);
 
             if (!UNIT_IS_VALID(unit))
                 continue;

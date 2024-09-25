@@ -16,7 +16,7 @@ static inline int GetEnemyFaction(int faction)
     }
 }
 
-bool GetTeleportationRandomPosition(struct Unit * unit, struct Vec2 * out)
+bool GetTeleportationRandomPosition(struct Unit *unit, struct Vec2 * out)
 {
     #define RETRY_CNT 100
 
@@ -27,7 +27,7 @@ bool GetTeleportationRandomPosition(struct Unit * unit, struct Vec2 * out)
 
     for (i = 1; i < RETRY_CNT; i++)
     {
-        struct Unit * unit = GetUnit((enemy_faction + 1 + NextRN_N(CONFIG_UNIT_AMT_ALLY - 1)));
+        struct Unit *unit = GetUnit((enemy_faction + 1 + NextRN_N(CONFIG_UNIT_AMT_ALLY - 1)));
         if (!UNIT_IS_VALID(unit))
                 continue;
 

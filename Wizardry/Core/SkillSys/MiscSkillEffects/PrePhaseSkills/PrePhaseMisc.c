@@ -4,7 +4,7 @@
 bool PrePhsae_ClearMiscUES(ProcPtr proc)
 {
     int uid;
-    struct Unit * unit;
+    struct Unit *unit;
 
     for (uid = 1; uid < 0xC0; uid++)
     {

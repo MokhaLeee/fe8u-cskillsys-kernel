@@ -1,7 +1,7 @@
 #include "common-chax.h"
 
 LYN_REPLACE_CHECK(CpPerform_Cleanup);
-void CpPerform_Cleanup(struct CpPerformProc * proc)
+void CpPerform_Cleanup(struct CpPerformProc *proc)
 {
     UpdateAllPhaseHealingAIStatus();
 

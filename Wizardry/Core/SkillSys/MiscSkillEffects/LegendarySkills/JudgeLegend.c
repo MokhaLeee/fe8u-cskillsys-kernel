@@ -3,7 +3,7 @@
 #include "unit-expa.h"
 
 /* Only one lagendary skill is valid */
-STATIC_DECLAR u8 GetUnitLegendarySkill(struct Unit * unit)
+STATIC_DECLAR u8 GetUnitLegendarySkill(struct Unit *unit)
 {
     u16 sid;
     int i;
@@ -20,7 +20,7 @@ STATIC_DECLAR u8 GetUnitLegendarySkill(struct Unit * unit)
     return 0;
 }
 
-int TryActivateLegendSkill(struct Unit * unit, const u16 sid)
+int TryActivateLegendSkill(struct Unit *unit, const u16 sid)
 {
     /**
      * Legend skill can only be
@@ -37,7 +37,7 @@ int TryActivateLegendSkill(struct Unit * unit, const u16 sid)
     return 0;
 }
 
-bool SkillTesterLegendActivated(struct Unit * unit, const u16 sid)
+bool SkillTesterLegendActivated(struct Unit *unit, const u16 sid)
 {
     if (sid != GetUnitLegendarySkill(unit))
         return false;
@@ -51,7 +51,7 @@ bool SkillTesterLegendActivated(struct Unit * unit, const u16 sid)
 bool PrePhase_UpdateLengendSkillStatus(ProcPtr proc)
 {
     int i;
-    struct Unit * unit;
+    struct Unit *unit;
 
     /**
      * Legend skill can only be activated for one turn

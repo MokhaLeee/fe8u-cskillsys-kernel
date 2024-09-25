@@ -4,7 +4,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-static void _SetOathStatDebuf(struct Unit * unit)
+static void _SetOathStatDebuf(struct Unit *unit)
 {
 #if (defined(SID_OathStrength) && COMMON_SKILL_VALID(SID_OathStrength))
     if (SkillTester(unit, SID_OathStrength))
@@ -47,7 +47,7 @@ static void _SetOathStatDebuf(struct Unit * unit)
 #endif
 }
 
-static void _SetRouseStatDebuf(struct Unit * unit)
+static void _SetRouseStatDebuf(struct Unit *unit)
 {
 #if (defined(SID_RouseStrength) && COMMON_SKILL_VALID(SID_RouseStrength))
     if (SkillTester(unit, SID_RouseStrength))
@@ -98,7 +98,7 @@ bool PrePhsae_TickOathRouthSkillStatus(ProcPtr proc)
     {
         bool ally_in_range = false;
 
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
         if (!UNIT_IS_VALID(unit))
             continue;
 
@@ -107,7 +107,7 @@ bool PrePhsae_TickOathRouthSkillStatus(ProcPtr proc)
             int _x = unit->xPos + gVecs_1x1[j].x;
             int _y = unit->yPos + gVecs_1x1[j].y;
 
-            struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+            struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
             if (!UNIT_IS_VALID(unit_ally))
                 continue;
 

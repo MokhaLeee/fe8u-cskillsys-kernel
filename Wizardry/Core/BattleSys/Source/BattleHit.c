@@ -242,7 +242,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
             {
-                struct Unit * unit_tar = &gBattleTarget.unit;
+                struct Unit *unit_tar = &gBattleTarget.unit;
                 unit_tar->state |= US_DROP_ITEM;
             }
 #endif

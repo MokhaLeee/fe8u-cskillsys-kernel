@@ -29,11 +29,11 @@ enum icon_sheet_idx {
 
 extern u16 gIconReSts[MAX_SIMULTANEOUS_ICONS];
 
-typedef const u8 * (* IconGetterFunc)(const u8 index);
+typedef const u8 *(* IconGetterFunc)(const u8 index);
 extern const IconGetterFunc IconGetters[ICON_SHEET_AMT];
 
-const u8 * GetIconGfx(u32 icon);
-const u8 * IconGetterVanilla(const u8 index);
-const u8 * GetAffinIcon(const u8 index);
-const u8 * GetMountIcon(const u8 index);
-const u8 * GetWTypeIcon(const u8 index);
+const u8 *GetIconGfx(u32 icon);
+const u8 *IconGetterVanilla(const u8 index);
+const u8 *GetAffinIcon(const u8 index);
+const u8 *GetMountIcon(const u8 index);
+const u8 *GetWTypeIcon(const u8 index);

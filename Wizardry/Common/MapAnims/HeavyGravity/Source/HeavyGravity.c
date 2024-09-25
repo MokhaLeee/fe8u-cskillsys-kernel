@@ -19,7 +19,7 @@ struct HeavyGravityProc2 {
     int ix, iy;
 };
 
-STATIC_DECLAR void HeavyGravitySubAnimMain(struct HeavyGravityProc2 * proc)
+STATIC_DECLAR void HeavyGravitySubAnimMain(struct HeavyGravityProc2 *proc)
 {
     PutSprite(
         1,
@@ -47,7 +47,7 @@ STATIC_DECLAR bool HeavyGravitySubAnimExists(void)
     return !!Proc_Find(ProcScr_MapAnimHeavyGravitySubAnim);
 }
 
-STATIC_DECLAR void HeavyGravityExecSubAnim(struct HeavyGravityProc * proc)
+STATIC_DECLAR void HeavyGravityExecSubAnim(struct HeavyGravityProc *proc)
 {
     struct HeavyGravityProc2 * child;
 
@@ -76,7 +76,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimHeavyGravity[] = {
 
 void CallMapAnim_HeavyGravity(ProcPtr parent, int x, int y)
 {
-    struct HeavyGravityProc * proc;
+    struct HeavyGravityProc *proc;
 
     LTRACEF("x %d, y %d", x, y);
 

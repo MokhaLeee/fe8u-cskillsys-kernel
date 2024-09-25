@@ -2,7 +2,7 @@
 #include "strmag.h"
 #include "lvup.h"
 
-STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit * unit, struct BattleUnit * bu)
+STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct BattleUnit * bu)
 {
     if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit))
         bu->changeHP = KUNIT_MHP_MAX(unit) - unit->maxHP;
@@ -26,7 +26,7 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit * unit, struct Bat
         bu->changeLck = UNIT_LCK_MAX(unit) - unit->lck;
 }
 
-STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit * unit)
+STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
 {
     if (unit->maxHP > KUNIT_MHP_MAX(unit))
         unit->maxHP = KUNIT_MHP_MAX(unit);
@@ -57,7 +57,7 @@ STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(CheckBattleUnitStatCaps);
-void CheckBattleUnitStatCaps(struct Unit * unit, struct BattleUnit * bu)
+void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit * bu)
 {
     CheckBattleUnitStatCapsVanilla(unit, bu);
 
@@ -68,10 +68,10 @@ void CheckBattleUnitStatCaps(struct Unit * unit, struct BattleUnit * bu)
 
 #if 0
 LYN_UNUSED_REPLACE_CHECK(UnitCheckStatCaps);
-void UnitCheckStatCaps(struct Unit * unit)
+void UnitCheckStatCaps(struct Unit *unit)
 #else
 /* External hook to save spaces */
-void _UnitCheckStatCaps(struct Unit * unit)
+void _UnitCheckStatCaps(struct Unit *unit)
 #endif
 {
     UnitCheckStatCapsVanilla(unit);

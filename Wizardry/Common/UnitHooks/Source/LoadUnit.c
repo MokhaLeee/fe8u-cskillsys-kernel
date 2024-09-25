@@ -4,11 +4,11 @@
 #include "debuff.h"
 #include "skill-system.h"
 
-typedef int (* LoadUnitFunc_t)(struct Unit * unit, const struct CharacterData * character);
+typedef int (* LoadUnitFunc_t)(struct Unit *unit, const struct CharacterData * character);
 // extern const LoadUnitFunc_t gLoadUnitHooks[];
 extern LoadUnitFunc_t const * const gpLoadUnitHooks;
 
-void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const struct CharacterData * character)
+void UnitLoadStatsFromChracterVanilla(struct Unit *unit, const struct CharacterData * character)
 {
     int i;
 
@@ -36,7 +36,7 @@ void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const struct Character
 }
 
 LYN_REPLACE_CHECK(UnitLoadStatsFromChracter);
-void UnitLoadStatsFromChracter(struct Unit * unit, const struct CharacterData * character)
+void UnitLoadStatsFromChracter(struct Unit *unit, const struct CharacterData * character)
 {
     const LoadUnitFunc_t * it;
     for (it = gpLoadUnitHooks; *it; it++)
@@ -44,4 +44,4 @@ void UnitLoadStatsFromChracter(struct Unit * unit, const struct CharacterData * 
 }
 
 // For now, no need to hack this funcion
-// struct Unit * LoadUnit(const struct UnitDefinition * uDef)
+// struct Unit *LoadUnit(const struct UnitDefinition * uDef)

@@ -12,7 +12,7 @@ STATIC_DECLAR void SplitNumberDec2(int in, u8 out[])
     out[1] = in - out[0] * 10;
 }
 
-STATIC_DECLAR char * ItemRangeToString(int min, int max)
+STATIC_DECLAR char *ItemRangeToString(int min, int max)
 {
     int i, count = 0;
     u8 min_splited[2], max_splited[2];
@@ -58,7 +58,7 @@ STATIC_DECLAR char * ItemRangeToString(int min, int max)
 }
 
 LYN_REPLACE_CHECK(GetItemDisplayRangeString);
-char * GetItemDisplayRangeString(int item)
+char *GetItemDisplayRangeString(int item)
 {
     if ((ITEM_INDEX(item) == 0))
         return GetStringFromIndex(0x52B); /* "--\0" */
@@ -69,7 +69,7 @@ char * GetItemDisplayRangeString(int item)
     return ItemRangeToString(min, max);
 }
 
-const char * GetUnitDisplayRangeString(struct Unit * unit)
+const char *GetUnitDisplayRangeString(struct Unit *unit)
 {
     u16 item;
     int min, max;

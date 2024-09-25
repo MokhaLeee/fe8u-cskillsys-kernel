@@ -2,9 +2,9 @@
 #include "stat-screen.h"
 #include "help-box.h"
 
-void HbPopuplate_CombatArtBKSEL(struct HelpBoxProc * proc);
-void HbPopuplate_NotCombatArtBKSEL(struct HelpBoxProc * proc);
-void HbRedirect_CombatArtBKSEL(struct HelpBoxProc * proc);
+void HbPopuplate_CombatArtBKSEL(struct HelpBoxProc *proc);
+void HbPopuplate_NotCombatArtBKSEL(struct HelpBoxProc *proc);
+void HbRedirect_CombatArtBKSEL(struct HelpBoxProc *proc);
 
 static _DECL_INFO RText_S_0544, RText_S_0571, RText_S_055D, RText_S_055F, RText_S_CombatArt;
 static _DECL_INFO RText_E_0544, RText_E_055C, RText_E_0573, RText_E_055D, RText_E_055F, RText_E_0572, RText_E_CombatArt;

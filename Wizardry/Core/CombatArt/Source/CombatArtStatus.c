@@ -4,7 +4,7 @@
 extern struct CombatArtStatus gCombatArtStatus;
 
 /* Judge is combat-art effective */
-u8 GetCombatArtInForce(struct Unit * unit)
+u8 GetCombatArtInForce(struct Unit *unit)
 {
     if (gCombatArtStatus.uid != unit->index)
         return 0;
@@ -15,7 +15,7 @@ u8 GetCombatArtInForce(struct Unit * unit)
     return gCombatArtStatus.cid;
 }
 
-void RegisterCombatArtStatus(struct Unit * unit, u8 cid)
+void RegisterCombatArtStatus(struct Unit *unit, u8 cid)
 {
     gCombatArtStatus.uid = unit->index;
     gCombatArtStatus.cid = cid;
@@ -32,7 +32,7 @@ void ResetCombatArtStatus(void)
     CpuFill16(0, &gCombatArtStatus, sizeof(gCombatArtStatus));
 }
 
-void SaveCombatArtStatus(u8 * dst, const u32 size)
+void SaveCombatArtStatus(u8 *dst, const u32 size)
 {
     if (size < sizeof(gCombatArtStatus))
     {
@@ -46,7 +46,7 @@ void SaveCombatArtStatus(u8 * dst, const u32 size)
         sizeof(gCombatArtStatus));
 }
 
-void LoadCombatArtStatus(u8 * src, const u32 size)
+void LoadCombatArtStatus(u8 *src, const u32 size)
 {
     if (size < sizeof(gCombatArtStatus))
     {

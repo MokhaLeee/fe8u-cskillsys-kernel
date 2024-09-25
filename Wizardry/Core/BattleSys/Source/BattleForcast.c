@@ -5,7 +5,7 @@
 extern const u8 Gfx_BKSEL[12][0x80];
 
 LYN_REPLACE_CHECK(BattleForecastHitCountUpdate);
-void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int * usesCounter)
+void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 *hitsCounter, int *usesCounter)
 {
     int i;
     struct BattleUnit * target = (bu == &gBattleActor) ? &gBattleTarget : &gBattleActor;
@@ -26,7 +26,7 @@ void BattleForecastHitCountUpdate(struct BattleUnit * bu, u8 * hitsCounter, int 
 }
 
 LYN_REPLACE_CHECK(InitBattleForecastBattleStats);
-void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
+void InitBattleForecastBattleStats(struct BattleForecastProc *proc)
 {
     int usesA = GetItemUses(gBattleActor.weaponBefore);
     int usesB = GetItemUses(gBattleTarget.weaponBefore);

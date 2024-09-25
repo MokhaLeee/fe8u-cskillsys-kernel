@@ -20,7 +20,7 @@ void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit *
 #endif
 }
 
-int SpdGetterLegendSkills(int status, struct Unit * unit)
+int SpdGetterLegendSkills(int status, struct Unit *unit)
 {
 #if defined(SID_LEGEND_InoriAvo) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAvo))
     if (SkillTesterLegendActivated(unit, SID_LEGEND_InoriAvo))
@@ -30,7 +30,7 @@ int SpdGetterLegendSkills(int status, struct Unit * unit)
     return status;
 }
 
-int DefGetterLegendSkills(int status, struct Unit * unit)
+int DefGetterLegendSkills(int status, struct Unit *unit)
 {
 #if defined(SID_LEGEND_InoriDef) && (COMMON_SKILL_VALID(SID_LEGEND_InoriDef))
     if (SkillTesterLegendActivated(unit, SID_LEGEND_InoriDef))
@@ -40,7 +40,7 @@ int DefGetterLegendSkills(int status, struct Unit * unit)
     return status;
 }
 
-int ResGetterLegendSkills(int status, struct Unit * unit)
+int ResGetterLegendSkills(int status, struct Unit *unit)
 {
 #if defined(SID_LEGEND_InoriDef) && (COMMON_SKILL_VALID(SID_LEGEND_InoriDef))
     if (SkillTesterLegendActivated(unit, SID_LEGEND_InoriDef))

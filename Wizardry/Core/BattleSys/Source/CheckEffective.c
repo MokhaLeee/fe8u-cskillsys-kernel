@@ -5,7 +5,7 @@
 #include "class-types.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR bool CheckUnitNullEffective(struct Unit * unit)
+STATIC_DECLAR bool CheckUnitNullEffective(struct Unit *unit)
 {
     int i;
     u32 attributes = 0;
@@ -27,10 +27,10 @@ STATIC_DECLAR bool CheckUnitNullEffective(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(IsItemEffectiveAgainst);
-bool IsItemEffectiveAgainst(u16 item, struct Unit * unit)
+bool IsItemEffectiveAgainst(u16 item, struct Unit *unit)
 {
     int i, jid;
-    const u8 * list;
+    const u8 *list;
 
     if (!unit->pClassData)
         return false;
@@ -55,7 +55,7 @@ check_null_effective:
 }
 
 LYN_REPLACE_CHECK(IsUnitEffectiveAgainst);
-bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
+bool IsUnitEffectiveAgainst(struct Unit *actor, struct Unit *target)
 {
     int jid_target = UNIT_CLASS_ID(target);
 

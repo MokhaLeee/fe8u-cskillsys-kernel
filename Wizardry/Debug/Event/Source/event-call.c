@@ -5,7 +5,7 @@
 
 void PrologueCallBack(void)
 {
-    struct Unit * unit;
+    struct Unit *unit;
 
     unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
     if (unit)

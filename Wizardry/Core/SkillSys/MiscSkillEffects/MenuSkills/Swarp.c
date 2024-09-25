@@ -26,7 +26,7 @@ STATIC_DECLAR void PrepareMenuPositionSwap(void)
 
 static void set_target_unit(void)
 {
-    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+    struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
     gEventSlots[EVT_SLOT_2] = unit_tar->index;
 }
 
@@ -37,8 +37,8 @@ static void set_actor_unit(void)
 
 static void set_position(void) 
 {
-    struct Unit * unita = gActiveUnit;
-    struct Unit * unitb = GetUnit(gActionData.targetIndex);
+    struct Unit *unita = gActiveUnit;
+    struct Unit *unitb = GetUnit(gActionData.targetIndex);
 
     int x = unita->xPos;
     int y = unita->yPos;

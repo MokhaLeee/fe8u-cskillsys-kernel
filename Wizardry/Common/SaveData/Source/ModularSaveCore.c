@@ -144,8 +144,8 @@ void CopyGameSave(int index_src, int index_dst)
 {
     struct SaveBlockInfo chunk;
     size_t real, size;
-    u8 * src = GetSaveReadAddr(index_src);
-    u8 * dst = GetSaveWriteAddr(index_dst);
+    u8 *src = GetSaveReadAddr(index_src);
+    u8 *dst = GetSaveWriteAddr(index_dst);
 
     real = 0;
     size = EMS_SIZE_SAV;
@@ -212,7 +212,7 @@ void WriteGameSave(int slot)
     const struct EmsChunk * cur;
     struct SaveBlockInfo chunk;
     u16 chunk_size = EMS_SIZE_SAV; // SAV
-    u8 * dst = GetSaveWriteAddr(slot);
+    u8 *dst = GetSaveWriteAddr(slot);
     u32 offset = 0;
 
     InvalidateSuspendSave(SAVE_ID_SUSPEND);
@@ -244,7 +244,7 @@ LYN_REPLACE_CHECK(ReadGameSave);
 void ReadGameSave(int slot)
 {
     const struct EmsChunk * cur;
-    u8 * src = GetSaveReadAddr(slot);
+    u8 *src = GetSaveReadAddr(slot);
     u16 chunk_size = EMS_SIZE_SAV; // SAV
     u32 offset = 0;
 
@@ -276,7 +276,7 @@ void ReadGameSave(int slot)
 LYN_REPLACE_CHECK(WriteSuspendSave);
 void WriteSuspendSave(int slot)
 {
-    u8 * dst;
+    u8 *dst;
     const struct EmsChunk * cur;
     struct SaveBlockInfo chunk;
     u16 chunk_size = EMS_SIZE_SUS; // SUS
@@ -319,7 +319,7 @@ LYN_REPLACE_CHECK(ReadSuspendSave);
 void ReadSuspendSave(int slot)
 {
     const struct EmsChunk * cur;
-    u8 * src = GetSaveReadAddr(slot + gSuspendSaveIdOffset);
+    u8 *src = GetSaveReadAddr(slot + gSuspendSaveIdOffset);
     u16 chunk_size = EMS_SIZE_SUS; // SUS
     u32 offset = 0;
 

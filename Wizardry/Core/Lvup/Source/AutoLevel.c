@@ -3,7 +3,7 @@
 #include "lvup.h"
 
 LYN_REPLACE_CHECK(UnitAutolevelCore);
-void UnitAutolevelCore(struct Unit * unit, u8 classId, int levelCount)
+void UnitAutolevelCore(struct Unit *unit, u8 classId, int levelCount)
 {
     if (levelCount)
     {
@@ -21,7 +21,7 @@ void UnitAutolevelCore(struct Unit * unit, u8 classId, int levelCount)
 }
 
 LYN_REPLACE_CHECK(UnitAutolevelPenalty);
-void UnitAutolevelPenalty(struct Unit * unit, u8 classId, int levelCount)
+void UnitAutolevelPenalty(struct Unit *unit, u8 classId, int levelCount)
 {
     int level = unit->level;
 

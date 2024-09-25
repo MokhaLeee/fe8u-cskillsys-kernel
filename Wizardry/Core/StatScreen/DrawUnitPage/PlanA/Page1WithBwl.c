@@ -10,7 +10,7 @@
 
 static void DrawPage1TextCommon(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     PutDrawTextRework(
         &gStatScreen.text[STATSCREEN_TEXT_POWLABEL],
@@ -116,7 +116,7 @@ static void DrawPage1TextCommon(void)
 
 static void DrawPage1ValueReal(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     DrawStatWithBarRework(0, 0x5, 0x1,
                     gUiTmScratchA, gUiTmScratchC,
@@ -163,7 +163,7 @@ static void DrawPage1ValueReal(void)
 
 static void DrawPage1ValueCommon(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     DrawStatWithBarRework(7, 0xD, 0x1,
                     gUiTmScratchA, gUiTmScratchC,
@@ -304,10 +304,10 @@ static void DrawPage1BWL(void)
 
 static void DrawPage1Affin(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
     int affin = unit->pCharacterData->affinity;
 
-    const char * cn_affin[] = {
+    const char *cn_affin[] = {
         [UNIT_AFFIN_FIRE]    = "炎",
         [UNIT_AFFIN_THUNDER] = "雷",
         [UNIT_AFFIN_WIND]    = "風",

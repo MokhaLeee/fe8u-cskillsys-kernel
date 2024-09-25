@@ -2,7 +2,7 @@
 #include "debuff.h"
 #include "kernel-lib.h"
 
-bool UnitHasNegativeStatus(struct Unit * unit)
+bool UnitHasNegativeStatus(struct Unit *unit)
 {
     int i;
     const struct DebuffInfo * debuff;
@@ -26,7 +26,7 @@ bool UnitHasNegativeStatus(struct Unit * unit)
     return false;
 }
 
-bool UnitHasPositiveStatus(struct Unit * unit)
+bool UnitHasPositiveStatus(struct Unit *unit)
 {
     int i;
     const struct DebuffInfo * debuff;
@@ -50,7 +50,7 @@ bool UnitHasPositiveStatus(struct Unit * unit)
     return false;
 }
 
-void RemoveUnitNegativeStatus(struct Unit * unit)
+void RemoveUnitNegativeStatus(struct Unit *unit)
 {
     int i, debuff;
     struct StatDebuffStatus * sdebuff;
@@ -80,7 +80,7 @@ void RemoveUnitNegativeStatus(struct Unit * unit)
     }
 }
 
-void RemoveUnitPositiveStatus(struct Unit * unit)
+void RemoveUnitPositiveStatus(struct Unit *unit)
 {
     int i, debuff;
     struct StatDebuffStatus * sdebuff;

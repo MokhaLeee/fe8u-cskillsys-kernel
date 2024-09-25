@@ -6,35 +6,35 @@
 struct ProcMapAnimHeal {
     PROC_HEADER;
     u32 lock;
-    struct Unit * unit;
+    struct Unit *unit;
     int heal;
     void (* callback1)(ProcPtr);
     void (* callback2)(ProcPtr);
 };
 
-STATIC_DECLAR void MapAnimHeal_Init(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_Init(struct ProcMapAnimHeal *proc)
 {
     MapAnim_CommonInit();
 }
 
-STATIC_DECLAR void MapAnimHeal_MoveCamera(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_MoveCamera(struct ProcMapAnimHeal *proc)
 {
     EnsureCameraOntoPosition(proc, proc->unit->xPos, proc->unit->yPos);
 }
 
-STATIC_DECLAR void MapAnimHeal_ExecCallBack1(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_ExecCallBack1(struct ProcMapAnimHeal *proc)
 {
     if (proc->callback1)
         proc->callback1(proc);
 }
 
-STATIC_DECLAR void MapAnimHeal_ExecCallBack2(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_ExecCallBack2(struct ProcMapAnimHeal *proc)
 {
     if (proc->callback2)
         proc->callback2(proc);
 }
 
-STATIC_DECLAR void MapAnimHeal_ExecAnim(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_ExecAnim(struct ProcMapAnimHeal *proc)
 {
     proc->lock = GetGameLock();
 
@@ -42,18 +42,18 @@ STATIC_DECLAR void MapAnimHeal_ExecAnim(struct ProcMapAnimHeal * proc)
     BeginUnitHealAnim(proc->unit, proc->heal);
 }
 
-STATIC_DECLAR void MapAnimHeal_Idle(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_Idle(struct ProcMapAnimHeal *proc)
 {
     if (proc->lock == GetGameLock())
         Proc_Break(proc);
 }
 
-STATIC_DECLAR void MapAnimHeal_ExecBmHeal(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_ExecBmHeal(struct ProcMapAnimHeal *proc)
 {
     AddUnitHp(proc->unit, proc->heal);
 }
 
-STATIC_DECLAR void MapAnimHeal_End(struct ProcMapAnimHeal * proc)
+STATIC_DECLAR void MapAnimHeal_End(struct ProcMapAnimHeal *proc)
 {
     MapAnim_CommonEnd();
 }
@@ -77,9 +77,9 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimHeal[] = {
     PROC_END
 };
 
-void CallMapAnim_HealExt(ProcPtr parent, struct Unit * unit, int heal, void (* callback1)(ProcPtr), void (* callback2)(ProcPtr))
+void CallMapAnim_HealExt(ProcPtr parent, struct Unit *unit, int heal, void (* callback1)(ProcPtr), void (* callback2)(ProcPtr))
 {
-    struct ProcMapAnimHeal * proc;
+    struct ProcMapAnimHeal *proc;
 
     if (!parent)
         proc = Proc_Start(ProcScr_MapAnimHeal, PROC_TREE_3);
@@ -92,7 +92,7 @@ void CallMapAnim_HealExt(ProcPtr parent, struct Unit * unit, int heal, void (* c
     proc->callback2 = callback2;
 }
 
-void CallMapAnim_Heal(ProcPtr parent, struct Unit * unit, int heal)
+void CallMapAnim_Heal(ProcPtr parent, struct Unit *unit, int heal)
 {
     CallMapAnim_HealExt(parent, unit, heal, NULL, NULL);
 }

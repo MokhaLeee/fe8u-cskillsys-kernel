@@ -4,7 +4,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-static void _SetKeepUpStatDebuff(struct Unit * unit)
+static void _SetKeepUpStatDebuff(struct Unit *unit)
 {
     SetUnitStatDebuff(unit, UNIT_STAT_BUFF_KEEPUP);
 }
@@ -15,7 +15,7 @@ bool PrePhase_TickKeepUpSkillStatus(ProcPtr proc)
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
     {
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         FORCE_DECLARE bool keep_up  = false;
 
@@ -35,7 +35,7 @@ bool PrePhase_TickKeepUpSkillStatus(ProcPtr proc)
             int _x = unit->xPos + gVecs_3x3[j].x;
             int _y = unit->yPos + gVecs_3x3[j].y;
 
-            struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+            struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
             if (!UNIT_IS_VALID(unit_ally))
                 continue;
 

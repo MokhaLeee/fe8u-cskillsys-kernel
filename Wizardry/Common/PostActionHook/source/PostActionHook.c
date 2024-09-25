@@ -8,12 +8,12 @@ struct ProcPostAction {
     int index;
 };
 
-typedef bool (* PostActionFunc_t)(struct ProcPostAction * proc);
+typedef bool (* PostActionFunc_t)(struct ProcPostAction *proc);
 // extern const PostActionFunc_t gPostActionFuncs[];
 extern PostActionFunc_t const * const gpPostActionFuncs;
 
-STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction * proc);
-STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction * proc);
+STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction *proc);
+STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction *proc);
 
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionHook[] = {
     PROC_YIELD,
@@ -31,12 +31,12 @@ PROC_LABEL(2),
 
 void PostActionHook(ProcPtr parent)
 {
-    struct ProcPostAction * proc;
+    struct ProcPostAction *proc;
     proc = Proc_StartBlocking(ProcScr_PostActionHook, parent);
     proc->index = 0;
 }
 
-STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction * proc)
+STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction *proc)
 {
     int ret;
     PostActionFunc_t it;
@@ -62,13 +62,13 @@ post_action_done:
     Proc_Goto(proc, 2);
 }
 
-STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction * proc)
+STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction *proc)
 {
     /* Vanilla function at the hack entry */
     HandlePostActionTraps(proc);
 }
 
-bool PostActionPadFunc(struct ProcPostAction * proc)
+bool PostActionPadFunc(struct ProcPostAction *proc)
 {
     return false;
 }

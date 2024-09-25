@@ -2,9 +2,9 @@
 #include "prep-skill.h"
 #include "kernel-lib.h"
 
-void sub_8095C2C(struct ProcAtMenu * proc);
+void sub_8095C2C(struct ProcAtMenu *proc);
 
-void PrepScreenMenu_OnEquip(struct ProcAtMenu * proc)
+void PrepScreenMenu_OnEquip(struct ProcAtMenu *proc)
 {
     if (gpKernelDesigerConfig->equip_skill_en == false)
     {
@@ -18,7 +18,7 @@ void PrepScreenMenu_OnEquip(struct ProcAtMenu * proc)
 }
 
 LYN_REPLACE_CHECK(AtMenu_StartSubmenu);
-void AtMenu_StartSubmenu(struct ProcAtMenu * proc)
+void AtMenu_StartSubmenu(struct ProcAtMenu *proc)
 {
     sub_8095C2C(proc);
 

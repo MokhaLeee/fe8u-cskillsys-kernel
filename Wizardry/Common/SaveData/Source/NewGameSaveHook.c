@@ -3,7 +3,7 @@
 
 void NewGameSaveGenericHook(void)
 {
-    u8 * dst = GetSaveWriteAddr(gPlaySt.gameSaveSlot);
+    u8 *dst = GetSaveWriteAddr(gPlaySt.gameSaveSlot);
 
     SetGameTime(0);
     InitUnits();

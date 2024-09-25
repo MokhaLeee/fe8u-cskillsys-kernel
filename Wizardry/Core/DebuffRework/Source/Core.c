@@ -1,12 +1,12 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-int GetUnitStatusIndex(struct Unit * unit)
+int GetUnitStatusIndex(struct Unit *unit)
 {
     return UNIT_STATUS_INDEX(unit);
 }
 
-int GetUnitStatusDuration(struct Unit * unit)
+int GetUnitStatusDuration(struct Unit *unit)
 {
     if (0 != UNIT_STATUS_INDEX(unit))
         return UNIT_STATUS_DURATION(unit) + 1;
@@ -14,13 +14,13 @@ int GetUnitStatusDuration(struct Unit * unit)
     return 0;
 }
 
-void SetUnitStatusIndex(struct Unit * unit, int status)
+void SetUnitStatusIndex(struct Unit *unit, int status)
 {
     if (status < NEW_UNIT_STATUS_MAX)
         UNIT_STATUS_INDEX(unit) = status;
 }
 
-void SetUnitStatusDuration(struct Unit * unit, int duration)
+void SetUnitStatusDuration(struct Unit *unit, int duration)
 {
     if (duration == 0)
     {
@@ -39,7 +39,7 @@ void SetUnitStatusDuration(struct Unit * unit, int duration)
     UNIT_STATUS_DURATION(unit) = duration - 1;
 }
 
-int TryTickUnitStatusDuration(struct Unit * unit)
+int TryTickUnitStatusDuration(struct Unit *unit)
 {
     if (UNIT_STATUS_INDEX(unit) == 0)
         return -1;

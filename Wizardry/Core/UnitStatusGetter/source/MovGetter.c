@@ -4,7 +4,7 @@
 #include "debuff.h"
 #include "constants/skills.h"
 
-int _GetUnitMov(struct Unit * unit)
+int _GetUnitMov(struct Unit *unit)
 {
     const StatusGetterFunc_t * it;
     int status = UNIT_MOV(unit);
@@ -19,7 +19,7 @@ int _GetUnitMov(struct Unit * unit)
     return status;
 }
 
-int MovGetterSkills(int status, struct Unit * unit)
+int MovGetterSkills(int status, struct Unit *unit)
 {
     FORCE_DECLARE int cur_hp = GetUnitCurrentHp(unit);
     FORCE_DECLARE int max_hp = GetUnitMaxHp(unit);

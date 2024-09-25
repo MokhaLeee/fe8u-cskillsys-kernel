@@ -13,7 +13,7 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
 
     for (uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++)
     {
-        struct Unit * unit = GetUnit(uid);
+        struct Unit *unit = GetUnit(uid);
         if (!UNIT_IS_VALID(unit))
             continue;
 
@@ -32,7 +32,7 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
     if (AversaNight_eff == true)
     {
         u32 i, tuid;
-        struct Unit * tunit;
+        struct Unit *tunit;
 
         for (tuid = 1; tuid < 0xC0; tuid++)
         {
@@ -54,7 +54,7 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
                 int x = tunit->xPos + gVecs_2x2[i].x;
                 int y = tunit->yPos + gVecs_2x2[i].y;
 
-                struct Unit * tunit2 = GetUnitAtPosition(x, y);
+                struct Unit *tunit2 = GetUnitAtPosition(x, y);
                 if (!tunit2)
                     continue;
 

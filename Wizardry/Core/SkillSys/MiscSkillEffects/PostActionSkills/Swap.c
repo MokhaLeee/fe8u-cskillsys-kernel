@@ -7,7 +7,7 @@
 #include "constants/skills.h"
 #include "battle-system.h"
 
-STATIC_DECLAR void PostActionSwapSkipMenuIfNotAlly(struct EventEngineProc * proc)
+STATIC_DECLAR void PostActionSwapSkipMenuIfNotAlly(struct EventEngineProc *proc)
 {
     gEventSlots[EVT_SLOT_C] = false;
     if (UNIT_FACTION(gActiveUnit) == FACTION_BLUE)
@@ -22,7 +22,7 @@ STATIC_DECLAR void PreparePositionSwap(void)
 
 static void set_target_unit(void)
 {
-    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+    struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
     gEventSlots[EVT_SLOT_2] = unit_tar->index;
 }
 
@@ -33,8 +33,8 @@ static void set_actor_unit(void)
 
 static void set_position(void)
 {
-    struct Unit * unita = gActiveUnit;
-    struct Unit * unitb = GetUnit(gActionData.targetIndex);
+    struct Unit *unita = gActiveUnit;
+    struct Unit *unitb = GetUnit(gActionData.targetIndex);
 
     int x = unita->xPos;
     int y = unita->yPos;
@@ -90,8 +90,8 @@ LABEL(99)
 
 bool PostActionSwap(ProcPtr proc)
 {
-    struct Unit * unit = gActiveUnit;
-    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+    struct Unit *unit = gActiveUnit;
+    struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
 
     if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
         return false;

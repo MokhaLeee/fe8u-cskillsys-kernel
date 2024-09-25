@@ -11,7 +11,7 @@
 #define REG_DEBUG_FLAGS (vu16 *) 0x4FFF700
 #define REG_DEBUG_STRING (char *) 0x4FFF600
 
-void mgba_printf(int level, const char * ptr, ...)
+void mgba_printf(int level, const char *ptr, ...)
 {
     level &= 0x7;
     va_list args;

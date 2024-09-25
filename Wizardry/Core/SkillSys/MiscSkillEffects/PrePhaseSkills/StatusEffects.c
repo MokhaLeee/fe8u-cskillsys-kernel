@@ -10,11 +10,11 @@ struct ProcPrePhaseBoon {
     u8 uid;
 };
 
-STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon * proc)
+STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon *proc)
 {
     while (++proc->uid < (gPlaySt.faction + 0x40))
     {
-        struct Unit * unit = GetUnit(proc->uid);
+        struct Unit *unit = GetUnit(proc->uid);
         if (!UNIT_ALIVE(unit))
             continue;
 
@@ -29,13 +29,13 @@ STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon * proc
     Proc_Goto(proc, 99);
 }
 
-STATIC_DECLAR void PrePhaseBoon_ExecAnim(struct ProcPrePhaseBoon * proc)
+STATIC_DECLAR void PrePhaseBoon_ExecAnim(struct ProcPrePhaseBoon *proc)
 {
     EndAllMus();
     StartStatusHealEffect(GetUnit(proc->uid), proc);
 }
 
-STATIC_DECLAR void PrePhaseBoon_ClearStatus(struct ProcPrePhaseBoon * proc)
+STATIC_DECLAR void PrePhaseBoon_ClearStatus(struct ProcPrePhaseBoon *proc)
 {
     RemoveUnitNegativeStatus(GetUnit(proc->uid));
 }
@@ -57,7 +57,7 @@ PROC_LABEL(99),
 
 bool PrePhase_UnitStatusEffectSkills(ProcPtr parent)
 {
-    FORCE_DECLARE struct ProcPrePhaseBoon * proc;
+    FORCE_DECLARE struct ProcPrePhaseBoon *proc;
 
 #if defined(SID_Boon) && (COMMON_SKILL_VALID(SID_Boon))
     proc = Proc_StartBlocking(ProcScr_PrePhaseBoon, parent);

@@ -5,14 +5,14 @@
 
 extern struct CombatArtList sCombatArtList;
 
-STATIC_DECLAR void CalcCombatArtListExt(struct Unit * unit, u8 wtype)
+STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, u8 wtype)
 {
     int i;
     u8 cid;
     u16 item_index = ITEM_INDEX(GetUnitEquippedWeapon(unit));
     u8 pid = UNIT_CHAR_ID(unit);
     u8 jid = UNIT_CLASS_ID(unit);
-    u8 * tmp_list = gGenericBuffer;
+    u8 *tmp_list = gGenericBuffer;
 
     CpuFill16(0, tmp_list, 0x100);
 
@@ -109,7 +109,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit * unit, u8 wtype)
     }
 }
 
-struct CombatArtList * GetCombatArtList(struct Unit * unit, u8 wtype)
+struct CombatArtList * GetCombatArtList(struct Unit *unit, u8 wtype)
 {
     if (sCombatArtList.wtype != wtype || !JudgeUnitList(unit, &sCombatArtList.ref))
     {

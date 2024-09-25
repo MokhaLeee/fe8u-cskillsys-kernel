@@ -8,7 +8,7 @@
 STATIC_DECLAR bool BattleComboGenerateHit(void)
 {
     int ret;
-    FORCE_DECLARE struct Unit * unit;
+    FORCE_DECLARE struct Unit *unit;
     
     unit = GetUnit(gComboAtkList[GetBattleHitRound(gBattleHitIterator)].uid);
 

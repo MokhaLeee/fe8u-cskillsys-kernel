@@ -7,7 +7,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
-STATIC_DECLAR void PostActionReturnSkipMenuIfNotAlly(struct EventEngineProc * proc)
+STATIC_DECLAR void PostActionReturnSkipMenuIfNotAlly(struct EventEngineProc *proc)
 {
     ShowUnitSprite(gActiveUnit);
 

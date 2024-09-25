@@ -7,8 +7,8 @@
 STATIC_DECLAR void ExecSkillSavageBlowEffectAnim(ProcPtr proc)
 {
     int i;
-    struct Unit * unit = gActiveUnit;
-    struct Unit * target = GetUnit(gActionData.targetIndex);
+    struct Unit *unit = gActiveUnit;
+    struct Unit *target = GetUnit(gActionData.targetIndex);
 
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -37,7 +37,7 @@ STATIC_DECLAR void SkillSavageBlowPostAnimEffect(ProcPtr proc)
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
         struct SelectTarget * starget = GetTarget(i);
-        struct Unit * tunit = GetUnit(starget->uid);
+        struct Unit *tunit = GetUnit(starget->uid);
 
         if (tunit->curHP <= damage)
             tunit->curHP = 1;
@@ -57,8 +57,8 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillSavageBlow[] = {
 
 bool PostActionSkillSavageBlow(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit * unit = gActiveUnit;
-    FORCE_DECLARE struct Unit * target = GetUnit(gActionData.targetIndex);
+    FORCE_DECLARE struct Unit *unit = gActiveUnit;
+    FORCE_DECLARE struct Unit *target = GetUnit(gActionData.targetIndex);
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

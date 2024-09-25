@@ -5,7 +5,7 @@
 #include "skill-system.h"
 #include "prep-skill.h"
 
-STATIC_DECLAR void ProcPrepSkill1_OnEnd(struct ProcPrepSkill1 * proc)
+STATIC_DECLAR void ProcPrepSkill1_OnEnd(struct ProcPrepSkill1 *proc)
 {
     struct ProcAtMenu * pproc = proc->proc_parent;
     pproc->state = 1; /* Unit Select */
@@ -15,7 +15,7 @@ STATIC_DECLAR void ProcPrepSkill1_OnEnd(struct ProcPrepSkill1 * proc)
     EndMuralBackground_();
 }
 
-STATIC_DECLAR void ProcPrepSkill1_InitScreen(struct ProcPrepSkill1 * proc)
+STATIC_DECLAR void ProcPrepSkill1_InitScreen(struct ProcPrepSkill1 *proc)
 {
     u16 BgConfig[12] = {
         // tile offset    map offset    screen size
@@ -26,7 +26,7 @@ STATIC_DECLAR void ProcPrepSkill1_InitScreen(struct ProcPrepSkill1 * proc)
     };
 
     int i;
-    struct Unit * unit = GetUnitFromPrepList(proc->list_num_cur);
+    struct Unit *unit = GetUnitFromPrepList(proc->list_num_cur);
 
     SetupBackgrounds(BgConfig);
     SetDispEnable(0, 0, 0, 0, 0);
@@ -74,7 +74,7 @@ STATIC_DECLAR void ProcPrepSkill1_InitScreen(struct ProcPrepSkill1 * proc)
     RestartMuralBackground();
 }
 
-STATIC_DECLAR void ProcPrepSkill1_Idle(struct ProcPrepSkill1 * proc)
+STATIC_DECLAR void ProcPrepSkill1_Idle(struct ProcPrepSkill1 *proc)
 {
     if (proc->list_num_pre == proc->list_num_cur)
     {
@@ -195,7 +195,7 @@ STATIC_DECLAR void ProcPrepSkill1_Idle(struct ProcPrepSkill1 * proc)
     BG_SetPosition(BG_2, 0, proc->yDiff_cur - 0x18);
 }
 
-STATIC_DECLAR void ProcPrepSkill_OnGameStart(struct ProcPrepSkill1 * proc)
+STATIC_DECLAR void ProcPrepSkill_OnGameStart(struct ProcPrepSkill1 *proc)
 {
     struct ProcAtMenu * pproc = proc->proc_parent;
     pproc->end_prep = 1;
@@ -252,7 +252,7 @@ PROC_LABEL(PL_PREPSKILL1_END),
 
 void StartPrepEquipScreen(struct ProcAtMenu * pproc)
 {
-    struct ProcPrepSkill1 * proc;
+    struct ProcPrepSkill1 *proc;
     proc = Proc_StartBlocking(ProcScr_PrepSkillUnitSel, pproc);
 
     MakePrepUnitList();

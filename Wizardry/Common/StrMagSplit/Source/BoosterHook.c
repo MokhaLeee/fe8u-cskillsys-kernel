@@ -6,7 +6,7 @@
 extern struct Unit gStatGainSimUnit;
 
 LYN_REPLACE_CHECK(ApplyStatBoostItem);
-int ApplyStatBoostItem(struct Unit * unit, int itemIdx)
+int ApplyStatBoostItem(struct Unit *unit, int itemIdx)
 {
     const struct ItemStatBonuses * statBonuses;
 
@@ -91,7 +91,7 @@ int ApplyStatBoostItem(struct Unit * unit, int itemIdx)
 }
 
 LYN_REPLACE_CHECK(CanUnitUseStatGainItem);
-bool CanUnitUseStatGainItem(struct Unit * unit, int item)
+bool CanUnitUseStatGainItem(struct Unit *unit, int item)
 {
     const struct ItemStatBonuses * bonuses = GetItemStatBonuses(item);
 

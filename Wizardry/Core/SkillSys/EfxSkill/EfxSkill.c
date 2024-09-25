@@ -12,26 +12,26 @@ struct ProcEfxSkillRework {
     int timer;
     int frame;
     u16 sid;
-    struct Anim * anim;
-    const u16 * const * imgs;
-    const u16 * const * pals;
-    const u16 * const * tsas;
+    struct Anim *anim;
+    const u16 *const * imgs;
+    const u16 *const * pals;
+    const u16 *const * tsas;
     const s16 * frames;
 };
 
-STATIC_DECLAR void EfxSkillOnInit(struct ProcEfxSkillRework * proc)
+STATIC_DECLAR void EfxSkillOnInit(struct ProcEfxSkillRework *proc)
 {
     NewEfxSkillBox(proc->anim, 0,
         GetIconGfx(SKILL_ICON(proc->sid)), proc->sid, EFX_SKILL_BOX_SKILL);
 }
 
-STATIC_DECLAR void EfxCombatArtOnInit(struct ProcEfxSkillRework * proc)
+STATIC_DECLAR void EfxCombatArtOnInit(struct ProcEfxSkillRework *proc)
 {
     NewEfxSkillBox(proc->anim, 0,
         GetCombatArtIcon(proc->sid), proc->sid, EFX_SKILL_BOX_COMBATART);
 }
 
-STATIC_DECLAR void EfxSkillMain(struct ProcEfxSkillRework * proc)
+STATIC_DECLAR void EfxSkillMain(struct ProcEfxSkillRework *proc)
 {
     int ret;
     ret = EfxAdvanceFrameLut((void *)&proc->timer, (void *)&proc->frame, proc->frames);
@@ -57,7 +57,7 @@ STATIC_DECLAR void EfxSkillMain(struct ProcEfxSkillRework * proc)
         Proc_Break(proc);
 }
 
-STATIC_DECLAR void EfxSkillOnEnd(struct ProcEfxSkillRework * proc)
+STATIC_DECLAR void EfxSkillOnEnd(struct ProcEfxSkillRework *proc)
 {
     SpellFx_ClearBG1();
     SetDefaultColorEffects_();
@@ -85,10 +85,10 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EfxCombatArt[] = {
     PROC_END
 };
 
-void NewEfxSkill(struct Anim * anim, int sid)
+void NewEfxSkill(struct Anim *anim, int sid)
 {
     u16 sfx;
-    struct ProcEfxSkillRework * proc;
+    struct ProcEfxSkillRework *proc;
     const struct EfxAnimConf * conf = gpEfxSkillAnims[sid];
 
     if (!(COMMON_SKILL_VALID(sid)) || !IS_ROM_DATA(conf))
@@ -118,10 +118,10 @@ void NewEfxSkill(struct Anim * anim, int sid)
     }
 }
 
-void NewEfxCombatArt(struct Anim * anim, int cid)
+void NewEfxCombatArt(struct Anim *anim, int cid)
 {
     u16 sfx;
-    struct ProcEfxSkillRework * proc;
+    struct ProcEfxSkillRework *proc;
     const struct EfxAnimConf * conf = gpEfxCombatArtAnims[cid];
 
     if (!(COMBART_VALID(cid)) || !IS_ROM_DATA(conf))

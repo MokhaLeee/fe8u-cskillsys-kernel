@@ -25,7 +25,7 @@ u8 SupplyUsability(const struct MenuItemDef * def, int number)
 
     for (i = 0; i < ARRAY_COUNT_RANGE1x1; i++)
     {
-        struct Unit * unit = GetUnitAtPosition(
+        struct Unit *unit = GetUnitAtPosition(
             gActiveUnit->xPos + gVecs_1x1[i].x,
             gActiveUnit->yPos + gVecs_1x1[i].y
         );

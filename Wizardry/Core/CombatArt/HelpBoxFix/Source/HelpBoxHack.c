@@ -7,7 +7,7 @@ STATIC_DECLAR void sub_808A200_vanilla(const struct HelpBoxInfo * info)
     int wTextBox;
     int hTextBox;
 
-    struct HelpBoxProc * proc = Proc_Find(ProcScr_Helpbox_bug_08A01678);
+    struct HelpBoxProc *proc = Proc_Find(ProcScr_Helpbox_bug_08A01678);
 
     if (!proc)
     {
@@ -52,7 +52,7 @@ void sub_808A200(const struct HelpBoxInfo * info)
 }
 
 LYN_REPLACE_CHECK(HelpBoxSetupstringLines);
-void HelpBoxSetupstringLines(struct ProcHelpBoxIntro * proc)
+void HelpBoxSetupstringLines(struct ProcHelpBoxIntro *proc)
 {
     int item = proc->item;
 
@@ -105,7 +105,7 @@ void HelpBoxSetupstringLines(struct ProcHelpBoxIntro * proc)
 }
 
 LYN_REPLACE_CHECK(HelpBoxDrawstring);
-void HelpBoxDrawstring(struct ProcHelpBoxIntro * proc)
+void HelpBoxDrawstring(struct ProcHelpBoxIntro *proc)
 {
     int item = proc->item;
     SetTextFont(&gHelpBoxSt.font);
@@ -165,7 +165,7 @@ int sub_808A454(int item) {
 }
 
 LYN_REPLACE_CHECK(ApplyHelpBoxContentSize);
-void ApplyHelpBoxContentSize(struct HelpBoxProc* proc, int width, int height)
+void ApplyHelpBoxContentSize(struct HelpBoxProc*proc, int width, int height)
 {
     width = 0xF0 & (width + 15); // align to 16 pixel multiple
 
@@ -219,7 +219,7 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc* proc, int width, int height)
 LYN_REPLACE_CHECK(StartHelpBoxExt);
 void StartHelpBoxExt(const struct HelpBoxInfo * info, int unk)
 {
-    struct HelpBoxProc* proc;
+    struct HelpBoxProc*proc;
     int wContent, hContent;
 
     proc = (void*) Proc_Find(gProcScr_HelpBox);

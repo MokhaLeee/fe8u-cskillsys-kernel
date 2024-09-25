@@ -81,13 +81,13 @@ struct UnknownBMUSAilmentProc {
     /* 58 */ int unk_58;
 };
 
-void ForEachUnitInRange(void(* func)(struct Unit * unit));
-void AddUnitToTargetListIfNotAllied(struct Unit * unit);
+void ForEachUnitInRange(void(* func)(struct Unit *unit));
+void AddUnitToTargetListIfNotAllied(struct Unit *unit);
 extern struct Struct030017A0 gDungeonState;
 void SetupBattleMOVEUNITs(void);
-void StartStatusHealEffect(struct Unit * unit, ProcPtr proc);
-extern const u16 * sUiFramePaletteLookup[];
-extern const u16 * sStatBarPaletteLookup[];
+void StartStatusHealEffect(struct Unit *unit, ProcPtr proc);
+extern const u16 *sUiFramePaletteLookup[];
+extern const u16 *sStatBarPaletteLookup[];
 
 struct WeaponTriangleRule {
     s8 attackerWeaponType;
@@ -98,26 +98,26 @@ struct WeaponTriangleRule {
 extern const struct WeaponTriangleRule sWeaponTriangleRules[];
 
 extern struct Text gPrepUnitTexts[];
-void PrepUnit_DrawSMSAndObjs(struct ProcPrepUnit * proc);
-void PrepUnit_InitSMS(struct ProcPrepUnit * proc);
-void PrepUnit_DrawUnitListNames(struct ProcPrepUnit * proc, int line);
+void PrepUnit_DrawSMSAndObjs(struct ProcPrepUnit *proc);
+void PrepUnit_InitSMS(struct ProcPrepUnit *proc);
+void PrepUnit_DrawUnitListNames(struct ProcPrepUnit *proc, int line);
 void PrepUnit_InitGfx(void);
-void PrepUnit_DrawUnitItems(struct Unit * unit);
-void PrepUnit_DrawLeftUnitName(struct Unit * unit);
-void PrepUnit_DrawLeftUnitNameCur(struct ProcPrepUnit * proc);
-s8 ShouldPrepUnitMenuScroll(struct ProcPrepUnit * proc);
-void sub_809AE10(struct ProcPrepUnit * proc);
+void PrepUnit_DrawUnitItems(struct Unit *unit);
+void PrepUnit_DrawLeftUnitName(struct Unit *unit);
+void PrepUnit_DrawLeftUnitNameCur(struct ProcPrepUnit *proc);
+s8 ShouldPrepUnitMenuScroll(struct ProcPrepUnit *proc);
+void sub_809AE10(struct ProcPrepUnit *proc);
 void PrepUpdateMenuTsaScroll(int val);
 void PrepUnitDisableDisp(void);
 void PrepUnitEnableDisp(void);
-void sub_809B504(struct ProcPrepUnit * proc);
+void sub_809B504(struct ProcPrepUnit *proc);
 void sub_809B014(void);
-void sub_809B520(struct ProcPrepUnit * proc);
+void sub_809B520(struct ProcPrepUnit *proc);
 
 struct CpPerformProc {
     /* 00 */ PROC_HEADER;
 
-    /* 2C */ s8 (* func)(struct CpPerformProc * proc);
+    /* 2C */ s8 (* func)(struct CpPerformProc *proc);
     /* 30 */ u8 unk_30;
     /* 31 */ u8 isUnitVisible;
 };
@@ -134,21 +134,21 @@ bool AiRideBallistaAction(struct CpPerformProc *);
 bool AiExitBallistaAction(struct CpPerformProc *);
 bool AiPickAction(struct CpPerformProc *);
 
-void AiStartCombatAction(struct CpPerformProc * proc);
-void AiStartEscapeAction(struct CpPerformProc * proc);
-void AiStartStealAction(struct CpPerformProc * proc);
-void AiDKNightmareAction(struct CpPerformProc * proc);
-void AiDKSummonAction(struct CpPerformProc * proc);
-void AiStartCombatAction(struct CpPerformProc * proc);
-void AiStartCombatAction(struct CpPerformProc * proc);
-void AiStartCombatAction(struct CpPerformProc * proc);
+void AiStartCombatAction(struct CpPerformProc *proc);
+void AiStartEscapeAction(struct CpPerformProc *proc);
+void AiStartStealAction(struct CpPerformProc *proc);
+void AiDKNightmareAction(struct CpPerformProc *proc);
+void AiDKSummonAction(struct CpPerformProc *proc);
+void AiStartCombatAction(struct CpPerformProc *proc);
+void AiStartCombatAction(struct CpPerformProc *proc);
+void AiStartCombatAction(struct CpPerformProc *proc);
 
 enum ScriptKind {
     AI_SCRIPT_AI1,
     AI_SCRIPT_AI2,
 };
 
-typedef void (* AiScrCmd)(u8 * pc);
+typedef void (* AiScrCmd)(u8 *pc);
 
 extern s8 gAiScriptEnded;
 extern int gAiScriptKind;
@@ -160,22 +160,22 @@ extern struct AiScr CONST_DATA gAiScript_FallbackAi2[];
 void AiScript_Exec(u8 *);
 
 void SetSupportLevelGained(u8 charA, u8 charB);
-s8 HasUnitGainedSupportLevel(struct Unit * unit, int num);
+s8 HasUnitGainedSupportLevel(struct Unit *unit, int num);
 extern int sSupportMaxExpLookup[];
 
-void TryAddUnitToHealTargetList(struct Unit * unit);
-void TryAddUnitToRestoreTargetList(struct Unit * unit);
-void TryAddUnitToBarrierTargetList(struct Unit * unit);
-void TryAddUnitToRescueStaffTargetList(struct Unit * unit);
-void TryAddUnitToSilenceTargetList(struct Unit * unit);
-void TryAddUnitToSleepTargetList(struct Unit * unit);
-void TryAddUnitToBerserkTargetList(struct Unit * unit);
-void TryAddUnitToWarpTargetList(struct Unit * unit);
-void TryAddUnitToHammerneTargetList(struct Unit * unit);
+void TryAddUnitToHealTargetList(struct Unit *unit);
+void TryAddUnitToRestoreTargetList(struct Unit *unit);
+void TryAddUnitToBarrierTargetList(struct Unit *unit);
+void TryAddUnitToRescueStaffTargetList(struct Unit *unit);
+void TryAddUnitToSilenceTargetList(struct Unit *unit);
+void TryAddUnitToSleepTargetList(struct Unit *unit);
+void TryAddUnitToBerserkTargetList(struct Unit *unit);
+void TryAddUnitToWarpTargetList(struct Unit *unit);
+void TryAddUnitToHammerneTargetList(struct Unit *unit);
 
 extern struct ProcCmd CONST_DATA ProcScr_DanceringAnim[];
 
-void BeginUnitHealAnim(struct Unit * unit, int hp);
+void BeginUnitHealAnim(struct Unit *unit, int hp);
 
 extern u16 sSprite_SysUpArrowA[], sSprite_SysUpArrowB[], sSprite_SysUpArrowC[];
 extern u16 sSprite_SysDownArrowA[], sSprite_SysDownArrowB[], sSprite_SysDownArrowC[];
@@ -207,7 +207,7 @@ extern u16 gRNSeeds[3];
 extern void (* gUnknown_03003128)(void);
 
 void BmMapInit(void * buffer, u8 *** outHandle, int width, int height);
-void RevertMovementScript(u8 * begin, u8 * end);
+void RevertMovementScript(u8 *begin, u8 *end);
 #define TERRAIN_AT(x, y) gBmMapTerrain[y][x]
 #define LAST_X_POINT gpPathArrowProc->pathX[gpPathArrowProc->pathLen]
 #define LAST_Y_POINT gpPathArrowProc->pathY[gpPathArrowProc->pathLen]
@@ -222,7 +222,7 @@ static inline u8 GetTerrainAtCursor()
     return TERRAIN_AT(gBmSt.playerCursor.x, gBmSt.playerCursor.y);
 }
 
-bool CanShowUnitStatScreen(struct Unit * unit);
+bool CanShowUnitStatScreen(struct Unit *unit);
 
 #define EVT_CMD_LO(cmd) (((cmd) & 0x0000FFFF))
 #define EVT_CMD_HI(cmd) (((cmd) & 0xFFFF0000) >> 16)
@@ -243,10 +243,10 @@ struct EvCheck03 {
     u16 unkE;
 };
 
-bool CanUnitCrossTerrain(struct Unit * unit, int terrain);
+bool CanUnitCrossTerrain(struct Unit *unit, int terrain);
 extern CONST_DATA struct MenuItemDef gUnitActionMenuItems[];
 void StartMineAnim(ProcPtr, int, int);
-void AddUnitToTargetListIfAllied(struct Unit * unit);
+void AddUnitToTargetListIfAllied(struct Unit *unit);
 
 extern CONST_DATA AnimScr AnimScr_EkrPopup[2];
 
@@ -257,21 +257,21 @@ struct Struct02013648 {
 
 extern struct Struct02013648 gUnknown_02013648;
 
-int GetUnitBestWRankType(struct Unit * unit);
+int GetUnitBestWRankType(struct Unit *unit);
 u16 GetChapterDeathCount(void);
-char * GetPidDefeatedEndingString(int pid);
+char *GetPidDefeatedEndingString(int pid);
 
-void sub_80B6CA8(struct EndingBattleDisplayProc * proc);
+void sub_80B6CA8(struct EndingBattleDisplayProc *proc);
 
 bool CheckTutorialEvent(u8 type);
-void MMB_DrawStatusText(s16 * buffer, struct Unit * unit);
-void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc * proc);
-void sub_803B678(struct Unit * unit, u16 item);
+void MMB_DrawStatusText(s16 * buffer, struct Unit *unit);
+void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc *proc);
+void sub_803B678(struct Unit *unit, u16 item);
 void SetupUnitHealStaffAIFlags(struct Unit *, u16);
 void DisplayPageNameSprite(int pageid);
 void sub_808A200(const struct HelpBoxInfo * info);
-void HelpBoxSetupstringLines(struct ProcHelpBoxIntro * proc);
-void HelpBoxDrawstring(struct ProcHelpBoxIntro * proc);
-void CpPerform_Cleanup(struct CpPerformProc * proc);
-void CpPerform_PerformAction(struct CpPerformProc * proc);
-void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc);
+void HelpBoxSetupstringLines(struct ProcHelpBoxIntro *proc);
+void HelpBoxDrawstring(struct ProcHelpBoxIntro *proc);
+void CpPerform_Cleanup(struct CpPerformProc *proc);
+void CpPerform_PerformAction(struct CpPerformProc *proc);
+void CpPerform_MoveCameraOntoTarget(struct CpPerformProc *proc);

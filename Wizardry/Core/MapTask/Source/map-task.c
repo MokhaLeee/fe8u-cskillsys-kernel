@@ -19,7 +19,7 @@ void PutUnitSpriteIconsOam(void)
     for (i = 1; i <= 0xC0; i++)
     {
         int ix, iy, status;
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
         if (!UNIT_IS_VALID(unit) || unit->state & US_HIDDEN)
             continue;
 

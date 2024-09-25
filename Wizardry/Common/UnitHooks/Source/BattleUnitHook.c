@@ -6,15 +6,15 @@
 #include "combat-art.h"
 #include "constants/skills.h"
 
-typedef int (* BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit * unit);
+typedef int (* BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit *unit);
 // extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
 extern BattleToUnitFunc_t const * const gpExternalBattleToUnitHook;
 
-typedef int (* UnitToBattleFunc_t)(struct Unit * unit, struct BattleUnit * bu);
+typedef int (* UnitToBattleFunc_t)(struct Unit *unit, struct BattleUnit * bu);
 // extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
 extern UnitToBattleFunc_t const * const gpExternalUnitToBattleHook;
 
-STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit * unit)
+STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit *unit)
 {
     if (!unit)
         return;
@@ -61,7 +61,7 @@ STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit * u
     gBattleTarget.expGain = 0;
 }
 
-STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct BattleUnit * bu)
+STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit *unit, struct BattleUnit * bu)
 {
     int tmp;
 
@@ -100,7 +100,7 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
 }
 
 LYN_REPLACE_CHECK(InitBattleUnit);
-void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
+void InitBattleUnit(struct BattleUnit * bu, struct Unit *unit)
 {
     const UnitToBattleFunc_t * it;
 
@@ -117,7 +117,7 @@ void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(UpdateUnitFromBattle);
-void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
+void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit * bu)
 {
     const BattleToUnitFunc_t * it;
 

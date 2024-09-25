@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
-STATIC_DECLAR void MapAnimSkillfx_Initfx(struct ProcMapAnimSkillfx * proc)
+STATIC_DECLAR void MapAnimSkillfx_Initfx(struct ProcMapAnimSkillfx *proc)
 {
     proc->timer = 0;
 
@@ -22,7 +22,7 @@ STATIC_DECLAR void MapAnimSkillfx_Initfx(struct ProcMapAnimSkillfx * proc)
     LoadIconPalette(0, 0x10 + MAPANIMFX_PAL);
 }
 
-STATIC_DECLAR void MapAnimSkillfx_DrawIconIDLE(struct ProcMapAnimSkillfx * proc)
+STATIC_DECLAR void MapAnimSkillfx_DrawIconIDLE(struct ProcMapAnimSkillfx *proc)
 {
     int chr, oam2;
 

@@ -10,7 +10,7 @@ struct ProcEventThunderfx {
     /* 3C */ int x, y;
 };
 
-STATIC_DECLAR void EventThunderfx_Init(struct ProcEventThunderfx * proc)
+STATIC_DECLAR void EventThunderfx_Init(struct ProcEventThunderfx *proc)
 {
     gLCDControlBuffer.bg0cnt.priority = 0;
     gLCDControlBuffer.bg1cnt.priority = 1;
@@ -35,7 +35,7 @@ STATIC_DECLAR void EventThunderfx_Init(struct ProcEventThunderfx * proc)
     );
 }
 
-STATIC_DECLAR void EventThunderfx_End(struct ProcEventThunderfx * proc)
+STATIC_DECLAR void EventThunderfx_End(struct ProcEventThunderfx *proc)
 {
     SetBlendConfig(BLEND_EFFECT_NONE, 0, 0x10, 0);
     InitBmBgLayers();
@@ -54,7 +54,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EventThunderfx[] = {
 
 void CallMapAnim_ThunderStorm(ProcPtr parent, int x, int y)
 {
-    struct ProcEventThunderfx * proc;
+    struct ProcEventThunderfx *proc;
     if (parent)
         proc = Proc_StartBlocking(ProcScr_EventThunderfx, parent);
     else

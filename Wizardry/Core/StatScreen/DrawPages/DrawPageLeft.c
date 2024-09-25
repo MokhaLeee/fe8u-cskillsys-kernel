@@ -5,7 +5,7 @@
 static void DisplayHpStr(void)
 {
     int bank, color;
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     color = FACTION_BLUE == UNIT_FACTION(unit)
           ? GetTextColorFromGrowth(GetUnitHpGrowth(unit))
@@ -40,7 +40,7 @@ STATIC_DECLAR void DisplayHpGrowthValue(void)
 
 STATIC_DECLAR void DisplayHpBmValue(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     int hpcur = GetUnitCurrentHp(unit);
     int hpmax = GetUnitMaxHp(unit);
@@ -92,7 +92,7 @@ STATIC_DECLAR void DisplayLeftPanelHp(void)
 LYN_REPLACE_CHECK(DisplayLeftPanel);
 void DisplayLeftPanel(void)
 {
-    const char * namestr = GetStringFromIndex(UNIT_NAME_ID(gStatScreen.unit));
+    const char *namestr = GetStringFromIndex(UNIT_NAME_ID(gStatScreen.unit));
     unsigned namexoff = GetStringTextCenteredPos(0x30, namestr);
 
     InstallExpandedTextPal();

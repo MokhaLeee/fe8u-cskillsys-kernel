@@ -65,7 +65,7 @@ static void callback_exec(ProcPtr proc)
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
-        struct Unit * unit = GetUnit(GetTarget(i)->uid);
+        struct Unit *unit = GetUnit(GetTarget(i)->uid);
         if (!UNIT_ALIVE(unit) && unit != gActiveUnit)
             continue;
 

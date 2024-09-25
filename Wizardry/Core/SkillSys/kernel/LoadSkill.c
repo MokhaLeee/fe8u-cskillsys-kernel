@@ -5,11 +5,11 @@
 
 #define LOCAL_TRACE 0
 
-static void SortRamSkillList(struct Unit * unit)
+static void SortRamSkillList(struct Unit *unit)
 {
     int i, cnt = 0;
-    u8 * list = UNIT_RAM_SKILLS(unit);
-    u8 * buf = gGenericBuffer;
+    u8 *list = UNIT_RAM_SKILLS(unit);
+    u8 *buf = gGenericBuffer;
 
     memset(buf, 0, UNIT_RAM_SKILLS_LEN);
 
@@ -20,11 +20,11 @@ static void SortRamSkillList(struct Unit * unit)
     memcpy(list, buf, UNIT_RAM_SKILLS_LEN);
 }
 
-inline int GetSkillSlot(struct Unit * unit, int sid)
+inline int GetSkillSlot(struct Unit *unit, int sid)
 {
     int i;
     const int cnt = RAM_SKILL_LEN_EXT;
-    u8 * list = UNIT_RAM_SKILLS(unit);
+    u8 *list = UNIT_RAM_SKILLS(unit);
 
     for (i = 0; i < cnt; i++)
         if (list[i] == sid)
@@ -33,11 +33,11 @@ inline int GetSkillSlot(struct Unit * unit, int sid)
     return -1;
 }
 
-inline int GetFreeSkillSlot(struct Unit * unit)
+inline int GetFreeSkillSlot(struct Unit *unit)
 {
     int i;
     const int cnt = RAM_SKILL_LEN_EXT;
-    u8 * list = UNIT_RAM_SKILLS(unit);
+    u8 *list = UNIT_RAM_SKILLS(unit);
 
     for (i = 0; i < cnt; i++)
         if (!EQUIPE_SKILL_VALID(list[i]))
@@ -46,10 +46,10 @@ inline int GetFreeSkillSlot(struct Unit * unit)
     return -1;
 }
 
-bool CanRemoveSkill(struct Unit * unit, const u16 sid)
+bool CanRemoveSkill(struct Unit *unit, const u16 sid)
 {
     int i;
-    u8 * list = UNIT_RAM_SKILLS(unit);
+    u8 *list = UNIT_RAM_SKILLS(unit);
 
     if (!EQUIPE_SKILL_VALID(sid))
         return false;
@@ -61,10 +61,10 @@ bool CanRemoveSkill(struct Unit * unit, const u16 sid)
     return false;
 }
 
-int RemoveSkill(struct Unit * unit, const u16 sid)
+int RemoveSkill(struct Unit *unit, const u16 sid)
 {
     int i;
-    u8 * list = UNIT_RAM_SKILLS(unit);
+    u8 *list = UNIT_RAM_SKILLS(unit);
 
     if (!EQUIPE_SKILL_VALID(sid))
         return -1;
@@ -80,10 +80,10 @@ int RemoveSkill(struct Unit * unit, const u16 sid)
     return -1;
 }
 
-int AddSkill(struct Unit * unit, const u16 sid)
+int AddSkill(struct Unit *unit, const u16 sid)
 {
     int slot;
-    u8 * list = UNIT_RAM_SKILLS(unit);
+    u8 *list = UNIT_RAM_SKILLS(unit);
 
     if (sid >= MAX_GENERIC_SKILL_NUM)
         return -1;
@@ -103,7 +103,7 @@ int AddSkill(struct Unit * unit, const u16 sid)
     return 0;
 }
 
-static inline void load_skill_ext(struct Unit * unit, u16 sid)
+static inline void load_skill_ext(struct Unit *unit, u16 sid)
 {
     if (EQUIPE_SKILL_VALID(sid))
     {
@@ -114,7 +114,7 @@ static inline void load_skill_ext(struct Unit * unit, u16 sid)
     }
 }
 
-void UnitAutoLoadSkills(struct Unit * unit)
+void UnitAutoLoadSkills(struct Unit *unit)
 {
     int i;
     int level_p, level_j;
@@ -154,7 +154,7 @@ void UnitAutoLoadSkills(struct Unit * unit)
     }
 }
 
-STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
+STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit *unit, int level)
 {
     int i;
     u16 sid;
@@ -171,7 +171,7 @@ STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit * unit, int level)
     }
 }
 
-STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
+STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit *unit, int level)
 {
     int i;
     u16 sid;
@@ -188,7 +188,7 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit * unit, int level)
     }
 }
 
-void TryAddSkillLvup(struct Unit * unit, int level)
+void TryAddSkillLvup(struct Unit *unit, int level)
 {
     int _level;
 
@@ -204,7 +204,7 @@ void TryAddSkillLvup(struct Unit * unit, int level)
         TryAddSkillLvupPConf(unit, _level);
 }
 
-void TryAddSkillPromotion(struct Unit * unit, int jid)
+void TryAddSkillPromotion(struct Unit *unit, int jid)
 {
     int i;
     u16 sid;

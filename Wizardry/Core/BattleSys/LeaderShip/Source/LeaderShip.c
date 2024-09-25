@@ -2,17 +2,17 @@
 #include "battle-system.h"
 #include "kernel-lib.h"
 
-inline int GetUnitLeaderShip(struct Unit * unit)
+inline int GetUnitLeaderShip(struct Unit *unit)
 {
     return gpLeaderShipPConf[UNIT_CHAR_ID(unit)] + gpLeaderShipJConf[UNIT_CLASS_ID(unit)];
 }
 
-STATIC_DECLAR int GetBmLeaderShip(struct Unit * unit)
+STATIC_DECLAR int GetBmLeaderShip(struct Unit *unit)
 {
     int i, ret = 0;
     for (i = UNIT_FACTION(unit) + 1; i < (UNIT_FACTION(unit) + GetFactionUnitAmount(UNIT_FACTION(unit))); i++)
     {
-        struct Unit * _unit = GetUnit(i);
+        struct Unit *_unit = GetUnit(i);
         if (!UNIT_ALIVE(unit))
             continue;
 

@@ -4,10 +4,10 @@
 #include "icon-rework.h"
 #include "constants/texts.h"
 
-void PrepSkill1_DrawLeftSkillIcon(struct ProcPrepSkill1 * proc)
+void PrepSkill1_DrawLeftSkillIcon(struct ProcPrepSkill1 *proc)
 {
     int x, y;
-    struct Unit * unit = GetUnitFromPrepList(proc->list_num_cur);
+    struct Unit *unit = GetUnitFromPrepList(proc->list_num_cur);
     struct SkillList * list = GetUnitSkillList(unit);
     ResetIconGraphics_();
     TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 1, 6), 0xA, 0x6, 0);
@@ -62,10 +62,10 @@ void PrepSkill1_InitTexts(void)
     InitText(&gPrepUnitTexts[0x16], 7);
 }
 
-void PrepSkill1_DrawRightTopBar(struct ProcPrepSkill1 * proc)
+void PrepSkill1_DrawRightTopBar(struct ProcPrepSkill1 *proc)
 {
     struct Text * text = &gPrepUnitTexts[0x15];
-    struct Unit * unit = GetUnitFromPrepList(proc->list_num_cur);
+    struct Unit *unit = GetUnitFromPrepList(proc->list_num_cur);
     int color = AddSkill(unit, 0) == 0
               ? TEXT_COLOR_SYSTEM_WHITE
               : TEXT_COLOR_SYSTEM_GREEN;

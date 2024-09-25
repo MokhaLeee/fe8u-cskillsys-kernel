@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "unit-expa.h"
 
-void SetBitUES(struct Unit * unit, int bit)
+void SetBitUES(struct Unit *unit, int bit)
 {
     if (bit < 8)
         unit->_u3A |= 1 << bit;
@@ -10,7 +10,7 @@ void SetBitUES(struct Unit * unit, int bit)
         unit->_u3B |= 1 << bit;
 }
 
-void ClearBitUES(struct Unit * unit, int bit)
+void ClearBitUES(struct Unit *unit, int bit)
 {
     if (bit < 8)
         unit->_u3A &= ~(1 << bit);
@@ -18,7 +18,7 @@ void ClearBitUES(struct Unit * unit, int bit)
         unit->_u3B &= ~(1 << bit);
 }
 
-bool CheckBitUES(struct Unit * unit, int bit)
+bool CheckBitUES(struct Unit *unit, int bit)
 {
     if (bit < 8)
         return !!(unit->_u3A & (1 << bit));
@@ -30,7 +30,7 @@ bool CheckBitUES(struct Unit * unit, int bit)
 
 static void reset_expa(s8 uid)
 {
-    struct Unit * unit = GetUnit(uid);
+    struct Unit *unit = GetUnit(uid);
     if (!unit)
         return;
 

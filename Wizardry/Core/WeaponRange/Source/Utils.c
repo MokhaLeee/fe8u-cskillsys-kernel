@@ -21,7 +21,7 @@ STATIC_DECLAR u32 GetRangeMask(int min, int max)
 }
 
 /* External jump at 0x080170D4 */
-u32 GetItemReachBitsRework(u16 item, struct Unit * unit)
+u32 GetItemReachBitsRework(u16 item, struct Unit *unit)
 {
     int min = GetItemMinRangeRework(item, unit);
     int max = GetItemMaxRangeRework(item, unit);
@@ -29,7 +29,7 @@ u32 GetItemReachBitsRework(u16 item, struct Unit * unit)
 }
 
 /* External jump at 0x08016B8C */
-bool IsItemCoveringRangeRework(int item, int range, struct Unit * unit)
+bool IsItemCoveringRangeRework(int item, int range, struct Unit *unit)
 {
     if (range > GetItemMaxRangeRework(item, unit))
         return false;
@@ -67,7 +67,7 @@ void AddMap(int x, int y, u32 mask, int on, int off)
     }
 }
 
-void AddMapForItem(struct Unit * unit, u16 item)
+void AddMapForItem(struct Unit *unit, u16 item)
 {
     int min = GetItemMinRangeRework(item, unit);
     int max = GetItemMaxRangeRework(item, unit);

@@ -28,8 +28,8 @@ enum unit_expa_sus_bitfile_idx {
     UES_BIT_MAX
 };
 
-void SetBitUES(struct Unit * unit, int bit);
-void ClearBitUES(struct Unit * unit, int bit);
-bool CheckBitUES(struct Unit * unit, int bit);
+void SetBitUES(struct Unit *unit, int bit);
+void ClearBitUES(struct Unit *unit, int bit);
+bool CheckBitUES(struct Unit *unit, int bit);
 
 void ResetUnitsExpaSus(void);

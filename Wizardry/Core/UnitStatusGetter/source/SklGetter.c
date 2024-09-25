@@ -3,7 +3,7 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int _GetUnitSkill(struct Unit * unit)
+int _GetUnitSkill(struct Unit *unit)
 {
     const StatusGetterFunc_t * it;
     int status = unit->skl;
@@ -18,14 +18,14 @@ int _GetUnitSkill(struct Unit * unit)
 }
 
 /* Hooks */
-int SklGetterWeaponBonus(int status, struct Unit * unit)
+int SklGetterWeaponBonus(int status, struct Unit *unit)
 {
     u16 weapon = GetUnitEquippedWeapon(unit);
     status += GetItemSklBonus(weapon);
     return status;
 }
 
-int SklGetterSkills(int status, struct Unit * unit)
+int SklGetterSkills(int status, struct Unit *unit)
 {
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);

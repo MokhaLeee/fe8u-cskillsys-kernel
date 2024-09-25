@@ -2,7 +2,7 @@
 #include "AiAction.h"
 
 LYN_REPLACE_CHECK(CpPerform_PerformAction);
-void CpPerform_PerformAction(struct CpPerformProc * proc)
+void CpPerform_PerformAction(struct CpPerformProc *proc)
 {
     const struct AiActionConf * it;
     void (* exec)(ProcPtr);

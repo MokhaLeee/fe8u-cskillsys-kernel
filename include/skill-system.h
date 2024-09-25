@@ -45,23 +45,23 @@ extern u16 const * const gpConstSkillTable_Item;
 extern u16 const * const gpConstSkillTable_Weapon;
 
 struct SkillInfo {
-    const u8 * icon;
+    const u8 *icon;
     u16 name, desc;
 };
 
 extern struct SkillInfo const * const gpSkillInfos;
 
-const u8 * GetSkillIcon1(const u8 sid);
-const u8 * GetSkillIcon2(const u8 sid);
-const u8 * GetSkillIcon3(const u8 sid);
-const u8 * GetSkillIcon4(const u8 sid);
+const u8 *GetSkillIcon1(const u8 sid);
+const u8 *GetSkillIcon2(const u8 sid);
+const u8 *GetSkillIcon3(const u8 sid);
+const u8 *GetSkillIcon4(const u8 sid);
 
 u16 GetSkillDescMsg(const u16 sid);
 u16 GetSkillNameMsg(const u16 sid);
-char * GetSkillDescStr(const u16 sid);
-char * SkillDescToName(char * str);
-char * GetSkillNameStrFormDesc(const u16 sid);
-char * GetSkillNameStr(const u16 sid);
+char *GetSkillDescStr(const u16 sid);
+char *SkillDescToName(char *str);
+char *GetSkillNameStrFormDesc(const u16 sid);
+char *GetSkillNameStr(const u16 sid);
 
 /**
  * 7 generic skill
@@ -76,16 +76,16 @@ struct SkillList {
     u8 amt;
     u16 sid[23];
 };
-extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
+extern struct SkillList * (* _GetUnitSkillList)(struct Unit *unit);
 #define GetUnitSkillList _GetUnitSkillList
 
-void GenerateSkillListExt(struct Unit * unit, struct SkillList * list);
-void ForceUpdateUnitSkillList(struct Unit * unit);
-void DisableUnitSkilLList(struct Unit * unit);
+void GenerateSkillListExt(struct Unit *unit, struct SkillList * list);
+void ForceUpdateUnitSkillList(struct Unit *unit);
+void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */
-extern bool (* _SkillTester)(struct Unit * unit, const u16 sid);
+extern bool (* _SkillTester)(struct Unit *unit, const u16 sid);
 #define SkillTester _SkillTester
 
 // Note this function can only exec for r0 = gBattleActor/gBattleTarget
@@ -93,7 +93,7 @@ extern bool (* _JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
 #define BattleSkillTester _JudgeSkillViaList
 #define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
 
-bool CheckSkillActivate(struct Unit * unit, int sid, int rate);
+bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
 
 /* Prep equip skill list */
@@ -104,7 +104,7 @@ struct PrepEquipSkillList {
 };
 
 void ResetPrepEquipSkillList(void);
-struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit * unit);
+struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit *unit);
 
 /* Game data */
 #define SKILL_ROM_DATA_AMT 5 /* Unit can learn 5 skills on lv0/5/10/15/20 */
@@ -212,7 +212,7 @@ extern SkillActionFunc_t const * const gpSkillActionFuncTable;
 /**
  * Skill scroll
  */
-char * GetSkillScrollItemName(int item);
+char *GetSkillScrollItemName(int item);
 int GetSkillScrollItemDescId(int item);
 int GetSkillScrollItemUseDescId(int item);
 int GetSkillScrollItemIconId(int item);
@@ -232,26 +232,26 @@ extern struct SkillExtraInfo const * const gpSkillExtraInfo;
 #define SKILL_EFF2(sid) (gpSkillExtraInfo[sid].priv[2])
 #define SKILL_EFF3(sid) (gpSkillExtraInfo[sid].priv[3])
 
-bool IsSkillLearned(struct Unit * unit, const u16 sid);
-void LearnSkill(struct Unit * unit, const u16 sid);
-void ForgetSkill(struct Unit * unit, const u16 sid);
+bool IsSkillLearned(struct Unit *unit, const u16 sid);
+void LearnSkill(struct Unit *unit, const u16 sid);
+void ForgetSkill(struct Unit *unit, const u16 sid);
 void ResetUnitLearnedSkillLists(void);                      /* GameInitHook */
-void SaveUnitLearnedSkillLists(u8 * dst, const u32 size);   /* SaveData */
-void LoadUnitLearnedSkillLists(u8 * src, const u32 size);   /* LoadData */
+void SaveUnitLearnedSkillLists(u8 *dst, const u32 size);   /* SaveData */
+void LoadUnitLearnedSkillLists(u8 *src, const u32 size);   /* LoadData */
 
-void UnitAutoLoadSkills(struct Unit * unit);
-int GetSkillSlot(struct Unit * unit, int sid);
-int GetFreeSkillSlot(struct Unit * unit);
-bool CanRemoveSkill(struct Unit * unit, const u16 sid);
-int RemoveSkill(struct Unit * unit, const u16 sid);
-int AddSkill(struct Unit * unit, const u16 sid);
-void TryAddSkillLvup(struct Unit * unit, int level);
-void TryAddSkillPromotion(struct Unit * unit, int jid);
+void UnitAutoLoadSkills(struct Unit *unit);
+int GetSkillSlot(struct Unit *unit, int sid);
+int GetFreeSkillSlot(struct Unit *unit);
+bool CanRemoveSkill(struct Unit *unit, const u16 sid);
+int RemoveSkill(struct Unit *unit, const u16 sid);
+int AddSkill(struct Unit *unit, const u16 sid);
+void TryAddSkillLvup(struct Unit *unit, int level);
+void TryAddSkillPromotion(struct Unit *unit, int jid);
 
 /**
  * External MiscSkillEffects
  */
-bool GetTeleportationRandomPosition(struct Unit * unit, struct Vec2 * out);
+bool GetTeleportationRandomPosition(struct Unit *unit, struct Vec2 * out);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {
@@ -267,12 +267,12 @@ enum skill_lucky_seven_idx {
 
 /* Legendary skill */
 extern u8 const * const gpLegendSkillPool;
-int TryActivateLegendSkill(struct Unit * unit, const u16 sid);
-bool SkillTesterLegendActivated(struct Unit * unit, const u16 sid);
+int TryActivateLegendSkill(struct Unit *unit, const u16 sid);
+bool SkillTesterLegendActivated(struct Unit *unit, const u16 sid);
 void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit * defender);
-int SpdGetterLegendSkills(int status, struct Unit * unit);
-int DefGetterLegendSkills(int status, struct Unit * unit);
-int ResGetterLegendSkills(int status, struct Unit * unit);
+int SpdGetterLegendSkills(int status, struct Unit *unit);
+int DefGetterLegendSkills(int status, struct Unit *unit);
+int ResGetterLegendSkills(int status, struct Unit *unit);
 
 /* Menu skills */
 u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);

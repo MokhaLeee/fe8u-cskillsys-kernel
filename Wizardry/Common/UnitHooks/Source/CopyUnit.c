@@ -1,11 +1,11 @@
 #include "common-chax.h"
 
-typedef int (* CopyUnitFunc_t)(struct Unit * from, struct Unit * to);
+typedef int (* CopyUnitFunc_t)(struct Unit *from, struct Unit *to);
 // extern const CopyUnitFunc_t gCopyUnitHooks[];
 extern CopyUnitFunc_t const * const gpCopyUnitHooks;
 
 LYN_REPLACE_CHECK(CopyUnit);
-void CopyUnit(struct Unit * from, struct Unit * to)
+void CopyUnit(struct Unit *from, struct Unit *to)
 {
     u8 id = to->index;
 

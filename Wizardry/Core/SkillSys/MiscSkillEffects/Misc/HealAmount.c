@@ -3,7 +3,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-int HealAmount_SkillsGetter(int status, struct Unit * actor, struct Unit * target)
+int HealAmount_SkillsGetter(int status, struct Unit *actor, struct Unit *target)
 {
     FORCE_DECLARE int i, tmp;
 
@@ -23,7 +23,7 @@ int HealAmount_SkillsGetter(int status, struct Unit * actor, struct Unit * targe
         int _x = actor->xPos + gVecs_2x2[i].x;
         int _y = actor->yPos + gVecs_2x2[i].y;
 
-        struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+        struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit_ally))
             continue;
 
@@ -48,7 +48,7 @@ int HealAmount_SkillsGetter(int status, struct Unit * actor, struct Unit * targe
         int _x = target->xPos + gVecs_2x2[i].x;
         int _y = target->yPos + gVecs_2x2[i].y;
 
-        struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+        struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
         if (!UNIT_IS_VALID(unit_ally))
             continue;
 

@@ -2,7 +2,7 @@
 #include "stat-screen.h"
 #include "strmag.h"
 
-int GetUnitBattleAmt(struct Unit * unit)
+int GetUnitBattleAmt(struct Unit *unit)
 {
     int status = 0;
     status += GetUnitPower(unit);
@@ -16,7 +16,7 @@ int GetUnitBattleAmt(struct Unit * unit)
     return status;
 }
 
-u8 SortMax(const u8 * buf, int size)
+u8 SortMax(const u8 *buf, int size)
 {
     int i, max = 0;
     for (i = 0; i < size; i++)
@@ -28,7 +28,7 @@ u8 SortMax(const u8 * buf, int size)
     return max;
 }
 
-u8 GetTalkee(struct Unit * unit)
+u8 GetTalkee(struct Unit *unit)
 {
     int i;
     const struct EventListCmdInfo * cmd_info = &gEventListCmdInfoTable[EVT_LIST_CMD_CHAR];
@@ -55,7 +55,7 @@ u8 GetTalkee(struct Unit * unit)
 
             if (cmd_info->func(&info) == true)
             {
-                struct Unit * talkee = GetUnitFromCharId(_chunk->pidB);
+                struct Unit *talkee = GetUnitFromCharId(_chunk->pidB);
                 if (UNIT_ALIVE(talkee))
                     return _chunk->pidB;
             }
@@ -66,7 +66,7 @@ u8 GetTalkee(struct Unit * unit)
     /* Support */
     for (i = 0; i < GetUnitSupporterCount(unit); i++)
     {
-        struct Unit * talkee = GetUnitSupporterUnit(unit, i);
+        struct Unit *talkee = GetUnitSupporterUnit(unit, i);
         if (UNIT_ALIVE(talkee) && CanUnitSupportNow(unit, i))
             return UNIT_CHAR_ID(talkee);
     }
@@ -91,7 +91,7 @@ int GetTextColorFromGrowth(int growth)
     return (9 - _mod10) + 5;
 }
 
-void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str)
+void PutDrawTextRework(struct Text * text, u16 *tm, int color, int x, int tile_width, char const * str)
 {
     int bank;
     ModifyTextPal(bank, color);
@@ -100,7 +100,7 @@ void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_
     PutDrawText(text, tm, color, x, tile_width, str);
 }
 
-void DrawStatWithBarReworkExt(int num, int x, int y, u16 * tm, int base, int total, int max, int max_ref)
+void DrawStatWithBarReworkExt(int num, int x, int y, u16 *tm, int base, int total, int max, int max_ref)
 {
     int diff = total - base;
 
@@ -122,7 +122,7 @@ void DrawStatWithBarReworkExt(int num, int x, int y, u16 * tm, int base, int tot
         diff);
 }
 
-void DrawStatWithBarRework(int num, int x, int y, u16 * tm1, u16 * tm2, int base, int total, int max)
+void DrawStatWithBarRework(int num, int x, int y, u16 *tm1, u16 *tm2, int base, int total, int max)
 {
     /**
      * Here the max value maybe more than 35,
@@ -145,7 +145,7 @@ void DrawStatWithBarRework(int num, int x, int y, u16 * tm1, u16 * tm2, int base
     DrawStatWithBarReworkExt(num, x, y, tm2, base, total, max, max_bar);
 }
 
-void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc)
+void HbPopuplate_Page1TrvTalk(struct HelpBoxProc *proc)
 {
     if (gStatScreenStExpa.talkee != 0)
         proc->mid = 0x56A;

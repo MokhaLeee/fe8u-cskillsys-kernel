@@ -8,7 +8,7 @@
 
 STATIC_DECLAR void PostActionSynchronize_Init(ProcPtr proc)
 {
-    struct Unit * unit;
+    struct Unit *unit;
     struct MuProc * mu;
 
     unit = GetUnit(gActionData.subjectIndex);
@@ -24,13 +24,13 @@ STATIC_DECLAR void PostActionSynchronize_Init(ProcPtr proc)
 
 STATIC_DECLAR void PostActionSynchronize_StartActor(ProcPtr proc)
 {
-    struct Unit * unit = GetUnit(gActionData.subjectIndex);
+    struct Unit *unit = GetUnit(gActionData.subjectIndex);
     StartMuActionAnim(GetUnitMu(unit));
 }
 
 STATIC_DECLAR void PostActionSynchronize_StartTargetAnim(ProcPtr proc)
 {
-    struct Unit * unit_tar = GetUnit(gActionData.targetIndex);
+    struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
 
     if (IsDebuff(GetUnitStatusIndex(GetUnit(gActionData.subjectIndex))))
         CallMapAnim_HeavyGravity(proc, unit_tar->xPos, unit_tar->yPos);
@@ -47,7 +47,7 @@ STATIC_DECLAR void PostActionSynchronize_StartTargetAnim(ProcPtr proc)
 
 STATIC_DECLAR void PostActionSynchronize_ResetActor(ProcPtr proc)
 {
-    struct Unit * unit = GetUnit(gActionData.subjectIndex);
+    struct Unit *unit = GetUnit(gActionData.subjectIndex);
     struct MuProc * mu = GetUnitMu(unit);
 
     FreezeSpriteAnim(mu->sprite_anim);
@@ -80,7 +80,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSynchronize[] = {
 
 bool PostActionSynchronize(ProcPtr parent)
 {
-    struct Unit * unit_act, * unit_tar;
+    struct Unit *unit_act, * unit_tar;
     int debuff_act;
 
 #if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))

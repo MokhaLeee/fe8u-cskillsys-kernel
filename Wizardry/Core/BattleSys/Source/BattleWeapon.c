@@ -180,7 +180,7 @@ void SetBattleUnitWeapon(struct BattleUnit * bu, int slot)
 }
 
 LYN_REPLACE_CHECK(CanUnitUseWeapon);
-s8 CanUnitUseWeapon(struct Unit * unit, int item)
+s8 CanUnitUseWeapon(struct Unit *unit, int item)
 {
     if (item == 0)
         return false;

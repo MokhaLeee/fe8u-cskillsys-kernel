@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "battle-system.h"
 
-bool IsAttackerAnim(struct Anim * anim)
+bool IsAttackerAnim(struct Anim *anim)
 {
     if (GetAnimPosition(anim) == POS_L)
     {

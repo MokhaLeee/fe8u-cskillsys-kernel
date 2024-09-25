@@ -22,7 +22,7 @@ enum CombatArtBKSELfxConfig {
     OBJ_ARROW_YPOS = 0x16A,
 };
 
-STATIC_DECLAR void BKSELfxUpdateAoeSprits(struct BattleForecastProc * proc)
+STATIC_DECLAR void BKSELfxUpdateAoeSprits(struct BattleForecastProc *proc)
 {
     const u8 Y_SYNC_OFFs[] = {0, 1, 2, 3, 2, 1};
     const u8 Y_SYNC_TIMEs[] = {0, 0, 1, 2, 2};
@@ -53,7 +53,7 @@ STATIC_DECLAR void BKSELfxUpdateAoeSprits(struct BattleForecastProc * proc)
     }
 }
 
-STATIC_DECLAR void BKSELfxUpdateSprits(struct BattleForecastProc * proc)
+STATIC_DECLAR void BKSELfxUpdateSprits(struct BattleForecastProc *proc)
 {
     const int X = proc->side      == -1 ? 0 : 0x9F;
     const int Y = proc->frameKind ==  1 ? 0 : 0x20;
@@ -90,7 +90,7 @@ STATIC_DECLAR void BKSELfxUpdateSprits(struct BattleForecastProc * proc)
 }
 
 /* External jump */
-void BattleForecast_InitRework(struct BattleForecastProc * proc)
+void BattleForecast_InitRework(struct BattleForecastProc *proc)
 {
     /* Vanilla */
     BattleForecast_Init(proc);
@@ -109,7 +109,7 @@ void BattleForecast_InitRework(struct BattleForecastProc * proc)
     }
 }
 
-STATIC_DECLAR void DrawBattleForecastContentsStandardRework(struct BattleForecastProc * proc)
+STATIC_DECLAR void DrawBattleForecastContentsStandardRework(struct BattleForecastProc *proc)
 {
     DrawBattleForecastContentsStandard(proc);
 
@@ -117,7 +117,7 @@ STATIC_DECLAR void DrawBattleForecastContentsStandardRework(struct BattleForecas
         CallARM_FillTileRect(gUiTmScratchB, Tsa_BkselStandardScreen, 0x1000);
 }
 
-STATIC_DECLAR void DrawBattleForecastContentsExtendedRework(struct BattleForecastProc * proc)
+STATIC_DECLAR void DrawBattleForecastContentsExtendedRework(struct BattleForecastProc *proc)
 {
     DrawBattleForecastContentsExtended(proc);
 
@@ -125,7 +125,7 @@ STATIC_DECLAR void DrawBattleForecastContentsExtendedRework(struct BattleForecas
         CallARM_FillTileRect(gUiTmScratchB, Tsa_BkselDetailedScreen, 0x1000);
 }
 
-STATIC_DECLAR void DrawBattleForecastContentsVanilla(struct BattleForecastProc * proc)
+STATIC_DECLAR void DrawBattleForecastContentsVanilla(struct BattleForecastProc *proc)
 {
     proc->unk_2C = 0;
     proc->needContentUpdate = 0;
@@ -144,10 +144,10 @@ STATIC_DECLAR void DrawBattleForecastContentsVanilla(struct BattleForecastProc *
 }
 
 LYN_REPLACE_CHECK(DrawBattleForecastContents);
-void DrawBattleForecastContents(struct BattleForecastProc * proc)
+void DrawBattleForecastContents(struct BattleForecastProc *proc)
 {
     u8 cid;
-    char * str;
+    char *str;
     struct Text * text = &proc->itemNameText;
     const int Y = proc->frameKind ==  1 ? 0x0D : 0x11;
 

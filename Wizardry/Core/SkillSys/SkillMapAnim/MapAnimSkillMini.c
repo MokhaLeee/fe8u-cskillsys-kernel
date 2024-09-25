@@ -12,12 +12,12 @@ struct ProcSkillMapAnimMini {
     u16 sid;
 };
 
-static void move_camera(struct ProcSkillMapAnimMini * proc)
+static void move_camera(struct ProcSkillMapAnimMini *proc)
 {
     EnsureCameraOntoPosition(proc, proc->x, proc->y);
 }
 
-STATIC_DECLAR void SkillMapAnimMini_Init(struct ProcSkillMapAnimMini * proc)
+STATIC_DECLAR void SkillMapAnimMini_Init(struct ProcSkillMapAnimMini *proc)
 {
     /* Sprite anim */
     Decompress(
@@ -38,7 +38,7 @@ STATIC_DECLAR void SkillMapAnimMini_Init(struct ProcSkillMapAnimMini * proc)
     proc->timer = 0;
 }
 
-STATIC_DECLAR void SkillMapAnimMini_Loop(struct ProcSkillMapAnimMini * proc)
+STATIC_DECLAR void SkillMapAnimMini_Loop(struct ProcSkillMapAnimMini *proc)
 {
     PutSprite(
         4,
@@ -63,7 +63,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_SkillMapAnimMini[] = {
 
 void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent)
 {
-    struct ProcSkillMapAnimMini * proc;
+    struct ProcSkillMapAnimMini *proc;
 
     if (parent)
         proc = Proc_StartBlocking(ProcScr_SkillMapAnimMini, parent);
@@ -114,18 +114,18 @@ static void anim_act(ProcPtr proc)
     StartMuActionAnim(GetUnitMu(gActiveUnit));
 }
 
-static void skill_anim(struct ProcMuSkillAnim * proc)
+static void skill_anim(struct ProcMuSkillAnim *proc)
 {
     NewSkillMapAnimMini(gActiveUnit->xPos, gActiveUnit->yPos, proc->sid, proc);
 }
 
-static void _callback1(struct ProcMuSkillAnim * proc)
+static void _callback1(struct ProcMuSkillAnim *proc)
 {
     if (proc->callback1)
         proc->callback1(proc);
 }
 
-static void _callback2(struct ProcMuSkillAnim * proc)
+static void _callback2(struct ProcMuSkillAnim *proc)
 {
     if (proc->callback2)
         proc->callback2(proc);
@@ -152,7 +152,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {
 
 void NewMuSkillAnimOnActiveUnit(u16 sid, void (* callback1)(ProcPtr proc), void (* callback2)(ProcPtr proc))
 {
-    struct ProcMuSkillAnim * proc;
+    struct ProcMuSkillAnim *proc;
     proc = Proc_Start(ProcScr_MuSkillAnim, PROC_TREE_3);
 
     proc->sid = sid;
@@ -172,7 +172,7 @@ static void event_callcamera(ProcPtr proc)
 
 static void event_act(ProcPtr proc)
 {
-    struct Unit * unit;
+    struct Unit *unit;
     struct MuProc * mu;
 
     unit = gActiveUnit;

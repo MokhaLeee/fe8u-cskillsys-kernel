@@ -290,7 +290,7 @@ void BattleUnwind(void)
     bool combo_atk_done = false;
 #endif
     u8 round_mask = 0;
-    const u8 * config;
+    const u8 *config;
 
     /* Identifier to record attack amount for skill anim triger */
     int actor_count = 0;

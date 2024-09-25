@@ -13,7 +13,7 @@ enum MapTaskConfIndex {
 
 struct MapTaskConf {
     u16 x, y;
-    u16 * obj;
+    u16 *obj;
 };
 
 // extern struct MapTaskConf const gMapTaskConfs[];

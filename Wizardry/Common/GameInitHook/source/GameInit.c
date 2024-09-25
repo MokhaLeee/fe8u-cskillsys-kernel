@@ -12,7 +12,7 @@ LYN_REPLACE_CHECK(StartGame);
 void StartGame(void)
 {
     const GameInitHookFunc_t * it;
-    struct GameCtrlProc * proc;
+    struct GameCtrlProc *proc;
 
     SetMainUpdateRoutine(OnGameLoopMain);
 

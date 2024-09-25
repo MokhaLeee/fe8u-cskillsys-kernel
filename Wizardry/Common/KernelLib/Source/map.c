@@ -18,7 +18,7 @@ inline bool IsPositionValid(s8 x, s8 y)
     return true;
 }
 
-struct Unit * GetUnitAtPosition(s8 x, s8 y)
+struct Unit *GetUnitAtPosition(s8 x, s8 y)
 {
     s8 uid;
 

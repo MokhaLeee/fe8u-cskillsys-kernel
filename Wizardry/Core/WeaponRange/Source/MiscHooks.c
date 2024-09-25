@@ -4,7 +4,7 @@
 #include "weapon-range.h"
 
 LYN_REPLACE_CHECK(AiReachesByBirdsEyeDistance);
-bool AiReachesByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 item)
+bool AiReachesByBirdsEyeDistance(struct Unit *unit, struct Unit *other, u16 item)
 {
     int distance = RECT_DISTANCE(unit->xPos, unit->yPos, other->xPos, other->yPos);
     if (distance <= MovGetter(unit) + GetItemMaxRangeRework(item, unit))
@@ -14,7 +14,7 @@ bool AiReachesByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 it
 }
 
 LYN_REPLACE_CHECK(AiCouldReachByBirdsEyeDistance);
-bool AiCouldReachByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16 item)
+bool AiCouldReachByBirdsEyeDistance(struct Unit *unit, struct Unit *other, u16 item)
 {
 
     int distance = RECT_DISTANCE(unit->xPos, unit->yPos, other->xPos, other->yPos);
@@ -25,7 +25,7 @@ bool AiCouldReachByBirdsEyeDistance(struct Unit * unit, struct Unit * other, u16
 }
 
 LYN_REPLACE_CHECK(GetUnitWeaponReachBits);
-int GetUnitWeaponReachBits(struct Unit * unit, int slot)
+int GetUnitWeaponReachBits(struct Unit *unit, int slot)
 {
     int i, item, result = 0;
 
@@ -46,7 +46,7 @@ int GetUnitWeaponReachBits(struct Unit * unit, int slot)
 }
 
 LYN_REPLACE_CHECK(GetUnitItemUseReachBits);
-int GetUnitItemUseReachBits(struct Unit * unit, int slot)
+int GetUnitItemUseReachBits(struct Unit *unit, int slot)
 {
     int i;
     u16 item;
@@ -75,7 +75,7 @@ int GetUnitItemUseReachBits(struct Unit * unit, int slot)
 }
 
 LYN_REPLACE_CHECK(GetUnitStaffReachBits);
-int GetUnitStaffReachBits(struct Unit * unit)
+int GetUnitStaffReachBits(struct Unit *unit)
 {
     int i;
     u16 item;
@@ -92,7 +92,7 @@ int GetUnitStaffReachBits(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(AiFillReversedAttackRangeMap);
-void AiFillReversedAttackRangeMap(struct Unit * unit, u16 item)
+void AiFillReversedAttackRangeMap(struct Unit *unit, u16 item)
 {
     BmMapFill(gBmMapRange, 0);
 
@@ -101,7 +101,7 @@ void AiFillReversedAttackRangeMap(struct Unit * unit, u16 item)
 }
 
 LYN_REPLACE_CHECK(AiFloodMovementAndRange);
-void AiFloodMovementAndRange(struct Unit * unit, u16 move, u16 item) {
+void AiFloodMovementAndRange(struct Unit *unit, u16 move, u16 item) {
     int ix, iy;
     u32 mask;
 
@@ -125,7 +125,7 @@ void AiFloodMovementAndRange(struct Unit * unit, u16 move, u16 item) {
 }
 
 LYN_REPLACE_CHECK(AiGetInRangeCombatPositionScoreComponent);
-int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit * unit)
+int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit *unit)
 {
     int dist = RECT_DISTANCE(unit->xPos, unit->yPos, x, y);
     u16 item = GetUnitEquippedWeapon(unit);
@@ -141,7 +141,7 @@ int AiGetInRangeCombatPositionScoreComponent(int x, int y, struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(DisplayUnitEffectRange);
-void DisplayUnitEffectRange(struct Unit * unit)
+void DisplayUnitEffectRange(struct Unit *unit)
 {
     u32 movelimitv_flag = MOVLIMITV_MMAP_BLUE;
 
@@ -184,7 +184,7 @@ void DisplayUnitEffectRange(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(GenerateUnitMovementMap);
-void GenerateUnitMovementMap(struct Unit * unit)
+void GenerateUnitMovementMap(struct Unit *unit)
 {
     SetWorkingMoveCosts(GetUnitMovementCost(unit));
     SetWorkingBmMap(gBmMapMovement);
@@ -193,7 +193,7 @@ void GenerateUnitMovementMap(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(GenerateUnitCompleteAttackRange);
-void GenerateUnitCompleteAttackRange(struct Unit * unit)
+void GenerateUnitCompleteAttackRange(struct Unit *unit)
 {
     int ix, iy;
 
@@ -254,14 +254,14 @@ void GenerateUnitCompleteAttackRange(struct Unit * unit)
 }
 
 LYN_REPLACE_CHECK(GenerateUnitStandingReachRange);
-void GenerateUnitStandingReachRange(struct Unit * unit, int mask)
+void GenerateUnitStandingReachRange(struct Unit *unit, int mask)
 {
     BmMapFill(gBmMapRange, 0);
     AddMap(unit->xPos, unit->yPos, mask, 1, 0);
 }
 
 LYN_REPLACE_CHECK(GenerateUnitCompleteStaffRange);
-void GenerateUnitCompleteStaffRange(struct Unit * unit)
+void GenerateUnitCompleteStaffRange(struct Unit *unit)
 {
     int ix, iy;
     u32 mask = GetUnitStaffReachBits(unit);
@@ -309,7 +309,7 @@ void GenerateDangerZoneRange(bool boolDisplayStaffRange)
 
     for (i = enemyFaction + 1; i < enemyFaction + 0x80; ++i)
     {
-        struct Unit * unit = GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue; // not a unit
@@ -355,7 +355,7 @@ void GenerateDangerZoneRange(bool boolDisplayStaffRange)
 }
 
 LYN_REPLACE_CHECK(FillMovementAndRangeMapForItem);
-void FillMovementAndRangeMapForItem(struct Unit * unit, u16 item)
+void FillMovementAndRangeMapForItem(struct Unit *unit, u16 item)
 {
     int ix, iy;
 
@@ -375,7 +375,7 @@ void FillMovementAndRangeMapForItem(struct Unit * unit, u16 item)
 }
 
 LYN_REPLACE_CHECK(sub_803B678);
-void sub_803B678(struct Unit * unit, u16 item)
+void sub_803B678(struct Unit *unit, u16 item)
 {
     int ix, iy;
 
@@ -395,7 +395,7 @@ void sub_803B678(struct Unit * unit, u16 item)
 }
 
 LYN_REPLACE_CHECK(SetupUnitHealStaffAIFlags);
-void SetupUnitHealStaffAIFlags(struct Unit * unit, u16 item)
+void SetupUnitHealStaffAIFlags(struct Unit *unit, u16 item)
 {
     int flags = 0;
 

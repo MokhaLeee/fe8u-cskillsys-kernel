@@ -18,7 +18,7 @@ void ResetComboAtkList(void)
 /* This is only valid in after battle unit inited */
 void BattleGenerateComboAtkList(void)
 {
-    struct Unit * unit;
+    struct Unit *unit;
     u16 item;
     int range;
 

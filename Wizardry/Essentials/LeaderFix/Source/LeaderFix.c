@@ -4,7 +4,7 @@
 extern struct DefeatTalkEnt * pr_gDefeatTalkList;
 
 LYN_REPLACE_CHECK(GetUnitLeaderCharId);
-int GetUnitLeaderCharId(struct Unit * unit)
+int GetUnitLeaderCharId(struct Unit *unit)
 {
     int i;
     struct DefeatTalkEnt * it;
@@ -32,7 +32,7 @@ int GetUnitLeaderCharId(struct Unit * unit)
      */
     for (i = UNIT_FACTION(unit) + 1; i < UNIT_FACTION(unit) + GetFactionUnitAmount(UNIT_FACTION(unit)); i++)
     {
-        struct Unit * _unit = GetUnit(i);
+        struct Unit *_unit = GetUnit(i);
         if (!UNIT_ALIVE(unit))
             continue;
 

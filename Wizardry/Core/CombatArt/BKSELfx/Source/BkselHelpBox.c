@@ -13,7 +13,7 @@ u8 StartBattleForecastHelpBox(ProcPtr parent, struct SelectTarget * target)
 {
     int x;
 
-    struct BattleForecastProc * proc = Proc_Find(gProcScr_BKSEL);
+    struct BattleForecastProc *proc = Proc_Find(gProcScr_BKSEL);
     if (proc == 0)
         return 0;
 
@@ -61,7 +61,7 @@ void DrawHelpBoxCombatArtBkselLabels(void)
     Text_InsertDrawString(&gHelpBoxSt.text[1], 0x60, TEXT_COLOR_47CF, GetStringFromIndex(0x51E)); // "dodge"
 }
 
-void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro * proc)
+void DrawHelpBoxCombatArtBkselStats(struct ProcHelpBoxIntro *proc)
 {
     const struct CombatArtInfo * info = GetCombatArtInfo(proc->item);
 

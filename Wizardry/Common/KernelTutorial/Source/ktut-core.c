@@ -18,7 +18,7 @@ void ClearKtutorialFlags(void)
 }
 
 /* In SaveData */
-void EMS_SaveKTutorialFlags(u8 * dst, const u32 size)
+void EMS_SaveKTutorialFlags(u8 *dst, const u32 size)
 {
     Assert(size >= (sizeof(sKTutorialBitsHistory) + sizeof(sKTutorialBits)));
 
@@ -34,7 +34,7 @@ void EMS_SaveKTutorialFlags(u8 * dst, const u32 size)
 }
 
 /* In SaveData */
-void EMS_LoadKTutorialFlags(u8 * src, const u32 size)
+void EMS_LoadKTutorialFlags(u8 *src, const u32 size)
 {
     Assert(size >= (sizeof(sKTutorialBitsHistory) + sizeof(sKTutorialBits)));
 

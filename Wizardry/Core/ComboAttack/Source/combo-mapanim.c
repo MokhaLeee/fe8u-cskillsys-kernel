@@ -15,7 +15,7 @@ extern u8 const * const gpImg_MapAnimCOMBO;
 STATIC_DECLAR void MapAnim_MoveCameraForCombo(ProcPtr proc)
 {
     int round = GetBattleHitRound(gManimSt.pCurrentRound);
-    struct Unit * unit = GetMapAnimComboUnit(round);
+    struct Unit *unit = GetMapAnimComboUnit(round);
 
     EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
 }
@@ -23,7 +23,7 @@ STATIC_DECLAR void MapAnim_MoveCameraForCombo(ProcPtr proc)
 STATIC_DECLAR void MapAnim_ShowComboSpecialEffect(ProcPtr proc)
 {
     int round = GetBattleHitRound(gManimSt.pCurrentRound);
-    struct Unit * unit = GetMapAnimComboUnit(round);
+    struct Unit *unit = GetMapAnimComboUnit(round);
 
     if (!UNIT_IS_VALID(unit) || unit != gManimSt.actor[COMBO_MAPA_ACTOR_IDX].unit)
     {
@@ -67,7 +67,7 @@ PROC_LABEL(99),
 /* External hack */
 void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void)
 {
-    struct Unit * unit;
+    struct Unit *unit;
     int round = GetBattleHitRound(gManimSt.pCurrentRound);
 
     if (round != 0)
@@ -98,7 +98,7 @@ void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void)
 /* External hack */
 bool PreMapAnimBattleRound_ComboAttack(ProcPtr proc)
 {
-    struct Unit * unit;
+    struct Unit *unit;
     int round = GetBattleHitRound(gManimSt.pCurrentRound);
 
     unit = GetMapAnimComboUnit(round);

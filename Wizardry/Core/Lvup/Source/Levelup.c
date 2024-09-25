@@ -29,7 +29,7 @@ static int GetStatIncreaseFixed(int growth, int ref)
 
 static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
+    struct Unit *unit = GetUnit(bu->unit.index);
 
     bu->changeHP  = GetStatIncrease(GetUnitHpGrowth(unit)  + bonus);
     bu->changePow = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
@@ -44,7 +44,7 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 
 static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
+    struct Unit *unit = GetUnit(bu->unit.index);
 
     bu->changeHP  = GetStatIncreaseRandC(GetUnitHpGrowth(unit)  + bonus);
     bu->changePow = GetStatIncreaseRandC(GetUnitPowGrowth(unit) + bonus);
@@ -59,7 +59,7 @@ static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)
 
 static void UnitLvup_Fixed(struct BattleUnit * bu, int bonus)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
+    struct Unit *unit = GetUnit(bu->unit.index);
 
     int ref = unit->level - 1;
     if (CA_PROMOTED & UNIT_CATTRIBUTES(unit))

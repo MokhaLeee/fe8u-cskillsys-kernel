@@ -25,7 +25,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
 
         bool Hone_eff = false;
 
-        struct Unit * unit = GetUnit(uid);
+        struct Unit *unit = GetUnit(uid);
         if (!UNIT_IS_VALID(unit))
             continue;
 
@@ -147,7 +147,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
                 int x = unit->xPos + gVecs_2x2[i].x;
                 int y = unit->yPos + gVecs_2x2[i].y;
 
-                struct Unit * tunit = GetUnitAtPosition(x, y);
+                struct Unit *tunit = GetUnitAtPosition(x, y);
                 if (!tunit)
                     continue;
 

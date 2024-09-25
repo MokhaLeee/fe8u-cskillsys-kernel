@@ -5,11 +5,11 @@ struct ProcPrePhase {
     int index;
 };
 
-typedef bool (* PrePhaseFunc_t)(struct ProcPrePhase * proc);
+typedef bool (* PrePhaseFunc_t)(struct ProcPrePhase *proc);
 extern const PrePhaseFunc_t gPrePhaseFuncs[];
 
-static void PrePhaseHook_Init(struct ProcPrePhase * proc);
-static void PrePhaseHook_Main(struct ProcPrePhase * proc);
+static void PrePhaseHook_Init(struct ProcPrePhase *proc);
+static void PrePhaseHook_Main(struct ProcPrePhase *proc);
 
 const struct ProcCmd ProcScr_PrePhaseHook[] = {
     PROC_YIELD,
@@ -26,12 +26,12 @@ PROC_LABEL(2),
     PROC_END
 };
 
-static void PrePhaseHook_Init(struct ProcPrePhase * proc)
+static void PrePhaseHook_Init(struct ProcPrePhase *proc)
 {
     proc->index = 0;
 }
 
-static void PrePhaseHook_Main(struct ProcPrePhase * proc)
+static void PrePhaseHook_Main(struct ProcPrePhase *proc)
 {
     int ret;
     PrePhaseFunc_t it;

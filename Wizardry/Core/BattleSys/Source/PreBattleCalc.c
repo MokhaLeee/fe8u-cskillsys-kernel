@@ -968,7 +968,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                     int _x = attacker->unit.xPos + gVecs_3x3[i].x;
                     int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
-                    struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+                    struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
                         continue;
 
@@ -994,7 +994,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                     int _x = attacker->unit.xPos + gVecs_3x3[i].x;
                     int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
-                    struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+                    struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
                         continue;
 
@@ -1020,7 +1020,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                     int _x = attacker->unit.xPos + gVecs_3x3[i].x;
                     int _y = attacker->unit.yPos + gVecs_3x3[i].y;
 
-                    struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
+                    struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
                     if (!UNIT_IS_VALID(unit_ally))
                         continue;
 
@@ -1050,7 +1050,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                 int _x = attacker->unit.xPos + gVecs_1x1[i].x;
                 int _y = attacker->unit.yPos + gVecs_1x1[i].y;
-                struct Unit * _unit = GetUnitAtPosition(_x, _y);
+                struct Unit *_unit = GetUnitAtPosition(_x, _y);
                 if (!_unit)
                     continue;
 
@@ -1062,7 +1062,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                     int _x2 = _unit->xPos + gVecs_1x1[i].x;
                     int _y2 = _unit->yPos + gVecs_1x1[i].y;
 
-                    struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
+                    struct Unit *_unit2 = GetUnitAtPosition(_x2, _y2);
                     if (!_unit2)
                         continue;
 
@@ -1093,7 +1093,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 
                 int _x = attacker->unit.xPos + gVecs_1x1[i].x;
                 int _y = attacker->unit.yPos + gVecs_1x1[i].y;
-                struct Unit * _unit = GetUnitAtPosition(_x, _y);
+                struct Unit *_unit = GetUnitAtPosition(_x, _y);
                 if (!_unit)
                     continue;
 
@@ -1105,7 +1105,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
                     int _x2 = _unit->xPos + gVecs_1x1[i].x;
                     int _y2 = _unit->yPos + gVecs_1x1[i].y;
 
-                    struct Unit * _unit2 = GetUnitAtPosition(_x2, _y2);
+                    struct Unit *_unit2 = GetUnitAtPosition(_x2, _y2);
                     if (!_unit2)
                         continue;
 
@@ -1296,7 +1296,7 @@ void PreBattleCalcSkills(struct BattleUnit * attacker, struct BattleUnit * defen
 void PreBattleCalcAuraEffect(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     u32 i, _x, _y;
-    struct Unit * unit;
+    struct Unit *unit;
 
     int allies_gRange3_In3x3 = 0;
     int allies_gRange2_In3x3 = 0;

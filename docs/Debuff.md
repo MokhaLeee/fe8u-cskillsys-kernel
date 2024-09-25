@@ -26,8 +26,8 @@ enum STATUS_DEBUFF_TICK_TYPE {
 };
 
 struct DebuffInfo {
-    const u8 * img;
-    void (* on_draw)(struct Unit * unit, int ix, int iy);
+    const u8 *img;
+    void (* on_draw)(struct Unit *unit, int ix, int iy);
     u16 name, desc;
 
     u8 positive_type;
@@ -71,14 +71,14 @@ enum UNIT_STATUS_IDENTIFIER {
     NEW_UNIT_STATUS_MAX = 64
 };
 
-int GetUnitStatusIndex(struct Unit * unit);
-int GetUnitStatusDuration(struct Unit * unit);
-void SetUnitStatusIndex(struct Unit * unit, int status);
-void SetUnitStatusDuration(struct Unit * unit, int duration);
+int GetUnitStatusIndex(struct Unit *unit);
+int GetUnitStatusDuration(struct Unit *unit);
+void SetUnitStatusIndex(struct Unit *unit, int status);
+void SetUnitStatusDuration(struct Unit *unit, int duration);
 
 // <bmunit.h>
-void SetUnitStatus(struct Unit * unit, int statusId);
-void SetUnitStatusExt(struct Unit * unit, int status, int duration);
+void SetUnitStatus(struct Unit *unit, int statusId);
+void SetUnitStatusExt(struct Unit *unit, int status, int duration);
 ```
 
 # 2. StatDebuff
@@ -170,7 +170,7 @@ enum UNIT_STAT_DEBUFF_IDX {
     UNIT_STAT_DEBUFF_MAX = 128, /* DO NOT modify this */
 };
 
-void SetUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
-void ClearUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
-bool CheckUnitStatDebuff(struct Unit * unit, enum UNIT_STAT_DEBUFF_IDX debuff);
+void SetUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff);
+void ClearUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff);
+bool CheckUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 ```

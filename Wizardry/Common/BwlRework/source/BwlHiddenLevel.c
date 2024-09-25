@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "bwl.h"
 
-STATIC_DECLAR int GetUnitStaticHiddenLevel(struct Unit * unit)
+STATIC_DECLAR int GetUnitStaticHiddenLevel(struct Unit *unit)
 {
     int hidden_lv;
 
@@ -15,7 +15,7 @@ STATIC_DECLAR int GetUnitStaticHiddenLevel(struct Unit * unit)
     return hidden_lv;
 }
 
-void NewBwlRecordHiddenLevel(struct Unit * unit)
+void NewBwlRecordHiddenLevel(struct Unit *unit)
 {
     int level;
     struct NewBwl * bwl;
@@ -30,7 +30,7 @@ void NewBwlRecordHiddenLevel(struct Unit * unit)
     bwl->levelGain = level;
 }
 
-int GetUnitHiddenLevel(struct Unit * unit)
+int GetUnitHiddenLevel(struct Unit *unit)
 {
     struct NewBwl * bwl;
     bwl = GetNewBwl(UNIT_CHAR_ID(unit));
@@ -40,7 +40,7 @@ int GetUnitHiddenLevel(struct Unit * unit)
     return GetUnitStaticHiddenLevel(unit);
 }
 
-void UnitHiddenLevelPreLoad(struct Unit * unit)
+void UnitHiddenLevelPreLoad(struct Unit *unit)
 {
     struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
     if (!bwl)

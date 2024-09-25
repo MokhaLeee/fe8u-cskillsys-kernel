@@ -4,12 +4,12 @@
 #include "debuff.h"
 #include "constants/skills.h"
 
-void ForEachUnitInRange(void(* func)(struct Unit * unit));
-void AddUnitToTargetListIfAllied(struct Unit * unit);
+void ForEachUnitInRange(void(* func)(struct Unit *unit));
+void AddUnitToTargetListIfAllied(struct Unit *unit);
 
 STATIC_DECLAR void ExecSkillBreathOfLifeEffectAnim(ProcPtr proc)
 {
-    struct Unit * unit = gActiveUnit;
+    struct Unit *unit = gActiveUnit;
 
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -35,7 +35,7 @@ STATIC_DECLAR void SkillBreathOfLifePostAnimEffect(ProcPtr proc)
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
         struct SelectTarget * starget = GetTarget(i);
-        struct Unit * tunit = GetUnit(starget->uid);
+        struct Unit *tunit = GetUnit(starget->uid);
 
         int max_hp = GetUnitMaxHp(tunit);
 #if defined(SID_BreathOfLife) && (COMMON_SKILL_VALID(SID_BreathOfLife))
@@ -63,7 +63,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillBreathOfLife[] = {
 
 bool PostActionSkillBreathOfLife(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;

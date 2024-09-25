@@ -9,7 +9,7 @@
 
 STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
 {
-    struct Unit * unit;
+    struct Unit *unit;
     int i, ix, iy;
 
     FORCE_DECLARE bool Aerobatics_activated;
@@ -76,7 +76,7 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
             int barrier_range = 0;
             int pioneer_range = 0;
 
-            struct Unit * _unit = GetUnitAtPosition(ix, iy);
+            struct Unit *_unit = GetUnitAtPosition(ix, iy);
             if (!UNIT_ALIVE(_unit))
                 continue;
 

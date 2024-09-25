@@ -12,18 +12,18 @@
 struct BanimSyncHandler {
     /* 00 */ u8 pid, jid;
     /* 02 */ u16 weapon;
-    /* 04 */ const struct BattleAnimDef * animdef;
+    /* 04 */ const struct BattleAnimDef *animdef;
     /* 08 at end */
 };
 extern struct BanimSyncHandler gBanimSyncHandler;
 
-typedef struct BanimSyncHandler * (* BanimSyncHandlerGetter_t)(struct Anim * anim);
+typedef struct BanimSyncHandler * (* BanimSyncHandlerGetter_t)(struct Anim *anim);
 extern const BanimSyncHandlerGetter_t BanimSyncHandlerGetter[];
 
-int BanimSync(int pos, u8 pid, u8 jid, const struct BattleAnimDef * animdef, u16 weapon, int type);
+int BanimSync(int pos, u8 pid, u8 jid, const struct BattleAnimDef *animdef, u16 weapon, int type);
 void BanimSyncFrame(int pos, int type);
-struct BanimSyncHandler * FindBanimSyncHandler(struct Anim * anim);
-int TrySwitchBanim(struct Anim * anim);
+struct BanimSyncHandler * FindBanimSyncHandler(struct Anim *anim);
+int TrySwitchBanim(struct Anim *anim);
 
 struct BanimSyncInfo {
     PROC_HEADER;

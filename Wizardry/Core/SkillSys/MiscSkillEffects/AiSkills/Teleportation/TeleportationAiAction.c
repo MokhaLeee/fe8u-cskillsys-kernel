@@ -18,7 +18,7 @@ void AiAction_Teleportation(ProcPtr parent)
 }
 
 /* AiActionConf:idle */
-STATIC_DECLAR bool AiAction_TeleportationIdleExt(struct CpPerformProc * proc)
+STATIC_DECLAR bool AiAction_TeleportationIdleExt(struct CpPerformProc *proc)
 {
     gAiDecision.xMove = gAiDecision.xTarget;
     gAiDecision.yMove = gAiDecision.yTarget;
@@ -28,7 +28,7 @@ STATIC_DECLAR bool AiAction_TeleportationIdleExt(struct CpPerformProc * proc)
     return true;
 }
 
-bool AiAction_TeleportationIdle(struct CpPerformProc * proc)
+bool AiAction_TeleportationIdle(struct CpPerformProc *proc)
 {
     /* Force introduce a YIELD */
     proc->func = AiAction_TeleportationIdleExt;

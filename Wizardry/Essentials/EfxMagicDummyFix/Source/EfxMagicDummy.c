@@ -1,11 +1,11 @@
 #include "common-chax.h"
 
-s16 GetAnimRoundType(struct Anim * anim);
+s16 GetAnimRoundType(struct Anim *anim);
 
 LYN_REPLACE_CHECK(EfxDummymagicMain);
-void EfxDummymagicMain(struct ProcEfx * proc)
+void EfxDummymagicMain(struct ProcEfx *proc)
 {
-    struct Anim * animc = GetAnimAnotherSide(proc->anim);
+    struct Anim *animc = GetAnimAnotherSide(proc->anim);
     int cur, frame = EfxGetCamMovDuration();
     int time = proc->timer++;
 

@@ -2,15 +2,15 @@
 #include "item-sys.h"
 
 LYN_REPLACE_CHECK(GetItemNameWithArticle);
-char * GetItemNameWithArticle(int item, s8 capitalize)
+char *GetItemNameWithArticle(int item, s8 capitalize)
 {
     return GetItemName(item);
 }
 
 LYN_REPLACE_CHECK(GetItemName);
-char * GetItemName(int item)
+char *GetItemName(int item)
 {
-    char * result;
+    char *result;
 
 #if CHAX
     if (IsDuraItem(item))
@@ -102,7 +102,7 @@ int GetItemMaxCost(int item)
 }
 
 LYN_REPLACE_CHECK(DrawItemMenuLine);
-void DrawItemMenuLine(struct Text * text, int item, s8 isUsable, u16 * mapOut)
+void DrawItemMenuLine(struct Text * text, int item, s8 isUsable, u16 *mapOut)
 {
     Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
     Text_DrawString(text, GetItemName(item));
@@ -117,7 +117,7 @@ void DrawItemMenuLine(struct Text * text, int item, s8 isUsable, u16 * mapOut)
 }
 
 LYN_REPLACE_CHECK(DrawItemMenuLineLong);
-void DrawItemMenuLineLong(struct Text * text, int item, s8 isUsable, u16 * mapOut)
+void DrawItemMenuLineLong(struct Text * text, int item, s8 isUsable, u16 *mapOut)
 {
     Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
     Text_DrawString(text, GetItemName(item));
@@ -134,7 +134,7 @@ void DrawItemMenuLineLong(struct Text * text, int item, s8 isUsable, u16 * mapOu
 }
 
 LYN_REPLACE_CHECK(DrawItemMenuLineNoColor);
-void DrawItemMenuLineNoColor(struct Text * text, int item, u16 * mapOut)
+void DrawItemMenuLineNoColor(struct Text * text, int item, u16 *mapOut)
 {
     Text_SetCursor(text, 0);
     Text_DrawString(text, GetItemName(item));
@@ -149,7 +149,7 @@ void DrawItemMenuLineNoColor(struct Text * text, int item, u16 * mapOut)
 }
 
 LYN_REPLACE_CHECK(DrawItemStatScreenLine);
-void DrawItemStatScreenLine(struct Text * text, int item, int nameColor, u16 * mapOut)
+void DrawItemStatScreenLine(struct Text * text, int item, int nameColor, u16 *mapOut)
 {
     int color;
 

@@ -3,19 +3,19 @@
 #include "debug-kit.h"
 #include "constants/gfx.h"
 
-const u8 * _GetSkillIconExt(const u8 lo, int hi)
+const u8 *_GetSkillIconExt(const u8 lo, int hi)
 {
-    const u8 * icon = gpSkillInfos[lo + (hi << 8)].icon;
+    const u8 *icon = gpSkillInfos[lo + (hi << 8)].icon;
     if (!icon)
         icon = GFX_SkillIcon_WIP;
 
     return icon;
 }
 
-const u8 * GetSkillIcon1(const u8 sid) { return _GetSkillIconExt(sid, Skill_INFO_GENERIC); }
-const u8 * GetSkillIcon2(const u8 sid)  { return _GetSkillIconExt(sid, Skill_INFO_PERSON); }
-const u8 * GetSkillIcon3(const u8 sid)     { return _GetSkillIconExt(sid, Skill_INFO_JOB); }
-const u8 * GetSkillIcon4(const u8 sid)    { return _GetSkillIconExt(sid, Skill_INFO_ITEM); }
+const u8 *GetSkillIcon1(const u8 sid) { return _GetSkillIconExt(sid, Skill_INFO_GENERIC); }
+const u8 *GetSkillIcon2(const u8 sid)  { return _GetSkillIconExt(sid, Skill_INFO_PERSON); }
+const u8 *GetSkillIcon3(const u8 sid)     { return _GetSkillIconExt(sid, Skill_INFO_JOB); }
+const u8 *GetSkillIcon4(const u8 sid)    { return _GetSkillIconExt(sid, Skill_INFO_ITEM); }
 
 u16 GetSkillDescMsg(const u16 sid)
 {
@@ -27,7 +27,7 @@ u16 GetSkillNameMsg(const u16 sid)
     return gpSkillInfos[sid].name;
 }
 
-char * GetSkillDescStr(const u16 sid)
+char *GetSkillDescStr(const u16 sid)
 {
     u16 msg = GetSkillDescMsg(sid);
     if (msg != 0)
@@ -36,9 +36,9 @@ char * GetSkillDescStr(const u16 sid)
     return NULL;
 }
 
-char * SkillDescToName(char * str)
+char *SkillDescToName(char *str)
 {
-    char * it;
+    char *it;
     for (it = str; *it; ++it)
     {
         if (*it == ':')
@@ -50,9 +50,9 @@ char * SkillDescToName(char * str)
     return str;
 }
 
-char * GetSkillNameStrFormDesc(const u16 sid)
+char *GetSkillNameStrFormDesc(const u16 sid)
 {
-    char * str;
+    char *str;
     u16 msg = GetSkillDescMsg(sid);
     if (msg == 0)
         return "W.I.P";
@@ -61,7 +61,7 @@ char * GetSkillNameStrFormDesc(const u16 sid)
     return SkillDescToName(str);
 }
 
-char * GetSkillNameStr(const u16 sid)
+char *GetSkillNameStr(const u16 sid)
 {
     u16 msg = GetSkillNameMsg(sid);
     if (msg == 0)

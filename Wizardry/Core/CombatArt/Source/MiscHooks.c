@@ -4,7 +4,7 @@
 #include "constants/gfx.h"
 #include "constants/combat-arts.h"
 
-bool CanUnitPlayCombatArt(struct Unit * unit, u16 item)
+bool CanUnitPlayCombatArt(struct Unit *unit, u16 item)
 {
     int i, wtype = GetItemType(item);
     struct CombatArtList * list = GetCombatArtList(unit, wtype);
@@ -19,7 +19,7 @@ bool CanUnitPlayCombatArt(struct Unit * unit, u16 item)
 }
 
 /* Support for menu */
-u8 GetBestRangeBonusCid(struct Unit * unit, u16 item)
+u8 GetBestRangeBonusCid(struct Unit *unit, u16 item)
 {
     u8 ret = 0;
     int i, wtype = GetItemType(item);
@@ -39,7 +39,7 @@ u8 GetBestRangeBonusCid(struct Unit * unit, u16 item)
 }
 
 /* Icon Getter */
-const u8 * GetCombatArtIcon(const u8 cid)
+const u8 *GetCombatArtIcon(const u8 cid)
 {
     u8 const * const default_icons[] = {
         [ITYPE_SWORD] = GFX_CombatArtIcon_SwordArtAtk,
@@ -69,7 +69,7 @@ const u8 * GetCombatArtIcon(const u8 cid)
 }
 
 /* Weapon range getter */
-int WeaponRangeGetterCombatArt(int range, struct Unit * unit, u16 item)
+int WeaponRangeGetterCombatArt(int range, struct Unit *unit, u16 item)
 {
     u8 cid = GetCombatArtInForce(unit);
 
@@ -87,7 +87,7 @@ void PreBattleCalcCombatArt(struct BattleUnit * bu, struct BattleUnit * defender
 {
     u8 cid = GetCombatArtInForce(&bu->unit);
     const struct CombatArtInfo * info;
-    struct Unit * unit;
+    struct Unit *unit;
 
     if (!COMBART_VALID(cid))
         return;

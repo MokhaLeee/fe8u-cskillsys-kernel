@@ -31,7 +31,7 @@ extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;
  * map.c
  */
 bool IsPositionValid(s8 x, s8 y);
-struct Unit * GetUnitAtPosition(s8 x, s8 y);
+struct Unit *GetUnitAtPosition(s8 x, s8 y);
 
 /**
  * mapanim.c
@@ -59,7 +59,7 @@ u32 simple_mod(u32 a, u32 b);
 /**
  * banim.c
  */
-bool IsAttackerAnim(struct Anim * anim);
+bool IsAttackerAnim(struct Anim *anim);
 int GetBattleActorHpAtRound(int round);
 int GetBattleTargetHpAtRound(int round);
 
@@ -102,17 +102,17 @@ extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
 /**
  * Bits
  */
-static inline void _BIT_SET(u32 * bits, int idx)
+static inline void _BIT_SET(u32 *bits, int idx)
 {
     bits[idx / 32] |= 1 << (idx % 32);
 }
 
-static inline void _BIT_CLR(u32 * bits, int idx)
+static inline void _BIT_CLR(u32 *bits, int idx)
 {
     bits[idx / 32] &= ~(1 << (idx % 32));
 }
 
-static inline bool _BIT_CHK(u32 * bits, int idx)
+static inline bool _BIT_CHK(u32 *bits, int idx)
 {
     return !!(bits[idx / 32] & (1 << (idx % 32)));
 }

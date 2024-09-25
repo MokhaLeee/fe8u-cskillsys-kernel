@@ -43,7 +43,7 @@ static void LoadStatScreenMuAreaBackGround(void)
 }
 
 LYN_REPLACE_CHECK(PageNumCtrl_DisplayMuPlatform);
-void PageNumCtrl_DisplayMuPlatform(struct StatScreenPageNameProc * proc)
+void PageNumCtrl_DisplayMuPlatform(struct StatScreenPageNameProc *proc)
 {
     SetBlendTargetA(0, 0, 1, 0, 0);
     SetBlendTargetB(0, 0, 0, 1, 0);
@@ -112,7 +112,7 @@ void StatScreen_InitDisplayRework(ProcPtr proc)
     Proc_SetEndCb(proc, StatScreenNewCallBack);
 }
 
-void PageSlide_OnLoopRework(struct StatScreenEffectProc* proc)
+void PageSlide_OnLoopRework(struct StatScreenEffectProc*proc)
 {
     int off;
 
@@ -187,7 +187,7 @@ void PageSlide_OnLoopRework(struct StatScreenEffectProc* proc)
 }
 
 LYN_REPLACE_CHECK(UnitSlide_SetNewUnit);
-void UnitSlide_SetNewUnit(struct StatScreenEffectProc* proc)
+void UnitSlide_SetNewUnit(struct StatScreenEffectProc*proc)
 {
     gStatScreen.unit = GetUnit(proc->newItem);
 

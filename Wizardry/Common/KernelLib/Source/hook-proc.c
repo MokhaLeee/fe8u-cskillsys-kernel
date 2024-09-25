@@ -7,7 +7,7 @@ struct HookProc {
     int index;
 };
 
-STATIC_DECLAR void HookProc_Main(struct HookProc * proc)
+STATIC_DECLAR void HookProc_Main(struct HookProc *proc)
 {
     int ret;
     HookProcFunc_t it;
@@ -42,7 +42,7 @@ PROC_LABEL(2),
 
 void KernelStartBlockingHookProc(HookProcFunc_t const * hook_list, ProcPtr parent)
 {
-    struct HookProc * proc;
+    struct HookProc *proc;
     proc = Proc_StartBlocking(ProcScr_HookCommon, parent);
     proc->index = 0;
     proc->hook_list = hook_list;

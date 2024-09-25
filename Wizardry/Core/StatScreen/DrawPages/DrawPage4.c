@@ -9,7 +9,7 @@
 static void DrawPage4SupportBonus(void)
 {
     struct SupportBonuses bonuses;
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     /* Draw texts */
     PutDrawText(
@@ -97,7 +97,7 @@ static void DrawPage4SupportBonus(void)
 
 static void DrawPage4SupportPInfo(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+    struct Unit *unit = gStatScreen.unit;
 
     int i, line, max = GetUnitSupporterCount(unit);
     const u8 text_id[8] = {

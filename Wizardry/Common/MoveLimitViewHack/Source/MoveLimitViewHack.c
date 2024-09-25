@@ -6,7 +6,7 @@
 #define gPalGreenRangeSquare gUnknown_08A02FF4
 
 LYN_REPLACE_CHECK(MoveLimitView_OnLoop);
-void MoveLimitView_OnLoop(struct MoveLimitViewProc * proc)
+void MoveLimitView_OnLoop(struct MoveLimitViewProc *proc)
 {
     int frame = (GetGameClock() / 2) & 31;
 

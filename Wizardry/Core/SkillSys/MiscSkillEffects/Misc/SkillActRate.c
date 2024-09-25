@@ -3,7 +3,7 @@
 #include "battle-system.h"
 #include "constants/skills.h"
 
-bool CheckSkillActivate(struct Unit * unit, int sid, int rate)
+bool CheckSkillActivate(struct Unit *unit, int sid, int rate)
 {
     if (!SkillTester(unit, sid))
         return false;

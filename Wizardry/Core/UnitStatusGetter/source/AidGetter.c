@@ -3,7 +3,7 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int _GetUnitAid(struct Unit * unit)
+int _GetUnitAid(struct Unit *unit)
 {
     const StatusGetterFunc_t * it;
     int status;

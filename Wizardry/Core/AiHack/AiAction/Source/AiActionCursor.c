@@ -1,9 +1,9 @@
 #include "common-chax.h"
 
 LYN_REPLACE_CHECK(CpPerform_MoveCameraOntoTarget);
-void CpPerform_MoveCameraOntoTarget(struct CpPerformProc * proc)
+void CpPerform_MoveCameraOntoTarget(struct CpPerformProc *proc)
 {
-    struct Unit * unit;
+    struct Unit *unit;
 
     int x = 0;
     int y = 0;

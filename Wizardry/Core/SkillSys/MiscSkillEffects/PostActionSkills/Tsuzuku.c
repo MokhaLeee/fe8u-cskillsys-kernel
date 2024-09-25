@@ -13,7 +13,7 @@ extern u8 gPostActionGaleforceFlag;
 
 bool PostActionTsuzuku(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit * unit = gActiveUnit;
+    FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
     if (!UNIT_IS_VALID(unit) || CheckBitUES(unit, UES_BIT_TSZUKU_SKILL_USED))
         return false;
