@@ -51,7 +51,7 @@ Modern CHAX for FE8U-SkillSystem.
 ```bash
 cd Tools
 git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git
-git clone https://github.com/StanHash/EventAssembler.git --recursive
+git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix
 git clone https://github.com/StanHash/FE-PyTools.git --recursive
 ```
 
