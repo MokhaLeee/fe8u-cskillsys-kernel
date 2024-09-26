@@ -5,13 +5,11 @@
 
 void PrologueCallBack(void)
 {
-    struct Unit *unit;
+	struct Unit *unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
 
-    unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
-    if (unit)
-    {
+	if (unit) {
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
-        UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
+		UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
 #endif
-    }
+	}
 }

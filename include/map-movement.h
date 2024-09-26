@@ -12,5 +12,5 @@ enum MovMapFillStateRe_flags {
     FMOVSTRE_PIONEER = 1 << 2,
 };
 
-extern u8 ** KernelExtMoveBarrierMap;
-extern u8 ** KernelExtMovePioneerMap;
+extern u8 **KernelExtMoveBarrierMap;
+extern u8 **KernelExtMovePioneerMap;

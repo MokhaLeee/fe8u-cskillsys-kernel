@@ -6,9 +6,9 @@ LYN_REPLACE_CHECK(StartGlowBlendCtrl);
 void StartGlowBlendCtrl(void)
 {
 #if CHAX
-    sLastHbi = NULL;
-    gStatScreen.help = NULL;
+	sLastHbi = NULL;
+	gStatScreen.help = NULL;
 #endif
 
-    Proc_Start(gProcScr_SSGlowyBlendCtrl, PROC_TREE_3);
+	Proc_Start(gProcScr_SSGlowyBlendCtrl, PROC_TREE_3);
 }

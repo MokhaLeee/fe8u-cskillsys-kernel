@@ -4,77 +4,74 @@
 #include "debuff.h"
 #include "constants/skills.h"
 
-void ForEachUnitInRange(void(* func)(struct Unit *unit));
-void AddUnitToTargetListIfAllied(struct Unit *unit);
-
 STATIC_DECLAR void ExecSkillBreathOfLifeEffectAnim(ProcPtr proc)
 {
-    struct Unit *unit = gActiveUnit;
+	struct Unit *unit = gActiveUnit;
 
-    BmMapFill(gBmMapMovement, -1);
-    BmMapFill(gBmMapRange, 0);
-    GenerateUnitStandingReachRange(unit, 0b11);
+	BmMapFill(gBmMapMovement, -1);
+	BmMapFill(gBmMapRange, 0);
+	GenerateUnitStandingReachRange(unit, 0b11);
 
-    InitTargets(unit->xPos, unit->yPos);
-    ForEachUnitInRange(AddUnitToTargetListIfAllied);
+	InitTargets(unit->xPos, unit->yPos);
+	ForEachUnitInRange(AddUnitToTargetListIfAllied);
 
 #if 0
-    int i;
-    for (i = 0; i < GetSelectTargetCount(); i++)
-    {
-        struct SelectTarget *starget = GetTarget(i);
-        CallMapAnim_HeavyGravity(proc, starget->x, starget->y);
-    }
+	int i;
+
+	for (i = 0; i < GetSelectTargetCount(); i++) {
+		struct SelectTarget *starget = GetTarget(i);
+
+		CallMapAnim_HeavyGravity(proc, starget->x, starget->y);
+	}
 #endif
 }
 
 STATIC_DECLAR void SkillBreathOfLifePostAnimEffect(ProcPtr proc)
 {
-    int i;
+	int i;
 
-    for (i = 0; i < GetSelectTargetCount(); i++)
-    {
-        struct SelectTarget *starget = GetTarget(i);
-        struct Unit *tunit = GetUnit(starget->uid);
+	for (i = 0; i < GetSelectTargetCount(); i++) {
+		struct SelectTarget *starget = GetTarget(i);
+		struct Unit *tunit = GetUnit(starget->uid);
 
-        int max_hp = GetUnitMaxHp(tunit);
+		int max_hp = GetUnitMaxHp(tunit);
 #if defined(SID_BreathOfLife) && (COMMON_SKILL_VALID(SID_BreathOfLife))
-        int perc = SKILL_EFF0(SID_BreathOfLife);
+		int perc = SKILL_EFF0(SID_BreathOfLife);
 #else
-        int perc = 20;
+		int perc = 20;
 #endif
-        int heal_amt = Div(max_hp * perc, 100);
+		int heal_amt = Div(max_hp * perc, 100);
 
-        if ((tunit->curHP + heal_amt) <= max_hp)
-            tunit->curHP = tunit->curHP + heal_amt;
-        else
-            tunit->curHP = max_hp;
-    }
+		if ((tunit->curHP + heal_amt) <= max_hp)
+			tunit->curHP = tunit->curHP + heal_amt;
+		else
+			tunit->curHP = max_hp;
+	}
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionSkillBreathOfLife[] = {
-    PROC_NAME("PostActionSkillBreathOfLife"),
-    PROC_YIELD,
-    PROC_CALL(ExecSkillBreathOfLifeEffectAnim),
-    // PROC_WHILE(MapAnimHeavyGravityExists),
-    PROC_CALL(SkillBreathOfLifePostAnimEffect),
-    PROC_END
+	PROC_NAME("PostActionSkillBreathOfLife"),
+	PROC_YIELD,
+	PROC_CALL(ExecSkillBreathOfLifeEffectAnim),
+	// PROC_WHILE(MapAnimHeavyGravityExists),
+	PROC_CALL(SkillBreathOfLifePostAnimEffect),
+	PROC_END
 };
 
 bool PostActionSkillBreathOfLife(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit *unit = gActiveUnit;
+	FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
-    if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
-        return false;
+	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+		return false;
 
 #if defined(SID_BreathOfLife) && (COMMON_SKILL_VALID(SID_BreathOfLife))
-    if (!SkillTester(unit, SID_BreathOfLife))
+	if (!SkillTester(unit, SID_BreathOfLife))
 #else
-    if (1)
+	if (1)
 #endif
-        return false;
+		return false;
 
-    Proc_StartBlocking(ProcScr_PostActionSkillBreathOfLife, parent);
-    return true;
+	Proc_StartBlocking(ProcScr_PostActionSkillBreathOfLife, parent);
+	return true;
 }

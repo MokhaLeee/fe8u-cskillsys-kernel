@@ -11,129 +11,129 @@ _DECL_INFO *const RTextPageUnit_WithLeadership = &RText_Pow;
 
 /* Line #1 */
 static _DECL_INFO RText_Pow = {
-    NULL, &RText_Mag, &RText_Name, &RText_Mov,
-    0x66, 0x18, 0x546,
-    NULL, NULL
+	NULL, &RText_Mag, &RText_Name, &RText_Mov,
+	0x66, 0x18, 0x546,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Mag = {
-    &RText_Pow, &RText_Skl, &RText_Name, &RText_Con,
-    0x66, 0x28, 0x547,
-    NULL, NULL
+	&RText_Pow, &RText_Skl, &RText_Name, &RText_Con,
+	0x66, 0x28, 0x547,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Skl = {
-    &RText_Mag, &RText_Spd, &RText_Name, &RText_Aid,
-    0x66, 0x38, 0x548,
-    NULL, NULL
+	&RText_Mag, &RText_Spd, &RText_Name, &RText_Aid,
+	0x66, 0x38, 0x548,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Spd = {
-    &RText_Skl, &RText_Lck, &RText_Name, &RText_Affin,
-    0x66, 0x48, 0x549,
-    NULL, NULL
+	&RText_Skl, &RText_Lck, &RText_Name, &RText_Affin,
+	0x66, 0x48, 0x549,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Lck = {
-    &RText_Spd, &RText_Def, &RText_Class, &RText_Lead,
-    0x66, 0x58, 0x54A,
-    NULL, NULL
+	&RText_Spd, &RText_Def, &RText_Class, &RText_Lead,
+	0x66, 0x58, 0x54A,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Def = {
-    &RText_Lck, &RText_Res, &RText_Class, &RText_Trv,
-    0x66, 0x68, 0x54B,
-    NULL, NULL
+	&RText_Lck, &RText_Res, &RText_Class, &RText_Trv,
+	0x66, 0x68, 0x54B,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Res = {
-    &RText_Def, &RText_BAmt, &RText_Exp, &RText_Talk,
-    0x66, 0x78, 0x54C,
-    NULL, NULL
+	&RText_Def, &RText_BAmt, &RText_Exp, &RText_Talk,
+	0x66, 0x78, 0x54C,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_BAmt = {
-    &RText_Res, NULL, &RText_Hp, &RText_Cond,
-    0x66, 0x88, MSG_MSS_BattleAmtDesc,
-    NULL, NULL
+	&RText_Res, NULL, &RText_Hp, &RText_Cond,
+	0x66, 0x88, MSG_MSS_BattleAmtDesc,
+	NULL, NULL
 };
 
 /* Line #2 */
 static _DECL_INFO RText_Mov = {
-    NULL, &RText_Con, &RText_Pow, NULL,
-    0xA6, 0x18, 0x54D,
-    NULL, NULL
+	NULL, &RText_Con, &RText_Pow, NULL,
+	0xA6, 0x18, 0x54D,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Con = {
-    &RText_Mov, &RText_Aid, &RText_Mag, NULL,
-    0xA6, 0x28, 0x54E,
-    NULL, NULL
+	&RText_Mov, &RText_Aid, &RText_Mag, NULL,
+	0xA6, 0x28, 0x54E,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Aid = {
-    &RText_Con, &RText_Affin, &RText_Skl, NULL,
-    0xA6, 0x38, 0x54F,
-    NULL, NULL
+	&RText_Con, &RText_Affin, &RText_Skl, NULL,
+	0xA6, 0x38, 0x54F,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Affin = {
-    &RText_Aid, &RText_Lead, &RText_Spd, NULL,
-    0xA6, 0x48, 0x551,
-    NULL, NULL
+	&RText_Aid, &RText_Lead, &RText_Spd, NULL,
+	0xA6, 0x48, 0x551,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Lead = {
-    &RText_Affin, &RText_Trv, &RText_Lck, NULL,
-    0xA6, 0x58, MSG_MSS_LEADERSHIP_DESC,
-    NULL, NULL
+	&RText_Affin, &RText_Trv, &RText_Lck, NULL,
+	0xA6, 0x58, MSG_MSS_LEADERSHIP_DESC,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Trv = {
-    &RText_Lead, &RText_Talk, &RText_Def, NULL,
-    0xA6, 0x68, 0x550,
-    NULL, NULL
+	&RText_Lead, &RText_Talk, &RText_Def, NULL,
+	0xA6, 0x68, 0x550,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Talk = {
-    &RText_Trv, &RText_Cond, &RText_Res, NULL,
-    0xA6, 0x78, 0x550,
-    NULL, NULL
+	&RText_Trv, &RText_Cond, &RText_Res, NULL,
+	0xA6, 0x78, 0x550,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Cond = {
-    &RText_Talk, &RText_BAmt, &RText_BAmt, NULL,
-    0xA6, 0x88, 0x552,
-    NULL, HbPopulate_SSStatus
+	&RText_Talk, &RText_BAmt, &RText_BAmt, NULL,
+	0xA6, 0x88, 0x552,
+	NULL, HbPopulate_SSStatus
 };
 
 /* Page left */
 static _DECL_INFO RText_Name = {
-    &RText_Hp, &RText_Class, NULL, &RText_Spd,
-    0x18, 0x50, 0,
-    NULL, HbPopulate_SSCharacter
+	&RText_Hp, &RText_Class, NULL, &RText_Spd,
+	0x18, 0x50, 0,
+	NULL, HbPopulate_SSCharacter
 };
 
 static _DECL_INFO RText_Class = {
-    &RText_Name, &RText_Level, NULL, &RText_Def,
-    0x06, 0x68, 0,
-    NULL, HbPopulate_SSClass
+	&RText_Name, &RText_Level, NULL, &RText_Def,
+	0x06, 0x68, 0,
+	NULL, HbPopulate_SSClass
 };
 
 static _DECL_INFO RText_Level = {
-    &RText_Class, &RText_Hp, NULL, &RText_Exp,
-    0x06, 0x78, 0x542,
-    NULL, NULL
+	&RText_Class, &RText_Hp, NULL, &RText_Exp,
+	0x06, 0x78, 0x542,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Exp = {
-    &RText_Class, &RText_Hp, &RText_Level, &RText_Res,
-    0x26, 0x78, 0x543,
-    NULL, NULL
+	&RText_Class, &RText_Hp, &RText_Level, &RText_Res,
+	0x26, 0x78, 0x543,
+	NULL, NULL
 };
 
 static _DECL_INFO RText_Hp = {
-    &RText_Level, &RText_Name, NULL, &RText_Res,
-    0x06, 0x88, 0x544,
-    NULL, NULL
+	&RText_Level, &RText_Name, NULL, &RText_Res,
+	0x06, 0x88, 0x544,
+	NULL, NULL
 };

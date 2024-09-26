@@ -76,10 +76,10 @@ struct SkillList {
     u8 amt;
     u16 sid[23];
 };
-extern struct SkillList * (* _GetUnitSkillList)(struct Unit *unit);
+extern struct SkillList *(* _GetUnitSkillList)(struct Unit *unit);
 #define GetUnitSkillList _GetUnitSkillList
 
-void GenerateSkillListExt(struct Unit *unit, struct SkillList * list);
+void GenerateSkillListExt(struct Unit *unit, struct SkillList *list);
 void ForceUpdateUnitSkillList(struct Unit *unit);
 void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
@@ -104,7 +104,7 @@ struct PrepEquipSkillList {
 };
 
 void ResetPrepEquipSkillList(void);
-struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit *unit);
+struct PrepEquipSkillList *GetPrepEquipSkillList(struct Unit *unit);
 
 /* Game data */
 #define SKILL_ROM_DATA_AMT 5 /* Unit can learn 5 skills on lv0/5/10/15/20 */
@@ -251,7 +251,7 @@ void TryAddSkillPromotion(struct Unit *unit, int jid);
 /**
  * External MiscSkillEffects
  */
-bool GetTeleportationRandomPosition(struct Unit *unit, struct Vec2 * out);
+bool GetTeleportationRandomPosition(struct Unit *unit, struct Vec2 *out);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {

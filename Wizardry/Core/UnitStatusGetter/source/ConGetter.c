@@ -10,6 +10,7 @@
  */
 int _GetUnitCon(struct Unit *unit)
 {
-    int status = UNIT_CON(unit);
-    return status;
+	int status = UNIT_CON(unit);
+
+	return status;
 }

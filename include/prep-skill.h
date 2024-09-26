@@ -51,7 +51,7 @@ enum ProcPrepSkill2Label {
     PL_PREPSKILL2_END,
 };
 
-void StartPrepSelectSkillScreen(struct ProcPrepSkill1 * pproc);
+void StartPrepSelectSkillScreen(struct ProcPrepSkill1 *pproc);
 
 extern const u8 Gfx_PrepPickSkillScreen[];
 extern const u8 Gfx_PrepSkillScreen[];
@@ -88,7 +88,7 @@ struct ProcPrepSkillObj {
     bool reload;
 };
 
-void NewPrepSkillObj(struct ProcPrepSkill2 * pproc);
+void NewPrepSkillObj(struct ProcPrepSkill2 *pproc);
 void RegisterPrepSkillObjReload(void);
 void EndPrepSkillObj(void);
 void EnablePrepSkillObj(void);
@@ -105,3 +105,5 @@ void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 *proc);
 void PrepSkill2_InitTexts(void);
 void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 *proc);
 void PrepSkill2_DrawRightTopBar(struct ProcPrepSkill2 *proc);
+
+extern struct PrepEquipSkillList sPrepEquipSkillList;

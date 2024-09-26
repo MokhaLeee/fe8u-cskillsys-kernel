@@ -5,49 +5,47 @@
 
 FORCE_DECLARE static void callback_anim(ProcPtr proc)
 {
-    EndMu(GetUnitMu(gActiveUnit));
-    StartStatusHealEffect(gActiveUnit, proc);
+	EndMu(GetUnitMu(gActiveUnit));
+	StartStatusHealEffect(gActiveUnit, proc);
 }
 
 FORCE_DECLARE static void callback_refrain(ProcPtr proc)
 {
-    struct MuProc * mu;
-    HideUnitSprite(gActiveUnit);
+	struct MuProc *mu;
 
-    mu = GetUnitMu(gActiveUnit);
-    if (!mu)
-        mu = StartMu(gActiveUnit);
+	HideUnitSprite(gActiveUnit);
 
-    SetMuDefaultFacing(mu);
-    StartTemporaryLock(proc, 15);
+	mu = GetUnitMu(gActiveUnit);
+	if (!mu)
+		mu = StartMu(gActiveUnit);
+
+	SetMuDefaultFacing(mu);
+	StartTemporaryLock(proc, 15);
 }
 
 bool PostActionAlertStance(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit *unit = gActiveUnit;
+	FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
-    if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
-        return false;
+	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+		return false;
 
-    if (gActionData.unitActionType == UNIT_ACTION_WAIT)
-    {
+	if (gActionData.unitActionType == UNIT_ACTION_WAIT) {
 #if defined(SID_AlertStancePlus) && (COMMON_SKILL_VALID(SID_AlertStancePlus))
-        if (SkillTester(unit, SID_AlertStancePlus))
-        {
-            NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
-            SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID_PLUS);
-            return true;
-        }
+		if (SkillTester(unit, SID_AlertStancePlus)) {
+			NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
+			SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID_PLUS);
+			return true;
+		}
 #endif
 
 #if defined(SID_AlertStance) && (COMMON_SKILL_VALID(SID_AlertStance))
-        if (SkillTester(unit, SID_AlertStance))
-        {
-            NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
-            SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID);
-            return true;
-        }
+		if (SkillTester(unit, SID_AlertStance)) {
+			NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
+			SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID);
+			return true;
+		}
 #endif
-    }
-    return false;
+	}
+	return false;
 }

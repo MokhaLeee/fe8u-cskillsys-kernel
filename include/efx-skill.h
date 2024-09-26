@@ -9,8 +9,8 @@ bool EfxSkillExists(void);
 
 /* Efx skill box */
 enum efx_skill_box_style {
-    EFX_SKILL_BOX_SKILL = 0,
-    EFX_SKILL_BOX_COMBATART = 1,
+	EFX_SKILL_BOX_SKILL = 0,
+	EFX_SKILL_BOX_COMBATART = 1,
 };
 
 void NewEfxSkillBox(struct Anim *anim, int msg, const u8 *icon, u16 sid, int skill_or_combatart);

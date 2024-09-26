@@ -63,7 +63,7 @@ static inline u16 GetCombatArtName(u8 cid)
 
 static inline u16 GetCombatArtDesc(u8 cid)
 {
-	if (0 == GetCombatArtInfo(cid)->desc)
+	if (GetCombatArtInfo(cid)->desc == 0)
 		return GetCombatArtInfo(cid)->name;
 
 	return GetCombatArtInfo(cid)->desc;

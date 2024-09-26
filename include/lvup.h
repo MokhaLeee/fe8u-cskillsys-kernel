@@ -2,6 +2,8 @@
 
 #include "common-chax.h"
 
+extern const u8 MetisTomeGrowthBonus;
+
 /* Growth getter */
 int GetUnitHpGrowth(struct Unit *unit);
 int GetUnitPowGrowth(struct Unit *unit);

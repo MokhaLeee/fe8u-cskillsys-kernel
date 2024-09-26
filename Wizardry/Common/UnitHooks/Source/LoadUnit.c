@@ -45,4 +45,4 @@ void UnitLoadStatsFromChracter(struct Unit *unit, const struct CharacterData *ch
 }
 
 // For now, no need to hack this funcion
-// struct Unit *LoadUnit(const struct UnitDefinition * uDef)
+// struct Unit *LoadUnit(const struct UnitDefinition *uDef)

@@ -2,47 +2,46 @@
 #include "skill-system.h"
 #include "prep-skill.h"
 
-extern struct PrepEquipSkillList sPrepEquipSkillList;
 #define sPrepEquipSkillListExt gGenericBuffer
 
 void ResetPrepEquipSkillList(void)
 {
-    CpuFastFill16(0, sPrepEquipSkillListExt, 0x100);
-    CpuFastFill16(0, &sPrepEquipSkillList,   sizeof(sPrepEquipSkillList));
+	CpuFastFill16(0, sPrepEquipSkillListExt, 0x100);
+	CpuFastFill16(0, &sPrepEquipSkillList,   sizeof(sPrepEquipSkillList));
 }
 
 STATIC_DECLAR void RegisterToPrepEquipSkillListExt(const u16 sid)
 {
-    sPrepEquipSkillListExt[sid] |= 1;
+	sPrepEquipSkillListExt[sid] |= 1;
 }
 
 STATIC_DECLAR void SetupPrepEquipReal(void)
 {
-    int i;
-    for (i = 1; i < MAX_GENERIC_SKILL_NUM; i++)
-        if (sPrepEquipSkillListExt[i] & 1)
-            sPrepEquipSkillList.sid[sPrepEquipSkillList.amt++] = i;
+	int i;
+
+	for (i = 1; i < MAX_GENERIC_SKILL_NUM; i++)
+		if (sPrepEquipSkillListExt[i] & 1)
+			sPrepEquipSkillList.sid[sPrepEquipSkillList.amt++] = i;
 }
 
 STATIC_DECLAR void UpdatePrepEquipSkillList(struct Unit *unit)
 {
-    int i;
+	int i;
 
-    ResetPrepEquipSkillList();
+	ResetPrepEquipSkillList();
 
-    for (i = 1; i < MAX_GENERIC_SKILL_NUM; i++)
-        if (IsSkillLearned(unit, i))
-            RegisterToPrepEquipSkillListExt(i);
+	for (i = 1; i < MAX_GENERIC_SKILL_NUM; i++)
+		if (IsSkillLearned(unit, i))
+			RegisterToPrepEquipSkillListExt(i);
 
-    SetupPrepEquipReal();
+	SetupPrepEquipReal();
 }
 
-struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit *unit)
+struct PrepEquipSkillList *GetPrepEquipSkillList(struct Unit *unit)
 {
-    if (!JudgeUnitList(unit, &sPrepEquipSkillList.header))
-    {
-        UpdatePrepEquipSkillList(unit);
-        WriteUnitList(unit, &sPrepEquipSkillList.header);
-    }
-    return &sPrepEquipSkillList;
+	if (!JudgeUnitList(unit, &sPrepEquipSkillList.header)) {
+		UpdatePrepEquipSkillList(unit);
+		WriteUnitList(unit, &sPrepEquipSkillList.header);
+	}
+	return &sPrepEquipSkillList;
 }

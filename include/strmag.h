@@ -5,7 +5,7 @@
 
 #define UNIT_MAG(unit) ((unit)->_u47)
 #define BU_CHG_MAG(bu) (*((s8 *)(bu) + 0x7F))
-#define ITEM_MAG_BONUS(bonuses) *((const s8 *)bonuses + 9)
+#define ITEM_MAG_BONUS(bonuses) (*((const s8 *)bonuses + 9))
 
 struct UnitMagicInfo {
 	s8 base;
