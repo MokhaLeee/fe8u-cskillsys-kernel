@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "common-chax.h"
 #include "icon-rework.h"
 #include "skill-system.h"

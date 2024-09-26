@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "global.h"
 
 const u8 gCompressedText_K_MSG_0000[] = {0x5E};

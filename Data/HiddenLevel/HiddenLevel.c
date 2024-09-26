@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "common-chax.h"
 
 const s8 gClassPreLoadHiddenLevel[0x100] = {

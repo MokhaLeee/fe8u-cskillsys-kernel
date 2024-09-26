@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "common-chax.h"
 
 u32 simple_div(u32 a, u32 b)

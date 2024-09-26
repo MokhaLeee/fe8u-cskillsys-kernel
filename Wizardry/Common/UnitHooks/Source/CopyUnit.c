@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "common-chax.h"
 
 typedef int (* CopyUnitFunc_t)(struct Unit *from, struct Unit *to);

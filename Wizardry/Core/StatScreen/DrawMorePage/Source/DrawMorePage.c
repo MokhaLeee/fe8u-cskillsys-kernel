@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "common-chax.h"
 
 static const u16 Sprite_Page0NameRework[] =

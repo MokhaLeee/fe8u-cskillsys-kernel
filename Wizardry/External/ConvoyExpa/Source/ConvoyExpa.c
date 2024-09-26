@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "common-chax.h"
 
 extern int sExpaConvoyItemCount; // gConvoyItemCount is just a u8 that can be no more than 255, not enough

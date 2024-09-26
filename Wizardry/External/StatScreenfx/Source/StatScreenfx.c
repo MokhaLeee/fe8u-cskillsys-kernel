@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "global.h"
 #include "bmlib.h"
 #include "hardware.h"

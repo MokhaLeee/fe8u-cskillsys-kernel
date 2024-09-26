@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-
 #include "common-chax.h"
 
 const struct SpellAssoc gSpellAssocData_Rework[] = {
