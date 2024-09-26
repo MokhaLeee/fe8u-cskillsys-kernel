@@ -111,9 +111,9 @@ cd Tools/EventAssembler
 ```bash
 cd Tools/scripts/
 
-wget https://github.com/torvalds/linux/blob/master/scripts/checkpatch.pl
-wget https://github.com/torvalds/linux/blob/master/scripts/const_structs.checkpatch
-wget https://github.com/torvalds/linux/blob/master/scripts/spelling.txt
+wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl
+wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/const_structs.checkpatch
+wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt
 ```
 
 6. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the repo directory.
