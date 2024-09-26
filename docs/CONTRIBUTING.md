@@ -34,13 +34,26 @@ It is looked forward that this c-skillsys could be a community project and the P
 
 3. Code style
 
-Code style standards is generated from discussion on [decomp issue #411](https://github.com/FireEmblemUniverse/fireemblem8u/issues/411). It is recommended to align the code style with the existing code. There is also a [clang-format](../.clang-format) assisting developers for self-checking:
+CSkillSys use the [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html) and use the [same tool](https://github.com/torvalds/linux/blob/master/scripts/checkpatch.pl) for review. Since the tools in linux is GPL licensed, you need to install them by yourself. On following the custom-build note in README file you may have already get them:
 
+```bash
+cd Tools/scripts/
+
+wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl
+wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/const_structs.checkpatch
+wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt
+
+cd ../../
+cp Tools/scripts/pre-commit .git/hooks/
 ```
-sudo apt-get install clang-format
-cd <path to cskillsys-kernel>
-clang-format -i <relative path to your c file>
+
+You can use the following command to check your own C files:
+
+```bash
+perl ./Tools/scripts/checkpatch.pl --no-tree <path-to-your-c-file>
 ```
+
+Please resolve all reported ERRORs. Also, please resolve all WARNINGs unless there is a reasonable explanation.
 
 ## Suggestion
 
