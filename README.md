@@ -106,9 +106,19 @@ cd Tools/EventAssembler
 ./build.sh
 ```
 
-5. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the repo directory.
+5. Get code review tools
 
-4. build:
+```bash
+cd Tools/scripts/
+
+wget https://github.com/torvalds/linux/blob/master/scripts/checkpatch.pl
+wget https://github.com/torvalds/linux/blob/master/scripts/const_structs.checkpatch
+wget https://github.com/torvalds/linux/blob/master/scripts/spelling.txt
+```
+
+6. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the repo directory.
+
+7. build:
 
 ```bash
 make
