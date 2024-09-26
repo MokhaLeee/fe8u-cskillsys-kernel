@@ -54,7 +54,7 @@ enum DEBUFF_INFO_EFX_SPEED {
 
 struct DebuffInfo {
     const u8 *img;
-    void (* on_draw)(struct Unit *unit, int ix, int iy);
+    void (*on_draw)(struct Unit *unit, int ix, int iy);
     u16 name, desc;
 
     u8 positive_type;
@@ -95,7 +95,7 @@ static inline bool IsDebuff(int status_idx)
 
 void PutUnitDanceRingBuffIcon(struct Unit *unit, int ix, int iy);
 
-void PreBattleCalcDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
+void PreBattleCalcDebuffs(struct BattleUnit *attacker, struct BattleUnit *defender);
 int PowGetterDebuff(int status, struct Unit *unit);
 int MagGetterDebuff(int status, struct Unit *unit);
 int SklGetterDebuff(int status, struct Unit *unit);
@@ -215,7 +215,7 @@ extern struct StatDebuffStatus sStatDebuffStatusAlly[CONFIG_UNIT_AMT_ALLY];
 extern struct StatDebuffStatus sStatDebuffStatusEnemy[CONFIG_UNIT_AMT_ENEMY];
 extern struct StatDebuffStatus sStatDebuffStatusNpc[CONFIG_UNIT_AMT_NPC];
 extern struct StatDebuffStatus sStatDebuffStatusBattleUnit[2];
-extern struct StatDebuffStatus * const sStatDebuffStatusPool[0x100];
+extern struct StatDebuffStatus *const sStatDebuffStatusPool[0x100];
 
 struct StatDebuffStatus * GetUnitStatDebuffStatus(struct Unit *unit);
 
@@ -228,7 +228,7 @@ bool CheckUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void TickUnitStatDebuff(struct Unit *unit, enum STATUS_DEBUFF_TICK_TYPE type);
 int SimulateStatDebuffPositiveType(struct Unit *unit);
 
-void PreBattleCalcStatDebuffs(struct BattleUnit * attacker, struct BattleUnit * defender);
+void PreBattleCalcStatDebuffs(struct BattleUnit *attacker, struct BattleUnit *defender);
 int PowGetterStatDebuff(int status, struct Unit *unit);
 int MagGetterStatDebuff(int status, struct Unit *unit);
 int SklGetterStatDebuff(int status, struct Unit *unit);

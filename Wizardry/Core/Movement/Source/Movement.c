@@ -247,9 +247,7 @@ void GenerateMovementMap(int x, int y, int movement, int uid)
     if (uid == 0)
     {
         gMovMapFillState.hasUnit = false;
-    }
-    else
-    {
+	} else {
         gMovMapFillState.hasUnit = true;
         gMovMapFillState.unitId = uid;
     }

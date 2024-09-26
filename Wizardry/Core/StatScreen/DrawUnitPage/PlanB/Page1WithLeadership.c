@@ -193,9 +193,7 @@ static void DrawPage1ValueCommon(void)
             &gStatScreen.text[STATSCREEN_TEXT_STATUS],
             24, TEXT_COLOR_SYSTEM_BLUE,
             GetUnitStatusName(unit));
-    }
-    else
-    {
+	} else {
         Text_InsertDrawString(
             &gStatScreen.text[STATSCREEN_TEXT_STATUS],
             22, TEXT_COLOR_SYSTEM_BLUE,
@@ -265,9 +263,7 @@ static void DrawPage1Affin(void)
                 0, 0,
                 cn_affin[affin]);
         }
-    }
-    else
-    {
+	} else {
         Text_InsertDrawString(
             &gStatScreen.text[STATSCREEN_TEXT_SUPPORT4],
             24, TEXT_COLOR_SYSTEM_BLUE,
@@ -292,9 +288,7 @@ static void DrawPage1LeaderShip(void)
             gUiTmScratchA + TILEMAP_INDEX(0xD, 0x9),
             TEXT_COLOR_SYSTEM_BLUE,
             lead);
-    }
-    else
-    {
+	} else {
         DrawIcon(
             gUiTmScratchA + TILEMAP_INDEX(0xC, 0x9),
             CONFIG_ICON_INDEX_STAR,

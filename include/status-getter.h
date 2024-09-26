@@ -2,7 +2,7 @@
 
 #include "common-chax.h"
 
-typedef int (* StatusGetterFunc_t)(int old, struct Unit *unit);
+typedef int (*StatusGetterFunc_t)(int old, struct Unit *unit);
 
 extern StatusGetterFunc_t const *const gpHpGetters;
 extern StatusGetterFunc_t const *const gpPowGetters;

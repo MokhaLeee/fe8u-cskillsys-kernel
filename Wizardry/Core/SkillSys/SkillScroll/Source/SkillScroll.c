@@ -70,9 +70,7 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
         unit->items[slot] = ITEM_INDEX(item) | (sid_rep << 8);
         RemoveSkill(unit, sid_rep);
         AddSkill(unit, ITEM_USES(item));
-    }
-    else
-    {
+	} else {
         /* Simply add a new skill */
         AddSkill(unit, ITEM_USES(item));
         UnitUpdateUsedItem(unit, slot);

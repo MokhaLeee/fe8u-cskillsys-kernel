@@ -25,9 +25,7 @@ static void LoadStatScreenUiFrame(void)
         ApplyPalette(gpPal_StatScreenUI, BGPAL_WINDOW_FRAME);
         ApplyPalette(sUiFramePaletteLookup[0], STATSCREEN_BGPAL_3);
         ApplyPalette(sStatBarPaletteLookup[0], STATSCREEN_BGPAL_6);
-    }
-    else
-    {
+	} else {
         Decompress(gpImg_StatScreenUIRed, BG_CHAR_ADDR(0));
         ApplyPalette(gpPal_StatScreenUIRed, BGPAL_WINDOW_FRAME);
         ApplyPalette(sUiFramePaletteLookup[1], STATSCREEN_BGPAL_3);
@@ -153,9 +151,7 @@ void PageSlide_OnLoopRework(struct StatScreenEffectProc*proc)
     {
         dstOff = 0;
         srcOff = -off;
-    }
-    else
-    {
+	} else {
         dstOff = off;
         srcOff = 0;
     }

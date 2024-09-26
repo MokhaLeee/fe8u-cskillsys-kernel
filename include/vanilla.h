@@ -148,7 +148,7 @@ enum ScriptKind {
     AI_SCRIPT_AI2,
 };
 
-typedef void (* AiScrCmd)(u8 *pc);
+typedef void (*AiScrCmd)(u8 *pc);
 
 extern s8 gAiScriptEnded;
 extern int gAiScriptKind;
@@ -204,9 +204,9 @@ extern u16 gRNSeeds[3];
 #define SPELL_ASSOC_DATA_WPN_DEFAULT(_item) SPELL_ASSOC_DATA_WPN(_item, -1)
 #define SPELL_ASSOC_DATA_ITEM(_item) SPELL_ASSOC_DATA_WPN(_item, 0x32)
 
-extern void (* gUnknown_03003128)(void);
+extern void (*gUnknown_03003128)(void);
 
-void BmMapInit(void * buffer, u8 *** outHandle, int width, int height);
+void BmMapInit(void *buffer, u8 *** outHandle, int width, int height);
 void RevertMovementScript(u8 *begin, u8 *end);
 #define TERRAIN_AT(x, y) gBmMapTerrain[y][x]
 #define LAST_X_POINT gpPathArrowProc->pathX[gpPathArrowProc->pathLen]
@@ -269,7 +269,7 @@ void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc *proc);
 void sub_803B678(struct Unit *unit, u16 item);
 void SetupUnitHealStaffAIFlags(struct Unit *, u16);
 void DisplayPageNameSprite(int pageid);
-void sub_808A200(const struct HelpBoxInfo * info);
+void sub_808A200(const struct HelpBoxInfo *info);
 void HelpBoxSetupstringLines(struct ProcHelpBoxIntro *proc);
 void HelpBoxDrawstring(struct ProcHelpBoxIntro *proc);
 void CpPerform_Cleanup(struct CpPerformProc *proc);

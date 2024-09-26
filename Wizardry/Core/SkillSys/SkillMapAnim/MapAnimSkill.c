@@ -56,9 +56,7 @@ bool MapAnimRoundAnim_DisplaySkillIcon(ProcPtr parent)
     {
         left_icon  = actor_icon;
         right_icon = target_icon;
-    }
-    else
-    {
+	} else {
         right_icon = actor_icon;
         left_icon  = target_icon;
     }

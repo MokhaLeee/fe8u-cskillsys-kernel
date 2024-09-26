@@ -13,9 +13,7 @@ void SetUnitStatus(struct Unit *unit, int status)
     {
         Errorf("Status error: %d", status);
         hang();
-    }
-    else
-    {
+	} else {
         int duration = gpDebuffInfos[status].duration;
         if (duration == 0)
             duration = 3;

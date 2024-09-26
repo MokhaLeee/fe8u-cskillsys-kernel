@@ -2,7 +2,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
+void PreBattleCalcLegendSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if defined(SID_LEGEND_InoriAtk) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAtk))
     if (SkillTesterLegendActivated(&attacker->unit, SID_LEGEND_InoriAtk))

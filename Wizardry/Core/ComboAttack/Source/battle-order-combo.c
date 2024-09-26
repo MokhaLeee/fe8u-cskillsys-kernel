@@ -22,9 +22,7 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
         // Miss
         gBattleStats.damage = 0;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-    }
-    else
-    {
+	} else {
         // Hitted
         gBattleStats.damage = 5;
 

@@ -24,7 +24,7 @@ STATIC_DECLAR void SkillSoulSapPostAnimEffect(ProcPtr proc)
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
-        struct SelectTarget * starget = GetTarget(i);
+        struct SelectTarget *starget = GetTarget(i);
         struct Unit *tunit = GetUnit(starget->uid);
 
         int max_hp = GetUnitMaxHp(tunit);

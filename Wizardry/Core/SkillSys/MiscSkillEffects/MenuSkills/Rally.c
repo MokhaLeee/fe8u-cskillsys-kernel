@@ -26,7 +26,7 @@ STATIC_DECLAR void MakeTargetListForRally(struct Unit *unit)
     ForEachUnitInRange(AddTargetForRally);
 }
 
-u8 Rally_Usability(const struct MenuItemDef * def, int number)
+u8 Rally_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
@@ -37,7 +37,7 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
     return MENU_ENABLED;
 }
 
-int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item)
+int Rally_Hover(struct MenuProc *menu, struct MenuItemProc *item)
 {
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -46,13 +46,13 @@ int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem)
+int Rally_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
     HideMoveRangeGraphics();
     return 0;
 }
 
-u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 Rally_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {

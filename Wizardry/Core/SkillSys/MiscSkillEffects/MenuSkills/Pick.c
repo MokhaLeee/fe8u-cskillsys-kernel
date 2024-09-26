@@ -2,7 +2,7 @@
 #include "skill-system.h"
 
 LYN_REPLACE_CHECK(PickCommandUsability);
-u8 PickCommandUsability(const struct MenuItemDef * def, int number)
+u8 PickCommandUsability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;

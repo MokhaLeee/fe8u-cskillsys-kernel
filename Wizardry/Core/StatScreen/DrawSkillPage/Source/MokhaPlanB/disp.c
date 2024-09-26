@@ -59,7 +59,7 @@ void DrawSkillPage_MokhaPlanB(void)
     /* Arts */
     if (UNIT_FACTION(gStatScreen.unit) == FACTION_BLUE)
     {
-        struct CombatArtList * clist = AutoGetCombatArtList(gStatScreen.unit);
+        struct CombatArtList *clist = AutoGetCombatArtList(gStatScreen.unit);
 
         text = &gStatScreen.text[STATSCREEN_TEXT_ITEM2];
         ClearText(text);

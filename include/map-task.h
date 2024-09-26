@@ -24,5 +24,5 @@ extern u8 const *const gpHpBarChr;
 
 extern struct Vec2u MapTaskVec;
 
-extern void (* _MapTaskPutOamHi)(int type, int oam2);
+extern void (*_MapTaskPutOamHi)(int type, int oam2);
 #define MapTaskPutOamHi _MapTaskPutOamHi

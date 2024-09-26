@@ -47,9 +47,7 @@ int TryTickUnitStatusDuration(struct Unit *unit)
     if (UNIT_STATUS_DURATION(unit) != 0)
     {
         UNIT_STATUS_DURATION(unit)--;
-    }
-    else
-    {
+	} else {
         UNIT_STATUS_INDEX(unit) = 0;
         UNIT_STATUS_DURATION(unit) = 0;
     }

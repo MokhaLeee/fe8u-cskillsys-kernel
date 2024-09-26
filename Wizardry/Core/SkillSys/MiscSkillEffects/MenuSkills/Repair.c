@@ -5,7 +5,7 @@
 #include "constants/texts.h"
 
 #if defined(SID_Blacksmith) && (COMMON_SKILL_VALID(SID_Blacksmith))
-u8 Blacksmith_Usability(const struct MenuItemDef * def, int number)
+u8 Blacksmith_Usability(const struct MenuItemDef *def, int number)
 {
     int partyGold = GetPartyGoldAmount();
     u16 weapon = GetUnitEquippedWeapon(gActiveUnit);
@@ -34,7 +34,7 @@ u8 Blacksmith_Usability(const struct MenuItemDef * def, int number)
 
 }
 
-u8 Blacksmith_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 Blacksmith_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {

@@ -2,7 +2,7 @@
 #include "skill-system.h"
 
 LYN_REPLACE_CHECK(StealCommandUsability);
-u8 StealCommandUsability(const struct MenuItemDef * def, int number)
+u8 StealCommandUsability(const struct MenuItemDef *def, int number)
 {
 #if !CHAX
     if (!(UNIT_CATTRIBUTES(gActiveUnit) & CA_STEAL))

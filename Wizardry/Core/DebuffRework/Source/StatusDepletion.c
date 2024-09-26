@@ -7,7 +7,7 @@ void StartStatusHealEffect(struct Unit *unit, ProcPtr proc);
 LYN_REPLACE_CHECK(StatusDecayDisplay_Display);
 void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc *proc)
 {
-    struct SelectTarget * target = GetTarget(proc->unk_4C);
+    struct SelectTarget *target = GetTarget(proc->unk_4C);
     struct Unit *unit = GetUnit(gActionData.subjectIndex);
     int status = GetUnitStatusIndex(unit);
     proc->unk_58 = status;

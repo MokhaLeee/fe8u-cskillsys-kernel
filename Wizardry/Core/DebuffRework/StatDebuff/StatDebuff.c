@@ -65,9 +65,7 @@ int SimulateStatDebuffPositiveType(struct Unit *unit)
     {
         stat->st.bitfile.is_buff_chk = STATUS_DEBUFF_POSITIVE;
         return STATUS_DEBUFF_POSITIVE;
-    }
-    else
-    {
+	} else {
         stat->st.bitfile.is_buff_chk = STATUS_DEBUFF_NONE_NO_CALC;
         return STATUS_DEBUFF_NONE;
     }
@@ -185,7 +183,7 @@ void TickUnitStatDebuff(struct Unit *unit, enum STATUS_DEBUFF_TICK_TYPE type)
 /**
  * Pre-battle calc
  */
-void PreBattleCalcStatDebuffs(struct BattleUnit * bu, struct BattleUnit * defender)
+void PreBattleCalcStatDebuffs(struct BattleUnit *bu, struct BattleUnit *defender)
 {
     int i;
     u32 *bitfile = GetUnitStatDebuffStatus(&bu->unit)->st.bitmask;
@@ -220,7 +218,7 @@ struct StatDebuffMsgBuf {
 };
 extern struct StatDebuffMsgBuf sStatDebuffMsgBuf[STAT_DEBUFF_MSG_BUF_AMT];
 extern int sStatDebuffMsgBufNext;
-void * const i = sStatDebuffMsgBuf;
+void *const i = sStatDebuffMsgBuf;
 const int j = sizeof(struct StatDebuffMsgBuf);
 enum STAT_BUFF_MSG_BUF_SPECIAL_MASK {
     SP_STAT_CANNOT_MOVE = (1 << 0x00),
@@ -408,7 +406,7 @@ void StatDeuff_OnCopyUnit(struct Unit *from, struct Unit *to)
         sizeof(struct StatDebuffStatus));
 }
 
-void StatDebuff_OnUnitToBattle(struct Unit *unit, struct BattleUnit * bu)
+void StatDebuff_OnUnitToBattle(struct Unit *unit, struct BattleUnit *bu)
 {
     *GetUnitStatDebuffStatus(&bu->unit) = *GetUnitStatDebuffStatus(unit);
 }

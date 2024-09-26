@@ -7,7 +7,7 @@ LYN_REPLACE_CHECK(GetUnitLeaderCharId);
 int GetUnitLeaderCharId(struct Unit *unit)
 {
     int i;
-    struct DefeatTalkEnt * it;
+    struct DefeatTalkEnt *it;
 
     if (!(unit->index & 0xC0))
         return 0;

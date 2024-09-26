@@ -46,7 +46,7 @@ u8 GetTalkee(struct Unit *unit)
 
         if (!CheckFlag(EVT_CMD_HI(list[0])))
         {
-            const struct EvCheck03 * _chunk = (const void * )list;
+            const struct EvCheck03 * _chunk = (const void *)list;
             struct EventInfo info = {
                 .listScript = list,
                 .pidA = UNIT_CHAR_ID(unit),

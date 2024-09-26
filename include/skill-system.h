@@ -85,16 +85,16 @@ void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
 
 /* Skill tetsers */
-extern bool (* _SkillTester)(struct Unit *unit, const u16 sid);
+extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
 #define SkillTester _SkillTester
 
 // Note this function can only exec for r0 = gBattleActor/gBattleTarget
-extern bool (* _JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
+extern bool (*_JudgeSkillViaList)(struct BattleUnit *unit, const u16 sid);
 #define BattleSkillTester _JudgeSkillViaList
 #define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
-bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate);
+bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {
@@ -125,7 +125,7 @@ enum SkillAnimPriorityConfig {
 };
 
 extern u8 const *const gpEfxSkillAnimPriority;
-extern struct EfxAnimConf const *const * const gpEfxSkillAnims;
+extern struct EfxAnimConf const *const *const gpEfxSkillAnims;
 
 int GetEfxSkillPriority(const u16 sid);
 
@@ -154,7 +154,7 @@ extern const struct ProcCmd ProcScr_MapAnimSkillfx[];
 void NewSkillMapAnimMini(int x, int y, u16 sid, ProcPtr parent);
 bool SkillMapAnimMiniExists(void);
 
-void NewMuSkillAnimOnActiveUnit(u16 sid, void (* callback1)(ProcPtr proc), void (* callback2)(ProcPtr proc));
+void NewMuSkillAnimOnActiveUnit(u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc));
 bool MuSkillAnimExists(void);
 
 extern const EventScr EventScr_MuSkillAnim[];
@@ -192,13 +192,13 @@ extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
 extern struct MenuItemDef const *const gpSkillMenuInfos;
 #define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
 
-u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item);
-u8 MenuSkills_Usability(const struct MenuItemDef * self, int number);
-int MenuSkills_OnDraw(struct MenuProc * menu, struct MenuItemProc * item);
-u8 MenuSkills_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-u8 MenuSkills_Idle(struct MenuProc * menu, struct MenuItemProc * item);
-int MenuSkills_Hover(struct MenuProc * menu, struct MenuItemProc * item);
-int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
+u8 MenuSkills_OnHelpBox(struct MenuProc *menu, struct MenuItemProc *item);
+u8 MenuSkills_Usability(const struct MenuItemDef *self, int number);
+int MenuSkills_OnDraw(struct MenuProc *menu, struct MenuItemProc *item);
+u8 MenuSkills_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 MenuSkills_Idle(struct MenuProc *menu, struct MenuItemProc *item);
+int MenuSkills_Hover(struct MenuProc *menu, struct MenuItemProc *item);
+int MenuSkills_Unhover(struct MenuProc *menu, struct MenuItemProc *item);
 
 #define MENU_SKILL_INDEX(menu_item) ((menu_item)->helpMsgId) /* We use rtext msg as index */
 #define IS_SKILL_MENU_ITEM(menu_item) ((menu_item)->isAvailable == MenuSkills_Usability)
@@ -206,7 +206,7 @@ int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item);
 /**
  * Skill action
  */
-typedef bool (* SkillActionFunc_t)(ProcPtr);
+typedef bool (*SkillActionFunc_t)(ProcPtr proc);
 extern SkillActionFunc_t const *const gpSkillActionFuncTable;
 
 /**
@@ -269,36 +269,36 @@ enum skill_lucky_seven_idx {
 extern u8 const *const gpLegendSkillPool;
 int TryActivateLegendSkill(struct Unit *unit, const u16 sid);
 bool SkillTesterLegendActivated(struct Unit *unit, const u16 sid);
-void PreBattleCalcLegendSkills(struct BattleUnit * attacker, struct BattleUnit * defender);
+void PreBattleCalcLegendSkills(struct BattleUnit *attacker, struct BattleUnit *defender);
 int SpdGetterLegendSkills(int status, struct Unit *unit);
 int DefGetterLegendSkills(int status, struct Unit *unit);
 int ResGetterLegendSkills(int status, struct Unit *unit);
 
 /* Menu skills */
-u8 HealingFocus_Usability(const struct MenuItemDef * def, int number);
-u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-u8 Teleportation_Usability(const struct MenuItemDef * def, int number);
-u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-u8 LightRune_Usability(const struct MenuItemDef * def, int number);
-u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-u8 Mine_Usability(const struct MenuItemDef * def, int number);
-u8 Mine_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-int Rally_Hover(struct MenuProc * menu, struct MenuItemProc * item);
-int Rally_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
-u8 Rally_Usability(const struct MenuItemDef * def, int number);
-u8 Rally_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-int GoddessDance_Hover(struct MenuProc * menu, struct MenuItemProc * item);
-int GoddessDance_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
-u8 GoddessDance_Usability(const struct MenuItemDef * def, int number);
-u8 GoddessDance_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-int Stride_Hover(struct MenuProc * menu, struct MenuItemProc * item);
-int Stride_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
-u8 Stride_Usability(const struct MenuItemDef * def, int number);
-u8 Stride_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-u8 Swarp_Usability(const struct MenuItemDef * def, int number);
-u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
-u8 Blacksmith_Usability(const struct MenuItemDef * def, int number);
-u8 Blacksmith_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 HealingFocus_Usability(const struct MenuItemDef *def, int number);
+u8 HealingFocus_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 Teleportation_Usability(const struct MenuItemDef *def, int number);
+u8 Teleportation_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 LightRune_Usability(const struct MenuItemDef *def, int number);
+u8 LightRune_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 Mine_Usability(const struct MenuItemDef *def, int number);
+u8 Mine_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+int Rally_Hover(struct MenuProc *menu, struct MenuItemProc *item);
+int Rally_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 Rally_Usability(const struct MenuItemDef *def, int number);
+u8 Rally_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+int GoddessDance_Hover(struct MenuProc *menu, struct MenuItemProc *item);
+int GoddessDance_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 GoddessDance_Usability(const struct MenuItemDef *def, int number);
+u8 GoddessDance_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+int Stride_Hover(struct MenuProc *menu, struct MenuItemProc *item);
+int Stride_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 Stride_Usability(const struct MenuItemDef *def, int number);
+u8 Stride_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 Swarp_Usability(const struct MenuItemDef *def, int number);
+u8 Swarp_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 Blacksmith_Usability(const struct MenuItemDef *def, int number);
+u8 Blacksmith_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);

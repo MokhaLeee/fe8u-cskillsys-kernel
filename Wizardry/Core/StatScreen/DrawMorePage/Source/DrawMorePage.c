@@ -54,7 +54,7 @@ const u16 gPageNameChrOffsetLutRe[] = {
     0x00, 0x40, 0x0E, 0x80, 0x80
 };
 
-extern u16 const *const * const gpSprites_PageNameRework;
+extern u16 const *const *const gpSprites_PageNameRework;
 extern u16 const *const gpPageNameChrOffsetLutRe;
 extern u16 const *const gpPageNamePaletteRe;
 

@@ -2,7 +2,7 @@
 #include "strmag.h"
 #include "lvup.h"
 
-STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct BattleUnit * bu)
+STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct BattleUnit *bu)
 {
     if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit))
         bu->changeHP = KUNIT_MHP_MAX(unit) - unit->maxHP;
@@ -57,7 +57,7 @@ STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
 }
 
 LYN_REPLACE_CHECK(CheckBattleUnitStatCaps);
-void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit * bu)
+void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu)
 {
     CheckBattleUnitStatCapsVanilla(unit, bu);
 

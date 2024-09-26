@@ -5,7 +5,7 @@
 #define STAT_BAR_MAX_INDENTIFIER 41
 
 typedef const struct HelpBoxInfo _DECL_INFO;
-extern _DECL_INFO * const RTextPageSupport;
+extern _DECL_INFO *const RTextPageSupport;
 
 extern struct {
     u8 talkee;
@@ -54,8 +54,8 @@ void ToggleUnitLeftPage(bool toggle);
 void DisplayPage_WithBWL(void);
 void DisplayPage_WithLeadership(void);
 
-extern _DECL_INFO * const RTextPageUnit_WithBWL;
-extern _DECL_INFO * const RTextPageUnit_WithLeadership;
+extern _DECL_INFO *const RTextPageUnit_WithBWL;
+extern _DECL_INFO *const RTextPageUnit_WithLeadership;
 
 /* skill page */
 void StartSkillScreenHelp(int pageid, struct Proc *proc);
@@ -68,5 +68,5 @@ void HbRedirect_ArtPageOnlyAlly(struct HelpBoxProc *proc);
 void DrawSkillPage_MokhaPlanA(void);
 void DrawSkillPage_MokhaPlanB(void);
 
-extern _DECL_INFO * const RTextSkillPage_MokhaPlanA;
-extern _DECL_INFO * const RTextSkillPage_MokhaPlanB;
+extern _DECL_INFO *const RTextSkillPage_MokhaPlanA;
+extern _DECL_INFO *const RTextSkillPage_MokhaPlanB;

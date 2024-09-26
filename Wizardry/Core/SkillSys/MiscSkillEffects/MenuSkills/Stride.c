@@ -26,7 +26,7 @@ STATIC_DECLAR void MakeTargetListForStride(struct Unit *unit)
     ForEachUnitInRange(AddTargetForStride);
 }
 
-u8 Stride_Usability(const struct MenuItemDef * def, int number)
+u8 Stride_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
@@ -37,7 +37,7 @@ u8 Stride_Usability(const struct MenuItemDef * def, int number)
     return MENU_ENABLED;
 }
 
-int Stride_Hover(struct MenuProc * menu, struct MenuItemProc * item)
+int Stride_Hover(struct MenuProc *menu, struct MenuItemProc *item)
 {
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -46,13 +46,13 @@ int Stride_Hover(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-int Stride_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem)
+int Stride_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
     HideMoveRangeGraphics();
     return 0;
 }
 
-u8 Stride_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 Stride_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {

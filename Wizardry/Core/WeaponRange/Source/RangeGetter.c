@@ -6,7 +6,7 @@
 
 #define LOCAL_TRACE 0
 
-typedef int (* WeaponRangeGetterFunc_t)(int old, struct Unit *unit, u16 item);
+typedef int (*WeaponRangeGetterFunc_t)(int old, struct Unit *unit, u16 item);
 // extern const WeaponRangeGetterFunc_t gWeaponRangeGetters[];
 extern WeaponRangeGetterFunc_t const *const gpWeaponRangeGetters;
 

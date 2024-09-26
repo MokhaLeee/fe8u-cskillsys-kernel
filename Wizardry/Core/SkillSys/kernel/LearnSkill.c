@@ -10,7 +10,7 @@ struct LearnedSkillList {
 extern struct LearnedSkillList sLearnedSkillPLists[NEW_BWL_ARRAY_NUM];
 
 #ifdef CONFIG_USE_DEBUG
-void * const Identifier_sLearnedSkillPLists = sLearnedSkillPLists;
+void *const Identifier_sLearnedSkillPLists = sLearnedSkillPLists;
 #endif
 
 /* GameInitHook */

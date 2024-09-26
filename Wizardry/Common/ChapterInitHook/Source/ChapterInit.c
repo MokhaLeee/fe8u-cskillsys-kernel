@@ -1,6 +1,6 @@
 #include "common-chax.h"
 
-typedef void (* ChapterInitHookFunc)(ProcPtr);
+typedef void (*ChapterInitHookFunc)(ProcPtr proc);
 // extern ChapterInitHookFunc const ChapterInitHooks[];
 extern ChapterInitHookFunc const *const gpChapterInitHooks;
 

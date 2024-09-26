@@ -9,7 +9,7 @@
  * in the future, this part of the code needs to be reviewed frequently.
  */
 
-STATIC_DECLAR void ExecNihilSkills(struct BattleUnit * actor, struct BattleUnit * target)
+STATIC_DECLAR void ExecNihilSkills(struct BattleUnit *actor, struct BattleUnit *target)
 {
 #if (defined(SID_Nihil) && COMMON_SKILL_VALID(SID_Nihil))
     gBattleTemporaryFlag.nihil_on_actor  = BattleSkillTester(target, SID_Nihil);
@@ -23,7 +23,7 @@ STATIC_DECLAR void ExecNihilSkills(struct BattleUnit * actor, struct BattleUnit 
 #endif
 }
 
-void UnitToBattle_ExecNihilSkills(struct Unit *unit, struct BattleUnit * bu)
+void UnitToBattle_ExecNihilSkills(struct Unit *unit, struct BattleUnit *bu)
 {
     ForceUpdateUnitSkillList(&bu->unit);
 

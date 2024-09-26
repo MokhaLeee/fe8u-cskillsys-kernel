@@ -3,8 +3,8 @@
 #include "skill-system.h"
 
 STATIC_DECLAR const struct MenuItemDef RemoveSkillMenuItems[];
-STATIC_DECLAR u8 RemoveSkillMenu_HelpBox(struct MenuProc * menu, struct MenuItemProc * item);
-STATIC_DECLAR u8 RemoveSkillMenu_OnCancel(struct MenuProc * menu, struct MenuItemProc * item);
+STATIC_DECLAR u8 RemoveSkillMenu_HelpBox(struct MenuProc *menu, struct MenuItemProc *item);
+STATIC_DECLAR u8 RemoveSkillMenu_OnCancel(struct MenuProc *menu, struct MenuItemProc *item);
 
 const struct MenuDef RemoveSkillMenuDef = {
     {1, 1, 14, 0},
@@ -16,7 +16,7 @@ const struct MenuDef RemoveSkillMenuDef = {
     RemoveSkillMenu_HelpBox
 };
 
-STATIC_DECLAR u8 RemoveSkillMenu_HelpBox(struct MenuProc * menu, struct MenuItemProc * item)
+STATIC_DECLAR u8 RemoveSkillMenu_HelpBox(struct MenuProc *menu, struct MenuItemProc *item)
 {
     StartHelpBox(
         item->xTile * 8,
@@ -26,7 +26,7 @@ STATIC_DECLAR u8 RemoveSkillMenu_HelpBox(struct MenuProc * menu, struct MenuItem
     return 0;
 }
 
-STATIC_DECLAR u8 RemoveSkillMenu_OnCancel(struct MenuProc * menu, struct MenuItemProc * item)
+STATIC_DECLAR u8 RemoveSkillMenu_OnCancel(struct MenuProc *menu, struct MenuItemProc *item)
 {
     /* Reset action */
     gActionData.unitActionType = 0;
@@ -38,9 +38,9 @@ STATIC_DECLAR u8 RemoveSkillMenu_OnCancel(struct MenuProc * menu, struct MenuIte
     return ItemCommandEffect(menu, item);
 }
 
-STATIC_DECLAR u8 RemoveSkillMenu_Usability(const struct MenuItemDef * self, int number);
-STATIC_DECLAR int RemoveSkillMenu_OnDraw(struct MenuProc * menu, struct MenuItemProc * item);
-STATIC_DECLAR u8 RemoveSkillMenu_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+STATIC_DECLAR u8 RemoveSkillMenu_Usability(const struct MenuItemDef *self, int number);
+STATIC_DECLAR int RemoveSkillMenu_OnDraw(struct MenuProc *menu, struct MenuItemProc *item);
+STATIC_DECLAR u8 RemoveSkillMenu_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 
 #define RemoveSkillMenuItem(i) \
 { \
@@ -62,7 +62,7 @@ STATIC_DECLAR const struct MenuItemDef RemoveSkillMenuItems[] = {
     { 0 }
 };
 
-STATIC_DECLAR u8 RemoveSkillMenu_Usability(const struct MenuItemDef * self, int number)
+STATIC_DECLAR u8 RemoveSkillMenu_Usability(const struct MenuItemDef *self, int number)
 {
     int sid = UNIT_RAM_SKILLS(gActiveUnit)[MENU_SKILL_INDEX(self)];
     if (EQUIPE_SKILL_VALID(sid))
@@ -71,7 +71,7 @@ STATIC_DECLAR u8 RemoveSkillMenu_Usability(const struct MenuItemDef * self, int 
     return MENU_NOTSHOWN;
 }
 
-STATIC_DECLAR int RemoveSkillMenu_OnDraw(struct MenuProc * menu, struct MenuItemProc * item)
+STATIC_DECLAR int RemoveSkillMenu_OnDraw(struct MenuProc *menu, struct MenuItemProc *item)
 {
     int sid = UNIT_RAM_SKILLS(gActiveUnit)[MENU_SKILL_INDEX(item->def)];
 
@@ -89,7 +89,7 @@ STATIC_DECLAR int RemoveSkillMenu_OnDraw(struct MenuProc * menu, struct MenuItem
     return 0;
 }
 
-STATIC_DECLAR u8 RemoveSkillMenu_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+STATIC_DECLAR u8 RemoveSkillMenu_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     SetItemUseAction(gActiveUnit);
     gActionData.unk08 = MENU_SKILL_INDEX(item->def);

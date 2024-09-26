@@ -4,7 +4,7 @@
 
 extern u32 KernelMoveMapFlags;
 
-extern void (* _MapFloodCoreRe)(void);
+extern void (*_MapFloodCoreRe)(void);
 
 enum MovMapFillStateRe_flags {
     FMOVSTRE_PASS = 1 << 0,

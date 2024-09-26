@@ -49,9 +49,7 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit *unit)
         if (res & 1 << 2)
             ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Amaterasu), 100);
 #endif
-    }
-    else
-    {
+	} else {
 #if defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief))
         if (SkillTester(unit, SID_Relief))
             ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Relief), 100);

@@ -37,7 +37,7 @@ bool CheckSkillActivate(struct Unit *unit, int sid, int rate)
     return false;
 }
 
-bool CheckBattleSkillActivate(struct BattleUnit * actor, struct BattleUnit * target, int sid, int rate)
+bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate)
 {
     if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
         return false;

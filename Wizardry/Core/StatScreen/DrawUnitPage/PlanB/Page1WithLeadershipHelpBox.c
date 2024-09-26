@@ -7,7 +7,7 @@ static _DECL_INFO RText_Mov, RText_Con, RText_Aid, RText_Affin, RText_Trv, RText
 static _DECL_INFO RText_Name, RText_Class, RText_Level, RText_Exp, RText_Hp;
 static _DECL_INFO RText_Lead, RText_Talk;
 
-_DECL_INFO * const RTextPageUnit_WithLeadership = &RText_Pow;
+_DECL_INFO *const RTextPageUnit_WithLeadership = &RText_Pow;
 
 /* Line #1 */
 static _DECL_INFO RText_Pow = {

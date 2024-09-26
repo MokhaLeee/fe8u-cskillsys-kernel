@@ -40,4 +40,4 @@
 #define UNIT_LEVEL_MAX_RE 25
 #define UNIT_RECORDED_LEVEL_MAX 80
 
-typedef bool (* HookProcFunc_t)(ProcPtr);
+typedef bool (*HookProcFunc_t)(ProcPtr proc);

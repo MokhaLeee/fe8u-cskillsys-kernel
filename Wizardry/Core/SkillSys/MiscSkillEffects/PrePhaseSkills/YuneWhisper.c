@@ -8,7 +8,7 @@ struct ProcYuneWhisper {
 
     int uid;
     struct Unit *unit;
-    struct SelectTarget * target;
+    struct SelectTarget *target;
 };
 
 STATIC_DECLAR void YuneWhisper_Init(struct ProcYuneWhisper *proc)

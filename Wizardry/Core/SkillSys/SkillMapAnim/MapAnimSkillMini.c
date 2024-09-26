@@ -89,8 +89,8 @@ struct ProcMuSkillAnim {
     PROC_HEADER;
 
     u16 sid;
-    void (* callback1)(ProcPtr proc);
-    void (* callback2)(ProcPtr proc);
+    void (*callback1)(ProcPtr proc);
+    void (*callback2)(ProcPtr proc);
 };
 
 static void anim_init(ProcPtr proc)
@@ -150,7 +150,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {
     PROC_END
 };
 
-void NewMuSkillAnimOnActiveUnit(u16 sid, void (* callback1)(ProcPtr proc), void (* callback2)(ProcPtr proc))
+void NewMuSkillAnimOnActiveUnit(u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc))
 {
     struct ProcMuSkillAnim *proc;
     proc = Proc_Start(ProcScr_MuSkillAnim, PROC_TREE_3);

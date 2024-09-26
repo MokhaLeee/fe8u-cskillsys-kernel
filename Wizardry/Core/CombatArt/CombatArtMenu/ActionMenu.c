@@ -4,119 +4,117 @@
 #include "kernel-tutorial.h"
 #include "constants/texts.h"
 
-u8 CombatArtActionCommandUsability(const struct MenuItemDef * def, int number)
+u8 CombatArtActionCommandUsability(const struct MenuItemDef *def, int number)
 {
-    int i;
+	int i;
 
-    if (gActiveUnit->state & US_HAS_MOVED)
-        return MENU_NOTSHOWN;
+	if (gActiveUnit->state & US_HAS_MOVED)
+		return MENU_NOTSHOWN;
 
-    if (gActiveUnit->state & US_IN_BALLISTA)
-        return MENU_NOTSHOWN;
+	if (gActiveUnit->state & US_IN_BALLISTA)
+		return MENU_NOTSHOWN;
 
-    /* If vanilla "Attack" button is enabled, here not show */
-    if (AttackCommandUsability(def, number) == MENU_ENABLED)
-        return MENU_NOTSHOWN;
+	/* If vanilla "Attack" button is enabled, here not show */
+	if (AttackCommandUsability(def, number) == MENU_ENABLED)
+		return MENU_NOTSHOWN;
 
-    for (i = 0; i < UNIT_ITEM_COUNT; i++)
-    {
-        int item = gActiveUnit->items[i];
+	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+		int item = gActiveUnit->items[i];
 
-        if (item == 0)
-            break;
+		if (item == 0)
+			break;
 
-        if (!(GetItemAttributes(item) & IA_WEAPON))
-            continue;
+		if (!(GetItemAttributes(item) & IA_WEAPON))
+			continue;
 
-        if (!CanUnitUseWeaponNow(gActiveUnit, item))
-            continue;
+		if (!CanUnitUseWeaponNow(gActiveUnit, item))
+			continue;
 
-        if (!CanUnitPlayCombatArt(gActiveUnit, item))
-            continue;
+		if (!CanUnitPlayCombatArt(gActiveUnit, item))
+			continue;
 
-        RegisterCombatArtStatus(gActiveUnit, GetBestRangeBonusCid(gActiveUnit, item));
-        MakeTargetListForWeapon(gActiveUnit, item);
-        if (GetSelectTargetCount() == 0)
-            continue;
+		RegisterCombatArtStatus(gActiveUnit, GetBestRangeBonusCid(gActiveUnit, item));
+		MakeTargetListForWeapon(gActiveUnit, item);
+		if (GetSelectTargetCount() == 0)
+			continue;
 
-        return MENU_ENABLED;
-    }
-    return MENU_NOTSHOWN;
+		return MENU_ENABLED;
+	}
+	return MENU_NOTSHOWN;
 }
 
-int CombatArtActionCommandOnDarw(struct MenuProc * menu, struct MenuItemProc * item)
+int CombatArtActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item)
 {
-    int color = TEXT_COLOR_SYSTEM_WHITE;
-    if (!CheckKtutFlagTriggered(KTUTORIAL_COMBATART_MENU))
-        color = TEXT_COLOR_SYSTEM_GREEN;
+	int color = TEXT_COLOR_SYSTEM_WHITE;
 
-    Text_SetColor(&item->text, color);
-    Text_DrawString(&item->text, GetStringFromIndex(MSG_COMBATART_UM_NAME));
+	if (!CheckKtutFlagTriggered(KTUTORIAL_COMBATART_MENU))
+		color = TEXT_COLOR_SYSTEM_GREEN;
 
-     PutText(
-        &item->text,
-        TILEMAP_LOCATED(BG_GetMapBuffer(menu->frontBg), item->xTile, item->yTile));
+	Text_SetColor(&item->text, color);
+	Text_DrawString(&item->text, GetStringFromIndex(MSG_COMBATART_UM_NAME));
 
-    return 0;
+	 PutText(
+		&item->text,
+		TILEMAP_LOCATED(BG_GetMapBuffer(menu->frontBg), item->xTile, item->yTile));
+
+	return 0;
 }
 
-u8 CombatArtActionCommandEffect(struct MenuProc * menu, struct MenuItemProc * menuItem)
+u8 CombatArtActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
-    struct MenuProc * sub_menu;
+	struct MenuProc *sub_menu;
 
-    if (menuItem->availability == MENU_DISABLED)
-        return MENU_ACT_SND6B;
+	if (menuItem->availability == MENU_DISABLED)
+		return MENU_ACT_SND6B;
 
-    ResetIconGraphics();
-    LoadIconPalettes(4);
+	ResetIconGraphics();
+	LoadIconPalettes(4);
 
-    sub_menu = StartOrphanMenu(&gCombatArtItemMenuDef);
+	sub_menu = StartOrphanMenu(&gCombatArtItemMenuDef);
 
-    if (gActiveUnit->pClassData->number != CLASS_PHANTOM)
-    {
-        StartFace(0, GetUnitPortraitId(gActiveUnit), 0xB0, 0xC, 2);
-        SetFaceBlinkControlById(0, 5);
-    }
+	if (gActiveUnit->pClassData->number != CLASS_PHANTOM) {
+		StartFace(0, GetUnitPortraitId(gActiveUnit), 0xB0, 0xC, 2);
+		SetFaceBlinkControlById(0, 5);
+	}
 
-    ForceMenuItemPanel(sub_menu, gActiveUnit, 0xF, 0xB);
-    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
+	ForceMenuItemPanel(sub_menu, gActiveUnit, 0xF, 0xB);
+	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
-int CombatArtActionCommandHover(struct MenuProc * menu, struct MenuItemProc * menuItem)
+int CombatArtActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
-    int i, mask = 0;
+	int i, mask = 0;
 
-    BmMapFill(gBmMapMovement, -1);
-    BmMapFill(gBmMapRange, 0);
+	BmMapFill(gBmMapMovement, -1);
+	BmMapFill(gBmMapRange, 0);
 
-    for (i = 0; i < UNIT_ITEM_COUNT; i++)
-    {
-        int item = gActiveUnit->items[i];
+	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+		int item = gActiveUnit->items[i];
 
-        if (item == 0)
-            break;
+		if (item == 0)
+			break;
 
-        if (!(GetItemAttributes(item) & IA_WEAPON))
-            continue;
+		if (!(GetItemAttributes(item) & IA_WEAPON))
+			continue;
 
-        if (!CanUnitUseWeaponNow(gActiveUnit, item))
-            continue;
+		if (!CanUnitUseWeaponNow(gActiveUnit, item))
+			continue;
 
-        if (!CanUnitPlayCombatArt(gActiveUnit, item))
-            continue;
+		if (!CanUnitPlayCombatArt(gActiveUnit, item))
+			continue;
 
-        RegisterCombatArtStatus(gActiveUnit, GetBestRangeBonusCid(gActiveUnit, item));
-        mask |= GetItemReachBitsRework(item, gActiveUnit);
-    }
+		RegisterCombatArtStatus(gActiveUnit, GetBestRangeBonusCid(gActiveUnit, item));
+		mask |= GetItemReachBitsRework(item, gActiveUnit);
+	}
 
-    GenerateUnitStandingReachRange(gActiveUnit, mask);
-    DisplayMoveRangeGraphics(MOVLIMITV_MMAP_BLUE | MOVLIMITV_RMAP_RED);
-    return 0;
+	GenerateUnitStandingReachRange(gActiveUnit, mask);
+	DisplayMoveRangeGraphics(MOVLIMITV_MMAP_BLUE | MOVLIMITV_RMAP_RED);
+	return 0;
 }
 
-int CombatArtActionCommandUnhover(struct MenuProc * menu, struct MenuItemProc * menuItem)
+int CombatArtActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
-    ResetCombatArtStatus();
-    HideMoveRangeGraphics();
-    return 0;
+	ResetCombatArtStatus();
+	HideMoveRangeGraphics();
+	return 0;
 }

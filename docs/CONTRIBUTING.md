@@ -16,7 +16,7 @@ It is looked forward that this c-skillsys could be a community project and the P
     - 2.1. You must inject `LYN_REPLACE_CHECK` before rewriten functions:
 	```c
 	LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
-	void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
+	void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 	{
 		// ...
 	}

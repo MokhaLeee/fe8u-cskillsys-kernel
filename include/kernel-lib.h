@@ -25,7 +25,7 @@ struct KernelDesigerConfig {
     u8 unit_page_style, skil_page_style;
 };
 
-extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;
+extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;
 
 /**
  * map.c

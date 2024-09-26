@@ -19,7 +19,7 @@ STATIC_DECLAR void ExecSkillSavageBlowEffectAnim(ProcPtr proc)
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
-        struct SelectTarget * starget = GetTarget(i);
+        struct SelectTarget *starget = GetTarget(i);
         CallMapAnim_HeavyGravity(proc, starget->x, starget->y);
     }
 }
@@ -36,7 +36,7 @@ STATIC_DECLAR void SkillSavageBlowPostAnimEffect(ProcPtr proc)
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
-        struct SelectTarget * starget = GetTarget(i);
+        struct SelectTarget *starget = GetTarget(i);
         struct Unit *tunit = GetUnit(starget->uid);
 
         if (tunit->curHP <= damage)

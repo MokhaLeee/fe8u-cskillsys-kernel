@@ -27,7 +27,7 @@ enum STATUS_DEBUFF_TICK_TYPE {
 
 struct DebuffInfo {
     const u8 *img;
-    void (* on_draw)(struct Unit *unit, int ix, int iy);
+    void (*on_draw)(struct Unit *unit, int ix, int iy);
     u16 name, desc;
 
     u8 positive_type;

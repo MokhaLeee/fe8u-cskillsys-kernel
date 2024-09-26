@@ -11,9 +11,7 @@ STATIC_DECLAR void MapAnimSkillfx_Initfx(struct ProcMapAnimSkillfx *proc)
 
         proc->x -= 12;
         proc->y += 2;
-    }
-    else
-    {
+	} else {
         LoadIconObjectGraphics(proc->icon_idx, MAPANIMFX_CHR_R);
 
         proc->x += 10;

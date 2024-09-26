@@ -2,7 +2,7 @@
 #include "skill-system.h"
 
 LYN_REPLACE_CHECK(DanceCommandUsability);
-u8 DanceCommandUsability(const struct MenuItemDef * def, int number)
+u8 DanceCommandUsability(const struct MenuItemDef *def, int number)
 {
 #if !CHAX
     if (!(UNIT_CATTRIBUTES(gActiveUnit) & CA_DANCE))

@@ -94,9 +94,7 @@ STATIC_DECLAR void ToggleUnitPage(bool toggle)
     if (toggle == false)
     {
         ToggleUnitPageBm();
-    }
-    else
-    {
+	} else {
         TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 15, 3), 6, 13, 0);
         ToggleUnitPageGrowth();
     }

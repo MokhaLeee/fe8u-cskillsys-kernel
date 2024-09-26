@@ -84,9 +84,7 @@ void PlayerPhase_FinishAction(ProcPtr proc)
         RenderBmMap();
         NewBMXFADE(0);
         RefreshUnitSprites();
-    }
-    else
-    {
+	} else {
         MoveActiveUnit(gActionData.xMove, gActionData.yMove);
         RefreshEntityBmMaps();
         RenderBmMap();

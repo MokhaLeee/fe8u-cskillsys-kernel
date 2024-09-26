@@ -45,7 +45,7 @@ STATIC_DECLAR void SetThunderstormAoeDamage(ProcPtr proc)
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
         int hp;
-        struct SelectTarget * starget = GetTarget(i);
+        struct SelectTarget *starget = GetTarget(i);
         struct Unit *tunit = GetUnit(starget->uid);
         if (!UNIT_IS_VALID(tunit))
             continue;

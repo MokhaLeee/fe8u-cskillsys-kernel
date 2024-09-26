@@ -6,7 +6,7 @@
 #include "constants/texts.h"
 
 #if defined(SID_GoddessDance) && (COMMON_SKILL_VALID(SID_GoddessDance))
-u8 GoddessDance_Usability(const struct MenuItemDef * def, int number)
+u8 GoddessDance_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
@@ -17,7 +17,7 @@ u8 GoddessDance_Usability(const struct MenuItemDef * def, int number)
     return MENU_ENABLED;
 }
 
-int GoddessDance_Hover(struct MenuProc * menu, struct MenuItemProc * item)
+int GoddessDance_Hover(struct MenuProc *menu, struct MenuItemProc *item)
 {
     BmMapFill(gBmMapMovement, -1);
     BmMapFill(gBmMapRange, 0);
@@ -26,13 +26,13 @@ int GoddessDance_Hover(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-int GoddessDance_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem)
+int GoddessDance_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
     HideMoveRangeGraphics();
     return 0;
 }
 
-u8 GoddessDance_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 GoddessDance_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {

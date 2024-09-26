@@ -6,7 +6,7 @@ static _DECL_INFO RText_Sword, RText_Lance, RText_Axe, RText_Bow, RText_Anima, R
 static _DECL_INFO RText_Skill1, RText_Skill2, RText_Skill3, RText_Skill4, RText_Skill5, RText_Skill6, RText_Skill7, RText_Skill8;
 static _DECL_INFO RText_Name, RText_Class, RText_Level, RText_Exp, RText_Hp;
 
-_DECL_INFO * const RTextSkillPage_MokhaPlanA = &RText_Sword;
+_DECL_INFO *const RTextSkillPage_MokhaPlanA = &RText_Sword;
 
 static _DECL_INFO RText_Sword = {
     NULL, &RText_Lance, &RText_Name, &RText_Skill1,

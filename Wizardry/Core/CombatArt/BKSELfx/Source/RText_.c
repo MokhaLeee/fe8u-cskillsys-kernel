@@ -4,31 +4,32 @@
 
 void HbPopuplate_CombatArtBKSEL(struct HelpBoxProc *proc)
 {
-    int cid = GetCombatArtInForce(gActiveUnit);
+	int cid = GetCombatArtInForce(gActiveUnit);
 
-    proc->item = cid;
-    proc->mid = GetCombatArtDesc(cid);
-    sHelpBoxType = NEW_HB_COMBAT_ART_BKSEL;
+	proc->item = cid;
+	proc->mid = GetCombatArtDesc(cid);
+	sHelpBoxType = NEW_HB_COMBAT_ART_BKSEL;
 }
 
 void HbPopuplate_NotCombatArtBKSEL(struct HelpBoxProc *proc)
 {
-    sHelpBoxType = 0;
+	sHelpBoxType = 0;
 }
 
 void HbRedirect_CombatArtBKSEL(struct HelpBoxProc *proc)
 {
-    int cid = GetCombatArtInForce(gActiveUnit);
-    if (COMBART_VALID(cid))
-        return;
+	int cid = GetCombatArtInForce(gActiveUnit);
 
-    switch (proc->moveKey) {
-    case DPAD_DOWN:
-        TryRelocateHbDown(proc);
-        break;
+	if (COMBART_VALID(cid))
+		return;
 
-    case DPAD_UP:
-        TryRelocateHbUp(proc);
-        break;
-    }
+	switch (proc->moveKey) {
+	case DPAD_DOWN:
+		TryRelocateHbDown(proc);
+		break;
+
+	case DPAD_UP:
+		TryRelocateHbUp(proc);
+		break;
+	}
 }

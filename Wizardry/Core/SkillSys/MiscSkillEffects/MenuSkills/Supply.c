@@ -4,7 +4,7 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(SupplyUsability);
-u8 SupplyUsability(const struct MenuItemDef * def, int number)
+u8 SupplyUsability(const struct MenuItemDef *def, int number)
 {
     int i;
 

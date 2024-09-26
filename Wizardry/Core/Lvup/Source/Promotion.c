@@ -71,7 +71,7 @@ STATIC_DECLAR void ApplyUnitPromotionVanilla(struct Unit *unit, u8 classId)
         unit->curHP = GetUnitMaxHp(unit);
 }
 
-void GenerateBattleUnitStatGainsComparativelyVanilla(struct BattleUnit * bu, struct Unit *unit)
+void GenerateBattleUnitStatGainsComparativelyVanilla(struct BattleUnit *bu, struct Unit *unit)
 {
     bu->changeHP  = bu->unit.maxHP - unit->maxHP;
     bu->changePow = bu->unit.pow   - unit->pow;
@@ -110,7 +110,7 @@ void ApplyUnitDefaultPromotion(struct Unit *unit)
 }
 
 LYN_REPLACE_CHECK(GenerateBattleUnitStatGainsComparatively);
-void GenerateBattleUnitStatGainsComparatively(struct BattleUnit * bu, struct Unit *unit)
+void GenerateBattleUnitStatGainsComparatively(struct BattleUnit *bu, struct Unit *unit)
 {
     GenerateBattleUnitStatGainsComparativelyVanilla(bu, unit);
 

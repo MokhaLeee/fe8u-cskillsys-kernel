@@ -7,7 +7,7 @@
 #include "constants/texts.h"
 
 #if defined(SID_Swarp) && (COMMON_SKILL_VALID(SID_Swarp))
-u8 Swarp_Usability(const struct MenuItemDef * def, int number)
+u8 Swarp_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
@@ -53,7 +53,7 @@ static void set_position(void)
     unitb->yPos = y;
 }
 
-static u8 Swarp_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
+static u8 Swarp_OnSelectTarget(ProcPtr proc, struct SelectTarget *target)
 {
     gActionData.targetIndex = target->uid;
 
@@ -71,7 +71,7 @@ static u8 Swarp_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
     return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A | TARGETSELECTION_ACTION_CLEARBGS;
 }
 
-u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 Swarp_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {

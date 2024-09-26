@@ -32,7 +32,7 @@ bool8 HasConvoyAccess(void)
     return true;
 }
 
-static void ClearSupplyItemsExt(void * dst)
+static void ClearSupplyItemsExt(void *dst)
 {
     CpuFill16(0, dst, CONFIG_INSTALL_CONVOYEXPA_AMT * sizeof(u16));
 }
@@ -551,9 +551,7 @@ void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc *proc)
     {
         Proc_Goto(proc, 1);
         PlaySoundEffect(0x6b);
-    }
-    else
-    {
+	} else {
         PlaySoundEffect(0x6a);
         if (unitItemCount <= proc->unitInvIdx)
         {

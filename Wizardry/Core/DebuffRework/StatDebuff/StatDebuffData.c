@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-struct StatDebuffStatus * const sStatDebuffStatusPool[0x100] = {
+struct StatDebuffStatus *const sStatDebuffStatusPool[0x100] = {
     [FACTION_BLUE + 0x01] = sStatDebuffStatusAlly + 0,
     [FACTION_BLUE + 0x02] = sStatDebuffStatusAlly + 1,
     [FACTION_BLUE + 0x03] = sStatDebuffStatusAlly + 2,

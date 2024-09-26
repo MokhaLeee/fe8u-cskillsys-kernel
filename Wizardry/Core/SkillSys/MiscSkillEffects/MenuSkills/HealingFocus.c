@@ -5,7 +5,7 @@
 #include "constants/texts.h"
 
 #if defined(SID_HealingFocus) && (COMMON_SKILL_VALID(SID_HealingFocus))
-u8 HealingFocus_Usability(const struct MenuItemDef * def, int number)
+u8 HealingFocus_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
@@ -16,7 +16,7 @@ u8 HealingFocus_Usability(const struct MenuItemDef * def, int number)
     return MENU_ENABLED;
 }
 
-u8 HealingFocus_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 HealingFocus_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {

@@ -65,9 +65,7 @@ STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox *proc)
     {
         anim = AnimCreate(AnimScr_EfxSkillBoxIconLeft, 0x95);
         anim->xPosition = 0x30;
-    }
-    else
-    {
+	} else {
         anim = AnimCreate(AnimScr_EfxSkillBoxIconRight, 0x95);
         anim->xPosition = 0xF0;
     }
@@ -82,9 +80,7 @@ STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox *proc)
     {
         anim = AnimCreate(AnimScr_EfxSkillBoxNameLeft, 0x95);
         anim->xPosition = 0x00;
-    }
-    else
-    {
+	} else {
         anim = AnimCreate(AnimScr_EfxSkillBoxNameRight, 0x95);
         anim->xPosition = 0x100;
     }
@@ -100,9 +96,7 @@ STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox *proc)
     {
         anim = AnimCreate(AnimScr_EfxSkillBoxNameLeft, 0x95);
         anim->xPosition = 0x00;
-    }
-    else
-    {
+	} else {
         anim = AnimCreate(AnimScr_EfxSkillBoxNameRight, 0x95);
         anim->xPosition = 0x100;
     }

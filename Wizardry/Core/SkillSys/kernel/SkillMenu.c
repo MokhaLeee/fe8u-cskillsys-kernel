@@ -22,7 +22,7 @@ STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit *unit)
     }
 }
 
-u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item)
+u8 MenuSkills_OnHelpBox(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (IS_SKILL_MENU_ITEM(item->def))
     {
@@ -34,7 +34,7 @@ u8 MenuSkills_OnHelpBox(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-u8 MenuSkills_Usability(const struct MenuItemDef * self, int number)
+u8 MenuSkills_Usability(const struct MenuItemDef *self, int number)
 {
     u16 sid;
 
@@ -51,9 +51,9 @@ u8 MenuSkills_Usability(const struct MenuItemDef * self, int number)
     return GetSkillMenuInfo(sid)->isAvailable(self, number);
 }
 
-static int MenuSkills_StandardDraw(struct MenuProc * menu, struct MenuItemProc * item)
+static int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
 {
-    const struct MenuItemDef * def = GetSkillMenuInfo(UnitMenuSkills[MENU_SKILL_INDEX(item->def)]);
+    const struct MenuItemDef *def = GetSkillMenuInfo(UnitMenuSkills[MENU_SKILL_INDEX(item->def)]);
     if (def->color)
         Text_SetColor(&item->text, def->color);
 
@@ -72,7 +72,7 @@ static int MenuSkills_StandardDraw(struct MenuProc * menu, struct MenuItemProc *
     return 0;
 }
 
-int MenuSkills_OnDraw(struct MenuProc * menu, struct MenuItemProc * item)
+int MenuSkills_OnDraw(struct MenuProc *menu, struct MenuItemProc *item)
 {
     u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
     if (GetSkillMenuInfo(sid)->onDraw)
@@ -81,7 +81,7 @@ int MenuSkills_OnDraw(struct MenuProc * menu, struct MenuItemProc * item)
     return MenuSkills_StandardDraw(menu, item);
 }
 
-u8 MenuSkills_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 MenuSkills_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
     if (GetSkillMenuInfo(sid)->onSelected)
@@ -90,7 +90,7 @@ u8 MenuSkills_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-u8 MenuSkills_Idle(struct MenuProc * menu, struct MenuItemProc * item)
+u8 MenuSkills_Idle(struct MenuProc *menu, struct MenuItemProc *item)
 {
     u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
     if (GetSkillMenuInfo(sid)->onIdle)
@@ -99,7 +99,7 @@ u8 MenuSkills_Idle(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-int MenuSkills_Hover(struct MenuProc * menu, struct MenuItemProc * item)
+int MenuSkills_Hover(struct MenuProc *menu, struct MenuItemProc *item)
 {
     u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
     if (GetSkillMenuInfo(sid)->onSwitchIn)
@@ -108,7 +108,7 @@ int MenuSkills_Hover(struct MenuProc * menu, struct MenuItemProc * item)
     return 0;
 }
 
-int MenuSkills_Unhover(struct MenuProc * menu, struct MenuItemProc * item)
+int MenuSkills_Unhover(struct MenuProc *menu, struct MenuItemProc *item)
 {
     u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
     if (GetSkillMenuInfo(sid)->onSwitchOut)

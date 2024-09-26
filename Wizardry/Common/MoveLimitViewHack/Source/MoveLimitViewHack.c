@@ -8,24 +8,24 @@
 LYN_REPLACE_CHECK(MoveLimitView_OnLoop);
 void MoveLimitView_OnLoop(struct MoveLimitViewProc *proc)
 {
-    int frame = (GetGameClock() / 2) & 31;
+	int frame = (GetGameClock() / 2) & 31;
 
-    if (proc->flags & MOVLIMITV_MMAP_BLUE)
-        CopyToPaletteBuffer(gPalBlueRangeSquare + frame, 0x82, 0x20);
+	if (proc->flags & MOVLIMITV_MMAP_BLUE)
+		CopyToPaletteBuffer(gPalBlueRangeSquare + frame, 0x82, 0x20);
 
-    if (proc->flags & MOVLIMITV_RMAP_RED)
-        CopyToPaletteBuffer(gPalRedRangeSquare + frame, 0xA2, 0x20);
+	if (proc->flags & MOVLIMITV_RMAP_RED)
+		CopyToPaletteBuffer(gPalRedRangeSquare + frame, 0xA2, 0x20);
 
-    if (proc->flags & MOVLIMITV_RMAP_GREEN)
-        CopyToPaletteBuffer(gPalGreenRangeSquare + frame, 0xA2, 0x20);
+	if (proc->flags & MOVLIMITV_RMAP_GREEN)
+		CopyToPaletteBuffer(gPalGreenRangeSquare + frame, 0xA2, 0x20);
 
-    if (proc->flags & MOVLIMITV_RMAP_BLUE)
-        CopyToPaletteBuffer(gPalBlueRangeSquare + frame, 0xA2, 0x20);
+	if (proc->flags & MOVLIMITV_RMAP_BLUE)
+		CopyToPaletteBuffer(gPalBlueRangeSquare + frame, 0xA2, 0x20);
 
-    /* New */
-    if (proc->flags & MOVLIMITV_MMAP_RED)
-        CopyToPaletteBuffer(gPalRedRangeSquare + frame, 0x82, 0x20);
+	/* New */
+	if (proc->flags & MOVLIMITV_MMAP_RED)
+		CopyToPaletteBuffer(gPalRedRangeSquare + frame, 0x82, 0x20);
 
-    if (proc->flags & MOVLIMITV_MMAP_GREEN)
-        CopyToPaletteBuffer(gPalGreenRangeSquare + frame, 0x82, 0x20);
+	if (proc->flags & MOVLIMITV_MMAP_GREEN)
+		CopyToPaletteBuffer(gPalGreenRangeSquare + frame, 0x82, 0x20);
 }

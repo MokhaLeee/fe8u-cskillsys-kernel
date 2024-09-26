@@ -68,7 +68,7 @@ void HbRedirect_SkillPageCommon(struct HelpBoxProc *proc)
 
 void HbPopuplate_ArtPageCommon(struct HelpBoxProc *proc)
 {
-    struct CombatArtList * list = AutoGetCombatArtList(gStatScreen.unit);
+    struct CombatArtList *list = AutoGetCombatArtList(gStatScreen.unit);
     int cid = list->cid[proc->info->mid];
 
     proc->item = cid;

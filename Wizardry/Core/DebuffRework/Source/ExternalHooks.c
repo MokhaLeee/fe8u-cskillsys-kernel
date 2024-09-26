@@ -2,7 +2,7 @@
 #include "debuff.h"
 
 LYN_REPLACE_CHECK(ComputeBattleUnitStatusBonuses);
-void ComputeBattleUnitStatusBonuses(struct BattleUnit * bu)
+void ComputeBattleUnitStatusBonuses(struct BattleUnit *bu)
 {
     /**
      * Did nothing since now we put it in pre-battle calc
@@ -10,7 +10,7 @@ void ComputeBattleUnitStatusBonuses(struct BattleUnit * bu)
     return;
 }
 
-void PreBattleCalcDebuffs(struct BattleUnit * bu, struct BattleUnit * defender)
+void PreBattleCalcDebuffs(struct BattleUnit *bu, struct BattleUnit *defender)
 {
     struct Unit *unit = GetUnit(bu->unit.index);
     int debuff = GetUnitStatusIndex(unit);

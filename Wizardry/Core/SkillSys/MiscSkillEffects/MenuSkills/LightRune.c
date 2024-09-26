@@ -6,7 +6,7 @@
 #include "constants/texts.h"
 
 #if defined(SID_LightRune) && (COMMON_SKILL_VALID(SID_LightRune))
-u8 LightRune_Usability(const struct MenuItemDef * def, int number)
+u8 LightRune_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
@@ -20,7 +20,7 @@ u8 LightRune_Usability(const struct MenuItemDef * def, int number)
     return MENU_ENABLED;
 }
 
-static u8 LightRune_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
+static u8 LightRune_OnSelectTarget(ProcPtr proc, struct SelectTarget *target)
 {
     gActionData.xOther = target->x;
     gActionData.yOther = target->y;
@@ -36,7 +36,7 @@ static u8 LightRune_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
     return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A | TARGETSELECTION_ACTION_CLEARBGS;
 }
 
-u8 LightRune_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 LightRune_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     if (item->availability == MENU_DISABLED)
     {

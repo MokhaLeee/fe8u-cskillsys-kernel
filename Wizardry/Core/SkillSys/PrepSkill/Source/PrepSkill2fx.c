@@ -281,9 +281,7 @@ void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 *proc)
         struct SkillList * llist = GetUnitSkillList(proc->unit);
         int index = PREP_SLLIST_OFFSET(proc->hand_x, proc->left_line + proc->hand_y);
         sid = llist->sid[index];
-    }
-    else
-    {
+	} else {
         struct PrepEquipSkillList * rlist = GetPrepEquipSkillList(proc->unit);
         int index = PREP_SRLIST_OFFSET(proc->hand_x, proc->right_line + proc->hand_y);
         sid = rlist->sid[index];

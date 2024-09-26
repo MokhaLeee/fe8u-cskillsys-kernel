@@ -140,9 +140,7 @@ void DisplayLeftPanel(void)
         // Display '--' if current hp > 99
         PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(3, 17), TEXT_COLOR_SYSTEM_BLUE,
             TEXT_SPECIAL_DASH, TEXT_SPECIAL_DASH);
-    }
-    else
-    {
+	} else {
         // Display current hp
         PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(4, 17), TEXT_COLOR_SYSTEM_BLUE,
             GetUnitCurrentHp(gStatScreen.unit));
@@ -154,9 +152,7 @@ void DisplayLeftPanel(void)
         // Display '--' if max hp > 99
         PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(6, 17), TEXT_COLOR_SYSTEM_BLUE,
             TEXT_SPECIAL_DASH, TEXT_SPECIAL_DASH);
-    }
-    else
-    {
+	} else {
         // Display max hp
         PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(7, 17), TEXT_COLOR_SYSTEM_BLUE,
             GetUnitMaxHp(gStatScreen.unit));

@@ -6,7 +6,7 @@ static _DECL_INFO RText_Pow, RText_Mag, RText_Skl, RText_Spd, RText_Lck, RText_D
 static _DECL_INFO RText_Mov, RText_Con, RText_Aid, RText_Affin, RText_Trv, RText_Cond, RText_BAmt;
 static _DECL_INFO RText_Name, RText_Class, RText_Level, RText_Exp, RText_Hp;
 
-_DECL_INFO * const RTextPageUnit_WithBWL = &RText_Pow;
+_DECL_INFO *const RTextPageUnit_WithBWL = &RText_Pow;
 
 /* Line #1 */
 static _DECL_INFO RText_Pow = {

@@ -81,7 +81,7 @@ void AddMapForItem(struct Unit *unit, u16 item)
         MapAddInRange(unit->xPos, unit->yPos, min - 1, -1);
 }
 
-void ForEachUnit(void (* func)(struct Unit *), u8 ** map, const int off)
+void ForEachUnit(void (*func)(struct Unit *), u8 ** map, const int off)
 {
     int x, y;
 

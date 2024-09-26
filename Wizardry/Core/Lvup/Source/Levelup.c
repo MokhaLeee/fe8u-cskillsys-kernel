@@ -27,7 +27,7 @@ static int GetStatIncreaseFixed(int growth, int ref)
     return simple_div(growth + simple_mod(growth * ref, 100), 100);
 }
 
-static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
+static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
 {
     struct Unit *unit = GetUnit(bu->unit.index);
 
@@ -42,7 +42,7 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
     BU_CHG_MAG(bu) = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
 }
 
-static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)
+static void UnitLvup_RandC(struct BattleUnit *bu, int bonus)
 {
     struct Unit *unit = GetUnit(bu->unit.index);
 
@@ -57,7 +57,7 @@ static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)
     BU_CHG_MAG(bu) = GetStatIncreaseRandC(GetUnitMagGrowth(unit) + bonus);
 }
 
-static void UnitLvup_Fixed(struct BattleUnit * bu, int bonus)
+static void UnitLvup_Fixed(struct BattleUnit *bu, int bonus)
 {
     struct Unit *unit = GetUnit(bu->unit.index);
 
@@ -76,7 +76,7 @@ static void UnitLvup_Fixed(struct BattleUnit * bu, int bonus)
     BU_CHG_MAG(bu) = GetStatIncreaseFixed(GetUnitMagGrowth(unit) + bonus, ref += 5);
 }
 
-static void UnitLvup_100(struct BattleUnit * bu, int bonus)
+static void UnitLvup_100(struct BattleUnit *bu, int bonus)
 {
     bu->changeHP  = 1;
     bu->changePow = 1;
@@ -88,15 +88,15 @@ static void UnitLvup_100(struct BattleUnit * bu, int bonus)
     BU_CHG_MAG(bu) = 1;
 }
 
-static void UnitLvup_0(struct BattleUnit * bu, int bonus)
+static void UnitLvup_0(struct BattleUnit *bu, int bonus)
 {
     return;
 }
 
 
-STATIC_DECLAR void UnitLvupCore(struct BattleUnit * bu, int bonus)
+STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 {
-    static void (* const funcs[])(struct BattleUnit * bu, int bonus) = {
+    static void (*const funcs[])(struct BattleUnit *bu, int bonus) = {
         [0] = UnitLvup_Vanilla,
         [1] = UnitLvup_RandC,
         [2] = UnitLvup_Fixed,
@@ -141,7 +141,7 @@ static inline int get_metis_tome_growth_bonus(void)
 }
 
 LYN_REPLACE_CHECK(CheckBattleUnitLevelUp);
-void CheckBattleUnitLevelUp(struct BattleUnit * bu)
+void CheckBattleUnitLevelUp(struct BattleUnit *bu)
 {
     if (CanBattleUnitGainLevels(bu) && bu->unit.exp >= 100)
     {

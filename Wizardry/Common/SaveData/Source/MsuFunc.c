@@ -102,8 +102,8 @@ void MSU_SaveBonusClaim(void)
 void MSU_LoadBonusClaimWIP(void)
 {
     u32 buf;
-    const struct EmsChunk * chunk = GetEmsChunkByIndex_Sav(EMS_CHUNK_BONUSCLAIMDATA);
-    void * src = GetSaveReadAddr(gPlaySt.gameSaveSlot);
+    const struct EmsChunk *chunk = GetEmsChunkByIndex_Sav(EMS_CHUNK_BONUSCLAIMDATA);
+    void *src = GetSaveReadAddr(gPlaySt.gameSaveSlot);
     ReadSramFast(src + CalcChunkOffset_Sav(chunk), &buf, sizeof(buf)); /* read from save data */
     SetBonusContentClaimFlags(buf);
 }
@@ -122,9 +122,7 @@ static void NewPackSuspandUnit(struct Unit *src, struct EmsPackedSusUnit * dst)
         src = &tmp_unit;
         dst->jid = 0;
         dst->pid = 0;
-    }
-    else
-    {
+	} else {
         dst->jid = UNIT_CLASS_ID(src);
         dst->pid = UNIT_CHAR_ID(src);
     }
@@ -172,9 +170,7 @@ static void NewPackSuspandUnit(struct Unit *src, struct EmsPackedSusUnit * dst)
 
         dst->pad.ally.support_gain = src->supportBits;
         dst->pad.ally.cur_hp = src->curHP;
-    }
-    else
-    {
+	} else {
         for (i = 0; i < ARRAY_COUNT(dst->pad.ai.skills); i++)
             dst->pad.ai.skills[i] = src->supports[i];
 
@@ -237,9 +233,7 @@ static void NewUnpackSuspandUnit(struct EmsPackedSusUnit * src, struct Unit *dst
 
         dst->supportBits = src->pad.ally.support_gain;
         dst->curHP = src->pad.ally.cur_hp;
-    }
-    else
-    {
+	} else {
         for (i = 0; i < ARRAY_COUNT(src->pad.ai.skills); i++)
             dst->supports[i] = src->pad.ai.skills[i];
 

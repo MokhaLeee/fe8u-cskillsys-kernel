@@ -19,7 +19,7 @@ STATIC_DECLAR bool AreAnyEnemyExists(void)
     return false;
 }
 
-u8 Teleportation_Usability(const struct MenuItemDef * def, int number)
+u8 Teleportation_Usability(const struct MenuItemDef *def, int number)
 {
     if (gActiveUnit->state & US_CANTOING || CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
         return MENU_NOTSHOWN;
@@ -33,7 +33,7 @@ u8 Teleportation_Usability(const struct MenuItemDef * def, int number)
     return MENU_ENABLED;
 }
 
-u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
+u8 Teleportation_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
     struct Vec2 vec;
 
@@ -47,9 +47,7 @@ u8 Teleportation_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
     {
         gActionData.xMove = vec.x;
         gActionData.yMove = vec.y;
-    }
-    else
-    {
+	} else {
         /* Yeah, Who said you can't teleport without movement LOL */
         gActionData.xMove = gActiveUnit->xPos;
         gActionData.yMove = gActiveUnit->yPos;

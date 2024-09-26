@@ -1,17 +1,16 @@
 #include "common-chax.h"
 #include "map-anims.h"
 
-extern const struct EventSpriteAnimConf EventSpriteAnimConf_NinianPray;
-
 void StartNinianPrayfx(ProcPtr proc, int x, int y)
 {
-    struct ProcEventSpriteAnim *procfx;
-    if (proc)
-        procfx = Proc_StartBlocking(ProcScr_EventSpriteAnim, proc);
-    else
-        procfx = Proc_Start(ProcScr_EventSpriteAnim, PROC_TREE_3);
+	struct ProcEventSpriteAnim *procfx;
 
-    procfx->x = x;
-    procfx->y = y;
-    procfx->priv = &EventSpriteAnimConf_NinianPray;
+	if (proc)
+		procfx = Proc_StartBlocking(ProcScr_EventSpriteAnim, proc);
+	else
+		procfx = Proc_Start(ProcScr_EventSpriteAnim, PROC_TREE_3);
+
+	procfx->x = x;
+	procfx->y = y;
+	procfx->priv = &EventSpriteAnimConf_NinianPray;
 }
