@@ -42,3 +42,4 @@ Tools/dotnet-install.sh
 *.efx.event
 
 packages-microsoft-prod.deb
+*.EXPERIMENTAL-checkpatch-fixes

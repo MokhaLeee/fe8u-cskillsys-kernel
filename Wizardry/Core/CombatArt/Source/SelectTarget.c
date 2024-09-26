@@ -9,309 +9,303 @@ extern s8 sSelectedComatArtIndex;
 
 STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
 {
-    int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-    struct CombatArtList * list = GetCombatArtList(gActiveUnit, wtype);
-    int new = old - 1;
+	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+	struct CombatArtList *list = GetCombatArtList(gActiveUnit, wtype);
+	int new = old - 1;
 
-    if (old == 0)
-        return 0;
+	if (old == 0)
+		return 0;
 
-    if (new < 0)
-        new = list->amt - 1;
+	if (new < 0)
+		new = list->amt - 1;
 
-    for (; new != old; new--)
-    {
-        const struct CombatArtInfo * info;
+	for (; new != old; new--) {
+		const struct CombatArtInfo *info;
 
-        if (new < 0)
-            return 0;
+		if (new < 0)
+			return 0;
 
-        info = GetCombatArtInfo(list->cid[new]);
-        if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
-            break;
-    }
+		info = GetCombatArtInfo(list->cid[new]);
+		if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
+			break;
+	}
 
-    LTRACEF("wtype %d, old %d, new %d", wtype, old, new);
-    return new + 1;
+	LTRACEF("wtype %d, old %d, new %d", wtype, old, new);
+	return new + 1;
 }
 
 STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
 {
-    int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-    struct CombatArtList * list = GetCombatArtList(gActiveUnit, wtype);
-    int new = old + 1;
+	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+	struct CombatArtList *list = GetCombatArtList(gActiveUnit, wtype);
+	int new = old + 1;
 
-    for (; new != old; new++)
-    {
-        const struct CombatArtInfo * info;
+	for (; new != old; new++) {
+		const struct CombatArtInfo *info;
 
-        if (new >= list->amt)
-            return 0;
+		if (new >= list->amt)
+			return 0;
 
-        info = GetCombatArtInfo(list->cid[new]);
+		info = GetCombatArtInfo(list->cid[new]);
 
-        if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
-            break;
-    }
-    LTRACEF("wtype %d, old %d, new %d", wtype, old, new);
-    return new + 1;
+		if (info->wtype == CA_WTYPE_ANY || info->wtype == wtype)
+			break;
+	}
+	LTRACEF("wtype %d, old %d, new %d", wtype, old, new);
+	return new + 1;
 }
 
 u8 GetCombatArtByTargetSelIndex(void)
 {
-    int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-    struct CombatArtList * calist = GetCombatArtList(gActiveUnit, wtype);
+	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, wtype);
 
-    /* 0 as default seemed as not use combat-art */
-    if (sSelectedComatArtIndex == 0)
-        return 0;
+	/* 0 as default seemed as not use combat-art */
+	if (sSelectedComatArtIndex == 0)
+		return 0;
 
-    return calist->cid[sSelectedComatArtIndex - 1];
+	return calist->cid[sSelectedComatArtIndex - 1];
 }
 
 STATIC_DECLAR void RegisterCombatArtStatusInTargetSel(int sel_index)
 {
-    int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-    struct CombatArtList * calist = GetCombatArtList(gActiveUnit, wtype);
+	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, wtype);
 
-    /* 0 as default seemed as not use combat-art */
-    if (sel_index == 0)
-        RegisterCombatArtStatus(gActiveUnit, 0);
-    else
-        RegisterCombatArtStatus(gActiveUnit, calist->cid[sel_index - 1]);
+	/* 0 as default seemed as not use combat-art */
+	if (sel_index == 0)
+		RegisterCombatArtStatus(gActiveUnit, 0);
+	else
+		RegisterCombatArtStatus(gActiveUnit, calist->cid[sel_index - 1]);
 }
 
-STATIC_DECLAR bool TargetSelectionRework_HandleCombatArt(struct SelectTargetProc * proc)
+STATIC_DECLAR bool TargetSelectionRework_HandleCombatArt(struct SelectTargetProc *proc)
 {
-    int i, new;
-    s8 uid_pre;
-    u16 repeated;
-    struct SelectTarget * it, * cur = proc->currentTarget;
-    struct Unit * unit = gActiveUnit;
-    u16 weapon = GetItemFormSlot(unit, gActionData.itemSlotIndex);
+	int i, new;
+	s8 uid_pre;
+	u16 repeated;
+	struct SelectTarget *it, *cur = proc->currentTarget;
+	struct Unit *unit = gActiveUnit;
+	u16 weapon = GetItemFormSlot(unit, gActionData.itemSlotIndex);
 
-    repeated = gKeyStatusPtr->repeatedKeys;
+	repeated = gKeyStatusPtr->repeatedKeys;
 
-    if (!(repeated & (DPAD_LEFT | DPAD_RIGHT)))
-        return false;
+	if (!(repeated & (DPAD_LEFT | DPAD_RIGHT)))
+		return false;
 
-    /* We directly judge the first item! */
-    if (!CanUnitPlayCombatArt(unit, weapon))
-        return false;
+	/* We directly judge the first item! */
+	if (!CanUnitPlayCombatArt(unit, weapon))
+		return false;
 
-    if (DPAD_LEFT & repeated)
-    {
-        new = GetNextCombatArtIndexInTargetSelLeft(sSelectedComatArtIndex - 1);
-        while (new != sSelectedComatArtIndex)
-        {
-            RegisterCombatArtStatusInTargetSel(new);
+	if (DPAD_LEFT & repeated) {
+		new = GetNextCombatArtIndexInTargetSelLeft(sSelectedComatArtIndex - 1);
 
-            if (IsItemCoveringRangeRework(weapon, RECT_DISTANCE(unit->xPos, unit->yPos, cur->x, cur->y), unit))
-                goto update_combat_art;
+		while (new != sSelectedComatArtIndex) {
+			RegisterCombatArtStatusInTargetSel(new);
 
-            new = GetNextCombatArtIndexInTargetSelLeft(new - 1);
-        }
-    }
-    else if (DPAD_RIGHT & repeated)
-    {
-        new = GetNextCombatArtIndexInTargetSelRight(sSelectedComatArtIndex - 1);
-        while (new != sSelectedComatArtIndex)
-        {
-            RegisterCombatArtStatusInTargetSel(new);
+			if (IsItemCoveringRangeRework(weapon, RECT_DISTANCE(unit->xPos, unit->yPos, cur->x, cur->y), unit))
+				goto update_combat_art;
 
-            if (IsItemCoveringRangeRework(weapon, RECT_DISTANCE(unit->xPos, unit->yPos, cur->x, cur->y), unit))
-                goto update_combat_art;
+			new = GetNextCombatArtIndexInTargetSelLeft(new - 1);
+		}
+	} else if (DPAD_RIGHT & repeated) {
+		new = GetNextCombatArtIndexInTargetSelRight(sSelectedComatArtIndex - 1);
 
-            new = GetNextCombatArtIndexInTargetSelRight(new - 1);
-        }
-    }
-    /* We did not find new art, register vanilla */
-    RegisterCombatArtStatusInTargetSel(sSelectedComatArtIndex);
-    return false;
+		while (new != sSelectedComatArtIndex) {
+			RegisterCombatArtStatusInTargetSel(new);
+
+			if (IsItemCoveringRangeRework(weapon, RECT_DISTANCE(unit->xPos, unit->yPos, cur->x, cur->y), unit))
+				goto update_combat_art;
+
+			new = GetNextCombatArtIndexInTargetSelRight(new - 1);
+		}
+	}
+
+	/* We did not find new art, register vanilla */
+	RegisterCombatArtStatusInTargetSel(sSelectedComatArtIndex);
+	return false;
 
 update_combat_art:
-    sSelectedComatArtIndex = new;
+	sSelectedComatArtIndex = new;
 
-    BmMapFill(gBmMapMovement, -1);
-    BmMapFill(gBmMapRange, 0);
-    GenerateUnitStandingReachRange(unit, GetUnitWeaponReachBits(unit, 0));
-    DisplayMoveRangeGraphics(MOVLIMITV_RMAP_RED);
+	BmMapFill(gBmMapMovement, -1);
+	BmMapFill(gBmMapRange, 0);
+	GenerateUnitStandingReachRange(unit, GetUnitWeaponReachBits(unit, 0));
+	DisplayMoveRangeGraphics(MOVLIMITV_RMAP_RED);
 
-    uid_pre = proc->currentTarget->uid;
-    MakeTargetListForWeapon(unit, weapon);
+	uid_pre = proc->currentTarget->uid;
+	MakeTargetListForWeapon(unit, weapon);
 
-    /**
-     * Here we assume MakeTargetListForWeapon() must result equals to (IsItemCoveringRange() && CanUnitUseWeapon()) 
-     */
-    for (it = GetLinkedTargets(), i = 0; i < GetSelectTargetCount(); i++, it = it->next)
-    {
-        if (uid_pre == it->uid)
-        {
-            proc->currentTarget = it;
-            break;
-        }
-    }
+	/**
+	 * Here we assume MakeTargetListForWeapon() must result equals to (IsItemCoveringRange() && CanUnitUseWeapon())
+	 */
+	for (it = GetLinkedTargets(), i = 0; i < GetSelectTargetCount(); i++, it = it->next) {
+		if (uid_pre == it->uid) {
+			proc->currentTarget = it;
+			break;
+		}
+	}
 
-    if (proc->selectRoutines->onSwitchOut)
-        proc->selectRoutines->onSwitchOut(proc, it);
+	if (proc->selectRoutines->onSwitchOut)
+		proc->selectRoutines->onSwitchOut(proc, it);
 
-    if (proc->selectRoutines->onSwitchIn)
-        proc->selectRoutines->onSwitchIn(proc, it);
+	if (proc->selectRoutines->onSwitchIn)
+		proc->selectRoutines->onSwitchIn(proc, it);
 
-    PlaySoundEffect(0x67);
-    return true;
+	PlaySoundEffect(0x67);
+	return true;
 }
 
-STATIC_DECLAR void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc * proc)
+STATIC_DECLAR void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc *proc)
 {
-    struct SelectTarget * current = proc->currentTarget;
+	struct SelectTarget *current = proc->currentTarget;
 
-    if (TargetSelectionRework_HandleCombatArt(proc))
-        return;
+	if (TargetSelectionRework_HandleCombatArt(proc))
+		return;
 
-    if ((DPAD_LEFT | DPAD_UP) & gKeyStatusPtr->repeatedKeys)
-        if (current->next != 0)
-            proc->currentTarget = current->next;
+	if ((DPAD_LEFT | DPAD_UP) & gKeyStatusPtr->repeatedKeys)
+		if (current->next != 0)
+			proc->currentTarget = current->next;
 
-    if ((DPAD_RIGHT | DPAD_DOWN) & gKeyStatusPtr->repeatedKeys)
-        if (proc->currentTarget->prev)
-            proc->currentTarget = proc->currentTarget->prev;
+	if ((DPAD_RIGHT | DPAD_DOWN) & gKeyStatusPtr->repeatedKeys)
+		if (proc->currentTarget->prev)
+			proc->currentTarget = proc->currentTarget->prev;
 
-    if (proc->currentTarget == current)
-        return;
+	if (proc->currentTarget == current)
+		return;
 
-    if (proc->selectRoutines->onSwitchOut)
-        proc->selectRoutines->onSwitchOut(proc, current);
+	if (proc->selectRoutines->onSwitchOut)
+		proc->selectRoutines->onSwitchOut(proc, current);
 
-    if (proc->selectRoutines->onSwitchIn)
-        proc->selectRoutines->onSwitchIn(proc, proc->currentTarget);
+	if (proc->selectRoutines->onSwitchIn)
+		proc->selectRoutines->onSwitchIn(proc, proc->currentTarget);
 
-    PlaySoundEffect(0x67);
+	PlaySoundEffect(0x67);
 }
 
-STATIC_DECLAR void TargetSelectionRework_Loop(struct SelectTargetProc * proc)
+STATIC_DECLAR void TargetSelectionRework_Loop(struct SelectTargetProc *proc)
 {
-    int x, y;
-    int action;
+	int x, y;
+	int action;
 
-    if ((TARGETSELECTION_FLAG_FROZEN & proc->flags) != 0) {
-        TargetSelection_GetRealCursorPosition(proc, &x, &y);
-        PutMapCursor(x, y, 4);
-        return;
-    }
+	if ((TARGETSELECTION_FLAG_FROZEN & proc->flags) != 0) {
+		TargetSelection_GetRealCursorPosition(proc, &x, &y);
+		PutMapCursor(x, y, 4);
+		return;
+	}
 
-    TargetSelectionRework_HandleMoveInput(proc);
+	TargetSelectionRework_HandleMoveInput(proc);
 
-    action = TargetSelection_HandleSelectInput(proc);
+	action = TargetSelection_HandleSelectInput(proc);
 
-    if ((TARGETSELECTION_ACTION_END & action) != 0)
-    {
+	if ((TARGETSELECTION_ACTION_END & action) != 0) {
 #if CHAX
-        RegisterCombatArtTargetPos(
-            proc->currentTarget->x, proc->currentTarget->y);
+		RegisterCombatArtTargetPos(
+			proc->currentTarget->x, proc->currentTarget->y);
 #endif
-        gBattleTargetPositionBackup.x = proc->currentTarget->x;
-        gBattleTargetPositionBackup.y = proc->currentTarget->y;
+		gBattleTargetPositionBackup.x = proc->currentTarget->x;
+		gBattleTargetPositionBackup.y = proc->currentTarget->y;
 
-        EndTargetSelection(proc);
-    }
-    if ((TARGETSELECTION_ACTION_SE_6A & action) != 0)
-        PlaySoundEffect(0x6A);
+		EndTargetSelection(proc);
+	}
 
-    if ((TARGETSELECTION_ACTION_SE_6B & action) != 0)
-        PlaySoundEffect(0x6B);
+	if ((TARGETSELECTION_ACTION_SE_6A & action) != 0)
+		PlaySoundEffect(0x6A);
 
-    if ((TARGETSELECTION_ACTION_CLEARBGS & action) != 0)
-        ClearBg0Bg1();
+	if ((TARGETSELECTION_ACTION_SE_6B & action) != 0)
+		PlaySoundEffect(0x6B);
 
-    if ((TARGETSELECTION_ACTION_ENDFACE & action) != 0)
-        EndFaceById(0);
+	if ((TARGETSELECTION_ACTION_CLEARBGS & action) != 0)
+		ClearBg0Bg1();
 
-    if ((TARGETSELECTION_ACTION_ENDFAST & action) == 0) {
-        TargetSelection_GetRealCursorPosition(proc, &x, &y);
+	if ((TARGETSELECTION_ACTION_ENDFACE & action) != 0)
+		EndFaceById(0);
 
-        if (EnsureCameraOntoPosition(proc, x >> 4, y >> 4) != 1)
-            PutMapCursor(x, y, 2);
-    }
+	if ((TARGETSELECTION_ACTION_ENDFAST & action) == 0) {
+		TargetSelection_GetRealCursorPosition(proc, &x, &y);
+
+		if (EnsureCameraOntoPosition(proc, x >> 4, y >> 4) != 1)
+			PutMapCursor(x, y, 2);
+	}
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_TargetSelectionRework[] = {
 PROC_LABEL(0),
-    PROC_REPEAT(TargetSelectionRework_Loop),
-    PROC_SLEEP(1),
+	PROC_REPEAT(TargetSelectionRework_Loop),
+	PROC_SLEEP(1),
 
-    PROC_CALL(RefreshBMapGraphics),
-    PROC_GOTO(0),
+	PROC_CALL(RefreshBMapGraphics),
+	PROC_GOTO(0),
 
-    PROC_END,
+	PROC_END,
 };
 
-ProcPtr NewTargetSelectionRework(const struct SelectInfo * selectInfo)
+ProcPtr NewTargetSelectionRework(const struct SelectInfo *selectInfo)
 {
-    int i, cid;
-    int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-    struct CombatArtList * list = GetCombatArtList(gActiveUnit, wtype);
-    struct SelectTargetProc * proc;
+	int i, cid;
+	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+	struct CombatArtList *list = GetCombatArtList(gActiveUnit, wtype);
+	struct SelectTargetProc *proc;
 
-    LockGame();
-    proc = Proc_Start(ProcScr_TargetSelectionRework, PROC_TREE_3);
+	LockGame();
+	proc = Proc_Start(ProcScr_TargetSelectionRework, PROC_TREE_3);
 
-    sSelectedComatArtIndex = 0;
-    cid = GetCombatArtInForce(gActiveUnit);
-    for (i = 0; i < list->amt; i++)
-        if (cid == list->cid[i])
-            sSelectedComatArtIndex = i + 1;
+	sSelectedComatArtIndex = 0;
+	cid = GetCombatArtInForce(gActiveUnit);
+	for (i = 0; i < list->amt; i++)
+		if (cid == list->cid[i])
+			sSelectedComatArtIndex = i + 1;
 
-    proc->flags = TARGETSELECTION_FLAG_GAMELOCK;
-    proc->selectRoutines = selectInfo;
-    proc->currentTarget = GetLinkedTargets();
-    proc->onAPress = 0;
+	proc->flags = TARGETSELECTION_FLAG_GAMELOCK;
+	proc->selectRoutines = selectInfo;
+	proc->currentTarget = GetLinkedTargets();
+	proc->onAPress = 0;
 
-    if (proc->selectRoutines->onInit)
-        proc->selectRoutines->onInit(proc);
+	if (proc->selectRoutines->onInit)
+		proc->selectRoutines->onInit(proc);
 
-    if (proc->selectRoutines->onUnk08)
-        proc->selectRoutines->onUnk08(proc);
+	if (proc->selectRoutines->onUnk08)
+		proc->selectRoutines->onUnk08(proc);
 
-    if (proc->selectRoutines->onSwitchIn)
-        proc->selectRoutines->onSwitchIn(proc, proc->currentTarget);
+	if (proc->selectRoutines->onSwitchIn)
+		proc->selectRoutines->onSwitchIn(proc, proc->currentTarget);
 
-    gKeyStatusPtr->newKeys = 0;
+	gKeyStatusPtr->newKeys = 0;
 
-    return proc;
+	return proc;
 }
 
 LYN_REPLACE_CHECK(UnknownMenu_Selected);
-u8 UnknownMenu_Selected(struct MenuProc * menu, struct MenuItemProc * menuItem)
+u8 UnknownMenu_Selected(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
-    EquipUnitItemSlot(gActiveUnit, menuItem->itemNumber);
-    gActionData.itemSlotIndex = 0;
+	EquipUnitItemSlot(gActiveUnit, menuItem->itemNumber);
+	gActionData.itemSlotIndex = 0;
 
-    ClearBg0Bg1();
-    MakeTargetListForWeapon(gActiveUnit, GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-    NewTargetSelectionRework(&gSelectInfo_Attack);
-    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_ENDFACE;
+	ClearBg0Bg1();
+	MakeTargetListForWeapon(gActiveUnit, GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+	NewTargetSelectionRework(&gSelectInfo_Attack);
+	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_ENDFACE;
 }
 
 bool CombatArtSelectTargetExist(void)
 {
-    return !!Proc_Find(ProcScr_TargetSelectionRework);
+	return !!Proc_Find(ProcScr_TargetSelectionRework);
 }
 
 STATIC_DECLAR int SelectTargetInfoOnEndVanilla(void)
 {
-    BG_Fill(gBG2TilemapBuffer, 0);
-    BG_EnableSyncByMask(BG2_SYNC_BIT);
+	BG_Fill(gBG2TilemapBuffer, 0);
+	BG_EnableSyncByMask(BG2_SYNC_BIT);
 
-    HideMoveRangeGraphics();
-    CloseBattleForecast();
-    return 0;
+	HideMoveRangeGraphics();
+	CloseBattleForecast();
+	return 0;
 }
 
 LYN_REPLACE_CHECK(AttackMapSelect_End);
 int AttackMapSelect_End(ProcPtr proc)
 {
-    /* SelectTarget on end */   
-    EndGreenText();
-    return SelectTargetInfoOnEndVanilla();
+	/* SelectTarget on end */
+	EndGreenText();
+	return SelectTargetInfoOnEndVanilla();
 }

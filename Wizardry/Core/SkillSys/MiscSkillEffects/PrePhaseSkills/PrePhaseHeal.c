@@ -5,126 +5,120 @@
 #include "constants/skills.h"
 #include "strmag.h"
 
-FORCE_DECLARE static int has_ally(struct Unit * unit) 
+FORCE_DECLARE static int has_ally(struct Unit *unit)
 {
-    int i;
-    for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++)
-    {
-        int _x = unit->xPos + gVecs_2x2[i].x;
-        int _y = unit->yPos + gVecs_2x2[i].y;
+	int i;
 
-        struct Unit * unit_ally = GetUnitAtPosition(_x, _y);
-        if (!UNIT_IS_VALID(unit_ally))
-            continue;
+	for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++) {
+		int _x = unit->xPos + gVecs_2x2[i].x;
+		int _y = unit->yPos + gVecs_2x2[i].y;
+		struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
 
-        if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-            continue;
+		if (!UNIT_IS_VALID(unit_ally))
+			continue;
 
-        if (AreUnitsAllied(unit->index, unit_ally->index))
-        {
-            i = 1;
+		if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+			continue;
+
+		if (AreUnitsAllied(unit->index, unit_ally->index)) {
+			i = 1;
 #if defined(SID_Amaterasu) && (COMMON_SKILL_VALID(SID_Amaterasu))
-            if (SkillTester(unit_ally, SID_Amaterasu))
-                i += 1 << 2;
+			if (SkillTester(unit_ally, SID_Amaterasu))
+				i += 1 << 2;
 #endif
-            return i;
-        }
-    }
-    return false;
+			return i;
+		}
+	}
+	return false;
 }
 
-STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
+STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit *unit)
 {
-    int ret = 0;
+	int ret = 0;
+	int res = has_ally(unit);
 
-    int res = has_ally(unit);
-    if (res)
-    {
+	if (res) {
 #if defined(SID_Camaraderie) && (COMMON_SKILL_VALID(SID_Camaraderie))
-        if (SkillTester(unit, SID_Camaraderie))
-            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Camaraderie), 100);
+		if (SkillTester(unit, SID_Camaraderie))
+			ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Camaraderie), 100);
 #endif
 
 #if defined(SID_Amaterasu) && (COMMON_SKILL_VALID(SID_Amaterasu))
-        if (res & 1 << 2)
-            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Amaterasu), 100);
+		if (res & 1 << 2)
+			ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Amaterasu), 100);
 #endif
-    }
-    else
-    {
+	} else {
 #if defined(SID_Relief) && (COMMON_SKILL_VALID(SID_Relief))
-        if (SkillTester(unit, SID_Relief))
-            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Relief), 100);
+		if (SkillTester(unit, SID_Relief))
+			ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Relief), 100);
 #endif
-    }
+	}
 
 #if defined(SID_Renewal) && (COMMON_SKILL_VALID(SID_Renewal))
-    if (SkillTester(unit, SID_Renewal))
-        ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
+	if (SkillTester(unit, SID_Renewal))
+		ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
 #endif
 
 #if defined(SID_Imbue) && (COMMON_SKILL_VALID(SID_Imbue))
-    if (SkillTester(unit, SID_Imbue))
-        ret += GetUnitMagic(unit);
+	if (SkillTester(unit, SID_Imbue))
+		ret += GetUnitMagic(unit);
 #endif
 
 #if defined(SID_Forager) && (COMMON_SKILL_VALID(SID_Forager))
-    if (SkillTester(unit, SID_Forager))
-    {
-        const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
-        if(terrainId == 1/* plain */ || terrainId == 12 /* forest */ || terrainId == 17 /* mountain */)
-            ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Forager), 100);
-    }
+	if (SkillTester(unit, SID_Forager)) {
+		const unsigned int terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
+
+		if (terrainId == TERRAIN_PLAINS || terrainId == TERRAIN_FOREST || terrainId == TERRAIN_MOUNTAIN)
+			ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Forager), 100);
+	}
 #endif
 
 #if defined(SID_RainDish) && (COMMON_SKILL_VALID(SID_RainDish))
-    if (SkillTester(unit, SID_RainDish) && gPlaySt.chapterWeatherId == WEATHER_RAIN)
-        ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
-#endif 
-    return ret;
+	if (SkillTester(unit, SID_RainDish) && gPlaySt.chapterWeatherId == WEATHER_RAIN)
+		ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
+#endif
+	return ret;
 }
 
 LYN_REPLACE_CHECK(MakeTerrainHealTargetList);
 void MakeTerrainHealTargetList(int faction)
 {
-    int i;
+	int i;
 
-    InitTargets(0, 0);
+	InitTargets(0, 0);
 
-    for (i = faction + 1; i <= (faction + GetFactionUnitAmount(gPlaySt.faction)); i++)
-    {
-        struct Unit * unit = GetUnit(i);
-        int terrainId;
-        int amount;
+	for (i = faction + 1; i <= (faction + GetFactionUnitAmount(gPlaySt.faction)); i++) {
+		struct Unit *unit = GetUnit(i);
+		int terrainId;
+		int amount;
 
-        if (!UNIT_IS_VALID(unit))
-            continue;
+		if (!UNIT_IS_VALID(unit))
+			continue;
 
-        if (unit->state & (US_DEAD | US_NOT_DEPLOYED | US_RESCUED | US_BIT16))
-            continue;
+		if (unit->state & (US_DEAD | US_NOT_DEPLOYED | US_RESCUED | US_BIT16))
+			continue;
 
-        terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
+		terrainId = gBmMapTerrain[unit->yPos][unit->xPos];
 
-        if (GetUnitCurrentHp(unit) != GetUnitMaxHp(unit))
-        {
-            /* Heal */
-            int terrain_heal = Div(GetTerrainHealAmount(terrainId) * GetUnitMaxHp(unit), 100);
-            int skill_heal = GetPrePhaseHealAmount(unit);
+		if (GetUnitCurrentHp(unit) != GetUnitMaxHp(unit)) {
+			/* Heal */
+			int terrain_heal = Div(GetTerrainHealAmount(terrainId) * GetUnitMaxHp(unit), 100);
+			int skill_heal = GetPrePhaseHealAmount(unit);
 
-            amount = terrain_heal + skill_heal;
-            if (amount != 0)
-                AddTarget(unit->xPos, unit->yPos, unit->index, amount);
-        }
+			amount = terrain_heal + skill_heal;
+			if (amount != 0)
+				AddTarget(unit->xPos, unit->yPos, unit->index, amount);
+		}
 
-        if (GetTerrainHealsStatus(terrainId) == 0)
-            continue;
+		if (GetTerrainHealsStatus(terrainId) == 0)
+			continue;
 
-        if (GetUnitStatusIndex(unit) == UNIT_STATUS_NONE)
-            continue;
+		if (GetUnitStatusIndex(unit) == UNIT_STATUS_NONE)
+			continue;
 
-        if (GetUnitStatusIndex(unit) == UNIT_STATUS_13)
-            SetUnitStatus(unit, UNIT_STATUS_PETRIFY);
+		if (GetUnitStatusIndex(unit) == UNIT_STATUS_13)
+			SetUnitStatus(unit, UNIT_STATUS_PETRIFY);
 
-        AddTarget(unit->xPos, unit->yPos, unit->index, -1);
-    }
+		AddTarget(unit->xPos, unit->yPos, unit->index, -1);
+	}
 }

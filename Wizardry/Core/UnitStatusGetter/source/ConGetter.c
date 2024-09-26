@@ -8,8 +8,9 @@
  * We did not inject CON-Getters to a lot of vanilla function.
  * thus this function should not modified.
  */
-int _GetUnitCon(struct Unit * unit)
+int _GetUnitCon(struct Unit *unit)
 {
-    int status = UNIT_CON(unit);
-    return status;
+	int status = UNIT_CON(unit);
+
+	return status;
 }

@@ -4,47 +4,47 @@
 
 bool IsDuraItem(int item)
 {
-    switch (ITEM_INDEX(item)) {
-    case CONFIG_ITEM_INDEX_SKILL_SCROLL:
-        return true;
+	switch (ITEM_INDEX(item)) {
+	case CONFIG_ITEM_INDEX_SKILL_SCROLL:
+		return true;
 
-    default:
-        return false;
-    }
+	default:
+		return false;
+	}
 }
 
-char * GetDuraItemName(int item)
+char *GetDuraItemName(int item)
 {
-    if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
-        return GetSkillScrollItemName(item);
+	if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
+		return GetSkillScrollItemName(item);
 
-    Errorf("Invalid dura-item: %x", item);
-    return NULL;
+	Errorf("Invalid dura-item: %x", item);
+	return NULL;
 }
 
 int GetDuraItemDescId(int item)
 {
-    if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
-        return GetSkillScrollItemDescId(item);
+	if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
+		return GetSkillScrollItemDescId(item);
 
-    Errorf("Invalid dura-item: %x", item);
-    return 0;
+	Errorf("Invalid dura-item: %x", item);
+	return 0;
 }
 
 int GetDuraItemUseDescId(int item)
 {
-    if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
-        return GetSkillScrollItemUseDescId(item);
+	if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
+		return GetSkillScrollItemUseDescId(item);
 
-    Errorf("Invalid dura-item: %x", item);
-    return 0;
+	Errorf("Invalid dura-item: %x", item);
+	return 0;
 }
 
 int GetDuraItemIconId(int item)
 {
-    if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
-        return GetSkillScrollItemIconId(item);
+	if (ITEM_INDEX(item) == CONFIG_ITEM_INDEX_SKILL_SCROLL)
+		return GetSkillScrollItemIconId(item);
 
-    Errorf("Invalid dura-item: %x", item);
-    return 0;
+	Errorf("Invalid dura-item: %x", item);
+	return 0;
 }

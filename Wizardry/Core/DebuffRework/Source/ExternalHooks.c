@@ -2,66 +2,66 @@
 #include "debuff.h"
 
 LYN_REPLACE_CHECK(ComputeBattleUnitStatusBonuses);
-void ComputeBattleUnitStatusBonuses(struct BattleUnit * bu)
+void ComputeBattleUnitStatusBonuses(struct BattleUnit *bu)
 {
-    /**
-     * Did nothing since now we put it in pre-battle calc
-     */
-    return;
+	/**
+	 * Did nothing since now we put it in pre-battle calc
+	 */
+	return;
 }
 
-void PreBattleCalcDebuffs(struct BattleUnit * bu, struct BattleUnit * defender)
+void PreBattleCalcDebuffs(struct BattleUnit *bu, struct BattleUnit *defender)
 {
-    struct Unit * unit = GetUnit(bu->unit.index);
-    int debuff = GetUnitStatusIndex(unit);
-    const struct DebuffInfo * info = &gpDebuffInfos[debuff];
+	struct Unit *unit = GetUnit(bu->unit.index);
+	int debuff = GetUnitStatusIndex(unit);
+	const struct DebuffInfo *info = &gpDebuffInfos[debuff];
 
-    bu->battleAttack       += info->battle_status.atk;
-    bu->battleDefense      += info->battle_status.def;
-    bu->battleHitRate      += info->battle_status.hit;
-    bu->battleAvoidRate    += info->battle_status.avo;
-    bu->battleCritRate     += info->battle_status.crit;
-    bu->battleSilencerRate += info->battle_status.silencer;
-    bu->battleDodgeRate    += info->battle_status.dodge;
+	bu->battleAttack       += info->battle_status.atk;
+	bu->battleDefense      += info->battle_status.def;
+	bu->battleHitRate      += info->battle_status.hit;
+	bu->battleAvoidRate    += info->battle_status.avo;
+	bu->battleCritRate     += info->battle_status.crit;
+	bu->battleSilencerRate += info->battle_status.silencer;
+	bu->battleDodgeRate    += info->battle_status.dodge;
 }
 
 /* Unit status getter */
-int PowGetterDebuff(int status, struct Unit * unit)
+int PowGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.pow;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.pow;
 }
 
-int MagGetterDebuff(int status, struct Unit * unit)
+int MagGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mag;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mag;
 }
 
-int SklGetterDebuff(int status, struct Unit * unit)
+int SklGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.skl;;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.skl;
 }
 
-int SpdGetterDebuff(int status, struct Unit * unit)
+int SpdGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.spd;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.spd;
 }
 
-int DefGetterDebuff(int status, struct Unit * unit)
+int DefGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.def;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.def;
 }
 
-int ResGetterDebuff(int status, struct Unit * unit)
+int ResGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.res;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.res;
 }
 
-int LckGetterDebuff(int status, struct Unit * unit)
+int LckGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.lck;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.lck;
 }
 
-int MovGetterDebuff(int status, struct Unit * unit)
+int MovGetterDebuff(int status, struct Unit *unit)
 {
-    return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mov;
+	return status + gpDebuffInfos[GetUnitStatusIndex(unit)].unit_status.mov;
 }

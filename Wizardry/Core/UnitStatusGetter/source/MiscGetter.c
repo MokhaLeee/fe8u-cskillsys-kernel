@@ -3,33 +3,33 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 
-int StatusGetterCheckCpas(int status, struct Unit * unit)
+int StatusGetterCheckCpas(int status, struct Unit *unit)
 {
-    LIMIT_AREA(status, 0, 127);
-    return status;
+	LIMIT_AREA(status, 0, 127);
+	return status;
 }
 
 LYN_REPLACE_CHECK(GetUnitMagBy2Range);
-int GetUnitMagBy2Range(struct Unit * unit)
+int GetUnitMagBy2Range(struct Unit *unit)
 {
-    int range;
+	int range;
 
-    if (unit->pCharacterData->number == CHARACTER_FOMORTIIS)
-        return GetItemMaxRange(ITEM_NIGHTMARE);
+	if (unit->pCharacterData->number == CHARACTER_FOMORTIIS)
+		return GetItemMaxRange(ITEM_NIGHTMARE);
 
-    range = MagGetter(unit) / 2;
+	range = MagGetter(unit) / 2;
 
-    if (range < 5)
-        range = 5;
+	if (range < 5)
+		range = 5;
 
-    return range;
+	return range;
 }
 
 LYN_REPLACE_CHECK(GetUnitCurrentHp);
-int GetUnitCurrentHp(struct Unit * unit)
+int GetUnitCurrentHp(struct Unit *unit)
 {
-    if (unit->curHP > GetUnitMaxHp(unit))
-        unit->curHP = GetUnitMaxHp(unit);
+	if (unit->curHP > GetUnitMaxHp(unit))
+		unit->curHP = GetUnitMaxHp(unit);
 
-    return unit->curHP;
+	return unit->curHP;
 }

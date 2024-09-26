@@ -21,37 +21,37 @@
 #define LogErrorf(format, ...)  { mgba_printf(MGBA_LOG_ERROR, format, __VA_ARGS__); NoCashGBAPrintf("[ERROR] "format, __VA_ARGS__); }
 
 #if (CONFIG_FORCE_PRIENT_ERROR || defined(CONFIG_USE_DEBUG))
-    #define Fatal(string)       LogFatalf("(%s): %s", __func__, string)
-    #define Fatalf(format, ...) LogFatalf("(%s): "format, __func__, __VA_ARGS__)
-    #define Error(string)       LogErrorf("(%s): %s", __func__, string)
-    #define Errorf(format, ...) LogErrorf("(%s): "format, __func__, __VA_ARGS__)
-    #define Assert(condition)   if (!(condition)) { Fatal("Assertion failed: " #condition); }
+	#define Fatal(string)       LogFatalf("(%s): %s", __func__, string)
+	#define Fatalf(format, ...) LogFatalf("(%s): "format, __func__, __VA_ARGS__)
+	#define Error(string)       LogErrorf("(%s): %s", __func__, string)
+	#define Errorf(format, ...) LogErrorf("(%s): "format, __func__, __VA_ARGS__)
+	#define Assert(condition)   if (!(condition)) { Fatal("Assertion failed: " #condition); }
 #else
-    #define Fatal(string)
-    #define Fatalf(format, ...)
-    #define Error(string)
-    #define Errorf(format, ...)
-    #define Assert(condition)
+	#define Fatal(string)
+	#define Fatalf(format, ...)
+	#define Error(string)
+	#define Errorf(format, ...)
+	#define Assert(condition)
 #endif
 
 #ifdef CONFIG_USE_DEBUG
-    #define Print(string)       LogPrintf("(%s): %s", __func__, string)
-    #define Printf(format, ...) LogPrintf("(%s): "format, __func__, __VA_ARGS__)
-    #define Warn(string)        LogWarnf("(%s): %s", __func__, string)
-    #define Warnf(format, ...)  LogWarnf("(%s): "format, __func__, __VA_ARGS__)
-    #define Info(string)        LogInfof("(%s): %s", __func__, string)
-    #define Infof(format, ...)  LogInfof("(%s): "format, __func__, __VA_ARGS__)
-    #define Debug(string)       LogDebugf("(%s): %s", __func__, string)
-    #define Debugf(format, ...) LogDebugf("(%s): "format, __func__, __VA_ARGS__)
+	#define Print(string)       LogPrintf("(%s): %s", __func__, string)
+	#define Printf(format, ...) LogPrintf("(%s): "format, __func__, __VA_ARGS__)
+	#define Warn(string)        LogWarnf("(%s): %s", __func__, string)
+	#define Warnf(format, ...)  LogWarnf("(%s): "format, __func__, __VA_ARGS__)
+	#define Info(string)        LogInfof("(%s): %s", __func__, string)
+	#define Infof(format, ...)  LogInfof("(%s): "format, __func__, __VA_ARGS__)
+	#define Debug(string)       LogDebugf("(%s): %s", __func__, string)
+	#define Debugf(format, ...) LogDebugf("(%s): "format, __func__, __VA_ARGS__)
 #else
-    #define Print(string)
-    #define Printf(format, ...)
-    #define Warn(string)
-    #define Warnf(format, ...)
-    #define Info(string)
-    #define Infof(format, ...)
-    #define Debug(string)
-    #define Debugf(format, ...)
+	#define Print(string)
+	#define Printf(format, ...)
+	#define Warn(string)
+	#define Warnf(format, ...)
+	#define Info(string)
+	#define Infof(format, ...)
+	#define Debug(string)
+	#define Debugf(format, ...)
 #endif
 
 /**

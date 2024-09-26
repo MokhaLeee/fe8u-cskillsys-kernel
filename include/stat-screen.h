@@ -5,7 +5,7 @@
 #define STAT_BAR_MAX_INDENTIFIER 41
 
 typedef const struct HelpBoxInfo _DECL_INFO;
-extern _DECL_INFO * const RTextPageSupport;
+extern _DECL_INFO *const RTextPageSupport;
 
 extern struct {
     u8 talkee;
@@ -38,35 +38,35 @@ extern struct {
     }
 
 /* unit page */
-int GetUnitBattleAmt(struct Unit * unit);
-u8 SortMax(const u8 * buf, int size);
-u8 GetTalkee(struct Unit * unit);
+int GetUnitBattleAmt(struct Unit *unit);
+u8 SortMax(const u8 *buf, int size);
+u8 GetTalkee(struct Unit *unit);
 void InstallExpandedTextPal(void);
 void ResetActiveFontPal(void);
 int GetTextColorFromGrowth(int growth);
-void HbPopuplate_Page1TrvTalk(struct HelpBoxProc * proc);
-void PutDrawTextRework(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str);
-void DrawStatWithBarReworkExt(int num, int x, int y, u16 * tm, int base, int total, int max, int max_ref);
-void DrawStatWithBarRework(int num, int x, int y, u16 * tm1, u16 * tm2, int base, int total, int max);
-void StartUnitScreenHelp(int pageid, struct Proc * proc);
+void HbPopuplate_Page1TrvTalk(struct HelpBoxProc *proc);
+void PutDrawTextRework(struct Text *text, u16 *tm, int color, int x, int tile_width, char const * str);
+void DrawStatWithBarReworkExt(int num, int x, int y, u16 *tm, int base, int total, int max, int max_ref);
+void DrawStatWithBarRework(int num, int x, int y, u16 *tm1, u16 *tm2, int base, int total, int max);
+void StartUnitScreenHelp(int pageid, struct Proc *proc);
 void ToggleUnitLeftPage(bool toggle);
 
 void DisplayPage_WithBWL(void);
 void DisplayPage_WithLeadership(void);
 
-extern _DECL_INFO * const RTextPageUnit_WithBWL;
-extern _DECL_INFO * const RTextPageUnit_WithLeadership;
+extern _DECL_INFO *const RTextPageUnit_WithBWL;
+extern _DECL_INFO *const RTextPageUnit_WithLeadership;
 
 /* skill page */
-void StartSkillScreenHelp(int pageid, struct Proc * proc);
-void HbPopuplate_SkillPageCommon(struct HelpBoxProc * proc);
-void HbRedirect_SkillPageCommon(struct HelpBoxProc * proc);
-void HbPopuplate_ArtPageCommon(struct HelpBoxProc * proc);
-void HbRedirect_ArtPageCommon(struct HelpBoxProc * proc);
-void HbRedirect_ArtPageOnlyAlly(struct HelpBoxProc * proc);
+void StartSkillScreenHelp(int pageid, struct Proc *proc);
+void HbPopuplate_SkillPageCommon(struct HelpBoxProc *proc);
+void HbRedirect_SkillPageCommon(struct HelpBoxProc *proc);
+void HbPopuplate_ArtPageCommon(struct HelpBoxProc *proc);
+void HbRedirect_ArtPageCommon(struct HelpBoxProc *proc);
+void HbRedirect_ArtPageOnlyAlly(struct HelpBoxProc *proc);
 
 void DrawSkillPage_MokhaPlanA(void);
 void DrawSkillPage_MokhaPlanB(void);
 
-extern _DECL_INFO * const RTextSkillPage_MokhaPlanA;
-extern _DECL_INFO * const RTextSkillPage_MokhaPlanB;
+extern _DECL_INFO *const RTextSkillPage_MokhaPlanA;
+extern _DECL_INFO *const RTextSkillPage_MokhaPlanB;

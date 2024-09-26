@@ -13,16 +13,16 @@ enum MapTaskConfIndex {
 
 struct MapTaskConf {
     u16 x, y;
-    u16 * obj;
+    u16 *obj;
 };
 
 // extern struct MapTaskConf const gMapTaskConfs[];
-extern struct MapTaskConf const * const gpMapTaskConfs;
+extern struct MapTaskConf const *const gpMapTaskConfs;
 
 // extern u8 const gHpBarChr[];
-extern u8 const * const gpHpBarChr;
+extern u8 const *const gpHpBarChr;
 
 extern struct Vec2u MapTaskVec;
 
-extern void (* _MapTaskPutOamHi)(int type, int oam2);
+extern void (*_MapTaskPutOamHi)(int type, int oam2);
 #define MapTaskPutOamHi _MapTaskPutOamHi

@@ -2,8 +2,8 @@
 #include "battle-system.h"
 #include "kernel-lib.h"
 
-typedef void (* PreBattleGenerateFunc) (void);
-extern PreBattleGenerateFunc const * const gpPreBattleGenerateFuncs;
+typedef void (*PreBattleGenerateFunc) (void);
+extern PreBattleGenerateFunc const *const gpPreBattleGenerateFuncs;
 
 /**
  * This is set an addition routine on start of function: `BattleGenerate()`
@@ -13,32 +13,33 @@ extern PreBattleGenerateFunc const * const gpPreBattleGenerateFuncs;
  */
 void PreBattleGenerateHook(void)
 {
-    const PreBattleGenerateFunc * it;
-    for (it = gpPreBattleGenerateFuncs; *it; it++)
-        (*it)();
+	const PreBattleGenerateFunc *it;
+
+	for (it = gpPreBattleGenerateFuncs; *it; it++)
+		(*it)();
 }
 
 LYN_REPLACE_CHECK(BattleGenerate);
-void BattleGenerate(struct Unit * actor, struct Unit * target)
+void BattleGenerate(struct Unit *actor, struct Unit *target)
 {
 #if CHAX
-    PreBattleGenerateHook();
+	PreBattleGenerateHook();
 #endif
 
-    ComputeBattleUnitStats(&gBattleActor, &gBattleTarget);
-    ComputeBattleUnitStats(&gBattleTarget, &gBattleActor);
+	ComputeBattleUnitStats(&gBattleActor, &gBattleTarget);
+	ComputeBattleUnitStats(&gBattleTarget, &gBattleActor);
 
-    ComputeBattleUnitEffectiveStats(&gBattleActor, &gBattleTarget);
-    ComputeBattleUnitEffectiveStats(&gBattleTarget, &gBattleActor);
+	ComputeBattleUnitEffectiveStats(&gBattleActor, &gBattleTarget);
+	ComputeBattleUnitEffectiveStats(&gBattleTarget, &gBattleActor);
 
-    if (target == NULL)
-        ComputeBattleObstacleStats();
+	if (target == NULL)
+		ComputeBattleObstacleStats();
 
-    if ((gBattleStats.config & BATTLE_CONFIG_REAL) && (gActionData.scriptedBattleHits))
-        BattleUnwindScripted();
-    else
-        BattleUnwind();
+	if ((gBattleStats.config & BATTLE_CONFIG_REAL) && (gActionData.scriptedBattleHits))
+		BattleUnwindScripted();
+	else
+		BattleUnwind();
 
-    /* Finally fix on UI */
-    ModifyBattleStatusForUI();
+	/* Finally fix on UI */
+	ModifyBattleStatusForUI();
 }
