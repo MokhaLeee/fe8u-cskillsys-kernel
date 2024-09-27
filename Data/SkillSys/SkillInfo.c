@@ -3681,4 +3681,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_LawsOfSacae) && COMMON_SKILL_VALID(SID_LawsOfSacae))
+	[SID_LawsOfSacae] = {
+		.name = MSG_SKILL_LawsOfSacae_NAME,
+		.desc = MSG_SKILL_LawsOfSacae,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

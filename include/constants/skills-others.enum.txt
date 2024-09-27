@@ -132,6 +132,7 @@ SID_YngviAscendant
 SID_DragonWrath
 SID_BrashAssault
 SID_Scendscale
+SID_LawsOfSacae
 
 // Shop skills
 SID_Deal

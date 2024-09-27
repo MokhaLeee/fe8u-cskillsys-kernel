@@ -904,3 +904,11 @@ if unit's SPD > foe's SPD-10[X]
 Scendscale: Deals 25% of[NL]
 unit's Atk as damage. After combat,[NL]
 if unit attacked, takes 7 damage.[X]
+
+## MSG_SKILL_LawsOfSacae_NAME
+SacaeLaw[X]
+
+## MSG_SKILL_LawsOfSacae
+Laws of Sacae:[NL]
+If attacked with 2+ allies[NL]
+in 2x2, ATK/SPD/DEF/RES +4[X]
