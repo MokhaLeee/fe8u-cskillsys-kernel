@@ -168,9 +168,9 @@ void PreBattleCalcEnd(struct BattleUnit *attacker, struct BattleUnit *defender)
 void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	FORCE_DECLARE int tmp, i;
+	FORCE_DECLARE struct Unit *unit = GetUnit(attacker->unit.index);
 	int _skill_list_cnt;
 	struct SkillList *list;
-	struct Unit *unit = GetUnit(attacker->unit.index);
 
 	/**
 	 * Skip arena judgement
