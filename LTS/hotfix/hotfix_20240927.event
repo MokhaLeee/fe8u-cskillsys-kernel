@@ -3,6 +3,7 @@
  *
  * Fix:
  *  1. Fix skill tester issue, which may cause weapon skills useless.
+ *  2. Fix lvup screen issue, which may casue a display bug.
  */
 
 PUSH
