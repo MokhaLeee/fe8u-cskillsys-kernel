@@ -176,11 +176,11 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_FortressDef) && COMMON_SKILL_VALID(SID_FortressDef))
-	[SID_FortressDef] = {{ -3, +5 }},
+	[SID_FortressDef] = {{ -3, 5 }},
 #endif
 
 #if (defined(SID_FortressRes) && COMMON_SKILL_VALID(SID_FortressRes))
-	[SID_FortressRes] = {{ -3, +5 }},
+	[SID_FortressRes] = {{ -3, 5 }},
 #endif
 
 #if (defined(SID_LifeAndDeath) && COMMON_SKILL_VALID(SID_LifeAndDeath))
@@ -248,7 +248,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RuinedBlade) && COMMON_SKILL_VALID(SID_RuinedBlade))
-	[SID_RuinedBlade] = {{ -5, +5, +5 }},
+	[SID_RuinedBlade] = {{ -5, 5, 5 }},
 #endif
 
 #if (defined(SID_RuinedBladePlus) && COMMON_SKILL_VALID(SID_RuinedBladePlus))
