@@ -243,6 +243,14 @@ SID_SpurSpd
 SID_Solidarity
 SID_MaleficAura
 
+// debuff skills
+SID_ChillPow
+SID_ChillMag
+SID_ChillSkl
+SID_ChillSpd
+SID_ChillLck
+SID_ChillDef
+SID_ChillRes
 SID_PowHone
 SID_MagHone
 SID_SklHone

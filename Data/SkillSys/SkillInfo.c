@@ -3611,4 +3611,53 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_ChillPow) && COMMON_SKILL_VALID(SID_ChillPow))
+	[SID_ChillPow] = {
+		.desc = MSG_SKILL_ChillPow,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_ChillMag) && COMMON_SKILL_VALID(SID_ChillMag))
+	[SID_ChillMag] = {
+		.desc = MSG_SKILL_ChillMag,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_ChillSkl) && COMMON_SKILL_VALID(SID_ChillSkl))
+	[SID_ChillSkl] = {
+		.desc = MSG_SKILL_ChillSkl,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_ChillSpd) && COMMON_SKILL_VALID(SID_ChillSpd))
+	[SID_ChillSpd] = {
+		.desc = MSG_SKILL_ChillSpd,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_ChillLck) && COMMON_SKILL_VALID(SID_ChillLck))
+	[SID_ChillLck] = {
+		.desc = MSG_SKILL_ChillLck,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_ChillDef) && COMMON_SKILL_VALID(SID_ChillDef))
+	[SID_ChillDef] = {
+		.desc = MSG_SKILL_ChillDef,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_ChillRes) && COMMON_SKILL_VALID(SID_ChillRes))
+	[SID_ChillRes] = {
+		.desc = MSG_SKILL_ChillRes,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

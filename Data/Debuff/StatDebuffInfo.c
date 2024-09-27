@@ -354,4 +354,40 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
 		.tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
 		.unit_status = { .mov = +3 },
 	},
+
+	[UNIT_STAT_DEBUFF_CHILL_POW] = {
+		.positive_type = STATUS_DEBUFF_NEGATIVE,
+		.tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+		.unit_status = { .pow = -7 },
+	},
+	[UNIT_STAT_DEBUFF_CHILL_MAG] = {
+		.positive_type = STATUS_DEBUFF_NEGATIVE,
+		.tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+		.unit_status = { .mag = -7 },
+	},
+	[UNIT_STAT_DEBUFF_CHILL_SKL] = {
+		.positive_type = STATUS_DEBUFF_NEGATIVE,
+		.tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+		.unit_status = { .skl = -7 },
+	},
+	[UNIT_STAT_DEBUFF_CHILL_SPD] = {
+		.positive_type = STATUS_DEBUFF_NEGATIVE,
+		.tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+		.unit_status = { .spd = -7 },
+	},
+	[UNIT_STAT_DEBUFF_CHILL_LCK] = {
+		.positive_type = STATUS_DEBUFF_NEGATIVE,
+		.tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+		.unit_status = { .lck = -7 },
+	},
+	[UNIT_STAT_DEBUFF_CHILL_DEF] = {
+		.positive_type = STATUS_DEBUFF_NEGATIVE,
+		.tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+		.unit_status = { .def = -7 },
+	},
+	[UNIT_STAT_DEBUFF_CHILL_RES] = {
+		.positive_type = STATUS_DEBUFF_NEGATIVE,
+		.tick_type = STATUS_DEBUFF_NO_TICK, /* tick it on manual */
+		.unit_status = { .res = -7 },
+	},
 };

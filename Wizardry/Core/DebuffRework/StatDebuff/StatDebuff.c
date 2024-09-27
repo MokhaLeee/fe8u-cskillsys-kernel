@@ -71,6 +71,9 @@ int SimulateStatDebuffPositiveType(struct Unit *unit)
 
 void ResetStatDebuffPositiveType(struct Unit *unit)
 {
+	if (unit == NULL)
+		return;
+
 	GetUnitStatDebuffStatus(unit)->st.bitfile.is_buff_chk = STATUS_DEBUFF_NONE;
 }
 
@@ -80,6 +83,9 @@ void SetUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 		Errorf("ENOTDIR: %d", debuff);
 		hang();
 	}
+
+	if (!UNIT_IS_VALID(unit) || debuff == 0)
+		return;
 
 	_BIT_SET(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
 	ResetStatDebuffPositiveType(unit);
@@ -91,6 +97,10 @@ void ClearUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 		Errorf("ENOTDIR: %d", debuff);
 		hang();
 	}
+
+	if (!UNIT_IS_VALID(unit) || debuff == 0)
+		return;
+
 	_BIT_CLR(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
 	ResetStatDebuffPositiveType(unit);
 }
@@ -101,6 +111,9 @@ bool CheckUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff)
 		Errorf("ENOTDIR: %d", debuff);
 		hang();
 	}
+
+	if (!UNIT_IS_VALID(unit) || debuff == 0)
+		return false;
 
 	return _BIT_CHK(GetUnitStatDebuffStatus(unit)->st.bitmask, debuff);
 }

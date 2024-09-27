@@ -396,7 +396,16 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
 #endif
 
+#if defined(SID_ChillPow) && (COMMON_SKILL_VALID(SID_ChillPow))
+	Evt_AddSkill(SID_ChillPow, CHARACTER_TANA)
+#endif
+
+#if defined(SID_ChillSpd) && (COMMON_SKILL_VALID(SID_ChillSpd))
+	Evt_AddSkill(SID_ChillSpd, CHARACTER_VANESSA)
+#endif
+
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
+	/* In debug mode, unit may automatically learn all skills */
 	Evt_RemoveSkill(SID_Fury, CHARACTER_EPHRAIM)
 #endif
 

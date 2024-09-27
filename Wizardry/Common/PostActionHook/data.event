@@ -12,5 +12,7 @@ gPostActionFuncs:
     POIN PostActionGetItem
     POIN PostActionSwap
     POIN PostActionPositionReturn
+    POIN PostActionRemoveChillDebuff
+
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0
