@@ -3660,4 +3660,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_DragonWrath) && COMMON_SKILL_VALID(SID_DragonWrath))
+	[SID_DragonWrath] = {
+		.desc = MSG_SKILL_DragonWrath,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

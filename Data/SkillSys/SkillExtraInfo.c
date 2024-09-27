@@ -1066,4 +1066,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_WyvernFlight) && COMMON_SKILL_VALID(SID_WyvernFlight))
 	[SID_WyvernFlight] = {{ 10, 7 }},
 #endif
+
+#if (defined(SID_DragonWrath) && COMMON_SKILL_VALID(SID_DragonWrath))
+	[SID_DragonWrath] = {{ 50 }},
+#endif
 };

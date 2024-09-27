@@ -129,6 +129,7 @@ SID_MeleeManiac
 SID_CriticalOverload
 SID_WyvernFlight
 SID_YngviAscendant
+SID_DragonWrath
 
 // Shop skills
 SID_Deal

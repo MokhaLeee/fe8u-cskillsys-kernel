@@ -44,12 +44,23 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 	/* Basic judgement */
 	basic_judgement = (actor->battleSpeed - target->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD;
 
+	/* Check can prevent the follow-up attack */
 	followup_nullified_en = true;
+	if (&gBattleActor == actor) {
 #if defined(SID_YngviAscendant) && (COMMON_SKILL_VALID(SID_YngviAscendant))
-		if (BattleSkillTester(target, SID_YngviAscendant))
+		if (BattleSkillTester(actor, SID_YngviAscendant))
 			followup_nullified_en = false;
 #endif
+	}
 
+	if (&gBattleTarget == actor) {
+#if defined(SID_DragonWrath) && (COMMON_SKILL_VALID(SID_DragonWrath))
+		if (BattleSkillTester(actor, SID_DragonWrath))
+			followup_nullified_en = false;
+#endif
+	}
+
+	/* Check attacker */
 	if (&gBattleActor == actor) {
 		gBattleTemporaryFlag.act_force_twice_order = false;
 
@@ -136,6 +147,16 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 			gBattleTemporaryFlag.tar_force_twice_order = true;
 			RegisterBattleOrderSkill(SID_VengefulFighter, BORDER_TAR_TWICE);
 			return true;
+		}
+#endif
+
+#if defined(SID_DragonWrath) && (COMMON_SKILL_VALID(SID_DragonWrath))
+		if (basic_judgement == false && BattleSkillTester(actor, SID_DragonWrath)) {
+			if ((actor->hpInitial * SKILL_EFF0(SID_DragonWrath)) > (actor->unit.maxHP * 100)) {
+				gBattleTemporaryFlag.tar_force_twice_order = true;
+				RegisterBattleOrderSkill(SID_DragonWrath, BORDER_TAR_TWICE);
+				return true;
+			}
 		}
 #endif
 

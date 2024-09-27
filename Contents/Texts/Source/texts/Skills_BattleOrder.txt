@@ -120,3 +120,8 @@ Yngvi[X]
 Yngvi Ascendant:[NL]
 Follow-up attack cannot be nullified[NL]
 and occurs immediately if exists[X]
+
+## MSG_SKILL_DragonWrath
+DragonWrath:[NL]
+Exec none-cancellable guaranteed[NL]
+double attack as defender with HP>50%[X]
