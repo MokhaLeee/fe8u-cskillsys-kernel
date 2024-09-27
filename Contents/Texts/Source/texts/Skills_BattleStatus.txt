@@ -899,3 +899,8 @@ W-Flight[X]
 Wyvern Flight:[NL]
 Debuff the foe based on DEF diff[NL]
 if unit's SPD > foe's SPD-10[X]
+
+## MSG_SKILL_Scendscale
+Scendscale: Deals 25% of[NL]
+unit's Atk as damage. After combat,[NL]
+if unit attacked, takes 7 damage.[X]

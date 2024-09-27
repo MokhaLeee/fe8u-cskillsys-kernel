@@ -1070,4 +1070,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_DragonWrath) && COMMON_SKILL_VALID(SID_DragonWrath))
 	[SID_DragonWrath] = {{ 50 }},
 #endif
+
+#if (defined(SID_Scendscale) && COMMON_SKILL_VALID(SID_Scendscale))
+	[SID_Scendscale] = {{ 25, 7 }},
+#endif
 };

@@ -131,6 +131,7 @@ SID_WyvernFlight
 SID_YngviAscendant
 SID_DragonWrath
 SID_BrashAssault
+SID_Scendscale
 
 // Shop skills
 SID_Deal

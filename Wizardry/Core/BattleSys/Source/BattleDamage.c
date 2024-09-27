@@ -42,6 +42,11 @@ int CalcBattleRealDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 		damage += SKILL_EFF1(SID_Bushido);
 #endif
 
+#if defined(SID_Scendscale) && (COMMON_SKILL_VALID(SID_Scendscale))
+	if (BattleSkillTester(attacker, SID_Scendscale))
+		damage += Div(attacker->battleAttack * SKILL_EFF0(SID_Bushido), 100);
+#endif
+
 	for (it = gpBattleRealDamageCalcFuncs; *it; it++)
 		damage = (*it)(damage, attacker, defender);
 

@@ -24,6 +24,12 @@ bool PostActionBattleActorHurt(ProcPtr parent)
 		}
 #endif
 
+#if defined(SID_Scendscale) && (COMMON_SKILL_VALID(SID_Scendscale))
+		if (SkillTester(unit, SID_Scendscale) && GetBattleGlobalFlags(&gBattleActor)->hitted) {
+			damage += SKILL_EFF1(SID_Scendscale);
+		}
+#endif
+
 	/* fall through */
 
 	case UNIT_ACTION_STAFF:
@@ -87,6 +93,11 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 
 			damage += GrislyWoundDamage;
 		}
+#endif
+
+#if defined(SID_Scendscale) && (COMMON_SKILL_VALID(SID_Scendscale))
+		if (SkillTester(unit, SID_Scendscale) && GetBattleGlobalFlags(&gBattleTarget)->hitted)
+			damage += SKILL_EFF1(SID_Scendscale);
 #endif
 
 	/* fall through */
