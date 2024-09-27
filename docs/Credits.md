@@ -14,3 +14,9 @@
 - Laqieer(https://github.com/laqieer)
 - Eebit(https://github.com/Eebit)
 - Revo(https://github.com/RevoSucks)
+
+# Resources
+
+## Skill icons
+
+- JeorgeReds: BonusDoubler

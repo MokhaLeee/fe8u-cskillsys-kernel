@@ -3671,7 +3671,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_BrashAssault) && COMMON_SKILL_VALID(SID_BrashAssault))
 	[SID_BrashAssault] = {
 		.desc = MSG_SKILL_BrashAssault,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_BrashAssault,
 	},
 #endif
 
@@ -3693,7 +3693,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_BonusDoubler) && COMMON_SKILL_VALID(SID_BonusDoubler))
 	[SID_BonusDoubler] = {
 		.desc = MSG_SKILL_BonusDoubler,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_BonusDoubler,
 	},
 #endif
 };

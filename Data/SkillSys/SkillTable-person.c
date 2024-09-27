@@ -37,6 +37,10 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 #if (defined(SID_Lifetaker) && COMMON_SKILL_VALID(SID_Lifetaker))
 		SID_Lifetaker,
 #endif
+
+#if (defined(SID_BonusDoubler) && COMMON_SKILL_VALID(SID_BonusDoubler))
+		SID_BonusDoubler,
+#endif
 	},
 
 	[CHARACTER_TANA] = {
