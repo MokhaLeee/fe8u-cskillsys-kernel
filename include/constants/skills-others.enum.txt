@@ -127,6 +127,7 @@ SID_FranticSwing
 SID_SocialButterfly
 SID_MeleeManiac
 SID_CriticalOverload
+SID_WyvernFlight
 
 // Shop skills
 SID_Deal

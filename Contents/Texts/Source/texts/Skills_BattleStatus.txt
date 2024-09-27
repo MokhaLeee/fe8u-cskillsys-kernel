@@ -891,3 +891,11 @@ C-Overload[X]
 Critical Overload:[NL]
 +1% crit for every +3%[NL]
 hit over 100%.[X]
+
+## MSG_SKILL_WyvernFlight_NAME
+W-Flight[X]
+
+## MSG_SKILL_WyvernFlight
+Wyvern Flight:[NL]
+Debuff the foe based on DEF diff[NL]
+if unit's SPD > foe's SPD-10[X]

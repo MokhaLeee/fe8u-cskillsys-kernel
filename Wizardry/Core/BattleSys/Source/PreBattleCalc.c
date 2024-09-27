@@ -1240,6 +1240,22 @@ L_FairyTaleFolk_done:
 				if (_crit_overflow > 0)
 					attacker->battleCritRate += _crit_overflow / SKILL_EFF0(SID_CriticalOverload);
 			}
+			break;
+#endif
+
+#if (defined(SID_WyvernFlight) && (COMMON_SKILL_VALID(SID_WyvernFlight)))
+		case SID_WyvernFlight:
+			if (BattleUnitOriginalStatus(attacker)->as > (BattleUnitOriginalStatus(defender)->as - SKILL_EFF0(SID_WyvernFlight))) {
+				tmp = BattleUnitOriginalStatus(attacker)->def - BattleUnitOriginalStatus(defender)->def;
+
+				LIMIT_AREA(tmp, 0, SKILL_EFF1(SID_WyvernFlight));
+
+				attacker->battleDefense += tmp;
+
+				if (!IsMagicAttack(attacker))
+					attacker->battleAttack += tmp;
+			}
+			break;
 #endif
 
 		case MAX_SKILL_NUM:
