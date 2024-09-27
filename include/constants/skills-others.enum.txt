@@ -130,6 +130,7 @@ SID_CriticalOverload
 SID_WyvernFlight
 SID_YngviAscendant
 SID_DragonWrath
+SID_BrashAssault
 
 // Shop skills
 SID_Deal

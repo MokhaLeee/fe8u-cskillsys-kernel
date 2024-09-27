@@ -125,3 +125,8 @@ and occurs immediately if exists[X]
 DragonWrath:[NL]
 Exec none-cancellable guaranteed[NL]
 double attack as defender with HP>50%[X]
+
+## MSG_SKILL_BrashAssault
+BrashAssault:[NL]
+If foe can counter,[NL]
+follow-up attack is guaranteed[X]

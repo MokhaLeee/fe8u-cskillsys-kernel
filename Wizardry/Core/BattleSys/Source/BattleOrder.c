@@ -139,6 +139,17 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 			}
 		}
 #endif
+
+#if defined(SID_BrashAssault) && (COMMON_SKILL_VALID(SID_BrashAssault))
+		if (basic_judgement == false && BattleSkillTester(actor, SID_BrashAssault)) {
+			if (target->canCounter) {
+				gBattleTemporaryFlag.act_force_twice_order = true;
+				RegisterBattleOrderSkill(SID_BrashAssault, BORDER_ACT_TWICE);
+				return true;
+			}
+		}
+#endif
+
 	} else if (&gBattleTarget == actor) {
 		gBattleTemporaryFlag.tar_force_twice_order = false;
 
