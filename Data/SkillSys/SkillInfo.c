@@ -3603,4 +3603,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_YngviAscendant) && COMMON_SKILL_VALID(SID_YngviAscendant))
+	[SID_YngviAscendant] = {
+		.name = MSG_SKILL_YngviAscendant_NAME,
+		.desc = MSG_SKILL_YngviAscendant,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

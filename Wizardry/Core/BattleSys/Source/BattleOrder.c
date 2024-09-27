@@ -12,7 +12,7 @@
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target)
 {
-	bool basic_judgement;
+	bool basic_judgement, followup_nullified_en;
 	u8 cid;
 
 	if (target->battleSpeed > 250)
@@ -43,13 +43,21 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 	/* Basic judgement */
 	basic_judgement = (actor->battleSpeed - target->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD;
 
+	followup_nullified_en = true;
+#if defined(SID_YngviAscendant) && (COMMON_SKILL_VALID(SID_YngviAscendant))
+		if (BattleSkillTester(target, SID_YngviAscendant))
+			followup_nullified_en = false;
+#endif
+
 	if (&gBattleActor == actor) {
 		gBattleTemporaryFlag.act_force_twice_order = false;
 
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
-		if (basic_judgement == true && BattleSkillTester(target, SID_WaryFighter))
-			if ((target->hpInitial * 2) > target->unit.maxHP)
-				return false;
+		if (followup_nullified_en) {
+			if (basic_judgement == true && BattleSkillTester(target, SID_WaryFighter))
+				if ((target->hpInitial * 2) > target->unit.maxHP)
+					return false;
+		}
 #endif
 
 #if defined(SID_BoldFighter) && (COMMON_SKILL_VALID(SID_BoldFighter))
@@ -94,8 +102,10 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight))
-		if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
-			return false;
+		if (followup_nullified_en) {
+			if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
+				return false;
+		}
 #endif
 
 #if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
@@ -206,6 +216,15 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 		return true;
 	}
 #endif
+
+#if defined(SID_YngviAscendant) && (COMMON_SKILL_VALID(SID_YngviAscendant))
+	if (BattleSkillTester(&gBattleActor, SID_YngviAscendant)) {
+		gBattleTemporaryFlag.desperation_order = true;
+		RegisterBattleOrderSkill(SID_YngviAscendant, BORDER_DESPERATION);
+		return true;
+	}
+#endif
+
 	return false;
 }
 

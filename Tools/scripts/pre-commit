@@ -13,7 +13,6 @@ for file in $CHECK_FILES; do
     if [ $? -ne 0 ]; then
         echo "Code style issues found in $file."
         # exit 1
-        exit 0
     fi
 done
 
