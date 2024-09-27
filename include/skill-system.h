@@ -12,14 +12,13 @@
 
 #define MAX_GENERIC_SKILL_NUM 0xFF
 
-enum SkillInfoListss
-{
-    Skill_INFO_GENERIC,
-    Skill_INFO_PERSON,
-    Skill_INFO_JOB,
-    Skill_INFO_ITEM,
+enum SkillInfoListss {
+	Skill_INFO_GENERIC,
+	Skill_INFO_PERSON,
+	Skill_INFO_JOB,
+	Skill_INFO_ITEM,
 
-    Skill_INFO_MAX
+	Skill_INFO_MAX
 };
 
 #define SKILL_INDEX_REAL(sid) ((sid) & 0xFF)
@@ -34,10 +33,10 @@ enum SkillInfoListss
 #define UNIT_RAM_SKILLS_LEN 7
 #define UNIT_RAM_SKILLS(unit) ((u8 *)((unit)->supports))
 
-#define RAM_SKILL_LEN_EXT (                                             \
-    gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN    \
-        ? gpKernelDesigerConfig->max_equipable_skill                    \
-        : UNIT_RAM_SKILLS_LEN)
+#define RAM_SKILL_LEN_EXT ( \
+	gpKernelDesigerConfig->max_equipable_skill < UNIT_RAM_SKILLS_LEN \
+		? gpKernelDesigerConfig->max_equipable_skill \
+		: UNIT_RAM_SKILLS_LEN)
 
 extern u16 const *const gpConstSkillTable_Person;
 extern u16 const *const gpConstSkillTable_Job;
@@ -45,8 +44,8 @@ extern u16 const *const gpConstSkillTable_Item;
 extern u16 const *const gpConstSkillTable_Weapon;
 
 struct SkillInfo {
-    const u8 *icon;
-    u16 name, desc;
+	const u8 *icon;
+	u16 name, desc;
 };
 
 extern struct SkillInfo const *const gpSkillInfos;
@@ -68,15 +67,15 @@ char *GetSkillNameStr(const u16 sid);
  * 2 person skill
  * 2 job skill
  * 10 item skill
- * 
+ *
  * (maybe todo) 2 weapon skill
  */
 struct SkillList {
-    struct UnitListHeader header;
-    u8 amt;
-    u16 sid[23];
+	struct UnitListHeader header;
+	u8 amt;
+	u16 sid[23];
 };
-extern struct SkillList *(* _GetUnitSkillList)(struct Unit *unit);
+extern struct SkillList *(*_GetUnitSkillList)(struct Unit *unit);
 #define GetUnitSkillList _GetUnitSkillList
 
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list);
@@ -98,9 +97,9 @@ bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *targe
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {
-    struct UnitListHeader header;
-    u8 amt;
-    u8 sid[0xFE];
+	struct UnitListHeader header;
+	u8 amt;
+	u8 sid[0xFE];
 };
 
 void ResetPrepEquipSkillList(void);
@@ -108,8 +107,14 @@ struct PrepEquipSkillList *GetPrepEquipSkillList(struct Unit *unit);
 
 /* Game data */
 #define SKILL_ROM_DATA_AMT 5 /* Unit can learn 5 skills on lv0/5/10/15/20 */
-struct SkillPreloadJConf { u8 skills[SKILL_ROM_DATA_AMT * (UNIT_LEVEL_MAX_RE / 5 + 1)];};
-struct SkillPreloadPConf { u8 skills[SKILL_ROM_DATA_AMT * (UNIT_RECORDED_LEVEL_MAX / 5 + 1)];};
+
+struct SkillPreloadJConf {
+	u8 skills[SKILL_ROM_DATA_AMT * (UNIT_LEVEL_MAX_RE / 5 + 1)];
+};
+
+struct SkillPreloadPConf {
+	u8 skills[SKILL_ROM_DATA_AMT * (UNIT_RECORDED_LEVEL_MAX / 5 + 1)];
+};
 
 extern const struct SkillPreloadJConf gSkillPreloadJData[0x100];
 extern const struct SkillPreloadPConf gSkillPreloadPData[0x100];
@@ -118,10 +123,10 @@ extern struct SkillPreloadJConf const *const gpSkillPreloadJData;
 extern struct SkillPreloadPConf const *const gpSkillPreloadPData;
 
 enum SkillAnimPriorityConfig {
-    EFX_PRIORITY_LOW = 0x1,
-    EFX_PRIORITY_NORMAL,
-    EFX_PRIORITY_HIGH,
-    EFX_PRIORITY_HIGHHIGH,
+	EFX_PRIORITY_LOW = 0x1,
+	EFX_PRIORITY_NORMAL,
+	EFX_PRIORITY_HIGH,
+	EFX_PRIORITY_HIGHHIGH,
 };
 
 extern u8 const *const gpEfxSkillAnimPriority;
@@ -133,19 +138,19 @@ int GetEfxSkillPriority(const u16 sid);
  * Skill mapanim
  */
 enum mapanimskillfx_idx {
-    MAPANIMFX_CHR_L = 0x19C,
-    MAPANIMFX_CHR_R = 0x19E,
+	MAPANIMFX_CHR_L = 0x19C,
+	MAPANIMFX_CHR_R = 0x19E,
 
-    MAPANIMFX_PAL = 4,
+	MAPANIMFX_PAL = 4,
 };
 
 struct ProcMapAnimSkillfx {
-    PROC_HEADER;
+	PROC_HEADER;
 
-    u8 pos;
-    u32 icon_idx;
-    int timer;
-    int x, y;
+	u8 pos;
+	u32 icon_idx;
+	int timer;
+	int x, y;
 };
 
 extern u8 const *const gpImg_MapAnimSKILL;
@@ -163,15 +168,15 @@ extern const EventScr EventScr_MuSkillAnim[];
  * Event scripts
  */
 enum EventSkillSubOps {
-    EVSUBCMD_ADD_SKILL = 1,
-    EVSUBCMD_ADD_SKILL_ACTIVE,
-    EVSUBCMD_ADD_SKILL_AT,
-    EVSUBCMD_ADD_SKILL_SC,
+	EVSUBCMD_ADD_SKILL = 1,
+	EVSUBCMD_ADD_SKILL_ACTIVE,
+	EVSUBCMD_ADD_SKILL_AT,
+	EVSUBCMD_ADD_SKILL_SC,
 
-    EVSUBCMD_REMOVE_SKILL,
-    EVSUBCMD_REMOVE_SKILL_ACTIVE,
-    EVSUBCMD_REMOVE_SKILL_AT,
-    EVSUBCMD_REMOVE_SKILL_SC,
+	EVSUBCMD_REMOVE_SKILL,
+	EVSUBCMD_REMOVE_SKILL_ACTIVE,
+	EVSUBCMD_REMOVE_SKILL_AT,
+	EVSUBCMD_REMOVE_SKILL_SC,
 };
 
 #define Evt_AddSkill(sid, pid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL, sid), _EvtParams2(pid, 0),
@@ -224,7 +229,7 @@ extern const struct MenuDef RemoveSkillMenuDef;
  */
 
 struct SkillExtraInfo {
-    s8 priv[4];
+	s8 priv[4];
 };
 extern struct SkillExtraInfo const *const gpSkillExtraInfo;
 #define SKILL_EFF0(sid) (gpSkillExtraInfo[sid].priv[0])
@@ -235,7 +240,7 @@ extern struct SkillExtraInfo const *const gpSkillExtraInfo;
 bool IsSkillLearned(struct Unit *unit, const u16 sid);
 void LearnSkill(struct Unit *unit, const u16 sid);
 void ForgetSkill(struct Unit *unit, const u16 sid);
-void ResetUnitLearnedSkillLists(void);                      /* GameInitHook */
+void ResetUnitLearnedSkillLists(void);					 /* GameInitHook */
 void SaveUnitLearnedSkillLists(u8 *dst, const u32 size);   /* SaveData */
 void LoadUnitLearnedSkillLists(u8 *src, const u32 size);   /* LoadData */
 
@@ -255,14 +260,14 @@ bool GetTeleportationRandomPosition(struct Unit *unit, struct Vec2 *out);
 
 /* lucky 7 */
 enum skill_lucky_seven_idx {
-    LUCKY7_POW = 0,
-    LUCKY7_MAG,
-    LUCKY7_SKL,
-    LUCKY7_SPD,
-    LUCKY7_LCK,
-    LUCKY7_DEF,
-    LUCKY7_RES,
-    LUCKY7_MOV,
+	LUCKY7_POW = 0,
+	LUCKY7_MAG,
+	LUCKY7_SKL,
+	LUCKY7_SPD,
+	LUCKY7_LCK,
+	LUCKY7_DEF,
+	LUCKY7_RES,
+	LUCKY7_MOV,
 };
 
 /* Legendary skill */

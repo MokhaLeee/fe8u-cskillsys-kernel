@@ -8,34 +8,36 @@ typedef const struct HelpBoxInfo _DECL_INFO;
 extern _DECL_INFO *const RTextPageSupport;
 
 extern struct {
-    u8 talkee;
-    u8 unitpage_max;
+	u8 talkee;
+	u8 unitpage_max;
 
-    u8 toggle_timer : 7;
-    u8 toggle : 1;
+	u8 toggle_timer : 7;
+	u8 toggle : 1;
 
-    u8 _pad_[1];
+	u8 _pad_[1];
 } gStatScreenStExpa;
 
 #define STATSCREEN_TOGGLE_DURATION 20
 
-#define ModifyTextPal(bank, color)      \
-    switch (color) {                    \
-    case 0 ... 4:                       \
-        bank  = 0;                      \
-        break;                          \
-    case 5 ... 9:                       \
-        bank  = 8;                      \
-        color = color - 5;              \
-        break;                          \
-    case 10 ... 14:                     \
-        bank  = 9;                      \
-        color = color - 10;             \
-        break;                          \
-    default:                            \
-        bank  = 0;                      \
-        color = 0;                      \
-    }
+#define ModifyTextPal(bank, color) \
+{ \
+	switch (color) { \
+	case 0 ... 4: \
+		bank  = 0; \
+		break; \
+	case 5 ... 9: \
+		bank  = 8; \
+		color = color - 5; \
+		break; \
+	case 10 ... 14: \
+		bank  = 9; \
+		color = color - 10; \
+		break; \
+	default: \
+		bank  = 0; \
+		color = 0; \
+	} \
+}
 
 /* unit page */
 int GetUnitBattleAmt(struct Unit *unit);
@@ -45,7 +47,7 @@ void InstallExpandedTextPal(void);
 void ResetActiveFontPal(void);
 int GetTextColorFromGrowth(int growth);
 void HbPopuplate_Page1TrvTalk(struct HelpBoxProc *proc);
-void PutDrawTextRework(struct Text *text, u16 *tm, int color, int x, int tile_width, char const * str);
+void PutDrawTextRework(struct Text *text, u16 *tm, int color, int x, int tile_width, char const *str);
 void DrawStatWithBarReworkExt(int num, int x, int y, u16 *tm, int base, int total, int max, int max_ref);
 void DrawStatWithBarRework(int num, int x, int y, u16 *tm1, u16 *tm2, int base, int total, int max);
 void StartUnitScreenHelp(int pageid, struct Proc *proc);

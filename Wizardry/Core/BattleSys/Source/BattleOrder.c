@@ -12,7 +12,8 @@
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target)
 {
-	bool basic_judgement, followup_nullified_en;
+	FORCE_DECLARE bool followup_nullified_en = true;
+	bool basic_judgement;
 	u8 cid;
 
 	if (target->battleSpeed > 250)
