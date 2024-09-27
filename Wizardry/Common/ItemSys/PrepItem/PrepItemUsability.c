@@ -2,20 +2,20 @@
 #include "item-sys.h"
 
 LYN_REPLACE_CHECK(CanUnitUseItemPrepScreen);
-bool CanUnitUseItemPrepScreen(struct Unit * unit, int item)
+bool CanUnitUseItemPrepScreen(struct Unit *unit, int item)
 {
-    PrepItemUsabilityFunc_t it = gPrepItemUsabilityFuncs[ITEM_INDEX(item)];
+	PrepItemUsabilityFunc_t it = gPrepItemUsabilityFuncs[ITEM_INDEX(item)];
 
-    if (it)
-        return it(unit, item);
+	if (it)
+		return it(unit, item);
 
-    return false;
+	return false;
 }
 
-bool CanUnitUseMetiStome(struct Unit * unit, int item)
+bool CanUnitUseMetiStome(struct Unit *unit, int item)
 {
-    if (unit->state & US_GROWTH_BOOST)
-        return false;
+	if (unit->state & US_GROWTH_BOOST)
+		return false;
 
-    return true;
+	return true;
 }

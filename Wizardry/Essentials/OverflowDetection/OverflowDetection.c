@@ -7,12 +7,12 @@ extern u8 EwramOverlay0_FreeRamSpaceTop[], EwramOverlay0_UsedFreeRamSpaceTop[];
 
 void GameInit_OverflowDetection(void)
 {
-    /* Free RAM space */
-    Assert(&FreeRamSpaceTop[0] < &UsedFreeRamSpaceTop[0]);
-    Assert(&FreeRamSpace2Top[0] < &UsedFreeRamSpace2Top[0]);
-    Assert(&EwramOverlay0_FreeRamSpaceTop[0] < &EwramOverlay0_UsedFreeRamSpaceTop[0]);
+	/* Free RAM space */
+	Assert(&FreeRamSpaceTop[0] < &UsedFreeRamSpaceTop[0]);
+	Assert(&FreeRamSpace2Top[0] < &UsedFreeRamSpace2Top[0]);
+	Assert(&EwramOverlay0_FreeRamSpaceTop[0] < &EwramOverlay0_UsedFreeRamSpaceTop[0]);
 
-    /* This is effective on protection of SkillList ARM */
-    Assert(sizeof(struct SkillList) == 0x40);
-    Assert(sizeof(struct UnitListHeader) == 0x10);
+	/* This is effective on protection of SkillList ARM */
+	Assert(sizeof(struct SkillList) == 0x40);
+	Assert(sizeof(struct UnitListHeader) == 0x10);
 }

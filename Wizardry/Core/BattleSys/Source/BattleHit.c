@@ -9,256 +9,235 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
-void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    int attack = attacker->battleAttack;
-    int defense = defender->battleDefense;
-    int hitRate = attacker->battleEffectiveHitRate;
-    int critRate = attacker->battleEffectiveCritRate;
-    int silencerRate = attacker->battleSilencerRate;
+	int attack = attacker->battleAttack;
+	int defense = defender->battleDefense;
+	int hitRate = attacker->battleEffectiveHitRate;
+	int critRate = attacker->battleEffectiveCritRate;
+	int silencerRate = attacker->battleSilencerRate;
 
-    /* Fasten simulation */
-    if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
-    {
-        gBattleStats.attack = attack;
-        gBattleStats.defense = defense;
-        gBattleStats.hitRate = hitRate;
-        gBattleStats.critRate = critRate;
-        gBattleStats.silencerRate = silencerRate;
-        return;
-    }
+	/* Fasten simulation */
+	if (gBattleStats.config & BATTLE_CONFIG_SIMULATE) {
+		gBattleStats.attack = attack;
+		gBattleStats.defense = defense;
+		gBattleStats.hitRate = hitRate;
+		gBattleStats.critRate = critRate;
+		gBattleStats.silencerRate = silencerRate;
+		return;
+	}
 
 #if defined(SID_AxeFaith) && (COMMON_SKILL_VALID(SID_AxeFaith))
-    if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivate(attacker, defender, SID_AxeFaith, attacker->battleAttack))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
-        hitRate += attacker->battleAttack;
-    }
+	if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivate(attacker, defender, SID_AxeFaith, attacker->battleAttack)) {
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
+		hitRate += attacker->battleAttack;
+	}
 #endif
 
-    gBattleTemporaryFlag.skill_activated_sure_shoot = false;
+	gBattleTemporaryFlag.skill_activated_sure_shoot = false;
 
 #if (defined(SID_SureShot) && (COMMON_SKILL_VALID(SID_SureShot)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_SureShot, attacker->unit.skl))
-    {
-        gBattleTemporaryFlag.skill_activated_sure_shoot = true;
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
-        hitRate = 100;
-    }
+	if (CheckBattleSkillActivate(attacker, defender, SID_SureShot, attacker->unit.skl)) {
+		gBattleTemporaryFlag.skill_activated_sure_shoot = true;
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_SureShot);
+		hitRate = 100;
+	}
 #endif
 
-    gBattleTemporaryFlag.skill_activated_dead_eye = false;
+	gBattleTemporaryFlag.skill_activated_dead_eye = false;
 
 #if defined(SID_Deadeye) && (COMMON_SKILL_VALID(SID_Deadeye))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Deadeye, attacker->unit.skl))
-    {
-        gBattleTemporaryFlag.skill_activated_dead_eye = true;
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Deadeye);
-        hitRate *= 2;
-    }
+	if (CheckBattleSkillActivate(attacker, defender, SID_Deadeye, attacker->unit.skl)) {
+		gBattleTemporaryFlag.skill_activated_dead_eye = true;
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Deadeye);
+		hitRate *= 2;
+	}
 #endif
 
-    LIMIT_AREA(gBattleStats.attack, 0, 255);
-    LIMIT_AREA(gBattleStats.defense, 0, 255);
-    LIMIT_AREA(gBattleStats.hitRate, 0, 100);
-    LIMIT_AREA(gBattleStats.critRate, 0, 100);
-    LIMIT_AREA(gBattleStats.silencerRate, 0, 100);
+	LIMIT_AREA(gBattleStats.attack, 0, 255);
+	LIMIT_AREA(gBattleStats.defense, 0, 255);
+	LIMIT_AREA(gBattleStats.hitRate, 0, 100);
+	LIMIT_AREA(gBattleStats.critRate, 0, 100);
+	LIMIT_AREA(gBattleStats.silencerRate, 0, 100);
 
-    gBattleStats.attack = attack;
-    gBattleStats.defense = defense;
-    gBattleStats.hitRate = hitRate;
-    gBattleStats.critRate = critRate;
-    gBattleStats.silencerRate = silencerRate;
+	gBattleStats.attack = attack;
+	gBattleStats.defense = defense;
+	gBattleStats.hitRate = hitRate;
+	gBattleStats.critRate = critRate;
+	gBattleStats.silencerRate = silencerRate;
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
-void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    gBattleStats.damage = 0;
+	gBattleStats.damage = 0;
 
-    /* Fasten simulation */
-    if (!BattleRoll2RN(gBattleStats.hitRate, FALSE))
-    {
+	/* Fasten simulation */
+	if (!BattleRoll2RN(gBattleStats.hitRate, FALSE)) {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-        if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
-            CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
-        {
-            RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
-        }
-        else
-        {
-            RegisterHitCnt(attacker, true);
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-            return;
-        }
+		if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
+			CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
+			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
+
+		else {
+			RegisterHitCnt(attacker, true);
+			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+			return;
+		}
 #else
-        RegisterHitCnt(attacker, true);
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-        return;
+		RegisterHitCnt(attacker, true);
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+		return;
 #endif
-    }
+	}
 
-    RegisterHitCnt(attacker, false);
+	RegisterHitCnt(attacker, false);
 
-    gBattleStats.damage = BattleHit_CalcDamage(attacker, defender);
+	gBattleStats.damage = BattleHit_CalcDamage(attacker, defender);
 
-    if (gBattleStats.config & BATTLE_CONFIG_REAL)
-    {
-        if (gDmg.real_damage > 0)
-            TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
-    }
+	if (gBattleStats.config & BATTLE_CONFIG_REAL) {
+		if (gDmg.real_damage > 0)
+			TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
+	}
 
-    BattleCheckPetrify(attacker, defender);
+	BattleCheckPetrify(attacker, defender);
 
-    if (gBattleStats.damage != 0)
-        attacker->nonZeroDamage = TRUE;
+	if (gBattleStats.damage != 0)
+		attacker->nonZeroDamage = TRUE;
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitEffects);
-void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
+void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-        if (BattleSkillTester(attacker, SID_Discipline))
-            attacker->wexpMultiplier += 2;
-        else
-            attacker->wexpMultiplier++;
+		if (BattleSkillTester(attacker, SID_Discipline))
+			attacker->wexpMultiplier += 2;
+		else
+			attacker->wexpMultiplier++;
 #else
-        attacker->wexpMultiplier++;
+		attacker->wexpMultiplier++;
 #endif
 
-    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
-    {
-        if (CheckBattleHpHalve(attacker, defender))
-        {
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
-            gBattleStats.damage = defender->unit.curHP / 2;
-        }
+	if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS)) {
+		if (CheckBattleHpHalve(attacker, defender)) {
+			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
+			gBattleStats.damage = defender->unit.curHP / 2;
+		}
 
-        if (CheckDevilAttack(attacker, defender))
-        {
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
-            if (gBattleStats.damage > attacker->unit.curHP)
-                gBattleStats.damage = attacker->unit.curHP;
+		if (CheckDevilAttack(attacker, defender)) {
+			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
+			if (gBattleStats.damage > attacker->unit.curHP)
+				gBattleStats.damage = attacker->unit.curHP;
 
-            attacker->unit.curHP -= gBattleStats.damage;
+			attacker->unit.curHP -= gBattleStats.damage;
 
-            if (attacker->unit.curHP < 0)
-                attacker->unit.curHP = 0;
-        }
-        else
-        {
-            if (gBattleStats.damage > defender->unit.curHP)
-                gBattleStats.damage = defender->unit.curHP;
+			if (attacker->unit.curHP < 0)
+				attacker->unit.curHP = 0;
+		} else {
+			if (gBattleStats.damage > defender->unit.curHP)
+				gBattleStats.damage = defender->unit.curHP;
 
 #if defined(SID_Bane) && (COMMON_SKILL_VALID(SID_Bane))
-            if (gBattleStats.damage < (defender->unit.curHP - 1))
-            {
-                if (CheckBattleSkillActivate(attacker, defender, SID_Bane, attacker->unit.skl))
-                {
-                    RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
-                    gBattleStats.damage = defender->unit.curHP - 1;
-                    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-                }
-            }
+			if (gBattleStats.damage < (defender->unit.curHP - 1)) {
+				if (CheckBattleSkillActivate(attacker, defender, SID_Bane, attacker->unit.skl)) {
+					RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
+					gBattleStats.damage = defender->unit.curHP - 1;
+					gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+				}
+			}
 #endif
-            defender->unit.curHP -= gBattleStats.damage;
+			defender->unit.curHP -= gBattleStats.damage;
 
-            if (defender->unit.curHP < 0)
-                defender->unit.curHP = 0;
-        }
+			if (defender->unit.curHP < 0)
+				defender->unit.curHP = 0;
+		}
 
 #ifdef CHAX
-        if (CheckBattleHpDrain(attacker, defender))
+		if (CheckBattleHpDrain(attacker, defender))
 #else
-        if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
+		if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 #endif
-        {
-            if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
-                attacker->unit.curHP = attacker->unit.maxHP;
-            else
-                attacker->unit.curHP += gBattleStats.damage;
+		{
+			if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
+				attacker->unit.curHP = attacker->unit.maxHP;
+			else
+				attacker->unit.curHP += gBattleStats.damage;
 
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
-        }
+			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+		}
 
-        BattleHit_InjectNegativeStatus(attacker, defender);
-    }
+		BattleHit_InjectNegativeStatus(attacker, defender);
+	}
 
-    gBattleHitIterator->hpChange = gBattleStats.damage;
+	gBattleHitIterator->hpChange = gBattleStats.damage;
 
-    BattleHit_ConsumeWeapon(attacker, defender);
+	BattleHit_ConsumeWeapon(attacker, defender);
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHit);
-bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
+bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-    if (attacker == &gBattleTarget)
-        gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
+	if (attacker == &gBattleTarget)
+		gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
 
-    BattleUpdateBattleStats(attacker, defender);
+	BattleUpdateBattleStats(attacker, defender);
 
-    BattleGenerateHitTriangleAttack(attacker, defender);
-    BattleGenerateHitAttributes(attacker, defender);
-    BattleGenerateHitEffects(attacker, defender);
+	BattleGenerateHitTriangleAttack(attacker, defender);
+	BattleGenerateHitAttributes(attacker, defender);
+	BattleGenerateHitEffects(attacker, defender);
 
-    if (attacker->unit.curHP == 0 || defender->unit.curHP == 0)
-    {
+	if (attacker->unit.curHP == 0 || defender->unit.curHP == 0) {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-        if (BattleSkillTester(attacker, SID_Discipline))
-            attacker->wexpMultiplier += 2;
-        else
-            attacker->wexpMultiplier++;
+		if (BattleSkillTester(attacker, SID_Discipline))
+			attacker->wexpMultiplier += 2;
+		else
+			attacker->wexpMultiplier++;
 #else
-        attacker->wexpMultiplier++;
+		attacker->wexpMultiplier++;
 #endif
 
-        gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+		gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
 
 #if CHAX
-        if (defender->unit.curHP == 0)
-        {
-            if (CheckBattleInori(attacker, defender))
-            {
-                gBattleStats.damage = gBattleStats.damage - 1;
-                gBattleHitIterator->hpChange = gBattleStats.damage;
-                defender->unit.curHP = 1;
+		if (defender->unit.curHP == 0) {
+			if (CheckBattleInori(attacker, defender)) {
+				gBattleStats.damage = gBattleStats.damage - 1;
+				gBattleHitIterator->hpChange = gBattleStats.damage;
+				defender->unit.curHP = 1;
 
-                gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
-                gBattleHitIterator++;
-                return true;
-            }
-        }
+				gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+				gBattleHitIterator++;
+				return true;
+			}
+		}
 #endif
 
-        if (gBattleTarget.unit.curHP == 0)
-        {
-            gBattleActorGlobalFlag.enimy_defeated = true;
+		if (gBattleTarget.unit.curHP == 0) {
+			gBattleActorGlobalFlag.enimy_defeated = true;
 
 #if (defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce)))
-            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
-                gBattleActorGlobalFlag.skill_activated_galeforce = true;
+			if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
+				gBattleActorGlobalFlag.skill_activated_galeforce = true;
 #endif
 
 #if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
-            if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
-            {
-                struct Unit * unit_tar = &gBattleTarget.unit;
-                unit_tar->state |= US_DROP_ITEM;
-            }
+			if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck)) {
+				struct Unit *unit_tar = &gBattleTarget.unit;
+
+				unit_tar->state |= US_DROP_ITEM;
+			}
 #endif
-            gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
-        }
+			gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
+		}
 
-        gBattleHitIterator++;
-        return true;
-    }
-    else if (defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 || defender->statusOut == UNIT_STATUS_SLEEP)
-    {
-        gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
-        gBattleHitIterator++;
-        return true;
-    }
+		gBattleHitIterator++;
+		return true;
+	} else if (defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 || defender->statusOut == UNIT_STATUS_SLEEP) {
+		gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+		gBattleHitIterator++;
+		return true;
+	}
 
-    gBattleHitIterator++;
-    return false;
+	gBattleHitIterator++;
+	return false;
 }

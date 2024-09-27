@@ -1,50 +1,51 @@
 #include "common-chax.h"
 #include "bwl.h"
 
-STATIC_DECLAR int GetUnitStaticHiddenLevel(struct Unit * unit)
+STATIC_DECLAR int GetUnitStaticHiddenLevel(struct Unit *unit)
 {
-    int hidden_lv;
+	int hidden_lv;
 
-    if (!UNIT_IS_VALID(unit))
-        return 0;
+	if (!UNIT_IS_VALID(unit))
+		return 0;
 
-    hidden_lv = gpClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
-    if (hidden_lv == 0)
-        hidden_lv = UNIT_CATTRIBUTES(unit) & CA_PROMOTED ? 15 : 0;
+	hidden_lv = gpClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
+	if (hidden_lv == 0)
+		hidden_lv = UNIT_CATTRIBUTES(unit) & CA_PROMOTED ? 15 : 0;
 
-    return hidden_lv;
+	return hidden_lv;
 }
 
-void NewBwlRecordHiddenLevel(struct Unit * unit)
+void NewBwlRecordHiddenLevel(struct Unit *unit)
 {
-    int level;
-    struct NewBwl * bwl;
-    bwl = GetNewBwl(UNIT_CHAR_ID(unit));
-    if (!bwl)
-        return;
+	int level;
+	struct NewBwl *bwl = GetNewBwl(UNIT_CHAR_ID(unit));
 
-    level = unit->level + bwl->levelGain;
-    if (level > 127)
-        level = 127;
+	if (!bwl)
+		return;
 
-    bwl->levelGain = level;
+	level = unit->level + bwl->levelGain;
+	if (level > 127)
+		level = 127;
+
+	bwl->levelGain = level;
 }
 
-int GetUnitHiddenLevel(struct Unit * unit)
+int GetUnitHiddenLevel(struct Unit *unit)
 {
-    struct NewBwl * bwl;
-    bwl = GetNewBwl(UNIT_CHAR_ID(unit));
-    if (bwl)
-        return bwl->levelGain;
+	struct NewBwl *bwl = GetNewBwl(UNIT_CHAR_ID(unit));
 
-    return GetUnitStaticHiddenLevel(unit);
+	if (bwl)
+		return bwl->levelGain;
+
+	return GetUnitStaticHiddenLevel(unit);
 }
 
-void UnitHiddenLevelPreLoad(struct Unit * unit)
+void UnitHiddenLevelPreLoad(struct Unit *unit)
 {
-    struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
-    if (!bwl)
-        return;
+	struct NewBwl *bwl = GetNewBwl(UNIT_CHAR_ID(unit));
 
-    bwl->levelGain = GetUnitStaticHiddenLevel(unit);
+	if (!bwl)
+		return;
+
+	bwl->levelGain = GetUnitStaticHiddenLevel(unit);
 }

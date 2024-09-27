@@ -16,8 +16,8 @@ struct StatScreenBg1Tsa {
     u16 data[STATSCREEN_BG1_WIDTH * STATSCREEN_BG1_HEIGHT + 1];
 };
 
-extern struct StatScreenBg1Tsa const * const TsaLut_StatScreenBgPlayer[5];
-extern struct StatScreenBg1Tsa const * const TsaLut_StatScreenBgNonePlayer[5];
+extern struct StatScreenBg1Tsa const *const TsaLut_StatScreenBgPlayer[5];
+extern struct StatScreenBg1Tsa const *const TsaLut_StatScreenBgNonePlayer[5];
 extern const u8 ZTSA_StatScreenPageLeft[];
 
 #define STATSCREEN_MUAREA_CHR_BASE 0x7360
@@ -25,14 +25,14 @@ extern const u8 ZTSA_StatScreenPageLeft[];
 
 extern const u16 Sprite_StatScreenMuAreaBackground[];
 
-extern u8 const * const gpImg_StatScreenMuAreaBg;
-extern u16 const * const gpPal_StatScreenMuAreaBg;
+extern u8 const *const gpImg_StatScreenMuAreaBg;
+extern u16 const *const gpPal_StatScreenMuAreaBg;
 
-extern u8 const * const gpImg_StatScreenScrollBG;
-extern u16 const * const gpPal_StatScreenScrollBG;
+extern u8 const *const gpImg_StatScreenScrollBG;
+extern u16 const *const gpPal_StatScreenScrollBG;
 
-extern u8 const * const gpImg_StatScreenUI;
-extern u16 const * const gpPal_StatScreenUI;
+extern u8 const *const gpImg_StatScreenUI;
+extern u16 const *const gpPal_StatScreenUI;
 
-extern u8 const * const gpImg_StatScreenUIRed;
-extern u16 const * const gpPal_StatScreenUIRed;
+extern u8 const *const gpImg_StatScreenUIRed;
+extern u16 const *const gpPal_StatScreenUIRed;

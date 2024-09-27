@@ -2,18 +2,18 @@
 
 #include "common-chax.h"
 
-void NewEkrSkill(struct Anim * anim);
-void NewEfxSkill(struct Anim * anim, int sid);
-void NewEfxCombatArt(struct Anim * anim, int cid);
+void NewEkrSkill(struct Anim *anim);
+void NewEfxSkill(struct Anim *anim, int sid);
+void NewEfxCombatArt(struct Anim *anim, int cid);
 bool EfxSkillExists(void);
 
 /* Efx skill box */
 enum efx_skill_box_style {
-    EFX_SKILL_BOX_SKILL = 0,
-    EFX_SKILL_BOX_COMBATART = 1,
+	EFX_SKILL_BOX_SKILL = 0,
+	EFX_SKILL_BOX_COMBATART = 1,
 };
 
-void NewEfxSkillBox(struct Anim * anim, int msg, const u8 * icon, u16 sid, int skill_or_combatart);
+void NewEfxSkillBox(struct Anim *anim, int msg, const u8 *icon, u16 sid, int skill_or_combatart);
 bool EfxSkillBoxExists(void);
 
 /* Utils */

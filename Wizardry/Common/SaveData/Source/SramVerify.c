@@ -8,46 +8,45 @@ extern u16 gSkillSysMagicOffset;
 
 STATIC_DECLAR int VerifySkillSysSRAM(void)
 {
-    int i;
-    char buf[] = SKILL_SYS_MAGIC;
+	int i;
+	char buf[] = SKILL_SYS_MAGIC;
 
-    ReadSramFast(SramOffsetToAddr(gSkillSysMagicOffset), gGenericBuffer, SKILLSYS_MAGIC_LEN);
+	ReadSramFast(SramOffsetToAddr(gSkillSysMagicOffset), gGenericBuffer, SKILLSYS_MAGIC_LEN);
 
-    for (i = 0; i < SKILLSYS_MAGIC_LEN; i++)
-        if (gGenericBuffer[i] != buf[i])
-            return -1;
+	for (i = 0; i < SKILLSYS_MAGIC_LEN; i++)
+		if (gGenericBuffer[i] != buf[i])
+			return -1;
 
-    return 0;
+	return 0;
 }
 
 STATIC_DECLAR void WipeSkillSysSRAM(void)
 {
-    /* Wipe SRAM */
-    InitGlobalSaveInfodata();
+	/* Wipe SRAM */
+	InitGlobalSaveInfodata();
 
-    WriteAndVerifySramFast(
-        SKILL_SYS_MAGIC,
-        SramOffsetToAddr(gSkillSysMagicOffset),
-        SKILLSYS_MAGIC_LEN);
+	WriteAndVerifySramFast(
+		SKILL_SYS_MAGIC,
+		SramOffsetToAddr(gSkillSysMagicOffset),
+		SKILLSYS_MAGIC_LEN);
 }
 
 LYN_REPLACE_CHECK(EraseInvalidSaveData);
 void EraseInvalidSaveData(void)
 {
-    int ret;
-    ret = VerifySkillSysSRAM();
-    if (ret)
-    {
-        Error("SRAM verify failed, start to reset...");
-        WipeSkillSysSRAM();
+	int ret = VerifySkillSysSRAM();
 
-        /* Yeah, restart the game! */
-        // SoftReset(0);
-    }
+	if (ret) {
+		Error("SRAM verify failed, start to reset...");
+		WipeSkillSysSRAM();
 
-    /* Misc judgement */
-    Assert(sizeof(struct EmsPackedSavUnit) == SIZE_OF_SAV_UNIT_PACK);
-    Assert(sizeof(struct EmsPackedSusUnit) == SIZE_OF_SUS_UNIT_PACK);
+		/* Yeah, restart the game! */
+		// SoftReset(0);
+	}
+
+	/* Misc judgement */
+	Assert(sizeof(struct EmsPackedSavUnit) == SIZE_OF_SAV_UNIT_PACK);
+	Assert(sizeof(struct EmsPackedSusUnit) == SIZE_OF_SUS_UNIT_PACK);
 }
 
 const u32 size_EmsPackedSusUnit = sizeof(struct EmsPackedSusUnit);

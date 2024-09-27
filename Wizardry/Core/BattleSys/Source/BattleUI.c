@@ -10,13 +10,13 @@
  */
 void ModifyBattleStatusForUI(void)
 {
-    /* Fix for real-damage */
-    if (gBattleActor.battleAttack < gBattleTarget.battleDefense)
-        gBattleActor.battleAttack = gBattleTarget.battleDefense;
+	/* Fix for real-damage */
+	if (gBattleActor.battleAttack < gBattleTarget.battleDefense)
+	gBattleActor.battleAttack = gBattleTarget.battleDefense;
 
-    if (gBattleTarget.battleAttack < gBattleActor.battleDefense)
-        gBattleTarget.battleAttack = gBattleActor.battleDefense;
+	if (gBattleTarget.battleAttack < gBattleActor.battleDefense)
+	gBattleTarget.battleAttack = gBattleActor.battleDefense;
 
-    gBattleActor.battleAttack += CalcBattleRealDamage(&gBattleActor, &gBattleTarget);
-    gBattleTarget.battleAttack += CalcBattleRealDamage(&gBattleTarget, &gBattleActor);
+	gBattleActor.battleAttack += CalcBattleRealDamage(&gBattleActor, &gBattleTarget);
+	gBattleTarget.battleAttack += CalcBattleRealDamage(&gBattleTarget, &gBattleActor);
 }

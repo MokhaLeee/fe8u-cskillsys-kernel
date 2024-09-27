@@ -157,3 +157,38 @@ S-Strength[X]
 Seal-Strength:[NL]
 Debuff the enemy's STR by 6[NL]
 after combat. Recover 1/turn.[X]
+
+## MSG_SKILL_ChillPow
+ChillPow:[NL]
+Enemy with the highest STR get[NL]
+STR-7 until next action[X]
+
+## MSG_SKILL_ChillMag
+ChillMag:[NL]
+Enemy with the highest MAG get[NL]
+MAG-7 until next action[X]
+
+## MSG_SKILL_ChillSkl
+ChillSkl:[NL]
+Enemy with the highest SKL get[NL]
+SKL-7 until next action[X]
+
+## MSG_SKILL_ChillSpd
+ChillSpd:[NL]
+Enemy with the highest SPD get[NL]
+SPD-7 until next action[X]
+
+## MSG_SKILL_ChillLck
+ChillLck:[NL]
+Enemy with the highest LCK get[NL]
+LCK-7 until next action[X]
+
+## MSG_SKILL_ChillDef
+ChillDef:[NL]
+Enemy with the highest DEF get[NL]
+DEF-7 until next action[X]
+
+## MSG_SKILL_ChillRes
+ChillRes:[NL]
+Enemy with the highest RES get[NL]
+RES-7 until next action[X]

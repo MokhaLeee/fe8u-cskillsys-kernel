@@ -361,6 +361,9 @@ pre_build: $(PRE_BUILD)
 # = MAKE CLEAN =
 # ==============
 
+# misc
+CLEAN_FILES += $(shell find $(HACK_DIRS) -type f -name '*.EXPERIMENTAL-checkpatch-fixes')
+
 clean_basic:
 	@rm -f $(CLEAN_FILES)
 	@rm -rf $(CLEAN_DIRS)

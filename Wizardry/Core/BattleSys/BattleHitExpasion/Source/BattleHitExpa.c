@@ -7,14 +7,14 @@
 
 bool CheckBattleHitOverflow(void)
 {
-    return (gBattleHitIterator - gBattleHitArrayRe) >= NEW_BATTLE_HIT_MAX;
+	return (gBattleHitIterator - gBattleHitArrayRe) >= NEW_BATTLE_HIT_MAX;
 }
 
 LYN_REPLACE_CHECK(ClearBattleHits);
 void ClearBattleHits(void)
 {
-    CpuFill16(0, gBattleHitArrayRe, sizeof(gBattleHitArrayRe));
-    InitEfxCombatArtRoundData();
-    InitEfxSkillRoundData();
-    gBattleHitIterator = gBattleHitArrayRe;
+	CpuFill16(0, gBattleHitArrayRe, sizeof(gBattleHitArrayRe));
+	InitEfxCombatArtRoundData();
+	InitEfxSkillRoundData();
+	gBattleHitIterator = gBattleHitArrayRe;
 }

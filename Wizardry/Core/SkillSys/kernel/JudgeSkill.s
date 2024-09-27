@@ -130,7 +130,7 @@ _SkillTester_IInfo:
 
 1:
     ldrb r0, [r0, #0x48]
-    ldr r4, .LgpConstSkillTable_Item
+    ldr r4, .LgpConstSkillTable_Weapon
     bl .L_Table
 
 2:

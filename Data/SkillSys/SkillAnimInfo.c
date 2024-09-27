@@ -5,452 +5,452 @@
 
 const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RuinedBlade) && COMMON_SKILL_VALID(SID_RuinedBlade))
-    [SID_RuinedBlade] = EFX_PRIORITY_LOW,
+	[SID_RuinedBlade] = EFX_PRIORITY_LOW,
 #endif
 
 #if (defined(SID_Vantage) && COMMON_SKILL_VALID(SID_Vantage))
-    [SID_Vantage] = EFX_PRIORITY_NORMAL,
+	[SID_Vantage] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_DragonSkin) && COMMON_SKILL_VALID(SID_DragonSkin))
-    [SID_DragonSkin] = EFX_PRIORITY_NORMAL,
+	[SID_DragonSkin] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_KeenFighter) && COMMON_SKILL_VALID(SID_KeenFighter))
-    [SID_KeenFighter] = EFX_PRIORITY_NORMAL,
+	[SID_KeenFighter] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Desperation) && COMMON_SKILL_VALID(SID_Desperation))
-    [SID_Desperation] = EFX_PRIORITY_NORMAL,
+	[SID_Desperation] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_QuickRiposte) && COMMON_SKILL_VALID(SID_QuickRiposte))
-    [SID_QuickRiposte] = EFX_PRIORITY_NORMAL,
+	[SID_QuickRiposte] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_WaryFighter) && COMMON_SKILL_VALID(SID_WaryFighter))
-    [SID_WaryFighter] = EFX_PRIORITY_NORMAL,
+	[SID_WaryFighter] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_DoubleLion) && COMMON_SKILL_VALID(SID_DoubleLion))
-    [SID_DoubleLion] = EFX_PRIORITY_NORMAL,
+	[SID_DoubleLion] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Adept) && COMMON_SKILL_VALID(SID_Adept))
-    [SID_Adept] = EFX_PRIORITY_LOW,
+	[SID_Adept] = EFX_PRIORITY_LOW,
 #endif
 
 #if (defined(SID_Astra) && COMMON_SKILL_VALID(SID_Astra))
-    [SID_Astra] = EFX_PRIORITY_LOW,
+	[SID_Astra] = EFX_PRIORITY_LOW,
 #endif
 
 #if (defined(SID_Aegis) && COMMON_SKILL_VALID(SID_Aegis))
-    [SID_Aegis] = EFX_PRIORITY_NORMAL,
+	[SID_Aegis] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Pavise) && COMMON_SKILL_VALID(SID_Pavise))
-    [SID_Pavise] = EFX_PRIORITY_NORMAL,
+	[SID_Pavise] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Bane) && COMMON_SKILL_VALID(SID_Bane))
-    [SID_Bane] = EFX_PRIORITY_HIGH,
+	[SID_Bane] = EFX_PRIORITY_HIGH,
 #endif
 
 #if (defined(SID_Mercy) && COMMON_SKILL_VALID(SID_Mercy))
-    [SID_Mercy] = EFX_PRIORITY_HIGH,
+	[SID_Mercy] = EFX_PRIORITY_HIGH,
 #endif
 
 #if (defined(SID_Aether) && COMMON_SKILL_VALID(SID_Aether))
-    [SID_Aether] = EFX_PRIORITY_NORMAL,
+	[SID_Aether] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Corona) && COMMON_SKILL_VALID(SID_Corona))
-    [SID_Corona] = EFX_PRIORITY_NORMAL,
+	[SID_Corona] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Luna) && COMMON_SKILL_VALID(SID_Luna))
-    [SID_Luna] = EFX_PRIORITY_NORMAL,
+	[SID_Luna] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Flare) && COMMON_SKILL_VALID(SID_Flare))
-    [SID_Flare] = EFX_PRIORITY_NORMAL,
+	[SID_Flare] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Sol) && COMMON_SKILL_VALID(SID_Sol))
-    [SID_Sol] = EFX_PRIORITY_NORMAL,
+	[SID_Sol] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_DragonFang) && COMMON_SKILL_VALID(SID_DragonFang))
-    [SID_DragonFang] = EFX_PRIORITY_NORMAL,
+	[SID_DragonFang] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Colossus) && COMMON_SKILL_VALID(SID_Colossus))
-    [SID_Colossus] = EFX_PRIORITY_NORMAL,
+	[SID_Colossus] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Corrosion) && COMMON_SKILL_VALID(SID_Corrosion))
-    [SID_Corrosion] = EFX_PRIORITY_NORMAL,
+	[SID_Corrosion] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Ignis) && COMMON_SKILL_VALID(SID_Ignis))
-    [SID_Ignis] = EFX_PRIORITY_NORMAL,
+	[SID_Ignis] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Impale) && COMMON_SKILL_VALID(SID_Impale))
-    [SID_Impale] = EFX_PRIORITY_NORMAL,
+	[SID_Impale] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Glacies) && COMMON_SKILL_VALID(SID_Glacies))
-    [SID_Glacies] = EFX_PRIORITY_NORMAL,
+	[SID_Glacies] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Vengeance) && COMMON_SKILL_VALID(SID_Vengeance))
-    [SID_Vengeance] = EFX_PRIORITY_NORMAL,
+	[SID_Vengeance] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Deadeye) && COMMON_SKILL_VALID(SID_Deadeye))
-    [SID_Deadeye] = EFX_PRIORITY_NORMAL,
+	[SID_Deadeye] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_AxeFaith) && COMMON_SKILL_VALID(SID_AxeFaith))
-    [SID_AxeFaith] = EFX_PRIORITY_NORMAL,
+	[SID_AxeFaith] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
-    [SID_Inori] = EFX_PRIORITY_NORMAL,
+	[SID_Inori] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Armsthrift) && COMMON_SKILL_VALID(SID_Armsthrift))
-    [SID_Armsthrift] = EFX_PRIORITY_NORMAL,
+	[SID_Armsthrift] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_GreatShield) && COMMON_SKILL_VALID(SID_GreatShield))
-    [SID_GreatShield] = EFX_PRIORITY_NORMAL,
+	[SID_GreatShield] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_SureShot) && COMMON_SKILL_VALID(SID_SureShot))
-    [SID_SureShot] = EFX_PRIORITY_NORMAL,
+	[SID_SureShot] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_RuinedBladePlus) && COMMON_SKILL_VALID(SID_RuinedBladePlus))
-    [SID_RuinedBladePlus] = EFX_PRIORITY_LOW,
+	[SID_RuinedBladePlus] = EFX_PRIORITY_LOW,
 #endif
 
 #if (defined(SID_GuardBearing) && COMMON_SKILL_VALID(SID_GuardBearing))
-    [SID_GuardBearing] = EFX_PRIORITY_NORMAL,
+	[SID_GuardBearing] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
-    [SID_VengefulFighter] = EFX_PRIORITY_NORMAL,
+	[SID_VengefulFighter] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_RecklessFighter) && COMMON_SKILL_VALID(SID_RecklessFighter))
-    [SID_RecklessFighter] = EFX_PRIORITY_NORMAL,
+	[SID_RecklessFighter] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_BoldFighter) && COMMON_SKILL_VALID(SID_BoldFighter))
-    [SID_BoldFighter] = EFX_PRIORITY_NORMAL,
+	[SID_BoldFighter] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
-    [SID_Counter] = EFX_PRIORITY_HIGH,
+	[SID_Counter] = EFX_PRIORITY_HIGH,
 #endif
 
 #if (defined(SID_Multiscale) && COMMON_SKILL_VALID(SID_Multiscale))
-    [SID_Multiscale] = EFX_PRIORITY_NORMAL,
+	[SID_Multiscale] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_TowerShieldPlus) && COMMON_SKILL_VALID(SID_TowerShieldPlus))
-    [SID_TowerShieldPlus] = EFX_PRIORITY_NORMAL,
+	[SID_TowerShieldPlus] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Petrify) && COMMON_SKILL_VALID(SID_Petrify))
-    [SID_Petrify] = EFX_PRIORITY_NORMAL,
+	[SID_Petrify] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Enrage) && COMMON_SKILL_VALID(SID_Enrage))
-    [SID_Enrage] = EFX_PRIORITY_NORMAL,
+	[SID_Enrage] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Pickup) && COMMON_SKILL_VALID(SID_Pickup))
-    [SID_Pickup] = EFX_PRIORITY_NORMAL,
+	[SID_Pickup] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_DevilsPact) && COMMON_SKILL_VALID(SID_DevilsPact))
-    [SID_DevilsPact] = EFX_PRIORITY_NORMAL,
+	[SID_DevilsPact] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_DevilsWhim) && COMMON_SKILL_VALID(SID_DevilsWhim))
-    [SID_DevilsWhim] = EFX_PRIORITY_NORMAL,
+	[SID_DevilsWhim] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_DevilsLuck) && COMMON_SKILL_VALID(SID_DevilsLuck))
-    [SID_DevilsLuck] = EFX_PRIORITY_NORMAL,
+	[SID_DevilsLuck] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Expertise) && COMMON_SKILL_VALID(SID_Expertise))
-    [SID_Expertise] = EFX_PRIORITY_NORMAL,
+	[SID_Expertise] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_CounterMagic) && COMMON_SKILL_VALID(SID_CounterMagic))
-    [SID_CounterMagic] = EFX_PRIORITY_HIGH,
+	[SID_CounterMagic] = EFX_PRIORITY_HIGH,
 #endif
 
 #if (defined(SID_LiquidOoze) && COMMON_SKILL_VALID(SID_LiquidOoze))
-    [SID_LiquidOoze] = EFX_PRIORITY_NORMAL,
+	[SID_LiquidOoze] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Eclipse) && COMMON_SKILL_VALID(SID_Eclipse))
-    [SID_Eclipse] = EFX_PRIORITY_NORMAL,
+	[SID_Eclipse] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_LunarBrace) && COMMON_SKILL_VALID(SID_LunarBrace))
-    [SID_LunarBrace] = EFX_PRIORITY_NORMAL,
+	[SID_LunarBrace] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Pursuer) && COMMON_SKILL_VALID(SID_Pursuer))
-    [SID_Pursuer] = EFX_PRIORITY_NORMAL,
+	[SID_Pursuer] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_QuickLearner) && COMMON_SKILL_VALID(SID_QuickLearner))
-    [SID_QuickLearner] = EFX_PRIORITY_NORMAL,
+	[SID_QuickLearner] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_EffectSpore) && COMMON_SKILL_VALID(SID_EffectSpore))
-    [SID_EffectSpore] = EFX_PRIORITY_NORMAL,
+	[SID_EffectSpore] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_GaleWings) && COMMON_SKILL_VALID(SID_GaleWings))
-    [SID_GaleWings] = EFX_PRIORITY_NORMAL,
+	[SID_GaleWings] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
-    [SID_Sturdy] = EFX_PRIORITY_NORMAL,
+	[SID_Sturdy] = EFX_PRIORITY_NORMAL,
 #endif
 };
 
-struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
+struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RuinedBlade) && COMMON_SKILL_VALID(SID_RuinedBlade))
-    [SID_RuinedBlade] = &EfxSkillVanilla,
+	[SID_RuinedBlade] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Vantage) && COMMON_SKILL_VALID(SID_Vantage))
-    [SID_Vantage] = &EfxSkillVanilla,
+	[SID_Vantage] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_DragonSkin) && COMMON_SKILL_VALID(SID_DragonSkin))
-    [SID_DragonSkin] = &EfxSkillVanilla,
+	[SID_DragonSkin] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_KeenFighter) && COMMON_SKILL_VALID(SID_KeenFighter))
-    [SID_KeenFighter] = &EfxSkillVanilla,
+	[SID_KeenFighter] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Desperation) && COMMON_SKILL_VALID(SID_Desperation))
-    [SID_Desperation] = &EfxSkillVanilla,
+	[SID_Desperation] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_QuickRiposte) && COMMON_SKILL_VALID(SID_QuickRiposte))
-    [SID_QuickRiposte] = &EfxSkillVanilla,
+	[SID_QuickRiposte] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_WaryFighter) && COMMON_SKILL_VALID(SID_WaryFighter))
-    [SID_WaryFighter] = &EfxSkillVanilla,
+	[SID_WaryFighter] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_DoubleLion) && COMMON_SKILL_VALID(SID_DoubleLion))
-    [SID_DoubleLion] = &EfxSkillVanilla,
+	[SID_DoubleLion] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Adept) && COMMON_SKILL_VALID(SID_Adept))
-    [SID_Adept] = &EfxSkillVanilla,
+	[SID_Adept] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Astra) && COMMON_SKILL_VALID(SID_Astra))
-    [SID_Astra] = &EfxSkillVanilla,
+	[SID_Astra] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Aegis) && COMMON_SKILL_VALID(SID_Aegis))
-    [SID_Aegis] = &EfxSkillVanilla,
+	[SID_Aegis] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Pavise) && COMMON_SKILL_VALID(SID_Pavise))
-    [SID_Pavise] = &EfxSkillVanilla,
+	[SID_Pavise] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Bane) && COMMON_SKILL_VALID(SID_Bane))
-    [SID_Bane] = &EfxSkillVanilla,
+	[SID_Bane] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Mercy) && COMMON_SKILL_VALID(SID_Mercy))
-    [SID_Mercy] = &EfxSkillVanilla,
+	[SID_Mercy] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Aether) && COMMON_SKILL_VALID(SID_Aether))
-    [SID_Aether] = &EfxSkillVanilla,
+	[SID_Aether] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Corona) && COMMON_SKILL_VALID(SID_Corona))
-    [SID_Corona] = &EfxSkillVanilla,
+	[SID_Corona] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Luna) && COMMON_SKILL_VALID(SID_Luna))
-    [SID_Luna] = &EfxSkillVanilla,
+	[SID_Luna] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Flare) && COMMON_SKILL_VALID(SID_Flare))
-    [SID_Flare] = &EfxSkillVanilla,
+	[SID_Flare] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Sol) && COMMON_SKILL_VALID(SID_Sol))
-    [SID_Sol] = &EfxSkillVanilla,
+	[SID_Sol] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_DragonFang) && COMMON_SKILL_VALID(SID_DragonFang))
-    [SID_DragonFang] = &EfxSkillVanilla,
+	[SID_DragonFang] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Colossus) && COMMON_SKILL_VALID(SID_Colossus))
-    [SID_Colossus] = &EfxSkillVanilla,
+	[SID_Colossus] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Corrosion) && COMMON_SKILL_VALID(SID_Corrosion))
-    [SID_Corrosion] = &EfxSkillVanilla,
+	[SID_Corrosion] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Ignis) && COMMON_SKILL_VALID(SID_Ignis))
-    [SID_Ignis] = &EfxSkillVanilla,
+	[SID_Ignis] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Impale) && COMMON_SKILL_VALID(SID_Impale))
-    [SID_Impale] = &EfxSkillVanilla,
+	[SID_Impale] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Glacies) && COMMON_SKILL_VALID(SID_Glacies))
-    [SID_Glacies] = &EfxSkillVanilla,
+	[SID_Glacies] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Vengeance) && COMMON_SKILL_VALID(SID_Vengeance))
-    [SID_Vengeance] = &EfxSkillVanilla,
+	[SID_Vengeance] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Deadeye) && COMMON_SKILL_VALID(SID_Deadeye))
-    [SID_Deadeye] = &EfxSkillVanilla,
+	[SID_Deadeye] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_AxeFaith) && COMMON_SKILL_VALID(SID_AxeFaith))
-    [SID_AxeFaith] = &EfxSkillVanilla,
+	[SID_AxeFaith] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
-    [SID_Inori] = &EfxSkillVanilla,
+	[SID_Inori] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Armsthrift) && COMMON_SKILL_VALID(SID_Armsthrift))
-    [SID_Armsthrift] = &EfxSkillVanilla,
+	[SID_Armsthrift] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_GreatShield) && COMMON_SKILL_VALID(SID_GreatShield))
-    [SID_GreatShield] = &EfxSkillVanilla,
+	[SID_GreatShield] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_SureShot) && COMMON_SKILL_VALID(SID_SureShot))
-    [SID_SureShot] = &EfxSkillVanilla,
+	[SID_SureShot] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_RuinedBladePlus) && COMMON_SKILL_VALID(SID_RuinedBladePlus))
-    [SID_RuinedBladePlus] = &EfxSkillVanilla,
+	[SID_RuinedBladePlus] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_GuardBearing) && COMMON_SKILL_VALID(SID_GuardBearing))
-    [SID_GuardBearing] = &EfxSkillVanilla,
+	[SID_GuardBearing] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
-    [SID_VengefulFighter] = &EfxSkillVanilla,
+	[SID_VengefulFighter] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_RecklessFighter) && COMMON_SKILL_VALID(SID_RecklessFighter))
-    [SID_RecklessFighter] = &EfxSkillVanilla,
+	[SID_RecklessFighter] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_BoldFighter) && COMMON_SKILL_VALID(SID_BoldFighter))
-    [SID_BoldFighter] = &EfxSkillVanilla,
+	[SID_BoldFighter] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Counter) && COMMON_SKILL_VALID(SID_Counter))
-    [SID_Counter] = &EfxSkillVanilla,
+	[SID_Counter] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Multiscale) && COMMON_SKILL_VALID(SID_Multiscale))
-    [SID_Multiscale] = &EfxSkillVanilla,
+	[SID_Multiscale] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_TowerShieldPlus) && COMMON_SKILL_VALID(SID_TowerShieldPlus))
-    [SID_TowerShieldPlus] = &EfxSkillVanilla,
+	[SID_TowerShieldPlus] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Petrify) && COMMON_SKILL_VALID(SID_Petrify))
-    [SID_Petrify] = &EfxSkillVanilla,
+	[SID_Petrify] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Enrage) && COMMON_SKILL_VALID(SID_Enrage))
-    [SID_Enrage] = &EfxSkillVanilla,
+	[SID_Enrage] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Pickup) && COMMON_SKILL_VALID(SID_Pickup))
-    [SID_Pickup] = &EfxSkillVanilla,
+	[SID_Pickup] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_DevilsPact) && COMMON_SKILL_VALID(SID_DevilsPact))
-    [SID_DevilsPact] = &EfxSkillVanilla,
+	[SID_DevilsPact] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_DevilsWhim) && COMMON_SKILL_VALID(SID_DevilsWhim))
-    [SID_DevilsWhim] = &EfxSkillVanilla,
+	[SID_DevilsWhim] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_DevilsLuck) && COMMON_SKILL_VALID(SID_DevilsLuck))
-    [SID_DevilsLuck] = &EfxSkillVanilla,
+	[SID_DevilsLuck] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Expertise) && COMMON_SKILL_VALID(SID_Expertise))
-    [SID_Expertise] = &EfxSkillVanilla,
+	[SID_Expertise] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_CounterMagic) && COMMON_SKILL_VALID(SID_CounterMagic))
-    [SID_CounterMagic] = &EfxSkillVanilla,
+	[SID_CounterMagic] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_LiquidOoze) && COMMON_SKILL_VALID(SID_LiquidOoze))
-    [SID_LiquidOoze] = &EfxSkillVanilla,
+	[SID_LiquidOoze] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Eclipse) && COMMON_SKILL_VALID(SID_Eclipse))
-    [SID_Eclipse] = &EfxSkillVanilla,
+	[SID_Eclipse] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_LunarBrace) && COMMON_SKILL_VALID(SID_LunarBrace))
-    [SID_LunarBrace] = &EfxSkillVanilla,
+	[SID_LunarBrace] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Pursuer) && COMMON_SKILL_VALID(SID_Pursuer))
-    [SID_Pursuer] = &EfxSkillVanilla,
+	[SID_Pursuer] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_QuickLearner) && COMMON_SKILL_VALID(SID_QuickLearner))
-    [SID_QuickLearner] = &EfxSkillVanilla,
+	[SID_QuickLearner] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_EffectSpore) && COMMON_SKILL_VALID(SID_EffectSpore))
-    [SID_EffectSpore] = &EfxSkillVanilla,
+	[SID_EffectSpore] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_GaleWings) && COMMON_SKILL_VALID(SID_GaleWings))
-    [SID_GaleWings] = &EfxSkillVanilla,
+	[SID_GaleWings] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
-    [SID_Sturdy] = &EfxSkillVanilla,
+	[SID_Sturdy] = &EfxSkillVanilla,
 #endif
 };

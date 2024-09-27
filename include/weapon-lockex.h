@@ -7,4 +7,4 @@
  * -1: Force lock weapon
  *  0: Normal check
  */
-int CheckWeaponLockEx(struct Unit * unit, u16 item);
+int CheckWeaponLockEx(struct Unit *unit, u16 item);

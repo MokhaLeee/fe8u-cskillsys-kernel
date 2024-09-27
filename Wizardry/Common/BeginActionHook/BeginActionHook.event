@@ -9,7 +9,7 @@
 /*
  * Hook at function: UnitBeginAction()
  *
- * void (*func)(struct Unit * unit)
+ * void (*func)(struct Unit *unit)
  **/
 gBeginActionHooks:
     POIN InitActionExpa
