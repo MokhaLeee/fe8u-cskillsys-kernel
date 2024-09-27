@@ -1,0 +1,23 @@
+/**
+ * Hotfix for 1.0.0LTS at 2024.09.27
+ *
+ * Fix:
+ *  1. Fix skill tester issue, which may cause weapon skills useless.
+ */
+
+PUSH
+	// https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/d0a47b918bdb92378d4763fa3c8a7e6c71af739e
+	ORG 0xB53280
+		BYTE 0x10
+
+	// https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/891fd67dc837e817c5f83624bc3bf10166360d20
+	ORG 0xB96488 + 4 * 4 // Wizardry/Common/Lvupfx/Lvupfx/MapLvup.asm .L4
+		POIN 0x08B96222
+		POIN 0x08B961FE
+		POIN 0x08B96210
+
+	ORG 0xB964B0 + 4 * 4 // Wizardry/Common/Lvupfx/Lvupfx/MapLvup.asm .L21
+		POIN 0x08B962E6
+		POIN 0x08B962D6
+		POIN 0x08B962DE
+POP

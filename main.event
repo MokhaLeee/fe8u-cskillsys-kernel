@@ -35,4 +35,5 @@ ORG FreeSpaceKernelData
 MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData)
 ASSERT (0x00C00000 - CURRENTOFFSET)
 
-#include "LTS/hotfix/20240922/hotfix_20240922.event"
+#include "LTS/hotfix/hotfix_20240922.event"
+#include "LTS/hotfix/hotfix_20240927.event"
