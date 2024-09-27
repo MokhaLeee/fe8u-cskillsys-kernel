@@ -11,8 +11,9 @@ gExternalBattleToUnitHook: // int (*)(struct BattleUnit *bu, struct Unit *unit);
     WORD 0 0 0 0
 
 gExternalUnitToBattleHook: // int (*)(struct Unit *unit, struct BattleUnit *bu);
+    POIN UnitToBattle_ExecNihilSkills   // This must stay at first
+    POIN UnitToBattle_ExecBonusDoublers // This must stay at second
     POIN StatDebuff_OnUnitToBattle
-    POIN UnitToBattle_ExecNihilSkills
     WORD 0 0 0 0
 
 gCopyUnitHooks: // void (*)(struct Unit *from, struct Unit *to)

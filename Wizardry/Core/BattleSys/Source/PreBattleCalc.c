@@ -170,6 +170,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 	FORCE_DECLARE int tmp, i;
 	int _skill_list_cnt;
 	struct SkillList *list;
+	struct Unit *unit = GetUnit(attacker->unit.index);
 
 	/**
 	 * Skip arena judgement

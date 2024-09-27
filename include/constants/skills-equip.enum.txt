@@ -115,6 +115,7 @@ SID_SuperLuck
 SID_Spurn
 SID_Counter
 SID_CounterMagic
+SID_BonusDoubler
 
 // Weapon triangle
 SID_SwordBreaker

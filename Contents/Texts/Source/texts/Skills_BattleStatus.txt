@@ -912,3 +912,8 @@ SacaeLaw[X]
 Laws of Sacae:[NL]
 If attacked with 2+ allies[NL]
 in 2x2, ATK/SPD/DEF/RES +4[X]
+
+## MSG_SKILL_BonusDoubler
+BonusDoubler:[NL]
+Grants bonus to[NL]
+unit stats in battle[X]

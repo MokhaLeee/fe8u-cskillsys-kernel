@@ -3689,4 +3689,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_BonusDoubler) && COMMON_SKILL_VALID(SID_BonusDoubler))
+	[SID_BonusDoubler] = {
+		.desc = MSG_SKILL_BonusDoubler,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };
