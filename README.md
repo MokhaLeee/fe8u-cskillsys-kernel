@@ -82,7 +82,7 @@ echo "export PATH=\${DEVKITPRO}/tools/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-3. Build EA
+4. Build EA
 
 > [!WARNING]
 > Please **Strictly** follow the following steps to build linux EA by yourself.
@@ -98,9 +98,7 @@ sudo ./dotnet-install.sh --channel 6.0
 
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
-```
 
-```bash
 # Build EA
 cd Tools/EventAssembler
 ./build.sh
