@@ -55,6 +55,8 @@ s8 IsPositionMagicSealed(int x, int y)
 #if defined(SID_MagicSeal) && (COMMON_SKILL_VALID(SID_MagicSeal))
             if (!SkillTester(unit, SID_MagicSeal))
                 continue;
+#else 
+            continue;
 #endif
         }
 

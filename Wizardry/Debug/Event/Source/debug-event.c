@@ -390,17 +390,6 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
     {}
 };
 
-static const int ShopList_Event_Skills[] = {
-    // (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    // (SID_Adept << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    // (SID_BlowArmored << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    // (SID_BloodTide << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    // (SID_Charge << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-    // (SID_AlertStance << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
-
-    ITEM_NONE,
-};
-
 /**
  * Main events
  */
@@ -473,8 +462,6 @@ static const EventScr EventScr_Beginning[] = {
     SVAL(EVT_SLOT_1, 10)
     SET_HP(CHARACTER_VANESSA)
     
-    // SetBackground(1)
-    // CharacterEvent(EVFLAG_TMP(7), TestMessage, CHARACTER_EIRIKA, CHARACTER_SETH)
     NoFade
     ENDA
 };
@@ -504,7 +491,6 @@ static const EventListScr EventListScr_Character[] = {
 };
 
 static const EventListScr EventListScr_Location[] = {
-    Vendor(ShopList_Event_Skills, 11, 26)
     END_MAIN
 };
 

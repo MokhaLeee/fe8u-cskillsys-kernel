@@ -920,8 +920,8 @@ harmful status conditions.[X]
 
 ## MSG_SKILL_Shadowgift
 Shadowgift:[NL]
-Grants this unit the ability to use[NL]
-dark magic (starting at rank D).[X]
+Grants this unit access to[NL]
+dark magic up to rank C.[X]
 
 ## MSG_SKILL_Cultured
 Cultured: If unit attacks next to a[NL]
