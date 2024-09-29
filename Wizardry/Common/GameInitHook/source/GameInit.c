@@ -24,7 +24,7 @@ void StartGame(void)
 	proc->idle_status = 0;
 
 	/* Internal hooks */
-#ifdef CONFIG_USE_DEBUG
+#if CHAX
 	LogInit();
 #endif
 
