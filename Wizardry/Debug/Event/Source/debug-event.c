@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "debug-event.h"
 #include "skill-system.h"
+#include "event-rework.h"
 #include "constants/skills.h"
 
 /**
