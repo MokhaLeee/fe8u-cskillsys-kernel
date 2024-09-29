@@ -236,6 +236,20 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 gainWEXP = false;
 #endif
 
+#if (defined(SID_LuminaPlus) && (COMMON_SKILL_VALID(SID_LuminaPlus)))
+    if (BattleSkillTester(attacker, SID_LuminaPlus))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_LIGHT)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_LIGHT] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_Lumina) && (COMMON_SKILL_VALID(SID_Lumina)))
+    if (BattleSkillTester(attacker, SID_Lumina))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_LIGHT)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_LIGHT] == 0)
+                gainWEXP = false;
+#endif
+
     if (gainWEXP)
     {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))

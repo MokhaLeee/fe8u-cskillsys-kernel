@@ -3874,6 +3874,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Lumina) && COMMON_SKILL_VALID(SID_Lumina))
+    [SID_Lumina] = {
+        .desc = MSG_SKILL_Lumina,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LuminaPlus) && COMMON_SKILL_VALID(SID_LuminaPlus))
+    [SID_LuminaPlus] = {
+        .desc = MSG_SKILL_LuminaPlus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_StealPlus) && COMMON_SKILL_VALID(SID_StealPlus))
     [SID_StealPlus] = {
         .desc = MSG_SKILL_StealPlus,

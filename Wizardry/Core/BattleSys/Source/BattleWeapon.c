@@ -317,6 +317,22 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
                     return true;
 #endif
 
+#if (defined(SID_LuminaPlus) && (COMMON_SKILL_VALID(SID_LuminaPlus)))
+    if (SkillTester(unit, SID_LuminaPlus))
+        if (GetItemType(item) == ITYPE_LIGHT)
+            if (unit->ranks[ITYPE_LIGHT] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_A) // A rank max
+                    return true;
+#endif
+
+#if (defined(SID_Lumina) && (COMMON_SKILL_VALID(SID_Lumina)))
+    if (SkillTester(unit, SID_Lumina))
+        if (GetItemType(item) == ITYPE_LIGHT)
+            if (unit->ranks[ITYPE_LIGHT] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
+                    return true;
+#endif
+
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
 }
 

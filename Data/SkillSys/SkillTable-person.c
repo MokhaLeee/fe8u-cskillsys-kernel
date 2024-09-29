@@ -4,7 +4,8 @@
 
 const u16 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
-        SID_ShadowgiftPlus,
+        SID_Lumina,
+        SID_Shadowgift,
     },
 
     [CHARACTER_EPHRAIM] = {
