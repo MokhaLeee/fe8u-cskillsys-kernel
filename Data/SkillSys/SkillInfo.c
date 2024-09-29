@@ -3867,6 +3867,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_ShadowgiftPlus) && COMMON_SKILL_VALID(SID_ShadowgiftPlus))
+    [SID_ShadowgiftPlus] = {
+        .desc = MSG_SKILL_ShadowgiftPlus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_StealPlus) && COMMON_SKILL_VALID(SID_StealPlus))
     [SID_StealPlus] = {
         .desc = MSG_SKILL_StealPlus,
