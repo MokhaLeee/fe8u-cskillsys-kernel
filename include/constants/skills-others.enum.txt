@@ -573,6 +573,8 @@
 // SID_SocialButterfly
 // SID_Shadowgift
 // SID_ShadowgiftPlus
+// SID_Lumina
+// SID_LuminaPlus
 // SID_NiceThighs
 // SID_Casual
 // SID_CatchEmAll  // Doesn't work
