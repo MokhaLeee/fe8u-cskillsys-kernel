@@ -571,7 +571,8 @@
 // SID_DemolitionExpert
 // SID_TriangleAttack
 // SID_SocialButterfly
-SID_Shadowgift
+// SID_Shadowgift
+SID_ShadowgiftPlus
 // SID_NiceThighs
 // SID_Casual
 // SID_CatchEmAll  // Doesn't work

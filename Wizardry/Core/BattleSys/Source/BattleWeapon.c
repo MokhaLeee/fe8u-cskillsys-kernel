@@ -301,6 +301,14 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
     }
 #endif
 
+#if (defined(SID_ShadowgiftPlus) && (COMMON_SKILL_VALID(SID_ShadowgiftPlus)))
+    if (SkillTester(unit, SID_ShadowgiftPlus))
+        if (GetItemType(item) == ITYPE_DARK)
+            if (unit->ranks[ITYPE_DARK] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_A) // A rank max
+                    return true;
+#endif
+
 #if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
     if (SkillTester(unit, SID_Shadowgift))
         if (GetItemType(item) == ITYPE_DARK)

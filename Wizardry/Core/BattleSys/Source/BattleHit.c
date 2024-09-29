@@ -222,6 +222,13 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
 {
     FORCE_DECLARE bool gainWEXP = true;
 
+#if (defined(SID_ShadowgiftPlus) && (COMMON_SKILL_VALID(SID_ShadowgiftPlus)))
+    if (BattleSkillTester(attacker, SID_ShadowgiftPlus))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_DARK)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_DARK] == 0)
+                gainWEXP = false;
+#endif
+
 #if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
     if (BattleSkillTester(attacker, SID_Shadowgift))
         if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_DARK)
