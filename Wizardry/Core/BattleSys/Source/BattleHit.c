@@ -9,7 +9,7 @@
 #include "constants/skills.h"
 
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
-void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *defender)
+void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     int attack = attacker->battleAttack;
     int defense = defender->battleDefense;
@@ -29,7 +29,8 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
     }
 
 #if defined(SID_AxeFaith) && (COMMON_SKILL_VALID(SID_AxeFaith))
-    if (attacker->weaponType == ITYPE_AXE && CheckBattleSkillActivate(attacker, defender, SID_AxeFaith, attacker->battleAttack))
+    if (attacker->weaponType == ITYPE_AXE &&
+        CheckBattleSkillActivate(attacker, defender, SID_AxeFaith, attacker->battleAttack))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_AxeFaith);
         hitRate += attacker->battleAttack;
@@ -72,13 +73,9 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 }
 
 LYN_REPLACE_CHECK(BattleCheckTriangleAttack);
-s8 BattleCheckTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
+s8 BattleCheckTriangleAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-    s8 adjacentLookup[] = {
-        -1, 0,
-        0, -1,
-        +1, 0,
-        0, +1};
+    s8 adjacentLookup[] = { -1, 0, 0, -1, +1, 0, 0, +1 };
 
     int i, count = 0;
 
@@ -95,7 +92,7 @@ s8 BattleCheckTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *def
     for (i = 0; i < 4; ++i)
     {
         int uId = gBmMapUnit[adjacentLookup[i * 2 + 1] + y][adjacentLookup[i * 2 + 0] + x];
-        struct Unit *unit;
+        struct Unit * unit;
 
         if (!uId)
             continue;
@@ -145,7 +142,7 @@ s8 BattleCheckTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *def
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitTriangleAttack);
-void BattleGenerateHitTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
+void BattleGenerateHitTriangleAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 
     /**
@@ -177,7 +174,7 @@ void BattleGenerateHitTriangleAttack(struct BattleUnit *attacker, struct BattleU
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
-void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit *defender)
+void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     gBattleStats.damage = 0;
 
@@ -186,7 +183,8 @@ void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit 
     {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
         if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
-            CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
+            CheckBattleSkillActivate(
+                attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
         {
             RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
         }
@@ -220,16 +218,28 @@ void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit 
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitEffects);
-void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender)
+void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
-#if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-    if (BattleSkillTester(attacker, SID_Discipline))
-        attacker->wexpMultiplier += 2;
-    else
-        attacker->wexpMultiplier++;
-#else
-    attacker->wexpMultiplier++;
+    FORCE_DECLARE bool gainWEXP = true;
+
+#if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
+    if (BattleSkillTester(attacker, SID_Shadowgift))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_DARK)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_DARK] == 0)
+                gainWEXP = false;
 #endif
+
+    if (gainWEXP)
+    {
+#if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
+        if (BattleSkillTester(attacker, SID_Discipline))
+            attacker->wexpMultiplier += 2;
+        else
+            attacker->wexpMultiplier++;
+#else
+        attacker->wexpMultiplier++;
+#endif
+    }
 
     if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
     {
@@ -340,7 +350,7 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHit);
-bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
+bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker == &gBattleTarget)
         gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
@@ -397,7 +407,7 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 #if (defined(SID_Pickup) && (COMMON_SKILL_VALID(SID_Pickup)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Pickup, gBattleActor.unit.lck))
             {
-                struct Unit *unit_tar = &gBattleTarget.unit;
+                struct Unit * unit_tar = &gBattleTarget.unit;
                 unit_tar->state |= US_DROP_ITEM;
             }
 #endif
@@ -407,7 +417,9 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
         gBattleHitIterator++;
         return true;
     }
-    else if (defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 || defender->statusOut == UNIT_STATUS_SLEEP)
+    else if (
+        defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 ||
+        defender->statusOut == UNIT_STATUS_SLEEP)
     {
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
         gBattleHitIterator++;

@@ -301,7 +301,30 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
     }
 #endif
 
+#if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
+    if (SkillTester(unit, SID_Shadowgift))
+        if (GetItemType(item) == ITYPE_DARK)
+            if (unit->ranks[ITYPE_DARK] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
+                    return true;
+#endif
+
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
+}
+
+LYN_REPLACE_CHECK(CanUnitUseWeaponNow);
+s8 CanUnitUseWeaponNow(struct Unit* unit, int item) {
+
+    if (item == 0)
+        return FALSE;
+
+    if (!(GetItemAttributes(item) & IA_WEAPON))
+        return FALSE;
+
+    if ((GetItemAttributes(item) & IA_MAGIC) && IsUnitMagicSealed(unit))
+        return FALSE;
+
+    return CanUnitUseWeapon(unit, item);
 }
 
 int GetWeaponCost(struct BattleUnit *bu, u16 item)
