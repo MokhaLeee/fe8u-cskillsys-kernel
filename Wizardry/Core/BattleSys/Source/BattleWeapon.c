@@ -305,7 +305,7 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
     if (SkillTester(unit, SID_Shadowgift))
         if (GetItemType(item) == ITYPE_DARK)
             if (unit->ranks[ITYPE_DARK] == 0)
-                if (GetItemRequiredExp(item) <= 71) // C rank max
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
                     return true;
 #endif
 
