@@ -250,6 +250,20 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 gainWEXP = false;
 #endif
 
+#if (defined(SID_StormgiftPlus) && (COMMON_SKILL_VALID(SID_StormgiftPlus)))
+    if (BattleSkillTester(attacker, SID_StormgiftPlus))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_ANIMA)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_ANIMA] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_Stormgift) && (COMMON_SKILL_VALID(SID_Stormgift)))
+    if (BattleSkillTester(attacker, SID_Stormgift))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_ANIMA)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_ANIMA] == 0)
+                gainWEXP = false;
+#endif
+
     if (gainWEXP)
     {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))

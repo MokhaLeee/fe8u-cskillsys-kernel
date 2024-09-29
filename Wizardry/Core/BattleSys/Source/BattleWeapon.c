@@ -333,6 +333,22 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
                     return true;
 #endif
 
+#if (defined(SID_StormgiftPlus) && (COMMON_SKILL_VALID(SID_StormgiftPlus)))
+    if (SkillTester(unit, SID_StormgiftPlus))
+        if (GetItemType(item) == ITYPE_ANIMA)
+            if (unit->ranks[ITYPE_ANIMA] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_A) // A rank max
+                    return true;
+#endif
+
+#if (defined(SID_Stormgift) && (COMMON_SKILL_VALID(SID_Stormgift)))
+    if (SkillTester(unit, SID_Stormgift))
+        if (GetItemType(item) == ITYPE_ANIMA)
+            if (unit->ranks[ITYPE_ANIMA] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
+                    return true;
+#endif
+
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
 }
 
