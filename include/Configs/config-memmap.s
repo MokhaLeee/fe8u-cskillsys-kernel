@@ -98,8 +98,8 @@ _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
  * [a]      no-free space
  *
  * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0xEC
- * [b]      ARM_SkillList       0x03004378      0x03004448      0x0D0       0xD0
- * [b]      __free__            0x03004448      0x03004960      0x518       ---
+ * [b]      ARM_SkillList       0x03004378      0x030043CC      0x054       0x054
+ * [b]      __free__            0x030043CC      0x03004960      0x518       ---
  *
  * Note on part[a]:
  * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
@@ -117,4 +117,4 @@ dat 0x03004150, ARM_MapTaskEnd
 dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd
 dat 0x03004378, ARM_SkillList
-dat 0x03004448, ARM_SkillListEnd
+dat 0x030043CC, ARM_SkillListEnd

@@ -27,16 +27,16 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 	sil = 0;
 
 #if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
-	if (BattleSkillTester(attacker, SID_Nonconforming))
+	if (BattleSkillTesterFast(attacker, SID_Nonconforming))
 		invert = !invert;
-	if (BattleSkillTester(defender, SID_Nonconforming))
+	if (BattleSkillTesterFast(defender, SID_Nonconforming))
 		invert = !invert;
 #endif
 
 #if (defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise)))
-	if (BattleSkillTester(attacker, SID_Poise))
+	if (BattleSkillTesterFast(attacker, SID_Poise))
 		poise_self = true;
-	if (BattleSkillTester(defender, SID_Poise))
+	if (BattleSkillTesterFast(defender, SID_Poise))
 		poise_foo  = true;
 #endif
 
@@ -68,7 +68,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 
 	for (it = gpWeaponTriangleConfs; it->wtype_a != it->wtype_b; it++) {
 		if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType) {
-			if (BattleSkillTester(attacker, it->sid)) {
+			if (BattleSkillTesterFast(attacker, it->sid)) {
 				if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self)) {
 					ui  += it->is_buff ? 1 : -1;
 
@@ -87,13 +87,13 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 	if
 	(
 #if (defined(SID_TriangleAdept) && (COMMON_SKILL_VALID(SID_TriangleAdept)))
-		BattleSkillTester(attacker, SID_TriangleAdept)
+		BattleSkillTesterFast(attacker, SID_TriangleAdept)
 #else
 		0
 #endif
 		||
 #if (defined(SID_TriangleAdeptPlus) && (COMMON_SKILL_VALID(SID_TriangleAdeptPlus)))
-		BattleSkillTester(attacker, SID_TriangleAdeptPlus) || BattleSkillTester(defender, SID_TriangleAdeptPlus)
+		BattleSkillTesterFast(attacker, SID_TriangleAdeptPlus) || BattleSkillTesterFast(defender, SID_TriangleAdeptPlus)
 #else
 		0
 #endif

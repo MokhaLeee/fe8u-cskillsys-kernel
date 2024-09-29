@@ -125,7 +125,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit *bu, int
 		}
 
 #if (defined(SID_Dazzle) && (COMMON_SKILL_VALID(SID_Dazzle)))
-		if (bu == &gBattleTarget && BattleSkillTester(&gBattleActor, SID_Dazzle)) {
+		if (bu == &gBattleTarget && BattleSkillTesterFast(&gBattleActor, SID_Dazzle)) {
 			bu->weapon = 0;
 			bu->canCounter = false;
 			return;
@@ -133,7 +133,7 @@ STATIC_DECLAR void PostSetBattleUnitWeaponVanillaHook(struct BattleUnit *bu, int
 #endif
 
 #if (defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight)))
-		if (bu == &gBattleTarget && BattleSkillTester(&gBattleActor, SID_Moonlight)) {
+		if (bu == &gBattleTarget && BattleSkillTesterFast(&gBattleActor, SID_Moonlight)) {
 			bu->weapon = 0;
 			bu->canCounter = false;
 			return;
@@ -254,7 +254,7 @@ int GetWeaponCost(struct BattleUnit *bu, u16 item)
 	}
 
 #if (defined(SID_FaerghusAncestry) && (COMMON_SKILL_VALID(SID_FaerghusAncestry)))
-	if (BattleSkillTester(bu, SID_FaerghusAncestry))
+	if (BattleSkillTesterFast(bu, SID_FaerghusAncestry))
 		cost = cost * 2;
 #endif
 

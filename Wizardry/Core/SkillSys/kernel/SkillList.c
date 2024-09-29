@@ -111,7 +111,6 @@ void ForceUpdateUnitSkillList(struct Unit *unit)
 	GenerateSkillListExt(unit, list);
 }
 
-#if 0
 struct SkillList *GetUnitSkillList(struct Unit *unit)
 {
 	struct SkillList *list = SkillListGeneric;
@@ -126,7 +125,31 @@ struct SkillList *GetUnitSkillList(struct Unit *unit)
 
 	return list;
 }
-#endif
+
+bool JudgeSkillViaList(struct Unit *unit, const u16 sid)
+{
+	int i;
+	struct SkillList *list = GetUnitSkillList(unit);
+
+	for (i = 0; i < list->amt; i++)
+		if (list->sid[i] == sid)
+			return true;
+
+	return false;
+}
+
+void SetupBattleSkillList(void)
+{
+	GenerateSkillListExt(&gBattleActor.unit,  SkillListBattleActor);
+	GenerateSkillListExt(&gBattleTarget.unit, SkillListBattleTarget);
+}
+
+void UnitToBattle_SetupSkillList(struct Unit *unit, struct BattleUnit *bu)
+{
+	/* Same as UnitToBattle_ExecNihilSkills() */
+	if (bu == &gBattleTarget)
+		SetupBattleSkillList();
+}
 
 void DisableUnitSkilLList(struct Unit *unit)
 {

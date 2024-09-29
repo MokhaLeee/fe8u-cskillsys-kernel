@@ -73,11 +73,12 @@ char *GetSkillNameStr(const u16 sid);
 struct SkillList {
 	struct UnitListHeader header;
 	u8 amt;
+	u8 _pad_;
 	u16 sid[23];
 };
-extern struct SkillList *(*_GetUnitSkillList)(struct Unit *unit);
-#define GetUnitSkillList _GetUnitSkillList
+struct SkillList *GetUnitSkillList(struct Unit *unit);
 
+void SetupBattleSkillList(void);
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list);
 void ForceUpdateUnitSkillList(struct Unit *unit);
 void DisableUnitSkilLList(struct Unit *unit);
@@ -87,10 +88,12 @@ void ResetSkillLists(void);
 extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
 #define SkillTester _SkillTester
 
-// Note this function can only exec for r0 = gBattleActor/gBattleTarget
-extern bool (*_JudgeSkillViaList)(struct BattleUnit *unit, const u16 sid);
-#define BattleSkillTester _JudgeSkillViaList
-#define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
+bool JudgeSkillViaList(struct Unit *unit, const u16 sid);
+#define _BattleSkillTester(unit, sid) JudgeSkillViaList(unit, sid)
+#define BattleSkillTester(bu, sid) JudgeSkillViaList((struct Unit *)bu, sid)
+
+extern bool (*_JudgeSkillViaListFast)(struct BattleUnit *bu, const u16 sid);
+#define BattleSkillTesterFast(bu, sid) _JudgeSkillViaListFast(bu, sid)
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);
