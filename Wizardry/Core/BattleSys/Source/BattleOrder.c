@@ -7,14 +7,14 @@
 #include "combo-attack.h"
 #include "constants/skills.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target)
 {
 	FORCE_DECLARE bool followup_nullified_en = true;
-	bool basic_judgement;
-	u8 cid;
+	FORCE_DECLARE bool ref_actor_hp_above_half  = ((actor->hpInitial  * 2) > actor->unit.maxHP);
+	FORCE_DECLARE bool ref_target_hp_above_half = ((target->hpInitial * 2) > target->unit.maxHP);
 
 	if (target->battleSpeed > 250)
 		return false;
@@ -26,23 +26,23 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 		return false;
 
 	/* Check combat-art */
-	cid = GetCombatArtInForce(&actor->unit);
-	if (&gBattleActor == actor && COMBART_VALID(cid)) {
-		switch (GetCombatArtInfo(cid)->double_attack) {
-		case COMBART_DOUBLE_DISABLED:
-			return false;
+	if (&gBattleActor == actor) {
+		int cid = GetCombatArtInForce(&actor->unit);
 
-		case COMBART_DOUBLE_FORCE_ENABLED:
-			return true;
+		if (COMBART_VALID(cid)) {
+			switch (GetCombatArtInfo(cid)->double_attack) {
+			case COMBART_DOUBLE_DISABLED:
+				return false;
 
-		case COMBART_DOUBLE_ENABLED:
-		default:
-			break;
+			case COMBART_DOUBLE_FORCE_ENABLED:
+				return true;
+
+			case COMBART_DOUBLE_ENABLED:
+			default:
+				break;
+			}
 		}
 	}
-
-	/* Basic judgement */
-	basic_judgement = (actor->battleSpeed - target->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD;
 
 	/* Check can prevent the follow-up attack */
 	followup_nullified_en = true;
@@ -51,29 +51,34 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 		if (BattleSkillTesterFast(actor, SID_YngviAscendant))
 			followup_nullified_en = false;
 #endif
-	}
-
-	if (&gBattleTarget == actor) {
+	} else {
 #if defined(SID_DragonWrath) && (COMMON_SKILL_VALID(SID_DragonWrath))
 		if (BattleSkillTesterFast(actor, SID_DragonWrath))
 			followup_nullified_en = false;
 #endif
 	}
 
+	if (followup_nullified_en) {
+		if (&gBattleActor == actor) {
+#if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
+			if (BattleSkillTesterFast(target, SID_WaryFighter))
+				if (ref_target_hp_above_half)
+					return false;
+#endif
+
+#if defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight))
+			if (BattleSkillTesterFast(actor, SID_Moonlight))
+				return false;
+#endif
+		}
+	}
+
 	/* Check attacker */
 	if (&gBattleActor == actor) {
 		gBattleTemporaryFlag.act_force_twice_order = false;
 
-#if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
-		if (followup_nullified_en) {
-			if (basic_judgement == true && BattleSkillTesterFast(target, SID_WaryFighter))
-				if ((target->hpInitial * 2) > target->unit.maxHP)
-					return false;
-		}
-#endif
-
 #if defined(SID_BoldFighter) && (COMMON_SKILL_VALID(SID_BoldFighter))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_BoldFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP) {
+		if (BattleSkillTesterFast(actor, SID_BoldFighter) && ref_actor_hp_above_half) {
 			gBattleTemporaryFlag.act_force_twice_order = true;
 			RegisterBattleOrderSkill(SID_BoldFighter, BORDER_ACT_TWICE);
 			return true;
@@ -81,20 +86,18 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
-		if (basic_judgement == false) {
-			if (BattleSkillTesterFast(actor, SID_RecklessFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP) {
-				RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_ACT_TWICE);
-				gBattleTemporaryFlag.act_force_twice_order = true;
-				return true;
-			} else if (BattleSkillTesterFast(target, SID_RecklessFighter) && (target->hpInitial * 2) >= target->unit.maxHP) {
-				gBattleTemporaryFlag.act_force_twice_order = true;
-				return true;
-			}
+		if (BattleSkillTesterFast(actor, SID_RecklessFighter) && ref_actor_hp_above_half) {
+			RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_ACT_TWICE);
+			gBattleTemporaryFlag.act_force_twice_order = true;
+			return true;
+		} else if (BattleSkillTesterFast(target, SID_RecklessFighter) && (target->hpInitial * 2) >= target->unit.maxHP) {
+			gBattleTemporaryFlag.act_force_twice_order = true;
+			return true;
 		}
 #endif
 
 #if defined(SID_BidingBlow) && (COMMON_SKILL_VALID(SID_BidingBlow))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_BidingBlow)) {
+		if (BattleSkillTesterFast(actor, SID_BidingBlow)) {
 			if (target->canCounter == false) {
 				gBattleTemporaryFlag.act_force_twice_order = true;
 				RegisterBattleOrderSkill(SID_BidingBlow, BORDER_ACT_TWICE);
@@ -104,19 +107,12 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_AdvantageChaser) && (COMMON_SKILL_VALID(SID_AdvantageChaser))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_AdvantageChaser)) {
+		if (BattleSkillTesterFast(actor, SID_AdvantageChaser)) {
 			if (actor->wTriangleDmgBonus > 0 || actor->wTriangleHitBonus > 0) {
 				gBattleTemporaryFlag.act_force_twice_order = true;
 				RegisterBattleOrderSkill(SID_AdvantageChaser, BORDER_ACT_TWICE);
 				return true;
 			}
-		}
-#endif
-
-#if defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight))
-		if (followup_nullified_en) {
-			if (basic_judgement == true && BattleSkillTesterFast(actor, SID_Moonlight))
-				return false;
 		}
 #endif
 
@@ -129,7 +125,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_PassionsFlow)) {
+		if (BattleSkillTesterFast(actor, SID_PassionsFlow)) {
 			struct SupportBonuses bonuses;
 
 			if (GetUnitSupportBonuses(GetUnit(actor->unit.index), &bonuses) != 0) {
@@ -141,7 +137,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_BrashAssault) && (COMMON_SKILL_VALID(SID_BrashAssault))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_BrashAssault)) {
+		if (BattleSkillTesterFast(actor, SID_BrashAssault)) {
 			if (target->canCounter) {
 				gBattleTemporaryFlag.act_force_twice_order = true;
 				RegisterBattleOrderSkill(SID_BrashAssault, BORDER_ACT_TWICE);
@@ -154,7 +150,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 		gBattleTemporaryFlag.tar_force_twice_order = false;
 
 #if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_VengefulFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP) {
+		if (BattleSkillTesterFast(actor, SID_VengefulFighter) && ref_actor_hp_above_half) {
 			gBattleTemporaryFlag.tar_force_twice_order = true;
 			RegisterBattleOrderSkill(SID_VengefulFighter, BORDER_TAR_TWICE);
 			return true;
@@ -162,31 +158,27 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_DragonWrath) && (COMMON_SKILL_VALID(SID_DragonWrath))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_DragonWrath)) {
-			if ((actor->hpInitial * SKILL_EFF0(SID_DragonWrath)) > (actor->unit.maxHP * 100)) {
-				gBattleTemporaryFlag.tar_force_twice_order = true;
-				RegisterBattleOrderSkill(SID_DragonWrath, BORDER_TAR_TWICE);
-				return true;
-			}
+		if (BattleSkillTesterFast(actor, SID_DragonWrath) && ref_actor_hp_above_half) {
+			gBattleTemporaryFlag.tar_force_twice_order = true;
+			RegisterBattleOrderSkill(SID_DragonWrath, BORDER_TAR_TWICE);
+			return true;
 		}
 #endif
 
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
-		if (basic_judgement == false) {
-			if (BattleSkillTesterFast(actor, SID_RecklessFighter)) {
-				RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
-				gBattleTemporaryFlag.tar_force_twice_order = true;
-				return true;
-			} else if (BattleSkillTesterFast(target, SID_RecklessFighter)) {
-				gBattleTemporaryFlag.tar_force_twice_order = true;
-				return true;
-			}
+		if (BattleSkillTesterFast(actor, SID_RecklessFighter)) {
+			RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
+			gBattleTemporaryFlag.tar_force_twice_order = true;
+			return true;
+		} else if (BattleSkillTesterFast(target, SID_RecklessFighter)) {
+			gBattleTemporaryFlag.tar_force_twice_order = true;
+			return true;
 		}
 #endif
 
 #if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_QuickRiposte)) {
-			if ((actor->hpInitial * 2) > actor->unit.maxHP) {
+		if (BattleSkillTesterFast(actor, SID_QuickRiposte)) {
+			if (ref_actor_hp_above_half) {
 				gBattleTemporaryFlag.tar_force_twice_order = true;
 				RegisterBattleOrderSkill(SID_QuickRiposte, BORDER_TAR_TWICE);
 				return true;
@@ -195,7 +187,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_AdvantageChaser) && (COMMON_SKILL_VALID(SID_AdvantageChaser))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_AdvantageChaser)) {
+		if (BattleSkillTesterFast(actor, SID_AdvantageChaser)) {
 			if (actor->wTriangleDmgBonus > 0 || actor->wTriangleHitBonus > 0) {
 				gBattleTemporaryFlag.tar_force_twice_order = true;
 				RegisterBattleOrderSkill(SID_AdvantageChaser, BORDER_TAR_TWICE);
@@ -205,7 +197,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 #if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
-		if (basic_judgement == false && BattleSkillTesterFast(actor, SID_PassionsFlow)) {
+		if (BattleSkillTesterFast(actor, SID_PassionsFlow)) {
 			struct SupportBonuses bonuses;
 
 			if (GetUnitSupportBonuses(GetUnit(actor->unit.index), &bonuses) != 0) {
@@ -217,7 +209,8 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 	}
 
-	return basic_judgement;
+	/* Basic judgement */
+	return ((actor->battleSpeed - target->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD);
 }
 
 STATIC_DECLAR bool CheckDesperationOrder(void)

@@ -78,7 +78,6 @@ void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit 
 		if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
 			CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
 			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
-
 		else {
 			RegisterHitCnt(attacker, true);
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
