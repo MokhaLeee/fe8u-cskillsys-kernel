@@ -576,7 +576,7 @@
 // SID_Lumina
 // SID_LuminaPlus
 // SID_Stormgift
-SID_StormgiftPlus
+// SID_StormgiftPlus
 // SID_NiceThighs
 // SID_Casual
 // SID_CatchEmAll  // Doesn't work
