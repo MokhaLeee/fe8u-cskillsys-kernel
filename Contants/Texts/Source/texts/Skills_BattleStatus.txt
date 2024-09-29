@@ -921,22 +921,32 @@ harmful status conditions.[X]
 ## MSG_SKILL_Shadowgift
 Shadowgift:[NL]
 Grants this unit access to[NL]
-dark magic up to rank C.[X]
+Dark magic up to rank C.[X]
 
 ## MSG_SKILL_ShadowgiftPlus
 Shadowgift+:[NL]
 Grants this unit access to[NL]
-dark magic up to rank A.[X]
+Dark magic up to rank A.[X]
 
 ## MSG_SKILL_Lumina
 Lumina:[NL]
 Grants this unit access to[NL]
-light magic up to rank C.[X]
+Light magic up to rank C.[X]
 
 ## MSG_SKILL_LuminaPlus
 Lumina+:[NL]
 Grants this unit access to[NL]
-light magic up to rank A.[X]
+Light magic up to rank A.[X]
+
+## MSG_SKILL_Stormgift
+Stormgift:[NL]
+Grants this unit access to[NL]
+Anima magic up to rank C.[X]
+
+## MSG_SKILL_StormgiftPlus
+Stormgift+:[NL]
+Grants this unit access to[NL]
+Anima magic up to rank A.[X]
 
 ## MSG_SKILL_Cultured
 Cultured: If unit attacks next to a[NL]
