@@ -578,7 +578,9 @@
 // SID_Stormgift
 // SID_StormgiftPlus
 // SID_Gracegift
-SID_GracegiftPlus
+// SID_GracegiftPlus
+// SID_Bladegift
+SID_BladegiftPlus
 // SID_NiceThighs
 // SID_Casual
 // SID_CatchEmAll  // Doesn't work
