@@ -948,6 +948,16 @@ Stormgift+:[NL]
 Grants this unit access to[NL]
 Anima magic up to rank A.[X]
 
+## MSG_SKILL_Gracegift
+Gracegift:[NL]
+Grants this unit access to[NL]
+Staves up to rank C.[X]
+
+## MSG_SKILL_GracegiftPlus
+Gracegift+:[NL]
+Grants this unit access to[NL]
+Staves up to rank A.[X]
+
 ## MSG_SKILL_Cultured
 Cultured: If unit attacks next to a[NL]
 unit with Nice Thighs, move again.[NL]
