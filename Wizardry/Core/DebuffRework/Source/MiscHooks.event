@@ -61,7 +61,7 @@ PUSH
 
     ORG $167CA // CanUnitUseStaff
     BYTE 0x3F
-    PROTECT $167A4 $16800
+    // PROTECT $167A4 $16800
 
     ORG $16F32 // IsItemDisplayUsable
     BYTE 0x3F

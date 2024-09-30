@@ -461,3 +461,29 @@ void BeginUnitPoisonDamageAnim(struct Unit * unit, int damage)
 
     return;
 }
+
+LYN_REPLACE_CHECK(HasBattleUnitGainedWeaponLevel);
+s8 HasBattleUnitGainedWeaponLevel(struct BattleUnit* bu) {
+
+#if (defined(SID_GracegiftPlus) && (COMMON_SKILL_VALID(SID_GracegiftPlus)))
+    if (BattleSkillTester(bu, SID_GracegiftPlus))
+        if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_STAFF)
+            if (GetUnit(bu->unit.index)->ranks[ITYPE_STAFF] == 0)
+                return false;
+#endif
+
+#if (defined(SID_Gracegift) && (COMMON_SKILL_VALID(SID_Gracegift)))
+    if (BattleSkillTester(bu, SID_Gracegift))
+        if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_STAFF)
+            if (GetUnit(bu->unit.index)->ranks[ITYPE_STAFF] == 0)
+                return false;
+#endif
+
+    int oldWexp = bu->unit.ranks[bu->weaponType];
+    int newWexp = GetBattleUnitUpdatedWeaponExp(bu);
+
+    if (newWexp < 0)
+        return FALSE;
+
+    return GetWeaponLevelFromExp(oldWexp) != GetWeaponLevelFromExp(newWexp);
+}

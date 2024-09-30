@@ -6,15 +6,15 @@
 #include "combat-art.h"
 #include "constants/skills.h"
 
-typedef int (*BattleToUnitFunc_t)(struct BattleUnit *bu, struct Unit *unit);
+typedef int (*BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit * unit);
 // extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
-extern BattleToUnitFunc_t const *const gpExternalBattleToUnitHook;
+extern BattleToUnitFunc_t const * const gpExternalBattleToUnitHook;
 
-typedef int (*UnitToBattleFunc_t)(struct Unit *unit, struct BattleUnit *bu);
+typedef int (*UnitToBattleFunc_t)(struct Unit * unit, struct BattleUnit * bu);
 // extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
-extern UnitToBattleFunc_t const *const gpExternalUnitToBattleHook;
+extern UnitToBattleFunc_t const * const gpExternalUnitToBattleHook;
 
-STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit *bu, struct Unit *unit)
+STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit * bu, struct Unit * unit)
 {
     if (!unit)
         return;
@@ -61,7 +61,7 @@ STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit *bu, struct Unit *uni
     gBattleTarget.expGain = 0;
 }
 
-STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit *unit, struct BattleUnit *bu)
+STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct BattleUnit * bu)
 {
     int tmp;
 
@@ -87,6 +87,20 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit *unit, struct BattleU
 
     tmp = GetBattleUnitUpdatedWeaponExp(bu);
 
+#if (defined(SID_GracegiftPlus) && (COMMON_SKILL_VALID(SID_GracegiftPlus)))
+    if (SkillTester(unit, SID_GracegiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_STAFF)
+            if (unit->ranks[ITYPE_STAFF] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Gracegift) && (COMMON_SKILL_VALID(SID_Gracegift)))
+    if (SkillTester(unit, SID_Gracegift))
+        if (GetItemType(unit->items[0]) == ITYPE_STAFF)
+            if (unit->ranks[ITYPE_STAFF] == 0)
+                tmp = 0;
+#endif
+
     if (tmp > 0)
         unit->ranks[bu->weaponType] = tmp;
 
@@ -100,9 +114,9 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit *unit, struct BattleU
 }
 
 LYN_REPLACE_CHECK(InitBattleUnit);
-void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit)
+void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit)
 {
-    const UnitToBattleFunc_t *it;
+    const UnitToBattleFunc_t * it;
 
     InitBattleUnitVanilla(bu, unit);
 
@@ -117,9 +131,9 @@ void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit)
 }
 
 LYN_REPLACE_CHECK(UpdateUnitFromBattle);
-void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu)
+void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
 {
-    const BattleToUnitFunc_t *it;
+    const BattleToUnitFunc_t * it;
 
     UpdateUnitFromBattleVanilla(unit, bu);
 
@@ -138,8 +152,8 @@ void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu)
 LYN_REPLACE_CHECK(BattleApplyUnitUpdates);
 void BattleApplyUnitUpdates(void)
 {
-    struct Unit *actor = GetUnit(gBattleActor.unit.index);
-    struct Unit *target = GetUnit(gBattleTarget.unit.index);
+    struct Unit * actor = GetUnit(gBattleActor.unit.index);
+    struct Unit * target = GetUnit(gBattleTarget.unit.index);
 
 /**
  * We check the skill here to restore a mimic user's original weapon
