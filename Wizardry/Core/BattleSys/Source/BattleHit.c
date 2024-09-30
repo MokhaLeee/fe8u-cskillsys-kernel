@@ -278,6 +278,48 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 gainWEXP = false;
 #endif
 
+#if (defined(SID_PiercegiftPlus) && (COMMON_SKILL_VALID(SID_PiercegiftPlus)))
+    if (BattleSkillTester(attacker, SID_PiercegiftPlus))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_LANCE)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_LANCE] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_Piercegift) && (COMMON_SKILL_VALID(SID_Piercegisft)))
+    if (BattleSkillTester(attacker, SID_Piercegift))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_LANCE)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_LANCE] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_HackgiftPlus) && (COMMON_SKILL_VALID(SID_HackgiftPlus)))
+    if (BattleSkillTester(attacker, SID_HackgiftPlus))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_AXE)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_AXE] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_Hackgift) && (COMMON_SKILL_VALID(SID_Hackgisft)))
+    if (BattleSkillTester(attacker, SID_Hackgift))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_AXE)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_AXE] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_ArcgiftPlus) && (COMMON_SKILL_VALID(SID_ArcgiftPlus)))
+    if (BattleSkillTester(attacker, SID_ArcgiftPlus))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_BOW)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_BOW] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_Arcgift) && (COMMON_SKILL_VALID(SID_Arcgift)))
+    if (BattleSkillTester(attacker, SID_Arcgift))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_BOW)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_BOW] == 0)
+                gainWEXP = false;
+#endif
+
     if (gainWEXP)
     {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))

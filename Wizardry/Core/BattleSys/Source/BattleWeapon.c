@@ -365,6 +365,54 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
                     return true;
 #endif
 
+#if (defined(SID_PiercegiftPlus) && (COMMON_SKILL_VALID(SID_PiercegiftPlus)))
+    if (SkillTester(unit, SID_PiercegiftPlus))
+        if (GetItemType(item) == ITYPE_LANCE)
+            if (unit->ranks[ITYPE_LANCE] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_A) // A rank max
+                    return true;
+#endif
+
+#if (defined(SID_Piercegift) && (COMMON_SKILL_VALID(SID_Piercegift)))
+    if (SkillTester(unit, SID_Piercegift))
+        if (GetItemType(item) == ITYPE_LANCE)
+            if (unit->ranks[ITYPE_LANCE] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
+                    return true;
+#endif
+
+#if (defined(SID_HackgiftPlus) && (COMMON_SKILL_VALID(SID_HackgiftPlus)))
+    if (SkillTester(unit, SID_HackgiftPlus))
+        if (GetItemType(item) == ITYPE_AXE)
+            if (unit->ranks[ITYPE_AXE] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_A) // A rank max
+                    return true;
+#endif
+
+#if (defined(SID_Hackgift) && (COMMON_SKILL_VALID(SID_Hackgift)))
+    if (SkillTester(unit, SID_Hackgift))
+        if (GetItemType(item) == ITYPE_AXE)
+            if (unit->ranks[ITYPE_AXE] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
+                    return true;
+#endif
+
+#if (defined(SID_ArcgiftPlus) && (COMMON_SKILL_VALID(SID_ArcgiftPlus)))
+    if (SkillTester(unit, SID_ArcgiftPlus))
+        if (GetItemType(item) == ITYPE_BOW)
+            if (unit->ranks[ITYPE_BOW] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_A) // A rank max
+                    return true;
+#endif
+
+#if (defined(SID_Arcgift) && (COMMON_SKILL_VALID(SID_Arcgift)))
+    if (SkillTester(unit, SID_Arcgift))
+        if (GetItemType(item) == ITYPE_BOW)
+            if (unit->ranks[ITYPE_BOW] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
+                    return true;
+#endif
+
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
 }
 

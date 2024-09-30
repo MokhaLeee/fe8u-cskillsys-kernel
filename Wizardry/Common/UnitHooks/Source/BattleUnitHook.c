@@ -87,6 +87,48 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
 
     tmp = GetBattleUnitUpdatedWeaponExp(bu);
 
+#if (defined(SID_ShadowgiftPlus) && (COMMON_SKILL_VALID(SID_ShadowgiftPlus)))
+    if (SkillTester(unit, SID_ShadowgiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_DARK)
+            if (unit->ranks[ITYPE_DARK] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
+    if (SkillTester(unit, SID_Shadowgift))
+        if (GetItemType(unit->items[0]) == ITYPE_DARK)
+            if (unit->ranks[ITYPE_DARK] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_LuminaPlus) && (COMMON_SKILL_VALID(SID_LuminaPlus)))
+    if (SkillTester(unit, SID_LuminaPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_LIGHT)
+            if (unit->ranks[ITYPE_LIGHT] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Lumina) && (COMMON_SKILL_VALID(SID_Lumina)))
+    if (SkillTester(unit, SID_Lumina))
+        if (GetItemType(unit->items[0]) == ITYPE_LIGHT)
+            if (unit->ranks[ITYPE_LIGHT] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_StormgiftPlus) && (COMMON_SKILL_VALID(SID_StormgiftPlus)))
+    if (SkillTester(unit, SID_StormgiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_ANIMA)
+            if (unit->ranks[ITYPE_ANIMA] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Stormgift) && (COMMON_SKILL_VALID(SID_Stormgift)))
+    if (SkillTester(unit, SID_Stormgift))
+        if (GetItemType(unit->items[0]) == ITYPE_ANIMA)
+            if (unit->ranks[ITYPE_ANIMA] == 0)
+                tmp = 0;
+#endif
+
 #if (defined(SID_GracegiftPlus) && (COMMON_SKILL_VALID(SID_GracegiftPlus)))
     if (SkillTester(unit, SID_GracegiftPlus))
         if (GetItemType(unit->items[0]) == ITYPE_STAFF)
@@ -98,6 +140,62 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
     if (SkillTester(unit, SID_Gracegift))
         if (GetItemType(unit->items[0]) == ITYPE_STAFF)
             if (unit->ranks[ITYPE_STAFF] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_BladegiftPlus) && (COMMON_SKILL_VALID(SID_BladegiftPlus)))
+    if (SkillTester(unit, SID_BladegiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_SWORD)
+            if (unit->ranks[ITYPE_SWORD] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Bladegift) && (COMMON_SKILL_VALID(SID_Bladegift)))
+    if (SkillTester(unit, SID_Bladegift))
+        if (GetItemType(unit->items[0]) == ITYPE_SWORD)
+            if (unit->ranks[ITYPE_SWORD] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_PiercegiftPlus) && (COMMON_SKILL_VALID(SID_PiercegiftPlus)))
+    if (SkillTester(unit, SID_PiercegiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_LANCE)
+            if (unit->ranks[ITYPE_LANCE] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Piercegift) && (COMMON_SKILL_VALID(SID_Piercegift)))
+    if (SkillTester(unit, SID_Piercegift))
+        if (GetItemType(unit->items[0]) == ITYPE_LANCE)
+            if (unit->ranks[ITYPE_LANCE] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_HackgiftPlus) && (COMMON_SKILL_VALID(SID_HackgiftPlus)))
+    if (SkillTester(unit, SID_HackgiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_AXE)
+            if (unit->ranks[ITYPE_AXE] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Hackgift) && (COMMON_SKILL_VALID(SID_Hackgift)))
+    if (SkillTester(unit, SID_Hackgift))
+        if (GetItemType(unit->items[0]) == ITYPE_AXE)
+            if (unit->ranks[ITYPE_AXE] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_ArcgiftPlus) && (COMMON_SKILL_VALID(SID_ArcgiftPlus)))
+    if (SkillTester(unit, SID_ArcgiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_BOW)
+            if (unit->ranks[ITYPE_BOW] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Arcgift) && (COMMON_SKILL_VALID(SID_Arcgift)))
+    if (SkillTester(unit, SID_Arcgift))
+        if (GetItemType(unit->items[0]) == ITYPE_BOW)
+            if (unit->ranks[ITYPE_BOW] == 0)
                 tmp = 0;
 #endif
 

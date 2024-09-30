@@ -10,7 +10,6 @@ const u16 gConstSkillTable_Person[0x100][2] = {
     },
 
     [CHARACTER_SALEH] = {
-        SID_BladegiftPlus
     },
 
     [CHARACTER_VANESSA] = {

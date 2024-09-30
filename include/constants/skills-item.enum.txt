@@ -581,6 +581,12 @@
 // SID_GracegiftPlus
 // SID_Bladegift
 // SID_BladegiftPlus
+// SID_Piercegift
+// SID_PiercegiftPlus
+// SID_Hackgift
+// SID_HackgiftPlus
+// SID_Arcgift
+// SID_ArcgiftPlus
 // SID_NiceThighs
 // SID_Casual
 // SID_CatchEmAll  // Doesn't work
