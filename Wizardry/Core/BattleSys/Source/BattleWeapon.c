@@ -349,6 +349,22 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
                     return true;
 #endif
 
+#if (defined(SID_BladegiftPlus) && (COMMON_SKILL_VALID(SID_BladegiftPlus)))
+    if (SkillTester(unit, SID_BladegiftPlus))
+        if (GetItemType(item) == ITYPE_SWORD)
+            if (unit->ranks[ITYPE_SWORD] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_A) // A rank max
+                    return true;
+#endif
+
+#if (defined(SID_Bladegift) && (COMMON_SKILL_VALID(SID_Bladegift)))
+    if (SkillTester(unit, SID_Bladegift))
+        if (GetItemType(item) == ITYPE_SWORD)
+            if (unit->ranks[ITYPE_SWORD] == 0)
+                if (GetItemRequiredExp(item) <= WPN_EXP_C) // C rank max
+                    return true;
+#endif
+
     return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
 }
 

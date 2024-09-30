@@ -958,6 +958,16 @@ Gracegift+:[NL]
 Grants this unit access to[NL]
 Staves up to rank A.[X]
 
+## MSG_SKILL_Bladegift
+Bladegift:[NL]
+Grants this unit access to[NL]
+Swords up to rank C.[X]
+
+## MSG_SKILL_BladegiftPlus
+Bladegift+:[NL]
+Grants this unit access to[NL]
+Swords up to rank A.[X]
+
 ## MSG_SKILL_Cultured
 Cultured: If unit attacks next to a[NL]
 unit with Nice Thighs, move again.[NL]

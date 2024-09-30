@@ -264,6 +264,20 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 gainWEXP = false;
 #endif
 
+#if (defined(SID_BladegiftPlus) && (COMMON_SKILL_VALID(SID_BladegiftPlus)))
+    if (BattleSkillTester(attacker, SID_BladegiftPlus))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_SWORD)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_SWORD] == 0)
+                gainWEXP = false;
+#endif
+
+#if (defined(SID_Bladegift) && (COMMON_SKILL_VALID(SID_Bladegisft)))
+    if (BattleSkillTester(attacker, SID_Bladegift))
+        if (GetItemType(GetUnitEquippedWeapon(GetUnit(attacker->unit.index))) == ITYPE_SWORD)
+            if (GetUnit(attacker->unit.index)->ranks[ITYPE_SWORD] == 0)
+                gainWEXP = false;
+#endif
+
     if (gainWEXP)
     {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
