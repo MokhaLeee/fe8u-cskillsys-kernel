@@ -1,0 +1,13 @@
+#if (defined(SID_PiercegiftPlus) && (COMMON_SKILL_VALID(SID_PiercegiftPlus)))
+    if (SkillTester(unit, SID_PiercegiftPlus))
+        if (GetItemType(unit->items[0]) == ITYPE_LANCE)
+            if (unit->ranks[ITYPE_LANCE] == 0)
+                tmp = 0;
+#endif
+
+#if (defined(SID_Piercegift) && (COMMON_SKILL_VALID(SID_Piercegift)))
+    if (SkillTester(unit, SID_Piercegift))
+        if (GetItemType(unit->items[0]) == ITYPE_LANCE)
+            if (unit->ranks[ITYPE_LANCE] == 0)
+                tmp = 0;
+#endif

@@ -968,6 +968,36 @@ Bladegift+:[NL]
 Grants this unit access to[NL]
 Swords up to rank A.[X]
 
+## MSG_SKILL_Piercegift
+Piercegift:[NL]
+Grants this unit access to[NL]
+Lances up to rank C.[X]
+
+## MSG_SKILL_PiercegiftPlus
+Piercegift+:[NL]
+Grants this unit access to[NL]
+Lances up to rank A.[X]
+
+## MSG_SKILL_Hackgift
+Hackgift:[NL]
+Grants this unit access to[NL]
+Axes up to rank C.[X]
+
+## MSG_SKILL_HackgiftPlus
+Hackgift+:[NL]
+Grants this unit access to[NL]
+Axes up to rank A.[X]
+
+## MSG_SKILL_Arcgift
+Arcgift:[NL]
+Grants this unit access to[NL]
+Bows up to rank C.[X]
+
+## MSG_SKILL_ArcgiftPlus
+Arcgift+:[NL]
+Grants this unit access to[NL]
+Bows up to rank A.[X]
+
 ## MSG_SKILL_Cultured
 Cultured: If unit attacks next to a[NL]
 unit with Nice Thighs, move again.[NL]
