@@ -280,3 +280,7 @@ void ArenaGenerateBaseWeapons(void);
 void RefreshUnitsOnBmMap(void);
 
 extern u16 sTilesetConfig[0x1000 + 0x200];
+
+extern void GenerateFireTileTrapTargets(int x, int y, int damage);
+extern void GenerateArrowTrapTargets(int x, int y, int damage);
+extern void GenerateGasTrapTargets(int x, int y, int damage, int facing);

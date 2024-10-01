@@ -601,6 +601,7 @@
 // SID_Insomnia
 // SID_Survivor
 // SID_Anchor
+// SID_Absolve
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder
