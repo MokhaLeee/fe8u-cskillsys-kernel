@@ -532,6 +532,7 @@
 // SID_LimitBreaker
 // SID_LimitBreakerPlus
 // SID_DarkHorse
+SID_Mercurious
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk

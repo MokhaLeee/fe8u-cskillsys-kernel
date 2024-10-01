@@ -174,3 +174,8 @@ the end of the chapter.[X]
 Anchor:[NL]
 Cannot be moved by the effects[NL]
 of other units movement skills.[X]
+
+## MSG_SKILL_Mercurious
+Mercurious:[NL]
+Gives a 25% chance to double[NL]
+stat gains on level up.[X]
