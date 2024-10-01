@@ -29,7 +29,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostCombatArtSelectTarget[] = {
     PROC_CALL(LockGame),
     PROC_CALL(sub_8022E38),
     PROC_WHILE_EXISTS(gProcScr_BKSEL),
-    PROC_WHILE_EXISTS(gProcScr_CamMove),
+    PROC_WHILE_EXISTS(ProcScr_CamMove),
     PROC_CALL(RebuildCombatArtWeaponSelMenu),
     PROC_CALL(UnlockGame),
     PROC_END
