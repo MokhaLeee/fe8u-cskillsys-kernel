@@ -99,6 +99,12 @@ bool PostActionLunge(ProcPtr proc)
     if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
         return false;
 
+// If the target unit has anchor they cannot be moved
+#if defined(SID_Anchor) && (COMMON_SKILL_VALID(SID_Anchor))
+    if (SkillTester(unit_tar, SID_Anchor))
+        return false;
+#endif
+
 #if defined(SID_Lunge) && (COMMON_SKILL_VALID(SID_Lunge))
     if (!SkillTester(unit, SID_Lunge))
 #else

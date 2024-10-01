@@ -9,12 +9,42 @@
 #include "action-expa.h"
 
 #if defined(SID_Swarp) && (COMMON_SKILL_VALID(SID_Swarp))
+
+void ForEachUnitInMagBy2Range(void(*func)(struct Unit* unit));
+
+void TryAddUnitToSwarpTargetList(struct Unit* unit) {
+
+    if (!AreUnitsAllied(gSubjectUnit->index, unit->index)) {
+        return;
+    }
+
+// If the target unit has anchor they cannot be moved
+#if defined(SID_Anchor) && (COMMON_SKILL_VALID(SID_Anchor))
+    if (SkillTester(unit, SID_Anchor))
+        return;
+#endif
+
+    AddTarget(unit->xPos, unit->yPos, unit->index, 0);
+
+    return;
+}
+
+void MakeTargetListForSwarp(struct Unit* unit) {
+    gSubjectUnit = unit;
+
+    BmMapFill(gBmMapRange, 0);
+
+    ForEachUnitInMagBy2Range(TryAddUnitToSwarpTargetList);
+
+    return;
+}
+
 u8 Swarp_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
-    if (!HasSelectTarget(gActiveUnit, MakeTargetListForRescueStaff))
+    if (!HasSelectTarget(gActiveUnit, MakeTargetListForSwarp))
         return MENU_DISABLED;
 
     if (CheckBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED))
@@ -86,7 +116,7 @@ u8 Swarp_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
     ClearBg0Bg1();
 
-    MakeTargetListForRescueStaff(gActiveUnit);
+    MakeTargetListForSwarp(gActiveUnit);
     BmMapFill(gBmMapMovement, -1);
 
     StartSubtitleHelp(

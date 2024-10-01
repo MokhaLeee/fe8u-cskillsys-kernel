@@ -8,14 +8,43 @@
 #include "unit-expa.h"
 #include "action-expa.h"
 
-
 #if defined(SID_Swap) && (COMMON_SKILL_VALID(SID_Swap))
+
+void ForEachUnitInMagBy2Range(void(*func)(struct Unit* unit));
+
+void TryAddUnitToSwapTargetList(struct Unit* unit) {
+
+    if (!AreUnitsAllied(gSubjectUnit->index, unit->index)) {
+        return;
+    }
+
+// If the target unit has anchor they cannot be moved
+#if defined(SID_Anchor) && (COMMON_SKILL_VALID(SID_Anchor))
+    if (SkillTester(unit, SID_Anchor))
+        return;
+#endif
+
+    AddTarget(unit->xPos, unit->yPos, unit->index, 0);
+
+    return;
+}
+
+void MakeTargetListForSwap(struct Unit* unit) {
+    gSubjectUnit = unit;
+
+    BmMapFill(gBmMapRange, 0);
+
+    ForEachUnitInMagBy2Range(TryAddUnitToSwapTargetList);
+
+    return;
+}
+
 u8 Swap_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
-    if (!HasSelectTarget(gActiveUnit, MakeTargetListForWarp))
+    if (!HasSelectTarget(gActiveUnit, MakeTargetListForSwap))
         return MENU_DISABLED;
 
     if (CheckBitUES(gActiveUnit, UES_BIT_SWAP_SKILL_USED))
@@ -87,7 +116,7 @@ u8 Swap_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
     ClearBg0Bg1();
 
-    MakeTargetListForWarp(gActiveUnit);
+    MakeTargetListForSwap(gActiveUnit);
     BmMapFill(gBmMapMovement, -1);
 
     StartSubtitleHelp(

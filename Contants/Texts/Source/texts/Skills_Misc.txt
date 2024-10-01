@@ -1,4 +1,4 @@
-## MSG_SKILL_GentleFlower_NAME
+ ## MSG_SKILL_GentleFlower_NAME
 G-Flower[X]
 
 ## MSG_SKILL_GentleFlower
@@ -169,3 +169,8 @@ damage taken when poisoned.[X]
 Survivor:[NL]
 Boost max HP by +1 at[NL]
 the end of the chapter.[X]
+
+## MSG_SKILL_Anchor
+Anchor:[NL]
+Cannot be moved by the effects[NL]
+of other units movement skills.[X]

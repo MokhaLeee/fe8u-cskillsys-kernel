@@ -4,10 +4,11 @@
 
 const u16 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
-        SID_Survivor
+        SID_Swarp,
     },
 
     [CHARACTER_EPHRAIM] = {
+        SID_Anchor,
     },
 
     [CHARACTER_SALEH] = {
