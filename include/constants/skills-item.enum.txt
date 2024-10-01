@@ -599,6 +599,7 @@
 // SID_HazeHunter
 // SID_Insomnia
 // SID_Survivor
+// SID_Anchor
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

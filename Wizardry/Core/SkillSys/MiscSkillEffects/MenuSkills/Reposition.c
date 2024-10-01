@@ -165,6 +165,13 @@ void TryRepositionAllyToTargetList(struct Unit * unit)
     {
         return; // hidden unit here
     }
+
+// If the target unit has anchor they cannot be moved
+#if defined(SID_Anchor) && (COMMON_SKILL_VALID(SID_Anchor))
+    if (SkillTester(unit, SID_Anchor))
+        return;
+#endif
+
     if (CanUnitCrossTerrain(gSubjectUnit, gBmMapTerrain[dest.y][dest.x]))
     { // can we actually move there
         if (CanUnitCrossTerrain(unit, gBmMapTerrain[y1][x1]))
