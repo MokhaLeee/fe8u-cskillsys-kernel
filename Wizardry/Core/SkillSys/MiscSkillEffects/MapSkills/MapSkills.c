@@ -299,6 +299,12 @@ void ChapterChangeUnitCleanup(void)
         }
 #endif
 
+// Boost HP of unit by 1
+#if defined(SID_Survivor) && (COMMON_SKILL_VALID(SID_Survivor))
+        if (SkillTester(unit, SID_Survivor))
+            unit->maxHP += 1;
+#endif
+
         if (unit && unit->pCharacterData)
         {
             SetUnitHp(unit, GetUnitMaxHp(unit));

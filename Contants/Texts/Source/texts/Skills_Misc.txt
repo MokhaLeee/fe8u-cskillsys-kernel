@@ -164,3 +164,8 @@ bets and wins.[X]
 Poison Heal:[NL]
 Unit instead heals whatever[NL]
 damage taken when poisoned.[X]
+
+## MSG_SKILL_Survivor
+Survivor:[NL]
+Boost max HP by +1 at[NL]
+the end of the chapter.[X]
