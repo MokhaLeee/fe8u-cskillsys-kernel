@@ -7,6 +7,10 @@
 
 extern void ForEachAdjacentUnit(int x, int y, void (*)(struct Unit *));
 
+extern void GenerateFireTileTrapTargets(int x, int y, int damage);
+extern void GenerateArrowTrapTargets(int x, int y, int damage);
+extern void GenerateGasTrapTargets(int x, int y, int damage, int facing);
+
 //! FE8U: 0x080B1F64
 LYN_REPLACE_CHECK(SetGameOption);
 void SetGameOption(u8 index, u8 newValue)
@@ -463,7 +467,8 @@ void BeginUnitPoisonDamageAnim(struct Unit * unit, int damage)
 }
 
 LYN_REPLACE_CHECK(HasBattleUnitGainedWeaponLevel);
-s8 HasBattleUnitGainedWeaponLevel(struct BattleUnit* bu) {
+s8 HasBattleUnitGainedWeaponLevel(struct BattleUnit * bu)
+{
 
 #if (defined(SID_ShadowgiftPlus) && (COMMON_SKILL_VALID(SID_ShadowgiftPlus)))
     if (BattleSkillTester(bu, SID_ShadowgiftPlus))
@@ -584,4 +589,94 @@ s8 HasBattleUnitGainedWeaponLevel(struct BattleUnit* bu) {
         return FALSE;
 
     return GetWeaponLevelFromExp(oldWexp) != GetWeaponLevelFromExp(newWexp);
+}
+
+LYN_REPLACE_CHECK(GenerateFireTileTrapTargets);
+void GenerateFireTileTrapTargets(int x, int y, int damage)
+{
+    FORCE_DECLARE bool dontAddTarget = false;
+
+#if (defined(SID_Absolve) && (COMMON_SKILL_VALID(SID_Absolve)))
+    if (SkillTester(GetUnit(gBmMapUnit[y][x]), SID_Absolve))
+        dontAddTarget = true;
+#endif
+
+    if (!dontAddTarget)
+        AddTarget(x, y, gBmMapUnit[y][x], damage);
+}
+
+LYN_REPLACE_CHECK(GenerateArrowTrapTargets);
+void GenerateArrowTrapTargets(int x, int y, int damage)
+{
+    FORCE_DECLARE bool dontAddTarget = false;
+    int iy;
+
+    for (iy = 0; iy < gBmMapSize.y; ++iy)
+    {
+        if (gBmMapUnit[iy][x])
+        {
+#if (defined(SID_Absolve) && (COMMON_SKILL_VALID(SID_Absolve)))
+            if (SkillTester(GetUnit(gBmMapUnit[iy][x]), SID_Absolve))
+                dontAddTarget = true;
+#endif
+            if (!dontAddTarget)
+                AddTarget(x, iy, gBmMapUnit[iy][x], damage);
+        }
+    }
+}
+
+LYN_REPLACE_CHECK(GenerateGasTrapTargets);
+void GenerateGasTrapTargets(int x, int y, int damage, int facing)
+{
+    FORCE_DECLARE bool dontAddTarget = false;
+
+    int i;
+
+    int xInc = 0;
+    int yInc = 0;
+
+    switch (facing)
+    {
+
+        case FACING_UP:
+            xInc = 0;
+            yInc = -1;
+
+            break;
+
+        case FACING_DOWN:
+            xInc = 0;
+            yInc = +1;
+
+            break;
+
+        case FACING_LEFT:
+            xInc = -1;
+            yInc = 0;
+
+            break;
+
+        case FACING_RIGHT:
+            xInc = +1;
+            yInc = 0;
+
+            break;
+
+    } // switch (facing)
+
+    for (i = 2; i >= 0; --i)
+    {
+        x += xInc;
+        y += yInc;
+
+        if (gBmMapUnit[y][x])
+        {
+#if (defined(SID_Absolve) && (COMMON_SKILL_VALID(SID_Absolve)))
+            if (SkillTester(GetUnit(gBmMapUnit[y][x]), SID_Absolve))
+                dontAddTarget = true;
+#endif
+            if (!dontAddTarget)
+                AddTarget(x, y, gBmMapUnit[y][x], damage);
+        }
+    }
 }

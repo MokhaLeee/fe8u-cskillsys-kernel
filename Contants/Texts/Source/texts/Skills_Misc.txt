@@ -179,3 +179,8 @@ of other units movement skills.[X]
 Mercurious:[NL]
 Gives a 25% chance to double[NL]
 stat gains on level up.[X]
+
+## MSG_SKILL_Absolve
+Absolve:[NL]
+This unit is unaffected[NL]
+by traps and terrain.[X]
