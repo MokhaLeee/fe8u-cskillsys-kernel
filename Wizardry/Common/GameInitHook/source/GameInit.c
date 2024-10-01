@@ -14,7 +14,7 @@ void StartGame(void)
 	const GameInitHookFunc_t *it;
 	struct GameCtrlProc *proc;
 
-	SetMainUpdateRoutine(OnGameLoopMain);
+	SetMainUpdateRoutine(OnMain);
 
 	SetInterrupt_LCDVBlank(OnVBlank);
 
