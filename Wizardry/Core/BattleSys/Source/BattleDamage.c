@@ -456,6 +456,13 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 		gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CrusaderWard));
 #endif
 
+#if (defined(SID_ShieldPulse) && (COMMON_SKILL_VALID(SID_ShieldPulse)))
+	if (BattleSkillTesterFast(defender, SID_ShieldPulse) && gDmg.crit_atk) {
+		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_ShieldPulse);
+		gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_ShieldPulse));
+	}
+#endif
+
 	/**
 	 * Boolean check to prevent Barricade+ and Barricade from stacking
 	 */

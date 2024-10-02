@@ -133,6 +133,7 @@ SID_DragonWrath
 SID_BrashAssault
 SID_Scendscale
 SID_LawsOfSacae
+SID_ShieldPulse
 
 // Shop skills
 SID_Deal

@@ -1074,4 +1074,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_LawsOfSacae) && COMMON_SKILL_VALID(SID_LawsOfSacae))
 	[SID_LawsOfSacae] = {{ 4 }},
 #endif
+
+#if (defined(SID_ShieldPulse) && COMMON_SKILL_VALID(SID_ShieldPulse))
+	[SID_ShieldPulse] = {{ 50 }},
+#endif
 };

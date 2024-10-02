@@ -187,3 +187,8 @@ Halve the opponent's current HP.[NL]
 Sturdy:[NL]
 If the unit has full HP at the[NL]
 start of the fight, they cannot die.[X]
+
+## MSG_SKILL_ShieldPulse
+ShieldPulse:[NL]
+Reduce 50% damage on[NL]
+foe's critical attack[X]
