@@ -37,7 +37,7 @@
 // SID_Reposition
 // SID_Shove
 // SID_Smite
-SID_Entrepreneur
+// SID_Entrepreneur
 
 ////////// PRE-BATTLE SKILLS 
 // SID_DefiantStr
@@ -534,6 +534,7 @@ SID_Entrepreneur
 // SID_LimitBreakerPlus
 // SID_DarkHorse
 // SID_Mercurious
+// SID_Velocity
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk
