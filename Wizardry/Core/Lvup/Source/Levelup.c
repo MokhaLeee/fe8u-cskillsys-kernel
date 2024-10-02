@@ -155,6 +155,11 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
         for (u8 i = 0; i < ARRAY_COUNT(statChanges); i++)
             *statChanges[i] *= SKILL_EFF1(SID_Mercurious);
 #endif
+
+#if (defined(SID_Velocity) && (COMMON_SKILL_VALID(SID_Velocity)))
+    if (BattleSkillTester(bu, SID_Velocity) && Roll1RN(SKILL_EFF0(SID_Velocity)))
+        GetUnit(bu->unit.index)->movBonus += 1;
+#endif
 }
 
 static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)

@@ -184,3 +184,8 @@ stat gains on level up.[X]
 Absolve:[NL]
 This unit is unaffected[NL]
 by traps and terrain.[X]
+
+## MSG_SKILL_Velocity
+Velocity:[NL]
+Gives the unit a 5% chance[NL]
+of leveling MOV on level up.[X]
