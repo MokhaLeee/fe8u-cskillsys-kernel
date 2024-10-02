@@ -528,4 +528,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Entrepreneur) && COMMON_SKILL_VALID(SID_Entrepreneur))
+    [SID_Entrepreneur] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_EntrepreneurName,
+        .helpMsgId = MSG_SKILL_Entrepreneur,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Entrepreneur_Usability,
+        .onDraw = NULL,
+        .onSelected = Entrepreneur_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

@@ -382,3 +382,14 @@ dismount, and revert.[X]
 
 ## MSG_MenuSkill_DismountName
  Dismount[X]
+
+## MSG_MenuSkill_EntrepreneurName
+ Entrepreneur[X]
+
+## MSG_SKILL_Entrepreneur
+Entrepreneur:[NL]
+Unit moves with the preparation[NL]
+shop attached to them.[X]
+
+## MSG_MenuSkill_Entrepreneur_FRtext
+No allies are in range![X]
