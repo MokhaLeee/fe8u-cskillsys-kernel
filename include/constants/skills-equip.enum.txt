@@ -37,6 +37,7 @@
 // SID_Reposition
 // SID_Shove
 // SID_Smite
+SID_Entrepreneur
 
 ////////// PRE-BATTLE SKILLS 
 // SID_DefiantStr
@@ -533,7 +534,6 @@
 // SID_LimitBreakerPlus
 // SID_DarkHorse
 // SID_Mercurious
-// SID_Absolve
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk
@@ -601,7 +601,8 @@
 // SID_HazeHunter
 // SID_Insomnia
 // SID_Survivor
-SID_Anchor
+// SID_Anchor
+// SID_Absolve
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

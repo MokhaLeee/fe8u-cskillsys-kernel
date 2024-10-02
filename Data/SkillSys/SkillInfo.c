@@ -4354,4 +4354,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Entrepreneur) && COMMON_SKILL_VALID(SID_Entrepreneur))
+    [SID_Entrepreneur] = {
+        .desc = MSG_SKILL_Entrepreneur,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

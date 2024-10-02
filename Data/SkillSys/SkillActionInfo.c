@@ -122,4 +122,8 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Dismount) && COMMON_SKILL_VALID(SID_Dismount))
     [SID_Dismount] = Action_Dismount,
 #endif
+
+#if (defined(SID_Entrepreneur) && COMMON_SKILL_VALID(SID_Entrepreneur))
+    [SID_Entrepreneur] = Action_Entrepreneur,
+#endif
 };

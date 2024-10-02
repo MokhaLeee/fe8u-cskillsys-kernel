@@ -324,6 +324,8 @@ u8 Doppleganger_Usability(const struct MenuItemDef * def, int number);
 u8 Doppleganger_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 Dismount_Usability(const struct MenuItemDef * def, int number);
 u8 Dismount_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 Entrepreneur_Usability(const struct MenuItemDef * def, int number);
+u8 Entrepreneur_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -349,3 +351,4 @@ bool Action_Sacrifice(ProcPtr parent);
 bool Action_Capture(ProcPtr parent);
 bool Action_Doppleganger(ProcPtr parent);
 bool Action_Dismount(ProcPtr parent);
+bool Action_Entrepreneur(ProcPtr parent);
