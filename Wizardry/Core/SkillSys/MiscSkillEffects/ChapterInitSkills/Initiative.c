@@ -5,7 +5,7 @@
 
 static void _SetInitiativeStatDebuf(struct Unit *unit)
 {
-#if (defined(SID_InitSturdy) && COMMON_SKILL_VALID(SID_InitSturdy))
+#if (defined(SID_InitStrong) && COMMON_SKILL_VALID(SID_InitStrong))
 	if (SkillTester(unit, SID_InitStrong))
 		SetUnitStatDebuff(unit, UNIT_STAT_BUFF_INIT_POW);
 #endif
@@ -25,8 +25,8 @@ static void _SetInitiativeStatDebuf(struct Unit *unit)
 		SetUnitStatDebuff(unit, UNIT_STAT_BUFF_INIT_SPD);
 #endif
 
-#if (defined(SID_InitDeft) && COMMON_SKILL_VALID(SID_InitDeft))
-	if (SkillTester(unit, SID_InitDeft))
+#if (defined(SID_InitLucky) && COMMON_SKILL_VALID(SID_InitLucky))
+	if (SkillTester(unit, SID_InitLucky))
 		SetUnitStatDebuff(unit, UNIT_STAT_BUFF_INIT_LCK);
 #endif
 
