@@ -37,7 +37,7 @@
 // SID_Reposition
 // SID_Shove
 // SID_Smite
-// SID_Entrepreneur
+SID_Entrepreneur
 
 ////////// PRE-BATTLE SKILLS 
 // SID_DefiantStr
@@ -361,6 +361,7 @@
 // SID_Moody
 // SID_ArenaTrap
 // SID_LuckySeven
+SID_Unaware
 
 ////////// WEAPON TRIANGLE ADVANTAGE SKILLS 
 // SID_SwordBreaker
@@ -484,7 +485,7 @@
 // SID_InitClever
 // SID_InitDeft
 // SID_InitQuick
-// SID_InitSturdy
+SID_InitSturdy
 // SID_InitCalm
 // SID_InitLucky
 // SID_InitNimble

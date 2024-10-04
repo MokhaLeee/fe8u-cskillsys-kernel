@@ -361,6 +361,7 @@
 // SID_Moody
 // SID_ArenaTrap
 // SID_LuckySeven
+// SID_Unaware
 
 ////////// WEAPON TRIANGLE ADVANTAGE SKILLS 
 // SID_SwordBreaker

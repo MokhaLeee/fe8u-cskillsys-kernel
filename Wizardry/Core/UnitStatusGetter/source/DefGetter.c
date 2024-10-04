@@ -8,6 +8,13 @@ int _GetUnitDefense(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->def;
 
+#if defined(SID_Unaware) && (COMMON_SKILL_VALID(SID_Unaware))
+    if (unit == GetUnit(gBattleActor.unit.index) && GetUnit(gBattleTarget.unit.index) && SkillTester(GetUnit(gBattleTarget.unit.index), SID_Unaware))
+        return status;
+    else if (unit == GetUnit(gBattleTarget.unit.index) && GetUnit(gBattleActor.unit.index) && SkillTester(GetUnit(gBattleActor.unit.index), SID_Unaware))
+        return status;
+#endif
+
     for (it = gpDefGetters; *it; it++)
         status = (*it)(status, unit);
 
@@ -107,22 +114,24 @@ int DefGetterSkills(int status, struct Unit * unit)
     return status;
 }
 
-int DefPsychUpCheck(int status, struct Unit *unit)
+int DefPsychUpCheck(int status, struct Unit * unit)
 {
-   FORCE_DECLARE int stolen_status = 0;
+    FORCE_DECLARE int stolen_status = 0;
 
 #if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
     if (unit == GetUnit(gBattleActor.unit.index) && SkillTester(unit, SID_PsychUp))
     {
-        stolen_status = DefGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) + DefGetterSkills(0, GetUnit(gBattleTarget.unit.index));
+        stolen_status = DefGetterWeaponBonus(0, GetUnit(gBattleTarget.unit.index)) +
+            DefGetterSkills(0, GetUnit(gBattleTarget.unit.index));
         return status + stolen_status;
     }
     else if (unit == GetUnit(gBattleTarget.unit.index) && SkillTester(unit, SID_PsychUp))
     {
-        stolen_status = DefGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) + DefGetterSkills(0, GetUnit(gBattleActor.unit.index));
+        stolen_status = DefGetterWeaponBonus(0, GetUnit(gBattleActor.unit.index)) +
+            DefGetterSkills(0, GetUnit(gBattleActor.unit.index));
         return status + stolen_status;
     }
-#endif    
+#endif
 
     return status;
 }

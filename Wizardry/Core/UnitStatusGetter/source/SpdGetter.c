@@ -16,6 +16,13 @@ int _GetUnitSpeed(struct Unit * unit)
     status = unit->spd / 2;
 #endif
 
+#if defined(SID_Unaware) && (COMMON_SKILL_VALID(SID_Unaware))
+    if (unit == GetUnit(gBattleActor.unit.index) && GetUnit(gBattleTarget.unit.index) && SkillTester(GetUnit(gBattleTarget.unit.index), SID_Unaware))
+        return status;
+    else if (unit == GetUnit(gBattleTarget.unit.index) && GetUnit(gBattleActor.unit.index) && SkillTester(GetUnit(gBattleActor.unit.index), SID_Unaware))
+        return status;
+#endif
+
     for (it = gpSpdGetters; *it; it++)
         status = (*it)(status, unit);
 
