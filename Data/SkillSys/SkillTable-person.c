@@ -4,6 +4,8 @@
 
 const u16 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
+        SID_Unaware,
+        SID_Entrepreneur,
     },
 
     [CHARACTER_EPHRAIM] = {
@@ -28,6 +30,7 @@ const u16 gConstSkillTable_Person[0x100][2] = {
     },
 
     [CHARACTER_LYON] = {
+        SID_InitSturdy,
     },
 
     [CHARACTER_SETH] = {

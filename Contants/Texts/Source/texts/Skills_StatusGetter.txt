@@ -511,3 +511,8 @@ Reduce enemy's DEF/RES by 25%.[X]
 ## MSG_SKILL_RiskItAll
 Risk It All:[NL]
 Both sides have 100% crit.[X]
+
+## MSG_SKILL_Unaware
+Unaware:[NL]
+Ignore the enemy's[NL]
+stat boosts.[X]

@@ -16,6 +16,7 @@ u16 CONST_DATA gDefaultShopInventory[] = {
 
 u8 Entrepreneur_Usability(const struct MenuItemDef * def, int number)
 {
+    // NoCashGBAPrint("Checking the entrepreneur usability");
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
@@ -23,17 +24,24 @@ u8 Entrepreneur_Usability(const struct MenuItemDef * def, int number)
         return MENU_NOTSHOWN;
 
     if (SkillTester(gActiveUnit, SID_Entrepreneur))
+    {
+        // NoCashGBAPrint("Active unit has entrepreneur");
         return MENU_ENABLED;
+    }
 
     for (int i = 0; i < ARRAY_COUNT_RANGE1x1; i++)
     {
+        // NoCashGBAPrint("Checking units in range");
         struct Unit * unit = GetUnitAtPosition(gActiveUnit->xPos + gVecs_1x1[i].x, gActiveUnit->yPos + gVecs_1x1[i].y);
 
         if (!UNIT_IS_VALID(unit) || !AreUnitsAllied(gActiveUnit->index, unit->index))
             continue;
 
         if (SkillTester(unit, SID_Entrepreneur))
+        {
+            // NoCashGBAPrint("A unit in range has the entrepreneur skill");
             return MENU_ENABLED;
+        }
     }
 
     return MENU_NOTSHOWN;
