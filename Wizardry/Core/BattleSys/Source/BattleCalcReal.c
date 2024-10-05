@@ -178,7 +178,7 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #if (defined(SID_Adaptable) && (COMMON_SKILL_VALID(SID_Adaptable)))
     if (BattleSkillTester(defender, SID_Adaptable) && defender == &gBattleTarget)
     {
-        u8 weapon_counters[] = { 0, 0, 0, 0, 0 };
+        u8 weapon_score[] = { 0, 0, 0, 0, 0 };
         u8 weapon_attack_values[] = { 0, 0, 0, 0, 0 };
         int weapon_strongest_position = 0;
         int weapon_strongest_details = 0;
@@ -192,20 +192,26 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
                 GetItemMaxRangeRework(unit_defender->items[i], unit_defender) < gBattleStats.range)
                 continue;
 
-            if (isWeaponTriangleAdvantage(GetItemType(unit_defender->items[i]), GetItemType(unit_attacker->items[i])))
-                weapon_counters[i] += 4;
+            if (isWeaponTriangleAdvantage(GetItemType(unit_defender->items[i]), GetItemType(GetUnitEquippedWeapon(unit_attacker))))
+                weapon_score[i] += 4;
             if (IsItemEffectiveAgainst(unit_defender->items[i], unit_attacker))
-                weapon_counters[i] += 2;
+                weapon_score[i] += 3;
             if (weaponHasSpecialEffect(GetItemAttributes(unit_defender->items[i])))
-                weapon_counters[i] += 2;
+                weapon_score[i] += 2;
 
             weapon_attack_values[i] = GetItemMight(unit_defender->items[i]);
         }
 
-        weapon_counters[findMax(weapon_attack_values, 5)] += 1;
+        weapon_score[findMax(weapon_attack_values, 5)] += 1;
 
-        weapon_strongest_position = findMax(weapon_counters, 5);
+        weapon_strongest_position = findMax(weapon_score, 5);
         weapon_strongest_details = unit_defender->items[weapon_strongest_position];
+
+        // NoCashGBAPrintf("Weapon Score 1 is: %d", weapon_score[0]);
+        // NoCashGBAPrintf("Weapon Score 2 is: %d", weapon_score[1]);
+        // NoCashGBAPrintf("Weapon Score 3 is: %d", weapon_score[2]);
+        // NoCashGBAPrintf("Weapon Score 4 is: %d", weapon_score[3]);
+        // NoCashGBAPrintf("Weapon Score 5 is: %d", weapon_score[4]);
 
         if (weapon_strongest_position != 0)
         {

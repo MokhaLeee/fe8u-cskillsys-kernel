@@ -200,7 +200,7 @@ SID_Entrepreneur
 // SID_Vanity
 // SID_ShortShield
 // SID_AvoidSword
-SID_Adaptable
+// SID_Adaptable
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto
