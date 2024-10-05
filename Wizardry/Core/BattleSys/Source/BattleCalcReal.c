@@ -7,8 +7,11 @@
 #include "kernel-tutorial.h"
 #include "constants/combat-arts.h"
 #include "constants/skills.h"
+#include "weapon-range.h"
 
-STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
+#include "custom-functions.h"
+
+STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     /**
      * Here we need to put some calculation at the end of the pre-battle calc.
@@ -19,13 +22,13 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *at
     {
         switch (GetCombatArtInForce(&attacker->unit))
         {
-        case CID_Gamble:
-            attacker->battleCritRate = attacker->battleCritRate * 2;
-            attacker->battleHitRate = attacker->battleHitRate / 2;
-            break;
+            case CID_Gamble:
+                attacker->battleCritRate = attacker->battleCritRate * 2;
+                attacker->battleHitRate = attacker->battleHitRate / 2;
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
     }
 
@@ -86,19 +89,19 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *at
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSpecialWeaponStats);
-void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit *attacker, struct BattleUnit *defender)
+void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     if (attacker->weaponAttributes & IA_MAGICDAMAGE)
     {
         switch (GetItemIndex(attacker->weapon))
         {
-        case ITEM_SWORD_LIGHTBRAND:
-        case ITEM_SWORD_RUNESWORD:
-        case ITEM_SWORD_WINDSWORD:
-            attacker->battleAttack -= UNIT_MAG(&attacker->unit) / 2;
-            attacker->battleCritRate = 0;
-            attacker->battleEffectiveCritRate = 0;
-            break;
+            case ITEM_SWORD_LIGHTBRAND:
+            case ITEM_SWORD_RUNESWORD:
+            case ITEM_SWORD_WINDSWORD:
+                attacker->battleAttack -= UNIT_MAG(&attacker->unit) / 2;
+                attacker->battleCritRate = 0;
+                attacker->battleEffectiveCritRate = 0;
+                break;
         }
     }
     else
@@ -119,7 +122,8 @@ void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit *attacker, struct Bat
             defender->battleDefense = 0;
 
 #ifdef CHAX
-        if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_PETRIFY || GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_13)
+        if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_PETRIFY ||
+            GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_13)
 #else
         if (defender->unit.statusIndex == UNIT_STATUS_PETRIFY || defender->unit.statusIndex == UNIT_STATUS_13)
 #endif
@@ -133,7 +137,7 @@ void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit *attacker, struct Bat
     }
 }
 
-STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
+STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if (defined(SID_Hawkeye) && (COMMON_SKILL_VALID(SID_Hawkeye)))
     if (BattleSkillTester(attacker, SID_Hawkeye))
@@ -170,32 +174,77 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit *attacker, stru
     if (BattleSkillTester(attacker, SID_RiskItAll) || BattleSkillTester(defender, SID_RiskItAll))
         attacker->battleEffectiveCritRate = SKILL_EFF0(SID_RiskItAll);
 #endif
+
+#if (defined(SID_Adaptable) && (COMMON_SKILL_VALID(SID_Adaptable)))
+    if (BattleSkillTester(defender, SID_Adaptable) && defender == &gBattleTarget)
+    {
+        u8 weapon_score[] = { 0, 0, 0, 0, 0 };
+        u8 weapon_attack_values[] = { 0, 0, 0, 0, 0 };
+        int weapon_strongest_position = 0;
+        int weapon_strongest_details = 0;
+        struct Unit * unit_attacker = GetUnit(attacker->unit.index);
+        struct Unit * unit_defender = GetUnit(defender->unit.index);
+
+        for (int i = 0; i < GetUnitItemCount(unit_defender); i++)
+        {
+            // Weapon range falls outside the combat range, so move on to the next item
+            if (GetItemMinRangeRework(unit_defender->items[i], unit_defender) > gBattleStats.range ||
+                GetItemMaxRangeRework(unit_defender->items[i], unit_defender) < gBattleStats.range)
+                continue;
+
+            if (isWeaponTriangleAdvantage(GetItemType(unit_defender->items[i]), GetItemType(GetUnitEquippedWeapon(unit_attacker))))
+                weapon_score[i] += 4;
+            if (IsItemEffectiveAgainst(unit_defender->items[i], unit_attacker))
+                weapon_score[i] += 3;
+            if (weaponHasSpecialEffect(GetItemAttributes(unit_defender->items[i])))
+                weapon_score[i] += 2;
+
+            weapon_attack_values[i] = GetItemMight(unit_defender->items[i]);
+        }
+
+        weapon_score[findMax(weapon_attack_values, 5)] += 1;
+
+        weapon_strongest_position = findMax(weapon_score, 5);
+        weapon_strongest_details = unit_defender->items[weapon_strongest_position];
+
+        // NoCashGBAPrintf("Weapon Score 1 is: %d", weapon_score[0]);
+        // NoCashGBAPrintf("Weapon Score 2 is: %d", weapon_score[1]);
+        // NoCashGBAPrintf("Weapon Score 3 is: %d", weapon_score[2]);
+        // NoCashGBAPrintf("Weapon Score 4 is: %d", weapon_score[3]);
+        // NoCashGBAPrintf("Weapon Score 5 is: %d", weapon_score[4]);
+
+        if (weapon_strongest_position != 0)
+        {
+            // Put the currently equipped weapon in the place of the strongest weapon
+            unit_defender->items[weapon_strongest_position] = unit_defender->items[0];
+            // Now equip the strongest weapon
+            unit_defender->items[0] = weapon_strongest_details;
+        }
+    }
+#endif
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSilencerRate);
-void ComputeBattleUnitSilencerRate(struct BattleUnit *attacker, struct BattleUnit *defender)
+void ComputeBattleUnitSilencerRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     return;
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveHitRate);
-void ComputeBattleUnitEffectiveHitRate(struct BattleUnit *attacker, struct BattleUnit *defender)
+void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
 
     /* For non-ballista combat, Distance +2, hit rate -20% for actor */
     if (gpKernelDesigerConfig->hit_decrease_on_range && gBattleStats.range > 2 && attacker == &gBattleActor)
     {
-        if
-        (
+        if (
 #if defined(SID_MagicEye) && (COMMON_SKILL_VALID(SID_MagicEye))
             !BattleSkillTester(attacker, SID_MagicEye)
 #else
             1
 #endif
-            &&
-            !(gBattleStats.config & BATTLE_CONFIG_BALLISTA)
-        )
+            && !(gBattleStats.config & BATTLE_CONFIG_BALLISTA))
         {
             attacker->battleEffectiveHitRate -= Div(gBattleStats.range, 2) * 20;
 
@@ -220,7 +269,7 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit *attacker, struct Battl
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitEffectiveStats);
-void ComputeBattleUnitEffectiveStats(struct BattleUnit *attacker, struct BattleUnit *defender)
+void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
 #if CHAX
     BattleCalcReal_ModifyBattleStatusSkills(attacker, defender);

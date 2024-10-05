@@ -212,3 +212,8 @@ Tri-Atk[X]
 Triangle Attack: Two other units with[NL]
 this skill adjacent to an enemy can[NL]
 perform a triangle attack.[X]
+
+## MSG_SKILL_AngerPoint
+Anger Point:[NL]
+Gai +10 attack for the phase[NL]
+if you've taken a critical hit.[X]

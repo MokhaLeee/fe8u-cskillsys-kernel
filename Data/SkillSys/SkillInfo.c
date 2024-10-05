@@ -4375,4 +4375,18 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_AngerPoint) && COMMON_SKILL_VALID(SID_AngerPoint))
+    [SID_AngerPoint] = {
+        .desc = MSG_SKILL_AngerPoint,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Adaptable) && COMMON_SKILL_VALID(SID_Adaptable))
+    [SID_Adaptable] = {
+        .desc = MSG_SKILL_Adaptable,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

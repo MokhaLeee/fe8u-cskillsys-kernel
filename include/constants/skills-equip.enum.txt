@@ -200,6 +200,7 @@ SID_Entrepreneur
 // SID_Vanity
 // SID_ShortShield
 // SID_AvoidSword
+// SID_Adaptable
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto
@@ -361,7 +362,7 @@ SID_Entrepreneur
 // SID_Moody
 // SID_ArenaTrap
 // SID_LuckySeven
-SID_Unaware
+// SID_Unaware
 
 ////////// WEAPON TRIANGLE ADVANTAGE SKILLS 
 // SID_SwordBreaker
@@ -437,6 +438,7 @@ SID_Unaware
 // SID_Discipline
 // SID_Dazzle
 // SID_DancingBlade
+SID_AngerPoint
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful
