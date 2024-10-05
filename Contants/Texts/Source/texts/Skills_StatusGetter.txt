@@ -516,3 +516,8 @@ Both sides have 100% crit.[X]
 Unaware:[NL]
 Ignore the enemy's[NL]
 stat boosts.[X]
+
+## MSG_SKILL_Adaptable
+Adaptable: Equip the unit's strongest[NL]
+weapon taking into account range,[NL]
+WTA, abilities, and weapon might.[X]

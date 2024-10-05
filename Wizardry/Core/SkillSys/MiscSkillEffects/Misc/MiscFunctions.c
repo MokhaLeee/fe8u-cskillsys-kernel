@@ -680,3 +680,54 @@ void GenerateGasTrapTargets(int x, int y, int damage, int facing)
         }
     }
 }
+
+bool isWeaponTriangleAdvantage(int attackerWeapon, int defenderWeapon)
+{
+    if (attackerWeapon == ITYPE_SWORD && defenderWeapon == ITYPE_AXE)
+        return true;
+    if (attackerWeapon == ITYPE_LANCE && defenderWeapon == ITYPE_SWORD)
+        return true;
+    if (attackerWeapon == ITYPE_AXE && defenderWeapon == ITYPE_LANCE)
+        return true;
+    if (attackerWeapon == ITYPE_ANIMA && defenderWeapon == ITYPE_LIGHT)
+        return true;
+    if (attackerWeapon == ITYPE_LIGHT && defenderWeapon == ITYPE_DARK)
+        return true;
+    if (attackerWeapon == ITYPE_DARK && defenderWeapon == ITYPE_ANIMA)
+        return true;
+
+    return false;
+}
+
+bool weaponHasSpecialEffect(int weaponAttributes)
+{
+    if (weaponAttributes & IA_NEGATE_DEFENSE)
+        return true;
+    if (weaponAttributes & IA_NEGATE_CRIT)
+        return true;
+    if (weaponAttributes & IA_NEGATE_FLYING)
+        return true;
+    if (weaponAttributes & IA_REVERTTRIANGLE)
+        return true;
+    if (weaponAttributes & IA_UNCOUNTERABLE)
+        return true;
+    if (weaponAttributes & IA_BRAVE)
+        return true;
+    if (weaponAttributes & IA_UNBREAKABLE)
+        return true;
+    
+    return false;
+}
+
+int findMax(u8 *array, int size) {
+    u8 max = 0;
+    FORCE_DECLARE u8 array_position = 0;
+
+    for (int i = 0; i < size - 1; i++) {
+        if (array[i] > max) {
+            max = array[i];
+            array_position = i;
+        }
+    }
+    return array_position;
+}
