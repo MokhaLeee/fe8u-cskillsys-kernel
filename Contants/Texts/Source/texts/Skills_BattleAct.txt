@@ -217,3 +217,8 @@ perform a triangle attack.[X]
 Anger Point:[NL]
 Gai +10 attack for the phase[NL]
 if you've taken a critical hit.[X]
+
+## MSG_SKILL_Debilitator
+Debilitator:[NL]
+If this unit deals no damage,[NL]
+-4 to all enemy's stats this turn.[X]

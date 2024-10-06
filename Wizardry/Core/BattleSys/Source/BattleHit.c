@@ -211,6 +211,11 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
             TriggerKtutorial(KTUTORIAL_REAL_DAMAGE);
     }
 
+#if defined(SID_Debilitator) && (COMMON_SKILL_VALID(SID_Debilitator))
+    if (BattleSkillTester(attacker, SID_Debilitator) && gBattleStats.damage == 0 && !gBattleActorGlobalFlag.skill_activated_debilitator)
+        gBattleActorGlobalFlag.skill_activated_debilitator = true;
+#endif
+
     BattleCheckPetrify(attacker, defender);
 
     if (gBattleStats.damage != 0)
