@@ -165,6 +165,14 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
     }
 #endif
 
+#if (defined(SID_Mantle) && (COMMON_SKILL_VALID(SID_Mantle)))
+    if (BattleSkillTester(defender, SID_Mantle))
+    {
+        if (GetItemIndex(attacker->weapon) != ITEM_AXE_IRON)
+            attacker->battleAttack = 0;
+    }
+#endif
+
 #if (defined(SID_NoGuard) && (COMMON_SKILL_VALID(SID_NoGuard)))
     if (BattleSkillTester(attacker, SID_NoGuard) || BattleSkillTester(defender, SID_NoGuard))
         attacker->battleEffectiveHitRate = 100;

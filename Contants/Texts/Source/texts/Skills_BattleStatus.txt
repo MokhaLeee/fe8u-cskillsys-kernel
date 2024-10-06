@@ -1079,3 +1079,8 @@ stat it targets each turn.[X]
 Fluffy:[NL]
 Halve damage taken by melee[NL]
 attacks, double damage at range.[X]
+
+## MSG_SKILL_Mantle
+Mantle:[NL]
+Cannot taken damage except[NL]
+from selected weaponry.[X]
