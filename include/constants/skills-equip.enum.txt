@@ -438,7 +438,8 @@ SID_Entrepreneur
 // SID_Discipline
 // SID_Dazzle
 // SID_DancingBlade
-SID_AngerPoint
+// SID_AngerPoint
+// SID_Debilitator
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful

@@ -428,6 +428,20 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
         },
     },
 
+    [UNIT_STAT_DEBUFF_DEBILITATOR] = {
+        .positive_type = STATUS_DEBUFF_NEGATIVE,
+        .tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
+        .unit_status = {
+            .pow = -4,
+            .mag = -4,
+            .skl = -4,
+            .spd = -4,
+            .lck = -4,
+            .def = -4,
+            .res = -4,
+        },
+    },
+
     [UNIT_STAT_BUFF_PLUSMINUS] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,

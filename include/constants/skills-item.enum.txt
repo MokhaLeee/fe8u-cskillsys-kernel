@@ -200,7 +200,6 @@
 // SID_Vanity
 // SID_ShortShield
 // SID_AvoidSword
-// SID_Adaptable
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto
@@ -439,6 +438,8 @@
 // SID_Dazzle
 // SID_DancingBlade
 // SID_AngerPoint
+// SID_Adaptable
+// SID_Debilitator
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful
