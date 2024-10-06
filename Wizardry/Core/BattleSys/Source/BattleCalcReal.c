@@ -168,7 +168,6 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
 #if (defined(SID_Mantle) && (COMMON_SKILL_VALID(SID_Mantle)))
     if (BattleSkillTester(defender, SID_Mantle))
     {
-        NoCashGBAPrintf("Weapon ID is: %d", GetUnitEquippedWeapon(GetUnit(attacker->unit.index)));
         if (GetItemIndex(attacker->weapon) != ITEM_AXE_IRON)
             attacker->battleAttack = 0;
     }

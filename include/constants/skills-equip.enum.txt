@@ -201,7 +201,7 @@ SID_Entrepreneur
 // SID_ShortShield
 // SID_AvoidSword
 // SID_Adaptable
-SID_Mantle
+// SID_Mantle
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto
