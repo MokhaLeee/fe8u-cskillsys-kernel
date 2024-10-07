@@ -9,6 +9,7 @@
 
 /* Add an identifier so that we can figure out where we hacked inside C */
 #define CHAX 1
+#define BUGFIX 1
 
 /* Set static declaration as a macro for debug purpose */
 #ifdef CONFIG_USE_DEBUG

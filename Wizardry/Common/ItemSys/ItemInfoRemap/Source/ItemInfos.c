@@ -187,3 +187,41 @@ u16 GetItemAfterUse(int item)
 
 	return item;
 }
+
+LYN_REPLACE_CHECK(StartShopScreen);
+void StartShopScreen(struct Unit *unit, const u16 *inventory, u8 shopType, ProcPtr parent)
+{
+	struct ProcShop *proc;
+	const u16 * shopItems;
+	int i;
+
+	EndPlayerPhaseSideWindows();
+
+	if (parent)
+		proc = Proc_StartBlocking(gProcScr_Shop, parent);
+	else
+		proc = Proc_Start(gProcScr_Shop, PROC_TREE_3);
+
+	proc->shopType = shopType;
+	proc->unit = unit;
+
+	shopItems = gDefaultShopInventory;
+	if (inventory != 0)
+		shopItems = inventory;
+
+#if CHAX
+	for (i = 0; i < SHOP_ITEMS_MAX_AMT; i++) {
+		u16 _item = *shopItems++;
+
+		if (IsDuraItem(_item))
+			proc->shopItems[i] = _item;
+		else
+			proc->shopItems[i] = MakeNewItem(_item);
+	}
+#else
+	for (i = 0; i <= SHOP_ITEMS_MAX_AMT; i++)
+		proc->shopItems[i] = MakeNewItem(*shopItems++);
+#endif
+
+	UpdateShopItemCounts(proc);
+}
