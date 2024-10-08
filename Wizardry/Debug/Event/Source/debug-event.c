@@ -466,6 +466,12 @@ static const EventScr EventScr_Beginning[] = {
     ENDA
 };
 
+static const u16 ShopList_Event_SkillsShop[] = {
+    (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    (SID_Galeforce << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+    (SID_Vantage << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL,
+};
+
 static const EventScr EventScr_Ending[] = {
     MNC2(1)
     ENDA
@@ -491,6 +497,7 @@ static const EventListScr EventListScr_Character[] = {
 };
 
 static const EventListScr EventListScr_Location[] = {
+    Vendor(ShopList_Event_SkillsShop, 12, 26)
     END_MAIN
 };
 
