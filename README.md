@@ -53,6 +53,7 @@ cd Tools
 git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git
 git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix
 git clone https://github.com/StanHash/FE-PyTools.git --recursive
+git clone https://github.com/MokhaLeee/check_patch.git
 ```
 
 2. Install dependencies
@@ -107,13 +108,6 @@ cd Tools/EventAssembler
 5. Install code review tools
 
 ```bash
-cd Tools/scripts/
-
-wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl
-wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/const_structs.checkpatch
-wget https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt
-
-cd ../../
 cp Tools/scripts/pre-commit .git/hooks/
 ```
 

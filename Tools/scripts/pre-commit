@@ -7,13 +7,18 @@ if [ -z "$CHECK_FILES" ]; then
     exit 0
 fi
 
+ret=0
 
 for file in $CHECK_FILES; do
-    perl ./Tools/scripts/checkpatch.pl --no-tree --file "$file"
+    perl ./Tools/check_patch/checkpatch.pl --no-tree --file "$file"
     if [ $? -ne 0 ]; then
         echo "Code style issues found in $file."
-        # exit 1
+        ret=1
     fi
 done
 
-echo "Code style check done"
+if [ $ret -ne 0 ]; then
+    echo "pre-commit check error!"
+fi
+
+# exit $ret
