@@ -1,5 +1,8 @@
 #include "common-chax.h"
 #include "item-sys.h"
+#include "skill-system.h"
+#include "constants/skills.h"
+#include "constants/texts.h"
 
 LYN_REPLACE_CHECK(GetItemNameWithArticle);
 char * GetItemNameWithArticle(int item, s8 capitalize)
@@ -190,4 +193,53 @@ u16 GetItemAfterUse(int item)
         return 0;
 
     return item;
+}
+
+/*
+** This line may complain about the same function being hooked in Vesly's debugger
+** but as far as I can tell, the debugger doesn't use the shop, so it's fine.
+*/
+LYN_REPLACE_CHECK(StartShopScreen);
+void StartShopScreen(struct Unit * unit, const u16 * inventory, u8 shopType, ProcPtr parent)
+{
+    struct ProcShop * proc;
+    const u16 * shopItems;
+    int i;
+
+    EndPlayerPhaseSideWindows();
+
+    if (parent)
+        proc = Proc_StartBlocking(gProcScr_Shop, parent);
+    else
+        proc = Proc_Start(gProcScr_Shop, PROC_TREE_3);
+
+    proc->shopType = shopType;
+    proc->unit = unit;
+
+    shopItems = gDefaultShopInventory;
+    
+    /*
+    ** If the custom inventory passed in as a parameter isn't 0,
+    ** then set shopItems to that inventory array
+    */
+    if (inventory != 0)
+        shopItems = inventory;
+
+#if CHAX
+    for (i = 0; i < SHOP_ITEMS_MAX_AMT; i++)
+    {
+        u16 _item = *shopItems++;
+
+        // Check if it's a skill scroll
+        if (IsDuraItem(_item))
+            proc->shopItems[i] = _item;
+        else
+            proc->shopItems[i] = MakeNewItem(_item);
+    }
+#else
+    for (i = 0; i <= SHOP_ITEMS_MAX_AMT; i++)
+        proc->shopItems[i] = MakeNewItem(*shopItems++);
+#endif
+
+    UpdateShopItemCounts(proc);
 }

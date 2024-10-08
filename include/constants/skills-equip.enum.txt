@@ -206,7 +206,7 @@ SID_Entrepreneur
 ////////// POST-BATTLE SKILLS
 // SID_Canto
 // SID_CantoPlus
-// SID_Galeforce
+SID_Galeforce
 // SID_AlertStance
 // SID_AlertStancePlus
 // SID_SavageBlow
@@ -313,7 +313,7 @@ SID_Entrepreneur
 // SID_PushLuck
 // SID_PushSpectrum
 // SID_PushMovement
-// SID_Fury
+SID_Fury
 // SID_FuryPlus
 // SID_FortressDef
 // SID_FortressRes
@@ -448,7 +448,7 @@ SID_Entrepreneur
 // SID_Skybreaker
 
 ////////// BATTLE ORDER SKILLS
-// SID_Vantage
+SID_Vantage
 // SID_Desperation
 // SID_QuickRiposte
 // SID_WaryFighter

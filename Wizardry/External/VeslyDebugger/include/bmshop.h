@@ -142,3 +142,31 @@ extern struct ProcCmd CONST_DATA gProcScr_Shop[];
 extern struct ProcCmd CONST_DATA gProcScr_GoldBox[];
 
 #endif  // GUARD_BMSHOP_H
+
+extern u16 CONST_DATA gDefaultShopInventory[];
+
+enum { SHOP_ITEMS_MAX_AMT = 20 };
+
+
+struct ProcShop {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct Unit* unit;
+    /* 30 */ u16 shopItems[20];
+
+    /* 58 */ u16 unk_58;
+
+    /* 5A */ u8 shopItemCount;
+    /* 5B */ u8 unitItemCount;
+    /* 5C */ u8 head_loc;
+    /* 5D */ u8 hand_loc;
+    /* 5E */ u8 head_idx;
+    /* 5F */ u8 hand_idx; // maybe top visible item in menu?
+    /* 60 */ u8 buy_or_sel;
+    /* 61 */ u8 shopType;
+    /* 62 */ u8 helpTextActive;
+
+    /* 64 */ s16 goldbox_x;
+    /* 66 */ s16 goldbox_y;
+    /* 68 */ s16 goldbox_oam2;
+};
