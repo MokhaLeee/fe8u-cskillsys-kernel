@@ -59,7 +59,7 @@ bool PostActionSkillSavageBlow(ProcPtr parent)
 	FORCE_DECLARE struct Unit *unit = gActiveUnit;
 	FORCE_DECLARE struct Unit *target = GetUnit(gActionData.targetIndex);
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UNIT_IS_VALID(unit))
 		return false;
 
 #if defined(SID_SavageBlow) && (COMMON_SKILL_VALID(SID_SavageBlow))
@@ -67,6 +67,9 @@ bool PostActionSkillSavageBlow(ProcPtr parent)
 #else
 	if (1)
 #endif
+		return false;
+
+	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	Proc_StartBlocking(ProcScr_PostActionSkillSavageBlow, parent);

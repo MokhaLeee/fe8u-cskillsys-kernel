@@ -70,10 +70,7 @@ LABEL(99)
 
 bool PostActionPositionReturn(ProcPtr proc)
 {
-	if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
-		return false;
-
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UNIT_IS_VALID(gActiveUnit))
 		return false;
 
 #if defined(SID_PosReturn) && (COMMON_SKILL_VALID(SID_PosReturn))
@@ -81,6 +78,12 @@ bool PostActionPositionReturn(ProcPtr proc)
 #else
 	if (1)
 #endif
+		return false;
+
+	if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
+		return false;
+
+	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	if (gBattleActorGlobalFlag.enimy_defeated == false)

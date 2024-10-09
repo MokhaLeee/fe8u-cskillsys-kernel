@@ -83,6 +83,9 @@ bool PostActionSynchronize(ProcPtr parent)
 	struct Unit *unit_act, *unit_tar;
 	int debuff_act;
 
+	if (!UNIT_IS_VALID(gActiveUnit))
+		return false;
+
 #if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
 	if (!SkillTester(gActiveUnit, SID_Synchronize))
 #else

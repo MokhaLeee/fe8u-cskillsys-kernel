@@ -93,12 +93,9 @@ LABEL(99)
 bool PostActionSwap(ProcPtr proc)
 {
 	struct Unit *unit = gActiveUnit;
-	struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
+	struct Unit *unit_tar;
 
-	if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
-		return false;
-
-	if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
+	if (!UNIT_IS_VALID(unit))
 		return false;
 
 #if defined(SID_Lunge) && (COMMON_SKILL_VALID(SID_Lunge))
@@ -106,6 +103,14 @@ bool PostActionSwap(ProcPtr proc)
 #else
 	if (1)
 #endif
+		return false;
+
+	if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+		return false;
+
+	unit_tar = GetUnit(gActionData.targetIndex);
+
+	if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
 		return false;
 
 	if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
