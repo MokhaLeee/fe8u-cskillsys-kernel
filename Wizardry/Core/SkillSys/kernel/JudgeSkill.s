@@ -118,10 +118,11 @@ _SkillTester_IInfo:
     ldrb r0, [r3], #2
     bl .L_Table
     ldrb r0, [r3], #2
+    // bl .L_Table
 
     adr lr, _SkillTester_COMMON
     // adr lr, .Lend_false
-    bl .L_Table
+    b .L_Table
 
 .LgpConstSkillTable_Person:
     .4byte gpConstSkillTable_Person

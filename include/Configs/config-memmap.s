@@ -92,7 +92,7 @@ _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
  * Usage of memory on IWRAM for arm-functions
  *
  * part     function name       start           end             max size    real size
- * [a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x160       0x160
+ * [a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x138       0x160
  * [a]      ARM_MapFloodCoreRe  0x03003E0C      0x030040F4      0x2E8       0x2E8
  * [a]      ARM_MapTask         0x030040F4      0x03004150      0x05C       0x05C
  * [a]      no-free space
