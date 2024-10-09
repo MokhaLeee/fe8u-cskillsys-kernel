@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "battle-system.h"
+#include "kernel-lib.h"
 #include "strmag.h"
 #include "constants/skills.h"
 
@@ -68,7 +69,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 
 	for (it = gpWeaponTriangleConfs; it->wtype_a != it->wtype_b; it++) {
 		if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType) {
-			if (BattleSkillTesterFast(attacker, it->sid)) {
+			if (it->sid == 0 || BattleSkillTesterFast(attacker, it->sid)) {
 				if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self)) {
 					ui  += it->is_buff ? 1 : -1;
 
