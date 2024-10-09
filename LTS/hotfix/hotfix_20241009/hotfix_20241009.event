@@ -1,0 +1,21 @@
+/**
+ * Hotfix for 1.0.0LTS at 2024.10.09
+ *
+ * Fix:
+ *  1. Fix WTA bug: https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/0a13a17f751f620ce9768dc5fa6f34ad822c6360
+ */
+
+#ifndef jumpToHack_r2
+#define jumpToHack_r2(offset) "WORD $47104A00; POIN (offset|0x1)"
+#endif
+
+PUSH
+    ORG 0xBA9104
+    jumpToHack_r2(_WTA_FIX)
+
+    // A unused space allocated from function: BattleApplyWeaponTriangleEffect()
+    ORG 0x2C7C8
+    _WTA_FIX:
+    // #include "src/wta_fix.lyn.event"
+    WORD $681B88F1 $F000B402 $BC02F806 $D1002900 $49012001 $47184708 $8BA910D
+POP

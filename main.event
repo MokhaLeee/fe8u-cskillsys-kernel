@@ -37,3 +37,4 @@ ASSERT (0x00C00000 - CURRENTOFFSET)
 
 #include "LTS/hotfix/hotfix_20240922.event"
 #include "LTS/hotfix/hotfix_20240927.event"
+#include "LTS/hotfix/hotfix_20241009/hotfix_20241009.event"
