@@ -14,7 +14,8 @@ extern struct SkillList sSkillList[3];
 
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 {
-	int i, weapon, sid;
+	FORCE_DECLARE int weapon;
+	int i, sid;
 	int pid = UNIT_CHAR_ID(unit);
 	int jid = UNIT_CLASS_ID(unit);
 
@@ -66,13 +67,11 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 		}
 	}
 
+#if 0
 	/* Weapon */
 	weapon = ITEM_NONE;
-
 	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
 		weapon = ITEM_INDEX(((struct BattleUnit *)unit)->weaponBefore);
-	else
-		weapon = ITEM_INDEX(GetUnitEquippedWeapon(unit));
 
 	if (weapon != ITEM_NONE) {
 		sid = gpConstSkillTable_Weapon[weapon * 2];
@@ -87,6 +86,7 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 			list->sid[list->amt++] = sid;
 		}
 	}
+#endif
 
 	/* generic */
 	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++) {
