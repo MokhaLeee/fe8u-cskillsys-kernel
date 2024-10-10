@@ -13,6 +13,7 @@
 #include "PostActionSkills/Synchronize.lyn.event"
 #include "PostActionSkills/Clearance.lyn.event"
 #include "PostActionSkills/GetItem.lyn.event"
+#include "PostActionSkills/Glorifier.lyn.event"
 
 #include "MenuSkills/LynJump.event"
 #include "MenuSkills/Dance.lyn.event"

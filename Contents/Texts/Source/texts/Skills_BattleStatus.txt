@@ -927,3 +927,8 @@ Transfer defense to attack[X]
 Do or Die:[NL]
 If the enemy's damage exceeds[NL]
 current HP, deal effective damage.[X]
+
+## MSG_SKILL_Glorifier
+Glorifier:[NL]
+If enemy defeated, grants[NL]
+stat+3 until next combat[X]

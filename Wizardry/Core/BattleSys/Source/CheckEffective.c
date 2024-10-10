@@ -117,7 +117,7 @@ STATIC_DECLAR bool IsBattleUnitEffectiveAgainst(struct BattleUnit *actor, struct
 LYN_REPLACE_CHECK(IsUnitEffectiveAgainst);
 bool IsUnitEffectiveAgainst(struct Unit *actor, struct Unit *target)
 {
-	int jid_target = UNIT_CLASS_ID(target);
+	FORCE_DECLARE int jid_target = UNIT_CLASS_ID(target);
 
 	if (IS_BATTLE_UNIT(actor) && IS_BATTLE_UNIT(target)) {
 		if (IsBattleUnitEffectiveAgainst((struct BattleUnit *)actor, (struct BattleUnit *)target))
