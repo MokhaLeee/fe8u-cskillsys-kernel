@@ -135,6 +135,7 @@ SID_Scendscale
 SID_LawsOfSacae
 SID_ShieldPulse
 SID_BestDefense
+SID_DoOrDie
 
 // Shop skills
 SID_Deal

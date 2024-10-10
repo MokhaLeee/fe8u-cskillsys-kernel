@@ -54,47 +54,46 @@ check_null_effective:
 	return true;
 }
 
-LYN_REPLACE_CHECK(IsUnitEffectiveAgainst);
-bool IsUnitEffectiveAgainst(struct Unit *actor, struct Unit *target)
+STATIC_DECLAR bool IsBattleUnitEffectiveAgainst(struct BattleUnit *actor, struct BattleUnit *target)
 {
-	int jid_target = UNIT_CLASS_ID(target);
+	int jid_target = UNIT_CLASS_ID(&target->unit);
 
 	/* Check combat-art */
-	if (actor->index == gBattleActor.unit.index) {
-		int cid = GetCombatArtInForce(actor);
+	if (actor == &gBattleActor) {
+		int cid = GetCombatArtInForce(&actor->unit);
 
 		if (COMBART_VALID(cid)) {
 			switch (GetCombatArtInfo(cid)->effectiveness) {
 			case COMBART_EFF_ALL:
-				goto check_null_effective;
+				return true;
 
 			case COMBART_EFF_ARMOR:
 				if (CheckClassArmor(jid_target))
-					goto check_null_effective;
+					return true;
 
 				break;
 
 			case COMBART_EFF_CAVALRY:
 				if (CheckClassCavalry(jid_target))
-					goto check_null_effective;
+					return true;
 
 				break;
 
 			case COMBART_EFF_FLIER:
 				if (CheckClassFlier(jid_target))
-					goto check_null_effective;
+					return true;
 
 				break;
 
 			case COMBART_EFF_DRAGON:
 				if (CheckClassDragon(jid_target))
-					goto check_null_effective;
+					return true;
 
 				break;
 
 			case COMBART_EFF_MONSTER:
 				if (CheckClassBeast(jid_target))
-					goto check_null_effective;
+					return true;
 
 				break;
 
@@ -103,6 +102,26 @@ bool IsUnitEffectiveAgainst(struct Unit *actor, struct Unit *target)
 				break;
 			}
 		}
+	}
+
+#if (defined(SID_DoOrDie) && (COMMON_SKILL_VALID(SID_DoOrDie)))
+	if (BattleSkillTesterFast(actor, SID_DoOrDie)) {
+		if ((target->battleAttack - actor->battleDefense) >= actor->hpInitial)
+			return true;
+	}
+#endif
+
+	return false;
+}
+
+LYN_REPLACE_CHECK(IsUnitEffectiveAgainst);
+bool IsUnitEffectiveAgainst(struct Unit *actor, struct Unit *target)
+{
+	int jid_target = UNIT_CLASS_ID(target);
+
+	if (IS_BATTLE_UNIT(actor) && IS_BATTLE_UNIT(target)) {
+		if (IsBattleUnitEffectiveAgainst((struct BattleUnit *)actor, (struct BattleUnit *)target))
+			goto check_null_effective;
 	}
 
 	/* Check skills */

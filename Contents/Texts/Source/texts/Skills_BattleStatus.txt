@@ -922,3 +922,8 @@ unit stats in battle[X]
 BestDefense:[NL]
 If unit initiates combat[NL]
 Transfer defense to attack[X]
+
+## MSG_SKILL_DoOrDie
+Do or Die:[NL]
+If the enemy's damage exceeds[NL]
+current HP, deal effective damage.[X]
