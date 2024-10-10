@@ -59,6 +59,15 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 		critRate += SKILL_EFF0(SID_Momentum) * GetBattleGlobalFlags(attacker)->round_cnt_hit;
 #endif
 
+#if defined(SID_LimitBreak) && (COMMON_SKILL_VALID(SID_LimitBreak))
+	if (BattleSkillTesterFast(attacker, SID_LimitBreak)) {
+		if (GetBattleGlobalFlags(attacker)->round_cnt_hit == SKILL_EFF0(SID_LimitBreak)) {
+			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LimitBreak);
+			hitRate = 100;
+		}
+	}
+#endif
+
 	LIMIT_AREA(gBattleStats.attack, 0, 255);
 	LIMIT_AREA(gBattleStats.defense, 0, 255);
 	LIMIT_AREA(gBattleStats.hitRate, 0, 100);

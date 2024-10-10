@@ -197,3 +197,8 @@ foe's critical attack[X]
 Fatal Ten:[NL]
 If unit attacks 10 times during[NL]
 one turn, he wins the Duel.[X]
+
+## MSG_SKILL_LimitBreak
+LimitBreak:[NL]
+After 5 hits, next attack deals[NL]
+double damage with 100% accuracy.[X]

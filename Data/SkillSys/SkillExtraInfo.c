@@ -1094,4 +1094,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_LionFlame) && COMMON_SKILL_VALID(SID_LionFlame))
 	[SID_LionFlame] = {{ 15, 4, 100, 3 }},
 #endif
+
+#if (defined(SID_LimitBreak) && COMMON_SKILL_VALID(SID_LimitBreak))
+	[SID_LimitBreak] = {{ 5, 100 }},
+#endif
 };

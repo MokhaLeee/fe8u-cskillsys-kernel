@@ -323,6 +323,15 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	}
 #endif
 
+#if defined(SID_LimitBreak) && (COMMON_SKILL_VALID(SID_LimitBreak))
+	if (BattleSkillTesterFast(attacker, SID_LimitBreak)) {
+		if (GetBattleGlobalFlags(attacker)->round_cnt_hit == SKILL_EFF0(SID_LimitBreak)) {
+			// RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LimitBreak);
+			gDmg.increase += 10 * SKILL_EFF1(SID_LimitBreak);
+			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
+		}
+	}
+#endif
 
 #if defined(SID_SolarPower) && (COMMON_SKILL_VALID(SID_SolarPower))
 	if (BattleSkillTesterFast(attacker, SID_SolarPower))

@@ -140,6 +140,7 @@ SID_OverKill
 SID_Momentum
 SID_FatalTen
 SID_LionFlame
+SID_LimitBreak
 
 // Shop skills
 SID_Deal
