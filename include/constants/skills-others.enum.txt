@@ -137,6 +137,7 @@ SID_ShieldPulse
 SID_BestDefense
 SID_DoOrDie
 SID_OverKill
+SID_Momentum
 
 // Shop skills
 SID_Deal

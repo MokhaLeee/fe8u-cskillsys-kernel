@@ -937,3 +937,8 @@ stat+3 until next combat[X]
 OverKill:[NL]
 Unit is healed for surplus[NL]
 damage if enemy defeated.[X]
+
+## MSG_SKILL_Momentum
+Momentum:[NL]
+Each follow-up attack increases[NL]
+CRIT +10%.[X]

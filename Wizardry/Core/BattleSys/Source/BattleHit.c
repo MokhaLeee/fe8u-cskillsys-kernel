@@ -54,6 +54,11 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 	}
 #endif
 
+#if defined(SID_Momentum) && (COMMON_SKILL_VALID(SID_Momentum))
+	if (BattleSkillTesterFast(attacker, SID_Momentum))
+		critRate += SKILL_EFF0(SID_Momentum) * GetBattleGlobalFlags(attacker)->round_cnt_hit;
+#endif
+
 	LIMIT_AREA(gBattleStats.attack, 0, 255);
 	LIMIT_AREA(gBattleStats.defense, 0, 255);
 	LIMIT_AREA(gBattleStats.hitRate, 0, 100);
