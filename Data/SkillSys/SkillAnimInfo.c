@@ -235,6 +235,10 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_LimitBreak) && COMMON_SKILL_VALID(SID_LimitBreak))
 	[SID_LimitBreak] = EFX_PRIORITY_NORMAL,
 #endif
+
+#if (defined(SID_OverKill) && COMMON_SKILL_VALID(SID_OverKill))
+	[SID_OverKill] = EFX_PRIORITY_NORMAL,
+#endif
 };
 
 struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
@@ -468,5 +472,9 @@ struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LimitBreak) && COMMON_SKILL_VALID(SID_LimitBreak))
 	[SID_LimitBreak] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_OverKill) && COMMON_SKILL_VALID(SID_OverKill))
+	[SID_OverKill] = &EfxSkillVanilla,
 #endif
 };
