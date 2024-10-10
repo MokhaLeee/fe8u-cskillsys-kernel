@@ -151,12 +151,10 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 				defender->unit.curHP = 0;
 		}
 
-#ifdef CHAX
-		if (CheckBattleHpDrain(attacker, defender))
+#if CHAX
+		BattleHit_CalcHpDrain(attacker, defender);
 #else
-		if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
-#endif
-		{
+		if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN) {
 			if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
 				attacker->unit.curHP = attacker->unit.maxHP;
 			else
@@ -164,6 +162,7 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 		}
+#endif
 
 		BattleHit_InjectNegativeStatus(attacker, defender);
 	}

@@ -176,10 +176,10 @@ void PreBattleGenerateHook(void);
 /**
  * BattleHitAttr
  */
-bool CheckBattleHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender);
+void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender);
 

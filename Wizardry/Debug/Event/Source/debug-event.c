@@ -405,6 +405,14 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_AddSkill(SID_ChillSpd, CHARACTER_VANESSA)
 #endif
 
+#if defined(SID_RightfulArch) && (COMMON_SKILL_VALID(SID_RightfulArch))
+	Evt_AddSkill(SID_RightfulArch, CHARACTER_VANESSA)
+#endif
+
+#if defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol))
+	Evt_AddSkill(SID_Sol, CHARACTER_VANESSA)
+#endif
+
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
 	/* In debug mode, unit may automatically learn all skills */
 	Evt_RemoveSkill(SID_Fury, CHARACTER_EPHRAIM)
@@ -420,6 +428,9 @@ static const EventScr EventScr_Beginning[] = {
 
 	SVAL(EVT_SLOT_1, 10)
 	SET_HP(CHARACTER_VANESSA)
+
+	SVAL(EVT_SLOT_1, 10)
+	SET_HP(CHARACTER_TANA)
 
 	NoFade
 	ENDA

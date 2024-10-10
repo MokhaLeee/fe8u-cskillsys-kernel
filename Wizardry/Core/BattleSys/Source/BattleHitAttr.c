@@ -7,24 +7,6 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-bool CheckBattleHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
-{
-	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
-		return true;
-
-	if (gBattleTemporaryFlag.skill_activated_aether)
-		return true;
-
-#if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
-	if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl)) {
-		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
-		return true;
-	}
-#endif
-
-	return false;
-}
-
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
@@ -150,6 +132,36 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 	return false;
+}
+
+void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	int drain, percentage = 0;
+
+	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
+		percentage += 100;
+
+	if (gBattleTemporaryFlag.skill_activated_aether)
+		percentage += 100;
+
+#if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
+	if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl)) {
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
+		percentage += 100;
+	}
+#endif
+
+	if (percentage == 0)
+		return;
+
+	drain = Div(gBattleStats.damage * percentage, 100);
+	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
+		drain = attacker->unit.maxHP - attacker->unit.curHP;
+
+	if (drain > 0) {
+		attacker->unit.curHP += drain;
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
 }
 
 void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender)
