@@ -92,10 +92,10 @@ _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
  * Usage of memory on IWRAM for arm-functions
  *
  * part     function name       start           end             max size    real size
- * [a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x138       0x160
- * [a]      ARM_MapFloodCoreRe  0x03003E0C      0x030040F4      0x2E8       0x2E8
- * [a]      ARM_MapTask         0x030040F4      0x03004150      0x05C       0x05C
- * [a]      no-free space
+ * [a]      ARM_SkillTester     0x03003CAC      0x03003DE4      0x138       0x138
+ * [a]      ARM_MapFloodCoreRe  0x03003DE4      0x030040CC      0x2E8       0x2E8
+ * [a]      ARM_MapTask         0x030040CC      0x03004128      0x05C       0x05C
+ * [a]      __free__            0x03004128      0x03004150      0x028       ---
  *
  * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0xEC
  * [b]      ARM_SkillList       0x03004378      0x030043CC      0x054       0x054
@@ -108,11 +108,11 @@ _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
  * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
  */
 dat 0x03003CAC, ARM_SkillTester
-dat 0x03003E0C, ARM_SkillTesterEnd
-dat 0x03003E0C, ARM_MapFloodCoreRe
-dat 0x030040F4, ARM_MapFloodCoreReEnd
-dat 0x030040F4, ARM_MapTask
-dat 0x03004150, ARM_MapTaskEnd
+dat 0x03003DE4, ARM_SkillTesterEnd
+dat 0x03003DE4, ARM_MapFloodCoreRe
+dat 0x030040CC, ARM_MapFloodCoreReEnd
+dat 0x030040CC, ARM_MapTask
+dat 0x03004128, ARM_MapTaskEnd
 
 dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd
