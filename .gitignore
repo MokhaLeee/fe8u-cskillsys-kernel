@@ -15,6 +15,7 @@ install-devkitpro-pacman
 Tools/EventAssembler/
 Tools/FE-PyTools/
 Tools/FE-CLib-Mokha/
+Tools/check_patch/
 Tools/dotnet-install.sh
 
 # Wizardry

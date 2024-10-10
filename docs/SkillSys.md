@@ -1,15 +1,14 @@
-Currently, C-Skillsys theoretically allows up to **1021** skills (0x01~0xFE, 0x100~0x3FF) to take effect at the same time. Each unit can carry up to **23** skills at the same time, which are distributed as follows:
+Currently, C-Skillsys theoretically allows up to **1021** skills (0x01~0xFE, 0x100~0x3FF) to take effect at the same time. Each unit can carry up to **21** skills at the same time, which are distributed as follows:
 
 - **7 equipable skills**, which allows player to freely select in prepscreen, also allows the game-play designer dynamically assign skills to enemies through events.
 - **2 person skills**, fixed on ROM table and searched by unit character index.
 - **2 job skills**, fixed on ROM table and searched by unit class index.
 - **5x2 item skills**, fixed on ROM table and searched by item index. Just like an amulet, unit can obtain skills as long as they carry the corresponding items.
-- **2 weapon skills**, fixed on ROM table and searched by item index. These skills can only be obtained if the unit is equipped with the corresponding weapon.
 
 Note that the skill index is also divided into certain parts of categories in order to save memory and optimize performance. The following rules are generally followed for the division of skill index:
 
 - In order to save the RAM space especially SRAM space, **equipable skill** can only range in `0x01~0xFE`, which is consistent to tranditional SkillSystem_FE8.
-- In order to improve performance, only the skills ranging in `0x300-0x3FF` can involve on Item/weapon skills judgement.
+- In order to improve performance, only the skills ranging in `0x300-0x3FF` can involve on Item skills judgement.
 - Other skills, including person/job skills have no particular restrictions.
 
 # 1. Judge skill
@@ -32,7 +31,6 @@ ROM table can be configured in:
 - [SkillTable-person.c](../Data/SkillSys/SkillTable-person.c)
 - [SkillTable-job.c](../Data/SkillSys/SkillTable-job.c)
 - [SkillTable-item.c](../Data/SkillSys/SkillTable-item.c)
-- [SkillTable-weapon.c](../Data/SkillSys/SkillTable-weapon.c)
 
 ## RAM table API
 
@@ -70,7 +68,7 @@ We have also recorded unit level regardless he was promoted. Once one unit is pr
 
 Since the skills are currently divided into four categories, developers need to select a category in advance to place new skills first:
 
-| category | equipable | item/weapon | others |
+| category | equipable | item | others |
 | :--------	| :-----------	| :-----------	| :----------- |
 | index preconfig | [skills-equip.enum.txt](../include/constants/skills-equip.enum.txt) | [skills-item.enum.txt](../include/constants/skills-item.enum.txt) | [skills-others.enum.txt](../include/constants/skills-others.enum.txt) |
 

@@ -3,6 +3,8 @@
 
 #include "debug-kit.h"
 
+#define IS_BATTLE_UNIT(_unit) ((_unit) == &gBattleActor.unit  || (_unit) ==  &gBattleTarget.unit)
+
 struct BattleStatus {
 	s16 atk, def, as, hit, avo, crit, dodge, silencer;
 };
@@ -82,9 +84,6 @@ void ClearBattleGlobalFlags(void);
 void RegisterHitCnt(struct BattleUnit *bu, bool miss);
 
 extern struct {
-	u32 nihil_on_actor  : 1;
-	u32 nihil_on_target : 1;
-
 	u32 desperation_order : 1;
 	u32 vantage_order : 1;
 	u32 tar_force_twice_order : 1;
@@ -177,10 +176,11 @@ void PreBattleGenerateHook(void);
 /**
  * BattleHitAttr
  */
-bool CheckBattleHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender);
+void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int drain);
+void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender);
 
@@ -189,6 +189,7 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
  */
 extern struct {
 	bool8 crit_atk;
+	int result;
 	int damage_base, attack, defense;
 	int correction, real_damage, increase, decrease, crit_correction;
 } gDmg;

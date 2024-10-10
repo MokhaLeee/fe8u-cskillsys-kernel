@@ -14,7 +14,7 @@ void StartGame(void)
 	const GameInitHookFunc_t *it;
 	struct GameCtrlProc *proc;
 
-	SetMainUpdateRoutine(OnGameLoopMain);
+	SetMainUpdateRoutine(OnMain);
 
 	SetInterrupt_LCDVBlank(OnVBlank);
 
@@ -24,7 +24,7 @@ void StartGame(void)
 	proc->idle_status = 0;
 
 	/* Internal hooks */
-#ifdef CONFIG_USE_DEBUG
+#if CHAX
 	LogInit();
 #endif
 

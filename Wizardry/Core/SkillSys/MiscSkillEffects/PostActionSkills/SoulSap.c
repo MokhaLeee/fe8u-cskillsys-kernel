@@ -59,7 +59,7 @@ bool PostActionSkillSoulSap(ProcPtr parent)
 {
 	FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UNIT_IS_VALID(unit))
 		return false;
 
 #if defined(SID_SoulSap) && (COMMON_SKILL_VALID(SID_SoulSap))
@@ -67,6 +67,9 @@ bool PostActionSkillSoulSap(ProcPtr parent)
 #else
 	if (1)
 #endif
+		return false;
+
+	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	Proc_StartBlocking(ProcScr_PostActionSkillSoulSap, parent);

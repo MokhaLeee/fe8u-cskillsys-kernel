@@ -51,3 +51,7 @@ by this unit by 20%.[X]
 Bargain:[NL]
 Reduce cost of items bought[NL]
 by this unit by 50%.[X]
+
+## MSG_SKILL_Leader
+Leader:[NL]
+Unit grants leadership +2[X]

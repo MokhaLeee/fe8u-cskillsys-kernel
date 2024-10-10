@@ -54,6 +54,30 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 	}
 #endif
 
+#if defined(SID_Momentum) && (COMMON_SKILL_VALID(SID_Momentum))
+	if (BattleSkillTesterFast(attacker, SID_Momentum))
+		critRate += SKILL_EFF0(SID_Momentum) * GetBattleGlobalFlags(attacker)->round_cnt_hit;
+#endif
+
+#if defined(SID_LimitBreak) && (COMMON_SKILL_VALID(SID_LimitBreak))
+	if (BattleSkillTesterFast(attacker, SID_LimitBreak)) {
+		if (GetBattleGlobalFlags(attacker)->round_cnt_hit == SKILL_EFF0(SID_LimitBreak)) {
+			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LimitBreak);
+			hitRate = 100;
+		}
+	}
+#endif
+
+#if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
+	if (BattleSkillTesterFast(attacker, SID_ImmovableObject) || BattleSkillTesterFast(defender, SID_ImmovableObject))
+		hitRate = 100;
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+	if (BattleSkillTesterFast(attacker, SID_UnstoppableForce) || BattleSkillTesterFast(defender, SID_UnstoppableForce))
+		hitRate = 100;
+#endif
+
 	LIMIT_AREA(gBattleStats.attack, 0, 255);
 	LIMIT_AREA(gBattleStats.defense, 0, 255);
 	LIMIT_AREA(gBattleStats.hitRate, 0, 100);
@@ -78,7 +102,6 @@ void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit 
 		if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
 			CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
 			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
-
 		else {
 			RegisterHitCnt(attacker, true);
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
@@ -110,7 +133,7 @@ LYN_REPLACE_CHECK(BattleGenerateHitEffects);
 void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-		if (BattleSkillTester(attacker, SID_Discipline))
+		if (BattleSkillTesterFast(attacker, SID_Discipline))
 			attacker->wexpMultiplier += 2;
 		else
 			attacker->wexpMultiplier++;
@@ -152,12 +175,10 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 				defender->unit.curHP = 0;
 		}
 
-#ifdef CHAX
-		if (CheckBattleHpDrain(attacker, defender))
+#if CHAX
+		BattleHit_CalcHpDrain(attacker, defender);
 #else
-		if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
-#endif
-		{
+		if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN) {
 			if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
 				attacker->unit.curHP = attacker->unit.maxHP;
 			else
@@ -165,6 +186,7 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 		}
+#endif
 
 		BattleHit_InjectNegativeStatus(attacker, defender);
 	}
@@ -188,7 +210,7 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 
 	if (attacker->unit.curHP == 0 || defender->unit.curHP == 0) {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-		if (BattleSkillTester(attacker, SID_Discipline))
+		if (BattleSkillTesterFast(attacker, SID_Discipline))
 			attacker->wexpMultiplier += 2;
 		else
 			attacker->wexpMultiplier++;
@@ -209,6 +231,10 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 				gBattleHitIterator++;
 				return true;
 			}
+
+#if (defined(SID_OverKill) && (COMMON_SKILL_VALID(SID_OverKill)))
+			AppendHpDrain(attacker, defender, gDmg.result - gBattleStats.damage);
+#endif
 		}
 #endif
 

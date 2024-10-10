@@ -102,7 +102,7 @@ bool PostActionThunderstorm(ProcPtr parent)
 {
 	struct Unit *unit = gActiveUnit;
 
-	if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+	if (!UNIT_IS_VALID(unit))
 		return false;
 
 #if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
@@ -110,6 +110,9 @@ bool PostActionThunderstorm(ProcPtr parent)
 #else
 	if (1)
 #endif
+		return false;
+
+	if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
 		return false;
 
 	if (gBattleStats.range < 3)

@@ -40,6 +40,7 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 
 /* From the bottom to the top */
 _kernel_malloc sSkillList, 0x40 * 3
+_kernel_malloc sSkillFastList, 0x100
 _kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
@@ -72,7 +73,7 @@ _kernel_malloc sExpaConvoyItemArray, 2 * 300
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
 _kernel_malloc_overlay0 UnitMenuSkills, 16
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
-_kernel_malloc_overlay0 gBattleTemporaryFlag, 8
+_kernel_malloc_overlay0 gBattleTemporaryFlag, 0x10
 _kernel_malloc_overlay0 sCombatArtList, 0x20
 _kernel_malloc_overlay0 sSelectedComatArtIndex, 4
 _kernel_malloc_overlay0 sCombatArtBKSELfxTimer, 4
@@ -85,21 +86,21 @@ _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
 _kernel_malloc_overlay0 MapTaskVec, 4
 _kernel_malloc_overlay0 gStatScreenStExpa, 4
 _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
-_kernel_malloc_overlay0 gDmg, 36
+_kernel_malloc_overlay0 gDmg, 40
 _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
 
 /**
  * Usage of memory on IWRAM for arm-functions
  *
  * part     function name       start           end             max size    real size
- * [a]      ARM_SkillTester     0x03003CAC      0x03003E0C      0x160       0x160
- * [a]      ARM_MapFloodCoreRe  0x03003E0C      0x030040F4      0x2E8       0x2E8
- * [a]      ARM_MapTask         0x030040F4      0x03004150      0x05C       0x05C
- * [a]      no-free space
+ * [a]      ARM_SkillTester     0x03003CAC      0x03003DE4      0x138       0x138
+ * [a]      ARM_MapFloodCoreRe  0x03003DE4      0x030040CC      0x2E8       0x2E8
+ * [a]      ARM_MapTask         0x030040CC      0x03004128      0x05C       0x05C
+ * [a]      __free__            0x03004128      0x03004150      0x028       ---
  *
- * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0xEC
- * [b]      ARM_SkillList       0x03004378      0x03004448      0x0D0       0xD0
- * [b]      __free__            0x03004448      0x03004960      0x518       ---
+ * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0x0EC
+ * [b]      ARM_SkillList       0x03004378      0x030043B4      0x03C       0x03C
+ * [b]      __free__            0x030043B4      0x03004960      0x5A0       ---
  *
  * Note on part[a]:
  * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
@@ -108,13 +109,13 @@ _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
  * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
  */
 dat 0x03003CAC, ARM_SkillTester
-dat 0x03003E0C, ARM_SkillTesterEnd
-dat 0x03003E0C, ARM_MapFloodCoreRe
-dat 0x030040F4, ARM_MapFloodCoreReEnd
-dat 0x030040F4, ARM_MapTask
-dat 0x03004150, ARM_MapTaskEnd
+dat 0x03003DE4, ARM_SkillTesterEnd
+dat 0x03003DE4, ARM_MapFloodCoreRe
+dat 0x030040CC, ARM_MapFloodCoreReEnd
+dat 0x030040CC, ARM_MapTask
+dat 0x03004128, ARM_MapTaskEnd
 
 dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd
 dat 0x03004378, ARM_SkillList
-dat 0x03004448, ARM_SkillListEnd
+dat 0x030043B4, ARM_SkillListEnd

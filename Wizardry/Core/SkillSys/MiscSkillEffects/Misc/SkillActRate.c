@@ -42,31 +42,31 @@ bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *targe
 	if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
 		return false;
 
-	if (!BattleSkillTester(actor, sid))
+	if (!BattleSkillTesterFast(actor, sid))
 		return false;
 
 #if (defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight)))
-	if (BattleSkillTester(target, SID_Foresight))
+	if (BattleSkillTesterFast(target, SID_Foresight))
 		return false;
 #endif
 
 #if (defined(SID_RightfulArch) && (COMMON_SKILL_VALID(SID_RightfulArch)))
-	if (BattleSkillTester(actor, SID_RightfulArch))
+	if (BattleSkillTesterFast(actor, SID_RightfulArch))
 		return true;
 #endif
 
 #if (defined(SID_RightfulKing) && (COMMON_SKILL_VALID(SID_RightfulKing)))
-	if (BattleSkillTester(actor, SID_RightfulKing))
+	if (BattleSkillTesterFast(actor, SID_RightfulKing))
 		rate += SKILL_EFF0(SID_RightfulKing);
 #endif
 
 #if (defined(SID_RightfulGod) && (COMMON_SKILL_VALID(SID_RightfulGod)))
-	if (BattleSkillTester(actor, SID_RightfulGod))
+	if (BattleSkillTesterFast(actor, SID_RightfulGod))
 		rate += SKILL_EFF0(SID_RightfulGod);
 #endif
 
 #if (defined(SID_Hero) && (COMMON_SKILL_VALID(SID_Hero)))
-	if (BattleSkillTester(actor, SID_Hero))
+	if (BattleSkillTesterFast(actor, SID_Hero))
 		if ((actor->hpInitial * 2) < actor->unit.maxHP)
 			rate += SKILL_EFF0(SID_Hero);
 #endif

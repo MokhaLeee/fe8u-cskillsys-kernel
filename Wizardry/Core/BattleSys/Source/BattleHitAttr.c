@@ -7,24 +7,6 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-bool CheckBattleHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
-{
-	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
-		return true;
-
-	if (gBattleTemporaryFlag.skill_activated_aether)
-		return true;
-
-#if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
-	if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl)) {
-		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
-		return true;
-	}
-#endif
-
-	return false;
-}
-
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
@@ -44,14 +26,14 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 
 #if (defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter)))
-	if (BattleSkillTester(defender, SID_Counter) && gBattleStats.range == 1 && !IsMagicAttack(attacker)) {
+	if (BattleSkillTesterFast(defender, SID_Counter) && gBattleStats.range == 1 && !IsMagicAttack(attacker)) {
 		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Counter);
 		return true;
 	}
 #endif
 
 #if (defined(SID_CounterMagic) && (COMMON_SKILL_VALID(SID_CounterMagic)))
-	if (BattleSkillTester(defender, SID_CounterMagic) && gBattleStats.range >= 2 && IsMagicAttack(attacker)) {
+	if (BattleSkillTesterFast(defender, SID_CounterMagic) && gBattleStats.range >= 2 && IsMagicAttack(attacker)) {
 		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_CounterMagic);
 		return true;
 	}
@@ -63,12 +45,12 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 	}
 
 #if (defined(SID_DevilsLuck) && (COMMON_SKILL_VALID(SID_DevilsLuck)))
-	if (BattleSkillTester(defender, SID_DevilsLuck) && GetItemWeaponEffect(defender->weapon) == WPN_EFFECT_DEVIL) {
+	if (BattleSkillTesterFast(defender, SID_DevilsLuck) && GetItemWeaponEffect(defender->weapon) == WPN_EFFECT_DEVIL) {
 		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsLuck);
 		return true;
 	}
 
-	if (BattleSkillTester(attacker, SID_DevilsLuck) && GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL)
+	if (BattleSkillTesterFast(attacker, SID_DevilsLuck) && GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL)
 		return false;
 #endif
 
@@ -76,19 +58,19 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 		return true;
 
 #if (defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact)))
-	if (BattleSkillTester(defender, SID_DevilsPact)) {
+	if (BattleSkillTesterFast(defender, SID_DevilsPact)) {
 		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsPact);
 		return true;
 	}
 #endif
 
 #if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
-	if (BattleSkillTester(defender, SID_DevilsWhim)) {
+	if (BattleSkillTesterFast(defender, SID_DevilsWhim)) {
 		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
 		return true;
 	}
 
-	if (BattleSkillTester(attacker, SID_DevilsWhim)) {
+	if (BattleSkillTesterFast(attacker, SID_DevilsWhim)) {
 		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
 		return true;
 	}
@@ -114,7 +96,7 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 #if (defined(SID_Sturdy) && (COMMON_SKILL_VALID(SID_Sturdy)))
-	if (BattleSkillTester(defender, SID_Sturdy)) {
+	if (BattleSkillTesterFast(defender, SID_Sturdy)) {
 		if (defender->unit.maxHP == defender->hpInitial) {
 			RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sturdy);
 			return true;
@@ -150,6 +132,60 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 	return false;
+}
+
+/**
+ * This is an additional API
+ */
+void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int drain)
+{
+	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
+		drain = attacker->unit.maxHP - attacker->unit.curHP;
+
+	if (drain > 0) {
+		attacker->unit.curHP += drain;
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
+}
+
+void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	int drain, percentage = 0;
+
+	/**
+	 * Step 1: calculate drain percentage
+	 */
+	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
+		percentage += 100;
+
+	if (gBattleTemporaryFlag.skill_activated_aether)
+		percentage += 100;
+
+#if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
+	if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl)) {
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
+		percentage += 100;
+	}
+#endif
+
+	if (percentage == 0)
+		return;
+
+	/**
+	 * Step 2: calculate real amount
+	 */
+	drain = Div(gBattleStats.damage * percentage, 100);
+
+	/**
+	 * Step 3: detect overflow
+	 */
+	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
+		drain = attacker->unit.maxHP - attacker->unit.curHP;
+
+	if (drain > 0) {
+		attacker->unit.curHP += drain;
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
 }
 
 void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender)
@@ -200,7 +236,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 			defender->unit.state = defender->unit.state & ~US_UNSELECTABLE;
 	}
 #if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
-	else if (BattleSkillTester(attacker, SID_PoisonPoint)) {
+	else if (BattleSkillTesterFast(attacker, SID_PoisonPoint)) {
 		defender->statusOut = UNIT_STATUS_POISON;
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
 

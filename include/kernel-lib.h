@@ -60,8 +60,6 @@ u32 simple_mod(u32 a, u32 b);
  * banim.c
  */
 bool IsAttackerAnim(struct Anim *anim);
-int GetBattleActorHpAtRound(int round);
-int GetBattleTargetHpAtRound(int round);
 
 /**
  * event-call.c

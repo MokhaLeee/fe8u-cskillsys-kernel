@@ -1067,15 +1067,43 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 	[SID_WyvernFlight] = {{ 10, 7 }},
 #endif
 
-#if (defined(SID_DragonWrath) && COMMON_SKILL_VALID(SID_DragonWrath))
-	[SID_DragonWrath] = {{ 50 }},
-#endif
-
 #if (defined(SID_Scendscale) && COMMON_SKILL_VALID(SID_Scendscale))
 	[SID_Scendscale] = {{ 25, 7 }},
 #endif
 
 #if (defined(SID_LawsOfSacae) && COMMON_SKILL_VALID(SID_LawsOfSacae))
 	[SID_LawsOfSacae] = {{ 4 }},
+#endif
+
+#if (defined(SID_ShieldPulse) && COMMON_SKILL_VALID(SID_ShieldPulse))
+	[SID_ShieldPulse] = {{ 50 }},
+#endif
+
+#if (defined(SID_Leader) && COMMON_SKILL_VALID(SID_Leader))
+	[SID_Leader] = {{ 2 }},
+#endif
+
+#if (defined(SID_Momentum) && COMMON_SKILL_VALID(SID_Momentum))
+	[SID_Momentum] = {{ 10 }},
+#endif
+
+#if (defined(SID_FatalTen) && COMMON_SKILL_VALID(SID_FatalTen))
+	[SID_FatalTen] = {{ 10 }},
+#endif
+
+#if (defined(SID_LionFlame) && COMMON_SKILL_VALID(SID_LionFlame))
+	[SID_LionFlame] = {{ 15, 4, 100, 3 }},
+#endif
+
+#if (defined(SID_LimitBreak) && COMMON_SKILL_VALID(SID_LimitBreak))
+	[SID_LimitBreak] = {{ 5, 100 }},
+#endif
+
+#if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
+	[SID_ImmovableObject] = {{ 50 }},
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+	[SID_UnstoppableForce] = {{ 100 }},
 #endif
 };

@@ -3696,4 +3696,91 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_BonusDoubler,
 	},
 #endif
+
+#if (defined(SID_ShieldPulse) && COMMON_SKILL_VALID(SID_ShieldPulse))
+	[SID_ShieldPulse] = {
+		.desc = MSG_SKILL_ShieldPulse,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_BestDefense) && COMMON_SKILL_VALID(SID_BestDefense))
+	[SID_BestDefense] = {
+		.desc = MSG_SKILL_BestDefense,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_DoOrDie) && COMMON_SKILL_VALID(SID_DoOrDie))
+	[SID_DoOrDie] = {
+		.desc = MSG_SKILL_DoOrDie,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_Glorifier) && COMMON_SKILL_VALID(SID_Glorifier))
+	[SID_Glorifier] = {
+		.desc = MSG_SKILL_Glorifier,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_Leader) && COMMON_SKILL_VALID(SID_Leader))
+	[SID_Leader] = {
+		.desc = MSG_SKILL_Leader,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_OverKill) && COMMON_SKILL_VALID(SID_OverKill))
+	[SID_OverKill] = {
+		.desc = MSG_SKILL_OverKill,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_Momentum) && COMMON_SKILL_VALID(SID_Momentum))
+	[SID_Momentum] = {
+		.desc = MSG_SKILL_OverKill,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_FatalTen) && COMMON_SKILL_VALID(SID_FatalTen))
+	[SID_FatalTen] = {
+		.desc = MSG_SKILL_FatalTen,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_LionFlame) && COMMON_SKILL_VALID(SID_LionFlame))
+	[SID_LionFlame] = {
+		.name = MSG_SKILL_LionFlame_NAME,
+		.desc = MSG_SKILL_LionFlame,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_LimitBreak) && COMMON_SKILL_VALID(SID_LimitBreak))
+	[SID_LimitBreak] = {
+		.desc = MSG_SKILL_LimitBreak,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
+	[SID_ImmovableObject] = {
+		.name = MSG_SKILL_ImmovableObject_NAME,
+		.desc = MSG_SKILL_ImmovableObject,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+	[SID_UnstoppableForce] = {
+		.name = MSG_SKILL_UnstoppableForce_NAME,
+		.desc = MSG_SKILL_UnstoppableForce,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

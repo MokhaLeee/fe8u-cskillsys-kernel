@@ -1,10 +1,22 @@
 #include "common-chax.h"
 #include "battle-system.h"
 #include "kernel-lib.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
-inline int GetUnitLeaderShip(struct Unit *unit)
+int GetUnitLeaderShip(struct Unit *unit)
 {
-	return gpLeaderShipPConf[UNIT_CHAR_ID(unit)] + gpLeaderShipJConf[UNIT_CLASS_ID(unit)];
+	int ret = 0;
+
+	ret += gpLeaderShipPConf[UNIT_CHAR_ID(unit)];
+	ret += gpLeaderShipJConf[UNIT_CLASS_ID(unit)];
+
+#if defined(SID_Leader) && (COMMON_SKILL_VALID(SID_Leader))
+	if (SkillTester(unit, SID_Leader))
+		ret += SKILL_EFF0(SID_Leader);
+#endif
+
+	return ret;
 }
 
 STATIC_DECLAR int GetBmLeaderShip(struct Unit *unit)

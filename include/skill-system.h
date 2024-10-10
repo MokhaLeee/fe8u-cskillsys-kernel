@@ -73,11 +73,12 @@ char *GetSkillNameStr(const u16 sid);
 struct SkillList {
 	struct UnitListHeader header;
 	u8 amt;
+	u8 _pad_;
 	u16 sid[23];
 };
-extern struct SkillList *(*_GetUnitSkillList)(struct Unit *unit);
-#define GetUnitSkillList _GetUnitSkillList
+struct SkillList *GetUnitSkillList(struct Unit *unit);
 
+void SetupBattleSkillList(void);
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list);
 void ForceUpdateUnitSkillList(struct Unit *unit);
 void DisableUnitSkilLList(struct Unit *unit);
@@ -87,10 +88,12 @@ void ResetSkillLists(void);
 extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
 #define SkillTester _SkillTester
 
-// Note this function can only exec for r0 = gBattleActor/gBattleTarget
-extern bool (*_JudgeSkillViaList)(struct BattleUnit *unit, const u16 sid);
-#define BattleSkillTester _JudgeSkillViaList
-#define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
+bool JudgeSkillViaList(struct Unit *unit, const u16 sid);
+#define _BattleSkillTester(unit, sid) JudgeSkillViaList(unit, sid)
+#define BattleSkillTester(bu, sid) JudgeSkillViaList((struct Unit *)bu, sid)
+
+extern bool (*_JudgeSkillViaFastList)(struct BattleUnit *bu, const u16 sid);
+#define BattleSkillTesterFast(bu, sid) _JudgeSkillViaFastList(bu, sid)
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);
@@ -163,31 +166,6 @@ void NewMuSkillAnimOnActiveUnit(u16 sid, void (*callback1)(ProcPtr proc), void (
 bool MuSkillAnimExists(void);
 
 extern const EventScr EventScr_MuSkillAnim[];
-
-/**
- * Event scripts
- */
-enum EventSkillSubOps {
-	EVSUBCMD_ADD_SKILL = 1,
-	EVSUBCMD_ADD_SKILL_ACTIVE,
-	EVSUBCMD_ADD_SKILL_AT,
-	EVSUBCMD_ADD_SKILL_SC,
-
-	EVSUBCMD_REMOVE_SKILL,
-	EVSUBCMD_REMOVE_SKILL_ACTIVE,
-	EVSUBCMD_REMOVE_SKILL_AT,
-	EVSUBCMD_REMOVE_SKILL_SC,
-};
-
-#define Evt_AddSkill(sid, pid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL, sid), _EvtParams2(pid, 0),
-#define Evt_AddSkillActive(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL_ACTIVE, sid), _EvtParams2(0, 0),
-#define Evt_AddSkillAt(sid, x, y) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL_AT, sid), _EvtParams2(x, y),
-#define Evt_AddSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_ADD_SKILL_SC, sid), _EvtParams2(0, 0),
-
-#define Evt_RemoveSkill(sid, pid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL, sid), _EvtParams2(pid, 0),
-#define Evt_RemoveSkillActive(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_ACTIVE, sid), _EvtParams2(0, 0),
-#define Evt_RemoveSkillAt(sid, x, y) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_AT, sid), _EvtParams2(x, y),
-#define Evt_RemoveSkillSC(sid) _EvtArg0(EVENT_CMD_SKILL, 4, EVSUBCMD_REMOVE_SKILL_SC, sid), _EvtParams2(0, 0),
 
 /**
  * Skill menu

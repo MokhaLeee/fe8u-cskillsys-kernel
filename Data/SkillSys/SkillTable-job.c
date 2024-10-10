@@ -57,7 +57,11 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 
 	[CLASS_MYRMIDON_F] = {
 #if (defined(SID_Astra) && COMMON_SKILL_VALID(SID_Astra))
-		SID_Astra
+		SID_Astra,
+#endif
+
+#if (defined(SID_FatalTen) && COMMON_SKILL_VALID(SID_FatalTen))
+		SID_FatalTen,
 #endif
 	},
 

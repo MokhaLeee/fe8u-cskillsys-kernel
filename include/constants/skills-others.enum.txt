@@ -133,6 +133,16 @@ SID_DragonWrath
 SID_BrashAssault
 SID_Scendscale
 SID_LawsOfSacae
+SID_ShieldPulse
+SID_BestDefense
+SID_DoOrDie
+SID_OverKill
+SID_Momentum
+SID_FatalTen
+SID_LionFlame
+SID_LimitBreak
+SID_ImmovableObject
+SID_UnstoppableForce
 
 // Shop skills
 SID_Deal
@@ -232,6 +242,7 @@ SID_FailGale
 SID_Clearance
 SID_Despoil
 SID_GoldDigger
+SID_Glorifier
 
 // Menu skills
 SID_Dance

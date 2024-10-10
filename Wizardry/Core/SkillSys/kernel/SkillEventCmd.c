@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
+#include "event-rework.h"
 
 #define LOCAL_TRACE 0
 
