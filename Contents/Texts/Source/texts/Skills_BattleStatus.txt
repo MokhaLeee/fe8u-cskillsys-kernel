@@ -950,3 +950,19 @@ LionFlame[X]
 Lion's Flame:[NL]
 Grants CRIT+15%, ATK+4 in melee,[NL]
 but cause CRIT-100%, ATK-3 in range[X]
+
+## MSG_SKILL_ImmovableObject_NAME
+Immov[X]
+
+## MSG_SKILL_ImmovableObject
+Immovable Object:[NL]
+Unit takes damage -50%, but[NL]
+sets unit and foe’s AVO to 0[X]
+
+## MSG_SKILL_UnstoppableForce_NAME
+Unstop[X]
+
+## MSG_SKILL_UnstoppableForce
+Unstoppable Force:[NL]
+Unit damage +100%, but[NL]
+sets unit and foe’s AVO to 0[X]

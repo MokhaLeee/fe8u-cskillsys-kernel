@@ -68,6 +68,16 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 	}
 #endif
 
+#if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
+	if (BattleSkillTesterFast(attacker, SID_ImmovableObject) || BattleSkillTesterFast(defender, SID_ImmovableObject))
+		hitRate = 100;
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+	if (BattleSkillTesterFast(attacker, SID_UnstoppableForce) || BattleSkillTesterFast(defender, SID_UnstoppableForce))
+		hitRate = 100;
+#endif
+
 	LIMIT_AREA(gBattleStats.attack, 0, 255);
 	LIMIT_AREA(gBattleStats.defense, 0, 255);
 	LIMIT_AREA(gBattleStats.hitRate, 0, 100);

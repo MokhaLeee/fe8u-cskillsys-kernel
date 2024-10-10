@@ -3767,4 +3767,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
+	[SID_ImmovableObject] = {
+		.name = MSG_SKILL_ImmovableObject_NAME,
+		.desc = MSG_SKILL_ImmovableObject,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+	[SID_UnstoppableForce] = {
+		.name = MSG_SKILL_UnstoppableForce_NAME,
+		.desc = MSG_SKILL_UnstoppableForce,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

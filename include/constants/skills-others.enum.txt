@@ -141,6 +141,8 @@ SID_Momentum
 SID_FatalTen
 SID_LionFlame
 SID_LimitBreak
+SID_ImmovableObject
+SID_UnstoppableForce
 
 // Shop skills
 SID_Deal

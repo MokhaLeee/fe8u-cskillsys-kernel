@@ -1098,4 +1098,12 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_LimitBreak) && COMMON_SKILL_VALID(SID_LimitBreak))
 	[SID_LimitBreak] = {{ 5, 100 }},
 #endif
+
+#if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
+	[SID_ImmovableObject] = {{ 50 }},
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+	[SID_UnstoppableForce] = {{ 100 }},
+#endif
 };

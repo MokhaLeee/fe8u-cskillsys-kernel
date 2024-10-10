@@ -339,6 +339,11 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 			gDmg.increase += SKILL_EFF0(SID_SolarPower);
 #endif
 
+#if defined(SID_UnstoppableForce) && (COMMON_SKILL_VALID(SID_UnstoppableForce))
+	if (BattleSkillTesterFast(attacker, SID_UnstoppableForce))
+		gDmg.increase += SKILL_EFF0(SID_UnstoppableForce);
+#endif
+
 	if (gBattleTemporaryFlag.skill_activated_sure_shoot)
 		gDmg.increase += 50;
 
@@ -482,6 +487,11 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_ShieldPulse);
 		gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_ShieldPulse));
 	}
+#endif
+
+#if defined(SID_ImmovableObject) && (COMMON_SKILL_VALID(SID_ImmovableObject))
+	if (BattleSkillTesterFast(attacker, SID_ImmovableObject))
+		gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_ImmovableObject));
 #endif
 
 	/**
