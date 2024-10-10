@@ -138,6 +138,7 @@ SID_BestDefense
 SID_DoOrDie
 SID_OverKill
 SID_Momentum
+SID_FatalTen
 
 // Shop skills
 SID_Deal

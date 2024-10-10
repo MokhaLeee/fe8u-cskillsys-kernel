@@ -85,6 +85,18 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	 */
 	gDmg.crit_atk = false;
 
+#if (defined(SID_FatalTen) && (COMMON_SKILL_VALID(SID_FatalTen)))
+	if (BattleSkillTesterFast(attacker, SID_FatalTen)) {
+		if (act_flags->round_cnt_hit >= SKILL_EFF0(SID_FatalTen)) {
+			/* WON! */
+			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_FatalTen);
+
+			gBattleHitIterator->attributes |= (BATTLE_HIT_ATTR_CRIT | BATTLE_HIT_ATTR_SILENCER);
+			return BATTLE_MAX_DAMAGE;
+		}
+	}
+#endif
+
 	if (
 #if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
 		!BattleSkillTesterFast(defender, SID_Fortune)

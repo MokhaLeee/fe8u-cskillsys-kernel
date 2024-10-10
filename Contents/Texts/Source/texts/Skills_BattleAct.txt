@@ -192,3 +192,8 @@ start of the fight, they cannot die.[X]
 ShieldPulse:[NL]
 Reduce 50% damage on[NL]
 foe's critical attack[X]
+
+## MSG_SKILL_FatalTen
+Fatal Ten:[NL]
+If unit attacks 10 times during[NL]
+one turn, he wins the Duel.[X]
