@@ -917,3 +917,8 @@ in 2x2, ATK/SPD/DEF/RES +4[X]
 BonusDoubler:[NL]
 Grants bonus to[NL]
 unit stats in battle[X]
+
+## MSG_SKILL_BestDefense
+BestDefense:[NL]
+If unit initiates combat[NL]
+Transfer defense to attack[X]

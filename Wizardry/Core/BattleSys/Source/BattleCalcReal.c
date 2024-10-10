@@ -144,6 +144,13 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit *attacker, stru
 	if (BattleSkillTesterFast(attacker, SID_NoGuard) || BattleSkillTesterFast(defender, SID_NoGuard))
 		attacker->battleEffectiveHitRate = 100;
 #endif
+
+#if (defined(SID_BestDefense) && (COMMON_SKILL_VALID(SID_BestDefense)))
+	if (attacker == &gBattleActor && BattleSkillTesterFast(defender, SID_BestDefense)) {
+		attacker->battleAttack += attacker->battleDefense;
+		attacker->battleDefense = 0;
+	}
+#endif
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSilencerRate);
