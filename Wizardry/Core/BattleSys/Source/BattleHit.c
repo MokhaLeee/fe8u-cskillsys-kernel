@@ -207,6 +207,10 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 				gBattleHitIterator++;
 				return true;
 			}
+
+#if (defined(SID_OverKill) && (COMMON_SKILL_VALID(SID_OverKill)))
+			AppendHpDrain(attacker, defender, gDmg.result - gBattleStats.damage);
+#endif
 		}
 #endif
 

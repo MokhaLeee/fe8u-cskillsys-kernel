@@ -524,5 +524,6 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	if (result > BATTLE_MAX_DAMAGE)
 		result = BATTLE_MAX_DAMAGE;
 
+	gDmg.result = result;
 	return result;
 }

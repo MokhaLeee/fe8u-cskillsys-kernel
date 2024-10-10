@@ -73,7 +73,7 @@ _kernel_malloc sExpaConvoyItemArray, 2 * 300
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
 _kernel_malloc_overlay0 UnitMenuSkills, 16
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
-_kernel_malloc_overlay0 gBattleTemporaryFlag, 8
+_kernel_malloc_overlay0 gBattleTemporaryFlag, 0x10
 _kernel_malloc_overlay0 sCombatArtList, 0x20
 _kernel_malloc_overlay0 sSelectedComatArtIndex, 4
 _kernel_malloc_overlay0 sCombatArtBKSELfxTimer, 4
@@ -86,7 +86,7 @@ _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
 _kernel_malloc_overlay0 MapTaskVec, 4
 _kernel_malloc_overlay0 gStatScreenStExpa, 4
 _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
-_kernel_malloc_overlay0 gDmg, 36
+_kernel_malloc_overlay0 gDmg, 40
 _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
 
 /**

@@ -134,10 +134,27 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
 	return false;
 }
 
+/**
+ * This is an additional API
+ */
+void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int drain)
+{
+	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
+		drain = attacker->unit.maxHP - attacker->unit.curHP;
+
+	if (drain > 0) {
+		attacker->unit.curHP += drain;
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
+}
+
 void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	int drain, percentage = 0;
 
+	/**
+	 * Step 1: calculate drain percentage
+	 */
 	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
 		percentage += 100;
 
@@ -154,7 +171,14 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	if (percentage == 0)
 		return;
 
+	/**
+	 * Step 2: calculate real amount
+	 */
 	drain = Div(gBattleStats.damage * percentage, 100);
+
+	/**
+	 * Step 3: detect overflow
+	 */
 	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
 		drain = attacker->unit.maxHP - attacker->unit.curHP;
 

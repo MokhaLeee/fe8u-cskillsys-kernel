@@ -47,6 +47,10 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 #if (defined(SID_AlertStancePlus) && COMMON_SKILL_VALID(SID_AlertStancePlus))
 		SID_AlertStancePlus,
 #endif
+
+#if (defined(SID_OverKill) && COMMON_SKILL_VALID(SID_OverKill))
+		SID_OverKill,
+#endif
 	},
 
 	[CHARACTER_MARISA] = {

@@ -136,6 +136,7 @@ SID_LawsOfSacae
 SID_ShieldPulse
 SID_BestDefense
 SID_DoOrDie
+SID_OverKill
 
 // Shop skills
 SID_Deal

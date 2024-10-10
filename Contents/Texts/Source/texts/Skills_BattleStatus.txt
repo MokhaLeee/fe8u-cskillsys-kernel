@@ -932,3 +932,8 @@ current HP, deal effective damage.[X]
 Glorifier:[NL]
 If enemy defeated, grants[NL]
 stat+3 until next combat[X]
+
+## MSG_SKILL_OverKill
+OverKill:[NL]
+Unit is healed for surplus[NL]
+damage if enemy defeated.[X]

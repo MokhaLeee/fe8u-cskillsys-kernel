@@ -179,6 +179,7 @@ void PreBattleGenerateHook(void);
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender);
+void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int drain);
 void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender);
@@ -188,6 +189,7 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
  */
 extern struct {
 	bool8 crit_atk;
+	int result;
 	int damage_base, attack, defense;
 	int correction, real_damage, increase, decrease, crit_correction;
 } gDmg;
