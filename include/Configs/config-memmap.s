@@ -40,6 +40,7 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 
 /* From the bottom to the top */
 _kernel_malloc sSkillList, 0x40 * 3
+_kernel_malloc sSkillFastList, 0x100
 _kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
@@ -97,9 +98,9 @@ _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
  * [a]      ARM_MapTask         0x030040CC      0x03004128      0x05C       0x05C
  * [a]      __free__            0x03004128      0x03004150      0x028       ---
  *
- * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0xEC
- * [b]      ARM_SkillList       0x03004378      0x030043CC      0x054       0x054
- * [b]      __free__            0x030043CC      0x03004960      0x518       ---
+ * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0x0EC
+ * [b]      ARM_SkillList       0x03004378      0x030043B4      0x03C       0x03C
+ * [b]      __free__            0x030043B4      0x03004960      0x5A0       ---
  *
  * Note on part[a]:
  * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
@@ -117,4 +118,4 @@ dat 0x03004128, ARM_MapTaskEnd
 dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd
 dat 0x03004378, ARM_SkillList
-dat 0x030043CC, ARM_SkillListEnd
+dat 0x030043B4, ARM_SkillListEnd

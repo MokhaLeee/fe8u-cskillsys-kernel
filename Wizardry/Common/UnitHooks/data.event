@@ -13,8 +13,7 @@ gExternalBattleToUnitHook: // int (*)(struct BattleUnit *bu, struct Unit *unit);
 gExternalUnitToBattleHook: // int (*)(struct Unit *unit, struct BattleUnit *bu);
     // fixed order
     POIN UnitToBattle_SetupSkillList    // This must stay at first
-    POIN UnitToBattle_ExecNihilSkills   // This must stay at second
-    POIN UnitToBattle_ExecBonusDoublers // This must stay at third
+    POIN UnitToBattle_ExecBonusDoublers // This must stay at second
 
     // others
     POIN StatDebuff_OnUnitToBattle

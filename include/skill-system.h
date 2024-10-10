@@ -92,8 +92,8 @@ bool JudgeSkillViaList(struct Unit *unit, const u16 sid);
 #define _BattleSkillTester(unit, sid) JudgeSkillViaList(unit, sid)
 #define BattleSkillTester(bu, sid) JudgeSkillViaList((struct Unit *)bu, sid)
 
-extern bool (*_JudgeSkillViaListFast)(struct BattleUnit *bu, const u16 sid);
-#define BattleSkillTesterFast(bu, sid) _JudgeSkillViaListFast(bu, sid)
+extern bool (*_JudgeSkillViaFastList)(struct BattleUnit *bu, const u16 sid);
+#define BattleSkillTesterFast(bu, sid) _JudgeSkillViaFastList(bu, sid)
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);

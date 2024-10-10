@@ -3,8 +3,8 @@
 
     .section .rodata
 
-.global _JudgeSkillViaListFast
-_JudgeSkillViaListFast:
+.global _JudgeSkillViaFastList
+_JudgeSkillViaFastList:
     .4byte ARM_SkillList + (.Lfun_judgeskillFast - _ARM_SkillList_CopyStart)
 
     .arm
@@ -16,35 +16,28 @@ _ARM_SkillList_CopyStart:
 @ r0: gBattleActor or gBattleTarget
 @ r1: skill index
 .Lfun_judgeskillFast:
-    ldr r2, .LSkillList
+    ldr r2, .LSkillFastList
     ldr r3, .LgBattleActor
     sub r0, r3
-    lsr r0, #1
     add r0, r2
 
-    add r0, #0x10
-    ldrb r3, [r0], #2
-    lsl r3, #1
-    add r2, r0, r3
+    @ list[idx / 8]
+    lsr r2, r1, #3
+    ldrb r0, [r0, r2]
 
-1:
-    cmp r2, r0
-    beq 2f
-    ldrh r3, [r0], #2
-    cmp r1, r3
-    beq 3f
-    b 1b
+    @ 1 << (idx % 8)
+    and r3, r1, #7
+    mov r1, #1
+    lsl r1, r3
 
-2:
-    mov r0, #0
+    tst r0, r1
+    movne r0, #1
+    moveq r0, #0
+
     bx lr
 
-3:
-    mov r0, #1
-    bx lr
-
-.LSkillList:
-    .4byte sSkillList + 0x40
+.LSkillFastList:
+    .4byte sSkillFastList
 
 .LgBattleActor:
     .4byte gBattleActor
