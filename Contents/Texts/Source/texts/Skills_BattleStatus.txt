@@ -942,3 +942,11 @@ damage if enemy defeated.[X]
 Momentum:[NL]
 Each follow-up attack increases[NL]
 CRIT +10%.[X]
+
+## MSG_SKILL_LionFlame_NAME
+LionFlame[X]
+
+## MSG_SKILL_LionFlame
+Lion's Flame:[NL]
+Grants CRIT+15%, ATK+4 in melee,[NL]
+but cause CRIT-100%, ATK-3 in range[X]

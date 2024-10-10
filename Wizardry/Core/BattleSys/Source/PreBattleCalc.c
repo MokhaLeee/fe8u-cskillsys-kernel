@@ -1259,6 +1259,18 @@ L_FairyTaleFolk_done:
 			break;
 #endif
 
+#if (defined(SID_LionFlame) && (COMMON_SKILL_VALID(SID_LionFlame)))
+		case SID_LionFlame:
+			if (gBattleStats.range <= 1) {
+				attacker->battleCritRate += SKILL_EFF0(SID_LionFlame);
+				attacker->battleAttack   += SKILL_EFF1(SID_LionFlame);
+			} else {
+				attacker->battleCritRate -= SKILL_EFF2(SID_LionFlame);
+				attacker->battleAttack   -= SKILL_EFF3(SID_LionFlame);
+			}
+			break;
+#endif
+
 		case MAX_SKILL_NUM:
 		default:
 			break;

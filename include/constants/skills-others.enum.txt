@@ -139,6 +139,7 @@ SID_DoOrDie
 SID_OverKill
 SID_Momentum
 SID_FatalTen
+SID_LionFlame
 
 // Shop skills
 SID_Deal
