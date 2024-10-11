@@ -233,7 +233,10 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 			}
 
 #if (defined(SID_OverKill) && (COMMON_SKILL_VALID(SID_OverKill)))
-			AppendHpDrain(attacker, defender, gDmg.result - gBattleStats.damage);
+			if (BattleSkillTesterFast(attacker, SID_OverKill)) {
+				RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_OverKill);
+				AppendHpDrain(attacker, defender, gDmg.result - gBattleStats.damage);
+			}
 #endif
 		}
 #endif
