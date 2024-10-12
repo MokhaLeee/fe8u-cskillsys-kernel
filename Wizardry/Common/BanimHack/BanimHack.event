@@ -1,9 +1,6 @@
 #ifndef BANIM_HACK_INSTALLED
 #define BANIM_HACK_INSTALLED
 
-#include "Source/LynJump.event"
-#include "Source/EfxHpBar.lyn.event"
-
 #include "Source/C07.lyn.event"
 
 /**

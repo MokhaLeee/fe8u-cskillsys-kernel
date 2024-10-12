@@ -1,3 +1,7 @@
+/**
+ * External QOL patches
+ */
+
 #ifdef CONFIG_USE_CHAR_CUSTOM_ANIM
     #include "Individual_animation_ea_2/Installer.event"
 #endif

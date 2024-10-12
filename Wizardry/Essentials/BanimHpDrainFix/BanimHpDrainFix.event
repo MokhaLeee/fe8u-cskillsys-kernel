@@ -1,0 +1,7 @@
+#ifndef BANIM_HPDRAIN_FIX_INSTALLED
+#define BANIM_HPDRAIN_FIX_INSTALLED
+
+#include "Source/LynJump.event"
+#include "Source/BanimHpDrainFix.lyn.event"
+
+#endif /* BANIM_HPDRAIN_FIX_INSTALLED */
