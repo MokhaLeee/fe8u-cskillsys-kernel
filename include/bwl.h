@@ -18,26 +18,8 @@ struct NewBwl {
 
 } BITPACKED;
 
-static inline bool CheckHasBwl(u8 pid)
-{
-	if (pid >= NEW_BWL_ARRAY_NUM)
-		return false;
-
-	if (GetCharacterData(pid)->affinity == 0)
-		return false;
-
-	return true;
-}
-
-static inline struct NewBwl *GetNewBwl(u8 pid)
-{
-	struct NewBwl *entry = (struct NewBwl *)gPidStatsData;
-
-	if (!CheckHasBwl(pid))
-		return NULL;
-
-	return entry + (pid - 1);
-}
+bool CheckHasBwl(u8 pid);
+struct NewBwl *GetNewBwl(u8 pid);
 
 // extern const s8 gClassPreLoadHiddenLevel[0x100];
 extern s8 const *const gpClassPreLoadHiddenLevel;

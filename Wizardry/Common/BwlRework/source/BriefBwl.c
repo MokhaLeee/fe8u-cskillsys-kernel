@@ -1,6 +1,27 @@
 #include "common-chax.h"
 #include "bwl.h"
 
+bool CheckHasBwl(u8 pid)
+{
+	if (pid >= NEW_BWL_ARRAY_NUM)
+		return false;
+
+	if (GetCharacterData(pid)->affinity == 0)
+		return false;
+
+	return true;
+}
+
+struct NewBwl *GetNewBwl(u8 pid)
+{
+	struct NewBwl *entry = (struct NewBwl *)gPidStatsData;
+
+	if (!CheckHasBwl(pid))
+		return NULL;
+
+	return entry + (pid - 1);
+}
+
 LYN_REPLACE_CHECK(PidStatsAddBattleAmt);
 void PidStatsAddBattleAmt(struct Unit *unit)
 {

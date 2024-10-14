@@ -135,7 +135,10 @@ enum SkillAnimPriorityConfig {
 extern u8 const *const gpEfxSkillAnimPriority;
 extern struct EfxAnimConf const *const *const gpEfxSkillAnims;
 
-int GetEfxSkillPriority(const u16 sid);
+static inline int GetEfxSkillPriority(const u16 sid)
+{
+	return gpEfxSkillAnimPriority[sid];
+}
 
 /**
  * Skill mapanim

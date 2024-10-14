@@ -73,10 +73,12 @@ char *GetSkillNameStr(const u16 sid)
 	return GetStringFromIndex(msg);
 }
 
+#if 0
 int GetEfxSkillPriority(const u16 sid)
 {
 	return gpEfxSkillAnimPriority[sid];
 }
+#endif
 
 const struct EfxAnimConf *GetEfxSkillConf(const u8 aid)
 {
