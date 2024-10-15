@@ -1,16 +1,16 @@
 /* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPrePhaseFuncs:
-    POIN PrePhaseSkillCommon
-
     POIN PrePhsae_TickInitativeSkillStatus
     POIN PrePhsae_TickOathRouthSkillStatus
     POIN PrePhsae_TickPlusAndMinusSkillStatus
     POIN PrePhase_TickKeepUpSkillStatus
+    POIN PrePhase_TickArmorMarchSkillStatus
     POIN PrePhsae_ClearMiscUES
     POIN PrePhase_UpdateLengendSkillStatus
     POIN PrePhase_UnitStatusEffectSkills
 
+    POIN PrePhaseFunc_AversaNight
     POIN PrePhaseFunc_HoneFortify
     POIN PrePhaseFunc_Chill
     POIN PrePhase_ControlWeatherSkill

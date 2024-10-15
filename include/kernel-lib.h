@@ -152,21 +152,3 @@ enum BattleStatusIdxRef {
 
 	BATTLE_STATUS_MAX
 };
-
-#define FOR_UNITS(begin, end, var_name, body) \
-{ \
-	int _uid; \
-	struct Unit *var_name; \
-	for (_uid = (begin); _uid < (end); ++_uid) { \
-		var_name = GetUnit(_uid); \
-		if (!UNIT_IS_VALID(var_name)) \
-			continue; \
-		body \
-	} \
-}
-
-#define FOR_UNITS_FACTION(faction, var_name, body) \
-	FOR_UNITS((faction) + 1, (faction) + 0x40, var_name, body)
-
-#define FOR_UNITS_ALL(var_name, body) \
-	FOR_UNITS(1, 0xC0, var_name, body)
