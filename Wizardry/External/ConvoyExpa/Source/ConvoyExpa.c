@@ -362,11 +362,11 @@ void sub_809D644(struct PrepItemSupplyProc * proc)
 #endif
     int unitItemCount = GetUnitItemCount(proc->unit);
 
-    SetTextFont(&PrepItemSuppyTexts.font);
+    SetTextFont(&gUnknown_02013648.font);
     SetTextFontGlyphs(0);
 
-    SpriteText_DrawBackgroundExt(&PrepItemSuppyTexts.th[0xf], 0);
-    th = &PrepItemSuppyTexts.th[0xf];
+    SpriteText_DrawBackgroundExt(&gUnknown_02013648.th[0xf], 0);
+    th = &gUnknown_02013648.th[0xf];
 
     color = 0;
 
@@ -385,7 +385,7 @@ void sub_809D644(struct PrepItemSupplyProc * proc)
     );
 
     Text_InsertDrawString(
-        &PrepItemSuppyTexts.th[0xf],
+        &gUnknown_02013648.th[0xf],
         0x40,
         unitItemCount == UNIT_ITEM_COUNT ? 1 : 0,
         GetStringFromIndex(0x59F) // TODO: msgid "Take"
@@ -400,9 +400,9 @@ void sub_809D6CC(void)
     SetTextFont(NULL);
     TileMap_FillRect(gBG0TilemapBuffer + 0x34, 12, 1, 0);
 
-    PutDrawText(&PrepItemSuppyTexts.th[0], gBG0TilemapBuffer + 0x34 + 0x6d, 0, 2, 0, GetStringFromIndex(0x598));
+    PutDrawText(&gUnknown_02013648.th[0], gBG0TilemapBuffer + 0x34 + 0x6d, 0, 2, 0, GetStringFromIndex(0x598));
     PutFaceChibi(FID_SUPPLY, gBG0TilemapBuffer + 0x34 - 0x13, 0x270, 2, 1);
-    PutDrawText(&PrepItemSuppyTexts.th[0] + 1, gBG0TilemapBuffer + 0x34 - 1, 0, 4, 0, GetStringFromIndex(0x5a0));
+    PutDrawText(&gUnknown_02013648.th[0] + 1, gBG0TilemapBuffer + 0x34 - 1, 0, 4, 0, GetStringFromIndex(0x5a0));
 
     PutNumber(
         gBG0TilemapBuffer + 0x34 + 5,
@@ -533,8 +533,8 @@ void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc * proc)
     sub_809E100(proc);
 
     ResetIconGraphics_();
-    DrawPrepScreenItems(gBG0TilemapBuffer + 0x122, &PrepItemSuppyTexts.th[2], proc->unit, 0);
-    sub_809D300(&PrepItemSuppyTexts.th[7], gBG2TilemapBuffer + 0xF, proc->yOffsetPerPage[proc->currentPage] >> 4, proc->unit);
+    DrawPrepScreenItems(gBG0TilemapBuffer + 0x122, &gUnknown_02013648.th[2], proc->unit, 0);
+    sub_809D300(&gUnknown_02013648.th[7], gBG2TilemapBuffer + 0xF, proc->yOffsetPerPage[proc->currentPage] >> 4, proc->unit);
     StartParallelFiniteLoop(sub_809E2BC, 1, proc);
 
     BG_EnableSyncByMask(4);
