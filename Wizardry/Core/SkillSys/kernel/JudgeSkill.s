@@ -118,24 +118,11 @@ _SkillTester_IInfo:
     ldrb r0, [r3], #2
     bl .L_Table
     ldrb r0, [r3], #2
-    bl .L_Table
+    // bl .L_Table
 
-    # judge on weapon skill for battle-unit
-    ldr r0, .LgBattleActor
-    cmp r0, r5
-    beq 1f
-    add r0, #0x80   @ sizeof(struct BattleUnit)
-    cmp r0, r5
-    bne 2f
-
-1:
-    ldrb r0, [r0, #0x48]
-    ldr r4, .LgpConstSkillTable_Item
-    bl .L_Table
-
-2:
-    // b .Lend_false
-    b _SkillTester_COMMON
+    adr lr, _SkillTester_COMMON
+    // adr lr, .Lend_false
+    b .L_Table
 
 .LgpConstSkillTable_Person:
     .4byte gpConstSkillTable_Person
@@ -143,8 +130,6 @@ _SkillTester_IInfo:
     .4byte gpConstSkillTable_Job
 .LgpConstSkillTable_Item:
     .4byte gpConstSkillTable_Item
-.LgpConstSkillTable_Weapon:
-    .4byte gpConstSkillTable_Weapon
 
 .LgBattleActor:
     .4byte gBattleActor

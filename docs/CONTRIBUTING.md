@@ -16,7 +16,7 @@ It is looked forward that this c-skillsys could be a community project and the P
     - 2.1. You must inject `LYN_REPLACE_CHECK` before rewriten functions:
 	```c
 	LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
-	void ComputeBattleUnitAttack(struct BattleUnit * attacker, struct BattleUnit * defender)
+	void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 	{
 		// ...
 	}
@@ -34,13 +34,13 @@ It is looked forward that this c-skillsys could be a community project and the P
 
 3. Code style
 
-Code style standards is generated from discussion on [decomp issue #411](https://github.com/FireEmblemUniverse/fireemblem8u/issues/411). It is recommended to align the code style with the existing code. There is also a [clang-format](../.clang-format) assisting developers for self-checking:
+CSkillSys follows the standard of [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html). Please make sure that the code you submit complies with the corresponding rules. You can use the following script to check by yourself:
 
+```bash
+./check_codingstyle.sh <path-to-your-c-file>
 ```
-sudo apt-get install clang-format
-cd <path to cskillsys-kernel>
-clang-format -i <relative path to your c file>
-```
+
+Please resolve all reported ERRORs. Also, please resolve all WARNINGs unless there is a reasonable explanation.
 
 ## Suggestion
 

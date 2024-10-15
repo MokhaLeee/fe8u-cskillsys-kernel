@@ -112,3 +112,21 @@ enemy, this unit doubles.[X]
 Gale Wings:[NL]
 When unit is defender while[NL]
 their HP is 100%, attack first.[X]
+
+## MSG_SKILL_YngviAscendant_NAME
+Yngvi[X]
+
+## MSG_SKILL_YngviAscendant
+Yngvi Ascendant:[NL]
+Follow-up attack cannot be nullified[NL]
+and occurs immediately if exists[X]
+
+## MSG_SKILL_DragonWrath
+DragonWrath:[NL]
+Exec none-cancellable guaranteed[NL]
+double attack as defender with HP>50%[X]
+
+## MSG_SKILL_BrashAssault
+BrashAssault:[NL]
+If foe can counter,[NL]
+follow-up attack is guaranteed[X]

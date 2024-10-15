@@ -187,3 +187,18 @@ Halve the opponent's current HP.[NL]
 Sturdy:[NL]
 If the unit has full HP at the[NL]
 start of the fight, they cannot die.[X]
+
+## MSG_SKILL_ShieldPulse
+ShieldPulse:[NL]
+Reduce 50% damage on[NL]
+foe's critical attack[X]
+
+## MSG_SKILL_FatalTen
+Fatal Ten:[NL]
+If unit attacks 10 times during[NL]
+one turn, he wins the Duel.[X]
+
+## MSG_SKILL_LimitBreak
+LimitBreak:[NL]
+After 5 hits, next attack deals[NL]
+double damage with 100% accuracy.[X]

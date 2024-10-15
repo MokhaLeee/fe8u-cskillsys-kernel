@@ -891,3 +891,78 @@ C-Overload[X]
 Critical Overload:[NL]
 +1% crit for every +3%[NL]
 hit over 100%.[X]
+
+## MSG_SKILL_WyvernFlight_NAME
+W-Flight[X]
+
+## MSG_SKILL_WyvernFlight
+Wyvern Flight:[NL]
+Debuff the foe based on DEF diff[NL]
+if unit's SPD > foe's SPD-10[X]
+
+## MSG_SKILL_Scendscale
+Scendscale: Deals 25% of[NL]
+unit's Atk as damage. After combat,[NL]
+if unit attacked, takes 7 damage.[X]
+
+## MSG_SKILL_LawsOfSacae_NAME
+SacaeLaw[X]
+
+## MSG_SKILL_LawsOfSacae
+Laws of Sacae:[NL]
+If attacked with 2+ allies[NL]
+in 2x2, ATK/SPD/DEF/RES +4[X]
+
+## MSG_SKILL_BonusDoubler
+BonusDoubler:[NL]
+Grants bonus to[NL]
+unit stats in battle[X]
+
+## MSG_SKILL_BestDefense
+BestDefense:[NL]
+If unit initiates combat[NL]
+Transfer defense to attack[X]
+
+## MSG_SKILL_DoOrDie
+Do or Die:[NL]
+If the enemy's damage exceeds[NL]
+current HP, deal effective damage.[X]
+
+## MSG_SKILL_Glorifier
+Glorifier:[NL]
+If enemy defeated, grants[NL]
+stat+3 until next combat[X]
+
+## MSG_SKILL_OverKill
+OverKill:[NL]
+Unit is healed for surplus[NL]
+damage if enemy defeated.[X]
+
+## MSG_SKILL_Momentum
+Momentum:[NL]
+Each follow-up attack increases[NL]
+CRIT +10%.[X]
+
+## MSG_SKILL_LionFlame_NAME
+LionFlame[X]
+
+## MSG_SKILL_LionFlame
+Lion's Flame:[NL]
+Grants CRIT+15%, ATK+4 in melee,[NL]
+but cause CRIT-100%, ATK-3 in range[X]
+
+## MSG_SKILL_ImmovableObject_NAME
+Immov[X]
+
+## MSG_SKILL_ImmovableObject
+Immovable Object:[NL]
+Unit takes damage -50%, but[NL]
+sets unit and foe’s AVO to 0[X]
+
+## MSG_SKILL_UnstoppableForce_NAME
+Unstop[X]
+
+## MSG_SKILL_UnstoppableForce
+Unstoppable Force:[NL]
+Unit damage +100%, but[NL]
+sets unit and foe’s AVO to 0[X]

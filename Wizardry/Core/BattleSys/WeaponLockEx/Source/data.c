@@ -3,9 +3,9 @@
 #include "wpnlockex-internal.h"
 
 const struct WeaponLockExConf gWeaponLockExConfs[] = {
-    {
-        .iid = ITEM_SWORD_RAPIER,
-        .pid = CHARACTER_EIRIKA,
-    },
-    {}
+	{
+		.iid = ITEM_SWORD_RAPIER,
+		.pid = CHARACTER_EIRIKA,
+	},
+	{}
 };

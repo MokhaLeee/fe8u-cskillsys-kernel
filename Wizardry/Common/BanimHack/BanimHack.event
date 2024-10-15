@@ -1,10 +1,9 @@
 #ifndef BANIM_HACK_INSTALLED
 #define BANIM_HACK_INSTALLED
 
-#include "Source/C01.lyn.event"
 #include "Source/C07.lyn.event"
 
-/*
+/**
  * mov r0, r7
  * blh /routine
  * ldr r0, =0x080596CC + 1
@@ -16,7 +15,6 @@
 #define InjectBanimCmd(index, routine, pr_label) "PrBanimCmd(pr_label, routine); InjectBanimCmdExt(index, pr_label)"
 
 ALIGN 4
-InjectBanimCmd(0x01, Banim_C01, pBanim_C01)
 InjectBanimCmd(0x07, Banim_C07, pBanim_C07)
 
 #endif /* BANIM_HACK_INSTALLED */

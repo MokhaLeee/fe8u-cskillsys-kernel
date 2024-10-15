@@ -34,6 +34,7 @@ SID_FuryPlus
 SID_FortressDef
 SID_FortressRes
 SID_LifeAndDeath
+SID_Leader
 
 // Battle effective
 SID_Resourceful
@@ -115,6 +116,7 @@ SID_SuperLuck
 SID_Spurn
 SID_Counter
 SID_CounterMagic
+SID_BonusDoubler
 
 // Weapon triangle
 SID_SwordBreaker
@@ -243,6 +245,14 @@ SID_SpurSpd
 SID_Solidarity
 SID_MaleficAura
 
+// debuff skills
+SID_ChillPow
+SID_ChillMag
+SID_ChillSkl
+SID_ChillSpd
+SID_ChillLck
+SID_ChillDef
+SID_ChillRes
 SID_PowHone
 SID_MagHone
 SID_SklHone

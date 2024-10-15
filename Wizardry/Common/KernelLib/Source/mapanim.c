@@ -3,16 +3,16 @@
 
 void MapAnim_CommonInit(void)
 {
-    EndAllMus();
-    RenderBmMap();
-    RefreshEntityBmMaps();
-    RefreshUnitSprites();
+	EndAllMus();
+	RenderBmMap();
+	RefreshEntityBmMaps();
+	RefreshUnitSprites();
 }
 
 void MapAnim_CommonEnd(void)
 {
-    ResetMuAnims();
-    InitBmBgLayers();
-    LoadUiFrameGraphics();
-    LoadObjUIGfx();
+	ResetMuAnims();
+	InitBmBgLayers();
+	LoadUiFrameGraphics();
+	LoadObjUIGfx();
 }

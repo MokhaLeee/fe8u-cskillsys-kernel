@@ -4,162 +4,157 @@
 
 static void DisplayHpStr(void)
 {
-    int bank, color;
-    struct Unit * unit = gStatScreen.unit;
+	int bank, color;
+	struct Unit *unit = gStatScreen.unit;
 
-    color = FACTION_BLUE == UNIT_FACTION(unit)
-          ? GetTextColorFromGrowth(GetUnitHpGrowth(unit))
-          : TEXT_COLOR_SYSTEM_GOLD;
+	color = UNIT_FACTION(unit) == FACTION_BLUE
+		  ? GetTextColorFromGrowth(GetUnitHpGrowth(unit))
+		  : TEXT_COLOR_SYSTEM_GOLD;
 
-    PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
+	PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
 
-    ModifyTextPal(bank, color);
-    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
+	ModifyTextPal(bank, color);
+	gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
 
-    PutTwoSpecialChar(
-        gBG0TilemapBuffer + TILEMAP_INDEX(1, 17),
-        color,
-        0x22, 0x23);
+	PutTwoSpecialChar(
+		gBG0TilemapBuffer + TILEMAP_INDEX(1, 17),
+		color,
+		0x22, 0x23);
 
-    ResetActiveFontPal();
+	ResetActiveFontPal();
 }
 
 STATIC_DECLAR void DisplayHpGrowthValue(void)
 {
-    int bank, color = GetTextColorFromGrowth(GetUnitHpGrowth(gStatScreen.unit));
-    ModifyTextPal(bank, color);
-    gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
+	int bank, color = GetTextColorFromGrowth(GetUnitHpGrowth(gStatScreen.unit));
 
-    PutNumberOrBlank(
-        gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
-        TEXT_COLOR_SYSTEM_GOLD,
-        GetUnitHpGrowth(gStatScreen.unit));
+	ModifyTextPal(bank, color);
+	gActiveFont->tileref = TILEREF(gActiveFont->tileref & 0xFFF, bank);
 
-    ResetActiveFontPal();
+	PutNumberOrBlank(
+		gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
+		TEXT_COLOR_SYSTEM_GOLD,
+		GetUnitHpGrowth(gStatScreen.unit));
+
+	ResetActiveFontPal();
 }
 
 STATIC_DECLAR void DisplayHpBmValue(void)
 {
-    struct Unit * unit = gStatScreen.unit;
+	struct Unit *unit = gStatScreen.unit;
 
-    int hpcur = GetUnitCurrentHp(unit);
-    int hpmax = GetUnitMaxHp(unit);
+	int hpcur = GetUnitCurrentHp(unit);
+	int hpmax = GetUnitMaxHp(unit);
 
-    int color = hpcur == hpmax
-              ? TEXT_COLOR_SYSTEM_GREEN
-              : TEXT_COLOR_SYSTEM_BLUE;
+	int color = hpcur == hpmax
+			  ? TEXT_COLOR_SYSTEM_GREEN
+			  : TEXT_COLOR_SYSTEM_BLUE;
 
-    // Display '/' labels
-    PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
+	// Display '/' labels
+	PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
 
-    /* Display current hp */
-    if (hpcur > 99)
-        PutTwoSpecialChar(
-            gBG0TilemapBuffer + TILEMAP_INDEX(3, 17),
-            color, 0x14, 0x14);
-    else
-        PutNumberOrBlank(
-            gBG0TilemapBuffer + TILEMAP_INDEX(4, 17),
-            color, hpcur);
+	/* Display current hp */
+	if (hpcur > 99)
+		PutTwoSpecialChar(
+			gBG0TilemapBuffer + TILEMAP_INDEX(3, 17),
+			color, 0x14, 0x14);
+	else
+		PutNumberOrBlank(
+			gBG0TilemapBuffer + TILEMAP_INDEX(4, 17),
+			color, hpcur);
 
-    /* Display max hp */
-    if (hpmax > 99)
-        PutTwoSpecialChar(
-            gBG0TilemapBuffer + TILEMAP_INDEX(6, 17),
-            color, 0x14, 0x14);
-    else
-        PutNumberOrBlank(
-            gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
-            color, hpmax);
+	/* Display max hp */
+	if (hpmax > 99)
+		PutTwoSpecialChar(
+			gBG0TilemapBuffer + TILEMAP_INDEX(6, 17),
+			color, 0x14, 0x14);
+	else
+		PutNumberOrBlank(
+			gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
+			color, hpmax);
 }
 
 void ToggleUnitLeftPage(bool toggle)
 {
-    TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 3, 17), 5, 2, 0);
+	TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 3, 17), 5, 2, 0);
 
-    if (toggle == false)
-        DisplayHpBmValue();
-    else
-        DisplayHpGrowthValue();
+	if (toggle == false)
+		DisplayHpBmValue();
+	else
+		DisplayHpGrowthValue();
 }
 
 STATIC_DECLAR void DisplayLeftPanelHp(void)
 {
-    DisplayHpStr();
-    DisplayHpBmValue();
+	DisplayHpStr();
+	DisplayHpBmValue();
 }
 
 LYN_REPLACE_CHECK(DisplayLeftPanel);
 void DisplayLeftPanel(void)
 {
-    const char * namestr = GetStringFromIndex(UNIT_NAME_ID(gStatScreen.unit));
-    unsigned namexoff = GetStringTextCenteredPos(0x30, namestr);
+	const char *namestr = GetStringFromIndex(UNIT_NAME_ID(gStatScreen.unit));
+	unsigned int namexoff = GetStringTextCenteredPos(0x30, namestr);
 
-    InstallExpandedTextPal();
-    BG_Fill(gBG0TilemapBuffer, 0);
+	InstallExpandedTextPal();
+	BG_Fill(gBG0TilemapBuffer, 0);
 
-    // Generate battle stats for unit for display later
-    BattleGenerateUiStats(
-        gStatScreen.unit,
-        GetUnitEquippedWeaponSlot(gStatScreen.unit));
+	// Generate battle stats for unit for display later
+	BattleGenerateUiStats(
+		gStatScreen.unit,
+		GetUnitEquippedWeaponSlot(gStatScreen.unit));
 
-    // Display character name
-    PutDrawText(
-        &gStatScreen.text[STATSCREEN_TEXT_CHARANAME],
-        gBG0TilemapBuffer + TILEMAP_INDEX(3, 10),
-        TEXT_COLOR_SYSTEM_WHITE, namexoff, 0, namestr);
+	// Display character name
+	PutDrawText(
+		&gStatScreen.text[STATSCREEN_TEXT_CHARANAME],
+		gBG0TilemapBuffer + TILEMAP_INDEX(3, 10),
+		TEXT_COLOR_SYSTEM_WHITE, namexoff, 0, namestr);
 
-    // Display class name
-    PutDrawText(
-        &gStatScreen.text[STATSCREEN_TEXT_CLASSNAME],
-        gBG0TilemapBuffer + TILEMAP_INDEX(1, 13),
-        TEXT_COLOR_SYSTEM_WHITE, 0, 0,
-        GetStringFromIndex(gStatScreen.unit->pClassData->nameTextId));
+	// Display class name
+	PutDrawText(
+		&gStatScreen.text[STATSCREEN_TEXT_CLASSNAME],
+		gBG0TilemapBuffer + TILEMAP_INDEX(1, 13),
+		TEXT_COLOR_SYSTEM_WHITE, 0, 0,
+		GetStringFromIndex(gStatScreen.unit->pClassData->nameTextId));
 
-    // Display Lv/E labels
-    PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(1, 15), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_LV_A, TEXT_SPECIAL_LV_B);
-    PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 15), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_E);
+	// Display Lv/E labels
+	PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(1, 15), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_LV_A, TEXT_SPECIAL_LV_B);
+	PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 15), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_E);
 
-    // Display level
-    PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(4, 15), TEXT_COLOR_SYSTEM_BLUE,
-        gStatScreen.unit->level);
+	// Display level
+	PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(4, 15), TEXT_COLOR_SYSTEM_BLUE,
+		gStatScreen.unit->level);
 
-    // Display exp
-    PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(7, 15), TEXT_COLOR_SYSTEM_BLUE,
-        gStatScreen.unit->exp);
+	// Display exp
+	PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(7, 15), TEXT_COLOR_SYSTEM_BLUE,
+		gStatScreen.unit->exp);
 
 #if CHAX
-    DisplayLeftPanelHp();
+	DisplayLeftPanelHp();
 #else
-    // Display Hp label
-    PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(1, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_A, TEXT_SPECIAL_HP_B);
+	// Display Hp label
+	PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(1, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_HP_A, TEXT_SPECIAL_HP_B);
 
-    // Display current hp
-    if (GetUnitCurrentHp(gStatScreen.unit) > 99)
-    {
-        // Display '--' if current hp > 99
-        PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(3, 17), TEXT_COLOR_SYSTEM_BLUE,
-            TEXT_SPECIAL_DASH, TEXT_SPECIAL_DASH);
-    }
-    else
-    {
-        // Display current hp
-        PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(4, 17), TEXT_COLOR_SYSTEM_BLUE,
-            GetUnitCurrentHp(gStatScreen.unit));
-    }
+	// Display current hp
+	if (GetUnitCurrentHp(gStatScreen.unit) > 99) {
+		// Display '--' if current hp > 99
+		PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(3, 17), TEXT_COLOR_SYSTEM_BLUE,
+			TEXT_SPECIAL_DASH, TEXT_SPECIAL_DASH);
+	} else {
+		// Display current hp
+		PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(4, 17), TEXT_COLOR_SYSTEM_BLUE,
+			GetUnitCurrentHp(gStatScreen.unit));
+	}
 
-    // Display max hp
-    if (GetUnitMaxHp(gStatScreen.unit) > 99)
-    {
-        // Display '--' if max hp > 99
-        PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(6, 17), TEXT_COLOR_SYSTEM_BLUE,
-            TEXT_SPECIAL_DASH, TEXT_SPECIAL_DASH);
-    }
-    else
-    {
-        // Display max hp
-        PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(7, 17), TEXT_COLOR_SYSTEM_BLUE,
-            GetUnitMaxHp(gStatScreen.unit));
-    }
+	// Display max hp
+	if (GetUnitMaxHp(gStatScreen.unit) > 99) {
+		// Display '--' if max hp > 99
+		PutTwoSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(6, 17), TEXT_COLOR_SYSTEM_BLUE,
+			TEXT_SPECIAL_DASH, TEXT_SPECIAL_DASH);
+	} else {
+		// Display max hp
+		PutNumberOrBlank(gBG0TilemapBuffer + TILEMAP_INDEX(7, 17), TEXT_COLOR_SYSTEM_BLUE,
+			GetUnitMaxHp(gStatScreen.unit));
+	}
 #endif
 }

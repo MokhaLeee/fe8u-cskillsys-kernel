@@ -35,6 +35,4 @@ InjectEventLoCmd(EVENT_CMD_SKILL, EventSkillOperation)
 /* Scoll */
 #include "SkillScroll/SkillScroll.event"
 
-#include "MiscSkillEffects/MiscSkillEffects.event"
-
 #endif

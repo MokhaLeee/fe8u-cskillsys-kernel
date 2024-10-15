@@ -1,4 +1,4 @@
-# FE8U C-SkillSys Kernel
+# FE8U C-SkillSys
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com) 
 
@@ -11,7 +11,7 @@ Modern CHAX for FE8U-SkillSystem.
 ## Main features
 
 1. More diverse functionality features
-    - 350+ skills have been introduced and with the bit width of skill index has been expanded to 16 bits, it can support up to 0xFFFF skills working at the same time in theory.
+    - 450+ skills have been introduced and with the bit width of skill index has been expanded to 16 bits, it can support up to 0xFFFF skills working at the same time in theory.
     -  Each unit can carry up to 23 skills, 7 of which can be configured through the prepscreen freely.
     - Introduced a lot of new combat mechanics, such as ThreeHouses style hit rate decreases with battle range increses, Engage style combo-attack, etc. Combat calculation formula has been restructured so that we can get more reasonable calculation on damage increase and reduction, and thus a large number of FE-Heros skills were introduced based on that.
     - Reworked movement calculation ARM function enables more Heros style mobility skills introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the introduction of Pass skill.
@@ -51,8 +51,9 @@ Modern CHAX for FE8U-SkillSystem.
 ```bash
 cd Tools
 git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git
-git clone https://github.com/StanHash/EventAssembler.git --recursive
+git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix
 git clone https://github.com/StanHash/FE-PyTools.git --recursive
+git clone https://github.com/MokhaLeee/check_patch.git
 ```
 
 2. Install dependencies
@@ -61,7 +62,7 @@ git clone https://github.com/StanHash/FE-PyTools.git --recursive
 sudo apt-get -y install binutils-arm-none-eabi ctags \
     gcc-arm-none-eabi build-essential cmake re2c ghc \
     cabal-install libghc-vector-dev libghc-juicypixels-dev \
-    python3-pip pkg-config libpng* bsdiff moreutils
+    python3-pip pkg-config libpng* bsdiff moreutils perl
 
 pip install pyelftools PyInstaller tmx six
 ```
@@ -82,7 +83,7 @@ echo "export PATH=\${DEVKITPRO}/tools/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-3. Build EA
+4. Build EA
 
 > [!WARNING]
 > Please **Strictly** follow the following steps to build linux EA by yourself.
@@ -98,17 +99,21 @@ sudo ./dotnet-install.sh --channel 6.0
 
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
-```
 
-```bash
 # Build EA
 cd Tools/EventAssembler
 ./build.sh
 ```
 
-5. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the repo directory.
+5. Install code review tools
 
-4. build:
+```bash
+cp Tools/scripts/pre-commit .git/hooks/
+```
+
+6. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the repo directory.
+
+7. build:
 
 ```bash
 make
