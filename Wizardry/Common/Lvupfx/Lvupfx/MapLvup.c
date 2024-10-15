@@ -19,13 +19,13 @@ int GetManimLevelUpStatGain(int actor_id, int stat_num)
         return BU_CHG_MAG(gManimSt.actor[actor_id].bu);
 
     case 4:
-        return gManimSt.actor[actor_id].bu->changeLck;
-
-    case 5:
         return gManimSt.actor[actor_id].bu->changeSkl;
 
-    case 6:
+    case 5:
         return gManimSt.actor[actor_id].bu->changeSpd;
+
+    case 6:
+        return gManimSt.actor[actor_id].bu->changeLck;
 
     case 7:
         return gManimSt.actor[actor_id].bu->changeDef;
@@ -60,13 +60,13 @@ int GetManimLevelUpBaseStat(int actor_id, int stat_num)
         return UNIT_MAG(unit);
 
     case 4:
-        return unit->lck;
-
-    case 5:
         return unit->skl;
 
-    case 6:
+    case 5:
         return unit->spd;
+
+    case 6:
+        return unit->lck;
 
     case 7:
         return unit->def;
