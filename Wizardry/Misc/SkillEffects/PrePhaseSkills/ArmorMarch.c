@@ -5,30 +5,21 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+#include "pre-phase.h"
+
 FORCE_DECLARE static void _SetArmorMarchStatDebuff(struct Unit *unit)
 {
 	SetUnitStatDebuff(unit, UNIT_STAT_BUFF_ARMOR_MARCH);
 }
 
-bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
+/**
+ * Exec in common, FOR_UNITS_FACTION:
+ */
+void ExecArmorMarch(struct Unit *unit)
 {
 #if (defined(SID_ArmorMarch) && (COMMON_SKILL_VALID(SID_ArmorMarch)))
-	int i, j;
-
-	for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i) {
-		struct Unit *unit = GetUnit(i);
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
-		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-			continue;
-
-		if (!SkillTester(unit, SID_ArmorMarch))
-			continue;
-
-		if (!CheckClassArmor(UNIT_CLASS_ID(unit)))
-			continue;
+	if (SkillTester(unit, SID_ArmorMarch) && CheckClassArmor(UNIT_CLASS_ID(unit))) {
+		int j;
 
 		for (j = 0; j < ARRAY_COUNT_RANGE1x1; j++) {
 			int _x = unit->xPos + gVecs_1x1[j].x;
@@ -36,10 +27,7 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
 
 			struct Unit *unit_ally = GetUnitAtPosition(_x, _y);
 
-			if (!UNIT_IS_VALID(unit_ally))
-				continue;
-
-			if (unit_ally->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+			if (!UNIT_ALIVE(unit_ally))
 				continue;
 
 			if (!AreUnitsAllied(unit->index, unit_ally->index))
@@ -52,5 +40,4 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
 		}
 	}
 #endif
-	return false;
 }

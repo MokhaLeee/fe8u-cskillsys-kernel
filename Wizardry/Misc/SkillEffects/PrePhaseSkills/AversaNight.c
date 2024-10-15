@@ -4,68 +4,52 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-bool PrePhaseFunc_AversaNight(ProcPtr proc)
+#include "pre-phase.h"
+
+void SetupAversaNight(struct Unit *unit)
 {
+	/**
+	 * This should lie in PrePhase loop: FOR_UNITS_FACTION
+	 */
 #if defined(SID_AversaNight) && (COMMON_SKILL_VALID(SID_AversaNight))
-	int uid;
-	int max_hp = 0;
-	bool AversaNight_eff = false;
 
-	for (uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++) {
-		struct Unit *unit = GetUnit(uid);
+	if (SkillTester(unit, SID_AversaNight)) {
+		int _max_hp = GetUnitMaxHp(unit);
 
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
-		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-			continue;
-
-		if (SkillTester(unit, SID_AversaNight)) {
-			AversaNight_eff = true;
-
-			if (max_hp > GetUnitMaxHp(unit))
-				max_hp = GetUnitMaxHp(unit);
-		}
+		if (gPrePhaseSkillBuf.AversaNight_Mhp < _max_hp)
+			gPrePhaseSkillBuf.AversaNight_Mhp = _max_hp;
 	}
+#endif
+}
 
-	if (AversaNight_eff == true) {
-		u32 i, tuid;
-		struct Unit *tunit;
+void ExecAversaNight(struct Unit *unit)
+{
+	/**
+	 * This should lie in PrePhase loop: FOR_UNITS_ALL
+	 */
 
-		for (tuid = 1; tuid < 0xC0; tuid++) {
-			if (AreUnitsAllied(tuid, gPlaySt.faction + 1))
-				continue;
+#if defined(SID_AversaNight) && (COMMON_SKILL_VALID(SID_AversaNight))
+	int i;
 
-			tunit = GetUnit(tuid);
-			if (!UNIT_IS_VALID(tunit))
-				continue;
+	if (unit->curHP >= (gPrePhaseSkillBuf.AversaNight_Mhp - SKILL_EFF0(SID_AversaNight)))
+		return;
 
-			if (tunit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-				continue;
+	for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++) {
+		int x = unit->xPos + gVecs_2x2[i].x;
+		int y = unit->yPos + gVecs_2x2[i].y;
+		struct Unit *unit2 = GetUnitAtPosition(x, y);
 
-			if (tunit->curHP >= (max_hp - SKILL_EFF0(SID_AversaNight)))
-				continue;
+		if (!unit2)
+			continue;
 
-			for (i = 0; i < ARRAY_COUNT_RANGE2x2; i++) {
-				int x = tunit->xPos + gVecs_2x2[i].x;
-				int y = tunit->yPos + gVecs_2x2[i].y;
-				struct Unit *tunit2 = GetUnitAtPosition(x, y);
+		if (unit2->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+			continue;
 
-				if (!tunit2)
-					continue;
-
-				if (tunit2->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-					continue;
-
-				if (AreUnitsAllied(tunit->index, tunit2->index)) {
-					SetUnitStatusIndex(tunit, NEW_UNIT_STATUS_PANIC);
-					SetUnitStatDebuff(tunit, UNIT_STAT_DEBUFF_AversaNight);
-					break;
-				}
-			}
+		if (AreUnitsAllied(unit->index, unit2->index)) {
+			SetUnitStatusIndex(unit, NEW_UNIT_STATUS_PANIC);
+			SetUnitStatDebuff(unit, UNIT_STAT_DEBUFF_AversaNight);
+			break;
 		}
 	}
 #endif
-
-	return false;
 }

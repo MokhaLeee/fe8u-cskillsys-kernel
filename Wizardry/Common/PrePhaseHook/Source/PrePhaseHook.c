@@ -1,12 +1,5 @@
 #include "common-chax.h"
-
-struct ProcPrePhase {
-	PROC_HEADER;
-	int index;
-};
-
-typedef bool (*PrePhaseFunc_t)(struct ProcPrePhase *proc);
-extern const PrePhaseFunc_t gPrePhaseFuncs[];
+#include "pre-phase.h"
 
 static void PrePhaseHook_Init(struct ProcPrePhase *proc);
 static void PrePhaseHook_Main(struct ProcPrePhase *proc);
