@@ -129,25 +129,11 @@ void PrePhaseChill_CollectActors(struct ProcPrePhaseChill *proc)
 	}
 }
 
-void remove_duplicates(s8 list[], int count)
-{
-	int i;
-	bool seen[0x100] = { false };
-
-	for (i = 0; i < count; i++) {
-		if (list[i] != 0) {
-			if (!seen[list[i]])
-				seen[list[i]] = true;
-			else
-				list[i] = 0;
-		}
-	}
-}
-
 void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 {
 	int i, tuid;
 	int max_lut[UNIT_STATUS_MAX] = { 0 };
+	bool seen[0x100];
 
 	for (tuid = 1; tuid < 0xC0; tuid++) {
 		struct Unit *tunit;
@@ -166,7 +152,6 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			if (max_lut[UNIT_STATUS_POW] < _status) {
 				max_lut[UNIT_STATUS_POW] = _status;
 				proc->target_uids[UNIT_STATUS_POW] = tuid;
-				proc->target_uids_anim[UNIT_STATUS_POW] = tuid;
 			}
 		}
 
@@ -177,7 +162,6 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			if (max_lut[UNIT_STATUS_MAG] < _status) {
 				max_lut[UNIT_STATUS_MAG] = _status;
 				proc->target_uids[UNIT_STATUS_MAG] = tuid;
-				proc->target_uids_anim[UNIT_STATUS_MAG] = tuid;
 			}
 		}
 
@@ -188,7 +172,6 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			if (max_lut[UNIT_STATUS_SKL] < _status) {
 				max_lut[UNIT_STATUS_SKL] = _status;
 				proc->target_uids[UNIT_STATUS_SKL] = tuid;
-				proc->target_uids_anim[UNIT_STATUS_SKL] = tuid;
 			}
 		}
 
@@ -199,7 +182,6 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			if (max_lut[UNIT_STATUS_SPD] < _status) {
 				max_lut[UNIT_STATUS_SPD] = _status;
 				proc->target_uids[UNIT_STATUS_SPD] = tuid;
-				proc->target_uids_anim[UNIT_STATUS_SPD] = tuid;
 			}
 		}
 
@@ -210,7 +192,6 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			if (max_lut[UNIT_STATUS_LCK] < _status) {
 				max_lut[UNIT_STATUS_LCK] = _status;
 				proc->target_uids[UNIT_STATUS_LCK] = tuid;
-				proc->target_uids_anim[UNIT_STATUS_LCK] = tuid;
 			}
 		}
 
@@ -221,7 +202,6 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			if (max_lut[UNIT_STATUS_DEF] < _status) {
 				max_lut[UNIT_STATUS_DEF] = _status;
 				proc->target_uids[UNIT_STATUS_DEF] = tuid;
-				proc->target_uids_anim[UNIT_STATUS_DEF] = tuid;
 			}
 		}
 
@@ -232,13 +212,21 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			if (max_lut[UNIT_STATUS_RES] < _status) {
 				max_lut[UNIT_STATUS_RES] = _status;
 				proc->target_uids[UNIT_STATUS_RES] = tuid;
-				proc->target_uids_anim[UNIT_STATUS_RES] = tuid;
 			}
 		}
 	}
 
 	/* Remove same animed targets */
-	remove_duplicates(proc->target_uids_anim, ARRAY_COUNT(proc->target_uids_anim));
+	memset(seen, 0, sizeof(seen));
+
+	for (i = 0; i < UNIT_STATUS_MAX; i++) {
+		u8 __tuid = (proc->target_uids[i] & 0xFF);
+
+		if (!seen[__tuid]) {
+			seen[__tuid] = true;
+			proc->target_uids_anim[i] = __tuid;
+		}
+	}
 
 	for (i = 0; i < UNIT_STATUS_MAX; i++) {
 		LTRACEF("[%d]Dump actor=%x, target=%x, anim=%x",
