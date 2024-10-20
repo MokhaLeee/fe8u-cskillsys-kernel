@@ -180,7 +180,6 @@
 # e with accent mark (é)
 [AccentedE] = 0xE9
 
-
 ### Message Strings
 
 MSG_0000 {}

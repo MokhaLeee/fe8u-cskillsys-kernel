@@ -15,6 +15,7 @@ mkfile_dir := $(dir $(mkfile_path))
 
 TEXT_PROCESS := $(PYTHON3) $(mkfile_dir)Scripts/text-process-c.py
 PARSEFILE    := $(PYTHON3) $(mkfile_dir)Scripts/parsefile-utf8.py
+# PARSEFILE    :=$(mkfile_dir)ParseFileUTF8
 
 TEXT_DIR ?= $(mkfile_dir)
 

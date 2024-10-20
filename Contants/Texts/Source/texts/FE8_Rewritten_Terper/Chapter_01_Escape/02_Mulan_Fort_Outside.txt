@@ -1,0 +1,23 @@
+## Chapter_01_Scene_02_Convo_01
+[OpenMidRight][LoadFace_Breguet]
+[OpenMidLeft][LoadFace_SoldierBrown]
+Commander Breguet, the enemy appears to[N]
+be fortifying its position in the castle.[A][N]
+[OpenMidRight]
+Hmph![A][N]
+They're tenacious, but they have[N]
+no hope of stopping our advance![A][N]
+[OpenMidLeft]
+What are your orders, sir?[A][N]
+[OpenMidRight]
+Ha![A] Orders?[A] You just stand here and[N]
+watch.[A] I'll crush them myself![A][N]
+[OpenMidLeft]
+Sir![A][X]
+
+
+
+## Chapter_01_Scene_02_Convo_02
+[OpenMidLeft][LoadFace_Breguet]
+Ha![A] That's what happens[N]
+when you face my lance.[A][X]

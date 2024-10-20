@@ -1,7 +1,22 @@
+// #define WorldMapIntroPointerTable(id,offset) "PUSH; ORG 0x8B3ad8+(4*id); POIN offset; POP"
+
+// {
+//   #define PrologueWMEventsID 0x1
+//   ALIGN 4
+//   #include "Source/Chapter_02_The_Protected/WM_Chapter_02_The_Protected.lyn.event"
+// }
+// ALIGN 4
+// #include "EpilogueEvents.event"
+
 {
     WARNING __Prologue_event_rewritten__
-    EventPointerTable(7, ThisEvent)
+   // EventPointerTable(7, ThisEvent)
+   // #include "Source/debug-event.lyn.event"
+   // #include "Source/event-call.lyn.event"
 
-    #include "Source/debug-event.lyn.event"
-    #include "Source/event-call.lyn.event"
+    EventPointerTable(7, ThisEvent)
+    #include "Source/Chapter_00_The_Fall_Of_Renais/Chapter_00_The_Fall_Of_Renais.lyn.event"
+
+    // EventPointerTable(0xD, Chapter_Event)
+    // #include "Source/Chapter_02_The_Protected/WM_Chapter_02_The_Protected.lyn.event"
 }

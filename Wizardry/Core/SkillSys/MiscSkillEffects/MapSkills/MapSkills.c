@@ -3,7 +3,7 @@
 #include "constants/skills.h"
 #include "mu.h"
 #include "debuff.h"
-#include "class-pairs.h"
+#include "jester_headers/class-pairs.h"
 
 /*
 ** This array is static in the decomp, but it wouldn't compile for me otherwise

@@ -3,7 +3,7 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
-#include "class-pairs.h"
+#include "jester_headers/class-pairs.h"
 
 bool PrePhase_TickDopplegangerSkillStatus(ProcPtr proc)
 {

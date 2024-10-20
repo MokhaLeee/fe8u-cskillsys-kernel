@@ -9,7 +9,7 @@
 #include "constants/skills.h"
 #include "weapon-range.h"
 
-#include "custom-functions.h"
+#include "jester_headers/custom-functions.h"
 
 STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit * attacker, struct BattleUnit * defender)
 {

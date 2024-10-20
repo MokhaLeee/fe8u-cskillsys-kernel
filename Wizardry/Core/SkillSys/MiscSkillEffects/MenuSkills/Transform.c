@@ -4,7 +4,7 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 #include "debuff.h"
-#include "class-pairs.h"
+#include "jester_headers/class-pairs.h"
 
 #if defined(SID_Transform) && (COMMON_SKILL_VALID(SID_Transform))
 // Predefine an array of key-value pairs
