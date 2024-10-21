@@ -1,7 +1,6 @@
 #ifndef POST_ACTION_HOOK_H
 #define POST_ACTION_HOOK_H
 
-#include "Extensions/ProcDefinitions.txt"
 #include "source/PostActionHook.lyn.event"
 
 // include "data.event"
