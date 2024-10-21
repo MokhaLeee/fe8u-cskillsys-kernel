@@ -149,6 +149,16 @@
  */
 //#define CONFIG_INSTALL_BASE_CONVERSATIONS
 
+/**
+ * By Tequila:
+ * Reworks the text engine to allow, among other things;
+ * 3 line text boxes, multiple colors, variable text,
+ * speed, flipped portraits and more!
+ * 
+ * Installed in: Wizardry/External/TextEngineRework/Installer.event
+ * Source: https://feuniverse.us/t/teqs-minor-assembly-shenanigans/1655/118
+ */
+#define CONFIG_TEXT_ENGINE_REWORK
 
 /**
  * Levelup mode

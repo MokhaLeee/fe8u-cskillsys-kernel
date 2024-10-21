@@ -38,6 +38,10 @@
     #include "ItemDesc/Installer.event"
 #endif
 
+#ifdef CONFIG_TEXT_ENGINE_REWORK
+    #include "TextEngineRework/Installer.event"
+#endif
+
 #ifdef CONFIG_INSTALL_BASE_CONVERSATIONS
 //     #include "BaseConversations/Installer.event"
 #endif

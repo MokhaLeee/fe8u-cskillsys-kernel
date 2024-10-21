@@ -50,4 +50,7 @@ W.I.P.[X]
 #include texts/FE8_Rewritten_Terper/Chapter_01_Escape/05_Mulan_Fort_Inside.txt
 #include texts/FE8_Rewritten_Terper/Chapter_01_Escape/06_Castle_Frelia.txt
 
-#include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/00_Overworld_Pre.txt
+#include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Overworld.txt
+#include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Pre_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/In_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Post_Chapter.txt

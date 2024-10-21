@@ -129,6 +129,23 @@ static const EventScr EventScr_Beginning[] = {
     // Text(Chapter_01_Scene_06_Convo_02)
     // Text(Chapter_01_Scene_06_Convo_03)
 
+    // Text(Chapter_02_Scene_01_Convo_01)
+    // Text(Chapter_02_Scene_02_Convo_01)
+    // Text(Chapter_02_Scene_03_Convo_01)
+    // Text(Chapter_02_Scene_04_Convo_01)
+    // Text(Chapter_02_Scene_05_Convo_01)
+    // Text(Chapter_02_Scene_06_Convo_01)
+    // Text(Chapter_02_Scene_06_Convo_02)
+    // Text(Chapter_02_Scene_06_Convo_03)
+
+    // Text(Chapter_02_Scene_07_Convo_01)
+    // Text(Chapter_02_Scene_08_Convo_01)
+    Text(Chapter_02_Scene_09_Convo_01)
+    Text(Chapter_02_Scene_10_Convo_01)
+    Text(Chapter_02_Scene_11_Convo_01)
+    Text(Chapter_02_Scene_12_Convo_01)
+    Text(Chapter_02_Scene_13_Convo_01)
+
     NoFade
     ENDA
 };
