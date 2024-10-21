@@ -1,6 +1,6 @@
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"
-#include "Extensions/ProcDefinitions.txt"
+#include "include/ProcDefinitions.txt"
 
 #include "include/Configs/configs.h"
 #include "include/Configs/CustomDefinitions.event"

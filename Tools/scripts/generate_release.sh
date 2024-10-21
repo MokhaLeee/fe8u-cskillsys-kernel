@@ -44,3 +44,9 @@ cat Contents/Texts/TextDefinitions.h > $RELEASE_DIR/include/constants/texts.h
 cat Contents/Gfx/GfxDefs.h > $RELEASE_DIR/include/constants/gfx.h
 
 collect_header $RELEASE_DIR/include
+
+# collect buildfile
+RELEASE_EADIR=$RELEASE_DIR/buildfile
+
+install -d $RELEASE_EADIR
+cp -r Wizardry Data Contents include main.event $RELEASE_EADIR
