@@ -5,6 +5,10 @@
     ERROR "Need installed before tools helpers included!"
 #endif
 
+#ifdef TextTable
+#undef TextTable
+#endif
+
 #define TextTable NewTextTable // define to not conflict with Tool Helpers
 
 #define AnitiHuff(ptr) "0x88000000 | ptr"
