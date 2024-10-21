@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
 
     - name: Install deps
       run: |
@@ -19,7 +24,8 @@ jobs:
         sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake
         sudo apt-get install -y re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
         sudo apt-get install -y python3-pip pkg-config libpng* bsdiff moreutils
-        sudo apt-get install -y python3-pyelftools python3-PyInstaller python3-tmx python3-six
+        python3 -m pip install --upgrade pip
+        python3 -m pip install pyelftools PyInstaller tmx six
 
     - name: Install DEVKITPRO
       run: |
