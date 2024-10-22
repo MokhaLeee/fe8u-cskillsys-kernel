@@ -209,19 +209,16 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # =========
 
 TEXT_DIR    := $(CONTENTS_DIR)/Texts
-TEXT_MAIN   := $(TEXT_DIR)/Source/TextMain.txt
+TEXT_MAIN   := $(TEXT_DIR)/text-main.txt
 TEXT_SOURCE := $(shell find $(TEXT_DIR) -type f -name '*.txt')
 
-export TEXT_DEF := $(TEXT_DIR)/TextDefinitions.h
+export TEXT_DEF := $(TEXT_DIR)/msg_data.h
 
 text: $(TEXT_DEF)
 PRE_BUILD += text
 
 $(TEXT_DEF): $(TEXT_MAIN) $(TEXT_SOURCE)
 	@$(MAKE) -C $(TEXT_DIR)
-
-%.fetxt.dmp: %.fetxt
-	@$(MAKE) -f $(TEXT_DIR)/makefile $@
 
 CLEAN_BUILD += $(TEXT_DIR)
 
