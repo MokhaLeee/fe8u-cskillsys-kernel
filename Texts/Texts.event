@@ -1,0 +1,16 @@
+/* Auto generated */
+#include "build/msg_data.lyn.event"
+
+PUSH
+    ORG 0x0006DC
+    POIN gMsgHuffmanTableRootRe
+
+    ORG 0x0006E0
+    POIN gMsgHuffmanTableRe
+
+    ORG 0xa26c
+        POIN gMsgTableRe
+
+    ORG 0xa2a0
+        POIN gMsgTableRe
+POP

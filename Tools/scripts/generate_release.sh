@@ -38,7 +38,7 @@ cp -rf include $RELEASE_DIR
 cp -rf Patches $RELEASE_DIR
 
 # fix texts
-cat Contents/Texts/TextDefinitions.h > $RELEASE_DIR/include/constants/texts.h
+cat Texts/build/msg_data.h > $RELEASE_DIR/include/constants/texts.h
 
 # fix gfx
 cat Contents/Gfx/GfxDefs.h > $RELEASE_DIR/include/constants/gfx.h
@@ -49,4 +49,4 @@ collect_header $RELEASE_DIR/include
 RELEASE_EADIR=$RELEASE_DIR/buildfile
 
 install -d $RELEASE_EADIR
-cp -r Wizardry Data Contents include main.event $RELEASE_EADIR
+cp -r Wizardry Data Texts Contents include main.event $RELEASE_EADIR

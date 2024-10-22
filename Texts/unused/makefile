@@ -22,7 +22,7 @@ TEXT_MAIN   := $(TEXT_DIR)Source/TextMain.txt
 TEXT_SOURCE := $(shell find $(TEXT_DIR) -type f -name '*.txt')
 
 TEXT_EVENT  := $(TEXT_DIR)TextInstaller.event
-TEXT_DEF    ?= $(TEXT_DIR)TextDefinitions.h
+TEXT_DEF    ?= $(TEXT_DIR)msg_data.h
 
 all: $(TEXT_DEF)
 

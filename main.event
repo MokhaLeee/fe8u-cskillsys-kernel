@@ -1,6 +1,7 @@
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"
 #include "include/ProcDefinitions.txt"
+#include "Tools/Tool Helpers.txt"
 
 #include "include/Configs/configs.h"
 #include "include/Configs/CustomDefinitions.event"
@@ -16,21 +17,11 @@ ORG FreeSpaceKernel_Reloc
 MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
 ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
 
-ORG FreeSpaceDEMO
-    /**
-     * Put vanilla text data to the user space
-     */
-    #include "Contents/Texts/RepointText/RepointText.event"
-    #include "Contents/Texts/RepointText/RepointTextData.event"
-    /* <!>
-     * Tool helpers should installed after repointing
-     */
-    #include "Tools/Tool Helpers.txt"
-MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO)
-
 ORG FreeSpaceKernelData
+    #include "Texts/TextPreLoad.event" // install first
     #include "Data/Data.event"
     #include "Contents/Contents.event"
+    #include "Texts/Texts.event"
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
 

@@ -1,0 +1,11 @@
+ORG FreeSpaceDEMO
+    /**
+     * Put vanilla text data to the user space
+     */
+    #include "RepointText.event"
+    #include "RepointTextData.event"
+    /* <!>
+     * Tool helpers should installed after repointing
+     */
+    #include "Tools/Tool Helpers.txt"
+MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO)
