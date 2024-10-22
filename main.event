@@ -9,16 +9,22 @@
 #include "include/Definitions.event"
 
 ORG FreeSpaceKernel_Magic
-    /* "CSKILLSYS_K-09x" */
-    BYTE 0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x30 0x39 0x78 0x00
+    #include "Preload/Magic.event"
 
 ORG FreeSpaceKernel_Reloc
-    #include "Data/Reloc.event"
+    #include "Preload/Reloc.event"
 MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
 ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
 
 ORG FreeSpaceKernelData
-    #include "Texts/TextPreLoad.event" // install first
+    #include "Preload/AllocMsgTable.event"
+
+    /**
+    * <!>
+    * Tool helpers should installed after msg_table repointing
+    */
+    #include "Tools/Tool Helpers.txt"
+
     #include "Data/Data.event"
     #include "Contents/Contents.event"
     #include "Texts/Texts.event"
