@@ -18,8 +18,10 @@ MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - Free
 ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
 
 ORG FreeSpaceKernelData
+    #include "Texts/TextPreLoad.event" // install first
     #include "Data/Data.event"
     #include "Contents/Contents.event"
+    #include "Texts/Texts.event"
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
 

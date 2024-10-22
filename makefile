@@ -20,9 +20,10 @@ RAM_REF    := $(CONFIG_DIR)/config-memmap.s
 
 WIZARDRY_DIR := $(MK_DIR)Wizardry
 CONTENTS_DIR := $(MK_DIR)Contents
+TEXTS_DIR    := $(MK_DIR)Texts
 GAMEDATA_DIR := $(MK_DIR)Data
 
-HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
+HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR) $(TEXTS_DIR)
 
 all:
 	@$(MAKE) pre_build	|| exit 1
@@ -208,19 +209,18 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # = Texts =
 # =========
 
-TEXT_DIR    := $(CONTENTS_DIR)/Texts
-TEXT_MAIN   := $(TEXT_DIR)/text-main.txt
-TEXT_SOURCE := $(shell find $(TEXT_DIR) -type f -name '*.txt')
+TEXT_MAIN   := $(TEXTS_DIR)/text-main.txt
+TEXT_SOURCE := $(shell find $(TEXTS_DIR) -type f -name '*.txt')
 
-export TEXT_DEF := $(TEXT_DIR)/msg_data.h
+export TEXT_DEF := $(TEXTS_DIR)/build/msg_data.h
 
 text: $(TEXT_DEF)
 PRE_BUILD += text
 
 $(TEXT_DEF): $(TEXT_MAIN) $(TEXT_SOURCE)
-	@$(MAKE) -C $(TEXT_DIR)
+	@$(MAKE) -C $(TEXTS_DIR)
 
-CLEAN_BUILD += $(TEXT_DIR)
+CLEAN_BUILD += $(TEXTS_DIR)
 
 # ============
 # = Spritans =

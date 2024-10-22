@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Author: https://github.com/MokhaLeee
 
 import os, re, sys, struct
 import huffman
@@ -143,6 +144,9 @@ def text_to_utf8_u16_array(text, control_chars):
 
             u16_array.append(ch1)
 
+    if u16_array[-1] != 0:
+        u16_array.append(0)
+
     return u16_array
 
 def text_to_u16_array(text, control_chars, encoding_method):
@@ -218,7 +222,7 @@ def write_header(messages, header_file):
 
 def write_all_compressed_data(messages, code_table, data_file):
     for msg in messages:
-        data_file.write(f"static const u8 CompressedText_{msg.definiation}[] = " + "{")
+        data_file.write(f"const u8 CompressedText_{msg.definiation}[] = " + "{")
         for data in huffman.CompressData(msg.data, code_table):
             data_file.write(f"0x{data:02X}, ")
         data_file.write("};\n")
@@ -257,12 +261,13 @@ def main(args):
     try:
         input_fpath = args[0]
         input_parse_ref = args[1]
-        output_data = args[2]
-        output_header = args[3]
-        encoding_method = args[4]
+        output_table = args[2]
+        output_data = args[3]
+        output_header = args[4]
+        encoding_method = args[5]
 
     except IndexError:
-        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_data> <output_header> <'cp932' or 'utf8'>")
+        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_table> <output_data> <output_header> <'cp932' or 'utf8'>")
 
     control_chars = load_control_chars(input_parse_ref)
     messages = process_file(input_fpath, control_chars, encoding_method)
@@ -279,13 +284,19 @@ def main(args):
     with open(output_header, 'w', encoding='utf-8') as header_file:
         write_header(messages, header_file)
 
+    with open(output_table, 'w', encoding='utf-8') as table_file:
+        table_file.write('#include "global.h"\n\n')
+        for msg in messages:
+            table_file.write(f"extern const u8 CompressedText_{msg.definiation}[];\n")
+
+        print("")
+        write_text_table(messages, table_file)
+
     with open(output_data, 'w', encoding='utf-8') as data_file:
         data_file.write('#include "global.h"\n\n')
+        write_huffman_table(huffman_table, data_file)
         write_all_compressed_data(messages, code_table, data_file)
         data_file.write("\n")
-        write_huffman_table(huffman_table, data_file)
-        data_file.write("\n")
-        write_text_table(messages, data_file)
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
