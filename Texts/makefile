@@ -17,9 +17,9 @@ TEXT_PROCESS := $(PYTHON3) $(mkfile_dir)Scripts/textprocess-chax.py
 
 TEXT_DIR ?= $(mkfile_dir)
 
-TEXT_MAIN   := $(TEXT_DIR)text-main.txt
-TEXT_DEFS   := $(TEXT_DIR)textdefs.txt
-TEXT_SOURCE := $(shell find $(TEXT_DIR) -type f -name '*.txt')
+TEXT_MAIN := $(TEXT_DIR)text-main.txt
+TEXT_DEFS := $(TEXT_DIR)textdefs.txt
+TEXT_SRC  := $(shell find $(TEXT_DIR) -type f -name '*.txt')
 
 MSG_HEADER ?= $(TEXT_DIR)build/msg_data.h
 MSG_DATA   := $(TEXT_DIR)build/msg_data.c
