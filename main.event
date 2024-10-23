@@ -33,7 +33,6 @@ ASSERT (FreeSpaceKernel_RelocEnd - CURRENTOFFSET)
 
 ORG FreeSpaceKernel_Data
     #include "Data/Data.event"
-    #include "Contents/Contents.event"
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Data) max (KernelDataSize)
 ASSERT (FreeSpaceKernel_DataEnd - CURRENTOFFSET)
 
@@ -45,3 +44,7 @@ ORG FreeSpaceKernelText
     #include "Wizardry/Wizardry.event"
 MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelText) max (FreeSpaceKernelTextSize)
 ASSERT (FreeSpaceKernelText + FreeSpaceKernelTextSize - CURRENTOFFSET)
+
+ORG FreeSpaceDEMO
+    #include "Contents/Contents.event"
+MESSAGE FreeSpace___Demo___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO)

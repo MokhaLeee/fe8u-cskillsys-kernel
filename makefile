@@ -6,7 +6,7 @@ MK_PATH   := $(abspath $(lastword $(MAKEFILE_LIST)))
 MK_DIR    := $(dir $(MK_PATH))
 
 MAIN    := $(MK_DIR)main.event
-FE8_CHX := $(MK_DIR)fe8-kernel-$(CONFIG_VERSION).gba
+FE8_CHX := $(MK_DIR)fe8-demo-$(CONFIG_VERSION).gba
 FE8_GBA := $(MK_DIR)fe8.gba
 
 TOOL_DIR := $(MK_DIR)Tools
@@ -217,6 +217,17 @@ $(TEXT_DEF): $(TEXT_SOURCE)
 	@$(MAKE) -C $(TEXTS_DIR)
 
 CLEAN_BUILD += $(TEXTS_DIR)
+
+# ==========
+# = Banims =
+# ==========
+
+BANIM_DIR := $(MK_DIR)Contents/Banim
+
+%.banim.event: %.banim.txt
+	@$(MAKE) -f $(BANIM_DIR)/makefile $@
+
+CLEAN_BUILD += $(BANIM_DIR)
 
 # ============
 # = Spritans =

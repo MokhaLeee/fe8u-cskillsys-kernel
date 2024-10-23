@@ -1,0 +1,11 @@
+#ifndef BANIMS_INSTALLED
+#define BANIMS_INSTALLED
+
+#include "AnimDefinitions-Vanilla.event"
+#include "AnimDefinitions-Demo.event"
+#include "AnimMapping.evet"
+
+#include "Repoint/RepointBanim.event"
+#include "Source/InstallBanims.event"
+
+#endif /* BANIMS_INSTALLED */

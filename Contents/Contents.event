@@ -10,4 +10,7 @@ ALIGN 4
 ALIGN 4
 #include "Texts/Texts.event"
 
+ALIGN 4
+#include "Banim/Banim.event"
+
 #endif

@@ -1,0 +1,5 @@
+ALIGN 4
+LynLord_Anims:
+SwordAnim(LynLord_Sword)
+UnarmedAnim(LynLord_Item)
+EndAnim

@@ -1,0 +1,39 @@
+//for the repointed anim table, thus giving more free space in block 1
+
+#ifndef BANIMS_AMT_RE
+#define BANIMS_AMT_RE 0x100
+#endif
+
+ALIGN 4
+BYTE BANIMS_AMT_RE 0 0 0
+WORD 0
+
+ClassAnimTable:
+FILL ((BANIMS_AMT_RE + 1) * 32)
+
+PUSH
+ORG ClassAnimTable
+#incbin "VanillaAnimTable.bin"
+
+ORG 0x59BD8
+POIN ClassAnimTable
+PROTECT $599E8 $59D28 // Port from DebuffRework/Source/MiscHooks.event
+
+ORG 0x5A600
+POIN ClassAnimTable
+
+ORG 0x5A694
+POIN ClassAnimTable
+
+ORG 0x5A82C
+POIN ClassAnimTable
+
+ORG 0x6F6A8
+POIN ClassAnimTable
+
+ORG 0x70940
+POIN ClassAnimTable
+
+ORG 0x70A60
+POIN ClassAnimTable
+POP
