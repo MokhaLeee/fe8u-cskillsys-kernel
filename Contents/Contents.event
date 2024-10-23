@@ -2,6 +2,9 @@
 #define CONTENTS_INSTALLED
 
 ALIGN 4
+#include "PListSplit/PListSplit.event"
+
+ALIGN 4
 #include "EfxAnim/EfxAnim.event"
 
 ALIGN 4
@@ -12,5 +15,8 @@ ALIGN 4
 
 ALIGN 4
 #include "Banim/Banim.event"
+
+ALIGN 4
+#include "Portrait/Portrait.event"
 
 #endif

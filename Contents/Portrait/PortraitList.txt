@@ -1,0 +1,2 @@
+#                                   Index MouthX MouthY EyesX EyesY IndexDefinition
+"Source/Lyn.png"                    0x02  2      6      3     4     Mug_Lyn

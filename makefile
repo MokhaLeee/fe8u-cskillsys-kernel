@@ -79,6 +79,7 @@ PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
 COMPRESS          := $(EA_DIR)/Tools/compress
 LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
 EA_DEP            := $(EA_DIR)/ea-dep
+PORTRAITFORMATTER := $(EA_DIR)/Tools/PortraitFormatter$(EXE)
 
 LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
 LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
@@ -160,8 +161,10 @@ CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
 INC_DIRS := include $(LIB_DIR)/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
 
+Contents/%.asm: GCC_LONG_CALL:=-mlong-calls
+
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
-CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi $(GCC_LONG_CALL)
+CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi
 ASFLAGS := $(ARCH) $(INC_FLAG)
 
 CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
@@ -182,13 +185,21 @@ LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 	@echo "[AS ]	$@"
 	@$(AS) $(ASFLAGS) $(SDEPFLAGS) -I $(dir $<) $< -o $@
 
+Wizardry/%.o: $(WIZARDRY_DIR)/%.c
+	@echo "[CC ]	$@"
+	@$(CC) $(CFLAGS) $(GCC_LONG_CALL) $(CDEPFLAGS) -g -c $< -o $@
+
+Wizardry/%.asm: $(WIZARDRY_DIR)/%.c
+	@echo "[CC ]	$@"
+	@$(CC) $(CFLAGS) $(GCC_LONG_CALL) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
+
 %.o: %.c
 	@echo "[CC ]	$@"
-	@$(CC) $(CFLAGS) $(CDEPFLAGS) -g -c $< -o $@
+	@$(CC) $(CFLAGS) -mlong-calls    $(CDEPFLAGS) -g -c $< -o $@
 
 %.asm: %.c
 	@echo "[CC ]	$@"
-	@$(CC) $(CFLAGS) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
+	@$(CC) $(CFLAGS) -mlong-calls    $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
 
 # Avoid make deleting objects it thinks it doesn't need anymore
 # Without this make may fail to detect some files as being up to date
@@ -222,7 +233,7 @@ CLEAN_BUILD += $(TEXTS_DIR)
 # = Banims =
 # ==========
 
-BANIM_DIR := $(MK_DIR)Contents/Banim
+BANIM_DIR := $(CONTENTS_DIR)/Banim
 
 %.banim.event: %.banim.txt
 	@$(MAKE) -f $(BANIM_DIR)/makefile $@
@@ -310,6 +321,30 @@ $(GFX_HEADER): $(GFX_SOURCES)
 CLEAN_BUILD += $(GFX_DIR)
 CLEAN_FILES += $(GFX_HEADER)
 
+# ============
+# = Portrait =
+# ============
+
+PORTRAIT_DIR       := $(CONTENTS_DIR)/Portrait
+PORTRAIT_PROCESS   := $(PORTRAIT_DIR)/Scripts/portrait-process-mokha.py
+PORTRAIT_LIST      := $(PORTRAIT_DIR)/PortraitList.txt
+PORTRAIT_INSTALLER := $(PORTRAIT_DIR)/PortraitInstaller.event
+PORTRAIT_HEADER    := $(PORTRAIT_DIR)/PortraitDef.h
+
+portrait: $(PORTRAIT_INSTALLER)
+
+PORTRAIT_DEPS := $(shell $(PORTRAIT_PROCESS) $(PORTRAIT_LIST) --list-files)
+
+$(PORTRAIT_INSTALLER) $(PORTRAIT_HEADER): $(PORTRAIT_LIST) $(PORTRAIT_DEPS)
+	@echo "[GEN]	$@"
+	@$(PORTRAIT_PROCESS) $< --installer $(PORTRAIT_INSTALLER) --definition $(PORTRAIT_HEADER)
+
+%_mug.dmp %_palette.dmp %_frames.dmp %_minimug.dmp: %.png
+	@echo "[GEN]	$@"
+	@$(PORTRAITFORMATTER) $<
+
+CLEAN_FILES += $(PORTRAIT_DEPS) $(PORTRAIT_INSTALLER) $(PORTRAIT_HEADER)
+
 # ========
 # = ENUM =
 # ========
@@ -376,3 +411,9 @@ clean:
 	@for i in $(CLEAN_BUILD); do if test -e $$i/makefile ; then $(MAKE) -f $$i/makefile clean || { exit 1;} fi; done;
 	@$(MAKE) clean_basic
 	@echo "Kernel cleaned .."
+
+# ======================
+# = CFLAGS overrides =
+# ======================
+
+

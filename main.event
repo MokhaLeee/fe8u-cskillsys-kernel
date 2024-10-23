@@ -47,4 +47,3 @@ ASSERT (FreeSpaceKernelText + FreeSpaceKernelTextSize - CURRENTOFFSET)
 
 ORG FreeSpaceDEMO
     #include "Contents/Contents.event"
-MESSAGE FreeSpace___Demo___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO)

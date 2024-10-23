@@ -1,0 +1,15 @@
+#ifndef PORTRAIT_INSTALLED
+#define PORTRAIT_INSTALLED
+
+// Auto generated
+ALIGN 4
+#include "PortraitInstaller.event"
+
+ALIGN 4
+#include "Hacks/LynJump.event"
+#include "Hacks/PortraitHeight.lyn.event"
+
+HighPortraitFidLut:
+    BYTE 0
+
+#endif
