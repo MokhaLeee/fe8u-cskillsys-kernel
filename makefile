@@ -20,7 +20,6 @@ RAM_REF    := $(CONFIG_DIR)/config-memmap.s
 
 WIZARDRY_DIR := $(MK_DIR)Wizardry
 CONTENTS_DIR := $(MK_DIR)Contents
-TEXTS_DIR    := $(MK_DIR)Texts
 GAMEDATA_DIR := $(MK_DIR)Data
 
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR) $(TEXTS_DIR)
@@ -80,8 +79,6 @@ PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
 COMPRESS          := $(EA_DIR)/Tools/compress
 LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
 EA_DEP            := $(EA_DIR)/ea-dep
-
-TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
 
 LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
 LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
@@ -208,16 +205,15 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # =========
 # = Texts =
 # =========
-
-TEXT_MAIN   := $(TEXTS_DIR)/text-main.txt
+TEXTS_DIR   := $(CONTENTS_DIR)/Texts
 TEXT_SOURCE := $(shell find $(TEXTS_DIR) -type f -name '*.txt')
 
-export TEXT_DEF := $(TEXTS_DIR)/build/msg_data.h
+export TEXT_DEF := $(TEXTS_DIR)/build/msgs.h
 
 text: $(TEXT_DEF)
 PRE_BUILD += text
 
-$(TEXT_DEF): $(TEXT_MAIN) $(TEXT_SOURCE)
+$(TEXT_DEF): $(TEXT_SOURCE)
 	@$(MAKE) -C $(TEXTS_DIR)
 
 CLEAN_BUILD += $(TEXTS_DIR)

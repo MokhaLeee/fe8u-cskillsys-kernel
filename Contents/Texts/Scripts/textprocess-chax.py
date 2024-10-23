@@ -4,6 +4,9 @@
 import os, re, sys, struct
 import huffman
 
+MSG_LENGTH = 0x1400
+DEBUG = False
+
 RE_MSGIDX = re.compile(r"^#([0-9a-fA-Fx]+)")
 RE_MACRO = re.compile(r"^##\s*(\w+)")
 RE_INCLUDE = re.compile(r'#include\s+"([^"]+)"')
@@ -18,6 +21,11 @@ class Msg:
             self.definiation = f"MSG_{idx:03X}"
 
 all_data = []
+msg_refs = [-1] * MSG_LENGTH
+
+def debug_printf(fmt, *args):
+    if DEBUG:
+        print(fmt % args)
 
 def GenerateFreqTable(data):
     freq_table = [0] * 0x10000
@@ -43,40 +51,6 @@ def text_preprocess(text):
     text = re.sub(r'^//.*', '', text, flags=re.MULTILINE)
     text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
     return text
-
-def text_to_shiftjis_u16_array(text, control_chars):
-    pattern = re.compile(r'\[(.*?)\]')
-    
-    u16_array = []
-
-    text = text_preprocess(text)
-
-    pos = 0
-    while pos < len(text):
-        match = pattern.search(text, pos)
-        if match:
-            # Add preceding text converted to Shift-JIS
-            preceding_text = text[pos:match.start()]
-            if preceding_text:
-                sjis_bytes = preceding_text.encode("cp932")
-                u16_array.extend(struct.unpack(f'{len(sjis_bytes)//2}H', sjis_bytes))
-
-            # Add control character value
-            control_char = match.group(1)
-            if control_char in control_chars:
-                u16_array.extend(control_chars[control_char])
-
-            # Move position past the control character
-            pos = match.end()
-        else:
-            # Add remaining text converted to Shift-JIS
-            remaining_text = text[pos:]
-            if remaining_text:
-                sjis_bytes = remaining_text.encode("cp932")
-                u16_array.extend(struct.unpack(f'{len(sjis_bytes)//2}H', sjis_bytes))
-            break
-
-    return u16_array
 
 def text_to_utf8_u16_array(text, control_chars):
     pattern = re.compile(r'\[(.*?)\]')
@@ -151,12 +125,11 @@ def text_to_utf8_u16_array(text, control_chars):
 
 def text_to_u16_array(text, control_chars, encoding_method):
     if encoding_method == 'cp932':
-        return text_to_shiftjis_u16_array(text, control_chars)
+        pass
     else:
         return text_to_utf8_u16_array(text, control_chars)
 
-def process_file(file_path, control_chars, encoding_method, index=0):
-    messages = []
+def process_file(messages, file_path, control_chars, encoding_method, index=0):
     current_index = index
 
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -174,8 +147,8 @@ def process_file(file_path, control_chars, encoding_method, index=0):
             if not os.path.isfile(include_path):
                 raise FileNotFoundError(f"Error: File '{include_path}' does not exist.")
 
-            messages.extend(process_file(include_path, control_chars, encoding_method, current_index))
-            current_index = messages[-1].idx + 1 if messages else current_index
+            messages, current_index = process_file(messages, include_path, control_chars, encoding_method, current_index)
+
             i += 1
             continue
 
@@ -189,7 +162,15 @@ def process_file(file_path, control_chars, encoding_method, index=0):
                 i += 1
             text = ''.join(text)
             data = text_to_u16_array(text, control_chars, encoding_method)
-            messages.append(Msg(current_index, data))
+
+            if msg_refs[current_index] == -1:
+                debug_printf(f"Register to ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                msg_refs[current_index] = len(messages)
+                messages.append(Msg(current_index, data))
+            else:
+                debug_printf(f"Replace for ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                messages[msg_refs[current_index]] = Msg(current_index, data)
+
             all_data.extend(data)
             current_index += 1
         elif stripped.startswith('##'):
@@ -203,13 +184,21 @@ def process_file(file_path, control_chars, encoding_method, index=0):
                     i += 1
                 text = ''.join(text)
                 data = text_to_u16_array(text, control_chars, encoding_method)
+
+                if msg_refs[current_index] == -1:
+                    debug_printf(f"Register to ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                    msg_refs[current_index] = len(messages)
+                    messages.append(Msg(current_index, data, macro))
+                else:
+                    debug_printf(f"Replace for ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                    messages[msg_refs[current_index]] = Msg(current_index, data, macro)
+
                 all_data.extend(data)
-                messages.append(Msg(current_index, data, macro))
                 current_index += 1
         else:
             i += 1
 
-    return messages
+    return messages, current_index
 
 def write_header(messages, header_file):
     header_file.write("#ifndef MSG_H\n#define MSG_H\n\n")
@@ -222,33 +211,46 @@ def write_header(messages, header_file):
 
 def write_all_compressed_data(messages, code_table, data_file):
     for msg in messages:
-        data_file.write(f"const u8 CompressedText_{msg.definiation}[] = " + "{")
+        data_file.write(f"CompressedText_{msg.definiation}:\n")
+        data_file.write( "    BYTE ")
         for data in huffman.CompressData(msg.data, code_table):
-            data_file.write(f"0x{data:02X}, ")
-        data_file.write("};\n")
+            data_file.write(f"0x{data:02X} ")
+
+        data_file.write("\n")
 
 def write_text_table(messages, data_file):
-    data_file.write("const u8 * const gMsgTableRe[] = {")
+    data_file.write("\n")
+    data_file.write("PUSH\n")
+    data_file.write("ORG TextTable\n")
+    data_file.write("gMsgTableRe:\n")
     for i, msg in enumerate(messages):
         if i % 8 == 0:
-            data_file.write("\n    ")
+            data_file.write("\n    POIN ")
         else:
             data_file.write(" ")
 
-        data_file.write(f"CompressedText_{msg.definiation},")
-    data_file.write("\n};\n")
+        data_file.write(f"CompressedText_{msg.definiation}")
+
+    data_file.write("\n")
+    data_file.write("    ASSERT (TextTableEnd - CURRENTOFFSET)\n")
+    data_file.write("POP\n")
 
 def write_huffman_table(huffman_table, data_file):
-    data_file.write("const u32 gMsgHuffmanTableRe[] = {")
+    data_file.write("ALIGN 4\n")
+    data_file.write("gMsgHuffmanTableRe:")
     for i, branch in enumerate(huffman_table):
         if i % 8 == 0:
-            data_file.write("\n    ")
+            data_file.write("\n    WORD ")
         else:
             data_file.write(" ")
 
-        data_file.write(f"0x{branch:08X},")
-    data_file.write("\n};\n\n")
-    data_file.write(f"const u32 * const gMsgHuffmanTableRootRe = gMsgHuffmanTableRe + 0x{(len(huffman_table) - 1):04X};\n")
+        data_file.write(f"0x{branch:08X}")
+
+    data_file.write("\n")
+    data_file.write("ALIGN 4\n")
+    data_file.write("gMsgHuffmanTableRootRe:\n")
+    data_file.write(f"POIN (gMsgHuffmanTableRe + 0x{(len(huffman_table) - 1) * 4:04X})\n")
+    data_file.write("\n")
 
 def dump_msg(messages):
     for msg in messages:
@@ -261,16 +263,16 @@ def main(args):
     try:
         input_fpath = args[0]
         input_parse_ref = args[1]
-        output_table = args[2]
-        output_data = args[3]
-        output_header = args[4]
-        encoding_method = args[5]
+        output_data = args[2]
+        output_header = args[3]
+        encoding_method = args[4]
 
     except IndexError:
-        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_table> <output_data> <output_header> <'cp932' or 'utf8'>")
+        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_data> <output_header> <'cp932' or 'utf8'>")
 
     control_chars = load_control_chars(input_parse_ref)
-    messages = process_file(input_fpath, control_chars, encoding_method)
+    messages = []
+    messages, _unused_ = process_file(messages, input_fpath, control_chars, encoding_method)
 
     # generate huffman
     freq_table = GenerateFreqTable(all_data)
@@ -284,19 +286,12 @@ def main(args):
     with open(output_header, 'w', encoding='utf-8') as header_file:
         write_header(messages, header_file)
 
-    with open(output_table, 'w', encoding='utf-8') as table_file:
-        table_file.write('#include "global.h"\n\n')
-        for msg in messages:
-            table_file.write(f"extern const u8 CompressedText_{msg.definiation}[];\n")
-
-        print("")
-        write_text_table(messages, table_file)
-
     with open(output_data, 'w', encoding='utf-8') as data_file:
-        data_file.write('#include "global.h"\n\n')
         write_huffman_table(huffman_table, data_file)
+        data_file.write("{\n")
         write_all_compressed_data(messages, code_table, data_file)
+        write_text_table(messages, data_file)
         data_file.write("\n")
-
+        data_file.write("}\n")
 if __name__ == '__main__':
 	main(sys.argv[1:])

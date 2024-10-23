@@ -4,7 +4,18 @@
 #include "config-debug.h"
 #include "config-memmap.h"
 
-#define CONFIG_MSGTABLE_COUNT 0x1200
+/**
+ * If uncomment, kernel may remove vanilla dislogue text
+ * so that we can save ~470KByte ROM space in DEMO.
+ *
+ * Note that enabling this config will make FEB think there are something wrong in
+ * ROM and report warnning. But it will be okay since this will not actually
+ * introduce any bug.
+ *
+ * If you're planning to develop a new game instead of making minor
+ * changes on vanilla, it is recommanded to uncomment this config to save space.
+ */
+#define CONFIG_CROP_VANILLA_MSG
 
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
@@ -22,7 +33,7 @@
  *
  * If completely surrounded (each side stands an enemy),
  * unit may cause def-5 additionally.
- * 
+ *
  * Flyer in outdoor environments are not affected by this effect
  */
 #define CONFIG_BATTLE_SURROUND

@@ -8,28 +8,34 @@
 #include "include/macros.event"
 #include "include/Definitions.event"
 
+ORG FreeSpaceKernel_MsgTable
+    #include "Preload/AllocMsgTable.event"
+ASSERT (FreeSpaceKernel_MsgTableEnd - CURRENTOFFSET)
+
+ORG FreeSpaceKernel_MsgTableEnd
+    /* a lable */
+    TextTableEnd:
+
+/**
+ * <!>
+ * Tool helpers should installed after msg_table repointing
+ */
+#include "Tools/Tool Helpers.txt"
+
 ORG FreeSpaceKernel_Magic
     #include "Preload/Magic.event"
+ASSERT (FreeSpaceKernel_MagicEnd - CURRENTOFFSET)
 
 ORG FreeSpaceKernel_Reloc
     #include "Preload/Reloc.event"
-MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
-ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
+MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (KernelRelocSize)
+ASSERT (FreeSpaceKernel_RelocEnd - CURRENTOFFSET)
 
-ORG FreeSpaceKernelData
-    #include "Preload/AllocMsgTable.event"
-
-    /**
-    * <!>
-    * Tool helpers should installed after msg_table repointing
-    */
-    #include "Tools/Tool Helpers.txt"
-
+ORG FreeSpaceKernel_Data
     #include "Data/Data.event"
     #include "Contents/Contents.event"
-    #include "Texts/Texts.event"
-MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
-ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
+MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Data) max (KernelDataSize)
+ASSERT (FreeSpaceKernel_DataEnd - CURRENTOFFSET)
 
 ORG FreeSpaceKernelText
     /**
