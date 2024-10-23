@@ -20,7 +20,6 @@ RAM_REF    := $(CONFIG_DIR)/config-memmap.s
 
 WIZARDRY_DIR := $(MK_DIR)Wizardry
 CONTENTS_DIR := $(MK_DIR)Contents
-TEXTS_DIR    := $(MK_DIR)Texts
 GAMEDATA_DIR := $(MK_DIR)Data
 
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR) $(TEXTS_DIR)
@@ -206,6 +205,7 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # =========
 # = Texts =
 # =========
+TEXTS_DIR   := $(CONTENTS_DIR)/Texts
 TEXT_SOURCE := $(shell find $(TEXTS_DIR) -type f -name '*.txt')
 
 export TEXT_DEF := $(TEXTS_DIR)/build/msgs.h

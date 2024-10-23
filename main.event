@@ -27,7 +27,6 @@ ORG FreeSpaceKernelData
 
     #include "Data/Data.event"
     #include "Contents/Contents.event"
-    #include "Texts/Texts.event"
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
 ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
 
