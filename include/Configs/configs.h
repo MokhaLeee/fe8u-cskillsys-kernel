@@ -33,7 +33,7 @@
  *
  * If completely surrounded (each side stands an enemy),
  * unit may cause def-5 additionally.
- * 
+ *
  * Flyer in outdoor environments are not affected by this effect
  */
 #define CONFIG_BATTLE_SURROUND
