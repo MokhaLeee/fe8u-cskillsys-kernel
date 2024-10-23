@@ -17,8 +17,6 @@
  */
 // #define CONFIG_CROP_VANILLA_MSG
 
-#define CONFIG_MSG_TABLE_COUNT 0x1200
-
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 

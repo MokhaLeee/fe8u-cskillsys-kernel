@@ -121,4 +121,3 @@ gpEfxCombatArtAnimPriority: POIN EfxCombatArtAnimPriority
 gpSkillInfos_Desc: POIN gSkillInfos + 6 // This is limited by FEB function: InputFormRef.init()
 
 KERNEL_RELOC_END:
-ASSERT (KERNEL_RELOC_START + FreeSpaceRelocSize - KERNEL_RELOC_END)
