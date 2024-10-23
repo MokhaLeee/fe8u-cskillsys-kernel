@@ -4,6 +4,9 @@
 import os, re, sys, struct
 import huffman
 
+MSG_LENGTH = 0x1400
+DEBUG = True
+
 RE_MSGIDX = re.compile(r"^#([0-9a-fA-Fx]+)")
 RE_MACRO = re.compile(r"^##\s*(\w+)")
 RE_INCLUDE = re.compile(r'#include\s+"([^"]+)"')
@@ -18,6 +21,11 @@ class Msg:
             self.definiation = f"MSG_{idx:03X}"
 
 all_data = []
+msg_refs = [-1] * MSG_LENGTH
+
+def debug_printf(fmt, *args):
+    if DEBUG:
+        print(fmt % args)
 
 def GenerateFreqTable(data):
     freq_table = [0] * 0x10000
@@ -43,40 +51,6 @@ def text_preprocess(text):
     text = re.sub(r'^//.*', '', text, flags=re.MULTILINE)
     text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
     return text
-
-def text_to_shiftjis_u16_array(text, control_chars):
-    pattern = re.compile(r'\[(.*?)\]')
-    
-    u16_array = []
-
-    text = text_preprocess(text)
-
-    pos = 0
-    while pos < len(text):
-        match = pattern.search(text, pos)
-        if match:
-            # Add preceding text converted to Shift-JIS
-            preceding_text = text[pos:match.start()]
-            if preceding_text:
-                sjis_bytes = preceding_text.encode("cp932")
-                u16_array.extend(struct.unpack(f'{len(sjis_bytes)//2}H', sjis_bytes))
-
-            # Add control character value
-            control_char = match.group(1)
-            if control_char in control_chars:
-                u16_array.extend(control_chars[control_char])
-
-            # Move position past the control character
-            pos = match.end()
-        else:
-            # Add remaining text converted to Shift-JIS
-            remaining_text = text[pos:]
-            if remaining_text:
-                sjis_bytes = remaining_text.encode("cp932")
-                u16_array.extend(struct.unpack(f'{len(sjis_bytes)//2}H', sjis_bytes))
-            break
-
-    return u16_array
 
 def text_to_utf8_u16_array(text, control_chars):
     pattern = re.compile(r'\[(.*?)\]')
@@ -151,12 +125,11 @@ def text_to_utf8_u16_array(text, control_chars):
 
 def text_to_u16_array(text, control_chars, encoding_method):
     if encoding_method == 'cp932':
-        return text_to_shiftjis_u16_array(text, control_chars)
+        pass
     else:
         return text_to_utf8_u16_array(text, control_chars)
 
-def process_file(file_path, control_chars, encoding_method, index=0):
-    messages = []
+def process_file(messages, file_path, control_chars, encoding_method, index=0):
     current_index = index
 
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -174,8 +147,8 @@ def process_file(file_path, control_chars, encoding_method, index=0):
             if not os.path.isfile(include_path):
                 raise FileNotFoundError(f"Error: File '{include_path}' does not exist.")
 
-            messages.extend(process_file(include_path, control_chars, encoding_method, current_index))
-            current_index = messages[-1].idx + 1 if messages else current_index
+            messages, current_index = process_file(messages, include_path, control_chars, encoding_method, current_index)
+
             i += 1
             continue
 
@@ -189,7 +162,15 @@ def process_file(file_path, control_chars, encoding_method, index=0):
                 i += 1
             text = ''.join(text)
             data = text_to_u16_array(text, control_chars, encoding_method)
-            messages.append(Msg(current_index, data))
+
+            if msg_refs[current_index] == -1:
+                debug_printf(f"Register to ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                msg_refs[current_index] = len(messages)
+                messages.append(Msg(current_index, data))
+            else:
+                debug_printf(f"Replace for ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                messages[msg_refs[current_index]] = Msg(current_index, data)
+
             all_data.extend(data)
             current_index += 1
         elif stripped.startswith('##'):
@@ -203,13 +184,21 @@ def process_file(file_path, control_chars, encoding_method, index=0):
                     i += 1
                 text = ''.join(text)
                 data = text_to_u16_array(text, control_chars, encoding_method)
+
+                if msg_refs[current_index] == -1:
+                    debug_printf(f"Register to ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                    msg_refs[current_index] = len(messages)
+                    messages.append(Msg(current_index, data, macro))
+                else:
+                    debug_printf(f"Replace for ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
+                    messages[msg_refs[current_index]] = Msg(current_index, data, macro)
+
                 all_data.extend(data)
-                messages.append(Msg(current_index, data, macro))
                 current_index += 1
         else:
             i += 1
 
-    return messages
+    return messages, current_index
 
 def write_header(messages, header_file):
     header_file.write("#ifndef MSG_H\n#define MSG_H\n\n")
@@ -270,7 +259,8 @@ def main(args):
         sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_table> <output_data> <output_header> <'cp932' or 'utf8'>")
 
     control_chars = load_control_chars(input_parse_ref)
-    messages = process_file(input_fpath, control_chars, encoding_method)
+    messages = []
+    messages, _unused_ = process_file(messages, input_fpath, control_chars, encoding_method)
 
     # generate huffman
     freq_table = GenerateFreqTable(all_data)

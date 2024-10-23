@@ -1,4 +1,4 @@
-// #include "texts/_vanilla.txt"
+#include "texts/_vanilla.txt"
 
 #0xD4C MSG_Reserved
 _reserved[X]
