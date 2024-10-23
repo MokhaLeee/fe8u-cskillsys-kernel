@@ -1,5 +1,5 @@
 #include "global.h"
-#include "msg_data.h"
+#include "msgs.h"
 
 const u8 *const gMsgStringTableRe[] = {
     gCompressedText_K_MSG_0000,

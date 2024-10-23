@@ -206,16 +206,14 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # =========
 # = Texts =
 # =========
-
-TEXT_MAIN   := $(TEXTS_DIR)/text-main.txt
 TEXT_SOURCE := $(shell find $(TEXTS_DIR) -type f -name '*.txt')
 
-export TEXT_DEF := $(TEXTS_DIR)/build/msg_data.h
+export TEXT_DEF := $(TEXTS_DIR)/build/msgs.h
 
 text: $(TEXT_DEF)
 PRE_BUILD += text
 
-$(TEXT_DEF): $(TEXT_MAIN) $(TEXT_SOURCE)
+$(TEXT_DEF): $(TEXT_SOURCE)
 	@$(MAKE) -C $(TEXTS_DIR)
 
 CLEAN_BUILD += $(TEXTS_DIR)

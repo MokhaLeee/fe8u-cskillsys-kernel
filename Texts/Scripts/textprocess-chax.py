@@ -5,7 +5,7 @@ import os, re, sys, struct
 import huffman
 
 MSG_LENGTH = 0x1400
-DEBUG = True
+DEBUG = False
 
 RE_MSGIDX = re.compile(r"^#([0-9a-fA-Fx]+)")
 RE_MACRO = re.compile(r"^##\s*(\w+)")
@@ -211,33 +211,46 @@ def write_header(messages, header_file):
 
 def write_all_compressed_data(messages, code_table, data_file):
     for msg in messages:
-        data_file.write(f"const u8 CompressedText_{msg.definiation}[] = " + "{")
+        data_file.write(f"CompressedText_{msg.definiation}:\n")
+        data_file.write( "    BYTE ")
         for data in huffman.CompressData(msg.data, code_table):
-            data_file.write(f"0x{data:02X}, ")
-        data_file.write("};\n")
+            data_file.write(f"0x{data:02X} ")
+
+        data_file.write("\n")
 
 def write_text_table(messages, data_file):
-    data_file.write("const u8 * const gMsgTableRe[] = {")
+    data_file.write("\n")
+    data_file.write("PUSH\n")
+    data_file.write("ORG TextTable\n")
+    data_file.write("gMsgTableRe:\n")
     for i, msg in enumerate(messages):
         if i % 8 == 0:
-            data_file.write("\n    ")
+            data_file.write("\n    POIN ")
         else:
             data_file.write(" ")
 
-        data_file.write(f"CompressedText_{msg.definiation},")
-    data_file.write("\n};\n")
+        data_file.write(f"CompressedText_{msg.definiation}")
+
+    data_file.write("\n")
+    data_file.write("    ASSERT (TextTableEnd - CURRENTOFFSET)\n")
+    data_file.write("POP\n")
 
 def write_huffman_table(huffman_table, data_file):
-    data_file.write("const u32 gMsgHuffmanTableRe[] = {")
+    data_file.write("ALIGN 4\n")
+    data_file.write("gMsgHuffmanTableRe:")
     for i, branch in enumerate(huffman_table):
         if i % 8 == 0:
-            data_file.write("\n    ")
+            data_file.write("\n    WORD ")
         else:
             data_file.write(" ")
 
-        data_file.write(f"0x{branch:08X},")
-    data_file.write("\n};\n\n")
-    data_file.write(f"const u32 * const gMsgHuffmanTableRootRe = gMsgHuffmanTableRe + 0x{(len(huffman_table) - 1):04X};\n")
+        data_file.write(f"0x{branch:08X}")
+
+    data_file.write("\n")
+    data_file.write("ALIGN 4\n")
+    data_file.write("gMsgHuffmanTableRootRe:\n")
+    data_file.write(f"POIN (gMsgHuffmanTableRe + 0x{(len(huffman_table) - 1) * 4:04X})\n")
+    data_file.write("\n")
 
 def dump_msg(messages):
     for msg in messages:
@@ -250,13 +263,12 @@ def main(args):
     try:
         input_fpath = args[0]
         input_parse_ref = args[1]
-        output_table = args[2]
-        output_data = args[3]
-        output_header = args[4]
-        encoding_method = args[5]
+        output_data = args[2]
+        output_header = args[3]
+        encoding_method = args[4]
 
     except IndexError:
-        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_table> <output_data> <output_header> <'cp932' or 'utf8'>")
+        sys.exit(f"Usage: {sys.argv[0]} <text-main> <defs> <output_data> <output_header> <'cp932' or 'utf8'>")
 
     control_chars = load_control_chars(input_parse_ref)
     messages = []
@@ -274,19 +286,12 @@ def main(args):
     with open(output_header, 'w', encoding='utf-8') as header_file:
         write_header(messages, header_file)
 
-    with open(output_table, 'w', encoding='utf-8') as table_file:
-        table_file.write('#include "global.h"\n\n')
-        for msg in messages:
-            table_file.write(f"extern const u8 CompressedText_{msg.definiation}[];\n")
-
-        print("")
-        write_text_table(messages, table_file)
-
     with open(output_data, 'w', encoding='utf-8') as data_file:
-        data_file.write('#include "global.h"\n\n')
         write_huffman_table(huffman_table, data_file)
+        data_file.write("{\n")
         write_all_compressed_data(messages, code_table, data_file)
+        write_text_table(messages, data_file)
         data_file.write("\n")
-
+        data_file.write("}\n")
 if __name__ == '__main__':
 	main(sys.argv[1:])
