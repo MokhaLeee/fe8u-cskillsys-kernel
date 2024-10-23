@@ -54,3 +54,6 @@ W.I.P.[X]
 #include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Pre_Chapter.txt
 #include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/In_Chapter.txt
 #include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Post_Chapter.txt
+
+#include texts/FE8_Rewritten_Terper/Supports/LArachel_Saleh.txt
+#include texts/FE8_Rewritten_Terper/Supports/Joshua_Rennac.txt

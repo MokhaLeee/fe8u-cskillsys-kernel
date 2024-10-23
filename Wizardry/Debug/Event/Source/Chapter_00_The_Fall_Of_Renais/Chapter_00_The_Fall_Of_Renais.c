@@ -140,11 +140,15 @@ static const EventScr EventScr_Beginning[] = {
 
     // Text(Chapter_02_Scene_07_Convo_01)
     // Text(Chapter_02_Scene_08_Convo_01)
-    Text(Chapter_02_Scene_09_Convo_01)
-    Text(Chapter_02_Scene_10_Convo_01)
-    Text(Chapter_02_Scene_11_Convo_01)
-    Text(Chapter_02_Scene_12_Convo_01)
-    Text(Chapter_02_Scene_13_Convo_01)
+    // Text(Chapter_02_Scene_09_Convo_01)
+    // Text(Chapter_02_Scene_10_Convo_01)
+    // Text(Chapter_02_Scene_11_Convo_01)
+    // Text(Chapter_02_Scene_12_Convo_01)
+    // Text(Chapter_02_Scene_13_Convo_01)
+
+    Text(C_Support_Joshua_Rennac)
+    Text(B_Support_Joshua_Rennac)
+    Text(A_Support_Joshua_Rennac)
 
     NoFade
     ENDA

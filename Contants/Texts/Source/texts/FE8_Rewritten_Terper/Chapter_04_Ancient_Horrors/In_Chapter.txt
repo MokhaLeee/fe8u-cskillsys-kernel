@@ -1,0 +1,6 @@
+## Chapter_04_Scene_05_Convo_01
+[OpenMidLeft][LoadFace_Artur]
+One of my companions is in that village[N]
+to the south.[A][N]
+If any of you can get over there swiftly,[N]
+I implore you to watch over her safety.[A][X]

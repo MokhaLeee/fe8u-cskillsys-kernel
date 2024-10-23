@@ -93,8 +93,8 @@ def Parse(line):
 	res = res.replace(b'[BoxType_InnerMonologue]', b'\x80\x2A\x03')
 
 	res = res.replace(b'[BoxHeight_1]', b'\x80\x2B\x01')
-	res = res.replace(b'[BoxHeight_2]', b'\x80\x2B\x01')
-	res = res.replace(b'[BoxHeight_3]', b'\x80\x2B\x01')
+	res = res.replace(b'[BoxHeight_2]', b'\x80\x2B\x02')
+	res = res.replace(b'[BoxHeight_3]', b'\x80\x2B\x03')
 
 	res = res.replace(b'[TextSpeed_Slow]', b'\x80\x38\x08')
 	res = res.replace(b'[TextSpeed_Normal]', b'\x80\x38\x04')
