@@ -39,21 +39,27 @@ W.I.P.[X]
 #include texts/kernel_tutorial.txt
 #include texts/misc.txt
 
-#include texts/FE8_Rewritten_Terper/Chapter_00_The_Fall_Of_Renais/01_Castle_Renais_Inside.txt
-#include texts/FE8_Rewritten_Terper/Chapter_00_The_Fall_Of_Renais/02_Castle_Renais_Outside.txt
-#include texts/FE8_Rewritten_Terper/Chapter_00_The_Fall_Of_Renais/03_Battle_Map.txt
+#include texts/FE8_Rewritten_Terper/Chapter_00_The_Fall_Of_Renais/Overworld.txt
+#include texts/FE8_Rewritten_Terper/Chapter_00_The_Fall_Of_Renais/Pre_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_00_The_Fall_Of_Renais/In_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_00_The_Fall_Of_Renais/Post_Chapter.txt
 
-#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/01_Mulan_Fort_Inside.txt
-#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/02_Mulan_Fort_Outside.txt
-#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/03_Mulan_Fort_Inside.txt
-#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/04_Battle_Map.txt
-#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/05_Mulan_Fort_Inside.txt
-#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/06_Castle_Frelia.txt
+#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/Overworld.txt
+#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/Pre_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/In_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_01_Escape/Post_Chapter.txt
 
 #include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Overworld.txt
 #include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Pre_Chapter.txt
 #include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/In_Chapter.txt
 #include texts/FE8_Rewritten_Terper/Chapter_02_The_Protected/Post_Chapter.txt
 
-#include texts/FE8_Rewritten_Terper/Supports/LArachel_Saleh.txt
+#include texts/FE8_Rewritten_Terper/Chapter_03_The_Bandits_Of_Borgo/Overworld.txt
+#include texts/FE8_Rewritten_Terper/Chapter_03_The_Bandits_Of_Borgo/Pre_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_03_The_Bandits_Of_Borgo/In_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_03_The_Bandits_Of_Borgo/Post_Chapter.txt
+
 #include texts/FE8_Rewritten_Terper/Supports/Joshua_Rennac.txt
+#include texts/FE8_Rewritten_Terper/Supports/Ewan_Myrrh.txt
+#include texts/FE8_Rewritten_Terper/Supports/Seth_Duessel.txt
+#include texts/FE8_Rewritten_Terper/Supports/Knoll_Lute.txt

@@ -165,7 +165,7 @@ coin, right?[A][N]
 ## Epilogue_Joshua_Rennac
 After the war, Joshua returned to[N]
 Jehanna and reclaimed his birthright[N]
-as the nation's king, though he ruled[N]
+as the nation's king, although he ruled[N]
 with the same carefree attitude that[N]
 had defined his wandering years. Rather[N]
 than fully committing to the life of a[N]
