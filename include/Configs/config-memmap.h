@@ -27,18 +27,18 @@
  * Kernel memmap
  *
  * ------------------------------
- * Name      | Offset  | Size
+ * Name      | Address | Size
  * ------------------------------
- * Magic     | 0x00000 | 0x00010
- * Reloc     | 0x00010 | 0x00400
- * Main      | 0x00410 | 0xD0DE0
- * MSG table | 0xD15F0 | 0x0480C
+ * Magic     | B2A604  | 00010
+ * Reloc     | B2A614  | 00400
+ * Main      | B2AA14  | CD5E0
+ * MSG table | BF7FF4  | 0800C
  * ------------------------------
  */
 #define KernelMagicSize 0x10
 #define KernelRelocSize 0x400
-#define KernelDataSize  0xD0DE0
-#define MsgTableSize    0x480C
+#define KernelDataSize  0xCD5E0
+#define MsgTableSize    0x800C
 
 #define FreeSpaceKernel_Magic    (FreeSpaceKernel + 0x0)
 #define FreeSpaceKernel_Reloc    (FreeSpaceKernel + KernelMagicSize)
