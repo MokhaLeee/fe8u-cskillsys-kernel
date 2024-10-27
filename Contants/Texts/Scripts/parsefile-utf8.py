@@ -76,11 +76,12 @@ def Parse(line):
 	res = res.replace(b'[SetName]', b'\x80\x23')
 	res = res.replace(b'[ToggleColorInvert]', b'\x80\x25')
 
+	res = res.replace(b'[Font_Regular]', b'\x80\x26\x01')
 	res = res.replace(b'[Font_Bold]', b'\x80\x26\x02')
 	res = res.replace(b'[Font_Italic]', b'\x80\x26\x03')
 
-	# The colors inbetween these ones are a mess, I'm not using them
-	# Presumably there's 255, someone else can text the rest
+	# The colors inbetween these ones are a mess, so I'm not using them
+	# Presumably there's 255, someone else can test the rest
 	res = res.replace(b'[BoxBackground]', b'\x80\x29')
 	res = res.replace(b'[BoxBackground_Black]', b'\x80\x29\x02')
 	res = res.replace(b'[BoxBackground_Blue]', b'\x80\x29\x03')
@@ -101,6 +102,7 @@ def Parse(line):
 	res = res.replace(b'[TextSpeed_Fast]', b'\x80\x38\x01')
 	res = res.replace(b'[TextSpeed_Instant]', b'\x80\x38\x00')
 
+	# These need to be used in conjunction with [LoadFaceFancy] to work
 	res = res.replace(b'[FlipRight]', b'\x81\x01\x02\x01\x01\x0D')
 	res = res.replace(b'[FlipLeft]', b'\x80\x01\x02\x01\x01\x0D')
 

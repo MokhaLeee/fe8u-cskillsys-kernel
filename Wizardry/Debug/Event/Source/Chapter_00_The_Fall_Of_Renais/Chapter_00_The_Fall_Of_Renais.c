@@ -146,6 +146,21 @@ static const EventScr EventScr_Beginning[] = {
     // Text(Chapter_02_Scene_12_Convo_01)
     // Text(Chapter_02_Scene_13_Convo_01)
 
+    Text(Chapter_05_Scene_00_Convo_01)
+    Text(Chapter_05_Scene_01_Convo_01)
+    Text(Chapter_05_Scene_01_Convo_02)
+    Text(Chapter_05_Scene_02_Convo_01)
+    Text(Chapter_05_Scene_02_Convo_02)
+    Text(Chapter_05_Scene_03_Convo_01)
+    Text(Chapter_05_Scene_03_Convo_02)
+
+    Text(Chapter_05_Scene_04_Convo_01)
+    Text(Chapter_05_Scene_04_Convo_02)
+    Text(Chapter_05_Scene_04_Convo_03)
+    Text(Chapter_05_Scene_04_Convo_04)
+    Text(Chapter_05_Scene_04_Convo_05)
+    Text(Chapter_05_Scene_04_Convo_06)
+
     // Text(C_Support_Joshua_Rennac)
     // Text(B_Support_Joshua_Rennac)
     // Text(A_Support_Joshua_Rennac)
@@ -158,9 +173,9 @@ static const EventScr EventScr_Beginning[] = {
     // Text(B_Support_Seth_Duessel)
     // Text(A_Support_Seth_Duessel)
 
-    Text(C_Support_Knoll_Lute)
-    Text(B_Support_Knoll_Lute)
-    Text(A_Support_Knoll_Lute)
+    // Text(C_Support_Knoll_Lute)
+    // Text(B_Support_Knoll_Lute)
+    // Text(A_Support_Knoll_Lute)
 
     NoFade
     ENDA

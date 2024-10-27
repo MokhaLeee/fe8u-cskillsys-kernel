@@ -59,6 +59,16 @@ W.I.P.[X]
 #include texts/FE8_Rewritten_Terper/Chapter_03_The_Bandits_Of_Borgo/In_Chapter.txt
 #include texts/FE8_Rewritten_Terper/Chapter_03_The_Bandits_Of_Borgo/Post_Chapter.txt
 
+#include texts/FE8_Rewritten_Terper/Chapter_04_Ancient_Horrors/Overworld.txt
+#include texts/FE8_Rewritten_Terper/Chapter_04_Ancient_Horrors/Pre_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_04_Ancient_Horrors/In_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_04_Ancient_Horrors/Post_Chapter.txt
+
+#include texts/FE8_Rewritten_Terper/Chapter_05_The_Empire's_Reach/Overworld.txt
+#include texts/FE8_Rewritten_Terper/Chapter_05_The_Empire's_Reach/Pre_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_05_The_Empire's_Reach/In_Chapter.txt
+#include texts/FE8_Rewritten_Terper/Chapter_05_The_Empire's_Reach/Post_Chapter.txt
+
 #include texts/FE8_Rewritten_Terper/Supports/Joshua_Rennac.txt
 #include texts/FE8_Rewritten_Terper/Supports/Ewan_Myrrh.txt
 #include texts/FE8_Rewritten_Terper/Supports/Seth_Duessel.txt
