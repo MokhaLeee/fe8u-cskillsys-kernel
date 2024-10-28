@@ -1,0 +1,27 @@
+// Map IDs
+enum {
+    PROLOGUE                  = 0x00,
+    CHAPTER_01                = 0x01,
+    CHAPTER_02                = 0x02,
+    CHAPTER_03                = 0x03,
+    CHAPTER_04                = 0x04,
+    CHAPTER_05                = 0x05,
+    CHAPTER_05X               = 0x06,
+    CHAPTER_06                = 0x07,
+    CHAPTER_07                = 0x08,
+    CHAPTER_08                = 0x09,
+    CHAPTER_09                = 0x0A,
+    CHAPTER_10                = 0x0B,
+    CHAPTER_11                = 0x3D, // Why is this skirmish chapter this high up the list?
+    CHAPTER_12                = 0x0C,
+    CHAPTER_13                = 0x0D,
+    CHAPTER_14                = 0x0E,
+    CHAPTER_15                = 0x0F,
+    CHAPTER_16                = 0x10,
+    CHAPTER_17                = 0x11,
+    CHAPTER_18                = 0x12,
+    CHAPTER_19                = 0x13,
+    CHAPTER_20                = 0x14,
+    CHAPTER_21                = 0x15,
+    CHAPTER_22                = 0x16,
+};

@@ -4,9 +4,8 @@
    // #include "Source/debug-event.lyn.event"
    // #include "Source/event-call.lyn.event"
 
+    // Event pointer table 
     EventPointerTable(7, ThisEvent)
     #include "Source/Chapter_00_The_Fall_Of_Renais/Chapter_00_The_Fall_Of_Renais.lyn.event"
 
-    // EventPointerTable(0xD, Chapter_Event)
-    // #include "Source/Chapter_02_The_Protected/WM_Chapter_02_The_Protected.lyn.event"
 }

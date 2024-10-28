@@ -4,12 +4,12 @@ When unit is defender while[NL]
 their HP is < 50%, attack first.[X]
 
 ## MSG_SKILL_Desperation
-Desper: When unit[NL]
+Desperation: When unit[NL]
 attacks while their HP < 50%,[NL]
 double attack immediately.[X]
 
 ## MSA_SKILL_QuickRiposte_NAME
-Quick-R[X]
+Quick Riposte[X]
 
 ## MSG_SKILL_QuickRiposte
 Quick Riposte:[NL]
@@ -17,12 +17,12 @@ If unit is attacked while their[NL]
 HP > 50%, they attack twice.[X]
 
 ## MSG_SKILL_WaryFighter
-W-Fighter:[NL]
+Wary Fighter:[NL]
 Prevents follow up attack[NL]
 if unit's HP > 50%.[X]
 
 ## MSG_SKILL_DoubleLion_NAME
-D-Lion[X]
+Double Lion[X]
 
 ## MSG_SKILL_DoubleLion
 Double Lion:[NL]
@@ -51,7 +51,7 @@ Always attack twice when under attack.[X]
 R-Fighter[X]
 
 ## MSG_SKILL_RecklessFighter
-RecklessFighter:[NL]
+Reckless Fighter:[NL]
 If HP is higher than 50%[NL]
 Both sides always attack twice.[X]
 
@@ -59,12 +59,12 @@ Both sides always attack twice.[X]
 B-Fighter[X]
 
 ## MSG_SKILL_BoldFighter
-BoldFighter:[NL]
+Bold Fighter:[NL]
 If HP is higher than 50%[NL]
 Always attack twice when attacking.[X]
 
 ## MSG_SKILL_BidingBlow
-BidingBlow:[NL]
+Biding Blow:[NL]
 Attack twice if the enemy[NL]
 cannot counterattack.[X]
 
@@ -72,7 +72,7 @@ cannot counterattack.[X]
 Adv-Chaser[X]
 
 ## MSG_SKILL_AdvantageChaser
-AdvantageChaser:[NL]
+Advantage Chaser:[NL]
 Unit always doubles if they have[NL]
 Weapon Triangle Advantage.[X]
 
@@ -80,7 +80,7 @@ Weapon Triangle Advantage.[X]
 P-Warrior[X]
 
 ## MSG_SKILL_PridefulWarrior
-PridefulWarrior:[NL]
+Prideful Warrior:[NL]
 Unit always attacks last in[NL]
 the round, but always doubles.[X]
 

@@ -248,7 +248,7 @@ I probably do have a death wish.[A][X]
 [OpenMidRight][LoadFace_Joshua]
 But I'm anything but third rate.[A][N]
 [OpenMidLeft]
-W-waah! Commander Saar![A][N]
+W-waah! Commander Saar![A][X]
 
 ## Chapter_05_Scene_04_Convo_04
 [OpenMidRight][LoadFace_Natasha]

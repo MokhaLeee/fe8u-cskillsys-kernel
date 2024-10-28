@@ -1,4 +1,4 @@
-////////// MENU SKILLS 
+////////// MENU SKILLS
 // SID_Dismount
 // SID_ReciprocalAid
 // SID_Sacrifice
@@ -37,9 +37,9 @@
 // SID_Reposition
 // SID_Shove
 // SID_Smite
-SID_Entrepreneur
+// SID_Entrepreneur
 
-////////// PRE-BATTLE SKILLS 
+////////// PRE-BATTLE SKILLS
 // SID_DefiantStr
 // SID_DefiantMag
 // SID_DefiantSkl
@@ -206,7 +206,7 @@ SID_Entrepreneur
 ////////// POST-BATTLE SKILLS
 // SID_Canto
 // SID_CantoPlus
-SID_Galeforce
+// SID_Galeforce
 // SID_AlertStance
 // SID_AlertStancePlus
 // SID_SavageBlow
@@ -293,7 +293,7 @@ SID_Galeforce
 // SID_BlueFlame
 
 ////////// STAT MODIFIER SKILLS
-// SID_HpBonus                       
+// SID_HpBonus
 // SID_StrBonus
 // SID_MagBonus
 // SID_SklBonus
@@ -313,7 +313,7 @@ SID_Galeforce
 // SID_PushLuck
 // SID_PushSpectrum
 // SID_PushMovement
-SID_Fury
+// SID_Fury
 // SID_FuryPlus
 // SID_FortressDef
 // SID_FortressRes
@@ -365,7 +365,7 @@ SID_Fury
 // SID_LuckySeven
 // SID_Unaware
 
-////////// WEAPON TRIANGLE ADVANTAGE SKILLS 
+////////// WEAPON TRIANGLE ADVANTAGE SKILLS
 // SID_SwordBreaker
 // SID_AxeBreaker
 // SID_LanceBreaker
@@ -448,9 +448,9 @@ SID_Fury
 // SID_Skybreaker
 
 ////////// BATTLE ORDER SKILLS
-SID_Vantage
+// SID_Vantage
 // SID_Desperation
-// SID_QuickRiposte
+SID_QuickRiposte
 // SID_WaryFighter
 // SID_DoubleLion
 // SID_Adept
@@ -489,7 +489,7 @@ SID_Vantage
 // SID_InitClever
 // SID_InitDeft
 // SID_InitQuick
-SID_InitSturdy
+// SID_InitSturdy
 // SID_InitCalm
 // SID_InitLucky
 // SID_InitNimble
@@ -574,7 +574,7 @@ SID_InitSturdy
 // SID_ShadePlus
 // SID_Provoke
 
-////////// STANDALONE SKILLS 
+////////// STANDALONE SKILLS
 // SID_IdentityProblems
 // SID_DemolitionExpert
 // SID_TriangleAttack
