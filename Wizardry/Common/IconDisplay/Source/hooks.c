@@ -218,7 +218,7 @@ void DrawBattlePopup(struct ProcEkrPopup *proc, int type, u32 priv)
 	if (type == 0) {
 		LoadIconPalette(1, 0x12);
 
-#if CHAX
+#if !CHAX
 		LoadIconObjectGraphics(GetItemType(priv) + 0x70, 0x40);
 #else
 		LoadIconObjectGraphics(WTYPE_ICON(GetItemType(priv)), 0x40);
@@ -231,7 +231,7 @@ void DrawBattlePopup(struct ProcEkrPopup *proc, int type, u32 priv)
 	} else {
 		LoadIconPalette(1, 0x12);
 
-#if CHAX
+#if !CHAX
 		LoadIconObjectGraphics(priv + 0x70, 0x40);
 #else
 		LoadIconObjectGraphics(WTYPE_ICON(priv), 0x40);
