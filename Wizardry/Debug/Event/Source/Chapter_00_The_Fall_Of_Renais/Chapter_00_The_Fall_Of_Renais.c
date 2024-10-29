@@ -5,6 +5,7 @@
 #include "jester_headers/macros.h"
 #include "jester_headers/soundtrack-ids.h"
 #include "jester_headers/maps.h"
+#include "jester_headers/flags.h"
 
 /**
  * Ally unit and REDA definitions
@@ -271,7 +272,22 @@ static const EventScr EventScr_Beginning[] = {
 };
 
 static const EventScr EventScr_Ending[] = {
-    MNC2(1)
+    MUSC(BGM_VICTORY)
+    Text_BG(0x1D, Chapter_00_Scene_03_Convo_06)
+    FADE_OUT_SCREEN(16)
+    NEXT_CHAPTER
+    REMA
+    SET_FLAG(GUIDE_SUSPEND)
+    SET_FLAG(GUIDE_SAVE)
+    SET_FLAG(GUIDE_MOVEMENT_RANGE)
+    SET_FLAG(GUIDE_VIEWING_UNITS)
+    SET_FLAG(GUIDE_GAME_FLOW)
+    SET_FLAG(GUIDE_DEFEAT_A_BOSS)
+    SET_FLAG(GUIDE_ATTACK_RANGE)
+    SET_FLAG(GUIDE_STRATEGIC_BATTLE_INFO)
+    SET_FLAG(GUIDE_DETAILED_BATTLE_INFO)
+    SET_FLAG(GUIDE_LEVELING_UP)
+    SET_FLAG(GUIDE_WEAPON_DURABILITY)
     ENDA
 };
 
@@ -289,6 +305,29 @@ static const EventListScr EventListScr_Turn[] = {
     END_MAIN
 };
 
+static const EventListScr EventListScr_OneEnemyLeft[] = {
+    CHECK_ENEMIES
+    SVAL(EVT_SLOT_7, 1)
+    BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
+    HIGHLIGHT(CHARACTER_EIRIKA, 60)
+    Text(Chapter_00_Scene_03_Convo_05)
+    GOTO(0x1)
+
+/**
+ * This copies over the check result of event slot 7 in event slot C
+ * for some reason if the condition isn't fulfilled?
+ * Not sure why that's needed, but it doesn't work otherwise
+ */
+LABEL(0x0)
+    CHECK_EVENTID_
+    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
+    ENUF_SLOT2
+
+LABEL(0x1)
+    NoFade
+    ENDA
+};
+
 static const EventListScr EventListScr_Character[] = {
     CharacterEventBothWays(EVFLAG_TMP(7), EventScr_Talk_EirikaSeth, CHARACTER_EIRIKA, CHARACTER_SETH)
     END_MAIN
@@ -300,6 +339,7 @@ static const EventListScr EventListScr_Location[] = {
 
 static const EventListScr EventListScr_Misc[] = {
     DefeatAll(EventScr_Ending)
+    AFEV(EVFLAG_TMP(7), EventListScr_OneEnemyLeft, 0)
     CauseGameOverIfLordDies
     END_MAIN
 };

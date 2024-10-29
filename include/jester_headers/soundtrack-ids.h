@@ -8,5 +8,6 @@ enum {
     BGM_TREASURED_MEMORIES  = 0x05,
     BGM_GRIM_JOURNEY        = 0x06,
     BGM_RAID                = 0x26,
+    BGM_VICTORY             = 0x31,
     // Lots more to add here
 };

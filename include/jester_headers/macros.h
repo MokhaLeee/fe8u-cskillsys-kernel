@@ -118,3 +118,9 @@ enum {
 
 // Reduce volume of BGM
 #define REDUCE_VOLUME MUSI
+
+// Go to next chapter
+#define NEXT_CHAPTER MNC2(1)
+
+// Set flag
+#define SET_FLAG ENUT
