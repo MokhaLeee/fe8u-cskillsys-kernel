@@ -17,7 +17,7 @@
     REMA
 
 // Focus the cursor on a character for a set number of frames then erase it
-#define CUMO(character, frames) \
+#define HIGHLIGHT(character, frames) \
     CUMO_CHAR(character) \
     STAL(frames) \
     CURE
@@ -36,10 +36,19 @@
     ENUN
 
 // Move unit twice and wait
-
 #define MOVE_TWICE_WAIT(speed, character, x1, y1, x2, y2) \
     MOVE(speed, character, x1, y1) \
+    ENUN \
     MOVE(speed, character, x2, y2) \
+    ENUN
+
+// Move unit thrice and wait
+#define MOVE_THRICE_WAIT(speed, character, x1, y1, x2, y2, x3, y3) \
+    MOVE(speed, character, x1, y1) \
+    ENUN \
+    MOVE(speed, character, x2, y2) \
+    ENUN \
+    MOVE(speed, character, x3, y3) \
     ENUN
 
 enum {
@@ -63,3 +72,49 @@ enum {
     CLEA \
     CLEN \
     CLEE
+
+// Set the chosen unit's HP total
+#define SET_UNIT_HP(character, hp) \
+    SVAL(EVT_SLOT_1, hp) \
+    SET_HP(character)
+
+// Combine the wait and the loading to reduce tedium for loading units
+// P.S. I have no idea what 'thing' is supposed to do
+#define LOAD_WAIT(thing, loaded_units) \
+    LOAD1(thing, loaded_units) \
+    ENUN
+
+// So apparently Nintendlord mixed these two up back in the day
+// and nobody ever made macros to fix it???
+#define FADE_IN_SCREEN(number) FADU(number)
+#define FADE_OUT_SCREEN(number) FADI(number)
+
+#define GIVE_ITEM_TO(item, character) \
+    SVAL(EVT_SLOT_3, item) \
+    GIVEITEMTO(character)
+
+#define GIVE_SKILL_SCROLL_TO(skill_id, character) \
+    SVAL(EVT_SLOT_3, (skill_id << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL) \
+    GIVEITEMTO(character)
+
+
+#define UNIT_ENTRY(charID, classID, allegianceID, levelAuto, lvl, xpos, ypos, rCount, rArray, ai1, ai2, ai3, ai4, ...) \
+    { \
+        .charIndex = charID, \
+        .classIndex = classID, \
+        .allegiance = allegianceID, \
+        .autolevel = levelAuto, \
+        .level = lvl, \
+        .xPosition = xpos, \
+        .yPosition = ypos, \
+        .redaCount = rCount, \
+        .redas = rArray, \
+        .ai = { ai1, ai2, ai3, ai4 }, \
+        .items = {  __VA_ARGS__ } \
+    }
+
+// Where you end up after pressing START
+#define SKIP_POINT EVBIT_F(2)
+
+// Reduce volume of BGM
+#define REDUCE_VOLUME MUSI

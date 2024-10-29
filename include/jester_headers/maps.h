@@ -24,4 +24,5 @@ enum {
     CHAPTER_20                = 0x14,
     CHAPTER_21                = 0x15,
     CHAPTER_22                = 0x16,
+    OUTSIDE_RENAIS            = 0x40,
 };
