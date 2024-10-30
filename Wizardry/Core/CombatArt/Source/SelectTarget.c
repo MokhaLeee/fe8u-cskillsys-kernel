@@ -9,8 +9,9 @@ extern s8 sSelectedComatArtIndex;
 
 STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
 {
-	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-	struct CombatArtList *list = GetCombatArtList(gActiveUnit, wtype);
+	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	int wtype = GetItemType(weapon);
+	struct CombatArtList *list = GetCombatArtList(gActiveUnit, weapon);
 	int new = old - 1;
 
 	if (old == 0)
@@ -36,8 +37,9 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
 
 STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
 {
-	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-	struct CombatArtList *list = GetCombatArtList(gActiveUnit, wtype);
+	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	int wtype = GetItemType(weapon);
+	struct CombatArtList *list = GetCombatArtList(gActiveUnit, weapon);
 	int new = old + 1;
 
 	for (; new != old; new++) {
@@ -57,8 +59,8 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
 
 u8 GetCombatArtByTargetSelIndex(void)
 {
-	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, wtype);
+	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, weapon);
 
 	/* 0 as default seemed as not use combat-art */
 	if (sSelectedComatArtIndex == 0)
@@ -69,8 +71,8 @@ u8 GetCombatArtByTargetSelIndex(void)
 
 STATIC_DECLAR void RegisterCombatArtStatusInTargetSel(int sel_index)
 {
-	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, wtype);
+	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, weapon);
 
 	/* 0 as default seemed as not use combat-art */
 	if (sel_index == 0)
@@ -243,8 +245,8 @@ PROC_LABEL(0),
 ProcPtr NewTargetSelectionRework(const struct SelectInfo *selectInfo)
 {
 	int i, cid;
-	int wtype = GetItemType(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
-	struct CombatArtList *list = GetCombatArtList(gActiveUnit, wtype);
+	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	struct CombatArtList *list = GetCombatArtList(gActiveUnit, weapon);
 	struct SelectTargetProc *proc;
 
 	LockGame();

@@ -94,15 +94,16 @@ struct CombatArtList {
 	struct UnitListHeader ref;
 	u8 wtype;
 	u8 amt;
+	u16 item;
 	u8 cid[COMBART_LIST_MAX_AMT];
 };
 
-struct CombatArtList *GetCombatArtList(struct Unit *unit, u8 wtype);
+struct CombatArtList *GetCombatArtList(struct Unit *unit, u16 item);
 void ResetCombatArtList(void);
 
 static inline struct CombatArtList *AutoGetCombatArtList(struct Unit *unit)
 {
-	return GetCombatArtList(unit, GetItemType(GetUnitEquippedWeapon(unit)));
+	return GetCombatArtList(unit, GetUnitEquippedWeapon(unit));
 }
 
 struct CombatArtRomTable {
