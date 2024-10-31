@@ -1,11 +1,12 @@
 {
-    WARNING __Prologue_event_rewritten__
+   // WARNING __Prologue_event_rewritten__
    // EventPointerTable(7, ThisEvent)
    // #include "Source/debug-event.lyn.event"
    // #include "Source/event-call.lyn.event"
 
     // Event pointer table 
-    EventPointerTable(7, ThisEvent)
+    EventPointerTable(0x7, Chapter00Event)
     #include "Source/Chapter_00_The_Fall_Of_Renais/Chapter_00_The_Fall_Of_Renais.lyn.event"
-
+    EventPointerTable(0xA, Chapter01Event)
+    #include "Source/Chapter_01_Escape/Chapter_01_Escape.lyn.event"
 }

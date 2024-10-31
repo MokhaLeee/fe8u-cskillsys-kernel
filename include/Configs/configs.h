@@ -161,6 +161,11 @@
 #define CONFIG_TEXT_ENGINE_REWORK
 
 /**
+ * When two units can have a talk event, show a talk icon on the map
+ */
+#define CONFIG_TALK_MAP_ICON
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable

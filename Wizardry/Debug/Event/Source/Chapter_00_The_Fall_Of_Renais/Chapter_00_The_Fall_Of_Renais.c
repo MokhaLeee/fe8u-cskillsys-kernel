@@ -183,16 +183,16 @@ static const EventScr EventScr_Beginning[] = {
     BROWNBOXTEXT(BB_Renais_Castle, 2, 2) // Set location text pop up
     LOAD_WAIT(0x1, Panicked_Soldier_Allies) // Load units and move them if possible
     CAMERA(17, 2) // Set camera to these coordinates
-    HIGHLIGHT(CHARACTER_EPHRAIM, 60) // Set flashing cursor on unit for a number of frames
+    HIGHLIGHT_CHARACTER(CHARACTER_EPHRAIM, 60) // Set flashing cursor on unit for a number of frames
     Text(Chapter_00_Scene_01_Convo_01) // Play this dialogue
     MOVE_WAIT(0, CHARACTER_EPHRAIM, 13, 11) // Move unit to chosen coordinates at given speed then wait
     ERASE(CHARACTER_EPHRAIM) // Erase given unit
     MOVE_1STEP_WAIT(0, CHARACTER_EIRIKA, MOVE_LEFT) // Move unit 1 step in given direction and wait
-    HIGHLIGHT(CHARACTER_EIRIKA, 60) // Set flashing cursor on unit for a number of frames
+    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60) // Set flashing cursor on unit for a number of frames
     Text(Chapter_00_Scene_01_Convo_02)
     MOVEONTO_WAIT(0, CHARACTER_SETH, CHARACTER_EIRIKA) // Move unit to another unit and wait    
     ERASE(CHARACTER_EIRIKA) // Erase given unit
-    HIGHLIGHT(CHARACTER_SETH, 60) // Set flashing cursor on unit for a number of frames
+    HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60) // Set flashing cursor on unit for a number of frames
     Text(Chapter_00_Scene_01_Convo_03)
     MOVE(0, CHARACTER_SETH, 13, 11) // Move unit to chosen coordinates at given speed then wait
     MOVE_TWICE_WAIT(0, CHARACTER_FRANZ, 12, 4, 12, 11) // Move unit twice and wait
@@ -207,7 +207,7 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT(0x1, Renais_Castle_Enemy1) // Load units and move them if possible
     LOAD_WAIT(0x1, Renais_Castle_Enemy2) // Load units and move them if possible
     LOAD_WAIT(0x1, Renais_Castle_Enemy3) // Load units and move them if possible
-    HIGHLIGHT(CHARACTER_FADO, 60) // Set flashing cursor on unit for a number of frames
+    HIGHLIGHT_CHARACTER(CHARACTER_FADO, 60) // Set flashing cursor on unit for a number of frames
     Text(Chapter_00_Scene_01_Convo_04)
     FADE_OUT_SCREEN(2) // Fade out to black in 8 seconds
     REMA // Remove the current map
@@ -218,16 +218,16 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_MAP_XY(0, 0, OUTSIDE_RENAIS)
     FADE_IN_SCREEN(16)
     LOAD_WAIT(0x1, Renais_Runaways_Allies)
-    HIGHLIGHT(CHARACTER_SETH, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text_BG(0x1D, Chapter_00_Scene_02_Convo_01)
     MOVE_THRICE_WAIT(0, CHARACTER_FRANZ, 4, 4, 4, 2, 0, 2)
     ERASE(CHARACTER_FRANZ)
-    HIGHLIGHT(CHARACTER_SETH, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text_BG(0x1D, Chapter_00_Scene_02_Convo_02)
     LOAD_WAIT(0x1, Renais_Outside_Castle_Enemy)
     MOVE_1STEP_WAIT(0, CHARACTER_SETH, MOVE_RIGHT)
     MOVE_1STEP_WAIT(0, CHARACTER_EIRIKA, MOVE_LEFT)
-    HIGHLIGHT(CHARACTER_VALTER_PROLOGUE, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_VALTER_PROLOGUE, 60)
     Text_BG(0x1D, Chapter_00_Scene_02_Convo_03)
     MOVE_1STEP_WAIT(0, CHARACTER_VALTER_PROLOGUE, MOVE_LEFT)
     // Battle scene
@@ -237,13 +237,13 @@ static const EventScr EventScr_Beginning[] = {
     EndAttack
     FIGHT(CHARACTER_SETH, CHARACTER_VALTER_PROLOGUE, 0, false)
     //
-    HIGHLIGHT(CHARACTER_SETH, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text(Chapter_00_Scene_02_Convo_04)
     MOVE_1STEP_WAIT(0, CHARACTER_SETH, MOVE_LEFT)
     ERASE(CHARACTER_EIRIKA)
     MOVE_THRICE_WAIT(0, CHARACTER_SETH, 4, 4, 4, 2, 0, 2)
     ERASE(CHARACTER_SETH)
-    HIGHLIGHT(CHARACTER_VALTER_PROLOGUE, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_VALTER_PROLOGUE, 60)
     Text(Chapter_00_Scene_02_Convo_05)
     FADE_OUT_SCREEN(16)
     REMA
@@ -253,20 +253,20 @@ static const EventScr EventScr_Beginning[] = {
     // New scene
     LOAD_MAP_XY(0, 0, PROLOGUE)
     FADE_IN_SCREEN(16)
-    LOAD_WAIT(0x1, Eirika_Seth_Allies)
+    LOAD_WAIT_PERSIST(0x1, Eirika_Seth_Allies)
     SET_UNIT_HP(CHARACTER_SETH, 10)
-    HIGHLIGHT(CHARACTER_EIRIKA, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
     REDUCE_VOLUME
     Text_BG(0x1D, Chapter_00_Scene_03_Convo_01)
     MOVE_WAIT(0, CHARACTER_SETH, 4, 4)
-    HIGHLIGHT(CHARACTER_SETH, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text(Chapter_00_Scene_03_Convo_02)
     MOVE_WAIT(0, CHARACTER_EIRIKA, 4, 5)
-    HIGHLIGHT(CHARACTER_SETH, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text(Chapter_00_Scene_03_Convo_03)
     GIVE_ITEM_TO(ITEM_SWORD_RAPIER, CHARACTER_EIRIKA)
     LOAD_WAIT(0x1, Grado_Reinforcements_Enemy)
-    HIGHLIGHT(CHARACTER_ONEILL, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_ONEILL, 60)
     Text(Chapter_00_Scene_03_Convo_04)
     ENDA
 };
@@ -309,7 +309,7 @@ static const EventListScr EventListScr_OneEnemyLeft[] = {
     CHECK_ENEMIES
     SVAL(EVT_SLOT_7, 1)
     BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
-    HIGHLIGHT(CHARACTER_EIRIKA, 60)
+    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
     Text(Chapter_00_Scene_03_Convo_05)
     GOTO(0x1)
 
@@ -368,7 +368,7 @@ static const u8 TrapData_ThisEventHard[] = {
     TRAP_NONE
 };
 
-const struct ChapterEventGroup ThisEvent = {
+const struct ChapterEventGroup Chapter00Event = {
     .turnBasedEvents               = EventListScr_Turn,
     .characterBasedEvents          = EventListScr_Character,
     .locationBasedEvents           = EventListScr_Location,

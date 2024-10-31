@@ -7,6 +7,7 @@ enum MapTaskConfIndex {
     MTSKCONF_RESCUING,
     MTSKCONF_BOSS,
     MTSKCONF_PROTECTION,
+    MTSKCONF_TALK
 };
 
 #include "common-chax.h"

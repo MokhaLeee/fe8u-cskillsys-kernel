@@ -7,7 +7,12 @@ enum {
     BGM_THE_BEGGINING       = 0x04,
     BGM_TREASURED_MEMORIES  = 0x05,
     BGM_GRIM_JOURNEY        = 0x06,
+    BGM_DISTANT_ROADS       = 0x09,
+    BGM_BINDING_VOW         = 0x0F,
+    BGM_SHADOW_OF_THE_ENEMY = 0x13,
+    BGM_TENSION             = 0x25,
     BGM_RAID                = 0x26,
     BGM_VICTORY             = 0x31,
+    BGM_COMRADES            = 0x54,
     // Lots more to add here
 };

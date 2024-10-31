@@ -221,6 +221,7 @@ def Parse(line):
 	res = res.replace(b'[LoadFaceFancy_SoldierGreen]', b'\x80\x2F\x6F\x01')
 	res = res.replace(b'[LoadFaceFancy_SoldierPurple]', b'\x80\x2F\x70\x01')
 	res = res.replace(b'[LoadFaceFancy_SoldierSilver]', b'\x80\x2F\x71\x01')
+	res = res.replace(b'[LoadFaceFancy_ActiveUnit]', b'\x80\x2F\xFF\xFF')
 
 	res = res.replace(b'[LoadFace_Eirika]', b'\x10\x02\x01')
 	res = res.replace(b'[LoadFace_EirikaClosed]', b'\x10\x03\x01')
@@ -334,6 +335,7 @@ def Parse(line):
 	res = res.replace(b'[LoadFace_SoldierGreen]', b'\x10\x6F\x01')
 	res = res.replace(b'[LoadFace_SoldierPurple]', b'\x10\x70\x01')
 	res = res.replace(b'[LoadFace_SoldierSilver]', b'\x10\x71\x01')
+	res = res.replace(b'[LoadFace_ActiveUnit]', b'\x10\xFF\xFF')
 
 	res = res.replace(b'[0x1]', b'\x01')
 	res = res.replace(b'[0x01]', b'\x01')

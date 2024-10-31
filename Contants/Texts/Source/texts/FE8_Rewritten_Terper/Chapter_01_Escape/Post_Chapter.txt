@@ -1,4 +1,4 @@
-## Chapter_01_Scene_05_Convo_01
+## Chapter_01_Scene_09_Convo_01
 [OpenMidLeft][LoadFace_Tana]
 [OpenFarFarRight][LoadFace_Eirika]
 [OpenMidRight][LoadFace_Gilliam]
@@ -47,7 +47,7 @@ I'm really happy to see you again.[A][N]
 [OpenMidRight]
 ... Me too.[A][X]
 
-## Chapter_01_Scene_06_Convo_01
+## Chapter_01_Scene_10_Convo_01
 [OpenMidRight][LoadFace_Tana]
 [OpenMidLeft][LoadFace_Hayden]
 Oh, Tana![A] I'm so glad to see that[N]
@@ -193,7 +193,7 @@ me in such a w--[A][N]
 ... *sigh*.[A]
 [ClearFace][X]
 
-## Chapter_01_Scene_06_Convo_02
+## Chapter_01_Scene_10_Convo_02
 [OpenMidRight][LoadFace_Messenger]
 [OpenMidLeft][LoadFace_Hayden]
 That will be all.[A][N]
@@ -307,7 +307,7 @@ young rise up.[A][N]
 What do you think...[N]
 Fado?[A] ...Vigarde?[A][X]
 
-## Chapter_01_Scene_06_Convo_03
+## Chapter_01_Scene_10_Convo_03
 [OpenRight][LoadFace_Eirika]
 [OpenFarRight][LoadFace_Seth]
 [OpenMidLeft][LoadFace_Hayden]

@@ -17,8 +17,14 @@
     REMA
 
 // Focus the cursor on a character for a set number of frames then erase it
-#define HIGHLIGHT(character, frames) \
+#define HIGHLIGHT_CHARACTER(character, frames) \
     CUMO_CHAR(character) \
+    STAL(frames) \
+    CURE
+
+// Focus the cursor on a character for a set number of frames then erase it
+#define HIGHLIGHT_COORDINATES(x, y, frames) \
+    CUMO_AT(x, y) \
     STAL(frames) \
     CURE
 
@@ -70,18 +76,23 @@ enum {
 // Remove all units
 #define CLEAR_ALL_UNITS \
     CLEA \
+    CLEE \
     CLEN \
-    CLEE
+    SVAL(EVT_SLOT_B, 0x00000000)
 
 // Set the chosen unit's HP total
 #define SET_UNIT_HP(character, hp) \
     SVAL(EVT_SLOT_1, hp) \
     SET_HP(character)
 
-// Combine the wait and the loading to reduce tedium for loading units
-// P.S. I have no idea what 'thing' is supposed to do
-#define LOAD_WAIT(thing, loaded_units) \
+// Protect these loaded units from CLEAR_ALL_UNITS
+#define LOAD_WAIT_PERSIST(thing, loaded_units) \
     LOAD1(thing, loaded_units) \
+    ENUN
+
+// Units can be erased by CLEAR_ALL_UNITS
+#define LOAD_WAIT(thing, loaded_units) \
+    LOAD2(thing, loaded_units) \
     ENUN
 
 // So apparently Nintendlord mixed these two up back in the day
@@ -124,3 +135,10 @@ enum {
 
 // Set flag
 #define SET_FLAG ENUT
+
+#define COORDS(xcoord,ycoord) (ycoord<<16)|xcoord
+
+#define MOVE_POSITION_WAIT(speed, sourceX, sourceY, destX, destY) \
+    SVAL(0xB, COORDS(sourceX, sourceY)) \
+    MOVE(speed, 0xFFFE, destX, destY) \
+    ENUN
