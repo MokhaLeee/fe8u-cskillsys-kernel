@@ -122,8 +122,11 @@ void NewEfxCombatArt(struct Anim *anim, int cid)
 	struct ProcEfxSkillRework *proc;
 	const struct EfxAnimConf *conf = gpEfxCombatArtAnims[cid];
 
-	if (!(COMBART_VALID(cid)) || !IS_ROM_DATA(conf))
+	if (!(COMBART_VALID(cid)))
 		return;
+
+	if (!IS_ROM_DATA(conf))
+		conf = &EfxSkillCombat;
 
 	proc = Proc_Start(ProcScr_EfxCombatArt, PROC_TREE_3);
 	proc->timer = 0;
