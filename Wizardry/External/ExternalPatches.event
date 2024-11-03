@@ -42,6 +42,8 @@
     #include "TextEngineRework/Installer.event"
 #endif
 
+//#include "NarrowFont/Installer.event"
+
 #ifdef CONFIG_INSTALL_BASE_CONVERSATIONS
 //     #include "BaseConversations/Installer.event"
 #endif

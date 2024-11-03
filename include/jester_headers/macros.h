@@ -142,3 +142,10 @@ enum {
     SVAL(0xB, COORDS(sourceX, sourceY)) \
     MOVE(speed, 0xFFFE, destX, destY) \
     ENUN
+
+#define HOUSE_EVENT(background, message) \
+    MUSI \
+    Text_BG(background, message) \
+    MUNO \
+    NoFade \
+    ENDA

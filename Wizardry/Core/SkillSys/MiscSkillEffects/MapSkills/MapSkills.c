@@ -305,6 +305,12 @@ void ChapterChangeUnitCleanup(void)
             unit->maxHP += 1;
 #endif
 
+#if defined(CONFIG_AUTO_REPAIR_WEAPONS)
+    for (int i = 0; i < 5; i++)
+        if(GetItemIndex(unit->items[i]) == ITEM_SWORD_RAPIER)
+            unit->items[i] = MakeNewItem(unit->items[i]);
+#endif
+
         if (unit && unit->pCharacterData)
         {
             SetUnitHp(unit, GetUnitMaxHp(unit));

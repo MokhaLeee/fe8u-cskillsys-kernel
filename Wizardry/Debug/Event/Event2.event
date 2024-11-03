@@ -1,0 +1,4 @@
+{
+    EventPointerTable(A, ThisEvent)
+    #include "Source/Chapter_01_Escape/Chapter_01_Escape.lyn.event"
+}

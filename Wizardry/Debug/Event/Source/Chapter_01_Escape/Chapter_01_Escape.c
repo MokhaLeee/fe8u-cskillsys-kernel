@@ -199,6 +199,16 @@ LABEL(0x1)
     ENDA
 };
 
+static const EventListScr EventListScr_HOUSE_TALK_1[] = {
+    HouseEvent(Chapter_01_Scene_08_Convo_01, 0x0)
+    END_MAIN
+};
+
+static const EventListScr EventListScr_HOUSE_TALK_2[] = {
+    HouseEvent(Chapter_01_Scene_09_Convo_01, 0x0)
+    END_MAIN
+};
+
 /**
  * Event list
  */
@@ -214,6 +224,8 @@ static const EventListScr EventListScr_Character[] = {
 };
 
 static const EventListScr EventListScr_Location[] = {
+    House(EVFLAG_TMP(5), EventListScr_HOUSE_TALK_1, 10, 4)
+    House(EVFLAG_TMP(6), EventListScr_HOUSE_TALK_2, 13, 6)
     END_MAIN
 };
 

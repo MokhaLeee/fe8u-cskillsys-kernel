@@ -79,6 +79,8 @@ def Parse(line):
 	res = res.replace(b'[Font_Regular]', b'\x80\x26\x01')
 	res = res.replace(b'[Font_Bold]', b'\x80\x26\x02')
 	res = res.replace(b'[Font_Italic]', b'\x80\x26\x03')
+	res = res.replace(b'[Font_NarrowTalk]', b'\x80\x26\x04')
+	res = res.replace(b'[Font_NarrowMenu]', b'\x80\x26\x05')
 
 	# The colors inbetween these ones are a mess, so I'm not using them
 	# Presumably there's 255, someone else can test the rest

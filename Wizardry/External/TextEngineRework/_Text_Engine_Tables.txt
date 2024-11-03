@@ -10,6 +10,8 @@ POIN $58F6F4
 POIN Text_Bold
 //3 (Italics)
 POIN Text_Ital
+//4 (Narrow Regular)
+POIN Text_Narrow_Regular
 
 ALIGN 4
 Text_Bold:
@@ -18,6 +20,10 @@ Text_Bold:
 ALIGN 4
 Text_Ital:
 #include "Fonts/FE8_Text_Ital.txt"
+
+ALIGN 4
+Text_Narrow_Regular:
+#include "Fonts/FE8_Text_Narrow_Regular.txt"
 
 
 //########### TEXT GROUP COLORS ################

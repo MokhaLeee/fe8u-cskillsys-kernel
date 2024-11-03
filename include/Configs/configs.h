@@ -162,8 +162,15 @@
 
 /**
  * When two units can have a talk event, show a talk icon on the map
+ * Keep track of WarningHpSheet.png that has the icons
  */
 #define CONFIG_TALK_MAP_ICON
+
+/**
+ * By Jester
+ * Installed in: Wizardry/Core/SkillSys/MiscSkillEffects/MapSkills/MapSkills.c
+ */
+// #define CONFIG_AUTO_REPAIR_WEAPONS
 
 /**
  * Levelup mode
