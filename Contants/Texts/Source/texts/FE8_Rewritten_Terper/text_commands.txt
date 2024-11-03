@@ -32,3 +32,8 @@
  TextSpeed_Fast
  TextSpeed_Instant
  FlipLeft, FlipRight -> To be used in conjunction with LoadFaceFancy_NAME
+ Font_Regular
+ Font_Bold
+ Font_Italic
+ Font_NarrowText
+ Font_NarrowMenu

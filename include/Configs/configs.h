@@ -155,6 +155,8 @@
  * 3 line text boxes, multiple colors, variable text,
  * speed, flipped portraits and more!
  * 
+ * Now has NarrowFont from Scraiza integrated thanks to Jester, usable via [Font_NarrowText] and [Font_NarrowMenu]
+ * 
  * Installed in: Wizardry/External/TextEngineRework/Installer.event
  * Source: https://feuniverse.us/t/teqs-minor-assembly-shenanigans/1655/118
  */

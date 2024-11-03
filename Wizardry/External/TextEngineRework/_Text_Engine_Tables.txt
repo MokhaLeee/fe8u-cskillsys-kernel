@@ -12,6 +12,8 @@ POIN Text_Bold
 POIN Text_Ital
 //4 (Narrow Regular)
 POIN Text_Narrow_Regular
+//5 (Narrow Menu)
+POIN Text_Narrow_Menu
 
 ALIGN 4
 Text_Bold:
@@ -24,6 +26,10 @@ Text_Ital:
 ALIGN 4
 Text_Narrow_Regular:
 #include "Fonts/FE8_Text_Narrow_Regular.txt"
+
+ALIGN 4
+Text_Narrow_Menu:
+#include "Fonts/FE8_Text_Narrow_Menu.txt"
 
 
 //########### TEXT GROUP COLORS ################

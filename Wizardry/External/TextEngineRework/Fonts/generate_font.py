@@ -7,7 +7,7 @@ import image
 #image.make_font_EA('ital_text', 'FE8_Text_Ital.png', 4)
 
 #if adding new fonts, stick 'em in here
-fonts_list = ['FE8_Text_Bold.png', 'FE8_Text_Ital.png', 'FE8_Text_Narrow_Regular.png']
+fonts_list = ['FE8_Text_Bold.png', 'FE8_Text_Ital.png', 'FE8_Text_Narrow_Regular.png', 'FE8_Text_Narrow_Menu.png']
 
 with open('Master_Font_Installer.txt','w') as f:
    for font in fonts_list:
