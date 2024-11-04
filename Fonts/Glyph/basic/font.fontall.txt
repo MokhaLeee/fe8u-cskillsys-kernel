@@ -1,0 +1,5 @@
+//char	type	Width	Filename
+	item	0	FontItem_1F.png
+	text	0	FontText_1F.png
+ 	item	2	FontItem_20.png
+ 	text	2	FontText_20.png

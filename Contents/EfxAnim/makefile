@@ -46,7 +46,7 @@ CLEAN_FILES += $(EFX_SCR_DEPS)
 	@echo "[GEN]	$@"
 	@$(GRIT) $< -gB 4 -gzl -m -mLf -mR4 -mzl -pn 16 -ftb -fh! -o $@
 
-PNG_FILES := $(shell find ./ -type f -name '*.png')
+PNG_FILES := $(shell find $(mkfile_dir) -type f -name '*.png')
 CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES:.png=.pal.bin)
 
 clean:

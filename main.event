@@ -31,6 +31,11 @@ ORG FreeSpaceKernel_Reloc
 MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (KernelRelocSize)
 ASSERT (FreeSpaceKernel_RelocEnd - CURRENTOFFSET)
 
+ORG FreeSpaceFont
+    #include "Fonts/Fonts.event"
+MESSAGE FreeSpace___Font___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceFont) max (FreeSpaceFontSize)
+ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
+
 ORG FreeSpaceKernel_Data
     #include "Data/Data.event"
     #include "Contents/Contents.event"

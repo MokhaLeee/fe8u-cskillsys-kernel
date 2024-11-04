@@ -19,7 +19,7 @@ WIZARDRY_DIR := Wizardry
 CONTENTS_DIR := Contents
 GAMEDATA_DIR := Data
 
-HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR) $(TEXTS_DIR)
+HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
 
 all:
 	@$(MAKE) pre_build	|| exit 1
@@ -32,6 +32,7 @@ CACHE_DIR := .cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
 CLEAN_FILES :=
+CLEAN_PNG_FILES :=
 CLEAN_DIRS  := $(CACHE_DIR) .release_dir $(shell find -name __pycache__)
 CLEAN_BUILD :=
 
@@ -257,15 +258,15 @@ TSA_FILES := $(shell find $(HACK_DIRS) -type f -name '*.tsa')
 	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRITLZ77ARGS)
 	@mv $(basename $<).img.bin $@
 
-CLEAN_FILES += $(PNG_FILES:.png=.gbapal) $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
-CLEAN_FILES += $(PNG_FILES:.png=.lz77)
-CLEAN_FILES += $(TSA_FILES:.tsa=.tsa.lz)
+CLEAN_PNG_FILES += $(PNG_FILES:.png=.gbapal) $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
+CLEAN_PNG_FILES += $(PNG_FILES:.png=.lz77)
+CLEAN_PNG_FILES += $(TSA_FILES:.tsa=.tsa.lz)
 
 %.img.bin %.map.bin %.pal.bin: %.png
 	@echo "[GEN]	$@"
 	@$(GRIT) $< -gB 4 -gzl -m -mLf -mR4 -mzl -pn 16 -ftb -fh! -o $@
 
-CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES:.png=.pal.bin)
+CLEAN_PNG_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES:.png=.pal.bin)
 
 # ============
 # = EfxAnims =
@@ -311,6 +312,26 @@ $(GFX_HEADER): $(GFX_SOURCES)
 
 CLEAN_BUILD += $(GFX_DIR)
 CLEAN_FILES += $(GFX_HEADER)
+
+# =========
+# = Glyph =
+# =========
+FONT_DIR := Fonts
+
+GLYPH_INSTALLER := $(FONT_DIR)/GlyphInstaller.event
+GLYPH_DEPS := $(FONT_DIR)/FontList.txt
+
+font: $(GLYPH_INSTALLER)
+
+$(GLYPH_INSTALLER): $(GLYPH_DEPS)
+	@$(MAKE) -C $(FONT_DIR)
+
+%_font.img.bin: %_font.png
+	@echo "[GEN]	$@"
+	@$(GRIT) $< -gB2 -p! -tw16 -th16 -ftb -fh! -o $@
+
+PRE_BUILD   += font
+CLEAN_BUILD += $(FONT_DIR)
 
 # ========
 # = ENUM =
@@ -372,9 +393,10 @@ CLEAN_FILES += $(shell find $(HACK_DIRS) -type f -name '*.EXPERIMENTAL-checkpatc
 
 clean_basic:
 	@rm -f $(CLEAN_FILES)
+	@rm -f $(CLEAN_PNG_FILES)
 	@rm -rf $(CLEAN_DIRS)
 
 clean:
-	@for i in $(CLEAN_BUILD); do if test -e $$i/makefile ; then $(MAKE) -f $$i/makefile clean || { exit 1;} fi; done;
+	@for i in $(CLEAN_BUILD); do if test -e $$i/makefile ; then echo "Clean $$i .."; $(MAKE) -f $$i/makefile clean || { exit 1;} fi; done;
 	@$(MAKE) clean_basic
-	@echo "Kernel cleaned .."
+	@echo "All cleaned .."

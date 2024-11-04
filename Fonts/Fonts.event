@@ -1,0 +1,16 @@
+#ifndef FONT_INSTALLED
+#define FONT_INSTALLED
+
+#include "Hacks/Glyph.event"
+
+/* Fake FEB draw-utf8 patch */
+PUSH
+ORG 0x44D2
+BYTE 0x00 0x00 0x00 0x4B 0x18 0x47
+POP
+
+/* Auto generated */
+ALIGN 4
+#include "GlyphInstaller.event"
+
+#endif
