@@ -21,12 +21,12 @@ bool PostActionTsuzuku(ProcPtr parent)
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
 #if defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce))
-		if (SkillTester(unit, SID_Galeforce) && gBattleActorGlobalFlag.skill_activated_galeforce)
+		if (SkillListTester(unit, SID_Galeforce) && gBattleActorGlobalFlag.skill_activated_galeforce)
 			goto L_exec_rafrain_action_anim;
 #endif
 
 #if defined(SID_FailGale) && (COMMON_SKILL_VALID(SID_FailGale))
-		if (SkillTester(unit, SID_FailGale) && !gBattleActor.nonZeroDamage)
+		if (SkillListTester(unit, SID_FailGale) && !gBattleActor.nonZeroDamage)
 			goto L_exec_rafrain_action_anim;
 #endif
 		if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enimy_defeated)

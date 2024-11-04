@@ -32,7 +32,7 @@ bool PostActionAlertStance(ProcPtr parent)
 
 	if (gActionData.unitActionType == UNIT_ACTION_WAIT) {
 #if defined(SID_AlertStancePlus) && (COMMON_SKILL_VALID(SID_AlertStancePlus))
-		if (SkillTester(unit, SID_AlertStancePlus)) {
+		if (SkillListTester(unit, SID_AlertStancePlus)) {
 			NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
 			SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID_PLUS);
 			return true;
@@ -40,7 +40,7 @@ bool PostActionAlertStance(ProcPtr parent)
 #endif
 
 #if defined(SID_AlertStance) && (COMMON_SKILL_VALID(SID_AlertStance))
-		if (SkillTester(unit, SID_AlertStance)) {
+		if (SkillListTester(unit, SID_AlertStance)) {
 			NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
 			SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID);
 			return true;

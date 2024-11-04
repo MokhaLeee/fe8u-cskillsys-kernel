@@ -13,13 +13,13 @@ STATIC_DECLAR bool CheckCanto(void)
 		return false;
 
 #if defined(SID_Canto) && (COMMON_SKILL_VALID(SID_Canto))
-	canto = SkillTester(gActiveUnit, SID_Canto);
+	canto = SkillListTester(gActiveUnit, SID_Canto);
 #else
 	canto = false;
 #endif
 
 #if defined(SID_CantoPlus) && (COMMON_SKILL_VALID(SID_CantoPlus))
-	cantop = SkillTester(gActiveUnit, SID_CantoPlus);
+	cantop = SkillListTester(gActiveUnit, SID_CantoPlus);
 #else
 	cantop = false;
 #endif

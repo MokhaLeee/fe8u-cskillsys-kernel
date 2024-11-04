@@ -14,7 +14,7 @@ bool PostActionBattleActorHurt(ProcPtr parent)
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
 #if defined(SID_GrislyWound) && (COMMON_SKILL_VALID(SID_GrislyWound))
-		if (SkillTester(target, SID_GrislyWound)) {
+		if (SkillListTester(target, SID_GrislyWound)) {
 			int GrislyWoundDamage = unit->maxHP / 5;
 
 			if (GrislyWoundDamage > unit->curHP)
@@ -25,7 +25,7 @@ bool PostActionBattleActorHurt(ProcPtr parent)
 #endif
 
 #if defined(SID_Scendscale) && (COMMON_SKILL_VALID(SID_Scendscale))
-		if (SkillTester(unit, SID_Scendscale) && GetBattleGlobalFlags(&gBattleActor)->hitted) {
+		if (SkillListTester(unit, SID_Scendscale) && GetBattleGlobalFlags(&gBattleActor)->hitted) {
 			damage += SKILL_EFF1(SID_Scendscale);
 		}
 #endif
@@ -34,17 +34,17 @@ bool PostActionBattleActorHurt(ProcPtr parent)
 
 	case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
-		if (SkillTester(unit, SID_Fury))
+		if (SkillListTester(unit, SID_Fury))
 			damage += 6;
 #endif
 
 #if defined(SID_FuryPlus) && (COMMON_SKILL_VALID(SID_FuryPlus))
-		if (SkillTester(unit, SID_FuryPlus))
+		if (SkillListTester(unit, SID_FuryPlus))
 			damage += 8;
 #endif
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-		if (SkillTester(unit, SID_DoubleLion) && (gBattleActorGlobalFlag.skill_activated_double_lion))
+		if (SkillListTester(unit, SID_DoubleLion) && (gBattleActorGlobalFlag.skill_activated_double_lion))
 			damage += 1;
 #endif
 
@@ -74,7 +74,7 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
 #if defined(SID_PoisonStrike) && (COMMON_SKILL_VALID(SID_PoisonStrike))
-		if (SkillTester(actor, SID_PoisonStrike)) {
+		if (SkillListTester(actor, SID_PoisonStrike)) {
 			int poisonStrikeDamage = unit->maxHP / 5;
 
 			if (poisonStrikeDamage > unit->curHP)
@@ -85,7 +85,7 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 #endif
 
 #if defined(SID_GrislyWound) && (COMMON_SKILL_VALID(SID_GrislyWound))
-		if (SkillTester(actor, SID_GrislyWound)) {
+		if (SkillListTester(actor, SID_GrislyWound)) {
 			int GrislyWoundDamage = unit->maxHP / 5;
 
 			if (GrislyWoundDamage > unit->curHP)
@@ -96,7 +96,7 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 #endif
 
 #if defined(SID_Scendscale) && (COMMON_SKILL_VALID(SID_Scendscale))
-		if (SkillTester(unit, SID_Scendscale) && GetBattleGlobalFlags(&gBattleTarget)->hitted)
+		if (SkillListTester(unit, SID_Scendscale) && GetBattleGlobalFlags(&gBattleTarget)->hitted)
 			damage += SKILL_EFF1(SID_Scendscale);
 #endif
 
@@ -104,12 +104,12 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 
 	case UNIT_ACTION_STAFF:
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
-		if (SkillTester(unit, SID_Fury))
+		if (SkillListTester(unit, SID_Fury))
 			damage += 6;
 #endif
 
 #if defined(SID_FuryPlus) && (COMMON_SKILL_VALID(SID_FuryPlus))
-		if (SkillTester(unit, SID_FuryPlus))
+		if (SkillListTester(unit, SID_FuryPlus))
 			damage += 8;
 #endif
 

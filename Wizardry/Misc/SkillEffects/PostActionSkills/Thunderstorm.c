@@ -106,7 +106,7 @@ bool PostActionThunderstorm(ProcPtr parent)
 		return false;
 
 #if defined(SID_Thunderstorm) && (COMMON_SKILL_VALID(SID_Thunderstorm))
-	if (!SkillTester(unit, SID_Thunderstorm))
+	if (!SkillListTester(unit, SID_Thunderstorm))
 #else
 	if (1)
 #endif

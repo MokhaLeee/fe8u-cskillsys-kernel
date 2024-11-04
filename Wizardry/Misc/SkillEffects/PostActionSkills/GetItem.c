@@ -19,14 +19,14 @@ bool PostActionGetItem(ProcPtr parent)
 
 	if (gActionData.unitActionType == UNIT_ACTION_COMBAT && gBattleActorGlobalFlag.enimy_defeated) {
 #if defined(SID_Despoil) && (COMMON_SKILL_VALID(SID_Despoil))
-		if (SkillTester(unit, SID_Despoil) && gBattleActorGlobalFlag.enimy_defeated) {
+		if (SkillListTester(unit, SID_Despoil) && gBattleActorGlobalFlag.enimy_defeated) {
 			NewPopup_ItemGot(parent, unit, ITEM_REDGEM);
 			return true;
 		}
 #endif
 
 #if defined(SID_GoldDigger) && (COMMON_SKILL_VALID(SID_GoldDigger))
-		if (SkillTester(unit, SID_GoldDigger) && gBattleActorGlobalFlag.enimy_defeated) {
+		if (SkillListTester(unit, SID_GoldDigger) && gBattleActorGlobalFlag.enimy_defeated) {
 			NewPopup_GoldGot(parent, unit, SKILL_EFF0(SID_GoldDigger));
 			return true;
 		}

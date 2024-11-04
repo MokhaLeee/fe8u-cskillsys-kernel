@@ -87,7 +87,7 @@ bool PostActionSynchronize(ProcPtr parent)
 		return false;
 
 #if (defined(SID_Synchronize) && (COMMON_SKILL_VALID(SID_Synchronize)))
-	if (!SkillTester(gActiveUnit, SID_Synchronize))
+	if (!SkillListTester(gActiveUnit, SID_Synchronize))
 #else
 	if (1)
 #endif

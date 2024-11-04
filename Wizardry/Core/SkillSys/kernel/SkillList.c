@@ -134,7 +134,7 @@ struct SkillList *GetUnitSkillList(struct Unit *unit)
 	return list;
 }
 
-bool JudgeSkillViaList(struct Unit *unit, const u16 sid)
+bool _SkillListTester(struct Unit *unit, const u16 sid)
 {
 	int i;
 	struct SkillList *list = GetUnitSkillList(unit);
@@ -194,7 +194,7 @@ STATIC_DECLAR void SetupBattleSkillFastList(void)
 }
 
 #if 0
-bool _JudgeSkillViaFastList(struct BattleUnit *bu, const u16 sid)
+bool _BattleFastSkillTester(struct BattleUnit *bu, const u16 sid)
 {
 	u32 *fast_list;
 
@@ -224,8 +224,8 @@ void UnitToBattle_SetupSkillList(struct Unit *unit, struct BattleUnit *bu)
 		SetupBattleSkillList();
 
 #if (defined(SID_Nihil) && COMMON_SKILL_VALID(SID_Nihil))
-		nihil_on_actor  = JudgeSkillViaList(&gBattleActor.unit,  SID_Nihil);
-		nihil_on_target = JudgeSkillViaList(&gBattleTarget.unit, SID_Nihil);
+		nihil_on_actor  = _SkillListTester(&gBattleActor.unit,  SID_Nihil);
+		nihil_on_target = _SkillListTester(&gBattleTarget.unit, SID_Nihil);
 
 		if (nihil_on_actor)
 			DisableUnitSkilLList(&gBattleActor.unit);

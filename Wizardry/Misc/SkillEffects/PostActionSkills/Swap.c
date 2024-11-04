@@ -99,7 +99,7 @@ bool PostActionSwap(ProcPtr proc)
 		return false;
 
 #if defined(SID_Lunge) && (COMMON_SKILL_VALID(SID_Lunge))
-	if (!SkillTester(unit, SID_Lunge))
+	if (!SkillListTester(unit, SID_Lunge))
 #else
 	if (1)
 #endif

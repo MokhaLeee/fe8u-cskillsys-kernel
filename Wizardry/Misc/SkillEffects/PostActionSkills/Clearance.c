@@ -55,7 +55,7 @@ bool PostAction_Clearance(ProcPtr parent)
 		return false;
 
 #if defined(SID_Clearance) && (COMMON_SKILL_VALID(SID_Clearance))
-	if (!SkillTester(gActiveUnit, SID_Clearance))
+	if (!SkillListTester(gActiveUnit, SID_Clearance))
 #else
 	if (1)
 #endif
