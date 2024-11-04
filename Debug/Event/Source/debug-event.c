@@ -1,5 +1,4 @@
 #include "common-chax.h"
-#include "debug-event.h"
 #include "skill-system.h"
 #include "event-rework.h"
 #include "constants/skills.h"
@@ -340,6 +339,17 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 	{}
 };
 
+static void give_skill_scroll_to_ephraim(void)
+{
+	struct Unit *unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
+
+	if (unit) {
+#if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
+		UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
+#endif
+	}
+}
+
 /**
  * Main events
  */
@@ -418,7 +428,7 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_RemoveSkill(SID_Fury, CHARACTER_EPHRAIM)
 #endif
 
-	ASMC(PrologueCallBack)
+	ASMC(give_skill_scroll_to_ephraim)
 
 	// PREP
 	CALL(EventScr_08591FD8)
@@ -495,14 +505,14 @@ static const u8 TrapData_ThisEventHard[] = {
 };
 
 const struct ChapterEventGroup ThisEvent = {
-	.turnBasedEvents			   = EventListScr_Turn,
-	.characterBasedEvents		  = EventListScr_Character,
-	.locationBasedEvents		   = EventListScr_Location,
-	.miscBasedEvents			   = EventListScr_Misc,
+	.turnBasedEvents               = EventListScr_Turn,
+	.characterBasedEvents          = EventListScr_Character,
+	.locationBasedEvents           = EventListScr_Location,
+	.miscBasedEvents               = EventListScr_Misc,
 	.specialEventsWhenUnitSelected = EventListScr_SelectUnit,
 	.specialEventsWhenDestSelected = EventListScr_SelectDestination,
 	.specialEventsAfterUnitMoved   = EventListScr_UnitMove,
-	.tutorialEvents				= EventListScr_Tutorial,
+	.tutorialEvents                = EventListScr_Tutorial,
 
 	.traps			= TrapData_ThisEvent,
 	.extraTrapsInHard = TrapData_ThisEventHard,

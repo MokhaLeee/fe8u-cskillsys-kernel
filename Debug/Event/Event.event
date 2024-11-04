@@ -3,5 +3,4 @@
     EventPointerTable(7, ThisEvent)
 
     #include "Source/debug-event.lyn.event"
-    #include "Source/event-call.lyn.event"
 }

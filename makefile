@@ -2,25 +2,22 @@ MAKEFLAGS += --no-print-directory
 
 include configs.mk
 
-MK_PATH   := $(abspath $(lastword $(MAKEFILE_LIST)))
-MK_DIR    := $(dir $(MK_PATH))
+MAIN    := main.event
+FE8_CHX := fe8-kernel-$(CONFIG_VERSION).gba
+FE8_GBA := fe8.gba
 
-MAIN    := $(MK_DIR)main.event
-FE8_CHX := $(MK_DIR)fe8-kernel-$(CONFIG_VERSION).gba
-FE8_GBA := $(MK_DIR)fe8.gba
-
-TOOL_DIR := $(MK_DIR)Tools
+TOOL_DIR := Tools
 LIB_DIR  := $(TOOL_DIR)/FE-CLib-Mokha
 FE8_REF  := $(LIB_DIR)/reference/fireemblem8.ref.o
 FE8_SYM  := $(LIB_DIR)/reference/fireemblem8.sym
 
-CONFIG_DIR := $(MK_DIR)include/Configs
+CONFIG_DIR := include/Configs
 EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 RAM_REF    := $(CONFIG_DIR)/config-memmap.s
 
-WIZARDRY_DIR := $(MK_DIR)Wizardry
-CONTENTS_DIR := $(MK_DIR)Contents
-GAMEDATA_DIR := $(MK_DIR)Data
+WIZARDRY_DIR := Wizardry
+CONTENTS_DIR := Contents
+GAMEDATA_DIR := Data
 
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR) $(TEXTS_DIR)
 
@@ -31,7 +28,7 @@ all:
 
 include Contents/contents.mk
 
-CACHE_DIR := $(MK_DIR).cache_dir
+CACHE_DIR := .cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
 CLEAN_FILES :=
@@ -77,7 +74,7 @@ EA                := $(EA_DIR)/ColorzCore
 PARSEFILE         := $(EA_DIR)/Tools/ParseFile
 PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
 COMPRESS          := $(EA_DIR)/Tools/compress
-LYN               := $(EA_DIR)/Tools/lyn $(LYN_LONG_CALL)
+LYN               := $(EA_DIR)/Tools/lyn
 EA_DEP            := $(EA_DIR)/ea-dep
 
 LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
@@ -161,7 +158,7 @@ INC_DIRS := include $(LIB_DIR)/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
 
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
-CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi $(GCC_LONG_CALL)
+CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi
 ASFLAGS := $(ARCH) $(INC_FLAG)
 
 CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
@@ -169,11 +166,35 @@ SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 
 LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 
-%.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
+# Wizardry dir: in-bl range hack
+Wizardry/%.o: Wizardry/%.c
+	@echo "[CC ]	$@"
+	@$(CC) $(CFLAGS) $(GCC_LONG_CALL) $(CDEPFLAGS) -g -c $< -o $@
+
+Wizardry/%.asm: Wizardry/%.c
+	@echo "[CC ]	$@"
+	@$(CC) $(CFLAGS) $(GCC_LONG_CALL) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
+
+Wizardry/%.lyn.event: Wizardry/%.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
-	@$(LYN) $< $(LYN_REF) > $@
+	@$(LYN) $(LYN_LONG_CALL) $< $(LYN_REF) > $@
 	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
 
+# Others: long call
+%.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
+	@echo "[LYN]	$@"
+	@$(LYN) -longcalls $< $(LYN_REF) > $@
+	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
+
+%.o: %.c
+	@echo "[CC ]	$@"
+	@$(CC) $(CFLAGS) -mlong-calls $(CDEPFLAGS) -g -c $< -o $@
+
+%.asm: %.c
+	@echo "[CC ]	$@"
+	@$(CC) $(CFLAGS) -mlong-calls $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
+
+# Common
 %.dmp: %.o
 	@echo "[GEN]	$@"
 	@$(OBJCOPY) -S $< -O binary $@
@@ -181,14 +202,6 @@ LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 %.o: %.s
 	@echo "[AS ]	$@"
 	@$(AS) $(ASFLAGS) $(SDEPFLAGS) -I $(dir $<) $< -o $@
-
-%.o: %.c
-	@echo "[CC ]	$@"
-	@$(CC) $(CFLAGS) $(CDEPFLAGS) -g -c $< -o $@
-
-%.asm: %.c
-	@echo "[CC ]	$@"
-	@$(CC) $(CFLAGS) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
 
 # Avoid make deleting objects it thinks it doesn't need anymore
 # Without this make may fail to detect some files as being up to date
@@ -241,7 +254,7 @@ TSA_FILES := $(shell find $(HACK_DIRS) -type f -name '*.tsa')
 
 %.lz77: %.png
 	@echo "[LZ ]	$@"
-	@cd $(dir $<) && $(GRIT) $< $(GRITLZ77ARGS)
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRITLZ77ARGS)
 	@mv $(basename $<).img.bin $@
 
 CLEAN_FILES += $(PNG_FILES:.png=.gbapal) $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
@@ -258,7 +271,7 @@ CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES
 # = EfxAnims =
 # ============
 
-EFX_ANIM_DIR := $(MK_DIR)Contents/EfxAnim
+EFX_ANIM_DIR := Contents/EfxAnim
 EFX_ANIMTOR  := python3 $(EFX_ANIM_DIR)/Scripts/efx-anim-creator.py
 
 EFX_SCRIPTS  := $(shell find $(HACK_DIRS) -type f -name '*.efx.txt')
@@ -285,10 +298,10 @@ CLEAN_BUILD += $(EFX_ANIM_DIR)
 # = GFX =
 # =======
 
-GFX_DIR     := $(MK_DIR)Contents/Gfx
+GFX_DIR     := Contents/Gfx
 GFX_SOURCES := $(shell find $(GFX_DIR)/Sources -type f -name '*.png')
 
-export GFX_HEADER := $(GFX_DIR)/GfxDefs.h
+GFX_HEADER := $(GFX_DIR)/GfxDefs.h
 
 gfx: $(GFX_HEADER)
 PRE_BUILD += gfx
@@ -306,8 +319,8 @@ CLEAN_FILES += $(GFX_HEADER)
 ENUM2H := $(TOOL_DIR)/scripts/enum2h.py
 ENUM2C := $(TOOL_DIR)/scripts/enum2combo.py
 
-SKILLS_ENUM_DIR  := $(MK_DIR)include/constants
-SKILLS_COMBO_DIR := $(MK_DIR)Patches
+SKILLS_ENUM_DIR  := include/constants
+SKILLS_COMBO_DIR := Patches
 
 SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills-equip.enum.txt
 SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-others.enum.txt
@@ -340,10 +353,10 @@ endif
 
 PRE_BUILD += enum
 CLEAN_FILES += $(SKILLS_ENUM_HEADER)
-CLEAN_FILES += $(MK_DIR)Patches/combo.skills.txt
-CLEAN_FILES += $(MK_DIR)Patches/combo.skills_equip.txt
-CLEAN_FILES += $(MK_DIR)Patches/combo.skills_others.txt
-CLEAN_FILES += $(MK_DIR)Patches/combo.skills_item.txt
+CLEAN_FILES += Patches/combo.skills.txt
+CLEAN_FILES += Patches/combo.skills_equip.txt
+CLEAN_FILES += Patches/combo.skills_others.txt
+CLEAN_FILES += Patches/combo.skills_item.txt
 
 # =============
 # = PRE-BUILD =
