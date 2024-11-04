@@ -183,6 +183,14 @@
 #define CONFIG_INSTALL_PREPS_AUGURY
 
 /**
+ * By Tequila
+ * Show heal amount for target units in mini box when using a staff
+ * Installed in: Wizardry/External/ShowHealAmount/Installer.event
+ * Source: https://feuniverse.us/t/teqs-minor-assembly-shenanigans/1655/22
+ */
+#define CONFIG_SHOW_HEAL_AMOUNT
+
+/**
  * By Jester
  * Installed in: Wizardry/Core/SkillSys/MiscSkillEffects/MapSkills/MapSkills.c
  */

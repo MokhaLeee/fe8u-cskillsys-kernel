@@ -49,3 +49,7 @@
 #ifdef CONFIG_INSTALL_PREPS_AUGURY
     #include "Augury/Installer.event"
 #endif
+
+#ifdef CONFIG_SHOW_HEAL_AMOUNT
+    #include "ShowHealAmount/Installer.event"
+#endif

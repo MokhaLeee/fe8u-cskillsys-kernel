@@ -9,3 +9,6 @@ Ddg[X]
 
 #0x484
 Increase Str +2[X]
+
+## Arrow_ID
+->[X]
