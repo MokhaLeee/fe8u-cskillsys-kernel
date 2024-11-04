@@ -492,7 +492,7 @@ static const EventListScr EventListScr_UnitMove[] = {
 	END_MAIN
 };
 
-static void const *const EventListScr_Tutorial[] = {
+static const void *const EventListScr_Tutorial[] = {
 	NULL
 };
 
