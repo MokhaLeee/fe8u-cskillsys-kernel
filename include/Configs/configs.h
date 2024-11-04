@@ -163,11 +163,23 @@
 #define CONFIG_TEXT_ENGINE_REWORK
 
 /**
+ * By Jester
  * When two units can have a talk event, show a talk icon on the map
  * Keep track of WarningHpSheet.png that has the icons
  */
 #define CONFIG_TALK_MAP_ICON
 
+/**
+ * By Huichelaar
+ * Add an Augury like FE7 has to give you special information
+ * about the current chapter. Currently it doesn't cost anything
+ * look into changing that
+ * 
+ * Installed in: Wizardry/External/Augury/Installer.event
+ * Hooked into Wiardry/Core/SkillSys/PrepSkill/Source/AtMenu.c/AtMenu_StartSubMenu()
+ * 
+ * Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
+ */
 #define CONFIG_INSTALL_PREPS_AUGURY
 
 /**
