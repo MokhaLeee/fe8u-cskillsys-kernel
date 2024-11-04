@@ -17,8 +17,8 @@ Glyph/NarrowFonts/font.fontall.txt
 
 # Glyph/GBA火纹中文字库/一级道具字体/font.fontall.txt
 # Glyph/GBA火纹中文字库/一级对话字体/font.fontall.txt
-# Glyph/标点符号/道具标点/font.fontall.txt
-# Glyph/标点符号/对话标点/font.fontall.txt
+Glyph/标点符号/道具标点/font.fontall.txt
+Glyph/标点符号/对话标点/font.fontall.txt
 # Glyph/GBA火纹中文字库/道具标点/font.fontall.txt
 # Glyph/GBA火纹中文字库/对话标点/font.fontall.txt
 # Glyph/GBA火纹中文字库/二级对话字体/font.fontall.txt
