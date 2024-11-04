@@ -1,0 +1,58 @@
+// Augury proc
+ALIGN 4
+PREEXT_Procs_Augury:
+PROC_YIELD
+PROC_SET_DESTRUCTOR(0x8095A39)              // End scrolling BG3
+PROC_CALL_ROUTINE(ClearBGs|1)
+PROC_CALL_ROUTINE(0x8095A1D)                // Restart scrolling BG3
+PROC_CALL_ROUTINE_ARG(0x80AE2D1, 0x8)       // NewFadeIn
+PROC_WHILE_ROUTINE(0x80AE2A1)               // FadeInExists
+
+PROC_CALL_ROUTINE(PREEXT_StartTextEngine|1) // Starts a Procs_BattleEventEngine
+PROC_LOOP_ROUTINE(PREEXT_AppendText|1)      // Appends relevant text based on variables.
+PROC_WHILE_EXISTS(0x8591AF8)                // Procs_BattleEventEngine.
+
+PROC_CALL_ROUTINE_ARG(0x80AE2F5, 0x8)       // NewFadeOut
+PROC_WHILE_ROUTINE(0x80AE2B9)               // FadeOutExists
+PROC_END
+
+
+PUSH
+
+  // Add prepmenu entry
+  ORG 0x955AE
+  SHORT 0x1C22
+  callHack_r0(PREEXT_AddExtraEntry)
+  SHORT 0x46C0
+  
+  // Add entry helptext
+  ORG 0xA18240
+  SHORT PREEXT_MenuHelpTextID
+  
+  // Start blocking entry proc for option 5
+  // ORG 0x96350
+  // POIN PREEXT_StartExtraEntry
+
+POP
+
+ALIGN 4
+PREEXT_AddExtraEntry:
+#include "AddExtraEntry.lyn.event"
+ALIGN 4
+PREEXT_SelectExtraEntry:
+#include "SelectExtraEntry.lyn.event"
+ALIGN 4
+PREEXT_StartExtraEntry:
+#include "StartExtraEntry.lyn.event"
+ALIGN 4
+PREEXT_GetAuguryText:
+#include "GetAuguryText.lyn.event"
+ALIGN 4
+PREEXT_StartTextEngine:
+#include "StartTextEngine.lyn.event"
+ALIGN 4
+PREEXT_AppendText:
+#include "AppendText.lyn.event"
+ALIGN 4
+ClearBGs:
+#include "ClearBGs.lyn.event"

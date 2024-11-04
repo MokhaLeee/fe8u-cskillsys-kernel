@@ -168,6 +168,8 @@
  */
 #define CONFIG_TALK_MAP_ICON
 
+#define CONFIG_INSTALL_PREPS_AUGURY
+
 /**
  * By Jester
  * Installed in: Wizardry/Core/SkillSys/MiscSkillEffects/MapSkills/MapSkills.c

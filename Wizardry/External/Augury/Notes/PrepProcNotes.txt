@@ -1,0 +1,124 @@
+8A1829C, Procs_AtMenu:
+0001 0000 08205BD0
+0002 0000 08096425      AtMenu_LockGame. Calls BlockGameGraphicsLogic and sets skipProcTree2, unless linkarena.
+0002 0000 08095EBD      AtMenu_EndIfNoUnits. Changes LCDIObuffer and jumps to label 6 if no units were found.
+0002 0000 08095AD9      If in WM mode, store 0w at prepscreenunitlist+0x104, otherwise store 0 in BaseMenuProc+0x2C.
+                        Link arena stuff. proc+0x2A = ChapterAllyUnitCount and inits some other procvars.
+000E 0002 00000000
+0002 0000 08095C85      Draw_advancement_preparation_screen. More LCDIO stuff. Inits some menu textstructs.
+                        Calls PrepScreenHandler:
+                          - Starts Procs_PrepScreenMenu, 0x8A186EC,
+                          - calls a bunch of AddPrepMenuEntry, 0x8097024, (menuOption(+0x33), function, 
+                          unselectable flag (byte), textID, unk4(seems to always be 0))
+                          - SetPrepScreenMenuOnBPress and ...StartPress.
+                          - MenuPosition.
+                          - SelectedItem.
+                        Starts a new unique 0x8A186B4 proc.
+                        Restart Scrolling BG.
+                        Starts a new unique 0x8A20BD4 proc.
+                        Store 0x340h in 0x8A20BD4 proc +0x4E.
+                        PrepScreenTextHandler returns helptext for current option, used as input to 
+                        DrawPrepScreenMenuHelpText. Finally, DisplayPrepScreenMenuHelpText.
+000E 0002 00000000
+0018 0008 080AE2D1      Call Arg NewFadeIn
+0014 0000 080AE2A1      Call While FadeInExists
+0014 0000 08002A6D      Call While proc 0x8587998 exists (some music proc?)
+
+000B 0001 00000000
+0002 0000 08097395      Makes Procs_PrepScreenMenu jump to label 1.
+0003 0000 08095F2D      Changes menu help based on GetActivePrepScreenMenuItemId != [+0x35].
+000C 0004 00000000
+
+000B 000C 00000000
+0002 0000 08096005
+0003 0000 0809602D
+000C 0001 00000000
+
+000B 000D 00000000
+0002 0000 08095C85
+0002 0000 08096005
+0018 0008 080AE2D1      Call Arg
+0014 0000 080AE2A1      Call While
+0014 0000 08002A6D      Call While
+0003 0000 0809602D
+000C 0001 00000000
+
+000B 0002 00000000
+0003 0000 0809631D      Kill 0x8A20BD4, 0x8A186B4, BG3Slider. Store GetActivePrepScreenMenuItemId in +0x2D.
+                        Calls EndPrepScreenMenu. Compares +0x33 against 4 (0x809632C) then switch statement.
+                        0: Pick units leads to blocking Procs_PrepScreenPickUnitsMenu 0x8A18E8C.
+                        1: Items.
+                        2: Save.
+                        3: Support.
+                        Immediately breaks loop (to yield I guess?).
+0003 0000 08096391      AtMenu_OnSubmenuEnd Executed on return from option. Music stuff when return from support.
+                        switch statement on menu option. Jump to label 0x9 if "Pick units" "Items" or "Support".
+                        Jump to label 0x7 if "Save". Sets +0x33 back to 0, "Pick units".
+0010 0000 00000000      Block
+
+000B 000A 00000000      Jumped to when selecting Pick units (0x80951B9), also sets proc+0x33 to 1.
+0018 0010 080AE2F5      Call Arg NewFadeOut
+0014 0000 080AE2B9      Call While FadeOutExists
+000C 0002 00000000
+
+000B 0009 00000000      When returning from "Pick units" "Items" or "Support".
+0002 0000 08095C85      Detailed above.
+0018 0010 080AE2D1      Call Arg NewFadeIn
+0014 0000 080AE2A1      Call While FadeInExists
+000C 0001 00000000
+
+000B 0008 00000000
+0018 0008 080AE2F5      Call Arg
+0014 0000 080AE2B9      Call While
+000C 0002 00000000
+
+000B 0007 00000000      When returning from "Save". This whole block is the same as label 9. except NewFadeIn sarg.
+0002 0000 08095C85      Detailed above.
+0018 0008 080AE2D1      Call Arg NewFadeIn
+0014 0000 080AE2A1      Call While FadeInExists
+000C 0001 00000000
+
+000B 000B 00000000
+0002 0000 0809625D
+000C 0005 00000000
+
+000B 0004 00000000
+0002 0000 0809625D
+000E 000A 00000000
+
+000B 0005 00000000
+0018 0008 080AE2F5      Call Arg
+0014 0000 080AE2B9      Call While
+000E 0001 00000000
+
+000B 0006 00000000      Jumped to by AtMenu_EndIfNoUnits if no units.
+0002 0000 08096295
+000E 0000 00000000
+0002 0000 080962E1
+000E 0000 00000000
+0002 0000 080790A5
+0002 0000 0809643D
+0002 0000 080ADDD5
+0000 0000 00000000
+
+ProcState:
++0x2A   byte    set to ChapterAllyUnitCount by 08095AD9
++0x2D   byte    init to 0 by 08095AD9. Current menu item by 0809631D.
++0x2E   byte    init to 0 by 08095AD9
++0x30   byte    init to 0 by 08095AD9
++0x31   byte    init to 0 by 08095AD9
++0x32   byte    init to 0 by 08095AD9
++0x33   byte    init to 0 by 08095AD9. 1 = "Pick units", 2 = "Items", 3 = "Save", 4 = "Support" 7 = "Check Map"
++0x34   byte    init to 0 by 08095AD9
++0x35   byte    current menu item.
++0x36   byte    init to 0 by 08095AD9
++0x3C   short   init to 0 by 08095AD9
++0x40   word    init to 0 by 08095AD9
+
+Things to watch for:
+  - AddPrepMenuEntry, 0x8097024, (menuOption(+0x33), function, unselectable flag byte, textID, unk4(seems to 
+  always be 0)). Function sets the +0x33 byte to the relevant value. Creates dummyitem proc.
+  - 0x809632C compares menu option to max, 4 and uses switch statement.
+  - 0x80963B0 compares menu option to max, 4 and uses switch statement.
+  - 0x809707E compares menu option to broader max, 7.
+  - proc label 7 is almost redundant, change 0x963E4 to mov r1, #0x9 to (hopefully) make it unused.

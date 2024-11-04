@@ -1,0 +1,22 @@
+PUSH
+
+  // Move "Fight!" and "Menu" sprites to make room
+  // for 6th option.
+  ORG 0x96A30
+  SHORT 0x2100 0x2220
+  ORG 0x96A56
+  SHORT 0x2150 0x2220
+  
+  // Replace Prep TSA to make room for 6th option.
+  ORG 0x95E3C
+  POIN PREEXT_NewPrepTSA
+  ORG 0x95EB8
+  POIN PREEXT_NewPrepTSA
+  ORG 0x9617C
+  POIN PREEXT_NewPrepTSA
+
+POP
+
+ALIGN 4
+PREEXT_NewPrepTSA:
+#incbin "NewPrepTSA.dmp"
