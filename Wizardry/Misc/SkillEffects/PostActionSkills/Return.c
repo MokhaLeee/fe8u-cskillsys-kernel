@@ -74,7 +74,7 @@ bool PostActionPositionReturn(ProcPtr proc)
 		return false;
 
 #if defined(SID_PosReturn) && (COMMON_SKILL_VALID(SID_PosReturn))
-	if (!SkillTester(gActiveUnit, SID_PosReturn))
+	if (!SkillListTester(gActiveUnit, SID_PosReturn))
 #else
 	if (1)
 #endif

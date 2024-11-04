@@ -63,7 +63,7 @@ bool PostActionSkillSavageBlow(ProcPtr parent)
 		return false;
 
 #if defined(SID_SavageBlow) && (COMMON_SKILL_VALID(SID_SavageBlow))
-	if (!SkillTester(unit, SID_SavageBlow) || !UNIT_IS_VALID(target))
+	if (!SkillListTester(unit, SID_SavageBlow) || !UNIT_IS_VALID(target))
 #else
 	if (1)
 #endif

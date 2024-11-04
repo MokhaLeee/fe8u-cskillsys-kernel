@@ -171,7 +171,6 @@ def process_file(messages, file_path, control_chars, encoding_method, index=0):
                 debug_printf(f"Replace for ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
                 messages[msg_refs[current_index]] = Msg(current_index, data)
 
-            all_data.extend(data)
             current_index += 1
         elif stripped.startswith('##'):
             macro_match = RE_MACRO.match(stripped)
@@ -193,7 +192,6 @@ def process_file(messages, file_path, control_chars, encoding_method, index=0):
                     debug_printf(f"Replace for ref: idx=0x{current_index:04X}, val=0x{len(messages):04X}")
                     messages[msg_refs[current_index]] = Msg(current_index, data, macro)
 
-                all_data.extend(data)
                 current_index += 1
         else:
             i += 1
@@ -273,6 +271,9 @@ def main(args):
     control_chars = load_control_chars(input_parse_ref)
     messages = []
     messages, _unused_ = process_file(messages, input_fpath, control_chars, encoding_method)
+
+    for msg in messages:
+        all_data.extend(msg.data)
 
     # generate huffman
     freq_table = GenerateFreqTable(all_data)

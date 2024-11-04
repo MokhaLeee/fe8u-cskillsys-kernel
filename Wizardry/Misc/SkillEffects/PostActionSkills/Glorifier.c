@@ -18,7 +18,7 @@ bool PostAction_Glorifier(ProcPtr parent)
 	}
 
 #if defined(SID_Glorifier) && (COMMON_SKILL_VALID(SID_Glorifier))
-	if (UNIT_ALIVE(gActiveUnit) && SkillTester(gActiveUnit, SID_Glorifier)) {
+	if (UNIT_ALIVE(gActiveUnit) && SkillListTester(gActiveUnit, SID_Glorifier)) {
 		if (gBattleActorGlobalFlag.enimy_defeated == true) {
 			NewMuSkillAnimOnActiveUnit(SID_Glorifier, NULL, NULL);
 			SetUnitStatDebuff(gActiveUnit, UNIT_STAT_BUFF_GLORIFIER);

@@ -13,14 +13,23 @@ Note that the skill index is also divided into certain parts of categories in or
 
 # 1. Judge skill
 
-In order to improve the performance of the skill system, we provide two judge-skill functions for developers:
+In order to improve the performance of the skill system, we provide three judge-skill functions for developers:
 
 - `SkillTester`
-- `BattleSkillTester`
+- `SkillListTester`
+- `BattleFastSkillTester`
 
-The work of the two is basically the same. Just as their name suggests, `SkillTester` is recommended to use for non-battle unit judgement, and `BattleSkillTester` for battle-units (specially for `gBattleActor` and `gBattleTarget`). If the developer violates this principle, although kernel may not run into bugs but there will be potential loss of performance.
+| Name | Location | Security | Note |
+| :--------	| :-----------	| :-----------	| :----------- |
+| `SkillTester` | IWRAM | SEC | Generic usage |
+| `SkillListTester` | ROM | SEC | Generic usage |
+| `BattleFastSkillTester` | IWRAM | None SEC | Only used on battle-calc specially for `gBattleActor` and `gBattleTarget` |
 
-It is worth noting that `BattleSkillTester` will determine after all skills held by the unit are aggregated. Therefore, to a certain extent, it can ignore the principle of skill index distribution to determin more skills with greater efficiency. However, performance comes at cost on memory. There holds limitation on memory for the above optimization, so we only optimized it specifically for battle units.
+`SkillListTester` may temporarily stores unit's skill list in a buffer. However, if different characters are checked, a new list needs to be generated, which can lead to performance loss. Therefore, for fixed character checks, it is recommended to use `SkillListTester` (for example, when checking the `gActiveUnit`). On the other hand, when compiling for each character in the team, it is best to use `SkillTester`.
+
+It is worth noting that `SkillListTester` will determine after all skills held by the unit are aggregated. Therefore, to a certain extent, it can ignore the principle of skill index distribution to determin more skills with greater efficiency. However, performance comes at cost on memory. There holds limitation on memory for the above optimization, so we only optimized it specifically for battle units.
+
+`BattleFastSkillTester` is the most performant but least safe function: it directly searches from a preset skill list without checking if the list is correct. This means you must handle it with caution. Currently, it can only be used during the pre-battle calculation process and specially for `gBattleActor` and `gBattleTarget`.
 
 # 2. Skill lists
 

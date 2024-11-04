@@ -105,7 +105,7 @@ STATIC_DECLAR bool IsBattleUnitEffectiveAgainst(struct BattleUnit *actor, struct
 	}
 
 #if (defined(SID_DoOrDie) && (COMMON_SKILL_VALID(SID_DoOrDie)))
-	if (BattleSkillTesterFast(actor, SID_DoOrDie)) {
+	if (BattleFastSkillTester(actor, SID_DoOrDie)) {
 		if ((target->battleAttack - actor->battleDefense) >= actor->hpInitial)
 			return true;
 	}

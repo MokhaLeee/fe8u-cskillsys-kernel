@@ -21,7 +21,7 @@
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 
 /* If uncomment, use utf-8 characters */
-// #define CONFIG_USE_UTF8_GLYPH
+#define CONFIG_USE_UTF8_GLYPH
 
 /* Engage style combo attack */
 #define CONFIG_USE_COMBO_ATTACK

@@ -3,11 +3,8 @@
 
 #include "EAstdlib.event"
 
-/**
- * Some file should put at head since it holds some macros
- */
-#include "../Wizardry/Common/ItemSys/data.event"
-#include "../Wizardry/Common/EventRework/data.event"
+/* Put at head since it holds some macros */
+#include "../Wizardry/data.event"
 
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
@@ -32,7 +29,5 @@
 #include "StrMag/UnitMagicInfos.lyn.event"
 #include "Debuff/DebuffInfo.lyn.event"
 #include "Debuff/StatDebuffInfo.lyn.event"
-
-#include "../Wizardry/data.event"
 
 #endif

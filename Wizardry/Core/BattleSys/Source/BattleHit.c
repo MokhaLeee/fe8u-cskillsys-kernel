@@ -55,12 +55,12 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 #endif
 
 #if defined(SID_Momentum) && (COMMON_SKILL_VALID(SID_Momentum))
-	if (BattleSkillTesterFast(attacker, SID_Momentum))
+	if (BattleFastSkillTester(attacker, SID_Momentum))
 		critRate += SKILL_EFF0(SID_Momentum) * GetBattleGlobalFlags(attacker)->round_cnt_hit;
 #endif
 
 #if defined(SID_LimitBreak) && (COMMON_SKILL_VALID(SID_LimitBreak))
-	if (BattleSkillTesterFast(attacker, SID_LimitBreak)) {
+	if (BattleFastSkillTester(attacker, SID_LimitBreak)) {
 		if (GetBattleGlobalFlags(attacker)->round_cnt_hit == SKILL_EFF0(SID_LimitBreak)) {
 			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LimitBreak);
 			hitRate = 100;
@@ -69,12 +69,12 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 #endif
 
 #if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
-	if (BattleSkillTesterFast(attacker, SID_ImmovableObject) || BattleSkillTesterFast(defender, SID_ImmovableObject))
+	if (BattleFastSkillTester(attacker, SID_ImmovableObject) || BattleFastSkillTester(defender, SID_ImmovableObject))
 		hitRate = 100;
 #endif
 
 #if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
-	if (BattleSkillTesterFast(attacker, SID_UnstoppableForce) || BattleSkillTesterFast(defender, SID_UnstoppableForce))
+	if (BattleFastSkillTester(attacker, SID_UnstoppableForce) || BattleFastSkillTester(defender, SID_UnstoppableForce))
 		hitRate = 100;
 #endif
 
@@ -133,7 +133,7 @@ LYN_REPLACE_CHECK(BattleGenerateHitEffects);
 void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-		if (BattleSkillTesterFast(attacker, SID_Discipline))
+		if (BattleFastSkillTester(attacker, SID_Discipline))
 			attacker->wexpMultiplier += 2;
 		else
 			attacker->wexpMultiplier++;
@@ -210,7 +210,7 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 
 	if (attacker->unit.curHP == 0 || defender->unit.curHP == 0) {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
-		if (BattleSkillTesterFast(attacker, SID_Discipline))
+		if (BattleFastSkillTester(attacker, SID_Discipline))
 			attacker->wexpMultiplier += 2;
 		else
 			attacker->wexpMultiplier++;
@@ -233,7 +233,7 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 			}
 
 #if (defined(SID_OverKill) && (COMMON_SKILL_VALID(SID_OverKill)))
-			if (BattleSkillTesterFast(attacker, SID_OverKill)) {
+			if (BattleFastSkillTester(attacker, SID_OverKill)) {
 				RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_OverKill);
 				AppendHpDrain(attacker, defender, gDmg.result - gBattleStats.damage);
 			}

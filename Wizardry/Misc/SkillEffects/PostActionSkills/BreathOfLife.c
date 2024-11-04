@@ -66,7 +66,7 @@ bool PostActionSkillBreathOfLife(ProcPtr parent)
 		return false;
 
 #if defined(SID_BreathOfLife) && (COMMON_SKILL_VALID(SID_BreathOfLife))
-	if (!SkillTester(unit, SID_BreathOfLife))
+	if (!SkillListTester(unit, SID_BreathOfLife))
 #else
 	if (1)
 #endif

@@ -63,7 +63,7 @@ bool PostActionSkillSoulSap(ProcPtr parent)
 		return false;
 
 #if defined(SID_SoulSap) && (COMMON_SKILL_VALID(SID_SoulSap))
-	if (!SkillTester(unit, SID_SoulSap))
+	if (!SkillListTester(unit, SID_SoulSap))
 #else
 	if (1)
 #endif
