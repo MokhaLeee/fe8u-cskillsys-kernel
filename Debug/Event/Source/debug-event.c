@@ -514,7 +514,7 @@ const struct ChapterEventGroup ThisEvent = {
 	.specialEventsAfterUnitMoved   = EventListScr_UnitMove,
 	.tutorialEvents                = EventListScr_Tutorial,
 
-	.traps			= TrapData_ThisEvent,
+	.traps            = TrapData_ThisEvent,
 	.extraTrapsInHard = TrapData_ThisEventHard,
 
 	.playerUnitsInNormal = UnitDef_Ally1,
@@ -529,5 +529,5 @@ const struct ChapterEventGroup ThisEvent = {
 	.enemyUnitsChoice3InEncounter = NULL,
 
 	.beginningSceneEvents = EventScr_Beginning,
-	.endingSceneEvents	= EventScr_Ending,
+	.endingSceneEvents    = EventScr_Ending,
 };

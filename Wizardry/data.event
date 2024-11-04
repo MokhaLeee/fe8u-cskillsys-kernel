@@ -1,3 +1,9 @@
+/**
+ * Some file should put at head since it holds some macros
+ */
+#include "Common/ItemSys/data.event"
+#include "Common/EventRework/data.event"
+
 #include "Common/ArmFunc/data.event"
 #include "Common/UnitAction/data.event"
 #include "Common/ClassTypes/data.event"
