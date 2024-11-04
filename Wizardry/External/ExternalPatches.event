@@ -53,3 +53,7 @@
 #ifdef CONFIG_SHOW_HEAL_AMOUNT
     #include "ShowHealAmount/Installer.event"
 #endif
+
+#ifdef CONFIG_QUINTESSANCE_EFFECT
+    #include "QuintessanceEffect/Installer.event"
+#endif

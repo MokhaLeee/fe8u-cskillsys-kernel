@@ -191,6 +191,16 @@
 #define CONFIG_SHOW_HEAL_AMOUNT
 
 /**
+ * Decomped by Mokha 
+ * Ported to FE8 by Eebit
+ * Made into a handy C macro by Jester
+ * Allows the use of the Quintessance steal effect as an event in FE8
+ * Installed in: Wizardry/External/QuintessanceEffect/Installer.event
+ * Macro in: include/jester_headers/macro.h
+ */
+#define CONFIG_QUINTESSANCE_EFFECT
+
+/**
  * By Jester
  * Installed in: Wizardry/Core/SkillSys/MiscSkillEffects/MapSkills/MapSkills.c
  */

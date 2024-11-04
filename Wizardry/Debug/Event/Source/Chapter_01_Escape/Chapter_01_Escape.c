@@ -6,6 +6,7 @@
 #include "jester_headers/soundtrack-ids.h"
 #include "jester_headers/maps.h"
 #include "jester_headers/flags.h"
+#include "jester_headers/miscellaenous.h"
 
 /**
  * Ally unit and REDA definitions

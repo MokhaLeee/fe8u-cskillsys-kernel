@@ -1,6 +1,7 @@
 #pragma once
 
 #include "eventscript.h"
+#include "./jester_headers/miscellaenous.h"
 
 // #define TutText(text) "SVAL 0xB 0xFFFFFFFF; TUTORIALTEXTBOXSTART; TEXTSHOW text; TEXTEND; REMA" // Centered 
 // #define TutText_B(text) "SVAL 0xB 0x00B0FFFF; TUTORIALTEXTBOXSTART; TEXTSHOW text; TEXTEND; REMA" // Bottom-Centered 
@@ -149,3 +150,17 @@ enum {
     MUNO \
     NoFade \
     ENDA
+
+#define QUINTESSANCE_STEALING \
+    ASMC(StartQuintessenceStealEffect) \
+    STAL(32) \
+    ASMC(ArchiveCurrentPalettes) \
+    SOUN(0x125) \
+    ASMC(FE7J_EventE5_Sim_Type_A) \
+    ASMC(FE7J_EventE5_Sim_Type_B) \
+    ASMC(FE7J_EventE5_Sim_Type_A) \
+    ASMC(FE7J_EventE5_Sim_Type_B) \
+    ASMC(fe7j_sub_80121FC) \
+    ASMC(QuintessenceFx_Goto_C) \
+    STAL(16) \
+    ASMC(EndQuintessenceStealEffect)
