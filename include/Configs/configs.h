@@ -200,6 +200,14 @@
  */
 #define CONFIG_QUINTESSANCE_EFFECT
 
+/**
+ * By Snakey1
+ * 
+ * Allows summoners to gain EXP from their summon's battles
+ * 
+ * Installed in: Wizardry/External/SummonerEXP/Installer.event
+ * Source: https://feuniverse.us/t/snakes-pit-of-asm-and-other-stuff/3627/45
+ */
 #define CONFIG_SUMMON_EXP
 
 /**
