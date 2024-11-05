@@ -210,6 +210,15 @@
  */
 #define CONFIG_SUMMON_EXP
 
+/**
+ * By Contro
+ * 
+ * Shows different palette colors for stat screens depending on allegiance
+ * 
+ * Installed in: Wizardry/External/StatScreenAllegianceColors/Installer.event
+ * Source: https://feuniverse.us/t/contros-code-collection/13514/12
+ */
+
 #define CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
 
 
