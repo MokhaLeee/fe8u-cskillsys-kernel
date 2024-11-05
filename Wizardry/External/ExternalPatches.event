@@ -61,3 +61,7 @@
 #ifdef CONFIG_SUMMON_EXP
     #include "SummonerEXP/Installer.event"
 #endif
+
+#ifdef CONFIG_FLIPPED_SPRITES
+    #include "MirrorMapSprites/Installer.event"
+#endif

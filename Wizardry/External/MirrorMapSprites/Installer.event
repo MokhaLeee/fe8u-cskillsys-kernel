@@ -1,0 +1,10 @@
+#include "MirrorSprites.lyn.event"
+
+#define FLIP_PLAYER 0x1
+#define FLIP_ENEMY 0x2
+#define FLIP_NPC 0x4
+#define FLIP_FOURTH 0x8
+
+ALIGN 4
+gMirrorSpriteOptions:
+WORD FLIP_ENEMY|FLIP_FOURTH

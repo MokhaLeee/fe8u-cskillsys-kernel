@@ -210,6 +210,17 @@
  */
 #define CONFIG_SUMMON_EXP
 
+
+/**
+ * By Contro
+ * 
+ * Allows user to flip sprites by allegiance (would be nice to add class/character options too)
+ * 
+ * Installed in: Wizardry/External/MapMirrorSprites/Installer.event
+ * Source: https://feuniverse.us/t/contros-code-collection/13514/42
+ */
+// #define CONFIG_FLIPPED_SPRITES
+
 /**
  * By Jester
  * Installed in: Wizardry/Core/SkillSys/MiscSkillEffects/MapSkills/MapSkills.c
