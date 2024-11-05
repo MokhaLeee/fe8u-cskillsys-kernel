@@ -145,7 +145,7 @@ static const EventScr EventScr_Beginning[] = {
      */
     ENUT(EVFLAG_TMP(11))
 
-    PREP
+    // PREP
 
     NoFade
     ENDA

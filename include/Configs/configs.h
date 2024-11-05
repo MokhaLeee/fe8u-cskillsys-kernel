@@ -200,6 +200,8 @@
  */
 #define CONFIG_QUINTESSANCE_EFFECT
 
+#define CONFIG_SUMMON_EXP
+
 /**
  * By Jester
  * Installed in: Wizardry/Core/SkillSys/MiscSkillEffects/MapSkills/MapSkills.c

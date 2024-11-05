@@ -12,7 +12,7 @@
 // SID_HealingFocus
 // SID_Dance
 // SID_LockTouch
-// SID_Summon
+SID_Summon
 // SID_Steal
 // SID_Supply
 // SID_LightRune

@@ -57,3 +57,7 @@
 #ifdef CONFIG_QUINTESSANCE_EFFECT
     #include "QuintessanceEffect/Installer.event"
 #endif
+
+#ifdef CONFIG_SUMMON_EXP
+    #include "SummonerEXP/Installer.event"
+#endif

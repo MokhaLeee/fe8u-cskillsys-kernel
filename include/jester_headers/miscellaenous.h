@@ -1,5 +1,6 @@
 /**
  * Quintessance stealing effect functions
+ * Disabled some externs because of compile warnings about "useless storage class specifier in empty declaration"
  */
 extern const struct ProcCmd ProcScr_QuintessenceFx[];
 //extern struct QuintessenceFxProc;
