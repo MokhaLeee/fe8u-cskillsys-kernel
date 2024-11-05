@@ -82,7 +82,7 @@ EA_DEP            := $(EA_DIR)/ea-dep
 
 TEXT_PROCESS      := python3 $(TOOL_DIR)/FE-PyTools/text-process-classic.py
 
-LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
+# LYN_PROTECTOR := $(TOOL_DIR)/scripts/lynjump-protector.sh
 LYN_DETECTOR  := $(TOOL_DIR)/scripts/lynjump-detector.sh
 
 GRIT := $(DEVKITPRO)/tools/bin/grit
@@ -174,7 +174,8 @@ LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 %.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
 	@$(LYN) $< $(LYN_REF) > $@
-	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
+	
+#@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
 
 %.dmp: %.o
 	@echo "[GEN]	$@"

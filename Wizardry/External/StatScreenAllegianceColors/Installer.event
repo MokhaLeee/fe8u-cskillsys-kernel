@@ -1,0 +1,38 @@
+#include "Extensions/Hack Installation.txt"
+
+//808859c loads palette
+
+//ldr r0,=0x8a06460
+//mov r1, #0xc0
+//lsl r1,#1
+//mov r2,#0x80
+
+PUSH
+ORG $8859c //hook
+jumpToHack(StatscreenAlleg)
+PROTECT $8859c currentOffset
+POP
+
+ALIGN 4
+StatscreenAlleg:
+#incbin StatScreenAlleg.dmp
+POIN SSBluePal  //Player
+POIN SSRedPal   //Enemy
+POIN SSGreenPal //NPC
+POIN SSGoldPal  //Other
+
+ALIGN 4
+SSBluePal:
+#incbin "img/SSBluePal.dmp"
+
+ALIGN 4
+SSRedPal:
+#incbin "img/SSRedPal.dmp"
+
+ALIGN 4
+SSGreenPal:
+#incbin "img/SSGreenPal.dmp"
+
+ALIGN 4
+SSGoldPal:
+#incbin "img/SSGoldPal.dmp"

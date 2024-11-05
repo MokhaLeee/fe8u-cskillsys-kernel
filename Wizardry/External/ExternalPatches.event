@@ -65,3 +65,7 @@
 #ifdef CONFIG_FLIPPED_SPRITES
     #include "MirrorMapSprites/Installer.event"
 #endif
+
+#ifdef CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
+    #include "StatScreenAllegianceColors/Installer.event"
+#endif

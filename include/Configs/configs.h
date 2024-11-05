@@ -210,6 +210,8 @@
  */
 #define CONFIG_SUMMON_EXP
 
+#define CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
+
 
 /**
  * By Contro
