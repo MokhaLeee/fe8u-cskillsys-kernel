@@ -4,7 +4,7 @@
 #include "efx-skill.h"
 #include "constants/skills.h"
 
-static int find_item_slot(struct Unit *unit, int item)
+FORCE_DECLARE static int find_item_slot(struct Unit *unit, int item)
 {
 	int i;
 	int iid = ITEM_INDEX(item);
