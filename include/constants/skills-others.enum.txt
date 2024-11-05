@@ -143,6 +143,7 @@ SID_LionFlame
 SID_LimitBreak
 SID_ImmovableObject
 SID_UnstoppableForce
+SID_WeaponHeal
 
 // Shop skills
 SID_Deal

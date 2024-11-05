@@ -55,3 +55,8 @@ by this unit by 50%.[X]
 ## MSG_SKILL_Leader
 Leader:[NL]
 Unit grants leadership +2[X]
+
+## MSG_SKILL_WeaponHeal
+WeaponHeal:[NL]
+50% chance to restore 1 durability to[NL]
+ally's equipped weapon after healing.[X]
