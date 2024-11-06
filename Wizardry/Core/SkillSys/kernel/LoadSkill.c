@@ -144,9 +144,9 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	}
 
 	/* For debug, we enable unit learn all of skills */
-	if (gpKernelDesigerConfig->debug_autoload_skills && UNIT_FACTION(unit) == FACTION_BLUE) {
+	if (UNIT_FACTION(unit) == FACTION_BLUE) {
 		for (i = 1; i < 254; i++)
-			LearnSkill(unit, i);
+			AddSkill(unit, i);
 	}
 }
 
