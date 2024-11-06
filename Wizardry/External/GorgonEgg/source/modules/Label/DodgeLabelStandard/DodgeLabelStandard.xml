@@ -1,0 +1,9 @@
+<Module Name="DodgeLabelStandard">
+  <Init File="DodgeLabelStandard.lyn.event" Name="DodgeLabelStandard_Init"/>
+  <Static File="DodgeLabelStandard.lyn.event" Name="DodgeLabelStandard_Static"/>
+  <Include File="Label.event"/>
+  <Definition Name="DOD_LABEL_X" Value="4"/>
+  <Definition Name="DOD_LABEL_Y" Value="1"/>
+  <Definition Name="DOD_LABEL_BASE_TILE" Value="0x0182"/>
+  <Definition Name="DOD_LABEL_PALETTE" Value="2"/>
+</Module>

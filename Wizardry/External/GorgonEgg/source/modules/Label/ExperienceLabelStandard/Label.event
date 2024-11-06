@@ -1,0 +1,5 @@
+
+ALIGN 4; gEXPLabel: {
+  #incbin "EXPLabel.4bpp"
+};
+

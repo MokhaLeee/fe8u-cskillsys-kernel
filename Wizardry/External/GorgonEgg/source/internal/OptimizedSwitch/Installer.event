@@ -1,0 +1,13 @@
+
+/* This helper file adds the library function `__gnu_thumb1_case_uqi`
+ * which is called by switch statements under certain compiler optimization
+ * settings, but doesn't exist in the game by default.
+ *
+ * Credit to Contro for finding this.
+ */
+
+#ifndef __gnu_thumb1_case_uqi
+
+  #include "OptimizedSwitch.lyn.event"
+
+#endif // __gnu_thumb1_case_uqi

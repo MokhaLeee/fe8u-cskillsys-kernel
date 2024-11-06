@@ -1,0 +1,4 @@
+
+ALIGN 4; gHitLabel: {
+  #incbin "HitLabel.4bpp"
+};

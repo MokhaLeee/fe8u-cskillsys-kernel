@@ -1,0 +1,8 @@
+
+ALIGN 4; gHitLabel: {
+  #incbin "HitLabel.4bpp"
+};
+
+ALIGN 4; gAvoidLabel: {
+  #incbin "AvoidLabel.4bpp"
+};

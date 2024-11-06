@@ -69,3 +69,11 @@
 #ifdef CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
     #include "StatScreenAllegianceColors/Installer.event"
 #endif
+
+/** 
+ * This weirdly causes compile issues right now unless I comment it out here,
+ * despite the fact the definition is commented out in configs.h
+ */
+// #ifdef CONFIG_MODULAR_STAT_SCREEN_GORGON_EGG
+//     #include "GorgonEgg/output/Installer.event"
+// #endif

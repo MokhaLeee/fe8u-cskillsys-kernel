@@ -1,0 +1,3 @@
+
+#include "GetCursorQuadrant.lyn.event"
+PROTECT 0x0008BBCC 0x0008BC10

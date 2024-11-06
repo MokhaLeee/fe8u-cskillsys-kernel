@@ -1,0 +1,12 @@
+<Module Name="AffinityStandard">
+  <Static File="AffinityStandard.lyn.event" Name="AffinityStandard_Static"/>
+  <Dynamic File="AffinityStandard.lyn.event" Name="AffinityStandard_Dynamic"/>
+  <ASMDefinition Name="GetUnitAffinityIcon">SET_FUNC GetUnitAffinityIcon, (0x080286BC+1)</ASMDefinition>
+  <ASMDefinition Name="gAffinityWeaponRankPalette">SET_DATA gAffinityWeaponRankPalette, 0x08599714</ASMDefinition>
+  <Definition Name="gAffinityWeaponRankPalette">extern u16 gAffinityWeaponRankPalette[];</Definition>
+  <Definition Name="AFFINITY_X" Value="40"/>
+  <Definition Name="AFFINITY_Y" Value="8"/>
+  <Definition Name="AFFINITY_PAGE" Value="0"/>
+  <Definition Name="AFFINITY_BASE_TILE" Value="0x030A"/>
+  <Definition Name="AFFINITY_PALETTE" Value="21"/>
+</Module>

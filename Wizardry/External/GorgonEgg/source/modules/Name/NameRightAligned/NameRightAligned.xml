@@ -1,0 +1,7 @@
+<Module Name="NameRightAligned">
+  <Static File="NameRightAligned.lyn.event" Name="NameRightAligned_Static"/>
+  <Definition Name="NAME_X" Value="5"/>
+  <Definition Name="NAME_Y" Value="1"/>
+  <Definition Name="NAME_WIDTH" Value="7"/>
+  <Definition Name="NAME_COLOR" Value="TEXT_COLOR_BLACK"/>
+</Module>

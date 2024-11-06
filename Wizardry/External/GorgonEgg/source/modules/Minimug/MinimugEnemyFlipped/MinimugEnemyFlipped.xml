@@ -1,0 +1,10 @@
+<Module Name="MinimugEnemyFlipped">
+  <Static File="MinimugEnemyFlipped.lyn.event" name="MinimugEnemyFlipped_Static"/>
+  <ASMDefinition Name="PutFaceChibi">SET_FUNC PutFaceChibi, (0x08005988+1)</ASMDefinition>
+  <Definition Name="MINIMUG_WIDTH" Value="4"/>
+  <Definition Name="MINIMUG_HEIGHT" Value="4"/>
+  <Definition Name="MINIMUG_X" Value="1"/>
+  <Definition Name="MINIMUG_Y" Value="1"/>
+  <Definition Name="MINIMUG_PALETTE" Value="4"/>
+  <Definition Name="MINIMUG_BASE_TILE" Value="0x0180"/>
+</Module>

@@ -1,0 +1,9 @@
+<Module Name="CritLabelStandard">
+  <Init File="CritLabelStandard.lyn.event" Name="CritLabelStandard_Init"/>
+  <Static File="CritLabelStandard.lyn.event" Name="CritLabelStandard_Static"/>
+  <Include File="Label.event"/>
+  <Definition Name="CRT_LABEL_X" Value="4"/>
+  <Definition Name="CRT_LABEL_Y" Value="0"/>
+  <Definition Name="CRT_LABEL_BASE_TILE" Value="0x016D"/>
+  <Definition Name="CRT_LABEL_PALETTE" Value="2"/>
+</Module>

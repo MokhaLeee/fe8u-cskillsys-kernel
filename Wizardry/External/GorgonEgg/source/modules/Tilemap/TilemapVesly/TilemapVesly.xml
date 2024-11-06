@@ -1,0 +1,13 @@
+<Module Name="TilemapVesly">
+  <Static File="TilemapVesly.lyn.event" Name="TilemapVesly_Static"/>
+  <Include File="GETilemap.lyn.event"/>
+  <ASMDefinition Name="gPal_PlayerInterface_Blue">SET_DATA gPal_PlayerInterface_Blue, 0x08A1738C</ASMDefinition>
+  <ASMDefinition Name="gPal_PlayerInterface_Red">SET_DATA gPal_PlayerInterface_Red, 0x08A173AC</ASMDefinition>
+  <ASMDefinition Name="gPal_PlayerInterface_Green">SET_DATA gPal_PlayerInterface_Green, 0x08A173CC</ASMDefinition>
+  <Definition Name="gPal_PlayerInterface_Blue">extern u16 gPal_PlayerInterface_Blue[];</Definition>
+  <Definition Name="gPal_PlayerInterface_Red">extern u16 gPal_PlayerInterface_Red[];</Definition>
+  <Definition Name="gPal_PlayerInterface_Green">extern u16 gPal_PlayerInterface_Green[];</Definition>
+  <Definition Name="GE_WIDTH" Value="16"/>
+  <Definition Name="GE_HEIGHT" Value="8"/>
+  <Definition Name="GE_TILEMAP_PALETTE" Value="3"/>
+</Module>

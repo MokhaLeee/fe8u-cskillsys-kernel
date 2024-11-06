@@ -1,0 +1,9 @@
+<Module Name="AvoidStandard">
+  <Dynamic File="AvoidStandard.lyn.event" Name="AvoidStandard_Dynamic"/>
+  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
+  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
+  <Definition Name="AVO_X" Value="24"/>
+  <Definition Name="AVO_Y" Value="72"/>
+  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
+  <Definition Name="NUMBER_PALETTE" Value="8"/>
+</Module>

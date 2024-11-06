@@ -1,0 +1,15 @@
+<Module Name="DefenseOrResistance">
+  <Init File="DefenseOrResistance.lyn.event" Name="DefenseOrResistance_Init"/>
+  <Dynamic File="DefenseOrResistance.lyn.event" Name="DefenseOrResistance_Dynamic"/>
+  <Include File="Label.event"/>
+  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
+  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
+  <Definition Name="DEFORRES_X" Value="0"/>
+  <Definition Name="DEFORRES_Y" Value="5"/>
+  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
+  <Definition Name="NUMBER_PALETTE" Value="8"/>
+  <Definition Name="DEF_LABEL_BASE_TILE" Value="0x0167"/>
+  <Definition Name="DEF_LABEL_PALETTE" Value="2"/>
+  <Definition Name="RES_LABEL_BASE_TILE" Value="0x0165"/>
+  <Definition Name="RES_LABEL_PALETTE" Value="2"/>
+</Module>

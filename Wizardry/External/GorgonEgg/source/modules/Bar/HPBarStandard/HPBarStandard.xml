@@ -1,0 +1,9 @@
+<Module Name="HPBarStandard">
+  <Static File="HPBarStandard.lyn.event" Name="HPBarStandard_Static"/>
+  <Internal File="DrawBarStandard/DrawBarStandard.lyn.event"/>
+  <Definition Name="HPBAR_X" Value="5"/>
+  <Definition Name="HPBAR_Y" Value="4"/>
+  <Definition Name="HPBAR_WIDTH" Value="7"/>
+  <Definition Name="HPBAR_BASE_TILE" Value="0x140"/>
+  <Definition Name="HPBAR_PALETTE" Value="1"/>
+</Module>

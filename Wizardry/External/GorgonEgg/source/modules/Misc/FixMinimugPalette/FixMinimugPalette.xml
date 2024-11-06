@@ -1,0 +1,5 @@
+<Module Name="FixMinimugPalette">
+  <Include File="Installer.event"/>
+  <ASMDefinition Name="DecompressMinimugGraphics">SET_FUNC DecompressMinimugGraphics, (0x08005924+1)</ASMDefinition>
+  <Definition Name="gMinimugTempBuffer">#define gMinimugTempBuffer ((u8*)(0x0201F148))</Definition>
+</Module>

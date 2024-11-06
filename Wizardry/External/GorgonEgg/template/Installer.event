@@ -1,0 +1,54 @@
+
+// Helpers
+
+  #ifndef RESERVE
+
+    /* RESERVE(Start, End)
+     * 
+     * This helper greedily reserves a block of space for
+     * some inline hack. It prevents other things from overwriting
+     * space used by something, and also throws an error if
+     * the hack is bigger than the space allocated.
+     * 
+     * Example:
+     * 
+     * ORG 1200
+     * #include "Foo.lyn.event" // This errors if bigger than 100 bytes.
+     * RESERVE(1200, 1300)
+     * ORG 1210; BYTE 1 // Trying to overwrite the area errors.
+     */
+    #define RESERVE(Start, End) "PROTECT Start End; ASSERT (End - CURRENTOFFSET);"
+
+  #endif // RESERVE
+
+// Fixed-location components
+
+  // Proc
+
+  #define UI1_Start (0x00A0190C)
+  #define UI1_End   (0x00A01994)
+
+  PUSH; ORG UI1_Start;
+    #include "MainProc.lyn.event"
+    ALIGN 4;
+
+    GE_Name: { String(GORGON); BYTE 0; };
+
+    RESERVE(UI1_Start, UI1_End);
+  POP;
+
+// Freespace components
+
+  #include "CheckForUnit.lyn.event"
+  #include "Update.lyn.event"
+  #include "CopyTilemap.lyn.event"
+  #include "GetWindowPosition.lyn.event"
+  #include "Extend.lyn.event"
+  #include "Retract.lyn.event"
+  #include "Init.lyn.event"
+  #include "Reset.lyn.event"
+  #include "Static.lyn.event"
+  #include "Dynamic.lyn.event"
+  #include "UnitData.lyn.event"
+
+  #include "GeneratedInstaller.event"

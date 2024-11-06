@@ -1,0 +1,13 @@
+
+*.sublime*
+
+output/*
+backups/*
+
+tools/__*
+tools/test
+tools/CLib
+tools/venv
+tools/lyn*
+tools/ea-dep*
+tools/png2dmp*

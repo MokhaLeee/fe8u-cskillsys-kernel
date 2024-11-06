@@ -202,13 +202,15 @@
 
 /**
  * By Snakey1
- * 
  * Allows summoners to gain EXP from their summon's battles
- * 
  * Installed in: Wizardry/External/SummonerEXP/Installer.event
  * Source: https://feuniverse.us/t/snakes-pit-of-asm-and-other-stuff/3627/45
+ * 
+ * W-A-R-N-I-N-G : This uses a lyn event file for the compiled ASM, so it'll trigger
+ * errors in make about a missing C file (as make expects to produce lyn files from C files)
+ * The solution would be to rewrite SummonEXPMaster.asm in C, but until then you can ignores these errors
  */
-#define CONFIG_SUMMON_EXP
+// #define CONFIG_SUMMON_EXP
 
 /**
  * By Contro
@@ -221,16 +223,25 @@
 
 #define CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
 
-
 /**
  * By Contro
- * 
  * Allows user to flip sprites by allegiance (would be nice to add class/character options too)
- * 
  * Installed in: Wizardry/External/MapMirrorSprites/Installer.event
  * Source: https://feuniverse.us/t/contros-code-collection/13514/42
  */
 // #define CONFIG_FLIPPED_SPRITES
+
+
+/**
+ * By Zane | GORGON-EGG
+ * Allows users to modify the minimug box in the top left corner when hovering over a unit
+ * Installed in: Wizardry/External/GorgonEgg/output/Installer.event
+ * Source: https://feuniverse.us/t/gorgon-egg/25690
+ * 
+ * W-A-R-N-I-N-G - Worked the first time I compiled now it's broken as well and I don't have
+ * the energy to fix it at the time of writing
+ */
+// #define CONFIG_MODULAR_STAT_SCREEN_GORGON_EGG
 
 /**
  * By Jester

@@ -1,0 +1,4 @@
+
+ALIGN 4; gAttackLabel: {
+  #incbin "AttackLabel.4bpp"
+};

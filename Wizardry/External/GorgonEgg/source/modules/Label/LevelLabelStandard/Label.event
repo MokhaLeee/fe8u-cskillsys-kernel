@@ -1,0 +1,4 @@
+
+ALIGN 4; gLevelLabel: {
+  #incbin "LevelLabel.4bpp"
+};

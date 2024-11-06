@@ -1,0 +1,9 @@
+
+ALIGN 4; gRingGraphics: {
+  #incbin "Graphics.4bpp"
+};
+
+ALIGN 4; aRingPalette: {
+  #incbin "Graphics.pal"
+};
+

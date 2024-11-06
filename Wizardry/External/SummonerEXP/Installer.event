@@ -9,18 +9,18 @@
 #endif
 
 PUSH
-ORG $2BA04
-jumpToHack(SummonEXPHack)
+	ORG $2BA04
+	jumpToHack(SummonEXPHack)
 
-ORG $2B980
-jumpToHack(SummonLevel)
+	ORG $2B980
+	jumpToHack(SummonLevel)
 
-// default summoner from list 
-ORG $7AD4C 
-WORD 2 // 0 = Ewan, 1 = Knoll, 2 = Lyon 
+	// default summoner from list 
+	ORG $7AD4C 
+	WORD 2 // 0 = Ewan, 1 = Knoll, 2 = Lyon 
 
-ORG $2C528
-WORD 0x0 0x0// Remove that stupid hardcoded phantom check in the EXP routine that kept setting the phantom's EXP to 0 when it hit.
+	ORG $2C528
+	WORD 0x0 0x0// Remove that stupid hardcoded phantom check in the EXP routine that kept setting the phantom's EXP to 0 when it hit.
 POP
 
 ALIGN 4

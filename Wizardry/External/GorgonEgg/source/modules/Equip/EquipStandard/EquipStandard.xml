@@ -1,0 +1,7 @@
+<Module Name="EquipStandard">
+  <Static File="EquipStandard.lyn.event" Name="EquipStandard_Static"/>
+  <Definition Name="EQUIP_X" Value="7"/>
+  <Definition Name="EQUIP_Y" Value="1"/>
+  <Definition Name="EQUIP_WIDTH" Value="7"/>
+  <Definition Name="EQUIP_COLOR" Value="TEXT_COLOR_BLACK"/>
+</Module>

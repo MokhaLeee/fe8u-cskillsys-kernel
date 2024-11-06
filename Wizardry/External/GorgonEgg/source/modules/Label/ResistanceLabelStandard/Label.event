@@ -1,0 +1,4 @@
+
+ALIGN 4; gResistanceLabel: {
+  #incbin "ResistanceLabel.4bpp"
+};

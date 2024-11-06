@@ -1,0 +1,7 @@
+<Module Name="EquipIfPlayerStandard">
+  <Static File="EquipIfPlayerStandard.lyn.event" Name="EquipIfPlayerStandard_Static"/>
+  <Definition Name="EQUIP_X" Value="7"/>
+  <Definition Name="EQUIP_Y" Value="1"/>
+  <Definition Name="EQUIP_WIDTH" Value="7"/>
+  <Definition Name="EQUIP_COLOR" Value="TEXT_COLOR_BLACK"/>
+</Module>

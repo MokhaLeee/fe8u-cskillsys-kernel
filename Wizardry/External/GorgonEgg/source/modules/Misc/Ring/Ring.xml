@@ -1,0 +1,16 @@
+<Module Name="Ring">
+  <Init File="Ring.lyn.event" Name="Ring_Init"/>
+  <Extend File="Ring.lyn.event" Name="Ring_Extend"/>
+  <Retract File="Ring.lyn.event" Name="Ring_Retract"/>
+  <Static File="Ring.lyn.event" Name="Ring_Static"/>
+  <Dynamic File="Ring.lyn.event" Name="Ring_Dynamic"/>
+  <Include File="Installer.event"/>
+  <Include File="RingObjects.lyn.event"/>
+  <Include File="RingTiles.lyn.event"/>
+  <Definition Name="UPDATE_ON_QUADRANT_CHANGE" Value="FALSE"/>
+  <Definition Name="RING_BASE_TILE" Value="0x0200"/>
+  <Definition Name="RING_PALETTE" Value="21"/>
+  <Definition Name="INVENTORY_ICON_BASE_TILE" Value="0x0300"/>
+  <Definition Name="INVENTORY_ICON_PALETTE" Value="20"/>
+  <Definition Name="ITEM_ICON_PAGE" Value="0"/>
+</Module>

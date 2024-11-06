@@ -1,0 +1,12 @@
+<Module Name="FullInventoryDroppable">
+  <Static File="FullInventoryDroppable.lyn.event" Name="FullInventoryDroppable_Static"/>
+  <Dynamic File="FullInventoryDroppable.lyn.event" Name="FullInventoryDroppable_Dynamic"/>
+  <Include File="Icon.event"/>
+  <Definition Name="INVENTORY_ICON_X" Value="40"/>
+  <Definition Name="INVENTORY_ICON_Y" Value="8"/>
+  <Definition Name="INVENTORY_ICON_BASE_TILE" Value="0x0300"/>
+  <Definition Name="INVENTORY_ICON_PALETTE" Value="20"/>
+  <Definition Name="ITEM_ICON_PAGE" Value="0"/>
+  <Definition Name="DROPPABLE_ICON_BASE_TILE" Value="0x030A"/>
+  <Definition Name="DROPPABLE_ICON_PALETTE" Value="16"/>
+</Module>

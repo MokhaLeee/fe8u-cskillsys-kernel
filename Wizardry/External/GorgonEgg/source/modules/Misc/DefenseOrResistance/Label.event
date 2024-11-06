@@ -1,0 +1,8 @@
+
+ALIGN 4; gDefenseLabel: {
+  #incbin "DefenseLabel.4bpp"
+};
+
+ALIGN 4; gResistanceLabel: {
+  #incbin "ResistanceLabel.4bpp"
+};
