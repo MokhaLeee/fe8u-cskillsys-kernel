@@ -9,19 +9,5 @@ Glyph/fe8j/font.fontall.txt
 # Narrow fonts
 Glyph/NarrowFonts/font.fontall.txt
 
-# ZH
-# Glyph/Mokha补充字库/font.fontall.txt
-# Glyph/fe6cn/font.fontall.txt
-# Glyph/fe7cn/font.fontall.txt
-# Glyph/fe8cn/font.fontall.txt
-
-# Glyph/GBA火纹中文字库/一级道具字体/font.fontall.txt
-# Glyph/GBA火纹中文字库/一级对话字体/font.fontall.txt
-# Glyph/标点符号/道具标点/font.fontall.txt
-# Glyph/标点符号/对话标点/font.fontall.txt
-# Glyph/GBA火纹中文字库/道具标点/font.fontall.txt
-# Glyph/GBA火纹中文字库/对话标点/font.fontall.txt
-# Glyph/GBA火纹中文字库/二级对话字体/font.fontall.txt
-# Glyph/MicrosoftSansSerif/缺字增补/font.fontall.txt
-# Glyph/Microsoft Sans Serif/常用日语汉字/font.fontall.txt
-# Glyph/GBA火纹中文字库/二级道具字体/font.fontall.txt
+Glyph/标点符号/道具标点/font.fontall.txt
+Glyph/标点符号/对话标点/font.fontall.txt

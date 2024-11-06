@@ -1106,4 +1106,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
 	[SID_UnstoppableForce] = {{ 100 }},
 #endif
+
+#if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
+	[SID_WeaponHeal] = {{ 50 }},
+#endif
 };

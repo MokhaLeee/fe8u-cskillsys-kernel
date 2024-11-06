@@ -17,7 +17,7 @@ static int GetChLenUtf8(const char *str)
 	if ((0b10000000 & cod) == 0x0)
 		return 1;
 
-	Errorf("%s: Failed on decoding at %#X!", __func__, str);
+	Errorf("Failed on decoding at %#X!", str);
 	return -1;
 }
 
@@ -61,7 +61,7 @@ static int DecodeUtf8(const char *str, u32 *unicode_out, int *len)
 
 	default:
 
-		Errorf("%s: Failed on decoding at %#X!", __func__, str);
+		Errorf("Failed on decoding at %#X!", str);
 
 		*unicode_out = 0;
 		*len = 0;
@@ -77,7 +77,7 @@ static struct Glyph *GetCharGlyphUnicode(u32 unicode_ch, struct Font *font)
 
 	/* For now, we can only support for group 1 of unicode (U_0000 ~ U_FFFF) */
 	if (unicode_ch >= 0x10000) {
-		Errorf("%s: Unicode %#x overflow!", __func__, unicode_ch);
+		Errorf("Unicode %#x overflow!", unicode_ch);
 		return NULL;
 	}
 
@@ -86,7 +86,7 @@ static struct Glyph *GetCharGlyphUnicode(u32 unicode_ch, struct Font *font)
 			return glyph;
 	}
 
-	Errorf("%s: Failed to get glyph: %#x", __func__, unicode_ch);
+	Errorf("Failed to get glyph: %#x", unicode_ch);
 	return NULL;
 }
 

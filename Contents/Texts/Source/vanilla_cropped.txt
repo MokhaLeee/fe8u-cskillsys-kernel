@@ -5332,7 +5332,7 @@ may become allies if you speak[LF]
 to them. If you move to a space[.][LF]
 adjacent to a green unit, the[.][LF]
 Talk command may appear.[LF]
-Choose [LQuote]Talk[RQuote] to convince the[.][LF]
+Choose “Talk” to convince the[.][LF]
 unit to join you.[.][X]
 
 ## MSG_0634
