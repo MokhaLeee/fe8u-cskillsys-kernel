@@ -176,12 +176,12 @@ static const struct UnitDefinition Grado_Reinforcements_Enemy[] = {
  * Main events
  */
 static const EventScr EventScr_Beginning[] = {
-    LOAD_WAIT(0x1, Renais_Castle_Allies) // Load units and move them if possible
+    LOAD_WAIT(Renais_Castle_Allies) // Load units and move them if possible
     LOAD_MAP_XY(17, 12, CHAPTER_16) // Load coordinates and the map for this chapter
     FADE_IN_SCREEN(16) // Fade in from black in 1 second
     MUSC(BGM_RAID) // Set BGM to RAID
     BROWNBOXTEXT(BB_Renais_Castle, 2, 2) // Set location text pop up
-    LOAD_WAIT(0x1, Panicked_Soldier_Allies) // Load units and move them if possible
+    LOAD_WAIT(Panicked_Soldier_Allies) // Load units and move them if possible
     CAMERA(17, 2) // Set camera to these coordinates
     HIGHLIGHT_CHARACTER(CHARACTER_EPHRAIM, 60) // Set flashing cursor on unit for a number of frames
     Text(Chapter_00_Scene_01_Convo_01) // Play this dialogue
@@ -204,9 +204,9 @@ static const EventScr EventScr_Beginning[] = {
     MOVE_1STEP(0, CHARACTER_MOULDER, MOVE_RIGHT)
     MOVE_1STEP(0, CHARACTER_VANESSA, MOVE_LEFT)
     ENUN // Wait for units to finish moving before continuing
-    LOAD_WAIT(0x1, Renais_Castle_Enemy1) // Load units and move them if possible
-    LOAD_WAIT(0x1, Renais_Castle_Enemy2) // Load units and move them if possible
-    LOAD_WAIT(0x1, Renais_Castle_Enemy3) // Load units and move them if possible
+    LOAD_WAIT(Renais_Castle_Enemy1) // Load units and move them if possible
+    LOAD_WAIT(Renais_Castle_Enemy2) // Load units and move them if possible
+    LOAD_WAIT(Renais_Castle_Enemy3) // Load units and move them if possible
     HIGHLIGHT_CHARACTER(CHARACTER_FADO, 60) // Set flashing cursor on unit for a number of frames
     Text(Chapter_00_Scene_01_Convo_04)
     FADE_OUT_SCREEN(2) // Fade out to black in 8 seconds
@@ -217,14 +217,14 @@ static const EventScr EventScr_Beginning[] = {
     // New scene
     LOAD_MAP_XY(0, 0, OUTSIDE_RENAIS)
     FADE_IN_SCREEN(16)
-    LOAD_WAIT(0x1, Renais_Runaways_Allies)
+    LOAD_WAIT(Renais_Runaways_Allies)
     HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text_BG(0x1D, Chapter_00_Scene_02_Convo_01)
     MOVE_THRICE_WAIT(0, CHARACTER_FRANZ, 4, 4, 4, 2, 0, 2)
     ERASE(CHARACTER_FRANZ)
     HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text_BG(0x1D, Chapter_00_Scene_02_Convo_02)
-    LOAD_WAIT(0x1, Renais_Outside_Castle_Enemy)
+    LOAD_WAIT(Renais_Outside_Castle_Enemy)
     MOVE_1STEP_WAIT(0, CHARACTER_SETH, MOVE_RIGHT)
     MOVE_1STEP_WAIT(0, CHARACTER_EIRIKA, MOVE_LEFT)
     HIGHLIGHT_CHARACTER(CHARACTER_VALTER_PROLOGUE, 60)
@@ -253,7 +253,7 @@ static const EventScr EventScr_Beginning[] = {
     // New scene
     LOAD_MAP_XY(0, 0, PROLOGUE)
     FADE_IN_SCREEN(16)
-    LOAD_WAIT_PERSIST(0x1, Eirika_Seth_Allies)
+    LOAD_WAIT_PERSIST(Eirika_Seth_Allies)
     SET_UNIT_HP(CHARACTER_SETH, 10)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
     REDUCE_VOLUME
@@ -265,7 +265,7 @@ static const EventScr EventScr_Beginning[] = {
     HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     Text(Chapter_00_Scene_03_Convo_03)
     GIVE_ITEM_TO(ITEM_SWORD_RAPIER, CHARACTER_EIRIKA)
-    LOAD_WAIT(0x1, Grado_Reinforcements_Enemy)
+    LOAD_WAIT(Grado_Reinforcements_Enemy)
     HIGHLIGHT_CHARACTER(CHARACTER_ONEILL, 60)
     Text(Chapter_00_Scene_03_Convo_04)
     ENDA
@@ -313,11 +313,7 @@ static const EventListScr EventListScr_OneEnemyLeft[] = {
     Text(Chapter_00_Scene_03_Convo_05)
     GOTO(0x1)
 
-/**
- * This copies over the check result of event slot 7 in event slot C
- * for some reason if the condition isn't fulfilled?
- * Not sure why that's needed, but it doesn't work otherwise
- */
+// Preserves the flag if the condition isn't met
 LABEL(0x0)
     CHECK_EVENTID_
     SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)

@@ -73,3 +73,5 @@ W.I.P.[X]
 #include texts/FE8_Rewritten_Terper/Supports/Ewan_Myrrh.txt
 #include texts/FE8_Rewritten_Terper/Supports/Seth_Duessel.txt
 #include texts/FE8_Rewritten_Terper/Supports/Knoll_Lute.txt
+
+#include texts/FE8_Rewritten_Terper/Miscellaneous.txt

@@ -7,6 +7,7 @@
 #include "jester_headers/maps.h"
 #include "jester_headers/flags.h"
 #include "jester_headers/miscellaenous.h"
+#include "EAstdlib.h"
 
 /**
  * Ally unit and REDA definitions
@@ -97,11 +98,11 @@ static const struct UnitDefinition CH1_FRELIAN_FORCES[] = {
  */
 static const EventScr EventScr_Beginning[] = {
     MUSC(BGM_TENSION)
-    LOAD_WAIT(0x1, CH1_BREGUET_FORCES)
+    LOAD_WAIT(CH1_BREGUET_FORCES)
     STAL(60)
     HIGHLIGHT_COORDINATES(2, 2, 60)
     Text_BG(0x26, Chapter_01_Scene_01_Convo_01)
-    LOAD_WAIT(0x1, CH1_FRELIAN_FORCES)
+    LOAD_WAIT(CH1_FRELIAN_FORCES)
     ERASE(0xC1)
     HIGHLIGHT_CHARACTER(CHARACTER_BREGUET, 60)
     Text_BG(0x1C, Chapter_01_Scene_02_Convo_01)
@@ -132,7 +133,7 @@ static const EventScr EventScr_Beginning[] = {
     STAL(60)
     HIGHLIGHT_COORDINATES(2, 2, 60)
     Text_BG(0x26, Chapter_01_Scene_03_Convo_01)
-    LOAD_WAIT_PERSIST(0x1, CH1_EIRIKA_SETH)
+    LOAD_WAIT_PERSIST(CH1_EIRIKA_SETH)
     SET_UNIT_HP(CHARACTER_SETH, 10)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
     Text(Chapter_01_Scene_04_Convo_01)
@@ -187,7 +188,7 @@ static const EventListScr EventScr_FRANZ_RETURNS[] = {
     SVAL(EVT_SLOT_7, 2)
     BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
     MUSC(BGM_COMRADES)
-    LOAD_WAIT_PERSIST(0x1, CH1_REINFORCEMENTS_ALLIES)
+    LOAD_WAIT_PERSIST(CH1_REINFORCEMENTS_ALLIES)
     HIGHLIGHT_CHARACTER(CHARACTER_FRANZ, 60)
     Text(Chapter_01_Scene_05_Convo_01)
     GOTO(0x1)
@@ -226,9 +227,15 @@ static const EventListScr EventListScr_Character[] = {
     END_MAIN
 };
 
+static const EventListScr EventListScr_ESCAPE_TILE_1[] = {
+    ESCAPE_LOGIC(14, 9)
+};
+
 static const EventListScr EventListScr_Location[] = {
     House(EVFLAG_TMP(5), EventListScr_HOUSE_TALK_1, 10, 4)
     House(EVFLAG_TMP(6), EventListScr_HOUSE_TALK_2, 13, 6)
+
+    ESCAPE_TILE(EVFLAG_TMP(10), EventListScr_ESCAPE_TILE_1, 14, 9)
     END_MAIN
 };
 

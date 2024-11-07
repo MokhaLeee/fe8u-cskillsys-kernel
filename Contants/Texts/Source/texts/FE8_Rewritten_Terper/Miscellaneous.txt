@@ -1,0 +1,5 @@
+## TILE_COMMAND_TEXT_ESCAPE
+ Escape[X]
+## R_TEXT_COMMAND_ESCAPE
+Escape from the map. You can't[N]
+come back after you select this.[X]

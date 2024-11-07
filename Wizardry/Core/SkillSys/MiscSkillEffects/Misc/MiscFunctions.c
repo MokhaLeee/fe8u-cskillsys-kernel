@@ -4,6 +4,11 @@
 #include "constants/skills.h"
 #include "battle-system.h"
 #include "unit-expa.h"
+#include "eventinfo.h"
+#include "bmmenu.h"
+#include "eventscript.h"
+#include "./jester_headers/event-call.h"
+#include "EAstdlib.h"
 
 extern void ForEachAdjacentUnit(int x, int y, void (*)(struct Unit *));
 
@@ -730,4 +735,97 @@ int findMax(u8 *array, int size) {
         }
     }
     return array_position;
+}
+
+u8 EscapeCommandUsability(const struct MenuItemDef* def, int number) {
+
+    if (gActiveUnit->pClassData->number == CLASS_PHANTOM) {
+        return MENU_NOTSHOWN;
+    }
+
+    if (gActiveUnit->state & US_HAS_MOVED) {
+        return MENU_NOTSHOWN;
+    }
+
+    return GetAvailableTileEventCommand(gActiveUnit->xPos, gActiveUnit->yPos) == TILE_COMMAND_VISIT
+    ? MENU_ENABLED : MENU_NOTSHOWN;
+}
+
+u8 EscapeCommandEffect(struct MenuProc* menu, struct MenuItemProc* menuItem) {
+
+    StartAvailableTileEvent(gActiveUnit->xPos, gActiveUnit->yPos);
+    
+    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
+}
+
+LYN_REPLACE_CHECK(Event19_Checks);
+u8 Event19_Checks(struct EventEngineProc * proc)
+{
+    u8 subcode = EVT_SUB_CMD(proc->pEventCurrent);
+    switch (subcode) {
+    case EVSUBCMD_CHECK_MODE: // Check Mode
+        gEventSlots[0xC] = gPlaySt.chapterModeIndex;
+        break;
+
+    case EVSUBCMD_CHECK_CHAPTER_NUMBER: // Check (Next?) Chapter Index
+        gEventSlots[0xC] = proc->chapterIndex;
+        break;
+
+    case EVSUBCMD_CHECK_HARD: // Check Difficult Mode
+        if (!(gPlaySt.chapterStateBits & PLAY_FLAG_HARD))
+            gEventSlots[0xC] = FALSE;
+        else
+            gEventSlots[0xC] = TRUE;
+
+        break;
+
+    case EVSUBCMD_CHECK_TURNS: // Check Turn Number
+        gEventSlots[0xC] = gPlaySt.chapterTurnNumber;
+        break;
+
+    case EVSUBCMD_CHECK_ENEMIES: // Check Red Unit Count
+        gEventSlots[0xC] = CountRedUnits();
+        break;
+
+    case EVSUBCMD_CHECK_OTHERS: // Check Green Unit Count
+        gEventSlots[0xC] = CountGreenUnits();
+        break;
+
+    case EVSUBCMD_CHECK_PLAYERS: // Check Blue Unit Count
+        gEventSlots[0xC] = CountAvailableBlueUnits();
+        break;
+
+    case EVSUBCMD_CHECK_SKIRMISH: // Check Chapter Type?
+        gEventSlots[0xC] = GetBattleMapKind();
+        break;
+
+    case EVSUBCMD_CHECK_TUTORIAL: // Check Some option or difficult mode
+        if (gPlaySt.config.controller || (gPlaySt.chapterStateBits & PLAY_FLAG_HARD))
+            gEventSlots[0xC] = FALSE;
+        else
+            gEventSlots[0xC] = TRUE;
+
+        break;
+
+    case EVSUBCMD_CHECK_MONEY: // Check gold
+        gEventSlots[0xC] = GetPartyGoldAmount();
+        break;
+
+    case EVSUBCMD_19CHECK_EVENTID: // Check Event Trigger ID
+        gEventSlots[0xC] = GetEventTriggerId(proc->pEventStart);
+        break;
+
+    case EVSUBCMD_CHECK_POSTGAME: // Check Game Complete
+        if (gPlaySt.chapterStateBits & PLAY_FLAG_COMPLETE)
+            gEventSlots[0xC] = TRUE;
+        else
+            gEventSlots[0xC] = FALSE;
+
+        break;
+
+    default:
+        break;
+    } // switch (subcode)
+
+    return EVC_ADVANCE_CONTINUE;
 }

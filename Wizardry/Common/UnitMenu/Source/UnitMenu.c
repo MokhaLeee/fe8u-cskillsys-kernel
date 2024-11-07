@@ -108,5 +108,6 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
     {"　交換", 0x68E, 0x6D4, 4, 0x68, ItemSubMenu_IsTradeAvailable, 0, TradeCommandEffect, 0, 0, 0}, // Trade > 
     {"　輸送隊", 0x68F, 0x6D5, 4, 0x69, SupplyUsability, 0, SupplyCommandEffect, 0, 0, 0}, // Supply > 
     {"　待機", 0x695, 0x6BF, 0, 0x6B, MenuAlwaysEnabled, 0, EffectWait, 0, 0, 0}, // Wait > 
+    {"　脱出", TILE_COMMAND_TEXT_ESCAPE, R_TEXT_COMMAND_ESCAPE, 0, 0x6C, EscapeCommandUsability, 0, EscapeCommandEffect, 0, 0, 0}, // Escape > 
     MenuItemsEnd
 };

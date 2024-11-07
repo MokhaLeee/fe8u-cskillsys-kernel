@@ -2,6 +2,7 @@
 
 #include "eventscript.h"
 #include "./jester_headers/miscellaenous.h"
+#include "EAstdlib.h"
 
 // #define TutText(text) "SVAL 0xB 0xFFFFFFFF; TUTORIALTEXTBOXSTART; TEXTSHOW text; TEXTEND; REMA" // Centered 
 // #define TutText_B(text) "SVAL 0xB 0x00B0FFFF; TUTORIALTEXTBOXSTART; TEXTSHOW text; TEXTEND; REMA" // Bottom-Centered 
@@ -87,13 +88,13 @@ enum {
     SET_HP(character)
 
 // Protect these loaded units from CLEAR_ALL_UNITS
-#define LOAD_WAIT_PERSIST(thing, loaded_units) \
-    LOAD1(thing, loaded_units) \
+#define LOAD_WAIT_PERSIST(loaded_units) \
+    LOAD1(0x1, loaded_units) \
     ENUN
 
 // Units can be erased by CLEAR_ALL_UNITS
-#define LOAD_WAIT(thing, loaded_units) \
-    LOAD2(thing, loaded_units) \
+#define LOAD_WAIT(loaded_units) \
+    LOAD2(0x1, loaded_units) \
     ENUN
 
 // So apparently Nintendlord mixed these two up back in the day
@@ -164,3 +165,23 @@ enum {
     ASMC(QuintessenceFx_Goto_C) \
     STAL(16) \
     ASMC(EndQuintessenceStealEffect)
+
+#define ESCAPE_TILE(characterID, EventListscr, x, y) \
+    LOCA(characterID, EventListscr, x, y, TILE_COMMAND_VISIT) \
+
+#define ESCAPE_LOGIC(x, y) \
+    SET_ENDTURN(0xFFFF) \
+    ERASE(0xFFFF) \
+    SET_ACTIVE(0xFFFF) \
+    SET_CURSOR(x, y) \
+    CHECK_EVENTID_ \
+    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0) \
+    ENUF_SLOT2 \
+    CHECK_PLAYERS \
+    SVAL(EVT_SLOT_7, 0) \
+    BEQ(0x0, EVT_SLOT_C, EVT_SLOT_7) \
+    NoFade \
+    ENDA \
+LABEL(0x0) \
+    ENUT(0x3) \
+    CALL(EventScr_Ending)
