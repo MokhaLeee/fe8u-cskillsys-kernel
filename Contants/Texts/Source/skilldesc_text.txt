@@ -1846,3 +1846,8 @@ than their weight.[X]
 Quick Hands:[NL]
 Using and item doesn't end[NL]
 this unit's turn.[X]
+
+## SD_StaffParagon
+Staff Paragon:[NL]
+Gain +1 EXP for every 5 points[NL]
+of excess healing.[X]

@@ -110,6 +110,12 @@ refresh_turn_once:
     StartStatusHealEffect(unit, parent);
     return true;
 
+/**
+ *  This is a stopgap measure to ensure the branch isn't unused when all skills are disabled.
+ *  If more skills are added, this will need to be replaced.
+ */
+
+#if defined(SID_QuickHands) && (COMMON_SKILL_VALID(SID_QuickHands))
 refresh_turn_repeatedly:
     if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
         return false;
@@ -118,8 +124,12 @@ refresh_turn_repeatedly:
     EndAllMus();
     StartStatusHealEffect(unit, parent);
     return true;
+#endif
 
-// This is a stopgap measure to ensure the branch isn't unused when all skills are disabled
+/**
+ *  This is a stopgap measure to ensure the branch isn't unused when all skills are disabled.
+ *  If more skills are added, this will need to be replaced.
+ */
 #if defined(SID_LeadByExample) && (COMMON_SKILL_VALID(SID_LeadByExample))
 refresh_turn_once_aura:
     for (int i = 0; i < ARRAY_COUNT_RANGE1x1; i++)

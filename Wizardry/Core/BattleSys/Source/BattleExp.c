@@ -3,6 +3,7 @@
 #include "battle-system.h"
 #include "bwl.h"
 #include "constants/skills.h"
+#include "strmag.h"
 
 LYN_REPLACE_CHECK(GetUnitExpLevel);
 int GetUnitExpLevel(struct Unit *unit)
@@ -60,6 +61,25 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
             }
         }
     }
+#endif
+
+#if defined(SID_StaffParagon) && (COMMON_SKILL_VALID(SID_StaffParagon))
+    int bonusEXP = 0;
+    int unitMagicStat = GetUnitMagic(GetUnit(actor->unit.index));
+    int itemHealAmount = GetUnitItemHealAmount(GetUnit(actor->unit.index), GetUnit(actor->unit.index)->items[gActionData.itemSlotIndex]);
+    int hpChange = gBattleTarget.unit.curHP - gBattleTarget.hpInitial;
+
+    if (BattleSkillTester(actor, SID_StaffParagon))
+        bonusEXP = (unitMagicStat + itemHealAmount) - hpChange;
+
+    /* Halve the exp gain if promoted */
+    if (UNIT_CATTRIBUTES(&actor->unit) & CA_PROMOTED)
+        bonusEXP /= 2;
+
+    /* The final score shoud be 1/5 of excess healing */
+    bonusEXP /= 5;
+
+    status += bonusEXP;
 #endif
 
     /* Check last */
