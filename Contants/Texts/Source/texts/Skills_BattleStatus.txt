@@ -1092,3 +1092,11 @@ B-Luck[X]
 Beginner's Luck:[NL]
 +20 AVO/HIT.[NL]
 -1 per chapter.[X]
+
+## MSG_SKILL_ExpertsExperience_NAME
+E-Experience[X]
+
+## MSG_SKILL_ExpertsExperience
+Expert's Experience:[NL]
++0 AVO/HIT.[NL]
++1 per chapter.[X]
