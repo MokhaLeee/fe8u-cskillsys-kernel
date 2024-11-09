@@ -199,3 +199,8 @@ of excess healing.[X]
 OgreBody:[NL]
 Set this unit's HP[NL]
 cap to 99.[X]
+
+## MSG_SKILL_HedgeFund
+Hedge Fund:[NL]
+Increase total gold by 10%[NL]
+at the end of the chapter.[X]

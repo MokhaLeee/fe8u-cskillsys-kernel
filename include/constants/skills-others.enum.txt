@@ -614,6 +614,7 @@
 // SID_Survivor
 // SID_Anchor
 // SID_Absolve
+// SID_HedgeFund
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

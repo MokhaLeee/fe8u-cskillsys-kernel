@@ -228,6 +228,8 @@ void ChapterChangeUnitCleanup(void)
 {
     int i, j;
 
+    bool hedgeFundActivated = false;
+
     // Clear phantoms
     for (i = 1; i < 0x40; ++i)
     {
@@ -303,6 +305,14 @@ void ChapterChangeUnitCleanup(void)
 #if defined(SID_Survivor) && (COMMON_SKILL_VALID(SID_Survivor))
         if (SkillTester(unit, SID_Survivor))
             unit->maxHP += 1;
+#endif
+
+#if defined(SID_HedgeFund) && (COMMON_SKILL_VALID(SID_HedgeFund))
+        if (SkillTester(unit, SID_HedgeFund) && !hedgeFundActivated)
+        {
+            hedgeFundActivated = true;
+            gPlaySt.partyGoldAmount += gPlaySt.partyGoldAmount / SKILL_EFF0(SID_HedgeFund);
+        }
 #endif
 
 #if defined(CONFIG_AUTO_REPAIR_WEAPONS)

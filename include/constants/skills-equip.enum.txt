@@ -203,7 +203,7 @@
 // SID_Adaptable
 // SID_Mantle
 // SID_BeginnersLuck
-SID_ExpertsExperience
+// SID_ExpertsExperience
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto
@@ -614,6 +614,7 @@ SID_ExpertsExperience
 // SID_Survivor
 // SID_Anchor
 // SID_Absolve
+// SID_HedgeFund
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder
