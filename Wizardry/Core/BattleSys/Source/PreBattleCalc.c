@@ -1422,6 +1422,17 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_BeginnersLuck) && (COMMON_SKILL_VALID(SID_BeginnersLuck)))
+        case SID_BeginnersLuck:
+            tmp = gPlaySt.chapterIndex > SKILL_EFF0(SID_BeginnersLuck)
+                      ? 0
+                      : SKILL_EFF0(SID_BeginnersLuck) - gPlaySt.chapterIndex;
+
+            attacker->battleHitRate += tmp;
+            attacker->battleAvoidRate += tmp;
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;

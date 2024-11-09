@@ -202,6 +202,7 @@
 // SID_AvoidSword
 // SID_Adaptable
 // SID_Mantle
+// SID_BeginnersLuck
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto
@@ -542,7 +543,7 @@
 // SID_Mercurious
 // SID_Velocity
 // SID_StaffParagon
-SID_OgreBody
+// SID_OgreBody
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk

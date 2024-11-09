@@ -1142,4 +1142,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_OgreBody) && COMMON_SKILL_VALID(SID_OgreBody))
     [SID_OgreBody] = {{99}},
 #endif
+
+#if (defined(SID_BeginnersLuck) && COMMON_SKILL_VALID(SID_BeginnersLuck))
+    [SID_BeginnersLuck] = {{20}},
+#endif
 };

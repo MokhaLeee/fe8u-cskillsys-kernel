@@ -1851,3 +1851,8 @@ this unit's turn.[X]
 Staff Paragon:[NL]
 Gain +1 EXP for every 5 points[NL]
 of excess healing.[X]
+
+## SD_BeginnersLuck
+BeginnersLuck:[NL]
++20 AVO/HIT.[NL]
+-1 per chapter.[X]

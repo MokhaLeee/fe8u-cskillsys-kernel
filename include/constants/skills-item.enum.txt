@@ -201,6 +201,7 @@
 // SID_ShortShield
 // SID_AvoidSword
 // SID_Mantle
+// SID_BeginnersLuck
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto

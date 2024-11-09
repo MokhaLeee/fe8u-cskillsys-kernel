@@ -1084,3 +1084,11 @@ attacks, double damage at range.[X]
 Mantle:[NL]
 Cannot taken damage except[NL]
 from selected weaponry.[X]
+
+## MSG_SKILL_BeginnersLuck_NAME
+B-Luck[X]
+
+## MSG_SKILL_BeginnersLuck
+Beginner's Luck:[NL]
++20 AVO/HIT.[NL]
+-1 per chapter.[X]
