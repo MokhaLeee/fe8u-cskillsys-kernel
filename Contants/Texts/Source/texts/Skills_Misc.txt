@@ -194,3 +194,8 @@ of leveling MOV on level up.[X]
 Staff Paragon:[NL]
 Gain +1 EXP for every 5 points[NL]
 of excess healing.[X]
+
+## MSG_SKILL_OgreBody
+OgreBody:[NL]
+Set this unit's HP[NL]
+cap to 99.[X]

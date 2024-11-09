@@ -542,6 +542,7 @@
 // SID_Mercurious
 // SID_Velocity
 // SID_StaffParagon
+// SID_OgreBody
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk

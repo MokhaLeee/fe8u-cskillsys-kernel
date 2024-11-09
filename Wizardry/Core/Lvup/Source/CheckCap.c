@@ -7,8 +7,6 @@
 
 STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct BattleUnit *bu)
 {
-    if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit))
-        bu->changeHP = KUNIT_MHP_MAX(unit) - unit->maxHP;
     int limitBreaker = 0;
 
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
@@ -21,12 +19,25 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct Batt
         limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
 #endif
 
-#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-    if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit) + limitBreaker)
-        bu->changeHP = (KUNIT_MHP_MAX(unit) + limitBreaker) - unit->maxHP;
+#if defined(SID_OgreBody) && (COMMON_SKILL_VALID(SID_OgreBody))
+    if (SkillTester(unit, SID_OgreBody))
+    {
+        if (unit->maxHP > SKILL_EFF0(SID_OgreBody))
+            unit->maxHP = SKILL_EFF0(SID_OgreBody);
+    }
+    else
+    {
+        if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
+            unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
+    }
 #else
-    if ((unit->maxHP + bu->changeHP) > UNIT_MHP_MAX(unit) + limitBreaker)
-        bu->changeHP = (UNIT_MHP_MAX(unit) + limitBreaker) - unit->maxHP;
+    #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+        if (unit->maxHP > KUNIT_MHP_MAX(unit) + limitBreaker)
+            unit->maxHP = KUNIT_MHP_MAX(unit) + limitBreaker;
+    #else
+        if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
+            unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
+    #endif
 #endif
 
     if ((unit->pow + bu->changePow) > UNIT_POW_MAX(unit) + limitBreaker)
@@ -50,8 +61,6 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct Batt
 
 STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
 {
-    if (unit->maxHP > KUNIT_MHP_MAX(unit))
-        unit->maxHP = KUNIT_MHP_MAX(unit);
     int limitBreaker = 0;
 
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
@@ -64,12 +73,25 @@ STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
         limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
 #endif
 
-#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-    if (unit->maxHP > KUNIT_MHP_MAX(unit) + limitBreaker)
-        unit->maxHP = KUNIT_MHP_MAX(unit) + limitBreaker;
+#if defined(SID_OgreBody) && (COMMON_SKILL_VALID(SID_OgreBody))
+    if (SkillTester(unit, SID_OgreBody))
+    {
+        if (unit->maxHP > SKILL_EFF0(SID_OgreBody))
+            unit->maxHP = SKILL_EFF0(SID_OgreBody);
+    }
+    else
+    {
+        if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
+            unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
+    }
 #else
-    if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
-        unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
+    #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+        if (unit->maxHP > KUNIT_MHP_MAX(unit) + limitBreaker)
+            unit->maxHP = KUNIT_MHP_MAX(unit) + limitBreaker;
+    #else
+        if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
+            unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
+    #endif
 #endif
 
     if (unit->pow > UNIT_POW_MAX(unit) + limitBreaker)
