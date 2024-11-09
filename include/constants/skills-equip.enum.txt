@@ -230,6 +230,7 @@
 // SID_GrislyWound
 // SID_Lifetaker
 // SID_VigorDance
+SID_QuickHands
 
 ////////// AURA SKILLS
 // SID_Anathema
@@ -450,7 +451,7 @@
 ////////// BATTLE ORDER SKILLS
 // SID_Vantage
 // SID_Desperation
-SID_QuickRiposte
+// SID_QuickRiposte
 // SID_WaryFighter
 // SID_DoubleLion
 // SID_Adept

@@ -1841,3 +1841,8 @@ than one weapon type.[X]
 Text Skimmer: Halve weapon weight[NL]
 for tomes if unit's CON is less[NL]
 than their weight.[X]
+
+## SD_QuickHands
+Quick Hands:[NL]
+Using and item doesn't end[NL]
+this unit's turn.[X]
