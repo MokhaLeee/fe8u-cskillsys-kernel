@@ -541,6 +541,7 @@
 // SID_DarkHorse
 // SID_Mercurious
 // SID_Velocity
+// SID_StaffParagon
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk
