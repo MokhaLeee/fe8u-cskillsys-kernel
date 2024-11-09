@@ -229,6 +229,7 @@
 // SID_GrislyWound
 // SID_Lifetaker
 // SID_VigorDance
+// SID_QuickHands
 
 ////////// AURA SKILLS
 // SID_Anathema

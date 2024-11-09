@@ -39,14 +39,14 @@ bool PostActionTsuzuku(ProcPtr parent)
         }
 
     if (nice_thighs)
-        goto L_exec_rafrain_action_anim;
+        goto refresh_turn_once;
 #endif
 
 #if defined(SID_AdrenalineRush) && (COMMON_SKILL_VALID(SID_AdrenalineRush))
             if (SkillTester(unit, SID_AdrenalineRush))
             {
                 if (unit->curHP <= unit->maxHP / 4)
-                    goto L_exec_rafrain_action_anim;
+                    goto refresh_turn_once;
             }
 #endif
 
@@ -55,28 +55,34 @@ bool PostActionTsuzuku(ProcPtr parent)
     case UNIT_ACTION_COMBAT:
 #if defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce))
         if (SkillTester(unit, SID_Galeforce) && gBattleActorGlobalFlag.skill_activated_galeforce)
-            goto L_exec_rafrain_action_anim;
+            goto refresh_turn_once;
 #endif
 
 #if defined(SID_FailGale) && (COMMON_SKILL_VALID(SID_FailGale))
         if (SkillTester(unit, SID_FailGale) && !gBattleActor.nonZeroDamage)
-            goto L_exec_rafrain_action_anim;
+            goto refresh_turn_once;
 #endif
 
 #if defined(SID_LeadByExample) && (COMMON_SKILL_VALID(SID_LeadByExample))
         if (SkillTester(unit, SID_LeadByExample) && gBattleActorGlobalFlag.skill_activated_lead_by_example)
-            goto L_exec_rafrain_action_anim_aura;
+            goto refresh_turn_once_aura;
 #endif
 
         if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enimy_defeated)
-            goto L_exec_rafrain_action_anim;
+            goto refresh_turn_once;
 
         /* fall through */
 
     case UNIT_ACTION_STAFF:
 #if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
         if (SkillTester(unit, SID_PowerStaff) && Roll1RN(LckGetter(unit)))
-            goto L_exec_rafrain_action_anim;
+            goto refresh_turn_once;
+#endif
+
+    case UNIT_ACTION_USE_ITEM:
+#if defined(SID_QuickHands) && (COMMON_SKILL_VALID(SID_QuickHands))
+        if (SkillTester(unit, SID_QuickHands))
+            goto refresh_turn_repeatedly;
 #endif
 
         /* fall through */
@@ -84,7 +90,7 @@ bool PostActionTsuzuku(ProcPtr parent)
     default:
 #if defined(SID_Tsuzuku) && (COMMON_SKILL_VALID(SID_Tsuzuku))
         if (SkillTester(unit, SID_Tsuzuku) && Roll1RN(SklGetter(unit)))
-            goto L_exec_rafrain_action_anim;
+            goto refresh_turn_once;
 #endif
         break;
 
@@ -94,7 +100,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 
     return false;
 
-L_exec_rafrain_action_anim:
+refresh_turn_once:
     if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
         return false;
 
@@ -104,9 +110,18 @@ L_exec_rafrain_action_anim:
     StartStatusHealEffect(unit, parent);
     return true;
 
+refresh_turn_repeatedly:
+    if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+        return false;
+
+    gActionDataExpa.refrain_action = true;
+    EndAllMus();
+    StartStatusHealEffect(unit, parent);
+    return true;
+
 // This is a stopgap measure to ensure the branch isn't unused when all skills are disabled
 #if defined(SID_LeadByExample) && (COMMON_SKILL_VALID(SID_LeadByExample))
-L_exec_rafrain_action_anim_aura:
+refresh_turn_once_aura:
     for (int i = 0; i < ARRAY_COUNT_RANGE1x1; i++)
     {
         int _x = unit->xPos + gVecs_1x1[i].x;

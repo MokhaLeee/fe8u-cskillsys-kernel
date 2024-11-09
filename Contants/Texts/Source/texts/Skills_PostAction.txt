@@ -151,3 +151,8 @@ into an ally for a turn.[X]
 Boundless Vitality:[NL]
 Restore 20% of the unit's[NL]
 health after every battle.[X]
+
+## MSG_SKILL_QuickHands
+Quick Hands:[NL]
+Using an item doesn't end[NL]
+this unit's turn.[X]
