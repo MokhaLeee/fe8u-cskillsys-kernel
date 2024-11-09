@@ -121,12 +121,20 @@ void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask)
         limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
 #endif
 
-#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit) + limitBreaker;
+#if defined(SID_OgreBody) && (COMMON_SKILL_VALID(SID_OgreBody))
+    if (SkillTester(unit, SID_OgreBody))
+        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / SKILL_EFF0(SID_OgreBody);
+    else
+        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit) + limitBreaker;
 #else
-    stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit) + limitBreaker;
-#endif
 
+    #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit) + limitBreaker;
+    #else
+        stat_pack[0] = GetUnitCurrentHp(unit) * 24 / UNIT_MHP_MAX(unit) + limitBreaker;
+    #endif
+
+#endif
     stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit) + limitBreaker;
     stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit) + limitBreaker;
     stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit) + limitBreaker;

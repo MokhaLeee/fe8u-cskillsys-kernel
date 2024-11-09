@@ -45,7 +45,7 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
         limitBreaker = SKILL_EFF0(SID_LimitBreakerPlus);
 #endif
 
-    // Create an array of stat pointers
+    /* Create an array of stat pointers */
     s8 * statChanges[] = { &bu->changeHP,  &bu->changePow, &bu->changeSkl, &bu->changeSpd,
                            &bu->changeLck, &bu->changeDef, &bu->changeRes, &BU_CHG_MAG(bu) };
 
@@ -56,8 +56,19 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
     ** I could fix it, but it'd just make this function even chunkier.
     ** If there's a smarter way to write all this, please do.
     */
+#if defined(SID_OgreBody) && (COMMON_SKILL_VALID(SID_OgreBody))
+    if (SkillTester(unit, SID_OgreBody))
+    {
+        if (unit->maxHP < SKILL_EFF0(SID_OgreBody))
+            *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+    }
+    else    
+        if (unit->maxHP < unit->pClassData->maxHP + limitBreaker)
+            *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+#else
     if (unit->maxHP < unit->pClassData->maxHP + limitBreaker)
         *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+#endif
     if (unit->pow < unit->pClassData->maxPow + limitBreaker)
         *statChanges[1] = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
     if (unit->skl < unit->pClassData->maxSkl + limitBreaker)
