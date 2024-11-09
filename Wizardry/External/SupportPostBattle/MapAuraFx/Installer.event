@@ -1,0 +1,25 @@
+
+
+// Utility providing an interface for displaying cool aura on units
+// hack by Stan.
+
+ALIGN 4 
+Event_WaitForSupportFx:
+    STAL 0x28
+    NoFade
+    ENDA
+ALIGN 4
+
+//SupportFX_SimpleDelay:
+//    PROC_YIELD
+//    PROC_CALL_ROUTINE(SupportFX_SimpleDelay_Start)
+//    PROC_END
+
+#include "Src/MapAuraFxUpdate.lyn.event"
+#include "PostBattleSupports.lyn.event"
+
+ALIGN 4
+
+gSupportEffectPalette:
+#incbin "support_fx.pal"
+

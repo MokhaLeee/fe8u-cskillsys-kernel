@@ -223,6 +223,17 @@
 
 #define CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
 
+
+/**
+ * By Vesly
+ * 
+ * Right now it's broken. I suspect there's a conflict between this hack and UnitGainSupportExp which
+ * now sits in bwl data in BwlSupport.c. But I don't know what I'd need to change in PostBattleSupports.asm
+ * as well as the Installer.event files to make it work. I suspect looking for the changed addresses for various
+ * functions in fe8-kernel-dev.sym in the root directory could be fruitful, but I've not had much luck.
+ */
+// #define CONFIG_SUPPORT_POST_BATTLE
+
 /**
  * By Contro
  * Allows user to flip sprites by allegiance (would be nice to add class/character options too)
@@ -242,6 +253,8 @@
  * the energy to fix it at the time of writing
  */
 // #define CONFIG_MODULAR_STAT_SCREEN_GORGON_EGG
+
+// #define CONFIG_FREE_MOVEMENT
 
 /**
  * By Jester

@@ -1,0 +1,42 @@
+#include "EAstdlib.event"
+#include "Extensions/Hack Installation.txt" 
+#include "Extensions/ProcDefinitions.txt" 
+#ifndef callHackNew 
+	#define callHackNew(offset) 		"BYTE $01 $4B $9E $46 $00 $F8 $01 $E0; POIN (offset|0x1)"
+#endif 
+
+#include "MapAuraFx/Installer.event" 
+#include "MapEmoticon/EmoticonInstaller.event" 
+
+
+PUSH
+ORG $153c6            //This makes support points increase at the start of player phase
+    SHORT $46C0 $46C0   //nop out the BL as we're moving the call to after battle
+
+ORG $282CE // make AddSupportPoints return a value 
+	SHORT $bc02 // pop r1 
+	SHORT $4708 // bx r1 
+
+ORG $37750 
+callHackNew(HookForSupportFx)
+
+ORG $2829C 
+callHackNew(HookForSupportRate)
+
+POP
+
+ALIGN 4 
+SupportDistanceLink:
+WORD 3 
+SupportRateKill:
+WORD 50 // Killing an enemy is worth 2x ended turns beside each other  
+SupportRateCombat:
+WORD 1 
+SupportRateStaff:
+WORD 2 
+SupportRateDance:
+WORD 2 
+PlayerPhaseOnly:
+WORD 1 // true if 1, false if 0 
+
+

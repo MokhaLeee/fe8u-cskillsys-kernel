@@ -58,9 +58,9 @@
     #include "QuintessanceEffect/Installer.event"
 #endif
 
-#ifdef CONFIG_SUMMON_EXP
-    #include "SummonerEXP/Installer.event"
-#endif
+// #ifdef CONFIG_SUMMON_EXP
+//     #include "SummonerEXP/Installer.event"
+// #endif
 
 #ifdef CONFIG_FLIPPED_SPRITES
     #include "MirrorMapSprites/Installer.event"
@@ -69,6 +69,14 @@
 #ifdef CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
     #include "StatScreenAllegianceColors/Installer.event"
 #endif
+
+// #ifdef CONFIG_FREE_MOVEMENT
+//     #include "FreeMovement/cFreeMU/FreeMovement.event"
+// #endif
+
+// #ifdef CONFIG_SUPPORT_POST_BATTLE
+//     #include "SupportPostBattle/Installer.event"
+// #endif
 
 /** 
  * This weirdly causes compile issues right now unless I comment it out here,
