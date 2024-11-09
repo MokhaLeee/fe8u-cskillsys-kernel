@@ -1861,3 +1861,8 @@ BeginnersLuck:[NL]
 ExpertsExperience:[NL]
 +0 AVO/HIT.[NL]
 +1 per chapter.[X]
+
+## SD_HedgeFund
+HedgeFund:[NL]
+Increase gold amount by 10%[NL]
+at the end of each chapter.[X]

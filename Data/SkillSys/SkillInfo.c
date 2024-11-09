@@ -4440,4 +4440,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_HedgeFund) && COMMON_SKILL_VALID(SID_HedgeFund))
+    [SID_HedgeFund] = {
+        .desc = MSG_SKILL_HedgeFund,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
