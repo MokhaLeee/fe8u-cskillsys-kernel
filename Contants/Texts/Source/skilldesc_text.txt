@@ -1856,3 +1856,8 @@ of excess healing.[X]
 BeginnersLuck:[NL]
 +20 AVO/HIT.[NL]
 -1 per chapter.[X]
+
+## SD_ExpertsExperience
+ExpertsExperience:[NL]
++0 AVO/HIT.[NL]
++1 per chapter.[X]

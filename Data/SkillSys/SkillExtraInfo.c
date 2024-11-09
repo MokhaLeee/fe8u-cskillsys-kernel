@@ -1146,4 +1146,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_BeginnersLuck) && COMMON_SKILL_VALID(SID_BeginnersLuck))
     [SID_BeginnersLuck] = {{20}},
 #endif
+
+#if (defined(SID_ExpertsExperience) && COMMON_SKILL_VALID(SID_ExpertsExperience))
+    [SID_ExpertsExperience] = {{0}},
+#endif
 };
