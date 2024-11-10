@@ -215,7 +215,7 @@ Domain:[NL]
 Increase the range of movement[NL]
 skills by 2.[X]
 
-## MSG_SKILL_FortifyingStaff
-Fortifying Staff:[NL]
-Upon healing a unit, boost[NL]
-their DEF/RES by 5 for a turn.[X]
+## MSG_SKILL_StaffGuard
+Staff Guard:[NL]
+When the unit has an equippable[NL]
+staff, +5 DEF/RES.[X]

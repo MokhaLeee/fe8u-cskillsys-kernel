@@ -92,6 +92,29 @@ int ResGetterSkills(int status, struct Unit * unit)
     }
 #endif
 
+#if defined(SID_StaffGuard) && (COMMON_SKILL_VALID(SID_StaffGuard))
+    if (SkillTester(unit, SID_StaffGuard))
+    {
+        bool hasUsableStaff = false;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (ITEM_INDEX(unit->items[i]) == 0)
+                break;
+            if (GetItemType(unit->items[i]) != ITYPE_STAFF)
+                continue;
+            if (GetItemRequiredExp(unit->items[i]) <= unit->ranks[ITYPE_STAFF])
+            {
+                hasUsableStaff = true;
+                break;
+            }
+        }
+
+        if(hasUsableStaff)
+            status += SKILL_EFF0(SID_StaffGuard);
+    }
+#endif
+
     if (cur_hp == max_hp)
     {
 #if defined(SID_PushResistance) && (COMMON_SKILL_VALID(SID_PushResistance))

@@ -367,8 +367,9 @@
 // SID_ArenaTrap
 // SID_LuckySeven
 // SID_Unaware
+// SID_StaffGuard
 
-////////// WEAPON TRIANGLE ADVANTAGE SKILLS 
+////////// WEAPON TRIANGLE ADVANTAGE SKILLS
 // SID_SwordBreaker
 // SID_AxeBreaker
 // SID_LanceBreaker
