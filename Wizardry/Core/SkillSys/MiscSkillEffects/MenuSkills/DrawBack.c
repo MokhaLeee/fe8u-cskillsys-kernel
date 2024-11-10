@@ -8,7 +8,8 @@
 #include "unit-expa.h"
 #include "action-expa.h"
 
-#if defined(SID_Drawback) && (COMMON_SKILL_VALID(SID_Drawback))
+#if defined(SID_DrawBack) && (COMMON_SKILL_VALID(SID_DrawBack))
+
 struct Vec2u GetDrawBackCoord(int x1, int x2, int y1, int y2);
 void TryDrawBackAllyToTargetList(struct Unit * unit);
 void MakeDrawBackTargetListForAdjacentAlly(struct Unit * unit);
@@ -201,7 +202,19 @@ void MakeDrawBackTargetListForAdjacentAlly(struct Unit * unit)
 
     BmMapFill(gBmMapRange, 0);
 
+/* Boost the range of this unit's movement skill */
+#if defined(SID_Domain) && (COMMON_SKILL_VALID(SID_Domain))
+    if (SkillTester(unit, SID_Domain))
+    {
+        MapAddInRange(x, y, 1 + SKILL_EFF0(SID_Domain), 1);
+        ForEachUnitInRange(TryDrawBackAllyToTargetList);
+    }
+    else
+        ForEachAdjacentUnit(x, y, TryDrawBackAllyToTargetList);
+
+#else
     ForEachAdjacentUnit(x, y, TryDrawBackAllyToTargetList);
+#endif
 
     return;
 }

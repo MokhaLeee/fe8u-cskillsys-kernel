@@ -1,43 +1,43 @@
 ////////// MENU SKILLS
-// SID_Dismount
-// SID_ReciprocalAid
-// SID_Sacrifice
-// SID_Doppleganger
-// SID_Turncoat
-// SID_ArdentSacrifice
-// SID_Capture
-// SID_Teleportation
-// SID_Swarp
-// SID_Swap
-// SID_HealingFocus
-// SID_Dance
-// SID_LockTouch
-// SID_Summon
-// SID_Steal
-// SID_Supply
-// SID_LightRune
-// SID_Mine
-// SID_RallyDefense
-// SID_RallyLuck
-// SID_RallyMagic
-// SID_RallyMovement
-// SID_RallyResistance
-// SID_RallySkill
-// SID_RallySpeed
-// SID_RallyStrength
-// SID_RallySpectrum
-// SID_GoddessDance
-// SID_Stride
-// SID_Blacksmith
-// SID_PairUp
-// SID_Transform
-// SID_StealPlus
-// SID_DrawBack
-// SID_Pivot
-// SID_Reposition
-// SID_Shove
-// SID_Smite
-// SID_Entrepreneur
+SID_Dismount
+SID_ReciprocalAid
+SID_Sacrifice
+SID_Doppleganger
+SID_Turncoat
+SID_ArdentSacrifice
+SID_Capture
+SID_Teleportation
+SID_Swarp
+SID_Swap
+SID_HealingFocus
+SID_Dance
+SID_LockTouch
+SID_Summon
+SID_Steal
+SID_Supply
+SID_LightRune
+SID_Mine
+SID_RallyDefense
+SID_RallyLuck
+SID_RallyMagic
+SID_RallyMovement
+SID_RallyResistance
+SID_RallySkill
+SID_RallySpeed
+SID_RallyStrength
+SID_RallySpectrum
+SID_GoddessDance
+SID_Stride
+SID_Blacksmith
+SID_PairUp
+SID_Transform
+SID_StealPlus
+SID_DrawBack
+SID_Pivot
+SID_Reposition
+SID_Shove
+SID_Smite
+SID_Entrepreneur
 
 ////////// PRE-BATTLE SKILLS
 // SID_DefiantStr
@@ -616,6 +616,7 @@
 // SID_Absolve
 // SID_HedgeFund
 // SID_WeaponHeal
+SID_Domain
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

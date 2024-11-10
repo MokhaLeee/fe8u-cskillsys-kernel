@@ -39,7 +39,7 @@
 // SID_Smite
 // SID_Entrepreneur
 
-////////// PRE-BATTLE SKILLS 
+////////// PRE-BATTLE SKILLS
 // SID_DefiantStr
 // SID_DefiantMag
 // SID_DefiantSkl
@@ -616,6 +616,7 @@
 // SID_Absolve
 // SID_HedgeFund
 // SID_WeaponHeal
+// SID_Domain
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

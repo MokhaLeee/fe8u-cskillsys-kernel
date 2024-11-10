@@ -209,3 +209,8 @@ at the end of the chapter.[X]
 Weapon Heal:[NL]
 50% chance to restore a weapon[NL]
 use for target on healing them.[X]
+
+## MSG_SKILL_Domain
+Domain:[NL]
+Increase the range of movement[NL]
+skills by 2.[X]

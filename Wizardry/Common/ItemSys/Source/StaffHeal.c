@@ -6,6 +6,7 @@
 typedef int (*HealAmountGetterFunc_t)(int old, struct Unit *actor, struct Unit *target);
 extern HealAmountGetterFunc_t const *const gpHealAmountGetters;
 
+#if (defined(SID_WeaponHeal) && (COMMON_SKILL_VALID(SID_WeaponHeal)))
 static int find_item_slot(struct Unit *unit, int item)
 {
 	int i;
@@ -15,6 +16,7 @@ static int find_item_slot(struct Unit *unit, int item)
 			return i;
 	return -1;
 }
+#endif
 
 static int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
 {

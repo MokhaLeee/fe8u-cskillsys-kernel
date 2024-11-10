@@ -7,6 +7,7 @@
 #include "constants/texts.h"
 #include "unit-expa.h"
 #include "action-expa.h"
+#include "strmag.h"
 
 #if defined(SID_Swarp) && (COMMON_SKILL_VALID(SID_Swarp))
 
@@ -30,11 +31,24 @@ void TryAddUnitToSwarpTargetList(struct Unit* unit) {
 }
 
 void MakeTargetListForSwarp(struct Unit* unit) {
-    gSubjectUnit = unit;
+    int x = unit->xPos;
+    int y = unit->yPos;
 
     BmMapFill(gBmMapRange, 0);
 
+/* Boost the range of this unit's movement skill */
+#if defined(SID_Domain) && (COMMON_SKILL_VALID(SID_Domain))
+    if (SkillTester(unit, SID_Domain))
+    {
+        MapAddInRange(x, y, (GetUnitMagic(unit) / 2) + SKILL_EFF0(SID_Domain), 1);
+        ForEachUnitInRange(TryAddUnitToSwarpTargetList);
+    }
+    else
     ForEachUnitInMagBy2Range(TryAddUnitToSwarpTargetList);
+
+#else
+    ForEachUnitInMagBy2Range(TryAddUnitToSwarpTargetList);
+#endif
 
     return;
 }
