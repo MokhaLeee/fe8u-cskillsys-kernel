@@ -227,6 +227,26 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
     [SID_Sturdy] = EFX_PRIORITY_NORMAL,
 #endif
+
+#if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
+    [SID_Sturdy] = EFX_PRIORITY_NORMAL,
+#endif
+
+#if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
+    [SID_Blessing] = EFX_PRIORITY_NORMAL,
+#endif
+
+#if (defined(SID_MagicBounce) && COMMON_SKILL_VALID(SID_MagicBounce))
+    [SID_MagicBounce] = EFX_PRIORITY_NORMAL,
+#endif
+
+#if (defined(SID_Fluffy) && COMMON_SKILL_VALID(SID_Fluffy))
+    [SID_Fluffy] = EFX_PRIORITY_NORMAL,
+#endif
+
+#if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
+    [SID_WeaponHeal] = EFX_PRIORITY_HIGH,
+#endif
 };
 
 struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
@@ -464,5 +484,9 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Fluffy) && COMMON_SKILL_VALID(SID_Fluffy))
     [SID_Fluffy] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
+    [SID_WeaponHeal] = &EfxSkillVanilla,
 #endif
 };

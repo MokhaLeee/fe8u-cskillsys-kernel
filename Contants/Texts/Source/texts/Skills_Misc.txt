@@ -204,3 +204,8 @@ cap to 99.[X]
 Hedge Fund:[NL]
 Increase total gold by 10%[NL]
 at the end of the chapter.[X]
+
+## MSG_SKILL_WeaponHeal
+Weapon Heal:[NL]
+50% chance to restore a weapon[NL]
+use for target on healing them.[X]

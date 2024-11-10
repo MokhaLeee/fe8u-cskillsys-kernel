@@ -6,6 +6,16 @@
 typedef int (*HealAmountGetterFunc_t)(int old, struct Unit *actor, struct Unit *target);
 extern HealAmountGetterFunc_t const *const gpHealAmountGetters;
 
+static int find_item_slot(struct Unit *unit, int item)
+{
+	int i;
+	int iid = ITEM_INDEX(item);
+	for (i = 0; i < UNIT_ITEM_COUNT; i++)
+		if (ITEM_INDEX(unit->items[i]) == iid)
+			return i;
+	return -1;
+}
+
 static int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
 {
     const HealAmountGetterFunc_t *it;
@@ -84,6 +94,23 @@ void ExecStandardHeal(ProcPtr proc)
         AddUnitHp(unit_act, amount);
         gBattleHitIterator->hpChange = gBattleActor.unit.curHP - GetUnitCurrentHp(unit_act);
         gBattleActor.unit.curHP = GetUnitCurrentHp(unit_act);
+    }
+#endif
+
+#if (defined(SID_WeaponHeal) && (COMMON_SKILL_VALID(SID_WeaponHeal)))
+    if (SkillTester(unit_act, SID_WeaponHeal) && Roll1RN(SKILL_EFF0(SID_WeaponHeal)))
+    {
+        int slot = 0;
+        int weapon = gBattleTarget.weaponBefore;
+
+        if (weapon != ITEM_NONE)
+        {
+            if (GetItemUses(weapon) < GetItemMaxUses(weapon))
+            {
+                slot = find_item_slot(&gBattleTarget.unit, weapon);
+				unit_tar->items[slot] = (weapon += (1 << 8));
+            }
+        }
     }
 #endif
 

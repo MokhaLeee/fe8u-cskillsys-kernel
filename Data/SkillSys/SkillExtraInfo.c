@@ -1154,4 +1154,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_HedgeFund) && COMMON_SKILL_VALID(SID_HedgeFund))
     [SID_HedgeFund] = {{10}},
 #endif
+
+#if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
+    [SID_WeaponHeal] = {{50}},
+#endif
 };

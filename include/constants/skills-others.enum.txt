@@ -615,6 +615,7 @@
 // SID_Anchor
 // SID_Absolve
 // SID_HedgeFund
+// SID_WeaponHeal
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder
