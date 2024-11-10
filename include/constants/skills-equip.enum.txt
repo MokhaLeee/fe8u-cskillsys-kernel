@@ -200,7 +200,6 @@
 // SID_Vanity
 // SID_ShortShield
 // SID_AvoidSword
-// SID_Adaptable
 // SID_Mantle
 // SID_BeginnersLuck
 // SID_ExpertsExperience
@@ -233,7 +232,7 @@
 // SID_Lifetaker
 // SID_VigorDance
 // SID_QuickHands
-SID_FortifyingStaff
+// SID_FortifyingStaff
 
 ////////// AURA SKILLS
 // SID_Anathema
@@ -368,6 +367,7 @@ SID_FortifyingStaff
 // SID_ArenaTrap
 // SID_LuckySeven
 // SID_Unaware
+// SID_StaffGuard
 
 ////////// WEAPON TRIANGLE ADVANTAGE SKILLS
 // SID_SwordBreaker
@@ -444,6 +444,7 @@ SID_FortifyingStaff
 // SID_Dazzle
 // SID_DancingBlade
 // SID_AngerPoint
+// SID_Adaptable
 // SID_Debilitator
 
 ////////// EFFECTIVENESS SKILLS

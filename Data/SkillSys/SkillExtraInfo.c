@@ -1162,4 +1162,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Domain) && COMMON_SKILL_VALID(SID_Domain))
     [SID_Domain] = {{2}},
 #endif
+
+#if (defined(SID_StaffGuard) && COMMON_SKILL_VALID(SID_StaffGuard))
+    [SID_StaffGuard] = {{5}},
+#endif
 };

@@ -156,3 +156,8 @@ health after every battle.[X]
 Quick Hands:[NL]
 Using an item doesn't end[NL]
 this unit's turn.[X]
+
+## MSG_SKILL_FortifyingStaff
+Fortifying Staff:[NL]
+Upon healing a unit, boost[NL]
+their DEF/RES by 5 for a turn.[X]
