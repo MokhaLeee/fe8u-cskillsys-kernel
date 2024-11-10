@@ -193,7 +193,19 @@ void MakeRepositionTargetListForAdjacentAlly(struct Unit * unit)
 
     BmMapFill(gBmMapRange, 0);
 
+/* Boost the range of this unit's movement skill */
+#if defined(SID_Domain) && (COMMON_SKILL_VALID(SID_Domain))
+    if (SkillTester(unit, SID_Domain))
+    {
+        MapAddInRange(x, y, 1 + SKILL_EFF0(SID_Domain), 1);
+        ForEachUnitInRange(TryRepositionAllyToTargetList);
+    }
+    else
+        ForEachAdjacentUnit(x, y, TryRepositionAllyToTargetList);
+
+#else
     ForEachAdjacentUnit(x, y, TryRepositionAllyToTargetList);
+#endif
 
     return;
 }

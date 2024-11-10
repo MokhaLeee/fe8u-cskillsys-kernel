@@ -1866,3 +1866,8 @@ ExpertsExperience:[NL]
 HedgeFund:[NL]
 Increase gold amount by 10%[NL]
 at the end of each chapter.[X]
+
+## SD_Domain
+Domain:[NL]
+Increase the range of movement[NL]
+skills by 2.[X]

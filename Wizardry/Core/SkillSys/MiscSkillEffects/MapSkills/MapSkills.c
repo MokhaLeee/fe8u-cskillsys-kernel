@@ -256,7 +256,7 @@ void ChapterChangeUnitCleanup(void)
     {
         struct Unit *unit = GetUnit(j);
 
-        // Reset the transformed state of any units with the skill
+        /* Reset the transformed state of any units with the skill */
 #if defined(SID_Transform) && (COMMON_SKILL_VALID(SID_Transform))
         if (SkillTester(unit, SID_Transform))
         {
@@ -273,7 +273,7 @@ void ChapterChangeUnitCleanup(void)
         }
 #endif
 
-        // Reset the doppleganger state of any units with the skill
+        /* Reset the doppleganger state of any units with the skill */
 #if defined(SID_Doppleganger) && (COMMON_SKILL_VALID(SID_Doppleganger))
         if (SkillTester(unit, SID_Doppleganger))
         {
@@ -288,7 +288,7 @@ void ChapterChangeUnitCleanup(void)
         }
 #endif
 
-        // Reset the class of any dismounted unit
+        /* Reset the class of any dismounted unit */
 #if defined(SID_Dismount) && (COMMON_SKILL_VALID(SID_Dismount))
         if (SkillTester(unit, SID_Dismount))
         {
@@ -303,12 +303,13 @@ void ChapterChangeUnitCleanup(void)
         }
 #endif
 
-// Boost HP of unit by 1
+        /* Boost HP of unit by 1 */
 #if defined(SID_Survivor) && (COMMON_SKILL_VALID(SID_Survivor))
         if (SkillTester(unit, SID_Survivor))
             unit->maxHP += 1;
 #endif
 
+        /* Boost gold of party by 10%, doesn't stack */
 #if defined(SID_HedgeFund) && (COMMON_SKILL_VALID(SID_HedgeFund))
         if (SkillTester(unit, SID_HedgeFund) && !hedgeFundActivated)
         {

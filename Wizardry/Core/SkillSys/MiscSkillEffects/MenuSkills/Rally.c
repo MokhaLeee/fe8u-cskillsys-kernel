@@ -50,10 +50,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullStrength) && (COMMON_SKILL_VALID(SID_LullStrength)))
         if (SkillTester(unit_enemy, SID_LullStrength))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -62,10 +66,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullMagic) && (COMMON_SKILL_VALID(SID_LullMagic)))
         if (SkillTester(unit_enemy, SID_LullMagic))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -74,10 +82,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullSkill) && (COMMON_SKILL_VALID(SID_LullSkill)))
         if (SkillTester(unit_enemy, SID_LullSkill))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -86,10 +98,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullSpeed) && (COMMON_SKILL_VALID(SID_LullSpeed)))
         if (SkillTester(unit_enemy, SID_LullSpeed))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -98,10 +114,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullLuck) && (COMMON_SKILL_VALID(SID_LullLuck)))
         if (SkillTester(unit_enemy, SID_LullLuck))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -110,10 +130,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullDefense) && (COMMON_SKILL_VALID(SID_LullDefense)))
         if (SkillTester(unit_enemy, SID_LullDefense))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -122,10 +146,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullResistance) && (COMMON_SKILL_VALID(SID_LullResistance)))
         if (SkillTester(unit_enemy, SID_LullResistance))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -134,10 +162,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #if (defined(SID_LullMovement) && (COMMON_SKILL_VALID(SID_LullMovement)))
         if (SkillTester(unit_enemy, SID_LullMovement))
             return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
 
@@ -146,6 +178,8 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
 #if (defined(SID_LullSpectrum) && (COMMON_SKILL_VALID(SID_LullSpectrum)))
             if (SkillTester(unit_enemy, SID_LullSpectrum))
                 return MENU_DISABLED;
+#else
+            continue;
 #endif
 #endif
     }
