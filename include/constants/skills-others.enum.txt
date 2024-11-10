@@ -232,6 +232,7 @@
 // SID_Lifetaker
 // SID_VigorDance
 // SID_QuickHands
+// SID_FortifyingStaff
 
 ////////// AURA SKILLS
 // SID_Anathema
@@ -295,7 +296,7 @@
 // SID_BlueFlame
 
 ////////// STAT MODIFIER SKILLS
-// SID_HpBonus                       
+// SID_HpBonus
 // SID_StrBonus
 // SID_MagBonus
 // SID_SklBonus

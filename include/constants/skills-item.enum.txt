@@ -232,6 +232,7 @@
 // SID_Lifetaker
 // SID_VigorDance
 // SID_QuickHands
+// SID_FortifyingStaff
 
 ////////// AURA SKILLS
 // SID_Anathema
