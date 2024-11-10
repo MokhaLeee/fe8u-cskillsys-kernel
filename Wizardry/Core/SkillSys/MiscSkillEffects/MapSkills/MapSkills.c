@@ -228,7 +228,9 @@ void ChapterChangeUnitCleanup(void)
 {
     int i, j;
 
+#if defined(SID_HedgeFund) && (COMMON_SKILL_VALID(SID_HedgeFund))
     bool hedgeFundActivated = false;
+#endif
 
     // Clear phantoms
     for (i = 1; i < 0x40; ++i)
