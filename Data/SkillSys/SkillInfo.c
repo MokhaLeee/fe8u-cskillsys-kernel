@@ -4476,4 +4476,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_GoodyBasket) && COMMON_SKILL_VALID(SID_GoodyBasket))
+    [SID_GoodyBasket] = {
+        .desc = MSG_SKILL_GoodyBasket,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };

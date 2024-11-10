@@ -527,6 +527,7 @@
 // SID_ArmorMarch
 // SID_KeepUp
 // SID_Amaterasu
+// SID_GoodyBasket
 
 ////////// POST-PHASE SKILLS
 // SID_HoardersBane

@@ -1877,7 +1877,12 @@ Fortifying Staff:[NL]
 Upon healing a unit, boost[NL]
 their DEF/RES by 5 for a turn.[X]
 
-## MSG_SKILL_StaffGuard
+## SD_StaffGuard
 Staff Guard:[NL]
 When the unit has an equippable[NL]
 staff, +5 DEF/RES.[X]
+
+## SD_GoodyBasket
+Goody Basket:[NL]
+Restore a LCK % amount of[NL]
+max HP each turn.[X]
