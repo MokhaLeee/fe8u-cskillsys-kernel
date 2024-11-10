@@ -80,7 +80,12 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit * unit)
 #if defined(SID_RainDish) && (COMMON_SKILL_VALID(SID_RainDish))
     if (SkillTester(unit, SID_RainDish) && gPlaySt.chapterWeatherId == WEATHER_RAIN)
         ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
-#endif 
+#endif
+
+#if defined(SID_GoodyBasket) && (COMMON_SKILL_VALID(SID_GoodyBasket))
+    if (SkillTester(unit, SID_GoodyBasket))
+        ret += Div(GetUnitMaxHp(unit) * unit->lck, 100);
+#endif
     return ret;
 }
 

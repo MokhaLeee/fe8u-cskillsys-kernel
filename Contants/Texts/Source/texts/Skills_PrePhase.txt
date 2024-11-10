@@ -86,3 +86,8 @@ Nature-R[X]
 Nature Rush:[NL]
 +2 MOV at the start of the turn,[NL]
 if the unit is on outdoor terrain.[X]
+
+## MSG_SKILL_GoodyBasket
+Goody Basket:[NL]
+Restore a LCK % amount of[NL]
+max HP each turn.[X]
