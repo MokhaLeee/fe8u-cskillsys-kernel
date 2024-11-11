@@ -8,6 +8,8 @@ gPostActionFuncs:
     POIN PostActionBattleActorHurt PostActionBattleTargetHurt
     POIN PostAction_BattleActorHeal PostAction_BattleTargetHeal
     POIN PostAction_Clearance
+    POIN PostActionPositionReturn
+    POIN PostActionNecroCopy
     POIN PostActionAlertStance
     POIN PostActionTsuzuku
     POIN PostActionGetItem
@@ -15,6 +17,5 @@ gPostActionFuncs:
     POIN PostActionSealSkills
     POIN PostActionDebilitator
     POIN PostActionAngerPoint
-    POIN PostActionPositionReturn
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0

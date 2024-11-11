@@ -3,3 +3,6 @@ Return?        [NL][Yes][X]
 
 ## MSG_SkillEffect_Lunge_Confirm
 Swap position?        [NL][Yes][X]
+
+## MSG_SkillEffect_NecroCopy_Confirm
+Copy enemy?        [NL][Yes][X]

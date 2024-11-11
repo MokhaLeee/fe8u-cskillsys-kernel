@@ -4489,4 +4489,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_NecroCopy) && COMMON_SKILL_VALID(SID_NecroCopy))
+    [SID_NecroCopy] = {
+        .desc = MSG_SKILL_NecroCopy,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
