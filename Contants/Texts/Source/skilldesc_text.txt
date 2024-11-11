@@ -1886,3 +1886,8 @@ staff, +5 DEF/RES.[X]
 Goody Basket:[NL]
 Restore a LCK % amount of[NL]
 max HP each turn.[X]
+
+## SD_MakeAKilling
+Make A Killing:[NL]
+LCK % chance to gain 500 gold after[NL]
+killing an enemy on player phase.[X]

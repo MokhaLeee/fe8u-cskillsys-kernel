@@ -4483,4 +4483,10 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_MakeAKilling) && COMMON_SKILL_VALID(SID_MakeAKilling))
+    [SID_MakeAKilling] = {
+        .desc = MSG_SKILL_MakeAKilling,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

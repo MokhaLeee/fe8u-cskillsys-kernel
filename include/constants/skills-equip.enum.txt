@@ -233,6 +233,7 @@
 // SID_VigorDance
 // SID_QuickHands
 // SID_FortifyingStaff
+// SID_MakeAKilling
 
 ////////// AURA SKILLS
 // SID_Anathema
