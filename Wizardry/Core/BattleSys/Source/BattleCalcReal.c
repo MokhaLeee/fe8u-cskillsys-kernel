@@ -215,12 +215,6 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
         weapon_strongest_position = findMax(weapon_score, 5);
         weapon_strongest_details = unit_defender->items[weapon_strongest_position];
 
-        // NoCashGBAPrintf("Weapon Score 1 is: %d", weapon_score[0]);
-        // NoCashGBAPrintf("Weapon Score 2 is: %d", weapon_score[1]);
-        // NoCashGBAPrintf("Weapon Score 3 is: %d", weapon_score[2]);
-        // NoCashGBAPrintf("Weapon Score 4 is: %d", weapon_score[3]);
-        // NoCashGBAPrintf("Weapon Score 5 is: %d", weapon_score[4]);
-
         if (weapon_strongest_position != 0)
         {
             // Put the currently equipped weapon in the place of the strongest weapon

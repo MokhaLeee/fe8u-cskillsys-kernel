@@ -18,6 +18,12 @@ STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit *unit)
         new = new + Div(status * SKILL_EFF0(SID_Aptitude), 100);
 #endif
 
+/* This must come last */
+#if defined(SID_NecroCopy) && (COMMON_SKILL_VALID(SID_NecroCopy))
+    if (SkillTester(unit, SID_NecroCopy))
+        new = 0;
+#endif
+
     return new;
 }
 

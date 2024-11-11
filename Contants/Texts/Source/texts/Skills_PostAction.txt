@@ -166,3 +166,8 @@ their DEF/RES by 5 for a turn.[X]
 Make A Killing:[NL]
 LCK % chance to gain 500 gold after[NL]
 killing an enemy on player phase.[X]
+
+## MSG_SKILL_NecroCopy
+Necro Copy:[NL]
+Upon killing an enemy, optionally[NL]
+assume their class, stats and skills.[X]
