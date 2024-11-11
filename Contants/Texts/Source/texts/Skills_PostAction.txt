@@ -98,7 +98,7 @@ Clear own negative status after combat[X]
 ## MSG_SKILL_Despoil
 Despoil:[NL]
 Gain a red gem after killing an[NL]
-enemy unit. (Skill % activation)[X]
+enemy unit. (Skill % activation).[X]
 
 ## MSG_SKILL_SoulSap
 Soul Sap: At the end of this unit's[NL]
@@ -161,3 +161,8 @@ this unit's turn.[X]
 Fortifying Staff:[NL]
 Upon healing a unit, boost[NL]
 their DEF/RES by 5 for a turn.[X]
+
+## MSG_SKILL_MakeAKilling
+Make A Killing:[NL]
+LCK % chance to gain 500 gold after[NL]
+killing an enemy on player phase.[X]
