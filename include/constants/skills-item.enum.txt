@@ -203,6 +203,13 @@
 // SID_Mantle
 // SID_BeginnersLuck
 // SID_ExpertsExperience
+// SID_SwordProwess
+// SID_LanceProwess
+// SID_AxeProwess
+// SID_BowProwess
+// SID_AnimaProwess
+// SID_DarkProwess
+// SID_LightProwess
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto
@@ -448,6 +455,7 @@
 // SID_AngerPoint
 // SID_Adaptable
 // SID_Debilitator
+// SID_Sentinel
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful

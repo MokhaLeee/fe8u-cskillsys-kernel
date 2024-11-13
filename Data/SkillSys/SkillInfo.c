@@ -4496,4 +4496,53 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_SwordProwess) && COMMON_SKILL_VALID(SID_SwordProwess))
+    [SID_SwordProwess] = {
+        .desc = MSG_SKILL_SwordProwess,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LanceProwess) && COMMON_SKILL_VALID(SID_LanceProwess))
+    [SID_LanceProwess] = {
+        .desc = MSG_SKILL_LanceProwess,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_AxeProwess) && COMMON_SKILL_VALID(SID_AxeProwess))
+    [SID_AxeProwess] = {
+        .desc = MSG_SKILL_AxeProwess,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_BowProwess) && COMMON_SKILL_VALID(SID_BowProwess))
+    [SID_BowProwess] = {
+        .desc = MSG_SKILL_BowProwess,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_AnimaProwess) && COMMON_SKILL_VALID(SID_AnimaProwess))
+    [SID_AnimaProwess] = {
+        .desc = MSG_SKILL_AnimaProwess,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_DarkProwess) && COMMON_SKILL_VALID(SID_DarkProwess))
+    [SID_DarkProwess] = {
+        .desc = MSG_SKILL_DarkProwess,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_LightProwess) && COMMON_SKILL_VALID(SID_LightProwess))
+    [SID_LightProwess] = {
+        .desc = MSG_SKILL_LightProwess,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

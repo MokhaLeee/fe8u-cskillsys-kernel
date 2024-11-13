@@ -221,13 +221,20 @@ extern const struct MenuDef RemoveSkillMenuDef;
  */
 
 struct SkillExtraInfo {
-    s8 priv[4];
+    s8 priv[10];
 };
 extern struct SkillExtraInfo const * const gpSkillExtraInfo;
 #define SKILL_EFF0(sid) (gpSkillExtraInfo[sid].priv[0])
 #define SKILL_EFF1(sid) (gpSkillExtraInfo[sid].priv[1])
 #define SKILL_EFF2(sid) (gpSkillExtraInfo[sid].priv[2])
 #define SKILL_EFF3(sid) (gpSkillExtraInfo[sid].priv[3])
+#define SKILL_EFF4(sid) (gpSkillExtraInfo[sid].priv[4])
+#define SKILL_EFF5(sid) (gpSkillExtraInfo[sid].priv[5])
+#define SKILL_EFF6(sid) (gpSkillExtraInfo[sid].priv[6])
+#define SKILL_EFF7(sid) (gpSkillExtraInfo[sid].priv[7])
+#define SKILL_EFF8(sid) (gpSkillExtraInfo[sid].priv[8])
+#define SKILL_EFF9(sid) (gpSkillExtraInfo[sid].priv[9])
+
 
 bool IsSkillLearned(struct Unit * unit, const u16 sid);
 void LearnSkill(struct Unit * unit, const u16 sid);

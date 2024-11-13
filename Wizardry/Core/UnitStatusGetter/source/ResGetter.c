@@ -8,6 +8,11 @@ int _GetUnitResistance(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->res;
 
+#ifdef CONFIG_STAT_SCREEN_TERRAIN_BONUS
+	int terrainID = GetTrueTerrainAt(unit->xPos, unit->yPos);
+	status += unit->pClassData->pTerrainResistanceLookup[terrainID];
+#endif
+
 #if defined(SID_Unaware) && (COMMON_SKILL_VALID(SID_Unaware))
     if (unit == GetUnit(gBattleActor.unit.index) && GetUnit(gBattleTarget.unit.index) && SkillTester(GetUnit(gBattleTarget.unit.index), SID_Unaware))
         return status;
