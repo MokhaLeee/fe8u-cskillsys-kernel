@@ -65,11 +65,11 @@ ORG $9C63C
 BYTE 1 
 
 ORG $8A126		//{U}
-//ORG $8C436		//{J}
-//SHORT $46C0 
-//callHackNew(InitItemDescVram|1)
-//SHORT $46C0 $46C0 $46C0 
-//PROTECT $8A126 $8A126+28		//{U}
+ORG $8C436		//{J}
+SHORT $46C0 
+callHackNew(InitItemDescVram|1)
+SHORT $46C0 $46C0 $46C0 
+PROTECT $8A126 $8A126+28		//{U}
 //PROTECT $8C436 $8C436+28		//{J}
 
 ORG $8A064		//{U}

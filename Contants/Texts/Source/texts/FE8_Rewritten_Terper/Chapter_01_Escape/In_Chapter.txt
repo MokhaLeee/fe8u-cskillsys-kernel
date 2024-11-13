@@ -1,7 +1,7 @@
 ## Chapter_01_Scene_05_Convo_01
 [OpenMidRight][LoadFace_Gilliam]
 [OpenMidLeft][LoadFace_Franz]
-Sir Gilliam, is that Mulan? Have[N]
+[Font_NarrowTalk]Sir Gilliam, is that Mulan? Have[N]
 we reached Frelia's border already?[A][N]
 [OpenMidRight]
 Aye, we have. Her Highness Princess[N]

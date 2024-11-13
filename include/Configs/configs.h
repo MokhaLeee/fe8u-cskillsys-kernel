@@ -78,9 +78,9 @@
 /**
  * By: Vesly
  * Allow another line for all R button text
- * Installed in: Wizardry->Common->ItemSys->ItemDesc->ItemDesc.event
+ * Installed in: Wizardry->Common->ItemSys->ItemDesc->Installer.event
  * 
- * CURRENTLY BROKEN as I had to disable line 69/70/71 in order for Vesly's debugger to work
+ * CURRENTLY BROKEN and I'm not sure why
  */
 // #define CONFIG_EXTEND_R_TEXT_DESC
 
@@ -155,7 +155,7 @@
  * 3 line text boxes, multiple colors, variable text,
  * speed, flipped portraits and more!
  * 
- * Now has NarrowFont from Scraiza integrated thanks to Jester, usable via [Font_NarrowText] and [Font_NarrowMenu]
+ * Now has NarrowFont from Scraiza integrated thanks to Jester, usable via [Font_NarrowTalk] and [Font_NarrowMenu]
  * 
  * Installed in: Wizardry/External/TextEngineRework/Installer.event
  * Source: https://feuniverse.us/t/teqs-minor-assembly-shenanigans/1655/118
@@ -254,13 +254,14 @@
  */
 // #define CONFIG_MODULAR_STAT_SCREEN_GORGON_EGG
 
-// #define CONFIG_FREE_MOVEMENT
 
 /**
  * By Jester
  * Installed in: Wizardry/Core/SkillSys/MiscSkillEffects/MapSkills/MapSkills.c
  */
 // #define CONFIG_AUTO_REPAIR_WEAPONS
+
+#define CONFIG_STAT_SCREEN_TERRAIN_BONUS
 
 /**
  * Levelup mode

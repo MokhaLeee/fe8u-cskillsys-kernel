@@ -11,11 +11,11 @@
 
 // #include "RemoveWM/RemoveWM.event"
 
-// #include "Event/Event.event"
-// #include "Chapter/Chapter.event"
-
 // WARNING
 // WARNING ___________________________________________________
 
 #endif // KERNEL_DEBUG_INSTALLED
 #endif // CONFIG_USE_DEBUG
+
+#include "Event/Event.event"
+#include "Chapter/Chapter.event"

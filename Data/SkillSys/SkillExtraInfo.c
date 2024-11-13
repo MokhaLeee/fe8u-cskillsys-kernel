@@ -1170,4 +1170,32 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_MakeAKilling) && COMMON_SKILL_VALID(SID_MakeAKilling))
     [SID_MakeAKilling] = {{5}},
 #endif
+
+#if (defined(SID_SwordProwess) && COMMON_SKILL_VALID(SID_SwordProwess))
+    [SID_SwordProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}}
+#endif
+
+#if (defined(SID_LanceProwess) && COMMON_SKILL_VALID(SID_LanceProwess))
+    [SID_LanceProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}}
+#endif
+
+#if (defined(SID_AxeProwess) && COMMON_SKILL_VALID(SID_AxeProwess))
+    [SID_AxeProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}}
+#endif
+
+#if (defined(SID_BowProwess) && COMMON_SKILL_VALID(SID_BowProwess))
+    [SID_BowProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}}
+#endif
+
+#if (defined(SID_AnimaProwess) && COMMON_SKILL_VALID(SID_AnimaProwess))
+    [SID_AnimaProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}}
+#endif
+
+#if (defined(SID_DarkProwess) && COMMON_SKILL_VALID(SID_DarkProwess))
+    [SID_DarkProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}}
+#endif
+
+#if (defined(SID_LightProwess) && COMMON_SKILL_VALID(SID_LightProwess))
+    [SID_LightProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}}
+#endif
 };

@@ -261,6 +261,8 @@ void StartHelpBoxExt(const struct HelpBoxInfo * info, int unk)
     GetStringTextBox(GetStringFromIndex(proc->mid), &wContent, &hContent);
     SetTextFontGlyphs(0);
 
+    NoCashGBAPrintf("Height of textbox right now is: %d", hContent);
+
     ApplyHelpBoxContentSize(proc, wContent, hContent);
     ApplyHelpBoxPosition(proc, info->xDisplay, info->yDisplay);
 

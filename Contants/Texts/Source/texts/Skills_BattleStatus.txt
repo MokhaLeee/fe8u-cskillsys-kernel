@@ -1100,3 +1100,38 @@ E-Experience[X]
 Expert's Experience:[NL]
 +0 AVO/HIT.[NL]
 +1 per chapter.[X]
+
+## MSG_SKILL_SwordProwess
+Sword Prowess: Ranks -> D/C/B/A/S[NL]
+HIT & AVO: +5/6/7/8/10[NL]
+CR.AVO +7/10/13/16/20[X]
+
+## MSG_SKILL_LanceProwess
+Lance Prowess: Ranks -> D/C/B/A/S[NL]
+HIT & AVO: +5/6/7/8/10[NL]
+CR.AVO +7/10/13/16/20[X]
+
+## MSG_SKILL_AxeProwess
+Axe Prowess: Ranks -> D/C/B/A/S[NL]
+HIT & AVO: +5/6/7/8/10[NL]
+CR.AVO +7/10/13/16/20[X]
+
+## MSG_SKILL_BowProwess
+Bow Prowess: Ranks -> D/C/B/A/S[NL]
+HIT & AVO: +5/6/7/8/10[NL]
+CR.AVO +7/10/13/16/20[X]
+
+## MSG_SKILL_AnimaProwess
+Anima Prowess: Ranks -> D/C/B/A/S[NL]
+HIT & AVO: +5/6/7/8/10[NL]
+CR.AVO +7/10/13/16/20[X]
+
+## MSG_SKILL_DarkProwess
+Dark Prowess: Ranks -> D/C/B/A/S[NL]
+HIT & AVO: +5/6/7/8/10[NL]
+CR.AVO +7/10/13/16/20[X]
+
+## MSG_SKILL_LightProwess
+Light Prowess: Ranks -> D/C/B/A/S[NL]
+HIT & AVO: +5/6/7/8/10[NL]
+CR.AVO +7/10/13/16/20[X]
