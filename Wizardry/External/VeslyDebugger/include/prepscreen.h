@@ -125,14 +125,14 @@ struct PrepItemSupplyProc {
 };
 
 // TODO: Move to a common "worldmap.h"
-struct GMapBaseMenuProc {
-    /* 00 */ PROC_HEADER;
-    /* 29 */ u8 unk_29;
-    /* 2A */ u8 unk_2a;
-    /* 2B */ u8 unk_2b;
-};
+// struct GMapBaseMenuProc {
+//     /* 00 */ PROC_HEADER;
+//     /* 29 */ u8 unk_29;
+//     /* 2A */ u8 unk_2a;
+//     /* 2B */ u8 unk_2b;
+// };
 
-struct GMapBaseMenuProc* sub_80C4048(void);
+// struct GMapBaseMenuProc* sub_80C4048(void);
 
 struct PrepItemListProc {
     /* 00 */ PROC_HEADER;

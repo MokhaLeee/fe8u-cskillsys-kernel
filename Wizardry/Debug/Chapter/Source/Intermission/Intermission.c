@@ -1,20 +1,20 @@
 #include "common-chax.h"
 #include "jester_headers/soundtrack-ids.h"
 
-const struct ROMChapterData Chapter01 = {
+const struct ROMChapterData Intermission_Ch1 = {
     .map = {
        .obj1Id = 1,
        .obj2Id= 0,
        .paletteId = 2,
        .tileConfigId = 3,
-       .mainLayerId = 8, // Map pointer. In blocks of 4 per chapter
+       .mainLayerId = 0xE4, // Map pointer. In blocks of 4 per chapter
        .objAnimId = 5,
        .paletteAnimId = 0,
        .changeLayerId = 6
     },
     .initialFogLevel = 0,
     .hasPrepScreen = FALSE,
-    .chapTitleId = 0x01, // Chapter 1 - Escape
+    .chapTitleId = 0x02, // Chapter 2 - The Protected
     .chapTitleIdInHectorStory = 0,
     .initialPosX = 8,   // Starting position of the camera
     .initialPosY = 5,
@@ -37,7 +37,7 @@ const struct ROMChapterData Chapter01 = {
         [MAP_BGM_PROLOGUE_HECTOR] = 65535,
     },
     .mapCrackedWallHeath = 50,
-    .mapEventDataId = 0xA,
+    .mapEventDataId = 0xC5,
     .gmapEventId = 2,
     .victorySongEnemyThreshold = BGM_THE_VALIANT,
     .fadeToBlack = TRUE,

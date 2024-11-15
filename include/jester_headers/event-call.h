@@ -19,4 +19,8 @@ extern CONST_DATA EventScr EventScrWM_Ch2_BeginningTutorial[];
 extern CONST_DATA EventScr EventScrWM_Ch2_Beginning[];
 extern CONST_DATA EventScr EventScrWM_Ch2_ChapterIntro[];
 
+extern const EventScr EventScrWM_Ch1_ENDING[];
+extern const EventScr EventScrWM_Ch2_SET_NODE[];
+extern const EventScr EventScrWM_Ch2_TRAVEL_TO_NODE[];
+
 extern u8 Event19_Checks(struct EventEngineProc * proc);

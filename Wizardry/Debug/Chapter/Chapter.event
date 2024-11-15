@@ -8,5 +8,11 @@ PUSH
     
     ORG 0x8B0924 // Chapter 1
     #include "Source/Chapter_01_Escape/Chapter_01_Escape.lyn.event"
+
+    ORG 0x8B28F0 // Intermission
+    #include "Source/Intermission/Intermission.lyn.event"
+
+    ORG 0x8B09B8 // Chapter 2
+    #include "Source/Chapter_02_The_Protected/Chapter_02_The_Protected.lyn.event"
 }
 POP

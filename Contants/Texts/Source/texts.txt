@@ -75,3 +75,4 @@ W.I.P.[X]
 #include texts/FE8_Rewritten_Terper/Supports/Knoll_Lute.txt
 
 #include texts/FE8_Rewritten_Terper/Miscellaneous.txt
+#include texts/FE8_Rewritten_Terper/WM_Texts.txt

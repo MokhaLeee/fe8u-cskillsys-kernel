@@ -7,14 +7,24 @@
 #include "eventinfo.h"
 #include "bmmenu.h"
 #include "eventscript.h"
-#include "./jester_headers/event-call.h"
 #include "EAstdlib.h"
+#include "worldmap.h"
+#include "constants/texts.h"
+#include "jester_headers/event-call.h"
+#include "jester_headers/macros.h"
+#include "jester_headers/soundtrack-ids.h"
+#include "jester_headers/maps.h"
+#include "jester_headers/flags.h"
+#include "jester_headers/miscellaenous.h"
 
 extern void ForEachAdjacentUnit(int x, int y, void (*)(struct Unit *));
 
 extern void GenerateFireTileTrapTargets(int x, int y, int damage);
 extern void GenerateArrowTrapTargets(int x, int y, int damage);
 extern void GenerateGasTrapTargets(int x, int y, int damage, int facing);
+
+extern const u16 * Events_WM_Beginning[];
+extern const u16 * Events_WM_ChapterIntro[];
 
 //! FE8U: 0x080B1F64
 LYN_REPLACE_CHECK(SetGameOption);
@@ -828,4 +838,87 @@ u8 Event19_Checks(struct EventEngineProc * proc)
     } // switch (subcode)
 
     return EVC_ADVANCE_CONTINUE;
+}
+
+LYN_REPLACE_CHECK(WorldMap_CallBeginningEvent);
+//! FE8U = 0x080BA334
+void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
+{
+    int chIndex;
+    int node_next;
+
+    Sound_FadeOutBGM(4);
+
+    if ((gGMData.state.bits.monster_merged) || (gPlaySt.chapterStateBits & PLAY_FLAG_POSTGAME))
+    {
+        sub_80BA008(proc->timer);
+    }
+    else
+    {
+        int loc = gGMData.units[0].location;
+
+        gGMData.current_node = loc;
+        node_next = WMLoc_GetNextLocId(loc);
+
+        if (node_next > -1)
+        {
+            chIndex = WMLoc_GetChapterId(node_next);
+
+            gPlaySt.chapterIndex = chIndex;
+
+            if (Events_WM_Beginning[GetROMChapterStruct(chIndex)->gmapEventId] == NULL)
+                return;
+
+            ResetGmStoryNode();
+            proc->gm_icon->merge_next_node = false;
+
+            /**
+             * Jester - I've resorted to hooking into the WM call function to directly load the
+             * WM events I want based on the supplied eventSCR. It's an unfortunate bit of hardcoding
+             * I'm looking to remove, but it frees me from having to rely on the list in ASM in vailla.
+             */
+            int EventID = GetROMChapterStruct(chIndex)->gmapEventId;
+            
+            switch (EventID) {
+            case 2:
+                CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
+                break;
+            case 3:
+                CallEvent((const u16 *)EventScrWM_Ch2_SET_NODE, 0);
+                break;
+            default: 
+                CallEvent(Events_WM_Beginning[GetROMChapterStruct(chIndex)->gmapEventId], 0);
+            }
+        }
+    }
+
+    StartWMFaceCtrl(proc);
+    StartGmapMuEntry(NULL);
+}
+
+LYN_REPLACE_CHECK(CallChapterWMIntroEvents);
+//! FE8U = 0x080BA3D4
+void CallChapterWMIntroEvents(ProcPtr proc)
+{
+    if (Events_WM_ChapterIntro[GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId] != NULL)
+    {
+
+         /**
+        * Jester - I've resorted to hooking into the WM call function to directly load the
+        * WM events I want based on the supplied eventSCR. It's an unfortunate bit of hardcoding
+        * I'm looking to remove, but it frees me from having to rely on the list in ASM in vailla.
+        */
+        int EventID = GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId;
+            
+        switch (EventID) {
+        case 3:
+            CallEvent((const u16 *)EventScrWM_Ch2_TRAVEL_TO_NODE, 0);
+            break;
+        default: 
+            CallEvent(Events_WM_ChapterIntro[GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId], 0);
+        }
+
+        StartWMFaceCtrl(proc);
+        StartGmapMuEntry(NULL);
+    }
 }

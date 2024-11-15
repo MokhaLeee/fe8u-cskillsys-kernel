@@ -133,10 +133,13 @@ enum {
 #define REDUCE_VOLUME MUSI
 
 // Go to next chapter
-#define NEXT_CHAPTER MNC2(1)
+#define NEXT_CHAPTER_WITHOUT_MAP(Chapter_ID) MNC2(Chapter_ID)
+#define NEXT_CHAPTER_WITH_MAP(Chapter_ID) MNCH(Chapter_ID)
 
 // Set flag
 #define SET_FLAG ENUT
+
+#define MUSIC_FADEOUT(bgmID) MUSCMID(bgmID)
 
 #define COORDS(xcoord,ycoord) (ycoord<<16)|xcoord
 
@@ -185,3 +188,8 @@ enum {
 LABEL(0x0) \
     ENUT(0x3) \
     CALL(EventScr_Ending)
+
+
+#define GIVE_GOLD(gold) \
+    SVAL(0x3, gold) \
+    GIVEITEMTOMAIN(0)

@@ -9,7 +9,7 @@ enum worldmap_unit_alignace {
     WM_FACTION_BLUE  = 0,
     WM_FACTION_RED   = 1,
     WM_FACTION_GREEN = 2,
-};
+}
 
 struct Unknown08206498
 {
@@ -96,7 +96,7 @@ struct GmNodeIconDisplayProc
     /* 30 */ u8 pal;
     /* 31 */ u8 unk_31;
     /* 32 */ u8 unk_32_0 : 1;
-    /* 32 */ u8 unk_32_1 : 1;
+    /* 32 */ u8 merge_next_node : 1;
     /* 33 */ u8 nodeId;
     /* 34 */ u32 unk_34[1];
     /* 38 */ struct APHandle * ap;
@@ -435,7 +435,7 @@ struct GMapData
     /* 30 */ struct GMNode nodes[0x1C];
     /* A0 */ int unk_a0; // pad?
     /* A4 */ struct OpenPaths openPaths;
-    /* C8 */ u8 unk_c8; // entry node id?
+    /* C8 */ u8 current_node; // entry node id?
     /* C9 */ u8 unk_c9[3]; // List of active world map skirmishes
     /* CC */ u8 unk_cc; // used to determine which skirmish enemy block to load
     /* CD */ u8 unk_cd;

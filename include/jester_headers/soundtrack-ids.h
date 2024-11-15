@@ -12,7 +12,10 @@ enum {
     BGM_SHADOW_OF_THE_ENEMY = 0x13,
     BGM_TENSION             = 0x25,
     BGM_RAID                = 0x26,
+    BGM_SORROW              = 0x29,
     BGM_VICTORY             = 0x31,
+    BGM_INTO_THE_SHADOWS_OF_VICTORY = 0x32,
     BGM_COMRADES            = 0x54,
+    MUTE                    = 0x7FFF,
     // Lots more to add here
 };

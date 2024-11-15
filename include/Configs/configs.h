@@ -147,7 +147,7 @@
  * Allow units to have base conversations Tellius style
  * IN PROGRESS - Requires input from creator, so do not enable yet
  */
-//#define CONFIG_INSTALL_BASE_CONVERSATIONS
+// #define CONFIG_INSTALL_BASE_CONVERSATIONS
 
 /**
  * By Tequila:

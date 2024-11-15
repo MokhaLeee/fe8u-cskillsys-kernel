@@ -42,9 +42,9 @@
     #include "TextEngineRework/Installer.event"
 #endif
 
-#ifdef CONFIG_INSTALL_BASE_CONVERSATIONS
-//     #include "BaseConversations/Installer.event"
-#endif
+// #ifdef CONFIG_INSTALL_BASE_CONVERSATIONS
+//      #include "BaseConversations/Installer.event"
+// #endif
 
 #ifdef CONFIG_INSTALL_PREPS_AUGURY
     #include "Augury/Installer.event"
@@ -69,10 +69,6 @@
 #ifdef CONFIG_STAT_SCREEN_ALLEGIANCE_COLORS
     #include "StatScreenAllegianceColors/Installer.event"
 #endif
-
-// #ifdef CONFIG_FREE_MOVEMENT
-//     #include "FreeMovement/cFreeMU/FreeMovement.event"
-// #endif
 
 // #ifdef CONFIG_SUPPORT_POST_BATTLE
 //     #include "SupportPostBattle/Installer.event"

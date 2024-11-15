@@ -9,6 +9,11 @@
 #include "jester_headers/miscellaenous.h"
 #include "EAstdlib.h"
 
+// void Chapter_Event()
+// {
+//     KernelCallEvent(EventScrWM_Ch2_ChapterIntro, EV_EXEC_CUTSCENE, NULL);
+// }
+
 /**
  * Ally unit and REDA definitions
  */
@@ -29,7 +34,7 @@ static const struct REDA REDAs_GILLIAM[] = {
 };
 
 static const struct UnitDefinition CH1_EIRIKA_SETH[] = {
-    UNIT_ENTRY(CHARACTER_SETH, CLASS_PALADIN, FACTION_ID_BLUE, false, 1, 14, 9, 1, REDAs_SETH, 0, 0, 0, 0, ITEM_SWORD_STEEL, ITEM_LANCE_SILVER, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_SETH, CLASS_PALADIN, FACTION_ID_BLUE, false, 1, 12, 9, 1, REDAs_SETH, 0, 0, 0, 0, ITEM_SWORD_STEEL, ITEM_LANCE_SILVER, ITEM_VULNERARY),
     UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE, false, 1, 14, 9, 1, REDAs_EIRIKA, 0, 0, 0, 0, ITEM_SWORD_RAPIER, ITEM_VULNERARY),
     {},
 };
@@ -96,7 +101,6 @@ static const struct UnitDefinition CH1_FRELIAN_FORCES[] = {
 /**
  * Main events
  */
-
 static const EventScr EventScr_Beginning[] = {
     MUSC(BGM_TENSION)
     LOAD_WAIT(CH1_BREGUET_FORCES)
@@ -153,20 +157,21 @@ static const EventScr EventScr_Beginning[] = {
 
 static const EventScr EventScr_Ending[] = {
     MUSC(BGM_VICTORY)
-    Text_BG(0x26, Chapter_01_Scene_10_Convo_01)
-    REMA
+    Text_BG(0x1D, Chapter_00_Scene_03_Convo_06)
     FADE_OUT_SCREEN(16)
-    ENUT(0xBA)
-    ENUT(0xCF)
-    ENUT(0xCE)
-    ENUT(0xB6)
-    ENUT(0xD7)
-    ENUT(0xD6)
-    ENUT(0xC7)
-    ENUT(0xC8)
-    ENUT(0xDD)
-    REVEAL(CHARACTER_SETH)
     NEXT_CHAPTER_WITH_MAP(0x38)
+    REMA
+    SET_FLAG(GUIDE_SUSPEND)
+    SET_FLAG(GUIDE_SAVE)
+    SET_FLAG(GUIDE_MOVEMENT_RANGE)
+    SET_FLAG(GUIDE_VIEWING_UNITS)
+    SET_FLAG(GUIDE_GAME_FLOW)
+    SET_FLAG(GUIDE_DEFEAT_A_BOSS)
+    SET_FLAG(GUIDE_ATTACK_RANGE)
+    SET_FLAG(GUIDE_STRATEGIC_BATTLE_INFO)
+    SET_FLAG(GUIDE_DETAILED_BATTLE_INFO)
+    SET_FLAG(GUIDE_LEVELING_UP)
+    SET_FLAG(GUIDE_WEAPON_DURABILITY)
     ENDA
 };
 
@@ -267,7 +272,7 @@ static const u8 TrapData_ThisEventHard[] = {
     TRAP_NONE
 };
 
-const struct ChapterEventGroup Chapter01Event = {
+const struct ChapterEventGroup Chapter02Event = {
     .turnBasedEvents               = EventListScr_Turn,
     .characterBasedEvents          = EventListScr_Character,
     .locationBasedEvents           = EventListScr_Location,

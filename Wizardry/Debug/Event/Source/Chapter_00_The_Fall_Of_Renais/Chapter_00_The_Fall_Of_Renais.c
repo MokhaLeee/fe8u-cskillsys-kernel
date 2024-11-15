@@ -275,7 +275,7 @@ static const EventScr EventScr_Ending[] = {
     MUSC(BGM_VICTORY)
     Text_BG(0x1D, Chapter_00_Scene_03_Convo_06)
     FADE_OUT_SCREEN(16)
-    NEXT_CHAPTER
+    NEXT_CHAPTER_WITHOUT_MAP(CHAPTER_01)
     REMA
     SET_FLAG(GUIDE_SUSPEND)
     SET_FLAG(GUIDE_SAVE)
