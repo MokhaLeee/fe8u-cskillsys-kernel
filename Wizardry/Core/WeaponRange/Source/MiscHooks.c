@@ -98,7 +98,7 @@ void AiFillReversedAttackRangeMap(struct Unit *unit, u16 item)
 	BmMapFill(gBmMapRange, 0);
 
 	// <!> not unit! here is target! we should judge for AI!
-	AddMap(unit->xPos, unit->yPos, GetItemReachBitsRework(item, gActiveUnit), 1, 0);
+	AddMap(unit->xPos, unit->yPos, GetItemReachBitsRework(item, gActiveUnit));
 }
 
 LYN_REPLACE_CHECK(AiFloodMovementAndRange);
@@ -119,7 +119,7 @@ void AiFloodMovementAndRange(struct Unit *unit, u16 move, u16 item)
 			if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
 				continue;
 
-			AddMap(unit->xPos, unit->yPos, mask, 1, 0);
+			AddMap(unit->xPos, unit->yPos, mask);
 		}
 	}
 }
@@ -242,7 +242,7 @@ void GenerateUnitCompleteAttackRange(struct Unit *unit)
 #ifdef CONFIG_FASTER_MAP_RANGE
 			MapAddInBoundedRange(ix, iy, min, max);
 #else
-			AddMap(ix, iy, mask, 1, 0);
+			AddMap(ix, iy, mask);
 #endif
 		}
 	}
@@ -253,7 +253,7 @@ LYN_REPLACE_CHECK(GenerateUnitStandingReachRange);
 void GenerateUnitStandingReachRange(struct Unit *unit, int mask)
 {
 	BmMapFill(gBmMapRange, 0);
-	AddMap(unit->xPos, unit->yPos, mask, 1, 0);
+	AddMap(unit->xPos, unit->yPos, mask);
 }
 
 #ifdef CONFIG_FASTER_MAP_RANGE
@@ -315,7 +315,7 @@ void GenerateUnitCompleteStaffRange(struct Unit *unit)
 #ifdef CONFIG_FASTER_MAP_RANGE
 			MapAddInBoundedRange(ix, iy, min, max);
 #else
-			AddMap(ix, iy, mask, 1, 0);
+			AddMap(ix, iy, mask);
 #endif
 		}
 	}
@@ -393,7 +393,7 @@ void FillMovementAndRangeMapForItem(struct Unit *unit, u16 item)
 			if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
 				continue;
 
-			AddMap(ix, iy, GetItemReachBitsRework(item, unit), 1, 0);
+			AddMap(ix, iy, GetItemReachBitsRework(item, unit));
 		}
 	}
 }
@@ -411,7 +411,7 @@ void sub_803B678(struct Unit *unit, u16 item)
 			if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
 				continue;
 
-			AddMap(ix, iy, GetItemReachBitsRework(item, unit), 1, 0);
+			AddMap(ix, iy, GetItemReachBitsRework(item, unit));
 		}
 	}
 }

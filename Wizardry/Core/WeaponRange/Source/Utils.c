@@ -40,8 +40,31 @@ bool IsItemCoveringRangeRework(int item, int range, struct Unit *unit)
 	return true;
 }
 
-void AddMap(int x, int y, u32 mask, int on, int off)
+void AddMap(int x, int y, u32 mask)
 {
+#ifdef CONFIG_FASTER_MAP_RANGE
+	int i;
+	int pre = 0;
+	u32 ref_mask = 1 << 31;
+
+	for (i = 31; i >= 0; i--) {
+		if ((ref_mask & mask)) {
+			/* 1 */
+			if (pre != 1) {
+				MapAddInRange(x, y, i, 1);
+				pre = 1;
+			}
+		} else {
+			/* 0 */
+			if (pre != 0) {
+				MapAddInRange(x, y, i, -1);
+				pre = 0;
+			}
+		}
+
+		ref_mask = ref_mask >> 1;
+	}
+#else
 	int ix, iy;
 
 	int X1 = x - 32;
@@ -59,11 +82,12 @@ void AddMap(int x, int y, u32 mask, int on, int off)
 			int distance = RECT_DISTANCE(x, y, ix, iy);
 
 			if (mask & (1 << distance))
-				gWorkingBmMap[iy][ix] += on;
+				gWorkingBmMap[iy][ix] += 1;
 			else
-				gWorkingBmMap[iy][ix] += off;
+				gWorkingBmMap[iy][ix] += 0;
 		}
 	}
+#endif
 }
 
 void AddMapForItem(struct Unit *unit, u16 item)

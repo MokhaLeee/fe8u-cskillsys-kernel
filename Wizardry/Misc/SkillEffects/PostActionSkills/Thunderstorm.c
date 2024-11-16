@@ -39,7 +39,7 @@ STATIC_DECLAR void SetThunderstormAoeDamage(ProcPtr proc)
 	BmMapFill(gBmMapMovement, -1);
 	BmMapFill(gBmMapRange, 0);
 
-	AddMap(gBattleTargetPositionBackup.x, gBattleTargetPositionBackup.y, 0b11, 1, 0);
+	AddMap(gBattleTargetPositionBackup.x, gBattleTargetPositionBackup.y, 0b11);
 
 	InitTargets(unit->xPos, unit->yPos);
 	ForEachUnitInRange(AddUnitToTargetListIfNotAllied);
