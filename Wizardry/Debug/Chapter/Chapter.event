@@ -3,16 +3,10 @@ PUSH
     // WARNING __Prologue_chapter_rewritten__
     // ORG 0x8B0890 // Prologue - Battle Map
     // #include "Source/debug-chapter.lyn.event"
-    ORG 0x8B1954 // Chapter 16 - Battle Map (Renais Castle)
+
     #include "Source/Chapter_00_The_Fall_Of_Renais/Chapter_00_The_Fall_Of_Renais.lyn.event"
-    
-    ORG 0x8B0924 // Chapter 1
     #include "Source/Chapter_01_Escape/Chapter_01_Escape.lyn.event"
-
-    ORG 0x8B28F0 // Intermission
     #include "Source/Intermission/Intermission.lyn.event"
-
-    ORG 0x8B09B8 // Chapter 2
     #include "Source/Chapter_02_The_Protected/Chapter_02_The_Protected.lyn.event"
 }
 POP

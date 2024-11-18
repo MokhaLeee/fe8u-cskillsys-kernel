@@ -1,4 +1,4 @@
-## Chapter_02_Scene_08_Convo_01
+## Chapter_02_Scene_07_Convo_01
 [OpenFarLeft][LoadFace_Eirika]
 [OpenLeft][LoadFace_Seth]
 [OpenMidRight][LoadFace_Garcia]
@@ -88,7 +88,7 @@ It doesn't matter, son.[A][N]
 [OpenMidLeft]
 Dad![A][N]
 [OpenMidRight]
-As you just heard my obsession[N]
+As you just heard, my obsession[N]
 with fighting cost us both dearly.[A][N]
 [OpenMidLeft]
 .....[A][N]
@@ -116,7 +116,7 @@ Let that be the end of it.[A][N]
 [OpenMidLeft]
 .....[A][X]
 
-## Chapter_02_Scene_09_Convo_01
+## Chapter_02_Scene_08_Convo_01
 [OpenMidLeft][LoadFace_Eirika]
 [OpenMidRight][LoadFace_CivilianMan1]
 Thank you so much for your help.[A][N]
@@ -155,11 +155,11 @@ These are dark days.[A] Travel with care.[A][N]
 [OpenMidLeft]
 ...Please, be safe...[A][X]
 
-## Chapter_02_Scene_10_Convo_01
+## Chapter_02_Scene_09_Convo_01
 [OpenMidLeft][LoadFace_EirikaClosed]
 Ephraim...[A][X]
 
-## Chapter_02_Scene_11_Convo_01
+## Chapter_02_Scene_10_Convo_01
 [OpenMidRight][LoadFace_EirikaPast]
 [OpenMidLeft][LoadFace_EphraimPast]
 Right then, time to start.[A][N]
@@ -213,7 +213,7 @@ whipped up into a proper sparring partner![A][N]
 I, uhm... think I'll need a little more[N]
 than a few days, Ephraim...[A][X]
 
-## Chapter_02_Scene_12_Convo_01
+## Chapter_02_Scene_11_Convo_01
 [OpenMidLeft][LoadFace_Eirika]
 Ephraim, I've become stronger.[A][N]
 Soon, I'll be able to...[A]...[A][N]
@@ -261,7 +261,7 @@ to chase that man down![A][N]
 [OpenMidRight]
 Of course, Princess![A][X]
 
-## Chapter_02_Scene_13_Convo_01
+## Chapter_02_Scene_12_Convo_01
 [OpenFarFarLeft][LoadFace_Ross]
 [MoveMidLeft]
 Sorry, Dad.[A][N]
@@ -270,3 +270,6 @@ feel safe here anymore.[A][N]
 Please... come find me...[A][N]
 [CloseSpeechFast]
 [MoveFarFarRight][X]
+
+## THREE_YEARS_AGO
+3 years ago[X]

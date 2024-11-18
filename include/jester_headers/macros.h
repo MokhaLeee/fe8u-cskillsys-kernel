@@ -101,6 +101,8 @@ enum {
 // and nobody ever made macros to fix it???
 #define FADE_IN_SCREEN(number) FADU(number)
 #define FADE_OUT_SCREEN(number) FADI(number)
+#define FADE_TO_WHITE(number) FAWI(number)
+#define FADE_FROM_WHITE(number) FAWU(number)
 
 #define GIVE_ITEM_TO(item, character) \
     SVAL(EVT_SLOT_3, item) \
@@ -111,11 +113,26 @@ enum {
     GIVEITEMTO(character)
 
 
-#define UNIT_ENTRY(charID, classID, allegianceID, levelAuto, lvl, xpos, ypos, rCount, rArray, ai1, ai2, ai3, ai4, ...) \
+/*
+** Item drops are defined in the unitDefinition struct as u16 so I
+** can't use enum, which is u32 by default. Easier to create seperate definitions
+*/ 
+#define NO_ITEM_DROP (0)
+#define ITEM_DROP (1) // Only valid values for a 1-bit field
+
+
+enum {
+    NO_AUTOLEVEL = 0,
+    AUTOLEVEL = 1,
+};
+
+
+#define UNIT_ENTRY(charID, classID, allegianceID, dropItem, levelAuto, lvl, xpos, ypos, rCount, rArray, ai1, ai2, ai3, ai4, ...) \
     { \
         .charIndex = charID, \
         .classIndex = classID, \
         .allegiance = allegianceID, \
+        .itemDrop = dropItem, \
         .autolevel = levelAuto, \
         .level = lvl, \
         .xPosition = xpos, \
@@ -155,6 +172,14 @@ enum {
     NoFade \
     ENDA
 
+#define HOUSE_EVENT_NO_END(background, message) \
+    MUSI \
+    Text_BG(background, message) \
+    MUNO
+
+#define REDUCE_VOLUME MUSI
+#define RESTORE_VOLUME MUNO
+
 #define QUINTESSANCE_STEALING \
     ASMC(StartQuintessenceStealEffect) \
     STAL(32) \
@@ -193,3 +218,30 @@ LABEL(0x0) \
 #define GIVE_GOLD(gold) \
     SVAL(0x3, gold) \
     GIVEITEMTOMAIN(0)
+
+#define ActiveUnit (-1)
+// #define CoordsSlotB (-2)
+// #define UnitInSlot2 (-3)
+
+
+// #define TILECHANGE_ACTIVE_UNIT
+//     TILECHANGE(ActiveUnit)
+
+#define TILECHANGE_COORDINATES(x, y) \
+    SVAL(0xB, COORDS(x, y)) \
+    TILECHANGE(ActiveUnit)
+
+#define CHANGE_TO_BLUE(unitID) EvtChangeFaction(unitID, FACTION_ID_BLUE)
+#define CHANGE_TO_GREEN(unitID) EvtChangeFaction(unitID, FACTION_ID_GREEN)
+#define CHANGE_TO_RED(unitID) EvtChangeFaction(unitID, FACTION_ID_RED)
+
+#define CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(musicID) MUSS(musicID)
+#define RESTORE_PREVIOUS_MUSIC MURE(0x2)
+
+#define TEXT_BG_HIDE_MAP(bg, msg) \
+    SetBackground(bg) \
+    TEXTSTART \
+    TEXTSHOW(msg) \
+    TEXTEND \
+    SetBackground(0x35) \
+    REMA

@@ -10,7 +10,7 @@ const struct ROMChapterData Chapter01 = {
        .mainLayerId = 8, // Map pointer. In blocks of 4 per chapter
        .objAnimId = 5,
        .paletteAnimId = 0,
-       .changeLayerId = 6
+       .changeLayerId = 9,
     },
     .initialFogLevel = 0,
     .hasPrepScreen = FALSE,

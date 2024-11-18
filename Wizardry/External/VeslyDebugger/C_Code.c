@@ -1095,7 +1095,7 @@ void StateIdle(DebuggerProc* proc) {
         Proc_Goto(proc, RestartLabel);
         m4aSongNumStart(0x6B); 
     }
-    s8 id = proc->id;
+    u32 id = proc->id;
     if ((keys & A_BUTTON)) { //press B or Start to update state and continue 
         u32 state = proc->tmp[0] | (proc->tmp[1] << 16); 
         state ^= (1 << id);
@@ -1126,7 +1126,7 @@ void StateIdle(DebuggerProc* proc) {
         
     }
     
-    if (id != proc->id) { 
+    if (id != (u32)proc->id) { 
         id %= 32; 
         proc->id = id; 
         RedrawStateMenu(proc);

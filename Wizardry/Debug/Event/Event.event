@@ -13,6 +13,7 @@
     #include "Source/Intermission/Intermission.lyn.event"
     EventPointerTable(0xD, Chapter02Event)
     #include "Source/Chapter_02_The_Protected/Chapter_02_The_Protected.lyn.event"
+    #include "Source/Chapter_02_The_Protected/Map/Chapter_02_map.event"
 
 }
 

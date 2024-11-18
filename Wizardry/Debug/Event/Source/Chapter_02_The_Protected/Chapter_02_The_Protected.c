@@ -9,39 +9,44 @@
 #include "jester_headers/miscellaenous.h"
 #include "EAstdlib.h"
 
-// void Chapter_Event()
-// {
-//     KernelCallEvent(EventScrWM_Ch2_ChapterIntro, EV_EXEC_CUTSCENE, NULL);
-// }
-
 /**
  * Ally unit and REDA definitions
  */
-static const struct REDA REDAs_SETH[] = { 
-    { .x = 13, .y = 8, .b = 0x0000, .delayFrames = 0, },
+static const struct REDA REDAs_TANA[] = { 
+    { .x = 7, .y = 4, .b = -1, .delayFrames = 0, },
 };
 
 static const struct REDA REDAs_EIRIKA[] = {
-    { .x = 12, .y = 9, .b = 0x0000, .delayFrames = 0, },
+    { .x = 2, .y = 2, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_SETH[] = {
+    { .x = 0, .y = 1, .b = -1, .delayFrames = 0, },
 };
 
 static const struct REDA REDAs_FRANZ[] = { 
-    { .x = 5, .y = 1, .b = 0x0000, .delayFrames = 0, },
+    { .x = 1, .y = 1, .b = -1, .delayFrames = 0, },
 };
 
 static const struct REDA REDAs_GILLIAM[] = {
-    { .x = 6, .y = 1, .b = 0x0000, .delayFrames = 0, },
+    { .x = 0, .y = 3, .b = -1, .delayFrames = 0, },
 };
 
-static const struct UnitDefinition CH1_EIRIKA_SETH[] = {
-    UNIT_ENTRY(CHARACTER_SETH, CLASS_PALADIN, FACTION_ID_BLUE, false, 1, 12, 9, 1, REDAs_SETH, 0, 0, 0, 0, ITEM_SWORD_STEEL, ITEM_LANCE_SILVER, ITEM_VULNERARY),
-    UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE, false, 1, 14, 9, 1, REDAs_EIRIKA, 0, 0, 0, 0, ITEM_SWORD_RAPIER, ITEM_VULNERARY),
+static const struct REDA REDAs_MOULDER[] = {
+    { .x = 3, .y = 3, .b = -1, .delayFrames = 0, },
+};
+
+static const struct UnitDefinition CH2_TANA[] = {
+    UNIT_ENTRY(CHARACTER_TANA, CLASS_PEGASUS_KNIGHT, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 0, 1, 1, REDAs_TANA, 0, 0, 0, 0, ITEM_LANCE_SLIM, ITEM_LANCE_JAVELIN, ITEM_VULNERARY),
     {},
 };
 
-static const struct UnitDefinition CH1_REINFORCEMENTS_ALLIES[] = {
-    UNIT_ENTRY(CHARACTER_FRANZ, CLASS_CAVALIER, FACTION_ID_BLUE, false, 1, 5, 0, 1, REDAs_FRANZ, 0, 0, 0, 0, ITEM_SWORD_IRON, ITEM_LANCE_IRON, ITEM_VULNERARY, ITEM_VULNERARY),
-    UNIT_ENTRY(CHARACTER_GILLIAM, CLASS_ARMOR_KNIGHT, FACTION_ID_BLUE, false, 1, 6, 0, 1, REDAs_GILLIAM, 0, 0, 0, 0, ITEM_LANCE_IRON),
+static const struct UnitDefinition CH2_PLAYER_UNITS[] = {
+    UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 1, 0, 1, REDAs_EIRIKA, 0, 0, 0, 0, ITEM_SWORD_RAPIER, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_SETH, CLASS_PALADIN, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 0, 0, 1, REDAs_SETH, 0, 0, 0, 0, ITEM_LANCE_IRON, ITEM_LANCE_SILVER, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_FRANZ, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 1, 0, 1, REDAs_FRANZ, 0, 0, 0, 0, ITEM_SWORD_IRON, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_GILLIAM, CLASS_ARMOR_KNIGHT, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 0, 0, 0, 1, REDAs_GILLIAM, 0, 0, 0, 0, ITEM_LANCE_IRON, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_MOULDER, CLASS_PRIEST, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 3, 1, 0, 1, REDAs_MOULDER, 0, 0, 0, 0, ITEM_STAFF_HEAL, ITEM_VULNERARY),
     {},
 };
 
@@ -49,52 +54,57 @@ static const struct UnitDefinition CH1_REINFORCEMENTS_ALLIES[] = {
  * Enemy unit and REDA definitions
  */
 
-static const struct REDA REDAs_BREGUET_ENEMY[] = {
-    { .x = 2, .y = 5, .b = -1, .delayFrames = 16,}
+static const struct REDA REDAs_BONE_ENEMY[] = { 
+    { .x = 13, .y = 7, .b = -1, } 
 };
-static const struct REDA REDAs_SOLDIER1_ENEMY[] = { 
-    { .x = 1, .y = 6, .b = 0xFEFF, } 
+static const struct REDA REDAs_BRIGAND1_ENEMY[] = {
+    { .x = 10, .y = 12, .b = -1, }
 };
-static const struct REDA REDAs_SOLDIER2_ENEMY[] = { 
-    { .x = 3, .y = 8, .b = 0xFEFF, },
-    { .x = 3, .y = 6, .b = 0xFEFF, } 
+static const struct REDA REDAs_BRIGAND2_ENEMY[] = { 
+    { .x = 6, .y = 11, .b = -1, }
 };
-static const struct REDA REDAs_SOLDIER3_ENEMY[] = { 
-    { .x = 2, .y = 7, .b = 0xFEFF, } 
+static const struct REDA REDAs_BRIGAND3_ENEMY[] = { 
+    { .x = 7, .y = 14, .b = -1, } 
 };
-static const struct REDA REDAs_FIGHTER1_ENEMY[] = {
-    { .x = 1, .y = 8,  .b = -1, .a = CHARACTER_BREGUET }
+static const struct REDA REDAs_BRIGAND4_ENEMY[] = {
+    { .x = 12, .y = 5,  .b = -1, }
 };
-static const struct REDA REDAs_FIGHTER2_ENEMY[] = {
-    { .x = 3, .y = 8, .b = -1, .a = CHARACTER_BREGUET }
+static const struct REDA REDAs_ARCHER1_ENEMY[] = {
+    { .x = 14, .y = 8, .b = -1, }
 };
-static const struct REDA REDAs_FIGHTER3_ENEMY[] = {
-    { .x = 2, .y = 9, .b = -1, .a = CHARACTER_BREGUET} 
+static const struct REDA REDAs_BAZBA_ENEMY[] = {
+    { .x = 11, .y = 7, .b = -1, } 
 };
 
-static const struct UnitDefinition CH1_BREGUET_FORCES[] = {
-    UNIT_ENTRY(CHARACTER_BREGUET, CLASS_ARMOR_KNIGHT, FACTION_ID_RED, false, 4, 2, 9, 1, REDAs_BREGUET_ENEMY,  3, 3, 9, 20, ITEM_LANCE_IRON),
-    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, true, 2, 1, 9, 1, REDAs_SOLDIER1_ENEMY, 0, 3, 9, 0, ITEM_LANCE_IRON),
-    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, true, 2, 2, 9, 2, REDAs_SOLDIER2_ENEMY, 0, 3, 9, 0, ITEM_LANCE_IRON),
-    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, true, 3, 2, 9, 1, REDAs_SOLDIER3_ENEMY, 3, 12, 1, 0, ITEM_LANCE_IRON),
-    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_FIGHTER, FACTION_ID_RED, true, 2, 1, 9, 1, REDAs_FIGHTER1_ENEMY, 0, 0, 1, 0, ITEM_AXE_IRON),
-    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_FIGHTER, FACTION_ID_RED, true, 2, 2, 9, 1, REDAs_FIGHTER2_ENEMY, 0, 0, 1, 0, ITEM_AXE_IRON),
-    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_FIGHTER, FACTION_ID_RED, true, 2, 2, 9, 1, REDAs_FIGHTER3_ENEMY, 0, 12, 1, 0, ITEM_AXE_IRON),
+static const struct UnitDefinition CH2_BANDITS[] = {
+    UNIT_ENTRY(CHARACTER_CUTTHROAT_8E, CLASS_BRIGAND, FACTION_ID_RED,  NO_ITEM_DROP, NO_AUTOLEVEL, 3, 9, 14, 1, REDAs_BRIGAND1_ENEMY, 0, 11, 9, 0, ITEM_AXE_IRON), 
+    UNIT_ENTRY(CHARACTER_CUTTHROAT_8E, CLASS_ARCHER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 2, 14, 9, 1, REDAs_ARCHER1_ENEMY, 1, 3, 9, 0, ITEM_BOW_IRON),
+    UNIT_ENTRY(CHARACTER_BONE, CLASS_BRIGAND, FACTION_ID_RED,  NO_ITEM_DROP, NO_AUTOLEVEL, 2, 14, 8, 1, REDAs_BONE_ENEMY, 4, 4, 9, 0, ITEM_AXE_IRON),
+    UNIT_ENTRY(CHARACTER_CUTTHROAT_8E, CLASS_BRIGAND, FACTION_ID_RED, ITEM_DROP, AUTOLEVEL, 3, 6, 10, 1, REDAs_BRIGAND2_ENEMY, 0, 12, 9, 0, ITEM_AXE_IRON, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_CUTTHROAT_8E, CLASS_BRIGAND, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 3, 7, 14, 1, REDAs_BRIGAND3_ENEMY, 0, 0, 9, 0, ITEM_AXE_IRON),
+    UNIT_ENTRY(CHARACTER_CUTTHROAT_8E, CLASS_BRIGAND, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 2, 14, 7, 1, REDAs_BRIGAND4_ENEMY, 0, 11, 9, 0, ITEM_AXE_IRON),
     {}
 };
 
-static const struct REDA REDAs_CAVALIER_GREEN[] = {
-    { .x = 2, .y = 3, .b = -1},
-    { .x = 0, .y = 3, .b = -1},
-    { .x = 0, .y = 0, .b = -1}
-};
-static const struct REDA REDAs_MERCENARY_GREEN[] = {
-    { .x = 2, .y = 2, .b = 0x0000} 
+static const struct UnitDefinition CH2_BAZBA[] = {
+    UNIT_ENTRY(CHARACTER_BAZBA, CLASS_BRIGAND, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 6, 14, 8, 1, REDAs_BAZBA_ENEMY,  0, 4, 9, 0, ITEM_AXE_STEEL),
+    {}
 };
 
-static const struct UnitDefinition CH1_FRELIAN_FORCES[] = {
-    UNIT_ENTRY(0xC1, CLASS_CAVALIER, FACTION_ID_GREEN, false, 1, 2, 2, 3, REDAs_CAVALIER_GREEN,  0, 0, 0, 0, ITEM_LANCE_IRON),
-    UNIT_ENTRY(0xC0, CLASS_MERCENARY, FACTION_ID_GREEN, true, 1, 2, 2, 1, REDAs_MERCENARY_GREEN, 0, 0, 0, 0, ITEM_SWORD_IRON),
+/**
+ * Green unit and REDA definitions
+ */
+
+static const struct REDA REDAs_ROSS[] = {
+    { .x = 10, .y = 5, .b = -1 },
+};
+static const struct REDA REDAs_GARCIA[] = {
+    { .x = 10, .y = 4, .b = -1 }, 
+};
+
+static const struct UnitDefinition CH2_ROSS_GARCIA[] = {
+    UNIT_ENTRY(CHARACTER_ROSS, CLASS_JOURNEYMAN, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 1, 11, 2, 1, REDAs_ROSS,  0, 0xA, 0, 0, ITEM_AXE_HATCHET, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_GARCIA, CLASS_FIGHTER, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 4, 11, 2, 1, REDAs_GARCIA, 0, 3, 0, 0, ITEM_AXE_IRON, ITEM_AXE_HANDAXE, ITEM_VULNERARY),
     {}
 };
 
@@ -102,143 +112,156 @@ static const struct UnitDefinition CH1_FRELIAN_FORCES[] = {
  * Main events
  */
 static const EventScr EventScr_Beginning[] = {
+    MUSC(BGM_ADVANCE)
+    Text_BG(0x18, Chapter_02_Scene_01_Convo_01)
+    FADE_OUT_SCREEN(16)
+    CLEAN
+    FADE_IN_SCREEN(16)
+    LOAD_WAIT_PERSIST(CH2_TANA)
+    MUSCMID(0x7FFF)
+    LOAD_WAIT_PERSIST(CH2_BANDITS)
+    LOAD_WAIT_PERSIST(CH2_BAZBA)
+    STAL(60)
+    MUSC(BGM_DEFENSE)
+    HIGHLIGHT_CHARACTER(CHARACTER_BONE, 60)
+    Text(Chapter_02_Scene_02_Convo_01)
+    MOVE_WAIT(24, CHARACTER_BAZBA, 14, 9)
+    ERASE(CHARACTER_BAZBA)
+    HIGHLIGHT_COORDINATES(12, 3, 60)
     MUSC(BGM_TENSION)
-    LOAD_WAIT(CH1_BREGUET_FORCES)
-    STAL(60)
-    HIGHLIGHT_COORDINATES(2, 2, 60)
-    Text_BG(0x26, Chapter_01_Scene_01_Convo_01)
-    LOAD_WAIT(CH1_FRELIAN_FORCES)
-    ERASE(0xC1)
-    HIGHLIGHT_CHARACTER(CHARACTER_BREGUET, 60)
-    Text_BG(0x1C, Chapter_01_Scene_02_Convo_01)
-    MOVE_WAIT(0, CHARACTER_BREGUET, 2, 3)
-    /* Force set battle-quotes flag to make the following script-battle not to show battle quote */
-    ENUT(EVFLAG_BATTLE_QUOTES)
-
-    StartBattle
-    CriticalHit(0, 20)
-    NormalDamage(1, 0)
-    EndAttack
-    FIGHT(CHARACTER_BREGUET, 0xC0, 0, 0)
-
-    /* Clear battle Quotes flag */
-    ENUF(EVFLAG_BATTLE_QUOTES)
-
-    KILL(0xC0)
-    ERASE(0xC0)
-    HIGHLIGHT_CHARACTER(CHARACTER_BREGUET, 60)
-    Text(Chapter_01_Scene_02_Convo_02)
-    MOVE_WAIT(0, CHARACTER_BREGUET, 2, 2)
-    MOVE_POSITION_WAIT(24, 1, 6, 1, 3)
-    MOVE_POSITION_WAIT(24, 3, 6, 3, 3)
-    MOVE_POSITION_WAIT(24, 1, 8, 9, 5)
-    MOVE_POSITION_WAIT(24, 2, 7, 8, 3)
-    MOVE_POSITION_WAIT(24, 3, 8, 4, 7)
-    MOVE_POSITION_WAIT(24, 2, 9, 2, 8)
-    STAL(60)
-    HIGHLIGHT_COORDINATES(2, 2, 60)
-    Text_BG(0x26, Chapter_01_Scene_03_Convo_01)
-    LOAD_WAIT_PERSIST(CH1_EIRIKA_SETH)
-    SET_UNIT_HP(CHARACTER_SETH, 10)
-    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
-    Text(Chapter_01_Scene_04_Convo_01)
-
-    /**
-     * Temporary flag(11) is used for triggering event: EventScr_Ch1_Turn_EnemyReinforceArrive,
-     * this flag will be unset by event: EventScr_Ch1_Misc_Area
-     */
-    ENUT(EVFLAG_TMP(11))
-
-    // PREP
-
+    Text_BG(0x2, Chapter_02_Scene_03_Convo_01)
+    HIGHLIGHT_CHARACTER(CHARACTER_BONE, 60)
+    Text(Chapter_02_Scene_04_Convo_01)
+    MOVE_WAIT(24, CHARACTER_BONE, 9, 14)
+    MOVE_POSITION_WAIT(0, 12, 5, 12, 3)
+    SOUN(SFX_VILLAGE_DESTROYED)
+    TILECHANGE_COORDINATES(12, 2)
+    SOUN(SFX_WEAPON_BROKE)
+    NOTIFY(NOTIFY_village_was_destroyed, SFX_NULL)
+    LOAD_WAIT_PERSIST(CH2_ROSS_GARCIA)
+    SET_UNIT_HP(CHARACTER_ROSS, 5)
+    HIGHLIGHT_CHARACTER(CHARACTER_ROSS, 60)
+    Text(Chapter_02_Scene_05_Convo_01)
+    LOAD_WAIT_PERSIST(CH2_PLAYER_UNITS)
+    HIGHLIGHT_CHARACTER(CHARACTER_TANA, 60)
+    Text(Chapter_02_Scene_06_Convo_01)
+    MOVE_WAIT(24, CHARACTER_TANA, 2, 3)
+    HIGHLIGHT_CHARACTER(CHARACTER_TANA, 60)
+    Text(Chapter_02_Scene_06_Convo_02)
+    HIGHLIGHT_CHARACTER(CHARACTER_MOULDER, 60)
+    Text(Chapter_02_Scene_06_Convo_03)
     NoFade
     ENDA
 };
 
 static const EventScr EventScr_Ending[] = {
     MUSC(BGM_VICTORY)
-    Text_BG(0x1D, Chapter_00_Scene_03_Convo_06)
+    TEXT_BG_HIDE_MAP(0x1D, Chapter_02_Scene_07_Convo_01)
     FADE_OUT_SCREEN(16)
-    NEXT_CHAPTER_WITH_MAP(0x38)
-    REMA
-    SET_FLAG(GUIDE_SUSPEND)
-    SET_FLAG(GUIDE_SAVE)
-    SET_FLAG(GUIDE_MOVEMENT_RANGE)
-    SET_FLAG(GUIDE_VIEWING_UNITS)
-    SET_FLAG(GUIDE_GAME_FLOW)
-    SET_FLAG(GUIDE_DEFEAT_A_BOSS)
-    SET_FLAG(GUIDE_ATTACK_RANGE)
-    SET_FLAG(GUIDE_STRATEGIC_BATTLE_INFO)
-    SET_FLAG(GUIDE_DETAILED_BATTLE_INFO)
-    SET_FLAG(GUIDE_LEVELING_UP)
-    SET_FLAG(GUIDE_WEAPON_DURABILITY)
+    TEXT_BG_HIDE_MAP(0x4, Chapter_02_Scene_08_Convo_01)
+    FADE_OUT_SCREEN(16)
+    MUSCSLOW(0x7FFF)
+    SetBackground(0x20)
+    Text(Chapter_02_Scene_09_Convo_01)
+    FADE_TO_WHITE(4)
+    SetBackground(0x16)
+    MUSC(BGM_BIRDS_CHIRPING)
+    BROWNBOXTEXT(THREE_YEARS_AGO, 2, 2)
+    Text(Chapter_02_Scene_10_Convo_01)
+    FADE_TO_WHITE(4)
+    TEXT_BG_HIDE_MAP(0x20, Chapter_02_Scene_11_Convo_01)
+    FADE_OUT_SCREEN(16)
+    TEXT_BG_HIDE_MAP(0x20, Chapter_02_Scene_12_Convo_01)
+    FADE_OUT_SCREEN(16)
+    NEXT_CHAPTER_WITH_MAP(0x3) // Chapter 3 - Bandits of Borgo
     ENDA
 };
 
 /**
  * Misc events
  */
-static const EventListScr EventScr_Talk_FRANZ_SETH[] = {
-    ConvoEvent(Chapter_01_Scene_06_Convo_01)
-};
-
-static const EventListScr EventScr_Talk_FRANZ_EIRIKA[] = {
-    ConvoEvent(Chapter_01_Scene_07_Convo_01)
-};
-
-static const EventListScr EventScr_FRANZ_RETURNS[] = {
-    CHECK_TURNS //Store current turn count in slot C
-    SVAL(EVT_SLOT_7, 2)
-    BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
-    MUSC(BGM_COMRADES)
-    LOAD_WAIT_PERSIST(CH1_REINFORCEMENTS_ALLIES)
-    HIGHLIGHT_CHARACTER(CHARACTER_FRANZ, 60)
-    Text(Chapter_01_Scene_05_Convo_01)
-    GOTO(0x1)
-
-LABEL(0x0)
-    CHECK_EVENTID_
-    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
-    ENUF_SLOT2
-
-LABEL(0x1)
+static const EventListScr EventScr_Talk_ROSS_EIRIKA[] = {
+    CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
+    STAL(33)
+    Text(Chapter_02_Ross_Eirika)
+    RESTORE_PREVIOUS_MUSIC
+    CHANGE_TO_BLUE(CHARACTER_ROSS)
     NoFade
     ENDA
 };
 
-static const EventListScr EventListScr_HOUSE_TALK_1[] = {
-    HouseEvent(Chapter_01_Scene_08_Convo_01, 0x0)
-    END_MAIN
+static const EventListScr EventScr_Talk_ROSS_GARCIA[] = {
+    CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
+    STAL(33)
+    ConvoEvent(Chapter_02_Ross_Garcia)
+    RESTORE_PREVIOUS_MUSIC
+    NoFade
+    ENDA
 };
 
-static const EventListScr EventListScr_HOUSE_TALK_2[] = {
-    HouseEvent(Chapter_01_Scene_09_Convo_01, 0x0)
-    END_MAIN
+static const EventListScr EventListScr_VILLAGE_1_TALK[] = {
+    CHECK_ACTIVE
+    SVAL(EVT_SLOT_1, CHARACTER_EIRIKA)
+    BEQ(0x0, EVT_SLOT_C, EVT_SLOT_1)
+    GOTO(0x1)
+
+LABEL(0x0)
+    HOUSE_EVENT_NO_END(0x2, Chapter_02_Village_01_Eirika)
+    GOTO(0x2)
+
+LABEL(0x1)
+    HOUSE_EVENT_NO_END(0x2, Chapter_02_Village_01_Generic)
+    GOTO(0x2)
+
+LABEL(0x2)
+    CALL(EventScr_RemoveBGIfNeeded) // This is vital, the game crashes without it for this event
+    GIVE_ITEM_TO(ITEM_REDGEM, CHARACTER_EVT_ACTIVE)
+    NoFade
+    ENDA
+};
+
+static const EventListScr EventListScr_VILLAGE_2_TALK[] = {
+    HOUSE_EVENT_NO_END(0x2, Chapter_02_Village_02)
+    CALL(EventScr_RemoveBGIfNeeded)
+    GIVE_ITEM_TO(ITEM_ELIXIR, CHARACTER_EVT_ACTIVE)
+    NoFade
+    ENDA
+};
+
+static const EventListScr EventListScr_VILLAGE_3_TALK[] = {
+    HOUSE_EVENT_NO_END(0x2, Chapter_02_Village_03)
+    CALL(EventScr_RemoveBGIfNeeded)
+    GIVE_ITEM_TO(ITEM_ANTITOXIN, CHARACTER_EVT_ACTIVE)
+    NoFade
+    ENDA
+};
+
+static const u16 ShopList_Event_WeaponShop[] = {
+    ITEM_SWORD_SLIM,
+    ITEM_SWORD_IRON,
+    ITEM_LANCE_SLIM,
+    ITEM_LANCE_IRON,
+    ITEM_AXE_IRON,
 };
 
 /**
  * Event list
  */
 static const EventListScr EventListScr_Turn[] = {
-    AFEV(EVFLAG_TMP(7), EventScr_FRANZ_RETURNS, 0)
     END_MAIN
 };
 
 static const EventListScr EventListScr_Character[] = {
-    CharacterEventBothWays(EVFLAG_TMP(8), EventScr_Talk_FRANZ_SETH, CHARACTER_FRANZ, CHARACTER_SETH)
-    CharacterEventBothWays(EVFLAG_TMP(9), EventScr_Talk_FRANZ_EIRIKA, CHARACTER_FRANZ, CHARACTER_EIRIKA)
+    CharacterEventBothWays(EVFLAG_TMP(7), EventScr_Talk_ROSS_EIRIKA, CHARACTER_ROSS, CHARACTER_EIRIKA)
+    CharacterEventBothWays(EVFLAG_TMP(8), EventScr_Talk_ROSS_GARCIA, CHARACTER_ROSS, CHARACTER_GARCIA)
     END_MAIN
 };
 
-static const EventListScr EventListScr_ESCAPE_TILE_1[] = {
-    ESCAPE_LOGIC(14, 9)
-};
-
 static const EventListScr EventListScr_Location[] = {
-    House(EVFLAG_TMP(5), EventListScr_HOUSE_TALK_1, 10, 4)
-    House(EVFLAG_TMP(6), EventListScr_HOUSE_TALK_2, 13, 6)
-
-    ESCAPE_TILE(EVFLAG_TMP(10), EventListScr_ESCAPE_TILE_1, 14, 9)
+    Village(EVFLAG_TMP(9), EventListScr_VILLAGE_1_TALK, 1, 12)
+    Village(EVFLAG_TMP(10), EventListScr_VILLAGE_2_TALK, 7, 2)
+    Village(EVFLAG_TMP(11), EventListScr_VILLAGE_3_TALK, 4, 2)
+    Armory(ShopList_Event_WeaponShop, 5, 7)
     END_MAIN
 };
 
