@@ -118,7 +118,7 @@ static const EventScr EventScr_Beginning[] = {
     CLEAN
     FADE_IN_SCREEN(16)
     LOAD_WAIT_PERSIST(CH2_TANA)
-    MUSCMID(0x7FFF)
+    MUSCMID(MUTE)
     LOAD_WAIT_PERSIST(CH2_BANDITS)
     LOAD_WAIT_PERSIST(CH2_BAZBA)
     STAL(60)
@@ -160,7 +160,7 @@ static const EventScr EventScr_Ending[] = {
     FADE_OUT_SCREEN(16)
     TEXT_BG_HIDE_MAP(0x4, Chapter_02_Scene_08_Convo_01)
     FADE_OUT_SCREEN(16)
-    MUSCSLOW(0x7FFF)
+    MUSCSLOW(MUTE)
     SetBackground(0x20)
     Text(Chapter_02_Scene_09_Convo_01)
     FADE_TO_WHITE(4)

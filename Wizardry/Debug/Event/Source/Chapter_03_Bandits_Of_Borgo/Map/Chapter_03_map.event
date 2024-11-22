@@ -24,54 +24,64 @@
 
 ALIGN 4
 MapData:
-  #incbin "Chapter_02_map_data.dmp"
+  #incbin "Chapter_03_map_data.dmp"
 
-SetChapterData(2, 0x1, 0, 0x2, 0x3, 0xB, MapData, 0, 0, 0xC)
+SetChapterData(3, 0x0E, 0, 0x0F, 0x10, 0x11, MapData, 0, 0, 0x13)
 
 ALIGN 4
 Map_Change_0:
-  SHORT $E1C $E20 $E24 $E9C $EA0 $EA4 $F1C $F20 $F24
+  SHORT $A38 $0 $690 $710
 
 ALIGN 4
 Map_Change_1:
-  SHORT $E1C $E20 $E24 $E9C $EA0 $EA4 $F1C $F20 $F24
+  SHORT $A38 $0 $690 $710
 
 ALIGN 4
 Map_Change_2:
-  SHORT $E1C $E20 $E24 $E9C $EA0 $EA4 $F1C $F20 $F24
+  SHORT $A38 $0 $690 $838
 
 ALIGN 4
 Map_Change_3:
-  SHORT $E1C $E20 $E24 $E9C $EA0 $EA4 $F1C $F20 $F24
+  SHORT $8BC $934
 
 ALIGN 4
 Map_Change_4:
-  SHORT $80
+  SHORT $718
 
 ALIGN 4
 Map_Change_5:
-  SHORT $80
+  SHORT $8BC
 
 ALIGN 4
 Map_Change_6:
-  SHORT $80
+  SHORT $100
 
 ALIGN 4
 Map_Change_7:
-  SHORT $80
+  SHORT $100
+
+ALIGN 4
+Map_Change_8:
+  SHORT $100
+
+ALIGN 4
+Map_Change_9:
+  SHORT $100
 
 ALIGN 4
 MapChangesData:
-  TileMap(0, 3, 0, 3, 3, Map_Change_0)
-  TileMap(1, 6, 0, 3, 3, Map_Change_1)
-  TileMap(2, 11, 1, 3, 3, Map_Change_2)
-  TileMap(3, 0, 10, 3, 3, Map_Change_3)
-  TileMap(4, 4, 2, 1, 1, Map_Change_4)
-  TileMap(5, 7, 2, 1, 1, Map_Change_5)
-  TileMap(6, 12, 3, 1, 1, Map_Change_6)
-  TileMap(7, 1, 12, 1, 1, Map_Change_7)
+  TileMap(0, 4, 8, 2, 2, Map_Change_0)
+  TileMap(1, 4, 11, 2, 2, Map_Change_1)
+  TileMap(2, 8, 7, 2, 2, Map_Change_2)
+  TileMap(3, 2, 3, 1, 2, Map_Change_3)
+  TileMap(4, 6, 10, 1, 1, Map_Change_4)
+  TileMap(5, 10, 5, 1, 1, Map_Change_5)
+  TileMap(6, 6, 3, 1, 1, Map_Change_6)
+  TileMap(7, 8, 3, 1, 1, Map_Change_7)
+  TileMap(8, 10, 3, 1, 1, Map_Change_8)
+  TileMap(9, 6, 12, 1, 1, Map_Change_9)
   TileMapEnd
 
-EventPointerTable(0xC, MapChangesData)
+EventPointerTable(0x13, MapChangesData)
 
 }

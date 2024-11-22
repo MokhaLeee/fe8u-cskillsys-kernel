@@ -877,17 +877,41 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
              * WM events I want based on the supplied eventSCR. It's an unfortunate bit of hardcoding
              * I'm looking to remove, but it frees me from having to rely on the list in ASM in vailla.
              */
-            int EventID = GetROMChapterStruct(chIndex)->gmapEventId;
+            int eventID = GetROMChapterStruct(chIndex)->gmapEventId;
             
-            switch (EventID) {
+            switch (eventID) {
             case 2:
                 CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
                 break;
             case 3:
                 CallEvent((const u16 *)EventScrWM_Ch2_SET_NODE, 0);
                 break;
+            case 4:
+                CallEvent((const u16 *)EventScrWM_Ch3_SET_NODE, 0);
+                break;
+            // case 5:
+            //     CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
+            //     break;
+            // case 6:
+            //     CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
+            //     break;
+            // case 7:
+            //     CallEvent((const u16 *)EventScrWM_Ch6_SET_NODE, 0);
+            //     break;
+            // case 8:
+            //     CallEvent((const u16 *)EventScrWM_Ch7_SET_NODE, 0);
+            //     break;
+            // case 9:
+            //     CallEvent((const u16 *)EventScrWM_Ch8_SET_NODE, 0);
+            //     break;
+            // case 10:
+            //     CallEvent((const u16 *)EventScrWM_Ch9_SET_NODE, 0);
+            //     break;
+            // case 11:
+            //     CallEvent((const u16 *)EventScrWM_Ch10_SET_NODE, 0);
+            //     break;
             default: 
-                CallEvent(Events_WM_Beginning[GetROMChapterStruct(chIndex)->gmapEventId], 0);
+                CallEvent(Events_WM_Beginning[eventID], 0);
             }
         }
     }
@@ -908,17 +932,79 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         * WM events I want based on the supplied eventSCR. It's an unfortunate bit of hardcoding
         * I'm looking to remove, but it frees me from having to rely on the list in ASM in vailla.
         */
-        int EventID = GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId;
+        int eventID = GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId;
             
-        switch (EventID) {
+        switch (eventID) {
+        case 2:
+            CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
+            break;
         case 3:
             CallEvent((const u16 *)EventScrWM_Ch2_TRAVEL_TO_NODE, 0);
             break;
+        case 4:
+            CallEvent((const u16 *)EventScrWM_Ch3_TRAVEL_TO_NODE, 0);
+            break;
+        // case 5:
+        //     CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
+        //     break;
+        // case 6:
+        //     CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
+        //     break;
+        // case 7:
+        //     CallEvent((const u16 *)EventScrWM_Ch6_SET_NODE, 0);
+        //     break;
+        // case 8:
+        //     CallEvent((const u16 *)EventScrWM_Ch7_SET_NODE, 0);
+        //     break;
+        // case 9:
+        //     CallEvent((const u16 *)EventScrWM_Ch8_SET_NODE, 0);
+        //     break;
+        // case 10:
+        //     CallEvent((const u16 *)EventScrWM_Ch9_SET_NODE, 0);
+        //     break;
+        // case 11:
+        //     CallEvent((const u16 *)EventScrWM_Ch10_SET_NODE, 0);
+        //     break;
         default: 
-            CallEvent(Events_WM_ChapterIntro[GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId], 0);
+            CallEvent(Events_WM_Beginning[eventID], 0);
         }
 
         StartWMFaceCtrl(proc);
         StartGmapMuEntry(NULL);
     }
 }
+
+LYN_REPLACE_CHECK(Event97_WmInitNextStoryNode);
+//! FE8U = 0x0800C2DC
+u8 Event97_WmInitNextStoryNode(struct EventEngineProc * proc)
+{
+    // struct WorldMapMainProc * worldMapProc;
+
+    int nodeId = WMLoc_GetNextLocId(gGMData.current_node);
+
+    if (nodeId < 0)
+    {
+        return EVC_ADVANCE_CONTINUE;
+    }
+
+    if (EVENT_IS_SKIPPING(proc))
+    {
+        ResetGmStoryNode();
+        gGMData.nodes[nodeId].state |= 1;
+        gGMData.nodes[nodeId].state |= 2;
+
+        GM_ICON->nodeId = nodeId;
+        GM_ICON->merge_next_node = true;
+    }
+    else
+    {
+        if (!(gGMData.nodes[nodeId].state & 1))
+        {
+            StartGmBaseEntry(nodeId, 0, NULL);
+            ResetGmStoryNode();
+            gGMData.nodes[nodeId].state |= 2;
+        }
+    }
+
+    return EVC_ADVANCE_CONTINUE;
+};

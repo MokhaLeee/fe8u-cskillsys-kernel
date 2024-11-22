@@ -1,20 +1,21 @@
 #include "common-chax.h"
 #include "jester_headers/soundtrack-ids.h"
+#include "constants/texts.h"
 
-const struct ROMChapterData Chapter02 = {
+const struct ROMChapterData Chapter03 = {
     .map = {
-       .obj1Id = 1,
+       .obj1Id = 0xE,
        .obj2Id= 0,
-       .paletteId = 2,
+       .paletteId = 0xF,
        .tileConfigId = 3,
-       .mainLayerId = 0xB, // Map pointer. In blocks of 4 per chapter
-       .objAnimId = 5,
+       .mainLayerId = 0x11, // Map pointer. In blocks of 4 per chapter
+       .objAnimId = 0x12,
        .paletteAnimId = 0,
-       .changeLayerId = 0xC,
+       .changeLayerId = 0x13,
     },
     .initialFogLevel = 0,
     .hasPrepScreen = FALSE,
-    .chapTitleId = 0x02, // Chapter 2 - The Protected
+    .chapTitleId = 0x03, // Chapter 3 - The Bandits of Borgo
     .chapTitleIdInHectorStory = 0,
     .initialPosX = 8,   // Starting position of the camera
     .initialPosY = 5,
@@ -37,13 +38,13 @@ const struct ROMChapterData Chapter02 = {
         [MAP_BGM_PROLOGUE_HECTOR] = 65535,
     },
     .mapCrackedWallHeath = 50,
-    .mapEventDataId = 0xD,
-    .gmapEventId = 4,
+    .mapEventDataId = 0x14,
+    .gmapEventId = 6,
     .victorySongEnemyThreshold = BGM_THE_VALIANT,
     .fadeToBlack = TRUE,
-    .statusObjectiveTextId = 0x1A5,
+    .statusObjectiveTextId = CC_SEIZE_THE_THRONE,
     .goalWindowTextId = 414,
-    .goalWindowDataType = GOAL_TYPE_DEFEAT_ALL,
+    .goalWindowDataType = GOAL_TYPE_SEIZE,
     .goalWindowEndTurnNumber = 0,
     .protectCharacterIndex = 0,
     .destPosX = 255,

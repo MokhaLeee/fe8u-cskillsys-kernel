@@ -33,7 +33,7 @@ static const EventScr EventScr_Beginning[] = {
     TEXTEND
     SetBackground(0x35)
     REMA
-    MUSIC_FADEOUT(0x7FFF)
+    MUSIC_FADEOUT(MUTE)
     TEXTCONT
     TEXTEND
     MUSC(BGM_INTO_THE_SHADOWS_OF_VICTORY)
@@ -47,7 +47,7 @@ static const EventScr EventScr_Beginning[] = {
     TEXTSHOW(Chapter_01_Scene_11_Convo_02)
     TEXTEND
     SetBackground(0x35)
-    MUSIC_FADEOUT(0x7FFF)
+    MUSIC_FADEOUT(MUTE)
     FADE_OUT_SCREEN(8)
     MUSC(BGM_INTO_THE_SHADOWS_OF_VICTORY)
     FADE_IN_SCREEN(8)

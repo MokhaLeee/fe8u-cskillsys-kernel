@@ -223,15 +223,15 @@ static const EventListScr EventListScr_Character[] = {
     END_MAIN
 };
 
-static const EventListScr EventListScr_ESCAPE_TILE_1[] = {
-    ESCAPE_LOGIC(14, 9)
-};
+// static const EventListScr EventListScr_ESCAPE_TILE_1[] = {
+//     ESCAPE_LOGIC(14, 9)
+// };
 
 static const EventListScr EventListScr_Location[] = {
     House(EVFLAG_TMP(5), EventListScr_HOUSE_TALK_1, 10, 4)
     House(EVFLAG_TMP(6), EventListScr_HOUSE_TALK_2, 13, 6)
 
-    ESCAPE_TILE(EVFLAG_TMP(10), EventListScr_ESCAPE_TILE_1, 14, 9)
+    // ESCAPE_TILE(EVFLAG_TMP(10), EventListScr_ESCAPE_TILE_1, 14, 9)
     END_MAIN
 };
 

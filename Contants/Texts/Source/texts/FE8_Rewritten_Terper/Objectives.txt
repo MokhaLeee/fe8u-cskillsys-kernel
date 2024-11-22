@@ -1,0 +1,32 @@
+## CC_DEFEAT_ONEILL
+Defeat O'Neil[X]
+
+## DCC_DEFEAT_ONEILL
+Defeat Boss[X]
+
+## CC_SEIZE_THE_CASTLEGATE
+Seize the castlegate[X]
+
+## DCC_SEIZE_GATE
+Seize gate[X]
+
+## CC_DEFEAT_ALL_BANDITS
+Defeat all bandits[X]
+
+## DCC_DEFEAT_ENEMY
+Defeat enemy[X]
+
+## CC_SEIZE_THE_THRONE
+Seize the throne[X]
+
+## DCC_SEIZE_THRONE
+Seize throne[X]
+
+## CC_DEFEAT_ALL_MONSTERS
+Defeat all monsters
+
+## CC_DEFEAR_SAAR
+Defeat Saar[X]
+
+## CC_DEFEAT_NOVALA
+Defeat Novala[X]

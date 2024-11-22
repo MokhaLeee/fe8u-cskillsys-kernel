@@ -71,3 +71,5 @@ W.I.P.[X]
 #include texts/FE8_Rewritten_Terper/Miscellaneous.txt
 #include texts/FE8_Rewritten_Terper/WM_Texts.txt
 #include texts/FE8_Rewritten_Terper/Notifications.txt
+#include texts/FE8_Rewritten_Terper/Objectives.txt
+#include texts/FE8_Rewritten_Terper/Brown_Box_Text.txt

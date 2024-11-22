@@ -238,10 +238,36 @@ LABEL(0x0) \
 #define CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(musicID) MUSS(musicID)
 #define RESTORE_PREVIOUS_MUSIC MURE(0x2)
 
+enum {
+    BLACK_BACKGROUND = 0x35
+};
+
 #define TEXT_BG_HIDE_MAP(bg, msg) \
     SetBackground(bg) \
     TEXTSTART \
     TEXTSHOW(msg) \
     TEXTEND \
-    SetBackground(0x35) \
+    SetBackground(BLACK_BACKGROUND) \
     REMA
+
+#define MOVE_CAMERA_TO_UNIT_CENTER(unit) CAMERA2_CAHR(unit)
+#define MOVE_CAMERA_TO_UNIT(unit) CAMERA_CAHR(unit)
+#define MOVE_CAMERA_TO_POSITION(x, y) CAMERA2(x, y)
+
+#define MOVE_ONTO_LEADER(unit) \
+    SVAL(EVT_SLOT_2, unit) \
+    CHECK_ALIVE(-3) \
+    BEQ(0x0, EVT_SLOT_C, EVT_SLOT_0) \
+    CHECK_DEPLOYED(-3) \
+    BEQ(0x0, EVT_SLOT_C, EVT_SLOT_0) \
+    GOTO(0x63) \
+LABEL(0x0) \
+    MOVEONTO(0, -3, 0) \
+    ENUN \
+    REMU(-3) \
+LABEL(0x63) \
+    ENDA
+
+#define MOVE_CLOSEST_ENUN(frames, unitID, x, y) \
+    MOVE_CLOSEST(frames, unitID, x, y) \
+    ENUN
