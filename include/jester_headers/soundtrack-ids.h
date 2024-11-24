@@ -16,6 +16,7 @@ enum {
     BGM_RAID                = 0x26,
     BGM_LEGACY              = 0x28,
     BGM_SORROW              = 0x29,
+    BGM_LAUGHTER            = 0x2A,
     BGM_SOLVE_THE_RIDDLE    = 0x2B,
     BGM_VICTORY             = 0x31,
     BGM_INTO_THE_SHADOWS_OF_VICTORY = 0x32,
@@ -28,6 +29,7 @@ enum {
 // SFX track IDs
 enum {
     SFX_NULL                = 0x00,
+    SFX_BIRDS_CHIRPING      = 0x52,
     SFX_WEAPON_BROKE        = 0x5C,
     SFX_VILLAGE_DESTROYED   = 0xAB,
     SFX_UNLOCKING_DOOR      = 0xB1,

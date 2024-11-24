@@ -1,11 +1,4 @@
-## Chapter_04_Scene_05_Convo_01
-[OpenMidLeft][LoadFace_Artur]
-One of my companions is in that village[N]
-to the south.[A][N]
-If any of you can get over there swiftly,[N]
-I implore you to watch over her safety.[A][X]
-
-## Chapter_04_Scene_06_Convo_01
+## Chapter_04_ROSS
 [OpenMidLeft][LoadFace_Ross]
 Woah, do you guys here that?[A][N]
 [OpenFarFarRight]
@@ -21,12 +14,12 @@ That, that sounds like dad![A][N]
 So he did follow![A][N]
 I better go talk to him.[A][X]
 
-## Chapter_04_Scene_06_Convo_02
+## Chapter_04_GARCIA
 [OpenMidRight][LoadFace_Garcia]
 Ross![A][N]
 Son, where are you?[A][X]
 
-## Chapter_04_Scene_07_Convo_01
+## Chapter_04_ROSS_AND_GARCIA
 [OpenMidRight][LoadFace_Garcia]
 [OpenMidLeft][LoadFace_Ross]
 Woah, dad![A][N]
@@ -53,4 +46,30 @@ W-woah![A][N]
 [ClearFace]
 [OpenMidRight][LoadFace_Ross]
 ...[A] Guess we'll have to catch up[N]
-after we clear out all these undead.[A][X]
+after we clear out these... things.[A][X]
+
+## Chapter_04_LARACHEL
+[OpenMidRight][LoadFace_Larachel]
+Oh my, oh my![A][N]
+Those travelers are being besieged[N]
+by the agents of darkness![A][N]
+[OpenMidLeft][LoadFace_Dozla]
+Ha ha ha! Right you[N]
+are, Lady L'Arachel.[A][N]
+[OpenMidRight]
+We cannot allow this![N]
+Come![A][N]
+We must charge down these cliffs[N]
+and rush to their aid![A][N]
+[OpenMidLeft][LoadFace_Rennac]
+Uh, we charge down these cliffs and the[N]
+only thing we'll be rushing to is death.[A][N]
+I mean, quicker than in general.[A][N]
+How about we find a nice, gentle[N]
+path down, hm?[A][N]
+[OpenMidRight]
+...[A] Yes, well...[A] Let us[N]
+hurry nonetheless.[A][N]
+We simple canot abide these[N]
+fiends running amok![A][N]
+Let us gently hurry to their aid![A][X]

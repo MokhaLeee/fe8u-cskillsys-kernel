@@ -9,5 +9,6 @@ PUSH
     #include "Source/Intermission/Intermission.lyn.event"
     #include "Source/Chapter_02_The_Protected/Chapter_02_The_Protected.lyn.event"
     #include "Source/Chapter_03_Bandits_Of_Borgo/Chapter_03_Bandits_Of_Borgo.lyn.event"
+    #include "Source/Chapter_04_Ancient_Horrors/Chapter_04_Ancient_Horrors.lyn.event"
 }
 POP

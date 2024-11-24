@@ -17,13 +17,12 @@
     EventPointerTable(0x14, Chapter03Event)
     #include "Source/Chapter_03_Bandits_Of_Borgo/Chapter_03_Bandits_Of_Borgo.lyn.event"
     #include "Source/Chapter_03_Bandits_Of_Borgo/Map/Chapter_03_map.event"
-
-    // EventPointerTable(0x17, Chapter04Event)
-    // #include "Source/Chapter_04_Ancient_Horrors/Map/Chapter_04_map.event"
-    // EventPointerTable(0x7F, InsideGradoCastle)
-    #include "Source/Inside_Grado_Castle/Map/Inside_Grado_Castle.event"
-    // EventPointerTable(0xC5, OutsideGradoCastle)
-    #include "Source/Outside_Grado_Castle/Map/Outside_Grado_Castle.event"
+    EventPointerTable(0x17, Chapter04Event)
+    #include "Source/Chapter_04_Ancient_Horrors/Chapter_04_Ancient_Horrors.lyn.event"
+    #include "Source/Chapter_04_Ancient_Horrors/Map/Chapter_04_map.event"
 }
 
     #include "Source/World_Map_Events.lyn.event"
+
+    #include "Source/Inside_Grado_Castle/Map/Inside_Grado_Castle.event"
+    #include "Source/Outside_Grado_Castle/Map/Outside_Grado_Castle.event"

@@ -889,9 +889,9 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             case 4:
                 CallEvent((const u16 *)EventScrWM_Ch3_SET_NODE, 0);
                 break;
-            // case 5:
-            //     CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
-            //     break;
+            case 5:
+                CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
+                break;
             // case 6:
             //     CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
             //     break;
@@ -944,9 +944,9 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         case 4:
             CallEvent((const u16 *)EventScrWM_Ch3_TRAVEL_TO_NODE, 0);
             break;
-        // case 5:
-        //     CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
-        //     break;
+        case 5:
+            CallEvent((const u16 *)EventScrWM_Ch4_TRAVEL_TO_NODE, 0);
+            break;
         // case 6:
         //     CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
         //     break;
@@ -1008,3 +1008,14 @@ u8 Event97_WmInitNextStoryNode(struct EventEngineProc * proc)
 
     return EVC_ADVANCE_CONTINUE;
 };
+
+LYN_REPLACE_CHECK(Event3E_PrepScreenCall);
+//! FE8U = 0x08010968
+u8 Event3E_PrepScreenCall(struct EventEngineProc * proc)
+{
+    HideAllUnits();
+    ClearFlag(0x84);
+    Proc_StartBlocking(gProcScr_SALLYCURSOR, proc);
+
+    return EVC_ADVANCE_YIELD;
+}
