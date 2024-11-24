@@ -71,6 +71,21 @@ static const struct UnitDefinition CH4_ARTUR[] = {
     {},
 };
 
+static const struct REDA REDAs_LUTE[] = {
+    { .x = 1, .y = 12, .b = -1, .delayFrames = 0, },
+};
+
+static const struct UnitDefinition CH4_LUTE[] = {
+    UNIT_ENTRY(CHARACTER_LUTE, CLASS_MAGE_F, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 1, 11, 1, REDAs_LUTE, 0, 0, 0, 0, ITEM_ANIMA_FIRE, ITEM_VULNERARY),
+    {},
+};
+
+static const struct UnitDefinition CH4_EIRIKA_SETH[] = {
+    UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 8, 5, 1, REDAs_LUTE, 0, 0, 0, 0, ITEM_ANIMA_FIRE, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_SETH, CLASS_PALADIN, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 8, 4, 1, REDAs_LUTE, 0, 0, 0, 0, ITEM_ANIMA_FIRE, ITEM_VULNERARY),
+    {},
+};
+
 /**
  * Enemy unit and REDA definitions
  */
@@ -95,49 +110,84 @@ static const struct UnitDefinition CH4_ENEMY_UNITS[] = {
     {}
 };
 
-// static const struct UnitDefinition CH3_GRADO_1[] = {
-//     UNIT_ENTRY(CHARACTER_VIGARDE, CLASS_GENERAL, FACTION_ID_RED,  NO_ITEM_DROP, NO_AUTOLEVEL, 6, 14, 2, 1, REDAs_VIGARDE_ENEMY, 3, 3, 9, 20, ITEM_AXE_STEEL, ITEM_AXE_HANDAXE), 
-//     UNIT_ENTRY(CHARACTER_LYON, CLASS_NECROMANCER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 3, 15, 3, 1, REDAs_LYON_ENEMY, 0, 3, 9, 0, ITEM_AXE_IRON),
-//     UNIT_ENTRY(CHARACTER_DUESSEL, CLASS_GREAT_KNIGHT, FACTION_ID_RED,  NO_ITEM_DROP, AUTOLEVEL, 2, 14, 5, 1, REDAs_DUESSEL_ENEMY, 0, 3, 9, 0, ITEM_AXE_HANDAXE),
-//     UNIT_ENTRY(CHARACTER_GLEN, CLASS_WYVERN_LORD, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 2, 13, 5, 1, REDAs_GLEN_ENEMY, 0, 12, 9, 0, ITEM_AXE_IRON, ITEM_VULNERARY),
-//     UNIT_ENTRY(CHARACTER_SELENA, CLASS_MAGE_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 4, 15, 5, 1, REDAs_SELENA_ENEMY, 0, 3, 9, 0, ITEM_BOW_IRON),
-//     {}
-// };
+static const struct REDA REDAs_BONEWALKER1_ENEMY[] = {
+    { .x = 13, .y = 9, .b = -1, .delayFrames = 0, },
+};
 
-// static const struct UnitDefinition CH3_GRADO_2[] = {
-//     UNIT_ENTRY(CHARACTER_RIEV, CLASS_BISHOP, FACTION_ID_RED,  NO_ITEM_DROP, NO_AUTOLEVEL, 6, 14, 10, 1, REDAs_RIEV_ENEMY, 3, 3, 9, 20, ITEM_AXE_STEEL, ITEM_AXE_HANDAXE), 
-//     UNIT_ENTRY(CHARACTER_CAELLACH, CLASS_HERO, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 3, 15, 10, 1, REDAs_CAELLACH_ENEMY, 0, 3, 9, 0, ITEM_AXE_IRON),
-//     UNIT_ENTRY(CHARACTER_VALTER, CLASS_WYVERN_KNIGHT, FACTION_ID_RED,  NO_ITEM_DROP, AUTOLEVEL, 2, 13, 10, 1, REDAs_VALTER_ENEMY, 0, 3, 9, 0, ITEM_AXE_HANDAXE),
-//     {}
-// };
+static const struct UnitDefinition CH4_ENEMY_REINFORCEMENTS_BONEWALKERS[] = {
+    UNIT_ENTRY(CHARACTER_MONSTER_AC, CLASS_BONEWALKER, FACTION_ID_RED,  NO_ITEM_DROP, AUTOLEVEL, 1, 14, 9, 1, REDAs_BONEWALKER1_ENEMY, 0, 0, 0xC, 0, ITEM_LANCE_IRON), 
+    UNIT_ENTRY(CHARACTER_MONSTER_AC, CLASS_BONEWALKER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 14, 8, 0, REDAs_NULL, 0, 0, 0xC, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_MONSTER_AC, CLASS_BONEWALKER, FACTION_ID_RED,  NO_ITEM_DROP, AUTOLEVEL, 2, 14, 6, 0, REDAs_NULL, 0, 0, 0xC, 0, ITEM_LANCE_IRON),
+    {}
+};
+
+static const struct REDA REDAs_REVENANT1_ENEMY[] = {
+    { .x = 2, .y = 0, .b = -1, .delayFrames = 0, },
+};
+static const struct REDA REDAs_REVENANT2_ENEMY[] = {
+    { .x = 0, .y = 2, .b = -1, .delayFrames = 0, },
+};
+static const struct REDA REDAs_REVENANT3_ENEMY[] = {
+    { .x = 0, .y = 1, .b = -1, .delayFrames = 0, },
+};
+
+static const struct UnitDefinition CH4_ENEMY_REINFORCEMENTS_REVENANTS[] = {
+    UNIT_ENTRY(CHARACTER_MONSTER_AA, CLASS_REVENANT, FACTION_ID_RED,  NO_ITEM_DROP, NO_AUTOLEVEL, 2, 0, 0, 0, REDAs_NULL, 0, 0, 0xC, 20, ITEM_MONSTER_FETIDCLW, ITEM_VULNERARY), 
+    UNIT_ENTRY(CHARACTER_MONSTER_AA, CLASS_REVENANT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 2, 0, 0, 1, REDAs_REVENANT1_ENEMY, 0, 0, 0xC, 0, ITEM_MONSTER_ROTTENCLW),
+    UNIT_ENTRY(CHARACTER_MONSTER_AA, CLASS_REVENANT, FACTION_ID_RED,  NO_ITEM_DROP, AUTOLEVEL, 2, 0, 0, 1, REDAs_REVENANT2_ENEMY, 0, 0, 0xC, 0, ITEM_MONSTER_ROTTENCLW),
+    UNIT_ENTRY(CHARACTER_MONSTER_AA, CLASS_REVENANT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 2, 0, 0, 1, REDAs_REVENANT3_ENEMY, 0, 0, 0xC, 0, ITEM_MONSTER_ROTTENCLW),
+    {}
+};
 
 /**
  * Green unit and REDA definitions
  */
 
-// static const struct REDA REDAs_COLM[] = {
-//     { .x = 0, .y = 5, .b = -1 },
-// };
-// static const struct REDA REDAs_ROSS[] = {
-//     { .x = 3, .y = 15, .b = -1 }, 
-// };
+static const struct REDA REDAs_LARACHEL1[] = {
+    { .x = 13, .y = 2, .b = -1 },
+};
+static const struct REDA REDAs_RENNAC1[] = {
+    { .x = 14, .y = 1, .b = -1 },
+};
+static const struct REDA REDAs_DOZLA1[] = {
+    { .x = 12, .y = 1, .b = -1 },
+};
 
-// static const struct UnitDefinition CH3_COLM[] = {
-//     UNIT_ENTRY(CHARACTER_COLM, CLASS_THIEF, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 2, 0, 5, 1, REDAs_COLM,  6, 5, 8, 1, ITEM_SWORD_IRON, ITEM_LOCKPICK, ITEM_VULNERARY),
-//     {}
-// };
+static const struct UnitDefinition CH4_LARACHEL_APPEARS[] = {
+    UNIT_ENTRY(CHARACTER_LARACHEL, CLASS_TROUBADOUR, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 2, 13, 0, 1, REDAs_LARACHEL1,  6, 5, 8, 1, ITEM_SWORD_IRON, ITEM_LOCKPICK, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_RENNAC, CLASS_ROGUE, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 2, 14, 0, 1, REDAs_RENNAC1,  6, 5, 8, 1, ITEM_SWORD_IRON, ITEM_LOCKPICK, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_DOZLA, CLASS_BERSERKER, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 2, 12, 0, 1, REDAs_DOZLA1,  6, 5, 8, 1, ITEM_SWORD_IRON, ITEM_LOCKPICK, ITEM_VULNERARY),
+    {}
+};
 
-// static const struct UnitDefinition CH3_ROSS[] = {
-//     UNIT_ENTRY(CHARACTER_ROSS, CLASS_JOURNEYMAN, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 1, 3, 15, 1, REDAs_ROSS,  0, 0xA, 0, 0, ITEM_AXE_HATCHET, ITEM_VULNERARY),
-//     {}
-// };
+static const struct REDA REDAs_LARACHEL_2[] = {
+    { .x = 13, .y = 5, .b = -1 },
+    { .x = 10, .y = 5, .b = -1 },
+};
+static const struct REDA REDAs_RENNAC_2[] = {
+    { .x = 11, .y = 4, .b = -1, .delayFrames = 16},
+};
+static const struct REDA REDAs_DOZLA_2[] = {
+    { .x = 11, .y = 6, .b = -1, .delayFrames = 16 },
+};
 
+static const struct UnitDefinition CH4_LARACHEL_APPEARS_2[] = {
+    UNIT_ENTRY(CHARACTER_LARACHEL, CLASS_TROUBADOUR, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 2, 13, 0, 2, REDAs_LARACHEL_2,  6, 14, 5, 1, ITEM_SWORD_IRON, ITEM_LOCKPICK, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_RENNAC, CLASS_ROGUE, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 2, 14, 0, 1, REDAs_RENNAC_2,  6, 14, 5, 1, ITEM_SWORD_IRON, ITEM_LOCKPICK, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_DOZLA, CLASS_BERSERKER, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 2, 12, 0, 1, REDAs_DOZLA_2,  6, 14, 6, 1, ITEM_SWORD_IRON, ITEM_LOCKPICK, ITEM_VULNERARY),
+    {}
+};
+
+static const struct UnitDefinition CH4_GARCIA_APPEARS[] = {
+    UNIT_ENTRY(CHARACTER_GARCIA, CLASS_FIGHTER, FACTION_ID_GREEN, NO_ITEM_DROP, NO_AUTOLEVEL, 5, 14, 7, 0, REDAs_NULL,  0, 0xA, 0, 0, ITEM_AXE_IRON, ITEM_AXE_HANDAXE, ITEM_VULNERARY),
+    {}
+};
 
 /**
  * Main events
  */
 static const EventScr EventScr_Beginning[] = {
-    LOAD_WAIT(CH4_PLAYER_UNITS)
+    LOAD_WAIT_PERSIST(CH4_PLAYER_UNITS)
     SOUN(SFX_BIRDS_CHIRPING)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
     Text_BG(0x23, Chapter_04_Scene_01_Convo_01)
@@ -183,44 +233,45 @@ static const EventScr EventScr_Beginning[] = {
     KILL(CHAR_EVT_ACTIVE_UNIT)
     ERASE(CHAR_EVT_ACTIVE_UNIT)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
-    Text(Chapter_04_Scene_04_Convo_03)
+    //Text(Chapter_04_Scene_04_Convo_03)
+    //PREP
     CALL(EventScr_08591FD8) // Prep screen
-    // MOVE_CAMERA_TO_POSITION(0, 0)
-    // FADE_IN_SCREEN(16)
-    // MUSC(BGM_DISTANT_ROADS)
-    // HIGHLIGHT_CHARACTER(CHARACTER_ARTUR, 60)
-    // Text(Chapter_04_Scene_05_Convo_01)
+    MOVE_CAMERA_TO_POSITION(0, 0)
+    FADE_IN_SCREEN(16)
+    MUSC(BGM_DISTANT_ROADS)
+    HIGHLIGHT_CHARACTER(CHARACTER_ARTUR, 60)
+    Text(Chapter_04_Scene_05_Convo_01)
     NoFade
     ENDA
 };
 
 static const EventScr EventScr_Ending[] = {
-//     MUSC(BGM_VICTORY)
-// /* If Lute wasn't recruited, then have her join */
-//     CHECK_EVENTID(EVFLAG_TMP(0x8))
-// 	SVAL(EVT_SLOT_0, 0x1)
-// 	BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
-//     GOTO(0x2)
-// LABEL(0x1)
-//     TEXT_BG_HIDE_MAP(0x2, Chapter_04_Scene_06_Convo_01)
-//     LOAD_WAIT_PERSIST(CH4_LUTE)
-//     GOTO(0x2)
-// LABEL(0x2)
-//     MUSC(BGM_INTO_THE_SHADOWS_OF_VICTORY)
-//     TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_07_Convo_01)
-//     TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_08_Convo_01)
-//     FADE_OUT_SCREEN(16)
-//     MUSC(BGM_NULL)
-//     CLEAN
-//     MOVE_CAMERA_TO_POSITION(7, 7)
-//     CLEAR_ALL_UNITS
-//     LOAD_WAIT(CH4_EIRIKA_SETH)
-//     FADE_IN_SCREEN(16)
-//     LOAD_WAIT(CH4_LARACHEL)
-//     MUSC(BGM_LAUGHTER)
-//     HIGHLIGHT(60, CHARACTER_LARACHEL)
-//     TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_09_Convo_01)
-//     TEXT_BG_HIDE_MAP(0x19, Chapter_04_Scene_10_Convo_01)
+    MUSC(BGM_VICTORY)
+/* If Lute wasn't recruited, then have her join here */
+    CHECK_EVENTID(EVFLAG_TMP(0x8))
+	SVAL(EVT_SLOT_0, 0x1)
+	BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
+    GOTO(0x2)
+LABEL(0x1)
+    TEXT_BG_HIDE_MAP(0x2, Chapter_04_Scene_06_Convo_01)
+    LOAD_WAIT_PERSIST(CH4_LUTE)
+    GOTO(0x2)
+LABEL(0x2)
+    MUSC(BGM_INTO_THE_SHADOWS_OF_VICTORY)
+    TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_07_Convo_01)
+    TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_08_Convo_01)
+    FADE_OUT_SCREEN(16)
+    MUSC(BGM_NULL)
+    CLEAN
+    MOVE_CAMERA_TO_POSITION(7, 7)
+    CLEAR_ALL_UNITS
+    LOAD_WAIT(CH4_EIRIKA_SETH)
+    FADE_IN_SCREEN(16)
+    LOAD_WAIT(CH4_LARACHEL_APPEARS_2)
+    MUSC(BGM_LAUGHTER)
+    HIGHLIGHT_CHARACTER(CHARACTER_LARACHEL, 60)
+    TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_09_Convo_01)
+    TEXT_BG_HIDE_MAP(0x19, Chapter_04_Scene_10_Convo_01)
     NEXT_CHAPTER_WITH_MAP(0x5) // Chapter 5 - The Empire's Reach
     ENDA
 };
@@ -228,96 +279,165 @@ static const EventScr EventScr_Ending[] = {
 /**
  * Misc events
  */
-// static const EventListScr EventScr_COLM_APPEARS[] = {
-//     CHECK_TURNS //Store current turn count in slot C
-//     SVAL(EVT_SLOT_7, 1)
-//     BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
-//     MOVE_CAMERA_TO_POSITION(0, 0)
-//     STAL(15)
-//     LOAD_WAIT_PERSIST(CH3_COLM)
-//     MUSC(BGM_BINDING_VOW)
-//     HIGHLIGHT_CHARACTER(CHARACTER_COLM, 60)
-//     Text(Chapter_03_Colm_Appears)
-//     MOVE_CLOSEST_ENUN(0, CHARACTER_COLM, 2, 4)
-//     GOTO(0x1)
 
-// LABEL(0x0)
-//     CHECK_EVENTID_
-//     SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
-//     ENUF_SLOT2
+static const EventListScr EventScr_CH4_BONEWALKERS_APPEAR[] = {
+    CHECK_TURNS //Store current turn count in slot C
+    SVAL(EVT_SLOT_7, 2)
+    BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
+    STAL(15)
+    LOAD_WAIT_PERSIST(CH4_ENEMY_REINFORCEMENTS_BONEWALKERS)
+    GOTO(0x1)
 
-// LABEL(0x1)
-//     NoFade
-//     ENDA
-// };
+LABEL(0x0)
+    CHECK_EVENTID_
+    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
+    ENUF_SLOT2
+    GOTO(0x1)
 
-// static const EventListScr EventScr_ROSS_APPEARS[] = {
-//     CHECK_TURNS //Store current turn count in slot C
-//     SVAL(EVT_SLOT_7, 3)
-//     BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
-//     STAL(15)
-//     MOVE_CAMERA_TO_POSITION(3, 11)
-//     LOAD_WAIT_PERSIST(CH3_ROSS)
-//     MUSC(BGM_BINDING_VOW)
-//     HIGHLIGHT_CHARACTER(CHARACTER_ROSS, 30)
-//     Text(Chapter_03_Ross_Appears)
-//     GOTO(0x1)
+LABEL(0x1)
+    NoFade
+    ENDA
+};
 
-// LABEL(0x0)
-//     CHECK_EVENTID_
-//     SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
-//     ENUF_SLOT2
+static const EventListScr EventScr_CH4_REVENANTS_APPEAR[] = {
+    CHECK_TURNS //Store current turn count in slot C
+    SVAL(EVT_SLOT_7, 3)
+    BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
+    STAL(15)
+    LOAD_WAIT_PERSIST(CH4_ENEMY_REINFORCEMENTS_REVENANTS)
+    GOTO(0x1)
 
-// LABEL(0x1)
-//     NoFade
-//     ENDA
-// };
+LABEL(0x0)
+    CHECK_EVENTID_
+    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
+    ENUF_SLOT2
+    GOTO(0x1)
 
-// static const EventListScr EventScr_Talk_ROSS_EIRIKA[] = {
-//     CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
-//     STAL(33)
-//     Text(Chapter_03_Ross_Eirika)
-//     RESTORE_PREVIOUS_MUSIC
-//     CHANGE_TO_BLUE(CHARACTER_ROSS)
-//     NoFade
-//     ENDA
-// };
+LABEL(0x1)
+    NoFade
+    ENDA
+};
 
-// static const EventListScr EventScr_Talk_COLM_NEIMI[] = {
-//     CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
-//     STAL(33)
-//     Text(Chapter_03_Colm_Neimi)
-//     RESTORE_PREVIOUS_MUSIC
-//     CHANGE_TO_BLUE(CHARACTER_COLM)
-//     NoFade
-//     ENDA
-// };
+static const EventListScr EventScr_CH4_LARACHEL_APPEARS[] = {
+    CHECK_TURNS //Store current turn count in slot C
+    SVAL(EVT_SLOT_7, 2)
+    BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
+    CAMERA(7, 0)
+    STAL(15)
+    LOAD_WAIT_PERSIST(CH4_LARACHEL_APPEARS)
+    MUSC(BGM_LAUGHTER)
+    HIGHLIGHT_CHARACTER(CHARACTER_LARACHEL, 60)
+    Text(Chapter_04_LARACHEL)
+    MOVE(24, CHARACTER_LARACHEL, 15, 2)
+    MOVE(24, CHARACTER_DOZLA, 15, 1)
+    MOVE_WAIT(24, CHARACTER_RENNAC, 15, 1)
+    CLEN // Remove NPCs
+    GOTO(0x1)
+
+LABEL(0x0)
+    CHECK_EVENTID_
+    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
+    ENUF_SLOT2
+    GOTO(0x1)
+
+LABEL(0x1)
+    NoFade
+    ENDA
+};
+
+static const EventListScr EventScr_CH4_GARCIA_APPEARS[] = {
+    CHECK_TURNS //Store current turn count in slot C
+    SVAL(EVT_SLOT_7, 3)
+    BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
+    STAL(15)
+    MOVE_CAMERA_TO_UNIT(CHARACTER_ROSS)
+    HIGHLIGHT_CHARACTER(CHARACTER_ROSS, 60)
+    Text(Chapter_04_ROSS)
+    LOAD_WAIT_PERSIST(CH4_GARCIA_APPEARS)
+    MUSC(BGM_RAID)
+    CAMERA(14, 9)
+    HIGHLIGHT_CHARACTER(CHARACTER_GARCIA, 60)
+    Text(Chapter_04_GARCIA)
+    GOTO(0x1)
+
+LABEL(0x0)
+    CHECK_EVENTID_
+    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
+    ENUF_SLOT2
+
+LABEL(0x1)
+    NoFade
+    ENDA
+};
+
+static const EventListScr EventScr_Talk_ROSS_GARCIA[] = {
+    CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
+    STAL(33)
+    Text(Chapter_04_ROSS_GARCIA)
+    RESTORE_PREVIOUS_MUSIC
+    CHANGE_TO_BLUE(CHARACTER_GARCIA)
+    NoFade
+    ENDA
+};
+
+static const EventListScr EventListScr_VILLAGE_1_TALK[] = {
+    HOUSE_EVENT_NO_END(0x2, Chapter_04_VILLAGE_OLD_MAN)
+    CALL(EventScr_RemoveBGIfNeeded)
+    GIVE_ITEM_TO(ITEM_AXE_IRON, CHARACTER_EVT_ACTIVE)
+    NoFade
+    ENDA
+};
+
+static const EventListScr EventListScr_VILLAGE_2_TALK[] = {
+    MUSC(BGM_COMRADES)
+    STAL(33)
+    CHECK_ACTIVE
+    SVAL(EVT_SLOT_1, CHARACTER_ARTUR)
+    BEQ(0x0, EVT_SLOT_C, EVT_SLOT_1)
+    SVAL(EVT_SLOT_1, CHARACTER_EIRIKA)
+    BEQ(0x1, EVT_SLOT_C, EVT_SLOT_1) 
+    GOTO(0x2)
+
+LABEL(0x0)
+    HOUSE_EVENT_NO_END(0x2, Chapter_04_VILLAGE_LUTE_ARTUR)
+    GOTO(0x3)
+
+LABEL(0x1)
+    HOUSE_EVENT_NO_END(0x2, Chapter_04_VILLAGE_LUTE_EIRIKA)
+    GOTO(0x3)
+
+LABEL(0x2)
+    HOUSE_EVENT_NO_END(0x2, Chapter_04_VILLAGE_LUTE_GENERIC)
+    GOTO(0x3)
+
+LABEL(0x3)
+    CALL(EventScr_RemoveBGIfNeeded)
+    LOAD_WAIT_PERSIST(CH4_LUTE)
+    NoFade
+    ENDA
+};
+
 
 /**
  * Event list
  */
 
 static const EventListScr EventListScr_Turn[] = {
-    // AFEV(EVFLAG_TMP(7), EventScr_COLM_APPEARS, 0)
-    // AFEV(EVFLAG_TMP(8), EventScr_ROSS_APPEARS, 0)
+    AFEV(EVFLAG_TMP(7), EventScr_CH4_LARACHEL_APPEARS, 0)
+    AFEV(EVFLAG_TMP(8), EventScr_CH4_GARCIA_APPEARS, 0)
+    AFEV(EVFLAG_TMP(9), EventScr_CH4_BONEWALKERS_APPEAR, 0)
+    AFEV(EVFLAG_TMP(10), EventScr_CH4_REVENANTS_APPEAR, 0)
     END_MAIN
 };
 
 static const EventListScr EventListScr_Character[] = {
-    // CharacterEventBothWays(EVFLAG_TMP(9), EventScr_Talk_COLM_NEIMI, CHARACTER_COLM, CHARACTER_NEIMI)
-    // CharacterEventBothWays(EVFLAG_TMP(10), EventScr_Talk_ROSS_EIRIKA, CHARACTER_ROSS, CHARACTER_EIRIKA)
+    CharacterEventBothWays(EVFLAG_TMP(11), EventScr_Talk_ROSS_GARCIA, CHARACTER_ROSS, CHARACTER_GARCIA)
     END_MAIN
 };
 
 static const EventListScr EventListScr_Location[] = {
-    // Door(2, 3, EVFLAG_TMP(11))
-    // Door(10, 5, EVFLAG_TMP(12))
-    // Door(6, 10, EVFLAG_TMP(13))
-    // Chest(ITEM_BOW_BEACONBOW, 6, 12)
-    // Chest(ITEM_AXE_FIENDCLEAVER, 10, 3)
-    // Chest(ITEM_LANCE_BRIGHTLANCE, 8, 3)
-    // Chest(ITEM_SWORD_SHADOWKILLR, 6, 3)
-    // Seize(14, 1)
+    Village(EVFLAG_TMP(12), EventListScr_VILLAGE_1_TALK, 8, 2)
+    Village(EVFLAG_TMP(13), EventListScr_VILLAGE_2_TALK, 1, 11)
     END_MAIN
 };
 
@@ -328,6 +448,7 @@ static const EventListScr EventListScr_Misc[] = {
 };
 
 static const EventListScr EventListScr_SelectUnit[] = {
+    LOAD_WAIT(CH4_PLAYER_UNITS)
     END_MAIN
 };
 
