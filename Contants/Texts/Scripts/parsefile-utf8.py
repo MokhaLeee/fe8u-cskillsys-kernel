@@ -80,7 +80,7 @@ def Parse(line):
 	res = res.replace(b'[Font_Bold]', b'\x80\x26\x02')
 	res = res.replace(b'[Font_Italic]', b'\x80\x26\x03')
 	res = res.replace(b'[Font_NarrowTalk]', b'\x80\x26\x04')
-	res = res.replace(b'[Font_NarrowMenu]', b'\x80\x26\x05')
+	res = res.replace(b'[Font_NarrowMenu]', b'\x80\x26\x05') # Doesn' actually work in a menu as of yet
 
 	# The colors inbetween these ones are a mess, so I'm not using them
 	# Presumably there's 255, someone else can test the rest
@@ -92,6 +92,7 @@ def Parse(line):
 	res = res.replace(b'[BoxBackground_Brown]', b'\x80\x29\x0B')
 	res = res.replace(b'[BoxBackground_DarkBlue]', b'\x80\x29\x0C')
 
+	res = res.replace(b'[BoxType_Normal]', b'\x80\x2A\x01')
 	res = res.replace(b'[BoxType_Dramatic]', b'\x80\x2A\x02')
 	res = res.replace(b'[BoxType_InnerMonologue]', b'\x80\x2A\x03')
 

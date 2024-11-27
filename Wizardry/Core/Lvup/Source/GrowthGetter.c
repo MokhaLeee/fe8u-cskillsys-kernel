@@ -15,7 +15,7 @@ STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit *unit)
 
 #if defined(SID_Aptitude) && (COMMON_SKILL_VALID(SID_Aptitude))
     if (SkillTester(unit, SID_Aptitude))
-        new = new + Div(status * SKILL_EFF0(SID_Aptitude), 100);
+        new = new + SKILL_EFF0(SID_Aptitude);
 #endif
 
 /* This must come last */

@@ -1,6 +1,6 @@
 ## Chapter_04_ROSS
 [OpenMidLeft][LoadFace_Ross]
-Woah, do you guys here that?[A][N]
+Woah, do you guys hear that?[A][N]
 [OpenFarFarRight]
 *THUD* *THUD*
 [OpenMidLeft][MoveMidLeft]
@@ -9,6 +9,7 @@ Are those... trees falling?[A][N]
 [OpenFarFarRight]
 ...oss...[A][N]
 ...Ross!![A][N]
+[OpenMidLeft]
 That, that sounds like dad![A][X]
 
 ## Chapter_04_GARCIA

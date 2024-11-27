@@ -18,6 +18,11 @@ int _GetUnitPower(struct Unit * unit)
     for (it = gpPowGetters; *it; it++)
         status = (*it)(status, unit);
 
+#if defined(SETH_INJURED)
+    if (unit->pCharacterData->number == CHARACTER_SETH)
+        status -= gPlaySt.chapterIndex < INJURED_TURN_COUNT ? INJURED_TURN_COUNT - gPlaySt.chapterIndex : 0;
+#endif
+
     return status;
 }
 

@@ -14,7 +14,7 @@
 // SID_LockTouch
 // SID_Summon
 // SID_Steal
-// SID_Supply
+SID_Supply
 // SID_LightRune
 // SID_Mine
 // SID_RallyDefense
@@ -212,7 +212,7 @@
 // SID_LightProwess
 
 ////////// POST-BATTLE SKILLS
-// SID_Canto
+SID_Canto
 // SID_CantoPlus
 // SID_Galeforce
 // SID_AlertStance
@@ -455,7 +455,7 @@
 // SID_AngerPoint
 // SID_Adaptable
 // SID_Debilitator
-SID_Sentinel
+// SID_Sentinel
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful
@@ -548,7 +548,7 @@ SID_Sentinel
 // SID_Blossom
 // SID_Paragon
 // SID_VoidCurse
-// SID_Aptitude
+SID_Aptitude
 // SID_DoubleUp
 // SID_TripleUp
 // SID_LimitBreaker

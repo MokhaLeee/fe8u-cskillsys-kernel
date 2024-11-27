@@ -29,3 +29,5 @@ extern void StartQuintessenceStealEffect(struct Proc * parent);
 extern void QuintessenceFx_Goto_B(void);
 extern void QuintessenceFx_Goto_C(void);
 extern void EndQuintessenceStealEffect(void);
+
+extern void GiveScroll(void);

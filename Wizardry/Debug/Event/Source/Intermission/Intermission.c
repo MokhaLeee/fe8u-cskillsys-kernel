@@ -9,6 +9,7 @@
 #include "jester_headers/miscellaenous.h"
 #include "EAstdlib.h"
 
+
 /**
  * Ally unit and REDA definitions
  */
@@ -55,11 +56,15 @@ static const EventScr EventScr_Beginning[] = {
     TEXTSTART
     TEXTSHOW(Chapter_01_Scene_11_Convo_03)
     TEXTEND
+    REMA
     GIVE_GOLD(5000)
+
+    GIVE_SKILL_SCROLL_TO(SID_Supply, CHARACTER_EIRIKA) // This gives the first skill ID as a scroll for some reason
+    GIVE_SKILL_SCROLL_ASMC(SID_Supply, CHARACTER_EIRIKA) // This iterates through the user's inventory and supply to fix that
+
     REMA
     FADE_OUT_SCREEN(16)
     LOAD_WAIT_PERSIST(CH1_MOULDER_TANA)
-    ENUT(0x8A) // Moulder has joined
     NEXT_CHAPTER_WITH_MAP(CHAPTER_02)
     ENDA
 };

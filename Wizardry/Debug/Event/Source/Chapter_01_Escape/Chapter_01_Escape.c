@@ -154,16 +154,6 @@ static const EventScr EventScr_Ending[] = {
     Text_BG(0x26, Chapter_01_Scene_10_Convo_01)
     REMA
     FADE_OUT_SCREEN(16)
-    ENUT(0xBA)
-    ENUT(0xCF)
-    ENUT(0xCE)
-    ENUT(0xB6)
-    ENUT(0xD7)
-    ENUT(0xD6)
-    ENUT(0xC7)
-    ENUT(0xC8)
-    ENUT(0xDD)
-    REVEAL(CHARACTER_SETH)
     NEXT_CHAPTER_WITH_MAP(0x38)
     ENDA
 };
@@ -230,7 +220,7 @@ static const EventListScr EventListScr_Character[] = {
 static const EventListScr EventListScr_Location[] = {
     House(EVFLAG_TMP(5), EventListScr_HOUSE_TALK_1, 10, 4)
     House(EVFLAG_TMP(6), EventListScr_HOUSE_TALK_2, 13, 6)
-
+    Seize(2, 2)
     // ESCAPE_TILE(EVFLAG_TMP(10), EventListScr_ESCAPE_TILE_1, 14, 9)
     END_MAIN
 };

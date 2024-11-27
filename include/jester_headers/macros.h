@@ -112,6 +112,10 @@ enum {
     SVAL(EVT_SLOT_3, (skill_id << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL) \
     GIVEITEMTO(character)
 
+#define GIVE_SKILL_SCROLL_ASMC(skillId, characterId) \
+    SVAL(EVT_SLOT_3, skillId) \
+    SVAL(EVT_SLOT_4, characterId) \
+    ASMC(GiveScroll)
 
 /*
 ** Item drops are defined in the unitDefinition struct as u16 so I

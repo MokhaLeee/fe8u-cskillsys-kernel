@@ -865,6 +865,7 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             chIndex = WMLoc_GetChapterId(node_next);
 
             gPlaySt.chapterIndex = chIndex;
+            
 
             if (Events_WM_Beginning[GetROMChapterStruct(chIndex)->gmapEventId] == NULL)
                 return;
@@ -875,13 +876,17 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             /**
              * Jester - I've resorted to hooking into the WM call function to directly load the
              * WM events I want based on the supplied eventSCR. It's an unfortunate bit of hardcoding
-             * I'm looking to remove, but it frees me from having to rely on the list in ASM in vailla.
+             * I'm looking to remove, but it frees me from having to rely on the list in ASM in vanilla.
              */
             int eventID = GetROMChapterStruct(chIndex)->gmapEventId;
+           NoCashGBAPrintf("Chapter Beginning node is: %d", eventID);
             
             switch (eventID) {
-            case 2:
+            case 55:
                 CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
+                break;
+            case 2:
+                // CallEvent((const u16 *)EventScrWM_Ch2_SET_NODE, 0);
                 break;
             case 3:
                 CallEvent((const u16 *)EventScrWM_Ch2_SET_NODE, 0);
@@ -892,9 +897,9 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             case 5:
                 CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
                 break;
-            // case 6:
-            //     CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
-            //     break;
+            case 6:
+                CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
+                break;
             // case 7:
             //     CallEvent((const u16 *)EventScrWM_Ch6_SET_NODE, 0);
             //     break;
@@ -912,6 +917,7 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             //     break;
             default: 
                 CallEvent(Events_WM_Beginning[eventID], 0);
+                break;
             }
         }
     }
@@ -930,13 +936,17 @@ void CallChapterWMIntroEvents(ProcPtr proc)
          /**
         * Jester - I've resorted to hooking into the WM call function to directly load the
         * WM events I want based on the supplied eventSCR. It's an unfortunate bit of hardcoding
-        * I'm looking to remove, but it frees me from having to rely on the list in ASM in vailla.
+        * I'm looking to remove, but it frees me from having to rely on the list in ASM in vanilla.
         */
         int eventID = GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId;
+        NoCashGBAPrintf("Chapter Intro node is: %d", eventID);
             
         switch (eventID) {
+        case 55:
+            // CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
+            break;
         case 2:
-            CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
+            // CallEvent((const u16 *)EventScrWM_Ch2_TRAVEL_TO_NODE, 0);
             break;
         case 3:
             CallEvent((const u16 *)EventScrWM_Ch2_TRAVEL_TO_NODE, 0);
@@ -947,9 +957,9 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         case 5:
             CallEvent((const u16 *)EventScrWM_Ch4_TRAVEL_TO_NODE, 0);
             break;
-        // case 6:
-        //     CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
-        //     break;
+        case 6:
+            CallEvent((const u16 *)EventScrWM_Ch5_TRAVEL_TO_NODE, 0);
+            break;
         // case 7:
         //     CallEvent((const u16 *)EventScrWM_Ch6_SET_NODE, 0);
         //     break;
@@ -966,9 +976,9 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         //     CallEvent((const u16 *)EventScrWM_Ch10_SET_NODE, 0);
         //     break;
         default: 
-            CallEvent(Events_WM_Beginning[eventID], 0);
+            CallEvent(Events_WM_ChapterIntro[eventID], 0);
+            break;
         }
-
         StartWMFaceCtrl(proc);
         StartGmapMuEntry(NULL);
     }
@@ -1018,4 +1028,32 @@ u8 Event3E_PrepScreenCall(struct EventEngineProc * proc)
     Proc_StartBlocking(gProcScr_SALLYCURSOR, proc);
 
     return EVC_ADVANCE_YIELD;
+}
+
+void GiveScroll(void)
+{
+    u16 skillId = gEventSlots[EVT_SLOT_3];
+    u16 charId = gEventSlots[EVT_SLOT_4];
+
+    struct Unit * unit;
+    unit = GetUnitFromCharId(charId);
+
+    for (int i = 0; i < 5; i++) {
+        if(unit->items[i] == ((SID_Supply << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL))
+        {
+            unit->items[i] = (skillId << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL;
+            break;
+        }
+    }
+
+    unsigned short *items;
+    items = GetConvoyItemArray();
+
+    for (int i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++) {
+        if(items[i] == ((SID_Supply << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL))
+        {
+            items[i] = (skillId << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL;
+            break;
+        }
+    }
 }

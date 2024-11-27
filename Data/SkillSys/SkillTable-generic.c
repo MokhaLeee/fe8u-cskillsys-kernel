@@ -13,6 +13,9 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     },
 
     [CHARACTER_SETH] = {
+        .skills = {
+            [0] = SID_Canto,
+        },
     },
 
     [CHARACTER_INNES] = {
@@ -31,4 +34,7 @@ const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {
 
     [CLASS_SNIPER_F] = {
     },
+
+    [CLASS_PALADIN] = {
+    }
 };

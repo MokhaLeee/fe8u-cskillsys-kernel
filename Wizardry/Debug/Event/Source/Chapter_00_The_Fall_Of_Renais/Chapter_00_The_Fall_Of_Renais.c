@@ -232,7 +232,7 @@ static const EventScr EventScr_Beginning[] = {
     MOVE_1STEP_WAIT(0, CHARACTER_VALTER_PROLOGUE, MOVE_LEFT)
     // Battle scene
     StartBattle
-    MissedAttack(0, 0)
+    NormalDamage(0, 0)
     NormalDamage(1, 0)
     EndAttack
     FIGHT(CHARACTER_SETH, CHARACTER_VALTER_PROLOGUE, 0, false)

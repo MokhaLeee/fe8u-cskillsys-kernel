@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "jester_headers/soundtrack-ids.h"
 
-const struct ROMChapterData Intermission_Ch1 = {
+const struct ROMChapterData Intermission = {
     .map = {
        .obj1Id = 1,
        .obj2Id= 0,

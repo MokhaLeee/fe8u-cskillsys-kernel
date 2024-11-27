@@ -346,4 +346,10 @@
 #define CONFIG_UNIT_AMT_ENEMY 50
 #define CONFIG_UNIT_AMT_NPC   8
 
+/**
+ * FE8 Rewriteen exclusive configs
+ */
+#define SETH_INJURED
+#define INJURED_TURN_COUNT 5
+
 #endif /* CONFIG_INSTALLED */
