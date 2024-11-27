@@ -879,7 +879,6 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
              * I'm looking to remove, but it frees me from having to rely on the list in ASM in vanilla.
              */
             int eventID = GetROMChapterStruct(chIndex)->gmapEventId;
-           NoCashGBAPrintf("Chapter Beginning node is: %d", eventID);
             
             switch (eventID) {
             case 55:
@@ -939,7 +938,6 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         * I'm looking to remove, but it frees me from having to rely on the list in ASM in vanilla.
         */
         int eventID = GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId;
-        NoCashGBAPrintf("Chapter Intro node is: %d", eventID);
             
         switch (eventID) {
         case 55:
@@ -1056,4 +1054,38 @@ void GiveScroll(void)
             break;
         }
     }
+}
+
+LYN_REPLACE_CHECK(ItemGot_GotLeItem);
+void ItemGot_GotLeItem(struct GotItemPopupProc * proc)
+{
+    /* Stop gap measure to enable scrolls to have the right IDs
+    ** They will return a short (maybe a word?) with the first half being the skill ID
+    ** and the last part being the skill scroll ID, which is currently 0xBD.
+    ** Check if the item we're giving is above the byte limit to determine that
+    ** we're giving a scroll.
+    
+    ** The limitation of this approach is that it locks us out of having other dynamically
+    ** assigned effects and icons for other items in the future. It might be best to create
+    ** another version of this function in that case
+    */
+    if (proc->item > 255)
+        HandleNewItemGetFromDrop(proc->unit, proc->item, proc);
+    else
+        HandleNewItemGetFromDrop(proc->unit, MakeNewItem(proc->item), proc);
+}
+
+void IsTraineeLevelCappedOrPromoted(void)
+{
+    u16 charId = gEventSlots[EVT_SLOT_3];
+    u16 level = gEventSlots[EVT_SLOT_4];
+    u16 class = gEventSlots[EVT_SLOT_5];
+
+    struct Unit * unit;
+    unit = GetUnitFromCharId(charId);
+
+    if (unit->level >= level || unit->pClassData->number != class)
+        gEventSlots[EVT_SLOT_C] = true;
+    else
+        gEventSlots[EVT_SLOT_C] = false;
 }

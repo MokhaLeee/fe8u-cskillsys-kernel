@@ -268,13 +268,16 @@ LABEL(0x2)
     MUSC(BGM_LAUGHTER)
     HIGHLIGHT_CHARACTER(CHARACTER_LARACHEL, 60)
     TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_09_Convo_01)
+    CHECK_IF_TRAINEE_OR_LEVEL_CAPPED(CHARACTER_ROSS, 10, CLASS_JOURNEYMAN)
+    BEQ(0x3, EVT_SLOT_C, EVT_SLOT_0)
     SetBackground(0x19)
     TEXTSTART
     TEXTSHOW(Chapter_04_Scene_10_Convo_01)
     TEXTEND
     REMA
-    GIVE_SKILL_SCROLL_TO(SID_Aptitude, CHARACTER_EIRIKA) // This gives the first skill ID as a scroll for some reason
-    GIVE_SKILL_SCROLL_ASMC(SID_Aptitude, CHARACTER_EIRIKA) // This iterates through the user's inventory and supply to fix that
+    GIVE_SKILL_SCROLL_TO(SID_Aptitude, CHARACTER_ROSS)
+    GOTO(0x3)
+LABEL(0x3)
     SetBackground(BLACK_BACKGROUND)
     REMA
     NEXT_CHAPTER_WITH_MAP(0x5) // Chapter 5 - The Empire's Reach

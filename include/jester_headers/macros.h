@@ -112,11 +112,6 @@ enum {
     SVAL(EVT_SLOT_3, (skill_id << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL) \
     GIVEITEMTO(character)
 
-#define GIVE_SKILL_SCROLL_ASMC(skillId, characterId) \
-    SVAL(EVT_SLOT_3, skillId) \
-    SVAL(EVT_SLOT_4, characterId) \
-    ASMC(GiveScroll)
-
 /*
 ** Item drops are defined in the unitDefinition struct as u16 so I
 ** can't use enum, which is u32 by default. Easier to create seperate definitions
@@ -258,8 +253,8 @@ enum {
 #define MOVE_CAMERA_TO_UNIT(unit) CAMERA_CAHR(unit)
 #define MOVE_CAMERA_TO_POSITION(x, y) CAMERA2(x, y)
 
-#define MOVE_ONTO_LEADER(unit) \
-    SVAL(EVT_SLOT_2, unit) \
+#define MOVE_ONTO_LEADER(characterId) \
+    SVAL(EVT_SLOT_2, characterId) \
     CHECK_ALIVE(-3) \
     BEQ(0x0, EVT_SLOT_C, EVT_SLOT_0) \
     CHECK_DEPLOYED(-3) \
@@ -275,3 +270,9 @@ LABEL(0x63) \
 #define MOVE_CLOSEST_ENUN(frames, unitID, x, y) \
     MOVE_CLOSEST(frames, unitID, x, y) \
     ENUN
+
+#define CHECK_IF_TRAINEE_OR_LEVEL_CAPPED(characterId, level, class) \
+    SVAL(EVT_SLOT_3, characterId) \
+    SVAL(EVT_SLOT_4, level) \
+    SVAL(EVT_SLOT_5, class) \
+    ASMC(IsTraineeLevelCappedOrPromoted)

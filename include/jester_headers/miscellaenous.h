@@ -31,3 +31,5 @@ extern void QuintessenceFx_Goto_C(void);
 extern void EndQuintessenceStealEffect(void);
 
 extern void GiveScroll(void);
+
+extern void IsTraineeLevelCappedOrPromoted(void);
