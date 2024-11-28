@@ -213,7 +213,7 @@ LYN_REPLACE_CHECK(StartShopScreen);
 void StartShopScreen(struct Unit *unit, const u16 *inventory, u8 shopType, ProcPtr parent)
 {
 	struct ProcShop *proc;
-	const u16 * shopItems;
+	const u16 *shopItems;
 	int i;
 
 	EndPlayerPhaseSideWindows();
