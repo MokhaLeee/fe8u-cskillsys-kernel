@@ -1,6 +1,27 @@
 #include "common-chax.h"
 #include "item-sys.h"
 
+static int MakeNewItemVanilla(int item)
+{
+	int uses = GetItemMaxUses(item);
+
+	if (GetItemAttributes(item) & IA_UNBREAKABLE)
+		uses = 0;
+
+	return (uses << 8) + GetItemIndex(item);
+}
+
+LYN_REPLACE_CHECK(MakeNewItem);
+int MakeNewItem(int item)
+{
+#if CHAX
+	if (IsDuraItem(item))
+		return item;
+#endif
+
+	return MakeNewItemVanilla(item);
+}
+
 LYN_REPLACE_CHECK(GetItemNameWithArticle);
 char *GetItemNameWithArticle(int item, s8 capitalize)
 {
