@@ -16,8 +16,6 @@ const EventScr EventScrWM_Tutorial_SKILL_SCROLL[] = {
     TEXTSHOW(Chapter_01_SKILL_SCROLL)
     TEXTEND
     REMA
-    // ENUT(227)
-    // ENUT(228)
     ENDA
 };
 
@@ -258,12 +256,29 @@ const EventScr EventScrWM_Ch4_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
+// const EventScr EventScrWM_Renval_CH5[] = {
+//     EVBIT_MODIFY(0x1)
+//     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall2)
+//     WmEvtSetCamToNode(WM_NODE_AdlasPlains) // ENOSUPP in EAstdlib
+//     WM_FADEOUT(0)
+//     WM_TEXTDECORATE // WaitFade
+//     EVBIT_MODIFY(0x0)
+//     WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Renvall2, WM_NODE_AdlasPlains, -2, 0)
+//     WM_WAITFORSPRITES(WM_MU_0)
+//     WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_AdlasPlains, WM_NODE_Serafew, -2, 0)
+//     WM_WAITFORSPRITES(WM_MU_0)
+//     WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
+//     WmEvtSetNextStoryNode(WM_NODE_Serafew) // ENOSUPP in EAstdlib
+//     SKIPWN
+//     ENDA
+// };
+
 const EventScr EventScrWM_Ch5_SET_NODE[] = {
-    CHECK_EVENTID(136)
-    BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
-    CALL(EventScrWM_Renval_CH5)
-    GOTO(0x2)
-LABEL(0x1)
+//     CHECK_EVENTID(136)
+//     BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
+//     CALL(EventScrWM_Renval_CH5)
+//     GOTO(0x2)
+// LABEL(0x1)
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_ZahaWoods)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -271,7 +286,9 @@ LABEL(0x1)
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_CREATENEXTDESTINATION
+    WM_LOADLOCATION2(WM_NODE_Serafew)
+    WM_SETDESTINATION(WM_NODE_Serafew)
+    // WM_CREATENEXTDESTINATION
     WM_WAITFORFX
     STAL(40)
     WM_DRAWPATH(WM_PATH_04)
@@ -280,23 +297,6 @@ LABEL(0x1)
     EVBIT_MODIFY(0x1)
     CALL(EventScr_RemoveBGIfNeeded)
 LABEL(0x2)
-    ENDA
-};
-
-const EventScr EventScrWM_Renval_CH5[] = {
-    EVBIT_MODIFY(0x1)
-    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall2)
-    WmEvtSetCamToNode(WM_NODE_AdlasPlains) // ENOSUPP in EAstdlib
-    WM_FADEOUT(0)
-    WM_TEXTDECORATE // WaitFade
-    EVBIT_MODIFY(0x0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Renvall2, WM_NODE_AdlasPlains, -2, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_AdlasPlains, WM_NODE_Serafew, -2, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
-    WmEvtSetNextStoryNode(WM_NODE_Serafew) // ENOSUPP in EAstdlib
-    SKIPWN
     ENDA
 };
 
@@ -329,7 +329,7 @@ LABEL(0x1)
     WM_FADEINSPRITE(WM_MU_4, 60)
     WM_FADEINSPRITE(WM_MU_5, 60)
     WM_FADEINSPRITE(WM_MU_6, 60)
-    WM_TEXT(0x08E2, 0)
+    WM_TEXT(Chapter_05_WM, 0)
     TEXTEND
     WM_WAITFORSPRITELOAD
     WM_FADEOUTSPRITE(WM_MU_2, 60)
@@ -346,7 +346,7 @@ LABEL(0x1)
     WmEvtRemoveBigMap // WM_WAITFORFXCLEAR1
     WM_FADEOUTSPRITE(WM_MU_0, 1)
     WmEvtWaitBigMapRemove // WM_WAITFORFXCLEAR2
-    WM_SHOWPORTRAIT(0, 0x0002, 0x0534, 0)
+    WM_SHOWPORTRAIT(0, Overworld_Eirika, 0x0534, 0)
     STAL(6)
     STAL(46)
     TEXTCONT
@@ -360,7 +360,7 @@ LABEL(0x1)
     WM_WAITFORSPRITELOAD
     STAL(14)
     WM_FADEOUTSPRITE(WM_MU_2, 60)
-    WM_MOVESPRITETO(WM_MU_0, 0x0002, WM_NODE_ZahaWoods, WM_NODE_Serafew, -4, 0)
+    WM_MOVESPRITETO(WM_MU_0, Overworld_Eirika, WM_NODE_ZahaWoods, WM_NODE_Serafew, -4, 0) // Eirika
     WM_WAITFORSPRITELOAD
     WM_WAITFORSPRITES(WM_MU_ANY)
     STAL(20)

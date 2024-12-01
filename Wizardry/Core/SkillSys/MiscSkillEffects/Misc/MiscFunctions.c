@@ -879,6 +879,8 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
              * I'm looking to remove, but it frees me from having to rely on the list in ASM in vanilla.
              */
             int eventID = GetROMChapterStruct(chIndex)->gmapEventId;
+
+            NoCashGBAPrintf("event id is: %d", eventID);
             
             switch (eventID) {
             case 55:
@@ -896,12 +898,11 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             case 5:
                 CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
                 break;
-            case 6:
+            // case 6:
+            //     break;
+            case 7:
                 CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
                 break;
-            // case 7:
-            //     CallEvent((const u16 *)EventScrWM_Ch6_SET_NODE, 0);
-            //     break;
             // case 8:
             //     CallEvent((const u16 *)EventScrWM_Ch7_SET_NODE, 0);
             //     break;
@@ -955,12 +956,11 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         case 5:
             CallEvent((const u16 *)EventScrWM_Ch4_TRAVEL_TO_NODE, 0);
             break;
-        case 6:
+        // case 6:
+        //     break;
+        case 7:
             CallEvent((const u16 *)EventScrWM_Ch5_TRAVEL_TO_NODE, 0);
             break;
-        // case 7:
-        //     CallEvent((const u16 *)EventScrWM_Ch6_SET_NODE, 0);
-        //     break;
         // case 8:
         //     CallEvent((const u16 *)EventScrWM_Ch7_SET_NODE, 0);
         //     break;
@@ -1088,4 +1088,41 @@ void IsTraineeLevelCappedOrPromoted(void)
         gEventSlots[EVT_SLOT_C] = true;
     else
         gEventSlots[EVT_SLOT_C] = false;
+}
+
+
+const struct ForceDeploymentEnt gForceDeploymentList[] = {
+    {CHARACTER_EIRIKA,  CHAPTER_MODE_COMMON,  -1  },
+    {CHARACTER_EIRIKA,  CHAPTER_MODE_EIRIKA,  -1  },
+    {CHARACTER_EPHRAIM, CHAPTER_MODE_EPHRAIM, -1  },
+    {CHARACTER_ARTUR,   -1,                    4  },
+    {CHARACTER_NATASHA, -1,                    6  },
+    {CHARACTER_JOSHUA,  -1,                    6  },
+    {CHARACTER_TANA,    -1,                    10 },
+    {CHARACTER_SALEH,   -1,                    12 },
+    {CHARACTER_EPHRAIM, CHAPTER_MODE_EIRIKA,   21 },
+    {CHARACTER_EIRIKA,  CHAPTER_MODE_EPHRAIM,  34 },
+    {-1, 0, 0},
+};
+
+//! FE8U = 0x08084800
+LYN_REPLACE_CHECK(IsCharacterForceDeployed_);
+bool IsCharacterForceDeployed_(u16 pid)
+{
+    const struct ForceDeploymentEnt * it;
+
+    for (it = gForceDeploymentList; it->pid != (u16)-1; it++)
+    {
+        if (it->route != 0xFF && it->route != gPlaySt.chapterModeIndex)
+            continue;
+
+        if (it->chapter != 0xFF && it->chapter != gPlaySt.chapterIndex)
+            continue;
+
+        if (pid != it->pid)
+            continue;
+
+        return true;
+    }
+    return false;
 }

@@ -20,6 +20,7 @@ enum {
     BGM_SOLVE_THE_RIDDLE    = 0x2B,
     BGM_VICTORY             = 0x31,
     BGM_INTO_THE_SHADOWS_OF_VICTORY = 0x32,
+    BGM_SHOPS               = 0x35,
     BGM_BIRDS_CHIRPING      = 0x52,
     BGM_COMRADES            = 0x54,
     MUTE                    = 0x7FFF,

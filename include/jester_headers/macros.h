@@ -251,7 +251,8 @@ enum {
 
 #define MOVE_CAMERA_TO_UNIT_CENTER(unit) CAMERA2_CAHR(unit)
 #define MOVE_CAMERA_TO_UNIT(unit) CAMERA_CAHR(unit)
-#define MOVE_CAMERA_TO_POSITION(x, y) CAMERA2(x, y)
+#define MOVE_CAMERA_TO_POSITION_CENTER(x, y) CAMERA2(x, y)
+#define MOVE_CAMERA_TO_POSITION(x, y) CAMERA(x, y)
 
 #define MOVE_ONTO_LEADER(characterId) \
     SVAL(EVT_SLOT_2, characterId) \
@@ -276,3 +277,13 @@ LABEL(0x63) \
     SVAL(EVT_SLOT_4, level) \
     SVAL(EVT_SLOT_5, class) \
     ASMC(IsTraineeLevelCappedOrPromoted)
+
+enum {
+    Overworld_Eirika = 0x0002,
+};
+
+#define KILL_AT_COORDINATES_ENUN(x, y) \
+    SVAL(EVT_SLOT_B, COORDS(x, y)) \
+    KILL(CHAR_EVT_POSITION_AT_SLOTB) \
+    DISA_IF(CHAR_EVT_POSITION_AT_SLOTB) \
+    ENUN
