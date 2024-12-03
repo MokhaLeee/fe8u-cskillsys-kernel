@@ -31,6 +31,7 @@ ALIGN 4
 #include "Common/PostActionHook/PostActionHook.event"
 #include "Common/ChapterInitHook/ChapterInitHook.event"
 #include "Common/StrMagSplit/StrMagSplit.event"
+
 #include "Common/SaveData/SaveData.event"
 #include "Common/UnitHooks/UnitHooks.event"
 #include "Common/Lvupfx/Lvupfx.event"

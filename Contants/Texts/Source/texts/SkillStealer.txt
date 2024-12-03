@@ -1,0 +1,8 @@
+## MSG_ITEM_SKILLSTEALER_NAME
+Skill Stealer[X]
+
+## MSG_ITEM_SKILLSTEALER_DESC
+Steal a skill from a defeated boss[X]
+
+## MSG_ITEM_SKILLSTEALER_USEDESC
+Steal a skill from a defeated boss.[X]

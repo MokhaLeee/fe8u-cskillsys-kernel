@@ -18,6 +18,9 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
         },
     },
 
+    [CHARACTER_ONEILL] = {
+    },
+
     [CHARACTER_INNES] = {
     },
 

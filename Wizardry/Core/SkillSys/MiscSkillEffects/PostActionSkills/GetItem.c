@@ -16,6 +16,19 @@ bool PostActionGetItem(ProcPtr parent)
 
     if (gActionData.unitActionType == UNIT_ACTION_COMBAT && gBattleActorGlobalFlag.enimy_defeated)
     {
+
+#if (defined(CONFIG_ITEM_INDEX_SKILL_STEALER))
+        if (UNIT_CATTRIBUTES(&gBattleTarget.unit) & CA_BOSS)
+            for (int i = 0; i < 5; i++) 
+                if(GetItemIndex(unit->items[i]) == CONFIG_ITEM_INDEX_SKILL_STEALER)
+                {
+                    struct SkillList *list;
+                    list = GetUnitSkillList(&gBattleTarget.unit);
+                    NewPopup_ItemGot(parent, unit, (list->sid[0] << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
+                }
+#endif
+
+
 #if defined(SID_Despoil) && (COMMON_SKILL_VALID(SID_Despoil))
         if (SkillTester(unit, SID_Despoil) && gBattleActorGlobalFlag.enimy_defeated)
         {

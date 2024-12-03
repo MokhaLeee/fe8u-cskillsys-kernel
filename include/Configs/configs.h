@@ -331,6 +331,7 @@
 #define CONFIG_PR_ITEM_ICON  0x5926F4
 #define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
 #define CONFIG_ICON_INDEX_STAR 0xCB
+#define CONFIG_ICON_INDEX_SKILL_STEALER 0xCC
 
 /**
  * Item config
@@ -338,6 +339,7 @@
 #define CONFIG_PR_ITEM_TABLE 0x809B10
 #define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
 #define CONFIG_ITEM_INDEX_SKILL_SCROLL 0xBD
+#define CONFIG_ITEM_INDEX_SKILL_STEALER 0xBE
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

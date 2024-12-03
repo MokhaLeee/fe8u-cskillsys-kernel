@@ -553,7 +553,7 @@ SID_Aptitude
 // SID_TripleUp
 // SID_LimitBreaker
 // SID_LimitBreakerPlus
-// SID_DarkHorse
+SID_DarkHorse
 // SID_Mercurious
 // SID_Velocity
 // SID_StaffParagon

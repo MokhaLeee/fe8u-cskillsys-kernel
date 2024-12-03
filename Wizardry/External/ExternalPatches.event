@@ -81,3 +81,8 @@
 // #ifdef CONFIG_MODULAR_STAT_SCREEN_GORGON_EGG
 //     #include "GorgonEgg/output/Installer.event"
 // #endif
+
+
+#ifdef CONFIG_ITEM_INDEX_SKILL_STEALER
+    #include "JesterHacks/SkillStealer/Installer.event"
+#endif
