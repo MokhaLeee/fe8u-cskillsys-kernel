@@ -1,0 +1,34 @@
+#include Chapter_00_The_Fall_Of_Renais/Pre_Chapter.txt
+#include Chapter_00_The_Fall_Of_Renais/In_Chapter.txt
+#include Chapter_00_The_Fall_Of_Renais/Post_Chapter.txt
+
+#include Chapter_01_Escape/Pre_Chapter.txt
+#include Chapter_01_Escape/In_Chapter.txt
+#include Chapter_01_Escape/Post_Chapter.txt
+
+#include Chapter_02_The_Protected/Pre_Chapter.txt
+#include Chapter_02_The_Protected/In_Chapter.txt
+#include Chapter_02_The_Protected/Post_Chapter.txt
+
+#include Chapter_03_The_Bandits_Of_Borgo/Pre_Chapter.txt
+#include Chapter_03_The_Bandits_Of_Borgo/In_Chapter.txt
+#include Chapter_03_The_Bandits_Of_Borgo/Post_Chapter.txt
+
+#include Chapter_04_Ancient_Horrors/Pre_Chapter.txt
+#include Chapter_04_Ancient_Horrors/In_Chapter.txt
+#include Chapter_04_Ancient_Horrors/Post_Chapter.txt
+
+#include Chapter_05_The_Empire's_Reach/Pre_Chapter.txt
+#include Chapter_05_The_Empire's_Reach/In_Chapter.txt
+#include Chapter_05_The_Empire's_Reach/Post_Chapter.txt
+
+#include Supports/Joshua_Rennac.txt
+#include Supports/Ewan_Myrrh.txt
+#include Supports/Seth_Duessel.txt
+#include Supports/Knoll_Lute.txt
+
+#include Miscellaneous/Commands.txt
+#include Miscellaneous/WM_Texts.txt
+#include Miscellaneous/Notifications.txt
+#include Miscellaneous/Objectives.txt
+#include Miscellaneous/Brown_Box_Text.txt

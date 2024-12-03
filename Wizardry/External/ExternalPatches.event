@@ -86,3 +86,5 @@
 #ifdef CONFIG_ITEM_INDEX_SKILL_STEALER
     #include "JesterHacks/SkillStealer/Installer.event"
 #endif
+
+#include "FE8_Rewritten_Terper/Installer.event"

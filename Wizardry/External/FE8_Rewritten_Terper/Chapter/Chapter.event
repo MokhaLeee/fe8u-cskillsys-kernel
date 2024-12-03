@@ -1,0 +1,11 @@
+PUSH
+{
+    #include "Source/Chapter_00_The_Fall_Of_Renais/Chapter_00_The_Fall_Of_Renais.lyn.event"
+    #include "Source/Chapter_01_Escape/Chapter_01_Escape.lyn.event"
+    #include "Source/Intermission/Intermission.lyn.event"
+    #include "Source/Chapter_02_The_Protected/Chapter_02_The_Protected.lyn.event"
+    #include "Source/Chapter_03_Bandits_Of_Borgo/Chapter_03_Bandits_Of_Borgo.lyn.event"
+    #include "Source/Chapter_04_Ancient_Horrors/Chapter_04_Ancient_Horrors.lyn.event"
+    #include "Source/Chapter_05_The_Empires_Reach/Chapter_05_The_Empires_Reach.lyn.event"
+}
+POP

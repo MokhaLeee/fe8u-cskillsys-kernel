@@ -1,0 +1,31 @@
+## C_Support_Knoll_Myrrh
+[OpenMidRight][LoadFace_Knoll]
+Hmm.[A][N]
+
+
+## B_Support_Knoll_Myrrh
+[OpenMidRight][LoadFace_Knoll]
+[OpenMidLeft][LoadFace_Myrrh]
+
+## A_Support_Knoll_Myrrh
+[OpenMidRight][LoadFace_Knoll]
+[OpenMidLeft][LoadFace_Myrrh]
+[OpenMidRight]
+Hmm...[A][N]
+Hello again Knoll.[A]
+[OpenMidRight]
+Hello Myrrh it's good to see you.[A][N]
+Did you bring it?[A][N]
+[OpenMidLeft]
+Yes, I have it here.[A][N]
+[OpenMidRight]
+Okay, let  me test....[A][N]
+[MoveRight][MoveRight]
+...[A][N]
+[MoveMidLeft]
+... I thought so.[A][N]
+
+
+C - introduction
+B - Network of stones
+A - Similar to dragonstones

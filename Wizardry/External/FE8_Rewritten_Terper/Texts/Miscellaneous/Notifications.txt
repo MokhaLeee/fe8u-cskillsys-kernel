@@ -1,0 +1,2 @@
+## NOTIFY_village_was_destroyed
+The village was destroyed.[X]
