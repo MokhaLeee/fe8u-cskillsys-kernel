@@ -157,5 +157,7 @@ void CheckBattleUnitLevelUp(struct BattleUnit *bu)
 
 		TryAddSkillLvup(GetUnitFromCharIdAndFaction(UNIT_CHAR_ID(&bu->unit), FACTION_BLUE), bu->unit.level);
 		UnitLvupCore(bu, bonus);
+
+		CheckBattleUnitStatCaps(GetUnit(bu->unit.index), bu);
 	}
 }
