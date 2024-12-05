@@ -10,6 +10,13 @@
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlot)
 {
+
+    // if(GetUnitStatusIndex(GetUnit(bu->unit.index)) == NEW_UNIT_STATUS_BREAK)
+    // {
+    //     bu->canCounter = false;
+    //     return;
+    // }
+
     if (itemSlot == BU_ISLOT_AUTO)
         itemSlot = GetUnitEquippedWeaponSlot(&bu->unit);
 

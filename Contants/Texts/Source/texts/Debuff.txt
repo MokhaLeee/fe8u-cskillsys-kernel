@@ -39,3 +39,9 @@ Panic[X]
 
 ## MSG_DEBUFF_PANIC_DESC
 Panic: reverse stat-buff[X]
+
+## MSG_DEBUFF_BREAK_NAME
+Break[X]
+
+## MSG_DEBUFF_BREAK_DESC
+Break: Disarm enemy unit[X]

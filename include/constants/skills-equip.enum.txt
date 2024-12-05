@@ -389,6 +389,7 @@ SID_Canto
 // SID_Onimaru
 // SID_Nonconforming
 // SID_Poise
+SID_Break
 
 ////////// PROC/MID-BATTLE SKILLS
 // SID_Astra

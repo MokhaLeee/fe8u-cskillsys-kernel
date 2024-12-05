@@ -3,6 +3,7 @@
 #include "battle-system.h"
 #include "strmag.h"
 #include "constants/skills.h"
+#include "debuff.h"
 
 #define LOCAL_TRACE 0
 

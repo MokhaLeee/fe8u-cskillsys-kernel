@@ -50,3 +50,8 @@ effects for both units.[X]
 Onimaru:[NL]
 This unit always has weapon[NL]
 triangle advantage.[X]
+
+## MSG_SKILL_Break
+Break:[NL]
+Disarm the opponent for[NL]
+a turn after battle.[X]

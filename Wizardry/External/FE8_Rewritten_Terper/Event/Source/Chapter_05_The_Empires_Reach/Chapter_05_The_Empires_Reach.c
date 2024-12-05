@@ -303,7 +303,7 @@ static const EventScr EventScr_Ending[] = {
     TEXTSTART
     TEXTSHOW(Chapter_05_Scene_06_Convo_01)
     TEXTEND
-    GIVE_ITEM_TO(ITEM_GUIDINGRING, CHARACTER_EIRIKA)
+    GIVE_ITEM_TO(ITEM_MASTERSEAL, CHARACTER_EIRIKA)
     REMA
 
     GOTO(0x0)

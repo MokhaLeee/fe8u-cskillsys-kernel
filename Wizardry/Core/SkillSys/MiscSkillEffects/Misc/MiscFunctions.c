@@ -16,6 +16,7 @@
 #include "jester_headers/maps.h"
 #include "jester_headers/flags.h"
 #include "jester_headers/miscellaenous.h"
+#include "debuff.h"
 
 extern void ForEachAdjacentUnit(int x, int y, void (*)(struct Unit *));
 
@@ -1125,4 +1126,34 @@ bool IsCharacterForceDeployed_(u16 pid)
         return true;
     }
     return false;
+}
+
+LYN_REPLACE_CHECK(GetUnitEquippedWeaponSlot);
+int GetUnitEquippedWeaponSlot(struct Unit* unit) {
+
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_BREAK)
+        return -1;
+
+    int i;
+
+    for (i = 0; i < UNIT_ITEM_COUNT; ++i)
+        if (CanUnitUseWeaponNow(unit, unit->items[i]) == TRUE)
+            return i;
+
+    return -1;
+}
+
+LYN_REPLACE_CHECK(GetUnitEquippedWeapon);
+u16 GetUnitEquippedWeapon(struct Unit* unit) {
+    
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_BREAK)
+        return 0;
+
+    int i;
+
+    for (i = 0; i < UNIT_ITEM_COUNT; ++i)
+        if (CanUnitUseWeapon(unit, unit->items[i]) == TRUE)
+            return unit->items[i];
+
+    return 0;
 }

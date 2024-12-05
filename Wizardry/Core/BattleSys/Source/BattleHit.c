@@ -515,7 +515,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
     }
     else if (
         defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 ||
-        defender->statusOut == UNIT_STATUS_SLEEP)
+        defender->statusOut == UNIT_STATUS_SLEEP || (GetUnitStatusIndex(GetUnit(defender->unit.index)) == NEW_UNIT_STATUS_BREAK && defender->canCounter == true))
     {
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
         gBattleHitIterator++;

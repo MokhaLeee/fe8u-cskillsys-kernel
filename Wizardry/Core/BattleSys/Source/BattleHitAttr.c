@@ -209,6 +209,14 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
     }
 #endif
+
+#if (defined(SID_Break) && (COMMON_SKILL_VALID(SID_Break)))
+    else if (BattleSkillTester(attacker, SID_Break))
+    {
+        if (GetUnit(defender->unit.index)->statusIndex == UNIT_STATUS_NONE)
+            SetUnitStatusIndex(GetUnit(defender->unit.index), NEW_UNIT_STATUS_BREAK);
+    }
+#endif
     else if (gBattleTemporaryFlag.skill_activated_dead_eye)
     {
         defender->statusOut = UNIT_STATUS_SLEEP;
@@ -273,7 +281,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 #if (defined(SID_MagicBounce) && (COMMON_SKILL_VALID(SID_MagicBounce)))
     if (BattleSkillTester(defender, SID_MagicBounce))
     {
-        static const u8 _debuffs[8] = {
+        static const u8 _debuffs[9] = {
             UNIT_STATUS_POISON,
             UNIT_STATUS_SLEEP,
             UNIT_STATUS_SILENCED,
@@ -281,9 +289,11 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
             UNIT_STATUS_PETRIFY,
             NEW_UNIT_STATUS_HEAVY_GRAVITY,
             NEW_UNIT_STATUS_WEAKEN,
-            NEW_UNIT_STATUS_PANIC};
+            NEW_UNIT_STATUS_PANIC,
+            NEW_UNIT_STATUS_BREAK,
+        };
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
         {
             if (defender->statusOut == _debuffs[i])
             {
@@ -306,7 +316,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 #if (defined(SID_GoodAsGold) && (COMMON_SKILL_VALID(SID_GoodAsGold)))
     if (BattleSkillTester(defender, SID_GoodAsGold))
     {
-        static const u8 _debuffs[8] = {
+        static const u8 _debuffs[9] = {
             UNIT_STATUS_POISON,
             UNIT_STATUS_SLEEP,
             UNIT_STATUS_SILENCED,
@@ -314,9 +324,11 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
             UNIT_STATUS_PETRIFY,
             NEW_UNIT_STATUS_HEAVY_GRAVITY,
             NEW_UNIT_STATUS_WEAKEN,
-            NEW_UNIT_STATUS_PANIC};
+            NEW_UNIT_STATUS_PANIC
+            NEW_UNIT_STATUS_BREAK,
+            };
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
         {
             if (defender->statusOut == _debuffs[i])
             {
