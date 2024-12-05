@@ -1,0 +1,21 @@
+/**
+ * Hotfix for 1.0.0LTS at 2024.12.05
+ *
+ * Fix:
+ *  1. Fix status overflow issue in lvup
+ */
+
+#include "Extensions/Hack Installation.txt"
+
+PUSH
+    // https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/470d6e8f67b06ffa61e59595584cb49252f606a3
+    ORG 0x2BA28
+    // #include "src/checkcapfix.lyn.event"
+
+    WORD $4B510 $F0004B05 $7AE0F807
+    SHORT (($8019431-4-CURRENTOFFSET>>12)&$7FF)|$F000 (($8019431-4-CURRENTOFFSET>>1)&$7FF)|$F800
+    SHORT $21
+    SHORT (($802BF25-4-CURRENTOFFSET>>12)&$7FF)|$F000 (($802BF25-4-CURRENTOFFSET>>1)&$7FF)|$F800
+    SHORT $BD10
+    WORD $4718 $8BACE35
+POP

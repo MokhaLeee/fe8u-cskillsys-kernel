@@ -174,7 +174,7 @@ LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 %.lyn.event: %.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
 	@$(LYN) $< $(LYN_REF) > $@
-	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
+#	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
 
 %.dmp: %.o
 	@echo "[GEN]	$@"
