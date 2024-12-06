@@ -113,8 +113,14 @@ bool PostActionSwap(ProcPtr proc)
 	if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
 		return false;
 
-	if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
+		break;
+
+	default:
 		return false;
+	}
 
 #if 0
 	if (gBattleActorGlobalFlag.hitted == false)

@@ -120,4 +120,6 @@ gpEfxCombatArtAnimPriority: POIN EfxCombatArtAnimPriority
 
 gpSkillInfos_Desc: POIN gSkillInfos + 6 // This is limited by FEB function: InputFormRef.init()
 
+gpGaidenChaxConfigs: POIN gGaidenChaxConfigs
+
 KERNEL_RELOC_END:

@@ -23,6 +23,8 @@ struct KernelDesigerConfig {
 	u8 lvup_mode_hard;
 
 	u8 unit_page_style, skil_page_style;
+
+	u8 gaiden_magic_en, gaiden_magic_must_be_magic, gaiden_magic_requires_wrank;
 };
 
 extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;

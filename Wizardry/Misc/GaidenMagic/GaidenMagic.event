@@ -1,0 +1,9 @@
+#ifndef CHAX_GAIDEN_MAGIC_INSTALLED
+
+#include "Source/Core.lyn.event"
+#include "Source/BMagMenu.lyn.event"
+#include "Source/BMagAction.lyn.event"
+
+InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenBMag, ActionGaidenBMagCombat)
+
+#endif

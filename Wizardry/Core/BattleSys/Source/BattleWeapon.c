@@ -2,11 +2,38 @@
 #include "skill-system.h"
 #include "combat-art.h"
 #include "debuff.h"
+#include "battle-system.h"
 #include "weapon-range.h"
 #include "weapon-lockex.h"
+#include "gaiden-magic.h"
 #include "constants/items.h"
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
+
+LYN_REPLACE_CHECK(GetUnitEquippedWeaponSlot);
+int GetUnitEquippedWeaponSlot(struct Unit *unit)
+{
+	int i;
+
+	for (i = 0; i < UNIT_ITEM_COUNT; ++i)
+		if (CanUnitUseWeaponNow(unit, unit->items[i]) == TRUE)
+			return i;
+
+#if CHAX
+	/* gaiden magic */
+	if (gpKernelDesigerConfig->gaiden_magic_en) {
+		i = GetGaidenMagicAutoEquipSlot(unit);
+		if (i > 0)
+			return i;
+	}
+
+	/* thress houses magic */
+
+	/* engage weapon */
+#endif /* CHAX */
+
+	return -1;
+}
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlot)
 {
@@ -50,6 +77,50 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlo
 		bu->weapon = GetBallistaItemAt(bu->unit.xPos, bu->unit.yPos);
 		bu->canCounter = false;
 		break;
+
+#if CHAX
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		bu->weaponSlotIndex = 0xFF;
+		bu->weapon = MakeNewItem(GetGaidenMagicItem(&bu->unit, itemSlot));
+		bu->canCounter = false;
+		break;
+
+	/* reserved */
+	case CHAX_BUISLOT_THREEHOUSES_BMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG6:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG6:
+
+	case CHAX_BUISLOT_ENGAGE_WEAPON1:
+	case CHAX_BUISLOT_ENGAGE_WEAPON2:
+	case CHAX_BUISLOT_ENGAGE_WEAPON3:
+	case CHAX_BUISLOT_ENGAGE_WEAPON4:
+	case CHAX_BUISLOT_ENGAGE_WEAPON5:
+	case CHAX_BUISLOT_ENGAGE_WEAPON6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON7:
+#endif
 
 	default:
 		bu->weaponSlotIndex = 0xFF;

@@ -57,4 +57,8 @@ ALIGN 4
 
 #include "Misc/SkillEffects/MiscSkillEffects.event"
 
+#ifdef CONFIG_USE_GAIDEN_MAGIC
+	#include "Misc/GaidenMagic/GaidenMagic.event"
+#endif /* CONFIG_USE_GAIDEN_MAGIC */
+
 #include "External/ExternalPatches.event"

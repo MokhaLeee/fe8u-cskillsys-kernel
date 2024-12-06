@@ -3,3 +3,12 @@ Return?        [NL][Yes][X]
 
 ## MSG_SkillEffect_Lunge_Confirm
 Swap position?        [NL][Yes][X]
+
+## MSG_GaidenBMagic_UM_NAME
+ B.Mag[X]
+
+## MSG_GaidenBMagic_UM_DESC
+ Gaiden style black magic.[.][X]
+
+## MSG_GaidenMagic_ItemMenuDisabled
+Can not equip now![NL][X]

@@ -30,4 +30,8 @@
 #include "Debuff/DebuffInfo.lyn.event"
 #include "Debuff/StatDebuffInfo.lyn.event"
 
+#ifdef CONFIG_USE_GAIDEN_MAGIC
+	#include "GaidenMagic/GaidenMagicData.lyn.event"
+#endif /* CONFIG_USE_GAIDEN_MAGIC */
+
 #endif

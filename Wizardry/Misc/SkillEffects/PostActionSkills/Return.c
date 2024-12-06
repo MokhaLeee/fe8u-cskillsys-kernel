@@ -80,8 +80,14 @@ bool PostActionPositionReturn(ProcPtr proc)
 #endif
 		return false;
 
-	if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
+		break;
+
+	default:
 		return false;
+	}
 
 	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;

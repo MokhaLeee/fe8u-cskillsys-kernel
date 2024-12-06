@@ -54,4 +54,10 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 
 	.unit_page_style = CONFIG_PAGE1_WITH_BWL,
 	.skil_page_style = CONFIG_PAGE4_MOKHA_PLAN_A,
+
+#ifdef CONFIG_USE_GAIDEN_MAGIC
+	.gaiden_magic_en = true,
+	.gaiden_magic_must_be_magic = CONFIG_GAIDEN_MAGIC_MUST_BE_MAGIC,
+	.gaiden_magic_requires_wrank = CONFIG_GAIDEN_MAGIC_REQUIRES_WRANK,
+#endif
 };

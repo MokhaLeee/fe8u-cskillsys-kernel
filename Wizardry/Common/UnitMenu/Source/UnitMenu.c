@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "combat-art.h"
+#include "gaiden-magic.h"
 #include "constants/texts.h"
 
 #define MenuItemsEnd {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -30,6 +31,19 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 	{"　降りる", 0x692, 0x6D7, 4, 0x53, ExitCommandUsability, 0, ExitCommandEffect, 0, 0, 0}, // Exit (Ballista) >
 
 #if CHAX
+	{
+		"　黑魔法",
+		MSG_GaidenBMagic_UM_NAME,
+		MSG_GaidenBMagic_UM_DESC,
+		TEXT_COLOR_SYSTEM_WHITE,
+		0x80,
+		GaidenBMagActionCommandUsability,
+		GaidenBMagActionCommandOnDarw,
+		GaidenBMagActionCommandEffect,
+		0,
+		GaidenBMagActionCommandHover,
+		GaidenBMagActionCommandUnhover
+	},
 	{
 		"　特技",
 		0x4EC,
