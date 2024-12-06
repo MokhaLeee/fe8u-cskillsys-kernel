@@ -1,9 +1,0 @@
-<Module Name="EquipIconStandard">
-  <Static File="EquipIconStandard.lyn.event" Name="EquipIconStandard_Static"/>
-  <Dynamic File="EquipIconStandard.lyn.event" Name="EquipIconStandard_Dynamic"/>
-  <Definition Name="EQUIP_ICON_X" Value="40"/>
-  <Definition Name="EQUIP_ICON_Y" Value="8"/>
-  <Definition Name="EQUIP_ICON_PAGE" Value="0"/>
-  <Definition Name="EQUIP_ICON_BASE_TILE" Value="0x0300"/>
-  <Definition Name="EQUIP_ICON_PALETTE" Value="20"/>
-</Module>

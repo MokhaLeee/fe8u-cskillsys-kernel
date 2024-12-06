@@ -70,9 +70,9 @@
     #include "StatScreenAllegianceColors/Installer.event"
 #endif
 
-// #ifdef CONFIG_SUPPORT_POST_BATTLE
-//     #include "SupportPostBattle/Installer.event"
-// #endif
+#ifdef CONFIG_SUPPORT_POST_BATTLE
+    #include "SupportPostBattle/Installer.event"
+#endif
 
 /** 
  * This weirdly causes compile issues right now unless I comment it out here,

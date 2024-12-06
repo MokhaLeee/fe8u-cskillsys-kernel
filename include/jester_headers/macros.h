@@ -287,3 +287,15 @@ enum {
     KILL(CHAR_EVT_POSITION_AT_SLOTB) \
     DISA_IF(CHAR_EVT_POSITION_AT_SLOTB) \
     ENUN
+
+/* 
+** It's a bit broken right now. I can't set it to trigger automatically
+** and if it doesn't see a unit in a column it'll crash after completing
+** the animation
+*/
+#define UseArrowTrap(x, turnCountdown, turnInterval) \
+    SVAL(EVT_SLOT_3, x) \
+    SVAL(EVT_SLOT_4, turnCountdown) \
+    SVAL(EVT_SLOT_5, turnInterval) \
+    SVAL(EVT_SLOT_9, 99) \
+    ASMC(AddArrowTrap)

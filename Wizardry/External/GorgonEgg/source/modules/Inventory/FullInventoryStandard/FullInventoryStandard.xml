@@ -1,9 +1,0 @@
-<Module Name="FullInventoryStandard">
-  <Static File="FullInventoryStandard.lyn.event" Name="FullInventoryStandard_Static"/>
-  <Dynamic File="FullInventoryStandard.lyn.event" Name="FullInventoryStandard_Dynamic"/>
-  <Definition Name="INVENTORY_ICON_X" Value="40"/>
-  <Definition Name="INVENTORY_ICON_Y" Value="8"/>
-  <Definition Name="INVENTORY_ICON_BASE_TILE" Value="0x0300"/>
-  <Definition Name="INVENTORY_ICON_PALETTE" Value="20"/>
-  <Definition Name="ITEM_ICON_PAGE" Value="0"/>
-</Module>

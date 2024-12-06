@@ -1,6 +1,0 @@
-<Module Name="DrawVertical">
-  <TilemapDestination File="DrawVertical.lyn.event" Name="DrawVertical_TilemapDestination"/>
-  <InvalidPosition File="DrawVertical.lyn.event" Name="DrawVertical_InvalidPosition"/>
-  <Extend File="DrawVertical.lyn.event" Name="DrawVertical_Extend"/>
-  <Retract File="DrawVertical.lyn.event" Name="DrawVertical_Retract"/>
-</Module>

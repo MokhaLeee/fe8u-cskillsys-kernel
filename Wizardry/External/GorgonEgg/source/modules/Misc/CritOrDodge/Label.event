@@ -1,8 +1,0 @@
-
-ALIGN 4; gCritLabel: {
-  #incbin "CritLabel.4bpp"
-};
-
-ALIGN 4; gDodgeLabel: {
-  #incbin "DodgeLabel.4bpp"
-};

@@ -1,4 +1,0 @@
-
-ALIGN 4; gRatingLabel: {
-  #incbin "RatingLabel.4bpp"
-};

@@ -1,9 +1,0 @@
-<Module Name="HitStandard">
-  <Dynamic File="HitStandard.lyn.event" Name="HitStandard_Dynamic"/>
-  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
-  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
-  <Definition Name="HIT_X" Value="24"/>
-  <Definition Name="HIT_Y" Value="64"/>
-  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
-  <Definition Name="NUMBER_PALETTE" Value="8"/>
-</Module>

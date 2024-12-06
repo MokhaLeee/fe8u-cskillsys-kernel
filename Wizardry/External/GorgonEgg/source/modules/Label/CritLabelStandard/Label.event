@@ -1,4 +1,0 @@
-
-ALIGN 4; gCritLabel: {
-  #incbin "CritLabel.4bpp"
-};

@@ -227,7 +227,7 @@ extern struct ActiveEventRegistry gActiveEventRegistry;
 extern struct BattleTalkExtEnt gBattleTalkList[];
 extern struct DefeatTalkEnt gDefeatTalkList[];
 extern struct SupportTalkEnt gSupportTalkList[];
-extern struct ForceDeploymentEnt gForceDeploymentList[];
+// extern struct ForceDeploymentEnt gForceDeploymentList[];
 extern u8 gPidList_SethLArachelMyrrhInnes[];
 
 #endif // GUARD_eventinfo_H

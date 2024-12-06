@@ -268,6 +268,7 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT(Grado_Reinforcements_Enemy)
     HIGHLIGHT_CHARACTER(CHARACTER_ONEILL, 60)
     Text(Chapter_00_Scene_03_Convo_04)
+    // UseArrowTrap(0, 1, 2)
     ENDA
 };
 
@@ -295,7 +296,7 @@ static const EventScr EventScr_Ending[] = {
  * Misc events
  */
 static const EventListScr EventScr_Talk_EirikaSeth[] = {
-    //ConvoEvent(0xB32)
+    ConvoEvent(0xB32)
 };
 
 /**

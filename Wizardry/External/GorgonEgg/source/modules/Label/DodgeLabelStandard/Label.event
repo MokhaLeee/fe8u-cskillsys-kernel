@@ -1,4 +1,0 @@
-
-ALIGN 4; gDodgeLabel: {
-  #incbin "DodgeLabel.4bpp"
-};

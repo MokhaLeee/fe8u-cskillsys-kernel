@@ -1,3 +1,0 @@
-<Module Name="GetCursorQuadrant">
-  <Include File="Installer.event"/>
-</Module>

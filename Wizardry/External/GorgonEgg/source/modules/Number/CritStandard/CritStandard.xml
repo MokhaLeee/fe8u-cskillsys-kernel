@@ -1,9 +1,0 @@
-<Module Name="CritStandard">
-  <Dynamic File="CritStandard.lyn.event" Name="CritStandard_Dynamic"/>
-  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
-  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
-  <Definition Name="CRT_X" Value="56"/>
-  <Definition Name="CRT_Y" Value="0"/>
-  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
-  <Definition Name="NUMBER_PALETTE" Value="8"/>
-</Module>

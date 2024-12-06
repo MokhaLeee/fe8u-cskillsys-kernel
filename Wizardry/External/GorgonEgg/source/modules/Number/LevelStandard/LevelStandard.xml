@@ -1,9 +1,0 @@
-<Module Name="LevelStandard">
-  <Dynamic File="LevelStandard.lyn.event" Name="LevelStandard_Dynamic"/>
-  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
-  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
-  <Definition Name="LEVEL_X" Value="24"/>
-  <Definition Name="LEVEL_Y" Value="0"/>
-  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
-  <Definition Name="NUMBER_PALETTE" Value="8"/>
-</Module>

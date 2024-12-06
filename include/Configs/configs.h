@@ -232,7 +232,7 @@
  * as well as the Installer.event files to make it work. I suspect looking for the changed addresses for various
  * functions in fe8-kernel-dev.sym in the root directory could be fruitful, but I've not had much luck.
  */
-// #define CONFIG_SUPPORT_POST_BATTLE
+#define CONFIG_SUPPORT_POST_BATTLE
 
 /**
  * By Contro

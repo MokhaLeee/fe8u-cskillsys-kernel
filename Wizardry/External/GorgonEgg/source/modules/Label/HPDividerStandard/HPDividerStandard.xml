@@ -1,7 +1,0 @@
-<Module Name="HPDividerStandard">
-  <Static File="HPDividerStandard.lyn.event" Name="HPDividerStandard_Static"/>
-  <Definition Name="HP_DIVIDER_X" Value="0"/>
-  <Definition Name="HP_DIVIDER_Y" Value="3"/>
-  <Definition Name="HP_DIVIDER_BASE_TILE" Value="0x013E"/>
-  <Definition Name="HP_DIVIDER_PALETTE" Value="2"/>
-</Module>

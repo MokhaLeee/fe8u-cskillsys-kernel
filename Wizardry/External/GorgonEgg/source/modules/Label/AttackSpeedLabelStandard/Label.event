@@ -1,4 +1,0 @@
-
-ALIGN 4; gAttackSpeedLabel: {
-  #incbin "AttackSpeedLabel.4bpp"
-};

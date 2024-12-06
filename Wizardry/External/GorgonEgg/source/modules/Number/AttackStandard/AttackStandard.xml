@@ -1,9 +1,0 @@
-<Module Name="AttackStandard">
-  <Dynamic File="AttackStandard.lyn.event" Name="AttackStandard_Dynamic"/>
-  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
-  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
-  <Definition Name="ATK_X" Value="24"/>
-  <Definition Name="ATK_Y" Value="32"/>
-  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
-  <Definition Name="NUMBER_PALETTE" Value="8"/>
-</Module>

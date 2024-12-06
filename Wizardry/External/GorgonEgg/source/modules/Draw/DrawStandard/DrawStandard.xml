@@ -1,6 +1,0 @@
-<Module Name="DrawStandard">
-  <TilemapDestination File="DrawStandard.lyn.event" Name="DrawStandard_TilemapDestination"/>
-  <InvalidPosition File="DrawStandard.lyn.event" Name="DrawStandard_InvalidPosition"/>
-  <Extend File="DrawStandard.lyn.event" Name="DrawStandard_Extend"/>
-  <Retract File="DrawStandard.lyn.event" Name="DrawStandard_Retract"/>
-</Module>

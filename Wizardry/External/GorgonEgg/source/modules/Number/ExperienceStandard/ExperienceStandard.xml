@@ -1,9 +1,0 @@
-<Module Name="ExperienceStandard">
-  <Dynamic File="ExperienceStandard.lyn.event" Name="ExperienceStandard_Dynamic"/>
-  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
-  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
-  <Definition Name="EXP_X" Value="24"/>
-  <Definition Name="EXP_Y" Value="8"/>
-  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
-  <Definition Name="NUMBER_PALETTE" Value="8"/>
-</Module>

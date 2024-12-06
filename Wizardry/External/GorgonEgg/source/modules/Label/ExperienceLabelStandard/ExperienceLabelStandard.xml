@@ -1,9 +1,0 @@
-<Module Name="ExperienceLabelStandard">
-  <Init File="ExperienceLabelStandard.lyn.event" Name="ExperienceLabelStandard_Init"/>
-  <Static File="ExperienceLabelStandard.lyn.event" Name="ExperienceLabelStandard_Static"/>
-  <Include File="Label.event"/>
-  <Definition Name="EXP_LABEL_X" Value="0"/>
-  <Definition Name="EXP_LABEL_Y" Value="1"/>
-  <Definition Name="EXP_LABEL_BASE_TILE" Value="0x0164"/>
-  <Definition Name="EXP_LABEL_PALETTE" Value="2"/>
-</Module>

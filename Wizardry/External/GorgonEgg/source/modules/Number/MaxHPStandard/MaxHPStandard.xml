@@ -1,9 +1,0 @@
-<Module Name="MaxHPStandard">
-  <Dynamic File="MaxHPStandard.lyn.event" Name="MaxHPStandard_Dynamic"/>
-  <Internal File="DrawNumberStandard/DrawNumberDigit.lyn.event"/>
-  <Internal File="DrawNumberStandard/DrawUnsignedSmallNumber.lyn.event"/>
-  <Definition Name="MAX_HP_X" Value="24"/>
-  <Definition Name="MAX_HP_Y" Value="24"/>
-  <Definition Name="NUMBER_BASE_TILE" Value="0x02E0"/>
-  <Definition Name="NUMBER_PALETTE" Value="8"/>
-</Module>
