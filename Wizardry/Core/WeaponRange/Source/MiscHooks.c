@@ -2,6 +2,7 @@
 #include "battle-system.h"
 #include "status-getter.h"
 #include "weapon-range.h"
+#include "kernel-lib.h"
 
 LYN_REPLACE_CHECK(AiReachesByBirdsEyeDistance);
 bool AiReachesByBirdsEyeDistance(struct Unit *unit, struct Unit *other, u16 item)
@@ -97,7 +98,7 @@ void AiFillReversedAttackRangeMap(struct Unit *unit, u16 item)
 	BmMapFill(gBmMapRange, 0);
 
 	// <!> not unit! here is target! we should judge for AI!
-	AddMap(unit->xPos, unit->yPos, GetItemReachBitsRework(item, gActiveUnit), 1, 0);
+	AddMap(unit->xPos, unit->yPos, GetItemReachBitsRework(item, gActiveUnit));
 }
 
 LYN_REPLACE_CHECK(AiFloodMovementAndRange);
@@ -118,7 +119,7 @@ void AiFloodMovementAndRange(struct Unit *unit, u16 move, u16 item)
 			if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
 				continue;
 
-			AddMap(unit->xPos, unit->yPos, mask, 1, 0);
+			AddMap(unit->xPos, unit->yPos, mask);
 		}
 	}
 }
@@ -241,7 +242,7 @@ void GenerateUnitCompleteAttackRange(struct Unit *unit)
 #ifdef CONFIG_FASTER_MAP_RANGE
 			MapAddInBoundedRange(ix, iy, min, max);
 #else
-			AddMap(ix, iy, mask, 1, 0);
+			AddMap(ix, iy, mask);
 #endif
 		}
 	}
@@ -252,8 +253,29 @@ LYN_REPLACE_CHECK(GenerateUnitStandingReachRange);
 void GenerateUnitStandingReachRange(struct Unit *unit, int mask)
 {
 	BmMapFill(gBmMapRange, 0);
-	AddMap(unit->xPos, unit->yPos, mask, 1, 0);
+	AddMap(unit->xPos, unit->yPos, mask);
 }
+
+#ifdef CONFIG_FASTER_MAP_RANGE
+static void get_range_from_mask(u32 mask, int *out_min, int *out_max)
+{
+	int i;
+
+	for (i = 0; i < 32; i++) {
+		if ((1 << i) & mask) {
+			*out_min = i;
+			break;
+		}
+	}
+
+	for (i = 31; i >= 0; i--) {
+		if ((1 << i) & mask) {
+			*out_max = i;
+			break;
+		}
+	}
+}
+#endif
 
 LYN_REPLACE_CHECK(GenerateUnitCompleteStaffRange);
 void GenerateUnitCompleteStaffRange(struct Unit *unit)
@@ -261,14 +283,23 @@ void GenerateUnitCompleteStaffRange(struct Unit *unit)
 	int ix, iy;
 	u32 mask = GetUnitStaffReachBits(unit);
 
+#ifdef CONFIG_FASTER_MAP_RANGE
+	int min = 0;
+	int max = 0;
+
+	get_range_from_mask(mask, &min, &max);
+#endif
+
 	BmMapFill(gBmMapRange, 0);
 
+#if 0
 	if (UNIT_CATTRIBUTES(unit) & CA_BALLISTAE) {
 		u16 item = GetBallistaItemAt(unit->xPos, unit->yPos);
 
 		if (item != 0)
 			mask |= GetItemReachBitsRework(item, unit);
 	}
+#endif
 
 	for (iy = 0; iy < gBmMapSize.y; iy++) {
 		for (ix = 0; ix < gBmMapSize.x; ix++) {
@@ -281,7 +312,11 @@ void GenerateUnitCompleteStaffRange(struct Unit *unit)
 			if (gBmMapOther[iy][ix])
 				continue;
 
-			AddMap(ix, iy, mask, 1, 0);
+#ifdef CONFIG_FASTER_MAP_RANGE
+			MapAddInBoundedRange(ix, iy, min, max);
+#else
+			AddMap(ix, iy, mask);
+#endif
 		}
 	}
 	SetWorkingBmMap(gBmMapMovement);
@@ -358,7 +393,7 @@ void FillMovementAndRangeMapForItem(struct Unit *unit, u16 item)
 			if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
 				continue;
 
-			AddMap(ix, iy, GetItemReachBitsRework(item, unit), 1, 0);
+			AddMap(ix, iy, GetItemReachBitsRework(item, unit));
 		}
 	}
 }
@@ -376,7 +411,7 @@ void sub_803B678(struct Unit *unit, u16 item)
 			if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
 				continue;
 
-			AddMap(ix, iy, GetItemReachBitsRework(item, unit), 1, 0);
+			AddMap(ix, iy, GetItemReachBitsRework(item, unit));
 		}
 	}
 }

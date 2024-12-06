@@ -20,9 +20,9 @@ STATIC_DECLAR void ExecCombatArtEffectAnim(ProcPtr proc)
 	BmMapFill(gBmMapRange, 0);
 
 	if (info->aoe_debuff)
-		AddMap(gCombatArtStatus.x, gCombatArtStatus.y, 0b11, 1, 0);
+		AddMap(gCombatArtStatus.x, gCombatArtStatus.y, 0b11);
 	else
-		AddMap(gCombatArtStatus.x, gCombatArtStatus.y, 0b01, 1, 0);
+		AddMap(gCombatArtStatus.x, gCombatArtStatus.y, 0b01);
 
 	InitTargets(unit->xPos, unit->yPos);
 	ForEachUnitInRange(AddUnitToTargetListIfNotAllied);

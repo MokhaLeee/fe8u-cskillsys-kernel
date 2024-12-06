@@ -58,6 +58,12 @@
 #define CONFIG_FASTER_MAP_RANGE
 
 /**
+ * Hook on function: LoadUnit() to
+ * optimize performance to avoid minor hitches when loading unit
+ */
+#define CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
+
+/**
  * Enable leader-ship features
  */
 // #define CONFIG_LEADER_SHIP_EN
