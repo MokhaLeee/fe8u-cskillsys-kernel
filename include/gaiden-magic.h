@@ -16,20 +16,23 @@ extern u8 const *const gpGaidenWeaponCostList;
 struct GaidenChaxConfigEnt {
 	u8 iid;
 	u8 pid, jid, level;
+	u8 faction;
 
 	u16 skill, evflag;
 };
 extern const struct GaidenChaxConfigEnt gGaidenChaxConfigs[];
 extern struct GaidenChaxConfigEnt const *const gpGaidenChaxConfigs;
 
+#define GAIDEN_MAGIC_LIST_LEN 7
+
 struct GaidenMagicList {
 	struct UnitListHeader header;
 
 	u8 bmag_cnt;
-	u8 bmags[7];
+	u8 bmags[GAIDEN_MAGIC_LIST_LEN];
 
 	u8 wmag_cnt;
-	u8 wmags[7];
+	u8 wmags[GAIDEN_MAGIC_LIST_LEN];
 };
 
 extern struct GaidenMagicList sGaidenMagicListObj;

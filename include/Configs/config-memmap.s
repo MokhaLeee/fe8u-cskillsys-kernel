@@ -91,6 +91,7 @@ _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
 _kernel_malloc_overlay0 gDmg, 40
 _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
 _kernel_malloc_overlay0 sBattleSkillActivateBuf, 4
+_kernel_malloc_overlay0 sAiSimuSlotBuf, 0x100
 
 /**
  * Usage of memory on IWRAM for arm-functions

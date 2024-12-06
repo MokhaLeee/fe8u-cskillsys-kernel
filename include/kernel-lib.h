@@ -24,7 +24,7 @@ struct KernelDesigerConfig {
 
 	u8 unit_page_style, skil_page_style;
 
-	u8 gaiden_magic_en, gaiden_magic_must_be_magic, gaiden_magic_requires_wrank;
+	u8 gaiden_magic_en, gaiden_magic_must_be_magic, gaiden_magic_requires_wrank, gaiden_magic_ai_en;
 };
 
 extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;

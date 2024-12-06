@@ -46,17 +46,22 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 
 	CpuFastFill16(0, tmpbuf, 0x100);
 
-	for (; conf1->iid != ITEM_NONE; conf1++) {
-		if ((conf1->level & 0x80) && !(UNIT_CATTRIBUTES(unit) & CA_PROMOTED))
-			continue;
+	if (conf1) {
+		for (; conf1->iid != ITEM_NONE; conf1++) {
+			if ((conf1->level & 0x80) && !(UNIT_CATTRIBUTES(unit) & CA_PROMOTED))
+				continue;
 
-		if (unit->level < (conf1->level & 0x7F))
-			continue;
+			if (unit->level < (conf1->level & 0x7F))
+				continue;
 
-		tmpbuf[conf1->iid] = 1;
+			tmpbuf[conf1->iid] = 1;
+		}
 	}
 
 	for (; conf2->iid != ITEM_NONE; conf2++) {
+		if (conf2->faction != UNIT_FACTION(unit))
+			continue;
+
 		if (conf2->pid != 0 && UNIT_CHAR_ID(unit) != conf2->pid)
 			continue;
 
@@ -82,11 +87,11 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 			continue;
 
 		if (IsBMag(i))
-			if (list->bmag_cnt < ARRAY_COUNT(list->bmags))
+			if (list->bmag_cnt < GAIDEN_MAGIC_LIST_LEN)
 				list->bmags[list->bmag_cnt++] = i;
 
 		if (IsWMag(i))
-			if (list->wmag_cnt < ARRAY_COUNT(list->wmags))
+			if (list->wmag_cnt < GAIDEN_MAGIC_LIST_LEN)
 				list->wmags[list->wmag_cnt++] = i;
 	}
 
@@ -106,9 +111,9 @@ struct GaidenMagicList *GetGaidenMagicList(struct Unit *unit)
 
 bool CanUnitUseGaidenMagic(struct Unit *unit, int item)
 {
-	u32 attr = GetItemAttributes(item);
-
 	if (gpKernelDesigerConfig->gaiden_magic_requires_wrank) {
+		u32 attr = GetItemAttributes(item);
+
 		if (attr & IA_WEAPON)
 			return CanUnitUseWeapon(unit, item);
 		else if (attr & IA_STAFF)

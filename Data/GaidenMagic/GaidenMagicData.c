@@ -16,17 +16,21 @@ struct GaidenPinfoConfigEnt const *const gGaidenPinfoConfigList[] = {
 
 const struct GaidenChaxConfigEnt gGaidenChaxConfigs[] = {
 	{
-		.iid = ITEM_ANIMA_FIRE,
+		.iid = ITEM_DARK_NOSFERATU,
+		.jid = CLASS_SHAMAN,
+		.faction = FACTION_RED,
 	},
 	{
 		.iid = ITEM_DARK_NOSFERATU,
 		.evflag = 101, // lol
+		.faction = FACTION_BLUE,
 	},
 	{
 		.iid = ITEM_ANIMA_THUNDER,
 		.pid = CHARACTER_EIRIKA,
 		.jid = CLASS_EIRIKA_LORD,
 		.level = 1,
+		.faction = FACTION_BLUE,
 	},
 	{ 0 },
 };

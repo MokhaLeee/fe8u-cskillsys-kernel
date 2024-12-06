@@ -69,12 +69,14 @@
  * Sub:
  * MUST_BE_MAGIC: if set as 0, then all weapons will be okay (rather than magic wepaon only)
  * REQUIRES_WRANK: if set as 0, then unit can directly use the weapon regardless vanilla judgement
+ * AI_EN: if set as 1, AI can also use gaiden B.Mag
  */
 #define CONFIG_USE_GAIDEN_MAGIC
 
 #ifdef CONFIG_USE_GAIDEN_MAGIC
 	#define CONFIG_GAIDEN_MAGIC_MUST_BE_MAGIC 0 // 0: all weapons are okay
 	#define CONFIG_GAIDEN_MAGIC_REQUIRES_WRANK 0 // 0: not requires unit ability to equip that weapon
+	#define CONFIG_GAIDEN_MAGIC_AI_EN 1
 #endif /* USE_GAIDEN_MAGIC */
 
 /**

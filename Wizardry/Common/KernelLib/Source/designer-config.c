@@ -59,5 +59,6 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.gaiden_magic_en = true,
 	.gaiden_magic_must_be_magic = CONFIG_GAIDEN_MAGIC_MUST_BE_MAGIC,
 	.gaiden_magic_requires_wrank = CONFIG_GAIDEN_MAGIC_REQUIRES_WRANK,
+	.gaiden_magic_ai_en = CONFIG_GAIDEN_MAGIC_AI_EN,
 #endif
 };
