@@ -106,33 +106,6 @@ extern u16 BattleOrderSkills[BORDER_MAX];
 #define RegisterBattleOrderSkill(sid, type) (BattleOrderSkills[type] = (sid))
 
 int GetWeaponCost(struct BattleUnit *bu, u16 item);
-static inline int GetItemFormSlot(struct Unit *unit, int slot)
-{
-	switch (slot) {
-	case 0:
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-		return unit->items[slot];
-
-	case BU_ISLOT_5:
-		return gBmSt.um_tmp_item;
-
-	case BU_ISLOT_ARENA_PLAYER:
-		return gArenaState.playerWeapon;
-
-	case BU_ISLOT_ARENA_OPPONENT:
-		return gArenaState.opponentWeapon;
-
-	case BU_ISLOT_BALLISTA:
-		return GetBallistaItemAt(unit->xPos, unit->yPos);
-
-	case -1:
-	default:
-		return 0;
-	}
-}
 
 extern struct Vec2 gBattleTargetPositionBackup;
 
@@ -328,3 +301,5 @@ static inline bool CheckUnbreakableSpecialSlot(int slot)
 		return false;
 	}
 }
+
+int GetItemFormSlot(struct Unit *unit, int slot);

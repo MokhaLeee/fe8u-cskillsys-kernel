@@ -9,7 +9,9 @@ struct GaidenPinfoConfigEnt {
 	u8 level, iid;
 };
 extern struct GaidenPinfoConfigEnt const *const gGaidenPinfoConfigList[0x100];
+
 extern const u8 gGaidenWeaponCostList[0x100];
+extern u8 const *const gpGaidenWeaponCostList;
 
 struct GaidenChaxConfigEnt {
 	u8 iid;

@@ -10,6 +10,71 @@
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
+int GetItemFormSlot(struct Unit *unit, int slot)
+{
+	switch (slot) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		return unit->items[slot];
+
+	case BU_ISLOT_5:
+		return gBmSt.um_tmp_item;
+
+	case BU_ISLOT_ARENA_PLAYER:
+		return gArenaState.playerWeapon;
+
+	case BU_ISLOT_ARENA_OPPONENT:
+		return gArenaState.opponentWeapon;
+
+	case BU_ISLOT_BALLISTA:
+		return GetBallistaItemAt(unit->xPos, unit->yPos);
+
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		return MakeNewItem(GetGaidenMagicItem(unit, slot));
+
+	/* reserved */
+	case CHAX_BUISLOT_THREEHOUSES_BMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG6:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON1:
+	case CHAX_BUISLOT_ENGAGE_WEAPON2:
+	case CHAX_BUISLOT_ENGAGE_WEAPON3:
+	case CHAX_BUISLOT_ENGAGE_WEAPON4:
+	case CHAX_BUISLOT_ENGAGE_WEAPON5:
+	case CHAX_BUISLOT_ENGAGE_WEAPON6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON7:
+	case -1:
+	default:
+		return 0;
+	}
+}
+
 LYN_REPLACE_CHECK(GetUnitEquippedWeaponSlot);
 int GetUnitEquippedWeaponSlot(struct Unit *unit)
 {
