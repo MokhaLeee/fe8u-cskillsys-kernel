@@ -299,3 +299,13 @@ enum {
     SVAL(EVT_SLOT_5, turnInterval) \
     SVAL(EVT_SLOT_9, 99) \
     ASMC(AddArrowTrap)
+
+#define BREAKSTONE_TARGET_UNIT \
+    SVAL(EVT_SLOT_9, 99) \
+    STARTFADE \
+    EvtColorFadeSetup(0x0, 0x20, 8, 128, 128, 128) \
+    STAL(30) \
+    BREAKSTONE(CHAR_EVT_POSITION_AT_SLOTB) \
+    EvtColorFadeSetup(0x0, 0x20, 4, 256, 256, 256) \
+    NoFade \
+    ENDA

@@ -631,6 +631,7 @@ SID_DarkHorse
 // SID_HedgeFund
 // SID_WeaponHeal
 // SID_Domain
+SID_Resurrection
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

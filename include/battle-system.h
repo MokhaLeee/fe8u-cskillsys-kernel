@@ -74,6 +74,7 @@ extern struct BattleGlobalFlags {
     u32 skill_activated_capture : 1;
     u32 skill_activated_angerpoint : 1;
     u32 skill_activated_debilitator : 1;
+    u32 skill_activated_resurrection : 1;
 } gBattleActorGlobalFlag, gBattleTargetGlobalFlag;
 
 static inline struct BattleGlobalFlags * GetBattleGlobalFlags(struct BattleUnit * bu)

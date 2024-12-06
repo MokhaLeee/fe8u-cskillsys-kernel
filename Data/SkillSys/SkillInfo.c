@@ -4552,4 +4552,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Resurrection) && COMMON_SKILL_VALID(SID_Resurrection))
+    [SID_Resurrection] = {
+        .desc = MSG_SKILL_Resurrection,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

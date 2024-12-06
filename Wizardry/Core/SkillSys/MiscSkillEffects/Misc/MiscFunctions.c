@@ -1165,3 +1165,29 @@ void AddArrowTrap(int x, int turnCountdown, int turnInterval)
     else
         AddDamagingTrap(x, 0, TRAP_LIGHTARROW, 0, turnCountdown, turnInterval, 10);
 }
+
+//! FE8U = 0x08010D28
+LYN_REPLACE_CHECK(Event44_BreakingSacredStone);
+u8 Event44_BreakingSacredStone(struct EventEngineProc * proc)
+{
+    struct Unit * unit;
+
+    if (EVENT_IS_SKIPPING(proc))
+    {
+        return EVC_ADVANCE_CONTINUE;
+    }
+
+    if (gEventSlots[EVT_SLOT_9] == 99) 
+        unit = GetUnit(gBattleTarget.unit.index);
+    else
+        unit = GetUnitStructFromEventParameter(EVT_CMD_ARGV(proc->pEventCurrent)[0]);
+
+    if (!unit)
+    {
+        return EVC_ERROR;
+    }
+
+    StartStoneShatterAnim(unit, proc);
+
+    return EVC_ADVANCE_YIELD;
+}

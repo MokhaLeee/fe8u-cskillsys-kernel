@@ -171,3 +171,8 @@ killing an enemy on player phase.[X]
 Necro Copy:[NL]
 Upon killing an enemy, optionally[NL]
 assume their class, stats and skills.[X]
+
+## MSG_SKILL_Resurrection
+Resurrection:[NL]
+Revive once to full health[NL]
+upon defeat.[X]

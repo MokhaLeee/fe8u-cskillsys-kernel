@@ -7,6 +7,7 @@
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
+#include "unit-expa.h"
 
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
 void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -505,6 +506,17 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
             {
                 struct Unit * unit_tar = &gBattleTarget.unit;
                 unit_tar->state |= US_DROP_ITEM;
+            }
+#endif
+
+#if (defined(SID_Resurrection) && (COMMON_SKILL_VALID(SID_Resurrection)))
+            if (BattleSkillTester(&gBattleTarget, SID_Resurrection) && GetUnit(gBattleTarget.unit.index)->_u3A != UES_BIT_RESURRECTION_SKILL_USED)
+            {
+                gBattleTargetGlobalFlag.skill_activated_resurrection = true;
+                gBattleTarget.unit.curHP = 1;
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+                gBattleHitIterator++;
+                return true;
             }
 #endif
             gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;

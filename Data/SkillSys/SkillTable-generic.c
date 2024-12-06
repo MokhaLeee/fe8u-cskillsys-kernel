@@ -5,7 +5,7 @@
 const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     [CHARACTER_EIRIKA] = {
         // .skills = {
-        //     [0] = SID_Break,
+        //     [0] = SID_Resurrection,
         // },
     },
     [CHARACTER_EPHRAIM] = {
@@ -18,6 +18,9 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     },
 
     [CHARACTER_ONEILL] = {
+        // .skills = {
+        //     [0] = SID_Resurrection,
+        // },
     },
 
     [CHARACTER_INNES] = {
