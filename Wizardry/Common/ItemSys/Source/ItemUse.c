@@ -4,6 +4,8 @@
 #include "efx-skill.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 1
+
 FORCE_DECLARE static int find_item_slot(struct Unit *unit, int item)
 {
 	int i;
@@ -22,8 +24,10 @@ void BattleApplyItemEffect(struct Proc *proc)
 	BattleApplyItemExpGains();
 
 	if (gBattleActor.canCounter) {
-		if (GetItemAttributes(gBattleActor.weapon) & IA_STAFF)
+		if (GetItemAttributes(gBattleActor.weapon) & IA_STAFF) {
+			LTRACE("staff weapon broken!");
 			gBattleActor.weaponBroke = TRUE;
+		}
 
 		gBattleActor.weapon = GetItemAfterUse(gBattleActor.weapon);
 		gBattleActor.unit.items[gBattleActor.weaponSlotIndex] = gBattleActor.weapon;

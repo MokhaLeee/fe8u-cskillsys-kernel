@@ -60,13 +60,26 @@ STATIC_DECLAR void EfxHpCost_Loop(struct ProcEfxHpCost *proc)
 	gEkrGaugeHp[pos] = proc->hpcur;
 }
 
+static void set_cost(void *pr, int cost)
+{
+	u8 *bufu8 = pr;
+
+	if (*bufu8 == 0xFF)
+		return;
+
+	if (*bufu8 > cost)
+		*bufu8 -= cost;
+	else
+		*bufu8 = 1;
+}
+
 STATIC_DECLAR void EfxHpCost_End(struct ProcEfxHpCost *proc)
 {
 	int i, pos = GetAnimPosition(proc->anim);
 
 	/* Yeah, directly flush the whole array! */
-	for (i = gEfxHpLutOff[pos]; i < NEW_BATTLE_HIT_MAX; i++)
-		prEfxHpLutRe[i * 2 + pos] -= proc->cost;
+	for (i = 0; i < CHAX_EFXHP_AMT; i++)
+		set_cost(&prEfxHpLutRe[i * 2 + pos], proc->cost);
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_EfxHpCost[] = {
@@ -82,7 +95,7 @@ STATIC_DECLAR void NewEfxHpCost(struct Anim *anim, int cost)
 	int pos = GetAnimPosition(anim);
 
 	proc = Proc_Start(ProcScr_EfxHpCost, PROC_TREE_3);
-	proc->step = 2;
+	proc->step = 5;
 	proc->timer = proc->step;
 	proc->hpcur = gEkrGaugeHp[pos];
 	proc->hpend = proc->hpcur - cost;

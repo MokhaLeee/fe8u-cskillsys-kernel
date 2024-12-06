@@ -10,6 +10,16 @@ void StartBattleAnimHitEffectsDefault(struct Anim *anim, int type)
 	struct BattleHit *hit = (prBattleHitArray + BattleHitArrayWidth * round);
 
 	if (hit->attributes & BATTLE_HIT_ATTR_HPSTEAL) {
+		/**
+		 * 0x1E is the efx magic for ITEM_DARK_NOSFERATU
+		 * which may directly call the hpbar-resire and cause
+		 * the hpbar offset get wrong.
+		 */
+		if (gEkrSpellAnimIndex[GetAnimPosition(anim)] == 0x1E) {
+			StartBattleAnimHitEffects(anim, type, 3, 4);
+			return;
+		}
+
 		StartBattleAnimResireHitEffects(anim, type);
 		gEfxHpBarResireFlag = 3;
 		return;

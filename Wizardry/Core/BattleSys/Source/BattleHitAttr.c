@@ -7,6 +7,8 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 1
+
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPHALVE)
@@ -155,8 +157,16 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	/**
 	 * Step 1: calculate drain percentage
 	 */
-	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
+	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN) {
 		percentage += 100;
+
+		/**
+		 * If the weapon itself is set as hpdrain,
+		 * then it may directly call EfxHpBarResire() in banim,
+		 * at which time we must set hp-steal flag for battle-parse.
+		 */
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
 
 	if (gBattleTemporaryFlag.skill_activated_aether)
 		percentage += 100;
@@ -175,6 +185,9 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	 * Step 2: calculate real amount
 	 */
 	drain = Div(gBattleStats.damage * percentage, 100);
+
+	LTRACEF("hpdrain: dmg=%d, perc=%d, drain=%d, cur=%d, max=%d",
+			gBattleStats.damage, percentage, drain, attacker->unit.curHP, attacker->unit.maxHP);
 
 	/**
 	 * Step 3: detect overflow
@@ -295,8 +308,10 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
 		target_weapon_cost--;
 	}
 
-	if (!defender->weapon && defender->weaponBefore)
+	if (!defender->weapon) {
+		LTRACE("target weapon broken!");
 		defender->weaponBroke = TRUE;
+	}
 
 	/**
 	 * Consumes the durability of the own weapon
@@ -334,7 +349,9 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
 #else
 		attacker->weapon = GetItemAfterUse(attacker->weapon);
 #endif
-		if (!attacker->weapon && attacker->weaponBefore)
+		if (!attacker->weapon) {
+			LTRACE("attacker weapon broken!");
 			attacker->weaponBroke = TRUE;
+		}
 	}
 }

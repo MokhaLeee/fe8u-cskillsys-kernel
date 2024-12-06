@@ -458,3 +458,62 @@ void AiStartCombatAction(struct CpPerformProc *proc)
 	}
 	ApplyUnitAction(proc);
 }
+
+LYN_REPLACE_CHECK(GetUnitWeaponUsabilityBits);
+int GetUnitWeaponUsabilityBits(struct Unit *unit)
+{
+	int i, item, result = 0;
+
+	for (i = 0; (i < UNIT_ITEM_COUNT) && (item = unit->items[i]); ++i) {
+		if ((GetItemAttributes(item) & IA_WEAPON) && CanUnitUseWeapon(unit, item))
+			result |= UNIT_USEBIT_WEAPON;
+
+		if ((GetItemAttributes(item) & IA_STAFF) && CanUnitUseStaff(unit, item))
+			result |= UNIT_USEBIT_STAFF;
+	}
+
+#if CHAX
+	/* gaiden magic */
+	if (gpKernelDesigerConfig->gaiden_magic_en) {
+		struct GaidenMagicList *list = GetGaidenMagicList(unit);
+
+		for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+			item = list->bmags[i];
+
+			if (item == ITEM_NONE)
+				break;
+
+			if (!CanUnitUseGaidenMagic(unit, item))
+				continue;
+
+			if (GetItemAttributes(item) & IA_WEAPON)
+				result |= UNIT_USEBIT_WEAPON;
+
+			if (GetItemAttributes(item) & IA_STAFF)
+				result |= UNIT_USEBIT_STAFF;
+		}
+
+		for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+			item = list->wmags[i];
+
+			if (item == ITEM_NONE)
+				break;
+
+			if (!CanUnitUseGaidenMagic(unit, item))
+				continue;
+
+			if (GetItemAttributes(item) & IA_WEAPON)
+				result |= UNIT_USEBIT_WEAPON;
+
+			if (GetItemAttributes(item) & IA_STAFF)
+				result |= UNIT_USEBIT_STAFF;
+		}
+	}
+
+	/* thress houses magic */
+
+	/* engage weapon */
+#endif
+
+	return result;
+}

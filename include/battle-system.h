@@ -50,6 +50,8 @@ extern struct WeaponTriangleItemConf const *const gpWeaponTriangleItemConf;
 /* Battle hit expansion */
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
+
+#define CHAX_EFXHP_AMT 0x40
 extern u16 *prEfxHpLutRe; // aka: gEfxHpLut
 
 bool CheckBattleHitOverflow(void);

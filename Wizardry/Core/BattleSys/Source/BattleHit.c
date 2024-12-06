@@ -204,11 +204,14 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 
 	BattleUpdateBattleStats(attacker, defender);
 
+	/**
+	 * Hp cost must be calculated first
+	 */
+	BattleGenerateHitHpCost(attacker, defender);
+
 	BattleGenerateHitTriangleAttack(attacker, defender);
 	BattleGenerateHitAttributes(attacker, defender);
 	BattleGenerateHitEffects(attacker, defender);
-
-	BattleGenerateHitHpCost(attacker, defender);
 
 	if (attacker->unit.curHP == 0 || defender->unit.curHP == 0) {
 #if (defined(SID_Discipline) && (COMMON_SKILL_VALID(SID_Discipline)))
