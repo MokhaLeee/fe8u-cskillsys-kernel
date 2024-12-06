@@ -58,6 +58,7 @@ PROC_LABEL(0x0),
 	PROC_CALL(PreMapAnimBattleRound_OnStart),
 	PROC_YIELD,
 	PROC_CALL(PreMapAnimBattleRound_OnEnd),
+	PROC_YIELD,
 #else
 	PROC_REPEAT(MapAnim_PrepareNextBattleRound),
 #endif

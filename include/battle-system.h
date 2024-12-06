@@ -50,6 +50,7 @@ extern struct WeaponTriangleItemConf const *const gpWeaponTriangleItemConf;
 /* Battle hit expansion */
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
+extern u16 *prEfxHpLutRe; // aka: gEfxHpLut
 
 bool CheckBattleHitOverflow(void);
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target);
@@ -234,6 +235,7 @@ extern struct BattleHpCost gBattleHpCostArray[NEW_BATTLE_HIT_MAX];
 void InitBattleHpCostData(void);
 void AddBattleHpCost(int round, int cost);
 void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender);
+void BanimC07_UpdateHpCost(struct Anim *anim);
 
 /**
  * Item slot
