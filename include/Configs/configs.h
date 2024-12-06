@@ -261,7 +261,11 @@
  */
 // #define CONFIG_AUTO_REPAIR_WEAPONS
 
+// By Jester
 #define CONFIG_STAT_SCREEN_TERRAIN_BONUS
+
+// By Tequila
+#define CONFIG_INSTANT_LEVEL_UP
 
 /**
  * Levelup mode

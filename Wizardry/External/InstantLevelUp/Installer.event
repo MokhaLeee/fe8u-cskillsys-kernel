@@ -1,0 +1,7 @@
+#define Time_Between_Stats 0 //default is 20
+PUSH
+ORG $7F464
+BYTE Time_Between_Stats
+ORG $741E0
+BYTE Time_Between_Stats+1
+POP

@@ -87,4 +87,8 @@
     #include "JesterHacks/SkillStealer/Installer.event"
 #endif
 
+#ifdef CONFIG_INSTANT_LEVEL_UP
+    #include "InstantLevelUp/Installer.event"
+#endif
+
 #include "FE8_Rewritten_Terper/Installer.event"
