@@ -62,3 +62,18 @@ When attacking the enemy within the range of the companion, ally will participat
 When a unit is attacked and adjacent to the enemy, each side with enemy may cause unit avoid -10%. If completely surrounded (each side stands an enemy), unit may cause def-5 additionally.
 
 Flyer in outdoor environments are not affected by this effect
+
+# Battle unit slot expansion
+
+Taking gaiden/TH/engage style weapon system into consideration, the battle weapon slot is expanded:
+
+- 0-4: unit items
+- 5: special item (dance ring)
+- 6-7: arena
+- 8: ballista
+- 9-15: (CHAX) gaiden B.Magic
+- 16-22: (CHAX) gaiden W.Magic
+- 23-35: (CHAX, preserved) ThreeHouses style magic
+- 36-42: (CHAX, preserved) Engage style weapon
+
+# Battle weapon auto-equipment

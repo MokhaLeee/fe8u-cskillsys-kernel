@@ -3,11 +3,24 @@
 #include "skill-system.h"
 #include "efx-skill.h"
 #include "battle-system.h"
+#include "gaiden-magic.h"
 #include "combat-art.h"
 #include "combo-attack.h"
 #include "constants/skills.h"
 
 #define LOCAL_TRACE 0
+
+STATIC_DECLAR bool CheckCanContinueAttack(struct BattleUnit *bu)
+{
+	if (!bu->weapon)
+		return false;
+
+	if (CheckGaidenMagicAttack(bu))
+		if (bu->unit.curHP <= GetGaidenWeaponHpCost(&bu->unit, bu->weapon))
+			return false;
+
+	return true;
+}
 
 /* This function should also be called by BKSEL, so non static */
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target)
@@ -400,7 +413,7 @@ bool BattleGenerateRoundHits(struct BattleUnit *attacker, struct BattleUnit *def
 	int i, count;
 	u32 attrs;
 
-	if (!attacker->weapon)
+	if (!CheckCanContinueAttack(attacker))
 		return FALSE;
 
 	/* Clear the round related efx skill pool */
@@ -436,7 +449,7 @@ bool BattleGenerateRoundHits(struct BattleUnit *attacker, struct BattleUnit *def
 		}
 
 		/* I think this is a bug-fix for vanilla */
-		if (!attacker->weapon)
+		if (!CheckCanContinueAttack(attacker))
 			return false;
 	}
 	return false;

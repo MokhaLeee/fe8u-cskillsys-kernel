@@ -10,7 +10,9 @@ bool PostAction_Glorifier(ProcPtr parent)
 
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
 	case UNIT_ACTION_STAFF:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenWMag:
 		break;
 
 	default:

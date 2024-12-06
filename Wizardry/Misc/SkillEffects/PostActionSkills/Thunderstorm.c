@@ -118,11 +118,14 @@ bool PostActionThunderstorm(ProcPtr parent)
 	if (gBattleStats.range < 3)
 		return false;
 
-	if (gActionData.unitActionType == UNIT_ACTION_COMBAT) {
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
 		if (gBattleActorGlobalFlag.hitted == true) {
 			KernelCallEvent(EventScr_CallThunderfxAtPosition, EV_EXEC_CUTSCENE, parent);
 			return true;
 		}
+		break;
 	}
 	return false;
 }

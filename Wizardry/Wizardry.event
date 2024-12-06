@@ -57,4 +57,5 @@ ALIGN 4
 
 #include "Misc/SkillEffects/MiscSkillEffects.event"
 
+#include "Misc/GaidenMagic/GaidenMagic.event"
 #include "External/ExternalPatches.event"

@@ -17,20 +17,28 @@ bool PostActionGetItem(ProcPtr parent)
 	if (!UNIT_IS_VALID(unit) || UNIT_STONED(unit))
 		return false;
 
-	if (gActionData.unitActionType == UNIT_ACTION_COMBAT && gBattleActorGlobalFlag.enimy_defeated) {
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
+		if (gBattleActorGlobalFlag.enimy_defeated) {
 #if defined(SID_Despoil) && (COMMON_SKILL_VALID(SID_Despoil))
-		if (SkillListTester(unit, SID_Despoil) && gBattleActorGlobalFlag.enimy_defeated) {
-			NewPopup_ItemGot(parent, unit, ITEM_REDGEM);
-			return true;
-		}
+			if (SkillListTester(unit, SID_Despoil)) {
+				NewPopup_ItemGot(parent, unit, ITEM_REDGEM);
+				return true;
+			}
 #endif
 
 #if defined(SID_GoldDigger) && (COMMON_SKILL_VALID(SID_GoldDigger))
-		if (SkillListTester(unit, SID_GoldDigger) && gBattleActorGlobalFlag.enimy_defeated) {
-			NewPopup_GoldGot(parent, unit, SKILL_EFF0(SID_GoldDigger));
-			return true;
-		}
+			if (SkillListTester(unit, SID_GoldDigger) && gBattleActorGlobalFlag.enimy_defeated) {
+				NewPopup_GoldGot(parent, unit, SKILL_EFF0(SID_GoldDigger));
+				return true;
+			}
 #endif
+		}
+		break;
+
+	default:
+		break;
 	}
 	return false;
 }

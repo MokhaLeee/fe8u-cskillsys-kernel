@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "efx-skill.h"
+#include "battle-system.h"
 
 /**
  * C07: Start attack animation
@@ -12,8 +13,10 @@ void Banim_C07(struct Anim *anim)
 	if (!(anim->state3 & ANIM_BIT3_BLOCKING)) {
 		anim->state3 |= ANIM_BIT3_BLOCKING;
 
-		if (GetAISLayerId(anim) == 0)
+		if (GetAISLayerId(anim) == 0) {
 			NewEkrSkill(anim);
+			BanimC07_UpdateHpCost(anim);
+		}
 	}
 
 	if (anim->state3 & ANIM_BIT3_BLOCKING) {
