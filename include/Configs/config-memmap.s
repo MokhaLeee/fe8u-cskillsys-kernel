@@ -62,6 +62,8 @@ _kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
 _kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sExpaConvoyItemCount, 4
 _kernel_malloc sExpaConvoyItemArray, 2 * 300
+_kernel_malloc sGaidenMagicListObj, 0x24
+_kernel_malloc gBattleHpCostArray, 0x20
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
@@ -89,6 +91,7 @@ _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
 _kernel_malloc_overlay0 gDmg, 40
 _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
 _kernel_malloc_overlay0 sBattleSkillActivateBuf, 4
+_kernel_malloc_overlay0 sAiSimuSlotBuf, 0x100
 
 /**
  * Usage of memory on IWRAM for arm-functions

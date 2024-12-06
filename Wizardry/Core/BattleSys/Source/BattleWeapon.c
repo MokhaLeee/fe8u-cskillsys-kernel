@@ -2,11 +2,109 @@
 #include "skill-system.h"
 #include "combat-art.h"
 #include "debuff.h"
+#include "battle-system.h"
 #include "weapon-range.h"
 #include "weapon-lockex.h"
+#include "gaiden-magic.h"
 #include "constants/items.h"
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
+
+int GetItemFormSlot(struct Unit *unit, int slot)
+{
+	switch (slot) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		return unit->items[slot];
+
+	case BU_ISLOT_5:
+		return gBmSt.um_tmp_item;
+
+	case BU_ISLOT_ARENA_PLAYER:
+		return gArenaState.playerWeapon;
+
+	case BU_ISLOT_ARENA_OPPONENT:
+		return gArenaState.opponentWeapon;
+
+	case BU_ISLOT_BALLISTA:
+		return GetBallistaItemAt(unit->xPos, unit->yPos);
+
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		return MakeNewItem(GetGaidenMagicItem(unit, slot));
+
+	/* reserved */
+	case CHAX_BUISLOT_THREEHOUSES_BMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG6:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON1:
+	case CHAX_BUISLOT_ENGAGE_WEAPON2:
+	case CHAX_BUISLOT_ENGAGE_WEAPON3:
+	case CHAX_BUISLOT_ENGAGE_WEAPON4:
+	case CHAX_BUISLOT_ENGAGE_WEAPON5:
+	case CHAX_BUISLOT_ENGAGE_WEAPON6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON7:
+	case -1:
+	default:
+		return 0;
+	}
+}
+
+LYN_REPLACE_CHECK(GetUnitEquippedWeaponSlot);
+int GetUnitEquippedWeaponSlot(struct Unit *unit)
+{
+	int i;
+
+	for (i = 0; i < UNIT_ITEM_COUNT; ++i)
+		if (CanUnitUseWeaponNow(unit, unit->items[i]) == TRUE)
+			return i;
+
+#if CHAX
+	/* gaiden magic */
+	if (gpKernelDesigerConfig->gaiden_magic_en) {
+		i = GetGaidenMagicAutoEquipSlot(unit);
+		if (i > 0)
+			return i;
+	}
+
+	/* thress houses magic */
+
+	/* engage weapon */
+#endif /* CHAX */
+
+	return -1;
+}
+
+LYN_REPLACE_CHECK(GetUnitEquippedWeapon);
+u16 GetUnitEquippedWeapon(struct Unit *unit)
+{
+	return GetItemFormSlot(unit, GetUnitEquippedWeaponSlot(unit));
+}
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlot)
 {
@@ -50,6 +148,50 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlo
 		bu->weapon = GetBallistaItemAt(bu->unit.xPos, bu->unit.yPos);
 		bu->canCounter = false;
 		break;
+
+#if CHAX
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		bu->weaponSlotIndex = itemSlot;
+		bu->weapon = MakeNewItem(GetGaidenMagicItem(&bu->unit, itemSlot));
+		bu->canCounter = false;
+		break;
+
+	/* reserved */
+	case CHAX_BUISLOT_THREEHOUSES_BMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG6:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG6:
+
+	case CHAX_BUISLOT_ENGAGE_WEAPON1:
+	case CHAX_BUISLOT_ENGAGE_WEAPON2:
+	case CHAX_BUISLOT_ENGAGE_WEAPON3:
+	case CHAX_BUISLOT_ENGAGE_WEAPON4:
+	case CHAX_BUISLOT_ENGAGE_WEAPON5:
+	case CHAX_BUISLOT_ENGAGE_WEAPON6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON7:
+#endif
 
 	default:
 		bu->weaponSlotIndex = 0xFF;
@@ -260,4 +402,118 @@ int GetWeaponCost(struct BattleUnit *bu, u16 item)
 
 	LIMIT_AREA(cost, 0, 255);
 	return cost;
+}
+
+LYN_REPLACE_CHECK(AiStartCombatAction);
+void AiStartCombatAction(struct CpPerformProc *proc)
+{
+	gActionData.subjectIndex = gActiveUnitId;
+	gActionData.unitActionType = UNIT_ACTION_COMBAT;
+	gActionData.targetIndex = gAiDecision.targetId;
+
+	gActiveUnit->xPos = gAiDecision.xMove;
+	gActiveUnit->yPos = gAiDecision.yMove;
+
+	if (gAiDecision.targetId == 0) {
+		struct Trap *trap = GetTrapAt(gAiDecision.xTarget, gAiDecision.yTarget);
+
+		gActionData.xOther = gAiDecision.xTarget;
+		gActionData.yOther = gAiDecision.yTarget;
+		gActionData.trapType = trap->extra;
+	}
+
+	switch (gAiDecision.itemSlot) {
+	case 0xFF:
+		gActionData.itemSlotIndex = BU_ISLOT_BALLISTA;
+		break;
+
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		EquipUnitItemSlot(gActiveUnit, gAiDecision.itemSlot);
+		gActionData.itemSlotIndex = 0;
+		break;
+
+#if CHAX
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		gActionData.itemSlotIndex = gAiDecision.itemSlot;
+		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenBMag;
+		break;
+#endif
+	}
+	ApplyUnitAction(proc);
+}
+
+LYN_REPLACE_CHECK(GetUnitWeaponUsabilityBits);
+int GetUnitWeaponUsabilityBits(struct Unit *unit)
+{
+	int i, item, result = 0;
+
+	for (i = 0; (i < UNIT_ITEM_COUNT) && (item = unit->items[i]); ++i) {
+		if ((GetItemAttributes(item) & IA_WEAPON) && CanUnitUseWeapon(unit, item))
+			result |= UNIT_USEBIT_WEAPON;
+
+		if ((GetItemAttributes(item) & IA_STAFF) && CanUnitUseStaff(unit, item))
+			result |= UNIT_USEBIT_STAFF;
+	}
+
+#if CHAX
+	/* gaiden magic */
+	if (gpKernelDesigerConfig->gaiden_magic_en) {
+		struct GaidenMagicList *list = GetGaidenMagicList(unit);
+
+		for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+			item = list->bmags[i];
+
+			if (item == ITEM_NONE)
+				break;
+
+			if (!CanUnitUseGaidenMagic(unit, item))
+				continue;
+
+			if (GetItemAttributes(item) & IA_WEAPON)
+				result |= UNIT_USEBIT_WEAPON;
+
+			if (GetItemAttributes(item) & IA_STAFF)
+				result |= UNIT_USEBIT_STAFF;
+		}
+
+		for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+			item = list->wmags[i];
+
+			if (item == ITEM_NONE)
+				break;
+
+			if (!CanUnitUseGaidenMagic(unit, item))
+				continue;
+
+			if (GetItemAttributes(item) & IA_WEAPON)
+				result |= UNIT_USEBIT_WEAPON;
+
+			if (GetItemAttributes(item) & IA_STAFF)
+				result |= UNIT_USEBIT_STAFF;
+		}
+	}
+
+	/* thress houses magic */
+
+	/* engage weapon */
+#endif
+
+	return result;
 }

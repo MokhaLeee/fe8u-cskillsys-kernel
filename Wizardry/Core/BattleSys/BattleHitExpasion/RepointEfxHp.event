@@ -1,5 +1,6 @@
 PUSH
     ORG $058A6C
+    prEfxHpLutRe:
     #include "Source/pr_EfxHpLutRe.lyn.event"
 
     ORG $058A84

@@ -336,6 +336,22 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 		},
 		.ai = { NeverMoveAI },
 	},
+	{
+		.charIndex = CHARACTER_NOVALA,
+		.classIndex = CLASS_SHAMAN,
+		.autolevel = true,
+		.allegiance = FACTION_ID_RED,
+		.level = 5,
+		.xPosition = 10,
+		.yPosition = 9,
+		.redaCount = 1,
+		.redas = &(const struct REDA) {
+			.x = 8,
+			.y = 8,
+			.b = -1,
+		},
+		.ai = { 0, 4, 9, 0 }
+	},
 	{}
 };
 
@@ -369,6 +385,7 @@ static const EventScr EventScr_Beginning[] = {
 
 #if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
 	Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
+	Evt_AddSkill(SID_Teleportation, CHARACTER_NOVALA)
 #endif
 
 #if defined(SID_Aerobatics) && (COMMON_SKILL_VALID(SID_Aerobatics))

@@ -13,7 +13,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
 {
 	struct Vec2 vec;
 
-	if (GetUnitEquippedWeapon(gActiveUnit) == 0)
+	if (GetUnitEquippedWeaponSlot(gActiveUnit) < 0)
 		return false;
 
 #if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
@@ -23,8 +23,7 @@ STATIC_DECLAR bool AiTryTeleportationExt(void)
 #endif
 		return false;
 
-	if (GetTeleportationRandomPosition(gActiveUnit, &vec) == true)
-	{
+	if (GetTeleportationRandomPosition(gActiveUnit, &vec) == true) {
 		AiSetDecision(gActiveUnit->xPos, gActiveUnit->yPos, CONFIG_AI_ACTION_EXPA_Teleportation, 0, 0, vec.x, vec.y);
 		return true;
 	}
@@ -57,7 +56,7 @@ bool Ai2Decide_TryTeleportation(void)
 	}
 
 	if (AiTryTeleportationExt()) {
-		LTRACEF("[uid=%x] Ai1 Teleportation to x=%d, y=%d", 
+		LTRACEF("[uid=%x] Ai1 Teleportation to x=%d, y=%d",
 					gActiveUnit->index & 0xFF, gAiDecision.xTarget, gAiDecision.yTarget);
 
 		SetBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED);

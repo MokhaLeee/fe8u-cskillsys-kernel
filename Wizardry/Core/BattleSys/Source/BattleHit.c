@@ -204,6 +204,11 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 
 	BattleUpdateBattleStats(attacker, defender);
 
+	/**
+	 * Hp cost must be calculated first
+	 */
+	BattleGenerateHitHpCost(attacker, defender);
+
 	BattleGenerateHitTriangleAttack(attacker, defender);
 	BattleGenerateHitAttributes(attacker, defender);
 	BattleGenerateHitEffects(attacker, defender);

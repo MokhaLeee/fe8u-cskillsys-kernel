@@ -1,8 +1,68 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "battle-system.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 #include "weapon-range.h"
 #include "status-getter.h"
+#include "gaiden-magic.h"
+
+#define LOCAL_TRACE 0
+
+struct AiSimuSlotEnt {
+	u8 slot, action_type;
+	u16 item;
+};
+
+extern u8 sAiSimuSlotBuf[0x100]; // I think it cannot overflow?
+struct AiSimuSlotEnt *const gpAiSimuSlotBuf = (void *)sAiSimuSlotBuf;
+
+void CollectAiSimuSlots(struct Unit *unit, struct AiSimuSlotEnt *buf)
+{
+	int i;
+	struct AiSimuSlotEnt *it = buf;
+
+	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+		u16 item = unit->items[i];
+
+		if (item == 0)
+			break;
+
+		if (ITEM_INDEX(item) == ITEM_NIGHTMARE)
+			continue;
+
+		if (CanUnitUseWeapon(unit, item)) {
+			it->slot = i;
+			it->item = item;
+			it->action_type = AI_ACTION_COMBAT;
+
+			it++;
+		}
+	}
+
+	/* Gaiden B.Mag */
+	if (gpKernelDesigerConfig->gaiden_magic_en && gpKernelDesigerConfig->gaiden_magic_ai_en) {
+		struct GaidenMagicList *gmaglist = GetGaidenMagicList(unit);
+
+		for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+			u16 item = gmaglist->bmags[i];
+
+			if (item == 0)
+				break;
+
+			if (CanUnitUseGaidenMagic(unit, item)) {
+				it->slot = CHAX_BUISLOT_GAIDEN_BMAG1 + i;
+				it->item = item;
+				it->action_type = AI_ACTION_COMBAT;
+
+				it++;
+			}
+		}
+	}
+
+	/* terminator */
+	it->item = 0;
+}
 
 LYN_REPLACE_CHECK(AiAttemptOffensiveAction);
 s8 AiAttemptOffensiveAction(s8 (*isEnemy)(struct Unit *unit))
@@ -12,10 +72,12 @@ s8 AiAttemptOffensiveAction(s8 (*isEnemy)(struct Unit *unit))
 	struct AiCombatSimulationSt tmpResult = {0};
 	struct AiCombatSimulationSt finalResult = {0};
 
+	struct AiSimuSlotEnt *it, *final_slot = NULL;
+
 #ifdef CONFIG_PERFORMANCE_OPTIMIZATION
 	int target_count = 0;
 #endif
-	int i, uid;
+	int uid;
 	bool ret = 0;
 
 	if (gActiveUnit->state & US_IN_BALLISTA) {
@@ -49,22 +111,18 @@ s8 AiAttemptOffensiveAction(s8 (*isEnemy)(struct Unit *unit))
 
 	SetWorkingBmMap(gBmMapRange);
 
-	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+	CpuFastFill(0, gpAiSimuSlotBuf, sizeof(sAiSimuSlotBuf))
+	CollectAiSimuSlots(gActiveUnit, gpAiSimuSlotBuf);
+
+	for (it = gpAiSimuSlotBuf; it->item != 0; it++) {
 #ifdef CONFIG_PERFORMANCE_OPTIMIZATION
 		int move_distance;
 #endif
-		u16 item = gActiveUnit->items[i];
+		u16 item = it->item;
 
-		if (item == 0)
-			break;
+		LTRACEF("[%d] item=0x%04X, slot=0x%02X", it - gpAiSimuSlotBuf, it->item, it->slot);
 
-		if (item == ITEM_NIGHTMARE)
-			continue;
-
-		if (!CanUnitUseWeapon(gActiveUnit, item))
-			continue;
-
-		tmpResult.itemSlot = i;
+		tmpResult.itemSlot = it->slot;
 
 #ifdef CONFIG_PERFORMANCE_OPTIMIZATION
 		move_distance = MovGetter(gActiveUnit) + GetItemMaxRangeRework(item, gActiveUnit);
@@ -112,7 +170,10 @@ s8 AiAttemptOffensiveAction(s8 (*isEnemy)(struct Unit *unit))
 
 			if (tmpResult.score >= finalResult.score) {
 				finalResult = tmpResult;
-				finalResult.itemSlot = i;
+				finalResult.itemSlot = it->slot;
+				final_slot = it;
+
+				LTRACEF("Find slot: %d", it - gpAiSimuSlotBuf);
 			}
 
 #ifdef CONFIG_PERFORMANCE_OPTIMIZATION
@@ -126,15 +187,27 @@ try_ballist_combat:
 	if (UNIT_CATTRIBUTES(gActiveUnit) & CA_BALLISTAE) {
 		ret = AiAttemptBallistaCombat(isEnemy, &tmpResult);
 		if (ret == 1)
-			if (tmpResult.score >= finalResult.score)
+			if (tmpResult.score >= finalResult.score) {
 				finalResult = tmpResult;
+				final_slot = NULL;
+			}
 	}
 
 	if ((finalResult.score != 0) || (finalResult.targetId != 0)) {
-		AiSetDecision(finalResult.xMove, finalResult.yMove, 1, finalResult.targetId, finalResult.itemSlot, 0, 0);
+		int action_type = AI_ACTION_COMBAT;
+
+		if (final_slot)
+			action_type = final_slot->action_type;
+
+		LTRACEF("Set decision: x=%d, y=%d, action=%d, slot=%d",
+				finalResult.xMove, finalResult.yMove, action_type, finalResult.itemSlot);
+
+		AiSetDecision(finalResult.xMove, finalResult.yMove, action_type, finalResult.targetId, finalResult.itemSlot, 0, 0);
 
 		if ((s8)finalResult.itemSlot != -1)
 			TryRemoveUnitFromBallista(gActiveUnit);
+
+		return ret;
 	}
 
 	return ret;

@@ -51,14 +51,15 @@ extern struct WeaponTriangleItemConf const *const gpWeaponTriangleItemConf;
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
 
+#define CHAX_EFXHP_AMT 0x40
+extern u16 *prEfxHpLutRe; // aka: gEfxHpLut
+
 bool CheckBattleHitOverflow(void);
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target);
 int CalcBattleRealDamage(struct BattleUnit *attacker, struct BattleUnit *defender);
 
-static inline int GetBattleHitRound(struct BattleHit *hit)
-{
-	return hit - gBattleHitArrayRe;
-}
+static inline int GetBattleHitRound(struct BattleHit *hit) { return hit - gBattleHitArrayRe; }
+static inline int GetCurrentBattleHitRound(void) { return GetBattleHitRound(gBattleHitIterator); }
 
 extern struct BattleGlobalFlags {
 	u32 hitted : 1;
@@ -107,33 +108,6 @@ extern u16 BattleOrderSkills[BORDER_MAX];
 #define RegisterBattleOrderSkill(sid, type) (BattleOrderSkills[type] = (sid))
 
 int GetWeaponCost(struct BattleUnit *bu, u16 item);
-static inline int GetItemFormSlot(struct Unit *unit, int slot)
-{
-	switch (slot) {
-	case 0:
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-		return unit->items[slot];
-
-	case BU_ISLOT_5:
-		return gBmSt.um_tmp_item;
-
-	case BU_ISLOT_ARENA_PLAYER:
-		return gArenaState.playerWeapon;
-
-	case BU_ISLOT_ARENA_OPPONENT:
-		return gArenaState.opponentWeapon;
-
-	case BU_ISLOT_BALLISTA:
-		return GetBallistaItemAt(unit->xPos, unit->yPos);
-
-	case -1:
-	default:
-		return 0;
-	}
-}
 
 extern struct Vec2 gBattleTargetPositionBackup;
 
@@ -224,3 +198,110 @@ void PreBattleCalcLeadershipBonus(struct BattleUnit *actor, struct BattleUnit *t
  * Bow2Decrease patch
  */
 bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
+
+/**
+ * Hp cost
+ */
+struct BattleHpCost {
+	u8 cost;
+};
+extern struct BattleHpCost gBattleHpCostArray[NEW_BATTLE_HIT_MAX];
+
+void InitBattleHpCostData(void);
+void AddBattleHpCost(int round, int cost);
+void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender);
+void BanimC07_UpdateHpCost(struct Anim *anim);
+
+/**
+ * Item slot
+ */
+enum {
+	// BattleUnit::weaponSlotIndex
+	CHAX_BUISLOT_BASE = UNIT_ITEM_COUNT + 4,
+
+	CHAX_BUISLOT_GAIDEN_BMAG1 = CHAX_BUISLOT_BASE,
+	CHAX_BUISLOT_GAIDEN_BMAG2,
+	CHAX_BUISLOT_GAIDEN_BMAG3,
+	CHAX_BUISLOT_GAIDEN_BMAG4,
+	CHAX_BUISLOT_GAIDEN_BMAG5,
+	CHAX_BUISLOT_GAIDEN_BMAG6,
+	CHAX_BUISLOT_GAIDEN_BMAG7,
+
+	CHAX_BUISLOT_GAIDEN_WMAG1,
+	CHAX_BUISLOT_GAIDEN_WMAG2,
+	CHAX_BUISLOT_GAIDEN_WMAG3,
+	CHAX_BUISLOT_GAIDEN_WMAG4,
+	CHAX_BUISLOT_GAIDEN_WMAG5,
+	CHAX_BUISLOT_GAIDEN_WMAG6,
+	CHAX_BUISLOT_GAIDEN_WMAG7,
+
+	/* reserved */
+	CHAX_BUISLOT_THREEHOUSES_BMAG1,
+	CHAX_BUISLOT_THREEHOUSES_BMAG2,
+	CHAX_BUISLOT_THREEHOUSES_BMAG3,
+	CHAX_BUISLOT_THREEHOUSES_BMAG4,
+	CHAX_BUISLOT_THREEHOUSES_BMAG5,
+	CHAX_BUISLOT_THREEHOUSES_BMAG6,
+	CHAX_BUISLOT_THREEHOUSES_BMAG7,
+
+	CHAX_BUISLOT_THREEHOUSES_WMAG1,
+	CHAX_BUISLOT_THREEHOUSES_WMAG2,
+	CHAX_BUISLOT_THREEHOUSES_WMAG3,
+	CHAX_BUISLOT_THREEHOUSES_WMAG4,
+	CHAX_BUISLOT_THREEHOUSES_WMAG5,
+	CHAX_BUISLOT_THREEHOUSES_WMAG6,
+
+	CHAX_BUISLOT_ENGAGE_WEAPON1,
+	CHAX_BUISLOT_ENGAGE_WEAPON2,
+	CHAX_BUISLOT_ENGAGE_WEAPON3,
+	CHAX_BUISLOT_ENGAGE_WEAPON4,
+	CHAX_BUISLOT_ENGAGE_WEAPON5,
+	CHAX_BUISLOT_ENGAGE_WEAPON6,
+	CHAX_BUISLOT_ENGAGE_WEAPON7,
+};
+
+static inline bool CheckUnbreakableSpecialSlot(int slot)
+{
+	switch (slot) {
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG6:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON1:
+	case CHAX_BUISLOT_ENGAGE_WEAPON2:
+	case CHAX_BUISLOT_ENGAGE_WEAPON3:
+	case CHAX_BUISLOT_ENGAGE_WEAPON4:
+	case CHAX_BUISLOT_ENGAGE_WEAPON5:
+	case CHAX_BUISLOT_ENGAGE_WEAPON6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON7:
+		return true;
+
+	default:
+		return false;
+	}
+}
+
+int GetItemFormSlot(struct Unit *unit, int slot);

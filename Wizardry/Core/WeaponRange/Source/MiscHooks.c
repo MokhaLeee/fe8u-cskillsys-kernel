@@ -3,6 +3,7 @@
 #include "status-getter.h"
 #include "weapon-range.h"
 #include "kernel-lib.h"
+#include "gaiden-magic.h"
 
 LYN_REPLACE_CHECK(AiReachesByBirdsEyeDistance);
 bool AiReachesByBirdsEyeDistance(struct Unit *unit, struct Unit *other, u16 item)
@@ -37,6 +38,30 @@ int GetUnitWeaponReachBits(struct Unit *unit, int slot)
 		for (i = 0; (i < UNIT_ITEM_COUNT) && (item = unit->items[i]); ++i)
 			if (CanUnitUseWeapon(unit, item))
 				result |= GetItemReachBitsRework(item, unit);
+
+		if (gpKernelDesigerConfig->gaiden_magic_en) {
+			struct GaidenMagicList *list = GetGaidenMagicList(unit);
+
+			for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+				item = list->bmags[i];
+
+				if (item == ITEM_NONE)
+					break;
+
+				if (CanUnitUseGaidenMagic(unit, item) && GetItemAttributes(item) & IA_WEAPON)
+					result |= GetItemReachBitsRework(item, unit);
+			}
+
+			for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+				item = list->wmags[i];
+
+				if (item == ITEM_NONE)
+					break;
+
+				if (CanUnitUseGaidenMagic(unit, item) && GetItemAttributes(item) & IA_WEAPON)
+					result |= GetItemReachBitsRework(item, unit);
+			}
+		}
 		break;
 
 	default:

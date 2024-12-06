@@ -23,6 +23,7 @@
 #endif
 
 #define FORCE_DECLARE __attribute__((unused))
+#define NOINLINE __attribute__((noinline))
 
 #define LYN_REPLACE_CHECK(name) \
 	static const void *const __attribute__((unused)) lyn_exists_check_ ## name = &name
