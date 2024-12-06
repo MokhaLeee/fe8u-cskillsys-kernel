@@ -93,7 +93,7 @@ STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlo
 	case CHAX_BUISLOT_GAIDEN_WMAG5:
 	case CHAX_BUISLOT_GAIDEN_WMAG6:
 	case CHAX_BUISLOT_GAIDEN_WMAG7:
-		bu->weaponSlotIndex = 0xFF;
+		bu->weaponSlotIndex = itemSlot;
 		bu->weapon = MakeNewItem(GetGaidenMagicItem(&bu->unit, itemSlot));
 		bu->canCounter = false;
 		break;

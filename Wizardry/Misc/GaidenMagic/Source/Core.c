@@ -77,7 +77,7 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 
 	ResetGaidenMagicList(list);
 
-	for (i = 0; i < 0x100; i++) {
+	for (i = 0xFF; i > 0; i--) {
 		if (tmpbuf[i] == 0)
 			continue;
 

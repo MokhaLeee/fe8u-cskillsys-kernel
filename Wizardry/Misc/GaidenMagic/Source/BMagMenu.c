@@ -37,6 +37,9 @@ u8 GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number)
 	if (gActiveUnit->state & (US_HAS_MOVED | US_IN_BALLISTA))
 		return MENU_NOTSHOWN;
 
+	if (gpKernelDesigerConfig->gaiden_magic_en == false)
+		return MENU_NOTSHOWN;
+
 	if (!list)
 		return MENU_NOTSHOWN;
 

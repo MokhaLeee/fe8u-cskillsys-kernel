@@ -1,6 +1,11 @@
 #include <common-chax.h>
 #include <gaiden-magic.h>
 
+const u8 gGaidenWeaponCostList[0x100] = {
+	[ITEM_SWORD_KILLER] = 2,
+	[ITEM_ANIMA_FIRE] = 2,
+};
+
 struct GaidenPinfoConfigEnt const *const gGaidenPinfoConfigList[] = {
 	[CHARACTER_EIRIKA] = (const struct GaidenPinfoConfigEnt []) {
 		{ 1, ITEM_SWORD_KILLER },

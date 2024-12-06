@@ -5,8 +5,6 @@
 #include <list-verify.h>
 #include <battle-system.h>
 
-#ifdef CONFIG_USE_GAIDEN_MAGIC
-
 struct GaidenPinfoConfigEnt {
 	u8 level, iid;
 };
@@ -41,27 +39,40 @@ struct GaidenMagicList *GetGaidenMagicList(struct Unit *unit);
 
 bool CanUnitUseGaidenMagic(struct Unit *unit, int item);
 bool CanUnitUseGaidenMagicNow(struct Unit *unit, int item);
-int GetGaidenMagicAutoEquipSlot(struct Unit *unit);
-int GetGaidenMagicItem(struct Unit *unit, int slot);
 
 void BattleGenerateGaidenBMagSimulation(struct Unit *actor, struct Unit *target, int x, int y);
 void BattleGenerateGaidenBMagReal(struct Unit *actor, struct Unit *target);
 
+static inline bool CheckGaidenMagicAttack(struct BattleUnit *bu)
+{
+	switch (bu->weaponSlotIndex) {
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		return true;
+
+	default:
+		return false;
+	}
+}
+
+int GetGaidenWeaponHpCost(struct Unit *unit, int item);
+void BattleGenerateHitHpCostForGaidenMagic(struct BattleUnit *attacker, struct BattleUnit *defender);
+int GetGaidenMagicAutoEquipSlot(struct Unit *unit);
+int GetGaidenMagicItem(struct Unit *unit, int slot);
 u8 GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number);
 int GaidenBMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
 u8 GaidenBMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
 int GaidenBMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 int GaidenBMagActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
-
-#else
-
-static inline int GetGaidenMagicAutoEquipSlot(struct Unit *unit) { return -1; }
-static inline int GetGaidenMagicItem(struct Unit *unit, int slot) { return ITEM_NONE; }
-
-static inline u8 GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number) { return MENU_NOTSHOWN; }
-static inline int GaidenBMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item) { return 0; }
-static inline u8 GaidenBMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem) { return 0; }
-static inline int GaidenBMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem) { return 0; }
-static inline int GaidenBMagActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem) { return 0; }
-
-#endif /* USE_GAIDEN_MAGIC */

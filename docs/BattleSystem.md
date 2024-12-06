@@ -63,7 +63,7 @@ When a unit is attacked and adjacent to the enemy, each side with enemy may caus
 
 Flyer in outdoor environments are not affected by this effect
 
-# Unit slot expansion
+# Battle unit slot expansion
 
 Taking gaiden/TH/engage style weapon system into consideration, the battle weapon slot is expanded:
 
