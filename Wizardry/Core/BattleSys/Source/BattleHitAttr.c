@@ -267,33 +267,126 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+	int target_weapon_cost;
 	bool weapon_cost;
 
 	/**
 	 * Consume enemy weapons
 	 */
+	target_weapon_cost = 0;
+
 #if (defined(SID_Corrosion) && (COMMON_SKILL_VALID(SID_Corrosion)))
 	if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS) && CheckBattleSkillActivate(attacker, defender, SID_Corrosion, attacker->unit.skl)) {
-		int cost = attacker->levelPrevious;
-
 		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Corrosion);
-
-		while (cost-- > 0) {
-			u16 weapon = GetItemAfterUse(defender->weapon);
-
-			defender->weapon = weapon;
-			if (!weapon)
-				break;
-		}
-
-		if (!defender->weapon)
-			defender->weaponBroke = TRUE;
+		target_weapon_cost += attacker->levelPrevious;
 	}
 #endif
+
+	switch (defender->weaponSlotIndex) {
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG6:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON1:
+	case CHAX_BUISLOT_ENGAGE_WEAPON2:
+	case CHAX_BUISLOT_ENGAGE_WEAPON3:
+	case CHAX_BUISLOT_ENGAGE_WEAPON4:
+	case CHAX_BUISLOT_ENGAGE_WEAPON5:
+	case CHAX_BUISLOT_ENGAGE_WEAPON6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON7:
+		/**
+		 * We will not consume weapon duration on special weapon
+		 */
+		target_weapon_cost = 0;
+		break;
+
+	default:
+		break;
+	}
+
+	while (target_weapon_cost > 0) {
+		u16 weapon = GetItemAfterUse(defender->weapon);
+
+		defender->weapon = weapon;
+		if (!weapon)
+			break;
+
+		target_weapon_cost--;
+	}
+
+	if (!defender->weapon && defender->weaponBefore)
+		defender->weaponBroke = TRUE;
 
 	/**
 	 * Consumes the durability of the own weapon
 	 */
+	switch (attacker->weaponSlotIndex) {
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG6:
+	case CHAX_BUISLOT_THREEHOUSES_BMAG7:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG1:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG2:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG3:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG4:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG5:
+	case CHAX_BUISLOT_THREEHOUSES_WMAG6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON1:
+	case CHAX_BUISLOT_ENGAGE_WEAPON2:
+	case CHAX_BUISLOT_ENGAGE_WEAPON3:
+	case CHAX_BUISLOT_ENGAGE_WEAPON4:
+	case CHAX_BUISLOT_ENGAGE_WEAPON5:
+	case CHAX_BUISLOT_ENGAGE_WEAPON6:
+	case CHAX_BUISLOT_ENGAGE_WEAPON7:
+		/**
+		 * We will not consume weapon duration on special weapon
+		 */
+		return;
+
+	default:
+		break;
+	}
+
 	weapon_cost = false;
 	if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS))
 		weapon_cost = true;
