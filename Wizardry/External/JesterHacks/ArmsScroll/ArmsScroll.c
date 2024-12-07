@@ -29,8 +29,8 @@ int GetArmsScrollItemIconId(int item)
 
 STATIC_DECLAR int GetHighestWeaponRank(struct Unit * unit) 
 {
-    int weaponLevel = 0;
-    int weaponRank = -1;
+    int weaponLevel = 0; // 0 means the unit doesn't have a rank in this weapon type
+    int weaponRank = -1; // If we return -1, then there are no weapon ranks we can increase for this unit
 
     for (int i = 0; i < 7; i++)
     {
