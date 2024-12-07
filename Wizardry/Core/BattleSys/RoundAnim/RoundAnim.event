@@ -1,0 +1,6 @@
+// PROTECT 0x0581EC 0x058848 // ParseBattleHitToBanimCmd
+// PROTECT 0x08161C 0x0818D8 // MapAnim_BeginRoundSpecificAnims
+
+#include "Source/LynJump.event"
+#include "Source/BanimRound.lyn.event"
+#include "Source/MapAnimRound.lyn.event"

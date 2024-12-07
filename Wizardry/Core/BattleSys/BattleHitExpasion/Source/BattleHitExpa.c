@@ -14,6 +14,7 @@ LYN_REPLACE_CHECK(ClearBattleHits);
 void ClearBattleHits(void)
 {
 	CpuFill16(0, gBattleHitArrayRe, sizeof(gBattleHitArrayRe));
+	CpuFill16(0, gExtBattleHitArray, sizeof(gExtBattleHitArray));
 	InitEfxCombatArtRoundData();
 	InitEfxSkillRoundData();
 	InitBattleHpCostData();

@@ -3,24 +3,24 @@
 
 #include <gaiden-magic.h>
 
-void InitBattleHpCostData(void)
-{
-	CpuFill16(0, gBattleHpCostArray, sizeof(gBattleHpCostArray));
-}
+void InitBattleHpCostData(void) {}
 
 void AddBattleHpCost(int round, int cost)
 {
-	gBattleHpCostArray[round].cost += cost;
+	GetExtBattleHit(round)->hp_cost += cost;
 }
 
 void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+	struct ExtBattleHit *hit = GetCurrentExtBattleHit();
+
 	BattleGenerateHitHpCostForGaidenMagic(attacker, defender);
 
 	/* On end */
-	attacker->unit.curHP -= gBattleHpCostArray[GetCurrentBattleHitRound()].cost;
-	if (attacker->unit.curHP < 0)
-		attacker->unit.curHP = 0;
+	if (hit->hp_cost >= attacker->unit.curHP)
+		hit->hp_cost = attacker->unit.curHP - 1;
+
+	attacker->unit.curHP -= hit->hp_cost;
 }
 
 /**
@@ -29,7 +29,7 @@ void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *def
 static void MapAnimHitRound_StartCost(ProcPtr proc)
 {
 	int round = GetBattleHitRound(gManimSt.pCurrentRound - 1); // now this is next round!
-	int cost = gBattleHpCostArray[round].cost;
+	int cost = GetExtBattleHit(round)->hp_cost;
 
 	if (cost > 0) {
 		gManimSt.hp_changing = true;
@@ -62,7 +62,3 @@ void MapAnim_DisplayRoundAnim(ProcPtr proc)
 {
 	Proc_StartBlocking(ProcScr_MapAnimDisplayRoundWithHpCost, proc);
 }
-
-/**
- * Efx anim
- */

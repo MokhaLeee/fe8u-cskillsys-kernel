@@ -2,40 +2,30 @@ PUSH
     ORG $058A6C
     prEfxHpLutRe:
     #include "Source/pr_EfxHpLutRe.lyn.event"
+    PROTECT 0x58A60 0x58A70 // GetEfxHp
 
     ORG $058A84
     #include "Source/pr_EfxHpLutRe.lyn.event"
+    PROTECT 0x58A70 0x58A8C // GetEfxHpModMaybe
 
     ORG $058258
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
     ORG $05822A
     BYTE 0x20
-
     ORG $058350
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
     ORG $05856C
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
     ORG $0585AC
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
     ORG $05862C
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
     ORG $058698
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
     ORG $058768
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
     ORG $058844
     #include "Source/pr_EfxHpLutRe.lyn.event"
-
-    ORG $058A6C
-    #include "Source/pr_EfxHpLutRe.lyn.event"
-
-    ORG $058A84
-    #include "Source/pr_EfxHpLutRe.lyn.event"
+    // This function has been directly hooked by LynJump
+    // PROTECT 0x581EC 0x58848 // ParseBattleHitToBanimCmd
 POP

@@ -19,7 +19,7 @@ void Banim_C07(struct Anim *anim)
 		}
 	}
 
-	if (anim->state3 & ANIM_BIT3_BLOCKING) {
+	if ((anim->state3 & ANIM_BIT3_BLOCKING) && !EfxHpCostExists()) {
 		if (anim->state3 & ANIM_BIT3_BLOCKEND) {
 			anim->state3 &= ~ANIM_BIT3_BLOCKING;
 			anim->state3 &= ~ANIM_BIT3_BLOCKEND;

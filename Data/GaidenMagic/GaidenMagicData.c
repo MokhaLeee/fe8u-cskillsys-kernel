@@ -6,6 +6,7 @@ const u8 gGaidenWeaponCostList[0x100] = {
 	[ITEM_ANIMA_FIRE] = 2,
 	[ITEM_ANIMA_THUNDER] = 2,
 	[ITEM_DARK_FLUX] = 2,
+	[ITEM_DARK_NOSFERATU] = 2,
 };
 
 struct GaidenPinfoConfigEnt const *const gGaidenPinfoConfigList[] = {
@@ -22,7 +23,7 @@ const struct GaidenChaxConfigEnt gGaidenChaxConfigs[] = {
 		.faction = FACTION_RED,
 	},
 	{
-		.iid = ITEM_DARK_FLUX,
+		.iid = ITEM_DARK_NOSFERATU,
 		.faction = FACTION_BLUE,
 	},
 	{

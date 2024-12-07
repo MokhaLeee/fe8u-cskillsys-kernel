@@ -146,6 +146,7 @@ void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int
 
 	if (drain > 0) {
 		attacker->unit.curHP += drain;
+		GetCurrentExtBattleHit()->hp_drain += drain;
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 	}
 }
@@ -196,6 +197,7 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 		drain = attacker->unit.maxHP - attacker->unit.curHP;
 
 	if (drain > 0) {
+		GetCurrentExtBattleHit()->hp_drain += drain;
 		attacker->unit.curHP += drain;
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 	}
