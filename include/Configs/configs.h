@@ -336,6 +336,7 @@
 #define CONFIG_ICON_INDEX_MAG_BOOSTER 0xCA
 #define CONFIG_ICON_INDEX_STAR 0xCB
 #define CONFIG_ICON_INDEX_SKILL_STEALER 0xCC
+#define CONFIG_ICON_INDEX_ARMS_SCROLL 0xCD
 
 /**
  * Item config
@@ -344,6 +345,7 @@
 #define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
 #define CONFIG_ITEM_INDEX_SKILL_SCROLL 0xBD
 #define CONFIG_ITEM_INDEX_SKILL_STEALER 0xBE
+#define CONFIG_ITEM_INDEX_ARMS_SCROLL 0xBF
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

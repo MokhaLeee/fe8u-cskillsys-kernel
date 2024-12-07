@@ -6,7 +6,7 @@ _reserved[X]
 ## MSG_WIP
 W.I.P.[X]
 
-#include texts/SkillStealer.txt
+#include texts/Items.txt
 #include texts/StrMag.txt
 #include texts/Statscreen.txt
 #include texts/SkillSys.txt

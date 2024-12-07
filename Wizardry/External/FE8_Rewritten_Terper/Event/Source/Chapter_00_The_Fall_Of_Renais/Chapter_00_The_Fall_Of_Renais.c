@@ -70,7 +70,7 @@ static const struct UnitDefinition Renais_Runaways_Allies[] = {
 
 static const struct UnitDefinition Eirika_Seth_Allies[] = {
     UNIT_ENTRY(CHARACTER_SETH, CLASS_PALADIN, FACTION_ID_BLUE, NO_ITEM_DROP, AUTOLEVEL, 1, 13, 9, 6, REDAs_Seth_Prologue, 0, 0, 0, 0, ITEM_LANCE_STEEL),
-    UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE, NO_ITEM_DROP, AUTOLEVEL, 1, 8, 5, 1, REDAs_Eirika_Prologue, 0, 0, 0, 0),
+    UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE, NO_ITEM_DROP, AUTOLEVEL, 1, 8, 5, 1, REDAs_Eirika_Prologue, 0, 0, 0, 0, CONFIG_ITEM_INDEX_ARMS_SCROLL),
     {}
 };
 

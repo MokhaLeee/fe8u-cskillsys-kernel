@@ -1,0 +1,15 @@
+#include "ArmsScroll.lyn.event"
+
+PUSH
+    ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_ARMS_SCROLL * 0x80
+        #incbin "SpiritDust.4bpp"
+
+    ORG CONFIG_PR_ITEM_TABLE + CONFIG_ITEM_INDEX_ARMS_SCROLL * 0x24
+        #include "ItemData_ArmsScroll.lyn.event"
+POP
+
+InjectItemPrepUsabilityJpt(CONFIG_ITEM_INDEX_ARMS_SCROLL, ItemUsbility_ArmsScroll)
+InjectItemPrepEffectJpt(CONFIG_ITEM_INDEX_ARMS_SCROLL, PrepItemEffect_ArmsScroll)
+InjectItemUsabilityJpt(CONFIG_ITEM_INDEX_ARMS_SCROLL, ItemUsbilityJpt_ArmsScroll)
+InjectItemEffectJpt(CONFIG_ITEM_INDEX_ARMS_SCROLL, ItemUseEffectJpt_ArmsScroll)
+InjectItemActionJpt(CONFIG_ITEM_INDEX_ARMS_SCROLL, ItemUseActionJpt_ArmsScroll)

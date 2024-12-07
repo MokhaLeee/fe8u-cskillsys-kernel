@@ -1,6 +1,3 @@
-// #include "Source/Hooks.lyn.event"
-// #include "Source/BoosterHook.lyn.event"
-
 PUSH
     ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_SKILL_STEALER * 0x80
         #incbin "SpiritDust.4bpp"

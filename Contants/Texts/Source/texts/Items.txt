@@ -1,0 +1,23 @@
+## MSG_ITEM_SKILLSTEALER_NAME
+Skill Stealer[X]
+
+## MSG_ITEM_SKILLSTEALER_DESC
+Steal a skill from a defeated boss[X]
+
+## MSG_ITEM_SKILLSTEALER_USEDESC
+Steal a skill from a defeated boss.[X]
+
+## MSG_ITEM_ArmsScroll_NAME
+Arms Scroll[X]
+
+## MSG_ITEM_ArmsScroll_DESC
+Increase highest weapon rank by[NL]
+1 stage[X]
+
+## MSG_ITEM_ArmsScroll_USEDESC
+Increase highest[NL]
+weapon rank by[NL]
+1 stage[X]
+
+## MSG_Weapon_Rank_Increased
+Weapon rank increased.[X]

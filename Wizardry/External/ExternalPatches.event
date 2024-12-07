@@ -91,4 +91,8 @@
     #include "InstantLevelUp/Installer.event"
 #endif
 
+#ifdef CONFIG_ITEM_INDEX_ARMS_SCROLL
+    #include "JesterHacks/ArmsScroll/Installer.event"
+#endif
+
 #include "FE8_Rewritten_Terper/Installer.event"
