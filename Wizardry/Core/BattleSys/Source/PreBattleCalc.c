@@ -130,6 +130,41 @@ void ComputeBattleUnitCritRate(struct BattleUnit *bu)
     bu->battleCritRate = status;
 }
 
+LYN_REPLACE_CHECK(ComputeBattleUnitSpeed);
+void ComputeBattleUnitSpeed(struct BattleUnit* attacker) 
+{
+    int effWt;
+
+#ifdef  CONFIG_S_RANK_NO_WEAPON_WEIGHT
+    int itemType = GetItemType(attacker->weaponBefore);
+
+    if (GetUnit(attacker->unit.index)->ranks[itemType] == WPN_EXP_S)
+        effWt = 0;
+    else 
+    {
+        effWt = GetItemWeight(attacker->weaponBefore);
+
+        effWt -= attacker->unit.conBonus;
+
+        if (effWt < 0)
+            effWt = 0;
+    }
+
+#else
+    effWt = GetItemWeight(attacker->weaponBefore);
+
+    effWt -= attacker->unit.conBonus;
+
+    if (effWt < 0)
+        effWt = 0;
+#endif
+
+    attacker->battleSpeed = attacker->unit.spd - effWt;
+
+    if (attacker->battleSpeed < 0)
+        attacker->battleSpeed = 0;
+}
+
 void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     struct BattleStatus *st;

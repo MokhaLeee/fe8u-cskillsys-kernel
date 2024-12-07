@@ -267,6 +267,8 @@
 // By Tequila
 #define CONFIG_INSTANT_LEVEL_UP
 
+#define CONFIG_S_RANK_NO_WEAPON_WEIGHT
+
 /**
  * Levelup mode
  * 0: vanilla
