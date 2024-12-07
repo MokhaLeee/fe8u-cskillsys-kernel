@@ -2,7 +2,7 @@
 #include <strmag.h>
 #include <battle-system.h>
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 static const u16 round_types_normal_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_HIT_CLOSE,
@@ -75,7 +75,6 @@ void ParseBattleHitToBanimCmd(void)
 			new_hp = 0; \
 		hplut_offs[pos]++; \
 		gEfxHpLutRe[hplut_offs[pos] * 2 + pos] = new_hp; \
-		LTRACEF("HP: pos=%d, off=%d, val=%d", pos, hplut_offs[pos], gEfxHpLutRe[hplut_offs[pos] * 2 + pos]); \
 	} while (0)
 
 	for (i = 0; i < ARRAY_COUNT(gAnimRoundDataRe); i++)
