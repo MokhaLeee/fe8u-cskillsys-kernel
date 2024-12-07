@@ -10,7 +10,10 @@ STATIC_DECLAR void SetBattleActorWeaponGaidenBMag(struct BattleUnit *bu, int slo
 {
 	struct GaidenMagicList *list = GetGaidenMagicList(gActiveUnit);
 
-	bu->weapon = MakeNewItem(list->bmags[slot]);
+	Assert((slot >= CHAX_BUISLOT_GAIDEN_BMAG1) && (slot <= CHAX_BUISLOT_GAIDEN_BMAG7));
+
+	bu->weaponSlotIndex = slot;
+	bu->weapon = MakeNewItem(list->bmags[slot - CHAX_BUISLOT_GAIDEN_BMAG1]);
 	bu->weaponBefore = bu->weapon;
 	bu->weaponAttributes = GetItemAttributes(bu->weapon);
 	bu->weaponType = GetItemType(bu->weapon);
@@ -19,8 +22,6 @@ STATIC_DECLAR void SetBattleActorWeaponGaidenBMag(struct BattleUnit *bu, int slo
 
 STATIC_DECLAR void BattleGenerateGaidenBMagRealInternal(struct Unit *actor, struct Unit *target)
 {
-	int slot = gActionData.itemSlotIndex - CHAX_BUISLOT_GAIDEN_BMAG1;
-
 	InitBattleUnit(&gBattleActor, actor);
 	InitBattleUnit(&gBattleTarget, target);
 
@@ -29,7 +30,7 @@ STATIC_DECLAR void BattleGenerateGaidenBMagRealInternal(struct Unit *actor, stru
 		gBattleTarget.unit.xPos, gBattleTarget.unit.yPos
 	);
 
-	SetBattleActorWeaponGaidenBMag(&gBattleActor, slot);
+	SetBattleActorWeaponGaidenBMag(&gBattleActor, gActionData.itemSlotIndex);
 	SetBattleUnitWeapon(&gBattleTarget, BU_ISLOT_AUTO);
 
 	BattleInitTargetCanCounter();
@@ -56,8 +57,6 @@ STATIC_DECLAR void BattleGenerateGaidenBMagRealInternal(struct Unit *actor, stru
 
 STATIC_DECLAR void BattleGenerateGaidenBMagSimulationInternal(struct Unit *actor, struct Unit *target, int x, int y)
 {
-	int slot = gActionData.itemSlotIndex - CHAX_BUISLOT_GAIDEN_BMAG1;
-
 	InitBattleUnit(&gBattleActor, actor);
 	InitBattleUnit(&gBattleTarget, target);
 
@@ -69,7 +68,7 @@ STATIC_DECLAR void BattleGenerateGaidenBMagSimulationInternal(struct Unit *actor
 		gBattleTarget.unit.xPos, gBattleTarget.unit.yPos
 	);
 
-	SetBattleActorWeaponGaidenBMag(&gBattleActor, slot);
+	SetBattleActorWeaponGaidenBMag(&gBattleActor, gActionData.itemSlotIndex);
 	SetBattleUnitWeapon(&gBattleTarget, BU_ISLOT_AUTO);
 
 	BattleInitTargetCanCounter();
