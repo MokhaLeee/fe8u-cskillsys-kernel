@@ -6,6 +6,7 @@
 /* Put at head since it holds some macros */
 #include "../Wizardry/data.event"
 
+#include "DesignerConfig/designer-config.lyn.event"
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
 #include "SkillSys/SkillExtraInfo.lyn.event"
