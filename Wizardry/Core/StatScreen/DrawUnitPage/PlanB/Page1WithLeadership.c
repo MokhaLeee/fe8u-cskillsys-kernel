@@ -238,7 +238,7 @@ static void DrawPage1Affin(void)
 		[UNIT_AFFIN_FIRE]    = "炎",
 		[UNIT_AFFIN_THUNDER] = "雷",
 		[UNIT_AFFIN_WIND]    = "風",
-		[UNIT_AFFIN_ICE]     = "冰",
+		[UNIT_AFFIN_ICE]     = "氷",
 		[UNIT_AFFIN_DARK]    = "闇",
 		[UNIT_AFFIN_LIGHT]   = "光",
 		[UNIT_AFFIN_ANIMA]   = "理",
