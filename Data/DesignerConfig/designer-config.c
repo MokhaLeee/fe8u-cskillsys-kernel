@@ -50,7 +50,7 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.guaranteed_lvup = false,
 	.lvup_mode_tutorial = CONFIG_LVUP_MODE_TUTORIAL,
 	.lvup_mode_normal   = CONFIG_LVUP_MODE_NORMAL,
-	.lvup_mode_hard	 = CONFIG_LVUP_MODE_HARD,
+	.lvup_mode_hard	    = CONFIG_LVUP_MODE_HARD,
 
 	.unit_page_style = CONFIG_PAGE1_WITH_BWL,
 	.skil_page_style = CONFIG_PAGE4_MOKHA_PLAN_A,
