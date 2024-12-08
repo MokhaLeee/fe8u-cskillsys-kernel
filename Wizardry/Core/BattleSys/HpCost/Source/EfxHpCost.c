@@ -19,9 +19,6 @@ void BanimC07_UpdateHpCost(struct Anim *anim)
 	if (GetAISLayerId(anim) != 0)
 		return;
 
-	if (!IsAttackerAnim(anim))
-		return;
-
 	round = anim->nextRoundId - 1;
 	if (round < 0 || round >= NEW_BATTLE_HIT_MAX)
 		return;
