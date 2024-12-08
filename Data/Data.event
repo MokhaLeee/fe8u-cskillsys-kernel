@@ -6,6 +6,7 @@
 /* Put at head since it holds some macros */
 #include "../Wizardry/data.event"
 
+#include "DesignerConfig/designer-config.lyn.event"
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
 #include "SkillSys/SkillExtraInfo.lyn.event"
@@ -29,6 +30,7 @@
 #include "StrMag/UnitMagicInfos.lyn.event"
 #include "Debuff/DebuffInfo.lyn.event"
 #include "Debuff/StatDebuffInfo.lyn.event"
+#include "GaidenMagic/GaidenMagicData.event"
 #include "GaidenMagic/GaidenMagicData.lyn.event"
 
 #endif

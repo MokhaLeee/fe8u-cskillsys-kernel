@@ -10,5 +10,11 @@ Swap position?        [NL][Yes][X]
 ## MSG_GaidenBMagic_UM_DESC
  Gaiden style black magic.[.][X]
 
+## MSG_GaidenWMagic_UM_NAME
+ W.Mag[X]
+
+## MSG_GaidenWMagic_UM_DESC
+ Gaiden style white magic.[.][X]
+
 ## MSG_GaidenMagic_ItemMenuDisabled
-Can not equip now![NL][X]
+Can not use now![NL][X]

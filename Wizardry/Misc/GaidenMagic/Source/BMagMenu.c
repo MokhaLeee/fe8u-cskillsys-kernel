@@ -23,7 +23,6 @@ STATIC_DECLAR u8 GaidenBMagAttackMapSelect_Cancel(ProcPtr proc, struct SelectTar
 STATIC_DECLAR const struct ProcCmd ProcScr_PostGaidenBMagSelectTarget[];
 STATIC_DECLAR void RebuildGaidenBMagSelMenu(void);
 STATIC_DECLAR void UpdateMenuItemPanelGaidenBMag(int slot);
-STATIC_DECLAR void DrawGaidenBMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut);
 
 /**
  * Action menu
@@ -99,7 +98,7 @@ u8 GaidenBMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *men
 
 	if (gActiveUnit->pClassData->number != CLASS_PHANTOM) {
 		StartFace(0, GetUnitPortraitId(gActiveUnit), 0xB0, 0xC, 2);
-		SetFaceBlinkControlById(0, 5);
+		SetFaceBlinkControlById(0, 1);
 	}
 
 	ForceMenuItemPanel(sub_menu, gActiveUnit, 0xF, 0xB);
@@ -209,7 +208,7 @@ STATIC_DECLAR int GaidenBMagItemSelOnDraw(struct MenuProc *menu, struct MenuItem
 	if (GetSelectTargetCount() == 0)
 		en = false;
 
-	DrawGaidenBMagItemMenuLine(
+	DrawGaidenMagItemMenuLine(
 		&menuItem->text,
 		item,
 		en,
@@ -300,7 +299,7 @@ STATIC_DECLAR u8 GaidenBMagAttackMapSelect_Select(ProcPtr proc, struct SelectTar
 	if (EventEngineExists() == 1)
 		return 0;
 
-	gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenBMag;
+	gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat;
 	gActionData.targetIndex = target->uid;
 
 	if (target->uid == 0) {
@@ -421,12 +420,4 @@ STATIC_DECLAR void UpdateMenuItemPanelGaidenBMag(int slot)
 		icon_pal << 0xC);
 
 	BG_EnableSyncByMask(BG0_SYNC_BIT);
-}
-
-STATIC_DECLAR void DrawGaidenBMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut)
-{
-	Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
-	Text_DrawString(text, GetItemName(item));
-	PutText(text, mapOut + 2);
-	DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }

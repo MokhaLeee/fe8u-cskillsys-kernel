@@ -1,19 +1,22 @@
 PUSH
     ORG $058248
     #include "Source/pr_AnimRoundDataRe.lyn.event"
-
     ORG $058212
     BYTE 0x20
-
     ORG $058564
     #include "Source/pr_AnimRoundDataRe.lyn.event"
+    // This function has been directly hooked by LynJump
+    // PROTECT 0x581EC 0x58848 // ParseBattleHitToBanimCmd
 
     ORG $058A28
     #include "Source/pr_AnimRoundDataRe.lyn.event"
+    PROTECT 0x00058A0C 0x00058A34 // GetBattleAnimRoundType
 
     ORG $058A54
     #include "Source/pr_AnimRoundDataRe.lyn.event"
+    PROTECT 0x00058A34 0x00058A60 // GetBattleAnimRoundTypeFlags
 
     ORG $058B50
     #include "Source/pr_AnimRoundDataRe.lyn.event"
+    PROTECT 0x00058B24 0x00058B64 // EkrCheckAttackRound
 POP

@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "battle-system.h"
 #include "kernel-lib.h"
+#include "debuff.h"
 #include "constants/skills.h"
 #include "weapon-range.h"
 #include "status-getter.h"
@@ -21,6 +22,8 @@ void CollectAiSimuSlots(struct Unit *unit, struct AiSimuSlotEnt *buf)
 {
 	int i;
 	struct AiSimuSlotEnt *it = buf;
+
+	CpuFastFill(0, gpAiSimuSlotBuf, sizeof(sAiSimuSlotBuf));
 
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
 		u16 item = unit->items[i];
@@ -62,6 +65,48 @@ void CollectAiSimuSlots(struct Unit *unit, struct AiSimuSlotEnt *buf)
 
 	/* terminator */
 	it->item = 0;
+}
+
+void CollectAiSimuStaffSlots(struct Unit *unit, struct AiSimuSlotEnt *buf)
+{
+	int i;
+	struct AiSimuSlotEnt *it = buf;
+
+	CpuFastFill(0, gpAiSimuSlotBuf, sizeof(sAiSimuSlotBuf));
+
+	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+		u16 item = unit->items[i];
+
+		if (item == 0)
+			break;
+
+		if (GetItemAttributes(item) & IA_STAFF) {
+			it->slot = i;
+			it->item = item;
+			it++;
+		}
+	}
+
+	/* Gaiden w.Mag */
+	if (gpKernelDesigerConfig->gaiden_magic_en && gpKernelDesigerConfig->gaiden_magic_ai_en) {
+		struct GaidenMagicList *gmaglist = GetGaidenMagicList(unit);
+
+		for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+			u16 item = gmaglist->wmags[i];
+
+			if (item == 0)
+				break;
+
+			if (!(GetItemAttributes(item) & IA_STAFF))
+				continue;
+
+			if (CanUnitUseGaidenMagic(unit, item)) {
+				it->slot = CHAX_BUISLOT_GAIDEN_WMAG1 + i;
+				it->item = item;
+				it++;
+			}
+		}
+	}
 }
 
 LYN_REPLACE_CHECK(AiAttemptOffensiveAction);
@@ -111,7 +156,6 @@ s8 AiAttemptOffensiveAction(s8 (*isEnemy)(struct Unit *unit))
 
 	SetWorkingBmMap(gBmMapRange);
 
-	CpuFastFill(0, gpAiSimuSlotBuf, sizeof(sAiSimuSlotBuf))
 	CollectAiSimuSlots(gActiveUnit, gpAiSimuSlotBuf);
 
 	for (it = gpAiSimuSlotBuf; it->item != 0; it++) {
@@ -211,4 +255,34 @@ try_ballist_combat:
 	}
 
 	return ret;
+}
+
+LYN_REPLACE_CHECK(AiTryDoStaff);
+bool AiTryDoStaff(s8 (*isEnemy)(struct Unit *unit))
+{
+	struct AiSimuSlotEnt *it;
+	u8 exp = 0;
+
+	if (GetUnitStatusIndex(gActiveUnit) == UNIT_STATUS_SILENCED)
+		return gAiDecision.actionPerformed;
+
+	CollectAiSimuStaffSlots(gActiveUnit, gpAiSimuSlotBuf);
+
+	for (it = gpAiSimuSlotBuf; it->item != 0; it++) {
+		int index;
+		u16 item = it->item;
+
+		if (GetItemRequiredExp(item) < exp)
+			continue;
+
+		index = GetAiStaffFuncIndex(item);
+		if (index != -1) {
+			sAiStaffFuncLut[index].func(it->slot, isEnemy);
+
+			if (gAiDecision.actionPerformed != false)
+				exp = GetItemRequiredExp(item);
+		}
+	}
+
+	return gAiDecision.actionPerformed;
 }

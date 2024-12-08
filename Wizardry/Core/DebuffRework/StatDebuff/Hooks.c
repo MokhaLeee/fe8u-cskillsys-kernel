@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "battle-system.h"
 
 LYN_REPLACE_CHECK(ExecDanceRing);
 void ExecDanceRing(ProcPtr proc)
@@ -12,7 +13,7 @@ void ExecDanceRing(ProcPtr proc)
 	BattleInitItemEffectTarget(GetUnit(gActionData.targetIndex));
 
 #if CHAX
-	switch (GetItemIndex(GetUnit(gActionData.subjectIndex)->items[gActionData.itemSlotIndex])) {
+	switch (GetItemIndex(GetItemFromSlot(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex))) {
 	case ITEM_FILLAS_MIGHT:
 		status = UNIT_STATUS_ATTACK;
 		break;

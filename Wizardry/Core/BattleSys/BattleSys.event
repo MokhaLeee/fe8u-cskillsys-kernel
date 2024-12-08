@@ -5,6 +5,7 @@
 #include "WeaponLockEx/WeaponLockEx.event"
 #include "LeaderShip/LeaderShip.event"
 #include "Bow2Decrease/Bow2Decrease.event"
+#include "RoundAnim/RoundAnim.event"
 #include "HpCost/HpCost.event"
 
 #include "Source/LynJump.event"

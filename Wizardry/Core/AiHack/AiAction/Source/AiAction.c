@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "AiAction.h"
+#include "battle-system.h"
 
 LYN_REPLACE_CHECK(CpPerform_PerformAction);
 void CpPerform_PerformAction(struct CpPerformProc *proc)
@@ -30,4 +31,79 @@ void CpPerform_PerformAction(struct CpPerformProc *proc)
 		exec(proc);
 	}
 #endif
+}
+
+LYN_REPLACE_CHECK(AiStartCombatAction);
+void AiStartCombatAction(struct CpPerformProc *proc)
+{
+	gActionData.subjectIndex = gActiveUnitId;
+	gActionData.unitActionType = UNIT_ACTION_COMBAT;
+	gActionData.targetIndex = gAiDecision.targetId;
+
+	gActiveUnit->xPos = gAiDecision.xMove;
+	gActiveUnit->yPos = gAiDecision.yMove;
+
+	if (gAiDecision.targetId == 0) {
+		struct Trap *trap = GetTrapAt(gAiDecision.xTarget, gAiDecision.yTarget);
+
+		gActionData.xOther = gAiDecision.xTarget;
+		gActionData.yOther = gAiDecision.yTarget;
+		gActionData.trapType = trap->extra;
+	}
+
+	switch (gAiDecision.itemSlot) {
+	case 0xFF:
+		gActionData.itemSlotIndex = BU_ISLOT_BALLISTA;
+		break;
+
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		EquipUnitItemSlot(gActiveUnit, gAiDecision.itemSlot);
+		gActionData.itemSlotIndex = 0;
+		break;
+
+#if CHAX
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		gActionData.itemSlotIndex = gAiDecision.itemSlot;
+		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat;
+		break;
+#endif
+	}
+	ApplyUnitAction(proc);
+}
+
+LYN_REPLACE_CHECK(AiStaffAction);
+bool AiStaffAction(struct CpPerformProc *proc)
+{
+	gActiveUnit->xPos = gAiDecision.xMove;
+	gActiveUnit->yPos = gAiDecision.yMove;
+
+	gActionData.unitActionType = UNIT_ACTION_STAFF;
+
+	gActionData.targetIndex = gAiDecision.targetId;
+	gActionData.itemSlotIndex = gAiDecision.itemSlot;
+
+#if CHAX
+	ApplyUnitAction(proc);
+#else
+	ActionStaffDoorChestUseItem(proc);
+#endif
+
+	return true;
 }

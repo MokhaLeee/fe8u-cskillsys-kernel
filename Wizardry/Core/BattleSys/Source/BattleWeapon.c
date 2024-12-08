@@ -10,7 +10,7 @@
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
-int GetItemFormSlot(struct Unit *unit, int slot)
+int GetItemFromSlot(struct Unit *unit, int slot)
 {
 	switch (slot) {
 	case 0:
@@ -103,7 +103,7 @@ int GetUnitEquippedWeaponSlot(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitEquippedWeapon);
 u16 GetUnitEquippedWeapon(struct Unit *unit)
 {
-	return GetItemFormSlot(unit, GetUnitEquippedWeaponSlot(unit));
+	return GetItemFromSlot(unit, GetUnitEquippedWeaponSlot(unit));
 }
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlot)
@@ -404,61 +404,6 @@ int GetWeaponCost(struct BattleUnit *bu, u16 item)
 	return cost;
 }
 
-LYN_REPLACE_CHECK(AiStartCombatAction);
-void AiStartCombatAction(struct CpPerformProc *proc)
-{
-	gActionData.subjectIndex = gActiveUnitId;
-	gActionData.unitActionType = UNIT_ACTION_COMBAT;
-	gActionData.targetIndex = gAiDecision.targetId;
-
-	gActiveUnit->xPos = gAiDecision.xMove;
-	gActiveUnit->yPos = gAiDecision.yMove;
-
-	if (gAiDecision.targetId == 0) {
-		struct Trap *trap = GetTrapAt(gAiDecision.xTarget, gAiDecision.yTarget);
-
-		gActionData.xOther = gAiDecision.xTarget;
-		gActionData.yOther = gAiDecision.yTarget;
-		gActionData.trapType = trap->extra;
-	}
-
-	switch (gAiDecision.itemSlot) {
-	case 0xFF:
-		gActionData.itemSlotIndex = BU_ISLOT_BALLISTA;
-		break;
-
-	case 0:
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-		EquipUnitItemSlot(gActiveUnit, gAiDecision.itemSlot);
-		gActionData.itemSlotIndex = 0;
-		break;
-
-#if CHAX
-	case CHAX_BUISLOT_GAIDEN_BMAG1:
-	case CHAX_BUISLOT_GAIDEN_BMAG2:
-	case CHAX_BUISLOT_GAIDEN_BMAG3:
-	case CHAX_BUISLOT_GAIDEN_BMAG4:
-	case CHAX_BUISLOT_GAIDEN_BMAG5:
-	case CHAX_BUISLOT_GAIDEN_BMAG6:
-	case CHAX_BUISLOT_GAIDEN_BMAG7:
-	case CHAX_BUISLOT_GAIDEN_WMAG1:
-	case CHAX_BUISLOT_GAIDEN_WMAG2:
-	case CHAX_BUISLOT_GAIDEN_WMAG3:
-	case CHAX_BUISLOT_GAIDEN_WMAG4:
-	case CHAX_BUISLOT_GAIDEN_WMAG5:
-	case CHAX_BUISLOT_GAIDEN_WMAG6:
-	case CHAX_BUISLOT_GAIDEN_WMAG7:
-		gActionData.itemSlotIndex = gAiDecision.itemSlot;
-		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenBMag;
-		break;
-#endif
-	}
-	ApplyUnitAction(proc);
-}
-
 LYN_REPLACE_CHECK(GetUnitWeaponUsabilityBits);
 int GetUnitWeaponUsabilityBits(struct Unit *unit)
 {
@@ -516,4 +461,102 @@ int GetUnitWeaponUsabilityBits(struct Unit *unit)
 #endif
 
 	return result;
+}
+
+LYN_REPLACE_CHECK(BattleInitItemEffect);
+void BattleInitItemEffect(struct Unit *unit, int slot)
+{
+	int item;
+
+#if CHAX
+	item = GetItemFromSlot(unit, slot);
+#else
+	item = unit->items[slot];
+
+	if (slot < 0)
+		item = 0;
+#endif
+
+	gBattleStats.config = 0;
+
+	InitBattleUnit(&gBattleActor, unit);
+
+	SetBattleUnitTerrainBonusesAuto(&gBattleActor);
+	ComputeBattleUnitBaseDefense(&gBattleActor);
+	ComputeBattleUnitSupportBonuses(&gBattleActor, NULL);
+
+	gBattleActor.battleAttack = 0xFF;
+	gBattleActor.battleEffectiveHitRate = 100;
+	gBattleActor.battleEffectiveCritRate = 0xFF;
+
+	gBattleActor.weapon = item;
+	gBattleActor.weaponBefore = item;
+	gBattleActor.weaponSlotIndex = slot;
+	gBattleActor.weaponType = GetItemType(item);
+	gBattleActor.weaponAttributes = GetItemAttributes(item);
+
+	gBattleActor.canCounter = TRUE;
+	gBattleActor.hasItemEffectTarget = FALSE;
+
+	gBattleActor.statusOut = -1;
+	gBattleTarget.statusOut = -1;
+
+	ClearBattleHits();
+}
+
+LYN_REPLACE_CHECK(BattleUnitTargetCheckCanCounter);
+void BattleUnitTargetCheckCanCounter(struct BattleUnit *bu)
+{
+	if (bu->canCounter)
+		return;
+
+#if CHAX
+	if (CheckUnbreakableSpecialSlot(bu->weaponSlotIndex))
+		return;
+#endif
+
+	bu->battleAttack = 0xFF;
+	bu->battleHitRate = 0xFF;
+	bu->battleEffectiveHitRate = 0xFF;
+	bu->battleCritRate = 0xFF;
+	bu->battleEffectiveCritRate = 0xFF;
+}
+
+LYN_REPLACE_CHECK(BattleUnitTargetSetEquippedWeapon);
+void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
+{
+	int i, item;
+
+	if (bu->weaponBefore)
+		return;
+
+	bu->weaponBefore = GetUnitEquippedWeapon(&bu->unit);
+	if (bu->weaponBefore)
+		return;
+
+	if (!UnitHasMagicRank(&bu->unit))
+		return;
+
+	for (i = 0; i < UNIT_ITEM_COUNT; ++i) {
+		item = bu->unit.items[i];
+
+		if (item == 0)
+			break;
+
+		if (CanUnitUseStaff(&bu->unit, item)) {
+			bu->weaponBefore = item;
+			return;
+		}
+	}
+
+#if CHAX
+	if (gpKernelDesigerConfig->gaiden_magic_en) {
+		item = GetGaidenMagicAutoEquipStaff(&bu->unit);
+
+		if (item != ITEM_NONE) {
+			bu->weaponBefore = MakeNewItem(item);
+			return;
+		}
+	}
+#endif
 }

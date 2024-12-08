@@ -202,9 +202,11 @@ PUSH
     BYTE 0x3F
     PROTECT $399B0 $39A50
 
+/*
     ORG $3FA54 // AiTryDoStaff
     BYTE 0x3F
     PROTECT $3FA40 $3FAE8
+*/
 
     ORG $40214 // AiStaffRestore
     BYTE 0x3F

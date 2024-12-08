@@ -23,9 +23,7 @@ NOINLINE static bool IsBMag(int iid)
 
 NOINLINE static bool IsWMag(int iid)
 {
-	u32 attr = GetItemAttributes(iid);
-
-	if (attr & IA_STAFF)
+	if (GetItemType(iid) != ITYPE_STAFF)
 		return false;
 
 	return true;
@@ -39,7 +37,7 @@ void ResetGaidenMagicList(struct GaidenMagicList *list)
 void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 {
 	int i;
-	const struct GaidenPinfoConfigEnt *conf1 = gGaidenPinfoConfigList[UNIT_CHAR_ID(unit)];
+	const struct GaidenPinfoConfigEnt *conf1 = gpGaidenPinfoConfigList[UNIT_CHAR_ID(unit)].ent;
 	const struct GaidenChaxConfigEnt  *conf2 = gpGaidenChaxConfigs;
 
 	u8 *tmpbuf = gGenericBuffer;
@@ -58,41 +56,46 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 		}
 	}
 
-	for (; conf2->iid != ITEM_NONE; conf2++) {
-		if (conf2->faction != UNIT_FACTION(unit))
-			continue;
+	if (gpKernelDesigerConfig->gaiden_magic_ext_conf_en) {
+		for (; conf2->iid != ITEM_NONE; conf2++) {
+			if (conf2->faction != UNIT_FACTION(unit))
+				continue;
 
-		if (conf2->pid != 0 && UNIT_CHAR_ID(unit) != conf2->pid)
-			continue;
+			if (conf2->pid != 0 && UNIT_CHAR_ID(unit) != conf2->pid)
+				continue;
 
-		if (conf2->jid != 0 && UNIT_CLASS_ID(unit) != conf2->jid)
-			continue;
+			if (conf2->jid != 0 && UNIT_CLASS_ID(unit) != conf2->jid)
+				continue;
 
-		if (unit->level < conf2->level)
-			continue;
+			if (unit->level < conf2->level)
+				continue;
 
-		if (COMMON_SKILL_VALID(conf2->skill) && !SkillTester(unit, conf2->skill))
-			continue;
+			if (COMMON_SKILL_VALID(conf2->skill) && !SkillTester(unit, conf2->skill))
+				continue;
 
-		if (conf2->evflag != 0 && !CheckFlag(conf2->evflag))
-			continue;
+			if (conf2->evflag != 0 && !CheckFlag(conf2->evflag))
+				continue;
 
-		tmpbuf[conf2->iid] = 1;
+			tmpbuf[conf2->iid] = 1;
+		}
 	}
 
 	ResetGaidenMagicList(list);
 
 	for (i = 0xFF; i > 0; i--) {
-		if (tmpbuf[i] == 0)
-			continue;
+		if (list->bmag_cnt >= GAIDEN_MAGIC_LIST_LEN)
+			break;
 
-		if (IsBMag(i))
-			if (list->bmag_cnt < GAIDEN_MAGIC_LIST_LEN)
-				list->bmags[list->bmag_cnt++] = i;
+		if (tmpbuf[i] && IsBMag(i))
+			list->bmags[list->bmag_cnt++] = i;
+	}
 
-		if (IsWMag(i))
-			if (list->wmag_cnt < GAIDEN_MAGIC_LIST_LEN)
-				list->wmags[list->wmag_cnt++] = i;
+	for (i = 0xFF; i > 0; i--) {
+		if (list->wmag_cnt >= GAIDEN_MAGIC_LIST_LEN)
+			break;
+
+		if (tmpbuf[i] && IsWMag(i))
+			list->wmags[list->wmag_cnt++] = i;
 	}
 
 	WriteUnitList(unit, &list->header);
@@ -112,11 +115,9 @@ struct GaidenMagicList *GetGaidenMagicList(struct Unit *unit)
 bool CanUnitUseGaidenMagic(struct Unit *unit, int item)
 {
 	if (gpKernelDesigerConfig->gaiden_magic_requires_wrank) {
-		u32 attr = GetItemAttributes(item);
-
-		if (attr & IA_WEAPON)
+		if (GetItemAttributes(item) & IA_WEAPON)
 			return CanUnitUseWeapon(unit, item);
-		else if (attr & IA_STAFF)
+		else if (GetItemType(item) == ITYPE_STAFF)
 			return CanUnitUseStaff(unit, item);
 
 		return false;
@@ -131,6 +132,9 @@ bool CanUnitUseGaidenMagicNow(struct Unit *unit, int item)
 	if ((GetItemAttributes(item) & (IA_MAGIC | IA_STAFF)) && IsUnitMagicSealed(unit))
 		return false;
 
+	if (unit->curHP <= GetGaidenWeaponHpCost(unit, item))
+		return false;
+
 	return CanUnitUseGaidenMagic(unit, item);
 }
 
@@ -139,15 +143,55 @@ int GetGaidenMagicAutoEquipSlot(struct Unit *unit)
 	int i;
 	struct GaidenMagicList *list = GetGaidenMagicList(unit);
 
-	for (i = 0; i < list->bmag_cnt; i++)
-		if (CanUnitUseGaidenMagicNow(unit, list->bmags[i]))
-			return CHAX_BUISLOT_GAIDEN_BMAG1 + i;
+	for (i = 0; i < list->bmag_cnt; i++) {
+		int item = list->bmags[i];
 
-	for (i = 0; i < list->wmag_cnt; i++)
-		if (CanUnitUseGaidenMagicNow(unit, list->wmags[i]))
+		if (!(GetItemAttributes(item) & IA_WEAPON))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
+			return CHAX_BUISLOT_GAIDEN_BMAG1 + i;
+	}
+
+	for (i = 0; i < list->wmag_cnt; i++) {
+		int item = list->wmags[i];
+
+		if (!(GetItemAttributes(item) & IA_WEAPON))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
 			return CHAX_BUISLOT_GAIDEN_WMAG1 + i;
+	}
 
 	return -1;
+}
+
+int GetGaidenMagicAutoEquipStaff(struct Unit *unit)
+{
+	int i;
+	struct GaidenMagicList *list = GetGaidenMagicList(unit);
+
+	for (i = 0; i < list->wmag_cnt; i++) {
+		int item = list->wmags[i];
+
+		if (!(GetItemAttributes(item) & IA_STAFF))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
+			return item;
+	}
+
+	for (i = 0; i < list->bmag_cnt; i++) {
+		int item = list->bmags[i];
+
+		if (!(GetItemAttributes(item) & IA_STAFF))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
+			return item;
+	}
+
+	return ITEM_NONE;
 }
 
 int GetGaidenMagicItem(struct Unit *unit, int slot)
@@ -189,4 +233,46 @@ int GetGaidenMagicItem(struct Unit *unit, int slot)
 	}
 
 	return ITEM_NONE;
+}
+
+void TryChangeGaidenMagicAction(void)
+{
+	int item;
+	int slot = gActionData.itemSlotIndex;
+
+	switch (slot) {
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		break;
+
+	default:
+		return;
+	}
+
+	item = GetItemFromSlot(gActiveUnit, slot);
+
+	if (GetItemAttributes(item) & IA_WEAPON)
+		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat;
+	else if (GetItemType(item) == ITYPE_STAFF)
+		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff;
+}
+
+void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut)
+{
+	Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
+	Text_DrawString(text, GetItemName(item));
+	PutText(text, mapOut + 2);
+	DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }

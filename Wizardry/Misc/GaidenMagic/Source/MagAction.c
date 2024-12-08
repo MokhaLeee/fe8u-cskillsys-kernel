@@ -8,9 +8,8 @@
  */
 STATIC_DECLAR void SetBattleActorWeaponGaidenBMag(struct BattleUnit *bu, int slot)
 {
-	struct GaidenMagicList *list = GetGaidenMagicList(gActiveUnit);
-
-	bu->weapon = MakeNewItem(list->bmags[slot]);
+	bu->weaponSlotIndex = slot;
+	bu->weapon = GetItemFromSlot(&bu->unit, slot);
 	bu->weaponBefore = bu->weapon;
 	bu->weaponAttributes = GetItemAttributes(bu->weapon);
 	bu->weaponType = GetItemType(bu->weapon);
@@ -19,8 +18,6 @@ STATIC_DECLAR void SetBattleActorWeaponGaidenBMag(struct BattleUnit *bu, int slo
 
 STATIC_DECLAR void BattleGenerateGaidenBMagRealInternal(struct Unit *actor, struct Unit *target)
 {
-	int slot = gActionData.itemSlotIndex - CHAX_BUISLOT_GAIDEN_BMAG1;
-
 	InitBattleUnit(&gBattleActor, actor);
 	InitBattleUnit(&gBattleTarget, target);
 
@@ -29,7 +26,7 @@ STATIC_DECLAR void BattleGenerateGaidenBMagRealInternal(struct Unit *actor, stru
 		gBattleTarget.unit.xPos, gBattleTarget.unit.yPos
 	);
 
-	SetBattleActorWeaponGaidenBMag(&gBattleActor, slot);
+	SetBattleActorWeaponGaidenBMag(&gBattleActor, gActionData.itemSlotIndex);
 	SetBattleUnitWeapon(&gBattleTarget, BU_ISLOT_AUTO);
 
 	BattleInitTargetCanCounter();
@@ -56,8 +53,6 @@ STATIC_DECLAR void BattleGenerateGaidenBMagRealInternal(struct Unit *actor, stru
 
 STATIC_DECLAR void BattleGenerateGaidenBMagSimulationInternal(struct Unit *actor, struct Unit *target, int x, int y)
 {
-	int slot = gActionData.itemSlotIndex - CHAX_BUISLOT_GAIDEN_BMAG1;
-
 	InitBattleUnit(&gBattleActor, actor);
 	InitBattleUnit(&gBattleTarget, target);
 
@@ -69,7 +64,7 @@ STATIC_DECLAR void BattleGenerateGaidenBMagSimulationInternal(struct Unit *actor
 		gBattleTarget.unit.xPos, gBattleTarget.unit.yPos
 	);
 
-	SetBattleActorWeaponGaidenBMag(&gBattleActor, slot);
+	SetBattleActorWeaponGaidenBMag(&gBattleActor, gActionData.itemSlotIndex);
 	SetBattleUnitWeapon(&gBattleTarget, BU_ISLOT_AUTO);
 
 	BattleInitTargetCanCounter();
@@ -98,7 +93,7 @@ void BattleGenerateGaidenBMagReal(struct Unit *actor, struct Unit *target)
 /**
  * Action
  */
-bool ActionGaidenBMagCombat(ProcPtr proc)
+bool ActionGaidenMagicCombat(ProcPtr proc)
 {
 	struct Unit *uactor  = GetUnit(gActionData.subjectIndex);
 	struct Unit *utarget = GetUnit(gActionData.targetIndex);
@@ -110,5 +105,29 @@ bool ActionGaidenBMagCombat(ProcPtr proc)
 
 	BattleGenerateGaidenBMagReal(uactor, utarget);
 	Proc_StartBlocking(sProcScr_CombatAction, proc);
+	return false;
+}
+
+bool ActionGaidenMagicStaff(ProcPtr proc)
+{
+	int slot = gActionData.itemSlotIndex;
+	int item = GetItemFromSlot(gActiveUnit, slot);
+	int hp_cost = GetGaidenWeaponHpCost(gActiveUnit, item);
+
+	/* Main rountine */
+	ActionStaffDoorChestUseItem(proc);
+
+	/**
+	 * Directly give the hp-cost to the first round
+	 */
+	if (hp_cost >= gBattleActor.unit.curHP)
+		hp_cost = gBattleActor.unit.curHP - 1;
+
+	AddBattleHpCost(0, hp_cost);
+
+	/* reinit! */
+	ParseBattleHitToBanimCmd();
+
+	gBattleActor.unit.curHP -= hp_cost;
 	return false;
 }

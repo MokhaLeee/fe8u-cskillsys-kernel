@@ -9,7 +9,7 @@ extern s8 sSelectedComatArtIndex;
 
 STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
 {
-	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	int weapon = GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex);
 	int wtype = GetItemType(weapon);
 	struct CombatArtList *list = GetCombatArtList(gActiveUnit, weapon);
 	int new = old - 1;
@@ -37,7 +37,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelLeft(int old)
 
 STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
 {
-	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	int weapon = GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex);
 	int wtype = GetItemType(weapon);
 	struct CombatArtList *list = GetCombatArtList(gActiveUnit, weapon);
 	int new = old + 1;
@@ -59,7 +59,7 @@ STATIC_DECLAR int GetNextCombatArtIndexInTargetSelRight(int old)
 
 u8 GetCombatArtByTargetSelIndex(void)
 {
-	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	int weapon = GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex);
 	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, weapon);
 
 	/* 0 as default seemed as not use combat-art */
@@ -71,7 +71,7 @@ u8 GetCombatArtByTargetSelIndex(void)
 
 STATIC_DECLAR void RegisterCombatArtStatusInTargetSel(int sel_index)
 {
-	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	int weapon = GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex);
 	struct CombatArtList *calist = GetCombatArtList(gActiveUnit, weapon);
 
 	/* 0 as default seemed as not use combat-art */
@@ -88,7 +88,7 @@ STATIC_DECLAR bool TargetSelectionRework_HandleCombatArt(struct SelectTargetProc
 	u16 repeated;
 	struct SelectTarget *it, *cur = proc->currentTarget;
 	struct Unit *unit = gActiveUnit;
-	u16 weapon = GetItemFormSlot(unit, gActionData.itemSlotIndex);
+	u16 weapon = GetItemFromSlot(unit, gActionData.itemSlotIndex);
 
 	repeated = gKeyStatusPtr->repeatedKeys;
 
@@ -245,7 +245,7 @@ PROC_LABEL(0),
 ProcPtr NewTargetSelectionRework(const struct SelectInfo *selectInfo)
 {
 	int i, cid;
-	int weapon = GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex);
+	int weapon = GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex);
 	struct CombatArtList *list = GetCombatArtList(gActiveUnit, weapon);
 	struct SelectTargetProc *proc;
 
@@ -284,7 +284,7 @@ u8 UnknownMenu_Selected(struct MenuProc *menu, struct MenuItemProc *menuItem)
 	gActionData.itemSlotIndex = 0;
 
 	ClearBg0Bg1();
-	MakeTargetListForWeapon(gActiveUnit, GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+	MakeTargetListForWeapon(gActiveUnit, GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex));
 	NewTargetSelectionRework(&gSelectInfo_Attack);
 	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_ENDFACE;
 }

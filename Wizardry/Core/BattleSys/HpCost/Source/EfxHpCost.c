@@ -8,35 +8,23 @@ struct ProcEfxHpCost {
 	PROC_HEADER;
 	int hpcur, hpend, diff;
 	int timer, step;
-	int cost;
+	int sound_timer;
 	struct Anim *anim;
 };
 
-/**
- * Actually it is better to directly modify function: ParseBattleHitToBanimCmd() to inset hp changes.
- * But well I wanna not to touch that function as that function has been touched too much times in external patches.
- * Thus I directly use some side ways to directly hook at the end of C07!!!!
- */
-
-STATIC_DECLAR void NewEfxHpCost(struct Anim *anim, int cost);
-
 void BanimC07_UpdateHpCost(struct Anim *anim)
 {
-	int cost, round;
+	int round;
 
 	if (GetAISLayerId(anim) != 0)
-		return;
-
-	if (!IsAttackerAnim(anim))
 		return;
 
 	round = anim->nextRoundId - 1;
 	if (round < 0 || round >= NEW_BATTLE_HIT_MAX)
 		return;
 
-	cost = gBattleHpCostArray[round].cost;
-	if (cost > 0)
-		NewEfxHpCost(anim, cost);
+	if (GetExtBattleHit(round)->hp_cost > 0)
+		NewEfxHpCost(anim);
 }
 
 STATIC_DECLAR void EfxHpCost_Loop(struct ProcEfxHpCost *proc)
@@ -58,28 +46,14 @@ STATIC_DECLAR void EfxHpCost_Loop(struct ProcEfxHpCost *proc)
 
 	pos = GetAnimPosition(proc->anim);
 	gEkrGaugeHp[pos] = proc->hpcur;
-}
 
-static void set_cost(void *pr, int cost)
-{
-	u8 *bufu8 = pr;
-
-	if (*bufu8 == 0xFF)
-		return;
-
-	if (*bufu8 > cost)
-		*bufu8 -= cost;
-	else
-		*bufu8 = 1;
+	EfxPlaySE(SONG_75, 0x100);
+	M4aPlayWithPostionCtrl(SONG_75, proc->anim->xPosition, 1);
 }
 
 STATIC_DECLAR void EfxHpCost_End(struct ProcEfxHpCost *proc)
 {
-	int i, pos = GetAnimPosition(proc->anim);
-
-	/* Yeah, directly flush the whole array! */
-	for (i = 0; i < CHAX_EFXHP_AMT; i++)
-		set_cost(&prEfxHpLutRe[i * 2 + pos], proc->cost);
+	gEfxHpLutOff[GetAnimPosition(proc->anim)]++;
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_EfxHpCost[] = {
@@ -89,17 +63,24 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EfxHpCost[] = {
 	PROC_END
 };
 
-STATIC_DECLAR void NewEfxHpCost(struct Anim *anim, int cost)
+void NewEfxHpCost(struct Anim *anim)
 {
 	struct ProcEfxHpCost *proc;
 	int pos = GetAnimPosition(anim);
 
 	proc = Proc_Start(ProcScr_EfxHpCost, PROC_TREE_3);
-	proc->step = 5;
+	proc->step = 4;
 	proc->timer = proc->step;
-	proc->hpcur = gEkrGaugeHp[pos];
-	proc->hpend = proc->hpcur - cost;
+	proc->sound_timer = 0;
+	proc->hpcur = GetEfxHp((gEfxHpLutOff[pos] + 0) * 2 + pos);
+	proc->hpend = GetEfxHp((gEfxHpLutOff[pos] + 1) * 2 + pos);
 	proc->diff = -1;
-	proc->cost = cost;
 	proc->anim = anim;
+
+	LTRACEF("round=%d, off=%d, cur=%d, next=%d", anim->nextRoundId - 1, gEfxHpLutOff[pos], proc->hpcur, proc->hpend);
+}
+
+bool EfxHpCostExists(void)
+{
+	return Proc_Exists(ProcScr_EfxHpCost);
 }

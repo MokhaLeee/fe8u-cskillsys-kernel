@@ -223,3 +223,10 @@ void sub_8095C2C(struct ProcAtMenu *proc);
 extern struct MsgBuffer sMsgString;
 
 extern CONST_DATA struct ProcCmd sProcScr_BattleAnimSimpleLock[];
+
+struct AiStaffLutEntry {
+	u16 itemId;
+	void (*func)(int itemIdx, s8 (*isEnemy)(struct Unit *unit));
+};
+extern const struct AiStaffLutEntry sAiStaffFuncLut[];
+int GetAiStaffFuncIndex(u16 item);

@@ -5,12 +5,13 @@
 #include <list-verify.h>
 #include <battle-system.h>
 
-struct GaidenPinfoConfigEnt {
-	u8 level, iid;
-};
-extern struct GaidenPinfoConfigEnt const *const gGaidenPinfoConfigList[0x100];
+struct GaidenPinfoConfigEnt { u8 level, iid; };
+struct GaidenPinfoConfig { const struct GaidenPinfoConfigEnt *ent; };
 
-extern const u8 gGaidenWeaponCostList[0x100];
+// extern struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100];
+extern struct GaidenPinfoConfig const *const gpGaidenPinfoConfigList;
+
+// extern const u8 gGaidenWeaponCostList[0x100];
 extern u8 const *const gpGaidenWeaponCostList;
 
 struct GaidenChaxConfigEnt {
@@ -20,7 +21,8 @@ struct GaidenChaxConfigEnt {
 
 	u16 skill, evflag;
 };
-extern const struct GaidenChaxConfigEnt gGaidenChaxConfigs[];
+
+// extern const struct GaidenChaxConfigEnt gGaidenChaxConfigs[];
 extern struct GaidenChaxConfigEnt const *const gpGaidenChaxConfigs;
 
 #define GAIDEN_MAGIC_LIST_LEN 7
@@ -75,9 +77,19 @@ static inline bool CheckGaidenMagicAttack(struct BattleUnit *bu)
 int GetGaidenWeaponHpCost(struct Unit *unit, int item);
 void BattleGenerateHitHpCostForGaidenMagic(struct BattleUnit *attacker, struct BattleUnit *defender);
 int GetGaidenMagicAutoEquipSlot(struct Unit *unit);
+int GetGaidenMagicAutoEquipStaff(struct Unit *unit);
+
 int GetGaidenMagicItem(struct Unit *unit, int slot);
+void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut);
+void TryChangeGaidenMagicAction(void);
+
 u8 GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number);
 int GaidenBMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
 u8 GaidenBMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
 int GaidenBMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 int GaidenBMagActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+
+u8 GaidenWMagActionCommandUsability(const struct MenuItemDef *def, int number);
+int GaidenWMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
+u8 GaidenWMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int GaidenWMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);

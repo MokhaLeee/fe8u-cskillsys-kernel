@@ -50,7 +50,7 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.guaranteed_lvup = false,
 	.lvup_mode_tutorial = CONFIG_LVUP_MODE_TUTORIAL,
 	.lvup_mode_normal   = CONFIG_LVUP_MODE_NORMAL,
-	.lvup_mode_hard	 = CONFIG_LVUP_MODE_HARD,
+	.lvup_mode_hard	    = CONFIG_LVUP_MODE_HARD,
 
 	.unit_page_style = CONFIG_PAGE1_WITH_BWL,
 	.skil_page_style = CONFIG_PAGE4_MOKHA_PLAN_A,
@@ -60,5 +60,6 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.gaiden_magic_must_be_magic = CONFIG_GAIDEN_MAGIC_MUST_BE_MAGIC,
 	.gaiden_magic_requires_wrank = CONFIG_GAIDEN_MAGIC_REQUIRES_WRANK,
 	.gaiden_magic_ai_en = CONFIG_GAIDEN_MAGIC_AI_EN,
+	.gaiden_magic_ext_conf_en = CONFIG_GAIDEN_EXT_CONF_EN,
 #endif
 };

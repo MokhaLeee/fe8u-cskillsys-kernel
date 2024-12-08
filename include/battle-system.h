@@ -50,16 +50,25 @@ extern struct WeaponTriangleItemConf const *const gpWeaponTriangleItemConf;
 /* Battle hit expansion */
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
+extern u16 gAnimRoundDataRe[NEW_BATTLE_HIT_MAX];
+extern u16 gEfxHpLutRe[NEW_BATTLE_HIT_MAX * 3];
 
-#define CHAX_EFXHP_AMT 0x40
-extern u16 *prEfxHpLutRe; // aka: gEfxHpLut
+struct ExtBattleHit {
+	u8 hp_drain, hp_cost;
+	u8 _pad_[2];
+};
+extern struct ExtBattleHit gExtBattleHitArray[NEW_BATTLE_HIT_MAX];
+
+static inline int GetBattleHitRound(struct BattleHit *hit) { return hit - gBattleHitArrayRe; }
+static inline int GetCurrentBattleHitRound(void) { return GetBattleHitRound(gBattleHitIterator); }
+
+static inline struct ExtBattleHit *GetExtBattleHit(int round) { return &gExtBattleHitArray[round]; }
+static inline struct ExtBattleHit *GetCurrentExtBattleHit(void) { return GetExtBattleHit(GetCurrentBattleHitRound()); }
+static inline struct ExtBattleHit *GetExtBattleHitFromHit(struct BattleHit *hit) { return GetExtBattleHit(GetBattleHitRound(hit)); }
 
 bool CheckBattleHitOverflow(void);
 bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *target);
 int CalcBattleRealDamage(struct BattleUnit *attacker, struct BattleUnit *defender);
-
-static inline int GetBattleHitRound(struct BattleHit *hit) { return hit - gBattleHitArrayRe; }
-static inline int GetCurrentBattleHitRound(void) { return GetBattleHitRound(gBattleHitIterator); }
 
 extern struct BattleGlobalFlags {
 	u32 hitted : 1;
@@ -202,15 +211,13 @@ bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
 /**
  * Hp cost
  */
-struct BattleHpCost {
-	u8 cost;
-};
-extern struct BattleHpCost gBattleHpCostArray[NEW_BATTLE_HIT_MAX];
-
-void InitBattleHpCostData(void);
 void AddBattleHpCost(int round, int cost);
+
 void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender);
+bool MapAnimRoundAnim_DisplayHpCost(ProcPtr parent);
 void BanimC07_UpdateHpCost(struct Anim *anim);
+void NewEfxHpCost(struct Anim *anim);
+bool EfxHpCostExists(void);
 
 /**
  * Item slot
@@ -304,4 +311,4 @@ static inline bool CheckUnbreakableSpecialSlot(int slot)
 	}
 }
 
-int GetItemFormSlot(struct Unit *unit, int slot);
+int GetItemFromSlot(struct Unit *unit, int slot);

@@ -21,8 +21,12 @@ gHealAmountGetters:
 #include "PrepItem/PrepItemUseScreen.lyn.event"
 
 PUSH
-ORG $A190D4
-PROC_YEILD
+    ORG $A190D4
+    PROC_YEILD
+
+    ORG 0x02FC62
+    BL(AutoGetItemUseActionItem)
+    PROTECT 0x0002FC48 0x0002FFB4 // ActionStaffDoorChestUseItem
 POP
 
 // #include "data.event"
