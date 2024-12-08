@@ -114,6 +114,20 @@ int GetUnitStaffReachBits(struct Unit *unit)
 		if (ITEM_INDEX(item) != 0 && CanUnitUseStaff(unit, item))
 			mask |= GetItemReachBitsRework(item, unit);
 	}
+
+	if (gpKernelDesigerConfig->gaiden_magic_en) {
+		struct GaidenMagicList *list = GetGaidenMagicList(unit);
+
+		for (i = 0; i < GAIDEN_MAGIC_LIST_LEN; i++) {
+			item = list->wmags[i];
+
+			if (item == ITEM_NONE)
+				break;
+
+			if (CanUnitUseGaidenMagic(unit, item) && (GetItemType(item) == ITYPE_STAFF))
+				mask |= GetItemReachBitsRework(item, unit);
+		}
+	}
 	return mask;
 }
 
