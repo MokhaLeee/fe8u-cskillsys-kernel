@@ -521,3 +521,42 @@ void BattleUnitTargetCheckCanCounter(struct BattleUnit *bu)
 	bu->battleCritRate = 0xFF;
 	bu->battleEffectiveCritRate = 0xFF;
 }
+
+LYN_REPLACE_CHECK(BattleUnitTargetSetEquippedWeapon);
+void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
+{
+	int i, item;
+
+	if (bu->weaponBefore)
+		return;
+
+	bu->weaponBefore = GetUnitEquippedWeapon(&bu->unit);
+	if (bu->weaponBefore)
+		return;
+
+	if (!UnitHasMagicRank(&bu->unit))
+		return;
+
+	for (i = 0; i < UNIT_ITEM_COUNT; ++i) {
+		item = bu->unit.items[i];
+
+		if (item == 0)
+			break;
+
+		if (CanUnitUseStaff(&bu->unit, item)) {
+			bu->weaponBefore = item;
+			return;
+		}
+	}
+
+#if CHAX
+	if (gpKernelDesigerConfig->gaiden_magic_en) {
+		item = GetGaidenMagicAutoEquipStaff(&bu->unit);
+
+		if (item != ITEM_NONE) {
+			bu->weaponBefore = MakeNewItem(item);
+			return;
+		}
+	}
+#endif
+}

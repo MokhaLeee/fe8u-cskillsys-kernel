@@ -143,15 +143,55 @@ int GetGaidenMagicAutoEquipSlot(struct Unit *unit)
 	int i;
 	struct GaidenMagicList *list = GetGaidenMagicList(unit);
 
-	for (i = 0; i < list->bmag_cnt; i++)
-		if (CanUnitUseGaidenMagicNow(unit, list->bmags[i]))
-			return CHAX_BUISLOT_GAIDEN_BMAG1 + i;
+	for (i = 0; i < list->bmag_cnt; i++) {
+		int item = list->bmags[i];
 
-	for (i = 0; i < list->wmag_cnt; i++)
-		if (CanUnitUseGaidenMagicNow(unit, list->wmags[i]))
+		if (!(GetItemAttributes(item) & IA_WEAPON))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
+			return CHAX_BUISLOT_GAIDEN_BMAG1 + i;
+	}
+
+	for (i = 0; i < list->wmag_cnt; i++) {
+		int item = list->wmags[i];
+
+		if (!(GetItemAttributes(item) & IA_WEAPON))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
 			return CHAX_BUISLOT_GAIDEN_WMAG1 + i;
+	}
 
 	return -1;
+}
+
+int GetGaidenMagicAutoEquipStaff(struct Unit *unit)
+{
+	int i;
+	struct GaidenMagicList *list = GetGaidenMagicList(unit);
+
+	for (i = 0; i < list->wmag_cnt; i++) {
+		int item = list->wmags[i];
+
+		if (!(GetItemAttributes(item) & IA_STAFF))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
+			return item;
+	}
+
+	for (i = 0; i < list->bmag_cnt; i++) {
+		int item = list->bmags[i];
+
+		if (!(GetItemAttributes(item) & IA_STAFF))
+			continue;
+
+		if (CanUnitUseGaidenMagicNow(unit, item))
+			return item;
+	}
+
+	return ITEM_NONE;
 }
 
 int GetGaidenMagicItem(struct Unit *unit, int slot)

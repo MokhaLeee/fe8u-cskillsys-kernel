@@ -77,6 +77,8 @@ static inline bool CheckGaidenMagicAttack(struct BattleUnit *bu)
 int GetGaidenWeaponHpCost(struct Unit *unit, int item);
 void BattleGenerateHitHpCostForGaidenMagic(struct BattleUnit *attacker, struct BattleUnit *defender);
 int GetGaidenMagicAutoEquipSlot(struct Unit *unit);
+int GetGaidenMagicAutoEquipStaff(struct Unit *unit);
+
 int GetGaidenMagicItem(struct Unit *unit, int slot);
 void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut);
 void TryChangeGaidenMagicAction(void);
