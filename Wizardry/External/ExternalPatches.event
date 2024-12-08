@@ -14,10 +14,6 @@
     #include "StatScreenfx/StatScreenfx.event"
 #endif
 
-#ifdef CONFIG_INSTALL_CONVOYEXPA
-    #include "ConvoyExpa/ConvoyExpa.event"
-#endif
-
 #ifdef CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
     #include "AutoluOpt/AutoluOpt.event"
 #endif

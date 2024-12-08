@@ -56,6 +56,10 @@ ALIGN 4
 #include "Core/AiHack/AiHack.event"
 
 #include "Misc/SkillEffects/MiscSkillEffects.event"
-
 #include "Misc/GaidenMagic/GaidenMagic.event"
+
+#ifdef CONFIG_INSTALL_CONVOYEXPA
+    #include "Misc/ConvoyExpa/ConvoyExpa.event"
+#endif
+
 #include "External/ExternalPatches.event"
