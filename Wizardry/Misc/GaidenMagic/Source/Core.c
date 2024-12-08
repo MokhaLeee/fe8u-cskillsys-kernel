@@ -58,41 +58,46 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 		}
 	}
 
-	for (; conf2->iid != ITEM_NONE; conf2++) {
-		if (conf2->faction != UNIT_FACTION(unit))
-			continue;
+	if (gpKernelDesigerConfig->gaiden_magic_ext_conf_en) {
+		for (; conf2->iid != ITEM_NONE; conf2++) {
+			if (conf2->faction != UNIT_FACTION(unit))
+				continue;
 
-		if (conf2->pid != 0 && UNIT_CHAR_ID(unit) != conf2->pid)
-			continue;
+			if (conf2->pid != 0 && UNIT_CHAR_ID(unit) != conf2->pid)
+				continue;
 
-		if (conf2->jid != 0 && UNIT_CLASS_ID(unit) != conf2->jid)
-			continue;
+			if (conf2->jid != 0 && UNIT_CLASS_ID(unit) != conf2->jid)
+				continue;
 
-		if (unit->level < conf2->level)
-			continue;
+			if (unit->level < conf2->level)
+				continue;
 
-		if (COMMON_SKILL_VALID(conf2->skill) && !SkillTester(unit, conf2->skill))
-			continue;
+			if (COMMON_SKILL_VALID(conf2->skill) && !SkillTester(unit, conf2->skill))
+				continue;
 
-		if (conf2->evflag != 0 && !CheckFlag(conf2->evflag))
-			continue;
+			if (conf2->evflag != 0 && !CheckFlag(conf2->evflag))
+				continue;
 
-		tmpbuf[conf2->iid] = 1;
+			tmpbuf[conf2->iid] = 1;
+		}
 	}
 
 	ResetGaidenMagicList(list);
 
 	for (i = 0xFF; i > 0; i--) {
-		if (tmpbuf[i] == 0)
-			continue;
+		if (list->bmag_cnt >= GAIDEN_MAGIC_LIST_LEN)
+			break;
 
-		if (IsBMag(i))
-			if (list->bmag_cnt < GAIDEN_MAGIC_LIST_LEN)
-				list->bmags[list->bmag_cnt++] = i;
+		if (tmpbuf[i] && IsBMag(i))
+			list->bmags[list->bmag_cnt++] = i;
+	}
 
-		if (IsWMag(i))
-			if (list->wmag_cnt < GAIDEN_MAGIC_LIST_LEN)
-				list->wmags[list->wmag_cnt++] = i;
+	for (i = 0xFF; i > 0; i--) {
+		if (list->wmag_cnt >= GAIDEN_MAGIC_LIST_LEN)
+			break;
+
+		if (tmpbuf[i] && IsWMag(i))
+			list->wmags[list->wmag_cnt++] = i;
 	}
 
 	WriteUnitList(unit, &list->header);
