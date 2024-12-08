@@ -1,0 +1,140 @@
+#include "EAstdlib.event"
+#ifndef TextTable 
+	#define TextTable 0x15D48C 
+#endif 
+#ifndef setText 
+#define setText(textID, offset) "PUSH; ORG (TextTable+(4*textID)); POIN (offset|0x80000000); POP"
+#endif 
+
+#include "Extensions/Hack Installation.txt" 
+
+#include "ProcDefinitions.txt" 
+#ifndef callHackNew 
+	#define callHackNew(offset) 		"BYTE $01 $4B $9E $46 $00 $F8 $01 $E0; POIN (offset|0x1)"
+#endif 
+#include "Hooks.lyn.event" 
+#include "C_Code.lyn.event" 
+
+ALIGN 4 
+UnitOverrideReclassTable_Unpromoted: 
+FILL(7*256) 
+#define UnitReclassUnpromoted(unitID, n1, n2, n3, n4, n5, n6, n7) "PUSH; ORG UnitOverrideReclassTable_Unpromoted + (unitID * 7); BYTE n1 n2 n3 n4 n5 n6 n7; POP" 
+
+ALIGN 4 
+UnitOverrideReclassTable_Promoted: 
+FILL(7*256) 
+#define UnitReclassPromoted(unitID, n1, n2, n3, n4, n5, n6, n7) "PUSH; ORG UnitOverrideReclassTable_Promoted + (unitID * 7); BYTE n1 n2 n3 n4 n5 n6 n7; POP" 
+
+
+
+ALIGN 4 
+ReclassTable: 
+FILL(6*256)  
+
+
+#define Reclass(currentClass, n1) "PUSH; ORG ReclassTable + (currentClass * 6); BYTE n1 0 0 0 0 0; POP" 
+#define Reclass(currentClass, n1, n2) "PUSH; ORG ReclassTable + (currentClass * 6); BYTE n1 n2 0 0 0 0; POP" 
+#define Reclass(currentClass, n1, n2, n3) "PUSH; ORG ReclassTable + (currentClass * 6); BYTE n1 n2 n3 0 0 0; POP" 
+#define Reclass(currentClass, n1, n2, n3, n4) "PUSH; ORG ReclassTable + (currentClass * 6); BYTE n1 n2 n3 n4 0 0; POP" 
+#define Reclass(currentClass, n1, n2, n3, n4, n5) "PUSH; ORG ReclassTable + (currentClass * 6); BYTE n1 n2 n3 n4 n5 0; POP" 
+#define Reclass(currentClass, n1, n2, n3, n4, n5, n6) "PUSH; ORG ReclassTable + (currentClass * 6); BYTE n1 n2 n3 n4 n5 n6; POP" 
+
+
+
+#ifdef Take_Over_Juna_Fruit
+PUSH 
+ORG $29504 // CanUnitUseFruitItem
+replaceWithHack(CanUnitReclass)
+// 2905C sets action taken to 0x1A / UseItem 
+ORG $2F9E0 // ExecJunaFruitItem 
+replaceWithHack(StartBmReclass)
+ORG $A190F0 // ProcScr_PrepItemUseJunaFruit
+POIN PrepScreenReclassProc 
+POP 
+
+setText(0x402, ReclassItemName) // Originally "Juna Fruit"
+setText(0x4AA, ReclassItemDesc) // Originally "Give this to a worthy unit and see what happens."
+setText(0x4E3, ReclassItemUse) // Originally "Use this, and..." from Juna Fruit 
+
+ALIGN 4 
+ReclassItemName: 
+String("Heart Seal") ; BYTE 0 
+
+ALIGN 4 
+ReclassItemDesc: 
+String("Changes a unit's class based on"); BYTE 0x1 // NL 
+String("personality (level stays the same)."); BYTE 0x0
+
+ALIGN 4 
+ReclassItemUse: 
+String("Reclass this unit."); BYTE 0 
+///43 68 61 6E 67 65 73 20 61 20 75 6E 69 74 27 73 20 63 6C 61 73 73 20 62 61 73 65 64 20 6F 6E 20 70 65 72 73 6F 6E 61 6C 69 74 79 20 28 6C 65 76 65 6C 20 73 74 61 79 73 20 74 68 65 20 73 61 6D 65 29 2E 00 52 65 63 6C 61 73 73 20 74 68 69 73 20 75 6E 69 74 2E
+///43 68 61 6E 67 65 73 20 61 20 75 6E 69 74 27 73 20 63 6C 61 73 73 20 62 61 73 65 64 20 6F 6E 01 70 65 72 73 6F 6E 61 6C 69 74 79 20 28 6C 65 76 65 6C 20 73 74 61 79 73 20 74 68 65 20 73 61 6D 65 29 2E 00
+PUSH 
+ORG $599574 // vanilla juna fruit icon address 
+ALIGN 4 
+HeartSealGoldIcon:
+#incbin "HeartSealGold_Lord_Nutritious.dmp"
+POP 
+
+ALIGN 4 
+HeartSealSilverIcon:
+#incbin "HeartSealSilver_Lord_Nutritious.dmp"
+
+
+#endif 
+
+#define NewFadeOut 0x80ae2f4+1
+#define FadeOutExists 0x80ae2b8+1
+#define StartMidFadeToBlack 0x8013d68+1
+#define WaitForFade 0x8014068+1
+#define StartPrepScreenPromotion 0x80cc990+1
+#define PrepItemUse_ResetBgmAfterPromo 0x809cc9c+1
+#define PrepItemUse_PostPromotion 0x809cc60+1
+#define PrepItemUse_InitDisplay 0x809c4e4+1
+#define NewFadeIn 0x80ae2d0+1
+#define FadeInExists 0x80ae2a0+1
+#define MusicProc4Exists 0x8002a6c+1
+
+ALIGN 4 
+PrepScreenReclassProc: 
+PROC_CALL_ROUTINE_ARG(NewFadeOut, 0x10)
+PROC_WHILE_ROUTINE(FadeOutExists)
+PROC_CALL_ROUTINE(StartMidFadeToBlack)
+PROC_LOOP_ROUTINE(WaitForFade)
+PROC_CALL_ROUTINE(StartPrepScreenReclass)
+PROC_SLEEP(0x8)
+PROC_CALL_ROUTINE(PrepItemUse_ResetBgmAfterPromo)
+PROC_SLEEP(0x1E)
+PROC_CALL_ROUTINE(CallPrepItemUse_PostPromotion)
+
+PROC_CALL_ROUTINE(CallPrepItemUse_InitDisplay)
+PROC_CALL_ROUTINE_ARG(NewFadeIn, 0x10)
+PROC_WHILE_ROUTINE(FadeInExists)
+PROC_WHILE_ROUTINE(MusicProc4Exists)
+PROC_LABEL(7) // in case PrepItemUse_PostPromotion sends us here 
+PROC_END
+
+
+#ifdef VeslyBuildfile 
+PUSH; ORG MagClassTable; WORD 0; POP 
+#endif 
+
+ALIGN 4 
+#ifndef MagClassTable
+MagClassTable:
+#endif 
+WORD 0 
+
+ALIGN 4
+ExampleEvent:
+ASMC StartBmReclass
+NoFade 
+ENDA 
+
+#ifdef Take_Over_Item_Menu
+//#include "../ItemSpecialEffect/Installer.event" 
+#endif 
+
+
+

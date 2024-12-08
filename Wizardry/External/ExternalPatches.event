@@ -95,4 +95,9 @@
     #include "JesterHacks/ArmsScroll/Installer.event"
 #endif
 
+#ifdef CONFIG_VESLY_RECLASS
+    #include "VeslyReclass/Installer.event"
+#endif
+
+
 #include "FE8_Rewritten_Terper/Installer.event"

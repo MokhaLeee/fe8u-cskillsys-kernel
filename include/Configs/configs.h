@@ -267,7 +267,20 @@
 // By Tequila
 #define CONFIG_INSTANT_LEVEL_UP
 
+/* 
+** By Jester
+** Apparently this is a thing in the FE8J skill system
+** Having an S rank in a wepaon type will mean you can ignore weapon weight
+** when using weapons of that type
+*/
 #define CONFIG_S_RANK_NO_WEAPON_WEIGHT
+
+/*
+** By Vesly
+** Takes over the Juniper Fruit to introduced in Fire Emblem - Fates
+** that lets a unit change their class without resetting their level.
+*/
+#define CONFIG_VESLY_RECLASS
 
 /**
  * Levelup mode
