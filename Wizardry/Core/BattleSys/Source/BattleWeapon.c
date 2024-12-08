@@ -558,3 +558,21 @@ void BattleInitItemEffect(struct Unit *unit, int slot)
 
 	ClearBattleHits();
 }
+
+LYN_REPLACE_CHECK(BattleUnitTargetCheckCanCounter);
+void BattleUnitTargetCheckCanCounter(struct BattleUnit *bu)
+{
+	if (bu->canCounter)
+		return;
+
+#if CHAX
+	if (CheckUnbreakableSpecialSlot(bu->weaponSlotIndex))
+		return;
+#endif
+
+	bu->battleAttack = 0xFF;
+	bu->battleHitRate = 0xFF;
+	bu->battleEffectiveHitRate = 0xFF;
+	bu->battleCritRate = 0xFF;
+	bu->battleEffectiveCritRate = 0xFF;
+}
