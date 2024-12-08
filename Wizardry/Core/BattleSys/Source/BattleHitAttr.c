@@ -300,19 +300,23 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
 	if (CheckUnbreakableSpecialSlot(defender->weaponSlotIndex))
 		target_weapon_cost = 0;
 
-	while (target_weapon_cost > 0) {
-		u16 weapon = GetItemAfterUse(defender->weapon);
+	if (target_weapon_cost > 0) {
+		u16 weapon_pre = defender->weapon;
 
-		defender->weapon = weapon;
-		if (!weapon)
-			break;
+		while (target_weapon_cost > 0) {
+			u16 weapon = GetItemAfterUse(defender->weapon);
 
-		target_weapon_cost--;
-	}
+			defender->weapon = weapon;
+			if (!weapon)
+				break;
 
-	if (!defender->weapon) {
-		LTRACE("target weapon broken!");
-		defender->weaponBroke = TRUE;
+			target_weapon_cost--;
+		}
+
+		if (!defender->weapon && weapon_pre) {
+			LTRACE("target weapon broken!");
+			defender->weaponBroke = TRUE;
+		}
 	}
 
 	/**
@@ -351,7 +355,7 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
 #else
 		attacker->weapon = GetItemAfterUse(attacker->weapon);
 #endif
-		if (!attacker->weapon) {
+		if (!attacker->weapon && attacker->weaponBefore) {
 			LTRACE("attacker weapon broken!");
 			attacker->weaponBroke = TRUE;
 		}
