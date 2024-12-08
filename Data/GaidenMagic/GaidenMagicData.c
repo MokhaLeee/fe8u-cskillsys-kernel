@@ -8,6 +8,7 @@ const u8 gGaidenWeaponCostList[0x100] = {
 	[ITEM_DARK_FLUX] = 2,
 	[ITEM_DARK_NOSFERATU] = 2,
 	[ITEM_STAFF_HEAL] = 2,
+	[ITEM_STAFF_PHYSIC] = 5,
 	[ITEM_STAFF_SLEEP] = 5,
 };
 
@@ -21,8 +22,16 @@ struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {
 		{ 1, ITEM_STAFF_SLEEP },
 		{ 0 }
 	}},
+	[CHARACTER_SELENA] = { .ent = (const struct GaidenPinfoConfigEnt []) {
+		{ 1, ITEM_STAFF_PHYSIC },
+		{ 0 }
+	}},
 	[CHARACTER_NOVALA] = { .ent = (const struct GaidenPinfoConfigEnt []) {
 		{ 1, ITEM_DARK_FLUX },
+		{ 0 }
+	}},
+	[CHARACTER_RIEV] = { .ent = (const struct GaidenPinfoConfigEnt []) {
+		{ 1, ITEM_STAFF_SLEEP },
 		{ 0 }
 	}},
 };

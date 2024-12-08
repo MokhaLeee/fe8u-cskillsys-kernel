@@ -355,6 +355,44 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 		.ai = { NeverMoveAI },
 	},
 	{
+		.charIndex = CHARACTER_RIEV,
+		.classIndex = CLASS_BISHOP,
+		.autolevel = true,
+		.allegiance = FACTION_ID_RED,
+		.level = 10,
+		.xPosition = 12,
+		.yPosition = 21,
+		.redaCount = 1,
+		.redas = (const struct REDA []) {{
+			.x = 12,
+			.y = 23,
+			.b = -1,
+		}},
+		.items = {
+			ITEM_VULNERARY,
+		},
+		.ai = { DefaultAI },
+	},
+	{
+		.charIndex = CHARACTER_SELENA,
+		.classIndex = CLASS_MAGE_KNIGHT_F,
+		.autolevel = true,
+		.allegiance = FACTION_ID_RED,
+		.level = 10,
+		.xPosition = 12,
+		.yPosition = 21,
+		.redaCount = 1,
+		.redas = (const struct REDA []) {{
+			.x = 13,
+			.y = 18,
+			.b = -1,
+		}},
+		.items = {
+			ITEM_VULNERARY,
+		},
+		.ai = { AI_A_00, AI_B_03, (1 | 8), 0 },
+	},
+	{
 		.charIndex = CHARACTER_NOVALA,
 		.classIndex = CLASS_SHAMAN,
 		.autolevel = true,
@@ -363,11 +401,11 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 		.xPosition = 10,
 		.yPosition = 9,
 		.redaCount = 1,
-		.redas = &(const struct REDA) {
-			.x = 8,
-			.y = 8,
+		.redas = (const struct REDA []) {{
+			.x = 9,
+			.y = 7,
 			.b = -1,
-		},
+		}},
 		.ai = { 0, 4, 9, 0 }
 	},
 	{}
@@ -476,6 +514,9 @@ static const EventScr EventScr_Beginning[] = {
 
 	SVAL(EVT_SLOT_1, 10)
 	SET_HP(CHARACTER_TANA)
+
+	SVAL(EVT_SLOT_1, 40)
+	SET_HP(CHARACTER_VIGARDE)
 
 	NoFade
 	ENDA
