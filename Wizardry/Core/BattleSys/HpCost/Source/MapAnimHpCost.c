@@ -32,6 +32,10 @@ bool MapAnimRoundAnim_DisplayHpCost(ProcPtr parent)
 	if (cost <= 0)
 		return false;
 
+	/* NO info box */
+	if (GetSpellAssocReturnBool(gManimSt.actor[0].bu->weaponBefore) == false)
+		return false;
+
 	Proc_StartBlocking(ProcScr_MapAnimDisplayRoundWithHpCost, parent);
 	return true;
 }
