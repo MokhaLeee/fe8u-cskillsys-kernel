@@ -2,6 +2,7 @@
 #include "bwl.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "battle-system.h"
 
 #define LOCAL_TRACE 0
 
@@ -103,6 +104,18 @@ void UnitGainSupportExp(struct Unit * unit, int num)
     if (UNIT_SUPPORT_DATA(unit) && supp)
     {
         int gain = UNIT_SUPPORT_DATA(unit)->supportExpGrowth[num];
+#ifdef CONFIG_VESLY_SUPPORT_POST_BATTLE
+    if (gBattleActorGlobalFlag.enimy_defeated)
+        gain += 50;
+    else if (gActionData.unitActionType == UNIT_ACTION_COMBAT)
+        gain += 2;
+    else if (gActionData.unitActionType == UNIT_ACTION_DANCE)
+        gain += 2;
+    else if (gActionData.unitActionType == UNIT_ACTION_STAFF)
+        gain += 2;
+#else
+        gain = UNIT_SUPPORT_DATA(unit)->supportExpGrowth[num];
+#endif
         int currentExp = supp[num];
         int maxExp = sSupportMaxExpLookup[GetUnitSupportLevel(unit, num)];
 

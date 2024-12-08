@@ -226,13 +226,9 @@
 
 /**
  * By Vesly
- * 
- * Right now it's broken. I suspect there's a conflict between this hack and UnitGainSupportExp which
- * now sits in bwl data in BwlSupport.c. But I don't know what I'd need to change in PostBattleSupports.asm
- * as well as the Installer.event files to make it work. I suspect looking for the changed addresses for various
- * functions in fe8-kernel-dev.sym in the root directory could be fruitful, but I've not had much luck.
+ * Source: https://github.com/Veslyquix/ASM/tree/main/SupportPostBattle
  */
-#define CONFIG_SUPPORT_POST_BATTLE
+#define CONFIG_VESLY_SUPPORT_POST_BATTLE
 
 /**
  * By Contro
@@ -241,18 +237,6 @@
  * Source: https://feuniverse.us/t/contros-code-collection/13514/42
  */
 // #define CONFIG_FLIPPED_SPRITES
-
-
-/**
- * By Zane | GORGON-EGG
- * Allows users to modify the minimug box in the top left corner when hovering over a unit
- * Installed in: Wizardry/External/GorgonEgg/output/Installer.event
- * Source: https://feuniverse.us/t/gorgon-egg/25690
- * 
- * W-A-R-N-I-N-G - Worked the first time I compiled now it's broken as well and I don't have
- * the energy to fix it at the time of writing
- */
-// #define CONFIG_MODULAR_STAT_SCREEN_GORGON_EGG
 
 
 /**

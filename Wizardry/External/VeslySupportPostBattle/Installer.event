@@ -20,16 +20,22 @@ ORG $282CE // make AddSupportPoints return a value
 ORG $37750 
 callHackNew(HookForSupportFx)
 
-ORG $2829C 
-callHackNew(HookForSupportRate)
+
+/* This conflicts with UnitGainSupportExp as it is in C Skill System so we'll turn it off */
+// ORG $2829C 
+// callHackNew(HookForSupportRate)
 
 POP
 
+/* 
+** Outside of support distance link and player phase, these are just for show, they won't work here because 
+** of conflicts with UnitGainSupportExp. Navigate to BwlSupport.c and UnitGainSupportExp to edit these values 
+*/
 ALIGN 4 
 SupportDistanceLink:
 WORD 3 
 SupportRateKill:
-WORD 50 // Killing an enemy is worth 2x ended turns beside each other  
+WORD 50 
 SupportRateCombat:
 WORD 1 
 SupportRateStaff:

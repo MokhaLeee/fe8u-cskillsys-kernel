@@ -70,8 +70,8 @@
     #include "StatScreenAllegianceColors/Installer.event"
 #endif
 
-#ifdef CONFIG_SUPPORT_POST_BATTLE
-    #include "SupportPostBattle/Installer.event"
+#ifdef CONFIG_VESLY_SUPPORT_POST_BATTLE
+    #include "VeslySupportPostBattle/Installer.event"
 #endif
 
 /** 
