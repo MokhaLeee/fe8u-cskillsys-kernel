@@ -452,7 +452,7 @@ void AiStartCombatAction(struct CpPerformProc *proc)
 	case CHAX_BUISLOT_GAIDEN_WMAG6:
 	case CHAX_BUISLOT_GAIDEN_WMAG7:
 		gActionData.itemSlotIndex = gAiDecision.itemSlot;
-		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenBMag;
+		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat;
 		break;
 #endif
 	}

@@ -160,8 +160,8 @@
  */
 #define CONFIG_UNIT_ACTION_AMT 0x30
 #define CONFIG_UNIT_ACTION_EXPA_ExecSkill 0x23
-#define CONFIG_UNIT_ACTION_EXPA_GaidenBMag 0x24
-#define CONFIG_UNIT_ACTION_EXPA_GaidenWMag 0x25
+#define CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat 0x24
+#define CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff 0x25
 
 /**
  * Icon config

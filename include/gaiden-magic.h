@@ -79,6 +79,7 @@ void BattleGenerateHitHpCostForGaidenMagic(struct BattleUnit *attacker, struct B
 int GetGaidenMagicAutoEquipSlot(struct Unit *unit);
 int GetGaidenMagicItem(struct Unit *unit, int slot);
 void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut);
+void TryChangeGaidenMagicAction(void);
 
 u8 GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number);
 int GaidenBMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);

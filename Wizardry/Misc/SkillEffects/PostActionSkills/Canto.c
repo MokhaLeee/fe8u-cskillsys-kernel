@@ -34,8 +34,8 @@ STATIC_DECLAR bool CheckCanto(void)
 	case UNIT_ACTION_COMBAT:
 	case UNIT_ACTION_STAFF:
 	case CONFIG_UNIT_ACTION_EXPA_ExecSkill:
-	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
-	case CONFIG_UNIT_ACTION_EXPA_GaidenWMag:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff:
 		if (!cantop)
 			return false;
 

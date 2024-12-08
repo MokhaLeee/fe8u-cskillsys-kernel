@@ -115,11 +115,9 @@ struct GaidenMagicList *GetGaidenMagicList(struct Unit *unit)
 bool CanUnitUseGaidenMagic(struct Unit *unit, int item)
 {
 	if (gpKernelDesigerConfig->gaiden_magic_requires_wrank) {
-		u32 attr = GetItemAttributes(item);
-
-		if (attr & IA_WEAPON)
+		if (GetItemAttributes(item) & IA_WEAPON)
 			return CanUnitUseWeapon(unit, item);
-		else if (attr & IA_STAFF)
+		else if (GetItemType(item) == ITYPE_STAFF)
 			return CanUnitUseStaff(unit, item);
 
 		return false;
@@ -192,6 +190,40 @@ int GetGaidenMagicItem(struct Unit *unit, int slot)
 	}
 
 	return ITEM_NONE;
+}
+
+void TryChangeGaidenMagicAction(void)
+{
+	int item;
+	int slot = gActionData.itemSlotIndex;
+
+	switch (slot) {
+	case CHAX_BUISLOT_GAIDEN_BMAG1:
+	case CHAX_BUISLOT_GAIDEN_BMAG2:
+	case CHAX_BUISLOT_GAIDEN_BMAG3:
+	case CHAX_BUISLOT_GAIDEN_BMAG4:
+	case CHAX_BUISLOT_GAIDEN_BMAG5:
+	case CHAX_BUISLOT_GAIDEN_BMAG6:
+	case CHAX_BUISLOT_GAIDEN_BMAG7:
+	case CHAX_BUISLOT_GAIDEN_WMAG1:
+	case CHAX_BUISLOT_GAIDEN_WMAG2:
+	case CHAX_BUISLOT_GAIDEN_WMAG3:
+	case CHAX_BUISLOT_GAIDEN_WMAG4:
+	case CHAX_BUISLOT_GAIDEN_WMAG5:
+	case CHAX_BUISLOT_GAIDEN_WMAG6:
+	case CHAX_BUISLOT_GAIDEN_WMAG7:
+		break;
+
+	default:
+		return;
+	}
+
+	item = GetItemFormSlot(gActiveUnit, slot);
+
+	if (GetItemAttributes(item) & IA_WEAPON)
+		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat;
+	else if (GetItemType(item) == ITYPE_STAFF)
+		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff;
 }
 
 void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut)

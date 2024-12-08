@@ -82,7 +82,7 @@ bool PostActionPositionReturn(ProcPtr proc)
 
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
-	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
 		break;
 
 	default:

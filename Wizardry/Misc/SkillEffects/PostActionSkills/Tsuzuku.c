@@ -20,7 +20,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
-	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
 #if defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce))
 		if (SkillListTester(unit, SID_Galeforce) && gBattleActorGlobalFlag.skill_activated_galeforce)
 			goto L_exec_rafrain_action_anim;
@@ -36,7 +36,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 	/* fall through */
 
 	case UNIT_ACTION_STAFF:
-	case CONFIG_UNIT_ACTION_EXPA_GaidenWMag:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff:
 #if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
 		if (CheckSkillActivate(unit, SID_PowerStaff, GetUnitLuck(unit)))
 			goto L_exec_rafrain_action_anim;

@@ -7,6 +7,7 @@
 #include "Source/WMagMenu.lyn.event"
 #include "Source/BMagAction.lyn.event"
 
-InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenBMag, ActionGaidenBMagCombat)
+InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat, ActionGaidenMagicCombat)
+InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff,  ActionGaidenMagicStaff)
 
 #endif

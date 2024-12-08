@@ -211,9 +211,10 @@ bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
 /**
  * Hp cost
  */
-void InitBattleHpCostData(void);
 void AddBattleHpCost(int round, int cost);
+
 void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender);
+bool MapAnimRoundAnim_DisplayHpCost(ProcPtr parent);
 void BanimC07_UpdateHpCost(struct Anim *anim);
 void NewEfxHpCost(struct Anim *anim);
 bool EfxHpCostExists(void);

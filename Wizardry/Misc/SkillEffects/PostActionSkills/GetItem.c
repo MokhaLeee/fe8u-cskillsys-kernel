@@ -19,7 +19,7 @@ bool PostActionGetItem(ProcPtr parent)
 
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
-	case CONFIG_UNIT_ACTION_EXPA_GaidenBMag:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
 		if (gBattleActorGlobalFlag.enimy_defeated) {
 #if defined(SID_Despoil) && (COMMON_SKILL_VALID(SID_Despoil))
 			if (SkillListTester(unit, SID_Despoil)) {

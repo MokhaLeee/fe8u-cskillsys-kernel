@@ -299,7 +299,7 @@ STATIC_DECLAR u8 GaidenBMagAttackMapSelect_Select(ProcPtr proc, struct SelectTar
 	if (EventEngineExists() == 1)
 		return 0;
 
-	gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenBMag;
+	gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat;
 	gActionData.targetIndex = target->uid;
 
 	if (target->uid == 0) {

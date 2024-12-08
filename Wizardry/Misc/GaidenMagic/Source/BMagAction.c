@@ -97,7 +97,7 @@ void BattleGenerateGaidenBMagReal(struct Unit *actor, struct Unit *target)
 /**
  * Action
  */
-bool ActionGaidenBMagCombat(ProcPtr proc)
+bool ActionGaidenMagicCombat(ProcPtr proc)
 {
 	struct Unit *uactor  = GetUnit(gActionData.subjectIndex);
 	struct Unit *utarget = GetUnit(gActionData.targetIndex);
@@ -109,5 +109,11 @@ bool ActionGaidenBMagCombat(ProcPtr proc)
 
 	BattleGenerateGaidenBMagReal(uactor, utarget);
 	Proc_StartBlocking(sProcScr_CombatAction, proc);
+	return false;
+}
+
+bool ActionGaidenMagicStaff(ProcPtr proc)
+{
+	ActionStaffDoorChestUseItem(proc);
 	return false;
 }
