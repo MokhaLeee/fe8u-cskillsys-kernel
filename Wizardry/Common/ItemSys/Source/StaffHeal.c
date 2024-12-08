@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "status-getter.h"
 #include "skill-system.h"
+#include "battle-system.h"
 #include "item-sys.h"
 #include "constants/skills.h"
 
@@ -64,7 +65,7 @@ void ExecStandardHeal(ProcPtr proc)
 
 	amount = GetUnitItemHealAmount(
 		unit_act,
-		unit_act->items[gActionData.itemSlotIndex]
+		GetItemFormSlot(unit_act, gActionData.itemSlotIndex)
 	);
 
 #if CHAX
@@ -89,15 +90,14 @@ void ExecFortify(ProcPtr proc)
 	struct Unit *unit_act = GetUnit(gActionData.subjectIndex);
 	struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
 
-	BattleInitItemEffect(unit_act,
-		gActionData.itemSlotIndex);
+	BattleInitItemEffect(unit_act, gActionData.itemSlotIndex);
 
 	BattleInitItemEffectTarget(GetUnitFromCharId(GetPlayerLeaderUnitId()));
 	MakeTargetListForRangedHeal(unit_act);
 
 	amount = GetUnitItemHealAmount(
 		unit_act,
-		unit_act->items[gActionData.itemSlotIndex]
+		GetItemFormSlot(unit_act, gActionData.itemSlotIndex)
 	);
 
 	targetCount = GetSelectTargetCount();

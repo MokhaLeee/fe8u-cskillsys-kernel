@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "action-expa.h"
+#include "battle-system.h"
 
 LYN_REPLACE_CHECK(ApplyUnitAction);
 unsigned int ApplyUnitAction(ProcPtr proc)
@@ -31,7 +32,7 @@ bool _ActionWait(ProcPtr proc)
 bool _ActionCombat(ProcPtr proc)
 {
 	if (gActionData.unitActionType == UNIT_ACTION_COMBAT) {
-		int itemIdx = GetItemIndex(gActiveUnit->items[gActionData.itemSlotIndex]);
+		int itemIdx = GetItemIndex(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
 
 		if (itemIdx == ITEM_NIGHTMARE) {
 			ActionStaffDoorChestUseItem(proc);

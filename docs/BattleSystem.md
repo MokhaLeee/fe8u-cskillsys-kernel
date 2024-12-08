@@ -93,4 +93,12 @@ Taking gaiden/TH/engage style weapon system into consideration, the battle weapo
 - 23-35: (CHAX, preserved) ThreeHouses style magic
 - 36-42: (CHAX, preserved) Engage style weapon
 
+It should be noted that as for now the weapon slot index may cause overflow on `Unit::items`, it is **DANGROUS** to directly find the item by `unit->items[slot]`, as an alternative, kernel has offered the specific API to get weapon from slot:
+
+```c
+#include <battle-system.h>
+
+int GetItemFormSlot(struct Unit *unit, int slot);
+```
+
 # Battle weapon auto-equipment

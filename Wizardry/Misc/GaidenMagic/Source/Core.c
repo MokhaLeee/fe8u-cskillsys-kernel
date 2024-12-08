@@ -23,9 +23,7 @@ NOINLINE static bool IsBMag(int iid)
 
 NOINLINE static bool IsWMag(int iid)
 {
-	u32 attr = GetItemAttributes(iid);
-
-	if (attr & IA_STAFF)
+	if (GetItemType(iid) != ITYPE_STAFF)
 		return false;
 
 	return true;
@@ -194,4 +192,12 @@ int GetGaidenMagicItem(struct Unit *unit, int slot)
 	}
 
 	return ITEM_NONE;
+}
+
+void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut)
+{
+	Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
+	Text_DrawString(text, GetItemName(item));
+	PutText(text, mapOut + 2);
+	DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }

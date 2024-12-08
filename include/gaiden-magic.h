@@ -78,8 +78,15 @@ int GetGaidenWeaponHpCost(struct Unit *unit, int item);
 void BattleGenerateHitHpCostForGaidenMagic(struct BattleUnit *attacker, struct BattleUnit *defender);
 int GetGaidenMagicAutoEquipSlot(struct Unit *unit);
 int GetGaidenMagicItem(struct Unit *unit, int slot);
+void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut);
+
 u8 GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number);
 int GaidenBMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
 u8 GaidenBMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
 int GaidenBMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 int GaidenBMagActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+
+u8 GaidenWMagActionCommandUsability(const struct MenuItemDef *def, int number);
+int GaidenWMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
+u8 GaidenWMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int GaidenWMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);

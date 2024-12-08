@@ -45,6 +45,19 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		GaidenBMagActionCommandUnhover
 	},
 	{
+		"　白魔法",
+		MSG_GaidenWMagic_UM_NAME,
+		MSG_GaidenWMagic_UM_DESC,
+		TEXT_COLOR_SYSTEM_WHITE,
+		0x80,
+		GaidenWMagActionCommandUsability,
+		GaidenWMagActionCommandOnDarw,
+		GaidenWMagActionCommandEffect,
+		0,
+		GaidenWMagActionCommandHover,
+		HideMoveRangeGraphicsWrapper2
+	},
+	{
 		"　特技",
 		0x4EC,
 		0,

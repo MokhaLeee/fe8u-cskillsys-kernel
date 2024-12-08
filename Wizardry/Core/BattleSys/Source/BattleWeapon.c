@@ -517,3 +517,44 @@ int GetUnitWeaponUsabilityBits(struct Unit *unit)
 
 	return result;
 }
+
+LYN_REPLACE_CHECK(BattleInitItemEffect);
+void BattleInitItemEffect(struct Unit *unit, int slot)
+{
+	int item;
+
+#if CHAX
+	item = GetItemFormSlot(unit, slot);
+#else
+	item = unit->items[slot];
+
+	if (slot < 0)
+		item = 0;
+#endif
+
+	gBattleStats.config = 0;
+
+	InitBattleUnit(&gBattleActor, unit);
+
+	SetBattleUnitTerrainBonusesAuto(&gBattleActor);
+	ComputeBattleUnitBaseDefense(&gBattleActor);
+	ComputeBattleUnitSupportBonuses(&gBattleActor, NULL);
+
+	gBattleActor.battleAttack = 0xFF;
+	gBattleActor.battleEffectiveHitRate = 100;
+	gBattleActor.battleEffectiveCritRate = 0xFF;
+
+	gBattleActor.weapon = item;
+	gBattleActor.weaponBefore = item;
+	gBattleActor.weaponSlotIndex = slot;
+	gBattleActor.weaponType = GetItemType(item);
+	gBattleActor.weaponAttributes = GetItemAttributes(item);
+
+	gBattleActor.canCounter = TRUE;
+	gBattleActor.hasItemEffectTarget = FALSE;
+
+	gBattleActor.statusOut = -1;
+	gBattleTarget.statusOut = -1;
+
+	ClearBattleHits();
+}

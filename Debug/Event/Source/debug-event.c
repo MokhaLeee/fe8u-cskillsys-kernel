@@ -238,6 +238,24 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 			ITEM_VULNERARY
 		},
 	},
+	{
+		.charIndex = CHARACTER_NATASHA,
+		.classIndex = CLASS_CLERIC,
+		.autolevel = true,
+		.level = 1,
+		.xPosition = 12,
+		.yPosition = 29,
+		.redaCount = 1,
+		.redas = &(const struct REDA) {
+			.x = 15,
+			.y = 23,
+			.b = -1,
+			.delayFrames = 64,
+		},
+		.items = {
+			ITEM_VULNERARY
+		},
+	},
 	{}
 };
 
