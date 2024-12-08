@@ -311,4 +311,4 @@ static inline bool CheckUnbreakableSpecialSlot(int slot)
 	}
 }
 
-int GetItemFormSlot(struct Unit *unit, int slot);
+int GetItemFromSlot(struct Unit *unit, int slot);

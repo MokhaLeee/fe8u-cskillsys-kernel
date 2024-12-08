@@ -6,6 +6,7 @@
 static void MapAnimHitRound_StartCost(ProcPtr proc)
 {
 	gManimSt.hp_changing = true;
+	PlaySeSpacial(SONG_75, gManimSt.actor[gManimSt.subjectActorId].unit->xPos * 0x10 - gBmSt.camera.x);
 	RegisterMapHpChangeAnim(gManimSt.subjectActorId, GetExtBattleHitFromHit(gManimSt.pCurrentRound)->hp_cost);
 }
 

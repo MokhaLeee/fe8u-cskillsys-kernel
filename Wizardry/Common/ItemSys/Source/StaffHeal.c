@@ -65,7 +65,7 @@ void ExecStandardHeal(ProcPtr proc)
 
 	amount = GetUnitItemHealAmount(
 		unit_act,
-		GetItemFormSlot(unit_act, gActionData.itemSlotIndex)
+		GetItemFromSlot(unit_act, gActionData.itemSlotIndex)
 	);
 
 #if CHAX
@@ -97,7 +97,7 @@ void ExecFortify(ProcPtr proc)
 
 	amount = GetUnitItemHealAmount(
 		unit_act,
-		GetItemFormSlot(unit_act, gActionData.itemSlotIndex)
+		GetItemFromSlot(unit_act, gActionData.itemSlotIndex)
 	);
 
 	targetCount = GetSelectTargetCount();

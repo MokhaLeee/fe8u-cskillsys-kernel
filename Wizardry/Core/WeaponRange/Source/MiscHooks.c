@@ -65,7 +65,7 @@ int GetUnitWeaponReachBits(struct Unit *unit, int slot)
 		break;
 
 	default:
-		item = GetItemFormSlot(unit, slot);
+		item = GetItemFromSlot(unit, slot);
 		result = GetItemReachBitsRework(item, unit);
 		break;
 	}
@@ -91,7 +91,7 @@ int GetUnitItemUseReachBits(struct Unit *unit, int slot)
 		break;
 
 	default:
-		item = GetItemFormSlot(unit, slot);
+		item = GetItemFromSlot(unit, slot);
 		mask = REACH_NONE;
 		if (CanUnitUseItem(unit, item))
 			mask = GetItemReachBitsRework(item, unit);

@@ -5,7 +5,7 @@
 #include "Source/HpCost.lyn.event"
 #include "Source/BMagMenu.lyn.event"
 #include "Source/WMagMenu.lyn.event"
-#include "Source/BMagAction.lyn.event"
+#include "Source/MagAction.lyn.event"
 
 InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat, ActionGaidenMagicCombat)
 InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff,  ActionGaidenMagicStaff)

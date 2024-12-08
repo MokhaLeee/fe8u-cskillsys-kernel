@@ -132,6 +132,9 @@ bool CanUnitUseGaidenMagicNow(struct Unit *unit, int item)
 	if ((GetItemAttributes(item) & (IA_MAGIC | IA_STAFF)) && IsUnitMagicSealed(unit))
 		return false;
 
+	if (unit->curHP <= GetGaidenWeaponHpCost(unit, item))
+		return false;
+
 	return CanUnitUseGaidenMagic(unit, item);
 }
 
@@ -218,7 +221,7 @@ void TryChangeGaidenMagicAction(void)
 		return;
 	}
 
-	item = GetItemFormSlot(gActiveUnit, slot);
+	item = GetItemFromSlot(gActiveUnit, slot);
 
 	if (GetItemAttributes(item) & IA_WEAPON)
 		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat;

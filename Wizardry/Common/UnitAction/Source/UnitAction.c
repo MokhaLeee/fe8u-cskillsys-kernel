@@ -65,7 +65,7 @@ bool _ActionWait(ProcPtr proc)
 bool _ActionCombat(ProcPtr proc)
 {
 	if (gActionData.unitActionType == UNIT_ACTION_COMBAT) {
-		int itemIdx = GetItemIndex(GetItemFormSlot(gActiveUnit, gActionData.itemSlotIndex));
+		int itemIdx = GetItemIndex(GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex));
 
 		if (itemIdx == ITEM_NIGHTMARE) {
 			ActionStaffDoorChestUseItem(proc);

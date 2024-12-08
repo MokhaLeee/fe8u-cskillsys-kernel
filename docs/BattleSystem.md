@@ -98,7 +98,7 @@ It should be noted that as for now the weapon slot index may cause overflow on `
 ```c
 #include <battle-system.h>
 
-int GetItemFormSlot(struct Unit *unit, int slot);
+int GetItemFromSlot(struct Unit *unit, int slot);
 ```
 
 # Battle weapon auto-equipment

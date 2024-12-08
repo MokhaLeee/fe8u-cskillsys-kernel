@@ -13,7 +13,7 @@ void ExecDanceRing(ProcPtr proc)
 	BattleInitItemEffectTarget(GetUnit(gActionData.targetIndex));
 
 #if CHAX
-	switch (GetItemIndex(GetItemFormSlot(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex))) {
+	switch (GetItemIndex(GetItemFromSlot(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex))) {
 	case ITEM_FILLAS_MIGHT:
 		status = UNIT_STATUS_ATTACK;
 		break;

@@ -47,8 +47,8 @@ STATIC_DECLAR void EfxHpCost_Loop(struct ProcEfxHpCost *proc)
 	pos = GetAnimPosition(proc->anim);
 	gEkrGaugeHp[pos] = proc->hpcur;
 
-	EfxPlaySE(0x75, 0x100);
-	M4aPlayWithPostionCtrl(0x75, proc->anim->xPosition, 1);
+	EfxPlaySE(SONG_75, 0x100);
+	M4aPlayWithPostionCtrl(SONG_75, proc->anim->xPosition, 1);
 }
 
 STATIC_DECLAR void EfxHpCost_End(struct ProcEfxHpCost *proc)

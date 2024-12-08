@@ -7,6 +7,8 @@ const u8 gGaidenWeaponCostList[0x100] = {
 	[ITEM_ANIMA_THUNDER] = 2,
 	[ITEM_DARK_FLUX] = 2,
 	[ITEM_DARK_NOSFERATU] = 2,
+	[ITEM_STAFF_HEAL] = 2,
+	[ITEM_STAFF_SLEEP] = 5,
 };
 
 struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {

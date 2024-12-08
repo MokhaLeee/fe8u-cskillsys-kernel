@@ -67,7 +67,7 @@ void BattleApplyItemEffect(struct Proc *proc)
 int AutoGetItemUseActionItem(void)
 {
 	struct Unit *unit = GetUnit(gActionData.subjectIndex);
-	int item = GetItemFormSlot(unit, gActionData.itemSlotIndex);
+	int item = GetItemFromSlot(unit, gActionData.itemSlotIndex);
 
 	return GetItemIndex(item);
 }

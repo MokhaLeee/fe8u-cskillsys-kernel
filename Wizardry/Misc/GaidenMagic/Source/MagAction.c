@@ -8,12 +8,8 @@
  */
 STATIC_DECLAR void SetBattleActorWeaponGaidenBMag(struct BattleUnit *bu, int slot)
 {
-	struct GaidenMagicList *list = GetGaidenMagicList(gActiveUnit);
-
-	Assert((slot >= CHAX_BUISLOT_GAIDEN_BMAG1) && (slot <= CHAX_BUISLOT_GAIDEN_BMAG7));
-
 	bu->weaponSlotIndex = slot;
-	bu->weapon = MakeNewItem(list->bmags[slot - CHAX_BUISLOT_GAIDEN_BMAG1]);
+	bu->weapon = GetItemFromSlot(&bu->unit, slot);
 	bu->weaponBefore = bu->weapon;
 	bu->weaponAttributes = GetItemAttributes(bu->weapon);
 	bu->weaponType = GetItemType(bu->weapon);
@@ -114,6 +110,24 @@ bool ActionGaidenMagicCombat(ProcPtr proc)
 
 bool ActionGaidenMagicStaff(ProcPtr proc)
 {
+	int slot = gActionData.itemSlotIndex;
+	int item = GetItemFromSlot(gActiveUnit, slot);
+	int hp_cost = GetGaidenWeaponHpCost(gActiveUnit, item);
+
+	/* Main rountine */
 	ActionStaffDoorChestUseItem(proc);
+
+	/**
+	 * Directly give the hp-cost to the first round
+	 */
+	if (hp_cost >= gBattleActor.unit.curHP)
+		hp_cost = gBattleActor.unit.curHP - 1;
+
+	AddBattleHpCost(0, hp_cost);
+
+	/* reinit! */
+	ParseBattleHitToBanimCmd();
+
+	gBattleActor.unit.curHP -= hp_cost;
 	return false;
 }

@@ -10,7 +10,7 @@
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
-int GetItemFormSlot(struct Unit *unit, int slot)
+int GetItemFromSlot(struct Unit *unit, int slot)
 {
 	switch (slot) {
 	case 0:
@@ -103,7 +103,7 @@ int GetUnitEquippedWeaponSlot(struct Unit *unit)
 LYN_REPLACE_CHECK(GetUnitEquippedWeapon);
 u16 GetUnitEquippedWeapon(struct Unit *unit)
 {
-	return GetItemFormSlot(unit, GetUnitEquippedWeaponSlot(unit));
+	return GetItemFromSlot(unit, GetUnitEquippedWeaponSlot(unit));
 }
 
 STATIC_DECLAR void SetBattleUnitWeaponVanilla(struct BattleUnit *bu, int itemSlot)
@@ -524,7 +524,7 @@ void BattleInitItemEffect(struct Unit *unit, int slot)
 	int item;
 
 #if CHAX
-	item = GetItemFormSlot(unit, slot);
+	item = GetItemFromSlot(unit, slot);
 #else
 	item = unit->items[slot];
 
