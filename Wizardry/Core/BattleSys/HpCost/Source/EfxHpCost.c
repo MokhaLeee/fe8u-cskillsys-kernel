@@ -12,12 +12,6 @@ struct ProcEfxHpCost {
 	struct Anim *anim;
 };
 
-/**
- * Actually it is better to directly modify function: ParseBattleHitToBanimCmd() to inset hp changes.
- * But well I wanna not to touch that function as that function has been touched too much times in external patches.
- * Thus I directly use some side ways to directly hook at the end of C07!!!!
- */
-
 void BanimC07_UpdateHpCost(struct Anim *anim)
 {
 	int round;

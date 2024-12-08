@@ -39,7 +39,7 @@ void ResetGaidenMagicList(struct GaidenMagicList *list)
 void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 {
 	int i;
-	const struct GaidenPinfoConfigEnt *conf1 = gGaidenPinfoConfigList[UNIT_CHAR_ID(unit)];
+	const struct GaidenPinfoConfigEnt *conf1 = gpGaidenPinfoConfigList[UNIT_CHAR_ID(unit)].ent;
 	const struct GaidenChaxConfigEnt  *conf2 = gpGaidenChaxConfigs;
 
 	u8 *tmpbuf = gGenericBuffer;

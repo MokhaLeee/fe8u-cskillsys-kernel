@@ -5,12 +5,13 @@
 #include <list-verify.h>
 #include <battle-system.h>
 
-struct GaidenPinfoConfigEnt {
-	u8 level, iid;
-};
-extern struct GaidenPinfoConfigEnt const *const gGaidenPinfoConfigList[0x100];
+struct GaidenPinfoConfigEnt { u8 level, iid; };
+struct GaidenPinfoConfig { const struct GaidenPinfoConfigEnt *ent; };
 
-extern const u8 gGaidenWeaponCostList[0x100];
+// extern struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100];
+extern struct GaidenPinfoConfig const *const gpGaidenPinfoConfigList;
+
+// extern const u8 gGaidenWeaponCostList[0x100];
 extern u8 const *const gpGaidenWeaponCostList;
 
 struct GaidenChaxConfigEnt {
@@ -20,7 +21,8 @@ struct GaidenChaxConfigEnt {
 
 	u16 skill, evflag;
 };
-extern const struct GaidenChaxConfigEnt gGaidenChaxConfigs[];
+
+// extern const struct GaidenChaxConfigEnt gGaidenChaxConfigs[];
 extern struct GaidenChaxConfigEnt const *const gpGaidenChaxConfigs;
 
 #define GAIDEN_MAGIC_LIST_LEN 7

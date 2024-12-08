@@ -9,11 +9,11 @@ const u8 gGaidenWeaponCostList[0x100] = {
 	[ITEM_DARK_NOSFERATU] = 2,
 };
 
-struct GaidenPinfoConfigEnt const *const gGaidenPinfoConfigList[] = {
-	[CHARACTER_EIRIKA] = (const struct GaidenPinfoConfigEnt []) {
+struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {
+	[CHARACTER_EIRIKA] = { .ent = (const struct GaidenPinfoConfigEnt []) {
 		{ 1, ITEM_SWORD_KILLER },
 		{ 0 }
-	},
+	}},
 };
 
 const struct GaidenChaxConfigEnt gGaidenChaxConfigs[] = {
