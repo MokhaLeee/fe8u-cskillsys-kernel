@@ -1,7 +1,6 @@
 #ifndef BANIM_HACK_INSTALLED
 #define BANIM_HACK_INSTALLED
 
-#include "EfxMoji/EfxMoji.event"
 #include "AnimNumber/AnimNumber.event"
 #include "Source/C07.lyn.event"
 // #include "data.event"

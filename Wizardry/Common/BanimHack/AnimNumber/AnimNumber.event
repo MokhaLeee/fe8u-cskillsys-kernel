@@ -1,3 +1,12 @@
+#include "Source/LynJump.event"
 #include "Source/AnimNumber.lyn.event"
+#include "Source/EfxMoji.lyn.event"
+#include "Source/EfxHpBarLive.lyn.event"
+
+PUSH
+    ORG 0x052A40
+    POIN ProcScr_efxHPBarLiveRework
+    PROTECT 0x00052A0C 0x00052AE4 // NewEfxHpBarLive
+POP
 
 // #include "data.event"
