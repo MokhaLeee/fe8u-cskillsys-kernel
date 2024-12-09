@@ -7,16 +7,14 @@ enum chax_banim_video_alloc {
 	OBPAL_CHAX_ANIMNUM = 0xF,
 
 	// Img order
-	ANIMNUMBER_CHR_0 = 0,
-	ANIMNUMBER_CHR_PLUS  = 10 * 2,
-	ANIMNUMBER_CHR_MINUS = 11 * 2,
-	ANIMNUMBER_CHR_BLANK = 12 * 2,
-	ANIMNUMBER_CHR_MAX = 13 * 2,
+	IMG_ANIMNUMBER_LEN = 11,
+
+	ANIMNUMBER_CHR_BASE_G = 0,
+	ANIMNUMBER_CHR_BASE_R = 0 + 2 * 2 * IMG_ANIMNUMBER_LEN,
 };
 
 ProcPtr NewEfxAnimNumberExt(int number, int x, int y);
 ProcPtr NewEfxAnimNumber(struct Anim *anim, int number);
-void DisplayEfxAnimNumberForHpDrain(struct Anim *anim);
 
 extern const u8 Img_EfxAnimNumber[];
 extern const u16 Pal_EfxAnimNumber[];

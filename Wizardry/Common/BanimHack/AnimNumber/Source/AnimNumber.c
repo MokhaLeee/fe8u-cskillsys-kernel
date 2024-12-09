@@ -3,32 +3,44 @@
 #include <banim-hack.h>
 #include <battle-system.h>
 
-static void SetupEfxAnimNumberGfx(int number)
+extern u8 sAnimNumberSlot;
+
+NOINLINE void VramCopyAnimNumber(const void *src, void *dst)
 {
-	int i, abs_num = ABS(number);
-	void *dst;
-	const void *src;
-	int src_chr;
+	VramCopy(src,                                     dst,         CHR_SIZE * 2);
+	VramCopy(src + CHR_SIZE * IMG_ANIMNUMBER_LEN * 2, dst + 0x400, CHR_SIZE * 2);
+}
 
-	LIMIT_AREA(abs_num, 0, 99);
+void SetupEfxAnimNumberGfx(int number, int slot)
+{
+	int i, abs_num;
+	int base_chr;
 
-	CpuFastFill(0, OBJ_VRAM0 + OBCHR_CHAX_ANIMNUM * CHR_SIZE,         CHR_SIZE * 8);
-	CpuFastFill(0, OBJ_VRAM0 + OBCHR_CHAX_ANIMNUM * CHR_SIZE + 0x400, CHR_SIZE * 8);
+	void *vram_base = OBJ_VRAM0 + (OBCHR_CHAX_ANIMNUM + slot * 8) * CHR_SIZE;
+
+	CpuFastFill(0, vram_base,         CHR_SIZE * 8);
+	CpuFastFill(0, vram_base + 0x400, CHR_SIZE * 8);
+
+	if (number > 0) {
+		abs_num = number;
+		base_chr = ANIMNUMBER_CHR_BASE_G;
+	} else {
+		abs_num = -number;
+		base_chr = ANIMNUMBER_CHR_BASE_R;
+	}
+
+	LIMIT_AREA(abs_num, 0, 999);
 
 	/**
 	 * Number image
 	 */
-	for (i = 2; i > 0;) {
+	for (i = 3; i > 0;) {
 		int lo = simple_mod(abs_num, 10);
-		int src_chr = ANIMNUMBER_CHR_0 + lo * 2;
 
-		Printf("lo=%d, chr=0x%X", lo, src_chr);
-
-		src = Img_EfxAnimNumber + src_chr * CHR_SIZE;
-		dst = OBJ_VRAM0 + OBCHR_CHAX_ANIMNUM * CHR_SIZE + i * 2 * CHR_SIZE;
-
-		VramCopy(src, dst, CHR_SIZE * 2);
-		VramCopy(src + ANIMNUMBER_CHR_MAX * CHR_SIZE, dst + 0x400, CHR_SIZE * 2);
+		VramCopyAnimNumber(
+			Img_EfxAnimNumber + (base_chr + lo * 2) * CHR_SIZE,
+			vram_base + i * 2 * CHR_SIZE
+		);
 
 		abs_num = simple_div(abs_num, 10);
 
@@ -40,49 +52,47 @@ static void SetupEfxAnimNumberGfx(int number)
 	/**
 	 * Prefix image
 	 */
-	if (number > 0)
-		src_chr = ANIMNUMBER_CHR_PLUS;
-	else
-		src_chr = ANIMNUMBER_CHR_MINUS;
-
-	src = Img_EfxAnimNumber + src_chr * CHR_SIZE;
-	dst = OBJ_VRAM0 + OBCHR_CHAX_ANIMNUM * CHR_SIZE + i * 2 * CHR_SIZE;
-
-	VramCopy(src, dst, CHR_SIZE * 2);
-	VramCopy(src + ANIMNUMBER_CHR_MAX * CHR_SIZE, dst + 0x400, CHR_SIZE * 2);
+	VramCopyAnimNumber(
+		Img_EfxAnimNumber + (base_chr + 10 * 2) * CHR_SIZE,
+		vram_base + i * 2 * CHR_SIZE
+	);
 
 	/**
 	 * Pal
 	 */
-	if (number > 0)
-		ApplyPalette(Pal_EfxAnimNumber, 0x10 + OBPAL_CHAX_ANIMNUM);
-	else
-		ApplyPalette(Pal_EfxAnimNumber + 0x10, 0x10 + OBPAL_CHAX_ANIMNUM);
+	ApplyPalette(Pal_EfxAnimNumber, 0x10 + OBPAL_CHAX_ANIMNUM);
 }
 
 ProcPtr NewEfxAnimNumberExt(int x, int y, int number)
 {
-	SetupEfxAnimNumberGfx(number);
+	ProcPtr proc;
 
-	return NewEkrsubAnimeEmulator(
-		x, y,
+	sAnimNumberSlot += 1;
+	sAnimNumberSlot &= 1;
+
+	SetupEfxAnimNumberGfx(number, sAnimNumberSlot);
+
+	proc = NewEkrsubAnimeEmulator(
+		OAM1_X(x), OAM0_Y(y),
 		AnimScr_AnimNumber,
 		0,
-		OAM2_PAL(OBPAL_CHAX_ANIMNUM) + OAM2_LAYER(1) + OAM2_CHR(OBCHR_CHAX_ANIMNUM),
+		OAM2_PAL(OBPAL_CHAX_ANIMNUM) + OAM2_LAYER(1) + OAM2_CHR(OBCHR_CHAX_ANIMNUM + sAnimNumberSlot * 8),
 		0,
 		PROC_TREE_3
 	);
+
+	return proc;
 }
 
 ProcPtr NewEfxAnimNumber(struct Anim *anim, int number)
 {
-	return NewEfxAnimNumberExt(number, anim->xPosition - 0x28, anim->yPosition - 0x30);
-}
+	int y, x = OAM1_X(anim->xPosition);
 
-void DisplayEfxAnimNumberForHpDrain(struct Anim *anim)
-{
-	int round = anim->nextRoundId - 1;
-	struct BattleHit *hit = (prBattleHitArray + BattleHitArrayWidth * round);
+	x -= 0x34;
+	if (x < 0)
+		x = 0;
 
-	NewEfxAnimNumber(anim, hit->hpChange);
+	y = 0x25;
+
+	return NewEfxAnimNumberExt(x, y, number);
 }

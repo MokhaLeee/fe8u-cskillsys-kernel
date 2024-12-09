@@ -49,7 +49,7 @@ void EfxHpBarResire_WaitOnCurrentSide(struct ProcEfxHpBar *proc)
 		proc->timer2 = 0x54;
 #endif
 
-	if (proc->timer2 == 0x54 && proc->finished == true) {
+	if (proc->timer2 >= 0x54 && proc->finished == true) {
 		gEfxHpLutOff[GetAnimPosition(proc->anim_main_this)]++;
 		gEkrHitNow[GetAnimPosition(proc->anim_main_this)] = 0;
 
@@ -59,6 +59,12 @@ void EfxHpBarResire_WaitOnCurrentSide(struct ProcEfxHpBar *proc)
 		proc->timer = 0;
 		proc->cur = 10;
 		gEfxHpBarResireFlag = 1;
+
+#if CHAX
+		NewEfxAnimNumber(
+			proc->anim_main_other,
+			GetExtBattleHit(proc->anim_main_other->nextRoundId - 1)->hp_drain);
+#endif
 
 		Proc_Break(proc);
 		return;
