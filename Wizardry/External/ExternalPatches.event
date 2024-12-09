@@ -34,10 +34,6 @@
     #include "PopupMenuWidths/Installer.event"
 #endif
 
-#ifdef CONFIG_EXTEND_R_TEXT_DESC
-    #include "ItemDesc/Installer.event"
-#endif
-
 #ifdef CONFIG_TEXT_ENGINE_REWORK
     #include "TextEngineRework/Installer.event"
 #endif
@@ -99,5 +95,8 @@
     #include "VeslyReclass/Installer.event"
 #endif
 
+// #ifdef CONFIG_EXTENDED_HELPBOXES
+//     #include "VeslyExtendedItemDescription/Installer.event"
+// #endif
 
 #include "FE8_Rewritten_Terper/Installer.event"

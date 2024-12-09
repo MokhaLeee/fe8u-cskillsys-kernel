@@ -854,3 +854,5 @@ void sub_809FB70(struct PrepItemListProc * proc);
 void PrepItemList_Loop_UnitInvKeyHandler(struct PrepItemListProc * proc);
 void PrepItemList_StartTradeScreen(struct PrepItemListProc * proc);
 void StartPrepItemListScreenProc(struct Unit * unit, ProcPtr parent);
+
+extern u16 Pal_SpinningArrow[]; // pal

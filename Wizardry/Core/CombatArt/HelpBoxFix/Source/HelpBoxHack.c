@@ -261,8 +261,6 @@ void StartHelpBoxExt(const struct HelpBoxInfo * info, int unk)
     GetStringTextBox(GetStringFromIndex(proc->mid), &wContent, &hContent);
     SetTextFontGlyphs(0);
 
-    NoCashGBAPrintf("Height of textbox right now is: %d", hContent);
-
     ApplyHelpBoxContentSize(proc, wContent, hContent);
     ApplyHelpBoxPosition(proc, info->xDisplay, info->yDisplay);
 
@@ -270,4 +268,167 @@ void StartHelpBoxExt(const struct HelpBoxInfo * info, int unk)
     StartHelpBoxTextInit(proc->item, proc->mid);
 
     sLastHbi = info;
+}
+
+LYN_REPLACE_CHECK(DisplayHelpBoxObj);
+//! FE8U = 0x08089980
+void DisplayHelpBoxObj(int x, int y, int w, int h, int unk) {
+    s8 flag;
+    s8 flag_;
+    s8 anotherFlag;
+
+    int xCount;
+    int yCount;
+
+    int xPx;
+    int yPx;
+    int iy;
+    int ix;
+
+    flag = (w + 7) & 0x10;
+    anotherFlag = w & 0xf;
+
+    if (w < 0x20) {
+        w = 0x20;
+    }
+
+    if (w > 0xC0) {
+        w = 0xc0;
+    }
+
+    if (h < 0x10) {
+        h = 0x10;
+    }
+
+#ifdef CONFIG_EXTENDED_HELPBOXES
+    /* Now we limit it to 5 lines (0x10 * 5) */
+    if (h > 0x50) {
+        h = 0x50;
+    }
+#else
+    /* Vanilla behaviour to limit the help text box to three lines (0x10 * 3) */
+    if (h > 0x30) {
+        h = 0x30;
+    }
+#endif
+
+    xCount = (w + 0x1f) / 0x20;
+    yCount = (h + 0x0f) / 0x10;
+
+    flag_ = flag;
+
+    for (ix = xCount - 1; ix >= 0; ix--) {
+        for (iy = yCount; iy >= 0; iy--) {
+
+            yPx = (iy + 1) * 0x10;
+            if (yPx > h) {
+                yPx = h;
+            }
+            yPx -= 0x10;
+
+            xPx = (ix + 1) * 0x20;
+
+            if (flag_ != 0) {
+                xPx -= 0x20;
+                PutSprite(0,
+                x + xPx,
+                y + yPx,
+                gObject_16x16,
+                gHelpBoxSt.oam2_base + ix * 4 + iy * 0x40);
+            } else {
+
+                if (xPx > w)
+                    xPx = w;
+
+                xPx -= 0x20;
+                PutSprite(
+                    0,
+                    x + xPx,
+                    y + yPx,
+                    gObject_32x16,
+                    gHelpBoxSt.oam2_base + ix * 4 + iy * 0x40);
+            }
+        }
+
+        flag_ = 0;
+    }
+
+    flag_ = flag;
+
+    for (ix = xCount - 1; ix >= 0; ix--) {
+        xPx = (ix + 1) * 0x20;
+
+        if (flag_ != 0) {
+            xPx -= 0x20;
+
+            PutSprite(0, x + xPx, y - 8, gObject_16x8, gHelpBoxSt.oam2_base + 0x1b);
+            PutSprite(0, x + xPx, y + h, gObject_16x8, gHelpBoxSt.oam2_base + 0x3b);
+
+            flag_ = 0;
+        } else {
+            if (xPx > w) {
+                xPx = w;
+            }
+            xPx -= 0x20;
+
+            PutSprite(0, x + xPx, y - 8, gObject_32x8, gHelpBoxSt.oam2_base + 0x1b);
+            PutSprite(0, x + xPx, y + h, gObject_32x8, gHelpBoxSt.oam2_base + 0x3b);
+
+        }
+
+    }
+
+    for (iy = yCount; iy >= 0; iy--) {
+        yPx = (iy + 1) * 0x10;
+        if (yPx > h) {
+            yPx = h;
+        }
+        yPx -= 0x10;
+
+        PutSprite(0, x - 8, y + yPx, gObject_8x16, gHelpBoxSt.oam2_base + 0x5f);
+        PutSprite(0, x + w, y + yPx, gObject_8x16, gHelpBoxSt.oam2_base + 0x1f);
+
+        if (anotherFlag != 0) {
+            PutSprite(0, x + w - 8, y + yPx, gObject_8x16, gHelpBoxSt.oam2_base + 0x1a);
+        }
+    }
+
+    PutSprite(0, x - 8, y - 8, gObject_8x8, gHelpBoxSt.oam2_base + 0x5b); // top left
+    PutSprite(0, x + w, y - 8, gObject_8x8, gHelpBoxSt.oam2_base + 0x5c); // top right
+    PutSprite(0, x - 8, y + h, gObject_8x8, gHelpBoxSt.oam2_base + 0x5d); // bottom left
+    PutSprite(0, x + w, y + h, gObject_8x8, gHelpBoxSt.oam2_base + 0x5e); // bottom right
+
+    if (anotherFlag != 0) {
+        PutSprite(0, x + w - 8, y - 8, gObject_8x8, gHelpBoxSt.oam2_base + 0x1b);
+        PutSprite(0, x + w - 8, y + h, gObject_8x8, gHelpBoxSt.oam2_base + 0x3b);
+    }
+
+    if (unk == 0) {
+        PutSprite(0, x, y - 0xb, gObject_32x16, (0x3FF & gHelpBoxSt.oam2_base) + 0x7b);
+    }
+
+    return;
+}
+
+//! FE8U = 0x0808A118
+LYN_REPLACE_CHECK(ClearHelpBoxText);
+void ClearHelpBoxText(void) {
+
+    SetTextFont(&gHelpBoxSt.font);
+
+    SpriteText_DrawBackground(&gHelpBoxSt.text[0]);
+    SpriteText_DrawBackground(&gHelpBoxSt.text[1]);
+    SpriteText_DrawBackground(&gHelpBoxSt.text[2]);
+
+#ifdef CONFIG_EXTENDED_HELPBOXES
+    SpriteText_DrawBackground(&gHelpBoxSt.text[3]);
+    SpriteText_DrawBackground(&gHelpBoxSt.text[4]);
+#endif
+
+    Proc_EndEach(gProcScr_HelpBoxTextScroll);
+    Proc_EndEach(ProcScr_HelpBoxIntro);
+
+    SetTextFont(0);
+
+    return;
 }

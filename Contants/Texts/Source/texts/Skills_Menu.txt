@@ -22,7 +22,9 @@ monter on assistance[X]
 ## MSG_SKILL_Supply
 Supply:[NL]
 Unit can use[NL]
-"Supply" command.[X]
+"Supply" command.[NL]
+4th line.[NL]
+5th line.[X]
 
 ## MSG_SKILL_Steal
 Steal:[NL]
