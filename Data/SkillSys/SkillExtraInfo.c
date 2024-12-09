@@ -1110,4 +1110,12 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
 	[SID_WeaponHeal] = {{ 50 }},
 #endif
+
+#if (defined(SID_BloodSurge) && COMMON_SKILL_VALID(SID_BloodSurge))
+	[SID_BloodSurge] = {{ 5, 20 }},
+#endif
+
+#if (defined(SID_BloodReaver) && COMMON_SKILL_VALID(SID_BloodReaver))
+	[SID_BloodReaver] = {{ 5, 20 }},
+#endif
 };

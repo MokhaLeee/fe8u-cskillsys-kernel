@@ -484,6 +484,10 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_AddSkill(SID_ChillPow, CHARACTER_TANA)
 #endif
 
+#if defined(SID_BloodSurge) && (COMMON_SKILL_VALID(SID_BloodSurge))
+	Evt_AddSkill(SID_BloodSurge, CHARACTER_TANA)
+#endif
+
 #if defined(SID_ChillSpd) && (COMMON_SKILL_VALID(SID_ChillSpd))
 	Evt_AddSkill(SID_ChillSpd, CHARACTER_VANESSA)
 #endif

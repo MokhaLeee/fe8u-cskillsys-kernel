@@ -144,6 +144,7 @@ SID_LimitBreak
 SID_ImmovableObject
 SID_UnstoppableForce
 SID_WeaponHeal
+SID_BloodReaver
 
 // Shop skills
 SID_Deal

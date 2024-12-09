@@ -219,6 +219,36 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	}
 #endif
 
+#if (defined(SID_BloodSurge) && COMMON_SKILL_VALID(SID_BloodSurge))
+	if (BattleFastSkillTester(attacker, SID_BloodSurge)) {
+		int hp_cost = SKILL_EFF0(SID_BloodSurge);
+
+		if (TryBattleHpCost(attacker, hp_cost)) {
+			int perc = SKILL_EFF1(SID_BloodSurge);
+
+			AddBattleHpCost(attacker, GetBattleHitRound(gBattleHitIterator), hp_cost);
+			gDmg.correction += Div(attacker->unit.maxHP * perc, 100);
+
+			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_BloodSurge);
+		}
+	}
+#endif
+
+#if (defined(SID_BloodReaver) && COMMON_SKILL_VALID(SID_BloodReaver))
+	if (BattleFastSkillTester(attacker, SID_BloodReaver)) {
+		int hp_cost = SKILL_EFF0(SID_BloodReaver);
+
+		if (TryBattleHpCost(attacker, hp_cost)) {
+			int perc = SKILL_EFF1(SID_BloodReaver);
+
+			AddBattleHpCost(attacker, GetBattleHitRound(gBattleHitIterator), hp_cost);
+			gDmg.correction += Div(defender->unit.maxHP * perc, 100);
+
+			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_BloodReaver);
+		}
+	}
+#endif
+
 #if defined(SID_Glacies) && (COMMON_SKILL_VALID(SID_Glacies))
 	if (CheckBattleSkillActivate(attacker, defender, SID_Glacies, attacker->unit.skl)) {
 		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Glacies);

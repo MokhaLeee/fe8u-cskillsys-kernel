@@ -117,6 +117,7 @@ SID_Spurn
 SID_Counter
 SID_CounterMagic
 SID_BonusDoubler
+SID_BloodSurge
 
 // Weapon triangle
 SID_SwordBreaker
