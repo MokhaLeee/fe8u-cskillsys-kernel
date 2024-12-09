@@ -1,7 +1,6 @@
 #include "common-chax.h"
-
-extern void * const prBattleHitArray;
-extern u8 BattleHitArrayWidth;
+#include "battle-system.h"
+#include "banim-hack.h"
 
 LYN_REPLACE_CHECK(StartBattleAnimHitEffectsDefault);
 void StartBattleAnimHitEffectsDefault(struct Anim *anim, int type)
