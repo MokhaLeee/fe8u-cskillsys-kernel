@@ -2,6 +2,7 @@
 #include <battle-system.h>
 #include <skill-system.h>
 #include <kernel-lib.h>
+#include <bwl.h>
 #include <list-verify.h>
 #include <gaiden-magic.h>
 
@@ -37,6 +38,7 @@ void ResetGaidenMagicList(struct GaidenMagicList *list)
 void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 {
 	int i;
+	int level = unit->level;
 	const struct GaidenPinfoConfigEnt *conf1 = gpGaidenPinfoConfigList[UNIT_CHAR_ID(unit)].ent;
 	const struct GaidenChaxConfigEnt  *conf2 = gpGaidenChaxConfigs;
 

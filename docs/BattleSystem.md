@@ -97,7 +97,7 @@ The hp-cost process is registered to pre-round hook `gPreMapAnimBattleRoundHooks
 
 The hp-cost will allocate separate slot in `EfxHpLut` for each round if an HP cost exists via `ParseBattleHitToBanimCmd`. Then display the hp-cost anim and advance the hp-lut offset `gEfxHpLutOff` when anim command `C07` is executed.
 
-# Battle unit slot expansion
+# Weapon slot expansion
 
 Taking gaiden/TH/engage style weapon system into consideration, the battle weapon slot is expanded:
 
