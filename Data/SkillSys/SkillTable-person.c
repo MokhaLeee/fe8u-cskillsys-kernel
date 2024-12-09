@@ -23,6 +23,12 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 #endif
 	},
 
+	[CHARACTER_NATASHA] = {
+#if (defined(SID_Latona) && COMMON_SKILL_VALID(SID_Latona))
+		SID_Latona,
+#endif
+	},
+
 	[CHARACTER_SALEH] = {
 #if (defined(SID_Thunderstorm) && COMMON_SKILL_VALID(SID_Thunderstorm))
 		SID_Thunderstorm,

@@ -60,3 +60,7 @@ Unit grants leadership +2[X]
 WeaponHeal:[NL]
 50% chance to restore 1 durability to[NL]
 ally's equipped weapon after healing.[X]
+
+## MSG_SKILL_Latona
+Latona:[NL]
+Unit can use holly W.Mag: Latona.[X]

@@ -3804,4 +3804,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_Latona) && COMMON_SKILL_VALID(SID_Latona))
+	[SID_Latona] = {
+		.desc = MSG_SKILL_Latona,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };
