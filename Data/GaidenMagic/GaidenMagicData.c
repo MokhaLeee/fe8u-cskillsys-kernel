@@ -1,5 +1,6 @@
 #include <common-chax.h>
 #include <gaiden-magic.h>
+#include <skill-system.h>
 #include <constants/skills.h>
 
 const u8 gGaidenWeaponCostList[0x100] = {
