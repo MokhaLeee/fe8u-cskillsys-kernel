@@ -211,7 +211,8 @@ bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
 /**
  * Hp cost
  */
-void AddBattleHpCost(int round, int cost);
+bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);
+bool AddBattleHpCost(struct BattleUnit *bu, int round, int cost);
 
 void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool MapAnimRoundAnim_DisplayHpCost(ProcPtr parent);
