@@ -125,7 +125,7 @@ void ParseBattleHitToBanimCmd(void)
 	for (i = 0; i < NEW_BATTLE_HIT_MAX; i++) {
 		int attacker_pos, defender_pos;
 		struct BattleUnit *actor;
-		struct BattleHit *hit = gBattleHitArrayRe + i;
+		struct BattleHit *hit = prBattleHitArray + i * BattleHitArrayWidth;
 		struct ExtBattleHit *exthit = gExtBattleHitArray + i;
 		u16 *anim_round = gAnimRoundDataRe + i * 2;
 

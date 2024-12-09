@@ -1,0 +1,11 @@
+/**
+ * In vanilla, EfxMoji is used to display MISS or NODMAGE,
+ * which is only called on EfxAvoid and EfxNoDmage
+ *
+ * Idea:
+ * 1. Always put EfxMoji.
+ * 2. Make EfxMoji display more message.
+ */
+
+#include "Source/LynJump.event"
+#include "Source/EfxMoji.lyn.event"

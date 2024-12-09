@@ -64,6 +64,7 @@ _kernel_malloc sExpaConvoyItemCount, 4
 _kernel_malloc sExpaConvoyItemArray, 2 * 300
 _kernel_malloc sGaidenMagicListObj, 0x24
 _kernel_malloc gExtBattleHitArray, 4 * 0x21
+_kernel_malloc sAnimNumberSlot, 4
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

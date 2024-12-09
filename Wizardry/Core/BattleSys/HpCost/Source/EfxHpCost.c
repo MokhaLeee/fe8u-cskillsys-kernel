@@ -1,6 +1,7 @@
 #include <common-chax.h>
 #include <kernel-lib.h>
 #include <battle-system.h>
+#include <banim-hack.h>
 
 #define LOCAL_TRACE 0
 
@@ -25,6 +26,13 @@ void BanimC07_UpdateHpCost(struct Anim *anim)
 
 	if (GetExtBattleHit(round)->hp_cost > 0)
 		NewEfxHpCost(anim);
+}
+
+STATIC_DECLAR void EfxHpCost_Start(struct ProcEfxHpCost *proc)
+{
+	NewEfxAnimNumber(
+		proc->anim,
+		-GetExtBattleHit(proc->anim->nextRoundId - 1)->hp_cost);
 }
 
 STATIC_DECLAR void EfxHpCost_Loop(struct ProcEfxHpCost *proc)
@@ -58,6 +66,7 @@ STATIC_DECLAR void EfxHpCost_End(struct ProcEfxHpCost *proc)
 
 STATIC_DECLAR const struct ProcCmd ProcScr_EfxHpCost[] = {
 	PROC_YIELD,
+	PROC_CALL(EfxHpCost_Start),
 	PROC_REPEAT(EfxHpCost_Loop),
 	PROC_CALL(EfxHpCost_End),
 	PROC_END
