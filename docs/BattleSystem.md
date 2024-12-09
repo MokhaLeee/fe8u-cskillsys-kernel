@@ -78,7 +78,24 @@ The related round anim effect functions are also directly rewriten:
 
 # Hp cost
 
+The **HP cost** is a new combat mechanic introduced in the c-Skillsys, inspired by the *Gaiden magic system*. The related code is mainly stored in [HpCost](Wizardry/Core/BattleSys/HpCost) and [RoundAnim](Wizardry/Core/BattleSys/RoundAnim) directory.
 
+It is important to note the HP cost is designed **COMPLETE DIFFERENT** from regular battle damage. It is initiated proactively by the attacker before each battle round. The HP cost is non-lethal and can only be triggered when the user's HP is above a predefined threshold. The kernel stores this value in `ExtBattleHit::hp_cost` to preserve the value for each round. In principle, developers are not encouraged to directly modify this value in ext-hit. Instead, the kernel provides dedicated APIs for developers to register the HP cost:
+
+```c
+bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);
+bool AddBattleHpCost(struct BattleUnit *bu, int round, int cost);
+```
+
+The anim effect on hp cost is also seperated designed:
+
+- MapAnim
+
+The hp-cost process is registered to pre-round hook `gPreMapAnimBattleRoundHooks`, which will insert the anim of the attacer's HP reduction after skill icon displaying and before round based attack anim starting.
+
+- Banim
+
+The hp-cost will allocate separate slot in `EfxHpLut` for each round if an HP cost exists via `ParseBattleHitToBanimCmd`. Then display the hp-cost anim and advance the hp-lut offset `gEfxHpLutOff` when anim command `C07` is executed.
 
 # Battle unit slot expansion
 
