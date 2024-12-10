@@ -270,6 +270,21 @@ void TryChangeGaidenMagicAction(void)
 		gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff;
 }
 
+void PutGaidenMagicCostNumber(u16 *tm, int color, int number)
+{
+	if (number <= 0 || number == 0xFF)
+		return;
+
+	while (number != 0) {
+		PutSpecialChar(tm, color, simple_mod(number, 10) + TEXT_SPECIAL_BIGNUM_0);
+
+		number = simple_div(number, 10);
+		tm--;
+	}
+
+	PutSpecialChar(tm, color, TEXT_SPECIAL_DASH);
+}
+
 void DrawGaidenMagItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut)
 {
 	Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
