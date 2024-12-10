@@ -87,22 +87,22 @@ AnimSprite_AnimNumber15:
 
 	.global AnimScr_AnimNumber
 AnimScr_AnimNumber:
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber1, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber2, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber3, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber4, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber5, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber6, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber7, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber8, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber9, 2
-	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber10, 2
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber1, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber2, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber3, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber4, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber5, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber6, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber7, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber8, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber9, 1
+	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber10, 1
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber11, 2
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber12, 2
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber13, 2
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber14, 2
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber15, 2
-	ANIMSCR_WAIT 0x14
+	ANIMSCR_WAIT 0x20
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber15, 1
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber14, 1
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber13, 1
