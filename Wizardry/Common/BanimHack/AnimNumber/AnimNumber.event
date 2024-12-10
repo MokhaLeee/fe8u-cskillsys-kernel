@@ -5,6 +5,9 @@
 #include "Source/EfxHpBarResire.lyn.event"
 
 PUSH
+    ORG 0x051134
+    gpPAL_EfxMoji:
+
     ORG 0x052A40
     POIN ProcScr_efxHPBarLiveRework
     PROTECT 0x00052A0C 0x00052AE4 // NewEfxHpBarLive

@@ -1,4 +1,5 @@
 	.section .rodata
+	.include "macros.inc"
 	.include "animscr.inc"
 	.include "gba_sprites.inc"
 
@@ -102,7 +103,7 @@ AnimScr_AnimNumber:
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber13, 2
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber14, 2
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber15, 2
-	ANIMSCR_WAIT 0x20
+	ANIMSCR_WAIT 0x1A
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber15, 1
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber14, 1
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber13, 1
@@ -118,4 +119,4 @@ AnimScr_AnimNumber:
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber3, 1
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber2, 1
 	ANIMSCR_FORCE_SPRITE AnimSprite_AnimNumber1, 1
-	ANIMSCR_BLOCKED
+	ANIMSCR_END
