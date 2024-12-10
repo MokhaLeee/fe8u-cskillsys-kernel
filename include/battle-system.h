@@ -53,6 +53,9 @@ extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
 extern u16 gAnimRoundDataRe[NEW_BATTLE_HIT_MAX];
 extern u16 gEfxHpLutRe[NEW_BATTLE_HIT_MAX * 3];
 
+extern void * const prBattleHitArray;
+extern u8 BattleHitArrayWidth;
+
 struct ExtBattleHit {
 	u8 hp_drain, hp_cost;
 	u8 _pad_[2];
@@ -211,7 +214,8 @@ bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
 /**
  * Hp cost
  */
-void AddBattleHpCost(int round, int cost);
+bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);
+bool AddBattleHpCost(struct BattleUnit *bu, int round, int cost);
 
 void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool MapAnimRoundAnim_DisplayHpCost(ProcPtr parent);

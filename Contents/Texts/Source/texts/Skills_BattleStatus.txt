@@ -966,3 +966,13 @@ Unstop[X]
 Unstoppable Force:[NL]
 Unit damage +100%, but[NL]
 sets unit and foe’s AVO to 0[X]
+
+## MSG_SKILL_BloodSurge
+Blood Surge:[NL]
+Consumes 5 HP to boost damage[NL]
+by 20% max HP in each round[X]
+
+## MSG_SKILL_BloodReaver
+Blood Reaver:[NL]
+Consumes 5 HP to boost damage[NL]
+by foe's 20% max HP in each round[X]

@@ -243,6 +243,14 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
 	[SID_WeaponHeal] = EFX_PRIORITY_NORMAL,
 #endif
+
+#if (defined(SID_BloodSurge) && COMMON_SKILL_VALID(SID_BloodSurge))
+	[SID_BloodSurge] = EFX_PRIORITY_LOW,
+#endif
+
+#if (defined(SID_BloodReaver) && COMMON_SKILL_VALID(SID_BloodReaver))
+	[SID_BloodReaver] = EFX_PRIORITY_LOW,
+#endif
 };
 
 struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
@@ -484,5 +492,13 @@ struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
 	[SID_WeaponHeal] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_BloodSurge) && COMMON_SKILL_VALID(SID_BloodSurge))
+	[SID_BloodSurge] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_BloodReaver) && COMMON_SKILL_VALID(SID_BloodReaver))
+	[SID_BloodReaver] = &EfxSkillVanilla,
 #endif
 };

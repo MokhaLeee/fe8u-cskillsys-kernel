@@ -26,6 +26,7 @@ PUSH
     #include "Source/pr_BattleHitArrayRe.lyn.event"
 
     ORG $58244
+    prBattleHitArray:
     #include "Source/pr_BattleHitArrayRe.lyn.event"
 
     ORG $58930
@@ -72,4 +73,7 @@ PUSH
 
     ORG $A6D18
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+
+    ORG 0x2AEB2
+    BattleHitArrayWidth:
 POP

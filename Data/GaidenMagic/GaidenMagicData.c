@@ -1,5 +1,7 @@
 #include <common-chax.h>
 #include <gaiden-magic.h>
+#include <skill-system.h>
+#include <constants/skills.h>
 
 const u8 gGaidenWeaponCostList[0x100] = {
 	[ITEM_SWORD_KILLER] = 2,
@@ -10,6 +12,7 @@ const u8 gGaidenWeaponCostList[0x100] = {
 	[ITEM_STAFF_HEAL] = 2,
 	[ITEM_STAFF_PHYSIC] = 5,
 	[ITEM_STAFF_SLEEP] = 5,
+	[ITEM_STAFF_LATONA] = 10,
 };
 
 struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {
@@ -20,6 +23,11 @@ struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {
 	[CHARACTER_NATASHA] = { .ent = (const struct GaidenPinfoConfigEnt []) {
 		{ 1, ITEM_STAFF_HEAL },
 		{ 1, ITEM_STAFF_SLEEP },
+		{ 0 }
+	}},
+	[CHARACTER_SALEH] = { .ent = (const struct GaidenPinfoConfigEnt []) {
+		{ 1, ITEM_DARK_NOSFERATU },
+		{ 1, ITEM_STAFF_PHYSIC },
 		{ 0 }
 	}},
 	[CHARACTER_SELENA] = { .ent = (const struct GaidenPinfoConfigEnt []) {
@@ -38,21 +46,11 @@ struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {
 
 // This config is valid only when CONFIG_GAIDEN_EXT_CONF_EN is set!
 const struct GaidenChaxConfigEnt gGaidenChaxConfigs[] = {
+#if (defined(SID_Latona) && COMMON_SKILL_VALID(SID_Latona))
 	{
-		.iid = ITEM_DARK_NOSFERATU,
-		.jid = CLASS_SHAMAN,
-		.faction = FACTION_RED,
+		.iid = ITEM_STAFF_LATONA,
+		.skill = SID_Latona,
 	},
-	{
-		.iid = ITEM_DARK_NOSFERATU,
-		.faction = FACTION_BLUE,
-	},
-	{
-		.iid = ITEM_ANIMA_THUNDER,
-		.pid = CHARACTER_EIRIKA,
-		.jid = CLASS_EIRIKA_LORD,
-		.level = 1,
-		.faction = FACTION_BLUE,
-	},
+#endif
 	{ 0 },
 };

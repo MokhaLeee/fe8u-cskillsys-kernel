@@ -191,13 +191,20 @@ STATIC_DECLAR int GaidenWMagItemSelOnDraw(struct MenuProc *menu, struct MenuItem
 {
 	struct GaidenMagicList *list = GetGaidenMagicList(gActiveUnit);
 	int item = list->wmags[menuItem->itemNumber];
+	u16 *tm = gBG0TilemapBuffer + TILEMAP_INDEX(menuItem->xTile, menuItem->yTile);
+	bool en = CanUnitUseGaidenMagicNow(gActiveUnit, item);
 
 	DrawGaidenMagItemMenuLine(
 		&menuItem->text,
 		item,
-		CanUnitUseGaidenMagicNow(gActiveUnit, item),
-		gBG0TilemapBuffer + TILEMAP_INDEX(menuItem->xTile, menuItem->yTile)
+		en,
+		tm
 	);
+
+	PutGaidenMagicCostNumber(
+		tm + 11,
+		en ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
+		GetGaidenWeaponHpCost(gActiveUnit, item));
 
 	return 0;
 }

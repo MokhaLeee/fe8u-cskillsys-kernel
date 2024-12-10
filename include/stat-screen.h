@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common-chax.h"
+#include "list-verify.h"
 
 #define STAT_BAR_MAX_INDENTIFIER 41
 
@@ -72,3 +73,26 @@ void DrawSkillPage_MokhaPlanB(void);
 
 extern _DECL_INFO *const RTextSkillPage_MokhaPlanA;
 extern _DECL_INFO *const RTextSkillPage_MokhaPlanB;
+
+/**
+ * Item page
+ */
+enum { CHAX_ITEM_PAGE_AMT = UNIT_ITEM_COUNT };
+
+struct ItemPageEnt {
+	u16 item;
+	u8 slot, color;
+};
+
+struct ItemPageList {
+	struct UnitListHeader header;
+	struct ItemPageEnt ent[CHAX_ITEM_PAGE_AMT];
+};
+
+extern EWRAM_OVERLAY(0) struct ItemPageList gItemPageList;
+
+struct ItemPageList *GetUnitItemPageList(struct Unit *unit);
+
+extern u8 const *const gpTSA_ItemPageSubfix;
+extern u8 const *const gpTSA_ItemEquipLine;
+extern struct SSTextDispInfo const *const gpPage1TextInfo;

@@ -5,6 +5,7 @@
 #include "strmag.h"
 #include "debuff.h"
 #include "combat-art.h"
+#include "gaiden-magic.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
@@ -203,6 +204,21 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 		gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
 
 	BattleUpdateBattleStats(attacker, defender);
+
+#if CHAX
+	/**
+	 * Gaiden magic needs hp-cost
+	 */
+	if (CheckGaidenMagicAttack(attacker)) {
+		int hp_cost = GetGaidenWeaponHpCost(&attacker->unit, attacker->weapon);
+
+		if (!TryBattleHpCost(attacker, hp_cost)) {
+			gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+			gBattleHitIterator++;
+			return true;
+		}
+	}
+#endif
 
 	/**
 	 * Hp cost must be calculated first

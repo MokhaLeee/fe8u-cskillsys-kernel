@@ -120,14 +120,9 @@ bool ActionGaidenMagicStaff(ProcPtr proc)
 	/**
 	 * Directly give the hp-cost to the first round
 	 */
-	if (hp_cost >= gBattleActor.unit.curHP)
-		hp_cost = gBattleActor.unit.curHP - 1;
-
-	AddBattleHpCost(0, hp_cost);
+	AddBattleHpCost(&gBattleActor, 0, hp_cost);
 
 	/* reinit! */
 	ParseBattleHitToBanimCmd();
-
-	gBattleActor.unit.curHP -= hp_cost;
 	return false;
 }

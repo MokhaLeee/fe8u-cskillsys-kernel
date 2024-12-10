@@ -77,7 +77,7 @@ int GaidenBMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *it
 	Text_SetColor(&item->text, color);
 	Text_DrawString(&item->text, GetStringFromIndex(item->def->nameMsgId));
 
-	 PutText(
+	PutText(
 		&item->text,
 		TILEMAP_LOCATED(BG_GetMapBuffer(menu->frontBg), item->xTile, item->yTile));
 
@@ -198,6 +198,7 @@ STATIC_DECLAR int GaidenBMagItemSelOnDraw(struct MenuProc *menu, struct MenuItem
 {
 	struct GaidenMagicList *list = GetGaidenMagicList(gActiveUnit);
 	int item = list->bmags[menuItem->itemNumber];
+	u16 *tm = gBG0TilemapBuffer + TILEMAP_INDEX(menuItem->xTile, menuItem->yTile);
 	bool en = true;
 
 	if (!CanUnitUseGaidenMagicNow(gActiveUnit, item))
@@ -212,8 +213,13 @@ STATIC_DECLAR int GaidenBMagItemSelOnDraw(struct MenuProc *menu, struct MenuItem
 		&menuItem->text,
 		item,
 		en,
-		gBG0TilemapBuffer + TILEMAP_INDEX(menuItem->xTile, menuItem->yTile)
+		tm
 	);
+
+	PutGaidenMagicCostNumber(
+		tm + 11,
+		en ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY,
+		GetGaidenWeaponHpCost(gActiveUnit, item));
 
 	return 0;
 }
