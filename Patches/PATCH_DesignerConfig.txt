@@ -26,5 +26,10 @@ B12:$COMBO combo.lvupmode.txt=lvup_mode_normal
 B13:$COMBO combo.lvupmode.txt=lvup_mode_hard
 B14:$COMBO combo.PageStyle_Unit.txt=unit_page_style
 B15:$COMBO combo.PageStyle_Skill.txt=skil_page_style
+B16:$COMBO combo.bool.txt=gaiden_magic_en
+B17:$COMBO combo.bool.txt=gaiden_magic_must_be_magic
+B18:$COMBO combo.bool.txt=gaiden_magic_requires_wrank
+B19:$COMBO combo.bool.txt=gaiden_magic_ai_en
+B20:$COMBO combo.bool.txt=gaiden_magic_ext_conf_en
 
 INFO=Editor: gKernelDesigerConfig
