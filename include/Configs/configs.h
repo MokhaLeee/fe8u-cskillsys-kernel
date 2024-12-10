@@ -64,6 +64,14 @@
 #define CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
 
 /**
+ * Inject fake FEB old AnimNumber patch hooks.
+ * This config may cause two functions suffer from ugly ASM hooks:
+ *      - StartBattleAnimHitEffect
+ *      - NewEfxHpBar
+ */
+#define CONFIG_FAKE_OLD_ANIMNUMBER_PATCH
+
+/**
  * If uncommented, enable Gaiden style magic system
  *
  * Sub:
