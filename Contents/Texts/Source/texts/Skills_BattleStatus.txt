@@ -976,3 +976,7 @@ by 20% max HP in each round[X]
 Blood Reaver:[NL]
 Consumes 5 HP to boost damage[NL]
 by foe's 20% max HP in each round[X]
+
+## MSG_SKILL_Witch
+Witch:[NL]
+B.Magic might +5[X]

@@ -1271,6 +1271,19 @@ L_FairyTaleFolk_done:
 			break;
 #endif
 
+#if (defined(SID_Witch) && (COMMON_SKILL_VALID(SID_Witch)))
+		case SID_Witch:
+			switch (attacker->weaponSlotIndex) {
+			case CHAX_BUISLOT_GAIDEN_BMAG1 ... CHAX_BUISLOT_GAIDEN_WMAG7:
+				attacker->battleAttack += SKILL_EFF0(SID_Witch);
+				break;
+
+			default:
+				break;
+			}
+			break;
+#endif
+
 		case MAX_SKILL_NUM:
 		default:
 			break;

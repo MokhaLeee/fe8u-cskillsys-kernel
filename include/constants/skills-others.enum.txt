@@ -146,6 +146,7 @@ SID_UnstoppableForce
 SID_WeaponHeal
 SID_BloodReaver
 SID_Saint
+SID_Witch
 
 // Shop skills
 SID_Deal
