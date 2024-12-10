@@ -7,6 +7,7 @@
 PUSH
     ORG $4bf0
         jumpToHack(NegStatBoosts)
+    PROTECT 0x00004BF0 0x00004C1C // PutNumberBonus
 
     ORG $5900b0 //minus sign position fix
         WORD 0 0 0 $3ff0 $eaac $3ff0
@@ -14,6 +15,7 @@ PUSH
     ORG $86ae2 //drawing the bars
         SHORT $46C0
         jumpToHack(NegativeStatBars)
+    PROTECT 0x00086A40 0x00086B2C // DrawStatBar
 POP
 
 // #include "data.event"
