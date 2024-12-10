@@ -2,6 +2,7 @@
 #include "Source/AnimNumber.lyn.event"
 #include "Source/EfxMoji.lyn.event"
 #include "Source/EfxHpBarLive.lyn.event"
+#include "Source/EfxHpBarResire.lyn.event"
 #include "Source/FakeOldAnimNumberPatch.lyn.event"
 
 PUSH
@@ -9,8 +10,12 @@ PUSH
     POIN ProcScr_efxHPBarLiveRework
     PROTECT 0x00052A0C 0x00052AE4 // NewEfxHpBarLive
 
+    ORG 0x052624
+    POIN ProcScr_EfxHpBarResireRework
+    PROTECT 0x000525E8 0x000526C8 // NewEfxHpBarResire
+
     // This is fake hook of FEB AnimNumbers patch
-	ORG 0x552D0
+    ORG 0x552D0
     jumpToHack(FakeOldAnimNumberPatchJumpBack1)
     PROTECT 0x00055298 0x00055424 // StartBattleAnimHitEffect
 
