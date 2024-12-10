@@ -64,3 +64,8 @@ ally's equipped weapon after healing.[X]
 ## MSG_SKILL_Latona
 Latona:[NL]
 Unit can use holly W.Mag: Latona.[X]
+
+## MSG_SKILL_Saint
+Saint:[NL]
+Unit may not cost HP[NL]
+when using B/W.Magic.[X]
