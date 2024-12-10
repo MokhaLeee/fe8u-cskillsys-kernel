@@ -16,6 +16,9 @@ enum chax_banim_video_alloc {
 ProcPtr NewEfxAnimNumberExt(int number, int x, int y);
 ProcPtr NewEfxAnimNumber(struct Anim *anim, int number);
 
-extern const u8 Img_EfxAnimNumber[];
-extern const u16 Pal_EfxAnimNumber[];
+// extern const u8 Img_EfxAnimNumber[];
+// extern const u16 Pal_EfxAnimNumber[];
+
+extern u8 const *const gpImg_EfxAnimNumber;
+extern u16 const *const gpPal_EfxAnimNumber;
 extern AnimScr AnimScr_AnimNumber[];

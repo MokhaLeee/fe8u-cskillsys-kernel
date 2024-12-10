@@ -38,7 +38,7 @@ void SetupEfxAnimNumberGfx(int number, int slot)
 		int lo = simple_mod(abs_num, 10);
 
 		VramCopyAnimNumber(
-			Img_EfxAnimNumber + (base_chr + lo * 2) * CHR_SIZE,
+			gpImg_EfxAnimNumber + (base_chr + lo * 2) * CHR_SIZE,
 			vram_base + i * 2 * CHR_SIZE
 		);
 
@@ -53,14 +53,14 @@ void SetupEfxAnimNumberGfx(int number, int slot)
 	 * Prefix image
 	 */
 	VramCopyAnimNumber(
-		Img_EfxAnimNumber + (base_chr + 10 * 2) * CHR_SIZE,
+		gpImg_EfxAnimNumber + (base_chr + 10 * 2) * CHR_SIZE,
 		vram_base + i * 2 * CHR_SIZE
 	);
 
 	/**
 	 * Pal
 	 */
-	ApplyPalette(Pal_EfxAnimNumber, 0x10 + OBPAL_CHAX_ANIMNUM);
+	ApplyPalette(gpPal_EfxAnimNumber, 0x10 + OBPAL_CHAX_ANIMNUM);
 }
 
 ProcPtr NewEfxAnimNumberExt(int x, int y, int number)
