@@ -35,6 +35,7 @@ extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;
  */
 bool IsPositionValid(s8 x, s8 y);
 struct Unit *GetUnitAtPosition(s8 x, s8 y);
+bool CheckOutdoorTerrain(int terrain);
 
 /**
  * mapanim.c

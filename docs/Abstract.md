@@ -27,6 +27,7 @@ FE-ThreeHoses style combat-art has been implemented. You can select art during t
 - Critical damage correction is 300% in default, can be changed by skills.
 - Effectiveness damage correct is 200% in default, can be changed by skills.
 - Unit can use real damage via skills to ignore vanilla damage calculation.
+- Riders may suffer `avo-20%` indoor.
 
 ## Weapon
 
