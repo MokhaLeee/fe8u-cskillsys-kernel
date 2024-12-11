@@ -20,8 +20,9 @@ FE-ThreeHoses style combat-art has been implemented. You can select art during t
 	1. More consumption on weapon.
 	2. Cannot double attack except in special circumstances.
 
-## Damage
+## Battle calculate
 
+- Attack speed decay: (`weight - con`) --> (`weight - (con + atk/5)`)
 - Critical damage correction is 300% in default, can be changed by skills.
 - Unit can use real damage via skills to ignore vanilla damage calculation.
 

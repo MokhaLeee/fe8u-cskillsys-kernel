@@ -14,6 +14,32 @@ typedef void (*PreBattleCalcFunc) (struct BattleUnit *buA, struct BattleUnit *bu
 extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit *defender);
 
+LYN_REPLACE_CHECK(ComputeBattleUnitSpeed);
+void ComputeBattleUnitSpeed(struct BattleUnit *bu)
+{
+	/**
+	 * It is dangrous to touch AS as now designed to be related to battle attack.
+	 * So we decide to do nothing here.
+	 */
+}
+
+STATIC_DECLAR NOINLINE void ComputeBattleUnitSpeedHook(struct BattleUnit *bu)
+{
+	// Make sure BattleUnit::battleAttack has been setup
+
+	int wt  = GetItemWeight(bu->weaponBefore);
+	int con = bu->unit.conBonus + simple_div(bu->battleAttack, 5);
+
+	wt -= con;
+	if (wt < 0)
+		wt = 0;
+
+	bu->battleSpeed = bu->unit.spd - wt;
+
+	if (bu->battleSpeed < 0)
+		bu->battleSpeed = 0;
+}
+
 LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
 void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
@@ -41,6 +67,11 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 		status = status + attacker->unit.pow;
 
 	attacker->battleAttack = status;
+
+	/**
+	 * AS need battle attack updated
+	 */
+	ComputeBattleUnitSpeedHook(attacker);
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitDefense);
