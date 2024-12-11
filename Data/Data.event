@@ -32,5 +32,6 @@
 #include "Debuff/StatDebuffInfo.lyn.event"
 #include "GaidenMagic/GaidenMagicData.event"
 #include "GaidenMagic/GaidenMagicData.lyn.event"
+#include "MaxStatus/MaxStatus.lyn.event"
 
 #endif

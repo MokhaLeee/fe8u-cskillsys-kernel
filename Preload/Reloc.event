@@ -125,4 +125,6 @@ gpGaidenChaxConfigs: POIN gGaidenChaxConfigs
 gpImg_EfxAnimNumber: POIN Img_EfxAnimNumber
 gpPal_EfxAnimNumber: POIN Pal_EfxAnimNumber
 
+gpUnitMaxStatusConfigTable: POIN gUnitMaxStatusConfigTable
+
 KERNEL_RELOC_END:

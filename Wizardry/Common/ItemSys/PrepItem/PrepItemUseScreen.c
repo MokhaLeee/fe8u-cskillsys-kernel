@@ -107,14 +107,14 @@ void DrawPrepScreenItemUseStatBars(struct Unit *unit, int mask)
 
 	UnpackUiBarPalette(2);
 
-	stat_pack[0] = GetUnitCurrentHp(unit) * 24 / KUNIT_MHP_MAX(unit);
-	stat_pack[1] = PowGetter(unit) * 24 / UNIT_POW_MAX(unit);
-	stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxMagic(unit);
-	stat_pack[3] = LckGetter(unit) * 24 / UNIT_LCK_MAX(unit);
-	stat_pack[4] = SklGetter(unit) * 24 / UNIT_SKL_MAX(unit);
-	stat_pack[5] = SpdGetter(unit) * 24 / UNIT_SPD_MAX(unit);
-	stat_pack[6] = DefGetter(unit) * 24 / UNIT_DEF_MAX(unit);
-	stat_pack[7] = ResGetter(unit) * 24 / UNIT_RES_MAX(unit);
+	stat_pack[0] = GetUnitCurrentHp(unit) * 24 / GetUnitMaxStatusHp(unit);
+	stat_pack[1] = PowGetter(unit) * 24 / GetUnitMaxStatusPow(unit);
+	stat_pack[2] = MagGetter(unit) * 24 / GetUnitMaxStatusMag(unit);
+	stat_pack[3] = LckGetter(unit) * 24 / GetUnitMaxStatusSkl(unit);
+	stat_pack[4] = SklGetter(unit) * 24 / GetUnitMaxStatusSpd(unit);
+	stat_pack[5] = SpdGetter(unit) * 24 / GetUnitMaxStatusLck(unit);
+	stat_pack[6] = DefGetter(unit) * 24 / GetUnitMaxStatusDef(unit);
+	stat_pack[7] = ResGetter(unit) * 24 / GetUnitMaxStatusRes(unit);
 
 	for (iy = 0; iy < 4; iy++) {
 		for (ix = 0; ix < 2; ix++) {
@@ -141,7 +141,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// HP
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 3),
-		(GetUnitCurrentHp(unit) == KUNIT_MHP_MAX(unit))
+		(GetUnitCurrentHp(unit) == GetUnitMaxStatusHp(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		GetUnitCurrentHp(unit)
