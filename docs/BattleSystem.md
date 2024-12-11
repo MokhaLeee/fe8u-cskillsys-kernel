@@ -107,8 +107,8 @@ Taking gaiden/TH/engage style weapon system into consideration, the battle weapo
 - 8: ballista
 - 9-15: (CHAX) gaiden B.Magic
 - 16-22: (CHAX) gaiden W.Magic
-- 23-35: (CHAX, preserved) ThreeHouses style magic
-- 36-42: (CHAX, preserved) Engage style weapon
+- 23-36: (CHAX, preserved) ThreeHouses style magic
+- 37-42: (CHAX, preserved) Engage style weapon
 
 It should be noted that as for now the weapon slot index may cause overflow on `Unit::items`, it is **DANGROUS** to directly find the item by `unit->items[slot]`, as an alternative, kernel has offered the specific API to get weapon from slot:
 
