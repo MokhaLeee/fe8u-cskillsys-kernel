@@ -957,7 +957,7 @@ Immov[X]
 ## MSG_SKILL_ImmovableObject
 Immovable Object:[NL]
 Unit takes damage -50%, but[NL]
-sets unit and foe’s AVO to 0[X]
+sets unit and foe's AVO to 0[X]
 
 ## MSG_SKILL_UnstoppableForce_NAME
 Unstop[X]
@@ -965,7 +965,7 @@ Unstop[X]
 ## MSG_SKILL_UnstoppableForce
 Unstoppable Force:[NL]
 Unit damage +100%, but[NL]
-sets unit and foe’s AVO to 0[X]
+sets unit and foe's AVO to 0[X]
 
 ## MSG_SKILL_BloodSurge
 Blood Surge:[NL]
