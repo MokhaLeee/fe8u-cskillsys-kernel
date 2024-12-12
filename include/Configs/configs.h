@@ -158,6 +158,12 @@
 #define CONFIG_INSTALL_CONVOYEXPA_AMT 200 // better not to touch this since it will affact on size of gExpaConvoyItemArray
 
 /**
+ * If uncommented, suspend data may only saved in play-phase starting.
+ * This may also overwrite PlaySt::disableTerrainDisplay config for player configuration in runtime.
+ */
+#define CONFIG_NO_SUS_IN_AI_PHASE
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

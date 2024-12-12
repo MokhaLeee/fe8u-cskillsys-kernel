@@ -9,7 +9,7 @@ char *GetStringFromIndexInBuffer(int index, char *buffer)
 	const char *src = prTextTable[index];
 
 	if (IS_ANTI_HUFFMAN(src))
-		strcpy(buffer, src);
+		strcpy(buffer, (const void *)((uintptr_t)src & 0x0FFFFFFF));
 	else
 		(*_DecodeString)(src, buffer);
 

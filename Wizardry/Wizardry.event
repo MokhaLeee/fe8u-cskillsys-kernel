@@ -13,6 +13,7 @@ ALIGN 4
 #include "Essentials/BanimHpDrainFix/BanimHpDrainFix.event"
 
 #include "Common/OverflowDetection/OverflowDetection.lyn.event"
+#include "Common/AntiHuffman/AntiHuffman.event"
 #include "Common/EventRework/EventRework.event"
 #include "Common/UnitAction/UnitAction.event"
 #include "Common/GameInitHook/GameInitHook.event"

@@ -26,6 +26,8 @@ struct KernelDesigerConfig {
 
 	u8 gaiden_magic_en, gaiden_magic_must_be_magic, gaiden_magic_requires_wrank, \
 		gaiden_magic_ai_en, gaiden_magic_ext_conf_en;
+
+	u8 no_suspend_in_aiphase;
 };
 
 struct KernelBattleDesignerConfig {

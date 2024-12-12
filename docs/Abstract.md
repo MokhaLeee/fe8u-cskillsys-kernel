@@ -47,6 +47,14 @@ Flyer in outdoor environments are not affected by this effect
 
 For non-ballista combat, it will cause the battle actor lose hit rate with the attack distance increases.
 
+## Suspend
+
+![image](./gfx/Home_Suspend.png)
+
+Suspend data may only auto saved at the start of the player-phase so as to realize a simple "undo" action.
+
+And this option is runtime-configurable.
+
 ## Gaiden style magic
 
 FE-Gaiden style B.Mag and W.Mag implemented have been implemented. Unit can cost HP to use magic.
