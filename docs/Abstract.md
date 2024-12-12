@@ -1,5 +1,22 @@
 # Abstract
 
+## Installation
+
+You can choose from the following options:
+
+1. LTS release version only: download [the latest FEBuilder release (Laqieer branch)](https://github.com/laqieer/FEBuilderGBA/releases/tag/ver_20240912.11) and install C-SkillSys in **Patches** form.
+
+2. Release version only: Download UPS or EA buildfile from [release page](https://github.com/FireEmblemUniverse/fe8u-cskillsys/releases), and install the patch to your ROM.
+
+	- [Patch ROM via UPS](https://feuniverse.us/t/how-to-patch-a-rom-v5/10329)
+	- [EA buildfile tutorial](https://tutorial.feuniverse.us/)
+
+3. [Custom build](./CustomBuild.md)
+
+> [!WARNING]
+> 1. It is only recommanded to install C-SkillSys to a clean FE8 rom.
+> 2. Please see [Limitations](./Limitations.md) doc before you want to do any futher hacks.
+
 ## Skill
 
 [Skills glossary](./SkillInfo.md)
@@ -58,3 +75,7 @@ And this option is runtime-configurable.
 ## Gaiden style magic
 
 FE-Gaiden style B.Mag and W.Mag implemented have been implemented. Unit can cost HP to use magic.
+
+# Credits
+
+[Credits doc](./Credits.md)
