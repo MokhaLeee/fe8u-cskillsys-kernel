@@ -11,13 +11,13 @@ PUSH
     BYTE $3F
     ORG $70C5E
     BYTE $3F
-    PROTECT $70B3C $70D04
+    PROTECT 0x00070B3C 0x00070D04 // RegisterEkrDragonStatusType
 
     ORG $59A8C // UpdateBanimFrame
     BYTE $3F
     ORG $59AAA
     BYTE $3F
-    // PROTECT $599E8 $59D28
+    PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
 
     ORG $31F58 // ArenaIsUnitAllowed
     BYTE 0x3F

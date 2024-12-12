@@ -16,22 +16,28 @@
 	#incbin "Set_Background.dmp"
 	POIN Transformation_Table
 	WORD Transform_RAM_Loc
-	
+    // Protected in /Wizardry/Core/DebuffRework/Source/MiscHooks.event:19:5
+    // PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
+
 	ORG $70908 //(2)
 	callHack_r3(Transform1)
 	SHORT 0 0 0
-	
+    PROTECT 0x000708FC 0x0007096C // EkrMyr_PrepareBanimfx
+
 	ORG $7096C //(3)
 	jumpToHack(Transform1_Sound)	//I guess this also calls the next step of the animation? idk
-	
+    PROTECT 0x0007096C 0x000709CC // EkrMyr_WaitForTransform
+
 	ORG $70A70 //(4)
 	callHack_r3(Detransform1)
 	SHORT 0xE00F
-	
+    PROTECT 0x00070A14 0x00070AE4 // EkrMyr_ReturnToLoli
+
 	ORG $70AF8 //(5)
 	callHack_r3(Detransform2)
 	SHORT 0
-	
+    PROTECT 0x00070AE4 0x00070B3C // sub_8070AE4
+
 	POP
 	
 	#include "Transformation_Table.event"

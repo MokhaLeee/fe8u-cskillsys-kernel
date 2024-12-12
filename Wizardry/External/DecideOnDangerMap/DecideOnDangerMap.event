@@ -8,6 +8,7 @@ PUSH
 ORG $3E308 // from $3E2F4 SetupAiDangerMap	//{U}
 //ORG $3E298 // from SetupAiDangerMap	//{J}
 callHackNew(DecideWhetherToFillAiDangerMap|1) 
+PROTECT 0x0003E2F4 0x0003E320 // AiInitDangerMap
 
 POP 
 
