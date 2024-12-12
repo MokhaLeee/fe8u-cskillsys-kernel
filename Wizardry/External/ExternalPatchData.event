@@ -18,6 +18,7 @@
     #include "MeleeAndMagicFix_ItemFix20220721/MeleeAndMagicFix_ItemFix20220721.event"
     #include "drumfix/drumfix.event"
     #include "BattleTransforming/FE8-BattleTransformEA.txt"
+    #include "CSA_Creator_For_FE8U_ver2/Master_Spell_Animation_Installer.event"
 
 	// These two patch are too large and can only be installed in 0x01000000
     // #include "AllInstrumentEA/AllInstrument.event"
