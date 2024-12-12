@@ -60,12 +60,6 @@ void EfxHpBarResire_WaitOnCurrentSide(struct ProcEfxHpBar *proc)
 		proc->cur = 10;
 		gEfxHpBarResireFlag = 1;
 
-#if CHAX
-		NewEfxAnimNumber(
-			proc->anim_main_other,
-			GetExtBattleHit(proc->anim_main_other->nextRoundId - 1)->hp_drain);
-#endif
-
 		Proc_Break(proc);
 		return;
 	}

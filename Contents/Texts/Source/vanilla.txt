@@ -7028,7 +7028,7 @@ grow to become the queen she was destined to[LF]
 be was Dozla's greatest joy in life.[X]
 
 ## MSG_0809
-Rennac, Rich “Merchant”[.][X]
+Rennac, Rich [LQuote]Merchant[RQuote][.][X]
 
 ## MSG_080A
 L'Arachel summoned Rennac back to Rausten,[LF]

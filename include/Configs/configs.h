@@ -64,6 +64,14 @@
 #define CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
 
 /**
+ * Inject fake FEB old AnimNumber patch hooks.
+ * This config may cause two functions suffer from ugly ASM hooks:
+ *      - StartBattleAnimHitEffect
+ *      - NewEfxHpBar
+ */
+#define CONFIG_FAKE_OLD_ANIMNUMBER_PATCH
+
+/**
  * If uncommented, enable Gaiden style magic system
  *
  * Sub:
@@ -148,6 +156,12 @@
  */
 #define CONFIG_INSTALL_CONVOYEXPA
 #define CONFIG_INSTALL_CONVOYEXPA_AMT 200 // better not to touch this since it will affact on size of gExpaConvoyItemArray
+
+/**
+ * If uncommented, suspend data may only saved in play-phase starting.
+ * This may also overwrite PlaySt::disableTerrainDisplay config for player configuration in runtime.
+ */
+#define CONFIG_NO_SUS_IN_AI_PHASE
 
 /**
  * Ai action expansion

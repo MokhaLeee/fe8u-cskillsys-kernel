@@ -957,7 +957,7 @@ Immov[X]
 ## MSG_SKILL_ImmovableObject
 Immovable Object:[NL]
 Unit takes damage -50%, but[NL]
-sets unit and foe’s AVO to 0[X]
+sets unit and foe's AVO to 0[X]
 
 ## MSG_SKILL_UnstoppableForce_NAME
 Unstop[X]
@@ -965,7 +965,7 @@ Unstop[X]
 ## MSG_SKILL_UnstoppableForce
 Unstoppable Force:[NL]
 Unit damage +100%, but[NL]
-sets unit and foe’s AVO to 0[X]
+sets unit and foe's AVO to 0[X]
 
 ## MSG_SKILL_BloodSurge
 Blood Surge:[NL]
@@ -976,3 +976,7 @@ by 20% max HP in each round[X]
 Blood Reaver:[NL]
 Consumes 5 HP to boost damage[NL]
 by foe's 20% max HP in each round[X]
+
+## MSG_SKILL_Witch
+Witch:[NL]
+B.Magic might +5[X]

@@ -122,4 +122,11 @@ gpSkillInfos_Desc: POIN gSkillInfos + 6 // This is limited by FEB function: Inpu
 
 gpGaidenChaxConfigs: POIN gGaidenChaxConfigs
 
+gpImg_EfxAnimNumber: POIN Img_EfxAnimNumber
+gpPal_EfxAnimNumber: POIN Pal_EfxAnimNumber
+
+gpUnitMaxStatusConfigTable: POIN gUnitMaxStatusConfigTable
+MESSAGE CURRENTOFFSET
+gpKernelBattleDesignerConfig: POIN gKernelBattleDesignerConfig
+
 KERNEL_RELOC_END:

@@ -14,6 +14,55 @@ typedef void (*PreBattleCalcFunc) (struct BattleUnit *buA, struct BattleUnit *bu
 extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit *defender);
 
+static bool CheckSRankBattle(struct BattleUnit *bu)
+{
+	int wtype;
+
+	wtype = GetItemType(bu->weapon);
+	switch (wtype) {
+	case ITYPE_SWORD:
+	case ITYPE_LANCE:
+	case ITYPE_AXE:
+	case ITYPE_BOW:
+	case ITYPE_STAFF:
+	case ITYPE_ANIMA:
+	case ITYPE_LIGHT:
+	case ITYPE_DARK:
+		/* Avoid potential overflow */
+		if (bu->unit.ranks[wtype] >= WPN_EXP_S)
+			return true;
+
+		break;
+
+	default:
+		break;
+	}
+	return false;
+}
+
+LYN_REPLACE_CHECK(ComputeBattleUnitSpeed);
+void ComputeBattleUnitSpeed(struct BattleUnit *bu)
+{
+	// Make sure BattleUnit::battleAttack has been setup
+
+	int wt  = GetItemWeight(bu->weaponBefore);
+	int con = bu->unit.conBonus;
+	
+	con += simple_div(bu->battleAttack * gpKernelBattleDesignerConfig->as_calc_atk_perc, 100);
+
+	wt -= con;
+	if (wt < 0)
+		wt = 0;
+
+	if (CheckSRankBattle(bu))
+		wt = 0;
+
+	bu->battleSpeed = bu->unit.spd - wt;
+
+	if (bu->battleSpeed < 0)
+		bu->battleSpeed = 0;
+}
+
 LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
 void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
@@ -39,6 +88,9 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 		status = status + UNIT_MAG(&attacker->unit);
 	else
 		status = status + attacker->unit.pow;
+
+	if (CheckSRankBattle(attacker))
+		status = status + 1;
 
 	attacker->battleAttack = status;
 }
@@ -68,6 +120,23 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
 #endif
 	}
 	attacker->battleDefense = status;
+}
+
+LYN_REPLACE_CHECK(ComputeBattleUnitAvoidRate);
+void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
+{
+	int status = (bu->battleSpeed * 2) + bu->terrainAvoid + (bu->unit.lck);
+
+	if (!CheckOutdoorTerrain(bu->terrainId)) {
+		int jid = UNIT_CLASS_ID(&bu->unit);
+
+		if (CheckClassFlier(jid) || CheckClassCavalry(jid))
+			status -= gpKernelBattleDesignerConfig->rider_debuff_indoor;
+	}
+
+	bu->battleAvoidRate = status;
+    if (bu->battleAvoidRate < 0)
+        bu->battleAvoidRate = 0;
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitCritRate);
@@ -755,60 +824,9 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_OutdoorFighter) && (COMMON_SKILL_VALID(SID_OutdoorFighter)))
 		case SID_OutdoorFighter:
-			switch (gBmMapTerrain[attacker->unit.yPos][attacker->unit.xPos]) {
-			case TERRAIN_PLAINS:
-			case TERRAIN_ROAD:
-			case TERRAIN_VILLAGE_03:
-			case TERRAIN_VILLAGE_04:
-			case TERRIAN_HOUSE:
-			case TERRAIN_ARMORY:
-			case TERRAIN_VENDOR:
-			case TERRAIN_ARENA_08:
-			case TERRAIN_C_ROOM_09:
-			case TERRAIN_GATE_0B:
-			case TERRAIN_FOREST:
-			case TERRAIN_THICKET:
-			case TERRAIN_SAND:
-			case TERRAIN_DESERT:
-			case TERRAIN_RIVER:
-			case TERRAIN_MOUNTAIN:
-			case TERRAIN_PEAK:
-			case TERRAIN_BRIDGE_13:
-			case TERRAIN_BRIDGE_14:
-			case TERRAIN_SEA:
-			case TERRAIN_LAKE:
-			case TERRAIN_GATE_23:
-			case TERRAIN_CHURCH:
-			case TERRAIN_RUINS_25:
-			case TERRAIN_CLIFF:
-			case TERRAIN_BALLISTA_REGULAR:
-			case TERRAIN_BALLISTA_LONG:
-			case TERRAIN_BALLISTA_KILLER:
-			case TERRAIN_SHIP_FLAT:
-			case TERRAIN_SHIP_WRECK:
-			case TERRAIN_TILE_2C:
-			case TERRAIN_ARENA_30:
-			case TERRAIN_VALLEY:
-			case TERRAIN_FENCE_32:
-			case TERRAIN_SNAG:
-			case TERRAIN_BRIDGE_34:
-			case TERRAIN_SKY:
-			case TERRAIN_DEEPS:
-			case TERRAIN_RUINS_37:
-			case TERRAIN_INN:
-			case TERRAIN_BARREL:
-			case TERRAIN_BONE:
-			case TERRAIN_DARK:
-			case TERRAIN_WATER:
-			case TERRAIN_DECK:
-			case TERRAIN_BRACE:
-			case TERRAIN_MAST:
+			if (CheckOutdoorTerrain(attacker->terrainId)) {
 				attacker->battleHitRate   += SKILL_EFF0(SID_OutdoorFighter);
 				attacker->battleAvoidRate += SKILL_EFF1(SID_OutdoorFighter);
-				break;
-
-			default:
-				break;
 			}
 			break;
 #endif
@@ -1267,6 +1285,19 @@ L_FairyTaleFolk_done:
 			} else {
 				attacker->battleCritRate -= SKILL_EFF2(SID_LionFlame);
 				attacker->battleAttack   -= SKILL_EFF3(SID_LionFlame);
+			}
+			break;
+#endif
+
+#if (defined(SID_Witch) && (COMMON_SKILL_VALID(SID_Witch)))
+		case SID_Witch:
+			switch (attacker->weaponSlotIndex) {
+			case CHAX_BUISLOT_GAIDEN_BMAG1 ... CHAX_BUISLOT_GAIDEN_WMAG7:
+				attacker->battleAttack += SKILL_EFF0(SID_Witch);
+				break;
+
+			default:
+				break;
 			}
 			break;
 #endif

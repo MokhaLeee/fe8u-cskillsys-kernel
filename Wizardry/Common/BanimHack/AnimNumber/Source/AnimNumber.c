@@ -3,8 +3,6 @@
 #include <banim-hack.h>
 #include <battle-system.h>
 
-extern u8 sAnimNumberSlot;
-
 NOINLINE void VramCopyAnimNumber(const void *src, void *dst)
 {
 	VramCopy(src,                                     dst,         CHR_SIZE * 2);
@@ -38,7 +36,7 @@ void SetupEfxAnimNumberGfx(int number, int slot)
 		int lo = simple_mod(abs_num, 10);
 
 		VramCopyAnimNumber(
-			Img_EfxAnimNumber + (base_chr + lo * 2) * CHR_SIZE,
+			gpImg_EfxAnimNumber + (base_chr + lo * 2) * CHR_SIZE,
 			vram_base + i * 2 * CHR_SIZE
 		);
 
@@ -53,40 +51,20 @@ void SetupEfxAnimNumberGfx(int number, int slot)
 	 * Prefix image
 	 */
 	VramCopyAnimNumber(
-		Img_EfxAnimNumber + (base_chr + 10 * 2) * CHR_SIZE,
+		gpImg_EfxAnimNumber + (base_chr + 10 * 2) * CHR_SIZE,
 		vram_base + i * 2 * CHR_SIZE
 	);
 
 	/**
 	 * Pal
 	 */
-	ApplyPalette(Pal_EfxAnimNumber, 0x10 + OBPAL_CHAX_ANIMNUM);
+	ApplyPalette(gpPal_EfxAnimNumber, 0x10 + OBPAL_CHAX_ANIMNUM);
 }
 
-ProcPtr NewEfxAnimNumberExt(int x, int y, int number)
+void EfxAnimNumber_Start(struct ProcEfxAnimNumber *proc)
 {
-	ProcPtr proc;
-
-	sAnimNumberSlot += 1;
-	sAnimNumberSlot &= 1;
-
-	SetupEfxAnimNumberGfx(number, sAnimNumberSlot);
-
-	proc = NewEkrsubAnimeEmulator(
-		OAM1_X(x), OAM0_Y(y),
-		AnimScr_AnimNumber,
-		0,
-		OAM2_PAL(OBPAL_CHAX_ANIMNUM) + OAM2_LAYER(1) + OAM2_CHR(OBCHR_CHAX_ANIMNUM + sAnimNumberSlot * 8),
-		0,
-		PROC_TREE_3
-	);
-
-	return proc;
-}
-
-ProcPtr NewEfxAnimNumber(struct Anim *anim, int number)
-{
-	int y, x = OAM1_X(anim->xPosition);
+	struct Anim *anim;
+	int y, x = OAM1_X(proc->anim->xPosition);
 
 	x -= 0x34;
 	if (x < 0)
@@ -94,5 +72,44 @@ ProcPtr NewEfxAnimNumber(struct Anim *anim, int number)
 
 	y = 0x25;
 
-	return NewEfxAnimNumberExt(x, y, number);
+	proc->anim_num = anim = AnimCreate(AnimScr_AnimNumber, 0x95);
+	anim->xPosition = OAM1_X(x);
+	anim->yPosition = OAM0_Y(y);
+	anim->oam2Base  = OAM2_PAL(OBPAL_CHAX_ANIMNUM) + OAM2_LAYER(1) + OAM2_CHR(OBCHR_CHAX_ANIMNUM + proc->slot * 8);
+}
+
+void EfxAnimNumber_Loop(struct ProcEfxAnimNumber *proc)
+{
+	if (proc->anim_num->state == 0)
+		Proc_Break(proc);
+}
+
+static const struct ProcCmd ProcScr_EfxAnimNumber[] = {
+	PROC_YIELD,
+	PROC_CALL(EfxAnimNumber_Start),
+	PROC_REPEAT(EfxAnimNumber_Loop),
+	PROC_END,
+};
+
+void NewEfxAnimNumber(struct Anim *anim, int number)
+{
+	struct ProcEfxAnimNumber *proc;
+
+	if (number == 0)
+		return;
+
+	sAnimNumberSlot += 1;
+	sAnimNumberSlot &= 1;
+
+	proc = Proc_Start(ProcScr_EfxAnimNumber, PROC_TREE_3);
+	proc->anim = anim;
+	proc->number = number;
+	proc->slot = sAnimNumberSlot;
+
+	SetupEfxAnimNumberGfx(proc->number, proc->slot);
+}
+
+bool EfxAnimNumberExists(void)
+{
+	return Proc_Exists(ProcScr_EfxAnimNumber);
 }

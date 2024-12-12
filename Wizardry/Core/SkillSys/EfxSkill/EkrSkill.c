@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "efx-skill.h"
 #include "combat-art.h"
+#include "banim-hack.h"
 
 #define LOCAL_TRACE 0
 
@@ -76,6 +77,8 @@ STATIC_DECLAR void NewEfxSkillForDefener(struct ProcEkrSkill *proc)
 
 STATIC_DECLAR const struct ProcCmd ProcScr_EkrSkill[] = {
 	PROC_NAME("EkrSkill"),
+	PROC_SLEEP(2),
+	PROC_WHILE(EfxAnimNumberExists),
 	PROC_YIELD,
 	PROC_CALL(EkrSkillOnInit),
 	PROC_YIELD,

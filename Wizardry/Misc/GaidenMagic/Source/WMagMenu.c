@@ -19,20 +19,20 @@ STATIC_DECLAR void UpdateMenuItemPanelGaidenWMag(int slot);
 
 static bool CanUnitUseGaidenWMagItem(struct Unit *unit, int item)
 {
-    /* Replacement of CanUnitUseItem() */
-    int staff_wexp = unit->ranks[ITYPE_STAFF];
-    bool ret;
+	/* Replacement of CanUnitUseItem() */
+	int staff_wexp = unit->ranks[ITYPE_STAFF];
+	bool ret;
 
 	/**
 	 * Here we must give the unit the highest level
 	 * so that we may directly skip the judgement on staff required weapon rank!
 	 * The wexp judgement has been completed in GetGaidenMagicList()!
 	 */
-    unit->ranks[ITYPE_STAFF] = WPN_EXP_S;
-    ret = CanUnitUseItem(unit, item);
+	unit->ranks[ITYPE_STAFF] = WPN_EXP_S;
+	ret = CanUnitUseItem(unit, item);
 
-    unit->ranks[ITYPE_STAFF] = staff_wexp;
-    return ret;
+	unit->ranks[ITYPE_STAFF] = staff_wexp;
+	return ret;
 }
 
 /**

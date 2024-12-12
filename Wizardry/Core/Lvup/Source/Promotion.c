@@ -4,7 +4,7 @@
 #include "bwl.h"
 #include "skill-system.h"
 
-STATIC_DECLAR void ApplyUnitPromotionVanilla(struct Unit *unit, u8 classId)
+STATIC_DECLAR NOINLINE void ApplyUnitPromotionVanilla(struct Unit *unit, u8 classId)
 {
 	const struct ClassData *promotedClass = GetClassData(classId);
 
@@ -97,8 +97,8 @@ void ApplyUnitPromotion(struct Unit *unit, u8 jid)
 
 	/* Hooks */
 	UNIT_MAG(unit) += GetClassChgMagicBonus(jid);
-	if (UNIT_MAG(unit) > GetUnitMaxMagic(unit))
-		UNIT_MAG(unit) = GetUnitMaxMagic(unit);
+	if (UNIT_MAG(unit) > GetUnitMaxStatusMag(unit))
+		UNIT_MAG(unit) = GetUnitMaxStatusMag(unit);
 }
 
 LYN_REPLACE_CHECK(ApplyUnitDefaultPromotion);

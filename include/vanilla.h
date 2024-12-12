@@ -221,7 +221,7 @@ void ForEachUnitInRange(void(*func)(struct Unit *unit));
 void AddUnitToTargetListIfAllied(struct Unit *unit);
 void sub_8095C2C(struct ProcAtMenu *proc);
 extern struct MsgBuffer sMsgString;
-
+extern EWRAM_DATA int sActiveMsg;
 extern CONST_DATA struct ProcCmd sProcScr_BattleAnimSimpleLock[];
 
 struct AiStaffLutEntry {

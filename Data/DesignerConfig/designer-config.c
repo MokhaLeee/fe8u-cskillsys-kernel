@@ -62,4 +62,8 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.gaiden_magic_ai_en = CONFIG_GAIDEN_MAGIC_AI_EN,
 	.gaiden_magic_ext_conf_en = CONFIG_GAIDEN_EXT_CONF_EN,
 #endif
+
+#ifdef CONFIG_NO_SUS_IN_AI_PHASE
+	.no_suspend_in_aiphase = true,
+#endif
 };

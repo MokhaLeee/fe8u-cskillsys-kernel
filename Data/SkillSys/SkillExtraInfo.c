@@ -1118,4 +1118,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_BloodReaver) && COMMON_SKILL_VALID(SID_BloodReaver))
 	[SID_BloodReaver] = {{ 5, 20 }},
 #endif
+
+#if (defined(SID_Witch) && COMMON_SKILL_VALID(SID_Witch))
+	[SID_Witch] = {{ 5 }},
+#endif
 };

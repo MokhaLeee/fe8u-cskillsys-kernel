@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "save-data.h"
+#include "kernel-lib.h"
 
 const struct EmsChunk *GetEmsChunkByIndex_Sav(int idx)
 {
@@ -274,6 +275,27 @@ void WriteSuspendSave(int slot)
 
 	if (!IsSramWorking())
 		return;
+
+#ifdef CONFIG_NO_SUS_IN_AI_PHASE
+	if ((gpKernelDesigerConfig->no_suspend_in_aiphase == true)) {
+		/* Overwrure this config bit to enable configuration for player runtime */
+		if (gPlaySt.config.disableTerrainDisplay == 0) {
+			switch (gActionData.suspendPointType) {
+			case SUSPEND_POINT_PLAYERIDLE:
+				break;
+
+			case SUSPEND_POINT_PHASECHANGE:
+				if (gPlaySt.faction == FACTION_BLUE)
+					break;
+
+				/* Fall through */
+
+			default:
+				return;
+			}
+		}
+	}
+#endif
 
 	slot += GetNextSuspendSaveId();
 	dst = GetSaveWriteAddr(slot);

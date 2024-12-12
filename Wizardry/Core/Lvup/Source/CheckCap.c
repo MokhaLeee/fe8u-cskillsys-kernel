@@ -4,56 +4,56 @@
 
 STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct BattleUnit *bu)
 {
-	if ((unit->maxHP + bu->changeHP) > KUNIT_MHP_MAX(unit))
-		bu->changeHP = KUNIT_MHP_MAX(unit) - unit->maxHP;
+	if ((unit->maxHP + bu->changeHP) > GetUnitMaxStatusHp(unit))
+		bu->changeHP = GetUnitMaxStatusHp(unit) - unit->maxHP;
 
-	if ((unit->pow + bu->changePow) > UNIT_POW_MAX(unit))
-		bu->changePow = UNIT_POW_MAX(unit) - unit->pow;
+	if ((unit->pow + bu->changePow) > GetUnitMaxStatusPow(unit))
+		bu->changePow = GetUnitMaxStatusPow(unit) - unit->pow;
 
-	if ((unit->skl + bu->changeSkl) > UNIT_SKL_MAX(unit))
-		bu->changeSkl = UNIT_SKL_MAX(unit) - unit->skl;
+	if ((unit->skl + bu->changeSkl) > GetUnitMaxStatusSkl(unit))
+		bu->changeSkl = GetUnitMaxStatusSkl(unit) - unit->skl;
 
-	if ((unit->spd + bu->changeSpd) > UNIT_SPD_MAX(unit))
-		bu->changeSpd = UNIT_SPD_MAX(unit) - unit->spd;
+	if ((unit->spd + bu->changeSpd) > GetUnitMaxStatusSpd(unit))
+		bu->changeSpd = GetUnitMaxStatusSpd(unit) - unit->spd;
 
-	if ((unit->def + bu->changeDef) > UNIT_DEF_MAX(unit))
-		bu->changeDef = UNIT_DEF_MAX(unit) - unit->def;
+	if ((unit->def + bu->changeDef) > GetUnitMaxStatusDef(unit))
+		bu->changeDef = GetUnitMaxStatusDef(unit) - unit->def;
 
-	if ((unit->res + bu->changeRes) > UNIT_RES_MAX(unit))
-		bu->changeRes = UNIT_RES_MAX(unit) - unit->res;
+	if ((unit->res + bu->changeRes) > GetUnitMaxStatusRes(unit))
+		bu->changeRes = GetUnitMaxStatusRes(unit) - unit->res;
 
-	if ((unit->lck + bu->changeLck) > UNIT_LCK_MAX(unit))
-		bu->changeLck = UNIT_LCK_MAX(unit) - unit->lck;
+	if ((unit->lck + bu->changeLck) > GetUnitMaxStatusLck(unit))
+		bu->changeLck = GetUnitMaxStatusLck(unit) - unit->lck;
 }
 
 STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
 {
-	if (unit->maxHP > KUNIT_MHP_MAX(unit))
-		unit->maxHP = KUNIT_MHP_MAX(unit);
+	if (unit->maxHP > GetUnitMaxStatusHp(unit))
+		unit->maxHP = GetUnitMaxStatusHp(unit);
 
-	if (unit->pow > UNIT_POW_MAX(unit))
-		unit->pow = UNIT_POW_MAX(unit);
+	if (unit->pow > GetUnitMaxStatusPow(unit))
+		unit->pow = GetUnitMaxStatusPow(unit);
 
-	if (unit->skl > UNIT_SKL_MAX(unit))
-		unit->skl = UNIT_SKL_MAX(unit);
+	if (unit->skl > GetUnitMaxStatusSkl(unit))
+		unit->skl = GetUnitMaxStatusSkl(unit);
 
-	if (unit->spd > UNIT_SPD_MAX(unit))
-		unit->spd = UNIT_SPD_MAX(unit);
+	if (unit->spd > GetUnitMaxStatusSpd(unit))
+		unit->spd = GetUnitMaxStatusSpd(unit);
 
-	if (unit->def > UNIT_DEF_MAX(unit))
-		unit->def = UNIT_DEF_MAX(unit);
+	if (unit->def > GetUnitMaxStatusDef(unit))
+		unit->def = GetUnitMaxStatusDef(unit);
 
-	if (unit->res > UNIT_RES_MAX(unit))
-		unit->res = UNIT_RES_MAX(unit);
+	if (unit->res > GetUnitMaxStatusRes(unit))
+		unit->res = GetUnitMaxStatusRes(unit);
 
-	if (unit->lck > UNIT_LCK_MAX(unit))
-		unit->lck = UNIT_LCK_MAX(unit);
+	if (unit->lck > GetUnitMaxStatusLck(unit))
+		unit->lck = GetUnitMaxStatusLck(unit);
 
-	if (unit->conBonus > (UNIT_CON_MAX(unit) - UNIT_CON_BASE(unit)))
-		unit->conBonus = (UNIT_CON_MAX(unit) - UNIT_CON_BASE(unit));
+	if (unit->conBonus > (GetUnitMaxStatusCon(unit) - UNIT_CON_BASE(unit)))
+		unit->conBonus = (GetUnitMaxStatusCon(unit) - UNIT_CON_BASE(unit));
 
-	if (unit->movBonus > (UNIT_MOV_MAX(unit) - UNIT_MOV_BASE(unit)))
-		unit->movBonus = (UNIT_MOV_MAX(unit) - UNIT_MOV_BASE(unit));
+	if (unit->movBonus > (GetUnitMaxStatusMov(unit) - UNIT_MOV_BASE(unit)))
+		unit->movBonus = (GetUnitMaxStatusMov(unit) - UNIT_MOV_BASE(unit));
 }
 
 LYN_REPLACE_CHECK(CheckBattleUnitStatCaps);
@@ -62,8 +62,8 @@ void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu)
 	CheckBattleUnitStatCapsVanilla(unit, bu);
 
 	/* Hooks */
-	if ((UNIT_MAG(unit) + BU_CHG_MAG(bu)) > GetUnitMaxMagic(unit))
-		BU_CHG_MAG(bu) = GetUnitMaxMagic(unit) - UNIT_MAG(unit);
+	if ((UNIT_MAG(unit) + BU_CHG_MAG(bu)) > GetUnitMaxStatusMag(unit))
+		BU_CHG_MAG(bu) = GetUnitMaxStatusMag(unit) - UNIT_MAG(unit);
 }
 
 #if 0
@@ -77,6 +77,6 @@ void _UnitCheckStatCaps(struct Unit *unit)
 	UnitCheckStatCapsVanilla(unit);
 
 	/* Hooks */
-	if (UNIT_MAG(unit) > GetUnitMaxMagic(unit))
-		UNIT_MAG(unit) = GetUnitMaxMagic(unit);
+	if (UNIT_MAG(unit) > GetUnitMaxStatusMag(unit))
+		UNIT_MAG(unit) = GetUnitMaxStatusMag(unit);
 }

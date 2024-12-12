@@ -2,6 +2,7 @@
 #include <kernel-lib.h>
 #include <battle-system.h>
 #include <banim-hack.h>
+#include <efx-skill.h>
 
 #define LOCAL_TRACE 0
 
@@ -28,12 +29,7 @@ void BanimC07_UpdateHpCost(struct Anim *anim)
 		NewEfxHpCost(anim);
 }
 
-STATIC_DECLAR void EfxHpCost_Start(struct ProcEfxHpCost *proc)
-{
-	NewEfxAnimNumber(
-		proc->anim,
-		-GetExtBattleHit(proc->anim->nextRoundId - 1)->hp_cost);
-}
+STATIC_DECLAR void EfxHpCost_Start(struct ProcEfxHpCost *proc) {}
 
 STATIC_DECLAR void EfxHpCost_Loop(struct ProcEfxHpCost *proc)
 {
@@ -85,6 +81,10 @@ void NewEfxHpCost(struct Anim *anim)
 	proc->hpend = GetEfxHp((gEfxHpLutOff[pos] + 1) * 2 + pos);
 	proc->diff = -1;
 	proc->anim = anim;
+
+	NewEfxAnimNumber(
+		anim,
+		-GetExtBattleHit(anim->nextRoundId - 1)->hp_cost);
 
 	LTRACEF("round=%d, off=%d, cur=%d, next=%d", anim->nextRoundId - 1, gEfxHpLutOff[pos], proc->hpcur, proc->hpend);
 }

@@ -26,15 +26,30 @@ struct KernelDesigerConfig {
 
 	u8 gaiden_magic_en, gaiden_magic_must_be_magic, gaiden_magic_requires_wrank, \
 		gaiden_magic_ai_en, gaiden_magic_ext_conf_en;
+
+	u8 no_suspend_in_aiphase;
+};
+
+struct KernelBattleDesignerConfig {
+	// ATK percentage on CON calc in attack-speed calculation
+	u8 as_calc_atk_perc;
+
+	// HP drain item percentage
+	u8 nosferatu_hpdrain_perc;
+
+	// AVO deacy indoor for riders
+	u8 rider_debuff_indoor;
 };
 
 extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;
+extern const struct KernelBattleDesignerConfig *const gpKernelBattleDesignerConfig;
 
 /**
  * map.c
  */
 bool IsPositionValid(s8 x, s8 y);
 struct Unit *GetUnitAtPosition(s8 x, s8 y);
+bool CheckOutdoorTerrain(int terrain);
 
 /**
  * mapanim.c

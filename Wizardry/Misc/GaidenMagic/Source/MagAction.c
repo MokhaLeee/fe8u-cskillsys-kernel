@@ -1,5 +1,6 @@
 #include <common-chax.h>
 #include <battle-system.h>
+#include <kernel-tutorial.h>
 
 #include <gaiden-magic.h>
 
@@ -113,6 +114,11 @@ bool ActionGaidenMagicStaff(ProcPtr proc)
 	int slot = gActionData.itemSlotIndex;
 	int item = GetItemFromSlot(gActiveUnit, slot);
 	int hp_cost = GetGaidenWeaponHpCost(gActiveUnit, item);
+
+	if (UNIT_FACTION(gActiveUnit) == FACTION_BLUE) {
+		// TriggerKtutorial(KTUTORIAL_GAIDEN_WMAG);
+		PutKtutHistory(KTUTORIAL_GAIDEN_WMAG);
+	}
 
 	/* Main rountine */
 	ActionStaffDoorChestUseItem(proc);

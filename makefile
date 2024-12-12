@@ -143,6 +143,9 @@ ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
+
+	@echo "[GEN]	SkillInfoDoc"
+	@python3 $(TOOL_DIR)/scripts/dump_skill_info.py > ./docs/SkillInfo.md
 endif
 
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
