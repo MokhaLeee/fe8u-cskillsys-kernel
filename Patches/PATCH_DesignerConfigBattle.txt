@@ -1,0 +1,17 @@
+NAME=[CSKILL_K dev] designer config battle
+AUTHOR=Mokha(悠木晓缺)
+
+IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x30 0x39 0x78 0x00
+
+TYPE=STRUCT
+TAG=#ENGINE
+
+DATASIZE=4
+DATACOUNT=1
+
+POINTER=0xB2A774
+B0:DECIMAL=ATK percentage in AS calc
+B1:DECIMAL=HP drain percentgae for nosferatu
+B2:DECIMAL=AVO deacy for riders indorr
+
+INFO=Editor: gKernelBattleDesignerConfig

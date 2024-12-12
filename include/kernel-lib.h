@@ -28,7 +28,19 @@ struct KernelDesigerConfig {
 		gaiden_magic_ai_en, gaiden_magic_ext_conf_en;
 };
 
+struct KernelBattleDesignerConfig {
+	// ATK percentage on CON calc in attack-speed calculation
+	u8 as_calc_atk_perc;
+
+	// HP drain item percentage
+	u8 nosferatu_hpdrain_perc;
+
+	// AVO deacy indoor for riders
+	u8 rider_debuff_indoor;
+};
+
 extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;
+extern const struct KernelBattleDesignerConfig *const gpKernelBattleDesignerConfig;
 
 /**
  * map.c

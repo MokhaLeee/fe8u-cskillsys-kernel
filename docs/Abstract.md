@@ -22,7 +22,7 @@ FE-ThreeHoses style combat-art has been implemented. You can select art during t
 
 ## Battle calculate
 
-- Attack speed decay: (`weight - con`) --> (`weight - (con + atk/5)`)
+- Attack speed decay: (`weight - con`) --> (`weight - (con + atk * 20%)`)
 - Nosferatu hp-drain percentage: 100% --> 50%
 - Critical damage correction is 300% in default, can be changed by skills.
 - Effectiveness damage correct is 200% in default, can be changed by skills.

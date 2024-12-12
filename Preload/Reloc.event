@@ -126,5 +126,7 @@ gpImg_EfxAnimNumber: POIN Img_EfxAnimNumber
 gpPal_EfxAnimNumber: POIN Pal_EfxAnimNumber
 
 gpUnitMaxStatusConfigTable: POIN gUnitMaxStatusConfigTable
+MESSAGE CURRENTOFFSET
+gpKernelBattleDesignerConfig: POIN gKernelBattleDesignerConfig
 
 KERNEL_RELOC_END:

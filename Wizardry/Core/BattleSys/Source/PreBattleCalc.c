@@ -46,7 +46,9 @@ void ComputeBattleUnitSpeed(struct BattleUnit *bu)
 	// Make sure BattleUnit::battleAttack has been setup
 
 	int wt  = GetItemWeight(bu->weaponBefore);
-	int con = bu->unit.conBonus + simple_div(bu->battleAttack, 5);
+	int con = bu->unit.conBonus;
+	
+	con += simple_div(bu->battleAttack * gpKernelBattleDesignerConfig->as_calc_atk_perc, 100);
 
 	wt -= con;
 	if (wt < 0)
@@ -129,7 +131,7 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
 		int jid = UNIT_CLASS_ID(&bu->unit);
 
 		if (CheckClassFlier(jid) || CheckClassCavalry(jid))
-			status -= 20;
+			status -= gpKernelBattleDesignerConfig->rider_debuff_indoor;
 	}
 
 	bu->battleAvoidRate = status;
