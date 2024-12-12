@@ -44,7 +44,7 @@ FE-ThreeHoses style combat-art has been implemented. You can select art during t
 - Critical damage correction is 300% in default, can be changed by skills.
 - Effectiveness damage correct is 200% in default, can be changed by skills.
 - Unit can use real damage via skills to ignore vanilla damage calculation.
-- Riders may suffer `avo-20%` indoor.
+- Riders may suffer `avo -20%` indoor.
 
 ## Weapon
 
@@ -56,13 +56,13 @@ When attacking the enemy within the range of the companion, ally will participat
 
 ## Surrounder
 
-When a unit is attacked and adjacent to the enemy, each side with enemy may cause unit avoid -10%. If completely surrounded (each side stands an enemy), unit may cause def-5 additionally.
+When a unit is attacked and adjacent to the enemy, each side with enemy may cause unit `avo -10%`. If completely surrounded (each side stands an enemy), unit may cause `def-5` additionally.
 
 Flyer in outdoor environments are not affected by this effect
 
 ## Ranged attack
 
-For non-ballista combat, it will cause the battle actor lose hit rate with the attack distance increases.
+For non-ballista combat, it will cause the battle actor lose hit rate with the attack distance increases (`hit -10%` per distance).
 
 ## Suspend
 
@@ -74,7 +74,7 @@ And this option is runtime-configurable.
 
 ## Gaiden style magic
 
-FE-Gaiden style B.Mag and W.Mag implemented have been implemented. Unit can cost HP to use magic.
+FE-Gaiden style B.Mag and W.Mag have been implemented. Unit can cost HP to use magic.
 
 # Credits
 
