@@ -23,6 +23,7 @@
   PUSH
   ORG $95DF9C
   WORD 0x895D1A8
+  PROTECT 0x0095DD1C 0x0095DFA4 // gConvoBackgroundData
   POP
 
 //Fix dodge to front glitch
@@ -30,6 +31,7 @@ PUSH
 ORG 0x4E9A
 BYTE 0x00 0x00 0x00 0x4D 0xAF 0x46
 POIN SpellFix
+PROTECT 0x00004E40 0x00004EB8 // AnimUpdateAll
 POP
 SpellFix:
 #incbin "Fix_dodge_to_front_glitch/SpellFix.dmp"
