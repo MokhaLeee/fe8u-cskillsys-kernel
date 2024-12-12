@@ -1,0 +1,10 @@
+PUSH
+    ORG 0x002900
+    #incbin "bin/2900.bin"
+
+    ORG 0x002924
+    #incbin "bin/2924.bin"
+
+    ORG 0x0022440C
+    #incbin "bin/0022440c.bin"
+POP

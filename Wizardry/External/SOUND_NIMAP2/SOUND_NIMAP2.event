@@ -1,0 +1,2 @@
+ALIGN 4
+#incbin "FE8_native_instrument_map(revised).bin"
