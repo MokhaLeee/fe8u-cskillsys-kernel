@@ -395,8 +395,12 @@ void MSU_LoadGreenUnitExtSkills(u8 *src, const u32 size)
 
 void MSU_SaveSelectionPos(u8 *dst, const u32 size)
 {
-	Assert(size >= sizeof(gActiveUnitMoveOrigin));
+	Assert(size >= (sizeof(gActiveUnitMoveOrigin) + sizeof(gBattleTargetPositionBackup)));
+
 	WriteAndVerifySramFast(&gActiveUnitMoveOrigin, dst, sizeof(gActiveUnitMoveOrigin));
+
+	dst += sizeof(gActiveUnitMoveOrigin);
+	WriteAndVerifySramFast(&gBattleTargetPositionBackup, dst, sizeof(gBattleTargetPositionBackup));
 }
 
 void MSU_LoadSelectionPos(u8 *src, const u32 size)

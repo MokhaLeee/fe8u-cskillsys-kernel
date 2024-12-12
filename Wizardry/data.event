@@ -30,12 +30,5 @@
 #include "Core/CombatArt/data.event"
 #include "Core/ComboAttack/data.event"
 #include "Core/Movement/MovementData.event"
-#include "External/Individual_animation_ea_2/data.event"
 
-#ifdef CONFIG_INSTALL_STATSCREENFX
-    #include "External/StatScreenfx/_data.event"
-#endif
-
-#ifdef CONFIG_INSTALL_MAPACTIONANIM
-    #include "External/DrawMapActionAnimation/data.event"
-#endif
+#include "External/ExternalPatchData.event"

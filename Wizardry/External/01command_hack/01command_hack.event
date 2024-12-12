@@ -1,0 +1,8 @@
+PUSH
+    ORG 0x5138
+    #incbin "00005138.bin"
+    PROTECT 0x00005040 0x000051C0 // AnimInterpret
+
+    ORG 0x464420
+    #incbin "00464420.bin"
+POP

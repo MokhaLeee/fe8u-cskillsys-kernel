@@ -8,6 +8,7 @@ ALIGN 4
 PUSH
 ORG $571E8  //FE8U
 jumpToHack_r0(IndividualAnimation7743)
+PROTECT 0x00056FF8 0x00057CAC // PrepareBattleGraphicsMaybe
 POP
 
 IndividualAnimation7743:
@@ -19,6 +20,7 @@ POIN CustomAnimeTable
 PUSH
 ORG $CD0E0  //FE8U
 jumpToHack(IndividualAnimation7743_CC)
+PROTECT 0x000CD014 0x000CD1D4 // LoadBattleSpritesForBranchScreen
 POP
 
 IndividualAnimation7743_CC:

@@ -1,0 +1,5 @@
+PUSH
+    ORG 0x18a58
+    #incbin "MeleeAndMagicFix_FE8U.dmp"
+    PROTECT 0x00018A58 0x00018A7C // UnitHasMagicRank
+POP

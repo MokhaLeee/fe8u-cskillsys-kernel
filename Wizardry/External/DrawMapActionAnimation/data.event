@@ -9,6 +9,7 @@ PUSH // Only vanilla address that we take over.
 ORG $81274 // Poin to the vanilla proc	//{U}
 //ORG $835B4 // Poin to the vanilla proc	//{J}
 POIN gProc_MapAnimRound_Animation
+PROTECT 0x00081260 0x00081278 // GetItemAnim6CCode
 POP 
 
 // Vanilla's default is 28 frames here. 

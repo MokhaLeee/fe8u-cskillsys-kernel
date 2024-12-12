@@ -1,0 +1,15 @@
+
+PUSH
+//ORG 0x05a870	//FE8J
+ORG 0x059ACC	//FE8U
+jumpToHack(AutoGenLeftOAM)
+// Protected in /Wizardry/Core/DebuffRework/Source/MiscHooks.event:19:5
+// PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
+POP
+
+ALIGN 4
+AutoGenLeftOAM:
+// #incbin "AutoGenLeftOAM.dmp"
+#incbin "AutoGenLeftOAM.bin"
+
+ALIGN 4

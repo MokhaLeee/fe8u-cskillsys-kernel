@@ -1,0 +1,26 @@
+#include "Individual_animation_ea_2/data.event"
+
+#ifdef CONFIG_INSTALL_STATSCREENFX
+    #include "StatScreenfx/_data.event"
+#endif
+
+#ifdef CONFIG_INSTALL_MAPACTIONANIM
+    #include "DrawMapActionAnimation/data.event"
+#endif
+
+#ifdef CONFIG_INSTALL_NON_KERNEL_PATCH
+    #include "m4a_hq_mixer/SoundMixer.txt"
+    #include "16_tracks_12_sounds_patch/16_tracks_12_sounds_patch.event"
+    #include "AutoGenLeftOAM/installer.txt"
+    #include "01command_hack/01command_hack.event"
+    #include "48command_hack/48command_hack.event"
+    #include "DecideOnDangerMap/DecideOnDangerMap.event"
+    #include "MeleeAndMagicFix_ItemFix20220721/MeleeAndMagicFix_ItemFix20220721.event"
+    #include "drumfix/drumfix.event"
+    #include "BattleTransforming/FE8-BattleTransformEA.txt"
+    #include "CSA_Creator_For_FE8U_ver2/Master_Spell_Animation_Installer.event"
+
+	// These two patch are too large and can only be installed in 0x01000000
+    // #include "AllInstrumentEA/AllInstrument.event"
+    // #include "SOUND_NIMAP2/SOUND_NIMAP2.event"
+#endif // CONFIG_INSTALL_NON_KERNEL_PATCH

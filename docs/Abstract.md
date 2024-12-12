@@ -19,8 +19,13 @@ You can choose from the following options:
 
 ## Skill
 
-[Skills glossary](./SkillInfo.md)
-[SkillSystem](./SkillSys.md)
+- [Skills glossary](./SkillInfo.md)
+- [SkillSystem](./SkillSys.md)
+
+- 500+ skills in implement.
+- Learnable equipable in prepscreen (designer configurable).
+- Skill scroll activated.
+- Skill activate anim for both banim/mapanim.
 
 ## Combat art
 
@@ -39,12 +44,13 @@ FE-ThreeHoses style combat-art has been implemented. You can select art during t
 
 ## Battle calculate
 
+- STR/MAG splited.
 - Attack speed decay: (`weight - con`) --> (`weight - (con + atk * 20%)`)
-- Nosferatu hp-drain percentage: 100% --> 50%
+- Nosferatu hp-drain percentage: 100% --> 50%.
 - Critical damage correction is 300% in default, can be changed by skills.
 - Effectiveness damage correct is 200% in default, can be changed by skills.
 - Unit can use real damage via skills to ignore vanilla damage calculation.
-- Riders may suffer `avo-20%` indoor.
+- Riders may suffer `avo -20%` indoor.
 
 ## Weapon
 
@@ -56,13 +62,17 @@ When attacking the enemy within the range of the companion, ally will participat
 
 ## Surrounder
 
-When a unit is attacked and adjacent to the enemy, each side with enemy may cause unit avoid -10%. If completely surrounded (each side stands an enemy), unit may cause def-5 additionally.
+When a unit is attacked and adjacent to the enemy, each side with enemy may cause unit `avo -10%`. If completely surrounded (each side stands an enemy), unit may cause `def-5` additionally.
 
 Flyer in outdoor environments are not affected by this effect
 
 ## Ranged attack
 
-For non-ballista combat, it will cause the battle actor lose hit rate with the attack distance increases.
+For non-ballista combat, it will cause the battle actor lose hit rate with the attack distance increases (`hit -10%` per distance).
+
+## Convoy
+
+Convoy items has been expanded to 200.
 
 ## Suspend
 
@@ -74,7 +84,15 @@ And this option is runtime-configurable.
 
 ## Gaiden style magic
 
-FE-Gaiden style B.Mag and W.Mag implemented have been implemented. Unit can cost HP to use magic.
+FE-Gaiden style B.Mag and W.Mag have been implemented. Unit can cost HP to use magic.
+
+## Debuff
+
+[Debuff](./Debuff.md)
+
+Basic debuffs can keep no more than 3 turns.
+
+Some combat related debuffs can overlap and exist simultaneously but just hold one turn.
 
 # Credits
 
