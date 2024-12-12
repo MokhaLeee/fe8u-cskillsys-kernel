@@ -7,11 +7,12 @@ PUSH
     SHORT 0x0E80 // lsr r0, r0, #0x1A
     PROTECT $54A1C $54B18
 
-    ORG $70BA0 // RegisterEkrDragonStatusType
-    BYTE $3F
-    ORG $70C5E
-    BYTE $3F
-    PROTECT 0x00070B3C 0x00070D04 // RegisterEkrDragonStatusType
+    // Already hooked in: Wizardry/External/BattleTransforming/Set_Background.s
+    // ORG $70BA0 // RegisterEkrDragonStatusType
+    // BYTE $3F
+    // ORG $70C5E
+    // BYTE $3F
+    // PROTECT 0x00070B3C 0x00070D04 // RegisterEkrDragonStatusType
 
     ORG $59A8C // UpdateBanimFrame
     BYTE $3F
