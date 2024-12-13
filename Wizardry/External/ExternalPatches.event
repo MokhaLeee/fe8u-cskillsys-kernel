@@ -99,4 +99,8 @@
 //     #include "VeslyExtendedItemDescription/Installer.event"
 // #endif
 
+#ifdef CONFIG_LAZBERIAN_TURN_FLOW
+    #include "LazberianTurnFlow/Installer.event"
+#endif
+
 #include "FE8_Rewritten_Terper/Installer.event"

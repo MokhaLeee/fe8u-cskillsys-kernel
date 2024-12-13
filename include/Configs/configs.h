@@ -267,7 +267,16 @@
 ** - When looking at the supply list
 ** - When selecting the R button when looking at the use menu in the manage units panel
 */
-#define CONFIG_EXTENDED_HELPBOXES
+// #define CONFIG_EXTENDED_HELPBOXES
+
+/*
+** By Stan
+** This introduces a dynamic turn flow where control passes between
+** different factions after each unit moves.
+** Source: https://feuniverse.us/t/fe8u-stans-asm-stuff/2376/19
+**
+*/
+// #define CONFIG_LAZBERIAN_TURN_FLOW
 
 /**
  * Levelup mode

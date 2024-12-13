@@ -1,0 +1,64 @@
+#ifndef LTF_INCLUDED
+#define LTF_INCLUDED
+
+// Edit this file if you want LTF enabling logic to be different
+// By default, it checks if the current chapter id is in gLTFChapterEnableList.
+
+#include "LTF-Internals.event"
+
+#include "SrcUser/IsLtfEnabled.lyn.event"
+
+gLTFChapterEnableList:
+	BYTE 0
+	BYTE 0x1
+	BYTE 0x2
+	BYTE 0xFF // end
+
+// Those are the graphics for the turn change effect
+// Feel free to edit those (you probably should)
+
+ALIGN 4
+gLTFTurnSwitchSheetImg:
+	#incbin "Data/TurnSwitchSheet.4bpp.lz"
+
+ALIGN 4
+gLTFTurnSwitchSheetPal:
+	#incbin "Data/TurnSwitchSheet.gbapal"
+
+// BIG-STUFF-TO-DO-AND-TO-FIX-LIST-THING:
+
+// Done: Only one action per player phase
+// Done: Have CPPHASE only do one unit
+// Done: Not reset unit state on phase switch
+// Done: Phase switch depends on units left to move
+// Done: Redo the AI to do things in a less stupid order
+// Fixed: Player phase leaves active unit map sprite hidden for a few frames too long
+// Done: Not display phase switch screen effect unless this is new turn
+// Done: Display the things!
+// WontDo: Display "E"s instead of graying the units out (ala Berwick)
+// Done: Allow holding (R) to display non-grayed out map sprites
+// Done: Wait command ends the turn of every player unit
+// Done: Turn events always trigger regarless of phase
+// Done: Update status effects for *everyone* on turn change
+// Done: Properly update traps on turn change
+// Fixed: Cursor jumps around after AI phase
+// Done: Account for Berserk Phase somehow
+// Done: Redo the Berserk AI in the same way the regular AI was redone
+// Done: Autocursor takes the first unit *that hasn't moved yet*
+// Fixed: Autocursor Off is broken
+// Done: Restore the additional AI behaviors (escaping/lockpicking)
+// Fixed: some AI2 seem broken
+// Done: Not display predictions sometimes (during cutscenes/menus/etc?)
+// Done: Not move camera to enemy before each enemy move
+// Done: Change phase switch screen effect to show something like "TURN xyz" instead of "PLAYER PHASE"
+// Fixed: Turn switch blend doesn't work on sprites, resulting in weirdities. (fixed by using bg1 for blend instead of objs).
+// Fixed: Turn starts at 0
+// Fixed: Turn order display doesn't update during turn transition
+// Done: LTF is now toggleable on a per chapter basis
+
+// Todo: Test
+
+// KNOWN ISSUES:
+//   AI can take its time to make a decision
+
+#endif // LTF_INCLUDED

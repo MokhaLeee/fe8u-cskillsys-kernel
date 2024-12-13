@@ -1,0 +1,335 @@
+#ifndef LTF_INTERNALS_INCLUDED
+#define LTF_INTERNALS_INCLUDED
+
+#include "LynJump.event"
+
+#include "Extensions/Hack Installation.txt"
+#include "Extensions/ProcDefinitions.txt"
+
+#ifndef SetSymbolDefined
+	#define SetSymbolDefined
+
+	#define SetSymbol(aName, aValue) "PUSH; ORG (aValue); aName:; POP"
+//	#define SetSymbol(aName, aValue) "aName = (aValue)"
+#endif // SetSymbolDefined
+
+#include "Src/LTFCore.lyn.event"
+#include "Src/LTFPhaseSwitch.lyn.event"
+#include "Src/LTFDisplay.lyn.event"
+#include "Src/LTFMapSprite.lyn.event"
+#include "Src/LTFEndPlayerPhase.lyn.event"
+#include "Src/LTFAutocursor.lyn.event"
+#include "Src/LTFAi.lyn.event"
+#include "Src/LTFTurnSwitchFx.lyn.event"
+
+#include "Src/LTFHooks.lyn.event"
+
+#include "Src/LTF-Toggleable.lyn.event"
+#include "Src/LTF-Toggleable-Hooks.lyn.event"
+
+PUSH
+
+	// Conditionally replace BMAPMAIN
+	// (LTF-T) Exclusive
+	ORG $0311BC
+		jumpToHack(LTFT_StartBmMainHook)
+	SetSymbol(LTFT_GotoFindBmMain, CURRENTOFFSET)
+		jumpToHack(LTFT_FindBmMainHook)
+	SetSymbol(LTFT_GotoTurnEventCheckHook, CURRENTOFFSET)
+		WORD $47204C00; POIN LTFT_TurnEventCheckHook
+
+	// ^
+	ORG $01558E
+		SHORT $46C0
+		BL(LTFT_GotoFindBmMain)
+
+	// ^^
+	ORG $01C34E
+		SHORT $46C0
+		BL(LTFT_GotoFindBmMain)
+
+	// ^^^
+	ORG $01C37E
+		SHORT $46C0
+		BL(LTFT_GotoFindBmMain)
+
+	// ^^^^
+	ORG $0311F8
+		SHORT $46C0
+		BL(LTFT_GotoFindBmMain)
+
+	// End player phase after an action was taken
+	// (LTF-T) Changed
+	ORG $59AC00
+		PROC_CALL_ROUTINE(LTFT_PlayerPhaseEndHook)
+
+	// ^
+	ORG $59AC78
+		PROC_CALL_ROUTINE(LTFT_PlayerPhaseEndHook)
+
+	// Display prediction icons on the side of the screen
+	// (replaces the mist thing background effect that breaks hpbars anyway)
+	// This is obsolete and has been redone in a better way
+	// ORG $59D93C
+	//	POIN LTF_DisplayPhasePredictions
+
+	// Update map sprite palettes when R button press changes state
+	// (Hopefully allows the player to be less confused as to what color is what unit)
+	// (LTF-T) Intentionally unchanged
+	ORG $59D934
+		POIN LTFMapSprite_UpdateAll
+
+	// Allow TURN events to run regardless of phase
+	// (LTF-T) Changed to check
+	ORG $08388A
+		BL(LTFT_GotoTurnEventCheckHook)
+
+	// Every unit gets their status refresh on turn switch (status turn decrement start)
+	// (LTF-T) Ugh
+	ORG $01886A
+		SHORT $46C0 // nop
+		jumpToHack(LTFT_ListFactionTickHook)
+
+	// ^
+	ORG $01891C
+		jumpToHack(LTFT_ListFactionTickHook_Continue)
+
+	// ^^ (terrain heal start)
+	// (LTF-T) Ugh
+	ORG $025904
+		jumpToHack(LTFT_ListTerrainHealHook)
+
+	// ^
+	ORG $0259D0
+		WORD $46C046C0 // nop nop
+		SHORT $4547 // cmp r7, r8
+
+	// ^^^^ (poison damage start)
+	// (LTF-T) Ugh
+	ORG $0259EC
+		jumpToHack(LTFT_ListPoisonDamageHook)
+
+	// ^
+	ORG $025A4C
+		WORD $46C046C0 // nop nop
+		SHORT $4547 // cmp r7, r8
+
+	// ^^^^^^ (gorgon egg hatching start)
+	// (LTF-T) Ugh
+	ORG $025A64
+		jumpToHack(LTFT_ListEggHatchesHook)
+
+	// ^
+	ORG $025B04
+		WORD $46C046C0 // nop nop
+		SHORT $42BE // cmp r6, r7
+
+	// Always update traps
+	// (LTF-T) Changed to always update only when LTF not enabled
+	ORG $0154C8
+		jumpToHack(LTFT_UpdateTrapsHook)
+
+	// Do not get camera coords for start of enemy phase
+	// (LTF-T) Changed to still return when LTF not enabled
+	ORG $01DE88
+		jumpToHack(LTFT_GetEnemyStartCursorPositionHook)
+
+	// Only one unit per AI phase (very hacky version)
+	// ORG $039A2C
+	//	SHORT $2001 // mov r0, #1
+
+	// Do not loop CPDECIDE
+	// (LTF-T) Changed to only loop when LTF not enabled
+	ORG $5A7FF4
+		PROC_CALL_ROUTINE(LTFT_CpDecideLoopCheck)
+
+	// Do not reset decide index (should fix loot ai and other things)
+	// (LTF-T) Changed
+	ORG $039B04
+		jumpToHack(LTFT_CpDecideMainHook1)
+
+	// Allow for hard "end turn" AI actions
+	// (LTF-T) Unchanged
+	ORG $039BA4
+		SHORT $E018
+
+	// Change state check when building the AI unit list
+	// (LTF-T) Added US_HAS_MOVED_AI back, which is exclusively set on non-LTF AI
+	ORG $039A48
+		WORD $467 // US_HIDDEN | US_UNSELECTABLE | US_HAS_MOVED | US_DEAD | US_RESCUED | US_HAS_MOVED_AI
+
+	// Don't set US_HAS_MOVED_AI after trying to move a AI-controlled unit
+	// (LTF-T) Exclusive
+	ORG $039B90
+		jumpToHack(LTFT_CpDecideMainHook2)
+
+	// Change the way AI works big time by replacing the CPORDER routine list
+	// (LTF-T) Changed
+	ORG $5A7F68
+		POIN LTFT_CpOrderMainHook
+
+	// ^ But for Berserk AI by replacing the BSKORDER proc itself
+	// (LTF-T) Changed
+	ORG $03975C
+		jumpToHack(LTFT_StartBskPhaseHook)
+
+	// Disable prediction display when disabling game gfx
+	// (LTF-T) No changes needed
+	ORG $030198
+		jumpToHack(LTFHook_InDisableBattleMapGfx)
+
+	// Restore prediction display when restoring game gfx
+	// (LTF-T) No changes needed
+	ORG $0301D0
+		jumpToHack(LTFHook_InRestoreBattleMapGfx)
+
+	// Disable prediction display when starting anims-on battle
+	// (Otherwise it will kind of do weird stuff)
+	// (LTF-T) No changes needed
+	ORG $5B9AD4
+		PROC_JUMP(LTFBattleStartingProcHook)
+
+POP
+
+ALIGN 4
+LTFTMapMain:
+{
+
+SetSymbol(chapter_intro,       0)
+SetSymbol(chapter_start,       1)
+SetSymbol(fast_chapter_intro,  2)
+SetSymbol(phase_switch,        3)
+SetSymbol(resume_phase_idle,   4)
+SetSymbol(phase_start_control, 5)
+SetSymbol(resume_action,       6)
+SetSymbol(resume_berserk,      7)
+SetSymbol(resume_phase_start,  8)
+SetSymbol(turn_start,          9) // was phase_start before
+SetSymbol(resume_arena,        10)
+SetSymbol(chapter_start_end,   11)
+SetSymbol(berserk_phase,       12)
+
+	PROC_SET_NAME(LTFTMapMain_Name)
+	PROC_SET_MARK(2)
+
+	PROC_CALL_ROUTINE(LTF_StartPredictionDisplay)
+
+	PROC_SLEEP(0)
+
+PROC_LABEL(chapter_intro)
+	PROC_CALL_ROUTINE($01550D) // MapMain_StartIntroFx
+	PROC_SLEEP(0)
+
+PROC_LABEL(chapter_start)
+	PROC_CALL_ROUTINE($085971) // TriggerDisableMapIcons
+	PROC_CALL_ROUTINE($018DB1) // MapMain_UpdatePrevDeployStates 
+	PROC_CALL_ROUTINE_2($0153D5) // MapMain_CallBeginningEvent
+	PROC_CALL_ROUTINE($015545) // MapMain_DeployEveryone
+
+PROC_LABEL(chapter_start_end)
+	PROC_CALL_ROUTINE($08597D) // UnTriggerDisableMapIcons
+	PROC_CALL_ROUTINE(LTF_InitCursorMemory)
+
+	PROC_CALL_ROUTINE(LTF_GotoNextTurn)
+
+PROC_LABEL(turn_start)
+	PROC_SLEEP(0)
+
+	PROC_NEW_CHILD($59AE00) // gProc_ResetCursorPosition
+
+	PROC_NEW_CHILD_BLOCKING(gProc_TurnSwitchFx)
+
+	PROC_CALL_ROUTINE($028435) // ProcessTurnSupportExp
+	PROC_CALL_ROUTINE(LTF_ResetUnitsStateForTurnSwitch)
+	PROC_CALL_ROUTINE($0271A1) // SMS_UpdateFromGameData
+
+	PROC_CALL_ROUTINE(LTF_EnablePredictionDisplay)
+
+	PROC_WHILE_EXISTS($59A548) // gProc_CameraMovement
+	PROC_WHILE_EXISTS(gProc_TurnSwitchFx)
+
+	PROC_CALL_ROUTINE($018859) // MapMain_UpdateUnitStatus
+	PROC_NEW_CHILD_BLOCKING($59E438) // gProc_StatusDepletionLoop
+	PROC_NEW_CHILD_BLOCKING($59E308) // gProc_TerrainHealLoop
+	PROC_NEW_CHILD_BLOCKING($59E368) // gProc_PoisonDamageLoop
+	PROC_NEW_CHILD_BLOCKING($59E3D0) // gProc_GorgonEggHatchLoop
+
+	PROC_CALL_ROUTINE_2($0154C9) // MapMain_UpdateTraps
+
+PROC_LABEL(phase_switch)
+	PROC_CALL_ROUTINE_2(LTF_MapMainPhaseSwitch)
+
+	PROC_CALL_ROUTINE($0154F5) // MapMain_Suspend
+
+PROC_LABEL(phase_start_control)
+	PROC_CALL_ROUTINE(LTF_EnablePredictionDisplay)
+
+	PROC_NEW_CHILD_BLOCKING($59AE00) // gProc_ResetCursorPosition
+	PROC_LOOP_ROUTINE($015451) // MapMain_StartPhaseController
+
+	PROC_GOTO(phase_switch)
+
+PROC_LABEL(fast_chapter_intro)
+	PROC_CALL_ROUTINE($0155C5) // MapMain_ChapterSwitch
+	PROC_SLEEP(0)
+
+	PROC_NEW_CHILD_BLOCKING($59B578) // gProc_ChapterIntroTitleOnly
+	PROC_SLEEP(0)
+
+	PROC_GOTO(chapter_start)
+
+PROC_LABEL(resume_phase_idle) // Suspend Actions #0 (player phase idle) & #2 (cp phase idle)
+PROC_LABEL(resume_phase_start) // Suspend action #9 (after phase switch)
+	PROC_NEW_CHILD_BLOCKING(LTFResumeToMapProc)
+
+	PROC_GOTO(phase_start_control)
+
+PROC_LABEL(resume_action) // Suspend actions #1 (before action)
+	PROC_NEW_CHILD_BLOCKING(LTFResumeToMapProc)
+
+PROC_LABEL(resume_arena) // Suspend action #4 (during arena fight)
+	PROC_SLEEP(0)
+	PROC_LOOP_ROUTINE($0154A5) // StartPlayerPhaseAndApplyAction
+
+	PROC_GOTO(phase_switch)
+
+PROC_LABEL(resume_berserk)
+	PROC_NEW_CHILD_BLOCKING(LTFResumeToMapProc)
+
+PROC_LABEL(berserk_phase)
+	PROC_NEW_CHILD_BLOCKING($5A7F30) // gProc_BerserkPhase
+
+	PROC_GOTO(phase_switch)
+
+	PROC_END // end
+
+LTFResumeToMapProc:
+	PROC_CALL_ROUTINE($019C3D) // DrawTileGraphics
+	PROC_CALL_ROUTINE($0160D1) // UpdatePlayMapMusic
+	PROC_CALL_ROUTINE($013D8D) // StartFadeOutBlackMedium
+	PROC_LOOP_ROUTINE($014069) // WaitForFade
+
+	PROC_END // end
+
+LTFTMapMain_Name:
+	String(LTFMAIN)
+	BYTE 0
+
+}
+
+LTFPlayerPhaseProcHook:
+	// Clean up graphics
+	// (if we end immediately, we end up have the active map sprite not displayed for a few frames)
+	PROC_CALL_ROUTINE($01A1F5) // RefreshEntityMaps
+	PROC_CALL_ROUTINE($019C3D) // DrawTileGraphics
+	PROC_CALL_ROUTINE($0271A1) // SMS_UpdateFromGameData
+
+	PROC_WHILE_ROUTINE($01DE19) // BMXFADEExists
+
+	PROC_END
+
+LTFBattleStartingProcHook:
+	PROC_CALL_ROUTINE(LTF_DisablePredictionDisplay)
+	PROC_JUMP($5B9ADC)
+
+#endif // LTF_INTERNALS_INCLUDED

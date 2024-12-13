@@ -29,7 +29,7 @@ ORG 0x02A8C2 // SetBattleUnitWeapon
 
 ORG 0x0398E8
     BL(_prMaxFromR5)
-    PROTECT $39898 $39938
+    // PROTECT $39898 $39938
 
 ORG 0x03D014
     BL(_prMinFromActiveUnit)

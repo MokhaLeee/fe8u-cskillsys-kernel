@@ -114,11 +114,11 @@ PUSH
 
     ORG $25A22 // MakePoisonDamageTargetList
     BYTE 0x3F
-    PROTECT $259EC $25A64
+    // PROTECT $259EC $25A64
 
     ORG $25AA6 // MakeGorgonEggHatchTargetList
     BYTE 0x3F
-    PROTECT $25A64 $25B18
+    // PROTECT $25A64 $25B18
 
     ORG $25B44 // TryAddUnitToRefreshTargetList
     BYTE 0x3F
@@ -209,7 +209,7 @@ PUSH
     PROTECT $3E900 $3E93C
 
     /*
-    ** Needed for berserk skill
+    ** Needed to disable for berserk skill
     */
     // ORG $397F0 // CpOrderBerserkInit
     // BYTE 0x3F
