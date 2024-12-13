@@ -1,0 +1,13 @@
+/**
+ * Same as: https://feuniverse.us/t/pikmin-asm/8148/31
+ */
+
+#include "Source/Reorganize.lyn.event"
+// #include "data.event"
+
+PUSH
+	ORG 0x59D120
+	POIN gItemSubMenuItemsRework
+	PROTECT 0x0059D118 0x0059D13C // gItemSubMenuDef
+	PROTECT 0x00023428 0x00023498 // ItemSelectMenu_Effect
+POP

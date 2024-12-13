@@ -18,3 +18,10 @@ Swap position?        [NL][Yes][X]
 
 ## MSG_GaidenMagic_ItemMenuDisabled
 Can not use now![NL][X]
+
+## MSG_ItemSubOption_Reorganize_NAME
+Reorg[.][X]
+
+## MSG_ItemSubOption_Reorganize_DESC
+Reorganize this item to[.][LF]
+the top of inventory.[.][X]
