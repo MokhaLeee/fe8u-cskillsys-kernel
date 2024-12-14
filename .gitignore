@@ -13,7 +13,7 @@ install-devkitpro-pacman
 
 # Tools
 # Tools/EventAssembler/
-Tools/FE-PyTools/
+# Tools/FE-PyTools/
 # Tools/FE-CLib-Mokha/
 # Tools/dotnet-install.sh
 
