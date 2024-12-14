@@ -70,15 +70,6 @@
     #include "VeslySupportPostBattle/Installer.event"
 #endif
 
-/** 
- * This weirdly causes compile issues right now unless I comment it out here,
- * despite the fact the definition is commented out in configs.h
- */
-// #ifdef CONFIG_MODULAR_STAT_SCREEN_GORGON_EGG
-//     #include "GorgonEgg/output/Installer.event"
-// #endif
-
-
 #ifdef CONFIG_ITEM_INDEX_SKILL_STEALER
     #include "JesterHacks/SkillStealer/Installer.event"
 #endif
@@ -102,5 +93,8 @@
 #ifdef CONFIG_LAZBERIAN_TURN_FLOW
     #include "LazberianTurnFlow/Installer.event"
 #endif
+
+// A lot of fixing to do with this
+// #include "FourthAllegiance/Installer.event"
 
 #include "FE8_Rewritten_Terper/Installer.event"

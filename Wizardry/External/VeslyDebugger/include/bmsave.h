@@ -476,7 +476,7 @@ int GetTotalSupportCollection(void);
 int GetGlobalBestSupport(int unitA, int unitB, struct GlobalSaveInfo *info);
 void GetGlobalSupportListFromSave(int unitId, u8* data, struct GlobalSaveInfo* buf);
 bool UpdateBestGlobalSupportValue(int unitA, int unitB, int supportRank);
-void SGM_SetCharacterKnown(s32 charId, struct GlobalSaveInfo* buf);
+// void SGM_SetCharacterKnown(s32 charId, struct GlobalSaveInfo* buf);
 bool GGM_IsCharacterKnown(int index, struct GlobalSaveInfo *buf);
 int GGM_IsAnyCharacterKnown(struct GlobalSaveInfo *buf);
 void sub_80A3868(void);
