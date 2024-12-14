@@ -17,8 +17,10 @@ Modern CHAX for FE8U-SkillSystem.
         - The Three Houses style hit rate which decreases with your range from your foe.
         - Engage style combo-attack
         - The combat calculation formula has been restructured to allow for more precise manipulation of damage increases and reductions. This has allowed for the introduction of a large number of FE-Heroes skills based on that.
-        - Arms scroll
-        
+        -  <details>
+                <summary>Arms Scroll</summary>
+                <video src="https://github.com/user-attachments/assets/9fdaa295-4c35-4c39-b3d9-a356616a1ec2" width="360" height="240"></video>
+           </details>
     - Reworked the ARM movement calculation function tp enable more Heroes style mobility skills to be introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the Pass skill.
 
 2. Animation and UI effects
