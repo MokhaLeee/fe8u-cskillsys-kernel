@@ -7,7 +7,7 @@ install-devkitpro-pacman
 *.gba
 *.sav
 *.sym
-*.ref.s
+# *.ref.s
 *.ref.event
 *.bsdiff
 
