@@ -23,19 +23,19 @@ Modern CHAX for FE8U-SkillSystem.
            </details>
         -  <details>
                 <summary>Skill Stealer - By Jester</summary>
-                <video src=""></video>
+                <video src="https://github.com/user-attachments/assets/0013e3ac-c320-4689-a404-7d6b39332373"></video>
            </details>
         -  <details>
                 <summary>Lazberian Turn Flow - By Stan</summary>
-                <video src=""></video>
+                <video src="https://github.com/user-attachments/assets/c0ef4c4c-5f08-46eb-b75d-9cef135f2d89"></video>
            </details>
         -  <details>
                 <summary>Support Post Battle - By Vesly</summary>
-                <video src=""></video>
+                <video src="https://github.com/user-attachments/assets/66f8d2e0-8cc0-4297-8857-6a1d75712fbf"></video>
            </details>
         -  <details>
                 <summary>Heart Seals - By Vesly</summary>
-                <video src=""></video>
+                <video src="https://github.com/user-attachments/assets/141ce2ad-c37d-4db3-850c-8d83ab405472"></video>
            </details>
 
 
