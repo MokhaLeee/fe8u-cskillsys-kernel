@@ -18,9 +18,27 @@ Modern CHAX for FE8U-SkillSystem.
         - Engage style combo-attack
         - The combat calculation formula has been restructured to allow for more precise manipulation of damage increases and reductions. This has allowed for the introduction of a large number of FE-Heroes skills based on that.
         -  <details>
-                <summary>Arms Scroll</summary>
-                <video src="https://github.com/user-attachments/assets/9fdaa295-4c35-4c39-b3d9-a356616a1ec2" width="360" height="240"></video>
+                <summary>Arms Scroll - By Jester</summary>
+                <video src="https://github.com/user-attachments/assets/9fdaa295-4c35-4c39-b3d9-a356616a1ec2"></video>
            </details>
+        -  <details>
+                <summary>Skill Stealer - By Jester</summary>
+                <video src=""></video>
+           </details>
+        -  <details>
+                <summary>Lazberian Turn Flow - By Stan</summary>
+                <video src=""></video>
+           </details>
+        -  <details>
+                <summary>Support Post Battle - By Vesly</summary>
+                <video src=""></video>
+           </details>
+        -  <details>
+                <summary>Heart Seals - By Vesly</summary>
+                <video src=""></video>
+           </details>
+
+
     - Reworked the ARM movement calculation function tp enable more Heroes style mobility skills to be introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the Pass skill.
 
 2. Animation and UI effects
@@ -83,7 +101,7 @@ source ~/.bashrc
 3. Build EA
 
 > [!WARNING]
-> Please **Strictly** follow the following steps to build linux EA by yourself.
+> Please **Strictly** follow these steps to build linux EA for yourself.
 
 Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
 
@@ -112,10 +130,7 @@ cd Tools/EventAssembler
 make
 ```
 
-> [!NOTE]
-> If gcc report error, update C-Lib and retry, see [#155](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/discussions/115)
-
-It build such outputs
+The following files are built and output to the root of the repo
 
 | Name      | Desc 			|
 | :--------	| :-----------	|
