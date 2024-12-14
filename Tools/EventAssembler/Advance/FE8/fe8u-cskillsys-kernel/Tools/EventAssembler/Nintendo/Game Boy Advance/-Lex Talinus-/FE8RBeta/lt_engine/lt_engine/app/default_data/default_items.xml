@@ -1,0 +1,58 @@
+<item_data>
+    <!-- Physical Weapons -->
+    <!-- Swords -->
+    <item name="Iron Sword">
+        <id>Iron Sword</id>
+        <icon_fn>Sword</icon_fn>
+        <icon_id>0</icon_id>
+
+        <value>10</value>
+        <range>1</range>
+        <desc></desc>
+
+        <components>weapon,might,hit,crit,weight,level,uses</components>
+
+        <weapon>Sword</weapon>
+        <might>5</might>
+        <hit>90</hit>
+        <crit>0</crit>
+        <level>E</level>
+        <weight>5</weight>
+        <uses>46</uses>
+    </item>
+
+    <!-- Spells -->
+    <item name="Heal">
+        <id>Heal</id>
+        <icon_fn>Staff</icon_fn>
+        <icon_id>0</icon_id>
+
+        <value>20</value>
+        <range>1</range>
+        <desc>Restores (User's Magic + 10) HP</desc>
+
+        <components>spell,heal_on_hit,level,uses</components>
+
+        <spell>Staff,Beneficial,Ally</spell>
+        <level>E</level>
+        <heal_on_hit>10</heal_on_hit>
+        <uses>30</uses>
+    </item>
+
+    <!-- Other Items -->
+    <item name="Vulnerary">
+        <id>Vulnerary</id>
+        <icon_fn>Consumable</icon_fn>
+        <icon_id>0</icon_id>
+
+        <value>100</value>
+        <range>0</range>
+        <desc>Restores 10 HP.</desc>
+
+        <components>usable,heal_on_use,uses</components>
+
+        <heal_on_use>10</heal_on_use>
+        <uses>3</uses>
+    </item>
+
+</item_data>

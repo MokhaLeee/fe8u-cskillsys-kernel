@@ -1,0 +1,15 @@
+# [submodule ".Sources/ColorzCore"]
+# 	path = .Sources/ColorzCore
+# 	url = https://github.com/StanHash/ColorzCore.git
+# [submodule ".Sources/EAStandardLibrary"]
+# 	path = .Sources/EAStandardLibrary
+# 	url = https://github.com/StanHash/EAStandardLibrary.git
+# [submodule ".Sources/ea-dep"]
+# 	path = .Sources/ea-dep
+# 	url = https://github.com/StanHash/ea-dep.git
+# [submodule ".Sources/lyn"]
+# 	path = .Sources/lyn
+# 	url = https://github.com/StanHash/lyn.git
+# [submodule ".Sources/EAFormattingSuite"]
+# 	path = .Sources/EAFormattingSuite
+# 	url = https://github.com/StanHash/EAFormattingSuite.git

@@ -1,0 +1,10 @@
+<terrain_data>
+    <terrain name="Plain">
+        <id>1</id>
+        <color>192,224,48</color>
+        <minimap>Grass</minimap>
+        <platform>Plains</platform>
+        
+        <mtype>Normal</mtype>
+    </terrain>
+</terrain_data>

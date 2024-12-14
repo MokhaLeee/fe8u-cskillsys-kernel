@@ -1,0 +1,25 @@
+
+cabal-version:       >= 1.10
+
+name:                EAFormattingSuite
+version:             1.0
+author:              CrazyColorz5
+build-type:          Simple
+
+executable ParseFile
+  main-is:             "Text Parser/ParseFile.hs"
+  other-modules:       FEParser, FlagUtilities, GBAUtilities
+  build-depends:       base, bytestring, containers
+  default-language:    Haskell2010
+
+executable Png2Dmp
+  main-is:             "Png2Dmp/Png2Dmp.hs"
+  other-modules:       FlagUtilities, GBAGraphics, GBALZ77, GBAUtilities, PalettedPng, PngType
+  build-depends:       base, bytestring, containers, vector, binary, JuicyPixels, primitive
+  default-language:    Haskell2010
+
+executable PortraitFormatter
+  main-is:             "Portrait Formatter/PortraitFormatter.hs"
+  other-modules:       FlagUtilities, GBAGraphics, GBALZ77, GBAUtilities, PalettedPng, PngType
+  build-depends:       base, bytestring, containers, vector, binary, JuicyPixels, primitive, transformers
+  default-language:    Haskell2010

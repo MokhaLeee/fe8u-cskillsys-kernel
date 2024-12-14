@@ -1,0 +1,19 @@
+#ifndef LYN_SYS_CONFIG
+#define LYN_SYS_CONFIG
+
+#cmakedefine HAVE_BYTESWAP_H
+#cmakedefine WORDS_BIGENDIAN
+#cmakedefine ENABLE_NLS
+
+#define PROJECT_NAME    "@PROJECT_NAME@"
+#define PROJECT_VERSION "@PROJECT_VERSION@"
+
+#if defined ENABLE_NLS
+#	include <libintl.h>
+#	include <clocale>
+#else
+#	include <clocale>
+#	define _(aString) (aString)
+#endif
+
+#endif // LYN_SYS_CONFIG

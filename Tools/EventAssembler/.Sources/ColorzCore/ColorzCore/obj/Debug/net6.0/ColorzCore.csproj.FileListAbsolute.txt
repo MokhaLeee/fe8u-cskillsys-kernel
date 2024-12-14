@@ -1,0 +1,8 @@
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ColorzCore.csproj.AssemblyReference.cache
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ColorzCore.GeneratedMSBuildEditorConfig.editorconfig
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ColorzCore.AssemblyInfoInputs.cache
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ColorzCore.AssemblyInfo.cs
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ColorzCore.csproj.CoreCompileInputs.cache
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ColorzCore.dll
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ref/ColorzCore.dll
+/mnt/c/Users/Owner/Desktop/Gaming/Nintendo/Game_Boy_Advance/FE8/fe8u-cskillsys-kernel/Tools/EventAssembler/.Sources/ColorzCore/ColorzCore/obj/Debug/net6.0/ColorzCore.pdb

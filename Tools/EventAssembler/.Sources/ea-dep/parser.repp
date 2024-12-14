@@ -1,0 +1,89 @@
+
+#include "parser.h"
+
+Includes parse_includes(const std::string& fileContents)
+{
+	Includes result;
+
+	auto cursor = fileContents.cbegin(), marker = fileContents.cbegin();
+
+	/*!re2c
+		re2c:yyfill:enable = 0;
+
+		re2c:define:YYCURSOR = cursor;
+		re2c:define:YYMARKER = marker;
+
+		re2c:define:YYCTYPE = std::string::value_type;
+
+		whitespace = [ \t\v\r];
+		end = "\x00";
+	*/
+
+	const auto skip_line_comment = [&] ()
+	{
+		while (true)
+		{
+			/*!re2c
+
+				*    { continue; }
+				end  { return; }
+				"\n" { return; }
+
+			*/
+		}
+	};
+
+	const auto skip_multi_comment = [&] () -> bool
+	{
+		unsigned depth = 1;
+
+		while (true)
+		{
+			/*!re2c
+
+				end { return false; }
+				*   { continue; }
+
+				"/""*" { ++depth; }
+				"*""/" { if ((--depth) == 0) return true; }
+
+			*/
+		}
+	};
+
+	const auto get_included_file = [&] () -> std::string
+	{
+		const auto token = cursor;
+
+		/*!re2c
+
+			*   { return {}; }
+			end { return {}; }
+
+			string = '"' [^"]* '"';
+			string { return std::string(token + 1, cursor - 1); }
+
+			naked = [^ \t\v\r\n"]+;
+			naked { return std::string(token, cursor); }
+
+		*/
+	};
+
+	while (cursor <= fileContents.cend())
+	{
+		/*!re2c
+
+			*   { continue; }
+			end { return result; }
+
+			"/""/" { skip_line_comment(); continue; }
+			"/""*" { skip_multi_comment(); continue; }
+
+			"#include" whitespace* { result.includeFiles.push_back(get_included_file()); continue; }
+			"#incbin"  whitespace* { result.incbinFiles.push_back(get_included_file()); continue; }
+
+		*/
+	}
+
+	return result;
+}

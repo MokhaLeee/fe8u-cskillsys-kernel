@@ -1,0 +1,7 @@
+<faction_data>
+    <faction name="Soldier">
+        <id>Soldier</id>
+        <desc>A generic soldier</desc>
+        <icon>Blank</icon>
+    </faction>
+</faction_data>

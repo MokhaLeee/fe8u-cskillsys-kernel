@@ -1,0 +1,112 @@
+<weapon_data>
+    <weapon name="Sword">
+        <id>Sword</id>
+        <magic>0</magic>
+        <advantage type="Axe">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>1,0,15,0,0,0,0</effects>
+        </advantage>
+
+        <disadvantage type="Lance">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>-1,0,-15,0,0,0,0</effects>
+        </disadvantage>
+    </weapon>
+
+    <weapon name="Lance">
+        <id>Lance</id>
+        <magic>0</magic>
+        <advantage type="Sword">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>1,0,15,0,0,0,0</effects>
+        </advantage>
+
+        <disadvantage type="Axe">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>-1,0,-15,0,0,0,0</effects>
+        </disadvantage>
+    </weapon>
+
+    <weapon name="Axe">
+        <id>Axe</id>
+        <magic>0</magic>
+        <advantage type="Lance">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>1,0,15,0,0,0,0</effects>
+        </advantage>
+
+        <disadvantage type="Sword">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>-1,0,-15,0,0,0,0</effects>
+        </disadvantage>
+    </weapon>
+
+    <weapon name="Bow">
+        <id>Bow</id>
+        <magic>0</magic>
+    </weapon>
+
+    <weapon name="Staff">
+        <id>Staff</id>
+        <magic>1</magic>
+    </weapon>
+
+    <weapon name="Light">
+        <id>Light</id>
+        <magic>1</magic>
+        <advantage type="Dark">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>1,0,15,0,0,0,0</effects>
+        </advantage>
+
+        <disadvantage type="Anima">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>-1,0,-15,0,0,0,0</effects>
+        </disadvantage>
+    </weapon>
+
+    <weapon name="Anima">
+        <id>Anima</id>
+        <magic>1</magic>
+        <advantage type="Light">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>1,0,15,0,0,0,0</effects>
+        </advantage>
+
+        <disadvantage type="Dark">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>-1,0,-15,0,0,0,0</effects>
+        </disadvantage>
+    </weapon>
+
+    <weapon name="Dark">
+        <id>Dark</id>
+        <magic>1</magic>
+        <advantage type="Anima">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>1,0,15,0,0,0,0</effects>
+        </advantage>
+
+        <disadvantage type="Light">
+            <rank>All</rank>
+            <!-- Damage, Resist, Accuracy, Avoid, Crit, Dodge, AS -->
+            <effects>-1,0,-15,0,0,0,0</effects>
+        </disadvantage>
+    </weapon>
+
+    <weapon name="Consumable">
+        <id>Default</id>
+        <magic>0</magic>
+    </weapon>
+</weapon_data>

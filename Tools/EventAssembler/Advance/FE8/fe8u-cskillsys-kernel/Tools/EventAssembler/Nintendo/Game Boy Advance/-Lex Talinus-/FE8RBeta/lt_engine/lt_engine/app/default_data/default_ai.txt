@@ -1,0 +1,34 @@
+# Possible Actions:
+#    - 1:    Move  
+#    - 2:    Attack Units
+#    - 4:    Steal  
+#    - 8:    Attack Tiles  
+#    - 16:   Interact  
+# Possible Targets:
+#    - 1:    Allies
+#    - 2:    Enemies
+#    - 4:    HP Tiles
+#    - 8:    Event Tiles
+#    - 16:   Specific Unit
+# View Range:
+#    - 0: Do not look
+#    - -1: Look up to my Movement + maximum range of item away
+#    - -2: Look up to my Movement*2 + maximum range of item away
+#    - -3: Look at entire map
+#    - Any other integer: Look up to integer range away
+# Priority:
+#    Higher priority units move first
+# AI NID - Priority - Action,Target,View_Range - Action,Target,View_Range - ...
+None                    20 None,None,0
+Attack                  20 Attack,Enemy,-3
+Pursue                  20 Attack,Enemy,-4
+Defend                  20 Attack,Enemy,-2 Move_to,Position:Starting,-4
+Guard                   20 Attack,Enemy,-1
+AttackTile              20 Attack,Enemy,-2 Attack,Tile,-4                  
+PursueVillage           20 Attack,Enemy,-2 Interact,Event:Destructible,-4
+FollowBoss              15 Attack,Enemy,-2 Move_to,Ally:Tag:Boss,-4
+FollowWagon             15 Attack,Enemy,-2 Move_to,Ally:Class:Wagon,-4
+Berserk                 10 Attack,Unit,-4
+Heal                    15 Attack,Ally,-3 Move_away_from,Enemy,-3
+Thief                   12 Steal,Enemy,-2 Interact,Event:Locked,-4 Interact,Event:Hidden_Escape,-4
+Seize                   20 Interact,Event:Enemy_Seize,-2 Attack,Enemy,-2 Interact,Event:Enemy_Seize,-4

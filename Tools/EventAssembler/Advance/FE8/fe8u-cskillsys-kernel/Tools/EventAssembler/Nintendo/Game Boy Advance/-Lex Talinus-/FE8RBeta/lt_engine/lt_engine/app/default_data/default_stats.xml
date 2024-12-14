@@ -1,0 +1,61 @@
+<stat_data>
+    <stat name="Hit Points">
+        <id>HP</id>
+        <maximum>60</maximum>
+        <desc>Hit points. The unit is removed from the battle if HP reaches 0.</desc>
+    </stat>
+
+    <stat name="Strength">
+        <id>STR</id>
+        <maximum>30</maximum>
+        <desc>Strength. The higher the number, the more damage you inflict.</desc>
+    </stat>
+
+    <stat name="Magic">
+        <id>MAG</id>
+        <maximum>30</maximum>
+        <desc>Magical power. Increases spell and staff effectiveness.</desc>
+    </stat>
+
+    <stat name="Skill">
+        <id>SKL</id>
+        <maximum>30</maximum>
+        <desc>Fighting skill. A higher number improves accuracy.</desc>
+    </stat>
+
+    <stat name="Speed">
+        <id>SPD</id>
+        <maximum>30</maximum>
+        <desc>This affects both evasion and attack speed.</desc>
+    </stat>
+
+    <stat name="Luck">
+        <id>LCK</id>
+        <maximum>30</maximum>
+        <desc>Luck affects many things.</desc>
+    </stat>
+
+    <stat name="Defense">
+        <id>DEF</id>
+        <maximum>30</maximum>
+        <desc>Reduces damage from weapons.</desc>
+    </stat>
+
+    <stat name="Resistance">
+        <id>RES</id>
+        <maximum>30</maximum>
+        <desc>Reduces damage from magical attacks.</desc>
+    </stat>
+
+    <stat name="Constitution">
+        <id>CON</id>
+        <maximum>25</maximum>
+        <desc>Constitution. Affects how well the unit can wield heavier weapons.</desc>
+    </stat>
+
+    <stat name="Movement">
+        <id>MOV</id>
+        <maximum>15</maximum>
+        <desc>The distance you can move in one turn.</desc>
+    </stat>
+</stat_data>
