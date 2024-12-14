@@ -17,23 +17,24 @@ Modern CHAX for FE8U-SkillSystem.
         - The Three Houses style hit rate which decreases with your range from your foe.
         - Engage style combo-attack
         - The combat calculation formula has been restructured to allow for more precise manipulation of damage increases and reductions. This has allowed for the introduction of a large number of FE-Heroes skills based on that.
-        -  <details>
+
+           <details>
                 <summary>Arms Scroll - By Jester</summary>
                 <video src="https://github.com/user-attachments/assets/9fdaa295-4c35-4c39-b3d9-a356616a1ec2"></video>
            </details>
-        -  <details>
+           <details>
                 <summary>Skill Stealer - By Jester</summary>
                 <video src="https://github.com/user-attachments/assets/0013e3ac-c320-4689-a404-7d6b39332373"></video>
            </details>
-        -  <details>
+           <details>
                 <summary>Lazberian Turn Flow - By Stan</summary>
                 <video src="https://github.com/user-attachments/assets/c0ef4c4c-5f08-46eb-b75d-9cef135f2d89"></video>
            </details>
-        -  <details>
+           <details>
                 <summary>Support Post Battle - By Vesly</summary>
                 <video src="https://github.com/user-attachments/assets/66f8d2e0-8cc0-4297-8857-6a1d75712fbf"></video>
            </details>
-        -  <details>
+           <details>
                 <summary>Heart Seals - By Vesly</summary>
                 <video src="https://github.com/user-attachments/assets/141ce2ad-c37d-4db3-850c-8d83ab405472"></video>
            </details>
