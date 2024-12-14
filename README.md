@@ -17,30 +17,7 @@ Modern CHAX for FE8U-SkillSystem.
         - The Three Houses style hit rate which decreases with your range from your foe.
         - Engage style combo-attack
         - The combat calculation formula has been restructured to allow for more precise manipulation of damage increases and reductions. This has allowed for the introduction of a large number of FE-Heroes skills based on that.
-
-           <details>
-                <summary>Arms Scroll - By Jester</summary>
-                <video src="https://github.com/user-attachments/assets/9fdaa295-4c35-4c39-b3d9-a356616a1ec2"></video>
-           </details>
-           <details>
-                <summary>Skill Stealer - By Jester</summary>
-                <video src="https://github.com/user-attachments/assets/0013e3ac-c320-4689-a404-7d6b39332373"></video>
-           </details>
-           <details>
-                <summary>Lazberian Turn Flow - By Stan</summary>
-                <video src="https://github.com/user-attachments/assets/c0ef4c4c-5f08-46eb-b75d-9cef135f2d89"></video>
-           </details>
-           <details>
-                <summary>Support Post Battle - By Vesly</summary>
-                <video src="https://github.com/user-attachments/assets/66f8d2e0-8cc0-4297-8857-6a1d75712fbf"></video>
-           </details>
-           <details>
-                <summary>Heart Seals - By Vesly</summary>
-                <video src="https://github.com/user-attachments/assets/141ce2ad-c37d-4db3-850c-8d83ab405472"></video>
-           </details>
-
-
-    - Reworked the ARM movement calculation function tp enable more Heroes style mobility skills to be introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the Pass skill.
+        - Reworked the ARM movement calculation function tp enable more Heroes style mobility skills to be introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the Pass skill.
 
 2. Animation and UI effects
     - Reworked better interface on statscreen with FE6 style scrollable statscreenfx.
@@ -64,6 +41,29 @@ Modern CHAX for FE8U-SkillSystem.
     - All components are generated at once via a `make` command.
     - Introduction of [debug kit](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/blob/main/include/debug-kit.h) port from [FEHRR](https://github.com/laqieer/FEHRR) enables developers to use non-std IO functions (such as `Printf`) to debug their modifications in No$GBA.
     - More reasonable RAM space control. Now RAM space registration is designed very similarly to a `malloc` function. Developers can just tell the kernel the size. The kernel will automatically keep track of the physical address and overflow detection.
+
+## Ported Hacks/Features
+
+<details>
+    <summary>Arms Scroll - By Jester</summary>
+    <video src="https://github.com/user-attachments/assets/9fdaa295-4c35-4c39-b3d9-a356616a1ec2"></video>
+</details>
+<details>
+    <summary>Skill Stealer - By Jester</summary>
+    <video src="https://github.com/user-attachments/assets/0013e3ac-c320-4689-a404-7d6b39332373"></video>
+</details>
+<details>
+    <summary>Lazberian Turn Flow - By Stan</summary>
+    <video src="https://github.com/user-attachments/assets/c0ef4c4c-5f08-46eb-b75d-9cef135f2d89"></video>
+</details>
+<details>
+    <summary>Support Post Battle - By Vesly</summary>
+    <video src="https://github.com/user-attachments/assets/66f8d2e0-8cc0-4297-8857-6a1d75712fbf"></video>
+</details>
+<details>
+    <summary>Heart Seals - By Vesly</summary>
+    <video src="https://github.com/user-attachments/assets/141ce2ad-c37d-4db3-850c-8d83ab405472"></video>
+</details>
 
 ## Custom build
 
