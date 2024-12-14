@@ -10,34 +10,37 @@ Modern CHAX for FE8U-SkillSystem.
 
 ## Main features
 
-1. More diverse functionality features
-    - 350+ skills have been introduced and with the bit width of skill index has been expanded to 16 bits, it can support up to 0xFFFF skills working at the same time in theory.
-    -  Each unit can carry up to 23 skills, 7 of which can be configured through the prepscreen freely.
-    - Introduced a lot of new combat mechanics, such as ThreeHouses style hit rate decreases with battle range increses, Engage style combo-attack, etc. Combat calculation formula has been restructured so that we can get more reasonable calculation on damage increase and reduction, and thus a large number of FE-Heros skills were introduced based on that.
-    - Reworked movement calculation ARM function enables more Heros style mobility skills introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the introduction of Pass skill.
+1. More diverse functionality
+    - 600+ skills have been introduced and the bit width of the skill index has been expanded to 16 bits. It can theoretically support up to 0xFFFF skills working at the same time.
+    - Each unit can carry up to 23 skills, 7 of which can be configured through the prepscreen freely.
+    - Introduced a lot of new combat mechanics:
+        - The Three Houses style hit rate which decreases with your range from your foe.
+        - Engage style combo-attack
+        - The combat calculation formula has been restructured to allow for more precise manipulation of damage increases and reductions. This has allowed for the introduction of a large number of FE-Heroes skills based on that.
+    - Reworked the ARM movement calculation function tp enable more Heroes style mobility skills to be introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the Pass skill.
 
-2. Anim and UI effects
+2. Animation and UI effects
     - Reworked better interface on statscreen with FE6 style scrollable statscreenfx.
-    - A variety of cool map anim effects for skills.
-    - Introduce new features via kernel tutorial info during game-playing.
-    - Reworked efxskill and map skill anim effects.
+    - A variety of cool map animation effects for skills.
+    - Some features can now be introduced via a custom tutorial configured in the debug map
+    - Reworked efxskill and map skill animation effects.
 
 3. Friendly for FEBuilder users
-    - Proactively provide FEB patches. For non-developer users, you may just download **Patches** zipped directory in release and put it to ***\<path-to-FEBuilder\>\config\patch2\FE8U\\***. Then you can modify C-Skillsys data easily.
+    - Proactively provide FEB patches. For non-developer users, you can just download the **Patches** zipped directory in the releases section of the repo and place it in ***\<path-to-FEBuilder\>\config\patch2\FE8U\\***. Then you can modify C-SkillSystem data in FEBuilder.
 
-4. Better performace
-    - Now the kernel run on in-BL range space. For the function call, we can just use `BL` instruction ranther than slowly `BLH`.
-    - Frequently called functions are placed in IWRAM and called as ARM functions, including `SkillTester`, map-task routine, some other judgements, etc.
+4. Better performance
+    - Now the kernel runs within the range limit of the BL ARM instruction. The allows for faster calling of the SkillTester check instead of using BLH.
+    - Frequently called functions are placed in IWRAM and called as ARM functions, including the aformentioned `SkillTester`, map-task routine, some other judgements, etc.
 
 5. Higher code quality and stability
-    - Modifications on vanilla functions followed the principles: Unless specific circumstances, the hacked functions should worked consistent with original.
+    - Modifications on vanilla functions operate under the following principles: Unless specific circumstances are presented (such as bugs or glitches), hacked functions should work consistently with their vanilla counterparts.
     - Rigorous PR review based on decomp code.
     - Rigorous code style review.
 
 6. Better development management
-    - All components are all generated at once via a `make` command.
-    - Introduction of [debug kit](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/blob/main/include/debug-kit.h) port from [FEHRR](https://github.com/laqieer/FEHRR) enables developers use non-std IO functions (such as `Printf`) to debug on their modification.
-    - More reasonable RAM space control. Now RAM space registration is designed very similar to a `malloc` function. Developers may just tell the kernel the size. And kernel may automatically maintain the physical address and overflow detection.
+    - All components are generated at once via a `make` command.
+    - Introduction of [debug kit](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/blob/main/include/debug-kit.h) port from [FEHRR](https://github.com/laqieer/FEHRR) enables developers to use non-std IO functions (such as `Printf`) to debug their modifications in No$GBA.
+    - More reasonable RAM space control. Now RAM space registration is designed very similarly to a `malloc` function. Developers can just tell the kernel the size. The kernel will automatically keep track of the physical address and overflow detection.
 
 ## Custom build
 
@@ -46,16 +49,7 @@ Modern CHAX for FE8U-SkillSystem.
 >
 > For Windows users, it is recommended to use a [Ubuntu Server](https://ubuntu.com/aws) or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-1. Install sub-modules
-
-```bash
-cd Tools
-git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git
-git clone https://github.com/StanHash/EventAssembler.git --recursive
-git clone https://github.com/StanHash/FE-PyTools.git --recursive
-```
-
-2. Install dependencies
+1. Install dependencies
 
 ```bash
 sudo apt-get -y install binutils-arm-none-eabi ctags \
@@ -66,7 +60,7 @@ sudo apt-get -y install binutils-arm-none-eabi ctags \
 pip install pyelftools PyInstaller tmx six
 ```
 
-3. Install DevkitPRO
+2. Install DevkitPRO
 
 ```bash
 wget https://apt.devkitpro.org/install-devkitpro-pacman
@@ -106,9 +100,9 @@ cd Tools/EventAssembler
 ./build.sh
 ```
 
-5. Put **Fire Emblem: The Sacred Stones** clean rom named **fe8.gba** in the repo directory.
+4. Put a clean copy of the US version of **Fire Emblem: The Sacred Stones** in the root of the repo and call it **fe8.gba**
 
-4. build:
+5. To build, run the following:
 
 ```bash
 make
