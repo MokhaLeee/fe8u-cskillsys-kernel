@@ -39,7 +39,14 @@ ORG FreeSpaceKernel_Data
     /**
      * For demo build, it is better to put this part of code directly to: FreeSpaceDEMO (0x1000000) to avoid potential overflow.
      */
+#ifdef CONFIG_DEMO_BUILD
+PUSH
+ORG FreeSpaceDEMO
     #include "Contents/Contents.event"
+POP
+#else
+    #include "Contents/Contents.event"
+#endif
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Data) max (KernelDataSize)
 ASSERT (FreeSpaceKernel_DataEnd - CURRENTOFFSET)
 

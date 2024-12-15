@@ -10,12 +10,13 @@ ALIGN 4
 ALIGN 4
 #include "Texts/Texts.event"
 
-/**
- * To install banims:
- *    1. include **Banim/Banim.event** in **Contents/Contents.event**
- *    2. include **Banim/Preload.event** in **Preload/PreloadData.event**
- */
-ALIGN 4
-// #include "Banim/Banim.event"
-
+#ifdef CONFIG_DEMO_BUILD
+    /**
+    * To install banims:
+    *    1. include **Banim/Banim.event** in **Contents/Contents.event**
+    *    2. include **Banim/Preload.event** in **Preload/PreloadData.event**
+    */
+    ALIGN 4
+    #include "Banim/Banim.event"
+#endif // DEMO_BUILD
 #endif
