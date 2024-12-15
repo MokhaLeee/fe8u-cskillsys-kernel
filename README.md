@@ -64,6 +64,24 @@ A modern buildfile for a C-SkillSystem based on the decompilation of FE8U.
     <summary>Heart Seals - By Vesly</summary>
     <video src="https://github.com/user-attachments/assets/141ce2ad-c37d-4db3-850c-8d83ab405472"></video>
 </details>
+<details>
+    <summary>Allegiance Stat Screen Colors - By Contro</summary>
+    <video src="https://github.com/user-attachments/assets/dd92fa8c-632c-409b-ae02-ea964376ab9c"></video>
+</details>
+<details>
+    <summary>Show Terrain Bonuses in Stat Screen - By Jester</summary>
+    <video src="https://github.com/user-attachments/assets/f6c42aaa-83e2-4f66-a8fd-20b3e74037aa"></video>
+</details>
+<details>
+    <summary>In-game Debugger - By Vesly</summary>
+    <video src="https://github.com/user-attachments/assets/ebf7718d-b832-4574-999a-94d6331fdbde"></video>
+</details>
+<details>
+    <summary>Instant Level Up - By Tequila</summary>
+    <video src=""https://github.com/user-attachments/assets/f8017d33-574a-4842-92b2-232df941c067></video>
+</details>
+
+
 
 ## Custom build
 
