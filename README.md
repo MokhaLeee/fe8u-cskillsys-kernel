@@ -78,10 +78,12 @@ A modern buildfile for a C-SkillSystem based on the decompilation of FE8U.
 </details>
 <details>
     <summary>Instant Level Up - By Tequila</summary>
-    <video src=""https://github.com/user-attachments/assets/f8017d33-574a-4842-92b2-232df941c067></video>
+    <video src="https://github.com/user-attachments/assets/f8017d33-574a-4842-92b2-232df941c067"></video>
 </details>
-
-
+<details>
+    <summary>Limited Shop Stock - By Contro</summary>
+    <video src="https://github.com/user-attachments/assets/67c209d4-eeb1-485b-af52-8f312e1106a2"></video>
+</details>
 
 ## Custom build
 
