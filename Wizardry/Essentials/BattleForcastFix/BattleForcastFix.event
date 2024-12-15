@@ -1,0 +1,11 @@
+#ifndef BATTLE_FORCAST_FIX_INSTALLED
+#define BATTLE_FORCAST_FIX_INSTALLED
+
+/**
+ * https://feuniverse.us/t/contros-code-collection/13514/15
+ */
+
+#include "Source/LynJump.event"
+#include "Source/BattleForcastFix.lyn.event"
+
+#endif // BATTLE_FORCAST_FIX_INSTALLED
