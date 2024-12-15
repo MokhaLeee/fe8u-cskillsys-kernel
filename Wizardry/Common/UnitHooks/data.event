@@ -8,6 +8,7 @@ gLoadUnitHooks:
     WORD 0 0 0 0
 
 gExternalBattleToUnitHook: // int (*)(struct BattleUnit *bu, struct Unit *unit);
+    POIN BattleToUnit_ResetShieldInfo
     WORD 0 0 0 0
 
 gExternalUnitToBattleHook: // int (*)(struct Unit *unit, struct BattleUnit *bu);
@@ -16,6 +17,7 @@ gExternalUnitToBattleHook: // int (*)(struct Unit *unit, struct BattleUnit *bu);
     POIN UnitToBattle_ExecBonusDoublers // This must stay at second
 
     // others
+    POIN UnitToBattle_SetShieldInfo
     POIN StatDebuff_OnUnitToBattle
     WORD 0 0 0 0
 

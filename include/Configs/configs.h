@@ -108,6 +108,11 @@
 #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
 
 /**
+ * Enable shield system
+ */
+#define CONFIG_INSTALL_KERNEL_SHIELD
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable

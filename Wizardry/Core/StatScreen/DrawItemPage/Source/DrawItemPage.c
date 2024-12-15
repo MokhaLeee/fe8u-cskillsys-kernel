@@ -3,6 +3,7 @@
 #include <battle-system.h>
 #include <gaiden-magic.h>
 #include <stat-screen.h>
+#include <shield.h>
 
 void ResetItemPageLists(void)
 {
@@ -231,6 +232,10 @@ void DisplayPage1(void)
 	slot = GetUnitEquippedWeaponSlot(unit);
 	DrawItemEquipLine(slot);
 	DrawItemPageSubfix(slot);
+
+	// CONFIG_INSTALL_KERNEL_SHIELD
+	if (gpKernelDesigerConfig->shield_en)
+		DrawItemPage_ShieldEquipLine();
 }
 
 /**

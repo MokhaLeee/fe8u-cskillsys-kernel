@@ -66,4 +66,9 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 #ifdef CONFIG_NO_SUS_IN_AI_PHASE
 	.no_suspend_in_aiphase = true,
 #endif
+
+#ifdef CONFIG_INSTALL_KERNEL_SHIELD
+	.shield_en = true,
+	.shield_ext_equip_config_en = true,
+#endif
 };

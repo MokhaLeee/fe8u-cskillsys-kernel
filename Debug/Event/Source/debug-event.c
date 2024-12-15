@@ -122,6 +122,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 		.items = {
 			ITEM_SWORD_SILVER,
 			ITEM_LANCE_SILVER,
+			ITEM_HOPLON_SHIELD,
 			ITEM_ELIXIR
 		},
 	},
@@ -193,7 +194,6 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 		.redas = REDA_Ephraim,
 		.items = {
 			ITEM_LANCE_IRON,
-			ITEM_VULNERARY
 		},
 	},
 	{
@@ -419,6 +419,7 @@ static void give_skill_scroll_to_ephraim(void)
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
 		UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
 #endif
+		UnitAddItem(unit, (1 << 8) | ITEM_VULNERARY);
 	}
 }
 

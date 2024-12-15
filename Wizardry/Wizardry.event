@@ -59,6 +59,7 @@ ALIGN 4
 #include "Misc/SkillEffects/MiscSkillEffects.event"
 #include "Misc/GaidenMagic/GaidenMagic.event"
 #include "Misc/Reorganize/Reorganize.event"
+#include "Misc/Shield/Shield.event"
 
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "Misc/ConvoyExpa/ConvoyExpa.event"

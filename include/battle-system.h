@@ -4,6 +4,7 @@
 #include "debug-kit.h"
 
 #define IS_BATTLE_UNIT(_unit) ((_unit) == &gBattleActor.unit  || (_unit) ==  &gBattleTarget.unit)
+#define IS_BATTLE_ACTOR(bu) ((bu) == &gBattleActor)
 
 struct BattleStatus {
 	s16 atk, def, as, hit, avo, crit, dodge, silencer;
