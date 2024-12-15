@@ -1,7 +1,7 @@
 #ifndef LTF_INTERNALS_INCLUDED
 #define LTF_INTERNALS_INCLUDED
 
-#include "LynJump.event"
+#include "Src/LynJump.event"
 
 #include "Extensions/Hack Installation.txt"
 #include "Extensions/ProcDefinitions.txt"

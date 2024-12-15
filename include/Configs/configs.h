@@ -24,7 +24,7 @@
 // #define CONFIG_USE_UTF8_GLYPH
 
 /* Engage style combo attack */
-/* #define CONFIG_USE_COMBO_ATTACK */
+#define CONFIG_USE_COMBO_ATTACK
 
 /**
  * Surround:
@@ -277,6 +277,15 @@
 **
 */
 // #define CONFIG_LAZBERIAN_TURN_FLOW
+
+/* 
+** By Contro
+** This introduces a limitation on items you can
+** buy in a shop.
+**
+** Source: https://feuniverse.us/t/contros-code-collection/13514/20
+*/
+// #define CONFIG_LIMITED_SHOP_STOCK
 
 /**
  * Levelup mode

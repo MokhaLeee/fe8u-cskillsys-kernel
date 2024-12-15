@@ -40,4 +40,5 @@ W.I.P.[X]
 #include texts/kernel_tutorial.txt
 #include texts/misc.txt
 
+#include ../../../Wizardry/External/LimitedShopStock/DefaultText.txt
 #include ../../../Wizardry/External/FE8_Rewritten_Terper/Texts/Text.txt

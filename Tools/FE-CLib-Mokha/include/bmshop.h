@@ -63,10 +63,10 @@ struct ProcShop {
 
     /* 5A */ u8 shopItemCount;
     /* 5B */ u8 unitItemCount;
-    /* 5C */ u8 head_loc;
-    /* 5D */ u8 hand_loc;
-    /* 5E */ u8 head_idx;
-    /* 5F */ u8 hand_idx; // maybe top visible item in menu?
+    /* 5C */ u8 curIndex;
+    /* 5D */ u8 unk_5d;
+    /* 5E */ u8 unk_5e;
+    /* 5F */ u8 unk_5f; // maybe top visible item in menu?
     /* 60 */ u8 buy_or_sel;
     /* 61 */ u8 shopType;
     /* 62 */ u8 helpTextActive;

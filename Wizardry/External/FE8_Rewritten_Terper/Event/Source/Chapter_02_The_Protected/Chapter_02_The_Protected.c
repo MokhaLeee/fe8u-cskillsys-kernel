@@ -8,6 +8,7 @@
 #include "jester_headers/flags.h"
 #include "jester_headers/miscellaenous.h"
 #include "EAstdlib.h"
+#include "../../../../LimitedShopStock/_src/LimitedShopStock.h"
 
 /**
  * Ally unit and REDA definitions
@@ -151,6 +152,7 @@ static const EventScr EventScr_Beginning[] = {
     HIGHLIGHT_CHARACTER(CHARACTER_MOULDER, 60)
     Text(Chapter_02_Scene_06_Convo_03)
     NoFade
+    // ASMC(InitShopStock) // Look in External/LimitedShopStock/Installer.event for details
     ENDA
 };
 

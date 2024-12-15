@@ -1,0 +1,37 @@
+#include "_src/LimitedShopStock.lyn.event"
+
+PUSH
+ORG 0xB4CAA //Background menu x position
+BYTE 0x4
+ORG 0xB4CAE //Background menu width
+BYTE 0x17
+
+ORG 0xB4D3E //Left cutoff for layer 0
+BYTE 0x28
+ORG 0xB4D70 //Bottom cutoff for layer 1
+SHORT 0x233B //Change instruction to not directly copy the left cutoff for layer 0
+
+ORG 0xB4800 //Hand cursor while selecting item to sell
+BYTE 0x28
+ORG 0xB4AAE //Hand cursor while browsing shops through map
+BYTE 0x28
+
+ORG 0xB4CC8 //Tile width of shop items
+BYTE 0x15
+
+#define ItemDisplayBufferTarget 0x2023CB3
+
+//Move drawn items left 3 tiles
+ORG 0xB5144
+WORD ItemDisplayBufferTarget
+ORG 0xB50C0
+WORD ItemDisplayBufferTarget
+ORG 0xB5038
+WORD ItemDisplayBufferTarget
+ORG 0xB4414
+WORD ItemDisplayBufferTarget
+ORG 0xB4F88
+WORD ItemDisplayBufferTarget
+ORG 0xB4470
+WORD ItemDisplayBufferTarget
+POP
