@@ -1,4 +1,4 @@
-# FE8U C-SkillSys Kernel
+# FE8U C-SkillSystem
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com) 
 
@@ -6,30 +6,30 @@
 
 [Community discussion on FEUniverse](https://feuniverse.us/t/fe8-modern-c-skillsystem-release/24614)
 
-Modern CHAX for FE8U-SkillSystem.
+A modern buildfile for a C-SkillSystem based on the decompilation of FE8U.
 
 ## Main features
 
 1. More diverse functionality
-    - 600+ skills have been introduced and the bit width of the skill index has been expanded to 16 bits. It can theoretically support up to 0xFFFF skills working at the same time.
+    - [600+ skills](https://docs.google.com/spreadsheets/d/1zd99uevX953OZQiA_oJU9R3hqFao5mrW78wMHKPco-U/edit?pli=1&gid=681794002#gid=681794002) have been introduced and the bit width of the skill index has been expanded to 16 bits. It can theoretically support up to 0xFFFF skills working at the same time.
     - Each unit can carry up to 23 skills, 7 of which can be configured through the prepscreen freely.
     - Introduced a lot of new combat mechanics:
-        - The Three Houses style hit rate which decreases with your range from your foe.
-        - Engage style combo-attack
-        - The combat calculation formula has been restructured to allow for more precise manipulation of damage increases and reductions. This has allowed for the introduction of a large number of FE-Heroes skills based on that.
-        - Reworked the ARM movement calculation function tp enable more Heroes style mobility skills to be introduced such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation), etc. This also avoids serious performance losses caused by the Pass skill.
+        - The Three Houses style hit rate which decreases the greater the range between you and your enemy
+        - An Engage style combo-attack
+        - The combat calculation formula has been restructured to allow for more precise manipulation of damage increases and reductions. This has allowed for a large number of FE-Heroes skills to be ported based on that.
+        - Reworked the ARM movement calculation function to enable more Heroes style mobility skills such as [Flier Formation](https://feheroes.fandom.com/wiki/Flier_Formation). This also avoids serious performance losses caused by the Pass skill.
 
 2. Animation and UI effects
-    - Reworked better interface on statscreen with FE6 style scrollable statscreenfx.
+    - A reworked better interface on statscreen with a configurable FE6 style scrollable background.
     - A variety of cool map animation effects for skills.
-    - Some features can now be introduced via a custom tutorial configured in the debug map
+    - Features can now be introduced via a custom tutorial configured in the debug map
     - Reworked efxskill and map skill animation effects.
 
 3. Friendly for FEBuilder users
     - Proactively provide FEB patches. For non-developer users, you can just download the **Patches** zipped directory in the releases section of the repo and place it in ***\<path-to-FEBuilder\>\config\patch2\FE8U\\***. Then you can modify C-SkillSystem data in FEBuilder.
 
 4. Better performance
-    - Now the kernel runs within the range limit of the BL ARM instruction. The allows for faster calling of the SkillTester check instead of using BLH.
+    - Now the kernel runs within the range limit of the BL ARM instruction. The allows for faster calling of the SkillTester check instead of using the slower BLH.
     - Frequently called functions are placed in IWRAM and called as ARM functions, including the aformentioned `SkillTester`, map-task routine, some other judgements, etc.
 
 5. Higher code quality and stability
