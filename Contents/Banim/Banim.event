@@ -1,0 +1,12 @@
+#ifndef BANIMS_INSTALLED
+#define BANIMS_INSTALLED
+
+#include "AnimDefinitions-Vanilla.event"
+#include "AnimDefinitions-Demo.event"
+#include "AnimMapping.evet"
+
+#include "Source/InstallBanims.event"
+
+// #include "Preload.event"
+
+#endif /* BANIMS_INSTALLED */

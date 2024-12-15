@@ -1,0 +1,7 @@
+#ifndef DEMO_BANIMS_H
+#define DEMO_BANIMS_H
+
+#define BANIM_LynLord_Sword 0xCA
+#define BANIM_LynLord_Item  0xCB
+
+#endif

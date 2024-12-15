@@ -1,0 +1,313 @@
+//for anim IDs & macros for setting anims
+
+#define AnimTableEntry(index) "ORG ClassAnimTable + ((index-1) * 0x20)"
+
+#define SwordAnim(Animation) "BYTE Swords 0x01 ; SHORT Animation"
+#define LanceAnim(Animation) "BYTE Lances 0x01 ; SHORT Animation"
+#define AxeAnim(Animation) "BYTE Axes 0x01 ; SHORT Animation"
+#define HandAxeAnim(Animation) "BYTE HandAxe 0x00 ; SHORT Animation ; BYTE Tomahawk 0x00 ; SHORT Animation ; BYTE Hatchet 0x00 ; SHORT Animation; "
+#define BowAnim(Animation) "BYTE Bows 0x01 ; SHORT Animation"
+#define StaffAnim(Animation) "BYTE Staves 0x01 ; SHORT Animation"
+#define AnimaAnim(Animation) "BYTE Anima 0x01 ; SHORT Animation"
+#define LightAnim(Animation) "BYTE Light 0x01 ; SHORT Animation"
+#define DarkAnim(Animation) "BYTE Dark 0x01 ; SHORT Animation"
+#define UnarmedAnim(Animation) "BYTE Disarmed 0x01 ; SHORT Animation"
+#define SpecialAnim(Animation,Weapon) "BYTE Weapon 0x00 ; SHORT Animation"
+#define MonsterAnim(Animation) "BYTE 0xB 0x01; SHORT Animation"
+#define LaguzAnim(Animations) "BYTE 0xB 0x01; SHORT Animation"
+#define MagicAnim(Animation) "AnimaAnim(Animation); LightAnim(Animation); DarkAnim(Animation)"
+#define EndAnim "WORD 0"
+
+
+//IDs for vanilla anims
+#define EphraimLordLanceAnimID 1
+#define EphraimLordUnarmedAnimID 2
+
+#define EirikaLordSwordAnimID 3
+#define EirikaLordUnarmedAnimID 4
+
+#define EphraimGreatLordLanceAnimID 5
+#define Unused1AnimID 6
+#define EphraimGreatLordUnarmedAnimID 7
+
+#define EirikaGreatLordSwordAnimID 8
+#define Unused2AnimID 9
+#define EirikaGreatLordUnarmedAnimID 10
+
+#define MercenarySwordAnimID 11
+#define MercenaryUnarmedAnimID 12
+
+#define HeroSwordAnimID 13
+#define HeroAxeAnimID 14
+#define HeroHandAxeAnimID 15
+#define HeroUnarmedAnimID 16
+
+#define MyrmidonSwordAnimID 17
+#define MyrmidonUnarmedAnimID 18
+
+#define MyrmidonFSwordAnimID 19
+#define MyrmidonFUnarmedAnimID 20
+
+#define SwordmasterSwordAnimID 21
+#define SwordmasterUnarmedAnimID 22
+
+#define SwordmasterFSwordAnimID 23
+#define SwordmasterFUnarmedAnimID 24
+
+#define FighterAxeAnimID 25
+#define FighterHandAxeAnimID 26
+#define FighterUnarmedAnimID 27
+
+#define WarriorAxeAnimID 28
+#define WarriorHandAxeAnimID 29
+#define WarriorBowAnimID 30
+#define WarriorUnarmedAnimID 31
+
+#define BrigandAxeAnimID 32
+#define BrigandHandAxeAnimID 33
+#define BrigandUnarmedAnimID 34
+
+#define BerserkerAxeAnimID 35
+#define BerserkerHandAxeAnimID 36
+#define BerserkerUnarmedAnimID 37
+
+#define ArcherBowAnimID 38
+#define ArcherUnarmedAnimID 39
+
+#define ArcherFBowAnimID 40
+#define ArcherFUnarmedAnimID 41
+
+#define SniperBowAnimID 42
+#define SniperUnarmedAnimID 43
+
+#define SniperFBowAnimID 44
+#define SniperFUnarmedAnimID 45
+
+#define RangerSwordAnimID 46
+#define RangerBowAnimID 47
+#define RangerUnarmedAnimID 48
+
+#define RangerFSwordAnimID 49
+#define RangerFBowAnimID 50
+#define RangerFUnarmedAnimID 51
+
+#define CavalierSwordAnimID 52
+#define CavalierLanceAnimID 53
+#define CavalierUnarmedAnimID 54
+
+#define CavalierFSwordAnimID 55
+#define CavalierFLanceAnimID 56
+#define CavalierFUnarmedAnimID 57
+
+#define PaladinSwordAnimID 58
+#define PaladinLanceAnimID 59
+#define PaladinUnarmedAnimID 60
+
+#define PaladinFSwordAnimID 61
+#define PaladinFLanceAnimID 62
+#define PaladinFUnarmedAnimID 63
+
+#define KnightLanceAnimID 64
+#define KnightUnarmedAnimID 65
+
+#define KnightFLanceAnimID 66
+#define KnightFUnarmedAnimID 67
+
+#define GeneralSwordAnimID 68
+#define GeneralLanceAnimID 69
+#define GeneralAxeAnimID 70
+#define GeneralHandAxeAnimID 71
+#define GeneralUnarmedAnimID 72
+
+#define GeneralFSwordAnimID 73
+#define GeneralFLanceAnimID 74
+#define GeneralFAxeAnimID 75
+#define GeneralFHandAxeAnimID 76
+#define GeneralFUnarmedAnimID 77
+
+#define GreatKnightSwordAnimID 78
+#define GreatKnightLanceAnimID 79
+#define GreatKnightAxeAnimID 80
+#define GreatKnightHandAxeAnimID 81
+#define GreatKnightUnarmedAnimID 82
+
+#define GreatKnightFSwordAnimID 83
+#define GreatKnightFLanceAnimID 84
+#define GreatKnightFAxeAnimID 85
+#define GreatKnightFHandAxeAnimID 86
+#define GreatKnightFUnarmedAnimID 87
+
+#define WyvernRiderLanceAnimID 88
+#define WyvernRiderUnarmedAnimID 89
+
+#define WyvernRiderFLanceAnimID 90
+#define WyvernRiderFUnarmedAnimID 91
+
+#define WyvernLordSwordAnimID 92
+#define WyvernLordLanceAnimID 93
+#define WyvernLordUnarmedAnimID 94
+
+#define WyvernLordFSwordAnimID 95
+#define WyvernLordFLanceAnimID 96
+#define WyvernLordFUnarmedAnimID 97
+
+#define WyvernKnightLanceAnimID 98
+#define WyvernKnightUnarmedAnimID 99
+
+#define WyvernKnightFLanceAnimID 100
+#define WyvernKnightFUnarmedAnimID 101
+
+#define PegasusKnightLanceAnimID 102
+#define PegasusKnightUnarmedAnimID 103
+
+#define FalcoknightSwordAnimID 104
+#define FalcoknightLanceAnimID 105
+#define FalcoknightUnarmedAnimID 106
+
+#define MageMagicAnimID 107
+
+#define MageFMagicAnimID 108
+
+#define SageMagicAnimID 109
+#define SageStaffAnimID 110
+
+#define SageFMagicAnimID 111
+#define SageFStaffAnimID 112
+
+#define MageKnightMagicAnimID 113
+#define MageKnightStaffAnimID 114
+
+#define MageKnightFMagicAnimID 115
+#define MageKnightFStaffAnimID 116
+
+#define ShamanMagicAnimID 117
+
+#define ShamanFMagicAnimID 118
+
+#define DruidMagicAnimID 119
+#define DruidStaffAnimID 120
+
+#define DruidFMagicAnimID 121
+#define DruidFStaffAnimID 122
+
+#define SummonerMagicAnimID 123
+#define SummonerStaffAnimID 124
+
+#define MonkMagicAnimID 125
+
+#define PriestUnarmedAnimID 126
+#define PriestStaffAnimID 127
+
+#define ClericStaffAnimID 128
+
+#define BishopMagicAnimID 129
+#define BishopStaffAnimID 130
+
+#define BishopFMagicAnimID 131
+#define BishopFStaffAnimID 132
+
+#define TroubadourUnarmedAnimID 133
+#define TroubadourStaffAnimID 134
+
+#define ValkyrieMagicAnimID 135
+#define ValkyrieStaffAnimID 136
+
+#define ThiefSwordAnimID 137
+#define ThiefUnarmedAnimID 138
+
+#define AssassinSwordAnimID 139
+#define AssassinUnarmedAnimID 140
+
+#define AssassinFSwordAnimID 141
+#define AssassinFUnarmedAnimID 142
+
+#define RogueSwordAnimID 143
+#define RogueUnarmedAnimID 144
+
+#define DancerAnimID 145
+
+#define JourneymanAxeAnimID 146
+#define JourneymanHandAxeAnimID 147
+#define JourneymanUnarmedAnimID 148
+
+#define PupilMagicAnimID 149
+
+#define RecruitLanceAnimID 150
+#define RecruitUnarmedAnimID 151
+
+#define SoldierLanceAnimID 152
+#define SoldierUnarmedAnimID 153
+
+#define PirateAxeAnimID 154
+#define PirateHandAxeAnimID 155
+#define PirateUnarmedAnimID 156
+
+#define NecromancerMagicAnimID 157
+#define NecromancerStaffAnimID 158
+
+#define BallistaAnimID 159
+
+#define RevenantAnimID 160
+
+#define EntombedAnimID 161
+
+#define BonewalkerSwordAnimID 162
+#define BonewalkerLanceAnimID 163
+#define BonewalkerUnarmedAnimID 164
+
+#define BonewalkerBowAnimID 165
+#define BonewalkerUnarmed2AnimID 166
+
+#define WightSwordAnimID 167
+#define WightLanceAnimID 168
+#define WightUnarmedAnimID 169
+
+#define WightBowAnimID 170
+#define WightUnarmed2AnimID 171
+
+#define BaelAnimID 172
+
+#define ElderBaelAnimID 173
+
+#define CyclopsAxeAnimID 174
+#define CyclopsHandAxeAnimID 175
+#define CyclopsUnarmedAnimID 176
+
+#define MautheDoogAnimID 177
+
+#define GwyllgiAnimID 178
+
+#define TarvosAxeAnimID 179
+#define TarvosHandAxeAnimID 180
+#define TarvosUnarmedAnimID 181
+
+#define MaelduinAxeAnimID 182
+#define MaelduinHandAxeAnimID 183
+#define MaelduinBowAnimID 184
+#define MaelduinUnarmedAnimID 185
+
+#define MogallMagicAnimID 186
+
+#define ArchMogallMagicAnimID 187
+
+#define GorgonMagicAnimID 188
+
+#define GargoyleLanceAnimID 189
+#define GargoyleUnarmedAnimID 190
+
+#define DeathgoyleLanceAnimID 191
+#define DeathgoyleUnarmedAnimID 192
+
+#define DracoZombieAnimID 193
+
+#define DemonKingAttackAnimID 194
+#define DemonKingMagicAnimID 195
+
+#define ManaketeAttackAnimID 196
+#define ManaketeTransformAnimID 197
+#define ManaketeRevertAnimID 198
+#define ManaketeUnarmedAnimID 199
+
+#define ClericUnarmedAnimID 200
+
+#define ManaketeUndeadAnimID 201
