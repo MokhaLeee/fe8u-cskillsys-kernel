@@ -20,6 +20,15 @@ SET_DATA UsedFreeRamSpaceTop, FreeRamSpaceBottom
     SET_DATA \name, UsedFreeRamSpaceTop
 .endm
 
+SET_DATA FreeDemoRamSpaceTop,    0x0203F000
+SET_DATA FreeDemoRamSpaceBottom, 0x02040000
+SET_DATA UsedFreeDemoRamSpaceTop, FreeDemoRamSpaceBottom
+
+.macro _kernel_malloc_demo name, size
+    .set UsedFreeDemoRamSpaceTop, UsedFreeDemoRamSpaceTop - \size
+    SET_DATA \name, UsedFreeDemoRamSpaceTop
+.endm
+
 SET_DATA FreeRamSpace2Top,    0x0203AAA4
 SET_DATA FreeRamSpace2Bottom, 0x0203DDE0
 SET_DATA UsedFreeRamSpace2Top, FreeRamSpace2Bottom
@@ -68,6 +77,7 @@ _kernel_malloc sAnimNumberSlot, 4
 _kernel_malloc gpActorShileInfo, 4
 _kernel_malloc gpTargetShileInfo, 4
 _kernel_malloc sShileInfoCache, 0x14
+_kernel_malloc DemoUnitSpriteSlots, 0x100 @ better to put to: _kernel_malloc_demo
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

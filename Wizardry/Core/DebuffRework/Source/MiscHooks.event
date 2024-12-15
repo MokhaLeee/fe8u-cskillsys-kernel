@@ -155,7 +155,7 @@ PUSH
 
     ORG $27200 // RefreshUnitSprites
     BYTE 0x3F
-    // PROTECT $271A0 $2736C
+    PROTECT $271A0 $2736C
 
     // PutUnitSpriteIconsOam
 

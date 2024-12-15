@@ -18,5 +18,13 @@ ALIGN 4
     */
     ALIGN 4
     #include "Banim/Banim.event"
+
+    /**
+    * To install sprites:
+    *    1. include **Sprites/Sprites.event** in **Contents/Contents.event**
+    *    2. include **Sprites/Preload.event** in **Preload/PreloadData.event**
+    */
+    ALIGN 4
+    #include "Sprites/Sprites.event"
 #endif // DEMO_BUILD
 #endif

@@ -4,9 +4,3 @@ DemoAnimConf_LynLord:
     UnarmedAnim(BANIM_LynLord_Item)
 EndAnim
 
-#ifdef CONFIG_USE_DEBUG
-PUSH
-    ORG 0x8071EC
-    POIN DemoAnimConf_LynLord
-POP
-#endif /* CONFIG_USE_DEBUG */
