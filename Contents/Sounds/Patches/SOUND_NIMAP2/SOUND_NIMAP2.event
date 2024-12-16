@@ -1,0 +1,8 @@
+ALIGN 4
+SOUND_NIMAP2:
+voicegroup000:
+#incbin "FE8_native_instrument_map(revised).bin"
+
+ALIGN 4
+SOUND_NIMAP1:
+#incbin "FE8_NI_Map.bin"

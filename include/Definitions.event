@@ -5,5 +5,6 @@
 #include "constants/texts.h"
 #include "demo/demo-banims.h"
 #include "demo/demo-sprites.h"
+#include "demo/demo-sounds.h"
 
 #endif

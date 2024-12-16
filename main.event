@@ -43,6 +43,7 @@ ORG FreeSpaceKernel_Data
 PUSH
 ORG FreeSpaceDEMO
     #include "Contents/Contents.event"
+MESSAGE FreeSpace___Demo___ end at (CURRENTOFFSET)
 POP
 #else
     #include "Contents/Contents.event"
