@@ -28,8 +28,8 @@ PUSH
     #include "pr_DemoUnitSpriteSlots.lyn.event"
     // PROTECT 0x026C1C 0x026F2C // TornOutUnitSprite
 
-    // ORG 0x27250
-    // BYTE 0xFF
+    ORG 0x27250
+    BYTE 0xFF
     // PROTECT 0x0271A0 0x02736C // RefreshUnitSprites
 
     ORG 0x27B96
