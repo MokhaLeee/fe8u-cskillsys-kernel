@@ -2,7 +2,9 @@
 
 2. Since move-path can display no more than 20 steps in vanilla, with the increase of unit's mobility, this limitation may cause risk of overflow and thus crush the game. If you get in error on move-path, you can directly remove it by FEB patch [designer config](../Patches/PATCH_DeignerConfig.txt)
 
-3. The following patches provided by FEBuilderGBA hold clear conflict with c-skillsys thus strictly forbiddened (WIP).
+3. BattleUnit struct is only valid for `gBattleActor` and `gBattleTarget`, any other pointer is unacceptable in battle. In vanilla, there is only one function that alloc a extra battle unit data in `UnitAutolevelRealistic`, which has been rewriten in kernel.
+
+4. The following patches provided by FEBuilderGBA hold clear conflict with c-skillsys thus strictly forbiddened (WIP).
     - Talk AI
     - Anima Triangle
     - AnimNumbers

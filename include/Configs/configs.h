@@ -5,6 +5,14 @@
 #include "config-memmap.h"
 
 /**
+ * Demo build
+ *
+ * If uncommented, then CHAX may not be seemed as kernel, but demo,
+ * and then try to insert every thing in contents by buildfile.
+ */
+// #define CONFIG_DEMO_BUILD
+
+/**
  * If uncomment, kernel may remove vanilla dislogue text
  * so that we can save ~470KByte ROM space in DEMO.
  *
@@ -15,7 +23,7 @@
  * If you're planning to develop a new game instead of making minor
  * changes on vanilla, it is recommanded to uncomment this config to save space.
  */
-#define CONFIG_CROP_VANILLA_MSG
+// #define CONFIG_CROP_VANILLA_MSG
 
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
@@ -106,6 +114,11 @@
  * Install FEB patch: SetHPClassLimit
  */
 #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
+
+/**
+ * Enable shield system
+ */
+#define CONFIG_INSTALL_KERNEL_SHIELD
 
 /**
  * Levelup mode

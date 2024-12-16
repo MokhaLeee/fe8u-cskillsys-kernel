@@ -6,6 +6,7 @@
 #include "debuff.h"
 #include "combat-art.h"
 #include "gaiden-magic.h"
+#include "shield.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
@@ -195,6 +196,7 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 	gBattleHitIterator->hpChange = gBattleStats.damage;
 
 	BattleHit_ConsumeWeapon(attacker, defender);
+	BattleHit_ConsumeShield(attacker, defender);
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHit);

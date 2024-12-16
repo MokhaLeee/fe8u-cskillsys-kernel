@@ -11,6 +11,7 @@ ALIGN 4
 #include "Essentials/RemoveMovePath/RemoveMovePath.event"
 #include "Essentials/UnitLimitation/UnitLimitation.event"
 #include "Essentials/BanimHpDrainFix/BanimHpDrainFix.event"
+#include "Essentials/BattleForcastFix/BattleForcastFix.event"
 
 #include "Common/OverflowDetection/OverflowDetection.lyn.event"
 #include "Common/AntiHuffman/AntiHuffman.event"
@@ -58,6 +59,8 @@ ALIGN 4
 
 #include "Misc/SkillEffects/MiscSkillEffects.event"
 #include "Misc/GaidenMagic/GaidenMagic.event"
+#include "Misc/Reorganize/Reorganize.event"
+#include "Misc/Shield/Shield.event"
 
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "Misc/ConvoyExpa/ConvoyExpa.event"

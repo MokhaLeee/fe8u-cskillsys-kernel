@@ -75,7 +75,12 @@ IsTransforming:
 mov		r7,r2
 mov		r0,#0x30
 ldrb	r0,[r4,r0]			@status byte
-mov		r1,#0xF
+
+@ CHAX
+@ WTF there actually hold a conflict!!!
+@mov		r1,#0xF
+mov r1, #0x3F
+
 and		r0,r1
 cmp		r0,#2				@sleep
 beq		GoBack2

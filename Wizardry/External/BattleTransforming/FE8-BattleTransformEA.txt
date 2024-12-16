@@ -16,8 +16,7 @@
 	#incbin "Set_Background.dmp"
 	POIN Transformation_Table
 	WORD Transform_RAM_Loc
-    // Protected in /Wizardry/Core/DebuffRework/Source/MiscHooks.event:19:5
-    // PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
+    PROTECT 0x00070B3C 0x00070D04 // RegisterEkrDragonStatusType
 
 	ORG $70908 //(2)
 	callHack_r3(Transform1)

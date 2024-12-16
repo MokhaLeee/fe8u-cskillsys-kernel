@@ -24,6 +24,7 @@ PUSH
     ORG 0x0181D0
         WORD $46C04778 $E59FC000 $E12FFF1C
         POIN _UnitCheckStatCaps
+        PROTECT 0x000181C8 0x0001829C // UnitCheckStatCaps
 
     ORG 0x2BA9A
     MetisTomeGrowthBonus:

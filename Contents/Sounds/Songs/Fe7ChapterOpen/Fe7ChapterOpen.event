@@ -1,0 +1,13 @@
+{
+    #include "Source/FE7_61.lyn.event"
+
+    SongTable(SONG_ChapterOpen, song91, SG_MAP_MUSIC)
+
+    ALIGN 4
+    ThisInstrument:
+    BYTE 00 0x3C 00 00; POIN ThisSound1; BYTE 0xFF 0x00 0xFF 0xA5
+
+    ALIGN 4
+    ThisSound1:
+        #incbin "Source/inst000x00.DirectSound.bin"
+}

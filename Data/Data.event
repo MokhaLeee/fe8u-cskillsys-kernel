@@ -34,5 +34,6 @@
 #include "GaidenMagic/GaidenMagicData.event"
 #include "GaidenMagic/GaidenMagicData.lyn.event"
 #include "MaxStatus/MaxStatus.lyn.event"
+#include "Shield/ShieldConfig.lyn.event"
 
 #endif

@@ -25,7 +25,7 @@ sudo apt-get -y install binutils-arm-none-eabi ctags \
     cabal-install libghc-vector-dev libghc-juicypixels-dev \
     python3-pip pkg-config libpng* bsdiff moreutils perl
 
-pip install pyelftools PyInstaller tmx six
+pip install pyelftools PyInstaller tmx six Pillow
 ```
 
 3. Install DevkitPRO

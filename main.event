@@ -31,17 +31,30 @@ ORG FreeSpaceKernel_Reloc
 MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (KernelRelocSize)
 ASSERT (FreeSpaceKernel_RelocEnd - CURRENTOFFSET)
 
+ORG FreeSpaceKernel_Data
+    #include "Preload/PreloadData.event"
+    #include "Data/Data.event"
+    #include "Debug/Debug.event"
+
+    /**
+     * For demo build, it is better to put this part of code directly to: FreeSpaceDEMO (0x1000000) to avoid potential overflow.
+     */
+#ifdef CONFIG_DEMO_BUILD
+PUSH
+ORG FreeSpaceDEMO
+    #include "Contents/Contents.event"
+MESSAGE FreeSpace___Demo___ end at (CURRENTOFFSET)
+POP
+#else
+    #include "Contents/Contents.event"
+#endif
+MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Data) max (KernelDataSize)
+ASSERT (FreeSpaceKernel_DataEnd - CURRENTOFFSET)
+
 ORG FreeSpaceFont
     #include "Fonts/Fonts.event"
 MESSAGE FreeSpace___Font___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceFont) max (FreeSpaceFontSize)
 ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
-
-ORG FreeSpaceKernel_Data
-    #include "Data/Data.event"
-    #include "Contents/Contents.event"
-    #include "Debug/Debug.event"
-MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Data) max (KernelDataSize)
-ASSERT (FreeSpaceKernel_DataEnd - CURRENTOFFSET)
 
 ORG FreeSpaceKernelText
     /**

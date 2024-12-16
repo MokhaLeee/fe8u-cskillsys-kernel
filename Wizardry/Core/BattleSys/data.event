@@ -6,6 +6,7 @@ PreBattleCalcFuncs:
 
     POIN PreBattleCalcSilencerRate PreBattleCalcWeaponTriangle PreBattleCalcSkills
     POIN PreBattleCalcLegendSkills PreBattleCalcDebuffs PreBattleCalcCombatArt PreBattleCalcAuraEffect
+    POIN PreBattleCalcShieldBonus
     POIN PreBattleCalcStatDebuffs PreBattleCalcLeadershipBonus
 
     POIN PreBattleCalcEnd

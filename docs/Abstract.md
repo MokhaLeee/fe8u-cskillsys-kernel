@@ -94,6 +94,10 @@ Basic debuffs can keep no more than 3 turns.
 
 Some combat related debuffs can overlap and exist simultaneously but just hold one turn.
 
+## Shield
+
+[Shield](./ShieldItem.md)
+
 # Credits
 
 [Credits doc](./Credits.md)

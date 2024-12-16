@@ -20,6 +20,15 @@ SET_DATA UsedFreeRamSpaceTop, FreeRamSpaceBottom
     SET_DATA \name, UsedFreeRamSpaceTop
 .endm
 
+SET_DATA FreeDemoRamSpaceTop,    0x0203F000
+SET_DATA FreeDemoRamSpaceBottom, 0x02040000
+SET_DATA UsedFreeDemoRamSpaceTop, FreeDemoRamSpaceBottom
+
+.macro _kernel_malloc_demo name, size
+    .set UsedFreeDemoRamSpaceTop, UsedFreeDemoRamSpaceTop - \size
+    SET_DATA \name, UsedFreeDemoRamSpaceTop
+.endm
+
 SET_DATA FreeRamSpace2Top,    0x0203AAA4
 SET_DATA FreeRamSpace2Bottom, 0x0203DDE0
 SET_DATA UsedFreeRamSpace2Top, FreeRamSpace2Bottom
@@ -41,7 +50,7 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 /* From the bottom to the top */
 _kernel_malloc sSkillList, 0x40 * 3
 _kernel_malloc sSkillFastList, 0x100
-_kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
+_kernel_malloc sLearnedSkillPLists, 51 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
 _kernel_malloc gBattleActorGlobalFlag, 0x10
@@ -65,6 +74,10 @@ _kernel_malloc sExpaConvoyItemArray, 2 * 300
 _kernel_malloc sGaidenMagicListObj, 0x24
 _kernel_malloc gExtBattleHitArray, 4 * 0x21
 _kernel_malloc sAnimNumberSlot, 4
+_kernel_malloc gpActorShileInfo, 4
+_kernel_malloc gpTargetShileInfo, 4
+_kernel_malloc sShileInfoCache, 0x14
+_kernel_malloc DemoUnitSpriteSlots, 0x100 @ better to put to: _kernel_malloc_demo
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

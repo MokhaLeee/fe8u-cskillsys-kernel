@@ -26,8 +26,6 @@ all:
 	@$(MAKE) chax		|| exit 1
 	@$(MAKE) post_chax	|| exit 1
 
-include Contents/contents.mk
-
 CACHE_DIR := .cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
@@ -315,6 +313,17 @@ $(GFX_HEADER): $(GFX_SOURCES)
 
 CLEAN_BUILD += $(GFX_DIR)
 CLEAN_FILES += $(GFX_HEADER)
+
+# ==========
+# = Banims =
+# ==========
+
+BANIM_DIR := $(CONTENTS_DIR)/Banim
+
+%.banim.event: %.banim.txt
+	@$(MAKE) -f $(BANIM_DIR)/makefile $@
+
+CLEAN_BUILD += $(BANIM_DIR)
 
 # =========
 # = Glyph =
