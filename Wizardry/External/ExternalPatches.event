@@ -105,5 +105,9 @@
     #include "ArenaLimits/Installer.event"
 #endif
 
+#ifdef CONFIG_DANGER_RADIUS
+    #include "DangerRadius/Installer.event"
+#endif
+
 
 #include "FE8_Rewritten_Terper/Installer.event"

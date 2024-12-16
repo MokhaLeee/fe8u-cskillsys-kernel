@@ -1,0 +1,20 @@
+// // Insert DR icons
+
+// PUSH
+
+//   ORG 0x156AC
+//   POIN SystemIcons
+//   PROTECT 0x156AC CURRENTOFFSET
+
+// POP
+
+
+// ALIGN 4
+// SystemIcons:
+// #ifdef HP_BARS
+//   #incbin "WarningHpSheetDR.dmp"
+// #else
+//   #incbin "SystemIconsDR.dmp"
+// #endif
+
+// Jester - Not needed in C Skill System, it conflicts with existing graphics

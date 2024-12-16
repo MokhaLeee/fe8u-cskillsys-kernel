@@ -296,6 +296,17 @@
 */
 // #define CONFIG_ARENA_LIMITS
 
+/*
+** By Huichelaar
+** Uses the fog of war palette for a map to generate a map
+** wide radius of reachable tiles by all enemy units.
+** The palette for fog of war for a map tileset can be changed
+** with the python tools bundled with the hack. Read the README for details
+**
+** Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
+*/
+// #define CONFIG_DANGER_RADIUS
+
 /**
  * Levelup mode
  * 0: vanilla
