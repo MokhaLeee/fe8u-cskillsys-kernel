@@ -82,7 +82,16 @@ void DrawShopItemLine(struct Text* th, int item, struct Unit* unit, u16* dst) {
 }
 
 void DrawStockedItemLine(struct Text* text, int item, s8 isUsable, u16* mapOut) {
-    Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
+    // Determine the text color based on item usability and stock
+    u8 textColor;
+    if (GetItemStock(item) != -1 && isUsable) {
+        textColor = TEXT_COLOR_SYSTEM_GOLD;
+    } else {
+        textColor = isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY;
+    }
+
+    // Set the determined color
+    Text_SetParams(text, 0, textColor);
     Text_DrawStringASCII(text, GetItemName(item));
 
     PutText(text, mapOut + 2);
@@ -92,6 +101,7 @@ void DrawStockedItemLine(struct Text* text, int item, s8 isUsable, u16* mapOut) 
 
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
+
 
 LYN_REPLACE_CHECK(DrawShopItemPriceLine);
 void DrawShopItemPriceLine(struct Text* th, int item, struct Unit* unit, u16* dst) {

@@ -22,10 +22,8 @@ FILL 0x4 * 0x4E
 ALIGN 4
 Ch2ShopStock:
 StockEntry(SlimSword, 10)
-StockEntry(IronSword, 8)
 StockEntry(SlimLance, 7)
 StockEntry(IronLance, 1)
-StockEntry(IronAxe, 0)
 StockListEnd //TERMINATOR
 
 SetChapterShopStock(2, Ch2ShopStock)
