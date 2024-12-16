@@ -101,5 +101,9 @@
     #include "LimitedShopStock/Installer.event"
 #endif
 
+#ifdef CONFIG_ARENA_LIMITS
+    #include "ArenaLimits/Installer.event"
+#endif
+
 
 #include "FE8_Rewritten_Terper/Installer.event"

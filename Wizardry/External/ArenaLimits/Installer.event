@@ -1,0 +1,129 @@
+// Arena Limits. Hack by Zeta/Gilgamesh
+// REQUIRES: Anti-huffman (which is contained in essential fixes, you likely have it already unless you're patching a 100% vanilla rom)
+// Free to use/modify
+
+#include "Tools/Tool Helpers.txt"
+#define setTextToRAM(textID, offset) "PUSH; ORG (TextTable+4*textID); WORD (offset | 0x80000000); POP"
+#define ArenaLimit(ChapterID, Level, Turn) "BYTE ChapterID Level Turn" // macro not really necessary, but it looks nice
+
+#define _FreeSpaceRAM 		0x203AAC0 	// if this hack conflicts with another hack, changing this will likely fix it
+#define ArenaLimitTextID	0x43	  	// choose a TextID to sacrifice. actual text is built in RAM so you don't need to add anything to your text buildfile
+#define _NonLethalArena		0x1			// change to 0x0 if you want lethal arenas
+#define _MaxLevel			20
+
+// promoted units are treated as if they were MaxLevel levels higher, for the purpose of this table
+// if you want to allow promoted units, set the level limit above MaxLevel.
+// for example, a level limit of 25 and max level of 20 allows all non promoted units
+// and allows promoted units up to level 5. (it will show up as Level Limit: 5[N], then the UnpromotedNoLimitString)
+ALIGN 4
+ArenaLimitTable:
+//ArenaLimit(	ChapterID, 	Level, 	Turn)
+ArenaLimit(		6, 			5,		3)
+BYTE 0xFF 0xFF 0xFF // delimiter
+
+
+// change these strings if you feel like it, though making them too long will cause problems
+ArenaLevelLimitString:
+String("Arena Level Limit:") // asm adds a space and the level limit itself after this
+BYTE 0x00
+
+UnpromotedOnlyString: // displayed when level limit is <MaxLevel (unpromoted units only)
+String("Unpromoted units only.")
+BYTE 0x00
+
+UnpromotedNoLimitString: // displayed when level limit is >MaxLevel (all unpromoted units allowed + level limit for promoted units)
+String("No limit for unpromoted units.")
+BYTE 0x00
+
+ArenaClosedString: // displayed when turn limit is exceeded
+String("The arena is closed for the day.")
+BYTE 0x00
+
+_ArenaLimitEvent:
+	EVBIT_T 0x4 // otherwise skipping the text box with start glitches the menu graphically
+	TUTORIALTEXTBOXSTART
+	CenterTutorialTextBox
+	TEXTSHOW ArenaLimitTextID
+	TEXTEND
+	NoFade
+ENDA
+
+setTextToRAM(ArenaLimitTextID, _FreeSpaceRAM)
+
+ALIGN 4
+ArenaLimitHook:
+#incbin ArenaLimitHook.dmp
+POIN CheckArenaLimits
+
+ALIGN 4
+DeathQuoteHook:
+#incbin DeathQuoteHook.dmp
+WORD _NonLethalArena
+
+PUSH
+ORG $24132
+ALIGN 4
+jumpToHack(ArenaLimitHook)
+
+ORG $835DC
+jumpToHack(DeathQuoteHook)
+POP
+
+
+// pointers
+ALIGN 4
+FreeSpaceRAM:
+WORD _FreeSpaceRAM
+ArenaLimitEvent:
+POIN _ArenaLimitEvent
+
+// bytes
+NonLethalArena:
+BYTE _NonLethalArena
+MaxLevel:
+BYTE _MaxLevel
+
+// lyn output of ArenaLimits.c
+PUSH
+ORG $32750
+ALIGN 4
+SHORT $4778 $46C0
+WORD $E59FC000 $E12FFF1C
+POIN KillUnitIfNoHealth
+POP
+PUSH
+ORG $327b4
+ALIGN 4
+SHORT $4778 $46C0
+WORD $E59FC000 $E12FFF1C
+POIN DidUnitDie
+POP
+ALIGN 4
+PUSH
+ORG CURRENTOFFSET+$1;StringCopy:
+ORG CURRENTOFFSET+$12;u8ToString:
+ORG CURRENTOFFSET+$52;CheckArenaLimits:
+ORG CURRENTOFFSET+$100;KillUnitIfNoHealth:
+ORG CURRENTOFFSET+$54;DidUnitDie:
+POP
+SHORT $7803 $3001 $700B $2B00 $D101 $8 $4770 $3101 $E7F6 $B570 $4 $D $2809 $D806 $3430 $700C $1C4E $30 $BC70 $BC02 $4708 $3 $3B0A $1C8E $2B58 $D810 $4B0A $210A $F000 $F8DC $602 $E12 $13 $3330 $702B $230A $425B $10 $4358 $3430 $1904 $706C $E7E5 $233F $700B $704B $E7E1 $46C0
+BYTE $7D $16 $D $8
+SHORT $B5F8 $2700 $2603 $4933 $4D33 $7B88 $33 $437B $195B $781A $2AFF $D101 $2001 $E016 $4290 $D157 $789B $2B00 $D014 $8A0A $429A $D911 $4B2B $482C $6819 $F7FF $FFB3 $7006 $2300 $7043 $4B29 $2101 $6818 $4B29 $F000 $F8A4 $2003 $BCF8 $BC02 $4708 $2203 $13 $437B $18EB $7859 $2001 $2900 $D0F4 $4B22 $681A $7A13 $6852 $6A92 $5D2 $D504 $4A20 $7812 $189B $61B $E1B $2001 $4299 $D2E5 $4B17 $481C $6819 $F7FF $FF8A $2320 $2203 $7003 $13 $437B $4E17 $18EB $785B $7832 $1C41 $18 $4293 $D902 $1A98 $600 $E00 $F7FF $FF81 $2301 $7003 $18C1 $3302 $3C $435C $192D $786A $7833 $480E $429A $D800 $480D $F7FF $FF69 $2403 $7004 $E7B3 $3701 $E79B
+BYTE $F0 $BC $2 $2
+POIN ArenaLimitTable
+POIN FreeSpaceRAM
+POIN ArenaClosedString
+POIN ArenaLimitEvent
+BYTE $7D $D0 $0 $8 $50 $4E $0 $3
+POIN MaxLevel
+POIN ArenaLevelLimitString
+POIN UnpromotedNoLimitString
+POIN UnpromotedOnlyString
+SHORT $B510 $4B0F $4 $F000 $F843 $2800 $D109 $4B0D $7A9B $2B02 $D108 $4B0C $781B $2B00 $D004 $2301 $74E3 $BC10 $BC01 $4700 $20 $4B08 $F000 $F830 $6803 $2206 $2100 $6858 $4B05 $F000 $F829 $E7F0
+BYTE $51 $91 $1 $8 $F0 $A8 $3 $2
+POIN NonLethalArena
+BYTE $FD $83 $1 $8 $85 $46 $A $8
+SHORT $B510 $4B0B $4 $F000 $F819 $2300 $4298 $D10A $4B08 $7A9A $2301 $2A02 $D105 $4A07 $7812 $2A00 $D001 $74E3 $3 $18 $BC10 $BC02 $4708 $46C0
+BYTE $51 $91 $1 $8 $F0 $A8 $3 $2
+POIN NonLethalArena
+SHORT $4718 $46C0

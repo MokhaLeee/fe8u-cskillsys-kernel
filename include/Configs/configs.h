@@ -287,6 +287,15 @@
 */
 // #define CONFIG_LIMITED_SHOP_STOCK
 
+/*
+** By Zeta
+** Can set level and turn limits on the arena and
+** make it so participation isn't lethal
+**
+** Source: https://feuniverse.us/t/zetas-asm-c-spellbook/4824
+*/
+// #define CONFIG_ARENA_LIMITS
+
 /**
  * Levelup mode
  * 0: vanilla
