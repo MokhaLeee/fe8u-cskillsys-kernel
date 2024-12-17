@@ -127,7 +127,7 @@ gpPal_EfxAnimNumber: POIN Pal_EfxAnimNumber
 
 gpUnitMaxStatusConfigTable: POIN gUnitMaxStatusConfigTable
 gpKernelBattleDesignerConfig: POIN gKernelBattleDesignerConfig
-
+MESSAGE CURRENTOFFSET
 gpShieldItemTable: POIN gShieldItemTable
 gpShieldExtEquipableConfig: POIN gShieldExtEquipableConfig
 

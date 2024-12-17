@@ -14,4 +14,4 @@ B0:DECIMAL=ATK percentage in AS calc
 B1:DECIMAL=HP drain percentgae for nosferatu
 B2:DECIMAL=AVO deacy for riders indorr
 
-INFO=Editor: gKernelBattleDesignerConfig
+INFO=Editor: gKernelBattleDesignerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md

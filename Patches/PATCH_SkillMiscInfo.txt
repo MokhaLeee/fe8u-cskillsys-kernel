@@ -6,7 +6,7 @@ IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x30 0x3
 TYPE=STRUCT
 TAG=#ENGINE
 
-INFO=[CSKILL_K: gSkillExtraInfo] Configure skill misc effects values
+INFO=[CSKILL_K: gSkillExtraInfo] Configure skill misc effects values\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md
 
 POINTER=0xB2A758
 DATASIZE=4
