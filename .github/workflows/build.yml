@@ -41,7 +41,7 @@ jobs:
       run: |
         git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git Tools/FE-CLib-Mokha
         git clone https://github.com/StanHash/FE-PyTools.git --recursive Tools/FE-PyTools
-        git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix
+        git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix Tools/EventAssembler
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
