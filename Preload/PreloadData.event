@@ -1,4 +1,7 @@
 #ifdef CONFIG_DEMO_BUILD
+    ALIGN 4
+    #include "../Contents/PListSplit/Preload.event"
+
     /**
     * To install banims:
     *    1. include **Banim/Banim.event** in **Contents/Contents.event**

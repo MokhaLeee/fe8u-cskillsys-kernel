@@ -1,0 +1,95 @@
+/*
+ * Reloc: gChapterDataAssetTable
+ * data is dumped form FEBuilder
+ */
+
+#ifndef EA_STDLIB_EVENT
+    ERROR Need EAstdlib installed!
+#endif
+
+#ifndef MAP_PLIST_SPLITED
+#define MAP_PLIST_SPLITED
+
+ALIGN 4
+SplitedChapterData_Events:
+    #incbin "bin/event-list.bin"
+
+ALIGN 4
+SplitedChapterData_MapPlist:
+    #incbin "bin/map-plist.bin"
+
+ALIGN 4
+SplitedChapterData_ObjPal:
+    #incbin "bin/obj-palette.bin"
+
+ALIGN 4
+SplitedChapterData_TileAnim:
+    #incbin "bin/tile-anim.bin"
+
+ALIGN 4
+SplitedChapterData_TileChange:
+    #incbin "bin/tile-changes.bin"
+
+ALIGN 4
+SplitedChapterData_TileConfig:
+    #incbin "bin/tile-configs.bin"
+
+/* Reset EA stdlib event installer to new event table, other need the unique definitions */
+#undef EventPointerListOffset
+#define EventPointerListOffset SplitedChapterData_Events
+
+#define NewEventPointerTable_Event(id,offset) "PUSH; ORG SplitedChapterData_Events+(4*id); POIN offset; POP"
+#define NewEventPointerTable_Maps(id,offset) "PUSH; ORG SplitedChapterData_MapPlist+(4*id); POIN offset; POP"
+#define NewEventPointerTable_ObjPal(id,offset) "PUSH; ORG SplitedChapterData_ObjPal+(4*id); POIN offset; POP"
+#define NewEventPointerTable_TileAnim(id,offset) "PUSH; ORG SplitedChapterData_TileAnim+(4*id); POIN offset; POP"
+#define NewEventPointerTable_TileChange(id,offset) "PUSH; ORG SplitedChapterData_TileChange+(4*id); POIN offset; POP"
+#define NewEventPointerTable_TileConfig(id,offset) "PUSH; ORG SplitedChapterData_TileConfig+(4*id); POIN offset; POP"
+
+PUSH
+    /* UnpackChapterMap */
+    ORG 0x019900
+    POIN SplitedChapterData_TileConfig
+    PROTECT 0x0198AC 0x01990C
+
+    /* UnpackChapterMapGraphics */
+    ORG 0x019968
+    POIN SplitedChapterData_ObjPal
+    PROTECT 0x01990C 0x019974
+
+    /* UnpackChapterMapPalette */
+    ORG 0x01999C
+    POIN SplitedChapterData_ObjPal
+    PROTECT 0x019974 0x0199A4
+
+    /* BMapVSync_InitMapAnimations */
+    ORG 0x030134
+    POIN SplitedChapterData_TileAnim
+    PROTECT 0x0300F4 0x030138
+
+    /* ResetMapPaletteAnimations */
+    ORG 0x030C78
+    POIN SplitedChapterData_TileAnim
+    PROTECT 0x030C40 0x030C7C
+
+    /* GetChapterMapPointer */
+    ORG 0x034680
+    POIN SplitedChapterData_MapPlist
+    PROTECT 0x034640 0x034684
+
+    /* GetChapterMapChangesPointer */
+    ORG 0x0346AC
+    POIN SplitedChapterData_TileChange
+    PROTECT 0x034684 0x0346B0
+
+    /* GetChapterEventDataPointer */
+    ORG 0x0346DC
+    POIN SplitedChapterData_Events
+    PROTECT 0x0346B0 0x0346E0
+
+    /* Fill up vanilla */
+    ORG 0x8B3640
+    #incbin "bin/008B3640.bin"
+    PROTECT 0x8B363C 0x8B39EC
+POP
+
+#endif /* MAP_PLIST_SPLITED */

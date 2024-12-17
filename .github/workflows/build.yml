@@ -26,7 +26,6 @@ jobs:
         sudo apt-get install -y python3-pip pkg-config libpng* bsdiff moreutils
         python3 -m pip install --upgrade pip
         python3 -m pip install pyelftools PyInstaller tmx six Pillow
-        cabal update
 
     - name: Install DEVKITPRO
       run: |
@@ -48,10 +47,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0'
-
-    - name: Build EA
-      run: |
-        cd Tools/EventAssembler && ./build.sh && cd ../..
 
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
