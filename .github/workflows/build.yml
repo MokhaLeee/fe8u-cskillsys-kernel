@@ -57,10 +57,10 @@ jobs:
       run: head -c 16M /dev/urandom > fe8.gba
 
     - name: Debug build
-      run: make -j
+      run: make EA_DIR=Tools/EventAssembler-prebuild/ -j
 
     - name: Clean build
       run: make clean
 
     - name: Debug remove skill build
-      run: make -j CONFIG_CI_NO_SKILL_TEST=1
+      run: make EA_DIR=Tools/EventAssembler-prebuild/ -j CONFIG_CI_NO_SKILL_TEST=1

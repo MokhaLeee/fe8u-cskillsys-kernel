@@ -68,7 +68,7 @@ CC      := $(PREFIX)gcc
 AS      := $(PREFIX)as
 OBJCOPY := $(PREFIX)objcopy
 
-EA_DIR            := $(TOOL_DIR)/EventAssembler
+EA_DIR            ?= $(TOOL_DIR)/EventAssembler
 EA                := $(EA_DIR)/ColorzCore
 PARSEFILE         := $(EA_DIR)/Tools/ParseFile
 PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
