@@ -130,7 +130,7 @@ gpKernelBattleDesignerConfig: POIN gKernelBattleDesignerConfig
 
 gpShieldItemTable: POIN gShieldItemTable
 gpShieldExtEquipableConfig: POIN gShieldExtEquipableConfig
-MESSAGE CURRENTOFFSET
+
 gpHighPortraitFidLut: POIN HighPortraitFidLut
 
 KERNEL_RELOC_END:

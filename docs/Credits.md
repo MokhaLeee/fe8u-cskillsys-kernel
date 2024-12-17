@@ -20,3 +20,7 @@
 ## Skill icons
 
 - JeorgeReds: BonusDoubler
+
+## Portraits
+- Melia
+- CranJam

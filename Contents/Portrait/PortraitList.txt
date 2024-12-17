@@ -1,0 +1,2 @@
+#                       Index MouthX MouthY EyesX EyesY IndexDefinition
+"Source/Sommie.png"     0x02  1      7      3     5     DEMO_PORTRAIT_Sommie
