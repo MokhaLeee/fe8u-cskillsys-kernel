@@ -14,21 +14,6 @@ struct ProcEfxHpCost {
 	struct Anim *anim;
 };
 
-void BanimC07_UpdateHpCost(struct Anim *anim)
-{
-	int round;
-
-	if (GetAISLayerId(anim) != 0)
-		return;
-
-	round = anim->nextRoundId - 1;
-	if (round < 0 || round >= NEW_BATTLE_HIT_MAX)
-		return;
-
-	if (GetExtBattleHit(round)->hp_cost > 0)
-		NewEfxHpCost(anim);
-}
-
 STATIC_DECLAR void EfxHpCost_Start(struct ProcEfxHpCost *proc) {}
 
 STATIC_DECLAR void EfxHpCost_Loop(struct ProcEfxHpCost *proc)

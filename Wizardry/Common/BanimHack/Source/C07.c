@@ -49,7 +49,14 @@ static void C07Handler_Init(struct ProcC07Handler *proc)
 
 static void C07Handler_HpCost(struct ProcC07Handler *proc)
 {
-	BanimC07_UpdateHpCost(proc->anim);
+	int round;
+
+	round = proc->anim->nextRoundId - 1;
+	if (round < 0 || round >= NEW_BATTLE_HIT_MAX)
+		return;
+
+	if (GetExtBattleHit(round)->hp_cost > 0)
+		NewEfxHpCost(proc->anim);
 }
 
 static void C07Handler_WaitHpCost(struct ProcC07Handler *proc)
@@ -113,7 +120,7 @@ void Banim_C07(struct Anim *anim)
 		}
 	}
 
-	if ((anim->state3 & ANIM_BIT3_BLOCKING) && !EfxHpCostExists()) {
+	if ((anim->state3 & ANIM_BIT3_BLOCKING)) {
 		if (anim->state3 & ANIM_BIT3_BLOCKEND) {
 			anim->state3 &= ~ANIM_BIT3_BLOCKING;
 			anim->state3 &= ~ANIM_BIT3_BLOCKEND;
