@@ -64,6 +64,10 @@ STATIC_DECLAR const struct ProcCmd ProcScr_EfxHpCost[] = {
 	PROC_YIELD,
 	PROC_CALL(EfxHpCost_Start),
 	PROC_REPEAT(EfxHpCost_Loop),
+
+	// We can fasten the banim not to waiting anim-number done
+	// PROC_WHILE(EfxAnimNumberExists),
+
 	PROC_CALL(EfxHpCost_End),
 	PROC_END
 };
