@@ -26,7 +26,6 @@ jobs:
         sudo apt-get install -y python3-pip pkg-config libpng* bsdiff moreutils
         python3 -m pip install --upgrade pip
         python3 -m pip install pyelftools PyInstaller tmx six Pillow
-        sudo ln -s /usr/lib/x86_64-linux-gnu/libffi.so.8 /usr/lib/x86_64-linux-gnu/libffi.so.7
 
     - name: Install DEVKITPRO
       run: |
@@ -42,21 +41,25 @@ jobs:
       run: |
         git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git Tools/FE-CLib-Mokha
         git clone https://github.com/StanHash/FE-PyTools.git --recursive Tools/FE-PyTools
-        git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix Tools/EventAssembler
+        git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0'
 
+    - name: Build EA
+      run: |
+        cd Tools/EventAssembler && ./build.sh && cd ../..
+
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
 
     - name: Debug build
-      run: make EA_DIR=Tools/EventAssembler-prebuild/ -j
+      run: make -j
 
     - name: Clean build
       run: make clean
 
     - name: Debug remove skill build
-      run: make EA_DIR=Tools/EventAssembler-prebuild/ -j CONFIG_CI_NO_SKILL_TEST=1
+      run: make -j CONFIG_CI_NO_SKILL_TEST=1

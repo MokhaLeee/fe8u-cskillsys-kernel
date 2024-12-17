@@ -8,7 +8,6 @@
 	#include "demo/demo-banims.h"
 	#include "demo/demo-sprites.h"
 	#include "demo/demo-sounds.h"
-	#include "demo/demo-portraits.h"
 #endif // DEMO_BUILD
 
 #endif

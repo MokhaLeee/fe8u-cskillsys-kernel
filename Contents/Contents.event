@@ -32,8 +32,5 @@ ALIGN 4
 
     ALIGN 4
     #include "Sounds/Sounds.event"
-
-    ALIGN 4
-    #include "Portrait/Portrait.event"
 #endif // DEMO_BUILD
 #endif
