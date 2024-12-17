@@ -5,12 +5,13 @@ Img_HpBar:
 PUSH
     ORG $156AC
     POIN Img_HpBar
-
     ORG $15690 // Change width of loaded image
     BYTE $18
+    PROTECT 0x00015680 0x000156BC // LoadObjUIGfx
 
     ORG $35718 // Force Subtitle Help (option replaced by hp bars toggle)
     SHORT $46C0
+    PROTECT 0x00035708 0x00035748 // StartSubtitleHelp
 POP
 
 #include "Source/MapTaskArm.lyn.event"
