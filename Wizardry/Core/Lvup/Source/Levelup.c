@@ -90,7 +90,6 @@ static void UnitLvup_100(struct BattleUnit *bu, int bonus)
 
 static void UnitLvup_0(struct BattleUnit *bu, int bonus) {}
 
-
 STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 {
 	static void (*const funcs[])(struct BattleUnit *bu, int bonus) = {
@@ -101,7 +100,7 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 		[4] = UnitLvup_0
 	};
 
-	int mode;
+	int mode, total_lvup, i, retry;
 
 	if (TUTORIAL_MODE())
 		mode = gpKernelDesigerConfig->lvup_mode_tutorial;
@@ -115,18 +114,19 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 
 	funcs[mode](bu, bonus);
 
-	if (gpKernelDesigerConfig->guaranteed_lvup) {
-		int total = bu->changeHP +
-					bu->changePow +
-					bu->changeSkl +
-					bu->changeSpd +
-					bu->changeLck +
-					bu->changeDef +
-					bu->changeRes +
-					BU_CHG_MAG(bu);
+	/**
+	 * Retry
+	 */
+	retry = gpKernelDesigerConfig->guaranteed_lvup ? 10 : 0;
 
-		if (total == 0)
-			UnitLvupCore(bu, bonus + 5);
+	for (i = 0; i < retry; i++) {
+		funcs[mode](bu, bonus + 10);
+
+		total_lvup = bu->changeHP + bu->changePow + bu->changeSkl + bu->changeSpd +
+						bu->changeLck + bu->changeDef + bu->changeRes + BU_CHG_MAG(bu);
+
+		if (total_lvup != 0)
+			break;
 	}
 }
 
