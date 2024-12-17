@@ -120,13 +120,13 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 	retry = gpKernelDesigerConfig->guaranteed_lvup ? 10 : 0;
 
 	for (i = 0; i < retry; i++) {
-		funcs[mode](bu, bonus + 10);
-
 		total_lvup = bu->changeHP + bu->changePow + bu->changeSkl + bu->changeSpd +
 						bu->changeLck + bu->changeDef + bu->changeRes + BU_CHG_MAG(bu);
 
 		if (total_lvup != 0)
 			break;
+
+		funcs[mode](bu, bonus + 10);
 	}
 }
 
