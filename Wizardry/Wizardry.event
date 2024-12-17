@@ -61,6 +61,7 @@ ALIGN 4
 #include "Misc/GaidenMagic/GaidenMagic.event"
 #include "Misc/Reorganize/Reorganize.event"
 #include "Misc/Shield/Shield.event"
+#include "Misc/PortraitHeight/PortraitHeight.event"
 
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "Misc/ConvoyExpa/ConvoyExpa.event"

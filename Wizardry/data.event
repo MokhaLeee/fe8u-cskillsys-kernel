@@ -31,5 +31,6 @@
 #include "Core/ComboAttack/data.event"
 #include "Core/Movement/MovementData.event"
 #include "Misc/Reorganize/data.event"
+#include "Misc/PortraitHeight/data.event"
 
 #include "External/ExternalPatchData.event"
