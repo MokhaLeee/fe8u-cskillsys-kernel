@@ -2,10 +2,15 @@
 
 #include "PortraitHeight.h"
 
-#ifndef CONFIG_DEMO_BUILD
 /**
  * For demo build, `HighPortraitFidLut` is defined directly in Portrait dir
  */
+// #ifndef CONFIG_DEMO_BUILD
+
+/**
+ * But the CI build cannot process PortraitFormatter with no idea :\
+ */
+#if 1
 
 const u8 HighPortraitFidLut[] = {
 	FID_LUTE,
