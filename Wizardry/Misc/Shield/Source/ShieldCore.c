@@ -11,7 +11,7 @@
 extern struct {
 	struct UnitListHeader header;
 	const struct ShieldInfo *sinfo;
-} sShileInfoCache;
+} sShileldInfoCache;
 
 static bool check_config_en(void)
 {
@@ -39,13 +39,13 @@ NOINLINE static void consume_unit_item(struct Unit *unit, u16 item)
 
 static void WriteShileInfoCache(struct Unit *unit, const struct ShieldInfo *sinfo)
 {
-	WriteUnitList(unit, &sShileInfoCache.header);
-	sShileInfoCache.sinfo = sinfo;
+	WriteUnitList(unit, &sShileldInfoCache.header);
+	sShileldInfoCache.sinfo = sinfo;
 }
 
 static void ResetShieldInfo(void)
 {
-	memset(&sShileInfoCache, 0, sizeof(sShileInfoCache));
+	memset(&sShileldInfoCache, 0, sizeof(sShileldInfoCache));
 
 	gpActorShileInfo = gpTargetShileInfo = NULL;
 }
@@ -86,8 +86,8 @@ NOINLINE static const struct ShieldInfo *GetUnitShield(struct Unit *unit)
 	if (!check_config_en())
 		return NULL;
 
-	if (JudgeUnitList(unit, &sShileInfoCache.header))
-		return sShileInfoCache.sinfo;
+	if (JudgeUnitList(unit, &sShileldInfoCache.header))
+		return sShileldInfoCache.sinfo;
 
 	if (gpKernelDesigerConfig->shield_ext_equip_config_en) {
 		sinfo = GetExtUnitShield(unit);

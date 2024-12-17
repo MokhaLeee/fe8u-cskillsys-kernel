@@ -76,7 +76,7 @@ _kernel_malloc gExtBattleHitArray, 4 * 0x21
 _kernel_malloc sAnimNumberSlot, 4
 _kernel_malloc gpActorShileInfo, 4
 _kernel_malloc gpTargetShileInfo, 4
-_kernel_malloc sShileInfoCache, 0x14
+_kernel_malloc sShileldInfoCache, 0x14
 _kernel_malloc DemoUnitSpriteSlots, 0x100 @ better to put to: _kernel_malloc_demo
 
 /**

@@ -1,0 +1,29 @@
+NAME=[CSKILL_K dev] Shield item config
+AUTHOR=Mokha(悠木晓缺)
+
+IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x30 0x39 0x78 0x00
+
+TYPE=STRUCT
+TAG=#ENGINE
+
+INFO=[CSKILL_K: gShieldItemTable] Configure shield item config
+
+POINTER=0xB2A778
+DATASIZE=16
+DATACOUNT=0x100
+
+LISTNAME=ITEM
+
+B0:$COMBO combo.bool.txt=enabled
+B4:ITEM=item itself(must be set)
+B5:$COMBO combo.bool.txt=consume on attacking
+B6:$COMBO combo.bool.txt=consume on defending
+B7:$COMBO combo.bool.txt=Not consume on missed hit
+b8:DECIMAL=atk correction
+b9:DECIMAL=def correction
+b10:DECIMAL=as correction
+b11:DECIMAL=hit correction
+b12:DECIMAL=avo correction
+b13:DECIMAL=crit correction
+b14:DECIMAL=dodge correction
+b15:DECIMAL=silencer correction
