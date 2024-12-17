@@ -1,6 +1,7 @@
 #ifndef DEMO_PORTRAITS_H
 #define DEMO_PORTRAITS_H
 
-#include "../../Contents/Portrait/PortraitDef.h"
+// CI build cannot process PortraitFormatter, no good idea for now :(
+// #include "../../Contents/Portrait/PortraitDef.h"
 
 #endif // DEMO_PORTRAITS_H
