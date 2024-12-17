@@ -2,6 +2,10 @@
 
 #include "PortraitHeight.h"
 
+/**
+ * For demo build, `HighPortraitFidLut` is defined directly in Portrait dir
+ */
+#ifndef CONFIG_DEMO_BUILD
 const u8 HighPortraitFidLut[] = {
 	FID_LUTE,
 	FID_AMELIA,
@@ -10,3 +14,4 @@ const u8 HighPortraitFidLut[] = {
 	FID_MYRRH,
 	0
 };
+#endif // DEMO_BUILD

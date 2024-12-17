@@ -369,8 +369,7 @@ $(PORTRAIT_INSTALLER) $(PORTRAIT_HEADER): $(PORTRAIT_LIST) $(PORTRAIT_DEPS)
 	@echo "[GEN]	$@"
 	@$(PORTRAITFORMATTER) $<
 
-# CI build cannot process PortraitFormatter, no good idea for now :
-# PRE_BUILD += portrait
+PRE_BUILD += portrait
 CLEAN_FILES += $(PORTRAIT_DEPS) $(PORTRAIT_INSTALLER) $(PORTRAIT_HEADER)
 
 # ========

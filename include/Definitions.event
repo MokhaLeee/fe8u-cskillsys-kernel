@@ -3,9 +3,12 @@
 
 #include "constants/event-cmds.h"
 #include "constants/texts.h"
-#include "demo/demo-banims.h"
-#include "demo/demo-sprites.h"
-#include "demo/demo-sounds.h"
-#include "demo/demo-portraits.h"
+
+#ifdef CONFIG_DEMO_BUILD
+	#include "demo/demo-banims.h"
+	#include "demo/demo-sprites.h"
+	#include "demo/demo-sounds.h"
+	#include "demo/demo-portraits.h"
+#endif // DEMO_BUILD
 
 #endif
