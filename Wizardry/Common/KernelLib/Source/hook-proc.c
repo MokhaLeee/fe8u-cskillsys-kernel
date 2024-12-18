@@ -8,7 +8,7 @@ extern u8 sKernelHookSkippingFlag;
 /**
  * Terminator listener
  */
-static void KernelHookSkippingFlagListener_End(ProcPtr proc)
+static void ResetKernelHookSkippingFlag(void)
 {
 	sKernelHookSkippingFlag = 0;
 }
@@ -21,7 +21,8 @@ static void KernelHookSkippingFlagListener_Loop(ProcPtr proc)
 
 static const struct ProcCmd ProcScr_SkippingFlagListener[] = {
 	PROC_NAME("SkippingFlagListener"),
-	PROC_SET_END_CB(KernelHookSkippingFlagListener_End),
+	PROC_SET_END_CB(ResetKernelHookSkippingFlag),
+	PROC_CALL(ResetKernelHookSkippingFlag),
 	PROC_YIELD,
 	PROC_REPEAT(KernelHookSkippingFlagListener_Loop),
 	PROC_END
@@ -29,7 +30,6 @@ static const struct ProcCmd ProcScr_SkippingFlagListener[] = {
 
 static ProcPtr StartHookListener(ProcPtr parent)
 {
-	sKernelHookSkippingFlag = 0;
 	return Proc_Start(ProcScr_SkippingFlagListener, parent);
 }
 
