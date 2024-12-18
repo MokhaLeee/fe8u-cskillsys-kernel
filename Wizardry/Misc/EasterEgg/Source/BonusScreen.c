@@ -15,7 +15,7 @@ static void BonusScreen_VBlank(void)
 
 noreturn void StartKernelBonusScreen(void)
 {
-    int i = 0;
+	int i = 0;
 
 	SetInterrupt_LCDVBlank(BonusScreen_VBlank);
 
@@ -34,12 +34,12 @@ noreturn void StartKernelBonusScreen(void)
 		VBlankIntrWait();
 		SoftResetIfKeyComboPressed();
 
-        if (++i > 256) {
-            if (gKeyStatusPtr->heldKeys & (L_BUTTON | R_BUTTON | A_BUTTON | B_BUTTON))
-                SoftReset(0);
+		if (++i > 256) {
+			if (gKeyStatusPtr->heldKeys & (L_BUTTON | R_BUTTON | A_BUTTON | B_BUTTON))
+				SoftReset(0);
 
-            if (gKeyStatusPtr->heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                SoftReset(0);
-        }
+			if (gKeyStatusPtr->heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+				SoftReset(0);
+		}
 	}
 }
