@@ -89,6 +89,7 @@ ProcPtr KernelCallEvent(const EventScr *eventscr, u8 execType, ProcPtr parent);
 /**
  * hook-proc.c
  */
+bool CheckKernelHookSkippingFlag(void);
 void KernelStartBlockingHookProc(HookProcFunc_t const *hook_list, ProcPtr parent);
 
 /**

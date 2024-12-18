@@ -1,6 +1,46 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 
+#define KERNEL_SKIPPING_LISTENER_VALID_MAGIC 0x83
+
+extern u8 sKernelHookSkippingFlag;
+
+/**
+ * Terminator listener
+ */
+static void KernelHookSkippingFlagListener_End(ProcPtr proc)
+{
+	sKernelHookSkippingFlag = 0;
+}
+
+static void KernelHookSkippingFlagListener_Loop(ProcPtr proc)
+{
+	if (gKeyStatusPtr->newKeys & START_BUTTON)
+		sKernelHookSkippingFlag = KERNEL_SKIPPING_LISTENER_VALID_MAGIC;
+}
+
+static const struct ProcCmd ProcScr_SkippingFlagListener[] = {
+	PROC_NAME("SkippingFlagListener"),
+	PROC_SET_END_CB(KernelHookSkippingFlagListener_End),
+	PROC_YIELD,
+	PROC_REPEAT(KernelHookSkippingFlagListener_Loop),
+	PROC_END
+};
+
+static ProcPtr StartHookListener(ProcPtr parent)
+{
+	sKernelHookSkippingFlag = 0;
+	return Proc_Start(ProcScr_SkippingFlagListener, parent);
+}
+
+bool CheckKernelHookSkippingFlag(void)
+{
+	return sKernelHookSkippingFlag == KERNEL_SKIPPING_LISTENER_VALID_MAGIC;
+}
+
+/**
+ * Hook proc
+ */
 struct HookProc {
 	PROC_HEADER;
 	HookProcFunc_t const *hook_list;
@@ -26,6 +66,7 @@ STATIC_DECLAR void HookProc_Main(struct HookProc *proc)
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_HookCommon[] = {
+	PROC_SET_END_CB(EndAllProcChildren),
 	PROC_YIELD,
 
 PROC_LABEL(1),
@@ -45,4 +86,6 @@ void KernelStartBlockingHookProc(HookProcFunc_t const *hook_list, ProcPtr parent
 	proc = Proc_StartBlocking(ProcScr_HookCommon, parent);
 	proc->index = 0;
 	proc->hook_list = hook_list;
+
+	StartHookListener(proc);
 }
