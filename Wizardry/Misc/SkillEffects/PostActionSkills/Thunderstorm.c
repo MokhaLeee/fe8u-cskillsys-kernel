@@ -31,7 +31,7 @@ STATIC_DECLAR void CallEventThunderfx(ProcPtr proc)
 	CallMapAnim_ThunderStorm(proc, gBattleTargetPositionBackup.x, gBattleTargetPositionBackup.y);
 }
 
-STATIC_DECLAR void SetThunderstormAoeDamage(ProcPtr proc)
+STATIC_DECLAR void SetThunderstormAoeDamage(void)
 {
 	int i;
 	struct Unit *unit = gActiveUnit;
@@ -122,6 +122,14 @@ bool PostActionThunderstorm(ProcPtr parent)
 	case UNIT_ACTION_COMBAT:
 	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
 		if (gBattleActorGlobalFlag.hitted == true) {
+				/**
+				 * Try skip anim
+				 */
+				if (CheckKernelHookSkippingFlag()) {
+					SetThunderstormAoeDamage();
+					return false;
+				}
+
 			KernelCallEvent(EventScr_CallThunderfxAtPosition, EV_EXEC_CUTSCENE, parent);
 			return true;
 		}

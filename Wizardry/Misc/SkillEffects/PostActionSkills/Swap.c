@@ -51,6 +51,19 @@ static void set_position(void)
 	unitb->yPos = y;
 }
 
+static void check_skipping(void)
+{
+	int ret = CheckKernelHookSkippingFlag();
+
+	gEventSlots[EVT_SLOT_C] = ret;
+
+	/**
+	 * Try skip anim
+	 */
+	if (ret)
+		set_position();
+}
+
 STATIC_DECLAR const EventScr EventScr_PostActionPositionSwap[] = {
 	EVBIT_MODIFY(0x4)
 	STAL(20)
@@ -64,6 +77,9 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionSwap[] = {
 	REMA
 	SVAL(EVT_SLOT_7, 0x1)
 	BNE(99, EVT_SLOT_C, EVT_SLOT_7)
+
+	ASMC(check_skipping)
+	BNE(99, EVT_SLOT_C, EVT_SLOT_0)
 
 LABEL(0)
 #if defined(SID_Lunge) && (COMMON_SKILL_VALID(SID_Lunge))

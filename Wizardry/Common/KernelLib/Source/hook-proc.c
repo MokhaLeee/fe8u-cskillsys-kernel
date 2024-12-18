@@ -8,15 +8,15 @@ extern u8 sKernelHookSkippingFlag;
 /**
  * Terminator listener
  */
+static void ListenKernelHookSkippingFlag(void)
+{
+	if ((gKeyStatusPtr->newKeys | gKeyStatusPtr->repeatedKeys | gKeyStatusPtr->heldKeys) & START_BUTTON)
+		sKernelHookSkippingFlag = KERNEL_SKIPPING_LISTENER_VALID_MAGIC;
+}
+
 static void ResetKernelHookSkippingFlag(void)
 {
 	sKernelHookSkippingFlag = 0;
-}
-
-static void KernelHookSkippingFlagListener_Loop(ProcPtr proc)
-{
-	if (gKeyStatusPtr->newKeys & START_BUTTON)
-		sKernelHookSkippingFlag = KERNEL_SKIPPING_LISTENER_VALID_MAGIC;
 }
 
 static const struct ProcCmd ProcScr_SkippingFlagListener[] = {
@@ -24,7 +24,7 @@ static const struct ProcCmd ProcScr_SkippingFlagListener[] = {
 	PROC_SET_END_CB(ResetKernelHookSkippingFlag),
 	PROC_CALL(ResetKernelHookSkippingFlag),
 	PROC_YIELD,
-	PROC_REPEAT(KernelHookSkippingFlagListener_Loop),
+	PROC_REPEAT(ListenKernelHookSkippingFlag),
 	PROC_END
 };
 
@@ -35,6 +35,8 @@ static ProcPtr StartHookListener(ProcPtr parent)
 
 bool CheckKernelHookSkippingFlag(void)
 {
+	ListenKernelHookSkippingFlag();
+
 	return sKernelHookSkippingFlag == KERNEL_SKIPPING_LISTENER_VALID_MAGIC;
 }
 
