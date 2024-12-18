@@ -19,7 +19,7 @@ static const u8 iid_bonus[] = {
 void GiveKernelBonus(void)
 {
 	int i, ret;
-	int bonus_item = iid_bonus[NextRN_N(ARRAY_COUNT(iid_bonus))];
+	int bonus_item = iid_bonus[NextRN_N(ARRAY_COUNT(iid_bonus)) - 1];
 	struct BonusClaimEnt *buf = (void *)gGenericBuffer;
 
 	ret = LoadBonusContentData(buf);
