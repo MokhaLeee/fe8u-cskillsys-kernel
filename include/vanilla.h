@@ -230,3 +230,5 @@ struct AiStaffLutEntry {
 };
 extern const struct AiStaffLutEntry sAiStaffFuncLut[];
 int GetAiStaffFuncIndex(u16 item);
+int sub_8003ABC(u16 a, u16 b);
+bool LoadBonusContentData(void *buf);

@@ -62,6 +62,7 @@ ALIGN 4
 #include "Misc/Reorganize/Reorganize.event"
 #include "Misc/Shield/Shield.event"
 #include "Misc/PortraitHeight/PortraitHeight.event"
+#include "Misc/EasterEgg/EasterEgg.event"
 
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "Misc/ConvoyExpa/ConvoyExpa.event"

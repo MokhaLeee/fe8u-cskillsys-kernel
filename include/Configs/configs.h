@@ -25,6 +25,11 @@
  */
 // #define CONFIG_CROP_VANILLA_MSG
 
+/**
+ * If you press ↑↑↓↓←→←→BA at titlescreen, then...
+ */
+#define CONFIG_USE_KONAMI_CODE_BONUS
+
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 

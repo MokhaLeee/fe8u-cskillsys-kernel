@@ -30,6 +30,10 @@ struct KernelDesigerConfig {
 	u8 no_suspend_in_aiphase;
 
 	u8 shield_en, shield_ext_equip_config_en;
+
+#ifdef CONFIG_USE_KONAMI_CODE_BONUS
+	u8 konami_code_bonus;
+#endif
 };
 
 struct KernelBattleDesignerConfig {

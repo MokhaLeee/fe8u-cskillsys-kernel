@@ -71,4 +71,8 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.shield_en = true,
 	.shield_ext_equip_config_en = true,
 #endif
+
+#ifdef CONFIG_USE_KONAMI_CODE_BONUS
+	.konami_code_bonus = true,
+#endif
 };
