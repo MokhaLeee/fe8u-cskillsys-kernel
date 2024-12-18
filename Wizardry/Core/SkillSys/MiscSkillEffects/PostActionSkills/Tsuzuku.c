@@ -13,7 +13,7 @@ extern u8 gPostActionGaleforceFlag;
 
 bool PostActionTsuzuku(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit *unit = gActiveUnit;
+    FORCE_DECLARE struct Unit * unit = gActiveUnit;
 
     if (!UNIT_IS_VALID(unit) || CheckBitUES(unit, UES_BIT_TSZUKU_SKILL_USED))
         return false;
@@ -27,7 +27,7 @@ bool PostActionTsuzuku(ProcPtr parent)
             int _x = unit->xPos + gVecs_1x1[i].x;
             int _y = unit->yPos + gVecs_1x1[i].y;
 
-            struct Unit *unit = GetUnitAtPosition(_x, _y);
+            unit = GetUnitAtPosition(_x, _y);
 
 #if defined(SID_NiceThighs) && (COMMON_SKILL_VALID(SID_NiceThighs))
             if (SkillTester(unit, SID_NiceThighs))
@@ -70,6 +70,8 @@ bool PostActionTsuzuku(ProcPtr parent)
 
         if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enimy_defeated)
             goto refresh_turn_once;
+            
+        [[fallthrough]];
 
         /* fall through */
 
@@ -78,12 +80,14 @@ bool PostActionTsuzuku(ProcPtr parent)
         if (SkillTester(unit, SID_PowerStaff) && Roll1RN(LckGetter(unit)))
             goto refresh_turn_once;
 #endif
+        [[fallthrough]];
 
     case UNIT_ACTION_USE_ITEM:
 #if defined(SID_QuickHands) && (COMMON_SKILL_VALID(SID_QuickHands))
         if (SkillTester(unit, SID_QuickHands))
             goto refresh_turn_repeatedly;
 #endif
+        [[fallthrough]];
 
         /* fall through */
 

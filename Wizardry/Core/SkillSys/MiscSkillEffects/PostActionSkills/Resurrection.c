@@ -10,6 +10,7 @@
 #include "jester_headers/macros.h"
 #include "unit-expa.h"
 
+#if (defined(SID_Resurrection) && (COMMON_SKILL_VALID(SID_Resurrection)))
 STATIC_DECLAR void PrepareResurrection(void)
 {
     struct Unit * targetUnit = GetUnit(gBattleTarget.unit.index);
@@ -20,18 +21,10 @@ STATIC_DECLAR void PrepareResurrection(void)
         targetUnit->_u3A = UES_BIT_RESURRECTION_SKILL_USED;
     }
 }
-
-STATIC_DECLAR const EventScr EventScr_PostActionResurrection[] = {
-    ASMC(PrepareResurrection)
-    BREAKSTONE_TARGET_UNIT
-    ASMC(MapAnim_CommonEnd)
-    NoFade
-    ENDA
-};
+#endif
 
 bool PostActionResurrection(ProcPtr proc)
 {
-    struct Unit * targetUnit = GetUnit(gBattleTarget.unit.index);
 
     if (gActionData.unitActionType != UNIT_ACTION_COMBAT)
         return false;
@@ -39,9 +32,18 @@ bool PostActionResurrection(ProcPtr proc)
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;
 
-#if defined(SID_Resurrection) && (COMMON_SKILL_VALID(SID_Resurrection))
+#if (defined(SID_Resurrection) && (COMMON_SKILL_VALID(SID_Resurrection)))
+    struct Unit * targetUnit = GetUnit(gBattleTarget.unit.index);
+    
     if (SkillTester(targetUnit, SID_Resurrection) && gBattleTargetGlobalFlag.skill_activated_resurrection)
     {
+        STATIC_DECLAR const EventScr EventScr_PostActionResurrection[] = {
+            ASMC(PrepareResurrection)
+            BREAKSTONE_TARGET_UNIT
+            ASMC(MapAnim_CommonEnd)
+            NoFade
+            ENDA
+        };
         KernelCallEvent(EventScr_PostActionResurrection, EV_EXEC_CUTSCENE, proc);
         return true;
     }

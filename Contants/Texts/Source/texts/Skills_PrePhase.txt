@@ -39,10 +39,10 @@ Set weather to a sandstorm[NL]
 at the start of the turn.[X]
 
 ## MSG_SKILL_YuneWhispers_NAME
-YuneWhis[X]
+Yune Whispers[X]
 
 ## MSG_SKILL_YuneWhispers
-Yune's Whispers: At start[NL]
+Yune Whispers: At start[NL]
 of turn, put ATK/SPD -6 to enemy[NL]
 who's RES is 3 less than unit's[X]
 

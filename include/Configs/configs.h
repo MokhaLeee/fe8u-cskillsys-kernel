@@ -254,7 +254,7 @@
 ** Takes over the Juniper Fruit to introduced in Fire Emblem - Fates
 ** that lets a unit change their class without resetting their level.
 */
-#define CONFIG_VESLY_RECLASS
+// #define CONFIG_VESLY_RECLASS
 
 /*
 ** By Jester 
@@ -306,6 +306,9 @@
 ** Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
 */
 // #define CONFIG_DANGER_RADIUS
+
+#define CONFIG_TELLIUS_CAPACITY_SYSTEM
+#define CONFIG_TELLIUS_CAPACITY_BASE 50
 
 /**
  * Levelup mode

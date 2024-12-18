@@ -171,7 +171,7 @@ Art: Refresh all adjacent[NL]
 allies to the user.[X]
 
 ## MSG_SKILL_GoddessDance_NAME
-G-Dance[X]
+Goddess Dance[X]
 
 ## MSG_MenuSkill_GoddessDanceName
  G-Dance[X]

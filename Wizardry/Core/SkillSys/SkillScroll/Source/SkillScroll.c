@@ -3,6 +3,15 @@
 #include "icon-rework.h"
 #include "kernel-lib.h"
 #include "constants/texts.h"
+#include "stat-screen.h"
+#include "item-sys.h"
+#include "constants/texts.h"
+#include "event-rework.h"
+#include "action-expa.h"
+
+/**
+ * BLOCK USAGE OF SCROLL IF UNIT WOULD BE ABOVE CAPACITY LIMIT AFTER APPLYING IT
+ */
 
 /* External hooks */
 char * GetSkillScrollItemName(int item)
@@ -41,6 +50,18 @@ static const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
     PROC_END
 };
 
+static const EventScr EventScr_SkillCapacityReached[] = {
+    EVBIT_MODIFY(0x4)
+    TUTORIALTEXTBOXSTART
+    SVAL(EVT_SLOT_B, 0xffffffff)
+    TEXTSHOW(MSG_Skill_Capacity_Reached)
+    TEXTEND
+    REMA
+    NoFade
+    ENDA
+};
+
+
 void ItemUseEffect_SkillScroll(struct Unit * unit)
 {
     gActionData.unk08 = -1;
@@ -55,11 +76,32 @@ void ItemUseEffect_SkillScroll(struct Unit * unit)
     }
 }
 
+const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
+
 void ItemUseAction_SkillScroll(ProcPtr proc)
 {
     struct Unit * unit = GetUnit(gActionData.subjectIndex);
     int slot = gActionData.itemSlotIndex;
     int item = unit->items[slot];
+
+#ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
+    int amt = GetUnitBattleAmt(gActiveUnit);
+
+    char * key = GetDuraItemName(item);
+    int value = binary_search_skills(dict_skills, dict_size, key, 1); // 1 gets the capacity of the skill
+
+    if (value == -1 ) 
+        value = 0;
+
+    amt += value;
+
+    if (amt > CONFIG_TELLIUS_CAPACITY_BASE)
+    {
+        KernelCallEvent(EventScr_SkillCapacityReached, EV_EXEC_CUTSCENE, proc);
+        gActionDataExpa.refrain_action = true;
+        return;
+    }
+#endif
 
     if (gActionData.unk08 != (u16)-1)
     {

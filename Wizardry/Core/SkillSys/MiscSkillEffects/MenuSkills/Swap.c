@@ -8,6 +8,7 @@
 #include "unit-expa.h"
 #include "action-expa.h"
 #include "strmag.h"
+#include "bmtarget.h"
 
 #if defined(SID_Swap) && (COMMON_SKILL_VALID(SID_Swap))
 
@@ -45,9 +46,11 @@ void MakeTargetListForSwap(struct Unit* unit) {
     }
     else
         ForEachAdjacentUnit(x, y, TryAddUnitToSwapTargetList);
-#else
-    ForEachAdjacentUnit(x, y, TryAddUnitToSwapTargetList);
+    
+    return;
 #endif
+
+    ForEachAdjacentUnit(x, y, TryAddUnitToSwapTargetList);
 
     return;
 }

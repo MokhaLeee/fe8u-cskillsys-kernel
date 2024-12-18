@@ -3,6 +3,7 @@
 
 #include "DrawPages/LynJump.event"
 #include "DrawPages/DrawPageLeft.lyn.event"
+#include "DrawPages/DrawPage2.lyn.event"
 #include "DrawPages/DrawPage4.lyn.event"
 #include "DrawPages/HelpBox.lyn.event"
 

@@ -5,6 +5,9 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+/* 
+** Seem to have an odd Heisenbug softlock crash here
+*/
 bool PostAction_BattleActorHeal(ProcPtr parent)
 {
     int heal = 0;
@@ -20,10 +23,12 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     switch (gActionData.unitActionType)
     {
     case UNIT_ACTION_COMBAT:
+    
 #if defined(SID_BoundlessVitality) && (COMMON_SKILL_VALID(SID_BoundlessVitality))
         if (SkillTester(gActiveUnit, SID_BoundlessVitality))
             heal += hp_max * SKILL_EFF0(SID_BoundlessVitality) / 100;
 #endif
+
     }
 
 #if defined(SID_Lifetaker) && (COMMON_SKILL_VALID(SID_Lifetaker))
@@ -91,8 +96,6 @@ bool PostAction_BattleTargetHeal(ProcPtr parent)
 
     int hp_cur = GetUnitCurrentHp(GetUnit(gBattleTarget.unit.index));
     int hp_max = GetUnitMaxHp(GetUnit(gBattleTarget.unit.index));
-
-    // int missingHP = hp_max - hp_cur;
 
     if (!UNIT_ALIVE(GetUnit(gBattleTarget.unit.index)) || UNIT_STONED(GetUnit(gBattleTarget.unit.index)))
         return false;

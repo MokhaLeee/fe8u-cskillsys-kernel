@@ -29,41 +29,48 @@ Hex:[NL]
 adjacent enemies.[X]
 
 ## MSG_SKILL_Charm
-Charm: Allies within 2[NL]
+Charm:[NL]
+Allies within 2[NL]
 tiles deal +3 attack.[X]
 
 ## MSG_SKILL_Infiltrator
-Infilt: If within 2 spaces[NL]
-of two or more enemies, gain +3[NL]
-damage and +15% Hit.[X]
+Infiltrator:[NL]
+If within 2 spaces of two or more[NL]
+enemies, gain +3 damage and +15% Hit.[X]
 
 ## MSG_SKILL_Inspiration
-Inspir: Allies within 2 tiles[NL]
-deal +2 damage and receive -2 damage.[X]
+Inspiration:[NL]
+Allies within 2 tiles deal[NL]
++2 damage and receive -2 damage.[X]
 
 ## MSG_SKILL_DivinelyInspiring
-D-Inspir: Adjacent allies[NL]
-deal +3 damage and receive -1 damage.[X]
+D-Inspir:[NL]
+Adjacent allies deal +3 damage[NL]
+and receive -1 damage.[X]
 
 ## MSG_SKILL_LilysPoise
-Lily's Poise: [NL]
-Adjacent allies deal +1 damage [NL]
+Lily's Poise:[NL]
+Adjacent allies deal +1 damage[NL]
 and receive -3 damage.[X]
 
 ## MSG_SKILL_VoiceOfPeace
-V-Peace: Enemies within[NL]
+Voice Of Peace:[NL]
+Enemies within[NL]
 2 tiles deal -2 damage.[X]
 
 ## MSG_SKILL_BattleRange1
-Range Skill: ATK +10 if[NL]
+Battle Range 1:[NL]
+ATK +10 if[NL]
 no ally with 3 tiles.[X]
 
 ## MSG_SKILL_BattleRange2
-Range Skill: ATK +7 if[NL]
+Battle Range 2:[NL]
+ATK +7 if[NL]
 no ally with 2 tiles.[X]
 
 ## MSG_SKILL_BattleRange3
-Range Skill: ATK +5 if[NL]
+Battle Range 3:[NL]
+ATK +5 if[NL]
 no ally with 1 tiles.[X]
 
 ## MSG_SKILL_Peacebringer

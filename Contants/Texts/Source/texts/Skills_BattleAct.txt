@@ -79,17 +79,17 @@ Add DEF/2 or RES/2 to attack based[NL]
 on weapon type (Skill % activation).[X]
 
 ## MSG_SKILL_RightfulKing
-RightfulKing:[NL]
+Rightful King:[NL]
 Add +10% to the activation[NL]
 rate of this unit's skills.[X]
 
 ## MSG_SKILL_RightfulGod
-RightfulGod:[NL]
+Rightful God:[NL]
 Add +30% to the activation[NL]
 rate of this unit's skills.[X]
 
 ## MSG_SKILL_RightfulArch
-RightfulArch:[NL]
+Rightful Arch:[NL]
 Set activation rate of[NL]
 this unit's skills to 100%.[X]
 
@@ -99,7 +99,7 @@ Add unit resistance to damage dealt.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_GreatShield
-GreatShield:[NL]
+Great Shield:[NL]
 Nullify all attacks.[NL]
 (Skill % activation).[X]
 

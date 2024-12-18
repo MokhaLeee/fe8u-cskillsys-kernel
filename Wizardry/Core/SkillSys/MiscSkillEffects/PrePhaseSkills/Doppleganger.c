@@ -5,6 +5,7 @@
 #include "constants/skills.h"
 #include "jester_headers/class-pairs.h"
 
+#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
 bool PrePhase_TickDopplegangerSkillStatus(ProcPtr proc)
 {
     int i;
@@ -19,7 +20,6 @@ bool PrePhase_TickDopplegangerSkillStatus(ProcPtr proc)
         if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
             continue;
 
-#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
         if (SkillTester(unit, SID_Doppleganger))
         {
             for (int i = 0; i < dopplegangerListSize; i++)
@@ -31,7 +31,7 @@ bool PrePhase_TickDopplegangerSkillStatus(ProcPtr proc)
                 }
             }
         }
-#endif
     }
     return false;
 }
+#endif

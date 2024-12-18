@@ -87,6 +87,8 @@ enum
 
     STATSCREEN_TEXT_BWL, // 34
 
+    STATSCREEN_TEXT_SKLSCROLL, // 35
+
     STATSCREEN_TEXT_MAX
 };
 
@@ -355,7 +357,7 @@ extern const struct SSTextDispInfo sPage0TextInfo[];
 extern const struct SSTextDispInfo sPage1TextInfo[];
 extern const struct SSTextDispInfo sPage2TextInfo_Physical[];
 extern const struct SSTextDispInfo sPage2TextInfo_Magical[];
-extern struct TextInitInfo sSSMasterTextInitInfo[];
+extern const struct TextInitInfo sSSMasterTextInitInfo[];
 extern s8 sPageSlideOffsetLut[];
 extern struct ProcCmd gProcScr_SSPageSlide[];
 extern struct ProcCmd gProcScr_SSGlowyBlendCtrl[];

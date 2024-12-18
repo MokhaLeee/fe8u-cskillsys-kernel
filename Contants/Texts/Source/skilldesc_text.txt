@@ -84,7 +84,7 @@ gains are doubled. Unit may[N]
 S-Rank multiple weapon types.[X]
 
 ## SD_Swordbreaker
-Swordbreaker: +50 Hit/Avo when[N]
+Swordbreaker:+50 Hit/Avo when[N]
 enemy has a sword equipped.[X]
 
 ## SD_Lancebreaker
@@ -152,7 +152,7 @@ Counter: Reflect physical damage[N]
 when attacked at 1-2 range.[X]
 
 ## SD_CounterMagic
-Countermagic: Reflect magic damage[N]
+Counter Magic: Reflect magic damage[N]
 when attacked at 1-2 range.[X]
 
 ## SD_Miracle
@@ -730,7 +730,7 @@ is adjacent to an armor ally, unit and[N]
 adjacent armor allies gain +2 Mov.[X]
 
 ## SD_VigorDance
-Inspiring Tune: Refreshing a unit grants[N]
+Vigor Dance: Refreshing a unit grants[N]
 them +2 Pow/Def until the next turn.[X]
 
 ## SD_Forager
@@ -997,15 +997,18 @@ Tower Shield+: Take no damage[N]
 against attacks recieved at range.[X]
 
 ## SD_VoidCurse
-Void Curse: This unit gives[N]
-no experience when defeated.[X]
+Void Curse:[N]
+This unit gives no[N]
+experience when defeated.[X]
 
 ## SD_IndoorFighter
-Indoor Fighter: +10 Hit and[N]
+Indoor Fighter:[N]
++10 Hit and[N]
 Avo when fighting indoors.[X]
 
 ## SD_OutdoorFighter
-Outdoor Fighter: +10 Hit and[N]
+Outdoor Fighter:[N]
++10 Hit and[N]
 Avo when fighting outdoors.[X]
 
 ## SD_TomeRangeUp

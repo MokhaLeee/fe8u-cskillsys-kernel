@@ -1,19 +1,44 @@
 #include "common-chax.h"
 #include "stat-screen.h"
 #include "strmag.h"
+#include "skill-system.h"
+#include "constants/skills.h"
+#include "item-sys.h"
+
+const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
 
 int GetUnitBattleAmt(struct Unit * unit)
 {
-    int status = 0;
-    status += GetUnitPower(unit);
-    status += GetUnitMagic(unit);
-    status += GetUnitSkill(unit);
-    status += GetUnitSpeed(unit);
-    status += GetUnitLuck(unit);
-    status += GetUnitDefense(unit);
-    status += GetUnitResistance(unit);
+    int total = 0;
 
-    return status;
+#ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
+    struct SkillList *list;
+    list = GetUnitSkillList(unit);
+    int i;
+    int value = -1;
+    char * key;
+
+    for (i = 0; i < list->amt; i++)
+    {
+        key = GetDuraItemName((list->sid[i] << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
+        value = binary_search_skills(dict_skills, dict_size, key, 1);
+
+        if (value == -1 ) 
+            value = 0;
+
+        total += value;
+    }
+#else
+    total += GetUnitPower(unit);
+    total += GetUnitMagic(unit);
+    total += GetUnitSkill(unit);
+    total += GetUnitSpeed(unit);
+    total += GetUnitLuck(unit);
+    total += GetUnitDefense(unit);
+    total += GetUnitResistance(unit);
+#endif
+
+    return total;
 }
 
 u8 SortMax(const u8 * buf, int size)

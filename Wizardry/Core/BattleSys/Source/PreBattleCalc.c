@@ -247,6 +247,8 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
     int _skill_list_cnt;
     struct SkillList *list;
 
+    int unitRank;
+
     /**
      * Skip arena judgement
      */
@@ -1387,10 +1389,12 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #endif
 
 #if (defined(SID_Cultured) && (COMMON_SKILL_VALID(SID_Cultured)))
+#if (defined(SID_NiceThighs) && (COMMON_SKILL_VALID(SID_NiceThighs)))
         case SID_Cultured:
             if (BattleSkillTester(defender, SID_NiceThighs))
                 attacker->battleHitRate -= SKILL_EFF0(SID_Cultured);
             break;
+#endif
 #endif
 
 #if (defined(SID_Flank) && (COMMON_SKILL_VALID(SID_Flank)))
@@ -1481,7 +1485,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_SwordProwess) && (COMMON_SKILL_VALID(SID_SwordProwess)))
         case SID_SwordProwess:
-            int unitRank = attacker->unit.ranks[ITYPE_SWORD];
+            unitRank = attacker->unit.ranks[ITYPE_SWORD];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_SwordProwess);
@@ -1517,7 +1521,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_LanceProwess) && (COMMON_SKILL_VALID(SID_LanceProwess)))
         case SID_LanceProwess:
-            int unitRank = attacker->unit.ranks[ITYPE_LANCE];
+            unitRank = attacker->unit.ranks[ITYPE_LANCE];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_LanceProwess);
@@ -1553,7 +1557,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_AxeProwess) && (COMMON_SKILL_VALID(SID_AxeProwess)))
         case SID_AxeProwess:
-            int unitRank = attacker->unit.ranks[ITYPE_AXE];
+            unitRank = attacker->unit.ranks[ITYPE_AXE];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_AxeProwess);
@@ -1589,7 +1593,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_BowProwess) && (COMMON_SKILL_VALID(SID_BowProwess)))
         case SID_BowProwess:
-            int unitRank = attacker->unit.ranks[ITYPE_BOW];
+            unitRank = attacker->unit.ranks[ITYPE_BOW];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_BowProwess);
@@ -1625,7 +1629,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_AnimaProwess) && (COMMON_SKILL_VALID(SID_AnimaProwess)))
         case SID_AnimaProwess:
-            int unitRank = attacker->unit.ranks[ITYPE_ANIMA];
+            unitRank = attacker->unit.ranks[ITYPE_ANIMA];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_AnimaProwess);
@@ -1661,7 +1665,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_DarkProwess) && (COMMON_SKILL_VALID(SID_DarkProwess)))
         case SID_DarkProwess:
-            int unitRank = attacker->unit.ranks[ITYPE_DARK];
+            unitRank = attacker->unit.ranks[ITYPE_DARK];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_DarkProwess);
@@ -1697,7 +1701,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_LightProwess) && (COMMON_SKILL_VALID(SID_LightProwess)))
         case SID_LightProwess:
-            int unitRank = attacker->unit.ranks[ITYPE_LIGHT];
+            unitRank = attacker->unit.ranks[ITYPE_LIGHT];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_LightProwess);

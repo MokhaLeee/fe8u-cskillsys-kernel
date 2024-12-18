@@ -227,19 +227,41 @@ static void DrawPage1ValueCommon(void)
 static void DrawPage1BattleAmt(void)
 {
     int amt = GetUnitBattleAmt(gStatScreen.unit);
+
+#ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
+    int max = CONFIG_TELLIUS_CAPACITY_BASE;
+#else
     int max = 50 * 7;
+#endif
 
     if (amt > max)
         amt = max;
 
+#ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
+    PutDrawText(
+        &gStatScreen.text[STATSCREEN_TEXT_ITEM3],
+        gUiTmScratchA + TILEMAP_INDEX(0x9, 0xD),
+        TEXT_COLOR_SYSTEM_GOLD, 0, 0,
+        GetStringFromIndex(MSG_MSS_SkillCapacity));
+#else
     PutDrawText(
         &gStatScreen.text[STATSCREEN_TEXT_ITEM3],
         gUiTmScratchA + TILEMAP_INDEX(0x9, 0xD),
         TEXT_COLOR_SYSTEM_GOLD, 0, 0,
         GetStringFromIndex(MSG_MSS_BattleAmt));
+#endif
 
+if (amt == max)
+{
+    PutNumber(gUiTmScratchA + TILEMAP_INDEX(0xC + CountDigits(amt), 0xD),
+        TEXT_COLOR_SYSTEM_GREEN, amt);
+}
+else
+{
     PutNumber(gUiTmScratchA + TILEMAP_INDEX(0xC + CountDigits(amt), 0xD),
         TEXT_COLOR_SYSTEM_BLUE, amt);
+}
+
 
     DrawStatWithBarReworkExt(
         0x9, 0xD, 0xD,

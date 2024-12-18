@@ -19,20 +19,20 @@ Increases bow range by 2[X]
 R-Start[X]
 
 ## MSG_SKILL_RunningStart
-RunningStart:[NL]
+Running Start:[NL]
 +1 attack range for[NL]
 every two tiles moved.[X]
 
 ## MSG_SKILL_HighGround
-HighGround:[NL]
+High Ground:[NL]
 +2 range for bows and tomes[NL]
 when unit is atop forts.[X]
 
 ## MSG_SKILL_PointBlank
-PointBlank:[NL]
+Point Blank:[NL]
 Set minimum range[NL]
 of bows to 1.[X]
 
 ## MSG_SKILL_StaffSavant
-StaffSavant:[NL]
+Staff Savant:[NL]
 +1 range for staves.[X]

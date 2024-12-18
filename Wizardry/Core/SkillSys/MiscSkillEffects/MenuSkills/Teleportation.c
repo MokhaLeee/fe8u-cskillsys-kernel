@@ -6,7 +6,7 @@
 #include "constants/texts.h"
 #include "constants/skills.h"
 
-#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
+#if (defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation)))
 STATIC_DECLAR bool AreAnyEnemyExists(void)
 {
     int i;

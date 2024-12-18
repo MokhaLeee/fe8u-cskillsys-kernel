@@ -2,6 +2,7 @@
 #include "bwl.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
+#include "constants/skills.h"
 
 struct LearnedSkillList {
     u32 data[8]; /* 8 * 32 = 0x100 */
@@ -38,8 +39,17 @@ void LoadUnitLearnedSkillLists(u8 * src, const u32 size)
 bool IsSkillLearned(struct Unit * unit, const u16 sid)
 {
     u8 pid = UNIT_CHAR_ID(unit);
-    if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM)
-        return _BIT_CHK(sLearnedSkillPLists[pid].data, sid);
+    if (EQUIPE_SKILL_VALID(sid) && pid < NEW_BWL_ARRAY_NUM && _BIT_CHK(sLearnedSkillPLists[pid].data, sid))
+        return true;
+
+    struct SkillList *list;
+    list = GetUnitSkillList(unit);
+
+    for (int i = 0; i < list->amt; i++)
+    {
+        if (list->sid[i] == sid)
+            return true;
+    }
 
     return false;
 }

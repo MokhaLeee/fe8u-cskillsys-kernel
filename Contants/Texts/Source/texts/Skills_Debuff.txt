@@ -39,10 +39,10 @@ Spd Hone: Grants allies in 2x2[NL]
 start of each turn.[X]
 
 ## MSG_SKILL_LckHone_NAME
-Lck Hone[X]
+Luck Hone[X]
 
 ## MSG_SKILL_LckHone
-Lck Hone: Grants allies in 2x2[NL]
+Luck Hone: Grants allies in 2x2[NL]
 +4 LUCK for one turn during the[NL]
 start of each turn.[X]
 

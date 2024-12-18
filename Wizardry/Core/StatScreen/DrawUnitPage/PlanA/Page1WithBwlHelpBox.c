@@ -88,11 +88,19 @@ static _DECL_INFO RText_Cond = {
     NULL, HbPopulate_SSStatus
 };
 
-static _DECL_INFO RText_BAmt = {
-    &RText_Cond, NULL, &RText_Res, NULL,
-    0xA6, 0x78, MSG_MSS_BattleAmtDesc,
-    NULL, NULL
-};
+#ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
+    static _DECL_INFO RText_BAmt = {
+        &RText_Cond, NULL, &RText_Res, NULL,
+        0xA6, 0x78, MSG_MSS_SkillCapacityDesc,
+        NULL, NULL
+    };
+#else 
+    static _DECL_INFO RText_BAmt = {
+        &RText_Cond, NULL, &RText_Res, NULL,
+        0xA6, 0x78, MSG_MSS_BattleAmtDesc,
+        NULL, NULL
+    };
+#endif
 
 /* Page left */
 static _DECL_INFO RText_Name = {

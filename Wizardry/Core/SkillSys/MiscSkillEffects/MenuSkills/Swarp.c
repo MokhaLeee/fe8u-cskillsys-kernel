@@ -31,23 +31,21 @@ void TryAddUnitToSwarpTargetList(struct Unit* unit) {
 }
 
 void MakeTargetListForSwarp(struct Unit* unit) {
-    int x = unit->xPos;
-    int y = unit->yPos;
 
     BmMapFill(gBmMapRange, 0);
 
 /* Boost the range of this unit's movement skill */
 #if defined(SID_Domain) && (COMMON_SKILL_VALID(SID_Domain))
+    int x = unit->xPos;
+    int y = unit->yPos;
+    
     if (SkillTester(unit, SID_Domain))
     {
         MapAddInRange(x, y, (GetUnitMagic(unit) / 2) + SKILL_EFF0(SID_Domain), 1);
         ForEachUnitInRange(TryAddUnitToSwarpTargetList);
     }
     else
-    ForEachUnitInMagBy2Range(TryAddUnitToSwarpTargetList);
-
-#else
-    ForEachUnitInMagBy2Range(TryAddUnitToSwarpTargetList);
+        ForEachUnitInMagBy2Range(TryAddUnitToSwarpTargetList);
 #endif
 
     return;

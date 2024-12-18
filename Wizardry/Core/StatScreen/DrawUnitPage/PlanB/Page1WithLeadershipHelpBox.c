@@ -52,11 +52,19 @@ static _DECL_INFO RText_Res = {
     NULL, NULL
 };
 
-static _DECL_INFO RText_BAmt = {
-    &RText_Res, NULL, &RText_Hp, &RText_Cond,
-    0x66, 0x88, MSG_MSS_BattleAmtDesc,
-    NULL, NULL
-};
+#ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
+    static _DECL_INFO RText_BAmt = {
+        &RText_Res, NULL, &RText_Hp, &RText_Cond,
+        0x66, 0x88, MSG_MSS_SkillCapacityDesc,
+        NULL, NULL
+    };
+#else
+    static _DECL_INFO RText_BAmt = {
+        &RText_Res, NULL, &RText_Hp, &RText_Cond,
+        0x66, 0x88, MSG_MSS_BattleAmtDesc,
+        NULL, NULL
+    };
+#endif
 
 /* Line #2 */
 static _DECL_INFO RText_Mov = {

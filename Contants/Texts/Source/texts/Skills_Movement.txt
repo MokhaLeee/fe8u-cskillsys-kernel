@@ -43,7 +43,7 @@ Flier allies can provides 3[NL]
 additional movement for the unit[X]
 
 ## MSG_SKILL_SoaringWings_NAME
-SoarWing[X]
+Soar-Wings[X]
 
 ## MSG_SKILL_SoaringWings
 Soaring Wings:[NL]

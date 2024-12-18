@@ -9,7 +9,7 @@
 #include "action-expa.h"
 #include "jester_headers/class-pairs.h"
 
-#if defined(SID_Doppleganger) && (COMMON_SKILL_VALID(SID_Doppleganger))
+#if (defined(SID_Doppleganger) && (COMMON_SKILL_VALID(SID_Doppleganger)))
 
 // Predefine an array of key-value pairs
 const int dopplegangerPairs[1][2] = { { CHARACTER_EIRIKA, CLASS_EIRIKA_LORD } };
