@@ -86,6 +86,10 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
 
 #ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
     int amt = GetUnitBattleAmt(gActiveUnit);
+    int total = CONFIG_TELLIUS_CAPACITY_BASE;
+
+    if (UNIT_CATTRIBUTES(unit) & CA_PROMOTED)
+        total += CONFIG_TELLIUS_CAPACITY_PROMOTED;
 
     char * key = GetDuraItemName(item);
     int value = binary_search_skills(dict_skills, dict_size, key, 1); // 1 gets the capacity of the skill
@@ -95,7 +99,7 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
 
     amt += value;
 
-    if (amt > CONFIG_TELLIUS_CAPACITY_BASE)
+    if (amt > total)
     {
         KernelCallEvent(EventScr_SkillCapacityReached, EV_EXEC_CUTSCENE, proc);
         gActionDataExpa.refrain_action = true;

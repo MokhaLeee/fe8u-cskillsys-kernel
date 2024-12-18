@@ -6,7 +6,7 @@ gPostActionFuncs:
     POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife PostActionSkillSoulSap
     POIN PostActionSynchronize
     POIN PostActionBattleActorHurt PostActionBattleTargetHurt
-    // POIN PostAction_BattleActorHeal PostAction_BattleTargetHeal
+    POIN /* PostAction_BattleActorHeal */ PostAction_BattleTargetHeal
     POIN PostAction_Clearance
     POIN PostActionPositionReturn
     POIN PostActionNecroCopy
