@@ -26,15 +26,13 @@ noreturn void StartKernelBonusScreen(void)
 	SetWinEnable(0, 0, 0);
 	SetBlendNone();
 
-	GiveKernelBonus();
-
 	while (1) {
 		UpdateKeyStatus(gKeyStatusPtr);
 		sub_8003ABC(gKeyStatusPtr->heldKeys, gKeyStatusPtr->newKeys);
 		VBlankIntrWait();
 		SoftResetIfKeyComboPressed();
 
-		if (++i > 256) {
+		if (++i > 128) {
 			if (gKeyStatusPtr->heldKeys & (L_BUTTON | R_BUTTON | A_BUTTON | B_BUTTON))
 				SoftReset(0);
 
