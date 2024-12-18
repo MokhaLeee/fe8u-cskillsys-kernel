@@ -3,71 +3,27 @@
 #include "skill-system.h"
 #include "battle-system.h"
 
-struct ProcPostAction {
-	PROC_HEADER;
-	int index;
-};
+extern HookProcFunc_t const *const gpPostActionFuncs;
 
-typedef bool (*PostActionFunc_t)(struct ProcPostAction *proc);
-// extern const PostActionFunc_t gPostActionFuncs[];
-extern PostActionFunc_t const *const gpPostActionFuncs;
-
-STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction *proc);
-STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction *proc);
-
-STATIC_DECLAR const struct ProcCmd ProcScr_PostActionHook[] = {
-	PROC_YIELD,
-
-PROC_LABEL(1),
-	PROC_CALL(PostActionExecHooks),
-	PROC_YIELD,
-	PROC_GOTO(1),
-
-PROC_LABEL(2),
-	PROC_CALL(PostActionExecVanilla),
-	PROC_YIELD,
-	PROC_END
-};
-
-void PostActionHook(ProcPtr parent)
+void PostActionHook(ProcPtr proc)
 {
-	struct ProcPostAction *proc;
-	proc = Proc_StartBlocking(ProcScr_PostActionHook, parent);
-	proc->index = 0;
+	KernelStartBlockingHookProc(gpPostActionFuncs, proc);
 }
 
-STATIC_DECLAR void PostActionExecHooks(struct ProcPostAction *proc)
+bool PostActionEnd(ProcPtr proc)
 {
-	int ret;
-	PostActionFunc_t it;
-
-	while (1) {
-		it = gpPostActionFuncs[proc->index++];
-		if (!it)
-			goto post_action_done;
-
-		ret = it(proc);
-		if (ret != false)
-			return;
-	}
-
-post_action_done:
-
 	/* Some other proc-free routine */
 	ResetCombatArtStatus();
 	ResetSkillLists();
 	ResetCombatArtList();
 
-	Proc_Goto(proc, 2);
-}
-
-STATIC_DECLAR void PostActionExecVanilla(struct ProcPostAction *proc)
-{
 	/* Vanilla function at the hack entry */
 	HandlePostActionTraps(proc);
+
+	return true;
 }
 
-bool PostActionPadFunc(struct ProcPostAction *proc)
+bool PostActionPadFunc(ProcPtr proc)
 {
 	return false;
 }
