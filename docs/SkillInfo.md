@@ -505,3 +505,6 @@
 | COMBAT_Galeforce |  Art: ATK +3, Move again after defeating enemy. |
 | COMBAT_Gamble |  Art: A reckless attack with halved hit but doubled crit. |
 | COMBAT_Detonate |  Art: Strike a powerful pierced blow by sacrificing own weapon |
+| COMBAT_BloodTribute |  Art: Sacrifice 30% HP to deal more damage as the cost. |
+| COMBAT_CrimsonStrike |  Art: Sacrifice 50% HP to deal more damage as the cost. |
+| COMBAT_VitalReckoning |  Art: Sacrifice 80% HP to deal more damage as the cost. |
