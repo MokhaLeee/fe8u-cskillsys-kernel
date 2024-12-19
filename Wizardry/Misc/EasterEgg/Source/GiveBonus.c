@@ -42,6 +42,16 @@ void GiveKernelBonus(void)
 		buf[i].kind = BONUSKIND_ITEM0;
 		buf[i].itemId = bonus_item;
 		strcpy(buf[i].str, MOKHA_BONUS_CONTENT_MSG);
+		break;
 	}
 	SaveBonusContentData(buf);
+}
+
+LYN_REPLACE_CHECK(LoadSavedEid8A);
+bool LoadSavedEid8A(int slot)
+{
+	/**
+	 * Check can exec bonus-claim
+	 */
+	return true;
 }

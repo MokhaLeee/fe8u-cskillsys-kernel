@@ -25,11 +25,6 @@
  */
 // #define CONFIG_CROP_VANILLA_MSG
 
-/**
- * If you press ↑↑↓↓←→←→BA at titlescreen, then...
- */
-#define CONFIG_USE_KONAMI_CODE_BONUS
-
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 
@@ -185,6 +180,11 @@
  * This may also overwrite PlaySt::disableTerrainDisplay config for player configuration in runtime.
  */
 #define CONFIG_NO_SUS_IN_AI_PHASE
+
+/**
+ * If you press ↑↑↓↓←→←→BA at titlescreen, then...
+ */
+#define CONFIG_USE_KONAMI_CODE_BONUS
 
 /**
  * Ai action expansion

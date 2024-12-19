@@ -63,6 +63,7 @@ void KernelTitle_IDLE(struct TitleScreenProc *proc)
 
 		if (gKonamiComboStep >= ARRAY_COUNT(konami_codes)) {
 			Print("KONAMI BONUS!\n");
+			GiveKernelBonus();
 			PrintStringToDBG(KERNEL_BONUS_NOTE);
 			StartKernelBonusScreen();
 

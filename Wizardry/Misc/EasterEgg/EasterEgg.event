@@ -1,5 +1,6 @@
 #ifdef CONFIG_USE_KONAMI_CODE_BONUS
 
+#include "Source/LynJump.event"
 #include "Source/KonamiCode.lyn.event"
 #include "Source/GiveBonus.lyn.event"
 #include "Source/BonusScreen.lyn.event"
