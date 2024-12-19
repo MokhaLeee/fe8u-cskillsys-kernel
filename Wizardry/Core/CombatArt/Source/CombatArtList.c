@@ -5,11 +5,11 @@
 
 extern struct CombatArtList sCombatArtList;
 
-STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, u8 wtype)
+STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 {
 	int i;
 	u8 cid;
-	u16 item_index = ITEM_INDEX(GetUnitEquippedWeapon(unit));
+	int wtype = GetItemType(item);
 	u8 pid = UNIT_CHAR_ID(unit);
 	u8 jid = UNIT_CLASS_ID(unit);
 	u8 *tmp_list = gGenericBuffer;
@@ -26,7 +26,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, u8 wtype)
 	}
 
 	/* Weapon table */
-	cid = gpCombatArtWeaponTable[item_index];
+	cid = gpCombatArtWeaponTable[ITEM_INDEX(item)];
 	if (COMBART_VALID(cid))
 		tmp_list[cid] = true;
 
@@ -108,7 +108,7 @@ struct CombatArtList *GetCombatArtList(struct Unit *unit, u16 item)
 	u8 wtype = GetItemType(item);
 
 	if (sCombatArtList.wtype != wtype || sCombatArtList.item != item || !JudgeUnitList(unit, &sCombatArtList.ref)) {
-		CalcCombatArtListExt(unit, wtype);
+		CalcCombatArtListExt(unit, item);
 		WriteUnitList(unit, &sCombatArtList.ref);
 		sCombatArtList.wtype = wtype;
 		sCombatArtList.item = item;

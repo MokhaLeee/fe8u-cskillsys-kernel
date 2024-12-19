@@ -3825,4 +3825,28 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
+
+#if (defined(SID_COMBAT_BloodTribute) && COMMON_SKILL_VALID(SID_COMBAT_BloodTribute))
+	[SID_COMBAT_BloodTribute] = {
+		.name = MSG_SKILL_COMBAT_BloodTribute_NAME,
+		.desc = MSG_SKILL_COMBAT_BloodTribute,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_COMBAT_CrimsonStrike) && COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike))
+	[SID_COMBAT_CrimsonStrike] = {
+		.name = MSG_SKILL_COMBAT_CrimsonStrike_NAME,
+		.desc = MSG_SKILL_COMBAT_CrimsonStrike,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
+
+#if (defined(SID_COMBAT_VitalReckoning) && COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning))
+	[SID_COMBAT_VitalReckoning] = {
+		.name = MSG_SKILL_COMBAT_VitalReckoning_NAME,
+		.desc = MSG_SKILL_COMBAT_VitalReckoning,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

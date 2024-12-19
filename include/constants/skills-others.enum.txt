@@ -274,3 +274,6 @@ SID_Latona
 SID_COMBAT_Galeforce
 SID_COMBAT_Gamble
 SID_COMBAT_Detonate
+SID_COMBAT_BloodTribute
+SID_COMBAT_CrimsonStrike
+SID_COMBAT_VitalReckoning

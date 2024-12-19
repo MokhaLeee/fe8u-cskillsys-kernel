@@ -106,3 +106,27 @@ Detonate[X]
 Detonate:[NL]
 Art: Strike a powerful pierced[NL]
 blow by sacrificing own weapon[X]
+
+## MSG_SKILL_COMBAT_BloodTribute_NAME
+BloodTribute[X]
+
+## MSG_SKILL_COMBAT_BloodTribute
+Blood Tribute:[NL]
+Art: Sacrifice 30% HP to deal[NL]
+more damage as the cost.[X]
+
+## MSG_SKILL_COMBAT_CrimsonStrike_NAME
+CrimsonStrike[X]
+
+## MSG_SKILL_COMBAT_CrimsonStrike
+Crimson Strike:[NL]
+Art: Sacrifice 50% HP to deal[NL]
+more damage as the cost.[X]
+
+## MSG_SKILL_COMBAT_VitalReckoning_NAME
+VitalReckoning[X]
+
+## MSG_SKILL_COMBAT_VitalReckoning
+Vital Reckoning:[NL]
+Art: Sacrifice 80% HP to deal[NL]
+more damage as the cost.[X]

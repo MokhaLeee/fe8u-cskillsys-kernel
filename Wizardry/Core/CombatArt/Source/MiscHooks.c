@@ -1,7 +1,9 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "skill-system.h"
 #include "kernel-tutorial.h"
 #include "constants/gfx.h"
+#include "constants/skills.h"
 #include "constants/combat-arts.h"
 
 bool CanUnitPlayCombatArt(struct Unit *unit, u16 item)
@@ -135,6 +137,36 @@ void PreBattleCalcCombatArt(struct BattleUnit *bu, struct BattleUnit *defender)
 		if (!(GetItemAttributes(bu->weapon) & IA_UNBREAKABLE))
 			bu->battleAttack += ITEM_USES(bu->weapon);
 
+		break;
+
+	case CID_BloodTribute:
+#if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
+		bu->battleAttack +=
+			simple_div(
+				simple_div(bu->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
+					* SKILL_EFF1(SID_COMBAT_CrimsonStrike),
+				100);
+#endif
+		break;
+
+	case CID_CrimsonStrike:
+#if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
+		bu->battleAttack +=
+			simple_div(
+				simple_div(bu->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
+					* SKILL_EFF1(SID_COMBAT_CrimsonStrike),
+				100);
+#endif
+		break;
+
+	case CID_VitalReckoning:
+#if (defined(SID_COMBAT_VitalReckoning) && (COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning)))
+		bu->battleAttack +=
+			simple_div(
+				simple_div(bu->hpInitial * SKILL_EFF0(SID_COMBAT_VitalReckoning), 100)
+					* SKILL_EFF1(SID_COMBAT_VitalReckoning),
+				100);
+#endif
 		break;
 	};
 }

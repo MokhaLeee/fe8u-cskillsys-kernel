@@ -83,6 +83,7 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list);
 void ForceUpdateUnitSkillList(struct Unit *unit);
 void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
+void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
 
 /* Skill tetsers */
 extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
