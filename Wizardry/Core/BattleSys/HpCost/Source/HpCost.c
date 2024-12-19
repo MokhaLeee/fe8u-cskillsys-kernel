@@ -36,8 +36,8 @@ STATIC_DECLAR NOINLINE void BattleGenerateHitHpCostCombatArt(struct BattleUnit *
 		AddBattleHpCost(
 			attacker,
 			GetCurrentBattleHitRound(),
-			simple_div(
-				simple_div(attacker->hpInitial * SKILL_EFF0(SID_COMBAT_BloodTribute), 100)
+			kdiv(
+				kdiv(attacker->hpInitial * SKILL_EFF0(SID_COMBAT_BloodTribute), 100)
 					* SKILL_EFF1(SID_COMBAT_BloodTribute),
 				100));
 #endif
@@ -48,8 +48,8 @@ STATIC_DECLAR NOINLINE void BattleGenerateHitHpCostCombatArt(struct BattleUnit *
 		AddBattleHpCost(
 			attacker,
 			GetCurrentBattleHitRound(),
-			simple_div(
-				simple_div(attacker->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
+			kdiv(
+				kdiv(attacker->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
 					* SKILL_EFF1(SID_COMBAT_CrimsonStrike),
 				100));
 #endif
@@ -60,8 +60,8 @@ STATIC_DECLAR NOINLINE void BattleGenerateHitHpCostCombatArt(struct BattleUnit *
 		AddBattleHpCost(
 			attacker,
 			GetCurrentBattleHitRound(),
-			simple_div(
-				simple_div(attacker->hpInitial * SKILL_EFF0(SID_COMBAT_VitalReckoning), 100)
+			kdiv(
+				kdiv(attacker->hpInitial * SKILL_EFF0(SID_COMBAT_VitalReckoning), 100)
 					* SKILL_EFF1(SID_COMBAT_VitalReckoning),
 				100));
 #endif

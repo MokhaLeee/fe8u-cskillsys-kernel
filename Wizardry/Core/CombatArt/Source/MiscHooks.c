@@ -142,8 +142,8 @@ void PreBattleCalcCombatArt(struct BattleUnit *bu, struct BattleUnit *defender)
 	case CID_BloodTribute:
 #if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
 		bu->battleAttack +=
-			simple_div(
-				simple_div(bu->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
+			kdiv(
+				kdiv(bu->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
 					* SKILL_EFF1(SID_COMBAT_CrimsonStrike),
 				100);
 #endif
@@ -152,8 +152,8 @@ void PreBattleCalcCombatArt(struct BattleUnit *bu, struct BattleUnit *defender)
 	case CID_CrimsonStrike:
 #if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
 		bu->battleAttack +=
-			simple_div(
-				simple_div(bu->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
+			kdiv(
+				kdiv(bu->hpInitial * SKILL_EFF0(SID_COMBAT_CrimsonStrike), 100)
 					* SKILL_EFF1(SID_COMBAT_CrimsonStrike),
 				100);
 #endif
@@ -162,8 +162,8 @@ void PreBattleCalcCombatArt(struct BattleUnit *bu, struct BattleUnit *defender)
 	case CID_VitalReckoning:
 #if (defined(SID_COMBAT_VitalReckoning) && (COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning)))
 		bu->battleAttack +=
-			simple_div(
-				simple_div(bu->hpInitial * SKILL_EFF0(SID_COMBAT_VitalReckoning), 100)
+			kdiv(
+				kdiv(bu->hpInitial * SKILL_EFF0(SID_COMBAT_VitalReckoning), 100)
 					* SKILL_EFF1(SID_COMBAT_VitalReckoning),
 				100);
 #endif

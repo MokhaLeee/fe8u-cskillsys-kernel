@@ -73,8 +73,8 @@ void MapAnim_CommonEnd(void);
 } \
 )
 
-u32 simple_div(u32 a, u32 b);
-u32 simple_mod(u32 a, u32 b);
+u32 kdiv(u32 a, u32 b);
+u32 kmod(u32 a, u32 b);
 
 /**
  * banim.c

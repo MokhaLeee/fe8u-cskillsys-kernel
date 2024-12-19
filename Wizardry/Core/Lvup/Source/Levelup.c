@@ -23,7 +23,7 @@ STATIC_DECLAR int GetStatIncreaseRandC(int growth)
 
 static int GetStatIncreaseFixed(int growth, int ref)
 {
-	return simple_div(growth + simple_mod(growth * ref, 100), 100);
+	return kdiv(growth + kmod(growth * ref, 100), 100);
 }
 
 static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)

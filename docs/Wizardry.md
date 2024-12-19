@@ -49,3 +49,13 @@ Others will be compiled with the long-call method, and it's recommended to place
 %.asm: %.c
 	$(CC) $(CFLAGS) -mlong-calls $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
 ```
+
+## Math
+
+Kernel offered a high performance dev/mod function set and recommanded to replace unstable `/` and `%`:
+
+```c
+// kernel-lib.h
+u32 kdiv(u32 a, u32 b);
+u32 kmod(u32 a, u32 b);
+```
