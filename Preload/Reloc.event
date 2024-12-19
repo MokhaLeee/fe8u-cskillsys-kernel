@@ -133,4 +133,6 @@ gpShieldExtEquipableConfig: POIN gShieldExtEquipableConfig
 
 gpHighPortraitFidLut: POIN HighPortraitFidLut
 
+gpJobGrowthList: POIN gJobGrowthList
+
 KERNEL_RELOC_END:
