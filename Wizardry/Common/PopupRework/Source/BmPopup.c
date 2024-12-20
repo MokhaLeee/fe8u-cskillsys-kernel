@@ -59,6 +59,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_BmPopR[] = {
 	PROC_YIELD,
 
 PROC_LABEL(0),
+	PROC_REPEAT(BmPopR_Loop),
 	PROC_YIELD,
 	PROC_GOTO(0),
 
