@@ -150,6 +150,48 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 
 			break;
 
+		case CID_BloodTribute:
+#if (defined(SID_COMBAT_BloodTribute) && (COMMON_SKILL_VALID(SID_COMBAT_BloodTribute)))
+			if (gBattleStats.config & BATTLE_CONFIG_REAL) {
+				int _hp_cost = perc_of(attacker->unit.curHP, SKILL_EFF0(SID_COMBAT_BloodTribute));
+				int _dmg_ext = perc_of(_hp_cost, SKILL_EFF1(SID_COMBAT_BloodTribute));
+
+				if (AddBattleHpCost(attacker, GetCurrentBattleHitRound(), _dmg_ext)) {
+					RegisterActorEfxSkill(GetCurrentBattleHitRound(), SID_COMBAT_BloodTribute);
+					gDmg.attack += _dmg_ext;
+				}
+			}
+#endif
+			break;
+
+		case CID_CrimsonStrike:
+#if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
+			if (gBattleStats.config & BATTLE_CONFIG_REAL) {
+				int _hp_cost = perc_of(attacker->unit.curHP, SKILL_EFF0(SID_COMBAT_CrimsonStrike));
+				int _dmg_ext = perc_of(_hp_cost, SKILL_EFF1(SID_COMBAT_CrimsonStrike));
+
+				if (AddBattleHpCost(attacker, GetCurrentBattleHitRound(), _dmg_ext)) {
+					RegisterActorEfxSkill(GetCurrentBattleHitRound(), SID_COMBAT_CrimsonStrike);
+					gDmg.attack += _dmg_ext;
+				}
+			}
+#endif
+			break;
+
+		case CID_VitalReckoning:
+#if (defined(SID_COMBAT_VitalReckoning) && (COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning)))
+			if (gBattleStats.config & BATTLE_CONFIG_REAL) {
+				int _hp_cost = perc_of(attacker->unit.curHP, SKILL_EFF0(SID_COMBAT_VitalReckoning));
+				int _dmg_ext = perc_of(_hp_cost, SKILL_EFF1(SID_COMBAT_VitalReckoning));
+
+				if (AddBattleHpCost(attacker, GetCurrentBattleHitRound(), _dmg_ext)) {
+					RegisterActorEfxSkill(GetCurrentBattleHitRound(), SID_COMBAT_VitalReckoning);
+					gDmg.attack += _dmg_ext;
+				}
+			}
+#endif
+			break;
+
 		default:
 			break;
 		}

@@ -65,6 +65,11 @@ void MapAnim_CommonEnd(void);
 u32 k_udiv(u32 a, u32 b);
 u32 k_umod(u32 a, u32 b);
 
+static inline u32 perc_of(u32 num, u32 perc) 
+{
+	return k_udiv(num * perc, 100);
+}
+
 #define DIV_ROUND_CLOSEST(x, divisor)( \
 { \
 	typeof(x) __x = x; \

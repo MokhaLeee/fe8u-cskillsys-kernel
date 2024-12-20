@@ -251,6 +251,18 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_BloodReaver) && COMMON_SKILL_VALID(SID_BloodReaver))
 	[SID_BloodReaver] = EFX_PRIORITY_LOW,
 #endif
+
+#if (defined(SID_COMBAT_BloodTribute) && COMMON_SKILL_VALID(SID_COMBAT_BloodTribute))
+	[SID_COMBAT_BloodTribute] = EFX_PRIORITY_LOW,
+#endif
+
+#if (defined(SID_COMBAT_CrimsonStrike) && COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike))
+	[SID_COMBAT_CrimsonStrike] = EFX_PRIORITY_LOW,
+#endif
+
+#if (defined(SID_COMBAT_VitalReckoning) && COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning))
+	[SID_COMBAT_VitalReckoning] = EFX_PRIORITY_LOW,
+#endif
 };
 
 struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
@@ -500,5 +512,17 @@ struct EfxAnimConf const *const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_BloodReaver) && COMMON_SKILL_VALID(SID_BloodReaver))
 	[SID_BloodReaver] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_COMBAT_BloodTribute) && COMMON_SKILL_VALID(SID_COMBAT_BloodTribute))
+	[SID_COMBAT_BloodTribute] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_COMBAT_CrimsonStrike) && COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike))
+	[SID_COMBAT_CrimsonStrike] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_COMBAT_VitalReckoning) && COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning))
+	[SID_COMBAT_VitalReckoning] = &EfxSkillVanilla,
 #endif
 };

@@ -440,7 +440,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
 		.wtype = CA_WTYPE_ANY,
 		.cost = 1,
 		.battle_status.display_en_n = true,
-		.double_attack = COMBART_DOUBLE_DISABLED,
+		.double_attack = COMBART_DOUBLE_ENABLED,
 	},
 	[CID_CrimsonStrike] = {
 		.name = MSG_SKILL_COMBAT_CrimsonStrike_NAME,
@@ -449,7 +449,7 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
 		.wtype = CA_WTYPE_ANY,
 		.cost = 1,
 		.battle_status.display_en_n = true,
-		.double_attack = COMBART_DOUBLE_DISABLED,
+		.double_attack = COMBART_DOUBLE_ENABLED,
 	},
 	[CID_VitalReckoning] = {
 		.name = MSG_SKILL_COMBAT_VitalReckoning_NAME,
@@ -458,6 +458,6 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
 		.wtype = CA_WTYPE_ANY,
 		.cost = 1,
 		.battle_status.display_en_n = true,
-		.double_attack = COMBART_DOUBLE_DISABLED,
+		.double_attack = COMBART_DOUBLE_ENABLED,
 	},
 };
