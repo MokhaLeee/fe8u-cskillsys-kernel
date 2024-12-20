@@ -3,20 +3,20 @@
 #include <popup-reowrk.h>
 
 LYN_REPLACE_CHECK(ParsePopupInstAndGetLen);
-int ParsePopupInstAndGetLen(struct PopupProc *_proc)
+int ParsePopupInstAndGetLen(struct PopupProc *proc)
 {
-	struct ProcPopupR *proc = (struct ProcPopupR *)_proc;
+	const struct PopupInstruction *inst;
 
-	proc->pop.xGfxSize = 0;
+	proc->xGfxSize = 0;
 
-	for (proc->cur_inst = proc->pop.pDefinition; proc->cur_inst->opcode != POPUP_OP_END; proc->cur_inst++) {
-		if (gPopupComponents[proc->cur_inst->opcode].get_len == NULL)
+	for (inst = proc->pDefinition; inst->opcode != POPUP_OP_END; inst++) {
+		if (gPopupComponents[inst->opcode].get_len == NULL)
 			continue;
 
-		proc->pop.xGfxSize += gPopupComponents[proc->cur_inst->opcode].get_len(proc);
+		proc->xGfxSize += gPopupComponents[inst->opcode].get_len(proc, inst);
 	}
 
-	return proc->pop.xGfxSize;
+	return proc->xGfxSize;
 }
 
 LYN_REPLACE_CHECK(GeneratePopupText);
@@ -30,3 +30,44 @@ void GeneratePopupText(const struct PopupInstruction *inst, struct Text th)
 	}
 	BG_EnableSyncByMask(BG0_SYNC_BIT | BG1_SYNC_BIT);
 }
+
+/**
+ * Bm popup main loop
+ */
+void BmPopR_Init(struct ProcPopupHanlder *proc)
+{
+	proc->config = gBattlePopupConfigs;
+}
+
+void BmPopR_Loop(struct ProcPopupHanlder *proc)
+{
+	const struct PopupConfig *config = proc->config++;
+
+	if (!config || !config->setup || !config->inst) {
+		Proc_Goto(proc, 99);
+		return;
+	}
+
+	if (config->setup()) {
+		NewPopup_Simple(config->inst, config->duration, 0, proc);
+		Proc_Break(proc);
+	}
+}
+
+STATIC_DECLAR const struct ProcCmd ProcScr_BmPopR[] = {
+	PROC_CALL(BmPopR_Init),
+	PROC_YIELD,
+
+PROC_LABEL(0),
+	PROC_YIELD,
+	PROC_GOTO(0),
+
+PROC_LABEL(99),
+	PROC_END,
+};
+
+LYN_REPLACE_CHECK(DisplayWpnBrokePopup);
+void DisplayWpnBrokePopup(ProcPtr proc) { Proc_StartBlocking(ProcScr_BmPopR, proc); }
+
+LYN_REPLACE_CHECK(DisplayWRankUpPopup);
+void DisplayWRankUpPopup(ProcPtr proc) {}

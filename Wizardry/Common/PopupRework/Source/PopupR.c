@@ -5,9 +5,9 @@
 /**
  * Components
  */
-static int PoprGetLen_Space(struct ProcPopupR *proc)
+static int PoprGetLen_Space(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
-	return proc->cur_inst->data;
+	return inst->data;
 }
 
 static void PoprDisp_Space(struct Text *text, const struct PopupInstruction *inst)
@@ -15,7 +15,7 @@ static void PoprDisp_Space(struct Text *text, const struct PopupInstruction *ins
 	Text_Skip(text, inst->data);
 }
 
-static int PoprGetLen_ItemName(struct ProcPopupR *proc)
+static int PoprGetLen_ItemName(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
 	return GetStringTextLen(GetItemName(gPopupItem));
 }
@@ -25,7 +25,7 @@ static void PoprDisp_ItemName(struct Text *text, const struct PopupInstruction *
 	Text_DrawString(text, GetItemName(gPopupItem));
 }
 
-static int PoprGetLen_ItemStrCap(struct ProcPopupR *proc)
+static int PoprGetLen_ItemStrCap(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
 	return GetStringTextLen(GetItemNameWithArticle(gPopupItem, true));
 }
@@ -35,7 +35,7 @@ static void PoprDisp_ItemStrCap(struct Text *text, const struct PopupInstruction
 	Text_DrawString(text, GetItemNameWithArticle(gPopupItem, true));
 }
 
-static int PoprGetLen_ItemStr(struct ProcPopupR *proc)
+static int PoprGetLen_ItemStr(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
 	return GetStringTextLen(GetItemNameWithArticle(gPopupItem, false));
 }
@@ -45,7 +45,7 @@ static void PoprDisp_ItemStr(struct Text *text, const struct PopupInstruction *i
 	Text_DrawString(text, GetItemNameWithArticle(gPopupItem, false));
 }
 
-static int PoprGetLen_UnitName(struct ProcPopupR *proc)
+static int PoprGetLen_UnitName(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
 	Assert(IS_EWRAM_PTR(gpPopupUnit));
 
@@ -59,9 +59,9 @@ static void PoprDisp_UnitName(struct Text *text, const struct PopupInstruction *
 	Text_DrawString(text, GetStringFromIndex(UNIT_NAME_ID(gpPopupUnit)));
 }
 
-static int PoprGetLen_Msg(struct ProcPopupR *proc)
+static int PoprGetLen_Msg(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
-	return GetStringTextLen(GetStringFromIndex(proc->cur_inst->data));
+	return GetStringTextLen(GetStringFromIndex(inst->data));
 }
 
 static void PoprDisp_Msg(struct Text *text, const struct PopupInstruction *inst)
@@ -69,9 +69,9 @@ static void PoprDisp_Msg(struct Text *text, const struct PopupInstruction *inst)
 	Text_DrawString(text, GetStringFromIndex(inst->data));
 }
 
-static int PoprGetLen_Str(struct ProcPopupR *proc)
+static int PoprGetLen_Str(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
-	return GetStringTextLen((char *)proc->cur_inst->data);
+	return GetStringTextLen((char *)inst->data);
 }
 
 static void PoprDisp_Str(struct Text *text, const struct PopupInstruction *inst)
@@ -79,7 +79,7 @@ static void PoprDisp_Str(struct Text *text, const struct PopupInstruction *inst)
 	Text_DrawString(text, (char *)inst->data);
 }
 
-static int PoprGetLen_Color(struct ProcPopupR *proc)
+static int PoprGetLen_Color(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
 	return 0;
 }
@@ -89,11 +89,11 @@ static void PoprDisp_Color(struct Text *text, const struct PopupInstruction *ins
 	Text_SetColor(text, inst->data);
 }
 
-static int PoprGetLen_ItemIcon(struct ProcPopupR *proc)
+static int PoprGetLen_ItemIcon(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
-	proc->pop.iconX = proc->pop.xGfxSize;
-	proc->pop.iconId = GetItemIconId(gPopupItem);
-	LoadIconPalette(0, proc->pop.iconPalId);
+	proc->iconX = proc->xGfxSize;
+	proc->iconId = GetItemIconId(gPopupItem);
+	LoadIconPalette(0, proc->iconPalId);
 	return 0x10;
 }
 
@@ -102,11 +102,11 @@ static void PoprDisp_ItemIcon(struct Text *text, const struct PopupInstruction *
 	Text_Skip(text, 0x10);
 }
 
-static int PoprGetLen_WtypeIcon(struct ProcPopupR *proc)
+static int PoprGetLen_WtypeIcon(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
-	proc->pop.iconX = proc->pop.xGfxSize;
-	proc->pop.iconId = WTYPE_ICON(gPopupItem);
-	LoadIconPalette(1, proc->pop.iconPalId);
+	proc->iconX = proc->xGfxSize;
+	proc->iconId = WTYPE_ICON(gPopupItem);
+	LoadIconPalette(1, proc->iconPalId);
 	return 0x10;
 }
 
@@ -115,7 +115,7 @@ static void PoprDisp_WtypeIcon(struct Text *text, const struct PopupInstruction 
 	Text_Skip(text, 0x10);
 }
 
-static int PoprGetLen_Number(struct ProcPopupR *proc)
+static int PoprGetLen_Number(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
 	char str[0x10];
 
@@ -130,9 +130,9 @@ static void PoprDisp_Number(struct Text *text, const struct PopupInstruction *in
 	Text_DrawString(text, str);
 }
 
-static int PoprGetLen_Sound(struct ProcPopupR *proc)
+static int PoprGetLen_Sound(struct PopupProc *proc, const struct PopupInstruction *inst)
 {
-	proc->pop.soundId = proc->cur_inst->data;
+	proc->soundId = inst->data;
 	return 0;
 }
 
