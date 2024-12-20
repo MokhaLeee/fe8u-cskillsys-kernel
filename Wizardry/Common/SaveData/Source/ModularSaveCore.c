@@ -120,17 +120,6 @@ void *GetSaveWriteAddr(int index)
 	}
 }
 
-LYN_REPLACE_CHECK(SramChecksum32);
-int SramChecksum32(void *sram_src, int size)
-{
-	size_t _size = size;
-
-	if (_size > sizeof(gGenericBuffer))
-		_size = sizeof(gGenericBuffer);
-
-	ReadSramFast(sram_src, gGenericBuffer, _size);
-	return ComputeChecksum32((const u32 *)gGenericBuffer, _size);
-}
 
 LYN_REPLACE_CHECK(CopyGameSave);
 void CopyGameSave(int index_src, int index_dst)

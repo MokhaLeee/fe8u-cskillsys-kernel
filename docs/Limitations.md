@@ -77,6 +77,8 @@
     - Skill Pick
     - Skill Pierce from this class
     - Skill Pierce to this class
+    - Turnwheel
+    - ExModularSave
 
     **Please note that this does not mean that other patches are safe**. All patches related as below are dangerous, You need to carefully consider the risks on each patches.
 
@@ -86,3 +88,4 @@
     - staff
     - ring
     - skills
+    - save data

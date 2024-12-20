@@ -30,4 +30,30 @@
     #include "Source/SramVerify.lyn.event"
 #endif
 
+PUSH
+    /**
+     * This is an active circumvention
+     * to prevent designers from installing ExModularSave
+     * But a better solution is:
+
+    LYN_REPLACE_CHECK(SramChecksum32);
+    int SramChecksum32(void *sram_src, int size)
+    {
+        size_t _size = size;
+
+        if (_size > sizeof(gGenericBuffer))
+            _size = sizeof(gGenericBuffer);
+
+        ReadSramFast(sram_src, gGenericBuffer, _size);
+        return ComputeChecksum32((const u32 *)gGenericBuffer, _size);
+    }
+     */
+    ORG 0x0A6408
+        SHORT 0x202A
+        SHORT 0x4770
+        SHORT 0x4906
+        SHORT 0x4C07
+    PROTECT 0x000A6408 0x000A6430 // SramChecksum32
+POP
+
 #endif
