@@ -1,0 +1,3 @@
+# Kernel bonus
+
+If you press ↑↑↓↓←→←→BA at titlescreen, then...
