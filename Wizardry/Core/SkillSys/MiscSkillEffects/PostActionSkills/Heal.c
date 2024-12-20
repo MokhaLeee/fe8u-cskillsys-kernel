@@ -80,6 +80,11 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     }
 #endif
 
+#ifdef CONFIG_RESTORE_HP_ON_LEVEL_UP
+    if (gEventSlots[EVT_SLOT_7] == 410) /* 'Heal' expressed as a hexidecimal and then convert back into decimal and summed */
+        heal = gActiveUnit->maxHP - gActiveUnit->curHP;
+#endif
+
     if (heal == 0)
         return false;
 

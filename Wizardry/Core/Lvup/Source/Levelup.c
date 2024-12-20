@@ -175,6 +175,10 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
     if (BattleSkillTester(bu, SID_Velocity) && Roll1RN(SKILL_EFF0(SID_Velocity)))
         GetUnit(bu->unit.index)->movBonus += 1;
 #endif
+
+#ifdef CONFIG_RESTORE_HP_ON_LEVEL_UP
+    gEventSlots[EVT_SLOT_7] = 410; /* 'Heal' expressed as a hexidecimal and then convert back into decimal and summed */
+#endif
 }
 
 static void UnitLvup_RandC(struct BattleUnit * bu, int bonus)

@@ -311,7 +311,15 @@
 #define CONFIG_TELLIUS_CAPACITY_BASE 50
 #define CONFIG_TELLIUS_CAPACITY_PROMOTED 25
 
+/*
+** By Jester
+*/
 // #define CONFIG_TALK_LEVEL_UP
+
+/* 
+** By Jester
+*/
+// #define CONFIG_RESTORE_HP_ON_LEVEL_UP
 
 /**
  * Levelup mode
