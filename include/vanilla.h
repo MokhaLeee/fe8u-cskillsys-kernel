@@ -213,6 +213,8 @@ void RevertMovementScript(u8 * begin, u8 * end);
 #define LAST_X_POINT gpPathArrowProc->pathX[gpPathArrowProc->pathLen]
 #define LAST_Y_POINT gpPathArrowProc->pathY[gpPathArrowProc->pathLen]
 
+extern u8 ** gWorkingBmMap;
+
 static inline s8 GetBmMapPointAtCursor()
 {
     return gWorkingBmMap[gBmSt.playerCursor.y][gBmSt.playerCursor.x];

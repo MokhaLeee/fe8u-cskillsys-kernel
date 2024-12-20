@@ -189,5 +189,5 @@ void NewBlockingTimer(ProcPtr p, u32 maybeTime);
 // ??? Timer6C_Countdown(???);
 int sub_8014270(int number, char* buf);
 int String_FromNumber(u32 num, char* str);
-void PutStringCentered(u16* tilemap, int arg1, int arg2, const char* cstring);
+void PutStringCentered(u16* tilemap, int color, int width, const char* cstring);
 void PutString(u16* tilemap, int color, const char* cstring);

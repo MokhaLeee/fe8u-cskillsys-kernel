@@ -153,83 +153,47 @@ void StartManimLevelUp(int actor_id, ProcPtr parent)
     proc->actor_id = actor_id;
 }
 
-// 0xFFFFFFFF // centered
-// 0x000FFFFF // top-centered
-// 0x00B0FFFF // bottom-centered
-// 0x000FFB0F // top-left-centered
-// 0x000fffbf // top-right-centered
+#ifdef CONFIG_TALK_LEVEL_UP
 
-static const EventScr EventScr_LevelUpSpeech[] = {
-    EVBIT_MODIFY(0x4) // Can't skip scene
-    TEXTSTART
+typedef struct
+{
+    const int key;
+    const char * values[3];
+} LevelUpStrings;
 
-    SVAL(EVT_SLOT_C, 2)
-    BLE(0x0, EVT_SLOT_2, EVT_SLOT_C)
-    SVAL(EVT_SLOT_C, 5)
-    BLE(0x1, EVT_SLOT_2, EVT_SLOT_C)
-    SVAL(EVT_SLOT_C, 8)
-    BLE(0x2, EVT_SLOT_2, EVT_SLOT_C)
-    GOTO(0xFFFF) /* Should never be reached */
-
-LABEL(0x0)
-    SVAL(EVT_SLOT_C, 1)
-    BEQ(0x100, EVT_SLOT_1, EVT_SLOT_C)
-    SVAL(EVT_SLOT_C, 2)
-    BEQ(0x101, EVT_SLOT_1, EVT_SLOT_C)
-    GOTO(0xFFFF) /* Should never be reached */
-
-    LABEL(0x100)
-        TEXTSHOW(MSG_Poor_Eirika)
-        GOTO(0xFFFF)
-    LABEL(0x101)
-        TEXTSHOW(MSG_Poor_Seth)
-        GOTO(0xFFFF)
-
-LABEL(0x1)
-    SVAL(EVT_SLOT_C, 1)
-    BEQ(0x200, EVT_SLOT_1, EVT_SLOT_C)
-    SVAL(EVT_SLOT_C, 2)
-    BEQ(0x201, EVT_SLOT_1, EVT_SLOT_C)
-    GOTO(0xFFFF) /* Should never be reached */
-
-    LABEL(0x200)
-        TEXTSHOW(MSG_Good_Eirika)
-        GOTO(0xFFFF)
-    LABEL(0x201)
-        TEXTSHOW(MSG_Good_Seth)
-        GOTO(0xFFFF)
-
-LABEL(0x2)
-    SVAL(EVT_SLOT_C, 1)
-    BEQ(0x300, EVT_SLOT_1, EVT_SLOT_C)
-    SVAL(EVT_SLOT_C, 2)
-    BEQ(0x301, EVT_SLOT_1, EVT_SLOT_C)
-    GOTO(0xFFFF) /* Should never be reached */
-
-    LABEL(0x300)
-        TEXTSHOW(MSG_Great_Eirika)
-        GOTO(0xFFFF)
-    LABEL(0x301)
-        TEXTSHOW(MSG_Great_Seth)
-        GOTO(0xFFFF)
-
-LABEL(0xFFFF)
-    TEXTEND
-    REMA
-    NoFade
-    ENDA
+static const LevelUpStrings character_level_up_strings[] = 
+{ 
+    {0},
+    { CHARACTER_EIRIKA,    {"I can do better than this!",  "I'm on the right track.", "Wow, what a result!"} },
+    { CHARACTER_SETH,      {"There are lessons in failure", "An acceptable result.", "Duty demands perfection."} },
+    { CHARACTER_GILLIAM,   {"Even steel falters. I'll try again.", "Slow and steady. As it should be.", "My shield holds firm!"} },
+    { CHARACTER_FRANZ,     {"I need to train harder. This won't do.", "Getting better, step by step.", "My training's paying off!"} },
+    { CHARACTER_MOULDER,   {"The body is weak, but the spirit endures.", "Modest, but acceptable progress.", "My faith in the divine is renewed!"} },
+    { CHARACTER_VANESSA,   {"I won't let this hold me back.", "Small gains, but I'll soar higher.", "Fantastic! I'm free as a bird."} },
+    { CHARACTER_ROSS,      {"Aw, come on!", "Not bad!", "Look at me, Dad! I'm unstoppable!"} },
+    { CHARACTER_NEIMI,     {"I need to do better...", "A little stronger...", "I can feek it! I'm helping!"} },
+    { CHARACTER_COLM,      {"Ugh, this is not my day...", "Decent, I guess.", "Now we're talking!"} },
+    { CHARACTER_GARCIA,    {"Even a warrior stumbles sometimes.", "Steady progress.", "Just like the old days!"} },
 };
+
+const int dict_size_level_up_strings = sizeof(character_level_up_strings) / sizeof(character_level_up_strings[0]);
 
 void DisplayCharacterSpeech(struct ManimLevelUpProc *proc)
 {
-    Proc_Break(proc);
-    SetWinEnable(0, 0, 0);
-    Proc_EndEach(ProcScr_ManimLevelUpStatGainLabel);
+    int message = -1;
+    int unitID = gManimSt.actor[proc->actor_id].unit->pCharacterData->number;
 
-    gEventSlots[EVT_SLOT_1] = gManimSt.actor[proc->actor_id].unit->pCharacterData->number;
+    if (gEventSlots[2] <= 2) 
+        message = 0;
+    else if (gEventSlots[2] <= 5) 
+        message = 1;
+    else if (gEventSlots[2] <= 8) 
+        message = 2;
 
-    KernelCallEvent(EventScr_LevelUpSpeech, EV_EXEC_CUTSCENE, proc);
+    PutStringCentered(TILEMAP_LOCATED(gBG0TilemapBuffer, 10, 30), TEXT_COLOR_SYSTEM_WHITE, 20, character_level_up_strings[unitID].values[message]);
 };
+
+#endif
 
 const struct ProcCmd ProcScr_ManimLevelUp_CUSTOM[] = {
     PROC_SET_END_CB(ManimLevelUp_Clear),
@@ -246,13 +210,17 @@ const struct ProcCmd ProcScr_ManimLevelUp_CUSTOM[] = {
     PROC_CALL(ManimLevelUp_InitMainScreen),
     PROC_YIELD,
     PROC_REPEAT(ManimLevelUp_ScrollIn),
+#ifdef CONFIG_TALK_LEVEL_UP
+    PROC_SLEEP(15),
+    PROC_REPEAT(ManimLevelUp_PutStatGainLabels),
+    PROC_SLEEP(15),
+    PROC_CALL(DisplayCharacterSpeech), /* My character speech insertion */
+    PROC_SLEEP(45),
+#else
     PROC_SLEEP(30),
     PROC_REPEAT(ManimLevelUp_PutStatGainLabels),
-    PROC_SLEEP(30),
-#ifdef CONFIG_TALK_LEVEL_UP
-    PROC_CALL(DisplayCharacterSpeech), /* My character speech insertion */
+    PROC_SLEEP(60),
 #endif
-    PROC_SLEEP(20), /* The sleep here is set at 60 by default for the screen after stats are allocated */
     PROC_CALL(EndManimLevelUpStatGainLabels),
     PROC_SLEEP(1),
     PROC_REPEAT(ManimLevelUp_ScrollOut),
@@ -295,11 +263,18 @@ void ManimLevelUp_InitMainScreen(struct ManimLevelUpProc *proc)
 
 /* Turn on portrait blinking and talking */
 #ifdef CONFIG_TALK_LEVEL_UP
-    StartFace(0, gManimSt.actor[proc->actor_id].unit->pCharacterData->portraitId,
-        184, 32 - proc->y_scroll_offset, 0x2);
 
-    /* WHY WON'T YOU TALK?!! */
-    SetTalkFaceMouthMove(gManimSt.actor[proc->actor_id].unit->pCharacterData->portraitId);
+/* Change the unit's expression during level up depending on their stat gains */
+if (gEventSlots[EVT_SLOT_2] <= 2) 
+    StartFace(0, gManimSt.actor[proc->actor_id].unit->pCharacterData->portraitId,
+        184, 32 - proc->y_scroll_offset, FACE_DISP_KIND(FACE_96x80));
+else if (gEventSlots[EVT_SLOT_2] <= 5) 
+    StartFace(0, gManimSt.actor[proc->actor_id].unit->pCharacterData->portraitId,
+        184, 32 - proc->y_scroll_offset, FACE_DISP_KIND(FACE_96x80));
+else if (gEventSlots[EVT_SLOT_2 <= 8])
+    StartFace(0, gManimSt.actor[proc->actor_id].unit->pCharacterData->portraitId,
+        184, 32 - proc->y_scroll_offset, FACE_DISP_KIND(FACE_96x80) | FACE_DISP_SMILE);
+
 #else 
     StartFace(0, gManimSt.actor[proc->actor_id].unit->pCharacterData->portraitId,
         184, 32 - proc->y_scroll_offset, 0x1042);
