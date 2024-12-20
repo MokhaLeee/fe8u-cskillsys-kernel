@@ -29,18 +29,7 @@ You can choose from the following options:
 
 ## Combat art
 
-![image](./gfx/Home_CombatArt1.png)
-![image](./gfx/Home_CombatArt2.png)
-
-FE-ThreeHoses style combat-art has been implemented. You can select art during target-selection.
-
-- Advantages
-	1. More damage/hit.
-	2. Some powerful special effects depends on each arts.
-
-- Disadvantages
-	1. More consumption on weapon.
-	2. Cannot double attack except in special circumstances.
+[Art](./CombatArt.md)
 
 ## Battle calculate
 

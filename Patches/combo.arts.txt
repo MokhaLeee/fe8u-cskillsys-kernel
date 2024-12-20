@@ -53,3 +53,6 @@
 35=CID_Galeforce
 36=CID_Gamble
 37=CID_Detonate
+38=CID_BloodTribute
+39=CID_CrimsonStrike
+40=CID_VitalReckoning
