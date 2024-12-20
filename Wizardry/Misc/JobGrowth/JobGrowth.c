@@ -4,7 +4,7 @@
 int GetUnitHpGrowthJobBonus(int status, struct Unit *unit)
 {
 	// W.I.P.
-	return 0;
+	return status;
 }
 
 int GetUnitPowGrowthJobBonus(int status, struct Unit *unit)
