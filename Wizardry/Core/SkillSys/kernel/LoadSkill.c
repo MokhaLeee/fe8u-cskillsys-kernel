@@ -123,8 +123,8 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	if (!UNIT_IS_VALID(unit))
 		return;
 
-	level_p = kdiv(unit->level, 5) * 5;
-	level_j = kdiv(unit->level + GetUnitHiddenLevel(unit), 5) * 5;
+	level_p = k_udiv(unit->level, 5) * 5;
+	level_j = k_udiv(unit->level + GetUnitHiddenLevel(unit), 5) * 5;
 
 	LIMIT_AREA(level_p, 0, UNIT_LEVEL_MAX_RE);
 	LIMIT_AREA(level_j, 0, UNIT_RECORDED_LEVEL_MAX);
@@ -156,7 +156,7 @@ STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit *unit, int level)
 	u16 sid;
 
 	const struct SkillPreloadPConf *pConf = &gpSkillPreloadPData[UNIT_CHAR_ID(unit)];
-	int _level = kdiv(level, 5) * 5;
+	int _level = k_udiv(level, 5) * 5;
 
 	for (i = 0; i < 5; i++) {
 		sid = pConf->skills[_level + i];
@@ -172,7 +172,7 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit *unit, int level)
 	u16 sid;
 
 	const struct SkillPreloadJConf *jConf = &gpSkillPreloadJData[UNIT_CLASS_ID(unit)];
-	int _level = kdiv(level, 5) * 5;
+	int _level = k_udiv(level, 5) * 5;
 
 	for (i = 0; i < 5; i++) {
 		sid = jConf->skills[_level + i];
@@ -190,11 +190,11 @@ void TryAddSkillLvup(struct Unit *unit, int level)
 		return;
 
 	_level = level;
-	if (kmod(_level, 5))
+	if (k_umod(_level, 5))
 		TryAddSkillLvupJConf(unit, _level);
 
 	_level = level + GetUnitHiddenLevel(unit);
-	if (kmod(_level, 5))
+	if (k_umod(_level, 5))
 		TryAddSkillLvupPConf(unit, _level);
 }
 

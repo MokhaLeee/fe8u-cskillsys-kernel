@@ -62,19 +62,19 @@ void MapAnim_CommonEnd(void);
 /**
  * math.c
  */
+u32 k_udiv(u32 a, u32 b);
+u32 k_umod(u32 a, u32 b);
+
 #define DIV_ROUND_CLOSEST(x, divisor)( \
 { \
 	typeof(x) __x = x; \
 	typeof(divisor) __d = divisor; \
 	(((typeof(x))-1) > 0 || \
 	((typeof(divisor))-1) > 0 || (__x) > 0) ? \
-		(((__x) + ((__d) / 2)) / (__d)) : \
-		(((__x) - ((__d) / 2)) / (__d)); \
+		(k_udiv(((__x) + ((__d) / 2)), (__d))) : \
+		(k_udiv(((__x) - ((__d) / 2)), (__d))); \
 } \
 )
-
-u32 kdiv(u32 a, u32 b);
-u32 kmod(u32 a, u32 b);
 
 /**
  * banim.c

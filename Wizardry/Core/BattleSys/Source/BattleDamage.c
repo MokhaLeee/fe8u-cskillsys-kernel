@@ -568,8 +568,8 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 		dividend = gDmg.damage_base * gDmg.increase * gDmg.crit_correction * 0x100;
 		divisor  = 100 * 100 * gDmg.decrease;
 
-		// quotient = DIV_ROUND_CLOSEST(dividend, divisor);
-		quotient = kdiv(dividend, divisor);
+		// quotient = k_udiv(dividend, divisor);
+		quotient = DIV_ROUND_CLOSEST(dividend, divisor);
 
 		LTRACEF("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
 		result = quotient;

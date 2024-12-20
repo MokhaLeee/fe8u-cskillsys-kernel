@@ -33,14 +33,14 @@ void SetupEfxAnimNumberGfx(int number, int slot)
 	 * Number image
 	 */
 	for (i = 3; i > 0;) {
-		int lo = kmod(abs_num, 10);
+		int lo = k_umod(abs_num, 10);
 
 		VramCopyAnimNumber(
 			gpImg_EfxAnimNumber + (base_chr + lo * 2) * CHR_SIZE,
 			vram_base + i * 2 * CHR_SIZE
 		);
 
-		abs_num = kdiv(abs_num, 10);
+		abs_num = k_udiv(abs_num, 10);
 
 		i--;
 		if (abs_num <= 0)

@@ -1,10 +1,12 @@
 #include "common-chax.h"
 
-u32 kdiv(u32 a, u32 b)
+#define LOCAL_TRACE 0
+
+u32 k_udiv(u32 a, u32 b)
 {
 	u32 ret = 0;
 	u32 tmp_a = a;
-	u32 tmp_b = b;
+	u64 tmp_b = b;
 
 	if (b == 0)
 		return 0;
@@ -22,15 +24,15 @@ u32 kdiv(u32 a, u32 b)
 		}
 	}
 
-	Printf("kdiv: numerator=%d, denominator=%d, ret=%d", a, b, ret);
+	LTRACEF("k_udiv: numerator=%d, denominator=%d, ret=%d", a, b, ret);
 	return ret;
 }
 
-u32 kmod(u32 a, u32 b)
+u32 k_umod(u32 a, u32 b)
 {
 	u32 ret = 0;
 	u32 tmp_a = a;
-	u32 tmp_b = b;
+	u64 tmp_b = b;
 
 	if (b == 0)
 		return 0;
@@ -47,6 +49,6 @@ u32 kmod(u32 a, u32 b)
 
 	ret = tmp_a;
 
-	Printf("kmod: numerator=%d, denominator=%d, ret=%d", a, b, ret);
+	LTRACEF("k_umod: numerator=%d, denominator=%d, ret=%d", a, b, ret);
 	return ret;
 }

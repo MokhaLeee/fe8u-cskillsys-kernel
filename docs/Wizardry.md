@@ -56,6 +56,6 @@ Kernel offered a high performance dev/mod function set and recommanded to replac
 
 ```c
 // kernel-lib.h
-u32 kdiv(u32 a, u32 b);
-u32 kmod(u32 a, u32 b);
+u32 k_udiv(u32 a, u32 b);
+u32 k_umod(u32 a, u32 b);
 ```
