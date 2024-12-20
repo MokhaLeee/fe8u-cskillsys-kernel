@@ -4,7 +4,7 @@
 LYN_REPLACE_CHECK(CanUnitUseItemPrepScreen);
 bool CanUnitUseItemPrepScreen(struct Unit *unit, int item)
 {
-	PrepItemUsabilityFunc_t it = gPrepItemUsabilityFuncs[ITEM_INDEX(item)];
+	PrepItemUsabilityFunc_t it = gpPrepItemUsabilityFuncs[ITEM_INDEX(item)];
 
 	if (it)
 		return it(unit, item);

@@ -135,4 +135,7 @@ gpHighPortraitFidLut: POIN HighPortraitFidLut
 
 gpJobGrowthList: POIN gJobGrowthList
 
+gpPrepItemEffectFunc: POIN gPrepItemEffectFunc
+gpPrepItemUsabilityFuncs: POIN gPrepItemUsabilityFuncs
+
 KERNEL_RELOC_END:

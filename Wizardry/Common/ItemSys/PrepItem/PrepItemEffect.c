@@ -5,7 +5,7 @@ LYN_REPLACE_CHECK(PrepItemUse_HandleItemEffect);
 void PrepItemUse_HandleItemEffect(struct ProcPrepItemUse *proc)
 {
 	u16 item = proc->unit->items[proc->slot];
-	PrepItemEffectFunc_t it = gPrepItemEffectFunc[ITEM_INDEX(item)];
+	PrepItemEffectFunc_t it = gpPrepItemEffectFunc[ITEM_INDEX(item)];
 
 	if (it)
 		it(proc, item);
