@@ -94,6 +94,10 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
     statCounter += *statChanges[6] > 0 ? 1 : 0;
     statCounter += *statChanges[7] > 0 ? 1 : 0;
 
+#ifdef CONFIG_TALK_LEVEL_UP
+    gEventSlots[EVT_SLOT_2] = statCounter;
+#endif
+
 #if (defined(SID_TripleUp) && (COMMON_SKILL_VALID(SID_TripleUp)))
     if (BattleSkillTester(bu, SID_TripleUp))
     {

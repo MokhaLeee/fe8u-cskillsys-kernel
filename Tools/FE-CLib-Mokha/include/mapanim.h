@@ -334,9 +334,10 @@ extern CONST_DATA struct ProcCmd ProcScr_MapAnimBarrierfx[];
 extern CONST_DATA struct ProcCmd ProcScr_MapAnimUnlock[];
 extern CONST_DATA struct ProcCmd ProcScr_MapAnimEffect_Unk_089A3EC4[];
 // extern ??? gManimLevelUpLabelInfoList
-extern CONST_DATA struct ProcCmd ProcScr_ManimLevelUpStatGainLabel[];
+extern const struct ProcCmd ProcScr_ManimLevelUpStatGainLabel[];
 extern CONST_DATA struct ProcCmd ProcScr_ManimLevelUpLabelColor[];
-extern CONST_DATA struct ProcCmd ProcScr_ManimLevelUp[];
+extern const struct ProcCmd ProcScr_ManimLevelUp[];
+extern const struct ProcCmd ProcScr_ManimLevelUp_CUSTOM[];
 extern CONST_DATA struct ProcCmd ProcScr_MapAnimStartSpellAssocFade[];
 extern CONST_DATA struct ProcCmd ProcScr_MapAnimSpellAssocResetPal[];
 extern CONST_DATA struct ProcCmd ProcScr_MapAnimBgShaker[];
@@ -728,6 +729,7 @@ void PutManimLevelUpStat(int actor_id, int x, int y, int stat_num, bool after_ga
 int GetManimLevelUpStatGain(int actor_id, int stat_num);
 int GetManimLevelUpBaseStat(int actor_id, int stat_num);
 // ??? ManimLevelUpStatGainLabel_Finish(???);
+void ManimLevelUpStatGainLabel_Finish(struct ManimLevelUpStatGainLabelProc * proc);
 void StartManimLevelUpStatGainLabels(int chr, int pal, int sprite_layer, ProcPtr parent);
 void EndManimLevelUpStatGainLabels(void);
 void StartManimLevelUpStatGainLabelAnim(int x, int y, int stat_num, int stat_gain);

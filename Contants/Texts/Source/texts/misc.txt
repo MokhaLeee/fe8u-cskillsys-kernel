@@ -9,5 +9,30 @@ Copy enemy?        [NL][Yes][X]
 
 ## MSG_Skill_Capacity_Reached
 The unit doesn't have enough[NL]
-remaining skill capacity to[NL]
+remaining capacity to[NL]
 learn this skill.[A][X]
+
+## MSG_Poor_Eirika
+[OpenMidRight][BoxHeight_1]
+I can do better than this![A][X]
+
+## MSG_Good_Eirika
+[OpenMidRight][BoxHeight_1]
+I'm on the right track.[A][X]
+
+## MSG_Great_Eirika
+[OpenMidRight][BoxHeight_1]
+Wow, what a result![A][X]
+
+
+## MSG_Poor_Seth
+[OpenMidRight][BoxHeight_1]
+There are lessons in failure.[A][X]
+
+## MSG_Good_Seth
+[OpenMidRight][BoxHeight_1]
+An acceptable result.[A][X]
+
+## MSG_Great_Seth
+[OpenMidRight][BoxHeight_1]
+An excellent result.[A][X]

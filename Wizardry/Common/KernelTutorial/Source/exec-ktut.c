@@ -64,6 +64,7 @@ bool RunTutorialEvent(u8 type)
                 gEventSlots[EVT_SLOT_2] = gpKTutorialMsg[ktut_flag];
                 CallEvent((const u16 *)EventScr_KTutorial, EV_EXEC_CUTSCENE);
                 ret = true;
+
             }
         }
     }
