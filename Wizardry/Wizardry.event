@@ -16,6 +16,7 @@ ALIGN 4
 
 #include "Common/OverflowDetection/OverflowDetection.lyn.event"
 #include "Common/AntiHuffman/AntiHuffman.event"
+#include "Common/PopupRework/PopupRework.event"
 #include "Common/EventRework/EventRework.event"
 #include "Common/UnitAction/UnitAction.event"
 #include "Common/GameInitHook/GameInitHook.event"

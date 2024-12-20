@@ -419,7 +419,8 @@ static void give_skill_scroll_to_ephraim(void)
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
 		UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
 #endif
-		UnitAddItem(unit, (1 << 8) | ITEM_VULNERARY);
+
+		unit->ranks[ITYPE_LANCE] = WPN_EXP_B - 1;
 	}
 }
 
@@ -507,6 +508,9 @@ static const EventScr EventScr_Beginning[] = {
 #endif
 
 	ASMC(give_skill_scroll_to_ephraim)
+
+	SVAL(EVT_SLOT_3, ITEM_VULNERARY)
+	GIVEITEMTO(CHARACTER_EPHRAIM)
 
 	// PREP
 	CALL(EventScr_08591FD8)
