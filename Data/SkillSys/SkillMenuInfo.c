@@ -543,4 +543,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
         .onSwitchOut = NULL,
     },
 #endif
+
+#if (defined(SID_Arise) && COMMON_SKILL_VALID(SID_Arise))
+    [SID_Arise] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_AriseName,
+        .helpMsgId = MSG_SKILL_Arise,
+        .color = TEXT_COLOR_SYSTEM_GOLD,
+        .isAvailable = Arise_Usability,
+        .onDraw = NULL,
+        .onSelected = Arise_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
 };

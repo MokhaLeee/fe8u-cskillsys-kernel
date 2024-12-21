@@ -6,6 +6,7 @@
 #include "jester_headers/soundtrack-ids.h"
 #include "jester_headers/maps.h"
 #include "jester_headers/flags.h"
+#include "EAstdlib.h"
 
 /**
  * Ally unit and REDA definitions
@@ -303,16 +304,16 @@ static const EventListScr EventScr_Talk_EirikaSeth[] = {
 /**
  * Event list
  */
-static const EventListScr EventListScr_Turn[] = {
-    END_MAIN
-};
 
-static const EventListScr EventListScr_OneEnemyLeft[] = {
+static const EventListScr EventListScr_ONeillAttack[] = {
     CHECK_ENEMIES
     SVAL(EVT_SLOT_7, 1)
     BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
-    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
-    Text(Chapter_00_Scene_03_Convo_05)
+    MUSC(BGM_TRUTH_DESPAIR_AND_HOPE)
+    Text(Chapter_00_ONeill_Agro)
+    /* slot1 saves the (u8)( (AI1 << 8) | AI2 ) */
+    SVAL(EVT_SLOT_1, 0x0)
+    CHAI(CHARACTER_ONEILL)
     GOTO(0x1)
 
 // Preserves the flag if the condition isn't met
@@ -324,6 +325,33 @@ LABEL(0x0)
 LABEL(0x1)
     NoFade
     ENDA
+};
+
+static const EventListScr EventListScr_OneEnemyLeft[] = {
+    CHECK_ENEMIES
+    SVAL(EVT_SLOT_7, 1)
+    BNE(0x0, EVT_SLOT_C, EVT_SLOT_7)
+    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
+    Text(Chapter_00_Scene_03_Convo_05)
+    /* this unsets the event ID so the next turn Oneill will agro (see TURN events) */
+    ENUF(EVFLAG_TMP(8))
+    GOTO(0x1)
+
+// Preserves the flag if the condition isn't met
+LABEL(0x0)
+    CHECK_EVENTID_
+    SADD(EVT_SLOT_2, EVT_SLOT_C, EVT_SLOT_0)
+    ENUF_SLOT2
+
+LABEL(0x1)
+    NoFade
+    ENDA
+};
+
+
+static const EventListScr EventListScr_Turn[] = {
+    TURN(EVFLAG_TMP(8), EventListScr_ONeillAttack, 1, 255, FACTION_RED)
+    END_MAIN
 };
 
 static const EventListScr EventListScr_Character[] = {

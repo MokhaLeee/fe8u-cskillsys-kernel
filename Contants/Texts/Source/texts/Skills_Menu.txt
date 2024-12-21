@@ -393,3 +393,14 @@ shop attached to them.[X]
 
 ## MSG_MenuSkill_Entrepreneur_FRtext
 No allies are in range![X]
+
+## MSG_MenuSkill_AriseName
+ Arise[X]
+
+## MSG_SKILL_Arise
+Arise:[NL]
+Revive a unit that died this[NL]
+chapter. Once only.[X]
+
+## MSG_MenuSkill_Arise_FRtext
+No allies to revive![X]

@@ -38,6 +38,7 @@ SID_Reposition
 SID_Shove
 SID_Smite
 SID_Entrepreneur
+SID_Arise
 
 ////////PRE-BATTLE SKILLS
 SID_DefiantStr

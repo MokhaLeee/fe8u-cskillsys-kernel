@@ -469,6 +469,26 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
         attacker->wexpMultiplier++;
 #endif
 
+/* 
+** Set the ballista byte in the unit's unit struct to the chapter number they died on  to check when using arise 
+** Since we're only concerned with player units using his skill, we can use an AI byte to check if they've already been revived
+*/
+#if (defined(SID_Arise) && (COMMON_SKILL_VALID(SID_Arise)))
+    if (GetUnit(attacker->unit.index)->ai1 != 0xFF)
+        if (attacker->unit.curHP == 0)
+        {
+            GetUnit(attacker->unit.index)->ai1 = 0xFF;
+            GetUnit(attacker->unit.index)->ballistaIndex = gPlaySt.chapterIndex;
+        }
+
+    if (GetUnit(defender->unit.index)->ai1 != 0xFF)
+        if (defender->unit.curHP == 0)
+        {
+            GetUnit(attacker->unit.index)->ai1 = 0xFF;
+            GetUnit(defender->unit.index)->ballistaIndex = gPlaySt.chapterIndex;
+        }
+#endif
+
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
 
 #if CHAX

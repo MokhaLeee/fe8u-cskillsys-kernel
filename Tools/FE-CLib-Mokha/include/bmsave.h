@@ -155,7 +155,7 @@ struct UnitUsageStats {
     /* 008 */ unsigned favval      : 16;
     /* 024 */ unsigned actAmt      : 8;
     /* 032 */ unsigned statViewAmt : 8;
-    /* 040 */ unsigned deathLoc    : 6;
+    /* 040 */ unsigned deathChap   : 6;
     /* 046 */ unsigned deathTurn   : 10;
     /* 056 */ unsigned deployAmt   : 6;
     /* 062 */ unsigned moveAmt     : 10;

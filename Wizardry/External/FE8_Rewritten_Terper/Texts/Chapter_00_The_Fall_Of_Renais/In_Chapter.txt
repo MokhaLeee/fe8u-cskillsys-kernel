@@ -4,5 +4,12 @@
 Haaahhh...haaahhh...[A][N]
 All that's left is their leader...[A][X]
 
+## Chapter_00_ONeill_Agro
+[OpenMidRight][LoadFace_ONeill]
+What was that? Do you think you can[.][NL]
+take me, wretched lordling?[.][A][NL]
+Come! It's time you high-and-mighty[.][NL]
+knights learned to respect a true warrior![A][X]
+
 ## BB_Renais_Castle
 Renais Castle[X]

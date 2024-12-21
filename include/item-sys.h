@@ -72,6 +72,7 @@ static const KeyValuePair dict_skills[] =
         { "Arcgift+", {1000, 1}},
         { "Ardent Sacrifice", {1000, 1}},
         { "Arena Trap", {1000, 1}},
+        { "Arise", {1000, 1}},
         { "Armored Blow", {1000, 1}},
         { "Armorboost", {1000, 1}},
         { "Armor March", {1000, 1}},

@@ -1,4 +1,5 @@
 #pragma once
+#include "eventcall.h"
 
 #define Text(msg) \
     TEXTSTART \
