@@ -93,6 +93,12 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
      */
     gDmg.crit_atk = false;
 
+#if (defined(SID_Chipper) && (COMMON_SKILL_VALID(SID_Chipper)))
+	if (BattleSkillTester(attacker, SID_Chipper))
+		SetPartyGoldAmount(GetPartyGoldAmount() + SKILL_EFF0(SID_Chipper));
+#endif
+
+
     if (
 #if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
         !BattleSkillTester(defender, SID_Fortune)

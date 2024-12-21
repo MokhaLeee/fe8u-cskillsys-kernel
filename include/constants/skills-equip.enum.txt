@@ -458,6 +458,7 @@ SID_AngerPoint
 SID_Adaptable
 SID_Debilitator
 SID_Sentinel
+SID_Chipper
 
 ////////EFFECTIVENESS SKILLS
 SID_Resourceful

@@ -4567,4 +4567,12 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+
+#if (defined(SID_Chipper) && COMMON_SKILL_VALID(SID_Chipper))
+    [SID_Chipper] = {
+        .desc = MSG_SKILL_Chipper,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };

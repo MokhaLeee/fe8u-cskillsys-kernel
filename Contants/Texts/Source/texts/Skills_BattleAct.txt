@@ -222,3 +222,8 @@ if you've taken a critical hit.[X]
 Debilitator:[NL]
 If this unit deals no damage,[NL]
 -4 to all enemy's stats this turn.[X]
+
+## MSG_SKILL_Chipper
+Chipper:[NL]
+Gain +50g after every[NL]
+hit on the enemy.[X]

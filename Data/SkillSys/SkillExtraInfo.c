@@ -1198,4 +1198,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_LightProwess) && COMMON_SKILL_VALID(SID_LightProwess))
     [SID_LightProwess] = {{5, 7, 6, 10, 7, 13, 8, 16, 10, 20}},
 #endif
+
+#if (defined(SID_Chipper) && COMMON_SKILL_VALID(SID_Chipper))
+    [SID_Chipper] = {{50}},
+#endif
 };
