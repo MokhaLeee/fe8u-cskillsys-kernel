@@ -178,6 +178,19 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit * attacker, str
         attacker->battleEffectiveHitRate = 100;
 #endif
 
+#if (defined(SID_Seer) && (COMMON_SKILL_VALID(SID_Seer)))
+    if (BattleSkillTester(attacker, SID_Seer))
+    {
+        attacker->battleEffectiveHitRate = 100;
+        defender->battleEffectiveHitRate = 0;
+    }  
+    else if (BattleSkillTester(defender, SID_Seer))
+    {
+        defender->battleEffectiveHitRate = 100;
+        attacker->battleEffectiveHitRate = 0;
+    }   
+#endif
+
 #if (defined(SID_RiskItAll) && (COMMON_SKILL_VALID(SID_RiskItAll)))
     if (BattleSkillTester(attacker, SID_RiskItAll) || BattleSkillTester(defender, SID_RiskItAll))
         attacker->battleEffectiveCritRate = SKILL_EFF0(SID_RiskItAll);

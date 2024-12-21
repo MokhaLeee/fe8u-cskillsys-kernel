@@ -1136,3 +1136,8 @@ CR.AVO +7/10/13/16/20[X]
 Light Prowess: Ranks -> D/C/B/A/S[NL]
 HIT & AVO: +5/6/7/8/10[NL]
 CR.AVO +7/10/13/16/20[X]
+
+## MSG_SKILL_Seer
+Seer:[NL]
+All unit attacks hit,[NL]
+all enemy attacks miss.[X]
