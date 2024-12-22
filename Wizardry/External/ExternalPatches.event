@@ -105,5 +105,4 @@
     #include "DangerRadius/Installer.event"
 #endif
 
-
 #include "FE8_Rewritten_Terper/Installer.event"

@@ -80,8 +80,8 @@ void EndProc(Proc*); //! FE8U = (0x08002D6C+1)
 void ExecProc(Proc*); //! FE8U = (0x08002E84+1)
 void BreakProcLoop(Proc*); //! FE8U = (0x08002E94+1)
 Proc* ProcFind(const ProcInstruction*); //! FE8U = (0x08002E9C+1)
-void ProcGoto(Proc*, int); //! FE8U = (0x08002F24+1)
-void ProcGotoPtr(Proc*, const ProcInstruction*); //! FE8U = (0x08002F5C+1)
+void Proc_Goto(Proc*, int); //! FE8U = (0x08002F24+1)
+void Proc_GotoPtr(Proc*, const ProcInstruction*); //! FE8U = (0x08002F5C+1)
 void ProcMark(Proc*, int); //! FE8U = (0x08002F64+1)
 void ProcSetEndFunc(Proc*, void(*)(Proc*)); //! FE8U = (0x08002F6C+1)
 void ForEveryProc(void(*)(Proc*)); //! FE8U = (0x08002F70+1)
@@ -111,8 +111,8 @@ void SetProcCycleHandler(Proc*, void(*)(Proc*)); //! FE8U = (0x08003450+1)
 #define Proc_Run ExecProc
 #define Proc_ClearNativeCallback BreakProcLoop
 #define Proc_Find ProcFind
-#define Proc_GotoLabel ProcGoto
-#define Proc_JumpToPointer ProcGotoPtr
+#define Proc_GotoLabel Proc_Goto
+#define Proc_JumpToPointer Proc_GotoPtr
 #define Proc_SetMark ProcMark
 #define Proc_SetDestructor ProcSetEndFunc
 #define Proc_ForEach ForEveryProc

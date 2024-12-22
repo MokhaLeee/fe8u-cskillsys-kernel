@@ -212,6 +212,7 @@ extern char CONST_DATA AsciiDash;
 int NumberToStringSJis(int number, char* buf);
 int NumberToStringAscii(int number, char * buf);
 struct Text * PutStringCentered(u16 * tm, int color, int width, char const * str);
+// struct Text * PutStringRightAligned(u16 * tm, int color, int width, char const * str);
 struct Text * PutString(u16 * tm, int color, char const * str);
 
 struct ProcPaletteAnimator {
