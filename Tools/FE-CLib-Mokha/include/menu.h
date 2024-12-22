@@ -14,6 +14,7 @@ typedef struct MenuCommandDefinition MenuCommandDefinition;
 
 typedef struct MenuProc MenuProc;
 typedef struct MenuCommandProc MenuCommandProc;
+typedef struct Proc Proc;
 
 struct MenuGeometry
 {
