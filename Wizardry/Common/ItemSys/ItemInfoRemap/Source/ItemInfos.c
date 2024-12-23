@@ -112,10 +112,13 @@ void DrawItemMenuLine(struct Text * text, int item, s8 isUsable, u16 * mapOut)
 
     PutText(text, mapOut + 2);
 
+#ifndef CONFIG_INFINITE_DURABILITY
     if (!IsDuraItem(item))
     {
         PutNumberOrBlank(mapOut + 11, isUsable ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY, GetItemUses(item));
     }
+#endif
+
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
 
@@ -127,12 +130,15 @@ void DrawItemMenuLineLong(struct Text * text, int item, s8 isUsable, u16 * mapOu
 
     PutText(text, mapOut + 2);
 
+#ifndef CONFIG_INFINITE_DURABILITY
     if (!IsDuraItem(item))
     {
         PutNumberOrBlank(mapOut + 10, isUsable ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY, GetItemUses(item));
         PutNumberOrBlank(mapOut + 13, isUsable ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY, GetItemMaxUses(item));
         PutSpecialChar(mapOut + 11, isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY, TEXT_SPECIAL_SLASH);
     }
+#endif
+
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
 
@@ -144,10 +150,13 @@ void DrawItemMenuLineNoColor(struct Text * text, int item, u16 * mapOut)
 
     PutText(text, mapOut + 2);
 
+#ifndef CONFIG_INFINITE_DURABILITY
     if (!IsDuraItem(item))
     {
         PutNumberOrBlank(mapOut + 11, Text_GetColor(text), GetItemUses(item));
     }
+#endif
+    
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
 
@@ -163,6 +172,7 @@ void DrawItemStatScreenLine(struct Text * text, int item, int nameColor, u16 * m
 
     Text_DrawString(text, GetItemName(item));
 
+#ifndef CONFIG_INFINITE_DURABILITY
     if (!IsDuraItem(item))
     {
         color = (nameColor == TEXT_COLOR_SYSTEM_GRAY) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE;
@@ -172,6 +182,8 @@ void DrawItemStatScreenLine(struct Text * text, int item, int nameColor, u16 * m
         PutNumberOrBlank(mapOut + 11, color, GetItemUses(item));
         PutNumberOrBlank(mapOut + 14, color, GetItemMaxUses(item));
     }
+#endif
+
     PutText(text, mapOut + 2);
 
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);

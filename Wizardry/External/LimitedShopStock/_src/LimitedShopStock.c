@@ -96,8 +96,10 @@ void DrawStockedItemLine(struct Text* text, int item, s8 isUsable, u16* mapOut) 
 
     PutText(text, mapOut + 2);
 
+#ifndef CONFIG_INFINITE_DURABILITY
     PutNumberOrBlank(mapOut + 11, isUsable ? TEXT_COLOR_SYSTEM_BLUE : TEXT_COLOR_SYSTEM_GRAY, GetItemUses(item));
     PutNumberOrBlank(mapOut + 20, TEXT_COLOR_SYSTEM_BLUE, GetItemStock(item));
+#endif
 
     DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }

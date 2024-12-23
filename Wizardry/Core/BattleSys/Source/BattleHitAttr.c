@@ -407,6 +407,10 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
     else if (CheckWeaponCostForMissedBowAttack(attacker) == true)
         weapon_cost = true;
 
+#ifdef CONFIG_INFINITE_DURABILITY
+    weapon_cost = false;
+#endif
+
 #if defined(SID_Blessing) && (COMMON_SKILL_VALID(SID_Blessing))
     if (CheckBattleSkillActivate(attacker, defender, SID_Blessing, 100))
     {

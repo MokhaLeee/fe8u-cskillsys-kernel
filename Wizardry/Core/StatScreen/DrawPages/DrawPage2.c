@@ -73,9 +73,12 @@ void DisplayPage1(void)
     {
         if ((gStatScreen.unit->pClassData->number != CLASS_GORGONEGG2) && (i >= 0))
         {
+            /* Turn off the equip "E" character on the stat screen if we're using infinite durability */
+#ifndef CONFIG_INFINITE_DURABILITY
             PutSpecialChar(
                 gUiTmScratchA + TILEMAP_INDEX(16, 1 + i*2),
                 TEXT_COLOR_SYSTEM_WHITE, TEXT_SPECIAL_35);
+#endif
 
             CallARM_FillTileRect(
                 gUiTmScratchC + TILEMAP_INDEX(1, 2 + i*2),

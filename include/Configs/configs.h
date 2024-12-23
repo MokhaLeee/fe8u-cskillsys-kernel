@@ -319,6 +319,11 @@
 */
 // #define CONFIG_DEATH_DANCE
 
+/*
+** By Jester
+*/
+// #define CONFIG_INFINITE_DURABILITY
+
 /**
  * Levelup mode
  * 0: vanilla
