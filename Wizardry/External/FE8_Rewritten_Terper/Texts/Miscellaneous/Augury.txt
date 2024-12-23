@@ -1,0 +1,10 @@
+## Augury_Chapter_04
+[OpenFarFarRight]
+Hmm, it seems like a powerful axe[N]
+wielder is on the move.[A][N]
+He seems single-minded in[N]
+his mission.[A][N]
+Is there anyone he knows[N]
+within your group?[A][N]
+There may be some benefit in letting[N]
+him see how much they've grown.[A][X]

@@ -1,3 +1,4 @@
+// Jester - UnitID is useless if you're defining which units talk in your conversations already, just set that to 0
 #define PREEXT_AuguryTextEntryUnit(UnitID, TextID) "ALIGN 4; BYTE UnitID 0; SHORT TextID"
 #define PREEXT_AuguryTextEntryFlag(FlagID, TextID) "ALIGN 4; SHORT FlagID|0x8000 TextID"
 #define PREEXT_AuguryTextEntryNoCond(TextID) "ALIGN 4; SHORT 0 TextID"
@@ -9,17 +10,18 @@ ALIGN 4
 PREEXT_AuguryText:
 {
 POIN Ch00 Ch01 Ch02 Ch03 Ch04
-// Ch05 Ch06 Ch07 Ch08 Ch09
-// POIN Ch10 Ch11 Ch12 Ch13 Ch14 Ch15 Ch16 Ch17 Ch18 Ch19
-// POIN Ch20 Ch21 Ch22 Ch23 Ch24 Ch25 Ch26 Ch27 Ch28 Ch29
+Ch05 Ch06 Ch07 Ch08 Ch09
+POIN Ch10 Ch11 Ch12 Ch13 Ch14 Ch15 Ch16 Ch17 Ch18 Ch19
+POIN Ch20 Ch21 Ch22 Ch23 Ch24 Ch25 Ch26 Ch27 Ch28 Ch29
 
 Ch00:Ch01:Ch02:Ch03:
 PREEXT_AuguryTextTerminate
 
 Ch04:
-PREEXT_AuguryTextEntryUnit(Eirika, Chapter_00_Scene_01_Convo_01)
+PREEXT_AuguryTextEntryUnit(0, Augury_Chapter_04)
 PREEXT_AuguryTextTerminate
 
+Ch05:Ch06:Ch07:Ch08:Ch09:
 Ch10:Ch11:Ch12:Ch13:Ch14:Ch15:Ch16:Ch17:Ch18:Ch19:
 Ch20:Ch21:Ch22:Ch23:Ch24:Ch25:Ch26:Ch27:Ch28:Ch29:
 PREEXT_AuguryTextTerminate
