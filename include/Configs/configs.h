@@ -314,6 +314,11 @@
 */
 // #define CONFIG_RESTORE_HP_ON_LEVEL_UP
 
+/*
+** By Jester
+*/
+// #define CONFIG_DEATH_DANCE
+
 /**
  * Levelup mode
  * 0: vanilla

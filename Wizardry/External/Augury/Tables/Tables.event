@@ -8,21 +8,16 @@
 ALIGN 4
 PREEXT_AuguryText:
 {
-//POIN Ch00 Ch01 Ch02 Ch03 
-POIN Ch04
-// Ch02 Ch03 Ch04 Ch05 Ch06 Ch07 Ch08 Ch09
+POIN Ch00 Ch01 Ch02 Ch03 Ch04
+// Ch05 Ch06 Ch07 Ch08 Ch09
 // POIN Ch10 Ch11 Ch12 Ch13 Ch14 Ch15 Ch16 Ch17 Ch18 Ch19
 // POIN Ch20 Ch21 Ch22 Ch23 Ch24 Ch25 Ch26 Ch27 Ch28 Ch29
 
+Ch00:Ch01:Ch02:Ch03:
+PREEXT_AuguryTextTerminate
+
 Ch04:
-// PREEXT_AuguryTextEntryFlag(0x84, 0x900)
-PREEXT_AuguryTextEntryUnit(Eirika, 0x092E)
-PREEXT_AuguryTextEntryUnit(Seth, 0x090E)
-// PREEXT_AuguryTextEntryNoCond(0x900)
-PREEXT_AuguryTextDummy
-PREEXT_AuguryTextDummy
-PREEXT_AuguryTextDummy
-PREEXT_AuguryTextDummy
+PREEXT_AuguryTextEntryUnit(Eirika, Chapter_00_Scene_01_Convo_01)
 PREEXT_AuguryTextTerminate
 
 Ch10:Ch11:Ch12:Ch13:Ch14:Ch15:Ch16:Ch17:Ch18:Ch19:
