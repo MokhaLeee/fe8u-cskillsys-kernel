@@ -2,35 +2,6 @@
 #include <icon-rework.h>
 #include <popup-reowrk.h>
 
-LYN_REPLACE_CHECK(ParsePopupInstAndGetLen);
-int ParsePopupInstAndGetLen(struct PopupProc *proc)
-{
-	const struct PopupInstruction *inst;
-
-	proc->xGfxSize = 0;
-
-	for (inst = proc->pDefinition; inst->opcode != POPUP_OP_END; inst++) {
-		if (gPopupComponents[inst->opcode].get_len == NULL)
-			continue;
-
-		proc->xGfxSize += gPopupComponents[inst->opcode].get_len(proc, inst);
-	}
-
-	return proc->xGfxSize;
-}
-
-LYN_REPLACE_CHECK(GeneratePopupText);
-void GeneratePopupText(const struct PopupInstruction *inst, struct Text th)
-{
-	for (; inst->opcode != POPUP_OP_END; inst++) {
-		if (gPopupComponents[inst->opcode].display == NULL)
-			continue;
-
-		gPopupComponents[inst->opcode].display(&th, inst);
-	}
-	BG_EnableSyncByMask(BG0_SYNC_BIT | BG1_SYNC_BIT);
-}
-
 /**
  * Bm popup main loop
  */

@@ -86,7 +86,7 @@ static int PoprGetLen_Color(struct PopupProc *proc, const struct PopupInstructio
 
 static void PoprDisp_Color(struct Text *text, const struct PopupInstruction *inst)
 {
-	Text_SetColor(text, inst->data);
+	// Text_SetColor(text, inst->data);
 }
 
 static int PoprGetLen_ItemIcon(struct PopupProc *proc, const struct PopupInstruction *inst)
@@ -152,3 +152,32 @@ struct PopupComponent const gPopupComponents[CHAX_POPUP_OP_ALLOC_MAX] = {
 	[POPUP_OP_NUM] =          { PoprGetLen_Number,     PoprDisp_Number },
 	[POPUP_OP_SOUND] =        { PoprGetLen_Sound,      PoprDisp_Sound },
 };
+
+LYN_REPLACE_CHECK(ParsePopupInstAndGetLen);
+int ParsePopupInstAndGetLen(struct PopupProc *proc)
+{
+	const struct PopupInstruction *inst;
+
+	proc->xGfxSize = 0;
+
+	for (inst = proc->pDefinition; inst->opcode != POPUP_OP_END; inst++) {
+		if (gPopupComponents[inst->opcode].get_len == NULL)
+			continue;
+
+		proc->xGfxSize += gPopupComponents[inst->opcode].get_len(proc, inst);
+	}
+
+	return proc->xGfxSize;
+}
+
+LYN_REPLACE_CHECK(GeneratePopupText);
+void GeneratePopupText(const struct PopupInstruction *inst, struct Text th)
+{
+	for (; inst->opcode != POPUP_OP_END; inst++) {
+		if (gPopupComponents[inst->opcode].display == NULL)
+			continue;
+
+		gPopupComponents[inst->opcode].display(&th, inst);
+	}
+	BG_EnableSyncByMask(BG0_SYNC_BIT | BG1_SYNC_BIT);
+}

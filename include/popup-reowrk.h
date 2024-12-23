@@ -30,6 +30,7 @@ struct ProcPopupHanlder {
 	PROC_HEADER;
 
 	const struct PopupConfig *config;
+	struct Anim *anim;
 };
 
 /**

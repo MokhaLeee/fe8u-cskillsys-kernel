@@ -194,6 +194,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 		.redas = REDA_Ephraim,
 		.items = {
 			ITEM_LANCE_IRON,
+			ITEM_SOLARBRACE,
 		},
 	},
 	{
