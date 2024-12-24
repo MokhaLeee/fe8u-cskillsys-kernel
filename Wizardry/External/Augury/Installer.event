@@ -1,18 +1,16 @@
 // Adds Augury option to Preparations screen.
 // label prefix: PREEXT.
-#ifdef CONFIG_INSTALL_PREPS_AUGURY
 
-	#include "Extensions/Hack Installation.txt"
-	#include "EAstdlib.event"
+#include "Extensions/Hack Installation.txt"
+#include "EAstdlib.event"
 
-	// Definitions & variables
-	#define PREEXT_MenuOptionTextID 0x58A
-	#define PREEXT_MenuHelpTextID 0x57E
-	#define PREEXT_ExtraEntryProc PREEXT_Procs_Augury
+// Definitions & variables
+#define PREEXT_MenuOptionTextID 0x58A
+#define PREEXT_MenuHelpTextID 0x57E
+#define PREEXT_ExtraEntryProc PREEXT_Procs_Augury
 
-	#include "Defs/ProcDefinitions.event"
-	#include "Graphics/Graphics.event"
+#include "Defs/ProcDefinitions.event"
+#include "Graphics/Graphics.event"
 
-	#include "Tables/Tables.event"
-	#include "asm/asm.event"
-#endif
+#include "Tables/Tables.event"
+#include "asm/asm.event"

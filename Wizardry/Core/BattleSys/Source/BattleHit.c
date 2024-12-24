@@ -8,6 +8,9 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 #include "unit-expa.h"
+#include "jester_headers/custom-structs.h"
+
+extern u16 sBEXP[CONFIG_BEXP];
 
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
 void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)
@@ -457,6 +460,16 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
     BattleGenerateHitTriangleAttack(attacker, defender);
     BattleGenerateHitAttributes(attacker, defender);
     BattleGenerateHitEffects(attacker, defender);
+
+/* This is a test, can be removed when the feature fully wors */
+#ifdef CONFIG_BEXP
+    sBEXP[0] += 50;
+    NoCashGBAPrintf("BEXP level right now is: %d", sBEXP[0]);
+#endif
+
+    // gPlaySt.bexp += 1;
+
+    // NoCashGBAPrintf("BEXP is %d", gPlaySt.bexp);
 
     if (attacker->unit.curHP == 0 || defender->unit.curHP == 0)
     {

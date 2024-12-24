@@ -61,6 +61,7 @@ _kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
 _kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sExpaConvoyItemCount, 4
 _kernel_malloc sExpaConvoyItemArray, 2 * 300
+_kernel_malloc sBEXP, 2 * 1
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

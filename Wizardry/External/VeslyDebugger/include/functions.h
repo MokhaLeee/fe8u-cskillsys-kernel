@@ -584,6 +584,7 @@ void ResetSioPidPool();
 void RegisterSioPid(u8 val);
 void RemoveSioPid(u8 val);
 
+
 // ??? WmSell_DrawSupplyDialogueSpriteText(???);
 // ??? sub_809FDD4(???);
 // ??? sub_809FE1C(???);

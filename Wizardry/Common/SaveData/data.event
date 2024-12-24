@@ -59,6 +59,7 @@ gEmsSavChunks:
 
     EmsChunkEnd
 
+/* Sus - Save on Suspend */
 ALIGN 4
 gEmsSusChunks:
     EmsChunk($004C, MSU_SavePlaySt,     MSU_LoadPlaySt,      EMS_CHUNK_CHAPTERSTATE)
@@ -95,6 +96,8 @@ gEmsSusChunks:
     EmsChunk($0008, MSU_SaveSelectionPos, MSU_LoadSelectionPos)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
     EmsChunk((51 + 50 + 8) * 16, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
+    /* Jester stuff */
+    EmsChunk($0004, SaveBEXP, LoadBEXP) 
 
     EmsChunkEnd
 

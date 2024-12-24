@@ -105,4 +105,6 @@
     #include "DangerRadius/Installer.event"
 #endif
 
+#include "JesterHacks/BEXP/Installer.event"
+
 #include "FE8_Rewritten_Terper/Installer.event"
