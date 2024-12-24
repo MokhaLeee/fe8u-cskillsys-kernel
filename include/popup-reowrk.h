@@ -5,8 +5,13 @@
 enum chax_popup_opcode_index {
 	CHAX_POPUP_OP_START = POPUP_OP_SOUND,
 
+	// kernel
+	CHAX_POPUP_OP_SKILL_ICON,
+	CHAX_POPUP_OP_COMBART_ICON,
+
 	// new
 
+	CHAX_POPUP_OP_MAX,
 	CHAX_POPUP_OP_ALLOC_MAX = 0x30
 };
 

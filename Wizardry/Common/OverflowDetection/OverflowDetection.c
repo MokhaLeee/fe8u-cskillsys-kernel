@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "battle-system.h"
+#include "popup-reowrk.h"
 
 extern u8 FreeRamSpaceTop[], UsedFreeRamSpaceTop[], FreeRamSpaceBottom[];
 extern u8 FreeRamSpace2Top[], UsedFreeRamSpace2Top[], FreeRamSpace2Bottom[];
@@ -27,4 +28,7 @@ void GameInit_OverflowDetection(void)
 	Assert(sizeof(gBattleTargetGlobalFlag) <= 0x10);
 	Assert(sizeof(gBattleTemporaryFlag) <= 8);
 	Assert(sizeof(gDmg) <= 40);
+
+	/* PopupR */
+	Assert(CHAX_POPUP_OP_ALLOC_MAX > CHAX_POPUP_OP_MAX);
 }

@@ -1,5 +1,6 @@
 #include <common-chax.h>
 #include <icon-rework.h>
+#include <skill-system.h>
 #include <popup-reowrk.h>
 
 /**
@@ -138,7 +139,34 @@ static int PoprGetLen_Sound(struct PopupProc *proc, const struct PopupInstructio
 
 static void PoprDisp_Sound(struct Text *text, const struct PopupInstruction *inst) {}
 
+static int PoprGetLen_SkillIcon(struct PopupProc *proc, const struct PopupInstruction *inst)
+{
+	proc->iconX = proc->xGfxSize;
+	proc->iconId = SKILL_ICON(gPopupItem);
+	LoadIconPalette(0, proc->iconPalId);
+	return 0x10;
+}
+
+static void PoprDisp_SkillIcon(struct Text *text, const struct PopupInstruction *inst)
+{
+	Text_Skip(text, 0x10);
+}
+
+static int PoprGetLen_CombArtIcon(struct PopupProc *proc, const struct PopupInstruction *inst)
+{
+	proc->iconX = proc->xGfxSize;
+	proc->iconId = COMBART_ICON(gPopupItem);
+	LoadIconPalette(0, proc->iconPalId);
+	return 0x10;
+}
+
+static void PoprDisp_CombArtIcon(struct Text *text, const struct PopupInstruction *inst)
+{
+	Text_Skip(text, 0x10);
+}
+
 struct PopupComponent const gPopupComponents[CHAX_POPUP_OP_ALLOC_MAX] = {
+	/* common */
 	[POPUP_OP_SPACE] =        { PoprGetLen_Space,      PoprDisp_Space },
 	[POPUP_OP_ITEM_NAME] =    { PoprGetLen_ItemName,   PoprDisp_ItemName },
 	[POPUP_OP_ITEM_STR_CAP] = { PoprGetLen_ItemStrCap, PoprDisp_ItemStrCap },
@@ -151,6 +179,12 @@ struct PopupComponent const gPopupComponents[CHAX_POPUP_OP_ALLOC_MAX] = {
 	[POPUP_OP_WTYPE_ICON] =   { PoprGetLen_WtypeIcon,  PoprDisp_WtypeIcon },
 	[POPUP_OP_NUM] =          { PoprGetLen_Number,     PoprDisp_Number },
 	[POPUP_OP_SOUND] =        { PoprGetLen_Sound,      PoprDisp_Sound },
+
+	/* kernel */
+	[CHAX_POPUP_OP_SKILL_ICON]   = { PoprGetLen_SkillIcon,   PoprDisp_SkillIcon },
+	[CHAX_POPUP_OP_COMBART_ICON] = { PoprGetLen_CombArtIcon, PoprDisp_CombArtIcon },
+
+	/* demo */
 };
 
 LYN_REPLACE_CHECK(ParsePopupInstAndGetLen);
