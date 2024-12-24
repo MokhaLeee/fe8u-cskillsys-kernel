@@ -324,6 +324,12 @@
 */
 // #define CONFIG_INFINITE_DURABILITY
 
+/*
+** By Jester
+** NOT STARTED
+*/
+// #define CONFIG_FORGE
+
 /**
  * Levelup mode
  * 0: vanilla

@@ -432,3 +432,16 @@ void ClearHelpBoxText(void) {
 
     return;
 }
+
+//! FE8U = 0x08089CD4
+LYN_REPLACE_CHECK(DrawHelpBoxWeaponStats);
+void DrawHelpBoxWeaponStats(int item)
+{
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 32, 7, GetItemDisplayRankString(item));
+    Text_InsertDrawString(&gHelpBoxSt.text[0], 67, 7, GetItemDisplayRangeString(item));
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[0], 129, 7, GetItemWeight(item));
+
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[1], 32, 7, GetItemMight(item));
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[1], 81, 7, GetItemHit(item));
+    Text_InsertDrawNumberOrBlank(&gHelpBoxSt.text[1], 129, 7, GetItemCrit(item));
+}

@@ -1916,3 +1916,46 @@ void DrawPrepScreenItems(u16 * tm, struct Text* th, struct Unit* unit, u8 checkP
 
     return;
 }
+
+//! FE8U = 0x08099328 - PrepItemScreen_DisplayMenuOptions
+LYN_REPLACE_CHECK(sub_8099328);
+void sub_8099328(struct PrepItemScreenProc* proc, u16 * tm, struct Unit* unit) {
+    TileMap_FillRect(tm, 10, 6, 0);
+
+    ClearText(&gPrepItemTexts[25]);
+    Text_InsertDrawString(&gPrepItemTexts[25], 0, PrepGetUnitAmount() < 2 ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE, GetStringFromIndex(0x594)); // TODO: msgid "Trade"
+
+#ifdef CONFIG_FORGE
+    Text_InsertDrawString(&gPrepItemTexts[25], 32, PrepGetUnitAmount() < 2 ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE, "Forge"); // TODO: msgid "List"
+#else
+    Text_InsertDrawString(&gPrepItemTexts[25], 32, PrepGetUnitAmount() < 2 ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE, GetStringFromIndex(0x595)); // TODO: msgid "List"
+#endif
+
+    PutText(&gPrepItemTexts[25], tm + TILEMAP_INDEX(0, 1));
+
+    ClearText(&gPrepItemTexts[26]);
+    Text_InsertDrawString(&gPrepItemTexts[26], 0, !CanUnitPrepScreenUse(unit) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE, GetStringFromIndex(0x596)); // TODO: msgid "Use"
+    Text_InsertDrawString(&gPrepItemTexts[26], 32, !proc->hasConvoyAccess ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE, GetStringFromIndex(0x59A)); // TODO: msgid "Give all"
+    PutText(&gPrepItemTexts[26], tm + TILEMAP_INDEX(0, 3));
+
+    ClearText(&gPrepItemTexts[27]);
+    Text_InsertDrawString(&gPrepItemTexts[27], 0, !proc->hasConvoyAccess ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE, GetStringFromIndex(0x598)); // TODO: msgid "Supply"
+
+    if (gGMData.state.bits.state_0) {
+        struct Text* th = &gPrepItemTexts[27];
+        int color = TEXT_COLOR_SYSTEM_WHITE;
+        if ((!proc->hasConvoyAccess) || (GetUnitItemCount(unit) < 1) || CheckInLinkArena()) {
+            color = TEXT_COLOR_SYSTEM_GRAY;
+        }
+        Text_InsertDrawString(th, 32, color, GetStringFromIndex(0x597)); // TODO: msgid "Sell"
+    } else {
+        if (CheckInLinkArena()) {
+            Text_InsertDrawString(&gPrepItemTexts[27], 32, TEXT_COLOR_SYSTEM_GRAY, GetStringFromIndex(0x599)); // TODO: msgid "Armory"
+        } else {
+            Text_InsertDrawString(&gPrepItemTexts[27], 32, TEXT_COLOR_SYSTEM_WHITE, GetStringFromIndex(0x599)); // TODO: msgid "Armory"
+        }
+    }
+
+    PutText(&gPrepItemTexts[27], tm + TILEMAP_INDEX(0, 5));
+    return;
+}
