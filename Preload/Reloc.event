@@ -138,4 +138,6 @@ gpJobGrowthList: POIN gJobGrowthList
 gpPrepItemEffectFunc: POIN gPrepItemEffectFunc
 gpPrepItemUsabilityFuncs: POIN gPrepItemUsabilityFuncs
 
+prWriteUnitLevelSafe: POIN WriteUnitLevelSafe
+
 KERNEL_RELOC_END:
