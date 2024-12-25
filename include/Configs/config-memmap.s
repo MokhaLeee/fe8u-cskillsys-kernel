@@ -75,6 +75,7 @@ _kernel_malloc gExtBattleHitArray, 4 * 0x21
 _kernel_malloc gpActorShileInfo, 4
 _kernel_malloc gpTargetShileInfo, 4
 _kernel_malloc sShileldInfoCache, 0x14
+_kernel_malloc sPopupSkillStack, 0x10
 
 /* u8 x4 to share one u32 */
 _kernel_malloc sKernelHookSkippingFlag, 1

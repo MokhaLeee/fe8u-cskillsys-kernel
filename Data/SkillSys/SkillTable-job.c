@@ -19,6 +19,12 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 #endif
 	},
 
+	[CLASS_EPHRAIM_MASTER_LORD] = {
+#if (defined(SID_SpectrumBoost) && COMMON_SKILL_VALID(SID_SpectrumBoost))
+		SID_SpectrumBoost,
+#endif
+	},
+
 	[CLASS_PALADIN] = {
 #if (defined(SID_HoneCavalry) && COMMON_SKILL_VALID(SID_HoneCavalry))
 		SID_HoneCavalry,

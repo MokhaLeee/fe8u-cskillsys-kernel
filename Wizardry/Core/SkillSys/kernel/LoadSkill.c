@@ -5,6 +5,9 @@
 
 #define LOCAL_TRACE 0
 
+/**
+ * Slot ops
+ */
 static void SortRamSkillList(struct Unit *unit)
 {
 	int i, cnt = 0;
@@ -150,6 +153,9 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	}
 }
 
+/**
+ * Lvup
+ */
 STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit *unit, int level)
 {
 	int i;
@@ -161,8 +167,10 @@ STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit *unit, int level)
 	for (i = 0; i < 5; i++) {
 		sid = pConf->skills[_level + i];
 
-		if (EQUIPE_SKILL_VALID(sid))
+		if (EQUIPE_SKILL_VALID(sid)) {
 			AddSkill(unit, sid);
+			PushSkillListStack(sid);
+		}
 	}
 }
 
@@ -177,8 +185,10 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit *unit, int level)
 	for (i = 0; i < 5; i++) {
 		sid = jConf->skills[_level + i];
 
-		if (EQUIPE_SKILL_VALID(sid))
+		if (EQUIPE_SKILL_VALID(sid)) {
 			AddSkill(unit, sid);
+			PushSkillListStack(sid);
+		}
 	}
 }
 
@@ -190,14 +200,17 @@ void TryAddSkillLvup(struct Unit *unit, int level)
 		return;
 
 	_level = level;
-	if (k_umod(_level, 5))
+	if (k_umod(_level, 5) == 0)
 		TryAddSkillLvupJConf(unit, _level);
 
 	_level = level + GetUnitHiddenLevel(unit);
-	if (k_umod(_level, 5))
+	if (k_umod(_level, 5) == 0)
 		TryAddSkillLvupPConf(unit, _level);
 }
 
+/**
+ * Promotion
+ */
 void TryAddSkillPromotion(struct Unit *unit, int jid)
 {
 	int i;
@@ -205,13 +218,28 @@ void TryAddSkillPromotion(struct Unit *unit, int jid)
 
 	const struct SkillPreloadJConf *jConf = &gpSkillPreloadJData[jid];
 
+	ResetPopupSkillStack();
+
 	if (!UNIT_IS_VALID(unit))
 		return;
 
 	for (i = 0; i < 5; i++) {
 		sid = jConf->skills[0 + i];
 
-		if (EQUIPE_SKILL_VALID(sid))
+		if (EQUIPE_SKILL_VALID(sid)) {
 			AddSkill(unit, sid);
+			PushSkillListStack(sid);
+		}
 	}
+
+	/**
+	 * Append const list
+	 */
+	sid = gpConstSkillTable_Job[jid * 2 + 0];
+	if (COMMON_SKILL_VALID(sid))
+		PushSkillListStack(sid);
+
+	sid = gpConstSkillTable_Job[jid * 2 + 1];
+	if (COMMON_SKILL_VALID(sid))
+		PushSkillListStack(sid);
 }

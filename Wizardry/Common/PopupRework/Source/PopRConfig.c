@@ -1,5 +1,6 @@
 #include <common-chax.h>
 #include <icon-rework.h>
+#include <skill-system.h>
 #include <popup-reowrk.h>
 
 static bool PopR_SetupBattleWeaponBroken(void)
@@ -71,6 +72,18 @@ static bool PopR_SetupPromotionWRankUpStaff(void) { return PopR_SetupPromotionWR
 struct PopupConfig const gBattlePopupConfigs[] = {
 	{ PopR_SetupBattleWeaponBroken, PopupScr_WpnBroken, 0x60 },
 	{ PopR_SetupBattleWRankUp, PopupScr_WRankUp, 0x60 },
+
+	/**
+	 * Learn new skills
+	 */
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
 	{}
 };
 
@@ -83,5 +96,17 @@ struct PopupConfig const gPromotPopupConfigs[] = {
 	{ PopR_SetupPromotionWRankUpLight, PopupScr_WRankUp, 0x60 },
 	{ PopR_SetupPromotionWRankUpDark,  PopupScr_WRankUp, 0x60 },
 	{ PopR_SetupPromotionWRankUpStaff, PopupScr_WRankUp, 0x60 },
+
+	/**
+	 * Learn new skills
+	 */
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
+	{ PopR_SetupLearnSkill, PopupScr_LearnSkill, 0x60 },
 	{}
 };

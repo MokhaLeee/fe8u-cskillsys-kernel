@@ -26,7 +26,7 @@ STATIC_DECLAR void EfxPopR_Start(struct PopupProc *proc)
 	LZ77UnCompWram(Tsa_EkrPopup, (void *)gEkrTsaBuffer);
 	InitTextFont(&gBanimFont, (void *)BG_VRAM + 0x2100, 0x108, 1);
 	SetTextDrawNoClear();
-	CpuFastCopy(Pal_EkrPopup, PAL_BG(0x1), 0x20);
+	// CpuFastCopy(Pal_EkrPopup, PAL_BG(0x1), 0x20);
 
 	/**
 	 * Parse

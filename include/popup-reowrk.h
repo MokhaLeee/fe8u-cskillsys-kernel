@@ -7,6 +7,7 @@ enum chax_popup_opcode_index {
 
 	// kernel
 	CHAX_POPUP_OP_SKILL_ICON,
+	CHAX_POPUP_OP_SKILL_NAME,
 	CHAX_POPUP_OP_COMBART_ICON,
 
 	// new
@@ -14,6 +15,10 @@ enum chax_popup_opcode_index {
 	CHAX_POPUP_OP_MAX,
 	CHAX_POPUP_OP_ALLOC_MAX = 0x30
 };
+
+#define CHAX_POPUP_SKILL_ICON { CHAX_POPUP_OP_SKILL_ICON, 0 }
+#define CHAX_POPUP_SKILL_NAME { CHAX_POPUP_OP_SKILL_NAME, 0 }
+#define CHAX_POPUP_COMBART_ICON { CHAX_POPUP_OP_COMBART_ICON, 0 }
 
 struct PopupComponent {
 	int  (*get_len)(struct PopupProc *proc, const struct PopupInstruction *inst);

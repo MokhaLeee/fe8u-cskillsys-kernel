@@ -235,6 +235,20 @@ void TryAddSkillLvup(struct Unit *unit, int level);
 void TryAddSkillPromotion(struct Unit *unit, int jid);
 
 /**
+ * Popups
+ */
+void ResetPopupSkillStack(void);
+void PushSkillListStack(u16 sid);
+int PopSkillListStack(void);
+
+int PoprGetLen_SkillIcon(struct PopupProc *proc, const struct PopupInstruction *inst);
+void PoprDisp_SkillIcon(struct Text *text, const struct PopupInstruction *inst);
+int PoprGetLen_SkillName(struct PopupProc *proc, const struct PopupInstruction *inst);
+void PoprDisp_SkillName(struct Text *text, const struct PopupInstruction *inst);
+bool PopR_SetupLearnSkill(void);
+extern const struct PopupInstruction PopupScr_LearnSkill[];
+
+/**
  * External MiscSkillEffects
  */
 bool GetTeleportationRandomPosition(struct Unit *unit, struct Vec2 *out);
