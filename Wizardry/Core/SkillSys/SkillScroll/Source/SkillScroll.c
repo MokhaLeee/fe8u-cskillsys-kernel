@@ -96,6 +96,16 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
 
     if (value == -1 ) 
         value = 0;
+    else {
+#if defined(SID_CapacityHalf) && (COMMON_SKILL_VALID(SID_CapacityHalf))
+        if (SkillTester(unit, SID_CapacityHalf))
+            value = value / 2;
+#endif
+#if defined(SID_CapacityOne) && (COMMON_SKILL_VALID(SID_CapacityOne))
+        if (SkillTester(unit, SID_CapacityOne))
+            value = 1;
+#endif
+        }
 
     amt += value;
 

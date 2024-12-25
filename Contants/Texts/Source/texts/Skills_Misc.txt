@@ -219,3 +219,13 @@ skills by 2.[X]
 Staff Guard:[NL]
 When the unit has an equippable[NL]
 staff, +5 DEF/RES.[X]
+
+## MSG_SKILL_CapacityHalf
+Capacity-Half:[NL]
+Reduce capacity cost of skills[NL]
+by half.[X]
+
+## MSG_SKILL_CapacityOne
+Capacity-One:[NL]
+Reduce capacity cost of skills[NL]
+to 1.[X]

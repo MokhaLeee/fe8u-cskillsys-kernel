@@ -562,7 +562,6 @@
 // SID_Velocity
 // SID_StaffParagon
 // SID_OgreBody
-// SID_Resurrection
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk
@@ -597,7 +596,7 @@
 // SID_ShadePlus
 // SID_Provoke
 
-////////// STANDALONE SKILLS 
+////////// STANDALONE SKILLS
 // SID_IdentityProblems
 // SID_DemolitionExpert
 // SID_TriangleAttack
@@ -635,6 +634,9 @@
 // SID_HedgeFund
 // SID_WeaponHeal
 // SID_Domain
+// SID_Resurrection
+// SID_CapacityHalf
+// SID_CapacityOne
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

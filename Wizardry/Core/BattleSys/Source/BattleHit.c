@@ -10,7 +10,9 @@
 #include "unit-expa.h"
 #include "jester_headers/custom-structs.h"
 
-extern u16 sBEXP[CONFIG_BEXP];
+#ifdef CONFIG_BEXP
+    extern u16 sBEXP[CONFIG_BEXP];
+#endif
 
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
 void BattleUpdateBattleStats(struct BattleUnit * attacker, struct BattleUnit * defender)

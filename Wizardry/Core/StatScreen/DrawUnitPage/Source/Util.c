@@ -28,6 +28,17 @@ int GetUnitBattleAmt(struct Unit * unit)
 
         total += value;
     }
+
+#if defined(SID_CapacityHalf) && (COMMON_SKILL_VALID(SID_CapacityHalf))
+    if (SkillTester(unit, SID_CapacityHalf))
+            total = total / 2;
+#endif
+
+#if defined(SID_CapacityOne) && (COMMON_SKILL_VALID(SID_CapacityOne))
+    if (SkillTester(unit, SID_CapacityOne))
+            total = list->amt;
+#endif
+
 #else
     total += GetUnitPower(unit);
     total += GetUnitMagic(unit);

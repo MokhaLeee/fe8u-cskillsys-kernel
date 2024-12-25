@@ -163,7 +163,7 @@
  * 
  * Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
  */
-// #define CONFIG_INSTALL_PREPS_AUGURY
+#define CONFIG_INSTALL_PREPS_AUGURY
 
 /**
  * By Tequila
@@ -334,10 +334,8 @@
 ** By Jester
 ** NOT WORKING, BEXP saves on suspend but not on power off and seems to be shared between all save files.
 */
-#define CONFIG_BEXP 1
+// #define CONFIG_BEXP 1
 
-/* Need this enabled to have room to display the BEXP and Forge options in the prep screen */
-#define CONFIG_EXTEND_PREP_MENU
 
 /**
  * Levelup mode

@@ -97,7 +97,9 @@ gEmsSusChunks:
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
     EmsChunk((51 + 50 + 8) * 16, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
     /* Jester stuff */
+#ifdef CONFIG_BEXP
     EmsChunk($0004, SaveBEXP, LoadBEXP) 
+#endif
 
     EmsChunkEnd
 
