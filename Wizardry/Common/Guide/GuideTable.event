@@ -1,0 +1,147 @@
+#include "../../../include/constants/texts.h"
+
+#define GuideFlag 0xB4
+#define AddGuideEntry(category, title, content) "BYTE category category; SHORT title content GuideFlag GuideFlag 0"
+#define AddGuideEntry(category, title, content, character) "BYTE category category; SHORT title content GuideFlag GuideFlag; BYTE character 0"
+#define AddGuideEntry(category, title, content, unlockFlag, readFlag) "BYTE category category; SHORT title content unlockFlag readFlag 0"
+
+#define SkillsIndex 0x1
+#define MechanicsIndex 0x2
+// #define SetpiecesIndex 0x2
+// #define CastIndex 0x3
+// #define CrewIndex 0x4
+// #define ThanksIndex 0x5
+// #define PromotionIndex 0x6
+
+PUSH
+ORG 0xCE380
+POIN NewPlaybill
+ORG 0xCDF5C
+POIN NewPlaybill
+ORG 0xCE40C
+POIN NewPlaybill
+ORG 0xCE480
+POIN NewPlaybill
+ORG 0xCE57C
+POIN NewPlaybill
+ORG 0xCE618
+POIN NewPlaybill
+ORG 0xCE6C4
+POIN NewPlaybill
+ORG 0xCE998
+POIN NewPlaybill
+ORG 0xCEB5C
+POIN NewPlaybill
+ORG 0xCEC20
+POIN NewPlaybill
+ORG 0xCF090
+POIN NewPlaybill
+ORG 0xCF468
+POIN NewPlaybill
+ORG 0xCF488
+POIN NewPlaybill
+
+ORG 0xCEF14
+BYTE $00 $20 // Disable transparency
+
+ORG 0xCEF7C 
+SHORT 0xE001
+
+ORG 0xCEF74
+SHORT 0x2200 // Prevent Guide Sorting
+POP
+
+//bonus: disable select button sort feature in guide menu (fixes most problems that come from editing the guide)
+PUSH
+ORG 0xCEF7C 
+SHORT 0xE001
+POP
+
+ALIGN 4
+NewPlaybill:
+// Skill combos
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_1, Guide_Description_Skill_Combo_1) // WRATH + VANTAGE
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_2, Guide_Description_Skill_Combo_2) // STURDY + DEFIANT skills
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_3, Guide_Description_Skill_Combo_3) // OFFHAND + STEAL+
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_4, Guide_Description_Skill_Combo_4) // PARAGON + PRODIGY
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_5, Guide_Description_Skill_Combo_5) // RIGHTFULARCH + PROC skills
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_6, Guide_Description_Skill_Combo_6) // VANTAGE + LIFETAKER
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_7, Guide_Description_Skill_Combo_7) // LIMITBREAKER + APTITUDE
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_8, Guide_Description_Skill_Combo_8) // POWERSTAFF + LIVETOSERVE
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_9, Guide_Description_Skill_Combo_9) // CHIPPER + MERCY+
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_10, Guide_Description_Skill_Combo_10) // RISK IT ALL + SILENCER
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_11, Guide_Description_Skill_Combo_11) // NO GUARD + GAMBLE
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_12, Guide_Description_Skill_Combo_12) // DESTINY BOND + RESURRECTION
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_13, Guide_Description_Skill_Combo_13) // MOMENTUM + RUINED BLADE+
+AddGuideEntry(SkillsIndex, Guide_Title_Skill_Combo_14, Guide_Description_Skill_Combo_14) // CONCEALED WEAPON + LUDOPATHY
+
+// Mechanics
+AddGuideEntry(MechanicsIndex, Guide_Title_Supports, Guide_Mechanic_Supports)
+AddGuideEntry(MechanicsIndex, Guide_Title_Augury, Guide_Mechanic_Augury)
+AddGuideEntry(MechanicsIndex, Guide_Title_Send_Inventory, Guide_Mechanic_Send_Inventory)
+AddGuideEntry(MechanicsIndex, Guide_Title_Show_Terrain_Bonus, Guide_Mechanic_Show_Terrain_Bonus)
+AddGuideEntry(MechanicsIndex, Guide_Title_Instant_Level_Up, Guide_Mechanic_Instant_Level_Up)
+AddGuideEntry(MechanicsIndex, Guide_Title_S_Rank_No_Weapon_Weight, Guide_Mechanic_S_Rank_No_Weapon_Weight)
+AddGuideEntry(MechanicsIndex, Guide_Title_Auto_Repair_Weapons, Guide_Mechanic_Auto_Repair_Weapons)
+AddGuideEntry(MechanicsIndex, Guide_Title_Reclass, Guide_Mechanic_Reclass)
+AddGuideEntry(MechanicsIndex, Guide_Title_Lazberian_Turn_Flow, Guide_Mechanic_Lazberian_Turn_Flow)
+AddGuideEntry(MechanicsIndex, Guide_Title_Limited_Shop_Stock, Guide_Mechanic_Limited_Shop_Stock)
+AddGuideEntry(MechanicsIndex, Guide_Title_Talk_On_Level_Up, Guide_Mechanic_Talk_On_Level_Up)
+AddGuideEntry(MechanicsIndex, Guide_Title_Restore_HP_On_Level_Up, Guide_Mechanic_Restore_HP_On_Level_Up)
+AddGuideEntry(MechanicsIndex, Guide_Title_Death_Dance, Guide_Mechanic_Death_Dance)
+AddGuideEntry(MechanicsIndex, Guide_Title_Infinite_Durability, Guide_Mechanic_Infinite_Durability)
+AddGuideEntry(MechanicsIndex, Guide_Title_Flipped_Sprites, Guide_Mechanic_Flipped_Sprites)
+AddGuideEntry(MechanicsIndex, Guide_Title_Allegiance_Colors, Guide_Mechanic_Allegiance_Colors)
+AddGuideEntry(MechanicsIndex, Guide_Title_Summon_EXP, Guide_Mechanic_Summon_EXP)
+
+
+// Cast
+// AddGuideEntry(CastIndex, KlaudiaElOuahedEntry, KlaudiaElOuahedContent)
+// AddGuideEntry(CastIndex, ZeroRothEntry, ZeroRothContent)
+// AddGuideEntry(CastIndex, JosephineVentadornEntry, JosephineVentadornContent)
+// AddGuideEntry(CastIndex, WesleyEmersonEntry, WesleyEmersonContent)
+// AddGuideEntry(CastIndex, BethelynTillerEntry, BethelynTillerContent)
+// AddGuideEntry(CastIndex, CamiliaFailsideEntry, CamiliaFailsideContent, Cam)
+// AddGuideEntry(CastIndex, GiselleLoweEntry, GiselleLoweContent)
+// AddGuideEntry(CastIndex, LeviathanSarkaEntry, LeviathanSarkaContent)
+// AddGuideEntry(CastIndex, StuartSussmanEntry, StuartSussmanContent)
+
+// Crew
+// AddGuideEntry(CrewIndex, HairAndMakeupEntry, HairAndMakeupContent)
+// AddGuideEntry(CrewIndex, CostumingEntry, CostumingContent)
+// AddGuideEntry(CrewIndex, FightChoreographyEntry, FightChoreographyContent)
+// AddGuideEntry(CrewIndex, SetDesignEntry, SetDesignContent)
+// AddGuideEntry(CrewIndex, PropMastersEntry, PropMastersContent)
+// AddGuideEntry(CrewIndex, PitOrchestraEntry, PitOrchestraContent)
+// AddGuideEntry(CrewIndex, LightingTechEntry, LightingTechContent)
+// AddGuideEntry(CrewIndex, TheaterArchitectsEntry, TheaterArchitectsContent)
+
+// Thanks
+// AddGuideEntry(ThanksIndex, OffTheStringEntry, OffTheStringContent)
+// AddGuideEntry(ThanksIndex, HackingHelpEntry, HackingHelpContent)
+
+// Promotions
+// AddGuideEntry(PromotionIndex, PromotionalHacksEntry, PromotionalHacksContent)
+// AddGuideEntry(PromotionIndex, DrumsOfWarEntry, DrumsOfWarContent)
+// AddGuideEntry(PromotionIndex, BellsOfByelenEntry, BellsOfByelenContent)
+// AddGuideEntry(PromotionIndex, RevengeOfThePromiseEntry, RevengeOfThePromiseContent)
+// AddGuideEntry(PromotionIndex, ThreeLegaciesEntry, ThreeLegaciesContent)
+// AddGuideEntry(PromotionIndex, LegacyOfSorrowEntry, LegacyOfSorrowContent)
+
+// Terminator
+AddGuideEntry(0xC, 0, 0, 0, 0)
+WORD 0 0 0
+
+// Category list
+PUSH
+ORG $B12B04
+SHORT 1 // Dummy entry, this is necessary
+SHORT Guide_Category_Skill
+SHORT Guide_Category_Mechanics
+// SHORT SetpiecesCategory
+// SHORT CastCategory
+// SHORT CrewCategory
+// SHORT ThanksCategory
+// SHORT PromotionCategory
+SHORT 0 // Terminator
+POP

@@ -1493,8 +1493,8 @@ extern u16 Pal_OpAnimHleathSafetyScreen[];
 // extern ??? gProcScr_GuideEntryListRedraw_Up
 // extern ??? gProcScr_GuideEntryListRedraw_Down
 // extern ??? gProcScr_GuideDetailsRedraw
-extern struct ProcCmd CONST_DATA ProcScr_E_Guide1[];
-extern struct ProcCmd CONST_DATA ProcScr_E_Guide2[];
+extern struct ProcCmd const ProcScr_E_Guide1[];
+extern struct ProcCmd const ProcScr_E_Guide2[];
 extern u8 Img_CommGameBgScreen[];  // gfx
 extern u16 Pal_CommGameBgScreenInShop[]; // pal
 extern u16 gUnknown_08B1756C[]; // pal, used in opsubtitle

@@ -3,6 +3,7 @@
 #include "Common/ClassTypes/data.event"
 #include "Common/ChapterInitHook/data.event"
 #include "Common/GameInitHook/data.event"
+#include "Common/Guide/GuideTable.event"
 #include "Common/IconDisplay/data.event"
 #include "Common/KernelLib/data.event"
 #include "Common/NegativeStatBoosts/data.event"

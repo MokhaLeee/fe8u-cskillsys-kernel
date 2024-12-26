@@ -1,0 +1,154 @@
+## Guide_Category_Mechanics
+Mechanics[X]
+
+## Guide_Title_Supports
+Support after battle[X]
+## Guide_Mechanic_Supports
+By: Vesly[N]
+Instead of passively ending[N]
+turns next to each other,[N]
+units gain support points[N]
+through rounds of combat[N]
+in a 3 tile radius of each[N]
+other.[N][N]
+When two applicable units[N]
+gain supports points this[N]
+will be indicated by a pair[N]
+of red hearts over their[N]
+sprites. When those hearts[N]
+turn gold, the units are[N]
+ready to support.[X]
+
+## Guide_Title_Augury
+Preparations Augury[X]
+## Guide_Mechanic_Augury
+By: Huichelaar[N]
+This enables the Augury in[N]
+FE7, where units can receive[N]
+useful information about a[N]
+chaper in the preparations[N]
+menu.[X]
+
+## Guide_Title_Send_Inventory
+Send Inventory[X]
+## Guide_Mechanic_Send_Inventory
+By: Contro[N]
+If a unit dies, their[N]
+inventory is sent to[N]
+the convoy instead of[N]
+being lost.[X]
+
+## Guide_Title_Show_Terrain_Bonus
+Show Terrain Bonuses[X]
+## Guide_Mechanic_Show_Terrain_Bonus
+By: Jester[N]
+Terrain bonuses are shown[N]
+in a unit's stat screen.[X]
+
+## Guide_Title_Instant_Level_Up
+Instant Level Up[X]
+## Guide_Mechanic_Instant_Level_Up
+By: Sme[N]
+Increased stats are all[N]
+shown at once, to save[N]
+time.[X]
+
+## Guide_Title_S_Rank_No_Weapon_Weight
+S Rank - No Weapon Weight[X]
+## Guide_Mechanic_S_Rank_No_Weapon_Weight
+By: Jester[N]
+When a unit gains an S rank[N]
+in a weapon type, they no[N]
+longer suffer a weapon[N]
+weight penality in that[N]
+weapon type.[X]
+
+## Guide_Title_Auto_Repair_Weapons
+Auto Repair Weapons[X]
+## Guide_Mechanic_Auto_Repair_Weapons
+By: Jester[N]
+Restore unbroken weapons to[N]
+full durability at the end[N]
+of the map.[X]
+
+## Guide_Title_Reclass
+Reclassing Options[X]
+## Guide_Mechanic_Reclass
+By: Vesly[N]
+Using a new item called[N]
+a 'Heart Seal', the[N]
+unit can switch between[N]
+multiple classes.[X]
+
+## Guide_Title_Lazberian_Turn_Flow
+Lazberian Turn Flow[X]
+## Guide_Mechanic_Lazberian_Turn_Flow
+By: Stan[N]
+Imports a mechanic from the[N]
+Berwick Saga games where[N]
+phases alternate as units[N]
+from each phase move.[X]
+
+## Guide_Title_Limited_Shop_Stock
+Limited Shop Stock[X]
+## Guide_Mechanic_Limited_Shop_Stock
+By: Contro[N]
+Selected items can only be[N]
+bought in limited supplies[N]
+rather than being infinite.[X]
+
+## Guide_Title_Talk_On_Level_Up
+Talk on Level Up[X]
+## Guide_Mechanic_Talk_On_Level_Up
+By: Jester[N]
+Units have 3 different things[N]
+to say depending on how good[N]
+their level ups are.[N]
+Great: 5-8 points[N]
+Good: 3-4 points[N]
+Bad: 1-2 points[X]
+
+## Guide_Title_Restore_HP_On_Level_Up
+Restore HP on Level Up[X]
+## Guide_Mechanic_Restore_HP_On_Level_Up
+By: Jester[N]
+When leveling up, units will[N]
+restore to full HP.[X]
+
+## Guide_Title_Death_Dance
+Death Dance[X]
+## Guide_Mechanic_Death_Dance
+By Jester:[N]
+Porting a mechanic from FE6,[N]
+when a rescuer unit dies on[N]
+their own phase, the rescued[N]
+unit can still move.[X]
+
+## Guide_Title_Infinite_Durability
+Infinite Durability[X]
+## Guide_Mechanic_Infinite_Durability
+By: Jester[N]
+All weapons have infinite[N]
+durability.[X]
+
+## Guide_Title_Flipped_Sprites
+Flipped Sprites[X]
+## Guide_Mechanic_Flipped_Sprites
+By: Contro[N]
+This just flips all unit[N]
+sprites.[X]
+
+## Guide_Title_Allegiance_Colors
+Stat Screen Allegiance Colors[X]
+## Guide_Mechanic_Allegiance_Colors
+By: Contro[N]
+Each unit has a different[N]
+colored stat screen palette[N]
+based on their faction.[X]
+
+## Guide_Title_Summon_EXP
+Gain EXP from Summons[X]
+## Guide_Mechanic_Summon_EXP
+By: Snakey1[N]
+Summoners can gain EXP[N]
+from their summons.[X]

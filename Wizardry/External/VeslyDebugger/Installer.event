@@ -212,7 +212,10 @@ WExpDesc:
     String("for the unit."); EndText 
 
 SupportMenuText:
-    String(" Supports"); EndText 
+    String(" Skills IDs"); EndText 
+
+// SupportMenuText:
+//     String(" Supports"); EndText 
 SupportMenuDesc:
     String("Edit support levels"); NL
     String("for the unit."); EndText 

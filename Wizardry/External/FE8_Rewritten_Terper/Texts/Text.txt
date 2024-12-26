@@ -32,3 +32,6 @@
 #include Miscellaneous/Notifications.txt
 #include Miscellaneous/Objectives.txt
 #include Miscellaneous/Misc.txt
+
+#include Guides/Skill_Combos.txt
+#include Guides/Mechanics.txt

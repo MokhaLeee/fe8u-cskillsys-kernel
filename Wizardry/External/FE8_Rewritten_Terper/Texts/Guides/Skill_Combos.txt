@@ -1,0 +1,149 @@
+## Guide_Category_Skill
+Skill combos[X]
+
+## Guide_Title_Skill_Combo_1
+Wrath + Vantage[X]
+## Guide_Description_Skill_Combo_1
+WRATH boosts your crit rate by[N]
+25% when under 50% health.[N]
+Combine this with VANTAGE[N]
+which allows you to attack first[N]
+when attacked under 50% HP.[N]
+Together you can attack and[N]
+potentially kill enemies with[N]
+the boosted crit before they[N]
+can retialiate.[X]
+
+## Guide_Title_Skill_Combo_2
+Sturdy + Defiant skills[X]
+## Guide_Description_Skill_Combo_2
+STURDY allows a unit to survive[N]
+at 1 HP if they were at full HP.[N]
+Combine it with a DEFIANT skill[N]
+for at instant +7 boost to the[N]
+respective stat on retaliation.[X]
+
+## Guide_Title_Skill_Combo_3
+Offhand + Steal+[X]
+## Guide_Description_Skill_Combo_3
+OFFHAND can swap an enemy's[N]
+equipped weapon after combat[N]
+with another in their inventory.[N]
+Combined with Steal+, you can[N]
+manipulate their inventory to[N]
+potentially steal any weapon[N]
+you want.[X]
+
+## Guide_Title_Skill_Combo_4
+Paragon + Prodigy[X]
+## Guide_Description_Skill_Combo_4
+PARAGON doubles EXP gains.[N]
+Combined with PRODIGY, the unit[N]
+can potentially gain over[N]
+100 EXP per battle.[X]
+
+## Guide_Title_Skill_Combo_5
+RightfulArch + Proc skills[X]
+## Guide_Description_Skill_Combo_5
+RIGHTFULARCH sets proc[N]
+activation rates to 100%.[N]
+Combined with any proc skill[N]
+ensures perpetua activations[N]
+every battle.[X]
+
+## Guide_Title_Skill_Combo_6
+Vantage + Lifetaker[X]
+## Guide_Description_Skill_Combo_6
+VANTAGE allows the unit to[N]
+attack first when attacked[N]
+under 50% health. Combined with[N]
+LIFETAKER which heals 25% HP[N]
+on defeating any enemy and[N]
+you have a self-healing[N]
+juggernaut on enemy phase.[X]
+
+## Guide_Title_Skill_Combo_7
+Limit Breaker + Aptitude[X]
+## Guide_Description_Skill_Combo_7
+LIMIT BREAKER skills boost the[N]
+stat caps on a unit. Combined[N]
+with APTITUDE the unit sports[N]
++20% to all growth rates to[N]
+more easily reach those new[N]
+caps.[X]
+
+## Guide_Title_Skill_Combo_8
+Powerstaff + Live To Serve[X]
+## Guide_Description_Skill_Combo_8
+LIVE TO SERVE heals the staff[N]
+user as much as their target.[N]
+Combined with POWERSTAFF the[N]
+unit can heal themselves and[N]
+their allies, and still have[N]
+a free action to buff their[N]
+allies or attack an enemy.[X]
+
+## Guide_Title_Skill_Combo_9
+Chipper + Mercy+[X]
+## Guide_Description_Skill_Combo_9
+CHIPPER grants the player +50g[N]
+for every hit on the enemy.[N]
+Combined with Mercy+ which[N]
+prevents the unit from[N]
+killing an enemy, and you[N]
+have a money making machine.[X]
+
+## Guide_Title_Skill_Combo_10
+Risk It All + Silencer[X]
+## Guide_Description_Skill_Combo_10
+RISK IT ALL gives both units[N]
+a 100% crit rate. Combined with[N]
+SILENCER and you have a 50%[N]
+chance of instantly killing[N]
+the enemy unit. 25% chance[N]
+against bosses.[X]
+
+## Guide_Title_Skill_Combo_11
+No Guard + Gamble[X]
+## Guide_Description_Skill_Combo_11
+NO GUARD gives both units a[N]
+100% hit rate. Combined with[N]
+GAMBLE which gives you a[N]
+100% crit at 50% hit,[N]
+and you have a guranteed[N]
+crit machine on player phase.[X]
+
+## Guide_Title_Skill_Combo_12
+Destiny Bond + Resurrection[X]
+## Guide_Description_Skill_Combo_12
+DESTINY BOND will kill the[N]
+enemy if the unit dies too.[N]
+Combined with RESURRECTION[N]
+which can bring the unit back[N]
+from death and you have an[N]
+instant win condition against[N]
+any 1 unit.[X]
+
+## Guide_Title_Skill_Combo_13
+Momentum + Ruined Blade+[X]
+## Guide_Description_Skill_Combo_13
+MOMENTUM grants the user +10%[N]
+on every subsequent follow up[N]
+attack in the current round.[N]
+Combined with RUINED BLADE+[N]
+the user gains an additional[N]
+attack, as well as the crit[N]
+boost.[X]
+
+## Guide_Title_Skill_Combo_14
+Concealed Weapon + Ludopathy[X]
+## Guide_Description_Skill_Combo_14
+LUDOPATHY doubles gambling[N]
+bets and winnings.[N]
+Combined with CONCEALED[N]
+WEAPON which allows the[N]
+unit to smuggle their[N]
+equipped weapon into the[N]
+arena, and you can more[N]
+easily win your matches[N]
+with increased returns.[X]
