@@ -48,7 +48,7 @@ void ComputeBattleUnitSpeed(struct BattleUnit *bu)
 	int wt  = GetItemWeight(bu->weaponBefore);
 	int con = bu->unit.conBonus;
 	
-	con += simple_div(bu->battleAttack * gpKernelBattleDesignerConfig->as_calc_atk_perc, 100);
+	con += k_udiv(bu->battleAttack * gpKernelBattleDesignerConfig->as_calc_atk_perc, 100);
 
 	wt -= con;
 	if (wt < 0)
@@ -135,8 +135,8 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
 	}
 
 	bu->battleAvoidRate = status;
-    if (bu->battleAvoidRate < 0)
-        bu->battleAvoidRate = 0;
+	if (bu->battleAvoidRate < 0)
+		bu->battleAvoidRate = 0;
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitCritRate);
@@ -665,7 +665,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_BattleVeteran) && (COMMON_SKILL_VALID(SID_BattleVeteran)))
 		case SID_BattleVeteran:
-			tmp = simple_div(attacker->levelPrevious + GetUnitHiddenLevel(&attacker->unit), 10);
+			tmp = k_udiv(attacker->levelPrevious + GetUnitHiddenLevel(&attacker->unit), 10);
 			attacker->battleHitRate += SKILL_EFF0(SID_RuinedBlade) * tmp;
 			attacker->battleAttack  += SKILL_EFF1(SID_RuinedBlade) * tmp;
 			break;
@@ -849,7 +849,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_SilentPride) && (COMMON_SKILL_VALID(SID_SilentPride)))
 		case SID_SilentPride:
-			tmp = simple_div(attacker->unit.maxHP * 4, attacker->hpInitial);
+			tmp = k_udiv(attacker->unit.maxHP * 4, attacker->hpInitial);
 			attacker->battleAttack  += SKILL_EFF0(SID_SilentPride) * tmp;
 			attacker->battleDefense += SKILL_EFF1(SID_SilentPride) * tmp;
 			break;

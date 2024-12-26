@@ -1,0 +1,6 @@
+#include "Source/LynJump.event"
+#include "Source/PopupR.lyn.event"
+#include "Source/PopRConfig.lyn.event"
+
+#include "Source/BmPopup.lyn.event"
+#include "Source/EfxPopup.lyn.event"

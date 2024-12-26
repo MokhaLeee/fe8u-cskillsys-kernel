@@ -3,6 +3,7 @@
 // include "data.event"
 
 PUSH
-    ORG 0x59A2C4
-    POIN ProcScr_PrePhaseHook
+    ORG 0x59A2C0
+    PROC_CALL_ROUTINE_2(PrePhaseHook)
+    PROTECT 0x0059A1F0 0x0059A438 // gProc_BMapMain
 POP

@@ -132,7 +132,7 @@ update_combat_art:
 
 	BmMapFill(gBmMapMovement, -1);
 	BmMapFill(gBmMapRange, 0);
-	GenerateUnitStandingReachRange(unit, GetUnitWeaponReachBits(unit, 0));
+	GenerateUnitStandingReachRange(unit, GetUnitWeaponReachBits(unit, gActionData.itemSlotIndex));
 	DisplayMoveRangeGraphics(MOVLIMITV_RMAP_RED);
 
 	uid_pre = proc->currentTarget->uid;

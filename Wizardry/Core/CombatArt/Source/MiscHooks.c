@@ -1,7 +1,9 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "skill-system.h"
 #include "kernel-tutorial.h"
 #include "constants/gfx.h"
+#include "constants/skills.h"
 #include "constants/combat-arts.h"
 
 bool CanUnitPlayCombatArt(struct Unit *unit, u16 item)
@@ -84,6 +86,7 @@ int WeaponRangeGetterCombatArt(int range, struct Unit *unit, u16 item)
 /* Pre-battle calc */
 void PreBattleCalcCombatArt(struct BattleUnit *bu, struct BattleUnit *defender)
 {
+	FORCE_DECLARE int tmp1, tmp2;
 	u8 cid = GetCombatArtInForce(&bu->unit);
 	const struct CombatArtInfo *info;
 	struct Unit *unit;
@@ -135,6 +138,47 @@ void PreBattleCalcCombatArt(struct BattleUnit *bu, struct BattleUnit *defender)
 		if (!(GetItemAttributes(bu->weapon) & IA_UNBREAKABLE))
 			bu->battleAttack += ITEM_USES(bu->weapon);
 
+		break;
+
+	case CID_BloodTribute:
+#if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
+		tmp1 = perc_of(bu->hpInitial, SKILL_EFF0(SID_COMBAT_BloodTribute));
+		tmp2 = perc_of(tmp1, SKILL_EFF1(SID_COMBAT_BloodTribute));
+
+		/**
+		 * This is just for UI display.
+		 * In real battle, the hp-cost should bind to current hp in each round,
+		 * thus at which time we need to calculated the damage bonus at battle-hit.
+		 */
+		if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+			bu->battleAttack += tmp2;
+#endif
+		break;
+
+	case CID_CrimsonStrike:
+#if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
+		tmp1 = perc_of(bu->hpInitial, SKILL_EFF0(SID_COMBAT_CrimsonStrike));
+		tmp2 = perc_of(tmp1, SKILL_EFF1(SID_COMBAT_CrimsonStrike));
+
+		/**
+		 * Same as BloodTribute
+		 */
+		if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+			bu->battleAttack += tmp2;
+#endif
+		break;
+
+	case CID_VitalReckoning:
+#if (defined(SID_COMBAT_VitalReckoning) && (COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning)))
+		tmp1 = perc_of(bu->hpInitial, SKILL_EFF0(SID_COMBAT_VitalReckoning));
+		tmp2 = perc_of(tmp1, SKILL_EFF1(SID_COMBAT_VitalReckoning));
+
+		/**
+		 * Same as BloodTribute
+		 */
+		if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+			bu->battleAttack += tmp2;
+#endif
 		break;
 	};
 }

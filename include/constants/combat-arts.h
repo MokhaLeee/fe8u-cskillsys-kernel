@@ -68,6 +68,9 @@ enum CombatArtIndex {
 	CID_Galeforce,
 	CID_Gamble,
 	CID_Detonate,
+	CID_BloodTribute,
+	CID_CrimsonStrike,
+	CID_VitalReckoning,
 };
 
 #endif /* CONFIG_COMBAT_ARTS_INSTALLED */

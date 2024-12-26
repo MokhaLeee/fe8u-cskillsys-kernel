@@ -31,6 +31,13 @@ STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon *proc)
 STATIC_DECLAR void PrePhaseBoon_ExecAnim(struct ProcPrePhaseBoon *proc)
 {
 	EndAllMus();
+
+	/**
+	 * Try skip anim
+	 */
+	if (CheckKernelHookSkippingFlag())
+		return;
+
 	StartStatusHealEffect(GetUnit(proc->uid), proc);
 }
 

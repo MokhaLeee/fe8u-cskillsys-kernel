@@ -6874,7 +6874,7 @@ Renais as a troop leader. His strength,[.][LF]
 valor, and experience inspired many.[X]
 
 ## MSG_07E9
-Innes, King and Strategician[X]
+Innes, King[X]
 
 ## MSG_07EA
 As time went on, he succeeded his father,[.][LF]

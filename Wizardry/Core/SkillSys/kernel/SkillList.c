@@ -209,6 +209,47 @@ bool _BattleFastSkillTester(struct BattleUnit *bu, const u16 sid)
 }
 #endif
 
+void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill)
+{
+	u32 i;
+	struct SkillList *list;
+	u32 *fast_list;
+
+	list = GetUnitSkillList(&bu->unit);
+
+	/**
+	 * Full filled
+	 */
+	if (list->amt >= ARRAY_COUNT(list->sid))
+		return;
+
+	/**
+	 * Already in force
+	 */
+	for (i = 0; i < list->amt; i++) {
+		if (skill == list->sid[i])
+			return;
+	}
+
+	/**
+	 * Add to list
+	 */
+	list->sid[list->amt++] = skill;
+
+
+	if (bu == &gBattleActor)
+		fast_list = SkillFastListActor;
+	else if (bu == &gBattleTarget)
+		fast_list = SkillFastListTarget;
+	else
+		return;
+
+	/**
+	 * Add to fast-list
+	 */
+	_BIT_SET(fast_list, skill);
+}
+
 void UnitToBattle_SetupSkillList(struct Unit *unit, struct BattleUnit *bu)
 {
 	FORCE_DECLARE bool nihil_on_actor, nihil_on_target;

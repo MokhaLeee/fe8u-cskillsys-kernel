@@ -62,6 +62,11 @@ bool PostAction_Clearance(ProcPtr parent)
 		return false;
 
 	if (gActionData.unitActionType == UNIT_ACTION_COMBAT && UnitHasNegativeStatus(gActiveUnit)) {
+		if (CheckKernelHookSkippingFlag()) {
+			RemoveUnitNegativeStatus(gActiveUnit);
+			return false;
+		}
+
 		Proc_Start(ProcScr_PostActionClearance, PROC_TREE_3);
 		return true;
 	}

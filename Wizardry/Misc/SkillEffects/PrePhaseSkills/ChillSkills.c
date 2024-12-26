@@ -239,6 +239,12 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 
 void PrePhaseChill_ExecAnim(struct ProcPrePhaseChill *proc)
 {
+	/**
+	 * Try skip anim
+	 */
+	if (CheckKernelHookSkippingFlag())
+		return;
+
 	if (proc->actor_uids[proc->cur] != 0 && proc->target_uids_anim[proc->cur] != 0) {
 		LTRACEF("[%d] Exec anim: actor=%x, target=%x",
 					proc->cur,

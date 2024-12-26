@@ -239,7 +239,7 @@ struct StatDebuffMsgBuf {
 	s16 pow, mag, skl, spd, def, res, lck, mov;
 };
 extern struct StatDebuffMsgBuf sStatDebuffMsgBuf[STAT_DEBUFF_MSG_BUF_AMT];
-extern int sStatDebuffMsgBufNext;
+extern u8 sStatDebuffMsgBufNext;
 
 enum STAT_BUFF_MSG_BUF_SPECIAL_MASK {
 	SP_STAT_CANNOT_MOVE = (1 << 0x00),

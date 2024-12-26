@@ -35,6 +35,19 @@ STATIC_DECLAR void PostActionReturnToOrigin(void)
 	gActiveUnit->yPos = gActiveUnitMoveOrigin.y;
 }
 
+static void check_skipping(void)
+{
+	int ret = CheckKernelHookSkippingFlag();
+
+	gEventSlots[EVT_SLOT_C] = ret;
+
+	/**
+	 * Try skip anim
+	 */
+	if (ret)
+		PostActionReturnToOrigin();
+}
+
 STATIC_DECLAR const EventScr EventScr_PostActionPositionReturn[] = {
 	EVBIT_MODIFY(0x4)
 	// ASMC(MapAnim_CommonInit)
@@ -48,6 +61,9 @@ STATIC_DECLAR const EventScr EventScr_PostActionPositionReturn[] = {
 	REMA
 	SVAL(EVT_SLOT_7, 0x1)
 	BNE(99, EVT_SLOT_C, EVT_SLOT_7)
+
+	ASMC(check_skipping)
+	BNE(99, EVT_SLOT_C, EVT_SLOT_0)
 
 LABEL(0)
 #if defined(SID_PosReturn) && (COMMON_SKILL_VALID(SID_PosReturn))

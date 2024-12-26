@@ -220,7 +220,6 @@ bool AddBattleHpCost(struct BattleUnit *bu, int round, int cost);
 
 void BattleGenerateHitHpCost(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool MapAnimRoundAnim_DisplayHpCost(ProcPtr parent);
-void BanimC07_UpdateHpCost(struct Anim *anim);
 void NewEfxHpCost(struct Anim *anim);
 bool EfxHpCostExists(void);
 

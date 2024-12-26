@@ -5,6 +5,9 @@
 
 #define LOCAL_TRACE 0
 
+/**
+ * Slot ops
+ */
 static void SortRamSkillList(struct Unit *unit)
 {
 	int i, cnt = 0;
@@ -123,8 +126,8 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	if (!UNIT_IS_VALID(unit))
 		return;
 
-	level_p = simple_div(unit->level, 5) * 5;
-	level_j = simple_div(unit->level + GetUnitHiddenLevel(unit), 5) * 5;
+	level_p = k_udiv(unit->level, 5) * 5;
+	level_j = k_udiv(unit->level + GetUnitHiddenLevel(unit), 5) * 5;
 
 	LIMIT_AREA(level_p, 0, UNIT_LEVEL_MAX_RE);
 	LIMIT_AREA(level_j, 0, UNIT_RECORDED_LEVEL_MAX);
@@ -150,19 +153,24 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	}
 }
 
+/**
+ * Lvup
+ */
 STATIC_DECLAR void TryAddSkillLvupPConf(struct Unit *unit, int level)
 {
 	int i;
 	u16 sid;
 
 	const struct SkillPreloadPConf *pConf = &gpSkillPreloadPData[UNIT_CHAR_ID(unit)];
-	int _level = simple_div(level, 5) * 5;
+	int _level = k_udiv(level, 5) * 5;
 
 	for (i = 0; i < 5; i++) {
 		sid = pConf->skills[_level + i];
 
-		if (EQUIPE_SKILL_VALID(sid))
+		if (EQUIPE_SKILL_VALID(sid)) {
 			AddSkill(unit, sid);
+			PushSkillListStack(sid);
+		}
 	}
 }
 
@@ -172,13 +180,15 @@ STATIC_DECLAR void TryAddSkillLvupJConf(struct Unit *unit, int level)
 	u16 sid;
 
 	const struct SkillPreloadJConf *jConf = &gpSkillPreloadJData[UNIT_CLASS_ID(unit)];
-	int _level = simple_div(level, 5) * 5;
+	int _level = k_udiv(level, 5) * 5;
 
 	for (i = 0; i < 5; i++) {
 		sid = jConf->skills[_level + i];
 
-		if (EQUIPE_SKILL_VALID(sid))
+		if (EQUIPE_SKILL_VALID(sid)) {
 			AddSkill(unit, sid);
+			PushSkillListStack(sid);
+		}
 	}
 }
 
@@ -190,14 +200,17 @@ void TryAddSkillLvup(struct Unit *unit, int level)
 		return;
 
 	_level = level;
-	if (simple_mod(_level, 5))
+	if (k_umod(_level, 5) == 0)
 		TryAddSkillLvupJConf(unit, _level);
 
 	_level = level + GetUnitHiddenLevel(unit);
-	if (simple_mod(_level, 5))
+	if (k_umod(_level, 5) == 0)
 		TryAddSkillLvupPConf(unit, _level);
 }
 
+/**
+ * Promotion
+ */
 void TryAddSkillPromotion(struct Unit *unit, int jid)
 {
 	int i;
@@ -205,13 +218,28 @@ void TryAddSkillPromotion(struct Unit *unit, int jid)
 
 	const struct SkillPreloadJConf *jConf = &gpSkillPreloadJData[jid];
 
+	ResetPopupSkillStack();
+
 	if (!UNIT_IS_VALID(unit))
 		return;
 
 	for (i = 0; i < 5; i++) {
 		sid = jConf->skills[0 + i];
 
-		if (EQUIPE_SKILL_VALID(sid))
+		if (EQUIPE_SKILL_VALID(sid)) {
 			AddSkill(unit, sid);
+			PushSkillListStack(sid);
+		}
 	}
+
+	/**
+	 * Append const list
+	 */
+	sid = gpConstSkillTable_Job[jid * 2 + 0];
+	if (COMMON_SKILL_VALID(sid))
+		PushSkillListStack(sid);
+
+	sid = gpConstSkillTable_Job[jid * 2 + 1];
+	if (COMMON_SKILL_VALID(sid))
+		PushSkillListStack(sid);
 }

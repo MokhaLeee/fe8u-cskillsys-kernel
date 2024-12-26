@@ -26,6 +26,8 @@ sudo apt-get -y install binutils-arm-none-eabi ctags \
     python3-pip pkg-config libpng* bsdiff moreutils perl
 
 pip install pyelftools PyInstaller tmx six Pillow
+
+cabal update
 ```
 
 3. Install DevkitPRO

@@ -58,6 +58,14 @@ bool PostActionBattleActorHurt(ProcPtr parent)
 	if (damage >= GetUnitCurrentHp(unit))
 		damage = GetUnitCurrentHp(unit) - 1;
 
+	/**
+	 * Try skip anim
+	 */
+	if (CheckKernelHookSkippingFlag()) {
+		AddUnitHp(unit, -damage);
+		return false;
+	}
+
 	CallMapAnim_Hurt(parent, unit, damage);
 	return true;
 }
@@ -124,6 +132,14 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 
 	if (damage >= GetUnitCurrentHp(unit))
 		damage = GetUnitCurrentHp(unit) - 1;
+
+	/**
+	 * Try skip anim
+	 */
+	if (CheckKernelHookSkippingFlag()) {
+		AddUnitHp(unit, -damage);
+		return false;
+	}
 
 	CallMapAnim_Hurt(parent, unit, damage);
 	return true;

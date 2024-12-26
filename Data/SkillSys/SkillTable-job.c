@@ -3,6 +3,12 @@
 #include "constants/skills.h"
 
 const u16 gConstSkillTable_Job[0x100][2] = {
+	[CLASS_EPHRAIM_LORD] = {
+#if (defined(SID_COMBAT_VitalReckoning) && COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning))
+		SID_COMBAT_VitalReckoning,
+#endif
+	},
+
 	[CLASS_EIRIKA_LORD] = {
 #if (defined(SID_Pass) && COMMON_SKILL_VALID(SID_Pass))
 		SID_Pass,
@@ -10,6 +16,12 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 
 #if (defined(SID_COMBAT_Galeforce) && COMMON_SKILL_VALID(SID_COMBAT_Galeforce))
 		SID_COMBAT_Galeforce,
+#endif
+	},
+
+	[CLASS_EPHRAIM_MASTER_LORD] = {
+#if (defined(SID_SpectrumBoost) && COMMON_SKILL_VALID(SID_SpectrumBoost))
+		SID_SpectrumBoost,
 #endif
 	},
 

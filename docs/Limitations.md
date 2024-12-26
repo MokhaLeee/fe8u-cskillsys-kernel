@@ -77,6 +77,8 @@
     - Skill Pick
     - Skill Pierce from this class
     - Skill Pierce to this class
+    - Turnwheel
+    - ExModularSave
 
     **Please note that this does not mean that other patches are safe**. All patches related as below are dangerous, You need to carefully consider the risks on each patches.
 
@@ -86,3 +88,15 @@
     - staff
     - ring
     - skills
+    - save data
+
+5. Do **NOT** directly change the unit level in ASM.
+
+    As unit lvup history is stored in BWL table, and directly change the unit level may not affect the unit recorded level, thus the lvup skill-learning process may not act in exception. For more info, see section: **Learn skills** in [SkillSys](./SkillSys.md).
+
+    As an alternative, kernel offered an API if you want to change unit level in ASM:
+
+    ```c
+    // bwl.h
+    void WriteUnitLevelSafe(struct Unit *unit, int new_level);
+    ```

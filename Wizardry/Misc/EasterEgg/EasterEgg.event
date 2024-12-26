@@ -1,0 +1,18 @@
+#ifdef CONFIG_USE_KONAMI_CODE_BONUS
+
+#include "Source/LynJump.event"
+#include "Source/KonamiCode.lyn.event"
+#include "Source/GiveBonus.lyn.event"
+#include "Source/BonusScreen.lyn.event"
+
+PUSH
+    ORG 0xAA6B64
+    POIN KernelTitle_IDLE
+    // PROTECT 0x00AA6A50 0x00AA6BB8 // gProcScr_TitleScreen
+    // to protect gProcScr_TitleScreen
+    // PROTECT 0x000C6424 0x000C6444 // StartTitleScreen_WithMusic
+    // PROTECT 0x000C6444 0x000C645C // StartTitleScreen_FlagFalse
+    // PROTECT 0x000C645C 0x000C6474 // StartTitleScreen_FlagTrue
+POP
+
+#endif // USE_KONAMI_CODE_BONUS

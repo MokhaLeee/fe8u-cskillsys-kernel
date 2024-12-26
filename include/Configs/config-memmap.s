@@ -68,15 +68,21 @@ _kernel_malloc sStatDebuffStatusEnemy, 50 * 16
 _kernel_malloc sStatDebuffStatusNpc, 8 * 16
 _kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
 _kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
-_kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sExpaConvoyItemCount, 4
 _kernel_malloc sExpaConvoyItemArray, 2 * 300
 _kernel_malloc sGaidenMagicListObj, 0x24
 _kernel_malloc gExtBattleHitArray, 4 * 0x21
-_kernel_malloc sAnimNumberSlot, 4
 _kernel_malloc gpActorShileInfo, 4
 _kernel_malloc gpTargetShileInfo, 4
 _kernel_malloc sShileldInfoCache, 0x14
+_kernel_malloc sPopupSkillStack, 0x10
+
+/* u8 x4 to share one u32 */
+_kernel_malloc sKernelHookSkippingFlag, 1
+_kernel_malloc sAnimNumberSlot, 1
+_kernel_malloc sStatDebuffMsgBufNext, 1
+_kernel_malloc gKonamiComboStep, 1
+
 _kernel_malloc DemoUnitSpriteSlots, 0x100 @ better to put to: _kernel_malloc_demo
 
 /**

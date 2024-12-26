@@ -182,6 +182,11 @@
 #define CONFIG_NO_SUS_IN_AI_PHASE
 
 /**
+ * If you press ↑↑↓↓←→←→BA at titlescreen, then...
+ */
+#define CONFIG_USE_KONAMI_CODE_BONUS
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

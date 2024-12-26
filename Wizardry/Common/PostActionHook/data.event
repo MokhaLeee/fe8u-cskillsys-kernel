@@ -15,5 +15,7 @@ gPostActionFuncs:
     POIN PostActionRemoveChillDebuff
     POIN PostAction_Glorifier
 
+    //End
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
+    POIN PostActionEnd
     WORD 0

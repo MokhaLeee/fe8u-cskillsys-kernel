@@ -23,7 +23,7 @@ STATIC_DECLAR int GetStatIncreaseRandC(int growth)
 
 static int GetStatIncreaseFixed(int growth, int ref)
 {
-	return simple_div(growth + simple_mod(growth * ref, 100), 100);
+	return k_udiv(growth + k_umod(growth * ref, 100), 100);
 }
 
 static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
@@ -120,13 +120,13 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 	retry = gpKernelDesigerConfig->guaranteed_lvup ? 10 : 0;
 
 	for (i = 0; i < retry; i++) {
-		funcs[mode](bu, bonus + 10);
-
 		total_lvup = bu->changeHP + bu->changePow + bu->changeSkl + bu->changeSpd +
 						bu->changeLck + bu->changeDef + bu->changeRes + BU_CHG_MAG(bu);
 
 		if (total_lvup != 0)
 			break;
+
+		funcs[mode](bu, bonus + 10);
 	}
 }
 
@@ -159,5 +159,26 @@ void CheckBattleUnitLevelUp(struct BattleUnit *bu)
 		UnitLvupCore(bu, bonus);
 
 		CheckBattleUnitStatCaps(GetUnit(bu->unit.index), bu);
+	}
+}
+
+LYN_REPLACE_CHECK(BattleApplyExpGains);
+void BattleApplyExpGains(void)
+{
+	if ((UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE) || (UNIT_FACTION(&gBattleTarget.unit) != FACTION_BLUE)) {
+		if (!(gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)) {
+			gBattleActor.expGain  = GetBattleUnitExpGain(&gBattleActor, &gBattleTarget);
+			gBattleTarget.expGain = GetBattleUnitExpGain(&gBattleTarget, &gBattleActor);
+
+			gBattleActor.unit.exp  += gBattleActor.expGain;
+			gBattleTarget.unit.exp += gBattleTarget.expGain;
+
+#if CHAX
+			ResetPopupSkillStack();
+#endif
+
+			CheckBattleUnitLevelUp(&gBattleActor);
+			CheckBattleUnitLevelUp(&gBattleTarget);
+		}
 	}
 }

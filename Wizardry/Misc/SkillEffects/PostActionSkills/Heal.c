@@ -31,6 +31,14 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
 	if ((heal >= (hp_max - hp_cur)))
 		heal = hp_max - hp_cur;
 
+	/**
+	 * Try skip anim
+	 */
+	if (CheckKernelHookSkippingFlag()) {
+		AddUnitHp(gActiveUnit, heal);
+		return false;
+	}
+
 	CallMapAnim_Heal(parent, gActiveUnit, heal);
 	return true;
 }

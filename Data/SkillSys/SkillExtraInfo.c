@@ -1122,4 +1122,16 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Witch) && COMMON_SKILL_VALID(SID_Witch))
 	[SID_Witch] = {{ 5 }},
 #endif
+
+#if (defined(SID_COMBAT_BloodTribute) && COMMON_SKILL_VALID(SID_COMBAT_BloodTribute))
+	[SID_COMBAT_BloodTribute] = {{ 30, 100 }},
+#endif
+
+#if (defined(SID_COMBAT_CrimsonStrike) && COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike))
+	[SID_COMBAT_CrimsonStrike] = {{ 50, 100 }},
+#endif
+
+#if (defined(SID_COMBAT_VitalReckoning) && COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning))
+	[SID_COMBAT_VitalReckoning] = {{ 80, 100 }},
+#endif
 };

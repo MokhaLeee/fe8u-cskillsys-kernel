@@ -50,3 +50,5 @@ RELEASE_EADIR=$RELEASE_DIR/buildfile
 
 install -d $RELEASE_EADIR
 cp -r Preload Wizardry Data Contents include main.event Debug Fonts $RELEASE_EADIR
+
+zip -r $RELEASE_DIR/buildfile.zip $RELEASE_DIR/buildfile/

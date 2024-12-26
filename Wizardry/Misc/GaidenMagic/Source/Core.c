@@ -252,9 +252,9 @@ void PutGaidenMagicCostNumber(u16 *tm, int color, int number)
 		return;
 
 	while (number != 0) {
-		PutSpecialChar(tm, color, simple_mod(number, 10) + TEXT_SPECIAL_BIGNUM_0);
+		PutSpecialChar(tm, color, k_umod(number, 10) + TEXT_SPECIAL_BIGNUM_0);
 
-		number = simple_div(number, 10);
+		number = k_udiv(number, 10);
 		tm--;
 	}
 

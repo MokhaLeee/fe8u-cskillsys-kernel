@@ -12,9 +12,11 @@ ALIGN 4
 #include "Essentials/UnitLimitation/UnitLimitation.event"
 #include "Essentials/BanimHpDrainFix/BanimHpDrainFix.event"
 #include "Essentials/BattleForcastFix/BattleForcastFix.event"
+#include "Essentials/FakePatches/FakePatches.event"
 
 #include "Common/OverflowDetection/OverflowDetection.lyn.event"
 #include "Common/AntiHuffman/AntiHuffman.event"
+#include "Common/PopupRework/PopupRework.event"
 #include "Common/EventRework/EventRework.event"
 #include "Common/UnitAction/UnitAction.event"
 #include "Common/GameInitHook/GameInitHook.event"
@@ -61,6 +63,9 @@ ALIGN 4
 #include "Misc/GaidenMagic/GaidenMagic.event"
 #include "Misc/Reorganize/Reorganize.event"
 #include "Misc/Shield/Shield.event"
+#include "Misc/PortraitHeight/PortraitHeight.event"
+#include "Misc/EasterEgg/EasterEgg.event"
+#include "Misc/JobGrowth/JobGrowth.lyn.event"
 
 #ifdef CONFIG_INSTALL_CONVOYEXPA
     #include "Misc/ConvoyExpa/ConvoyExpa.event"
