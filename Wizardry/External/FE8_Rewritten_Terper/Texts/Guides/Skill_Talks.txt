@@ -1,0 +1,38 @@
+## Guide_Category_Skill_Talks
+Skill Talks[X]
+
+## Guide_Title_Skill_Talk_1
+Skill menu[X]
+## Guide_Description_Skill_Talk_1
+Skills in this game sit in[N]
+a unit's struct. This allows[N]
+them to be freely swapped in a[N]
+chapter's preparation menu.[N]
+You can even decide to remove[N]
+all of a unit's skills.[X]
+
+## Guide_Title_Skill_Talk_2
+Skill Scrolls[X]
+## Guide_Description_Skill_Talk_2
+Skills in this game are learned[N]
+primarily through skill scrolls.[N]
+Scrolls are single use items[N]
+that teach the unit the skill[N]
+inscribed within.[X]
+
+## Guide_Title_Skill_Talk_3
+Where to find scrolls[X]
+## Guide_Description_Skill_Talk_3
+Scrolls can be obtained through[N]
+special events or as droppable[N]
+items. Some can even be bought[N]
+in special shops.[X]
+
+## Guide_Title_Skill_Talk_4
+Capacity System[X]
+## Guide_Description_Skill_Talk_4
+This game uses a Tellius inspired[N]
+capacity system for its skills.[N]
+You can only equip or learn skills[N]
+that fall within the limits of[N]
+your capacity.[X]

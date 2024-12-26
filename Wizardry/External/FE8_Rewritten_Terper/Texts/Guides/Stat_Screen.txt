@@ -1,0 +1,49 @@
+## Guide_Category_Stat_Screen
+Stat Screen[X]
+
+## Guide_Title_Skill_Stat_Screen_1
+Page 1[X]
+## Guide_Description_Skill_Stat_Screen_1
+A 'Load' meter has been[N]
+added to keep track of the[N]
+total capacity used by the[N]
+unit's skills.[N][N]
+
+BWL data is enabled by[N]
+default.[N][N]
+
+A seperation between[N]
+physical and magical[N]
+offensive stats is present.[N][N]
+
+A multi-color growths[N]
+display is now present.[N]
+Access this by pressing[N]
+'Select'.[X]
+
+## Guide_Title_Skill_Stat_Screen_2
+Page 2[X]
+## Guide_Description_Skill_Stat_Screen_2
+Weapon character length[N]
+display has been adjusted[N]
+so skill names on scrolls[N]
+fit.[X] 
+
+## Guide_Title_Skill_Stat_Screen_3
+Page 3[X]
+## Guide_Description_Skill_Stat_Screen_3
+All 8 weapon types are now[N]
+present on the screen.[N][N]
+
+The unit's equipped skills[N]
+are also displayed.[N][N]
+
+Any applicable combat arts[N]
+are also shown.[X]
+
+## Guide_Title_Skill_Stat_Screen_4
+Page 4[X]
+## Guide_Description_Skill_Stat_Screen_4
+Combat bonuses gained from[N]
+the unit's support convos[N]
+are viewable here.[X]

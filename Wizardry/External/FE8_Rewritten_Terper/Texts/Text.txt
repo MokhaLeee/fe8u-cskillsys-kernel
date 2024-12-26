@@ -33,5 +33,7 @@
 #include Miscellaneous/Objectives.txt
 #include Miscellaneous/Misc.txt
 
+#include Guides/Skill_Talks.txt
 #include Guides/Skill_Combos.txt
 #include Guides/Mechanics.txt
+#include Guides/Stat_Screen.txt
