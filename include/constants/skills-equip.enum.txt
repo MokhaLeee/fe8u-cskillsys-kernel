@@ -1,5 +1,5 @@
 ////////MENU SKILLS
-SID_MercyPlus
+SID_Paragon
 SID_Dismount
 SID_ReciprocalAid
 SID_Sacrifice
@@ -552,7 +552,7 @@ SID_Rampage
 
 ////////LEVEL UP SKILLS
 SID_Blossom
-SID_Paragon
+// SID_Paragon
 SID_VoidCurse
 SID_Aptitude
 SID_DoubleUp
@@ -564,6 +564,7 @@ SID_Mercurious
 SID_Velocity
 SID_StaffParagon
 SID_OgreBody
+// SID_Prodigy
 
 ////////LEGENDARY SKILLS
 SID_LEGEND_InoriAtk

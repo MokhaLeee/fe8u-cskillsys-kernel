@@ -563,6 +563,7 @@
 // SID_Velocity
 // SID_StaffParagon
 // SID_OgreBody
+// SID_Prodigy
 
 ////////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk

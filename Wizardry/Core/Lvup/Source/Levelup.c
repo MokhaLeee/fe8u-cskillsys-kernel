@@ -6,6 +6,7 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "mapanim.h"
 
 STATIC_DECLAR int GetStatIncreaseRandC(int growth)
 {
@@ -296,5 +297,27 @@ void CheckBattleUnitLevelUp(struct BattleUnit * bu)
 
         TryAddSkillLvup(GetUnitFromCharIdAndFaction(UNIT_CHAR_ID(&bu->unit), FACTION_BLUE), bu->unit.level);
         UnitLvupCore(bu, bonus);
+    }
+}
+
+LYN_REPLACE_CHECK(ProcMAExpBar_LevelUpIfPossible);
+void ProcMAExpBar_LevelUpIfPossible(struct MAExpBarProc* proc)
+{
+    if (proc->expTo >= 100)
+        StartManimLevelUp(proc->actorId, (struct Proc*) proc);
+}
+
+LYN_REPLACE_CHECK(ProcMAExpBar_OnIncrement);
+void ProcMAExpBar_OnIncrement(struct MAExpBarProc* proc)
+{
+    proc->expFrom++;
+
+    if (proc->expFrom >= 100)
+        proc->expFrom = 0;
+
+    DrawMAExpBar(6, 8, proc->expFrom);
+    if (proc->expFrom == proc->expTo % 100) {
+        Proc_Break(proc);
+        m4aSongNumStop(0x74); // TODO: song ids
     }
 }

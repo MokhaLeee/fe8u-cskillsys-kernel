@@ -27,3 +27,8 @@ allies within 2 tiles by 1.2x.[X]
 Dark Horse:[NL]
 Increase unit's growths[NL]
 by their base stats.[X]
+
+## MSG_SKILL_Prodigy
+Prodigy:[N]
+Unit can gain over[N]
+100 EXP in a round.[X]

@@ -88,7 +88,18 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
         status = 0;
 #endif
 
+/* NOT WORKING */
+// #if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
+//     if (BattleSkillTester(actor, SID_Prodigy) == FALSE)
+//     {
+//         LIMIT_AREA(status, 1, 100);
+//     }
+// #else
+//         LIMIT_AREA(status, 1, 100);
+// #endif
+
     LIMIT_AREA(status, 1, 100);
+
     return status;
 }
 
@@ -161,8 +172,36 @@ int GetBattleUnitStaffExp(struct BattleUnit *bu)
             ? &gBattleTarget
             : &gBattleActor);
 
+/* NOT WORKING */
+// #if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
+//     if (!BattleSkillTester(bu, SID_Prodigy))
+//     {
+//         if (result > 100)
+//             result = 100;
+//     }
+// #else
+//     if (result > 100)
+//         result = 100;
+// #endif
+
     if (result > 100)
         result = 100;
 
     return result;
+}
+
+LYN_REPLACE_CHECK(BattleApplyExpGains);
+void BattleApplyExpGains(void) {
+    if ((UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE) || (UNIT_FACTION(&gBattleTarget.unit) != FACTION_BLUE)) {
+        if (!(gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)) {
+            gBattleActor.expGain  = GetBattleUnitExpGain(&gBattleActor, &gBattleTarget);
+            gBattleTarget.expGain = GetBattleUnitExpGain(&gBattleTarget, &gBattleActor);
+
+            gBattleActor.unit.exp  += gBattleActor.expGain;
+            gBattleTarget.unit.exp += gBattleTarget.expGain;
+
+            CheckBattleUnitLevelUp(&gBattleActor);
+            CheckBattleUnitLevelUp(&gBattleTarget);
+        }
+    }
 }
