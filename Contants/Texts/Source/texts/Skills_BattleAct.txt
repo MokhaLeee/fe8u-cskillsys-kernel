@@ -13,6 +13,11 @@ Mercy: Leave the opponent at[NL]
 1 HP if the attack would kill.[NL]
 (Skill % activation).[X]
 
+## MSG_SKILL_MercyPlus
+Mercy+:[N]
+This unit cannot kill enemy[N]
+units under any circumstances.[X]
+
 ## MSG_SKILL_Bane
 Bane:[NL]
 Leave the opponent at 1 HP[NL]

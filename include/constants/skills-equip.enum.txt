@@ -1,4 +1,5 @@
 ////////MENU SKILLS
+SID_MercyPlus
 SID_Dismount
 SID_ReciprocalAid
 SID_Sacrifice
@@ -399,6 +400,7 @@ SID_Aegis
 SID_Pavise
 SID_Bane
 SID_Mercy
+//SID_MercyPlus
 SID_Aether
 SID_Corona
 SID_Luna

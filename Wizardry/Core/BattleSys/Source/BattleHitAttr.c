@@ -115,6 +115,14 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
     }
 #endif
 
+#if (defined(SID_MercyPlus) && (COMMON_SKILL_VALID(SID_MercyPlus)))
+    if (BattleSkillTester(attacker, SID_MercyPlus))
+    {
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_MercyPlus);
+        return true;
+    }
+#endif
+
 #if (defined(SID_Inori) && (COMMON_SKILL_VALID(SID_Inori)))
     if (CheckBattleSkillActivate(defender, attacker, SID_Inori, defender->unit.lck))
     {

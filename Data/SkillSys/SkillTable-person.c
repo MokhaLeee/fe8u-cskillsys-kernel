@@ -5,7 +5,7 @@
 const u16 gConstSkillTable_Person[0x100][2] = {
     [CHARACTER_EIRIKA] = {
         // [0] = SID_GoddessDance,
-        [1] = SID_StealPlus,
+        // [1] = SID_StealPlus,
     },
 
     [CHARACTER_EPHRAIM] = {
