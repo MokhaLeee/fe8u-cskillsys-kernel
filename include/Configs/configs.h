@@ -15,7 +15,7 @@
  * If you're planning to develop a new game instead of making minor
  * changes on vanilla, it is recommanded to uncomment this config to save space.
  */
-#define CONFIG_CROP_VANILLA_MSG
+// #define CONFIG_CROP_VANILLA_MSG
 
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
