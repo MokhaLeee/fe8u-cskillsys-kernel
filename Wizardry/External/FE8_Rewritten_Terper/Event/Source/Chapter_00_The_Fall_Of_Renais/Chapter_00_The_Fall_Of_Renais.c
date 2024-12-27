@@ -269,7 +269,7 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT(Grado_Reinforcements_Enemy)
     HIGHLIGHT_CHARACTER(CHARACTER_ONEILL, 60)
     Text(Chapter_00_Scene_03_Convo_04)
-    GIVE_SKILL_SCROLL_TO(SID_GoddessDance, CHARACTER_EIRIKA)
+    // GIVE_SKILL_SCROLL_TO(SID_GoddessDance, CHARACTER_EIRIKA)
     // UseArrowTrap(0, 1, 2)
     ENDA
 };

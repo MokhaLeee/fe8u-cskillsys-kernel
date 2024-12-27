@@ -287,7 +287,7 @@ efx: $(EFX_TARGET)
 PRE_BUILD += efx
 
 CLEAN_BUILD += $(EFX_ANIM_DIR)
-# CLEAN_FILES += $(EFX_SCR_DEPS) $(EFX_TARGET)
+CLEAN_FILES += $(EFX_SCR_DEPS) $(EFX_TARGET)
 
 # =======
 # = GFX =
@@ -306,6 +306,26 @@ $(GFX_HEADER): $(GFX_SOURCES)
 
 CLEAN_BUILD += $(GFX_DIR)
 CLEAN_FILES += $(GFX_HEADER)
+
+# =========
+# = Glyph =
+# =========
+FONT_DIR := Fonts
+
+GLYPH_INSTALLER := $(FONT_DIR)/GlyphInstaller.event
+GLYPH_DEPS := $(FONT_DIR)/FontList.txt
+
+font: $(GLYPH_INSTALLER)
+
+$(GLYPH_INSTALLER): $(GLYPH_DEPS)
+	@$(MAKE) -C $(FONT_DIR)
+
+%_font.img.bin: %_font.png
+	@echo "[GEN]	$@"
+	@$(GRIT) $< -gB2 -p! -tw16 -th16 -ftb -fh! -o $@
+
+PRE_BUILD   += font
+CLEAN_BUILD += $(FONT_DIR)
 
 # ========
 # = ENUM =
