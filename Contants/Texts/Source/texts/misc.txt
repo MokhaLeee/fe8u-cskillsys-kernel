@@ -11,3 +11,25 @@ Copy enemy?        [NL][Yes][X]
 The unit doesn't have enough[NL]
 remaining capacity to[NL]
 learn this skill.[A][X]
+
+## MSG_GaidenBMagic_UM_NAME
+ B.Mag[X]
+
+## MSG_GaidenBMagic_UM_DESC
+ Gaiden style black magic.[.][X]
+
+## MSG_GaidenWMagic_UM_NAME
+ W.Mag[X]
+
+## MSG_GaidenWMagic_UM_DESC
+ Gaiden style white magic.[.][X]
+
+## MSG_GaidenMagic_ItemMenuDisabled
+Can not use now![NL][X]
+
+## MSG_ItemSubOption_Reorganize_NAME
+Reorg[.][X]
+
+## MSG_ItemSubOption_Reorganize_DESC
+Reorganize this item to[.][LF]
+the top of inventory.[.][X]

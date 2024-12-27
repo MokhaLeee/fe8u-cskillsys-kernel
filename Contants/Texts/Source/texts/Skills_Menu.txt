@@ -171,10 +171,10 @@ Art: Refresh all adjacent[NL]
 allies to the user.[X]
 
 ## MSG_SKILL_GoddessDance_NAME
-Goddess Dance[X]
+Gᵒᵈᵈᵉˢˢ Dᵃⁿᶜᵉ[X]
 
 ## MSG_MenuSkill_GoddessDanceName
- G-Dance[X]
+ Gᵒᵈ Dᵃⁿᶜᵉ[X]
 
 ## MSG_MenuSkill_GoddessDance_FRtext
 No allies are in range![X]

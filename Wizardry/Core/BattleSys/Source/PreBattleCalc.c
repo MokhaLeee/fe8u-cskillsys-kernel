@@ -25,12 +25,12 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
         status = status * 2;
 
 #if (defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful)))
-        if (BattleSkillTester(attacker, SID_Resourceful))
+        if (BattleFastSkillTester(attacker, SID_Resourceful))
             status = status * 2;
 #endif
 
 #if (defined(SID_SolidRock) && (COMMON_SKILL_VALID(SID_SolidRock)))
-        if (BattleSkillTester(defender, SID_SolidRock))
+        if (BattleFastSkillTester(defender, SID_SolidRock))
             status = status / 2;
 #endif
     }
@@ -54,7 +54,7 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
     int terrainResistance = attacker->terrainResistance;
 
 #if defined(SID_TripUp) && (COMMON_SKILL_VALID(SID_TripUp))
-    if (BattleSkillTester(defender, SID_TripUp))
+    if (BattleFastSkillTester(defender, SID_TripUp))
     {
         terrainDefense = 0;
         terrainResistance = 0;
@@ -62,7 +62,7 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
 #endif
 
 #if defined(SID_AdaptiveLunge) && (COMMON_SKILL_VALID(SID_AdaptiveLunge))
-    if (BattleSkillTester(defender, SID_AdaptiveLunge) && (gPlaySt.chapterTurnNumber % 2 == 0))
+    if (BattleFastSkillTester(defender, SID_AdaptiveLunge) && (gPlaySt.chapterTurnNumber % 2 == 0))
     {
         def = attacker->unit.res;
         res = attacker->unit.def;
@@ -79,13 +79,13 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
         status = def;
 
 #if (defined(SID_MysticBoost) && COMMON_SKILL_VALID(SID_MysticBoost))
-    if (!BattleSkillTester(attacker, SID_MysticBoost))
+    if (!BattleFastSkillTester(attacker, SID_MysticBoost))
 #else
     if (1)
 #endif
     {
 #if (defined(SID_SorceryBlade) && (COMMON_SKILL_VALID(SID_SorceryBlade)))
-        if (BattleSkillTester(defender, SID_SorceryBlade))
+        if (BattleFastSkillTester(defender, SID_SorceryBlade))
             status = def < res ? def : res;
 #endif
     }
@@ -99,7 +99,7 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit *attacker, struct BattleUnit *
     int terrainAvoid = attacker->terrainAvoid;
 
 #if defined(SID_TripUp) && (COMMON_SKILL_VALID(SID_TripUp))
-    if (BattleSkillTester(defender, SID_TripUp))
+    if (BattleFastSkillTester(defender, SID_TripUp))
     {
         terrainAvoid = 0;
     }
@@ -221,7 +221,7 @@ void PreBattleCalcEnd(struct BattleUnit *attacker, struct BattleUnit *defender)
 
 #if (defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus)))
     /* RuinedBladePlus cannot crit attack */
-    if (BattleSkillTester(attacker, SID_RuinedBladePlus))
+    if (BattleFastSkillTester(attacker, SID_RuinedBladePlus))
     {
         attacker->battleCritRate = 0;
         attacker->battleSilencerRate = 0;
@@ -229,7 +229,7 @@ void PreBattleCalcEnd(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 #if (defined(SID_CriticalPierce) && (COMMON_SKILL_VALID(SID_CriticalPierce)))
-    if (BattleSkillTester(defender, SID_CriticalPierce))
+    if (BattleFastSkillTester(defender, SID_CriticalPierce))
         attacker->battleDodgeRate = 0;
 #endif
 
@@ -1391,7 +1391,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_Cultured) && (COMMON_SKILL_VALID(SID_Cultured)))
 #if (defined(SID_NiceThighs) && (COMMON_SKILL_VALID(SID_NiceThighs)))
         case SID_Cultured:
-            if (BattleSkillTester(defender, SID_NiceThighs))
+            if (BattleFastSkillTester(defender, SID_NiceThighs))
                 attacker->battleHitRate -= SKILL_EFF0(SID_Cultured);
             break;
 #endif
@@ -1435,7 +1435,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
          * I should be using CheckBitUES but it won't persist, so I check _3A directly
          */
         case SID_Capture:
-            if (BattleSkillTester(attacker, SID_Capture) && GetUnit(attacker->unit.index)->_u3A == 8)
+            if (BattleFastSkillTester(attacker, SID_Capture) && GetUnit(attacker->unit.index)->_u3A == 8)
             {
                 attacker->battleAttack -= Div(attacker->battleAttack * SKILL_EFF0(SID_Capture), 100);
                 attacker->battleHitRate -= Div(attacker->battleHitRate * SKILL_EFF0(SID_Capture), 100);
@@ -1743,12 +1743,12 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_StunningSmile) && (COMMON_SKILL_VALID(SID_StunningSmile)))
     /* This is judging on defender */
-    if (BattleSkillTester(defender, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
+    if (BattleFastSkillTester(defender, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
         attacker->battleAvoidRate -= 20;
 #endif
 
 #if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
-    if (BattleSkillTester(defender, SID_MeleeManiac && gBattleStats.range != 1))
+    if (BattleFastSkillTester(defender, SID_MeleeManiac && gBattleStats.range != 1))
     {
         int _dmg_tmp = BattleUnitOriginalStatus(attacker)->atk - BattleUnitOriginalStatus(defender)->def;
         if (_dmg_tmp > 0)
@@ -2093,7 +2093,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
     else
     {
 #if (defined(SID_Tantivy) && (COMMON_SKILL_VALID(SID_Tantivy)))
-        if (BattleSkillTester(attacker, SID_Tantivy))
+        if (BattleFastSkillTester(attacker, SID_Tantivy))
         {
             attacker->battleHitRate += SKILL_EFF0(SID_Tantivy);
             attacker->battleAvoidRate += SKILL_EFF1(SID_Tantivy);
@@ -2101,7 +2101,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
 #endif
 
 #if (defined(SID_Focus) && (COMMON_SKILL_VALID(SID_Focus)))
-        if (BattleSkillTester(attacker, SID_Focus))
+        if (BattleFastSkillTester(attacker, SID_Focus))
             attacker->battleCritRate += SKILL_EFF0(SID_Focus);
 #endif
     }
@@ -2118,7 +2118,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
     if (enmies_gRange2_In3x3 >= 2)
     {
 #if (defined(SID_Infiltrator) && (COMMON_SKILL_VALID(SID_Infiltrator)))
-        if (BattleSkillTester(attacker, SID_Infiltrator))
+        if (BattleFastSkillTester(attacker, SID_Infiltrator))
         {
             attacker->battleAttack += SKILL_EFF0(SID_Infiltrator);
             attacker->battleHitRate += SKILL_EFF1(SID_Infiltrator);
@@ -2129,7 +2129,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
     if (allies_gRange1_In3x3 > 0)
     {
 #if (defined(SID_BlueFlame) && (COMMON_SKILL_VALID(SID_BlueFlame)))
-        if (BattleSkillTester(attacker, SID_BlueFlame))
+        if (BattleFastSkillTester(attacker, SID_BlueFlame))
             attacker->battleAttack += SKILL_EFF1(SID_BlueFlame);
 #endif
     }
@@ -2138,21 +2138,21 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
     if (allies_gRange3_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo1) && (COMMON_SKILL_VALID(SID_BattleRange_Todo1)))
-        if (BattleSkillTester(attacker, SID_BattleRange_Todo1))
+        if (BattleFastSkillTester(attacker, SID_BattleRange_Todo1))
             attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo1);
 #endif
     }
     else if (allies_gRange2_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo2) && (COMMON_SKILL_VALID(SID_BattleRange_Todo2)))
-        if (BattleSkillTester(attacker, SID_BattleRange_Todo2))
+        if (BattleFastSkillTester(attacker, SID_BattleRange_Todo2))
             attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo2);
 #endif
     }
     else if (allies_gRange1_In3x3 == 0)
     {
 #if (defined(SID_BattleRange_Todo3) && (COMMON_SKILL_VALID(SID_BattleRange_Todo3)))
-        if (BattleSkillTester(attacker, SID_BattleRange_Todo3))
+        if (BattleFastSkillTester(attacker, SID_BattleRange_Todo3))
             attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo3);
 #endif
     }
@@ -2163,7 +2163,7 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
     if (lord_gRange2_In3x3)
     {
 #if (defined(SID_Loyalty) && (COMMON_SKILL_VALID(SID_Loyalty)))
-        if (BattleSkillTester(attacker, SID_Loyalty))
+        if (BattleFastSkillTester(attacker, SID_Loyalty))
         {
             attacker->battleHitRate += SKILL_EFF0(SID_Loyalty);
             attacker->battleDefense += SKILL_EFF1(SID_Loyalty);

@@ -1,0 +1,89 @@
+{
+    #include "Source/song19.lyn.event"
+
+    SongTable(SONG_Attack, song19, SG_BATTLE_MUSIC)
+
+    ALIGN 4
+    ThisInstrument:
+    BYTE 0x80 0 0 0; POIN ThisInstrument; BYTE 0 0 0 0
+    BYTE 8 0x3C 0 0x00; POIN ThisSound1; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0x00; POIN ThisSound2; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0x00; POIN ThisSound3; BYTE 0xFF 0x00 0xFF 0xA5
+    BYTE 8 0x3C 0 0x00; POIN ThisSound4; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0x00; POIN ThisSound5; BYTE 0xFF 0x00 0xFF 0xE2
+    BYTE 8 0x3C 0 0x00; POIN ThisSound6; BYTE 0xFF 0x95 0xA7 0xCC
+    BYTE 0 0x3C 0 0x00; POIN ThisSound7; BYTE 0xFF 0xFC 0x00 0xA5
+    BYTE 0 0x3C 0 0x00; POIN ThisSound8; BYTE 0xFF 0x00 0xFF 0x59
+    BYTE 0 0x3C 0 0x00; POIN ThisSound9; BYTE 0xFF 0x00 0xFF 0xA5
+    BYTE 0 0x3C 0 0x00; POIN ThisSoundA; BYTE 0xFF 0x00 0xFF 0x59
+    BYTE 0 0x3C 0 0x00; POIN ThisSoundB; BYTE 0xFF 0x00 0xFF 0xA5
+    BYTE 0 0x3C 0 0x00; POIN ThisSoundC; BYTE 0xFF 0x00 0xFF 0x59
+    BYTE 0 0x3C 0 0x00; POIN ThisSoundD; BYTE 0xFF 0x00 0xFF 0x59
+    BYTE 8 0x3C 0 0x00; POIN ThisSoundE; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0x00; POIN ThisSoundF; BYTE 0xFF 0x00 0xFF 0xCC
+    BYTE 8 0x3C 0 0x00; POIN ThisSound10; BYTE 0xFF 0x00 0xFF 0xCC
+
+    ALIGN 4
+    ThisSound1:
+        #incbin "Source/song190x01.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound2:
+        #incbin "Source/song190x02.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound3:
+        #incbin "Source/song190x03.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound4:
+        #incbin "Source/song190x04.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound5:
+        #incbin "Source/song190x05.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound6:
+        #incbin "Source/song190x06.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound7:
+        #incbin "Source/song190x07.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound8:
+        #incbin "Source/song190x08.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound9:
+        #incbin "Source/song190x09.DirectSound.bin"
+
+    ALIGN 4
+    ThisSoundA:
+        #incbin "Source/song190x0A.DirectSound.bin"
+
+    ALIGN 4
+    ThisSoundB:
+        #incbin "Source/song190x0B.DirectSound.bin"
+
+    ALIGN 4
+    ThisSoundC:
+        #incbin "Source/song190x0C.DirectSound.bin"
+
+    ALIGN 4
+    ThisSoundD:
+        #incbin "Source/song190x0D.DirectSound.bin"
+
+    ALIGN 4
+    ThisSoundE:
+        #incbin "Source/song190x0E.DirectSound.bin"
+
+    ALIGN 4
+    ThisSoundF:
+        #incbin "Source/song190x0F.DirectSound.bin"
+
+    ALIGN 4
+    ThisSound10:
+        #incbin "Source/song190x10.DirectSound.bin"
+}

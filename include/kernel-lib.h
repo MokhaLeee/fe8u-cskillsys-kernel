@@ -6,26 +6,49 @@
  * designer-config.c
  */
 struct KernelDesigerConfig {
-    u8 equip_skill_en;
-    u8 gen_new_scroll;
-    u8 max_equipable_skill;
-    u8 remove_move_path;
-    u8 use_chinese_character;
-    u8 kernel_tutorial_level;
-    u8 combo_attack_en;
-    u8 battle_surrend_en;
-    u8 hit_decrease_on_range;
-    u8 debug_autoload_skills;
+	u8 equip_skill_en;
+	u8 gen_new_scroll;
+	u8 max_equipable_skill;
+	u8 remove_move_path;
+	u8 use_chinese_character;
+	u8 kernel_tutorial_level;
+	u8 combo_attack_en;
+	u8 battle_surrend_en;
+	u8 hit_decrease_on_range;
+	u8 debug_autoload_skills;
 
-    u8 guaranteed_lvup;
-    u8 lvup_mode_tutorial;
-    u8 lvup_mode_normal;
-    u8 lvup_mode_hard;
+	u8 guaranteed_lvup;
+	u8 lvup_mode_tutorial;
+	u8 lvup_mode_normal;
+	u8 lvup_mode_hard;
 
-    u8 unit_page_style, skil_page_style;
+	u8 unit_page_style, skil_page_style;
+
+	u8 gaiden_magic_en, gaiden_magic_must_be_magic, gaiden_magic_requires_wrank, \
+		gaiden_magic_ai_en, gaiden_magic_ext_conf_en;
+
+	u8 no_suspend_in_aiphase;
+
+	u8 shield_en, shield_ext_equip_config_en;
 };
 
-extern const struct KernelDesigerConfig * const gpKernelDesigerConfig;
+struct KernelBattleDesignerConfig {
+	// ATK percentage on CON calc in attack-speed calculation
+	u8 as_calc_atk_perc;
+
+	// HP drain item percentage
+	u8 nosferatu_hpdrain_perc;
+
+	// AVO deacy indoor for riders
+	u8 rider_debuff_indoor;
+};
+
+
+extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;
+extern const struct KernelBattleDesignerConfig *const gpKernelBattleDesignerConfig;
+
+u32 k_udiv(u32 a, u32 b);
+u32 k_umod(u32 a, u32 b);
 
 /**
  * map.c
@@ -124,3 +147,33 @@ void KernelPad1(void);
 int KernelPad2(int val);
 bool KernelPad3(void);
 bool KernelPad4(void);
+
+/**
+ * Misc
+ */
+enum UnitStatusIdxRef {
+	UNIT_STATUS_POW,
+	UNIT_STATUS_MAG,
+	UNIT_STATUS_SKL,
+	UNIT_STATUS_SPD,
+	UNIT_STATUS_LCK,
+	UNIT_STATUS_DEF,
+	UNIT_STATUS_RES,
+	UNIT_STATUS_MOV,
+	UNIT_STATUS_CON,
+
+	UNIT_STATUS_MAX
+};
+
+enum BattleStatusIdxRef {
+	BATTLE_STATUS_ATK,
+	BATTLE_STATUS_DEF,
+	BATTLE_STATUS_AS,
+	BATTLE_STATUS_HIT,
+	BATTLE_STATUS_AVO,
+	BATTLE_STATUS_CRIT,
+	BATTLE_STATUS_DODGE,
+	BATTLE_STATUS_SILENCER,
+
+	BATTLE_STATUS_MAX
+};

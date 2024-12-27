@@ -100,7 +100,7 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 #endif
 
 #if (defined(SID_TripleUp) && (COMMON_SKILL_VALID(SID_TripleUp)))
-    if (BattleSkillTester(bu, SID_TripleUp))
+    if (BattleFastSkillTester(bu, SID_TripleUp))
     {
         // Check if any values are greater than 0
         int anyStatIncrease = 0; // Flag to track if there's any stats to increase
@@ -134,7 +134,7 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 #endif
 
 #if (defined(SID_DoubleUp) && (COMMON_SKILL_VALID(SID_DoubleUp)))
-    if (BattleSkillTester(bu, SID_DoubleUp) && !tripleUpExecuted)
+    if (BattleFastSkillTester(bu, SID_DoubleUp) && !tripleUpExecuted)
     {
         // Check if any values are greater than 0
         int anyStatIncrease = 0; // Flag to track if there's any stat greater than 0
@@ -167,13 +167,13 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 #endif
 
 #if (defined(SID_Mercurious) && (COMMON_SKILL_VALID(SID_Mercurious)))
-    if (BattleSkillTester(bu, SID_Mercurious) && Roll1RN(SKILL_EFF0(SID_Mercurious)))
+    if (BattleFastSkillTester(bu, SID_Mercurious) && Roll1RN(SKILL_EFF0(SID_Mercurious)))
         for (u8 i = 0; i < ARRAY_COUNT(statChanges); i++)
             *statChanges[i] *= SKILL_EFF1(SID_Mercurious);
 #endif
 
 #if (defined(SID_Velocity) && (COMMON_SKILL_VALID(SID_Velocity)))
-    if (BattleSkillTester(bu, SID_Velocity) && Roll1RN(SKILL_EFF0(SID_Velocity)))
+    if (BattleFastSkillTester(bu, SID_Velocity) && Roll1RN(SKILL_EFF0(SID_Velocity)))
         GetUnit(bu->unit.index)->movBonus += 1;
 #endif
 
@@ -297,27 +297,5 @@ void CheckBattleUnitLevelUp(struct BattleUnit * bu)
 
         TryAddSkillLvup(GetUnitFromCharIdAndFaction(UNIT_CHAR_ID(&bu->unit), FACTION_BLUE), bu->unit.level);
         UnitLvupCore(bu, bonus);
-    }
-}
-
-LYN_REPLACE_CHECK(ProcMAExpBar_LevelUpIfPossible);
-void ProcMAExpBar_LevelUpIfPossible(struct MAExpBarProc* proc)
-{
-    if (proc->expTo >= 100)
-        StartManimLevelUp(proc->actorId, (struct Proc*) proc);
-}
-
-LYN_REPLACE_CHECK(ProcMAExpBar_OnIncrement);
-void ProcMAExpBar_OnIncrement(struct MAExpBarProc* proc)
-{
-    proc->expFrom++;
-
-    if (proc->expFrom >= 100)
-        proc->expFrom = 0;
-
-    DrawMAExpBar(6, 8, proc->expFrom);
-    if (proc->expFrom == proc->expTo % 100) {
-        Proc_Break(proc);
-        m4aSongNumStop(0x74); // TODO: song ids
     }
 }

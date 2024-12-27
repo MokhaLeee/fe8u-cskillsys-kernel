@@ -31,6 +31,7 @@ ALIGN 4
 #include "Common/PostActionHook/PostActionHook.event"
 #include "Common/ChapterInitHook/ChapterInitHook.event"
 #include "Common/StrMagSplit/StrMagSplit.event"
+#include "Common/AntiHuffman/AntiHuffman.event"
 
 #include "Common/SaveData/SaveData.event"
 #include "Common/UnitHooks/UnitHooks.event"
@@ -58,5 +59,8 @@ ALIGN 4
 #include "Core/Movement/Movement.event"
 #include "Core/AiHack/AiHack.event"
 
+#include "Misc/GaidenMagic/GaidenMagic.event"
+#include "Misc/Shield/Shield.event"
+#include "Misc/PortraitHeight/PortraitHeight.event"
+
 #include "External/ExternalPatches.event"
-#include "Debug/Debug.event"

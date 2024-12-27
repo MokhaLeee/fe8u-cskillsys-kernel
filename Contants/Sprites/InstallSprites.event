@@ -1,0 +1,23 @@
+#define StandingMapSprite(aId, size, gfxPointer) "PUSH; ORG StandingMapSpriteTable + (aId * 8); SHORT 0 size; POIN gfxPointer; POP"
+#define MovingMapSprite(aId, apPointer, gfxPointer) "PUSH; ORG MovingMapSpriteTable + ((aId - 1) * 8); POIN gfxPointer apPointer; POP"
+
+/**
+ * Injections
+ */
+StandingMapSprite(DemoSMS_RoyLord, MapSprite16x16, RoyLord_Standing)
+MovingMapSprite(EphraimLord, RoyLord_Ap, RoyLord_Moving)
+
+/**
+ * Objects
+ */
+ALIGN 4
+RoyLord_Standing:
+	#incbin "Source/RoyLord_Standing.4bpp.lz"
+
+ALIGN 4
+RoyLord_Ap:
+	#incbin "Source/RoyLord_Ap.romtcs.ap.bin"
+
+ALIGN 4
+RoyLord_Moving:
+	#incbin "Source/RoyLord_Moving.4bpp.lz"

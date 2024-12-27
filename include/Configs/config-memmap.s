@@ -20,6 +20,15 @@ SET_DATA UsedFreeRamSpaceTop, FreeRamSpaceBottom
     SET_DATA \name, UsedFreeRamSpaceTop
 .endm
 
+SET_DATA FreeDemoRamSpaceTop,    0x0203F000
+SET_DATA FreeDemoRamSpaceBottom, 0x02040000
+SET_DATA UsedFreeDemoRamSpaceTop, FreeDemoRamSpaceBottom
+
+.macro _kernel_malloc_demo name, size
+    .set UsedFreeDemoRamSpaceTop, UsedFreeDemoRamSpaceTop - \size
+    SET_DATA \name, UsedFreeDemoRamSpaceTop
+.endm
+
 SET_DATA FreeRamSpace2Top,    0x0203AAA4
 SET_DATA FreeRamSpace2Bottom, 0x0203DDE0
 SET_DATA UsedFreeRamSpace2Top, FreeRamSpace2Bottom
@@ -40,7 +49,8 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 
 /* From the bottom to the top */
 _kernel_malloc sSkillList, 0x40 * 3
-_kernel_malloc sLearnedSkillPLists, 0x46 * 0x20
+_kernel_malloc sSkillFastList, 0x100
+_kernel_malloc sLearnedSkillPLists, 0x51 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21
 _kernel_malloc sEfxCombatArtRoundData,  0x30
 _kernel_malloc gBattleActorGlobalFlag, 0x10
@@ -58,10 +68,23 @@ _kernel_malloc sStatDebuffStatusEnemy, 50 * 16
 _kernel_malloc sStatDebuffStatusNpc, 8 * 16
 _kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
 _kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
-_kernel_malloc sStatDebuffMsgBufNext, 4
 _kernel_malloc sExpaConvoyItemCount, 4
 _kernel_malloc sExpaConvoyItemArray, 2 * 300
+_kernel_malloc sGaidenMagicListObj, 0x24
+_kernel_malloc gExtBattleHitArray, 4 * 0x21
+_kernel_malloc gpActorShileInfo, 4
+_kernel_malloc gpTargetShileInfo, 4
+_kernel_malloc sShileldInfoCache, 0x14
+_kernel_malloc sPopupSkillStack, 0x10
 _kernel_malloc sBEXP, 2 * 1
+
+/* u8 x4 to share one u32 */
+_kernel_malloc sKernelHookSkippingFlag, 1
+_kernel_malloc sAnimNumberSlot, 1
+_kernel_malloc sStatDebuffMsgBufNext, 1
+_kernel_malloc gKonamiComboStep, 1
+
+_kernel_malloc DemoUnitSpriteSlots, 0x100 @ better to put to: _kernel_malloc_demo
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
@@ -73,7 +96,7 @@ _kernel_malloc sBEXP, 2 * 1
 _kernel_malloc_overlay0 sPrepEquipSkillList, 0x120
 _kernel_malloc_overlay0 UnitMenuSkills, 16
 _kernel_malloc_overlay0 sEfxSkillQueue, 32
-_kernel_malloc_overlay0 gBattleTemporaryFlag, 8
+_kernel_malloc_overlay0 gBattleTemporaryFlag, 0x10
 _kernel_malloc_overlay0 sCombatArtList, 0x20
 _kernel_malloc_overlay0 sSelectedComatArtIndex, 4
 _kernel_malloc_overlay0 sCombatArtBKSELfxTimer, 4
@@ -86,8 +109,11 @@ _kernel_malloc_overlay0 KernelExtMovePioneerMap, 4
 _kernel_malloc_overlay0 MapTaskVec, 4
 _kernel_malloc_overlay0 gStatScreenStExpa, 4
 _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
-_kernel_malloc_overlay0 gDmg, 36
+_kernel_malloc_overlay0 gDmg, 40
 _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
+_kernel_malloc_overlay0 sBattleSkillActivateBuf, 4
+_kernel_malloc_overlay0 sAiSimuSlotBuf, 0x100
+_kernel_malloc_overlay0 gItemPageList 0x28
 
 /**
  * Usage of memory on IWRAM for arm-functions
@@ -109,13 +135,13 @@ _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
  * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
  */
 dat 0x03003CAC, ARM_SkillTester
-dat 0x03003E0C, ARM_SkillTesterEnd
-dat 0x03003E0C, ARM_MapFloodCoreRe
-dat 0x030040F4, ARM_MapFloodCoreReEnd
-dat 0x030040F4, ARM_MapTask
-dat 0x03004150, ARM_MapTaskEnd
+dat 0x03003DE4, ARM_SkillTesterEnd
+dat 0x03003DE4, ARM_MapFloodCoreRe
+dat 0x030040CC, ARM_MapFloodCoreReEnd
+dat 0x030040CC, ARM_MapTask
+dat 0x03004128, ARM_MapTaskEnd
 
 dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd
 dat 0x03004378, ARM_SkillList
-dat 0x03004448, ARM_SkillListEnd
+dat 0x030043B4, ARM_SkillListEnd

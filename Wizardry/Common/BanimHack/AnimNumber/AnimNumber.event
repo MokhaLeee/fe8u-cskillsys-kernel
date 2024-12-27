@@ -1,0 +1,37 @@
+#include "Source/LynJump.event"
+#include "Source/AnimNumber.lyn.event"
+#include "Source/EfxMoji.lyn.event"
+#include "Source/EfxHpBarLive.lyn.event"
+#include "Source/EfxHpBarResire.lyn.event"
+
+PUSH
+    ORG 0x051134
+    gpPAL_EfxMoji:
+
+    ORG 0x052A40
+    POIN ProcScr_efxHPBarLiveRework
+    PROTECT 0x00052A0C 0x00052AE4 // NewEfxHpBarLive
+
+    ORG 0x052624
+    POIN ProcScr_EfxHpBarResireRework
+    PROTECT 0x000525E8 0x000526C8 // NewEfxHpBarResire
+POP
+
+#ifdef CONFIG_FAKE_OLD_ANIMNUMBER_PATCH
+ALIGN 4
+#include "Source/FakeOldAnimNumberPatch.lyn.event"
+
+PUSH
+    // This is fake hook of FEB AnimNumbers patch
+    ORG 0x552D0
+    jumpToHack(FakeOldAnimNumberPatchJumpBack1)
+    PROTECT 0x00055298 0x00055424 // StartBattleAnimHitEffect
+
+    // This a fake hook of FEB AnimNumbers 20220205 patch
+    ORG 0x52304
+    jumpToHack(FakeOldAnimNumberPatchJumpBack2)
+    PROTECT 0x00052304 0x000523EC // NewEfxHpBar
+POP
+#endif /* FAKE_OLD_ANIMNUMBER_PATCH */
+
+// #include "data.event"

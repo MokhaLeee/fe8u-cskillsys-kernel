@@ -25,10 +25,10 @@ void PreBattleGenerate_LightAndDark(void)
     struct BattleUnit * actor  = &gBattleActor;
     struct BattleUnit * target = &gBattleTarget;
 
-    if (BattleSkillTester(actor, SID_LightAndDark))
+    if (BattleFastSkillTester(actor, SID_LightAndDark))
         ModifyBattleUnitStatus_LightAndDark(actor, target);
 
-    if (BattleSkillTester(target, SID_LightAndDark))
+    if (BattleFastSkillTester(target, SID_LightAndDark))
         ModifyBattleUnitStatus_LightAndDark(target, actor);
 #endif
 }

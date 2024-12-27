@@ -1,8 +1,10 @@
 #ifndef CONFIG_INSTALLED
 #define CONFIG_INSTALLED
 
-#include "config-debug.h"
+// #include "config-debug.h"
 #include "config-memmap.h"
+
+#define CONFIG_FE8_REWRITE
 
 /**
  * If uncomment, kernel may remove vanilla dislogue text
@@ -13,7 +15,7 @@
  * introduce any bug.
  *
  * If you're planning to develop a new game instead of making minor
- * changes on vanilla, it is recommanded to uncomment this config to save space.
+ * changes on vanilla, it is recommended to uncomment this config to save space.
  */
 // #define CONFIG_CROP_VANILLA_MSG
 
@@ -21,7 +23,7 @@
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 
 /* If uncomment, use utf-8 characters */
-// #define CONFIG_USE_UTF8_GLYPH
+#define CONFIG_USE_UTF8_GLYPH
 
 /* Engage style combo attack */
 // #define CONFIG_USE_COMBO_ATTACK
@@ -143,7 +145,7 @@
  * Installed in: Wizardry/External/TextEngineRework/Installer.event
  * Source: https://feuniverse.us/t/teqs-minor-assembly-shenanigans/1655/118
  */
-#define CONFIG_TEXT_ENGINE_REWORK
+// #define CONFIG_TEXT_ENGINE_REWORK
 
 /**
  * By Jester
@@ -379,7 +381,7 @@
 /**
  * Install Bow2Decrease
  */
-#define CONFIG_INSTALL_BOW2DECREASE
+// #define CONFIG_INSTALL_BOW2DECREASE
 
 /**
  * Install ConvoyExpa
@@ -398,6 +400,8 @@
  */
 #define CONFIG_UNIT_ACTION_AMT 0x30
 #define CONFIG_UNIT_ACTION_EXPA_ExecSkill 0x23
+#define CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat 0x24
+#define CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff 0x25
 
 /**
  * Icon config
@@ -425,7 +429,7 @@
 #define CONFIG_UNIT_AMT_NPC   8
 
 /**
- * FE8 Rewriteen exclusive configs
+ * FE8 Rewritten exclusive configs
  */
 #define SETH_INJURED
 #define INJURED_TURN_COUNT 5

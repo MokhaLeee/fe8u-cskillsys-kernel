@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "save-data.h"
+#include "bmsave.h"
 
 #define SKILL_SYS_MAGIC "FESKILL\0"
 #define SKILLSYS_MAGIC_LEN 8

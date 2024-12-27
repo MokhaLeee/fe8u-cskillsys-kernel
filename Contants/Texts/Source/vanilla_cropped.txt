@@ -1,0 +1,11563 @@
+#0x0
+[X]
+
+## MSG_0001
+ [.][X]
+
+## MSG_0002
+Weapon Level increased.[.][X]
+
+## MSG_0003
+broke![X]
+
+## MSG_0004
+is gone.[X]
+
+## MSG_0005
+Got [X]
+
+## MSG_0006
+gold.[.][X]
+
+## MSG_0007
+gold was stolen.[X]
+
+## MSG_0008
+Got [X]
+
+## MSG_0009
+was pilfered.[.][X]
+
+## MSG_000A
+Stole [X]
+
+## MSG_000B
+was stolen.[.][X]
+
+## MSG_000C
+Support Lv. increased.[X]
+
+## MSG_000D
+You can now use [X]
+
+## MSG_000E
+You can now use [X]
+
+## MSG_000F
+Dropped [X]
+
+## MSG_0010
+Sent [.][X]
+
+## MSG_0011
+.[.][X]
+
+## MSG_0012
+The village was destroyed.[X]
+
+## MSG_0013
+Strength increased.[.][X]
+
+## MSG_0014
+Magic increased.[X]
+
+## MSG_0015
+Skill increased.[X]
+
+## MSG_0016
+Speed increased.[X]
+
+## MSG_0017
+Luck increased.[.][X]
+
+## MSG_0018
+Defense increased.[X]
+
+## MSG_0019
+Resistance increased.[.][X]
+
+## MSG_001A
+Movement increased.[.][X]
+
+## MSG_001B
+Constitution increased.[.][X]
+
+## MSG_001C
+Max HP increased.[.][X]
+
+## MSG_001D
+Maturity increased.[.][X]
+
+## MSG_001E
+Level lost.[.][X]
+
+## MSG_001F
+Level lost.[.][X]
+
+## MSG_0020
+Disabled trap.[X]
+
+## MSG_0021
+Recovered mine.[.][X]
+
+## MSG_0022
+.[.][X]
+
+## MSG_0023
+Change[X]
+
+## MSG_0024
+Cancel[X]
+
+## MSG_0025
+Dummy[.][X]
+
+## MSG_0026
+ Release Entry[X]
+
+## MSG_0027
+ Continue Chp.[X]
+
+## MSG_0028
+ Manual Cont.[.][X]
+
+## MSG_0029
+ Initialize File[X]
+
+## MSG_002A
+ World Map[X]
+
+## MSG_002B
+Viwer Map[.][X]
+
+## MSG_002C
+Viewr Face[X]
+
+## MSG_002D
+Viewr BG[X]
+
+## MSG_002E
+  MODE  Tutorial[X]
+
+## MSG_002F
+  MODE  Normal[X]
+
+## MSG_0030
+  MODE  Hard[X]
+
+## MSG_0031
+  BASE  Capture[.][X]
+
+## MSG_0032
+  BASE  Devil A[.][X]
+
+## MSG_0033
+  BASE  Devil B[.][X]
+
+## MSG_0034
+  BASE  Devil C[.][X]
+
+## MSG_0035
+N/A[.][X]
+
+## MSG_0036
+At[X]
+
+## MSG_0037
+Mov[.][X]
+
+## MSG_0038
+Cure[X]
+
+## MSG_0039
+Status[X]
+
+## MSG_003A
+blanket100[X]
+
+## MSG_003B
+blanket80[.][X]
+
+## MSG_003C
+blanket50[.][X]
+
+## MSG_003D
+move off100[.][X]
+
+## MSG_003E
+move off80[X]
+
+## MSG_003F
+move off50[X]
+
+## MSG_0040
+none[X]
+
+## MSG_0041
+Natasha off[.][X]
+
+## MSG_0042
+Douglas[.][X]
+
+## MSG_0043
+11b citizen off[.][X]
+
+## MSG_0044
+Lyn[.][X]
+
+## MSG_0045
+Roy[.][X]
+
+## MSG_0046
+gate keeper[.][X]
+
+## MSG_0047
+leader[X]
+
+## MSG_0048
+cure[X]
+
+## MSG_0049
+cure move off[.][X]
+
+## MSG_004A
+steal[.][X]
+
+## MSG_004B
+door Open[.][X]
+
+## MSG_004C
+Ruthea off[X]
+
+## MSG_004D
+Leyvan off[X]
+
+## MSG_004E
+Demon King[X]
+
+## MSG_004F
+near[X]
+
+## MSG_0050
+near Clarine[X]
+
+## MSG_0051
+Douglas[.][X]
+
+## MSG_0052
+none[X]
+
+## MSG_0053
+loot[X]
+
+## MSG_0054
+loot abscise[X]
+
+## MSG_0055
+2[.][X]
+
+## MSG_0056
+2 Clarine[.][X]
+
+## MSG_0057
+circuit[.][X]
+
+## MSG_0058
+random[X]
+
+## MSG_0059
+to Eirika[.][X]
+
+## MSG_005A
+to Ephraim[X]
+
+## MSG_005B
+abscise[.][X]
+
+## MSG_005C
+to bases[X]
+
+## MSG_005D
+break wall[X]
+
+## MSG_005E
+ignore near[.][X]
+
+## MSG_005F
+area[X]
+
+## MSG_0060
+1T loot wait[X]
+
+## MSG_0061
+1T near wait[X]
+
+## MSG_0062
+bear[X]
+
+## MSG_0063
+normal[X]
+
+## MSG_0064
+strong[X]
+
+## MSG_0065
+very bear[.][X]
+
+## MSG_0066
+vert strong[.][X]
+
+## MSG_0067
+fine[X]
+
+## MSG_0068
+poison[X]
+
+## MSG_0069
+sleep[.][X]
+
+## MSG_006A
+close[.][X]
+
+## MSG_006B
+angry[.][X]
+
+## MSG_006C
+Dance Attack[X]
+
+## MSG_006D
+Dance Defence[.][X]
+
+## MSG_006E
+Dance Skill[.][X]
+
+## MSG_006F
+Dance Avoid[.][X]
+
+## MSG_0070
+sick[X]
+
+## MSG_0071
+recover[.][X]
+
+## MSG_0072
+stone[.][X]
+
+## MSG_0073
+shield[X]
+
+## MSG_0074
+stone counterattack[.][X]
+
+## MSG_0075
+1/4[.][X]
+
+## MSG_0076
+2/4[.][X]
+
+## MSG_0077
+3/4[.][X]
+
+## MSG_0078
+4/4[.][X]
+
+## MSG_0079
+Pos[.][X]
+
+## MSG_007A
+Total S[.][X]
+
+## MSG_007B
+Total P[.][X]
+
+## MSG_007C
+CP Attack[.][X]
+
+## MSG_007D
+CP Move[.][X]
+
+## MSG_007E
+Counter[.][X]
+
+## MSG_007F
+Trust Level[.][X]
+
+## MSG_0080
+Support[.][X]
+
+## MSG_0081
+CritAvo[.][X]
+
+## MSG_0082
+SRAM info[.][X]
+
+## MSG_0083
+Vct[.][X]
+
+## MSG_0084
+Dft[.][X]
+
+## MSG_0085
+Adv[.][X]
+
+## MSG_0086
+E.D.[X]
+
+## MSG_0087
+Pick[X]
+
+## MSG_0088
+x[.][X]
+
+## MSG_0089
+Exp[.][X]
+
+## MSG_008A
+Favorite[X]
+
+## MSG_008B
+This unit has no SRAM information[.][X]
+
+## MSG_008C
+mastery levels[X]
+
+## MSG_008D
+TURN[X]
+
+## MSG_008E
+2-CP[X]
+
+## MSG_008F
+3-CP[X]
+
+## MSG_0090
+Animation[.][X]
+
+## MSG_0091
+Terrain[.][X]
+
+## MSG_0092
+Unit[X]
+
+## MSG_0093
+Combat[X]
+
+## MSG_0094
+Subtitle Help[.][X]
+
+## MSG_0095
+Autocursor[X]
+
+## MSG_0096
+Text Speed[X]
+
+## MSG_0097
+Game Speed[X]
+
+## MSG_0098
+Music[.][X]
+
+## MSG_0099
+Sound Effects[.][X]
+
+## MSG_009A
+Window Color[X]
+
+## MSG_009B
+CPU Level[.][X]
+
+## MSG_009C
+Autoend Turns[.][X]
+
+## MSG_009D
+Unit Color[X]
+
+## MSG_009E
+Show Objective[X]
+
+## MSG_009F
+Controller[X]
+
+## MSG_00A0
+Rank Display[X]
+
+## MSG_00A1
+Show animation without backgrounds[X]
+
+## MSG_00A2
+Show animation with backgrounds[.][X]
+
+## MSG_00A3
+Turn combat animation off[.][X]
+
+## MSG_00A4
+Set animation for each unit manually[X]
+
+## MSG_00A5
+Set unit movement speed[.][X]
+
+## MSG_00A6
+Set unit movement speed (fast)[X]
+
+## MSG_00A7
+Set message speed (slow)[X]
+
+## MSG_00A8
+Set message speed[.][X]
+
+## MSG_00A9
+Set message speed (fast)[X]
+
+## MSG_00AA
+Set message speed (autoscroll)[X]
+
+## MSG_00AB
+Turn Terrain window on or off[.][X]
+
+## MSG_00AC
+Show normal unit window[.][X]
+
+## MSG_00AD
+Show unit window with tail[X]
+
+## MSG_00AE
+Turn unit window off[X]
+
+## MSG_00AF
+Show basic Combat Info window[.][X]
+
+## MSG_00B0
+Show detailed Combat Info window[X]
+
+## MSG_00B1
+Turn Combat Info window off[.][X]
+
+## MSG_00B2
+Set Easy/Help Scroll display[X]
+
+## MSG_00B3
+Set cursor to start on main hero[X]
+
+## MSG_00B4
+Set turn to end automatically[.][X]
+
+## MSG_00B5
+Turn music on or off[X]
+
+## MSG_00B6
+Turn sound effects on or off[X]
+
+## MSG_00B7
+Change window color[.][X]
+
+## MSG_00B8
+Set enemy AI[X]
+
+## MSG_00B9
+Set colors for individual units[.][X]
+
+## MSG_00BA
+Turn Chapter Goal display on or off[.][X]
+
+## MSG_00BB
+Set Control Window display[X]
+
+## MSG_00BC
+Rank Display[X]
+
+## MSG_00BD
+ON[X]
+
+## MSG_00BE
+OFF[.][X]
+
+## MSG_00BF
+1[.][X]
+
+## MSG_00C0
+2[.][X]
+
+## MSG_00C1
+3[.][X]
+
+## MSG_00C2
+4[.][X]
+
+## MSG_00C3
+Slow[X]
+
+## MSG_00C4
+Norm[X]
+
+## MSG_00C5
+Fast[X]
+
+## MSG_00C6
+Max[.][X]
+
+## MSG_00C7
+Solo[X]
+
+## MSG_00C8
+Strat[.][X]
+
+## MSG_00C9
+Detail[X]
+
+## MSG_00CA
+Panel[.][X]
+
+## MSG_00CB
+Burst[.][X]
+
+## MSG_00CC
+NO DATA[.][X]
+
+## MSG_00CD
+--[X]
+
+## MSG_00CE
+--[X]
+
+## MSG_00CF
+--[X]
+
+## MSG_00D0
+--[X]
+
+## MSG_00D1
+--[X]
+
+## MSG_00D2
+--[X]
+
+## MSG_00D3
+--[X]
+
+## MSG_00D4
+--[X]
+
+## MSG_00D5
+--[X]
+
+## MSG_00D6
+--[X]
+
+## MSG_00D7
+--[X]
+
+## MSG_00D8
+--[X]
+
+## MSG_00D9
+--[X]
+
+## MSG_00DA
+--[X]
+
+## MSG_00DB
+--[X]
+
+## MSG_00DC
+--[X]
+
+## MSG_00DD
+--[X]
+
+## MSG_00DE
+--[X]
+
+## MSG_00DF
+--[X]
+
+## MSG_00E0
+--[X]
+
+## MSG_00E1
+--[X]
+
+## MSG_00E2
+--[X]
+
+## MSG_00E3
+--[X]
+
+## MSG_00E4
+--[X]
+
+## MSG_00E5
+--[X]
+
+## MSG_00E6
+--[X]
+
+## MSG_00E7
+--[X]
+
+## MSG_00E8
+--[X]
+
+## MSG_00E9
+--[X]
+
+## MSG_00EA
+--[X]
+
+## MSG_00EB
+--[X]
+
+## MSG_00EC
+--[X]
+
+## MSG_00ED
+--[X]
+
+## MSG_00EE
+--[X]
+
+## MSG_00EF
+--[X]
+
+## MSG_00F0
+--[X]
+
+## MSG_00F1
+--[X]
+
+## MSG_00F2
+--[X]
+
+## MSG_00F3
+--[X]
+
+## MSG_00F4
+--[X]
+
+## MSG_00F5
+--[X]
+
+## MSG_00F6
+--[X]
+
+## MSG_00F7
+--[X]
+
+## MSG_00F8
+--[X]
+
+## MSG_00F9
+--[X]
+
+## MSG_00FA
+--[X]
+
+## MSG_00FB
+--[X]
+
+## MSG_00FC
+--[X]
+
+## MSG_00FD
+--[X]
+
+## MSG_00FE
+--[X]
+
+## MSG_00FF
+--[X]
+
+## MSG_0100
+--[X]
+
+## MSG_0101
+--[X]
+
+## MSG_0102
+--[X]
+
+## MSG_0103
+--[X]
+
+## MSG_0104
+--[X]
+
+## MSG_0105
+--[X]
+
+## MSG_0106
+--[X]
+
+## MSG_0107
+--[X]
+
+## MSG_0108
+--[X]
+
+## MSG_0109
+--[X]
+
+## MSG_010A
+--[X]
+
+## MSG_010B
+--[X]
+
+## MSG_010C
+--[X]
+
+## MSG_010D
+--[X]
+
+## MSG_010E
+--[X]
+
+## MSG_010F
+--[X]
+
+## MSG_0110
+--[X]
+
+## MSG_0111
+--[X]
+
+## MSG_0112
+--[X]
+
+## MSG_0113
+--[X]
+
+## MSG_0114
+--[X]
+
+## MSG_0115
+--[X]
+
+## MSG_0116
+--[X]
+
+## MSG_0117
+--[X]
+
+## MSG_0118
+--[X]
+
+## MSG_0119
+--[X]
+
+## MSG_011A
+--[X]
+
+## MSG_011B
+--[X]
+
+## MSG_011C
+--[X]
+
+## MSG_011D
+--[X]
+
+## MSG_011E
+--[X]
+
+## MSG_011F
+--[X]
+
+## MSG_0120
+--[X]
+
+## MSG_0121
+--[X]
+
+## MSG_0122
+--[X]
+
+## MSG_0123
+--[X]
+
+## MSG_0124
+--[X]
+
+## MSG_0125
+--[X]
+
+## MSG_0126
+--[X]
+
+## MSG_0127
+--[X]
+
+## MSG_0128
+--[X]
+
+## MSG_0129
+--[X]
+
+## MSG_012A
+--[X]
+
+## MSG_012B
+--[X]
+
+## MSG_012C
+--[X]
+
+## MSG_012D
+--[X]
+
+## MSG_012E
+--[X]
+
+## MSG_012F
+--[X]
+
+## MSG_0130
+--[X]
+
+## MSG_0131
+--[X]
+
+## MSG_0132
+--[X]
+
+## MSG_0133
+--[X]
+
+## MSG_0134
+--[X]
+
+## MSG_0135
+--[X]
+
+## MSG_0136
+--[X]
+
+## MSG_0137
+--[X]
+
+## MSG_0138
+--[X]
+
+## MSG_0139
+--[X]
+
+## MSG_013A
+--[X]
+
+## MSG_013B
+--[X]
+
+## MSG_013C
+--[X]
+
+## MSG_013D
+--[X]
+
+## MSG_013E
+--[X]
+
+## MSG_013F
+--[X]
+
+## MSG_0140
+Erase[.][X]
+
+## MSG_0141
+Back[X]
+
+## MSG_0142
+Cancel[X]
+
+## MSG_0143
+Start[.][X]
+
+## MSG_0144
+Copy[X]
+
+## MSG_0145
+Save[X]
+
+## MSG_0146
+Entry[.][X]
+
+## MSG_0147
+Base[X]
+
+## MSG_0148
+LV[X]
+
+## MSG_0149
+For first-timers.[.][LF]
+Game rules and[LF]
+controls will be[LF]
+explained as you[LF]
+play.[.][X]
+
+## MSG_014A
+For experienced[.][LF]
+players. No game-[.][LF]
+play hints will[.][LF]
+be provided as[LF]
+you play.[.][X]
+
+## MSG_014B
+For players seeking[.][LF]
+a real challenge.[.][LF]
+No instructions are[.][LF]
+given & difficulty[LF]
+is set to high.[.][X]
+
+## MSG_014C
+0[.][X]
+
+## MSG_014D
+1[.][X]
+
+## MSG_014E
+2[.][X]
+
+## MSG_014F
+3[.][X]
+
+## MSG_0150
+4[.][X]
+
+## MSG_0151
+5[.][X]
+
+## MSG_0152
+6[.][X]
+
+## MSG_0153
+7[.][X]
+
+## MSG_0154
+8[.][X]
+
+## MSG_0155
+9[.][X]
+
+## MSG_0156
+N/A[.][X]
+
+## MSG_0157
+Ch.[.][X]
+
+## MSG_0158
+x[.][X]
+
+## MSG_0159
+Final[.][X]
+
+## MSG_015A
+Prologue[X]
+
+## MSG_015B
+Side[X]
+
+## MSG_015C
+Alter[.][X]
+
+## MSG_015D
+Turns[.][X]
+
+## MSG_015E
+ [.][X]
+
+## MSG_015F
+Total Turns[.][X]
+
+## MSG_0160
+The Fall of Renais[X]
+
+## MSG_0161
+Escape![.][X]
+
+## MSG_0162
+The Protected[.][X]
+
+## MSG_0163
+The Bandits of Borgo[X]
+
+## MSG_0164
+Ancient Horrors[.][X]
+
+## MSG_0165
+Unbroken Heart[X]
+
+## MSG_0166
+The Empire's Reach[X]
+
+## MSG_0167
+Victims of War[X]
+
+## MSG_0168
+Waterside Renvall[.][X]
+
+## MSG_0169
+It's a Trap![X]
+
+## MSG_016A
+Distant Blade[.][X]
+
+## MSG_016B
+Revolt at Carcino[.][X]
+
+## MSG_016C
+Village of Silence[X]
+
+## MSG_016D
+Hamill Canyon[.][X]
+
+## MSG_016E
+Queen of White Dunes[X]
+
+## MSG_016F
+Scorched Sand[.][X]
+
+## MSG_0170
+Ruled by Madness[X]
+
+## MSG_0171
+River of Regrets[X]
+
+## MSG_0172
+Two Faces of Evil[.][X]
+
+## MSG_0173
+Last Hope[.][X]
+
+## MSG_0174
+Darkling Woods[X]
+
+## MSG_0175
+Sacred Stone[X]
+
+## MSG_0176
+Sacred Stone[X]
+
+## MSG_0177
+Fort Rigwald[X]
+
+## MSG_0178
+Turning Traitor[.][X]
+
+## MSG_0179
+Landing at Taizel[.][X]
+
+## MSG_017A
+Fluorspar's Oath[X]
+
+## MSG_017B
+Father and Son[X]
+
+## MSG_017C
+Scorched Sand[.][X]
+
+## MSG_017D
+Ruled by Madness[X]
+
+## MSG_017E
+River of Regrets[X]
+
+## MSG_017F
+Two Faces of Evil[.][X]
+
+## MSG_0180
+Last Hope[.][X]
+
+## MSG_0181
+Darkling Woods[X]
+
+## MSG_0182
+Sacred Stone[X]
+
+## MSG_0183
+Sacred Stone[X]
+
+## MSG_0184
+Tower of Valni 1[X]
+
+## MSG_0185
+Tower of Valni 2[X]
+
+## MSG_0186
+Tower of Valni 3[X]
+
+## MSG_0187
+Tower of Valni 4[X]
+
+## MSG_0188
+Tower of Valni 5[X]
+
+## MSG_0189
+Tower of Valni 6[X]
+
+## MSG_018A
+Tower of Valni 7[X]
+
+## MSG_018B
+Tower of Valni 8[X]
+
+## MSG_018C
+Tower of Valni 9[X]
+
+## MSG_018D
+Tower of Valni 10[.][X]
+
+## MSG_018E
+Lagdou Ruins 1[X]
+
+## MSG_018F
+Lagdou Ruins 2[X]
+
+## MSG_0190
+Lagdou Ruins 3[X]
+
+## MSG_0191
+Lagdou Ruins 4[X]
+
+## MSG_0192
+Lagdou Ruins 5[X]
+
+## MSG_0193
+Lagdou Ruins 6[X]
+
+## MSG_0194
+Lagdou Ruins 7[X]
+
+## MSG_0195
+Lagdou Ruins 8[X]
+
+## MSG_0196
+Lagdou Ruins 9[X]
+
+## MSG_0197
+Lagdou Ruins 10[.][X]
+
+## MSG_0198
+Castle Frelia[.][X]
+
+## MSG_0199
+Melkaen Coast[.][X]
+
+## MSG_019A
+Creeping Darkness[.][X]
+
+## MSG_019B
+Phantom Ship[X]
+
+## MSG_019C
+Survive[.][X]
+
+## MSG_019D
+Defeat boss[.][X]
+
+## MSG_019E
+Defeat enemy[X]
+
+## MSG_019F
+Seize gate[X]
+
+## MSG_01A0
+Seize gate[X]
+
+## MSG_01A1
+Seize throne[X]
+
+## MSG_01A2
+Defeat O'Neill[X]
+
+## MSG_01A3
+Seize the castle[LF]
+gate[X]
+
+## MSG_01A4
+Defeat all bandits[X]
+
+## MSG_01A5
+Seize the throne[X]
+
+## MSG_01A6
+Defeat all monsters[.][X]
+
+## MSG_01A7
+Defeat Saar[.][X]
+
+## MSG_01A8
+Seize the throne[X]
+
+## MSG_01A9
+Defeat Novala[.][X]
+
+## MSG_01AA
+Seize the castle[LF]
+gate[X]
+
+## MSG_01AB
+Seize the throne[X]
+
+## MSG_01AC
+Defeat all[LF]
+enemy units[.][X]
+
+## MSG_01AD
+Seize the castle[LF]
+gate[X]
+
+## MSG_01AE
+Defeat all monsters[.][X]
+
+## MSG_01AF
+Defeat all monsters[.][X]
+
+## MSG_01B0
+Survive for 11[LF]
+turns or defeat Aias[X]
+
+## MSG_01B1
+Seize the throne[X]
+
+## MSG_01B2
+Defeat all[LF]
+enemy units[.][X]
+
+## MSG_01B3
+Seize the throne[X]
+
+## MSG_01B4
+Defeat Lyon[.][X]
+
+## MSG_01B5
+Defeat all monsters[.][X]
+
+## MSG_01B6
+Guard Mansel for 13[.][LF]
+turns/Defeat Riev[.][X]
+
+## MSG_01B7
+Seize the lair gate[.][X]
+
+## MSG_01B8
+Defeat Lyon[.][X]
+
+## MSG_01B9
+Defeat Fomortiis, the[.][LF]
+Demon King[X]
+
+## MSG_01BA
+Seize the throne[X]
+
+## MSG_01BB
+Guard Duessel for 10[LF]
+turns/Defeat Beran[X]
+
+## MSG_01BC
+Defeat all monsters[.][X]
+
+## MSG_01BD
+Defeat boss[.][X]
+
+## MSG_01BE
+Defeat all[LF]
+enemy units[.][X]
+
+## MSG_01BF
+Seize the throne[X]
+
+## MSG_01C0
+Defeat all monsters[.][X]
+
+## MSG_01C1
+Left[X]
+
+## MSG_01C2
+Turn[X]
+
+## MSG_01C3
+Last Turn[.][X]
+
+## MSG_01C4
+[DashedLine][DashedLine][X]
+
+## MSG_01C5
+Plain[.][X]
+
+## MSG_01C6
+Road[X]
+
+## MSG_01C7
+Village[.][X]
+
+## MSG_01C8
+Village[.][X]
+
+## MSG_01C9
+House[.][X]
+
+## MSG_01CA
+Armory[X]
+
+## MSG_01CB
+Vendor[X]
+
+## MSG_01CC
+Arena[.][X]
+
+## MSG_01CD
+C.Room[X]
+
+## MSG_01CE
+Fort[X]
+
+## MSG_01CF
+Gate[X]
+
+## MSG_01D0
+Forest[X]
+
+## MSG_01D1
+Thicket[.][X]
+
+## MSG_01D2
+Sand[X]
+
+## MSG_01D3
+Desert[X]
+
+## MSG_01D4
+River[.][X]
+
+## MSG_01D5
+Mntn[X]
+
+## MSG_01D6
+Peak[X]
+
+## MSG_01D7
+Bridge[X]
+
+## MSG_01D8
+Bridge[X]
+
+## MSG_01D9
+Sea[.][X]
+
+## MSG_01DA
+Lake[X]
+
+## MSG_01DB
+Floor[.][X]
+
+## MSG_01DC
+Floor[.][X]
+
+## MSG_01DD
+Fence[.][X]
+
+## MSG_01DE
+Wall[X]
+
+## MSG_01DF
+Wall[X]
+
+## MSG_01E0
+Rubble[X]
+
+## MSG_01E1
+Pillar[X]
+
+## MSG_01E2
+Door[X]
+
+## MSG_01E3
+Throne[X]
+
+## MSG_01E4
+Chest[.][X]
+
+## MSG_01E5
+Chest[.][X]
+
+## MSG_01E6
+Roof[X]
+
+## MSG_01E7
+Gate[X]
+
+## MSG_01E8
+Church[X]
+
+## MSG_01E9
+Ruins[.][X]
+
+## MSG_01EA
+Cliff[.][X]
+
+## MSG_01EB
+Ballista[X]
+
+## MSG_01EC
+Long B[X]
+
+## MSG_01ED
+Killer B[X]
+
+## MSG_01EE
+Flat[X]
+
+## MSG_01EF
+Wreck[.][X]
+
+## MSG_01F0
+[DashedLine][DashedLine][X]
+
+## MSG_01F1
+Stairs[X]
+
+## MSG_01F2
+[DashedLine][DashedLine][X]
+
+## MSG_01F3
+Glacier[.][X]
+
+## MSG_01F4
+Arena[.][X]
+
+## MSG_01F5
+Valley[X]
+
+## MSG_01F6
+Fence[.][X]
+
+## MSG_01F7
+Snag[X]
+
+## MSG_01F8
+Bridge[X]
+
+## MSG_01F9
+Sky[.][X]
+
+## MSG_01FA
+Deeps[.][X]
+
+## MSG_01FB
+Ruins[.][X]
+
+## MSG_01FC
+Inn[.][X]
+
+## MSG_01FD
+Barrel[X]
+
+## MSG_01FE
+Bone[X]
+
+## MSG_01FF
+Dark[X]
+
+## MSG_0200
+Water[.][X]
+
+## MSG_0201
+Gunnels[.][X]
+
+## MSG_0202
+Deck[X]
+
+## MSG_0203
+Brace[.][X]
+
+## MSG_0204
+Mast[X]
+
+## MSG_0205
+Current[.][X]
+
+## MSG_0206
+Record[X]
+
+## MSG_0207
+[HASH] Cleared[X]
+
+## MSG_0208
+Monsters[X]
+
+## MSG_0209
+Exp[.][X]
+
+## MSG_020A
+Units Used[X]
+
+## MSG_020B
+Turns[.][X]
+
+## MSG_020C
+Time[X]
+
+## MSG_020D
+:[.][X]
+
+## MSG_020E
+1 year ago[X]
+
+## MSG_020F
+1 1/2 years ago[.][X]
+
+## MSG_0210
+2 years ago[.][X]
+
+## MSG_0211
+3 years ago[.][X]
+
+## MSG_0212
+Eirika[X]
+
+## MSG_0213
+Seth[X]
+
+## MSG_0214
+Gilliam[.][X]
+
+## MSG_0215
+Franz[.][X]
+
+## MSG_0216
+Moulder[.][X]
+
+## MSG_0217
+Vanessa[.][X]
+
+## MSG_0218
+Ross[X]
+
+## MSG_0219
+Neimi[.][X]
+
+## MSG_021A
+Colm[X]
+
+## MSG_021B
+Garcia[X]
+
+## MSG_021C
+Innes[.][X]
+
+## MSG_021D
+Lute[X]
+
+## MSG_021E
+Natasha[.][X]
+
+## MSG_021F
+Cormag[X]
+
+## MSG_0220
+Ephraim[.][X]
+
+## MSG_0221
+Forde[.][X]
+
+## MSG_0222
+Kyle[X]
+
+## MSG_0223
+Amelia[X]
+
+## MSG_0224
+Artur[.][X]
+
+## MSG_0225
+Gerik[.][X]
+
+## MSG_0226
+Tethys[X]
+
+## MSG_0227
+Marisa[X]
+
+## MSG_0228
+Saleh[.][X]
+
+## MSG_0229
+Ewan[X]
+
+## MSG_022A
+L'Arachel[.][X]
+
+## MSG_022B
+Dozla[.][X]
+
+## MSG_022C
+Nate[X]
+
+## MSG_022D
+Rennac[X]
+
+## MSG_022E
+Duessel[.][X]
+
+## MSG_022F
+Myrrh[.][X]
+
+## MSG_0230
+Knoll[.][X]
+
+## MSG_0231
+Joshua[X]
+
+## MSG_0232
+Syrene[X]
+
+## MSG_0233
+Tana[X]
+
+## MSG_0234
+Lyon[X]
+
+## MSG_0235
+Morva[.][X]
+
+## MSG_0236
+Orson[.][X]
+
+## MSG_0237
+Valter[X]
+
+## MSG_0238
+Selena[X]
+
+## MSG_0239
+Breguet[.][X]
+
+## MSG_023A
+Bone[X]
+
+## MSG_023B
+Bazba[.][X]
+
+## MSG_023C
+Saar[X]
+
+## MSG_023D
+Novala[X]
+
+## MSG_023E
+Murray[X]
+
+## MSG_023F
+Tirado[X]
+
+## MSG_0240
+Binks[.][X]
+
+## MSG_0241
+Pablo[.][X]
+
+## MSG_0242
+Aias[X]
+
+## MSG_0243
+Carlyle[.][X]
+
+## MSG_0244
+Caellach[X]
+
+## MSG_0245
+Deni[X]
+
+## MSG_0246
+Riev[X]
+
+## MSG_0247
+Gheb[X]
+
+## MSG_0248
+Beran[.][X]
+
+## MSG_0249
+O'Neill[.][X]
+
+## MSG_024A
+Glen[X]
+
+## MSG_024B
+Zonta[.][X]
+
+## MSG_024C
+Vigarde[.][X]
+
+## MSG_024D
+Soldier[.][X]
+
+## MSG_024E
+Remnant[.][X]
+
+## MSG_024F
+Bandit[X]
+
+## MSG_0250
+Hunter[X]
+
+## MSG_0251
+Sellsword[.][X]
+
+## MSG_0252
+Remnant[.][X]
+
+## MSG_0253
+Mercenary[.][X]
+
+## MSG_0254
+Cutthroat[.][X]
+
+## MSG_0255
+Monster[.][X]
+
+## MSG_0256
+Monster[.][X]
+
+## MSG_0257
+Entombed[X]
+
+## MSG_0258
+Maelduin[X]
+
+## MSG_0259
+Cyclops[.][X]
+
+## MSG_025A
+Fomortiis[.][X]
+
+## MSG_025B
+Fado[X]
+
+## MSG_025C
+Hayden[X]
+
+## MSG_025D
+Klimt[.][X]
+
+## MSG_025E
+Mansel[X]
+
+## MSG_025F
+Dara[X]
+
+## MSG_0260
+Ismaire[.][X]
+
+## MSG_0261
+Messenger[.][X]
+
+## MSG_0262
+Frelian[.][X]
+
+## MSG_0263
+Rausten[.][X]
+
+## MSG_0264
+Citizen[.][X]
+
+## MSG_0265
+Renais Cit.[.][X]
+
+## MSG_0266
+River Folk[X]
+
+## MSG_0267
+Enemy[.][X]
+
+## MSG_0268
+Wall[X]
+
+## MSG_0269
+Snag[X]
+
+## MSG_026A
+Mark[X]
+
+## MSG_026B
+Evil[X]
+
+## MSG_026C
+Summonern[.][X]
+
+## MSG_026D
+Summon[X]
+
+## MSG_026E
+The princess of the kingdom of[LF]
+Renais. She's elegant and kind.[.][X]
+
+## MSG_026F
+A young commander of Renais.[LF]
+He's calm, composed, and skilled.[.][X]
+
+## MSG_0270
+An armored knight of Frelia.[LF]
+He's quiet yet dependable.[X]
+
+## MSG_0271
+An earnest and compassionate[LF]
+cavalier from Renais.[.][X]
+
+## MSG_0272
+A mature priest of Frelia. He's[.][LF]
+gentle and reassuring.[X]
+
+## MSG_0273
+A sincere, honest, and honorable[LF]
+pegasus knight of Frelia.[.][X]
+
+## MSG_0274
+A young villager. He longs to be a[LF]
+warrior, like his father.[.][X]
+
+## MSG_0275
+A childhood friend of Colm who[LF]
+hails from Renais. She cries a lot.[.][X]
+
+## MSG_0276
+A childhood friend of Neimi who[.][LF]
+hails from Renais. He can be snide.[.][X]
+
+## MSG_0277
+A villager from Renais. He was[LF]
+once a feared military leader.[X]
+
+## MSG_0278
+The prince of Frelia. He's brash[LF]
+and arrogant, but good at heart.[X]
+
+## MSG_0279
+A young mage of Renais. She[.][LF]
+believes she is a prodigy.[X]
+
+## MSG_027A
+A beautiful cleric from the Grado[.][LF]
+Empire. She's graceful and serious.[.][X]
+
+## MSG_027B
+A wyvern knight of Grado. A gentle[LF]
+man, but a ferocious warrior.[.][X]
+
+## MSG_027C
+The prince of Renais. He is a man[.][LF]
+of great honor and bravery.[.][X]
+
+## MSG_027D
+A cavalier of Renais. He is skilled,[LF]
+but reckless. He's Franz's brother.[.][X]
+
+## MSG_027E
+A steadfast and honorable cavalier[LF]
+in sworn service to Renais.[.][X]
+
+## MSG_027F
+A young girl from a small village in[LF]
+Grado. She is honest and sincere.[.][X]
+
+## MSG_0280
+A young monk from Renais. He is a[.][LF]
+very forthright and pious man.[X]
+
+## MSG_0281
+A mercenary leader from Jehanna. He's[.][LF]
+better known as the Desert Tiger.[.][X]
+
+## MSG_0282
+A beautiful and charming dancer[.][LF]
+from Jehanna.[.][X]
+
+## MSG_0283
+An aloof sword fighter from Jehanna.[LF]
+She's known as the Crimson Flash.[.][X]
+
+## MSG_0284
+A sage from the village Caer Pelyn.[.][LF]
+He's Ewan's solemn, but kind, teacher.[X]
+
+## MSG_0285
+A sage-in-training from Jehanna.[LF]
+He reveres his teacher, Saleh.[X]
+
+## MSG_0286
+A young woman from Rausten. She[.][LF]
+fights for justice and order.[.][X]
+
+## MSG_0287
+A berserker from Rausten. He's a[LF]
+hearty man with a thirst for life.[X]
+
+## MSG_0288
+A lazy, greedy, but exceptional[.][LF]
+fighter from the Republic of Carcino.[.][X]
+
+## MSG_0289
+A courageous general in Grado's army.[.][LF]
+He's better known as Obsidian.[X]
+
+## MSG_028A
+A young, pure-hearted girl from[.][LF]
+Darkling Woods. She tends to be shy.[X]
+
+## MSG_028B
+One of Grado's royal mages. He knows[LF]
+the riddle of the Dark Stone.[.][X]
+
+## MSG_028C
+A wandering swordsman from Jehanna.[.][LF]
+He loves to gamble.[.][X]
+
+## MSG_028D
+The dutiful commander of the 3rd[LF]
+battalion of Frelia's pegasus knights.[X]
+
+## MSG_028E
+A young lady of Frelia. She is both[.][LF]
+cheery and sociable.[X]
+
+## MSG_028F
+The prince of Grado. The Dark Stone[.][LF]
+is slowly corrupting his body.[X]
+
+## MSG_0290
+Leader of the Manakete tribe. He was[LF]
+turned into a draco zombie by Lyon.[.][X]
+
+## MSG_0291
+A cavalier of Renais. He's a devoted[LF]
+husband and a serene and quiet man.[.][X]
+
+## MSG_0292
+A general in Grado's army. This cruel[.][LF]
+man is also known as Moonstone.[.][X]
+
+## MSG_0293
+One of Grado's generals. She's also[.][LF]
+known by the name Fluorspar.[X]
+
+## MSG_0294
+Commander of a Grado military force.[X]
+
+## MSG_0295
+One of Bazba's henchmen.[X]
+
+## MSG_0296
+The leader of Bazba's Bandits.[X]
+
+## MSG_0297
+Commander of Grado's border guard.[LF]
+His loyalty is unshakable.[X]
+
+## MSG_0298
+An underling serving General Riev. He[.][LF]
+is a cowardly and ambitious schemer.[X]
+
+## MSG_0299
+A cavalier of Grado and a trusted[.][LF]
+confidant of Tirado.[X]
+
+## MSG_029A
+General Grado's aide. He has utter[LF]
+confidence in his own ingenuity.[X]
+
+## MSG_029B
+Leader of a band of mercenaries hired[.][LF]
+by an unknown agent.[X]
+
+## MSG_029C
+A member of Carcino's Council of[LF]
+Elders and an advocate of Grado.[X]
+
+## MSG_029D
+An aid to Grado's General Caellach. He[LF]
+believes he is an unbeatable tactician.[.][X]
+
+## MSG_029E
+Former leader of Jehanna's army. He[.][LF]
+lost himself for love of his queen.[.][X]
+
+## MSG_029F
+An ambitious general in Grado's army.[.][LF]
+He's better known as Tiger Eye.[.][X]
+
+## MSG_02A0
+A heretic and general in Grado's army.[LF]
+He's also known as Blood Beryl.[.][X]
+
+## MSG_02A1
+A squad commander in Grado's army.[LF]
+He cares nothing for his men's lives.[.][X]
+
+## MSG_02A2
+A cavalier sworn in service to Grado.[.][LF]
+He serves as Valter's confidant.[X]
+
+## MSG_02A3
+A troop leader in Grado's army.[.][X]
+
+## MSG_02A4
+A general in Grado's army. He is[LF]
+better known as Sunstone.[.][X]
+
+## MSG_02A5
+The leader of a mercenary band[LF]
+working in the pay of Tirado.[.][X]
+
+## MSG_02A6
+The emperor of Grado, resurrected by[LF]
+the power of the Dark Stone.[X]
+
+## MSG_02A7
+The crown prince of Grado. He's fallen[LF]
+under the control of the Demon King.[X]
+
+## MSG_02A8
+A former cavalier now serving Grado[.][LF]
+in hopes of restoring his dead wife.[X]
+
+## MSG_02A9
+The army of Grado, the largest[LF]
+nation on the entire continent.[.][X]
+
+## MSG_02AA
+The scattered remnants of what was[LF]
+once the greatest army of the land.[.][X]
+
+## MSG_02AB
+A mercenary fighting as part of[.][LF]
+Binks's force.[X]
+
+## MSG_02AC
+One of the treasure hunters who[.][LF]
+have laid claim to this region.[.][X]
+
+## MSG_02AD
+One of the bandits who have laid[LF]
+claim to the Carcino territories.[.][X]
+
+## MSG_02AE
+A member of Bazba's Bandits, who[LF]
+roam this region.[.][X]
+
+## MSG_02AF
+A soldier in the employ of Pablo[LF]
+of Carcino.[.][X]
+
+## MSG_02B0
+Mercenaries hired by Pablo of Carcino.[X]
+
+## MSG_02B1
+A grotesque creature created by[.][LF]
+magic and born in darkness.[.][X]
+
+## MSG_02B2
+The Demon King, lord of darkness. His[.][LF]
+sole desire is to remake the world.[.][X]
+
+## MSG_02B3
+The devoted king of Renais. His sole[LF]
+concern is for the people he leads.[.][X]
+
+## MSG_02B4
+The king of Frelia. He's a good friend[LF]
+to both Eirika and Ephraim.[.][X]
+
+## MSG_02B5
+The pontifex of Rausten. He is a[LF]
+compassionate and pious ruler.[X]
+
+## MSG_02B6
+A member of Carcino's Council of[LF]
+Elders and an opponent of Grado.[X]
+
+## MSG_02B7
+An old woman of Caer Pelyn. Over 100[LF]
+years in age, she is a font of wisdom.[X]
+
+## MSG_02B8
+The queen of Jehanna. She is known[LF]
+as the Queen of the White Dunes.[X]
+
+## MSG_02B9
+A pegasus knight of Frelia. She[.][LF]
+serves as their message bearer.[.][X]
+
+## MSG_02BA
+A knight of Frelia, sworn in service[LF]
+of Hayden, the Sage King.[.][X]
+
+## MSG_02BB
+A knight of Rausten, sworn in service[.][LF]
+to Mansel, the Divine Emperor.[X]
+
+## MSG_02BC
+A resident of the capital of Renais,[LF]
+which was seized by Novala.[.][X]
+
+## MSG_02BD
+A citizen living on the river Narube[LF]
+who has been caught up in the war.[X]
+
+## MSG_02BE
+Temp.: Enemy Boss[.][X]
+
+## MSG_02BF
+Lord[X]
+
+## MSG_02C0
+Great Lord[X]
+
+## MSG_02C1
+Cavalier[X]
+
+## MSG_02C2
+Paladin[.][X]
+
+## MSG_02C3
+Knight[X]
+
+## MSG_02C4
+General[.][X]
+
+## MSG_02C5
+Thief[.][X]
+
+## MSG_02C6
+Mercenary[.][X]
+
+## MSG_02C7
+Hero[X]
+
+## MSG_02C8
+Myrmidon[X]
+
+## MSG_02C9
+Swordmaster[.][X]
+
+## MSG_02CA
+Assassin[X]
+
+## MSG_02CB
+Archer[X]
+
+## MSG_02CC
+Sniper[X]
+
+## MSG_02CD
+Ranger[X]
+
+## MSG_02CE
+Wyvern Rider[X]
+
+## MSG_02CF
+Wyvern Lord[.][X]
+
+## MSG_02D0
+Wyvern Kn.[X]
+
+## MSG_02D1
+Mage[X]
+
+## MSG_02D2
+Sage[X]
+
+## MSG_02D3
+Mage Knight[.][X]
+
+## MSG_02D4
+Bishop[X]
+
+## MSG_02D5
+Nomad[.][X]
+
+## MSG_02D6
+Nmd Trooper[.][X]
+
+## MSG_02D7
+Manakete[X]
+
+## MSG_02D8
+Journeyman[X]
+
+## MSG_02D9
+Pupil[.][X]
+
+## MSG_02DA
+Recruit[.][X]
+
+## MSG_02DB
+Rogue[.][X]
+
+## MSG_02DC
+Fighter[.][X]
+
+## MSG_02DD
+Warrior[.][X]
+
+## MSG_02DE
+Brigand[.][X]
+
+## MSG_02DF
+Berserker[.][X]
+
+## MSG_02E0
+Great Knight[X]
+
+## MSG_02E1
+Shaman[X]
+
+## MSG_02E2
+Druid[.][X]
+
+## MSG_02E3
+Summoner[X]
+
+## MSG_02E4
+Monk[X]
+
+## MSG_02E5
+Bard[X]
+
+## MSG_02E6
+Priest[X]
+
+## MSG_02E7
+Pegasus Kn.[.][X]
+
+## MSG_02E8
+Falcoknight[.][X]
+
+## MSG_02E9
+Cleric[X]
+
+## MSG_02EA
+Troubadour[X]
+
+## MSG_02EB
+Valkyrie[X]
+
+## MSG_02EC
+Dancer[X]
+
+## MSG_02ED
+Soldier[.][X]
+
+## MSG_02EE
+Pirate[X]
+
+## MSG_02EF
+Necromancer[.][X]
+
+## MSG_02F0
+Fleet[.][X]
+
+## MSG_02F1
+Phantom[.][X]
+
+## MSG_02F2
+Revenant[X]
+
+## MSG_02F3
+Entombed[X]
+
+## MSG_02F4
+Bonewalker[X]
+
+## MSG_02F5
+Wight[.][X]
+
+## MSG_02F6
+Bael[X]
+
+## MSG_02F7
+Elder Bael[X]
+
+## MSG_02F8
+Cyclops[.][X]
+
+## MSG_02F9
+Mauthe Doog[.][X]
+
+## MSG_02FA
+Gwyllgi[.][X]
+
+## MSG_02FB
+Tarvos[X]
+
+## MSG_02FC
+Maelduin[X]
+
+## MSG_02FD
+Mogall[X]
+
+## MSG_02FE
+Arch Mogall[.][X]
+
+## MSG_02FF
+Gorgon[X]
+
+## MSG_0300
+Gorgon Egg[X]
+
+## MSG_0301
+Gargoyle[X]
+
+## MSG_0302
+Deathgoyle[X]
+
+## MSG_0303
+Draco Zombie[X]
+
+## MSG_0304
+Demon King[X]
+
+## MSG_0305
+Civilian[X]
+
+## MSG_0306
+Pontifex[X]
+
+## MSG_0307
+Queen[.][X]
+
+## MSG_0308
+Supply[X]
+
+## MSG_0309
+Noble heirs to a ruling house.[LF]
+They possess great potential.[.][X]
+
+## MSG_030A
+Noble heirs to a ruling house.[LF]
+They possess great potential.[.][X]
+
+## MSG_030B
+Mounted lords whose fine qualities[LF]
+set them apart from their peers.[X]
+
+## MSG_030C
+Mounted lords whose fine qualities[LF]
+set them apart from their peers.[X]
+
+## MSG_030D
+Mounted knights with swift movement.[LF]
+Equip: Swords, lances.[X]
+
+## MSG_030E
+Mounted knights with superior[.][LF]
+abilities. Equip: Swords, lances.[.][X]
+
+## MSG_030F
+Heavily armored knights with poor[.][LF]
+movement. Equip: Lances.[X]
+
+## MSG_0310
+Knights of great skill. Equip: Swords,[LF]
+lances, axes. Skill: Great Shield.[X]
+
+## MSG_0311
+Multitalented knaves with an eye for[LF]
+riches. Equip: Swords.[X]
+
+## MSG_0312
+Well-balanced professional soldiers-[LF]
+for-hire. Equip: Swords.[X]
+
+## MSG_0313
+Seasoned veterans with remarkable[.][LF]
+skill. Equip: Swords, axes.[.][X]
+
+## MSG_0314
+Talented swordsmen skilled in swift[.][LF]
+killing strokes. Equip: Swords.[.][X]
+
+## MSG_0315
+Lightning-fast swordsmen of peerless[LF]
+and lethal skill. Equip: Swords.[X]
+
+## MSG_0316
+Masters of the killing arts.[LF]
+Equip: Swords. Skill: Silencer.[.][X]
+
+## MSG_0317
+Warriors who use bows to attack from[LF]
+afar. Equip: Bows.[X]
+
+## MSG_0318
+Archers of unparalleled accuracy.[.][LF]
+Equip: Bows. Skill: Sure Strike.[X]
+
+## MSG_0319
+Fighters skilled in both sword and bow.[.][LF]
+Equip: Swords, bows.[X]
+
+## MSG_031A
+High-flying knights vulnerable only to[LF]
+bows and magic. Equip: Lances.[X]
+
+## MSG_031B
+Wyvern-mounted knights of superior[LF]
+skill. Equip: Swords, lances.[.][X]
+
+## MSG_031C
+Wyvern riders who can pierce enemy[LF]
+defenses. Equip: Lances. Skill: Pierce.[.][X]
+
+## MSG_031D
+Magic wielders with solid skills but low[LF]
+physical strength. Equip: Anima.[X]
+
+## MSG_031E
+Advanced scholars of magical codices.[.][LF]
+Equip: Anima, light, staves.[X]
+
+## MSG_031F
+Knights trained in both anima and[.][LF]
+staves. Equip: Anima, staves.[.][X]
+
+## MSG_0320
+Users of monster-slaying light magic.[.][LF]
+Equip: Light, staves. Skill: Slayer.[X]
+
+## MSG_0321
+Mounted plainsmen with good[.][LF]
+movement. Armed with bows.[X]
+
+## MSG_0322
+An honorific given to nomads of[.][LF]
+great skill. Equip: Bows, swords.[.][X]
+
+## MSG_0323
+Mysterious tribesmen who can turn[.][LF]
+into dragons. Equip: Dragonstone.[.][X]
+
+## MSG_0324
+Young fighters with high[LF]
+expectations. Equip: Axes.[X]
+
+## MSG_0325
+Mages in training with lofty[LF]
+aspirations. Equip: Anima.[X]
+
+## MSG_0326
+Knaves who need no tools or keys to[.][LF]
+open locks. Equip: Swords. Skill: Pick.[.][X]
+
+## MSG_0327
+Ruffians with great strength but[LF]
+poor defense. Equip: Axes.[X]
+
+## MSG_0328
+Stalwart warriors whose power is[LF]
+their pride. Equip: Axes, bows.[.][X]
+
+## MSG_0329
+Mighty mercenaries who thrive[.][LF]
+in mountains. Equip: Axes.[X]
+
+## MSG_032A
+Fighters at home both in mountains[LF]
+and at sea. Equip: Axes.[X]
+
+## MSG_032B
+Knights with great mobility and[.][LF]
+defense. Equip: Swords, lances, axes.[.][X]
+
+## MSG_032C
+Wielders of magic who are stronger,[.][LF]
+but slower, than mages. Equip: Dark.[X]
+
+## MSG_032D
+Wielders of deep and ancient magic.[.][LF]
+Equip: Dark, anima, staves.[.][X]
+
+## MSG_032E
+Master sorcerers who summon fighters.[.][LF]
+Equip: Dark, staves. Skill: Summon.[.][X]
+
+## MSG_032F
+Users of light magic with high[LF]
+resistance. Equip: Light.[.][X]
+
+## MSG_0330
+Spiritual guides who use sacred[.][LF]
+staves to heal allies. Equip: Staves.[.][X]
+
+## MSG_0331
+Musicians whose melodies aid[LF]
+allies. Unable to attack.[.][X]
+
+## MSG_0332
+Unproven knights with dreams[LF]
+of glory. Equip: Lances.[X]
+
+## MSG_0333
+Airborne knights who resist magic but[.][LF]
+are weak against bows. Equip: Lances.[.][X]
+
+## MSG_0334
+Swift sky warriors who shrug off[LF]
+magic attacks. Equip: Swords, lances.[.][X]
+
+## MSG_0335
+Holy women who use sacred staves to[.][LF]
+heal their allies. Equip: Staves.[.][X]
+
+## MSG_0336
+Maidens who wield staves from[.][LF]
+horseback. Equip: Staves.[.][X]
+
+## MSG_0337
+Battle maidens who wield both staves[LF]
+and light magic. Equip: Light, staves.[X]
+
+## MSG_0338
+Dancers whose dances revitalize[.][LF]
+their allies. They cannot attack.[.][X]
+
+## MSG_0339
+Average soldiers possessing[.][LF]
+no special abilities.[.][X]
+
+## MSG_033A
+Tough brawlers who call the[.][LF]
+sea their home. Equip: Axes.[X]
+
+## MSG_033B
+Master of the Dark Stone who uses[.][LF]
+dark magic to command corpses.[X]
+
+## MSG_033C
+Warships that patrol the open seas.[.][LF]
+They carry powerful ballistae.[X]
+
+## MSG_033D
+Phantom warriors who possess great[LF]
+strength but vanish when attacked.[X]
+
+## MSG_033E
+Walking corpses that move slowly[LF]
+but attack with sharp claws.[X]
+
+## MSG_033F
+Reanimated corpses. They're not fast,[.][LF]
+but their talons rend flesh with ease.[X]
+
+## MSG_0340
+Dead warriors given will by dark magic.[.][LF]
+They wield a variety of weapons.[X]
+
+## MSG_0341
+Skeletons driven by terrible magic.[.][LF]
+They can wield many weapons.[X]
+
+## MSG_0342
+Giant poisonous mountain spiders with[.][LF]
+venom-filled fangs.[.][X]
+
+## MSG_0343
+Magic-infused giant spiders.[LF]
+Their venom is lethal.[X]
+
+## MSG_0344
+One-eyed giants who use their[.][LF]
+strength to wield huge axes.[X]
+
+## MSG_0345
+Blood-hungry demon dogs that attack[.][LF]
+with keen-edged fangs.[X]
+
+## MSG_0346
+Savage, three-headed hellhounds.[LF]
+Their fangs are cruel death dealers.[X]
+
+## MSG_0347
+Vile man-beasts who thunder into[LF]
+combat with colossal axes.[X]
+
+## MSG_0348
+Immensely fast and strong creatures[.][LF]
+who hunt with axes and bows.[X]
+
+## MSG_0349
+Perilous floating orbs filled with[LF]
+blighting dark magic.[.][X]
+
+## MSG_034A
+Mogall whose dread power exceeds[LF]
+that of their lesser cousins.[.][X]
+
+## MSG_034B
+Comely and cursed, these creatures[LF]
+turn all who behold them into stone.[X]
+
+## MSG_034C
+Eggs of lovely and deadly gorgons.[X]
+
+## MSG_034D
+Malignant fiends who hunt with[LF]
+lances. They ride on fell wings.[X]
+
+## MSG_034E
+Gargoyles empowered by magic. They[LF]
+are both swift and brutal.[X]
+
+## MSG_034F
+The revived corpse of a dragon. Its[.][LF]
+putrid breath decays all it touches.[X]
+
+## MSG_0350
+This foul being is the master of the[LF]
+dark. Its power exceeds mortal ken.[.][X]
+
+## MSG_0351
+An innocent peasant lacking any[.][LF]
+combat skills at all.[.][X]
+
+## MSG_0352
+Spiritual leader of Rausten. He claims[LF]
+ancestry with the saintly Latona.[.][X]
+
+## MSG_0353
+The kingdom's highest authority. She[LF]
+is a popular ruler of great virtue.[.][X]
+
+## MSG_0354
+Iron Sword[X]
+
+## MSG_0355
+Slim Sword[X]
+
+## MSG_0356
+Steel Sword[.][X]
+
+## MSG_0357
+Silver Sword[X]
+
+## MSG_0358
+Iron Blade[X]
+
+## MSG_0359
+Steel Blade[.][X]
+
+## MSG_035A
+Silver Blade[X]
+
+## MSG_035B
+Poison Sword[X]
+
+## MSG_035C
+Rapier[X]
+
+## MSG_035D
+Brave Sword[.][X]
+
+## MSG_035E
+Shamshir[X]
+
+## MSG_035F
+Killing Edge[X]
+
+## MSG_0360
+Armorslayer[.][X]
+
+## MSG_0361
+Wyrmslayer[X]
+
+## MSG_0362
+Light Brand[.][X]
+
+## MSG_0363
+Runesword[.][X]
+
+## MSG_0364
+Lancereaver[.][X]
+
+## MSG_0365
+Zanbato[.][X]
+
+## MSG_0366
+Sieglinde[.][X]
+
+## MSG_0367
+Audhulma[X]
+
+## MSG_0368
+Wind Sword[X]
+
+## MSG_0369
+Iron Lance[X]
+
+## MSG_036A
+Slim Lance[X]
+
+## MSG_036B
+Steel Lance[.][X]
+
+## MSG_036C
+Silver Lance[X]
+
+## MSG_036D
+Toxin Lance[.][X]
+
+## MSG_036E
+Brave Lance[.][X]
+
+## MSG_036F
+Killer Lance[X]
+
+## MSG_0370
+Horseslayer[.][X]
+
+## MSG_0371
+Javelin[.][X]
+
+## MSG_0372
+Spear[.][X]
+
+## MSG_0373
+Axereaver[.][X]
+
+## MSG_0374
+Reginleif[.][X]
+
+## MSG_0375
+Siegmund[X]
+
+## MSG_0376
+Vidofnir[X]
+
+## MSG_0377
+Dragonspear[.][X]
+
+## MSG_0378
+Heavy Spear[.][X]
+
+## MSG_0379
+Short Spear[.][X]
+
+## MSG_037A
+Iron Axe[X]
+
+## MSG_037B
+Steel Axe[.][X]
+
+## MSG_037C
+Silver Axe[X]
+
+## MSG_037D
+Poison Axe[X]
+
+## MSG_037E
+Brave Axe[.][X]
+
+## MSG_037F
+Killer Axe[X]
+
+## MSG_0380
+Halberd[.][X]
+
+## MSG_0381
+Hammer[X]
+
+## MSG_0382
+Devil Axe[.][X]
+
+## MSG_0383
+Hand Axe[X]
+
+## MSG_0384
+Tomahawk[X]
+
+## MSG_0385
+Swordreaver[.][X]
+
+## MSG_0386
+Swordslayer[.][X]
+
+## MSG_0387
+Dragon Axe[X]
+
+## MSG_0388
+Battle Axe[X]
+
+## MSG_0389
+Garm[X]
+
+## MSG_038A
+Hatchet[.][X]
+
+## MSG_038B
+Iron Bow[X]
+
+## MSG_038C
+Steel Bow[.][X]
+
+## MSG_038D
+Silver Bow[X]
+
+## MSG_038E
+Poison Bow[X]
+
+## MSG_038F
+Killer Bow[X]
+
+## MSG_0390
+Brave Bow[.][X]
+
+## MSG_0391
+Short Bow[.][X]
+
+## MSG_0392
+Longbow[.][X]
+
+## MSG_0393
+Ballista[X]
+
+## MSG_0394
+Iron Ballista[.][X]
+
+## MSG_0395
+Killer Ballista[.][X]
+
+## MSG_0396
+Nidhogg[.][X]
+
+## MSG_0397
+Wretched Air[X]
+
+## MSG_0398
+Dragonstone[.][X]
+
+## MSG_0399
+Stone Shard[.][X]
+
+## MSG_039A
+Demon Light[.][X]
+
+## MSG_039B
+Ravager[.][X]
+
+## MSG_039C
+Nightmare[.][X]
+
+## MSG_039D
+Sharp Claw[X]
+
+## MSG_039E
+Rotten Claw[.][X]
+
+## MSG_039F
+Fetid Claw[X]
+
+## MSG_03A0
+Poison Claw[.][X]
+
+## MSG_03A1
+Lethal Talon[X]
+
+## MSG_03A2
+Fiery Fang[X]
+
+## MSG_03A3
+Hellfang[X]
+
+## MSG_03A4
+Shadowkiller[X]
+
+## MSG_03A5
+Bright Lance[X]
+
+## MSG_03A6
+Fiendcleaver[X]
+
+## MSG_03A7
+Beacon Bow[X]
+
+## MSG_03A8
+Emblem Seal[.][X]
+
+## MSG_03A9
+Fire[X]
+
+## MSG_03AA
+Thunder[.][X]
+
+## MSG_03AB
+Elfire[X]
+
+## MSG_03AC
+Alacalibur[X]
+
+## MSG_03AD
+Bolting[.][X]
+
+## MSG_03AE
+Fimbulvetr[X]
+
+## MSG_03AF
+Excalibur[.][X]
+
+## MSG_03B0
+Lightning[.][X]
+
+## MSG_03B1
+Shine[.][X]
+
+## MSG_03B2
+Divine[X]
+
+## MSG_03B3
+Purge[.][X]
+
+## MSG_03B4
+Aura[X]
+
+## MSG_03B5
+Ivaldi[X]
+
+## MSG_03B6
+Flux[X]
+
+## MSG_03B7
+Luna[X]
+
+## MSG_03B8
+Nosferatu[.][X]
+
+## MSG_03B9
+Eclipse[.][X]
+
+## MSG_03BA
+Fenrir[X]
+
+## MSG_03BB
+Gleipnir[X]
+
+## MSG_03BC
+Naglfar[.][X]
+
+## MSG_03BD
+Stone[.][X]
+
+## MSG_03BE
+Evil Eye[X]
+
+## MSG_03BF
+Crimson Eye[.][X]
+
+## MSG_03C0
+Demon Surge[.][X]
+
+## MSG_03C1
+Shadowshot[X]
+
+## MSG_03C2
+Heal[X]
+
+## MSG_03C3
+Mend[X]
+
+## MSG_03C4
+Recover[.][X]
+
+## MSG_03C5
+Physic[X]
+
+## MSG_03C6
+Fortify[.][X]
+
+## MSG_03C7
+Restore[.][X]
+
+## MSG_03C8
+Silence[.][X]
+
+## MSG_03C9
+Sleep[.][X]
+
+## MSG_03CA
+Berserk[.][X]
+
+## MSG_03CB
+Warp[X]
+
+## MSG_03CC
+Rescue[X]
+
+## MSG_03CD
+Torch[.][X]
+
+## MSG_03CE
+Hammerne[X]
+
+## MSG_03CF
+Unlock[X]
+
+## MSG_03D0
+Barrier[.][X]
+
+## MSG_03D1
+Latona[X]
+
+## MSG_03D2
+Dance[.][X]
+
+## MSG_03D3
+Play[X]
+
+## MSG_03D4
+Angelic Robe[X]
+
+## MSG_03D5
+Energy Ring[.][X]
+
+## MSG_03D6
+Secret Book[.][X]
+
+## MSG_03D7
+Speedwing[.][X]
+
+## MSG_03D8
+Goddess Icon[X]
+
+## MSG_03D9
+Dragonshield[X]
+
+## MSG_03DA
+Talisman[X]
+
+## MSG_03DB
+Swiftsole[.][X]
+
+## MSG_03DC
+Body Ring[.][X]
+
+## MSG_03DD
+Hero Crest[X]
+
+## MSG_03DE
+Knight Crest[X]
+
+## MSG_03DF
+Orion's Bolt[X]
+
+## MSG_03E0
+Elysian Whip[X]
+
+## MSG_03E1
+Guiding Ring[X]
+
+## MSG_03E2
+Chest Key[.][X]
+
+## MSG_03E3
+Door Key[X]
+
+## MSG_03E4
+Lockpick[X]
+
+## MSG_03E5
+Vulnerary[.][X]
+
+## MSG_03E6
+Elixir[X]
+
+## MSG_03E7
+Pure Water[X]
+
+## MSG_03E8
+Antitoxin[.][X]
+
+## MSG_03E9
+Torch[.][X]
+
+## MSG_03EA
+Fili Shield[.][X]
+
+## MSG_03EB
+Member Card[.][X]
+
+## MSG_03EC
+Silver Card[.][X]
+
+## MSG_03ED
+Gold Gem[X]
+
+## MSG_03EE
+Black Gem[.][X]
+
+## MSG_03EF
+White Gem[.][X]
+
+## MSG_03F0
+Blue Gem[X]
+
+## MSG_03F1
+Red Gem[.][X]
+
+## MSG_03F2
+Gold[X]
+
+## MSG_03F3
+Hoplon Guard[X]
+
+## MSG_03F4
+Master Seal[.][X]
+
+## MSG_03F5
+Metis's Tome[X]
+
+## MSG_03F6
+Ocean Seal[X]
+
+## MSG_03F7
+Lunar Brace[.][X]
+
+## MSG_03F8
+Solar Brace[.][X]
+
+## MSG_03F9
+1 Gold[X]
+
+## MSG_03FA
+5 Gold[X]
+
+## MSG_03FB
+10 Gold[.][X]
+
+## MSG_03FC
+50 Gold[.][X]
+
+## MSG_03FD
+100 Gold[X]
+
+## MSG_03FE
+150 Gold[X]
+
+## MSG_03FF
+200 Gold[X]
+
+## MSG_0400
+3,000 Gold[X]
+
+## MSG_0401
+5,000 Gold[X]
+
+## MSG_0402
+Juna Fruit[X]
+
+## MSG_0403
+Dummy[.][X]
+
+## MSG_0404
+ [.][X]
+
+## MSG_0405
+ [.][X]
+
+## MSG_0406
+ [.][X]
+
+## MSG_0407
+ [.][X]
+
+## MSG_0408
+ [.][X]
+
+## MSG_0409
+ [.][X]
+
+## MSG_040A
+ [.][X]
+
+## MSG_040B
+Coated in lethal poison.[X]
+
+## MSG_040C
+Effective against infantry.[.][X]
+
+## MSG_040D
+Can strike consecutively.[.][X]
+
+## MSG_040E
+Improves critical hit rate.[.][X]
+
+## MSG_040F
+Improves critical hit rate.[.][X]
+
+## MSG_0410
+Effective against knights.[X]
+
+## MSG_0411
+Effective against wyverns.[X]
+
+## MSG_0412
+Suffused with light magic.[X]
+
+## MSG_0413
+Imbued with dark magic.[.][X]
+
+## MSG_0414
+Strong against spears.[X]
+
+## MSG_0415
+Effective against cavalry.[X]
+
+## MSG_0416
+The Sacred Twin storm blade. Str +5.[X]
+
+## MSG_0417
+The Sacred Twin ice blade. Res +5.[X]
+
+## MSG_0418
+Capable of indirect attacks.[X]
+
+## MSG_0419
+ [.][X]
+
+## MSG_041A
+ [.][X]
+
+## MSG_041B
+ [.][X]
+
+## MSG_041C
+ [.][X]
+
+## MSG_041D
+Coated in lethal poison.[X]
+
+## MSG_041E
+Can strike consecutively.[.][X]
+
+## MSG_041F
+Improves critical hit rate.[.][X]
+
+## MSG_0420
+Effective against cavalry.[X]
+
+## MSG_0421
+Doubles as ranged attack.[.][X]
+
+## MSG_0422
+Doubles as ranged attack.[.][X]
+
+## MSG_0423
+Strong against axes.[X]
+
+## MSG_0424
+Strong against cavalry, knights.[X]
+
+## MSG_0425
+The Sacred Twin fire lance. Str +5.[.][X]
+
+## MSG_0426
+The Sacred Twin winged lance. Def +5.[.][X]
+
+## MSG_0427
+Effective against wyverns.[X]
+
+## MSG_0428
+Effective against knights.[X]
+
+## MSG_0429
+Doubles as ranged attack.[.][X]
+
+## MSG_042A
+ [.][X]
+
+## MSG_042B
+ [.][X]
+
+## MSG_042C
+ [.][X]
+
+## MSG_042D
+Coated in lethal poison.[X]
+
+## MSG_042E
+Can strike consecutively.[.][X]
+
+## MSG_042F
+Improves critical hit rate.[.][X]
+
+## MSG_0430
+Effective against cavalry.[X]
+
+## MSG_0431
+Effective against knights.[X]
+
+## MSG_0432
+Might injure its wielder.[.][X]
+
+## MSG_0433
+Doubles as ranged attack.[.][X]
+
+## MSG_0434
+Doubles as ranged attack.[.][X]
+
+## MSG_0435
+Strong against swords.[X]
+
+## MSG_0436
+Good against swordfighters.[.][X]
+
+## MSG_0437
+Effective against wyverns.[X]
+
+## MSG_0438
+The Sacred Twin black axe. Spd +5.[X]
+
+## MSG_0439
+Strong, but difficult to wield.[.][X]
+
+## MSG_043A
+Lightweight and easy to hit with.[.][X]
+
+## MSG_043B
+ [.][X]
+
+## MSG_043C
+ [.][X]
+
+## MSG_043D
+ [.][X]
+
+## MSG_043E
+Coated in lethal poison.[X]
+
+## MSG_043F
+Improves critical hit rate.[.][X]
+
+## MSG_0440
+Can strike consecutively.[.][X]
+
+## MSG_0441
+Improves critical hit rate.[.][X]
+
+## MSG_0442
+Extended attack range.[X]
+
+## MSG_0443
+Long-range weapon.[X]
+
+## MSG_0444
+Super long-range weapon.[X]
+
+## MSG_0445
+Improves critical hit rate.[.][X]
+
+## MSG_0446
+The Sacred Twin serpent bow. Luck +5.[.][X]
+
+## MSG_0447
+The breath of a dragon corpse.[LF]
+It decays everything it touches. [.][X]
+
+## MSG_0448
+A stone imbued with mysterious might.[.][LF]
+Myrrh draws strength from it.[.][X]
+
+## MSG_0449
+DUMMY[.][X]
+
+## MSG_044A
+A malefic flash that destroys[.][LF]
+everything it touches.[X]
+
+## MSG_044B
+A horrific blow that invites[LF]
+the destruction of all.[.][X]
+
+## MSG_044C
+Lulls all enemies within range[LF]
+into a deep slumber.[X]
+
+## MSG_044D
+A keen, flesh-tearing claw.[.][X]
+
+## MSG_044E
+A sharpened, decayed claw.[X]
+
+## MSG_044F
+A foul talon meant to rend flesh.[.][X]
+
+## MSG_0450
+A claw dripping with poison.[X]
+
+## MSG_0451
+A claw slathered in deadly poison.[X]
+
+## MSG_0452
+A sharp, piercing fang.[.][X]
+
+## MSG_0453
+A long, daggerlike fang.[X]
+
+## MSG_0454
+Effective against monsters.[.][X]
+
+## MSG_0455
+Effective against monsters.[.][X]
+
+## MSG_0456
+Effective against monsters.[.][X]
+
+## MSG_0457
+Effective against monsters.[.][X]
+
+## MSG_0458
+ [.][X]
+
+## MSG_0459
+ [.][X]
+
+## MSG_045A
+ [.][X]
+
+## MSG_045B
+ [.][X]
+
+## MSG_045C
+Long-range lightning strike.[X]
+
+## MSG_045D
+ [.][X]
+
+## MSG_045E
+A Sacred Twin tome. Spd +5.[.][X]
+
+## MSG_045F
+ [.][X]
+
+## MSG_0460
+ [.][X]
+
+## MSG_0461
+ [.][X]
+
+## MSG_0462
+Long-range magic attack.[X]
+
+## MSG_0463
+ [.][X]
+
+## MSG_0464
+A Sacred Twin tome. Def +5.[.][X]
+
+## MSG_0465
+ [.][X]
+
+## MSG_0466
+Negates enemy resistance.[.][X]
+
+## MSG_0467
+Drains enemy HP into caster.[X]
+
+## MSG_0468
+Reduces enemy HP by half.[.][X]
+
+## MSG_0469
+ [.][X]
+
+## MSG_046A
+A Sacred Twin tome. Skill +5.[.][X]
+
+## MSG_046B
+ [.][X]
+
+## MSG_046C
+Turns targets to stone for a while.[.][X]
+
+## MSG_046D
+ [.][X]
+
+## MSG_046E
+ [.][X]
+
+## MSG_046F
+ [.][X]
+
+## MSG_0470
+Long-range dark magic bolt.[.][X]
+
+## MSG_0471
+Restores HP to allies in[LF]
+adjacent spaces.[X]
+
+## MSG_0472
+Restores many HP to allies[LF]
+in adjacent spaces.[.][X]
+
+## MSG_0473
+Restores all HP to allies[.][LF]
+in adjacent spaces.[.][X]
+
+## MSG_0474
+Restores HP to allies[.][LF]
+at a distance.[X]
+
+## MSG_0475
+Restores all HP to allies[.][LF]
+nearby.[.][X]
+
+## MSG_0476
+Returns allies to normal[LF]
+condition. (Cures sleep, etc.)[X]
+
+## MSG_0477
+Halts all enemy magic[.][LF]
+for several turns.[X]
+
+## MSG_0478
+Puts enemies to sleep for[.][LF]
+several turns.[X]
+
+## MSG_0479
+Sends enemies into a[LF]
+berserker rage.[.][X]
+
+## MSG_047A
+Moves allies in adjacent[LF]
+spaces instantly elsewhere.[.][X]
+
+## MSG_047B
+Moves allies from distant[.][LF]
+spaces to adjacent ones.[X]
+
+## MSG_047C
+Lights an area. The light[.][LF]
+grows weaker each turn.[.][X]
+
+## MSG_047D
+Restores an adjacent ally's[.][LF]
+weapons to new condition.[.][X]
+
+## MSG_047E
+Unlocks doors, even from[LF]
+a distance.[.][X]
+
+## MSG_047F
+Increases magic resistance[LF]
+of adjacent allies briefly.[.][X]
+
+## MSG_0480
+A Sacred Twin staff. The[LF]
+ancient Staff of Latona.[X]
+
+## MSG_0481
+A dance that allows[.][LF]
+allies to move again.[.][X]
+
+## MSG_0482
+A song that allows[LF]
+allies to move again.[.][X]
+
+## MSG_0483
+Increases HP by a max of[LF]
+7 points. Vanishes after use.[.][X]
+
+## MSG_0484
+Increases Mag or Str by[.][LF]
+2 points. Vanishes after use.[.][X]
+
+## MSG_0485
+Increases Skill by 2 points.[LF]
+Vanishes after use.[.][X]
+
+## MSG_0486
+Increases speed by[LF]
+2 points. Vanishes after use.[.][X]
+
+## MSG_0487
+Increases luck by[.][LF]
+2 points. Vanishes after use.[.][X]
+
+## MSG_0488
+Increases defense by[LF]
+2 points. Vanishes after use.[.][X]
+
+## MSG_0489
+Increases resistance by[.][LF]
+2 points. Vanishes after use.[.][X]
+
+## MSG_048A
+Increases movement by[.][LF]
+2 points. Vanishes after use.[.][X]
+
+## MSG_048B
+Increases constitution by[.][LF]
+2 points. Vanishes after use.[.][X]
+
+## MSG_048C
+For mercenaries, myrmidons,[.][LF]
+and fighters Lv. 10 and up.[.][X]
+
+## MSG_048D
+For knights and cavaliers[.][LF]
+Lv. 10 and up.[X]
+
+## MSG_048E
+For archers[.][LF]
+Lv. 10 and up.[X]
+
+## MSG_048F
+For pegasus knights and[.][LF]
+wyvern riders Lv. 10 and up.[X]
+
+## MSG_0490
+For magic wielders and[LF]
+troubadours Lv. 10 and up.[X]
+
+## MSG_0491
+Opens chests.[.][X]
+
+## MSG_0492
+Opens doors in[LF]
+adjacent spaces.[X]
+
+## MSG_0493
+Opens doors and chests.[.][LF]
+Usable only by thieves.[.][X]
+
+## MSG_0494
+A medicinal solution used[.][LF]
+for healing minor wounds.[.][X]
+
+## MSG_0495
+A powerful solution that[LF]
+restores all HP.[X]
+
+## MSG_0496
+A draught that boosts Res.[LF]
+Grows weaker each turn.[.][X]
+
+## MSG_0497
+A medicinal solution that[.][LF]
+cures poison.[.][X]
+
+## MSG_0498
+A staff with burning pitch.[.][LF]
+Grows dimmer each turn.[.][X]
+
+## MSG_0499
+An amulet that protects fliers[LF]
+from arrows.[X]
+
+## MSG_049A
+If someone with this card[.][LF]
+stops in a suspicious space...[X]
+
+## MSG_049B
+A special card that reduces[.][LF]
+the cost of all items by half.[X]
+
+## MSG_049C
+A valuable gemstone worth[.][LF]
+20,000 gold.[X]
+
+## MSG_049D
+A valuable gemstone worth[.][LF]
+15,000 gold.[X]
+
+## MSG_049E
+A valuable gemstone worth[.][LF]
+10,000 gold.[X]
+
+## MSG_049F
+A rare gemstone worth[.][LF]
+5,000 gold.[.][X]
+
+## MSG_04A0
+An uncommon gemstone[LF]
+worth 2,500 gold.[.][X]
+
+## MSG_04A1
+A bag full of money.[X]
+
+## MSG_04A2
+A trap that damages units[.][LF]
+that step on it.[X]
+
+## MSG_04A3
+A device that blocks units[LF]
+from entering spaces.[.][X]
+
+## MSG_04A4
+A device that negates[.][LF]
+enemy critical attacks.[.][X]
+
+## MSG_04A5
+For some units Lv. 10 and up[LF]
+who have not changed class.[.][X]
+
+## MSG_04A6
+Gives a little treat to the[.][LF]
+unit that uses it.[X]
+
+## MSG_04A7
+For use by thieves and[LF]
+pirates Lv. 10 and up.[X]
+
+## MSG_04A8
+For use by Eirika,[LF]
+princess of Renais.[.][X]
+
+## MSG_04A9
+For use by Ephraim,[.][LF]
+prince of Renais.[.][X]
+
+## MSG_04AA
+Give this to a worthy unit[LF]
+and see what happens.[.][X]
+
+## MSG_04AB
+DUMMY[.][X]
+
+## MSG_04AC
+Draco Zombie only.[X]
+
+## MSG_04AD
+Manakete only.[X]
+
+## MSG_04AE
+Creatures only.[.][X]
+
+## MSG_04AF
+Restores some HP.[.][X]
+
+## MSG_04B0
+Restores more HP.[.][X]
+
+## MSG_04B1
+Restores all HP.[X]
+
+## MSG_04B2
+Restores HP to[LF]
+distant allies.[.][X]
+
+## MSG_04B3
+Restores HP to all[LF]
+allies in one area.[.][X]
+
+## MSG_04B4
+Restores allies to[LF]
+normal status.[X]
+
+## MSG_04B5
+Blocks enemy magic.[.][X]
+
+## MSG_04B6
+Puts enemies to sleep.[X]
+
+## MSG_04B7
+Drives enemies to[.][LF]
+attack wildly in a[LF]
+frenzy of rage.[.][X]
+
+## MSG_04B8
+Warps allies to[.][LF]
+other spaces.[.][X]
+
+## MSG_04B9
+Warps allies to a[.][LF]
+space adjacent to[.][LF]
+the staff wielder.[X]
+
+## MSG_04BA
+Lights up an area.[X]
+
+## MSG_04BB
+Restores items to[.][LF]
+new condition.[X]
+
+## MSG_04BC
+Opens doors.[X]
+
+## MSG_04BD
+Raises resistance.[X]
+
+## MSG_04BE
+Restores all HP as[LF]
+well as allies' status.[.][X]
+
+## MSG_04BF
+Allows allies[.][LF]
+to move again.[X]
+
+## MSG_04C0
+Allows allies[.][LF]
+to move again.[X]
+
+## MSG_04C1
+Raises Max HP.[X]
+
+## MSG_04C2
+Raises either[.][LF]
+strength or magic.[X]
+
+## MSG_04C3
+Raises skill.[.][X]
+
+## MSG_04C4
+Raises speed.[.][X]
+
+## MSG_04C5
+Raises luck.[X]
+
+## MSG_04C6
+Raises defense.[.][X]
+
+## MSG_04C7
+Raises resistance.[X]
+
+## MSG_04C8
+Raises movement.[X]
+
+## MSG_04C9
+Raises constitution.[X]
+
+## MSG_04CA
+Use this on a worthy[LF]
+mercenary, fighter,[.][LF]
+or myrmidon.[X]
+
+## MSG_04CB
+Use this on a worthy[LF]
+cavalier or knight.[.][X]
+
+## MSG_04CC
+Use this on a worthy[LF]
+archer.[.][X]
+
+## MSG_04CD
+Use this on a worthy[LF]
+master of a winged[LF]
+mount.[X]
+
+## MSG_04CE
+Use this on a worthy[LF]
+wielder of magic[LF]
+power and staves.[.][X]
+
+## MSG_04CF
+Opens chests.[.][X]
+
+## MSG_04D0
+Opens doors.[X]
+
+## MSG_04D1
+Universal lockpicks[.][LF]
+designed for thieves.[.][X]
+
+## MSG_04D2
+Restores some HP.[.][X]
+
+## MSG_04D3
+Restores all HP.[X]
+
+## MSG_04D4
+Reduces damage[LF]
+from magic attacks.[.][X]
+
+## MSG_04D5
+Cures poison.[.][X]
+
+## MSG_04D6
+Lights an area.[.][X]
+
+## MSG_04D7
+Protects airborne[.][LF]
+units from bows.[X]
+
+## MSG_04D8
+Grants access to[LF]
+secret shops.[.][X]
+
+## MSG_04D9
+Reduces the cost[LF]
+of items.[.][X]
+
+## MSG_04DA
+ [.][X]
+
+## MSG_04DB
+Units that enter[LF]
+spaces where these[LF]
+are take damage.[X]
+
+## MSG_04DC
+Units cannot enter[LF]
+spaces where these[LF]
+have been placed.[.][X]
+
+## MSG_04DD
+Negates enemies'[LF]
+critical attacks.[.][X]
+
+## MSG_04DE
+Use this on a unit Lv.[LF]
+10 and up who has[.][LF]
+yet to change class.[X]
+
+## MSG_04DF
+Give this to a[LF]
+unit you like.[X]
+
+## MSG_04E0
+Use this on a worthy[LF]
+thief or pirate.[X]
+
+## MSG_04E1
+Have Eirika use this[LF]
+when she's ready.[.][X]
+
+## MSG_04E2
+Have Ephraim use this[.][LF]
+when he's ready.[X]
+
+## MSG_04E3
+Use this, and...[X]
+
+## MSG_04E4
+Dummy[.][X]
+
+## MSG_04E5
+Name[X]
+
+## MSG_04E6
+Class[.][X]
+
+## MSG_04E7
+Lv[X]
+
+## MSG_04E8
+Exp[.][X]
+
+## MSG_04E9
+HP[X]
+
+## MSG_04EA
+Max[.][X]
+
+## MSG_04EB
+S/M[.][X]
+
+## MSG_04EC
+Skill[.][X]
+
+## MSG_04ED
+Spd[.][X]
+
+## MSG_04EE
+Luck[X]
+
+## MSG_04EF
+Def[.][X]
+
+## MSG_04F0
+Res[.][X]
+
+## MSG_04F1
+Affin[.][X]
+
+## MSG_04F2
+Equip[.][X]
+
+## MSG_04F3
+Atk[.][X]
+
+## MSG_04F4
+Hit[.][X]
+
+## MSG_04F5
+Avoid[.][X]
+
+## MSG_04F6
+Move[X]
+
+## MSG_04F7
+Con[.][X]
+
+## MSG_04F8
+Aid[.][X]
+
+## MSG_04F9
+Trv[.][X]
+
+## MSG_04FA
+Cond[X]
+
+## MSG_04FB
+Ally[X]
+
+## MSG_04FC
+Anim[X]
+
+## MSG_04FD
+Sort:[.][X]
+
+## MSG_04FE
+Str[.][X]
+
+## MSG_04FF
+Mag[.][X]
+
+## MSG_0500
+Rng[.][X]
+
+## MSG_0501
+Crit[X]
+
+## MSG_0502
+Wt[X]
+
+## MSG_0503
+Mt[X]
+
+## MSG_0504
+AS[X]
+
+## MSG_0505
+Sword[.][X]
+
+## MSG_0506
+Lance[.][X]
+
+## MSG_0507
+Axe[.][X]
+
+## MSG_0508
+Bow[.][X]
+
+## MSG_0509
+Staff[.][X]
+
+## MSG_050A
+Anima[.][X]
+
+## MSG_050B
+Light[.][X]
+
+## MSG_050C
+Dark[X]
+
+## MSG_050D
+Item[X]
+
+## MSG_050E
+Bllsta[X]
+
+## MSG_050F
+Dragon[X]
+
+## MSG_0510
+Fire[X]
+
+## MSG_0511
+Thunder[.][X]
+
+## MSG_0512
+Wind[X]
+
+## MSG_0513
+Ice[.][X]
+
+## MSG_0514
+Poison[X]
+
+## MSG_0515
+Sleep[.][X]
+
+## MSG_0516
+Silence[.][X]
+
+## MSG_0517
+Berserk[.][X]
+
+## MSG_0518
+Sick[X]
+
+## MSG_0519
+Recovr[X]
+
+## MSG_051A
+Petrify[.][X]
+
+## MSG_051B
+Attack[X]
+
+## MSG_051C
+Defend[X]
+
+## MSG_051D
+Critical[X]
+
+## MSG_051E
+Dodge[.][X]
+
+## MSG_051F
+B[.][X]
+
+## MSG_0520
+W[.][X]
+
+## MSG_0521
+L[.][X]
+
+## MSG_0522
+MP/2[X]
+
+## MSG_0523
+    1[.][X]
+
+## MSG_0524
+ 1[DashedLine]2[.][X]
+
+## MSG_0525
+ 1[DashedLine]3[.][X]
+
+## MSG_0526
+    2[.][X]
+
+## MSG_0527
+ 2[DashedLine]3[.][X]
+
+## MSG_0528
+3[.][DashedLine]10[X]
+
+## MSG_0529
+3[.][DashedLine]15[X]
+
+## MSG_052A
+Total[.][X]
+
+## MSG_052B
+   [.][DashedLine][DashedLine][X]
+
+## MSG_052C
+[DashedLine][X]
+
+## MSG_052D
+E[.][X]
+
+## MSG_052E
+D[.][X]
+
+## MSG_052F
+C[.][X]
+
+## MSG_0530
+B[.][X]
+
+## MSG_0531
+A[.][X]
+
+## MSG_0532
+S[.][X]
+
+## MSG_0533
+Prf[.][X]
+
+## MSG_0534
+[DashedLine][X]
+
+## MSG_0535
+[DashedLine][DashedLine][X]
+
+## MSG_0536
+[DashedLine][DashedLine][DashedLine][X]
+
+## MSG_0537
+[DashedLine][DashedLine][DashedLine][DashedLine][X]
+
+## MSG_0538
+[DashedLine][DashedLine][DashedLine][DashedLine][DashedLine][X]
+
+## MSG_0539
+/[.][X]
+
+## MSG_053A
+-[.][X]
+
+## MSG_053B
+Assets[X]
+
+## MSG_053C
+Time[X]
+
+## MSG_053D
+Total[.][X]
+
+## MSG_053E
+Normal[X]
+
+## MSG_053F
+Hard[X]
+
+## MSG_0540
+Complete[X]
+
+## MSG_0541
+Total[.][X]
+
+## MSG_0542
+Unit level. The unit becomes[LF]
+stronger as it gains levels.[X]
+
+## MSG_0543
+Experience points gained. Gain[LF]
+100 points to earn a new level.[.][X]
+
+## MSG_0544
+Unit hit points. The unit loses[.][LF]
+consciousness if this reaches 0.[X]
+
+## MSG_0545
+Weapon name and type.[.][X]
+
+## MSG_0546
+Strength. The higher the number,[LF]
+the more damage you inflict.[X]
+
+## MSG_0547
+Magical power. Magical[LF]
+power is akin to strength.[X]
+
+## MSG_0548
+Fighting skill. A higher[LF]
+number improves the unit's hit %.[.][X]
+
+## MSG_0549
+Speed. This affects both[LF]
+evasion and attacks.[X]
+
+## MSG_054A
+Luck. This affects many[.][LF]
+different things.[.][X]
+
+## MSG_054B
+Defensive skill. Reduces[LF]
+damage from weapons.[X]
+
+## MSG_054C
+Magical resistance. Reduces[.][LF]
+damage from magic attacks.[X]
+
+## MSG_054D
+Movement. The normal distance[.][LF]
+you can cross in 1 turn.[X]
+
+## MSG_054E
+Constitution, or physical size.[.][LF]
+Affects rescues.[X]
+
+## MSG_054F
+Max rescuing constitution. Units[LF]
+with lower Cons can be rescued.[.][X]
+
+## MSG_0550
+Traveler. The name of the unit[LF]
+with whom this unit is traveling.[.][X]
+
+## MSG_0551
+Elemental affinity. Determines[LF]
+compatibility with other units.[.][X]
+
+## MSG_0552
+Normal.[.][LF]
+Feeling healthy.[X]
+
+## MSG_0553
+Ooooog...[.][LF]
+Poison slowly steals HP.[X]
+
+## MSG_0554
+Zzzz... Zzzzz...[LF]
+Sleeping now... Can't move...[.][X]
+
+## MSG_0555
+Rarrrrr! Attack the nearest[.][LF]
+unit, be it friend or foe![X]
+
+## MSG_0556
+......[LF]
+Magic and staves are unusable.[X]
+
+## MSG_0557
+Craaack! Turned...to...[.][LF]
+stone. Can't...move![X]
+
+## MSG_0558
+Attack power is increased,[LF]
+thanks to Filla's Might.[X]
+
+## MSG_0559
+Defense & resistance increased,[.][LF]
+thanks to Ninis's Grace.[X]
+
+## MSG_055A
+Critical hit  0s increased,[.][LF]
+thanks to Thor's Ire.[.][X]
+
+## MSG_055B
+Dodge is increased, thanks[LF]
+to Set's Litany.[X]
+
+## MSG_055C
+Amount of damage this weapon[LF]
+causes. Affected by defenses.[.][X]
+
+## MSG_055D
+Chance that the attack will hit.[LF]
+Affected by terrain and enemies.[X]
+
+## MSG_055E
+Weapon Range. A range of 1[LF]
+can only hit adjacent spaces.[.][X]
+
+## MSG_055F
+Chance the weapon will strike a[.][LF]
+critical blow, doing triple damage.[.][X]
+
+## MSG_0560
+Ability to dodge enemy attacks.[.][LF]
+Affects enemy's hit %.[X]
+
+## MSG_0561
+Sword mastery level.[X]
+
+## MSG_0562
+Lance mastery level.[X]
+
+## MSG_0563
+Axe mastery level.[X]
+
+## MSG_0564
+Bow mastery level.[X]
+
+## MSG_0565
+Anima magic mastery level.[X]
+
+## MSG_0566
+Light magic mastery level.[X]
+
+## MSG_0567
+Dark magic mastery level.[.][X]
+
+## MSG_0568
+Staff mastery level.[X]
+
+## MSG_0569
+Strengthen the bond[.][LF]
+between units by talking.[.][X]
+
+## MSG_056A
+The name of the unit[LF]
+to whom you can talk.[.][X]
+
+## MSG_056B
+Weapon or magic in use.[.][X]
+
+## MSG_056C
+Weapon or magic in use.[.][LF]
+Does more damage than normal.[.][X]
+
+## MSG_056D
+Wielder and weapon are well[.][LF]
+suited. Hit % and power increase.[.][X]
+
+## MSG_056E
+Wielder and weapon are well[.][LF]
+suited. Hit % and dmg increase.[.][X]
+
+## MSG_056F
+Wielder and weapon are ill[LF]
+suited. Hit % and power decrease.[.][X]
+
+## MSG_0570
+Wielder and weapon are ill[LF]
+suited. Hit % and power decrease.[.][X]
+
+## MSG_0571
+Damage this weapon will do.[.][LF]
+x2 = two attacks, x4 = four.[X]
+
+## MSG_0572
+Attack Speed.[.][LF]
+Determines number of attacks.[.][X]
+
+## MSG_0573
+Defense.[LF]
+Decreases damage from attacks.[X]
+
+## MSG_0574
+Pick Units[X]
+
+## MSG_0575
+Fortune[.][X]
+
+## MSG_0576
+Items[.][X]
+
+## MSG_0577
+Support[.][X]
+
+## MSG_0578
+Check Map[.][X]
+
+## MSG_0579
+Save[X]
+
+## MSG_057A
+Select which units to[.][LF]
+field this battle. The[LF]
+number is restricted.[.][X]
+
+## MSG_057B
+Manage your units'[LF]
+items. Item names[.][LF]
+that appear in gray[.][LF]
+cannot be used by[.][LF]
+that unit.[X]
+
+## MSG_057C
+Manage your units' items.[.][X]
+
+## MSG_057D
+This command cannot be[LF]
+used at this time.[X]
+
+## MSG_057E
+Valuable battle[.][LF]
+information can be[LF]
+viewed here, as well[LF]
+as tactician data.[X]
+
+## MSG_057F
+Check the compatibility[.][LF]
+of your units.[X]
+
+## MSG_0580
+View the map. Check[.][LF]
+the number and type of[LF]
+enemies. Also, check for[LF]
+shops and change your[.][LF]
+allies' starting positions.[.][X]
+
+## MSG_0581
+Save any changes.[.][LF]
+Choose Restart Chapter[LF]
+to restart this chapter.[LF]
+You can't return to the[.][LF]
+world map after saving.[.][X]
+
+## MSG_0582
+The battle will begin.[LF]
+You can also press[LF]
+START to begin.[.][X]
+
+## MSG_0583
+Choose unit[.][X]
+
+## MSG_0584
+ [.][X]
+
+## MSG_0585
+Are you sure?[.][X]
+
+## MSG_0586
+Rank[X]
+
+## MSG_0587
+Tactician[.][X]
+
+## MSG_0588
+Augury[X]
+
+## MSG_0589
+Augury Menu[.][X]
+
+## MSG_058A
+Tactics[.][X]
+
+## MSG_058B
+Survival[X]
+
+## MSG_058C
+Funds[.][X]
+
+## MSG_058D
+Exp[.][X]
+
+## MSG_058E
+Combat[X]
+
+## MSG_058F
+Objective[.][X]
+
+## MSG_0590
+View Map[X]
+
+## MSG_0591
+Formation[.][X]
+
+## MSG_0592
+Options[.][X]
+
+## MSG_0593
+Debug[.][X]
+
+## MSG_0594
+Trade[.][X]
+
+## MSG_0595
+List[X]
+
+## MSG_0596
+Use[.][X]
+
+## MSG_0597
+Sell[X]
+
+## MSG_0598
+Supply[X]
+
+## MSG_0599
+Armory[X]
+
+## MSG_059A
+Give all[X]
+
+## MSG_059B
+Sell?[.][X]
+
+## MSG_059C
+Sell     Quit[.][X]
+
+## MSG_059D
+Value[.][X]
+
+## MSG_059E
+Give[X]
+
+## MSG_059F
+Take[X]
+
+## MSG_05A0
+Stock[.][X]
+
+## MSG_05A1
+Pick[X]
+
+## MSG_05A2
+Units Left[X]
+
+## MSG_05A3
+Sell unwanted items.[X]
+
+## MSG_05A4
+Are you sure?[.][X]
+
+## MSG_05A5
+What'll you do?[.][X]
+
+## MSG_05A6
+I'll take it.[.][X]
+
+## MSG_05A7
+Here you go![X]
+
+## MSG_05A8
+Nothing[.][X]
+
+## MSG_05A9
+Owner:[X]
+
+## MSG_05AA
+Success[.][X]
+
+## MSG_05AB
+Remaining[.][X]
+
+## MSG_05AC
+x[.][X]
+
+## MSG_05AD
+Select Character[X]
+
+## MSG_05AE
+%[.][X]
+
+## MSG_05AF
+Exchange items[LF]
+between units.[X]
+
+## MSG_05B0
+Use items.[X]
+
+## MSG_05B1
+Transfer items to and[.][LF]
+from storage.[.][X]
+
+## MSG_05B2
+Buy and sell items.[.][X]
+
+## MSG_05B3
+Display all units' items.[.][X]
+
+## MSG_05B4
+Sell your unneeded items.[.][LF]
+Important items cannot be sold.[.][X]
+
+## MSG_05B5
+Place all items in storage.[.][X]
+
+## MSG_05B6
+Put items in storage. Up to[.][LF]
+100 items can be put in storage.[X]
+
+## MSG_05B7
+Receive item.[.][LF]
+A unit can carry up to 5 items.[.][X]
+
+## MSG_05B8
+Check your rankings for[.][LF]
+the battles so far.[.][X]
+
+## MSG_05B9
+Check your tactician rating[.][LF]
+and character data.[.][X]
+
+## MSG_05BA
+Predict elements of the[.][LF]
+coming battle.[X]
+
+## MSG_05BB
+View maps to battle on or[.][LF]
+items to sell in stores.[X]
+
+## MSG_05BC
+Rearrange the starting[LF]
+formation of your units.[X]
+
+## MSG_05BD
+Set game speed and[LF]
+window options.[.][X]
+
+## MSG_05BE
+Save the current campaign.[X]
+
+## MSG_05BF
+Begin combat.[.][X]
+
+## MSG_05C0
+Prologue[X]
+
+## MSG_05C1
+Chapter 1[.][X]
+
+## MSG_05C2
+Chapter 2[.][X]
+
+## MSG_05C3
+Chapter 3[.][X]
+
+## MSG_05C4
+Chapter 4[.][X]
+
+## MSG_05C5
+Chapter 5[.][X]
+
+## MSG_05C6
+Chapter 6[.][X]
+
+## MSG_05C7
+Chapter 7[.][X]
+
+## MSG_05C8
+Chapter 8[.][X]
+
+## MSG_05C9
+Basic Rules[.][X]
+
+## MSG_05CA
+Movement[X]
+
+## MSG_05CB
+Combat[X]
+
+## MSG_05CC
+Rescue[X]
+
+## MSG_05CD
+Items[.][X]
+
+## MSG_05CE
+Terrain[.][X]
+
+## MSG_05CF
+Allies[X]
+
+## MSG_05D0
+Victory[.][X]
+
+## MSG_05D1
+Save[X]
+
+## MSG_05D2
+World Map[.][X]
+
+## MSG_05D3
+Other[.][X]
+
+## MSG_05D4
+About: [.][X]
+
+## MSG_05D5
+Viewing Units[.][X]
+
+## MSG_05D6
+Game Flow[.][X]
+
+## MSG_05D7
+Game Over[.][X]
+
+## MSG_05D8
+Movement Range[X]
+
+## MSG_05D9
+Moving Again[X]
+
+## MSG_05DA
+Attack Range[X]
+
+## MSG_05DB
+Weapon Triangle[.][X]
+
+## MSG_05DC
+Trinity of Magic[X]
+
+## MSG_05DD
+Weapon Effectiveness[X]
+
+## MSG_05DE
+Critical Hit[X]
+
+## MSG_05DF
+Physical Defense[X]
+
+## MSG_05E0
+Magical Resistance[X]
+
+## MSG_05E1
+Restoring HP[X]
+
+## MSG_05E2
+Normal Status[.][X]
+
+## MSG_05E3
+Strategic Battle Info[.][X]
+
+## MSG_05E4
+Detailed Battle Info[X]
+
+## MSG_05E5
+Rescue[X]
+
+## MSG_05E6
+Drop[X]
+
+## MSG_05E7
+Acquiring Items[.][X]
+
+## MSG_05E8
+Using Items[.][X]
+
+## MSG_05E9
+Trading Items[.][X]
+
+## MSG_05EA
+Weapon Durability[.][X]
+
+## MSG_05EB
+Supply Convoy[.][X]
+
+## MSG_05EC
+Armory[X]
+
+## MSG_05ED
+Shop[X]
+
+## MSG_05EE
+Forests & Mountains[.][X]
+
+## MSG_05EF
+Fortresses & Castle Gates[.][X]
+
+## MSG_05F0
+Houses[X]
+
+## MSG_05F1
+Villages[X]
+
+## MSG_05F2
+Chests[X]
+
+## MSG_05F3
+Snags[.][X]
+
+## MSG_05F4
+Damaged Walls[.][X]
+
+## MSG_05F5
+Fog & Night Conditions[X]
+
+## MSG_05F6
+Ballistae[.][X]
+
+## MSG_05F7
+Acquiring Items[.][X]
+
+## MSG_05F8
+Retreating from the Front Lines[.][X]
+
+## MSG_05F9
+Support Conversations[.][X]
+
+## MSG_05FA
+Support Effects[.][X]
+
+## MSG_05FB
+Recruiting Green Units[X]
+
+## MSG_05FC
+Recruiting Red Units[X]
+
+## MSG_05FD
+Defeat a Boss[.][X]
+
+## MSG_05FE
+Seize a Location[X]
+
+## MSG_05FF
+Defeat All[X]
+
+## MSG_0600
+Defense[.][X]
+
+## MSG_0601
+Suspend[.][X]
+
+## MSG_0602
+Save[X]
+
+## MSG_0603
+How to Move[.][X]
+
+## MSG_0604
+Armory & Shop[.][X]
+
+## MSG_0605
+Item Management[.][X]
+
+## MSG_0606
+Monsters[X]
+
+## MSG_0607
+Preparation Screen[X]
+
+## MSG_0608
+Leveling Up[.][X]
+
+## MSG_0609
+Changing Classes[X]
+
+## MSG_060A
+R Button Info[.][X]
+
+## MSG_060B
+Arena[.][X]
+
+## MSG_060C
+Retreat[.][X]
+
+## MSG_060D
+Units are divided into the[LF]
+following three types:[LF]
+    Player (blue)[.][LF]
+    Enemy (red)[.][LF]
+    Neutral (green)[.][LF]
+Blue units are controlled by the[LF]
+player. Red units are the enemy[.][LF]
+units the player must defeat.[.][LF]
+Red units will attack both blue[.][LF]
+and green units, so be careful.[.][X]
+
+## MSG_060E
+Units take turns moving in[LF]
+the following order:[LF]
+    1. Player (blue)[LF]
+    2. Enemy (red)[LF]
+    3. Neutral (green)[X]
+
+## MSG_060F
+If a main character's Hit Points[LF]
+are reduced to zero, the game[.][LF]
+ends.[.][X]
+
+## MSG_0610
+The blue area that appears[LF]
+when you select a unit is[.][LF]
+its movement range. Place the[.][LF]
+cursor on an enemy unit to see[LF]
+its movement range.[.][X]
+
+## MSG_0611
+Mounted units can move again[LF]
+after visiting homes or villages[LF]
+if they have movement remaining.[LF]
+This is most common among[.][LF]
+cavaliers and pegasus knights.[X]
+
+## MSG_0612
+The red area that appears when[LF]
+you select a unit is its[LF]
+attack range. Place the cursor[LF]
+on an enemy unit to see its[.][LF]
+attack range.[.][X]
+
+## MSG_0613
+Each weapon type has its own[LF]
+strengths and weaknesses.[.][LF]
+Swords do well against axes.[LF]
+Axes do well against lances.[LF]
+Lances do well against swords.[LF]
+This is called the[LF]
+Weapon Triangle.[X]
+
+## MSG_0614
+Each type of magic has its own[LF]
+strengths and weaknesses.[.][LF]
+Light is strong against Dark.[.][LF]
+Dark is strong against Anima.[.][LF]
+Anima is strong against Light.[LF]
+This is called the[LF]
+Trinity of Magic.[.][X]
+
+## MSG_0615
+Some weapons are especially[.][LF]
+effective against certain units.[LF]
+These weapons will cause heavy[LF]
+damage to those units. For[LF]
+example, bows are particularly[LF]
+effective against flying units.[.][LF]
+The weapon icons in the combat[LF]
+information window will glow[LF]
+when your unit is facing an[.][LF]
+enemy that is weak against[LF]
+that weapon.[X]
+
+## MSG_0616
+Critical hits inflict three times[.][LF]
+the normal damage to enemies.[.][LF]
+Your chance of a critical strike[LF]
+changes depending on your unit's[LF]
+attributes and the weapon with[LF]
+which you are attacking.[X]
+
+## MSG_0617
+Any attack from a weapon is a[.][LF]
+physical attack. Each unit's[LF]
+DEF (defense) attribute[.][LF]
+shows how well he defends[.][LF]
+against physical attacks. The[.][LF]
+higher the number, the less[.][LF]
+damage he takes. Knights and[LF]
+mercenaries have good defense.[X]
+
+## MSG_0618
+Any attack with magic is called[.][LF]
+a magical attack. Your unit's[.][LF]
+RES (resistance) attribute[LF]
+shows how well he defends[.][LF]
+against them. The higher the[LF]
+number, the less damage he[LF]
+takes. Mages, monks, clerics[LF]
+& shamans have high resistance.[.][X]
+
+## MSG_0619
+Restore HP to your units by using[.][LF]
+vulneraries, elixirs, and staves.[.][LF]
+Vulneraries and elixirs heal[LF]
+only the user, while staves heal[LF]
+only the units on whom they're[LF]
+used. Choose your healing[.][LF]
+items carefully in battle.[X]
+
+## MSG_061A
+There are five abnormal states[LF]
+a unit can enter:[.][LF]
+1. Sleep[LF]
+(Asleep and unable to move)[.][LF]
+2. Silence[LF]
+(Unable to use magic or staves)[.][LF]
+3. Poison[.][LF]
+(Take continual damage)[.][LF]
+4. Berserk[LF]
+(Attack enemies and allies alike)[.][LF]
+5. Petrify[LF]
+(Turned to stone, cannot move)[LF]
+These conditions will continue for[LF]
+several turns. They can be[LF]
+reversed with a Restore staff.[X]
+
+## MSG_061B
+Here is the information shown if[LF]
+you choose the strategic[LF]
+combat information window:[LF]
+[LF]
+HP: Unit's remaining HP.[LF]
+MT: Amount of damage the[LF]
+equipped weapon inflicts.[.][LF]
+HIT: Chance an attack will land.[LF]
+CRIT: Chance the weapon will[LF]
+land a critical blow.[.][X]
+
+## MSG_061C
+Here is the information shown if[LF]
+you choose the detailed[.][LF]
+combat information window:[LF]
+[LF]
+HP: Unit's remaining HP.[LF]
+ATK: Amount of damage your[LF]
+attack will inflict.[LF]
+DEF: Amount of damage enemy[.][LF]
+attacks will be reduced by.[.][LF]
+HIT: Chance an attack will land.[LF]
+CRIT: Chance the weapon will land[.][LF]
+a critical blow.[LF]
+AS: The speed of each unit's[LF]
+attack, which determines how[LF]
+many attacks each unit makes.[.][X]
+
+## MSG_061D
+Any unit can rescue a blue or[.][LF]
+green unit in an adjacent tile.[.][LF]
+However, your constitution must[.][LF]
+be higher than that of the unit[.][LF]
+you're trying to rescue.[LF]
+The rescuing unit suffers a[.][LF]
+penalty in speed and skill,[.][LF]
+but the rescued unit is[.][LF]
+protected from attacks.[.][LF]
+If a unit is about to lose all[LF]
+of its HP, use the rescue[.][LF]
+command to whisk it to safety.[X]
+
+## MSG_061E
+You can drop a rescued unit into[LF]
+any adjacent tile. The dropped[LF]
+unit will not be able to move[.][LF]
+until the next turn.[X]
+
+## MSG_061F
+You can purchase items at[.][LF]
+shops. You can also pick them[.][LF]
+up by visiting villagers and[LF]
+opening chests. Enemies[.][LF]
+sometimes drop items when[.][LF]
+they are defeated.[X]
+
+## MSG_0620
+Choose an item from the item[LF]
+list and press the A Button[.][LF]
+to use it. Items that cannot[LF]
+be used by that unit will be[LF]
+grayed out.[.][X]
+
+## MSG_0621
+You can trade items with units[LF]
+in adjacent tiles. Select Trade[.][LF]
+on the command menu, and then[.][LF]
+select the unit with whom you[.][LF]
+want to trade. Next, place the[LF]
+cursor on the item you want to[LF]
+take from the other unit's[LF]
+inventory and press the A Button[LF]
+to receive that item.[.][X]
+
+## MSG_0622
+Items have a limited number of[LF]
+uses. Each time you use an item[.][LF]
+its durability goes down. The[.][LF]
+number next to an item indicates[LF]
+how many times it can be used.[LF]
+When that number reaches 0, the[.][LF]
+item breaks and disappears.[.][LF]
+Be careful not to let items drop[LF]
+to 0 in the heat of battle.[.][X]
+
+## MSG_0623
+A supply convoy travels with[LF]
+your main character. If you[.][LF]
+move to a space adjacent your[.][LF]
+supply convoy, you can trade[LF]
+items with it. On the battle[LF]
+preparation screen, you can[.][LF]
+also buy and sell items at the[LF]
+supply convoy. The convoy can[.][LF]
+store up to 100 items for you.[X]
+
+## MSG_0624
+Move a unit onto an armory and[LF]
+then choose Armory to buy[.][LF]
+weapons. You can also sell[LF]
+items you've collected here.[X]
+
+## MSG_0625
+Move a unit onto a shop and[.][LF]
+then choose Shop to buy and[.][LF]
+sell items, magic tomes, and[LF]
+staves.[.][X]
+
+## MSG_0626
+Forests and mountains give[LF]
+units additional cover. When[LF]
+your units are in these tiles,[LF]
+enemy hit percentages will be[.][LF]
+reduced. When entering attack[.][LF]
+range, try to stop in one of[LF]
+these spaces.[.][X]
+
+## MSG_0627
+Any unit that ends its turn[.][LF]
+on a fortress, castle gate,[.][LF]
+gate, or throne will regain[.][LF]
+some HP automatically at the[LF]
+beginning of the next turn.[.][X]
+
+## MSG_0628
+Move a unit to a house to visit[.][LF]
+the occupants of that house.[LF]
+This is a good way of gaining[.][LF]
+useful information that might[.][LF]
+turn the battle in your favor.[LF]
+Visit houses whenever you get[.][LF]
+the opportunity.[X]
+
+## MSG_0629
+Move a unit to a village to[.][LF]
+speak with its villagers.[.][LF]
+You can gain information,[.][LF]
+items, and even money from[LF]
+villages, so visit them if[LF]
+you have the opportunity.[.][X]
+
+## MSG_062A
+Move units onto spaces with[.][LF]
+chests to open them. Chests[.][LF]
+are filled with all sorts of[LF]
+useful items. However, you'll[.][LF]
+need a chest key or lockpicks[.][LF]
+to open the chest.[X]
+
+## MSG_062B
+If you see an old snag near[.][LF]
+a river, knock it over to[.][LF]
+form an impromptu bridge.[.][X]
+
+## MSG_062C
+Attack cracked walls to[.][LF]
+destroy them and create[.][LF]
+new paths.[X]
+
+## MSG_062D
+Darkness and fog limit your[.][LF]
+field of vision, preventing[.][LF]
+you from seeing distant enemies.[LF]
+Use thieves, torches, and[.][LF]
+Torch staves to increase your[.][LF]
+field of vision.[X]
+
+## MSG_062E
+These siege weapons[.][LF]
+fire missiles from long[.][LF]
+distances. Place an archer or[.][LF]
+sniper on them to use them.[.][X]
+
+## MSG_062F
+On your quest, you will run[.][LF]
+across many characters who[LF]
+might join your cause. Watch[LF]
+story hints carefully to find[.][LF]
+who should talk to these[LF]
+characters and convince them[LF]
+to join you.[X]
+
+## MSG_0630
+Except in rare cases, if one of[.][LF]
+your units loses all of its HP,[.][LF]
+it will retreat from battle and be[LF]
+unable to fight again. Be careful![X]
+
+## MSG_0631
+Some units have special bonds[.][LF]
+between them. The longer they[.][LF]
+spend in adjoining spaces, the[LF]
+stronger that bond will grow.[.][LF]
+Once this bond is strong enough,[LF]
+the Support command will appear[.][LF]
+on the command menu.[LF]
+Select it to make the characters[LF]
+share a support conversation.[.][X]
+
+## MSG_0632
+If supportive units are within[LF]
+three spaces of each other they[.][LF]
+both gain special combat[LF]
+bonuses. There are three levels[.][LF]
+of support. The higher the level,[.][LF]
+the better the bonuses received.[LF]
+Support levels increase each[LF]
+time units share a conversation.[X]
+
+## MSG_0633
+Green units are neutral. They[.][LF]
+may become allies if you speak[LF]
+to them. If you move to a space[.][LF]
+adjacent to a green unit, the[.][LF]
+Talk command may appear.[LF]
+Choose “Talk” to convince the[.][LF]
+unit to join you.[.][X]
+
+## MSG_0634
+Some enemy units will join you[LF]
+if you talk to them. Move a[.][LF]
+character you think might know[LF]
+that enemy unit into a space[LF]
+adjacent to it to see if they[.][LF]
+can talk.[.][LF]
+Be careful! Enemy units will[LF]
+continue to attack until you[LF]
+talk to them! Try not to take[.][LF]
+them out or be taken out before[.][LF]
+you have a chance to chat.[X]
+
+## MSG_0635
+If you defeat the enemy boss,[.][LF]
+you clear the map. There is no[LF]
+need to defeat all enemy units.[.][X]
+
+## MSG_0636
+Move the main character onto a[LF]
+throne, castle gate, gate, or[.][LF]
+other such location and choose[LF]
+Seize from the command menu[.][LF]
+to clear the map.[.][X]
+
+## MSG_0637
+Clear the map by wiping out[.][LF]
+all enemy units.[X]
+
+## MSG_0638
+Hold out against the enemy for[LF]
+a set number of turns to clear[LF]
+the map.[X]
+
+## MSG_0639
+Choose Suspend on the command[.][LF]
+menu to save your game during[.][LF]
+a battle. The next time you[.][LF]
+play, choose Resume to continue[.][LF]
+playing where you left off.[.][X]
+
+## MSG_063A
+Choose Save from the world map[LF]
+to save your game data between[LF]
+chapters.[.][X]
+
+## MSG_063B
+Place the cursor on a space[.][LF]
+and press the A Button to[.][LF]
+move to that location.[X]
+
+## MSG_063C
+Some areas on the world map[.][LF]
+contain stores. You can see[.][LF]
+where stores are located by[.][LF]
+placing the cursor on a location[LF]
+and viewing the shop icons that[.][LF]
+appear next to the place name.[LF]
+You can enter any of these[LF]
+stores if the main character[LF]
+is at that location.[X]
+
+## MSG_063D
+Manage your units' items by[.][LF]
+placing the cursor on the[.][LF]
+main character and pressing[.][LF]
+the A Button.[.][X]
+
+## MSG_063E
+Sometimes, creatures will appear[LF]
+on an area you've already[.][LF]
+cleared. To drive off the[.][LF]
+monsters, move to that area[.][LF]
+and battle the fiends.[X]
+
+## MSG_063F
+Ready your units for battle[.][LF]
+before entering the battlefield.[LF]
+Choose which units will fight,[LF]
+and manage the weapons and[LF]
+items they will use in the battle.[LF]
+Press START to begin combat.[X]
+
+## MSG_0640
+Units gain EXP (experience[LF]
+points) by fighting and by using[LF]
+staves. They go up a level when[.][LF]
+they earn 100 EXP. As they go[.][LF]
+up in level, characters become[LF]
+stronger, more skilled, etc.[LF]
+The highest level is level 20.[X]
+
+## MSG_0641
+Most units can change classes[.][LF]
+once they reach level 10.[.][LF]
+Changing classes dramatically[.][LF]
+improves a unit's abilities.[LF]
+If you're in a tough battle, be[.][LF]
+sure to change classes. When[LF]
+changing classes, you will be able[LF]
+to choose between 2 classes.[LF]
+Look at the overall party[.][LF]
+makeup before deciding![.][X]
+
+## MSG_0642
+If there's a command you're[.][LF]
+unfamiliar with, place the cursor[.][LF]
+over it and press the R Button.[.][LF]
+This will bring up a simple[.][LF]
+explanation of the command.[.][X]
+
+## MSG_0643
+Visit an arena, and bet your[LF]
+money and your life on single[.][LF]
+combat. Move a unit onto an[.][LF]
+arena and choose Arena from[.][LF]
+the command menu to enter.[LF]
+If you win a battle, you'll[.][LF]
+win twice what you wagered.[.][LF]
+If you lose, that unit will[.][LF]
+be gone for good.[.][X]
+
+## MSG_0644
+You can escape from battles[.][LF]
+in towers, in ruins, or with[LF]
+monsters. On the command menu,[LF]
+select Retreat to withdraw[LF]
+from combat in any of these[.][LF]
+locations.[X]
+
+## MSG_0645
+ Unit[.][X]
+
+## MSG_0646
+ Status[.][X]
+
+## MSG_0647
+ Guide[X]
+
+## MSG_0648
+ Options[X]
+
+## MSG_0649
+ Save[.][X]
+
+## MSG_064A
+Route +[.][X]
+
+## MSG_064B
+Route -[.][X]
+
+## MSG_064C
+E09[.][X]
+
+## MSG_064D
+I09[.][X]
+
+## MSG_064E
+E14[.][X]
+
+## MSG_064F
+I14[.][X]
+
+## MSG_0650
+Border Mulan[X]
+
+## MSG_0651
+Castle Frelia[.][X]
+
+## MSG_0652
+Ide[.][X]
+
+## MSG_0653
+Borgo Ridge[.][X]
+
+## MSG_0654
+Za'ha Woods[.][X]
+
+## MSG_0655
+Serafew[.][X]
+
+## MSG_0656
+Adlas Plains[X]
+
+## MSG_0657
+Renvall[.][X]
+
+## MSG_0658
+Renvall[.][X]
+
+## MSG_0659
+Port Kiris[X]
+
+## MSG_065A
+Teraz Plateau[.][X]
+
+## MSG_065B
+Caer Pelyn[X]
+
+## MSG_065C
+Hamill Canyon[.][X]
+
+## MSG_065D
+Jehanna Hall[X]
+
+## MSG_065E
+Fort Rigwald[X]
+
+## MSG_065F
+Bethroen[X]
+
+## MSG_0660
+Taizel[X]
+
+## MSG_0661
+Za'albul Marsh[X]
+
+## MSG_0662
+Grado Keep[X]
+
+## MSG_0663
+Jehanna Hall[X]
+
+## MSG_0664
+Renais Castle[.][X]
+
+## MSG_0665
+Narube River[X]
+
+## MSG_0666
+Neleras Peak[X]
+
+## MSG_0667
+Rausten Court[.][X]
+
+## MSG_0668
+Darkling Woods[X]
+
+## MSG_0669
+Black Temple[X]
+
+## MSG_066A
+Tower of Valni[X]
+
+## MSG_066B
+Lagdou Ruins[X]
+
+## MSG_066C
+Melkaen Coast[.][X]
+
+## MSG_066D
+[DashedLine][DashedLine][DashedLine][DashedLine][DashedLine][X]
+
+## MSG_066E
+ Enter Armory[.][X]
+
+## MSG_066F
+ Enter Shop[.][X]
+
+## MSG_0670
+ Enter ? Shop[.][X]
+
+## MSG_0671
+ Manage Items[.][X]
+
+## MSG_0672
+Enter Armory[X]
+
+## MSG_0673
+Enter Shop[X]
+
+## MSG_0674
+Enter ? Shop[X]
+
+## MSG_0675
+Manage Items[X]
+
+## MSG_0676
+The party's next destination.[.][X]
+
+## MSG_0677
+The current number of units.[X]
+
+## MSG_0678
+Manage your party's items.[X]
+
+## MSG_0679
+Saving. To resume game, choose[LF]
+"Restart Chapter."[X]
+
+## MSG_067A
+ Seize[X]
+
+## MSG_067B
+ Attack[.][X]
+
+## MSG_067C
+ Staff[X]
+
+## MSG_067D
+ Play[.][X]
+
+## MSG_067E
+ Dance[X]
+
+## MSG_067F
+ Steal[X]
+
+## MSG_0680
+ Talk[.][X]
+
+## MSG_0681
+ Support[X]
+
+## MSG_0682
+ Visit[X]
+
+## MSG_0683
+ Chest[X]
+
+## MSG_0684
+ Door[.][X]
+
+## MSG_0685
+ Armory[.][X]
+
+## MSG_0686
+ Vendor[.][X]
+
+## MSG_0687
+ Secret[.][X]
+
+## MSG_0688
+ Arena[X]
+
+## MSG_0689
+ Rescue[.][X]
+
+## MSG_068A
+ Drop[.][X]
+
+## MSG_068B
+ Take[.][X]
+
+## MSG_068C
+ Give[.][X]
+
+## MSG_068D
+ Item[.][X]
+
+## MSG_068E
+ Trade[X]
+
+## MSG_068F
+ Supply[.][X]
+
+## MSG_0690
+ Status[.][X]
+
+## MSG_0691
+ Ride[.][X]
+
+## MSG_0692
+ Exit[.][X]
+
+## MSG_0693
+ Summon[.][X]
+
+## MSG_0694
+ Pick[.][X]
+
+## MSG_0695
+ Wait[.][X]
+
+## MSG_0696
+Use[.][X]
+
+## MSG_0697
+Equip[.][X]
+
+## MSG_0698
+Trade[.][X]
+
+## MSG_0699
+Discard[.][X]
+
+## MSG_069A
+ Unit[.][X]
+
+## MSG_069B
+ Options[X]
+
+## MSG_069C
+ Guide[X]
+
+## MSG_069D
+ Retreat[X]
+
+## MSG_069E
+ Records[X]
+
+## MSG_069F
+ Suspend[X]
+
+## MSG_06A0
+ End[X]
+
+## MSG_06A1
+ Lead[.][X]
+
+## MSG_06A2
+ Debug[X]
+
+## MSG_06A3
+ M.Save[.][X]
+
+## MSG_06A4
+ Manual Save[X]
+
+## MSG_06A5
+2nd[.][X]
+
+## MSG_06A6
+3rd[.][X]
+
+## MSG_06A7
+CPU[.][X]
+
+## MSG_06A8
+Human[.][X]
+
+## MSG_06A9
+Blocked[.][X]
+
+## MSG_06AA
+ Map[X]
+
+## MSG_06AB
+ D.Info[.][X]
+
+## MSG_06AC
+ Weather[X]
+
+## MSG_06AD
+ Fog[X]
+
+## MSG_06AE
+ Clears[.][X]
+
+## MSG_06AF
+ Erased[.][X]
+
+## MSG_06B0
+ G'Night![.][X]
+
+## MSG_06B1
+Clear[.][X]
+
+## MSG_06B2
+Sand[X]
+
+## MSG_06B3
+Snow[X]
+
+## MSG_06B4
+Flurry[X]
+
+## MSG_06B5
+Rain[X]
+
+## MSG_06B6
+Night[.][X]
+
+## MSG_06B7
+Lave[X]
+
+## MSG_06B8
+Clears[X]
+
+## MSG_06B9
+ Erase[X]
+
+## MSG_06BA
+ File?[X]
+
+## MSG_06BB
+ Erased files are[.][X]
+
+## MSG_06BC
+ gone forever![X]
+
+## MSG_06BD
+     OK[.][X]
+
+## MSG_06BE
+There are no messages for[.][LF]
+this menu item.[.][X]
+
+## MSG_06BF
+End the turn. Be sure you're[LF]
+done before you select this.[X]
+
+## MSG_06C0
+Attack an enemy unit.[.][X]
+
+## MSG_06C1
+Use the magic stored[LF]
+within a staff.[.][X]
+
+## MSG_06C2
+Perform a dance that allows[.][LF]
+your allies to move again.[X]
+
+## MSG_06C3
+Use a ring that allows your[.][LF]
+allies to move again.[.][X]
+
+## MSG_06C4
+Shhh...[.][LF]
+(Steal enemy items!)[X]
+
+## MSG_06C5
+Rescue an ally from[.][LF]
+an adjacent space.[X]
+
+## MSG_06C6
+Place a rescued ally in[.][LF]
+an adjacent space.[X]
+
+## MSG_06C7
+Pass a rescued ally to[LF]
+another ally next to you.[.][X]
+
+## MSG_06C8
+Receive a rescued ally from[.][LF]
+another ally next to you.[.][X]
+
+## MSG_06C9
+Talk to an ally or enemy[LF]
+in an adjacent space.[.][X]
+
+## MSG_06CA
+Speak to an allied unit and[.][LF]
+strengthen the bond you share.[X]
+
+## MSG_06CB
+Visit a village or a home.[X]
+
+## MSG_06CC
+Seize a designated point[LF]
+to complete the chapter.[X]
+
+## MSG_06CD
+A door.[.][LF]
+Use a key to open it.[.][X]
+
+## MSG_06CE
+A chest.[LF]
+Use a key to open it.[.][X]
+
+## MSG_06CF
+An armory.[LF]
+Enter to buy weapons.[.][X]
+
+## MSG_06D0
+A shop.[.][LF]
+Enter to buy items.[.][X]
+
+## MSG_06D1
+Congratulations! Only for[.][LF]
+one as lucky as you...[X]
+
+## MSG_06D2
+An arena. Wager your life[.][LF]
+in battle for gold.[.][X]
+
+## MSG_06D3
+Use and equip items.[X]
+
+## MSG_06D4
+Trade items with allies[.][LF]
+in adjacent spaces.[.][X]
+
+## MSG_06D5
+Adjacent units can exchange[.][LF]
+items with your supply convoy.[X]
+
+## MSG_06D6
+Get on ballista and[.][LF]
+use it to attack.[.][X]
+
+## MSG_06D7
+Get off of ballista.[X]
+
+## MSG_06D8
+Normal attack with a bow[LF]
+occurs.[.][X]
+
+## MSG_06D9
+Use the ballista to target[LF]
+distant enemies.[X]
+
+## MSG_06DA
+Ready weapons or magic.[.][LF]
+Use them to counterattack.[X]
+
+## MSG_06DB
+Use items.[X]
+
+## MSG_06DC
+Discard items. Important[LF]
+items cannot be discarded.[X]
+
+## MSG_06DD
+Summon a phantasm.[X]
+
+## MSG_06DE
+Open doors and chests without[.][LF]
+using keys.[.][X]
+
+## MSG_06DF
+Display a chart of all[LF]
+units on the field.[.][X]
+
+## MSG_06E0
+Display current battle[LF]
+progress.[.][X]
+
+## MSG_06E1
+Set game speed and windows.[.][X]
+
+## MSG_06E2
+Retreat from the current battle.[X]
+
+## MSG_06E3
+View tower and ruins battle records.[X]
+
+## MSG_06E4
+Stop a battle in progress.[LF]
+Battle can be continued later.[X]
+
+## MSG_06E5
+View game-play and terminology[LF]
+explanations.[.][X]
+
+## MSG_06E6
+End player's phase.[.][X]
+
+## MSG_06E7
+Name of the unit.[.][X]
+
+## MSG_06E8
+The unit's class. Each class[LF]
+possesses unique traits.[X]
+
+## MSG_06E9
+Current Max HP.[.][X]
+
+## MSG_06EA
+Strength or magic power.[LF]
+This affects attack ability.[X]
+
+## MSG_06EB
+Weapon or magical tome[LF]
+being used.[.][X]
+
+## MSG_06EC
+Physical condition.[.][LF]
+Default is normal.[X]
+
+## MSG_06ED
+Number of allied units.[.][X]
+
+## MSG_06EE
+Number of enemy units.[X]
+
+## MSG_06EF
+Name of the army commander.[.][X]
+
+## MSG_06F0
+Total time played.[X]
+
+## MSG_06F1
+The goal of this chapter.[.][X]
+
+## MSG_06F2
+Number of turns played at this[LF]
+point in the current chapter.[.][X]
+
+## MSG_06F3
+Money on hand.[X]
+
+## MSG_06F4
+Only units with animation turned[LF]
+on can perform combat animation.[X]
+
+## MSG_06F5
+The prince of Renais. A spear fighter[.][LF]
+on an important mission.[X]
+
+## MSG_06F6
+The princess of Renais. A sword fighter[.][LF]
+on an important mission.[X]
+
+## MSG_06F7
+The prince of Renais. A spear fighter[.][LF]
+on an important mission.[X]
+
+## MSG_06F8
+The princess of Renais. A sword fighter[.][LF]
+on an important mission.[X]
+
+## MSG_06F9
+Mounted knights with superior movement.[.][LF]
+Well balanced for speed, defense, & attack.[.][X]
+
+## MSG_06FA
+A title earned only by those cavaliers whose[LF]
+lives have been dedicated to justice.[.][X]
+
+## MSG_06FB
+Heavily armored knights. Superior defense[.][LF]
+outweighs their poor movement and speed.[X]
+
+## MSG_06FC
+Lordly knights in heavy armor. They possess[.][LF]
+excellent defensive and offensive skills.[.][X]
+
+## MSG_06FD
+Rogues and fortune hunters. They possess[LF]
+weak attacks but many other skills.[.][X]
+
+## MSG_06FE
+Professional soldiers-for-hire. They are well[.][LF]
+balanced, with superior abilities all around.[.][X]
+
+## MSG_06FF
+The finest of all mercenary warriors.[.][LF]
+Expert in all fields of combat.[.][X]
+
+## MSG_0700
+Swordsmen who possess superior speed and[LF]
+technique. They specialize in killing strokes.[X]
+
+## MSG_0701
+A title given to those dedicated to the[.][LF]
+sword. Incredible speed and killing strokes.[X]
+
+## MSG_0702
+Masters of the killing arts. They have the[LF]
+ability to kill a foe with a single stroke.[.][X]
+
+## MSG_0703
+Lightly protected warriors armed with bows.[.][LF]
+They can attack from a distance.[X]
+
+## MSG_0704
+Archers dedicated to mastering their art.[.][LF]
+None can match their skill with the bow.[X]
+
+## MSG_0705
+Mounted knights who charge into battle with[.][LF]
+sword and bow. They possess great mobility.[.][X]
+
+## MSG_0706
+Knights who rule the skies from wyvern-back.[LF]
+They are vulnerable to only bows and magic.[.][X]
+
+## MSG_0707
+Knights united with their wyvern mounts.[LF]
+They have better movement and combat skill.[.][X]
+
+## MSG_0708
+High-flying, lance-wielding knights. They can[.][LF]
+penetrate enemy defenses with ease.[.][X]
+
+## MSG_0709
+Mages schooled in anima magic. They bypass[LF]
+defenses but are weak against weapons.[X]
+
+## MSG_070A
+A title given to advanced mages. They wield[.][LF]
+magic and can carry staves.[.][X]
+
+## MSG_070B
+Mounted mage-knights who wield anima[LF]
+magic. Can also use sacred staves.[X]
+
+## MSG_070C
+A title given to monks who have attained[LF]
+enlightenment. Wields magic for offense.[X]
+
+## MSG_070D
+Dragonkin who live in Darkling Woods.[.][LF]
+Dragonstones can transform them.[X]
+
+## MSG_070E
+A green fighter who wishes to emulate[.][LF]
+his father. He's young but courageous.[X]
+
+## MSG_070F
+A hardworking apprentice studying magic[.][LF]
+under the master Saleh.[.][X]
+
+## MSG_0710
+Adventurer-thieves with skills so great they[LF]
+can open chests and doors without tools.[X]
+
+## MSG_0711
+Axe-wielding powerhouses whose wild fighting[LF]
+style leaves them with poor defenses.[.][X]
+
+## MSG_0712
+A title awarded to battle-tested warriors.[LF]
+The strongest of all fighters.[X]
+
+## MSG_0713
+Mighty axe fighters especially skilled[LF]
+in mountain combat.[.][X]
+
+## MSG_0714
+A title for those who live to fight. Strong in[LF]
+mountains or at sea. Skilled in killing blows.[X]
+
+## MSG_0715
+Knights with high defense and mobility. They[LF]
+use swords, axes, and lances equally well.[X]
+
+## MSG_0716
+Masters of elder black magic. They are very[.][LF]
+powerful, but very slow as well.[X]
+
+## MSG_0717
+A title granted to powerful shamans. Those[LF]
+who battle them cower in fear of their might.[.][X]
+
+## MSG_0718
+A title granted to shamans who have used[LF]
+forbidden magic to learn the summoning arts.[X]
+
+## MSG_0719
+Ascetic wielders of sacred light magic.[.][LF]
+Superior ability to hit but low attack power.[.][X]
+
+## MSG_071A
+Members of the clergy who wield sacred[LF]
+staves to aid allies. They wield no weapons.[X]
+
+## MSG_071B
+Fresh recruits who dream of becoming[LF]
+knights. They're inexperienced but eager.[.][X]
+
+## MSG_071C
+Knights who soar through the skies. They[LF]
+resist magic but are weak against bows.[.][X]
+
+## MSG_071D
+Knights united with their pegasus mounts.[.][LF]
+They have superior skill and resistance.[X]
+
+## MSG_071E
+Wielders of sacred staves who aid allies in[.][LF]
+battle. They refuse to take arms in combat.[.][X]
+
+## MSG_071F
+Mounted maidens whose sacred staves aid[.][LF]
+allies. They are swift but will not fight.[X]
+
+## MSG_0720
+Battle maidens who ride into combat wielding[LF]
+light magic and sacred staves.[X]
+
+## MSG_0721
+Dancers whose grace soothes allies.[.][LF]
+They do not fight in combat.[X]
+
+## MSG_0722
+Average foot soldiers possessing no unique[LF]
+abilities. They bear spears in combat.[X]
+
+## MSG_0723
+Axe-wielding privateers trained to[LF]
+fight on the high seas.[.][X]
+
+## MSG_0724
+The crown prince of Grado's empire. The[.][LF]
+Dark Stone gives him strange powers.[X]
+
+## MSG_0725
+Reanimated cadavers of the recently dead.[.][LF]
+They are slow, but their claws are cruel.[.][X]
+
+## MSG_0726
+Corpses animated by evil power. They are[LF]
+slow moving, but their talons are deadly.[.][X]
+
+## MSG_0727
+Dead warriors given will by dark magic.[.][LF]
+They wield a variety of weapons.[X]
+
+## MSG_0728
+Skeletons infused with tremendous magical[.][LF]
+strength. They can wield many weapons.[X]
+
+## MSG_0729
+Giant poison spiders. They roam the[.][LF]
+mountains, attacking with deadly venom.[.][X]
+
+## MSG_072A
+Giant spiders infused with tremendous[.][LF]
+magical strength. Their venom is lethal.[X]
+
+## MSG_072B
+One-eyed giants. With inhuman strength, they[LF]
+wield axes far larger than men can carry.[.][X]
+
+## MSG_072C
+Savage demon hounds that thirst for blood.[LF]
+These agile beasts have razor-sharp fangs.[X]
+
+## MSG_072D
+Ferocious, three-headed hellhounds. Their[.][LF]
+triple-fanged bites are difficult to dodge.[.][X]
+
+## MSG_072E
+Belligerent man-beasts. Like hurricanes they[LF]
+roam, wreaking havoc with their giant axes.[.][X]
+
+## MSG_072F
+Creatures of great strength and speed.[LF]
+They pursue their prey with axes and bows.[X]
+
+## MSG_0730
+Floating eyes filled with dark power.[.][LF]
+Simply seeing one is considered an ill omen.[X]
+
+## MSG_0731
+Mogall of great power. Their dark might[.][LF]
+far exceeds that of their lesser cousins.[.][X]
+
+## MSG_0732
+Beautiful and cursed creatures, whose gaze[LF]
+turns all who behold it into stone.[.][X]
+
+## MSG_0733
+Malignant fiends who hunt with lances. They[.][LF]
+swoop in swiftly on their fell wings.[.][X]
+
+## MSG_0734
+Gargoyles enhanced by magic. They surpass[.][LF]
+their lesser brethren in speed and brutality.[.][X]
+
+## MSG_0735
+Select Edit Teams to build a team.[X]
+
+## MSG_0736
+Build or edit a multiplayer team.[.][X]
+
+## MSG_0737
+Battle the computer.[X]
+
+## MSG_0738
+Set team [.][HASH] with + Control Pad.[X]
+
+## MSG_0739
+Battle against a linked player.[.][X]
+
+## MSG_073A
+Confirm battle records to date.[.][X]
+
+## MSG_073B
+Set combat rules.[.][X]
+
+## MSG_073C
+Build a new team.[.][X]
+
+## MSG_073D
+View all units on team.[.][X]
+
+## MSG_073E
+Switch teams.[.][X]
+
+## MSG_073F
+Disband team.[.][X]
+
+## MSG_0740
+Return to link menu.[X]
+
+## MSG_0741
+Select team for battle.[.][X]
+
+## MSG_0742
+Select your own team.[.][X]
+
+## MSG_0743
+Select team to battle.[X]
+
+## MSG_0744
++Control Pad: move/B Button: back.[X]
+
+## MSG_0745
+Set whether to hide enemy units.[X]
+
+## MSG_0746
+Set victory conditions.[.][X]
+
+## MSG_0747
+Set units to equip automatically.[.][X]
+
+## MSG_0748
+Setting up. Please wait...[X]
+
+## MSG_0749
+Please wait...[X]
+
+## MSG_074A
+Press START to begin.[.][X]
+
+## MSG_074B
+The rules for this battle.[X]
+
+## MSG_074C
+Select data to build a team with.[.][X]
+
+## MSG_074D
+Saved data will not be changed.[.][X]
+
+## MSG_074E
+Select player to move first.[X]
+
+## MSG_074F
+You move first.[.][X]
+
+## MSG_0750
+P1 moves first.[.][X]
+
+## MSG_0751
+P2 moves first.[.][X]
+
+## MSG_0752
+P3 moves first.[.][X]
+
+## MSG_0753
+P4 moves first.[.][X]
+
+## MSG_0754
+It is all right to delete?[X]
+
+## MSG_0755
+Cancel and lose team contents?[X]
+
+## MSG_0756
+Each unit receives 30 extra pts.[X]
+
+## MSG_0757
+The team surrendered.[.][X]
+
+## MSG_0758
+No one can do damage this turn.[.][X]
+
+## MSG_0759
+Set unit speed to normal.[.][X]
+
+## MSG_075A
+Set unit speed to high.[.][X]
+
+## MSG_075B
+Enemy commander[.][X]
+
+## MSG_075C
+Cancel[X]
+
+## MSG_075D
+Select up to 5 units[LF]
+to fight in the Link[LF]
+Arena. You cannot[.][LF]
+select units that[.][LF]
+cannot fight.[.][X]
+
+## MSG_075E
+Swap units' items.[X]
+
+## MSG_075F
+Cancel link formation[.][LF]
+and return to the[.][LF]
+previous screen.[X]
+
+## MSG_0760
+Select two units and trade items.[.][X]
+
+## MSG_0761
+Select unit to trade with.[X]
+
+## MSG_0762
+Discard unwanted item.[X]
+
+## MSG_0763
+Can trade for Merlinus's items.[.][X]
+
+## MSG_0764
+Can view all units' items.[X]
+
+## MSG_0765
+Armories can buy and sell items.[X]
+
+## MSG_0766
+Build Team[X]
+
+## MSG_0767
+Unit List[.][X]
+
+## MSG_0768
+Swap[X]
+
+## MSG_0769
+Disband[.][X]
+
+## MSG_076A
+Link Menu[.][X]
+
+## MSG_076B
+Empty[.][X]
+
+## MSG_076C
+Team[X]
+
+## MSG_076D
+Not Linked[X]
+
+## MSG_076E
+Connecting[X]
+
+## MSG_076F
+Link Error[X]
+
+## MSG_0770
+Done[X]
+
+## MSG_0771
+Points[X]
+
+## MSG_0772
+Name[X]
+
+## MSG_0773
+Points[X]
+
+## MSG_0774
+Rank[X]
+
+## MSG_0775
+Players[.][X]
+
+## MSG_0776
+Hide Units[X]
+
+## MSG_0777
+Victory Cond[X]
+
+## MSG_0778
+AutoWeapon[X]
+
+## MSG_0779
+Points[X]
+
+## MSG_077A
+Survival[X]
+
+## MSG_077B
+ON[X]
+
+## MSG_077C
+OFF[.][X]
+
+## MSG_077D
+Now Loading[.][X]
+
+## MSG_077E
+Connecting[X]
+
+## MSG_077F
+Pts.[X]
+
+## MSG_0780
+Rank[X]
+
+## MSG_0781
+P[.][X]
+
+## MSG_0782
+1st[.][X]
+
+## MSG_0783
+2nd[.][X]
+
+## MSG_0784
+3rd[.][X]
+
+## MSG_0785
+4th[.][X]
+
+## MSG_0786
+P1[X]
+
+## MSG_0787
+P2[X]
+
+## MSG_0788
+P3[X]
+
+## MSG_0789
+P4[X]
+
+## MSG_078A
+P5[X]
+
+## MSG_078B
+The Valiant[.][X]
+
+## MSG_078C
+Main Theme[X]
+
+## MSG_078D
+Prologue[X]
+
+## MSG_078E
+The Beginning[.][X]
+
+## MSG_078F
+Treasured Memories[X]
+
+## MSG_0790
+Grim Journey[X]
+
+## MSG_0791
+Ties of Friendship[X]
+
+## MSG_0792
+Ray of Hope[.][X]
+
+## MSG_0793
+Distant Roads[.][X]
+
+## MSG_0794
+Rise Above[X]
+
+## MSG_0795
+Follow Me![X]
+
+## MSG_0796
+Determination[.][X]
+
+## MSG_0797
+Truth, Despair, and Hope[X]
+
+## MSG_0798
+Land of Promise[.][X]
+
+## MSG_0799
+Binding Vow[.][X]
+
+## MSG_079A
+Grasp at Victory[X]
+
+## MSG_079B
+Confront the Past[.][X]
+
+## MSG_079C
+Shadows Approach[X]
+
+## MSG_079D
+Shadow of the Enemy[.][X]
+
+## MSG_079E
+Assault[.][X]
+
+## MSG_079F
+From the Darkness[.][X]
+
+## MSG_07A0
+Twisted Shadows A[.][X]
+
+## MSG_07A1
+Twisted Shadows B[.][X]
+
+## MSG_07A2
+Envoy from the Dark[.][X]
+
+## MSG_07A3
+Attack[X]
+
+## MSG_07A4
+Defense[.][X]
+
+## MSG_07A5
+The Battle Must Be Won[X]
+
+## MSG_07A6
+Powerful Foe[X]
+
+## MSG_07A7
+The Prince's Despair[X]
+
+## MSG_07A8
+Return of the Demon King[X]
+
+## MSG_07A9
+Sacred Strength[.][X]
+
+## MSG_07AA
+Tethys[X]
+
+## MSG_07AB
+Healing[.][X]
+
+## MSG_07AC
+Curing[X]
+
+## MSG_07AD
+To a Higher Place[.][X]
+
+## MSG_07AE
+Advance[.][X]
+
+## MSG_07AF
+Tension[.][X]
+
+## MSG_07B0
+Raid![.][X]
+
+## MSG_07B1
+Reunion[.][X]
+
+## MSG_07B2
+Indignation[.][X]
+
+## MSG_07B3
+Sorrow[X]
+
+## MSG_07B4
+Laughter[X]
+
+## MSG_07B5
+Legacy[X]
+
+## MSG_07B6
+Lyon[X]
+
+## MSG_07B7
+Lost Heart[X]
+
+## MSG_07B8
+Lyon (Organ Arrangement)[X]
+
+## MSG_07B9
+The Final Battle[X]
+
+## MSG_07BA
+Solve the Riddle[X]
+
+## MSG_07BB
+Lights in the Dark[X]
+
+## MSG_07BC
+Comrades[X]
+
+## MSG_07BD
+Victory[.][X]
+
+## MSG_07BE
+Into the Shadow of Victory[X]
+
+## MSG_07BF
+Main Theme (Reprise)[X]
+
+## MSG_07C0
+Combat Preparation[X]
+
+## MSG_07C1
+Shops[.][X]
+
+## MSG_07C2
+Armories[X]
+
+## MSG_07C3
+Bonds[.][X]
+
+## MSG_07C4
+Colosseum Entrance[X]
+
+## MSG_07C5
+In the Colosseum[X]
+
+## MSG_07C6
+Colosseum Victory[.][X]
+
+## MSG_07C7
+Colosseum Defeat[X]
+
+## MSG_07C8
+Victory Song A[X]
+
+## MSG_07C9
+Victory Song B[X]
+
+## MSG_07CA
+Game Over[.][X]
+
+## MSG_07CB
+In Sorrow's Shroud[X]
+
+## MSG_07CC
+Records[.][X]
+
+## MSG_07CD
+Victory and the Future[X]
+
+## MSG_07CE
+Fly with the Breeze[.][X]
+
+## MSG_07CF
+Epilogue[X]
+
+## MSG_07D0
+?????[.][X]
+
+## MSG_07D1
+Died at[.][X]
+
+## MSG_07D2
+Wounded at[LF]
+and parted ways with the company.[.][X]
+
+## MSG_07D3
+Wounded at[X]
+
+## MSG_07D4
+,[.][LF]
+but remained until the end.[.][X]
+
+## MSG_07D5
+[.][X]
+
+## MSG_07D6
+[.][X]
+
+## MSG_07D7
+[.][X]
+
+## MSG_07D8
+[.][X]
+
+## MSG_07D9
+[.][X]
+
+## MSG_07DA
+[.][X]
+
+## MSG_07DB
+[.][X]
+
+## MSG_07DC
+[.][X]
+
+## MSG_07DD
+[.][X]
+
+## MSG_07DE
+[.][X]
+
+## MSG_07DF
+[.][X]
+
+## MSG_07E0
+[.][X]
+
+## MSG_07E1
+[.][X]
+
+## MSG_07E2
+[.][X]
+
+## MSG_07E3
+[.][X]
+
+## MSG_07E4
+[.][X]
+
+## MSG_07E5
+[.][X]
+
+## MSG_07E6
+[.][X]
+
+## MSG_07E7
+[.][X]
+
+## MSG_07E8
+[.][X]
+
+## MSG_07E9
+[.][X]
+
+## MSG_07EA
+[.][X]
+
+## MSG_07EB
+[.][X]
+
+## MSG_07EC
+[.][X]
+
+## MSG_07ED
+[.][X]
+
+## MSG_07EE
+[.][X]
+
+## MSG_07EF
+[.][X]
+
+## MSG_07F0
+[.][X]
+
+## MSG_07F1
+[.][X]
+
+## MSG_07F2
+[.][X]
+
+## MSG_07F3
+[.][X]
+
+## MSG_07F4
+[.][X]
+
+## MSG_07F5
+[.][X]
+
+## MSG_07F6
+[.][X]
+
+## MSG_07F7
+[.][X]
+
+## MSG_07F8
+[.][X]
+
+## MSG_07F9
+[.][X]
+
+## MSG_07FA
+[.][X]
+
+## MSG_07FB
+[.][X]
+
+## MSG_07FC
+[.][X]
+
+## MSG_07FD
+[.][X]
+
+## MSG_07FE
+[.][X]
+
+## MSG_07FF
+[.][X]
+
+## MSG_0800
+[.][X]
+
+## MSG_0801
+[.][X]
+
+## MSG_0802
+[.][X]
+
+## MSG_0803
+[.][X]
+
+## MSG_0804
+[.][X]
+
+## MSG_0805
+[.][X]
+
+## MSG_0806
+[.][X]
+
+## MSG_0807
+[.][X]
+
+## MSG_0808
+[.][X]
+
+## MSG_0809
+[.][X]
+
+## MSG_080A
+[.][X]
+
+## MSG_080B
+[.][X]
+
+## MSG_080C
+[.][X]
+
+## MSG_080D
+[.][X]
+
+## MSG_080E
+[.][X]
+
+## MSG_080F
+[.][X]
+
+## MSG_0810
+[.][X]
+
+## MSG_0811
+[.][X]
+
+## MSG_0812
+[.][X]
+
+## MSG_0813
+[.][X]
+
+## MSG_0814
+[.][X]
+
+## MSG_0815
+[.][X]
+
+## MSG_0816
+[.][X]
+
+## MSG_0817
+[.][X]
+
+## MSG_0818
+[.][X]
+
+## MSG_0819
+[.][X]
+
+## MSG_081A
+[.][X]
+
+## MSG_081B
+[.][X]
+
+## MSG_081C
+[.][X]
+
+## MSG_081D
+[.][X]
+
+## MSG_081E
+[.][X]
+
+## MSG_081F
+[.][X]
+
+## MSG_0820
+[.][X]
+
+## MSG_0821
+[.][X]
+
+## MSG_0822
+[.][X]
+
+## MSG_0823
+[.][X]
+
+## MSG_0824
+[.][X]
+
+## MSG_0825
+[.][X]
+
+## MSG_0826
+[.][X]
+
+## MSG_0827
+[.][X]
+
+## MSG_0828
+[.][X]
+
+## MSG_0829
+[.][X]
+
+## MSG_082A
+[.][X]
+
+## MSG_082B
+[.][X]
+
+## MSG_082C
+[.][X]
+
+## MSG_082D
+[.][X]
+
+## MSG_082E
+[.][X]
+
+## MSG_082F
+[.][X]
+
+## MSG_0830
+[.][X]
+
+## MSG_0831
+[.][X]
+
+## MSG_0832
+[.][X]
+
+## MSG_0833
+[.][X]
+
+## MSG_0834
+[.][X]
+
+## MSG_0835
+[.][X]
+
+## MSG_0836
+[.][X]
+
+## MSG_0837
+[.][X]
+
+## MSG_0838
+[.][X]
+
+## MSG_0839
+Dummy[.][A][X]
+
+## MSG_083A
+Dummy[.][A][X]
+
+## MSG_083B
+Dummy[.][A][X]
+
+## MSG_083C
+Dummy[.][A][X]
+
+## MSG_083D
+Dummy[.][A][X]
+
+## MSG_083E
+Dummy[.][A][X]
+
+## MSG_083F
+Dummy[.][A][X]
+
+## MSG_0840
+[OpenLeft][LoadFace][FID_0x64]
+[OpenLeft]All your saved data will be erased.[.][LF]
+Shall I continue?[.][No][X]
+
+## MSG_0841
+[OpenLeft]Once your data is erased, it cannot[.][LF]
+be restored.[A][LF]
+Shall I continue?[.][No][X]
+
+## MSG_0842
+[OpenLeft]The data has been erased.[.][A][X]
+
+## MSG_0843
+Yes[.][X]
+
+## MSG_0844
+No[X]
+
+## MSG_0845
+Buy[.][X]
+
+## MSG_0846
+Sell[X]
+
+## MSG_0847
+Ask[.][X]
+
+## MSG_0848
+Exit[X]
+
+## MSG_0849
+ON[X]
+
+## MSG_084A
+OFF[.][X]
+
+## MSG_084B
+Throw away [.][Item]?[.][LF]
+[No][X]
+
+## MSG_084C
+You can't visit villages or[.][LF]
+houses while Silenced.[X]
+
+## MSG_084D
+You can't equip[.][LF]
+this weapon.[X]
+
+## MSG_084E
+Your weapon level[.][LF]
+is too low.[.][X]
+
+## MSG_084F
+Treasure can't be dropped.[X]
+
+## MSG_0850
+Treasure can't be sold.[.][X]
+
+## MSG_0851
+You can't use a staff[.][LF]
+while Silenced.[.][X]
+
+## MSG_0852
+You can't speak[.][LF]
+while Silenced.[.][X]
+
+## MSG_0853
+You can't enter the[.][LF]
+arena while Silenced.[.][X]
+
+## MSG_0854
+You can't fight, so you[.][LF]
+can't enter the arena.[X]
+
+## MSG_0855
+Weapons, magic, and[.][LF]
+staves can't be stolen.[.][X]
+
+## MSG_0856
+There's nothing to repair.[X]
+
+## MSG_0857
+Only weapons, tomes, and[LF]
+staves can be repaired.[.][X]
+
+## MSG_0858
+There's no more ammo for[LF]
+the ballista.[.][X]
+
+## MSG_0859
+There's no need for that.[.][X]
+
+## MSG_085A
+This can't be used.[.][X]
+
+## MSG_085B
+Must be above level 10.[.][X]
+
+## MSG_085C
+Must be above level 10.[.][X]
+
+## MSG_085D
+There's no door.[X]
+
+## MSG_085E
+There's no chest.[.][X]
+
+## MSG_085F
+For thieves only.[.][X]
+
+## MSG_0860
+Specialized weapon.[.][X]
+
+## MSG_0861
+No doors or chests.[.][X]
+
+## MSG_0862
+Your inventory is full.[.][X]
+
+## MSG_0863
+Item cannot be repaired.[X]
+
+## MSG_0864
+You cannot stop in the[LF]
+middle of the tutorial.[.][X]
+
+## MSG_0865
+Your supply convoy is full.[.][LF]
+Select an item to discard.[A][X]
+
+## MSG_0866
+Your inventory is full. Select an item to discard.[X]
+
+## MSG_0867
+Your inventory is full. Send an item to Supply.[.][X]
+
+## MSG_0868
+Select a unit to rescue.[X]
+
+## MSG_0869
+Select which space to drop the unit into.[.][X]
+
+## MSG_086A
+Select a unit to receive the traveler.[X]
+
+## MSG_086B
+Select a unit to give the traveler to.[X]
+
+## MSG_086C
+Select which unit to trade with.[X]
+
+## MSG_086D
+Select which unit to steal from.[X]
+
+## MSG_086E
+Select which unit to use the staff on.[X]
+
+## MSG_086F
+Select which unit to speak to.[X]
+
+## MSG_0870
+Select unit to refresh.[.][X]
+
+## MSG_0871
+Select warp point.[X]
+
+## MSG_0872
+Reorder your units.[.][X]
+
+## MSG_0873
+Select a weapon to attack with.[.][X]
+
+## MSG_0874
+Select a character to restore HP to.[X]
+
+## MSG_0875
+Select character to warp.[.][X]
+
+## MSG_0876
+Select which character to bring next to you.[X]
+
+## MSG_0877
+Select a character to restore to normal.[X]
+
+## MSG_0878
+Select the character whose weapon needs repair.[.][X]
+
+## MSG_0879
+Select which character's resistance to bolster.[.][X]
+
+## MSG_087A
+Select a door to open.[X]
+
+## MSG_087B
+Select a unit to use the staff on.[X]
+
+## MSG_087C
+Select an area to light up.[.][X]
+
+## MSG_087D
+Select an area to trap.[.][X]
+
+## MSG_087E
+Select an area to trap.[.][X]
+
+## MSG_087F
+Select a character to bless.[X]
+
+## MSG_0880
+Select which space to summon into.[X]
+
+## MSG_0881
+Select which space to use picks on.[.][X]
+
+## MSG_0882
+Suspended data will be lost.[LF]
+Is that all right?[X]
+
+## MSG_0883
+ Sent[.][X]
+
+## MSG_0884
+[OpenLeft][LoadFace][FID_0x64][X]
+
+## MSG_0885
+[OpenLeft]An error has occurred.[X]
+
+## MSG_0886
+[OpenLeft]Sending map now.[LF]
+Please wait a moment.[.][X]
+
+## MSG_0887
+[OpenLeft]Map send complete.[X]
+
+## MSG_0888
+[OpenLeft]There is no backup trial map.[.][LF]
+Ending map send and returning to menu.[X]
+
+## MSG_0889
+This unit has no usable[.][LF]
+weapons, so it cannot join.[.][X]
+
+## MSG_088A
+This unit cannot be deployed.[.][X]
+
+## MSG_088B
+If you have no usable[.][LF]
+weapons, you cannot attack.[.][X]
+
+## MSG_088C
+[OpenLeft][LoadFace][FID_0x64]
+[OpenLeft]Do you surrender?[.][LF]
+[Yes][X]
+
+## MSG_088D
+[OpenLeft][LoadFace][FID_0x64]
+[OpenLeft]You can do no damage.[.][A][CR][LF]
+Would you like to quit?[.][LF]
+[Yes][X]
+
+## MSG_088E
+Linking error.[LF]
+Turn the power off, check[.][LF]
+the connections, and retry.[.][X]
+
+## MSG_088F
+Already used[X]
+
+## MSG_0890
+Inventory full[X]
+
+## MSG_0891
+Send data from[LF]
+Chapter 2+[X]
+
+## MSG_0892
+This data[.][LF]
+can't be used[.][LF]
+on a trial map.[.][X]
+
+## MSG_0893
+Sacred Dragon[.][LF]
+added to[LF]
+Sound Room[X]
+
+## MSG_0894
+Palace Silezia[LF]
+added to[LF]
+Sound Room[X]
+
+## MSG_0895
+Select cleared save data.[.][X]
+
+## MSG_0896
+Welcome to the armory![A][CR][LF]
+These are the weapons[.][LF]
+we have for sale.[.][A][X]
+
+## MSG_0897
+Welcome to the[LF]
+general store![A][CR][LF]
+Here are all the items[LF]
+we have for sale.[.][A][X]
+
+## MSG_0898
+Come back again.[A][X]
+
+## MSG_0899
+Hope to see you again![A][X]
+
+## MSG_089A
+Welcome to the armory.[A][CR][LF]
+I deal in all sorts of goods.[.][LF]
+[BuySell][X]
+
+## MSG_089B
+Welcome to the general store.[.][A][CR][LF]
+How can I help you?[.][LF]
+[BuySell][X]
+
+## MSG_089C
+Shhh... Hee hee...[A][CR][LF]
+This is a secret shop![LF]
+[BuySell][X]
+
+## MSG_089D
+Do you need anything else?[LF]
+[BuySell][X]
+
+## MSG_089E
+Anything else for you?[LF]
+[BuySell][X]
+
+## MSG_089F
+Well? Anything else for you?[LF]
+[BuySell][X]
+
+## MSG_08A0
+Do you need anything else?[LF]
+[ShopContinue][X]
+
+## MSG_08A1
+Can I do anything else for you?[.][LF]
+[ShopContinue][X]
+
+## MSG_08A2
+Is there anything else you need?[LF]
+[ShopContinue][X]
+
+## MSG_08A3
+What would you like?[X]
+
+## MSG_08A4
+What can I get for you?[.][X]
+
+## MSG_08A5
+What do you need?[.][X]
+
+## MSG_08A6
+Anything else?[X]
+
+## MSG_08A7
+Anything else?[X]
+
+## MSG_08A8
+Any other requests?[.][X]
+
+## MSG_08A9
+What do you want to sell?[.][X]
+
+## MSG_08AA
+What are you selling?[.][X]
+
+## MSG_08AB
+What would you sell?[X]
+
+## MSG_08AC
+You've got nothing to sell![.][A][X]
+
+## MSG_08AD
+You have nothing to sell.[.][A][X]
+
+## MSG_08AE
+You've got nothing to sell![.][A][X]
+
+## MSG_08AF
+Selling anything else?[X]
+
+## MSG_08B0
+Anything else to sell?[X]
+
+## MSG_08B1
+What else are you selling?[X]
+
+## MSG_08B2
+You don't have the money![.][A][X]
+
+## MSG_08B3
+You're short of funds.[A][X]
+
+## MSG_08B4
+Heh! Not enough money![A][X]
+
+## MSG_08B5
+How does [.][G] gold[.][LF]
+sound to you?[.][Yes][X]
+
+## MSG_08B6
+That's worth [.][G] gold.[LF]
+Is that all right?[Yes][X]
+
+## MSG_08B7
+That is worth [G] gold.[LF]
+Is that acceptable?[.][Yes][X]
+
+## MSG_08B8
+Come back again.[A][X]
+
+## MSG_08B9
+Drop in again.[A][X]
+
+## MSG_08BA
+Hee hee... Buh-bye![.][A][X]
+
+## MSG_08BB
+I can't buy that.[.][A][X]
+
+## MSG_08BC
+I can't buy that.[.][A][X]
+
+## MSG_08BD
+Hee hee... Wait a minute.[.][LF]
+I can't buy that![.][A][X]
+
+## MSG_08BE
+Looks like you're full.[.][A][CR][LF]
+Send it to storage?[.][LF]
+[Yes][X]
+
+## MSG_08BF
+Your hands are full.[A][CR][LF]
+Send it to storage?[.][LF]
+[Yes][X]
+
+## MSG_08C0
+Your hands are full.[A][CR][LF]
+Send it to storage?[.][LF]
+[Yes][X]
+
+## MSG_08C1
+Looks like you're full.[.][A][X]
+
+## MSG_08C2
+Your hands are full.[A][X]
+
+## MSG_08C3
+Your hands are full.[A][X]
+
+## MSG_08C4
+Right. I'll send it now.[A][X]
+
+## MSG_08C5
+Right. I'll have it sent.[.][A][X]
+
+## MSG_08C6
+Heh heh... I'll send it then.[.][A][X]
+
+## MSG_08C7
+No? Too bad. You could[LF]
+take it if you made room.[.][A][X]
+
+## MSG_08C8
+That's a shame. You could[.][LF]
+carry it if you made room.[A][X]
+
+## MSG_08C9
+Ah, well... You could take[LF]
+it if you made room.[A][X]
+
+## MSG_08CA
+Too bad you don't have a[LF]
+supply convoy to send it to.[A][X]
+
+## MSG_08CB
+If you had some storage,[LF]
+I could send it there...[A][X]
+
+## MSG_08CC
+If you had some storage,[LF]
+I could send it to you.[.][A][X]
+
+## MSG_08CD
+Your storage is full, too![LF]
+Rearrange your things![A][X]
+
+## MSG_08CE
+Your storage is full,[.][LF]
+too. Try again later.[.][A][X]
+
+## MSG_08CF
+Heh... Your storage is full,[LF]
+too. Rearrange things...[A][X]
+
+## MSG_08D0
+Welcome to the arena![.][A][X]
+
+## MSG_08D1
+Welcome to the arena.[.][A][LF]
+Oh! It's you again.[.][A][CR][LF]
+I've lost a lot of gold[.][LF]
+thanks to you...[A][CR][LF]
+If you want to continue,[A][LF]
+we're going to have to[LF]
+do things differently.[A][CR][LF]
+I'm going to prepare some[.][LF]
+more challenging foes.[A][X]
+
+## MSG_08D2
+Would you like to wager[.][LF]
+[G] gold?[Yes][X]
+
+## MSG_08D3
+Good luck. Don't get[LF]
+yourself killed.[A][X]
+
+## MSG_08D4
+What's that? Bah![.][LF]
+Get outta here![.][A][X]
+
+## MSG_08D5
+Fight 'til you drop, or press[.][LF]
+the B Button to yield.[A][X]
+
+## MSG_08D6
+So you won, eh? Here's[LF]
+your prize. [G] gold.[A][X]
+
+## MSG_08D7
+Ahh, you lost? I'd hoped[LF]
+for better from you.[A][X]
+
+## MSG_08D8
+What? You yield? Well,[LF]
+your gold is mine, then![A][X]
+
+## MSG_08D9
+Looks like no one wins.[.][LF]
+Here's your money back.[.][A][X]
+
+## MSG_08DA
+You don't have the money![.][LF]
+Try again later.[A][X]
+
+## MSG_08DB
+[.][X]
+
+## MSG_08DC
+Eirika and her companions have liberated [.][LF]
+the border castle.[A][LF]
+[BreakTalk]
+Alongside Princess Tana of Frelia, they ride [.][LF]
+to the Frelian capital.[.][A][LF]
+[BreakTalk]
+[X]
+
+## MSG_08DD
+The world map shows the continent in [.][LF]
+its entirety.[.][A][CR][LF]
+Castles, towns, and other map points[LF]
+are added to the map as you play.[.][A][CR][LF]
+Press the A Button when not on a map [.][LF]
+point to open the [ToggleRed]map menu[ToggleRed].[.][A][LF]
+This is where you can [ToggleRed]save[ToggleRed].[.][LF]
+When you want to stop playing, use this [LF]
+option to save your progress.[.][A][CR][LF]
+Now then, move on to your next[LF]
+destination.[A][LF]
+The marker with the [ToggleRed]red flag[ToggleRed] in the center[LF]
+of the map is your destination.[.][A][LF]
+Move the triangle cursor onto the red flag [.][LF]
+and press the A Button.[.][A][X]
+
+## MSG_08DE
+[.][X]
+
+## MSG_08DF
+Once cleared, battle sites become [ToggleRed]bases[.][ToggleRed]. [LF]
+You can [ToggleRed]manage items[ToggleRed] on any base.[.][A][CR][LF]
+To manage items, place the cursor on your [LF]
+character icon.[.][A][LF]
+Then, press the A Button to bring up the[LF]
+[ToggleRed]Manage Items[ToggleRed] command.[.][A][LF]
+Choose Manage Items to trade possessions[LF]
+with your supply convoy or with other units.[A][CR][LF]
+Some map areas have [ToggleRed]shops[.][ToggleRed][LF]
+and [ToggleRed]armories[ToggleRed].[.][A][LF]
+To see if a base has a shop or an[.][LF]
+armory, move the cursor to that base.[.][A][LF]
+For example, in Ide, where Eirika is[LF]
+now, there is an [.][ToggleRed]armory[ToggleRed].[.][A][LF]
+Check the corner of the screen for the[LF]
+[ToggleRed]base name[.][ToggleRed] and any [.][ToggleRed]shop icons[ToggleRed].[.][A][X]
+
+## MSG_08E0
+[.][X]
+
+## MSG_08E1
+[.][X]
+
+## MSG_08E2
+[.][X]
+
+## MSG_08E3
+[.][X]
+
+## MSG_08E4
+[.][X]
+
+## MSG_08E5
+The [ToggleRed]Tower of Valni[ToggleRed] has appeared to the[LF]
+east of Castle Frelia on the world map.[.][A][LF]
+Once held by Grado's troops, it has become[LF]
+home to a host of [ToggleRed]dark creatures[ToggleRed].[.][A][LF]
+Battling these monstrosities is a good [.][LF]
+way for units to gain strength.[.][A][LF]
+Try using the tower as a training area [.][LF]
+to gain extra experience.[.][A][CR][LF]
+Be aware: you cannot save your battle [LF]
+preparations for tower skirmishes.[A][LF]
+Once you clear a tower map, you'll have [LF]
+access to the next floor.[.][A][LF]
+Each floor is more difficult than the last, [LF]
+so come prepared![.][A][CR][LF]
+Dark creatures also may appear on other [LF]
+bases on the world map.[.][A][LF]
+To engage these demons in combat,[.][A][LF]
+simply place the cursor on their location [LF]
+and press the A Button.[.][A][CR][LF]
+If the battle goes poorly and you're in [LF]
+danger of losing units,[.][A][LF]
+use the [ToggleRed]retreat[.][ToggleRed] command on the map [LF]
+menu to withdraw your troops.[.][A][X]
+
+## MSG_08E6
+[.][X]
+
+## MSG_08E7
+[.][X]
+
+## MSG_08E8
+[.][X]
+
+## MSG_08E9
+[.][X]
+
+## MSG_08EA
+[.][X]
+
+## MSG_08EB
+[.][X]
+
+## MSG_08EC
+[.][X]
+
+## MSG_08ED
+[.][X]
+
+## MSG_08EE
+[.][X]
+
+## MSG_08EF
+[.][X]
+
+## MSG_08F0
+[.][X]
+
+## MSG_08F1
+[.][X]
+
+## MSG_08F2
+[.][X]
+
+## MSG_08F3
+[.][X]
+
+## MSG_08F4
+[.][X]
+
+## MSG_08F5
+[.][X]
+
+## MSG_08F6
+[.][X]
+
+## MSG_08F7
+[.][X]
+
+## MSG_08F8
+[.][X]
+
+## MSG_08F9
+[.][X]
+
+## MSG_08FA
+[.][X]
+
+## MSG_08FB
+[.][X]
+
+## MSG_08FC
+Retreat?        [LF]
+[No][X]
+
+## MSG_08FD
+Proceed to next floor?[LF]
+[Yes][X]
+
+## MSG_08FE
+[OpenLeft][LoadFace][FID_0x64]
+[OpenLeft]Do you want to quit?[LF]
+[Yes][X]
+
+## MSG_08FF
+[OpenLeft]Next time, choose Resume[LF]
+Chapter to finish this battle.[A][X]
+
+## MSG_0900
+[.][X]
+
+## MSG_0901
+[.][X]
+
+## MSG_0902
+[.][X]
+
+## MSG_0903
+[.][X]
+
+## MSG_0904
+[.][X]
+
+## MSG_0905
+[.][X]
+
+## MSG_0906
+[.][X]
+
+## MSG_0907
+[.][X]
+
+## MSG_0908
+[.][X]
+
+## MSG_0909
+[.][X]
+
+## MSG_090A
+[.][X]
+
+## MSG_090B
+[.][X]
+
+## MSG_090C
+[.][X]
+
+## MSG_090D
+[.][X]
+
+## MSG_090E
+[.][X]
+
+## MSG_090F
+[.][X]
+
+## MSG_0910
+[.][X]
+
+## MSG_0911
+[.][X]
+
+## MSG_0912
+[.][X]
+
+## MSG_0913
+[.][X]
+
+## MSG_0914
+[.][X]
+
+## MSG_0915
+[.][X]
+
+## MSG_0916
+[.][X]
+
+## MSG_0917
+[.][X]
+
+## MSG_0918
+[.][X]
+
+## MSG_0919
+Your training begins with [ToggleRed]movement[ToggleRed].[.][A][LF]
+Place the [ToggleRed]square cursor[.][ToggleRed] on[.][LF]
+Eirika and press the [.][ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_091A
+Press the [ToggleRed]A Button[ToggleRed][LF]
+to select Eirika.[.][A][X]
+
+## MSG_091B
+You can move anywhere[.][LF]
+within the [.][ToggleRed]blue area[.][ToggleRed].[.][A][LF]
+Move the cursor to the[LF]
+flashing space beside Seth[LF]
+and press the [ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_091C
+You'll now move next[LF]
+to Seth.[A][LF]
+Go ahead and press the[LF]
+[ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_091D
+Red units are [ToggleRed]enemy units[.][ToggleRed].[.][A][LF]
+After all of Eirika's party has moved,[LF]
+the [ToggleRed]enemy[.][ToggleRed] units will move.[.][A][LF]
+Each side takes turns moving and then[.][LF]
+fighting until the battle ends.[.][A][X]
+
+## MSG_091E
+It's time to [.][ToggleRed]attack[ToggleRed][LF]
+the enemy.[A][LF]
+Place the cursor on Eirika[LF]
+and press the [ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_091F
+The cursor is now on Eirika.[LF]
+Press the [ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_0920
+Select [.][ToggleRed]Attack[ToggleRed] and press[LF]
+the [ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_0921
+This is the [ToggleRed]combat[LF]
+information window[ToggleRed].[.][A][LF]
+You can see the combatant's[.][LF]
+[ToggleRed]HP[ToggleRed] and the amount[.][LF]
+of damage you will inflict.[.][A][LF]
+Eirika should do [.][ToggleRed]7[.][ToggleRed] points,[LF]
+and the enemy should do [ToggleRed]9[.][ToggleRed].[.][A][LF]
+You see the [ToggleRed]x2[ToggleRed] next to[LF]
+[ToggleRed]Mt[ToggleRed], right?[A][LF]
+This indicates that you will[LF]
+[ToggleRed]attack twice[ToggleRed].[.][A][LF]
+Eirika is faster than her[.][LF]
+opponent, so she can [.][ToggleRed]strike[LF]
+twice[.][ToggleRed] in one turn.[.][A][LF]
+So, with [.][ToggleRed]2 attacks of 7[LF]
+points each[.][ToggleRed], Eirika will[.][LF]
+do [.][ToggleRed]14 points[.][ToggleRed] of damage.[.][A][LF]
+Now press the [ToggleRed]A Button[ToggleRed] to[.][LF]
+[ToggleRed]attack[ToggleRed] the enemy.[.][A][X]
+
+## MSG_0922
+On this map you need to defeat[LF]
+O'Neill, the enemy leader, to win.[A][LF]
+The [ToggleRed]objective[.][ToggleRed] is displayed at the [.][LF]
+corner of the screen.[.][A][LF]
+Your objective changes from map to[LF]
+map, which may change your approach.[A][LF]
+Check your objective before deciding[LF]
+your strategy. Now, attack the enemy![.][A][X]
+
+## MSG_0923
+Place the cursor on [ToggleRed]Eirika[ToggleRed] and[LF]
+press the [ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_0924
+The cursor is now on Eirika.[LF]
+Press the [ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_0925
+Move next to the enemy[LF]
+and press the [ToggleRed]A Button[ToggleRed].[.][A][X]
+
+## MSG_0926
+The [ToggleRed]combat information[LF]
+window[ToggleRed] is open again.[.][A][LF]
+Do you see [.][ToggleRed]Hit[.][ToggleRed] displayed[LF]
+below [ToggleRed]HP[ToggleRed] and [.][ToggleRed]Mt[ToggleRed]?[.][A][LF]
+[ToggleRed]Hit[.][ToggleRed] is the likelihood that[.][LF]
+you will land your blow.[A][LF]
+Eirika's [.][ToggleRed]Hit[.][ToggleRed] is 94, so she[LF]
+has a 94 percent chance[.][LF]
+of hitting the enemy.[.][A][LF]
+[ToggleRed]Crit[ToggleRed], short for Critical, also[LF]
+appears in this window.[.][A][LF]
+This is the chance an attack[LF]
+will be a lethal strike.[A][LF]
+Eirika's [.][ToggleRed]Crit[ToggleRed] is 14, so she[LF]
+has a 14 percent chance of[LF]
+landing a killing blow.[.][A][LF]
+Critical attacks do [ToggleRed]3 times[.][ToggleRed][LF]
+the damage of a normal[LF]
+attack.[.][A][LF]
+Press the [ToggleRed]A Button[ToggleRed] to[.][LF]
+attack the enemy leader.[A][X]
+
+## MSG_0927
+Eirika gained over [.][ToggleRed]100[.][LF]
+experience points[.][ToggleRed] and[LF]
+has [ToggleRed]leveled up[ToggleRed].[.][A][LF]
+Gaining levels increases [.][LF]
+unit abilities and makes [.][LF]
+them stronger.[A][X]
+
+## MSG_0928
+You've received a rapier from Seth.[.][A][LF]
+All weapons have a [.][ToggleRed]durability[ToggleRed] rating.[LF]
+The rapier's durability is 40.[A][LF]
+Once the rapier has been used[.][LF]
+40 times, it will break.[A][LF]
+Pay close attention to how many uses[LF]
+your weapons have remaining.[A][X]
+
+## MSG_0929
+[.][X]
+
+## MSG_092A
+[.][X]
+
+## MSG_092B
+[.][X]
+
+## MSG_092C
+[.][X]
+
+## MSG_092D
+[.][X]
+
+## MSG_092E
+[.][X]
+
+## MSG_092F
+[.][X]
+
+## MSG_0930
+[.][X]
+
+## MSG_0931
+[.][X]
+
+## MSG_0932
+[.][X]
+
+## MSG_0933
+[.][X]
+
+## MSG_0934
+[.][X]
+
+## MSG_0935
+[.][X]
+
+## MSG_0936
+[.][X]
+
+## MSG_0937
+[.][X]
+
+## MSG_0938
+[.][X]
+
+## MSG_0939
+[.][X]
+
+## MSG_093A
+[.][X]
+
+## MSG_093B
+[.][X]
+
+## MSG_093C
+[.][X]
+
+## MSG_093D
+The relationship between [.][ToggleRed]swords[ToggleRed], [ToggleRed]lances[ToggleRed],[.][LF]
+and [ToggleRed]axes[ToggleRed] is called the [.][ToggleRed]weapon triangle[.][ToggleRed].[.][A][LF]
+[ToggleRed]Lances[ToggleRed] are strong against [ToggleRed]swords[ToggleRed].[.][LF]
+[ToggleRed]Swords[ToggleRed] are strong against [ToggleRed]axes[ToggleRed].[.][LF]
+[ToggleRed]Axes[ToggleRed] are strong against [ToggleRed]lances[ToggleRed].[.][A][LF]
+In that last battle, the enemy commander,[.][LF]
+Breguet, wielded a [.][ToggleRed]lance[.][ToggleRed], while the[.][LF]
+Frelian soldier used a [.][ToggleRed]sword[.][ToggleRed].[.][A][LF]
+[ToggleRed]Lances[ToggleRed] are strong against [ToggleRed]swords[ToggleRed],[.][LF]
+so Breguet had an advantage.[A][LF]
+The [ToggleRed]weapon triangle[.][ToggleRed] can be very[LF]
+important in determining the outcome of[.][LF]
+a battle. For the time being, just[A][LF]
+remember that [ToggleRed]lances[ToggleRed] are strong[.][LF]
+against [ToggleRed]swords[ToggleRed].[.][A][X]
+
+## MSG_093E
+It's time to [.][ToggleRed]visit[.][ToggleRed] a home. First,[.][LF]
+place the cursor on Eirika[LF]
+and press the A Button.[.][A][X]
+
+## MSG_093F
+The cursor is now on [.][ToggleRed]Eirika[ToggleRed].[.][LF]
+Press the A Button.[.][A][X]
+
+## MSG_0940
+Move Eirika to the [.][ToggleRed]house[.][ToggleRed].[.][A][LF]
+Place the cursor on the flashing[LF]
+space and press the A Button.[.][A][X]
+
+## MSG_0941
+You can get [ToggleRed]battle hints[ToggleRed] and[LF]
+other useful information by[.][LF]
+talking to people in homes.[.][A][LF]
+This can be very beneficial,[LF]
+so be sure to visit houses[LF]
+when you have the chance.[.][A][CR][LF]
+Now select [.][ToggleRed]Visit[.][ToggleRed] and press [.][LF]
+the A Button.[.][A][X]
+
+## MSG_0942
+Units on [.][ToggleRed]gates[.][ToggleRed], [ToggleRed]forts[.][ToggleRed], and other special[.][LF]
+areas [ToggleRed]recover Hit Points (HP)[.][ToggleRed] at the[.][LF]
+beginning of your turn.[.][A][LF]
+Currently, the enemy commander, Breguet,[LF]
+is standing on a [.][ToggleRed]gate[ToggleRed]. Even if he takes[LF]
+damage, he'll soon [.][ToggleRed]recover some of the[.][ToggleRed][LF]
+[ToggleRed]HP[ToggleRed] he lost.[.][A][X]
+
+## MSG_0943
+Starting with this chapter, you will[LF]
+control not only Eirika, but also Seth,[.][LF]
+general of the Knights of Renais.[.][A][LF]
+You select and move him in the same way[.][LF]
+you do Eirika: by placing the cursor[LF]
+on him and pressing the A Button.[.][A][LF]
+When all of your units have finished[LF]
+moving, your enemy's turn will begin[LF]
+[ToggleRed]automatically[.][ToggleRed].[.][A][CR][LF]
+If Eirika, the leader of your group, falls[LF]
+in battle, [.][ToggleRed]the game is over[ToggleRed].[.][A][LF]
+You can choose to continue playing if any[.][LF]
+of your allies fall, but defeated allies[LF]
+will [.][ToggleRed]never fight at your side again[ToggleRed].[.][A][LF]
+Try to move forward with the fewest[.][LF]
+number of casualties possible.[A][X]
+
+## MSG_0944
+Allied units have joined the battle.[A][LF]
+All allied blue units can be moved[LF]
+in the same manner as Eirika.[.][A][X]
+
+## MSG_0945
+You defeated Breguet, commander[.][LF]
+of Grado's forces in Mulan.[.][A][LF]
+All that remains is to [.][ToggleRed]seize[.][ToggleRed] the [.][LF]
+castle gate.[A][LF]
+Only your [ToggleRed]commander[.][ToggleRed] can perform[LF]
+this task.[A][LF]
+The commander of this group is Eirika.[LF]
+Move her to the castle gate, [.][ToggleRed]seize[.][ToggleRed] [.][LF]
+it, and clear this map.[.][A][X]
+
+## MSG_0946
+It's time to [.][ToggleRed]trade[.][ToggleRed] items. First,[LF]
+place the cursor on Gilliam and[.][LF]
+press the A Button.[.][A][X]
+
+## MSG_0947
+The cursor is on [.][ToggleRed]Gilliam[.][ToggleRed].[.][LF]
+Press the A Button.[.][A][X]
+
+## MSG_0948
+Now select [.][ToggleRed]Trade[.][ToggleRed].[.][A][X]
+
+## MSG_0949
+Here are the items Gilliam[LF]
+and Franz are carrying.[.][A][LF]
+Move the cursor to Franz's[LF]
+items on the right side.[A][LF]
+Press [ToggleRed]right on the[LF]
++ Control Pad[.][ToggleRed].[.][A][X]
+
+## MSG_094A
+Use the [ToggleRed]+ Control Pad[.][ToggleRed] to select[LF]
+a [ToggleRed]vulnerary[.][ToggleRed] and press the [.][LF]
+A Button.[.][A][X]
+
+## MSG_094B
+Press the A Button now to accept[LF]
+the [ToggleRed]vulnerary[.][ToggleRed] from Franz.[A][X]
+
+## MSG_094C
+The item has successfully been traded.[A][LF]
+Press the [ToggleRed]B Button[ToggleRed] to finish [.][LF]
+your transaction.[.][A][X]
+
+## MSG_094D
+You can use the [ToggleRed]vulnerary[.][ToggleRed][LF]
+you received right away.[A][LF]
+Select the [.][ToggleRed]vulnerary[.][ToggleRed] from[.][LF]
+your [.][ToggleRed]items[.][ToggleRed] and use it.[A][X]
+
+## MSG_094E
+Place the cursor on [ToggleRed]Seth[ToggleRed] and[LF]
+press the A Button.[.][A][X]
+
+## MSG_094F
+The cursor is now on [.][ToggleRed]Seth[ToggleRed].[.][LF]
+Press the A Button.[.][A][X]
+
+## MSG_0950
+Seth must move near his[.][LF]
+foe. Press the A Button.[A][X]
+
+## MSG_0951
+This is the [ToggleRed]combat[LF]
+information window[ToggleRed].[.][A][LF]
+At the top of the window,[.][LF]
+next to Seth's name, is a[.][LF]
+[ToggleRed]weapon[ToggleRed] and an [ToggleRed]arrow[.][A][LF]
+pointing up[.][ToggleRed]. This is because[.][LF]
+Seth has a [.][ToggleRed]sword[.][ToggleRed], while[.][LF]
+the soldier has an [.][ToggleRed]axe[.][ToggleRed].[.][A][LF]
+The [ToggleRed]weapon triangle[.][ToggleRed] states[.][LF]
+that [.][ToggleRed]swords[ToggleRed] are strong[.][LF]
+against [ToggleRed]axes[ToggleRed].[.][A][LF]
+Seth is at an advantage.[A][X]
+
+## MSG_0952
+The enemy has an [.][ToggleRed]axe[.][ToggleRed], so it's[.][LF]
+best to counter with a [.][ToggleRed]sword[.][ToggleRed].[.][LF]
+Choose [.][ToggleRed]Attack[ToggleRed] and press[LF]
+the A Button.[.][A][X]
+
+## MSG_0953
+Move the cursor to an unoccupied[LF]
+space on the map, and press the [LF]
+A Button to open the [.][ToggleRed]map menu[ToggleRed].[.][A][LF]
+The third item from the top is[LF]
+[ToggleRed]Guide[.][ToggleRed]. Try selecting it.[.][A][LF]
+The guide contains lots of useful [LF]
+[ToggleRed]game-play information[.][ToggleRed].[.][A][LF]
+If you run into something that[LF]
+seems unclear, review the [ToggleRed]guide[.][ToggleRed][LF]
+for a quick reference.[A][X]
+
+## MSG_0954
+[.][X]
+
+## MSG_0955
+[.][X]
+
+## MSG_0956
+[.][X]
+
+## MSG_0957
+[.][X]
+
+## MSG_0958
+[.][X]
+
+## MSG_0959
+[.][X]
+
+## MSG_095A
+[.][X]
+
+## MSG_095B
+[.][X]
+
+## MSG_095C
+[.][X]
+
+## MSG_095D
+[.][X]
+
+## MSG_095E
+[.][X]
+
+## MSG_095F
+[.][X]
+
+## MSG_0960
+[.][X]
+
+## MSG_0961
+[.][X]
+
+## MSG_0962
+[.][X]
+
+## MSG_0963
+[.][X]
+
+## MSG_0964
+[.][X]
+
+## MSG_0965
+[.][X]
+
+## MSG_0966
+[.][X]
+
+## MSG_0967
+[.][X]
+
+## MSG_0968
+[.][X]
+
+## MSG_0969
+[.][X]
+
+## MSG_096A
+[.][X]
+
+## MSG_096B
+[.][X]
+
+## MSG_096C
+[.][X]
+
+## MSG_096D
+Sometimes, you will gain [.][ToggleRed]gold[ToggleRed] or [ToggleRed]items[.][ToggleRed][LF]
+when you [.][ToggleRed]visit[.][ToggleRed] a village.[.][A][LF]
+Villages can also be [.][ToggleRed]destroyed[.][ToggleRed] by[.][LF]
+bandits or other enemy troops.[A][LF]
+Any of your allied units can [.][ToggleRed]visit[.][ToggleRed][LF]
+villages and houses.[A][LF]
+[ToggleRed]Visit[.][ToggleRed] all the villages and warn them[.][LF]
+before they're [.][ToggleRed]savaged[.][ToggleRed] by the bandits.[A][X]
+
+## MSG_096E
+Ross is a [ToggleRed]journeyman[ToggleRed].[.][A][LF]
+[ToggleRed]Journeymen[ToggleRed] are inexperienced[LF]
+fighters with low combat skills.[A][LF]
+When they reach [ToggleRed]level 10[ToggleRed], they[A][LF]
+can [ToggleRed]change classes[ToggleRed] to become more[.][LF]
+powerful [.][ToggleRed]fighters[ToggleRed] or [ToggleRed]pirates[.][ToggleRed].[.][A][LF]
+You should avoid sending [.][ToggleRed]journeymen[ToggleRed][LF]
+to face strong enemies.[.][A][CR][LF]
+Ross's father is Garcia, a [.][ToggleRed]fighter[.][ToggleRed].[.][A][LF]
+[ToggleRed]Fighters[ToggleRed] who reach level 10 or higher[.][LF]
+can use [ToggleRed]hero crests[.][ToggleRed] to [ToggleRed]change classes[ToggleRed][LF]
+and become [.][ToggleRed]heroes[ToggleRed] or [ToggleRed]warriors[ToggleRed].[.][A][CR][LF]
+Additionally, [ToggleRed]cavaliers[.][ToggleRed] and [.][ToggleRed]knights[.][ToggleRed] can [.][LF]
+use [ToggleRed]knight crests[.][ToggleRed] to [ToggleRed]change classes[ToggleRed].[.][LF]
+They can choose between [ToggleRed]2 types[.][ToggleRed][LF]
+[ToggleRed]of soldiers[.][ToggleRed].[.][A][LF]
+Be sure to power up your units and[LF]
+[ToggleRed]change classes[ToggleRed] when you can.[A][X]
+
+## MSG_096F
+Because [ToggleRed]pegasus knights[.][ToggleRed] fly, mountains[.][LF]
+do not block their movement.[A][LF]
+However, they are vulnerable to [ToggleRed]missile[.][LF]
+attacks[.][ToggleRed], so watch out for [.][ToggleRed]archers[.][ToggleRed].[.][A][X]
+
+## MSG_0970
+Vanessa must [.][ToggleRed]rescue[ToggleRed] Ross.[A][LF]
+First, place the cursor on [.][ToggleRed]Vanessa[.][ToggleRed][LF]
+and press the A Button.[.][A][X]
+
+## MSG_0971
+Move to a space next to [ToggleRed]Ross[ToggleRed][LF]
+and press the A Button.[.][A][X]
+
+## MSG_0972
+Now select [.][ToggleRed]Rescue[ToggleRed] and[LF]
+press the A Button again.[.][A][X]
+
+## MSG_0973
+[ToggleRed]Pegasus knights[.][ToggleRed], [ToggleRed]cavaliers[.][ToggleRed], and other[.][LF]
+mounted units can [ToggleRed]continue moving[.][ToggleRed] after[LF]
+they've rescued someone.[A][LF]
+Go ahead and move to this space.[A][X]
+
+## MSG_0974
+Place the cursor on [ToggleRed]Vanessa[.][ToggleRed][LF]
+and press the A Button.[.][A][X]
+
+## MSG_0975
+Vanessa is currently carrying Ross as[.][LF]
+a [ToggleRed]traveler[ToggleRed].[.][A][LF]
+Drop Ross off next to Moulder.[A][LF]
+First, place the cursor on [.][ToggleRed]Vanessa[.][ToggleRed][LF]
+and press the A Button.[.][A][X]
+
+## MSG_0976
+Press the A Button[LF]
+and select [.][ToggleRed]drop[ToggleRed].[.][A][X]
+
+## MSG_0977
+You can continue to move.[.][A][LF]
+Ross's father, Garcia, is still on[LF]
+the other side of the mountains.[A][LF]
+Move close so that it's easier to[.][LF]
+rescue him on your next turn.[.][A][X]
+
+## MSG_0978
+Moulder can use his [ToggleRed]staff[.][ToggleRed] to[.][LF]
+restore some of Ross's [.][ToggleRed]HP[ToggleRed].[.][A][LF]
+Place the cursor on [ToggleRed]Moulder[.][ToggleRed] and[LF]
+press the A Button.[.][A][X]
+
+## MSG_0979
+Leave the cursor where it is and[LF]
+press the A Button again.[.][A][X]
+
+## MSG_097A
+Now select [.][ToggleRed]Staff[.][ToggleRed] and [.][LF]
+press the A Button again.[.][A][X]
+
+## MSG_097B
+Ross has been [ToggleRed]rescued[.][ToggleRed].[.][LF]
+Now bring Moulder to Vanessa.[.][A][LF]
+Select [.][ToggleRed]Moulder[.][ToggleRed] with the cursor[LF]
+and press the A Button.[.][A][X]
+
+## MSG_097C
+Move close to [ToggleRed]Vanessa[.][ToggleRed].[.][LF]
+Place the cursor on the flashing[LF]
+space and press the A Button.[.][A][X]
+
+## MSG_097D
+In this way, you can use [.][ToggleRed]Rescue[ToggleRed] to[.][LF]
+help units in danger, as well as[LF]
+in other situations.[A][LF]
+Use it to your advantage, and turn[LF]
+battles in your favor.[A][X]
+
+## MSG_097E
+The [ToggleRed]objective[.][ToggleRed] on this map [.][LF]
+is to [ToggleRed]defeat all enemies[ToggleRed].[.][A][LF]
+The number of enemies [ToggleRed]left[ToggleRed] [.][LF]
+appears on the edge of the screen.[A][LF]
+Defeat all of your opponents to[.][LF]
+gain a [.][ToggleRed]victory[.][ToggleRed].[.][A][X]
+
+## MSG_097F
+Ross has joined your team and become [.][LF]
+one of your [ToggleRed]allies[ToggleRed].[.][A][LF]
+The green unit on the other side of the[.][LF]
+mountains is Garcia. He is still [.][ToggleRed]neutral[.][ToggleRed].[.][A][LF]
+If you get the right person to talk to[LF]
+him, he may become an [ToggleRed]ally[ToggleRed].[.][A][LF]
+Move into spaces adjoining green units[LF]
+and select [.][ToggleRed]Talk[ToggleRed].[.][A][CR][LF]
+Ross is Garcia's son. Move Ross into a[LF]
+space next to Garcia and choose [ToggleRed]Talk[ToggleRed].[.][A][X]
+
+## MSG_0980
+[ToggleRed]Visit[.][ToggleRed] a village to warn it about the[.][LF]
+bandit threat. First, place the cursor[LF]
+on [.][ToggleRed]Eirika[ToggleRed] and press the A Button.[A][X]
+
+## MSG_0981
+The cursor is on [.][ToggleRed]Eirika[ToggleRed].[.][LF]
+Press the A Button.[.][A][X]
+
+## MSG_0982
+Move [.][ToggleRed]Eirika[ToggleRed] to the village.[LF]
+Place the cursor on the flashing[LF]
+space and press the A Button.[.][A][X]
+
+## MSG_0983
+Now select [.][ToggleRed]Visit[.][ToggleRed] and press[LF]
+the A Button again.[.][A][X]
+
+## MSG_0984
+Try talking to Ross. Place the cursor[.][LF]
+on [.][ToggleRed]Eirika[ToggleRed] and press the A Button.[A][X]
+
+## MSG_0985
+The cursor is on [.][ToggleRed]Eirika[ToggleRed].[.][LF]
+Press the A Button.[.][A][X]
+
+## MSG_0986
+Move Eirika next to Ross. Place[.][LF]
+the cursor in the flashing[LF]
+space and press the A Button.[.][A][X]
+
+## MSG_0987
+Select [.][ToggleRed]Talk[ToggleRed] and press[LF]
+the A Button.[.][A][X]
+
+## MSG_0988
+There is an [ToggleRed]armory[ToggleRed] due south of here.[.][A][LF]
+You could probably take the [ToggleRed]red gem[.][ToggleRed] you[LF]
+got at the village and sell it there.[.][A][X]
+
+## MSG_0989
+It's a good idea to buy iron swords and[.][LF]
+other everyday weapons at [ToggleRed]armories[ToggleRed].[.][A][LF]
+However, your funds are not endless.[A][LF]
+There are [ToggleRed]armories[ToggleRed] in other towns, too,[.][LF]
+so purchase only necessary items here.[A][X]
+
+## MSG_098A
+From here on out, you'll also have[LF]
+the services of a [ToggleRed]supply convoy[.][ToggleRed].[.][LF]
+The [ToggleRed]supply convoy[.][ToggleRed] always travels [LF]
+with your commander.[A][LF]
+The commander of this group is [.][ToggleRed]Eirika[ToggleRed].[.][A][LF]
+If you place an allied unit in a space[LF]
+next to [ToggleRed]Eirika[ToggleRed], the [ToggleRed]supply[ToggleRed] command[LF]
+will display. You will then be able to[LF]
+[ToggleRed]give[ToggleRed] and [.][ToggleRed]take[ToggleRed] items.[.][A][LF]
+If you're carrying too many items,[LF]
+it's a good idea to [ToggleRed]give[ToggleRed] some to[LF]
+the [ToggleRed]supply convoy[.][ToggleRed].[.][A][X]
+
+## MSG_098B
+[.][X]
+
+## MSG_098C
+[.][X]
+
+## MSG_098D
+[.][X]
+
+## MSG_098E
+[.][X]
+
+## MSG_098F
+[.][X]
+
+## MSG_0990
+[.][X]
+
+## MSG_0991
+[.][X]
+
+## MSG_0992
+[.][X]
+
+## MSG_0993
+[.][X]
+
+## MSG_0994
+[.][X]
+
+## MSG_0995
+[.][X]
+
+## MSG_0996
+[.][X]
+
+## MSG_0997
+[.][X]
+
+## MSG_0998
+[.][X]
+
+## MSG_0999
+[.][X]
+
+## MSG_099A
+[.][X]
+
+## MSG_099B
+[ToggleRed]Walls[.][ToggleRed] with cracks in them can be[.][LF]
+attacked and destroyed.[.][A][LF]
+Once a wall is destroyed, you can pass[LF]
+through the opening you've created.[.][A][LF]
+When your way seems blocked, be sure[LF]
+to check all the [.][ToggleRed]walls[.][ToggleRed].[.][A][X]
+
+## MSG_099C
+The bandits' [.][ToggleRed]hand axes[.][ToggleRed] can be used[LF]
+in both [ToggleRed]direct[ToggleRed] and [.][ToggleRed]indirect combat[.][ToggleRed].[.][A][LF]
+They can be wielded like normal axes[LF]
+in direct, hand-to-hand combat[A][LF]
+or thrown to strike enemies who are[.][LF]
+a space away or at an angle to you.[.][A][LF]
+Like bows, they can also hit enemies[LF]
+on the [.][ToggleRed]other sides of walls[ToggleRed].[.][A][X]
+
+## MSG_099D
+The [ToggleRed]thief[.][ToggleRed] Colm has appeared.[.][A][LF]
+Thieves can [ToggleRed]steal[.][ToggleRed] items from[.][LF]
+other units.[A][LF]
+Also, they can [.][ToggleRed]open the locks[ToggleRed] of[.][LF]
+[ToggleRed]doors[.][ToggleRed] and [.][ToggleRed]chests[ToggleRed]. Thieves[.][LF]
+are handy allies to have around.[A][X]
+
+## MSG_099E
+Place the cursor on a unit and press[LF]
+the [ToggleRed]R Button[ToggleRed] to display that[LF]
+unit's [.][ToggleRed]status[ToggleRed].[.][A][LF]
+For example, if you select a bandit[.][LF]
+and press the [ToggleRed]R Button[ToggleRed], you'll[LF]
+see that he's carrying a hand axe.[A][CR][LF]
+If you press the [.][ToggleRed]R Button[ToggleRed] again,[.][LF]
+you'll see [.][ToggleRed]help information[ToggleRed] for each[.][LF]
+item on-screen.[.][A][LF]
+You can use the [ToggleRed]R Button[ToggleRed] to see[.][LF]
+the properties of weapons and items.[A][LF]
+If there's something you don't [.][LF]
+understand about [.][ToggleRed]unit information[ToggleRed], [LF]
+press the [ToggleRed]R Button[ToggleRed].[.][A][X]
+
+## MSG_099F
+Bows are [.][ToggleRed]ranged weapons[ToggleRed].[.][LF]
+They can be used to attack enemies[LF]
+who are a space away.[.][A][LF]
+Additionally, they can be used[LF]
+to attack over walls.[.][A][X]
+
+## MSG_09A0
+Colm and Neimi are childhood friends.[.][LF]
+Try moving Neimi next to Colm and[.][LF]
+have her [.][ToggleRed]talk[ToggleRed] to him. He[.][LF]
+may decide to join you.[.][A][X]
+
+## MSG_09A1
+Colm and Neimi have an [.][ToggleRed]invisible[.][LF]
+bond[ToggleRed] that ties them together.[.][A][LF]
+Units that have such a bond can[.][LF]
+develop a [ToggleRed]support relationship[ToggleRed].[.][A][CR][LF]
+Units become closer and their bond[LF]
+stronger the longer they are[LF]
+[ToggleRed]adjacent to one another[.][ToggleRed].[.][A][LF]
+Eventually, they will be able to[LF]
+share a [ToggleRed]support conversation[ToggleRed].[.][A][CR][LF]
+Units that share a support relationship[.][LF]
+fight with [.][ToggleRed]improved abilities[ToggleRed][LF]
+when they are near each other.[A][CR][LF]
+There are three levels of support[.][LF]
+units can share: [.][ToggleRed]C, B, and A[.][ToggleRed].[.][A][LF]
+Levels are gained by staying[LF]
+side-by-side as much as possible.[.][A][CR][LF]
+Colm and Neimi are not the only units[.][LF]
+that can have support relationships.[LF]
+Eirika and Seth, among others, can [.][LF]
+grow close to other units as well.[A][CR][LF]
+Watch how characters interact with each[.][LF]
+other to guess at who might share[.][LF]
+a support relationship with whom.[.][A][CR][LF]
+If you have two units you think may[.][LF]
+have such a bond, [ToggleRed]place them next[.][LF]
+to one another again and again[ToggleRed].[.][A][LF]
+Who knows: they may eventually share[LF]
+a [ToggleRed]support conversation[ToggleRed].[.][A][CR][LF]
+However, bear in mind that each unit[LF]
+can have only [ToggleRed]5[.][ToggleRed] support relationships.[.][A][X]
+
+## MSG_09A2
+Enemy units may sometimes drop items[LF]
+when they are defeated.[.][A][LF]
+In the same way you searched for hand[.][LF]
+axes earlier, try looking at enemy items[LF]
+with the [.][ToggleRed]R Button[ToggleRed].[.][A][LF]
+[ToggleRed]Green items[.][ToggleRed] are items that will be [LF]
+dropped. Check enemy items beforehand [LF]
+to gain the advantage in combat.[A][X]
+
+## MSG_09A3
+[.][X]
+
+## MSG_09A4
+[.][X]
+
+## MSG_09A5
+[.][X]
+
+## MSG_09A6
+[.][X]
+
+## MSG_09A7
+[.][X]
+
+## MSG_09A8
+[.][X]
+
+## MSG_09A9
+[.][X]
+
+## MSG_09AA
+[.][X]
+
+## MSG_09AB
+[.][X]
+
+## MSG_09AC
+[.][X]
+
+## MSG_09AD
+[.][X]
+
+## MSG_09AE
+[.][X]
+
+## MSG_09AF
+[.][X]
+
+## MSG_09B0
+[.][X]
+
+## MSG_09B1
+[.][X]
+
+## MSG_09B2
+[.][X]
+
+## MSG_09B3
+[.][X]
+
+## MSG_09B4
+[.][X]
+
+## MSG_09B5
+[.][X]
+
+## MSG_09B6
+There are three different schools of[LF]
+[ToggleRed]magic[.][ToggleRed], each of which is governed[.][LF]
+by the [.][ToggleRed]trinity of magic[ToggleRed].[.][A][LF]
+[ToggleRed]Light[.][ToggleRed] is strong against [.][ToggleRed]Dark[ToggleRed].[.][LF]
+[ToggleRed]Dark[ToggleRed] is strong against [.][ToggleRed]Anima[.][ToggleRed].[.][LF]
+[ToggleRed]Anima[.][ToggleRed] is strong against [.][ToggleRed]Light[.][ToggleRed].[.][A][LF]
+For now, just remember that [ToggleRed]Light[.][LF]
+is strong against Dark[ToggleRed].[.][A][X]
+
+## MSG_09B7
+The [ToggleRed]magic[.][ToggleRed] that Artur and Lute[LF]
+wield cannot be stopped by[LF]
+physical [.][ToggleRed]defense[.][ToggleRed].[.][A][LF]
+However, magic [.][ToggleRed]resistance[ToggleRed] can affect[.][LF]
+the damage it does.[.][A][LF]
+So, it's possible to do high damage to[LF]
+units like [.][ToggleRed]knights[.][ToggleRed], who possess[.][LF]
+strong [.][ToggleRed]defenses[ToggleRed].[.][A][LF]
+On the other hand, it's difficult to harm[.][LF]
+units with high [ToggleRed]resistance[ToggleRed], like[LF]
+pegasus knights.[A][LF]
+Magic can also be used to attack[LF]
+directly or indirectly, like a hand axe.[A][LF]
+It can be wielded like a sword to strike[LF]
+adjacent foes or like a bow to hit[LF]
+enemies at a distance.[A][X]
+
+## MSG_09B8
+Starting on this map, you'll be able[LF]
+to use the [.][ToggleRed]preparations screen[.][ToggleRed].[.][A][LF]
+You can [ToggleRed]choose which units[ToggleRed] to send into[.][LF]
+battle and [.][ToggleRed]manage items[ToggleRed] to secure[LF]
+the best chance of victory.[.][A][X]
+
+## MSG_09B9
+Forests and other map areas may[.][LF]
+offer [ToggleRed]terrain bonuses[.][ToggleRed].[.][A][LF]
+Units in forests are harder to hit[LF]
+and take less damage when struck.[.][A][LF]
+Simply put, staying under trees makes[.][LF]
+it more difficult for enemies to hit [.][LF]
+and harm you.[.][A][LF]
+Areas that have [ToggleRed]terrain bonuses[.][ToggleRed] are[LF]
+[ToggleRed]forests[.][ToggleRed], [ToggleRed]mountains[.][ToggleRed], [ToggleRed]fortresses[ToggleRed], and[.][LF]
+[ToggleRed]gates[.][ToggleRed], to name a few.[A][LF]
+Use terrain to your advantage during[LF]
+combat to avoid risking your units.[.][A][X]
+
+## MSG_09BA
+[.][X]
+
+## MSG_09BB
+[.][X]
+
+## MSG_09BC
+[.][X]
+
+## MSG_09BD
+[.][X]
+
+## MSG_09BE
+[.][X]
+
+## MSG_09BF
+[.][X]
+
+## MSG_09C0
+[.][X]
+
+## MSG_09C1
+[.][X]
+
+## MSG_09C2
+[.][X]
+
+## MSG_09C3
+[.][X]
+
+## MSG_09C4
+[.][X]
+
+## MSG_09C5
+[.][X]
+
+## MSG_09C6
+[.][X]
+
+## MSG_09C7
+[.][X]
+
+## MSG_09C8
+[.][X]
+
+## MSG_09C9
+[.][X]
+
+## MSG_09CA
+[.][X]
+
+## MSG_09CB
+[.][X]
+
+## MSG_09CC
+[.][X]
+
+## MSG_09CD
+[.][X]
+
+## MSG_09CE
+[.][X]
+
+## MSG_09CF
+[.][X]
+
+## MSG_09D0
+[.][X]
+
+## MSG_09D1
+Sometimes, you can talk to an enemy and[.][LF]
+convince him to join you.[.][A][LF]
+For example, right now, [ToggleRed]Joshua[ToggleRed] might[LF]
+be inclined to talk with [.][ToggleRed]Natasha[.][ToggleRed].[.][A][CR][LF]
+However, [.][ToggleRed]Joshua[ToggleRed] is a [ToggleRed]red unit[ToggleRed].[.][A][LF]
+Unlike green units you've seen before,[LF]
+he will [ToggleRed]attack[ToggleRed] until he's spoken to.[A][LF]
+Moreover, [ToggleRed]Joshua[ToggleRed] is a [ToggleRed]myrmidon[ToggleRed], who[.][LF]
+specializes in [.][ToggleRed]critical hits[.][ToggleRed].[.][A][LF]
+If you are struck by a [.][ToggleRed]critical hit[ToggleRed], you[.][LF]
+will suffer 3 times the normal damage.[A][LF]
+It's a good idea to check [ToggleRed]Crit[ToggleRed][LF]
+on the combat information window.[.][A][X]
+
+## MSG_09D2
+You got an armorslayer.[.][A][LF]
+This weapon is similar to rapiers in[LF]
+that you can severely injure knights[LF]
+and generals with a single blow.[A][LF]
+In such cases, the weapon icon on the[.][LF]
+combat information window will flash.[.][A][X]
+
+## MSG_09D3
+There's an [.][ToggleRed]armory[ToggleRed] and a[LF]
+[ToggleRed]shop[ToggleRed] in this city.[A][X]
+
+## MSG_09D4
+[ToggleRed]Armories[ToggleRed] sell iron swords, steel[LF]
+lances, and other weapons.[A][LF]
+[ToggleRed]Shops[.][ToggleRed] carry spells, vulneraries,[.][LF]
+and a myriad of other items.[A][LF]
+If you're running short on anything,[LF]
+make sure you stock up here.[A][X]
+
+## MSG_09D5
+There's an [.][ToggleRed]arena[.][ToggleRed] here.[A][X]
+
+## MSG_09D6
+Arenas play host to [ToggleRed]one-on-one[LF]
+combat matches[ToggleRed].[.][A][LF]
+If you win a match, you'll earn [ToggleRed]twice[.][LF]
+the amount of the entry fee[.][ToggleRed].[.][A][LF]
+If you lose, however, that unit [ToggleRed]will not[LF]
+be able to fight in any future battles[ToggleRed].[.][A][LF]
+If your HP drops near zero in a fight,[LF]
+[ToggleRed]press the B Button quickly[ToggleRed] to concede.[A][LF]
+You'll lose your entry fee, but you'll[LF]
+save your unit to fight again.[A][X]
+
+## MSG_09D7
+[.][X]
+
+## MSG_09D8
+[.][X]
+
+## MSG_09D9
+[.][X]
+
+## MSG_09DA
+[.][X]
+
+## MSG_09DB
+[.][X]
+
+## MSG_09DC
+[.][X]
+
+## MSG_09DD
+[.][X]
+
+## MSG_09DE
+[.][X]
+
+## MSG_09DF
+[.][X]
+
+## MSG_09E0
+[.][X]
+
+## MSG_09E1
+[.][X]
+
+## MSG_09E2
+[.][X]
+
+## MSG_09E3
+[.][X]
+
+## MSG_09E4
+[.][X]
+
+## MSG_09E5
+[.][X]
+
+## MSG_09E6
+[.][X]
+
+## MSG_09E7
+[.][X]
+
+## MSG_09E8
+[.][X]
+
+## MSG_09E9
+[.][X]
+
+## MSG_09EA
+[.][X]
+
+## MSG_09EB
+[.][X]
+
+## MSG_09EC
+[.][X]
+
+## MSG_09ED
+[.][X]
+
+## MSG_09EE
+[.][X]
+
+## MSG_09EF
+[.][X]
+
+## MSG_09F0
+[.][X]
+
+## MSG_09F1
+[.][X]
+
+## MSG_09F2
+[.][X]
+
+## MSG_09F3
+[.][X]
+
+## MSG_09F4
+[.][X]
+
+## MSG_09F5
+[.][X]
+
+## MSG_09F6
+[.][X]
+
+## MSG_09F7
+[.][X]
+
+## MSG_09F8
+[.][X]
+
+## MSG_09F9
+[.][X]
+
+## MSG_09FA
+[.][X]
+
+## MSG_09FB
+[.][X]
+
+## MSG_09FC
+[.][X]
+
+## MSG_09FD
+[.][X]
+
+## MSG_09FE
+[.][X]
+
+## MSG_09FF
+[.][X]
+
+## MSG_0A00
+[.][X]
+
+## MSG_0A01
+[.][X]
+
+## MSG_0A02
+[.][X]
+
+## MSG_0A03
+[.][X]
+
+## MSG_0A04
+[.][X]
+
+## MSG_0A05
+[.][X]
+
+## MSG_0A06
+[.][X]
+
+## MSG_0A07
+[.][X]
+
+## MSG_0A08
+[.][X]
+
+## MSG_0A09
+[.][X]
+
+## MSG_0A0A
+[.][X]
+
+## MSG_0A0B
+[.][X]
+
+## MSG_0A0C
+[.][X]
+
+## MSG_0A0D
+[.][X]
+
+## MSG_0A0E
+[.][X]
+
+## MSG_0A0F
+[.][X]
+
+## MSG_0A10
+[.][X]
+
+## MSG_0A11
+[.][X]
+
+## MSG_0A12
+[.][X]
+
+## MSG_0A13
+[.][X]
+
+## MSG_0A14
+[.][X]
+
+## MSG_0A15
+[.][X]
+
+## MSG_0A16
+[.][X]
+
+## MSG_0A17
+[.][X]
+
+## MSG_0A18
+[.][X]
+
+## MSG_0A19
+[.][X]
+
+## MSG_0A1A
+[.][X]
+
+## MSG_0A1B
+[.][X]
+
+## MSG_0A1C
+[.][X]
+
+## MSG_0A1D
+[.][X]
+
+## MSG_0A1E
+[.][X]
+
+## MSG_0A1F
+[.][X]
+
+## MSG_0A20
+[.][X]
+
+## MSG_0A21
+[.][X]
+
+## MSG_0A22
+[.][X]
+
+## MSG_0A23
+[.][X]
+
+## MSG_0A24
+[.][X]
+
+## MSG_0A25
+[.][X]
+
+## MSG_0A26
+[.][X]
+
+## MSG_0A27
+[.][X]
+
+## MSG_0A28
+[.][X]
+
+## MSG_0A29
+[.][X]
+
+## MSG_0A2A
+[.][X]
+
+## MSG_0A2B
+[.][X]
+
+## MSG_0A2C
+[.][X]
+
+## MSG_0A2D
+[.][X]
+
+## MSG_0A2E
+[.][X]
+
+## MSG_0A2F
+[.][X]
+
+## MSG_0A30
+[.][X]
+
+## MSG_0A31
+[.][X]
+
+## MSG_0A32
+[.][X]
+
+## MSG_0A33
+[.][X]
+
+## MSG_0A34
+[.][X]
+
+## MSG_0A35
+[.][X]
+
+## MSG_0A36
+[.][X]
+
+## MSG_0A37
+[.][X]
+
+## MSG_0A38
+[.][X]
+
+## MSG_0A39
+[.][X]
+
+## MSG_0A3A
+[.][X]
+
+## MSG_0A3B
+[.][X]
+
+## MSG_0A3C
+[.][X]
+
+## MSG_0A3D
+[.][X]
+
+## MSG_0A3E
+[.][X]
+
+## MSG_0A3F
+[.][X]
+
+## MSG_0A40
+[.][X]
+
+## MSG_0A41
+[.][X]
+
+## MSG_0A42
+[.][X]
+
+## MSG_0A43
+[.][X]
+
+## MSG_0A44
+[.][X]
+
+## MSG_0A45
+[.][X]
+
+## MSG_0A46
+[.][X]
+
+## MSG_0A47
+[.][X]
+
+## MSG_0A48
+[.][X]
+
+## MSG_0A49
+[.][X]
+
+## MSG_0A4A
+[.][X]
+
+## MSG_0A4B
+[.][X]
+
+## MSG_0A4C
+[.][X]
+
+## MSG_0A4D
+[.][X]
+
+## MSG_0A4E
+[.][X]
+
+## MSG_0A4F
+[.][X]
+
+## MSG_0A50
+[.][X]
+
+## MSG_0A51
+[.][X]
+
+## MSG_0A52
+[.][X]
+
+## MSG_0A53
+[.][X]
+
+## MSG_0A54
+[.][X]
+
+## MSG_0A55
+[.][X]
+
+## MSG_0A56
+[.][X]
+
+## MSG_0A57
+[.][X]
+
+## MSG_0A58
+[.][X]
+
+## MSG_0A59
+[.][X]
+
+## MSG_0A5A
+[.][X]
+
+## MSG_0A5B
+[.][X]
+
+## MSG_0A5C
+[.][X]
+
+## MSG_0A5D
+[.][X]
+
+## MSG_0A5E
+[.][X]
+
+## MSG_0A5F
+[.][X]
+
+## MSG_0A60
+[.][X]
+
+## MSG_0A61
+[.][X]
+
+## MSG_0A62
+[.][X]
+
+## MSG_0A63
+[.][X]
+
+## MSG_0A64
+[.][X]
+
+## MSG_0A65
+[.][X]
+
+## MSG_0A66
+[.][X]
+
+## MSG_0A67
+[.][X]
+
+## MSG_0A68
+[.][X]
+
+## MSG_0A69
+[.][X]
+
+## MSG_0A6A
+[.][X]
+
+## MSG_0A6B
+[.][X]
+
+## MSG_0A6C
+[.][X]
+
+## MSG_0A6D
+[.][X]
+
+## MSG_0A6E
+[.][X]
+
+## MSG_0A6F
+[.][X]
+
+## MSG_0A70
+[.][X]
+
+## MSG_0A71
+[.][X]
+
+## MSG_0A72
+[.][X]
+
+## MSG_0A73
+[.][X]
+
+## MSG_0A74
+[.][X]
+
+## MSG_0A75
+[.][X]
+
+## MSG_0A76
+[.][X]
+
+## MSG_0A77
+[.][X]
+
+## MSG_0A78
+[.][X]
+
+## MSG_0A79
+[.][X]
+
+## MSG_0A7A
+[.][X]
+
+## MSG_0A7B
+[.][X]
+
+## MSG_0A7C
+[.][X]
+
+## MSG_0A7D
+[.][X]
+
+## MSG_0A7E
+[.][X]
+
+## MSG_0A7F
+[.][X]
+
+## MSG_0A80
+[.][X]
+
+## MSG_0A81
+[.][X]
+
+## MSG_0A82
+[.][X]
+
+## MSG_0A83
+[.][X]
+
+## MSG_0A84
+[.][X]
+
+## MSG_0A85
+[.][X]
+
+## MSG_0A86
+[.][X]
+
+## MSG_0A87
+[.][X]
+
+## MSG_0A88
+[.][X]
+
+## MSG_0A89
+[.][X]
+
+## MSG_0A8A
+[.][X]
+
+## MSG_0A8B
+[.][X]
+
+## MSG_0A8C
+[.][X]
+
+## MSG_0A8D
+[.][X]
+
+## MSG_0A8E
+[.][X]
+
+## MSG_0A8F
+[.][X]
+
+## MSG_0A90
+[.][X]
+
+## MSG_0A91
+[.][X]
+
+## MSG_0A92
+[.][X]
+
+## MSG_0A93
+[.][X]
+
+## MSG_0A94
+[.][X]
+
+## MSG_0A95
+[.][X]
+
+## MSG_0A96
+[.][X]
+
+## MSG_0A97
+[.][X]
+
+## MSG_0A98
+[.][X]
+
+## MSG_0A99
+[.][X]
+
+## MSG_0A9A
+[.][X]
+
+## MSG_0A9B
+[.][X]
+
+## MSG_0A9C
+[.][X]
+
+## MSG_0A9D
+[.][X]
+
+## MSG_0A9E
+[.][X]
+
+## MSG_0A9F
+[.][X]
+
+## MSG_0AA0
+[.][X]
+
+## MSG_0AA1
+[.][X]
+
+## MSG_0AA2
+[.][X]
+
+## MSG_0AA3
+[.][X]
+
+## MSG_0AA4
+[.][X]
+
+## MSG_0AA5
+[.][X]
+
+## MSG_0AA6
+[.][X]
+
+## MSG_0AA7
+[.][X]
+
+## MSG_0AA8
+[.][X]
+
+## MSG_0AA9
+[.][X]
+
+## MSG_0AAA
+[.][X]
+
+## MSG_0AAB
+[.][X]
+
+## MSG_0AAC
+[.][X]
+
+## MSG_0AAD
+[.][X]
+
+## MSG_0AAE
+[.][X]
+
+## MSG_0AAF
+[.][X]
+
+## MSG_0AB0
+[.][X]
+
+## MSG_0AB1
+[.][X]
+
+## MSG_0AB2
+[.][X]
+
+## MSG_0AB3
+[.][X]
+
+## MSG_0AB4
+[.][X]
+
+## MSG_0AB5
+[.][X]
+
+## MSG_0AB6
+[.][X]
+
+## MSG_0AB7
+[.][X]
+
+## MSG_0AB8
+[.][X]
+
+## MSG_0AB9
+[.][X]
+
+## MSG_0ABA
+[.][X]
+
+## MSG_0ABB
+[.][X]
+
+## MSG_0ABC
+[.][X]
+
+## MSG_0ABD
+[.][X]
+
+## MSG_0ABE
+[.][X]
+
+## MSG_0ABF
+[.][X]
+
+## MSG_0AC0
+[.][X]
+
+## MSG_0AC1
+[.][X]
+
+## MSG_0AC2
+[.][X]
+
+## MSG_0AC3
+[.][X]
+
+## MSG_0AC4
+[.][X]
+
+## MSG_0AC5
+[.][X]
+
+## MSG_0AC6
+[.][X]
+
+## MSG_0AC7
+[.][X]
+
+## MSG_0AC8
+[.][X]
+
+## MSG_0AC9
+[.][X]
+
+## MSG_0ACA
+[.][X]
+
+## MSG_0ACB
+[.][X]
+
+## MSG_0ACC
+[.][X]
+
+## MSG_0ACD
+[.][X]
+
+## MSG_0ACE
+[.][X]
+
+## MSG_0ACF
+[.][X]
+
+## MSG_0AD0
+[.][X]
+
+## MSG_0AD1
+[.][X]
+
+## MSG_0AD2
+[.][X]
+
+## MSG_0AD3
+[.][X]
+
+## MSG_0AD4
+[.][X]
+
+## MSG_0AD5
+[.][X]
+
+## MSG_0AD6
+[.][X]
+
+## MSG_0AD7
+[.][X]
+
+## MSG_0AD8
+[.][X]
+
+## MSG_0AD9
+[.][X]
+
+## MSG_0ADA
+[.][X]
+
+## MSG_0ADB
+[.][X]
+
+## MSG_0ADC
+[.][X]
+
+## MSG_0ADD
+[.][X]
+
+## MSG_0ADE
+[.][X]
+
+## MSG_0ADF
+[.][X]
+
+## MSG_0AE0
+[.][X]
+
+## MSG_0AE1
+[.][X]
+
+## MSG_0AE2
+[.][X]
+
+## MSG_0AE3
+[.][X]
+
+## MSG_0AE4
+[.][X]
+
+## MSG_0AE5
+[.][X]
+
+## MSG_0AE6
+[.][X]
+
+## MSG_0AE7
+[.][X]
+
+## MSG_0AE8
+[.][X]
+
+## MSG_0AE9
+[.][X]
+
+## MSG_0AEA
+[.][X]
+
+## MSG_0AEB
+[.][X]
+
+## MSG_0AEC
+[.][X]
+
+## MSG_0AED
+[.][X]
+
+## MSG_0AEE
+[.][X]
+
+## MSG_0AEF
+[.][X]
+
+## MSG_0AF0
+[.][X]
+
+## MSG_0AF1
+[.][X]
+
+## MSG_0AF2
+[.][X]
+
+## MSG_0AF3
+[.][X]
+
+## MSG_0AF4
+[.][X]
+
+## MSG_0AF5
+[.][X]
+
+## MSG_0AF6
+[.][X]
+
+## MSG_0AF7
+[.][X]
+
+## MSG_0AF8
+[.][X]
+
+## MSG_0AF9
+[.][X]
+
+## MSG_0AFA
+[.][X]
+
+## MSG_0AFB
+[.][X]
+
+## MSG_0AFC
+[.][X]
+
+## MSG_0AFD
+[.][X]
+
+## MSG_0AFE
+[.][X]
+
+## MSG_0AFF
+[.][X]
+
+## MSG_0B00
+[.][X]
+
+## MSG_0B01
+[.][X]
+
+## MSG_0B02
+[.][X]
+
+## MSG_0B03
+[.][X]
+
+## MSG_0B04
+[.][X]
+
+## MSG_0B05
+[.][X]
+
+## MSG_0B06
+[.][X]
+
+## MSG_0B07
+[.][X]
+
+## MSG_0B08
+[.][X]
+
+## MSG_0B09
+[.][X]
+
+## MSG_0B0A
+[.][X]
+
+## MSG_0B0B
+[.][X]
+
+## MSG_0B0C
+[.][X]
+
+## MSG_0B0D
+[.][X]
+
+## MSG_0B0E
+[.][X]
+
+## MSG_0B0F
+[.][X]
+
+## MSG_0B10
+[.][X]
+
+## MSG_0B11
+[.][X]
+
+## MSG_0B12
+[.][X]
+
+## MSG_0B13
+[.][X]
+
+## MSG_0B14
+[.][X]
+
+## MSG_0B15
+[.][X]
+
+## MSG_0B16
+[.][X]
+
+## MSG_0B17
+[.][X]
+
+## MSG_0B18
+[.][X]
+
+## MSG_0B19
+[.][X]
+
+## MSG_0B1A
+[.][X]
+
+## MSG_0B1B
+[.][X]
+
+## MSG_0B1C
+[.][X]
+
+## MSG_0B1D
+[.][X]
+
+## MSG_0B1E
+[.][X]
+
+## MSG_0B1F
+[.][X]
+
+## MSG_0B20
+[.][X]
+
+## MSG_0B21
+[.][X]
+
+## MSG_0B22
+[.][X]
+
+## MSG_0B23
+[.][X]
+
+## MSG_0B24
+[.][X]
+
+## MSG_0B25
+[.][X]
+
+## MSG_0B26
+[.][X]
+
+## MSG_0B27
+[.][X]
+
+## MSG_0B28
+[.][X]
+
+## MSG_0B29
+[.][X]
+
+## MSG_0B2A
+[.][X]
+
+## MSG_0B2B
+[.][X]
+
+## MSG_0B2C
+[.][X]
+
+## MSG_0B2D
+[.][X]
+
+## MSG_0B2E
+[.][X]
+
+## MSG_0B2F
+[.][X]
+
+## MSG_0B30
+[.][X]
+
+## MSG_0B31
+[.][X]
+
+## MSG_0B32
+[.][X]
+
+## MSG_0B33
+[.][X]
+
+## MSG_0B34
+[.][X]
+
+## MSG_0B35
+[.][X]
+
+## MSG_0B36
+[.][X]
+
+## MSG_0B37
+[.][X]
+
+## MSG_0B38
+[.][X]
+
+## MSG_0B39
+[.][X]
+
+## MSG_0B3A
+[.][X]
+
+## MSG_0B3B
+[.][X]
+
+## MSG_0B3C
+[.][X]
+
+## MSG_0B3D
+[.][X]
+
+## MSG_0B3E
+[.][X]
+
+## MSG_0B3F
+[.][X]
+
+## MSG_0B40
+[.][X]
+
+## MSG_0B41
+[.][X]
+
+## MSG_0B42
+[.][X]
+
+## MSG_0B43
+[.][X]
+
+## MSG_0B44
+[.][X]
+
+## MSG_0B45
+[.][X]
+
+## MSG_0B46
+[.][X]
+
+## MSG_0B47
+[.][X]
+
+## MSG_0B48
+[.][X]
+
+## MSG_0B49
+[.][X]
+
+## MSG_0B4A
+[.][X]
+
+## MSG_0B4B
+[.][X]
+
+## MSG_0B4C
+[.][X]
+
+## MSG_0B4D
+[.][X]
+
+## MSG_0B4E
+[.][X]
+
+## MSG_0B4F
+[.][X]
+
+## MSG_0B50
+[.][X]
+
+## MSG_0B51
+[.][X]
+
+## MSG_0B52
+[.][X]
+
+## MSG_0B53
+[.][X]
+
+## MSG_0B54
+[.][X]
+
+## MSG_0B55
+[.][X]
+
+## MSG_0B56
+[.][X]
+
+## MSG_0B57
+[.][X]
+
+## MSG_0B58
+[.][X]
+
+## MSG_0B59
+[.][X]
+
+## MSG_0B5A
+[.][X]
+
+## MSG_0B5B
+Eirika's [.][ToggleRed]Lunar Brace[.][ToggleRed] and[LF]
+Ephraim's [ToggleRed]Solar Brace[.][ToggleRed] glow[.][LF]
+in response to the Sacred Stone.[LF]
+With the power of the bracelets, the[LF]
+twins can now change classes.[.][A][X]
+
+## MSG_0B5C
+Ephraim's [ToggleRed]Solar Brace[.][ToggleRed] and[LF]
+Eirika's [.][ToggleRed]Lunar Brace[.][ToggleRed] glow[.][LF]
+in answer to the Sacred Stone.[LF]
+With the power of the bracelets,[LF]
+the twins can now change classes.[.][A][X]
+
+## MSG_0B5D
+Do you want Eirika to change[LF]
+classes now?[LF]
+[Yes][X]
+
+## MSG_0B5E
+Do you want Ephraim to change[.][LF]
+classes now?[LF]
+[Yes][X]
+
+## MSG_0B5F
+Eirika got the [.][ToggleRed]Lunar Brace[.][ToggleRed].[.][LF]
+She can use it to[.][LF]
+change classes.[.][A][X]
+
+## MSG_0B60
+Ephraim got the [ToggleRed]Solar Brace[.][ToggleRed].[.][LF]
+He can use it to[LF]
+change classes.[.][A][X]
+
+## MSG_0B61
+[.][X]
+
+## MSG_0B62
+[.][X]
+
+## MSG_0B63
+[.][X]
+
+## MSG_0B64
+[.][X]
+
+## MSG_0B65
+[.][X]
+
+## MSG_0B66
+[.][X]
+
+## MSG_0B67
+[.][X]
+
+## MSG_0B68
+[.][X]
+
+## MSG_0B69
+[.][X]
+
+## MSG_0B6A
+[.][X]
+
+## MSG_0B6B
+[.][X]
+
+## MSG_0B6C
+[.][X]
+
+## MSG_0B6D
+[.][X]
+
+## MSG_0B6E
+[.][X]
+
+## MSG_0B6F
+[.][X]
+
+## MSG_0B70
+[.][X]
+
+## MSG_0B71
+[.][X]
+
+## MSG_0B72
+[.][X]
+
+## MSG_0B73
+[.][X]
+
+## MSG_0B74
+[.][X]
+
+## MSG_0B75
+[.][X]
+
+## MSG_0B76
+[.][X]
+
+## MSG_0B77
+[.][X]
+
+## MSG_0B78
+[.][X]
+
+## MSG_0B79
+[.][X]
+
+## MSG_0B7A
+[.][X]
+
+## MSG_0B7B
+[.][X]
+
+## MSG_0B7C
+[.][X]
+
+## MSG_0B7D
+[.][X]
+
+## MSG_0B7E
+[.][X]
+
+## MSG_0B7F
+[.][X]
+
+## MSG_0B80
+[.][X]
+
+## MSG_0B81
+[.][X]
+
+## MSG_0B82
+[.][X]
+
+## MSG_0B83
+[.][X]
+
+## MSG_0B84
+[.][X]
+
+## MSG_0B85
+[.][X]
+
+## MSG_0B86
+[.][X]
+
+## MSG_0B87
+[.][X]
+
+## MSG_0B88
+[.][X]
+
+## MSG_0B89
+[.][X]
+
+## MSG_0B8A
+[.][X]
+
+## MSG_0B8B
+[.][X]
+
+## MSG_0B8C
+[.][X]
+
+## MSG_0B8D
+[.][X]
+
+## MSG_0B8E
+[.][X]
+
+## MSG_0B8F
+[.][X]
+
+## MSG_0B90
+[.][X]
+
+## MSG_0B91
+[.][X]
+
+## MSG_0B92
+[.][X]
+
+## MSG_0B93
+[.][X]
+
+## MSG_0B94
+[.][X]
+
+## MSG_0B95
+[.][X]
+
+## MSG_0B96
+[.][X]
+
+## MSG_0B97
+[.][X]
+
+## MSG_0B98
+[.][X]
+
+## MSG_0B99
+[.][X]
+
+## MSG_0B9A
+[.][X]
+
+## MSG_0B9B
+[.][X]
+
+## MSG_0B9C
+[.][X]
+
+## MSG_0B9D
+[.][X]
+
+## MSG_0B9E
+[.][X]
+
+## MSG_0B9F
+[.][X]
+
+## MSG_0BA0
+[.][X]
+
+## MSG_0BA1
+[.][X]
+
+## MSG_0BA2
+[.][X]
+
+## MSG_0BA3
+[.][X]
+
+## MSG_0BA4
+[.][X]
+
+## MSG_0BA5
+[.][X]
+
+## MSG_0BA6
+[.][X]
+
+## MSG_0BA7
+[.][X]
+
+## MSG_0BA8
+[.][X]
+
+## MSG_0BA9
+[.][X]
+
+## MSG_0BAA
+[.][X]
+
+## MSG_0BAB
+[.][X]
+
+## MSG_0BAC
+[.][X]
+
+## MSG_0BAD
+[.][X]
+
+## MSG_0BAE
+[.][X]
+
+## MSG_0BAF
+[.][X]
+
+## MSG_0BB0
+[.][X]
+
+## MSG_0BB1
+[.][X]
+
+## MSG_0BB2
+[.][X]
+
+## MSG_0BB3
+[.][X]
+
+## MSG_0BB4
+[.][X]
+
+## MSG_0BB5
+[.][X]
+
+## MSG_0BB6
+[.][X]
+
+## MSG_0BB7
+[.][X]
+
+## MSG_0BB8
+[.][X]
+
+## MSG_0BB9
+[.][X]
+
+## MSG_0BBA
+[.][X]
+
+## MSG_0BBB
+[.][X]
+
+## MSG_0BBC
+[.][X]
+
+## MSG_0BBD
+[.][X]
+
+## MSG_0BBE
+[.][X]
+
+## MSG_0BBF
+[.][X]
+
+## MSG_0BC0
+[.][X]
+
+## MSG_0BC1
+[.][X]
+
+## MSG_0BC2
+[.][X]
+
+## MSG_0BC3
+[.][X]
+
+## MSG_0BC4
+[.][X]
+
+## MSG_0BC5
+[.][X]
+
+## MSG_0BC6
+[.][X]
+
+## MSG_0BC7
+[.][X]
+
+## MSG_0BC8
+[.][X]
+
+## MSG_0BC9
+[.][X]
+
+## MSG_0BCA
+[.][X]
+
+## MSG_0BCB
+[.][X]
+
+## MSG_0BCC
+[.][X]
+
+## MSG_0BCD
+[.][X]
+
+## MSG_0BCE
+[.][X]
+
+## MSG_0BCF
+[.][X]
+
+## MSG_0BD0
+[.][X]
+
+## MSG_0BD1
+[.][X]
+
+## MSG_0BD2
+[.][X]
+
+## MSG_0BD3
+[.][X]
+
+## MSG_0BD4
+[.][X]
+
+## MSG_0BD5
+[.][X]
+
+## MSG_0BD6
+[.][X]
+
+## MSG_0BD7
+[.][X]
+
+## MSG_0BD8
+[.][X]
+
+## MSG_0BD9
+[.][X]
+
+## MSG_0BDA
+[.][X]
+
+## MSG_0BDB
+[.][X]
+
+## MSG_0BDC
+[.][X]
+
+## MSG_0BDD
+[.][X]
+
+## MSG_0BDE
+[.][X]
+
+## MSG_0BDF
+[.][X]
+
+## MSG_0BE0
+[.][X]
+
+## MSG_0BE1
+[.][X]
+
+## MSG_0BE2
+[.][X]
+
+## MSG_0BE3
+[.][X]
+
+## MSG_0BE4
+[.][X]
+
+## MSG_0BE5
+[.][X]
+
+## MSG_0BE6
+[.][X]
+
+## MSG_0BE7
+[.][X]
+
+## MSG_0BE8
+[.][X]
+
+## MSG_0BE9
+[.][X]
+
+## MSG_0BEA
+[.][X]
+
+## MSG_0BEB
+[.][X]
+
+## MSG_0BEC
+[.][X]
+
+## MSG_0BED
+[.][X]
+
+## MSG_0BEE
+[.][X]
+
+## MSG_0BEF
+[.][X]
+
+## MSG_0BF0
+[.][X]
+
+## MSG_0BF1
+[.][X]
+
+## MSG_0BF2
+[.][X]
+
+## MSG_0BF3
+[.][X]
+
+## MSG_0BF4
+[.][X]
+
+## MSG_0BF5
+[.][X]
+
+## MSG_0BF6
+[.][X]
+
+## MSG_0BF7
+[.][X]
+
+## MSG_0BF8
+[.][X]
+
+## MSG_0BF9
+[.][X]
+
+## MSG_0BFA
+[.][X]
+
+## MSG_0BFB
+[.][X]
+
+## MSG_0BFC
+[.][X]
+
+## MSG_0BFD
+[.][X]
+
+## MSG_0BFE
+[.][X]
+
+## MSG_0BFF
+[.][X]
+
+## MSG_0C00
+[.][X]
+
+## MSG_0C01
+[.][X]
+
+## MSG_0C02
+[.][X]
+
+## MSG_0C03
+[.][X]
+
+## MSG_0C04
+[.][X]
+
+## MSG_0C05
+[.][X]
+
+## MSG_0C06
+[.][X]
+
+## MSG_0C07
+[.][X]
+
+## MSG_0C08
+[.][X]
+
+## MSG_0C09
+[.][X]
+
+## MSG_0C0A
+[.][X]
+
+## MSG_0C0B
+[.][X]
+
+## MSG_0C0C
+[.][X]
+
+## MSG_0C0D
+[.][X]
+
+## MSG_0C0E
+[.][X]
+
+## MSG_0C0F
+[.][X]
+
+## MSG_0C10
+[.][X]
+
+## MSG_0C11
+[.][X]
+
+## MSG_0C12
+[.][X]
+
+## MSG_0C13
+[.][X]
+
+## MSG_0C14
+Eirika and Ephraim will now part ways.[LF]
+Which of them will you accompany?[.][A][X]
+
+## MSG_0C15
+Go with Eirika to Rausten.[X]
+
+## MSG_0C16
+Go with Ephraim to Grado.[.][X]
+
+## MSG_0C17
+Will you go with Eirika?[LF]
+[Yes][X]
+
+## MSG_0C18
+Will you go with Ephraim?[.][LF]
+[Yes][X]
+
+## MSG_0C19
+[.][X]
+
+## MSG_0C1A
+[.][X]
+
+## MSG_0C1B
+[.][X]
+
+## MSG_0C1C
+[.][X]
+
+## MSG_0C1D
+[.][X]
+
+## MSG_0C1E
+[.][X]
+
+## MSG_0C1F
+[.][X]
+
+## MSG_0C20
+[.][X]
+
+## MSG_0C21
+[.][X]
+
+## MSG_0C22
+[.][X]
+
+## MSG_0C23
+[.][X]
+
+## MSG_0C24
+[.][X]
+
+## MSG_0C25
+[.][X]
+
+## MSG_0C26
+[.][X]
+
+## MSG_0C27
+[.][X]
+
+## MSG_0C28
+[.][X]
+
+## MSG_0C29
+[.][X]
+
+## MSG_0C2A
+[.][X]
+
+## MSG_0C2B
+[.][X]
+
+## MSG_0C2C
+[.][X]
+
+## MSG_0C2D
+[.][X]
+
+## MSG_0C2E
+[.][X]
+
+## MSG_0C2F
+[.][X]
+
+## MSG_0C30
+[.][X]
+
+## MSG_0C31
+[.][X]
+
+## MSG_0C32
+[.][X]
+
+## MSG_0C33
+[.][X]
+
+## MSG_0C34
+[.][X]
+
+## MSG_0C35
+[.][X]
+
+## MSG_0C36
+[.][X]
+
+## MSG_0C37
+[.][X]
+
+## MSG_0C38
+[.][X]
+
+## MSG_0C39
+[.][X]
+
+## MSG_0C3A
+[.][X]
+
+## MSG_0C3B
+[.][X]
+
+## MSG_0C3C
+[.][X]
+
+## MSG_0C3D
+[.][X]
+
+## MSG_0C3E
+[.][X]
+
+## MSG_0C3F
+[.][X]
+
+## MSG_0C40
+[.][X]
+
+## MSG_0C41
+[.][X]
+
+## MSG_0C42
+[.][X]
+
+## MSG_0C43
+[.][X]
+
+## MSG_0C44
+[.][X]
+
+## MSG_0C45
+[.][X]
+
+## MSG_0C46
+[.][X]
+
+## MSG_0C47
+[.][X]
+
+## MSG_0C48
+[.][X]
+
+## MSG_0C49
+[.][X]
+
+## MSG_0C4A
+[.][X]
+
+## MSG_0C4B
+[.][X]
+
+## MSG_0C4C
+[.][X]
+
+## MSG_0C4D
+[.][X]
+
+## MSG_0C4E
+[.][X]
+
+## MSG_0C4F
+[.][X]
+
+## MSG_0C50
+[.][X]
+
+## MSG_0C51
+[.][X]
+
+## MSG_0C52
+This unit cannot take part[LF]
+in this chapter.[X]
+
+## MSG_0C53
+[.][X]
+
+## MSG_0C54
+[.][X]
+
+## MSG_0C55
+[.][X]
+
+## MSG_0C56
+[.][X]
+
+## MSG_0C57
+[.][X]
+
+## MSG_0C58
+[.][X]
+
+## MSG_0C59
+[.][X]
+
+## MSG_0C5A
+[.][X]
+
+## MSG_0C5B
+[.][X]
+
+## MSG_0C5C
+[.][X]
+
+## MSG_0C5D
+[.][X]
+
+## MSG_0C5E
+[.][X]
+
+## MSG_0C5F
+[.][X]
+
+## MSG_0C60
+[.][X]
+
+## MSG_0C61
+[.][X]
+
+## MSG_0C62
+[.][X]
+
+## MSG_0C63
+[.][X]
+
+## MSG_0C64
+[.][X]
+
+## MSG_0C65
+[.][X]
+
+## MSG_0C66
+[.][X]
+
+## MSG_0C67
+[.][X]
+
+## MSG_0C68
+[.][X]
+
+## MSG_0C69
+[.][X]
+
+## MSG_0C6A
+[.][X]
+
+## MSG_0C6B
+[.][X]
+
+## MSG_0C6C
+[.][X]
+
+## MSG_0C6D
+[.][X]
+
+## MSG_0C6E
+[.][X]
+
+## MSG_0C6F
+[.][X]
+
+## MSG_0C70
+[.][X]
+
+## MSG_0C71
+[.][X]
+
+## MSG_0C72
+[.][X]
+
+## MSG_0C73
+[.][X]
+
+## MSG_0C74
+[.][X]
+
+## MSG_0C75
+[.][X]
+
+## MSG_0C76
+[.][X]
+
+## MSG_0C77
+[.][X]
+
+## MSG_0C78
+[.][X]
+
+## MSG_0C79
+[.][X]
+
+## MSG_0C7A
+[.][X]
+
+## MSG_0C7B
+[.][X]
+
+## MSG_0C7C
+[.][X]
+
+## MSG_0C7D
+[.][X]
+
+## MSG_0C7E
+[.][X]
+
+## MSG_0C7F
+[.][X]
+
+## MSG_0C80
+[.][X]
+
+## MSG_0C81
+[.][X]
+
+## MSG_0C82
+[.][X]
+
+## MSG_0C83
+[.][X]
+
+## MSG_0C84
+[.][X]
+
+## MSG_0C85
+[.][X]
+
+## MSG_0C86
+[.][X]
+
+## MSG_0C87
+[.][X]
+
+## MSG_0C88
+[.][X]
+
+## MSG_0C89
+[.][X]
+
+## MSG_0C8A
+[.][X]
+
+## MSG_0C8B
+[.][X]
+
+## MSG_0C8C
+[.][X]
+
+## MSG_0C8D
+[.][X]
+
+## MSG_0C8E
+[.][X]
+
+## MSG_0C8F
+[.][X]
+
+## MSG_0C90
+[.][X]
+
+## MSG_0C91
+[.][X]
+
+## MSG_0C92
+[.][X]
+
+## MSG_0C93
+[.][X]
+
+## MSG_0C94
+[.][X]
+
+## MSG_0C95
+[.][X]
+
+## MSG_0C96
+[.][X]
+
+## MSG_0C97
+[.][X]
+
+## MSG_0C98
+[.][X]
+
+## MSG_0C99
+[.][X]
+
+## MSG_0C9A
+[.][X]
+
+## MSG_0C9B
+[.][X]
+
+## MSG_0C9C
+[.][X]
+
+## MSG_0C9D
+[.][X]
+
+## MSG_0C9E
+[.][X]
+
+## MSG_0C9F
+[.][X]
+
+## MSG_0CA0
+[.][X]
+
+## MSG_0CA1
+[.][X]
+
+## MSG_0CA2
+[.][X]
+
+## MSG_0CA3
+[.][X]
+
+## MSG_0CA4
+[.][X]
+
+## MSG_0CA5
+[.][X]
+
+## MSG_0CA6
+[.][X]
+
+## MSG_0CA7
+[.][X]
+
+## MSG_0CA8
+[.][X]
+
+## MSG_0CA9
+[.][X]
+
+## MSG_0CAA
+[.][X]
+
+## MSG_0CAB
+[.][X]
+
+## MSG_0CAC
+[.][X]
+
+## MSG_0CAD
+[.][X]
+
+## MSG_0CAE
+[.][X]
+
+## MSG_0CAF
+[.][X]
+
+## MSG_0CB0
+[.][X]
+
+## MSG_0CB1
+[.][X]
+
+## MSG_0CB2
+[.][X]
+
+## MSG_0CB3
+[.][X]
+
+## MSG_0CB4
+[.][X]
+
+## MSG_0CB5
+[.][X]
+
+## MSG_0CB6
+[.][X]
+
+## MSG_0CB7
+[.][X]
+
+## MSG_0CB8
+[.][X]
+
+## MSG_0CB9
+[.][X]
+
+## MSG_0CBA
+[.][X]
+
+## MSG_0CBB
+[.][X]
+
+## MSG_0CBC
+[.][X]
+
+## MSG_0CBD
+[.][X]
+
+## MSG_0CBE
+[.][X]
+
+## MSG_0CBF
+[.][X]
+
+## MSG_0CC0
+[.][X]
+
+## MSG_0CC1
+[.][X]
+
+## MSG_0CC2
+[.][X]
+
+## MSG_0CC3
+[.][X]
+
+## MSG_0CC4
+[.][X]
+
+## MSG_0CC5
+[.][X]
+
+## MSG_0CC6
+[.][X]
+
+## MSG_0CC7
+[.][X]
+
+## MSG_0CC8
+[.][X]
+
+## MSG_0CC9
+[.][X]
+
+## MSG_0CCA
+[.][X]
+
+## MSG_0CCB
+[.][X]
+
+## MSG_0CCC
+[.][X]
+
+## MSG_0CCD
+[.][X]
+
+## MSG_0CCE
+[.][X]
+
+## MSG_0CCF
+[.][X]
+
+## MSG_0CD0
+[.][X]
+
+## MSG_0CD1
+[.][X]
+
+## MSG_0CD2
+[.][X]
+
+## MSG_0CD3
+[.][X]
+
+## MSG_0CD4
+[.][X]
+
+## MSG_0CD5
+[.][X]
+
+## MSG_0CD6
+[.][X]
+
+## MSG_0CD7
+[.][X]
+
+## MSG_0CD8
+[.][X]
+
+## MSG_0CD9
+[.][X]
+
+## MSG_0CDA
+[.][X]
+
+## MSG_0CDB
+[.][X]
+
+## MSG_0CDC
+[.][X]
+
+## MSG_0CDD
+[.][X]
+
+## MSG_0CDE
+[.][X]
+
+## MSG_0CDF
+[.][X]
+
+## MSG_0CE0
+[.][X]
+
+## MSG_0CE1
+[.][X]
+
+## MSG_0CE2
+[.][X]
+
+## MSG_0CE3
+[.][X]
+
+## MSG_0CE4
+[.][X]
+
+## MSG_0CE5
+[.][X]
+
+## MSG_0CE6
+[.][X]
+
+## MSG_0CE7
+[.][X]
+
+## MSG_0CE8
+[.][X]
+
+## MSG_0CE9
+[.][X]
+
+## MSG_0CEA
+[.][X]
+
+## MSG_0CEB
+[.][X]
+
+## MSG_0CEC
+[.][X]
+
+## MSG_0CED
+[.][X]
+
+## MSG_0CEE
+[.][X]
+
+## MSG_0CEF
+[.][X]
+
+## MSG_0CF0
+[.][X]
+
+## MSG_0CF1
+[.][X]
+
+## MSG_0CF2
+[.][X]
+
+## MSG_0CF3
+[.][X]
+
+## MSG_0CF4
+[.][X]
+
+## MSG_0CF5
+[.][X]
+
+## MSG_0CF6
+[.][X]
+
+## MSG_0CF7
+[.][X]
+
+## MSG_0CF8
+[.][X]
+
+## MSG_0CF9
+[.][X]
+
+## MSG_0CFA
+[.][X]
+
+## MSG_0CFB
+[.][X]
+
+## MSG_0CFC
+[.][X]
+
+## MSG_0CFD
+[.][X]
+
+## MSG_0CFE
+[.][X]
+
+## MSG_0CFF
+[.][X]
+
+## MSG_0D00
+[.][X]
+
+## MSG_0D01
+[.][X]
+
+## MSG_0D02
+[.][X]
+
+## MSG_0D03
+[.][X]
+
+## MSG_0D04
+[.][X]
+
+## MSG_0D05
+[.][X]
+
+## MSG_0D06
+[.][X]
+
+## MSG_0D07
+[.][X]
+
+## MSG_0D08
+[.][X]
+
+## MSG_0D09
+[.][X]
+
+## MSG_0D0A
+[.][X]
+
+## MSG_0D0B
+[.][X]
+
+## MSG_0D0C
+[.][X]
+
+## MSG_0D0D
+[.][X]
+
+## MSG_0D0E
+[.][X]
+
+## MSG_0D0F
+[.][X]
+
+## MSG_0D10
+[.][X]
+
+## MSG_0D11
+[.][X]
+
+## MSG_0D12
+[.][X]
+
+## MSG_0D13
+[.][X]
+
+## MSG_0D14
+[.][X]
+
+## MSG_0D15
+[.][X]
+
+## MSG_0D16
+[.][X]
+
+## MSG_0D17
+[.][X]
+
+## MSG_0D18
+[.][X]
+
+## MSG_0D19
+[.][X]
+
+## MSG_0D1A
+[.][X]
+
+## MSG_0D1B
+[.][X]
+
+## MSG_0D1C
+[.][X]
+
+## MSG_0D1D
+[.][X]
+
+## MSG_0D1E
+[.][X]
+
+## MSG_0D1F
+[.][X]
+
+## MSG_0D20
+[.][X]
+
+## MSG_0D21
+[.][X]
+
+## MSG_0D22
+[.][X]
+
+## MSG_0D23
+[.][X]
+
+## MSG_0D24
+[.][X]
+
+## MSG_0D25
+[.][X]
+
+## MSG_0D26
+[.][X]
+
+## MSG_0D27
+[.][X]
+
+## MSG_0D28
+[.][X]
+
+## MSG_0D29
+[.][X]
+
+## MSG_0D2A
+[.][X]
+
+## MSG_0D2B
+[.][X]
+
+## MSG_0D2C
+[.][X]
+
+## MSG_0D2D
+[.][X]
+
+## MSG_0D2E
+[.][X]
+
+## MSG_0D2F
+[.][X]
+
+## MSG_0D30
+[.][X]
+
+## MSG_0D31
+[.][X]
+
+## MSG_0D32
+[.][X]
+
+## MSG_0D33
+[.][X]
+
+## MSG_0D34
+[.][X]
+
+## MSG_0D35
+[.][X]
+
+## MSG_0D36
+[.][X]
+
+## MSG_0D37
+[.][X]
+
+## MSG_0D38
+[.][X]
+
+## MSG_0D39
+[.][X]
+
+## MSG_0D3A
+[.][X]
+
+## MSG_0D3B
+[.][X]
+
+## MSG_0D3C
+[.][X]
+
+## MSG_0D3D
+[.][X]
+
+## MSG_0D3E
+[.][X]
+
+## MSG_0D3F
+[.][X]
+
+## MSG_0D40
+[.][X]
+
+## MSG_0D41
+[.][X]
+
+## MSG_0D42
+[.][X]
+
+## MSG_0D43
+[.][X]
+
+## MSG_0D44
+[.][X]
+
+## MSG_0D45
+[.][X]
+
+## MSG_0D46
+[.][X]
+
+## MSG_0D47
+[.][X]
+
+## MSG_0D48
+[.][X]
+
+## MSG_0D49
+[.][X]
+
+## MSG_0D4A
+[.][X]
+
+## MSG_0D4B
+[.][X]

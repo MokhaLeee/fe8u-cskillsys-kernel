@@ -1,0 +1,255 @@
+#######################################################
+#0F allf_sw1 Lord 剑
+#
+#当输入到FEditorAdv时，请删除＃和每行之后。
+#######################################################
+/// - Mode 1               #攻击命中时的动作
+C03                               #攻击动作开始07以后会来的
+C07                               #攻击动作开始03会在这之前
+1 p- lyn_sword_000.png
+3 p- lyn_sword_001.png
+4 p- lyn_sword_002.png
+C43                               #将边缘挤入护套
+18 p- lyn_sword_003.png
+C23                               #摆动摆动声音小
+2 p- lyn_sword_004.png
+2 p- lyn_sword_005.png
+C1A                               #正常命中
+C04                               #Prepare HP depletion routine; needed to animate return to standing frame after hit
+C20                               #关键音效
+2 p- lyn_sword_006.png
+5 p- lyn_sword_007.png
+3 p- lyn_sword_008.png
+2 p- lyn_sword_009.png
+1 p- lyn_sword_010.png
+C01                               #NOP
+C23                               #摆动摆动声音小
+2 p- lyn_sword_011.png
+2 p- lyn_sword_012.png
+2 p- lyn_sword_013.png
+C34                               #踢脚步声
+4 p- lyn_sword_014.png
+5 p- lyn_sword_015.png
+3 p- lyn_sword_016.png
+3 p- lyn_sword_017.png
+4 p- lyn_sword_018.png
+4 p- lyn_sword_019.png
+4 p- lyn_sword_020.png
+4 p- lyn_sword_021.png
+3 p- lyn_sword_022.png
+C37                               #声音把剑插入鞘
+3 p- lyn_sword_023.png
+1 p- lyn_sword_024.png
+C06                               #攻击动画结束0D会晚点来
+3 p- lyn_sword_024.png
+2 p- lyn_sword_025.png
+1 p- lyn_sword_001.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 3               #攻击必杀时的动作
+C03                               #攻击动作开始07以后会来的
+C07                               #攻击动作开始03会在这之前
+1 p- lyn_sword_000.png
+3 p- lyn_sword_001.png
+4 p- lyn_sword_002.png
+C43                               #将边缘挤入护套
+10 p- lyn_sword_003.png
+4 p- lyn_sword_026.png
+C36                               #听起来剑拔剑吗
+4 p- lyn_sword_027.png
+3 p- lyn_sword_028.png
+3 p- lyn_sword_029.png
+4 p- lyn_sword_030.png
+1 p- lyn_sword_031.png
+1 p- lyn_sword_032.png
+1 p- lyn_sword_031.png
+1 p- lyn_sword_033.png
+1 p- lyn_sword_031.png
+1 p- lyn_sword_034.png
+1 p- lyn_sword_035.png
+1 p- lyn_sword_034.png
+1 p- lyn_sword_035.png
+1 p- lyn_sword_036.png
+1 p- lyn_sword_037.png
+1 p- lyn_sword_036.png
+1 p- lyn_sword_037.png
+1 p- lyn_sword_038.png
+1 p- lyn_sword_039.png
+1 p- lyn_sword_038.png
+1 p- lyn_sword_039.png
+1 p- lyn_sword_040.png
+1 p- lyn_sword_041.png
+1 p- lyn_sword_040.png
+1 p- lyn_sword_041.png
+1 p- lyn_sword_040.png
+1 p- lyn_sword_042.png
+1 p- lyn_sword_043.png
+1 p- lyn_sword_042.png
+1 p- lyn_sword_043.png
+1 p- lyn_sword_042.png
+1 p- lyn_sword_043.png
+1 p- lyn_sword_042.png
+1 p- lyn_sword_043.png
+2 p- lyn_sword_042.png
+1 p- lyn_sword_043.png
+1 p- lyn_sword_042.png
+2 p- lyn_sword_044.png
+1 p- lyn_sword_045.png
+1 p- lyn_sword_044.png
+19 p- lyn_sword_045.png
+C20                               #关键音效
+1 p- lyn_sword_046.png
+1 p- lyn_sword_047.png
+1 p- lyn_sword_048.png
+10 p- lyn_sword_049.png
+C21                               #关键音效
+1 p- lyn_sword_050.png
+1 p- lyn_sword_051.png
+1 p- lyn_sword_052.png
+10 p- lyn_sword_049.png
+C04                               #Prepare HP depletion routine; needed to animate return to standing frame after hit
+C09                               #重击
+C20                               #关键音效
+10 p- lyn_sword_049.png
+C01                               #NOP
+1 p- lyn_sword_053.png
+1 p- lyn_sword_054.png
+1 p- lyn_sword_055.png
+1 p- lyn_sword_056.png
+1 p- lyn_sword_057.png
+1 p- lyn_sword_058.png
+1 p- lyn_sword_059.png
+2 p- lyn_sword_060.png
+2 p- lyn_sword_015.png
+3 p- lyn_sword_016.png
+3 p- lyn_sword_017.png
+4 p- lyn_sword_018.png
+4 p- lyn_sword_019.png
+4 p- lyn_sword_020.png
+4 p- lyn_sword_021.png
+3 p- lyn_sword_022.png
+C37                               #声音把剑插入鞘
+3 p- lyn_sword_023.png
+1 p- lyn_sword_024.png
+C06                               #攻击动画结束0D会晚点来
+3 p- lyn_sword_024.png
+2 p- lyn_sword_025.png
+1 p- lyn_sword_001.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 5               #间接攻击的动作
+C03                               #攻击动作开始07以后会来的
+C07                               #攻击动作开始03会在这之前
+1 p- lyn_sword_000.png
+3 p- lyn_sword_025.png
+4 p- lyn_sword_024.png
+3 p- lyn_sword_061.png
+C05                               #调用魔法
+1 p- lyn_sword_062.png
+C01                               #NOP
+3 p- lyn_sword_061.png
+C37                               #声音把剑插入鞘
+C06                               #攻击动画结束0D会晚点来
+3 p- lyn_sword_024.png
+3 p- lyn_sword_025.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 6               #间接攻击必杀时的动作
+C03                               #攻击动作开始07以后会来的
+C07                               #攻击动作开始03会在这之前
+1 p- lyn_sword_000.png
+3 p- lyn_sword_025.png
+4 p- lyn_sword_024.png
+3 p- lyn_sword_061.png
+3 p- lyn_sword_062.png
+1 p- lyn_sword_063.png
+3 p- lyn_sword_062.png
+2 p- lyn_sword_063.png
+3 p- lyn_sword_062.png
+1 p- lyn_sword_063.png
+2 p- lyn_sword_062.png
+1 p- lyn_sword_063.png
+C05                               #调用魔法
+1 p- lyn_sword_062.png
+C01                               #NOP
+3 p- lyn_sword_061.png
+C37                               #声音把剑插入鞘
+C06                               #攻击动画结束0D会晚点来
+3 p- lyn_sword_024.png
+3 p- lyn_sword_025.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 7               #被攻击回避时的动作
+C02                               #避免动议开始
+1 p- lyn_sword_000.png
+C0E                               #Start of dodging frames (should go after standing frame and before dodging animation)
+3 p- lyn_sword_064.png
+1 p- lyn_sword_065.png
+C01                               #NOP
+3 p- lyn_sword_064.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 8               #被间接攻击回避时的动作
+C02                               #避免动议开始
+1 p- lyn_sword_000.png
+C0E                               #Start of dodging frames (should go after standing frame and before dodging animation)
+3 p- lyn_sword_064.png
+1 p- lyn_sword_065.png
+C01                               #NOP
+3 p- lyn_sword_064.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 9               #站立不动的动作
+1 p- lyn_sword_000.png
+C01                               #NOP
+~~~
+/// - Mode 10               #站立不动的动作
+1 p- lyn_sword_000.png
+C01                               #NOP
+~~~
+/// - Mode 11               #间接时站立不动的动作
+1 p- lyn_sword_000.png
+C01                               #NOP
+~~~
+/// - Mode 12               #攻击失误时的动作
+C03                               #攻击动作开始07以后会来的
+C07                               #攻击动作开始03会在这之前
+1 p- lyn_sword_000.png
+3 p- lyn_sword_001.png
+4 p- lyn_sword_002.png
+C43                               #将边缘挤入护套
+18 p- lyn_sword_003.png
+C23                               #摆动摆动声音小
+2 p- lyn_sword_004.png
+2 p- lyn_sword_005.png
+C04                               #Prepare HP depletion routine; needed to animate return to standing frame after hit
+2 p- lyn_sword_006.png
+5 p- lyn_sword_007.png
+3 p- lyn_sword_008.png
+2 p- lyn_sword_009.png
+1 p- lyn_sword_010.png
+C01                               #NOP
+C23                               #摆动摆动声音小
+2 p- lyn_sword_011.png
+2 p- lyn_sword_012.png
+2 p- lyn_sword_013.png
+C34                               #踢脚步声
+4 p- lyn_sword_014.png
+5 p- lyn_sword_015.png
+3 p- lyn_sword_016.png
+3 p- lyn_sword_017.png
+4 p- lyn_sword_018.png
+4 p- lyn_sword_019.png
+4 p- lyn_sword_020.png
+4 p- lyn_sword_021.png
+3 p- lyn_sword_022.png
+C37                               #声音把剑插入鞘
+3 p- lyn_sword_023.png
+1 p- lyn_sword_024.png
+C06                               #攻击动画结束0D会晚点来
+3 p- lyn_sword_024.png
+2 p- lyn_sword_025.png
+1 p- lyn_sword_001.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - End of animation

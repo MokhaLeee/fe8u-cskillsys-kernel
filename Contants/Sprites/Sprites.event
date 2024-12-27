@@ -1,0 +1,11 @@
+// #include "Preload.event"
+
+#include "MapSpriteDefs.event"
+#include "InstallSprites.event"
+
+#ifdef CONFIG_USE_DEBUG
+PUSH
+    ORG 0x80716A
+    BYTE DemoSMS_RoyLord
+POP
+#endif /* CONFIG_USE_DEBUG */

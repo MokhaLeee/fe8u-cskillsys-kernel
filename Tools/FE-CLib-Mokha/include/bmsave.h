@@ -644,6 +644,6 @@ void sub_80A71F8(void*);
 // ??? sub_80A733C(???);
 // ??? sub_80A734C(???);
 // ??? sub_80A7360(???);
-void EraseInvalidSaveData();
+void EraseInvalidSaveData(void);
 
 #endif /* BMSAVE_H */

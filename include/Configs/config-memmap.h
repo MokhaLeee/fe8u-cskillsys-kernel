@@ -34,10 +34,19 @@
  * Main    | ----   | ----
  * ------------------------
  */
-#define FreeSpaceKernel_Magic (FreeSpaceKernel + 0x0)
-#define FreeSpaceKernel_Reloc (FreeSpaceKernel_Magic + 0x10)
-#define FreeSpaceRelocSize 0x400
+#define KernelMagicSize 0x10
+#define KernelRelocSize 0x400
+#define KernelDataSize  0xCD5E0
+#define MsgTableSize    0x800C
 
-#define FreeSpaceKernelData (FreeSpaceKernel_Reloc + FreeSpaceRelocSize)
+#define FreeSpaceKernel_Magic    (FreeSpaceKernel + 0x0)
+#define FreeSpaceKernel_Reloc    (FreeSpaceKernel + KernelMagicSize)
+#define FreeSpaceKernel_Data     (FreeSpaceKernel + KernelMagicSize + KernelRelocSize)
+#define FreeSpaceKernel_MsgTable (FreeSpaceKernel + KernelMagicSize + KernelRelocSize + KernelDataSize)
+
+#define FreeSpaceKernel_MagicEnd    (FreeSpaceKernel + KernelMagicSize)
+#define FreeSpaceKernel_RelocEnd    (FreeSpaceKernel + KernelMagicSize + KernelRelocSize)
+#define FreeSpaceKernel_DataEnd     (FreeSpaceKernel + KernelMagicSize + KernelRelocSize + KernelDataSize)
+#define FreeSpaceKernel_MsgTableEnd (FreeSpaceKernel + KernelMagicSize + KernelRelocSize + KernelDataSize + MsgTableSize)
 
 #endif

@@ -1,0 +1,18 @@
+#ifndef BANIMS_INSTALLED
+#define BANIMS_INSTALLED
+
+// #include "Preload.event"
+#include "AnimDefinitions-Vanilla.event"
+#include "AnimDefinitions-Demo.event"
+#include "AnimMapping.evet"
+
+#include "Source/InstallBanims.event"
+
+#ifdef CONFIG_USE_DEBUG
+PUSH
+    ORG 0x8071EC
+    POIN DemoAnimConf_LynLord
+POP
+#endif /* CONFIG_USE_DEBUG */
+
+#endif /* BANIMS_INSTALLED */

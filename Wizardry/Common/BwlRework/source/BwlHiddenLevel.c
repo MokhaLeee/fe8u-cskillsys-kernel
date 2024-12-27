@@ -48,3 +48,13 @@ void UnitHiddenLevelPreLoad(struct Unit * unit)
 
     bwl->levelGain = GetUnitStaticHiddenLevel(unit);
 }
+
+void WriteUnitLevelSafe(struct Unit *unit, int new_level)
+{
+	struct NewBwl *bwl = GetNewBwl(UNIT_CHAR_ID(unit));
+
+	if (bwl)
+		bwl->levelGain += new_level - unit->level;
+
+	unit->level = new_level;
+}

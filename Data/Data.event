@@ -9,6 +9,8 @@
 #include "../Wizardry/Common/ItemSys/data.event"
 #include "../Wizardry/Common/EventRework/data.event"
 
+#include "DesignerConfig/designer-config.lyn.event"
+#include "DesignerConfig/battle-designer-config.lyn.event"
 #include "SkillSys/SkillAnimInfo.lyn.event"
 #include "SkillSys/SkillInfo.lyn.event"
 #include "SkillSys/SkillExtraInfo.lyn.event"
@@ -32,6 +34,11 @@
 #include "StrMag/UnitMagicInfos.lyn.event"
 #include "Debuff/DebuffInfo.lyn.event"
 #include "Debuff/StatDebuffInfo.lyn.event"
+#include "GaidenMagic/GaidenMagicData.event"
+#include "GaidenMagic/GaidenMagicData.lyn.event"
+#include "MaxStatus/MaxStatus.lyn.event"
+#include "JobGrowth/JobGrowth.lyn.event"
+#include "Shield/ShieldConfig.lyn.event"
 
 #include "../Wizardry/data.event"
 

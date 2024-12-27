@@ -250,6 +250,25 @@ bool CanUnitCrossTerrain(struct Unit * unit, int terrain);
 extern CONST_DATA struct MenuItemDef gUnitActionMenuItems[];
 void StartMineAnim(ProcPtr, int, int);
 void AddUnitToTargetListIfAllied(struct Unit * unit);
+void sub_8095C2C(struct ProcAtMenu *proc);
+extern struct MsgBuffer sMsgString;
+extern EWRAM_DATA int sActiveMsg;
+extern CONST_DATA struct ProcCmd sProcScr_BattleAnimSimpleLock[];
+
+struct AiStaffLutEntry {
+	u16 itemId;
+	void (*func)(int itemIdx, s8 (*isEnemy)(struct Unit *unit));
+};
+extern const struct AiStaffLutEntry sAiStaffFuncLut[];
+int GetAiStaffFuncIndex(u16 item);
+int sub_8003ABC(u16 a, u16 b);
+bool LoadBonusContentData(void *buf);
+
+/**
+ * popup
+ */
+int ParsePopupInstAndGetLen(struct PopupProc *proc);
+void GeneratePopupText(const struct PopupInstruction *inst, struct Text th);
 
 extern CONST_DATA AnimScr AnimScr_EkrPopup[2];
 

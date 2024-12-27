@@ -44,3 +44,7 @@ extern s8 const * const gpClassPreLoadHiddenLevel;
 void NewBwlRecordHiddenLevel(struct Unit * unit);
 int GetUnitHiddenLevel(struct Unit * unit);
 void UnitHiddenLevelPreLoad(struct Unit * unit);
+
+// see limition rule 5
+void WriteUnitLevelSafe(struct Unit *unit, int new_level);
+extern void (*prWriteUnitLevelSafe)(struct Unit *unit, int new_level);

@@ -1,4 +1,5 @@
 #include "Common/ArmFunc/data.event"
+#include "Common/BanimHack/data.event"
 #include "Common/UnitAction/data.event"
 #include "Common/ClassTypes/data.event"
 #include "Common/ChapterInitHook/data.event"
@@ -25,6 +26,8 @@
 #include "Core/ComboAttack/data.event"
 #include "Core/Movement/MovementData.event"
 #include "External/Individual_animation_ea_2/data.event"
+
+#include "Misc/PortraitHeight/data.event"
 
 #ifdef CONFIG_INSTALL_STATSCREENFX
     #include "External/StatScreenfx/_data.event"

@@ -1,0 +1,7 @@
+#ifndef DEMO_ANIMDEF_INSTALLED
+#define DEMO_ANIMDEF_INSTALLED
+
+#define BANIM_LynLord_Sword 0xCA
+#define BANIM_LynLord_Item  0xCB
+
+#endif

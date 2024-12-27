@@ -1,0 +1,30 @@
+#ifdef TextTable
+#undef TextTable
+#endif
+
+#define TextTable NewTextTable
+
+#define AnitiHuff(ptr) "0x88000000 | ptr"
+#define ALLOC_TEXT_x4    "AnitiHuff(NullStr) AnitiHuff(NullStr) AnitiHuff(NullStr) AnitiHuff(NullStr)"
+#define ALLOC_TEXT_x16   "ALLOC_TEXT_x4    ALLOC_TEXT_x4    ALLOC_TEXT_x4    ALLOC_TEXT_x4"
+#define ALLOC_TEXT_x64   "ALLOC_TEXT_x16   ALLOC_TEXT_x16   ALLOC_TEXT_x16   ALLOC_TEXT_x16"
+#define ALLOC_TEXT_x256  "ALLOC_TEXT_x64   ALLOC_TEXT_x64   ALLOC_TEXT_x64   ALLOC_TEXT_x64"
+#define ALLOC_TEXT_x1024 "ALLOC_TEXT_x256  ALLOC_TEXT_x256  ALLOC_TEXT_x256  ALLOC_TEXT_x256"
+#define ALLOC_TEXT_x4096 "ALLOC_TEXT_x1024 ALLOC_TEXT_x1024 ALLOC_TEXT_x1024 ALLOC_TEXT_x1024"
+
+ALIGN 4
+TextTable:
+    WORD ALLOC_TEXT_x1024 ALLOC_TEXT_x1024 ALLOC_TEXT_x1024 ALLOC_TEXT_x1024
+    WORD ALLOC_TEXT_x1024 ALLOC_TEXT_x1024 ALLOC_TEXT_x1024 ALLOC_TEXT_x1024
+
+ALIGN 4
+NullStr:
+    BYTE 0x20 0x0 0x0 0x0
+
+PUSH
+    ORG 0xa26c
+        POIN TextTable
+
+    ORG 0xa2a0
+        POIN TextTable
+POP

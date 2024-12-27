@@ -1,0 +1,9 @@
+ALIGN 4
+Img_EfxAnimNumber:
+	#incbin "data/Img_EfxAnimNumber.4bpp"
+
+ALIGN 4
+Pal_EfxAnimNumber:
+	#incbin "data/Img_EfxAnimNumber.gbapal"
+
+#include "data/animscr_num.lyn.event"

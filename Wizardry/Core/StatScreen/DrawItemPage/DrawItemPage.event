@@ -1,0 +1,12 @@
+#include "Source/DrawItemPage.lyn.event"
+
+PUSH
+	ORG 0x0874E4
+	gpTSA_ItemPageSubfix:
+
+	ORG 0x0875EC
+	gpTSA_ItemEquipLine:
+
+	ORG 0x0874F0
+	gpPage1TextInfo:
+POP

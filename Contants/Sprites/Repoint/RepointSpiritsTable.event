@@ -1,0 +1,83 @@
+#define ALLOC_SMS     "0x00010002 0x081B7828"
+#define ALLOC_SMSx4   "ALLOC_SMS     ALLOC_SMS    ALLOC_SMS   ALLOC_SMS"
+#define ALLOC_SMSx16  "ALLOC_SMSx4  ALLOC_SMSx4  ALLOC_SMSx4  ALLOC_SMSx4"
+#define ALLOC_SMSx64  "ALLOC_SMSx16 ALLOC_SMSx16 ALLOC_SMSx16 ALLOC_SMSx16"
+#define ALLOC_SMSx256 "ALLOC_SMSx64 ALLOC_SMSx64 ALLOC_SMSx64 ALLOC_SMSx64"
+
+ALIGN 4
+StandingMapSpriteTable:
+    WORD ALLOC_SMSx256
+    WORD 0 0
+
+#define ALLOC_MU     "0x081C3ED4 0x081C46CC"
+#define ALLOC_MUx4   "ALLOC_MU    ALLOC_MU    ALLOC_MU    ALLOC_MU"
+#define ALLOC_MUx16  "ALLOC_MUx4  ALLOC_MUx4  ALLOC_MUx4  ALLOC_MUx4"
+#define ALLOC_MUx64  "ALLOC_MUx16 ALLOC_MUx16 ALLOC_MUx16 ALLOC_MUx16"
+#define ALLOC_MUx256 "ALLOC_MUx64 ALLOC_MUx64 ALLOC_MUx64 ALLOC_MUx64"
+
+ALIGN 4
+MovingMapSpriteTable:
+    WORD ALLOC_MUx256
+    WORD 0 0
+
+PUSH
+    ORG StandingMapSpriteTable
+    #incbin "bin/VanillaStandingMapSpriteTable.bin"
+
+    ORG MovingMapSpriteTable
+    #incbin "bin/VanillaMovingMapSpriteTable.bin"
+POP
+
+#include "Source/ExpandMuPatch.event"
+
+PUSH
+    ORG 0x026730
+    POIN StandingMapSpriteTable
+    PROTECT 0x000266F0 0x0002677C // StartUiSMS
+    ORG 0x0267B0
+    POIN StandingMapSpriteTable
+    PROTECT 0x0002677C 0x000267FC // StartWorldMapSMS
+    ORG 0x026838
+    POIN StandingMapSpriteTable
+    PROTECT 0x000267FC 0x000268C8 // UseUnitSprite
+    ORG 0x026C88
+    POIN StandingMapSpriteTable
+    PROTECT 0x00026C1C 0x00026F2C // TornOutUnitSprite
+    ORG 0x0272D0
+    POIN StandingMapSpriteTable
+    // PROTECT 0x000271A0 0x0002736C // RefreshUnitSprites
+    ORG 0x027BB0
+    POIN StandingMapSpriteTable
+    PROTECT 0x00027B60 0x00027C48 // PutUnitSprite
+    ORG 0x027C9C
+    POIN StandingMapSpriteTable
+    PROTECT 0x00027C48 0x00027CFC // PutUnitSpriteForClassId
+    ORG 0x027D48
+    POIN StandingMapSpriteTable
+    PROTECT 0x00027CFC 0x00027DB4 // sub_8027CFC
+    ORG 0x027E0C
+    POIN StandingMapSpriteTable
+    PROTECT 0x00027DB4 0x00027E4C // sub_8027DB4
+    ORG 0x027E9C
+    POIN StandingMapSpriteTable
+    PROTECT 0x00027E4C 0x00027F28 // sub_8027E4C
+    ORG 0x027F74
+    POIN StandingMapSpriteTable
+    PROTECT 0x00027F28 0x00028014 // SMS_DisplayOne
+    ORG 0x028064
+    POIN StandingMapSpriteTable
+    PROTECT 0x00028014 0x00028100 // PutBlendWindowUnitSprite
+
+    ORG 0x079584
+    POIN MovingMapSpriteTable
+    PROTECT 0x00079574 0x00079588 // GetMuImg
+    ORG 0x079598
+    POIN MovingMapSpriteTable
+    PROTECT 0x00079588 0x0007959C // GetMuAnimForJid
+    ORG 0x0BAC2C
+    POIN MovingMapSpriteTable
+    PROTECT 0x000BAC1C 0x000BAC30 // MMS_GetGfx
+    ORG 0x0BAC40
+    POIN MovingMapSpriteTable
+    PROTECT 0x000BAC30 0x000BAC44 // MMS_GetROMTCS2
+POP

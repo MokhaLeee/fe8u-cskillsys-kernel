@@ -109,4 +109,8 @@
     #include "JesterHacks/BEXP/Installer.event"
 #endif
 
-#include "FE8_Rewritten_Terper/Installer.event"
+//#include "TrapRework/Installer.event"
+
+#ifdef CONFIG_FE8_REWRITE
+    #include "FE8_Rewritten_Terper/Installer.event"
+#endif

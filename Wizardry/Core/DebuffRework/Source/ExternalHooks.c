@@ -27,7 +27,7 @@ void PreBattleCalcDebuffs(struct BattleUnit *bu, struct BattleUnit *defender)
     bu->battleDodgeRate += info->battle_status.dodge;
 
 #if (defined(SID_PsychUp) && (COMMON_SKILL_VALID(SID_PsychUp)))
-    if (BattleSkillTester(bu, SID_PsychUp))
+    if (BattleFastSkillTester(bu, SID_PsychUp))
     {
         struct Unit *unit_enemy = GetUnit(defender->unit.index);
         int debuff = GetUnitStatusIndex(unit_enemy);

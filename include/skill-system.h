@@ -76,22 +76,29 @@ struct SkillList {
     u8 amt;
     u16 sid[23];
 };
-extern struct SkillList * (* _GetUnitSkillList)(struct Unit * unit);
-#define GetUnitSkillList _GetUnitSkillList
 
-void GenerateSkillListExt(struct Unit * unit, struct SkillList * list);
-void ForceUpdateUnitSkillList(struct Unit * unit);
-void DisableUnitSkilLList(struct Unit * unit);
+struct SkillList *GetUnitSkillList(struct Unit *unit);
+
+void SetupBattleSkillList(void);
+void GenerateSkillListExt(struct Unit *unit, struct SkillList *list);
+void ForceUpdateUnitSkillList(struct Unit *unit);
+void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
+void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
 
 /* Skill tetsers */
-extern bool (* _SkillTester)(struct Unit * unit, const u16 sid);
-#define SkillTester _SkillTester
+extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
+bool _SkillListTester(struct Unit *unit, const u16 sid);
+extern bool (*_BattleFastSkillTester)(struct BattleUnit *bu, const u16 sid);
 
-// Note this function can only exec for r0 = gBattleActor/gBattleTarget
-extern bool (* _JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
-#define BattleSkillTester _JudgeSkillViaList
-#define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
+// see: ../docs/SkillSys.md
+#define SkillTester _SkillTester
+#define SkillListTester(unit, sid) _SkillListTester(unit, sid)
+#define BattleFastSkillTester(bu, sid) _BattleFastSkillTester(bu, sid)
+
+bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
+bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);
+
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {
@@ -251,6 +258,20 @@ int RemoveSkill(struct Unit * unit, const u16 sid);
 int AddSkill(struct Unit * unit, const u16 sid);
 void TryAddSkillLvup(struct Unit * unit, int level);
 void TryAddSkillPromotion(struct Unit * unit, int jid);
+
+/**
+ * Popups
+ */
+void ResetPopupSkillStack(void);
+void PushSkillListStack(u16 sid);
+int PopSkillListStack(void);
+
+int PoprGetLen_SkillIcon(struct PopupProc *proc, const struct PopupInstruction *inst);
+void PoprDisp_SkillIcon(struct Text *text, const struct PopupInstruction *inst);
+int PoprGetLen_SkillName(struct PopupProc *proc, const struct PopupInstruction *inst);
+void PoprDisp_SkillName(struct Text *text, const struct PopupInstruction *inst);
+bool PopR_SetupLearnSkill(void);
+extern const struct PopupInstruction PopupScr_LearnSkill[];
 
 /**
  * External MiscSkillEffects

@@ -7,23 +7,58 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-bool CheckBattleHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
-{
-    if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
-        return true;
+#define LOCAL_TRACE 0
 
-    if (gBattleTemporaryFlag.skill_activated_aether)
-        return true;
+void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	int drain, percentage = 0;
+
+	/**
+	 * Step 1: calculate drain percentage
+	 */
+	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN) {
+		percentage += gpKernelBattleDesignerConfig->nosferatu_hpdrain_perc;
+
+		/**
+		 * If the weapon itself is set as hpdrain,
+		 * then it may directly call EfxHpBarResire() in banim,
+		 * at which time we must set hp-steal flag for battle-parse.
+		 */
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
+
+	if (gBattleTemporaryFlag.skill_activated_aether)
+		percentage += 100;
 
 #if (defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol)))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl))
-    {
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
-        return true;
-    }
+	if (CheckBattleSkillActivate(attacker, defender, SID_Sol, attacker->unit.skl)) {
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Sol);
+		percentage += 100;
+	}
 #endif
 
-    return false;
+	if (percentage == 0)
+		return;
+
+	/**
+	 * Step 2: calculate real amount
+	 */
+	drain = Div(gBattleStats.damage * percentage, 100);
+
+	LTRACEF("hpdrain: dmg=%d, perc=%d, drain=%d, cur=%d, max=%d",
+			gBattleStats.damage, percentage, drain, attacker->unit.curHP, attacker->unit.maxHP);
+
+	/**
+	 * Step 3: detect overflow
+	 */
+	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
+		drain = attacker->unit.maxHP - attacker->unit.curHP;
+
+	if (drain > 0) {
+		GetCurrentExtBattleHit()->hp_drain += drain;
+		attacker->unit.curHP += drain;
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
 }
 
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender)
@@ -46,7 +81,7 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 
 #if (defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter)))
-    if (BattleSkillTester(defender, SID_Counter) && gBattleStats.range == 1 && !IsMagicAttack(attacker))
+    if (BattleFastSkillTester(defender, SID_Counter) && gBattleStats.range == 1 && !IsMagicAttack(attacker))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Counter);
         return true;
@@ -54,7 +89,7 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 #if (defined(SID_CounterMagic) && (COMMON_SKILL_VALID(SID_CounterMagic)))
-    if (BattleSkillTester(defender, SID_CounterMagic) && gBattleStats.range >= 2 && IsMagicAttack(attacker))
+    if (BattleFastSkillTester(defender, SID_CounterMagic) && gBattleStats.range >= 2 && IsMagicAttack(attacker))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_CounterMagic);
         return true;
@@ -68,12 +103,12 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
     }
 
 #if (defined(SID_DevilsLuck) && (COMMON_SKILL_VALID(SID_DevilsLuck)))
-    if (BattleSkillTester(defender, SID_DevilsLuck) && GetItemWeaponEffect(defender->weapon) == WPN_EFFECT_DEVIL)
+    if (BattleFastSkillTester(defender, SID_DevilsLuck) && GetItemWeaponEffect(defender->weapon) == WPN_EFFECT_DEVIL)
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsLuck);
         return true;
     }
-    if (BattleSkillTester(attacker, SID_DevilsLuck) && GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL)
+    if (BattleFastSkillTester(attacker, SID_DevilsLuck) && GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_DEVIL)
         return false;
 #endif
 
@@ -81,7 +116,7 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
         return true;
 
 #if (defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact)))
-    if (BattleSkillTester(defender, SID_DevilsPact))
+    if (BattleFastSkillTester(defender, SID_DevilsPact))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsPact);
         return true;
@@ -89,13 +124,13 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 #if (defined(SID_DevilsWhim) && (COMMON_SKILL_VALID(SID_DevilsWhim)))
-    if (BattleSkillTester(defender, SID_DevilsWhim))
+    if (BattleFastSkillTester(defender, SID_DevilsWhim))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
         return true;
     }
 
-    if (BattleSkillTester(attacker, SID_DevilsWhim))
+    if (BattleFastSkillTester(attacker, SID_DevilsWhim))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DevilsWhim);
         return true;
@@ -116,7 +151,7 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 #if (defined(SID_MercyPlus) && (COMMON_SKILL_VALID(SID_MercyPlus)))
-    if (BattleSkillTester(attacker, SID_MercyPlus))
+    if (BattleFastSkillTester(attacker, SID_MercyPlus))
     {
         RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_MercyPlus);
         return true;
@@ -132,7 +167,7 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
 #endif
 
 #if (defined(SID_Sturdy) && (COMMON_SKILL_VALID(SID_Sturdy)))
-    if (BattleSkillTester(defender, SID_Sturdy))
+    if (BattleFastSkillTester(defender, SID_Sturdy))
     {
         if (defender->unit.maxHP == defender->hpInitial)
         {
@@ -219,7 +254,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 #endif
 
 #if (defined(SID_Break) && (COMMON_SKILL_VALID(SID_Break)))
-    else if (BattleSkillTester(attacker, SID_Break))
+    else if (BattleFastSkillTester(attacker, SID_Break))
     {
         if (GetUnit(defender->unit.index)->statusIndex == UNIT_STATUS_NONE)
             SetUnitStatusIndex(GetUnit(defender->unit.index), NEW_UNIT_STATUS_BREAK);
@@ -240,7 +275,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
             defender->unit.state = defender->unit.state & ~US_UNSELECTABLE;
     }
 #if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
-    else if (BattleSkillTester(attacker, SID_PoisonPoint))
+    else if (BattleFastSkillTester(attacker, SID_PoisonPoint))
     {
         defender->statusOut = UNIT_STATUS_POISON;
         gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
@@ -274,7 +309,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 #endif
 
 #if (defined(SID_BlackMagic) && (COMMON_SKILL_VALID(SID_BlackMagic)))
-    else if (BattleSkillTester(defender, SID_BlackMagic))
+    else if (BattleFastSkillTester(defender, SID_BlackMagic))
     {
         if (!IsDebuff(GetUnitStatusIndex(&attacker->unit)) && !IsDebuff(attacker->statusOut))
         {
@@ -287,7 +322,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 #endif
 
 #if (defined(SID_MagicBounce) && (COMMON_SKILL_VALID(SID_MagicBounce)))
-    if (BattleSkillTester(defender, SID_MagicBounce))
+    if (BattleFastSkillTester(defender, SID_MagicBounce))
     {
         static const u8 _debuffs[9] = {
             UNIT_STATUS_POISON,
@@ -316,13 +351,13 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 #endif
 
 #if (defined(SID_Insomnia) && (COMMON_SKILL_VALID(SID_Insomnia)))
-    if (BattleSkillTester(defender, SID_Insomnia))
+    if (BattleFastSkillTester(defender, SID_Insomnia))
         if (defender->statusOut == UNIT_STATUS_SLEEP)
             defender->statusOut = UNIT_STATUS_NONE;
 #endif
 
 #if (defined(SID_GoodAsGold) && (COMMON_SKILL_VALID(SID_GoodAsGold)))
-    if (BattleSkillTester(defender, SID_GoodAsGold))
+    if (BattleFastSkillTester(defender, SID_GoodAsGold))
     {
         static const u8 _debuffs[9] = {
             UNIT_STATUS_POISON,

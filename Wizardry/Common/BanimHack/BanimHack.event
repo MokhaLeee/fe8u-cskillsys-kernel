@@ -1,10 +1,11 @@
 #ifndef BANIM_HACK_INSTALLED
 #define BANIM_HACK_INSTALLED
 
-#include "Source/C01.lyn.event"
+#include "AnimNumber/AnimNumber.event"
 #include "Source/C07.lyn.event"
+// #include "data.event"
 
-/*
+/**
  * mov r0, r7
  * blh /routine
  * ldr r0, =0x080596CC + 1
@@ -12,11 +13,9 @@
  */
 #define PrBanimCmd(pr_label, routine) "ALIGN 4; pr_label: WORD $B4081C38 $469E4B02 $BC08F800 $47004801; POIN routine; WORD $80596CD"
 #define InjectBanimCmdExt(index, pr_label) "PUSH; ORG ($58C44 + 4 * index); POIN pr_label | 1; POP"
-
 #define InjectBanimCmd(index, routine, pr_label) "PrBanimCmd(pr_label, routine); InjectBanimCmdExt(index, pr_label)"
 
 ALIGN 4
-InjectBanimCmd(0x01, Banim_C01, pBanim_C01)
 InjectBanimCmd(0x07, Banim_C07, pBanim_C07)
 
 #endif /* BANIM_HACK_INSTALLED */

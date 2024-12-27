@@ -1,0 +1,3 @@
+80	00	00	00	@SELF+0	00	00	00	00	//000 DrumPart (0x00)
+00	3C	00	00	songE80x01.DirectSound.bin	FF	00	FF	00	//001 DirectSound (0x01)
+04	3C	00	00	00	00	00	00	00	00	0F	00	//002 Noise (0x02)

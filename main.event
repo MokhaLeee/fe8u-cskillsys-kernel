@@ -1,38 +1,55 @@
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"
-#include "Extensions/ProcDefinitions.txt"
+#include "include/ProcDefinitions.txt"
+#include "Tools/Tool Helpers.txt"
 
 #include "include/Configs/configs.h"
 #include "include/Configs/CustomDefinitions.event"
 #include "include/macros.event"
 #include "include/Definitions.event"
 
+ORG FreeSpaceKernel_MsgTable
+    #include "Preload/AllocMsgTable.event"
+ASSERT (FreeSpaceKernel_MsgTableEnd - CURRENTOFFSET)
+
+ORG FreeSpaceKernel_MsgTableEnd
+    /* a lable */
+    TextTableEnd:
+
+/**
+ * <!>
+ * Tool helpers should installed after msg_table repointing
+ */
+#include "Tools/Tool Helpers.txt"
+
 ORG FreeSpaceKernel_Magic
-    /* "CSKILLSYS_K-09x" */
-    BYTE 0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x30 0x39 0x78 0x00
+    #include "Preload/Magic.event"
+ASSERT (FreeSpaceKernel_MagicEnd - CURRENTOFFSET)
 
 ORG FreeSpaceKernel_Reloc
-    #include "Data/Reloc.event"
-MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (FreeSpaceRelocSize)
-ASSERT (FreeSpaceKernel_Reloc + FreeSpaceRelocSize - CURRENTOFFSET)
+    #include "Preload/Reloc.event"
+MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (KernelRelocSize)
+ASSERT (FreeSpaceKernel_RelocEnd - CURRENTOFFSET)
 
-ORG FreeSpaceDEMO
-    /**
-     * Put vanilla text data to the user space
-     */
-    #include "Contants/Texts/RepointText/RepointText.event"
-    #include "Contants/Texts/RepointText/RepointTextData.event"
-    /* <!>
-     * Tool helpers should installed after repointing
-     */
-    #include "Tools/Tool Helpers.txt"
-MESSAGE FreeSpace____Msg___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceDEMO)
-
-ORG FreeSpaceKernelData
+ORG FreeSpaceKernel_Data
+    #include "Preload/PreloadData.event"
     #include "Data/Data.event"
-    #include "Contants/Contants.event"
-MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelData) max (FreeSpaceKernelSize)
-ASSERT (FreeSpaceKernel + FreeSpaceKernelSize - CURRENTOFFSET)
+    #include "Debug/Debug.event"
+
+    /**
+     * For demo build, it is better to put this part of code directly to: FreeSpaceDEMO (0x1000000) to avoid potential overflow.
+     */
+#ifdef CONFIG_DEMO_BUILD
+PUSH
+ORG FreeSpaceDEMO
+    #include "Contants/Contents.event"
+MESSAGE FreeSpace___Demo___ end at (CURRENTOFFSET)
+POP
+#else
+    #include "Contants/Contents.event"
+#endif
+MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Data) max (KernelDataSize)
+ASSERT (FreeSpaceKernel_DataEnd - CURRENTOFFSET)
 
 ORG FreeSpaceFont
     #include "Fonts/Fonts.event"

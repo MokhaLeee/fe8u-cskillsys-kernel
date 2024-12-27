@@ -209,22 +209,18 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # = Texts =
 # =========
 
-TEXT_DIR    := $(CONTANTS_DIR)/Texts
-TEXT_MAIN   := $(TEXT_DIR)/Source/TextMain.txt
-TEXT_SOURCE := $(shell find $(TEXT_DIR) -type f -name '*.txt')
+TEXTS_DIR   := $(CONTANTS_DIR)/Texts
+TEXT_SOURCE := $(shell find $(TEXTS_DIR) -type f -name '*.txt')
 
-export TEXT_DEF := $(TEXT_DIR)/TextDefinitions.h
+export TEXT_DEF := $(TEXTS_DIR)/build/msgs.h
 
 text: $(TEXT_DEF)
 PRE_BUILD += text
 
-$(TEXT_DEF): $(TEXT_MAIN) $(TEXT_SOURCE)
-	@$(MAKE) -C $(TEXT_DIR)
+$(TEXT_DEF): $(TEXT_SOURCE)
+	@$(MAKE) -C $(TEXTS_DIR)
 
-%.fetxt.dmp: %.fetxt
-	@$(MAKE) -f $(TEXT_DIR)/makefile $@
-
-CLEAN_BUILD += $(TEXT_DIR)
+CLEAN_BUILD += $(TEXTS_DIR)
 
 # ============
 # = Spritans =

@@ -50,6 +50,7 @@ static const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
     PROC_END
 };
 
+#ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
 static const EventScr EventScr_SkillCapacityReached[] = {
     EVBIT_MODIFY(0x4)
     TUTORIALTEXTBOXSTART
@@ -60,6 +61,7 @@ static const EventScr EventScr_SkillCapacityReached[] = {
     NoFade
     ENDA
 };
+#endif
 
 
 void ItemUseEffect_SkillScroll(struct Unit * unit)
