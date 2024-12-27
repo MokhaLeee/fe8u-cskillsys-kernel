@@ -162,15 +162,15 @@ Rally-Spec[X]
  R-Spec[X]
 
 ## MSG_SKILL_GoddessDance
-ɢᵒᵈᵈᵉˢˢްᴅᵃⁿᶜᵉ:[NL]
+GoddessDance:[NL]
 Art: Refresh all adjacent[NL]
 allies to the user.[X]
 
 ## MSG_SKILL_GoddessDance_NAME
-ɢᵒᵈᵈᵉˢˢްᴅᵃⁿᶜᵉ[X]
+GoddessDance[X]
 
 ## MSG_MenuSkill_GoddessDanceName
- ɢᵒᵈᴅᵃⁿᶜᵉ[X]
+GodDance[X]
 
 ## MSG_MenuSkill_GoddessDance_FRtext
 No allies are in range![X]

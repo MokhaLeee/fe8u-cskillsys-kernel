@@ -31,5 +31,6 @@ B17:$COMBO combo.bool.txt=gaiden_magic_must_be_magic
 B18:$COMBO combo.bool.txt=gaiden_magic_requires_wrank
 B19:$COMBO combo.bool.txt=gaiden_magic_ai_en
 B20:$COMBO combo.bool.txt=gaiden_magic_ext_conf_en
+B21:$COMBO combo.bool.txt=auto_narrow_font
 
 INFO=Editor: gKernelDesigerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md

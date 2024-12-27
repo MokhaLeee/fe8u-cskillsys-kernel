@@ -112,6 +112,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	**Wizardry option**, enable `gGaidenChaxConfigs` judgement.
 
+- `auto_narrow_font`
+
+	Try convert ascii to **narrow-fonts** on displaying skill descriptions, skill names and menu items.
+
 ## Designer config battle
 
 ![image](./gfx/SystemConfig2.png)

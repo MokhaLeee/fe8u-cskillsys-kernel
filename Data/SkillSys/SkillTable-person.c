@@ -14,8 +14,8 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 	},
 
 	[CHARACTER_EPHRAIM] = {
-#if (defined(SID_InitNimble) && COMMON_SKILL_VALID(SID_InitNimble))
-		SID_InitNimble,
+#if (defined(SID_Tsuzuku) && COMMON_SKILL_VALID(SID_Tsuzuku))
+		SID_Tsuzuku,
 #endif
 
 #if (defined(SID_COMBAT_Detonate) && COMMON_SKILL_VALID(SID_COMBAT_Detonate))

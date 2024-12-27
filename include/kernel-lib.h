@@ -30,6 +30,8 @@ struct KernelDesigerConfig {
 	u8 no_suspend_in_aiphase;
 
 	u8 shield_en, shield_ext_equip_config_en;
+
+	u8 auto_narrow_font;
 };
 
 struct KernelBattleDesignerConfig {
@@ -148,6 +150,15 @@ void KernelPad1(void);
 int KernelPad2(int val);
 bool KernelPad3(void);
 bool KernelPad4(void);
+
+/**
+ * utf8.c
+ */
+int GetChLenUtf8(const char *str);
+int DecodeUtf8(const char *str, u32 *unicode_out, int *len);
+char *Utf8ToNarrowFonts(char *str);
+char NarrowFontsUtf8ToAscii(const char *str);
+char NarrowFontsUnicodeToAscii(u32 unicod);
 
 /**
  * Misc
