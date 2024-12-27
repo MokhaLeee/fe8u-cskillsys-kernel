@@ -36,6 +36,7 @@
 ʙ	item	4	FontItem_CA99.png
 ʜ	item	4	FontItem_CA9C.png
 ᶜ	item	4	FontItem_E1B69C.png
+ℂ	item	4	FontItem_E1B69C.png
 ʟ	item	4	FontItem_CA9F.png
 ᶠ	item	4	FontItem_E1B6A0.png
 ᶦ	item	2	FontItem_E1B6A6.png
