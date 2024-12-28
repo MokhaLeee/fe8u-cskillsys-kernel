@@ -89,12 +89,17 @@ void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
 /* Skill tetsers */
 extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
 bool _SkillListTester(struct Unit *unit, const u16 sid);
-extern bool (*_BattleFastSkillTester)(struct BattleUnit *bu, const u16 sid);
+// extern bool (*_BattleFastSkillTester)(struct BattleUnit *bu, const u16 sid);
 
 // see: ../docs/SkillSys.md
 #define SkillTester _SkillTester
 #define SkillListTester(unit, sid) _SkillListTester(unit, sid)
-#define BattleFastSkillTester _BattleFastSkillTester
+// #define BattleFastSkillTester _BattleFastSkillTester
+
+// Note this function can only exec for r0 = gBattleActor/gBattleTarget
+extern bool (* _JudgeSkillViaList)(struct BattleUnit * unit, const u16 sid);
+#define BattleSkillTester _JudgeSkillViaList
+#define _BattleSkillTester(unit, sid) BattleSkillTester((struct BattleUnit *)(unit), sid)
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);

@@ -194,7 +194,7 @@ STATIC_DECLAR void SetupBattleSkillFastList(void)
 }
 
 #if 0
-bool _BattleFastSkillTester(struct BattleUnit *bu, const u16 sid)
+bool _BattleSkillTester(struct BattleUnit *bu, const u16 sid)
 {
 	u32 *fast_list;
 

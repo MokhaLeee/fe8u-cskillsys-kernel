@@ -3,8 +3,8 @@
 
     .section .rodata
 
-.global _BattleFastSkillTester
-_BattleFastSkillTester:
+.global _BattleSkillTester
+_BattleSkillTester:
     .4byte ARM_SkillList + (.Lfun_judgeskillFast - _ARM_SkillList_CopyStart)
 
     .arm

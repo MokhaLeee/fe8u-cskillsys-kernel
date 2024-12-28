@@ -24,17 +24,17 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
     int status = base;
 
 #if defined(SID_Blossom) && (COMMON_SKILL_VALID(SID_Blossom))
-    if (BattleFastSkillTester(actor, SID_Blossom))
+    if (BattleSkillTester(actor, SID_Blossom))
         status = status / 2;
 #endif
 
 #if defined(SID_Paragon) && (COMMON_SKILL_VALID(SID_Paragon))
-    if (BattleFastSkillTester(actor, SID_Paragon))
+    if (BattleSkillTester(actor, SID_Paragon))
         status = status * 2;
 #endif
 
 #if defined(SID_Mentorship) && (COMMON_SKILL_VALID(SID_Mentorship))
-    if (BattleFastSkillTester(actor, SID_Mentorship))
+    if (BattleSkillTester(actor, SID_Mentorship))
         status = status + Div(status * SKILL_EFF0(SID_Mentorship), 100);
     else
     {
@@ -69,7 +69,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
     int itemHealAmount = GetUnitItemHealAmount(GetUnit(actor->unit.index), GetUnit(actor->unit.index)->items[gActionData.itemSlotIndex]);
     int hpChange = gBattleTarget.unit.curHP - gBattleTarget.hpInitial;
 
-    if (BattleFastSkillTester(actor, SID_StaffParagon))
+    if (BattleSkillTester(actor, SID_StaffParagon))
         bonusEXP = (unitMagicStat + itemHealAmount) - hpChange;
 
     /* Halve the exp gain if promoted */
@@ -84,13 +84,13 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 
     /* Check last */
 #if defined(SID_VoidCurse) && (COMMON_SKILL_VALID(SID_VoidCurse))
-    if (BattleFastSkillTester(target, SID_VoidCurse))
+    if (BattleSkillTester(target, SID_VoidCurse))
         status = 0;
 #endif
 
 /* NOT WORKING */
 // #if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
-//     if (BattleFastSkillTester(actor, SID_Prodigy) == FALSE)
+//     if (BattleSkillTester(actor, SID_Prodigy) == FALSE)
 //     {
 //         LIMIT_AREA(status, 1, 100);
 //     }
@@ -174,7 +174,7 @@ int GetBattleUnitStaffExp(struct BattleUnit *bu)
 
 /* NOT WORKING */
 // #if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
-//     if (!BattleFastSkillTester(bu, SID_Prodigy))
+//     if (!BattleSkillTester(bu, SID_Prodigy))
 //     {
 //         if (result > 100)
 //             result = 100;

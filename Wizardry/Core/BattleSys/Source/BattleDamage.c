@@ -23,22 +23,22 @@ int CalcBattleRealDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     int damage = 0;
 
 #if defined(SID_RuinedBlade) && (COMMON_SKILL_VALID(SID_RuinedBlade))
-    if (BattleFastSkillTester(attacker, SID_RuinedBlade))
+    if (BattleSkillTester(attacker, SID_RuinedBlade))
         damage += SKILL_EFF2(SID_RuinedBlade);
 #endif
 
 #if defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus))
-    if (BattleFastSkillTester(attacker, SID_RuinedBladePlus))
+    if (BattleSkillTester(attacker, SID_RuinedBladePlus))
         damage += SKILL_EFF1(SID_RuinedBladePlus);
 #endif
 
 #if defined(SID_LunaAttack) && (COMMON_SKILL_VALID(SID_LunaAttack))
-    if (BattleFastSkillTester(attacker, SID_LunaAttack))
+    if (BattleSkillTester(attacker, SID_LunaAttack))
         damage += defender->battleDefense / 4;
 #endif
 
 #if defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido))
-    if (BattleFastSkillTester(attacker, SID_Bushido))
+    if (BattleSkillTester(attacker, SID_Bushido))
         damage += SKILL_EFF1(SID_Bushido);
 #endif
 
@@ -80,7 +80,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     }
 
 #if defined(SID_Roll12) && (COMMON_SKILL_VALID(SID_Roll12))
-    if (BattleFastSkillTester(attacker, SID_Roll12) &&
+    if (BattleSkillTester(attacker, SID_Roll12) &&
         !CheckBitUES(GetUnit(attacker->unit.index), UES_BIT_ROLL12_SKILL_USED))
     {
         SetBitUES(GetUnit(attacker->unit.index), UES_BIT_ROLL12_SKILL_USED);
@@ -94,20 +94,20 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     gDmg.crit_atk = false;
 
 #if (defined(SID_Chipper) && (COMMON_SKILL_VALID(SID_Chipper)))
-	if (BattleFastSkillTester(attacker, SID_Chipper))
+	if (BattleSkillTester(attacker, SID_Chipper))
 		SetPartyGoldAmount(GetPartyGoldAmount() + SKILL_EFF0(SID_Chipper));
 #endif
 
 
     if (
 #if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
-        !BattleFastSkillTester(defender, SID_Fortune)
+        !BattleSkillTester(defender, SID_Fortune)
 #else
         (1)
 #endif
         &&
 #if defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight))
-        !BattleFastSkillTester(defender, SID_Foresight)
+        !BattleSkillTester(defender, SID_Foresight)
 #else
         (1)
 #endif
@@ -119,7 +119,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
             gDmg.crit_atk = true;
 
 #if defined(SID_AngerPoint) && (COMMON_SKILL_VALID(SID_AngerPoint))
-            if (BattleFastSkillTester(defender, SID_AngerPoint) && !gBattleActorGlobalFlag.skill_activated_angerpoint)
+            if (BattleSkillTester(defender, SID_AngerPoint) && !gBattleActorGlobalFlag.skill_activated_angerpoint)
                 gBattleActorGlobalFlag.skill_activated_angerpoint = true;
 #endif
 
@@ -145,7 +145,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     gDmg.correction = 0;
 
 #if (defined(SID_Swarm) && (COMMON_SKILL_VALID(SID_Swarm)))
-    if (BattleFastSkillTester(attacker, SID_Swarm))
+    if (BattleSkillTester(attacker, SID_Swarm))
     {
         if (gBattleStats.range == 1)
         {
@@ -187,7 +187,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_RampUp) && (COMMON_SKILL_VALID(SID_RampUp))
-    if (BattleFastSkillTester(attacker, SID_RampUp) && gDmg.crit_atk)
+    if (BattleSkillTester(attacker, SID_RampUp) && gDmg.crit_atk)
     {
         alteredCrit = true;
         gDmg.attack *= 2;
@@ -282,7 +282,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_LunarBrace) && (COMMON_SKILL_VALID(SID_LunarBrace)))
-    if (BattleFastSkillTester(attacker, SID_LunarBrace))
+    if (BattleSkillTester(attacker, SID_LunarBrace))
     {
         if (&gBattleActor == attacker)
         {
@@ -309,13 +309,13 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-    if (BattleFastSkillTester(attacker, SID_Spurn) && gDmg.crit_atk &&
+    if (BattleSkillTester(attacker, SID_Spurn) && gDmg.crit_atk &&
         (attacker->hpInitial * 4) < (attacker->unit.maxHP * 3))
         gDmg.correction += SKILL_EFF0(SID_Spurn);
 #endif
 
 #if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
-    if (BattleFastSkillTester(attacker, SID_DragonWarth) && act_flags->round_cnt_hit == 1)
+    if (BattleSkillTester(attacker, SID_DragonWarth) && act_flags->round_cnt_hit == 1)
         gDmg.correction += gDmg.attack * SKILL_EFF0(SID_DragonWarth) / 100;
 #endif
 
@@ -342,7 +342,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
-        if (BattleFastSkillTester(defender, SID_TowerShieldPlus))
+        if (BattleSkillTester(defender, SID_TowerShieldPlus))
         {
             if (gBattleStats.range > 1)
             {
@@ -353,7 +353,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Dazzling) && (COMMON_SKILL_VALID(SID_Dazzling)))
-        if (BattleFastSkillTester(defender, SID_Dazzling))
+        if (BattleSkillTester(defender, SID_Dazzling))
         {
             if (gBattleStats.range >= 3)
             {
@@ -416,13 +416,13 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_SolarPower) && (COMMON_SKILL_VALID(SID_SolarPower))
-    if (BattleFastSkillTester(attacker, SID_SolarPower))
+    if (BattleSkillTester(attacker, SID_SolarPower))
         if (gPlaySt.chapterWeatherId == WEATHER_FLAMES && IsMagicAttack(attacker))
             gDmg.increase += SKILL_EFF0(SID_SolarPower);
 #endif
 
 #if (defined(SID_Fluffy) && (COMMON_SKILL_VALID(SID_Fluffy)))
-    if (BattleFastSkillTester(defender, SID_Fluffy))
+    if (BattleSkillTester(defender, SID_Fluffy))
     {
         if (gBattleStats.range != 1)
         {
@@ -444,17 +444,17 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         gDmg.crit_correction = 300;
 
 #if defined(SID_InfinityEdge) && (COMMON_SKILL_VALID(SID_InfinityEdge))
-        if (BattleFastSkillTester(attacker, SID_InfinityEdge))
+        if (BattleSkillTester(attacker, SID_InfinityEdge))
             gDmg.crit_correction += SKILL_EFF0(SID_InfinityEdge);
 #endif
 
 #if (defined(SID_Gambit) && (COMMON_SKILL_VALID(SID_Gambit)))
-        if (BattleFastSkillTester(defender, SID_Gambit) && gBattleStats.range == 1)
+        if (BattleSkillTester(defender, SID_Gambit) && gBattleStats.range == 1)
             gDmg.crit_correction -= SKILL_EFF0(SID_Gambit);
 #endif
 
 #if (defined(SID_MagicGambit) && (COMMON_SKILL_VALID(SID_MagicGambit)))
-        if (BattleFastSkillTester(defender, SID_MagicGambit) && gBattleStats.range > 1)
+        if (BattleSkillTester(defender, SID_MagicGambit) && gBattleStats.range > 1)
             gDmg.crit_correction -= SKILL_EFF0(SID_MagicGambit);
 #endif
     }
@@ -465,13 +465,13 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     gDmg.decrease = 0x100;
 
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
-    if (attacker == &gBattleActor && BattleFastSkillTester(attacker, SID_Astra) &&
+    if (attacker == &gBattleActor && BattleSkillTester(attacker, SID_Astra) &&
         gBattleActorGlobalFlag.skill_activated_astra)
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_Astra));
 #endif
 
 #if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
-    if (BattleFastSkillTester(defender, SID_DragonSkin))
+    if (BattleSkillTester(defender, SID_DragonSkin))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonSkin));
@@ -479,7 +479,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Multiscale) && (COMMON_SKILL_VALID(SID_Multiscale)))
-    if (BattleFastSkillTester(defender, SID_Multiscale))
+    if (BattleSkillTester(defender, SID_Multiscale))
     {
         if (defender->unit.curHP == defender->unit.maxHP)
         {
@@ -490,12 +490,12 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_Expertise) && (COMMON_SKILL_VALID(SID_Expertise))
-    if (BattleFastSkillTester(defender, SID_Expertise) && gDmg.crit_atk)
+    if (BattleSkillTester(defender, SID_Expertise) && gDmg.crit_atk)
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Expertise));
 #endif
 
 #if (defined(SID_KeenFighter) && (COMMON_SKILL_VALID(SID_KeenFighter)))
-    if (BattleFastSkillTester(defender, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
+    if (BattleSkillTester(defender, SID_KeenFighter) && CheckCanTwiceAttackOrder(attacker, defender))
     {
         RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_KeenFighter));
@@ -503,7 +503,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if defined(SID_GuardBearing) && (COMMON_SKILL_VALID(SID_GuardBearing))
-    if (BattleFastSkillTester(defender, SID_GuardBearing))
+    if (BattleSkillTester(defender, SID_GuardBearing))
     {
         if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) && act_flags->round_cnt_hit == 1 &&
             !CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
@@ -516,12 +516,12 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
-    if (BattleFastSkillTester(defender, SID_BeastAssault))
+    if (BattleSkillTester(defender, SID_BeastAssault))
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_BeastAssault));
 #endif
 
 #if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-    if (BattleFastSkillTester(defender, SID_Spurn))
+    if (BattleSkillTester(defender, SID_Spurn))
     {
         int _diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(_diff, 0, 10);
@@ -531,7 +531,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido)))
-    if (BattleFastSkillTester(defender, SID_Bushido))
+    if (BattleSkillTester(defender, SID_Bushido))
     {
         int _diff = defender->battleSpeed - attacker->battleSpeed;
         LIMIT_AREA(_diff, 0, 10);
@@ -541,7 +541,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_DragonWall) && (COMMON_SKILL_VALID(SID_DragonWall)))
-    if (BattleFastSkillTester(defender, SID_DragonWall))
+    if (BattleSkillTester(defender, SID_DragonWall))
     {
         int _diff = defender->unit.res - attacker->unit.res;
         LIMIT_AREA(_diff, 0, 10);
@@ -551,7 +551,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_BlueLionRule) && (COMMON_SKILL_VALID(SID_BlueLionRule)))
-    if (BattleFastSkillTester(defender, SID_BlueLionRule))
+    if (BattleSkillTester(defender, SID_BlueLionRule))
     {
         int _diff = defender->unit.def - attacker->unit.def;
         LIMIT_AREA(_diff, 0, 10);
@@ -561,7 +561,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_CounterRoar) && (COMMON_SKILL_VALID(SID_CounterRoar)))
-    if (BattleFastSkillTester(defender, SID_CounterRoar))
+    if (BattleSkillTester(defender, SID_CounterRoar))
     {
         if (act_flags->round_cnt_hit == 1)
             gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CounterRoar));
@@ -571,12 +571,12 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
-    if (BattleFastSkillTester(defender, SID_DragonWarth) && tar_flags->round_cnt_hit == 1)
+    if (BattleSkillTester(defender, SID_DragonWarth) && tar_flags->round_cnt_hit == 1)
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonWarth));
 #endif
 
 #if (defined(SID_CrusaderWard) && (COMMON_SKILL_VALID(SID_CrusaderWard)))
-    if (BattleFastSkillTester(defender, SID_CrusaderWard) && tar_flags->round_cnt_hit > 1 && gBattleStats.range > 1)
+    if (BattleSkillTester(defender, SID_CrusaderWard) && tar_flags->round_cnt_hit > 1 && gBattleStats.range > 1)
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CrusaderWard));
 #endif
 
@@ -586,7 +586,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
     barricadePlus_activated = false;
 
 #if (defined(SID_BarricadePlus) && (COMMON_SKILL_VALID(SID_BarricadePlus)))
-    if (BattleFastSkillTester(defender, SID_BarricadePlus))
+    if (BattleSkillTester(defender, SID_BarricadePlus))
     {
         if (act_flags->round_cnt_hit > 2)
         {
@@ -605,7 +605,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Barricade) && (COMMON_SKILL_VALID(SID_Barricade)))
-    if (BattleFastSkillTester(defender, SID_Barricade) && !barricadePlus_activated)
+    if (BattleSkillTester(defender, SID_Barricade) && !barricadePlus_activated)
     {
         if (defender->unit.curHP < defender->hpInitial)
             gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Barricade));
@@ -613,7 +613,7 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 #endif
 
 #if (defined(SID_Fluffy) && (COMMON_SKILL_VALID(SID_Fluffy)))
-    if (BattleFastSkillTester(defender, SID_Fluffy))
+    if (BattleSkillTester(defender, SID_Fluffy))
     {
         if (gBattleStats.range == 1)
         {

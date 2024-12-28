@@ -12,8 +12,8 @@
 STATIC_DECLAR void ExecNihilSkills(struct BattleUnit * actor, struct BattleUnit * target)
 {
 #if (defined(SID_Nihil) && COMMON_SKILL_VALID(SID_Nihil))
-    gBattleTemporaryFlag.nihil_on_actor  = BattleFastSkillTester(target, SID_Nihil);
-    gBattleTemporaryFlag.nihil_on_target = BattleFastSkillTester(actor, SID_Nihil);
+    gBattleTemporaryFlag.nihil_on_actor  = BattleSkillTester(target, SID_Nihil);
+    gBattleTemporaryFlag.nihil_on_target = BattleSkillTester(actor, SID_Nihil);
 
     if (gBattleTemporaryFlag.nihil_on_actor)
         DisableUnitSkilLList(&gBattleActor.unit);

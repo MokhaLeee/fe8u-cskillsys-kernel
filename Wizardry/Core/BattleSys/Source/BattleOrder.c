@@ -60,7 +60,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
 #if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
         if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) &&
-            BattleFastSkillTester(actor, SID_LastWord))
+            BattleSkillTester(actor, SID_LastWord))
         {
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_LastWord, BORDER_ACT_TWICE);
@@ -69,13 +69,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_WaryFighter) && (COMMON_SKILL_VALID(SID_WaryFighter))
-        if (basic_judgement == true && BattleFastSkillTester(target, SID_WaryFighter))
+        if (basic_judgement == true && BattleSkillTester(target, SID_WaryFighter))
             if ((target->hpInitial * 2) > target->unit.maxHP)
                 return false;
 #endif
 
 #if defined(SID_BoldFighter) && (COMMON_SKILL_VALID(SID_BoldFighter))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_BoldFighter) &&
+        if (basic_judgement == false && BattleSkillTester(actor, SID_BoldFighter) &&
             (actor->hpInitial * 2) >= actor->unit.maxHP)
         {
             gBattleTemporaryFlag.act_force_twice_order = true;
@@ -85,7 +85,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_QuickLearner) && (COMMON_SKILL_VALID(SID_QuickLearner))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_QuickLearner))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_QuickLearner))
         {
             if (GetEffLvl(actor) < GetEffLvl(target))
             {
@@ -97,7 +97,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_SteadyBrawler) && (COMMON_SKILL_VALID(SID_SteadyBrawler))
-        if (BattleFastSkillTester(actor, SID_SteadyBrawler))
+        if (BattleSkillTester(actor, SID_SteadyBrawler))
         {
             int dmg = actor->battleAttack - target->battleDefense;
 
@@ -120,13 +120,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
         if (basic_judgement == false)
         {
-            if (BattleFastSkillTester(actor, SID_RecklessFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
+            if (BattleSkillTester(actor, SID_RecklessFighter) && (actor->hpInitial * 2) >= actor->unit.maxHP)
             {
                 RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_ACT_TWICE);
                 gBattleTemporaryFlag.act_force_twice_order = true;
                 return true;
             }
-            else if (BattleFastSkillTester(target, SID_RecklessFighter) && (target->hpInitial * 2) >= target->unit.maxHP)
+            else if (BattleSkillTester(target, SID_RecklessFighter) && (target->hpInitial * 2) >= target->unit.maxHP)
             {
                 gBattleTemporaryFlag.act_force_twice_order = true;
                 return true;
@@ -135,7 +135,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_BidingBlow) && (COMMON_SKILL_VALID(SID_BidingBlow))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_BidingBlow))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_BidingBlow))
         {
             if (target->canCounter == false)
             {
@@ -147,7 +147,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_AdvantageChaser) && (COMMON_SKILL_VALID(SID_AdvantageChaser))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_AdvantageChaser))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_AdvantageChaser))
         {
             if (actor->wTriangleDmgBonus > 0 || actor->wTriangleHitBonus > 0)
             {
@@ -159,12 +159,12 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_Moonlight) && (COMMON_SKILL_VALID(SID_Moonlight))
-        if (basic_judgement == true && BattleFastSkillTester(actor, SID_Moonlight))
+        if (basic_judgement == true && BattleSkillTester(actor, SID_Moonlight))
             return false;
 #endif
 
 #if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
-        if (BattleFastSkillTester(actor, SID_PridefulWarrior))
+        if (BattleSkillTester(actor, SID_PridefulWarrior))
         {
             gBattleTemporaryFlag.act_force_twice_order = true;
             RegisterBattleOrderSkill(SID_PridefulWarrior, BORDER_ACT_TWICE);
@@ -173,7 +173,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_PassionsFlow))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_PassionsFlow))
         {
             struct SupportBonuses bonuses;
             if (GetUnitSupportBonuses(GetUnit(actor->unit.index), &bonuses) != 0)
@@ -191,7 +191,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
 #if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
         if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) &&
-            BattleFastSkillTester(actor, SID_LastWord))
+            BattleSkillTester(actor, SID_LastWord))
         {
             gBattleTemporaryFlag.tar_force_twice_order = true;
             RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
@@ -200,7 +200,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_VengefulFighter) &&
+        if (basic_judgement == false && BattleSkillTester(actor, SID_VengefulFighter) &&
             (actor->hpInitial * 2) >= actor->unit.maxHP)
         {
             gBattleTemporaryFlag.tar_force_twice_order = true;
@@ -212,13 +212,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #if defined(SID_RecklessFighter) && (COMMON_SKILL_VALID(SID_RecklessFighter))
         if (basic_judgement == false)
         {
-            if (BattleFastSkillTester(actor, SID_RecklessFighter))
+            if (BattleSkillTester(actor, SID_RecklessFighter))
             {
                 RegisterBattleOrderSkill(SID_RecklessFighter, BORDER_TAR_TWICE);
                 gBattleTemporaryFlag.tar_force_twice_order = true;
                 return true;
             }
-            else if (BattleFastSkillTester(target, SID_RecklessFighter))
+            else if (BattleSkillTester(target, SID_RecklessFighter))
             {
                 gBattleTemporaryFlag.tar_force_twice_order = true;
                 return true;
@@ -227,7 +227,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_QuickRiposte) && (COMMON_SKILL_VALID(SID_QuickRiposte))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_QuickRiposte))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_QuickRiposte))
         {
             if ((actor->hpInitial * 2) > actor->unit.maxHP)
             {
@@ -239,7 +239,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_AdvantageChaser) && (COMMON_SKILL_VALID(SID_AdvantageChaser))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_AdvantageChaser))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_AdvantageChaser))
         {
             if (actor->wTriangleDmgBonus > 0 || actor->wTriangleHitBonus > 0)
             {
@@ -251,7 +251,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 #endif
 
 #if defined(SID_PassionsFlow) && (COMMON_SKILL_VALID(SID_PassionsFlow))
-        if (basic_judgement == false && BattleFastSkillTester(actor, SID_PassionsFlow))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_PassionsFlow))
         {
             struct SupportBonuses bonuses;
             if (GetUnitSupportBonuses(GetUnit(actor->unit.index), &bonuses) != 0)
@@ -272,7 +272,7 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
     gBattleTemporaryFlag.desperation_order = false;
 
 #if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
-    if (BattleFastSkillTester(&gBattleActor, SID_Desperation))
+    if (BattleSkillTester(&gBattleActor, SID_Desperation))
     {
         if ((gBattleActor.hpInitial * 2) < gBattleActor.unit.maxHP)
         {
@@ -284,7 +284,7 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 #endif
 
 #if defined(SID_CloseCombat) && (COMMON_SKILL_VALID(SID_CloseCombat))
-    if (BattleFastSkillTester(&gBattleActor, SID_CloseCombat) && gBattleStats.range == 1)
+    if (BattleSkillTester(&gBattleActor, SID_CloseCombat) && gBattleStats.range == 1)
     {
         gBattleTemporaryFlag.desperation_order = true;
         RegisterBattleOrderSkill(SID_CloseCombat, BORDER_DESPERATION);
@@ -293,7 +293,7 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 #endif
 
 #if defined(SID_Pursuer) && (COMMON_SKILL_VALID(SID_Pursuer))
-    if (BattleFastSkillTester(&gBattleActor, SID_Pursuer))
+    if (BattleSkillTester(&gBattleActor, SID_Pursuer))
     {
         gBattleTemporaryFlag.desperation_order = true;
         RegisterBattleOrderSkill(SID_Pursuer, BORDER_DESPERATION);
@@ -312,7 +312,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
         return false;
 
 #if defined(SID_Vantage) && (COMMON_SKILL_VALID(SID_Vantage))
-    if (BattleFastSkillTester(&gBattleTarget, SID_Vantage))
+    if (BattleSkillTester(&gBattleTarget, SID_Vantage))
     {
         if ((gBattleTarget.hpInitial * 2) < gBattleTarget.unit.maxHP)
         {
@@ -324,7 +324,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
 #endif
 
 #if defined(SID_GaleWings) && (COMMON_SKILL_VALID(SID_GaleWings))
-    if (BattleFastSkillTester(&gBattleTarget, SID_GaleWings))
+    if (BattleSkillTester(&gBattleTarget, SID_GaleWings))
     {
         if (gBattleTarget.hpInitial == gBattleTarget.unit.maxHP)
         {
@@ -336,7 +336,7 @@ STATIC_DECLAR bool CheckVantageOrder(void)
 #endif
 
 #if defined(SID_PridefulWarrior) && (COMMON_SKILL_VALID(SID_PridefulWarrior))
-    if (BattleFastSkillTester(&gBattleActor, SID_PridefulWarrior))
+    if (BattleSkillTester(&gBattleActor, SID_PridefulWarrior))
     {
         /* actor can enable the foe to attack first */
         gBattleTemporaryFlag.vantage_order = true;
@@ -352,10 +352,10 @@ STATIC_DECLAR bool ContinueIfAccost(struct BattleUnit * attacker, struct BattleU
 {
     FORCE_DECLARE int activationChance = 0;
 
-    if (attacker->unit.curHP >= 25 && BattleFastSkillTester(attacker, SID_Accost))
+    if (attacker->unit.curHP >= 25 && BattleSkillTester(attacker, SID_Accost))
         activationChance = (attacker->battleSpeed + attacker->unit.curHP / 2) - defender->battleSpeed;
 
-    else if (defender->unit.curHP >= 25 && BattleFastSkillTester(defender, SID_Accost))
+    else if (defender->unit.curHP >= 25 && BattleSkillTester(defender, SID_Accost))
         activationChance = (defender->battleSpeed + defender->unit.curHP / 2) - attacker->battleSpeed;
 
     if (activationChance < 0)
@@ -409,7 +409,7 @@ void BattleUnwind(void)
     config = BattleUnwindConfig[round_mask];
 
 #if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
-    if (BattleFastSkillTester(&gBattleActor, SID_Accost) || BattleFastSkillTester(&gBattleTarget, SID_Accost))
+    if (BattleSkillTester(&gBattleActor, SID_Accost) || BattleSkillTester(&gBattleTarget, SID_Accost))
         accost_active = true;
     else
         accost_active = false;
@@ -595,7 +595,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
         result = result + 1;
 
 #if defined(SID_RuinedBladePlus) && (COMMON_SKILL_VALID(SID_RuinedBladePlus))
-    if (BattleFastSkillTester(actor, SID_RuinedBladePlus))
+    if (BattleSkillTester(actor, SID_RuinedBladePlus))
     {
         EnqueueRoundEfxSkill(SID_RuinedBladePlus);
         result = result + SKILL_EFF2(SID_RuinedBladePlus);
@@ -612,7 +612,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_Adept) && (COMMON_SKILL_VALID(SID_Adept))
-    if (BattleFastSkillTester(actor, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
+    if (BattleSkillTester(actor, SID_Adept) && actor->hpInitial == actor->unit.maxHP)
     {
         EnqueueRoundEfxSkill(SID_Adept);
         result = result + 1;
@@ -620,7 +620,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_ChargePlus) && (COMMON_SKILL_VALID(SID_ChargePlus))
-    if (BattleFastSkillTester(actor, SID_ChargePlus))
+    if (BattleSkillTester(actor, SID_ChargePlus))
     {
         if (MovGetter(gActiveUnit) == gActionData.moveCount)
             result = result + 1;
@@ -628,7 +628,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_DoubleLion) && (COMMON_SKILL_VALID(SID_DoubleLion))
-    if (actor == &gBattleActor && BattleFastSkillTester(actor, SID_DoubleLion) && actor->hpInitial == actor->unit.maxHP)
+    if (actor == &gBattleActor && BattleSkillTester(actor, SID_DoubleLion) && actor->hpInitial == actor->unit.maxHP)
     {
         gBattleActorGlobalFlag.skill_activated_double_lion = true;
         EnqueueRoundEfxSkill(SID_DoubleLion);

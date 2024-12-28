@@ -29,23 +29,23 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
     sil = 0;
 
 #if (defined(SID_Nonconforming) && (COMMON_SKILL_VALID(SID_Nonconforming)))
-    if (BattleFastSkillTester(attacker, SID_Nonconforming))
+    if (BattleSkillTester(attacker, SID_Nonconforming))
         invert = !invert;
-    if (BattleFastSkillTester(defender, SID_Nonconforming))
+    if (BattleSkillTester(defender, SID_Nonconforming))
         invert = !invert;
 #endif
 
 #if (defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise)))
-    if (BattleFastSkillTester(attacker, SID_Poise))
+    if (BattleSkillTester(attacker, SID_Poise))
         poise_self = true;
-    if (BattleFastSkillTester(defender, SID_Poise))
+    if (BattleSkillTester(defender, SID_Poise))
         poise_foo = true;
 #endif
 
     item_it = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
 
 #if (defined(SID_Onimaru) && (COMMON_SKILL_VALID(SID_Onimaru)))
-    if (BattleFastSkillTester(attacker, SID_Onimaru))
+    if (BattleSkillTester(attacker, SID_Onimaru))
     {
         ui += 2;
         attacker->battleAttack += 1;
@@ -94,7 +94,7 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
         {
             if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType)
             {
-                if (BattleFastSkillTester(attacker, it->sid))
+                if (BattleSkillTester(attacker, it->sid))
                 {
                     if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self))
                     {
@@ -115,13 +115,13 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 
     if (
 #if (defined(SID_TriangleAdept) && (COMMON_SKILL_VALID(SID_TriangleAdept)))
-        BattleFastSkillTester(attacker, SID_TriangleAdept)
+        BattleSkillTester(attacker, SID_TriangleAdept)
 #else
         0
 #endif
         ||
 #if (defined(SID_TriangleAdeptPlus) && (COMMON_SKILL_VALID(SID_TriangleAdeptPlus)))
-        BattleFastSkillTester(attacker, SID_TriangleAdeptPlus) || BattleFastSkillTester(defender, SID_TriangleAdeptPlus)
+        BattleSkillTester(attacker, SID_TriangleAdeptPlus) || BattleSkillTester(defender, SID_TriangleAdeptPlus)
 #else
         0
 #endif
