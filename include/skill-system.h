@@ -94,7 +94,7 @@ extern bool (*_BattleFastSkillTester)(struct BattleUnit *bu, const u16 sid);
 // see: ../docs/SkillSys.md
 #define SkillTester _SkillTester
 #define SkillListTester(unit, sid) _SkillListTester(unit, sid)
-#define BattleFastSkillTester(bu, sid) _BattleFastSkillTester(bu, sid)
+#define BattleFastSkillTester _BattleFastSkillTester
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);

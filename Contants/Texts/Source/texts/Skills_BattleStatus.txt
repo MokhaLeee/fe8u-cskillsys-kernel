@@ -1141,3 +1141,8 @@ CR.AVO +7/10/13/16/20[X]
 Seer:[NL]
 All unit attacks hit,[NL]
 all enemy attacks miss.[X]
+
+## MSG_SKILL_Toxic
+Toxic:[N]
+Infict (10% * elapsed turns) of[N]
+remaining HP as damage each turn.[X]

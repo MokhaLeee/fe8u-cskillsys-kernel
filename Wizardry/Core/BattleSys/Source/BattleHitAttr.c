@@ -274,6 +274,18 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
         if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
             defender->unit.state = defender->unit.state & ~US_UNSELECTABLE;
     }
+#if (defined(SID_Toxic) && (COMMON_SKILL_VALID(SID_Toxic)))
+    else if (BattleFastSkillTester(attacker, SID_Toxic))
+    {
+        if (GetUnit(defender->unit.index)->statusIndex == UNIT_STATUS_NONE)
+        {
+            NoCashGBAPrint("Toxic status set");
+            SetUnitStatusIndex(GetUnit(defender->unit.index), NEW_UNIT_STATUS_TOXIC_POISON);
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
+        }
+    }
+#endif
+
 #if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
     else if (BattleFastSkillTester(attacker, SID_PoisonPoint))
     {

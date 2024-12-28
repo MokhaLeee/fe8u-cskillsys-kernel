@@ -2597,3 +2597,24 @@ void UnitRescue(struct Unit* actor, struct Unit* target) {
     target->xPos = actor->xPos;
     target->yPos = actor->yPos;
 }
+
+LYN_REPLACE_CHECK(ApplyHazardHealing);
+void ApplyHazardHealing(ProcPtr proc, struct Unit* unit, int hp, int status) {
+
+    if (status >= 0) {
+        SetUnitStatus(unit, status);
+    }
+
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_TOXIC_POISON)
+        AddUnitHp(unit, -((unit->curHP / 10) * (gDebuffInfos[NEW_UNIT_STATUS_TOXIC_POISON].duration - GetUnitStatusDuration(unit))));
+    else
+        AddUnitHp(unit, hp);
+
+    if (GetUnitCurrentHp(unit) <= 0) {
+        UnitKill(unit);
+    }
+
+    DropRescueOnDeath(proc, unit);
+
+    return;
+}
