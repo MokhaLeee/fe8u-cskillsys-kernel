@@ -1,5 +1,4 @@
 ////////MENU SKILLS
-SID_DangerRanger
 SID_Dismount
 SID_ReciprocalAid
 SID_Sacrifice
@@ -641,6 +640,7 @@ SID_Resurrection
 SID_CapacityHalf
 SID_CapacityOne
 SID_DangerRanger
+SID_Savior
 
 ///////COMBAT ARTS
 SID_COMBAT_Grounder

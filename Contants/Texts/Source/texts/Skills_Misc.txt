@@ -234,3 +234,8 @@ to 1.[X]
 Danger Ranger:[NL]
 Can rescue and drop units[NL]
 in the same turn.[X]
+
+## MSG_SKILL_Savior
+Savior:[N]
+This unit doesn't suffer[N]
+rescue penalties.[X]

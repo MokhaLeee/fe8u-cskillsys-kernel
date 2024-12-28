@@ -8,13 +8,22 @@ int _GetUnitSkill(struct Unit * unit)
     const StatusGetterFunc_t * it;
     int status = unit->skl;
 
-    if (unit->state & US_RESCUING)
-#if (defined(SID_PairUp) && (COMMON_SKILL_VALID(SID_PairUp)))
-        if (!SkillTester(unit, SID_PairUp))
-            status = unit->skl / 2;
-#else 
-    status = unit->skl / 2;
+    if (unit->state & US_RESCUING) {
+        bool hasPairUp = false;
+        bool hasSavior = false;
+
+#if defined(SID_PairUp) && COMMON_SKILL_VALID(SID_PairUp)
+        hasPairUp = SkillTester(unit, SID_PairUp);
 #endif
+
+#if defined(SID_Savior) && COMMON_SKILL_VALID(SID_Savior)
+        hasSavior = SkillTester(unit, SID_Savior);
+#endif
+
+        if (!hasPairUp && !hasSavior) {
+            status = unit->skl / 2;
+        }
+    }
 
 #if defined(SID_Unaware) && (COMMON_SKILL_VALID(SID_Unaware))
     if (unit == GetUnit(gBattleActor.unit.index) && GetUnit(gBattleTarget.unit.index) && SkillTester(GetUnit(gBattleTarget.unit.index), SID_Unaware))
