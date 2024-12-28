@@ -360,8 +360,8 @@
 /**
  * Page4 styles
  */
-#define CONFIG_PAGE4_MOKHA_PLAN_A 1
-#define CONFIG_PAGE4_MOKHA_PLAN_B 0
+#define CONFIG_PAGE4_MOKHA_PLAN_A 0
+#define CONFIG_PAGE4_MOKHA_PLAN_B 1
 
 /**
  * Install some performance hooks
@@ -427,6 +427,11 @@
 #define CONFIG_UNIT_AMT_ALLY  51
 #define CONFIG_UNIT_AMT_ENEMY 50
 #define CONFIG_UNIT_AMT_NPC   8
+
+/**
+ * Make skill names narrow by default
+ */
+#define CONFIG_AUTO_NARROW_FONT
 
 /**
  * FE8 Rewritten exclusive configs

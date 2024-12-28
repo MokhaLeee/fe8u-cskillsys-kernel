@@ -19,6 +19,7 @@
 #include "debuff.h"
 #include "jester_headers/custom-structs.h"
 #include "jester_headers/custom-functions.h"
+#include "action-expa.h"
 
 #ifdef CONFIG_BEXP
     extern u16 sBEXP[CONFIG_BEXP];
@@ -2578,3 +2579,21 @@ void sub_8099654(struct PrepItemScreenProc* proc) {
 
 //     return;
 // }
+
+LYN_REPLACE_CHECK(UnitRescue);
+void UnitRescue(struct Unit* actor, struct Unit* target) {
+
+#if defined(SID_DangerRanger) && (COMMON_SKILL_VALID(SID_DangerRanger))
+        if (SkillTester(actor, SID_DangerRanger))
+            gActionDataExpa.refrain_action = true;
+#endif
+
+    actor->state  |= US_RESCUING;
+    target->state |= US_RESCUED | US_HIDDEN;
+
+    actor->rescue = target->index;
+    target->rescue = actor->index;
+
+    target->xPos = actor->xPos;
+    target->yPos = actor->yPos;
+}

@@ -639,6 +639,7 @@
 // SID_Resurrection
 // SID_CapacityHalf
 // SID_CapacityOne
+// SID_DangerRanger
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

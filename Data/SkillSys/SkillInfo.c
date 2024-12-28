@@ -4609,4 +4609,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_DangerRanger) && COMMON_SKILL_VALID(SID_DangerRanger))
+    [SID_DangerRanger] = {
+        .desc = MSG_SKILL_DangerRanger,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };

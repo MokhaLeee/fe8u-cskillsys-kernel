@@ -1,5 +1,5 @@
 ////////MENU SKILLS
-SID_Paragon
+SID_DangerRanger
 SID_Dismount
 SID_ReciprocalAid
 SID_Sacrifice
@@ -552,7 +552,7 @@ SID_Rampage
 
 ////////LEVEL UP SKILLS
 SID_Blossom
-// SID_Paragon
+SID_Paragon
 SID_VoidCurse
 SID_Aptitude
 SID_DoubleUp
@@ -640,6 +640,7 @@ SID_Domain
 SID_Resurrection
 SID_CapacityHalf
 SID_CapacityOne
+SID_DangerRanger
 
 ///////COMBAT ARTS
 SID_COMBAT_Grounder

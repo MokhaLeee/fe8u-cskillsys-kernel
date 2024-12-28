@@ -8,6 +8,7 @@
 #include "Source/hook-proc.lyn.event"
 #include "Source/mapanim.lyn.event"
 #include "Source/pad.lyn.event"
+#include "Source/utf8.lyn.event"
 //#include "Source/UnitList.lyn.event"
 // #include "data.event"
 

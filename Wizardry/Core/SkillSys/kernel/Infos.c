@@ -29,11 +29,16 @@ u16 GetSkillNameMsg(const u16 sid)
 
 char * GetSkillDescStr(const u16 sid)
 {
-    u16 msg = GetSkillDescMsg(sid);
-    if (msg != 0)
-        return GetStringFromIndex(msg);
+	char *str = NULL;
+	u16 msg = GetSkillDescMsg(sid);
 
-    return NULL;
+	if (msg != 0)
+		str = GetStringFromIndex(msg);
+
+	if (gpKernelDesigerConfig->auto_narrow_font)
+		return Utf8ToNarrowFonts(str);
+	else
+		return str;
 }
 
 char * SkillDescToName(char * str)
@@ -63,9 +68,18 @@ char * GetSkillNameStrFormDesc(const u16 sid)
 
 char * GetSkillNameStr(const u16 sid)
 {
-    u16 msg = GetSkillNameMsg(sid);
-    if (msg == 0)
-        return GetSkillNameStrFormDesc(sid);
+    char *str;
+	u16 msg = GetSkillNameMsg(sid);
+
+	if (msg == 0)
+		str = GetSkillNameStrFormDesc(sid);
+	else
+		str = GetStringFromIndex(msg);
+
+	if (gpKernelDesigerConfig->auto_narrow_font)
+		return Utf8ToNarrowFonts(str);
+	else
+		return str;
 
     return GetStringFromIndex(msg);
 }
