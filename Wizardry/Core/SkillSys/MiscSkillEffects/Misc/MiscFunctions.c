@@ -1144,7 +1144,7 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
                 CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
                 break;
             case 1:
-                CallEvent((const u16 *)EventScrWM_Prologue_Beginning, 0);
+                CallEvent((const u16 *)EventScrWM_Prologue_SET_NODE, 0);
                 break;
             case 2:
                 // CallEvent((const u16 *)EventScrWM_Ch2_SET_NODE, 0);
@@ -1203,6 +1203,9 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         switch (eventID) {
         case 55:
             // CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
+            break;
+        case 1:
+            CallEvent((const u16 *)EventScrWM_Prologue_TRAVEL_TO_NODE, 0);
             break;
         case 2:
             // CallEvent((const u16 *)EventScrWM_Ch2_TRAVEL_TO_NODE, 0);

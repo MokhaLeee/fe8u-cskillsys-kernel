@@ -338,6 +338,11 @@
 */
 // #define CONFIG_BEXP 1
 
+/*
+** By Circleseverywhere
+*/
+#define CONFIG_CHAPTER_NAMES_AS_TEXT
+
 
 /**
  * Levelup mode

@@ -19,7 +19,7 @@ const EventScr EventScrWM_Tutorial_SKILL_SCROLL[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Prologue_Beginning[] = {
+const EventScr EventScrWM_Prologue_SET_NODE[] = {
     EVBIT_MODIFY(0x1)
     WmEvtNoFade // ENOSUPP in EAstdlib
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_BorderMulan)
@@ -36,7 +36,7 @@ CONST_DATA EventScr EventScrWM_Prologue_Beginning[] = {
     WM_SHOWTEXTWINDOW(40, 0x0001)
     WM_WAITFORTEXT
     WM_TEXTSTART
-    WM_TEXT(0x08DB, 0)
+    WM_TEXT(Chapter_00_WM, 0)
 
     // wait for talk locked
     TEXTEND
@@ -230,6 +230,12 @@ CONST_DATA EventScr EventScrWM_Prologue_Beginning[] = {
     WM_REMSPRITE(WM_MU_4)
     WM_REMSPRITE(WM_MU_5)
     WM_REMSPRITE(WM_MU_6)
+    ENDA
+};
+
+const EventScr EventScrWM_Prologue_TRAVEL_TO_NODE[] = {
+    EVBIT_MODIFY(0x1)
+    ENUT(137)
     ENDA
 };
 

@@ -10,6 +10,8 @@ extern u8 gUdefCnt;
 extern struct UnitDefinition gUdefs[];
 extern CONST_DATA u8 gAutoUdefJids[2][4];
 
+extern const EventScr EventScrWM_Prologue_SET_NODE[];
+extern const EventScr EventScrWM_Prologue_TRAVEL_TO_NODE[];
 extern const EventScr EventScrWM_Ch1_ENDING[];
 extern const EventScr EventScrWM_Ch2_SET_NODE[];
 extern const EventScr EventScrWM_Ch2_TRAVEL_TO_NODE[];
@@ -66,6 +68,10 @@ extern const EventScr EventScrWM_Ch27_SET_NODE[];
 extern const EventScr EventScrWM_Ch27_TRAVEL_TO_NODE[];
 extern const EventScr EventScrWM_Ch28_SET_NODE[];
 extern const EventScr EventScrWM_Ch28_TRAVEL_TO_NODE[];
+extern const EventScr EventScrWM_Ch29_SET_NODE[];
+extern const EventScr EventScrWM_Ch29_TRAVEL_TO_NODE[];
+extern const EventScr EventScrWM_Ch30_SET_NODE[];
+extern const EventScr EventScrWM_Ch30_TRAVEL_TO_NODE[];
 
 
 extern u8 Event19_Checks(struct EventEngineProc * proc);
