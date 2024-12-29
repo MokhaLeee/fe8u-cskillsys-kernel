@@ -461,6 +461,7 @@ SID_Adaptable
 SID_Debilitator
 SID_Sentinel
 SID_Chipper
+SID_Toxic
 
 ////////EFFECTIVENESS SKILLS
 SID_Resourceful

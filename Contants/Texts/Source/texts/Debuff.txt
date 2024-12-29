@@ -45,3 +45,11 @@ Break[X]
 
 ## MSG_DEBUFF_BREAK_DESC
 Break: Disarm enemy unit[X]
+
+## MSG_DEBUFF_TOXIC_NAME
+Toxic[X]
+
+## MSG_DEBUFF_TOXIC_DESC
+Toxic: Infict 10% (times[N]
+elapsed turns) of remaining[N]
+HP as damage each turn.[X]

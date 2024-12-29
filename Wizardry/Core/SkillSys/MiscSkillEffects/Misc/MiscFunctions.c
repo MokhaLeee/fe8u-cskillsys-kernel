@@ -20,6 +20,8 @@
 #include "jester_headers/custom-structs.h"
 #include "jester_headers/custom-functions.h"
 #include "action-expa.h"
+#include "bmusailment.h"
+#include "vanilla.h"
 
 #ifdef CONFIG_BEXP
     extern u16 sBEXP[CONFIG_BEXP];
@@ -32,6 +34,9 @@ extern void ForEachAdjacentUnit(int x, int y, void (*)(struct Unit *));
 extern void GenerateFireTileTrapTargets(int x, int y, int damage);
 extern void GenerateArrowTrapTargets(int x, int y, int damage);
 extern void GenerateGasTrapTargets(int x, int y, int damage, int facing);
+
+extern void PoisonDamageDisplay_Display(struct UnknownBMUSAilmentProc* proc);
+extern void PoisonDamageDisplay_Next(struct UnknownBMUSAilmentProc* proc);
 
 extern const u16 * Events_WM_Beginning[];
 extern const u16 * Events_WM_ChapterIntro[];
@@ -737,112 +742,112 @@ s8 HasBattleUnitGainedWeaponLevel(struct BattleUnit * bu)
 {
 
 #if (defined(SID_ShadowgiftPlus) && (COMMON_SKILL_VALID(SID_ShadowgiftPlus)))
-    if (BattleFastSkillTester(bu, SID_ShadowgiftPlus))
+    if (BattleSkillTester(bu, SID_ShadowgiftPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_DARK)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_DARK] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
-    if (BattleFastSkillTester(bu, SID_SHadowgift))
+    if (BattleSkillTester(bu, SID_SHadowgift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_DARK)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_DARK] == 0)
                 return false;
 #endif
 
 #if (defined(SID_LuminaPlus) && (COMMON_SKILL_VALID(SID_LuminaPlus)))
-    if (BattleFastSkillTester(bu, SID_LuminaPlus))
+    if (BattleSkillTester(bu, SID_LuminaPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_LIGHT)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_LIGHT] == 0)
                 return false;
 #endif
 
 #if (defined(SID_StormgiftPlus) && (COMMON_SKILL_VALID(SID_StormgiftPlus)))
-    if (BattleFastSkillTester(bu, SID_StormgiftPlus))
+    if (BattleSkillTester(bu, SID_StormgiftPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_ANIMA)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_ANIMA] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Stormgift) && (COMMON_SKILL_VALID(SID_Stormgift)))
-    if (BattleFastSkillTester(bu, SID_Stormgift))
+    if (BattleSkillTester(bu, SID_Stormgift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_ANIMA)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_ANIMA] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Gracegift) && (COMMON_SKILL_VALID(SID_Gracegift)))
-    if (BattleFastSkillTester(bu, SID_Gracegift))
+    if (BattleSkillTester(bu, SID_Gracegift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_STAFF)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_STAFF] == 0)
                 return false;
 #endif
 
 #if (defined(SID_GracegiftPlus) && (COMMON_SKILL_VALID(SID_GracegiftPlus)))
-    if (BattleFastSkillTester(bu, SID_GracegiftPlus))
+    if (BattleSkillTester(bu, SID_GracegiftPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_STAFF)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_STAFF] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Gracegift) && (COMMON_SKILL_VALID(SID_Gracegift)))
-    if (BattleFastSkillTester(bu, SID_Gracegift))
+    if (BattleSkillTester(bu, SID_Gracegift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_STAFF)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_STAFF] == 0)
                 return false;
 #endif
 
 #if (defined(SID_BladegiftPlus) && (COMMON_SKILL_VALID(SID_BladegiftPlus)))
-    if (BattleFastSkillTester(bu, SID_BladegiftPlus))
+    if (BattleSkillTester(bu, SID_BladegiftPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_SWORD)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_SWORD] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Bladegift) && (COMMON_SKILL_VALID(SID_Bladegift)))
-    if (BattleFastSkillTester(bu, SID_Bladegift))
+    if (BattleSkillTester(bu, SID_Bladegift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_SWORD)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_SWORD] == 0)
                 return false;
 #endif
 
 #if (defined(SID_PiercegiftPlus) && (COMMON_SKILL_VALID(SID_PiercegiftPlus)))
-    if (BattleFastSkillTester(bu, SID_PiercegiftPlus))
+    if (BattleSkillTester(bu, SID_PiercegiftPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_LANCE)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_LANCE] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Piercegift) && (COMMON_SKILL_VALID(SID_Piercegift)))
-    if (BattleFastSkillTester(bu, SID_Piercegift))
+    if (BattleSkillTester(bu, SID_Piercegift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_LANCE)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_LANCE] == 0)
                 return false;
 #endif
 
 #if (defined(SID_HackgiftPlus) && (COMMON_SKILL_VALID(SID_HackgiftPlus)))
-    if (BattleFastSkillTester(bu, SID_HackgiftPlus))
+    if (BattleSkillTester(bu, SID_HackgiftPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_AXE)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_AXE] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Hackgift) && (COMMON_SKILL_VALID(SID_Hackgift)))
-    if (BattleFastSkillTester(bu, SID_Hackgift))
+    if (BattleSkillTester(bu, SID_Hackgift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_AXE)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_AXE] == 0)
                 return false;
 #endif
 
 #if (defined(SID_ArcgiftPlus) && (COMMON_SKILL_VALID(SID_ArcgiftPlus)))
-    if (BattleFastSkillTester(bu, SID_ArcgiftPlus))
+    if (BattleSkillTester(bu, SID_ArcgiftPlus))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_BOW)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_BOW] == 0)
                 return false;
 #endif
 
 #if (defined(SID_Arcgift) && (COMMON_SKILL_VALID(SID_Arcgift)))
-    if (BattleFastSkillTester(bu, SID_Arcgift))
+    if (BattleSkillTester(bu, SID_Arcgift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_BOW)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_BOW] == 0)
                 return false;
@@ -2596,4 +2601,113 @@ void UnitRescue(struct Unit* actor, struct Unit* target) {
 
     target->xPos = actor->xPos;
     target->yPos = actor->yPos;
+}
+
+LYN_REPLACE_CHECK(ApplyHazardHealing);
+void ApplyHazardHealing(ProcPtr proc, struct Unit* unit, int hp, int status) {
+    AddUnitHp(unit, hp);
+
+    if (status >= 0) {
+        SetUnitStatus(unit, status);
+    }
+
+    if (GetUnitCurrentHp(unit) <= 0) {
+        UnitKill(unit);
+    }
+
+    DropRescueOnDeath(proc, unit);
+
+    return;
+}
+
+LYN_REPLACE_CHECK(StatusDecayDisplay_Display);
+void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc* proc) {
+    struct SelectTarget* target = GetTarget(proc->unk_4C);
+    int status = GetUnit(gActionData.subjectIndex)->statusIndex;
+
+    proc->unk_58 = status;
+
+    SetUnitStatus(GetUnit(gActionData.subjectIndex), UNIT_STATUS_NONE);
+
+    switch (status) {
+        case UNIT_STATUS_POISON:
+        case UNIT_STATUS_SLEEP:
+        case UNIT_STATUS_SILENCED:
+        case UNIT_STATUS_BERSERK:
+        case UNIT_STATUS_RECOVER:
+        case UNIT_STATUS_PETRIFY:
+        case UNIT_STATUS_13:
+            StartStatusHealEffect(GetUnit(target->uid), proc);
+            break;
+    }
+
+    return;
+}
+
+LYN_REPLACE_CHECK(MakePoisonDamageTargetList);
+void MakePoisonDamageTargetList(int faction) {
+
+    int i;
+
+    InitTargets(0, 0);
+
+    for (i = faction + 1; i < faction + 0x40; i++) {
+        struct Unit* unit = GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit)) {
+            continue;
+        }
+
+        if (unit->state & (US_DEAD | US_NOT_DEPLOYED | US_RESCUED | US_BIT16)) {
+            continue;
+        }
+
+        if (unit->statusIndex != UNIT_STATUS_POISON && GetUnitStatusIndex(unit) != NEW_UNIT_STATUS_TOXIC_POISON) {
+            continue;
+        }
+
+        AddTarget(unit->xPos, unit->yPos, unit->index, NextRN_N(3) + 1);
+    }
+
+    return;
+}
+
+LYN_REPLACE_CHECK(PoisonDamageDisplay_Display);
+void PoisonDamageDisplay_Display(struct UnknownBMUSAilmentProc* proc) {
+    struct SelectTarget* target = GetTarget(proc->unk_4C);
+    struct Unit* unit = GetUnit(target->uid);
+
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_TOXIC_POISON)
+       target->extra = ((unit->curHP / 10) * (gDebuffInfos[NEW_UNIT_STATUS_TOXIC_POISON].duration - (GetUnitStatusDuration(unit) - 1)));
+
+    HideUnitSprite(unit);
+
+    BeginUnitPoisonDamageAnim(unit, target->extra);
+
+    return;
+}
+
+LYN_REPLACE_CHECK(PoisonDamageDisplay_Next);
+void PoisonDamageDisplay_Next(struct UnknownBMUSAilmentProc* proc) {
+    struct SelectTarget* target = GetTarget(proc->unk_4C);
+    struct Unit* unit = GetUnit(target->uid);
+
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_TOXIC_POISON)
+       target->extra = ((unit->curHP / 10) * (gDebuffInfos[NEW_UNIT_STATUS_TOXIC_POISON].duration - (GetUnitStatusDuration(unit) - 1)));
+
+    ApplyHazardHealing(proc, unit, -(target->extra), -1);
+
+    proc->unk_4C++;
+
+    if (GetUnitCurrentHp(GetUnit(gActionData.subjectIndex)) == 0) {
+        if (CheckForWaitEvents() != 0) {
+            RunWaitEvents();
+        }
+    }
+
+    if (GetUnitCurrentHp(GetUnit(gActionData.subjectIndex)) < 1) {
+        RefreshUnitSprites();
+    }
+
+    return;
 }
