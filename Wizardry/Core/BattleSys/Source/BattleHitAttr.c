@@ -257,7 +257,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
     else if (BattleSkillTester(attacker, SID_Break))
     {
         if (GetUnit(defender->unit.index)->statusIndex == UNIT_STATUS_NONE)
-            SetUnitStatusIndex(GetUnit(defender->unit.index), NEW_UNIT_STATUS_BREAK);
+            SetUnitStatus(GetUnit(defender->unit.index), NEW_UNIT_STATUS_BREAK);
     }
 #endif
     else if (gBattleTemporaryFlag.skill_activated_dead_eye)
@@ -276,14 +276,8 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
     }
 #if (defined(SID_Toxic) && (COMMON_SKILL_VALID(SID_Toxic)))
     else if (BattleSkillTester(attacker, SID_Toxic))
-    {
         if (GetUnit(defender->unit.index)->statusIndex == UNIT_STATUS_NONE)
-        {
-            NoCashGBAPrint("Toxic status set");
-            SetUnitStatusIndex(GetUnit(defender->unit.index), NEW_UNIT_STATUS_TOXIC_POISON);
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
-        }
-    }
+            SetUnitStatus(GetUnit(defender->unit.index), NEW_UNIT_STATUS_TOXIC_POISON);
 #endif
 
 #if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))

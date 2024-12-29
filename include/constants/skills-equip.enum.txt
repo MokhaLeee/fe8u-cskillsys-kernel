@@ -1,6 +1,4 @@
 ////////MENU SKILLS
-SID_Break
-SID_Toxic
 SID_Dismount
 SID_ReciprocalAid
 SID_Sacrifice
@@ -393,7 +391,7 @@ SID_TriangleAdeptPlus
 SID_Onimaru
 SID_Nonconforming
 SID_Poise
-//SID_Break
+SID_Break
 
 ////////PROC/MID-BATTLE SKILLS
 SID_Astra
@@ -463,7 +461,7 @@ SID_Adaptable
 SID_Debilitator
 SID_Sentinel
 SID_Chipper
-// SID_Toxic
+SID_Toxic
 
 ////////EFFECTIVENESS SKILLS
 SID_Resourceful

@@ -20,6 +20,8 @@
 #include "jester_headers/custom-structs.h"
 #include "jester_headers/custom-functions.h"
 #include "action-expa.h"
+#include "bmusailment.h"
+#include "vanilla.h"
 
 #ifdef CONFIG_BEXP
     extern u16 sBEXP[CONFIG_BEXP];
@@ -32,6 +34,9 @@ extern void ForEachAdjacentUnit(int x, int y, void (*)(struct Unit *));
 extern void GenerateFireTileTrapTargets(int x, int y, int damage);
 extern void GenerateArrowTrapTargets(int x, int y, int damage);
 extern void GenerateGasTrapTargets(int x, int y, int damage, int facing);
+
+extern void PoisonDamageDisplay_Display(struct UnknownBMUSAilmentProc* proc);
+extern void PoisonDamageDisplay_Next(struct UnknownBMUSAilmentProc* proc);
 
 extern const u16 * Events_WM_Beginning[];
 extern const u16 * Events_WM_ChapterIntro[];
@@ -2600,21 +2605,109 @@ void UnitRescue(struct Unit* actor, struct Unit* target) {
 
 LYN_REPLACE_CHECK(ApplyHazardHealing);
 void ApplyHazardHealing(ProcPtr proc, struct Unit* unit, int hp, int status) {
+    AddUnitHp(unit, hp);
 
     if (status >= 0) {
         SetUnitStatus(unit, status);
     }
-
-    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_TOXIC_POISON)
-        AddUnitHp(unit, -((unit->curHP / 10) * (gDebuffInfos[NEW_UNIT_STATUS_TOXIC_POISON].duration - GetUnitStatusDuration(unit))));
-    else
-        AddUnitHp(unit, hp);
 
     if (GetUnitCurrentHp(unit) <= 0) {
         UnitKill(unit);
     }
 
     DropRescueOnDeath(proc, unit);
+
+    return;
+}
+
+LYN_REPLACE_CHECK(StatusDecayDisplay_Display);
+void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc* proc) {
+    struct SelectTarget* target = GetTarget(proc->unk_4C);
+    int status = GetUnit(gActionData.subjectIndex)->statusIndex;
+
+    proc->unk_58 = status;
+
+    SetUnitStatus(GetUnit(gActionData.subjectIndex), UNIT_STATUS_NONE);
+
+    switch (status) {
+        case UNIT_STATUS_POISON:
+        case UNIT_STATUS_SLEEP:
+        case UNIT_STATUS_SILENCED:
+        case UNIT_STATUS_BERSERK:
+        case UNIT_STATUS_RECOVER:
+        case UNIT_STATUS_PETRIFY:
+        case UNIT_STATUS_13:
+            StartStatusHealEffect(GetUnit(target->uid), proc);
+            break;
+    }
+
+    return;
+}
+
+LYN_REPLACE_CHECK(MakePoisonDamageTargetList);
+void MakePoisonDamageTargetList(int faction) {
+
+    int i;
+
+    InitTargets(0, 0);
+
+    for (i = faction + 1; i < faction + 0x40; i++) {
+        struct Unit* unit = GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit)) {
+            continue;
+        }
+
+        if (unit->state & (US_DEAD | US_NOT_DEPLOYED | US_RESCUED | US_BIT16)) {
+            continue;
+        }
+
+        if (unit->statusIndex != UNIT_STATUS_POISON && GetUnitStatusIndex(unit) != NEW_UNIT_STATUS_TOXIC_POISON) {
+            continue;
+        }
+
+        AddTarget(unit->xPos, unit->yPos, unit->index, NextRN_N(3) + 1);
+    }
+
+    return;
+}
+
+LYN_REPLACE_CHECK(PoisonDamageDisplay_Display);
+void PoisonDamageDisplay_Display(struct UnknownBMUSAilmentProc* proc) {
+    struct SelectTarget* target = GetTarget(proc->unk_4C);
+    struct Unit* unit = GetUnit(target->uid);
+
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_TOXIC_POISON)
+       target->extra = ((unit->curHP / 10) * (gDebuffInfos[NEW_UNIT_STATUS_TOXIC_POISON].duration - (GetUnitStatusDuration(unit) - 1)));
+
+    HideUnitSprite(unit);
+
+    BeginUnitPoisonDamageAnim(unit, target->extra);
+
+    return;
+}
+
+LYN_REPLACE_CHECK(PoisonDamageDisplay_Next);
+void PoisonDamageDisplay_Next(struct UnknownBMUSAilmentProc* proc) {
+    struct SelectTarget* target = GetTarget(proc->unk_4C);
+    struct Unit* unit = GetUnit(target->uid);
+
+    if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_TOXIC_POISON)
+       target->extra = ((unit->curHP / 10) * (gDebuffInfos[NEW_UNIT_STATUS_TOXIC_POISON].duration - (GetUnitStatusDuration(unit) - 1)));
+
+    ApplyHazardHealing(proc, unit, -(target->extra), -1);
+
+    proc->unk_4C++;
+
+    if (GetUnitCurrentHp(GetUnit(gActionData.subjectIndex)) == 0) {
+        if (CheckForWaitEvents() != 0) {
+            RunWaitEvents();
+        }
+    }
+
+    if (GetUnitCurrentHp(GetUnit(gActionData.subjectIndex)) < 1) {
+        RefreshUnitSprites();
+    }
 
     return;
 }
