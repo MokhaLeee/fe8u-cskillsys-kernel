@@ -93,7 +93,7 @@ def parse_string_shiftjis_core(data, cur_idx):
     elif u16_data == 28:
         output = "[SendToBack]"
     elif u16_data == 29:
-        output = "[FastPrint]" # fe8 only
+        output = "[FastPrint2]" # fe8 only
     elif u16_data == 31:
         output = "[.]"
     elif u16_data == 0x7F:
