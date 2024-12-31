@@ -367,6 +367,7 @@ enum: $(SKILLS_ENUM_HEADER)
 $(SKILLS_ENUM_HEADER): $(SKILLS_ENUM_SRC)
 	@echo "[GEN]	$(SKILLS_ENUM_HEADER)"
 	@echo "#pragma once" > $(SKILLS_ENUM_HEADER)
+	@echo -n "\n// Auto generated, do NOT change this file!\n// see: https://github.com/FireEmblemUniverse/fe8u-cskillsys/blob/main/docs/SkillSys.md\n\n" >> $(SKILLS_ENUM_HEADER)
 ifeq ($(CONFIG_CI_NO_SKILL_TEST), 0)
 	@python3 $(ENUM2H) 0x000 $(SKILLS_ENUM_DIR)/skills-equip.enum.txt 	>> $(SKILLS_ENUM_HEADER)
 	@python3 $(ENUM2H) 0x100 $(SKILLS_ENUM_DIR)/skills-others.enum.txt  >> $(SKILLS_ENUM_HEADER)
