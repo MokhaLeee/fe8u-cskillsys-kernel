@@ -26,6 +26,10 @@
 #include "Chapter_05x_Unbroken_Heart/In_Chapter.txt"
 #include "Chapter_05x_Unbroken_Heart/Post_Chapter.txt"
 
+#include "Chapter_06_Victims_Of_War/Pre_Chapter.txt"
+#include "Chapter_06_Victims_Of_War/In_Chapter.txt"
+#include "Chapter_06_Victims_Of_War/Post_Chapter.txt"
+
 #include "Supports/Joshua_Rennac.txt"
 #include "Supports/Ewan_Myrrh.txt"
 #include "Supports/Seth_Duessel.txt"
