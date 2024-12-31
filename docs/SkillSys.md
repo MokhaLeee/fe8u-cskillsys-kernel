@@ -1,4 +1,4 @@
-Currently, C-Skillsys theoretically allows up to **1021** skills (0x01~0xFE, 0x100~0x3FF) to take effect at the same time. Each unit can carry up to **21** skills at the same time, which are distributed as follows:
+Currently, C-Skillsys theoretically allows up to **1021** skills (`0x01~0xFE, 0x100~0x3FF`) to take effect at the same time. Each unit can carry up to **21** skills at the same time, which are distributed as follows:
 
 - **7 equipable skills**, which allows player to freely select in prepscreen, also allows the game-play designer dynamically assign skills to enemies through events.
 - **2 person skills**, fixed on ROM table and searched by unit character index.
