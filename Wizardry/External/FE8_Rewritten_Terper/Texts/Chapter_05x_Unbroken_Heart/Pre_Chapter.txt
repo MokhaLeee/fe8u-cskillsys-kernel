@@ -1,4 +1,4 @@
-## Chapter_05x_Scene_01_Convo_01
+## Chapter_05x_Pre_Scene_01_Convo_01
 [OpenMidLeft][LoadFace_Tirado]
 [OpenMidRight][LoadFace_Valter]
 Ah! What a pleasant surprise.[N]
@@ -26,7 +26,7 @@ Hahahaha... how interesting.[A][N]
 The lad's beginning to whet my appetite.[A][N]
 Ah, I've just had quite the idea...[A][X]
 
-## Chapter_05x_Scene_02_Convo_01
+## Chapter_05x_Pre_Scene_02_Convo_01
 [OpenMidLeft][LoadFace_Ephraim]
 [OpenRight][LoadFace_Forde]
 [OpenFarRight][LoadFace_Kyle]
@@ -113,7 +113,7 @@ Sir? Guys? Where are you going?[A][N]
 H-hold up, wait for me![N]
 Did I miss something?![A][X]
 
-## Chapter_05x_Scene_03_Convo_01
+## Chapter_05x_Pre_Scene_03_Convo_01
 [OpenMidLeft][LoadFace_Ephraim]
 [OpenRight][LoadFace_Forde]
 [OpenFarRight][LoadFace_Kyle]
@@ -168,7 +168,7 @@ then be off.[A][N]
 [OpenFarRight]
 Yes, sir![A][X]
 
-## Chapter_05x_Scene_04_Convo_01
+## Chapter_05x_Pre_Scene_04_Convo_01
 [OpenMidLeft][LoadFace_Zonta]
 A-an attack? By Ephraim's troops?![.][A][N]
 T-to arms! Prince Ephraim's circled around[N]
@@ -179,7 +179,7 @@ But[ToggleMouthMove]...[ToggleMouthMove]if I capture the prince here[ToggleMouth
 Then I'll be known as the Hero of Grado![A][N]
 Get to it, men![.] Get me a promotion![A][X]
 
-## Chapter_05x_Scene_05_Convo_01
+## Chapter_05x_Pre_Scene_05_Convo_01
 [OpenMidLeft][LoadFace_Ephraim]
 Orson.[A][N]
 [OpenMidRight][LoadFace_OrsonHealthy]
