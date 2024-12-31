@@ -244,6 +244,7 @@
 // SID_FortifyingStaff
 // SID_MakeAKilling
 // SID_NecroCopy
+// SID_MendArms
 
 ////////// AURA SKILLS
 // SID_Anathema

@@ -18,5 +18,6 @@ gPostActionFuncs:
     POIN PostActionDebilitator
     POIN PostActionAngerPoint
     POIN PostActionResurrection
+    POIN PostActionMendArms
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0

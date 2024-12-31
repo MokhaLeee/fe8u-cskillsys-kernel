@@ -225,9 +225,6 @@ Eirika has only one choice.[A][N]
 Eirika decides to confront Grado's soldiers[N]
 head on...[A][X]
 
-## Chapter_08_WM
-// Fuck all here, the crew just straight into Renvall's Castle
-
 ## Chapter_09_WM
 Eirika chooses to travel by sea to the[N]
 theocracy of Rausten.[A][N]
