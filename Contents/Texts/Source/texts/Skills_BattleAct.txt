@@ -21,7 +21,7 @@ Leave the opponent at 1 HP[NL]
 ## MSG_SKILL_Aether
 Aether: Negate 80% of enemy[NL]
 defenses and absorb HP.[NL]
-(Skill/2 % activation).[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_Corona
 Corona:[NL]

@@ -125,9 +125,9 @@ def parse_string_shiftjis_core(data, cur_idx):
 	elif u16_data == 31:
 		output = ""
 	else:
-		# output = f"[0x{u16_data:04X}]"
-		print("not supported: " + f"{hex(u16_data)}")
-		sys.exit(1)
+		output = f"[0x{u16_data:04X}]"
+		# print("not supported: " + f"{hex(u16_data)}")
+		# sys.exit(1)
 
 	return appr_len, output
 
