@@ -230,6 +230,8 @@ ORG $1ACBC + 0x10
         jumpToHack(GetItemMaxRangeRework)
 
 /* Overflow detection */
+// MESSAGE CURRENTOFFSET
+PROTECT $1ACCC CURRENTOFFSET
 ASSERT $1b460 - CURRENTOFFSET
 
 POP
