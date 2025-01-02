@@ -7,16 +7,10 @@
 bool PrePhaseFunc_AversaNight(ProcPtr proc)
 {
 #if defined(SID_AversaNight) && (COMMON_SKILL_VALID(SID_AversaNight))
-	int uid;
 	int max_hp = 0;
 	bool AversaNight_eff = false;
 
-	for (uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++) {
-		struct Unit *unit = GetUnit(uid);
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
 
@@ -26,7 +20,7 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
 			if (max_hp > GetUnitMaxHp(unit))
 				max_hp = GetUnitMaxHp(unit);
 		}
-	}
+	})
 
 	if (AversaNight_eff == true) {
 		u32 i, tuid;

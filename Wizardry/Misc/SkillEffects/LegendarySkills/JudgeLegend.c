@@ -49,16 +49,12 @@ bool SkillTesterLegendActivated(struct Unit *unit, const u16 sid)
 
 bool PrePhase_UpdateLengendSkillStatus(ProcPtr proc)
 {
-	int i;
-
 	/**
 	 * Legend skill can only be activated for one turn
 	 */
-	for (i = gPlaySt.faction + 1; i < (gPlaySt.faction + 0x40); i++) {
-		struct Unit *unit = GetUnit(i);
-
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		if (UNIT_IS_VALID(unit))
 			ClearBitUES(unit, UES_BIT_LEGENDARY_SKILL_ACTIVE);
-	}
+	})
 	return false;
 }

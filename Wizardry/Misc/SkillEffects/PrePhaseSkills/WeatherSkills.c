@@ -65,29 +65,12 @@ static void _check_weather_skill(struct Unit *unit, int *priv, int *weather)
 
 bool PrePhase_ControlWeatherSkill(ProcPtr proc)
 {
-	int uid;
 	int priv_level = WEATHER_PRIORITY_0;
 	int weather = gPlaySt.chapterWeatherId;
 
-	switch (gPlaySt.faction) {
-	case FACTION_BLUE:
-		for (uid = FACTION_BLUE + 1; uid < FACTION_BLUE + 1 + CONFIG_UNIT_AMT_ALLY; uid++)
-			_check_weather_skill(GetUnit(uid), &weather, &priv_level);
-
-		break;
-
-	case FACTION_GREEN:
-		for (uid = FACTION_GREEN + 1; uid < FACTION_GREEN + 1 + CONFIG_UNIT_AMT_NPC; uid++)
-			_check_weather_skill(GetUnit(uid), &weather, &priv_level);
-
-		break;
-
-	case FACTION_RED:
-		for (uid = FACTION_RED + 1; uid < FACTION_RED + 1 + CONFIG_UNIT_AMT_ENEMY; uid++)
-			_check_weather_skill(GetUnit(uid), &weather, &priv_level);
-
-		break;
-	}
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+		_check_weather_skill(unit, &weather, &priv_level);
+	})
 
 	if (weather != gPlaySt.chapterWeatherId) {
 		SetWeather(weather);

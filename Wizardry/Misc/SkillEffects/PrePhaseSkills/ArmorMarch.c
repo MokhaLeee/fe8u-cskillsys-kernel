@@ -13,14 +13,9 @@ FORCE_DECLARE static void _SetArmorMarchStatDebuff(struct Unit *unit)
 bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
 {
 #if (defined(SID_ArmorMarch) && (COMMON_SKILL_VALID(SID_ArmorMarch)))
-	int i, j;
+	int j;
 
-	for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i) {
-		struct Unit *unit = GetUnit(i);
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
 
@@ -50,7 +45,7 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
 				_SetArmorMarchStatDebuff(unit_ally);
 			}
 		}
-	}
+	})
 #endif
 	return false;
 }

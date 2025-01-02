@@ -22,16 +22,11 @@ void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc *proc)
 LYN_REPLACE_CHECK(TickActiveFactionTurn);
 void TickActiveFactionTurn(void)
 {
-	int i, displayMapChange = FALSE;
+	int displayMapChange = FALSE;
 
 	InitTargets(0, 0);
 
-	for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i) {
-		struct Unit *unit = GetUnit(i);
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		if (unit->state & (US_UNAVAILABLE | US_RESCUED))
 			continue;
 
@@ -42,7 +37,7 @@ void TickActiveFactionTurn(void)
 			unit->torchDuration--;
 			displayMapChange = TRUE;
 		}
-	}
+	})
 
 	if (displayMapChange) {
 		RenderBmMapOnBg2();
@@ -66,81 +61,51 @@ void TickActiveFactionTurn(void)
 
 	if (gPlaySt.faction == FACTION_BLUE) {
 		/* Blue buff */
-		for (i = FACTION_BLUE + 1; i <= (FACTION_BLUE + CONFIG_UNIT_AMT_ALLY); i++) {
-			struct Unit *unit = GetUnit(i);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
+		FOR_UNITS_FACTION(FACTION_BLUE, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
 				DEC_STATUS(unit);
 
 			TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
-		}
+		})
 
 		/* Red debuff */
-		for (i = FACTION_RED + 1; i <= (FACTION_RED + CONFIG_UNIT_AMT_ENEMY); i++) {
-			struct Unit *unit = GetUnit(i);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
+		FOR_UNITS_FACTION(FACTION_RED, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
 				DEC_STATUS(unit);
 
 			TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
-		}
+		})
 	} else if (gPlaySt.faction == FACTION_RED) {
 		/* Red buff */
-		for (i = FACTION_RED + 1; i <= (FACTION_RED + CONFIG_UNIT_AMT_ENEMY); i++) {
-			struct Unit *unit = GetUnit(i);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
+		FOR_UNITS_FACTION(FACTION_RED, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
 				DEC_STATUS(unit);
 
 			TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
-		}
+		})
 
 		/* Blue debuff */
-		for (i = FACTION_BLUE + 1; i <= (FACTION_BLUE + CONFIG_UNIT_AMT_ALLY); i++) {
-			struct Unit *unit = GetUnit(i);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
+		FOR_UNITS_FACTION(FACTION_BLUE, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
 				DEC_STATUS(unit);
 
 			TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
-		}
+		})
 
 		/* Green debuff */
-		for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + CONFIG_UNIT_AMT_NPC); i++) {
-			struct Unit *unit = GetUnit(i);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
+		FOR_UNITS_FACTION(FACTION_GREEN, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
 				DEC_STATUS(unit);
 
 			TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
-		}
+		})
 	} else if (gPlaySt.faction == FACTION_GREEN) {
 		/* Green buff */
-		for (i = FACTION_GREEN + 1; i < (FACTION_GREEN + CONFIG_UNIT_AMT_NPC); i++) {
-			struct Unit *unit = GetUnit(i);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
+		FOR_UNITS_FACTION(FACTION_GREEN, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
 				DEC_STATUS(unit);
 
 			TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
-		}
+		})
 	}
 }

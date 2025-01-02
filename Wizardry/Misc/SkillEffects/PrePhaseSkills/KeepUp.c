@@ -11,15 +11,10 @@ static void _SetKeepUpStatDebuff(struct Unit *unit)
 
 bool PrePhase_TickKeepUpSkillStatus(ProcPtr proc)
 {
-	int i, j;
+	int j;
 
-	for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i) {
-		struct Unit *unit = GetUnit(i);
-
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		FORCE_DECLARE bool keep_up  = false;
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
 
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
@@ -59,6 +54,6 @@ bool PrePhase_TickKeepUpSkillStatus(ProcPtr proc)
 			)
 				_SetKeepUpStatDebuff(unit);
 		}
-	}
+	})
 	return false;
 }

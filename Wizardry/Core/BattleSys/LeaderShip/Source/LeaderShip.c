@@ -21,16 +21,12 @@ int GetUnitLeaderShip(struct Unit *unit)
 
 STATIC_DECLAR int GetBmLeaderShip(struct Unit *unit)
 {
-	int i, ret = 0;
+	int ret = 0;
 
-	for (i = UNIT_FACTION(unit) + 1; i < (UNIT_FACTION(unit) + GetFactionUnitAmount(UNIT_FACTION(unit))); i++) {
-		struct Unit *_unit = GetUnit(i);
-
-		if (!UNIT_ALIVE(unit))
-			continue;
-
+	FOR_UNITS_FACTION(UNIT_FACTION(unit), _unit,
+	{
 		ret += GetUnitLeaderShip(_unit);
-	}
+	})
 	return ret;
 }
 

@@ -8,9 +8,9 @@
 
 bool PrePhaseFunc_HoneFortify(ProcPtr proc)
 {
-	int i, uid;
+	int i;
 
-	for (uid = gPlaySt.faction + 1; uid <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); uid++) {
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		bool PowHone_eff = false;
 		bool MagHone_eff = false;
 		bool SklHone_eff = false;
@@ -23,11 +23,6 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
 		bool JobFortify_eff = false;
 
 		bool Hone_eff = false;
-
-		struct Unit *unit = GetUnit(uid);
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
 
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
@@ -173,6 +168,6 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
 				}
 			}
 		}
-	}
+	})
 	return false;
 }

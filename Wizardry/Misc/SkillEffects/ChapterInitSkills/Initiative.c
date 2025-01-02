@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 
@@ -73,65 +74,19 @@ static void _ClearInitiativeStatDebuf(struct Unit *unit)
 
 bool ChapterInit_SetInitiativeStatus(ProcPtr proc)
 {
-	int i;
-	struct Unit *unit;
-
-	for (i = FACTION_BLUE + 1; i < FACTION_BLUE + 1 + CONFIG_UNIT_AMT_ALLY; i++) {
-		unit = GetUnit(i);
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
+	FOR_UNITS_ALL(unit, {
 		_SetInitiativeStatDebuf(unit);
-	}
-
-	for (i = FACTION_GREEN + 1; i < FACTION_GREEN + 1 + CONFIG_UNIT_AMT_NPC; i++) {
-		unit = GetUnit(i);
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
-		_SetInitiativeStatDebuf(unit);
-	}
-
-	for (i = FACTION_RED + 1; i < FACTION_RED + 1 + CONFIG_UNIT_AMT_ENEMY; i++) {
-		unit = GetUnit(i);
-		if (!UNIT_IS_VALID(unit))
-			continue;
-
-		_SetInitiativeStatDebuf(unit);
-	}
+	})
 
 	return false;
 }
 
 bool PrePhsae_TickInitativeSkillStatus(ProcPtr proc)
 {
-	int i;
-	struct Unit *unit;
-
-	if (gPlaySt.chapterTurnNumber == 2 && gPlaySt.faction == FACTION_BLUE) {
-		for (i = FACTION_BLUE + 1; i < FACTION_BLUE + 1 + CONFIG_UNIT_AMT_ALLY; i++) {
-			unit = GetUnit(i);
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
+	if (gPlaySt.chapterTurnNumber >= 2 && gPlaySt.faction == FACTION_BLUE) {
+		FOR_UNITS_ALL(unit, {
 			_ClearInitiativeStatDebuf(unit);
-		}
-
-		for (i = FACTION_GREEN + 1; i < FACTION_GREEN + 1 + CONFIG_UNIT_AMT_NPC; i++) {
-			unit = GetUnit(i);
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
-			_ClearInitiativeStatDebuf(unit);
-		}
-
-		for (i = FACTION_RED + 1; i < FACTION_RED + 1 + CONFIG_UNIT_AMT_ENEMY; i++) {
-			unit = GetUnit(i);
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
-			_ClearInitiativeStatDebuf(unit);
-		}
+		})
 	}
 	return false;
 }

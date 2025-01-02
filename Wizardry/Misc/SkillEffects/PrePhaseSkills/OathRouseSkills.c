@@ -92,14 +92,10 @@ static void _SetRouseStatDebuf(struct Unit *unit)
 
 bool PrePhsae_TickOathRouthSkillStatus(ProcPtr proc)
 {
-	int i, j;
+	int j;
 
-	for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i) {
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		bool ally_in_range = false;
-		struct Unit *unit = GetUnit(i);
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
 
 		for (j = 0; j < ARRAY_COUNT_RANGE1x1; j++) {
 			int _x = unit->xPos + gVecs_1x1[j].x;
@@ -122,6 +118,6 @@ bool PrePhsae_TickOathRouthSkillStatus(ProcPtr proc)
 			_SetOathStatDebuf(unit);
 		else
 			_SetRouseStatDebuf(unit);
-	}
+	})
 	return false;
 }
