@@ -74,7 +74,7 @@
 /**
  * Try narrow font on skill-name/skill-desc/menu-disp
  */
-// #define CONFIG_AUTO_NARROW_FONT
+#define CONFIG_AUTO_NARROW_FONT
 
 /**
  * Inject fake FEB old AnimNumber patch hooks.
