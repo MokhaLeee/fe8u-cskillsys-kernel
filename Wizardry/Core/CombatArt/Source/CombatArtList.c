@@ -1,11 +1,12 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "combat-art.h"
+#include "kernel-lib.h"
 #include "constants/combat-arts.h"
 
 extern struct CombatArtList sCombatArtList;
 
-STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
+void CalcCombatArtListExt(struct Unit *unit, int item)
 {
 	int i;
 	u8 cid;
@@ -13,16 +14,18 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 	u8 pid = UNIT_CHAR_ID(unit);
 	u8 jid = UNIT_CLASS_ID(unit);
 	u8 *tmp_list = gGenericBuffer;
+	struct SkillList *slist = GetUnitSkillList(unit);
 
 	CpuFill16(0, tmp_list, 0x100);
 
 	/* Skill table */
-	for (i = 1; i < MAX_SKILL_NUM; i++) {
-		cid = gpCombatArtSkillTable[i];
+	if (slist) {
+		for (i = 0; i < slist->amt; i++) {
+			cid = gpCombatArtSkillTable[slist->sid[i]];
 
-		if (COMBART_VALID(cid))
-			if (SkillTester(unit, i))
+			if (COMBART_VALID(cid))
 				tmp_list[cid] = true;
+		}
 	}
 
 	/* Weapon table */
@@ -32,7 +35,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 
 	/* ROM table */
 	for (i = WPN_LEVEL_E; i <= WPN_LEVEL_S; i++) {
-		if (unit->ranks[ITYPE_SWORD] >= i) {
+		if (unit->ranks[ITYPE_SWORD] >= WRankToWExp(i)) {
 			cid = gpCombatArtDefaultTable->cid_sword[i];
 			if (COMBART_VALID(cid))
 				tmp_list[cid] = true;
@@ -46,7 +49,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 				tmp_list[cid] = true;
 		}
 
-		if (unit->ranks[ITYPE_LANCE] >= i) {
+		if (unit->ranks[ITYPE_LANCE] >= WRankToWExp(i)) {
 			cid = gpCombatArtDefaultTable->cid_lance[i];
 			if (COMBART_VALID(cid))
 				tmp_list[cid] = true;
@@ -60,7 +63,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 				tmp_list[cid] = true;
 		}
 
-		if (unit->ranks[ITYPE_AXE] >= i) {
+		if (unit->ranks[ITYPE_AXE] >= WRankToWExp(i)) {
 			cid = gpCombatArtDefaultTable->cid_axe[i];
 			if (COMBART_VALID(cid))
 				tmp_list[cid] = true;
@@ -74,7 +77,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 				tmp_list[cid] = true;
 		}
 
-		if (unit->ranks[ITYPE_BOW] >= i) {
+		if (unit->ranks[ITYPE_BOW] >= WRankToWExp(i)) {
 			cid = gpCombatArtDefaultTable->cid_bow[i];
 			if (COMBART_VALID(cid))
 				tmp_list[cid] = true;

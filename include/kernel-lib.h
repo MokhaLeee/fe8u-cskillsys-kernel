@@ -67,7 +67,7 @@ void MapAnim_CommonEnd(void);
 u32 k_udiv(u32 a, u32 b);
 u32 k_umod(u32 a, u32 b);
 
-static inline u32 perc_of(u32 num, u32 perc) 
+static inline u32 perc_of(u32 num, u32 perc)
 {
 	return k_udiv(num * perc, 100);
 }
@@ -159,6 +159,11 @@ int DecodeUtf8(const char *str, u32 *unicode_out, int *len);
 char *Utf8ToNarrowFonts(char *str);
 char NarrowFontsUtf8ToAscii(const char *str);
 char NarrowFontsUnicodeToAscii(u32 unicod);
+
+/**
+ * wexp.c
+ */
+int WRankToWExp(int wrank);
 
 /**
  * Misc
