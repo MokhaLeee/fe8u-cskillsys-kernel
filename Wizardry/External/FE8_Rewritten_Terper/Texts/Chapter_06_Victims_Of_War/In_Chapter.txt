@@ -1,0 +1,12 @@
+## Chapter_06_In_Scene_House_1
+[OpenMidLeft][LoadFace_CivilianBoy]
+[OpenMidRight][LoadFace_ActiveUnit]
+[OpenMidLeft]
+I've heard some monstrous screams[N]
+out in the forest...[A][N]
+But also some human ones![A][N]
+I'm too afraid to go and see[N]
+what's happening, but...[A][N]
+You're going, aren't you?[A][N]
+Please, take this![A] I don't know if[N]
+it'll help, but I want to be some use![A][X]
