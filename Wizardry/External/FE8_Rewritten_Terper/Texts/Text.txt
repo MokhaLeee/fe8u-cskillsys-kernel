@@ -26,9 +26,13 @@
 #include "Chapter_05x_Unbroken_Heart/In_Chapter.txt"
 #include "Chapter_05x_Unbroken_Heart/Post_Chapter.txt"
 
-// #include "Chapter_06_Victims_Of_War/Pre_Chapter.txt"
-// #include "Chapter_06_Victims_Of_War/In_Chapter.txt"
-// #include "Chapter_06_Victims_Of_War/Post_Chapter.txt"
+#include "Chapter_06_Victims_Of_War/Pre_Chapter.txt"
+#include "Chapter_06_Victims_Of_War/In_Chapter.txt"
+#include "Chapter_06_Victims_Of_War/Post_Chapter.txt"
+
+#include "Chapter_07_Waterside_Renvall/Pre_Chapter.txt"
+#include "Chapter_07_Waterside_Renvall/In_Chapter.txt"
+#include "Chapter_07_Waterside_Renvall/Post_Chapter.txt"
 
 #include "Supports/Joshua_Rennac.txt"
 #include "Supports/Ewan_Myrrh.txt"
