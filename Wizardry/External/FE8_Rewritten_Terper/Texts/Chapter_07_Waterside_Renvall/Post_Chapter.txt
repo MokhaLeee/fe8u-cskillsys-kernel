@@ -17,7 +17,7 @@ I'm ready.[A][X]
 ## Chapter_07_Post_Scene_02_Convo_01
 [OpenFarLeft][LoadFace_Eirika]
 [OpenRight][LoadFace_Seth]
-[OpenMidRight][LoadFace_Orson]
+[OpenMidRight][LoadFace_OrsonHealthy]
 Princess Eirika! And...[N]
 is that you, Seth?![A][N]
 Oh thank the Heavens...[A][N]

@@ -1094,10 +1094,10 @@ Chapter 6: Victims of War[X]
 Chapter 7: Waterside Renvall[.][X]
 
 ## MSG_0169
-Chapter 8: It's a Trap![X]
+Chapter 8: Broken Vows[X]
 
 ## MSG_016A
-Chapter 9: Distant Blade[.][X]
+Chapter 9: Renewed Journey[.][X]
 
 ## MSG_016B
 Chapter 10: Revolt at Carcino[.][X]

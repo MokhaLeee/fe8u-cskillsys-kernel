@@ -34,6 +34,10 @@
 #include "Chapter_07_Waterside_Renvall/In_Chapter.txt"
 #include "Chapter_07_Waterside_Renvall/Post_Chapter.txt"
 
+#include "Chapter_08_Broken_Vows/Pre_Chapter.txt"
+#include "Chapter_08_Broken_Vows/In_Chapter.txt"
+#include "Chapter_08_Broken_Vows/Post_Chapter.txt"
+
 #include "Supports/Joshua_Rennac.txt"
 #include "Supports/Ewan_Myrrh.txt"
 #include "Supports/Seth_Duessel.txt"
