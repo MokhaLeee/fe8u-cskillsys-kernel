@@ -83,17 +83,11 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit *unit)
 LYN_REPLACE_CHECK(MakeTerrainHealTargetList);
 void MakeTerrainHealTargetList(int faction)
 {
-	int i;
-
 	InitTargets(0, 0);
 
-	for (i = faction + 1; i <= (faction + GetFactionUnitAmount(gPlaySt.faction)); i++) {
-		struct Unit *unit = GetUnit(i);
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		int terrainId;
 		int amount;
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
 
 		if (unit->state & (US_DEAD | US_NOT_DEPLOYED | US_RESCUED | US_BIT16))
 			continue;
@@ -120,5 +114,5 @@ void MakeTerrainHealTargetList(int faction)
 			SetUnitStatus(unit, UNIT_STATUS_PETRIFY);
 
 		AddTarget(unit->xPos, unit->yPos, unit->index, -1);
-	}
+	})
 }

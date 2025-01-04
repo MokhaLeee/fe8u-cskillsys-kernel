@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 #include "constants/skills.h"
 
@@ -93,51 +94,12 @@ static void TileCheck(struct Unit *unit)
 
 bool PrePhase_CheckTile(ProcPtr proc)
 {
-	int uid;
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+			continue;
 
-	switch (gPlaySt.faction) {
-	case FACTION_BLUE:
-		for (uid = FACTION_BLUE + 1; uid < FACTION_BLUE + 1 + CONFIG_UNIT_AMT_ALLY; uid++) {
-			struct Unit *unit = GetUnit(uid);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
-			if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-				continue;
-
-			TileCheck(unit);
-		}
-		break;
-
-	case FACTION_GREEN:
-		for (uid = FACTION_GREEN + 1; uid < FACTION_GREEN + 1 + CONFIG_UNIT_AMT_NPC; uid++) {
-			struct Unit *unit = GetUnit(uid);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
-			if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-				continue;
-
-			TileCheck(unit);
-		}
-		break;
-
-	case FACTION_RED:
-		for (uid = FACTION_RED + 1; uid < FACTION_RED + 1 + CONFIG_UNIT_AMT_ENEMY; uid++) {
-			struct Unit *unit = GetUnit(uid);
-
-			if (!UNIT_IS_VALID(unit))
-				continue;
-
-			if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
-				continue;
-
-			TileCheck(unit);
-		}
-		break;
-	}
+		TileCheck(unit);
+	})
 
 	return false;
 }

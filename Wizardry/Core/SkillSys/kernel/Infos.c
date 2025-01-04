@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "debug-kit.h"
+#include "kernel-lib.h"
 #include "constants/gfx.h"
 
 const u8 *_GetSkillIconExt(const u8 lo, int hi)
@@ -30,12 +31,16 @@ u16 GetSkillNameMsg(const u16 sid)
 
 char *GetSkillDescStr(const u16 sid)
 {
+	char *str = NULL;
 	u16 msg = GetSkillDescMsg(sid);
 
 	if (msg != 0)
-		return GetStringFromIndex(msg);
+		str = GetStringFromIndex(msg);
 
-	return NULL;
+	if (gpKernelDesigerConfig->auto_narrow_font)
+		return Utf8ToNarrowFonts(str);
+	else
+		return str;
 }
 
 char *SkillDescToName(char *str)
@@ -65,12 +70,18 @@ char *GetSkillNameStrFormDesc(const u16 sid)
 
 char *GetSkillNameStr(const u16 sid)
 {
+	char *str;
 	u16 msg = GetSkillNameMsg(sid);
 
 	if (msg == 0)
-		return GetSkillNameStrFormDesc(sid);
+		str = GetSkillNameStrFormDesc(sid);
+	else
+		str = GetStringFromIndex(msg);
 
-	return GetStringFromIndex(msg);
+	if (gpKernelDesigerConfig->auto_narrow_font)
+		return Utf8ToNarrowFonts(str);
+	else
+		return str;
 }
 
 #if 0

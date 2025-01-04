@@ -72,6 +72,11 @@
 #define CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
 
 /**
+ * Try narrow font on skill-name/skill-desc/menu-disp
+ */
+#define CONFIG_AUTO_NARROW_FONT
+
+/**
  * Inject fake FEB old AnimNumber patch hooks.
  * This config may cause two functions suffer from ugly ASM hooks:
  *      - StartBattleAnimHitEffect

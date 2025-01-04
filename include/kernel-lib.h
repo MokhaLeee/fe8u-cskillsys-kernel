@@ -30,6 +30,8 @@ struct KernelDesigerConfig {
 	u8 no_suspend_in_aiphase;
 
 	u8 shield_en, shield_ext_equip_config_en;
+
+	u8 auto_narrow_font;
 };
 
 struct KernelBattleDesignerConfig {
@@ -65,7 +67,7 @@ void MapAnim_CommonEnd(void);
 u32 k_udiv(u32 a, u32 b);
 u32 k_umod(u32 a, u32 b);
 
-static inline u32 perc_of(u32 num, u32 perc) 
+static inline u32 perc_of(u32 num, u32 perc)
 {
 	return k_udiv(num * perc, 100);
 }
@@ -123,6 +125,40 @@ extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
 	0 \
 )
 
+// Maybe there could be an external "FOR_UNITS" macro
+#undef FOR_UNITS
+
+#define FOR_UNITS(begin, end, var_name, body) \
+{ \
+	int ___uid; \
+	struct Unit *var_name; \
+	for (___uid = (begin); ___uid < (end); ++___uid) { \
+		var_name = GetUnit(___uid); \
+		if (!var_name) \
+			continue; \
+		if (!UNIT_ALIVE(var_name)) \
+			continue; \
+		body \
+	} \
+}
+
+#define FOR_UNITS_FACTION(faction, var_name, body) \
+do { \
+	if ((faction) == FACTION_BLUE) { \
+		FOR_UNITS(FACTION_BLUE + 1, FACTION_BLUE + GetFactionUnitAmount(FACTION_BLUE), var_name, body) \
+	} else if ((faction) == FACTION_RED) { \
+		FOR_UNITS(FACTION_RED + 1, FACTION_RED + GetFactionUnitAmount(FACTION_RED), var_name, body) \
+	} else if ((faction) == FACTION_GREEN) { \
+		FOR_UNITS(FACTION_GREEN + 1, FACTION_GREEN + GetFactionUnitAmount(FACTION_GREEN), var_name, body) \
+	} \
+} while (0);
+
+#define FOR_UNITS_ALL(var_name, body) \
+	FOR_UNITS(1, 0xC0, var_name, body)
+
+int GetUidFaction(u8 uid);
+int GetUnitFaction(struct Unit *unit);
+
 /**
  * Bits
  */
@@ -148,6 +184,20 @@ void KernelPad1(void);
 int KernelPad2(int val);
 bool KernelPad3(void);
 bool KernelPad4(void);
+
+/**
+ * utf8.c
+ */
+int GetChLenUtf8(const char *str);
+int DecodeUtf8(const char *str, u32 *unicode_out, int *len);
+char *Utf8ToNarrowFonts(char *str);
+char NarrowFontsUtf8ToAscii(const char *str);
+char NarrowFontsUnicodeToAscii(u32 unicod);
+
+/**
+ * wexp.c
+ */
+int WRankToWExp(int wrank);
 
 /**
  * Misc

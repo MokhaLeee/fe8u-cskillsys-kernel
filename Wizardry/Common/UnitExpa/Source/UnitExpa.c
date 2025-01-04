@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "unit-expa.h"
+#include "kernel-lib.h"
 
 void SetBitUES(struct Unit *unit, int bit)
 {

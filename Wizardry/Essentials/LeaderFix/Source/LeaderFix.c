@@ -6,7 +6,6 @@ extern struct DefeatTalkEnt * pr_gDefeatTalkList;
 LYN_REPLACE_CHECK(GetUnitLeaderCharId);
 int GetUnitLeaderCharId(struct Unit *unit)
 {
-	int i;
 	struct DefeatTalkEnt *it;
 
 	if (!(unit->index & 0xC0))
@@ -29,15 +28,10 @@ int GetUnitLeaderCharId(struct Unit *unit)
 	/**
 	 * Step2: anyone who claims himself as boss is okay ╮(╯▽╰)╭
 	 */
-	for (i = UNIT_FACTION(unit) + 1; i < UNIT_FACTION(unit) + GetFactionUnitAmount(UNIT_FACTION(unit)); i++) {
-		struct Unit *_unit = GetUnit(i);
-
-		if (!UNIT_ALIVE(unit))
-			continue;
-
+	FOR_UNITS_FACTION(UNIT_FACTION(unit), _unit, {
 		if (UNIT_CATTRIBUTES(_unit) & CA_BOSS)
 			return UNIT_CHAR_ID(_unit);
-	}
+	})
 
 	return 0;
 }

@@ -112,21 +112,16 @@ void PrePhaseChill_Init(struct ProcPrePhaseChill *proc)
 
 void PrePhaseChill_CollectActors(struct ProcPrePhaseChill *proc)
 {
-	int i, uid;
+	int i;
 
-	for (uid = gPlaySt.faction + 1; uid <= gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction); uid++) {
-		struct Unit *unit = GetUnit(uid);
-
-		if (!UNIT_ALIVE(unit))
-			continue;
-
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		for (i = 0; i < UNIT_STATUS_MAX; i++) {
 			int _sid = ChillSkillList[i];
 
 			if (COMMON_SKILL_VALID(_sid) && SkillTester(unit, _sid))
-				proc->actor_uids[i] = uid;
+				proc->actor_uids[i] = unit->index;
 		}
-	}
+	})
 }
 
 void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)

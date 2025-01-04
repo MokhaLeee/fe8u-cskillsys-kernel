@@ -11,15 +11,11 @@ static void _SetPlusAndMinusStatDebuff(struct Unit *unit)
 
 bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
 {
-	int i, j;
+	int j;
 
-	for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i) {
+	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
 		FORCE_DECLARE bool act_plus  = false;
 		FORCE_DECLARE bool act_minus = false;
-		struct Unit *unit = GetUnit(i);
-
-		if (!UNIT_IS_VALID(unit))
-			continue;
 
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
@@ -69,6 +65,6 @@ bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
 				_SetPlusAndMinusStatDebuff(unit_ally);
 			}
 		}
-	}
+	})
 	return false;
 }

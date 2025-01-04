@@ -8,7 +8,7 @@ gGameInitHookTable:
     POIN ClearKtutorialFlags
     POIN GameInit_DetectEmsChunks
     POIN StatDeuff_OnNewGameInit
-    POIN GameInit_ResetShieldInfo
+    POIN GameInit_ResetShieldInfo DumpNarrowFontsUnicode
 
     POIN GameInitHookFuncPad
     POIN GameInitHookFuncPad

@@ -130,7 +130,7 @@
 | Pavise |  Nullify a physical attack. (Skill % activation). |
 | Bane |  Leave the opponent at 1 HP (Skill % activation). |
 | Mercy |  Leave the opponent at 1 HP if the attack would kill. (Skill % activation). |
-| Aether |  Negate 80% of enemy defenses and absorb HP. (Skill/2 % activation). |
+| Aether |  Negate 80% of enemy defenses and absorb HP. (Skill % activation). |
 | Corona |  Negate enemy resistance. (Skill % activation). |
 | Luna |  Negates enemy defense. (Skill % activation). |
 | Flare |  Halve enemy resistance. (Skill % activation). |
