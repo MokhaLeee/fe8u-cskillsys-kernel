@@ -849,7 +849,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_SilentPride) && (COMMON_SKILL_VALID(SID_SilentPride)))
 		case SID_SilentPride:
-			tmp = k_udiv(attacker->unit.maxHP * 4, attacker->hpInitial);
+			tmp = k_udiv(attacker->hpInitial * 4, attacker->unit.maxHP);
 			attacker->battleAttack  += SKILL_EFF0(SID_SilentPride) * tmp;
 			attacker->battleDefense += SKILL_EFF1(SID_SilentPride) * tmp;
 			break;
