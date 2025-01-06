@@ -476,22 +476,22 @@ const EventScr EventScrWM_Ch4_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
-// const EventScr EventScrWM_Renval_CH5[] = {
-//     EVBIT_MODIFY(0x1)
-//     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall2)
-//     WmEvtSetCamToNode(WM_NODE_AdlasPlains) // ENOSUPP in EAstdlib
-//     WM_FADEOUT(0)
-//     WM_TEXTDECORATE // WaitFade
-//     EVBIT_MODIFY(0x0)
-//     WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Renvall2, WM_NODE_AdlasPlains, -2, 0)
-//     WM_WAITFORSPRITES(WM_MU_0)
-//     WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_AdlasPlains, WM_NODE_Serafew, -2, 0)
-//     WM_WAITFORSPRITES(WM_MU_0)
-//     WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
-//     WmEvtSetNextStoryNode(WM_NODE_Serafew) // ENOSUPP in EAstdlib
-//     SKIPWN
-//     ENDA
-// };
+const EventScr EventScrWM_Renval_CH5[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall2)
+    WmEvtSetCamToNode(WM_NODE_AdlasPlains) // ENOSUPP in EAstdlib
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Renvall2, WM_NODE_AdlasPlains, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_AdlasPlains, WM_NODE_Serafew, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    WmEvtSetNextStoryNode(WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    SKIPWN
+    ENDA
+};
 
 const EventScr EventScrWM_Ch5_SET_NODE[] = {
 //     CHECK_EVENTID(136)
@@ -590,5 +590,265 @@ LABEL(0x1)
     FADI(16)
     WM_REMSPRITE(WM_MU_2)
 LABEL(0x2)
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch6_TRAVEL_TO_NODE[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Serafew)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    STAL(20)
+    WM_CREATENEXTDESTINATION
+    WM_WAITFORFX
+    STAL(40)
+    WM_DRAWPATH(WM_PATH_05)
+    STAL(70)
+    WM_MAKELORDVISIBLE(WM_MU_0)
+    EVBIT_MODIFY(0x1)
+    CALL(EventScr_RemoveBGIfNeeded)
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch6_SET_NODE[] = {
+    STAL(6)
+    WM_MOVECAM(-1, -1, 48, 132, 60, 0)
+    WM_WAITFORCAM
+    CALL(EventScr_WM_FadeCommon)
+    WM_TEXTSTART
+    WM_SHOWPORTRAIT(0, 0x0002, 0x0534, 0) // Eirika
+    STAL(6)
+    STAL(46)
+    WM_TEXT(Chapter_06_WM, 0)
+    TEXTEND
+    TEXTCONT
+    TEXTEND
+    WM_MOVESPRITETO(WM_MU_0, 0x0002, WM_NODE_Serafew, WM_NODE_AdlasPlains, -4, 0)
+    TEXTCONT
+    TEXTEND
+    TEXTCONT
+    TEXTEND
+    WM_WAITFORSPRITES(WM_MU_ANY)
+    TEXTCONT
+    TEXTEND
+    WM_REMOVETEXT
+    STAL(2)
+    STAL(20)
+    FADI(16)
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch7_TRAVEL_TO_NODE[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_AdlasPlains)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    STAL(20)
+    WM_CREATENEXTDESTINATION
+    WM_WAITFORFX
+    STAL(40)
+    WM_DRAWPATH(WM_PATH_06)
+    STAL(70)
+    WM_MAKELORDVISIBLE(WM_MU_0)
+    EVBIT_MODIFY(0x1)
+    CALL(EventScr_RemoveBGIfNeeded)
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch7_SET_NODE[] = {
+    STAL(6)
+    WM_MOVECAM(-1, -1, 84, 152, 60, 0)
+    WM_WAITFORCAM
+    CALL(EventScr_WM_FadeCommon)
+    WM_TEXTSTART
+    WM_TEXT(Chapter_07_WM, 0)
+    TEXTEND
+    WM_SHOWPORTRAIT(0, 0x0002, 0x0534, 0) // Eirika
+    STAL(6)
+    STAL(46)
+    TEXTCONT
+    TEXTEND
+    WM_MOVESPRITETO(WM_MU_0, 0x0002, WM_NODE_AdlasPlains, WM_NODE_Renvall1, -8, 0)
+    TEXTCONT
+    TEXTEND
+    TEXTCONT
+    TEXTEND
+    WM_WAITFORSPRITES(WM_MU_ANY)
+    WM_REMOVETEXT
+    STAL(2)
+    STAL(20)
+    FADI(16)
+    WM_REMSPRITE(WM_MU_2)
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch8_SET_NODE[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall2)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WM_REMOVELOCATION(WM_NODE_Renvall1)
+    WM_REMOVEPATH(WM_PATH_06)
+    WM_LOADLOCATION2(WM_NODE_Renvall2)
+    WM_SETDESTINATION(WM_NODE_Renvall2)
+    WM_DRAWPATH2(WM_PATH_07)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Renvall2) // ENOSUPP in EAstdlib
+    SKIPWN
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch8_TRAVEL_TO_NODE[] = {
+    EVBIT_MODIFY(0x1)
+    ENUT(136)
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Intermission_Renvall_To_Serafew[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall1)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WmEvtSetNodeStateNot2(WM_NODE_Renvall1) // ENOSUPP in EAstdlib
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Renvall1) // ENOSUPP in EAstdlib
+    WM_MAKELORDVISIBLE(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Renvall1, WM_NODE_AdlasPlains, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_AdlasPlains, WM_NODE_Serafew, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    SKIPWN
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Intermission_Serafew_To_Frelia[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Serafew)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WmEvtSetNodeStateNot2(WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    WM_MAKELORDVISIBLE(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Serafew, WM_NODE_ZahaWoods, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_ZahaWoods, WM_NODE_BorgoRidge, -2, 0)
+    WM_MOVECAMTO(-1, -1, WM_NODE_CastleFrelia, 120, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_BorgoRidge, WM_NODE_Ide, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Ide, WM_NODE_CastleFrelia, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_WAITFORCAM
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_CastleFrelia) // ENOSUPP in EAstdlib
+    SKIPWN
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch9_TRAVEL_TO_NODE[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_CastleFrelia)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    STAL(26)
+    WM_MOVECAM(-1, -1, 32, 0, 90, 0)
+    WM_WAITFORCAM
+    STAL(6)
+    STAL(20)
+    WM_LOADLOCATION3(WM_NODE_TowerOfValni)
+    WM_WAITFORFX
+    STAL(40)
+    WM_DRAWPATH(WM_PATH_09)
+    STAL(70)
+    STAL(20)
+    WM_CREATENEXTDESTINATION
+    WM_WAITFORFX
+    STAL(40)
+    WM_DRAWPATH(WM_PATH_08)
+    STAL(70)
+    WmEvtMoveCamToUnit(-1, -1, WM_MU_0, 46, 0) // ENOSUPP in EAstdlib
+    STAL(60)
+    WM_WAITFORCAM
+    MUSC(0x5)
+    CALL(EventScrWM_08A3A70C)
+    WM_MAKELORDVISIBLE(WM_MU_0)
+    EVBIT_MODIFY(0x1)
+    CALL(EventScr_RemoveBGIfNeeded)
+    ENDA
+};
+
+CONST_DATA EventScr EventScrWM_Ch9_SET_NODE[] = {
+    STAL(6)
+    WM_MOVECAM(-1, -1, 64, 0, 60, 0)
+    WM_WAITFORCAM
+    CALL(EventScr_WM_FadeCommon)
+    STAL(60)
+    WM_TEXTSTART
+    WM_SHOWDRAWNMAP(0, -8, 0x3)
+    STAL(120)
+    WM_HIGHLIGHT(WM_NATION_Rausten)
+    STAL(30)
+    WM_TEXT(Chapter_09_WM, 0)
+    TEXTEND
+    WM_HIGHLIGHTCLEAR1(WM_NATION_Rausten)
+    WM_HIGHLIGHTCLEAR2(WM_NATION_Rausten)
+    WmEvtRemoveBigMap // WM_WAITFORFXCLEAR1
+    WmEvtWaitBigMapRemove // WM_WAITFORFXCLEAR2
+    WM_MOVESPRITETO(WM_MU_0, 0x0002, WM_NODE_BorderMulan, WM_NODE_PortKiris, -4, 0)
+    TEXTCONT
+    TEXTEND
+    WM_WAITFORSPRITES(WM_MU_ANY)
+    WM_MAKELORDDISAPPEAR(WM_MU_0)
+    WM_SHOWDRAWNMAP(0, -8, 0x3)
+    STAL(120)
+    WM_HIGHLIGHT(WM_NATION_Carcino)
+    STAL(30)
+    TEXTCONT
+    TEXTEND
+    WM_HIGHLIGHTCLEAR1(WM_NATION_Carcino)
+    WM_HIGHLIGHTCLEAR2(WM_NATION_Carcino)
+    WM_SHOWPORTRAIT(0, 0x0054, 0x02BC, 0)
+    STAL(6)
+    STAL(46)
+    TEXTCONT
+    TEXTEND
+    WM_SHOWPORTRAIT(1, 0x0052, 0x0534, 0)
+    STAL(6)
+    STAL(46)
+    TEXTCONT
+    TEXTEND
+    WM_CLEARPORTRAIT(0, 0x01BC, 0)
+    STAL(46)
+    WM_CLEARPORTRAIT(1, 0x0634, 0)
+    STAL(46)
+    WmEvtRemoveBigMap // WM_WAITFORFXCLEAR1
+    WmEvtWaitBigMapRemove // WM_WAITFORFXCLEAR2
+    WM_MOVECAM(-1, -1, 98, 28, 70, 10)
+    STAL(30)
+    WM_SHOWPORTRAIT(0, 0x000F, 0x02BC, 0)
+    STAL(6)
+    STAL(46)
+    PUTSPRITE(WM_MU_2, CLASS_SNIPER, WM_FACTION_BLUE, WM_NODE_PortKiris)
+    WM_MOVESPRITETO(WM_MU_2, 0x0003, WM_NODE_PortKiris, WM_NODE_TerazPlateau, 180, 0)
+    WM_WAITFORCAM
+    TEXTCONT
+    TEXTEND
+    WM_WAITFORCAM
+    WM_WAITFORSPRITES(WM_MU_ANY)
+    WM_CLEARPORTRAIT(0, 0x01BC, 0)
+    STAL(46)
+    WM_REMSPRITE(WM_MU_2)
+    STAL(90)
+    WM_REMOVETEXT
+    STAL(2)
+    STAL(20)
+    FADI(16)
     ENDA
 };
