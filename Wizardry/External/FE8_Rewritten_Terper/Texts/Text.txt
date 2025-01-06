@@ -40,6 +40,10 @@
 
 #include "Intermission/In_Chapter.txt"
 
+#include "Chapter_09_Renewed_Journey/Pre_Chapter.txt"
+#include "Chapter_09_Renewed_Journey/In_Chapter.txt"
+#include "Chapter_09_Renewed_Journey/Post_Chapter.txt"
+
 #include "Supports/Joshua_Rennac.txt"
 #include "Supports/Ewan_Myrrh.txt"
 #include "Supports/Seth_Duessel.txt"
