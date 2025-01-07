@@ -47,7 +47,7 @@ void ComputeBattleUnitSpeed(struct BattleUnit *bu)
 
 	int wt  = GetItemWeight(bu->weaponBefore);
 	int con = bu->unit.conBonus;
-	
+
 	con += k_udiv(bu->battleAttack * gpKernelBattleDesignerConfig->as_calc_atk_perc, 100);
 
 	wt -= con;
@@ -1303,6 +1303,9 @@ L_FairyTaleFolk_done:
 #endif
 
 		case MAX_SKILL_NUM:
+			Fatal("ENOSUPP");
+			break;
+
 		default:
 			break;
 		}
