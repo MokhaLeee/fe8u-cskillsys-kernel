@@ -7,10 +7,6 @@
 // #include "data.event"
 
 PUSH
-    // Repoint Unit Menu
-    ORG $59D1F8
-        POIN gUnitActionMenuItemsRework
-
     ORG pr_UnitActionMenuDef + 0x20
         POIN UnitActionMenu_OnHelpBoxRe
 POP

@@ -11,7 +11,8 @@
 #include "Source/utf8.lyn.event"
 #include "Source/wexp.lyn.event"
 #include "Source/faction.lyn.event"
-//#include "Source/UnitList.lyn.event"
+#include "Source/UnitList.lyn.event"
+#include "Source/ranges.lyn.event"
 // #include "data.event"
 
 #endif /* KERNEL_LIB_INSTALLED */

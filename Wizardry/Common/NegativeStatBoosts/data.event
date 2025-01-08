@@ -1,7 +1,0 @@
-ALIGN 4
-NegStatBoosts:
-    #incbin "Source/negativestatboosts.dmp"
-
-ALIGN 4
-NegativeStatBars:
-    #incbin "Source/negativestatbar.dmp"

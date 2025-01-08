@@ -140,4 +140,13 @@ gpPrepItemUsabilityFuncs: POIN gPrepItemUsabilityFuncs
 
 prWriteUnitLevelSafe: POIN WriteUnitLevelSafe
 
+gpAutoNarrowFontConf: POIN AutoNarrowFontConf
+gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
+
+gpAnimScr_AnimNumber: POIN AnimScr_AnimNumber
+
+gpIconGetters: POIN IconGetters
+
+gpStatDebuffStatusPool: POIN sStatDebuffStatusPool
+
 KERNEL_RELOC_END:

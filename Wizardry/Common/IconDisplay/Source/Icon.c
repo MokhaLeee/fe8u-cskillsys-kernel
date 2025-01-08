@@ -4,7 +4,7 @@
 const u8 *GetIconGfx(u32 icon)
 {
 	if (ICON_SHEET(icon) < ICON_SHEET_AMT)
-		return IconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
+		return gpIconGetters[ICON_SHEET(icon)](ICON_INDEX(icon));
 
 	return NULL;
 }

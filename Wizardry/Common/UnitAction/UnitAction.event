@@ -1,6 +1,7 @@
 #include "Source/LynJump.event"
 
 #include "Source/UnitAction.lyn.event"
+#include "Source/UnitActionData.lyn.event"
 
 // #include "data.event"
 // #include "def.event"

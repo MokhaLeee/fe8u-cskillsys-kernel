@@ -9,6 +9,12 @@ POP
 #include "Source/LynJump.event"
 #include "Source/EventRework.lyn.event"
 
+#include "Source/NewEventScripts.lyn.event"
+#include "Source/EventTable.lyn.event"
+
+ORG gEventLoCmdTableRe + 0x80 * 4
+
+
 // #include "data.event"
 // #include "def.event"
 
