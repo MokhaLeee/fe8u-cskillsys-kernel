@@ -1137,7 +1137,7 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
              */
             int eventID = GetROMChapterStruct(chIndex)->gmapEventId;
 
-            NoCashGBAPrintf("event id is: %d", eventID);
+            NoCashGBAPrintf("SET event id is: %d", eventID);
             
             switch (eventID) {
             case 55:
@@ -1147,7 +1147,6 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
                 CallEvent((const u16 *)EventScrWM_Prologue_SET_NODE, 0);
                 break;
             case 2:
-                // CallEvent((const u16 *)EventScrWM_Ch2_SET_NODE, 0);
                 break;
             case 3:
                 CallEvent((const u16 *)EventScrWM_Ch2_SET_NODE, 0);
@@ -1158,23 +1157,20 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             case 5:
                 CallEvent((const u16 *)EventScrWM_Ch4_SET_NODE, 0);
                 break;
-            // case 6:
-            //     break;
+            case 6:
+                break;
             case 7:
                 CallEvent((const u16 *)EventScrWM_Ch5_SET_NODE, 0);
                 break;
-            // case 8:
-            //     CallEvent((const u16 *)EventScrWM_Ch7_SET_NODE, 0);
-            //     break;
-            // case 9:
-            //     CallEvent((const u16 *)EventScrWM_Ch8_SET_NODE, 0);
-            //     break;
-            // case 10:
-            //     CallEvent((const u16 *)EventScrWM_Ch9_SET_NODE, 0);
-            //     break;
-            // case 11:
-            //     CallEvent((const u16 *)EventScrWM_Ch10_SET_NODE, 0);
-            //     break;
+            case 8:
+                CallEvent((const u16 *)EventScrWM_Ch6_SET_NODE, 0);
+                break;
+            case 9:
+                CallEvent((const u16 *)EventScrWM_Ch7_SET_NODE, 0);
+                break;
+            case 10:
+                CallEvent((const u16 *)EventScrWM_Ch8_SET_NODE, 0);
+                break;
             default: 
                 CallEvent(Events_WM_Beginning[eventID], 0);
                 break;
@@ -1199,16 +1195,16 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         * I'm looking to remove, but it frees me from having to rely on the list in ASM in vanilla.
         */
         int eventID = GetROMChapterStruct(gPlaySt.chapterIndex)->gmapEventId;
+
+        NoCashGBAPrintf("TRAVEL event id is: %d", eventID);
             
         switch (eventID) {
         case 55:
-            // CallEvent((const u16 *)EventScrWM_Ch1_ENDING, 0);
             break;
         case 1:
             CallEvent((const u16 *)EventScrWM_Prologue_TRAVEL_TO_NODE, 0);
             break;
         case 2:
-            // CallEvent((const u16 *)EventScrWM_Ch2_TRAVEL_TO_NODE, 0);
             break;
         case 3:
             CallEvent((const u16 *)EventScrWM_Ch2_TRAVEL_TO_NODE, 0);
@@ -1219,23 +1215,20 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         case 5:
             CallEvent((const u16 *)EventScrWM_Ch4_TRAVEL_TO_NODE, 0);
             break;
-        // case 6:
-        //     break;
+        case 6:
+            break;
         case 7:
             CallEvent((const u16 *)EventScrWM_Ch5_TRAVEL_TO_NODE, 0);
             break;
-        // case 8:
-        //     CallEvent((const u16 *)EventScrWM_Ch7_SET_NODE, 0);
-        //     break;
-        // case 9:
-        //     CallEvent((const u16 *)EventScrWM_Ch8_SET_NODE, 0);
-        //     break;
-        // case 10:
-        //     CallEvent((const u16 *)EventScrWM_Ch9_SET_NODE, 0);
-        //     break;
-        // case 11:
-        //     CallEvent((const u16 *)EventScrWM_Ch10_SET_NODE, 0);
-        //     break;
+        case 8:
+            CallEvent((const u16 *)EventScrWM_Ch6_TRAVEL_TO_NODE, 0);
+            break;
+        case 9:
+            CallEvent((const u16 *)EventScrWM_Ch7_TRAVEL_TO_NODE, 0);
+            break;
+        case 10:
+            CallEvent((const u16 *)EventScrWM_Ch8_TRAVEL_TO_NODE, 0);
+            break;
         default: 
             CallEvent(Events_WM_ChapterIntro[eventID], 0);
             break;

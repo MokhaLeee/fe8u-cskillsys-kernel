@@ -164,7 +164,7 @@ LABEL(0)
     STAL(20)
 
 LABEL(99)
-    NoFade
+    NOFADE
     ENDA
 };
 

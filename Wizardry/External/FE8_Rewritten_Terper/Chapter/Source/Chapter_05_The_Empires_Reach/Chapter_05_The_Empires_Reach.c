@@ -4,10 +4,10 @@
 
 const struct ROMChapterData Chapter05 = {
     .map = {
-       .obj1Id = 0x1,
+       .obj1Id = 0xE,
        .obj2Id= 0,
-       .paletteId = 0x2,
-       .tileConfigId = 3,
+       .paletteId = 0xF,
+       .tileConfigId = 10,
        .mainLayerId = 0x1F, // Map pointer. In blocks of 4 per chapter
        .objAnimId = 0x12,
        .paletteAnimId = 0,

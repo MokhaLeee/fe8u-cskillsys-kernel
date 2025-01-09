@@ -129,7 +129,7 @@ WORD 0
 ALIGN 4
 ExampleEvent:
 ASMC StartBmReclass
-NoFade 
+NOFADE 
 ENDA 
 
 #ifdef Take_Over_Item_Menu

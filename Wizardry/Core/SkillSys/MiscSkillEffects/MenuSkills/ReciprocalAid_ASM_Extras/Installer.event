@@ -28,11 +28,11 @@ HarmAndHealEvent:
 ASMC ASMC_SelfDamageLikeBomb|1
 SADD s1 s2 s0 // unit to heal 
 ASMC ASMC_HealLikeVulnerary|1
-NoFade 
+NOFADE 
 ENDA 
 
 ALIGN 4  
 HealTargetEvent:
 ASMC ASMC_HealLikeVulnerary|1
-NoFade 
+NOFADE 
 ENDA 

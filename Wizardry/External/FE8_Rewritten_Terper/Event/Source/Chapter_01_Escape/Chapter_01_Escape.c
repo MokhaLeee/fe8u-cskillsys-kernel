@@ -102,11 +102,11 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT(CH1_BREGUET_FORCES)
     STAL(60)
     HIGHLIGHT_COORDINATES(2, 2, 60)
-    Text_BG(0x26, Chapter_01_Scene_01_Convo_01)
+    TEXT_BG(0x26, Chapter_01_Scene_01_Convo_01)
     LOAD_WAIT(CH1_FRELIAN_FORCES)
     ERASE(0xC1)
     HIGHLIGHT_CHARACTER(CHARACTER_BREGUET, 60)
-    Text_BG(0x1C, Chapter_01_Scene_02_Convo_01)
+    TEXT_BG(0x1C, Chapter_01_Scene_02_Convo_01)
     MOVE_WAIT(0, CHARACTER_BREGUET, 2, 3)
     /* Force set battle-quotes flag to make the following script-battle not to show battle quote */
     ENUT(EVFLAG_BATTLE_QUOTES)
@@ -123,7 +123,7 @@ static const EventScr EventScr_Beginning[] = {
     KILL(0xC0)
     ERASE(0xC0)
     HIGHLIGHT_CHARACTER(CHARACTER_BREGUET, 60)
-    Text(Chapter_01_Scene_02_Convo_02)
+    TEXT(Chapter_01_Scene_02_Convo_02)
     MOVE_WAIT(0, CHARACTER_BREGUET, 2, 2)
     MOVE_POSITION_WAIT(24, 1, 6, 1, 3)
     MOVE_POSITION_WAIT(24, 3, 6, 3, 3)
@@ -133,11 +133,11 @@ static const EventScr EventScr_Beginning[] = {
     MOVE_POSITION_WAIT(24, 2, 9, 2, 8)
     STAL(60)
     HIGHLIGHT_COORDINATES(2, 2, 60)
-    Text_BG(0x26, Chapter_01_Scene_03_Convo_01)
+    TEXT_BG(0x26, Chapter_01_Scene_03_Convo_01)
     LOAD_WAIT_PERSIST(CH1_EIRIKA_SETH)
     SET_UNIT_HP(CHARACTER_SETH, 10)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
-    Text(Chapter_01_Scene_04_Convo_01)
+    TEXT(Chapter_01_Scene_04_Convo_01)
 
     /**
      * Temporary flag(11) is used for triggering event: EventScr_Ch1_Turn_EnemyReinforceArrive,
@@ -145,13 +145,13 @@ static const EventScr EventScr_Beginning[] = {
      */
     ENUT(EVFLAG_TMP(11))
 
-    NoFade
+    NOFADE
     ENDA
 };
 
 static const EventScr EventScr_Ending[] = {
     MUSC(BGM_VICTORY)
-    Text_BG(0x26, Chapter_01_Scene_10_Convo_01)
+    TEXT_BG(0x26, Chapter_01_Scene_10_Convo_01)
     REMA
     FADE_OUT_SCREEN(16)
     NEXT_CHAPTER_WITH_MAP(0x38)
@@ -176,7 +176,7 @@ static const EventListScr EventScr_FRANZ_RETURNS[] = {
     MUSC(BGM_COMRADES)
     LOAD_WAIT_PERSIST(CH1_REINFORCEMENTS_ALLIES)
     HIGHLIGHT_CHARACTER(CHARACTER_FRANZ, 60)
-    Text(Chapter_01_Scene_05_Convo_01)
+    TEXT(Chapter_01_Scene_05_Convo_01)
     GOTO(0x1)
 
 LABEL(0x0)
@@ -185,7 +185,7 @@ LABEL(0x0)
     ENUF_SLOT2
 
 LABEL(0x1)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -226,8 +226,8 @@ static const EventListScr EventListScr_Location[] = {
 };
 
 static const EventListScr EventListScr_Misc[] = {
-    DefeatAll(EventScr_Ending)
-    CauseGameOverIfLordDies
+    DEFEAT_ALL(EventScr_Ending)
+    CAUSE_GAME_OVER_IF_LORD_DIES
     END_MAIN
 };
 

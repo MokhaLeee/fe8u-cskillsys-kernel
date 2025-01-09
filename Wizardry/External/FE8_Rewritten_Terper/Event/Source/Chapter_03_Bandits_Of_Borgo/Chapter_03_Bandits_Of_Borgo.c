@@ -180,12 +180,12 @@ static const EventScr EventScr_Beginning[] = {
     FADE_IN_SCREEN(16)
     LOAD_WAIT_PERSIST(CH3_PLAYER_UNITS)
     HIGHLIGHT_CHARACTER(CHARACTER_NEIMI, 60)
-    Text(Chapter_03_Scene_03_Convo_01)
+    TEXT(Chapter_03_Scene_03_Convo_01)
     MOVE_CAMERA_TO_UNIT(CHARACTER_BAZBA)
     MUSC(BGM_SHADOW_OF_THE_ENEMY)
     HIGHLIGHT_CHARACTER(CHARACTER_BAZBA, 60)
-    Text(Chapter_03_Scene_03_Convo_02)
-    NoFade
+    TEXT(Chapter_03_Scene_03_Convo_02)
+    NOFADE
     ENDA
 };
 
@@ -219,7 +219,7 @@ LABEL(0x2)
     FADE_IN_SCREEN(16)
     MUSC(BGM_SOLVE_THE_RIDDLE)
     HIGHLIGHT_CHARACTER(CHARACTER_VIGARDE, 60)
-    Text(Chapter_03_Scene_07_Convo_01)
+    TEXT(Chapter_03_Scene_07_Convo_01)
     SOUN(SFX_UNLOCKING_DOOR)
     TILECHANGE_COORDINATES(14, 8)
     MOVE_TWICE_WAIT(36, CHARACTER_DUESSEL, 14, 4, 12, 4)
@@ -227,7 +227,7 @@ LABEL(0x2)
     MOVE_1STEP_WAIT(36, CHARACTER_SELENA, MOVE_RIGHT)
     LOAD_WAIT(CH3_GRADO_2)
     HIGHLIGHT_CHARACTER(CHARACTER_VIGARDE, 60)
-    Text(Chapter_03_Scene_07_Convo_02)
+    TEXT(Chapter_03_Scene_07_Convo_02)
     FADE_OUT_SCREEN(16)
     NEXT_CHAPTER_WITH_MAP(0x4) // Chapter 4 - Ancient Horrors
     ENDA
@@ -245,7 +245,7 @@ static const EventListScr EventScr_COLM_APPEARS[] = {
     LOAD_WAIT_PERSIST(CH3_COLM)
     MUSC(BGM_BINDING_VOW)
     HIGHLIGHT_CHARACTER(CHARACTER_COLM, 60)
-    Text(Chapter_03_Colm_Appears)
+    TEXT(Chapter_03_Colm_Appears)
     MOVE_CLOSEST_ENUN(0, CHARACTER_COLM, 2, 4)
     GOTO(0x1)
 
@@ -255,7 +255,7 @@ LABEL(0x0)
     ENUF_SLOT2
 
 LABEL(0x1)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -268,7 +268,7 @@ static const EventListScr EventScr_ROSS_APPEARS[] = {
     LOAD_WAIT_PERSIST(CH3_ROSS)
     MUSC(BGM_BINDING_VOW)
     HIGHLIGHT_CHARACTER(CHARACTER_ROSS, 30)
-    Text(Chapter_03_Ross_Appears)
+    TEXT(Chapter_03_Ross_Appears)
     GOTO(0x1)
 
 LABEL(0x0)
@@ -277,27 +277,27 @@ LABEL(0x0)
     ENUF_SLOT2
 
 LABEL(0x1)
-    NoFade
+    NOFADE
     ENDA
 };
 
 static const EventListScr EventScr_Talk_ROSS_EIRIKA[] = {
     CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
     STAL(33)
-    Text(Chapter_03_Ross_Eirika)
+    TEXT(Chapter_03_Ross_Eirika)
     RESTORE_PREVIOUS_MUSIC
     CHANGE_TO_BLUE(CHARACTER_ROSS)
-    NoFade
+    NOFADE
     ENDA
 };
 
 static const EventListScr EventScr_Talk_COLM_NEIMI[] = {
     CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
     STAL(33)
-    Text(Chapter_03_Colm_Neimi)
+    TEXT(Chapter_03_Colm_Neimi)
     RESTORE_PREVIOUS_MUSIC
     CHANGE_TO_BLUE(CHARACTER_COLM)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -318,20 +318,20 @@ static const EventListScr EventListScr_Character[] = {
 };
 
 static const EventListScr EventListScr_Location[] = {
-    Door(2, 3, EVFLAG_TMP(11))
-    Door(10, 5, EVFLAG_TMP(12))
-    Door(6, 10, EVFLAG_TMP(13))
-    Chest(ITEM_BOW_BEACONBOW, 6, 12)
-    Chest(ITEM_AXE_FIENDCLEAVER, 10, 3)
-    Chest(ITEM_LANCE_BRIGHTLANCE, 8, 3)
-    Chest(ITEM_SWORD_SHADOWKILLR, 6, 3)
+    DOOR(2, 3, EVFLAG_TMP(11))
+    DOOR(10, 5, EVFLAG_TMP(12))
+    DOOR(6, 10, EVFLAG_TMP(13))
+    CHEST(ITEM_BOW_BEACONBOW, 6, 12)
+    CHEST(ITEM_AXE_FIENDCLEAVER, 10, 3)
+    CHEST(ITEM_LANCE_BRIGHTLANCE, 8, 3)
+    CHEST(ITEM_SWORD_SHADOWKILLR, 6, 3)
     Seize(14, 1)
     END_MAIN
 };
 
 static const EventListScr EventListScr_Misc[] = {
-    DefeatAll(EventScr_Ending)
-    CauseGameOverIfLordDies
+    DEFEAT_ALL(EventScr_Ending)
+    CAUSE_GAME_OVER_IF_LORD_DIES
     END_MAIN
 };
 

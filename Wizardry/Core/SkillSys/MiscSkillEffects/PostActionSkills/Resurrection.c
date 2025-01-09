@@ -41,7 +41,7 @@ bool PostActionResurrection(ProcPtr proc)
             ASMC(PrepareResurrection)
             BREAKSTONE_TARGET_UNIT
             ASMC(MapAnim_CommonEnd)
-            NoFade
+            NOFADE
             ENDA
         };
         KernelCallEvent(EventScr_PostActionResurrection, EV_EXEC_CUTSCENE, proc);

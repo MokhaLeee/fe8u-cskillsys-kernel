@@ -28,11 +28,11 @@ static const struct UnitDefinition CH1_MOULDER_TANA[] = {
  */
 static const EventScr EventScr_Beginning[] = {
     MUSC(BGM_VICTORY)
-    SetBackground(0xE)
+    SET_BACKGROUND(0xE)
     TEXTSTART
     TEXTSHOW(Chapter_01_Scene_11_Convo_01)
     TEXTEND
-    SetBackground(0x35)
+    SET_BACKGROUND(0x35)
     REMA
     MUSIC_FADEOUT(MUTE)
     TEXTCONT
@@ -42,17 +42,17 @@ static const EventScr EventScr_Beginning[] = {
     FADE_OUT_SCREEN(8)
     TEXTEND
     FADE_IN_SCREEN(8)
-    SetBackground(0xE)
+    SET_BACKGROUND(0xE)
     MUSC(BGM_SORROW)
     TEXTSTART
     TEXTSHOW(Chapter_01_Scene_11_Convo_02)
     TEXTEND
-    SetBackground(0x35)
+    SET_BACKGROUND(0x35)
     MUSIC_FADEOUT(MUTE)
     FADE_OUT_SCREEN(8)
     MUSC(BGM_INTO_THE_SHADOWS_OF_VICTORY)
     FADE_IN_SCREEN(8)
-    SetBackground(0xE)
+    SET_BACKGROUND(0xE)
     TEXTSTART
     TEXTSHOW(Chapter_01_Scene_11_Convo_03)
     TEXTEND

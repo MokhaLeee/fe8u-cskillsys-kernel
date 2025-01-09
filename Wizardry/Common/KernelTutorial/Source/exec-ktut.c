@@ -13,7 +13,7 @@ const EventScr EventScr_KTutorial[] = {
     TEXTEND
     REMA
 
-    NoFade
+    NOFADE
     ENDA
 };
 

@@ -488,7 +488,7 @@ static const EventScr EventScr_Beginning[] = {
 	SVAL(EVT_SLOT_1, 40)
 	SET_HP(CHARACTER_VIGARDE)
 
-	NoFade
+	NOFADE
 	ENDA
 };
 
@@ -521,8 +521,8 @@ static const EventListScr EventListScr_Location[] = {
 };
 
 static const EventListScr EventListScr_Misc[] = {
-	DefeatAll(EventScr_Ending)
-	CauseGameOverIfLordDies
+	DEFEAT_ALL(EventScr_Ending)
+	CAUSE_GAME_OVER_IF_LORD_DIES
 	END_MAIN
 };
 

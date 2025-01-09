@@ -145,6 +145,9 @@ enum {
 // Where you end up after pressing START
 #define SKIP_POINT EVBIT_F(2)
 
+#define MAKE_CAMERA_FOLLOW_MOVING_UNITS EVBIT_T(9)
+#define STOP_CAMERA_FOLLOW_MOVING_UNITS EVBIT_F(9)
+
 // Reduce volume of BGM
 #define REDUCE_VOLUME MUSI
 
@@ -166,14 +169,14 @@ enum {
 
 #define HOUSE_EVENT(background, message) \
     MUSI \
-    Text_BG(background, message) \
+    TEXT_BG(background, message) \
     MUNO \
-    NoFade \
+    NOFADE \
     ENDA
 
 #define HOUSE_EVENT_NO_END(background, message) \
     MUSI \
-    Text_BG(background, message) \
+    TEXT_BG(background, message) \
     MUNO
 
 #define REDUCE_VOLUME MUSI
@@ -207,7 +210,7 @@ enum {
     CHECK_PLAYERS \
     SVAL(EVT_SLOT_7, 0) \
     BEQ(0x0, EVT_SLOT_C, EVT_SLOT_7) \
-    NoFade \
+    NOFADE \
     ENDA \
 LABEL(0x0) \
     ENUT(0x3) \
@@ -242,11 +245,11 @@ enum {
 };
 
 #define TEXT_BG_HIDE_MAP(bg, msg) \
-    SetBackground(bg) \
+    SET_BACKGROUND(bg) \
     TEXTSTART \
     TEXTSHOW(msg) \
     TEXTEND \
-    SetBackground(BLACK_BACKGROUND) \
+    SET_BACKGROUND(BLACK_BACKGROUND) \
     REMA
 
 #define MOVE_CAMERA_TO_UNIT_CENTER(unit) CAMERA2_CAHR(unit)
@@ -307,5 +310,5 @@ enum {
     STAL(30) \
     BREAKSTONE(CHAR_EVT_POSITION_AT_SLOTB) \
     EvtColorFadeSetup(0x0, 0x20, 4, 256, 256, 256) \
-    NoFade \
+    NOFADE \
     ENDA

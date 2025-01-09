@@ -45,7 +45,7 @@ _ArenaLimitEvent:
 	CenterTutorialTextBox
 	TEXTSHOW ArenaLimitTextID
 	TEXTEND
-	NoFade
+	NOFADE
 ENDA
 
 setTextToRAM(ArenaLimitTextID, _FreeSpaceRAM)

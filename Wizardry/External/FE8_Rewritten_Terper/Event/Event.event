@@ -18,6 +18,9 @@
     EventPointerTable(0x21, Chapter05Event)
     #include "Source/Chapter_05_The_Empires_Reach/Chapter_05_The_Empires_Reach.lyn.event"
     #include "Source/Chapter_05_The_Empires_Reach/Map/Chapter_05_map.event"
+    EventPointerTable(0x1E, Chapter05xEvent)
+    #include "Source/Chapter_05x_Unbroken_Heart/Chapter_05x_Unbroken_Heart.lyn.event"
+    #include "Source/Chapter_05x_Unbroken_Heart/Map/Chapter_05x_map.event"
 }
 
     #include "Source/World_Map_Events.lyn.event"

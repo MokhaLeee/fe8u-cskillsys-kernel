@@ -494,11 +494,11 @@ const EventScr EventScrWM_Renval_CH5[] = {
 };
 
 const EventScr EventScrWM_Ch5_SET_NODE[] = {
-//     CHECK_EVENTID(136)
-//     BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
-//     CALL(EventScrWM_Renval_CH5)
-//     GOTO(0x2)
-// LABEL(0x1)
+    CHECK_EVENTID(136)
+    BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
+    CALL(EventScrWM_Renval_CH5)
+    GOTO(0x2)
+LABEL(0x1)
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_ZahaWoods)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -523,7 +523,7 @@ LABEL(0x2)
 const EventScr EventScrWM_Ch5_TRAVEL_TO_NODE[] = {
     CHECK_EVENTID(136)
     BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
-    CALL(EventScrWM_08A3A4D0)
+    CALL(EventScrWM_Ch5x_STUFF)
     GOTO(0x2)
 LABEL(0x1)
     STAL(6)
@@ -593,7 +593,12 @@ LABEL(0x2)
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch6_TRAVEL_TO_NODE[] = {
+const EventScr EventScrWM_Ch5x_STUFF[] = {
+    FADI(16)
+    ENDA
+};
+
+const EventScr EventScrWM_Ch6_SET_NODE[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Serafew)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -601,7 +606,9 @@ CONST_DATA EventScr EventScrWM_Ch6_TRAVEL_TO_NODE[] = {
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_CREATENEXTDESTINATION
+    WM_LOADLOCATION2(WM_NODE_AdlasPlains)
+    WM_SETDESTINATION(WM_NODE_AdlasPlains)
+    // WM_CREATENEXTDESTINATION
     WM_WAITFORFX
     STAL(40)
     WM_DRAWPATH(WM_PATH_05)
@@ -612,7 +619,7 @@ CONST_DATA EventScr EventScrWM_Ch6_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch6_SET_NODE[] = {
+const EventScr EventScrWM_Ch6_TRAVEL_TO_NODE[] = {
     STAL(6)
     WM_MOVECAM(-1, -1, 48, 132, 60, 0)
     WM_WAITFORCAM
@@ -640,7 +647,7 @@ CONST_DATA EventScr EventScrWM_Ch6_SET_NODE[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch7_TRAVEL_TO_NODE[] = {
+const EventScr EventScrWM_Ch7_TRAVEL_TO_NODE[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_AdlasPlains)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -659,7 +666,7 @@ CONST_DATA EventScr EventScrWM_Ch7_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch7_SET_NODE[] = {
+const EventScr EventScrWM_Ch7_SET_NODE[] = {
     STAL(6)
     WM_MOVECAM(-1, -1, 84, 152, 60, 0)
     WM_WAITFORCAM
@@ -686,7 +693,7 @@ CONST_DATA EventScr EventScrWM_Ch7_SET_NODE[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch8_SET_NODE[] = {
+const EventScr EventScrWM_Ch8_SET_NODE[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall2)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -700,13 +707,13 @@ CONST_DATA EventScr EventScrWM_Ch8_SET_NODE[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch8_TRAVEL_TO_NODE[] = {
+const EventScr EventScrWM_Ch8_TRAVEL_TO_NODE[] = {
     EVBIT_MODIFY(0x1)
     ENUT(136)
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Intermission_Renvall_To_Serafew[] = {
+const EventScr EventScrWM_Intermission_Renvall_To_Serafew[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall1)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -725,7 +732,7 @@ CONST_DATA EventScr EventScrWM_Intermission_Renvall_To_Serafew[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Intermission_Serafew_To_Frelia[] = {
+const EventScr EventScrWM_Intermission_Serafew_To_Frelia[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Serafew)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -750,7 +757,7 @@ CONST_DATA EventScr EventScrWM_Intermission_Serafew_To_Frelia[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch9_TRAVEL_TO_NODE[] = {
+const EventScr EventScrWM_Ch9_TRAVEL_TO_NODE[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_CastleFrelia)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -784,7 +791,7 @@ CONST_DATA EventScr EventScrWM_Ch9_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
-CONST_DATA EventScr EventScrWM_Ch9_SET_NODE[] = {
+const EventScr EventScrWM_Ch9_SET_NODE[] = {
     STAL(6)
     WM_MOVECAM(-1, -1, 64, 0, 60, 0)
     WM_WAITFORCAM

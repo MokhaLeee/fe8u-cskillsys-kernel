@@ -7,5 +7,7 @@ PUSH
     #include "Source/Chapter_03_Bandits_Of_Borgo/Chapter_03_Bandits_Of_Borgo.lyn.event"
     #include "Source/Chapter_04_Ancient_Horrors/Chapter_04_Ancient_Horrors.lyn.event"
     #include "Source/Chapter_05_The_Empires_Reach/Chapter_05_The_Empires_Reach.lyn.event"
+    #include "Source/Chapter_05x_Unbroken_Heart/Chapter_05x_Unbroken_Heart.lyn.event"
+    #include "Source/Chapter_06_Victims_Of_War/Chapter_06_Victims_Of_War.lyn.event"
 }
 POP

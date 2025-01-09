@@ -54,71 +54,71 @@
 
 //Location based event helpers
 #ifdef _FE6_
-#define Village(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0xE; LOCA eventID [villX,villY-1] 0x1D"
+#define VILLAGE(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0xE; LOCA eventID [villX,villY-1] 0x1D"
 #define House(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0xE"
-#define Armory(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x13"
-#define Vendor(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x14"
+#define ARMORY(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x13"
+#define VENDOR(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x14"
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x15"
-#define Chest(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
+#define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
 #define ChestMoney(amountOfMoney,chestX,villY)  "CHES 0 0x6F+amountOfMoney*0x10000 [chestX,chestY] 0x12"
-#define Door(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
+#define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
 #define Seize(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
 #define Seize(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
 #endif
 
 #ifdef _FE7_
-#define Village(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0xE; LOCA eventID [villX,villY-1] 0x1D"
+#define VILLAGE(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0xE; LOCA eventID [villX,villY-1] 0x1D"
 #define House(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0xE"
-#define Armory(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x13"
-#define Vendor(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x14"
+#define ARMORY(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x13"
+#define VENDOR(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x14"
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x15"
-#define Chest(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
+#define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
 #define ChestMoney(amountOfMoney,chestX,villY)  "CHES 0 0x76+amountOfMoney*0x10000 [chestX,chestY] 0x12"
-#define Door(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
+#define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
 #define Seize(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
 #define Seize(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
 #endif
 
 #ifdef _FE8_
-#define Village(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0x10; LOCA eventID [villX,villY-1] 0x20"
+#define VILLAGE(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0x10; LOCA eventID [villX,villY-1] 0x20"
 #define House(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0x10"
-#define Armory(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x16"
-#define Vendor(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x17"
+#define ARMORY(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x16"
+#define VENDOR(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x17"
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x18"
-#define Chest(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x14"
+#define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x14"
 #define ChestMoney(amountOfMoney,chestX,chestY)     "CHES 0 0x77+amountOfMoney*0x10000 [chestX,chestY] 0x14"
-#define Door(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x12"
+#define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x12"
 #define Seize(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0x11"
 #define Seize(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0x11"
 #endif
 
 //Misc based event helpers
 #ifdef _FE6_
-#define CauseGameOverIfLordDies "AFEV 0 0x66AC6C 0x65"
+#define CAUSE_GAME_OVER_IF_LORD_DIES "AFEV 0 0x66AC6C 0x65"
 #define DefeatBoss(offset) "AFEV 0 offset 2"
-#define DefeatAll(event) "ASME 0 event 0x6C2F9"
+#define DEFEAT_ALL(event) "ASME 0 event 0x6C2F9"
 #endif
 
 #ifdef _FE7_
 #ifndef _FE7J_
-#define CauseGameOverIfLordDies "AFEV 0 0xCA749C 0x65"
+#define CAUSE_GAME_OVER_IF_LORD_DIES "AFEV 0 0xCA749C 0x65"
 #endif
 #define DefeatBoss(offset) "AFEV 0 offset 2"
 #ifndef _FE7J_
-#define DefeatAll(offset) "ASME 0 offset $79FE9"
+#define DEFEAT_ALL(offset) "ASME 0 offset $79FE9"
 #endif
 #endif
 
 #ifdef _FE7J_
-#define CauseGameOverIfLordDies "AFEV 0 0xD6F71C 0x65"
-#define DefeatAll(offset) "ASME 0 offset $7AA5D"
+#define CAUSE_GAME_OVER_IF_LORD_DIES "AFEV 0 0xD6F71C 0x65"
+#define DEFEAT_ALL(offset) "ASME 0 offset $7AA5D"
 #endif
 
 #ifdef _FE8_
-#define CauseGameOverIfLordDies "AFEV 0 0x592104 0x65"
+#define CAUSE_GAME_OVER_IF_LORD_DIES "AFEV 0 0x592104 0x65"
 #define DefeatBoss(offset) "AFEV 0 offset 2"
-#define DefeatAll(offset) "AFEV 0 offset 6"
-#define NoFade "EVBIT_T 0x7"
+#define DEFEAT_ALL(offset) "AFEV 0 offset 6"
+#define NOFADE "EVBIT_T 0x7"
 #endif
 
 

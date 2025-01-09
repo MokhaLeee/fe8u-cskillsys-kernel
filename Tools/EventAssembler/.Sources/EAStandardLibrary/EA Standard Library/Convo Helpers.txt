@@ -1,13 +1,13 @@
 
 //Show text with background and return to map
 #ifdef _FE6_
-#define Text(text) "TEX1 text; REMA"
-#define Text(background,text) "FADI 0x10; HIDEMAP; BACG background; FADU 0x10; SHOWMAP; TEX1 text; REMA"
+#define TEXT(text) "TEX1 text; REMA"
+#define TEXT(background,text) "FADI 0x10; HIDEMAP; BACG background; FADU 0x10; SHOWMAP; TEX1 text; REMA"
 #endif
 
 #ifdef _FE7_
-#define Text(text) "TEX1 text; REMA"
-#define Text(background,text) "FADI 0x10; HIDEMAP; BACG background; FADU 0x10; SHOWMAP; TEX1 text; REMA"
+#define TEXT(text) "TEX1 text; REMA"
+#define TEXT(background,text) "FADI 0x10; HIDEMAP; BACG background; FADU 0x10; SHOWMAP; TEX1 text; REMA"
 #ifndef _FE7J_
 #define ClearBrownBox "_ASM0x42 0x83181"
 #endif
@@ -18,12 +18,12 @@
 #endif
 
 #ifdef _FE8_
-#define Text(text) "TEXTSTART; TEXTSHOW text; TEXTEND; REMA"
-#define Text(background,text) "SVAL 2 background; SVAL 3 text; CALL $9EE310"
+#define TEXT(text) "TEXTSTART; TEXTSHOW text; TEXTEND; REMA"
+#define TEXT(background,text) "SVAL 2 background; SVAL 3 text; CALL $9EE310"
 #define ShowText(id) "TEXTSHOW id; TEXTEND"
 #define StartText(id) "TEXTSTART; ShowText(id)"
 #define ContinueText "TEXTCONT; TEXTEND"
-#define SetBackground(background) "SVAL 2 background; CALL $9EE2E8" //EVBIT 0x8 = fade in?
+#define SET_BACKGROUND(background) "SVAL 2 background; CALL $9EE2E8" //EVBIT 0x8 = fade in?
 #define ClearBackground "CALL 0x9EE2C4"
 #define ClearBackgroundSmooth "FADI 0x10; ClearBackground"
 #define CenterTutorialTextBox "SVAL 0xB 0xFFFFFFFF"

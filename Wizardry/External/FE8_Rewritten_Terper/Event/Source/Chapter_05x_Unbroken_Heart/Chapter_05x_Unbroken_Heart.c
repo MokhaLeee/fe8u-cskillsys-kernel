@@ -1,0 +1,387 @@
+#include "common-chax.h"
+#include "skill-system.h"
+#include "constants/skills.h"
+#include "constants/texts.h"
+#include "jester_headers/macros.h"
+#include "jester_headers/soundtrack-ids.h"
+#include "jester_headers/maps.h"
+#include "jester_headers/flags.h"
+#include "jester_headers/miscellaenous.h"
+#include "EAstdlib.h"
+
+static const struct REDA REDAs_NULL[] = {
+    {} 
+};
+
+/**
+ * Ally unit and REDA definitions
+ */
+static const struct REDA REDAs_EPHRAIM_2[] = {
+    { .x = 1, .y = 17, .b = -1, .delayFrames = 0, },
+};
+
+static const struct UnitDefinition CH5X_PLAYER_UNITS[] = {
+    UNIT_ENTRY(CHARACTER_EPHRAIM, CLASS_EPHRAIM_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 1, 18, 1, REDAs_EPHRAIM_2, 0, 0, 0, 0, ITEM_LANCE_REGINLEIF, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_FORDE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 3, 17, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_STEEL, ITEM_LANCE_JAVELIN, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_KYLE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 5, 0, 16, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_IRON, ITEM_LANCE_STEEL, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_ORSON_CH5X, CLASS_PALADIN, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 3, 2, 18, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_SILVER, ITEM_LANCE_SILVER, ITEM_VULNERARY),
+    {},
+};
+
+static const struct UnitDefinition CH5X_EPHRAIM_SOLDIERS_1[] = {
+    UNIT_ENTRY(CHARACTER_EPHRAIM, CLASS_EPHRAIM_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 21, 11, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_LANCE_REGINLEIF, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_FORDE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 20, 12, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_STEEL, ITEM_LANCE_JAVELIN, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_KYLE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 5, 22, 12, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_IRON, ITEM_LANCE_STEEL, ITEM_VULNERARY),
+    {},
+};
+
+static const struct REDA REDAs_EPHRAIM_1[] = {
+    { .x = 9, .y = 8, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_FORDE_1[] = {
+    { .x = 9, .y = 9, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_KYLE_1[] = {
+    { .x = 8, .y = 9, .b = -1, .delayFrames = 0 },
+};
+
+static const struct REDA REDAs_ORSON_1[] = {
+    { .x = 8, .y = 10, .b = -1, .delayFrames = 0, },
+};
+
+
+static const struct UnitDefinition CH5X_EPHRAIM_SOLDIERS_2[] = {
+    UNIT_ENTRY(CHARACTER_EPHRAIM, CLASS_EPHRAIM_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 9, 12, 1, REDAs_EPHRAIM_1, 0, 0, 0, 0, ITEM_LANCE_REGINLEIF, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_FORDE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 3, 17, 1, REDAs_FORDE_1, 0, 0, 0, 0, ITEM_SWORD_STEEL, ITEM_LANCE_JAVELIN, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_KYLE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 5, 0, 16, 1, REDAs_KYLE_1, 0, 0, 0, 0, ITEM_SWORD_IRON, ITEM_LANCE_STEEL, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_ORSON_CH5X, CLASS_PALADIN, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 3, 2, 18, 1, REDAs_ORSON_1, 0, 0, 0, 0, ITEM_SWORD_SILVER, ITEM_LANCE_SILVER, ITEM_VULNERARY),
+    {},
+};
+
+static const struct REDA REDAs_ORSON_2[] = {
+    { .x = 12, .y = 13, .b = -1, .delayFrames = 0, },
+    { .x = 12, .y = 10, .b = -1, .delayFrames = 0, },
+};
+
+
+static const struct UnitDefinition CH5X_EPHRAIM_SOLDIERS_3[] = {
+    UNIT_ENTRY(CHARACTER_EPHRAIM, CLASS_EPHRAIM_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 12, 8, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_LANCE_REGINLEIF, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_FORDE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 14, 10, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_STEEL, ITEM_LANCE_JAVELIN, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_KYLE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 5, 14, 8, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_IRON, ITEM_LANCE_STEEL, ITEM_VULNERARY),
+    UNIT_ENTRY(CHARACTER_ORSON_CH5X, CLASS_PALADIN, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 3, 8, 4, 1, REDAs_ORSON_2, 0, 0, 0, 0, ITEM_SWORD_SILVER, ITEM_LANCE_SILVER, ITEM_VULNERARY),
+    {},
+};
+
+static const struct REDA REDAs_EPHRAIM_3[] = {
+    { .x = 9, .y = 5, .b = -1, .delayFrames = 0, },
+    { .x = 9, .y = 6, .b = -1, .delayFrames = 0, },
+    { .x = 9, .y = 13, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_FORDE_2[] = {
+    { .x = 9, .y = 12, .b = -1, .delayFrames = 0, },
+    { .x = 11, .y = 12, .b = -1, .delayFrames = 0, },
+    { .x = 11, .y = 14, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_KYLE_2[] = {
+    { .x = 9, .y = 12, .b = -1, .delayFrames = 0, },
+    { .x = 11, .y = 12, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_ORSON_3[] = {
+    { .x = 9, .y = 12, .b = -1, .delayFrames = 0, },
+};
+
+
+static const struct UnitDefinition CH5X_EPHRAIM_SOLDIERS_4[] = {
+    UNIT_ENTRY(CHARACTER_EPHRAIM, CLASS_EPHRAIM_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 9, 4, 3, REDAs_EPHRAIM_3, 0, 0, 0, 0),
+    UNIT_ENTRY(CHARACTER_FORDE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 4, 9, 4, 3, REDAs_FORDE_2, 0, 0, 0, 0),
+    UNIT_ENTRY(CHARACTER_KYLE, CLASS_CAVALIER, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 5, 9, 14, 2, REDAs_KYLE_2, 0, 0, 0, 0),
+    UNIT_ENTRY(CHARACTER_ORSON_CH5X, CLASS_PALADIN, FACTION_ID_BLUE,  NO_ITEM_DROP, NO_AUTOLEVEL, 3, 9, 4, 1, REDAs_ORSON_3, 0, 0, 0, 0),
+    {},
+};
+
+/**
+ * Enemy unit and REDA definitions
+ */
+
+static const struct UnitDefinition CH5X_ENEMY_UNITS[] = {
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARMOR_KNIGHT, FACTION_ID_RED, ITEM_DROP, AUTOLEVEL, 3, 4, 11, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_IRON, ITEM_DOORKEY), 
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 5, 12, 10, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARMOR_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 4, 13, 12, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_ZONTA, CLASS_MERCENARY, FACTION_ID_RED, NO_ITEM_DROP, NO_AUTOLEVEL, 8, 13, 7, 0, REDAs_NULL, 3, 3, 9, 20, ITEM_BLADE_IRON), 
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, ITEM_DROP, AUTOLEVEL, 5, 0, 10, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_LANCE_IRON, ITEM_CHESTKEY),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SHAMAN, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 3, 10, 8, 0,  REDAs_NULL, 0, 3, 9, 0, ITEM_DARK_FLUX),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARCHER, FACTION_ID_RED, ITEM_DROP, AUTOLEVEL, 4, 8, 13, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_BOW_IRON, ITEM_ELIXIR),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARCHER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 4, 6, 15, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_BOW_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_MONK, FACTION_ID_RED, ITEM_DROP, AUTOLEVEL, 4, 3, 9, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LIGHT_LIGHTNING, ITEM_CHESTKEY),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARCHER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 5, 3, 3, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_BOW_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 5, 14, 10, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 6, 1, 9, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 5, 8, 11, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 5, 3, 1, 0,  REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_CAVALIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 4, 7, 0, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_SWORD_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_CAVALIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 4, 10, 2, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_FIGHTER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 4, 8, 6, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_AXE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_FIGHTER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 4, 1, 4, 0, REDAs_NULL, 0, 0, 9, 0, ITEM_AXE_IRON),
+    {}
+};
+
+static const struct UnitDefinition CH5X_TIRADO_SOLDIERS[] = {
+    UNIT_ENTRY(CHARACTER_TIRADO, CLASS_GENERAL, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 10, 2, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_LANCE_IRON, ITEM_DOORKEY), 
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 8, 8, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_LANCE_IRON),
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SOLDIER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 12, 8, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_LANCE_IRON),
+    {}
+};
+
+static const struct UnitDefinition CH5X_VALTER_1[] = {
+    UNIT_ENTRY(CHARACTER_VALTER, CLASS_WYVERN_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 10, 10, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_IRON, ITEM_DOORKEY),   
+    {}  
+};
+
+
+static const struct UnitDefinition CH5X_VALTER_SOLDIERS[] = {
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_DRUID, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 2, 4, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_DRUID, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 2, 9, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_DRUID, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 4, 15, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_DRUID, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 3, 12, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_SNIPER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 15, 8, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_WARRIOR, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 16, 11, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_GREAT_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 15, 15, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_DRUID, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 3, 10, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_DRUID, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 2, 15, 0, REDAs_NULL, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARCHER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 2, 10, 0, REDAs_NULL, 0, 3, 9, 0),   
+    {}  
+};
+
+static const struct REDA REDAs_WYVERN_RIDER_1[] = {
+    { .x = 8, .y = 9, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_WYVERN_RIDER_2[] = {
+    { .x = 5, .y = 14, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_WYVERN_RIDER_3[] = {
+    { .x = 6, .y = 11, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_WYVERN_RIDER_4[] = {
+    { .x = 9, .y = 8, .b = -1, .delayFrames = 0, },
+};
+
+static const struct REDA REDAs_WYVERN_RIDER_5[] = {
+    { .x = 8, .y = 15, .b = -1, .delayFrames = 0, },
+};
+
+static const struct UnitDefinition CH5X_VALTER_WYVERNS[] = {
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_WYVERN_RIDER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 1, 8, 1, REDAs_WYVERN_RIDER_1, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_WYVERN_RIDER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 1, 14, 1, REDAs_WYVERN_RIDER_2, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_WYVERN_RIDER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 1, 11, 1, REDAs_WYVERN_RIDER_3, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_WYVERN_RIDER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 1, 7, 1, REDAs_WYVERN_RIDER_4, 0, 3, 9, 0),   
+    UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_WYVERN_RIDER, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 8, 16, 1, REDAs_WYVERN_RIDER_5, 0, 3, 9, 0),
+    {}  
+};
+
+static const struct REDA REDAs_VALTER_1[] = {
+    { .x = 7, .y = 13, .b = -1, .delayFrames = 0, },
+};
+
+static const struct UnitDefinition CH5X_VALTER_2[] = {
+    UNIT_ENTRY(CHARACTER_VALTER, CLASS_WYVERN_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 1, 1, 13, 1, REDAs_VALTER_1, 0, 3, 9, 0),   
+    {}  
+};
+
+
+
+/**
+ * Green unit and REDA definitions
+ */
+
+/**
+ * Main events
+ */
+static const EventScr EventScr_Beginning[] = {
+    ASMC(HandleCh5xUnits_Start)
+    MUSC(BGM_SOLVE_THE_RIDDLE)
+    LOMA(CHAPTER_07) // Renvall Castle 
+    MOVE_CAMERA_TO_POSITION_CENTER(10,4)
+    FADE_IN_SCREEN(16)
+    BROWNBOXTEXT(0x657, 2, 2) // Renvall
+    HIGHLIGHT_COORDINATES(9, 4, 60)
+    FADE_OUT_SCREEN(16)
+    LOMA(CHAPTER_08) // Inside Renvall Castle
+    MOVE_CAMERA_TO_POSITION_CENTER(11, 4)
+    LOAD_WAIT(CH5X_TIRADO_SOLDIERS)
+    FADE_IN_SCREEN(16)
+    LOAD_WAIT(CH5X_VALTER_1)
+    MOVE_WAIT(16, CHARACTER_VALTER, 10, 4)
+    MOVE_WAIT(16, CHARACTER_VALTER, 9, 3)
+    MOVE_WAIT(16, CHARACTER_VALTER, 10, 2)
+    MOVE_WAIT(16, CHARACTER_TIRADO, 10, 3)
+    HIGHLIGHT_CHARACTER(CHARACTER_TIRADO, 60)
+    TEXT(Chapter_05x_Pre_Scene_01_Convo_01)
+    FADE_OUT_SCREEN(16)
+    MUSC(MUTE)
+    CLEAR_ALL_UNITS
+    LOMA(CHAPTER_06) // Victims of war map
+    MOVE_CAMERA_TO_POSITION_CENTER(20, 12)
+    LOAD_WAIT(CH5X_EPHRAIM_SOLDIERS_1)
+    FADE_IN_SCREEN(16)
+    HIGHLIGHT_CHARACTER(CHARACTER_EPHRAIM, 60)
+    SET_BACKGROUND(0x22) // Woods
+    MUSC(BGM_TENSION)
+    TEXT(Chapter_05x_Pre_Scene_02_Convo_01)
+    FADE_OUT_SCREEN(16)
+    CLEAR_ALL_UNITS
+    LOMA(CHAPTER_07) // Renvall
+    MOVE_CAMERA_TO_POSITION_CENTER(9, 7)
+    FADE_IN_SCREEN(16)
+    LOAD_WAIT(CH5X_EPHRAIM_SOLDIERS_2)
+    HIGHLIGHT_CHARACTER(CHARACTER_EPHRAIM, 60)
+    TEXT_BG(0x21, Chapter_05x_Pre_Scene_03_Convo_01)
+    MOVE(0, CHARACTER_EPHRAIM, 9, 4)
+    STAL(8)
+    MOVE(0, CHARACTER_FORDE, 9, 5)
+    MOVE(0, CHARACTER_KYLE, 8, 5)
+    MOVE(0, CHARACTER_ORSON, 8, 6)
+    STAL(8)
+    FADE_OUT_SCREEN(16)
+    ENUN
+    CLEAR_ALL_UNITS
+    LOMA(CHAPTER_05X) // Inside Renvall Castle - Ephraim
+    MOVE_CAMERA_TO_POSITION_CENTER(14, 7)
+    LOAD_WAIT_PERSIST(CH5X_ENEMY_UNITS)
+    FADE_IN_SCREEN(16)
+    HIGHLIGHT_CHARACTER(CHARACTER_ZONTA, 60)
+    TEXT(Chapter_05x_Pre_Scene_04_Convo_01)
+    MOVE_CAMERA_TO_POSITION(0, 18)
+    LOAD_WAIT_PERSIST(CH5X_PLAYER_UNITS)
+    HIGHLIGHT_CHARACTER(CHARACTER_EPHRAIM, 60)
+    SET_BACKGROUND(0x10) // Inside Castle Walls
+    TEXT(Chapter_05x_Pre_Scene_05_Convo_01)
+    MUSC(MUTE)
+    ENDA
+};
+
+static const EventScr EventScr_Ending[] = {
+    ASMC(HandleCh5xUnits_End)
+    SET_BACKGROUND(0x10)
+    MUSC(MUTE)
+    TEXT(Chapter_05x_Post_Scene_01_Convo_01)
+    FADE_OUT_SCREEN(16)
+    CLEAR_ALL_UNITS
+    CLEAN
+    MOVE_CAMERA_TO_POSITION_CENTER(13, 9)
+    LOAD_WAIT(CH5X_EPHRAIM_SOLDIERS_3)
+    FADE_IN_SCREEN(16)
+    HIGHLIGHT_CHARACTER(CHARACTER_ORSON_CH5X, 60)
+    TEXT(Chapter_05x_Post_Scene_01_Convo_02)
+    FADE_OUT_SCREEN(16)
+    CLEAR_ALL_UNITS
+    LOMA(CHAPTER_07) // Renvall
+    MOVE_CAMERA_TO_POSITION_CENTER(10, 4)
+    LOAD_WAIT(CH5X_VALTER_SOLDIERS)
+    FADE_IN_SCREEN(16)
+    MAKE_CAMERA_FOLLOW_MOVING_UNITS
+    LOAD_WAIT(CH5X_EPHRAIM_SOLDIERS_4)
+    STOP_CAMERA_FOLLOW_MOVING_UNITS
+    MUSC(BGM_RAID)
+    LOAD_WAIT(CH5X_VALTER_WYVERNS)
+    LOAD_WAIT(CH5X_VALTER_2)
+    HIGHLIGHT_CHARACTER(CHARACTER_VALTER, 60)
+    SET_BACKGROUND(0x21)
+    TEXT(Chapter_05x_Post_Scene_02_Convo_01)
+    FADE_OUT_SCREEN(16)
+    MUSC(MUTE)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew)
+    // WM_SETDESTINATION(WM_NODE_Serafew)
+    NEXT_CHAPTER_WITH_MAP(CHAPTER_06) // Chapter 6 - Victims of war
+    ENDA
+};
+
+/**
+ * Misc events
+ */
+
+/**
+ * Event list
+ */
+
+static const EventListScr EventListScr_Turn[] = {
+    END_MAIN
+};
+
+static const EventListScr EventListScr_Character[] = {
+    END_MAIN
+};
+
+static const EventListScr EventListScr_Location[] = {
+    DOOR(23, 12, EVFLAG_TMP(11))
+    DOOR(4, 10, EVFLAG_TMP(12))
+    CHEST(ITEM_ELIXIR, 4, 8)
+    CHEST(ITEM_LANCE_KILLER, 5, 8)
+    Seize(13, 7)
+    END_MAIN
+};
+
+static const EventListScr EventListScr_Misc[] = {
+    DEFEAT_ALL(EventScr_Ending)
+    CAUSE_GAME_OVER_IF_LORD_DIES
+    END_MAIN
+};
+
+static const EventListScr EventListScr_SelectUnit[] = {
+    END_MAIN
+};
+
+static const EventListScr EventListScr_SelectDestination[] = {
+    END_MAIN
+};
+
+static const EventListScr EventListScr_UnitMove[] = {
+    END_MAIN
+};
+
+static void const * const EventListScr_Tutorial[] = {
+    NULL
+};
+
+static const u8 TrapData_ThisEvent[] = {
+    TRAP_NONE
+};
+
+static const u8 TrapData_ThisEventHard[] = {
+    TRAP_NONE
+};
+
+const struct ChapterEventGroup Chapter05xEvent = {
+    .turnBasedEvents               = EventListScr_Turn,
+    .characterBasedEvents          = EventListScr_Character,
+    .locationBasedEvents           = EventListScr_Location,
+    .miscBasedEvents               = EventListScr_Misc,
+    .specialEventsWhenUnitSelected = EventListScr_SelectUnit,
+    .specialEventsWhenDestSelected = EventListScr_SelectDestination,
+    .specialEventsAfterUnitMoved   = EventListScr_UnitMove,
+    .tutorialEvents                = EventListScr_Tutorial,
+
+    .traps            = TrapData_ThisEvent,
+    .extraTrapsInHard = TrapData_ThisEventHard,
+
+    .playerUnitsInNormal = CH5X_PLAYER_UNITS,
+    .playerUnitsInHard   = CH5X_PLAYER_UNITS,
+
+    .playerUnitsChoice1InEncounter = NULL,
+    .playerUnitsChoice2InEncounter = NULL,
+    .playerUnitsChoice3InEncounter = NULL,
+
+    .enemyUnitsChoice1InEncounter = NULL,
+    .enemyUnitsChoice2InEncounter = NULL,
+    .enemyUnitsChoice3InEncounter = NULL,
+
+    .beginningSceneEvents = EventScr_Beginning,
+    .endingSceneEvents    = EventScr_Ending,
+};

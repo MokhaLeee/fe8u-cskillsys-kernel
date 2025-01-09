@@ -266,23 +266,23 @@
 #define Seize_(eid, scr, x, y) LOCA(eid, scr, x, y, TILE_COMMAND_SEIZE)
 #define Seize(x, y) Seize_(EVFLAG_WIN, EVENT_NOSCRIPT, x, y)
 
-#define CauseGameOverIfLordDies AFEV(0, EventScr_GameOver, EVFLAG_GAMEOVER)
+#define CAUSE_GAME_OVER_IF_LORD_DIES AFEV(0, EventScr_GameOver, EVFLAG_GAMEOVER)
 #define DefeatBoss(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_BOSS)
-#define DefeatAll(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_ALL)
-#define NoFade EVBIT_T(EV_STATE_SKIPPING | EV_STATE_0002 | EV_STATE_ABORT)
+#define DEFEAT_ALL(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_ALL)
+#define NOFADE EVBIT_T(EV_STATE_SKIPPING | EV_STATE_0002 | EV_STATE_ABORT)
 
 #define HouseEvent(msg, bg) \
     MUSI \
-    Text_BG(bg, msg) \
+    TEXT_BG(bg, msg) \
     MUNO \
-    NoFade \
+    NOFADE \
     ENDA
 
 #define ConvoEvent(textID) \
     MUSI \
-    Text(textID) \
+    TEXT(textID) \
     MUNO \
-    NoFade \
+    NOFADE \
     ENDA
 
 /* Unit Helpers */
@@ -303,18 +303,18 @@
 #define EndAttack                             SVAL(EVT_SLOT_1, 0xFFFFFFFF) SAVETOQUEUE
 
 /* Convo Helpers */
-#define Text(msg) \
+#define TEXT(msg) \
     TEXTSTART \
     TEXTSHOW(msg) \
     TEXTEND \
     REMA
 
-#define Text_BG(bg, msg) \
+#define TEXT_BG(bg, msg) \
     EvtSetSlot(EVT_SLOT_2, (bg)) \
     EvtSetSlot(EVT_SLOT_3, (msg)) \
     EvtCall(Event_TextWithBG)
 
-#define SetBackground(bg) \
+#define SET_BACKGROUND(bg) \
     SVAL(EVT_SLOT_2, bg) \
     CALL(EventScr_SetBackground)
 

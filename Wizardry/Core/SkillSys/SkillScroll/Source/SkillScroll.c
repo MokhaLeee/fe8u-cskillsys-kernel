@@ -58,7 +58,7 @@ static const EventScr EventScr_SkillCapacityReached[] = {
     TEXTSHOW(MSG_Skill_Capacity_Reached)
     TEXTEND
     REMA
-    NoFade
+    NOFADE
     ENDA
 };
 #endif

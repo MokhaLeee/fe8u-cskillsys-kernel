@@ -190,20 +190,20 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT_PERSIST(CH4_PLAYER_UNITS)
     SOUN(SFX_BIRDS_CHIRPING)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
-    Text_BG(0x23, Chapter_04_Scene_01_Convo_01)
+    TEXT_BG(0x23, Chapter_04_Scene_01_Convo_01)
     FADE_OUT_SCREEN(16)
     CLEAN
     LOAD_WAIT_PERSIST(CH4_ENEMY_UNITS)
     FADE_IN_SCREEN(16)
     MUSC(BGM_TENSION)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
-    Text(Chapter_04_Scene_02_Convo_01)
+    TEXT(Chapter_04_Scene_02_Convo_01)
     FADE_OUT_SCREEN(16)
     MOVE_CAMERA_TO_POSITION_CENTER(0, 10)
     FADE_IN_SCREEN(16)
     REDUCE_VOLUME
     HIGHLIGHT_COORDINATES(1, 11, 60)
-    SetBackground(0x2)
+    SET_BACKGROUND(0x2)
     TEXTSTART
     TEXTSHOW(Chapter_04_Scene_03_Convo_01)
     TEXTEND
@@ -215,10 +215,10 @@ static const EventScr EventScr_Beginning[] = {
     FADE_IN_SCREEN(16)
     LOAD_WAIT_PERSIST(CH4_ARTUR)
     HIGHLIGHT_CHARACTER(CHARACTER_ARTUR, 60)
-    Text(Chapter_04_Scene_04_Convo_01)
+    TEXT(Chapter_04_Scene_04_Convo_01)
     MOVE_POSITION_WAIT(24, 11, 6, 9, 3)
     HIGHLIGHT_CHARACTER(CHARACTER_ARTUR, 60)
-    Text(Chapter_04_Scene_04_Convo_02)
+    TEXT(Chapter_04_Scene_04_Convo_02)
     // Make enemy the active unit again
     MOVE_POSITION_WAIT(24, 9, 3, 9, 3)
     // Battle scene
@@ -231,14 +231,14 @@ static const EventScr EventScr_Beginning[] = {
     KILL(CHAR_EVT_ACTIVE_UNIT)
     ERASE(CHAR_EVT_ACTIVE_UNIT)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
-    Text(Chapter_04_Scene_04_Convo_03)
+    TEXT(Chapter_04_Scene_04_Convo_03)
     CALL(EventScr_08591FD8) // Prep screen
     MOVE_CAMERA_TO_POSITION_CENTER(0, 0)
     FADE_IN_SCREEN(16)
     MUSC(BGM_DISTANT_ROADS)
     HIGHLIGHT_CHARACTER(CHARACTER_ARTUR, 60)
-    Text(Chapter_04_Scene_05_Convo_01)
-    NoFade
+    TEXT(Chapter_04_Scene_05_Convo_01)
+    NOFADE
     ENDA
 };
 
@@ -270,7 +270,7 @@ LABEL(0x2)
     TEXT_BG_HIDE_MAP(0x18, Chapter_04_Scene_09_Convo_01)
     CHECK_IF_TRAINEE_OR_LEVEL_CAPPED(CHARACTER_ROSS, 10, CLASS_JOURNEYMAN)
     BEQ(0x3, EVT_SLOT_C, EVT_SLOT_0)
-    SetBackground(0x19)
+    SET_BACKGROUND(0x19)
     TEXTSTART
     TEXTSHOW(Chapter_04_Scene_10_Convo_01)
     TEXTEND
@@ -278,7 +278,7 @@ LABEL(0x2)
     // GIVE_SKILL_SCROLL_TO(SID_Aptitude, CHARACTER_ROSS)
     GOTO(0x3)
 LABEL(0x3)
-    SetBackground(BLACK_BACKGROUND)
+    SET_BACKGROUND(BLACK_BACKGROUND)
     REMA
     NEXT_CHAPTER_WITH_MAP(0x6) // Chapter 5 - The Empire's Reach
     ENDA
@@ -303,7 +303,7 @@ LABEL(0x0)
     GOTO(0x1)
 
 LABEL(0x1)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -322,7 +322,7 @@ LABEL(0x0)
     GOTO(0x1)
 
 LABEL(0x1)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -335,7 +335,7 @@ static const EventListScr EventScr_CH4_LARACHEL_APPEARS[] = {
     LOAD_WAIT_PERSIST(CH4_LARACHEL_APPEARS)
     MUSC(BGM_LAUGHTER)
     HIGHLIGHT_CHARACTER(CHARACTER_LARACHEL, 60)
-    Text(Chapter_04_LARACHEL)
+    TEXT(Chapter_04_LARACHEL)
     MOVE(24, CHARACTER_LARACHEL, 15, 2)
     MOVE(24, CHARACTER_DOZLA, 15, 1)
     MOVE_WAIT(24, CHARACTER_RENNAC, 15, 1)
@@ -349,7 +349,7 @@ LABEL(0x0)
     GOTO(0x1)
 
 LABEL(0x1)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -366,7 +366,7 @@ static const EventListScr EventScr_CH4_GARCIA_APPEARS[] = {
     STAL(15)
     MOVE_CAMERA_TO_UNIT(CHARACTER_ROSS)
     HIGHLIGHT_CHARACTER(CHARACTER_ROSS, 60)
-    Text(Chapter_04_ROSS)
+    TEXT(Chapter_04_ROSS)
     GOTO(0x1)
 
 LABEL(0x0)
@@ -380,21 +380,21 @@ LABEL(0x1)
     MUSC(BGM_RAID)
     MOVE_CAMERA_TO_UNIT(CHARACTER_GARCIA)
     HIGHLIGHT_CHARACTER(CHARACTER_GARCIA, 60)
-    Text(Chapter_04_GARCIA)
+    TEXT(Chapter_04_GARCIA)
     GOTO(0x2)
 
 LABEL(0x2)
-    NoFade
+    NOFADE
     ENDA
 };
 
 static const EventListScr EventScr_Talk_ROSS_GARCIA[] = {
     CHANGE_MUSIC_SAVE_PREVIOUS_MUSIC(BGM_COMRADES)
     STAL(33)
-    Text(Chapter_04_ROSS_GARCIA)
+    TEXT(Chapter_04_ROSS_GARCIA)
     RESTORE_PREVIOUS_MUSIC
     CHANGE_TO_BLUE(CHARACTER_GARCIA)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -402,7 +402,7 @@ static const EventListScr EventListScr_VILLAGE_1_TALK[] = {
     HOUSE_EVENT_NO_END(0x2, Chapter_04_VILLAGE_OLD_MAN)
     CALL(EventScr_RemoveBGIfNeeded)
     GIVE_ITEM_TO(ITEM_AXE_IRON, CHARACTER_EVT_ACTIVE)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -431,7 +431,7 @@ LABEL(0x2)
 LABEL(0x3)
     CALL(EventScr_RemoveBGIfNeeded)
     LOAD_WAIT_PERSIST(CH4_LUTE)
-    NoFade
+    NOFADE
     ENDA
 };
 
@@ -454,14 +454,14 @@ static const EventListScr EventListScr_Character[] = {
 };
 
 static const EventListScr EventListScr_Location[] = {
-    Village(EVFLAG_TMP(12), EventListScr_VILLAGE_1_TALK, 8, 2)
-    Village(EVFLAG_TMP(13), EventListScr_VILLAGE_2_TALK, 1, 11)
+    VILLAGE(EVFLAG_TMP(12), EventListScr_VILLAGE_1_TALK, 8, 2)
+    VILLAGE(EVFLAG_TMP(13), EventListScr_VILLAGE_2_TALK, 1, 11)
     END_MAIN
 };
 
 static const EventListScr EventListScr_Misc[] = {
-    DefeatAll(EventScr_Ending)
-    CauseGameOverIfLordDies
+    DEFEAT_ALL(EventScr_Ending)
+    CAUSE_GAME_OVER_IF_LORD_DIES
     END_MAIN
 };
 

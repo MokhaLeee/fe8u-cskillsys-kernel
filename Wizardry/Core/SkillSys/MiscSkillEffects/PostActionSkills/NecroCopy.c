@@ -70,7 +70,7 @@ LABEL(0)
 
 LABEL(99)
     ASMC(MapAnim_CommonEnd)
-    NoFade
+    NOFADE
     ENDA
 };
 

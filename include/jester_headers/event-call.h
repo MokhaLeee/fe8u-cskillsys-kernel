@@ -20,6 +20,7 @@ extern const EventScr EventScrWM_Ch3_TRAVEL_TO_NODE[];
 extern const EventScr EventScrWM_Ch4_SET_NODE[];
 extern const EventScr EventScrWM_Ch4_TRAVEL_TO_NODE[];
 extern const EventScr EventScrWM_Renval_CH5[];
+extern const EventScr EventScrWM_Ch5x_STUFF[];
 extern const EventScr EventScrWM_Ch5_SET_NODE[];
 extern const EventScr EventScrWM_Ch5_TRAVEL_TO_NODE[];
 extern const EventScr EventScrWM_Ch6_SET_NODE[];

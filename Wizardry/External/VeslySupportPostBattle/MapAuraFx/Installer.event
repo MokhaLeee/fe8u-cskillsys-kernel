@@ -6,7 +6,7 @@
 ALIGN 4 
 Event_WaitForSupportFx:
     STAL 0x28
-    NoFade
+    NOFADE
     ENDA
 ALIGN 4
 

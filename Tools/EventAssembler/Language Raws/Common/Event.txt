@@ -130,13 +130,13 @@ CHES, 7, 12, -priority:main -game:FE8:FE7:FE7J:FE6 -indexMode:8
 ##Location based event triggered by unit being placed near and choosing
 ##the right command. Causes automatic map change if no Event pointer is 
 ##specified. 
-DOOR, 8, 12, -priority:main -game:FE8:FE7:FE7J:FE6 -indexMode:8
+DOOR_2, 8, 12, -priority:main -game:FE8:FE7:FE7J:FE6 -indexMode:8
 	ID, 2, 2
 	1, 4, 4, -fixed
 	Position, 8, 2, -coordinates:2 -preferredBase:10
 	Command, 10, 2
 
-DOOR, 8, 12, -priority:main -game:FE8:FE7:FE7J:FE6 -indexMode:8
+DOOR_2, 8, 12, -priority:main -game:FE8:FE7:FE7J:FE6 -indexMode:8
 	ID, 2, 2
 	Event Pointer, 4, 4, -pointer
 	Position, 8, 2, -coordinates:2 -preferredBase:10
