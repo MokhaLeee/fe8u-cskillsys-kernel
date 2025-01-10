@@ -647,7 +647,7 @@ const EventScr EventScrWM_Ch6_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
-const EventScr EventScrWM_Ch7_TRAVEL_TO_NODE[] = {
+const EventScr EventScrWM_Ch7_SET_NODE[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_AdlasPlains)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -666,7 +666,7 @@ const EventScr EventScrWM_Ch7_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
-const EventScr EventScrWM_Ch7_SET_NODE[] = {
+const EventScr EventScrWM_Ch7_TRAVEL_TO_NODE[] = {
     STAL(6)
     WM_MOVECAM(-1, -1, 84, 152, 60, 0)
     WM_WAITFORCAM
@@ -757,7 +757,7 @@ const EventScr EventScrWM_Intermission_Serafew_To_Frelia[] = {
     ENDA
 };
 
-const EventScr EventScrWM_Ch9_TRAVEL_TO_NODE[] = {
+const EventScr EventScrWM_Ch9_SET_NODE[] = {
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_CastleFrelia)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -791,7 +791,7 @@ const EventScr EventScrWM_Ch9_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
-const EventScr EventScrWM_Ch9_SET_NODE[] = {
+const EventScr EventScrWM_Ch9_TRAVEL_TO_NODE[] = {
     STAL(6)
     WM_MOVECAM(-1, -1, 64, 0, 60, 0)
     WM_WAITFORCAM

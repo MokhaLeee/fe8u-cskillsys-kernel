@@ -21,6 +21,9 @@
     EventPointerTable(0x1E, Chapter05xEvent)
     #include "Source/Chapter_05x_Unbroken_Heart/Chapter_05x_Unbroken_Heart.lyn.event"
     #include "Source/Chapter_05x_Unbroken_Heart/Map/Chapter_05x_map.event"
+    EventPointerTable(0x24, Chapter06Event)
+    #include "Source/Chapter_06_Victims_Of_War/Chapter_06_Victims_Of_War.lyn.event"
+    #include "Source/Chapter_06_Victims_Of_War/Map/Chapter_06_map.event"
 }
 
     #include "Source/World_Map_Events.lyn.event"

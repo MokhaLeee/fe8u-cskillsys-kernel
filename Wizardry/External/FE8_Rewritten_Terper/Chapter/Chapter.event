@@ -9,5 +9,8 @@ PUSH
     #include "Source/Chapter_05_The_Empires_Reach/Chapter_05_The_Empires_Reach.lyn.event"
     #include "Source/Chapter_05x_Unbroken_Heart/Chapter_05x_Unbroken_Heart.lyn.event"
     #include "Source/Chapter_06_Victims_Of_War/Chapter_06_Victims_Of_War.lyn.event"
+    #include "Source/Chapter_07_Waterside_Renvall/Chapter_07_Waterside_Renvall.lyn.event"
+    #include "Source/Chapter_08_Broken_Vows/Chapter_08_Broken_Vows.lyn.event"
+    #include "Source/Chapter_09_Renewed_Journey/Chapter_09_Renewed_Journey.lyn.event"
 }
 POP

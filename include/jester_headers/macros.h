@@ -18,6 +18,19 @@
     TEXTEND \
     REMA
 
+#define TEXT_CHANGE_BGM(messageID, BGM_ID) \
+    TEXTSHOW(messageID) \
+    TEXTEND \
+    MUSC(BGM_ID) \
+    TEXTCONT \
+    TEXTEND \
+    REMA
+
+#define TEXT_NO_REMA(messageID) \
+    TEXTSTART \
+    TEXTSHOW(messageID) \
+    TEXTEND
+
 // Focus the cursor on a character for a set number of frames then erase it
 #define HIGHLIGHT_CHARACTER(character, frames) \
     CUMO_CHAR(character) \
@@ -312,3 +325,13 @@ enum {
     EvtColorFadeSetup(0x0, 0x20, 4, 256, 256, 256) \
     NOFADE \
     ENDA
+
+#define WARP_CHARACTER_TO_COORDINATES(characterID, x, y) \
+    SVAL(EVT_SLOT_2, characterID) \
+    MOVE_CLOSEST(0xffff, CHAR_EVT_SLOT2, x, y) \
+    CALL(EventScr_UnitWarpIN)
+
+#define WARP_CHARACTER_OUT(characterID) \
+    SVAL(EVT_SLOT_2, characterID) \
+    CALL(EventScr_UnitWarpOUT)
+    
