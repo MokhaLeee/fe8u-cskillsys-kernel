@@ -8,13 +8,13 @@ Dead Eye[X]
 Encloser[X]
 
 ## MSG_COMART_DESC_Encloser
-Enimy cannot move[X]
+Enemy cannot move[X]
 
 ## MSG_COMART_NAME_EncloserPlus
 Encloser+[X]
 
 ## MSG_COMART_DESC_EncloserPlus
-Enimy and adjacent units cannot move[X]
+Enemy and adjacent units cannot move[X]
 
 ## MSG_COMART_NAME_MonsterBlast
 M-Blast[X]
@@ -26,31 +26,31 @@ Effective against monsters[X]
 Schism Shot[X]
 
 ## MSG_COMART_DESC_SchismShot
-Magic attack, enimy's Res-5[X]
+Magic attack, enemy's RES -5[X]
 
 ## MSG_COMART_NAME_BreakShot
 Break Shot[X]
 
 ## MSG_COMART_DESC_BreakShot
-Enimy's Def-5[X]
+Enimy's DEF -5[X]
 
 ## MSG_COMART_NAME_BreakShotPlus
 Break Shot+[X]
 
 ## MSG_COMART_DESC_BreakShotPlus
-Enimy and adjacent units Def-5[X]
+Enimy and adjacent units DEF -5[X]
 
 ## MSG_COMART_NAME_WaningShot
 Waning Shot[X]
 
 ## MSG_COMART_DESC_WaningShot
-enimy's Atk-5[X]
+Enemy's ATK -5[X]
 
 ## MSG_COMART_NAME_WaningShotPlus
 Waning Shot+[X]
 
 ## MSG_COMART_DESC_WaningShotPlus
-Enimy and adjacent units Atk-5[X]
+Enemy and adjacent units ATK -5[X]
 
 ## MSG_COMART_NAME_HuntersVolley
 H-Volley[X]
@@ -60,3 +60,9 @@ Twice consecutive hits[X]
 
 ## MSG_COMART_NAME_Galeforce
 Galeforce[X]
+
+## MSG_COMART_NAME_AstraStorm
+A-Storm[X]
+
+## MSG_COMART_DESC_AstraStorm
+5 hits at 10 range at 30% damage.[X]

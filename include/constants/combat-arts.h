@@ -63,6 +63,7 @@ enum CombatArtIndex {
     CID_WardArrow,
     CID_WardArrowPlus,
     CID_HuntersVolley,      /* √ */
+    CID_AstraStorm,
 
     /* Misc skill related arts */
     CID_Galeforce,

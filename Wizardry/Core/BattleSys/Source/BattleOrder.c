@@ -589,6 +589,7 @@ LYN_REPLACE_CHECK(GetBattleUnitHitCount);
 int GetBattleUnitHitCount(struct BattleUnit * actor)
 {
     int result = 1;
+    u8 cid;
     FORCE_DECLARE struct BattleUnit * target = (actor == &gBattleActor) ? &gBattleTarget : &gBattleActor;
 
     if (BattleCheckBraveEffect(actor))
@@ -610,6 +611,14 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
         result = result + SKILL_EFF0(SID_Astra);
     }
 #endif
+
+    /* Check combat-art */
+    cid = GetCombatArtInForce(&actor->unit);
+    if (&gBattleActor == actor && COMBART_VALID(cid))
+    {
+        if (GetCombatArtInfo(cid)->quintuple_attack == COMBART_QUINTUPLE_ENABLED)
+            result = result + 4;
+    }
 
 #if defined(SID_Adept) && (COMMON_SKILL_VALID(SID_Adept))
     if (BattleSkillTester(actor, SID_Adept) && actor->hpInitial == actor->unit.maxHP)

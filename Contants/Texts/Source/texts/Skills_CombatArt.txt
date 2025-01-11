@@ -106,3 +106,11 @@ Detonate[X]
 Detonate:[NL]
 Art: Strike a powerful pierced[NL]
 blow by sacrificing own weapon[X]
+
+## MSG_SKILL_COMBAT_AstraStorm_NAME
+Astra Storm[X]
+
+## MSG_SKILL_COMBAT_AstraStorm
+Astra Storm:[NL]
+Art: 5 strikes at 10 range[N]
+at 30% damage.[X]

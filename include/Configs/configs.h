@@ -151,8 +151,12 @@
  * By Jester
  * When two units can have a talk event, show a talk icon on the map
  * Keep track of WarningHpSheet.png that has the icons
+ * 
+ * THIS SEEMS TO BE CAUSING A LOT OF LAG RIGHT NOW
+ * IT SEEMS TO BE THE IF STATEMENT ITSELF THAT CAUSES THE LAG RATHER THAN ITS CONTENTS
+ * GETTALKEE(UNIT) RUNS 0xC0 TIMES INSIDE PUTUNITSPRITEICONSOAM
  */
-#define CONFIG_TALK_MAP_ICON
+// #define CONFIG_TALK_MAP_ICON
 
 /**
  * By Huichelaar
@@ -339,9 +343,16 @@
 // #define CONFIG_BEXP 1
 
 /*
-** By Circleseverywhere
+** By: Circleseverywhere
 */
 #define CONFIG_CHAPTER_NAMES_AS_TEXT
+
+
+/*
+** By: Jester
+** Use BWL stats as counters for additional skills
+*/
+#define CONFIG_RESET_BWL_STATS_EACH_CHAPTER
 
 
 /**

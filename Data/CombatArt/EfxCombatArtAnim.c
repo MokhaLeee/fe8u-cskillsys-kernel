@@ -47,6 +47,8 @@ const u8 EfxCombatArtAnimPriority[0x100] = {
     [CID_Galeforce] = EFX_PRIORITY_HIGHHIGH,
     [CID_Gamble] = EFX_PRIORITY_HIGHHIGH,
     [CID_Detonate] = EFX_PRIORITY_HIGHHIGH,
+    [CID_AstraStorm] = EFX_PRIORITY_HIGHHIGH,
+
 };
 
 struct EfxAnimConf const * const EfxCombatArtAnims[0x100] = {
@@ -92,4 +94,5 @@ struct EfxAnimConf const * const EfxCombatArtAnims[0x100] = {
     [CID_Galeforce] = &EfxSkillCombat,
     [CID_Gamble] = &EfxSkillCombat,
     [CID_Detonate] = &EfxSkillCombat,
+    [CID_AstraStorm] = &EfxSkillCombat,
 };

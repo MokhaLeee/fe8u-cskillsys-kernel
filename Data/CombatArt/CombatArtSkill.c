@@ -104,4 +104,8 @@ const u8 gCombatArtSkillTable[MAX_SKILL_NUM + 1] = {
 #if defined(SID_COMBAT_Detonate) && (COMMON_SKILL_VALID(SID_COMBAT_Detonate))
     [SID_COMBAT_Detonate] = CID_Detonate,
 #endif
+
+#if defined(SID_COMBAT_AstraStorm) && (COMMON_SKILL_VALID(SID_COMBAT_AstraStorm))
+    [SID_COMBAT_AstraStorm] = CID_AstraStorm,
+#endif
 };

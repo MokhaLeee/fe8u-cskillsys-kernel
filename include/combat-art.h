@@ -20,6 +20,7 @@ struct CombatArtInfo {
     } battle_status;
 
     u8 double_attack;
+    u8 quintuple_attack;
     bool8 magic_attack;
     u8 effectiveness;
 
@@ -46,6 +47,13 @@ enum combat_art_double {
     COMBART_DOUBLE_DISABLED = 0,
     COMBART_DOUBLE_ENABLED,
     COMBART_DOUBLE_FORCE_ENABLED,
+};
+
+enum combat_art_quintuple {
+    /* CombatArtInfo::double_attack */
+    COMBART_QUINTUPLE_DISABLED = 0,
+    COMBART_QUINTUPLE_ENABLED,
+    COMBART_QUINTUPLE_FORCE_ENABLED,
 };
 
 extern const struct CombatArtInfo gCombatArtInfos[0x100];

@@ -433,4 +433,13 @@ const struct CombatArtInfo gCombatArtInfos[0x100] = {
         .battle_status.display_en_n = true,
         .double_attack = COMBART_DOUBLE_DISABLED,
     },
+    [CID_AstraStorm] = {
+        .name = MSG_COMART_NAME_AstraStorm,
+        .desc = MSG_SKILL_COMBAT_AstraStorm,
+        .icon = GFX_CombatArtIcon_BowArtAtk,
+        .wtype = ITYPE_BOW,
+        .cost = 2,
+        .range_bonus = 10,
+        .quintuple_attack = COMBART_QUINTUPLE_ENABLED,
+    },
 };

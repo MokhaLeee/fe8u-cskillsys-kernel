@@ -2029,6 +2029,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_COMBAT_AstraStorm) && COMMON_SKILL_VALID(SID_COMBAT_AstraStorm))
+    [SID_COMBAT_AstraStorm] = {
+        .desc = MSG_SKILL_COMBAT_AstraStorm,
+        .icon = GFX_CombatArtIcon_BowArtAtk,
+    },
+#endif
+
 #if (defined(SID_GreatShield) && COMMON_SKILL_VALID(SID_GreatShield)) 
     [SID_GreatShield] = {
         .desc = MSG_SKILL_GreatShield,
