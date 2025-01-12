@@ -250,7 +250,8 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
 {
     attacker->battleEffectiveHitRate = attacker->battleHitRate - defender->battleAvoidRate;
 
-    /* For non-ballista combat, Distance +2, hit rate -20% for actor */
+    /* For non-ballista combat, Distance +2, hit rate -20% for actor */ 
+#ifdef CONFIG_INSTALL_DECREASE_HIT_AT_RANGE
     if (gpKernelDesigerConfig->hit_decrease_on_range && gBattleStats.range > 2 && attacker == &gBattleActor)
     {
         if (
@@ -267,6 +268,7 @@ void ComputeBattleUnitEffectiveHitRate(struct BattleUnit * attacker, struct Batt
                 TriggerKtutorial(KTUTORIAL_RANGED_FAILOFF);
         }
     }
+#endif
 
     if (attacker->battleEffectiveHitRate > 100)
         attacker->battleEffectiveHitRate = 100;

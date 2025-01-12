@@ -9,12 +9,12 @@ LYN_REPLACE_CHECK(DisplayPage2);
 void DisplayPage2(void)
 {
     switch (gpKernelDesigerConfig->skil_page_style) {
-    case CONFIG_PAGE4_MOKHA_PLAN_A:
+    case 0:
     default:
         DrawSkillPage_MokhaPlanA();
         break;
 
-    case CONFIG_PAGE4_MOKHA_PLAN_B:
+    case 1:
         DrawSkillPage_MokhaPlanB();
         break;
     }
@@ -23,12 +23,12 @@ void DisplayPage2(void)
 void StartSkillScreenHelp(int pageid, struct Proc * proc)
 {
     switch (gpKernelDesigerConfig->skil_page_style) {
-    case CONFIG_PAGE4_MOKHA_PLAN_A:
+    case 0:
     default:
         gStatScreen.help = RTextSkillPage_MokhaPlanA;
         break;
 
-    case CONFIG_PAGE4_MOKHA_PLAN_B:
+    case 1:
         gStatScreen.help = RTextSkillPage_MokhaPlanB;
         break;
     }

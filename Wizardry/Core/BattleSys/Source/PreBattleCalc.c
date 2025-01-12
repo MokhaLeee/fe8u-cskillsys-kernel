@@ -246,6 +246,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
     FORCE_DECLARE int tmp, i;
     int _skill_list_cnt;
     struct SkillList *list;
+    struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(GetUnit(attacker->unit.index)));
 
     int unitRank;
 
@@ -1732,6 +1733,20 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
                 attacker->battleAvoidRate += SKILL_EFF9(SID_LightProwess);
                 attacker->battleDodgeRate += SKILL_EFF8(SID_LightProwess);
             }
+            break;
+#endif
+
+#if (defined(SID_KillStreak) && (COMMON_SKILL_VALID(SID_KillStreak)))
+        case SID_KillStreak:
+            attacker->battleCritRate += (bwl->winAmt * SKILL_EFF0(SID_KillStreak));
+
+            break;
+#endif
+
+#if (defined(SID_HyperFocus) && (COMMON_SKILL_VALID(SID_HyperFocus)))
+        case SID_HyperFocus:
+            attacker->battleHitRate += (bwl->battleAmt * SKILL_EFF0(SID_HyperFocus));
+
             break;
 #endif
 

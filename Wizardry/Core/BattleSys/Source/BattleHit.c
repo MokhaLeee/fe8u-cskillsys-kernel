@@ -391,6 +391,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 }
             }
 #endif
+
             defender->unit.curHP -= gBattleStats.damage;
 
             if (defender->unit.curHP < 0)
@@ -441,12 +442,12 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
                 gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
             }
 #else
-            if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
-                attacker->unit.curHP = attacker->unit.maxHP;
-            else
-                attacker->unit.curHP += gBattleStats.damage;
+            // if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
+            //     attacker->unit.curHP = attacker->unit.maxHP;
+            // else
+            //     attacker->unit.curHP += gBattleStats.damage;
 
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+            // gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 #endif
         }
 
@@ -456,6 +457,7 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
     gBattleHitIterator->hpChange = gBattleStats.damage;
 
     BattleHit_ConsumeWeapon(attacker, defender);
+	// BattleHit_ConsumeShield(attacker, defender);
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHit);
@@ -466,19 +468,34 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 
     BattleUpdateBattleStats(attacker, defender);
 
+// #if CHAX
+// 	/**
+// 	 * Gaiden magic needs hp-cost
+// 	 */
+// 	if (CheckGaidenMagicAttack(attacker)) {
+// 		int hp_cost = GetGaidenWeaponHpCost(&attacker->unit, attacker->weapon);
+
+// 		if (!TryBattleHpCost(attacker, hp_cost)) {
+// 			gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+// 			gBattleHitIterator++;
+// 			return true;
+// 		}
+// 	}
+// #endif
+
     BattleGenerateHitTriangleAttack(attacker, defender);
     BattleGenerateHitAttributes(attacker, defender);
     BattleGenerateHitEffects(attacker, defender);
 
-/* This is a test, can be removed when the feature fully wors */
+/* This is a test, can be removed when the feature fully works */
 #ifdef CONFIG_BEXP
     sBEXP[0] += 50;
     NoCashGBAPrintf("BEXP level right now is: %d", sBEXP[0]);
+
+    gPlaySt.bexp += 1;
+
+    NoCashGBAPrintf("BEXP is %d", gPlaySt.bexp);
 #endif
-
-    // gPlaySt.bexp += 1;
-
-    // NoCashGBAPrintf("BEXP is %d", gPlaySt.bexp);
 
     if (attacker->unit.curHP == 0 || defender->unit.curHP == 0)
     {
@@ -496,19 +513,25 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 ** Since we're only concerned with player units using his skill, we can use an AI byte to check if they've already been revived
 */
 #if (defined(SID_Arise) && (COMMON_SKILL_VALID(SID_Arise)))
-    if (GetUnit(attacker->unit.index)->ai1 != 0xFF)
-        if (attacker->unit.curHP == 0)
-        {
-            GetUnit(attacker->unit.index)->ai1 = 0xFF;
-            GetUnit(attacker->unit.index)->ballistaIndex = gPlaySt.chapterIndex;
-        }
+    if (BattleSkillTester(attacker, SID_Arise))
+    {
+        if (GetUnit(attacker->unit.index)->ai1 != 0xFF)
+            if (attacker->unit.curHP == 0)
+            {
+                GetUnit(attacker->unit.index)->ai1 = 0xFF;
+                GetUnit(attacker->unit.index)->ballistaIndex = gPlaySt.chapterIndex;
+            }
 
-    if (GetUnit(defender->unit.index)->ai1 != 0xFF)
-        if (defender->unit.curHP == 0)
-        {
-            GetUnit(attacker->unit.index)->ai1 = 0xFF;
-            GetUnit(defender->unit.index)->ballistaIndex = gPlaySt.chapterIndex;
-        }
+    }
+    if (BattleSkillTester(defender, SID_Arise))
+    {
+        if (GetUnit(defender->unit.index)->ai1 != 0xFF)
+            if (defender->unit.curHP == 0)
+            {
+                GetUnit(attacker->unit.index)->ai1 = 0xFF;
+                GetUnit(defender->unit.index)->ballistaIndex = gPlaySt.chapterIndex;
+            }
+    }
 #endif
 
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;

@@ -1146,3 +1146,13 @@ all enemy attacks miss.[X]
 Toxic:[N]
 Infict (10% * elapsed turns) of[N]
 remaining HP as damage each turn.[X]
+
+## MSG_SKILL_KillStreak
+Kill Streak:[N]
+Gain +1% crit for every battle[N]
+the unit wins in this chapter.[X]
+
+## MSG_SKILL_HyperFocus
+Hyper Focus:[N]
+Gain +1% hit for every battle[N]
+the unit has in this chapter.[X]

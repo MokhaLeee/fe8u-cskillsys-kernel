@@ -6,7 +6,7 @@
     #include "DrawMapActionAnimation/Installer.event"
 #endif
 
-#ifdef CONFIG_INSTALL_STATSCREENFX
+#ifdef CONFIG_INSTALL_FE6_STAT_SCREEN
     #include "StatScreenfx/StatScreenfx.event"
 #endif
 

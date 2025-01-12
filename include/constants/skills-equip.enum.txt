@@ -212,6 +212,8 @@ SID_AnimaProwess
 SID_DarkProwess
 SID_LightProwess
 SID_Seer
+SID_KillStreak
+SID_HyperFocus
 
 ////////POST-BATTLE SKILLS
 SID_Canto

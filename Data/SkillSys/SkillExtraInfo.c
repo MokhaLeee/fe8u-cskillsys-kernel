@@ -1202,4 +1202,12 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Chipper) && COMMON_SKILL_VALID(SID_Chipper))
     [SID_Chipper] = {{50}},
 #endif
+
+#if (defined(SID_KillStreak) && COMMON_SKILL_VALID(SID_KillStreak))
+    [SID_KillStreak] = {{1}},
+#endif
+
+#if (defined(SID_HyperFocus) && COMMON_SKILL_VALID(SID_HyperFocus))
+    [SID_HyperFocus] = {{1}},
+#endif
 };

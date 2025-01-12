@@ -73,9 +73,32 @@
 // #define CONFIG_REMOVE_MOVE_PATH
 
 /**
+ * If uncommented, enable Gaiden style magic system
+ *
+ * Sub:
+ * MUST_BE_MAGIC: if set as 0, then all weapons will be okay (rather than magic wepaon only)
+ * REQUIRES_WRANK: if set as 0, then unit can directly use the weapon regardless vanilla judgement
+ * AI_EN: if set as 1, AI can also use gaiden B.Mag
+ * EXT_CONF_EN: enbale gGaidenChaxConfigs
+ */
+// #define CONFIG_USE_GAIDEN_MAGIC
+
+#ifdef CONFIG_USE_GAIDEN_MAGIC
+	#define CONFIG_GAIDEN_MAGIC_MUST_BE_MAGIC 0 // 0: all weapons are okay
+	#define CONFIG_GAIDEN_MAGIC_REQUIRES_WRANK 0 // 0: not requires unit ability to equip that weapon
+	#define CONFIG_GAIDEN_MAGIC_AI_EN 1
+	#define CONFIG_GAIDEN_EXT_CONF_EN 1
+#endif /* USE_GAIDEN_MAGIC */
+
+/**
  * Install FEB patch: SetHPClassLimit
  */
 // #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
+
+/**
+ * Enable shield system
+ */
+#define CONFIG_INSTALL_KERNEL_SHIELD
 
 /**
  * By: Vesly
@@ -152,9 +175,8 @@
  * When two units can have a talk event, show a talk icon on the map
  * Keep track of WarningHpSheet.png that has the icons
  * 
- * THIS SEEMS TO BE CAUSING A LOT OF LAG RIGHT NOW
- * IT SEEMS TO BE THE IF STATEMENT ITSELF THAT CAUSES THE LAG RATHER THAN ITS CONTENTS
- * GETTALKEE(UNIT) RUNS 0xC0 TIMES INSIDE PUTUNITSPRITEICONSOAM
+ * WARNING - This causes a lot of lag due to having to run GetTalkee for
+ * every unit on the map
  */
 // #define CONFIG_TALK_MAP_ICON
 
@@ -368,16 +390,17 @@
 #define CONFIG_LVUP_MODE_HARD 0
 
 /**
- * Page1 styles
+ * Page 1 styles
  */
-#define CONFIG_PAGE1_WITH_BWL 0
-#define CONFIG_PAGE1_WITH_LEADERSHIP 1
+#define CONFIG_PAGE1_WITH_BWL 1
+#define CONFIG_PAGE1_WITH_LEADERSHIP 0
 
 /**
- * Page4 styles
+ * Page 3 styles
+ * 
+ * Right now, there's just two styles (0 and 1)
  */
-#define CONFIG_PAGE4_MOKHA_PLAN_A 0
-#define CONFIG_PAGE4_MOKHA_PLAN_B 1
+#define CONFIG_PAGE3_SKILL_LAYOUT 1
 
 /**
  * Install some performance hooks
@@ -390,14 +413,16 @@
 // #define CONFIG_INSTALL_MAPACTIONANIM
 
 /**
- * Install StatScreenfx
+ * Install FE6_STAT_SCREEN
  */
-// #define CONFIG_INSTALL_STATSCREENFX
+// #define CONFIG_INSTALL_FE6_STAT_SCREEN
 
 /**
  * Install Bow2Decrease
  */
 // #define CONFIG_INSTALL_BOW2DECREASE
+
+// #define CONFIG_INSTALL_DECREASE_HIT_AT_RANGE
 
 /**
  * Install ConvoyExpa

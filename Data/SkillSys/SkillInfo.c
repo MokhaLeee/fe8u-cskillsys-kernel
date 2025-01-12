@@ -4644,4 +4644,18 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_KillStreak) && COMMON_SKILL_VALID(SID_KillStreak))
+    [SID_KillStreak] = {
+        .desc = MSG_SKILL_KillStreak,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_HyperFocus) && COMMON_SKILL_VALID(SID_HyperFocus))
+    [SID_HyperFocus] = {
+        .desc = MSG_SKILL_HyperFocus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };
