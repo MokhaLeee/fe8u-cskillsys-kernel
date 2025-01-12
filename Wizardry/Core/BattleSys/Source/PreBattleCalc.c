@@ -1736,14 +1736,14 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
-#if (defined(SID_KillStreak) && (COMMON_SKILL_VALID(SID_KillStreak)))
+#if (defined(SID_KillStreak) && (COMMON_SKILL_VALID(SID_KillStreak)) && defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER))
         case SID_KillStreak:
             attacker->battleCritRate += (bwl->winAmt * SKILL_EFF0(SID_KillStreak));
 
             break;
 #endif
 
-#if (defined(SID_HyperFocus) && (COMMON_SKILL_VALID(SID_HyperFocus)))
+#if (defined(SID_HyperFocus) && (COMMON_SKILL_VALID(SID_HyperFocus)) && defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER))
         case SID_HyperFocus:
             attacker->battleHitRate += (bwl->battleAmt * SKILL_EFF0(SID_HyperFocus));
 

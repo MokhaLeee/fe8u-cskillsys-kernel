@@ -35,7 +35,8 @@ cp -rf include $RELEASE_DIR
 cp -rf Patches $RELEASE_DIR
 
 # fix texts
-cat Contants/Texts/TextDefinitions.h > $RELEASE_DIR/include/constants/texts.h
+# cat Contants/Texts/TextDefinitions.h > $RELEASE_DIR/include/constants/texts.h
+cat Contants/Texts/build/msgs.h > $RELEASE_DIR/include/constants/texts.h
 
 # fix gfx
 cat Contants/Gfx/GfxDefs.h > $RELEASE_DIR/include/constants/gfx.h
