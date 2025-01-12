@@ -325,7 +325,7 @@ static const EventListScr EventListScr_Location[] = {
     CHEST(ITEM_AXE_FIENDCLEAVER, 10, 3)
     CHEST(ITEM_LANCE_BRIGHTLANCE, 8, 3)
     CHEST(ITEM_SWORD_SHADOWKILLR, 6, 3)
-    Seize(14, 1)
+    SEIZE(14, 1)
     END_MAIN
 };
 

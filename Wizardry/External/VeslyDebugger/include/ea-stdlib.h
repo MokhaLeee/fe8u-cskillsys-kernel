@@ -262,9 +262,9 @@
 #define CharacterEvent_(eid, scr, pid1, pid2, trigg_eid) CHAR_((eid), (scr), (pid1), (pid2), (trigg_eid))
 #define CharacterEventBothWays(eid, scr, pid1, pid2) CharacterEvent(eid, scr, pid1, pid2) CharacterEvent(eid, scr, pid2, pid1)
 
-#define House(eid, scr, x, y) LOCA(eid, scr, x, y, TILE_COMMAND_VISIT)
+#define HOUSE(eid, scr, x, y) LOCA(eid, scr, x, y, TILE_COMMAND_VISIT)
 #define Seize_(eid, scr, x, y) LOCA(eid, scr, x, y, TILE_COMMAND_SEIZE)
-#define Seize(x, y) Seize_(EVFLAG_WIN, EVENT_NOSCRIPT, x, y)
+#define SEIZE(x, y) Seize_(EVFLAG_WIN, EVENT_NOSCRIPT, x, y)
 
 #define CAUSE_GAME_OVER_IF_LORD_DIES AFEV(0, EventScr_GameOver, EVFLAG_GAMEOVER)
 #define DefeatBoss(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_BOSS)

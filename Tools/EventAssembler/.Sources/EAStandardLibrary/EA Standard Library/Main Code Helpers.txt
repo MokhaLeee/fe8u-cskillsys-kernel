@@ -55,41 +55,41 @@
 //Location based event helpers
 #ifdef _FE6_
 #define VILLAGE(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0xE; LOCA eventID [villX,villY-1] 0x1D"
-#define House(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0xE"
+#define HOUSE(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0xE"
 #define ARMORY(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x13"
 #define VENDOR(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x14"
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x15"
 #define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
 #define ChestMoney(amountOfMoney,chestX,villY)  "CHES 0 0x6F+amountOfMoney*0x10000 [chestX,chestY] 0x12"
 #define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
-#define Seize(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
-#define Seize(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
+#define SEIZE(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
+#define SEIZE(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
 #endif
 
 #ifdef _FE7_
 #define VILLAGE(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0xE; LOCA eventID [villX,villY-1] 0x1D"
-#define House(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0xE"
+#define HOUSE(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0xE"
 #define ARMORY(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x13"
 #define VENDOR(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x14"
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x15"
 #define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
 #define ChestMoney(amountOfMoney,chestX,villY)  "CHES 0 0x76+amountOfMoney*0x10000 [chestX,chestY] 0x12"
 #define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
-#define Seize(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
-#define Seize(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
+#define SEIZE(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
+#define SEIZE(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
 #endif
 
 #ifdef _FE8_
 #define VILLAGE(eventID,offset,villX,villY)     "VILL eventID offset [villX,villY] 0x10; LOCA eventID [villX,villY-1] 0x20"
-#define House(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0x10"
+#define HOUSE(eventID,offset,villX,villY)       "LOCA eventID offset [villX,villY] 0x10"
 #define ARMORY(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x16"
 #define VENDOR(offset,shopX,shopY)              "SHOP 0 offset [shopX,shopY] 0x17"
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x18"
 #define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x14"
 #define ChestMoney(amountOfMoney,chestX,chestY)     "CHES 0 0x77+amountOfMoney*0x10000 [chestX,chestY] 0x14"
 #define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x12"
-#define Seize(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0x11"
-#define Seize(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0x11"
+#define SEIZE(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0x11"
+#define SEIZE(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0x11"
 #endif
 
 //Misc based event helpers

@@ -43,7 +43,7 @@ struct BMDifficultyProc {
 };
 
 int GetCurrentPromotedLevelBonus(void);
-s8 CanUnitSeize(struct Unit* unit);
+s8 CanUnitSEIZE(struct Unit* unit);
 // ??? DungeonRecordUi_InitText(???);
 void InitDungeon(u8 type);
 void UnlockPostgameAllyByEnemyCount(void);

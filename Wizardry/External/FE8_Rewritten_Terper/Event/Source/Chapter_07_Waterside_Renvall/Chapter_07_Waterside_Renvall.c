@@ -248,6 +248,7 @@ static const EventListScr EventListScr_Character[] = {
 static const EventListScr EventListScr_Location[] = {
     VILLAGE(EVFLAG_TMP(10), EventListScr_HOUSE_1_TALK, 1, 15)
     VILLAGE(EVFLAG_TMP(11), EventListScr_HOUSE_2_TALK, 17, 21)
+    SEIZE(9, 4)
     END_MAIN
 };
 

@@ -324,7 +324,7 @@ static const EventListScr EventListScr_Location[] = {
     DOOR(4, 10, EVFLAG_TMP(12))
     CHEST(ITEM_ELIXIR, 4, 8)
     CHEST(ITEM_LANCE_KILLER, 5, 8)
-    Seize(13, 7)
+    SEIZE(13, 7)
     END_MAIN
 };
 

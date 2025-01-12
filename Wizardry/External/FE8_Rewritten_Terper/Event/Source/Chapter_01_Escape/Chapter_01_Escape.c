@@ -218,9 +218,9 @@ static const EventListScr EventListScr_Character[] = {
 // };
 
 static const EventListScr EventListScr_Location[] = {
-    House(EVFLAG_TMP(5), EventListScr_HOUSE_TALK_1, 10, 4)
-    House(EVFLAG_TMP(6), EventListScr_HOUSE_TALK_2, 13, 6)
-    Seize(2, 2)
+    HOUSE(EVFLAG_TMP(5), EventListScr_HOUSE_TALK_1, 10, 4)
+    HOUSE(EVFLAG_TMP(6), EventListScr_HOUSE_TALK_2, 13, 6)
+    SEIZE(2, 2)
     // ESCAPE_TILE(EVFLAG_TMP(10), EventListScr_ESCAPE_TILE_1, 14, 9)
     END_MAIN
 };
