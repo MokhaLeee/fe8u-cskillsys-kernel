@@ -26,6 +26,6 @@ ALIGN 4
 MapData:
   #incbin "Chapter_07_map_data.dmp"
 
-SetChapterData(ChapterID, ObjectType, 0, PaletteID, TileConfig, map_id, MapData, 0, 0, 0)
+SetChapterData(0x08, 0x01, 0, 0x02, 0x03, 0x25, MapData, 0, 0, 0x26)
 
 }

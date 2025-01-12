@@ -110,6 +110,10 @@ enum {
     LOAD2(0x1, loaded_units) \
     ENUN
 
+#define LOAD_WAIT_DEPLOYMENT_ORDER(loaded_units) \
+    LOAD3(0x1, loaded_units) \
+    ENUN
+
 // So apparently Nintendlord mixed these two up back in the day
 // and nobody ever made macros to fix it???
 #define FADE_IN_SCREEN(number) FADU(number)

@@ -479,7 +479,7 @@ static const u8 TrapData_ThisEventHard[] = {
     TRAP_NONE
 };
 
-const struct ChapterEventGroup Chapter05Event = {
+const struct ChapterEventGroup Chapter08Event = {
     .turnBasedEvents               = EventListScr_Turn,
     .characterBasedEvents          = EventListScr_Character,
     .locationBasedEvents           = EventListScr_Location,

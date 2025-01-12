@@ -7,6 +7,7 @@ enum {
     BGM_THE_BEGGINING           = 0x04,
     BGM_TREASURED_MEMORIES      = 0x05,
     BGM_GRIM_JOURNEY            = 0x06,
+    BGM_RAY_OF_HOPE             = 0x08,
     BGM_DISTANT_ROADS           = 0x09,
     BGM_RISE_ABOVE              = 0x0A,
     BGM_FOLLOW_ME               = 0x0B,
@@ -38,6 +39,7 @@ enum {
 enum {
     SFX_NULL                    = 0x00,
     SFX_BIRDS_CHIRPING          = 0x52,
+    SFX_RIVER                   = 0x53,
     SFX_WEAPON_BROKE            = 0x5C,
     SFX_VILLAGE_DESTROYED       = 0xAB,
     SFX_UNLOCKING_DOOR          = 0xB1,
