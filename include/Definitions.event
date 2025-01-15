@@ -4,10 +4,4 @@
 #include "constants/event-cmds.h"
 #include "constants/texts.h"
 
-#ifdef CONFIG_DEMO_BUILD
-	#include "demo/demo-banims.h"
-	#include "demo/demo-sprites.h"
-	#include "demo/demo-sounds.h"
-#endif // DEMO_BUILD
-
 #endif

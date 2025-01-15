@@ -1,6 +1,0 @@
-ALIGN 4
-DemoAnimConf_LynLord:
-    SwordAnim(BANIM_LynLord_Sword)
-    UnarmedAnim(BANIM_LynLord_Item)
-EndAnim
-
