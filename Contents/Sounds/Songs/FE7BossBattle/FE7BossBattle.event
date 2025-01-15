@@ -1,5 +1,0 @@
-{
-    #include "Source/FE7-RiseTotheChallengeRandomWizard.lyn.event"
-
-    SongTable(SONG_BoosBattle, song09, SG_MAP_MUSIC)
-}

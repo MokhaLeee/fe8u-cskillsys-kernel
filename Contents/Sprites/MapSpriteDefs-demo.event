@@ -1,6 +1,0 @@
-#ifndef DEMO_SPRITE_DEF_INSTALLED
-#define DEMO_SPRITE_DEF_INSTALLED
-
-#define DemoSMS_RoyLord 0x6B
-
-#endif

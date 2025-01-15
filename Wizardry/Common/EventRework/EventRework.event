@@ -16,6 +16,5 @@ ORG gEventLoCmdTableRe + 0x80 * 4
 
 
 // #include "data.event"
-// #include "def.event"
 
 #endif /* EVENT_EXPANSION_INSTALLED */

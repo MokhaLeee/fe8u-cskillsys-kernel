@@ -5,14 +5,6 @@
 #include "config-memmap.h"
 
 /**
- * Demo build
- *
- * If uncommented, then CHAX may not be seemed as kernel, but demo,
- * and then try to insert every thing in contents by buildfile.
- */
-// #define CONFIG_DEMO_BUILD
-
-/**
  * If uncomment, kernel may remove vanilla dislogue text
  * so that we can save ~470KByte ROM space in DEMO.
  *

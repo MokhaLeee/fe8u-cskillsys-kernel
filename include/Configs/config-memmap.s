@@ -71,7 +71,6 @@ _kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
 _kernel_malloc sExpaConvoyItemCount, 4
 _kernel_malloc sExpaConvoyItemArray, 2 * 300
 _kernel_malloc sGaidenMagicListObj, 0x24
-_kernel_malloc gExtBattleHitArray, 4 * 0x21
 _kernel_malloc gpActorShileInfo, 4
 _kernel_malloc gpTargetShileInfo, 4
 _kernel_malloc sShileldInfoCache, 0x14
