@@ -19,6 +19,5 @@ InjectEventLoCmd(EVENT_CMD_DEBUFF, EventDebuffOperation)
 #include "api/api.lyn.event"
 
 // #include "data.event"
-// #include "def.event"
 
 #endif /* DEBUFF_REWORK_INSTALLED */
