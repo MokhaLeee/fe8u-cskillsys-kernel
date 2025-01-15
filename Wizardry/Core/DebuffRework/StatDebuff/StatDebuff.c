@@ -11,7 +11,7 @@ inline struct StatDebuffStatus *GetUnitStatDebuffStatus(struct Unit *unit)
 	else if (unit == &gBattleTarget.unit)
 		return &sStatDebuffStatusBattleUnit[1];
 
-	return sStatDebuffStatusPool[unit->index & 0xFF];
+	return gpStatDebuffStatusPool[unit->index & 0xFF];
 }
 
 int SimulateStatDebuffPositiveType(struct Unit *unit)

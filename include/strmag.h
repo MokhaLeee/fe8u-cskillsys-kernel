@@ -24,6 +24,7 @@ bool IsMagicAttack(struct BattleUnit *bu);
 int GetUnitMaxMagic(struct Unit *unit);
 int GetUnitBaseMagic(struct Unit *unit);
 int GetUnitBasicMagGrowth(struct Unit *unit);
+int GetUnitJobBasedBasicMagGrowth(struct Unit *unit);
 int GetClassChgMagicBonus(u8 jid);
 int GetUnitMagic(struct Unit *unit);
 

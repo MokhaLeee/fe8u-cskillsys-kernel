@@ -32,4 +32,5 @@ extern u16 const *const gpPAL_EfxMoji;
 // extern const u16 Pal_EfxAnimNumber[];
 extern u8 const *const gpImg_EfxAnimNumber;
 extern u16 const *const gpPal_EfxAnimNumber;
-extern AnimScr AnimScr_AnimNumber[];
+// extern AnimScr AnimScr_AnimNumber[];
+extern AnimScr *gpAnimScr_AnimNumber;

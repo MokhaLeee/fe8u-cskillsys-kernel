@@ -1,6 +1,8 @@
 #ifndef SKILL_SYSTEM_INSTALLED
 #define SKILL_SYSTEM_INSTALLED
 
+#include "kernel/JudgeSkill.lyn.event"
+#include "kernel/SkillList_.lyn.event"
 #include "kernel/Infos.lyn.event"
 #include "kernel/LearnSkill.lyn.event"
 #include "kernel/LoadSkill.lyn.event"

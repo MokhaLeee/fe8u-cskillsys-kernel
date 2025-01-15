@@ -72,7 +72,7 @@ void EfxAnimNumber_Start(struct ProcEfxAnimNumber *proc)
 
 	y = 0x25;
 
-	proc->anim_num = anim = AnimCreate(AnimScr_AnimNumber, 0x95);
+	proc->anim_num = anim = AnimCreate(gpAnimScr_AnimNumber, 0x95);
 	anim->xPosition = OAM1_X(x);
 	anim->yPosition = OAM0_Y(y);
 	anim->oam2Base  = OAM2_PAL(OBPAL_CHAX_ANIMNUM) + OAM2_LAYER(1) + OAM2_CHR(OBCHR_CHAX_ANIMNUM + proc->slot * 8);
