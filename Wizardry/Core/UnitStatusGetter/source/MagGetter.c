@@ -15,6 +15,11 @@ int _GetUnitMagic(struct Unit *unit)
 	return status;
 }
 
+int MagGetterWeaponBonus(int status, struct Unit *unit)
+{
+	return status + ITEM_MAG_BONUS(GetItemResBonus(GetUnitEquippedWeapon(unit)));
+}
+
 int MagGetterSkills(int status, struct Unit *unit)
 {
 	int cur_hp = GetUnitCurrentHp(unit);
