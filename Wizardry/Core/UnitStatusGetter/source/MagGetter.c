@@ -17,7 +17,17 @@ int _GetUnitMagic(struct Unit *unit)
 
 int MagGetterWeaponBonus(int status, struct Unit *unit)
 {
-	return status + ITEM_MAG_BONUS(GetItemResBonus(GetUnitEquippedWeapon(unit)));
+	const struct ItemStatBonuses *bonus;
+	u16 weapon = GetUnitEquippedWeapon(unit);
+
+	if (weapon) {
+		bonus = GetItemStatBonuses(weapon);
+
+		if (bonus)
+			status = status + ITEM_MAG_BONUS(bonus);
+	}
+
+	return status;
 }
 
 int MagGetterSkills(int status, struct Unit *unit)
