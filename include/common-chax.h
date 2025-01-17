@@ -37,7 +37,7 @@
 #define IS_ANTI_HUFFMAN(ptr) ((((u32)(ptr)) & 0xF8000000) == 0x88000000)
 
 #define IS_UNIT_PTR(unit)    (UNIT_IS_VALID((unit)))
-#define UNIT_ALIVE(unit)     (UNIT_IS_VALID((unit)) && !((unit)->state & (US_UNAVAILABLE | US_HIDDEN)))
+#define UNIT_ALIVE(unit)     (UNIT_IS_VALID((unit)) && !((unit)->state & US_UNAVAILABLE))
 
 #define UNIT_LEVEL_MAX_RE 25
 #define UNIT_RECORDED_LEVEL_MAX 80
