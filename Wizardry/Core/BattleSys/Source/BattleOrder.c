@@ -32,6 +32,9 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 	if (target->battleSpeed > 250)
 		return false;
 
+	if (!actor->weapon)
+		return false;
+
 	if (GetItemWeaponEffect(actor->weaponBefore) == WPN_EFFECT_HPHALVE)
 		return false;
 
@@ -230,6 +233,9 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
 {
 	gBattleTemporaryFlag.desperation_order = false;
 
+	if (!gBattleActor.weapon)
+		return false;
+
 #if defined(SID_Desperation) && (COMMON_SKILL_VALID(SID_Desperation))
 	if (BattleFastSkillTester(&gBattleActor, SID_Desperation)) {
 		if ((gBattleActor.hpInitial * 2) < gBattleActor.unit.maxHP) {
@@ -273,6 +279,9 @@ STATIC_DECLAR bool CheckVantageOrder(void)
 
 	/* Combat art will not allow vantage */
 	if (COMBART_VALID(GetCombatArtInForce(&gBattleActor.unit)))
+		return false;
+
+	if (!gBattleTarget.weapon)
 		return false;
 
 #if defined(SID_Vantage) && (COMMON_SKILL_VALID(SID_Vantage))
