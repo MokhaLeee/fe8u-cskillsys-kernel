@@ -265,8 +265,8 @@ void UnitToBattle_SetupSkillList(struct Unit *unit, struct BattleUnit *bu)
 		SetupBattleSkillList();
 
 #if (defined(SID_Nihil) && COMMON_SKILL_VALID(SID_Nihil))
-		nihil_on_actor  = _SkillListTester(&gBattleActor.unit,  SID_Nihil);
-		nihil_on_target = _SkillListTester(&gBattleTarget.unit, SID_Nihil);
+		nihil_on_actor  = _SkillListTester(&gBattleTarget.unit,  SID_Nihil);
+		nihil_on_target = _SkillListTester(&gBattleActor.unit, SID_Nihil);
 
 		if (nihil_on_actor)
 			DisableUnitSkilLList(&gBattleActor.unit);
