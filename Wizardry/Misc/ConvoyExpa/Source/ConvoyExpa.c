@@ -1,7 +1,11 @@
 #include "common-chax.h"
 
+enum { CHAX_CONVOY_MAX_VOLUME = 0x300 };
+
 extern int sExpaConvoyItemCount; // gConvoyItemCount is just a u8 that can be no more than 255, not enough
-extern u16 sExpaConvoyItemArray[CONFIG_INSTALL_CONVOYEXPA_AMT];
+extern u16 sExpaConvoyItemArray[CHAX_CONVOY_MAX_VOLUME];
+
+const int sExpaConvoyItemAmount = CONFIG_INSTALL_CONVOYEXPA_AMT;
 
 /* Save API */
 void SaveExpaConvoy(u8 *dst, const u32 size)
@@ -34,7 +38,7 @@ bool8 HasConvoyAccess(void)
 
 static void ClearSupplyItemsExt(void *dst)
 {
-	CpuFill16(0, dst, CONFIG_INSTALL_CONVOYEXPA_AMT * sizeof(u16));
+	CpuFill16(0, dst, CHAX_CONVOY_MAX_VOLUME * sizeof(u16));
 }
 
 LYN_REPLACE_CHECK(ClearSupplyItems);
@@ -58,7 +62,7 @@ void ShrinkConvoyItemList(void)
 	ClearSupplyItemsExt(buffer);
 
 #if CHAX
-	for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
+	for (i = 0; i < sExpaConvoyItemAmount; i++)
 #else
 	for (i = 0; i < CONVOY_ITEM_COUNT; i++)
 #endif
@@ -71,7 +75,7 @@ void ShrinkConvoyItemList(void)
 	}
 
 	ClearSupplyItems();
-	memcpy(GetConvoyItemArray(), buffer, CONFIG_INSTALL_CONVOYEXPA_AMT * sizeof(u16));
+	memcpy(GetConvoyItemArray(), buffer, sExpaConvoyItemAmount * sizeof(u16));
 }
 
 LYN_REPLACE_CHECK(GetConvoyItemCount);
@@ -83,7 +87,7 @@ int GetConvoyItemCount(void)
 #if CHAX
 	u16 *convoy = sExpaConvoyItemArray;
 
-	for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
+	for (i = 0; i < sExpaConvoyItemAmount; i++)
 #else
 	u16 *convoy = gConvoyItemArray;
 
@@ -122,7 +126,7 @@ int GetConvoyItemSlot(int item)
 #endif
 
 #if CHAX
-	for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
+	for (i = 0; i < sExpaConvoyItemAmount; i++)
 #else
 	for (i = 0; i < CONVOY_ITEM_COUNT; i++)
 #endif
@@ -142,7 +146,7 @@ int AddItemToConvoy(int item)
 
 #if CHAX
 	convoy = sExpaConvoyItemArray;
-	for (i = 0; i < CONFIG_INSTALL_CONVOYEXPA_AMT; i++)
+	for (i = 0; i < sExpaConvoyItemAmount; i++)
 #else
 	convoy = gConvoyItemArray;
 	for (i = 0; i < CONVOY_ITEM_COUNT; i++)
@@ -164,7 +168,7 @@ int GetConvoyItemCostSum(void)
 	const u16 *convoy = GetConvoyItemArray();
 
 #if CHAX
-	for (i = 0; (i < CONFIG_INSTALL_CONVOYEXPA_AMT) && (*convoy); i++)
+	for (i = 0; (i < sExpaConvoyItemAmount) && (*convoy); i++)
 #else
 	for (i = 0; (i < CONVOY_ITEM_COUNT) && (*convoy); i++)
 #endif
@@ -179,7 +183,7 @@ LYN_REPLACE_CHECK(Shop_CheckIfConvoyFull);
 void Shop_CheckIfConvoyFull(struct ProcShop *proc)
 {
 #if CHAX
-	if (GetConvoyItemCount() < CONFIG_INSTALL_CONVOYEXPA_AMT)
+	if (GetConvoyItemCount() < sExpaConvoyItemAmount)
 #else
 	if (GetConvoyItemCount() < CONVOY_ITEM_COUNT)
 #endif
@@ -229,7 +233,7 @@ void BonusClaim_StartSelectTargetSubMenu(struct BonusClaimProc *proc)
 			count = GetConvoyItemCount();
 
 #if CHAX
-			color = (count == CONFIG_INSTALL_CONVOYEXPA_AMT) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE;
+			color = (count == sExpaConvoyItemAmount) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE;
 #else
 			color = (count == CONVOY_ITEM_COUNT) ? TEXT_COLOR_SYSTEM_GRAY : TEXT_COLOR_SYSTEM_WHITE;
 #endif
@@ -272,7 +276,7 @@ int ConvoyMenuProc_StarMenu(ProcPtr proc)
 	LoadIconPalettes(4);
 
 #if CHAX
-	if (HasConvoyAccess() && (sExpaConvoyItemCount < CONFIG_INSTALL_CONVOYEXPA_AMT))
+	if (HasConvoyAccess() && (sExpaConvoyItemCount < sExpaConvoyItemAmount))
 #else
 	if (HasConvoyAccess() && (gConvoyItemCount < CONVOY_ITEM_COUNT))
 #endif
@@ -287,7 +291,7 @@ LYN_REPLACE_CHECK(ConvoyMenuProc_ExecBootlegPopup);
 void ConvoyMenuProc_ExecBootlegPopup(ProcPtr proc)
 {
 	if (HasConvoyAccess()) {
-		if (sExpaConvoyItemCount < CONFIG_INSTALL_CONVOYEXPA_AMT)
+		if (sExpaConvoyItemCount < sExpaConvoyItemAmount)
 			NewPopup2_SendItem(proc, gActionData.item);
 		else
 			NewPopup2_DropItem(proc, gActionData.item);
@@ -310,7 +314,7 @@ void HandleNewItemGetFromDrop(struct Unit *unit, int item, ProcPtr proc)
 	ForceMenuItemPanel(proc, unit, 0xF, 0xA);
 
 #if CHAX
-	if (HasConvoyAccess() && (sExpaConvoyItemCount < CONFIG_INSTALL_CONVOYEXPA_AMT))
+	if (HasConvoyAccess() && (sExpaConvoyItemCount < sExpaConvoyItemAmount))
 #else
 	if (HasConvoyAccess() && GetConvoyItemCount() < CONVOY_ITEM_COUNT)
 #endif
@@ -332,7 +336,7 @@ bool PrepItemScreen_GiveAll(struct Unit *unit)
 #if CHAX
 	int convoyItemCount = GetConvoyItemCount();
 
-	for (i = 0; (i < unitItemCount) && ((i + convoyItemCount) < CONFIG_INSTALL_CONVOYEXPA_AMT); i++)
+	for (i = 0; (i < unitItemCount) && ((i + convoyItemCount) < sExpaConvoyItemAmount); i++)
 #else
 	int convoyItemCount = GetConvoyItemCount_();
 
@@ -370,7 +374,7 @@ void sub_809D644(struct PrepItemSupplyProc *proc)
 	color = 0;
 
 #if CHAX
-	if ((convoyItemCount == CONFIG_INSTALL_CONVOYEXPA_AMT) || (unitItemCount == 0))
+	if ((convoyItemCount == sExpaConvoyItemAmount) || (unitItemCount == 0))
 #else
 	if ((convoyItemCount == CONVOY_ITEM_COUNT) || (unitItemCount == 0))
 #endif
@@ -406,7 +410,7 @@ void sub_809D6CC(void)
 	PutNumber(
 		gBG0TilemapBuffer + 0x34 + 5,
 #if CHAX
-		(GetConvoyItemCount() == CONFIG_INSTALL_CONVOYEXPA_AMT) ? 4 : 2,
+		(GetConvoyItemCount() == sExpaConvoyItemAmount) ? 4 : 2,
 		GetConvoyItemCount()
 #else
 		(GetConvoyItemCount_() == CONVOY_ITEM_COUNT) ? 4 : 2,
@@ -416,7 +420,7 @@ void sub_809D6CC(void)
 	PutSpecialChar(gBG0TilemapBuffer + 0x34 + 6, TEXT_COLOR_SYSTEM_WHITE, TEXT_SPECIAL_SLASH);
 
 #if CHAX
-	PutNumber(gBG0TilemapBuffer + 0x34 + 9, 2, CONFIG_INSTALL_CONVOYEXPA_AMT);
+	PutNumber(gBG0TilemapBuffer + 0x34 + 9, 2, sExpaConvoyItemAmount);
 #else
 	PutNumber(gBG0TilemapBuffer + 0x34 + 9, 2, CONVOY_ITEM_COUNT);
 #endif
@@ -434,7 +438,7 @@ void PrepItemSupply_Loop_GiveTakeKeyHandler(struct PrepItemSupplyProc *proc)
 			switch (idx) {
 			case 0:
 #if CHAX
-				if ((GetConvoyItemCount() < CONFIG_INSTALL_CONVOYEXPA_AMT) && (GetUnitItemCount(proc->unit) > 0))
+				if ((GetConvoyItemCount() < sExpaConvoyItemAmount) && (GetUnitItemCount(proc->unit) > 0))
 #else
 				if ((GetConvoyItemCount_() < CONVOY_ITEM_COUNT) && (GetUnitItemCount(proc->unit) > 0))
 #endif
@@ -534,7 +538,7 @@ void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc *proc)
 	gActionData.unitActionType = UNIT_ACTION_TRADED_SUPPLY;
 
 #if CHAX
-	if ((unitItemCount == 0) || (GetConvoyItemCount() == CONFIG_INSTALL_CONVOYEXPA_AMT))
+	if ((unitItemCount == 0) || (GetConvoyItemCount() == sExpaConvoyItemAmount))
 #else
 	if ((unitItemCount == 0) || (GetConvoyItemCount_() == CONVOY_ITEM_COUNT))
 #endif
@@ -550,6 +554,7 @@ void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc *proc)
 	}
 }
 
+#ifndef CONFIG_UNIT_EXPA_REMOVE_PREP_ITEM_LIST
 LYN_REPLACE_CHECK(SomethingPrepListRelated);
 void SomethingPrepListRelated(struct Unit *pUnit, int page, int flags)
 {
@@ -592,7 +597,7 @@ void SomethingPrepListRelated(struct Unit *pUnit, int page, int flags)
 		u16 *convoy = GetConvoyItemArray();
 
 #if CHAX
-		for (j = 0; j < CONFIG_INSTALL_CONVOYEXPA_AMT && convoy[j] != 0; j++)
+		for (j = 0; j < sExpaConvoyItemAmount && convoy[j] != 0; j++)
 #else
 		for (j = 0; j < CONVOY_ITEM_COUNT && convoy[j] != 0; j++)
 #endif
@@ -607,6 +612,7 @@ void SomethingPrepListRelated(struct Unit *pUnit, int page, int flags)
 	}
 	sub_8098048(page);
 }
+#endif
 
 LYN_REPLACE_CHECK(sub_80982FC);
 void sub_80982FC(void)
