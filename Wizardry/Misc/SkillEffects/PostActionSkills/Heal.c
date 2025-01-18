@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 #include "map-anims.h"
+#include "kernel-lib.h"
 #include "battle-system.h"
 #include "skill-system.h"
 #include "constants/skills.h"
@@ -12,7 +13,7 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
 	int hp_cur = GetUnitCurrentHp(gActiveUnit);
 	int hp_max = GetUnitMaxHp(gActiveUnit);
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UnitAvaliable(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 #if defined(SID_Lifetaker) && (COMMON_SKILL_VALID(SID_Lifetaker))

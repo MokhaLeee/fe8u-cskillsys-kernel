@@ -76,7 +76,7 @@ STATIC_DECLAR void PreGenerateMovementMap(int default_mov)
 			int pioneer_range = 0;
 			struct Unit *_unit = GetUnitAtPosition(ix, iy);
 
-			if (!UNIT_ALIVE(_unit))
+			if (!UnitOnMapAvaliable(_unit))
 				continue;
 
 			/**

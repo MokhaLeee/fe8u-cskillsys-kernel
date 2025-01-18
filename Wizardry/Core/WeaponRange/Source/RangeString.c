@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "weapon-range.h"
 
 #define LOCAL_TRACE 0
@@ -70,7 +71,7 @@ const char *GetUnitDisplayRangeString(struct Unit *unit)
 	u16 item;
 	int min, max;
 
-	if (!IS_UNIT_PTR(unit)) {
+	if (!IsUnitStruct(unit)) {
 		unit = gStatScreen.unit;
 		if (!UNIT_IS_VALID(unit))
 			return GetStringFromIndex(0x52B); /* "--\0" */

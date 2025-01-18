@@ -115,6 +115,13 @@ extern const u8 gRange1_In3x3[ARRAY_COUNT_RANGE3x3];
 extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
 
 /**
+ * unit-validation.c
+ */
+bool UnitAvaliable(struct Unit *unit);
+bool UnitOnMapAvaliable(struct Unit *unit);
+bool IsUnitStruct(struct Unit *maybe_unit);
+
+/**
  * faction
  */
 #define GetFactionUnitAmount(faction) \
@@ -128,7 +135,7 @@ extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
 // Maybe there could be an external "FOR_UNITS" macro
 #undef FOR_UNITS
 
-#define FOR_UNITS(begin, end, var_name, body) \
+#define FOR_UNITS_ONMAP(begin, end, var_name, body) \
 { \
 	int ___uid; \
 	struct Unit *var_name; \
@@ -136,7 +143,7 @@ extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
 		var_name = GetUnit(___uid); \
 		if (!var_name) \
 			continue; \
-		if (!UNIT_ALIVE(var_name)) \
+		if (!UnitOnMapAvaliable(var_name)) \
 			continue; \
 		body \
 	} \
@@ -145,16 +152,16 @@ extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
 #define FOR_UNITS_FACTION(faction, var_name, body) \
 do { \
 	if ((faction) == FACTION_BLUE) { \
-		FOR_UNITS(FACTION_BLUE + 1, FACTION_BLUE + GetFactionUnitAmount(FACTION_BLUE), var_name, body) \
+		FOR_UNITS_ONMAP(FACTION_BLUE + 1, FACTION_BLUE + GetFactionUnitAmount(FACTION_BLUE), var_name, body) \
 	} else if ((faction) == FACTION_RED) { \
-		FOR_UNITS(FACTION_RED + 1, FACTION_RED + GetFactionUnitAmount(FACTION_RED), var_name, body) \
+		FOR_UNITS_ONMAP(FACTION_RED + 1, FACTION_RED + GetFactionUnitAmount(FACTION_RED), var_name, body) \
 	} else if ((faction) == FACTION_GREEN) { \
-		FOR_UNITS(FACTION_GREEN + 1, FACTION_GREEN + GetFactionUnitAmount(FACTION_GREEN), var_name, body) \
+		FOR_UNITS_ONMAP(FACTION_GREEN + 1, FACTION_GREEN + GetFactionUnitAmount(FACTION_GREEN), var_name, body) \
 	} \
 } while (0);
 
 #define FOR_UNITS_ALL(var_name, body) \
-	FOR_UNITS(1, 0xC0, var_name, body)
+	FOR_UNITS_ONMAP(1, 0xC0, var_name, body)
 
 int GetUidFaction(u8 uid);
 int GetUnitFaction(struct Unit *unit);

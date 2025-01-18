@@ -16,7 +16,7 @@ int GetItemMinRangeRework(u16 item, struct Unit *unit)
 {
 	int status = GetItemMinRange(item);
 
-	if (IS_UNIT_PTR(unit)) {
+	if (IsUnitStruct(unit)) {
 #if defined(SID_PointBlank) && (COMMON_SKILL_VALID(SID_PointBlank))
 		if (SkillTester(unit, SID_PointBlank) && GetItemType(item) == ITYPE_BOW)
 			status = 1;
@@ -33,7 +33,7 @@ int GetItemMaxRangeRework(u16 item, struct Unit *unit)
 	if (status == 0)
 		status = GetUnitMagBy2Range(unit);
 
-	if (IS_UNIT_PTR(unit)) {
+	if (IsUnitStruct(unit)) {
 		for (it = gpWeaponRangeGetters; *it; it++)
 			status = (*it)(status, unit, item);
 	}

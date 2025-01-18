@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 #include "skill-system.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 
 FORCE_DECLARE static void callback_anim(ProcPtr proc)
@@ -27,7 +28,7 @@ bool PostActionAlertStance(ProcPtr parent)
 {
 	FORCE_DECLARE struct Unit *unit = gActiveUnit;
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UnitAvaliable(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	if (gActionData.unitActionType == UNIT_ACTION_WAIT) {

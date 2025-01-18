@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "stat-screen.h"
+#include "kernel-lib.h"
 #include "strmag.h"
 
 int GetUnitBattleAmt(struct Unit *unit)
@@ -55,7 +56,7 @@ u8 GetTalkee(struct Unit *unit)
 
 			if (cmd_info->func(&info) == true) {
 				struct Unit *talkee = GetUnitFromCharId(_chunk->pidB);
-				if (UNIT_ALIVE(talkee))
+				if (UnitOnMapAvaliable(talkee))
 					return _chunk->pidB;
 			}
 		}
@@ -66,7 +67,7 @@ u8 GetTalkee(struct Unit *unit)
 	for (i = 0; i < GetUnitSupporterCount(unit); i++) {
 		struct Unit *talkee = GetUnitSupporterUnit(unit, i);
 
-		if (UNIT_ALIVE(talkee) && CanUnitSupportNow(unit, i))
+		if (UnitOnMapAvaliable(talkee) && CanUnitSupportNow(unit, i))
 			return UNIT_CHAR_ID(talkee);
 	}
 	return 0;

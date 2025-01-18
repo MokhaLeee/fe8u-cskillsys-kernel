@@ -38,7 +38,7 @@ u8 EventDebuffOperation(struct EventEngineProc *proc)
 		hang();
 	}
 
-	if (!IS_UNIT_PTR(unit)) {
+	if (!IsUnitStruct(unit)) {
 		Errorf("Unit %p invalid at event %p", unit, proc->pEventCurrent);
 		hang();
 	}

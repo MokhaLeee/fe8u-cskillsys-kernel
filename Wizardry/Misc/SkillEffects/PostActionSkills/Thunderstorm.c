@@ -112,7 +112,7 @@ bool PostActionThunderstorm(ProcPtr parent)
 #endif
 		return false;
 
-	if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+	if (!UnitAvaliable(unit) || UNIT_STONED(unit))
 		return false;
 
 	if (gBattleStats.range < 3)
