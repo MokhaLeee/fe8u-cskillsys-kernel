@@ -15,7 +15,7 @@
 #ifdef CONFIG_USE_DEBUG
 #define STATIC_DECLAR
 #else
-#define STATIC_DECLAR static
+#define STATIC_DECLAR // static
 #endif
 
 #ifndef hang
