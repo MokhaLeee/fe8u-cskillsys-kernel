@@ -1,0 +1,75 @@
+/**
+ * Hotfix for 1.0.0LTS at 2025.01.18
+ *
+ * Fix:
+ * 1. Fix bug that pure water failed to take effect.
+ * 2. Fix bug that weapon magic boost failed to take effect.
+ * 3. Fix bug that the auto-leveled unit's status lower than expectation.
+ * 4. Fix skill: SilentPride
+ *
+ * Main branch commits:
+ * - https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/bc8a7d1c734d98a28bb1ef169c66baf0bb755491
+ * - https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/6430b8bb1fd2deaf715a8e01a139a4b42557cb7b
+ * - https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/5c9229e02e4f188dd1cc684dbed39a7f9abe2a8e
+ * - https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/8ba29a87bca06602036336130832ebfbbabeebc2
+ * - https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/b7052162f9a16505bb1d1e2b83245552bf1122ff
+ */
+
+PUSH
+	ORG 0xB57558 // replace MagGetterDebuff
+	POIN MagGetterWeaponBonus
+
+	ORG 0xB57628 // replace ResGetterDebuff
+	POIN ResGetterPureWater
+
+	ORG 0x17FC4
+	WORD $46C04778 $E59FC000 $E12FFF1C
+	POIN UnitAutolevelCore_Fix
+
+	ORG 0xBA6B1E
+	SHORT 0x2072 // mov r0, #0x72
+	SHORT 0x2312 // mov r3, #0x12
+
+	ORG 0xBAB600
+	BYTE 0x00 0x4B 0x18 0x47; POIN CheckVantageOrder_Fix
+
+	/**
+	 * contents
+	 */
+	ORG 0x2B84C
+	// #include "Source/hotfix_20250118_asm.lyn.event"
+	ALIGN 4
+	PUSH
+	ORG CURRENTOFFSET+$1;UnitAutolevelCore_Fix:
+	ORG CURRENTOFFSET+$20;CheckVantageOrder_Fix:
+	POP
+	WORD $1C04B530 $2D001C15 $BD30D100 $1C2A1C20
+	SHORT ((UnitAutolevelCore_Mag-4-CURRENTOFFSET>>12)&$7FF)|$F000 ((UnitAutolevelCore_Mag-4-CURRENTOFFSET>>1)&$7FF)|$F800
+	WORD $7EC06860 $16000600 $47084907 $46512048 $28005A08 $4805D101 $21734700 $68234650 $46964A03 $4718 $8017FD7 $8BAB821 $8BAB609
+
+	// #include "Source/hotfix_20250118.lyn.event"
+	ALIGN 4
+	PUSH
+	ORG CURRENTOFFSET+$1;ResGetterPureWater:
+	ORG CURRENTOFFSET+$1c;MagGetterWeaponBonus:
+	ORG CURRENTOFFSET+$40;UnitAutolevelCore_Mag:
+	POP
+	WORD $B5102331 $91B5CCB $4B031818 $F83EF000 $BC02BC10 $46C04708
+	POIN ResGetterDebuff
+	WORD $4B0CB570 $80005 $F000000C $2800F831 $28D107 $4B080021 $F82AF000 $BC02BC70 $4B064708 $F824F000 $D0F22800 $56C32309 $E7EE18ED $8016B29
+	POIN MagGetterDebuff
+	WORD $80176E9 $6843B510 $20010004 $4B07791A $92681B $5618189B $F0004B05 $2247F80B $181B5CA3 $BC1054A3 $4700BC01
+	POIN gpMagicJInfos
+	WORD $802B9C5 $46C04718
+
+	// MESSAGE hotfix_20250118 CURRENTOFFSET
+	// ASSERT (0x02B92C - CURRENTOFFSET)
+	// PROTECT 0x02B84C 0x02B92C
+POP
+
+// PROTECT 0xB57558 0xB57558 + 4
+// PROTECT 0xB57628 0xB57628 + 4
+// PROTECT 0x017FC4 0x017FC4 + 0x10
+// PROTECT 0xBA6B1E 0xBA6B1E + 4
+// PROTECT 0xBAB600 0xBAB600 + 8
+// PROTECT 0x02B84C 0x02B92C

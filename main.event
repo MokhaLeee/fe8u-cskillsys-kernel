@@ -38,6 +38,13 @@ ASSERT (0x00C00000 - CURRENTOFFSET)
 #include "LTS/hotfix/hotfix_20240922.event"
 #include "LTS/hotfix/hotfix_20240927.event"
 #include "LTS/hotfix/hotfix_20241009/hotfix_20241009.event"
-#include "LTS/hotfix/hotfix_20241205/hotfix_20241205.event"
-#include "LTS/hotfix/hotfix_20250102/hotfix_20250102.event"
-PROTECT 0x1AD8C CURRENTOFFSET
+// #include "LTS/hotfix/hotfix_20241205/hotfix_20241205.event"
+// #include "LTS/hotfix/hotfix_20250102/hotfix_20250102.event"
+PROTECT 0x1AD8C 0x1B078
+#include "LTS/hotfix/hotfix_20250118/hotfix_20250118.event"
+PROTECT 0xB57558 0xB57558 + 4
+PROTECT 0xB57628 0xB57628 + 4
+PROTECT 0x017FC4 0x017FC4 + 0x10
+PROTECT 0xBA6B1E 0xBA6B1E + 4
+PROTECT 0xBAB600 0xBAB600 + 8
+PROTECT 0x02B84C 0x02B92C
