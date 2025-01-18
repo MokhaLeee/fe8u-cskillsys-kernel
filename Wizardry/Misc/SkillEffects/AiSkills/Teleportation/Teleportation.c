@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "status-getter.h"
 
-static inline int GetEnemyFaction(int faction)
+static int GetEnemyFaction(int faction)
 {
 	switch (faction) {
 	case FACTION_BLUE:

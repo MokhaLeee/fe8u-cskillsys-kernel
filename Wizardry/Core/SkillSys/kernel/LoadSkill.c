@@ -106,7 +106,7 @@ int AddSkill(struct Unit *unit, const u16 sid)
 	return 0;
 }
 
-static inline void load_skill_ext(struct Unit *unit, u16 sid)
+static void load_skill_ext(struct Unit *unit, u16 sid)
 {
 	if (EQUIPE_SKILL_VALID(sid)) {
 		if (UNIT_FACTION(unit) == FACTION_BLUE)
