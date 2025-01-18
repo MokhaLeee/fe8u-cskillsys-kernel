@@ -10,13 +10,13 @@ const int sExpaConvoyItemAmount = CONFIG_INSTALL_CONVOYEXPA_AMT;
 /* Save API */
 void SaveExpaConvoy(u8 *dst, const u32 size)
 {
-	Assert(size >= sizeof(sExpaConvoyItemArray));
+	Assert(size <= sizeof(sExpaConvoyItemArray));
 	WriteAndVerifySramFast(sExpaConvoyItemArray, dst, size);
 }
 
 void LoadExpaConvoy(u8 *src, const u32 size)
 {
-	Assert(size >= sizeof(sExpaConvoyItemArray));
+	Assert(size <= sizeof(sExpaConvoyItemArray));
 	ReadSramFast(src, sExpaConvoyItemArray, size);
 }
 
