@@ -5,7 +5,7 @@
 const struct CombatArtRomTable gCombatArtRomPTable[0x100] = {
     [CHARACTER_EIRIKA] = {
         .cid_sword = {
-            [WPN_LEVEL_E] = CID_WrathStrike,
+            [WPN_LEVEL_E] = CID_Detonate,
         },
     },
     // [CHARACTER_INNES] = {

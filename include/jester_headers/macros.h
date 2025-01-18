@@ -95,6 +95,10 @@ enum {
     CLEN \
     SVAL(EVT_SLOT_B, 0x00000000)
 
+// Remove all enemy units
+# define CLEAR_ENEMY_UNITS \
+    CLEE
+
 // Set the chosen unit's HP total
 #define SET_UNIT_HP(character, hp) \
     SVAL(EVT_SLOT_1, hp) \
@@ -338,4 +342,3 @@ enum {
 #define WARP_CHARACTER_OUT(characterID) \
     SVAL(EVT_SLOT_2, characterID) \
     CALL(EventScr_UnitWarpOUT)
-    

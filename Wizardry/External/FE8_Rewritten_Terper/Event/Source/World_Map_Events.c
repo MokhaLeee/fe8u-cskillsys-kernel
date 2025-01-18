@@ -239,7 +239,58 @@ const EventScr EventScrWM_Prologue_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
+const EventScr EventScrWM_Intermission_Renvall_To_Serafew[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall1)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WmEvtSetNodeStateNot2(WM_NODE_Renvall1) // ENOSUPP in EAstdlib
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Renvall1) // ENOSUPP in EAstdlib
+    WM_MAKELORDVISIBLE(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Renvall1, WM_NODE_AdlasPlains, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_AdlasPlains, WM_NODE_Serafew, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    SKIPWN
+    ENDA
+};
+
+const EventScr EventScrWM_Intermission_Serafew_To_Frelia[] = {
+    EVBIT_MODIFY(0x1)
+    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Serafew)
+    WM_CENTERCAMONLORD(WM_MU_0)
+    WmEvtSetNodeStateNot2(WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    WM_FADEOUT(0)
+    WM_TEXTDECORATE // WaitFade
+    EVBIT_MODIFY(0x0)
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
+    WM_MAKELORDVISIBLE(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Serafew, WM_NODE_ZahaWoods, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_ZahaWoods, WM_NODE_BorgoRidge, -2, 0)
+    WM_MOVECAMTO(-1, -1, WM_NODE_CastleFrelia, 120, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_BorgoRidge, WM_NODE_Ide, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Ide, WM_NODE_CastleFrelia, -2, 0)
+    WM_WAITFORSPRITES(WM_MU_0)
+    WM_WAITFORCAM
+    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_CastleFrelia) // ENOSUPP in EAstdlib
+    SKIPWN
+    ENDA
+};
+
+
 const EventScr EventScrWM_Ch1_ENDING[] = {
+    CHECK_EVENTID(136)
+    BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
+    CALL(EventScrWM_Intermission_Serafew_To_Frelia)
+    GOTO(0x2)
+
+LABEL(0x1)
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_BorderMulan)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -272,6 +323,8 @@ const EventScr EventScrWM_Ch1_ENDING[] = {
     STAL(2)
     STAL(20)
     SKIPWN
+
+LABEL(0x2)
     ENDA
 };
 
@@ -523,7 +576,7 @@ LABEL(0x2)
 const EventScr EventScrWM_Ch5_TRAVEL_TO_NODE[] = {
     CHECK_EVENTID(136)
     BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
-    CALL(EventScrWM_Ch5x_STUFF)
+    CALL(EventScrWM_Intermission_Renvall_To_Serafew)
     GOTO(0x2)
 LABEL(0x1)
     STAL(6)
@@ -711,51 +764,7 @@ const EventScr EventScrWM_Ch8_SET_NODE[] = {
 
 const EventScr EventScrWM_Ch8_TRAVEL_TO_NODE[] = {
     EVBIT_MODIFY(0x1)
-    ENUT(136)
-    ENDA
-};
-
-const EventScr EventScrWM_Intermission_Renvall_To_Serafew[] = {
-    EVBIT_MODIFY(0x1)
-    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Renvall1)
-    WM_CENTERCAMONLORD(WM_MU_0)
-    WmEvtSetNodeStateNot2(WM_NODE_Renvall1) // ENOSUPP in EAstdlib
-    WM_FADEOUT(0)
-    WM_TEXTDECORATE // WaitFade
-    EVBIT_MODIFY(0x0)
-    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Renvall1) // ENOSUPP in EAstdlib
-    WM_MAKELORDVISIBLE(WM_MU_0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Renvall1, WM_NODE_AdlasPlains, -2, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_AdlasPlains, WM_NODE_Serafew, -2, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
-    SKIPWN
-    ENDA
-};
-
-const EventScr EventScrWM_Intermission_Serafew_To_Frelia[] = {
-    EVBIT_MODIFY(0x1)
-    WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_Serafew)
-    WM_CENTERCAMONLORD(WM_MU_0)
-    WmEvtSetNodeStateNot2(WM_NODE_Serafew) // ENOSUPP in EAstdlib
-    WM_FADEOUT(0)
-    WM_TEXTDECORATE // WaitFade
-    EVBIT_MODIFY(0x0)
-    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Serafew) // ENOSUPP in EAstdlib
-    WM_MAKELORDVISIBLE(WM_MU_0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Serafew, WM_NODE_ZahaWoods, -2, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_ZahaWoods, WM_NODE_BorgoRidge, -2, 0)
-    WM_MOVECAMTO(-1, -1, WM_NODE_CastleFrelia, 120, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_BorgoRidge, WM_NODE_Ide, -2, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WM_MOVESPRITETO(WM_MU_0, 0x0004, WM_NODE_Ide, WM_NODE_CastleFrelia, -2, 0)
-    WM_WAITFORSPRITES(WM_MU_0)
-    WM_WAITFORCAM
-    WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_CastleFrelia) // ENOSUPP in EAstdlib
-    SKIPWN
+    ENUT(136) // Set departure flag
     ENDA
 };
 

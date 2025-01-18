@@ -86,7 +86,7 @@ s8 ActionRescue(ProcPtr);
 int AfterDrop_CheckTrapAfterDropMaybe(struct AfterDropActionProc * proc);
 int sub_80321C8(void);
 s8 ActionDrop(ProcPtr);
-s8 ActionVisitAndSEIZE(ProcPtr);
+s8 ActionVisitAndSeize(ProcPtr);
 s8 ActionCombat(ProcPtr);
 s8 ActionArena(ProcPtr);
 s8 ActionDance(ProcPtr);

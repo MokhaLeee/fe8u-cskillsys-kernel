@@ -30,9 +30,9 @@
     EventPointerTable(0x2A, Chapter08Event)
     #include "Source/Chapter_08_Broken_Vows/Chapter_08_Broken_Vows.lyn.event"
     #include "Source/Chapter_08_Broken_Vows/Map/Chapter_08_map.event"
-    EventPointerTable(0x2D, Chapter09Event)
-    #include "Source/Chapter_09_Renewed_Journey/Chapter_09_Renewed_Journey.lyn.event"
-    #include "Source/Chapter_09_Renewed_Journey/Map/Chapter_09_map.event"
+    // EventPointerTable(0x2D, Chapter09Event)
+    // #include "Source/Chapter_09_Renewed_Journey/Chapter_09_Renewed_Journey.lyn.event"
+    // #include "Source/Chapter_09_Renewed_Journey/Map/Chapter_09_map.event"
 }
 
     #include "Source/World_Map_Events.lyn.event"

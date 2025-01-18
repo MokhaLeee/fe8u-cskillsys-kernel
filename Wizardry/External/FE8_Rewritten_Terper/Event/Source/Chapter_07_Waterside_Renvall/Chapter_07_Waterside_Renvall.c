@@ -210,7 +210,7 @@ static const EventScr EventScr_Ending[] = {
     STAL(8)
     FADE_OUT_SCREEN(16)
     ENUN
-    NEXT_CHAPTER_WITHOUT_MAP(CHAPTER_08)
+    NEXT_CHAPTER_WITH_MAP(CHAPTER_08)
     ENDA
 };
 

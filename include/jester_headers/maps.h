@@ -25,6 +25,8 @@ enum {
     CHAPTER_21                = 0x15,
     CHAPTER_22                = 0x16,
     INSIDE_GRADO_CASTLE       = 0x1B,
+    TOWER_OF_VALNI_08         = 0x2B,
+    CASTLE_FRELIA             = 0x38,
     OUTSIDE_GRADO_CASTLE      = 0x3F,
     OUTSIDE_RENAIS            = 0x40,
 };

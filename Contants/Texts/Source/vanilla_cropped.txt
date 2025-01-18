@@ -1067,19 +1067,19 @@ Turns[.][X]
 Total Turns[.][X]
 
 ## MSG_0160
-Prologue: Fall of Renais.[X]
+Prologue: Fall of Renais[X]
 
 ## MSG_0161
-Chapter 1: Escape![.][X]
+Chapter 1: Escape![X]
 
 ## MSG_0162
-Chapter 2: The Protected[.][X]
+Chapter 2: The Protected[X]
 
 ## MSG_0163
 Chapter 3: The Bandits of Borgo[X]
 
 ## MSG_0164
-Chapter 4: Ancient Horrors[.][X]
+Chapter 4: Ancient Horrors[X]
 
 ## MSG_0165
 Chapter 5x: Unbroken Heart[X]
@@ -1091,16 +1091,16 @@ Chapter 5: The Empire's Reach[X]
 Chapter 6: Victims of War[X]
 
 ## MSG_0168
-Chapter 7: Waterside Renvall[.][X]
+Chapter 7: Waterside Renvall[X]
 
 ## MSG_0169
 Chapter 8: Broken Vows[X]
 
 ## MSG_016A
-Chapter 9: Renewed Journey[.][X]
+Chapter 9: Renewed Journey[X]
 
 ## MSG_016B
-Chapter 10: Revolt at Carcino[.][X]
+Chapter 10: Revolt at Carcino[X]
 
 ## MSG_016C
 Village of Silence[X]

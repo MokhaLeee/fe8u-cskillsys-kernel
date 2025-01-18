@@ -60,6 +60,18 @@ static const struct UnitDefinition CH5_EIRIKA_SETH[] = {
     {},
 };
 
+static const struct UnitDefinition INTERMISSION_EIRIKA[] = {
+    UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, AUTOLEVEL, 1, 8, 16, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_KILLER, ITEM_VULNERARY), 
+    {}
+};
+
+static const struct UnitDefinition INTERMISSION_EIRIKA_EPHRAIM[] = {
+    UNIT_ENTRY(CHARACTER_EIRIKA, CLASS_EIRIKA_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, AUTOLEVEL, 1, 7, 15, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_KILLER, ITEM_VULNERARY), 
+    UNIT_ENTRY(CHARACTER_EPHRAIM, CLASS_EPHRAIM_LORD, FACTION_ID_BLUE,  NO_ITEM_DROP, AUTOLEVEL, 1, 8, 15, 0, REDAs_NULL, 0, 0, 0, 0, ITEM_SWORD_KILLER, ITEM_VULNERARY), 
+    {}
+};
+
+
 // /**
 //  * Enemy unit and REDA definitions
 //  */
@@ -194,14 +206,70 @@ static const struct UnitDefinition CH5_TURN_8_REINFORCEMENTS[] = {
  */
 
 /**
+ * ASM Conditional Events
+ */
+
+static const EventScr EventScr_NEW_JOURNEY[] = {
+    MOVE_CAMERA_TO_POSITION(14, 20)
+    LOAD_WAIT(INTERMISSION_EIRIKA_EPHRAIM)
+    MUSC(SFX_BIRDS_CHIRPING)
+    FADE_IN_SCREEN(16)
+    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
+    SET_BACKGROUND(0x5)
+    TEXT_NO_REMA(Intermission_In_Scene_Serafew_01)
+    MUSCSSLOW(8)
+    FADE_TO_WHITE(2)
+    REMA
+    CLEAR_ALL_UNITS
+    LOMA(0x4E)
+    MOVE_CAMERA_TO_POSITION(14, 20)
+    UNIT_COLORS(4) // Sepia color palette for units
+    LOAD_WAIT(INTERMISSION_EIRIKA)
+    FADE_FROM_WHITE(2)
+    BROWNBOXTEXT(0x20F, 2, 2)
+    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
+    REMOVEPORTRAITS
+    FADE_TO_WHITE(16)
+    SET_BACKGROUND(0x6)
+    FADE_FROM_WHITE(16)
+    TEXT(Intermission_In_Scene_Serafew_02)
+    FADE_TO_WHITE(16)
+    CLEAN
+    FADE_TO_WHITE(16)
+    MOVE(0x0, CHARACTER_EIRIKA, 0, 16)
+    STAL(32)
+    FADE_TO_WHITE(16)
+    CLEAR_ALL_UNITS
+    REMOVEPORTRAITS
+    SET_BACKGROUND(0x6)
+    FADE_FROM_WHITE(16)
+    TEXT_NO_REMA(Intermission_In_Scene_Serafew_03)
+    MUSCSSLOW(8)
+    FADE_TO_WHITE(8)
+    REMA
+    LOMA(CHAPTER_05)
+    MOVE_CAMERA_TO_POSITION(14, 20)
+    UNIT_COLORS(0) // Reset color palette for units
+    LOAD_WAIT(INTERMISSION_EIRIKA_EPHRAIM)
+    MUSC(SFX_BIRDS_CHIRPING)
+    FADE_FROM_WHITE(16)
+    HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
+    SET_BACKGROUND(0x5)
+    TEXT(Intermission_In_Scene_Serafew_04)
+    NEXT_CHAPTER_WITH_MAP(CASTLE_FRELIA)
+    ENDB
+};
+
+/**
  * Main events
  */
 static const EventScr EventScr_Beginning[] = {
-    // CHECK_EVENTID(136) // Flag 0x88
-    // BEQ(0x0, EVT_SLOT_C, EVT_SLOT_0)
-    // CALL(EventScr_NEW_JOURNEY)
-// LABEL(0x0)
+    CHECK_EVENTID(136) // Flag 0x88
+    BEQ(0x1, EVT_SLOT_C, EVT_SLOT_0)
+    CALL(EventScr_NEW_JOURNEY)
+    GOTO(0x2)
 
+LABEL(0x1)
     MUSC(BGM_SHOPS)
     LOAD_WAIT(CH5_JOSHUA)
     TEXT_BG(0x5, Chapter_05_Scene_01_Convo_01)
@@ -276,6 +344,8 @@ static const EventScr EventScr_Beginning[] = {
     CALL(EventScr_08591FD8) // Prep screen
     FADE_IN_SCREEN(16)
     MUSC(BGM_DISTANT_ROADS)
+
+GOTO(0x2)
     NOFADE
     ENDA
 };

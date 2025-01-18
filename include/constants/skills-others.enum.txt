@@ -1,4 +1,4 @@
-////////// MENU SKILLS 
+////////// MENU SKILLS
 // SID_Dismount
 // SID_ReciprocalAid
 // SID_Sacrifice
