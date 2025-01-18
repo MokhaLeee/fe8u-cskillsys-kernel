@@ -17,6 +17,7 @@ void SaveExpaConvoy(u8 *dst, const u32 size)
 void LoadExpaConvoy(u8 *src, const u32 size)
 {
 	Assert(size <= sizeof(sExpaConvoyItemArray));
+	memset(sExpaConvoyItemArray, 0, sizeof(sExpaConvoyItemArray));
 	ReadSramFast(src, sExpaConvoyItemArray, size);
 }
 
@@ -38,7 +39,7 @@ bool8 HasConvoyAccess(void)
 
 static void ClearSupplyItemsExt(void *dst)
 {
-	CpuFill16(0, dst, CHAX_CONVOY_MAX_VOLUME * sizeof(u16));
+	CpuFill16(0, dst, sExpaConvoyItemAmount * sizeof(u16));
 }
 
 LYN_REPLACE_CHECK(ClearSupplyItems);
@@ -554,7 +555,6 @@ void PrepItemSupply_GiveItemToSupply(struct PrepItemSupplyProc *proc)
 	}
 }
 
-#ifndef CONFIG_UNIT_EXPA_REMOVE_PREP_ITEM_LIST
 LYN_REPLACE_CHECK(SomethingPrepListRelated);
 void SomethingPrepListRelated(struct Unit *pUnit, int page, int flags)
 {
@@ -612,7 +612,6 @@ void SomethingPrepListRelated(struct Unit *pUnit, int page, int flags)
 	}
 	sub_8098048(page);
 }
-#endif
 
 LYN_REPLACE_CHECK(sub_80982FC);
 void sub_80982FC(void)
