@@ -415,8 +415,8 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
 #endif
 
-#if defined(SID_MovBonus) && (COMMON_SKILL_VALID(SID_MovBonus))
-	Evt_AddSkill(SID_MovBonus, CHARACTER_EPHRAIM)
+#if defined(SID_HpBonus) && (COMMON_SKILL_VALID(SID_HpBonus))
+	Evt_AddSkill(SID_HpBonus, CHARACTER_EPHRAIM)
 #endif
 
 #if defined(SID_Pass) && (COMMON_SKILL_VALID(SID_Pass))
@@ -483,6 +483,9 @@ static const EventScr EventScr_Beginning[] = {
 
 	SVAL(EVT_SLOT_1, 40)
 	SET_HP(CHARACTER_VIGARDE)
+
+	SVAL(EVT_SLOT_1, 23)
+	SET_HP(CHARACTER_EPHRAIM)
 
 	NoFade
 	ENDA

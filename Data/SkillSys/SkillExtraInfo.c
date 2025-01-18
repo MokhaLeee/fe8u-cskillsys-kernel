@@ -4,7 +4,7 @@
 
 const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_HpBonus) && COMMON_SKILL_VALID(SID_HpBonus))
-	[SID_HpBonus] = {{ 2 }},
+	[SID_HpBonus] = {{ 5 }},
 #endif
 
 #if (defined(SID_StrBonus) && COMMON_SKILL_VALID(SID_StrBonus))

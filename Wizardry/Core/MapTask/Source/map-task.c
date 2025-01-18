@@ -43,9 +43,15 @@ void PutUnitSpriteIconsOam(void)
 		 * 1. HpBar
 		 */
 		if (unit->curHP != unit->maxHP) {
+			int _cur = unit->curHP;
+			int _max = unit->maxHP;
+
+			if (_cur > _max)
+				_cur = _max;
+
 			MapTaskPutOamHi(
 				MTSKCONF_HPBAR,
-				OAM2_PAL(0) + OAM2_LAYER(2) + OAM2_CHR(gpHpBarChr[Div(unit->curHP * 10, unit->maxHP)]));
+				OAM2_PAL(0) + OAM2_LAYER(2) + OAM2_CHR(gpHpBarChr[k_udiv(_cur * 10, _max)]));
 		}
 
 		/**
