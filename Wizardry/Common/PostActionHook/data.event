@@ -16,6 +16,7 @@ gPostActionFuncs:
     POIN PostAction_Glorifier
 
     //End
+    POIN CallExternalPostActionHook
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     POIN PostActionEnd
     WORD 0

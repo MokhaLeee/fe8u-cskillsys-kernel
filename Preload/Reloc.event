@@ -149,4 +149,7 @@ gpIconGetters: POIN IconGetters
 
 gpStatDebuffStatusPool: POIN sStatDebuffStatusPool
 
+gpExternalPostActionHook: WORD 0
+gpExternalPrePhaseHook: WORD 0
+
 KERNEL_RELOC_END:
