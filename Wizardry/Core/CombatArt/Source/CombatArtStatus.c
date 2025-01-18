@@ -4,7 +4,7 @@
 extern struct CombatArtStatus gCombatArtStatus;
 
 /* Judge is combat-art effective */
-u8 GetCombatArtInForce(struct Unit *unit)
+int GetCombatArtInForce(struct Unit *unit)
 {
 	if (gCombatArtStatus.uid != unit->index)
 		return 0;

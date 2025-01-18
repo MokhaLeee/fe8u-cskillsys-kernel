@@ -1,6 +1,11 @@
 #include "common-chax.h"
 #include "debuff.h"
 
+bool UNIT_STONED(struct Unit *unit)
+{
+	return (UNIT_STATUS_INDEX(unit) == UNIT_STATUS_PETRIFY || UNIT_STATUS_INDEX(unit) == UNIT_STATUS_13);
+}
+
 LYN_REPLACE_CHECK(SetUnitStatus);
 void SetUnitStatus(struct Unit *unit, int status)
 {
