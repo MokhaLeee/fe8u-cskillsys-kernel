@@ -459,6 +459,10 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_AddSkill(SID_Sol, CHARACTER_VANESSA)
 #endif
 
+#if defined(SID_Aptitude) && (COMMON_SKILL_VALID(SID_Aptitude))
+	Evt_AddSkill(SID_Aptitude, CHARACTER_VANESSA)
+#endif
+
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
 	/* In debug mode, unit may automatically learn all skills */
 	Evt_RemoveSkill(SID_Fury, CHARACTER_EPHRAIM)
