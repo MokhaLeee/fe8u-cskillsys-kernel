@@ -15,6 +15,10 @@
 - Eebit(https://github.com/Eebit)
 - Revo(https://github.com/RevoSucks)
 
+# Testers
+
+- Natsumi(1678912536@qq.com)
+
 # Resources
 
 ## Skill icons

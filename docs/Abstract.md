@@ -87,6 +87,10 @@ Some combat related debuffs can overlap and exist simultaneously but just hold o
 
 [Shield](./ShieldItem.md)
 
+## System config
+
+[SystemConfig](./SystemConfig.md)
+
 # Credits
 
 [Credits doc](./Credits.md)
