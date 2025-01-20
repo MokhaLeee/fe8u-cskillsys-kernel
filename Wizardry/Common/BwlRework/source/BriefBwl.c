@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "bwl.h"
 
+const int Sizeof_NewBwl = sizeof(struct NewBwl);
+
 bool CheckHasBwl(u8 pid)
 {
 	if (pid >= NEW_BWL_ARRAY_NUM)
