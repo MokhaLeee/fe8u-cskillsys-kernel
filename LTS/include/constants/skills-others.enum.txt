@@ -1,0 +1,279 @@
+SID_GreatShield
+SID_HoneCavalry
+SID_HoneFlier
+SID_HoneArmor
+SID_FortifyArmor
+SID_Skyguard
+SID_Horseguard
+SID_Armorboost
+SID_Shade
+SID_ShadePlus
+SID_Provoke
+SID_Lethality
+SID_Crit
+SID_InfinityEdge
+SID_SureShot
+SID_WatchfulEye
+SID_AversaNight
+SID_Inori
+SID_Armsthrift
+SID_Synchronize
+SID_PoisonPoint
+SID_PushMovement
+SID_LightWeight
+SID_Analytic
+SID_Lifetaker
+SID_Tsuzuku
+SID_MysticBoost
+SID_GuardBearing
+SID_YuneWhispers
+SID_CounterRoar
+SID_Gambit
+SID_MagicGambit
+SID_BeastAssault
+SID_LightAndDark
+SID_Bushido
+SID_DragonWall
+SID_DragonWarth
+SID_BlueLionRule
+SID_FaerghusAncestry
+SID_CrusaderWard
+SID_Plus
+SID_Minus
+SID_VengefulFighter
+SID_LuckySeven
+SID_EvenFooted
+SID_OddFooted
+SID_Slayer
+SID_Skybreaker
+SID_Nullify
+SID_Vigilance
+SID_AvoidSword
+SID_Vanity
+SID_ShortShield
+SID_Opportunist
+SID_TowerShield
+SID_StunningSmile
+SID_Trample
+SID_Loyalty
+SID_HolyAura
+SID_BlueFlame
+SID_DancingBlade
+SID_QuickBurn
+SID_SlowBurn
+SID_NaturalCover
+SID_RecklessFighter
+SID_BoldFighter
+SID_Dazzle
+SID_BidingBlow
+SID_Discipline
+SID_AdvantageChaser
+SID_Nonconforming
+SID_Moonlight
+// SID_BlackMagic
+// SID_LastWord
+SID_Multiscale
+SID_PridefulWarrior
+SID_MageSlayer
+SID_TriangleAdept
+SID_TriangleAdeptPlus
+SID_TowerShieldPlus
+SID_PoisonStrike
+SID_GrislyWound
+SID_Poise
+SID_Enrage
+SID_Petrify
+SID_Amaterasu
+SID_AirRaidAttack
+SID_AirRaidAvoid
+SID_AirRaidCrit
+SID_AirRaidDefense
+SID_AirRaidHit
+SID_AirRaidResistance
+SID_AirRaidSpeed
+SID_Pickup
+SID_IndoorMarch
+SID_NatureRush
+SID_Expertise
+SID_PassionsFlow
+SID_LadyBlade
+// Lull skills
+// SID_LullDefense
+// SID_LullLuck
+// SID_LullMagic
+// SID_LullMovement
+// SID_LullResistance
+// SID_LullSkill
+// SID_LullSpectrum
+// SID_LullSpeed
+// SID_LullStregth
+SID_ShrewdPotential
+// SID_SteadyBrawler
+SID_KeepUp
+// SID_LiquidOoze
+SID_CloseCombat
+SID_ArmorMarch
+SID_Eclipse
+SID_Barricade
+SID_BarricadePlus
+SID_LunarBrace
+SID_Pursuer
+// SID_QuickLearner
+SID_EffectSpore
+SID_DominantArm
+SID_SolidRock
+SID_Sturdy
+SID_FranticSwing
+SID_SocialButterfly
+SID_MeleeManiac
+SID_CriticalOverload
+SID_WyvernFlight
+SID_YngviAscendant
+SID_DragonWrath
+SID_BrashAssault
+SID_Scendscale
+SID_LawsOfSacae
+SID_ShieldPulse
+SID_BestDefense
+SID_DoOrDie
+SID_OverKill
+SID_Momentum
+SID_FatalTen
+SID_LionFlame
+SID_LimitBreak
+SID_ImmovableObject
+SID_UnstoppableForce
+SID_WeaponHeal
+SID_BloodReaver
+SID_Saint
+SID_Witch
+
+// Shop skills
+SID_Deal
+SID_Bargain
+
+// Devil skills
+SID_DevilsPact
+SID_DevilsWhim
+SID_DevilsLuck
+
+// Mobility
+SID_Guidance
+SID_SoaringGuidance
+SID_FlierFormation
+SID_SoaringWings
+SID_DetailedReport
+
+// Weapon range
+SID_HighGround
+SID_PointBlank
+SID_StaffSavant
+
+// Weather skills
+SID_Airlock
+SID_Drought
+SID_Drizzle
+SID_SnowWarning
+SID_SandStream
+SID_Chlorophyll
+SID_SlushRush
+SID_SandRush
+SID_SwiftSwim
+SID_SolarPower
+
+// Seal skills
+// SID_SealDefense
+// SID_SealLuck
+// SID_SealMagic
+// SID_SealResistance
+// SID_SealSkill
+// SID_SealSpeed
+// SID_SealStrength
+
+// Initiative skills
+SID_InitStrong
+SID_InitClever
+SID_InitDeft
+SID_InitQuick
+SID_InitSturdy
+SID_InitCalm
+SID_InitLucky
+SID_InitNimble
+SID_InitSpectrum
+
+// Oath skills
+SID_OathDefense
+SID_OathLuck
+SID_OathMagic
+SID_OathMovement
+SID_OathResistance
+SID_OathSkill
+SID_OathSpeed
+SID_OathStrength
+
+// Rouse skills
+SID_RouseDefense
+SID_RouseLuck
+SID_RouseMagic
+SID_RouseMovement
+SID_RouseResistance
+SID_RouseSkill
+SID_RouseSpeed
+SID_RouseStrength
+
+// Boost skills
+SID_DefenseBoost
+SID_LuckBoost
+SID_MagicBoost
+SID_MoveBoost
+SID_ResistanceBoost
+SID_SkillBoost
+SID_SpeedBoost
+SID_StrengthBoost
+SID_SpectrumBoost
+
+// Engage skills
+SID_GentleFlower // This skill can only set to ally!
+SID_Admiration
+SID_FairyTaleFolk
+
+// Pre-phase skills
+SID_RainDish
+SID_Boon
+
+// Post action
+SID_FailGale
+SID_Clearance
+SID_Despoil
+SID_GoldDigger
+SID_Glorifier
+
+// Menu skills
+SID_Dance
+SID_LockTouch
+SID_Summon
+SID_Steal
+SID_Supply
+SID_LightRune
+SID_Mine
+SID_RallyDefense
+SID_RallyLuck
+SID_RallyMagic
+SID_RallyMovement
+SID_RallyResistance
+SID_RallySkill
+SID_RallySpeed
+SID_RallyStrength
+SID_RallySpectrum
+SID_GoddessDance
+SID_Stride
+SID_Blacksmith
+SID_Latona
+
+// Art skills
+SID_COMBAT_Galeforce
+SID_COMBAT_Gamble
+SID_COMBAT_Detonate
+SID_COMBAT_BloodTribute
+SID_COMBAT_CrimsonStrike
+SID_COMBAT_VitalReckoning
