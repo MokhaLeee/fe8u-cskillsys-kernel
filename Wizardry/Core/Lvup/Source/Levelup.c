@@ -130,7 +130,7 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 	}
 }
 
-static inline int get_metis_tome_growth_bonus(void)
+static int get_metis_tome_growth_bonus(void)
 {
 	return MetisTomeGrowthBonus;
 }

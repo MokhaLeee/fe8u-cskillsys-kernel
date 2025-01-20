@@ -20,7 +20,7 @@ ALIGN 4
 
 #include "source/InjectHPGetters.event"
 #include "source/InjectMovGetters.event"
-
+#include "source/MiscHooks.lyn.event"
 #include "source/StatusGetterExample.lyn.event"
 
 #include "UnitMaxStatus/UnitMaxStatus.lyn.event"

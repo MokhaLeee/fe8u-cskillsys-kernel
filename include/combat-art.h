@@ -80,7 +80,7 @@ struct CombatArtStatus {
 
 extern struct CombatArtStatus gCombatArtStatus;
 
-u8 GetCombatArtInForce(struct Unit *unit);
+int GetCombatArtInForce(struct Unit *unit);
 void RegisterCombatArtStatus(struct Unit *unit, u8 cid);
 void RegisterCombatArtHitted(void);
 void RegisterCombatArtTargetPos(u8 x, u8 y);

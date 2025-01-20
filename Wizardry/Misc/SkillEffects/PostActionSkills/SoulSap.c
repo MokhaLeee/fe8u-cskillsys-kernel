@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "map-anims.h"
 #include "debuff.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR void ExecSkillSoulSapEffectAnim(ProcPtr proc)
@@ -69,7 +70,7 @@ bool PostActionSkillSoulSap(ProcPtr parent)
 #endif
 		return false;
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UnitAvaliable(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	Proc_StartBlocking(ProcScr_PostActionSkillSoulSap, parent);

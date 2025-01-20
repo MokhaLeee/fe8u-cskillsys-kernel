@@ -119,11 +119,11 @@ bool PostActionSynchronize(ProcPtr parent)
 	}
 
 	unit_act = GetUnit(gActionData.subjectIndex);
-	if (!UNIT_ALIVE(unit_act) || UNIT_STONED(unit_act))
+	if (!UnitAvaliable(unit_act) || UNIT_STONED(unit_act))
 		return false;
 
 	unit_tar = GetUnit(gActionData.targetIndex);
-	if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
+	if (!UnitAvaliable(unit_tar) || UNIT_STONED(unit_tar))
 		return false;
 
 	/* actor should already hold a special status */

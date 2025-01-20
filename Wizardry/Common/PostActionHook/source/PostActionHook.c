@@ -44,3 +44,13 @@ const struct ProcCmd ProcScr_PostActionHookCpPerform[] = {
 	PROC_JUMP((const struct ProcCmd *)0x085A807C),
 	PROC_END
 };
+
+extern bool (*gpExternalPostActionHook)(ProcPtr proc);
+
+bool CallExternalPostActionHook(ProcPtr proc)
+{
+	if (gpExternalPostActionHook)
+		return gpExternalPostActionHook(proc);
+
+	return false;
+}

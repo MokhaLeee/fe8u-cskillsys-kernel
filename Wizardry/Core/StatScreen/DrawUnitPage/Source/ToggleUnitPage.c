@@ -4,7 +4,7 @@
 #include "strmag.h"
 #include "kernel-lib.h"
 
-static inline void _growth_disp(int x, int y, int growth)
+static void _growth_disp(int x, int y, int growth)
 {
 	int bank, color = GetTextColorFromGrowth(growth);
 

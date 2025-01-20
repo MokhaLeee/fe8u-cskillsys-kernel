@@ -14,3 +14,13 @@ bool PrePhaseHook(ProcPtr proc)
 	KernelStartBlockingHookProc(gPrePhaseFuncs, proc);
 	return false;
 }
+
+extern bool (*gpExternalPrePhaseHook)(ProcPtr proc);
+
+bool CallExternalPrePhaseHook(ProcPtr proc)
+{
+	if (gpExternalPrePhaseHook)
+		return gpExternalPrePhaseHook(proc);
+
+	return false;
+}

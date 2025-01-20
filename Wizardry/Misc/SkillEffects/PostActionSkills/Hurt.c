@@ -77,7 +77,7 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 
 	int damage = 0;
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UnitAvaliable(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	switch (gActionData.unitActionType) {

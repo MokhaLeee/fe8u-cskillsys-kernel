@@ -16,7 +16,7 @@ STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon *proc)
 	while (++proc->uid < (gPlaySt.faction + 0x40)) {
 		struct Unit *unit = GetUnit(proc->uid);
 
-		if (!UNIT_ALIVE(unit))
+		if (!UnitOnMapAvaliable(unit))
 			continue;
 
 #if defined(SID_Boon) && (COMMON_SKILL_VALID(SID_Boon))

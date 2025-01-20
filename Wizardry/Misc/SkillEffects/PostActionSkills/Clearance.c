@@ -51,7 +51,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionClearance[] = {
 
 bool PostAction_Clearance(ProcPtr parent)
 {
-	if (!UNIT_ALIVE(gActiveUnit))
+	if (!UnitAvaliable(gActiveUnit))
 		return false;
 
 #if defined(SID_Clearance) && (COMMON_SKILL_VALID(SID_Clearance))

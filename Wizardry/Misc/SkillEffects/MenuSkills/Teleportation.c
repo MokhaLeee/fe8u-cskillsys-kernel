@@ -14,7 +14,7 @@ STATIC_DECLAR bool AreAnyEnemyExists(void)
 	for (i = 1; i < 0xC0; i++) {
 		struct Unit *unit = GetUnit(i);
 
-		if (UNIT_ALIVE(unit) && !AreUnitsAllied(gActiveUnit->index, i))
+		if (UnitOnMapAvaliable(unit) && !AreUnitsAllied(gActiveUnit->index, i))
 			return true;
 	}
 	return false;

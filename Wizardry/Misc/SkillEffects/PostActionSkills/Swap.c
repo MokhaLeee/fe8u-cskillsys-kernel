@@ -121,12 +121,12 @@ bool PostActionSwap(ProcPtr proc)
 #endif
 		return false;
 
-	if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+	if (!UnitAvaliable(unit) || UNIT_STONED(unit))
 		return false;
 
 	unit_tar = GetUnit(gActionData.targetIndex);
 
-	if (!UNIT_ALIVE(unit_tar) || UNIT_STONED(unit_tar))
+	if (!UnitAvaliable(unit_tar) || UNIT_STONED(unit_tar))
 		return false;
 
 	switch (gActionData.unitActionType) {

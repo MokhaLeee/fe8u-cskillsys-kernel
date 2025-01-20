@@ -65,7 +65,7 @@ void PrePhaseChillAnim_ExecActor(struct Proc *proc)
 	struct Unit *unit = GetUnit(parent->actor_uids[parent->cur]);
 	int sid = ChillSkillList[parent->cur];
 
-	if (UNIT_ALIVE(unit) && COMMON_SKILL_VALID(sid)) {
+	if (UnitOnMapAvaliable(unit) && COMMON_SKILL_VALID(sid)) {
 		gActiveUnit = unit;
 		NewMuSkillAnimOnActiveUnit(sid, NULL, NULL);
 	}
@@ -76,7 +76,7 @@ void PrePhaseChillAnim_MoveCamerOnTarget(struct Proc *proc)
 	struct ProcPrePhaseChill *parent = proc->proc_parent;
 	struct Unit *target = GetUnit(parent->target_uids_anim[parent->cur]);
 
-	if (UNIT_ALIVE(target))
+	if (UnitOnMapAvaliable(target))
 		EnsureCameraOntoPosition(proc, target->xPos, target->yPos);
 }
 
@@ -85,7 +85,7 @@ void PrePhaseChillAnim_ShowDebuffAnim(struct Proc *proc)
 	struct ProcPrePhaseChill *parent = proc->proc_parent;
 	struct Unit *target = GetUnit(parent->target_uids_anim[parent->cur]);
 
-	if (UNIT_ALIVE(target))
+	if (UnitOnMapAvaliable(target))
 		CallMapAnim_HeavyGravity(proc, target->xPos, target->yPos);
 }
 
@@ -137,7 +137,7 @@ void PrePhaseChill_CollectTargets(struct ProcPrePhaseChill *proc)
 			continue;
 
 		tunit = GetUnit(tuid);
-		if (!UNIT_ALIVE(tunit))
+		if (!UnitOnMapAvaliable(tunit))
 			continue;
 
 		if (proc->actor_uids[UNIT_STATUS_POW] != 0) {

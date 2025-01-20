@@ -6,6 +6,7 @@
 #include "skill-system.h"
 #include "battle-system.h"
 #include "combat-art.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
@@ -58,7 +59,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 	return false;
 
 L_exec_rafrain_action_anim:
-	if (!UNIT_ALIVE(unit) || UNIT_STONED(unit))
+	if (!UnitAvaliable(unit) || UNIT_STONED(unit))
 		return false;
 
 	SetBitUES(unit, UES_BIT_TSZUKU_SKILL_USED);

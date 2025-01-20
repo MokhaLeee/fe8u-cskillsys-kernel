@@ -1,78 +1,105 @@
 PUSH
+    ORG $2AEC4
+    #include "Source/pr_BattleHitArrayRe.lyn.event"
+    // PROTECT 0x0002AE90 0x0002AED0 // ClearBattleHits
+
     ORG $2C44C
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0002C40C 0x0002C450 // GetUnitExpMultiplier
 
     // Already covered in function: GetBattleUnitStaffExp
     ORG $2C660
-    // #include "Source/pr_BattleHitArrayRe.lyn.event"
+    #include "Source/pr_BattleHitArrayRe.lyn.event"
+    // PROTECT 0x0002C638 0x0002C6A0 // GetBattleUnitStaffExp
 
     ORG $2CB0C
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0002CAFC 0x0002CB24 // BattlePrintDebugHitInfo
 
     ORG $2CE98
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0002CE88 0x0002CE9C // BattleIsTriangleAttack
 
     ORG $2CFA8
     #include "Source/pr_BattleHitArrayRe.lyn.event"
-    PROTECT $2CF4C $2D0BC // Port from DebuffRework/Source/MiscHooks.event
+    PROTECT 0x0002CF4C 0x0002D0BC // BattleUnwindScripted
 
     ORG $2F658
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0002F598 0x0002F664 // sub_802F598
 
     ORG $2F730
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0002F664 0x0002F73C // ExecUnitPromotion
 
     ORG $2F7FC
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0002F760 0x0002F808 // sub_802F760
 
     ORG $58244
-    prBattleHitArray:
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    // PROTECT 0x000581EC 0x00058848 // ParseBattleHitToBanimCmd
 
     ORG $58930
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x00058918 0x0005893C // CheckBattleHasHit
 
     ORG $72564
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x00072548 0x00072570 // EfxCheckRetaliation
 
     ORG $7B4CC
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B464 0x0007B4D0 // SetupBattleMOVEUNITs
 
     ORG $7B574
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B4D0 0x0007B5DC // sub_807B4D0
 
     ORG $7B628
+    prBattleHitArray:
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B5DC 0x0007B634 // BeginMapAnimForPoisonDmg
 
     ORG $7B680
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B634 0x0007B68C // BeginMapAnimForEggDmg
 
     ORG $7B6D8
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B68C 0x0007B6E4 // BeginMapAnimForCritAtk
 
     ORG $7B738
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B6E4 0x0007B740 // BeginMapAnimForSteal
 
     ORG $7B790
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B740 0x0007B798 // BeginMapAnimForSummon
 
     ORG $7B7E8
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B798 0x0007B7F0 // BeginMapAnimForSummonDK
 
     ORG $7B84C
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B7F0 0x0007B854 // BeginMapAnimForDance
 
     ORG $7B8B8
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B854 0x0007B8D4 // BeginBattleMapAnims
 
     ORG $7B9B0
-    #include "Source/pr_BattleHitArrayRe.lyn.event"
+    // #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007B900 0x0007B9B8 // SetupMapBattleAnim
 
     ORG $7C920
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x0007C8FC 0x0007CAA8 // SetupMADebugBattle
 
     ORG $A6D18
     #include "Source/pr_BattleHitArrayRe.lyn.event"
+    PROTECT 0x000A6C8C 0x000A6D1C // ReadExtraMapInfo
 
     ORG 0x2AEB2
     BattleHitArrayWidth:

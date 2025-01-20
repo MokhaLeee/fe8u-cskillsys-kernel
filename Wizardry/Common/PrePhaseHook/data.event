@@ -18,5 +18,6 @@ gPrePhaseFuncs:
     POIN PrePhsae_ExecYuneWhisperSkills
 
     // End
+    POIN CallExternalPrePhaseHook
     POIN PrePhaseHook_VanillaEnd
     WORD 0 0 0 0 0

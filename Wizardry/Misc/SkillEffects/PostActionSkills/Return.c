@@ -105,7 +105,7 @@ bool PostActionPositionReturn(ProcPtr proc)
 		return false;
 	}
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UnitAvaliable(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	if (gBattleActorGlobalFlag.enimy_defeated == false)

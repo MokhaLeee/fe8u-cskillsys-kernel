@@ -2,6 +2,7 @@
 #include "debuff.h"
 #include "skill-system.h"
 #include "map-anims.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR void ExecSkillSavageBlowEffectAnim(ProcPtr proc)
@@ -69,7 +70,7 @@ bool PostActionSkillSavageBlow(ProcPtr parent)
 #endif
 		return false;
 
-	if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
+	if (!UnitAvaliable(gActiveUnit) || UNIT_STONED(gActiveUnit))
 		return false;
 
 	Proc_StartBlocking(ProcScr_PostActionSkillSavageBlow, parent);
