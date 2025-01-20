@@ -14,8 +14,7 @@ struct NewBwl {
 	/* bwl support */
 	u8 supports[UNIT_SUPPORT_MAX_COUNT];
 
-	u8 _pad_[0x10 - 0x0C];
-
+	STRUCT_PAD(0x0C, 0x10);
 } BITPACKED;
 
 bool CheckHasBwl(u8 pid);
