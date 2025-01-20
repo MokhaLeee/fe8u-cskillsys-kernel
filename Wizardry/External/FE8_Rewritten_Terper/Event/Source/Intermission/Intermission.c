@@ -32,6 +32,11 @@ static const struct UnitDefinition INTERMISSION_FRELIAN_FORCES[] = {
     {},
 };
 
+// void SetEirikaMode() {
+//     // gPlaySt.chapterModeIndex = 2; // Set to Eirika mode
+//     NoCashGBAPrintf("Current mode is: %d", gPlaySt.chapterModeIndex);
+// };
+
 /**
  * ASM Conditional Events
  */
@@ -191,9 +196,8 @@ static const EventScr EventScr_NEW_JOURNEY_CASTLE_FRELIA[] = {
     GIVE_GOLD(10000)
     SET_BACKGROUND(0xA)
     TEXT(Intermission_In_Scene_Frelia_Castle_08)
-    ASMC(0x8591F40)
-    REMA
     FADE_OUT_SCREEN(16)
+    // ASMC(SetEirikaMode)
     NEXT_CHAPTER_WITH_MAP(CHAPTER_09)
     ENDB
 };

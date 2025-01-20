@@ -294,14 +294,14 @@ LABEL(0x1)
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_BorderMulan)
     WM_CENTERCAMONLORD(WM_MU_0)
-    WM_LOADLOCATION2(WM_NODE_BorderMulan)
+    WM_LOADLOCATION3(WM_NODE_BorderMulan)
     WmEvtSetNodeStateNot2(WM_NODE_BorderMulan) // ENOSUPP in EAstdlib
     WM_SETCAM(0, 12)
     WM_FADEOUT(0)
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_CastleFrelia)
+    WM_LOADLOCATION3(WM_NODE_CastleFrelia)
     WM_SETDESTINATION(WM_NODE_CastleFrelia)
     // WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -336,7 +336,7 @@ const EventScr EventScrWM_Ch2_SET_NODE[] = {
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_Ide)
+    WM_LOADLOCATION3(WM_NODE_Ide)
     WM_SETDESTINATION(WM_NODE_Ide)
     //WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -414,7 +414,7 @@ const EventScr EventScrWM_Ch3_SET_NODE[] = {
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_BorgoRidge)
+    WM_LOADLOCATION3(WM_NODE_BorgoRidge)
     WM_SETDESTINATION(WM_NODE_BorgoRidge)
     //WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -483,7 +483,7 @@ const EventScr EventScrWM_Ch4_SET_NODE[] = {
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_ZahaWoods)
+    WM_LOADLOCATION3(WM_NODE_ZahaWoods)
     WM_SETDESTINATION(WM_NODE_ZahaWoods)
     //WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -559,7 +559,7 @@ LABEL(0x1)
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_Serafew)
+    WM_LOADLOCATION3(WM_NODE_Serafew)
     WM_SETDESTINATION(WM_NODE_Serafew)
     // WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -659,7 +659,7 @@ const EventScr EventScrWM_Ch6_SET_NODE[] = {
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_AdlasPlains)
+    WM_LOADLOCATION3(WM_NODE_AdlasPlains)
     WM_SETDESTINATION(WM_NODE_AdlasPlains)
     // WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -708,7 +708,7 @@ const EventScr EventScrWM_Ch7_SET_NODE[] = {
     WM_TEXTDECORATE // WaitFade
     EVBIT_MODIFY(0x0)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_Renvall1)
+    WM_LOADLOCATION3(WM_NODE_Renvall1)
     WM_SETDESTINATION(WM_NODE_Renvall1)
     // WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -754,7 +754,7 @@ const EventScr EventScrWM_Ch8_SET_NODE[] = {
     WM_CENTERCAMONLORD(WM_MU_0)
     WM_REMOVELOCATION(WM_NODE_Renvall1)
     WM_REMOVEPATH(WM_PATH_06)
-    WM_LOADLOCATION2(WM_NODE_Renvall2)
+    WM_LOADLOCATION3(WM_NODE_Renvall2)
     WM_SETDESTINATION(WM_NODE_Renvall2)
     WM_DRAWPATH2(WM_PATH_07)
     WmEvtSetUnitOnNode(WM_MU_0, WM_NODE_Renvall2) // ENOSUPP in EAstdlib
@@ -768,7 +768,13 @@ const EventScr EventScrWM_Ch8_TRAVEL_TO_NODE[] = {
     ENDA
 };
 
+void SetMode() {
+    gPlaySt.chapterModeIndex = 3; // Set gameplay mode
+    // NoCashGBAPrintf("Current mode is: %d", gPlaySt.chapterModeIndex);
+};
+
 const EventScr EventScrWM_Ch9_SET_NODE[] = {
+    ASMC(SetMode)
     EVBIT_MODIFY(0x1)
     WM_SPAWNLORD(WM_MU_0, CHARACTER_EIRIKA, WM_NODE_CastleFrelia)
     WM_CENTERCAMONLORD(WM_MU_0)
@@ -786,7 +792,7 @@ const EventScr EventScrWM_Ch9_SET_NODE[] = {
     WM_DRAWPATH(WM_PATH_09)
     STAL(70)
     STAL(20)
-    WM_LOADLOCATION2(WM_NODE_PortKiris)
+    WM_LOADLOCATION3(WM_NODE_PortKiris)
     WM_SETDESTINATION(WM_NODE_PortKiris)
     // WM_CREATENEXTDESTINATION
     WM_WAITFORFX
@@ -797,7 +803,15 @@ const EventScr EventScrWM_Ch9_SET_NODE[] = {
     STAL(60)
     WM_WAITFORCAM
     MUSC(0x5)
-    CALL(EventScrWM_08A3A70C)
+    // CALL(EventScrWM_08A3A70C)
+    EvtTextStartType5 // These are the events for the above call, up to the commented out ENDA
+    SVAL(EVT_SLOT_B, 0x54000c)
+    // TEXTSHOW(0x8e5)
+    // TEXTEND
+    // REMA
+    ENUT(229)
+    ENUT(235)
+    // ENDA
     WM_MAKELORDVISIBLE(WM_MU_0)
     EVBIT_MODIFY(0x1)
     CALL(EventScr_RemoveBGIfNeeded)

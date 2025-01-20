@@ -1171,6 +1171,9 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             case 10:
                 CallEvent((const u16 *)EventScrWM_Ch8_SET_NODE, 0);
                 break;
+            case 11:
+                CallEvent((const u16 *)EventScrWM_Ch9_SET_NODE, 0);
+                break;
             default: 
                 CallEvent(Events_WM_Beginning[eventID], 0);
                 break;
@@ -1229,6 +1232,9 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         case 10:
             CallEvent((const u16 *)EventScrWM_Ch8_TRAVEL_TO_NODE, 0);
             break;
+        case 11:
+            CallEvent((const u16 *)EventScrWM_Ch9_TRAVEL_TO_NODE, 0);
+            break;
         default: 
             CallEvent(Events_WM_ChapterIntro[eventID], 0);
             break;
@@ -1246,6 +1252,8 @@ u8 Event97_WmInitNextStoryNode(struct EventEngineProc * proc)
     // struct WorldMapMainProc * worldMapProc;
 
     int nodeId = WMLoc_GetNextLocId(gGMData.current_node);
+
+    NoCashGBAPrintf("Next node ID is: %d", nodeId);
 
     if (nodeId < 0)
     {
@@ -2709,4 +2717,51 @@ void PoisonDamageDisplay_Next(struct UnknownBMUSAilmentProc* proc) {
     }
 
     return;
+}
+
+//! FE8U = 0x080B9D14
+LYN_REPLACE_CHECK(WorldMap_GenerateRandomMonsters);
+void WorldMap_GenerateRandomMonsters(ProcPtr proc)
+{
+    int i;
+    int monster_amt;
+
+    s8 flag = 0;
+
+    if (!(gGMData.state.bits.monster_merged))
+    {
+        flag = 1;
+    }
+    else
+    {
+        if (gPlaySt.chapterStateBits & PLAY_FLAG_POSTGAME)
+        {
+            for (i = WM_MONS_UID_ENTRY; i < WM_MONS_UID_END; i++)
+                if (gGMData.units[i].id != 0)
+                    break;
+
+            if (i == 7)
+                flag = 1;
+        }
+        else
+        {
+            if (gGMData.units[0].location[gWMNodeData].placementFlag == GMAP_NODE_PLACEMENT_DUNGEON)
+            {
+                for (i = WM_MONS_UID_ENTRY; i < WM_MONS_UID_END; i++)
+                    if (gGMData.units[i].id != 0)
+                        break;
+
+                if (i == WM_MONS_UID_END)
+                    flag = 1;
+            }
+        }
+    }
+
+    if (flag)
+    {
+        NewGmapTimeMons(NULL, &monster_amt);
+        if (monster_amt > 0)
+            Proc_Goto(proc, 2);
+    }
+    WmShowMonsters();
 }

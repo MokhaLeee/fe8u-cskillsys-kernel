@@ -344,8 +344,7 @@ LABEL(0x1)
     CALL(EventScr_08591FD8) // Prep screen
     FADE_IN_SCREEN(16)
     MUSC(BGM_DISTANT_ROADS)
-
-GOTO(0x2)
+LABEL(0x2)
     NOFADE
     ENDA
 };

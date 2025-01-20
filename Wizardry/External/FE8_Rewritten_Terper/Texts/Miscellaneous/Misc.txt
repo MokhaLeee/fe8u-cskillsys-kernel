@@ -1,4 +1,4 @@
-## BBT_Grado_Keep
+## LOCATION_Grado_Keep
 Grado Keep[X]
 
 ## Augury_Chapter_04
