@@ -2,7 +2,7 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-u8 const gLegendSkillPool[] = {
+u16 const gLegendSkillPool[] = {
 #if defined(SID_LEGEND_InoriAtk) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAtk))
 	SID_LEGEND_InoriAtk,
 #endif

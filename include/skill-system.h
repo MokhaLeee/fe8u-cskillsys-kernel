@@ -266,7 +266,7 @@ enum skill_lucky_seven_idx {
 };
 
 /* Legendary skill */
-extern u8 const *const gpLegendSkillPool;
+extern u16 const *const gpLegendSkillPool;
 int TryActivateLegendSkill(struct Unit *unit, const u16 sid);
 bool SkillTesterLegendActivated(struct Unit *unit, const u16 sid);
 void PreBattleCalcLegendSkills(struct BattleUnit *attacker, struct BattleUnit *defender);
