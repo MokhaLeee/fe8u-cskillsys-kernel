@@ -749,7 +749,7 @@ s8 HasBattleUnitGainedWeaponLevel(struct BattleUnit * bu)
 #endif
 
 #if (defined(SID_Shadowgift) && (COMMON_SKILL_VALID(SID_Shadowgift)))
-    if (BattleSkillTester(bu, SID_SHadowgift))
+    if (BattleSkillTester(bu, SID_Shadowgift))
         if (GetItemType(GetUnit(bu->unit.index)->items[0]) == ITYPE_DARK)
             if (GetUnit(bu->unit.index)->ranks[ITYPE_DARK] == 0)
                 return false;

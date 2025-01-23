@@ -83,7 +83,7 @@ static const struct UnitDefinition CH9_EIRIKA_EPHRAIM_PIRATE[] = {
 
 static const struct REDA REDAs_FRELIAN_MESSENGER[] = {
     { .x = 21, .y = 4, .b = -1, .delayFrames = 0, },
-    { .x = 21, .y = 5, .b = -1, .delayFrames = 0, },
+    { .x = 21, .y = 6, .b = -1, .delayFrames = 0, },
 };
 static const struct UnitDefinition CH9_FRELIAN_MESSENGER[] = {
     UNIT_ENTRY(CHARACTER_MESSENGER, CLASS_PEGASUS_KNIGHT, FACTION_ID_GREEN,  NO_ITEM_DROP, NO_AUTOLEVEL, 1, 12, 4, 2, REDAs_FRELIAN_MESSENGER, 0, 0, 0, 0, ITEM_LANCE_IRON, ITEM_LANCE_KILLER, ITEM_VULNERARY),
@@ -346,15 +346,13 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT(CH9_BOSS)
     HIGHLIGHT_CHARACTER(CHARACTER_BINKS, 60)
     MUSC(BGM_RAID)
-    SET_BACKGROUND(0x7)
-    TEXT(Chapter_09_Pre_Scene_06_Convo_01)
+    TEXT_BG(0x7, Chapter_09_Pre_Scene_06_Convo_01)
     LOAD_WAIT_PERSIST(CH9_ENEMY_UNITS)
-    FADE_IN_SCREEN(16)
-    DISA(CHARACTER_BINKS)
-    CLEA // Clear Player units
-    LOAD_WAIT_PERSIST(CH9_PLAYER_UNITS)
     SVAL(EVT_SLOT_1, 1)
     LOAD_WAIT_PERSIST(CH9_VANESSA)
+    FADE_OUT_SCREEN(16)
+    DISA(CHARACTER_BINKS)
+    CLEA // Clear Player units
     PREP
     ENDA
 };
@@ -380,7 +378,8 @@ static const EventScr EventScr_Ending[] = {
     HIGHLIGHT_CHARACTER(CHARACTER_BANDIT_CH5, 60)
     TEXT_BG(0x7, Chapter_09_Post_Scene_01_Convo_02)
     MUSC(MUTE)
-    MOVE_TWICE_WAIT(0, CHARACTER_BANDIT_CH5, 22, 6, 20, 0)
+    MOVE_TWICE_WAIT(0, CHARACTER_BANDIT_CH5, 22, 6, 20, -1)
+    DISA(CHARACTER_BANDIT_CH5)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
     MUSC(BGM_INDIGNATION)
     TEXT_BG(0x7, Chapter_09_Post_Scene_01_Convo_03)
@@ -526,7 +525,7 @@ static const EventListScr EventListScr_HOUSE_1_TALK[] = {
 static const EventListScr EventListScr_HOUSE_2_TALK[] = {
     HOUSE_EVENT_NO_END(0x0, Chapter_09_In_Scene_House_02)
     CALL(EventScr_RemoveBGIfNeeded) // This is vital, the game crashes without it for this event
-    GIVE_ITEM_TO(ITEM_SWORD_RAPIER, CHARACTER_EVT_ACTIVE)
+    GIVE_ITEM_TO(SID_HedgeFund, CHARACTER_EVT_ACTIVE)
     NOFADE
     ENDA
 };

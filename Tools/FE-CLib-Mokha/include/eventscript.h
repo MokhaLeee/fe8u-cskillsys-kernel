@@ -868,8 +868,8 @@ enum event_trigger_types {
     (EventListScr) (ent_script), \
     _EvtParams4((x), (y), (tile_command), 0),
 
-#define EvtListCHES(item, x, y) \
-    _EvtParams2(EVT_LIST_CMD_CHES, 0), \
+#define EvtListCHES(item, x, y, ent_flag) \
+    _EvtParams2(EVT_LIST_CMD_CHES, (ent_flag)), \
     (EventListScr) (item), \
     _EvtParams4((x), (y), TILE_COMMAND_CHEST, 0),
 

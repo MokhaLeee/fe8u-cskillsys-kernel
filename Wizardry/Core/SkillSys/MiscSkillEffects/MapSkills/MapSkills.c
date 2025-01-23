@@ -328,9 +328,13 @@ void ChapterChangeUnitCleanup(void)
 #if defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER)
         u32 pid = UNIT_CHAR_ID(unit);
         struct NewBwl * bwl = GetNewBwl(pid);
-        bwl->battleAmt = 0;
-        bwl->winAmt = 0;
-        bwl->lossAmt = 0;
+        
+        if (bwl != NULL)
+        {
+            bwl->battleAmt = 0;
+            bwl->winAmt = 0;
+            bwl->lossAmt = 0;
+        }
 #endif
 
         if (unit && unit->pCharacterData)

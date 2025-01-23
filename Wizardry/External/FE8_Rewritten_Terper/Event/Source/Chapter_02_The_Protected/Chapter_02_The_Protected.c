@@ -213,11 +213,19 @@ LABEL(0x0)
 
 LABEL(0x1)
     HOUSE_EVENT_NO_END(0x2, Chapter_02_Village_01_Generic)
-    GOTO(0x2)
+    GOTO(0x3)
 
 LABEL(0x2)
     CALL(EventScr_RemoveBGIfNeeded) // This is vital, the game crashes without it for this event
+    GIVE_SKILL_SCROLL_TO(SID_GoldDigger, CHARACTER_EVT_ACTIVE)
+    GOTO(0x4)
+
+LABEL(0x3)
+    CALL(EventScr_RemoveBGIfNeeded) // This is vital, the game crashes without it for this event
     GIVE_ITEM_TO(ITEM_REDGEM, CHARACTER_EVT_ACTIVE)
+    GOTO(0x4)
+
+LABEL(0x4)
     NOFADE
     ENDA
 };

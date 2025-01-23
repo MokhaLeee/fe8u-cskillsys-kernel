@@ -185,7 +185,7 @@ static const EventScr EventScr_Ending[] = {
     REMA
     MUSC(MUTE)
     CALL(EventScr_RemoveBGIfNeeded)
-    SVAL(EVT_SLOT_3, ITEM_ORIONSBOLT)
+    SVAL(EVT_SLOT_3, ITEM_BOOSTER_POW)
     GIVEITEMTO(CHARACTER_EIRIKA)
     FADE_OUT_SCREEN(3)
 

@@ -307,6 +307,12 @@ static const EventScr EventScr_Ending[] = {
  * Misc events
  */
 
+static const EventScr EventScr_GiveScroll_1[] = {
+    GIVE_SKILL_SCROLL_TO(SID_KillStreak, 0xFFFF)
+    NOFADE
+    ENDA
+};
+
 /**
  * Event list
  */
@@ -322,15 +328,15 @@ static const EventListScr EventListScr_Character[] = {
 static const EventListScr EventListScr_Location[] = {
     DOOR(23, 12, EVFLAG_TMP(11))
     DOOR(4, 10, EVFLAG_TMP(12))
-    CHEST(ITEM_ELIXIR, 4, 8)
-    CHEST(ITEM_LANCE_KILLER, 5, 8)
+    CHEST(ITEM_ELIXIR, 4, 8, EVFLAG_TMP(13))
+    CHEST(-1, 5, 8, EVFLAG_TMP(14))
     SEIZE(13, 7)
     END_MAIN
 };
 
 static const EventListScr EventListScr_Misc[] = {
-    DEFEAT_ALL(EventScr_Ending)
     CAUSE_GAME_OVER_IF_LORD_DIES
+    AFEV(EVFLAG_TMP(15), EventScr_GiveScroll_1, EVFLAG_TMP(14))
     END_MAIN
 };
 

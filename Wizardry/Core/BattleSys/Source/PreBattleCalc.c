@@ -248,8 +248,6 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
     struct SkillList *list;
     struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(GetUnit(attacker->unit.index)));
 
-    int unitRank;
-
     /**
      * Skip arena judgement
      */
@@ -1486,7 +1484,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_SwordProwess) && (COMMON_SKILL_VALID(SID_SwordProwess)))
         case SID_SwordProwess:
-            unitRank = attacker->unit.ranks[ITYPE_SWORD];
+            int unitRank = attacker->unit.ranks[ITYPE_SWORD];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_SwordProwess);
@@ -1522,7 +1520,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_LanceProwess) && (COMMON_SKILL_VALID(SID_LanceProwess)))
         case SID_LanceProwess:
-            unitRank = attacker->unit.ranks[ITYPE_LANCE];
+            int unitRank = attacker->unit.ranks[ITYPE_LANCE];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_LanceProwess);
@@ -1558,7 +1556,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_AxeProwess) && (COMMON_SKILL_VALID(SID_AxeProwess)))
         case SID_AxeProwess:
-            unitRank = attacker->unit.ranks[ITYPE_AXE];
+            int unitRank = attacker->unit.ranks[ITYPE_AXE];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_AxeProwess);
@@ -1594,7 +1592,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_BowProwess) && (COMMON_SKILL_VALID(SID_BowProwess)))
         case SID_BowProwess:
-            unitRank = attacker->unit.ranks[ITYPE_BOW];
+            int unitRank = attacker->unit.ranks[ITYPE_BOW];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_BowProwess);
@@ -1630,7 +1628,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_AnimaProwess) && (COMMON_SKILL_VALID(SID_AnimaProwess)))
         case SID_AnimaProwess:
-            unitRank = attacker->unit.ranks[ITYPE_ANIMA];
+            int unitRank = attacker->unit.ranks[ITYPE_ANIMA];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_AnimaProwess);
@@ -1666,7 +1664,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_DarkProwess) && (COMMON_SKILL_VALID(SID_DarkProwess)))
         case SID_DarkProwess:
-            unitRank = attacker->unit.ranks[ITYPE_DARK];
+            int unitRank = attacker->unit.ranks[ITYPE_DARK];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_DarkProwess);
@@ -1702,7 +1700,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_LightProwess) && (COMMON_SKILL_VALID(SID_LightProwess)))
         case SID_LightProwess:
-            unitRank = attacker->unit.ranks[ITYPE_LIGHT];
+            int unitRank = attacker->unit.ranks[ITYPE_LIGHT];
             if (unitRank >= WPN_EXP_D && unitRank < WPN_EXP_C)
             {
                 attacker->battleHitRate += SKILL_EFF0(SID_LightProwess);

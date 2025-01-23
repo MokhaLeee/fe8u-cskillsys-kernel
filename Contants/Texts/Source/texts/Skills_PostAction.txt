@@ -7,19 +7,19 @@ Canto+:[NL]
 Unit can move again.[X]
 
 ## MSG_SKILL_AlertStance
-A-Stance:[NL]
+Alert Stance:[NL]
 If unit takes no action[NL]
 except Wait, grants Avoid +15%.[X]
 
 ## MSG_SKILL_AlertStancePlus
-A-Stance+:[NL]
+Alert Stance+:[NL]
 If unit takes no action[NL]
 except Wait, grants Avoid +30%.[X]
 
 ## MSG_SKILL_Galeforce
 Galeforce: Move again after[NL]
 attacking and defeating an enemy.[NL]
-(Skill % activation)[X]
+(Skill % activation).[X]
 
 ## MSG_SKILL_SavageBlow
 Savage Blow:[NL]
@@ -41,7 +41,7 @@ damage on enemy when attacking[NL]
 from a 3 tile or greater range.[X]
 
 ## MSG_SKILL_PosReturn
-Pos-Return:[NL]
+Position Return:[NL]
 If the enemy is defeated, you can[NL]
 return to your starting position.[X]
 
@@ -66,7 +66,7 @@ Gain an additional action at the end[NL]
 of this unit's turn (Skill % activation).[X]
 
 ## MSG_SKILL_PowerStaff
-PowerStaff:[NL]
+Power Staff:[NL]
 Gain another action after[NL]
 using a staff.[X]
 
@@ -76,7 +76,7 @@ Move again after attacking and[NL]
 failing to harm an enemy.[X]
 
 ## MSG_SKILL_PoisonStrike_NAME
-P-Strike[X]
+Poison Strike[X]
 
 ## MSG_SKILL_PoisonStrike
 Poison Strike:[NL]
@@ -84,7 +84,7 @@ If user initiated combat, deal up to[NL]
 20% of enemy's current HP in damage.[X]
 
 ## MSG_SKILL_GrislyWound_NAME
-G-Wound[X]
+Grisly Wound[X]
 
 ## MSG_SKILL_GrislyWound
 Grisly Wound:[NL]
@@ -106,7 +106,7 @@ action, drain up to 10% HP from each[NL]
 enemy within two tiles for healing.[X]
 
 ## MSG_SKILL_GoldDigger_NAME
-G-Digger[X]
+Gold Digger[X]
 
 ## MSG_SKILL_GoldDigger
 Gold Digger:[NL]
@@ -114,7 +114,7 @@ Gain 100 gold after[NL]
 killing an enemy.[X]
 
 ## MSG_SKILL_LeadByExample_NAME
-L-Example[X]
+Lead By Example[X]
 
 ## MSG_SKILL_LeadByExample
 Lead By Example:[NL]
@@ -127,7 +127,7 @@ At the end of this unit's turn,[NL]
 heal missing HP by using EXP.[X]
 
 ## MSG_SKILL_HoardersBane_NAME
-H-Bane[X]
+Hoarders Bane[X]
 
 ## MSG_SKILL_HoardersBane
 Hoarder's Bane:[NL]
@@ -135,7 +135,7 @@ At the end of your turn, consume a[NL]
 vulnerary from supply if cur HP < max HP.[X]
 
 ## MSG_SKILL_AdrenalineRush_NAME
-A-Rush[X]
+Adrenaline Rush[X]
 
 ## MSG_SKILL_AdrenalineRush
 Adrenaline Rush:[NL]
@@ -176,6 +176,9 @@ assume their class, stats and skills.[X]
 Resurrection:[NL]
 Revive once to full health[NL]
 upon defeat.[X]
+
+## MSG_SKILL_MendArms_NAME
+Mend Arms[X]
 
 ## MSG_SKILL_MendArms
 Mend Arms: Restore 1 use to every[N]

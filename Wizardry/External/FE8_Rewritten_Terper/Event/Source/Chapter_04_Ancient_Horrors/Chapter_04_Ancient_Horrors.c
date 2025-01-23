@@ -418,6 +418,7 @@ static const EventListScr EventListScr_VILLAGE_2_TALK[] = {
 
 LABEL(0x0)
     HOUSE_EVENT_NO_END(0x2, Chapter_04_VILLAGE_LUTE_ARTUR)
+    GIVE_SKILL_SCROLL_TO(SID_Paragon, CHARACTER_ARTUR)
     GOTO(0x3)
 
 LABEL(0x1)

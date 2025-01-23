@@ -32,8 +32,8 @@
 #define VENDOR(list, x, y) EvtListShop(list, x, y, TILE_COMMAND_VENDOR)
 #define SecretShop(list, x, y) EvtListShop(list, x, y, TILE_COMMAND_SECRET)
 
-#define CHEST(item, x, y) CHES(item, x, y)
-#define ChestMoney(amt, x, y) CHES(ITEM_GOLD | (amt << 16), x, y)
+#define CHEST(item, x, y, flag) CHES(item, x, y, flag)
+#define ChestMoney(amt, x, y, flag) CHES(ITEM_GOLD | (amt << 16), x, y, flag)
 #define DOOR(x, y, flag)
 #define DOOR_(x, y) DOOR(x, y, 0)
 

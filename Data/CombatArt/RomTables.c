@@ -3,11 +3,11 @@
 #include "constants/combat-arts.h"
 
 const struct CombatArtRomTable gCombatArtRomPTable[0x100] = {
-    [CHARACTER_EIRIKA] = {
-        .cid_sword = {
-            [WPN_LEVEL_E] = CID_Detonate,
-        },
-    },
+    // [CHARACTER_EIRIKA] = {
+    //     .cid_sword = {
+    //         [WPN_LEVEL_E] = CID_Detonate,
+    //     },
+    // },
     // [CHARACTER_INNES] = {
     //     .cid_bow = {
     //         [WPN_LEVEL_C] = CID_Encloser,

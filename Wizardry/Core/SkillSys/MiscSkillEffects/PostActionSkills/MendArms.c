@@ -8,9 +8,9 @@
 #include "constants/texts.h"
 #include "strmag.h"
 
-#if defined(SID_MendArms) && (COMMON_SKILL_VALID(SID_MendArms))
 bool PostActionMendArms(ProcPtr proc)
 {   
+#if defined(SID_MendArms) && (COMMON_SKILL_VALID(SID_MendArms))
     struct Unit * survivor = gActiveUnit;
 
     int weaponUsesExpended = 0;
@@ -43,7 +43,6 @@ bool PostActionMendArms(ProcPtr proc)
             if (GetItemUses(item) < GetItemMaxUses(item))
 				survivor->items[i] = (item += ((GetItemUses(survivor->items[i]) + 1) << 8));
     }
-
+#endif
     return true;
 }
-#endif

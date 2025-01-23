@@ -49,7 +49,7 @@ static const EventScr EventScr_NEW_JOURNEY_TOWER_OF_VALNI_3[] = {
     ENUN
     FADU(16)
     SVAL(EVT_SLOT_2, 0x53)
-    CALL(EventScr_CallBreakStone)
+    // CALL(EventScr_CallBreakStone)
     CUMO_CHAR(CHARACTER_CAELLACH)
     STAL(60)
     CURE
@@ -61,9 +61,9 @@ static const EventScr EventScr_NEW_JOURNEY_TOWER_OF_VALNI_3[] = {
     ENUN
     MOVE(0x10, CHARACTER_CAELLACH, 11, 4)
     ENUN
-    CUMO_CHAR(CHARACTER_FRELIAN)
-    STAL(60)
-    CURE
+    // CUMO_CHAR(CHARACTER_FRELIAN)
+    // STAL(60)
+    // CURE
     TEXTSTART
     TEXTSHOW(Intermission_In_Scene_Tower_Of_Valni_02)
     TEXTEND

@@ -228,10 +228,6 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
     [SID_Sturdy] = EFX_PRIORITY_NORMAL,
 #endif
 
-#if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
-    [SID_Sturdy] = EFX_PRIORITY_NORMAL,
-#endif
-
 #if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
     [SID_Blessing] = EFX_PRIORITY_NORMAL,
 #endif

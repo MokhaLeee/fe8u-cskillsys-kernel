@@ -11,8 +11,8 @@
 
 void PostActionSealSkills(ProcPtr parent)
 {
-    FORCE_DECLARE struct Unit *unit = gActiveUnit;
-    STATIC_DECLAR bool fullMetalBodyProc = false;
+    struct Unit * unit = gActiveUnit;
+    bool fullMetalBodyProc = false;
 
 #if defined(SID_FullMetalBody) && (COMMON_SKILL_VALID(SID_FullMetalBody))
     if (SkillTester(GetUnit(gActionData.targetIndex), SID_FullMetalBody))

@@ -5,9 +5,10 @@
 #include "constants/skills.h"
 #include "jester_headers/class-pairs.h"
 
-#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
+
 bool PrePhase_TickDopplegangerSkillStatus(ProcPtr proc)
 {
+#if (defined(SID_Doppleganger) && COMMON_SKILL_VALID(SID_Doppleganger))
     int i;
 
     for (i = gPlaySt.faction + 1; i <= (gPlaySt.faction + GetFactionUnitAmount(gPlaySt.faction)); ++i)
@@ -32,6 +33,6 @@ bool PrePhase_TickDopplegangerSkillStatus(ProcPtr proc)
             }
         }
     }
+#endif
     return false;
 }
-#endif

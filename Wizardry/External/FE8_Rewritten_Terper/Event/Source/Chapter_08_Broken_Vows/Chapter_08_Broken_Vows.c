@@ -117,7 +117,7 @@ static const struct UnitDefinition CH8_TIRADO_AND_SOLDIERS[] = {
 };
 
 static const struct UnitDefinition CH8_ENEMY_UNITS[] = {
-    UNIT_ENTRY(CHARACTER_TIRADO, CLASS_GENERAL, FACTION_ID_RED, NO_ITEM_DROP, NO_AUTOLEVEL, 1, 10, 2, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_SWORD_IRON),
+    UNIT_ENTRY(CHARACTER_TIRADO, CLASS_GENERAL, FACTION_ID_RED, NO_ITEM_DROP, NO_AUTOLEVEL, 1, 10, 2, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_SILVER, ITEM_LANCE_JAVELIN),
     UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARMOR_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 6, 19, 5, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_STEEL), 
     UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARMOR_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 8, 20, 3, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_STEEL),
     UNIT_ENTRY(CHARACTER_SOLDIER_80, CLASS_ARMOR_KNIGHT, FACTION_ID_RED, NO_ITEM_DROP, AUTOLEVEL, 8, 18, 3, 0, REDAs_NULL, 0, 3, 9, 0, ITEM_LANCE_STEEL),
@@ -304,6 +304,18 @@ LABEL(0x1)
     ENDA
 };
 
+void RemoveInventories() {
+    struct Unit * unit_ephraim = GetUnitFromCharId(CHARACTER_EPHRAIM);
+    struct Unit * unit_forde = GetUnitFromCharId(CHARACTER_FORDE);
+    struct Unit * unit_kyle = GetUnitFromCharId(CHARACTER_KYLE);
+    
+    for (int i = 0; i < 5; i++) {
+        unit_ephraim->items[i] = 0;
+        unit_forde->items[i] = 0;
+        unit_kyle->items[i] = 0;
+    }
+};
+
 static const EventListScr EventScr_EPHRAIM_ESCAPES[] = {
     CHECK_TURNS //Store current turn count in slot C
     SVAL(EVT_SLOT_7, 2)
@@ -319,6 +331,7 @@ static const EventListScr EventScr_EPHRAIM_ESCAPES[] = {
     SET_STATE(CHARACTER_FORDE)
     SVAL(EVT_SLOT_1, 0x1)
     SET_STATE(CHARACTER_KYLE)
+    ASMC(RemoveInventories)
     MUSC(BGM_COMRADES)
     HIGHLIGHT_CHARACTER(CHARACTER_EPHRAIM, 60)
     TEXT(Chapter_08_In_Scene_Ephraim_Escapes)
@@ -369,9 +382,9 @@ static const EventListScr EventListScr_Character[] = {
 static const EventListScr EventListScr_Location[] = {
     DOOR(1, 5, EVFLAG_TMP(13))
     DOOR(20, 7, EVFLAG_TMP(14))
-    CHEST(ITEM_SWORD_SILVER, 1, 3)
-    CHEST(ITEM_MASTERSEAL, 2, 3)
-    CHEST(ITEM_BOOSTER_HP, 19, 4)
+    CHEST(ITEM_SWORD_SILVER, 1, 3, EVFLAG_TMP(15))
+    CHEST(ITEM_MASTERSEAL, 2, 3, EVFLAG_TMP(16))
+    CHEST(ITEM_BOOSTER_HP, 19, 4, EVFLAG_TMP(17))
     SEIZE(10, 2)
     END_MAIN
 };

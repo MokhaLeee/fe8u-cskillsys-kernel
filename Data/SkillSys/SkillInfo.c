@@ -3912,7 +3912,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Gracegift) && COMMON_SKILL_VALID(SID_Gracegift))
     [SID_Gracegift] = {
         .desc = MSG_SKILL_Gracegift,
-        .icon = GFX_SkillIcon_Gracegift,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -3926,7 +3926,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Bladegift) && COMMON_SKILL_VALID(SID_Bladegift))
     [SID_Bladegift] = {
         .desc = MSG_SKILL_Bladegift,
-        .icon = GFX_SkillIcon_Bladegift,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -3940,7 +3940,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Piercegift) && COMMON_SKILL_VALID(SID_Piercegift))
     [SID_Piercegift] = {
         .desc = MSG_SKILL_Piercegift,
-        .icon = GFX_SkillIcon_Piercegift,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -3954,7 +3954,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Hackgift) && COMMON_SKILL_VALID(SID_Hackgift))
     [SID_Hackgift] = {
         .desc = MSG_SKILL_Hackgift,
-        .icon = GFX_SkillIcon_Hackgift,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -3968,7 +3968,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Arcgift) && COMMON_SKILL_VALID(SID_Arcgift))
     [SID_Arcgift] = {
         .desc = MSG_SKILL_Arcgift,
-        .icon = GFX_SkillIcon_Arcgift,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
@@ -4639,6 +4639,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_MendArms) && COMMON_SKILL_VALID(SID_MendArms))
     [SID_MendArms] = {
+        .name = MSG_SKILL_MendArms_NAME,
         .desc = MSG_SKILL_MendArms,
         .icon = GFX_SkillIcon_WIP,
     },
