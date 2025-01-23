@@ -1,5 +1,5 @@
 PUSH
-	ORG 0x00A26C
+	ORG 0x00A2A0
 	prTextTable:
 
 	ORG 0x002BB4
