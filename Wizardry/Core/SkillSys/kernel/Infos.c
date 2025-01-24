@@ -53,6 +53,13 @@ char *SkillDescToName(char *str)
 			break;
 		}
 	}
+
+	/**
+	 * As we have changed the value in the buffer,
+	 * the cached index should become invalid.
+	 */
+	sActiveMsg = -1;
+
 	return str;
 }
 
