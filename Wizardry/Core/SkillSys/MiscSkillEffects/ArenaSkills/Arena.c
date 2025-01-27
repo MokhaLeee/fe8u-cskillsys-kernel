@@ -47,7 +47,7 @@ void ArenaBeginInternal(struct Unit* unit) {
 
     // gArenaState.opponentPowerWeight = ArenaGetPowerRanking(gArenaState.opponentUnit, gArenaState.playerIsMagic);
 
-    // ArenaGenerateMatchupGoldValue();
+    ArenaGenerateMatchupGoldValue();
 
     // gArenaState.unk0B = 1;
 
@@ -64,7 +64,7 @@ void ArenaBeginInternal(struct Unit* unit) {
     NoCashGBAPrintf("Enemy RES is: %d", gArenaState.opponentUnit->res);
     NoCashGBAPrintf("Enemy LCK is: %d", gArenaState.opponentUnit->lck);
 
-    NoCashGBAPrintf("Enemy STR is: %d", gArenaOpponent.pow);
+    NoCashGBAPrintf("Enemy STR is: %d", gArenaState.);
 
     return;
 };
