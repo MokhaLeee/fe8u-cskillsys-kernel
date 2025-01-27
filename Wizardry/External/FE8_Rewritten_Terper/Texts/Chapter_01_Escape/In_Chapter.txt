@@ -96,3 +96,8 @@ do the job they're here for?![A][N]
 They've had weeks to prepare since[N]
 we first heard that Renais was invaded![A][N]
 Where's the King's army?![A][X]
+
+## Chapter_01_Scene_12_Convo_01
+[OpenMidLeft][LoadFace_SoldierBrown]
+I've found them! Stragglers from[N]
+Renais! Don't let them get away![A][X]

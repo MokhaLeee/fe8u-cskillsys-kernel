@@ -61,7 +61,7 @@
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x15"
 #define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
 #define ChestMoney(amountOfMoney,chestX,villY)  "CHES 0 0x6F+amountOfMoney*0x10000 [chestX,chestY] 0x12"
-#define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
+#define DOOR_2(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
 #define SEIZE(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
 #define SEIZE(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
 #endif
@@ -74,7 +74,7 @@
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x15"
 #define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x12"
 #define ChestMoney(amountOfMoney,chestX,villY)  "CHES 0 0x76+amountOfMoney*0x10000 [chestX,chestY] 0x12"
-#define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
+#define DOOR_2(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x10"
 #define SEIZE(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0xF"
 #define SEIZE(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0xF"
 #endif
@@ -87,7 +87,7 @@
 #define SecretShop(offset,shopX,shopY)          "SHOP 0 offset [shopX,shopY] 0x18"
 #define CHEST(item,chestX,chestY)               "CHES 0 item [chestX,chestY] 0x14"
 #define ChestMoney(amountOfMoney,chestX,chestY)     "CHES 0 0x77+amountOfMoney*0x10000 [chestX,chestY] 0x14"
-#define DOOR(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x12"
+#define DOOR_2(doorX,doorY)                       "DOOR 0 [doorX,doorY] 0x12"
 #define SEIZE(seizeX,seizeY)                        "LOCA 3 [seizeX,seizeY] 0x11"
 #define SEIZE(eventID,offset,seizeX,seizeY)         "LOCA eventID offset [seizeX,seizeY] 0x11"
 #endif
@@ -95,7 +95,7 @@
 //Misc based event helpers
 #ifdef _FE6_
 #define CAUSE_GAME_OVER_IF_LORD_DIES "AFEV 0 0x66AC6C 0x65"
-#define DefeatBoss(offset) "AFEV 0 offset 2"
+#define DEFEAT_BOSS(offset) "AFEV 0 offset 2"
 #define DEFEAT_ALL(event) "ASME 0 event 0x6C2F9"
 #endif
 
@@ -103,7 +103,7 @@
 #ifndef _FE7J_
 #define CAUSE_GAME_OVER_IF_LORD_DIES "AFEV 0 0xCA749C 0x65"
 #endif
-#define DefeatBoss(offset) "AFEV 0 offset 2"
+#define DEFEAT_BOSS(offset) "AFEV 0 offset 2"
 #ifndef _FE7J_
 #define DEFEAT_ALL(offset) "ASME 0 offset $79FE9"
 #endif
@@ -116,7 +116,7 @@
 
 #ifdef _FE8_
 #define CAUSE_GAME_OVER_IF_LORD_DIES "AFEV 0 0x592104 0x65"
-#define DefeatBoss(offset) "AFEV 0 offset 2"
+#define DEFEAT_BOSS(offset) "AFEV 0 offset 2"
 #define DEFEAT_ALL(offset) "AFEV 0 offset 6"
 #define NOFADE "EVBIT_T 0x7"
 #endif

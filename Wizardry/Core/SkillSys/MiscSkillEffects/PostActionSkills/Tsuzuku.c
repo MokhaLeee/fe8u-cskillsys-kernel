@@ -68,7 +68,7 @@ bool PostActionTsuzuku(ProcPtr parent)
             goto refresh_turn_once_aura;
 #endif
 
-        if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enimy_defeated)
+        if ((GetCombatArtInForce(unit) == CID_Galeforce) && gBattleActorGlobalFlag.enemy_defeated)
             goto refresh_turn_once;
             
         [[fallthrough]];

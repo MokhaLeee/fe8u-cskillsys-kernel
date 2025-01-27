@@ -14,6 +14,7 @@ enum {
     BGM_TRUTH_DESPAIR_AND_HOPE  = 0x0C,
     BGM_BINDING_VOW             = 0x0F,
     BGM_SHADOWS_APPROACH        = 0x11,
+    BGM_CONFRONT_THE_PAST       = 0x12,
     BGM_SHADOW_OF_THE_ENEMY     = 0x13,
     BGM_ASSAULT                 = 0x14,
     BGM_ENVOY_OF_THE_DARK       = 0x18,

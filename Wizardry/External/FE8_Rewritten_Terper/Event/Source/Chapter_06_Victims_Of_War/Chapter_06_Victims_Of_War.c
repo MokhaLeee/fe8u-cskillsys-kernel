@@ -128,10 +128,10 @@ static const EventScr EventScr_Beginning[] = {
     SET_BACKGROUND(0x1A)
     TEXT(Chapter_06_Pre_Scene_01_Convo_01)
     MUSC(MUTE)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     CLEAN
     MAKE_CAMERA_FOLLOW_MOVING_UNITS
-    FADE_IN_SCREEN(16)
+    FADE_TO_BLACK(16)
     LOAD_WAIT(CH6_EIRIKA_SETH)
     STOP_CAMERA_FOLLOW_MOVING_UNITS
     MOVE_CAMERA_TO_POSITION(7, 7)
@@ -146,9 +146,9 @@ static const EventScr EventScr_Beginning[] = {
     TEXT_CHANGE_BGM(Chapter_06_Pre_Scene_02_Convo_01, BGM_RAID)
     SET_BACKGROUND(0x1A)
     TEXT(Chapter_06_Pre_Scene_02_Convo_02)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     CLEAN
-    FADE_IN_SCREEN(16)
+    FADE_TO_BLACK(16)
     MOVE(0, 0xFB, 20, 5)
     WARP_CHARACTER_OUT(CHARACTER_NOVALA)
     WARP_CHARACTER_OUT(0xF9)
@@ -165,7 +165,7 @@ static const EventScr EventScr_Beginning[] = {
     WARP_CHARACTER_TO_COORDINATES(0xFB, 25, 12)
     HIGHLIGHT_CHARACTER(0xF9, 60)
     TEXT_BG(0x1E, Chapter_06_Pre_Scene_03_Convo_02)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     PREP
     ENDA
 };
@@ -187,32 +187,32 @@ static const EventScr EventScr_Ending[] = {
     CALL(EventScr_RemoveBGIfNeeded)
     SVAL(EVT_SLOT_3, ITEM_BOOSTER_POW)
     GIVEITEMTO(CHARACTER_EIRIKA)
-    FADE_OUT_SCREEN(3)
+    FADE_FROM_BLACK(3)
 
 LABEL(0x0)
     REMA
     SET_BACKGROUND(0x20)
     MUSC(BGM_SORROW)
-    FADE_IN_SCREEN(3)
+    FADE_TO_BLACK(3)
     TEXT_NO_REMA(Chapter_06_Post_Scene_02_Convo_01)
-    FADE_OUT_SCREEN(3)
+    FADE_FROM_BLACK(3)
     REMA
-    FADE_IN_SCREEN(4)
+    FADE_TO_BLACK(4)
     TEXT_NO_REMA(Chapter_06_Post_Scene_03_Convo_01)
-    FADE_OUT_SCREEN(4)
+    FADE_FROM_BLACK(4)
     REMA
-    FADE_IN_SCREEN(4)
+    FADE_TO_BLACK(4)
     TEXT_NO_REMA(Chapter_06_Post_Scene_04_Convo_01)
-    FADE_OUT_SCREEN(4)
+    FADE_FROM_BLACK(4)
     REMA
-    FADE_IN_SCREEN(4)
+    FADE_TO_BLACK(4)
     TEXT_NO_REMA(Chapter_06_Post_Scene_05_Convo_01)
     MUSC(MUTE)
-    FADE_OUT_SCREEN(4)
+    FADE_FROM_BLACK(4)
     REMA
-    FADE_IN_SCREEN(4)
+    FADE_TO_BLACK(4)
     TEXT_NO_REMA(Chapter_06_Post_Scene_06_Convo_01)
-    FADE_OUT_SCREEN(2)
+    FADE_FROM_BLACK(2)
     REMA
     STAL(60)
     TEXTCONT
@@ -329,7 +329,7 @@ static const EventListScr EventListScr_Location[] = {
 };
 
 static const EventListScr EventListScr_Misc[] = {
-    DEFEAT_ALL(EventScr_Ending)
+    DEFEAT_BOSS(EventScr_Ending)
     CAUSE_GAME_OVER_IF_LORD_DIES
     AFEV(EVFLAG_TMP(7), EventScr_CH6_CHECK_AREA, 0)
     END_MAIN

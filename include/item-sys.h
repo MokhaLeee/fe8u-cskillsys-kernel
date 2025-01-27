@@ -275,6 +275,7 @@ static const KeyValuePair dict_skills[] =
         { "Gracegift+", {1000, 1}},
         { "Great Shield", {1000, 1}},
         { "Grid Master", {1000, 1}},
+        { "Grid Master Atk", {1000, 1}},
         { "Grisly Wound", {1000, 1}},
         { "Guard Bearing", {1000, 1}},
         { "Guidance", {1000, 1}},

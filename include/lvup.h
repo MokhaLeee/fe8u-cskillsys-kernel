@@ -15,6 +15,15 @@ int GetUnitLckGrowth(struct Unit *unit);
 int GetUnitDefGrowth(struct Unit *unit);
 int GetUnitResGrowth(struct Unit *unit);
 
+int GetUnitJobBasedHpGrowth(struct Unit *unit);
+int GetUnitJobBasedPowGrowth(struct Unit *unit);
+int GetUnitJobBasedMagGrowth(struct Unit *unit);
+int GetUnitJobBasedSklGrowth(struct Unit *unit);
+int GetUnitJobBasedSpdGrowth(struct Unit *unit);
+int GetUnitJobBasedLckGrowth(struct Unit *unit);
+int GetUnitJobBasedDefGrowth(struct Unit *unit);
+int GetUnitJobBasedResGrowth(struct Unit *unit);
+
 /* Job growth */
 struct JobGrowthEnt { s8 st[UNIT_STATUS_MAX]; };
 // extern struct JobGrowthEnt const gJobGrowthList[0x100];

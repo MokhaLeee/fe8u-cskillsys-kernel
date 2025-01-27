@@ -35,7 +35,7 @@ ALIGN 4
 SupportDistanceLink:
 WORD 3 
 SupportRateKill:
-WORD 50 
+WORD 5 
 SupportRateCombat:
 WORD 1 
 SupportRateStaff:
@@ -43,6 +43,6 @@ WORD 2
 SupportRateDance:
 WORD 2 
 PlayerPhaseOnly:
-WORD 1 // true if 1, false if 0 
+WORD 0 // true if 1, false if 0 
 
 

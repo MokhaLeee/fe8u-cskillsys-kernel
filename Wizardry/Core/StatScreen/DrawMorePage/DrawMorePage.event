@@ -1,7 +1,7 @@
 PUSH
     ORG $88690
         BYTE 4 //make 4 pages
-        PROTECT $88670 $8873c /* StatScreen_Display */
+        // PROTECT $88670 $8873c /* StatScreen_Display */
 
     ORG $88650
         POIN NewPageNameGraphic

@@ -1,0 +1,5 @@
+## Chapter_10_In_Scene_House_01
+[OpenMidLeft][LoadFace_]
+[OpenMidRight][LoadFace_ActiveUnit]
+[OpenMidLeft]
+[A][X]

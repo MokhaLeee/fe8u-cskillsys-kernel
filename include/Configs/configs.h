@@ -133,7 +133,7 @@
  * By Mokha:
  * Allow units to perform all their regular actions after trading
  */
-#define CONFIG_INSTALL_NO_WAIT_AFTER_TRADING
+// #define CONFIG_INSTALL_NO_WAIT_AFTER_TRADING
 
 /**
  * By Vesly:
@@ -260,7 +260,7 @@
 #define CONFIG_STAT_SCREEN_TERRAIN_BONUS
 
 // By Tequila
-#define CONFIG_INSTANT_LEVEL_UP
+// #define CONFIG_INSTANT_LEVEL_UP
 
 /* 
 ** By Jester
@@ -423,6 +423,7 @@
 // #define CONFIG_INSTALL_BOW2DECREASE
 
 // #define CONFIG_INSTALL_DECREASE_HIT_AT_RANGE
+
 
 /**
  * Install ConvoyExpa

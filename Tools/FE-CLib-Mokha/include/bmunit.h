@@ -180,7 +180,7 @@ struct Unit
     /* 46 */ u8 ai_counter;
 
     /* pad */
-    /* 47 */ u8 _u47;
+    /* 47 */ s8 _u47;
 };
 
 enum udef_ai_index {
@@ -256,7 +256,7 @@ enum
     // = (1 << 28),
     // = (1 << 29),
     // = (1 << 30),
-    // = (1 << 31),
+    US_GRIDMASTER_PLUS = (1 << 31),
 
     // Helpers
     US_UNAVAILABLE = (US_DEAD | US_NOT_DEPLOYED | US_BIT16),
@@ -397,7 +397,8 @@ bool CanClassWieldWeaponType(u8 classId, u8 wpnType);
 struct Unit* LoadUnit(const struct UnitDefinition* uDef);
 void UnitInitFromDefinition(struct Unit* unit, const struct UnitDefinition* uDef);
 void UnitLoadItemsFromDefinition(struct Unit* unit, const struct UnitDefinition* uDef);
-void UnitLoadStatsFromChracter(struct Unit* unit, const struct CharacterData* character);
+void UnitLoadStatsFromCharacter(struct Unit* unit, const struct CharacterData* character);
+void UnitLoadStatsFromCharacterVanilla(struct Unit* unit, const struct CharacterData* character);
 void FixROMUnitStructPtr(struct Unit* unit);
 void UnitLoadSupports(struct Unit* unit);
 void UnitAutolevelWExp(struct Unit* unit, const struct UnitDefinition* uDef);

@@ -83,7 +83,7 @@ bool PostActionPositionReturn(ProcPtr proc)
 #endif
         return false;
 
-    if (gBattleActorGlobalFlag.enimy_defeated == false)
+    if (gBattleActorGlobalFlag.enemy_defeated == false)
         return false;
 
     if (gActiveUnitMoveOrigin.x == gActiveUnit->xPos && gActiveUnitMoveOrigin.y == gActiveUnit->yPos)

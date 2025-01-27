@@ -146,7 +146,7 @@ static const struct UnitDefinition CH7_ENEMY_UNITS[] = {
  */
 static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT_PERSIST(CH7_ENEMY_UNITS)
-    FADE_IN_SCREEN(16)
+    FADE_TO_BLACK(16)
     LOAD_WAIT_DEPLOYMENT_ORDER(CH7_PLAYER_UNITS)
     STAL(15)
     MOVE_CAMERA_TO_POSITION_CENTER(9, 4)
@@ -165,15 +165,15 @@ static const EventScr EventScr_Beginning[] = {
     TEXT(Chapter_07_Pre_Scene_Natasha)
     TEXT(Chapter_07_Pre_Scene_02_Convo_01)
     PREP
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     ENDA
 };
 
 static const EventScr EventScr_Ending[] = {
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     LOMA(0x44)
     CLEAR_ALL_UNITS
-    FADE_IN_SCREEN(16)
+    FADE_TO_BLACK(16)
     MUSC(SFX_RIVER)
     LOAD_WAIT(CH7_EIRIKA_SETH)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
@@ -208,7 +208,7 @@ static const EventScr EventScr_Ending[] = {
     SENQUEUE1
     MOVE_DEFINED(CHARACTER_SETH)
     STAL(8)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     ENUN
     NEXT_CHAPTER_WITH_MAP(CHAPTER_08)
     ENDA
@@ -253,7 +253,6 @@ static const EventListScr EventListScr_Location[] = {
 };
 
 static const EventListScr EventListScr_Misc[] = {
-    DEFEAT_ALL(EventScr_Ending)
     CAUSE_GAME_OVER_IF_LORD_DIES
     END_MAIN
 };

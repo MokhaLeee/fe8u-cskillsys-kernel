@@ -244,16 +244,16 @@ static const EventScr EventScr_Ending[] = {
     MUSC(MUTE)
     SET_BACKGROUND(0x10)
     TEXT(Chapter_08_Post_Scene_01_Convo_01)
-    FADE_OUT_SCREEN(12)
+    FADE_FROM_BLACK(12)
     MUSC(BGM_LYON)
     SET_BACKGROUND(0x35)
-    FADE_IN_SCREEN(3)
+    FADE_TO_BLACK(3)
     TEXT(Chapter_08_Post_Scene_01_Convo_02)
-    FADE_OUT_SCREEN(4)
+    FADE_FROM_BLACK(4)
     SET_BACKGROUND(0x10)
-    // FADE_IN_SCREEN(3)
+    // FADE_TO_BLACK(3)
     TEXT(Chapter_08_Post_Scene_01_Convo_03)
-    FADE_OUT_SCREEN(1)
+    FADE_FROM_BLACK(1)
     MUSC(MUTE)
     SET_FLAG(0x88) // Flag for New Departure
     NEXT_CHAPTER_WITH_MAP(CHAPTER_05)
@@ -390,7 +390,6 @@ static const EventListScr EventListScr_Location[] = {
 };
 
 static const EventListScr EventListScr_Misc[] = {
-    DEFEAT_ALL(EventScr_Ending)
     CAUSE_GAME_OVER_IF_LORD_DIES
     END_MAIN
 };

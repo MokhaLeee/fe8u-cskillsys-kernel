@@ -24,7 +24,7 @@
 #define SEIZE(x, y) Seize_(EVFLAG_WIN, EVENT_NOSCRIPT, x, y)
 
 #define CAUSE_GAME_OVER_IF_LORD_DIES AFEV(0, EventScr_GameOver, EVFLAG_GAMEOVER)
-#define DefeatBoss(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_BOSS)
+#define DEFEAT_BOSS(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_BOSS)
 #define DEFEAT_ALL(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_ALL)
 #define NOFADE EVBIT_T(EV_STATE_SKIPPING | EV_STATE_0002 | EV_STATE_ABORT)
 
@@ -34,8 +34,8 @@
 
 #define CHEST(item, x, y, flag) CHES(item, x, y, flag)
 #define ChestMoney(amt, x, y, flag) CHES(ITEM_GOLD | (amt << 16), x, y, flag)
-#define DOOR(x, y, flag)
-#define DOOR_(x, y) DOOR(x, y, 0)
+#define DOOR_2(x, y, flag)
+#define DOOR_2_(x, y) DOOR(x, y, 0)
 
 #define HouseEvent(msg, bg) \
     MUSI \

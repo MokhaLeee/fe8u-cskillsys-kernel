@@ -1,6 +1,7 @@
 #ifndef STR_MAG_SPLIT_INSTALLED
 #define STR_MAG_SPLIT_INSTALLED
 
+#include "Source/core.lyn.event"
 #include "Source/Hooks.lyn.event"
 #include "Source/BoosterHook.lyn.event"
 

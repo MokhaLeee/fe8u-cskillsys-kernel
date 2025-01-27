@@ -35,6 +35,9 @@
     EventPointerTable(0x2D, Chapter09Event)
     #include "Source/Chapter_09_Renewed_Journey/Chapter_09_Renewed_Journey.lyn.event"
     #include "Source/Chapter_09_Renewed_Journey/Map/Chapter_09_map.event"
+    EventPointerTable(0x33, Chapter10Event)
+    #include "Source/Chapter_10_Revolt_At_Carcino/Chapter_10_Revolt_At_Carcino.lyn.event"
+    // #include "Source/Chapter_10_Revolt_At_Carcino/Map/Chapter_10_map.event"
 }
 
     #include "Source/World_Map_Events.lyn.event"

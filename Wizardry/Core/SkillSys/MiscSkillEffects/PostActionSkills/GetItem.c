@@ -14,7 +14,7 @@ bool PostActionGetItem(ProcPtr parent)
     if (!UNIT_IS_VALID(unit) || UNIT_STONED(unit))
         return false;
 
-    if (gActionData.unitActionType == UNIT_ACTION_COMBAT && gBattleActorGlobalFlag.enimy_defeated)
+    if (gActionData.unitActionType == UNIT_ACTION_COMBAT && gBattleActorGlobalFlag.enemy_defeated)
     {
 
 #if (defined(CONFIG_ITEM_INDEX_SKILL_STEALER))
@@ -30,7 +30,7 @@ bool PostActionGetItem(ProcPtr parent)
 
 
 #if defined(SID_Despoil) && (COMMON_SKILL_VALID(SID_Despoil))
-        if (SkillTester(unit, SID_Despoil) && gBattleActorGlobalFlag.enimy_defeated)
+        if (SkillTester(unit, SID_Despoil) && gBattleActorGlobalFlag.enemy_defeated)
         {
             NewPopup_ItemGot(parent, unit, ITEM_REDGEM);
             return true;
@@ -38,7 +38,7 @@ bool PostActionGetItem(ProcPtr parent)
 #endif
 
 #if defined(SID_GoldDigger) && (COMMON_SKILL_VALID(SID_GoldDigger))
-        if (SkillTester(unit, SID_GoldDigger) && gBattleActorGlobalFlag.enimy_defeated)
+        if (SkillTester(unit, SID_GoldDigger) && gBattleActorGlobalFlag.enemy_defeated)
         {
             NewPopup_GoldGot(parent, unit, SKILL_EFF0(SID_GoldDigger));
             return true;
@@ -46,7 +46,7 @@ bool PostActionGetItem(ProcPtr parent)
 #endif
 
 #if defined(SID_MakeAKilling) && (COMMON_SKILL_VALID(SID_MakeAKilling))
-        if (SkillTester(unit, SID_MakeAKilling) && gBattleActorGlobalFlag.enimy_defeated)
+        if (SkillTester(unit, SID_MakeAKilling) && gBattleActorGlobalFlag.enemy_defeated)
         {
             if (Roll1RN(unit->lck))
             {

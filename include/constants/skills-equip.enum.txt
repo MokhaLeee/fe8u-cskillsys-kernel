@@ -1,11 +1,11 @@
 ////////MENU SKILLS
-//SID_Dismount
-//SID_ReciprocalAid
+// SID_Dismount
+// SID_ReciprocalAid
 SID_Sacrifice
-//SID_Doppleganger
+// SID_Doppleganger
 SID_Turncoat
-//SID_ArdentSacrifice
-//SID_Capture
+// SID_ArdentSacrifice
+// SID_Capture
 SID_Teleportation
 SID_Swarp
 SID_Swap
@@ -17,20 +17,20 @@ SID_Steal
 SID_Supply
 SID_LightRune
 SID_Mine
-//SID_RallyDefense
-//SID_RallyLuck
-//SID_RallyMagic
-//SID_RallyMovement
-//SID_RallyResistance
-//SID_RallySkill
-//SID_RallySpeed
-//SID_RallyStrength
-//SID_RallySpectrum
+// SID_RallyDefense
+// SID_RallyLuck
+// SID_RallyMagic
+// SID_RallyMovement
+// SID_RallyResistance
+// SID_RallySkill
+// SID_RallySpeed
+// SID_RallyStrength
+// SID_RallySpectrum
 SID_GoddessDance
 SID_Stride
-//SID_Blacksmith
+// SID_Blacksmith
 SID_PairUp
-//SID_Transform
+// SID_Transform
 SID_StealPlus
 SID_DrawBack
 SID_Pivot
@@ -41,284 +41,285 @@ SID_Entrepreneur
 SID_Arise
 
 ////////PRE-BATTLE SKILLS
-//SID_DefiantStr
-//SID_DefiantMag
-//SID_DefiantSkl
-//SID_DefiantSpd
-//SID_DefiantLck
-//SID_DefiantDef
-//SID_DefiantRes
-//SID_DefiantCrit
-//SID_DefiantAvoid
+// SID_DefiantStr
+// SID_DefiantMag
+// SID_DefiantSkl
+// SID_DefiantSpd
+// SID_DefiantLck
+// SID_DefiantDef
+// SID_DefiantRes
+// SID_DefiantCrit
+// SID_DefiantAvoid
 SID_LifeAndDeath
 SID_Nihil
-//SID_CritSword
-//SID_CritAxe
-//SID_CritLance
-//SID_CritBow
-//SID_FaireSword
-//SID_FaireLance
-//SID_FaireAxe
-//SID_FaireBow
-//SID_FaireBMag
-//SID_FaireAnima
-//SID_FaireLight
-//SID_FaireDark
-//SID_Avoid
-//SID_RuinedBlade
-//SID_HeavyBlade
-//SID_FlashingBlade
-//SID_HeavyBladePlus
-//SID_FlashingBladePlus
-//SID_LunaAttack
+// SID_CritSword
+// SID_CritAxe
+// SID_CritLance
+// SID_CritBow
+// SID_FaireSword
+// SID_FaireLance
+// SID_FaireAxe
+// SID_FaireBow
+// SID_FaireBMag
+// SID_FaireAnima
+// SID_FaireLight
+// SID_FaireDark
+// SID_Avoid
+// SID_RuinedBlade
+// SID_HeavyBlade
+// SID_FlashingBlade
+// SID_HeavyBladePlus
+// SID_FlashingBladePlus
+// SID_LunaAttack
 SID_SorceryBlade
-//SID_Fortune
+// SID_Fortune
 SID_Frenzy
 SID_WonderGuard
 SID_Merciless
 SID_CriticalPierce
-//SID_KillingMachine
-//SID_HeavyStrikes
+// SID_KillingMachine
+// SID_HeavyStrikes
 SID_Technician
-//SID_CatchingUp
-//SID_BattleVeteran
+// SID_CatchingUp
+// SID_BattleVeteran
 SID_ElbowRoom
-//SID_ChaosStyle
-//SID_ArcaneBlade
-//SID_QuickDraw
-//SID_KeenFighter
+// SID_ChaosStyle
+// SID_ArcaneBlade
+// SID_QuickDraw
+// SID_KeenFighter
 SID_Hawkeye
-//SID_MagicEye
+// SID_MagicEye
 SID_DragonSkin
-//SID_WaterBoost
-//SID_EarthBoost
-//SID_WindBoost
-//SID_FireBoost
+// SID_WaterBoost
+// SID_EarthBoost
+// SID_WindBoost
+// SID_FireBoost
 SID_StoneBody
-//SID_CriticalForce
-//SID_Pursuit
-//SID_Patience
-//SID_StrongRiposte
-//SID_Perfectionist
-//SID_WindDisciple
-//SID_Pragmatic
-//SID_Chivalry
+// SID_CriticalForce
+// SID_Pursuit
+// SID_Patience
+// SID_StrongRiposte
+// SID_Perfectionist
+// SID_WindDisciple
+// SID_Pragmatic
+// SID_Chivalry
 SID_Charge
 SID_ChargePlus
 SID_FieryBlood
 SID_Wrath
 SID_OutdoorFighter
-//SID_KnightAspirant
+// SID_KnightAspirant
 SID_Outrider
-//SID_EvenRhythm
+// SID_EvenRhythm
 SID_OddRhythm
-//SID_Corrosion
+// SID_Corrosion
 SID_NoGuard
-//SID_Puissance
-//SID_Prescience
-//SID_SilentPride
+// SID_Puissance
+// SID_Prescience
+// SID_SilentPride
 SID_RightfulKing
-//SID_RightfulGod
-//SID_RightfulArch
+// SID_RightfulGod
+// SID_RightfulArch
 SID_Hero
 SID_Guts
 SID_StrongCon
-//SID_SuperLuck
-//SID_Spurn
-//SID_Counter
-//SID_CounterMagic
-//SID_Assist
-//SID_Synergism
-//SID_DevilsPact
-//SID_DevilsWhim
-//SID_DevilsLuck
-//SID_HighGround
+// SID_SuperLuck
+// SID_Spurn
+// SID_Counter
+// SID_CounterMagic
+// SID_Assist
+// SID_Synergism
+// SID_DevilsPact
+// SID_DevilsWhim
+// SID_DevilsLuck
+// SID_HighGround
 SID_PointBlank
 SID_StaffSavant
-//SID_Chlorophyll
-//SID_SlushRush
-//SID_SandRush
-//SID_SwiftSwim
-//SID_SolarPower
+// SID_Chlorophyll
+// SID_SlushRush
+// SID_SandRush
+// SID_SwiftSwim
+// SID_SolarPower
 SID_RangeBonusBMag
-//SID_RangeBonusBMag2
+// SID_RangeBonusBMag2
 SID_RangeBonusBow1
-//SID_RangeBonusBow2
+// SID_RangeBonusBow2
 SID_RunningStart
-//SID_BattleRange_Todo1
-//SID_BattleRange_Todo2
-//SID_BattleRange_Todo3
-//SID_RuinedBladePlus
-//SID_AirRaidAttack
-//SID_AirRaidAvoid
-//SID_AirRaidCrit
-//SID_AirRaidDefense
-//SID_AirRaidHit
-//SID_AirRaidResistance
-//SID_AirRaidSpeed
+// SID_BattleRange_Todo1
+// SID_BattleRange_Todo2
+// SID_BattleRange_Todo3
+// SID_RuinedBladePlus
+// SID_AirRaidAttack
+// SID_AirRaidAvoid
+// SID_AirRaidCrit
+// SID_AirRaidDefense
+// SID_AirRaidHit
+// SID_AirRaidResistance
+// SID_AirRaidSpeed
 SID_RiskItAll
 SID_QuickBurn
 SID_SlowBurn
-//SID_EvenFooted
-//SID_OddFooted
+// SID_EvenFooted
+// SID_OddFooted
 SID_Crit
 SID_WatchfulEye
-//SID_Thighdeology
-//SID_ThotSlayer
-//SID_Swarm
+// SID_Thighdeology
+// SID_ThotSlayer
+// SID_Swarm
 SID_AdaptiveStance
-//SID_AdrenalineRush
+// SID_AdrenalineRush
 SID_TripUp
-//SID_AdaptiveLunge
-//SID_Cultured
-//SID_Flank
-//SID_ForeignPrincess
+// SID_AdaptiveLunge
+// SID_Cultured
+// SID_Flank
+// SID_ForeignPrincess
 SID_CriticalOverload
 SID_LightWeight
-//SID_Analytic
-//SID_StunningSmile
+// SID_Analytic
+// SID_StunningSmile
 SID_Comatose
 SID_Mimic
-//SID_Bushido
-//SID_DragonWall
-//SID_BlueLionRule
+// SID_Bushido
+// SID_DragonWall
+// SID_BlueLionRule
 SID_Vigilance
 SID_SolidRock
-//SID_MeleeManiac
-//SID_FranticSwing
-//SID_DominantArm
-//SID_Pursuer
-//SID_CloseCombat
-//SID_SteadyBrawler
-//SID_LadyBlade
-//SID_TowerShield
-//SID_TowerShieldPlus
-//SID_MageSlayer
-//SID_NaturalCover
-//SID_Loyalty
-//SID_Trample
-//SID_Opportunist
-//SID_Vanity
-//SID_ShortShield
-//SID_AvoidSword
-//SID_Mantle
-//SID_BeginnersLuck
-//SID_ExpertsExperience
-//SID_SwordProwess
-//SID_LanceProwess
-//SID_AxeProwess
-//SID_BowProwess
-//SID_AnimaProwess
-//SID_DarkProwess
-//SID_LightProwess
+// SID_MeleeManiac
+// SID_FranticSwing
+// SID_DominantArm
+// SID_Pursuer
+// SID_CloseCombat
+// SID_SteadyBrawler
+// SID_LadyBlade
+// SID_TowerShield
+// SID_TowerShieldPlus
+// SID_MageSlayer
+// SID_NaturalCover
+// SID_Loyalty
+// SID_Trample
+// SID_Opportunist
+// SID_Vanity
+// SID_ShortShield
+// SID_AvoidSword
+// SID_Mantle
+// SID_BeginnersLuck
+// SID_ExpertsExperience
+// SID_SwordProwess
+// SID_LanceProwess
+// SID_AxeProwess
+// SID_BowProwess
+// SID_AnimaProwess
+// SID_DarkProwess
+// SID_LightProwess
 SID_Seer
 SID_KillStreak
 SID_HyperFocus
 
 ////////POST-BATTLE SKILLS
-SID_Canto
+// SID_Canto
 SID_CantoPlus
 SID_Galeforce
 SID_AlertStance
 SID_AlertStancePlus
-//SID_SavageBlow
-//SID_BreathOfLife
-//SID_Thunderstorm
-//SID_PosReturn
+// SID_SavageBlow
+// SID_BreathOfLife
+// SID_Thunderstorm
+// SID_PosReturn
 SID_Lunge
 SID_PowerStaff
-//SID_SoulSap
+// SID_SoulSap
 SID_FailGale
-//SID_Clearance
-//SID_Despoil
+// SID_Clearance
+// SID_Despoil
 SID_GoldDigger
 SID_LeadByExample
 SID_GridMaster
-//SID_DestinyBond
-//SID_Tsuzuku
+// SID_GridMasterAtk
+// SID_DestinyBond
+// SID_Tsuzuku
 SID_BoundlessVitality
 SID_Synchronize
-//SID_PoisonStrike
-//SID_GrislyWound
+// SID_PoisonStrike
+// SID_GrislyWound
 SID_Lifetaker
-//SID_VigorDance
+// SID_VigorDance
 SID_QuickHands
-//SID_FortifyingStaff
+// SID_FortifyingStaff
 SID_MakeAKilling
 SID_NecroCopy
-//SID_MendArms
+// SID_MendArms
 
 ////////AURA SKILLS
-//SID_Anathema
-//SID_Bond
-//SID_Charm
+// SID_Anathema
+// SID_Bond
+// SID_Charm
 SID_Intimidate
 SID_Tantivy
-//SID_Focus
+// SID_Focus
 SID_Hex
-//SID_Infiltrator
-//SID_Inspiration
-//SID_DivinelyInspiring
-//SID_VoiceOfPeace
-//SID_Peacebringer
+// SID_Infiltrator
+// SID_Inspiration
+// SID_DivinelyInspiring
+// SID_VoiceOfPeace
+// SID_Peacebringer
 SID_BloodTide
-//SID_WhitePool
-//SID_NightTide
-//SID_DriveStr
-//SID_DriveMag
-//SID_DriveDef
-//SID_DriveRes
-//SID_DriveSpd
-//SID_Charisma
-//SID_Gentilhomme
-//SID_Demoiselle
-//SID_LilysPoise
-//SID_Daunt
-//SID_SpurStr
-//SID_SpurMag
-//SID_SpurDef
-//SID_SpurRes
-//SID_SpurSpd
+// SID_WhitePool
+// SID_NightTide
+// SID_DriveStr
+// SID_DriveMag
+// SID_DriveDef
+// SID_DriveRes
+// SID_DriveSpd
+// SID_Charisma
+// SID_Gentilhomme
+// SID_Demoiselle
+// SID_LilysPoise
+// SID_Daunt
+// SID_SpurStr
+// SID_SpurMag
+// SID_SpurDef
+// SID_SpurRes
+// SID_SpurSpd
 SID_Solidarity
-//SID_MaleficAura
-//SID_LullDefense
-//SID_LullLuck
-//SID_LullMagic
-//SID_LullMovement
-//SID_LullResistance
-//SID_LullSkill
-//SID_LullSpectrum
-//SID_LullSpeed
-//SID_LullStrength
+// SID_MaleficAura
+// SID_LullDefense
+// SID_LullLuck
+// SID_LullMagic
+// SID_LullMovement
+// SID_LullResistance
+// SID_LullSkill
+// SID_LullSpectrum
+// SID_LullSpeed
+// SID_LullStrength
 SID_GentleFlower // This skill can only set to ally!
-//SID_Admiration
-//SID_FairyTaleFolk
-//SID_PastelVeil
-//SID_HoneCavalry
-//SID_HoneFlier
-//SID_HoneArmor
-//SID_Skyguard
-//SID_Horseguard
-//SID_Armorboost
+// SID_Admiration
+// SID_FairyTaleFolk
+// SID_PastelVeil
+// SID_HoneCavalry
+// SID_HoneFlier
+// SID_HoneArmor
+// SID_Skyguard
+// SID_Horseguard
+// SID_Armorboost
 SID_Plus
 SID_Minus
 SID_Pathfinder
-//SID_UpWithArch
-//SID_RampUp
+// SID_UpWithArch
+// SID_RampUp
 SID_Mentorship
-//SID_HolyAura
-//SID_BlueFlame
+// SID_HolyAura
+// SID_BlueFlame
 
 ////////STAT MODIFIER SKILLS
-//SID_HpBonus
-//SID_StrBonus
-//SID_MagBonus
-//SID_SklBonus
-//SID_SpdBonus
-//SID_LckBonus
-//SID_DefBonus
-//SID_ResBonus
-//SID_MovBonus
+// SID_HpBonus
+// SID_StrBonus
+// SID_MagBonus
+// SID_SklBonus
+// SID_SpdBonus
+// SID_LckBonus
+// SID_DefBonus
+// SID_ResBonus
+// SID_MovBonus
 SID_Resolve
 SID_HeavyMetal
 SID_PushDefense
@@ -332,26 +333,26 @@ SID_PushSpectrum
 SID_PushMovement
 SID_Fury
 SID_FuryPlus
-//SID_FortressDef
-//SID_FortressRes
-//SID_BlowDarting
-//SID_BlowDeath
-//SID_BlowArmored
-//SID_BlowFiendish
-//SID_BlowWarding
-//SID_BlowDuelist
-//SID_BlowUncanny
-//SID_BlowKilling
-//SID_StanceBracing
-//SID_StanceDarting
-//SID_StanceFierce
-//SID_StanceKestrel
-//SID_StanceMirror
-//SID_StanceReady
-//SID_StanceSteady
-//SID_StanceSturdy
-//SID_StanceSwift
-//SID_StanceWarding
+// SID_FortressDef
+// SID_FortressRes
+// SID_BlowDarting
+// SID_BlowDeath
+// SID_BlowArmored
+// SID_BlowFiendish
+// SID_BlowWarding
+// SID_BlowDuelist
+// SID_BlowUncanny
+// SID_BlowKilling
+// SID_StanceBracing
+// SID_StanceDarting
+// SID_StanceFierce
+// SID_StanceKestrel
+// SID_StanceMirror
+// SID_StanceReady
+// SID_StanceSteady
+// SID_StanceSturdy
+// SID_StanceSwift
+// SID_StanceWarding
 SID_SealDefense
 SID_SealLuck
 SID_SealMagic
@@ -359,75 +360,75 @@ SID_SealResistance
 SID_SealSkill
 SID_SealSpeed
 SID_SealStrength
-//SID_DefenseBoost
+// SID_DefenseBoost
 SID_LuckBoost
-//SID_MagicBoost
-//SID_MoveBoost
-//SID_ResistanceBoost
-//SID_SkillBoost
-//SID_SpeedBoost
+// SID_MagicBoost
+// SID_MoveBoost
+// SID_ResistanceBoost
+// SID_SkillBoost
+// SID_SpeedBoost
 SID_StrengthBoost
-//SID_SpectrumBoost
-//SID_Guidance
-//SID_SoaringGuidance
-//SID_FlierFormation
-//SID_SoaringWings
+// SID_SpectrumBoost
+// SID_Guidance
+// SID_SoaringGuidance
+// SID_FlierFormation
+// SID_SoaringWings
 SID_Contrary
 SID_HyperCutter
-//SID_ClearBody
+// SID_ClearBody
 SID_FullMetalBody
 SID_PsychUp
 SID_Moody
 SID_ArenaTrap
-//SID_LuckySeven
+// SID_LuckySeven
 SID_Unaware
-//SID_StaffGuard
+// SID_StaffGuard
 
 ////////WEAPON TRIANGLE ADVANTAGE SKILLS
-//SID_SwordBreaker
-//SID_AxeBreaker
-//SID_LanceBreaker
-//SID_BowBreaker
-//SID_BMagBreaker
+// SID_SwordBreaker
+// SID_AxeBreaker
+// SID_LanceBreaker
+// SID_BowBreaker
+// SID_BMagBreaker
 SID_TriangleAdept
 SID_TriangleAdeptPlus
 SID_Onimaru
 SID_Nonconforming
-//SID_Poise
-//SID_Break
+// SID_Poise
+// SID_Break
 
 ////////PROC/MID-BATTLE SKILLS
 SID_Astra
-//SID_Aegis
-//SID_Pavise
-//SID_Bane
+// SID_Aegis
+// SID_Pavise
+// SID_Bane
 SID_Mercy
 SID_MercyPlus
-//SID_Aether
-//SID_Corona
-//SID_Luna
-//SID_Flare
-//SID_Sol
-//SID_DragonFang
-//SID_Foresight
-//SID_Colossus
-//SID_Ignis
-//SID_Impale
-//SID_Glacies
-//SID_Vengeance
-//SID_Deadeye
-//SID_AxeFaith
-//SID_DivinePulse
-//SID_GreatShield
+// SID_Aether
+// SID_Corona
+// SID_Luna
+// SID_Flare
+// SID_Sol
+// SID_DragonFang
+// SID_Foresight
+// SID_Colossus
+// SID_Ignis
+// SID_Impale
+// SID_Glacies
+// SID_Vengeance
+// SID_Deadeye
+// SID_AxeFaith
+// SID_DivinePulse
+// SID_GreatShield
 SID_Fluffy
 SID_Roll12
-//SID_Barricade
-//SID_BarricadePlus
+// SID_Barricade
+// SID_BarricadePlus
 SID_SureShot
-//SID_Lethality
-//SID_InfinityEdge
-//SID_MoonBow
-//SID_LiquidOoze
+// SID_Lethality
+// SID_InfinityEdge
+// SID_MoonBow
+// SID_LiquidOoze
 SID_Inori  //This is miracle
 SID_Armsthrift
 SID_GoodAsGold
@@ -436,79 +437,79 @@ SID_Enrage
 SID_Petrify
 SID_PoisonPoint
 SID_Accost
-//SID_DownWithArch
+// SID_DownWithArch
 SID_MagicBounce
 SID_EffectSpore
-//SID_MysticBoost
-//SID_Gambit
-//SID_GuardBearing
-//SID_CounterRoar
-//SID_MagicGambit
-//SID_BeastAssault
-//SID_LightAndDark
-//SID_DragonWarth
-//SID_FaerghusAncestry
-//SID_CrusaderWard
+// SID_MysticBoost
+// SID_Gambit
+// SID_GuardBearing
+// SID_CounterRoar
+// SID_MagicGambit
+// SID_BeastAssault
+// SID_LightAndDark
+// SID_DragonWarth
+// SID_FaerghusAncestry
+// SID_CrusaderWard
 SID_Blessing
 SID_Sturdy
-//SID_LunarBrace
-//SID_Eclipse
-//SID_Expertise
+// SID_LunarBrace
+// SID_Eclipse
+// SID_Expertise
 SID_Pickup
-//SID_BlackMagic
-//SID_Discipline
+// SID_BlackMagic
+// SID_Discipline
 SID_Dazzle
-//SID_DancingBlade
-//SID_AngerPoint
+// SID_DancingBlade
+// SID_AngerPoint
 SID_Adaptable
 SID_Debilitator
-//SID_Sentinel
+// SID_Sentinel
 SID_Chipper
 SID_Toxic
 
 ////////EFFECTIVENESS SKILLS
 SID_Resourceful
-//SID_Slayer
-//SID_Skybreaker
+// SID_Slayer
+// SID_Skybreaker
 
 ////////BATTLE ORDER SKILLS
 SID_Vantage
 SID_Desperation
-//SID_QuickRiposte
+// SID_QuickRiposte
 SID_WaryFighter
 SID_DoubleLion
-//SID_Adept
+// SID_Adept
 SID_GaleWings
-//SID_LastWord
+// SID_LastWord
 SID_RecklessFighter
-//SID_BoldFighter
+// SID_BoldFighter
 SID_VengefulFighter
 SID_PridefulWarrior
-//SID_PassionsFlow
-//SID_QuickLearner
-//SID_Moonlight
-//SID_AdvantageChaser
-//SID_BidingBlow
+// SID_PassionsFlow
+// SID_QuickLearner
+// SID_Moonlight
+// SID_AdvantageChaser
+// SID_BidingBlow
 
 ////////PRE-PHASE SKILLS
 SID_Renewal
 SID_Imbue
-//SID_Forager
-//SID_Relief
-//SID_Camaraderie
-//SID_PowHone
-//SID_MagHone
-//SID_SklHone
-//SID_SpdHone
-//SID_LckHone
-//SID_DefHone
-//SID_ResHone
-//SID_MovHone
-//SID_Airlock
-//SID_Drought
-//SID_Drizzle
-//SID_SnowWarning
-//SID_SandStream
+// SID_Forager
+// SID_Relief
+// SID_Camaraderie
+// SID_PowHone
+// SID_MagHone
+// SID_SklHone
+// SID_SpdHone
+// SID_LckHone
+// SID_DefHone
+// SID_ResHone
+// SID_MovHone
+// SID_Airlock
+// SID_Drought
+// SID_Drizzle
+// SID_SnowWarning
+// SID_SandStream
 SID_InitStrong
 SID_InitClever
 SID_InitDeft
@@ -518,43 +519,43 @@ SID_InitCalm
 SID_InitLucky
 SID_InitNimble
 SID_InitSpectrum
-//SID_OathDefense
-//SID_OathLuck
-//SID_OathMagic
-//SID_OathMovement
-//SID_OathResistance
-//SID_OathSkill
-//SID_OathSpeed
-//SID_OathStrength
-//SID_RouseDefense
-//SID_RouseLuck
-//SID_RouseMagic
-//SID_RouseMovement
-//SID_RouseResistance
-//SID_RouseSkill
-//SID_RouseSpeed
-//SID_RouseStrength
-//SID_RainDish
-//SID_Boon
+// SID_OathDefense
+// SID_OathLuck
+// SID_OathMagic
+// SID_OathMovement
+// SID_OathResistance
+// SID_OathSkill
+// SID_OathSpeed
+// SID_OathStrength
+// SID_RouseDefense
+// SID_RouseLuck
+// SID_RouseMagic
+// SID_RouseMovement
+// SID_RouseResistance
+// SID_RouseSkill
+// SID_RouseSpeed
+// SID_RouseStrength
+// SID_RainDish
+// SID_Boon
 SID_PoisonHeal
-//SID_FortifyArmor
-//SID_AversaNight
+// SID_FortifyArmor
+// SID_AversaNight
 SID_HoneChaos
 SID_IndoorMarch
-//SID_NatureRush
-//SID_YuneWhispers
-//SID_ArmorMarch
-//SID_KeepUp
-//SID_Amaterasu
+// SID_NatureRush
+// SID_YuneWhispers
+// SID_ArmorMarch
+// SID_KeepUp
+// SID_Amaterasu
 SID_GoodyBasket
 
 ////////POST-PHASE SKILLS
-//SID_HoardersBane
-//SID_DarkBargain
+// SID_HoardersBane
+// SID_DarkBargain
 SID_Rampage
 
 ////////LEVEL UP SKILLS
-//SID_Blossom
+// SID_Blossom
 SID_Paragon
 SID_VoidCurse
 SID_Aptitude
@@ -567,21 +568,21 @@ SID_Mercurious
 SID_Velocity
 SID_StaffParagon
 SID_OgreBody
-//SID_Prodigy
+// SID_Prodigy
 
 ////////LEGENDARY SKILLS
-//SID_LEGEND_InoriAtk
-//SID_LEGEND_InoriAvo
-//SID_LEGEND_InoriDef
-//SID_LEGEND_4
-//SID_LEGEND_5
+// SID_LEGEND_InoriAtk
+// SID_LEGEND_InoriAvo
+// SID_LEGEND_InoriDef
+// SID_LEGEND_4
+// SID_LEGEND_5
 
 ////////MOVEMENT SKILLS
 SID_Pass
 SID_Obstruct
-//SID_Aerobatics
-//SID_FlierGuidance
-//SID_DetailedReport
+// SID_Aerobatics
+// SID_FlierGuidance
+// SID_DetailedReport
 SID_WaterWalking
 SID_WaterWalkingPlus
 SID_MountainClimber
@@ -606,11 +607,11 @@ SID_Provoke
 SID_IdentityProblems
 SID_DemolitionExpert
 SID_TriangleAttack
-//SID_SocialButterfly
+// SID_SocialButterfly
 SID_Shadowgift
 SID_ShadowgiftPlus
-//SID_Lumina
-//SID_LuminaPlus
+// SID_Lumina
+// SID_LuminaPlus
 SID_Stormgift
 SID_StormgiftPlus
 SID_Gracegift
@@ -623,22 +624,22 @@ SID_Hackgift
 SID_HackgiftPlus
 SID_Arcgift
 SID_ArcgiftPlus
-//SID_NiceThighs
+// SID_NiceThighs
 SID_Casual
-//SID_CatchEmAll  Doesn't work
+// SID_CatchEmAll  Doesn't work
 SID_LiveToServe
 SID_Reflex
 SID_Nullify
-//SID_Amische
+// SID_Amische
 SID_ShrewdPotential
-//SID_MagicSeal
+// SID_MagicSeal
 SID_HazeHunter
 SID_Insomnia
 SID_Survivor
 SID_Anchor
 SID_Absolve
 SID_HedgeFund
-//SID_WeaponHeal
+// SID_WeaponHeal
 SID_Domain
 SID_Resurrection
 SID_CapacityHalf
@@ -647,29 +648,29 @@ SID_DangerRanger
 SID_Savior
 
 ///////COMBAT ARTS
-//SID_COMBAT_Grounder
-//SID_COMBAT_BaneOfMonsters
-//SID_COMBAT_Hexblade
-//SID_COMBAT_FoudroyantStrike
-//SID_COMBAT_TempestLance
-//SID_COMBAT_SwiftStrikes
-//SID_COMBAT_FrozenLance
-//SID_COMBAT_Vengeance
-//SID_COMBAT_HelmSplitter
-//SID_COMBAT_LightningAxe
-//SID_COMBAT_WarMasterStrike
-//SID_COMBAT_CurvedShot
-//SID_COMBAT_Deadeye
-//SID_COMBAT_Encloser
-//SID_COMBAT_EncloserPlus
-//SID_COMBAT_MonsterBlast
-//SID_COMBAT_SchismShot
-//SID_COMBAT_BreakShot
-//SID_COMBAT_BreakShotPlus
-//SID_COMBAT_WaningShot
-//SID_COMBAT_WaningShotPlus
-//SID_COMBAT_HuntersVolley
-//SID_COMBAT_Galeforce
+// SID_COMBAT_Grounder
+// SID_COMBAT_BaneOfMonsters
+// SID_COMBAT_Hexblade
+// SID_COMBAT_FoudroyantStrike
+// SID_COMBAT_TempestLance
+// SID_COMBAT_SwiftStrikes
+// SID_COMBAT_FrozenLance
+// SID_COMBAT_Vengeance
+// SID_COMBAT_HelmSplitter
+// SID_COMBAT_LightningAxe
+// SID_COMBAT_WarMasterStrike
+// SID_COMBAT_CurvedShot
+// SID_COMBAT_Deadeye
+// SID_COMBAT_Encloser
+// SID_COMBAT_EncloserPlus
+// SID_COMBAT_MonsterBlast
+// SID_COMBAT_SchismShot
+// SID_COMBAT_BreakShot
+// SID_COMBAT_BreakShotPlus
+// SID_COMBAT_WaningShot
+// SID_COMBAT_WaningShotPlus
+// SID_COMBAT_HuntersVolley
+// SID_COMBAT_Galeforce
 SID_COMBAT_Gamble
-//SID_COMBAT_Detonate
-//SID_COMBAT_AstraStorm
+// SID_COMBAT_Detonate
+// SID_COMBAT_AstraStorm

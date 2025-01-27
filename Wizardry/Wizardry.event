@@ -60,6 +60,7 @@ ALIGN 4
 #include "Core/AiHack/AiHack.event"
 
 #include "Misc/GaidenMagic/GaidenMagic.event"
+#include "Misc/JobGrowth/JobGrowth.lyn.event"
 #include "Misc/Shield/Shield.event"
 #include "Misc/PortraitHeight/PortraitHeight.event"
 

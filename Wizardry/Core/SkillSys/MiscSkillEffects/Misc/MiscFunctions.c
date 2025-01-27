@@ -389,18 +389,23 @@ void SetGameOption(u8 index, u8 newValue)
 LYN_REPLACE_CHECK(TryAddUnitToTradeTargetList);
 void TryAddUnitToTradeTargetList(struct Unit * unit)
 {
-    FORCE_DECLARE bool capture_active = false;
-
     /**
      *  With capture, a unit should be able to trade with rescued enemies
      */
 #if (defined(SID_Capture) && (COMMON_SKILL_VALID(SID_Capture)))
+    FORCE_DECLARE bool capture_active = false;
+
     if (!SkillTester(gSubjectUnit, SID_Capture))
         capture_active = true;
-#endif
-
+    
     if (!IsSameAllegiance(gSubjectUnit->index, unit->index) && capture_active)
         return;
+
+#else 
+    if (!IsSameAllegiance(gSubjectUnit->index, unit->index))
+        return;
+#endif
+
 
     if (gSubjectUnit->pClassData->number == CLASS_PHANTOM || unit->pClassData->number == CLASS_PHANTOM)
         return;
@@ -487,7 +492,7 @@ void KillUnitOnCombatDeath(struct Unit * unitA, struct Unit * unitB)
     }
 #endif
 
-// Can still be viewed in the stat screen, but eh it's fine.
+/* Can still be viewed in the stat screen, but eh it's fine. */
 #if defined(SID_Casual) && (COMMON_SKILL_VALID(SID_Casual))
     if (SkillTester(unitA, SID_Casual))
     {
@@ -1174,6 +1179,9 @@ void WorldMap_CallBeginningEvent(struct WorldMapMainProc * proc)
             case 11:
                 CallEvent((const u16 *)EventScrWM_Ch9_SET_NODE, 0);
                 break;
+            case 12:
+                CallEvent((const u16 *)EventScrWM_Ch10_SET_NODE, 0);
+                break;
             default: 
                 CallEvent(Events_WM_Beginning[eventID], 0);
                 break;
@@ -1234,6 +1242,9 @@ void CallChapterWMIntroEvents(ProcPtr proc)
             break;
         case 11:
             CallEvent((const u16 *)EventScrWM_Ch9_TRAVEL_TO_NODE, 0);
+            break;
+        case 12:
+            CallEvent((const u16 *)EventScrWM_Ch10_TRAVEL_TO_NODE, 0);
             break;
         default: 
             CallEvent(Events_WM_ChapterIntro[eventID], 0);
@@ -1359,14 +1370,19 @@ void IsTraineeLevelCappedOrPromoted(void)
 LYN_REPLACE_CHECK(IsCharacterForceDeployed_);
 bool IsCharacterForceDeployed_(u16 pid)
 {
+/* 
+** Chapter 09's node wouldn't load without forcing to Ephraim mode
+** so I had to change some checks to account for that and force
+** Eirika to be on every map after the vanilla route split.
+*/
     const struct ForceDeploymentEnt gForceDeploymentList[] = {
         {CHARACTER_EIRIKA,  CHAPTER_MODE_COMMON,  -1  },
         {CHARACTER_EIRIKA,  CHAPTER_MODE_EIRIKA,  -1  },
-        {CHARACTER_EPHRAIM, CHAPTER_MODE_EPHRAIM, -1  },
         {CHARACTER_ARTUR,   -1,                    4  },
         {CHARACTER_NATASHA, -1,                    6  },
         {CHARACTER_JOSHUA,  -1,                    6  },
-        {CHARACTER_TANA,    -1,                    10 },
+        {CHARACTER_EIRIKA,  -1,                    10 },
+        {CHARACTER_EIRIKA,  -1,                    11 },
         {CHARACTER_SALEH,   -1,                    12 },
         {CHARACTER_EPHRAIM, CHAPTER_MODE_EIRIKA,   21 },
         {CHARACTER_EIRIKA,  CHAPTER_MODE_EPHRAIM,  34 },
@@ -2764,4 +2780,165 @@ void WorldMap_GenerateRandomMonsters(ProcPtr proc)
             Proc_Goto(proc, 2);
     }
     WmShowMonsters();
+}
+
+LYN_REPLACE_CHECK(AttackCommandUsability);
+u8 AttackCommandUsability(const struct MenuItemDef* def, int number) {
+    int i;
+
+#if defined(SID_GridMasterAtk) && (COMMON_SKILL_VALID(SID_GridMasterAtk))
+    if (SkillTester(gActiveUnit, SID_GridMasterAtk) && gActiveUnit->state & US_CANTOING)
+        return MENU_ENABLED;
+#endif
+
+    if (gActiveUnit->state & US_HAS_MOVED) {
+        return MENU_NOTSHOWN;
+    }
+
+    if (gActiveUnit->state & US_IN_BALLISTA) {
+        return MENU_NOTSHOWN;
+    }
+
+    for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+        int item = gActiveUnit->items[i];
+
+        if (item == 0) {
+            break;
+        }
+
+        if (!(GetItemAttributes(item) & IA_WEAPON)) {
+            continue;
+        }
+
+        if (!CanUnitUseWeaponNow(gActiveUnit, item)) {
+            continue;
+        }
+
+        MakeTargetListForWeapon(gActiveUnit, item);
+        if (GetSelectTargetCount() == 0) {
+            continue;
+        }
+
+        return MENU_ENABLED;
+    }
+
+    return MENU_NOTSHOWN;
+
+}
+
+LYN_REPLACE_CHECK(DoorCommandUsability);
+u8 DoorCommandUsability(const struct MenuItemDef* def, int number) {
+    if (gActiveUnit->state & US_HAS_MOVED) {
+        return MENU_NOTSHOWN;
+    }
+
+    if (GetUnitKeyItemSlotForTerrain(gActiveUnit, TERRAIN_DOOR) < 0) {
+        return MENU_NOTSHOWN;
+    }
+
+    MakeTargetListForDoorAndBridges(gActiveUnit, TERRAIN_DOOR);
+
+    return GetSelectTargetCount() != 0
+        ? MENU_ENABLED : MENU_NOTSHOWN;
+}
+
+LYN_REPLACE_CHECK(DoorCommandEffect);
+u8 DoorCommandEffect(struct MenuProc* menu, struct MenuItemProc* menuItem) {
+
+    gActionData.unitActionType = UNIT_ACTION_DOOR;
+
+    gActionData.subjectIndex = gActiveUnit->index;
+
+    gActionData.itemSlotIndex = GetUnitKeyItemSlotForTerrain(gActiveUnit, TERRAIN_DOOR);
+
+    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
+}
+
+//! FE8U = 0x0801D084
+LYN_REPLACE_CHECK(PlayerPhase_PrepareAction);
+s8 PlayerPhase_PrepareAction(ProcPtr proc)
+{
+    s8 cameraReturn;
+    int item;
+
+    cameraReturn = EnsureCameraOntoPosition(
+        proc, GetUnit(gActionData.subjectIndex)->xPos, GetUnit(gActionData.subjectIndex)->yPos);
+    cameraReturn ^= 1;
+
+    switch (gActionData.unitActionType)
+    {
+        case 0:
+            /**
+             * If the unit has used action, such as trading,
+             * then the unit may take another menu action
+             */
+            if (gBmSt.taken_action != 0)
+            {
+                gActionData.unitActionType = UNIT_ACTION_FORCE_WAIT;
+                break;
+            }
+
+            PlayerPhase_BackToMove(proc);
+
+            return 1;
+
+        case UNIT_ACTION_TRADED:
+            gBmSt.taken_action |= BM_TAKEN_ACTION_TRADE;
+            PlayerPhase_CancelAction(proc);
+
+            return 1;
+
+        case UNIT_ACTION_TRADED_SUPPLY:
+            gBmSt.taken_action |= BM_TAKEN_ACTION_SUPPLY;
+            PlayerPhase_CancelAction(proc);
+
+            return 1;
+
+        case UNIT_ACTION_TAKE:
+        case UNIT_ACTION_GIVE:
+            gBmSt.taken_action |= BM_TAKEN_ACTION_TAKE;
+            PlayerPhase_CancelAction(proc);
+
+            return 1;
+
+        case UNIT_ACTION_RIDE_BALLISTA:
+        case UNIT_ACTION_EXIT_BALLISTA:
+            gBmSt.taken_action |= BM_TAKEN_ACTION_BALLISTA;
+            PlayerPhase_CancelAction(proc);
+
+            return 1;
+
+        case UNIT_ACTION_TRADED_1D:
+            PlayerPhase_CancelAction(proc);
+
+            return 1;
+    }
+
+    item = GetItemIndex(GetUnit(gActionData.subjectIndex)->items[gActionData.itemSlotIndex]);
+
+    gBattleActor.hasItemEffectTarget = 0;
+
+    switch (item)
+    {
+        case ITEM_HEAVENSEAL:
+        case ITEM_HEROCREST:
+        case ITEM_KNIGHTCREST:
+        case ITEM_ORIONSBOLT:
+        case ITEM_ELYSIANWHIP:
+        case ITEM_GUIDINGRING:
+        case ITEM_MASTERSEAL:
+        case ITEM_OCEANSEAL:
+        case ITEM_LUNARBRACE:
+        case ITEM_SOLARBRACE:
+        case ITEM_UNK_C1:
+            return cameraReturn;
+    }
+
+    if ((gActionData.unitActionType != UNIT_ACTION_WAIT) && !gBmSt.just_resumed)
+    {
+        gActionData.suspendPointType = SUSPEND_POINT_DURINGACTION;
+        WriteSuspendSave(SAVE_ID_SUSPEND);
+    }
+
+    return cameraReturn;
 }

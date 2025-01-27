@@ -554,7 +554,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 
         if (gBattleTarget.unit.curHP == 0)
         {
-            gBattleActorGlobalFlag.enimy_defeated = true;
+            gBattleActorGlobalFlag.enemy_defeated = true;
 
 #if (defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))

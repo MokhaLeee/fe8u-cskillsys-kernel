@@ -1,0 +1,4 @@
+## Chapter_10_Post_Scene_01_Convo_01
+[OpenMidLeft][LoadFace_]
+[OpenMidRight][LoadFace_]
+[OpenMidLeft]

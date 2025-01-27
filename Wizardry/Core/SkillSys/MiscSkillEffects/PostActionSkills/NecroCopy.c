@@ -89,7 +89,7 @@ bool PostActionNecroCopy(ProcPtr proc)
 #endif
         return false;
 
-    if (gBattleActorGlobalFlag.enimy_defeated == false)
+    if (gBattleActorGlobalFlag.enemy_defeated == false)
         return false;
 
     KernelCallEvent(EventScr_PostActionNecroCopy, EV_EXEC_CUTSCENE, proc);

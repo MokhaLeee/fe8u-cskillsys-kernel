@@ -12,16 +12,16 @@ STATIC_DECLAR bool CheckCanto(void)
     if (gActiveUnit->state & (US_DEAD | US_HAS_MOVED | US_BIT16))
         return false;
 
-#if defined(SID_Canto) && (COMMON_SKILL_VALID(SID_Canto))
-    canto = SkillTester(gActiveUnit, SID_Canto);
-#else
-    canto = false;
-#endif
-
 #if defined(SID_CantoPlus) && (COMMON_SKILL_VALID(SID_CantoPlus))
     cantop = SkillTester(gActiveUnit, SID_CantoPlus);
 #else
     cantop = false;
+#endif
+
+#if defined(SID_Canto) && (COMMON_SKILL_VALID(SID_Canto))
+    canto = SkillTester(gActiveUnit, SID_Canto);
+#else
+    canto = false;
 #endif
 
     if (!canto || !cantop)
@@ -80,7 +80,32 @@ STATIC_DECLAR bool CheckCanto(void)
 LYN_REPLACE_CHECK(TryMakeCantoUnit);
 bool TryMakeCantoUnit(ProcPtr proc)
 {
-    if (!CheckCanto())
+
+    bool canCanto = false;
+
+    if (gActionData.unitActionType == UNIT_ACTION_WAIT)
+        return false;
+
+#if defined(SID_GridMasterAtk) && (COMMON_SKILL_VALID(SID_GridMasterAtk))
+    if (SkillTester(gActiveUnit, SID_GridMasterAtk))
+    {
+        if(gActionData.unitActionType == UNIT_ACTION_COMBAT)
+            return false;
+
+        canCanto = true;
+        gActionData.moveCount = MovGetter(gActiveUnit);
+    }
+#endif
+
+#if defined(SID_GridMaster) && (COMMON_SKILL_VALID(SID_GridMaster))
+    if (SkillTester(gActiveUnit, SID_GridMaster))
+        canCanto = true;
+#endif
+
+    if (CheckCanto())
+        canCanto = true;
+
+    if (!canCanto)
         return false;
 
     BmMapFill(gBmMapRange, 0);

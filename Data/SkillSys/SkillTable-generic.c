@@ -11,6 +11,8 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
             // [2] = SID_DefiantStr,
             // [3] = SID_DefiantAvoid,
             // [4] = SID_AdaptiveLunge,
+            // [0] = SID_Shove,
+            // [1] = SID_GridMasterAtk,
         },
     },
     [CHARACTER_EPHRAIM] = {
@@ -18,7 +20,7 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
 
     [CHARACTER_SETH] = {
         .skills = {
-            [0] = SID_Canto,
+            // [0] = SID_Canto,
             // [1] = SID_KillStreak,
             // [2] = SID_HyperFocus,
         },

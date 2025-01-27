@@ -16,6 +16,8 @@ const int dopplegangerPairs[1][2] = { { CHARACTER_EIRIKA, CLASS_EIRIKA_LORD } };
 // Define the size of the array
 const int dopplegangerListSize = sizeof(dopplegangerPairs) / sizeof(dopplegangerPairs[0]);
 
+#endif
+
 u8 Doppleganger_Usability(const struct MenuItemDef * def, int number)
 {
     if (gActiveUnit->state & US_CANTOING)
@@ -39,7 +41,9 @@ static u8 Doppleganger_OnSelectTarget(ProcPtr proc, struct SelectTarget * target
     BG_Fill(gBG2TilemapBuffer, 0);
     BG_EnableSyncByMask(BG2_SYNC_BIT);
 
+#if (defined(SID_Doppleganger) && (COMMON_SKILL_VALID(SID_Doppleganger)))
     gActionData.unk08 = SID_Doppleganger;
+#endif
     gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
 
     return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A |
@@ -77,6 +81,7 @@ static void callback_anim(ProcPtr proc)
 
 static void callback_exec(ProcPtr proc)
 {
+#if (defined(SID_Doppleganger) && (COMMON_SKILL_VALID(SID_Doppleganger)))
     for (int i = 0; i < dopplegangerListSize; i++)
         if (gActiveUnit->pCharacterData->number == dopplegangerPairs[i][0])
         {
@@ -84,6 +89,7 @@ static void callback_exec(ProcPtr proc)
             gActionDataExpa.refrain_action = true;
             EndAllMus();
         }
+#endif
 }
 
 bool Action_Doppleganger(ProcPtr parent)
@@ -91,4 +97,3 @@ bool Action_Doppleganger(ProcPtr parent)
     NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
     return true;
 }
-#endif

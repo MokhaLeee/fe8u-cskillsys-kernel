@@ -2240,7 +2240,7 @@ fun 0x08017A8D, CanClassWieldWeaponType
 fun 0x08017AC5, LoadUnit
 fun 0x08017D3D, UnitInitFromDefinition
 fun 0x08017DF9, UnitLoadItemsFromDefinition
-fun 0x08017E35, UnitLoadStatsFromChracter
+fun 0x08017E35, UnitLoadStatsFromCharacter
 fun 0x08017EBD, FixROMUnitStructPtr
 fun 0x08017EF5, UnitLoadSupports
 fun 0x08017F21, UnitAutolevelWExp

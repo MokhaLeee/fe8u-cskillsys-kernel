@@ -8,7 +8,7 @@ typedef int (* LoadUnitFunc_t)(struct Unit * unit, const struct CharacterData * 
 // extern const LoadUnitFunc_t gLoadUnitHooks[];
 extern LoadUnitFunc_t const * const gpLoadUnitHooks;
 
-void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const struct CharacterData * character)
+void UnitLoadStatsFromCharacterVanilla(struct Unit * unit, const struct CharacterData * character)
 {
     int i;
 
@@ -35,8 +35,8 @@ void UnitLoadStatsFromChracterVanilla(struct Unit * unit, const struct Character
         unit->exp = UNIT_EXP_DISABLED;
 }
 
-LYN_REPLACE_CHECK(UnitLoadStatsFromChracter);
-void UnitLoadStatsFromChracter(struct Unit * unit, const struct CharacterData * character)
+LYN_REPLACE_CHECK(UnitLoadStatsFromCharacter);
+void UnitLoadStatsFromCharacter(struct Unit * unit, const struct CharacterData * character)
 {
     const LoadUnitFunc_t * it;
     for (it = gpLoadUnitHooks; *it; it++)

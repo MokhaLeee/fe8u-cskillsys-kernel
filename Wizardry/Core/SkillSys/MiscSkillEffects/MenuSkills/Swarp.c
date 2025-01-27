@@ -168,15 +168,6 @@ bool Action_Swarp(ProcPtr parent)
 {
     SetBitUES(gActiveUnit, UES_BIT_SWARP_SKILL_USED);
     KernelCallEvent(EventScr_MenuPositionSwarp, EV_EXEC_CUTSCENE, parent);
-    
-#if defined(SID_GridMaster) && (COMMON_SKILL_VALID(SID_GridMaster))
-    if (SkillTester(gActiveUnit, SID_GridMaster))
-    {
-        gActionDataExpa.refrain_action = true;
-        EndAllMus();
-    }
-#endif
-
     return true;
 }
 #endif

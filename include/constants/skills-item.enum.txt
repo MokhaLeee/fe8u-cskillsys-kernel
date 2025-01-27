@@ -234,6 +234,7 @@
 // SID_GoldDigger
 // SID_LeadByExample
 // SID_GridMaster
+// SID_GridMasterAtk
 // SID_DestinyBond
 // SID_Tsuzuku
 // SID_BoundlessVitality

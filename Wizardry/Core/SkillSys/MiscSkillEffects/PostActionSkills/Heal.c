@@ -32,7 +32,7 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     }
 
 #if defined(SID_Lifetaker) && (COMMON_SKILL_VALID(SID_Lifetaker))
-    if (SkillTester(gActiveUnit, SID_Lifetaker) && gBattleActorGlobalFlag.enimy_defeated)
+    if (SkillTester(gActiveUnit, SID_Lifetaker) && gBattleActorGlobalFlag.enemy_defeated)
         heal += hp_max * SKILL_EFF0(SID_Lifetaker) / 100;
 #endif
 

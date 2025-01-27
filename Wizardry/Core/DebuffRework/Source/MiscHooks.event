@@ -77,7 +77,7 @@ PUSH
 
     ORG $23D4E // SupportCommandUsability
     BYTE 0x3F
-    PROTECT $23D14 $23D64
+    // PROTECT $23D14 $23D64
 
     ORG $24D18 // GetPhaseAbleUnitCount
     BYTE 0x3F
@@ -104,7 +104,7 @@ PUSH
 
     ORG $256BE // MakeTargetListForSupport
     BYTE 0x3F
-    PROTECT $25644 $256F0
+    // PROTECT $25644 $256F0
 
 /*
     ORG $259A0 // MakeTerrainHealTargetList

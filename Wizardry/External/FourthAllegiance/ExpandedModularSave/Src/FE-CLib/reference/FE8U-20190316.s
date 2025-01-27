@@ -799,7 +799,7 @@ SET_FUNC CanClassWieldWeaponType, 0x8017A8D
 SET_FUNC LoadUnit, 0x8017AC5
 SET_FUNC UnitInitFromDefinition, 0x8017D3D
 SET_FUNC UnitLoadItemsFromDefinition, 0x8017DF9
-SET_FUNC UnitLoadStatsFromChracter, 0x8017E35
+SET_FUNC UnitLoadStatsFromCharacter, 0x8017E35
 SET_FUNC FixROMUnitStructPtr, 0x8017EBD
 SET_FUNC UnitLoadSupports, 0x8017EF5
 SET_FUNC UnitAutolevelWExp, 0x8017F21

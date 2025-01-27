@@ -1,10 +1,12 @@
 ## MSG_SKILL_Canto
 Canto:[NL]
-Unit can move again after combat.[X]
+Unit can use remaining movement[N]
+after non-combat actions.[X]
 
 ## MSG_SKILL_CantoPlus
 Canto+:[NL]
-Unit can move again.[X]
+Unit can move again[N]
+after combat.[X]
 
 ## MSG_SKILL_AlertStance
 Alert Stance:[NL]

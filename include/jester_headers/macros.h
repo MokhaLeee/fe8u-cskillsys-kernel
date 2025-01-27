@@ -95,6 +95,10 @@ enum {
     CLEN \
     SVAL(EVT_SLOT_B, 0x00000000)
 
+// Remove all player units
+#define CLEAR_PLAYER_UNITS \
+    CLEA
+
 // Remove all enemy units
 # define CLEAR_ENEMY_UNITS \
     CLEE
@@ -120,8 +124,9 @@ enum {
 
 // So apparently Nintendlord mixed these two up back in the day
 // and nobody ever made macros to fix it???
-#define FADE_IN_SCREEN(number) FADU(number)
-#define FADE_OUT_SCREEN(number) FADI(number)
+#define FADE_TO_BLACK(number) FADU(number)
+#define FADE_FROM_BLACK(number) FADI(number)
+
 #define FADE_TO_WHITE(number) FAWI(number)
 #define FADE_FROM_WHITE(number) FAWU(number)
 

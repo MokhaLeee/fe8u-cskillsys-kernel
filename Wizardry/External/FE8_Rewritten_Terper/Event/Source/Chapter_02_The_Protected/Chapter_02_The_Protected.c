@@ -115,9 +115,9 @@ static const struct UnitDefinition CH2_ROSS_GARCIA[] = {
 static const EventScr EventScr_Beginning[] = {
     MUSC(BGM_ADVANCE)
     TEXT_BG(0x18, Chapter_02_Scene_01_Convo_01)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     CLEAN
-    FADE_IN_SCREEN(16)
+    FADE_TO_BLACK(16)
     LOAD_WAIT_PERSIST(CH2_TANA)
     MUSCMID(MUTE)
     LOAD_WAIT_PERSIST(CH2_BANDITS)
@@ -151,6 +151,7 @@ static const EventScr EventScr_Beginning[] = {
     TEXT(Chapter_02_Scene_06_Convo_02)
     HIGHLIGHT_CHARACTER(CHARACTER_MOULDER, 60)
     TEXT(Chapter_02_Scene_06_Convo_03)
+    MOVE_WAIT(24, CHARACTER_TANA, 5, 3)
     NOFADE
     // ASMC(InitShopStock) // Look in External/LimitedShopStock/Installer.event for details
     ENDA
@@ -159,9 +160,9 @@ static const EventScr EventScr_Beginning[] = {
 static const EventScr EventScr_Ending[] = {
     MUSC(BGM_VICTORY)
     TEXT_BG_HIDE_MAP(0x1D, Chapter_02_Scene_07_Convo_01)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     TEXT_BG_HIDE_MAP(0x4, Chapter_02_Scene_08_Convo_01)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     MUSCSLOW(MUTE)
     SET_BACKGROUND(0x20)
     TEXT(Chapter_02_Scene_09_Convo_01)
@@ -172,9 +173,9 @@ static const EventScr EventScr_Ending[] = {
     TEXT(Chapter_02_Scene_10_Convo_01)
     FADE_TO_WHITE(4)
     TEXT_BG_HIDE_MAP(0x20, Chapter_02_Scene_11_Convo_01)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     TEXT_BG_HIDE_MAP(0x20, Chapter_02_Scene_12_Convo_01)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     NEXT_CHAPTER_WITH_MAP(0x3) // Chapter 3 - Bandits of Borgo
     ENDA
 };
@@ -252,6 +253,7 @@ static const u16 ShopList_Event_WeaponShop[] = {
     ITEM_LANCE_SLIM,
     ITEM_LANCE_IRON,
     ITEM_AXE_IRON,
+    ITEM_NONE,
 };
 
 /**

@@ -2,7 +2,7 @@
 Grado Keep[X]
 
 ## Augury_Chapter_04
-[OpenFarFarRight]
+[OpenFarFarRight][LoadFace_ActiveUnit]
 Hmm, it seems like a powerful axe[N]
 wielder is on the move.[A][N]
 He seems single-minded in[N]

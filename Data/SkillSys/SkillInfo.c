@@ -3632,6 +3632,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_GridMasterAtk) && COMMON_SKILL_VALID(SID_GridMasterAtk))
+    [SID_GridMasterAtk] = {
+        .desc = MSG_SKILL_GridMasterAtk,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
     [SID_Swap] = {
         .desc = MSG_SKILL_Swap,

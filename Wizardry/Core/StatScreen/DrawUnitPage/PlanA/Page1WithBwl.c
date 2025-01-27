@@ -304,7 +304,7 @@ static void DrawPage1BWL(void)
     }
     else
 #else
-    /* Well, no enought length */
+    /* Well, not enough length */
     if (1)
 #endif
     {

@@ -179,7 +179,7 @@ static const struct UnitDefinition Grado_Reinforcements_Enemy[] = {
 static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT(Renais_Castle_Allies) // Load units and move them if possible
     LOAD_MAP_XY(17, 12, CHAPTER_16) // Load coordinates and the map for this chapter
-    FADE_IN_SCREEN(16) // Fade in from black in 1 second
+    FADE_TO_BLACK(16) // Fade in from black in 1 second
     MUSC(BGM_RAID) // Set BGM to RAID
     BROWNBOXTEXT(BB_Renais_Castle, 2, 2) // Set location text pop up
     LOAD_WAIT(Panicked_Soldier_Allies) // Load units and move them if possible
@@ -210,14 +210,14 @@ static const EventScr EventScr_Beginning[] = {
     LOAD_WAIT(Renais_Castle_Enemy3) // Load units and move them if possible
     HIGHLIGHT_CHARACTER(CHARACTER_FADO, 60) // Set flashing cursor on unit for a number of frames
     TEXT(Chapter_00_Scene_01_Convo_04)
-    FADE_OUT_SCREEN(2) // Fade out to black in 8 seconds
+    FADE_FROM_BLACK(2) // Fade out to black in 8 seconds
     REMA // Remove the current map
     SKIP_POINT
     CLEAR_ALL_UNITS
 
     // New scene
     LOAD_MAP_XY(0, 0, OUTSIDE_RENAIS)
-    FADE_IN_SCREEN(16)
+    FADE_TO_BLACK(16)
     LOAD_WAIT(Renais_Runaways_Allies)
     HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     TEXT_BG(0x1D, Chapter_00_Scene_02_Convo_01)
@@ -246,14 +246,14 @@ static const EventScr EventScr_Beginning[] = {
     ERASE(CHARACTER_SETH)
     HIGHLIGHT_CHARACTER(CHARACTER_VALTER_PROLOGUE, 60)
     TEXT(Chapter_00_Scene_02_Convo_05)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     REMA
     SKIP_POINT
     CLEAR_ALL_UNITS
 
     // New scene
     LOAD_MAP_XY(0, 0, PROLOGUE)
-    FADE_IN_SCREEN(16)
+    FADE_TO_BLACK(16)
     LOAD_WAIT_PERSIST(Eirika_Seth_Allies)
     SET_UNIT_HP(CHARACTER_SETH, 10)
     HIGHLIGHT_CHARACTER(CHARACTER_EIRIKA, 60)
@@ -278,7 +278,7 @@ static const EventScr EventScr_Beginning[] = {
 static const EventScr EventScr_Ending[] = {
     MUSC(BGM_VICTORY)
     TEXT_BG(0x1D, Chapter_00_Scene_03_Convo_06)
-    FADE_OUT_SCREEN(16)
+    FADE_FROM_BLACK(16)
     NEXT_CHAPTER_WITHOUT_MAP(CHAPTER_01)
     REMA
     SET_FLAG(GUIDE_SUSPEND)
@@ -298,9 +298,6 @@ static const EventScr EventScr_Ending[] = {
 /**
  * Misc events
  */
-static const EventListScr EventScr_Talk_EirikaSeth[] = {
-    ConvoEvent(0xB32)
-};
 
 /**
  * Event list
@@ -356,7 +353,6 @@ static const EventListScr EventListScr_Turn[] = {
 };
 
 static const EventListScr EventListScr_Character[] = {
-    CharacterEventBothWays(EVFLAG_TMP(7), EventScr_Talk_EirikaSeth, CHARACTER_EIRIKA, CHARACTER_SETH)
     END_MAIN
 };
 

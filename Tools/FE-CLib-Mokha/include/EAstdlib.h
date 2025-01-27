@@ -196,7 +196,7 @@
 #define CHAR_ EvtListConditionalTalk
 #define LOCA EvtListTile
 #define CHES EvtListCHES
-#define DOOR_2 EvtListDOOR
+#define DOOR EvtListDOOR
 #define VILL EvtListVillage
 #define AFEV EvtListFlag
 #define AREA EvtListArea

@@ -1,6 +1,6 @@
 ALIGN 4
 gLoadUnitHooks:
-    POIN UnitLoadStatsFromChracterVanilla
+    POIN UnitLoadStatsFromCharacterVanilla
     POIN UnitLoadStatsFromCharacterMagic
     POIN UnitHiddenLevelPreLoad /* this should be ahead of auto-load skill */
     POIN UnitAutoLoadSkills

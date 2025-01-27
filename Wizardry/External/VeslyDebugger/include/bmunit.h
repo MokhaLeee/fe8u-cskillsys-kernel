@@ -170,7 +170,7 @@ struct Unit
     /* 44 */ u8 ai2;
     /* 45 */ u8 ai2data;
     /* 46 */ u8 _u46;
-    /* 47 */ u8 _u47;
+    /* 47 */ s8 _u47;
 };
 
 struct UnitDefinition
@@ -377,7 +377,7 @@ bool CanClassWieldWeaponType(u8 classId, u8 wpnType);
 struct Unit* LoadUnit(const struct UnitDefinition* uDef);
 void UnitInitFromDefinition(struct Unit* unit, const struct UnitDefinition* uDef);
 void UnitLoadItemsFromDefinition(struct Unit* unit, const struct UnitDefinition* uDef);
-void UnitLoadStatsFromChracter(struct Unit* unit, const struct CharacterData* character);
+void UnitLoadStatsFromCharacter(struct Unit* unit, const struct CharacterData* character);
 void FixROMUnitStructPtr(struct Unit* unit);
 void UnitLoadSupports(struct Unit* unit);
 void UnitAutolevelWExp(struct Unit* unit, const struct UnitDefinition* uDef);

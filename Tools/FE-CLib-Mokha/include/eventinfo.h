@@ -67,10 +67,10 @@ struct SupportTalkEnt {
 
     /* 04 */ u16 msgSupports[3];
 
-    /* 0A */ u16 _pad1;
-    /* 0C */ u16 unk_0c_0 : 5;
-    /* 0C */ u16 unk_0c_5 : 5;
-    /* 0D */ u16 unk_0d_3 : 5;
+    // /* 0A */ u16 _pad1;
+    // /* 0C */ u16 unk_0c_0 : 5;
+    // /* 0C */ u16 unk_0c_5 : 5;
+    // /* 0D */ u16 unk_0d_3 : 5;
 } BITPACKED;
 
 struct BattleTalkEnt {
@@ -228,6 +228,9 @@ extern struct ActiveEventRegistry gActiveEventRegistry;
 extern struct BattleTalkExtEnt gBattleTalkList[];
 extern struct DefeatTalkEnt gDefeatTalkList[];
 extern struct SupportTalkEnt gSupportTalkList[];
+
+// extern struct SupportTalkEnt gNewSupportTalkList[];
+
 extern struct ForceDeploymentEnt gForceDeploymentList[];
 
 extern u8 gPidList_SethLArachelMyrrhInnes[];

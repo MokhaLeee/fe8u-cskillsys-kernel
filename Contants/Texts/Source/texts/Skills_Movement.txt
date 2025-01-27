@@ -87,3 +87,8 @@ walk on mountain tiles.[X]
 Mountain Climber+:[NL]
 Allows the unit to walk on mountain[NL]
 tiles with no move penalty.[X]
+
+## MSG_SKILL_GridMasterAtk
+Grid Master Atk:[NL]
+Unit can still attack after[N]
+using menu movement skills.[A][X]

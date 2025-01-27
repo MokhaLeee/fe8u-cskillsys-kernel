@@ -60,7 +60,14 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 
 	/* item */
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+
+		/* If we're looking at a weapon, check it's equipped to apply its skill icon */
+		if (GetItemMight(unit->items[i]) > 0)
+			if(GetUnitEquippedWeapon(unit) != unit->items[i])
+				continue;
+
 		u8 iid = ITEM_INDEX(unit->items[i]);
+		
 
 		sid = gpConstSkillTable_Item[iid * 2];
 		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
