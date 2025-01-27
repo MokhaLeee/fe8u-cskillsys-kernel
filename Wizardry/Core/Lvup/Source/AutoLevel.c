@@ -6,16 +6,16 @@ LYN_REPLACE_CHECK(UnitAutolevelCore);
 void UnitAutolevelCore(struct Unit *unit, u8 classId, int levelCount)
 {
 	if (levelCount) {
-		unit->maxHP += GetAutoleveledStatIncrease(GetUnitJobBasedHpGrowth(unit),  levelCount);
-		unit->pow   += GetAutoleveledStatIncrease(GetUnitJobBasedPowGrowth(unit), levelCount);
-		unit->skl   += GetAutoleveledStatIncrease(GetUnitJobBasedSklGrowth(unit), levelCount);
-		unit->spd   += GetAutoleveledStatIncrease(GetUnitJobBasedSpdGrowth(unit), levelCount);
-		unit->def   += GetAutoleveledStatIncrease(GetUnitJobBasedDefGrowth(unit), levelCount);
-		unit->res   += GetAutoleveledStatIncrease(GetUnitJobBasedResGrowth(unit), levelCount);
-		unit->lck   += GetAutoleveledStatIncrease(GetUnitJobBasedLckGrowth(unit), levelCount);
+		unit->maxHP += GetAutoleveledStatIncrease(unit->pClassData->growthHP,  levelCount);
+		unit->pow   += GetAutoleveledStatIncrease(unit->pClassData->growthPow, levelCount);
+		unit->skl   += GetAutoleveledStatIncrease(unit->pClassData->growthSkl, levelCount);
+		unit->spd   += GetAutoleveledStatIncrease(unit->pClassData->growthSpd, levelCount);
+		unit->def   += GetAutoleveledStatIncrease(unit->pClassData->growthDef, levelCount);
+		unit->res   += GetAutoleveledStatIncrease(unit->pClassData->growthRes, levelCount);
+		unit->lck   += GetAutoleveledStatIncrease(unit->pClassData->growthLck, levelCount);
 
 		/* Hook here */
-		UNIT_MAG(unit) += GetAutoleveledStatIncrease(GetUnitJobBasedMagGrowth(unit), levelCount);
+		UNIT_MAG(unit) += GetAutoleveledStatIncrease(gpMagicJInfos[UNIT_CLASS_ID(unit)].growth, levelCount);
 	}
 }
 
