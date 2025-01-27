@@ -353,6 +353,33 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 		}},
 		.ai = { 0, 4, 9, 0 }
 	},
+{
+		.charIndex = 0x80,
+		.classIndex = CLASS_BRIGAND,
+		.allegiance = FACTION_ID_RED,
+		.autolevel = true,
+		.level = 1,
+		.xPosition = 10,
+		.yPosition = 10,
+	},
+	{
+		.charIndex = 0x80,
+		.classIndex = CLASS_BRIGAND,
+		.allegiance = FACTION_ID_RED,
+		.autolevel = true,
+		.level = 5,
+		.xPosition = 10,
+		.yPosition = 11,
+	},
+	{
+		.charIndex = 0x80,
+		.classIndex = CLASS_BRIGAND,
+		.allegiance = FACTION_ID_RED,
+		.autolevel = true,
+		.level = 10,
+		.xPosition = 10,
+		.yPosition = 12,
+	},
 	{}
 };
 
