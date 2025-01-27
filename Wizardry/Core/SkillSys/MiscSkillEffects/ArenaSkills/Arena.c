@@ -4,7 +4,7 @@
 
 LYN_REPLACE_CHECK(ArenaBeginInternal);
 void ArenaBeginInternal(struct Unit* unit) {
-    int i;
+    // int i;
 
     gArenaState.playerUnit = unit;
     gArenaState.opponentUnit = &gArenaOpponent;
@@ -31,29 +31,29 @@ void ArenaBeginInternal(struct Unit* unit) {
     ArenaGenerateOpponentUnit();
     ArenaGenerateBaseWeapons();
 
-    for (i = 0; i < 10; i++) {
-        if (!ArenaAdjustOpponentPowerRanking()) {
-            break;
-        }
-    }
+    // for (i = 0; i < 10; i++) {
+    //     if (!ArenaAdjustOpponentPowerRanking()) {
+    //         break;
+    //     }
+    // }
 
-    for (i = 0; i < 5; i++) {
-        if (!ArenaAdjustOpponentDamage()) {
-            break;
-        }
-    }
+    // for (i = 0; i < 5; i++) {
+    //     if (!ArenaAdjustOpponentDamage()) {
+    //         break;
+    //     }
+    // }
 
-    gArenaState.playerPowerWeight = ArenaGetPowerRanking(gArenaState.playerUnit, gArenaState.opponentIsMagic);
+    // gArenaState.playerPowerWeight = ArenaGetPowerRanking(gArenaState.playerUnit, gArenaState.opponentIsMagic);
 
-    gArenaState.opponentPowerWeight = ArenaGetPowerRanking(gArenaState.opponentUnit, gArenaState.playerIsMagic);
+    // gArenaState.opponentPowerWeight = ArenaGetPowerRanking(gArenaState.opponentUnit, gArenaState.playerIsMagic);
 
-    ArenaGenerateMatchupGoldValue();
+    // ArenaGenerateMatchupGoldValue();
 
-    gArenaState.unk0B = 1;
+    // gArenaState.unk0B = 1;
 
-    ArenaSetResult(0);
+    // ArenaSetResult(0);
 
-    ArenaSetFallbackWeaponsMaybe();
+    // ArenaSetFallbackWeaponsMaybe();
 
     NoCashGBAPrintf("Enemy Level is: %d", gArenaState.opponentUnit->level);
     NoCashGBAPrintf("Enemy HP is: %d", gArenaState.opponentUnit->maxHP);
@@ -63,6 +63,8 @@ void ArenaBeginInternal(struct Unit* unit) {
     NoCashGBAPrintf("Enemy DEF is: %d", gArenaState.opponentUnit->def);
     NoCashGBAPrintf("Enemy RES is: %d", gArenaState.opponentUnit->res);
     NoCashGBAPrintf("Enemy LCK is: %d", gArenaState.opponentUnit->lck);
+
+    NoCashGBAPrintf("Enemy STR is: %d", gArenaOpponent.pow);
 
     return;
 };
@@ -410,13 +412,29 @@ void ArenaGenerateOpponentUnit(void) {
     unit->index = 0x80;
 
     UnitInitFromDefinition(unit, &udef);
-    UnitLoadStatsFromCharacterVanilla(unit, unit->pCharacterData);
+    UnitLoadStatsFromCharacter(unit, unit->pCharacterData);
+
+    NoCashGBAPrintf("First mention of opponent HP is: %d", unit->maxHP);
+    NoCashGBAPrintf("First mention of opponent STR is: %d", unit->pow);
+    NoCashGBAPrintf("First mention of opponent SKL is: %d", unit->skl);
+    NoCashGBAPrintf("First mention of opponent SPD is: %d", unit->spd);
+    NoCashGBAPrintf("First mention of opponent DEF is: %d", unit->def);
+    NoCashGBAPrintf("First mention of opponent RES is: %d", unit->res);
+    NoCashGBAPrintf("First mention of opponent LCK is: %d", unit->lck);
 
     level = unit->level;
 
     unit->level = ((gPlaySt.chapterStateBits & PLAY_FLAG_HARD) ? level * 24 : level * 12) / 10;
 
     UnitAutolevel(unit);
+
+    NoCashGBAPrintf("Second mention of opponent HP is: %d", unit->maxHP);
+    NoCashGBAPrintf("Second mention of opponent STR is: %d", unit->pow);
+    NoCashGBAPrintf("Second mention of opponent SKL is: %d", unit->skl);
+    NoCashGBAPrintf("Second mention of opponent SPD is: %d", unit->spd);
+    NoCashGBAPrintf("Second mention of opponent DEF is: %d", unit->def);
+    NoCashGBAPrintf("Second mention of opponent RES is: %d", unit->res);
+    NoCashGBAPrintf("Second mention of opponent LCK is: %d", unit->lck);
 
     unit->level = level;
 
@@ -436,6 +454,8 @@ void ArenaGenerateOpponentUnit(void) {
 
     UnitCheckStatCaps(unit);
     SetUnitHp(unit, GetUnitMaxHp(unit));
+
+    NoCashGBAPrintf("Third mention of opponent HP is: %d", unit->maxHP);
 
     return;
 }
