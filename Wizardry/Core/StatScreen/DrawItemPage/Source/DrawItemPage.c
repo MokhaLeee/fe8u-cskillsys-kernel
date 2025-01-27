@@ -242,27 +242,44 @@ void DisplayPage1(void)
  * Helpbox
  */
 LYN_REPLACE_CHECK(HbRedirect_SSItem);
-void HbRedirect_SSItem(struct HelpBoxProc *proc)
+void HbRedirect_SSItem(struct HelpBoxProc* proc)
 {
-	struct ItemPageList *list = GetUnitItemPageList(gStatScreen.unit);
+    if (!gStatScreen.unit->items[0])
+        TryRelocateHbLeft(proc);
 
-	if (list->ent[0].item == ITEM_NONE)
-		TryRelocateHbLeft(proc);
-
-	if (list->ent[proc->info->mid].item == ITEM_NONE) {
-		if (proc->moveKey == 0 || proc->moveKey == DPAD_RIGHT || proc->moveKey == DPAD_UP)
-			TryRelocateHbUp(proc);
-		else if (proc->moveKey == DPAD_DOWN)
-			TryRelocateHbDown(proc);
-	}
+    if (!gStatScreen.unit->items[proc->info->mid])
+    {
+        if (proc->moveKey == 0 || proc->moveKey == DPAD_RIGHT || proc->moveKey == DPAD_UP)
+            TryRelocateHbUp(proc);
+        else if (proc->moveKey == DPAD_DOWN)
+            TryRelocateHbDown(proc);
+    }
 }
+// void HbRedirect_SSItem(struct HelpBoxProc *proc)
+// {
+// 	struct ItemPageList *list = GetUnitItemPageList(gStatScreen.unit);
+
+// 	if (list->ent[0].item == ITEM_NONE)
+// 		TryRelocateHbLeft(proc);
+
+// 	if (list->ent[proc->info->mid].item == ITEM_NONE) {
+// 		if (proc->moveKey == 0 || proc->moveKey == DPAD_RIGHT || proc->moveKey == DPAD_UP)
+// 			TryRelocateHbUp(proc);
+// 		else if (proc->moveKey == DPAD_DOWN)
+// 			TryRelocateHbDown(proc);
+// 	}
+// }
 
 LYN_REPLACE_CHECK(HbPopulate_SSItem);
 void HbPopulate_SSItem(struct HelpBoxProc *proc)
 {
-	struct ItemPageList *list = GetUnitItemPageList(gStatScreen.unit);
-	int item = list->ent[proc->info->mid].item;
+	// struct ItemPageList *list = GetUnitItemPageList(gStatScreen.unit);
+	// int item = list->ent[proc->info->mid].item;
 
-	proc->item = item;
-	proc->mid  = GetItemDescId(item);
+	// proc->item = item;
+	// proc->mid  = GetItemDescId(item);
+    int item = gStatScreen.unit->items[proc->info->mid];
+
+    proc->item = item;
+    proc->mid  = GetItemDescId(item);
 }
