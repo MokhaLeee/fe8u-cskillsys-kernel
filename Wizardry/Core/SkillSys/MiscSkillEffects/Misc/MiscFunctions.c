@@ -2946,10 +2946,8 @@ s8 PlayerPhase_PrepareAction(ProcPtr proc)
 
 LYN_REPLACE_CHECK(CallChestOpeningEvent);
 void CallChestOpeningEvent(u16 tileChangeIndex, u16 idr) {
-    /* Check for dummy items added to chests to facilitate skill scroll events */
-    NoCashGBAPrintf("idr: %d", idr);
-    if (idr != 0)
-        CallEvent((u16 *)EventScr_OpenChest, EV_EXEC_GAMEPLAY);
+
+    CallEvent((u16 *)EventScr_OpenChest, EV_EXEC_GAMEPLAY);
 
     gEventSlots[0xD] = 1; // qp
     gEventSlotQueue[0]   = tileChangeIndex;
@@ -2964,8 +2962,6 @@ void StartAvailableTileEvent(s8 x, s8 y) {
     info.listScript = GetChapterEventDataPointer(gPlaySt.chapterIndex)->locationBasedEvents;
     info.xPos = x;
     info.yPos = y;
-
-    NoCashGBAPrintf("item id is: %d", info.givenItem);
 
     if (SearchAvailableEvent(&info) == NULL) {
         return;
@@ -3043,9 +3039,10 @@ void StartAvailableTileEvent(s8 x, s8 y) {
 
                     info.givenItem = r0;
                 }
+            /* Commenting out these lines lets me use a dummy item in chests so I can AFEV a skill scroll into them */
             _08084274:
-                info.givenItem = sub_8083FFC(info.givenItem);
-                CallChestOpeningEvent(GetMapChangeIdAt(info.xPos, info.yPos), info.givenItem);
+                // info.givenItem = sub_8083FFC(info.givenItem);
+                // CallChestOpeningEvent(GetMapChangeIdAt(info.xPos, info.yPos), info.givenItem);
             } else {
                 if (info.givenItem != 0x77) {
                     info.givenItem = sub_8083FFC(info.givenItem);
