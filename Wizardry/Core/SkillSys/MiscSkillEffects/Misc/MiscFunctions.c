@@ -1370,19 +1370,14 @@ void IsTraineeLevelCappedOrPromoted(void)
 LYN_REPLACE_CHECK(IsCharacterForceDeployed_);
 bool IsCharacterForceDeployed_(u16 pid)
 {
-/* 
-** Chapter 09's node wouldn't load without forcing to Ephraim mode
-** so I had to change some checks to account for that and force
-** Eirika to be on every map after the vanilla route split.
-*/
     const struct ForceDeploymentEnt gForceDeploymentList[] = {
         {CHARACTER_EIRIKA,  CHAPTER_MODE_COMMON,  -1  },
         {CHARACTER_EIRIKA,  CHAPTER_MODE_EIRIKA,  -1  },
+        {CHARACTER_EPHRAIM, -1,                   -1  },
         {CHARACTER_ARTUR,   -1,                    4  },
         {CHARACTER_NATASHA, -1,                    6  },
         {CHARACTER_JOSHUA,  -1,                    6  },
         {CHARACTER_EIRIKA,  -1,                    10 },
-        {CHARACTER_EIRIKA,  -1,                    11 },
         {CHARACTER_SALEH,   -1,                    12 },
         {CHARACTER_EPHRAIM, CHAPTER_MODE_EIRIKA,   21 },
         {CHARACTER_EIRIKA,  CHAPTER_MODE_EPHRAIM,  34 },
@@ -2744,9 +2739,15 @@ void WorldMap_GenerateRandomMonsters(ProcPtr proc)
 
     s8 flag = 0;
 
+    /* Flag was originally set to 1. Turned off to prevent 
+    ** game from crashing.
+    ** I suspect the way I'm loading the noads is fucking with
+    ** monster generation, which is causing the game to crash after chapter 8.
+    */
+
     if (!(gGMData.state.bits.monster_merged))
     {
-        flag = 1;
+        flag = 0;
     }
     else
     {

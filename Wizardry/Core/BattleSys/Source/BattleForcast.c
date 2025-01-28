@@ -43,6 +43,9 @@ void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
 
         if (IsItemEffectiveAgainst(gBattleActor.weaponBefore, &gBattleTarget.unit))
             proc->isEffectiveA = true;
+
+        if ((gBattleActor.wTriangleHitBonus > 0) && (gBattleActor.weaponAttributes & IA_REVERTTRIANGLE) != 0)
+            proc->isEffectiveA = true;
     }
 
     proc->hitCountB = 0;
@@ -56,6 +59,9 @@ void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
             proc->isEffectiveB = true;
 
         if (IsItemEffectiveAgainst(gBattleTarget.weaponBefore, &gBattleActor.unit))
+            proc->isEffectiveB = true;
+
+        if ((gBattleTarget.wTriangleHitBonus > 0) && (gBattleTarget.weaponAttributes & IA_REVERTTRIANGLE) != 0)
             proc->isEffectiveB = true;
     }
 
@@ -80,3 +86,4 @@ void InitBattleForecastBattleStats(struct BattleForecastProc * proc)
         break;
     }
 }
+
