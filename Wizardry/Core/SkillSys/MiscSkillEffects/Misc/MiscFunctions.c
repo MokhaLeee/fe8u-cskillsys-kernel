@@ -2955,3 +2955,146 @@ void CallChestOpeningEvent(u16 tileChangeIndex, u16 idr) {
     gEventSlotQueue[0]   = tileChangeIndex;
     gEventSlots[0x3] = idr;
 }
+
+//! FE8U = 0x080840C4
+LYN_REPLACE_CHECK(StartAvailableTileEvent);
+void StartAvailableTileEvent(s8 x, s8 y) {
+    struct EventInfo info;
+
+    info.listScript = GetChapterEventDataPointer(gPlaySt.chapterIndex)->locationBasedEvents;
+    info.xPos = x;
+    info.yPos = y;
+
+    NoCashGBAPrintf("item id is: %d", info.givenItem);
+
+    if (SearchAvailableEvent(&info) == NULL) {
+        return;
+    }
+
+    switch (info.commandId) {
+        case TILE_COMMAND_VISIT:
+            gBmMapUnit[y][x] = gActiveUnit->pCharacterData->number;
+
+            // fallthrough
+
+        case TILE_COMMAND_SEIZE:
+            if (GetBattleMapKind() == 2) {
+                return;
+            }
+
+            ClearActiveEventRegistry();
+            StartEventFromInfo(&info, EV_EXEC_CUTSCENE);
+
+            if (info.givenMoney == 3) {
+                CallTileChangeEvent(GetMapChangeIdAt(info.xPos, info.yPos));
+            }
+
+            return;
+
+        case TILE_COMMAND_20:
+            if (GetBattleMapKind() == 2) {
+                return;
+            }
+
+            CallTileChangeEvent(GetMapChangeIdAt(info.xPos,info.yPos));
+
+            return;
+
+        case TILE_COMMAND_DOOR:
+        case TILE_COMMAND_BRIDGE:
+            if (GetBattleMapKind() == 2) {
+                return;
+            }
+
+            if (info.script == 1) {
+                CallTileChangeEvent(GetMapChangeIdAt(info.xPos, info.yPos));
+                SetFlag(info.flag);
+            } else {
+                ClearActiveEventRegistry();
+                StartEventFromInfo(&info, EV_EXEC_CUTSCENE);
+            }
+
+            return;
+
+        case TILE_COMMAND_CHEST:
+            if (GetBattleMapKind() == 2) {
+                return;
+            }
+
+            if (info.givenItem == 0) {
+                u8 b;
+                u8 rand = NextRN_100();
+                u8* ptr = (u8*)(info.script);
+                u8 r0;
+
+                r0 = ptr[0];
+                if (r0 != 0) {
+
+                    b = ptr[1];
+                    if (rand >= b) {
+                        for (; rand >= b; b += ptr[1]) {
+                            ptr+=2;
+                            if (ptr[0] == 0) {
+                                goto _08084274;
+                            }
+                        }
+                        r0 = ptr[0];
+                    }
+
+                    info.givenItem = r0;
+                }
+            _08084274:
+                info.givenItem = sub_8083FFC(info.givenItem);
+                CallChestOpeningEvent(GetMapChangeIdAt(info.xPos, info.yPos), info.givenItem);
+            } else {
+                if (info.givenItem != 0x77) {
+                    info.givenItem = sub_8083FFC(info.givenItem);
+                    CallChestOpeningEvent(GetMapChangeIdAt(info.xPos, info.yPos), info.givenItem);
+                } else {
+                    CallChestOpeningEvent(GetMapChangeIdAt(info.xPos, info.yPos), info.givenMoney);
+                }
+            }
+
+            SetFlag(info.flag);
+
+            return;
+
+        case TILE_COMMAND_ARMORY:
+            if (GetBattleMapKind() == 2) {
+                return;
+            }
+
+            StartArmoryScreenOrphaned(gActiveUnit, (u16*)info.script);
+
+            return;
+
+        case TILE_COMMAND_VENDOR:
+            if (GetBattleMapKind() == 2) {
+                return;
+            }
+            StartVendorScreenOrphaned(gActiveUnit, (u16*)info.script);
+
+            return;
+
+        case TILE_COMMAND_SECRET:
+            if (GetBattleMapKind() == 2) {
+                return;
+            }
+
+            StartSecretShopScreenOrphaned(gActiveUnit, (u16*)info.script);
+
+            return;
+
+#if !NONMATCHING
+        case TILE_COMMAND_SHOP_UNK:
+            asm("nop");
+            return;
+
+        case TILE_COMMAND_NONE:
+            asm("nop");
+            return;
+#endif
+    }
+
+    return;
+}
