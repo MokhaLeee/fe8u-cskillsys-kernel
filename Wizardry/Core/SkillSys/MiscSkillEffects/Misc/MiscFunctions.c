@@ -2943,3 +2943,15 @@ s8 PlayerPhase_PrepareAction(ProcPtr proc)
 
     return cameraReturn;
 }
+
+LYN_REPLACE_CHECK(CallChestOpeningEvent);
+void CallChestOpeningEvent(u16 tileChangeIndex, u16 idr) {
+    /* Check for dummy items added to chests to facilitate skill scroll events */
+    NoCashGBAPrintf("idr: %d", idr);
+    if (idr != 0)
+        CallEvent((u16 *)EventScr_OpenChest, EV_EXEC_GAMEPLAY);
+
+    gEventSlots[0xD] = 1; // qp
+    gEventSlotQueue[0]   = tileChangeIndex;
+    gEventSlots[0x3] = idr;
+}

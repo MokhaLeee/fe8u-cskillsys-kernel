@@ -98,7 +98,7 @@
 /**
  * Enable shield system
  */
-#define CONFIG_INSTALL_KERNEL_SHIELD
+// #define CONFIG_INSTALL_KERNEL_SHIELD
 
 /**
  * By: Vesly
@@ -335,7 +335,7 @@
 /*
 ** By Jester
 */
-// #define CONFIG_TALK_LEVEL_UP
+#define CONFIG_TALK_LEVEL_UP
 
 /* 
 ** By Jester
