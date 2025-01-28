@@ -22,7 +22,7 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 
     if (IsUnitEffectiveAgainst(&attacker->unit, &defender->unit) || IsItemEffectiveAgainst(attacker->weapon, &defender->unit))
     {
-        status = status * 2;
+        status = status * 3;
 
 #if (defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful)))
         if (BattleSkillTester(attacker, SID_Resourceful))
