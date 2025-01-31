@@ -1210,4 +1210,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_HyperFocus) && COMMON_SKILL_VALID(SID_HyperFocus))
     [SID_HyperFocus] = {{1}},
 #endif
+
+#if (defined(SID_TakerDefense) && COMMON_SKILL_VALID(SID_TakerDefense))
+    [SID_TakerDefense] = {{1}},
+#endif
 };

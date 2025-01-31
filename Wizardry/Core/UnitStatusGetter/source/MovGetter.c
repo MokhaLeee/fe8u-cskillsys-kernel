@@ -21,8 +21,12 @@ int _GetUnitMov(struct Unit * unit)
 
 int MovGetterSkills(int status, struct Unit * unit)
 {
-    FORCE_DECLARE int cur_hp = GetUnitCurrentHp(unit);
-    FORCE_DECLARE int max_hp = GetUnitMaxHp(unit);
+    int cur_hp = GetUnitCurrentHp(unit);
+    int max_hp = GetUnitMaxHp(unit);
+
+#if defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER)
+    struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
+#endif
 
 #if defined(SID_MovBonus) && (COMMON_SKILL_VALID(SID_MovBonus))
     if (SkillTester(unit, SID_MovBonus))
@@ -82,6 +86,31 @@ int MovGetterSkills(int status, struct Unit * unit)
 #if defined(SID_Poise) && (COMMON_SKILL_VALID(SID_Poise))
     if (SkillTester(unit, SID_Poise))
         status += SKILL_EFF0(SID_Poise);
+#endif
+
+
+#if (defined(SID_TakerMovement) && (COMMON_SKILL_VALID(SID_TakerMovement)) && defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER))
+    if (SkillTester(unit, SID_TakerMovement))
+    {
+        int takerBoost = bwl->winAmt * SKILL_EFF0(SID_TakerMovement);
+        
+        if (takerBoost > 10)
+            status += 10;
+        else   
+            status += takerBoost;
+    }
+#endif
+
+#if (defined(SID_TakerSpectrum) && (COMMON_SKILL_VALID(SID_TakerSpectrum)) && defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER))
+    if (SkillTester(unit, SID_TakerSpectrum))
+    {
+        int takerBoost = bwl->winAmt * SKILL_EFF0(SID_TakerSpectrum);
+        
+        if (takerBoost > 10)
+            status += 10;
+        else   
+            status += takerBoost;
+    }
 #endif
 
     return status;

@@ -39,6 +39,10 @@ int ResGetterSkills(int status, struct Unit * unit)
     int cur_hp = GetUnitCurrentHp(unit);
     int max_hp = GetUnitMaxHp(unit);
 
+#if defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER)
+    struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
+#endif
+
 #if defined(SID_LifeAndDeath) && (COMMON_SKILL_VALID(SID_LifeAndDeath))
     if (SkillTester(unit, SID_LifeAndDeath))
         status += SKILL_EFF1(SID_LifeAndDeath);
@@ -117,6 +121,30 @@ int ResGetterSkills(int status, struct Unit * unit)
 
         if(hasUsableStaff)
             status += SKILL_EFF0(SID_StaffGuard);
+    }
+#endif
+
+#if (defined(SID_TakerResistance) && (COMMON_SKILL_VALID(SID_TakerResistance)) && defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER))
+    if (SkillTester(unit, SID_TakerResistance))
+    {
+        int takerBoost = bwl->winAmt * SKILL_EFF0(SID_TakerResistance);
+        
+        if (takerBoost > 10)
+            status += 10;
+        else   
+            status += takerBoost;
+    }
+#endif
+
+#if (defined(SID_TakerSpectrum) && (COMMON_SKILL_VALID(SID_TakerSpectrum)) && defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER))
+    if (SkillTester(unit, SID_TakerSpectrum))
+    {
+        int takerBoost = bwl->winAmt * SKILL_EFF0(SID_TakerSpectrum);
+        
+        if (takerBoost > 10)
+            status += 10;
+        else   
+            status += takerBoost;
     }
 #endif
 

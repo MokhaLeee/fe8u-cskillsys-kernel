@@ -1156,3 +1156,48 @@ the unit wins in this chapter.[X]
 Hyper Focus:[N]
 Gain +1% hit for every battle[N]
 the unit has in this chapter.[X]
+
+## MSG_SKILL_TakerDefense
+Taker Defense:[N]
+After attacking and defeating an[N]
+enemy, +1 DEF for map (max +10).[X]
+
+## MSG_SKILL_TakerLuck
+Taker Luck:[N]
+After attacking and defeating an[N]
+enemy, +1 DLCK for map (max +10).[X]
+
+## MSG_SKILL_TakerMagic
+Taker Magic:[N]
+After attacking and defeating an[N]
+enemy, +1 MAG for map (max +10).[X]
+
+## MSG_SKILL_TakerMovement
+Taker Movement:[N]
+After attacking and defeating an[N]
+enemy, +1 MOV for map (max +10).[X]
+
+## MSG_SKILL_TakerResistance
+Taker Resistance:[N]
+After attacking and defeating an[N]
+enemy, +1 RES for map (max +10).[X]
+
+## MSG_SKILL_TakerSkill
+Taker Skill:[N]
+After attacking and defeating an[N]
+enemy, +1 SKL for map (max +10).[X]
+
+## MSG_SKILL_TakerSpectrum
+Taker Spectrum:[N]
+After attacking and defeating an[N]
+enemy, +1 all stats for map (max +10).[X]
+
+## MSG_SKILL_TakerSpeed
+Taker Speed:[N]
+After attacking and defeating an[N]
+enemy, +1 SPD for map (max +10).[X]
+
+## MSG_SKILL_TakerStrength
+Taker Strength:[N]
+After attacking and defeating an[N]
+enemy, +1 STR for map (max +10).[X]

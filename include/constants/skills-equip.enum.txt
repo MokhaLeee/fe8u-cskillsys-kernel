@@ -212,8 +212,6 @@ SID_SolidRock
 // SID_DarkProwess
 // SID_LightProwess
 SID_Seer
-SID_KillStreak
-SID_HyperFocus
 
 ////////POST-BATTLE SKILLS
 // SID_Canto
@@ -248,6 +246,9 @@ SID_QuickHands
 SID_MakeAKilling
 SID_NecroCopy
 // SID_MendArms
+SID_KillStreak
+SID_HyperFocus
+SID_TakerDefense
 
 ////////AURA SKILLS
 // SID_Anathema
