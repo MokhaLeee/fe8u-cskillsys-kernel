@@ -1214,4 +1214,36 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_TakerDefense) && COMMON_SKILL_VALID(SID_TakerDefense))
     [SID_TakerDefense] = {{1}},
 #endif
+
+#if (defined(SID_TakerLuck) && COMMON_SKILL_VALID(SID_TakerLuck))
+    [SID_TakerLuck] = {{1}},
+#endif
+
+#if (defined(SID_TakerMagic) && COMMON_SKILL_VALID(SID_TakerMagic))
+    [SID_TakerMagic] = {{1}},
+#endif
+
+#if (defined(SID_TakerMovement) && COMMON_SKILL_VALID(SID_TakerMovement))
+    [SID_TakerMovement] = {{1}},
+#endif
+
+#if (defined(SID_TakerResistance) && COMMON_SKILL_VALID(SID_TakerResistance))
+    [SID_TakerResistance] = {{1}},
+#endif
+
+#if (defined(SID_TakerSkill) && COMMON_SKILL_VALID(SID_TakerSkill))
+    [SID_TakerSkill] = {{1}},
+#endif
+
+#if (defined(SID_TakerSpectrum) && COMMON_SKILL_VALID(SID_TakerSpectrum))
+    [SID_TakerSpectrum] = {{1}},
+#endif
+
+#if (defined(SID_TakerSpeed) && COMMON_SKILL_VALID(SID_TakerSpeed))
+    [SID_TakerSpeed] = {{1}},
+#endif
+
+#if (defined(SID_TakerStrength) && COMMON_SKILL_VALID(SID_TakerStrength))
+    [SID_TakerStrength] = {{1}},
+#endif
 };

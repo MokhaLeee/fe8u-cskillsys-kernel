@@ -3,6 +3,7 @@
 #include "status-getter.h"
 #include "debuff.h"
 #include "constants/skills.h"
+#include "bwl.h"
 
 int _GetUnitMov(struct Unit * unit)
 {

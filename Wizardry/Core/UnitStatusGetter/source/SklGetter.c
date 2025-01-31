@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "status-getter.h"
 #include "constants/skills.h"
+#include "bwl.h"
 
 int _GetUnitSkill(struct Unit * unit)
 {

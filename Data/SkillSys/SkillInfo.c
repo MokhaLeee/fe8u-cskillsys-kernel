@@ -4666,4 +4666,67 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_TakerDefense) && COMMON_SKILL_VALID(SID_TakerDefense))
+    [SID_TakerDefense] = {
+        .desc = MSG_SKILL_TakerDefense,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerLuck) && COMMON_SKILL_VALID(SID_TakerLuck))
+    [SID_TakerLuck] = {
+        .desc = MSG_SKILL_TakerLuck,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerMagic) && COMMON_SKILL_VALID(SID_TakerMagic))
+    [SID_TakerMagic] = {
+        .desc = MSG_SKILL_TakerMagic,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerMovement) && COMMON_SKILL_VALID(SID_TakerMovement))
+    [SID_TakerMovement] = {
+        .desc = MSG_SKILL_TakerMovement,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerResistance) && COMMON_SKILL_VALID(SID_TakerResistance))
+    [SID_TakerResistance] = {
+        .desc = MSG_SKILL_TakerResistance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerSkill) && COMMON_SKILL_VALID(SID_TakerSkill))
+    [SID_TakerSkill] = {
+        .desc = MSG_SKILL_TakerSkill,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerSpectrum) && COMMON_SKILL_VALID(SID_TakerSpectrum))
+    [SID_TakerSpectrum] = {
+        .desc = MSG_SKILL_TakerSpectrum,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerSpeed) && COMMON_SKILL_VALID(SID_TakerSpeed))
+    [SID_TakerSpeed] = {
+        .desc = MSG_SKILL_TakerSpeed,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_TakerStrength) && COMMON_SKILL_VALID(SID_TakerStrength))
+    [SID_TakerStrength] = {
+        .desc = MSG_SKILL_TakerStrength,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };

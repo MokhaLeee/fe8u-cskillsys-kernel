@@ -3,6 +3,7 @@
 #include "status-getter.h"
 #include "strmag.h"
 #include "constants/skills.h"
+#include "bwl.h"
 
 int _GetUnitMagic(struct Unit * unit)
 {

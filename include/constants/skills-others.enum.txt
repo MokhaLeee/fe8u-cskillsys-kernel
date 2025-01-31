@@ -248,6 +248,15 @@ SID_Canto
 // SID_MendArms
 // SID_KillStreak
 // SID_HyperFocus
+// SID_TakerDefense
+// SID_TakerLuck
+// SID_TakerMagic
+// SID_TakerMovement
+// SID_TakerResistance
+// SID_TakerSkill
+// SID_TakerSpectrum
+// SID_TakerSpeed
+// SID_TakerStrength
 
 ////////// AURA SKILLS
 // SID_Anathema

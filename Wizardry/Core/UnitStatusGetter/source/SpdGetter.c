@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "status-getter.h"
 #include "constants/skills.h"
+#include "bwl.h"
 
 int _GetUnitSpeed(struct Unit * unit)
 {
