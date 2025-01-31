@@ -424,7 +424,7 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	 */
 	gDmg.crit_correction = 100;
 	if (gDmg.crit_atk) {
-		gDmg.crit_correction = 300;
+		gDmg.crit_correction = 200;
 
 #if defined(SID_InfinityEdge) && (COMMON_SKILL_VALID(SID_InfinityEdge))
 		if (BattleFastSkillTester(attacker, SID_InfinityEdge))
