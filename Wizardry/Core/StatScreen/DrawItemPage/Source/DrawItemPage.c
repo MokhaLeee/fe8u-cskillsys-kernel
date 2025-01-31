@@ -225,7 +225,10 @@ void DisplayPage1(void)
 {
 	int i, slot;
 	struct Unit *unit = gStatScreen.unit;
-	struct ItemPageList *list = GetUnitItemPageList(unit);
+	struct ItemPageList *list;
+
+	ResetItemPageLists();
+	list = GetUnitItemPageList(unit);
 
 	for (i = 0; i < CHAX_ITEM_PAGE_AMT; i++) {
 		struct ItemPageEnt *ent = &list->ent[i];
