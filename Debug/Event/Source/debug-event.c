@@ -386,7 +386,7 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 static void modify_unit_status(void)
 {
 	struct Unit *unit;
-	
+
 	unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
 	if (unit) {
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
@@ -405,6 +405,11 @@ static void modify_unit_status(void)
 	unit = GetUnitFromCharId(CHARACTER_MYRRH);
 	if (unit) {
 		unit->exp = 99;
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_NATASHA);
+	if (unit) {
+		unit->res = 20;
 	}
 }
 
