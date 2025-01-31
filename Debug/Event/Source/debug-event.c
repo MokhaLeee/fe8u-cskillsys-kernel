@@ -393,6 +393,7 @@ static void modify_unit_status(void)
 		UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
 #endif
 
+		unit->items[0] = (10 << 8) | ITEM_LANCE_IRON;
 		unit->ranks[ITYPE_LANCE] = WPN_EXP_B - 1;
 		unit->level = 10;
 	}
@@ -504,6 +505,9 @@ static const EventScr EventScr_Beginning[] = {
 
 	SVAL(EVT_SLOT_3, ITEM_VULNERARY)
 	GIVEITEMTO(CHARACTER_EPHRAIM)
+
+	SVAL(EVT_SLOT_3, 4000)
+	GIVEITEMTOMAIN(0)
 
 	// PREP
 	CALL(EventScr_08591FD8)

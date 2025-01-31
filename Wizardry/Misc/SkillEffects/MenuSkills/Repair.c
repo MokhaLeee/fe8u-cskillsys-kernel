@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "map-anims.h"
 #include "skill-system.h"
+#include "battle-system.h"
 #include "constants/skills.h"
 #include "constants/texts.h"
 
@@ -8,7 +9,8 @@
 u8 Blacksmith_Usability(const struct MenuItemDef *def, int number)
 {
 	int partyGold = GetPartyGoldAmount();
-	u16 weapon = GetUnitEquippedWeapon(gActiveUnit);
+	int slot = GetUnitEquippedWeaponSlot(gActiveUnit);
+	u16 weapon = GetItemFromSlot(gActiveUnit, slot);
 
 	if (gActiveUnit->state & US_CANTOING)
 		return MENU_NOTSHOWN;
@@ -16,7 +18,25 @@ u8 Blacksmith_Usability(const struct MenuItemDef *def, int number)
 	if (!weapon)
 		return MENU_NOTSHOWN;
 
+	switch (slot) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		break;
+
+	default:
+		return MENU_NOTSHOWN;
+	}
+
 	if (partyGold < 1000)
+		return MENU_NOTSHOWN;
+
+	if (GetItemAttributes(weapon) & IA_UNBREAKABLE)
+		return MENU_NOTSHOWN;
+
+	if (GetItemUses(weapon) >= GetItemMaxUses(weapon))
 		return MENU_NOTSHOWN;
 
 	if (GetItemRequiredExp(weapon) >= WPN_EXP_B)
@@ -44,7 +64,7 @@ u8 Blacksmith_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 	gActionData.unk08 = SID_Blacksmith;
 	gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
 
-	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
+	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
 static void callback_anim(ProcPtr proc)
