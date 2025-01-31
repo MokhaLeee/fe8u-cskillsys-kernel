@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "debuff.h"
 #include "event-rework.h"
 #include "constants/skills.h"
 
@@ -414,6 +415,31 @@ static void modify_unit_status(void)
 	}
 }
 
+static void modify_unit_status_post_prep(void)
+{
+	struct Unit *unit;
+
+	unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_POISON);
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_SELENA);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_SILENCED);
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_NOVALA);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_BERSERK);
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_RIEV);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_SLEEP);
+	}
+}
+
 /**
  * Main events
  */
@@ -511,6 +537,8 @@ static const EventScr EventScr_Beginning[] = {
 
 	// PREP
 	CALL(EventScr_08591FD8)
+
+	ASMC(modify_unit_status_post_prep)
 
 	SVAL(EVT_SLOT_1, 12)
 	SET_HP(CHARACTER_KNOLL)

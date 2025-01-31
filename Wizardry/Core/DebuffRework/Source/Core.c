@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "debuff.h"
 
+#define LOCAL_TRACE 1
+
 int GetUnitStatusIndex(struct Unit *unit)
 {
 	return UNIT_STATUS_INDEX(unit);
@@ -8,10 +10,16 @@ int GetUnitStatusIndex(struct Unit *unit)
 
 int GetUnitStatusDuration(struct Unit *unit)
 {
-	if (UNIT_STATUS_INDEX(unit) == 0)
-		return UNIT_STATUS_DURATION(unit) + 1;
+	int ret = 0;
 
-	return 0;
+	if (UNIT_STATUS_INDEX(unit) != 0)
+		ret = UNIT_STATUS_DURATION(unit) + 1;
+
+	LTRACEF("[uid=0x%02X, pid=0x%02X] status=%d, dura=%d",
+		unit->index & 0xFF, UNIT_CHAR_ID(unit),
+		UNIT_STATUS_INDEX(unit), ret);
+
+	return ret;
 }
 
 void SetUnitStatusIndex(struct Unit *unit, int status)
@@ -41,6 +49,9 @@ int TryTickUnitStatusDuration(struct Unit *unit)
 {
 	if (UNIT_STATUS_INDEX(unit) == 0)
 		return -1;
+
+	LTRACEF("[pid=0x%02X] status=%d, dura=%d",
+		UNIT_CHAR_ID(unit), UNIT_STATUS_INDEX(unit), UNIT_STATUS_DURATION(unit));
 
 	if (UNIT_STATUS_DURATION(unit) != 0) {
 		UNIT_STATUS_DURATION(unit)--;

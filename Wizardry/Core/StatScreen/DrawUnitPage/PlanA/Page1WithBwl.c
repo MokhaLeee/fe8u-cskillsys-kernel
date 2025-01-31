@@ -7,6 +7,8 @@
 #include "kernel-lib.h"
 #include "constants/texts.h"
 
+#define LOCAL_TRACE 0
+
 static void DrawPage1TextCommon(void)
 {
 	struct Unit *unit = gStatScreen.unit;
@@ -198,6 +200,10 @@ static void DrawPage1ValueCommon(void)
 	}
 
 	if (GetUnitStatusIndex(gStatScreen.unit) != UNIT_STATUS_NONE) {
+		LTRACEF("[uid=0x%02X, pid=0x%02X] status=%d, dura=%d",
+			unit->index & 0xFF, UNIT_CHAR_ID(unit),
+			GetUnitStatusIndex(unit), GetUnitStatusDuration(unit));
+
 		PutNumberSmall(
 			gUiTmScratchA + TILEMAP_INDEX(0x10, 0xB),
 			0,
