@@ -4729,4 +4729,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_SelfHealing) && COMMON_SKILL_VALID(SID_SelfHealing))
+    [SID_SelfHealing] = {
+        .desc = MSG_SKILL_SelfHealing,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };

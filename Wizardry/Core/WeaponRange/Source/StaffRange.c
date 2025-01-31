@@ -1,5 +1,7 @@
 #include "common-chax.h"
 #include "weapon-range.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 LYN_REPLACE_CHECK(MakeTargetListForAdjacentHeal);
 void MakeTargetListForAdjacentHeal(struct Unit * unit)
@@ -10,6 +12,12 @@ void MakeTargetListForAdjacentHeal(struct Unit * unit)
     BmMapFill(gBmMapRange, 0);
     AddMapForItem(unit, ITEM_STAFF_HEAL);
     ForEachUnit(TryAddUnitToHealTargetList, gBmMapRange, 0);
+
+#if defined(SID_SelfHealing) && (COMMON_SKILL_VALID(SID_SelfHealing))
+    if (SkillTester(unit, SID_SelfHealing))
+         AddTarget(unit->xPos, unit->yPos, unit->index, 0);
+#endif
+
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForRangedHeal);
@@ -21,6 +29,12 @@ void MakeTargetListForRangedHeal(struct Unit * unit)
     BmMapFill(gBmMapRange, 0);
     AddMapForItem(unit, ITEM_STAFF_PHYSIC);
     ForEachUnit(TryAddUnitToHealTargetList, gBmMapRange, 0);
+
+#if defined(SID_SelfHealing) && (COMMON_SKILL_VALID(SID_SelfHealing))
+    if (SkillTester(unit, SID_SelfHealing))
+         AddTarget(unit->xPos, unit->yPos, unit->index, 0);
+#endif
+
 }
 
 LYN_REPLACE_CHECK(MakeTargetListForRestore);

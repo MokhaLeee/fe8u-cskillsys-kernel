@@ -655,6 +655,7 @@
 // SID_CapacityOne
 // SID_DangerRanger
 // SID_Savior
+// SID_SelfHealing
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

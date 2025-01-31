@@ -36,3 +36,8 @@ of bows to 1.[X]
 ## MSG_SKILL_StaffSavant
 Staff Savant:[NL]
 +1 range for staves.[X]
+
+## MSG_SKILL_SelfHealing
+Self Healing:[NL]
+Unit can target themselves[N]
+with healing staves.[X]
