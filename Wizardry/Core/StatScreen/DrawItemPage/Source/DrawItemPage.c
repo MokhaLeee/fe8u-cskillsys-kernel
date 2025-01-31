@@ -5,6 +5,8 @@
 #include <stat-screen.h>
 #include <shield.h>
 
+#define LOCAL_TRACE 0
+
 void ResetItemPageLists(void)
 {
 	memset(&gItemPageList, 0, sizeof(gItemPageList));
@@ -26,7 +28,7 @@ static void UpdateItemPageListExt(struct Unit *unit, struct ItemPageList *list)
 			break;
 
 		ent = &list->ent[cnt++];
-		if (cnt >= CHAX_ITEM_PAGE_AMT)
+		if (cnt > CHAX_ITEM_PAGE_AMT)
 			return;
 
 		ent->item = item;
@@ -53,7 +55,7 @@ static void UpdateItemPageListExt(struct Unit *unit, struct ItemPageList *list)
 			break;
 
 		ent = &list->ent[cnt++];
-		if (cnt >= CHAX_ITEM_PAGE_AMT)
+		if (cnt > CHAX_ITEM_PAGE_AMT)
 			return;
 
 		ent->item = item;
@@ -71,7 +73,7 @@ static void UpdateItemPageListExt(struct Unit *unit, struct ItemPageList *list)
 			break;
 
 		ent = &list->ent[cnt++];
-		if (cnt >= CHAX_ITEM_PAGE_AMT)
+		if (cnt > CHAX_ITEM_PAGE_AMT)
 			return;
 
 		ent->item = item;
@@ -82,11 +84,28 @@ static void UpdateItemPageListExt(struct Unit *unit, struct ItemPageList *list)
 	}
 }
 
+static void dump_item_list(struct ItemPageList *list)
+{
+#ifdef CONFIG_USE_DEBUG
+	int i;
+
+	for (i = 0; i < CHAX_ITEM_PAGE_AMT; i++) {
+		if (list->ent[i].item == ITEM_NONE)
+			break;
+
+		LTRACEF("[uid=0x%02X, pid=0x%02X] item=0x%04X, slot=%d",
+			list->header.uid & 0xFF, ((const struct CharacterData *)list->header.pinfo)->number, list->ent[i].item, list->ent[i].slot);
+	}
+#endif
+}
+
 void UpdateItemPageList(struct Unit *unit, struct ItemPageList *list)
 {
 	ResetItemPageLists();
 	UpdateItemPageListExt(unit, list);
 	WriteUnitList(unit, &list->header);
+
+	dump_item_list(list);
 }
 
 struct ItemPageList *GetUnitItemPageList(struct Unit *unit)
