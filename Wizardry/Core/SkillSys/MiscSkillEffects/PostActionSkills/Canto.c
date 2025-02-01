@@ -7,7 +7,7 @@
 
 STATIC_DECLAR bool CheckCanto(void)
 {
-    bool canto, cantop;
+    bool canto, cantop, canter;
 
     if (gActiveUnit->state & (US_DEAD | US_HAS_MOVED | US_BIT16))
         return false;
@@ -24,7 +24,13 @@ STATIC_DECLAR bool CheckCanto(void)
     canto = false;
 #endif
 
-    if (!canto || !cantop)
+#if defined(SID_Canter) && (COMMON_SKILL_VALID(SID_Canter))
+    canter = SkillTester(gActiveUnit, SID_Canter);
+#else
+    canter = false;
+#endif
+
+    if (!canto || !cantop || !canter)
     {
         int i;
         for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
@@ -52,7 +58,7 @@ STATIC_DECLAR bool CheckCanto(void)
         }
     }
 
-    if (!canto && !cantop)
+    if (!canto && !cantop && !canter)
         return false;
 
     switch (gActionData.unitActionType)
@@ -62,17 +68,21 @@ STATIC_DECLAR bool CheckCanto(void)
 
     case UNIT_ACTION_COMBAT:
     case UNIT_ACTION_STAFF:
-        if (!cantop)
+        if (!cantop && !canter)
             return false;
 
         break;
     }
 
-    if (MovGetter(gActiveUnit) <= gActionData.moveCount)
+    if ((MovGetter(gActiveUnit) <= gActionData.moveCount) && !canter)
         return false;
 
-    if (!CanUnitMove())
+    if (!CanUnitMove() && !canter)
         return false;
+
+    /* Canter calculation to ensure an additional 2 movement */
+    if (canter)
+        gActionData.moveCount = MovGetter(gActiveUnit) - 2;
 
     return true;
 }

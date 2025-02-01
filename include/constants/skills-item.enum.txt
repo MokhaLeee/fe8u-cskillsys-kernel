@@ -259,6 +259,7 @@
 // SID_TakerSpectrum
 // SID_TakerSpeed
 // SID_TakerStrength
+// SID_Canter
 
 ////////// AURA SKILLS
 // SID_Anathema

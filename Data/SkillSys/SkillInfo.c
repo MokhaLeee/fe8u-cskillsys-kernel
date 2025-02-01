@@ -4756,4 +4756,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Canter) && COMMON_SKILL_VALID(SID_Canter))
+    [SID_Canter] = {
+        .desc = MSG_SKILL_Canter,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

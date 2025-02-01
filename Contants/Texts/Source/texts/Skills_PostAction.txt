@@ -186,3 +186,8 @@ Mend Arms[X]
 Mend Arms: Restore 1 use to every[N]
 weapon the unit can use when[N]
 defeating a full HP enemy[X]
+
+## MSG_SKILL_Canter
+Canter:[N]
+Unit can move 2 spaces[N]
+after taking any actions.[X]
