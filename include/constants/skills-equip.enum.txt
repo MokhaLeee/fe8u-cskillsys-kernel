@@ -39,7 +39,7 @@ SID_Shove
 SID_Smite
 SID_Entrepreneur
 SID_Arise
-SID_AssignDecoy
+// SID_AssignDecoy
 
 ////////PRE-BATTLE SKILLS
 // SID_DefiantStr
