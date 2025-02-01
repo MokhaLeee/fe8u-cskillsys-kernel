@@ -4743,4 +4743,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Alacrity) && COMMON_SKILL_VALID(SID_Alacrity))
+    [SID_Alacrity] = {
+        .desc = MSG_SKILL_Alacrity,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 };

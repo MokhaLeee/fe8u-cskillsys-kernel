@@ -300,6 +300,19 @@ STATIC_DECLAR bool CheckDesperationOrder(void)
         return true;
     }
 #endif
+
+#if defined(SID_Alacrity) && (COMMON_SKILL_VALID(SID_Alacrity))
+    if (BattleSkillTester(&gBattleActor, SID_Alacrity))
+    {
+        if ((gBattleActor.battleSpeed - 9) >= gBattleTarget.battleSpeed)
+        {
+            gBattleTemporaryFlag.desperation_order = true;
+            RegisterBattleOrderSkill(SID_Alacrity, BORDER_DESPERATION);
+            return true;
+        }
+    }
+#endif
+
     return false;
 }
 

@@ -500,6 +500,7 @@
 // SID_Moonlight
 // SID_AdvantageChaser
 // SID_BidingBlow
+// SID_Alacrity
 
 ////////// PRE-PHASE SKILLS
 // SID_Renewal
