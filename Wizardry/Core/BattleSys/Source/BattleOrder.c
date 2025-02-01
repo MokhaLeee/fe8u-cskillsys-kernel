@@ -658,5 +658,14 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     }
 #endif
 
+#if defined(SID_Echo) && (COMMON_SKILL_VALID(SID_Echo))
+    if (actor == &gBattleActor && BattleSkillTester(actor, SID_Echo))
+    {
+        EnqueueRoundEfxSkill(SID_Echo);
+        gBattleActorGlobalFlag.skill_activated_astra = true;
+        result = result + SKILL_EFF0(SID_Echo);
+    }
+#endif
+
     return result;
 }

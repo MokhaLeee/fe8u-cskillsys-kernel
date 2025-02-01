@@ -470,6 +470,12 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_Astra));
 #endif
 
+#if defined(SID_Echo) && (COMMON_SKILL_VALID(SID_Echo))
+    if (attacker == &gBattleActor && BattleSkillTester(attacker, SID_Echo) &&
+        gBattleActorGlobalFlag.skill_activated_astra)
+        gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_Echo));
+#endif
+
 #if (defined(SID_IronDome) && (COMMON_SKILL_VALID(SID_IronDome)))
     if (BattleSkillTester(defender, SID_IronDome))
     {

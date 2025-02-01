@@ -255,6 +255,10 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Alacrity) && COMMON_SKILL_VALID(SID_Alacrity))
     [SID_Alacrity] = EFX_PRIORITY_NORMAL,
 #endif
+
+#if (defined(SID_Echo) && COMMON_SKILL_VALID(SID_Echo))
+    [SID_Echo] = EFX_PRIORITY_NORMAL,
+#endif
 };
 
 struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
@@ -508,5 +512,9 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Alacrity) && COMMON_SKILL_VALID(SID_Alacrity))
     [SID_Alacrity] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_Echo) && COMMON_SKILL_VALID(SID_Echo))
+    [SID_Echo] = &EfxSkillVanilla,
 #endif
 };

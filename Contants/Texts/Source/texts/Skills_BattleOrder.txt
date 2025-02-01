@@ -119,6 +119,11 @@ rounds of combat. Conditions:[NL]
 (unitSPD + unitHP/2 ) - enemySPD.[X]
 
 ## MSG_SKILL_Alacrity
-Alacrity:[NL]
+Alacrity:[N]
 If actor's speed is 9 or more than[N]
 the target's, counterattack first.[X]
+
+## MSG_SKILL_Echo
+Echo:[N]
+Attack twice for half damage[N]
+each attack if initiating.[X]

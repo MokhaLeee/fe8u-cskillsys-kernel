@@ -8,6 +8,7 @@
 #include "constants/combat-arts.h"
 #include "constants/skills.h"
 #include "weapon-range.h"
+#include "battle-system.h"
 
 #include "jester_headers/custom-functions.h"
 

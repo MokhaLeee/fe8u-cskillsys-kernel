@@ -503,6 +503,7 @@ SID_Canto
 // SID_AdvantageChaser
 // SID_BidingBlow
 // SID_Alacrity
+// SID_Echo
 
 ////////// PRE-PHASE SKILLS
 // SID_Renewal
