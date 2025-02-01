@@ -212,6 +212,7 @@
 // SID_DarkProwess
 // SID_LightProwess
 // SID_Seer
+// SID_IronDome
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto

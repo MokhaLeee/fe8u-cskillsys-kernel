@@ -1246,4 +1246,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_TakerStrength) && COMMON_SKILL_VALID(SID_TakerStrength))
     [SID_TakerStrength] = {{1}},
 #endif
+
+#if (defined(SID_IronDome) && COMMON_SKILL_VALID(SID_IronDome))
+    [SID_IronDome] = {{50}},
+#endif
 };

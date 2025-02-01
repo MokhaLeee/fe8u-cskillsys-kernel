@@ -107,6 +107,11 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit *attacker, struct BattleUnit *
 
     attacker->battleAvoidRate = (attacker->battleSpeed * 2) + terrainAvoid + (attacker->unit.lck);
 
+#if (defined(SID_IronDome) && (COMMON_SKILL_VALID(SID_IronDome)))
+    if (BattleSkillTester(defender, SID_IronDome))
+        defender->battleAvoidRate = 0;
+#endif
+
     if (attacker->battleAvoidRate < 0)
         attacker->battleAvoidRate = 0;
 }

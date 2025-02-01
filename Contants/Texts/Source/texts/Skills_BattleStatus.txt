@@ -1201,3 +1201,8 @@ enemy, +1 SPD for map (max +10).[X]
 Taker Strength:[N]
 After attacking and defeating an[N]
 enemy, +1 STR for map (max +10).[X]
+
+## MSG_SKILL_IronDome
+Iron Dome:[N]
+Unit takes half damage,[N]
+but AVO is set to 0.[X]

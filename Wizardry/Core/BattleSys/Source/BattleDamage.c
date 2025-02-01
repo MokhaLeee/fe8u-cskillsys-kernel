@@ -470,6 +470,14 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_Astra));
 #endif
 
+#if (defined(SID_IronDome) && (COMMON_SKILL_VALID(SID_IronDome)))
+    if (BattleSkillTester(defender, SID_IronDome))
+    {
+        RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_IronDome);
+        gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_IronDome));
+    }
+#endif
+
 #if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
     if (BattleSkillTester(defender, SID_DragonSkin))
     {

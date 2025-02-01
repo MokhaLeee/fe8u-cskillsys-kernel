@@ -493,4 +493,8 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Sentinel) && COMMON_SKILL_VALID(SID_Sentinel))
     [SID_Sentinel] = &EfxSkillVanilla,
 #endif
+
+#if (defined(SID_IronDome) && COMMON_SKILL_VALID(SID_IronDome))
+    [SID_IronDome] = &EfxSkillVanilla,
+#endif
 };
