@@ -3,6 +3,7 @@
 #include "constants/skills.h"
 #include "weapon-range.h"
 #include "status-getter.h"
+#include "debuff.h"
 
 extern const struct AiCombatScoreCoefficients *sCombatScoreCoefficients;
 
@@ -35,6 +36,11 @@ int AiGetDamageDealtCombatScoreComponent(void)
 #if defined(SID_Provoke) && (COMMON_SKILL_VALID(SID_Provoke))
     if (BattleSkillTester(&gBattleTarget, SID_Provoke))
         score += SKILL_EFF0(SID_Provoke);
+#endif
+
+#if defined(SID_AssignDecoy) && (COMMON_SKILL_VALID(SID_AssignDecoy))
+    if (GetUnitStatusIndex(GetUnit(gBattleTarget.unit.index)) == NEW_UNIT_STATUS_DECOY)
+        score += SKILL_EFF0(SID_AssignDecoy);
 #endif
 
     return score;

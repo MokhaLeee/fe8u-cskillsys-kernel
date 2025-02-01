@@ -559,4 +559,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_AssignDecoy) && COMMON_SKILL_VALID(SID_AssignDecoy))
+    [SID_AssignDecoy] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuSkill_AssignDecoyName,
+        .helpMsgId = MSG_SKILL_AssignDecoy,
+        .color = TEXT_COLOR_SYSTEM_GOLD,
+        .isAvailable = AssignDecoy_Usability,
+        .onDraw = NULL,
+        .onSelected = AssignDecoy_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
 };

@@ -4,6 +4,9 @@ This skill cannot be used for now![X]
 ## MSG_MenuSkill_Common_Target
 Select a unit.[X]
 
+## MSG_No_Allies
+There are no allies in range![X]
+
 ## MSG_SKILL_Dance
 Dance:[NL]
 Art: Unit can use[NL]
@@ -404,3 +407,11 @@ chapter. Once only.[X]
 
 ## MSG_MenuSkill_Arise_FRtext
 No allies to revive![X]
+
+## MSG_MenuSkill_AssignDecoyName
+ Assign Decoy[X]
+
+## MSG_SKILL_AssignDecoy
+Assign Decoy:[NL]
+Give an allied unit the[NL]
+decoy status for a turn.[X]

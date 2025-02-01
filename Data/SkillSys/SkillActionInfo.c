@@ -130,4 +130,8 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Arise) && COMMON_SKILL_VALID(SID_Arise))
     [SID_Arise] = Action_Arise,
 #endif
+
+#if (defined(SID_AssignDecoy) && COMMON_SKILL_VALID(SID_AssignDecoy))
+    [SID_AssignDecoy] = Action_AssignDecoy,
+#endif
 };

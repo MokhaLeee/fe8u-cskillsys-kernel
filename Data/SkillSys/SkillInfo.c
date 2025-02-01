@@ -4750,4 +4750,10 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_AssignDecoy) && COMMON_SKILL_VALID(SID_AssignDecoy))
+    [SID_AssignDecoy] = {
+        .desc = MSG_SKILL_AssignDecoy,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

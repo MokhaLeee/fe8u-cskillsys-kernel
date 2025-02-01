@@ -53,3 +53,11 @@ Toxic[X]
 Toxic: Infict 10% (times[N]
 elapsed turns) of remaining[N]
 HP as damage each turn.[X]
+
+## MSG_DEBUFF_DECOY_NAME
+Decoy[X]
+
+## MSG_DEBUFF_DECOY_DESC
+Decoy:[N]
+Enemy units will move to[NL]
+attack this unit.[X]

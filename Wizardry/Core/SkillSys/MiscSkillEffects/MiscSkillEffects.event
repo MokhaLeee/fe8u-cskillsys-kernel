@@ -51,6 +51,7 @@
 #include "MenuSkills/Dismount.lyn.event"
 #include "MenuSkills/Entrepreneur.lyn.event"
 #include "MenuSkills/Arise.lyn.event"
+#include "MenuSkills/AssignDecoy.lyn.event"
 
 #include "MenuSkills/ReciprocalAid.lyn.event"
 #include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"
