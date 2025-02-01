@@ -5,6 +5,124 @@
 #include "weapon-range.h"
 #include "status-getter.h"
 
+extern void CpDecide_Main(ProcPtr proc);
+
+// Function to find an adjacent ally with higher HP and swap positions with the defender
+void SwapDefenderWithAllyIfNecessary(struct Unit* defender) {
+    int adjLookup[4][2] = {
+        {-1, 0}, // Left
+        {1, 0},  // Right
+        {0, -1}, // Up
+        {0, 1}   // Down
+    };
+
+    struct Unit* adjacentAlly = NULL;
+    int defenderHP = defender->curHP;
+    int x = defender->xPos;
+    int y = defender->yPos;
+
+    // Iterate over adjacent positions
+    for (int i = 0; i < 4; ++i) {
+        int adjX = x + adjLookup[i][0];
+        int adjY = y + adjLookup[i][1];
+
+        if (adjX < 0 || adjY < 0 || adjX >= gBmMapSize.x || adjY >= gBmMapSize.y)
+            continue;
+
+        struct Unit* unit = GetUnit(gBmMapUnit[adjY][adjX]);
+        if (unit && AreUnitsAllied(defender->index, unit->index) && unit->curHP > defenderHP) {
+            adjacentAlly = unit;
+            defenderHP = unit->curHP;
+        }
+    }
+
+    // Swap positions if a suitable ally is found
+    if (adjacentAlly) {
+        int tempX = defender->xPos;
+        int tempY = defender->yPos;
+        defender->xPos = adjacentAlly->xPos;
+        defender->yPos = adjacentAlly->yPos;
+        adjacentAlly->xPos = tempX;
+        adjacentAlly->yPos = tempY;
+
+        // Update the positions in the map
+        gBmMapUnit[defender->yPos][defender->xPos] = defender->index;
+        gBmMapUnit[adjacentAlly->yPos][adjacentAlly->xPos] = adjacentAlly->index;
+
+        // Update the AI decision to target the new defender
+        gAiDecision.targetId = adjacentAlly->index;
+    }
+}
+
+LYN_REPLACE_CHECK(CpDecide_Main);
+void CpDecide_Main(ProcPtr proc)
+{
+next_unit:
+    gAiState.decideState = 0;
+
+    if (*gAiState.unitIt)
+    {
+        gAiState.unk7C = 0;
+
+        gActiveUnitId = *gAiState.unitIt;
+        gActiveUnit = GetUnit(gActiveUnitId);
+
+        if (gActiveUnit->state & (US_DEAD | US_UNSELECTABLE) || !gActiveUnit->pCharacterData)
+        {
+            gAiState.unitIt++;
+            goto next_unit;
+        }
+
+        do
+        {
+            RefreshEntityBmMaps();
+            RenderBmMap();
+            RefreshUnitSprites();
+
+            AiUpdateNoMoveFlag(gActiveUnit);
+
+            gAiState.combatWeightTableId = (gActiveUnit->ai_config & AI_UNIT_CONFIG_COMBATWEIGHT_MASK) >> AI_UNIT_CONFIG_COMBATWEIGHT_SHIFT;
+
+            gAiState.dangerMapFilled = FALSE;
+            AiInitDangerMap();
+
+            AiClearDecision();
+            AiDecideMainFunc();
+
+#if (defined(SID_Guardian) && COMMON_SKILL_VALID(SID_Guardian))
+            if (SkillTester(GetUnit(gAiDecision.targetId), SID_Guardian))
+            {
+                // Assuming gAiDecision.targetId is the defender's unit ID
+                struct Unit* defender = GetUnit(gAiDecision.targetId);
+                if (defender && AreUnitsAllied(defender->index, gActiveUnit->index) == FALSE) {
+                    SwapDefenderWithAllyIfNecessary(defender);
+                }
+            }
+#endif
+
+            gActiveUnit->state |= US_HAS_MOVED_AI;
+
+            if (!gAiDecision.actionPerformed ||
+                (gActiveUnit->xPos == gAiDecision.xMove && gActiveUnit->yPos == gAiDecision.yMove && gAiDecision.actionId == AI_ACTION_NONE))
+            {
+                // Ignoring actions that are just moving to the same square
+
+                gAiState.unitIt++;
+                Proc_Goto(proc, 0);
+            }
+            else
+            {
+                gAiState.unitIt++;
+                Proc_StartBlocking(gProcScr_CpPerform, proc);
+            }
+        } while (0);
+    }
+    else
+    {
+        Proc_End(proc);
+    }
+}
+
 LYN_REPLACE_CHECK(AiAttemptOffensiveAction);
 s8 AiAttemptOffensiveAction(s8 (* isEnemy)(struct Unit * unit))
 {

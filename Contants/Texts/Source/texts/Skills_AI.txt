@@ -22,3 +22,8 @@ unit have more than 50% HP.[X]
 Rampage:[NL]
 +50% STR/SPD/SKL but unit[NL]
 will move independently.[X]
+
+## MSG_SKILL_Guardian
+Guardian:[N]
+If unit is attacked, swap places[N]
+with an adjacent ally with higher HP.[X]

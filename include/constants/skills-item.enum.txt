@@ -616,6 +616,7 @@
 // SID_Shade
 // SID_ShadePlus
 // SID_Provoke
+// SID_Guardian
 
 ////////// STANDALONE SKILLS
 // SID_IdentityProblems
