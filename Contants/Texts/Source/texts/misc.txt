@@ -33,3 +33,66 @@ Reorg[.][X]
 ## MSG_ItemSubOption_Reorganize_DESC
 Reorganize this item to[.][LF]
 the top of inventory.[.][X]
+
+## UM_AoEName
+ AoE[X]
+
+## UM_AoEDesc
+Hit multiple units.[X]
+
+## UM_AoEHelp
+Select an area to Attack. Press L/R to Rotate.[X]
+
+## UM_AoEHealHelp
+Select an area to Heal. Press L/R to Rotate.[X]
+
+## UM_AoESlash
+Wide melee strike hitting multiple foes [X]
+
+## UM_AoECleave
+Sweeping attack with a heavy weapon [X]
+
+## UM_AoEImpale
+Piercing thrust that hits in a line [X]
+
+## UM_AoEShoot
+Ranged attack affecting multiple targets [X]
+
+## UM_AoEBlast
+Explosive burst damaging nearby enemies [X]
+
+## UM_AoEExpel
+Forceful pushback knocking foes away [X]
+
+## UM_AoEHex
+Dark curse weakening multiple enemies [X]
+
+## UM_AoEHeal
+Restores HP to nearby allies [X]
+
+## UM_AoERestore
+Removes status effects in an area [X]
+
+## UM_AoEMend
+Moderate healing for multiple allies [X]
+
+## UM_AoEPhysic
+Distant healing for several targets [X]
+
+## UM_AoERecover
+Major HP recovery to nearby allies [X]
+
+## UM_AoEFortify
+Strong healing for all allies in range [X]
+
+## UM_AoEExcalibur
+Wind magic striking multiple enemies [X]
+
+## UM_AoEElfire
+Fiery explosion scorching multiple foes [X]
+
+## UM_AoEThunder
+Lightning strikes hitting multiple targets [X]
+
+## UM_AoEFimbulvetr
+Blizzard magic freezing multiple foes [X]

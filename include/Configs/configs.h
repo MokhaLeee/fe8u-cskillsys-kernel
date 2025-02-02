@@ -424,6 +424,7 @@
 
 // #define CONFIG_INSTALL_DECREASE_HIT_AT_RANGE
 
+#define CONFIG_VESLY_AOE
 
 /**
  * Install ConvoyExpa
