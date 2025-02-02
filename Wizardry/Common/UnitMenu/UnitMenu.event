@@ -5,15 +5,18 @@
 
 #ifdef CONFIG_VESLY_AOE
 
-    #define NormalText 0x0
-    #define GrayText 0x1
-    #define BlueText 0x2
-    #define OrangeText 0x3
-    #define GreenText 0x4
-    #define BlackText 0x5
+    #define NormalMessage 0x0
+    #define GrayMessage 0x1
+    #define BlueMessage 0x2
+    #define OrangeMessage 0x3
+    #define GreenMessage 0x4
+    #define BlackMessage 0x5
 
     #define MenuCommand_BPress(name,description,colour,usability,effect, unknown2) "WORD $80d7d94; SHORT name description; BYTE colour $4e; SHORT 0; POIN usability|1; WORD 0; POIN effect|1; POIN 0 0 unknown2|1"
-    MenuCommand_BPress(UM_AoEName, UM_AoEDesc, NormalText, AoE_AreAnyUsable, AoE_Effect, AoE_ClearGraphics)
+    MenuCommand_BPress(UM_AoEName, UM_AoEDesc, NormalMessage, AoE_AreAnyUsable, AoE_Effect, AoE_ClearGraphics)
+
+    #define MenuCommand(name,description,colour,usability,effect) "WORD $80d7d94; SHORT name description; BYTE colour $4e; SHORT 0; POIN usability|1; WORD 0; POIN effect|1; WORD 0 0 0"
+    MenuCommand(UM_AoEName, UM_AoEDesc, NormalMessage, AoE_AreAnyUsable, AoE_Effect)
 
  #endif
 
