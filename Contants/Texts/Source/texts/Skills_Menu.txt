@@ -415,3 +415,11 @@ No allies to revive![X]
 Assign Decoy:[NL]
 Give an allied unit the[NL]
 decoy status for a turn.[X]
+
+## MSG_MenuSkill_ShadowFlashName
+ Shadow Flash[X]
+
+## MSG_SKILL_ShadowFlash
+Shadow Flash:[N]
+Warp in a 3 tile radius, at 10 HP[N]
+cost, and move again afterwards.[X]

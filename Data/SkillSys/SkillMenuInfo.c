@@ -574,4 +574,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_ShadowFlash) && COMMON_SKILL_VALID(SID_ShadowFlash))
+    [SID_ShadowFlash] = {
+        .name = "　光の結界",
+        .nameMsgId = MSG_MenuSkill_ShadowFlashName,
+        .helpMsgId = MSG_SKILL_ShadowFlash,
+        .color = TEXT_COLOR_SYSTEM_GOLD,
+        .isAvailable = ShadowFlash_Usability,
+        .onDraw = NULL,
+        .onSelected = ShadowFlash_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = ShadowFlash_Hover,
+        .onSwitchOut = ShadowFlash_Unhover,
+    },
+#endif
+
 };

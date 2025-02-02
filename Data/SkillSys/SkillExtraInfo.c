@@ -1258,4 +1258,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Echo) && COMMON_SKILL_VALID(SID_Echo))
     [SID_Echo] = {{1, 50}},
 #endif
+
+#if (defined(SID_ShadowFlash) && COMMON_SKILL_VALID(SID_ShadowFlash))
+    [SID_ShadowFlash] = {{10, 3}},
+#endif
 };

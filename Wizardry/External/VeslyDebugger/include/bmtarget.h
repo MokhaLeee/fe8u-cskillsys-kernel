@@ -72,7 +72,7 @@ void MakeTargetListForLatona(struct Unit* unit);
 void sub_8026414(int unk);
 // ??? TryAddToMineTargetList(???);
 void MakeTargetListForMine(struct Unit* unit);
-// ??? TryAddToLightRuneTargetList(???);
+void TryAddToLightRuneTargetList(int x, int y);
 void MakeTargetListForLightRune(struct Unit* unit);
 // ??? TryAddUnitToDanceRingTargetList(???);
 void MakeTargetListForDanceRing(struct Unit* unit);

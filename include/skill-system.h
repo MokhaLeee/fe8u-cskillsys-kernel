@@ -363,6 +363,10 @@ u8 Arise_Usability(const struct MenuItemDef * def, int number);
 u8 Arise_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 AssignDecoy_Usability(const struct MenuItemDef * def, int number);
 u8 AssignDecoy_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 ShadowFlash_Usability(const struct MenuItemDef * def, int number);
+u8 ShadowFlash_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+int ShadowFlash_Hover(struct MenuProc * menu, struct MenuItemProc * item);
+int ShadowFlash_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -391,3 +395,4 @@ bool Action_Dismount(ProcPtr parent);
 bool Action_Entrepreneur(ProcPtr parent);
 bool Action_Arise(ProcPtr parent);
 bool Action_AssignDecoy(ProcPtr parent);
+bool Action_ShadowFlash(ProcPtr parent);

@@ -40,6 +40,7 @@ SID_Smite
 SID_Entrepreneur
 SID_Arise
 // SID_AssignDecoy
+SID_ShadowFlash
 
 ////////PRE-BATTLE SKILLS
 // SID_DefiantStr
