@@ -4784,4 +4784,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_GrazingBlow) && COMMON_SKILL_VALID(SID_GrazingBlow))
+    [SID_GrazingBlow] = {
+        .desc = MSG_SKILL_GrazingBlow,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

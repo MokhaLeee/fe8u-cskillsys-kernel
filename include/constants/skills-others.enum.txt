@@ -479,6 +479,7 @@ SID_Canto
 // SID_Sentinel
 // SID_Chipper
 // SID_Toxic
+// SID_GrazingBlow
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful

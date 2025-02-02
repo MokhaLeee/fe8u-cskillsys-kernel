@@ -232,3 +232,8 @@ If this unit deals no damage,[NL]
 Chipper:[NL]
 Gain +50g after every[NL]
 hit on the enemy.[X]
+
+## MSG_SKILL_GrazingBlow
+Grazing Blow:[N]
+This unit's missed attacks[N]
+deal half damage.[X]

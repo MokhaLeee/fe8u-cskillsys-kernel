@@ -182,6 +182,7 @@ void BattleGenerateHitTriangleAttack(struct BattleUnit * attacker, struct Battle
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
 void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit * defender)
 {
+    bool grazingBlow = false;
     gBattleStats.damage = 0;
 
     /* Fasten simulation */
@@ -196,20 +197,43 @@ void BattleGenerateHitAttributes(struct BattleUnit * attacker, struct BattleUnit
         }
         else
         {
-            RegisterHitCnt(attacker, true);
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-            return;
+/* Divine Pulse fails, so now we check for Grazing Blow */
+#if (defined(SID_GrazingBlow) && (COMMON_SKILL_VALID(SID_GrazingBlow)))
+            if (BattleSkillTester(attacker, SID_GrazingBlow))
+                    grazingBlow = true;
+            else
+            {
+                RegisterHitCnt(attacker, true);
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+                return;
+            }
+#endif
         }
 #else
-        RegisterHitCnt(attacker, true);
-        gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-        return;
+    /* Divine Pulse fails, so now we check for Grazing Blow */
+    #if (defined(SID_GrazingBlow) && (COMMON_SKILL_VALID(SID_GrazingBlow)))
+                if (BattleSkillTester(attacker, SID_GrazingBlow))
+                        grazingBlow = true;
+                else
+                {
+                    RegisterHitCnt(attacker, true);
+                    gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+                    return;
+                }
+    #else 
+                RegisterHitCnt(attacker, true);
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
+                return;
+    #endif
 #endif
     }
 
     RegisterHitCnt(attacker, false);
 
     gBattleStats.damage = BattleHit_CalcDamage(attacker, defender);
+
+    if (grazingBlow)
+        gBattleStats.damage /= 2;
 
     if (gBattleStats.config & BATTLE_CONFIG_REAL)
     {
