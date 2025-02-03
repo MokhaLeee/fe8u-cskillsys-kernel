@@ -1,4 +1,5 @@
 #include "C_Code.h" // headers 
+#include "debug-kit.h"
 #define PUREFUNC __attribute__((pure))
 int Mod(int a, int b) PUREFUNC;
 
@@ -540,7 +541,7 @@ static void DisplayVertUiHand(int x, int y)
 }
 
 const s8 StatCapLookup[] = { 
-    99, 63, 63, 63, 63, 63, 63, 63, 63,
+    255, 255, 63, 63, 63, 63, 63, 63, 63,
 }; 
 
 void SaveStats(DebuggerProc* proc) { 
@@ -555,7 +556,7 @@ void SaveStats(DebuggerProc* proc) {
     unit->def = proc->tmp[5]; 
     unit->res = proc->tmp[6]; 
     unit->lck = proc->tmp[7]; 
-    unit->_u47 = proc->tmp[8]; 
+    unit->_u47 = proc->tmp[8];  // Mag
 } 
 
 void SaveItems(DebuggerProc* proc) { 
@@ -585,8 +586,12 @@ void EditStatsIdle(DebuggerProc* proc) {
         m4aSongNumStart(0x6B); 
     };
     if (proc->editing) { 
-        DisplayVertUiHand(CursorLocationTable[proc->digit].x, (Y_HAND - 1 + (proc->id * 2)) * 8); 	
-        int max = StatCapLookup[proc->id]; 
+        DisplayVertUiHand(CursorLocationTable[proc->digit].x, (Y_HAND - 1 + (proc->id * 2)) * 8); 
+        int max;	
+        if (proc->id == 0 || proc->id == 1)
+            max = 255;
+        else
+            max = StatCapLookup[proc->id]; 
         int min = 0; 
         int max_digits = GetMaxDigits(max, 0); 
         

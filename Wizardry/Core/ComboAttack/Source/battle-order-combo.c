@@ -42,8 +42,8 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
     /* step2 BattleGenerateHitEffects */
     gBattleTarget.unit.curHP -= gBattleStats.damage;
 
-    if (gBattleTarget.unit.curHP < 0)
-        gBattleTarget.unit.curHP = 0;
+    // if (gBattleTarget.unit.curHP < 0)
+    //     gBattleTarget.unit.curHP = 0;
 
     gBattleHitIterator->hpChange = gBattleStats.damage;
 

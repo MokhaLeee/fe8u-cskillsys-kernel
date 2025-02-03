@@ -78,7 +78,7 @@ struct ClassData
     /* 11 */ s8 baseCon;
     /* 12 */ s8 baseMov;
 
-    /* 13 */ s8 maxHP;
+    /* 13 */ u8 maxHP;
     /* 14 */ s8 maxPow;
     /* 15 */ s8 maxSkl;
     /* 16 */ s8 maxSpd;
@@ -140,8 +140,8 @@ struct Unit
     /* 10 */ s8 xPos;
     /* 11 */ s8 yPos;
 
-    /* 12 */ s8 maxHP;
-    /* 13 */ s8 curHP;
+    /* 12 */ u8 maxHP;
+    /* 13 */ u8 curHP;
     /* 14 */ s8 pow;
     /* 15 */ s8 skl;
     /* 16 */ s8 spd;
@@ -366,8 +366,11 @@ enum unit_affinity_index {
 };
 
 // TODO: MOVE ELSEWHERE
-extern CONST_DATA struct ClassData gClassData[]; // gClassData
-extern CONST_DATA struct CharacterData gCharacterData[]; // gCharacterData
+extern const struct ClassData gClassData[]; // gClassData
+
+extern const struct ClassData gNewClassData[]; // gClassData
+
+extern const struct CharacterData gCharacterData[]; // gCharacterData
 extern struct UnitDefinition gUnitDef1;
 extern struct UnitDefinition gUnitDef2;
 extern struct UnitDefinition gUnitDefEggHatching;

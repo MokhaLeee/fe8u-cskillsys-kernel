@@ -230,8 +230,8 @@ struct SuspendSavePackedUnit {     /* Suspend Data */
     /* 0A */ u16 item2;
     /* 0C */ u16 item3;
     
-    /* 0E */ s8 maxHP;
-    /* 0F */ s8 curHP;
+    /* 0E */ u8 maxHP;
+    /* 0F */ u8 curHP;
     /* 10 */ u8 exp;
     /* 11 */ u8 aiFlags;
     /* 12 */ u8 ranks[8];

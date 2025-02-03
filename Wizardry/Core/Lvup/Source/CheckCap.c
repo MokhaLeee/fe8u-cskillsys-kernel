@@ -30,14 +30,14 @@ STATIC_DECLAR void CheckBattleUnitStatCapsVanilla(struct Unit *unit, struct Batt
         if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
             unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
     }
+#endif
+
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    if (unit->maxHP > KUNIT_MHP_MAX(unit) + limitBreaker)
+        unit->maxHP = KUNIT_MHP_MAX(unit) + limitBreaker;
 #else
-    #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-        if (unit->maxHP > KUNIT_MHP_MAX(unit) + limitBreaker)
-            unit->maxHP = KUNIT_MHP_MAX(unit) + limitBreaker;
-    #else
-        if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
-            unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
-    #endif
+    if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
+        unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
 #endif
 
     if ((unit->pow + bu->changePow) > UNIT_POW_MAX(unit) + limitBreaker)
@@ -84,14 +84,14 @@ STATIC_DECLAR void UnitCheckStatCapsVanilla(struct Unit *unit)
         if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
             unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
     }
+#endif
+
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    if (unit->maxHP > KUNIT_MHP_MAX(unit) + limitBreaker)
+        unit->maxHP = KUNIT_MHP_MAX(unit) + limitBreaker;
 #else
-    #ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
-        if (unit->maxHP > KUNIT_MHP_MAX(unit) + limitBreaker)
-            unit->maxHP = KUNIT_MHP_MAX(unit) + limitBreaker;
-    #else
-        if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
-            unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
-    #endif
+    if (unit->maxHP > UNIT_MHP_MAX(unit) + limitBreaker)
+        unit->maxHP = UNIT_MHP_MAX(unit) + limitBreaker;
 #endif
 
     if (unit->pow > UNIT_POW_MAX(unit) + limitBreaker)

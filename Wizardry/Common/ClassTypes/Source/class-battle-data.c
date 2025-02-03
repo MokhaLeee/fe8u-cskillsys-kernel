@@ -8,7 +8,6 @@
 
 #include "common-chax.h"
 #include "class-types.h"
-#include "bmunit.h"
 
 enum {
     // ClassData::slowWalking
@@ -16,7 +15,7 @@ enum {
     UNIT_WALKSPEED_SLOW,
 };
 
-CONST_DATA struct ClassData gClassData[] = {
+const struct ClassData gNewClassData[] = {
     [CLASS_EPHRAIM_LORD - 1] = {
         .nameTextId = 0x2bf,
         .descTextId = 0x309,
@@ -85,7 +84,7 @@ CONST_DATA struct ClassData gClassData[] = {
         .sort_order = 0x1,
 
         .baseHP  = 16,
-        .basePow = 4,
+        .basePow = 14,
         .baseSkl = 8,
         .baseSpd = 9,
         .baseDef = 3,
@@ -93,8 +92,8 @@ CONST_DATA struct ClassData gClassData[] = {
         .baseCon = 5,
         .baseMov = 5,
 
-        .maxHP  = 60,
-        .maxPow = 20,
+        .maxHP  = 99,
+        .maxPow = 30,
         .maxSkl = 20,
         .maxSpd = 20,
         .maxDef = 20,

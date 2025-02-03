@@ -721,10 +721,10 @@ void BeginUnitPoisonDamageAnim(struct Unit * unit, int damage)
 
     AddUnitHp(&gBattleActor.unit, -damage);
 
-    if (gBattleActor.unit.curHP < 0)
-    {
-        gBattleActor.unit.curHP = 0;
-    }
+    // if (gBattleActor.unit.curHP < 0)
+    // {
+    //     gBattleActor.unit.curHP = 0;
+    // }
 
     gBattleHitIterator->hpChange = gBattleActor.hpInitial - gBattleActor.unit.curHP;
 
@@ -3095,3 +3095,11 @@ void StartAvailableTileEvent(s8 x, s8 y) {
 
     return;
 }
+
+LYN_REPLACE_CHECK(GetClassData);
+const struct ClassData* GetClassData(int classId) {
+    if (classId < 1)
+        return NULL;
+
+    return gNewClassData + (classId - 1);
+};
