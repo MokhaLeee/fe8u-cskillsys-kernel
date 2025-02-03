@@ -462,7 +462,7 @@ void UnitRemoveItem(struct Unit* unit, int slot);
 
 #define UNIT_NAME_ID(aUnit) ((aUnit)->pCharacterData->nameTextId)
 
-#define UNIT_MHP_MAX(aUnit) (UNIT_FACTION(unit) == FACTION_RED ? 120 : 60)
+#define UNIT_MHP_MAX(aUnit) (UNIT_FACTION(unit) == FACTION_RED ? 255 : 255)
 #define UNIT_POW_MAX(aUnit) ((aUnit)->pClassData->maxPow)
 #define UNIT_SKL_MAX(aUnit) ((aUnit)->pClassData->maxSkl)
 #define UNIT_SPD_MAX(aUnit) ((aUnit)->pClassData->maxSpd)
