@@ -4,29 +4,20 @@
 
 void SetBitUES(struct Unit *unit, int bit)
 {
-	if (bit < 8)
-		unit->_u3A |= 1 << bit;
-
-	if (bit < 16)
-		unit->_u3B |= 1 << bit;
+	Assert(bit >= 0 && bit < 16);
+	_BIT_SET((void *)&unit->_u3A, bit);
 }
 
 void ClearBitUES(struct Unit *unit, int bit)
 {
-	if (bit < 8)
-		unit->_u3A &= ~(1 << bit);
-	else if (bit < 16)
-		unit->_u3B &= ~(1 << bit);
+	Assert(bit >= 0 && bit < 16);
+	_BIT_CLR((void *)&unit->_u3A, bit);
 }
 
 bool CheckBitUES(struct Unit *unit, int bit)
 {
-	if (bit < 8)
-		return !!(unit->_u3A & (1 << bit));
-	else if (bit < 16)
-		return !!(unit->_u3B & (1 << bit));
-
-	return false;
+	Assert(bit >= 0 && bit < 16);
+	return _BIT_CHK((void *)&unit->_u3A, bit);
 }
 
 static void reset_expa(s8 uid)

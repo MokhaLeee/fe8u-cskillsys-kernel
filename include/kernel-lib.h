@@ -171,17 +171,17 @@ int GetUnitFaction(struct Unit *unit);
  */
 static inline void _BIT_SET(u32 *bits, int idx)
 {
-	bits[idx / 32] |= 1 << (idx % 32);
+	bits[idx >> 5] |= 1 << (idx & 0x1F);
 }
 
 static inline void _BIT_CLR(u32 *bits, int idx)
 {
-	bits[idx / 32] &= ~(1 << (idx % 32));
+	bits[idx >> 5] &= ~(1 << (idx & 0x1F));
 }
 
 static inline bool _BIT_CHK(u32 *bits, int idx)
 {
-	return !!(bits[idx / 32] & (1 << (idx % 32)));
+	return !!(bits[idx >> 5] & (1 << (idx & 0x1F)));
 }
 
 /**
