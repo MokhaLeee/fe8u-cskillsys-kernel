@@ -37,6 +37,7 @@ typedef struct
 static const KeyValuePair dict_skills[] = 
 { 
         { "Absolve", {1000, 1}},
+        { "Absorb Melee", {1000, 1}},
         { "Accost", {1000, 1}},
         { "Acrobat", {1000, 1}},
         { "Adaptable", {1000, 1}},
