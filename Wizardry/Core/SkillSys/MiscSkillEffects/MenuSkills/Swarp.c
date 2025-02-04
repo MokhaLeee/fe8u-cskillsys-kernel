@@ -15,9 +15,18 @@ void ForEachUnitInMagBy2Range(void(*func)(struct Unit* unit));
 
 void TryAddUnitToSwarpTargetList(struct Unit* unit) {
 
-    if (!AreUnitsAllied(gSubjectUnit->index, unit->index)) {
+    bool proceed = true;
+
+    if (!AreUnitsAllied(gSubjectUnit->index, unit->index))
+        proceed = false;
+
+#if defined(SID_Wrestler) && (COMMON_SKILL_VALID(SID_Wrestler))
+    if (SkillTester(gSubjectUnit, SID_Wrestler))
+        proceed = true;
+#endif
+
+    if (!proceed)
         return;
-    }
 
 // If the target unit has anchor they cannot be moved
 #if defined(SID_Anchor) && (COMMON_SKILL_VALID(SID_Anchor))

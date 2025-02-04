@@ -130,10 +130,18 @@ struct Vec2u GetPivotCoord(int x1, int x2, int y1, int y2)
 void TryPivotAllyToTargetList(struct Unit * unit)
 {
 
+    bool proceed = true;
+
     if (!AreUnitsAllied(gSubjectUnit->index, unit->index))
-    {
+        proceed = false;
+
+#if defined(SID_Wrestler) && (COMMON_SKILL_VALID(SID_Wrestler))
+    if (SkillTester(gSubjectUnit, SID_Wrestler))
+        proceed = true;
+#endif
+
+    if (!proceed)
         return;
-    }
 
     if (unit->state & US_RESCUED)
     {

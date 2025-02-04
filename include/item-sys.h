@@ -149,6 +149,7 @@ static const KeyValuePair dict_skills[] =
         { "Corona", {1000, 1}},
         { "Corrosion", {1000, 1}},
         { "Counter", {1000, 1}},
+        { "Counterattack", {1000, 1}},
         { "Counter Magic", {1000, 1}},
         { "Counter Roar", {1000, 1}},
         { "Crit", {1000, 1}},
@@ -646,6 +647,7 @@ static const KeyValuePair dict_skills[] =
         { "Wind Disciple", {1000, 1}},
         { "Wonder Guard", {1000, 1}},
         { "Wrath", {1000, 1}},
+        { "Wrestler", {1000, 1}},
         { "Yune Whispers", {1000, 1}}
 };
 

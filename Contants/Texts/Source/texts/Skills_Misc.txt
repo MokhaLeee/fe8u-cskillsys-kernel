@@ -239,3 +239,8 @@ in the same turn.[X]
 Savior:[N]
 This unit doesn't suffer[N]
 rescue penalties.[X]
+
+## MSG_SKILL_Wrestler
+Wrestler:[N]
+This unit can use movement[N]
+skills on enemyy units.[X]

@@ -40,7 +40,7 @@ SID_Smite
 SID_Entrepreneur
 SID_Arise
 // SID_AssignDecoy
-SID_ShadowFlash
+// SID_ShadowFlash
 
 ////////PRE-BATTLE SKILLS
 // SID_DefiantStr
@@ -665,6 +665,7 @@ SID_Resurrection
 // SID_DangerRanger
 // SID_Savior
 SID_SelfHealing
+// SID_Wrestler
 
 ///////COMBAT ARTS
 // SID_COMBAT_Grounder

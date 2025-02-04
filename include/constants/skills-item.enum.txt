@@ -665,6 +665,7 @@
 // SID_DangerRanger
 // SID_Savior
 // SID_SelfHealing
+// SID_Wrestler
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder
