@@ -28,7 +28,7 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
 
     [CHARACTER_ONEILL] = {
         .skills = {
-            [0] = SID_Counterattack,
+            [0] = SID_AbsorbMelee
         },
     },
 

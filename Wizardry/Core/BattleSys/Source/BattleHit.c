@@ -416,7 +416,16 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             }
 #endif
 
+/* Check if the enemy should die */
+#if (defined(SID_AbsorbMelee) && COMMON_SKILL_VALID(SID_AbsorbMelee))
+            if (BattleSkillTester(defender, SID_AbsorbMelee) && !IsMagicAttack(attacker))
+                    defender->unit.curHP += gBattleStats.damage;
+            else 
+                    defender->unit.curHP -= gBattleStats.damage;
+
+#else
             defender->unit.curHP -= gBattleStats.damage;
+#endif
 
             // if (defender->unit.curHP < 0)
             //     defender->unit.curHP = 0;
@@ -478,7 +487,16 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         BattleHit_InjectNegativeStatus(attacker, defender);
     }
 
+/* Check if to reduce or increase the enemy's HP after attacking */
+#if (defined(SID_AbsorbMelee) && COMMON_SKILL_VALID(SID_AbsorbMelee))
+    if (BattleSkillTester(defender, SID_AbsorbMelee) && !IsMagicAttack(attacker))
+        gBattleHitIterator->hpChange = -gBattleStats.damage;
+    else
+        gBattleHitIterator->hpChange = gBattleStats.damage;
+
+#else
     gBattleHitIterator->hpChange = gBattleStats.damage;
+#endif
 
     BattleHit_ConsumeWeapon(attacker, defender);
 	// BattleHit_ConsumeShield(attacker, defender);
