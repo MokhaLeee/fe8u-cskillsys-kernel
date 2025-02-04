@@ -558,6 +558,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
     }
 #endif
 
+
         gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
 
 #if CHAX

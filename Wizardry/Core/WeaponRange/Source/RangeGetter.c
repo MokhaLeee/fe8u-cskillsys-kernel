@@ -42,6 +42,12 @@ int GetItemMaxRangeRework(u16 item, struct Unit * unit)
 
 int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 {
+
+#if defined(SID_Counterattack) && (COMMON_SKILL_VALID(SID_Counterattack))
+    if (SkillTester(unit, SID_Counterattack))
+        range = (gBmMapSize.x > gBmMapSize.y) ? gBmMapSize.x : gBmMapSize.y;
+#endif
+
     switch (GetItemType(item)) {
     case ITYPE_STAFF:
 #if defined(SID_StaffSavant) && (COMMON_SKILL_VALID(SID_StaffSavant))
@@ -91,6 +97,7 @@ int WeaponRangeGetterSkills(int range, struct Unit * unit, u16 item)
 #endif
         break;
     }
+
     return range;
 }
 

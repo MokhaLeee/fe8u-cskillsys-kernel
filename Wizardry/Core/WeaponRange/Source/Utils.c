@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "status-getter.h"
 #include "weapon-range.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 STATIC_DECLAR u32 GetRangeMask(int min, int max)
 {

@@ -41,3 +41,8 @@ Staff Savant:[NL]
 Self Healing:[NL]
 Unit can target themselves[N]
 with healing staves.[X]
+
+## MSG_SKILL_Counterattack
+Counterattack:[N]
+The unit is able to[N]
+counterattack from any distance.[X]
