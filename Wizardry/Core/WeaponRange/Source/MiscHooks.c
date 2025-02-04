@@ -158,7 +158,7 @@ void AiFloodMovementAndRange(struct Unit *unit, u16 move, u16 item)
 			if (gBmMapMovement[iy][ix] > MAP_MOVEMENT_MAX)
 				continue;
 
-			AddMap(unit->xPos, unit->yPos, mask);
+			AddMap(ix, iy, mask);
 		}
 	}
 }
