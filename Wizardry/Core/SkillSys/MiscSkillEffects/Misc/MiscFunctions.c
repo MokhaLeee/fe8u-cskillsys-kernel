@@ -3369,3 +3369,72 @@ void DrawUnitDisplayHpOrStatus(struct PlayerInterfaceProc* proc, struct Unit* un
 
 //     return;
 // }
+
+LYN_REPLACE_CHECK(BattleUnitTargetCheckCanCounter);
+void BattleUnitTargetCheckCanCounter(struct BattleUnit* bu) {
+
+    if (!bu->canCounter) {
+        bu->battleAttack = 0xFF;
+        bu->battleHitRate = 0xFF;
+        bu->battleEffectiveHitRate = 0xFF;
+        bu->battleCritRate = 0xFF;
+        bu->battleEffectiveCritRate = 0xFF;
+    }
+
+// #if defined(SID_Counterattack) && (COMMON_SKILL_VALID(SID_Counterattack))
+//     if (!BattleSkillTester(bu, SID_Counterattack) && !bu->canCounter)
+//         {
+//             bu->battleAttack = 0xFF;
+//             bu->battleHitRate = 0xFF;
+//             bu->battleEffectiveHitRate = 0xFF;
+//             bu->battleCritRate = 0xFF;
+//             bu->battleEffectiveCritRate = 0xFF;
+//         }
+
+// #else
+//     if (!bu->canCounter) {
+//         bu->battleAttack = 0xFF;
+//         bu->battleHitRate = 0xFF;
+//         bu->battleEffectiveHitRate = 0xFF;
+//         bu->battleCritRate = 0xFF;
+//         bu->battleEffectiveCritRate = 0xFF;
+//     }
+// #endif
+}
+
+LYN_REPLACE_CHECK(BattleInitTargetCanCounter);
+void BattleInitTargetCanCounter(void) {
+    // Target cannot counter if it is a gorgon egg
+
+    if (UNIT_IS_GORGON_EGG(&gBattleTarget.unit)) {
+        gBattleTarget.weapon = 0;
+        gBattleTarget.canCounter = FALSE;
+    }
+
+    // Target cannot counter if either units are using "uncounterable" weapons
+
+#if defined(SID_Counterattack) && (COMMON_SKILL_VALID(SID_Counterattack))
+    if (!SkillTester(&gBattleTarget.unit, SID_Counterattack))
+        {
+            if ((gBattleActor.weaponAttributes | gBattleTarget.weaponAttributes) & IA_UNCOUNTERABLE) 
+            {
+                gBattleTarget.weapon = 0;
+                gBattleTarget.canCounter = FALSE;
+            }
+        }
+#else
+    if ((gBattleActor.weaponAttributes | gBattleTarget.weaponAttributes) & IA_UNCOUNTERABLE) {
+        gBattleTarget.weapon = 0;
+        gBattleTarget.canCounter = FALSE;
+    }
+#endif
+
+    // Target cannot counter if a berserked player unit is attacking another player unit
+
+    if (gBattleActor.unit.statusIndex == UNIT_STATUS_BERSERK) {
+        if ((UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE) && (UNIT_FACTION(&gBattleTarget.unit) == FACTION_BLUE)) {
+            gBattleTarget.weapon = 0;
+            gBattleTarget.canCounter = FALSE;
+        }
+    }
+}

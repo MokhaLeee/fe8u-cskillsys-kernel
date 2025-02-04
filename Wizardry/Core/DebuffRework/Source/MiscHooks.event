@@ -47,7 +47,7 @@ PUSH
 
     ORG $2C88C // BattleInitTargetCanCounter
     BYTE 0x3F
-    PROTECT $2C844 $2C8C4
+    // PROTECT $2C844 $2C8C4
 
     ORG $2D046 // BattleUnwindScripted
     BYTE 0x3F
