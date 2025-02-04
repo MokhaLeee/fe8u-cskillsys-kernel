@@ -275,6 +275,72 @@ PROC_LABEL(14),
     PROC_GOTO(3),
 };
 
+struct PlayerInterfaceProc {
+    PROC_HEADER;
+
+    struct Text unk_2c[2];
+
+    s8 unk_3c;
+    s8 unk_3d;
+    s8 unk_3e;
+    s8 unk_3f;
+
+    u16* unk_40;
+    s16 unk_44;
+    s16 unk_46;
+    s16 unk_48;
+    u8 unk_4a;
+    u8 unk_4b;
+    u8 xCursorPrev;
+    u8 yCursorPrev;
+    u8 xCursor;
+    u8 yCursor;
+    s8 unk_50;
+    u8 unk_51;
+    u8 unk_52;
+    u8 unk_53;
+    u8 unk_54;
+    s8 unk_55;
+    s8 isRetracting;
+    s8 quadrant;
+    int unk_58;
+};
+
+struct PlayerInterfaceConfigEntry {
+    s8 xTerrain, yTerrain;
+    s8 xMinimug, yMinimug;
+    s8 xGoal, yGoal;
+};
+
+static struct PlayerInterfaceConfigEntry const sPlayerInterfaceConfigLut[4] = {
+    {
+        +1, +1,
+        -1, +1,
+        +1, -1,
+    },
+    {
+        -1, +1,
+        -1, -1,
+        +1, +1,
+    },
+    {
+        +1, +1,
+        -1, -1,
+        +1, -1,
+    },
+    {
+        -1, +1,
+        -1, -1,
+        +1, -1,
+    }
+};
+
+extern void DrawHpBar(u16* buffer, struct Unit* unit, int tileBase);
+extern void sub_808C360(struct PlayerInterfaceProc* proc, u16* buffer, struct Unit* unit);
+extern void InitMinimugBoxMaybe(struct PlayerInterfaceProc* proc, struct Unit* unit);
+extern void GetMinimugFactionPalette(int faction, int palId);
+extern void DrawUnitDisplayHpOrStatus(struct PlayerInterfaceProc*, struct Unit*);
+
 
 // struct PrepItemSuppyText PrepItemSuppyTexts = {};
 
@@ -3103,3 +3169,144 @@ const struct ClassData* GetClassData(int classId) {
 
     return gNewClassData + (classId - 1);
 };
+
+LYN_REPLACE_CHECK(StoreNumberStringOrDashesToSmallBuffer);
+void StoreNumberStringOrDashesToSmallBuffer(int n)
+{
+    ClearSmallStringBuffer();
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    StoreNumberStringToSmallBuffer(n);
+#else
+    if (n == 255 || n == -1)
+    {
+        gUnknown_02028E44[7] = ':';
+        gUnknown_02028E44[6] = ':';
+    }
+    else
+    {
+        StoreNumberStringToSmallBuffer(n);
+    }
+#endif
+}
+
+LYN_REPLACE_CHECK(DrawUnitDisplayHpOrStatus);
+void DrawUnitDisplayHpOrStatus(struct PlayerInterfaceProc* proc, struct Unit* unit) {
+    s16 frameCount = proc->unk_44;
+
+    if (unit->statusIndex == UNIT_STATUS_RECOVER) {
+        frameCount = 0;
+    }
+
+    if ((frameCount & 0x3F) == 0) {
+        if ((frameCount & 0x40) != 0) {
+            MMB_DrawStatusText(proc->unk_40, unit);
+
+            BG_EnableSyncByMask(BG0_SYNC_BIT);
+        } else {
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+            StoreNumberStringOrDashesToSmallBuffer(GetUnitCurrentHp(unit));
+#else
+            if (GetUnitCurrentHp(unit) >= 100) {
+                StoreNumberStringOrDashesToSmallBuffer(0xFF);
+            } else {
+                StoreNumberStringOrDashesToSmallBuffer(GetUnitCurrentHp(unit));
+            }
+#endif
+
+            proc->unk_51 = gUnknown_02028E44[6] - 0x30;
+            proc->unk_52 = gUnknown_02028E44[7] - 0x30;
+
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+            StoreNumberStringOrDashesToSmallBuffer(GetUnitMaxHp(unit));
+#else
+            if (GetUnitMaxHp(unit) >= 100) {
+                StoreNumberStringOrDashesToSmallBuffer(0xFF);
+            } else {
+                StoreNumberStringOrDashesToSmallBuffer(GetUnitMaxHp(unit));
+            }
+#endif
+
+            proc->unk_53 = gUnknown_02028E44[6] - 0x30;
+            proc->unk_54 = gUnknown_02028E44[7] - 0x30;
+
+            sub_808C360(proc, proc->unk_40, unit);
+
+            BG_EnableSyncByMask(BG0_SYNC_BIT);
+        }
+    }
+
+    if ((proc->unk_55 == 0) && ((frameCount & 0x40) == 0 || (unit->statusIndex == UNIT_STATUS_NONE))) {
+        int x;
+        int y;
+
+        int x2;
+
+        x = proc->unk_46 * 8;
+        x2 = x + 0x11;
+
+        y = proc->unk_48 * 8;
+
+        if (proc->unk_51 != 0xF0) {
+            CallARM_PushToSecondaryOAM(x2, y, gObject_8x8, proc->unk_51 + 0x82E0);
+        }
+
+        CallARM_PushToSecondaryOAM(x + 0x18, y, gObject_8x8, proc->unk_52 + 0x82E0);
+
+        if (proc->unk_53 != 0xF0) {
+            CallARM_PushToSecondaryOAM(x + 0x29, y, gObject_8x8, proc->unk_53 + 0x82E0);
+        }
+
+        CallARM_PushToSecondaryOAM(x + 0x30, y, gObject_8x8, proc->unk_54 + 0x82E0);
+    }
+
+    return;
+}
+
+LYN_REPLACE_CHECK(InitMinimugBoxMaybe);
+void InitMinimugBoxMaybe(struct PlayerInterfaceProc* proc, struct Unit* unit) {
+    char* str;
+    int pos;
+    int faceId;
+
+    CpuFastFill(0, gUiTmScratchA, 0x180);
+
+    str = GetStringFromIndex(unit->pCharacterData->nameTextId);
+    pos = GetStringTextCenteredPos(0x38, str); // Adjusted width for 3 digits
+
+    ClearText(proc->unk_2c);
+    Text_SetParams(proc->unk_2c, pos, 5);
+    Text_DrawString(proc->unk_2c, str);
+    PutText(proc->unk_2c, gUiTmScratchA + 0x25);
+
+    faceId = GetUnitMiniPortraitId(unit);
+
+    if (unit->state & US_BIT23) {
+        faceId = faceId + 1;
+    }
+
+    PutFaceChibi(faceId, gUiTmScratchA + 0x21, 0xF0, 4, 0);
+
+    proc->unk_40 = gUiTmScratchA + 0x65;
+
+    proc->unk_44 = 0;
+
+    if (sPlayerInterfaceConfigLut[proc->unk_50].xMinimug < 0) {
+        proc->unk_46 = 5;
+    } else {
+        proc->unk_46 = 23;
+    }
+
+    if (sPlayerInterfaceConfigLut[proc->unk_50].yMinimug < 0) {
+        proc->unk_48 = 3;
+    } else {
+        proc->unk_48 = 17;
+    }
+
+    DrawUnitDisplayHpOrStatus(proc, unit);
+    DrawHpBar(&gUiTmScratchA[0x85], unit, 0x1140);
+
+    CallARM_FillTileRect(gUiTmScratchB, gTSA_MinimugBox, 0x3000);
+    GetMinimugFactionPalette(UNIT_FACTION(unit), 3);
+
+    return;
+}

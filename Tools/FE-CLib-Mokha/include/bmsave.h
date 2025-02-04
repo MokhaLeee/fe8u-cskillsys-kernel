@@ -229,9 +229,14 @@ struct SuspendSavePackedUnit {     /* Suspend Data */
     /* 08 */ u16 item1;
     /* 0A */ u16 item2;
     /* 0C */ u16 item3;
-    
+
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
     /* 0E */ u8 maxHP;
     /* 0F */ u8 curHP;
+#else
+    /* 0E */ s8 maxHP;
+    /* 0F */ s8 curHP;
+#endif
     /* 10 */ u8 exp;
     /* 11 */ u8 aiFlags;
     /* 12 */ u8 ranks[8];

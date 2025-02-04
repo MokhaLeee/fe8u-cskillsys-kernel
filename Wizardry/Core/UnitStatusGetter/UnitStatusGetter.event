@@ -28,7 +28,7 @@ PUSH
 ORG $019190
 _thumb(HpMaxGetter)
     jumpToHack(_GetUnitMaxHp)
-    PROTECT $19190 $191AC
+    // PROTECT $19190 $191AC
 
 ORG $0191B0
 _thumb(PowGetter)

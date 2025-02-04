@@ -148,7 +148,7 @@ void PrintDebugStringToBG(u16 *bg, const char *asciiStr);
 // ??? sub_800384C(???);
 // ??? sub_8003870(???);
 // ??? sub_80038B4(???);
-// ??? ClearSmallStringBuffer(???);
+void ClearSmallStringBuffer(void);
 void StoreNumberStringToSmallBuffer(int n);
 void StoreNumberStringOrDashesToSmallBuffer(int n);
 // ??? sub_800394C(???);

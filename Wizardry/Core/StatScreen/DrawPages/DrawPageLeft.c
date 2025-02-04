@@ -50,9 +50,26 @@ STATIC_DECLAR void DisplayHpBmValue(void)
               : TEXT_COLOR_SYSTEM_BLUE;
 
     // Display '/' labels
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    if (hpmax > 99)
+        PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(6, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
+    else
+        PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
+#else
     PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(5, 17), TEXT_COLOR_SYSTEM_GOLD, TEXT_SPECIAL_SLASH);
+#endif
 
     /* Display current hp */
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    if (hpmax > 99)
+        PutNumberOrBlank(
+            gBG0TilemapBuffer + TILEMAP_INDEX(5, 17),
+            color, hpcur);
+    else
+        PutNumberOrBlank(
+            gBG0TilemapBuffer + TILEMAP_INDEX(4, 17),
+            color, hpcur);
+#else
     if (hpcur > 99)
         PutTwoSpecialChar(
             gBG0TilemapBuffer + TILEMAP_INDEX(3, 17),
@@ -61,8 +78,19 @@ STATIC_DECLAR void DisplayHpBmValue(void)
         PutNumberOrBlank(
             gBG0TilemapBuffer + TILEMAP_INDEX(4, 17),
             color, hpcur);
+#endif
 
     /* Display max hp */
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    if (hpmax > 99)
+        PutNumberOrBlank(
+            gBG0TilemapBuffer + TILEMAP_INDEX(9, 17),
+            color, hpmax);
+    else
+        PutNumberOrBlank(
+            gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
+            color, hpmax);
+#else
     if (hpmax > 99)
         PutTwoSpecialChar(
             gBG0TilemapBuffer + TILEMAP_INDEX(6, 17),
@@ -71,6 +99,7 @@ STATIC_DECLAR void DisplayHpBmValue(void)
         PutNumberOrBlank(
             gBG0TilemapBuffer + TILEMAP_INDEX(7, 17),
             color, hpmax);
+#endif
 }
 
 void ToggleUnitLeftPage(bool toggle)

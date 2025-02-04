@@ -69,7 +69,7 @@ void HbPopulate_SSStatus(struct HelpBoxProc * proc)
 }
 
 LYN_REPLACE_CHECK(MMB_DrawStatusText);
-void MMB_DrawStatusText(s16 * buffer, struct Unit * unit)
+void MMB_DrawStatusText(u16 * buffer, struct Unit * unit)
 {
     int tileIdx = 0x16F;
     const u8 * img;

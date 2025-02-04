@@ -259,7 +259,7 @@ PUSH
     BYTE 0x3F
     ORG $8C536
     BYTE 0x3F
-    PROTECT $8C45C $8C5D0
+    // PROTECT $8C45C $8C5D0
 
     /*
     ** Need to unprotect these for Comatose skill

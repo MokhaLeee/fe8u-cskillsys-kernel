@@ -5,7 +5,11 @@
 
 int StatusGetterCheckCpas(int status, struct Unit *unit)
 {
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
+    LIMIT_AREA(status, 0, 255);
+#else
     LIMIT_AREA(status, 0, 127);
+#endif
     return status;
 }
 

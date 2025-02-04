@@ -78,7 +78,11 @@ struct ClassData
     /* 11 */ s8 baseCon;
     /* 12 */ s8 baseMov;
 
+#ifdef CONFIG_UNLOCK_ALLY_MHP_LIMIT
     /* 13 */ u8 maxHP;
+#else
+    /* 13 */ s8 maxHP;
+#endif
     /* 14 */ s8 maxPow;
     /* 15 */ s8 maxSkl;
     /* 16 */ s8 maxSpd;
