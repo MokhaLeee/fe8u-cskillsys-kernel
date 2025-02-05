@@ -20,6 +20,8 @@ extern u32 sSkillFastList[0x40];
 #define SkillFastListActor  (&sSkillFastList[0])
 #define SkillFastListTarget (&sSkillFastList[0x20])
 
+extern void (* gpExternalSkillListGenerator)(struct Unit *unit, struct SkillList *list, u8 *ref);
+
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 {
 	FORCE_DECLARE int weapon;
@@ -104,6 +106,11 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 			list->sid[list->amt++] = sid;
 		}
 	}
+
+	/* external */
+	if (gpExternalSkillListGenerator)
+		gpExternalSkillListGenerator(unit, list, tmp_list);
+
 	WriteUnitList(unit, &list->header);
 }
 
