@@ -13,9 +13,9 @@ struct ProcEfxSkillRework {
 	int frame;
 	u16 sid;
 	struct Anim *anim;
-	const u16 *const * imgs;
-	const u16 *const * pals;
-	const u16 *const * tsas;
+	const u16 *const *imgs;
+	const u16 *const *pals;
+	const u16 *const *tsas;
 	const s16 *frames;
 };
 
@@ -35,16 +35,14 @@ STATIC_DECLAR void EfxSkillMain(struct ProcEfxSkillRework *proc)
 {
 	int ret = EfxAdvanceFrameLut((void *)&proc->timer, (void *)&proc->frame, proc->frames);
 
-	if (ret >= 0)
-	{
+	if (ret >= 0) {
 		int i;
 
 		SpellFx_WriteBgMap(proc->anim, proc->tsas[ret], proc->tsas[ret]);
 		SpellFx_RegisterBgGfx(proc->imgs[ret], 0x2000);
 		SpellFx_RegisterBgPal(proc->pals[ret], 0x20);
 
-		for (i = 0; i < 0x14; i++)
-		{
+		for (i = 0; i < 0x14; i++) {
 			gBG1TilemapBuffer[0x20 * i + 0x1E] = gBG1TilemapBuffer[0];
 			gBG1TilemapBuffer[0x20 * i + 0x1F] = gBG1TilemapBuffer[0];
 		}

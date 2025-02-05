@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "debuff.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 int GetUnitStatusIndex(struct Unit *unit)
 {

@@ -2,7 +2,7 @@
 #include "debuff.h"
 #include "kernel-lib.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 void StartStatusHealEffect(struct Unit *unit, ProcPtr proc);
 
 LYN_REPLACE_CHECK(StatusDecayDisplay_Display);
