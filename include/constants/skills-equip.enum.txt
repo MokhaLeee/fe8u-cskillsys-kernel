@@ -480,9 +480,10 @@ SID_Debilitator
 // SID_Sentinel
 SID_Chipper
 SID_Toxic
-SID_GrazingBlow
-SID_AbsorbMelee
-SID_AbsorbMagic
+// SID_GrazingBlow
+// SID_AbsorbMelee
+// SID_AbsorbMagic
+SID_Duel
 
 ////////EFFECTIVENESS SKILLS
 SID_Resourceful

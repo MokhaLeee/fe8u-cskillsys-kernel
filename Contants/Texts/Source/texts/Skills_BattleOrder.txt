@@ -127,3 +127,8 @@ the target's, counterattack first.[X]
 Echo:[N]
 Attack twice for half damage[N]
 each attack if initiating.[X]
+
+## MSG_SKILL_Duel
+Duel:[N]
+A fight with this unit continues[N]
+until a victor is decided.[X]

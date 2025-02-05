@@ -483,6 +483,7 @@ SID_Canto
 // SID_GrazingBlow
 // SID_AbsorbMelee
 // SID_AbsorbMagic
+// SID_Duel
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful

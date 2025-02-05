@@ -38,6 +38,7 @@ static const KeyValuePair dict_skills[] =
 { 
         { "Absolve", {1000, 1}},
         { "Absorb Melee", {1000, 1}},
+        { "Absorb Magic", {1000, 1}},
         { "Accost", {1000, 1}},
         { "Acrobat", {1000, 1}},
         { "Adaptable", {1000, 1}},
@@ -218,7 +219,8 @@ static const KeyValuePair dict_skills[] =
         { "Drive Spd", {1000, 1}},
         { "Drive Str", {1000, 1}},
         { "Drizzle", {1000, 1}},
-        { "Drought", {1000, 1}},        
+        { "Drought", {1000, 1}},     
+        { "Duel", {1000, 1}},   
         { "Duelist Blow", {1000, 1}},
         { "Earth Boost", {1000, 1}},
         { "Echo", {1000, 1}},

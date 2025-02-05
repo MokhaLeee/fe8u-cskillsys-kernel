@@ -385,6 +385,7 @@ void BattleUnwind(void)
     int ret = 0;
     int round_counter = 1;
     FORCE_DECLARE bool accost_active;
+    FORCE_DECLARE bool duel_active;
 
 #ifdef CONFIG_USE_COMBO_ATTACK
     bool combo_atk_done = false;
@@ -428,8 +429,15 @@ void BattleUnwind(void)
         accost_active = false;
 #endif
 
+#if (defined(SID_Duel) && COMMON_SKILL_VALID(SID_Duel))
+    if (BattleSkillTester(&gBattleActor, SID_Duel) || BattleSkillTester(&gBattleTarget, SID_Duel))
+        duel_active = true;
+    else
+        duel_active = false;
+#endif
+
     do
-    {
+    {   
         for (i = 0; i < 4; i++)
         {
             struct BattleHit * old = gBattleHitIterator;
@@ -507,8 +515,44 @@ void BattleUnwind(void)
                 gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
                 return;
             }
+
+            if (round_counter == 8)
+            {
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
+            }
         }
+
+#if (defined(SID_Duel) && COMMON_SKILL_VALID(SID_Duel))
+        if (duel_active)
+        {
+            ++round_counter;
+        }
+        else 
+        {
 #if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
+            if (!accost_active)
+            {
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                return;
+            }
+            else
+            {
+                if (!ContinueIfAccost(&gBattleActor, &gBattleTarget))
+                {
+                    gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+                    return;
+                }
+            }
+                ++round_counter;
+#else
+            gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+            return;
+#endif
+        }
+#else
+
+    #if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
         if (!accost_active)
         {
             gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
@@ -523,10 +567,13 @@ void BattleUnwind(void)
             }
         }
         ++round_counter;
-#else
-        gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
-        return;
+    #else
+            gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
+            return;
+    #endif
+
 #endif
+
     } while (round_counter < 20);
 }
 
