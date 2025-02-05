@@ -416,16 +416,27 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
             }
 #endif
 
+            bool absorb = false;
+
 /* Check if the enemy should die */
 #if (defined(SID_AbsorbMelee) && COMMON_SKILL_VALID(SID_AbsorbMelee))
-            if (BattleSkillTester(defender, SID_AbsorbMelee) && !IsMagicAttack(attacker))
-                    defender->unit.curHP += gBattleStats.damage;
-            else 
-                    defender->unit.curHP -= gBattleStats.damage;
-
-#else
-            defender->unit.curHP -= gBattleStats.damage;
+            if (BattleSkillTester(defender, SID_AbsorbMelee) && !IsMagicAttack(attacker) && !absorb)
+            {
+                absorb = true;
+                defender->unit.curHP += gBattleStats.damage;
+            }
 #endif
+
+#if (defined(SID_AbsorbMagic) && COMMON_SKILL_VALID(SID_AbsorbMagic))
+            if (BattleSkillTester(defender, SID_AbsorbMagic) && IsMagicAttack(attacker) && !absorb)
+            {
+                absorb = true;
+                defender->unit.curHP += gBattleStats.damage;
+            }
+#endif
+
+            if (!absorb)
+                defender->unit.curHP -= gBattleStats.damage;
 
             // if (defender->unit.curHP < 0)
             //     defender->unit.curHP = 0;
@@ -487,16 +498,27 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         BattleHit_InjectNegativeStatus(attacker, defender);
     }
 
+    bool absorb = false;
+
 /* Check if to reduce or increase the enemy's HP after attacking */
 #if (defined(SID_AbsorbMelee) && COMMON_SKILL_VALID(SID_AbsorbMelee))
-    if (BattleSkillTester(defender, SID_AbsorbMelee) && !IsMagicAttack(attacker))
+    if (BattleSkillTester(defender, SID_AbsorbMelee) && !IsMagicAttack(attacker) && !absorb)
+    {
+        absorb = true;
         gBattleHitIterator->hpChange = -gBattleStats.damage;
-    else
-        gBattleHitIterator->hpChange = gBattleStats.damage;
-
-#else
-    gBattleHitIterator->hpChange = gBattleStats.damage;
+    }
 #endif
+
+#if (defined(SID_AbsorbMagic) && COMMON_SKILL_VALID(SID_AbsorbMagic))
+    if (BattleSkillTester(defender, SID_AbsorbMagic) && IsMagicAttack(attacker) && !absorb)
+    {
+        absorb = true;
+        gBattleHitIterator->hpChange = -gBattleStats.damage;
+    }
+#endif
+
+    if (!absorb)
+        gBattleHitIterator->hpChange = gBattleStats.damage;
 
     BattleHit_ConsumeWeapon(attacker, defender);
 	// BattleHit_ConsumeShield(attacker, defender);

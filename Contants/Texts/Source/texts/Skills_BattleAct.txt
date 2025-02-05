@@ -242,3 +242,8 @@ deal half damage.[X]
 Absorb Melee:{N}
 This unit can absorb damage[N]
 from melee attacks to restore HP.[X]
+
+## MSG_SKILL_AbsorbMagic
+Absorb Magic:[N]
+This unit can absorb damage[N]
+from magic attacks to restore HP.[X]

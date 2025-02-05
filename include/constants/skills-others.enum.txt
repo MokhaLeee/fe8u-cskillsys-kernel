@@ -482,6 +482,7 @@ SID_Canto
 // SID_Toxic
 // SID_GrazingBlow
 // SID_AbsorbMelee
+// SID_AbsorbMagic
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful
