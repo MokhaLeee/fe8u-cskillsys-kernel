@@ -6,7 +6,7 @@
 
 #include <shield.h>
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 extern struct {
 	struct UnitListHeader header;

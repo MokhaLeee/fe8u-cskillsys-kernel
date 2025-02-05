@@ -2,6 +2,7 @@
 #include "debuff.h"
 #include "kernel-lib.h"
 
+#define LOCAL_TRACE 0
 void StartStatusHealEffect(struct Unit *unit, ProcPtr proc);
 
 LYN_REPLACE_CHECK(StatusDecayDisplay_Display);
@@ -56,6 +57,7 @@ void TickActiveFactionTurn(void)
 					TryTickUnitStatusDuration(unit); \
 				if (GetUnitStatusDuration(unit) == 0) \
 					AddTarget(unit->xPos, unit->yPos, unit->index, 0); \
+				LTRACEF("[uid=0x%02X, pid=0x%02X] status=%d, dura=%d", unit->index & 0xFF, UNIT_CHAR_ID(unit), _status, _duration); \
 			} \
 		} while (0)
 

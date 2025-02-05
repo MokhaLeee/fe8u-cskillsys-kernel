@@ -94,6 +94,10 @@ static inline bool IsDebuff(int status_idx)
 }
 
 void PutUnitDanceRingBuffIcon(struct Unit *unit, int ix, int iy);
+void PutUnitPoisonDebuffOAM(struct Unit *unit, int x, int y);
+void PutUnitSleepDebuffOAM(struct Unit *unit, int x, int y);
+void PutUnitBerserkDebuffOAM(struct Unit *unit, int x, int y);
+void PutUnitSilenceDebuffOAM(struct Unit *unit, int x, int y);
 
 void PreBattleCalcDebuffs(struct BattleUnit *attacker, struct BattleUnit *defender);
 int PowGetterDebuff(int status, struct Unit *unit);

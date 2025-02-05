@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "debuff.h"
 #include "event-rework.h"
 #include "constants/skills.h"
 
@@ -353,19 +354,47 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 		}},
 		.ai = { 0, 4, 9, 0 }
 	},
+{
+		.charIndex = 0x80,
+		.classIndex = CLASS_BRIGAND,
+		.allegiance = FACTION_ID_RED,
+		.autolevel = true,
+		.level = 1,
+		.xPosition = 10,
+		.yPosition = 10,
+	},
+	{
+		.charIndex = 0x80,
+		.classIndex = CLASS_BRIGAND,
+		.allegiance = FACTION_ID_RED,
+		.autolevel = true,
+		.level = 5,
+		.xPosition = 10,
+		.yPosition = 11,
+	},
+	{
+		.charIndex = 0x80,
+		.classIndex = CLASS_BRIGAND,
+		.allegiance = FACTION_ID_RED,
+		.autolevel = true,
+		.level = 10,
+		.xPosition = 10,
+		.yPosition = 12,
+	},
 	{}
 };
 
 static void modify_unit_status(void)
 {
 	struct Unit *unit;
-	
+
 	unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
 	if (unit) {
 #if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
 		UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
 #endif
 
+		unit->items[0] = (10 << 8) | ITEM_LANCE_IRON;
 		unit->ranks[ITYPE_LANCE] = WPN_EXP_B - 1;
 		unit->level = 10;
 	}
@@ -378,6 +407,36 @@ static void modify_unit_status(void)
 	unit = GetUnitFromCharId(CHARACTER_MYRRH);
 	if (unit) {
 		unit->exp = 99;
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_NATASHA);
+	if (unit) {
+		unit->res = 20;
+	}
+}
+
+static void modify_unit_status_post_prep(void)
+{
+	struct Unit *unit;
+
+	unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_POISON);
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_SELENA);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_SILENCED);
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_NOVALA);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_BERSERK);
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_RIEV);
+	if (unit) {
+		SetUnitStatus(unit, UNIT_STATUS_SLEEP);
 	}
 }
 
@@ -473,8 +532,13 @@ static const EventScr EventScr_Beginning[] = {
 	SVAL(EVT_SLOT_3, ITEM_VULNERARY)
 	GIVEITEMTO(CHARACTER_EPHRAIM)
 
+	SVAL(EVT_SLOT_3, 4000)
+	GIVEITEMTOMAIN(0)
+
 	// PREP
 	CALL(EventScr_08591FD8)
+
+	ASMC(modify_unit_status_post_prep)
 
 	SVAL(EVT_SLOT_1, 12)
 	SET_HP(CHARACTER_KNOLL)

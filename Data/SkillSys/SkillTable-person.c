@@ -14,8 +14,8 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 	},
 
 	[CHARACTER_EPHRAIM] = {
-#if (defined(SID_Tsuzuku) && COMMON_SKILL_VALID(SID_Tsuzuku))
-		SID_Tsuzuku,
+#if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
+		SID_Blacksmith,
 #endif
 
 #if (defined(SID_COMBAT_Detonate) && COMMON_SKILL_VALID(SID_COMBAT_Detonate))
@@ -26,6 +26,10 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 	[CHARACTER_NATASHA] = {
 #if (defined(SID_Latona) && COMMON_SKILL_VALID(SID_Latona))
 		SID_Latona,
+#endif
+
+#if (defined(SID_YuneWhispers) && COMMON_SKILL_VALID(SID_YuneWhispers))
+		SID_YuneWhispers,
 #endif
 	},
 

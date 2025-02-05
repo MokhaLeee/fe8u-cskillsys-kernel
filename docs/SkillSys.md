@@ -119,9 +119,9 @@ Add icon to [gfx directory](../Contents/Gfx/Sources/SkillIcon/), you just need t
 
 ### 3. Skill description & name
 
-Add text to [texts.txt](../Contents/Texts/Source/texts.txt), then kernel may automatically generate msg index in [constants/texts.h](../include/constants/texts.h).
+Add text to [texts.txt](../Contents/Texts/Source/kernel.txt), then kernel may automatically generate msg index in [constants/texts.h](../include/constants/texts.h).
 
-Skill name is optional. You can also add a msg to texts, but kernel may also directly find the skill name inside skill description (by finding the character "`:`" through function [SkillDescToName()](../Wizardry/Core/SkillSys/kernel/Infos.c#L40)).
+Skill name is optional. You can also add a msg to texts, but kernel may also directly find the skill name inside skill description (by finding the character "`:`" through function [SkillDescToName()](../Wizardry/Core/SkillSys/kernel/Infos.c#L46)).
 
 Once you have done all of the components, go to [SkillInfo.c](../Data/SkillSys/SkillInfo.c) and append your info:
 

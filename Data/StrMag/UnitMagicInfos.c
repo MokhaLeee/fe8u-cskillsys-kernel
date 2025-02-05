@@ -696,8 +696,8 @@ const struct UnitMagicInfo gMagicJInfos[0x100] = {
 		.bonus = 0,
 	},
 	[CLASS_BRIGAND] = {
-		.base = 0,
-		.growth = 0,
+		.base = 2,
+		.growth = 20,
 		.cap = 20,
 		.bonus = 0,
 	},

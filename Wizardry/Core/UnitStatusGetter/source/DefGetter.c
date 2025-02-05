@@ -11,6 +11,9 @@ int _GetUnitDefense(struct Unit *unit)
 	for (it = gpDefGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalDefGetters)
+		status = gpExternalDefGetters(status, unit);
+
 	return status;
 }
 

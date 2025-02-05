@@ -12,6 +12,9 @@ int _GetUnitMov(struct Unit *unit)
 	for (it = gpMovGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalMovGetters)
+		status = gpExternalMovGetters(status, unit);
+
 	/* Some special effects */
 	if (gpDebuffInfos[GetUnitStatusIndex(unit)].cannot_move)
 		status = 0;

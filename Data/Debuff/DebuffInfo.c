@@ -16,6 +16,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Posion,
 		.efx_config = {EFX_DEBUFF_NORMAL, 0x10, 0, 0x10},
+		.on_draw = PutUnitPoisonDebuffOAM,
 	},
 	[UNIT_STATUS_SLEEP] = {
 		.name = 0x515,
@@ -25,6 +26,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Sleep,
 		.efx_config = {EFX_DEBUFF_NORMAL, 0, 0, 0x10},
+		.on_draw = PutUnitSleepDebuffOAM,
 	},
 	[UNIT_STATUS_SILENCED] = {
 		.name = 0x516,
@@ -33,6 +35,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Silence,
+		.on_draw = PutUnitSilenceDebuffOAM,
 	},
 	[UNIT_STATUS_BERSERK] = {
 		.name = 0x517,
@@ -42,6 +45,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Berserk,
 		.efx_config = {EFX_DEBUFF_NORMAL, 0x10, 0, 0},
+		.on_draw = PutUnitBerserkDebuffOAM,
 	},
 	[UNIT_STATUS_ATTACK] = {
 		.name = 0x51B,

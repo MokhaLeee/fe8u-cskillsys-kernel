@@ -18,5 +18,8 @@ int _GetUnitAid(struct Unit *unit)
 	for (it = gpAidGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalAidGetters)
+		status = gpExternalAidGetters(status, unit);
+
 	return status;
 }

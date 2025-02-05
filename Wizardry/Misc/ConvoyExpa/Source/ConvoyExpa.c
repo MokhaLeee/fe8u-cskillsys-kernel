@@ -5,7 +5,7 @@ enum { CHAX_CONVOY_MAX_VOLUME = 0x300 };
 extern int sExpaConvoyItemCount; // gConvoyItemCount is just a u8 that can be no more than 255, not enough
 extern u16 sExpaConvoyItemArray[CHAX_CONVOY_MAX_VOLUME];
 
-const int sExpaConvoyItemAmount = CONFIG_INSTALL_CONVOYEXPA_AMT;
+extern const int sExpaConvoyItemAmount;
 
 /* Save API */
 void SaveExpaConvoy(u8 *dst, const u32 size)

@@ -11,6 +11,9 @@ int _GetUnitPower(struct Unit *unit)
 	for (it = gpPowGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalPowGetters)
+		status = gpExternalPowGetters(status, unit);
+
 	return status;
 }
 

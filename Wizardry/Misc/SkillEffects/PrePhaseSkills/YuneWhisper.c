@@ -3,12 +3,13 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 struct ProcYuneWhisper {
 	PROC_HEADER;
 
 	int uid;
 	struct Unit *unit;
-	struct SelectTarget *target;
 };
 
 STATIC_DECLAR void YuneWhisper_Init(struct ProcYuneWhisper *proc)
@@ -56,12 +57,14 @@ STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper *proc)
 #else
 			if (res1 > (res2 + 3))
 #endif
+			{
 				AddTarget(unit_tar->xPos, unit_tar->yPos, i, 0);
+				LTRACEF("[act=0x%02X, tar=0x%02X] x=%d, y=%d", unit->index & 0xFF, unit_tar->index & 0xFF, unit_tar->xPos, unit_tar->yPos);
+			}
 		}
 
 		if (GetSelectTargetCount() != 0) {
 			Proc_Break(proc);
-			proc->target = GetLinkedTargets();
 			return;
 		}
 	}
@@ -69,24 +72,24 @@ STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper *proc)
 
 STATIC_DECLAR void YuneWhisper_Exec(struct ProcYuneWhisper *proc)
 {
+	int i;
+
 	if (!UNIT_IS_VALID(proc->unit) || proc->uid >= (gPlaySt.faction + 0x40)) {
 		Proc_Goto(proc, 99);
 		return;
 	}
 
-	while (1) {
-		struct Unit *unit_tar = GetUnit(proc->target->uid);
-
-		proc->target = proc->target->next;
+	for (i = 0; i < GetSelectTargetCount(); i++) {
+		struct SelectTarget *target = GetTarget(i);
+		struct Unit *unit_tar = GetUnit(target->uid);
 
 		if (UNIT_IS_VALID(unit_tar)) {
 			/* For now, no anim is introduced */
 			SetUnitStatDebuff(unit_tar, UNIT_STAT_DEBUFF_YuneWhispers);
 		}
-
-		if (proc->target == GetLinkedTargets())
-			Proc_Break(proc);
 	}
+
+	Proc_Break(proc);
 }
 
 FORCE_DECLARE STATIC_DECLAR const struct ProcCmd ProcScr_PrePhaseYuneWhisper[] = {

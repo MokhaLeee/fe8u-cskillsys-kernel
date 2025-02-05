@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "debuff.h"
 
+#define LOCAL_TRACE 0
+
 bool UNIT_STONED(struct Unit *unit)
 {
 	return (UNIT_STATUS_INDEX(unit) == UNIT_STATUS_PETRIFY || UNIT_STATUS_INDEX(unit) == UNIT_STATUS_13);
@@ -20,6 +22,8 @@ void SetUnitStatus(struct Unit *unit, int status)
 
 		if (duration == 0)
 			duration = 3;
+
+		LTRACEF("[pid=0x%02X] sttaus=%d, dura=%d", status, duration);
 
 		SetUnitStatusIndex(unit, status);
 		SetUnitStatusDuration(unit, duration);
