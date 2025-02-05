@@ -5,6 +5,8 @@
 #include "constants/skills.h"
 #include "strmag.h"
 
+extern int (* gpExternalPrePhaseHealCalc)(int cur, struct Unit *unit);
+
 FORCE_DECLARE static int has_ally(struct Unit *unit)
 {
 	int i;
@@ -77,6 +79,10 @@ STATIC_DECLAR int GetPrePhaseHealAmount(struct Unit *unit)
 	if (SkillTester(unit, SID_RainDish) && gPlaySt.chapterWeatherId == WEATHER_RAIN)
 		ret += Div(GetUnitMaxHp(unit) * SKILL_EFF0(SID_Renewal), 100);
 #endif
+
+	if (gpExternalPrePhaseHealCalc)
+		ret = gpExternalPrePhaseHealCalc(ret, unit);
+
 	return ret;
 }
 
