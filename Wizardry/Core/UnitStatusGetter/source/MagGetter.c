@@ -12,6 +12,9 @@ int _GetUnitMagic(struct Unit *unit)
 	for (it = gpMagGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalMagGetters)
+		status = gpExternalMagGetters(status, unit);
+
 	return status;
 }
 

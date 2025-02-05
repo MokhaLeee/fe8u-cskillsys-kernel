@@ -11,6 +11,9 @@ int _GetUnitLuck(struct Unit *unit)
 	for (it = gpLckGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalLckGetters)
+		status = gpExternalLckGetters(status, unit);
+
 	return status;
 }
 

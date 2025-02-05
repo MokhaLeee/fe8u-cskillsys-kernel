@@ -14,6 +14,9 @@ int _GetUnitSkill(struct Unit *unit)
 	for (it = gpSklGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalSklGetters)
+		status = gpExternalSklGetters(status, unit);
+
 	return status;
 }
 

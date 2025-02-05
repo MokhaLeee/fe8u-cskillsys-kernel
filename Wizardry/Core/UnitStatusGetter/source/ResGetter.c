@@ -11,6 +11,9 @@ int _GetUnitResistance(struct Unit *unit)
 	for (it = gpResGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalResGetters)
+		status = gpExternalResGetters(status, unit);
+
 	return status;
 }
 

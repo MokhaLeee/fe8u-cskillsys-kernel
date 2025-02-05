@@ -16,6 +16,18 @@ extern StatusGetterFunc_t const *const gpMovGetters;
 extern StatusGetterFunc_t const *const gpConGetters;
 extern StatusGetterFunc_t const *const gpAidGetters;
 
+extern StatusGetterFunc_t const gpExternalHpGetters;
+extern StatusGetterFunc_t const gpExternalPowGetters;
+extern StatusGetterFunc_t const gpExternalMagGetters;
+extern StatusGetterFunc_t const gpExternalSklGetters;
+extern StatusGetterFunc_t const gpExternalSpdGetters;
+extern StatusGetterFunc_t const gpExternalLckGetters;
+extern StatusGetterFunc_t const gpExternalDefGetters;
+extern StatusGetterFunc_t const gpExternalResGetters;
+extern StatusGetterFunc_t const gpExternalMovGetters;
+extern StatusGetterFunc_t const gpExternalConGetters;
+extern StatusGetterFunc_t const gpExternalAidGetters;
+
 int HpMaxGetter(struct Unit *unit);
 int PowGetter(struct Unit *unit);
 int MagGetter(struct Unit *unit);

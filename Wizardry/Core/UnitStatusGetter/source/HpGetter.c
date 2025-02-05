@@ -11,6 +11,9 @@ int _GetUnitMaxHp(struct Unit *unit)
 	for (it = gpHpGetters; *it; it++)
 		status = (*it)(status, unit);
 
+	if (gpExternalHpGetters)
+		status = gpExternalHpGetters(status, unit);
+
 	return status;
 }
 
