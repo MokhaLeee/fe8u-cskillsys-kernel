@@ -54,6 +54,7 @@ extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];
 extern u16 gAnimRoundDataRe[NEW_BATTLE_HIT_MAX];
 extern u16 gEfxHpLutRe[NEW_BATTLE_HIT_MAX * 3];
 
+// extern struct BattleHit *const prBattleHitArray;
 extern void * const prBattleHitArray;
 extern u8 BattleHitArrayWidth;
 
