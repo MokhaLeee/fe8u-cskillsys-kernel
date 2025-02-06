@@ -379,8 +379,6 @@ int ArenaGetPowerRanking(struct Unit* unit, s8 opponentIsMagic) {
     result += unit->lck;
     result += UNIT_CON_BASE(unit);
 
-    result = 1;
-
     if (opponentIsMagic) {
         result += GetUnitResistance(unit) * 2;
     } else {

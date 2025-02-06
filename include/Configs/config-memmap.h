@@ -36,7 +36,7 @@
  */
 #define KernelMagicSize 0x10
 #define KernelRelocSize 0x400
-#define KernelDataSize  0xCD5E0 // Original size: 0xCD5E0
+#define KernelDataSize  0xED5E0 // Original size: 0xCD5E0
 #define MsgTableSize    0x800C
 
 #define FreeSpaceKernel_Magic    (FreeSpaceKernel + 0x0)

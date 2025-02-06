@@ -111,9 +111,9 @@
 
 //#include "TrapRework/Installer.event"
 
-#ifdef CONFIG_VESLY_AOE
-    #include "VeslyAOE/Installer.event"
-#endif
+// #ifdef CONFIG_VESLY_AOE
+//     #include "VeslyAOE/Installer.event"
+// #endif
 
 #ifdef CONFIG_CHAPTER_NAMES_AS_TEXT
     #include "ChapterNames/Installer.event"

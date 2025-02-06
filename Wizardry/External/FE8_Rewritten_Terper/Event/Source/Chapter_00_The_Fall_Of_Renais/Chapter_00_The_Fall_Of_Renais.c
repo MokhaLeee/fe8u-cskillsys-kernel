@@ -173,6 +173,19 @@ static const struct UnitDefinition Grado_Reinforcements_Enemy[] = {
     {}
 };
 
+void SetGameOptions() 
+{
+    SetGameOption(0, 2); // Set battle animations off
+    SetGameOption(4, 1); // Set game speed to max
+    SetGameOption(5, 3); // Set text speed to max
+
+    SetPartyGoldAmount(10000);
+
+    struct Unit * unit = GetUnitFromCharId(CHARACTER_EIRIKA);
+    unit->maxHP = 26;
+    unit->curHP = 26;
+}
+
 /**
  * Main events
  */
@@ -272,6 +285,7 @@ static const EventScr EventScr_Beginning[] = {
     // GIVE_SKILL_SCROLL_TO(SID_GoddessDance, CHARACTER_EIRIKA)
     // UseArrowTrap(0, 1, 2)
     // ASMC(TelliusTorchOn(3,2,3))
+    ASMC(SetGameOptions)
     ENDA
 };
 
