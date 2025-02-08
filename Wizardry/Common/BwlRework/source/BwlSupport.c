@@ -153,6 +153,7 @@ struct SupportTalkEnt * GetSupportTalkEntry(u16 pidA, u16 pidB)
 }
 
 //! FE8U = 0x080a3724
+LYN_REPLACE_CHECK(UpdateBestGlobalSupportValue);
 bool UpdateBestGlobalSupportValue(int unitA, int unitB, int supportRank) {
     int convo;
     int var0;

@@ -35,7 +35,7 @@ static inline struct NewBwl * GetNewBwl(u8 pid)
     if (!CheckHasBwl(pid))
         return NULL;
 
-    return entry + (pid - 1);
+    return entry + (pid);
 }
 
 extern char * GetSkillNameStr(const u16 sid);
@@ -879,7 +879,7 @@ void EditWExpIdle(DebuggerProc* proc) {
     } 
 } 
 
-#define SkillsWidth 10
+#define SkillsWidth 12
 #define SkillsOptions 7 
 void RedrawUnitSkillsMenu(DebuggerProc* proc);
 void EditSkillsInit(DebuggerProc* proc) { 
@@ -890,7 +890,7 @@ void EditSkillsInit(DebuggerProc* proc) {
         proc->tmp[i] = unit->supports[i]; 
     } 
     
-    int x = NUMBER_X - SkillsWidth - 1; 
+    int x = NUMBER_X - SkillsWidth + 1; 
     int y = Y_HAND - 1; 
     int w = SkillsWidth + (START_X - NUMBER_X) + 3; 
     int h = (SkillsOptions * 2) + 2; 
@@ -907,7 +907,7 @@ void EditSkillsInit(DebuggerProc* proc) {
     struct Text* th = gStatScreen.text;
     
     for (int i = 0; i < 15; ++i) { 
-        InitText(&th[i], SkillsWidth);
+        InitText(&th[i], SkillsWidth+2);
         Text_DrawString(&th[i], ""); 
     } 
     
@@ -943,7 +943,7 @@ void RedrawUnitSkillsMenu(DebuggerProc* proc) {
     ResetIconGraphics(); // Add this to reset icon state
 
     struct Text* th = gStatScreen.text;
-    int x = NUMBER_X - SkillsWidth;
+    int x = NUMBER_X - SkillsWidth + 2;
 
     // Clear and redraw all skill name texts
     for (int i = 0; i < SkillsOptions; ++i) {
@@ -957,7 +957,7 @@ void RedrawUnitSkillsMenu(DebuggerProc* proc) {
         PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x+2, Y_HAND + (i*2)));
 
         // Draw skill IDs
-        PutNumber(gBG0TilemapBuffer + TILEMAP_INDEX(START_X, Y_HAND + (i*2)), 
+        PutNumber(gBG0TilemapBuffer + TILEMAP_INDEX(START_X+2, Y_HAND + (i*2)), 
         TEXT_COLOR_SYSTEM_GOLD, proc->tmp[i]);
 
         // Draw skill icon
@@ -990,7 +990,7 @@ void EditSkillsIdle(DebuggerProc* proc) {
         m4aSongNumStart(0x6B); 
     };
     if (proc->editing) { 
-        DisplayVertUiHand(CursorLocationTable[proc->digit].x, (Y_HAND + (proc->id * 2)) * 8); 	
+        DisplayVertUiHand(CursorLocationTable[proc->digit].x+16, (Y_HAND + (proc->id * 2)) * 8); 	
         int max = 255; 
         int min = 0; 
         int max_digits = GetMaxDigits(max, 0); 
@@ -1026,7 +1026,7 @@ void EditSkillsIdle(DebuggerProc* proc) {
         }
     }
     else { 
-        DisplayUiHand(CursorLocationTable[0].x - ((SkillsWidth + 2) * 8), (Y_HAND + (proc->id * 2)) * 8);
+        DisplayUiHand(CursorLocationTable[0].x - ((SkillsWidth + 2) * 7), (Y_HAND + (proc->id * 2)) * 8);
         if (keys & DPAD_RIGHT) {
             proc->digit = 1; 
           proc->editing = true; 
