@@ -1,5 +1,44 @@
 #include "C_Code.h" // headers 
 #include "debug-kit.h"
+#include "constants/gfx.h"
+
+#define PACKED __attribute__((packed))
+
+struct NewBwl {
+    /* vanilla */
+    u32 battleAmt : 12;
+    u32 winAmt    : 11;
+    u32 lossAmt   : 8;
+    u32 levelGain : 9;
+
+    /* bwl support */
+    u8 supports[UNIT_SUPPORT_MAX_COUNT];
+
+    u8 _pad_[0x10 - 0x0C];
+};
+
+static inline bool CheckHasBwl(u8 pid)
+{
+    if (pid >= BWL_ARRAY_NUM)
+        return false;
+
+    if (GetCharacterData(pid)->affinity == 0)
+        return false;
+
+    return true;
+}
+
+static inline struct NewBwl * GetNewBwl(u8 pid)
+{
+    struct NewBwl * entry = (struct NewBwl *)gPidStatsData;
+    if (!CheckHasBwl(pid))
+        return NULL;
+
+    return entry + (pid - 1);
+}
+
+extern char * GetSkillNameStr(const u16 sid);
+
 #define PUREFUNC __attribute__((pure))
 int Mod(int a, int b) PUREFUNC;
 
@@ -194,6 +233,8 @@ void ChStateInit(DebuggerProc* proc);
 void ChStateIdle(DebuggerProc* proc);
 void EditWExpInit(DebuggerProc* proc);
 void EditWExpIdle(DebuggerProc* proc);
+void EditSkillsInit(DebuggerProc* proc);
+void EditSkillsIdle(DebuggerProc* proc);
 void EditSupportsInit(DebuggerProc* proc);
 void EditSupportsIdle(DebuggerProc* proc);
 u8 CanActiveUnitPromote(void);
@@ -215,8 +256,9 @@ u8 CanActiveUnitPromote(void);
 #define StateLabel 14
 #define ChStateLabel 15
 #define WExpLabel 16
-#define SupportLabel 17
-#define LoopLabel 18
+#define SkillsLabel 17
+#define SupportLabel 18
+#define LoopLabel 19
 #define EndLabel 99 
 
 #define ActionID_Promo 1 
@@ -338,10 +380,15 @@ const struct ProcCmd DebuggerProcCmd[] =
     PROC_REPEAT(EditWExpIdle), 
     PROC_GOTO(EndLabel), 
 
+    PROC_LABEL(SkillsLabel), // Skills
+    PROC_CALL(EditSkillsInit),
+    PROC_REPEAT(EditSkillsIdle), 
+    PROC_GOTO(EndLabel), 
+
     PROC_LABEL(SupportLabel), // Supports
     PROC_CALL(EditSupportsInit),
-    PROC_REPEAT(EditSupportsIdle), 
-    PROC_GOTO(EndLabel), 
+    PROC_REPEAT(EditSupportsIdle),
+    PROC_GOTO(EndLabel),
     
     PROC_LABEL(EndLabel), 
     PROC_CALL(ClearActiveUnitStuff),
@@ -831,20 +878,21 @@ void EditWExpIdle(DebuggerProc* proc) {
     } 
 } 
 
-#define SupportWidth 5
-#define SupportOptions 7 
-void RedrawUnitSupportsMenu(DebuggerProc* proc);
-void EditSupportsInit(DebuggerProc* proc) { 
+#define SkillsWidth 10
+#define SkillsOptions 7 
+void RedrawUnitSkillsMenu(DebuggerProc* proc);
+void EditSkillsInit(DebuggerProc* proc) { 
     SomeMenuInit(proc); 
+    LoadIconPalettes(4);
     struct Unit* unit = proc->unit; 
-    for (int i = 0; i < SupportOptions; ++i) { 
+    for (int i = 0; i < SkillsOptions; ++i) { 
         proc->tmp[i] = unit->supports[i]; 
     } 
     
-    int x = NUMBER_X - SupportWidth - 1; 
+    int x = NUMBER_X - SkillsWidth - 1; 
     int y = Y_HAND - 1; 
-    int w = SupportWidth + (START_X - NUMBER_X) + 3; 
-    int h = (SupportOptions * 2) + 2; 
+    int w = SkillsWidth + (START_X - NUMBER_X) + 3; 
+    int h = (SkillsOptions * 2) + 2; 
     
     DrawUiFrame(
         BG_GetMapBuffer(1), // back BG
@@ -858,49 +906,76 @@ void EditSupportsInit(DebuggerProc* proc) {
     struct Text* th = gStatScreen.text;
     
     for (int i = 0; i < 15; ++i) { 
-        InitText(&th[i], SupportWidth);
+        InitText(&th[i], SkillsWidth);
         Text_DrawString(&th[i], ""); 
     } 
     
-    if (unit->pCharacterData->pSupportData) { 
-        int uid; 
-        for (int i = 0; i < SupportOptions; ++i) { 
-            uid = unit->pCharacterData->pSupportData->characters[i]; 
-            if (uid) { 
-            Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(uid)->nameTextId));
-            } 
+    int uid; 
+    for (int i = 0; i < SkillsOptions; ++i) { 
+        uid = unit->supports[i]; 
+        if (uid) { 
+        Text_DrawString(&th[i], GetSkillNameStr(uid));
         } 
     } 
-    RedrawUnitSupportsMenu(proc);
+    RedrawUnitSkillsMenu(proc);
 }
 
-void RedrawUnitSupportsMenu(DebuggerProc* proc) { 
-	TileMap_FillRect(gBG0TilemapBuffer + TILEMAP_INDEX(NUMBER_X-2, Y_HAND), 9, 2 * SupportOptions, 0);
-	BG_EnableSyncByMask(BG0_SYNC_BIT);
-    //ResetText();
+enum icon_sheet_idx {
+    ICON_SHEET_VANILLA,
+    ICON_SHEET_AFFIN,
+    ICON_SHEET_MOUNT,
+    ICON_SHEET_WTYPE,
+    ICON_SHEET_COMBATART,
+    ICON_SHEET_SKILL0,
+    ICON_SHEET_SKILL1,
+    ICON_SHEET_SKILL2,
+    ICON_SHEET_SKILL3,
+
+    ICON_SHEET_AMT = 16
+};
+
+#define SKILL_ICON(sid)   ((ICON_SHEET_SKILL0 << 8) + (sid))
+
+void RedrawUnitSkillsMenu(DebuggerProc* proc) { 
+    TileMap_FillRect(gBG0TilemapBuffer + TILEMAP_INDEX(NUMBER_X-2, Y_HAND), 9, 2 * SkillsOptions, 0);
+    BG_EnableSyncByMask(BG0_SYNC_BIT);
+    ResetIconGraphics(); // Add this to reset icon state
+
     struct Text* th = gStatScreen.text;
-    int x = NUMBER_X - SupportWidth; 
-    for (int i = 0; i < SupportOptions; ++i) { 
-        PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x, Y_HAND + (i*2))); 
-    } 
+    int x = NUMBER_X - SkillsWidth;
 
-    for (int i = 0; i < SupportOptions; ++i) { 
-        PutNumber(gBG0TilemapBuffer + TILEMAP_INDEX(START_X, Y_HAND + (i*2)), TEXT_COLOR_SYSTEM_GOLD, proc->tmp[i]); 
-    } 
+    // Clear and redraw all skill name texts
+    for (int i = 0; i < SkillsOptions; ++i) {
+        ClearText(&th[i]);
+        // Only draw name if skill ID is non-zero
+        if (proc->tmp[i]) {
+            // Add extra space at start of text for icon
+            Text_SetCursor(&th[i], 2);
+            Text_DrawString(&th[i], GetSkillNameStr(proc->tmp[i]));
+        }
+        PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x+2, Y_HAND + (i*2)));
 
-	BG_EnableSyncByMask(BG0_SYNC_BIT);
+        // Draw skill IDs
+        PutNumber(gBG0TilemapBuffer + TILEMAP_INDEX(START_X, Y_HAND + (i*2)), 
+        TEXT_COLOR_SYSTEM_GOLD, proc->tmp[i]);
+
+        // Draw skill icon
+        DrawIcon(TILEMAP_LOCATED(gBG0TilemapBuffer, x, Y_HAND + (i*2)), SKILL_ICON(proc->tmp[i]), 0x4000);
+    }
+
+    BG_EnableSyncByMask(BG0_SYNC_BIT);
 
 }
 
 
-void SaveSupports(DebuggerProc* proc) { 
+void SaveSkills(DebuggerProc* proc) { 
     struct Unit* unit = proc->unit; 
-    for (int i = 0; i < SupportOptions; ++i) { 
+    for (int i = 0; i < SkillsOptions; ++i) { 
         unit->supports[i] = proc->tmp[i]; 
     } 
 } 
 
-void EditSupportsIdle(DebuggerProc* proc) { 
+void EditSkillsIdle(DebuggerProc* proc) { 
     
 	//DisplayVertUiHand(CursorLocationTable[proc->digit].x, CursorLocationTable[proc->digit].y); // 6 is the tile of the downwards hand 	
 	u16 keys = sKeyStatusBuffer.repeatedKeys; 
@@ -909,10 +984,173 @@ void EditSupportsIdle(DebuggerProc* proc) {
         m4aSongNumStart(0x6B); 
     };
     if ((keys & START_BUTTON)||(keys & A_BUTTON)) { //press A or Start to update Supports and continue 
-        SaveSupports(proc); 
+        SaveSkills(proc); 
         Proc_Goto(proc, RestartLabel);
         m4aSongNumStart(0x6B); 
     };
+    if (proc->editing) { 
+        DisplayVertUiHand(CursorLocationTable[proc->digit].x, (Y_HAND + (proc->id * 2)) * 8); 	
+        int max = 255; 
+        int min = 0; 
+        int max_digits = GetMaxDigits(max, 0); 
+        
+        if (keys & DPAD_RIGHT) {
+          if (proc->digit > 0) { proc->digit--; }
+          else { proc->digit = max_digits - 1; proc->editing = false; } 
+          RedrawUnitSkillsMenu(proc);
+        }
+        if (keys & DPAD_LEFT) {
+          if (proc->digit < (max_digits-1)) { proc->digit++; }
+          else { proc->digit = 0; proc->editing = false; } 
+          RedrawUnitSkillsMenu(proc);
+        }
+        
+        if (keys & DPAD_UP) {
+            if (proc->tmp[proc->id] == max) { proc->tmp[proc->id] = min; } 
+            else { 
+                proc->tmp[proc->id] += DigitDecimalTable[proc->digit]; 
+                if (proc->tmp[proc->id] > max) { proc->tmp[proc->id] = max; } 
+            } 
+            RedrawUnitSkillsMenu(proc); 
+        }
+        if (keys & DPAD_DOWN) {
+            
+            if (proc->tmp[proc->id] == min) { proc->tmp[proc->id] = max; } 
+            else { 
+                proc->tmp[proc->id] -= DigitDecimalTable[proc->digit]; 
+                if (proc->tmp[proc->id] < min) { proc->tmp[proc->id] = min; } 
+            } 
+            
+            RedrawUnitSkillsMenu(proc); 
+        }
+    }
+    else { 
+        DisplayUiHand(CursorLocationTable[0].x - ((SkillsWidth + 2) * 8), (Y_HAND + (proc->id * 2)) * 8);
+        if (keys & DPAD_RIGHT) {
+            proc->digit = 1; 
+          proc->editing = true; 
+        }
+        if (keys & DPAD_LEFT) {
+          proc->digit = 0; 
+          proc->editing = true; 
+        }
+        
+        if (keys & DPAD_UP) {
+            proc->id--; 
+            if (proc->id < 0) { proc->id = SkillsOptions - 1; } 
+            RedrawUnitSkillsMenu(proc); 
+        }
+        if (keys & DPAD_DOWN) {
+            proc->id++; 
+            if (proc->id >= SkillsOptions) { proc->id = 0; } 
+            
+            RedrawUnitSkillsMenu(proc); 
+        }
+    } 
+} 
+
+#define SupportsWidth 10
+#define SupportsOptions 7  // Number of possible supports per unit
+void RedrawUnitSupportsMenu(DebuggerProc* proc);
+void EditSupportsInit(DebuggerProc* proc) {
+    SomeMenuInit(proc);
+    struct Unit* unit = proc->unit;
+    struct NewBwl* bwl = GetNewBwl(UNIT_CHAR_ID(unit));
+    
+    // Initialize support values from BWL
+    for (int i = 0; i < SupportsOptions; ++i) {
+        proc->tmp[i] = bwl ? bwl->supports[i] : 0;
+    }
+    
+    int x = NUMBER_X - SupportsWidth - 1;
+    int y = Y_HAND - 1;
+    int w = SupportsWidth + (START_X - NUMBER_X) + 3;
+    int h = (SupportsOptions * 2) + 2;
+    
+    DrawUiFrame(
+        BG_GetMapBuffer(1),
+        x, y, w, h,
+        TILEREF(0, 0), 0);
+
+    struct Text* th = gStatScreen.text;
+    
+    for (int i = 0; i < 15; ++i) {
+        InitText(&th[i], SupportsWidth);
+        Text_DrawString(&th[i], "");
+    }
+
+    if (bwl)
+    {
+        int uid;
+        for (int i = 0; i < SupportsOptions; ++i)
+        {
+            uid = bwl->supports[i];
+            if (uid)
+            {
+                Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(uid)->nameTextId));
+            }
+        }
+    }
+    
+    RedrawUnitSupportsMenu(proc);
+}
+
+void RedrawUnitSupportsMenu(DebuggerProc* proc) {
+    TileMap_FillRect(gBG0TilemapBuffer + TILEMAP_INDEX(NUMBER_X-2, Y_HAND), 9, 2 * SupportsOptions, 0);
+    BG_EnableSyncByMask(BG0_SYNC_BIT);
+
+    struct Text* th = gStatScreen.text;
+    struct Unit* unit = proc->unit;
+    int x = NUMBER_X - SupportsWidth;
+
+    struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
+
+    // Clear and redraw all support name texts
+    for (int i = 0; i < SupportsOptions; ++i) {
+        ClearText(&th[i]);
+        // Get support character name if support value exists
+        if (bwl) {
+            u8 pid = bwl->supports[i];
+            if (pid)
+                Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(pid)->nameTextId));
+        }
+        PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x, Y_HAND + (i*2)));
+        
+        // Draw support values
+        PutNumber(gBG0TilemapBuffer + TILEMAP_INDEX(START_X, Y_HAND + (i*2)), 
+                TEXT_COLOR_SYSTEM_GOLD, proc->tmp[i]);
+    }
+
+    BG_EnableSyncByMask(BG0_SYNC_BIT);
+}
+
+void SaveSupports(DebuggerProc* proc) {
+    struct Unit* unit = proc->unit;
+    struct NewBwl* bwl = GetNewBwl(unit->pCharacterData->number);
+    if (!bwl)
+        return;
+        
+    for (int i = 0; i < SupportsOptions; ++i) {
+        bwl->supports[i] = proc->tmp[i];
+    }
+}
+
+void EditSupportsIdle(DebuggerProc* proc) {
+    u16 keys = sKeyStatusBuffer.repeatedKeys;
+
+    if (keys & B_BUTTON) {
+        Proc_Goto(proc, RestartLabel);
+        m4aSongNumStart(0x6B);
+        return;
+    }
+
+    if ((keys & START_BUTTON)||(keys & A_BUTTON)) {
+        SaveSupports(proc);
+        Proc_Goto(proc, RestartLabel);
+        m4aSongNumStart(0x6B);
+        return; 
+    }
+
     if (proc->editing) { 
         DisplayVertUiHand(CursorLocationTable[proc->digit].x, (Y_HAND + (proc->id * 2)) * 8); 	
         int max = 255; 
@@ -950,7 +1188,7 @@ void EditSupportsIdle(DebuggerProc* proc) {
         }
     }
     else { 
-        DisplayUiHand(CursorLocationTable[0].x - ((SupportWidth + 2) * 8), (Y_HAND + (proc->id * 2)) * 8);
+        DisplayUiHand(CursorLocationTable[0].x - ((SupportsWidth + 2) * 8), (Y_HAND + (proc->id * 2)) * 8);
         if (keys & DPAD_RIGHT) {
             proc->digit = 1; 
           proc->editing = true; 
@@ -962,17 +1200,23 @@ void EditSupportsIdle(DebuggerProc* proc) {
         
         if (keys & DPAD_UP) {
             proc->id--; 
-            if (proc->id < 0) { proc->id = SupportOptions - 1; } 
-            RedrawUnitSupportsMenu(proc); 
+            if (proc->id < 0) { proc->id = SupportsOptions - 1; } 
+            RedrawUnitSkillsMenu(proc); 
         }
         if (keys & DPAD_DOWN) {
             proc->id++; 
-            if (proc->id >= SupportOptions) { proc->id = 0; } 
+            if (proc->id >= SupportsOptions) { proc->id = 0; } 
             
             RedrawUnitSupportsMenu(proc); 
         }
-    } 
-} 
+    };
+}
+
+u8 EditSupportsNow(struct MenuProc* menu, struct MenuItemProc* menuItem) {
+    DebuggerProc* proc = Proc_Find(DebuggerProcCmd);
+    Proc_Goto(proc, SupportLabel);
+    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
+}
 
 
 
@@ -2843,10 +3087,10 @@ u8 EditWExpNow(struct MenuProc * menu, struct MenuItemProc * menuItem) {
     Proc_Goto(proc, WExpLabel);
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
-u8 EditSupportNow(struct MenuProc * menu, struct MenuItemProc * menuItem) {
+u8 EditSkillsNow(struct MenuProc * menu, struct MenuItemProc * menuItem) {
 	DebuggerProc* proc; 
 	proc = Proc_Find(DebuggerProcCmd); 
-    Proc_Goto(proc, SupportLabel);
+    Proc_Goto(proc, SkillsLabel);
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 

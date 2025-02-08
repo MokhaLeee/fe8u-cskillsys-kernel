@@ -97,8 +97,9 @@ MenuCommand1(PageText, PageDesc, NormalText, MenuAlwaysEnabled, PageMenuItemDraw
 WORD 0 0 0 0 0 0 0 0 0 // terminator 
 ALIGN 4 
 gDebuggerMenuItemsPage3: // must be immediately after gDebuggerMenuItemsPage2 
-MenuCommand1(WExpText,WExpDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditWExpNow)
-MenuCommand1(SupportMenuText,SupportMenuDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditSupportNow)
+MenuCommand1(WExpText, WExpDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditWExpNow)
+MenuCommand1(SkillsMenuText, SkillsMenuDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditSkillsNow)
+MenuCommand1(SupportMenuText, SupportMenuDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditSupportsNow)
 MenuCommand1(PageText, PageDesc, NormalText, MenuAlwaysEnabled, PageMenuItemDraw, PageIncrementNow) // sprite draw assumes always on the bottom 
 #ifdef DEBUG_SKILL_EDIT_INCLUDED 
 //MenuCommand(EditSkillsText,EditSkillsDesc, OrangeText, $04F449,DebuggerMenuItemDraw, SkillDebugCommand_OnSelect)
@@ -211,11 +212,14 @@ WExpDesc:
     String("Edit WExp"); NL
     String("for the unit."); EndText 
 
+SkillsMenuText:
+    String(" Skills IDs"); EndText
+SkillsMenuDesc:
+    String("Edit skill IDs"); NL
+    String("for the unit."); EndText
+     
 SupportMenuText:
-    String(" Skills IDs"); EndText 
-
-// SupportMenuText:
-//     String(" Supports"); EndText 
+    String(" Supports"); EndText 
 SupportMenuDesc:
     String("Edit support levels"); NL
     String("for the unit."); EndText 
