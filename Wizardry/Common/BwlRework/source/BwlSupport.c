@@ -6,6 +6,11 @@
 #include "eventinfo.h"
 #include "../../../../Contants/Texts/build/msgs.h"
 
+#define SUPPORT_RATE_KILL 100
+#define SUPPORT_RATE_COMBAT 100
+#define SUPPORT_RATE_STAFF 100
+#define SUPPORT_RATE_DANCE 100
+
 static const struct SupportTalkEnt gNewSupportTalkList[] = 
 {
     { CHARACTER_EIRIKA,   CHARACTER_EPHRAIM,  {MSG_0C53, MSG_0C54, MSG_0C55} },
@@ -134,28 +139,6 @@ LYN_REPLACE_CHECK(GetSupportTalkEntry);
 struct SupportTalkEnt * GetSupportTalkEntry(u16 pidA, u16 pidB)
 {
     const struct SupportTalkEnt * it;
-    
-    // Print array base address
-    NoCashGBAPrintf("gNewSupportTalkList base addr: %p", (void*)gNewSupportTalkList);
-    
-    // Print raw memory values for first few entries
-    NoCashGBAPrintf("Raw memory first entry: %x %x %x %x", 
-        *((u16*)&gNewSupportTalkList[0]),
-        *((u16*)&gNewSupportTalkList[0] + 1),
-        *((u16*)&gNewSupportTalkList[1]),
-        *((u16*)&gNewSupportTalkList[1] + 1));
-    
-    // Print struct member offsets
-    NoCashGBAPrintf("Struct offsets - unitA: %d, unitB: %d", 
-        offsetof(struct SupportTalkEnt, unitA),
-        offsetof(struct SupportTalkEnt, unitB));
-    
-    // Print first entries with explicit member access
-    NoCashGBAPrintf("Direct member access - Entry 1: %x.%x Entry 2: %x.%x",
-        gNewSupportTalkList[0].unitA,
-        gNewSupportTalkList[0].unitB,
-        gNewSupportTalkList[1].unitA,
-        gNewSupportTalkList[1].unitB);
 
     for (it = gNewSupportTalkList; it->unitA != 0xFFFF; it++)
     {
@@ -169,20 +152,60 @@ struct SupportTalkEnt * GetSupportTalkEntry(u16 pidA, u16 pidB)
     return NULL;
 }
 
+//! FE8U = 0x080a3724
+bool UpdateBestGlobalSupportValue(int unitA, int unitB, int supportRank) {
+    int convo;
+    int var0;
+    int var1;
+    struct GlobalSaveInfo info;
+    struct SupportTalkEnt* ptr;
+
+    supportRank = supportRank & 3;
+
+    if (!ReadGlobalSaveInfo(&info)) {
+        return 0;
+    }
+
+    convo = 0;
+
+    for (ptr = GetSupportTalkList(); ; ptr++) {
+
+        if (ptr->unitA == 0xFFFF)
+            break;
+
+        if ((ptr->unitA == unitA) && (ptr->unitB == unitB))
+            break;
+
+        if ((ptr->unitA == unitB) && (ptr->unitB == unitA))
+            break;
+
+        convo++;
+    }
+
+    var0 = convo >> 2;
+    var1 = (convo & 3) << 1;
+
+    if (((info.SuppordRecord[var0] >> var1) & 3) >= (supportRank))
+        return false;
+
+    info.SuppordRecord[var0] &= ~(3 << var1);
+    info.SuppordRecord[var0] += (supportRank << var1);
+
+    WriteGlobalSaveInfo(&info);
+
+    return true;
+}
+
 //! FE8U = 0x0808371C
 LYN_REPLACE_CHECK(StartSupportTalk);
 void StartSupportTalk(u8 pidA, u8 pidB, int rank) {
     struct SupportTalkEnt* ent = GetSupportTalkEntry(pidA, pidB);
-
-    NoCashGBAPrint("Peas");
 
     if (ent) {
         CallMapSupportEvent(
             GetSupportTalkSong(pidA, pidB, rank),
             ent->msgSupports[rank - 1]
         );
-
-        NoCashGBAPrint("Pasta beans");
 
         UpdateBestGlobalSupportValue(pidA, pidB, rank);
     }
@@ -247,7 +270,7 @@ int GetUnitSupportLevel(struct Unit * unit, int num)
     if (supp)
     {
         exp = supp[num];
-        LTRACEF("[pid=%d, num=%d] exp=%d at BWL", UNIT_CHAR_ID(unit), num, exp);
+        // LTRACEF("[pid=%d, num=%d] exp=%d at BWL", UNIT_CHAR_ID(unit), num, exp);
     }
     else
     {
@@ -256,7 +279,7 @@ int GetUnitSupportLevel(struct Unit * unit, int num)
          * directly judge on its rom data
          */
         exp = unit->pCharacterData->pSupportData->supportExpBase[num];
-        LTRACEF("[pid=%d, num=%d] exp=%d at ROM", UNIT_CHAR_ID(unit), num, exp);
+        // LTRACEF("[pid=%d, num=%d] exp=%d at ROM", UNIT_CHAR_ID(unit), num, exp);
     }
 
     if (exp > 240)
@@ -281,13 +304,13 @@ void UnitGainSupportExp(struct Unit * unit, int num)
         int gain = UNIT_SUPPORT_DATA(unit)->supportExpGrowth[num];
 #ifdef CONFIG_VESLY_SUPPORT_POST_BATTLE
     if (gBattleActorGlobalFlag.enemy_defeated)
-        gain += 100;
+        gain += SUPPORT_RATE_KILL;
     else if (gActionData.unitActionType == UNIT_ACTION_COMBAT)
-        gain += 100;
+        gain += SUPPORT_RATE_COMBAT;
     else if (gActionData.unitActionType == UNIT_ACTION_DANCE)
-        gain += 2;
+        gain += SUPPORT_RATE_DANCE;
     else if (gActionData.unitActionType == UNIT_ACTION_STAFF)
-        gain += 2;
+        gain += SUPPORT_RATE_STAFF;
 #else
         gain = UNIT_SUPPORT_DATA(unit)->supportExpGrowth[num];
 #endif

@@ -9,8 +9,8 @@
 #include "unit.h"
 #include "ap.h"
 
-typedef struct MUProc MoveUnitProc;
-typedef struct MUProc MoveUnitState;
+typedef struct MuProc MoveUnitProc;
+typedef struct MuProc MoveUnitState;
 
 typedef struct MUConfig MoveUnitExtraData;
 
@@ -108,7 +108,7 @@ enum {
 
 struct MUConfig;
 
-struct MUProc {
+struct MuProc {
 	PROC_HEADER;
 
 	/* 2C */ struct Unit* pUnit;
@@ -143,30 +143,30 @@ struct MUConfig {
 	/* 04 */ u8  currentCommand;
 	/* 05 */ s8  commands[MU_COMMAND_MAX_COUNT];
 	/* 45 */ // 3 byte padding
-	/* 48 */ struct MUProc* pMUProc;
+	/* 48 */ struct MuProc* pMuProc;
 };
 
 void MU_Init(void); //! FE8U = (0x0807840C+1)
-struct MUProc* MU_CreateExt(struct Unit* unit, int mms, int palId); //! FE8U = (0x08078428+1)
-struct MUProc* MU_Create(struct Unit* unit); //! FE8U = (0x08078464+1)
-void MU_EnableAttractCamera(struct MUProc*); //! FE8U = (0x080784E4+1)
-void MU_DisableAttractCamera(struct MUProc*); //! FE8U = (0x080784EC+1)
-struct MUProc* MU_CreateForUI(struct Unit* unit); //! FE8U = (0x080784F4+1)
-struct MUProc* MU_CreateInternal(int x, int y, int mms, int objBase, int palId); //! FE8U = (0x08078540+1)
-void MU_SetFacing(struct MUProc* moveunit, int direction); //! FE8U = (0x08078694+1)
-void MU_SetDefaultFacing(struct MUProc* moveunit); //! FE8U = (0x080786BC+1)
+struct MuProc* MU_CreateExt(struct Unit* unit, int mms, int palId); //! FE8U = (0x08078428+1)
+struct MuProc* MU_Create(struct Unit* unit); //! FE8U = (0x08078464+1)
+void MU_EnableAttractCamera(struct MuProc*); //! FE8U = (0x080784E4+1)
+void MU_DisableAttractCamera(struct MuProc*); //! FE8U = (0x080784EC+1)
+struct MuProc* MU_CreateForUI(struct Unit* unit); //! FE8U = (0x080784F4+1)
+struct MuProc* MU_CreateInternal(int x, int y, int mms, int objBase, int palId); //! FE8U = (0x08078540+1)
+void MU_SetFacing(struct MuProc* moveunit, int direction); //! FE8U = (0x08078694+1)
+void MU_SetDefaultFacing(struct MuProc* moveunit); //! FE8U = (0x080786BC+1)
 void MU_SetDefaultFacing_Auto(); //! FE8U = (0x080786E8+1)
 void MU_StartMoveScript_Auto(u8* moveManual); //! FE8U = (0x08078700+1)
 int MU_Exists(); //! FE8U = (0x08078720+1)
 int MU_IsAnyActive(); //! FE8U = (0x08078738+1)
-void MU_StartMoveScript(struct MUProc* moveunit, u8* moveManual); //! FE8U = (0x08078790+1)
+void MU_StartMoveScript(struct MuProc* moveunit, u8* moveManual); //! FE8U = (0x08078790+1)
 void MU_EndAll(); //! FE8U = (0x080790A4+1)
-void MU_End(struct MUProc* moveunit); //! FE8U = (0x080790B4+1)
-void MU_StartActionAnim(struct MUProc* moveunit); //! FE8U = 0x80798B1
-void MU_Hide(struct MUProc* moveunit); //! FE8U = 0x80797D5
-void MU_Show(struct MUProc* moveunit); //! FE8U = 0x80797DD
-void MU_SetDisplayPosition(struct MUProc* moveunit, int x, int y); //! FE8U = (0x080797E4+1)
-struct MUProc* MU_GetByUnit(struct Unit* unit); //!< FE8U:08079BB9
+void MU_End(struct MuProc* moveunit); //! FE8U = (0x080790B4+1)
+void MU_StartActionAnim(struct MuProc* moveunit); //! FE8U = 0x80798B1
+void MU_Hide(struct MuProc* moveunit); //! FE8U = 0x80797D5
+void MU_Show(struct MuProc* moveunit); //! FE8U = 0x80797DD
+void MU_SetDisplayPosition(struct MuProc* moveunit, int x, int y); //! FE8U = (0x080797E4+1)
+struct MuProc* MU_GetByUnit(struct Unit* unit); //!< FE8U:08079BB9
 
 extern const struct ProcInstruction gProc_MoveUnit[];
 

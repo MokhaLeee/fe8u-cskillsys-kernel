@@ -90,6 +90,7 @@ MenuCommand1(ChStateText,ChStateDesc, NormalText, MenuAlwaysEnabled, DebuggerMen
 MenuCommand1(ClearChText,ClearChDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, CallEndEventNow)
 MenuCommand1(LoadUnitsText,LoadUnitsDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, LoadUnitsNow)
 MenuCommand1(GodmodeText,GodmodeDesc, NormalText, MenuAlwaysEnabled, BootmodeDrawText, ToggleBootNow)
+MenuCommand1(WExpText, WExpDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditWExpNow)
 MenuCommand1(PageText, PageDesc, NormalText, MenuAlwaysEnabled, PageMenuItemDraw, PageIncrementNow) // sprite draw assumes always on the bottom 
 #ifdef DEBUG_SKILL_EDIT_INCLUDED 
 //MenuCommand(EditSkillsText,EditSkillsDesc, OrangeText, $04F449,DebuggerMenuItemDraw, SkillDebugCommand_OnSelect)
@@ -97,7 +98,6 @@ MenuCommand1(PageText, PageDesc, NormalText, MenuAlwaysEnabled, PageMenuItemDraw
 WORD 0 0 0 0 0 0 0 0 0 // terminator 
 ALIGN 4 
 gDebuggerMenuItemsPage3: // must be immediately after gDebuggerMenuItemsPage2 
-MenuCommand1(WExpText, WExpDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditWExpNow)
 MenuCommand1(SkillsMenuText, SkillsMenuDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditSkillsNow)
 MenuCommand1(SupportMenuText, SupportMenuDesc, NormalText, MenuAlwaysEnabled, DebuggerMenuItemDraw, EditSupportsNow)
 MenuCommand1(PageText, PageDesc, NormalText, MenuAlwaysEnabled, PageMenuItemDraw, PageIncrementNow) // sprite draw assumes always on the bottom 
@@ -213,7 +213,7 @@ WExpDesc:
     String("for the unit."); EndText 
 
 SkillsMenuText:
-    String(" Skills IDs"); EndText
+    String(" Skill IDs"); EndText
 SkillsMenuDesc:
     String("Edit skill IDs"); NL
     String("for the unit."); EndText

@@ -1,6 +1,7 @@
 #include "C_Code.h" // headers 
 #include "debug-kit.h"
 #include "constants/gfx.h"
+#include "mu.h"
 
 #define PACKED __attribute__((packed))
 
@@ -1056,10 +1057,16 @@ void EditSupportsInit(DebuggerProc* proc) {
     SomeMenuInit(proc);
     struct Unit* unit = proc->unit;
     struct NewBwl* bwl = GetNewBwl(UNIT_CHAR_ID(unit));
-    
-    // Initialize support values from BWL
-    for (int i = 0; i < SupportsOptions; ++i) {
-        proc->tmp[i] = bwl ? bwl->supports[i] : 0;
+
+    // Initialize tmp array with current support values
+    if (bwl) {
+        for (int i = 0; i < SupportsOptions; ++i) {
+            proc->tmp[i] = bwl->supports[i];
+        }
+    } else {
+        for (int i = 0; i < SupportsOptions; ++i) {
+            proc->tmp[i] = 0;
+        }
     }
     
     int x = NUMBER_X - SupportsWidth - 1;
@@ -1079,21 +1086,33 @@ void EditSupportsInit(DebuggerProc* proc) {
         Text_DrawString(&th[i], "");
     }
 
-    if (bwl)
+    if (unit->pCharacterData->pSupportData)
     {
         int uid;
         for (int i = 0; i < SupportsOptions; ++i)
         {
-            uid = bwl->supports[i];
+            uid = unit->pCharacterData->pSupportData->characters[i];
             if (uid)
             {
                 Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(uid)->nameTextId));
             }
         }
     }
-    
     RedrawUnitSupportsMenu(proc);
 }
+
+// struct MuProc * StartUiMu(struct Unit * unit, int x, int y)
+// {
+//     struct MuProc * proc = StartMu(unit);
+
+//     if (!proc)
+//         return NULL;
+
+//     proc->xSubPosition = x << MU_SUBPIXEL_PRECISION;
+//     proc->ySubPosition = y << MU_SUBPIXEL_PRECISION;
+//     proc->stateId = MU_STATE_UI_DISPLAY;
+//     return proc;
+// }
 
 void RedrawUnitSupportsMenu(DebuggerProc* proc) {
     TileMap_FillRect(gBG0TilemapBuffer + TILEMAP_INDEX(NUMBER_X-2, Y_HAND), 9, 2 * SupportsOptions, 0);
@@ -1103,16 +1122,14 @@ void RedrawUnitSupportsMenu(DebuggerProc* proc) {
     struct Unit* unit = proc->unit;
     int x = NUMBER_X - SupportsWidth;
 
-    struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
-
     // Clear and redraw all support name texts
     for (int i = 0; i < SupportsOptions; ++i) {
         ClearText(&th[i]);
-        // Get support character name if support value exists
-        if (bwl) {
-            u8 pid = bwl->supports[i];
-            if (pid)
-                Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(pid)->nameTextId));
+        if (unit->pCharacterData->pSupportData) {
+            int uid = unit->pCharacterData->pSupportData->characters[i];
+            if (uid) {
+                Text_DrawString(&th[i], GetStringFromIndex(GetCharacterData(uid)->nameTextId));
+            }
         }
         PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x, Y_HAND + (i*2)));
         
@@ -1126,12 +1143,16 @@ void RedrawUnitSupportsMenu(DebuggerProc* proc) {
 
 void SaveSupports(DebuggerProc* proc) {
     struct Unit* unit = proc->unit;
-    struct NewBwl* bwl = GetNewBwl(unit->pCharacterData->number);
+    struct NewBwl* bwl = GetNewBwl(UNIT_CHAR_ID(unit));
     if (!bwl)
         return;
         
+    // Save the support values back to BWL
     for (int i = 0; i < SupportsOptions; ++i) {
-        bwl->supports[i] = proc->tmp[i];
+        if (unit->pCharacterData->pSupportData && 
+            unit->pCharacterData->pSupportData->characters[i]) {
+            bwl->supports[i] = proc->tmp[i];
+        }
     }
 }
 
@@ -1201,7 +1222,7 @@ void EditSupportsIdle(DebuggerProc* proc) {
         if (keys & DPAD_UP) {
             proc->id--; 
             if (proc->id < 0) { proc->id = SupportsOptions - 1; } 
-            RedrawUnitSkillsMenu(proc); 
+            RedrawUnitSupportsMenu(proc); 
         }
         if (keys & DPAD_DOWN) {
             proc->id++; 
