@@ -28,8 +28,6 @@ void ArenaBeginInternal(struct Unit* unit) {
         gArenaState.opponentLevel = ArenaGetOpposingLevel(gArenaState.playerLevel) + 7;
     }
 
-    NoCashGBAPrintf("Opponent initial level: %d", gArenaState.opponentLevel);
-
     ArenaGenerateOpponentUnit();
     ArenaGenerateBaseWeapons();
 
@@ -48,9 +46,6 @@ void ArenaBeginInternal(struct Unit* unit) {
     gArenaState.playerPowerWeight = ArenaGetPowerRanking(gArenaState.playerUnit, gArenaState.opponentIsMagic);
     gArenaState.opponentPowerWeight = ArenaGetPowerRanking(gArenaState.opponentUnit, gArenaState.playerIsMagic);
 
-    NoCashGBAPrintf("Player Power Weight: %d", gArenaState.playerPowerWeight);
-    NoCashGBAPrintf("Opponent Power Weight: %d", gArenaState.opponentPowerWeight);
-
     ArenaGenerateMatchupGoldValue();
 
     gArenaState.unk0B = 1;
@@ -58,10 +53,6 @@ void ArenaBeginInternal(struct Unit* unit) {
     ArenaSetResult(0);
 
     ArenaSetFallbackWeaponsMaybe();
-
-    NoCashGBAPrintf("Final Opponent Level: %d", gArenaState.opponentUnit->level);
-    NoCashGBAPrintf("Final Opponent Attack: %d", gBattleTarget.battleAttack);
-    NoCashGBAPrintf("Final Opponent Defense: %d", gBattleTarget.battleDefense);
 
     return;
 };
@@ -157,24 +148,20 @@ s8 ArenaAdjustOpponentDamage(void) {
     s8 result = 0;
 
     gBattleActor.battleAttack = GetUnitPower(gArenaState.playerUnit) + 5;
-    NoCashGBAPrintf("Initial Player Attack: %d", gBattleActor.battleAttack);
 
     if (gArenaState.opponentIsMagic) {
         gBattleActor.battleDefense = GetUnitResistance(gArenaState.playerUnit);
     } else {
         gBattleActor.battleDefense = GetUnitDefense(gArenaState.playerUnit);
     }
-    NoCashGBAPrintf("Player Defense: %d", gBattleActor.battleDefense);
 
     gBattleTarget.battleAttack = GetUnitPower(gArenaState.opponentUnit) + 5;
-    NoCashGBAPrintf("Initial Opponent Attack: %d", gBattleTarget.battleAttack);
 
     if (gArenaState.playerIsMagic) {
         gBattleTarget.battleDefense = GetUnitResistance(gArenaState.opponentUnit);
     } else {
         gBattleTarget.battleDefense = GetUnitDefense(gArenaState.opponentUnit);
     }
-    NoCashGBAPrintf("Opponent Defense: %d", gBattleTarget.battleDefense);
 
     if ((gBattleActor.battleAttack - gBattleTarget.battleDefense) < (GetUnitMaxHp(gArenaState.opponentUnit) / 6)) {
         result = 1;
@@ -195,7 +182,6 @@ s8 ArenaAdjustOpponentDamage(void) {
 
         gArenaState.opponentUnit->spd += 1;
         gArenaState.opponentUnit->skl += 1;
-        NoCashGBAPrint("Adjusted Opponent Defense and Speed/Skill due to low player damage output");
     }
 
     if (gBattleTarget.battleAttack - gBattleActor.battleDefense < (GetUnitMaxHp(gArenaState.playerUnit) / 6)) {
@@ -206,10 +192,7 @@ s8 ArenaAdjustOpponentDamage(void) {
         gArenaState.opponentUnit->skl += 2;
 
         gArenaState.opponentWeapon = ArenaGetUpgradedWeapon(gArenaState.opponentWeapon);
-        NoCashGBAPrint("Adjusted Opponent Attack, Speed, and Skill due to low opponent damage output");
     }
-
-    NoCashGBAPrintf("Final Opponent Attack: %d", gBattleTarget.battleAttack);
 
     return result;
 }
@@ -227,8 +210,6 @@ s8 ArenaAdjustOpponentPowerRanking(void) {
         : gArenaState.opponentPowerWeight;
 
     diff = ABS(gArenaState.playerPowerWeight - gArenaState.opponentPowerWeight);
-
-    NoCashGBAPrintf("Adjusting Opponent Power Ranking - Player: %d, Opponent: %d", gArenaState.playerPowerWeight, gArenaState.opponentPowerWeight);
 
     if (((diff * 100) / max) <= 20) {
         return 0;
@@ -263,7 +244,7 @@ s8 ArenaAdjustOpponentPowerRanking(void) {
         if (gArenaState.opponentUnit->lck != 0) {
             gArenaState.opponentUnit->lck -= 1;
         }
-        NoCashGBAPrint("Decreased Opponent Stats to balance power weight");
+
     } else {
         if (gArenaState.opponentUnit->maxHP < 80) {
             gArenaState.opponentUnit->maxHP += 2;
@@ -293,10 +274,7 @@ s8 ArenaAdjustOpponentPowerRanking(void) {
         if (gArenaState.opponentUnit->lck < 30) {
             gArenaState.opponentUnit->lck += 1;
         }
-        NoCashGBAPrint("Increased Opponent Stats to balance power weight");
     }
-
-    NoCashGBAPrintf("Adjusted Opponent Power Weight: %d", gArenaState.opponentPowerWeight);
 
     return 1;
 }
@@ -416,23 +394,17 @@ void ArenaGenerateOpponentUnit(void) {
     udef.ai[2] = 0;
     udef.ai[3] = 0;
 
-    ClearUnit(&gArenaOpponent);
+    //ClearUnit(&gArenaOpponent);
     unit->index = 0x80;
 
     UnitInitFromDefinition(unit, &udef);
     UnitLoadStatsFromCharacter(unit, unit->pCharacterData);
-
-    NoCashGBAPrintf("Generated Opponent - Initial HP: %d, STR: %d, SKL: %d, SPD: %d, DEF: %d, RES: %d, LCK: %d",
-        unit->maxHP, unit->pow, unit->skl, unit->spd, unit->def, unit->res, unit->lck);
 
     level = unit->level;
 
     unit->level = ((gPlaySt.chapterStateBits & PLAY_FLAG_HARD) ? level * 24 : level * 12) / 10;
 
     UnitAutolevel(unit);
-
-    NoCashGBAPrintf("Autoleveled Opponent - HP: %d, STR: %d, SKL: %d, SPD: %d, DEF: %d, RES: %d, LCK: %d",
-        unit->maxHP, unit->pow, unit->skl, unit->spd, unit->def, unit->res, unit->lck);
 
     unit->level = level;
 
@@ -452,9 +424,6 @@ void ArenaGenerateOpponentUnit(void) {
 
     UnitCheckStatCaps(unit);
     SetUnitHp(unit, GetUnitMaxHp(unit));
-
-    NoCashGBAPrintf("Final Opponent Stats - HP: %d, STR: %d, SKL: %d, SPD: %d, DEF: %d, RES: %d, LCK: %d",
-        unit->maxHP, unit->pow, unit->skl, unit->spd, unit->def, unit->res, unit->lck);
 
     return;
 }

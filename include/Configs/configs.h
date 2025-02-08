@@ -426,6 +426,16 @@
 
 #define CONFIG_VESLY_AOE
 
+
+/* 
+This is my sorry ass attempt at fixing a problem with the arena that
+has made enemy stats ballon to broken levels. Unfortunately, the base
+arena formula is so fucking out of wack that even with these fixes
+promoted enemies become a joke, and unpromoted are still fairly strong
+but at least the arena is playable now
+*/
+#define CONFIG_ARENA_PARTIAL_FIX
+
 /**
  * Install ConvoyExpa
  */

@@ -9,6 +9,7 @@
 #include "combat-art.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
+#include "bmarena.h"
 
 typedef void (*PreBattleCalcFunc)(struct BattleUnit *buA, struct BattleUnit *buB);
 extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;

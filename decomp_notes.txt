@@ -1,2 +1,0 @@
-struct PlayerInterfaceProc
-unk_40 = controls the Y position of the HP and "\" labels in the minimug box
