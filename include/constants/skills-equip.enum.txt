@@ -647,7 +647,7 @@ SID_Arcgift
 SID_ArcgiftPlus
 // SID_NiceThighs
 SID_Casual
-// SID_CatchEmAll  Doesn't work
+SID_CatchEmAll
 SID_LiveToServe
 SID_Reflex
 SID_Nullify

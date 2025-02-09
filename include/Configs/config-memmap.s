@@ -134,14 +134,27 @@ _kernel_malloc_overlay0 gItemPageList 0x28
  * So we get antother space as 0x03003CAC - 0x03003F48
  * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
  */
+
 dat 0x03003CAC, ARM_SkillTester
-dat 0x03003DE4, ARM_SkillTesterEnd
-dat 0x03003DE4, ARM_MapFloodCoreRe
-dat 0x030040CC, ARM_MapFloodCoreReEnd
-dat 0x030040CC, ARM_MapTask
-dat 0x03004128, ARM_MapTaskEnd
+dat 0x03003E0C, ARM_SkillTesterEnd
+dat 0x03003E0C, ARM_MapFloodCoreRe
+dat 0x030040F4, ARM_MapFloodCoreReEnd
+dat 0x030040F4, ARM_MapTask
+dat 0x03004150, ARM_MapTaskEnd
 
 dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd
 dat 0x03004378, ARM_SkillList
 dat 0x030043B4, ARM_SkillListEnd
+
+
+@ dat 0x03003DE4, ARM_SkillTesterEnd
+@ dat 0x03003DE4, ARM_MapFloodCoreRe
+@ dat 0x030040CC, ARM_MapFloodCoreReEnd
+@ dat 0x030040CC, ARM_MapTask
+@ dat 0x03004128, ARM_MapTaskEnd
+
+@ dat 0x0300428C, ARM_UnitList
+@ dat 0x03004378, ARM_UnitListEnd
+@ dat 0x03004378, ARM_SkillList
+@ dat 0x030043B4, ARM_SkillListEnd

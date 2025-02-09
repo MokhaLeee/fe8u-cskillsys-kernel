@@ -48,10 +48,10 @@ struct BattleUnit {
     /* 6A */ short battleEffectiveCritRate;
     /* 6C */ short battleSilencerRate;
 
-    /* 6E */ s8 expGain;
+    /* 6E */ u8 expGain;
     /* 6F */ s8 statusOut;
     /* 70 */ s8 levelPrevious;
-    /* 71 */ s8 expPrevious;
+    /* 71 */ u8 expPrevious;
 
     /* 72 */ s8 hpInitial;
 

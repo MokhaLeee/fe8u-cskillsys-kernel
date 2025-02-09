@@ -29,12 +29,36 @@ static int GetStatIncreaseFixed(int growth, int ref)
     return simple_div(growth + simple_mod(growth * ref, 100), 100);
 }
 
+LYN_REPLACE_CHECK(GetStatIncrease);
+int GetStatIncrease(int growth, int expGained) {
+    int result = 0;
+
+    /* 
+    ** If the unit has gained more than 1 level up, then we can artifically
+    ** multiply their growths to get additional rolls for those level ups.
+    */
+    if (expGained > 200)
+        growth *= (expGained / 100);
+
+    while (growth > 100) {
+        result++;
+        growth -= 100;
+    }
+
+    if (Roll1RN(growth))
+        result++;
+
+    return result;
+}
+
 static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 {
+    bonus = 30;
     struct Unit * unit = GetUnit(bu->unit.index);
     int statCounter = 0;
     int limitBreaker = 0;
     FORCE_DECLARE bool tripleUpExecuted = false;
+    int expGained = gManimSt.actor[1].bu->expPrevious + gManimSt.actor[1].bu->expGain;
 
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
     if (SkillTester(unit, SID_LimitBreaker))
@@ -61,29 +85,29 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
     if (SkillTester(unit, SID_OgreBody))
     {
         if (unit->maxHP < SKILL_EFF0(SID_OgreBody))
-            *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+            *statChanges[0] = GetStatIncrease((GetUnitHpGrowth(unit) + bonus), expGained);
     }
     else    
         if (unit->maxHP < unit->pClassData->maxHP + limitBreaker)
-            *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+            *statChanges[0] = GetStatIncrease((GetUnitHpGrowth(unit) + bonus), expGained);
 #else
     if (unit->maxHP < unit->pClassData->maxHP + limitBreaker)
-        *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
+        *statChanges[0] = GetStatIncrease((GetUnitHpGrowth(unit) + bonus), expGained);
 #endif
     if (unit->pow < unit->pClassData->maxPow + limitBreaker)
-        *statChanges[1] = GetStatIncrease(GetUnitPowGrowth(unit) + bonus);
+        *statChanges[1] = GetStatIncrease((GetUnitPowGrowth(unit) + bonus), expGained);
     if (unit->skl < unit->pClassData->maxSkl + limitBreaker)
-        *statChanges[2] = GetStatIncrease(GetUnitSklGrowth(unit) + bonus);
+        *statChanges[2] = GetStatIncrease((GetUnitSklGrowth(unit) + bonus), expGained);
     if (unit->spd < unit->pClassData->maxSpd + limitBreaker)
-        *statChanges[3] = GetStatIncrease(GetUnitSpdGrowth(unit) + bonus);
+        *statChanges[3] = GetStatIncrease((GetUnitSpdGrowth(unit) + bonus), expGained);
     if (unit->lck < 30 + limitBreaker) // subject to change
-        *statChanges[4] = GetStatIncrease(GetUnitLckGrowth(unit) + bonus);
+        *statChanges[4] = GetStatIncrease((GetUnitLckGrowth(unit) + bonus), expGained);
     if (unit->def < unit->pClassData->maxDef + limitBreaker)
-        *statChanges[5] = GetStatIncrease(GetUnitDefGrowth(unit) + bonus);
+        *statChanges[5] = GetStatIncrease((GetUnitDefGrowth(unit) + bonus), expGained);
     if (unit->res < unit->pClassData->maxRes + limitBreaker)
-        *statChanges[6] = GetStatIncrease(GetUnitResGrowth(unit) + bonus);
+        *statChanges[6] = GetStatIncrease((GetUnitResGrowth(unit) + bonus), expGained);
     if (GetUnitMagic(unit) < GetUnitMaxMagic(unit) + limitBreaker)
-        *statChanges[7] = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
+        *statChanges[7] = GetStatIncrease((GetUnitMagGrowth(unit) + bonus), expGained);
 
     // For each increased stat, increment statCounter
     statCounter += *statChanges[0] > 0 ? 1 : 0;
@@ -276,8 +300,10 @@ void CheckBattleUnitLevelUp(struct BattleUnit * bu)
     {
         int bonus = (bu->unit.state & US_GROWTH_BOOST) ? get_metis_tome_growth_bonus() : 0;
 
+        // bu->unit.exp = bu->unit.exp % 100;
+        // bu->unit.level += bu->unit.exp / 100;
         bu->unit.exp -= 100;
-        bu->unit.level++;
+		bu->unit.level++;
 
         if (UNIT_CATTRIBUTES(&bu->unit) & CA_MAXLEVEL10)
         {

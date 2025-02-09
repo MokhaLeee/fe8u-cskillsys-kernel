@@ -23,6 +23,10 @@
 #include "bmusailment.h"
 #include "vanilla.h"
 
+#if defined(SID_CatchEmAll) && (COMMON_SKILL_VALID(SID_CatchEmAll))
+    const unsigned int gCatchEmAllId = SID_CatchEmAll;
+#endif
+
 #ifdef CONFIG_BEXP
     extern u16 sBEXP[CONFIG_BEXP];
 #endif
@@ -3380,39 +3384,18 @@ void BattleUnitTargetCheckCanCounter(struct BattleUnit* bu) {
         bu->battleCritRate = 0xFF;
         bu->battleEffectiveCritRate = 0xFF;
     }
-
-// #if defined(SID_Counterattack) && (COMMON_SKILL_VALID(SID_Counterattack))
-//     if (!BattleSkillTester(bu, SID_Counterattack) && !bu->canCounter)
-//         {
-//             bu->battleAttack = 0xFF;
-//             bu->battleHitRate = 0xFF;
-//             bu->battleEffectiveHitRate = 0xFF;
-//             bu->battleCritRate = 0xFF;
-//             bu->battleEffectiveCritRate = 0xFF;
-//         }
-
-// #else
-//     if (!bu->canCounter) {
-//         bu->battleAttack = 0xFF;
-//         bu->battleHitRate = 0xFF;
-//         bu->battleEffectiveHitRate = 0xFF;
-//         bu->battleCritRate = 0xFF;
-//         bu->battleEffectiveCritRate = 0xFF;
-//     }
-// #endif
 }
 
 LYN_REPLACE_CHECK(BattleInitTargetCanCounter);
 void BattleInitTargetCanCounter(void) {
-    // Target cannot counter if it is a gorgon egg
 
+    // Target cannot counter if it is a gorgon egg
     if (UNIT_IS_GORGON_EGG(&gBattleTarget.unit)) {
         gBattleTarget.weapon = 0;
         gBattleTarget.canCounter = FALSE;
     }
 
     // Target cannot counter if either units are using "uncounterable" weapons
-
 #if defined(SID_Counterattack) && (COMMON_SKILL_VALID(SID_Counterattack))
     if (!SkillTester(&gBattleTarget.unit, SID_Counterattack))
         {
@@ -3430,11 +3413,67 @@ void BattleInitTargetCanCounter(void) {
 #endif
 
     // Target cannot counter if a berserked player unit is attacking another player unit
-
     if (gBattleActor.unit.statusIndex == UNIT_STATUS_BERSERK) {
         if ((UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE) && (UNIT_FACTION(&gBattleTarget.unit) == FACTION_BLUE)) {
             gBattleTarget.weapon = 0;
             gBattleTarget.canCounter = FALSE;
         }
     }
+}
+
+LYN_REPLACE_CHECK(ProcMAExpBar_OnIncrement);
+void ProcMAExpBar_OnIncrement(struct MAExpBarProc* proc)
+{
+
+    // Check if we've reached target BEFORE incrementing
+    if (proc->expFrom == proc->expTo) {
+        Proc_Break(proc);
+        m4aSongNumStop(0x74);
+        return;
+    }
+
+    proc->expFrom++;
+
+    if (proc->expFrom >= 100)
+    {
+        proc->expFrom = 0;
+        proc->expTo -= 100;
+    }
+
+    DrawMAExpBar(6, 8, proc->expFrom);
+}
+
+LYN_REPLACE_CHECK(MapAnimProc_DisplayExpBar);
+void MapAnimProc_DisplayExpBar(struct Proc* proc)
+{
+    int actorNum = -1;
+    switch (gManimSt.actorCount_maybe) {
+    case 1:
+        if (gManimSt.actor[1].bu->expGain != 0)
+            actorNum = 1;
+        break;
+
+    case 2:
+        if (gManimSt.actor[0].bu->expGain != 0)
+            actorNum = 0;
+        break;
+    }
+
+    if (actorNum >= 0) {
+        struct MAExpBarProc* expProc = Proc_StartBlocking(gProc_MapAnimExpBar, proc);
+
+        expProc->expFrom = gManimSt.actor[actorNum].bu->expPrevious;
+        expProc->expTo   = gManimSt.actor[actorNum].bu->expPrevious + gManimSt.actor[actorNum].bu->expGain;
+        expProc->actorId = actorNum;
+    }
+}
+
+LYN_REPLACE_CHECK(ProcMAExpBar_LevelUpIfPossible);
+void ProcMAExpBar_LevelUpIfPossible(struct MAExpBarProc* proc)
+{
+    // if (proc->expTo >= 100)
+    //     StartManimLevelUp(proc->actorId, (struct Proc*) proc);
+
+    if ((gManimSt.actor[1].bu->expPrevious + gManimSt.actor[1].bu->expGain) >= 100)
+        StartManimLevelUp(proc->actorId, (struct Proc*) proc);
 }

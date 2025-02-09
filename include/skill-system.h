@@ -5,6 +5,7 @@
 #include "list-verify.h"
 #include "kernel-lib.h"
 #include "constants/event-cmds.h"
+#include "constants/skills.h"
 
 #ifndef MAX_SKILL_NUM
 #define MAX_SKILL_NUM 0x3FF
@@ -86,7 +87,7 @@ void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
 void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
 
-/* Skill tetsers */
+/* Skill testers */
 extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
 bool _SkillListTester(struct Unit *unit, const u16 sid);
 // extern bool (*_BattleFastSkillTester)(struct BattleUnit *bu, const u16 sid);
@@ -227,6 +228,13 @@ int GetSkillScrollItemUseDescId(int item);
 int GetSkillScrollItemIconId(int item);
 
 extern const struct MenuDef RemoveSkillMenuDef;
+
+/**
+ * Catch Em All
+ */
+#if defined(SID_CatchEmAll) && (COMMON_SKILL_VALID(SID_CatchEmAll))
+    extern const unsigned int gCatchEmAllId;
+#endif
 
 /**
  * Miscs

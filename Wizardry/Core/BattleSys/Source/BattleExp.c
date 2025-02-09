@@ -30,7 +30,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 
 #if defined(SID_Paragon) && (COMMON_SKILL_VALID(SID_Paragon))
     if (BattleSkillTester(actor, SID_Paragon))
-        status = status * 2;
+        status = status * 10;
 #endif
 
 #if defined(SID_Mentorship) && (COMMON_SKILL_VALID(SID_Mentorship))
@@ -98,7 +98,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 //         LIMIT_AREA(status, 1, 100);
 // #endif
 
-    LIMIT_AREA(status, 1, 100);
+    LIMIT_AREA(status, 1, 254);
 
     return status;
 }
@@ -184,8 +184,8 @@ int GetBattleUnitStaffExp(struct BattleUnit *bu)
 //         result = 100;
 // #endif
 
-    if (result > 100)
-        result = 100;
+    if (result > 254)
+        result = 254;
 
     return result;
 }
