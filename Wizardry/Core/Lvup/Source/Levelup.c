@@ -29,15 +29,10 @@ static int GetStatIncreaseFixed(int growth, int ref)
     return simple_div(growth + simple_mod(growth * ref, 100), 100);
 }
 
-LYN_REPLACE_CHECK(GetStatIncrease);
 int GetStatIncrease(int growth, int expGained) {
     int result = 0;
 
-    /* 
-    ** If the unit has gained more than 1 level up, then we can artifically
-    ** multiply their growths to get additional rolls for those level ups.
-    */
-    if (expGained > 200)
+    if (expGained >= 200)
         growth *= (expGained / 100);
 
     while (growth > 100) {
@@ -53,12 +48,11 @@ int GetStatIncrease(int growth, int expGained) {
 
 static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 {
-    bonus = 30;
+    int expGained = gManimSt.actor[1].bu->expPrevious + gManimSt.actor[1].bu->expGain;
     struct Unit * unit = GetUnit(bu->unit.index);
     int statCounter = 0;
     int limitBreaker = 0;
     FORCE_DECLARE bool tripleUpExecuted = false;
-    int expGained = gManimSt.actor[1].bu->expPrevious + gManimSt.actor[1].bu->expGain;
 
 #if defined(SID_LimitBreaker) && (COMMON_SKILL_VALID(SID_LimitBreaker))
     if (SkillTester(unit, SID_LimitBreaker))
@@ -92,7 +86,7 @@ static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
             *statChanges[0] = GetStatIncrease((GetUnitHpGrowth(unit) + bonus), expGained);
 #else
     if (unit->maxHP < unit->pClassData->maxHP + limitBreaker)
-        *statChanges[0] = GetStatIncrease((GetUnitHpGrowth(unit) + bonus), expGained);
+        *statChanges[0] = GetStatIncrease(GetUnitHpGrowth(unit) + bonus);
 #endif
     if (unit->pow < unit->pClassData->maxPow + limitBreaker)
         *statChanges[1] = GetStatIncrease((GetUnitPowGrowth(unit) + bonus), expGained);
@@ -300,10 +294,8 @@ void CheckBattleUnitLevelUp(struct BattleUnit * bu)
     {
         int bonus = (bu->unit.state & US_GROWTH_BOOST) ? get_metis_tome_growth_bonus() : 0;
 
-        // bu->unit.exp = bu->unit.exp % 100;
-        // bu->unit.level += bu->unit.exp / 100;
         bu->unit.exp -= 100;
-		bu->unit.level++;
+        bu->unit.level++;
 
         if (UNIT_CATTRIBUTES(&bu->unit) & CA_MAXLEVEL10)
         {

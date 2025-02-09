@@ -258,8 +258,8 @@ void BattleGenerateHitTriangleAttack(struct BattleUnit* attacker, struct BattleU
 void BattleGenerateHitEffects(struct BattleUnit* attacker, struct BattleUnit* defender);
 s8 BattleGenerateHit(struct BattleUnit* attacker, struct BattleUnit* defender);
 
-// int GetStatIncrease(int growth);
 int GetStatIncrease(int growth, int expGained);
+// int GetStatIncrease(int growth);
 
 int GetBattleUnitUpdatedWeaponExp(struct BattleUnit* bu);
 
