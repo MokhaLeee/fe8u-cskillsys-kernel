@@ -28,7 +28,7 @@ CLEAN_FILES += $(GLYPH_INSTALLER)
 	@echo "[GEN]	$@"
 	@$(GRIT) $< -gB2 -p! -tw16 -th16 -ftb -fh! -o $@
 
-CFILES := $(shell find $(mkfile_dir)Hacks -type f -name '*.c')
+CFILES :=
 CLEAN_FILES += $(CFILES:.c=.o) $(CFILES:.c=.lyn.event)
 
 CLEAN_DIRS  += $(mkfile_dir)build

@@ -8,12 +8,12 @@
 #include "Source/hook-proc.lyn.event"
 #include "Source/mapanim.lyn.event"
 #include "Source/pad.lyn.event"
-#include "Source/utf8.lyn.event"
 #include "Source/wexp.lyn.event"
 #include "Source/faction.lyn.event"
 #include "Source/unit-validation.lyn.event"
 #include "Source/UnitList.lyn.event"
 #include "Source/ranges.lyn.event"
+
 // #include "data.event"
 
 #endif /* KERNEL_LIB_INSTALLED */

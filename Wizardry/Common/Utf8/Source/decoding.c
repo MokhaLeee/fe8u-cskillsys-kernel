@@ -1,5 +1,5 @@
 #include <common-chax.h>
-#include <kernel-lib.h>
+#include <utf8.h>
 
 static bool is_ascii(u32 unicod)
 {
@@ -91,4 +91,27 @@ void Text_DrawString(struct Text *text, const char *str)
 {
 	while (*str != 0 && *str != CHAR_NEWLINE)
 		str = Text_DrawCharacter(text, str);
+}
+
+LYN_REPLACE_CHECK(InsertPrefix);
+void InsertPrefix(char *str, const char *insert_str, s8 c)
+{
+	int len = strlen(str);
+
+	if (insert_str != NULL) {
+		int len_sert = strlen(insert_str);
+
+		for (int i = len; i >= 0; i--)
+			str[i + len_sert] = str[i];
+
+		for (int i = 0; i < len_sert; i++)
+			str[i] = insert_str[i];
+
+		return;
+	}
+
+	for (int i = len; i >= 0; i--)
+		str[i + 1] = str[i];
+
+	str[0] = ' ';
 }

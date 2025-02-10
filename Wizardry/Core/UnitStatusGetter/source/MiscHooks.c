@@ -1,5 +1,5 @@
 #include "common-chax.h"
-#include "hooks.h"
+#include "battle-system.h"
 
 LYN_REPLACE_CHECK(MoveActiveUnit);
 void MoveActiveUnit(int x, int y)
@@ -12,7 +12,7 @@ void MoveActiveUnit(int x, int y)
 	PidStatsAddSquaresMoved(gActiveUnit->pCharacterData->number, gActionData.moveCount);
 
 	if (GetUnitCurrentHp(gActiveUnit) != 0)
-		gActiveUnit->state = gActiveUnit->state &~ US_HIDDEN;
+		gActiveUnit->state = gActiveUnit->state & ~US_HIDDEN;
 
 	UnitFinalizeMovement(gActiveUnit);
 }
@@ -46,15 +46,16 @@ LYN_REPLACE_CHECK(SetupMapBattleAnim);
 void SetupMapBattleAnim(struct BattleUnit *actor, struct BattleUnit *target, struct BattleHit *hit)
 {
 	int i;
+	struct BattleHit *hit0 = prBattleHitArray;
 
 	MakeBattleMOVEUNIT(0, actor, &actor->unit);
 
-	if (gManimSt.actorCount_maybe > 1) {
+	if (gManimSt.actorCount > 1) {
 		HideUnitSprite(&gBattleTarget.unit); // NOTE: uses gBattleTarget instead of target argument
 		MakeBattleMOVEUNIT(1, target, &target->unit);
 	}
 
-	if (prBattleHitArray[0].attributes & BATTLE_HIT_ATTR_TATTACK) {
+	if (hit0->attributes & BATTLE_HIT_ATTR_TATTACK) {
 		MakeBattleMOVEUNIT(2, actor, gBattleStats.taUnitA);
 		MakeBattleMOVEUNIT(3, actor, gBattleStats.taUnitB);
 
@@ -64,7 +65,7 @@ void SetupMapBattleAnim(struct BattleUnit *actor, struct BattleUnit *target, str
 
 	SetupBattleMOVEUNITs();
 
-	for (i = 0; i < gManimSt.actorCount_maybe; ++i) {
+	for (i = 0; i < gManimSt.actorCount; ++i) {
 		gManimSt.actor[i].hp_cur = gManimSt.actor[i].bu->hpInitial;
 
 #if CHAX

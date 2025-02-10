@@ -1,29 +1,18 @@
 #ifndef UTF8_HACK_INSTALLED
 #define UTF8_HACK_INSTALLED
 
-ALIGN 4
 #include "Source/LynJump.event"
-
-#include "Source/RemovePrefix.lyn.event"
-#include "Source/Utf8Decode.lyn.event"
-#include "Source/AntiHuffman.lyn.event"
-#include "Source/AutoNarrow.lyn.event"
+#include "Source/utf8.lyn.event"
+#include "Source/narrowfont.lyn.event"
+#include "Source/decoding.lyn.event"
 
 /* Fake FEB draw-utf8 patch */
 PUSH
-    ORG 0x44D2
-    BYTE 0x00 0x00 0x00 0x4B 0x18 0x47
-
-	ORG 0x00A26C
-	prTextTable:
-
-	ORG 0x002BB4
-	_DecodeString:
-
-	// Fake old Anti-Huffman patch
-	// Not quite necessary but no harm.
-	ORG 0x02BA4
-	#include "Source/FakeDecoding.lyn.event"
+	ORG 0x44D2
+	BYTE 0x00 0x00 0x00 0x4B 0x18 0x47
+	PROTECT 0x000044C8 0x00004504 // Text_DrawStringASCII
 POP
+
+#include "Source/data.lyn.event"
 
 #endif // UTF8_HACK_INSTALLED

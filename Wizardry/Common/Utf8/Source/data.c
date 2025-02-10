@@ -1,7 +1,5 @@
 #include <common-chax.h>
-#include <kernel-lib.h>
-
-#include "kernel-lib-internal.h"
+#include <utf8.h>
 
 const struct AutoNarrowFontEnt AutoNarrowFontConf[0x100] = {
 	['a'] = { "\xe1\xb5\x83\0" }, 

@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "debug-kit.h"
 #include "kernel-lib.h"
+#include "utf8.h"
 #include "constants/gfx.h"
 
 const u8 *_GetSkillIconExt(const u8 lo, int hi)
