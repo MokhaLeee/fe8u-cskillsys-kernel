@@ -4,7 +4,8 @@ PUSH
 
     // Already covered in function: GetBattleUnitStaffExp
     ORG $2C660
-    // #include "Source/pr_BattleHitArrayRe.lyn.event"
+    // Jester - This include was turned off originally, turn it off again if it causes problems in battles.
+    #include "Source/pr_BattleHitArrayRe.lyn.event"
 
     ORG $2CB0C
     #include "Source/pr_BattleHitArrayRe.lyn.event"

@@ -244,3 +244,8 @@ rescue penalties.[X]
 Wrestler:[N]
 This unit can use movement[N]
 skills on enemyy units.[X]
+
+## MSG_SKILL_Trader
+Trader:[NL]
+Increase the sell price of items[N]
+this unit sells to 75%.[X]

@@ -430,10 +430,10 @@ void ApplyUnitReclass(struct Unit * unit, u8 classId)
     }
     unit->_u3A = tmp;
 
-    if (unit->maxHP < 0)
-    {
-        unit->maxHP = 0;
-    }
+    // if (unit->maxHP < 0)
+    // {
+    //     unit->maxHP = 0;
+    // }
     if (unit->pow < 0)
     {
         unit->pow = 0;

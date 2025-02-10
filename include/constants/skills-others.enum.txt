@@ -613,6 +613,7 @@ SID_Canto
 // SID_Deal
 // SID_Bargain
 // SID_Secret
+// SID_Trader
 
 ///////// ARENA SKILLS
 // SID_Ludopathy

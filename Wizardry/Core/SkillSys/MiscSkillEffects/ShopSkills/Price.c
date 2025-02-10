@@ -81,3 +81,13 @@ u16 GetItemPurchasePrice(struct Unit * unit, int item)
 
     return cost;
 }
+
+LYN_REPLACE_CHECK(GetItemSellPrice);
+u16 GetItemSellPrice(int item)
+{
+#if (defined(SID_Trader) && COMMON_SKILL_VALID(SID_Trader))
+    if (SkillTester(gActiveUnit, SID_Trader))
+        return (GetItemCost(item) / 4) * 3;
+#endif   
+    return GetItemCost(item) / 2;
+}
