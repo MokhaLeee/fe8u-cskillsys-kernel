@@ -48,11 +48,9 @@ source ~/.bashrc
 
 4. Build EA
 
-> [!WARNING]
-> Please **Strictly** follow the following steps to build linux EA by yourself.
-
 Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
 
+Recommended installation process
 ```bash
 # Install .NET
 # refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
