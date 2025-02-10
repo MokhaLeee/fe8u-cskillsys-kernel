@@ -124,7 +124,7 @@ bool PreMapAnimBattleRound_ComboAttack(ProcPtr proc)
 	SetBattleAnimFacing(1, COMBO_MAPA_ACTOR_IDX, MA_FACING_OPPONENT);
 
 	// MapAnim_PrepareNextBattleRound
-	gManimSt.specialProcScr = GetSpellAssocAlt6CPointer(GetUnitEquippedWeapon(unit));
+	gManimSt.specialProcScr = GetSpellAssocMapAnimProcScript(GetUnitEquippedWeapon(unit));
 
 	Proc_StartBlocking(ProcScr_MapAnim_PrepareNextBattleHook, proc);
 	return true;

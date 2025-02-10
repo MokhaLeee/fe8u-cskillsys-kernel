@@ -12,9 +12,6 @@ POP
 #include "Source/NewEventScripts.lyn.event"
 #include "Source/EventTable.lyn.event"
 
-ORG gEventLoCmdTableRe + 0x80 * 4
-
-
 // #include "data.event"
 
 #endif /* EVENT_EXPANSION_INSTALLED */

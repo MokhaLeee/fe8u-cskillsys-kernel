@@ -50,7 +50,7 @@ void SetupMapBattleAnim(struct BattleUnit *actor, struct BattleUnit *target, str
 
 	MakeBattleMOVEUNIT(0, actor, &actor->unit);
 
-	if (gManimSt.actorCount_maybe > 1) {
+	if (gManimSt.actorCount > 1) {
 		HideUnitSprite(&gBattleTarget.unit); // NOTE: uses gBattleTarget instead of target argument
 		MakeBattleMOVEUNIT(1, target, &target->unit);
 	}
@@ -65,7 +65,7 @@ void SetupMapBattleAnim(struct BattleUnit *actor, struct BattleUnit *target, str
 
 	SetupBattleMOVEUNITs();
 
-	for (i = 0; i < gManimSt.actorCount_maybe; ++i) {
+	for (i = 0; i < gManimSt.actorCount; ++i) {
 		gManimSt.actor[i].hp_cur = gManimSt.actor[i].bu->hpInitial;
 
 #if CHAX

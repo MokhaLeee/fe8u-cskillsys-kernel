@@ -20,7 +20,7 @@ STATIC_DECLAR void PreMapAnimBattleRound_OnStart(ProcPtr proc)
 	 */
 	if (gManimSt.pCurrentRound->info & BATTLE_HIT_INFO_END) {
 		Proc_Break(proc);
-		Proc_GotoScript(proc, gProc_MapAnimEnd);
+		Proc_GotoScript(proc, ProcScr_MapAnimEnd);
 		return;
 	}
 	MapAnim_PrepareNextBattleRound(proc);
@@ -39,7 +39,7 @@ STATIC_DECLAR void PreMapAnimBattleRound_OnEnd(ProcPtr proc)
 
 const struct ProcCmd ProcScr_MapAnimBattle_Rework[] = {
 	PROC_CALL(LockGame),
-	PROC_CALL(_InitFontForUIDefault),
+	PROC_CALL(MapAnim_PrepareBattleTalk),
 	PROC_SLEEP(0x1),
 	PROC_CALL(MapAnim_MoveCameraOntoSubject),
 	PROC_SLEEP(0x2),
