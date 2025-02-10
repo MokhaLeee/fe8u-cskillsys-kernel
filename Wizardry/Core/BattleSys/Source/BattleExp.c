@@ -30,7 +30,7 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 
 #if defined(SID_Paragon) && (COMMON_SKILL_VALID(SID_Paragon))
     if (BattleSkillTester(actor, SID_Paragon))
-        status = status * 10;
+        status = status * 2;
 #endif
 
 #if defined(SID_Mentorship) && (COMMON_SKILL_VALID(SID_Mentorship))
@@ -82,23 +82,24 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
     status += bonusEXP;
 #endif
 
+#if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
+    if (BattleSkillTester(actor, SID_Prodigy))
+    {
+        LIMIT_AREA(status, 1, 254);
+    }
+    else
+    {
+        LIMIT_AREA(status, 1, 100);
+    }
+#else
+        LIMIT_AREA(status, 1, 100);
+#endif
+
     /* Check last */
 #if defined(SID_VoidCurse) && (COMMON_SKILL_VALID(SID_VoidCurse))
     if (BattleSkillTester(target, SID_VoidCurse))
         status = 0;
 #endif
-
-/* NOT WORKING */
-// #if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
-//     if (BattleSkillTester(actor, SID_Prodigy) == FALSE)
-//     {
-//         LIMIT_AREA(status, 1, 100);
-//     }
-// #else
-//         LIMIT_AREA(status, 1, 100);
-// #endif
-
-    LIMIT_AREA(status, 1, 254);
 
     return status;
 }
@@ -172,20 +173,21 @@ int GetBattleUnitStaffExp(struct BattleUnit *bu)
             ? &gBattleTarget
             : &gBattleActor);
 
-/* NOT WORKING */
-// #if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
-//     if (!BattleSkillTester(bu, SID_Prodigy))
-//     {
-//         if (result > 100)
-//             result = 100;
-//     }
-// #else
-//     if (result > 100)
-//         result = 100;
-// #endif
-
-    if (result > 254)
-        result = 254;
+#if defined(SID_Prodigy) && (COMMON_SKILL_VALID(SID_Prodigy))
+    if (BattleSkillTester(bu, SID_Prodigy))
+    {
+        if (result > 254)
+            result = 254;
+    }
+    else 
+    {
+        if (result > 100)
+            result = 100;      
+    }
+#else
+    if (result > 100)
+        result = 100;
+#endif
 
     return result;
 }

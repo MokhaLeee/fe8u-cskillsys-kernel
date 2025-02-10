@@ -29,6 +29,7 @@ static int GetStatIncreaseFixed(int growth, int ref)
     return simple_div(growth + simple_mod(growth * ref, 100), 100);
 }
 
+LYN_REPLACE_CHECK(GetStatIncrease);
 int GetStatIncrease(int growth, int expGained) {
     int result = 0;
 
@@ -48,7 +49,8 @@ int GetStatIncrease(int growth, int expGained) {
 
 static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 {
-    int expGained = gManimSt.actor[1].bu->expPrevious + gManimSt.actor[1].bu->expGain;
+    int expGained = bu->expPrevious + bu->expGain;
+    NoCashGBAPrintf("Exp gained: %d", expGained);
     struct Unit * unit = GetUnit(bu->unit.index);
     int statCounter = 0;
     int limitBreaker = 0;
@@ -290,13 +292,12 @@ static inline int get_metis_tome_growth_bonus(void)
 LYN_REPLACE_CHECK(CheckBattleUnitLevelUp);
 void CheckBattleUnitLevelUp(struct BattleUnit * bu)
 {
-    if (CanBattleUnitGainLevels(bu) && bu->unit.exp >= 100)
+    int totalExp = bu->expPrevious + bu->expGain;
+    
+    if (CanBattleUnitGainLevels(bu) && totalExp >= 100)
     {
         int bonus = (bu->unit.state & US_GROWTH_BOOST) ? get_metis_tome_growth_bonus() : 0;
-
-        bu->unit.exp -= 100;
-        bu->unit.level++;
-
+        
         if (UNIT_CATTRIBUTES(&bu->unit) & CA_MAXLEVEL10)
         {
             if (bu->unit.level == 10)
@@ -315,5 +316,14 @@ void CheckBattleUnitLevelUp(struct BattleUnit * bu)
 
         TryAddSkillLvup(GetUnitFromCharIdAndFaction(UNIT_CHAR_ID(&bu->unit), FACTION_BLUE), bu->unit.level);
         UnitLvupCore(bu, bonus);
+    }
+
+    while (CanBattleUnitGainLevels(bu) && totalExp >= 100)
+    {
+        totalExp -= 100;
+        bu->unit.level++;
+
+        if (totalExp < 100)
+            bu->unit.exp = totalExp;
     }
 }

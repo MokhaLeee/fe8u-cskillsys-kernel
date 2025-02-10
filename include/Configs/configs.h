@@ -241,6 +241,13 @@
  */
 #define CONFIG_VESLY_SUPPORT_POST_BATTLE
 
+#ifdef CONFIG_VESLY_SUPPORT_POST_BATTLE
+	#define SUPPORT_RATE_KILL 100
+	#define SUPPORT_RATE_COMBAT 100
+	#define SUPPORT_RATE_STAFF 100
+	#define SUPPORT_RATE_DANCE 100
+#endif
+
 /**
  * By Contro
  * Allows user to flip sprites by allegiance (would be nice to add class/character options too)

@@ -6,11 +6,6 @@
 #include "eventinfo.h"
 #include "../../../../Contants/Texts/build/msgs.h"
 
-#define SUPPORT_RATE_KILL 100
-#define SUPPORT_RATE_COMBAT 100
-#define SUPPORT_RATE_STAFF 100
-#define SUPPORT_RATE_DANCE 100
-
 static const struct SupportTalkEnt gNewSupportTalkList[] = 
 {
     { CHARACTER_EIRIKA,   CHARACTER_EPHRAIM,  {MSG_0C53, MSG_0C54, MSG_0C55} },

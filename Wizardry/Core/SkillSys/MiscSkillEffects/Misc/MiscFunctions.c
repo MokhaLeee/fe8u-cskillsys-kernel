@@ -3448,12 +3448,12 @@ void MapAnimProc_DisplayExpBar(struct Proc* proc)
 {
     int actorNum = -1;
     switch (gManimSt.actorCount_maybe) {
-    case 1:
+    case 2:
         if (gManimSt.actor[1].bu->expGain != 0)
             actorNum = 1;
-        break;
+        // fallthrough
 
-    case 2:
+    case 1:
         if (gManimSt.actor[0].bu->expGain != 0)
             actorNum = 0;
         break;
@@ -3474,6 +3474,19 @@ void ProcMAExpBar_LevelUpIfPossible(struct MAExpBarProc* proc)
     // if (proc->expTo >= 100)
     //     StartManimLevelUp(proc->actorId, (struct Proc*) proc);
 
-    if ((gManimSt.actor[1].bu->expPrevious + gManimSt.actor[1].bu->expGain) >= 100)
+    int actorNum = -1;
+    switch (gManimSt.actorCount_maybe) {
+    case 2:
+        if (gManimSt.actor[1].bu->expGain != 0)
+            actorNum = 1;
+        // fallthrough
+
+    case 1:
+        if (gManimSt.actor[0].bu->expGain != 0)
+            actorNum = 0;
+        break;
+    }
+
+    if ((gManimSt.actor[actorNum].bu->expPrevious + gManimSt.actor[actorNum].bu->expGain) >= 100)
         StartManimLevelUp(proc->actorId, (struct Proc*) proc);
 }

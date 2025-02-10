@@ -15,7 +15,7 @@ int GetManimLevelUpStatGain(int actor_id, int stat_num)
 {
     switch (stat_num) {
     case 0:
-        return 1;
+        return (gManimSt.actor[actor_id].bu->expPrevious + gManimSt.actor[actor_id].bu->expGain) / 100;
 
     case 1:
         return gManimSt.actor[actor_id].bu->changeHP;

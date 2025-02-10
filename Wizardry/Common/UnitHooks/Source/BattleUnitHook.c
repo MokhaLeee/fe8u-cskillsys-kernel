@@ -207,6 +207,7 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit * unit, struct Battle
 
     UnitRemoveInvalidItems(unit);
 
+    /* This returns fuck all now that it's been zeroed out for more useful data in the BWL struct */
     if (bu->expGain)
         PidStatsAddExpGained(unit->pCharacterData->number, bu->expGain);
 }
