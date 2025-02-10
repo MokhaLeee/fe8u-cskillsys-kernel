@@ -444,6 +444,13 @@ but at least the arena is playable now
 #define CONFIG_ARENA_PARTIAL_FIX
 
 /**
+ * By Jester
+ * If an enemy kills a unit and they haven't promoted already,
+ * then promote them. Sort of like Shiren the Wanderer.
+ */
+#define CONFIG_PROMOTE_ENEMIES_IF_KILLED_UNIT
+
+/**
  * Install ConvoyExpa
  */
 #define CONFIG_INSTALL_CONVOYEXPA

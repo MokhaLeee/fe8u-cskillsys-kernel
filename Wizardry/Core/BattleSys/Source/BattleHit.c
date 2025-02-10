@@ -621,6 +621,23 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
         {
             gBattleActorGlobalFlag.enemy_defeated = true;
 
+#ifdef CONFIG_PROMOTE_ENEMIES_IF_KILLED_UNIT
+            struct Unit * enemyUnit = GetUnit(gBattleActor.unit.index); 
+            if (UNIT_FACTION(enemyUnit) == FACTION_RED)
+            {
+                ApplyUnitDefaultPromotion(enemyUnit);
+                enemyUnit->maxHP += 3;
+                enemyUnit->curHP += 3;
+                enemyUnit->pow += 3;
+                enemyUnit->_u47 += 3; // magic
+                enemyUnit->skl += 3;
+                enemyUnit->spd += 3;
+                enemyUnit->lck += 3;
+                enemyUnit->def += 3;
+                enemyUnit->res += 3;
+            }
+#endif
+
 #if (defined(SID_Galeforce) && (COMMON_SKILL_VALID(SID_Galeforce)))
             if (CheckBattleSkillActivate(&gBattleActor, &gBattleTarget, SID_Galeforce, gBattleActor.unit.skl))
                 gBattleActorGlobalFlag.skill_activated_galeforce = true;
