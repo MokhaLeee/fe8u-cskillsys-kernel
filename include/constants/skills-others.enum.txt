@@ -484,6 +484,7 @@ SID_Canto
 // SID_AbsorbMelee
 // SID_AbsorbMagic
 // SID_Duel
+// SID_Offhand
 
 ////////// EFFECTIVENESS SKILLS
 // SID_Resourceful

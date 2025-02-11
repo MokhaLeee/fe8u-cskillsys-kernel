@@ -1206,3 +1206,8 @@ enemy, +1 STR for map (max +10).[X]
 Iron Dome:[N]
 Unit takes half damage,[N]
 but AVO is set to 0.[X]
+
+## MSG_SKILL_Offhand
+Offhand:[N]
+Swap the opponent's equipped weapon[N]
+after battle if they have another.[X]

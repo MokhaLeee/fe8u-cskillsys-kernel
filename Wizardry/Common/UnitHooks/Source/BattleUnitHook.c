@@ -279,6 +279,75 @@ void BattleApplyUnitUpdates(void)
         gBattleTarget.unit.items[gBattleTarget.weaponSlotIndex] = gBattleTarget.weapon;
 #endif
 
+#if (defined(SID_Offhand) && (COMMON_SKILL_VALID(SID_Offhand)))
+    if (SkillTester(actor, SID_Offhand))
+    {
+        /* Check if the unit has a second item */
+        if (GetItemIndex(target->items[1]) != 0)
+        {
+            u16 currentItem = GetUnitEquippedWeapon(target);
+            u8 currentIndex = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (target->items[i] == currentItem)
+                    currentIndex = i;
+                else if (target->items[i] == 0)
+                    break;
+                else
+                {
+                    if (CanUnitUseWeapon(target, target->items[i]))
+                    {
+                        u16 newItem = target->items[i];
+                        u8 newIndex = i;
+                        
+                        gBattleTarget.unit.items[currentIndex] = newItem;
+                        gBattleTarget.unit.items[newIndex] = currentItem;
+
+                        break;
+                    }
+                }
+            }
+
+            /* Something random to satisfy the -Werror-unused-but-set-variable */
+            currentIndex += 1;
+        }
+    }
+    if (SkillTester(target, SID_Offhand))
+    {
+        /* Check if the unit has a second item */
+        if (GetItemIndex(actor->items[1]) != 0)
+        {
+            u16 currentItem = GetUnitEquippedWeapon(actor);
+            u8 currentIndex = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (actor->items[i] == currentItem)
+                    currentIndex = i;
+                else if (actor->items[i] == 0)
+                    break;
+                else
+                {
+                    if (CanUnitUseWeapon(actor, actor->items[i]))
+                    {
+                        u16 newItem = actor->items[i];
+                        u8 newIndex = i;
+                        
+                        gBattleActor.unit.items[currentIndex] = newItem;
+                        gBattleActor.unit.items[newIndex] = currentItem;
+
+                        break;
+                    }
+                }
+            }
+
+            /* Something random to satisfy the -Werror-unused-but-set-variable */
+            currentIndex += 1;
+        }
+    }
+#endif
+
     UpdateUnitFromBattle(actor, &gBattleActor);
 
     if (target)

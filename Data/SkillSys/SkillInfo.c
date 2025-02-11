@@ -4827,4 +4827,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Offhand) && COMMON_SKILL_VALID(SID_Offhand))
+    [SID_Offhand] = {
+        .desc = MSG_SKILL_Offhand,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
