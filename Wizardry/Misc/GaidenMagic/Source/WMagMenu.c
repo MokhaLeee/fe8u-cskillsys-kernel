@@ -29,7 +29,7 @@ static bool CanUnitUseGaidenWMagItem(struct Unit *unit, int item)
 	 * The wexp judgement has been completed in GetGaidenMagicList()!
 	 */
 	unit->ranks[ITYPE_STAFF] = WPN_EXP_S;
-	ret = CanUnitUseItem(unit, item);
+	ret = CanUnitUseItem(unit, MakeNewItem(item));
 
 	unit->ranks[ITYPE_STAFF] = staff_wexp;
 	return ret;
