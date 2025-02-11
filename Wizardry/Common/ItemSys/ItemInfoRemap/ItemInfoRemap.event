@@ -1,4 +1,11 @@
 #include "Source/LynJump.event"
 
 #include "Source/ItemInfos.lyn.event"
+#include "Source/ItemInfos_hook.lyn.event"
 #include "Source/DuraItem.lyn.event"
+
+PUSH
+	ORG 0x0168B4
+	BL(DrawItemMenuLine_hook)
+    PROTECT 0x00016848 0x000168E0 // DrawItemMenuLine
+POP

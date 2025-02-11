@@ -122,7 +122,8 @@ int GetItemMaxCost(int item)
 	return GetItemData(ITEM_INDEX(item))->costPerUse * GetItemMaxUses(item);
 }
 
-LYN_REPLACE_CHECK(DrawItemMenuLine);
+#if 0
+LYN//_REPLACE_CHECK(DrawItemMenuLine);
 void DrawItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut)
 {
 	Text_SetParams(text, 0, (isUsable ? TEXT_COLOR_SYSTEM_WHITE : TEXT_COLOR_SYSTEM_GRAY));
@@ -135,6 +136,7 @@ void DrawItemMenuLine(struct Text *text, int item, s8 isUsable, u16 *mapOut)
 
 	DrawIcon(mapOut, GetItemIconId(item), 0x4000);
 }
+#endif
 
 LYN_REPLACE_CHECK(DrawItemMenuLineLong);
 void DrawItemMenuLineLong(struct Text *text, int item, s8 isUsable, u16 *mapOut)

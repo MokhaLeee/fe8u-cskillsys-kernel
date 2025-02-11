@@ -17,7 +17,7 @@ STATIC_DECLAR int GaidenWMagItemSelHover(struct MenuProc *menu, struct MenuItemP
 STATIC_DECLAR int GaidenWMagItemSelUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 STATIC_DECLAR void UpdateMenuItemPanelGaidenWMag(int slot);
 
-static bool CanUnitUseGaidenWMagItem(struct Unit *unit, int item)
+STATIC_DECLAR bool CanUnitUseGaidenWMagItem(struct Unit *unit, int item)
 {
 	/* Replacement of CanUnitUseItem() */
 	int staff_wexp = unit->ranks[ITYPE_STAFF];
