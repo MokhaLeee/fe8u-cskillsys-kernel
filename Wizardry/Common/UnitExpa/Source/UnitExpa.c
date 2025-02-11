@@ -14,6 +14,7 @@ void ClearBitUES(struct Unit * unit, int bit)
 {
     if (bit < 8)
         unit->_u3A &= ~(1 << bit);
+
     else if (bit < 16)
         unit->_u3B &= ~(1 << (bit - 8));
 }
@@ -22,6 +23,7 @@ bool CheckBitUES(struct Unit * unit, int bit)
 {
     if (bit < 8)
         return !!(unit->_u3A & (1 << bit));
+        
     else if (bit < 16)
         return !!(unit->_u3B & (1 << (bit - 8)));
 

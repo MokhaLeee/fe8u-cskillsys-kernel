@@ -629,6 +629,7 @@ static const KeyValuePair dict_skills[] =
         { "Trip Up", {1000, 1}},
         { "Tsuzuku", {1000, 1}},
         { "Turncoat", {1000, 1}},
+        { "Twin Crests", {1000, 1}},
         { "Unaware", {1000, 1}},
         { "Uncanny Blow", {1000, 1}},
         { "Up With Arch", {1000, 1}},

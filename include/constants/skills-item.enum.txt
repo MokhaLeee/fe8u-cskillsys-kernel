@@ -671,6 +671,7 @@
 // SID_Savior
 // SID_SelfHealing
 // SID_Wrestler
+// SID_TwinCrests
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

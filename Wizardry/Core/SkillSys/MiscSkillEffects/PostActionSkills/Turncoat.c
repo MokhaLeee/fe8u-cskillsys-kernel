@@ -38,10 +38,7 @@ bool PostActionTurncoat(ProcPtr parent)
 #if defined(SID_Turncoat) && (COMMON_SKILL_VALID(SID_Turncoat))
     if (SkillTester(unit, SID_Turncoat))
     {
-        // Something is wrong with SetBitUES, it's not correctly setting
-        // the bits for capture or this
-        // if (!(UNIT_CATTRIBUTES(unit_tar) & CA_BOSS))
-        unit_tar->_u3A = UES_BIT_TURNCOAT;
+        SetBitUES(unit, UES_BIT_TURNCOAT);
 
         if (UNIT_FACTION(unit_tar) == FACTION_RED)
             UnitChangeFaction(unit_tar, FACTION_BLUE);

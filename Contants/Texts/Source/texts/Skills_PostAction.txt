@@ -191,3 +191,8 @@ defeating a full HP enemy[X]
 Canter:[N]
 Unit can move 2 spaces[N]
 after taking any actions.[X]
+
+## MSG_SKILL_TwinCrests
+Twin Crests:[N]
+This unit can act[N]
+twice in one turn.[X]

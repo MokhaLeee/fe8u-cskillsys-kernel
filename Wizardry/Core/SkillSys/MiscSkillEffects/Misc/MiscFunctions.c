@@ -556,8 +556,7 @@ void KillUnitOnCombatDeath(struct Unit * unitA, struct Unit * unitB)
     {
         UnitRescue(unitB, unitA);
         HideUnitSprite(unitA);
-        // ClearBitUES(unitB, UES_BIT_CAPTURE_SKILL_USED);
-        unitB->_u3A = 0;
+        ClearBitUES(unitB, UES_BIT_CAPTURE_SKILL_USED);
         return;
     }
 #endif

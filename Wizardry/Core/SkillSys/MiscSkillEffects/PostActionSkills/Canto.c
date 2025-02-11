@@ -4,6 +4,7 @@
 #include "action-expa.h"
 #include "skill-system.h"
 #include "constants/skills.h"
+#include "unit-expa.h"
 
 STATIC_DECLAR bool CheckCanto(void)
 {
@@ -90,7 +91,6 @@ STATIC_DECLAR bool CheckCanto(void)
 LYN_REPLACE_CHECK(TryMakeCantoUnit);
 bool TryMakeCantoUnit(ProcPtr proc)
 {
-
     bool canCanto = false;
 
     if (gActionData.unitActionType == UNIT_ACTION_WAIT)
@@ -140,6 +140,15 @@ bool TryMakeCantoUnit(ProcPtr proc)
 LYN_REPLACE_CHECK(PlayerPhase_FinishAction);
 void PlayerPhase_FinishAction(ProcPtr proc)
 {
+#if defined(SID_TwinCrests) && (COMMON_SKILL_VALID(SID_TwinCrests))
+    if (SkillTester(gActiveUnit, SID_TwinCrests) && !CheckBitUES(gActiveUnit, UES_BIT_TWIN_CRESTS_SKILL_USED))
+    {
+        SetBitUES(gActiveUnit, UES_BIT_TWIN_CRESTS_SKILL_USED);
+        gActionDataExpa.refrain_action = true;
+        EndAllMus();
+    }
+#endif
+
     if (gPlaySt.chapterVisionRange != 0)
     {
         RenderBmMapOnBg2();
