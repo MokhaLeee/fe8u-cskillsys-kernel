@@ -10,6 +10,6 @@ DrawItemMenuLine_hook:
 	cmp r0, #1
 	pop {r0-r3}
 	bne 1f
-1:
 	bl PutNumberOrBlank
+1:
 	pop {pc}
