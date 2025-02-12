@@ -216,6 +216,7 @@ SID_SolidRock
 SID_Seer
 // SID_IronDome
 SID_Counterattack
+SID_Antihex
 
 ////////POST-BATTLE SKILLS
 // SID_Canto

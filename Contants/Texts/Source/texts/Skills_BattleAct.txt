@@ -247,3 +247,8 @@ from melee attacks to restore HP.[X]
 Absorb Magic:[N]
 This unit can absorb damage[N]
 from magic attacks to restore HP.[X]
+
+## MSG_SKILL_Antihex
+Antihex:[N]
+Disables the devil backfire[N]
+chance for this unit.[X]

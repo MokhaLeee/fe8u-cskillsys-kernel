@@ -102,6 +102,11 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
         return false;
     }
 
+#if (defined(SID_Antihex) && (COMMON_SKILL_VALID(SID_Antihex)))
+    if (BattleSkillTester(attacker, SID_Antihex))
+        return false;
+#endif
+
 #if (defined(SID_DevilsLuck) && (COMMON_SKILL_VALID(SID_DevilsLuck)))
     if (BattleSkillTester(defender, SID_DevilsLuck) && GetItemWeaponEffect(defender->weapon) == WPN_EFFECT_DEVIL)
     {

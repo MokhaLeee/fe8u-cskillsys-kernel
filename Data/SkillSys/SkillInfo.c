@@ -3255,7 +3255,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_DevilsPact) && COMMON_SKILL_VALID(SID_DevilsPact))
     [SID_DevilsPact] = {
-
         .desc = MSG_SKILL_DevilsPact,
         .icon = GFX_SkillIcon_DevilsPact,
     },
@@ -3263,7 +3262,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_DevilsWhim) && COMMON_SKILL_VALID(SID_DevilsWhim))
     [SID_DevilsWhim] = {
-
         .desc = MSG_SKILL_DevilsWhim,
         .icon = GFX_SkillIcon_DevilsWhim,
     },
@@ -3271,7 +3269,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_DevilsLuck) && COMMON_SKILL_VALID(SID_DevilsLuck))
     [SID_DevilsLuck] = {
-
         .desc = MSG_SKILL_DevilsLuck,
         .icon = GFX_SkillIcon_DevilsLuck,
     },
@@ -3286,7 +3283,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_PassionsFlow) && COMMON_SKILL_VALID(SID_PassionsFlow))
     [SID_PassionsFlow] = {
-
          .desc = MSG_SKILL_PassionsFlow,
          .icon = GFX_SkillIcon_PassionsFlow,
     },
@@ -3294,7 +3290,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_NatureRush) && COMMON_SKILL_VALID(SID_NatureRush))
     [SID_NatureRush] = {
-
         .desc = MSG_SKILL_NatureRush,
         .icon = GFX_SkillIcon_NatureRush,
     },
@@ -3302,7 +3297,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_CounterMagic) && COMMON_SKILL_VALID(SID_CounterMagic))
     [SID_CounterMagic] = {
-
         .desc = MSG_SKILL_CounterMagic,
         .icon = GFX_SkillIcon_CounterMagic,
     },
@@ -3310,7 +3304,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LadyBlade) && COMMON_SKILL_VALID(SID_LadyBlade))
     [SID_LadyBlade] = {
-
         .desc = MSG_SKILL_LadyBlade,
         .icon = GFX_SkillIcon_LadyBlade,
     },
@@ -3318,7 +3311,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullDefense) && COMMON_SKILL_VALID(SID_LullDefense))
     [SID_LullDefense] = {
-
         .desc = MSG_SKILL_LullDefense,
         .icon = GFX_SkillIcon_LullDefense,
     },
@@ -3326,7 +3318,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullLuck) && COMMON_SKILL_VALID(SID_LullLuck))
     [SID_LullLuck] = {
-
         .desc = MSG_SKILL_LullLuck,
         .icon = GFX_SkillIcon_LullLuck,
     },
@@ -3334,7 +3325,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullMagic) && COMMON_SKILL_VALID(SID_LullMagic))
     [SID_LullMagic] = {
-
         .desc = MSG_SKILL_LullMagic,
         .icon = GFX_SkillIcon_LullMagic,
     },
@@ -3342,7 +3332,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullMovement) && COMMON_SKILL_VALID(SID_LullMovement))
     [SID_LullMovement] = {
-
         .desc = MSG_SKILL_LullMovement,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -3350,7 +3339,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullResistance) && COMMON_SKILL_VALID(SID_LullResistance))
     [SID_LullResistance] = {
-
         .desc = MSG_SKILL_LullResistance,
         .icon = GFX_SkillIcon_LullResistance,
     },
@@ -3358,7 +3346,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullSkill) && COMMON_SKILL_VALID(SID_LullSkill))
     [SID_LullSkill] = {
-
         .desc = MSG_SKILL_LullSkill,
         .icon = GFX_SkillIcon_LullSkill,
     },
@@ -3366,7 +3353,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullSpectrum) && COMMON_SKILL_VALID(SID_LullSpectrum))
     [SID_LullSpectrum] = {
-
         .desc = MSG_SKILL_LullSpectrum,
         .icon = GFX_SkillIcon_LullSpectrum,
     },
@@ -3374,7 +3360,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullSpeed) && COMMON_SKILL_VALID(SID_LullSpeed))
     [SID_LullSpeed] = {
-
         .desc = MSG_SKILL_LullSpeed,
         .icon = GFX_SkillIcon_LullSpeed,
     },
@@ -3382,7 +3367,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LullStrength) && COMMON_SKILL_VALID(SID_LullStrength))
     [SID_LullStrength] = {
-
         .desc = MSG_SKILL_LullStrength,
         .icon = GFX_SkillIcon_LullStrength,
     },
@@ -3390,7 +3374,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_ShrewdPotential) && COMMON_SKILL_VALID(SID_ShrewdPotential))
     [SID_ShrewdPotential] = {
-
         .desc = MSG_SKILL_ShrewdPotential,
         .icon = GFX_SkillIcon_ShrewdPotential,
     },
@@ -3398,7 +3381,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_GoddessDance) && COMMON_SKILL_VALID(SID_GoddessDance))
     [SID_GoddessDance] = {
-
         .desc = MSG_SKILL_GoddessDance,
         .icon = GFX_SkillIcon_GoddessDance,
     },
@@ -3406,7 +3388,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SteadyBrawler) && COMMON_SKILL_VALID(SID_SteadyBrawler))
     [SID_SteadyBrawler] = {
-
         .desc = MSG_SKILL_SteadyBrawler,
         .icon = GFX_SkillIcon_SteadyBrawler,
     },
@@ -3421,7 +3402,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LiquidOoze) && COMMON_SKILL_VALID(SID_LiquidOoze))
     [SID_LiquidOoze] = {
-
         .desc = MSG_SKILL_LiquidOoze,
         .icon = GFX_SkillIcon_LiquidOoze,
     },
@@ -4845,6 +4825,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Flurry) && COMMON_SKILL_VALID(SID_Flurry))
     [SID_Flurry] = {
         .desc = MSG_SKILL_Flurry,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Antihex) && COMMON_SKILL_VALID(SID_Antihex))
+    [SID_Antihex] = {
+        .desc = MSG_SKILL_Antihex,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
