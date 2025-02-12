@@ -1211,3 +1211,8 @@ but AVO is set to 0.[X]
 Offhand:[N]
 Swap the opponent's equipped weapon[N]
 after battle if they have another.[X]
+
+## MSG_SKILL_Equalizer
+Equalizer:[N]
+Both sides deal damage equal to their[N]
+sum total damage divided between them.[X]

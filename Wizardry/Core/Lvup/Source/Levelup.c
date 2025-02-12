@@ -50,7 +50,6 @@ int GetStatIncrease(int growth, int expGained) {
 static void UnitLvup_Vanilla(struct BattleUnit * bu, int bonus)
 {
     int expGained = bu->expPrevious + bu->expGain;
-    NoCashGBAPrintf("Exp gained: %d", expGained);
     struct Unit * unit = GetUnit(bu->unit.index);
     int statCounter = 0;
     int limitBreaker = 0;

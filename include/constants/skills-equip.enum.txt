@@ -217,6 +217,7 @@ SID_Seer
 // SID_IronDome
 SID_Counterattack
 SID_Antihex
+SID_Equalizer
 
 ////////POST-BATTLE SKILLS
 // SID_Canto

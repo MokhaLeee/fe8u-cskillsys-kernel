@@ -667,6 +667,11 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
         GetBattleHitRound(gBattleHitIterator), result, gDmg.damage_base, gDmg.attack, gDmg.defense, gDmg.correction,
         gDmg.increase, gDmg.crit_correction, gDmg.decrease, gDmg.real_damage);
 
+#if (defined(SID_Equalizer) && (COMMON_SKILL_VALID(SID_Equalizer)))
+    if (BattleSkillTester(attacker, SID_Equalizer) || BattleSkillTester(defender, SID_Equalizer))
+        result = ((defender->battleAttack - attacker->battleDefense) + (attacker->battleAttack - defender->battleDefense)) / 2;
+#endif
+
     if (result > BATTLE_MAX_DAMAGE)
         result = BATTLE_MAX_DAMAGE;
 

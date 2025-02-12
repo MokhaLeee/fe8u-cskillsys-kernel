@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "battle-system.h"
 #include "kernel-lib.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 typedef void (* PreBattleGenerateFunc) (void);
 extern PreBattleGenerateFunc const * const gpPreBattleGenerateFuncs;
