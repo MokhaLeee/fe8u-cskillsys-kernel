@@ -511,6 +511,7 @@ SID_Canto
 // SID_BidingBlow
 // SID_Alacrity
 // SID_Echo
+// SID_Flurry
 
 ////////// PRE-PHASE SKILLS
 // SID_Renewal

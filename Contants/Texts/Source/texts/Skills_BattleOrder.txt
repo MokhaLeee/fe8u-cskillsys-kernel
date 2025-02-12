@@ -132,3 +132,8 @@ each attack if initiating.[X]
 Duel:[N]
 A fight with this unit continues[N]
 until a victor is decided.[X]
+
+## MSG_SKILL_Flurry
+Flurry:[N]
+For each time the unit exceeds the[N]
+doubling threshold, +1 attack round.[X]

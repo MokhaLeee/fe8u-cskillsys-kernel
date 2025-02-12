@@ -254,6 +254,7 @@ static const KeyValuePair dict_skills[] =
         { "Flier Formation", {1000, 1}},
         { "Flier Guidance", {1000, 1}},
         { "Fluffy", {1000, 1}},
+        { "Flurry", {1000, 1}},
         { "Focus", {1000, 1}},
         { "Forager", {1000, 1}},
         { "F-Princess", {1000, 1}},

@@ -4841,4 +4841,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Flurry) && COMMON_SKILL_VALID(SID_Flurry))
+    [SID_Flurry] = {
+        .desc = MSG_SKILL_Flurry,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

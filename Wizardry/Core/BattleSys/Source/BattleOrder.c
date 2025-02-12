@@ -516,6 +516,11 @@ void BattleUnwind(void)
                 return;
             }
 
+            /* 
+            ** So we seem to have run into a bug here where damage doesn't apply
+            ** properly to both sides and the battle eventually softlocks if it is
+            ** projected to take over 8 rounds
+            */
             if (round_counter == 8)
             {
                 gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
@@ -711,6 +716,15 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
         EnqueueRoundEfxSkill(SID_Echo);
         gBattleActorGlobalFlag.skill_activated_astra = true;
         result = result + SKILL_EFF0(SID_Echo);
+    }
+#endif
+
+#if defined(SID_Flurry) && (COMMON_SKILL_VALID(SID_Flurry))
+    if (BattleSkillTester(actor, SID_Flurry))
+    {
+        EnqueueRoundEfxSkill(SID_Echo);
+        int extraAttacks = (actor->battleSpeed - target->battleSpeed) / 4;
+        result = result + extraAttacks;
     }
 #endif
 
