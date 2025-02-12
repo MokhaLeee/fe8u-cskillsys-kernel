@@ -9,7 +9,7 @@ DrawItemMenuLine_hook:
 	bl IsDuraItem
 	cmp r0, #1
 	pop {r0-r3}
-	bne 1f
+	beq 1f
 	bl PutNumberOrBlank
 1:
 	pop {pc}
