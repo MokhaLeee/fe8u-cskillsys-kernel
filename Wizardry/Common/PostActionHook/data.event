@@ -14,6 +14,7 @@ gPostActionFuncs:
     POIN PostActionPositionReturn
     POIN PostActionRemoveChillDebuff
     POIN PostAction_Glorifier
+    POIN ResetComboAtkList
 
     //End
     POIN CallExternalPostActionHook
