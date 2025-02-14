@@ -10,6 +10,7 @@
 
 STATIC_DECLAR const struct MenuDef sGaidenBMagItemMenuDef;
 STATIC_DECLAR const struct MenuItemDef sGaidenBMagItemMenuItems[];
+STATIC_DECLAR u8 GaidenBMagHelpbox(struct MenuProc *menu, struct MenuItemProc *menuItem);
 STATIC_DECLAR u8 GaidenBMagItemSelMenuOnCancel(struct MenuProc *menu, struct MenuItemProc *menuItem);
 STATIC_DECLAR u8 GaidenBMagItemSelUsability(const struct MenuItemDef *def, int number);
 STATIC_DECLAR int GaidenBMagItemSelOnDraw(struct MenuProc *menu, struct MenuItemProc *menuItem);
@@ -151,8 +152,20 @@ STATIC_DECLAR const struct MenuDef sGaidenBMagItemMenuDef = {
 	0, 0, 0,
 	GaidenBMagItemSelMenuOnCancel,
 	MenuAutoHelpBoxSelect,
-	ConvoyMenu_HelpBox
+	GaidenBMagHelpbox
 };
+
+u8 GaidenBMagHelpbox(struct MenuProc *menu, struct MenuItemProc *menuItem)
+{
+	struct GaidenMagicList *list = GetGaidenMagicList(gActiveUnit);
+
+	StartItemHelpBox(
+		menuItem->xTile << 3,
+		menuItem->yTile << 3,
+		list->bmags[menuItem->itemNumber]);
+
+	return 0;
+}
 
 STATIC_DECLAR u8 GaidenBMagItemSelMenuOnCancel(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
