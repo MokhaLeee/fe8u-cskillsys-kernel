@@ -3907,56 +3907,56 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Bladegift) && COMMON_SKILL_VALID(SID_Bladegift))
     [SID_Bladegift] = {
         .desc = MSG_SKILL_Bladegift,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Bladegift,
     },
 #endif
 
 #if (defined(SID_BladegiftPlus) && COMMON_SKILL_VALID(SID_BladegiftPlus))
     [SID_BladegiftPlus] = {
         .desc = MSG_SKILL_BladegiftPlus,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_BladegiftPlus,
     },
 #endif
 
 #if (defined(SID_Piercegift) && COMMON_SKILL_VALID(SID_Piercegift))
     [SID_Piercegift] = {
         .desc = MSG_SKILL_Piercegift,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Piercegift,
     },
 #endif
 
 #if (defined(SID_PiercegiftPlus) && COMMON_SKILL_VALID(SID_PiercegiftPlus))
     [SID_PiercegiftPlus] = {
         .desc = MSG_SKILL_PiercegiftPlus,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_PiercegiftPlus,
     },
 #endif
 
 #if (defined(SID_Hackgift) && COMMON_SKILL_VALID(SID_Hackgift))
     [SID_Hackgift] = {
         .desc = MSG_SKILL_Hackgift,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Hackgift,
     },
 #endif
 
 #if (defined(SID_HackgiftPlus) && COMMON_SKILL_VALID(SID_HackgiftPlus))
     [SID_HackgiftPlus] = {
         .desc = MSG_SKILL_HackgiftPlus,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_HackgiftPlus,
     },
 #endif
 
 #if (defined(SID_Arcgift) && COMMON_SKILL_VALID(SID_Arcgift))
     [SID_Arcgift] = {
         .desc = MSG_SKILL_Arcgift,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Arcgift,
     },
 #endif
 
 #if (defined(SID_ArcgiftPlus) && COMMON_SKILL_VALID(SID_ArcgiftPlus))
     [SID_ArcgiftPlus] = {
         .desc = MSG_SKILL_ArcgiftPlus,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_ArcgiftPlus,
     },
 #endif
 
