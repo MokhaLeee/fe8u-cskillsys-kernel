@@ -39,5 +39,6 @@ extern struct SelectInfo CONST_DATA gSelectInfo_Give;
 extern struct SelectInfo CONST_DATA gSelectInfo_Take;
 extern struct SelectInfo CONST_DATA gSelectInfo_Drop;
 extern struct SelectInfo CONST_DATA gSelectInfo_Rescue;
+extern struct SelectInfo const gSelectInfo_Refuge;
 
 #endif // GUARD_MENU_DEF_H

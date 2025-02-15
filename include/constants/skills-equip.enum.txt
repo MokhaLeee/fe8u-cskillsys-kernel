@@ -1,3 +1,6 @@
+/////// Commands
+SID_Refuge
+
 ////////MENU SKILLS
 // SID_Dismount
 // SID_ReciprocalAid
@@ -42,7 +45,7 @@ SID_Arise
 // SID_AssignDecoy
 // SID_ShadowFlash
 
-////////PRE-BATTLE SKILLS
+//////// PRE-BATTLE SKILLS
 // SID_DefiantStr
 // SID_DefiantMag
 // SID_DefiantSkl
@@ -215,11 +218,11 @@ SID_SolidRock
 // SID_LightProwess
 SID_Seer
 // SID_IronDome
-SID_Counterattack
-SID_Antihex
-SID_Equalizer
+// SID_Counterattack
+// SID_Antihex
+// SID_Equalizer
 
-////////POST-BATTLE SKILLS
+//////// POST-BATTLE SKILLS
 // SID_Canto
 SID_CantoPlus
 SID_Galeforce
@@ -265,7 +268,7 @@ SID_TakerSpeed
 SID_TakerStrength
 // SID_Canter
 
-////////AURA SKILLS
+//////// AURA SKILLS
 // SID_Anathema
 // SID_Bond
 // SID_Charm
@@ -326,7 +329,7 @@ SID_Mentorship
 // SID_HolyAura
 // SID_BlueFlame
 
-////////STAT MODIFIER SKILLS
+//////// STAT MODIFIER SKILLS
 // SID_HpBonus
 // SID_StrBonus
 // SID_MagBonus
@@ -400,7 +403,7 @@ SID_ArenaTrap
 SID_Unaware
 // SID_StaffGuard
 
-////////WEAPON TRIANGLE ADVANTAGE SKILLS
+//////// WEAPON TRIANGLE ADVANTAGE SKILLS
 // SID_SwordBreaker
 // SID_AxeBreaker
 // SID_LanceBreaker
@@ -413,7 +416,7 @@ SID_Nonconforming
 // SID_Poise
 // SID_Break
 
-////////PROC/MID-BATTLE SKILLS
+//////// PROC/MID-BATTLE SKILLS
 SID_Astra
 // SID_Aegis
 // SID_Pavise
@@ -485,15 +488,15 @@ SID_Toxic
 // SID_GrazingBlow
 // SID_AbsorbMelee
 // SID_AbsorbMagic
-SID_Duel
-SID_Offhand
+// SID_Duel
+// SID_Offhand
 
-////////EFFECTIVENESS SKILLS
+//////// EFFECTIVENESS SKILLS
 SID_Resourceful
 // SID_Slayer
 // SID_Skybreaker
 
-////////BATTLE ORDER SKILLS
+//////// BATTLE ORDER SKILLS
 SID_Vantage
 SID_Desperation
 // SID_QuickRiposte
@@ -512,10 +515,10 @@ SID_PridefulWarrior
 // SID_AdvantageChaser
 // SID_BidingBlow
 // SID_Alacrity
-SID_Echo
-SID_Flurry
+// SID_Echo
+// SID_Flurry
 
-////////PRE-PHASE SKILLS
+//////// PRE-PHASE SKILLS
 SID_Renewal
 SID_Imbue
 // SID_Forager
@@ -573,12 +576,12 @@ SID_IndoorMarch
 // SID_Amaterasu
 SID_GoodyBasket
 
-////////POST-PHASE SKILLS
+//////// POST-PHASE SKILLS
 // SID_HoardersBane
 // SID_DarkBargain
 SID_Rampage
 
-////////LEVEL UP SKILLS
+//////// LEVEL UP SKILLS
 // SID_Blossom
 SID_Paragon
 SID_VoidCurse
@@ -592,16 +595,16 @@ SID_Mercurious
 SID_Velocity
 SID_StaffParagon
 SID_OgreBody
-SID_Prodigy
+// SID_Prodigy
 
-////////LEGENDARY SKILLS
+//////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk
 // SID_LEGEND_InoriAvo
 // SID_LEGEND_InoriDef
 // SID_LEGEND_4
 // SID_LEGEND_5
 
-////////MOVEMENT SKILLS
+//////// MOVEMENT SKILLS
 SID_Pass
 SID_Obstruct
 // SID_Aerobatics
@@ -613,23 +616,23 @@ SID_MountainClimber
 SID_MountainClimberPlus
 SID_Acrobat
 
-///////SHOP SKILLS
+/////// SHOP SKILLS
 SID_Deal
 SID_Bargain
 SID_Secret
 SID_Trader
 
-///////ARENA SKILLS
+/////// ARENA SKILLS
 SID_Ludopathy
 SID_ConcealedWeapon
 
-///////AI SKILLS
+/////// AI SKILLS
 SID_Shade
 SID_ShadePlus
 SID_Provoke
 SID_Guardian
 
-////////STANDALONE SKILLS
+//////// STANDALONE SKILLS
 SID_IdentityProblems
 SID_DemolitionExpert
 SID_TriangleAttack
@@ -674,9 +677,9 @@ SID_Resurrection
 // SID_Savior
 SID_SelfHealing
 // SID_Wrestler
-SID_TwinCrests
+// SID_TwinCrests
 
-///////COMBAT ARTS
+/////// COMBAT ARTS
 // SID_COMBAT_Grounder
 // SID_COMBAT_BaneOfMonsters
 // SID_COMBAT_Hexblade

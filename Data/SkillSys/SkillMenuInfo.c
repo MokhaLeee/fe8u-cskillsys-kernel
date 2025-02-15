@@ -589,4 +589,16 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+    [0] = {
+        .name = "　",
+        .nameMsgId = MSG_MenuCommand_RefugeName,
+        .helpMsgId = MSG_MenuCommand_Refuge,
+        .color = TEXT_COLOR_SYSTEM_WHITE,
+        .isAvailable = Refuge_Usability,
+        .onDraw = NULL,
+        .onSelected = Refuge_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
 };

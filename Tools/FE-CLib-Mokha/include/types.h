@@ -316,8 +316,6 @@ enum
     // 0x20?
     UNIT_ACTION_RIDE_BALLISTA = 0x21,
     UNIT_ACTION_EXIT_BALLISTA = 0x22,
-
-    UNIT_ACTION_ESCAPE = 0x23,
 };
 
 enum

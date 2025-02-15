@@ -3,3 +3,11 @@
 ## R_TEXT_COMMAND_ESCAPE
 Escape from the map. You can't[N]
 come back after you select this.[X]
+
+## TILE_COMMAND_TEXT_REFUGE
+ Refuge[X]
+## R_TEXT_COMMAND_REFUGE
+Rescue yourself into an[N]
+allied unit.[X]
+## TARGET_TEXT_REFUGE
+Select a unit to take refuge in.[X]

@@ -423,3 +423,10 @@ decoy status for a turn.[X]
 Shadow Flash:[N]
 Warp in a 3 tile radius, at 10 HP[N]
 cost, and move again afterwards.[X]
+
+## MSG_MenuCommand_RefugeName
+ Refuge[X]
+
+## MSG_MenuCommand_Refuge
+Retreat into an ally who's[N]
+AID >= the unit's CON.[X]

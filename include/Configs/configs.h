@@ -451,6 +451,12 @@ but at least the arena is playable now
 #define CONFIG_PROMOTE_ENEMIES_IF_KILLED_UNIT
 
 /**
+ * By Jester:
+ * Allow units to rescue themselves into allies following the standard CON < AID formula
+ */
+#define CONFIG_REFUGE_FEATURE
+
+/**
  * Install ConvoyExpa
  */
 #define CONFIG_INSTALL_CONVOYEXPA

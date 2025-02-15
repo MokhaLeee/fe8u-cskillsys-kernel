@@ -1,3 +1,6 @@
+/////// Commands
+// SID_Refuge
+
 ////////// MENU SKILLS
 // SID_Dismount
 // SID_ReciprocalAid
