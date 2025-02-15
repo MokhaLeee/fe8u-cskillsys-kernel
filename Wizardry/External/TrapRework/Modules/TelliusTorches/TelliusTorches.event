@@ -6,6 +6,10 @@
 	//The current vision range is defined in ext1 (+0x3)
 	//The vision range when turn on is defined in ext2 (+0x4)
 	//Unlike torch staff traps, these do not lose their vision over time
+
+	/* Jester added for compilation purposes. Need to find where these sprites actuall are defined */
+	#define UnlitTorchSprite 0
+	#define LitTorchSprite 1
 	
 	#define TelliusTorchTrapID 0xF //just sequentially after what i'm aware of being used by other hacks already
 	//#define TelliusTorchOffMapSpriteID 0x69
@@ -60,7 +64,7 @@
 	#define TelliusTorchOff(x,y,visionRange) "BYTE TelliusTorchTrapID x y 0 visionRange 0"
 	#define TelliusTorchOn(x,y,visionRange) "BYTE TelliusTorchTrapID x y visionRange visionRange 0"
 	
-	#include "TorchAi/TorchAi.event"
+	//#include "TorchAi/TorchAi.event"
 	
 #endif // TELLIUS_TORCHES_INSTALLED
 

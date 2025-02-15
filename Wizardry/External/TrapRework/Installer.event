@@ -84,7 +84,7 @@ SetTrapMapSpritePalette(ExampleMapSpriteTrapID,NPCTrapPaletteWord)
 #define MapSpriteTrap(trapID,x,y) "BYTE trapID x y 0 0 0"	
 
 //Macros for checks/actions involving traps
-#define AddTrap(trapID,x,y) "SVAL 1 trapID; SVAL 0xB (x|(y<<16)); ASMC AddTrapASMC"
+#define AddTrapCustom(trapID,x,y) "SVAL 1 trapID; SVAL 0xB (x|(y<<16)); ASMC AddTrapASMC"
 #define RemoveTrapAtCoords(x,y) "SVAL 0xB (x|(y<<16)); ASMC RemoveTrapAtCoordsASMC"
 #define GetTrapIDAt(x,y) "SVAL 0xB (x|(y<<16)); ASMC GetTrapIDAtASMC"
 #define GetTrapExt1At(X,y) "SVAL 0xB (x|(y<<16)); ASMC GetTrapExt1AtASMC"
@@ -118,6 +118,6 @@ TrapBreakableTerrainListEnd
 
 
 //Example usages
-#include "Modules/DragonVeins/DragonVeins.event"
+// #include "Modules/DragonVeins/DragonVeins.event"
 #include "Modules/HealTiles/HealTiles.event"
 #include "Modules/TelliusTorches/TelliusTorches.event"

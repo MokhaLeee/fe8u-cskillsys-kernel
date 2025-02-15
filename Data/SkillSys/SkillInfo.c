@@ -3673,7 +3673,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_HazeHunter) && COMMON_SKILL_VALID(SID_HazeHunter))
     [SID_HazeHunter] = {
         .desc = MSG_SKILL_HazeHunter,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_HazeHunter,
     },
 #endif
 
@@ -3724,7 +3724,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_GoodAsGold] = {
 
         .desc = MSG_SKILL_GoodAsGold,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_GoodAsGold,
     },
 #endif
 
@@ -4804,7 +4804,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Trader) && COMMON_SKILL_VALID(SID_Trader))
     [SID_Trader] = {
         .desc = MSG_SKILL_Trader,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Trader,
     },
 #endif
 

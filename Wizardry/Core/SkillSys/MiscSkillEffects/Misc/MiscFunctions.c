@@ -3489,3 +3489,26 @@ void ProcMAExpBar_LevelUpIfPossible(struct MAExpBarProc* proc)
     if ((gManimSt.actor[actorNum].bu->expPrevious + gManimSt.actor[actorNum].bu->expGain) >= 100)
         StartManimLevelUp(proc->actorId, (struct Proc*) proc);
 }
+
+void AddTrapASMC(void) {
+        u8 trapID;
+        u8 x;
+        u8 y;
+    
+        // Load trap ID
+        trapID = EVT_SLOT_1;  // Equivalent to ldr r2,[r0] where r0 points to MemorySlot1
+    
+        // Load and extract x and y coordinates
+        u32 temp = EVT_SLOT_B; // Equivalent to ldr r0,[r1] and ldr r1,[r1] (r1 is the same as r0)
+    
+        y = (temp >> 16) & 0xFFFF; // Equivalent to lsr r1,r1,#16.  Mask to keep only lower 16 bits.
+        x = (temp >> 0) & 0xFFFF; // Equivalent to lsl r0,r0,#16 and then lsr r0,r0,#16.  No actual shift is needed if we mask the 16 bits.
+    
+        // Call AddTrap
+        AddTrap(x, y, trapID, 0);
+    
+        // The push/pop and bx r0 are related to function calling conventions.
+        // In C, these are usually handled implicitly by the compiler.  You generally
+        // don't need to manually manage the return address in this way.  The compiler
+        // will handle the equivalent of the "pop {r0}; bx r0;" when the function returns.
+}

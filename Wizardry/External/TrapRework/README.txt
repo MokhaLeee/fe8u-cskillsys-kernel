@@ -17,7 +17,7 @@ To place a trap on your map, you can use the macro `MapSpriteTrap(trapID,x,y)` i
 
 Trap Rework also contains a small library of ASMCs that may be used to manipulate traps mid-chapter. Note that when adding traps through this method, the total limit is 64 at a time, including map changes & breakable walls/snags towards this total. Exceeding this amount is a bad idea, so be wary with how many traps you create. In all cases these macros use memory slot 1 for trap ID, memory slot B for coordinates, and memory slot C for returning values. If you use a macro with these parameters, the previous value in the relevant memory slots WILL be overwritten.
 
-`AddTrap(trapID,x,y)` will create a new trap of the given ID at the given coordinates.
+`AddTrapCustom(trapID,x,y)` will create a new trap of the given ID at the given coordinates.
 `RemoveTrapAtCoords(x,y)` will remove the first trap found at the given coordinates.
 `GetTrapIDAt(x,y)` will return the ID of the trap at the given coordinates.
 `GetTrapExt1At(x,y)` will return the first value of the trap at the given coordinates. What this value is depends on the type of trap, and map sprite traps do not use it at all.

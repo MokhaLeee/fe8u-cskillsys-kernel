@@ -284,8 +284,8 @@ static const EventScr EventScr_Beginning[] = {
     TEXT(Chapter_00_Scene_03_Convo_04)
     // GIVE_SKILL_SCROLL_TO(SID_GoddessDance, CHARACTER_EIRIKA)
     // UseArrowTrap(0, 1, 2)
-    // ASMC(TelliusTorchOn(3,2,3))
     ASMC(SetGameOptions)
+    // ADD_TRAP_CUSTOM(5, 1, 1)
     ENDA
 };
 

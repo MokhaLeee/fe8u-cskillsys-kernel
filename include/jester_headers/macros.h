@@ -347,3 +347,17 @@ enum {
 #define WARP_CHARACTER_OUT(characterID) \
     SVAL(EVT_SLOT_2, characterID) \
     CALL(EventScr_UnitWarpOUT)
+
+void AddTrapASMC(void);
+
+#define ADD_TRAP_CUSTOM(trapID, x, y) \
+    SVAL(EVT_SLOT_1, trapID) \
+    SVAL(EVT_SLOT_B, (x|(y<<16))) \
+    ASMC(AddTrapASMC)
+
+
+
+// #define AddTrapCustom(trapID,x,y) "SVAL 1 trapID; SVAL 0xB (x|(y<<16)); ASMC AddTrapASMC"
+// #define RemoveTrapAtCoords(x,y) "SVAL 0xB (x|(y<<16)); ASMC RemoveTrapAtCoordsASMC"
+// #define GetTrapIDAt(x,y) "SVAL 0xB (x|(y<<16)); ASMC GetTrapIDAtASMC"
+// #define GetTrapExt1At(X,y) "SVAL 0xB (x|(y<<16)); ASMC GetTrapExt1AtASMC"

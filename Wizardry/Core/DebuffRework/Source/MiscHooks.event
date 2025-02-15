@@ -246,7 +246,7 @@ PUSH
     ORG $7B38A // MakeBattleMOVEUNIT
     SHORT 0x0680 // lsl r0, r0, #0x1A
     SHORT 0x0E80 // lsr r0, r0, #0x1A
-    PROTECT $7B334 $7B3BC
+    // PROTECT $7B334 $7B3BC // Removed for trap rework
 
     ORG $7AC36 // SetBattleMuPaletteByIndex
     SHORT 0x0680 // lsl r0, r0, #0x1A
