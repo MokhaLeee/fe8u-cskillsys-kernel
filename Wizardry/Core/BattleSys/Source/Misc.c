@@ -1,5 +1,9 @@
 #include "common-chax.h"
 #include "battle-system.h"
+#include "skill-system.h"
+#include "combat-art.h"
+#include "class-types.h"
+#include "constants/skills.h"
 
 void ClearBattleGlobalFlags(void)
 {
@@ -45,4 +49,54 @@ u16 DequeueRoundEfxSkill(void)
         return sEfxSkillQueue.skill_pool[sEfxSkillQueue.cur++];
 
     return 0;
+}
+
+LYN_REPLACE_CHECK(SetBattleUnitTerrainBonuses);
+void SetBattleUnitTerrainBonuses(struct BattleUnit* bu, int terrain) {
+    bu->terrainId = terrain;
+
+#if (defined(SID_Perch) && (COMMON_SKILL_VALID(SID_Perch)))
+    if (BattleSkillTester(bu, SID_Perch))
+    {
+        bu->terrainAvoid      = TerrainTable_Avo_Common[bu->terrainId];
+        bu->terrainDefense    = TerrainTable_Def_Common[bu->terrainId];
+        bu->terrainResistance = TerrainTable_Res_Common[bu->terrainId];
+    }
+    else
+    {
+        bu->terrainAvoid      = bu->unit.pClassData->pTerrainAvoidLookup[bu->terrainId];
+        bu->terrainDefense    = bu->unit.pClassData->pTerrainDefenseLookup[bu->terrainId];
+        bu->terrainResistance = bu->unit.pClassData->pTerrainResistanceLookup[bu->terrainId];
+    }
+
+#else
+    bu->terrainAvoid      = bu->unit.pClassData->pTerrainAvoidLookup[bu->terrainId];
+    bu->terrainDefense    = bu->unit.pClassData->pTerrainDefenseLookup[bu->terrainId];
+    bu->terrainResistance = bu->unit.pClassData->pTerrainResistanceLookup[bu->terrainId];
+#endif
+}
+
+LYN_REPLACE_CHECK(SetBattleUnitTerrainBonusesAuto);
+void SetBattleUnitTerrainBonusesAuto(struct BattleUnit* bu) {
+    bu->terrainId = gBmMapTerrain[bu->unit.yPos][bu->unit.xPos];
+
+#if (defined(SID_Perch) && (COMMON_SKILL_VALID(SID_Perch)))
+    if (BattleSkillTester(bu, SID_Perch))
+    {
+        bu->terrainAvoid      = TerrainTable_Avo_Common[bu->terrainId];
+        bu->terrainDefense    = TerrainTable_Def_Common[bu->terrainId];
+        bu->terrainResistance = TerrainTable_Res_Common[bu->terrainId];
+    }
+    else
+    {
+        bu->terrainAvoid      = bu->unit.pClassData->pTerrainAvoidLookup[bu->terrainId];
+        bu->terrainDefense    = bu->unit.pClassData->pTerrainDefenseLookup[bu->terrainId];
+        bu->terrainResistance = bu->unit.pClassData->pTerrainResistanceLookup[bu->terrainId];
+    }
+
+#else
+    bu->terrainAvoid      = bu->unit.pClassData->pTerrainAvoidLookup[bu->terrainId];
+    bu->terrainDefense    = bu->unit.pClassData->pTerrainDefenseLookup[bu->terrainId];
+    bu->terrainResistance = bu->unit.pClassData->pTerrainResistanceLookup[bu->terrainId];
+#endif
 }

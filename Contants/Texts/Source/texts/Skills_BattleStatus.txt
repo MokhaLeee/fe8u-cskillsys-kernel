@@ -1216,3 +1216,8 @@ after battle if they have another.[X]
 Equalizer:[N]
 Both sides deal damage equal to their[N]
 sum total damage divided between them.[X]
+
+## MSG_SKILL_Perch
+Perch:[N]
+Flying units gain[N]
+terrain bonuses.[X]
