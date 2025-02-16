@@ -162,7 +162,7 @@ void AiTryActionAfterMove(void);
 // ??? AiIsUnitAtPositionDifferentAllegiance(???);
 s8 sub_803F018(const void*);
 // ??? sub_803F15C(???);
-s8 sub_803F330(const void*);
+bool sub_80CD330(struct ProcPromoMain *proc);
 s8 sub_803F34C(const void*);
 // ??? sub_803F37C(???);
 // ??? sub_803F3AC(???);

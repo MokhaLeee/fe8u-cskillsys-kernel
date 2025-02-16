@@ -213,7 +213,7 @@ extern CONST_DATA u16 obj_08A18E62[];
 extern CONST_DATA u16 obj_08A18E76[];
 extern CONST_DATA struct ProcCmd ProcScr_PrepUnitScreen[];
 extern CONST_DATA struct ProcCmd ProcScr_PrepItemTradeScreen[];
-extern CONST_DATA struct ProcCmd ProcScr_PrepItemUseScreen[];
+extern const struct ProcCmd ProcScr_PrepItemUseScreen[];
 extern CONST_DATA struct ProcCmd ProcScr_PrepItemUseBooster[];
 extern CONST_DATA struct ProcCmd ProcScr_PrepItemUseJunaFruit[];
 extern int CONST_DATA gSupplyTextIndexLookup[];
