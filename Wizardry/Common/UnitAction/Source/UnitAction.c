@@ -3,7 +3,7 @@
 #include "battle-system.h"
 #include "gaiden-magic.h"
 
-NOINLINE static void TryChangeAction(void)
+STATIC_DECLAR void TryChangeAction(void)
 {
 	int slot = gActionData.itemSlotIndex;
 
@@ -29,7 +29,13 @@ unsigned int ApplyUnitAction(ProcPtr proc)
 
 	gActiveUnit = GetUnit(gActionData.subjectIndex);
 
-	TryChangeAction();
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case UNIT_ACTION_STAFF:
+		TryChangeAction();
+		break;
+	}
+
 	if (gActionData.unitActionType >= CONFIG_UNIT_ACTION_AMT)
 		return true;
 

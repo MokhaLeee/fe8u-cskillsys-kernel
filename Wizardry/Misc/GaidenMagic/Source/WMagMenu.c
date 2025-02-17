@@ -10,6 +10,7 @@
 
 STATIC_DECLAR const struct MenuDef sGaidenWMagItemMenuDef;
 STATIC_DECLAR const struct MenuItemDef sGaidenWMagItemMenuItems[];
+STATIC_DECLAR u8 GaidenWMagHelpbox(struct MenuProc *menu, struct MenuItemProc *menuItem);
 STATIC_DECLAR u8 GaidenWMagItemSelUsability(const struct MenuItemDef *def, int number);
 STATIC_DECLAR int GaidenWMagItemSelOnDraw(struct MenuProc *menu, struct MenuItemProc *menuItem);
 STATIC_DECLAR u8 GaidenWMagItemSelEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
@@ -17,7 +18,7 @@ STATIC_DECLAR int GaidenWMagItemSelHover(struct MenuProc *menu, struct MenuItemP
 STATIC_DECLAR int GaidenWMagItemSelUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 STATIC_DECLAR void UpdateMenuItemPanelGaidenWMag(int slot);
 
-static bool CanUnitUseGaidenWMagItem(struct Unit *unit, int item)
+STATIC_DECLAR bool CanUnitUseGaidenWMagItem(struct Unit *unit, int item)
 {
 	/* Replacement of CanUnitUseItem() */
 	int staff_wexp = unit->ranks[ITYPE_STAFF];
@@ -29,7 +30,7 @@ static bool CanUnitUseGaidenWMagItem(struct Unit *unit, int item)
 	 * The wexp judgement has been completed in GetGaidenMagicList()!
 	 */
 	unit->ranks[ITYPE_STAFF] = WPN_EXP_S;
-	ret = CanUnitUseItem(unit, item);
+	ret = CanUnitUseItem(unit, MakeNewItem(item));
 
 	unit->ranks[ITYPE_STAFF] = staff_wexp;
 	return ret;
@@ -153,7 +154,7 @@ STATIC_DECLAR const struct MenuDef sGaidenWMagItemMenuDef = {
 	0, 0, 0,
 	ItemMenu_ButtonBPressed,
 	MenuAutoHelpBoxSelect,
-	ConvoyMenu_HelpBox
+	GaidenWMagHelpbox
 };
 
 STATIC_DECLAR const struct MenuItemDef sGaidenWMagItemMenuItems[] = {
@@ -166,6 +167,18 @@ STATIC_DECLAR const struct MenuItemDef sGaidenWMagItemMenuItems[] = {
 	{"", 0, 0, 0, 0x4F, GaidenWMagItemSelUsability, GaidenWMagItemSelOnDraw, GaidenWMagItemSelEffect, 0, GaidenWMagItemSelHover, GaidenWMagItemSelUnhover},
 	{0}
 };
+
+STATIC_DECLAR u8 GaidenWMagHelpbox(struct MenuProc *menu, struct MenuItemProc *menuItem)
+{
+	struct GaidenMagicList *list = GetGaidenMagicList(gActiveUnit);
+
+	StartItemHelpBox(
+		menuItem->xTile << 3,
+		menuItem->yTile << 3,
+		list->wmags[menuItem->itemNumber]);
+
+	return 0;
+}
 
 STATIC_DECLAR u8 GaidenWMagItemSelUsability(const struct MenuItemDef *def, int number)
 {
