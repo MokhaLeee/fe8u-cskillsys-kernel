@@ -1,0 +1,19 @@
+/**
+ * Hotfix for 1.0.0LTS at 2025.02.17
+ *
+ * Fix:
+ *  1. Fix load skill issue.
+ *  2. Fix function: AiFloodMovementAndRange()
+ */
+
+PUSH
+	// https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/d11c200e991860bebb14469e5d1b74263b9b9264
+	ORG 0xB98480
+	POIN 0x08B2A628
+	POIN 0x08B2A624
+
+	// https://github.com/FireEmblemUniverse/fe8u-cskillsys/commit/6c809163e2791a723a3631e510a1509b768b3e21
+	ORG 0xBA3DDA
+	SHORT 0x4649 // mov r1, r9
+	SHORT 0x1C20 // mov r0, r4
+POP
