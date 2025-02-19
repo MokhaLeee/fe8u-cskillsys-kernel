@@ -34,7 +34,14 @@ int GetItemFromSlot(struct Unit *unit, int slot)
 
 	case CHAX_BUISLOT_GAIDEN_BMAG1 ... CHAX_BUISLOT_GAIDEN_BMAG7:
 	case CHAX_BUISLOT_GAIDEN_WMAG1 ... CHAX_BUISLOT_GAIDEN_WMAG7:
+#if 0
+		/**
+		 * Well, if someone forget to give the gaiden magic item the duration, then he may report bug :\
+		 */
 		return MakeNewItem(GetGaidenMagicItem(unit, slot));
+#else
+		return ITEM_INDEX(GetGaidenMagicItem(unit, slot)) | (0xFF << 8);
+#endif
 
 	/* reserved */
 	case CHAX_BUISLOT_THREEHOUSES_BMAG1 ... CHAX_BUISLOT_THREEHOUSES_BMAG7:
