@@ -154,7 +154,7 @@ void ComputeBattleUnitCritRate(struct BattleUnit *bu)
 	status += GetItemCrit(bu->weapon);
 
 	if (UNIT_CATTRIBUTES(&bu->unit) & CA_CRITBONUS)
-		bu->battleCritRate += 15;
+		status += 15;
 
 	bu->battleCritRate = status;
 }
