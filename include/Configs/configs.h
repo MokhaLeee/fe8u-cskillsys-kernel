@@ -456,6 +456,8 @@ but at least the arena is playable now
  */
 #define CONFIG_REFUGE_FEATURE
 
+#define CONFIG_ESCAPE_EVENT
+
 /**
  * By Jester
  * Tellius mechanic: Automatically display the pormotion screen for a character that reaches their max level

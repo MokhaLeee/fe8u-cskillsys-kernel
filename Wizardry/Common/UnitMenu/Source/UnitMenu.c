@@ -7,7 +7,10 @@
 
 #define MenuItemsEnd {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
+/* Placement in this struct determins priority order */
+
 const struct MenuItemDef gUnitActionMenuItemsRework[] = {
+    {"　脱出", TILE_COMMAND_TEXT_ESCAPE, R_TEXT_COMMAND_ESCAPE, TEXT_COLOR_SYSTEM_WHITE, 0x6D, EscapeCommandUsability, 0, EscapeCommandEffect, 0, 0, 0}, // Escape > 
     {"　制圧", 0x67A, 0x6CC, 0, 0x4E, UnitActionMenu_CanSeize, 0, UnitActionMenu_Seize, 0, 0, 0}, // Seize
     {"　攻撃", 0x67B, 0x6C0, 0, 0x4F, AttackCommandUsability, 0, UnitActionMenu_Attack, 0, DisplayUnitStandingAttackRange, HideMoveRangeGraphicsWrapper}, // Attack >
     {"　攻撃", 0x67B, 0x6C0, 0, 0x50, AttackBallistaCommandUsability, 0, UnitActionMenu_Attack, 0, DisplayUnitStandingAttackRange, HideMoveRangeGraphicsWrapper}, // Attack w/Ballista >
@@ -103,6 +106,9 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
     {"　秘密店", 0x687, 0x6D1, TEXT_COLOR_SYSTEM_WHITE, 0x61, SecretShopCommandUsability, 0, SecretShopCommandEffect, 0, 0, 0}, //SecretShop > 
     {"　闘技場", 0x688, 0x6D2, TEXT_COLOR_SYSTEM_WHITE, 0x62, ArenaCommandUsability, 0, ArenaCommandEffect, 0, 0, 0}, // Arena
     {"　救出", 0x689, 0x6C5, TEXT_COLOR_SYSTEM_WHITE, 0x63, RescueUsability, 0, RescueEffect, 0, 0, 0}, // Rescue > 
+#ifdef CONFIG_REFUGE_FEATURE
+    {"　", MSG_MenuCommand_RefugeName, MSG_MenuCommand_Refuge, TEXT_COLOR_SYSTEM_WHITE, 0x6C, Refuge_Usability, 0, Refuge_OnSelected, 0, 0, 0}, // Refuge > 
+#endif
     {"　降ろす", 0x68A, 0x6C6, TEXT_COLOR_SYSTEM_WHITE, 0x64, DropUsability, 0, DropEffect, 0, 0, 0}, // Drop > 
     {"　引受け", 0x68B, 0x6C8, TEXT_COLOR_SYSTEM_GREEN, 0x65, TakeUsability, 0, TakeEffect, 0, 0, 0}, // Take > 
     {"　引渡し", 0x68C, 0x6C7, TEXT_COLOR_SYSTEM_GREEN, 0x66, GiveUsability, 0, GiveEffect, 0, 0, 0}, // Give > 
@@ -111,10 +117,5 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
     {"　輸送隊", 0x68F, 0x6D5, TEXT_COLOR_SYSTEM_GREEN, 0x69, SupplyUsability, 0, SupplyCommandEffect, 0, 0, 0}, // Supply > 
     {"　待機", 0x695, 0x6BF, TEXT_COLOR_SYSTEM_WHITE, 0x6B, MenuAlwaysEnabled, 0, EffectWait, 0, 0, 0}, // Wait > 
 
-#ifdef CONFIG_REFUGE_FEATURE
-    {"　", MSG_MenuCommand_RefugeName, MSG_MenuCommand_Refuge, TEXT_COLOR_SYSTEM_WHITE, 0x6C, Refuge_Usability, 0, Refuge_OnSelected, 0, 0, 0}, // Refuge > 
-#endif
-
-   // {"　脱出", TILE_COMMAND_TEXT_ESCAPE, R_TEXT_COMMAND_ESCAPE, 0, 0x6D, EscapeCommandUsability, 0, EscapeCommandEffect, 0, 0, 0}, // Escape > 
     MenuItemsEnd
 };

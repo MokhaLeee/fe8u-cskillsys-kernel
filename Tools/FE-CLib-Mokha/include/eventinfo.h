@@ -24,6 +24,7 @@ enum
     TILE_COMMAND_SHOP_UNK = 0x19,
 
     TILE_COMMAND_20       = 0x20,
+    TILE_COMMAND_MAP_ESCAPE = 0x21,
 };
 
 enum {

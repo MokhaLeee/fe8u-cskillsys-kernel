@@ -23,6 +23,11 @@
 #define Seize_(eid, scr, x, y) LOCA(eid, scr, x, y, TILE_COMMAND_SEIZE)
 #define SEIZE(x, y) Seize_(EVFLAG_WIN, EVENT_NOSCRIPT, x, y)
 
+// #ifdef CONFIG_ESCAPE_EVENT
+#define ESCAPE_(eid, scr, x, y) LOCA(eid, scr, x, y, TILE_COMMAND_MAP_ESCAPE)
+#define ESCAPE(x, y) ESCAPE_(EVFLAG_WIN, EVENT_NOSCRIPT, x, y)
+//#endif
+
 #define CAUSE_GAME_OVER_IF_LORD_DIES AFEV(0, EventScr_GameOver, EVFLAG_GAMEOVER)
 #define DEFEAT_BOSS(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_BOSS)
 #define DEFEAT_ALL(event_scr) AFEV(EVFLAG_WIN, (event_scr), EVFLAG_DEFEAT_ALL)

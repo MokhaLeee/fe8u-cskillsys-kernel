@@ -371,6 +371,7 @@ static const EventListScr EventListScr_Character[] = {
 };
 
 static const EventListScr EventListScr_Location[] = {
+    ESCAPE(1, 0)
     END_MAIN
 };
 

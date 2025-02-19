@@ -1087,7 +1087,7 @@ u8 EscapeCommandUsability(const struct MenuItemDef* def, int number) {
         return MENU_NOTSHOWN;
     }
 
-    return GetAvailableTileEventCommand(gActiveUnit->xPos, gActiveUnit->yPos) == TILE_COMMAND_VISIT
+    return GetAvailableTileEventCommand(gActiveUnit->xPos, gActiveUnit->yPos) == TILE_COMMAND_MAP_ESCAPE
     ? MENU_ENABLED : MENU_NOTSHOWN;
 }
 
