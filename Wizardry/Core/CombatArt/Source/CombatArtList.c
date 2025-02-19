@@ -100,6 +100,9 @@ void CalcCombatArtListExt(struct Unit *unit, int item)
 		if (wtype != CA_WTYPE_ANY && GetCombatArtInfo(i)->wtype != CA_WTYPE_ANY && GetCombatArtInfo(i)->wtype != wtype)
 			continue;
 
+		if (ITEM_USES(item) < GetCombatArtInfo(i)->cost)
+            continue;
+
 		sCombatArtList.cid[sCombatArtList.amt++] = i;
 		if (sCombatArtList.amt >= COMBART_LIST_MAX_AMT)
 			break;
