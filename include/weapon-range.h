@@ -22,3 +22,5 @@ int GetUnitMaxRange(struct Unit *unit);
 void AddMap(int x, int y, u32 mask);
 void AddMapForItem(struct Unit *unit, u16 item);
 void ForEachUnit(void (*func)(struct Unit *), u8 **map, const int off);
+
+int GetUnitWeaponReachBitsFromInventory(struct Unit *unit, int slot);
