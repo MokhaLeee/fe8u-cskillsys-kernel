@@ -1221,3 +1221,8 @@ sum total damage divided between them.[X]
 Perch:[N]
 Flying units gain[N]
 terrain bonuses.[X]
+
+## MSG_SKILL_MountainMan
+Mountain Man:[N]
+AVO bonuses from terrain also[N]
+become HIT bonuses.[X]

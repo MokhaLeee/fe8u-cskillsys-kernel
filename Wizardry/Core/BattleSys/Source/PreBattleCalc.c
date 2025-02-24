@@ -1754,6 +1754,12 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_MountainMan) && (COMMON_SKILL_VALID(SID_MountainMan)))
+        case SID_MountainMan:
+            attacker->battleHitRate += attacker->terrainAvoid;
+            break;
+#endif
+
         case MAX_SKILL_NUM:
         default:
             break;

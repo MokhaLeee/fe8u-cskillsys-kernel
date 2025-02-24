@@ -222,6 +222,7 @@ SID_Seer
 // SID_Antihex
 // SID_Equalizer
 SID_Perch
+SID_MountainMan
 
 //////// POST-BATTLE SKILLS
 // SID_Canto
