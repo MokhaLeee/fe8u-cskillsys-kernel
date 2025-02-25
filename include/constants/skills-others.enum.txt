@@ -682,6 +682,7 @@ SID_Canto
 // SID_Wrestler
 // SID_TwinCrests
 // SID_Saint
+// SID_AidRefusal
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

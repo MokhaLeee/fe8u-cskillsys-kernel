@@ -17,6 +17,11 @@ void TryAddUnitToHealTargetList(struct Unit* unit) {
 
     }
 
+#if defined(SID_AidRefusal) && (COMMON_SKILL_VALID(SID_AidRefusal))
+    if (SkillTester(unit, SID_AidRefusal))
+        return;
+#endif
+
     if (unit->state & US_RESCUED) {
         return;
     }

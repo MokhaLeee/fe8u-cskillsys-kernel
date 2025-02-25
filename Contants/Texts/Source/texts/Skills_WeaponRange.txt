@@ -51,3 +51,8 @@ counterattack from any distance.[X]
 Saint:[NL]
 Unit can target enemies[N]
 with healing staves.[X]
+
+## MSG_SKILL_AidRefusal
+Aid Refusal:[N]
+This unit cannot be[N]
+targeted by staves.[X]
