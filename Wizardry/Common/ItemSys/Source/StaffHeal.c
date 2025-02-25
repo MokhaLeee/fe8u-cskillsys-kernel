@@ -83,6 +83,23 @@ void ExecStandardHeal(ProcPtr proc)
     amount = HealAmountGetter(amount, unit_act, unit_tar);
 #endif
 
+/* Having crashing issues with the switch case for making this work on staves only */
+#if defined(SID_WhiteMage) && (COMMON_SKILL_VALID(SID_WhiteMage))
+    if (SkillTester(unit_act, SID_WhiteMage))
+    {
+        amount += amount / 2;
+        // switch (unit_act->items[gActionData.itemSlotIndex])
+        // {
+        // case ITEM_STAFF_HEAL:
+        // case ITEM_STAFF_MEND:
+        // case ITEM_STAFF_PHYSIC:
+        // case ITEM_STAFF_FORTIFY:
+        //     amount += amount / 2;
+        //     break;
+        // }
+    }
+#endif
+
     BattleInitItemEffectTarget(unit_tar);
 
     AddUnitHp(unit_tar, amount);
@@ -156,6 +173,23 @@ void ExecFortify(ProcPtr proc)
     amount = GetUnitItemHealAmount(
         unit_act,
         unit_act->items[gActionData.itemSlotIndex]);
+
+/* Having crashing issues with the switch case for making this work on staves only */
+#if defined(SID_WhiteMage) && (COMMON_SKILL_VALID(SID_WhiteMage))
+    if (SkillTester(unit_act, SID_WhiteMage))
+    {
+        amount += amount / 2;
+        // switch (unit_act->items[gActionData.itemSlotIndex])
+        // {
+        // case ITEM_STAFF_HEAL:
+        // case ITEM_STAFF_MEND:
+        // case ITEM_STAFF_PHYSIC:
+        // case ITEM_STAFF_FORTIFY:
+        //     amount += amount / 2;
+        //     break;
+        // }
+    }
+#endif
 
     targetCount = GetSelectTargetCount();
 

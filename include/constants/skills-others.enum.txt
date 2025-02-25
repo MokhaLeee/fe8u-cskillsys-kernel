@@ -683,6 +683,7 @@ SID_Canto
 // SID_TwinCrests
 // SID_Saint
 // SID_AidRefusal
+// SID_WhiteMage
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

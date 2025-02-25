@@ -56,3 +56,8 @@ with healing staves.[X]
 Aid Refusal:[N]
 This unit cannot be[N]
 targeted by staves.[X]
+
+## MSG_SKILL_WhiteMage
+White Mage:[N]
+Boost healing staves[N]
+by 50%.[X]
