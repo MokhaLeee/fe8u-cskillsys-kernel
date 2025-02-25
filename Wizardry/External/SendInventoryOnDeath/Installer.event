@@ -3,7 +3,12 @@
 PUSH
 ORG 0x18418
 jumpToHack(SendInventoryOnDeath)
-PROTECT 0x18418 currentOffset
+
+/* 
+**This hooks into the same space as the casual mode patch. 
+** Not sure how well they play together
+*/
+// PROTECT 0x18418 currentOffset
 POP
 
 ALIGN 4
