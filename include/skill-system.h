@@ -116,8 +116,10 @@ struct PrepEquipSkillList {
 void ResetPrepEquipSkillList(void);
 struct PrepEquipSkillList * GetPrepEquipSkillList(struct Unit * unit);
 
+
+/* JESTER - I'm editing the number of learned skills from 5 to 7, preventing class and personals from being saved in the unit struct */
 /* Game data */
-#define SKILL_ROM_DATA_AMT 5 /* Unit can learn 5 skills on lv0/5/10/15/20 */
+#define SKILL_ROM_DATA_AMT 7 /* Unit can learn 7 skills on lv0/5/10/15/20 */
 struct SkillPreloadJConf { u8 skills[SKILL_ROM_DATA_AMT * (UNIT_LEVEL_MAX_RE / 5 + 1)];};
 struct SkillPreloadPConf { u8 skills[SKILL_ROM_DATA_AMT * (UNIT_RECORDED_LEVEL_MAX / 5 + 1)];};
 

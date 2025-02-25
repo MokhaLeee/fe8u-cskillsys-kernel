@@ -47,6 +47,11 @@ VengefulFighter:[NL]
 If HP is higher than 50%[NL]
 Always attack twice when under attack.[X]
 
+## MSG_SKILL_RapidFighter
+RapidFighter:[NL]
+Unit only doubles when they're[N]
+battling on their phase.[X]
+
 ## MSG_SKILL_RecklessFighter_NAME
 R-Fighter[X]
 

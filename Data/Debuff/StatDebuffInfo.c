@@ -5,11 +5,23 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
     [UNIT_STAT_BUFF_RING_ATK] = {
         .positive_type = STATUS_DEBUFF_POSITIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
-        .battle_status = {.atk = +10}},
-    [UNIT_STAT_BUFF_RING_DEF] = {.positive_type = STATUS_DEBUFF_POSITIVE, .tick_type = STATUS_DEBUFF_TICK_ON_ALLY, .battle_status = {.def = +10}},
-    [UNIT_STAT_BUFF_RING_CRT] = {.positive_type = STATUS_DEBUFF_POSITIVE, .tick_type = STATUS_DEBUFF_TICK_ON_ALLY, .battle_status = {.crit = +10}},
-    [UNIT_STAT_BUFF_RING_AVO] = {.positive_type = STATUS_DEBUFF_POSITIVE, .tick_type = STATUS_DEBUFF_TICK_ON_ALLY, .battle_status = {.avo = +10}},
-
+        .battle_status = {.atk = +10}
+    },
+    [UNIT_STAT_BUFF_RING_DEF] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE, 
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY, 
+        .battle_status = {.def = +10}
+    },
+    [UNIT_STAT_BUFF_RING_CRT] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE, 
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY, 
+        .battle_status = {.crit = +10}
+    },
+    [UNIT_STAT_BUFF_RING_AVO] = {
+        .positive_type = STATUS_DEBUFF_POSITIVE, 
+        .tick_type = STATUS_DEBUFF_TICK_ON_ALLY, 
+        .battle_status = {.avo = +10}
+    },
     [UNIT_STAT_DEBUFF_POW] = {
         .positive_type = STATUS_DEBUFF_NEGATIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,

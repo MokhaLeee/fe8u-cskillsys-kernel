@@ -2,11 +2,11 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-/* Maximum of 5 skills here */
+/* Maximum of 7 skills here */
 const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     [CHARACTER_EIRIKA] = {
         .skills = {
-        // [0] = SID_Saint,
+        [0] = SID_RapidFighter,
             // [1] = SID_Prodigy,
             // [2] = SID_DefiantStr,
             // [3] = SID_DefiantAvoid,

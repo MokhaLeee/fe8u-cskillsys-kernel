@@ -144,6 +144,10 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
     [SID_VengefulFighter] = EFX_PRIORITY_NORMAL,
 #endif
 
+#if (defined(SID_RapidFighter) && COMMON_SKILL_VALID(SID_RapidFighter))
+    [SID_RapidFighter] = EFX_PRIORITY_NORMAL,
+#endif
+
 #if (defined(SID_RecklessFighter) && COMMON_SKILL_VALID(SID_RecklessFighter))
     [SID_RecklessFighter] = EFX_PRIORITY_NORMAL,
 #endif
@@ -400,6 +404,10 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_VengefulFighter) && COMMON_SKILL_VALID(SID_VengefulFighter))
     [SID_VengefulFighter] = &EfxSkillVanilla,
+#endif
+
+#if (defined(SID_RapidFighter) && COMMON_SKILL_VALID(SID_RapidFighter))
+    [SID_RapidFighter] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_RecklessFighter) && COMMON_SKILL_VALID(SID_RecklessFighter))

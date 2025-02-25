@@ -184,10 +184,30 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
             }
         }
 #endif
+
+#if defined(SID_RapidFighter) && (COMMON_SKILL_VALID(SID_RapidFighter))
+        if (basic_judgement == false && BattleSkillTester(actor, SID_RapidFighter) &&
+            (gPlaySt.faction == UNIT_FACTION(GetUnit(actor->unit.index))))
+        {
+            gBattleTemporaryFlag.tar_force_twice_order = true;
+            RegisterBattleOrderSkill(SID_RapidFighter, BORDER_TAR_TWICE);
+            return true;
+        }
+#endif
+
     }
     else if (&gBattleTarget == actor)
     {
         gBattleTemporaryFlag.tar_force_twice_order = false;
+
+#if defined(SID_RapidFighter) && (COMMON_SKILL_VALID(SID_RapidFighter))
+        if (basic_judgement == true && BattleSkillTester(actor, SID_RapidFighter) &&
+        (gPlaySt.faction != UNIT_FACTION(GetUnit(actor->unit.index))))
+        {
+            basic_judgement = false;
+            return false;
+        }
+#endif
 
 #if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
         if (((target->battleSpeed - actor->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD) &&
