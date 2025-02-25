@@ -46,3 +46,8 @@ with healing staves.[X]
 Counterattack:[N]
 The unit is able to[N]
 counterattack from any distance.[X]
+
+## MSG_SKILL_Saint
+Saint:[NL]
+Unit can target enemies[N]
+with healing staves.[X]

@@ -47,7 +47,7 @@ void MakeTargetListForSummon(struct Unit* unit);
 // ??? sub_8025D80(???);
 // ??? sub_8025DB8(???);
 // ??? sub_8025DF0(???);
-// ??? TryAddUnitToHealTargetList(???);
+void TryAddUnitToHealTargetList(struct Unit* unit);
 void MakeTargetListForAdjacentHeal(struct Unit* unit);
 void MakeTargetListForRangedHeal(struct Unit* unit);
 // ??? AddToTargetListIfNotAllied(???);

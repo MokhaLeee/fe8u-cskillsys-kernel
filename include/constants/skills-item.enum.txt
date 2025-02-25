@@ -680,6 +680,7 @@
 // SID_SelfHealing
 // SID_Wrestler
 // SID_TwinCrests
+// SID_Saint
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

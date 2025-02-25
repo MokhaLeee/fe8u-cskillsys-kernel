@@ -3,6 +3,33 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+LYN_REPLACE_CHECK(TryAddUnitToHealTargetList);
+void TryAddUnitToHealTargetList(struct Unit* unit) {
+
+    if (!AreUnitsAllied(gSubjectUnit->index, unit->index)) {
+
+#if defined(SID_Saint) && (COMMON_SKILL_VALID(SID_Saint))
+        if (!SkillTester(gSubjectUnit, SID_Saint))
+             return;
+#else 
+        return;
+#endif
+
+    }
+
+    if (unit->state & US_RESCUED) {
+        return;
+    }
+
+    if (GetUnitCurrentHp(unit) == GetUnitMaxHp(unit)) {
+        return;
+    }
+
+    AddTarget(unit->xPos, unit->yPos, unit->index, 0);
+
+    return;
+}
+
 LYN_REPLACE_CHECK(MakeTargetListForAdjacentHeal);
 void MakeTargetListForAdjacentHeal(struct Unit * unit)
 {
