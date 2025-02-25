@@ -1354,7 +1354,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
         case SID_CriticalOverload:
             if (attacker->battleHitRate > 100)
             {
-                int _crit_overflow = BattleUnitOriginalStatus(attacker)->crit - 100;
+                int _crit_overflow = BattleUnitOriginalStatus(attacker)->hit - 100;
                 if (_crit_overflow > 0)
                     attacker->battleCritRate += _crit_overflow / SKILL_EFF0(SID_CriticalOverload);
             }
