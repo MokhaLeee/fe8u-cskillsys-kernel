@@ -10,6 +10,8 @@ struct ShieldInfo {
 	u8 consume_on_hitted;
 
 	s8 battle_status_bonus[BATTLE_STATUS_MAX];
+	s8 unit_status_bonus[UNIT_STATUS_MAX - 1];
+	s8 unit_growth_bonus[UNIT_STATUS_MAX - 1];
 };
 
 struct ShieldItem {
@@ -41,3 +43,21 @@ void BattleToUnit_ResetShieldInfo(struct BattleUnit *bu, struct Unit *unit);
 void GameInit_ResetShieldInfo(void);
 void PreBattleCalcShieldBonus(struct BattleUnit *attacker, struct BattleUnit *defender);
 void DrawItemPage_ShieldEquipLine(void);
+
+int PowGetterShield(int status, struct Unit *unit);
+int MagGetterShield(int status, struct Unit *unit);
+int SklGetterShield(int status, struct Unit *unit);
+int SpdGetterShield(int status, struct Unit *unit);
+int LckGetterShield(int status, struct Unit *unit);
+int DefGetterShield(int status, struct Unit *unit);
+int ResGetterShield(int status, struct Unit *unit);
+int MovGetterShield(int status, struct Unit *unit);
+
+int PowGrowthGetterShield(int status, struct Unit *unit);
+int MagGrowthGetterShield(int status, struct Unit *unit);
+int SklGrowthGetterShield(int status, struct Unit *unit);
+int SpdGrowthGetterShield(int status, struct Unit *unit);
+int LckGrowthGetterShield(int status, struct Unit *unit);
+int DefGrowthGetterShield(int status, struct Unit *unit);
+int ResGrowthGetterShield(int status, struct Unit *unit);
+int MovGrowthGetterShield(int status, struct Unit *unit);
