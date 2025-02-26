@@ -27,7 +27,7 @@ SID_Mine
 // SID_RallyResistance
 // SID_RallySkill
 // SID_RallySpeed
-// SID_RallyStrength
+SID_RallyStrength
 // SID_RallySpectrum
 SID_GoddessDance
 SID_Stride
@@ -679,12 +679,13 @@ SID_Resurrection
 // SID_CapacityOne
 // SID_DangerRanger
 // SID_Savior
-SID_SelfHealing
+// SID_SelfHealing
 // SID_Wrestler
 // SID_TwinCrests
-SID_Saint
-SID_AidRefusal
-SID_WhiteMage
+// SID_Saint
+//SID_AidRefusal
+// SID_WhiteMage
+SID_MoreForMe
 
 /////// COMBAT ARTS
 // SID_COMBAT_Grounder

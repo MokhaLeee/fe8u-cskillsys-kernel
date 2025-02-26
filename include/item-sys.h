@@ -400,6 +400,7 @@ static const KeyValuePair dict_skills[] =
         { "Moody", {1000, 1}},
         { "Moon Bow", {1000, 1}},
         { "Moonlight", {1000, 1}},
+        { "More For Me", {1000, 1}},
         { "Mountain Climber", {1000, 1}},
         { "Mountain Climber+", {1000, 1}},
         { "Mountain Man", {1000, 1}},

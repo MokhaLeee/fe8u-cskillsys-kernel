@@ -3113,7 +3113,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealDefense) && COMMON_SKILL_VALID(SID_SealDefense))
     [SID_SealDefense] = {
-
         .desc = MSG_SKILL_SealDefense,
         .icon = GFX_SkillIcon_SealDefense
     },
@@ -3121,7 +3120,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealLuck) && COMMON_SKILL_VALID(SID_SealLuck))
     [SID_SealLuck] = {
-
         .desc = MSG_SKILL_SealLuck,
         .icon = GFX_SkillIcon_SealLuck
     },
@@ -3129,7 +3127,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealMagic) && COMMON_SKILL_VALID(SID_SealMagic))
     [SID_SealMagic] = {
-
         .desc = MSG_SKILL_SealMagic,
         .icon = GFX_SkillIcon_SealMagic
     },
@@ -3137,7 +3134,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealResistance) && COMMON_SKILL_VALID(SID_SealResistance))
     [SID_SealResistance] = {
-
         .desc = MSG_SKILL_SealResistance,
         .icon = GFX_SkillIcon_SealResistance
     },
@@ -3145,7 +3141,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealSkill) && COMMON_SKILL_VALID(SID_SealSkill))
     [SID_SealSkill] = {
-
         .desc = MSG_SKILL_SealSkill,
         .icon = GFX_SkillIcon_SealSkill
     },
@@ -3153,7 +3148,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealSpeed) && COMMON_SKILL_VALID(SID_SealSpeed))
     [SID_SealSpeed] = {
-
         .desc = MSG_SKILL_SealSpeed,
         .icon = GFX_SkillIcon_SealSpeed
     },
@@ -3161,7 +3155,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SealStrength) && COMMON_SKILL_VALID(SID_SealStrength))
     [SID_SealStrength] = {
-
         .desc = MSG_SKILL_SealStrength,
         .icon = GFX_SkillIcon_SealStrength
     },
@@ -3169,7 +3162,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallyDefense) && COMMON_SKILL_VALID(SID_RallyDefense))
     [SID_RallyDefense] = {
-
         .desc = MSG_SKILL_RallyDefense,
         .icon = GFX_SkillIcon_RallyDefense,
     },
@@ -3177,7 +3169,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallyLuck) && COMMON_SKILL_VALID(SID_RallyLuck))
     [SID_RallyLuck] = {
-
         .desc = MSG_SKILL_RallyLuck,
         .icon = GFX_SkillIcon_RallyLuck,
     },
@@ -3185,7 +3176,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallyMagic) && COMMON_SKILL_VALID(SID_RallyMagic))
     [SID_RallyMagic] = {
-
         .desc = MSG_SKILL_RallyMagic,
         .icon = GFX_SkillIcon_RallyMagic,
     },
@@ -3193,7 +3183,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallyMovement) && COMMON_SKILL_VALID(SID_RallyMovement))
     [SID_RallyMovement] = {
-
         .desc = MSG_SKILL_RallyMovement,
         .icon = GFX_SkillIcon_RallyMovement,
     },
@@ -3201,7 +3190,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallyResistance) && COMMON_SKILL_VALID(SID_RallyResistance))
     [SID_RallyResistance] = {
-
         .desc = MSG_SKILL_RallyResistance,
         .icon = GFX_SkillIcon_RallyResistance,
     },
@@ -3209,7 +3197,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallySkill) && COMMON_SKILL_VALID(SID_RallySkill))
     [SID_RallySkill] = {
-
         .desc = MSG_SKILL_RallySkill,
         .icon = GFX_SkillIcon_RallySkill,
     },
@@ -3217,7 +3204,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallySpeed) && COMMON_SKILL_VALID(SID_RallySpeed))
     [SID_RallySpeed] = {
-
         .desc = MSG_SKILL_RallySpeed,
         .icon = GFX_SkillIcon_RallySpeed,
     },
@@ -3225,7 +3211,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallyStrength) && COMMON_SKILL_VALID(SID_RallyStrength))
     [SID_RallyStrength] = {
-
         .desc = MSG_SKILL_RallyStrength,
         .icon = GFX_SkillIcon_RallyStrength,
     },
@@ -3233,7 +3218,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallySpectrum) && COMMON_SKILL_VALID(SID_RallySpectrum))
     [SID_RallySpectrum] = {
-
         .desc = MSG_SKILL_RallySpectrum,
         .icon = GFX_SkillIcon_RallySpectrum,
     },
@@ -4889,6 +4873,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_GorillaTactics) && COMMON_SKILL_VALID(SID_GorillaTactics))
     [SID_GorillaTactics] = {
         .desc = MSG_SKILL_GorillaTactics,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_MoreForMe) && COMMON_SKILL_VALID(SID_MoreForMe))
+    [SID_MoreForMe] = {
+        .desc = MSG_SKILL_MoreForMe,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif

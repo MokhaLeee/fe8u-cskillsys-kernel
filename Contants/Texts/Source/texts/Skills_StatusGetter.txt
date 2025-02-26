@@ -521,3 +521,8 @@ stat boosts.[X]
 Adaptable: Equip the unit's strongest[NL]
 weapon taking into account range,[NL]
 WTA, abilities, and weapon might.[X]
+
+## MSG_SKILL_MoreForMe
+More For Me:[N]
+If not within range of a rally[N]
+target, apply the rally to this unit.[X]

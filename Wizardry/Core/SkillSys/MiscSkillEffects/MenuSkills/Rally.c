@@ -32,7 +32,14 @@ u8 Rally_Usability(const struct MenuItemDef * def, int number)
         return MENU_NOTSHOWN;
 
     if (!HasSelectTarget(gActiveUnit, MakeTargetListForRally))
+    {
+#if (defined(SID_MoreForMe) && (COMMON_SKILL_VALID(SID_MoreForMe)))
+        if (!SkillTester(gActiveUnit, SID_MoreForMe))
+            return MENU_DISABLED;
+#else
         return MENU_DISABLED;
+#endif
+    }
 
     for (int i = 0; i < ARRAY_COUNT_RANGE3x3; i++)
     {
@@ -225,6 +232,14 @@ static void callback_exec(ProcPtr proc)
     int i;
 
     MakeTargetListForRally(gActiveUnit);
+
+    if (!HasSelectTarget(gActiveUnit, MakeTargetListForRally))
+    {
+#if (defined(SID_MoreForMe) && (COMMON_SKILL_VALID(SID_MoreForMe)))
+    if (SkillTester(gActiveUnit, SID_MoreForMe))
+        AddTarget(gActiveUnit->xPos, gActiveUnit->yPos, gActiveUnit->index, 1);
+#endif
+    }
 
     for (i = 0; i < GetSelectTargetCount(); i++)
     {
