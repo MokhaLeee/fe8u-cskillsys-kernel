@@ -196,3 +196,8 @@ after taking any actions.[X]
 Twin Crests:[N]
 This unit can act[N]
 twice in one turn.[X]
+
+## MSG_SKILL_GorillaTactics
+Gorilla Tactics:[N]
+If moving, pull back 1 space after[N]
+attacking but not defeating enemy.[X]

@@ -269,6 +269,7 @@
 // SID_TakerSpeed
 // SID_TakerStrength
 // SID_Canter
+// SID_GorillaTactics
 
 ////////// AURA SKILLS
 // SID_Anathema

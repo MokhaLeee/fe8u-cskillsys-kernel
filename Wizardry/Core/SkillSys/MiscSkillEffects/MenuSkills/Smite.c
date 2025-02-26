@@ -14,7 +14,7 @@ void TrySmiteAllyToTargetList(struct Unit * unit);
 void MakeSmiteTargetListForAdjacentAlly(struct Unit * unit);
 extern void ForEachAdjacentUnit(int x, int y, void (*)(struct Unit *));
 
-static inline bool IsPosInvaild(s8 x, s8 y)
+static inline bool isPosInvalid(s8 x, s8 y)
 {
     return ((x < 0) & (x > gBmMapSize.x) & (y < 0) & (y > gBmMapSize.y));
 }
@@ -159,7 +159,7 @@ void TrySmiteAllyToTargetList(struct Unit * unit)
 
     struct Vec2u dest = GetSmiteCoord(x1, x2, y1, y2);
 
-    if (IsPosInvaild(dest.x, dest.y))
+    if (isPosInvalid(dest.x, dest.y))
     {
         return;
     }

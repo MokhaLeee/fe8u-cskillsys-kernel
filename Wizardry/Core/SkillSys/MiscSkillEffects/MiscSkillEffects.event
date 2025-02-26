@@ -20,6 +20,7 @@
 #include "PostActionSkills/AngerPoint.lyn.event"
 #include "PostActionSkills/Resurrection.lyn.event"
 #include "PostActionSkills/MendArms.lyn.event"
+#include "PostActionSkills/GorillaTactics.lyn.event"
 #include "PostActionSkills/ConfigAutoPromotionOnMaxLevel.lyn.event"
 
 #include "MenuSkills/LynJump.event"
