@@ -44,8 +44,6 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 	item_it = &gpWeaponTriangleItemConf[ITEM_INDEX(attacker->weaponBefore)];
 	if (item_it->valid && item_it->wtype == defender->weaponType) {
 		if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self)) {
-			ui  += item_it->is_buff ? 1 : -1;
-
 			atk += item_it->battle_status.atk;
 			def += item_it->battle_status.def;
 			hit += item_it->battle_status.hit;
@@ -58,7 +56,6 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 		for (vanilla_it = sWeaponTriangleRules; vanilla_it->attackerWeaponType >= 0; ++vanilla_it) {
 			if ((attacker->weaponType == vanilla_it->attackerWeaponType) && (defender->weaponType == vanilla_it->defenderWeaponType)) {
 				if ((vanilla_it->atkBonus > 0 && !poise_foo) || (!(vanilla_it->atkBonus > 0) && !poise_self)) {
-					ui = vanilla_it->atkBonus > 0 ? 1 : -1;
 					atk += vanilla_it->atkBonus;
 					hit += vanilla_it->hitBonus;
 				}
@@ -71,8 +68,6 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 		if (it->wtype_a == attacker->weaponType && it->wtype_b == defender->weaponType) {
 			if (it->sid == 0 || BattleFastSkillTester(attacker, it->sid)) {
 				if ((item_it->is_buff && !poise_foo) || (!item_it->is_buff && !poise_self)) {
-					ui  += it->is_buff ? 1 : -1;
-
 					atk += it->bonus_atk;
 					def += it->bonus_def;
 					hit += it->bonus_hit;
@@ -99,8 +94,6 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 		0
 #endif
 	) {
-		ui  *= 2;
-
 		atk *= 2;
 		def *= 2;
 		hit *= 2;
@@ -109,12 +102,18 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 		sil *= 2;
 	}
 
+	ui = (atk + def) * 10 + hit + avo + crt + sil;
+
+	ui = ui / 8;
+	if (ui > 63)
+		ui = 63;
+
 	if (!invert) {
-		attacker->battleAttack	   += atk;
-		attacker->battleDefense	  += def;
-		attacker->battleHitRate	  += hit;
-		attacker->battleAvoidRate	+= avo;
-		attacker->battleCritRate	 += crt;
+		attacker->battleAttack       += atk;
+		attacker->battleDefense      += def;
+		attacker->battleHitRate      += hit;
+		attacker->battleAvoidRate    += avo;
+		attacker->battleCritRate     += crt;
 		attacker->battleSilencerRate += sil;
 
 		attacker->wTriangleHitBonus  += ui;
@@ -122,11 +121,11 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 		defender->wTriangleHitBonus  -= ui;
 		defender->wTriangleDmgBonus  -= ui;
 	} else {
-		attacker->battleAttack	   -= atk;
-		attacker->battleDefense	  -= def;
-		attacker->battleHitRate	  -= hit;
-		attacker->battleAvoidRate	-= avo;
-		attacker->battleCritRate	 -= crt;
+		attacker->battleAttack       -= atk;
+		attacker->battleDefense      -= def;
+		attacker->battleHitRate      -= hit;
+		attacker->battleAvoidRate    -= avo;
+		attacker->battleCritRate     -= crt;
 		attacker->battleSilencerRate -= sil;
 
 		attacker->wTriangleHitBonus  -= ui;
