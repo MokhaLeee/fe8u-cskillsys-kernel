@@ -1,0 +1,15 @@
+Image address for UI GFX: 0x5B65C0 OR 5B6470 OR 09463488
+
+Palettes:
+Blue: 0E52FF7F6B35D22D2304FD7BDC779973047BC5726566055EA651664D2645C73C
+Red: 
+Green:
+Gray:
+
+Minimug box data
+Palette addresses:
+Blue: A1738C
+Red: 8A173AC
+Green: 8A173CC
+Number image address: A16D6C
+Dash and HB bar: A167C8 (Uses Blue palette)

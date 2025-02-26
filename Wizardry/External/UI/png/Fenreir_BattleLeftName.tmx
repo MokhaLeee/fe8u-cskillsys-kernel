@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="15" height="6" tilewidth="8" tileheight="8" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="MenuTiles" tilewidth="8" tileheight="8" tilecount="136" columns="17">
+  <image source="Fenreir_BattleTileset.png" width="136" height="64"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="15" height="6">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+35,36,36,36,36,36,36,36,2147483683,1,1,1,1,1,1,
+38,69,71,73,75,77,79,81,2147483686,1,1,1,1,1,1,
+38,70,72,74,76,78,80,82,2147483686,1,1,1,1,1,1,
+40,41,42,43,44,45,46,47,2147483688,1,1,1,1,1,1,
+49,2147483704,51,52,53,54,55,56,2147483697,1,1,1,1,1,1
+</data>
+ </layer>
+</map>

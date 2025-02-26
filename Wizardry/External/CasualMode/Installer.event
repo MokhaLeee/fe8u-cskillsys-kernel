@@ -6,8 +6,6 @@
 // eid $B0 enables Casual Mode (fallen units come back next chapter)
 // hack by circleseverywhere
 
-#ifdef _FE8_
-
   {
 
   PUSH
@@ -17,7 +15,7 @@
     ORG $18418
       jumpToHack(CasualMode)
 
-	//ƒAƒCƒRƒ“ ¯‚ÌƒAƒCƒRƒ“
+	//ï¿½Aï¿½Cï¿½Rï¿½ï¿½ ï¿½ï¿½ï¿½ÌƒAï¿½Cï¿½Rï¿½ï¿½
 	ORG 0xA2EC28
 	byte $20;
 	ORG 0xA2EC0A
@@ -33,26 +31,19 @@
     #incbin "asm/CasualModeFE8.dmp"
 
   ALIGN 4
-  //’nŒ`ƒEƒBƒ“ƒhƒE‚Ìİ’è‚ğƒI[ƒgƒZ[ƒu‚É•ÏX‚·‚é
-  TxtData0x09E:
+  CasualModeText:
   #incbin "CasualModeName_Text_9E.bin"
-  TxtData0x0BA:
+  CasualOffText:
   #incbin "CasualModeName_Text_BA.bin"
-  TxtData0xF04:
+  CasualOnText:
   #incbin "CasualModeName_Text_F04.bin"
-  TxtData0xF05:
+  CasualText:
   #incbin "CasualModeName_Text_F05.bin"
 
   #define setText(textID, offset) "PUSH; ORG (TextTable+4*textID); POIN (offset | 0x80000000); POP" //Anti-huffman
-  setText(0x009E,TxtData0x09E)
-  setText(0x00BA,TxtData0x0BA)
-  setText(0x0F04,TxtData0xF04)
-  setText(0x0F05,TxtData0xF05)
+  setText(0x009E,CasualModeText)
+  setText(0x00BA,CasualOffText)
+  setText(0x0F04,CasualOnText)
+  setText(0x0F05,CasualText)
 
   }
-
-#else // _FE8_
-  ERROR Casual mode hack is for FE8
-#endif // _FE8_
-
-#endif // CASUAL_MODE

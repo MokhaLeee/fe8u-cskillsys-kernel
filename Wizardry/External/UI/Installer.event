@@ -1,0 +1,342 @@
+
+
+ALIGN 4 
+StephanoStyleFlag: 
+WORD 0xAA 
+GammaStyleFlag:
+WORD 0xAB  
+PikminStyleFlag:
+WORD 0xAC
+
+
+
+ALIGN 4 
+gUiFrameImage_Stephano:
+#incbin "png/Stephano_Main.dmp" 
+
+ALIGN 4 
+gPrepExtra1_Stephano: 
+#incbin "png/Stephano_Preps.dmp" 
+
+ALIGN 4 
+gPrepUseGfx_Stephano: 
+#incbin "png/Stephano_Eretein_PrepsUseGfx.dmp" 
+
+ALIGN 4 
+gGfx_PlayerInterfaceFontTiles_Stephano:
+#incbin "png/Stephano_HPbar.dmp" 
+
+ALIGN 4 
+gGfx_PlayerInterfaceNumbers_Stephano:
+#incbin "png/Stephano_Numbers.dmp" 
+
+
+ALIGN 4 
+Img_08801C14_Sokaballa:
+#incbin "png/Sokaballa_Battle.dmp" 
+ALIGN 4 
+Img_EfxLeftNameBox_Sokaballa:
+#incbin "png/Sokaballa_Left.dmp" 
+ALIGN 4 
+Img_EfxLeftItemBox_Sokaballa:
+#incbin "png/Sokaballa_LeftItem.dmp" 
+ALIGN 4 
+Img_EfxRightNameBox_Sokaballa:
+#incbin "png/Sokaballa_Right.dmp" 
+ALIGN 4 
+Img_EfxRightItemBox_Sokaballa:
+#incbin "png/Sokaballa_RightItem.dmp" 
+
+
+ALIGN 4 
+Img_08801C14_Fenreir:
+#incbin "png/Fenreir_Battle.dmp" 
+ALIGN 4 
+Img_EfxLeftNameBox_Fenreir:
+Img_EfxRightNameBox_Fenreir:
+#incbin "png/Fenreir_Name.dmp" 
+ALIGN 4 
+Img_EfxLeftItemBox_Fenreir:
+#incbin "png/Fenreir_LeftItem.dmp" 
+ALIGN 4 
+Img_EfxRightItemBox_Fenreir:
+#incbin "png/Fenreir_RightItem.dmp" 
+
+ALIGN 4 
+Img_08801C14_Gamma:
+#incbin "png/Gamma_Battle.dmp" 
+ALIGN 4 
+Img_EfxLeftNameBox_Gamma:
+#incbin "png/Gamma_Left.dmp" 
+ALIGN 4 
+Img_EfxLeftItemBox_Gamma:
+#incbin "png/Gamma_LeftItem.dmp" 
+ALIGN 4 
+Img_EfxRightNameBox_Gamma:
+#incbin "png/Gamma_Right.dmp" 
+ALIGN 4 
+Img_EfxRightItemBox_Gamma:
+#incbin "png/Gamma_RightItem.dmp" 
+
+ALIGN 4 
+gUiFrameImage_Gamma:
+#incbin "png/Gamma_Main.dmp" 
+ALIGN 4
+MenuTilesPalette_Gamma:
+#incbin "png/Gamma_MenuPal.pal"
+
+ALIGN 4 
+gPrepExtra1_Gamma: 
+#incbin "png/Gamma_Preps.dmp" 
+
+ALIGN 4 
+gPrepUseGfx_Gamma: 
+#incbin "png/Gamma_PrepsUseGfx.dmp" 
+
+ALIGN 4 
+Img_ShopGoldBox_Gamma: 
+#incbin "png/Gamma_ShopGoldDisplay.dmp" 
+
+ALIGN 4 
+gPrepItemGfx_Gamma: 
+#incbin "png/Gamma_PrepItems.dmp" 
+
+ALIGN 4 
+Gamma_PrepPopupWindow:
+#incbin "png/Gamma_PrepPopupWindow.dmp" 
+
+ALIGN 4 
+gUiFrameImage_Pikmin:
+#incbin "png/PikminMain.dmp" 
+ALIGN 4 
+gPrepExtra1_Pikmin: 
+#incbin "png/PikminPreps.dmp" 
+ALIGN 4 
+gPrepUseGfx_Pikmin: 
+#incbin "png/Pikmin_PrepsUseGfx.dmp" 
+
+ALIGN 4
+MenuTilesPalette_Pikmin:
+#incbin "png/PikminMain.pal.bin"
+#incbin "png/PikminMain.pal.bin"
+#incbin "png/PikminMain.pal.bin"
+#incbin "png/PikminMain.pal.bin"
+#incbin "png/PikminMain.pal.bin"
+#incbin "png/PikminMain.pal.bin"
+#incbin "png/PikminMain.pal.bin"
+#incbin "png/PikminMain.pal.bin"
+
+
+
+ALIGN 4 
+gUnknown_08802558_Sokaballa: // Battle UI Palette 
+BYTE  $0E $52 $A6 $10 $BE $77 $AA $00 $13 $1E $65 $62 $08 $7F $48 $24 $41 $30 $FC $36 $83 $1C $E7 $65 $86 $55 $25 $49 $82 $48 $6D $1D $0E $52 $A6 $10 $BE $77 $AA $00 $13 $1E $B8 $14 $DF $5A $49 $08 $59 $29 $FC $36 $87 $0C $39 $11 $F5 $0C $B0 $08 $8D $04 $6D $1D $0E $52 $A6 $10 $BE $77 $AA $00 $13 $1E $67 $2F $EB $3F $22 $0D $66 $02 $FC $36 $C2 $08 $A6 $1E $25 $0A $82 $05 $21 $05 $6D $1D $0E $52 $A6 $10 $BE $77 $AA $00 $13 $1E $DE $77 $BD $73 $9C $6F $7B $6B $FC $36 $53 $46 $32 $46 $F0 $3D $CF $39 $8D $31 $6D $1D;
+ALIGN 4 
+gUnknown_08802558_Gamma: // Battle UI Palette 
+#incbin "png/Gamma_battletileset.pal" 
+ALIGN 4 
+gUnknown_08802558_Fenreir: // Battle UI Palette 
+#incbin "png/Fenreir_Battle.pal.bin" 
+
+
+
+// Battle TSA below 
+ALIGN 4 
+gUnknown_0880210C_Sokaballa:
+BYTE  $02 $10 $01 $10 $01 $10 $01 $10 $09 $14 $08 $14 $07 $14 $06 $14 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $44 $10 $46 $10 $48 $10 $4A $10 $4C $10 $4E $10 $50 $10 $0A $14 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $45 $10 $47 $10 $49 $10 $4B $10 $4D $10 $4F $10 $51 $10 $04 $14 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $0E $14 $0D $10 $0D $10 $0D $10 $0D $10 $0D $10 $0C $10 $0B $14 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00;
+ALIGN 4 
+gUnknown_088021C0_Alt:
+BYTE  $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $06 $00 $07 $00 $08 $00 $09 $00 $01 $00 $01 $00 $01 $00 $02 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $0A $00 $62 $00 $64 $00 $66 $00 $68 $00 $6A $00 $6C $00 $6E $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $04 $00 $63 $00 $65 $00 $67 $00 $69 $00 $6B $00 $6D $00 $6F $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $0B $00 $0C $00 $0D $00 $0D $00 $0D $00 $0D $00 $0D $00 $0E $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $12 $10 $12 $10 $12 $10 $12 $10 $12 $10 $13 $10;
+ALIGN 4 
+gUnknown_08802274_Alt:
+BYTE  $12 $10 $12 $10 $12 $10 $12 $10 $12 $10 $13 $10 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $14 $10 $14 $10 $14 $10 $14 $10 $14 $10 $15 $10 $16 $10 $16 $10 $17 $10 $17 $10 $18 $10 $18 $10 $18 $10 $19 $10 $1A $10 $14 $10 $14 $10 $14 $10 $14 $10 $14 $10 $1B $10 $1C $10 $52 $00 $54 $00 $56 $00 $58 $00 $5A $00 $5C $00 $5E $00 $60 $00 $14 $10 $14 $10 $14 $10 $14 $10 $14 $10 $1E $10 $1F $10 $53 $00 $55 $00 $57 $00 $59 $00 $5B $00 $5D $00 $5F $00 $61 $00 $25 $10 $26 $10 $27 $10 $28 $10 $29 $10 $2A $10 $2B $10 $2C $10 $2C $10 $2C $10 $2C $10 $2D $10 $2D $10 $2D $10 $2E $10 $2F $10 $30 $10 $31 $10 $32 $10 $33 $10 $34 $10 $05 $10 $05 $10 $05 $10 $05 $10 $05 $10 $05 $10 $05 $10 $05 $10 $35 $10 $36 $10 $37 $10 $38 $10 $39 $10 $3A $10 $3B $10;
+ALIGN 4 
+gUnknown_08802348_Alt:
+BYTE  $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $13 $04 $12 $00 $12 $00 $12 $00 $12 $00 $12 $00 $13 $00 $1A $04 $19 $04 $18 $00 $18 $00 $18 $00 $17 $04 $17 $04 $16 $04 $16 $04 $15 $04 $14 $00 $14 $00 $14 $00 $14 $00 $14 $00 $22 $00 $1D $00 $1C $00 $70 $00 $72 $00 $74 $00 $76 $00 $78 $00 $7A $00 $7C $00 $7E $00 $14 $00 $14 $00 $14 $00 $14 $00 $14 $00 $22 $00 $20 $00 $1F $00 $71 $00 $73 $00 $75 $00 $77 $00 $79 $00 $7B $00 $7D $00 $7F $00 $14 $00 $14 $00 $14 $00 $14 $00 $14 $00 $22 $00 $2E $04 $2D $00 $2D $00 $2D $00 $2C $00 $2C $00 $2C $00 $2C $00 $2B $00 $2A $04 $29 $04 $28 $04 $27 $04 $26 $04 $25 $04 $23 $00 $35 $04 $05 $00 $05 $00 $05 $00 $05 $00 $05 $00 $05 $00 $05 $00 $05 $00 $34 $04 $33 $04 $32 $04 $31 $04 $30 $04 $2F $04 $22 $00 $43 $04 $42 $04 $42 $04 $41 $04 $40 $04 $3F $04;
+// gUnknown_08802428_Alt ? 
+ALIGN 4 
+gUnknown_08802508_Alt:
+BYTE  $03 $00 $03 $14 $10 $00 $10 $14 $11 $00 $11 $14 $0F $00 $0F $14 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $00 $13 $00 $13 $14 $22 $00 $22 $14 $22 $00 $22 $14 $22 $00 $22 $14 $23 $00 $23 $14 $22 $00 $22 $14;
+
+
+
+
+ALIGN 4 
+gUnknown_0880201C_Gamma:
+#incbin "png/Gamma_battleTSA.bin" 
+PUSH 
+ORG gUnknown_0880201C_Gamma + ($210C - $201C) 
+gUnknown_0880210C_Gamma: 
+ORG gUnknown_0880201C_Gamma + ($21C0 - $201C) 
+gUnknown_088021C0_Gamma: 
+ORG gUnknown_0880201C_Gamma + ($2274 - $201C) 
+gUnknown_08802274_Gamma: 
+ORG gUnknown_0880201C_Gamma + ($2348 - $201C) 
+gUnknown_08802348_Gamma: 
+ORG gUnknown_0880201C_Gamma + ($2428 - $201C) 
+gUnknown_08802428_Gamma: 
+POP 
+ALIGN 4 
+gUnknown_08A1B698_Gamma: 
+#incbin "png/Gamma_prepscreenmain.bgtsa.lz77" 
+ALIGN 4 
+gUnknown_08A1B7C8_Gamma:
+#incbin "png/Gamma_PrepScreenUnit2TSA.dmp" 
+// #incbin "png/Gamma_prepscreenunit.bgtsa.lz77"  
+
+
+ALIGN 4 
+gUnknown_0880210C_Fenreir: 
+#incbin "png/Fenreir_BattleLeftNameTSA.dmp" 
+ALIGN 4 
+gUnknown_088021C0_Fenreir: 
+#incbin "png/Fenreir_BattleRightNameTSA.dmp" 
+
+
+ALIGN 4 
+gUnknown_08802274_Fenreir:
+#incbin "png/Fenreir_Battle_LeftTSA.dmp" 
+
+ALIGN 4 
+gUnknown_08802348_Fenreir: 
+#incbin "png/Fenreir_Battle_RightTSA.dmp" 
+BYTE 0 0 0 0 
+
+#include "HackInstallation.txt" 
+
+#ifndef callHackNew 
+	#define callHackNew(offset) 		"BYTE $01 $4B $9E $46 $00 $F8 $01 $E0; POIN (offset|0x1)"
+#endif 
+
+
+PUSH 
+
+/* 
+// Fenreir 
+ORG 0x519B8  //Item Icon Location Y Axis Left Side
+SHORT 0x3578 //original is 3579
+
+ORG 0x51A24  //Item Icon Location Y Axis Right Side
+SHORT 0x3578 //original is 3579
+
+ORG 0x5196A  //HIT DMG CRIT numbers X Axis location
+SHORT 0x30D9 //original is 30D8
+
+ORG 0x51994  //HIT DMG CRIT words X Axis location
+SHORT 0x3088 //original is 3087
+
+ORG 0x514FC  //Single HP BAR and Number Location Y Axis
+SHORT 0x3094 //original is 3091
+
+ORG 0x5172A  //When two HP Bars, Top HP BAR on Left Side
+SHORT 0x3090 //original is 308E
+
+ORG 0x51770  //When two HP Bars, Bottom HP BAR on Left Side
+SHORT 0x3097 //original is 3095
+
+ORG 0x5185C  //When two HP Bars, Top HP BAR on Right Side
+SHORT 0x3090 //original is 308E
+
+ORG 0x518A2  //When two HP Bars, Bottom HP BAR on Right Side
+SHORT 0x3097 //original is 3095
+*/ 
+
+
+
+ORG $8D04C 
+callHackNew(PlayerPhaseInterfaceNumbersHook)
+SHORT $46c0 
+
+ORG $9a894 
+callHackNew(PrepInitGfxHook)
+SHORT $46c0 $46c0 
+SHORT $46c0 $46c0 
+SHORT $46c0 $46c0 $46c0 
+SHORT $46c0 $46c0 $46c0 
+SHORT $46c0 $46c0 $46c0 
+
+ORG $8dfc0 
+callHackNew(StatusScreenUIPal_Hook) 
+SHORT $46c0 
+
+ORG $CEE08
+callHackNew(GuideUIPal_Hook)
+SHORT $46c0 
+
+ORG $90ECC 
+callHackNew(Pal_SysBrownBox_Hook) 
+
+ORG $4C374 
+callHackNew(RestoreLinkArenaUI) 
+
+// 36D48, 98980, 98CbC, 98D84 as POIN greyUI 
+
+// ORG $36D48 // GetFactionBattleForecastFramePalette 
+// POIN MenuTilesPalette_Pikmin
+
+// ORG $98980 // PrepItemScreen_SetupGfx
+// POIN MenuTilesPalette_Pikmin
+
+// ORG $98CbC // sub_8098BC8	Prep 
+// POIN MenuTilesPalette_Pikmin
+
+// ORG $98D84 // sub_8098CC0	
+// POIN MenuTilesPalette_Pikmin
+
+
+
+
+
+ORG $986B8 
+callHackNew(PrepItemScreen_SetupGfx_Hook)
+
+ORG 0x98D28
+callHackNew(PrepUiPalHook) // in sub_8098CC0 98CC0
+
+ORG 0x95dCE 
+SHORT $46c0 
+callHackNew(PrepUiPalHook_3)
+ORG $95DDC 
+callHackNew(PrepUiTSAHook) 
+SHORT $46c0 $46c0 $46c0 $46c0 $46c0 $46c0 $46c0 $46c0 $46c0 $46c0 
+// in AtMenu_Reinitialize
+
+
+// ORG $B4E28 
+// jumpToHack(DecompressImg_ShopGoldBox_Hook) 
+
+ORG $9C658
+jumpToHack(Decompress_Img_PrepItemUseScreen_Hook) 
+
+// ORG $52128 
+// callHackNew(EfxPrepareScreenFxHook) 
+// SHORT $46c0 $46c0 $46c0 $46c0 $46c0 $46c0 
+
+// the 3 below might be needed for alternate TSA but seem to be breaking atm 
+ORG $51324 
+callHackNew(ekrGaugeMain_Hook) 
+SHORT $46c0 
+
+ORG $51364 
+callHackNew(ekrGaugeMain_Hook2)
+
+// ORG $51384 
+// jumpToHack(ekrGaugeMain_Hook3)
+
+
+
+POP 
+
+
+
+#include "C_Code.lyn.event" 
+#include "Hooks.lyn.event" 
+
+
+
+
+
+
+
+
+

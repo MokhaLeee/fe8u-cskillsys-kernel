@@ -126,3 +126,4 @@
 #include "CasualMode/Installer.event"
 #include "CGEvents/Installer.event"
 #include "GroupAI/Installer.event" // Vesly
+#include "UI/Installer.event" // Vesly

@@ -1,7 +1,8 @@
 #include "Extensions/Hack Installation.txt"
 
 PUSH
-ORG 0xB65FE
+// Original was 0xB65FE but that caused based code alignment
+ORG 0xB65FC
 jumpToHack(ShowCGsLikeFE7)
 POP
 
