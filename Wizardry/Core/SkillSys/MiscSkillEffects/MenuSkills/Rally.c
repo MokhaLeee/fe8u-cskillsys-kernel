@@ -11,6 +11,11 @@ STATIC_DECLAR void AddTargetForRally(struct Unit * unit)
 {
     if (UNIT_ALIVE(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index))
         AddTarget(unit->xPos, unit->yPos, unit->index, 1);
+
+#if (defined(SID_Mimicry) && (COMMON_SKILL_VALID(SID_Mimicry)))
+    if (SkillTester(unit, SID_Mimicry))
+        AddTarget(gSubjectUnit->xPos, gSubjectUnit->yPos, gSubjectUnit->index, 1);
+#endif
 }
 
 STATIC_DECLAR void MakeTargetListForRally(struct Unit * unit)

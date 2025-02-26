@@ -686,6 +686,7 @@ SID_Canto
 // SID_AidRefusal
 // SID_WhiteMage
 // SID_MoreForMe
+// SID_Mimicry
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

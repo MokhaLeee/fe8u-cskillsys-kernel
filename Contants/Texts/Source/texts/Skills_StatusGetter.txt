@@ -526,3 +526,8 @@ WTA, abilities, and weapon might.[X]
 More For Me:[N]
 If not within range of a rally[N]
 target, apply the rally to this unit.[X]
+
+## MSG_SKILL_Mimicry
+Mimicry:[N]
+If a rally target, apply the[N]
+rally to the user as well.[X]
