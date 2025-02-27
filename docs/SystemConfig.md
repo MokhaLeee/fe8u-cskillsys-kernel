@@ -132,6 +132,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Riders may suffer (avo -`[20%]`) indoor.
 
+- `CRIT damage correction rate`
+
+	Critical attack may cause `[200%]` damage.
+
 ## Skill misc infos
 
 ![image](./gfx/SystemConfig3.png)
