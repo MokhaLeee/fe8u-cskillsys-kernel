@@ -493,6 +493,7 @@ SID_Toxic
 // SID_AbsorbMagic
 // SID_Duel
 // SID_Offhand
+SID_ShedSkin
 
 //////// EFFECTIVENESS SKILLS
 SID_Resourceful

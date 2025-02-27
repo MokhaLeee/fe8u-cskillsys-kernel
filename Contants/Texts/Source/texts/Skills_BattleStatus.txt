@@ -1226,3 +1226,8 @@ terrain bonuses.[X]
 Mountain Man:[N]
 AVO bonuses from terrain also[N]
 become HIT bonuses.[X]
+
+## MSG_SKILL_ShedSkin
+Shed Skin:[N]
+Recover from status effects[N]
+at a rate of 2 turns per turn.[X]

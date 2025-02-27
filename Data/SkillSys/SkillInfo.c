@@ -4890,4 +4890,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
+    [SID_ShedSkin] = {
+        .desc = MSG_SKILL_ShedSkin,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

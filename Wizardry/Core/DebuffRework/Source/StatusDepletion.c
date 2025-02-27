@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "debuff.h"
 #include "kernel-lib.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 void StartStatusHealEffect(struct Unit * unit, ProcPtr proc);
 
@@ -61,7 +63,9 @@ void TickActiveFactionTurn(void)
             if (0 != _status && _duration != 0)                         \
             {                                                           \
                 if (_status != UNIT_STATUS_RECOVER)                     \
+                {                                                       \
                     TryTickUnitStatusDuration(unit);                    \
+                }                                                       \
                 if (GetUnitStatusDuration(unit) == 0)                   \
                     AddTarget(unit->xPos, unit->yPos, unit->index, 0);  \
             }                                                           \
@@ -79,6 +83,10 @@ void TickActiveFactionTurn(void)
             if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
+#if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
+                if (SkillTester(unit, SID_ShedSkin))
+                    DEC_STATUS(unit);
+#endif
             }
             TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
         }
@@ -93,6 +101,10 @@ void TickActiveFactionTurn(void)
             if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
+#if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
+                if (SkillTester(unit, SID_ShedSkin))
+                    DEC_STATUS(unit);
+#endif
             }
             TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
         }
@@ -109,6 +121,10 @@ void TickActiveFactionTurn(void)
             if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
+#if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
+                if (SkillTester(unit, SID_ShedSkin))
+                    DEC_STATUS(unit);
+#endif
             }
             TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
         }
@@ -123,6 +139,10 @@ void TickActiveFactionTurn(void)
             if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
+#if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
+                if (SkillTester(unit, SID_ShedSkin))
+                    DEC_STATUS(unit);
+#endif
             }
             TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
         }
@@ -137,6 +157,10 @@ void TickActiveFactionTurn(void)
             if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
             {
                 DEC_STATUS(unit);
+#if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
+                if (SkillTester(unit, SID_ShedSkin))
+                    DEC_STATUS(unit);
+#endif
             }
             TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ENEMY);
         }
@@ -153,6 +177,10 @@ void TickActiveFactionTurn(void)
             if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
                 DEC_STATUS(unit);
+#if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
+                if (SkillTester(unit, SID_ShedSkin))
+                    DEC_STATUS(unit);
+#endif
             }
             TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
         }
