@@ -67,7 +67,7 @@ void PrePhaseChillAnim_ExecActor(struct Proc *proc)
 
 	if (UnitOnMapAvaliable(unit) && COMMON_SKILL_VALID(sid)) {
 		gActiveUnit = unit;
-		NewMuSkillAnimOnActiveUnit(sid, NULL, NULL);
+			NewMuSkillAnimOnActiveUnitWithDeamon(proc, sid, NULL, NULL);
 	}
 }
 

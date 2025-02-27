@@ -167,6 +167,7 @@ bool SkillMapAnimMiniExists(void);
 
 void NewMuSkillAnimOnActiveUnit(u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc));
 bool MuSkillAnimExists(void);
+void NewMuSkillAnimOnActiveUnitWithDeamon(ProcPtr parent, u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc));
 
 extern const EventScr EventScr_MuSkillAnim[];
 

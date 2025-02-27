@@ -69,7 +69,7 @@ static void callback_exec(ProcPtr proc)
 
 bool Action_LightRune(ProcPtr parent)
 {
-	NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
+	NewMuSkillAnimOnActiveUnitWithDeamon(parent, gActionData.unk08, callback_anim, callback_exec);
 	return true;
 }
 #endif

@@ -7,7 +7,7 @@
 
 static void _skill_anim(ProcPtr proc)
 {
-	NewMuSkillAnimOnActiveUnit(gActionData.unk08, NULL, NULL);
+	NewMuSkillAnimOnActiveUnitWithDeamon(proc, gActionData.unk08, NULL, NULL);
 }
 
 static void remove_mu(ProcPtr proc)
@@ -17,7 +17,7 @@ static void remove_mu(ProcPtr proc)
 
 static const struct ProcCmd local_proc[] = {
 	PROC_CALL(_skill_anim),
-	PROC_SLEEP(40),
+	PROC_SLEEP(10),
 	PROC_CALL(remove_mu),
 	PROC_END
 };

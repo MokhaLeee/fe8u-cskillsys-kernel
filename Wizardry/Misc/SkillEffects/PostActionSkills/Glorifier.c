@@ -24,7 +24,7 @@ bool PostAction_Glorifier(ProcPtr parent)
 	if (UnitAvaliable(gActiveUnit) && SkillListTester(gActiveUnit, SID_Glorifier)) {
 		if (gBattleActorGlobalFlag.enimy_defeated == true) {
 			if (!CheckKernelHookSkippingFlag())
-				NewMuSkillAnimOnActiveUnit(SID_Glorifier, NULL, NULL);
+				NewMuSkillAnimOnActiveUnitWithDeamon(parent, SID_Glorifier, NULL, NULL);
 
 			SetUnitStatDebuff(gActiveUnit, UNIT_STAT_BUFF_GLORIFIER);
 			return true;

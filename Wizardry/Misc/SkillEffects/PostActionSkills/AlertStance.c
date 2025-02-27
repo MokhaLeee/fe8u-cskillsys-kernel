@@ -36,7 +36,7 @@ bool PostActionAlertStance(ProcPtr parent)
 		if (SkillListTester(unit, SID_AlertStancePlus)) {
 
 			if (!CheckKernelHookSkippingFlag())
-				NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
+				NewMuSkillAnimOnActiveUnitWithDeamon(parent, SID_AlertStancePlus, callback_anim, callback_refrain);
 
 			SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID_PLUS);
 			return true;
@@ -47,7 +47,7 @@ bool PostActionAlertStance(ProcPtr parent)
 		if (SkillListTester(unit, SID_AlertStance)) {
 
 			if (CheckKernelHookSkippingFlag())
-				NewMuSkillAnimOnActiveUnit(SID_AlertStancePlus, callback_anim, callback_refrain);
+				NewMuSkillAnimOnActiveUnitWithDeamon(parent, SID_AlertStancePlus, callback_anim, callback_refrain);
 
 			SetUnitStatus(unit, NEW_UNIT_STATUS_AVOID);
 			return true;
