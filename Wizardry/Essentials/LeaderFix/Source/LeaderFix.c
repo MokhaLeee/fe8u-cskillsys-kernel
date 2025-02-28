@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
 
-extern struct DefeatTalkEnt * pr_gDefeatTalkList;
+extern struct DefeatTalkEnt *pr_gDefeatTalkList;
 
 LYN_REPLACE_CHECK(GetUnitLeaderCharId);
 int GetUnitLeaderCharId(struct Unit *unit)
@@ -14,7 +14,7 @@ int GetUnitLeaderCharId(struct Unit *unit)
 	/**
 	 * Step1: try to find the BOSS of the chapter
 	 */
-	for (it = gDefeatTalkList; it->pid != 0xFFFF; it++) {
+	for (it = pr_gDefeatTalkList; it->pid != 0xFFFF; it++) {
 		if ((it->route != 0xFF) && (it->route != gPlaySt.chapterModeIndex))
 			continue;
 
