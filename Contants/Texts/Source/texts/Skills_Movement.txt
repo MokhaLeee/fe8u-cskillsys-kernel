@@ -92,3 +92,8 @@ tiles with no move penalty.[X]
 Grid Master Atk:[NL]
 Unit can still attack after[N]
 using menu movement skills.[A][X]
+
+## MSG_SKILL_PhaseShift
+Phase Shift:[N]
+Unit can move through[N]
+walls.[X]

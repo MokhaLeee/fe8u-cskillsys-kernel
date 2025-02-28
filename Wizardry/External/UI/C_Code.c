@@ -1,5 +1,7 @@
 
 #include "C_Code.h" // headers
+#include "bmshop.h"
+
 #define PUREFUNC __attribute__((pure))
 int Mod(int a, int b) PUREFUNC;
 // vanilla UI images
@@ -1000,29 +1002,29 @@ void sub_80BE5B4(int faction, int palId) // world map
     return;
 }
 
-struct ProcShop
-{
-    /* 00 */ PROC_HEADER;
+// struct ProcShop
+// {
+//     /* 00 */ PROC_HEADER;
 
-    /* 2C */ struct Unit * unit;
-    /* 30 */ u16 shopItems[20];
+//     /* 2C */ struct Unit * unit;
+//     /* 30 */ u16 shopItems[20];
 
-    /* 58 */ u16 unk_58;
+//     /* 58 */ u16 unk_58;
 
-    /* 5A */ u8 shopItemCount;
-    /* 5B */ u8 unitItemCount;
-    /* 5C */ u8 head_loc;
-    /* 5D */ u8 hand_loc;
-    /* 5E */ u8 head_idx;
-    /* 5F */ u8 hand_idx; // maybe top visible item in menu?
-    /* 60 */ u8 buy_or_sel;
-    /* 61 */ u8 shopType;
-    /* 62 */ u8 helpTextActive;
+//     /* 5A */ u8 shopItemCount;
+//     /* 5B */ u8 unitItemCount;
+//     /* 5C */ u8 head_loc;
+//     /* 5D */ u8 hand_loc;
+//     /* 5E */ u8 head_idx;
+//     /* 5F */ u8 hand_idx; // maybe top visible item in menu?
+//     /* 60 */ u8 buy_or_sel;
+//     /* 61 */ u8 shopType;
+//     /* 62 */ u8 helpTextActive;
 
-    /* 64 */ s16 goldbox_x;
-    /* 66 */ s16 goldbox_y;
-    /* 68 */ s16 goldbox_oam2;
-};
+//     /* 64 */ s16 goldbox_x;
+//     /* 66 */ s16 goldbox_y;
+//     /* 68 */ s16 goldbox_oam2;
+// };
 
 extern void InitGoldBoxText(u16 *);
 extern const void * poinImg_ShopGoldBox;

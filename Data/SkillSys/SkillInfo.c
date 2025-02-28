@@ -4897,4 +4897,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_PhaseShift) && COMMON_SKILL_VALID(SID_PhaseShift))
+    [SID_PhaseShift] = {
+        .desc = MSG_SKILL_PhaseShift,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

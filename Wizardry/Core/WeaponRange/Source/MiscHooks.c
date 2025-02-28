@@ -439,6 +439,21 @@ void SetWorkingMoveCosts(const s8 mct[])
      * I'll look into a better way to do it at some point.
      */
 
+
+     #if (defined(SID_PhaseShift) && COMMON_SKILL_VALID(SID_PhaseShift))
+     if (SkillTester(gActiveUnit, SID_PhaseShift))
+     {
+         for (i = 0; i < TERRAIN_COUNT; ++i)
+         {
+             if (i == TERRAIN_WALL_1A || i == TERRAIN_WALL_1B)
+                 gWorkingTerrainMoveCosts[i] = 1;
+             else
+                 gWorkingTerrainMoveCosts[i] = mct[i];
+         }
+         return;
+     }
+ #endif
+
 #if (defined(SID_Acrobat) && COMMON_SKILL_VALID(SID_Acrobat))
     if (SkillTester(gActiveUnit, SID_Acrobat))
     {

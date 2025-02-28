@@ -37,16 +37,16 @@ enum { SHOP_ITEMS_MAX_AMT = 20 };
 #define SHOP_ITEMS_MAX_AMT 20
 #define SHOP_TEXT_LINES 5
 
-enum bmshop_bgchr {
-    OBJCHR_SHOP_SPINARROW = 0x4800 / 0x20,
-    OBJPAL_SHOP_SPINARROW = 3,
+// enum bmshop_bgchr {
+//     OBJCHR_SHOP_SPINARROW = 0x4800 / 0x20,
+//     OBJPAL_SHOP_SPINARROW = 3,
 
-    OBJCHR_SHOP_GOLDBOX = 0x4C00 / 0x20,
-    OBJPAL_SHOP_GOLDBOX = 4,
+//     OBJCHR_SHOP_GOLDBOX = 0x4C00 / 0x20,
+//     OBJPAL_SHOP_GOLDBOX = 4,
 
-    BGPAL_SHOP_4 = 4,
-    BGPAL_SHOP_MAINBG = 14,
-};
+//     BGPAL_SHOP_4 = 4,
+//     BGPAL_SHOP_MAINBG = 14,
+// };
 
 enum {
     SHOP_ST_BUY,

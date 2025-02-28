@@ -620,6 +620,7 @@
 // SID_MountainClimber
 // SID_MountainClimberPlus
 // SID_Acrobat
+// SID_PhaseShift
 
 ///////// SHOP SKILLS
 // SID_Deal
