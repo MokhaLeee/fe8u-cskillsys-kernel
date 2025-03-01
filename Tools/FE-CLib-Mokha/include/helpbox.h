@@ -81,8 +81,12 @@ struct HelpBox8A01800Proc {
 struct HelpBoxSt {
     /* 00 */ struct Font font;
 
-/* Vanilla was text[3], the additiontql two lines to [5] are needed for CONFIG_EXTENDED_HELPBOXES */
+/* Vanilla was text[3], the additiontal two lines to [5] are needed for CONFIG_EXTENDED_HELPBOXES */
+#ifdef CONFIG_EXTENDED_HELPBOXES
     /* 16 */ struct Text text[5];
+#else
+    /* 16 */ struct Text text[3];
+#endif
     /* 30 */ u16 oam2_base;
 };
 

@@ -156,6 +156,44 @@ def parse_string_shiftjis_core(data, cur_idx):
             output = "[SetName]"
         elif ctrl == 0x25:
             output = "[ToggleColorInvert]"
+        elif ctrl == 0x26:
+            output = "[Font]"          # Requires Text Engine Rework
+        elif ctrl == 0x27:
+            output = "[TextPalette]"   # Requires Text Engine Rework
+        elif ctrl == 0x28:
+            output = "[ColorGroup]"    # Requires Text Engine Rework
+        elif ctrl == 0x29:
+            output = "[BoxBgPalette]"  # Requires Text Engine Rework
+        elif ctrl == 0x2A:
+            output = "[BoxType]"       # Requires Text Engine Rework
+        elif ctrl == 0x2B:
+            output = "[BoxHeight]"     # Requires Text Engine Rework
+        elif ctrl == 0x2C:
+            output = "[BoopPitch]"     # Requires Text Engine Rework
+        elif ctrl == 0x2D:
+            output = "[PlaySound]"     # Requires Text Engine Rework
+        elif ctrl == 0x2E:
+            output = "[MugLoc]"        # Requires Text Engine Rework
+        elif ctrl == 0x2F:
+            output = "[LoadFaceFancy]" # Requires Text Engine Rework
+        elif ctrl == 0x30:
+            output = "[MFL2]"          # Requires Text Engine Rework
+        elif ctrl == 0x31:
+            output = "[MML2]"          # Requires Text Engine Rework
+        elif ctrl == 0x32:
+            output = "[ML2]"           # Requires Text Engine Rework
+        elif ctrl == 0x33:
+            output = "[MR2]"           # Requires Text Engine Rework
+        elif ctrl == 0x34:
+            output = "[MMR2]"          # Requires Text Engine Rework
+        elif ctrl == 0x35:
+            output = "[MFR2]"          # Requires Text Engine Rework
+        elif ctrl == 0x36:
+            output = "[MFFL2]"         # Requires Text Engine Rework
+        elif ctrl == 0x37:
+            output = "[MFFR2]"         # Requires Text Engine Rework
+        elif ctrl == 0x38:
+            output = "[TextSpeed]"     # Requires Text Engine Rework
         else:
             output = "f[!!ERROR:0x{ctrl:02X}]"
     elif u16_data == 0x4081:

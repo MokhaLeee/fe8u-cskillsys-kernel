@@ -1536,58 +1536,58 @@ u8 Event44_BreakingSacredStone(struct EventEngineProc * proc)
     return EVC_ADVANCE_YIELD;
 }
 
-LYN_REPLACE_CHECK(InitSubtitleHelpText);
-void InitSubtitleHelpText(struct SubtitleHelpProc * proc)
-{
-    const char * iter;
-    int line;
-    /* Originally an int in the decomp, but won't compile unless it's u32 */
-    u32 width;
+// LYN_REPLACE_CHECK(InitSubtitleHelpText);
+// void InitSubtitleHelpText(struct SubtitleHelpProc * proc)
+// {
+//     const char * iter;
+//     int line;
+//     /* Originally an int in the decomp, but won't compile unless it's u32 */
+//     u32 width;
 
-    iter = proc->string;
+//     iter = proc->string;
 
-#ifdef CONFIG_EXTENDED_HELPBOXES
-    InitSpriteTextFont(&proc->font, OBJ_VRAM0 + 0x5800, 0x14);
-#else
-    InitSpriteTextFont(&proc->font, OBJ_VRAM0 + 0x4800, 0x14);
-#endif
-    SetTextFontGlyphs(1);
+// #ifdef CONFIG_EXTENDED_HELPBOXES
+//     InitSpriteTextFont(&proc->font, OBJ_VRAM0 + 0x5800, 0x14);
+// #else
+//     InitSpriteTextFont(&proc->font, OBJ_VRAM0 + 0x4800, 0x14);
+// #endif
+//     SetTextFontGlyphs(1);
 
-    ApplyPalette(gUnknown_0859EF20, 0x14);
+//     ApplyPalette(gUnknown_0859EF20, 0x14);
 
-    for (line = 0; line < 2; line++) {
-        InitSpriteText(proc->text + line);
+//     for (line = 0; line < 2; line++) {
+//         InitSpriteText(proc->text + line);
 
-        SpriteText_DrawBackgroundExt(proc->text + line, 0);
-        Text_SetColor(proc->text + line, 0);
-    }
+//         SpriteText_DrawBackgroundExt(proc->text + line, 0);
+//         Text_SetColor(proc->text + line, 0);
+//     }
 
-    line = 0;
+//     line = 0;
 
-    if (iter != 0) {
-        while (*iter > 1) {
+//     if (iter != 0) {
+//         while (*iter > 1) {
 
-            iter = Text_DrawCharacter(proc->text + line, iter);
+//             iter = Text_DrawCharacter(proc->text + line, iter);
 
-            if (Text_GetCursor(proc->text + line) > 0xE0) {
+//             if (Text_GetCursor(proc->text + line) > 0xE0) {
 
-                iter -= 2;
-                line++;
+//                 iter -= 2;
+//                 line++;
 
-                GetCharTextLen(iter, &width);
+//                 GetCharTextLen(iter, &width);
 
-                Text_SetCursor(proc->text + line, (Text_GetCursor(proc->text) - width) - 0xC0);
-            }
-        }
+//                 Text_SetCursor(proc->text + line, (Text_GetCursor(proc->text) - width) - 0xC0);
+//             }
+//         }
 
-        proc->textCount = ((GetStringTextLen(proc->string) + 16) >> 5) + 1;
-        proc->textNum = proc->textCount - 1;
-    }
+//         proc->textCount = ((GetStringTextLen(proc->string) + 16) >> 5) + 1;
+//         proc->textNum = proc->textCount - 1;
+//     }
 
-    SetTextFont(0);
+//     SetTextFont(0);
 
-    return;
-}
+//     return;
+// }
 
 LYN_REPLACE_CHECK(PrepItemScreen_SetupGfx);
 //! FE8U = 0x08098620
@@ -2017,44 +2017,44 @@ void PrepItemList_InitGfx(struct PrepItemListProc * proc)
     return;
 }
 
-LYN_REPLACE_CHECK(PutSubtitleHelpText);
-void PutSubtitleHelpText(struct SubtitleHelpProc * proc, int y)
-{
-#ifdef CONFIG_EXTENDED_HELPBOXES
-    static u16 lut[] = {
-        0x00, 0x04, 0x08, 0x0C, 0x10, 0x14, 0x18, 0x1C,
-        0x40, 0x44, 0x48, 0x4C, 0x50, 0x54, 0x58, 0x5C,
-    };
+// LYN_REPLACE_CHECK(PutSubtitleHelpText);
+// void PutSubtitleHelpText(struct SubtitleHelpProc * proc, int y)
+// {
+// #ifdef CONFIG_EXTENDED_HELPBOXES
+//     static u16 lut[] = {
+//         0x00, 0x04, 0x08, 0x0C, 0x10, 0x14, 0x18, 0x1C,
+//         0x40, 0x44, 0x48, 0x4C, 0x50, 0x54, 0x58, 0x5C,
+//     };
 
-#else
-    static u16 lut[] = {
-        0x00,
-        0x04, 0x08, 0x0C, 0x10, 0x14, 0x18,
-        0x44, 0x48, 0x4C, 0x50, 0x54, 0x58,
-    };
-#endif
+// #else
+//     static u16 lut[] = {
+//         0x00,
+//         0x04, 0x08, 0x0C, 0x10, 0x14, 0x18,
+//         0x44, 0x48, 0x4C, 0x50, 0x54, 0x58,
+//     };
+// #endif
 
-    int i;
+//     int i;
 
-    for (i = 0; i < 9; i++) {
-        int x = (i * 32) - 32 + proc->textOffset;
-        int index = (proc->textNum + i) % proc->textCount;
+//     for (i = 0; i < 9; i++) {
+//         int x = (i * 32) - 32 + proc->textOffset;
+//         int index = (proc->textNum + i) % proc->textCount;
 
-#ifdef CONFIG_EXTENDED_HELPBOXES
-    /* Delete this when this area is fixed, placeholder so the variables in the if statement don't go unused */
-    if (index + x + lut[index] == 0)
-        return;
-    else
-        return;
-        /* Turning it off for now as the suggested new area 42C0 is already used/corrupted */
-        // PutSprite(2, x, y, gObject_32x16, 0x42C0 + lut[index]);
-#else
-        PutSprite(2, x, y, gObject_32x16, 0x4240 + lut[index]);
-#endif
-    }
+// #ifdef CONFIG_EXTENDED_HELPBOXES
+//     /* Delete this when this area is fixed, placeholder so the variables in the if statement don't go unused */
+//     if (index + x + lut[index] == 0)
+//         return;
+//     else
+//         return;
+//         /* Turning it off for now as the suggested new area 42C0 is already used/corrupted */
+//         // PutSprite(2, x, y, gObject_32x16, 0x42C0 + lut[index]);
+// #else
+//         PutSprite(2, x, y, gObject_32x16, 0x4240 + lut[index]);
+// #endif
+//     }
 
-    return;
-}
+//     return;
+// }
 
 LYN_REPLACE_CHECK(TradeMenu_InitUnitNameDisplay);
 void TradeMenu_InitUnitNameDisplay(struct TradeMenuProc * proc)
