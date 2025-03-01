@@ -102,7 +102,16 @@ void ExecStandardHeal(ProcPtr proc)
 
     BattleInitItemEffectTarget(unit_tar);
 
+/* Don't let the target be killed */
+#if defined(SID_CursedHeal) && (COMMON_SKILL_VALID(SID_CursedHeal))
+    if (SkillTester(unit_act, SID_CursedHeal))
+        SetUnitHp(unit_tar, (GetUnitCurrentHp(unit_tar) - amount) > 0 ? (GetUnitCurrentHp(unit_tar) - amount) : 1);
+    else 
+        AddUnitHp(unit_tar, amount);
+#else 
     AddUnitHp(unit_tar, amount);
+#endif
+
     gBattleHitIterator->hpChange = gBattleTarget.unit.curHP - GetUnitCurrentHp(unit_tar);
     gBattleTarget.unit.curHP = GetUnitCurrentHp(unit_tar);
 

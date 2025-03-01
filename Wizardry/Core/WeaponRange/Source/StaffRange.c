@@ -26,9 +26,16 @@ void TryAddUnitToHealTargetList(struct Unit* unit) {
         return;
     }
 
+#if defined(SID_CursedHeal) && (COMMON_SKILL_VALID(SID_CursedHeal))
+    if (!SkillTester(gSubjectUnit, SID_CursedHeal))
+        if (GetUnitCurrentHp(unit) == GetUnitMaxHp(unit)) {
+            return;
+        }  
+#else 
     if (GetUnitCurrentHp(unit) == GetUnitMaxHp(unit)) {
         return;
     }
+#endif
 
     AddTarget(unit->xPos, unit->yPos, unit->index, 0);
 

@@ -4904,4 +4904,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_CursedHeal) && COMMON_SKILL_VALID(SID_CursedHeal))
+    [SID_CursedHeal] = {
+        .desc = MSG_SKILL_CursedHeal,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

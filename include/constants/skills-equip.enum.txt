@@ -493,7 +493,7 @@ SID_Toxic
 // SID_AbsorbMagic
 // SID_Duel
 // SID_Offhand
-SID_ShedSkin
+// SID_ShedSkin
 
 //////// EFFECTIVENESS SKILLS
 SID_Resourceful
@@ -521,7 +521,7 @@ SID_PridefulWarrior
 // SID_Alacrity
 // SID_Echo
 // SID_Flurry
-SID_RapidFighter
+// SID_RapidFighter
 
 //////// PRE-PHASE SKILLS
 SID_Renewal
@@ -620,13 +620,13 @@ SID_WaterWalkingPlus
 SID_MountainClimber
 SID_MountainClimberPlus
 SID_Acrobat
-SID_PhaseShift
+// SID_PhaseShift
 
 /////// SHOP SKILLS
 SID_Deal
 SID_Bargain
 SID_Secret
-SID_Trader
+// SID_Trader
 
 /////// ARENA SKILLS
 SID_Ludopathy
@@ -685,10 +685,11 @@ SID_Resurrection
 // SID_Wrestler
 // SID_TwinCrests
 // SID_Saint
-//SID_AidRefusal
+// SID_AidRefusal
 // SID_WhiteMage
-SID_MoreForMe
-SID_Mimicry
+// SID_MoreForMe
+// SID_Mimicry
+SID_CursedHeal
 
 /////// COMBAT ARTS
 // SID_COMBAT_Grounder
