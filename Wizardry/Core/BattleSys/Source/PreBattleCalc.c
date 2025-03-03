@@ -310,7 +310,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_BlowDuelist) && (COMMON_SKILL_VALID(SID_BlowDuelist)))
 		case SID_BlowDuelist:
 			if (attacker == &gBattleActor)
-				attacker->battleAvoidRate += SKILL_EFF0(SID_BlowDarting);
+				attacker->battleAvoidRate += SKILL_EFF0(SID_BlowDuelist);
 
 			break;
 #endif
@@ -318,7 +318,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_BlowUncanny) && (COMMON_SKILL_VALID(SID_BlowUncanny)))
 		case SID_BlowUncanny:
 			if (attacker == &gBattleActor)
-				attacker->battleHitRate += SKILL_EFF0(SID_BlowDarting);
+				attacker->battleHitRate += SKILL_EFF0(SID_BlowUncanny);
 
 			break;
 #endif
@@ -326,7 +326,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_BlowKilling) && (COMMON_SKILL_VALID(SID_BlowKilling)))
 		case SID_BlowKilling:
 			if (attacker == &gBattleActor)
-				attacker->battleCritRate += SKILL_EFF0(SID_BlowDarting);
+				attacker->battleCritRate += SKILL_EFF0(SID_BlowKilling);
 
 			break;
 #endif
@@ -369,7 +369,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_StanceFierce) && (COMMON_SKILL_VALID(SID_StanceFierce)))
 		case SID_StanceFierce:
 			if (attacker == &gBattleTarget)
-				attacker->battleAttack += SKILL_EFF0(SID_StanceDarting);
+				attacker->battleAttack += SKILL_EFF0(SID_StanceFierce);
 
 			break;
 #endif
