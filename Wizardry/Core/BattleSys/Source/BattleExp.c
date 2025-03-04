@@ -89,7 +89,37 @@ void BattleApplyMiscActionExpGains(void)
 	gBattleActor.expGain = exp;
 	gBattleActor.unit.exp += exp;
 
+#if CHAX
+	ResetPopupSkillStack();
+#endif
+
 	CheckBattleUnitLevelUp(&gBattleActor);
+}
+
+LYN_REPLACE_CHECK(BattleApplyItemExpGains);
+void BattleApplyItemExpGains(void)
+{
+	if (gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)
+		return;
+
+#if CHAX
+	ResetPopupSkillStack();
+#endif
+
+	if (gBattleActor.weaponAttributes & IA_STAFF) {
+		if (UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE)
+			gBattleActor.wexpMultiplier++;
+
+		gBattleActor.expGain = GetBattleUnitStaffExp(&gBattleActor);
+		gBattleActor.unit.exp += gBattleActor.expGain;
+
+		CheckBattleUnitLevelUp(&gBattleActor);
+	} else if ((gBattleActor.weaponType == ITYPE_12) && (gBattleActor.unit.exp != UNIT_EXP_DISABLED)) {
+		gBattleActor.expGain = 20;
+		gBattleActor.unit.exp += 20;
+
+		CheckBattleUnitLevelUp(&gBattleActor);
+	}
 }
 
 LYN_REPLACE_CHECK(GetBattleUnitStaffExp);
