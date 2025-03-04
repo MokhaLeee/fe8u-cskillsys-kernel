@@ -116,3 +116,11 @@ killing an enemy.[X]
 Shakedown:[NL]
 When initiating battle, steal gold[NL]
 equal to damage dealt.(Luck % activation)[X]
+
+## MSG_SKILL_EndlessVitality_NAME
+E-Vitality[X]
+
+## MSG_SKILL_EndlessVitality_DESC
+Endless Vitality:[NL]
+Unit restores 20% HP after[NL]
+every battle it participates in.[X]

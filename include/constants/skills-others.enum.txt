@@ -261,6 +261,7 @@ SID_Despoil
 SID_GoldDigger
 SID_Glorifier
 SID_Thunderstorm
+SID_EndlessVitality
 
 // Menu skills
 SID_Dance

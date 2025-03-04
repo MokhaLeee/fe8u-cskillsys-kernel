@@ -487,6 +487,7 @@
 | GoldDigger |  Gain 100 gold after killing an enemy. |
 | Glorifier |  If enemy defeated, grants stat+3 until next combat |
 | Thunderstorm |  Call thunder-storm with AOE damage on emey when attacking from distance. |
+| EndlessVitality |  Unit restores 20% HP after every battle it participates in. |
 | Dance |  Art: Unit can use "Dance" command. |
 | LockTouch |  Art: Unit can use "Pick" command. |
 | Summon |  Art: Unit summon a monter on assistance |
