@@ -38,6 +38,7 @@ SID_Leader
 
 // Battle effective
 SID_Resourceful
+SID_WingedShield
 
 // Battle status skills
 SID_Nihil

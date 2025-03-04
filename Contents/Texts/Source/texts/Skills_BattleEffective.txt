@@ -24,3 +24,8 @@ effectiveness multipliers.[X]
 Solid Rock:[NL]
 Halves effective damage[NL]
 against this unit.[X]
+
+## MSG_SKILL_WingedShield
+Winged Shield:[NL]
+Flying weakness is nullified[NL]
+and receive terrain effects.[X]

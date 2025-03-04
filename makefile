@@ -21,6 +21,11 @@ GAMEDATA_DIR := Data
 
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
 
+SKILLS_ENUM_DIR  := include/constants
+SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills-equip.enum.txt
+SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-others.enum.txt
+SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-item.enum.txt
+
 all:
 	@$(MAKE) pre_build	|| exit 1
 	@$(MAKE) chax		|| exit 1
@@ -113,7 +118,13 @@ CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
 CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
 CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 
-post_chax: $(CHAX_DIFF)
+SKILL_INFO_DOC := ./docs/SkillInfo.md
+
+post_chax: $(CHAX_DIFF) $(SKILL_INFO_DOC)
+
+$(SKILL_INFO_DOC): $(SKILLS_ENUM_SRC)
+	@echo "[GEN]	$(SKILL_INFO_DOC)"
+	@python3 $(TOOL_DIR)/scripts/dump_skill_info.py > $(SKILL_INFO_DOC)
 
 $(CHAX_DIFF): $(FE8_CHX)
 	@echo "[SEC]	Lyn-jump detection..."
@@ -142,9 +153,6 @@ ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
-
-	@echo "[GEN]	SkillInfoDoc"
-	@python3 $(TOOL_DIR)/scripts/dump_skill_info.py > ./docs/SkillInfo.md
 endif
 
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
@@ -353,12 +361,7 @@ CLEAN_BUILD += $(FONT_DIR)
 ENUM2H := $(TOOL_DIR)/scripts/enum2h.py
 ENUM2C := $(TOOL_DIR)/scripts/enum2combo.py
 
-SKILLS_ENUM_DIR  := include/constants
 SKILLS_COMBO_DIR := Patches
-
-SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills-equip.enum.txt
-SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-others.enum.txt
-SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-item.enum.txt
 
 SKILLS_ENUM_HEADER := $(SKILLS_ENUM_DIR)/skills.h
 

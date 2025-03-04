@@ -35,6 +35,7 @@
 | LifeAndDeath |  For both unit and enemy, STR/MAG +5, DEF/RES -5. |
 | Leader |  Unit grants leadership +2 |
 | Resourceful |  Double bonus effectiveness multipliers. |
+| WingedShield | Flying weakness is nullified and receive terrain effects. |
 | Nihil |  Negates enemy's combat-related skills. |
 | CritSword |   Crit rate +10%, if a Sword is equipped. |
 | CritAxe |   Crit rate +10%, if an Axe is equipped. |

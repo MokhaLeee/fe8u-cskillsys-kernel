@@ -5,18 +5,26 @@
 #include "class-types.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR bool CheckUnitNullEffective(struct Unit *unit)
+STATIC_DECLAR bool CheckFlierNullEffective(struct Unit *unit)
 {
 	int i;
-	u32 attributes = 0;
+
+	/* Check skill */
+#if (defined(SID_WingedShield) && (COMMON_SKILL_VALID(SID_WingedShield)))
+	if (SkillTester(unit, SID_WingedShield))
+		return true;
+#endif
 
 	/* Check item */
 	for (i = 0; i < UNIT_ITEM_COUNT; ++i)
-		attributes |= GetItemAttributes(unit->items[i]);
+		if (GetItemAttributes(unit->items[i]) & IA_NEGATE_FLYING)
+			return true;
 
-	if (attributes & IA_NEGATE_FLYING)
-		return true;
+	return false;
+}
 
+STATIC_DECLAR bool CheckUnitNullEffective(struct Unit *unit)
+{
 #if (defined(SID_Nullify) && (COMMON_SKILL_VALID(SID_Nullify)))
 	/* Check unit */
 	if (SkillTester(unit, SID_Nullify))
@@ -80,7 +88,7 @@ STATIC_DECLAR bool IsBattleUnitEffectiveAgainst(struct BattleUnit *actor, struct
 				break;
 
 			case COMBART_EFF_FLIER:
-				if (CheckClassFlier(jid_target))
+				if (CheckClassFlier(jid_target) && !CheckFlierNullEffective(&target->unit))
 					return true;
 
 				break;
@@ -134,7 +142,7 @@ bool IsUnitEffectiveAgainst(struct Unit *actor, struct Unit *target)
 
 #if (defined(SID_Skybreaker) && (COMMON_SKILL_VALID(SID_Skybreaker)))
 	if (SkillTester(actor, SID_Skybreaker)) {
-		if (CheckClassFlier(jid_target))
+		if (CheckClassFlier(jid_target) && !CheckFlierNullEffective(target))
 			goto check_null_effective;
 	}
 #endif
