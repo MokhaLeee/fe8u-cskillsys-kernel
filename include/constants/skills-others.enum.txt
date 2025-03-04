@@ -47,6 +47,8 @@ SID_OddFooted
 SID_Slayer
 SID_Skybreaker
 SID_Nullify
+SID_WingedShield
+SID_BeastShield
 SID_Vigilance
 SID_AvoidSword
 SID_Vanity

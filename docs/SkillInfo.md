@@ -35,7 +35,6 @@
 | LifeAndDeath |  For both unit and enemy, STR/MAG +5, DEF/RES -5. |
 | Leader |  Unit grants leadership +2 |
 | Resourceful |  Double bonus effectiveness multipliers. |
-| WingedShield | Flying weakness is nullified and receive terrain effects. |
 | Nihil |  Negates enemy's combat-related skills. |
 | CritSword |   Crit rate +10%, if a Sword is equipped. |
 | CritAxe |   Crit rate +10%, if an Axe is equipped. |
@@ -322,6 +321,8 @@
 | Slayer |  Deal effective damage to monster units. |
 | Skybreaker |  Deal effective damage to flying units. |
 | Nullify |  Unit is protected from all effective attacks. |
+| WingedShield |  Flying weakness is nullified and receive terrain effects. |
+| BeastShield |  Nullifies any bonus damage targeting beast units equipping this skill. |
 | Vigilance |  Gain +20 Avoid. |
 | AvoidSword |   Grants avoid rate +20% if unit equips a Sword. |
 | Vanity |  Gain +2 Damage and +10 Hit when fighting enemy at 2 range. |

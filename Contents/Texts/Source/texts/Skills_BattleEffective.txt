@@ -29,3 +29,8 @@ against this unit.[X]
 Winged Shield:[NL]
 Flying weakness is nullified[NL]
 and receive terrain effects.[X]
+
+## MSG_SKILL_BeastShield
+Beast Shield:[NL]
+Nullifies any bonus damage targeting[NL]
+beast units equipping this skill.[X]
