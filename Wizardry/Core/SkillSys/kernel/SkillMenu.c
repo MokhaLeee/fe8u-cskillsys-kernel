@@ -92,7 +92,7 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 	StartOrphanMenuAdjusted(
 		&sUnitSkillMenuDef,
 		gBmSt.cursorTarget.x - gBmSt.camera.x,
-		1, 22
+		22, 1
 	);
 #else
 	const struct MenuDef *def = &sUnitSkillMenuDef;
@@ -100,7 +100,7 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 
 	rect.w = gpKernelDesigerConfig->skill_sub_menu_width;
 
-	if ((gBmSt.cursorTarget.x - gBmSt.camera.x) < 120)
+	if (item->xTile < 12)
 		rect.x = 1;
 	else
 		rect.x = 22 + 7 - rect.w;
@@ -108,7 +108,7 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 	StartMenuAt(def, rect, NULL);
 #endif
 
-	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6B | MENU_ACT_CLEAR;
+	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
 #endif /* MENU_SKILL_NOT_IN_UPPER */
