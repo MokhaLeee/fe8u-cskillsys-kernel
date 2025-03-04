@@ -161,6 +161,7 @@ SID_DivinePulse
 SID_Dishonorbreaker
 SID_Stubborn
 SID_Shakedown
+SID_SeaWays
 
 // Shop skills
 SID_Deal

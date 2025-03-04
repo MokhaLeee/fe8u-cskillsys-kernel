@@ -420,6 +420,7 @@
 | Dishonorbreaker |  When only 1 unit attacks, he gain +50 avoid but -50 hit. |
 | Stubborn |  If unit has more Losses than enemy, gains +5 str/spd. |
 | Shakedown |  When initiating battle, steal gold equal to damage dealt.(Luck % activation) |
+| SeaWays |  Can walk On Water |
 | Deal |  Reduce cost of items bought by this unit by 20%. |
 | Bargain |  Reduce cost of items bought by this unit by 50%. |
 | DevilsPact |  Inflict the Devil effect upon the enemy unit. |

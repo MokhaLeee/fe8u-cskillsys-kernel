@@ -57,3 +57,7 @@ D-Report[X]
 Detailed Report:[NL]
 if HP>50%, ranged foes cannot[NL]
 move throgh 2x2 spaces adjacent.[X]
+
+## MSG_SKILL_SeaWays
+SEAWAYS:[NL]
+Can walk On Water[X]
