@@ -44,7 +44,7 @@ bool CheckSkillActivate(struct Unit *unit, int sid, int rate)
 
 bool CheckActiveUnitSkillActivate(int sid, int rate)
 {
-	return CheckSkillActivateExt(gActiveUnit, sid, rate, _SkillListTester);
+	return CheckSkillActivateExt(gActiveUnit, sid, rate, SkillListTester);
 }
 
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate)
