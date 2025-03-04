@@ -13,10 +13,20 @@ STATIC_DECLAR const struct ClassData *GetJInfoForTerrainBonus(struct Unit *unit)
 	return unit->pClassData;
 }
 
+STATIC_DECLAR const struct ClassData *GetBattleJInfoForTerrainBonus(struct BattleUnit *bu)
+{
+#if (defined(SID_WingedShield) && (COMMON_SKILL_VALID(SID_WingedShield)))
+	if (CheckClassFlier(UNIT_CLASS_ID(&bu->unit)) && BattleFastSkillTester(bu, SID_WingedShield))
+		return GetClassData(gpKernelClassList_Cavalry[0]);
+#endif
+
+	return bu->unit.pClassData;
+}
+
 LYN_REPLACE_CHECK(SetBattleUnitTerrainBonuses);
 void SetBattleUnitTerrainBonuses(struct BattleUnit *bu, int terrain)
 {
-	const struct ClassData *jinfo = GetJInfoForTerrainBonus(&bu->unit);
+	const struct ClassData *jinfo = GetBattleJInfoForTerrainBonus(bu);
 
 	bu->terrainId = terrain;
 
