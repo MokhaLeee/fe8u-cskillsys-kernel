@@ -416,6 +416,7 @@
 | Technician |  If the user is holding an E-ranked weapon, boost weapon damage by 50%. |
 | KillingMachine |   Double this unit's total crit rate. |
 | DivinePulse |  Turn a missed attack into a hit (30% + Luck % activation). |
+| Dishonorbreaker |  When only 1 unit attacks, he gain +50 avoid but -50 hit. |
 | Deal |  Reduce cost of items bought by this unit by 20%. |
 | Bargain |  Reduce cost of items bought by this unit by 50%. |
 | DevilsPact |  Inflict the Devil effect upon the enemy unit. |

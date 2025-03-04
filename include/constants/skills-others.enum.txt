@@ -157,6 +157,7 @@ SID_BattleVeteran
 SID_Technician
 SID_KillingMachine
 SID_DivinePulse
+SID_Dishonorbreaker
 
 // Shop skills
 SID_Deal

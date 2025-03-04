@@ -980,3 +980,8 @@ by foe's 20% max HP in each round[X]
 ## MSG_SKILL_Witch
 Witch:[NL]
 B.Magic might +5[X]
+
+## MSG_SKILL_Dishonorbreaker
+Dishonorbreaker:[NL]
+When only 1 unit attacks,[NL]
+he gain +50 avoid but -50 hit.[X]

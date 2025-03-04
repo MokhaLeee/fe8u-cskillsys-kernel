@@ -1305,6 +1305,15 @@ L_FairyTaleFolk_done:
 			break;
 #endif
 
+#if (defined(SID_Dishonorbreaker) && (COMMON_SKILL_VALID(SID_Dishonorbreaker)))
+		case SID_Dishonorbreaker:
+			if (!defender->canCounter) {
+				attacker->battleHitRate -= 50;
+				attacker->battleAvoidRate += 50;
+			}
+			break;
+#endif
+
 		case MAX_SKILL_NUM:
 			Fatal("ENOSUPP");
 			break;
