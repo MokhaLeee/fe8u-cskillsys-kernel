@@ -135,8 +135,11 @@ struct SkillList *GetUnitSkillList(struct Unit *unit)
 	else if (unit == &gBattleTarget.unit)
 		list = SkillListBattleTarget;
 
-	if (!JudgeUnitList(unit, &list->header))
+	if (!JudgeUnitList(unit, &list->header)) {
+		Errorf("Ops! regenerate skilllist: uid=%02X, pid=%02X", unit->index & 0xFF, UNIT_CHAR_ID(unit));
+
 		GenerateSkillListExt(unit, list);
+	}
 
 	return list;
 }
