@@ -2,6 +2,7 @@
 #define POST_ACTION_HOOK_H
 
 #include "source/PostActionHook.lyn.event"
+#include "source/usr-func.lyn.event"
 
 // include "data.event"
 

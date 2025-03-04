@@ -159,6 +159,7 @@ SID_KillingMachine
 SID_DivinePulse
 SID_Dishonorbreaker
 SID_Stubborn
+SID_Shakedown
 
 // Shop skills
 SID_Deal

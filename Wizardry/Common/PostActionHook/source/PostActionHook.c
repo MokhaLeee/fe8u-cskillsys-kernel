@@ -2,8 +2,7 @@
 #include "combat-art.h"
 #include "skill-system.h"
 #include "battle-system.h"
-
-extern HookProcFunc_t const *const gpPostActionFuncs;
+#include "post-action.h"
 
 void PostActionHook(ProcPtr proc)
 {
@@ -44,13 +43,3 @@ const struct ProcCmd ProcScr_PostActionHookCpPerform[] = {
 	PROC_JUMP((const struct ProcCmd *)0x085A807C),
 	PROC_END
 };
-
-extern bool (*gpExternalPostActionHook)(ProcPtr proc);
-
-bool CallExternalPostActionHook(ProcPtr proc)
-{
-	if (gpExternalPostActionHook)
-		return gpExternalPostActionHook(proc);
-
-	return false;
-}

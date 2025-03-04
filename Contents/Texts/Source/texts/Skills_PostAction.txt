@@ -111,3 +111,8 @@ G-Digger[X]
 Gold Digger:[NL]
 Gain 100 gold after[NL]
 killing an enemy.[X]
+
+## MSG_SKILL_Shakedown
+Shakedown:[NL]
+When initiating battle, steal gold[NL]
+equal to damage dealt.(Luck % activation)[X]
