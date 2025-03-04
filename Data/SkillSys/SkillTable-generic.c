@@ -66,12 +66,6 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
 		[10] = SID_RangeBonusBMag1,
 #endif
 	}},
-
-	[CHARACTER_RIEV] = {{
-#if (defined(SID_Thunderstorm) && COMMON_SKILL_VALID(SID_Thunderstorm))
-		[0] = SID_Thunderstorm,
-#endif
-	}},
 };
 
 const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {

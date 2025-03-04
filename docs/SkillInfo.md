@@ -61,16 +61,9 @@
 | WonderGuard |  Cannot be damaged by weapons of the same weapon type as the user's. |
 | Merciless |   Guaranteed critical hit against poisoned foes. |
 | CriticalPierce |   Ignore enemy's dodge rate. |
-| KillingMachine |   Double this unit's total crit rate. |
 | HeavyStrikes |  Add weapon weight to critical chance. |
-| Technician |  If the user is holding an E-ranked weapon, boost weapon damage by 50%. |
 | CatchingUp |  If foe doubles unit, increase their attack by the amount they're above the doubling threshold. |
-| BattleVeteran |  Gain +1 damage and +5% Hit per 10 levels unit has. |
-| ElbowRoom |  +3 damage dealt when on open terrain. |
-| ChaosStyle |  +3 AS when using a physical weapon against a magical foe, or vice versa. |
 | ArcaneBlade |  When initiating battle at 1 range: Add 3+(MAG/2) to Hit and Crit |
-| QuickDraw |  +4 Damage when initiating battle. |
-| KeenFighter |  Unit takes 50% damage if the opponent can double. |
 | Hawkeye |  User will always hit the enemy. |
 | MagicEye |  Unit will not lose hit range when attacking from distance |
 | DragonSkin |  Halve damage taken. |
@@ -144,7 +137,6 @@
 | Vengeance |  Add damage taken to attack. (Skill % activation). |
 | Deadeye |  Doubles hit rate and inflict sleep. (Skill % activation). |
 | AxeFaith |  When attacking with an Axe, hit + attack%. (Attack % activation). |
-| DivinePulse |  Turn a missed attack into a hit (30% + Luck % activation). |
 | BlowDarting |  If unit initiates combat, grants +6 AS during combat. |
 | BlowDeath |  If unit initiates combat, grants +6 STR during combat. |
 | BlowArmored |  If unit initiates combat, grants +6 DEF during combat. |
@@ -179,7 +171,6 @@
 | AlertStancePlus |  If unit takes no action except Wait, grants Avoid +30%. |
 | SavageBlow |  After attacking, enemies within 2 tiles take 20% damage. |
 | BreathOfLife |  After attacking, allies in 2 tiles heal for 20% their max HP. |
-| Thunderstorm |  Call thunder-storm with AOE damage on emey when attacking from distance. |
 | PosReturn |  If the enemy is defeated, you can return to your starting position. |
 | Lunge |  Swap positions with the enemy after attacking them. |
 | PowerStaff |  Gain another action after using a staff. |
@@ -415,6 +406,14 @@
 | BloodReaver |  Consumes 5 HP to boost damage by foe's 20% max HP in each round |
 | Saint |  Unit may not cost HP when using B/W.Magic. |
 | Witch |  B.Magic might +5 |
+| KeenFighter |  Unit takes 50% damage if the opponent can double. |
+| QuickDraw |  +4 Damage when initiating battle. |
+| ChaosStyle |  +3 AS when using a physical weapon against a magical foe, or vice versa. |
+| ElbowRoom |  +3 damage dealt when on open terrain. |
+| BattleVeteran |  Gain +1 damage and +5% Hit per 10 levels unit has. |
+| Technician |  If the user is holding an E-ranked weapon, boost weapon damage by 50%. |
+| KillingMachine |   Double this unit's total crit rate. |
+| DivinePulse |  Turn a missed attack into a hit (30% + Luck % activation). |
 | Deal |  Reduce cost of items bought by this unit by 20%. |
 | Bargain |  Reduce cost of items bought by this unit by 50%. |
 | DevilsPact |  Inflict the Devil effect upon the enemy unit. |
@@ -482,6 +481,7 @@
 | Despoil |  Gain a red gem after killing an enemy unit. (Skill % activation) |
 | GoldDigger |  Gain 100 gold after killing an enemy. |
 | Glorifier |  If enemy defeated, grants stat+3 until next combat |
+| Thunderstorm |  Call thunder-storm with AOE damage on emey when attacking from distance. |
 | Dance |  Art: Unit can use "Dance" command. |
 | LockTouch |  Art: Unit can use "Pick" command. |
 | Summon |  Art: Unit summon a monter on assistance |
