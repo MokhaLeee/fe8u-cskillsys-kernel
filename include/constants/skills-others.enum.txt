@@ -158,6 +158,7 @@ SID_Technician
 SID_KillingMachine
 SID_DivinePulse
 SID_Dishonorbreaker
+SID_Stubborn
 
 // Shop skills
 SID_Deal

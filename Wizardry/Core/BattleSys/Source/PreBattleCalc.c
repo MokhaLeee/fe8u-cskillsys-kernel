@@ -1314,6 +1314,16 @@ L_FairyTaleFolk_done:
 			break;
 #endif
 
+#if (defined(SID_Stubborn) && (COMMON_SKILL_VALID(SID_Stubborn)))
+		case SID_Stubborn:
+			if ((BattleUnitOriginalStatus(attacker)->atk + BattleUnitOriginalStatus(attacker)->def) <
+				(BattleUnitOriginalStatus(defender)->atk + BattleUnitOriginalStatus(defender)->def)) {
+					attacker->battleAttack += SKILL_EFF0(SID_Stubborn);
+					attacker->battleSpeed  += SKILL_EFF1(SID_Stubborn);
+				}
+			break;
+#endif
+
 		case MAX_SKILL_NUM:
 			Fatal("ENOSUPP");
 			break;

@@ -985,3 +985,8 @@ B.Magic might +5[X]
 Dishonorbreaker:[NL]
 When only 1 unit attacks,[NL]
 he gain +50 avoid but -50 hit.[X]
+
+## MSG_SKILL_Stubborn
+Stubborn:[NL]
+If unit has more Losses[NL]
+than enemy, gains +5 str/spd.[X]

@@ -1134,4 +1134,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_COMBAT_VitalReckoning) && COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning))
 	[SID_COMBAT_VitalReckoning] = {{ 80, 100 }},
 #endif
+
+#if (defined(SID_Stubborn) && COMMON_SKILL_VALID(SID_Stubborn))
+	[SID_Stubborn] = {{ 5, 5 }},
+#endif
 };
