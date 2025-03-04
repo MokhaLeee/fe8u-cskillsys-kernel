@@ -73,8 +73,8 @@ void HbPopulate_SSStatus(struct HelpBoxProc *proc)
 	proc->mid = gpDebuffInfos[index].desc;
 }
 
-LYN_REPLACE_CHECK(MMB_DrawStatusText);
-void MMB_DrawStatusText(s16 *buffer, struct Unit *unit)
+LYN_REPLACE_CHECK(PutUnitMapUiStatus);
+void PutUnitMapUiStatus(u16 *buffer, struct Unit *unit)
 {
 	int tileIdx = 0x16F;
 	const u8 *img;
@@ -93,6 +93,6 @@ void MMB_DrawStatusText(s16 *buffer, struct Unit *unit)
 		buffer[3] = tileIdx++;
 		buffer[4] = tileIdx++;
 		buffer[5] = 0;
-		buffer[6] = GetUnitStatusDuration(unit) + 0x1128;
+		buffer[6] = TILEREF(0x128 + GetUnitStatusDuration(unit), 1);
 	}
 }
