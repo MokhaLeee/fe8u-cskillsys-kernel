@@ -118,6 +118,11 @@
 #define CONFIG_INSTALL_KERNEL_SHIELD
 
 /**
+ * Unit menu skill item displayed in upper menu or standalone sub-menu.
+ */
+#define CONFIG_MENU_SKILL_NOT_IN_UPPER
+
+/**
  * Levelup mode
  * 0: vanilla
  * 1: uncontrollable

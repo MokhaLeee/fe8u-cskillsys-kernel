@@ -1,3 +1,9 @@
+## MSG_MenuSkill_UM_NAME
+ Skills[X]
+
+## MSG_MenuSkill_UM_DESC
+ Unit skill effects.[.][X]
+
 ## MSG_MenuSkill_CommonFail
 This skill cannot be used for now![X]
 
@@ -31,13 +37,13 @@ Heal Focus:[NL]
 Art: Unit recovers 50% HP.[X]
 
 ## MSG_MenuSkill_HealingFocusName
- Heal-F[X]
+ Heal Focus[X]
 
 ## MSG_MenuSkill_HealingFocus_FRtext
 Unit has already full on HP![X]
 
 ## MSG_SkillEffect_Teleportation
- Teleport[X]
+ Teleportation[X]
 
 ## MSG_MenuSkill__Teleportation_Rtext
 Randomly teleport to a place where[NL]
@@ -49,7 +55,7 @@ Art: Consumes 20 HP to[NL]
 seal an area[X]
 
 ## MSG_MenuSkill_LightRuneName
- Light-R[X]
+ Light Rune[X]
 
 ## MSG_SKILL_Mine
 Mine:[NL]

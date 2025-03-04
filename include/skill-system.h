@@ -179,6 +179,11 @@ extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
 extern struct MenuItemDef const *const gpSkillMenuInfos;
 #define GetSkillMenuInfo(sid) (&gpSkillMenuInfos[sid])
 
+#ifdef CONFIG_MENU_SKILL_NOT_IN_UPPER
+u8 UpperMenuSkill_Usability(const struct MenuItemDef *self, int number);
+u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+#endif /* MENU_SKILL_NOT_IN_UPPER */
+
 u8 MenuSkills_OnHelpBox(struct MenuProc *menu, struct MenuItemProc *item);
 u8 MenuSkills_Usability(const struct MenuItemDef *self, int number);
 int MenuSkills_OnDraw(struct MenuProc *menu, struct MenuItemProc *item);

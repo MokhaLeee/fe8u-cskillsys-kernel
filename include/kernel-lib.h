@@ -32,6 +32,8 @@ struct KernelDesigerConfig {
 	u8 shield_en, shield_ext_equip_config_en;
 
 	u8 auto_narrow_font;
+
+	u8 skill_sub_menu_width;
 };
 
 struct KernelBattleDesignerConfig {
