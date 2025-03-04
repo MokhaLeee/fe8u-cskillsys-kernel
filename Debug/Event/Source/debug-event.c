@@ -390,7 +390,7 @@ static void modify_unit_status(void)
 
 	unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
 	if (unit) {
-#if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
+#if defined(SID_Fury) && (EQUIPE_SKILL_VALID(SID_Fury))
 		UnitAddItem(unit, (SID_Fury << 8) | CONFIG_ITEM_INDEX_SKILL_SCROLL);
 #endif
 
@@ -449,84 +449,84 @@ static const EventScr EventScr_Beginning[] = {
 	LOAD1(0x1, UnitDef_Enemy1)
 	ENUN
 
-#if defined(SID_Obstruct) && (COMMON_SKILL_VALID(SID_Obstruct))
+#if defined(SID_Obstruct) && (EQUIPE_SKILL_VALID(SID_Obstruct))
 	Evt_AddSkill(SID_Obstruct, CHARACTER_SAAR)
 #endif
 
-#if defined(SID_Nihil) && (COMMON_SKILL_VALID(SID_Nihil))
+#if defined(SID_Nihil) && (EQUIPE_SKILL_VALID(SID_Nihil))
 	Evt_AddSkill(SID_Nihil, CHARACTER_SAAR)
 #endif
 
-#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
+#if defined(SID_Teleportation) && (EQUIPE_SKILL_VALID(SID_Teleportation))
 	Evt_AddSkill(SID_Teleportation, CHARACTER_BAZBA)
 	Evt_AddSkill(SID_Teleportation, CHARACTER_NOVALA)
 #endif
 
-#if defined(SID_Aerobatics) && (COMMON_SKILL_VALID(SID_Aerobatics))
+#if defined(SID_Aerobatics) && (EQUIPE_SKILL_VALID(SID_Aerobatics))
 	Evt_AddSkill(SID_Aerobatics, CHARACTER_MYRRH)
 #endif
 
-#if defined(SID_FlierGuidance) && (COMMON_SKILL_VALID(SID_FlierGuidance))
+#if defined(SID_FlierGuidance) && (EQUIPE_SKILL_VALID(SID_FlierGuidance))
 	Evt_AddSkill(SID_FlierGuidance, CHARACTER_TANA)
 #endif
 
-#if defined(SID_FlierGuidance) && (COMMON_SKILL_VALID(SID_FlierGuidance))
+#if defined(SID_FlierGuidance) && (EQUIPE_SKILL_VALID(SID_FlierGuidance))
 	Evt_AddSkill(SID_FlierGuidance, CHARACTER_VANESSA)
 #endif
 
-#if defined(SID_HpBonus) && (COMMON_SKILL_VALID(SID_HpBonus))
+#if defined(SID_HpBonus) && (EQUIPE_SKILL_VALID(SID_HpBonus))
 	Evt_AddSkill(SID_HpBonus, CHARACTER_EPHRAIM)
 #endif
 
-#if defined(SID_Pass) && (COMMON_SKILL_VALID(SID_Pass))
+#if defined(SID_Pass) && (EQUIPE_SKILL_VALID(SID_Pass))
 	Evt_AddSkill(SID_Pass, CHARACTER_EPHRAIM)
 #endif
 
-#if defined(SID_Teleportation) && (COMMON_SKILL_VALID(SID_Teleportation))
+#if defined(SID_Teleportation) && (EQUIPE_SKILL_VALID(SID_Teleportation))
 	Evt_AddSkill(SID_Teleportation, CHARACTER_EPHRAIM)
 #endif
 
-#if defined(SID_MagicEye) && (COMMON_SKILL_VALID(SID_MagicEye))
+#if defined(SID_MagicEye) && (EQUIPE_SKILL_VALID(SID_MagicEye))
 	Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
 #endif
 
-#if defined(SID_MovHone) && (COMMON_SKILL_VALID(SID_MovHone))
+#if defined(SID_MovHone) && (EQUIPE_SKILL_VALID(SID_MovHone))
 	Evt_AddSkill(SID_MovHone, CHARACTER_SALEH)
 #endif
 
-#if defined(SID_HealingFocus) && (COMMON_SKILL_VALID(SID_HealingFocus))
+#if defined(SID_HealingFocus) && (EQUIPE_SKILL_VALID(SID_HealingFocus))
 	Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
 #endif
 
-#if defined(SID_ChillPow) && (COMMON_SKILL_VALID(SID_ChillPow))
+#if defined(SID_ChillPow) && (EQUIPE_SKILL_VALID(SID_ChillPow))
 	Evt_AddSkill(SID_ChillPow, CHARACTER_TANA)
 #endif
 
-#if defined(SID_BloodSurge) && (COMMON_SKILL_VALID(SID_BloodSurge))
+#if defined(SID_BloodSurge) && (EQUIPE_SKILL_VALID(SID_BloodSurge))
 	Evt_AddSkill(SID_BloodSurge, CHARACTER_TANA)
 #endif
 
-#if defined(SID_ChillSpd) && (COMMON_SKILL_VALID(SID_ChillSpd))
+#if defined(SID_ChillSpd) && (EQUIPE_SKILL_VALID(SID_ChillSpd))
 	Evt_AddSkill(SID_ChillSpd, CHARACTER_VANESSA)
 #endif
 
-#if defined(SID_RightfulArch) && (COMMON_SKILL_VALID(SID_RightfulArch))
+#if defined(SID_RightfulArch) && (EQUIPE_SKILL_VALID(SID_RightfulArch))
 	Evt_AddSkill(SID_RightfulArch, CHARACTER_VANESSA)
 #endif
 
-#if defined(SID_Sol) && (COMMON_SKILL_VALID(SID_Sol))
+#if defined(SID_Sol) && (EQUIPE_SKILL_VALID(SID_Sol))
 	Evt_AddSkill(SID_Sol, CHARACTER_VANESSA)
 #endif
 
-#if defined(SID_Aptitude) && (COMMON_SKILL_VALID(SID_Aptitude))
+#if defined(SID_Aptitude) && (EQUIPE_SKILL_VALID(SID_Aptitude))
 	Evt_AddSkill(SID_Aptitude, CHARACTER_VANESSA)
 #endif
 
-#if defined(SID_WingedShield) && (COMMON_SKILL_VALID(SID_WingedShield))
+#if defined(SID_WingedShield) && (EQUIPE_SKILL_VALID(SID_WingedShield))
 	Evt_AddSkill(SID_WingedShield, CHARACTER_VANESSA)
 #endif
 
-#if defined(SID_Fury) && (COMMON_SKILL_VALID(SID_Fury))
+#if defined(SID_Fury) && (EQUIPE_SKILL_VALID(SID_Fury))
 	/* In debug mode, unit may automatically learn all skills */
 	Evt_RemoveSkill(SID_Fury, CHARACTER_EPHRAIM)
 #endif
