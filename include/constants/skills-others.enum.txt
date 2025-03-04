@@ -147,6 +147,14 @@ SID_WeaponHeal
 SID_BloodReaver
 SID_Saint
 SID_Witch
+SID_KeenFighter
+SID_QuickDraw
+SID_ChaosStyle
+SID_ElbowRoom
+SID_BattleVeteran
+SID_Technician
+SID_KillingMachine
+SID_DivinePulse
 
 // Shop skills
 SID_Deal
@@ -247,6 +255,7 @@ SID_Clearance
 SID_Despoil
 SID_GoldDigger
 SID_Glorifier
+SID_Thunderstorm
 
 // Menu skills
 SID_Dance

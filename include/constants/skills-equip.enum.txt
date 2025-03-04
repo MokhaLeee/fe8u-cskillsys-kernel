@@ -66,16 +66,9 @@ SID_Frenzy
 SID_WonderGuard
 SID_Merciless
 SID_CriticalPierce
-SID_KillingMachine
 SID_HeavyStrikes
-SID_Technician
 SID_CatchingUp
-SID_BattleVeteran
-SID_ElbowRoom
-SID_ChaosStyle
 SID_ArcaneBlade
-SID_QuickDraw
-SID_KeenFighter
 SID_Hawkeye
 SID_MagicEye
 SID_DragonSkin
@@ -155,7 +148,6 @@ SID_Glacies
 SID_Vengeance
 SID_Deadeye
 SID_AxeFaith
-SID_DivinePulse
 
 // Blow skills
 SID_BlowDarting
@@ -199,7 +191,6 @@ SID_AlertStance
 SID_AlertStancePlus
 SID_SavageBlow
 SID_BreathOfLife
-SID_Thunderstorm
 SID_PosReturn
 SID_Lunge
 SID_PowerStaff
