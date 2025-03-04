@@ -5,8 +5,11 @@
 
 STATIC_DECLAR const struct ClassData *GetJInfoForTerrainBonus(struct Unit *unit)
 {
+	/**
+	 * As it is just used for gActiveUnit, so here we can use SkillListTester to replace SkillTester
+	 */
 #if (defined(SID_WingedShield) && (COMMON_SKILL_VALID(SID_WingedShield)))
-	if (CheckClassFlier(UNIT_CLASS_ID(unit)) && SkillTester(unit, SID_WingedShield))
+	if (CheckClassFlier(UNIT_CLASS_ID(unit)) && SkillListTester(unit, SID_WingedShield))
 		return GetClassData(gpKernelClassList_Cavalry[0]);
 #endif
 
