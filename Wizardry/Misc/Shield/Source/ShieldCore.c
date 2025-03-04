@@ -11,14 +11,16 @@
 extern struct {
 	struct UnitListHeader header;
 	const struct ShieldInfo *sinfo;
-} sShileldInfoCache;
+} sShileldInfoCache[4];
 
-static bool check_config_en(void)
+extern u8 sShileldInfoNext;
+
+STATIC_DECLAR bool check_config_en(void)
 {
 	return gpKernelDesigerConfig->shield_en;
 }
 
-NOINLINE static bool get_unit_item_slot(struct Unit *unit, u16 item)
+NOINLINE STATIC_DECLAR bool get_unit_item_slot(struct Unit *unit, u16 item)
 {
 	int i;
 
@@ -29,7 +31,7 @@ NOINLINE static bool get_unit_item_slot(struct Unit *unit, u16 item)
 	return -1;
 }
 
-NOINLINE static void consume_unit_item(struct Unit *unit, u16 item)
+NOINLINE STATIC_DECLAR void consume_unit_item(struct Unit *unit, u16 item)
 {
 	int slot = get_unit_item_slot(unit, item);
 
@@ -37,20 +39,34 @@ NOINLINE static void consume_unit_item(struct Unit *unit, u16 item)
 		unit->items[slot] = GetItemAfterUse(unit->items[slot]);
 }
 
-static void WriteShileInfoCache(struct Unit *unit, const struct ShieldInfo *sinfo)
+STATIC_DECLAR void WriteShileInfoCache(struct Unit *unit, const struct ShieldInfo *sinfo)
 {
-	WriteUnitList(unit, &sShileldInfoCache.header);
-	sShileldInfoCache.sinfo = sinfo;
+	WriteUnitList(unit, &sShileldInfoCache[sShileldInfoNext].header);
+	sShileldInfoCache[sShileldInfoNext].sinfo = sinfo;
+
+	sShileldInfoNext = (sShileldInfoNext + 1) & 3;
 }
 
-static void ResetShieldInfo(void)
+STATIC_DECLAR const struct ShieldInfo *GetShieldInfoFromCache(struct Unit *unit)
+{
+	int i;
+
+	for (i = 0; i < 4; i++)
+		if (JudgeUnitList(unit, &sShileldInfoCache[i].header))
+			return sShileldInfoCache[i].sinfo;
+
+	return NULL;
+}
+
+STATIC_DECLAR void ResetShieldInfo(void)
 {
 	memset(&sShileldInfoCache, 0, sizeof(sShileldInfoCache));
 
+	sShileldInfoNext = 0;
 	gpActorShileInfo = gpTargetShileInfo = NULL;
 }
 
-NOINLINE static const struct ShieldInfo *GetExtUnitShield(struct Unit *unit)
+NOINLINE STATIC_DECLAR const struct ShieldInfo *GetExtUnitShield(struct Unit *unit)
 {
 	int slot;
 	u8 pid = UNIT_CHAR_ID(unit);
@@ -78,7 +94,7 @@ NOINLINE static const struct ShieldInfo *GetExtUnitShield(struct Unit *unit)
 	return NULL;
 }
 
-NOINLINE static const struct ShieldInfo *GetUnitShield(struct Unit *unit)
+NOINLINE STATIC_DECLAR const struct ShieldInfo *GetUnitShield(struct Unit *unit)
 {
 	int i;
 	const struct ShieldInfo *sinfo;
@@ -86,8 +102,9 @@ NOINLINE static const struct ShieldInfo *GetUnitShield(struct Unit *unit)
 	if (!check_config_en())
 		return NULL;
 
-	if (JudgeUnitList(unit, &sShileldInfoCache.header))
-		return sShileldInfoCache.sinfo;
+	sinfo = GetShieldInfoFromCache(unit);
+	if (sinfo)
+		return sinfo;
 
 	if (gpKernelDesigerConfig->shield_ext_equip_config_en) {
 		sinfo = GetExtUnitShield(unit);
@@ -101,10 +118,11 @@ NOINLINE static const struct ShieldInfo *GetUnitShield(struct Unit *unit)
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
 		int item = unit->items[i];
 		const struct ShieldItem *sitem = &gpShieldItemTable[ITEM_INDEX(item)];
-		const struct ShieldInfo *sinfo = &sitem->info;
 
 		if (!sitem->en)
 			continue;
+
+		sinfo = &sitem->info;
 
 		// This is a bug on iinfo from designers
 		if (sinfo->iid != ITEM_INDEX(item)) {
@@ -119,7 +137,7 @@ NOINLINE static const struct ShieldInfo *GetUnitShield(struct Unit *unit)
 	return NULL;
 }
 
-static const struct ShieldInfo *GetBattleUnitShield(struct BattleUnit *bu)
+STATIC_DECLAR const struct ShieldInfo *GetBattleUnitShield(struct BattleUnit *bu)
 {
 	Assert(bu == &gBattleActor || bu == &gBattleTarget);
 
@@ -228,4 +246,160 @@ void DrawItemPage_ShieldEquipLine(void)
 			gUiTmScratchC + TILEMAP_INDEX(1, 2 + line * 2),
 			gpTSA_ItemEquipLine, TILEREF(0x40, STATSCREEN_BGPAL_3));
 	}
+}
+
+/**
+ * Status getter
+ */
+int PowGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_POW];
+
+	return status;
+}
+
+int MagGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_MAG];
+
+	return status;
+}
+
+int SklGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_SKL];
+
+	return status;
+}
+
+int SpdGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_SPD];
+
+	return status;
+}
+
+int LckGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_LCK];
+
+	return status;
+}
+
+int DefGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_DEF];
+
+	return status;
+}
+
+int ResGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_RES];
+
+	return status;
+}
+
+int MovGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_status_bonus[UNIT_STATUS_MOV];
+
+	return status;
+}
+
+/**
+ * Growth getter
+ */
+int PowGrowthGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_growth_bonus[UNIT_STATUS_POW];
+
+	return status;
+}
+
+int MagGrowthGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_growth_bonus[UNIT_STATUS_MAG];
+
+	return status;
+}
+
+int SklGrowthGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_growth_bonus[UNIT_STATUS_SKL];
+
+	return status;
+}
+
+int SpdGrowthGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_growth_bonus[UNIT_STATUS_SPD];
+
+	return status;
+}
+
+int LckGrowthGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_growth_bonus[UNIT_STATUS_LCK];
+
+	return status;
+}
+
+int DefGrowthGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_growth_bonus[UNIT_STATUS_DEF];
+
+	return status;
+}
+
+int ResGrowthGetterShield(int status, struct Unit *unit)
+{
+	const struct ShieldInfo *sinfo = GetUnitShield(unit);
+
+	if (sinfo)
+		status += sinfo->unit_growth_bonus[UNIT_STATUS_RES];
+
+	return status;
 }

@@ -7,8 +7,10 @@
 // #include "data.event"
 
 PUSH
+#ifndef CONFIG_MENU_SKILL_NOT_IN_UPPER
     ORG pr_UnitActionMenuDef + 0x20
         POIN UnitActionMenu_OnHelpBoxRe
+#endif /* MENU_SKILL_NOT_IN_UPPER */
 POP
 
 #endif // UNIT_MENU

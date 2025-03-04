@@ -2,6 +2,7 @@
 #include "lvup.h"
 #include "skill-system.h"
 #include "strmag.h"
+#include "shield.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit *unit)
@@ -32,6 +33,7 @@ int GetUnitPowGrowthBonus(int status, struct Unit *unit)
 {
 	status = GetUnitCommonGrowthBonus(status, unit);
 	status = GetUnitPowGrowthJobBonus(status, unit);
+	status = PowGrowthGetterShield(status, unit);
 	return status;
 }
 
@@ -39,6 +41,7 @@ int GetUnitMagGrowthBonus(int status, struct Unit *unit)
 {
 	status = GetUnitCommonGrowthBonus(status, unit);
 	status = GetUnitMagGrowthJobBonus(status, unit);
+	status = MagGrowthGetterShield(status, unit);
 	return status;
 }
 
@@ -46,6 +49,7 @@ int GetUnitSklGrowthBonus(int status, struct Unit *unit)
 {
 	status = GetUnitCommonGrowthBonus(status, unit);
 	status = GetUnitSklGrowthJobBonus(status, unit);
+	status = SklGrowthGetterShield(status, unit);
 	return status;
 }
 
@@ -53,6 +57,7 @@ int GetUnitSpdGrowthBonus(int status, struct Unit *unit)
 {
 	status = GetUnitCommonGrowthBonus(status, unit);
 	status = GetUnitSpdGrowthJobBonus(status, unit);
+	status = SpdGrowthGetterShield(status, unit);
 	return status;
 }
 
@@ -60,6 +65,7 @@ int GetUnitLckGrowthBonus(int status, struct Unit *unit)
 {
 	status = GetUnitCommonGrowthBonus(status, unit);
 	status = GetUnitLckGrowthJobBonus(status, unit);
+	status = LckGrowthGetterShield(status, unit);
 	return status;
 }
 
@@ -67,6 +73,7 @@ int GetUnitDefGrowthBonus(int status, struct Unit *unit)
 {
 	status = GetUnitCommonGrowthBonus(status, unit);
 	status = GetUnitDefGrowthJobBonus(status, unit);
+	status = DefGrowthGetterShield(status, unit);
 	return status;
 }
 
@@ -74,6 +81,7 @@ int GetUnitResGrowthBonus(int status, struct Unit *unit)
 {
 	status = GetUnitCommonGrowthBonus(status, unit);
 	status = GetUnitResGrowthJobBonus(status, unit);
+	status = ResGrowthGetterShield(status, unit);
 	return status;
 }
 

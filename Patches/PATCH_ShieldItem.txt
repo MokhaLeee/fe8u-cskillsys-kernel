@@ -9,7 +9,7 @@ TAG=#ENGINE
 INFO=[CSKILL_K: gShieldItemTable] Configure shield item config\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/ShieldItem.md
 
 POINTER=0xB2A778
-DATASIZE=16
+DATASIZE=32
 DATACOUNT=0x100
 
 LISTNAME=ITEM
@@ -27,3 +27,18 @@ b12:DECIMAL=avo correction
 b13:DECIMAL=crit correction
 b14:DECIMAL=dodge correction
 b15:DECIMAL=silencer correction
+b16:DECIMAL=pow bonus
+b17:DECIMAL=mag bonus
+b18:DECIMAL=skl bonus
+b19:DECIMAL=spd bonus
+b20:DECIMAL=lck bonus
+b21:DECIMAL=def bonus
+b22:DECIMAL=res bonus
+b23:DECIMAL=mov bonus
+b24:DECIMAL=pow growth bonus
+b25:DECIMAL=mag growth bonus
+b26:DECIMAL=skl growth bonus
+b27:DECIMAL=spd growth bonus
+b28:DECIMAL=lck growth bonus
+b29:DECIMAL=def growth bonus
+b30:DECIMAL=res growth bonus

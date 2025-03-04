@@ -36,3 +36,11 @@ Shile item config can be set via FEB patch: `Shile item config`, The configurabl
 - Battle status corrections
 
 	Modify each battle status on equipment
+
+- Unit status bonus
+
+	Modify each unit status on equipment
+
+- Unit growth bonus
+
+	Modify each unit growth rate on equipment

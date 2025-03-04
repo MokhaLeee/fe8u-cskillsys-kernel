@@ -116,6 +116,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Try convert ascii to **narrow-fonts** on displaying skill descriptions, skill names and menu items.
 
+- `skill_sub_menu_width`
+
+	Width of submenu after typing "Skills" option in action menu.
+
 ## Designer config battle
 
 ![image](./gfx/SystemConfig2.png)
@@ -131,6 +135,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 - `AVO deacy for riders indorr`
 
 	Riders may suffer (avo -`[20%]`) indoor.
+
+- `CRIT damage correction rate`
+
+	Critical attack may cause `[200%]` damage.
 
 ## Skill misc infos
 

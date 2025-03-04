@@ -73,7 +73,8 @@ _kernel_malloc sExpaConvoyItemArray, 2 * 300
 _kernel_malloc sGaidenMagicListObj, 0x24
 _kernel_malloc gpActorShileInfo, 4
 _kernel_malloc gpTargetShileInfo, 4
-_kernel_malloc sShileldInfoCache, 0x14
+_kernel_malloc sShileldInfoCache, 0x14 * 4
+_kernel_malloc sShileldInfoNext, 4 @ 1 byte only
 _kernel_malloc sPopupSkillStack, 0x10
 
 /* u8 x4 to share one u32 */

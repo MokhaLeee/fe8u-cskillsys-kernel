@@ -8,8 +8,8 @@
 
 const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 	{"　制圧", 0x67A, 0x6CC, 0, 0x4E, UnitActionMenu_CanSeize, 0, UnitActionMenu_Seize, 0, 0, 0}, // Seize
-	{"　攻撃", 0x67B, 0x6C0, 0, 0x4F, AttackCommandUsability, 0, UnitActionMenu_Attack, 0, DisplayUnitStandingAttackRange, HideMoveRangeGraphicsWrapper}, // Attack >
-	{"　攻撃", 0x67B, 0x6C0, 0, 0x50, AttackBallistaCommandUsability, 0, UnitActionMenu_Attack, 0, DisplayUnitStandingAttackRange, HideMoveRangeGraphicsWrapper}, // Attack w/Ballista >
+	{"　攻撃", 0x67B, 0x6C0, 0, 0x4F, AttackCommandUsabilityFix, 0, UnitActionMenu_Attack, 0, AttackActionCommandHoverFix, AttackActionCommandUnhoverFix}, // Attack >
+	{"　攻撃", 0x67B, 0x6C0, 0, 0x50, AttackBallistaCommandUsabilityFix, 0, UnitActionMenu_Attack, 0, AttackActionCommandHoverFix, AttackActionCommandUnhoverFix}, // Attack w/Ballista >
 
 	/* Combat Art */
 	{
@@ -57,6 +57,19 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		GaidenWMagActionCommandHover,
 		HideMoveRangeGraphicsWrapper2
 	},
+#ifdef CONFIG_MENU_SKILL_NOT_IN_UPPER
+	{
+		"　特技",
+		MSG_MenuSkill_UM_NAME,
+		MSG_MenuSkill_UM_DESC,
+		TEXT_COLOR_SYSTEM_WHITE,
+		0x80,
+		UpperMenuSkill_Usability,
+		NULL,
+		UpperMenuSkill_OnSelected,
+		NULL, NULL, NULL
+	},
+#else
 	{
 		"　特技",
 		0x4EC,
@@ -109,6 +122,7 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		MenuSkills_Hover,
 		MenuSkills_Unhover
 	},
+#endif /* MENU_SKILL_NOT_IN_UPPER */
 #else
 	{"　奏でる", 0x67D, 0x6C3, 0, 0x54, PlayCommandUsability, 0, PlayCommandEffect, 0, 0, 0}, // Play >
 	{"　踊る", 0x67E, 0x6C2, 0, 0x55, DanceCommandUsability, 0, PlayCommandEffect, 0, 0, 0}, // Dance

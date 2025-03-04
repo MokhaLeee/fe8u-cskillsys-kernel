@@ -80,7 +80,7 @@ STATIC_DECLAR int CombatArtItemSelHover(struct MenuProc *menu, struct MenuItemPr
 	BmMapFill(gBmMapRange, 0);
 
 	RegisterCombatArtStatus(gActiveUnit, GetBestRangeBonusCid(gActiveUnit, item));
-	reach = GetUnitWeaponReachBits(gActiveUnit, menuItem->itemNumber);
+	reach = GetUnitWeaponReachBitsFromInventory(gActiveUnit, menuItem->itemNumber);
 	GenerateUnitStandingReachRange(gActiveUnit, reach);
 
 	DisplayMoveRangeGraphics(MOVLIMITV_RMAP_RED);

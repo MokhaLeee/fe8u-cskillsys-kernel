@@ -39,7 +39,10 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 		status = 0;
 #endif
 
-	LIMIT_AREA(status, 1, 100);
+	LIMIT_AREA(status, 0, 100);
+	if (base > 0 && status <= 0)
+		status = 1;
+
 	return status;
 }
 

@@ -11,7 +11,7 @@ void MapAnim_CommonInit(void)
 
 void MapAnim_CommonEnd(void)
 {
-	ResetMuAnims();
+	// ResetMuAnims();
 	InitBmBgLayers();
 	LoadUiFrameGraphics();
 	LoadObjUIGfx();

@@ -28,6 +28,26 @@ bool AiCouldReachByBirdsEyeDistance(struct Unit *unit, struct Unit *other, u16 i
 	return false;
 }
 
+int GetUnitWeaponReachBitsFromInventory(struct Unit *unit, int slot)
+{
+	int i, item, result = 0;
+
+	switch (slot) {
+	case -1:
+		for (i = 0; (i < UNIT_ITEM_COUNT) && (item = unit->items[i]); ++i)
+			if (CanUnitUseWeapon(unit, item))
+				result |= GetItemReachBitsRework(item, unit);
+		break;
+
+	default:
+		item = GetItemFromSlot(unit, slot);
+		result = GetItemReachBitsRework(item, unit);
+		break;
+	}
+
+	return result;
+}
+
 LYN_REPLACE_CHECK(GetUnitWeaponReachBits);
 int GetUnitWeaponReachBits(struct Unit *unit, int slot)
 {

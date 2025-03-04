@@ -152,6 +152,11 @@ int CombatArtActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *me
 extern const struct MenuDef gCombatArtItemMenuDef;
 extern const struct SelectInfo gSelectInfoCombatArt;
 
+u8 AttackCommandUsabilityFix(const struct MenuItemDef *def, int number);
+u8 AttackBallistaCommandUsabilityFix(const struct MenuItemDef *def, int number);
+int AttackActionCommandHoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int AttackActionCommandUnhoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem);
+
 /* Misc */
 bool CanUnitPlayCombatArt(struct Unit *unit, u16 item);
 u8 GetBestRangeBonusCid(struct Unit *unit, u16 item);

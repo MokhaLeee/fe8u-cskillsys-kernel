@@ -164,6 +164,18 @@ bool MuSkillAnimExists(void)
 	return Proc_Exists(ProcScr_MuSkillAnim);
 }
 
+STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnimDeamon[] = {
+	PROC_YIELD,
+	PROC_WHILE(MuSkillAnimExists),
+	PROC_END
+};
+
+void NewMuSkillAnimOnActiveUnitWithDeamon(ProcPtr parent, u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc))
+{
+	NewMuSkillAnimOnActiveUnit(sid, callback1, callback2);
+	Proc_StartBlocking(ProcScr_MuSkillAnimDeamon, parent);
+}
+
 static void event_callcamera(ProcPtr proc)
 {
 	EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);

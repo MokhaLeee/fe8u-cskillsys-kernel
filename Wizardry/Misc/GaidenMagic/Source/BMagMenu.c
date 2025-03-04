@@ -43,6 +43,9 @@ u8 GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number)
 	if (!list)
 		return MENU_NOTSHOWN;
 
+	ResetCombatArtList();
+	ResetCombatArtStatus();
+
 	for (i = 0; i < list->bmag_cnt; i++) {
 		int item = list->bmags[i];
 
@@ -112,6 +115,9 @@ int GaidenBMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *men
 	struct Unit *unit = gActiveUnit;
 	struct GaidenMagicList *list = GetGaidenMagicList(unit);
 
+	ResetCombatArtList();
+	ResetCombatArtStatus();
+
 	BmMapFill(gBmMapMovement, -1);
 	BmMapFill(gBmMapRange, 0);
 
@@ -137,6 +143,7 @@ int GaidenBMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *men
 
 int GaidenBMagActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
+	ResetCombatArtList();
 	ResetCombatArtStatus();
 	HideMoveRangeGraphics();
 	return 0;

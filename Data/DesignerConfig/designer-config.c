@@ -75,4 +75,6 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 #ifdef CONFIG_AUTO_NARROW_FONT
 	.auto_narrow_font = true,
 #endif
+
+	.skill_sub_menu_width = 10,
 };

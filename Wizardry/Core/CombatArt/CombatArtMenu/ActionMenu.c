@@ -15,7 +15,7 @@ u8 CombatArtActionCommandUsability(const struct MenuItemDef *def, int number)
 		return MENU_NOTSHOWN;
 
 	/* If vanilla "Attack" button is enabled, here not show */
-	if (AttackCommandUsability(def, number) == MENU_ENABLED)
+	if (AttackCommandUsabilityFix(def, number) == MENU_ENABLED)
 		return MENU_NOTSHOWN;
 
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
@@ -114,7 +114,41 @@ int CombatArtActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menu
 
 int CombatArtActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
+	ResetCombatArtList();
 	ResetCombatArtStatus();
 	HideMoveRangeGraphics();
 	return 0;
+}
+
+/**
+ * Attack menu fix
+ */
+u8 AttackCommandUsabilityFix(const struct MenuItemDef *def, int number)
+{
+	ResetCombatArtList();
+	ResetCombatArtStatus();
+
+	return AttackCommandUsability(def, number);
+}
+
+u8 AttackBallistaCommandUsabilityFix(const struct MenuItemDef *def, int number)
+{
+	ResetCombatArtList();
+	ResetCombatArtStatus();
+
+	return AttackBallistaCommandUsability(def, number);
+}
+
+int AttackActionCommandHoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem)
+{
+	ResetCombatArtList();
+	ResetCombatArtStatus();
+	return DisplayUnitStandingAttackRange(menu, menuItem);
+}
+
+int AttackActionCommandUnhoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem)
+{
+	ResetCombatArtList();
+	ResetCombatArtStatus();
+	return HideMoveRangeGraphicsWrapper(menu, menuItem);
 }

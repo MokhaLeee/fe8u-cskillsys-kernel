@@ -8,40 +8,40 @@ gHpGetters:
 
 gPowGetters:
     POIN PowGetterWeaponBonus PowGetterSkills PowGetterDebuff
-    POIN PowGetterStatDebuff
+    POIN PowGetterStatDebuff PowGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
 gMagGetters:
     POIN MagGetterSkills MagGetterDebuff
     POIN MagGetterWeaponBonus
-    POIN MagGetterStatDebuff
+    POIN MagGetterStatDebuff MagGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
 gSklGetters:
     POIN SklGetterWeaponBonus SklGetterSkills SklGetterDebuff
-    POIN SklGetterStatDebuff
+    POIN SklGetterStatDebuff SklGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
 gSpdGetters:
     POIN SpdGetterWeaponBonus SpdGetterSkills SpdGetterDebuff
     POIN SpdGetterLegendSkills
-    POIN SpdGetterStatDebuff
+    POIN SpdGetterStatDebuff SpdGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
 gLckGetters:
     POIN LckGetterWeaponBonus LckGetterSkills LckGetterDebuff
-    POIN LckGetterStatDebuff
+    POIN LckGetterStatDebuff LckGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
 gDefGetters:
     POIN DefGetterWeaponBonus DefGetterSkills DefGetterDebuff
     POIN DefGetterLegendSkills
-    POIN DefGetterStatDebuff
+    POIN DefGetterStatDebuff DefGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
@@ -49,14 +49,14 @@ gResGetters:
     POIN ResGetterWeaponBonus ResGetterSkills ResGetterDebuff
     POIN ResGetterLegendSkills
     POIN ResGetterPureWater
-    POIN ResGetterStatDebuff
+    POIN ResGetterStatDebuff ResGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
 gMovGetters:
     POIN MovGetterSkills
     POIN MovGetterDebuff
-    POIN MovGetterStatDebuff
+    POIN MovGetterStatDebuff MovGetterShield
     POIN StatusGetterCheckCpas
     MSG_END
 
