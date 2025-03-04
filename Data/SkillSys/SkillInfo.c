@@ -3850,6 +3850,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 	},
 #endif
 
+#if (defined(SID_Perch) && COMMON_SKILL_VALID(SID_Perch))
+	[SID_Perch] = {
+		.desc = MSG_SKILL_Perch,
+		.icon = GFX_SkillIcon_Perch,
+	},
+#endif
+
 #if (defined(SID_WingedShield) && COMMON_SKILL_VALID(SID_WingedShield))
 	[SID_WingedShield] = {
 		.desc = MSG_SKILL_WingedShield,

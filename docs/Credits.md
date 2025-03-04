@@ -24,6 +24,7 @@
 ## Skill icons
 
 - JeorgeReds: BonusDoubler
+- GratedShtick: Perch
 
 ## Portraits
 - Melia

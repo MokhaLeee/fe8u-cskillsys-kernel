@@ -990,3 +990,7 @@ he gain +50 avoid but -50 hit.[X]
 Stubborn:[NL]
 If unit has more Losses[NL]
 than enemy, gains +5 str/spd.[X]
+
+## MSG_SKILL_Perch
+Perch:[NL]
+Fliers receive terrain bonus.[X]

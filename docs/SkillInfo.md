@@ -321,6 +321,7 @@
 | Slayer |  Deal effective damage to monster units. |
 | Skybreaker |  Deal effective damage to flying units. |
 | Nullify |  Unit is protected from all effective attacks. |
+| Perch |  Fliers receive terrain bonus. |
 | WingedShield |  Flying weakness is nullified and receive terrain effects. |
 | BeastShield |  Nullifies any bonus damage targeting beast units equipping this skill. |
 | Vigilance |  Gain +20 Avoid. |
