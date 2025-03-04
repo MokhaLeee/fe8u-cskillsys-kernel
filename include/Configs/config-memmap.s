@@ -110,7 +110,6 @@ _kernel_malloc_overlay0 gStatScreenStExpa, 4
 _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
 _kernel_malloc_overlay0 gDmg, 40
 _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
-_kernel_malloc_overlay0 sBattleSkillActivateBuf, 4
 _kernel_malloc_overlay0 sAiSimuSlotBuf, 0x100
 _kernel_malloc_overlay0 gItemPageList 0x28
 _kernel_malloc_overlay0 gPostActionCommonBuffer 0x20

@@ -23,7 +23,6 @@ BattleRealDamageCalcFuncs:
 
 PreBattleGenerateFuncs:
     POIN ClearBattleGlobalFlags
-    POIN ResetBattleSkillActivateBuf
     POIN PreBattleGenerate_LightAndDark
     POIN PreBattleGenerate_TrigCombartKTut
 

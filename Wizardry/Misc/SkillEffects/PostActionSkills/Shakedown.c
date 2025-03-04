@@ -8,7 +8,7 @@
 static bool Local_SkillTester(void)
 {
 #if defined(SID_Shakedown) && (COMMON_SKILL_VALID(SID_Shakedown))
-	if (CheckSkillActivate(gActiveUnit, SID_Shakedown, GetUnitLuck(gActiveUnit)))
+	if (CheckActiveUnitSkillActivate(SID_Shakedown, GetUnitLuck(gActiveUnit)))
 		return true;
 #endif
 
