@@ -15,7 +15,7 @@ static bool Local_SkillTester(void)
 	return false;
 }
 
-static void callback2(ProcPtr proc)
+FORCE_DECLARE static void callback2(ProcPtr proc)
 {
 	NewPopup_GoldGot(proc, gActiveUnit, gPostActionCommonBuffer.total_damage_actor);
 }
