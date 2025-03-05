@@ -20,6 +20,17 @@ static bool Local_SkillTester(struct Unit *unit)
 	return false;
 }
 
+static bool CheckHasActed(struct Unit *unit)
+{
+	if (CheckBitUES(unit, UES_BIT_ACTED))
+		return true;
+
+	if (unit->state & (US_HAS_MOVED | US_UNSELECTABLE))
+		return true;
+
+	return false;
+}
+
 STATIC_DECLAR void EndTurnFreeSpirit_Init(struct ProcEndTurnFreeSpirit *proc)
 {
 	proc->uid = gPlaySt.faction;
@@ -42,19 +53,25 @@ STATIC_DECLAR void EndTurnFreeSpirit_Loop(struct ProcEndTurnFreeSpirit *proc)
 	for (; proc->uid < (gPlaySt.faction + 0x40); proc->uid++) {
 		struct Unit *unit = GetUnit(proc->uid);
 
+		if (!UNIT_IS_VALID(unit))
+			continue;
+
 		if (!UnitOnMapAvaliable(unit))
 			continue;
 
 		if (!Local_SkillTester(unit))
 			continue;
 
-		if (CheckBitUES(unit, UES_BIT_ACTED))
+		if (CheckHasActed(unit))
 			continue;
 
 		gActiveUnit = unit;
 
 #if (defined(SID_FreeSpirit) && COMMON_SKILL_VALID(SID_FreeSpirit))
-		NewMuSkillAnimOnActiveUnitWithDeamon(proc, SID_FreeSpirit, NULL, callback2);
+		if (!UnitOnMapAvaliable(unit))
+			SetUnitStatDebuff(unit, UNIT_STAT_BUFF_FREESPIRIT);
+		else
+			NewMuSkillAnimOnActiveUnitWithDeamon(proc, SID_FreeSpirit, NULL, callback2);
 #endif
 		return;
 	}
@@ -92,7 +109,7 @@ bool EndTurnSkill_FreeSpirit(ProcPtr parent)
 			if (!Local_SkillTester(unit))
 				continue;
 
-			if (!CheckBitUES(unit, UES_BIT_ACTED))
+			if (!CheckHasActed(unit))
 				SetUnitStatDebuff(unit, UNIT_STAT_BUFF_FREESPIRIT);
 		})
 		return false;
