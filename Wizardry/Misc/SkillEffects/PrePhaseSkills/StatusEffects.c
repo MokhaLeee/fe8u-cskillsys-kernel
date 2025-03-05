@@ -12,7 +12,7 @@ struct ProcPrePhaseBoon {
 
 STATIC_DECLAR void PrePhaseBoon_FindNextCharacter(struct ProcPrePhaseBoon *proc)
 {
-	// FOR_UNITS_FACTION
+	// FOR_UNITS_ONMAP_FACTION
 	while (++proc->uid < (gPlaySt.faction + 0x40)) {
 		struct Unit *unit = GetUnit(proc->uid);
 

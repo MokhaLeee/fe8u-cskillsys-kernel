@@ -140,6 +140,20 @@ bool IsUnitStruct(struct Unit *maybe_unit);
 // Maybe there could be an external "FOR_UNITS" macro
 #undef FOR_UNITS
 
+#define FOR_UNITS_VALID(begin, end, var_name, body) \
+{ \
+	int ___uid; \
+	struct Unit *var_name; \
+	for (___uid = (begin); ___uid < (end); ++___uid) { \
+		var_name = GetUnit(___uid); \
+		if (!var_name) \
+			continue; \
+		if (!UNIT_IS_VALID(var_name)) \
+			continue; \
+		body \
+	} \
+}
+
 #define FOR_UNITS_ONMAP(begin, end, var_name, body) \
 { \
 	int ___uid; \
@@ -154,19 +168,17 @@ bool IsUnitStruct(struct Unit *maybe_unit);
 	} \
 }
 
-#define FOR_UNITS_FACTION(faction, var_name, body) \
-do { \
-	if ((faction) == FACTION_BLUE) { \
-		FOR_UNITS_ONMAP(FACTION_BLUE + 1, FACTION_BLUE + GetFactionUnitAmount(FACTION_BLUE), var_name, body) \
-	} else if ((faction) == FACTION_RED) { \
-		FOR_UNITS_ONMAP(FACTION_RED + 1, FACTION_RED + GetFactionUnitAmount(FACTION_RED), var_name, body) \
-	} else if ((faction) == FACTION_GREEN) { \
-		FOR_UNITS_ONMAP(FACTION_GREEN + 1, FACTION_GREEN + GetFactionUnitAmount(FACTION_GREEN), var_name, body) \
-	} \
-} while (0);
+#define FOR_UNITS_ONMAP_FACTION(faction, var_name, body) \
+	FOR_UNITS_ONMAP(faction, faction + 0x40, var_name, body)
 
-#define FOR_UNITS_ALL(var_name, body) \
+#define FOR_UNITS_VALID_FACTION(faction, var_name, body) \
+	FOR_UNITS_VALID(faction, faction + 0x40, var_name, body)
+
+#define FOR_UNITS_ONMAP_ALL(var_name, body) \
 	FOR_UNITS_ONMAP(1, 0xC0, var_name, body)
+
+#define FOR_UNITS_VALID_ALL(var_name, body) \
+	FOR_UNITS_VALID(1, 0xC0, var_name, body)
 
 int GetUidFaction(u8 uid);
 int GetUnitFaction(struct Unit *unit);

@@ -28,7 +28,7 @@ int GetUnitLeaderCharId(struct Unit *unit)
 	/**
 	 * Step2: anyone who claims himself as boss is okay ╮(╯▽╰)╭
 	 */
-	FOR_UNITS_FACTION(UNIT_FACTION(unit), _unit, {
+	FOR_UNITS_ONMAP_FACTION(UNIT_FACTION(unit), _unit, {
 		if (UNIT_CATTRIBUTES(_unit) & CA_BOSS)
 			return UNIT_CHAR_ID(_unit);
 	})

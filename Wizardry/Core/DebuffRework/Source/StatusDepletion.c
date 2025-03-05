@@ -27,7 +27,7 @@ void TickActiveFactionTurn(void)
 
 	InitTargets(0, 0);
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		if (unit->state & (US_UNAVAILABLE | US_RESCUED))
 			continue;
 
@@ -63,7 +63,7 @@ void TickActiveFactionTurn(void)
 
 	if (gPlaySt.faction == FACTION_BLUE) {
 		/* Blue buff */
-		FOR_UNITS_FACTION(FACTION_BLUE, unit, {
+		FOR_UNITS_ONMAP_FACTION(FACTION_BLUE, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
 				DEC_STATUS(unit);
 
@@ -71,7 +71,7 @@ void TickActiveFactionTurn(void)
 		})
 
 		/* Red debuff */
-		FOR_UNITS_FACTION(FACTION_RED, unit, {
+		FOR_UNITS_ONMAP_FACTION(FACTION_RED, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
 				DEC_STATUS(unit);
 
@@ -79,7 +79,7 @@ void TickActiveFactionTurn(void)
 		})
 	} else if (gPlaySt.faction == FACTION_RED) {
 		/* Red buff */
-		FOR_UNITS_FACTION(FACTION_RED, unit, {
+		FOR_UNITS_ONMAP_FACTION(FACTION_RED, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
 				DEC_STATUS(unit);
 
@@ -87,7 +87,7 @@ void TickActiveFactionTurn(void)
 		})
 
 		/* Blue debuff */
-		FOR_UNITS_FACTION(FACTION_BLUE, unit, {
+		FOR_UNITS_ONMAP_FACTION(FACTION_BLUE, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
 				DEC_STATUS(unit);
 
@@ -95,7 +95,7 @@ void TickActiveFactionTurn(void)
 		})
 
 		/* Green debuff */
-		FOR_UNITS_FACTION(FACTION_GREEN, unit, {
+		FOR_UNITS_ONMAP_FACTION(FACTION_GREEN, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ENEMY)
 				DEC_STATUS(unit);
 
@@ -103,7 +103,7 @@ void TickActiveFactionTurn(void)
 		})
 	} else if (gPlaySt.faction == FACTION_GREEN) {
 		/* Green buff */
-		FOR_UNITS_FACTION(FACTION_GREEN, unit, {
+		FOR_UNITS_ONMAP_FACTION(FACTION_GREEN, unit, {
 			if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
 				DEC_STATUS(unit);
 

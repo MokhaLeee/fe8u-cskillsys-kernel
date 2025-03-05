@@ -15,7 +15,7 @@ bool PrePhase_TickArmorMarchSkillStatus(ProcPtr proc)
 #if (defined(SID_ArmorMarch) && (COMMON_SKILL_VALID(SID_ArmorMarch)))
 	int j;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
 

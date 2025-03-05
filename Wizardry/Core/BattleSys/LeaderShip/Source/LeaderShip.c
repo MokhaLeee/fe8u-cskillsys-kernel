@@ -23,7 +23,7 @@ STATIC_DECLAR int GetBmLeaderShip(struct Unit *unit)
 {
 	int ret = 0;
 
-	FOR_UNITS_FACTION(UNIT_FACTION(unit), _unit,
+	FOR_UNITS_ONMAP_FACTION(UNIT_FACTION(unit), _unit,
 	{
 		ret += GetUnitLeaderShip(_unit);
 	})

@@ -10,7 +10,7 @@ bool PrePhaseFunc_HoneFortify(ProcPtr proc)
 {
 	int i;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		bool PowHone_eff = false;
 		bool MagHone_eff = false;
 		bool SklHone_eff = false;

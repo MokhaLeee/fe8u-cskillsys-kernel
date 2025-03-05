@@ -5,7 +5,7 @@
 #include "constants/skills.h"
 #include "strmag.h"
 
-extern int (* gpExternalPrePhaseHealCalc)(int cur, struct Unit *unit);
+extern int (*gpExternalPrePhaseHealCalc)(int cur, struct Unit *unit);
 
 FORCE_DECLARE static int has_ally(struct Unit *unit)
 {
@@ -91,7 +91,7 @@ void MakeTerrainHealTargetList(int faction)
 {
 	InitTargets(0, 0);
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		int terrainId;
 		int amount;
 

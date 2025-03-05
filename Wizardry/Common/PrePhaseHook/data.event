@@ -1,6 +1,7 @@
 /* bool (*)(ProcPtr proc) */
 ALIGN 4
 gPrePhaseFuncs:
+    POIN PrePhase_ClearUnitsActedBit
     POIN PrePhsae_TickInitativeSkillStatus
     POIN PrePhsae_TickOathRouthSkillStatus
     POIN PrePhsae_TickPlusAndMinusSkillStatus

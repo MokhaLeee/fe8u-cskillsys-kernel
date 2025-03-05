@@ -94,7 +94,7 @@ static void TileCheck(struct Unit *unit)
 
 bool PrePhase_CheckTile(ProcPtr proc)
 {
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
 
