@@ -169,10 +169,10 @@ bool IsUnitStruct(struct Unit *maybe_unit);
 }
 
 #define FOR_UNITS_ONMAP_FACTION(faction, var_name, body) \
-	FOR_UNITS_ONMAP(faction, faction + 0x40, var_name, body)
+	FOR_UNITS_ONMAP(faction + 1, faction + 0x40, var_name, body)
 
 #define FOR_UNITS_VALID_FACTION(faction, var_name, body) \
-	FOR_UNITS_VALID(faction, faction + 0x40, var_name, body)
+	FOR_UNITS_VALID(faction + 1, faction + 0x40, var_name, body)
 
 #define FOR_UNITS_ONMAP_ALL(var_name, body) \
 	FOR_UNITS_ONMAP(1, 0xC0, var_name, body)

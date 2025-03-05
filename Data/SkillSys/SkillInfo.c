@@ -3906,4 +3906,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_SeaWays,
 	},
 #endif
+
+#if (defined(SID_FreeSpirit) && COMMON_SKILL_VALID(SID_FreeSpirit))
+	[SID_FreeSpirit] = {
+		.desc = MSG_SKILL_FreeSpirit,
+		.icon = GFX_SkillIcon_WIP,
+	},
+#endif
 };

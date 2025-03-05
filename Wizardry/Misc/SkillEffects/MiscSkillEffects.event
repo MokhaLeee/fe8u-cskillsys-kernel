@@ -55,6 +55,8 @@
 #include "PrePhaseSkills/KeepUp.lyn.event"
 #include "PrePhaseSkills/ChillSkills.lyn.event"
 
+#include "EndTurnSkills/FreeSpirit.lyn.event"
+
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"
 

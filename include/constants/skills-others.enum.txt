@@ -256,6 +256,9 @@ SID_FairyTaleFolk
 SID_RainDish
 SID_Boon
 
+// End of turn
+SID_FreeSpirit
+
 // Post action
 SID_FailGale
 SID_Clearance

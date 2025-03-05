@@ -1,0 +1,4 @@
+## MSG_SKILL_FreeSpirit
+Free Spirit:[NL]
+If not act at the end of phase,[NL]
+grants all stats +5 at enemy phase.[X]

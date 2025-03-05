@@ -22,6 +22,7 @@ W.I.P.[X]
 #include "texts/Skills_Stance.txt"
 #include "texts/Skills_WeaponRange.txt"
 #include "texts/Skills_PostAction.txt"
+#include "texts/Skills_EndTurn.txt"
 #include "texts/Skills_PrePhase.txt"
 #include "texts/Skills_RangeDebuff.txt"
 #include "texts/Skills_Debuff.txt"

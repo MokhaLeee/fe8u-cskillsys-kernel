@@ -483,6 +483,7 @@
 | FairyTaleFolk |  +2 damage dealt if a male ally and a female ally are adjacent within 2 spaces. |
 | RainDish |  If it is raining, then restore 30% of max HP at the start of each turn. |
 | Boon |  Heal bad status effects at the beginning of the turn. |
+| FreeSpirit |  If not act at the end of phase, grants all stats +5 at enemy phase. |
 | FailGale |  Move again after attacking and failing to harm an enemy. |
 | Clearance |  Clear own negative status after combat |
 | Despoil |  Gain a red gem after killing an enemy unit. (Skill % activation) |

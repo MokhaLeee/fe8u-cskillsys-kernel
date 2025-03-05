@@ -83,6 +83,12 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 #endif
 	},
 
+	[CHARACTER_KNOLL] = {
+#if (defined(SID_FreeSpirit) && COMMON_SKILL_VALID(SID_FreeSpirit))
+		SID_FreeSpirit,
+#endif
+	},
+
 	[CHARACTER_LYON_CC] = {
 #if (defined(SID_AversaNight) && COMMON_SKILL_VALID(SID_AversaNight))
 		SID_AversaNight,

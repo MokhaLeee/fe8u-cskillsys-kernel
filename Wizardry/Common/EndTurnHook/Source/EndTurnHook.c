@@ -42,3 +42,20 @@ bool EndTurnHook_AiPhase(ProcPtr proc)
 	Proc_StartBlocking(ProcScr_AiPhaseEndTurnHook, proc);
 	return false;
 }
+
+extern struct ProcCmd *prProcScr_PlayerPhase;
+
+LYN_REPLACE_CHECK(CommandEffectEndPlayerPhase);
+u8 CommandEffectEndPlayerPhase(struct MenuProc *menu, struct MenuItemProc *menuItem)
+{
+#if CHAX
+	ProcPtr proc = Proc_Find(prProcScr_PlayerPhase);
+
+	if (proc)
+		Proc_Goto(proc, 3);
+#else
+    Proc_EndEach(prProcScr_PlayerPhase);
+#endif
+
+    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
+}
