@@ -166,4 +166,7 @@ gpExternalMovGetters:   WORD 0
 gpExternalConGetters:   WORD 0
 gpExternalAidGetters:   WORD 0
 
+gpEndTurnFuncs: POIN gEndTurnFuncs
+gpExternalEndTurnHook: WORD 0
+
 KERNEL_RELOC_END:

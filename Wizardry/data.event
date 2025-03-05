@@ -13,6 +13,7 @@
 #include "Common/KernelLib/data.event"
 #include "Common/NegativeStatBoosts/data.event"
 #include "Common/MapAnims/data.event"
+#include "Common/EndTurnHook/data.event"
 #include "Common/PostActionHook/data.event"
 #include "Common/PrePhaseHook/data.event"
 #include "Common/SaveData/data.event"

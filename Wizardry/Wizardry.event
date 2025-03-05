@@ -32,6 +32,7 @@ ALIGN 4
 #include "Common/IconDisplay/IconDisplay.event"
 #include "Common/NegativeStatBoosts/NegativeStatBoosts.event"
 #include "Common/UnitMenu/UnitMenu.event"
+#include "Common/EndTurnHook/EndTurnHook.event"
 #include "Common/PostActionHook/PostActionHook.event"
 #include "Common/ChapterInitHook/ChapterInitHook.event"
 #include "Common/StrMagSplit/StrMagSplit.event"

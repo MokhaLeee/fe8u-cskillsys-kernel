@@ -57,6 +57,8 @@ void sub_809B504(struct ProcPrepUnit *proc);
 void sub_809B014(void);
 void sub_809B520(struct ProcPrepUnit *proc);
 
+void AiPhaseCleanup(struct Proc *proc);
+
 struct CpPerformProc {
 	/* 00 */ PROC_HEADER;
 

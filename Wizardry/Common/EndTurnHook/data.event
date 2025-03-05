@@ -1,0 +1,5 @@
+ALIGN 4
+gEndTurnFuncs:
+	// End
+	POIN CallExternalEndTurnHook
+	WORD 0
