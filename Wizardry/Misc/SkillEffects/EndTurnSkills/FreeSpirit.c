@@ -75,6 +75,11 @@ STATIC_DECLAR void EndTurnFreeSpirit_Loop(struct ProcEndTurnFreeSpirit *proc)
 #endif
 		return;
 	}
+
+	if (proc->uid >= (gPlaySt.faction + 0x40)) {
+		Proc_Goto(proc, 1);
+		return;
+	}
 }
 
 void EndTurnFreeSpirit_End(ProcPtr proc)
