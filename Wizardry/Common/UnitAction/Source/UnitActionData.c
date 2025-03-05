@@ -6,6 +6,10 @@ bool _ActionCombat(ProcPtr proc);
 bool _ActionStaffDoorChestUseItem(ProcPtr proc);
 bool _ActionPick(ProcPtr proc);
 
+bool ActionExecSkill(ProcPtr proc);
+bool ActionGaidenMagicCombat(ProcPtr proc);
+bool ActionGaidenMagicStaff(ProcPtr proc);
+
 const UnitActionFunc_t gUnitActionTable[CONFIG_UNIT_ACTION_AMT] = {
 	[UNIT_ACTION_WAIT] = _ActionWait,
 	[UNIT_ACTION_TRAPPED] = _ActionWait,
@@ -26,4 +30,8 @@ const UnitActionFunc_t gUnitActionTable[CONFIG_UNIT_ACTION_AMT] = {
 	[UNIT_ACTION_CHEST] = _ActionStaffDoorChestUseItem,
 	[UNIT_ACTION_USE_ITEM] = _ActionStaffDoorChestUseItem,
 	[UNIT_ACTION_PICK] = _ActionPick,
+
+	[CONFIG_UNIT_ACTION_EXPA_ExecSkill] = ActionExecSkill,
+	[CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat] = ActionGaidenMagicCombat,
+	[CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff] = ActionGaidenMagicStaff,
 };

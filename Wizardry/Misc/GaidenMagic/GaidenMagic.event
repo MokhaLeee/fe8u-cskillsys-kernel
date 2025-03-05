@@ -1,13 +1,16 @@
 #ifndef CHAX_GAIDEN_MAGIC_INSTALLED
 #define CHAX_GAIDEN_MAGIC_INSTALLED
 
+#include "Source/LynJump.event"
+
 #include "Source/Core.lyn.event"
 #include "Source/HpCost.lyn.event"
 #include "Source/BMagMenu.lyn.event"
 #include "Source/WMagMenu.lyn.event"
 #include "Source/MagAction.lyn.event"
+#include "Source/ActionFix.lyn.event"
 
-InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat, ActionGaidenMagicCombat)
-InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff,  ActionGaidenMagicStaff)
+// InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat, ActionGaidenMagicCombat)
+// InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff,  ActionGaidenMagicStaff)
 
 #endif

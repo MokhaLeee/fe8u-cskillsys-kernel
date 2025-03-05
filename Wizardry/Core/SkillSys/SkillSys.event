@@ -12,7 +12,7 @@
 #include "kernel/SkillAction.lyn.event"
 #include "kernel/SkillPopup.lyn.event"
 
-InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_ExecSkill, ActionExecSkill)
+// InjectUnitAction(CONFIG_UNIT_ACTION_EXPA_ExecSkill, ActionExecSkill)
 
 // #include "data.event"
 

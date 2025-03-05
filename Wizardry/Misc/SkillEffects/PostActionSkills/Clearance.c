@@ -61,7 +61,16 @@ bool PostAction_Clearance(ProcPtr parent)
 #endif
 		return false;
 
-	if (gActionData.unitActionType == UNIT_ACTION_COMBAT && UnitHasNegativeStatus(gActiveUnit)) {
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
+		break;
+
+	default:
+		return false;
+	}
+
+	if (UnitHasNegativeStatus(gActiveUnit)) {
 		if (CheckKernelHookSkippingFlag()) {
 			RemoveUnitNegativeStatus(gActiveUnit);
 			return false;
