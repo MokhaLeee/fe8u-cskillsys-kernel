@@ -36,7 +36,7 @@ STATIC_DECLAR void EndTurnFreeSpirit_Init(struct ProcEndTurnFreeSpirit *proc)
 	proc->uid = gPlaySt.faction;
 }
 
-static void callback2(ProcPtr proc)
+FORCE_DECLARE static void callback2(ProcPtr proc)
 {
 	SetUnitStatDebuff(gActiveUnit, UNIT_STAT_BUFF_FREESPIRIT);
 }
