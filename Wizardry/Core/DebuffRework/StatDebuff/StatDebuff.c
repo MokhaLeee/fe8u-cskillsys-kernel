@@ -202,13 +202,13 @@ void PreBattleCalcStatDebuffs(struct BattleUnit *bu, struct BattleUnit *defender
 		if (_BIT_CHK(bitfile, i)) {
 			const struct DebuffInfo *info = &gpStatDebuffInfos[i];
 
-			bu->battleAttack	   += info->battle_status.atk;
-			bu->battleDefense	  += info->battle_status.def;
-			bu->battleHitRate	  += info->battle_status.hit;
-			bu->battleAvoidRate	+= info->battle_status.avo;
-			bu->battleCritRate	 += info->battle_status.crit;
+			bu->battleAttack       += info->battle_status.atk;
+			bu->battleDefense      += info->battle_status.def;
+			bu->battleHitRate      += info->battle_status.hit;
+			bu->battleAvoidRate    += info->battle_status.avo;
+			bu->battleCritRate     += info->battle_status.crit;
 			bu->battleSilencerRate += info->battle_status.silencer;
-			bu->battleDodgeRate	+= info->battle_status.dodge;
+			bu->battleDodgeRate    += info->battle_status.dodge;
 		}
 	}
 }
