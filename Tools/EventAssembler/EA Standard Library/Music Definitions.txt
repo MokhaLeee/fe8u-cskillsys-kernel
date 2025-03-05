@@ -137,7 +137,7 @@
 #define Healing 0x0019
 #define Curing 0x001A
 #define TotheHeights 0x001B
-#define Blessingofthe8GeneralsI 0x001C
+#define Blessingsofthe8GeneralsI 0x001C
 #define ReceivetheBlessingsofWater 0x001D
 #define RidetheWind 0x001E
 #define Strike 0x001F
@@ -212,7 +212,7 @@
 #define Anguish 0x0069
 #define RespiteinBattle 0x006A
 #define TheInn 0x006B
-#define Blessingofthe8GeneralsII 0x006E
+#define Blessingsofthe8GeneralsII 0x006E
 #define CampaignofFire_nointro 0x006F
 #define BeneathaNewLight 0x0070
 #define ThePathtoGreatness 0x0071

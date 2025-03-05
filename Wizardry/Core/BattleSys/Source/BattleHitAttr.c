@@ -467,11 +467,11 @@ void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *def
     weapon_cost = false;
 #endif
 
-#if defined(SID_Blessing) && (COMMON_SKILL_VALID(SID_Blessing))
-    if (CheckBattleSkillActivate(attacker, defender, SID_Blessing, 100))
+#if defined(SID_ArmsthriftPlus) && (COMMON_SKILL_VALID(SID_ArmsthriftPlus))
+    if (CheckBattleSkillActivate(attacker, defender, SID_ArmsthriftPlus, 100))
     {
         weapon_cost = false;
-        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Blessing);
+        RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_ArmsthriftPlus);
     }
 #endif
 

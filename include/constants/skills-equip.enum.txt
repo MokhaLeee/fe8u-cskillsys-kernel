@@ -472,7 +472,7 @@ SID_EffectSpore
 // SID_DragonWarth
 // SID_FaerghusAncestry
 // SID_CrusaderWard
-SID_Blessing
+SID_ArmsthriftPlus
 SID_Sturdy
 // SID_LunarBrace
 // SID_Eclipse
@@ -491,9 +491,9 @@ SID_Toxic
 // SID_GrazingBlow
 // SID_AbsorbMelee
 // SID_AbsorbMagic
-// SID_Duel
+SID_Duel
 // SID_Offhand
-// SID_ShedSkin
+SID_ShedSkin
 
 //////// EFFECTIVENESS SKILLS
 SID_Resourceful
@@ -682,7 +682,7 @@ SID_Resurrection
 // SID_DangerRanger
 // SID_Savior
 // SID_SelfHealing
-// SID_Wrestler
+SID_Wrestler
 // SID_TwinCrests
 // SID_Saint
 // SID_AidRefusal

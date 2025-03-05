@@ -472,7 +472,7 @@
 // SID_DragonWarth
 // SID_FaerghusAncestry
 // SID_CrusaderWard
-// SID_Blessing
+// SID_ArmsthriftPlus
 // SID_Sturdy
 // SID_LunarBrace
 // SID_Eclipse

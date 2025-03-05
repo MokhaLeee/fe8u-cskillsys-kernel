@@ -3940,7 +3940,7 @@
 #define MSG_SKILL_CounterMagic 0x0F5E
 #define MSG_SKILL_Eclipse 0x0F5F
 #define MSG_SKILL_Sturdy 0x0F60
-#define MSG_SKILL_Blessing 0x0F61
+#define MSG_SKILL_ArmsthriftPlus 0x0F61
 #define MSG_SKILL_DownWithArch_NAME 0x0F62
 #define MSG_SKILL_DownWithArch 0x0F63
 #define MSG_SKILL_RampUp 0x0F64

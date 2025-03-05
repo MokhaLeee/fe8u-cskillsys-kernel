@@ -516,7 +516,6 @@ void BattleGenerateHitEffects(struct BattleUnit * attacker, struct BattleUnit * 
         gBattleHitIterator->hpChange = -gBattleStats.damage;
     }
 #endif
-
     if (!absorb)
         gBattleHitIterator->hpChange = gBattleStats.damage;
 

@@ -232,8 +232,8 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
     [SID_Sturdy] = EFX_PRIORITY_NORMAL,
 #endif
 
-#if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
-    [SID_Blessing] = EFX_PRIORITY_NORMAL,
+#if (defined(SID_ArmsthriftPlus) && COMMON_SKILL_VALID(SID_ArmsthriftPlus))
+    [SID_ArmsthriftPlus] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_MagicBounce) && COMMON_SKILL_VALID(SID_MagicBounce))
@@ -494,8 +494,8 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
     [SID_Sturdy] = &EfxSkillVanilla,
 #endif
 
-#if (defined(SID_Blessing) && COMMON_SKILL_VALID(SID_Blessing))
-    [SID_Blessing] = &EfxSkillVanilla,
+#if (defined(SID_ArmsthriftPlus) && COMMON_SKILL_VALID(SID_ArmsthriftPlus))
+    [SID_ArmsthriftPlus] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_MagicBounce) && COMMON_SKILL_VALID(SID_MagicBounce))
