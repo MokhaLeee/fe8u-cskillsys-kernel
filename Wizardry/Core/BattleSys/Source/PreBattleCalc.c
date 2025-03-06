@@ -131,10 +131,16 @@ STATIC_DECLAR int GetBaseAvoid(struct BattleUnit *bu)
 #endif
 }
 
-LYN_REPLACE_CHECK(ComputeBattleUnitAvoidRate);
-void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
+void ComputeBattleUnitAvoidRate_Rework(struct BattleUnit *bu)
 {
-	int status = GetBaseAvoid(bu) + bu->terrainAvoid;
+	int status;
+
+	/**
+	 * vanilla
+	 */
+	ComputeBattleUnitAvoidRate(bu);
+
+	status = bu->battleAvoidRate;
 
 	if (!CheckOutdoorTerrain(bu->terrainId)) {
 		int jid = UNIT_CLASS_ID(&bu->unit);
@@ -176,7 +182,13 @@ void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
 	ComputeBattleUnitAttack(attacker, defender);
 	ComputeBattleUnitSpeed(attacker);
 	ComputeBattleUnitHitRate(attacker);
+
+#if CHAX
+	ComputeBattleUnitAvoidRate_Rework(attacker);
+#else
 	ComputeBattleUnitAvoidRate(attacker);
+#endif
+
 	ComputeBattleUnitCritRate(attacker);
 	ComputeBattleUnitDodgeRate(attacker);
 	ComputeBattleUnitSupportBonuses(attacker, defender);
