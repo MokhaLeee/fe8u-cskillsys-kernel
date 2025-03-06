@@ -5,19 +5,19 @@
 void SetBitUES(struct Unit *unit, int bit)
 {
 	Assert(bit >= 0 && bit < 16);
-	_BIT_SET((void *)&unit->_u3A, bit);
+	_BIT_SET(&unit->_u3A, bit);
 }
 
 void ClearBitUES(struct Unit *unit, int bit)
 {
 	Assert(bit >= 0 && bit < 16);
-	_BIT_CLR((void *)&unit->_u3A, bit);
+	_BIT_CLR(&unit->_u3A, bit);
 }
 
 bool CheckBitUES(struct Unit *unit, int bit)
 {
 	Assert(bit >= 0 && bit < 16);
-	return _BIT_CHK((void *)&unit->_u3A, bit);
+	return _BIT_CHK(&unit->_u3A, bit);
 }
 
 static void reset_expa(s8 uid)

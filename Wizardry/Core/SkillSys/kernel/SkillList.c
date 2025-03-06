@@ -104,6 +104,7 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
 			tmp_list[sid] = true;
 			list->sid[list->amt++] = sid;
+			FPrintf("%d: sid=%04X", i, sid);
 		}
 	}
 
