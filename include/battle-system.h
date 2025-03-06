@@ -214,6 +214,11 @@ void PreBattleCalcLeadershipBonus(struct BattleUnit *actor, struct BattleUnit *t
 bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
 
 /**
+ * DSFE STYLE AVOID patch
+ */
+int GetBaseAvoid_WithDsStylePatch(struct BattleUnit *bu);
+
+/**
  * Hp cost
  */
 bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);

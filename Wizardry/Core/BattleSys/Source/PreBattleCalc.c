@@ -122,10 +122,19 @@ void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *de
 	attacker->battleDefense = status;
 }
 
+STATIC_DECLAR int GetBaseAvoid(struct BattleUnit *bu)
+{
+#ifdef CONFIG_WITH_PATCH_DS_STYLE_AVOID
+	return GetBaseAvoid_WithDsStylePatch(bu);
+#else
+	return bu->battleSpeed * 2 + bu->unit.lck;
+#endif
+}
+
 LYN_REPLACE_CHECK(ComputeBattleUnitAvoidRate);
 void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
 {
-	int status = (bu->battleSpeed * 2) + bu->terrainAvoid + (bu->unit.lck);
+	int status = GetBaseAvoid(bu) + bu->terrainAvoid;
 
 	if (!CheckOutdoorTerrain(bu->terrainId)) {
 		int jid = UNIT_CLASS_ID(&bu->unit);

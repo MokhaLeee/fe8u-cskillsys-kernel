@@ -1,0 +1,7 @@
+
+#include "Source/DsStyleAvoid.lyn.event"
+
+PUSH
+	ORG 0x2ABEE
+	DsStyleAvoidIdentifier:
+POP

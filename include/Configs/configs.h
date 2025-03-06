@@ -152,6 +152,11 @@
 #define CONFIG_PERFORMANCE_OPTIMIZATION
 
 /**
+ * If uncomment, fit for patch: DSFE STYLE AVOID
+ */
+#define CONFIG_WITH_PATCH_DS_STYLE_AVOID
+
+/**
  * Install DrawMapActionAnimation
  */
 // #define CONFIG_INSTALL_MAPACTIONANIM
