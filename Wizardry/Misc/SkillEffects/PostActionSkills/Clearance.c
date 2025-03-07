@@ -35,7 +35,7 @@ static void exec(ProcPtr proc)
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionClearance[] = {
 	PROC_CALL(LockGame),
 	PROC_CALL(MapAnim_CommonInit),
-	PROC_CALL(EnsureCameraOntoActiveUnitPosition),
+	PROC_CALL_2(EnsureCameraOntoActiveUnitPosition),
 	PROC_YIELD,
 	PROC_CALL(anim_init),
 	PROC_YIELD,

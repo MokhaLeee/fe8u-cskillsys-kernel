@@ -98,6 +98,8 @@ const struct ProcCmd ProcScr_PrePhaseChillAnim[] = {
 	PROC_CALL(PrePhaseChillAnim_ShowDebuffAnim),
 	PROC_YIELD,
 	PROC_WHILE(MapAnimHeavyGravityExists),
+	PROC_CALL_ARG(RemoveMuForActiveUnit, 5),
+	PROC_YIELD,
 	PROC_END
 };
 

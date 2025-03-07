@@ -89,19 +89,23 @@ struct ProcMuSkillAnim {
 	PROC_HEADER;
 
 	u16 sid;
+	bool mu_gen;
 	void (*callback1)(ProcPtr proc);
 	void (*callback2)(ProcPtr proc);
 };
 
-static void anim_init(ProcPtr proc)
+static void anim_init(struct ProcMuSkillAnim *proc)
 {
 	struct MuProc *mu;
 
-	HideUnitSprite(gActiveUnit);
+	proc->mu_gen = false;
 
 	mu = GetUnitMu(gActiveUnit);
-	if (!mu)
+	if (!mu) {
+		HideUnitSprite(gActiveUnit);
 		mu = StartMu(gActiveUnit);
+		proc->mu_gen = true;
+	}
 
 	SetMuDefaultFacing(mu);
 	FreezeSpriteAnim(mu->sprite_anim);
@@ -131,10 +135,26 @@ static void _callback2(struct ProcMuSkillAnim *proc)
 		proc->callback2(proc);
 }
 
+// This could be directly called on end, but it is better to release an API for user
+STATIC_DECLAR void RemoveMuForActiveUnitExt(void)
+{
+	struct MuProc *mu = GetUnitMu(gActiveUnit);
+
+	if (mu) {
+		EndMu(mu);
+		ShowUnitSprite(gActiveUnit);
+	}
+}
+
+void RemoveMuForActiveUnit(int delay)
+{
+	CallDelayed(RemoveMuForActiveUnitExt, delay);
+}
+
 STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {
 	PROC_CALL(LockGame),
 	PROC_CALL(MapAnim_CommonInit),
-	PROC_CALL(EnsureCameraOntoActiveUnitPosition),
+	PROC_CALL_2(EnsureCameraOntoActiveUnitPosition),
 	PROC_CALL(anim_init),
 	PROC_YIELD,
 	PROC_CALL(anim_act),
@@ -147,6 +167,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {
 	PROC_YIELD,
 	PROC_CALL(UnlockGame),
 	PROC_CALL(MapAnim_CommonEnd),
+	PROC_YIELD,
 	PROC_END
 };
 

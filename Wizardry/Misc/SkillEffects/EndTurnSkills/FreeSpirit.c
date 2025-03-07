@@ -84,12 +84,7 @@ STATIC_DECLAR void EndTurnFreeSpirit_Loop(struct ProcEndTurnFreeSpirit *proc)
 
 void EndTurnFreeSpirit_End(ProcPtr proc)
 {
-	struct MuProc *mu = GetUnitMu(gActiveUnit);
-
-	if (mu) {
-		EndMu(mu);
-		ShowUnitSprite(gActiveUnit);
-	}
+	RemoveMuForActiveUnit(5);
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_EndTurnFreeSpirit[] = {
