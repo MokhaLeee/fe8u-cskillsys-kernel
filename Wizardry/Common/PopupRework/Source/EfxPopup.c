@@ -161,7 +161,7 @@ void NewEkrPopup(void)
 	gpProcEkrPopup = (ProcPtr)proc;
 
 	if (gEkrDistanceType == EKR_DISTANCE_PROMOTION)
-		proc->config = gPromotPopupConfigs;
+		proc->config = gpPromotPopupConfigs;
 	else
-		proc->config = gBattlePopupConfigs;
+		proc->config = gpBattlePopupConfigs;
 }

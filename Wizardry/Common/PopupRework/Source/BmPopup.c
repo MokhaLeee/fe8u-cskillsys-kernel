@@ -7,7 +7,7 @@
  */
 void BmPopR_Init(struct ProcPopupHanlder *proc)
 {
-	proc->config = gBattlePopupConfigs;
+	proc->config = gpBattlePopupConfigs;
 }
 
 void BmPopR_Loop(struct ProcPopupHanlder *proc)

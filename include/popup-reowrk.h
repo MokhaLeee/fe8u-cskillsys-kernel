@@ -33,8 +33,11 @@ struct PopupConfig {
 	int duration;
 };
 
-extern struct PopupConfig const gBattlePopupConfigs[];
-extern struct PopupConfig const gPromotPopupConfigs[];
+// extern struct PopupConfig const gBattlePopupConfigs[];
+// extern struct PopupConfig const gPromotPopupConfigs[];
+
+extern struct PopupConfig const *const gpBattlePopupConfigs;
+extern struct PopupConfig const *const gpPromotPopupConfigs;
 
 struct ProcPopupHanlder {
 	PROC_HEADER;

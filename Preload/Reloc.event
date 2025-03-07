@@ -169,4 +169,8 @@ gpExternalAidGetters:   WORD 0
 gpEndTurnFuncs: POIN gEndTurnFuncs
 gpExternalEndTurnHook: WORD 0
 
+gpPopupComponents: POIN gPopupComponents
+gpBattlePopupConfigs: POIN gBattlePopupConfigs
+gpPromotPopupConfigs: POIN gPromotPopupConfigs
+
 KERNEL_RELOC_END:
