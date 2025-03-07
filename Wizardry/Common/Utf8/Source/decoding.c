@@ -6,7 +6,7 @@ static bool is_ascii(u32 unicod)
 	return unicod < 0x80;
 }
 
-static struct Glyph *GetCharGlyphUnicode(u32 unicode_ch, struct Font *font)
+STATIC_DECLAR struct Glyph *GetCharGlyphUnicode(u32 unicode_ch, struct Font *font)
 {
 	struct Glyph *glyph;
 	int hi = (unicode_ch >> 0x8) & 0xFF;

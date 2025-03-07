@@ -84,7 +84,7 @@ void EfxAnimNumber_Loop(struct ProcEfxAnimNumber *proc)
 		Proc_Break(proc);
 }
 
-static const struct ProcCmd ProcScr_EfxAnimNumber[] = {
+STATIC_DECLAR const struct ProcCmd ProcScr_EfxAnimNumber[] = {
 	PROC_YIELD,
 	PROC_CALL(EfxAnimNumber_Start),
 	PROC_REPEAT(EfxAnimNumber_Loop),

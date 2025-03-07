@@ -12,7 +12,7 @@ void ResetItemPageLists(void)
 	memset(&gItemPageList, 0, sizeof(gItemPageList));
 }
 
-static void UpdateItemPageListExt(struct Unit *unit, struct ItemPageList *list)
+STATIC_DECLAR void UpdateItemPageListExt(struct Unit *unit, struct ItemPageList *list)
 {
 	int i, item, cnt = 0;
 	struct GaidenMagicList *gmag_list;
@@ -118,7 +118,7 @@ struct ItemPageList *GetUnitItemPageList(struct Unit *unit)
 	return list;
 }
 
-NOINLINE static void DrawItemLineDefault(const struct ItemPageEnt *ent, int line)
+NOINLINE STATIC_DECLAR void DrawItemLineDefault(const struct ItemPageEnt *ent, int line)
 {
 	DrawItemStatScreenLine(
 		&gStatScreen.text[STATSCREEN_TEXT_ITEM0 + line],
@@ -128,7 +128,7 @@ NOINLINE static void DrawItemLineDefault(const struct ItemPageEnt *ent, int line
 	);
 }
 
-NOINLINE static void DrawItemLineGaidenMagic(const struct ItemPageEnt *ent, int line)
+NOINLINE STATIC_DECLAR void DrawItemLineGaidenMagic(const struct ItemPageEnt *ent, int line)
 {
 	int item = ent->item;
 	int color = ent->color;
@@ -151,7 +151,7 @@ NOINLINE static void DrawItemLineGaidenMagic(const struct ItemPageEnt *ent, int 
 #endif
 }
 
-NOINLINE static void DrawItemEquipLine(int slot)
+NOINLINE STATIC_DECLAR void DrawItemEquipLine(int slot)
 {
 	int i, line;
 	struct Unit *unit = gStatScreen.unit;
@@ -177,7 +177,7 @@ NOINLINE static void DrawItemEquipLine(int slot)
 	}
 }
 
-NOINLINE static void DrawItemPageSubfix(int slot)
+NOINLINE STATIC_DECLAR void DrawItemPageSubfix(int slot)
 {
 	int i, weapon;
 	const char *str;

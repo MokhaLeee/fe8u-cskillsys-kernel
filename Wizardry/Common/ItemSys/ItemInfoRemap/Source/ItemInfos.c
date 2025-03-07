@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "item-sys.h"
 
-static int MakeNewItemVanilla(int item)
+STATIC_DECLAR int MakeNewItemVanilla(int item)
 {
 	int uses = GetItemMaxUses(item);
 

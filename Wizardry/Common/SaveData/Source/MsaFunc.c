@@ -57,7 +57,7 @@ void MSA_LoadDungeon(u8 *src, const u32 size)
 	LoadDungeonRecords(dungeon);
 }
 
-static void NewPackSaveUnit(struct Unit *src, struct EmsPackedSavUnit *dst)
+STATIC_DECLAR void NewPackSaveUnit(struct Unit *src, struct EmsPackedSavUnit *dst)
 {
 	int i;
 	struct Unit tmp_unit;
@@ -103,7 +103,7 @@ static void NewPackSaveUnit(struct Unit *src, struct EmsPackedSavUnit *dst)
 	dst->state = src->state;
 }
 
-static void NewUnpackSaveUnit(struct EmsPackedSavUnit *src, struct Unit *dst)
+STATIC_DECLAR void NewUnpackSaveUnit(struct EmsPackedSavUnit *src, struct Unit *dst)
 {
 	int i;
 

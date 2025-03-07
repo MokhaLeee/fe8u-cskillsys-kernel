@@ -165,7 +165,7 @@ u8 MenuSkills_Usability(const struct MenuItemDef *self, int number)
 	return GetSkillMenuInfo(sid)->isAvailable(self, number);
 }
 
-static int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
+STATIC_DECLAR int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
 {
 	const struct MenuItemDef *def = GetSkillMenuInfo(UnitMenuSkills[MENU_SKILL_INDEX(item->def)]);
 

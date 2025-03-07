@@ -2,7 +2,7 @@
 #include "stat-screen.h"
 #include "lvup.h"
 
-static void DisplayHpStr(void)
+STATIC_DECLAR void DisplayHpStr(void)
 {
 	int bank, color;
 	struct Unit *unit = gStatScreen.unit;

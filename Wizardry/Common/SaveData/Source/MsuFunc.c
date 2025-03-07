@@ -114,7 +114,7 @@ void MSU_LoadBonusClaimWIP(void)
 	SetBonusContentClaimFlags(buf);
 }
 
-static void NewPackSuspandUnit(struct Unit *src, struct EmsPackedSusUnit *dst)
+STATIC_DECLAR void NewPackSuspandUnit(struct Unit *src, struct EmsPackedSusUnit *dst)
 {
 	u32 i;
 	struct Unit tmp_unit;
@@ -190,7 +190,7 @@ static void NewPackSuspandUnit(struct Unit *src, struct EmsPackedSusUnit *dst)
 	dst->_u3B = src->_u3B;
 }
 
-static void NewUnpackSuspandUnit(struct EmsPackedSusUnit *src, struct Unit *dst)
+STATIC_DECLAR void NewUnpackSuspandUnit(struct EmsPackedSusUnit *src, struct Unit *dst)
 {
 	u32 i;
 

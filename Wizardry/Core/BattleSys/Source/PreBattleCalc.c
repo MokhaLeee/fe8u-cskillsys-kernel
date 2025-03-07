@@ -14,7 +14,7 @@ typedef void (*PreBattleCalcFunc) (struct BattleUnit *buA, struct BattleUnit *bu
 extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit *defender);
 
-static bool CheckSRankBattle(struct BattleUnit *bu)
+STATIC_DECLAR bool CheckSRankBattle(struct BattleUnit *bu)
 {
 	int wtype;
 

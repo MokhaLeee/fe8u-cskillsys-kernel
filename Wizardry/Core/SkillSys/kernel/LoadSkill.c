@@ -8,7 +8,7 @@
 /**
  * Slot ops
  */
-static void SortRamSkillList(struct Unit *unit)
+STATIC_DECLAR void SortRamSkillList(struct Unit *unit)
 {
 	int i, cnt = 0;
 	u8 *list = UNIT_RAM_SKILLS(unit);
