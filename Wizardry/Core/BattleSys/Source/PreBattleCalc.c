@@ -153,7 +153,7 @@ void ComputeBattleUnitCritRate(struct BattleUnit *bu)
 	status = bu->unit.skl / 2;
 
 #if defined(SID_SuperLuck) && (COMMON_SKILL_VALID(SID_SuperLuck))
-	if (SkillTester(&bu->unit, SID_SuperLuck))
+	if (BattleFastSkillTester(&bu->unit, SID_SuperLuck))
 		status = bu->unit.lck;
 #endif
 
