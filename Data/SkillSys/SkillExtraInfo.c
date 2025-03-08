@@ -575,6 +575,10 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Renewal] = {{30}},
 #endif
 
+#if (defined(SID_RenewalPlus) && COMMON_SKILL_VALID(SID_RenewalPlus))
+    [SID_RenewalPlus] = {{100}},
+#endif
+
 #if (defined(SID_Forager) && COMMON_SKILL_VALID(SID_Forager))
     [SID_Forager] = {{20}},
 #endif

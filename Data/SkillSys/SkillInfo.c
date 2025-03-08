@@ -755,6 +755,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_RenewalPlus) && COMMON_SKILL_VALID(SID_Renewallus))
+    [SID_RenewalPlus] = {
+        .desc = MSG_SKILL_RenewalPlus,
+        .icon = GFX_SkillIcon_RenewalPlus,
+    },
+#endif
+
 #if (defined(SID_Imbue) && COMMON_SKILL_VALID(SID_Imbue))
     [SID_Imbue] = {
         .desc = MSG_SKILL_Imbue,

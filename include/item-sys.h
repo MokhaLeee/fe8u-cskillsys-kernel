@@ -508,6 +508,7 @@ static const KeyValuePair dict_skills[] =
         { "Reflex", {1000, 1}},
         { "Relief", {1000, 1}},
         { "Renewal", {1000, 1}},
+        { "RenewalPlus", {1000, 1}},
         { "Reposition", {1000, 1}},
         { "ResBonus", {1000, 1}},
         { "ResHone", {1000, 1}},

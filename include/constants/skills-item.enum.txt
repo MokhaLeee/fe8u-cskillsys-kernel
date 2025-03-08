@@ -527,6 +527,7 @@
 
 ////////// PRE-PHASE SKILLS
 // SID_Renewal
+// SID_RenewalPlus
 // SID_Imbue
 // SID_Forager
 // SID_Relief

@@ -221,10 +221,10 @@ SID_Seer
 // SID_Counterattack
 // SID_Antihex
 // SID_Equalizer
-SID_Perch
-SID_MountainMan
-SID_Decadon
-SID_Camouflage
+// SID_Perch
+// SID_MountainMan
+// SID_Decadon
+// SID_Camouflage
 
 //////// POST-BATTLE SKILLS
 // SID_Canto
@@ -527,6 +527,7 @@ SID_PridefulWarrior
 
 //////// PRE-PHASE SKILLS
 SID_Renewal
+SID_RenewalPlus
 SID_Imbue
 // SID_Forager
 // SID_Relief

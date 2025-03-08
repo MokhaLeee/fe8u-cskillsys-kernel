@@ -513,6 +513,12 @@ but at least the arena is playable now
  */
 #define CONFIG_AUTO_NARROW_FONT
 
+/*
+** By Huichelaar
+** Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
+*/
+#define CONFIG_CUSTOM_CHAPTER_SCREEN
+
 /**
  * FE8 Rewritten exclusive configs
  */

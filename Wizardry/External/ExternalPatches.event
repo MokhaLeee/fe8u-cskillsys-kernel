@@ -129,3 +129,7 @@
 
 /* Requires me to fix a lot of undefined identifiers, fuck that life */
 //#include "UI/Installer.event" // Vesly
+
+#ifdef CONFIG_CUSTOM_CHAPTER_SCREEN
+    #include "CustomChapterScreen/Installer.event"
+#endif

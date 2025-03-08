@@ -3,6 +3,11 @@ Renewal:[NL]
 Restore 30% of max HP[NL]
 at the start of each turn.[X]
 
+## MSG_SKILL_RenewalPlus
+Renewal+:[NL]
+Restore 100% of max HP[NL]
+at the start of each turn.[X]
+
 ## MSG_SKILL_Imbue
 Imbue:[NL]
 Recover HP equal to MAG[NL]
