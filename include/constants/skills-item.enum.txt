@@ -224,6 +224,7 @@
 // SID_Perch
 // SID_MountainMan
 // SID_Decadon
+// SID_Camouflage
 
 ////////// POST-BATTLE SKILLS
 // SID_Canto

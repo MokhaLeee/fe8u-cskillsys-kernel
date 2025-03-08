@@ -1236,3 +1236,8 @@ at a rate of 2 turns per turn.[X]
 Decadon:[N]
 This unit's regular attacks deal[N]
 a fixed 10 points of damage.[X]
+
+## MSG_SKILL_Camouflage
+Camouflage:[N]
+Terrain avoid bonuses are[N]
+x1.5 for this unit.[X]

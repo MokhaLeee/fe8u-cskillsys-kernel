@@ -74,6 +74,12 @@ void SetBattleUnitTerrainBonuses(struct BattleUnit* bu, int terrain) {
     bu->terrainDefense    = bu->unit.pClassData->pTerrainDefenseLookup[bu->terrainId];
     bu->terrainResistance = bu->unit.pClassData->pTerrainResistanceLookup[bu->terrainId];
 #endif
+
+
+#if (defined(SID_Camouflage) && (COMMON_SKILL_VALID(SID_Camouflage)))
+    if (BattleSkillTester(bu, SID_Camouflage))
+        bu->terrainAvoid = (bu->terrainAvoid * 3)/2;
+#endif
 }
 
 LYN_REPLACE_CHECK(SetBattleUnitTerrainBonusesAuto);
@@ -98,5 +104,10 @@ void SetBattleUnitTerrainBonusesAuto(struct BattleUnit* bu) {
     bu->terrainAvoid      = bu->unit.pClassData->pTerrainAvoidLookup[bu->terrainId];
     bu->terrainDefense    = bu->unit.pClassData->pTerrainDefenseLookup[bu->terrainId];
     bu->terrainResistance = bu->unit.pClassData->pTerrainResistanceLookup[bu->terrainId];
+#endif
+
+#if (defined(SID_Camouflage) && (COMMON_SKILL_VALID(SID_Camouflage)))
+    if (BattleSkillTester(bu, SID_Camouflage))
+        bu->terrainAvoid = (bu->terrainAvoid * 3)/2;
 #endif
 }
