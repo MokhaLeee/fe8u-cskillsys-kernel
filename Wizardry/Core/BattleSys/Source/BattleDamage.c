@@ -662,6 +662,12 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
 
     result += gDmg.real_damage;
 
+
+#if (defined(SID_Decadon) && (COMMON_SKILL_VALID(SID_Decadon)))
+    if (BattleSkillTester(attacker, SID_Decadon))
+        result = 10;
+#endif
+
     Printf(
         "[round %d] dmg=%d: base=%d (atk=%d, def=%d, cor=%d), inc=%d, crt=%d, dec=%d, real=%d",
         GetBattleHitRound(gBattleHitIterator), result, gDmg.damage_base, gDmg.attack, gDmg.defense, gDmg.correction,

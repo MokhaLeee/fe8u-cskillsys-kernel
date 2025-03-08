@@ -1231,3 +1231,8 @@ become HIT bonuses.[X]
 Shed Skin:[N]
 Recover from status effects[N]
 at a rate of 2 turns per turn.[X]
+
+## MSG_SKILL_Decadon
+Decadon:[N]
+This unit's regular attacks deal[N]
+a fixed 10 points of damage.[X]

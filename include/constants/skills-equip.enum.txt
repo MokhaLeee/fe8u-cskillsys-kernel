@@ -223,6 +223,7 @@ SID_Seer
 // SID_Equalizer
 SID_Perch
 SID_MountainMan
+SID_Decadon
 
 //////// POST-BATTLE SKILLS
 // SID_Canto
