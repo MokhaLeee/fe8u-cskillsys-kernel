@@ -2861,6 +2861,12 @@ u8 AttackCommandUsability(const struct MenuItemDef* def, int number) {
         return MENU_ENABLED;
 #endif
 
+/* These skills have the same effect here, but GridmasterAtk also prevents the unit from moving */
+#if defined(SID_Warpath) && (COMMON_SKILL_VALID(SID_Warpath))
+    if (SkillTester(gActiveUnit, SID_Warpath) && gActiveUnit->state & US_CANTOING)
+        return MENU_ENABLED;
+#endif   
+
     if (gActiveUnit->state & US_HAS_MOVED) {
         return MENU_NOTSHOWN;
     }

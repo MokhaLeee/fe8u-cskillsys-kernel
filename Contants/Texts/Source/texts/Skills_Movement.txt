@@ -97,3 +97,8 @@ using menu movement skills.[A][X]
 Phase Shift:[N]
 Unit can move through[N]
 walls.[X]
+
+## MSG_SKILL_Warpath
+Warpath:[N]
+Unit can still attack[N]
+while in canto state.[X]

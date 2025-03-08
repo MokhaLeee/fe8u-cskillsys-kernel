@@ -693,6 +693,7 @@ SID_Canto
 // SID_MoreForMe
 // SID_Mimicry
 // SID_CursedHeal
+// SID_Warpath
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder
