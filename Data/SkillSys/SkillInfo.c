@@ -3665,7 +3665,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Accost) && COMMON_SKILL_VALID(SID_Accost))
     [SID_Accost] = {
         .desc = MSG_SKILL_Accost,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Accost,
     },
 #endif
 
@@ -4324,7 +4324,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Anchor) && COMMON_SKILL_VALID(SID_Anchor))
     [SID_Anchor] = {
         .desc = MSG_SKILL_Anchor,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Anchor,
     },
 #endif
 
@@ -4338,14 +4338,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Absolve) && COMMON_SKILL_VALID(SID_Absolve))
     [SID_Absolve] = {
         .desc = MSG_SKILL_Absolve,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Absolve,
     },
 #endif
 
 #if (defined(SID_Entrepreneur) && COMMON_SKILL_VALID(SID_Entrepreneur))
     [SID_Entrepreneur] = {
         .desc = MSG_SKILL_Entrepreneur,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Entrepreneur,
     },
 #endif
 
@@ -4719,7 +4719,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Alacrity) && COMMON_SKILL_VALID(SID_Alacrity))
     [SID_Alacrity] = {
         .desc = MSG_SKILL_Alacrity,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Alacrity,
     },
 #endif
 
@@ -4866,7 +4866,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_AidRefusal) && COMMON_SKILL_VALID(SID_AidRefusal))
     [SID_AidRefusal] = {
         .desc = MSG_SKILL_AidRefusal,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_AidRefusal,
     },
 #endif
 
