@@ -3565,7 +3565,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
     [SID_Blacksmith] = {
         .desc = MSG_SKILL_Blacksmith,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Blacksmith,
     },
 #endif
 
@@ -3650,7 +3650,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Comatose) && COMMON_SKILL_VALID(SID_Comatose))
     [SID_Comatose] = {
         .desc = MSG_SKILL_Comatose,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Comatose,
     },
 #endif
 
@@ -3686,7 +3686,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_ArenaTrap) && COMMON_SKILL_VALID(SID_ArenaTrap))
     [SID_ArenaTrap] = {
         .desc = MSG_SKILL_ArenaTrap,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_ArenaTrap,
     },
 #endif
 
@@ -4196,7 +4196,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Casual) && COMMON_SKILL_VALID(SID_Casual))
     [SID_Casual] = {
         .desc = MSG_SKILL_Casual,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Casual,
     },
 #endif
 
@@ -4564,7 +4564,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Arise) && COMMON_SKILL_VALID(SID_Arise))
     [SID_Arise] = {
         .desc = MSG_SKILL_Arise,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Arise,
     },
 #endif
 
@@ -4726,7 +4726,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_AssignDecoy) && COMMON_SKILL_VALID(SID_AssignDecoy))
     [SID_AssignDecoy] = {
         .desc = MSG_SKILL_AssignDecoy,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_AssignDecoy,
     },
 #endif
 
