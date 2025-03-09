@@ -292,50 +292,50 @@ try_ballist_combat:
  * Add unit to AI list
  */
 extern void DecideScriptA(void);
-extern void CpOrderBerserkInit(ProcPtr proc);
-LYN_REPLACE_CHECK(CpOrderBerserkInit);
-void CpOrderBerserkInit(ProcPtr proc)
-{
-    int i, aiNum = 0;
+// extern void CpOrderBerserkInit(ProcPtr proc);
+// LYN_REPLACE_CHECK(CpOrderBerserkInit);
+// void CpOrderBerserkInit(ProcPtr proc)
+// {
+//     int i, aiNum = 0;
 
-    u32 faction = gPlaySt.faction;
+//     u32 faction = gPlaySt.faction;
 
-    int factionUnitCountLut[3] = {62, 20, 50}; // TODO: named constant for those
+//     int factionUnitCountLut[3] = {62, 20, 50}; // TODO: named constant for those
 
-    for (i = 0; i < factionUnitCountLut[faction >> 6]; ++i)
-    {
-        struct Unit *unit = GetUnit(faction + i + 1);
+//     for (i = 0; i < factionUnitCountLut[faction >> 6]; ++i)
+//     {
+//         struct Unit *unit = GetUnit(faction + i + 1);
 
-        if (!unit->pCharacterData)
-            continue;
+//         if (!unit->pCharacterData)
+//             continue;
 
-        if 
-        (
-            unit->statusIndex != UNIT_STATUS_BERSERK &&
-#if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage)))
-                !SkillTester(unit, SID_Rampage)
-#else
-                1
-#endif
-        )
-            continue;
+//         if 
+//         (
+//             unit->statusIndex != UNIT_STATUS_BERSERK &&
+// #if (defined(SID_Rampage) && (COMMON_SKILL_VALID(SID_Rampage)))
+//                 !SkillTester(unit, SID_Rampage)
+// #else
+//                 1
+// #endif
+//         )
+//             continue;
 
-        if (unit->state & (US_HIDDEN | US_UNSELECTABLE | US_DEAD | US_RESCUED | US_HAS_MOVED_AI))
-            continue;
+//         if (unit->state & (US_HIDDEN | US_UNSELECTABLE | US_DEAD | US_RESCUED | US_HAS_MOVED_AI))
+//             continue;
 
-        gAiState.units[aiNum++] = faction + i + 1;
-    }
+//         gAiState.units[aiNum++] = faction + i + 1;
+//     }
 
-    if (aiNum != 0)
-    {
-        gAiState.units[aiNum] = 0;
-        gAiState.unitIt = gAiState.units;
+//     if (aiNum != 0)
+//     {
+//         gAiState.units[aiNum] = 0;
+//         gAiState.unitIt = gAiState.units;
 
-        AiDecideMainFunc = AiDecideMain;
+//         AiDecideMainFunc = AiDecideMain;
 
-        Proc_StartBlocking(gProcScr_CpDecide, proc);
-    }
-}
+//         Proc_StartBlocking(gProcScr_CpDecide, proc);
+//     }
+// }
 
 LYN_REPLACE_CHECK(DecideScriptA);
 void DecideScriptA(void)

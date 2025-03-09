@@ -55,7 +55,8 @@ typedef struct {
     u8 actionID; 
     s8 id; // used by our custom menus 
     s8 digit;
-    u8 godMode; 
+    u8 godMode;
+    u8 autoplay; 
     u8 page; 
     s8 mainID; // by the main debugger menu 
     u16 lastFlag; 
@@ -139,6 +140,7 @@ void CopyProcVariables(DebuggerProc* dst, DebuggerProc* src) {
     dst->page = src->page; 
     dst->lastFlag = src->lastFlag; 
     dst->gold = src->gold; 
+    dst->autoplay = src->autoplay;
     for (int i = 0; i < tmpSize; ++i) { 
         dst->tmp[i] = src->tmp[i]; 
     }
@@ -260,6 +262,7 @@ u8 CanActiveUnitPromote(void);
 #define SkillsLabel 17
 #define SupportLabel 18
 #define LoopLabel 19
+#define ListLabel 20
 #define EndLabel 99 
 
 #define ActionID_Promo 1 
@@ -396,6 +399,90 @@ const struct ProcCmd DebuggerProcCmd[] =
     PROC_CALL(SaveProcVarsToIdler),
     PROC_END,
 };
+
+int ShouldAIControlRemainingUnits(void)
+{
+    DebuggerProc * proc;
+    proc = Proc_Find(DebuggerProcCmdIdler);
+    if (!proc)
+    {
+        return false;
+    }
+    if (proc->autoplay)
+    {
+        return true;
+    }
+    return false;
+}
+
+extern void AiPhaseBerserkInit(struct Proc* proc);
+
+LYN_REPLACE_CHECK(AiPhaseBerserkInit);
+void AiPhaseBerserkInit(struct Proc * proc)
+{
+    int i;
+
+    gAiState.flags = AI_FLAG_BERSERKED;
+    if (ShouldAIControlRemainingUnits())
+    {
+        gAiState.flags = AI_FLAG_0; // do not attack allies
+    }
+    gAiState.unk7E = -1;
+
+    for (i = 0; i < 8; ++i)
+        gAiState.unk86[i] = 0; // cmd_result
+
+    gAiState.specialItemFlags = gAiItemConfigTable[gPlaySt.chapterIndex];
+
+    UpdateAllPhaseHealingAIStatus();
+    SetupUnitInventoryAIFlags();
+
+    Proc_StartBlocking(gProcScr_BerserkCpOrder, proc);
+}
+
+extern void CpOrderBerserkInit(ProcPtr proc);
+
+LYN_REPLACE_CHECK(CpOrderBerserkInit);
+void CpOrderBerserkInit(ProcPtr proc)
+{
+    int i, aiNum = 0;
+
+    u32 faction = gPlaySt.faction;
+    int AIControl = ShouldAIControlRemainingUnits();
+
+    int factionUnitCountLut[3] = { 62, 20, 50 }; // TODO: named constant for those
+
+    for (i = 0; i < factionUnitCountLut[faction >> 6]; ++i)
+    {
+        struct Unit * unit = GetUnit(faction + i + 1);
+
+        if (!unit->pCharacterData)
+            continue;
+
+        if (!AIControl) // all units act this way, even if not berserked
+        {
+            if (unit->statusIndex != UNIT_STATUS_BERSERK)
+            {
+                continue;
+            }
+        }
+
+        if (unit->state & (US_HIDDEN | US_UNSELECTABLE | US_DEAD | US_RESCUED | US_HAS_MOVED_AI))
+            continue;
+
+        gAiState.units[aiNum++] = faction + i + 1;
+    }
+
+    if (aiNum != 0)
+    {
+        gAiState.units[aiNum] = 0;
+        gAiState.unitIt = gAiState.units;
+
+        AiDecideMainFunc = AiDecideMain;
+
+        Proc_StartBlocking(gProcScr_CpDecide, proc);
+    }
+}
 
 //const char* UnitStats
 #define NumberOfOptions 9 
@@ -3115,8 +3202,32 @@ u8 EditSkillsNow(struct MenuProc * menu, struct MenuItemProc * menuItem) {
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
+u8 AiControlRemainingUnitsNow(struct MenuProc * menu, struct MenuItemProc * menuItem)
+{
+    DebuggerProc * proc;
+ 
+    proc = Proc_Find(DebuggerProcCmd);
+ 
+    proc->actionID = 0;
 
+    Proc_Goto(proc, RestartLabel); // 0xb7
+ 
+    DebuggerProc * procIdler = Proc_Find(DebuggerProcCmdIdler);
+ 
+    if (procIdler->autoplay)
+    {
+        procIdler->autoplay = false;
+        proc->autoplay = false;
+    }
 
+    else
+    {
+        procIdler->autoplay = true;
+        proc->autoplay = true;
+    }
+
+    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
+}
 
 int ShouldStartDebugger(void) { 
     if (CheckFlag(DebuggerTurnedOff_Flag)) { return false; } 
@@ -3257,6 +3368,29 @@ int ControlAiDrawText(struct MenuProc * menu, struct MenuItemProc * menuItem) {
     PutText(&menuItem->text, BG_GetMapBuffer(menu->frontBg) + TILEMAP_INDEX(menuItem->xTile, menuItem->yTile));
     return 0;
 } 
+
+int AiControlRemainingUnitsDrawText(struct MenuProc * menu, struct MenuItemProc * menuItem)
+{
+    if (menuItem->availability == MENU_DISABLED)
+    {
+        Text_SetColor(&menuItem->text, 1);
+    }
+
+    DebuggerProc * procIdler = Proc_Find(DebuggerProcCmdIdler);
+
+    if (procIdler->autoplay)
+    {
+        Text_DrawString(&menuItem->text, " Autoplay on");
+    }
+    else
+    {
+        Text_DrawString(&menuItem->text, GetDebuggerMenuText(procIdler, menuItem->itemNumber));
+    }
+
+    PutText(&menuItem->text, BG_GetMapBuffer(menu->frontBg) + TILEMAP_INDEX(menuItem->xTile, menuItem->yTile));
+
+    return 0;
+}
 
 void PageMenuItemDrawSprites(struct MenuProc* menu) { 
 	DebuggerProc* proc; 
