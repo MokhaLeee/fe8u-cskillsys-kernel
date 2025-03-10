@@ -86,14 +86,10 @@ void ResetSkillLists(void);
 void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
 
 /* Skill tetsers */
-extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
-bool _SkillListTester(struct Unit *unit, const u16 sid);
-extern bool (*_BattleFastSkillTester)(struct BattleUnit *bu, const u16 sid);
-
 // see: ../docs/SkillSys.md
-#define SkillTester _SkillTester
-#define SkillListTester _SkillListTester
-#define BattleFastSkillTester _BattleFastSkillTester
+bool SkillTester(struct Unit *unit, const u16 sid);
+bool SkillListTester(struct Unit *unit, const u16 sid);
+bool BattleFastSkillTester(struct BattleUnit *bu, const u16 sid);
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
 bool CheckActiveUnitSkillActivate(int sid, int rate);

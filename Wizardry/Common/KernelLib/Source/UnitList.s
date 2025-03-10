@@ -1,13 +1,23 @@
     .INCLUDE "macros.inc"
     .SYNTAX UNIFIED
 
-    .section .rodata
+    .section .text
 
+THUMB_FUNC_START JudgeUnitList
+JudgeUnitList:
+    ldr r3, _JudgeUnitList
+    bx r3
 .global _JudgeUnitList
+.align 2, 0
 _JudgeUnitList:
     .4byte ARM_UnitList + (.Lfun_judge - _ARM_UnitList_CopyStart)
 
+THUMB_FUNC_START WriteUnitList
+WriteUnitList:
+    ldr r3, _WriteUnitList
+    bx r3
 .global _WriteUnitList
+.align 2, 0
 _WriteUnitList:
     .4byte ARM_UnitList + (.Lfun_write - _ARM_UnitList_CopyStart)
 
