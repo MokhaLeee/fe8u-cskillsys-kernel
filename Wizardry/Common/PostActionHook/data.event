@@ -19,7 +19,9 @@ gPostActionFuncs:
     POIN PostActionAngerPoint
     POIN PostActionResurrection
     POIN PostActionMendArms
+#ifdef SID_GorillaTactics
     POIN PostActionGorillaTactics
+#endif
 #ifdef CONFIG_AUTO_PROMOTION_ON_MAX_LEVEL
     POIN ConfigAutoPromotionOnMaxLevel
 #endif

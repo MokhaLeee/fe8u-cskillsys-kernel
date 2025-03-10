@@ -189,12 +189,17 @@ PUSH
     // BYTE 0x3F
     // PROTECT $18D08 $18D34
 
-/*
+    PUSH
+    ORG $361AC
+    ALIGN 4
+    WORD $46C04778 $E59FC000 $E12FFF1C
+    POIN StatusDecayDisplay_Display
+    POP
+
     ORG $361C8 // StatusDecayDisplay_Display
     SHORT 0x06A4 // lsl r4, r4, #0x1A
     SHORT 0x0EA4 // lsr r4, r4, #0x1A
-    PROTECT $361AC $3623C
-*/
+    // PROTECT $361AC $3623C
 
     ORG $2EC46 // ExecRestore
     BYTE 0x3F

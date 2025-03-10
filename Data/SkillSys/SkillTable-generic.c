@@ -6,7 +6,7 @@
 const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     [CHARACTER_EIRIKA] = {
         .skills = {
-        [0] = SID_NoGuardPlus,
+        // [0] = SID_NoGuardPlus,
         // [1] = SID_Casual,
         // [2] = SID_Arise,
         // [3] = SID_Comatose,

@@ -5,7 +5,7 @@
 #include "constants/skills.h"
 #include "item-sys.h"
 
-const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
+static const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
 
 int GetUnitBattleAmt(struct Unit * unit)
 {

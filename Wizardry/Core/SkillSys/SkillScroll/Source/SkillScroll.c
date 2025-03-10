@@ -78,7 +78,7 @@ void ItemUseEffect_SkillScroll(struct Unit * unit)
     }
 }
 
-const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
+static const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
 
 void ItemUseAction_SkillScroll(ProcPtr proc)
 {

@@ -3,7 +3,7 @@
 #include "constants/skills.h"
 #include "item-sys.h"
 
-const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
+static const int dict_size = sizeof(dict_skills) / sizeof(dict_skills[0]);
 
 // Custom binary search function
 int binary_search_skills(const KeyValuePair * array, int size, const char * key, int value)

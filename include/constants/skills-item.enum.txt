@@ -1,6 +1,3 @@
-///////// Commands
-// SID_Refuge
-
 ////////// MENU SKILLS
 // SID_Dismount
 // SID_ReciprocalAid
@@ -44,6 +41,7 @@
 // SID_Arise
 // SID_AssignDecoy
 // SID_ShadowFlash
+// SID_Refuge
 
 ////////// PRE-BATTLE SKILLS
 // SID_DefiantStr

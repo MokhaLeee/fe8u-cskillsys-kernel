@@ -2,9 +2,10 @@
 #define CASUAL_MODE
 
 #include "Extensions/Hack Installation.txt"
+#include "../../../include/constants/texts.h"
 
 // eid $B0 enables Casual Mode (fallen units come back next chapter)
-// hack by circleseverywhere
+// hack by circleseverywhere, modified to use dynamic text IDs by Jester
 
   {
 
@@ -15,35 +16,22 @@
     ORG $18418
       jumpToHack(CasualMode)
 
-	//�A�C�R�� ���̃A�C�R��
 	ORG 0xA2EC28
 	byte $20;
+  ORG 0xA2EC04
+  short MENU_Casual_Mode      // Casual Mode
+  ORG 0xA2EC08
+  short MENU_Casual_Mode_On   // Dead units will not be revived
 	ORG 0xA2EC0A
-	short $BE
+	short $BE                   // Off
 	ORG 0xA2EC10
-	short $F04
+	short MENU_Casual_Mode_Off  // If unit dies, revive them next chapter
 	ORG 0xA2EC12
-	short $F05
+	short MENU_Casual_Text      // Casual
   POP
 
   ALIGN 4
   CasualMode:
     #incbin "asm/CasualModeFE8.dmp"
-
-  ALIGN 4
-  CasualModeText:
-  #incbin "CasualModeName_Text_9E.bin"
-  CasualOffText:
-  #incbin "CasualModeName_Text_BA.bin"
-  CasualOnText:
-  #incbin "CasualModeName_Text_F04.bin"
-  CasualText:
-  #incbin "CasualModeName_Text_F05.bin"
-
-  #define setText(textID, offset) "PUSH; ORG (TextTable+4*textID); POIN (offset | 0x80000000); POP" //Anti-huffman
-  setText(0x009E,CasualModeText)
-  setText(0x00BA,CasualOffText)
-  setText(0x0F04,CasualOnText)
-  setText(0x0F05,CasualText)
 
   }

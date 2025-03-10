@@ -1,6 +1,3 @@
-/////// Commands
-SID_Refuge
-
 ////////MENU SKILLS
 // SID_Dismount
 // SID_ReciprocalAid
@@ -41,9 +38,10 @@ SID_Reposition
 SID_Shove
 SID_Smite
 SID_Entrepreneur
-SID_Arise
+// SID_Arise
 // SID_AssignDecoy
 // SID_ShadowFlash
+// SID_Refuge
 
 //////// PRE-BATTLE SKILLS
 // SID_DefiantStr
@@ -119,7 +117,7 @@ SID_Outrider
 SID_OddRhythm
 // SID_Corrosion
 SID_NoGuard
-SID_NoGuardPlus
+//SID_NoGuardPlus
 // SID_Puissance
 // SID_Prescience
 // SID_SilentPride
@@ -259,7 +257,7 @@ SID_QuickHands
 // SID_FortifyingStaff
 SID_MakeAKilling
 SID_NecroCopy
-// SID_MendArms
+SID_MendArms
 SID_KillStreak
 SID_HyperFocus
 SID_TakerDefense
@@ -272,7 +270,7 @@ SID_TakerSpectrum
 SID_TakerSpeed
 SID_TakerStrength
 // SID_Canter
-SID_GorillaTactics
+// SID_GorillaTactics
 
 //////// AURA SKILLS
 // SID_Anathema
@@ -494,9 +492,9 @@ SID_Toxic
 // SID_GrazingBlow
 // SID_AbsorbMelee
 // SID_AbsorbMagic
-SID_Duel
+// SID_Duel
 // SID_Offhand
-SID_ShedSkin
+// SID_ShedSkin
 
 //////// EFFECTIVENESS SKILLS
 SID_Resourceful
@@ -583,12 +581,12 @@ SID_IndoorMarch
 // SID_ArmorMarch
 // SID_KeepUp
 // SID_Amaterasu
-SID_GoodyBasket
+// SID_GoodyBasket
 
 //////// POST-PHASE SKILLS
 // SID_HoardersBane
 // SID_DarkBargain
-SID_Rampage
+// SID_Rampage
 
 //////// LEVEL UP SKILLS
 // SID_Blossom
@@ -640,7 +638,7 @@ SID_ConcealedWeapon
 SID_Shade
 SID_ShadePlus
 SID_Provoke
-SID_Guardian
+//SID_Guardian
 
 //////// STANDALONE SKILLS
 SID_IdentityProblems
@@ -686,15 +684,15 @@ SID_Resurrection
 // SID_DangerRanger
 // SID_Savior
 // SID_SelfHealing
-SID_Wrestler
+// SID_Wrestler
 // SID_TwinCrests
 // SID_Saint
 // SID_AidRefusal
 // SID_WhiteMage
 // SID_MoreForMe
 // SID_Mimicry
-SID_CursedHeal
-SID_Warpath
+// SID_CursedHeal
+// SID_Warpath
 
 /////// COMBAT ARTS
 // SID_COMBAT_Grounder

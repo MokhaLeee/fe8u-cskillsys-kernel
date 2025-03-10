@@ -61,7 +61,7 @@ ALIGN 4
 
 #include "Misc/GaidenMagic/GaidenMagic.event"
 #include "Misc/JobGrowth/JobGrowth.lyn.event"
-#include "Misc/Shield/Shield.event"
+// #include "Misc/Shield/Shield.event"
 #include "Misc/PortraitHeight/PortraitHeight.event"
 
 #include "External/ExternalPatches.event"

@@ -1,5 +1,3 @@
-
-
 ALIGN 4 
 StephanoStyleFlag: 
 WORD 0xAA 
@@ -331,7 +329,7 @@ POP
 
 #include "C_Code.lyn.event" 
 #include "Hooks.lyn.event" 
-
+#include "LynJump.event"
 
 
 

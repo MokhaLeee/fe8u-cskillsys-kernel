@@ -308,6 +308,7 @@ const u8 * GetPrepItem(void)
     return sPrepItem[id];
 }
 
+LYN_REPLACE_CHECK(DrawFundsSprite_Init);
 void DrawFundsSprite_Init(struct DrawFundsSpriteProc * proc)
 {
     Decompress(GetPrepItem(), (void *)0x06013000);
@@ -335,6 +336,7 @@ const u8 * GetPrepPopupWindow(void)
     return sPrepPopupWindow[id];
 }
 
+LYN_REPLACE_CHECK(PutImg_PrepPopupWindow);
 void PutImg_PrepPopupWindow(int vram, int pal)
 {
     Decompress(GetPrepPopupWindow(), (void *)(0x06010000 + vram));
@@ -357,7 +359,7 @@ enum bmshop_bgchr
 // {
 // Decompress(Img_ShopGoldBox, OBJ_CHR_ADDR(OBJCHR_SHOP_GOLDBOX));
 // }
-
+LYN_REPLACE_CHECK(UnpackUiFrameImage);
 void UnpackUiFrameImage(void * dest)
 {
     const u8 * UiFrame = GetUiFrame();
@@ -366,7 +368,7 @@ void UnpackUiFrameImage(void * dest)
 
     Decompress(UiFrame, dest);
 }
-
+LYN_REPLACE_CHECK(UnpackUiFrameBuffered);
 void UnpackUiFrameBuffered(int id)
 {
     const u8 * UiFrame = GetUiFrame();
@@ -442,6 +444,7 @@ const u8 * GetBUiFrame_88021C0(void)
     return sBUiFrame_88021C0[id];
 }
 
+LYN_REPLACE_CHECK(ekrDispUPMain);
 void ekrDispUPMain(struct ProcEkrDispUP * var)
 {
     struct ProcEkrDispUP2 * proc = (struct ProcEkrDispUP2 *)var;
@@ -709,6 +712,7 @@ const u8 * GetImg_EfxRightItemBox()
     return sImg_EfxRightItemBox[id];
 }
 
+LYN_REPLACE_CHECK(EfxPrepareScreenFx);
 void EfxPrepareScreenFx(void)
 {
     const char * str;
@@ -847,6 +851,7 @@ static const u16 * const * const sFactionPalLookup[] = {
 
 // 0x80481e0
 
+LYN_REPLACE_CHECK(UnpackUiFramePalette);
 void UnpackUiFramePalette(int palId) // used in link arena
 {
     int id = GetUIPalID();
@@ -904,6 +909,7 @@ void PrepUiPalHook_3(void) // main prep palette
     ApplyPalette(pal, 0x4);
 }
 
+LYN_REPLACE_CHECK(DrawUnitInfoBg_Init);
 void DrawUnitInfoBg_Init(void) // in prep - [id][0] was causing palette problems
 {
     // int id = GetUIPalID();
@@ -951,7 +957,7 @@ void Pal_SysBrownBox_Hook()
         ApplyPalettes(Pal_SysBrownBox, 0x19, 2);
     }
 }
-
+LYN_REPLACE_CHECK(GetMinimugFactionPalette);
 void GetMinimugFactionPalette(int faction, int palId)
 {
     int id = GetUIPalID();
@@ -959,6 +965,7 @@ void GetMinimugFactionPalette(int faction, int palId)
     ApplyPalette(pal, palId);
 }
 
+LYN_REPLACE_CHECK(GetFactionBattleForecastFramePalette);
 const u16 * GetFactionBattleForecastFramePalette(int faction)
 {
     int id = GetUIPalID();
@@ -966,6 +973,7 @@ const u16 * GetFactionBattleForecastFramePalette(int faction)
     return pal;
 }
 
+LYN_REPLACE_CHECK(sub_80BE5B4);
 void sub_80BE5B4(int faction, int palId) // world map
 {
     int id = GetUIPalID();
@@ -1042,6 +1050,7 @@ const u8 * GetUiGoldBox(void)
     return sUiGoldBox[id];
 }
 
+LYN_REPLACE_CHECK(StartUiGoldBox);
 void StartUiGoldBox(ProcPtr parent)
 {
     struct ProcShop * proc;
