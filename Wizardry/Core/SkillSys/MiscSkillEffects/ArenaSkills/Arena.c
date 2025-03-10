@@ -2,60 +2,60 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
-LYN_REPLACE_CHECK(ArenaBeginInternal);
-void ArenaBeginInternal(struct Unit* unit) {
-    int i;
+// LYN_REPLACE_CHECK(ArenaBeginInternal);
+// void ArenaBeginInternal(struct Unit* unit) {
+//     int i;
 
-    gArenaState.playerUnit = unit;
-    gArenaState.opponentUnit = &gArenaOpponent;
+//     gArenaState.playerUnit = unit;
+//     gArenaState.opponentUnit = &gArenaOpponent;
 
-    gUnknown_03003060 = UNIT_ARENA_LEVEL(unit);
+//     gUnknown_03003060 = UNIT_ARENA_LEVEL(unit);
 
-    gArenaState.playerClassId = unit->pClassData->number;
-    gArenaState.playerWpnType = GetUnitBestWRankType(unit);
+//     gArenaState.playerClassId = unit->pClassData->number;
+//     gArenaState.playerWpnType = GetUnitBestWRankType(unit);
 
-    gArenaState.opponentClassId = ArenaGenerateOpposingClassId(gArenaState.playerWpnType);
-    gArenaState.opponentWpnType = GetClassBestWRankType(GetClassData(gArenaState.opponentClassId));
+//     gArenaState.opponentClassId = ArenaGenerateOpposingClassId(gArenaState.playerWpnType);
+//     gArenaState.opponentWpnType = GetClassBestWRankType(GetClassData(gArenaState.opponentClassId));
 
-    gArenaState.playerIsMagic = IsWeaponMagic(gArenaState.playerWpnType);
-    gArenaState.opponentIsMagic = IsWeaponMagic(gArenaState.opponentWpnType);
+//     gArenaState.playerIsMagic = IsWeaponMagic(gArenaState.playerWpnType);
+//     gArenaState.opponentIsMagic = IsWeaponMagic(gArenaState.opponentWpnType);
 
-    gArenaState.playerLevel = unit->level;
+//     gArenaState.playerLevel = unit->level;
 
-    if (UNIT_ARENA_LEVEL(unit) < 5) {
-        gArenaState.opponentLevel = ArenaGetOpposingLevel(gArenaState.playerLevel);
-    } else {
-        gArenaState.opponentLevel = ArenaGetOpposingLevel(gArenaState.playerLevel) + 7;
-    }
+//     if (UNIT_ARENA_LEVEL(unit) < 5) {
+//         gArenaState.opponentLevel = ArenaGetOpposingLevel(gArenaState.playerLevel);
+//     } else {
+//         gArenaState.opponentLevel = ArenaGetOpposingLevel(gArenaState.playerLevel) + 7;
+//     }
 
-    ArenaGenerateOpponentUnit();
-    ArenaGenerateBaseWeapons();
+//     ArenaGenerateOpponentUnit();
+//     ArenaGenerateBaseWeapons();
 
-    for (i = 0; i < 10; i++) {
-        if (!ArenaAdjustOpponentPowerRanking()) {
-            break;
-        }
-    }
+//     for (i = 0; i < 10; i++) {
+//         if (!ArenaAdjustOpponentPowerRanking()) {
+//             break;
+//         }
+//     }
 
-    for (i = 0; i < 5; i++) {
-        if (!ArenaAdjustOpponentDamage()) {
-            break;
-        }
-    }
+//     for (i = 0; i < 5; i++) {
+//         if (!ArenaAdjustOpponentDamage()) {
+//             break;
+//         }
+//     }
 
-    gArenaState.playerPowerWeight = ArenaGetPowerRanking(gArenaState.playerUnit, gArenaState.opponentIsMagic);
-    gArenaState.opponentPowerWeight = ArenaGetPowerRanking(gArenaState.opponentUnit, gArenaState.playerIsMagic);
+//     gArenaState.playerPowerWeight = ArenaGetPowerRanking(gArenaState.playerUnit, gArenaState.opponentIsMagic);
+//     gArenaState.opponentPowerWeight = ArenaGetPowerRanking(gArenaState.opponentUnit, gArenaState.playerIsMagic);
 
-    ArenaGenerateMatchupGoldValue();
+//     ArenaGenerateMatchupGoldValue();
 
-    gArenaState.unk0B = 1;
+//     gArenaState.unk0B = 1;
 
-    ArenaSetResult(0);
+//     ArenaSetResult(0);
 
-    ArenaSetFallbackWeaponsMaybe();
+//     ArenaSetFallbackWeaponsMaybe();
 
-    return;
-};
+//     return;
+// };
 
 LYN_REPLACE_CHECK(ArenaGenerateBaseWeapons);
 void ArenaGenerateBaseWeapons(void)
@@ -143,59 +143,59 @@ u16 ArenaGetUpgradedWeapon(u16 item) {
     return item;
 };
 
-LYN_REPLACE_CHECK(ArenaAdjustOpponentDamage);
-s8 ArenaAdjustOpponentDamage(void) {
-    s8 result = 0;
+// LYN_REPLACE_CHECK(ArenaAdjustOpponentDamage);
+// s8 ArenaAdjustOpponentDamage(void) {
+//     s8 result = 0;
 
-    gBattleActor.battleAttack = GetUnitPower(gArenaState.playerUnit) + 5;
+//     gBattleActor.battleAttack = GetUnitPower(gArenaState.playerUnit) + 5;
 
-    if (gArenaState.opponentIsMagic) {
-        gBattleActor.battleDefense = GetUnitResistance(gArenaState.playerUnit);
-    } else {
-        gBattleActor.battleDefense = GetUnitDefense(gArenaState.playerUnit);
-    }
+//     if (gArenaState.opponentIsMagic) {
+//         gBattleActor.battleDefense = GetUnitResistance(gArenaState.playerUnit);
+//     } else {
+//         gBattleActor.battleDefense = GetUnitDefense(gArenaState.playerUnit);
+//     }
 
-    gBattleTarget.battleAttack = GetUnitPower(gArenaState.opponentUnit) + 5;
+//     gBattleTarget.battleAttack = GetUnitPower(gArenaState.opponentUnit) + 5;
 
-    if (gArenaState.playerIsMagic) {
-        gBattleTarget.battleDefense = GetUnitResistance(gArenaState.opponentUnit);
-    } else {
-        gBattleTarget.battleDefense = GetUnitDefense(gArenaState.opponentUnit);
-    }
+//     if (gArenaState.playerIsMagic) {
+//         gBattleTarget.battleDefense = GetUnitResistance(gArenaState.opponentUnit);
+//     } else {
+//         gBattleTarget.battleDefense = GetUnitDefense(gArenaState.opponentUnit);
+//     }
 
-    if ((gBattleActor.battleAttack - gBattleTarget.battleDefense) < (GetUnitMaxHp(gArenaState.opponentUnit) / 6)) {
-        result = 1;
+//     if ((gBattleActor.battleAttack - gBattleTarget.battleDefense) < (GetUnitMaxHp(gArenaState.opponentUnit) / 6)) {
+//         result = 1;
 
-        if (gArenaState.playerIsMagic) {
-            gArenaState.opponentUnit->res -= 4;
+//         if (gArenaState.playerIsMagic) {
+//             gArenaState.opponentUnit->res -= 4;
 
-            if (gArenaState.opponentUnit->res < 0) {
-                gArenaState.opponentUnit->res = 0;
-            }
-        } else {
-            gArenaState.opponentUnit->def -= 4;
+//             if (gArenaState.opponentUnit->res < 0) {
+//                 gArenaState.opponentUnit->res = 0;
+//             }
+//         } else {
+//             gArenaState.opponentUnit->def -= 4;
 
-            if (gArenaState.opponentUnit->def < 0) {
-                gArenaState.opponentUnit->def = 0;
-            }
-        }
+//             if (gArenaState.opponentUnit->def < 0) {
+//                 gArenaState.opponentUnit->def = 0;
+//             }
+//         }
 
-        gArenaState.opponentUnit->spd += 1;
-        gArenaState.opponentUnit->skl += 1;
-    }
+//         gArenaState.opponentUnit->spd += 1;
+//         gArenaState.opponentUnit->skl += 1;
+//     }
 
-    if (gBattleTarget.battleAttack - gBattleActor.battleDefense < (GetUnitMaxHp(gArenaState.playerUnit) / 6)) {
-        result = 1;
+//     if (gBattleTarget.battleAttack - gBattleActor.battleDefense < (GetUnitMaxHp(gArenaState.playerUnit) / 6)) {
+//         result = 1;
 
-        gArenaState.opponentUnit->pow += 3;
-        gArenaState.opponentUnit->spd += 2;
-        gArenaState.opponentUnit->skl += 2;
+//         gArenaState.opponentUnit->pow += 3;
+//         gArenaState.opponentUnit->spd += 2;
+//         gArenaState.opponentUnit->skl += 2;
 
-        gArenaState.opponentWeapon = ArenaGetUpgradedWeapon(gArenaState.opponentWeapon);
-    }
+//         gArenaState.opponentWeapon = ArenaGetUpgradedWeapon(gArenaState.opponentWeapon);
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
 LYN_REPLACE_CHECK(ArenaAdjustOpponentPowerRanking);
 s8 ArenaAdjustOpponentPowerRanking(void) {

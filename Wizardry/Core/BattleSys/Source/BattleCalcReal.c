@@ -298,20 +298,6 @@ void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct Battle
     BattleCalcReal_ModifyBattleStatusSkills(attacker, defender);
 #endif
 
-#ifdef CONFIG_ARENA_PARTIAL_FIX
-    if (gArenaState.opponentUnit && !gBattleActorGlobalFlag.arenaFix)
-    {
-        gBattleTarget.battleAttack = (gBattleActor.battleAttack + gBattleTarget.battleAttack) / 3 - 2;
-        gBattleTarget.battleSpeed = (gBattleActor.battleSpeed + gBattleTarget.battleSpeed) / 3 - 2;
-        gBattleTarget.battleEffectiveCritRate -= 10;
-        gBattleTarget.battleHitRate -= 40;
-        gBattleActor.battleHitRate += 40;
-        gBattleActor.battleEffectiveCritRate += 5;
-
-        gBattleActorGlobalFlag.arenaFix = true;
-    }
-#endif
-
     ComputeBattleUnitEffectiveHitRate(attacker, defender);
     ComputeBattleUnitEffectiveCritRate(attacker, defender);
     ComputeBattleUnitSilencerRate(attacker, defender);

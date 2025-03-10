@@ -105,6 +105,7 @@ struct StatDebuffStatus * const sStatDebuffStatusPool[0x100] = {
     [FACTION_RED + 0x30] = sStatDebuffStatusEnemy + 47,
     [FACTION_RED + 0x31] = sStatDebuffStatusEnemy + 48,
     [FACTION_RED + 0x32] = sStatDebuffStatusEnemy + 49,
+    [FACTION_RED + 0x00] = sStatDebuffStatusEnemy + 50,
 
     [FACTION_GREEN + 0x01] = sStatDebuffStatusNpc + 0,
     [FACTION_GREEN + 0x02] = sStatDebuffStatusNpc + 1,

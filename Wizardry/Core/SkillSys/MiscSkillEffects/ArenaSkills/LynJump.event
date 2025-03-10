@@ -33,12 +33,13 @@ WORD $46C04778 $E59FC000 $E12FFF1C
 POIN ArenaGetPowerRanking
 POP
 
-PUSH
-ORG $31C10
-ALIGN 4
-WORD $46C04778 $E59FC000 $E12FFF1C
-POIN ArenaAdjustOpponentDamage
-POP
+// Turned off to allow ArenaFix.event to take effect
+// PUSH
+// ORG $31C10
+// ALIGN 4
+// WORD $46C04778 $E59FC000 $E12FFF1C
+// POIN ArenaAdjustOpponentDamage
+// POP
 
 PUSH
 ORG $31BC0
@@ -54,12 +55,13 @@ WORD $46C04778 $E59FC000 $E12FFF1C
 POIN ArenaAdjustOpponentPowerRanking
 POP
 
-PUSH
-ORG $31794
-ALIGN 4
-WORD $46C04778 $E59FC000 $E12FFF1C
-POIN ArenaBeginInternal
-POP
+// Turned off to allow ArenaFix.event to take effect
+// PUSH
+// ORG $31794
+// ALIGN 4
+// WORD $46C04778 $E59FC000 $E12FFF1C
+// POIN ArenaBeginInternal
+// POP
 
 PUSH
 ORG $31A84
