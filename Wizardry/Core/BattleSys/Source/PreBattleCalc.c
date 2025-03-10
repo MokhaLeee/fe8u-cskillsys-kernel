@@ -249,7 +249,6 @@ void PreBattleCalcEnd(struct BattleUnit *attacker, struct BattleUnit *defender)
 void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	FORCE_DECLARE int tmp, i;
-	FORCE_DECLARE struct Unit *unit = GetUnit(attacker->unit.index);
 	int _skill_list_cnt;
 	struct SkillList *list;
 
@@ -977,7 +976,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_Skyguard) && COMMON_SKILL_VALID(SID_Skyguard))
 		case SID_Skyguard:
-			if (CheckClassFlier(UNIT_CLASS_ID(&defender->unit))) {
+			if (!(gBattleStats.config & BATTLE_CONFIG_ARENA) && CheckClassFlier(UNIT_CLASS_ID(&defender->unit))) {
 				for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++) {
 					int _x = attacker->unit.xPos + gVecs_3x3[i].x;
 					int _y = attacker->unit.yPos + gVecs_3x3[i].y;
@@ -1001,7 +1000,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_Horseguard) && COMMON_SKILL_VALID(SID_Horseguard))
 		case SID_Horseguard:
-			if (CheckClassCavalry(UNIT_CLASS_ID(&defender->unit))) {
+			if (!(gBattleStats.config & BATTLE_CONFIG_ARENA) && CheckClassCavalry(UNIT_CLASS_ID(&defender->unit))) {
 				for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++) {
 					int _x = attacker->unit.xPos + gVecs_3x3[i].x;
 					int _y = attacker->unit.yPos + gVecs_3x3[i].y;
@@ -1025,7 +1024,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_Armorboost) && COMMON_SKILL_VALID(SID_Armorboost))
 		case SID_Armorboost:
-			if (CheckClassArmor(UNIT_CLASS_ID(&defender->unit))) {
+			if (!(gBattleStats.config & BATTLE_CONFIG_ARENA) && CheckClassArmor(UNIT_CLASS_ID(&defender->unit))) {
 				for (i = 0; i < ARRAY_COUNT_RANGE3x3; i++) {
 					int _x = attacker->unit.xPos + gVecs_3x3[i].x;
 					int _y = attacker->unit.yPos + gVecs_3x3[i].y;
@@ -1054,6 +1053,10 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_Admiration) && COMMON_SKILL_VALID(SID_Admiration))
 		case SID_Admiration:
 			tmp = 0;
+
+			if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+				goto L_SID_Admiration_done;
+
 			for (i = 0; i < 4; i++) {
 				int _j;
 
@@ -1096,6 +1099,10 @@ L_SID_Admiration_done:
 #if (defined(SID_FairyTaleFolk) && COMMON_SKILL_VALID(SID_FairyTaleFolk))
 		case SID_FairyTaleFolk:
 			tmp = 0;
+
+			if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+				goto L_FairyTaleFolk_done;
+
 			for (i = 0; i < 4; i++) {
 				int _j;
 				int _x = attacker->unit.xPos + gVecs_1x1[i].x;
