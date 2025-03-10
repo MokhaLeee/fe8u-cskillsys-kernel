@@ -31,3 +31,16 @@ bool ArenaAdjustOpponentPowerRankingRework(void)
 	}
 	return ret;
 }
+
+bool ArenaAdjustOpponentDamageRework(void)
+{
+	bool ret = ArenaAdjustOpponentDamage();
+
+	if (ret) {
+		int diff = gBattleTarget.battleAttack - gBattleActor.battleDefense;
+
+		if (diff < (s32)k_udiv(GetUnitMaxHp(gArenaState.playerUnit), 6))
+			UNIT_MAG(gArenaState.opponentUnit) += 3;
+	}
+	return ret;
+}

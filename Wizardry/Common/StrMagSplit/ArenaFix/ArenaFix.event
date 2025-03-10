@@ -10,5 +10,7 @@ PUSH
 
 	ORG 0x31820
 	BL(ArenaAdjustOpponentPowerRankingRework)
+	ORG 0x31834
+	BL(ArenaAdjustOpponentDamageRework)
 	PROTECT 0x00031794 0x00031874 // ArenaBeginInternal
 POP
