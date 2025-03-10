@@ -4,6 +4,7 @@
 #include "Source/core.lyn.event"
 #include "Source/Hooks.lyn.event"
 #include "Source/BoosterHook.lyn.event"
+#include "ArenaFix/ArenaFix.event"
 
 PUSH
     ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_MAG_BOOSTER * 0x80
