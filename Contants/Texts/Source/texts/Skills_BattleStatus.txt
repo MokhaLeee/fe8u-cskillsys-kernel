@@ -444,6 +444,11 @@ NoGuard:[NL]
 Both sides have a[NL]
 100% chance of hitting.[X]
 
+## MSG_SKILL_NoGuardPlus
+NoGuard+:[NL]
+This unit has a[NL]
+100% chance of hitting.[X]
+
 ## MSG_SKILL_Puissance
 Puissance:[NL]
 +3 Attack if the unit's attack[NL]

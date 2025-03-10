@@ -1620,6 +1620,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+
+#if (defined(SID_NoGuardPlus) && COMMON_SKILL_VALID(SID_NoGuardPlus))
+    [SID_NoGuardPlus] = {
+        .desc = MSG_SKILL_NoGuardPlus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Puissance) && COMMON_SKILL_VALID(SID_Puissance))
     [SID_Puissance] = {
         .desc = MSG_SKILL_Puissance,
