@@ -2,6 +2,12 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 
+/**
+ * If you want use this list, make sure that the following config has been uncommented:
+ *
+ * CONFIG_FIT_OLD_SKILLSYS_LIST
+ */
+
 struct CharLvupSkillEnt const *const CharLevelUpSkillTable[0x100] = {
 	[CHARACTER_EIRIKA] = (const struct CharLvupSkillEnt []) {
 #if (defined(SID_DoubleLion) && EQUIPE_SKILL_VALID(SID_DoubleLion))
