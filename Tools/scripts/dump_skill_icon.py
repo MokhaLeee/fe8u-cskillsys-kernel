@@ -90,11 +90,10 @@ def img_to_base64(image):
 	img_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
 	return img_base64
 
-def dump_icon_md_base64(rom_data, img_addr, pal_addr):
+def dump_icon_base64(rom_data, img_addr, pal_addr):
 	img = dump_icon_img(rom_data, img_addr, pal_addr)
 	img_base64 = img_to_base64(img)
-	markdown_content = f'![image](data:image/png;base64,{img_base64})'
-	return markdown_content
+	return img_base64
 
 if __name__ == '__main__':
 	with open(skill_sys_rom, 'rb') as f:

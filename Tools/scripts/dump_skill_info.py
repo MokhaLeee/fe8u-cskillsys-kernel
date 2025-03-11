@@ -229,7 +229,10 @@ def get_sid_icon_md_base64(rom_data, sid):
 	skill_info_base = get_pr_offset(rom_data, prSkillInfo)
 	skill_info = skill_info_base + 8 * sid
 	skill_icon_addr = int.from_bytes(rom_data[skill_info + 0:skill_info + 4], 'little')
-	return dump_skill_icon.dump_icon_md_base64(rom_data, skill_icon_addr, default_icon_pal)
+	img_base64 = dump_skill_icon.dump_icon_base64(rom_data, skill_icon_addr, default_icon_pal)
+	# markdown_content = f'![image](data:image/png;base64,{img_base64})'
+	html_content = f'<img src="data:image/png;base64,{img_base64}" alt="Base64 Image" />'
+	return html_content
 
 """
 SkillSys
