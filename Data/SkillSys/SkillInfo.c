@@ -3550,6 +3550,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 	[SID_SocialButterfly] = {
 		.name = MSG_SKILL_SocialButterfly_NAME,
 		.desc = MSG_SKILL_SocialButterfly,
+		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
 
@@ -3557,6 +3558,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 	[SID_MeleeManiac] = {
 		.name = MSG_SKILL_MeleeManiac_NAME,
 		.desc = MSG_SKILL_MeleeManiac,
+		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
 
