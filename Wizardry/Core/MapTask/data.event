@@ -14,5 +14,4 @@ PUSH
     PROTECT 0x00035708 0x00035748 // StartSubtitleHelp
 POP
 
-#include "Source/MapTaskArm.lyn.event"
 #include "Source/MapTaskData.lyn.event"
