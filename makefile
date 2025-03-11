@@ -361,7 +361,8 @@ CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
 
 SKILL_INFO_DOC := ./docs/SkillInfo.md
 
-post_chax: $(CHAX_DIFF) $(SKILL_INFO_DOC)
+post_chax: $(CHAX_DIFF) # $(SKILL_INFO_DOC)
+skill_info: $(SKILL_INFO_DOC)
 
 $(SKILL_INFO_DOC): $(SKILLS_ENUM_SRC) $(GFX_SOURCES) $(TEXT_SOURCE) Data/SkillSys/SkillInfo.c
 	@echo "[GEN]	$(SKILL_INFO_DOC)"
