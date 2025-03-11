@@ -106,14 +106,13 @@ int AddSkill(struct Unit *unit, const u16 sid)
 	return 0;
 }
 
-static void load_skill_ext(struct Unit *unit, u16 sid)
+STATIC_DECLAR void UnitAutoLoadSkills_OldSkills(struct Unit *unit)
 {
-	if (EQUIPE_SKILL_VALID(sid)) {
-		if (UNIT_FACTION(unit) == FACTION_BLUE)
-			LearnSkill(unit, sid);
+	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
+	int i, len = GetInitialSkillList(unit, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);
 
-		AddSkill(unit, sid);
-	}
+	for (i = 0; i < len; i++)
+		AddSkill(unit, buf[i]);
 }
 
 void UnitAutoLoadSkills(struct Unit *unit)
@@ -134,20 +133,24 @@ void UnitAutoLoadSkills(struct Unit *unit)
 
 	while (level_p >= 0) {
 		for (i = 0; i < 5; i++)
-			load_skill_ext(unit, pConf->skills[level_p + i]);
+			AddSkill(unit, pConf->skills[level_p + i]);
 
 		level_p = level_p - 5;
 	}
 
 	while (level_j >= 0) {
 		for (i = 0; i < 5; i++)
-			load_skill_ext(unit, jConf->skills[level_j + i]);
+			AddSkill(unit, jConf->skills[level_j + i]);
 
 		level_j = level_j - 5;
 	}
 
+#ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
+	UnitAutoLoadSkills_OldSkills(unit);
+#endif /* FIT_OLD_SKILLSYS_LIST */
+
 	/* For debug, we enable unit learn all of skills */
-	if (gpKernelDesigerConfig->debug_autoload_skills && UNIT_FACTION(unit) == FACTION_BLUE) {
+	if (gpKernelDesigerConfig->debug_autoload_skills) {
 		for (i = 1; i < 254; i++)
 			LearnSkill(unit, i);
 	}
