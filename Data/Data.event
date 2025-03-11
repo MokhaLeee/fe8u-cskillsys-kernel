@@ -13,6 +13,8 @@
 #include "SkillSys/SkillExtraInfo.lyn.event"
 #include "SkillSys/SkillMenuInfo.lyn.event"
 #include "SkillSys/SkillActionInfo.lyn.event"
+#include "SkillSys/LevelUpSkillEditor.lyn.event"
+#include "SkillSys/LevelUpSkillEditor-pointer.event"
 #include "SkillSys/SkillTable-generic.lyn.event"
 #include "SkillSys/SkillTable-person.lyn.event"
 #include "SkillSys/SkillTable-job.lyn.event"

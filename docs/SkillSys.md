@@ -73,6 +73,8 @@ Character may learn 10 equipable skills when they level-up to lv 5/10/15/20..., 
 
 We have also recorded unit level regardless he was promoted. Once one unit is promoted, his level will return to 1 but the record level will not change. When unit level-up, kernel may use `recorded level + current level` to judge on which skill should she learn for character table.
 
+Now kernel also supports the same config on lvup skills as old asm skillsystem, you can edit at [LevelUpSkillEditor.c](../Data/SkillSys/LevelUpSkillEditor.c), please refer to [SME's tutorial](https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5)
+
 # 3. Develop new skill
 
 Since the skills are currently divided into four categories, developers need to select a category in advance to place new skills first:

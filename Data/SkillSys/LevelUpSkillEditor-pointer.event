@@ -1,0 +1,8 @@
+ALIGN 4
+#incbin "bin/GetUnitLevelSkills.bin"
+gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
+gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
+
+#incbin "bin/GetSkills.bin"
+POIN ClassLevelUpSkillTable
+POIN CharLevelUpSkillTable
