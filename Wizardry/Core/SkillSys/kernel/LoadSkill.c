@@ -106,15 +106,6 @@ int AddSkill(struct Unit *unit, const u16 sid)
 	return 0;
 }
 
-STATIC_DECLAR void UnitAutoLoadSkills_OldSkills(struct Unit *unit)
-{
-	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
-	int i, len = GetInitialSkillList(unit, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);
-
-	for (i = 0; i < len; i++)
-		AddSkill(unit, buf[i]);
-}
-
 void UnitAutoLoadSkills(struct Unit *unit)
 {
 	int i;
@@ -146,7 +137,7 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	}
 
 #ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
-	UnitAutoLoadSkills_OldSkills(unit);
+	LevelUpSkillTable_LoadUnitSkill(unit);
 #endif /* FIT_OLD_SKILLSYS_LIST */
 
 	/* For debug, we enable unit learn all of skills */
@@ -202,6 +193,10 @@ void TryAddSkillLvup(struct Unit *unit, int level)
 	if (!UNIT_IS_VALID(unit))
 		return;
 
+#ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
+	LevelUpSkillTable_LvupAddSkill(unit, level);
+#endif
+
 	_level = level;
 	if (k_umod(_level, 5) == 0)
 		TryAddSkillLvupJConf(unit, _level);
@@ -225,6 +220,10 @@ void TryAddSkillPromotion(struct Unit *unit, int jid)
 
 	if (!UNIT_IS_VALID(unit))
 		return;
+
+#ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
+	LevelUpSkillTable_PromotionAddSkill(unit);
+#endif
 
 	for (i = 0; i < 5; i++) {
 		sid = jConf->skills[0 + i];

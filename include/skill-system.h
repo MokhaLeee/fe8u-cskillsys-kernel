@@ -129,6 +129,10 @@ int GetInitialSkillList(struct Unit *unit, u8 *out_buffer, int max_len);
 int GetLevelUpSkillList(struct Unit *unit, int level, u8 *out_buffer, int max_len);
 int GetPromotionSkillList(struct Unit *unit, u8 *out_buffer, int max_len);
 
+void LevelUpSkillTable_LoadUnitSkill(struct Unit *unit);
+void LevelUpSkillTable_LvupAddSkill(struct Unit *unit, int level);
+void LevelUpSkillTable_PromotionAddSkill(struct Unit *unit);
+
 /* Prep equip skill list */
 struct PrepEquipSkillList {
 	struct UnitListHeader header;

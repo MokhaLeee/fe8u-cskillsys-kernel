@@ -126,3 +126,37 @@ int GetPromotionSkillList(struct Unit *unit, u8 *out_buffer, int max_len)
 {
 	return GetUnitLevelSkills(unit, 0, 1, out_buffer, max_len);
 }
+
+/**
+ * API
+ */
+void LevelUpSkillTable_LoadUnitSkill(struct Unit *unit)
+{
+	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
+	int i, len = GetInitialSkillList(unit, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);
+
+	for (i = 0; i < len; i++)
+		AddSkill(unit, buf[i]);
+}
+
+void LevelUpSkillTable_LvupAddSkill(struct Unit *unit, int level)
+{
+	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
+	int i, len = GetLevelUpSkillList(unit, level, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);
+
+	for (i = 0; i < len; i++) {
+		AddSkill(unit, buf[i]);
+		PushSkillListStack(buf[i]);
+	}
+}
+
+void LevelUpSkillTable_PromotionAddSkill(struct Unit *unit)
+{
+	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
+	int i, len = GetPromotionSkillList(unit, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);
+
+	for (i = 0; i < len; i++) {
+		AddSkill(unit, buf[i]);
+		PushSkillListStack(buf[i]);
+	}
+}
