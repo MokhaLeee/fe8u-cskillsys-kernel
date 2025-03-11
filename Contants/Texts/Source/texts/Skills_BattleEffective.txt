@@ -24,3 +24,8 @@ effectiveness multipliers.[X]
 Solid Rock:[NL]
 Halves effective damage[NL]
 against this unit.[X]
+
+## MSG_SKILL_SwiftAttack
+Swift Attack:[N]
+Use this unit's SPD instead of[N]
+MAG/POW for damage calculation.[X]

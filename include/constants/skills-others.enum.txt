@@ -224,6 +224,7 @@
 // SID_MountainMan
 // SID_Decadon
 // SID_Camouflage
+// SID_SwiftAttack
 
 ////////// POST-BATTLE SKILLS
 SID_Canto
@@ -486,7 +487,6 @@ SID_Canto
 // SID_AngerPoint
 // SID_Adaptable
 // SID_Debilitator
-// SID_Sentinel
 // SID_Chipper
 // SID_Toxic
 // SID_GrazingBlow

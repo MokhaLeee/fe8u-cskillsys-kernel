@@ -14,13 +14,14 @@
 #define FreeSpaceKernelText 0x0E8414
 #define FreeSpaceKernelTextSize 0x785A8
 
-#define FreeSpaceKernel 0xB2A604
+// #define FreeSpaceKernel 0xB2A604
+#define FreeSpaceKernel 0x1000000
 #define FreeSpaceKernelSize 0xD5DFC
 
 #define FreeSpaceFont 0xEFB2E0
 #define FreeSpaceFontSize 0xE4D20
 
-#define FreeSpaceDEMO 0x1000000
+// #define FreeSpaceDEMO 0x1000000
 // #define FreeSpace FreeSpaceDEMO
 
 /**
@@ -36,7 +37,7 @@
  */
 #define KernelMagicSize 0x10
 #define KernelRelocSize 0x400
-#define KernelDataSize  0xCD5E0 // Original size: 0xCD5E0
+#define KernelDataSize  0xED5E0 // Original size: 0xCD5E0
 #define MsgTableSize    0x800C
 
 #define FreeSpaceKernel_Magic    (FreeSpaceKernel + 0x0)

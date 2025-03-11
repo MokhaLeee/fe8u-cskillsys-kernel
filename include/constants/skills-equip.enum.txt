@@ -1,7 +1,7 @@
 ////////MENU SKILLS
 // SID_Dismount
 // SID_ReciprocalAid
-SID_Sacrifice
+// SID_Sacrifice
 // SID_Doppleganger
 SID_Turncoat
 // SID_ArdentSacrifice
@@ -24,7 +24,7 @@ SID_Mine
 // SID_RallyResistance
 // SID_RallySkill
 // SID_RallySpeed
-SID_RallyStrength
+// SID_RallyStrength
 // SID_RallySpectrum
 SID_GoddessDance
 SID_Stride
@@ -38,9 +38,9 @@ SID_Reposition
 SID_Shove
 SID_Smite
 SID_Entrepreneur
-// SID_Arise
-// SID_AssignDecoy
-// SID_ShadowFlash
+SID_Arise
+SID_AssignDecoy
+SID_ShadowFlash
 // SID_Refuge
 
 //////// PRE-BATTLE SKILLS
@@ -108,16 +108,16 @@ SID_StoneBody
 // SID_Chivalry
 SID_Charge
 SID_ChargePlus
-SID_FieryBlood
-SID_Wrath
-SID_OutdoorFighter
+// SID_FieryBlood
+// SID_Wrath
+// SID_OutdoorFighter
 // SID_KnightAspirant
-SID_Outrider
+// SID_Outrider
 // SID_EvenRhythm
-SID_OddRhythm
+// SID_OddRhythm
 // SID_Corrosion
 SID_NoGuard
-//SID_NoGuardPlus
+SID_NoGuardPlus
 // SID_Puissance
 // SID_Prescience
 // SID_SilentPride
@@ -125,9 +125,9 @@ SID_RightfulKing
 // SID_RightfulGod
 // SID_RightfulArch
 SID_Hero
-SID_Guts
+// SID_Guts
 SID_StrongCon
-// SID_SuperLuck
+SID_SuperLuck
 // SID_Spurn
 // SID_Counter
 // SID_CounterMagic
@@ -173,7 +173,7 @@ SID_WatchfulEye
 SID_AdaptiveStance
 // SID_AdrenalineRush
 SID_TripUp
-// SID_AdaptiveLunge
+SID_AdaptiveLunge
 // SID_Cultured
 // SID_Flank
 // SID_ForeignPrincess
@@ -216,17 +216,18 @@ SID_SolidRock
 // SID_DarkProwess
 // SID_LightProwess
 SID_Seer
-// SID_IronDome
-// SID_Counterattack
-// SID_Antihex
-// SID_Equalizer
+SID_IronDome
+SID_Counterattack
+SID_Antihex
+SID_Equalizer
 // SID_Perch
-// SID_MountainMan
-// SID_Decadon
-// SID_Camouflage
+SID_MountainMan
+SID_Decadon
+SID_Camouflage
+// SID_SwiftAttack
 
 //////// POST-BATTLE SKILLS
-// SID_Canto
+SID_Canto
 SID_CantoPlus
 SID_Galeforce
 SID_AlertStance
@@ -269,8 +270,8 @@ SID_TakerSkill
 SID_TakerSpectrum
 SID_TakerSpeed
 SID_TakerStrength
-// SID_Canter
-// SID_GorillaTactics
+SID_Canter
+SID_GorillaTactics
 
 //////// AURA SKILLS
 // SID_Anathema
@@ -328,7 +329,7 @@ SID_Plus
 SID_Minus
 SID_Pathfinder
 // SID_UpWithArch
-// SID_RampUp
+SID_RampUp
 SID_Mentorship
 // SID_HolyAura
 // SID_BlueFlame
@@ -376,13 +377,13 @@ SID_FuryPlus
 // SID_StanceSturdy
 // SID_StanceSwift
 // SID_StanceWarding
-SID_SealDefense
-SID_SealLuck
-SID_SealMagic
-SID_SealResistance
-SID_SealSkill
-SID_SealSpeed
-SID_SealStrength
+// SID_SealDefense
+// SID_SealLuck
+// SID_SealMagic
+// SID_SealResistance
+// SID_SealSkill
+// SID_SealSpeed
+// SID_SealStrength
 // SID_DefenseBoost
 SID_LuckBoost
 // SID_MagicBoost
@@ -403,7 +404,7 @@ SID_FullMetalBody
 SID_PsychUp
 SID_Moody
 SID_ArenaTrap
-// SID_LuckySeven
+SID_LuckySeven
 SID_Unaware
 // SID_StaffGuard
 
@@ -425,8 +426,8 @@ SID_Astra
 // SID_Aegis
 // SID_Pavise
 // SID_Bane
-SID_Mercy
-SID_MercyPlus
+// SID_Mercy
+// SID_MercyPlus
 // SID_Aether
 // SID_Corona
 // SID_Luna
@@ -444,21 +445,21 @@ SID_MercyPlus
 // SID_DivinePulse
 // SID_GreatShield
 SID_Fluffy
-SID_Roll12
-// SID_Barricade
-// SID_BarricadePlus
-SID_SureShot
+// SID_Roll12
+SID_Barricade
+SID_BarricadePlus
+// SID_SureShot
 // SID_Lethality
 // SID_InfinityEdge
 // SID_MoonBow
 // SID_LiquidOoze
-SID_Inori  //This is miracle
+// SID_Inori  //This is miracle
 SID_Armsthrift
 SID_GoodAsGold
 SID_Multiscale
-SID_Enrage
-SID_Petrify
-SID_PoisonPoint
+// SID_Enrage
+// SID_Petrify
+// SID_PoisonPoint
 SID_Accost
 // SID_DownWithArch
 SID_MagicBounce
@@ -486,20 +487,19 @@ SID_Dazzle
 // SID_AngerPoint
 SID_Adaptable
 SID_Debilitator
-// SID_Sentinel
 SID_Chipper
 SID_Toxic
-// SID_GrazingBlow
-// SID_AbsorbMelee
-// SID_AbsorbMagic
-// SID_Duel
-// SID_Offhand
-// SID_ShedSkin
+SID_GrazingBlow
+SID_AbsorbMelee
+SID_AbsorbMagic
+SID_Duel
+SID_Offhand
+SID_ShedSkin
 
 //////// EFFECTIVENESS SKILLS
 SID_Resourceful
 // SID_Slayer
-// SID_Skybreaker
+SID_Skybreaker
 
 //////// BATTLE ORDER SKILLS
 SID_Vantage
@@ -519,10 +519,10 @@ SID_PridefulWarrior
 // SID_Moonlight
 // SID_AdvantageChaser
 // SID_BidingBlow
-// SID_Alacrity
-// SID_Echo
-// SID_Flurry
-// SID_RapidFighter
+SID_Alacrity
+SID_Echo
+SID_Flurry
+SID_RapidFighter
 
 //////// PRE-PHASE SKILLS
 SID_Renewal
@@ -550,7 +550,7 @@ SID_InitDeft
 SID_InitQuick
 SID_InitSturdy
 SID_InitCalm
-SID_InitLucky
+// SID_InitLucky
 SID_InitNimble
 SID_InitSpectrum
 // SID_OathDefense
@@ -574,14 +574,14 @@ SID_InitSpectrum
 SID_PoisonHeal
 // SID_FortifyArmor
 // SID_AversaNight
-SID_HoneChaos
+// SID_HoneChaos
 SID_IndoorMarch
 // SID_NatureRush
 // SID_YuneWhispers
 // SID_ArmorMarch
 // SID_KeepUp
 // SID_Amaterasu
-// SID_GoodyBasket
+SID_GoodyBasket
 
 //////// POST-PHASE SKILLS
 // SID_HoardersBane
@@ -591,7 +591,7 @@ SID_IndoorMarch
 //////// LEVEL UP SKILLS
 // SID_Blossom
 SID_Paragon
-SID_VoidCurse
+// SID_VoidCurse
 SID_Aptitude
 SID_DoubleUp
 SID_TripleUp
@@ -602,7 +602,7 @@ SID_Mercurious
 SID_Velocity
 SID_StaffParagon
 SID_OgreBody
-// SID_Prodigy
+SID_Prodigy
 
 //////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk
@@ -622,13 +622,13 @@ SID_WaterWalkingPlus
 SID_MountainClimber
 SID_MountainClimberPlus
 SID_Acrobat
-// SID_PhaseShift
+SID_PhaseShift
 
 /////// SHOP SKILLS
 SID_Deal
 SID_Bargain
 SID_Secret
-// SID_Trader
+SID_Trader
 
 /////// ARENA SKILLS
 SID_Ludopathy
@@ -638,17 +638,17 @@ SID_ConcealedWeapon
 SID_Shade
 SID_ShadePlus
 SID_Provoke
-//SID_Guardian
+SID_Guardian
 
 //////// STANDALONE SKILLS
 SID_IdentityProblems
 SID_DemolitionExpert
 SID_TriangleAttack
-// SID_SocialButterfly
+SID_SocialButterfly
 SID_Shadowgift
 SID_ShadowgiftPlus
-// SID_Lumina
-// SID_LuminaPlus
+SID_Lumina
+SID_LuminaPlus
 SID_Stormgift
 SID_StormgiftPlus
 SID_Gracegift
@@ -662,8 +662,8 @@ SID_HackgiftPlus
 SID_Arcgift
 SID_ArcgiftPlus
 // SID_NiceThighs
-SID_Casual
-SID_CatchEmAll
+// SID_Casual
+// SID_CatchEmAll
 SID_LiveToServe
 SID_Reflex
 SID_Nullify
@@ -681,18 +681,18 @@ SID_Domain
 SID_Resurrection
 // SID_CapacityHalf
 // SID_CapacityOne
-// SID_DangerRanger
-// SID_Savior
-// SID_SelfHealing
+SID_DangerRanger
+SID_Savior
+SID_SelfHealing
 // SID_Wrestler
-// SID_TwinCrests
-// SID_Saint
+SID_TwinCrests
+SID_Saint
 // SID_AidRefusal
-// SID_WhiteMage
-// SID_MoreForMe
-// SID_Mimicry
+SID_WhiteMage
+SID_MoreForMe
+SID_Mimicry
 // SID_CursedHeal
-// SID_Warpath
+SID_Warpath
 
 /////// COMBAT ARTS
 // SID_COMBAT_Grounder
@@ -718,6 +718,6 @@ SID_Resurrection
 // SID_COMBAT_WaningShotPlus
 // SID_COMBAT_HuntersVolley
 // SID_COMBAT_Galeforce
-SID_COMBAT_Gamble
+// SID_COMBAT_Gamble
 // SID_COMBAT_Detonate
 // SID_COMBAT_AstraStorm

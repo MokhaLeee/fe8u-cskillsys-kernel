@@ -73,8 +73,12 @@ void PostActionSealSkills(ProcPtr parent)
                 SetUnitStatDebuff(GetUnit(gActionData.subjectIndex), UNIT_STAT_DEBUFF_SEAL_POW);
 #endif
 
+        /* Temp fix to get compiler to stop whining about unit being an unused variable */
         default:
-            break;
+            if(unit == gActiveUnit)
+                break;
+            else 
+                break;
         }
     }
 }

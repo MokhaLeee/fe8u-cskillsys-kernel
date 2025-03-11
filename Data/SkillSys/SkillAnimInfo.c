@@ -248,10 +248,6 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
     [SID_WeaponHeal] = EFX_PRIORITY_HIGH,
 #endif
 
-#if (defined(SID_Sentinel) && COMMON_SKILL_VALID(SID_Sentinel))
-    [SID_Sentinel] = EFX_PRIORITY_NORMAL,
-#endif
-
 #if (defined(SID_IronDome) && COMMON_SKILL_VALID(SID_IronDome))
     [SID_IronDome] = EFX_PRIORITY_NORMAL,
 #endif
@@ -508,10 +504,6 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
     [SID_WeaponHeal] = &EfxSkillVanilla,
-#endif
-
-#if (defined(SID_Sentinel) && COMMON_SKILL_VALID(SID_Sentinel))
-    [SID_Sentinel] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_IronDome) && COMMON_SKILL_VALID(SID_IronDome))

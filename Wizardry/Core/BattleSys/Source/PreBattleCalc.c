@@ -36,10 +36,22 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 #endif
     }
 
+#if (defined(SID_SwiftAttack) && (COMMON_SKILL_VALID(SID_SwiftAttack)))
+    if (BattleSkillTester(attacker, SID_SwiftAttack))
+        status = status + attacker->unit.spd;
+    else
+    {
+        if (IsMagicAttack(attacker))
+            status = status + UNIT_MAG(&attacker->unit);
+        else
+            status = status + attacker->unit.pow;
+    }
+#else 
     if (IsMagicAttack(attacker))
         status = status + UNIT_MAG(&attacker->unit);
     else
         status = status + attacker->unit.pow;
+#endif
 
     attacker->battleAttack = status;
 }

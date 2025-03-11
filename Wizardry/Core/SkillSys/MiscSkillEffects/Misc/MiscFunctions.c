@@ -1323,7 +1323,6 @@ void CallChapterWMIntroEvents(ProcPtr proc)
         StartGmapMuEntry(NULL);
     }
 }
-#endif
 
 LYN_REPLACE_CHECK(Event97_WmInitNextStoryNode);
 //! FE8U = 0x0800C2DC
@@ -1361,6 +1360,7 @@ u8 Event97_WmInitNextStoryNode(struct EventEngineProc * proc)
 
     return EVC_ADVANCE_CONTINUE;
 };
+#endif
 
 LYN_REPLACE_CHECK(Event3E_PrepScreenCall);
 //! FE8U = 0x08010968
@@ -1436,6 +1436,7 @@ void IsTraineeLevelCappedOrPromoted(void)
 }
 
 //! FE8U = 0x08084800
+#ifdef CONFIG_FE8_REWRITE
 LYN_REPLACE_CHECK(IsCharacterForceDeployed_);
 bool IsCharacterForceDeployed_(u16 pid)
 {
@@ -1470,6 +1471,7 @@ bool IsCharacterForceDeployed_(u16 pid)
     }
     return false;
 }
+#endif
 
 LYN_REPLACE_CHECK(GetUnitEquippedWeaponSlot);
 int GetUnitEquippedWeaponSlot(struct Unit* unit) {
