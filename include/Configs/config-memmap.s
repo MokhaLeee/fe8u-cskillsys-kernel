@@ -146,15 +146,3 @@ dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd
 dat 0x03004378, ARM_SkillList
 dat 0x030043B4, ARM_SkillListEnd
-
-
-@ dat 0x03003DE4, ARM_SkillTesterEnd
-@ dat 0x03003DE4, ARM_MapFloodCoreRe
-@ dat 0x030040CC, ARM_MapFloodCoreReEnd
-@ dat 0x030040CC, ARM_MapTask
-@ dat 0x03004128, ARM_MapTaskEnd
-
-@ dat 0x0300428C, ARM_UnitList
-@ dat 0x03004378, ARM_UnitListEnd
-@ dat 0x03004378, ARM_SkillList
-@ dat 0x030043B4, ARM_SkillListEnd

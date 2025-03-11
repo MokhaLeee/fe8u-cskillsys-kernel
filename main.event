@@ -8,6 +8,14 @@
 #include "include/macros.event"
 #include "include/Definitions.event"
 
+/* Test PROTECTS for debugging why part of the battle animation data was being overwritten */
+PROTECT 0xC00088
+PROTECT 0xC000A8
+PROTECT 0xC000C8
+PROTECT 0xC000E8
+PROTECT 0xC00128
+PROTECT 0xC1C654
+
 ORG FreeSpaceKernel_MsgTable
     #include "Preload/AllocMsgTable.event"
 ASSERT (FreeSpaceKernel_MsgTableEnd - CURRENTOFFSET)

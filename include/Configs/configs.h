@@ -51,7 +51,7 @@
  * If uncommented, enable patch
  * FEB: Character Custom Animation
  */
-#define CONFIG_USE_CHAR_CUSTOM_ANIM
+// #define CONFIG_USE_CHAR_CUSTOM_ANIM
 
 /**
  * If uncommented, fasten function GenerateUnitCompleteAttackRange
@@ -158,6 +158,7 @@
 #define CONFIG_INSTALL_MENU_WIDTHS
 
 /**
+ * DO NOT USE - Broken right now, as text codes for this buildfile were rewritten
  * By Tequila:
  * Reworks the text engine to allow, among other things;
  * 3 line text boxes, multiple colors, variable text,
@@ -166,7 +167,7 @@
  * Installed in: Wizardry/External/TextEngineRework/Installer.event
  * Source: https://feuniverse.us/t/teqs-minor-assembly-shenanigans/1655/118
  */
-#define CONFIG_TEXT_ENGINE_REWORK
+// #define CONFIG_TEXT_ENGINE_REWORK
 
 /**
  * By Jester
@@ -429,7 +430,7 @@
 
 // #define CONFIG_INSTALL_DECREASE_HIT_AT_RANGE
 
-#define CONFIG_VESLY_AOE
+// #define CONFIG_VESLY_AOE
 
 /**
  * By Jester

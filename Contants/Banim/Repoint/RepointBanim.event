@@ -17,7 +17,7 @@ PUSH
 
     ORG 0x59BD8
     POIN ClassAnimTable
-    // PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
+    PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
 
     ORG 0x5A600
     POIN ClassAnimTable
@@ -37,9 +37,9 @@ PUSH
 
     ORG 0x70940
     POIN ClassAnimTable
-    // PROTECT 0x000708FC 0x0007096C // EkrMyr_PrepareBanimfx
+    PROTECT 0x000708FC 0x0007096C // EkrMyr_PrepareBanimfx
 
     ORG 0x70A60
     POIN ClassAnimTable
-    // PROTECT 0x00070A14 0x00070AE4 // EkrMyr_ReturnToLoli
+    PROTECT 0x00070A14 0x00070AE4 // EkrMyr_ReturnToLoli
 POP

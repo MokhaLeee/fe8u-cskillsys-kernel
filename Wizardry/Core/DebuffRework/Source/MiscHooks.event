@@ -17,7 +17,7 @@ PUSH
     BYTE $3F
     ORG $59AAA
     BYTE $3F
-    // PROTECT $599E8 $59D28
+    PROTECT $599E8 $59D28
 
     ORG $31F58 // ArenaIsUnitAllowed
     BYTE 0x3F

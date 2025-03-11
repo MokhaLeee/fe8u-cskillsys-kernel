@@ -1,7 +1,7 @@
 #ifndef BANIMS_INSTALLED
 #define BANIMS_INSTALLED
 
-// #include "Preload.event"
+#include "Preload.event"
 #include "AnimDefinitions-Vanilla.event"
 #include "AnimDefinitions-Demo.event"
 #include "AnimMapping.evet"
