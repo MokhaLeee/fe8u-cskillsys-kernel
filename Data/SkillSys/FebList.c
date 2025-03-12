@@ -55,3 +55,27 @@ struct CharLvupSkillEnt const *const ClassLevelUpSkillTable[0x100] = {
 		{ 0 }
 	},
 };
+
+const u8 ClassSkillTable[0x100] = {
+#if (defined(SID_PushStrength) && EQUIPE_SKILL_VALID(SID_PushStrength))
+	[CLASS_EIRIKA_MASTER_LORD] = SID_PushStrength,
+#endif
+
+#if (defined(SID_FuryPlus) && EQUIPE_SKILL_VALID(SID_FuryPlus))
+	[CLASS_PALADIN] = SID_FuryPlus,
+#endif
+
+#if (defined(SID_FuryPlus) && EQUIPE_SKILL_VALID(SID_FuryPlus))
+	[CLASS_BRIGAND] = SID_FuryPlus,
+#endif
+};
+
+const u8 PersonalSkillTable[0x100] = {
+#if (defined(SID_FortressDef) && EQUIPE_SKILL_VALID(SID_FortressDef))
+	[CHARACTER_AMELIA] = SID_FortressDef,
+#endif
+
+#if (defined(SID_LifeAndDeath) && EQUIPE_SKILL_VALID(SID_LifeAndDeath))
+	[CHARACTER_MARISA] = SID_LifeAndDeath,
+#endif
+};

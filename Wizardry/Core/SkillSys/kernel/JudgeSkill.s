@@ -87,11 +87,22 @@ _SkillTester_Generic:
 
 _SkillTester_COMMON:
 _SkillTester_PInfo:
-    ldr r4, .LgpConstSkillTable_Person
     ldr r0, [r5]
+    @ FEB list
+    ldr r4, .LgpClassSkillTable
+    bl .L_FEB_Table
+    @ CHAX list
+    ldr r4, .LgpConstSkillTable_Person
     // adr lr, .Lend_false
     adr lr, _SkillTester_JInfo
+
+.L_FEB_Table:
     ldrb r0, [r0, #4]
+    ldr r1, [r4]
+    ldrb r1, [r4, r0]
+    cmp r1, r2
+    beq .Lend_true
+    mov pc, lr
 
 .L_Table:
     ldr r1, [r4]
@@ -105,9 +116,12 @@ _SkillTester_PInfo:
     mov pc, lr
 
 _SkillTester_JInfo:
-    ldr r4, .LgpConstSkillTable_Job
     ldr r0, [r5, #4]
-    ldrb r0, [r0, #4]
+    @ FEB list
+    ldr r4, .LgpPersonalSkillTable
+    bl .L_FEB_Table
+    @ CHAX list
+    ldr r4, .LgpConstSkillTable_Job
     adr lr, .Lend_false
     b .L_Table
 
@@ -135,6 +149,10 @@ _SkillTester_IInfo:
     .4byte gpConstSkillTable_Job
 .LgpConstSkillTable_Item:
     .4byte gpConstSkillTable_Item
+.LgpPersonalSkillTable:
+    .4byte gpPersonalSkillTable
+.LgpClassSkillTable:
+    .4byte gpClassSkillTable
 
 .LgBattleActor:
     .4byte gBattleActor

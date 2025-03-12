@@ -24,57 +24,44 @@ extern void (* gpExternalSkillListGenerator)(struct Unit *unit, struct SkillList
 
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 {
+	#define ADD_LIST(skill_index) \
+	do { \
+		int __tmp_sid = skill_index; \
+		if (COMMON_SKILL_VALID(__tmp_sid) && !tmp_list[__tmp_sid]) { \
+			tmp_list[__tmp_sid] = true; \
+			list->sid[list->amt++] = __tmp_sid; \
+		} \
+	} while (0)
+
 	FORCE_DECLARE int weapon;
-	int i, sid;
+	int i;
 	int pid = UNIT_CHAR_ID(unit);
 	int jid = UNIT_CLASS_ID(unit);
-
 	u8 *tmp_list = gGenericBuffer;
 
 	memset(list, 0, sizeof(*list));
 	memset(tmp_list, 0, MAX_SKILL_NUM + 1);
 
 	/* person */
-	sid = gpConstSkillTable_Person[pid * 2];
-	if (COMMON_SKILL_VALID(sid)) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	sid = gpConstSkillTable_Person[pid * 2 + 1];
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
+	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 0]);
+	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 1]);
+#ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
+	ADD_LIST(gpPersonalSkillTable[pid]);
+#endif
 
 	/* job */
-	sid = gpConstSkillTable_Job[jid * 2];
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	sid = gpConstSkillTable_Job[jid * 2 + 1];
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
+	ADD_LIST(gpConstSkillTable_Job[jid * 2 + 0]);
+	ADD_LIST(gpConstSkillTable_Job[jid * 2 + 1]);
+#ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
+	ADD_LIST(gpClassSkillTable[jid]);
+#endif
 
 	/* item */
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
 		u8 iid = ITEM_INDEX(unit->items[i]);
 
-		sid = gpConstSkillTable_Item[iid * 2];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-
-		sid = gpConstSkillTable_Item[iid * 2 + 1];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
+		ADD_LIST(gpConstSkillTable_Item[iid * 2 + 0]);
+		ADD_LIST(gpConstSkillTable_Item[iid * 2 + 1]);
 	}
 
 #if 0
@@ -84,34 +71,22 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 		weapon = ITEM_INDEX(((struct BattleUnit *)unit)->weaponBefore);
 
 	if (weapon != ITEM_NONE) {
-		sid = gpConstSkillTable_Weapon[weapon * 2];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-
-		sid = gpConstSkillTable_Weapon[weapon * 2 + 1];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
+		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 0]);
+		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 1]);
 	}
 #endif
 
 	/* generic */
-	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++) {
-		sid = UNIT_RAM_SKILLS(unit)[i];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-	}
+	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
+		ADD_LIST(UNIT_RAM_SKILLS(unit)[i]);
 
 	/* external */
 	if (gpExternalSkillListGenerator)
 		gpExternalSkillListGenerator(unit, list, tmp_list);
 
 	WriteUnitList(unit, &list->header);
+
+	#undef ADD_LIST
 }
 
 void ForceUpdateUnitSkillList(struct Unit *unit)

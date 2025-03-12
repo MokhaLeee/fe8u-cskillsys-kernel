@@ -4,5 +4,5 @@ gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
 gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
 
 #incbin "bin/GetSkills.bin"
-POIN ClassLevelUpSkillTable
-POIN CharLevelUpSkillTable
+gpPersonalSkillTable: POIN PersonalSkillTable
+gpClassSkillTable: POIN ClassSkillTable

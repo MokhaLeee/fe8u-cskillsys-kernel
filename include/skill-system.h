@@ -64,8 +64,8 @@ char *GetSkillNameStr(const u16 sid);
 
 /**
  * 7 generic skill
- * 2 person skill
- * 2 job skill
+ * 3 person skill
+ * 3 job skill
  * 10 item skill
  *
  * (maybe todo) 2 weapon skill
@@ -74,7 +74,7 @@ struct SkillList {
 	struct UnitListHeader header;
 	u8 amt;
 	u8 _pad_;
-	u16 sid[23];
+	u16 sid[5];
 };
 struct SkillList *GetUnitSkillList(struct Unit *unit);
 
@@ -96,7 +96,7 @@ bool CheckActiveUnitSkillActivate(int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);
 
 /**
- * Load skill configs
+ * FEB list
  *
  * This is aligned to old asm skillsystem config, see:
  * https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5
@@ -116,11 +116,14 @@ struct CharLvupSkillEnt {
 #define LOAD_JOB_SKILL_CONFIG_WO_TUTORIAL    (3 << 5)
 #define LOAD_JOB_SKILL_CONFIG_HARD_MODE_ONLY (4 << 5)
 
-extern struct CharLvupSkillEnt const *const CharLevelUpSkillTable[0x100];
-extern struct CharLvupSkillEnt const *const ClassLevelUpSkillTable[0x100];
+// extern struct CharLvupSkillEnt const *const CharLevelUpSkillTable[0x100];
+// extern struct CharLvupSkillEnt const *const ClassLevelUpSkillTable[0x100];
 
 extern struct CharLvupSkillEnt const *const *const gpCharLevelUpSkillTable;
 extern struct CharLvupSkillEnt const *const *const gpClassLevelUpSkillTable;
+
+extern u8 const *const gpPersonalSkillTable;
+extern u8 const *const gpClassSkillTable;
 
 #define DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN 16
 
