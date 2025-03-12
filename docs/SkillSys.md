@@ -1,8 +1,8 @@
 Currently, C-Skillsys theoretically allows up to **1021** skills (`0x01~0xFE, 0x100~0x3FF`) to take effect at the same time. Each unit can carry up to **21** skills at the same time, which are distributed as follows:
 
 - **7 equipable skills**, which allows player to freely select in prepscreen, also allows the game-play designer dynamically assign skills to enemies through events.
-- **2 person skills**, fixed on ROM table and searched by unit character index.
-- **2 job skills**, fixed on ROM table and searched by unit class index.
+- **3 person skills**, fixed on ROM table and searched by unit character index.
+- **3 job skills**, fixed on ROM table and searched by unit class index.
 - **5x2 item skills**, fixed on ROM table and searched by item index. Just like an amulet, unit can obtain skills as long as they carry the corresponding items.
 
 Note that the skill index is also divided into certain parts of categories in order to save memory and optimize performance. The following rules are generally followed for the division of skill index:
@@ -73,7 +73,7 @@ Character may learn 10 equipable skills when they level-up to lv 5/10/15/20..., 
 
 We have also recorded unit level regardless he was promoted. Once one unit is promoted, his level will return to 1 but the record level will not change. When unit level-up, kernel may use `recorded level + current level` to judge on which skill should she learn for character table.
 
-Now kernel also supports the same config on lvup skills as old asm skillsystem, you can edit at [LevelUpSkillEditor.c](../Data/SkillSys/LevelUpSkillEditor.c), please refer to [SME's tutorial](https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5)
+Now kernel also supports the same config on setting skills as old asm skillsystem, you can edit at [LevelUpSkillEditor.c](../Data/SkillSys/LevelUpSkillEditor.c), please refer to [SME's tutorial](https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5)
 
 # 3. Develop new skill
 
