@@ -543,16 +543,16 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 	[SID_HighGround] = {{ 2 }},
 #endif
 
-#if (defined(SID_BattleRange_Todo1) && COMMON_SKILL_VALID(SID_BattleRange_Todo1))
-	[SID_BattleRange_Todo1] = {{ 10 }},
+#if (defined(SID_InnerFlame1) && COMMON_SKILL_VALID(SID_InnerFlame1))
+	[SID_InnerFlame1] = {{ 10 }},
 #endif
 
-#if (defined(SID_BattleRange_Todo2) && COMMON_SKILL_VALID(SID_BattleRange_Todo2))
-	[SID_BattleRange_Todo2] = {{ 7 }},
+#if (defined(SID_InnerFlame2) && COMMON_SKILL_VALID(SID_InnerFlame2))
+	[SID_InnerFlame2] = {{ 7 }},
 #endif
 
-#if (defined(SID_BattleRange_Todo3) && COMMON_SKILL_VALID(SID_BattleRange_Todo3))
-	[SID_BattleRange_Todo3] = {{ 5 }},
+#if (defined(SID_InnerFlame3) && COMMON_SKILL_VALID(SID_InnerFlame3))
+	[SID_InnerFlame3] = {{ 5 }},
 #endif
 
 #if (defined(SID_SavageBlow) && COMMON_SKILL_VALID(SID_SavageBlow))

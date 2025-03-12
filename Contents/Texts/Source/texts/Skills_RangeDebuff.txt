@@ -54,16 +54,16 @@ and receive -3 damage.[X]
 V-Peace: Enemies within[NL]
 2 tiles deal -2 damage.[X]
 
-## MSG_SKILL_BattleRange1
-Range Skill: ATK +10 if[NL]
+## MSG_SKILL_InnerFlame1
+Inner Flame: ATK +10 if[NL]
 no ally with 3 tiles.[X]
 
-## MSG_SKILL_BattleRange2
-Range Skill: ATK +7 if[NL]
+## MSG_SKILL_InnerFlame2
+Inner Flame: ATK +7 if[NL]
 no ally with 2 tiles.[X]
 
-## MSG_SKILL_BattleRange3
-Range Skill: ATK +5 if[NL]
+## MSG_SKILL_InnerFlame3
+Inner Flame: ATK +5 if[NL]
 no ally with 1 tiles.[X]
 
 ## MSG_SKILL_Peacebringer

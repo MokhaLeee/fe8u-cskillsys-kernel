@@ -161,9 +161,9 @@
 ![image](gfx/SkillIcon_RangeBonusBow1.png) | RangeBonusBow1 |  Increases bow range by 1 |
 ![image](gfx/SkillIcon_RangeBonusBow2.png) | RangeBonusBow2 |  Increases bow range by 2 |
 ![image](gfx/SkillIcon_RunningStart.png) | RunningStart |  +1 attack range for every two tiles moved. |
-![image](gfx/SkillIcon_BattleRange_Todo1.png) | BattleRange_Todo1 |  ATK +10 if no ally with 3 tiles. |
-![image](gfx/SkillIcon_BattleRange_Todo2.png) | BattleRange_Todo2 |  ATK +7 if no ally with 2 tiles. |
-![image](gfx/SkillIcon_BattleRange_Todo3.png) | BattleRange_Todo3 |  ATK +5 if no ally with 1 tiles. |
+![image](gfx/SkillIcon_InnerFlame1.png) | InnerFlame1 |  ATK +10 if no ally with 3 tiles. |
+![image](gfx/SkillIcon_InnerFlame2.png) | InnerFlame2 |  ATK +7 if no ally with 2 tiles. |
+![image](gfx/SkillIcon_InnerFlame3.png) | InnerFlame3 |  ATK +5 if no ally with 1 tiles. |
 ![image](gfx/SkillIcon_Canto.png) | Canto |  Unit can move again after combat. |
 ![image](gfx/SkillIcon_CantoPlus.png) | CantoPlus |  Unit can move again. |
 ![image](gfx/SkillIcon_Galeforce.png) | Galeforce |  Move again after attacking and defeating an enemy. (Skill % activation) |
