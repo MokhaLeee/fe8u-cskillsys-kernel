@@ -919,21 +919,21 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_InnerFlame1) && COMMON_SKILL_VALID(SID_InnerFlame1))
 	[SID_InnerFlame1] = {
 		.desc = MSG_SKILL_InnerFlame1,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_InnerFlame1,
 	},
 #endif
 
 #if (defined(SID_InnerFlame2) && COMMON_SKILL_VALID(SID_InnerFlame2))
 	[SID_InnerFlame2] = {
 		.desc = MSG_SKILL_InnerFlame2,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_InnerFlame2,
 	},
 #endif
 
 #if (defined(SID_InnerFlame3) && COMMON_SKILL_VALID(SID_InnerFlame3))
 	[SID_InnerFlame3] = {
 		.desc = MSG_SKILL_InnerFlame3,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_InnerFlame3,
 	},
 #endif
 
