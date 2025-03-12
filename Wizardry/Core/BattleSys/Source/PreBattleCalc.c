@@ -1659,16 +1659,16 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
 
 	/* AND skills */
 	if (allies_gRange3_In3x3 == 0) {
-#if (defined(SID_BattleRange_Todo1) && (COMMON_SKILL_VALID(SID_BattleRange_Todo1)))
-		if (BattleFastSkillTester(attacker, SID_BattleRange_Todo1))
-			attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo1);
+#if (defined(SID_InnerFlame1) && (COMMON_SKILL_VALID(SID_InnerFlame1)))
+		if (BattleFastSkillTester(attacker, SID_InnerFlame1))
+			attacker->battleAttack += SKILL_EFF0(SID_InnerFlame1);
 #endif
 	}
 
 	if (allies_gRange2_In3x3 == 0) {
-#if (defined(SID_BattleRange_Todo2) && (COMMON_SKILL_VALID(SID_BattleRange_Todo2)))
-		if (BattleFastSkillTester(attacker, SID_BattleRange_Todo2))
-			attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo2);
+#if (defined(SID_InnerFlame2) && (COMMON_SKILL_VALID(SID_InnerFlame2)))
+		if (BattleFastSkillTester(attacker, SID_InnerFlame2))
+			attacker->battleAttack += SKILL_EFF0(SID_InnerFlame2);
 #endif
 	} else if (allies_gRange2_In3x3 >= 2) {
 #if (defined(SID_LawsOfSacae) && (COMMON_SKILL_VALID(SID_LawsOfSacae)))
@@ -1683,9 +1683,9 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
 	}
 
 	if (allies_gRange1_In3x3 == 0) {
-#if (defined(SID_BattleRange_Todo3) && (COMMON_SKILL_VALID(SID_BattleRange_Todo3)))
-		if (BattleFastSkillTester(attacker, SID_BattleRange_Todo3))
-			attacker->battleAttack += SKILL_EFF0(SID_BattleRange_Todo3);
+#if (defined(SID_InnerFlame3) && (COMMON_SKILL_VALID(SID_InnerFlame3)))
+		if (BattleFastSkillTester(attacker, SID_InnerFlame3))
+			attacker->battleAttack += SKILL_EFF0(SID_InnerFlame3);
 #endif
 	}
 

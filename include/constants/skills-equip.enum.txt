@@ -179,9 +179,9 @@ SID_RangeBonusBow1
 SID_RangeBonusBow2
 SID_RunningStart
 
-SID_BattleRange_Todo1
-SID_BattleRange_Todo2
-SID_BattleRange_Todo3
+SID_InnerFlame1
+SID_InnerFlame2
+SID_InnerFlame3
 
 // Post action
 SID_Canto
