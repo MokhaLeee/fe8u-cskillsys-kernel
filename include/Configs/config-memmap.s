@@ -48,7 +48,7 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 .endm
 
 /* From the bottom to the top */
-_kernel_malloc sSkillList, 0x48 * 3
+_kernel_malloc sSkillList, 0x50 * 3
 _kernel_malloc sSkillFastList, 0x100
 _kernel_malloc sLearnedSkillPLists, 51 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21
@@ -82,8 +82,6 @@ _kernel_malloc sKernelHookSkippingFlag, 1
 _kernel_malloc sAnimNumberSlot, 1
 _kernel_malloc sStatDebuffMsgBufNext, 1
 _kernel_malloc gKonamiComboStep, 1
-
-_kernel_malloc DemoUnitSpriteSlots, 0x100 @ better to put to: _kernel_malloc_demo
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

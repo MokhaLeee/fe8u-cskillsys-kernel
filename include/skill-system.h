@@ -74,7 +74,7 @@ struct SkillList {
 	struct UnitListHeader header;
 	u8 amt;
 	u8 _pad_;
-	u16 sid[25];
+	u16 sid[31];
 };
 struct SkillList *GetUnitSkillList(struct Unit *unit);
 
