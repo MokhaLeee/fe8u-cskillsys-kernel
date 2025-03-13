@@ -80,14 +80,23 @@ void TickActiveFactionTurn(void)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
+            bool damnedStatus = false;
+
             if (gpDebuffInfos[GetUnitStatusIndex(unit)].tick_type == STATUS_DEBUFF_TICK_ON_ALLY)
             {
+                if (GetUnitStatusIndex(unit) == NEW_UNIT_STATUS_DAMNED)
+                    damnedStatus = true;
+                
                 DEC_STATUS(unit);
 #if (defined(SID_ShedSkin) && COMMON_SKILL_VALID(SID_ShedSkin))
                 if (SkillTester(unit, SID_ShedSkin))
                     DEC_STATUS(unit);
 #endif
             }
+
+            if (GetUnitStatusDuration(unit) == 0 && damnedStatus == true)
+                UnitKill(unit);
+
             TickUnitStatDebuff(unit, STATUS_DEBUFF_TICK_ON_ALLY);
         }
 
