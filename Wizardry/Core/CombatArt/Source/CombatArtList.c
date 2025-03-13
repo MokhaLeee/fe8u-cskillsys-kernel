@@ -6,89 +6,66 @@
 
 extern struct CombatArtList sCombatArtList;
 
-void CalcCombatArtListExt(struct Unit *unit, int item)
+#define LOCAL_TRACE 1
+
+STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 {
+	#define APPEND_TMPLIST(_combat_art_index) \
+	do { \
+		u8 __tmp_cid = _combat_art_index; \
+		if (COMBART_VALID(__tmp_cid)) \
+			tmp_list[__tmp_cid] = true; \
+	} while (0)
+
 	int i;
-	u8 cid;
 	int wtype = GetItemType(item);
 	u8 pid = UNIT_CHAR_ID(unit);
 	u8 jid = UNIT_CLASS_ID(unit);
+	u8 iid = ITEM_INDEX(item);
 	u8 *tmp_list = gGenericBuffer;
-	struct SkillList *slist = GetUnitSkillList(unit);
+	struct SkillList *slist;
 
 	CpuFill16(0, tmp_list, 0x100);
 
-	/* Skill table */
-	if (slist) {
-		for (i = 0; i < slist->amt; i++) {
-			cid = gpCombatArtSkillTable[slist->sid[i]];
+	LTRACEF("uid=0x%02X, pid=0x%02X, item=0x%04X", unit->index & 0xFF, UNIT_CHAR_ID(unit), item);
 
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-		}
-	}
+	/* Skill table */
+	slist = GetUnitSkillList(unit);
+	if (slist)
+		for (i = 0; i < slist->amt; i++)
+			APPEND_TMPLIST(gpCombatArtSkillTable[slist->sid[i]]);
+
+	/* Skill weapon table */
+	APPEND_TMPLIST(gpCombatArtSkillTable[gpConstSkillTable_Weapon[iid * 2 + 0]]);
+	APPEND_TMPLIST(gpCombatArtSkillTable[gpConstSkillTable_Weapon[iid * 2 + 1]]);
 
 	/* Weapon table */
-	cid = gpCombatArtWeaponTable[ITEM_INDEX(item)];
-	if (COMBART_VALID(cid))
-		tmp_list[cid] = true;
+	APPEND_TMPLIST(gpCombatArtWeaponTable[iid]);
 
 	/* ROM table */
 	for (i = WPN_LEVEL_E; i <= WPN_LEVEL_S; i++) {
 		if (unit->ranks[ITYPE_SWORD] >= WRankToWExp(i)) {
-			cid = gpCombatArtDefaultTable->cid_sword[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomPTable[pid].cid_sword[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomJTable[jid].cid_sword[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
+			APPEND_TMPLIST(gpCombatArtDefaultTable->cid_sword[i]);
+			APPEND_TMPLIST(gpCombatArtRomPTable[pid].cid_sword[i]);
+			APPEND_TMPLIST(gpCombatArtRomJTable[jid].cid_sword[i]);
 		}
 
 		if (unit->ranks[ITYPE_LANCE] >= WRankToWExp(i)) {
-			cid = gpCombatArtDefaultTable->cid_lance[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomPTable[pid].cid_lance[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomJTable[jid].cid_lance[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
+			APPEND_TMPLIST(gpCombatArtDefaultTable->cid_lance[i]);
+			APPEND_TMPLIST(gpCombatArtRomPTable[pid].cid_lance[i]);
+			APPEND_TMPLIST(gpCombatArtRomJTable[jid].cid_lance[i]);
 		}
 
 		if (unit->ranks[ITYPE_AXE] >= WRankToWExp(i)) {
-			cid = gpCombatArtDefaultTable->cid_axe[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomPTable[pid].cid_axe[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomJTable[jid].cid_axe[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
+			APPEND_TMPLIST(gpCombatArtDefaultTable->cid_axe[i]);
+			APPEND_TMPLIST(gpCombatArtRomPTable[pid].cid_axe[i]);
+			APPEND_TMPLIST(gpCombatArtRomJTable[jid].cid_axe[i]);
 		}
 
 		if (unit->ranks[ITYPE_BOW] >= WRankToWExp(i)) {
-			cid = gpCombatArtDefaultTable->cid_bow[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomPTable[pid].cid_bow[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
-
-			cid = gpCombatArtRomJTable[jid].cid_bow[i];
-			if (COMBART_VALID(cid))
-				tmp_list[cid] = true;
+			APPEND_TMPLIST(gpCombatArtDefaultTable->cid_bow[i]);
+			APPEND_TMPLIST(gpCombatArtRomPTable[pid].cid_bow[i]);
+			APPEND_TMPLIST(gpCombatArtRomJTable[jid].cid_bow[i]);
 		}
 	}
 
@@ -107,6 +84,8 @@ void CalcCombatArtListExt(struct Unit *unit, int item)
 		if (sCombatArtList.amt >= COMBART_LIST_MAX_AMT)
 			break;
 	}
+
+	#undef APPEND_TMPLIST
 }
 
 struct CombatArtList *GetCombatArtList(struct Unit *unit, u16 item)

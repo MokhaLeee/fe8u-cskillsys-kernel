@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "kernel-lib.h"
+#include "shield.h"
 #include "constants/skills.h"
 
 /**
@@ -20,7 +21,7 @@ extern u32 sSkillFastList[0x40];
 #define SkillFastListActor  (&sSkillFastList[0])
 #define SkillFastListTarget (&sSkillFastList[0x20])
 
-extern void (* gpExternalSkillListGenerator)(struct Unit *unit, struct SkillList *list, u8 *ref);
+extern void (*gpExternalSkillListGenerator)(struct Unit *unit, struct SkillList *list, u8 *ref);
 
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 {
@@ -33,7 +34,6 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 		} \
 	} while (0)
 
-	FORCE_DECLARE int weapon;
 	int i;
 	int pid = UNIT_CHAR_ID(unit);
 	int jid = UNIT_CLASS_ID(unit);
@@ -64,17 +64,26 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 		ADD_LIST(gpConstSkillTable_Item[iid * 2 + 1]);
 	}
 
-#if 0
-	/* Weapon */
-	weapon = ITEM_NONE;
-	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
-		weapon = ITEM_INDEX(((struct BattleUnit *)unit)->weaponBefore);
+	/* Battle unit only */
+	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit) {
+		int weapon;
+		const struct ShieldInfo *shield;
+		struct BattleUnit *bu = (struct BattleUnit *)unit;
 
-	if (weapon != ITEM_NONE) {
-		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 0]);
-		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 1]);
+		/* weapon */
+		weapon = ITEM_INDEX(bu->weaponBefore);
+		if (weapon != ITEM_NONE) {
+			ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 0]);
+			ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 1]);
+		}
+
+		/* shield */
+		shield = GetBattleUnitShield(bu);
+		if (shield) {
+			ADD_LIST(shield->skills[0]);
+			ADD_LIST(shield->skills[1]);
+		}
 	}
-#endif
 
 	/* generic */
 	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)

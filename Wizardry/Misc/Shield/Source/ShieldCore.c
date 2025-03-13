@@ -94,7 +94,7 @@ NOINLINE STATIC_DECLAR const struct ShieldInfo *GetExtUnitShield(struct Unit *un
 	return NULL;
 }
 
-NOINLINE STATIC_DECLAR const struct ShieldInfo *GetUnitShield(struct Unit *unit)
+const struct ShieldInfo *GetUnitShield(struct Unit *unit)
 {
 	int i;
 	const struct ShieldInfo *sinfo;
@@ -137,7 +137,7 @@ NOINLINE STATIC_DECLAR const struct ShieldInfo *GetUnitShield(struct Unit *unit)
 	return NULL;
 }
 
-STATIC_DECLAR const struct ShieldInfo *GetBattleUnitShield(struct BattleUnit *bu)
+const struct ShieldInfo *GetBattleUnitShield(struct BattleUnit *bu)
 {
 	Assert(bu == &gBattleActor || bu == &gBattleTarget);
 

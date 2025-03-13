@@ -12,6 +12,7 @@ struct ShieldInfo {
 	s8 battle_status_bonus[BATTLE_STATUS_MAX];
 	s8 unit_status_bonus[UNIT_STATUS_MAX - 1];
 	s8 unit_growth_bonus[UNIT_STATUS_MAX - 1];
+	u16 skills[2];
 };
 
 struct ShieldItem {
@@ -37,6 +38,8 @@ extern struct ShieldExtEquipableConfig const *const gpShieldExtEquipableConfig;
 extern const struct ShieldInfo *gpActorShileInfo;
 extern const struct ShieldInfo *gpTargetShileInfo;
 
+const struct ShieldInfo *GetUnitShield(struct Unit *unit);
+const struct ShieldInfo *GetBattleUnitShield(struct BattleUnit *bu);
 void BattleHit_ConsumeShield(struct BattleUnit *attacker, struct BattleUnit *defender);
 void UnitToBattle_SetShieldInfo(struct Unit *unit, struct BattleUnit *bu);
 void BattleToUnit_ResetShieldInfo(struct BattleUnit *bu, struct Unit *unit);
