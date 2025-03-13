@@ -46,25 +46,12 @@ STATIC_DECLAR int KernelModifyBattleUnitExp(int base, struct BattleUnit *actor, 
 	return status;
 }
 
-LYN_REPLACE_CHECK(GetBattleUnitExpGain);
-int GetBattleUnitExpGain(struct BattleUnit *actor, struct BattleUnit *target)
+int GetBattleUnitExpGainRework(struct BattleUnit *actor, struct BattleUnit *target)
 {
-	int result;
-
-	if (!CanBattleUnitGainLevels(actor) || (actor->unit.curHP == 0) || UNIT_CATTRIBUTES(&target->unit) & CA_NEGATE_LETHALITY)
-		return 0;
-
-	if (!actor->nonZeroDamage)
-		return 1;
-
-	result = GetUnitRoundExp(&actor->unit, &target->unit);
-	result += GetUnitKillExpBonus(&actor->unit, &target->unit);
+	int result = GetBattleUnitExpGain(actor, target);
 
 	result = KernelModifyBattleUnitExp(result, actor, target);
-
-#if !CHAX
 	ModifyUnitSpecialExp(&actor->unit, &target->unit, &result);
-#endif
 
 	return result;
 }
@@ -96,6 +83,23 @@ void BattleApplyMiscActionExpGains(void)
 	CheckBattleUnitLevelUp(&gBattleActor);
 }
 
+int GetBattleUnitStaffExpRework(struct BattleUnit *bu)
+{
+	int result = GetBattleUnitStaffExp(bu);
+
+	result = KernelModifyBattleUnitExp(
+		result,
+		bu,
+		bu == &gBattleActor
+			? &gBattleTarget
+			: &gBattleActor);
+
+	if (result > 100)
+		result = 100;
+
+	return result;
+}
+
 LYN_REPLACE_CHECK(BattleApplyItemExpGains);
 void BattleApplyItemExpGains(void)
 {
@@ -110,7 +114,7 @@ void BattleApplyItemExpGains(void)
 		if (UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE)
 			gBattleActor.wexpMultiplier++;
 
-		gBattleActor.expGain = GetBattleUnitStaffExp(&gBattleActor);
+		gBattleActor.expGain = GetBattleUnitStaffExpRework(&gBattleActor);
 		gBattleActor.unit.exp += gBattleActor.expGain;
 
 		CheckBattleUnitLevelUp(&gBattleActor);
@@ -122,31 +126,23 @@ void BattleApplyItemExpGains(void)
 	}
 }
 
-LYN_REPLACE_CHECK(GetBattleUnitStaffExp);
-int GetBattleUnitStaffExp(struct BattleUnit *bu)
+LYN_REPLACE_CHECK(BattleApplyExpGains);
+void BattleApplyExpGains(void)
 {
-	int result;
+	if ((UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE) || (UNIT_FACTION(&gBattleTarget.unit) != FACTION_BLUE)) {
+		if (!(gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)) {
+			gBattleActor.expGain  = GetBattleUnitExpGain(&gBattleActor, &gBattleTarget);
+			gBattleTarget.expGain = GetBattleUnitExpGain(&gBattleTarget, &gBattleActor);
 
-	if (!CanBattleUnitGainLevels(bu))
-		return 0;
+			gBattleActor.unit.exp  += gBattleActor.expGain;
+			gBattleTarget.unit.exp += gBattleTarget.expGain;
 
-	if (gBattleHitArrayRe->attributes & BATTLE_HIT_ATTR_MISS)
-		return 1;
+#if CHAX
+			ResetPopupSkillStack();
+#endif
 
-	result = 10 + GetItemCostPerUse(bu->weapon) / 20;
-
-	if (UNIT_CATTRIBUTES(&bu->unit) & CA_PROMOTED)
-		result = result / 2;
-
-	result = KernelModifyBattleUnitExp(
-		result,
-		bu,
-		bu == &gBattleActor
-			? &gBattleTarget
-			: &gBattleActor);
-
-	if (result > 100)
-		result = 100;
-
-	return result;
+			CheckBattleUnitLevelUp(&gBattleActor);
+			CheckBattleUnitLevelUp(&gBattleTarget);
+		}
+	}
 }
