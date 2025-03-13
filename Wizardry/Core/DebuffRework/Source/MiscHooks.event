@@ -36,7 +36,7 @@ PUSH
     BYTE 0x3F
     PROTECT $2B0CC $2B1C4
 
-    ORG $2C5B0 // BattleGenerateHitTriangleAttack
+    ORG $2B5B0 // BattleGenerateHitTriangleAttack
     BYTE 0x3F
     PROTECT $2B578 $2B600
 

@@ -7,7 +7,11 @@ def main(args):
         line = line.strip()
 
         # Fasten debug
-        if line.find("CompressedText") != -1:
+        if line.find("GFX_CombatArtIcon") != -1:
+             continue
+        elif line.find("GFX_SkillIcon") != -1:
+             continue
+        elif line.find("CompressedText") != -1:
             continue
         elif line.find(" unit_icon_move_") != -1:
             continue
