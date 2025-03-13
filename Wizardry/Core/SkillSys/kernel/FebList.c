@@ -22,7 +22,7 @@
  */
 int GetUnitLevelSkills(struct Unit *unit, int level_from, int level_to, u8 *out_buffer, int max_len)
 {
-	const struct CharLvupSkillEnt *it;
+	const struct FebListEnt *it;
 	bool promoted = !!(UNIT_CATTRIBUTES(unit) & CA_PROMOTED);
 	int count = 0;
 
@@ -130,7 +130,7 @@ int GetPromotionSkillList(struct Unit *unit, u8 *out_buffer, int max_len)
 /**
  * API
  */
-void LevelUpSkillTable_LoadUnitSkill(struct Unit *unit)
+void FebList_LoadUnitSkill(struct Unit *unit)
 {
 	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
 	int i, len = GetInitialSkillList(unit, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);
@@ -139,7 +139,7 @@ void LevelUpSkillTable_LoadUnitSkill(struct Unit *unit)
 		AddSkill(unit, buf[i]);
 }
 
-void LevelUpSkillTable_LvupAddSkill(struct Unit *unit, int level)
+void FebList_LvupAddSkill(struct Unit *unit, int level)
 {
 	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
 	int i, len = GetLevelUpSkillList(unit, level, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);
@@ -150,7 +150,7 @@ void LevelUpSkillTable_LvupAddSkill(struct Unit *unit, int level)
 	}
 }
 
-void LevelUpSkillTable_PromotionAddSkill(struct Unit *unit)
+void FebList_PromotionAddSkill(struct Unit *unit)
 {
 	u8 buf[DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN];
 	int i, len = GetPromotionSkillList(unit, buf, DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN);

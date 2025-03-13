@@ -119,7 +119,7 @@ _kernel_malloc_overlay0 sTmpMovCostTable, 0x44
  * part     function name       start           end             max size    real size
  * [a]      ARM_MapFloodCoreRe  0x03003CAC      0x03003F94      0x2E8       0x2E8
  * [a]      ARM_MapTask         0x03003F94      0x03003FF0      0x05C       0x05C
- * [a]      ARM_SkillTester     0x03003FF0      0x03004150      0x160       0x160
+ * [a]      ARM_SkillTester     0x03003FF0      0x03004150      0x138       0x160
  *
  * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0x0EC
  * [b]      ARM_SkillList       0x03004378      0x030043B4      0x03C       0x03C

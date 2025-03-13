@@ -6,7 +6,7 @@
 #include "kernel/Infos.lyn.event"
 #include "kernel/LearnSkill.lyn.event"
 #include "kernel/LoadSkill.lyn.event"
-#include "kernel/LoadSkillList.lyn.event"
+#include "kernel/FebList.lyn.event"
 #include "kernel/EquipSkill.lyn.event"
 #include "kernel/SkillList.lyn.event"
 #include "kernel/SkillMenu.lyn.event"

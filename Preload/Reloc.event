@@ -173,4 +173,7 @@ gpPopupComponents: POIN gPopupComponents
 gpBattlePopupConfigs: POIN gBattlePopupConfigs
 gpPromotPopupConfigs: POIN gPromotPopupConfigs
 
+gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
+gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
+
 KERNEL_RELOC_END:

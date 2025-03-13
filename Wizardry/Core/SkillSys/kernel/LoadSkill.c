@@ -137,7 +137,7 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	}
 
 #ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
-	LevelUpSkillTable_LoadUnitSkill(unit);
+	FebList_LoadUnitSkill(unit);
 #endif /* FIT_OLD_SKILLSYS_LIST */
 
 	/* For debug, we enable unit learn all of skills */
@@ -194,7 +194,7 @@ void TryAddSkillLvup(struct Unit *unit, int level)
 		return;
 
 #ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
-	LevelUpSkillTable_LvupAddSkill(unit, level);
+	FebList_LvupAddSkill(unit, level);
 #endif
 
 	_level = level;
@@ -222,7 +222,7 @@ void TryAddSkillPromotion(struct Unit *unit, int jid)
 		return;
 
 #ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
-	LevelUpSkillTable_PromotionAddSkill(unit);
+	FebList_PromotionAddSkill(unit);
 #endif
 
 	for (i = 0; i < 5; i++) {

@@ -101,7 +101,7 @@ bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *targe
  * This is aligned to old asm skillsystem config, see:
  * https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5
  */
-struct CharLvupSkillEnt {
+struct FebListEnt {
 	u8 level;
 	u8 sid;
 };
@@ -116,14 +116,11 @@ struct CharLvupSkillEnt {
 #define LOAD_JOB_SKILL_CONFIG_WO_TUTORIAL    (3 << 5)
 #define LOAD_JOB_SKILL_CONFIG_HARD_MODE_ONLY (4 << 5)
 
-// extern struct CharLvupSkillEnt const *const CharLevelUpSkillTable[0x100];
-// extern struct CharLvupSkillEnt const *const ClassLevelUpSkillTable[0x100];
+// extern struct FebListEnt const *const CharLevelUpSkillTable[0x100];
+// extern struct FebListEnt const *const ClassLevelUpSkillTable[0x100];
 
-extern struct CharLvupSkillEnt const *const *const gpCharLevelUpSkillTable;
-extern struct CharLvupSkillEnt const *const *const gpClassLevelUpSkillTable;
-
-extern u8 const *const gpPersonalSkillTable;
-extern u8 const *const gpClassSkillTable;
+extern struct FebListEnt const *const *const gpCharLevelUpSkillTable;
+extern struct FebListEnt const *const *const gpClassLevelUpSkillTable;
 
 #define DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN 16
 
@@ -132,9 +129,9 @@ int GetInitialSkillList(struct Unit *unit, u8 *out_buffer, int max_len);
 int GetLevelUpSkillList(struct Unit *unit, int level, u8 *out_buffer, int max_len);
 int GetPromotionSkillList(struct Unit *unit, u8 *out_buffer, int max_len);
 
-void LevelUpSkillTable_LoadUnitSkill(struct Unit *unit);
-void LevelUpSkillTable_LvupAddSkill(struct Unit *unit, int level);
-void LevelUpSkillTable_PromotionAddSkill(struct Unit *unit);
+void FebList_LoadUnitSkill(struct Unit *unit);
+void FebList_LvupAddSkill(struct Unit *unit, int level);
+void FebList_PromotionAddSkill(struct Unit *unit);
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {

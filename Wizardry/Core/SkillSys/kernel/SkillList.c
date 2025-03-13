@@ -46,16 +46,10 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	/* person */
 	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 0]);
 	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 1]);
-#ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
-	ADD_LIST(gpPersonalSkillTable[pid]);
-#endif
 
 	/* job */
 	ADD_LIST(gpConstSkillTable_Job[jid * 2 + 0]);
 	ADD_LIST(gpConstSkillTable_Job[jid * 2 + 1]);
-#ifdef CONFIG_FIT_OLD_SKILLSYS_LIST
-	ADD_LIST(gpClassSkillTable[jid]);
-#endif
 
 	/* item */
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
