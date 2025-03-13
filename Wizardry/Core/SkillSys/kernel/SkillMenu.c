@@ -121,7 +121,7 @@ STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit *unit)
 	int i, cnt;
 	struct SkillList *list;
 
-#if 0
+#if 1
 	list = GetUnitSkillList(unit);
 #else
 	BattleGenerateUiStats(unit, -1);
