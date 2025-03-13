@@ -6,7 +6,7 @@
 
 extern struct CombatArtList sCombatArtList;
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 {

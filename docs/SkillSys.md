@@ -1,17 +1,46 @@
-Currently, C-Skillsys theoretically allows up to **1021** skills (`0x01~0xFE, 0x100~0x3FF`) to take effect at the same time. Each unit can carry up to **21** skills at the same time, which are distributed as follows:
+# 1. Overview
+- Supports characters gaining skill effects through their character index, class index, and items.
+- Supports battle characters gaining skill effects through equipped weapons and shields.
+- Some skills can be dynamically acquired (dynamic skills), allowing characters to gain dynamic skills when loading, leveling up, or promoting. Players can also assign dynamic skills to characters via events.
+- Players can freely equip or unequip dynamic skills in the preparation screen (FE16 style).
 
-- **7 equipable skills**, which allows player to freely select in prepscreen, also allows the game-play designer dynamically assign skills to enemies through events.
-- **3 person skills**, fixed on ROM table and searched by unit character index.
-- **3 job skills**, fixed on ROM table and searched by unit class index.
-- **5x2 item skills**, fixed on ROM table and searched by item index. Just like an amulet, unit can obtain skills as long as they carry the corresponding items.
+# 2. Skill Partitioning
+Unlike the old system, **cskillsys** expands the skill ID range to 0x400. The currently valid skill ID range is `0x01~0xFE, 0x100~0x3FF` (up to **1021** skills in total).
+With such a large number of skills, partitioning is necessary to save space and improve performance. Some skills enjoy special effects:
 
-Note that the skill index is also divided into certain parts of categories in order to save memory and optimize performance. The following rules are generally followed for the division of skill index:
+- `0x001-0x0FE` **Dynamic Skills**: Only this category of skills can be freely equipped and unequipped.
+- `0x300-0x3FF` **Item Skills**: These skills are only effective when attached to items.
 
-- In order to save the RAM space especially SRAM space, **equipable skill** can only range in `0x01~0xFE`, which is consistent to tranditional SkillSystem_FE8.
-- In order to improve performance, only the skills ranging in `0x300-0x3FF` can involve on Item skills judgement.
-- Other skills, including person/job skills have no particular restrictions.
+Other skills are categorized as **generic skills**.
 
-# 1. Judge skill
+# 3. Setting Skills (CHAX New List)
+
+## 3.1 Fixed Skills
+1. Fixed skills can be assigned to characters via [`gConstSkillTable_Person`](../Data/SkillSys/SkillTable-person.c), with each character being able to hold up to **2** fixed skills.
+2. Fixed skills can be assigned to classes via [`gConstSkillTable_Job`](../Data/SkillSys/SkillTable-job.c), with each class being able to hold up to **2** fixed skills.
+3. Fixed skills can be assigned to items via [`gConstSkillTable_Item`](../Data/SkillSys/SkillTable-item.c). Characters gain the corresponding skill when carrying the item. Each item can hold up to **2** fixed skills, and these skills must be within the `0x300-0x3FF` range.
+4. Fixed skills can be assigned to weapons via [`gConstSkillTable_Weapon`](../Data/SkillSys/SkillTable-weapon.c). Characters gain the corresponding skill when equipping the weapon. Note that these skills are **ONLY effective** for battle characters.
+5. Fixed skills can be assigned to shields via [`gShieldItemTable::info::skills`](../Data/Shield/ShieldConfig.c). Characters gain the corresponding skill when equipping the shield. Note that these skills are **ONLY effective** for battle characters. For more details on shields, refer to [ShieldItem.md](./ShieldItem.md).
+
+## 3.2 Dynamic Skills
+
+1. Only **dynamic skills** can be acquired or unequipped.
+2. Each character can equip up to **7** dynamic skills.
+3. Players can freely equip or unequip dynamic skills in the preparation screen (FE16 style).
+4. If a character acquires a new skill while already holding 7 dynamic skills, the new skill is recorded as "learned" but does not take effect immediately. Players can equip it later in the preparation screen.
+5. Skills that can be learned upon level-up can be configured via [`gSkillPreloadPData`](../Data/SkillSys/SkillTable-generic.c). Characters can only learn new skills at levels 5, 10, 15, etc. Each character can learn up to 5 skills every 5 levels. The reference level is based on total level-ups and is not affected by class changes.
+6. Skills that can be learned upon level-up for classes can be configured via [`gSkillPreloadJData`](../Data/SkillSys/SkillTable-generic.c). Characters can only learn new skills at levels 5, 10, 15, etc. Each class can learn up to 5 skills every 5 levels. The reference level is determined by the current level.
+7. Developers can assign or remove skills directly via events. Refer to: [Skill OPS patch](../Patches/PATCH_EVENTSCRIPT_SkillOps.txt).
+
+# 4. Setting Skills (Fitting to FEB Old List)
+
+Starting from version **3.0.0**, CSkillSys additionally supports a skill list format compatible with the old skill system. Players can configure it using FEB or modify (FebList.c)[../Data/SkillSys/FebList.c]. For configuration instructions, refer to this document:
+
+**https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5**
+
+Note: To maintain compatibility with the old system, the skill ID range for this list is limited to `0x01-0xFF`.
+
+# 5. Judge skill
 
 In order to improve the performance of the skill system, we provide three judge-skill functions for developers:
 
@@ -31,51 +60,7 @@ It is worth noting that `SkillListTester` will determine after all skills held b
 
 `BattleFastSkillTester` is the most performant but least safe function: it directly searches from a preset skill list without checking if the list is correct. This means you must handle it with caution. Currently, it can only be used during the pre-battle calculation process and specially for `gBattleActor` and `gBattleTarget`.
 
-# 2. Skill lists
-
-## ROM table
-
-ROM table can be configured in:
-
-- [SkillTable-person.c](../Data/SkillSys/SkillTable-person.c)
-- [SkillTable-job.c](../Data/SkillSys/SkillTable-job.c)
-- [SkillTable-item.c](../Data/SkillSys/SkillTable-item.c)
-
-## RAM table API
-
-As for RAM table, developers may use the following API to give unit quipable skills. Each unit can get 7 RAM skills.
-
-```C
-#include "skill-system.h"
-int AddSkill(struct Unit *unit, const u16 sid);
-int RemoveSkill(struct Unit *unit, const u16 sid);
-```
-
-We have also offered event macros to add quipable skill from event:
-
-- `Evt_AddSkill(sid, pid)`: give character [**pid**] a quipable skill [**sid**].
-- `Evt_AddSkillAt(sid, x, y)`: give character at position [**x, y**] a quipable skill [**sid**].
-- `Evt_AddSkillSC(sid)`: give character a quipable skill [**sid**], character index is picked from slot-C.
-
-You may also use macro `Evt_RemoveSkill, Evt_RemoveSkillAt, Evt_RemoveSkillSC` to remove quipable skills.
-
-RAM table use the support list inside unit struct, and the support data is lied inside BWL table by patch [BwlRework](../Wizardry/Common/BwlRework/BwlRework.event).
-
-## Learn skills
-
-Every time you `AddSkill` to unit, he may learn that quipable skill permanently. That is to say, he can always select the skill to equip in prep-screen, regardless whether you `RemoveSkill` from him. 
-
-The most important purpose of the modern C-SkillSys is to allow players to load and unload skills in prep-screen. To do this, each character is given a list to store the skills they have learned. This list is saved to SRAM, and may be used during prep-skill list screen.
-
-Character may learn 10 equipable skills when they level-up to lv 5/10/15/20..., 5 from class and 5 from character himself. You may edit on such file to configure character/class to learn which skills:
-
-- [SkillTable-generic.c](../Data/SkillSys/SkillTable-generic.c)
-
-We have also recorded unit level regardless he was promoted. Once one unit is promoted, his level will return to 1 but the record level will not change. When unit level-up, kernel may use `recorded level + current level` to judge on which skill should she learn for character table.
-
-Now kernel also supports the same config on setting skills as old asm skillsystem, you can edit at [LevelUpSkillEditor.c](../Data/SkillSys/LevelUpSkillEditor.c), please refer to [SME's tutorial](https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5)
-
-# 3. Develop new skill
+# 6. Develop new skill
 
 Since the skills are currently divided into four categories, developers need to select a category in advance to place new skills first:
 
@@ -83,7 +68,7 @@ Since the skills are currently divided into four categories, developers need to 
 | :--------	| :-----------	| :-----------	| :----------- |
 | index preconfig | [skills-equip.enum.txt](../include/constants/skills-equip.enum.txt) | [skills-item.enum.txt](../include/constants/skills-item.enum.txt) | [skills-others.enum.txt](../include/constants/skills-others.enum.txt) |
 
-## Basic skill info
+## 6.1 Basic skill info
 
 A skill need the following components:
 
@@ -103,7 +88,7 @@ struct SkillInfo {
 
 If you want to develop a new skill, you need to add such basic infos by the following step:
 
-### 1. Skill index
+### 6.1.1 Skill index
 
 Add skill index to **index preconfig** files, which is depend on your selection which categories to place. Kernel may auto generate a unique skill index and put them to **include/constants/skills.h**.
 
@@ -115,11 +100,11 @@ To avoid compilation errors, you'd better to add skill index detection on effect
 #endif
 ```
 
-### 2. Skill icon
+### 6.1.2 Skill icon
 
 Add icon to [gfx directory](../Contents/Gfx/Sources/SkillIcon/), you just need to give the ***.png*** file a proper name, then kernel may automatically generate variable as `GFX_SkillIcon_*` in [constants/gfx.h](../include/constants/gfx.h).
 
-### 3. Skill description & name
+### 6.1.3 Skill description & name
 
 Add text to [texts.txt](../Contents/Texts/Source/kernel.txt), then kernel may automatically generate msg index in [constants/texts.h](../include/constants/texts.h).
 
@@ -137,7 +122,7 @@ Once you have done all of the components, go to [SkillInfo.c](../Data/SkillSys/S
 #endif
 ```
 
-## Skill anim info
+## 6.2 Skill anim info
 
 It is a little bit complicated if you want to make your skill show anim effect during battle.
 
@@ -156,7 +141,7 @@ void RegisterTargetEfxSkill(int round, const u16 sid);
 
 Then kernel may register a efxskill anim at specific round. If there has already been a skill anim registered, then we may compare the priority and let the higher one be displayed.
 
-## Battle order related skill
+## 6.3 Battle order related skill
 
 Battle order calculation can be splited into:
 
