@@ -582,6 +582,7 @@
 // SID_KeepUp
 // SID_Amaterasu
 // SID_GoodyBasket
+// SID_BlacksmithPlus
 
 ////////// POST-PHASE SKILLS
 // SID_HoardersBane

@@ -12,6 +12,7 @@ gPrePhaseFuncs:
     POIN PrePhase_UpdateLengendSkillStatus
     POIN PrePhase_UnitStatusEffectSkills
     POIN PrePhase_TickDopplegangerSkillStatus
+    POIN PrePhase_BlacksmithPlus
 
     POIN PrePhaseFunc_AversaNight
     POIN PrePhaseFunc_HoneFortify

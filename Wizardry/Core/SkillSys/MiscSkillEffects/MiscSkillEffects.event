@@ -85,6 +85,7 @@
 #include "PrePhaseSkills/Moody.lyn.event"
 #include "PrePhaseSkills/HoneChaos.lyn.event"
 #include "PrePhaseSkills/Doppleganger.lyn.event"
+#include "PrePhaseSkills/BlacksmithPlus.lyn.event"
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"

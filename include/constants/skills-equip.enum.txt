@@ -227,7 +227,7 @@ SID_Camouflage
 // SID_SwiftAttack
 
 //////// POST-BATTLE SKILLS
-SID_Canto
+// SID_Canto
 SID_CantoPlus
 SID_Galeforce
 SID_AlertStance
@@ -582,6 +582,7 @@ SID_IndoorMarch
 // SID_KeepUp
 // SID_Amaterasu
 SID_GoodyBasket
+SID_BlacksmithPlus
 
 //////// POST-PHASE SKILLS
 // SID_HoardersBane

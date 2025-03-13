@@ -96,3 +96,8 @@ if the unit is on outdoor terrain.[X]
 Goody Basket:[NL]
 Restore a LCK % amount of[NL]
 max HP each turn.[X]
+
+## MSG_SKILL_BlacksmithPlus
+Blacksmith+:[N]
+Restore 1 weapon use per turn[N]
+to the unit's equipped weapon.[X]
