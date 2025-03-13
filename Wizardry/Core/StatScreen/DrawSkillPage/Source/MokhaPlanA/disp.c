@@ -19,7 +19,7 @@ void DrawSkillPage_MokhaPlanA(void)
 		STATSCREEN_TEXT_SUPPORT2,
 	};
 
-	struct SkillList *list = GetUnitSkillList(gStatScreen.unit);
+	struct SkillList *list = GetUnitSkillList(&gBattleActor.unit /* gStatScreen.unit */);
 
 	DisplayWeaponExp(0, 1, 0x1, ITYPE_SWORD);
 	DisplayWeaponExp(1, 1, 0x3, ITYPE_LANCE);

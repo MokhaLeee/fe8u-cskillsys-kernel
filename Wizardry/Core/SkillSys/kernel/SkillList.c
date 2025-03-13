@@ -34,7 +34,8 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 		} \
 	} while (0)
 
-	int i;
+	int i, weapon;
+	const struct ShieldInfo *shield;
 	int pid = UNIT_CHAR_ID(unit);
 	int jid = UNIT_CLASS_ID(unit);
 	u8 *tmp_list = gGenericBuffer;
@@ -60,29 +61,32 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
 		u8 iid = ITEM_INDEX(unit->items[i]);
 
+		if (iid == ITEM_NONE)
+			break;
+
 		ADD_LIST(gpConstSkillTable_Item[iid * 2 + 0]);
 		ADD_LIST(gpConstSkillTable_Item[iid * 2 + 1]);
 	}
 
-	/* Battle unit only */
+	/* weapon & sheild*/
 	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit) {
-		int weapon;
-		const struct ShieldInfo *shield;
 		struct BattleUnit *bu = (struct BattleUnit *)unit;
 
-		/* weapon */
-		weapon = ITEM_INDEX(bu->weaponBefore);
-		if (weapon != ITEM_NONE) {
-			ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 0]);
-			ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 1]);
-		}
-
-		/* shield */
+		weapon = ITEM_INDEX(bu->weapon);
 		shield = GetBattleUnitShield(bu);
-		if (shield) {
-			ADD_LIST(shield->skills[0]);
-			ADD_LIST(shield->skills[1]);
-		}
+	} else {
+		weapon = ITEM_INDEX(GetUnitEquippedWeapon(unit));
+		shield = GetUnitShield(unit);
+	}
+
+	if (weapon != ITEM_NONE) {
+		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 0]);
+		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 1]);
+	}
+
+	if (shield) {
+		ADD_LIST(shield->skills[0]);
+		ADD_LIST(shield->skills[1]);
 	}
 
 	/* generic */

@@ -37,14 +37,14 @@ void StartSkillScreenHelp(int pageid, struct Proc *proc)
 /* HelpBox API */
 void HbPopuplate_SkillPageCommon(struct HelpBoxProc *proc)
 {
-	struct SkillList *list = GetUnitSkillList(gStatScreen.unit);
+	struct SkillList *list = GetUnitSkillList(&gBattleActor.unit /* gStatScreen.unit */);
 
 	proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
 }
 
 void HbRedirect_SkillPageCommon(struct HelpBoxProc *proc)
 {
-	if (proc->info->mid < GetUnitSkillList(gStatScreen.unit)->amt)
+	if (proc->info->mid < GetUnitSkillList(&gBattleActor.unit /* gStatScreen.unit */)->amt)
 		return;
 
 	switch (proc->moveKey) {

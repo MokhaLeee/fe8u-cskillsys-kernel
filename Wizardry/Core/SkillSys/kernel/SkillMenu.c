@@ -119,7 +119,14 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit *unit)
 {
 	int i, cnt;
-	struct SkillList *list = GetUnitSkillList(unit);
+	struct SkillList *list;
+
+#if 0
+	list = GetUnitSkillList(unit);
+#else
+	BattleGenerateUiStats(unit, -1);
+	list = GetUnitSkillList(&gBattleActor.unit);
+#endif
 
 	memset(UnitMenuSkills, 0, sizeof(UnitMenuSkills));
 
