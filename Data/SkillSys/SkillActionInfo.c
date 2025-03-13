@@ -138,4 +138,8 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_ShadowFlash) && COMMON_SKILL_VALID(SID_ShadowFlash))
     [SID_ShadowFlash] = Action_ShadowFlash,
 #endif
+
+#if (defined(SID_DeathBlight) && COMMON_SKILL_VALID(SID_DeathBlight))
+    [SID_DeathBlight] = Action_DeathBlight,
+#endif
 };

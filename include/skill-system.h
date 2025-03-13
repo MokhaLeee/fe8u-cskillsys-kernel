@@ -379,6 +379,8 @@ int ShadowFlash_Hover(struct MenuProc * menu, struct MenuItemProc * item);
 int ShadowFlash_Unhover(struct MenuProc * menu, struct MenuItemProc * menuItem);
 u8 Refuge_Usability(const struct MenuItemDef * def, int number);
 u8 Refuge_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 DeathBlight_Usability(const struct MenuItemDef * def, int number);
+u8 DeathBlight_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -409,3 +411,4 @@ bool Action_Arise(ProcPtr parent);
 bool Action_AssignDecoy(ProcPtr parent);
 bool Action_ShadowFlash(ProcPtr parent);
 bool Action_Refuge(ProcPtr parent);
+bool Action_DeathBlight(ProcPtr parent);

@@ -1360,7 +1360,6 @@ u8 Event97_WmInitNextStoryNode(struct EventEngineProc * proc)
 
     return EVC_ADVANCE_CONTINUE;
 };
-#endif
 
 LYN_REPLACE_CHECK(Event3E_PrepScreenCall);
 //! FE8U = 0x08010968
@@ -1372,6 +1371,7 @@ u8 Event3E_PrepScreenCall(struct EventEngineProc * proc)
 
     return EVC_ADVANCE_YIELD;
 }
+#endif
 
 void GiveScroll(void)
 {

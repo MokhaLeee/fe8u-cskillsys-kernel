@@ -214,9 +214,9 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
         .img = GFX_DebuffMinibox_Panic,
         .efx_config = {EFX_DEBUFF_NORMAL, 0x10, 0, 0x10},
     },
-    [NEW_UNIT_STATUS_DAMNED] = {
-        .name = MSG_DEBUFF_DAMNED_NAME,
-        .desc = MSG_DEBUFF_DAMNED_DESC,
+    [NEW_UNIT_STATUS_DOOM] = {
+        .name = MSG_DEBUFF_DOOM_NAME,
+        .desc = MSG_DEBUFF_DOOM_DESC,
         .positive_type = STATUS_DEBUFF_NEGATIVE,
         .tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
         .duration = 3,

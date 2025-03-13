@@ -65,3 +65,10 @@ ALIGN 4
 #include "Misc/PortraitHeight/PortraitHeight.event"
 
 #include "External/ExternalPatches.event"
+
+// Temporary fix for force deploy screen
+PUSH
+ORG $84800 // IsCharForceDeployed
+SHORT $2000 $4770 // mov r0, #0    bx lr 
+POP
+

@@ -589,6 +589,21 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_DeathBlight) && COMMON_SKILL_VALID(SID_DeathBlight))
+    [SID_DeathBlight] = {
+        .name = "　光の結界",
+        .nameMsgId = MSG_MenuSkill_DeathBlightName,
+        .helpMsgId = MSG_SKILL_DeathBlight,
+        .color = TEXT_COLOR_SYSTEM_GOLD,
+        .isAvailable = DeathBlight_Usability,
+        .onDraw = NULL,
+        .onSelected = DeathBlight_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
     [0] = {
         .name = "　",
         .nameMsgId = MSG_MenuCommand_RefugeName,

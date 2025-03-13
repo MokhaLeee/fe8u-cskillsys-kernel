@@ -430,3 +430,11 @@ cost, and move again afterwards.[X]
 ## MSG_MenuCommand_Refuge
 Retreat into an ally who's[N]
 AID >= the unit's CON.[X]
+
+## MSG_MenuSkill_DeathBlightName
+ Death Blight[X]
+
+## MSG_SKILL_DeathBlight
+Death Blight:[NL]
+Inflict the "Damned" status on[N]
+enemies. Usable once per map.[X]

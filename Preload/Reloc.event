@@ -73,6 +73,8 @@ gpCopyUnitHooks: POIN gCopyUnitHooks
 gpClearUnitHooks: POIN gClearUnitHooks
 gpLoadUnitHooks: POIN gLoadUnitHooks
 
+gpExternalSkillListGenerator: WORD 0
+
 gpHpGetters:    POIN gHpGetters
 gpPowGetters:   POIN gPowGetters
 gpMagGetters:   POIN gMagGetters

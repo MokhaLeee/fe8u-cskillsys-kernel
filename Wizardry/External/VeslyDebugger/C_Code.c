@@ -3627,19 +3627,23 @@ void MakeMoveunitForAnyActiveUnit(void) {
     }
     SetAutoMuDefaultFacing();
 }
-void InitProc(DebuggerProc* proc) { 
-    proc->mainID = 0; 
-    proc->page = 0; 
-    proc->editing = false; 
-    proc->actionID = 0; 
-    proc->godMode = 0; 
-    proc->lastFlag = 1; 
-    proc->tileID = 1; 
-    proc->id = 0; 
-    proc->lastTileHovered = 0; 
-    for (int i = 0; i < tmpSize; ++i) { 
-        proc->tmp[i] = 0; 
-    } 
+
+void InitProc(DebuggerProc * proc)
+{
+    proc->mainID = 0;
+    proc->page = 0;
+    proc->editing = false;
+    proc->actionID = 0;
+    proc->godMode = 0;
+    proc->autoplay = 0;
+    proc->lastFlag = 1;
+    proc->tileID = 1;
+    proc->id = 0;
+    proc->lastTileHovered = 0;
+    for (int i = 0; i < tmpSize; ++i)
+    {
+        proc->tmp[i] = 0;
+    }
 }
 
 //! FE8U = 0x08015450

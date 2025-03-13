@@ -62,10 +62,10 @@ Decoy:[N]
 Enemy units will move to[NL]
 attack this unit.[X]
 
-## MSG_DEBUFF_DAMNED_NAME
-Damned[X]
+## MSG_DEBUFF_DOOM_NAME
+Doom[X]
 
-## MSG_DEBUFF_DAMNED_DESC
-Damned:[N]
+## MSG_DEBUFF_DOOM_DESC
+Doom:[N]
 Unit dies when this[N]
 status wears off.[X]
