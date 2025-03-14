@@ -55,11 +55,20 @@ jobs:
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
 
-    - name: Debug build
-      run: make -j
+    - name: Debug remove skill build
+      run: make -j CONFIG_CI_NO_SKILL_TEST=1
 
     - name: Clean build
       run: make clean
 
-    - name: Debug remove skill build
-      run: make -j CONFIG_CI_NO_SKILL_TEST=1
+    - name: release build
+      run: make -j CONFIG_RELEASE_COMPILATION=1
+
+    - name: gen_release
+      run: ./Tools/scripts/generate_release.sh
+
+    - uses: actions/upload-artifact@v4.3.5
+      with:
+        name: ${{ github.event.repository.name }}_${{ env.build_time }}
+        path: |
+          .release_dir/*
