@@ -50,12 +50,14 @@ bool Action_DivineReprieve(ProcPtr parent)
 	return true;
 }
 
+#endif /* SID_DivineReprieve */
+
 /**
  * External hooks
  */
 void PlayerPhase_HandleAutoEndRework(ProcPtr proc)
 {
-#if CHAX
+#if defined(SID_DivineReprieve) && (COMMON_SKILL_VALID(SID_DivineReprieve))
 	if (PlayStExpa_CheckBit(PLAYSTEXPA_BIT_DivineReprieve_InForce))
 		Proc_Goto(proc, 3);
 #endif
@@ -66,7 +68,7 @@ void PlayerPhase_HandleAutoEndRework(ProcPtr proc)
 
 void AiPhaseInitRework(ProcPtr proc)
 {
-#if CHAX
+#if defined(SID_DivineReprieve) && (COMMON_SKILL_VALID(SID_DivineReprieve))
 	if (PlayStExpa_CheckBit(PLAYSTEXPA_BIT_DivineReprieve_InForce)) {
 		PlayStExpa_ClearBit(PLAYSTEXPA_BIT_DivineReprieve_InForce);
 		return;
@@ -76,5 +78,3 @@ void AiPhaseInitRework(ProcPtr proc)
 	// vanilla
 	AiPhaseInit(proc);
 }
-
-#endif /* SID_DivineReprieve */
