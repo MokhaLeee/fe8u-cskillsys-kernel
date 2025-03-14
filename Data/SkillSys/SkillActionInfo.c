@@ -70,4 +70,8 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
 	[SID_Blacksmith] = Action_Blacksmith,
 #endif
+
+#if (defined(SID_DivineReprieve) && COMMON_SKILL_VALID(SID_DivineReprieve))
+	[SID_DivineReprieve] = Action_DivineReprieve,
+#endif
 };

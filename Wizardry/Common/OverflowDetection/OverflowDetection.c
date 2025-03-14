@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "battle-system.h"
 #include "popup-reowrk.h"
+#include "playst-expa.h"
 
 extern u8 FreeRamSpaceTop[], UsedFreeRamSpaceTop[], FreeRamSpaceBottom[];
 extern u8 FreeRamSpace2Top[], UsedFreeRamSpace2Top[], FreeRamSpace2Bottom[];
@@ -31,4 +32,7 @@ void GameInit_OverflowDetection(void)
 
 	/* PopupR */
 	Assert(CHAX_POPUP_OP_ALLOC_MAX > CHAX_POPUP_OP_MAX);
+
+	/* PlaySt expa */
+	Assert(PLAYSTEXPA_BIT_USED < PLAYSTEXPA_BIT_MAX);
 }

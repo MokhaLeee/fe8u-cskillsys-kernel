@@ -14,8 +14,8 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 		SID_Pass,
 #endif
 
-#if (defined(SID_SeaWays) && COMMON_SKILL_VALID(SID_SeaWays))
-		SID_SeaWays,
+#if (defined(SID_DivineReprieve) && COMMON_SKILL_VALID(SID_DivineReprieve))
+		SID_DivineReprieve,
 #endif
 	},
 

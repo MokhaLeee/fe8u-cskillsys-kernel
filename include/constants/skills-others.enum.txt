@@ -289,6 +289,7 @@ SID_GoddessDance
 SID_Stride
 SID_Blacksmith
 SID_Latona
+SID_DivineReprieve
 
 // Art skills
 SID_COMBAT_Galeforce

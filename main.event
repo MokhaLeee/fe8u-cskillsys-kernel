@@ -52,6 +52,7 @@ ORG FreeSpaceKernelText
      * .text section for kernel.
      * This part of code is put at in-BL range space
      */
+    #include "Preload/CommonProtection.event"
     #include "Wizardry/Wizardry.event"
 FreeSpaceKernelTextTail:
 MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelText) max (FreeSpaceKernelTextSize)

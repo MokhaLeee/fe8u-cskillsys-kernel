@@ -17,6 +17,9 @@
  */
 // #define CONFIG_CROP_VANILLA_MSG
 
+/* CommonProtection.event */
+#define CONFIG_COMMON_PROTECTION_ENBALED
+
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
 
