@@ -75,3 +75,4 @@ jobs:
         name: ${{ github.event.repository.name }}_${{ env.build_time }}
         path: |
           .release_dir/*
+        retention-days: 1
