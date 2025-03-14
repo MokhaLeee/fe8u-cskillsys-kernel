@@ -66,13 +66,13 @@ jobs:
 
     - name: post build
       run: |
-        echo "build_time=$(date +"%Y%m%d.%H")" >> "$env:GITHUB_ENV"
+        echo "build_time=$(date +"%Y%m%d.%H")" >> $GITHUB_ENV
         ./Tools/scripts/generate_release.sh
-        rm -f ./release_dir/*.gba
+        rm -f .release_dir/*.gba
 
     - uses: actions/upload-artifact@v4.3.5
       with:
-        name: ${{ github.event.repository.name }}_${{ env.build_time }}
+        name: ${{ github.event.repository.name }}_${{ env.BUILD_TIME }}
         path: |
           .release_dir/*
         retention-days: 1
