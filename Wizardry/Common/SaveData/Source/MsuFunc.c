@@ -8,24 +8,24 @@
 void MSU_SavePlaySt(u8 *dst, const u32 size)
 {
 	gPlaySt.time_saved = GetGameClock();
-	WriteAndVerifySramFast(&gPlaySt, dst, sizeof(gPlaySt));
+	WriteAndVerifySramFast(&gPlaySt, dst, size);
 }
 
 void MSU_LoadPlaySt(u8 *src, const u32 size)
 {
-	ReadSramFast(src, &gPlaySt, sizeof(gPlaySt));
+	ReadSramFast(src, &gPlaySt, size);
 	SetGameTime(gPlaySt.time_saved);
 }
 
 void MSU_SaveAction(u8 *dst, const u32 size)
 {
 	StoreRNStateToActionStruct();
-	WriteAndVerifySramFast(&gActionData, dst, sizeof(struct ActionData));
+	WriteAndVerifySramFast(&gActionData, dst, size);
 }
 
 void MSU_LoadAction(u8 *src, const u32 size)
 {
-	ReadSramFast(src, &gActionData, sizeof(struct ActionData));
+	ReadSramFast(src, &gActionData, size);
 	LoadRNStateFromActionStruct();
 }
 
@@ -34,14 +34,14 @@ void MSU_SaveMenuMask(u8 *dst, const u32 size)
 	u8 list[MENU_OVERRIDE_MAX];
 
 	GetForceDisabledMenuItems(list);
-	WriteAndVerifySramFast(list, dst, sizeof(list));
+	WriteAndVerifySramFast(list, dst, size);
 }
 
 void MSU_LoadMenuMask(u8 *src, const u32 size)
 {
 	u8 list[MENU_OVERRIDE_MAX];
 
-	ReadSramFast(src, list, sizeof(list));
+	ReadSramFast(src, list, size);
 	SetForceDisabledMenuItems(list);
 }
 
@@ -60,14 +60,14 @@ void MSU_SaveDungeon(u8 *dst, const u32 size)
 	struct Dungeon dungeon[2];
 
 	SaveDungeonRecords(dungeon);
-	WriteAndVerifySramFast(dungeon, dst, sizeof(dungeon));
+	WriteAndVerifySramFast(dungeon, dst, size);
 }
 
 void MSU_LoadDungeon(u8 *src, const u32 size)
 {
 	struct Dungeon dungeon[2];
 
-	ReadSramFast(src, dungeon, sizeof(dungeon));
+	ReadSramFast(src, dungeon, size);
 	LoadDungeonRecords(dungeon);
 }
 
@@ -76,14 +76,14 @@ void MSU_SaveDungeon2(u8 *dst, const u32 size)
 	struct Dungeon dungeon;
 
 	SaveDungeonState(&dungeon);
-	WriteAndVerifySramFast(&dungeon, dst, sizeof(struct Dungeon));
+	WriteAndVerifySramFast(&dungeon, dst, size);
 }
 
 void MSU_LoadDungeon2(u8 *src, const u32 size)
 {
 	struct Dungeon dungeon;
 
-	ReadSramFast(src, &dungeon, sizeof(struct Dungeon));
+	ReadSramFast(src, &dungeon, size);
 	LoadDungeonState(&dungeon);
 }
 
@@ -91,14 +91,14 @@ void MSU_SaveEvtCounter(u8 *dst, const u32 size)
 {
 	int val = GetEventSlotCounter();
 
-	WriteAndVerifySramFast(&val, dst, sizeof(int));
+	WriteAndVerifySramFast(&val, dst, size);
 }
 
 void MSU_LoadEvtCounter(u8 *src, const u32 size)
 {
 	int val;
 
-	ReadSramFast(src, &val, sizeof(int));
+	ReadSramFast(src, &val, size);
 	SetEventSlotCounter(val);
 }
 

@@ -4,4 +4,5 @@ ChapterInitHooks:
     POIN InitRandC
     POIN ResetUnitsExpaSus
     POIN ChapterInit_SetInitiativeStatus
+    POIN ChapterInit_ResetPlayStExpa
     WORD 0

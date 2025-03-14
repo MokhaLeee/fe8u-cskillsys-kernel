@@ -47,6 +47,7 @@ ALIGN 4
 #include "Common/MapAnimBattleHook/MapAnimBattleHook.event"
 #include "Common/MapAnims/MapAnims.event"
 #include "Common/Utf8/Utf8.event"
+#include "Common/PlayStExpa/PlayStExpa.event"
 
 #include "Core/SkillSys/SkillSys.event"
 #include "Core/DebuffRework/DebuffRework.event"
