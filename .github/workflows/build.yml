@@ -18,6 +18,14 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Restore cached files
+        uses: actions/cache@v4
+        with:
+          path: |
+            Tools/FE-PyTools
+            Tools/EventAssembler
+          key: cache-${{ runner.os }}-${{ hashFiles('dependencies.lock') }}
+
     - name: Install deps
       run: |
         sudo apt-get update
@@ -40,8 +48,10 @@ jobs:
     - name: Install submodules
       run: |
         git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git Tools/FE-CLib-Mokha
-        git clone https://github.com/StanHash/FE-PyTools.git --recursive Tools/FE-PyTools
-        git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix Tools/EventAssembler
+
+        if [ ! -d Tools/FE-PyTools/ ]; then
+          git clone https://github.com/StanHash/FE-PyTools.git --recursive Tools/FE-PyTools
+        fi
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -50,7 +60,10 @@ jobs:
 
     - name: Build EA
       run: |
-        cd Tools/EventAssembler && ./build.sh && cd ../..
+        if [ ! -d Tools/EventAssembler/ ]; then
+          git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix Tools/EventAssembler
+          cd Tools/EventAssembler && ./build.sh && cd ../..
+        fi
 
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
