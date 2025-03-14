@@ -404,4 +404,18 @@ const struct DebuffInfo gStatDebuffInfos[UNIT_STAT_DEBUFF_MAX] = {
 			.res = 3,
 		},
 	},
+
+	[UNIT_STAT_BUFF_FREESPIRIT] = {
+		.positive_type = STATUS_DEBUFF_POSITIVE,
+		.tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
+		.unit_status = {
+			.pow = 5,
+			.mag = 5,
+			.skl = 5,
+			.spd = 5,
+			.lck = 5,
+			.def = 5,
+			.res = 5,
+		},
+	},
 };

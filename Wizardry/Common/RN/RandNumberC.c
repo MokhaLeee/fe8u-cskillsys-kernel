@@ -3,7 +3,7 @@
 
 extern u16 sRandSeedsC[4];
 
-static u16 KernelRandRoll(u16 seeds[])
+STATIC_DECLAR u16 KernelRandRoll(u16 seeds[])
 {
 	u16 rn = (seeds[1] << 11) + (seeds[0] >> 5);
 

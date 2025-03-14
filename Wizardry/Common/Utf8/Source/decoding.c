@@ -1,12 +1,12 @@
 #include <common-chax.h>
 #include <utf8.h>
 
-static bool is_ascii(u32 unicod)
+FORCE_DECLARE STATIC_DECLAR bool is_ascii(u32 unicod)
 {
 	return unicod < 0x80;
 }
 
-static struct Glyph *GetCharGlyphUnicode(u32 unicode_ch, struct Font *font)
+STATIC_DECLAR struct Glyph *GetCharGlyphUnicode(u32 unicode_ch, struct Font *font)
 {
 	struct Glyph *glyph;
 	int hi = (unicode_ch >> 0x8) & 0xFF;
@@ -26,8 +26,10 @@ static struct Glyph *GetCharGlyphUnicode(u32 unicode_ch, struct Font *font)
 	/**
 	 * If we failed to get the glyph, maybe we can try on reverting narrow fonts
 	 */
+#if 0
 	if (!is_ascii(unicode_ch))
 		return GetCharGlyphUnicode(NarrowFontsUnicodeToAscii(unicode_ch), font);
+#endif
 
 	Errorf("Failed to get glyph: %#x", unicode_ch);
 	return NULL;

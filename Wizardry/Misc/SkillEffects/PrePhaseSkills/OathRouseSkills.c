@@ -94,7 +94,7 @@ bool PrePhsae_TickOathRouthSkillStatus(ProcPtr proc)
 {
 	int j;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		bool ally_in_range = false;
 
 		for (j = 0; j < ARRAY_COUNT_RANGE1x1; j++) {

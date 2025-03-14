@@ -21,6 +21,11 @@ GAMEDATA_DIR := Data
 
 HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
 
+SKILLS_ENUM_DIR  := include/constants
+SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills-equip.enum.txt
+SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-others.enum.txt
+SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-item.enum.txt
+
 all:
 	@$(MAKE) pre_build	|| exit 1
 	@$(MAKE) chax		|| exit 1
@@ -108,50 +113,7 @@ $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR)
 	@cp -f $(FE8_GBA) $(FE8_CHX)
 	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || { rm -f $(FE8_CHX); exit 1; }
 
-CHAX_SYM := $(FE8_CHX:.gba=.sym)
-CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
-CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
-CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
-
-post_chax: $(CHAX_DIFF)
-
-$(CHAX_DIFF): $(FE8_CHX)
-	@echo "[SEC]	Lyn-jump detection..."
-	@$(LYN_DETECTOR) || exit 1
-	@echo "[SEC]	Lyn-jump detection passed"
-
-ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
-
-	@echo "[GEN]	$(CHAX_REFS)"
-	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
-	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
-	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
-	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
-	@python3 $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) >> $(CHAX_REFS)
-
-	@echo "[GEN]	$(CHAX_REFE)"
-	@echo '// Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFE)
-	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
-	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
-	@echo "PUSH" >> $(CHAX_REFE)
-	@python3 $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
-	@echo "POP" >> $(CHAX_REFE)
-
-	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
-	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
-
-	@echo "[GEN]	$(CHAX_DIFF)"
-	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
-
-	@echo "[GEN]	SkillInfoDoc"
-	@python3 $(TOOL_DIR)/scripts/dump_skill_info.py > ./docs/SkillInfo.md
-endif
-
-	@cat $(FE8_SYM) >> $(CHAX_SYM)
-	@cat $(CHAX_SYM) | python3 $(TOOL_DIR)/scripts/sym_modify.py | sponge $(CHAX_SYM)
-	@echo "Done!"
-
-CLEAN_FILES += $(FE8_CHX)  $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
+CLEAN_FILES += $(FE8_CHX)
 
 # ============
 # = Wizardry =
@@ -353,12 +315,7 @@ CLEAN_BUILD += $(FONT_DIR)
 ENUM2H := $(TOOL_DIR)/scripts/enum2h.py
 ENUM2C := $(TOOL_DIR)/scripts/enum2combo.py
 
-SKILLS_ENUM_DIR  := include/constants
 SKILLS_COMBO_DIR := Patches
-
-SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills-equip.enum.txt
-SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-others.enum.txt
-SKILLS_ENUM_SRC += $(SKILLS_ENUM_DIR)/skills-item.enum.txt
 
 SKILLS_ENUM_HEADER := $(SKILLS_ENUM_DIR)/skills.h
 
@@ -392,6 +349,59 @@ CLEAN_FILES += Patches/combo.skills.txt
 CLEAN_FILES += Patches/combo.skills_equip.txt
 CLEAN_FILES += Patches/combo.skills_others.txt
 CLEAN_FILES += Patches/combo.skills_item.txt
+
+# =============
+# = POST-CHAX =
+# =============
+
+CHAX_SYM := $(FE8_CHX:.gba=.sym)
+CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
+CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
+CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
+
+SKILL_INFO_DOC := ./docs/SkillInfo.md
+
+post_chax: $(CHAX_DIFF) # $(SKILL_INFO_DOC)
+skill_info: $(SKILL_INFO_DOC)
+
+$(SKILL_INFO_DOC): $(SKILLS_ENUM_SRC) $(GFX_SOURCES) $(TEXT_SOURCE) Data/SkillSys/SkillInfo.c
+	@echo "[GEN]	$(SKILL_INFO_DOC)"
+	@python3 $(TOOL_DIR)/scripts/dump_skill_info.py > $(SKILL_INFO_DOC)
+
+$(CHAX_DIFF): $(FE8_CHX)
+	@echo "[SEC]	Lyn-jump detection..."
+	@$(LYN_DETECTOR) || exit 1
+	@echo "[SEC]	Lyn-jump detection passed"
+
+ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
+
+	@echo "[GEN]	$(CHAX_REFS)"
+	@echo  '@ Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFS)
+	@cat $(TOOL_DIR)/scripts/refs-preload.txt >> $(CHAX_REFS)
+	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
+	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refs.py >> $(CHAX_REFS)
+	@python3 $(TOOL_DIR)/scripts/sym2refs.py $(CHAX_SYM) >> $(CHAX_REFS)
+
+	@echo "[GEN]	$(CHAX_REFE)"
+	@echo '// Auto generated at $(shell date "+%Y-%m-%d %H:%M:%S")' > $(CHAX_REFE)
+	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
+	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2refe.py >> $(CHAX_REFE)
+	@echo "PUSH" >> $(CHAX_REFE)
+	@python3 $(TOOL_DIR)/scripts/sym2refe.py $(CHAX_SYM) >> $(CHAX_REFE)
+	@echo "POP" >> $(CHAX_REFE)
+
+	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
+	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
+
+	@echo "[GEN]	$(CHAX_DIFF)"
+	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
+endif
+
+	@cat $(FE8_SYM) >> $(CHAX_SYM)
+	@cat $(CHAX_SYM) | python3 $(TOOL_DIR)/scripts/sym_modify.py | sponge $(CHAX_SYM)
+	@echo "Done!"
+
+CLEAN_FILES += $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
 
 # =============
 # = PRE-BUILD =

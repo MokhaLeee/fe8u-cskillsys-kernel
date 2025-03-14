@@ -20,6 +20,7 @@
 #include "Source/BattleOrder.lyn.event"
 #include "Source/BattleWeapon.lyn.event"
 #include "Source/CheckEffective.lyn.event"
+#include "Source/TerrainBonus.lyn.event"
 #include "Source/BattleExp.lyn.event"
 #include "Source/BattleUI.lyn.event"
 #include "Source/Misc.lyn.event"

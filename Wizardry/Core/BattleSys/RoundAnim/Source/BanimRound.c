@@ -4,7 +4,7 @@
 
 #define LOCAL_TRACE 0
 
-static const u16 round_types_normal_phy[EKR_DISTANCE_MAX] = {
+STATIC_DECLAR const u16 round_types_normal_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_HIT_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_NONCRIT_FAR,
@@ -12,7 +12,7 @@ static const u16 round_types_normal_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_HIT_CLOSE
 };
 
-static const u16 round_types_normal_mag[EKR_DISTANCE_MAX] = {
+STATIC_DECLAR const u16 round_types_normal_mag[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_NONCRIT_FAR,
@@ -20,7 +20,7 @@ static const u16 round_types_normal_mag[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_HIT_CLOSE
 };
 
-static const u16 round_types_crital_phy[EKR_DISTANCE_MAX] = {
+STATIC_DECLAR const u16 round_types_crital_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_CRIT_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_CRIT_FAR,
@@ -28,7 +28,7 @@ static const u16 round_types_crital_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_CRIT_CLOSE
 };
 
-static const u16 round_types_crital_mag[EKR_DISTANCE_MAX] = {
+STATIC_DECLAR const u16 round_types_crital_mag[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_CRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_CRIT_FAR,
@@ -36,7 +36,7 @@ static const u16 round_types_crital_mag[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_CRIT_CLOSE
 };
 
-static const u16 round_types_miss_phy[EKR_DISTANCE_MAX] = {
+STATIC_DECLAR const u16 round_types_miss_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_MISS_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_NONCRIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_NONCRIT_FAR,
@@ -44,7 +44,7 @@ static const u16 round_types_miss_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_MISS_CLOSE
 };
 
-static const u16 defender_round_types_dodge[EKR_DISTANCE_MAX] = {
+STATIC_DECLAR const u16 defender_round_types_dodge[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_TAKING_MISS_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_TAKING_MISS_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_TAKING_MISS_FAR,
@@ -52,7 +52,7 @@ static const u16 defender_round_types_dodge[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_TAKING_MISS_CLOSE
 };
 
-static const u16 defender_round_types_hitted[EKR_DISTANCE_MAX] = {
+STATIC_DECLAR const u16 defender_round_types_hitted[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_TAKING_HIT_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_TAKING_HIT_FAR,
 	[EKR_DISTANCE_FARFAR]      = ANIM_ROUND_TAKING_HIT_FAR,

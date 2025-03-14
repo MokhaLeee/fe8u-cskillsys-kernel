@@ -166,4 +166,14 @@ gpExternalMovGetters:   WORD 0
 gpExternalConGetters:   WORD 0
 gpExternalAidGetters:   WORD 0
 
+gpEndTurnFuncs: POIN gEndTurnFuncs
+gpExternalEndTurnHook: WORD 0
+
+gpPopupComponents: POIN gPopupComponents
+gpBattlePopupConfigs: POIN gBattlePopupConfigs
+gpPromotPopupConfigs: POIN gPromotPopupConfigs
+
+gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
+gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
+
 KERNEL_RELOC_END:

@@ -98,6 +98,8 @@ const struct ProcCmd ProcScr_PrePhaseChillAnim[] = {
 	PROC_CALL(PrePhaseChillAnim_ShowDebuffAnim),
 	PROC_YIELD,
 	PROC_WHILE(MapAnimHeavyGravityExists),
+	PROC_CALL_ARG(RemoveMuForActiveUnit, 5),
+	PROC_YIELD,
 	PROC_END
 };
 
@@ -114,7 +116,7 @@ void PrePhaseChill_CollectActors(struct ProcPrePhaseChill *proc)
 {
 	int i;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		for (i = 0; i < UNIT_STATUS_MAX; i++) {
 			int _sid = ChillSkillList[i];
 

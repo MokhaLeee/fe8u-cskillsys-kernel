@@ -47,6 +47,9 @@ SID_OddFooted
 SID_Slayer
 SID_Skybreaker
 SID_Nullify
+SID_Perch
+SID_WingedShield
+SID_BeastShield
 SID_Vigilance
 SID_AvoidSword
 SID_Vanity
@@ -147,6 +150,18 @@ SID_WeaponHeal
 SID_BloodReaver
 SID_Saint
 SID_Witch
+SID_KeenFighter
+SID_QuickDraw
+SID_ChaosStyle
+SID_ElbowRoom
+SID_BattleVeteran
+SID_Technician
+SID_KillingMachine
+SID_DivinePulse
+SID_Dishonorbreaker
+SID_Stubborn
+SID_Shakedown
+SID_SeaWays
 
 // Shop skills
 SID_Deal
@@ -241,12 +256,17 @@ SID_FairyTaleFolk
 SID_RainDish
 SID_Boon
 
+// End of turn
+SID_FreeSpirit
+
 // Post action
 SID_FailGale
 SID_Clearance
 SID_Despoil
 SID_GoldDigger
 SID_Glorifier
+SID_Thunderstorm
+SID_EndlessVitality
 
 // Menu skills
 SID_Dance

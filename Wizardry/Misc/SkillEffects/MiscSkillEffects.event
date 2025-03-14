@@ -14,6 +14,7 @@
 #include "PostActionSkills/Clearance.lyn.event"
 #include "PostActionSkills/GetItem.lyn.event"
 #include "PostActionSkills/Glorifier.lyn.event"
+#include "PostActionSkills/Shakedown.lyn.event"
 
 #include "MenuSkills/LynJump.event"
 #include "MenuSkills/Dance.lyn.event"
@@ -53,6 +54,8 @@
 #include "PrePhaseSkills/TileCheck.lyn.event"
 #include "PrePhaseSkills/KeepUp.lyn.event"
 #include "PrePhaseSkills/ChillSkills.lyn.event"
+
+#include "EndTurnSkills/FreeSpirit.lyn.event"
 
 #include "AiSkills/Teleportation.event"
 #include "AiSkills/MiscAiSkills.event"

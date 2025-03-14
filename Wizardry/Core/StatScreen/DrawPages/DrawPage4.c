@@ -6,7 +6,7 @@
 
 #define PAGE4_PINFO_MAX 8
 
-static void DrawPage4SupportBonus(void)
+STATIC_DECLAR void DrawPage4SupportBonus(void)
 {
 	struct SupportBonuses bonuses;
 	struct Unit *unit = gStatScreen.unit;
@@ -95,7 +95,7 @@ static void DrawPage4SupportBonus(void)
 		bonuses.bonusDodge);
 }
 
-static void DrawPage4SupportPInfo(void)
+STATIC_DECLAR void DrawPage4SupportPInfo(void)
 {
 	struct Unit *unit = gStatScreen.unit;
 

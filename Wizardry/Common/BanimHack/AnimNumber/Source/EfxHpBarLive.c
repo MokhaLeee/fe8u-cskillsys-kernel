@@ -2,7 +2,7 @@
 #include <banim-hack.h>
 #include <battle-system.h>
 
-static void EfxHPBarLiveRe_DisplayAnimNumber(struct ProcEfxHpBar *proc)
+STATIC_DECLAR void EfxHPBarLiveRe_DisplayAnimNumber(struct ProcEfxHpBar *proc)
 {
 	struct Anim *anim = proc->anim_this;
 	int round = anim->nextRoundId - 1;

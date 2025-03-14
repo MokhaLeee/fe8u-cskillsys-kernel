@@ -9,6 +9,7 @@ POP
 
 #include "Source/LynJump.event"
 #include "Source/map-task.lyn.event"
+#include "Source/MapTaskArm.lyn.event"
 
 // #include "data.event"
 

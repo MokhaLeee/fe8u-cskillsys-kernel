@@ -15,9 +15,13 @@ const u16 gConstSkillTable_Weapon[0x100][2] = {
 #endif
 	},
 
-	[ITEM_BLADE_SILVER] = {
+	[ITEM_SWORD_SILVER] = {
 #if (defined(SID_COMBAT_BaneOfMonsters) && COMMON_SKILL_VALID(SID_COMBAT_BaneOfMonsters))
 		SID_COMBAT_BaneOfMonsters,
+#endif
+
+#if (defined(SID_DoubleLion) && EQUIPE_SKILL_VALID(SID_DoubleLion))
+		SID_DoubleLion,
 #endif
 	},
 

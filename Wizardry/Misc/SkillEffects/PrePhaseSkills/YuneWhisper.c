@@ -23,7 +23,7 @@ STATIC_DECLAR void YuneWhisper_Loop(struct ProcYuneWhisper *proc)
 	int i;
 	int res1, res2;
 
-	// FOR_UNITS_FACTION
+	// FOR_UNITS_ONMAP_FACTION
 	while (proc->uid < (gPlaySt.faction + 0x40)) {
 		struct Unit *unit = proc->unit = GetUnit(proc->uid++);
 

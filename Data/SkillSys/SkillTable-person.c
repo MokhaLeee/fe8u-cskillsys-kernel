@@ -48,8 +48,8 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 		SID_Lifetaker,
 #endif
 
-#if (defined(SID_BonusDoubler) && COMMON_SKILL_VALID(SID_BonusDoubler))
-		SID_BonusDoubler,
+#if (defined(SID_Perch) && COMMON_SKILL_VALID(SID_Perch))
+		SID_Perch,
 #endif
 	},
 
@@ -80,6 +80,12 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 
 #if (defined(SID_Mine) && COMMON_SKILL_VALID(SID_Mine))
 		SID_Mine,
+#endif
+	},
+
+	[CHARACTER_KNOLL] = {
+#if (defined(SID_FreeSpirit) && COMMON_SKILL_VALID(SID_FreeSpirit))
+		SID_FreeSpirit,
 #endif
 	},
 

@@ -1,8 +1,13 @@
-    .INCLUDE "macro.inc"
+    .INCLUDE "macros.inc"
     .SYNTAX UNIFIED
-    .section .rodata
+    .section .text
 
+THUMB_FUNC_START SkillTester
+SkillTester:
+    ldr r3, _SkillTester
+    bx r3
 .global _SkillTester
+.align 2, 0
 _SkillTester:
     .4byte ARM_SkillTester
 

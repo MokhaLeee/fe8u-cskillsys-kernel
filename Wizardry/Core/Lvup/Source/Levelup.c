@@ -21,12 +21,12 @@ STATIC_DECLAR int GetStatIncreaseRandC(int growth)
 	return result;
 }
 
-static int GetStatIncreaseFixed(int growth, int ref)
+STATIC_DECLAR int GetStatIncreaseFixed(int growth, int ref)
 {
 	return k_udiv(growth + k_umod(growth * ref, 100), 100);
 }
 
-static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
+STATIC_DECLAR void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
 {
 	struct Unit *unit = GetUnit(bu->unit.index);
 
@@ -41,7 +41,7 @@ static void UnitLvup_Vanilla(struct BattleUnit *bu, int bonus)
 	BU_CHG_MAG(bu) = GetStatIncrease(GetUnitMagGrowth(unit) + bonus);
 }
 
-static void UnitLvup_RandC(struct BattleUnit *bu, int bonus)
+STATIC_DECLAR void UnitLvup_RandC(struct BattleUnit *bu, int bonus)
 {
 	struct Unit *unit = GetUnit(bu->unit.index);
 
@@ -56,7 +56,7 @@ static void UnitLvup_RandC(struct BattleUnit *bu, int bonus)
 	BU_CHG_MAG(bu) = GetStatIncreaseRandC(GetUnitMagGrowth(unit) + bonus);
 }
 
-static void UnitLvup_Fixed(struct BattleUnit *bu, int bonus)
+STATIC_DECLAR void UnitLvup_Fixed(struct BattleUnit *bu, int bonus)
 {
 	struct Unit *unit = GetUnit(bu->unit.index);
 
@@ -76,7 +76,7 @@ static void UnitLvup_Fixed(struct BattleUnit *bu, int bonus)
 	BU_CHG_MAG(bu) = GetStatIncreaseFixed(GetUnitMagGrowth(unit) + bonus, ref += 5);
 }
 
-static void UnitLvup_100(struct BattleUnit *bu, int bonus)
+STATIC_DECLAR void UnitLvup_100(struct BattleUnit *bu, int bonus)
 {
 	bu->changeHP  = 1;
 	bu->changePow = 1;
@@ -88,7 +88,7 @@ static void UnitLvup_100(struct BattleUnit *bu, int bonus)
 	BU_CHG_MAG(bu) = 1;
 }
 
-static void UnitLvup_0(struct BattleUnit *bu, int bonus) {}
+STATIC_DECLAR void UnitLvup_0(struct BattleUnit *bu, int bonus) {}
 
 STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 {
@@ -130,7 +130,7 @@ STATIC_DECLAR void UnitLvupCore(struct BattleUnit *bu, int bonus)
 	}
 }
 
-static int get_metis_tome_growth_bonus(void)
+STATIC_DECLAR int get_metis_tome_growth_bonus(void)
 {
 	return MetisTomeGrowthBonus;
 }
@@ -159,26 +159,5 @@ void CheckBattleUnitLevelUp(struct BattleUnit *bu)
 		UnitLvupCore(bu, bonus);
 
 		CheckBattleUnitStatCaps(GetUnit(bu->unit.index), bu);
-	}
-}
-
-LYN_REPLACE_CHECK(BattleApplyExpGains);
-void BattleApplyExpGains(void)
-{
-	if ((UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE) || (UNIT_FACTION(&gBattleTarget.unit) != FACTION_BLUE)) {
-		if (!(gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)) {
-			gBattleActor.expGain  = GetBattleUnitExpGain(&gBattleActor, &gBattleTarget);
-			gBattleTarget.expGain = GetBattleUnitExpGain(&gBattleTarget, &gBattleActor);
-
-			gBattleActor.unit.exp  += gBattleActor.expGain;
-			gBattleTarget.unit.exp += gBattleTarget.expGain;
-
-#if CHAX
-			ResetPopupSkillStack();
-#endif
-
-			CheckBattleUnitLevelUp(&gBattleActor);
-			CheckBattleUnitLevelUp(&gBattleTarget);
-		}
 	}
 }

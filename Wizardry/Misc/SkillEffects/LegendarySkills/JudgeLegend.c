@@ -52,7 +52,7 @@ bool PrePhase_UpdateLengendSkillStatus(ProcPtr proc)
 	/**
 	 * Legend skill can only be activated for one turn
 	 */
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		if (UNIT_IS_VALID(unit))
 			ClearBitUES(unit, UES_BIT_LEGENDARY_SKILL_ACTIVE);
 	})

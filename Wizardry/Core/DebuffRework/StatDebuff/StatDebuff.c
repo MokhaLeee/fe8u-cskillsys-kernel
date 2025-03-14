@@ -16,6 +16,7 @@ inline struct StatDebuffStatus *GetUnitStatDebuffStatus(struct Unit *unit)
 
 int SimulateStatDebuffPositiveType(struct Unit *unit)
 {
+	bool has_status = false;
 	int i, positive = 0;
 	struct StatDebuffStatus *stat;
 
@@ -42,10 +43,12 @@ int SimulateStatDebuffPositiveType(struct Unit *unit)
 
 		switch (gpStatDebuffInfos[i].positive_type) {
 		case STATUS_DEBUFF_NEGATIVE:
+			has_status = true;
 			positive--;
 			break;
 
 		case STATUS_DEBUFF_POSITIVE:
+			has_status = true;
 			positive++;
 			break;
 
@@ -58,9 +61,7 @@ int SimulateStatDebuffPositiveType(struct Unit *unit)
 	if (positive < 0) {
 		stat->st.bitfile.is_buff_chk = STATUS_DEBUFF_NEGATIVE;
 		return STATUS_DEBUFF_NEGATIVE;
-	}
-
-	if (positive > 0) {
+	} else if (positive > 0 || has_status) {
 		stat->st.bitfile.is_buff_chk = STATUS_DEBUFF_POSITIVE;
 		return STATUS_DEBUFF_POSITIVE;
 	}
@@ -201,13 +202,13 @@ void PreBattleCalcStatDebuffs(struct BattleUnit *bu, struct BattleUnit *defender
 		if (_BIT_CHK(bitfile, i)) {
 			const struct DebuffInfo *info = &gpStatDebuffInfos[i];
 
-			bu->battleAttack	   += info->battle_status.atk;
-			bu->battleDefense	  += info->battle_status.def;
-			bu->battleHitRate	  += info->battle_status.hit;
-			bu->battleAvoidRate	+= info->battle_status.avo;
-			bu->battleCritRate	 += info->battle_status.crit;
+			bu->battleAttack       += info->battle_status.atk;
+			bu->battleDefense      += info->battle_status.def;
+			bu->battleHitRate      += info->battle_status.hit;
+			bu->battleAvoidRate    += info->battle_status.avo;
+			bu->battleCritRate     += info->battle_status.crit;
 			bu->battleSilencerRate += info->battle_status.silencer;
-			bu->battleDodgeRate	+= info->battle_status.dodge;
+			bu->battleDodgeRate    += info->battle_status.dodge;
 		}
 	}
 }

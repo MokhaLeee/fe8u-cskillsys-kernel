@@ -1,13 +1,18 @@
     .INCLUDE "macros.inc"
     .SYNTAX UNIFIED
-    .section .rodata
+    .section .text
 
+THUMB_FUNC_START MapTaskPutOamHi
+MapTaskPutOamHi:
+    ldr r3, _MapTaskPutOamHi
+    bx r3
 .global _MapTaskPutOamHi
+.align 2, 0
 _MapTaskPutOamHi:
     .4byte ARM_MapTask + (.Lfunc_MapTaskPutOamHi - _ARM_MapTask_CopyStart)
 
     .arm
-
+    .section .rodata
     .global _ARM_MapTask_CopyStart
 _ARM_MapTask_CopyStart:
 

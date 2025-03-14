@@ -5,7 +5,7 @@
 #include "item-sys.h"
 #include "constants/skills.h"
 
-static int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
+STATIC_DECLAR int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
 {
 	const HealAmountGetterFunc_t *it;
 	int status = base;

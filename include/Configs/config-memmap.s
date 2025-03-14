@@ -48,7 +48,7 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 .endm
 
 /* From the bottom to the top */
-_kernel_malloc sSkillList, 0x40 * 3
+_kernel_malloc sSkillList, 0x50 * 3
 _kernel_malloc sSkillFastList, 0x100
 _kernel_malloc sLearnedSkillPLists, 51 * 0x20
 _kernel_malloc sEfxSkillRoundData, 8 * 0x21
@@ -64,7 +64,7 @@ _kernel_malloc sKTutorialBitsHistory, 0xC
 _kernel_malloc gBattleTargetPositionBackup, 0x4
 _kernel_malloc gActionDataExpa, 0x10
 _kernel_malloc sStatDebuffStatusAlly, 51 * 16
-_kernel_malloc sStatDebuffStatusEnemy, 50 * 16
+_kernel_malloc sStatDebuffStatusEnemy, 51 * 16
 _kernel_malloc sStatDebuffStatusNpc, 8 * 16
 _kernel_malloc sStatDebuffStatusBattleUnit, 2 * 16
 _kernel_malloc sStatDebuffMsgBuf, 0x2C * 7
@@ -82,8 +82,6 @@ _kernel_malloc sKernelHookSkippingFlag, 1
 _kernel_malloc sAnimNumberSlot, 1
 _kernel_malloc sStatDebuffMsgBufNext, 1
 _kernel_malloc gKonamiComboStep, 1
-
-_kernel_malloc DemoUnitSpriteSlots, 0x100 @ better to put to: _kernel_malloc_demo
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
@@ -110,18 +108,18 @@ _kernel_malloc_overlay0 gStatScreenStExpa, 4
 _kernel_malloc_overlay0 BattleRoundInfoBak, 0x100
 _kernel_malloc_overlay0 gDmg, 40
 _kernel_malloc_overlay0 BattleSysBattleStatusBackup, 32
-_kernel_malloc_overlay0 sBattleSkillActivateBuf, 4
 _kernel_malloc_overlay0 sAiSimuSlotBuf, 0x100
-_kernel_malloc_overlay0 gItemPageList 0x28
+_kernel_malloc_overlay0 gItemPageList, 0x28
+_kernel_malloc_overlay0 gPostActionCommonBuffer, 0x20
+_kernel_malloc_overlay0 sTmpMovCostTable, 0x44
 
 /**
  * Usage of memory on IWRAM for arm-functions
  *
  * part     function name       start           end             max size    real size
- * [a]      ARM_SkillTester     0x03003CAC      0x03003DE4      0x138       0x138
- * [a]      ARM_MapFloodCoreRe  0x03003DE4      0x030040CC      0x2E8       0x2E8
- * [a]      ARM_MapTask         0x030040CC      0x03004128      0x05C       0x05C
- * [a]      __free__            0x03004128      0x03004150      0x028       ---
+ * [a]      ARM_MapFloodCoreRe  0x03003CAC      0x03003F94      0x2E8       0x2E8
+ * [a]      ARM_MapTask         0x03003F94      0x03003FF0      0x05C       0x05C
+ * [a]      ARM_SkillTester     0x03003FF0      0x03004150      0x138       0x160
  *
  * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0x0EC
  * [b]      ARM_SkillList       0x03004378      0x030043B4      0x03C       0x03C
@@ -133,12 +131,12 @@ _kernel_malloc_overlay0 gItemPageList 0x28
  * So we get antother space as 0x03003CAC - 0x03003F48
  * Now this part of free IWRAM space is: [0x03003CAC - 0x03004150]
  */
-dat 0x03003CAC, ARM_SkillTester
-dat 0x03003DE4, ARM_SkillTesterEnd
-dat 0x03003DE4, ARM_MapFloodCoreRe
-dat 0x030040CC, ARM_MapFloodCoreReEnd
-dat 0x030040CC, ARM_MapTask
-dat 0x03004128, ARM_MapTaskEnd
+dat 0x03003CAC, ARM_MapFloodCoreRe
+dat 0x03003F94, ARM_MapFloodCoreReEnd
+dat 0x03003F94, ARM_MapTask
+dat 0x03003FF0, ARM_MapTaskEnd
+dat 0x03003FF0, ARM_SkillTester
+dat 0x03004150, ARM_SkillTesterEnd
 
 dat 0x0300428C, ARM_UnitList
 dat 0x03004378, ARM_UnitListEnd

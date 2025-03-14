@@ -13,7 +13,7 @@ bool PrePhase_TickKeepUpSkillStatus(ProcPtr proc)
 {
 	int j;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		FORCE_DECLARE bool keep_up  = false;
 
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))

@@ -39,7 +39,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 	case UNIT_ACTION_STAFF:
 	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicStaff:
 #if defined(SID_PowerStaff) && (COMMON_SKILL_VALID(SID_PowerStaff))
-		if (CheckSkillActivate(unit, SID_PowerStaff, GetUnitLuck(unit)))
+		if (CheckActiveUnitSkillActivate(SID_PowerStaff, GetUnitLuck(unit)))
 			goto L_exec_rafrain_action_anim;
 #endif
 
@@ -47,7 +47,7 @@ bool PostActionTsuzuku(ProcPtr parent)
 
 	default:
 #if defined(SID_Tsuzuku) && (COMMON_SKILL_VALID(SID_Tsuzuku))
-		if (CheckSkillActivate(unit, SID_Tsuzuku, GetUnitSkill(unit)))
+		if (CheckActiveUnitSkillActivate(SID_Tsuzuku, GetUnitSkill(unit)))
 			goto L_exec_rafrain_action_anim;
 #endif
 		break;

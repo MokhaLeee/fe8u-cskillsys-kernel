@@ -113,6 +113,12 @@
 #define CONFIG_UNLOCK_ALLY_MHP_LIMIT
 
 /**
+ * Append the same logic on loading skill as old skillsys, as:
+ * https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5
+ */
+#define CONFIG_FIT_OLD_SKILLSYS_LIST
+
+/**
  * Enable shield system
  */
 #define CONFIG_INSTALL_KERNEL_SHIELD

@@ -12,14 +12,6 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
 		[1] = SID_PosReturn,
 #endif
 
-#if (defined(SID_DoubleLion) && COMMON_SKILL_VALID(SID_DoubleLion))
-		[2] = SID_DoubleLion,
-#endif
-
-#if (defined(SID_Desperation) && COMMON_SKILL_VALID(SID_Desperation))
-		[3] = SID_Desperation,
-#endif
-
 #if (defined(SID_RightfulGod) && COMMON_SKILL_VALID(SID_RightfulGod))
 		[10] = SID_RightfulGod,
 #endif
@@ -64,12 +56,6 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
 	[CHARACTER_MYRRH] = {{
 #if (defined(SID_RangeBonusBMag1) && COMMON_SKILL_VALID(SID_RangeBonusBMag1))
 		[10] = SID_RangeBonusBMag1,
-#endif
-	}},
-
-	[CHARACTER_RIEV] = {{
-#if (defined(SID_Thunderstorm) && COMMON_SKILL_VALID(SID_Thunderstorm))
-		[0] = SID_Thunderstorm,
 #endif
 	}},
 };

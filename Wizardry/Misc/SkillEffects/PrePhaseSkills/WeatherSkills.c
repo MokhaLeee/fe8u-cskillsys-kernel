@@ -68,7 +68,7 @@ bool PrePhase_ControlWeatherSkill(ProcPtr proc)
 	int priv_level = WEATHER_PRIORITY_0;
 	int weather = gPlaySt.chapterWeatherId;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		_check_weather_skill(unit, &weather, &priv_level);
 	})
 

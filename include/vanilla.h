@@ -57,6 +57,8 @@ void sub_809B504(struct ProcPrepUnit *proc);
 void sub_809B014(void);
 void sub_809B520(struct ProcPrepUnit *proc);
 
+void AiPhaseCleanup(struct Proc *proc);
+
 struct CpPerformProc {
 	/* 00 */ PROC_HEADER;
 
@@ -205,7 +207,6 @@ char *GetPidDefeatedEndingString(int pid);
 void sub_80B6CA8(struct EndingBattleDisplayProc *proc);
 
 bool CheckTutorialEvent(u8 type);
-void MMB_DrawStatusText(s16 *buffer, struct Unit *unit);
 void StatusDecayDisplay_Display(struct UnknownBMUSAilmentProc *proc);
 void sub_803B678(struct Unit *unit, u16 item);
 void SetupUnitHealStaffAIFlags(struct Unit *unit, u16);

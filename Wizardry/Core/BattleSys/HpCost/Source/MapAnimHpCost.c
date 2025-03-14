@@ -3,20 +3,20 @@
 
 #include <gaiden-magic.h>
 
-static void MapAnimHitRound_StartCost(ProcPtr proc)
+STATIC_DECLAR void MapAnimHitRound_StartCost(ProcPtr proc)
 {
 	gManimSt.hp_changing = true;
 	PlaySeSpacial(SONG_75, gManimSt.actor[gManimSt.subjectActorId].unit->xPos * 0x10 - gBmSt.camera.x);
 	RegisterMapHpChangeAnim(gManimSt.subjectActorId, GetExtBattleHitFromHit(gManimSt.pCurrentRound)->hp_cost);
 }
 
-static void MapAnimHitRound_WaitCost(ProcPtr proc)
+STATIC_DECLAR void MapAnimHitRound_WaitCost(ProcPtr proc)
 {
 	if (gManimSt.hp_changing == false)
 		Proc_Break(proc);
 }
 
-static const struct ProcCmd ProcScr_MapAnimDisplayRoundWithHpCost[] = {
+STATIC_DECLAR const struct ProcCmd ProcScr_MapAnimDisplayRoundWithHpCost[] = {
 	PROC_YIELD,
 	PROC_CALL(MapAnimHitRound_StartCost),
 	PROC_REPEAT(MapAnimHitRound_WaitCost),

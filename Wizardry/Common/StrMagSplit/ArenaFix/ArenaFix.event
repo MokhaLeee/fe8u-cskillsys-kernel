@@ -1,0 +1,16 @@
+#include "Source/LynJump.event"
+#include "Source/ArenaFix.lyn.event"
+
+PUSH
+	ORG 0x31C18
+	BL(PowGetterFix_ArenaPlayer)
+	ORG 0x31C50
+	BL(PowGetterFix_ArenaOpponent)
+	PROTECT 0x00031C10 0x00031D58 // ArenaAdjustOpponentDamage
+
+	ORG 0x31820
+	BL(ArenaAdjustOpponentPowerRankingRework)
+	ORG 0x31834
+	BL(ArenaAdjustOpponentDamageRework)
+	PROTECT 0x00031794 0x00031874 // ArenaBeginInternal
+POP

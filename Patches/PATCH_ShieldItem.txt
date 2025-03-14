@@ -1,15 +1,15 @@
-NAME=[CSKILL_K dev] Shield item config
+NAME=[CSKILL_K (3.x) dev] Shield item config
 AUTHOR=Mokha(悠木晓缺)
 
-IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x30 0x39 0x78 0x00
+IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x33
 
 TYPE=STRUCT
 TAG=#ENGINE
 
-INFO=[CSKILL_K: gShieldItemTable] Configure shield item config\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/ShieldItem.md
+INFO=[CSKILL_K (3.x): gShieldItemTable] Configure shield item config\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/ShieldItem.md
 
 POINTER=0xB2A778
-DATASIZE=32
+DATASIZE=36
 DATACOUNT=0x100
 
 LISTNAME=ITEM
@@ -42,3 +42,5 @@ b27:DECIMAL=spd growth bonus
 b28:DECIMAL=lck growth bonus
 b29:DECIMAL=def growth bonus
 b30:DECIMAL=res growth bonus
+W32:$COMBO combo.skills.txt=skill
+W34:$COMBO combo.skills.txt=skill

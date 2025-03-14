@@ -9,7 +9,7 @@
 
 #define LOCAL_TRACE 0
 
-static void DrawPage1TextCommon(void)
+STATIC_DECLAR void DrawPage1TextCommon(void)
 {
 	struct Unit *unit = gStatScreen.unit;
 
@@ -115,7 +115,7 @@ static void DrawPage1TextCommon(void)
 		GetStringFromIndex(0x4FA)); // Cond
 }
 
-static void DrawPage1ValueReal(void)
+STATIC_DECLAR void DrawPage1ValueReal(void)
 {
 	struct Unit *unit = gStatScreen.unit;
 
@@ -162,7 +162,7 @@ static void DrawPage1ValueReal(void)
 					UNIT_RES_MAX(unit));
 }
 
-static void DrawPage1ValueCommon(void)
+STATIC_DECLAR void DrawPage1ValueCommon(void)
 {
 	struct Unit *unit = gStatScreen.unit;
 
@@ -211,7 +211,7 @@ static void DrawPage1ValueCommon(void)
 	}
 }
 
-static void DrawPage1BattleAmt(void)
+STATIC_DECLAR void DrawPage1BattleAmt(void)
 {
 	int amt = GetUnitBattleAmt(gStatScreen.unit);
 	int max = 50 * 7;
@@ -235,7 +235,7 @@ static void DrawPage1BattleAmt(void)
 }
 
 /* BWL */
-static void DrawPage1BWL(void)
+STATIC_DECLAR void DrawPage1BWL(void)
 {
 	struct NewBwl *bwl = GetNewBwl(UNIT_CHAR_ID(gStatScreen.unit));
 
@@ -302,7 +302,7 @@ static void DrawPage1BWL(void)
 		TEXT_COLOR_SYSTEM_BLUE, bwl->lossAmt);
 }
 
-static void DrawPage1Affin(void)
+STATIC_DECLAR void DrawPage1Affin(void)
 {
 	struct Unit *unit = gStatScreen.unit;
 	int affin = unit->pCharacterData->affinity;
@@ -339,7 +339,7 @@ static void DrawPage1Affin(void)
 	}
 }
 
-static void DrawPage1TalkTrv(void)
+STATIC_DECLAR void DrawPage1TalkTrv(void)
 {
 	if (gStatScreenStExpa.talkee != 0) {
 		/* Talk */

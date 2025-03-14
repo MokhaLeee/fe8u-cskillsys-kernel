@@ -44,3 +44,7 @@ Shile item config can be set via FEB patch: `Shile item config`, The configurabl
 - Unit growth bonus
 
 	Modify each unit growth rate on equipment
+
+- skills
+
+	Battle unit only: hold the skill if he equips the shield.

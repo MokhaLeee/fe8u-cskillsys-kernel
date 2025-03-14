@@ -74,7 +74,7 @@ static void _ClearInitiativeStatDebuf(struct Unit *unit)
 
 bool ChapterInit_SetInitiativeStatus(ProcPtr proc)
 {
-	FOR_UNITS_ALL(unit, {
+	FOR_UNITS_ONMAP_ALL(unit, {
 		_SetInitiativeStatDebuf(unit);
 	})
 
@@ -84,7 +84,7 @@ bool ChapterInit_SetInitiativeStatus(ProcPtr proc)
 bool PrePhsae_TickInitativeSkillStatus(ProcPtr proc)
 {
 	if (gPlaySt.chapterTurnNumber >= 2 && gPlaySt.faction == FACTION_BLUE) {
-		FOR_UNITS_ALL(unit, {
+		FOR_UNITS_ONMAP_ALL(unit, {
 			_ClearInitiativeStatDebuf(unit);
 		})
 	}

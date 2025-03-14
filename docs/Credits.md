@@ -23,7 +23,9 @@
 
 ## Skill icons
 
+- [GratedShtick](https://feuniverse.us/u/gratedshtick/summary)
 - JeorgeReds: BonusDoubler
+- GratedShtick: Perch
 
 ## Portraits
 - Melia

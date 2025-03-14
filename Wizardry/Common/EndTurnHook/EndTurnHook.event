@@ -1,0 +1,17 @@
+#include "Source/LynJump.event"
+#include "Source/EndTurnHook.lyn.event"
+#include "Source/usr-func.lyn.event"
+// #include "data.event"
+
+PUSH
+	ORG 0x59ACD8
+	PROC_CALL_ROUTINE_2(EndTurnHook_PlayerPhase)
+	// PROTECT 0x0059AAD8 0x0059ACE8 // gProcScr_PlayerPhase
+
+	ORG 0x5A7F20
+	PROC_CALL_ROUTINE_2(EndTurnHook_AiPhase)
+	PROTECT 0x005A7F08 0x005A7F30 // gProcScr_CpPhase
+
+	ORG 0x022608
+	prProcScr_PlayerPhase:
+POP

@@ -1,0 +1,6 @@
+ALIGN 4
+gEndTurnFuncs:
+	POIN EndTurnSkill_FreeSpirit
+	// End
+	POIN CallExternalEndTurnHook
+	WORD 0

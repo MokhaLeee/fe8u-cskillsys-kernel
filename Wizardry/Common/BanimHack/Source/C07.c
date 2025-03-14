@@ -42,12 +42,12 @@ STATIC_DECLAR void UnlockAnimState(struct Anim *anim)
 	anim2->state &= ~ANIM_BIT_FROZEN;
 }
 
-static void C07Handler_Init(struct ProcC07Handler *proc)
+STATIC_DECLAR void C07Handler_Init(struct ProcC07Handler *proc)
 {
 	LockSetAnimState(proc->anim);
 }
 
-static void C07Handler_HpCost(struct ProcC07Handler *proc)
+STATIC_DECLAR void C07Handler_HpCost(struct ProcC07Handler *proc)
 {
 	int round;
 
@@ -59,18 +59,18 @@ static void C07Handler_HpCost(struct ProcC07Handler *proc)
 		NewEfxHpCost(proc->anim);
 }
 
-static void C07Handler_WaitHpCost(struct ProcC07Handler *proc)
+STATIC_DECLAR void C07Handler_WaitHpCost(struct ProcC07Handler *proc)
 {
 	if (!EfxAnimNumberExists() && !EfxHpCostExists())
 		Proc_Break(proc);
 }
 
-static void C07Handler_EkrSkill(struct ProcC07Handler *proc)
+STATIC_DECLAR void C07Handler_EkrSkill(struct ProcC07Handler *proc)
 {
 	NewEkrSkill(proc->anim);
 }
 
-static void C07Handler_End(struct ProcC07Handler *proc)
+STATIC_DECLAR void C07Handler_End(struct ProcC07Handler *proc)
 {
 	UnlockAnimState(proc->anim);
 }

@@ -35,7 +35,7 @@ static void exec(ProcPtr proc)
 STATIC_DECLAR const struct ProcCmd ProcScr_PostActionClearance[] = {
 	PROC_CALL(LockGame),
 	PROC_CALL(MapAnim_CommonInit),
-	PROC_CALL(EnsureCameraOntoActiveUnitPosition),
+	PROC_CALL_2(EnsureCameraOntoActiveUnitPosition),
 	PROC_YIELD,
 	PROC_CALL(anim_init),
 	PROC_YIELD,
@@ -61,7 +61,16 @@ bool PostAction_Clearance(ProcPtr parent)
 #endif
 		return false;
 
-	if (gActionData.unitActionType == UNIT_ACTION_COMBAT && UnitHasNegativeStatus(gActiveUnit)) {
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
+		break;
+
+	default:
+		return false;
+	}
+
+	if (UnitHasNegativeStatus(gActiveUnit)) {
 		if (CheckKernelHookSkippingFlag()) {
 			RemoveUnitNegativeStatus(gActiveUnit);
 			return false;

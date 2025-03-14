@@ -3,7 +3,7 @@
 #include <skill-system.h>
 #include <popup-reowrk.h>
 
-static bool PopR_SetupBattleWeaponBroken(void)
+STATIC_DECLAR bool PopR_SetupBattleWeaponBroken(void)
 {
 	struct BattleUnit *bu = NULL;
 
@@ -24,7 +24,7 @@ static bool PopR_SetupBattleWeaponBroken(void)
 	return true;
 }
 
-static bool PopR_SetupBattleWRankUp(void)
+STATIC_DECLAR bool PopR_SetupBattleWRankUp(void)
 {
 	struct BattleUnit *bu = NULL;
 
@@ -45,7 +45,7 @@ static bool PopR_SetupBattleWRankUp(void)
 	return true;
 }
 
-static bool PopR_SetupPromotionWRankUpByWType(int wtype)
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpByWType(int wtype)
 {
 	if (gpEkrBattleUnitRight->unit.ranks[wtype] == 0 && gpEkrBattleUnitLeft->unit.ranks[wtype] != 0) {
 		SetPopupItem(wtype);
@@ -60,14 +60,14 @@ static bool PopR_SetupPromotionWRankUpByWType(int wtype)
 	return false;
 }
 
-static bool PopR_SetupPromotionWRankUpSword(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_SWORD); }
-static bool PopR_SetupPromotionWRankUpAxe(void)   { return PopR_SetupPromotionWRankUpByWType(ITYPE_AXE); }
-static bool PopR_SetupPromotionWRankUpLance(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_LANCE); }
-static bool PopR_SetupPromotionWRankUpBow(void)   { return PopR_SetupPromotionWRankUpByWType(ITYPE_BOW); }
-static bool PopR_SetupPromotionWRankUpAnima(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_ANIMA); }
-static bool PopR_SetupPromotionWRankUpLight(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_LIGHT); }
-static bool PopR_SetupPromotionWRankUpDark(void)  { return PopR_SetupPromotionWRankUpByWType(ITYPE_DARK); }
-static bool PopR_SetupPromotionWRankUpStaff(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_STAFF); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpSword(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_SWORD); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpAxe(void)   { return PopR_SetupPromotionWRankUpByWType(ITYPE_AXE); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpLance(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_LANCE); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpBow(void)   { return PopR_SetupPromotionWRankUpByWType(ITYPE_BOW); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpAnima(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_ANIMA); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpLight(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_LIGHT); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpDark(void)  { return PopR_SetupPromotionWRankUpByWType(ITYPE_DARK); }
+STATIC_DECLAR bool PopR_SetupPromotionWRankUpStaff(void) { return PopR_SetupPromotionWRankUpByWType(ITYPE_STAFF); }
 
 struct PopupConfig const gBattlePopupConfigs[] = {
 	{ PopR_SetupBattleWeaponBroken, PopupScr_WpnBroken, 0x60 },

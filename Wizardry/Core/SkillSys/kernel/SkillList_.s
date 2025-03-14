@@ -1,9 +1,14 @@
     .INCLUDE "macros.inc"
     .SYNTAX UNIFIED
 
-    .section .rodata
+    .section .text
 
+THUMB_FUNC_START BattleFastSkillTester
+BattleFastSkillTester:
+    ldr r3, _BattleFastSkillTester
+    bx r3
 .global _BattleFastSkillTester
+.align 2, 0
 _BattleFastSkillTester:
     .4byte ARM_SkillList + (.Lfun_judgeskillFast - _ARM_SkillList_CopyStart)
 

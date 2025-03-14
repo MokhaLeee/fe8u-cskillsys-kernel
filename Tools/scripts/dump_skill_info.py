@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 import os, sys
+import dump_skill_icon
 
 prMsgHuffmanTableRoot=0x0006DC
 prMsgHuffmanTable=0x0006E0
@@ -9,12 +10,14 @@ prMsgTable=0xA26C
 prSkillInfo=0xB2A614
 skill_sys_rom = "./fe8-kernel-dev.gba"
 skill_macro_txt = "./Patches/combo.skills.txt"
+default_icon_pal = 0x5996F4
 
 class SkillInfo:
-	def __init__(self, sid, macro, desc_str):
+	def __init__(self, sid, macro, desc_str, icon):
 		self.sid = sid
 		self.macro = macro
 		self.desc_str = desc_str
+		self.icon = icon
 
 skill_infos = {}
 
@@ -220,6 +223,26 @@ def decode_single_string(msg_idx, rom_data, huffman_table):
 	return parsed_string
 
 """
+Icon
+"""
+def get_sid_icon_md_base64(rom_data, sid):
+	skill_info_base = get_pr_offset(rom_data, prSkillInfo)
+	skill_info = skill_info_base + 8 * sid
+	skill_icon_addr = int.from_bytes(rom_data[skill_info + 0:skill_info + 4], 'little')
+	img_base64 = dump_skill_icon.dump_icon_base64(rom_data, skill_icon_addr, default_icon_pal)
+	# markdown_content = f'![image](data:image/png;base64,{img_base64})'
+	html_content = f'<img src="data:image/png;base64,{img_base64}" alt="Base64 Image" />'
+	return html_content
+
+def get_sid_icon_img(rom_data, sid):
+	skill_info_base = get_pr_offset(rom_data, prSkillInfo)
+	skill_info = skill_info_base + 8 * sid
+	skill_icon_addr = int.from_bytes(rom_data[skill_info + 0:skill_info + 4], 'little')
+
+	img = dump_skill_icon.dump_icon_img(rom_data, skill_icon_addr, default_icon_pal)
+	return img
+
+"""
 SkillSys
 """
 def decode_skill_desc(rom_data, sid, huffman_table):
@@ -253,35 +276,41 @@ def main(args):
 		if sid_macro is None:
 			skill_infos[sid] = None
 		else:
-			skill_infos[sid] = SkillInfo(sid, sid_macro, decode_skill_desc(rom_data, sid, huffman_table))
+			skill_icon_fpath = f"gfx/SkillIcon_{sid_macro}.png"
+			img = get_sid_icon_img(rom_data, sid)
+			img.save(f"./docs/{skill_icon_fpath}")
+
+			skill_infos[sid] = SkillInfo(sid, sid_macro,
+						decode_skill_desc(rom_data, sid, huffman_table),
+						f"![image]({skill_icon_fpath})")
 
 	# format print
 	print("## Equipable skills")
-	print("| name | desc |")
-	print("| :-------- | :-------- |")
+	print("| icon | name | desc |")
+	print("| :-------- | :-------- | :-------- |")
 
 	for sid in range(1, 0x100):
 		info = skill_infos[sid]
 		if info is not None:
-			print(f"| {info.macro} | {info.desc_str.split(':', 1)[1]} |")
+			print(f"{info.icon} | {info.macro} | {info.desc_str.split(':', 1)[1]} |")
 
 	print("## Item-boundable skills")
-	print("| name | desc |")
-	print("| :-------- | :-------- |")
+	print("| icon | name | desc |")
+	print("| :-------- | :-------- | :-------- |")
 
 	for sid in range(0x300, 0x400):
 		info = skill_infos[sid]
 		if info is not None:
-			print(f"| {info.macro} | {info.desc_str.split(':', 1)[1]} |")
+			print(f"{info.icon} | {info.macro} | {info.desc_str.split(':', 1)[1]} |")
 
 	print("## Generic skills")
-	print("| name | desc |")
-	print("| :-------- | :-------- |")
+	print("| icon | name | desc |")
+	print("| :-------- | :-------- | :-------- |")
 
 	for sid in range(0x100, 0x300):
 		info = skill_infos[sid]
 		if info is not None:
-			print(f"| {info.macro} | {info.desc_str.split(':', 1)[1]} |")
+			print(f"{info.icon} | {info.macro} | {info.desc_str.split(':', 1)[1]} |")
 
 if __name__ == '__main__':
 	main(sys.argv)

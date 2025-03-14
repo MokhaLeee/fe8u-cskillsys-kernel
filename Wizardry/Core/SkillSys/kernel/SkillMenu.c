@@ -92,7 +92,7 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 	StartOrphanMenuAdjusted(
 		&sUnitSkillMenuDef,
 		gBmSt.cursorTarget.x - gBmSt.camera.x,
-		1, 22
+		22, 1
 	);
 #else
 	const struct MenuDef *def = &sUnitSkillMenuDef;
@@ -100,7 +100,7 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 
 	rect.w = gpKernelDesigerConfig->skill_sub_menu_width;
 
-	if ((gBmSt.cursorTarget.x - gBmSt.camera.x) < 120)
+	if (item->xTile < 12)
 		rect.x = 1;
 	else
 		rect.x = 22 + 7 - rect.w;
@@ -108,7 +108,7 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 	StartMenuAt(def, rect, NULL);
 #endif
 
-	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6B | MENU_ACT_CLEAR;
+	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_CLEAR;
 }
 
 #endif /* MENU_SKILL_NOT_IN_UPPER */
@@ -119,7 +119,14 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit *unit)
 {
 	int i, cnt;
-	struct SkillList *list = GetUnitSkillList(unit);
+	struct SkillList *list;
+
+#if 1
+	list = GetUnitSkillList(unit);
+#else
+	BattleGenerateUiStats(unit, -1);
+	list = GetUnitSkillList(&gBattleActor.unit);
+#endif
 
 	memset(UnitMenuSkills, 0, sizeof(UnitMenuSkills));
 
@@ -165,7 +172,7 @@ u8 MenuSkills_Usability(const struct MenuItemDef *self, int number)
 	return GetSkillMenuInfo(sid)->isAvailable(self, number);
 }
 
-static int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
+STATIC_DECLAR int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
 {
 	const struct MenuItemDef *def = GetSkillMenuInfo(UnitMenuSkills[MENU_SKILL_INDEX(item->def)]);
 

@@ -10,7 +10,7 @@ bool PrePhaseFunc_AversaNight(ProcPtr proc)
 	int max_hp = 0;
 	bool AversaNight_eff = false;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		if (unit->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
 			continue;
 

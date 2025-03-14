@@ -5,7 +5,7 @@
 
 #define LOCAL_TRACE 0
 
-static u8 *GetUnitBwlSupports(u8 pid)
+STATIC_DECLAR u8 *GetUnitBwlSupports(u8 pid)
 {
 	struct NewBwl *bwl = GetNewBwl(pid);
 

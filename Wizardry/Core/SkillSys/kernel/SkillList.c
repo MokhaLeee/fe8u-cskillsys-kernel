@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "kernel-lib.h"
+#include "shield.h"
 #include "constants/skills.h"
 
 /**
@@ -20,98 +21,79 @@ extern u32 sSkillFastList[0x40];
 #define SkillFastListActor  (&sSkillFastList[0])
 #define SkillFastListTarget (&sSkillFastList[0x20])
 
-extern void (* gpExternalSkillListGenerator)(struct Unit *unit, struct SkillList *list, u8 *ref);
+extern void (*gpExternalSkillListGenerator)(struct Unit *unit, struct SkillList *list, u8 *ref);
 
 void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 {
-	FORCE_DECLARE int weapon;
-	int i, sid;
+	#define ADD_LIST(skill_index) \
+	do { \
+		int __tmp_sid = skill_index; \
+		if (COMMON_SKILL_VALID(__tmp_sid) && !tmp_list[__tmp_sid]) { \
+			tmp_list[__tmp_sid] = true; \
+			list->sid[list->amt++] = __tmp_sid; \
+		} \
+	} while (0)
+
+	int i, weapon;
+	const struct ShieldInfo *shield;
 	int pid = UNIT_CHAR_ID(unit);
 	int jid = UNIT_CLASS_ID(unit);
-
 	u8 *tmp_list = gGenericBuffer;
 
 	memset(list, 0, sizeof(*list));
 	memset(tmp_list, 0, MAX_SKILL_NUM + 1);
 
 	/* person */
-	sid = gpConstSkillTable_Person[pid * 2];
-	if (COMMON_SKILL_VALID(sid)) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	sid = gpConstSkillTable_Person[pid * 2 + 1];
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
+	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 0]);
+	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 1]);
 
 	/* job */
-	sid = gpConstSkillTable_Job[jid * 2];
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	sid = gpConstSkillTable_Job[jid * 2 + 1];
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
+	ADD_LIST(gpConstSkillTable_Job[jid * 2 + 0]);
+	ADD_LIST(gpConstSkillTable_Job[jid * 2 + 1]);
 
 	/* item */
 	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
 		u8 iid = ITEM_INDEX(unit->items[i]);
 
-		sid = gpConstSkillTable_Item[iid * 2];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
+		if (iid == ITEM_NONE)
+			break;
 
-		sid = gpConstSkillTable_Item[iid * 2 + 1];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
+		ADD_LIST(gpConstSkillTable_Item[iid * 2 + 0]);
+		ADD_LIST(gpConstSkillTable_Item[iid * 2 + 1]);
 	}
 
-#if 0
-	/* Weapon */
-	weapon = ITEM_NONE;
-	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
-		weapon = ITEM_INDEX(((struct BattleUnit *)unit)->weaponBefore);
+	/* weapon & sheild*/
+	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit) {
+		struct BattleUnit *bu = (struct BattleUnit *)unit;
+
+		weapon = ITEM_INDEX(bu->weapon);
+		shield = GetBattleUnitShield(bu);
+	} else {
+		weapon = ITEM_INDEX(GetUnitEquippedWeapon(unit));
+		shield = GetUnitShield(unit);
+	}
 
 	if (weapon != ITEM_NONE) {
-		sid = gpConstSkillTable_Weapon[weapon * 2];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-
-		sid = gpConstSkillTable_Weapon[weapon * 2 + 1];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
+		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 0]);
+		ADD_LIST(gpConstSkillTable_Weapon[weapon * 2 + 1]);
 	}
-#endif
+
+	if (shield) {
+		ADD_LIST(shield->skills[0]);
+		ADD_LIST(shield->skills[1]);
+	}
 
 	/* generic */
-	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++) {
-		sid = UNIT_RAM_SKILLS(unit)[i];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-	}
+	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
+		ADD_LIST(UNIT_RAM_SKILLS(unit)[i]);
 
 	/* external */
 	if (gpExternalSkillListGenerator)
 		gpExternalSkillListGenerator(unit, list, tmp_list);
 
 	WriteUnitList(unit, &list->header);
+
+	#undef ADD_LIST
 }
 
 void ForceUpdateUnitSkillList(struct Unit *unit)
@@ -135,13 +117,16 @@ struct SkillList *GetUnitSkillList(struct Unit *unit)
 	else if (unit == &gBattleTarget.unit)
 		list = SkillListBattleTarget;
 
-	if (!JudgeUnitList(unit, &list->header))
+	if (!JudgeUnitList(unit, &list->header)) {
+		Errorf("Ops! regenerate skilllist: uid=%02X, pid=%02X", unit->index & 0xFF, UNIT_CHAR_ID(unit));
+
 		GenerateSkillListExt(unit, list);
+	}
 
 	return list;
 }
 
-bool _SkillListTester(struct Unit *unit, const u16 sid)
+bool SkillListTester(struct Unit *unit, const u16 sid)
 {
 	int i;
 	struct SkillList *list = GetUnitSkillList(unit);
@@ -272,8 +257,8 @@ void UnitToBattle_SetupSkillList(struct Unit *unit, struct BattleUnit *bu)
 		SetupBattleSkillList();
 
 #if (defined(SID_Nihil) && COMMON_SKILL_VALID(SID_Nihil))
-		nihil_on_actor  = _SkillListTester(&gBattleTarget.unit,  SID_Nihil);
-		nihil_on_target = _SkillListTester(&gBattleActor.unit, SID_Nihil);
+		nihil_on_actor  = SkillListTester(&gBattleTarget.unit,  SID_Nihil);
+		nihil_on_target = SkillListTester(&gBattleActor.unit, SID_Nihil);
 
 		if (nihil_on_actor)
 			DisableUnitSkilLList(&gBattleActor.unit);

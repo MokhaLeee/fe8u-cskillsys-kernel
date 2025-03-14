@@ -13,7 +13,7 @@ bool PrePhsae_TickPlusAndMinusSkillStatus(ProcPtr proc)
 {
 	int j;
 
-	FOR_UNITS_FACTION(gPlaySt.faction, unit, {
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
 		FORCE_DECLARE bool act_plus  = false;
 		FORCE_DECLARE bool act_minus = false;
 

@@ -64,8 +64,8 @@ char *GetSkillNameStr(const u16 sid);
 
 /**
  * 7 generic skill
- * 2 person skill
- * 2 job skill
+ * 3 person skill
+ * 3 job skill
  * 10 item skill
  *
  * (maybe todo) 2 weapon skill
@@ -74,7 +74,7 @@ struct SkillList {
 	struct UnitListHeader header;
 	u8 amt;
 	u8 _pad_;
-	u16 sid[23];
+	u16 sid[31];
 };
 struct SkillList *GetUnitSkillList(struct Unit *unit);
 
@@ -86,17 +86,52 @@ void ResetSkillLists(void);
 void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
 
 /* Skill tetsers */
-extern bool (*_SkillTester)(struct Unit *unit, const u16 sid);
-bool _SkillListTester(struct Unit *unit, const u16 sid);
-extern bool (*_BattleFastSkillTester)(struct BattleUnit *bu, const u16 sid);
-
 // see: ../docs/SkillSys.md
-#define SkillTester _SkillTester
-#define SkillListTester(unit, sid) _SkillListTester(unit, sid)
-#define BattleFastSkillTester(bu, sid) _BattleFastSkillTester(bu, sid)
+bool SkillTester(struct Unit *unit, const u16 sid);
+bool SkillListTester(struct Unit *unit, const u16 sid);
+bool BattleFastSkillTester(struct BattleUnit *bu, const u16 sid);
 
 bool CheckSkillActivate(struct Unit *unit, int sid, int rate);
+bool CheckActiveUnitSkillActivate(int sid, int rate);
 bool CheckBattleSkillActivate(struct BattleUnit *actor, struct BattleUnit *target, int sid, int rate);
+
+/**
+ * FEB list
+ *
+ * This is aligned to old asm skillsystem config, see:
+ * https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5
+ */
+struct FebListEnt {
+	u8 level;
+	u8 sid;
+};
+
+#define JOB_SKILL_LEVEL_PROMOTE 0xFF
+#define JOB_SKILL_LEVEL_CONFIG(level, config) (((level) & 0x1F))
+#define LOAD_JOB_SKILL_CONFIG(level_config)  ((level_config) & 0xE0)
+#define LOAD_JOB_SKILL_LEVEL(level_config)   ((level_config) & 0x1F)
+#define LOAD_JOB_SKILL_CONFIG_NONE           (0 << 5)
+#define LOAD_JOB_SKILL_CONFIG_PLAYER_ONLY    (1 << 5)
+#define LOAD_JOB_SKILL_CONFIG_ENEMY_ONLY     (2 << 5)
+#define LOAD_JOB_SKILL_CONFIG_WO_TUTORIAL    (3 << 5)
+#define LOAD_JOB_SKILL_CONFIG_HARD_MODE_ONLY (4 << 5)
+
+// extern struct FebListEnt const *const CharLevelUpSkillTable[0x100];
+// extern struct FebListEnt const *const ClassLevelUpSkillTable[0x100];
+
+extern struct FebListEnt const *const *const gpCharLevelUpSkillTable;
+extern struct FebListEnt const *const *const gpClassLevelUpSkillTable;
+
+#define DEFAULT_LEVEL_SKILLS_BUF_MAX_LEN 16
+
+int GetUnitLevelSkills(struct Unit *unit, int level_from, int level_to, u8 *out_buffer, int max_len);
+int GetInitialSkillList(struct Unit *unit, u8 *out_buffer, int max_len);
+int GetLevelUpSkillList(struct Unit *unit, int level, u8 *out_buffer, int max_len);
+int GetPromotionSkillList(struct Unit *unit, u8 *out_buffer, int max_len);
+
+void FebList_LoadUnitSkill(struct Unit *unit);
+void FebList_LvupAddSkill(struct Unit *unit, int level);
+void FebList_PromotionAddSkill(struct Unit *unit);
 
 /* Prep equip skill list */
 struct PrepEquipSkillList {
@@ -168,6 +203,7 @@ bool SkillMapAnimMiniExists(void);
 void NewMuSkillAnimOnActiveUnit(u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc));
 bool MuSkillAnimExists(void);
 void NewMuSkillAnimOnActiveUnitWithDeamon(ProcPtr parent, u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc));
+void RemoveMuForActiveUnit(int delay);
 
 extern const EventScr EventScr_MuSkillAnim[];
 

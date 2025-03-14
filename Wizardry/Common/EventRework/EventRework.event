@@ -9,9 +9,6 @@ POP
 #include "Source/LynJump.event"
 #include "Source/EventRework.lyn.event"
 
-#include "Source/NewEventScripts.lyn.event"
-#include "Source/EventTable.lyn.event"
-
 // #include "data.event"
 
 #endif /* EVENT_EXPANSION_INSTALLED */

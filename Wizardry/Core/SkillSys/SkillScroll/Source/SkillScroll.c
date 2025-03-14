@@ -27,7 +27,7 @@ int GetSkillScrollItemIconId(int item)
 }
 
 /* Item use */
-static void call_remove_skill_menu(void)
+STATIC_DECLAR void call_remove_skill_menu(void)
 {
 	StartSubtitleHelp(
 		StartOrphanMenu(&RemoveSkillMenuDef),
@@ -35,7 +35,7 @@ static void call_remove_skill_menu(void)
 	);
 }
 
-static const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
+STATIC_DECLAR const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
 	PROC_YIELD,
 	PROC_CALL(call_remove_skill_menu),
 	PROC_END
@@ -83,7 +83,7 @@ bool ItemUsbility_SkillScroll(struct Unit *unit, int item)
 }
 
 /* Prep item use */
-static void PrepItemUseScroll_OnDraw(struct ProcPrepItemUseJunaFruit *proc, int item, int x, int y)
+STATIC_DECLAR void PrepItemUseScroll_OnDraw(struct ProcPrepItemUseJunaFruit *proc, int item, int x, int y)
 {
 	int skill = ITEM_USES(item);
 	const char *str = GetStringFromIndex(MSG_SkillLearned);
