@@ -66,10 +66,12 @@ void PlayerPhase_HandleAutoEndRework(ProcPtr proc)
 
 void AiPhaseInitRework(ProcPtr proc)
 {
+#if CHAX
 	if (PlayStExpa_CheckBit(PLAYSTEXPA_BIT_DivineReprieve_InForce)) {
 		PlayStExpa_ClearBit(PLAYSTEXPA_BIT_DivineReprieve_InForce);
 		return;
 	}
+#endif
 
 	// vanilla
 	AiPhaseInit(proc);
