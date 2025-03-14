@@ -19,12 +19,12 @@ jobs:
         python-version: '3.x'
 
     - name: Restore cached files
-        uses: actions/cache@v4
-        with:
-          path: |
-            Tools/FE-PyTools
-            Tools/EventAssembler
-          key: cache-${{ runner.os }}-${{ hashFiles('dependencies.lock') }}
+      uses: actions/cache@v4
+      with:
+        path: |
+          Tools/FE-PyTools
+          Tools/EventAssembler
+        key: cache-${{ runner.os }}-${{ hashFiles('dependencies.lock') }}
 
     - name: Install deps
       run: |
