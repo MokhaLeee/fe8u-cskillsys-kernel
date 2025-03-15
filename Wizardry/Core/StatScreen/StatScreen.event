@@ -8,7 +8,7 @@
 #include "DrawPages/HelpBox.lyn.event"
 
 #include "DrawUnitPage/DrawUnitPage.event"
-// #include "DrawItemPage/DrawItemPage.event"
+#include "DrawItemPage/DrawItemPage.event"
 #include "DrawSkillPage/DrawSkillPage.event"
 #include "DrawMorePage/DrawMorePage.event"
 

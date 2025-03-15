@@ -19,6 +19,7 @@ bool PrePhsae_ClearMiscUES(ProcPtr proc)
             ClearBitUES(unit, UES_BIT_TURNCOAT);
             ClearBitUES(unit, UES_BIT_SHADOWFLASH_SKILL_USED);
             ClearBitUES(unit, UES_BIT_TWIN_CRESTS_SKILL_USED);
+            ClearBitUES(unit, UES_BIT_DEATHBLIGHT_SKILL_USED);
         }
     }
     return false;

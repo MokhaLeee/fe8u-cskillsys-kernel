@@ -233,9 +233,10 @@ void DisplayPage1(void)
 	DrawItemEquipLine(slot);
 	DrawItemPageSubfix(slot);
 
-	// CONFIG_INSTALL_KERNEL_SHIELD
+#ifdef CONFIG_INSTALL_KERNEL_SHIELD
 	if (gpKernelDesigerConfig->shield_en)
 		DrawItemPage_ShieldEquipLine();
+#endif
 }
 
 /**

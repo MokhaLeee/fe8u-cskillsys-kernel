@@ -42,7 +42,7 @@ SID_Arise
 SID_AssignDecoy
 SID_ShadowFlash
 // SID_Refuge
-// SID_DeathBlight
+SID_DeathBlight
 
 //////// PRE-BATTLE SKILLS
 // SID_DefiantStr

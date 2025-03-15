@@ -3,7 +3,10 @@
 #include "skill-system.h"
 #include "constants/skills.h"
 #include "constants/texts.h"
+#include "unit-expa.h"
+#include "action-expa.h"
 #include "debuff.h"
+#include "jester_headers/miscellaenous.h"
 
 #if defined(SID_DeathBlight) && (COMMON_SKILL_VALID(SID_DeathBlight))
 
@@ -12,8 +15,11 @@ u8 DeathBlight_Usability(const struct MenuItemDef * def, int number)
     if (gActiveUnit->state & US_CANTOING)
         return MENU_NOTSHOWN;
 
-    if (!HasSelectTarget(gActiveUnit, MakeTargetListForAdjacentHeal))
-		return MENU_DISABLED;
+    if (CheckBitUES(gActiveUnit, UES_BIT_DEATHBLIGHT_SKILL_USED))
+        return MENU_NOTSHOWN;
+
+    if (!HasSelectTarget(gActiveUnit, MakeTargetListForAdjacentEnemies))
+		return MENU_NOTSHOWN;
 
     return MENU_ENABLED;
 }
@@ -38,7 +44,7 @@ static u8 DeathBlight_OnSelectTarget(ProcPtr proc, struct SelectTarget * target)
 
 u8 DeathBlight_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 {
- if (item->availability == MENU_DISABLED)
+    if (item->availability == MENU_DISABLED)
     {
         MenuFrozenHelpBox(menu, MSG_No_Allies);
         return MENU_ACT_SND6B;
@@ -46,7 +52,7 @@ u8 DeathBlight_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
     ClearBg0Bg1();
 
-    MakeTargetListForAdjacentHeal(gActiveUnit);
+    MakeTargetListForAdjacentEnemies(gActiveUnit);
     BmMapFill(gBmMapMovement, -1);
 
     StartSubtitleHelp(
@@ -71,12 +77,14 @@ static void callback_anim(ProcPtr proc)
 static void callback_exec(ProcPtr proc)
 {	
 	struct Unit* unit_tar = GetUnit(gActionData.targetIndex);
-	SetUnitStatus(unit_tar, NEW_UNIT_STATUS_DECOY);
+	SetUnitStatus(unit_tar, NEW_UNIT_STATUS_DOOM);
 }
 
 bool Action_DeathBlight(ProcPtr parent)
 {
+    SetBitUES(gActiveUnit, UES_BIT_DEATHBLIGHT_SKILL_USED);
 	NewMuSkillAnimOnActiveUnit(gActionData.unk08, callback_anim, callback_exec);
 	return true;
 }
+
 #endif

@@ -56,6 +56,7 @@
 #include "MenuSkills/AssignDecoy.lyn.event"
 #include "MenuSkills/ShadowFlash.lyn.event"
 #include "MenuSkills/Refuge.lyn.event"
+#include "MenuSkills/DeathBlight.lyn.event"
 
 #include "MenuSkills/ReciprocalAid.lyn.event"
 #include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"

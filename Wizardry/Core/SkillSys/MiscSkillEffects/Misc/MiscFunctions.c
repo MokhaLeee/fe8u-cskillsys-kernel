@@ -3520,3 +3520,30 @@ void AddTrapASMC(void) {
         // don't need to manually manage the return address in this way.  The compiler
         // will handle the equivalent of the "pop {r0}; bx r0;" when the function returns.
 }
+void TryAddUnitToAdjacentEnemyTargetList(struct Unit* unit) {
+
+    if (AreUnitsAllied(gSubjectUnit->index, unit->index)) {
+        return;
+    }
+
+    if (unit->state & US_RESCUED) {
+        return;
+    }
+
+    AddTarget(unit->xPos, unit->yPos, unit->index, 0);
+
+    return;
+}
+
+void MakeTargetListForAdjacentEnemies(struct Unit* unit) {
+    int x = unit->xPos;
+    int y = unit->yPos;
+
+    gSubjectUnit = unit;
+
+    BmMapFill(gBmMapRange, 0);
+
+    ForEachAdjacentUnit(x, y, TryAddUnitToAdjacentEnemyTargetList);
+
+    return;
+}

@@ -33,3 +33,6 @@ extern void EndQuintessenceStealEffect(void);
 extern void GiveScroll(void);
 
 extern void IsTraineeLevelCappedOrPromoted(void);
+
+extern void TryAddUnitToAdjacentEnemyTargetList(struct Unit* unit);
+extern void MakeTargetListForAdjacentEnemies(struct Unit* unit);
