@@ -4,9 +4,9 @@
 // #include "config-debug.h"
 #include "config-memmap.h"
 
-#define CONFIG_FE8_REWRITE
+// #define CONFIG_FE8_REWRITE
 
-// #define CONFIG_FE8SRR
+//#define CONFIG_FE8SRR
 
 /**
  * If uncomment, kernel may remove vanilla dislogue text
@@ -19,7 +19,7 @@
  * If you're planning to develop a new game instead of making minor
  * changes on vanilla, it is recommended to uncomment this config to save space.
  */
-#define CONFIG_CROP_VANILLA_MSG
+// #define CONFIG_CROP_VANILLA_MSG
 
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
@@ -192,7 +192,7 @@
  * 
  * Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
  */
-#define CONFIG_INSTALL_PREPS_AUGURY
+// #define CONFIG_INSTALL_PREPS_AUGURY
 
 /**
  * By Tequila

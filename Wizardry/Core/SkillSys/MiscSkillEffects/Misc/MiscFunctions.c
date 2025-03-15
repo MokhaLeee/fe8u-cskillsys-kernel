@@ -2802,6 +2802,7 @@ void PoisonDamageDisplay_Next(struct UnknownBMUSAilmentProc* proc) {
 }
 
 //! FE8U = 0x080B9D14
+#ifdef CONFIG_FE8_REWRITE
 LYN_REPLACE_CHECK(WorldMap_GenerateRandomMonsters);
 void WorldMap_GenerateRandomMonsters(ProcPtr proc)
 {
@@ -2853,6 +2854,7 @@ void WorldMap_GenerateRandomMonsters(ProcPtr proc)
     }
     WmShowMonsters();
 }
+#endif
 
 LYN_REPLACE_CHECK(AttackCommandUsability);
 u8 AttackCommandUsability(const struct MenuItemDef* def, int number) {

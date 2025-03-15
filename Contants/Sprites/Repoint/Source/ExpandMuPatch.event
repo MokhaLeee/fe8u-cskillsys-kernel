@@ -12,7 +12,7 @@ PUSH
     BYTE 0xFF
     ORG 0x267F8
     #include "pr_DemoUnitSpriteSlots.lyn.event"
-    // PROTECT 0x02677C 0x0267FC // StartWorldMapSMS
+    PROTECT 0x02677C 0x0267FC // StartWorldMapSMS
 
     ORG 0x2680C
     BYTE 0xFF
