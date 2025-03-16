@@ -99,6 +99,17 @@ struct DefeatTalkEnt {
     /* 08 */ EventScr * event;
 };
 
+struct DefeatTalkEntNew {
+             u16 pidA;
+             u16 pidB;
+    /* 02 */ u8 route;
+    /* 03 */ u8 chapter;
+    /* 04 */ u16 flag;
+    /* 06 */ u16 msg;
+    /* 08 */ EventScr * event;
+};
+
+
 struct ForceDeploymentEnt {
     /* 00 */ u16 pid;
     /* 01 */ u8 route;
@@ -210,7 +221,8 @@ u16 GetEventTriggerId(const void * script);
 void SetFlag82(void);
 bool CheckFlag82(void);
 struct BattleTalkExtEnt* GetBattleQuoteEntry(u16, u16);
-struct DefeatTalkEnt* GetDefeatTalkEntry(u16);
+// struct DefeatTalkEnt* GetDefeatTalkEntry(u16);
+struct DefeatTalkEntNew* GetDefeatTalkEntry(u16);
 struct SupportTalkEnt* GetSupportTalkEntry(u16, u16);
 u16 GetSupportTalkSong(u16, u16, u8);
 struct SupportTalkEnt* GetSupportTalkList();
@@ -226,6 +238,7 @@ struct ActiveEventRegistry {
 extern struct ActiveEventRegistry gActiveEventRegistry;
 
 extern struct BattleTalkExtEnt gBattleTalkList[];
+extern struct BattleTalkExtEnt gNewBattleTalkList[];
 extern struct DefeatTalkEnt gDefeatTalkList[];
 extern struct SupportTalkEnt gSupportTalkList[];
 // extern struct ForceDeploymentEnt gForceDeploymentList[];

@@ -63,3 +63,6 @@
 #include "Guides/Skill_Combos.txt"
 #include "Guides/Mechanics.txt"
 #include "Guides/Stat_Screen.txt"
+
+#include "Quotes/BattleQuotes.txt"
+#include "Quotes/DefeatQuotes.txt"

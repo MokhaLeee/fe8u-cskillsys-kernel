@@ -1,5 +1,7 @@
 ALIGN 4
 
+#include "../../include/Configs/configs.h"
+
 // Some messed hooks
 #include "Core/DebuffRework/Source/MiscHooks.event"
 #include "Core/UnitStatusGetter/source/InjectHPGetters.event"
@@ -32,6 +34,10 @@ ALIGN 4
 #include "Common/ChapterInitHook/ChapterInitHook.event"
 #include "Common/StrMagSplit/StrMagSplit.event"
 #include "Common/AntiHuffman/AntiHuffman.event"
+
+#ifdef CONFIG_MULTIPLE_DEATH_QUOTES
+    #include "Common/Quotes/Quotes.event"
+#endif
 
 #include "Common/SaveData/SaveData.event"
 #include "Common/UnitHooks/UnitHooks.event"

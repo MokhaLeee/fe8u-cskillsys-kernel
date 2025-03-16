@@ -1,0 +1,3 @@
+#include "Source/BattleQuotes.lyn.event"
+#include "Source/DefeatQuotes.lyn.event"
+#include "Source/LynJump.event"

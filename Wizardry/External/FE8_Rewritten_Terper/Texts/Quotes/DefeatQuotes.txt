@@ -1,0 +1,18 @@
+## MSG_DEFEAT_QUOTE_EIRIKA_ONEILL
+[OpenMidLeft][LoadFace_ONeill]
+To... lose to a child...[A][N]
+How humiliating...[A][X]
+
+## MSG_DEFEAT_QUOTE_SETH_ONEILL
+[OpenMidLeft][LoadFace_ONeill]
+No... I don't want... to die.[A][N][ToggleSmile]
+But at least, I can say it took[N]
+the Silver Knight... to best me.[A][X]
+
+// Chapter 01
+## MSG_DEFEAT_QUOTE_BREGUET
+[OpenMidLeft][LoadFace_Breguet]
+Very good.[A][N][MoveMidLeft]
+Mhm.[A] But all for naught.[A][N]
+This war will soon span[N]
+the continent.[A][X]
