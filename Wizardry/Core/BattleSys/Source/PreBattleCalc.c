@@ -187,6 +187,22 @@ void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     struct BattleStatus *st;
 
+#if (defined(SID_Trace) && COMMON_SKILL_VALID(SID_Trace))
+    if (BattleSkillTester(attacker, SID_Trace))
+    {
+        struct SkillList * attackerList =  GetUnitSkillList(&attacker->unit);
+        struct SkillList * defenderList =  GetUnitSkillList(&defender->unit);
+        
+        u16 defenderFirstSkill = defenderList->sid[0];
+
+        for (int i = 0; i < attackerList->amt; i++)
+        {
+            if (attackerList->sid[i] == SID_Trace)
+                attackerList->sid[i] = defenderFirstSkill; 
+        }
+    }
+#endif
+
     ComputeBattleUnitDefense(attacker, defender);
     ComputeBattleUnitAttack(attacker, defender);
     ComputeBattleUnitSpeed(attacker);

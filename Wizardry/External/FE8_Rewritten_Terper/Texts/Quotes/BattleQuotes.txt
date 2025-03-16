@@ -1,6 +1,6 @@
 
 // Prologue
-## MSG_BATTLEQUOTE_VALTER_PROLOGUE
+## MSG_BATTLE_QUOTE_VALTER_PROLOGUE
 [OpenMidLeft][LoadFace_Valter]
 I am Valter, Commander of[N]
 Grado's Wyvern forces.[A][N]
@@ -8,7 +8,7 @@ And you're just a corpse who[N]
 does not know he is dead.[A][X]
 
 // Prologue
-## MSG_BATTLEQUOTE_EIRIKA_ONEILL
+## MSG_BATTLE_QUOTE_EIRIKA_ONEILL
 [OpenMidLeft][LoadFace_ONeill]
 Princess Eirika of Renais.[A][N]
 By order of the Grado Empire[N]
@@ -24,7 +24,7 @@ Lay down your arms or be[N]
 beaten into the dirt.[A][X]
 
 // Prologue
-## MSG_BATTLEQUOTE_SETH_ONEILL
+## MSG_BATTLE_QUOTE_SETH_ONEILL
 [OpenMidLeft][LoadFace_ONeill]
 General Seth.[A][N]
 You are instructed by the Grado[N]
@@ -39,7 +39,7 @@ I will keep my oaths, no matter[N]
 who may threaten her![A][X]
 
 // Chapter 01
-## MSG_BATTLEQUOTE_BREGUET
+## MSG_BATTLE_QUOTE_BREGUET
 [OpenMidLeft][LoadFace_Breguet]
 I'll skin you alive like[N]
 I did the soldier before![A][X]
