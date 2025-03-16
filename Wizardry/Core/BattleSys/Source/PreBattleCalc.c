@@ -190,14 +190,18 @@ void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
 	attacker->battleSilencerRate = 0;
 
 	st = BattleUnitOriginalStatus(attacker);
-	st->atk = attacker->battleAttack;
-	st->def = attacker->battleDefense;
-	st->as = attacker->battleSpeed;
-	st->hit = attacker->battleHitRate;
-	st->avo = attacker->battleAvoidRate;
-	st->crit = attacker->battleCritRate;
-	st->dodge = attacker->battleDodgeRate;
-	st->silencer = attacker->battleSilencerRate;
+	if (UNIT_IS_VALID(&attacker->unit)) {
+		st->atk = attacker->battleAttack;
+		st->def = attacker->battleDefense;
+		st->as = attacker->battleSpeed;
+		st->hit = attacker->battleHitRate;
+		st->avo = attacker->battleAvoidRate;
+		st->crit = attacker->battleCritRate;
+		st->dodge = attacker->battleDodgeRate;
+		st->silencer = attacker->battleSilencerRate;
+	} else {
+		st->atk = st->def = st->as = st->hit = st->avo = st->crit = st->dodge = st->silencer = 0;
+	}
 }
 
 void PreBattleCalcEnd(struct BattleUnit *attacker, struct BattleUnit *defender)
