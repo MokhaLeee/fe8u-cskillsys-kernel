@@ -96,7 +96,7 @@ _ARM_SkillList_CopyStart:
     @ r0 = unit
     @ r1 = sid
     push {r4, lr}
-    mov r4, r1
+    mov r4, r1          @ skill id moved to r4
     bl .Lfun_get
 
     add r0, #0x10
@@ -105,20 +105,20 @@ _ARM_SkillList_CopyStart:
     add r3, r0, r2      @ r3: &list->sid[list->amt]
 1:
     cmp r3, r0          @ r0: &list->sid[i]
-    beq 2f
-    ldrh r2, [r0], #2
-    cmp r2, r4
-    beq 3f
-    b 1b
+    beq 2f              @ if no further skill ids are present in the list, branch
+    ldrh r2, [r0], #2   @ load nex skill id
+    cmp r2, r4          @ compare it to the skill id in r4
+    beq 3f              @ if a match is found, branch
+    b 1b                @ loop back and try to load the next skill id in the unit's list
 
 2:
-    mov r0, #0
+    mov r0, #0          @ skill id not found
     pop {r4}
     pop {r1}
     bx r1
 
 3:
-    mov r0, #1
+    mov r0, #1          @ skill id found
     pop {r4}
     pop {r1}
     bx r1
