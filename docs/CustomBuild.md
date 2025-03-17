@@ -23,7 +23,7 @@ git clone https://github.com/MokhaLeee/check_patch.git
 sudo apt-get -y install binutils-arm-none-eabi ctags \
     gcc-arm-none-eabi build-essential cmake re2c ghc \
     cabal-install libghc-vector-dev libghc-juicypixels-dev \
-    python3-pip pkg-config libpng* bsdiff moreutils perl
+    python3-pip pkg-config libpng* moreutils perl
 
 pip install pyelftools PyInstaller tmx six Pillow
 
