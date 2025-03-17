@@ -82,6 +82,7 @@ jobs:
         echo "BUILD_TIME=$(date +"%Y%m%d.%H")" >> $GITHUB_ENV
         ./Tools/scripts/generate_release.sh
         rm -f .release_dir/*.gba
+        rm -f .release_dir/*.ups
 
     - uses: actions/upload-artifact@v4.3.5
       with:

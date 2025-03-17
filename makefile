@@ -358,6 +358,7 @@ CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
 CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
 CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
+CHAX_NUPS := $(FE8_CHX:.gba=.ups)
 
 SKILL_INFO_DOC := ./docs/SkillInfo.md
 
@@ -395,13 +396,16 @@ ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 
 	@echo "[GEN]	$(CHAX_DIFF)"
 	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
+
+	@echo "[GEN]	$(CHAX_NUPS)"
+	@python3 $(TOOL_DIR)/scripts/ups.py make $(FE8_GBA) $(FE8_CHX) $(CHAX_NUPS)
 endif
 
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
 	@cat $(CHAX_SYM) | python3 $(TOOL_DIR)/scripts/sym_modify.py | sponge $(CHAX_SYM)
 	@echo "Done!"
 
-CLEAN_FILES += $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
+CLEAN_FILES += $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF) $(CHAX_NUPS)
 
 # =============
 # = PRE-BUILD =
