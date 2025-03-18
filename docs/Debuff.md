@@ -174,3 +174,5 @@ void SetUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 void ClearUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 bool CheckUnitStatDebuff(struct Unit *unit, enum UNIT_STAT_DEBUFF_IDX debuff);
 ```
+
+You can also use [event cmd](../Patches/PATCH_EVENTSCRIPT_Debuff.txt) to set or clear debuffs via events.

@@ -1611,7 +1611,7 @@ Time[X]
 3 years ago[.][X]
 
 ## MSG_0212
-ᴇᶦʳᶦᵏᵃ[X]
+Eirika[X]
 
 ## MSG_0213
 Seth[X]
