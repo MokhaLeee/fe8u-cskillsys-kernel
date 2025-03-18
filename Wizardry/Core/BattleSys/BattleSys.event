@@ -7,6 +7,7 @@
 #include "Bow2Decrease/Bow2Decrease.event"
 #include "RoundAnim/RoundAnim.event"
 #include "HpCost/HpCost.event"
+#include "NegateDef/NegateDef.lyn.event"
 
 #include "Source/LynJump.event"
 #include "Source/BattleGenerate.lyn.event"

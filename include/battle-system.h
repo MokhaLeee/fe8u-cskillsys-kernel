@@ -214,6 +214,19 @@ void PreBattleCalcLeadershipBonus(struct BattleUnit *actor, struct BattleUnit *t
 bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
 
 /**
+ * Negate def rate
+ */
+struct NegateDefConfEnt {
+	u8 item, rate;
+	u16 evt_flag;
+};
+
+extern struct NegateDefConfEnt const gNegateDefConf[];
+extern struct NegateDefConfEnt const *const gpNegateDefConf;
+
+int GetDefenderNegatedDefense(struct BattleUnit *attacker, struct BattleUnit *defender);
+
+/**
  * Hp cost
  */
 bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);
