@@ -24,6 +24,7 @@ jobs:
         path: |
           Tools/FE-PyTools
           Tools/EventAssembler
+          encrypt_0x55_fe8u.bin
         key: cache-${{ runner.os }}-${{ hashFiles('dependencies.lock') }}
 
     - name: Install deps
@@ -66,7 +67,11 @@ jobs:
         fi
 
     - name: Fake generate baserom
-      run: head -c 16M /dev/urandom > fe8.gba
+      run: |
+        if [ ! -e encrypt_0x55_fe8u.bin ]; then
+          wget https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci_/encrypt_0x55_fe8u.bin
+        fi
+        python3 Tools/scripts/encrypt/decrypt.py encrypt_0x55_fe8u.bin fe8.gba
 
     - name: Debug remove skill build
       run: make -j CONFIG_CI_NO_SKILL_TEST=1
@@ -82,7 +87,6 @@ jobs:
         echo "BUILD_TIME=$(date +"%Y%m%d.%H")" >> $GITHUB_ENV
         ./Tools/scripts/generate_release.sh
         rm -f .release_dir/*.gba
-        rm -f .release_dir/*.ups
 
     - uses: actions/upload-artifact@v4.3.5
       with:
