@@ -33,7 +33,7 @@ int GetWtypeFromRTextMsg(u16 msg)
 void PreBattleCalc_WrankBonus(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	int wtype = attacker->weaponType;
-	int wrank = attacker->unit.ranks[wtype];
+	int wrank = GetWeaponLevelFromExp(UNIT_WRANK(&attacker->unit, wtype));
 	const struct WrankBonusConfEnt *conf = GetWrankBonusConf(&attacker->unit, wtype, wrank);
 
 	if (conf) {
