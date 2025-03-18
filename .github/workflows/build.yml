@@ -71,7 +71,7 @@ jobs:
         if [ ! -e encrypt_0x55_fe8u.bin ]; then
           wget https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci_/encrypt_0x55_fe8u.bin
         fi
-        python3 Tools/scripts/encrypt/decrypt.py encrypt_0x55_fe8u.bin fe8.gba
+        python3 Tools/scripts/encrypt/decrypt.py encrypt_0x55_fe8u.bin fe8.gba 0x55
 
     - name: Debug remove skill build
       run: make -j CONFIG_CI_NO_SKILL_TEST=1
