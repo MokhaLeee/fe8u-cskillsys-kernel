@@ -302,17 +302,3 @@ static inline bool CheckUnbreakableSpecialSlot(int slot)
 }
 
 int GetItemFromSlot(struct Unit *unit, int slot);
-
-/**
- * Weapon rank bonus
- */
-#define WRANK_BONUS_ITYPE_COUNT 15
-
-struct WrankBonusConfEnt {
-	u8 wtype, wrank;
-	u8 _pad_[2];
-	s8 bonus[BATTLE_STATUS_MAX];
-};
-
-extern struct WrankBonusConfEnt const gWrankBonusConf[];
-extern struct WrankBonusConfEnt const *const gpWrankBonusConf;

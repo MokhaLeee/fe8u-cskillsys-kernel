@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "stat-screen.h"
+#include "wrank-bonus.h"
 #include "constants/texts.h"
 
 static _DECL_INFO RText_Sword, RText_Lance, RText_Axe, RText_Bow, RText_Anima, RText_Light, RText_Dark, RText_Staff;
@@ -11,49 +12,49 @@ _DECL_INFO *const RTextSkillPage_MokhaPlanA = &RText_Sword;
 static _DECL_INFO RText_Sword = {
 	NULL, &RText_Lance, &RText_Name, &RText_Skill1,
 	0x66, 0x18, 0x561,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 static _DECL_INFO RText_Lance = {
 	&RText_Sword, &RText_Axe, &RText_Name, &RText_Skill2,
 	0x66, 0x28, 0x562,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 static _DECL_INFO RText_Axe = {
 	&RText_Lance, &RText_Bow, &RText_Name, &RText_Skill3,
 	0x66, 0x38, 0x563,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 static _DECL_INFO RText_Bow = {
 	&RText_Axe, &RText_Anima, &RText_Name, &RText_Skill4,
 	0x66, 0x48, 0x564,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 static _DECL_INFO RText_Anima = {
 	&RText_Bow, &RText_Light, &RText_Class, &RText_Skill5,
 	0x66, 0x58, 0x565,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 static _DECL_INFO RText_Light = {
 	&RText_Anima, &RText_Dark, &RText_Name, &RText_Skill6,
 	0x66, 0x68, 0x566,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 static _DECL_INFO RText_Dark = {
 	&RText_Light, &RText_Staff, &RText_Exp, &RText_Skill7,
 	0x66, 0x78, 0x567,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 static _DECL_INFO RText_Staff = {
 	&RText_Dark, NULL, &RText_Exp, &RText_Skill8,
 	0x66, 0x88, 0x568,
-	NULL, NULL
+	NULL, HbPopuplate_WrankBonus
 };
 
 /* Line #2 */

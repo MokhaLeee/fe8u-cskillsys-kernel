@@ -252,3 +252,10 @@ enum BattleStatusIdxRef {
 
 	BATTLE_STATUS_MAX
 };
+
+/**
+ * unit.c
+ */
+#define UNIT_WRANK(unit, wtype) ((unit)->ranks[wtype])
+
+

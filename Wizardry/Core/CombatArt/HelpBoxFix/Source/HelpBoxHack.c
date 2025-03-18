@@ -1,6 +1,47 @@
 #include "common-chax.h"
 #include "help-box.h"
 #include "combat-art.h"
+#include "wrank-bonus.h"
+
+LYN_REPLACE_CHECK(HbMoveCtrl_OnIdle);
+void HbMoveCtrl_OnIdle(struct HelpBoxProc *proc)
+{
+	u8 boxMoved = FALSE;
+
+	DisplayUiHand(
+		sHbOrigin.x*8 + proc->info->xDisplay,
+		sHbOrigin.y*8 + proc->info->yDisplay);
+
+	if (gKeyStatusPtr->repeatedKeys & DPAD_UP)
+		boxMoved |= TryRelocateHbUp(proc);
+
+	if (gKeyStatusPtr->repeatedKeys & DPAD_DOWN)
+		boxMoved |= TryRelocateHbDown(proc);
+
+	if (gKeyStatusPtr->repeatedKeys & DPAD_LEFT)
+		boxMoved |= TryRelocateHbLeft(proc);
+
+	if (gKeyStatusPtr->repeatedKeys & DPAD_RIGHT)
+		boxMoved |= TryRelocateHbRight(proc);
+
+	if (gKeyStatusPtr->newKeys & (B_BUTTON | R_BUTTON)) {
+#if CHAX
+		sHelpBoxType = NEW_HB_DEFAULT;
+#endif
+
+		Proc_Break((void *) proc);
+		return;
+	}
+
+	if (boxMoved) {
+#if CHAX
+		sHelpBoxType = NEW_HB_DEFAULT;
+#endif
+
+		PlaySoundEffect(0x67);
+		Proc_Goto((void *) proc, 0); // TODO: label constants?
+	}
+}
 
 STATIC_DECLAR void sub_808A200_vanilla(const struct HelpBoxInfo *info)
 {
@@ -80,13 +121,23 @@ void HelpBoxSetupstringLines(struct ProcHelpBoxIntro *proc)
 		}
 	} else {
 		/* Hack here */
-		if (sHelpBoxType == NEW_HB_COMBAT_ART_BKSEL) {
+		switch (sHelpBoxType) {
+		case NEW_HB_COMBAT_ART_BKSEL:
 			if (!GetCombatArtInfo(proc->item)->battle_status.display_en_n) {
 				DrawHelpBoxCombatArtBkselLabels();
 				proc->pretext_lines = 2;
 			} else {
 				proc->pretext_lines = 0;
 			}
+			break;
+
+		case NEW_HB_WRANK_STATSCREEN:
+			DrawHelpBoxLabels_WrankBonus();
+			proc->pretext_lines = 3;
+			break;
+
+		default:
+			break;
 		}
 	}
 
@@ -114,8 +165,20 @@ void HelpBoxDrawstring(struct ProcHelpBoxIntro *proc)
 		}
 	} else {
 		/* Hack here */
-		if (sHelpBoxType == NEW_HB_COMBAT_ART_BKSEL && !GetCombatArtInfo(proc->item)->battle_status.display_en_n)
-			DrawHelpBoxCombatArtBkselStats(proc);
+		switch (sHelpBoxType) {
+		case NEW_HB_COMBAT_ART_BKSEL:
+			if (!GetCombatArtInfo(proc->item)->battle_status.display_en_n)
+				DrawHelpBoxCombatArtBkselStats(proc);
+
+			break;
+
+		case NEW_HB_WRANK_STATSCREEN:
+			DrawHelpBoxStats_WrankBonus(proc);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	SetTextFont(0);
@@ -140,8 +203,19 @@ int sub_808A454(int item)
 			return 2;
 	} else {
 		/* Hack here */
-		if (sHelpBoxType == NEW_HB_COMBAT_ART_BKSEL && !GetCombatArtInfo(item)->battle_status.display_en_n)
+		switch (sHelpBoxType) {
+		case NEW_HB_COMBAT_ART_BKSEL:
+			if (!GetCombatArtInfo(item)->battle_status.display_en_n)
+				return 2;
+
+			break;
+
+		case NEW_HB_WRANK_STATSCREEN:
 			return 2;
+
+		default:
+			break;
+		}
 	}
 
 	return 0;
@@ -150,20 +224,23 @@ int sub_808A454(int item)
 LYN_REPLACE_CHECK(ApplyHelpBoxContentSize);
 void ApplyHelpBoxContentSize(struct HelpBoxProc *proc, int width, int height)
 {
+	#define AUTO_ADJUST_SIZE \
+	do { \
+		if (width < 0x90) \
+			width = 0x90; \
+		if (GetStringTextLen(GetStringFromIndex(proc->mid)) > 8) \
+			height += 0x20; \
+		else \
+			height += 0x10; \
+	} while (0)
+
 	width = 0xF0 & (width + 15); // align to 16 pixel multiple
 
 	if (sHelpBoxType == 0) {
 		/* Vanilla */
 		switch (GetHelpBoxItemInfoKind(proc->item)) {
 		case 1: // weapon
-			if (width < 0x90)
-				width = 0x90;
-
-			if (GetStringTextLen(GetStringFromIndex(proc->mid)) > 8)
-				height += 0x20;
-			else
-				height += 0x10;
-
+			AUTO_ADJUST_SIZE;
 			break;
 
 		case 2: // staff
@@ -180,19 +257,26 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc *proc, int width, int height)
 		}
 	} else {
 		/* Hack here */
-		if (sHelpBoxType == NEW_HB_COMBAT_ART_BKSEL && !GetCombatArtInfo(proc->item)->battle_status.display_en_n) {
-			if (width < 0x90)
-				width = 0x90;
+		switch (sHelpBoxType) {
+		case NEW_HB_COMBAT_ART_BKSEL:
+			if (!GetCombatArtInfo(proc->item)->battle_status.display_en_n)
+				AUTO_ADJUST_SIZE;
 
-			if (GetStringTextLen(GetStringFromIndex(proc->mid)) > 8)
-				height += 0x20;
-			else
-				height += 0x10;
+			break;
+
+		case NEW_HB_WRANK_STATSCREEN:
+			AUTO_ADJUST_SIZE;
+			break;
+
+		default:
+			break;
 		}
 	}
 
 	proc->wBoxFinal = width;
 	proc->hBoxFinal = height;
+
+	#undef AUTO_ADJUST_SIZE
 }
 
 LYN_REPLACE_CHECK(StartHelpBoxExt);

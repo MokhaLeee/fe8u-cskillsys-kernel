@@ -45,7 +45,6 @@ STATIC_DECLAR u8 DemoEventOperation_Debuff_ForUnit(struct EventEngineProc *proc,
 	case EVSUBCMD_DEBUFF_SET_UNIT_AT:
 	case EVSUBCMD_DEBUFF_CLEAR_UNIT_AT:
 		unit = GetUnitAtPosition(argv[3] & 0xFF, (argv[3] & 0xFF00) >> 8);
-		FPrintf("x=%d, y=%d, pid=0x%02X", argv[3] & 0xFF, (argv[3] & 0xFF00) >> 8, UNIT_CHAR_ID(unit));
 		break;
 
 	case EVSUBCMD_DEBUFF_SET_UNIT_ACTIVE:

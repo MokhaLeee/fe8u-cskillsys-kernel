@@ -122,7 +122,7 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 - `wrank_bonux_rtext_auto_gen`
 
-	Unused
+	Display weapon rank battle bonus info in statscreen if it holds.
 
 ## Designer config battle
 
