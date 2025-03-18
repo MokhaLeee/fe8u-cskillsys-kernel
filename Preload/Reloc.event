@@ -177,6 +177,6 @@ gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
 gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
 
 gpNegateDefConf: POIN gNegateDefConf
-gpWrankBonusConf: POIN WrankBonusConf
+gpWrankBonusConf: POIN gWrankBonusConf
 
 KERNEL_RELOC_END:

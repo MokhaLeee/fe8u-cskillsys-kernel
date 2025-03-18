@@ -1,35 +1,286 @@
 #include "common-chax.h"
 #include "battle-system.h"
 
-#define DEFAULT_WRANK_BONUS_CONF {{ \
-	[WPN_LEVEL_E] = {{ 0 }}, \
-	[WPN_LEVEL_D] = {{ \
-		[BATTLE_STATUS_HIT] = 3, \
-	}}, \
-	[WPN_LEVEL_C] = {{ \
-		[BATTLE_STATUS_HIT] = 5, \
-	}}, \
-	[WPN_LEVEL_B] = {{ \
-		[BATTLE_STATUS_ATK] = 1, \
-		[BATTLE_STATUS_HIT] = 5, \
-	}}, \
-	[WPN_LEVEL_A] = {{ \
-		[BATTLE_STATUS_ATK] = 1, \
-		[BATTLE_STATUS_HIT] = 10, \
-	}}, \
-	[WPN_LEVEL_S] = {{ \
-		[BATTLE_STATUS_ATK] = 3, \
-		[BATTLE_STATUS_HIT] = 15, \
-		[BATTLE_STATUS_SILENCER] = 1, \
-	}}, \
-}}
-
-struct WrankBonusConf const WrankBonusConf[WRANK_BONUS_ITYPE_COUNT] = {
-	[ITYPE_SWORD] = DEFAULT_WRANK_BONUS_CONF,
-	[ITYPE_LANCE] = DEFAULT_WRANK_BONUS_CONF,
-	[ITYPE_AXE]   = DEFAULT_WRANK_BONUS_CONF,
-	[ITYPE_BOW]   = DEFAULT_WRANK_BONUS_CONF,
-	[ITYPE_ANIMA] = DEFAULT_WRANK_BONUS_CONF,
-	[ITYPE_LIGHT] = DEFAULT_WRANK_BONUS_CONF,
-	[ITYPE_DARK]  = DEFAULT_WRANK_BONUS_CONF,
+struct WrankBonusConfEnt const gWrankBonusConf[] = {
+	{
+		.wtype = ITYPE_SWORD,
+		.wrank = WPN_LEVEL_D,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 3,
+		},
+	},
+	{
+		.wtype = ITYPE_SWORD,
+		.wrank = WPN_LEVEL_C,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_SWORD,
+		.wrank = WPN_LEVEL_B,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 1,
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_SWORD,
+		.wrank = WPN_LEVEL_A,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+		},
+	},
+	{
+		.wtype = ITYPE_SWORD,
+		.wrank = WPN_LEVEL_S,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+			[BATTLE_STATUS_CRIT] = 10,
+			[BATTLE_STATUS_SILENCER] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_LANCE,
+		.wrank = WPN_LEVEL_D,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 3,
+		},
+	},
+	{
+		.wtype = ITYPE_LANCE,
+		.wrank = WPN_LEVEL_C,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_LANCE,
+		.wrank = WPN_LEVEL_B,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 1,
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_LANCE,
+		.wrank = WPN_LEVEL_A,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+		},
+	},
+	{
+		.wtype = ITYPE_LANCE,
+		.wrank = WPN_LEVEL_S,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+			[BATTLE_STATUS_CRIT] = 10,
+			[BATTLE_STATUS_SILENCER] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_AXE,
+		.wrank = WPN_LEVEL_D,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 3,
+		},
+	},
+	{
+		.wtype = ITYPE_AXE,
+		.wrank = WPN_LEVEL_C,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_AXE,
+		.wrank = WPN_LEVEL_B,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 1,
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_AXE,
+		.wrank = WPN_LEVEL_A,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+		},
+	},
+	{
+		.wtype = ITYPE_AXE,
+		.wrank = WPN_LEVEL_S,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+			[BATTLE_STATUS_CRIT] = 10,
+			[BATTLE_STATUS_SILENCER] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_BOW,
+		.wrank = WPN_LEVEL_D,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 3,
+		},
+	},
+	{
+		.wtype = ITYPE_BOW,
+		.wrank = WPN_LEVEL_C,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_BOW,
+		.wrank = WPN_LEVEL_B,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 1,
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_BOW,
+		.wrank = WPN_LEVEL_A,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+		},
+	},
+	{
+		.wtype = ITYPE_BOW,
+		.wrank = WPN_LEVEL_S,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+			[BATTLE_STATUS_CRIT] = 10,
+			[BATTLE_STATUS_SILENCER] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_ANIMA,
+		.wrank = WPN_LEVEL_D,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 3,
+		},
+	},
+	{
+		.wtype = ITYPE_ANIMA,
+		.wrank = WPN_LEVEL_C,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_ANIMA,
+		.wrank = WPN_LEVEL_B,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 1,
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_ANIMA,
+		.wrank = WPN_LEVEL_A,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+		},
+	},
+	{
+		.wtype = ITYPE_ANIMA,
+		.wrank = WPN_LEVEL_S,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+			[BATTLE_STATUS_CRIT] = 10,
+			[BATTLE_STATUS_SILENCER] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_LIGHT,
+		.wrank = WPN_LEVEL_D,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 3,
+		},
+	},
+	{
+		.wtype = ITYPE_LIGHT,
+		.wrank = WPN_LEVEL_C,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_LIGHT,
+		.wrank = WPN_LEVEL_B,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 1,
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_LIGHT,
+		.wrank = WPN_LEVEL_A,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+		},
+	},
+	{
+		.wtype = ITYPE_LIGHT,
+		.wrank = WPN_LEVEL_S,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+			[BATTLE_STATUS_CRIT] = 10,
+			[BATTLE_STATUS_SILENCER] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_DARK,
+		.wrank = WPN_LEVEL_D,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 3,
+		},
+	},
+	{
+		.wtype = ITYPE_DARK,
+		.wrank = WPN_LEVEL_C,
+		.bonus = {
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_DARK,
+		.wrank = WPN_LEVEL_B,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 1,
+			[BATTLE_STATUS_HIT] = 5,
+		},
+	},
+	{
+		.wtype = ITYPE_DARK,
+		.wrank = WPN_LEVEL_A,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+		},
+	},
+	{
+		.wtype = ITYPE_DARK,
+		.wrank = WPN_LEVEL_S,
+		.bonus = {
+			[BATTLE_STATUS_ATK] = 3,
+			[BATTLE_STATUS_HIT] = 10,
+			[BATTLE_STATUS_CRIT] = 10,
+			[BATTLE_STATUS_SILENCER] = 5,
+		},
+	},
+	{}
 };

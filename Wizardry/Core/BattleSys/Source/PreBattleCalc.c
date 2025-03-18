@@ -1700,27 +1700,6 @@ void PreBattleCalcSilencerRate(struct BattleUnit *attacker, struct BattleUnit *d
 		attacker->battleSilencerRate -= 25;
 }
 
-void PreBattleCalc_WrankBonus(struct BattleUnit *attacker, struct BattleUnit *defender)
-{
-	const struct WrankBonusConf *conf;
-	int wtype = attacker->weaponType;
-	int wrank = attacker->unit.ranks[wtype];
-
-	if (attacker->weaponType < WRANK_BONUS_ITYPE_COUNT)
-		return;
-
-	conf = &gpWrankBonusConf[wtype];
-
-	attacker->battleAttack       += conf->rank_bonus[wrank].it[BATTLE_STATUS_ATK];
-	attacker->battleDefense      += conf->rank_bonus[wrank].it[BATTLE_STATUS_DEF];
-	attacker->battleSpeed        += conf->rank_bonus[wrank].it[BATTLE_STATUS_AS];
-	attacker->battleHitRate      += conf->rank_bonus[wrank].it[BATTLE_STATUS_HIT];
-	attacker->battleAvoidRate    += conf->rank_bonus[wrank].it[BATTLE_STATUS_AVO];
-	attacker->battleCritRate     += conf->rank_bonus[wrank].it[BATTLE_STATUS_CRIT];
-	attacker->battleDodgeRate    += conf->rank_bonus[wrank].it[BATTLE_STATUS_DODGE];
-	attacker->battleSilencerRate += conf->rank_bonus[wrank].it[BATTLE_STATUS_SILENCER];
-}
-
 void PreBattleCalcPad(struct BattleUnit *attacker, struct BattleUnit *defender) {}
 
 LYN_REPLACE_CHECK(ComputeBattleUnitStats);
