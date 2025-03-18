@@ -77,4 +77,6 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 #endif
 
 	.skill_sub_menu_width = 10,
+
+	.wrank_bonux_rtext_auto_gen = false,
 };

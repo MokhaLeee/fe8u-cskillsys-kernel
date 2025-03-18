@@ -1,7 +1,7 @@
 #pragma once
 
-
-#include "debug-kit.h"
+#include "common-chax.h"
+#include "kernel-lib.h"
 
 #define IS_BATTLE_UNIT(_unit) ((_unit) == &gBattleActor.unit  || (_unit) ==  &gBattleTarget.unit)
 #define IS_BATTLE_ACTOR(bu) ((bu) == &gBattleActor)
@@ -302,3 +302,17 @@ static inline bool CheckUnbreakableSpecialSlot(int slot)
 }
 
 int GetItemFromSlot(struct Unit *unit, int slot);
+
+/**
+ * Weapon rank bonus
+ */
+#define WRANK_BONUS_ITYPE_COUNT 15
+
+struct WrankBonusConf {
+	struct {
+		s8 it[BATTLE_STATUS_MAX];
+	} rank_bonus[WPN_LEVEL_S + 1];
+};
+
+extern struct WrankBonusConf const WrankBonusConf[WRANK_BONUS_ITYPE_COUNT];
+extern struct WrankBonusConf const *const gpWrankBonusConf;

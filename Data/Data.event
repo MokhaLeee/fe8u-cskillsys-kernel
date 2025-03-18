@@ -30,6 +30,7 @@
 #include "BattleSys/WeaponTriangle.lyn.event"
 #include "BattleSys/LeaderShip.lyn.event"
 #include "BattleSys/NegateDef.lyn.event"
+#include "BattleSys/WrankBonus.lyn.event"
 #include "StrMag/UnitMagicInfos.lyn.event"
 #include "Debuff/DebuffInfo.lyn.event"
 #include "Debuff/StatDebuffInfo.lyn.event"

@@ -14,32 +14,6 @@ typedef void (*PreBattleCalcFunc) (struct BattleUnit *buA, struct BattleUnit *bu
 extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit *defender);
 
-STATIC_DECLAR bool CheckSRankBattle(struct BattleUnit *bu)
-{
-	int wtype;
-
-	wtype = GetItemType(bu->weapon);
-	switch (wtype) {
-	case ITYPE_SWORD:
-	case ITYPE_LANCE:
-	case ITYPE_AXE:
-	case ITYPE_BOW:
-	case ITYPE_STAFF:
-	case ITYPE_ANIMA:
-	case ITYPE_LIGHT:
-	case ITYPE_DARK:
-		/* Avoid potential overflow */
-		if (bu->unit.ranks[wtype] >= WPN_EXP_S)
-			return true;
-
-		break;
-
-	default:
-		break;
-	}
-	return false;
-}
-
 LYN_REPLACE_CHECK(ComputeBattleUnitSpeed);
 void ComputeBattleUnitSpeed(struct BattleUnit *bu)
 {
@@ -52,9 +26,6 @@ void ComputeBattleUnitSpeed(struct BattleUnit *bu)
 
 	wt -= con;
 	if (wt < 0)
-		wt = 0;
-
-	if (CheckSRankBattle(bu))
 		wt = 0;
 
 	bu->battleSpeed = bu->unit.spd - wt;
@@ -88,9 +59,6 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 		status = status + UNIT_MAG(&attacker->unit);
 	else
 		status = status + attacker->unit.pow;
-
-	if (CheckSRankBattle(attacker))
-		status = status + 1;
 
 	attacker->battleAttack = status;
 }
@@ -1730,6 +1698,27 @@ void PreBattleCalcSilencerRate(struct BattleUnit *attacker, struct BattleUnit *d
 {
 	if (UNIT_CATTRIBUTES(&defender->unit) & CA_BOSS)
 		attacker->battleSilencerRate -= 25;
+}
+
+void PreBattleCalc_WrankBonus(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	const struct WrankBonusConf *conf;
+	int wtype = attacker->weaponType;
+	int wrank = attacker->unit.ranks[wtype];
+
+	if (attacker->weaponType < WRANK_BONUS_ITYPE_COUNT)
+		return;
+
+	conf = &gpWrankBonusConf[wtype];
+
+	attacker->battleAttack       += conf->rank_bonus[wrank].it[BATTLE_STATUS_ATK];
+	attacker->battleDefense      += conf->rank_bonus[wrank].it[BATTLE_STATUS_DEF];
+	attacker->battleSpeed        += conf->rank_bonus[wrank].it[BATTLE_STATUS_AS];
+	attacker->battleHitRate      += conf->rank_bonus[wrank].it[BATTLE_STATUS_HIT];
+	attacker->battleAvoidRate    += conf->rank_bonus[wrank].it[BATTLE_STATUS_AVO];
+	attacker->battleCritRate     += conf->rank_bonus[wrank].it[BATTLE_STATUS_CRIT];
+	attacker->battleDodgeRate    += conf->rank_bonus[wrank].it[BATTLE_STATUS_DODGE];
+	attacker->battleSilencerRate += conf->rank_bonus[wrank].it[BATTLE_STATUS_SILENCER];
 }
 
 void PreBattleCalcPad(struct BattleUnit *attacker, struct BattleUnit *defender) {}

@@ -120,6 +120,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Width of submenu after typing "Skills" option in action menu.
 
+- `wrank_bonux_rtext_auto_gen`
+
+	Unused
+
 ## Designer config battle
 
 ![image](./gfx/SystemConfig2.png)
