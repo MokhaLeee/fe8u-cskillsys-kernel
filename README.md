@@ -6,7 +6,8 @@ Modern CHAX for FE8U-SkillSystem.
 
 As now c-skillsys has been maintained as community project, please goto [here](https://github.com/FireEmblemUniverse/fe8u-cskillsys) to get latest update and release.
 
-- [Abstarct](./docs/Abstract.md)
+- [**User manual**](./docs/Abstract.md)
+
 - [Community discussion on FEUniverse](https://feuniverse.us/t/fe8-modern-c-skillsystem-release/24614)
 - [Contributing note](./docs/CONTRIBUTING.md)
 
