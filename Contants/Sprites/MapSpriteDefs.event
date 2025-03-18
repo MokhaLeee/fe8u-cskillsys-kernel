@@ -114,7 +114,4 @@
 #define TentStandingMapSpriteID 104
 #define PontifexStandingMapSpriteID 105
 #define DeadPeerStandingMapSpriteID 106
-
-#define SigilMapSpriteID 102 //overwrites light rune
-#define TelliusTorchOffMapSpriteID 105
-#define TelliusTorchOnMapSpriteID 106
+#define ForestTileSpriteID 107

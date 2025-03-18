@@ -17,29 +17,29 @@ PUSH
 
     ORG 0x59BD8
     POIN ClassAnimTable
-    PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
+    //PROTECT 0x000599E8 0x00059D28 // UpdateBanimFrame
 
     ORG 0x5A600
     POIN ClassAnimTable
-    PROTECT 0x0005A5A8 0x0005A60C // sub_805A5A8
+    //PROTECT 0x0005A5A8 0x0005A60C // sub_805A5A8
 
     ORG 0x5A694
     POIN ClassAnimTable
-    PROTECT 0x0005A60C 0x0005A7B4 // InitMainMiniAnim
+    //PROTECT 0x0005A60C 0x0005A7B4 // InitMainMiniAnim
 
     ORG 0x5A82C
     POIN ClassAnimTable
-    PROTECT 0x0005A7B4 0x0005A930 // sub_805A7B4
+    //PROTECT 0x0005A7B4 0x0005A930 // sub_805A7B4
 
     ORG 0x6F6A8
     POIN ClassAnimTable
-    PROTECT 0x0006F668 0x0006F6B4 // efxopMyrrh_Loop_Main
+    //PROTECT 0x0006F668 0x0006F6B4 // efxopMyrrh_Loop_Main
 
     ORG 0x70940
     POIN ClassAnimTable
-    PROTECT 0x000708FC 0x0007096C // EkrMyr_PrepareBanimfx
+    //PROTECT 0x000708FC 0x0007096C // EkrMyr_PrepareBanimfx
 
     ORG 0x70A60
     POIN ClassAnimTable
-    PROTECT 0x00070A14 0x00070AE4 // EkrMyr_ReturnToLoli
+    //PROTECT 0x00070A14 0x00070AE4 // EkrMyr_ReturnToLoli
 POP

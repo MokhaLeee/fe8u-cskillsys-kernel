@@ -1616,7 +1616,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_NoGuard) && COMMON_SKILL_VALID(SID_NoGuard))
     [SID_NoGuard] = {
         .desc = MSG_SKILL_NoGuard,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_NoGuard,
     },
 #endif
 
@@ -1624,7 +1624,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_NoGuardPlus) && COMMON_SKILL_VALID(SID_NoGuardPlus))
     [SID_NoGuardPlus] = {
         .desc = MSG_SKILL_NoGuardPlus,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_NoGuardPlus,
     },
 #endif
 
@@ -3886,14 +3886,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Stormgift) && COMMON_SKILL_VALID(SID_Stormgift))
     [SID_Stormgift] = {
         .desc = MSG_SKILL_Stormgift,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_Stormgift,
     },
 #endif
 
 #if (defined(SID_StormgiftPlus) && COMMON_SKILL_VALID(SID_StormgiftPlus))
     [SID_StormgiftPlus] = {
         .desc = MSG_SKILL_StormgiftPlus,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_StormgiftPlus,
     },
 #endif
 
@@ -4226,7 +4226,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_LimitBreaker] = {
 
         .desc = MSG_SKILL_LimitBreaker,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_LimitBreaker,
     },
 #endif
 
@@ -4234,7 +4234,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     [SID_LimitBreakerPlus] = {
 
         .desc = MSG_SKILL_LimitBreakerPlus,
-        .icon = GFX_SkillIcon_WIP,
+        .icon = GFX_SkillIcon_LimitBreakerPlus,
     },
 #endif
 

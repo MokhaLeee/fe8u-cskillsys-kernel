@@ -285,7 +285,8 @@ static const EventScr EventScr_Beginning[] = {
     // GIVE_SKILL_SCROLL_TO(SID_GoddessDance, CHARACTER_EIRIKA)
     // UseArrowTrap(0, 1, 2)
     ASMC(SetGameOptions)
-    // ADD_TRAP_CUSTOM(5, 1, 1)
+    ADD_TRAP_EVENT(1, 1, TRAP_LIGHT_RUNE, TERRAIN_TILE_00) // Impassible
+    ADD_TRAP_EVENT(2, 2, TRAP_LIGHT_RUNE, TERRAIN_FOREST)
     ENDA
 };
 

@@ -37,6 +37,7 @@
  */
 #define KernelMagicSize 0x10
 #define KernelRelocSize 0x400
+/* It seems manual expansion of this is necessary at times to prevent assertion errors that result from too little free space to install the required data */
 #define KernelDataSize  0xED5E0 // Original size: 0xCD5E0
 #define MsgTableSize    0x800C
 

@@ -4,20 +4,27 @@
 /**
  * Injections
  */
-StandingMapSprite(DemoSMS_RoyLord, MapSprite16x16, RoyLord_Standing)
-MovingMapSprite(EphraimLord, RoyLord_Ap, RoyLord_Moving)
+// StandingMapSprite(DemoSMS_RoyLord, MapSprite16x16, RoyLord_Standing)
+// MovingMapSprite(EphraimLord, RoyLord_Ap, RoyLord_Moving)
+
+StandingMapSprite(ForestTileSpriteID, MapSprite16x16, ForestTile_Standing)
 
 /**
  * Objects
  */
-ALIGN 4
-RoyLord_Standing:
-	#incbin "Source/RoyLord_Standing.4bpp.lz"
+// ALIGN 4
+// RoyLord_Standing:
+// 	#incbin "Source/RoyLord_Standing.4bpp.lz"
+
+// ALIGN 4
+// RoyLord_Ap:
+// 	#incbin "Source/RoyLord_Ap.romtcs.ap.bin"
+
+// ALIGN 4
+// RoyLord_Moving:
+// 	#incbin "Source/RoyLord_Moving.4bpp.lz"
+
 
 ALIGN 4
-RoyLord_Ap:
-	#incbin "Source/RoyLord_Ap.romtcs.ap.bin"
-
-ALIGN 4
-RoyLord_Moving:
-	#incbin "Source/RoyLord_Moving.4bpp.lz"
+ForestTile_Standing:
+	#incbin "Source/ForestTile_Standing.4bpp.lz"

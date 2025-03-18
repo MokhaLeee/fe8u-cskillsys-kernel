@@ -192,7 +192,7 @@
  * 
  * Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
  */
-// #define CONFIG_INSTALL_PREPS_AUGURY
+#define CONFIG_INSTALL_PREPS_AUGURY
 
 /**
  * By Tequila

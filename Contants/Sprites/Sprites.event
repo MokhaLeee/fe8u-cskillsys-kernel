@@ -9,3 +9,8 @@ PUSH
     BYTE DemoSMS_RoyLord
 POP
 #endif /* CONFIG_USE_DEBUG */
+
+PUSH
+    ORG 0x809432 // Count 6 ahead from the start point of each class index
+    BYTE ForestTileSpriteID
+POP

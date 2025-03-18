@@ -45,7 +45,7 @@ PUSH
     PROTECT 0x00026C1C 0x00026F2C // TornOutUnitSprite
     ORG 0x0272D0
     POIN StandingMapSpriteTable
-    PROTECT 0x000271A0 0x0002736C // RefreshUnitSprites
+    // PROTECT 0x000271A0 0x0002736C // RefreshUnitSprites
     ORG 0x027BB0
     POIN StandingMapSpriteTable
     PROTECT 0x00027B60 0x00027C48 // PutUnitSprite
