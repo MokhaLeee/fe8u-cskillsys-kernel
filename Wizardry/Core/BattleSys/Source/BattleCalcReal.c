@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "battle-system.h"
 #include "skill-system.h"
 #include "combat-art.h"
 #include "strmag.h"
@@ -103,8 +104,13 @@ void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit *attacker, struct Bat
 			attacker->battleEffectiveCritRate = 0;
 		}
 
+#ifdef CHAX
+		if (attacker->weaponAttributes & IA_NEGATE_DEFENSE)
+			defender->battleDefense = GetDefenderNegatedDefense(attacker, defender);
+#else
 		if (attacker->weaponAttributes & IA_NEGATE_DEFENSE)
 			defender->battleDefense = 0;
+#endif
 
 #ifdef CHAX
 		if (GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_PETRIFY || GetUnitStatusIndex(&defender->unit) == UNIT_STATUS_13)

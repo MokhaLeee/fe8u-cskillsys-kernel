@@ -60,6 +60,8 @@ void ShrinkConvoyItemList(void)
 	u16 *bufferIt = buffer;
 	u16 *convoy = GetConvoyItemArray();
 
+	WARN_GENERIC_BUF_USED;
+
 	ClearSupplyItemsExt(buffer);
 
 #if CHAX
@@ -77,6 +79,8 @@ void ShrinkConvoyItemList(void)
 
 	ClearSupplyItems();
 	memcpy(GetConvoyItemArray(), buffer, sExpaConvoyItemAmount * sizeof(u16));
+
+	WARN_GENERIC_BUF_RELEASED;
 }
 
 LYN_REPLACE_CHECK(GetConvoyItemCount);

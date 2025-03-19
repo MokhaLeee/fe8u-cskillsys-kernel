@@ -43,6 +43,8 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 
 	u8 *tmpbuf = gGenericBuffer;
 
+	WARN_GENERIC_BUF_USED;
+
 	CpuFastFill16(0, tmpbuf, 0x100);
 
 	if (conf1) {
@@ -99,6 +101,7 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 			list->wmags[list->wmag_cnt++] = i;
 	}
 
+	WARN_GENERIC_BUF_RELEASED;
 	WriteUnitList(unit, &list->header);
 }
 

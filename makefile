@@ -357,18 +357,18 @@ CLEAN_FILES += Patches/combo.skills_item.txt
 CHAX_SYM := $(FE8_CHX:.gba=.sym)
 CHAX_REFS := $(FE8_CHX:.gba=.ref.s)
 CHAX_REFE := $(FE8_CHX:.gba=.ref.event)
-CHAX_DIFF := $(FE8_CHX:.gba=.bsdiff)
+CHAX_NUPS := $(FE8_CHX:.gba=.ups)
 
 SKILL_INFO_DOC := ./docs/SkillInfo.md
 
-post_chax: $(CHAX_DIFF) # $(SKILL_INFO_DOC)
+post_chax: $(CHAX_NUPS) # $(SKILL_INFO_DOC)
 skill_info: $(SKILL_INFO_DOC)
 
 $(SKILL_INFO_DOC): $(SKILLS_ENUM_SRC) $(GFX_SOURCES) $(TEXT_SOURCE) Data/SkillSys/SkillInfo.c
 	@echo "[GEN]	$(SKILL_INFO_DOC)"
 	@python3 $(TOOL_DIR)/scripts/dump_skill_info.py > $(SKILL_INFO_DOC)
 
-$(CHAX_DIFF): $(FE8_CHX)
+$(CHAX_NUPS): $(FE8_CHX)
 	@echo "[SEC]	Lyn-jump detection..."
 	@$(LYN_DETECTOR) || exit 1
 	@echo "[SEC]	Lyn-jump detection passed"
@@ -393,15 +393,15 @@ ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 	@nm $(EXT_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
 	@nm $(RAM_REF:.s=.o) | python3 $(TOOL_DIR)/scripts/nm2sym.py >> $(CHAX_SYM)
 
-	@echo "[GEN]	$(CHAX_DIFF)"
-	@bsdiff $(FE8_GBA) $(FE8_CHX) $(CHAX_DIFF)
+	@echo "[GEN]	$(CHAX_NUPS)"
+	@python3 $(TOOL_DIR)/scripts/ups.py make $(FE8_GBA) $(FE8_CHX) $(CHAX_NUPS)
 endif
 
 	@cat $(FE8_SYM) >> $(CHAX_SYM)
 	@cat $(CHAX_SYM) | python3 $(TOOL_DIR)/scripts/sym_modify.py | sponge $(CHAX_SYM)
 	@echo "Done!"
 
-CLEAN_FILES += $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_DIFF)
+CLEAN_FILES += $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_NUPS)
 
 # =============
 # = PRE-BUILD =

@@ -41,6 +41,13 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	u8 *tmp_list = gGenericBuffer;
 
 	memset(list, 0, sizeof(*list));
+
+	if (!UNIT_IS_VALID(unit)) {
+		WriteUnitList(unit, &list->header);
+		return;
+	}
+
+	WARN_GENERIC_BUF_USED;
 	memset(tmp_list, 0, MAX_SKILL_NUM + 1);
 
 	/* person */
@@ -91,6 +98,7 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	if (gpExternalSkillListGenerator)
 		gpExternalSkillListGenerator(unit, list, tmp_list);
 
+	WARN_GENERIC_BUF_RELEASED;
 	WriteUnitList(unit, &list->header);
 
 	#undef ADD_LIST

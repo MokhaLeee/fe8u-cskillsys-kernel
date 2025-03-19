@@ -88,7 +88,7 @@ STATIC_DECLAR void UpdateUnitFromBattleVanilla(struct Unit *unit, struct BattleU
 	tmp = GetBattleUnitUpdatedWeaponExp(bu);
 
 	if (tmp > 0)
-		unit->ranks[bu->weaponType] = tmp;
+		UNIT_WRANK(unit, bu->weaponType) = tmp;
 
 	for (tmp = 0; tmp < UNIT_ITEM_COUNT; ++tmp)
 		unit->items[tmp] = bu->unit.items[tmp];

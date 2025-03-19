@@ -25,3 +25,15 @@ Reorg[.][X]
 ## MSG_ItemSubOption_Reorganize_DESC
 Reorganize this item to[.][LF]
 the top of inventory.[.][X]
+
+## MSG_AVO
+Avo[X]
+
+## MSG_CRT
+Crt[X]
+
+## MSG_DOG
+Dog[X]
+
+## MSG_SILENCER
+Silence[X]

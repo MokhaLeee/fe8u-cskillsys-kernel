@@ -53,6 +53,7 @@ extern const u8 pr_SetHPClassLimitJudgement[];
 
 struct UnitMaxStatusConfig {
 	s8 hp, mag, pow, skl, spd, def, res, lck, con, mov;
+	u8 _pad_[2];
 };
 
 extern const struct UnitMaxStatusConfig gUnitMaxStatusConfigTable[0x100];

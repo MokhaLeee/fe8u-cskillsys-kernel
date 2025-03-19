@@ -120,6 +120,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Width of submenu after typing "Skills" option in action menu.
 
+- `wrank_bonux_rtext_auto_gen`
+
+	Display weapon rank battle bonus info in statscreen if it holds.
+
 ## Designer config battle
 
 ![image](./gfx/SystemConfig2.png)

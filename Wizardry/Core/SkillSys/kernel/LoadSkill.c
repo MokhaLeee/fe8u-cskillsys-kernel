@@ -14,6 +14,8 @@ STATIC_DECLAR void SortRamSkillList(struct Unit *unit)
 	u8 *list = UNIT_RAM_SKILLS(unit);
 	u8 *buf = gGenericBuffer;
 
+	WARN_GENERIC_BUF_USED;
+
 	memset(buf, 0, UNIT_RAM_SKILLS_LEN);
 
 	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
@@ -21,6 +23,8 @@ STATIC_DECLAR void SortRamSkillList(struct Unit *unit)
 			buf[cnt++] = list[i];
 
 	memcpy(list, buf, UNIT_RAM_SKILLS_LEN);
+
+	WARN_GENERIC_BUF_RELEASED;
 }
 
 inline int GetSkillSlot(struct Unit *unit, int sid)

@@ -4,6 +4,9 @@
 #include "event-rework.h"
 #include "constants/skills.h"
 
+extern const EventScr TestEvent_SetDebuff[];
+extern const EventScr TestEvent_ClearDebuff[];
+
 /**
  * Udefs
  */
@@ -558,6 +561,9 @@ static const EventScr EventScr_Beginning[] = {
 
 	SVAL(EVT_SLOT_1, 23)
 	SET_HP(CHARACTER_EPHRAIM)
+
+	CALL(TestEvent_SetDebuff)
+	CALL(TestEvent_ClearDebuff)
 
 	NoFade
 	ENDA

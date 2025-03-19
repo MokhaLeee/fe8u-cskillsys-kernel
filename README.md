@@ -4,9 +4,8 @@
 
 Modern CHAX for FE8U-SkillSystem.
 
-As now c-skillsys has been maintained as community project, please goto [here](https://github.com/FireEmblemUniverse/fe8u-cskillsys) to get latest update and release.
+- [**User manual**](./docs/Abstract.md)
 
-- [Abstarct](./docs/Abstract.md)
 - [Community discussion on FEUniverse](https://feuniverse.us/t/fe8-modern-c-skillsystem-release/24614)
 - [Contributing note](./docs/CONTRIBUTING.md)
 
@@ -35,7 +34,7 @@ git clone https://github.com/MokhaLeee/check_patch.git
 sudo apt-get -y install binutils-arm-none-eabi ctags \
 	gcc-arm-none-eabi build-essential cmake re2c ghc \
 	cabal-install libghc-vector-dev libghc-juicypixels-dev \
-	python3-pip pkg-config libpng* bsdiff moreutils perl
+	python3-pip pkg-config libpng* moreutils perl
 
 pip install pyelftools PyInstaller tmx six Pillow
 

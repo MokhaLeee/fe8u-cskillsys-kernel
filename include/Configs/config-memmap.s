@@ -74,14 +74,16 @@ _kernel_malloc sGaidenMagicListObj, 0x24
 _kernel_malloc gpActorShileInfo, 4
 _kernel_malloc gpTargetShileInfo, 4
 _kernel_malloc sShileldInfoCache, 0x14 * 4
-_kernel_malloc sShileldInfoNext, 4 @ 1 byte only
 _kernel_malloc sPopupSkillStack, 0x10
-
-/* u8 x4 to share one u32 */
+_kernel_malloc gPlayStExpa, 0x10
+_kernel_malloc sShileldInfoNext, 1
+_kernel_malloc GenericBufferUsedFlag, 1
 _kernel_malloc sKernelHookSkippingFlag, 1
 _kernel_malloc sAnimNumberSlot, 1
 _kernel_malloc sStatDebuffMsgBufNext, 1
 _kernel_malloc gKonamiComboStep, 1
+
+_kernel_malloc _kernel_malloc_align4_pad, 2
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

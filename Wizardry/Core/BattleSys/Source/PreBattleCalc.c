@@ -14,32 +14,6 @@ typedef void (*PreBattleCalcFunc) (struct BattleUnit *buA, struct BattleUnit *bu
 extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit *defender);
 
-STATIC_DECLAR bool CheckSRankBattle(struct BattleUnit *bu)
-{
-	int wtype;
-
-	wtype = GetItemType(bu->weapon);
-	switch (wtype) {
-	case ITYPE_SWORD:
-	case ITYPE_LANCE:
-	case ITYPE_AXE:
-	case ITYPE_BOW:
-	case ITYPE_STAFF:
-	case ITYPE_ANIMA:
-	case ITYPE_LIGHT:
-	case ITYPE_DARK:
-		/* Avoid potential overflow */
-		if (bu->unit.ranks[wtype] >= WPN_EXP_S)
-			return true;
-
-		break;
-
-	default:
-		break;
-	}
-	return false;
-}
-
 LYN_REPLACE_CHECK(ComputeBattleUnitSpeed);
 void ComputeBattleUnitSpeed(struct BattleUnit *bu)
 {
@@ -52,9 +26,6 @@ void ComputeBattleUnitSpeed(struct BattleUnit *bu)
 
 	wt -= con;
 	if (wt < 0)
-		wt = 0;
-
-	if (CheckSRankBattle(bu))
 		wt = 0;
 
 	bu->battleSpeed = bu->unit.spd - wt;
@@ -88,9 +59,6 @@ void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *def
 		status = status + UNIT_MAG(&attacker->unit);
 	else
 		status = status + attacker->unit.pow;
-
-	if (CheckSRankBattle(attacker))
-		status = status + 1;
 
 	attacker->battleAttack = status;
 }
@@ -190,14 +158,18 @@ void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
 	attacker->battleSilencerRate = 0;
 
 	st = BattleUnitOriginalStatus(attacker);
-	st->atk = attacker->battleAttack;
-	st->def = attacker->battleDefense;
-	st->as = attacker->battleSpeed;
-	st->hit = attacker->battleHitRate;
-	st->avo = attacker->battleAvoidRate;
-	st->crit = attacker->battleCritRate;
-	st->dodge = attacker->battleDodgeRate;
-	st->silencer = attacker->battleSilencerRate;
+	if (UNIT_IS_VALID(&attacker->unit)) {
+		st->atk = attacker->battleAttack;
+		st->def = attacker->battleDefense;
+		st->as = attacker->battleSpeed;
+		st->hit = attacker->battleHitRate;
+		st->avo = attacker->battleAvoidRate;
+		st->crit = attacker->battleCritRate;
+		st->dodge = attacker->battleDodgeRate;
+		st->silencer = attacker->battleSilencerRate;
+	} else {
+		st->atk = st->def = st->as = st->hit = st->avo = st->crit = st->dodge = st->silencer = 0;
+	}
 }
 
 void PreBattleCalcEnd(struct BattleUnit *attacker, struct BattleUnit *defender)

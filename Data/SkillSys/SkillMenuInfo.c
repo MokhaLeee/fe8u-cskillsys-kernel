@@ -318,4 +318,19 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 		.onSwitchOut = NULL,
 	},
 #endif
+
+#if (defined(SID_DivineReprieve) && COMMON_SKILL_VALID(SID_DivineReprieve))
+	[SID_DivineReprieve] = {
+		.name = "　神裁の恩寵",
+		.nameMsgId = MSG_MenuSkill_DivineReprieveMenuName,
+		.helpMsgId = MSG_MenuSkill_DivineReprieve_DESC,
+		.color = TEXT_COLOR_SYSTEM_WHITE,
+		.isAvailable = DivineReprieve_Usability,
+		.onDraw = NULL,
+		.onSelected = DivineReprieve_OnSelected,
+		.onIdle = NULL,
+		.onSwitchIn = NULL,
+		.onSwitchOut = NULL,
+	},
+#endif
 };

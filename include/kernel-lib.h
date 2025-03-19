@@ -34,6 +34,9 @@ struct KernelDesigerConfig {
 	u8 auto_narrow_font;
 
 	u8 skill_sub_menu_width;
+
+	// auto generate rtext for weapon rank bonus in statscreen
+	u8 wrank_bonux_rtext_auto_gen;
 };
 
 struct KernelBattleDesignerConfig {
@@ -249,3 +252,8 @@ enum BattleStatusIdxRef {
 
 	BATTLE_STATUS_MAX
 };
+
+/**
+ * unit.c
+ */
+#define UNIT_WRANK(unit, wtype) ((unit)->ranks[wtype])

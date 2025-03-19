@@ -25,7 +25,7 @@
 	#define Fatalf(format, ...) LogFatalf("(%s): "format, __func__, __VA_ARGS__)
 	#define Error(string)       LogErrorf("(%s): %s", __func__, string)
 	#define Errorf(format, ...) LogErrorf("(%s): "format, __func__, __VA_ARGS__)
-	#define Assert(condition)   if (!(condition)) { Fatal("Assertion failed: " #condition); }
+	#define Assert(condition)   do { if (!(condition)) { Fatal("Assertion failed: " #condition); }} while (0)
 #else
 	#define Fatal(string)
 	#define Fatalf(format, ...)
@@ -67,3 +67,24 @@
  */
 #define FPrint(string)       LogPrintf("(%s): %s", __func__, string)
 #define FPrintf(format, ...) LogPrintf("(%s): "format, __func__, __VA_ARGS__)
+
+/**
+ * Misc
+ */
+extern u8 GenericBufferUsedFlag;
+
+#define WARN_GENERIC_BUF_USED \
+do { \
+	GenericBufferUsedFlag = 1; \
+	if (CONFIG_DEBUG_ON_USING_GENERIC_BUFFER) { \
+		Warn("Generic buffer used"); \
+	} \
+} while (0)
+
+#define WARN_GENERIC_BUF_RELEASED \
+do { \
+	GenericBufferUsedFlag = 0; \
+	if (CONFIG_DEBUG_ON_USING_GENERIC_BUFFER) { \
+		Warn("Generic buffer released"); \
+	} \
+} while (0)

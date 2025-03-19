@@ -25,12 +25,17 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 	u8 *tmp_list = gGenericBuffer;
 	struct SkillList *slist;
 
-	CpuFill16(0, tmp_list, 0x100);
-
 	LTRACEF("uid=0x%02X, pid=0x%02X, item=0x%04X", unit->index & 0xFF, UNIT_CHAR_ID(unit), item);
 
 	/* Skill table */
 	slist = GetUnitSkillList(unit);
+
+	/**
+	 * It may also touch tmp list in skill list generator
+	 */
+	WARN_GENERIC_BUF_USED;
+	CpuFill16(0, tmp_list, 0x100);
+
 	if (slist)
 		for (i = 0; i < slist->amt; i++)
 			APPEND_TMPLIST(gpCombatArtSkillTable[slist->sid[i]]);
@@ -84,6 +89,8 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 		if (sCombatArtList.amt >= COMBART_LIST_MAX_AMT)
 			break;
 	}
+
+	WARN_GENERIC_BUF_RELEASED;
 
 	#undef APPEND_TMPLIST
 }

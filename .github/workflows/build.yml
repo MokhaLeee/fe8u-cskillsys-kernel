@@ -18,12 +18,21 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Restore cached files
+      uses: actions/cache@v4
+      with:
+        path: |
+          Tools/FE-PyTools
+          Tools/EventAssembler
+          encrypt_0x55_fe8u.bin
+        key: cache-${{ runner.os }}-${{ hashFiles('dependencies.lock') }}
+
     - name: Install deps
       run: |
         sudo apt-get update
         sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake
         sudo apt-get install -y re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
-        sudo apt-get install -y python3-pip pkg-config libpng* bsdiff moreutils
+        sudo apt-get install -y python3-pip pkg-config libpng* moreutils
         python3 -m pip install --upgrade pip
         python3 -m pip install pyelftools PyInstaller tmx six Pillow
 
@@ -40,8 +49,10 @@ jobs:
     - name: Install submodules
       run: |
         git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git Tools/FE-CLib-Mokha
-        git clone https://github.com/StanHash/FE-PyTools.git --recursive Tools/FE-PyTools
-        git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix Tools/EventAssembler
+
+        if [ ! -d Tools/FE-PyTools/ ]; then
+          git clone https://github.com/StanHash/FE-PyTools.git --recursive Tools/FE-PyTools
+        fi
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -50,10 +61,17 @@ jobs:
 
     - name: Build EA
       run: |
-        cd Tools/EventAssembler && ./build.sh && cd ../..
+        if [ ! -d Tools/EventAssembler/ ]; then
+          git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix Tools/EventAssembler
+          cd Tools/EventAssembler && ./build.sh && cd ../..
+        fi
 
     - name: Fake generate baserom
-      run: head -c 16M /dev/urandom > fe8.gba
+      run: |
+        if [ ! -e encrypt_0x55_fe8u.bin ]; then
+          wget https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci_/encrypt_0x55_fe8u.bin
+        fi
+        python3 Tools/scripts/encrypt/decrypt.py encrypt_0x55_fe8u.bin fe8.gba 0x55
 
     - name: Debug remove skill build
       run: make -j CONFIG_CI_NO_SKILL_TEST=1
@@ -66,13 +84,13 @@ jobs:
 
     - name: post build
       run: |
-        echo "build_time=$(date +"%Y%m%d.%H")" >> $GITHUB_ENV
+        echo "BUILD_TIME=$(date +"%Y%m%d.%H")" >> $GITHUB_ENV
         ./Tools/scripts/generate_release.sh
         rm -f .release_dir/*.gba
 
     - uses: actions/upload-artifact@v4.3.5
       with:
-        name: ${{ github.event.repository.name }}_${{ env.BUILD_TIME }}
+        name: ${{ github.event.repository.name }}-${{ env.BUILD_TIME }}
         path: |
           .release_dir/*
         retention-days: 1

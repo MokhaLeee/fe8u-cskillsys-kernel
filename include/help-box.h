@@ -5,7 +5,8 @@
 /* Hack */
 enum NewHelpBoxType {
 	NEW_HB_DEFAULT = 0,
-	NEW_HB_COMBAT_ART_BKSEL = 1,
+	NEW_HB_COMBAT_ART_BKSEL,
+	NEW_HB_WRANK_STATSCREEN,
 };
 extern int sHelpBoxType;
 

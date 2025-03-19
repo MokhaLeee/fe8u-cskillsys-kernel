@@ -107,9 +107,9 @@ struct FebListEnt {
 };
 
 #define JOB_SKILL_LEVEL_PROMOTE 0xFF
-#define JOB_SKILL_LEVEL_CONFIG(level, config) (((level) & 0x1F))
-#define LOAD_JOB_SKILL_CONFIG(level_config)  ((level_config) & 0xE0)
-#define LOAD_JOB_SKILL_LEVEL(level_config)   ((level_config) & 0x1F)
+#define JOB_SKILL_LEVEL_CONFIG(__level, __config) (((__level) & 0x1F) | (__config))
+#define LOAD_JOB_SKILL_CONFIG(__level_config)  ((__level_config) & 0xE0)
+#define LOAD_JOB_SKILL_LEVEL(__level_config)   ((__level_config) & 0x1F)
 #define LOAD_JOB_SKILL_CONFIG_NONE           (0 << 5)
 #define LOAD_JOB_SKILL_CONFIG_PLAYER_ONLY    (1 << 5)
 #define LOAD_JOB_SKILL_CONFIG_ENEMY_ONLY     (2 << 5)
@@ -341,6 +341,9 @@ u8 Swarp_Usability(const struct MenuItemDef *def, int number);
 u8 Swarp_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 u8 Blacksmith_Usability(const struct MenuItemDef *def, int number);
 u8 Blacksmith_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 DivineReprieve_Usability(const struct MenuItemDef *def, int number);
+u8 DivineReprieve_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+bool Action_DivineReprieve(ProcPtr parent);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);

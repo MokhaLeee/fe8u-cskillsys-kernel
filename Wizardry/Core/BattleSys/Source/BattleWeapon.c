@@ -320,7 +320,7 @@ s8 CanUnitUseWeapon(struct Unit *unit, int item)
 	}
 #endif
 
-	return (unit->ranks[GetItemType(item)] >= GetItemRequiredExp(item)) ? true : false;
+	return (UNIT_WRANK(unit, GetItemType(item)) >= GetItemRequiredExp(item)) ? true : false;
 }
 
 int GetWeaponCost(struct BattleUnit *bu, u16 item)

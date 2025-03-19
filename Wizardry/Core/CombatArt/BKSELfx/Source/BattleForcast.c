@@ -81,12 +81,30 @@ STATIC_DECLAR void BKSELfxUpdateSprits(struct BattleForecastProc *proc)
 	BKSELfxUpdateAoeSprits(proc);
 }
 
+STATIC_DECLAR bool CanDisplayCombartArrow(void)
+{
+	switch (gPlaySt.chapterWeatherId) {
+	case WEATHER_SNOWSTORM:
+	case WEATHER_SANDSTORM:
+	case WEATHER_FLAMES:
+		return false;
+
+	default:
+		break;
+	}
+
+	return true;
+}
+
 /* External jump */
 void BattleForecast_InitRework(struct BattleForecastProc *proc)
 {
 	/* Vanilla */
 	BattleForecast_Init(proc);
 	StartGreenText(proc);
+
+	if (!CanDisplayCombartArrow())
+		return;
 
 	if (CanUnitPlayCombatArt(gActiveUnit, GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex))) {
 		sCombatArtBKSELfxTimer = 0;

@@ -176,4 +176,8 @@ gpPromotPopupConfigs: POIN gPromotPopupConfigs
 gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
 gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
 
+gpNegateDefConf: POIN gNegateDefConf
+gpWrankBonusConf: POIN gWrankBonusConf
+gpWrankRtextConf: POIN gWrankRtextConf
+
 KERNEL_RELOC_END:

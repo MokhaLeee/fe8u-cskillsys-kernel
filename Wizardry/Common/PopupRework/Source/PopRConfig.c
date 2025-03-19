@@ -47,7 +47,7 @@ STATIC_DECLAR bool PopR_SetupBattleWRankUp(void)
 
 STATIC_DECLAR bool PopR_SetupPromotionWRankUpByWType(int wtype)
 {
-	if (gpEkrBattleUnitRight->unit.ranks[wtype] == 0 && gpEkrBattleUnitLeft->unit.ranks[wtype] != 0) {
+	if (UNIT_WRANK(&gpEkrBattleUnitRight->unit, wtype) == 0 && UNIT_WRANK(&gpEkrBattleUnitLeft->unit, wtype) != 0) {
 		SetPopupItem(wtype);
 		return true;
 	}

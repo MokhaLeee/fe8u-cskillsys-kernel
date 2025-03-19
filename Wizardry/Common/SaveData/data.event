@@ -50,6 +50,8 @@ gEmsSavChunks:
     EmsChunk($00B0, $0A31E4+1, $0A326C+1, EMS_CHUNK_CONVOYITEMS)      /* Supply */
 #endif
 
+    EmsChunk($0010, EMS_SavePlayStExpa, EMS_LoadPlayStExpa)
+
     /* 51 * 0x2C */
     EmsChunk($08C4, MSA_SaveUnits, MSA_LoadUnits, EMS_CHUNK_SAVEUNITS)
 
@@ -81,6 +83,8 @@ gEmsSusChunks:
     EmsChunk($00B0, $0A31E4+1, $0A326C+1, EMS_CHUNK_CONVOYITEMS) /* Supply */
 #endif
 
+    EmsChunk($0010, EMS_SavePlayStExpa, EMS_LoadPlayStExpa)
+
     EmsChunk(51 * 0x34, MSU_SaveBlueUnits,  MSU_LoadBlueUnits, EMS_CHUNK_SAVEUNITS)
     EmsChunk(50 * 0x34, MSU_SaveRedUnits,   MSU_LoadRedUnits)
     EmsChunk(8  * 0x34, MSU_SaveGreenUnits, MSU_LoadGreenUnits)
@@ -101,5 +105,6 @@ gEmsSusChunks:
 ALIGN 4
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
+    POIN NewGame_InitPlayStExpa
     POIN ResetStatDeuffBuf
     WORD 0 0 0 0

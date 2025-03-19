@@ -4,7 +4,7 @@
 
 You can choose from the following options:
 
-1. LTS release version only: download [the latest FEBuilder release (Laqieer branch)](https://github.com/laqieer/FEBuilderGBA/releases/tag/ver_20240912.11) and install C-SkillSys in **Patches** form.
+1. LTS release version only: download [the latest FEBuilder release (Laqieer branch)](https://nightly.link/laqieer/FEBuilderGBA/workflows/msbuild/master) and install C-SkillSys in **Patches** form.
 
 2. Release version only: Download UPS or EA buildfile from [release page](https://github.com/FireEmblemUniverse/fe8u-cskillsys/releases), and install the patch to your ROM.
 
@@ -16,6 +16,7 @@ You can choose from the following options:
 > [!WARNING]
 > 1. It is only recommanded to install C-SkillSys to a clean FE8 rom.
 > 2. Please see [Limitations](./Limitations.md) doc before you want to do any futher hacks.
+> 3. If you use the 2nd or 3rd solution, please manually place the completed Patches directory into the FEB directory: `FEBuilderGBA\config\patch2\FE8U`.
 
 ## Skill
 

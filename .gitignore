@@ -9,7 +9,7 @@ install-devkitpro-pacman
 *.sym
 *.ref.s
 *.ref.event
-*.bsdiff
+*.ups
 
 # Tools
 Tools/EventAssembler/

@@ -511,6 +511,7 @@
 ![image](gfx/SkillIcon_Stride.png) | Stride |  Increase the movement of all allies within 3 tiles by 3. |
 ![image](gfx/SkillIcon_Blacksmith.png) | Blacksmith |  Pay 1000 gold to restore the user's equipped weapon, if from armory and C rank or less. |
 ![image](gfx/SkillIcon_Latona.png) | Latona |  Unit can use holly W.Mag: Latona. |
+![image](gfx/SkillIcon_DivineReprieve.png) | DivineReprieve |  Once per chapter, immediately start next player phase. |
 ![image](gfx/SkillIcon_COMBAT_Galeforce.png) | COMBAT_Galeforce |  Art: ATK +3, Move again after defeating enemy. |
 ![image](gfx/SkillIcon_COMBAT_Gamble.png) | COMBAT_Gamble |  Art: A reckless attack with halved hit but doubled crit. |
 ![image](gfx/SkillIcon_COMBAT_Detonate.png) | COMBAT_Detonate |  Art: Strike a powerful pierced blow by sacrificing own weapon |

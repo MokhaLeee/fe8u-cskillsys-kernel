@@ -25,7 +25,7 @@ int GetUnitJobBasedDefGrowth(struct Unit *unit);
 int GetUnitJobBasedResGrowth(struct Unit *unit);
 
 /* Job growth */
-struct JobGrowthEnt { s8 st[UNIT_STATUS_MAX]; };
+struct JobGrowthEnt { s8 st[UNIT_STATUS_MAX - 1]; };
 // extern struct JobGrowthEnt const gJobGrowthList[0x100];
 extern struct JobGrowthEnt const *const gpJobGrowthList;
 

@@ -1,0 +1,31 @@
+/**
+ * If multiple modification points simultaneously touch the same protected area,
+ * place all of them here.
+ *
+ * This file needs to be included at the earliest stage.
+ */
+
+#ifdef CONFIG_COMMON_PROTECTION_ENBALED
+PUSH
+	// player phase
+	ORG $59ABE0
+	PROC_JUMP(ProcScr_PostActionHookPlayPhase)
+	ORG 0x59AB2C
+	POIN PlayerPhase_HandleAutoEndRework
+	ORG 0x59ACD8
+	PROC_CALL_ROUTINE_2(EndTurnHook_PlayerPhase)
+	PROTECT 0x0059AAD8 0x0059ACE8 // gProcScr_PlayerPhase
+
+	// ai phase
+	ORG 0x5A7F14
+	POIN AiPhaseInitRework
+	ORG 0x5A7F20
+	PROC_CALL_ROUTINE_2(EndTurnHook_AiPhase)
+	PROTECT 0x005A7F08 0x005A7F30 // gProcScr_CpPhase
+
+	// ai perform
+	ORG $5A8074
+	PROC_JUMP(ProcScr_PostActionHookCpPerform)
+	PROTECT 0x005A8024 0x005A80A4 // gProcScr_CpPerform
+POP
+#endif /* COMMON_PROTECTION_ENBALED */

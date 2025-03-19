@@ -1,0 +1,14 @@
+#include "Source/LynJump.event"
+#include "Source/DivineReprieve.lyn.event"
+
+PUSH
+#ifndef CONFIG_COMMON_PROTECTION_ENBALED
+    ORG 0x59AB2C
+    POIN PlayerPhase_HandleAutoEndRework
+    PROTECT 0x0059AAD8 0x0059ACE8 // gProcScr_PlayerPhase
+
+    ORG 0x5A7F14
+    POIN AiPhaseInitRework
+    PROTECT 0x005A7F08 0x005A7F30 // gProcScr_CpPhase
+#endif // COMMON_PROTECTION_ENBALED
+POP
