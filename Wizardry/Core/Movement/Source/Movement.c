@@ -259,11 +259,13 @@ void GenerateMovementMap(int x, int y, int movement, int uid)
 	gMovMapFillState.dst->connexion = 4;
 
 #if CHAX
+	WARN_GENERIC_BUF_USED;
 	PreGenerateMovementMap(movement);
 	SetWorkingBmMap(working_map);
 #endif
 
 	CallARM_FillMovementMap();
+	WARN_GENERIC_BUF_RELEASED;
 }
 
 void GameInit_RedirectMapFloodFunc(void)

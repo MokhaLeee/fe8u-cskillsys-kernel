@@ -33,6 +33,7 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 	/**
 	 * It may also touch tmp list in skill list generator
 	 */
+	WARN_GENERIC_BUF_USED;
 	CpuFill16(0, tmp_list, 0x100);
 
 	if (slist)
@@ -88,6 +89,8 @@ STATIC_DECLAR void CalcCombatArtListExt(struct Unit *unit, int item)
 		if (sCombatArtList.amt >= COMBART_LIST_MAX_AMT)
 			break;
 	}
+
+	WARN_GENERIC_BUF_RELEASED;
 
 	#undef APPEND_TMPLIST
 }

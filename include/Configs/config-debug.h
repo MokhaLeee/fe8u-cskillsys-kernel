@@ -16,6 +16,9 @@
 
 	#define CONFIG_DEBUG_CHAPTER
 
+	/* Show warnning log when using generic buffer */
+	#define CONFIG_DEBUG_ON_USING_GENERIC_BUFFER 1
+
 #endif /* CONFIG_USE_DEBUG */
 
 #define CONFIG_FORCE_PRIENT_ERROR 1

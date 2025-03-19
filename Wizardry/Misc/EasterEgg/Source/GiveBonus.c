@@ -22,6 +22,8 @@ void GiveKernelBonus(void)
 	int bonus_item = iid_bonus[NextRN_N(ARRAY_COUNT(iid_bonus)) - 1];
 	struct BonusClaimEnt *buf = (void *)gGenericBuffer;
 
+	WARN_GENERIC_BUF_USED;
+
 	ret = LoadBonusContentData(buf);
 	if (ret == false)
 		return;
@@ -45,6 +47,7 @@ void GiveKernelBonus(void)
 		break;
 	}
 	SaveBonusContentData(buf);
+	WARN_GENERIC_BUF_RELEASED;
 }
 
 LYN_REPLACE_CHECK(LoadSavedEid8A);
