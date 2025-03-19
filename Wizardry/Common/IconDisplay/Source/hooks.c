@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "icon-rework.h"
+#include "kernel-lib.h"
 
 LYN_REPLACE_CHECK(GetUnitAidIconId);
 int GetUnitAidIconId(u32 attributes)
@@ -257,7 +258,7 @@ void DisplayWeaponExp(int num, int x, int y, int wtype)
 {
 	int progress, progressMax, color;
 
-	int wexp = gStatScreen.unit->ranks[wtype];
+	int wexp = UNIT_WRANK(gStatScreen.unit, wtype);
 
 	// Display weapon type icon
 	DrawIcon(gUiTmScratchA + TILEMAP_INDEX(x, y),

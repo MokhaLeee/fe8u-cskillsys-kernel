@@ -257,5 +257,3 @@ enum BattleStatusIdxRef {
  * unit.c
  */
 #define UNIT_WRANK(unit, wtype) ((unit)->ranks[wtype])
-
-
