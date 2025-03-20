@@ -41,20 +41,15 @@ struct BanimSyncHandler * GetBanimSyncHandler_ComboAtk(struct Anim *anim)
 
 #ifdef CONFIG_USE_CHAR_CUSTOM_ANIM
 	/* Port for Individual_animation_ea_2 */
-	extern struct {
-		u8 pid, jid;
-		u8 __pad__[2];
-		void *anim_conf;
-	} const *const gpCustomAnimeTable1;
-
 	int i;
+	const struct IndividualAnimConf *aconf = GetPrIndividualAnimConf();
 
-	for (i = 0; gpCustomAnimeTable1[i].pid != 0 || gpCustomAnimeTable1[i].jid != 0; i++) {
-		u8 pid = gpCustomAnimeTable1[i].pid;
-		u8 jid = gpCustomAnimeTable1[i].jid;
+	for (i = 0; aconf[i].pid != 0 || aconf[i].jid != 0; i++) {
+		u8 pid = aconf[i].pid;
+		u8 jid = aconf[i].jid;
 
 		if (pid == UNIT_CHAR_ID(unit) && jid == UNIT_CLASS_ID(unit)) {
-			gBanimSyncHandler.animdef = gpCustomAnimeTable1[i].anim_conf;
+			gBanimSyncHandler.animdef = aconf[i].anim_conf;
 			break;
 		}
 	}
