@@ -35,7 +35,6 @@ void BattleGenerateComboAtkList(void)
 {
 	struct Unit *unit;
 	u16 item;
-	int range;
 	int range, battle_range;
 	bool melee_combo, melee_attack;
 	int i, cnt = 0;
