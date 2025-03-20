@@ -248,7 +248,7 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	if (CheckBattleSkillActivate(attacker, defender, SID_Aether, attacker->unit.skl)) {
 		gBattleTemporaryFlag.skill_activated_aether = true;
 		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Aether);
-		gDmg.correction += defender->battleDefense * 4 / 5;
+		gDmg.correction += perc_of(defender->battleDefense, SKILL_EFF0(SID_Aether));
 	}
 #endif
 
@@ -256,7 +256,7 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	if (BattleFastSkillTester(attacker, SID_LunarBrace)) {
 		if (&gBattleActor == attacker) {
 			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LunarBrace);
-			gDmg.correction += defender->battleDefense * 1 / 4;
+			gDmg.correction += perc_of(defender->battleDefense, SKILL_EFF0(SID_LunarBrace));
 		}
 	}
 #endif

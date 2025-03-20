@@ -419,6 +419,10 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 	[SID_Aether] = {{ 80 }},
 #endif
 
+#if (defined(SID_LunarBrace) && COMMON_SKILL_VALID(SID_LunarBrace))
+	[SID_LunarBrace] = {{ 25 }},
+#endif
+
 #if (defined(SID_DragonFang) && COMMON_SKILL_VALID(SID_DragonFang))
 	[SID_DragonFang] = {{ 50 }},
 #endif
