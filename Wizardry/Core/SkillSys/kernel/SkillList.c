@@ -119,7 +119,11 @@ int RandSkill(int id, struct Unit * unit)
     }
     const struct CharacterData * table = unit->pCharacterData;
     int noise[4] = { table->number, id, id, table->portraitId };
-    id = (HashByte_Global(id, 0x3FF, noise, 12) + 1);
+    id = (HashByte_Global(id, 0xFF, noise, 12) + 1);
+    if (!gpSkillInfos[id].desc)
+    {
+        id = 0;
+    }
     return id;
 }
 

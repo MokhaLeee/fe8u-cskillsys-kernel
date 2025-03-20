@@ -4,9 +4,9 @@
 // #include "config-debug.h"
 #include "config-memmap.h"
 
-#define CONFIG_FE8_REWRITE
+//#define CONFIG_FE8_REWRITE
 
-//#define CONFIG_FE8SRR
+#define CONFIG_FE8SRR
 
 /**
  * If uncomment, kernel may remove vanilla dislogue text
@@ -19,7 +19,7 @@
  * If you're planning to develop a new game instead of making minor
  * changes on vanilla, it is recommended to uncomment this config to save space.
  */
-#define CONFIG_CROP_VANILLA_MSG
+// #define CONFIG_CROP_VANILLA_MSG
 
 /* If comment, CHAX may not verify on FESKILL magic work in SRAM */
 #define CONFIG_VERIFY_SKILLSYS_SRAM
@@ -192,7 +192,7 @@
  * 
  * Source: https://feuniverse.us/t/huichelaars-assembly-adventures/8229
  */
-#define CONFIG_INSTALL_PREPS_AUGURY
+// #define CONFIG_INSTALL_PREPS_AUGURY
 
 /**
  * By Tequila
@@ -343,7 +343,7 @@
 /*
 ** By Jester
 */
-#define CONFIG_TALK_LEVEL_UP
+// #define CONFIG_TALK_LEVEL_UP
 
 /* 
 ** By Jester
@@ -439,15 +439,15 @@
  * If an enemy kills a unit and they haven't promoted already,
  * then promote them. Sort of like Shiren the Wanderer.
  */
-#define CONFIG_PROMOTE_ENEMIES_IF_KILLED_UNIT
+// #define CONFIG_PROMOTE_ENEMIES_IF_KILLED_UNIT
 
 /**
  * By Jester:
  * Allow units to rescue themselves into allies following the standard CON < AID formula
  */
-#define CONFIG_REFUGE_FEATURE
+// #define CONFIG_REFUGE_FEATURE
 
-#define CONFIG_ESCAPE_EVENT
+// #define CONFIG_ESCAPE_EVENT
 
 /**
  * By Jester
@@ -518,10 +518,12 @@
 */
 // #define CONFIG_CUSTOM_CHAPTER_SCREEN
 
+// #define CONFIG_CUSTOM_GUIDE
+
 /**
  * FE8 Rewritten exclusive configs
  */
-#define SETH_INJURED
-#define INJURED_TURN_COUNT 0
+// #define SETH_INJURED
+// #define INJURED_TURN_COUNT 5
 
 #endif /* CONFIG_INSTALLED */

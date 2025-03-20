@@ -158,7 +158,7 @@ int PowGetterSkills(int status, struct Unit * unit)
     if (SkillTester(unit, SID_Resolve))
     {
         if ((cur_hp * 2) < max_hp)
-            status += _GetUnitPower(unit) / 2;
+            status += status / 2;
     }
 #endif
 

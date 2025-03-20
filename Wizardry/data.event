@@ -4,7 +4,11 @@
 #include "Common/ClassTypes/data.event"
 #include "Common/ChapterInitHook/data.event"
 #include "Common/GameInitHook/data.event"
-#include "Common/Guide/GuideTable.event"
+
+#ifdef CONFIG_CUSTOM_GUIDE
+    #include "Common/Guide/GuideTable.event"
+#endif
+
 #include "Common/IconDisplay/data.event"
 #include "Common/KernelLib/data.event"
 #include "Common/NegativeStatBoosts/data.event"
