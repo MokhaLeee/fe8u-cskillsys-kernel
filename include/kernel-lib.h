@@ -49,8 +49,10 @@ struct KernelBattleDesignerConfig {
 	// AVO deacy indoor for riders
 	u8 rider_debuff_indoor;
 
+	u8 _pad_03;
+
 	// CRIT damage correction rate
-	u8 crit_correction;
+	u16 crit_correction;
 };
 
 extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;
