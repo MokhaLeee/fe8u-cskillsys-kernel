@@ -32,7 +32,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake
         sudo apt-get install -y re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
-        sudo apt-get install -y python3-pip pkg-config libpng* moreutils
+        sudo apt-get install -y python3-pip pkg-config libpng* moreutils unzip
         python3 -m pip install --upgrade pip
         python3 -m pip install pyelftools PyInstaller tmx six Pillow
 
@@ -62,8 +62,9 @@ jobs:
     - name: Build EA
       run: |
         if [ ! -d Tools/EventAssembler/ ]; then
-          git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix Tools/EventAssembler
-          cd Tools/EventAssembler && ./build.sh && cd ../..
+          cd Tools && wget https://github.com/MokhaLeee/EventAssembler/releases/download/prebuild/EventAssembler.zip
+          unzip EventAssembler.zip
+          cd ..
         fi
 
     - name: Fake generate baserom
