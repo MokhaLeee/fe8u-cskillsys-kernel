@@ -1,9 +1,14 @@
 #include "common-chax.h"
 #include "strmag.h"
 
+bool IsMagicAttackAttr(u32 attr)
+{
+	return !!((IA_MAGICDAMAGE | IA_MAGIC) & attr);
+}
+
 bool IsMagicAttack(struct BattleUnit *bu)
 {
-	return !!((IA_MAGICDAMAGE | IA_MAGIC) & bu->weaponAttributes);
+	return IsMagicAttackAttr(bu->weaponAttributes);
 }
 
 int GetUnitMaxMagic(struct Unit *unit)

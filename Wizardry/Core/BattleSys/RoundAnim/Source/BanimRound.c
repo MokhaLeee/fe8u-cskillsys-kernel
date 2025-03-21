@@ -4,6 +4,8 @@
 
 #define LOCAL_TRACE 0
 
+extern u16 const *const gpFarAttackAnimItems;
+
 STATIC_DECLAR const u16 round_types_normal_phy[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_CLOSE]       = ANIM_ROUND_HIT_CLOSE,
 	[EKR_DISTANCE_FAR]         = ANIM_ROUND_NONCRIT_FAR,
@@ -60,6 +62,23 @@ STATIC_DECLAR const u16 defender_round_types_hitted[EKR_DISTANCE_MAX] = {
 	[EKR_DISTANCE_PROMOTION]   = ANIM_ROUND_TAKING_HIT_CLOSE
 };
 
+STATIC_DECLAR bool CheckForceFarAttackAnimItem(int weapon)
+{
+	int i;
+	int iid = ITEM_INDEX(weapon);
+
+	for (i = 0; ; i++) {
+		int ref_item = gpFarAttackAnimItems[i];
+
+		if (ref_item == ITEM_NONE)
+			break;
+
+		if (ref_item == iid)
+			return true;
+	}
+	return false;
+}
+
 LYN_REPLACE_CHECK(ParseBattleHitToBanimCmd);
 void ParseBattleHitToBanimCmd(void)
 {
@@ -100,23 +119,11 @@ void ParseBattleHitToBanimCmd(void)
 
 	distance_modes[POS_L] = distance_modes[POS_R] = gEkrDistanceType;
 	if (gEkrDistanceType == EKR_DISTANCE_CLOSE) {
-		switch (ITEM_INDEX(gpEkrBattleUnitLeft->weaponBefore)) {
-		case ITEM_SWORD_RUNESWORD:
-		case ITEM_AXE_HANDAXE:
-		case ITEM_AXE_TOMAHAWK:
-		case ITEM_AXE_HATCHET:
+		if (CheckForceFarAttackAnimItem(gpEkrBattleUnitLeft->weaponBefore))
 			distance_modes[POS_L] = EKR_DISTANCE_FAR;
-			break;
-		}
 
-		switch (ITEM_INDEX(gpEkrBattleUnitRight->weaponBefore)) {
-		case ITEM_SWORD_RUNESWORD:
-		case ITEM_AXE_HANDAXE:
-		case ITEM_AXE_TOMAHAWK:
-		case ITEM_AXE_HATCHET:
+		if (CheckForceFarAttackAnimItem(gpEkrBattleUnitRight->weaponBefore))
 			distance_modes[POS_R] = EKR_DISTANCE_FAR;
-			break;
-		}
 	}
 
 	gEfxHpLutRe[POS_L + 2 * 0] = gEkrGaugeHp[POS_L];
@@ -128,9 +135,14 @@ void ParseBattleHitToBanimCmd(void)
 		struct BattleHit *hit = prBattleHitArray + i * BattleHitArrayWidth;
 		struct ExtBattleHit *exthit = gExtBattleHitArray + i;
 		u16 *anim_round = gAnimRoundDataRe + i * 2;
+		u16 distance_modes_cur[2];
+		bool magic_attack;
 
 		if (hit->info & BATTLE_HIT_INFO_END)
 			break;
+
+		distance_modes_cur[POS_L] = distance_modes[POS_L];
+		distance_modes_cur[POS_R] = distance_modes[POS_R];
 
 		/**
 		 * Check the current round attacker position.
@@ -151,6 +163,8 @@ void ParseBattleHitToBanimCmd(void)
 			actor = gpEkrBattleUnitRight;
 		}
 
+		magic_attack = IsMagicAttack(actor);
+
 		if (i == 0)
 			gEkrInitialHitSide = attacker_pos;
 
@@ -163,27 +177,27 @@ void ParseBattleHitToBanimCmd(void)
 		 * Attacker round base types
 		 */
 		if (hit->attributes & BATTLE_HIT_ATTR_CRIT) {
-			if (!IsMagicAttack(actor))
-				anim_round[attacker_pos] = round_types_crital_phy[distance_modes[attacker_pos]];
+			if (!magic_attack)
+				anim_round[attacker_pos] = round_types_crital_phy[distance_modes_cur[attacker_pos]];
 			else
-				anim_round[attacker_pos] = round_types_crital_mag[distance_modes[attacker_pos]];
+				anim_round[attacker_pos] = round_types_crital_mag[distance_modes_cur[attacker_pos]];
 		} else {
-			if (!IsMagicAttack(actor))
-				anim_round[attacker_pos] = round_types_normal_phy[distance_modes[attacker_pos]];
+			if (!magic_attack)
+				anim_round[attacker_pos] = round_types_normal_phy[distance_modes_cur[attacker_pos]];
 			else
-				anim_round[attacker_pos] = round_types_normal_mag[distance_modes[attacker_pos]];
+				anim_round[attacker_pos] = round_types_normal_mag[distance_modes_cur[attacker_pos]];
 		}
 
 		/**
 		 * Defender round base types
 		 */
 		if (hit->attributes & BATTLE_HIT_ATTR_MISS) {
-			if (!IsMagicAttack(actor))
-				anim_round[attacker_pos] = round_types_miss_phy[distance_modes[attacker_pos]];
+			if (!magic_attack)
+				anim_round[attacker_pos] = round_types_miss_phy[distance_modes_cur[attacker_pos]];
 
-			anim_round[defender_pos] = defender_round_types_dodge[distance_modes[defender_pos]];
+			anim_round[defender_pos] = defender_round_types_dodge[distance_modes_cur[defender_pos]];
 		} else
-			anim_round[defender_pos] = defender_round_types_hitted[distance_modes[defender_pos]];
+			anim_round[defender_pos] = defender_round_types_hitted[distance_modes_cur[defender_pos]];
 
 #if CHAX
 		/**

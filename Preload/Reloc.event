@@ -183,4 +183,6 @@ gpWrankRtextConf: POIN gWrankRtextConf
 gpCriticalBonus: POIN gCriticalBonus
 gpSilencerBonus: POIN gSilencerBonus
 
+gpFarAttackAnimItems: POIN FarAttackAnimItems
+
 KERNEL_RELOC_END:

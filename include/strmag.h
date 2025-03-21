@@ -20,6 +20,7 @@ extern const struct UnitMagicInfo gMagicJInfos[0x100];
 extern struct UnitMagicInfo const *const gpMagicPInfos;
 extern struct UnitMagicInfo const *const gpMagicJInfos;
 
+bool IsMagicAttackAttr(u32 attr);
 bool IsMagicAttack(struct BattleUnit *bu);
 int GetUnitMaxMagic(struct Unit *unit);
 int GetUnitBaseMagic(struct Unit *unit);

@@ -422,11 +422,6 @@ static void modify_unit_status_post_prep(void)
 {
 	struct Unit *unit;
 
-	unit = GetUnitFromCharId(CHARACTER_EPHRAIM);
-	if (unit) {
-		SetUnitStatus(unit, UNIT_STATUS_POISON);
-	}
-
 	unit = GetUnitFromCharId(CHARACTER_SELENA);
 	if (unit) {
 		SetUnitStatus(unit, UNIT_STATUS_SILENCED);
@@ -501,16 +496,8 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_AddSkill(SID_HealingFocus, CHARACTER_KNOLL)
 #endif
 
-#if defined(SID_ChillPow) && (EQUIPE_SKILL_VALID(SID_ChillPow))
-	Evt_AddSkill(SID_ChillPow, CHARACTER_TANA)
-#endif
-
 #if defined(SID_BloodSurge) && (EQUIPE_SKILL_VALID(SID_BloodSurge))
 	Evt_AddSkill(SID_BloodSurge, CHARACTER_TANA)
-#endif
-
-#if defined(SID_ChillSpd) && (EQUIPE_SKILL_VALID(SID_ChillSpd))
-	Evt_AddSkill(SID_ChillSpd, CHARACTER_VANESSA)
 #endif
 
 #if defined(SID_RightfulArch) && (EQUIPE_SKILL_VALID(SID_RightfulArch))
@@ -536,11 +523,11 @@ static const EventScr EventScr_Beginning[] = {
 
 	ASMC(modify_unit_status)
 
-	SVAL(EVT_SLOT_3, ITEM_VULNERARY)
-	GIVEITEMTO(CHARACTER_EPHRAIM)
+	// SVAL(EVT_SLOT_3, ITEM_VULNERARY)
+	// GIVEITEMTO(CHARACTER_EPHRAIM)
 
-	SVAL(EVT_SLOT_3, 4000)
-	GIVEITEMTOMAIN(0)
+	// SVAL(EVT_SLOT_3, 4000)
+	// GIVEITEMTOMAIN(0)
 
 	// PREP
 	CALL(EventScr_08591FD8)
