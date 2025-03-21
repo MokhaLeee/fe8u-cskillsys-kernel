@@ -227,6 +227,11 @@ extern struct NegateDefConfEnt const *const gpNegateDefConf;
 int GetDefenderNegatedDefense(struct BattleUnit *attacker, struct BattleUnit *defender);
 
 /**
+ * Devil fix
+ */
+bool RollBaseDevilCheck(struct BattleUnit *bu);
+
+/**
  * Hp cost
  */
 bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);

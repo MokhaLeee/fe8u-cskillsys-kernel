@@ -26,7 +26,6 @@ bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender
 
 bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-
 #if (defined(SID_Counter) && (COMMON_SKILL_VALID(SID_Counter)))
 	if (BattleFastSkillTester(defender, SID_Counter) && gBattleStats.range == 1 && !IsMagicAttack(attacker)) {
 		RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Counter);
@@ -41,7 +40,7 @@ bool CheckDevilAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 	}
 #endif
 
-	if (!BattleRoll1RN(31 - attacker->unit.lck, FALSE)) {
+	if (!RollBaseDevilCheck(attacker)) {
 		/* Lucky */
 		return false;
 	}

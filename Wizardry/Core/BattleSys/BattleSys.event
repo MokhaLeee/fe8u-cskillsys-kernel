@@ -9,6 +9,7 @@
 #include "HpCost/HpCost.event"
 #include "NegateDef/NegateDef.lyn.event"
 #include "WrankBonus/WrankBonus.event"
+#include "DevilFix/DevilFix.event"
 
 #include "Source/LynJump.event"
 #include "Source/BattleGenerate.lyn.event"

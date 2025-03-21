@@ -1,0 +1,15 @@
+PUSH
+	// Devil Axs: The probability of self-destruction
+	ORG 0x02B6A4
+	DevilMaxRef:
+
+	// Devil Axs: The value to use when lowering the probability of self-destruction
+	ORG 0x02B6A0
+	DevilUnitStructRefOffset:
+
+	// Devil Axs: Fix Glitch that self-destructs whenever an underflow bug occurs
+	ORG 0x02B6A6
+	BYTE 0x40 0x1A 0x00 0x04 0x00 0x0C
+POP
+
+#include "Source/DevilFix.lyn.event"
