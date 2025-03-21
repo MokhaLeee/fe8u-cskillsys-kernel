@@ -1,6 +1,7 @@
 #include <common-chax.h>
 #include <strmag.h>
 #include <battle-system.h>
+#include <combo-attack.h>
 
 #define LOCAL_TRACE 0
 
@@ -172,6 +173,28 @@ void ParseBattleHitToBanimCmd(void)
 			gpEkrTriangleUnits[0] = gBattleStats.taUnitA;
 			gpEkrTriangleUnits[1] = gBattleStats.taUnitB;
 		}
+
+#ifdef CONFIG_USE_COMBO_ATTACK
+		/**
+		 * Modify for combo attack
+		 */
+		if (gpKernelDesigerConfig->combo_attack_en) {
+			if (i < COMBO_ATK_MAX) {
+				struct ComboAtkTarget *combo = &gComboAtkList[i];
+
+				if (combo->uid != COMBO_ATK_UID_INVALID) {
+					int weapon = combo->weapon;
+
+					magic_attack = IsMagicAttackAttr(GetItemAttributes(weapon));
+
+					if (CheckForceFarAttackAnimItem(weapon))
+						distance_modes_cur[attacker_pos] = EKR_DISTANCE_FAR;
+					else
+						distance_modes_cur[attacker_pos] = gEkrDistanceType;
+				}
+			}
+		}
+#endif /* USE_COMBO_ATTACK */
 
 		/**
 		 * Attacker round base types

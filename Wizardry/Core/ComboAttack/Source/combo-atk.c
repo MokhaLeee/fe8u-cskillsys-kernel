@@ -15,7 +15,15 @@ void ResetComboAtkList(void)
 		gComboAtkList[i].uid = COMBO_ATK_UID_INVALID;
 }
 
-STATIC_DECLAR bool CheckMeleeWeapon(int weapon)
+STATIC_DECLAR bool ChecComboMagi(int weapon)
+{
+	if (GetItemAttributes(weapon) & (IA_MAGIC | IA_MAGICDAMAGE))
+		return true;
+
+	return true;
+}
+
+STATIC_DECLAR bool CheckComboMelee(int weapon)
 {
 	int max_range;
 
@@ -36,7 +44,7 @@ void BattleGenerateComboAtkList(void)
 	struct Unit *unit;
 	u16 item;
 	int range, battle_range;
-	bool melee_combo, melee_attack;
+	bool melee_attack;
 	int i, cnt = 0;
 
 	ResetComboAtkList();
@@ -95,16 +103,15 @@ void BattleGenerateComboAtkList(void)
 			continue;
 		}
 
+		if (!ChecComboMagi(item) && CheckComboMelee(item) != melee_attack)
+			continue;
+
 		/**
 		 * ! check in range
 		 */
 		range = RECT_DISTANCE(
 			unit->xPos, unit->yPos,
 			gBattleTarget.unit.xPos, gBattleTarget.unit.yPos);
-
-		melee_combo = CheckMeleeWeapon(item);
-		if (melee_attack != melee_combo)
-			continue;
 
 		if (!IsItemCoveringRangeRework(item, range, unit))
 			continue;
