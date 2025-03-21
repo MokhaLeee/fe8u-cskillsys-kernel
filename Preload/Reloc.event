@@ -180,4 +180,7 @@ gpNegateDefConf: POIN gNegateDefConf
 gpWrankBonusConf: POIN gWrankBonusConf
 gpWrankRtextConf: POIN gWrankRtextConf
 
+gpCriticalBonus: POIN gCriticalBonus
+gpSilencerBonus: POIN gSilencerBonus
+
 KERNEL_RELOC_END:

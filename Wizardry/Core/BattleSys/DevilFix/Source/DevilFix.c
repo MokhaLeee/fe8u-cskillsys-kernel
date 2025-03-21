@@ -8,7 +8,7 @@ bool RollBaseDevilCheck(struct BattleUnit *bu)
 {
 	int devil_max, devil_base, devil_rate;
 
-	if (!GetItemWeaponEffect(bu->weapon) == WPN_EFFECT_DEVIL)
+	if (GetItemWeaponEffect(bu->weapon) != WPN_EFFECT_DEVIL)
 		return false;
 
 	devil_max  = DevilMaxRef;

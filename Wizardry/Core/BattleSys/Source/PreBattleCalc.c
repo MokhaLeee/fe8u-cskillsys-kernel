@@ -125,10 +125,19 @@ void ComputeBattleUnitCritRate(struct BattleUnit *bu)
 		status = bu->unit.lck;
 #endif
 
+#if defined(SID_CriticalForce) && (COMMON_SKILL_VALID(SID_CriticalForce))
+	if (BattleFastSkillTester(bu, SID_CriticalForce))
+		status = bu->unit.skl + bu->unit.skl / 2;
+#endif
+
 	status += GetItemCrit(bu->weapon);
 
+#if CHAX
+	status += gpCriticalBonus[UNIT_CLASS_ID(&bu->unit)];
+#else
 	if (UNIT_CATTRIBUTES(&bu->unit) & CA_CRITBONUS)
 		status += 15;
+#endif
 
 	bu->battleCritRate = status;
 }
@@ -660,12 +669,6 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 			if (tmp > 0)
 				attacker->battleAttack += tmp;
 
-			break;
-#endif
-
-#if (defined(SID_CriticalForce) && (COMMON_SKILL_VALID(SID_CriticalForce)))
-		case SID_CriticalForce:
-			attacker->battleCritRate += attacker->unit.skl + (attacker->unit.skl / 2);
 			break;
 #endif
 
@@ -1696,6 +1699,8 @@ void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *def
 
 void PreBattleCalcSilencerRate(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+	attacker->battleSilencerRate += gpSilencerBonus[UNIT_CLASS_ID(&attacker->unit)];
+
 	if (UNIT_CATTRIBUTES(&defender->unit) & CA_BOSS)
 		attacker->battleSilencerRate -= 25;
 }

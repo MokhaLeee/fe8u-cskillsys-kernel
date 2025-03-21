@@ -232,6 +232,12 @@ int GetDefenderNegatedDefense(struct BattleUnit *attacker, struct BattleUnit *de
 bool RollBaseDevilCheck(struct BattleUnit *bu);
 
 /**
+ * Critical bonus
+ */
+extern s8 const *const gpCriticalBonus;
+extern s8 const *const gpSilencerBonus;
+
+/**
  * Hp cost
  */
 bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);
