@@ -117,6 +117,7 @@ LYN_REPLACE_CHECK(ComputeBattleUnitCritRate);
 void ComputeBattleUnitCritRate(struct BattleUnit *bu)
 {
 	int status;
+	int jid = UNIT_CLASS_ID(&bu->unit);
 
 	status = bu->unit.skl / 2;
 
@@ -131,13 +132,13 @@ void ComputeBattleUnitCritRate(struct BattleUnit *bu)
 #endif
 
 	status += GetItemCrit(bu->weapon);
+	status += gpCriticalBonus[jid];
 
-#if CHAX
-	status += gpCriticalBonus[UNIT_CLASS_ID(&bu->unit)];
-#else
 	if (UNIT_CATTRIBUTES(&bu->unit) & CA_CRITBONUS)
-		status += 15;
-#endif
+		status += gpKernelBattleDesignerConfig->critical_rate_bonus_attr;
+
+	if (CheckClassCavalry(jid))
+		status += gpKernelBattleDesignerConfig->critical_rate_bonus_cavalry;
 
 	bu->battleCritRate = status;
 }

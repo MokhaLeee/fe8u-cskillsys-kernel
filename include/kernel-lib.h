@@ -53,6 +53,12 @@ struct KernelBattleDesignerConfig {
 
 	// CRIT damage correction rate
 	u16 crit_correction;
+
+	// Critical rate bonus for cavalry
+	s8 critical_rate_bonus_cavalry;
+
+	// Critical rate bonus on attributes bit
+	s8 critical_rate_bonus_attr;
 };
 
 extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;

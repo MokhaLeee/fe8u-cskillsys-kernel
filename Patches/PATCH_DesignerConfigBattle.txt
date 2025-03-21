@@ -14,5 +14,7 @@ B0:DECIMAL=ATK percentage in AS calc
 B1:DECIMAL=HP drain percentgae for nosferatu
 B2:DECIMAL=AVO deacy for riders indorr
 W4:DECIMAL=CRIT damage correction rate
+b6:DECIMAL=Critical rate bonus for cavalry
+b7:DECIMAL=Critical rate bonus on attributes bit
 
 INFO=Editor: gKernelBattleDesignerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md

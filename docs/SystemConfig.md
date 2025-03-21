@@ -144,6 +144,14 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Critical attack may cause `[200%]` damage.
 
+- `Critical rate bonus for cavalry`
+
+	Cavalry class suffer crit `[-10%]`
+
+- `Critical rate bonus on attributes bit`
+
+	If bit "Myrmidon/SwordMaster" in Ability3 is set, get crit `[+15%]`
+
 ## Skill misc infos
 
 ![image](./gfx/SystemConfig3.png)
