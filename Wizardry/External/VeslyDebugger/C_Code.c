@@ -2,7 +2,7 @@
 #include "debug-kit.h"
 #include "constants/gfx.h"
 #include "mu.h"
-#include "jester_headers/custom-functions.h"
+#include "../../../include/Configs/configs.h"
 
 #define PACKED __attribute__((packed))
 
@@ -1042,8 +1042,11 @@ void RedrawUnitSkillsMenu(DebuggerProc* proc) {
         if (proc->tmp[i]) {
             // Add extra space at start of text for icon
             Text_SetCursor(&th[i], 2);
+#ifdef CONFIG_FE8SRR
+            Text_DrawString(&th[i], GetSkillNameStr(RandSkill(proc->tmp[i], gActiveUnit)));
+#else
             Text_DrawString(&th[i], GetSkillNameStr(proc->tmp[i]));
-            RandSkill(proc->tmp[i], gActiveUnit);
+#endif
         }
         PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x+2, Y_HAND + (i*2)));
 
@@ -1051,10 +1054,13 @@ void RedrawUnitSkillsMenu(DebuggerProc* proc) {
         PutNumber(gBG0TilemapBuffer + TILEMAP_INDEX(START_X+2, Y_HAND + (i*2)), 
         TEXT_COLOR_SYSTEM_GOLD, proc->tmp[i]);
 
+#ifdef CONFIG_FE8SRR
+        // Draw skill icon
+        DrawIcon(TILEMAP_LOCATED(gBG0TilemapBuffer, x, Y_HAND + (i*2)), SKILL_ICON(RandSkill(proc->tmp[i], gActiveUnit)), 0x4000);
+#else
         // Draw skill icon
         DrawIcon(TILEMAP_LOCATED(gBG0TilemapBuffer, x, Y_HAND + (i*2)), SKILL_ICON(proc->tmp[i]), 0x4000);
-
-        RandSkill(proc->tmp[i], gActiveUnit);
+#endif
     }
 
     BG_EnableSyncByMask(BG0_SYNC_BIT);
