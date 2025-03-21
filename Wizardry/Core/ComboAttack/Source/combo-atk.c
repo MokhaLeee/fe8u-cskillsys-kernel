@@ -52,9 +52,9 @@ void BattleGenerateComboAtkList(void)
 		return;
 
 	if (battle_range <= 1)
-		melee_attack = false;
-	else
 		melee_attack = true;
+	else
+		melee_attack = false;
 
 	for (i = 1; i < 0x100; i++) {
 		if (!(cnt < COMBO_ATK_MAX))
