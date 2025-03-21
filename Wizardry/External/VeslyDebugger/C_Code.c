@@ -2,6 +2,7 @@
 #include "debug-kit.h"
 #include "constants/gfx.h"
 #include "mu.h"
+#include "jester_headers/custom-functions.h"
 
 #define PACKED __attribute__((packed))
 
