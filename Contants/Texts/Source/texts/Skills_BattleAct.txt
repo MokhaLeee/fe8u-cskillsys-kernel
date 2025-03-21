@@ -239,7 +239,7 @@ This unit's missed attacks[N]
 deal half damage.[X]
 
 ## MSG_SKILL_AbsorbMelee
-Absorb Melee:{N}
+Absorb Melee:[N]
 This unit can absorb damage[N]
 from melee attacks to restore HP.[X]
 

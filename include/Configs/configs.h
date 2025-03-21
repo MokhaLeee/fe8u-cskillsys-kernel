@@ -4,9 +4,9 @@
 // #include "config-debug.h"
 #include "config-memmap.h"
 
-//#define CONFIG_FE8_REWRITE
+#define CONFIG_FE8_REWRITE
 
-#define CONFIG_FE8SRR
+//#define CONFIG_FE8SRR
 
 /**
  * If uncomment, kernel may remove vanilla dislogue text
@@ -460,7 +460,7 @@
  * By Jester
  * Bosses or player units can have multiple death quotes depending on their enemy
  */
-#define CONFIG_MULTIPLE_DEATH_QUOTES
+// #define CONFIG_MULTIPLE_DEATH_QUOTES
 
 /**
  * Install ConvoyExpa

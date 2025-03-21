@@ -142,4 +142,7 @@ gpPrepItemUsabilityFuncs: POIN gPrepItemUsabilityFuncs
 
 prWriteUnitLevelSafe: POIN WriteUnitLevelSafe
 
+gpAutoNarrowFontConf: POIN AutoNarrowFontConf
+gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
+
 KERNEL_RELOC_END:

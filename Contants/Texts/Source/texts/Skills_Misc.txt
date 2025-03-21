@@ -2,9 +2,9 @@
 G-Flower[X]
 
 ## MSG_SKILL_GentleFlower
-Gentle Flower:[NL]
-Allies within 2 spaces restore ×1.5[NL]
-as much HP from healing items.[X]
+Gentle Flower:[N]
+Allies within 2 spaces restore[N]
+x1.5 as much HP from items.[X]
 
 ## MSG_SKILL_Admiration
 Admiration:[NL]

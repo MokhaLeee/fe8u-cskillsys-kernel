@@ -160,6 +160,17 @@ char NarrowFontsUtf8ToAscii(const char *str);
 char NarrowFontsUnicodeToAscii(u32 unicod);
 
 /**
+ * internal
+ */
+struct AutoNarrowFontEnt { const char *narrow_str; };
+
+// extern const struct AutoNarrowFontEnt AutoNarrowFontConf[0x100];
+// extern const u32 AutoNarrowFontConfToUnicode[0x100];
+
+extern const struct AutoNarrowFontEnt *gpAutoNarrowFontConf;
+extern const u32 *gpAutoNarrowFontConfToUnicode;
+
+/**
  * Misc
  */
 enum UnitStatusIdxRef {
