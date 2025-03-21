@@ -23,6 +23,7 @@ extern u32 sSkillFastList[0x40];
 extern void (*gpExternalSkillListGenerator)(struct Unit * unit, struct SkillList * list, u8 * ref);
 
 #ifdef CONFIG_FE8SRR
+
 int NextSeededRN_Simple(u32 rn)
 {
     // This generates a pseudorandom string of 32 bits
@@ -72,12 +73,15 @@ u32 InitSeededRN_Simple(int seed, u32 currentRN)
     return currentRN;
 }
 
-u32 GetNthRN_Simple(int n, int seed, u32 currentRN)
+u32 GetNthRN_Simple(int n, u32 seed, u32 currentRN)
 {
-    n = (n ^ (n >> 4)) & 0xF;
+    int i = n + seed;
+    i = (i ^ (i >> 12)) & 0x3FFF;
+    // n = (n ^ (n >> 4)) & 0xF;
+    n &= 0xF;
     if (!currentRN)
     {
-        currentRN = InitSeededRN_Simple(seed, currentRN);
+        currentRN = RNTable[i]; // InitSeededRN_Simple(seed, currentRN);
     }
     for (int i = 0; i < n; i++)
     {
@@ -85,24 +89,12 @@ u32 GetNthRN_Simple(int n, int seed, u32 currentRN)
     }
     return currentRN;
 }
+
 u16 HashByte_Global(int number, int max, int noise[], int offset)
 {
-    offset += noise[0] + noise[1] + noise[2] + noise[3] + number;
-    // offset &= 0xFF; // GetNthRN_Simple does this anyway
-    int currentRN = 0;
-    currentRN = GetNthRN_Simple(offset, (*(int *)0x203EA34) & 0xFFFFFF, currentRN);
-    currentRN = ((*(int *)0x203EA34) & 0xFF) + (currentRN << 6) + (currentRN << 16) - currentRN;
-    currentRN = (((*(int *)0x203EA34) & 0xFF00) >> 8) + (currentRN << 6) + (currentRN << 16) - currentRN;
-    // currentRN = ((RandValues->seed&0xFF0000) >> 16) + (currentRN << 6) + (currentRN << 16) - currentRN;
-    currentRN = ((currentRN << 5) + currentRN) ^ ((*(int *)0x203EA34) & 0xFFFFFF);
-    currentRN = ((currentRN << 5) + currentRN) ^ number;
-    for (int c = 0; c < 4; ++c)
-    {
-        for (int i = 0; i < (noise[c] & 0xF); ++i)
-        {
-            currentRN = NextSeededRN_Simple(currentRN);
-        }
-    }
+    offset += noise[0] + noise[1] + noise[2] + noise[3] + number + RandValues->seed;
+    u32 currentRN = 0;
+    currentRN = GetNthRN_Simple(offset, RandValues->seed, currentRN);
 
     return Mod((currentRN & 0x2FFFFFFF), max);
 }

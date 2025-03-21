@@ -1024,6 +1024,8 @@ enum icon_sheet_idx {
 
 #define SKILL_ICON(sid)   ((ICON_SHEET_SKILL0 << 8) + (sid))
 
+extern int RandSkill(int id, struct Unit * unit);
+
 void RedrawUnitSkillsMenu(DebuggerProc* proc) { 
     TileMap_FillRect(gBG0TilemapBuffer + TILEMAP_INDEX(NUMBER_X-2, Y_HAND), 9, 2 * SkillsOptions, 0);
     BG_EnableSyncByMask(BG0_SYNC_BIT);
@@ -1040,6 +1042,7 @@ void RedrawUnitSkillsMenu(DebuggerProc* proc) {
             // Add extra space at start of text for icon
             Text_SetCursor(&th[i], 2);
             Text_DrawString(&th[i], GetSkillNameStr(proc->tmp[i]));
+            RandSkill(proc->tmp[i], gActiveUnit);
         }
         PutText(&th[i], gBG0TilemapBuffer + TILEMAP_INDEX(x+2, Y_HAND + (i*2)));
 
@@ -1049,6 +1052,8 @@ void RedrawUnitSkillsMenu(DebuggerProc* proc) {
 
         // Draw skill icon
         DrawIcon(TILEMAP_LOCATED(gBG0TilemapBuffer, x, Y_HAND + (i*2)), SKILL_ICON(proc->tmp[i]), 0x4000);
+
+        RandSkill(proc->tmp[i], gActiveUnit);
     }
 
     BG_EnableSyncByMask(BG0_SYNC_BIT);
