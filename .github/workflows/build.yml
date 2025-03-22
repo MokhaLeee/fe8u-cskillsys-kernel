@@ -67,7 +67,7 @@ jobs:
           cd ..
         fi
 
-    - name: Fake generate baserom
+    - name: Generate baserom
       run: |
         if [ ! -e encrypt_0x55_fe8u.bin ]; then
           wget https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci_/encrypt_0x55_fe8u.bin
@@ -77,21 +77,37 @@ jobs:
     - name: Debug remove skill build
       run: make -j CONFIG_CI_NO_SKILL_TEST=1
 
-    - name: Clean build
-      run: make clean
-
-    - name: release build
-      run: make -j CONFIG_RELEASE_COMPILATION=1
-
-    - name: post build
+    - name: Setup artifact outputs
       run: |
         echo "BUILD_TIME=$(date +"%Y%m%d.%H")" >> $GITHUB_ENV
+        mkdir artifacts
+
+    - name: Debug build
+      run: |
+        make clean
+        make -j CONFIG_RELEASE_COMPILATION=1
+
+    - name: Post debug-build
+      run: |
         ./Tools/scripts/generate_release.sh
-        rm -f .release_dir/*.gba
+        mkdir artifacts/debug-build
+        cp .release_dir/* artifacts/debug-build
+
+    - name: Release build
+      run: |
+        make clean
+        sed -i 's/^#define CONFIG_USE_DEBUG/\/\/ #define CONFIG_USE_DEBUG/' include/Configs/config-debug.h
+        make -j CONFIG_RELEASE_COMPILATION=1 CONFIG_EA_WERR=1
+
+    - name: Post release-build
+      run: |
+        ./Tools/scripts/generate_release.sh
+        mkdir artifacts/release-build
+        cp .release_dir/* artifacts/release-build
 
     - uses: actions/upload-artifact@v4.3.5
       with:
         name: ${{ github.event.repository.name }}-${{ env.BUILD_TIME }}
         path: |
-          .release_dir/*
+          artifacts/*
         retention-days: 1

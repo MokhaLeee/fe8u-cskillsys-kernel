@@ -53,6 +53,13 @@ install -d $RELEASE_EADIR
 cp -r Preload Wizardry Data Contents include main.event Debug Fonts $RELEASE_EADIR
 
 zip -r $RELEASE_DIR/buildfile.zip $RELEASE_DIR/buildfile/
+zip -r $RELEASE_DIR/include.zip $RELEASE_DIR/include/
+zip -r $RELEASE_DIR/Patches.zip $RELEASE_DIR/Patches/
 
-find $RELEASE_DIR | grep gitignore | xargs rm
 echo "!*" > $RELEASE_DIR/.gitignore
+
+# remove caches
+find $RELEASE_EADIR -type f \( -name "*.o" \) | xargs rm
+find $RELEASE_DIR | grep gitignore | xargs rm
+
+cd $RELEASE_DIR && rm -r buildfile include Patches && rm *.gba && cd ..
