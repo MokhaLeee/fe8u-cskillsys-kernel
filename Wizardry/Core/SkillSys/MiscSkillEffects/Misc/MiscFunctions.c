@@ -1436,10 +1436,10 @@ void IsTraineeLevelCappedOrPromoted(void)
 }
 
 //! FE8U = 0x08084800
-#ifdef CONFIG_FE8_REWRITE
 LYN_REPLACE_CHECK(IsCharacterForceDeployed_);
 bool IsCharacterForceDeployed_(u16 pid)
 {
+#ifdef CONFIG_FE8_REWRITE
     const struct ForceDeploymentEnt gForceDeploymentList[] = {
         {CHARACTER_EIRIKA,  CHAPTER_MODE_COMMON,  -1  },
         {CHARACTER_EIRIKA,  CHAPTER_MODE_EIRIKA,  -1  },
@@ -1453,6 +1453,7 @@ bool IsCharacterForceDeployed_(u16 pid)
         {CHARACTER_EIRIKA,  CHAPTER_MODE_EPHRAIM,  34 },
         {-1, 0, 0},
     };
+#endif
 
     const struct ForceDeploymentEnt * it;
 
@@ -1471,7 +1472,6 @@ bool IsCharacterForceDeployed_(u16 pid)
     }
     return false;
 }
-#endif
 
 LYN_REPLACE_CHECK(GetUnitEquippedWeaponSlot);
 int GetUnitEquippedWeaponSlot(struct Unit* unit) {
