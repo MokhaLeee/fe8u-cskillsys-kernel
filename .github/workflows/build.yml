@@ -80,34 +80,23 @@ jobs:
     - name: Setup artifact outputs
       run: |
         echo "BUILD_TIME=$(date +"%Y%m%d.%H")" >> $GITHUB_ENV
-        mkdir artifacts
 
-    - name: Debug build
+    - name: build
       run: |
         make clean
         make -j CONFIG_RELEASE_COMPILATION=1
 
-    - name: Post debug-build
+    - name: Post build
       run: |
         ./Tools/scripts/generate_release.sh
-        mkdir artifacts/debug-build
-        cp .release_dir/* artifacts/debug-build
-
-    - name: Release build
-      run: |
-        make clean
-        sed -i 's/^#define CONFIG_USE_DEBUG/\/\/ #define CONFIG_USE_DEBUG/' include/Configs/config-debug.h
-        make -j CONFIG_RELEASE_COMPILATION=1 CONFIG_EA_WERR=1
-
-    - name: Post release-build
-      run: |
-        ./Tools/scripts/generate_release.sh
-        mkdir artifacts/release-build
-        cp .release_dir/* artifacts/release-build
+        rm -r .release_dir/buildfile
+        rm -r .release_dir/include
+        rm -r .release_dir/Patches
+        rm -f .release_dir/*.gba
 
     - uses: actions/upload-artifact@v4.3.5
       with:
         name: ${{ github.event.repository.name }}-${{ env.BUILD_TIME }}
         path: |
-          artifacts/*
+          .release_dir/*
         retention-days: 1

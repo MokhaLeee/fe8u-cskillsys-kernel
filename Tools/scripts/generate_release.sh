@@ -26,12 +26,16 @@ mkdir $RELEASE_DIR
 
 # generate lyn-jump to refe
 REF_EVENT=$(find | grep "ref.event")
-echo "#define PROTECT_EN PROCTECT_EN" >> $REF_EVENT
-echo "#ifdef PROCTECT_EN" >> $REF_EVENT
-for GENERATED_LYNFILE in $(find . -type f -name "*.event"); do
-    cat $GENERATED_LYNFILE | grep "PROTECT " >> $REF_EVENT
-done
-echo "#endif /*PROCTECT_EN */" >> $REF_EVENT
+if echo $REF_EVENT | grep -q .; then
+    echo "#define PROTECT_EN PROCTECT_EN" >> $REF_EVENT
+    echo "#ifdef PROCTECT_EN" >> $REF_EVENT
+    for GENERATED_LYNFILE in $(find . -type f -name "*.event"); do
+        cat $GENERATED_LYNFILE | grep "PROTECT " >> $REF_EVENT
+    done
+    echo "#endif /*PROCTECT_EN */" >> $REF_EVENT
+else
+    echo "No ref event found!"
+fi
 
 # make -j
 cp fe8-kernel-* $RELEASE_DIR
@@ -62,4 +66,4 @@ echo "!*" > $RELEASE_DIR/.gitignore
 find $RELEASE_EADIR -type f \( -name "*.o" \) | xargs rm
 find $RELEASE_DIR | grep gitignore | xargs rm
 
-cd $RELEASE_DIR && rm -r buildfile include Patches && rm *.gba && cd ..
+# cd $RELEASE_DIR && rm -r buildfile include Patches && rm *.gba && cd ..
