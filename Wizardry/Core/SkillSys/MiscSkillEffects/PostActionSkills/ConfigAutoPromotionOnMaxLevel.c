@@ -13,6 +13,7 @@
 #include "action-expa.h"
 #include "unit-expa.h"
 
+#ifdef CONFIG_AUTO_PROMOTION_ON_MAX_LEVEL
 STATIC_DECLAR const EventScr EventScr_PostActionPromote[] = {
     EVBIT_MODIFY(0x4)
     STAL(20)
@@ -23,6 +24,7 @@ STATIC_DECLAR const EventScr EventScr_PostActionPromote[] = {
     NOFADE
     ENDA
 };
+#endif
 
 void ConfigAutoPromotionOnMaxLevel(ProcPtr proc)
 {   
@@ -33,7 +35,8 @@ void ConfigAutoPromotionOnMaxLevel(ProcPtr proc)
     // EVT_CMD_ARGV(proc->pEventCurrent)[1] = 7;
     // EVT_CMD_ARGV(proc->pEventCurrent)[2] = 0;
 
-
+#ifdef CONFIG_AUTO_PROMOTION_ON_MAX_LEVEL
     KernelCallEvent(EventScr_PostActionPromote, EV_EXEC_CUTSCENE, proc);
+#endif
     return;
 }

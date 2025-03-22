@@ -274,6 +274,7 @@ SID_Canto
 // SID_TakerStrength
 // SID_Canter
 // SID_GorillaTactics
+// SID_Scavenger
 
 ////////// AURA SKILLS
 // SID_Anathema

@@ -6,7 +6,7 @@
 
 //#define CONFIG_FE8_REWRITE
 
-#define CONFIG_FE8SRR
+//#define CONFIG_FE8SRR
 
 /**
  * If uncomment, kernel may remove vanilla dislogue text

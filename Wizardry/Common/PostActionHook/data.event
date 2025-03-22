@@ -1,4 +1,5 @@
 /* bool (*)(ProcPtr proc) */
+
 ALIGN 4
 gPostActionFuncs:
     POIN PostActionTurncoat
@@ -19,11 +20,8 @@ gPostActionFuncs:
     POIN PostActionAngerPoint
     POIN PostActionResurrection
     POIN PostActionMendArms
-#ifdef SID_GorillaTactics
     POIN PostActionGorillaTactics
-#endif
-#ifdef CONFIG_AUTO_PROMOTION_ON_MAX_LEVEL
+    POIN PostActionScavenger
     POIN ConfigAutoPromotionOnMaxLevel
-#endif
     POIN PostActionPadFunc PostActionPadFunc PostActionPadFunc PostActionPadFunc
     WORD 0

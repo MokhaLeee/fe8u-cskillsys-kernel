@@ -201,3 +201,8 @@ twice in one turn.[X]
 Gorilla Tactics:[N]
 If moving, pull back 1 space after[N]
 attacking but not defeating enemy.[X]
+
+## MSG_SKILL_Scavenger
+Scavenger:[N]
+SKL % chance to pick up an item[N]
+after an action until the 10th turn.[X]
