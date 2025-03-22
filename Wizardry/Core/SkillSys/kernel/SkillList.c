@@ -22,6 +22,94 @@ extern u32 sSkillFastList[0x40];
 
 extern void (*gpExternalSkillListGenerator)(struct Unit * unit, struct SkillList * list, u8 * ref);
 
+typedef struct {
+    int base;
+    int plus;
+} SkillUpgrade;
+
+const SkillUpgrade skill_upgrades[] = {
+	#if defined(SID_NoGuard) && defined(SID_NoGuardPlus) && COMMON_SKILL_VALID(SID_NoGuard) && COMMON_SKILL_VALID(SID_NoGuardPlus)
+		{ SID_NoGuard, SID_NoGuardPlus },
+	#endif
+	#if defined(SID_Canto) && defined(SID_CantoPlus) && COMMON_SKILL_VALID(SID_Canto) && COMMON_SKILL_VALID(SID_CantoPlus)
+		{ SID_Canto, SID_CantoPlus },
+	#endif
+	#if defined(SID_Bladegift) && defined(SID_BladegiftPlus) && COMMON_SKILL_VALID(SID_Bladegift) && COMMON_SKILL_VALID(SID_BladegiftPlus)
+		{ SID_Bladegift, SID_BladegiftPlus },
+	#endif
+	#if defined(SID_Piercegift) && defined(SID_PiercegiftPlus) && COMMON_SKILL_VALID(SID_Piercegift) && COMMON_SKILL_VALID(SID_PiercegiftPlus)
+		{ SID_Piercegift, SID_PiercegiftPlus },
+	#endif
+	#if defined(SID_Gracegift) && defined(SID_GracegiftPlus) && COMMON_SKILL_VALID(SID_Gracegift) && COMMON_SKILL_VALID(SID_GracegiftPlus)
+		{ SID_Gracegift, SID_GracegiftPlus },
+	#endif
+	#if defined(SID_Arcgift) && defined(SID_ArcgiftPlus) && COMMON_SKILL_VALID(SID_Arcgift) && COMMON_SKILL_VALID(SID_ArcgiftPlus)
+		{ SID_Arcgift, SID_ArcgiftPlus },
+	#endif
+	#if defined(SID_Hackgift) && defined(SID_HackgiftPlus) && COMMON_SKILL_VALID(SID_Hackgift) && COMMON_SKILL_VALID(SID_HackgiftPlus)
+		{ SID_Hackgift, SID_HackgiftPlus },
+	#endif
+	#if defined(SID_Stormgift) && defined(SID_StormgiftPlus) && COMMON_SKILL_VALID(SID_Stormgift) && COMMON_SKILL_VALID(SID_StormgiftPlus)
+		{ SID_Stormgift, SID_StormgiftPlus },
+	#endif
+	#if defined(SID_Shadowgift) && defined(SID_ShadowgiftPlus) && COMMON_SKILL_VALID(SID_Shadowgift) && COMMON_SKILL_VALID(SID_ShadowgiftPlus)
+		{ SID_Shadowgift, SID_ShadowgiftPlus },
+	#endif
+	#if defined(SID_Lumina) && defined(SID_LuminaPlus) && COMMON_SKILL_VALID(SID_Lumina) && COMMON_SKILL_VALID(SID_LuminaPlus)
+		{ SID_Lumina, SID_LuminaPlus },
+	#endif
+	#if defined(SID_Fury) && defined(SID_FuryPlus) && COMMON_SKILL_VALID(SID_Fury) && COMMON_SKILL_VALID(SID_FuryPlus)
+		{ SID_Fury, SID_FuryPlus },
+	#endif
+	#if defined(SID_Steal) && defined(SID_StealPlus) && COMMON_SKILL_VALID(SID_Steal) && COMMON_SKILL_VALID(SID_StealPlus)
+		{ SID_Steal, SID_StealPlus },
+	#endif
+	#if defined(SID_Charge) && defined(SID_ChargePlus) && COMMON_SKILL_VALID(SID_Charge) && COMMON_SKILL_VALID(SID_ChargePlus)
+		{ SID_Charge, SID_ChargePlus },
+	#endif
+	#if defined(SID_Shade) && defined(SID_ShadePlus) && COMMON_SKILL_VALID(SID_Shade) && COMMON_SKILL_VALID(SID_ShadePlus)
+		{ SID_Shade, SID_ShadePlus },
+	#endif
+	#if defined(SID_Renewal) && defined(SID_RenewalPlus) && COMMON_SKILL_VALID(SID_Renewal) && COMMON_SKILL_VALID(SID_RenewalPlus)
+		{ SID_Renewal, SID_RenewalPlus },
+	#endif
+	#if defined(SID_Barricade) && defined(SID_BarricadePlus) && COMMON_SKILL_VALID(SID_Barricade) && COMMON_SKILL_VALID(SID_BarricadePlus)
+		{ SID_Barricade, SID_BarricadePlus },
+	#endif
+	#if defined(SID_Blacksmith) && defined(SID_BlacksmithPlus) && COMMON_SKILL_VALID(SID_Blacksmith) && COMMON_SKILL_VALID(SID_BlacksmithPlus)
+		{ SID_Blacksmith, SID_BlacksmithPlus },
+	#endif
+	#if defined(SID_Armsthrift) && defined(SID_ArmsthriftPlus) && COMMON_SKILL_VALID(SID_Armsthrift) && COMMON_SKILL_VALID(SID_ArmsthriftPlus)
+		{ SID_Armsthrift, SID_ArmsthriftPlus },
+	#endif
+	#if defined(SID_AlertStance) && defined(SID_AlertStancePlus) && COMMON_SKILL_VALID(SID_AlertStance) && COMMON_SKILL_VALID(SID_AlertStancePlus)
+		{ SID_AlertStance, SID_AlertStancePlus },
+	#endif
+	#if defined(SID_LimitBreaker) && defined(SID_LimitBreakerPlus) && COMMON_SKILL_VALID(SID_LimitBreaker) && COMMON_SKILL_VALID(SID_LimitBreakerPlus)
+		{ SID_LimitBreaker, SID_LimitBreakerPlus },
+	#endif
+	#if defined(SID_WaterWalking) && defined(SID_WaterWalkingPlus) && COMMON_SKILL_VALID(SID_WaterWalking) && COMMON_SKILL_VALID(SID_WaterWalkingPlus)
+		{ SID_WaterWalking, SID_WaterWalkingPlus },
+	#endif
+	#if defined(SID_MountainClimber) && defined(SID_MountainClimberPlus) && COMMON_SKILL_VALID(SID_MountainClimber) && COMMON_SKILL_VALID(SID_MountainClimberPlus)
+		{ SID_MountainClimber, SID_MountainClimberPlus },
+	#endif
+	#if defined(SID_TriangleAdept) && defined(SID_TriangleAdeptPlus) && COMMON_SKILL_VALID(SID_TriangleAdept) && COMMON_SKILL_VALID(SID_TriangleAdeptPlus)
+		{ SID_TriangleAdept, SID_TriangleAdeptPlus },
+	#endif
+	};
+	
+
+// Function to find the "plus" version
+int get_plus_version(int sid) {
+    for (size_t i = 0; i < sizeof(skill_upgrades)/sizeof(skill_upgrades[0]); i++) {
+        if (skill_upgrades[i].base == sid) {
+            return skill_upgrades[i].plus;
+        }
+    }
+    return sid; // Return original if no upgrade
+}
+
 #ifdef CONFIG_FE8SRR
 
 extern int RandSkill(int id, struct Unit * unit);
@@ -143,6 +231,12 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	int i, sid;
 	int pid = UNIT_CHAR_ID(unit);
 	int jid = UNIT_CLASS_ID(unit);
+ 	bool upgrade = false;
+
+#if defined(SID_Upgrade) && (COMMON_SKILL_VALID(SID_Upgrade))
+	if (SkillTester(unit, SID_Upgrade))
+		upgrade = true;
+#endif
 
 	u8 *tmp_list = gGenericBuffer;
 
@@ -151,12 +245,20 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 
 	/* person */
 	sid = gpConstSkillTable_Person[pid * 2];
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
 	if (COMMON_SKILL_VALID(sid)) {
 		tmp_list[sid] = true;
 		list->sid[list->amt++] = sid;
 	}
 
 	sid = gpConstSkillTable_Person[pid * 2 + 1];
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
 	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
 		tmp_list[sid] = true;
 		list->sid[list->amt++] = sid;
@@ -164,12 +266,20 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 
 	/* job */
 	sid = gpConstSkillTable_Job[jid * 2];
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
 	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
 		tmp_list[sid] = true;
 		list->sid[list->amt++] = sid;
 	}
 
 	sid = gpConstSkillTable_Job[jid * 2 + 1];
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
 	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
 		tmp_list[sid] = true;
 		list->sid[list->amt++] = sid;
@@ -185,14 +295,21 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 
 		u8 iid = ITEM_INDEX(unit->items[i]);
 		
-
 		sid = gpConstSkillTable_Item[iid * 2];
+
+		if (upgrade)
+			sid = get_plus_version(sid);
+
 		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
 			tmp_list[sid] = true;
 			list->sid[list->amt++] = sid;
 		}
 
 		sid = gpConstSkillTable_Item[iid * 2 + 1];
+
+		if (upgrade)
+			sid = get_plus_version(sid);
+
 		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
 			tmp_list[sid] = true;
 			list->sid[list->amt++] = sid;
@@ -223,6 +340,10 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	/* generic */
 	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++) {
 		sid = UNIT_RAM_SKILLS(unit)[i];
+#if defined(SID_Upgrade) && (COMMON_SKILL_VALID(SID_Upgrade))
+		if (SkillTester(unit, SID_Upgrade))
+			sid = get_plus_version(sid);
+#endif
 		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
 			tmp_list[sid] = true;
 			list->sid[list->amt++] = sid;

@@ -645,7 +645,7 @@ SID_Provoke
 SID_Guardian
 
 //////// STANDALONE SKILLS
-SID_IdentityProblems
+// SID_IdentityProblems
 SID_DemolitionExpert
 SID_TriangleAttack
 SID_SocialButterfly
@@ -696,7 +696,8 @@ SID_WhiteMage
 SID_MoreForMe
 SID_Mimicry
 // SID_CursedHeal
-SID_Warpath
+// SID_Warpath
+// SID_Upgrade
 
 /////// COMBAT ARTS
 // SID_COMBAT_Grounder

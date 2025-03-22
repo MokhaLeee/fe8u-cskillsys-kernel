@@ -73,9 +73,11 @@ LABEL(0x1)
     ENDA
 };
 
+#endif
+
 bool PostActionScavenger(ProcPtr parent)
 {
-
+#if defined(SID_Scavenger) && (COMMON_SKILL_VALID(SID_Scavenger))
     if (!UNIT_ALIVE(gActiveUnit) || UNIT_STONED(gActiveUnit))
         return false;
 
@@ -86,7 +88,6 @@ bool PostActionScavenger(ProcPtr parent)
         return false;
 
     KernelCallEvent(EventScr_Scavenger, EV_EXEC_CUTSCENE, parent);
+#endif
     return true;
 }
-
-#endif

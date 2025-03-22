@@ -254,3 +254,8 @@ this unit sells to 75%.[X]
 Trace:[NL]
 Copy the enemy's first skill[N]
 temporarily while in combat.[X]
+
+## MSG_SKILL_Upgrade
+Upgrade:[N]
+Unit will always gain the "+"[N]
+version of a skill if one exists.[X]
