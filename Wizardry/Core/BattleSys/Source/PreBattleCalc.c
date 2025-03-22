@@ -278,7 +278,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_BlowFiendish) && (COMMON_SKILL_VALID(SID_BlowFiendish)))
 		case SID_BlowFiendish:
-			if (attacker == &gBattleActor && IsMagicAttack(defender))
+			if (attacker == &gBattleActor && IsMagicAttack(attacker))
 				attacker->battleAttack += SKILL_EFF0(SID_BlowFiendish);
 
 			break;
