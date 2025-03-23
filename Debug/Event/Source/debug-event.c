@@ -221,6 +221,25 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 			ITEM_VULNERARY
 		},
 	},
+	{
+		.charIndex = CHARACTER_GARCIA,
+		.classIndex = CLASS_WARRIOR,
+		.autolevel = true,
+		.level = 10,
+		.xPosition = 12,
+		.yPosition = 29,
+		.redaCount = 1,
+		.redas = &(const struct REDA) {
+			.x = 14,
+			.y = 23,
+			.b = -1,
+			.delayFrames = 64,
+		},
+		.items = {
+			ITEM_AXE_DEVIL,
+			ITEM_VULNERARY
+		},
+	},
 	{}
 };
 
@@ -415,6 +434,11 @@ static void modify_unit_status(void)
 	unit = GetUnitFromCharId(CHARACTER_NATASHA);
 	if (unit) {
 		unit->res = 20;
+	}
+
+	unit = GetUnitFromCharId(CHARACTER_GARCIA);
+	if (unit) {
+		unit->lck = 32;
 	}
 }
 

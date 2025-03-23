@@ -18,5 +18,5 @@ bool RollBaseDevilCheck(struct BattleUnit *bu)
 	if (devil_rate > 0 && BattleRoll1RN(devil_rate, FALSE))
 		return true;
 
-	return true;
+	return false;
 }
