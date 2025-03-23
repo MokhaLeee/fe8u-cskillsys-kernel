@@ -14,6 +14,7 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 {
 	FORCE_DECLARE struct Unit *unit;
 	int ret;
+	int hp_pre = gBattleTarget.unit.curHP;
 
 	unit = GetUnit(gComboAtkList[GetBattleHitRound(gBattleHitIterator)].uid);
 
@@ -55,7 +56,7 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 	/* step3 BattleGenerateHit */
 	if (gBattleTarget.unit.curHP == 0) {
 		if (ComboCheckBattleInori(unit)) {
-			gBattleStats.damage = gBattleStats.damage - 1;
+			gBattleStats.damage = hp_pre - 1;
 			gBattleHitIterator->hpChange = gBattleStats.damage;
 			gBattleTarget.unit.curHP = 1;
 
