@@ -7,6 +7,20 @@
 #include "prep-skill.h"
 #include "constants/texts.h"
 
+/**
+* JESTER - Don't ask me how or why, but this whole second menu for skill assignments
+* broke at some point, and despite the code being a 1-1 match with its parent repo,
+* the cause of the bug is unknown.
+* I have managed a partial remedy by inserting an assload of print statements that
+* seemingly cause whatever checks are failing to pass (a Heisenbug in essence).
+* Unless you know what you're doing, I suggest you don't remove these.
+*/
+
+/**
+ * Also some units appear to not have their unequipped skills saved,
+ * but it's intermittent and hard to replicate
+ */
+
 STATIC_DECLAR void ProcPrepSkill2_OnEnd(struct ProcPrepSkill2 * proc)
 {
     PrepSetLatestCharId(proc->unit->pCharacterData->number);
@@ -16,6 +30,7 @@ STATIC_DECLAR void ProcPrepSkill2_OnEnd(struct ProcPrepSkill2 * proc)
 
 STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
 {
+    NoCashGBAPrint("1");
     u16 BgConfig[12] = {
         // tile offset    map offset    screen size
         0x0000,            0xE000,        0,            // BG 0
@@ -30,6 +45,8 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
     BG_Fill(gBG1TilemapBuffer, 0);
     BG_Fill(gBG2TilemapBuffer, 0);
 
+    NoCashGBAPrint("1.2");
+
     gLCDControlBuffer.bg0cnt.priority = 0;
     gLCDControlBuffer.bg1cnt.priority = 2;
     gLCDControlBuffer.bg2cnt.priority = 1;
@@ -40,8 +57,12 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
     BG_SetPosition(BG_2, 0, 0);
     BG_SetPosition(BG_3, 0, 0);
 
+    NoCashGBAPrint("1.3");
+
     /* Init text */
     PrepSkill2_InitTexts();
+
+    NoCashGBAPrint("14");
 
     /* Init gfx */
     ResetIconGraphics_();
@@ -49,16 +70,26 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
     LoadObjUIGfx();
     LoadIconPalettes(BGPAL_ICONS);
 
+    NoCashGBAPrint("1.5");
+
     StartGreenText(proc);
+
+    NoCashGBAPrint("1.6");
 
     BG_EnableSyncByMask(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
     SetDefaultColorEffects();
 
+    NoCashGBAPrint("1.7");
+
     Decompress(Gfx_PrepSkillScreen2, (void*)0x06006000);
     Decompress(Gfx_PrepPickSkillScreen, (void*)0x06000440);
 
+    NoCashGBAPrint("1.8");
+
     Decompress(Tsa_PrepSubPickSkillScreen, gGenericBuffer);
     CallARM_FillTileRect(gBG1TilemapBuffer, gGenericBuffer, 0x1000);
+
+    NoCashGBAPrint("1.9");
 
     CopyToPaletteBuffer(Pal_PrepSkillScreen, 0x1E0, 0x20);
     CopyToPaletteBuffer(Pal_PrepSkillScreen, 0x320, 0x20);
@@ -80,13 +111,16 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 * proc)
             0x0, 0x800);
 
     NewPrepSkillObj(proc);
+
+    NoCashGBAPrint("1.91");
     StartParallelFiniteLoop(PrepSkill2_DrawDrawSkillDesc, 0, proc);
+    NoCashGBAPrint("1.92");
     StartParallelFiniteLoop(PrepSkill2_DrawRightTopBar, 0, proc);
+    NoCashGBAPrint("1.93");
     StartParallelFiniteLoop(PrepSkill2_DrawLeftSkillIcon, 0, proc);
 
     /* Left pannel */
     PrepUnit_DrawLeftUnitName(proc->unit);
-
     RestartMuralBackground();
 }
 
@@ -450,26 +484,42 @@ STATIC_DECLAR void ProcPrepSkill2_MsgWindowIDLE(struct ProcPrepSkill2 * proc)
 
 STATIC_DECLAR void ProcPrepSkill2_AddOnDraw(struct ProcPrepSkill2 * proc)
 {
+    NoCashGBAPrint("10.1");
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_AddSkill);
+    NoCashGBAPrint("10.2");
     HideSysHandCursor();
+
+    NoCashGBAPrint("10.3");
 }
 
 STATIC_DECLAR void ProcPrepSkill2_RemoveOnDraw(struct ProcPrepSkill2 * proc)
 {
+    NoCashGBAPrint("11.1");
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_RemoveSkill);
+    NoCashGBAPrint("11.2");
     HideSysHandCursor();
+
+    NoCashGBAPrint("11.3");
 }
 
 STATIC_DECLAR void ProcPrepSkill2_FailedAddOnDraw(struct ProcPrepSkill2 * proc)
 {
+    NoCashGBAPrint("12.1");
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_FailAddSkill);
+    NoCashGBAPrint("12.2");
     HideSysHandCursor();
+
+    NoCashGBAPrint("12.3");
 }
 
 STATIC_DECLAR void ProcPrepSkill2_FailedRemoveOnDraw(struct ProcPrepSkill2 * proc)
 {
+    NoCashGBAPrint("13.1");
     ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_FailRemoveSkill);
+    NoCashGBAPrint("13.2");
     HideSysHandCursor();
+
+    NoCashGBAPrint("13.3");
 }
 
 STATIC_DECLAR const struct ProcCmd ProcScr_PrepSkillSkillSel[] = {
@@ -479,7 +529,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PrepSkillSkillSel[] = {
 
 PROC_LABEL(PL_PREPSKILL2_INIT),
     PROC_CALL(ProcPrepSkill2_InitScreen),
-    PROC_CALL_ARG(NewFadeIn, 0x10),
+    PROC_CALL_ARG(NewFadeIn, 0x10), // Somewhere around these two lines it is failing to show the skill assign screen
     PROC_WHILE(FadeInExists),
 
     /* Fall through */
