@@ -75,7 +75,7 @@ STATIC_DECLAR void PutPrepSkill2Suffix(struct ProcPrepSkillObj *proc)
 			if (real >= rlist->amt)
 				break;
 
-			if (SkillTester(unit, sid)) {
+			if (SkillListTester(unit, sid)) {
 				int ix = 0x72 + 0x10 * x + 8;
 				int iy = 0x1E + 0x10 * y + 0;
 				int oam2 = OAM2_PAL(SKILLOBJ_PAL) +
@@ -99,7 +99,7 @@ STATIC_DECLAR void PutPrepSkill2Suffix(struct ProcPrepSkillObj *proc)
 			if (real >= llist->amt)
 				break;
 
-			if (SkillTester(unit, sid)) {
+			if (SkillListTester(unit, sid)) {
 				int ix = 0x10 + 0x10 * x + 8;
 				int iy = 0x30 + 0x10 * y + 0;
 				int oam2 = OAM2_PAL(SKILLOBJ_PAL) +

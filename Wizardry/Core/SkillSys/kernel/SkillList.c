@@ -50,6 +50,10 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	WARN_GENERIC_BUF_USED;
 	memset(tmp_list, 0, MAX_SKILL_NUM + 1);
 
+	/* generic */
+	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
+		ADD_LIST(UNIT_RAM_SKILLS(unit)[i]);
+
 	/* person */
 	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 0]);
 	ADD_LIST(gpConstSkillTable_Person[pid * 2 + 1]);
@@ -89,10 +93,6 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 		ADD_LIST(shield->skills[0]);
 		ADD_LIST(shield->skills[1]);
 	}
-
-	/* generic */
-	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
-		ADD_LIST(UNIT_RAM_SKILLS(unit)[i]);
 
 	/* external */
 	if (gpExternalSkillListGenerator)

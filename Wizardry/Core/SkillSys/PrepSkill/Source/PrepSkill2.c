@@ -4,6 +4,7 @@
 
 #include "common-chax.h"
 #include "skill-system.h"
+#include "kernel-lib.h"
 #include "prep-skill.h"
 #include "constants/texts.h"
 
@@ -117,7 +118,7 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 *proc)
 			if (!EQUIPE_SKILL_VALID(sid))
 				return;
 
-			if (!SkillTester(proc->unit, sid)) {
+			if (!SkillListTester(proc->unit, sid)) {
 				ret = AddSkill(proc->unit, sid);
 				if (ret) {
 					PlaySoundEffect(0x6C);
@@ -154,10 +155,16 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 *proc)
 				llist = GetUnitSkillList(proc->unit);
 				next = PREP_SLLIST_OFFSET(proc->hand_x, proc->left_line + proc->hand_y);
 
-				if (!(next < llist->amt) && (llist->amt > 0)) {
-					proc->hand_y = Div(llist->amt, PREP_SLLIST_LENGTH);
-					proc->hand_x = llist->amt - proc->hand_y * PREP_SLLIST_LENGTH - 1;
-				}
+				if (!(next < llist->amt))  {
+					if (llist->amt > 0) {
+						proc->hand_y = k_udiv(llist->amt - 1, PREP_SLLIST_LENGTH);
+						proc->hand_x = k_umod(llist->amt - 1, PREP_SLLIST_LENGTH);
+					} else {
+						proc->hand_pos = POS_R;
+						proc->hand_y = 0;
+						proc->hand_x = 0;
+					}
+			}
 
 				StartParallelFiniteLoop(PrepSkill2_DrawLeftSkillIcon, 0, proc);
 				PlaySoundEffect(0x6A);
@@ -381,7 +388,7 @@ STATIC_DECLAR void ProcPrepSkill2_MsgWindowIDLE(struct ProcPrepSkill2 *proc)
 	if ((A_BUTTON | B_BUTTON) & gKeyStatusPtr->newKeys) {
 		TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 0xD, 0x6), 0xC, 0x4, 0);
 		BG_EnableSyncByMask(BG0_SYNC_BIT);
-		PlaySoundEffect(0x6B);
+		// PlaySoundEffect(0x6B);
 		Proc_Break(proc);
 		return;
 	}
