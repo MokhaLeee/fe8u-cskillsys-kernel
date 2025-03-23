@@ -246,7 +246,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_DefiantCrit) && (COMMON_SKILL_VALID(SID_DefiantCrit)))
 		case SID_DefiantCrit:
 			if ((attacker->hpInitial * 4) < attacker->unit.maxHP)
-				attacker->battleCritRate += 50;
+				attacker->battleCritRate += SKILL_EFF0(SID_DefiantCrit);
 
 			break;
 #endif
@@ -254,7 +254,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 #if (defined(SID_DefiantAvoid) && (COMMON_SKILL_VALID(SID_DefiantAvoid)))
 		case SID_DefiantAvoid:
 			if ((attacker->hpInitial * 4) < attacker->unit.maxHP)
-				attacker->battleAvoidRate += 50;
+				attacker->battleAvoidRate += SKILL_EFF0(SID_DefiantAvoid);
 
 			break;
 #endif
@@ -702,7 +702,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_WindDisciple) && (COMMON_SKILL_VALID(SID_WindDisciple)))
 		case SID_WindDisciple:
-			if (attacker->hpInitial <= attacker->unit.maxHP) {
+			if (attacker->hpInitial < attacker->unit.maxHP) {
 				attacker->battleHitRate += SKILL_EFF0(SID_WindDisciple);
 				attacker->battleAvoidRate += SKILL_EFF1(SID_WindDisciple);
 			}
