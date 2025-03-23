@@ -202,6 +202,8 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 LYN_REPLACE_CHECK(BattleGenerateHit);
 bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+	int hp_pre = defender->unit.curHP;
+
 	if (attacker == &gBattleTarget)
 		gBattleHitIterator->info |= BATTLE_HIT_INFO_RETALIATION;
 
@@ -246,7 +248,7 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 #if CHAX
 		if (defender->unit.curHP == 0) {
 			if (CheckBattleInori(attacker, defender)) {
-				gBattleStats.damage = gBattleStats.damage - 1;
+				gBattleStats.damage = hp_pre - 1;
 				gBattleHitIterator->hpChange = gBattleStats.damage;
 				defender->unit.curHP = 1;
 
