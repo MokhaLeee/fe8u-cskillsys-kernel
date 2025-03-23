@@ -250,7 +250,8 @@ static const EventScr EventScr_Beginning[] = {
     NormalDamage(1, 0)
     EndAttack
     FIGHT(CHARACTER_SETH, CHARACTER_VALTER_PROLOGUE, 0, false)
-    //
+    // End battle
+    
     HIGHLIGHT_CHARACTER(CHARACTER_SETH, 60)
     TEXT(Chapter_00_Scene_02_Convo_04)
     MOVE_1STEP_WAIT(0, CHARACTER_SETH, MOVE_LEFT)

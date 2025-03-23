@@ -89,3 +89,4 @@
 | Adaptable        |   Alice   |
 | Absorb Melee        |   Alice   |
 | Absorb Magic        |   Alice   |
+| RunningStart | Vlak |

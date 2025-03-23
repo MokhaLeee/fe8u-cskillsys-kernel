@@ -110,9 +110,20 @@ int get_plus_version(int sid) {
     return sid; // Return original if no upgrade
 }
 
-#ifdef CONFIG_FE8SRR
-
 extern int RandSkill(int id, struct Unit * unit);
+
+#define REG_VCOUNT_CUSTOM (*(volatile unsigned short*)0x04000006)
+#define REG_TM0CNT_L_CUSTOM (*(volatile unsigned short*)0x04000100)
+
+int gba_random() {
+    return (REG_VCOUNT_CUSTOM * REG_TM0CNT_L_CUSTOM);
+}
+
+// Random integer in range [0, max-1]
+int getRandom(int max) {
+	int random = NextRN_N(max);
+	return random;
+}
 
 void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 {
@@ -122,11 +133,17 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     int jid = UNIT_CLASS_ID(unit);
     int player = UNIT_FACTION(unit) == FACTION_BLUE;
     int class = 0;
+	bool upgrade = false;
     if (player)
     {
         player = pid;
         class = jid;
     }
+
+#if defined(SID_Upgrade) && (COMMON_SKILL_VALID(SID_Upgrade))
+	if (SkillTester(unit, SID_Upgrade))
+		upgrade = true;
+#endif
 
     u8 * tmp_list = gGenericBuffer;
 
@@ -134,14 +151,41 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     memset(tmp_list, 0, MAX_SKILL_NUM + 1);
 
     /* person */
+
+#ifdef CONFIG_FE8SRR
     sid = RandSkill(gpConstSkillTable_Person[pid * 2], unit);
+#else
+	sid = gpConstSkillTable_Person[pid * 2];
+#endif
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
+	// if (sid != 0)
+	// {
+	// 	sid = getRandom(254);
+	// }
+
     if (COMMON_SKILL_VALID(sid))
     {
         tmp_list[sid] = true;
         list->sid[list->amt++] = sid;
     }
 
+#ifdef CONFIG_FE8SRR
     sid = RandSkill(gpConstSkillTable_Person[pid * 2 + 1] + player, unit);
+#else
+	sid = gpConstSkillTable_Person[pid * 2 + 1] + player;
+#endif
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
+	// if (sid != 0)
+	// {
+	// 	sid = getRandom(254);
+	// }
+
     if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
     {
         tmp_list[sid] = true;
@@ -149,14 +193,40 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     }
 
     /* job */
-    sid = RandSkill(gpConstSkillTable_Job[jid * 2], unit);
+#ifdef CONFIG_FE8SRR
+	sid = RandSkill(gpConstSkillTable_Job[jid * 2], unit);
+#else
+	sid = gpConstSkillTable_Job[jid * 2];
+#endif
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
+	// if (sid != 0)
+	// {
+	// 	sid = getRandom(254);
+	// }
+
     if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
     {
         tmp_list[sid] = true;
         list->sid[list->amt++] = sid;
     }
 
+#ifdef CONFIG_FE8SRR
     sid = RandSkill(gpConstSkillTable_Job[jid * 2 + 1] + class, unit);
+#else
+	sid = gpConstSkillTable_Job[jid * 2 + 1] + class;
+#endif
+
+	if (upgrade)
+		sid = get_plus_version(sid);
+
+	// if (sid != 0)
+	// {
+	// 	sid = getRandom(254);
+	// }
+
     if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
     {
         tmp_list[sid] = true;
@@ -168,14 +238,40 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     {
         u8 iid = ITEM_INDEX(unit->items[i]);
 
+#ifdef CONFIG_FE8SRR
         sid = RandSkill(gpConstSkillTable_Item[iid * 2], unit);
+#else
+		sid = gpConstSkillTable_Item[iid * 2];
+#endif
+
+		if (upgrade)
+			sid = get_plus_version(sid);
+
+		// if (sid != 0)
+		// {
+		// 	sid = getRandom(254);
+		// }
+
         if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
         {
             tmp_list[sid] = true;
             list->sid[list->amt++] = sid;
         }
 
+#ifdef CONFIG_FE8SRR
         sid = RandSkill(gpConstSkillTable_Item[iid * 2 + 1], unit);
+#else
+		sid = gpConstSkillTable_Item[iid * 2 + 1];
+#endif
+
+		if (upgrade)
+			sid = get_plus_version(sid);
+
+		// if (sid != 0)
+		// {
+		// 	sid = getRandom(254);
+		// }
+
         if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
         {
             tmp_list[sid] = true;
@@ -183,31 +279,23 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
         }
     }
 
-#if 0
-	/* Weapon */
-	weapon = ITEM_NONE;
-	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
-		weapon = ITEM_INDEX(((struct BattleUnit *)unit)->weaponBefore);
-
-	if (weapon != ITEM_NONE) {
-		sid = RandSkill(gpConstSkillTable_Weapon[weapon * 2], unit);
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-
-		sid = RandSkill(gpConstSkillTable_Weapon[weapon * 2 + 1], unit);
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-	}
-#endif
-
     /* generic */
     for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++)
     {
+#ifdef CONFIG_FE8SRR
         sid = RandSkill(UNIT_RAM_SKILLS(unit)[i], unit);
+#else
+		sid = UNIT_RAM_SKILLS(unit)[i];
+#endif
+
+		if (upgrade)
+			sid = get_plus_version(sid);
+
+		// if (sid != 0)
+		// {
+		// 	sid = getRandom(254);
+		// }
+		
         if (COMMON_SKILL_VALID(sid) && !tmp_list[sid])
         {
             tmp_list[sid] = true;
@@ -221,137 +309,6 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 
     WriteUnitList(unit, &list->header);
 }
-
-#endif
-
-#ifndef CONFIG_FE8SRR
-void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
-{
-	FORCE_DECLARE int weapon;
-	int i, sid;
-	int pid = UNIT_CHAR_ID(unit);
-	int jid = UNIT_CLASS_ID(unit);
- 	bool upgrade = false;
-
-#if defined(SID_Upgrade) && (COMMON_SKILL_VALID(SID_Upgrade))
-	if (SkillTester(unit, SID_Upgrade))
-		upgrade = true;
-#endif
-
-	u8 *tmp_list = gGenericBuffer;
-
-	memset(list, 0, sizeof(*list));
-	memset(tmp_list, 0, MAX_SKILL_NUM + 1);
-
-	/* person */
-	sid = gpConstSkillTable_Person[pid * 2];
-
-	if (upgrade)
-		sid = get_plus_version(sid);
-
-	if (COMMON_SKILL_VALID(sid)) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	sid = gpConstSkillTable_Person[pid * 2 + 1];
-
-	if (upgrade)
-		sid = get_plus_version(sid);
-
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	/* job */
-	sid = gpConstSkillTable_Job[jid * 2];
-
-	if (upgrade)
-		sid = get_plus_version(sid);
-
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	sid = gpConstSkillTable_Job[jid * 2 + 1];
-
-	if (upgrade)
-		sid = get_plus_version(sid);
-
-	if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-		tmp_list[sid] = true;
-		list->sid[list->amt++] = sid;
-	}
-
-	/* item */
-	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
-
-		/* If we're looking at a weapon, check it's equipped to apply its skill icon */
-		if (GetItemMight(unit->items[i]) > 0)
-			if(GetUnitEquippedWeapon(unit) != unit->items[i])
-				continue;
-
-		u8 iid = ITEM_INDEX(unit->items[i]);
-		
-		sid = gpConstSkillTable_Item[iid * 2];
-
-		if (upgrade)
-			sid = get_plus_version(sid);
-
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-
-		sid = gpConstSkillTable_Item[iid * 2 + 1];
-
-		if (upgrade)
-			sid = get_plus_version(sid);
-
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-	}
-
-#if 0
-	/* Weapon */
-	weapon = ITEM_NONE;
-	if (unit == &gBattleActor.unit || unit == &gBattleTarget.unit)
-		weapon = ITEM_INDEX(((struct BattleUnit *)unit)->weaponBefore);
-
-	if (weapon != ITEM_NONE) {
-		sid = gpConstSkillTable_Weapon[weapon * 2];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-
-		sid = gpConstSkillTable_Weapon[weapon * 2 + 1];
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-	}
-#endif
-
-	/* generic */
-	for (i = 0; i < UNIT_RAM_SKILLS_LEN; i++) {
-		sid = UNIT_RAM_SKILLS(unit)[i];
-#if defined(SID_Upgrade) && (COMMON_SKILL_VALID(SID_Upgrade))
-		if (SkillTester(unit, SID_Upgrade))
-			sid = get_plus_version(sid);
-#endif
-		if (COMMON_SKILL_VALID(sid) && !tmp_list[sid]) {
-			tmp_list[sid] = true;
-			list->sid[list->amt++] = sid;
-		}
-	}
-	WriteUnitList(unit, &list->header);
-}
-#endif
 
 void ForceUpdateUnitSkillList(struct Unit *unit)
 {
