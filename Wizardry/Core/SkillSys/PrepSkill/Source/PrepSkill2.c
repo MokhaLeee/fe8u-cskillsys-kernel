@@ -199,11 +199,16 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 * proc)
             {
                 llist = GetUnitSkillList(proc->unit);
                 next = PREP_SLLIST_OFFSET(proc->hand_x, proc->left_line + proc->hand_y);
-                if (!(next < llist->amt) && (llist->amt > 0))
-                {
-                    proc->hand_y = Div(llist->amt, PREP_SLLIST_LENGTH);
-                    proc->hand_x = llist->amt - proc->hand_y * PREP_SLLIST_LENGTH - 1;
-                }
+                if (!(next < llist->amt))  {
+					if (llist->amt > 0) {
+						proc->hand_y = k_udiv(llist->amt - 1, PREP_SLLIST_LENGTH);
+						proc->hand_x = k_umod(llist->amt - 1, PREP_SLLIST_LENGTH);
+					} else {
+						proc->hand_pos = POS_R;
+						proc->hand_y = 0;
+						proc->hand_x = 0;
+					}
+			    }
                 StartParallelFiniteLoop(PrepSkill2_DrawLeftSkillIcon, 0, proc);
                 PlaySoundEffect(0x6A);
                 Proc_Goto(proc, PL_PREPSKILL2_PRESS_A_REMOVE);
