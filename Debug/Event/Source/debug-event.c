@@ -512,6 +512,10 @@ static const EventScr EventScr_Beginning[] = {
 	Evt_AddSkill(SID_MagicEye, CHARACTER_SALEH)
 #endif
 
+#if defined(SID_BlowFiendish) && (EQUIPE_SKILL_VALID(SID_BlowFiendish))
+	Evt_AddSkill(SID_BlowFiendish, CHARACTER_SALEH)
+#endif
+
 #if defined(SID_MovHone) && (EQUIPE_SKILL_VALID(SID_MovHone))
 	Evt_AddSkill(SID_MovHone, CHARACTER_SALEH)
 #endif
