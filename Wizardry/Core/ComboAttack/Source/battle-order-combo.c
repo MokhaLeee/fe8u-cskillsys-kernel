@@ -57,7 +57,7 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 		if (ComboCheckBattleInori(unit)) {
 			gBattleStats.damage = gBattleStats.damage - 1;
 			gBattleHitIterator->hpChange = gBattleStats.damage;
-			defender->unit.curHP = 1;
+			gBattleTarget.unit.curHP = 1;
 
 			gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
 			gBattleHitIterator++;
