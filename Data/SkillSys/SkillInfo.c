@@ -989,21 +989,21 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_LEGEND_InoriAtk) && COMMON_SKILL_VALID(SID_LEGEND_InoriAtk))
 	[SID_LEGEND_InoriAtk] = {
 		.desc = MSG_SKILL_LEGEND_InoriAtk,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_LEGEND_InoriAtk,
 	},
 #endif
 
 #if (defined(SID_LEGEND_InoriAvo) && COMMON_SKILL_VALID(SID_LEGEND_InoriAvo))
 	[SID_LEGEND_InoriAvo] = {
 		.desc = MSG_SKILL_LEGEND_InoriAvo,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_LEGEND_InoriAvo,
 	},
 #endif
 
 #if (defined(SID_LEGEND_InoriDef) && COMMON_SKILL_VALID(SID_LEGEND_InoriDef))
 	[SID_LEGEND_InoriDef] = {
 		.desc = MSG_SKILL_LEGEND_InoriDef,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_LEGEND_InoriDef,
 	},
 #endif
 
@@ -2178,7 +2178,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
 	[SID_Inori] = {
 		.desc = MSG_SKILL_Inori,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_Inori,
 	},
 #endif
 
@@ -2576,14 +2576,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Plus) && COMMON_SKILL_VALID(SID_Plus))
 	[SID_Plus] = {
 		.desc = MSG_SKILL_Plus,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_Plus,
 	},
 #endif
 
   #if (defined(SID_Minus) && COMMON_SKILL_VALID(SID_Minus))
 	[SID_Minus] = {
 		.desc = MSG_SKILL_Minus,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_Minus,
 	},
 #endif
 
@@ -2895,7 +2895,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Multiscale) && COMMON_SKILL_VALID(SID_Multiscale))
 	[SID_Multiscale] = {
 		.desc = MSG_SKILL_Multiscale,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_Multiscale,
 	},
 #endif
 
@@ -3527,14 +3527,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_SolidRock) && COMMON_SKILL_VALID(SID_SolidRock))
 	[SID_SolidRock] = {
 		.desc = MSG_SKILL_SolidRock,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_SolidRock,
 	},
 #endif
 
 #if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
 	[SID_Sturdy] = {
 		.desc = MSG_SKILL_Sturdy,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_Sturdy,
 	},
 #endif
 
@@ -3580,7 +3580,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
 	[SID_Blacksmith] = {
 		.desc = MSG_SKILL_Blacksmith,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_Blacksmith,
 	},
 #endif
 
@@ -3789,7 +3789,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_WeaponHeal) && COMMON_SKILL_VALID(SID_WeaponHeal))
 	[SID_WeaponHeal] = {
 		.desc = MSG_SKILL_WeaponHeal,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_WeaponHeal,
 	},
 #endif
 
