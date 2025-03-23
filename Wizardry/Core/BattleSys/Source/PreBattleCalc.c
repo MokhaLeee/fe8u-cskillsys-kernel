@@ -711,7 +711,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_FieryBlood) && (COMMON_SKILL_VALID(SID_FieryBlood)))
 		case SID_FieryBlood:
-			if (attacker->hpInitial <= attacker->unit.maxHP)
+			if (attacker->hpInitial < attacker->unit.maxHP)
 				attacker->battleAttack += SKILL_EFF0(SID_FieryBlood);
 
 			break;
