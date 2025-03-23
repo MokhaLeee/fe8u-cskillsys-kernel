@@ -5,6 +5,11 @@
 #include "kernel-lib.h"
 #include "constants/skills.h"
 
+STATIC_DECLAR bool ComboCheckBattleInori(struct Unit *combo_actor)
+{
+	return CheckBattleInori(&gBattleActor, &gBattleTarget);
+}
+
 STATIC_DECLAR bool BattleComboGenerateHit(void)
 {
 	FORCE_DECLARE struct Unit *unit;
@@ -49,6 +54,16 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 
 	/* step3 BattleGenerateHit */
 	if (gBattleTarget.unit.curHP == 0) {
+		if (ComboCheckBattleInori(unit)) {
+			gBattleStats.damage = gBattleStats.damage - 1;
+			gBattleHitIterator->hpChange = gBattleStats.damage;
+			defender->unit.curHP = 1;
+
+			gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+			gBattleHitIterator++;
+			return true;
+		}
+
 		gBattleActor.wexpMultiplier++;
 		gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
 		gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
