@@ -399,7 +399,7 @@
 ![image](gfx/SkillIcon_BestDefense.png) | BestDefense |  If unit initiates combat Transfer defense to attack |
 ![image](gfx/SkillIcon_DoOrDie.png) | DoOrDie |  If the enemy's damage exceeds current HP, deal effective damage. |
 ![image](gfx/SkillIcon_OverKill.png) | OverKill |  Unit is healed for surplus damage if enemy defeated. |
-![image](gfx/SkillIcon_Momentum.png) | Momentum |  Unit is healed for surplus damage if enemy defeated. |
+![image](gfx/SkillIcon_Momentum.png) | Momentum |  Each follow-up attack increases CRIT +10%. |
 ![image](gfx/SkillIcon_FatalTen.png) | FatalTen |  If unit attacks 10 times during one turn, he wins the Duel. |
 ![image](gfx/SkillIcon_LionFlame.png) | LionFlame |  Grants CRIT+15%, ATK+4 in melee, but cause CRIT-100%, ATK-3 in range |
 ![image](gfx/SkillIcon_LimitBreak.png) | LimitBreak |  After 5 hits, next attack deals double damage with 100% accuracy. |

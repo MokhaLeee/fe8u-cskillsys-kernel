@@ -3743,7 +3743,7 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Momentum) && COMMON_SKILL_VALID(SID_Momentum))
 	[SID_Momentum] = {
-		.desc = MSG_SKILL_OverKill,
+		.desc = MSG_SKILL_Momentum,
 		.icon = GFX_SkillIcon_WIP,
 	},
 #endif
