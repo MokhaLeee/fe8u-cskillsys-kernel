@@ -34,7 +34,7 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.kernel_tutorial_level = CONFIG_KTUT_LEVEL,
 
 #ifdef CONFIG_USE_COMBO_ATTACK
-	.combo_attack_en = true, // true, // can be opened by the user
+	.combo_attack_en = false, // true, // can be opened by the user
 #endif
 
 #ifdef CONFIG_BATTLE_SURROUND
@@ -80,5 +80,5 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 
 	.wrank_bonux_rtext_auto_gen = true,
 
-	.enemy_can_combo_attack = true,
+	.enemy_can_combo_attack = false, // true
 };
