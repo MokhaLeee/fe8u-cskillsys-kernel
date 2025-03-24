@@ -94,7 +94,7 @@ bool BattleComboGenerateHits(void)
 		return false;
 
 	/* Not considering on enemy */
-	if (UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE)
+	if (!gpKernelDesigerConfig->enemy_can_combo_attack && UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE)
 		return false;
 
 	if (AreUnitsAllied(gBattleActor.unit.index, gBattleTarget.unit.index))

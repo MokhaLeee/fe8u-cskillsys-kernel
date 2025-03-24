@@ -94,6 +94,7 @@ void BattleGenerateComboAtkList(void)
 		case ITYPE_SWORD:
 		case ITYPE_AXE:
 		case ITYPE_LANCE:
+		case ITYPE_BOW:
 		case ITYPE_ANIMA:
 		case ITYPE_LIGHT:
 		case ITYPE_DARK:

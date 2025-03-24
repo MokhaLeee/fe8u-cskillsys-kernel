@@ -37,5 +37,6 @@ B23:$COMBO combo.bool.txt=shield_ext_equip_config_en
 B24:$COMBO combo.bool.txt=auto_narrow_font
 B25:DECIMAL=skill_sub_menu_width
 B26:$COMBO combo.bool.txt=wrank_bonux_rtext_auto_gen
+B27:$COMBO combo.bool.txt=enemy_can_combo_attack
 
 INFO=Editor: gKernelDesigerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md

@@ -124,6 +124,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Display weapon rank battle bonus info in statscreen if it holds.
 
+- `enemy_can_combo_attack`
+
+	Enemy can also participant in combo-attack.
+
 ## Designer config battle
 
 ![image](./gfx/SystemConfig2.png)

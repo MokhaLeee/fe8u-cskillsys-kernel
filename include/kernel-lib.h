@@ -37,6 +37,8 @@ struct KernelDesigerConfig {
 
 	// auto generate rtext for weapon rank bonus in statscreen
 	u8 wrank_bonux_rtext_auto_gen;
+
+	u8 enemy_can_combo_attack;
 };
 
 struct KernelBattleDesignerConfig {
