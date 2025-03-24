@@ -5,6 +5,8 @@
 #include "kernel-lib.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 STATIC_DECLAR bool ComboCheckBattleInori(struct Unit *combo_actor)
 {
 	return CheckBattleInori(&gBattleActor, &gBattleTarget);
@@ -15,8 +17,9 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 	FORCE_DECLARE struct Unit *unit;
 	int ret;
 	int hp_pre = gBattleTarget.unit.curHP;
+	int round = GetBattleHitRound(gBattleHitIterator);
 
-	unit = GetUnit(gComboAtkList[GetBattleHitRound(gBattleHitIterator)].uid);
+	unit = GetUnit(gComboAtkList[round].uid);
 
 	gBattleStats.hitRate = 80;
 	gBattleStats.damage = 0;
@@ -50,8 +53,8 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 
 	gBattleHitIterator->hpChange = gBattleStats.damage;
 
-	Printf("Combot hit %d for uid %#x",
-		GetBattleHitRound(gBattleHitIterator), gComboAtkList[GetBattleHitRound(gBattleHitIterator)].uid);
+	LTRACEF("[Combo hit=%d] uid=0x%02X pid=0x%02X, weapon=0x%02X",
+		round, unit->index & 0xFF, UNIT_CHAR_ID(unit), gComboAtkList[round].weapon);
 
 	/* step3 BattleGenerateHit */
 	if (gBattleTarget.unit.curHP == 0) {

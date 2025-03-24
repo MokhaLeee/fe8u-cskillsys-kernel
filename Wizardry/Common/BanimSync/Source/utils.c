@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "banim-sync.h"
 
+#define LOCAL_TRACE 0
+
 STATIC_DECLAR int TrySwitchBanimInfo(int pos, u8 pid, u8 jid, const struct BattleAnimDef *animdef, u16 weapon);
 
 struct BanimSyncHandler *FindBanimSyncHandler_test(struct Anim *anim)
@@ -45,8 +47,8 @@ int TrySwitchBanim(struct Anim *anim)
 	if (gpBanimSyncInfo->in_default[pos] == false) {
 		gpBanimSyncInfo->in_default[pos] = true;
 
-		gBanimIdx[pos]		  = gpBanimSyncInfo->banim_idx[pos];
-		gBanimUniquePal[pos]	= gpBanimSyncInfo->unique_pal[pos];
+		gBanimIdx[pos]          = gpBanimSyncInfo->banim_idx[pos];
+		gBanimUniquePal[pos]    = gpBanimSyncInfo->unique_pal[pos];
 		gEkrSpellAnimIndex[pos] = gpBanimSyncInfo->spellassoc_idx[pos];
 		return 1;
 	}
@@ -80,8 +82,8 @@ STATIC_DECLAR int TrySwitchBanimInfo(int pos, u8 pid, u8 jid, const struct Battl
 	if (gEkrSpellAnimIndex[pos] < 0)
 		gEkrSpellAnimIndex[pos] = 0;
 
-	Printf("pid %#x, jid %#x", pid, jid);
-	Printf("bid %#x, unqpal %#x, spell %#x", gBanimIdx[pos], gBanimUniquePal[pos], gEkrSpellAnimIndex[pos]);
+	LTRACEF("pid %#x, jid %#x", pid, jid);
+	LTRACEF("bid %#x, unqpal %#x, spell %#x", gBanimIdx[pos], gBanimUniquePal[pos], gEkrSpellAnimIndex[pos]);
 
 	return 1;
 }

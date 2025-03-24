@@ -236,6 +236,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 			.delayFrames = 64,
 		},
 		.items = {
+			ITEM_AXE_HANDAXE,
 			ITEM_AXE_DEVIL,
 			ITEM_VULNERARY
 		},
