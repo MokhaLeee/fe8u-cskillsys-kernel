@@ -8,6 +8,6 @@ ALIGN 4
 #include "Gfx/Gfx.event"
 
 ALIGN 4
-#include "Texts/Texts.event"
+// #include "Texts/Texts.event"
 
 #endif

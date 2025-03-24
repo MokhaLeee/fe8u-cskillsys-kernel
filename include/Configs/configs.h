@@ -15,7 +15,7 @@
  * If you're planning to develop a new game instead of making minor
  * changes on vanilla, it is recommanded to uncomment this config to save space.
  */
-// #define CONFIG_CROP_VANILLA_MSG
+#define CONFIG_CROP_VANILLA_MSG
 
 /* CommonProtection.event */
 #define CONFIG_COMMON_PROTECTION_ENBALED
