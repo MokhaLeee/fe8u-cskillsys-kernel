@@ -6,6 +6,7 @@
 #include "skill-system.h"
 #include "kernel-lib.h"
 #include "prep-skill.h"
+#include "utf8.h"
 #include "constants/texts.h"
 
 STATIC_DECLAR void ProcPrepSkill2_OnEnd(struct ProcPrepSkill2 *proc)
@@ -376,9 +377,15 @@ STATIC_DECLAR void ProcPrepSkill2_MsgOnDraw(int msg)
 			TEXT_COLOR_SYSTEM_WHITE, 0, 0, str
 		);
 
-		while ('\1' != *str++)
-			if ('\0' == *str)
+		for (;;) {
+			if (*str == CHAR_NEWLINE)
 				break;
+
+			if (*str == '\0')
+				break;
+
+			str = str + GetChLenUtf8(str);
+		}
 	}
 	BG_EnableSyncByMask(BG0_SYNC_BIT);
 }
