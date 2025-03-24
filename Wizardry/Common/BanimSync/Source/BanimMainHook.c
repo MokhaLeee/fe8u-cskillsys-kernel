@@ -112,11 +112,15 @@ void BanimSwitch_HookOnMain(struct Anim *anim)
 void BanimSwitch_HookC0D(struct Anim *anim, int type)
 {
 	struct Anim *anim1, *anim2;
+	bool switched = false;
 
 #if CHAX
 	if (GetAISLayerId(anim) == 0) {
-		if (TrySwitchBanim(anim) == 1)
+		if (TrySwitchBanim(anim) == 1) {
+			switched = true;
+
 			UpdateBanimFrame();
+		}
 	}
 #endif
 
@@ -125,4 +129,11 @@ void BanimSwitch_HookC0D(struct Anim *anim, int type)
 
 	SwitchAISFrameDataFromBARoundType(anim1, type);
 	SwitchAISFrameDataFromBARoundType(anim2, type);
+
+	if (switched == true) {
+		AnimScrAdvance(gAnims[0]);
+		AnimScrAdvance(gAnims[1]);
+		AnimScrAdvance(gAnims[2]);
+		AnimScrAdvance(gAnims[3]);
+	}
 }
