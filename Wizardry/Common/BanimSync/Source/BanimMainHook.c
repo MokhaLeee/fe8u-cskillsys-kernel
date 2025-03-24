@@ -3,6 +3,12 @@
 
 int  AnimInterpret(struct Anim *anim);
 
+STATIC_DECLAR void Local_AnimScrAdvance(struct Anim * anim)
+{
+	AnimScrAdvance(gAnims[GetAnimPosition(anim) * 2 + 0]);
+	AnimScrAdvance(gAnims[GetAnimPosition(anim) * 2 + 1]);
+}
+
 /**
  * 1. C0D
  * 2. On battle start
@@ -130,10 +136,6 @@ void BanimSwitch_HookC0D(struct Anim *anim, int type)
 	SwitchAISFrameDataFromBARoundType(anim1, type);
 	SwitchAISFrameDataFromBARoundType(anim2, type);
 
-	if (switched == true) {
-		AnimScrAdvance(gAnims[0]);
-		AnimScrAdvance(gAnims[1]);
-		AnimScrAdvance(gAnims[2]);
-		AnimScrAdvance(gAnims[3]);
-	}
+	if (switched == true)
+		Local_AnimScrAdvance(anim);
 }
