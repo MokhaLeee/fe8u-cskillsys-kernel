@@ -7,9 +7,7 @@
 4. The following patches provided by FEBuilderGBA hold clear conflict with c-skillsys thus strictly forbiddened (WIP).
     - Talk AI
     - Anima Triangle
-    - AnimNumbers
     - AoE Area of Effect
-    - Auto save function
     - Status Ailment Swords
     - Base stat based promotion for reclassing
     - When calculating the attack speed, calculate with CON + Skill / 4.
@@ -21,8 +19,6 @@
     - Con-Reducing Diet Drug
     - Limit Weapon Rank Display
     - Multi-Class Pick Skill Installer
-    - Modern Character Growths
-    - ExModularSave
     - Exclude buff states from terrain recovery
     - Remove Creature Campaign
     - Remove Link Arena Option
