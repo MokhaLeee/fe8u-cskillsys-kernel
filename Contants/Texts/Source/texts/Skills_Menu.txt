@@ -34,7 +34,7 @@ Unit can use[NL]
 
 ## MSG_SKILL_HealingFocus
 Heal Focus:[NL]
- Unit recovers 50% HP.[X]
+Unit recovers 50% HP.[X]
 
 ## MSG_MenuSkill_HealingFocusName
  Heal-F[X]

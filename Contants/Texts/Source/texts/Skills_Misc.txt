@@ -259,3 +259,13 @@ temporarily while in combat.[X]
 Upgrade:[N]
 Unit will always gain the "+"[N]
 version of a skill if one exists.[X]
+
+## MSG_SKILL_ShotputPlus
+Shotput+:[N]
+Unit can trade with any allied[N]
+unit in a 5 tile radius.[X]
+
+## MSG_SKILL_Shotput
+Shotput:[N]
+Unit can trade with any allied[N]
+unit in a 3 tile radius.[X]

@@ -698,6 +698,8 @@ SID_Mimicry
 // SID_CursedHeal
 // SID_Warpath
 // SID_Upgrade
+// SID_ShotputPlus
+// SID_Shotput
 
 /////// COMBAT ARTS
 // SID_COMBAT_Grounder

@@ -110,7 +110,9 @@ int get_plus_version(int sid) {
     return sid; // Return original if no upgrade
 }
 
+#ifdef CONFIG_FE8SRR
 extern int RandSkill(int id, struct Unit * unit);
+#endif
 
 #define REG_VCOUNT_CUSTOM (*(volatile unsigned short*)0x04000006)
 #define REG_TM0CNT_L_CUSTOM (*(volatile unsigned short*)0x04000100)
@@ -131,14 +133,14 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
     int i, sid;
     int pid = UNIT_CHAR_ID(unit);
     int jid = UNIT_CLASS_ID(unit);
-    int player = UNIT_FACTION(unit) == FACTION_BLUE;
-    int class = 0;
+    // int player = UNIT_FACTION(unit) == FACTION_BLUE;
+    // int class = 0;
 	bool upgrade = false;
-    if (player)
-    {
-        player = pid;
-        class = jid;
-    }
+    // if (player)
+    // {
+    //     player = pid;
+    //     class = jid;
+    // }
 
 #if defined(SID_Upgrade) && (COMMON_SKILL_VALID(SID_Upgrade))
 	if (SkillTester(unit, SID_Upgrade))
@@ -175,7 +177,8 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 #ifdef CONFIG_FE8SRR
     sid = RandSkill(gpConstSkillTable_Person[pid * 2 + 1] + player, unit);
 #else
-	sid = gpConstSkillTable_Person[pid * 2 + 1] + player;
+	// sid = gpConstSkillTable_Person[pid * 2 + 1] + player;
+	sid = gpConstSkillTable_Person[pid * 2 + 1];
 #endif
 
 	if (upgrade)
@@ -216,7 +219,8 @@ void GenerateSkillListExt(struct Unit * unit, struct SkillList * list)
 #ifdef CONFIG_FE8SRR
     sid = RandSkill(gpConstSkillTable_Job[jid * 2 + 1] + class, unit);
 #else
-	sid = gpConstSkillTable_Job[jid * 2 + 1] + class;
+	// sid = gpConstSkillTable_Job[jid * 2 + 1] + class;
+	sid = gpConstSkillTable_Job[jid * 2 + 1];
 #endif
 
 	if (upgrade)

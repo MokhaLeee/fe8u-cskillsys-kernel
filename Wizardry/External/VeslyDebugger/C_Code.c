@@ -1025,7 +1025,9 @@ enum icon_sheet_idx {
 
 #define SKILL_ICON(sid)   ((ICON_SHEET_SKILL0 << 8) + (sid))
 
+#ifdef CONFIG_FE8SRR
 extern int RandSkill(int id, struct Unit * unit);
+#endif
 
 void RedrawUnitSkillsMenu(DebuggerProc* proc) { 
     TileMap_FillRect(gBG0TilemapBuffer + TILEMAP_INDEX(NUMBER_X-2, Y_HAND), 9, 2 * SkillsOptions, 0);
@@ -1064,9 +1066,7 @@ void RedrawUnitSkillsMenu(DebuggerProc* proc) {
     }
 
     BG_EnableSyncByMask(BG0_SYNC_BIT);
-
 }
-
 
 void SaveSkills(DebuggerProc* proc) { 
     struct Unit* unit = proc->unit; 

@@ -525,7 +525,7 @@ static const EventListScr EventListScr_HOUSE_1_TALK[] = {
 static const EventListScr EventListScr_HOUSE_2_TALK[] = {
     HOUSE_EVENT_NO_END(0x0, Chapter_09_In_Scene_House_02)
     CALL(EventScr_RemoveBGIfNeeded) // This is vital, the game crashes without it for this event
-    GIVE_ITEM_TO(SID_HedgeFund, CHARACTER_EVT_ACTIVE)
+    // GIVE_ITEM_TO(SID_HedgeFund, CHARACTER_EVT_ACTIVE)
     NOFADE
     ENDA
 };

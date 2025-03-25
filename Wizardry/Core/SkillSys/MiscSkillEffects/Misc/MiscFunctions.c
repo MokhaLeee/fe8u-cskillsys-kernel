@@ -520,11 +520,34 @@ void MakeTradeTargetList(struct Unit * unit)
 {
     int x = unit->xPos;
     int y = unit->yPos;
+    bool shotputSkill = false;
 
     gSubjectUnit = unit;
 
     BmMapFill(gBmMapRange, 0);
-    ForEachAdjacentUnit(x, y, TryAddUnitToTradeTargetList);
+
+#if defined(SID_ShotputPlus) && (COMMON_SKILL_VALID(SID_ShotputPlus))
+    if (SkillTester(unit, SID_ShotputPlus))
+    {
+        shotputSkill = true;
+        MapAddInRange(x, y, 5, 1);
+        ForEachUnitInRange(TryAddUnitToTradeTargetList);
+    }
+#endif
+
+#if defined(SID_Shotput) && (COMMON_SKILL_VALID(SID_Shotput))
+    if (SkillTester(unit, SID_Shotput) && !shotputSkill)
+    {
+        shotputSkill = true;
+        MapAddInRange(x, y, 3, 1);
+        ForEachUnitInRange(TryAddUnitToTradeTargetList);
+    }
+#endif
+
+    if (!shotputSkill)
+    {
+        ForEachAdjacentUnit(x, y, TryAddUnitToTradeTargetList);
+    }
 
     if (gSubjectUnit->state & US_RESCUING)
     {
