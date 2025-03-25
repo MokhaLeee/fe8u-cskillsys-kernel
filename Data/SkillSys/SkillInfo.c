@@ -3535,7 +3535,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_FranticSwing) && COMMON_SKILL_VALID(SID_FranticSwing))
     [SID_FranticSwing] = {
-
         .desc = MSG_SKILL_FranticSwing,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -3543,21 +3542,20 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SocialButterfly) && COMMON_SKILL_VALID(SID_SocialButterfly))
     [SID_SocialButterfly] = {
-
         .desc = MSG_SKILL_SocialButterfly,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
 #if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
     [SID_MeleeManiac] = {
-
         .desc = MSG_SKILL_MeleeManiac,
+        .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
 #if (defined(SID_CriticalOverload) && COMMON_SKILL_VALID(SID_CriticalOverload))
     [SID_CriticalOverload] = {
-
         .desc = MSG_SKILL_CriticalOverload,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -3664,7 +3662,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_MagicBounce) && COMMON_SKILL_VALID(SID_MagicBounce))
     [SID_MagicBounce] = {
-
         .desc = MSG_SKILL_MagicBounce,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -3721,7 +3718,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LeadByExample) && COMMON_SKILL_VALID(SID_LeadByExample))
     [SID_LeadByExample] = {
-
         .desc = MSG_SKILL_LeadByExample,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -3729,7 +3725,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_GoodAsGold) && COMMON_SKILL_VALID(SID_GoodAsGold))
     [SID_GoodAsGold] = {
-
         .desc = MSG_SKILL_GoodAsGold,
         .icon = GFX_SkillIcon_GoodAsGold,
     },
@@ -3758,7 +3753,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_DownWithArch) && COMMON_SKILL_VALID(SID_DownWithArch))
     [SID_DownWithArch] = {
-
         .desc = MSG_SKILL_DownWithArch,
         .icon = GFX_SkillIcon_DownWithArch,
     },
@@ -3983,7 +3977,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_ArdentSacrifice) && COMMON_SKILL_VALID(SID_ArdentSacrifice))
     [SID_ArdentSacrifice] = {
-
         .desc = MSG_SKILL_ArdentSacrifice,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -3998,7 +3991,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_NiceThighs) && COMMON_SKILL_VALID(SID_NiceThighs))
     [SID_NiceThighs] = {
-
         .desc = MSG_SKILL_NiceThighs,
         .icon = GFX_SkillIcon_NiceThighs,
     },
@@ -4013,7 +4005,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_ForeignPrincess) && COMMON_SKILL_VALID(SID_ForeignPrincess))
     [SID_ForeignPrincess] = {
-
         .desc = MSG_SKILL_ForeignPrincess,
         .icon = GFX_SkillIcon_ForeignPrincess,
     },
@@ -4021,7 +4012,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_FullMetalBody) && COMMON_SKILL_VALID(SID_FullMetalBody))
     [SID_FullMetalBody] = {
-
         .desc = MSG_SKILL_FullMetalBody,
         .icon = GFX_SkillIcon_FullMetalBody,
     },
@@ -4029,7 +4019,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_HoardersBane) && COMMON_SKILL_VALID(SID_HoardersBane))
     [SID_HoardersBane] = {
-
         .desc = MSG_SKILL_HoardersBane,
         .icon = GFX_SkillIcon_HoardersBane,
     },
@@ -4037,7 +4026,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_IdentityProblems) && COMMON_SKILL_VALID(SID_IdentityProblems))
     [SID_IdentityProblems] = {
-
         .desc = MSG_SKILL_IdentityProblems,
         .icon = GFX_SkillIcon_IdentityProblems,
     },
@@ -4045,7 +4033,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Pathfinder) && COMMON_SKILL_VALID(SID_Pathfinder))
     [SID_Pathfinder] = {
-
         .desc = MSG_SKILL_Pathfinder,
         .icon = GFX_SkillIcon_Pathfinder,
     },
@@ -4053,7 +4040,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_ReciprocalAid) && COMMON_SKILL_VALID(SID_ReciprocalAid))
     [SID_ReciprocalAid] = {
-
         .desc = MSG_SKILL_ReciprocalAid,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -4068,7 +4054,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Sacrifice) && COMMON_SKILL_VALID(SID_Sacrifice))
     [SID_Sacrifice] = {
-
         .desc = MSG_SKILL_Sacrifice,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -4076,7 +4061,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Thighdeology) && COMMON_SKILL_VALID(SID_Thighdeology))
     [SID_Thighdeology] = {
-
         .desc = MSG_SKILL_Thighdeology,
         .icon = GFX_SkillIcon_Thighdeology,
     },
@@ -4091,7 +4075,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_TriangleAttack) && COMMON_SKILL_VALID(SID_TriangleAttack))
     [SID_TriangleAttack] = {
-
         .desc = MSG_SKILL_TriangleAttack,
         .icon = GFX_SkillIcon_TriangleAttack,
     },
@@ -4120,7 +4103,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_PastelVeil) && COMMON_SKILL_VALID(SID_PastelVeil))
     [SID_PastelVeil] = {
-
         .desc = MSG_SKILL_PastelVeil,
         .icon = GFX_SkillIcon_PastelVeil,
     },
@@ -4142,7 +4124,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_AdaptiveStance) && COMMON_SKILL_VALID(SID_AdaptiveStance))
     [SID_AdaptiveStance] = {
-
         .desc = MSG_SKILL_AdaptiveStance,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -4150,7 +4131,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_AdrenalineRush) && COMMON_SKILL_VALID(SID_AdrenalineRush))
     [SID_AdrenalineRush] = {
-
         .desc = MSG_SKILL_AdrenalineRush,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -4165,7 +4145,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_DemolitionExpert) && COMMON_SKILL_VALID(SID_DemolitionExpert))
     [SID_DemolitionExpert] = {
-
         .desc = MSG_SKILL_DemolitionExpert,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -4181,7 +4160,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_AdaptiveLunge) && COMMON_SKILL_VALID(SID_AdaptiveLunge))
     [SID_AdaptiveLunge] = {
-
         .desc = MSG_SKILL_AdaptiveLunge,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -4224,7 +4202,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LimitBreaker) && COMMON_SKILL_VALID(SID_LimitBreaker))
     [SID_LimitBreaker] = {
-
         .desc = MSG_SKILL_LimitBreaker,
         .icon = GFX_SkillIcon_LimitBreaker,
     },
@@ -4232,7 +4209,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LimitBreakerPlus) && COMMON_SKILL_VALID(SID_LimitBreakerPlus))
     [SID_LimitBreakerPlus] = {
-
         .desc = MSG_SKILL_LimitBreakerPlus,
         .icon = GFX_SkillIcon_LimitBreakerPlus,
     },
@@ -4422,7 +4398,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_BeginnersLuck) && COMMON_SKILL_VALID(SID_BeginnersLuck))
     [SID_BeginnersLuck] = {
-
         .desc = MSG_SKILL_BeginnersLuck,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -4430,7 +4405,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_ExpertsExperience) && COMMON_SKILL_VALID(SID_ExpertsExperience))
     [SID_ExpertsExperience] = {
-
         .desc = MSG_SKILL_ExpertsExperience,
         .icon = GFX_SkillIcon_WIP,
     },
@@ -5000,6 +4974,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_ShotputPlus) && COMMON_SKILL_VALID(SID_ShotputPlus))
     [SID_ShotputPlus] = {
         .desc = MSG_SKILL_ShotputPlus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_Extrovert) && COMMON_SKILL_VALID(SID_Extrovert))
+    [SID_Extrovert] = {
+        .desc = MSG_SKILL_Extrovert,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif

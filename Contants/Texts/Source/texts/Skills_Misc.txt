@@ -30,12 +30,12 @@ Allies +3 damage dealt on[NL]
 assistance on combo-attack[X]
 
 ## MSG_SKILL_LiveToServe
-LiveToServe:[NL]
+Live To Serve:[NL]
 Heal unit by the same amount as[NL]
 the target when using a staff.[X]
 
 ## MSG_SKILL_SocialButterfly_NAME
-S-Butterfly[X]
+Social Butterfly[X]
 
 ## MSG_SKILL_SocialButterfly
 Social Butterfly:[NL]
@@ -269,3 +269,8 @@ unit in a 5 tile radius.[X]
 Shotput:[N]
 Unit can trade with any allied[N]
 unit in a 3 tile radius.[X]
+
+## MSG_SKILL_Extrovert
+Extrovert:[N]
+Double this unit's[N]
+support bonuses.[X]

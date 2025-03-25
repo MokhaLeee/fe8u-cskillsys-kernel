@@ -64,6 +64,18 @@ static void DrawPage4SupportBonus(void)
     /* Generate bonus value */
     GetUnitSupportBonuses(unit, &bonuses);
 
+#if (defined(SID_Extrovert) && COMMON_SKILL_VALID(SID_Extrovert))
+    if (SkillTester(unit, SID_Extrovert))
+    {
+        bonuses.bonusAttack *= 2;
+        bonuses.bonusAvoid *= 2;
+        bonuses.bonusCrit *= 2;
+        bonuses.bonusDefense *= 2;
+        bonuses.bonusDodge *= 2;
+        bonuses.bonusHit *= 2;
+    }
+#endif
+
     PutNumberOrBlank(
         gUiTmScratchA + TILEMAP_INDEX(0x6, 0x3),
         TEXT_COLOR_SYSTEM_BLUE,
