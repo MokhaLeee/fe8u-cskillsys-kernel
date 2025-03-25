@@ -28,7 +28,7 @@ There is a pointer list after the magic pattern, starting at `0xB2A614` with siz
 TextTable is repointed at the end of data section, [0xBFBBF4](../include/Configs/config-memmap.h#35) (the very beginning of main space) with [size = `0x1200 * sizeof(uintptr_t)`](../Repoint/RepointText/RepointText.event#L9) free space allocated.
 
 > [!NOTE]
-> For now, we use the vanilla msg data location to put kernel .text section, so that the kernel can run at in-BL range space. In exchange, the vanilla TextTable and text content have been reduced and redirected to the .data section of the kernel. Since we've only cut the story text from the original game, this won't affect custom game development.
+> For now, we use the vanilla msg data location to put kernel .text section, so that the kernel can run at in-BL range space. In exchange, the vanilla TextTable and texts' contents have to be recompiled and redirected to the .data section of the kernel. You can use config [`CONFIG_CROP_VANILLA_MSG`](../include/Configs/configs.h#L18) to crop out vanilla story related texts to save space (~470K Bytes).
 
 ## Font space
 
@@ -85,6 +85,6 @@ part     function name       start           end             max size    real si
 [a]      ARM_SkillTester     0x03003FF0      0x03004150      0x138       0x160
 
 [b]      ARM_UnitList        0x0300428C      0x0300438C      0x100       0xEC
-[b]      ARM_SkillList       0x0300438C      0x0300448C      0x100       0xCC
-[b]      __free__            ---             0x03004960      0x4D4       ---
+[b]      ARM_SkillList       0x0300438C      0x030043B4      0x03C       0x3C
+[b]      __free__            ---             0x03004960      0x5A0       ---
 ```

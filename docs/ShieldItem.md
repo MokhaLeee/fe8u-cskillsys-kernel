@@ -11,7 +11,7 @@ Additionally, it can be set to consume the shield item only when a hit is not mi
 
 ![image](./gfx/Shield_Patch.png)
 
-Shile item config can be set via FEB patch: `Shile item config`, The configurable contents are as follows:
+Shield item config can be set via FEB patch: `Shile item config`, The configurable contents are as follows:
 
 - `enabled`
 
@@ -27,11 +27,11 @@ Shile item config can be set via FEB patch: `Shile item config`, The configurabl
 
 - `consume on defending`
 
-	Shield may lose duration on each hit round as attacker.
+	Shield may lose duration on each hit round as defender.
 
 - `Not consume on missed hit`
 
-	Shield/Talisman may not lose duration if on missed attacking.
+	Shield/Talisman may not lose duration if missed.
 
 - Battle status corrections
 
