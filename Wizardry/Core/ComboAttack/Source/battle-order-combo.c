@@ -34,6 +34,18 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 		// Hitted
 		gBattleStats.damage = 5;
 
+		if (GetItemWeaponEffect(GetUnitEquippedWeapon(unit)) == WPN_EFFECT_HPDRAIN) {
+			/**
+			 * If the weapon itself is set as hpdrain,
+			 * then it may directly call EfxHpBarResire() in banim,
+			 * at which time we must set hp-steal flag for battle-parse.
+			 *
+			 * Actually it is better to judge on efxmagic index during banim parse,
+			 * but, well it also works for now.
+			 */
+			hit->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+		}
+
 #if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
 		if (SkillTester(unit, SID_Assist))
 			gBattleStats.damage += SKILL_EFF0(SID_Assist);

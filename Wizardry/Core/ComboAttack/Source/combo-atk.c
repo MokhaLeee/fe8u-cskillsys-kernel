@@ -20,7 +20,7 @@ STATIC_DECLAR bool ChecComboMagi(int weapon)
 	if (GetItemAttributes(weapon) & (IA_MAGIC | IA_MAGICDAMAGE))
 		return true;
 
-	return true;
+	return false;
 }
 
 STATIC_DECLAR bool CheckComboMelee(int weapon)
