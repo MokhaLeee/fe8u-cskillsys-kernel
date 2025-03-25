@@ -5,6 +5,7 @@
 #include "battle-system.h"
 #include "gaiden-magic.h"
 #include "combat-art.h"
+#include "strmag.h"
 #include "combo-attack.h"
 #include "constants/skills.h"
 
@@ -18,6 +19,24 @@ STATIC_DECLAR bool CheckCanContinueAttack(struct BattleUnit *bu)
 	if (CheckGaidenMagicAttack(bu))
 		if (bu->unit.curHP <= GetGaidenWeaponHpCost(&bu->unit, bu->weapon))
 			return false;
+
+#ifdef CONFIG_STOP_COUNTER_ENABLED
+	switch (bu->statusOut) {
+	case UNIT_STATUS_SLEEP:
+	case UNIT_STATUS_PETRIFY:
+	case UNIT_STATUS_13:
+		return false;
+
+	case UNIT_STATUS_SILENCED:
+		if (IsMagicAttack(bu))
+			return false;
+
+		break;
+
+	default:
+		break;
+	}
+#endif // STOP_COUNTER_ENABLED
 
 	return true;
 }

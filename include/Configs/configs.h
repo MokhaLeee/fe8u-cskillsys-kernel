@@ -98,6 +98,12 @@
 #endif /* USE_GAIDEN_MAGIC */
 
 /**
+ * 1. Petrify should not stop battle
+ * 2. Petrified/sleeped unit should not attack
+ */
+#define CONFIG_STOP_COUNTER_ENABLED
+
+/**
  * Enable leader-ship features
  */
 // #define CONFIG_LEADER_SHIP_EN

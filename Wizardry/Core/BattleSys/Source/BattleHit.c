@@ -286,11 +286,15 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 
 		gBattleHitIterator++;
 		return true;
-	} else if (defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 || defender->statusOut == UNIT_STATUS_SLEEP) {
+	}
+
+#ifndef CONFIG_STOP_COUNTER_ENABLED
+	if (defender->statusOut == UNIT_STATUS_PETRIFY || defender->statusOut == UNIT_STATUS_13 || defender->statusOut == UNIT_STATUS_SLEEP) {
 		gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
 		gBattleHitIterator++;
 		return true;
 	}
+#endif
 
 	gBattleHitIterator++;
 	return false;
