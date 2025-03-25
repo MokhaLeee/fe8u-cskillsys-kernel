@@ -164,6 +164,9 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 		 * If the weapon itself is set as hpdrain,
 		 * then it may directly call EfxHpBarResire() in banim,
 		 * at which time we must set hp-steal flag for battle-parse.
+		 *
+		 * Actually it is better to judge on efxmagic index during banim parse,
+		 * but, well it also works for now.
 		 */
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 	}
