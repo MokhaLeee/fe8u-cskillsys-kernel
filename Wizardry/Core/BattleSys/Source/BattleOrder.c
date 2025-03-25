@@ -432,6 +432,13 @@ void BattleUnwind(void)
 		if (ret)
 			break;
 	}
+
+	if (GetBattleHitRound(gBattleHitIterator) != 0) {
+		struct BattleHit *pre_hit = gBattleHitIterator - 1;
+
+		pre_hit->info |= BATTLE_HIT_INFO_FINISHES;
+	}
+
 	gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
 }
 

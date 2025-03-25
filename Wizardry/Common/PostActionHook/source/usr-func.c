@@ -16,13 +16,13 @@ bool PostAction_CommonStart(ProcPtr proc)
 	for (i = 0; i < NEW_BATTLE_HIT_MAX; i++) {
 		struct BattleHit *hit = (prBattleHitArray + BattleHitArrayWidth * i);
 
+		if (hit->info & BATTLE_HIT_INFO_END)
+			break;
+
 		if (!(hit->info & BATTLE_HIT_INFO_RETALIATION))
 			buf->total_damage_actor  += hit->hpChange;
 		else
 			buf->total_damage_target += hit->hpChange;
-
-		if (hit->info & BATTLE_HIT_INFO_FINISHES)
-			break;
 	}
 
 	return false;
