@@ -178,8 +178,14 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	/**
 	 * Step 1: calculate drain percentage
 	 */
-	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
-		percentage += gpKernelBattleDesignerConfig->nosferatu_hpdrain_perc;
+	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN) {
+		int weapon_drain = gpWeaponHpDrainConfig[ITEM_INDEX(attacker->weapon)];
+
+		if (weapon_drain == 0)
+			weapon_drain = gpKernelBattleDesignerConfig->nosferatu_hpdrain_perc;
+
+		percentage += weapon_drain;
+	}
 
 	if (gBattleTemporaryFlag.skill_activated_aether)
 		percentage += 100;

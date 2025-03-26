@@ -172,6 +172,9 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender);
 
+extern u8 const *const gpWeaponHpCostConfig;
+extern u8 const *const gpWeaponHpDrainConfig;
+
 /**
  * BattleDamage
  */
@@ -238,7 +241,7 @@ extern s8 const *const gpCriticalBonus;
 extern s8 const *const gpSilencerBonus;
 
 /**
- * EfxResire weapon judgement
+ * HpDrain/EfxResire weapon judgement
  */
 bool CheckWeaponIsEfxResire(int weapon);
 

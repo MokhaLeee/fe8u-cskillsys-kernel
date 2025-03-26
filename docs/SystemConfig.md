@@ -138,7 +138,7 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 - `HP drain percentgae for nosferatu`
 
-	Nosferatu hp-drain percentage: 100% --> `[50%]`.
+	Default hp-drain percentage: 100% --> `[50%]`.(Lower priority than [kernel item config table](../Data/BattleSys/WeaponHpDrain.c))
 
 - `AVO deacy for riders indorr`
 

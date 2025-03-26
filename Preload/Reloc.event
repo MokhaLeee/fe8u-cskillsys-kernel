@@ -185,4 +185,7 @@ gpSilencerBonus: POIN gSilencerBonus
 
 gpFarAttackAnimItems: POIN FarAttackAnimItems
 
+gpWeaponHpDrainConfig: POIN WeaponHpDrainConfig
+gpWeaponHpCostConfig:  POIN WeaponHpCostConfig
+
 KERNEL_RELOC_END:
