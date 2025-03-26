@@ -1,0 +1,6 @@
+#include "Source/IndividualAnim.lyn.event"
+
+PUSH
+	ORG $571E8
+	pr_IndividualAnimation7743_Hook:
+POP

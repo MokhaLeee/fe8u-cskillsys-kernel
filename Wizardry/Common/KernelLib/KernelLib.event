@@ -12,8 +12,6 @@
 #include "Source/faction.lyn.event"
 #include "Source/unit-validation.lyn.event"
 #include "Source/UnitList.lyn.event"
-#include "Source/ranges.lyn.event"
-#include "Source/patch-hooks.lyn.event"
 
 // #include "data.event"
 

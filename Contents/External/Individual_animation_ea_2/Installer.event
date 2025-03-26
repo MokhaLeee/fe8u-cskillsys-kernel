@@ -7,7 +7,6 @@ ALIGN 4
 
 PUSH
 ORG $571E8  //FE8U
-pr_IndividualAnimation7743_Hook:
 jumpToHack_r0(IndividualAnimation7743)
 PROTECT 0x00056FF8 0x00057CAC // PrepareBattleGraphicsMaybe
 POP

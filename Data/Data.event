@@ -42,6 +42,9 @@
 #include "MaxStatus/MaxStatus.lyn.event"
 #include "JobGrowth/JobGrowth.lyn.event"
 #include "Shield/ShieldConfig.lyn.event"
+#include "ClassTypes/ClassTypes.lyn.event"
+#include "PortraitHeight/PortraitHeight.lyn.event"
 #include "Misc/FarAttackAnimItem.lyn.event"
+#include "Misc/IconTable.lyn.event"
 
 #endif

@@ -6,12 +6,10 @@
 
 #include "Common/ArmFunc/data.event"
 #include "Common/UnitAction/data.event"
-#include "Common/ClassTypes/data.event"
 #include "Common/ChapterInitHook/data.event"
 #include "Common/GameInitHook/data.event"
 #include "Common/IconDisplay/data.event"
 #include "Common/KernelLib/data.event"
-#include "Common/NegativeStatBoosts/data.event"
 #include "Common/MapAnims/data.event"
 #include "Common/EndTurnHook/data.event"
 #include "Common/PostActionHook/data.event"
@@ -32,6 +30,3 @@
 #include "Core/ComboAttack/data.event"
 #include "Core/Movement/MovementData.event"
 #include "Misc/Reorganize/data.event"
-#include "Misc/PortraitHeight/data.event"
-
-#include "External/ExternalPatchData.event"

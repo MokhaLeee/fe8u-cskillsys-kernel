@@ -271,11 +271,4 @@ enum BattleStatusIdxRef {
 /**
  * patch-hooks.c
  */
-// Individual_animation_ea_2
-struct IndividualAnimConf {
-	u8 pid, jid;
-	u8 _pad_[2];
-	const struct BattleAnimDef *anim_conf;
-};
 
-const struct IndividualAnimConf *GetPrIndividualAnimConf(void);

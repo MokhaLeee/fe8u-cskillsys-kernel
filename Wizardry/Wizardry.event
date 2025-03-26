@@ -48,6 +48,7 @@ ALIGN 4
 #include "Common/MapAnims/MapAnims.event"
 #include "Common/Utf8/Utf8.event"
 #include "Common/PlayStExpa/PlayStExpa.event"
+#include "Common/FebCompat/FebCompat.event"
 
 #include "Core/SkillSys/SkillSys.event"
 #include "Core/DebuffRework/DebuffRework.event"
@@ -74,4 +75,11 @@ ALIGN 4
     #include "Misc/ConvoyExpa/ConvoyExpa.event"
 #endif
 
-#include "External/ExternalPatches.event"
+#ifdef CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
+    #include "Misc/AutoluOpt/AutoluOpt.event"
+#endif
+
+#ifdef CONFIG_NO_SUS_IN_AI_PHASE
+    #include "Misc/PhaseSuspend/PhaseSuspend.event"
+#endif
+

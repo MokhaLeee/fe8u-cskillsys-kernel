@@ -1,0 +1,4 @@
+/**
+ * Some specific code to fit for FEB patches
+ */
+#include "IndividualAnim/IndividualAnim.event"

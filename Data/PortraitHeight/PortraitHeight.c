@@ -1,7 +1,5 @@
 #include <common-chax.h>
 
-#include "PortraitHeight.h"
-
 const u8 HighPortraitFidLut[] = {
 	FID_LUTE,
 	FID_AMELIA,

@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "kernel-lib.h"
+#include "feb-compat.h"
 #include "banim-sync.h"
 #include "efx-skill.h"
 #include "combo-attack.h"
