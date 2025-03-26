@@ -155,6 +155,24 @@ void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int
 	LTRACEF("drain=%d, modified=%d, total=%d", drain, modified, ext_hit->hp_drain);
 }
 
+void BattleHit_CalcWeaponHpCost(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	int perc = gpWeaponHpCostConfig[ITEM_INDEX(attacker->weapon)];
+
+	if (perc > 0) {
+		int cost = perc_of(attacker->unit.maxHP, perc);
+		int round = GetCurrentBattleHitRound();
+
+		if (cost <= 0)
+			cost = 1;
+
+		if (cost >= attacker->unit.curHP)
+			cost = attacker->unit.curHP - 1;
+
+		AddBattleHpCost(attacker, round, cost);
+	}
+}
+
 void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	struct ExtBattleHit *ext_hit = GetCurrentExtBattleHit();
@@ -203,7 +221,7 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	/**
 	 * Step 2: calculate real amount
 	 */
-	drain += Div(gBattleStats.damage * percentage, 100);
+	drain += k_udiv(gBattleStats.damage * percentage, 100);
 
 	/**
 	 * Step 3: detect overflow
