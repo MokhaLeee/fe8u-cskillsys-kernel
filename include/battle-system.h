@@ -213,11 +213,6 @@ int GetUnitLeaderShip(struct Unit *unit);
 void PreBattleCalcLeadershipBonus(struct BattleUnit *actor, struct BattleUnit *target);
 
 /**
- * Bow2Decrease patch
- */
-bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
-
-/**
  * Negate def rate
  */
 struct NegateDefConfEnt {
@@ -229,11 +224,6 @@ extern struct NegateDefConfEnt const gNegateDefConf[];
 extern struct NegateDefConfEnt const *const gpNegateDefConf;
 
 int GetDefenderNegatedDefense(struct BattleUnit *attacker, struct BattleUnit *defender);
-
-/**
- * Devil fix
- */
-bool RollBaseDevilCheck(struct BattleUnit *bu);
 
 /**
  * Critical bonus

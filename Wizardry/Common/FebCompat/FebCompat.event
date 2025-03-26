@@ -2,3 +2,5 @@
  * Some specific code to fit for FEB patches
  */
 #include "IndividualAnim/IndividualAnim.event"
+#include "Bow2Decrease/Bow2Decrease.event"
+#include "Devil/Devil.event"

@@ -4,6 +4,7 @@
 #include "battle-system.h"
 #include "strmag.h"
 #include "debuff.h"
+#include "feb-compat.h"
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 

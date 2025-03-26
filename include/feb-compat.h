@@ -12,3 +12,13 @@ struct IndividualAnimConf {
 };
 
 const struct IndividualAnimConf *GetPrIndividualAnimConf(void);
+
+/**
+ * Bow2Decrease
+ */
+bool CheckWeaponCostForMissedBowAttack(struct BattleUnit *actor);
+
+/**
+ * Devil
+ */
+bool RollBaseDevilCheck(struct BattleUnit *bu);
