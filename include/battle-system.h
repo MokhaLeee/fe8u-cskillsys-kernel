@@ -235,6 +235,7 @@ extern s8 const *const gpSilencerBonus;
  * HpDrain/EfxResire weapon judgement
  */
 bool CheckWeaponIsEfxResire(int weapon);
+bool CheckEfxMagicIsResire(int efx);
 
 /**
  * Hp cost

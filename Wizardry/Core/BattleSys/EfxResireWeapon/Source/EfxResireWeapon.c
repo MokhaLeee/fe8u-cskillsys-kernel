@@ -58,6 +58,14 @@ STATIC_DECLAR int GetEfxResireEfxIndex(void)
 	return sEfxResireEfxIndexCacheData;
 }
 
+bool CheckEfxMagicIsResire(int efx)
+{
+	if (efx == GetEfxResireEfxIndex())
+		return true;
+
+	return false;
+}
+
 bool CheckWeaponIsEfxResire(int weapon)
 {
 	int iid = ITEM_INDEX(weapon);

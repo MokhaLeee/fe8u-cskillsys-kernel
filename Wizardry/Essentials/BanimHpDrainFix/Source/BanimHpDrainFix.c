@@ -14,7 +14,7 @@ void StartBattleAnimHitEffectsDefault(struct Anim *anim, int type)
 		 * which may directly call the hpbar-resire and cause
 		 * the hpbar offset get wrong.
 		 */
-		if (gEkrSpellAnimIndex[GetAnimPosition(anim)] == 0x1E) {
+		if (CheckEfxMagicIsResire(gEkrSpellAnimIndex[GetAnimPosition(anim)])) {
 			StartBattleAnimHitEffects(anim, type, 3, 4);
 			return;
 		}
