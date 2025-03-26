@@ -238,6 +238,11 @@ extern s8 const *const gpCriticalBonus;
 extern s8 const *const gpSilencerBonus;
 
 /**
+ * EfxResire weapon judgement
+ */
+bool CheckWeaponIsEfxResire(int weapon);
+
+/**
  * Hp cost
  */
 bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);

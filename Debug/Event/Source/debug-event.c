@@ -45,7 +45,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 			.delayFrames = 8,
 		}},
 		.items = {
-			ITEM_SWORD_SILVER,
+			ITEM_SWORD_RUNESWORD,
 			ITEM_LANCE_SILVER,
 			ITEM_HOPLON_SHIELD,
 			ITEM_ELIXIR
