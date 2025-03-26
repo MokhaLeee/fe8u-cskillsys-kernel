@@ -34,14 +34,16 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 		// Hitted
 		gBattleStats.damage = 5;
 
-		if (GetItemWeaponEffect(GetUnitEquippedWeapon(unit)) == WPN_EFFECT_HPDRAIN) {
+#ifdef CONFIG_AUTO_DETECT_EFXRESIRE_WEAPON
+		if (CheckWeaponIsEfxResire(GetUnitEquippedWeapon(unit)))
+#else
+		if (GetItemWeaponEffect(GetUnitEquippedWeapon(unit)) == WPN_EFFECT_HPDRAIN)
+#endif
+		{
 			/**
 			 * If the weapon itself is set as hpdrain,
 			 * then it may directly call EfxHpBarResire() in banim,
 			 * at which time we must set hp-steal flag for battle-parse.
-			 *
-			 * Actually it is better to judge on efxmagic index during banim parse,
-			 * but, well it also works for now.
 			 */
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 		}

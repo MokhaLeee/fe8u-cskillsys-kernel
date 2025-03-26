@@ -1,0 +1,11 @@
+#include "Source/EfxResireWeapon.lyn.event"
+
+PUSH
+    // spell assoc pointer
+    ORG 0x078240
+    pr_SpellAssoc:
+
+    // efx magic pointer
+    ORG 0x05B3F8
+    pr_EfxMagicTable:
+POP

@@ -3,7 +3,7 @@
 #include <battle-system.h>
 #include <combo-attack.h>
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 extern u16 const *const gpFarAttackAnimItems;
 
@@ -88,13 +88,14 @@ void ParseBattleHitToBanimCmd(void)
 	int distance_modes[2];
 	int hplut_offs[2];
 
-	#define HpLutAdvance(pos, chg) \
+	#define HpLutAdvance(__pos, __chg) \
 	do { \
-		new_hp = gEfxHpLutRe[hplut_offs[pos] * 2 + pos] + (chg); \
+		new_hp = gEfxHpLutRe[hplut_offs[__pos] * 2 + __pos] + (__chg); \
 		if (new_hp < 0) \
 			new_hp = 0; \
-		hplut_offs[pos]++; \
-		gEfxHpLutRe[hplut_offs[pos] * 2 + pos] = new_hp; \
+		hplut_offs[__pos]++; \
+		gEfxHpLutRe[hplut_offs[__pos] * 2 + __pos] = new_hp; \
+		LTRACEF("pos=%d, off=%d, hp=%d", __pos, hplut_offs[__pos], new_hp); \
 	} while (0)
 
 	for (i = 0; i < ARRAY_COUNT(gAnimRoundDataRe); i++)
@@ -253,15 +254,8 @@ void ParseBattleHitToBanimCmd(void)
 			/**
 			 * Hp drain
 			 */
-			if (exthit->hp_drain > 0 || hit->attributes & BATTLE_HIT_ATTR_HPSTEAL) {
-				/**
-				 * Well apparently this is a bug, but maybe we can give a correct
-				 */
-				if (exthit->hp_drain <= 0)
-					HpLutAdvance(attacker_pos, hit->hpChange);
-				else
-					HpLutAdvance(attacker_pos, exthit->hp_drain);
-			}
+			if (exthit->hp_drain > 0 || hit->attributes & BATTLE_HIT_ATTR_HPSTEAL)
+				HpLutAdvance(attacker_pos, exthit->hp_drain);
 
 			if (hit->attributes & BATTLE_HIT_ATTR_POISON)
 				anim_round[defender_pos] |= ANIM_ROUND_POISON;

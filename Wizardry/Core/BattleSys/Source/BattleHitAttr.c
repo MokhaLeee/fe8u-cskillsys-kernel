@@ -7,7 +7,7 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
@@ -140,35 +140,69 @@ bool CheckBattleInori(struct BattleUnit *attacker, struct BattleUnit *defender)
  */
 void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int drain)
 {
-	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
-		drain = attacker->unit.maxHP - attacker->unit.curHP;
+	struct ExtBattleHit *ext_hit = GetCurrentExtBattleHit();
+	int modified = ext_hit->hp_drain + drain;
 
-	if (drain > 0) {
-		attacker->unit.curHP += drain;
-		GetCurrentExtBattleHit()->hp_drain += drain;
+	if (attacker->unit.maxHP < (attacker->unit.curHP + modified))
+		modified = attacker->unit.maxHP - attacker->unit.curHP;
+
+	if (modified > 0) {
+		attacker->unit.curHP += modified;
+		ext_hit->hp_drain += modified;
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
+
+	LTRACEF("drain=%d, modified=%d, total=%d", drain, modified, ext_hit->hp_drain);
+}
+
+void BattleHit_CalcWeaponHpCost(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	int perc = gpWeaponHpCostConfig[ITEM_INDEX(attacker->weapon)];
+
+	if (perc > 0) {
+		int cost = perc_of(attacker->unit.maxHP, perc);
+		int round = GetCurrentBattleHitRound();
+
+		if (cost <= 0)
+			cost = 1;
+
+		if (cost >= attacker->unit.curHP)
+			cost = attacker->unit.curHP - 1;
+
+		AddBattleHpCost(attacker, round, cost);
 	}
 }
 
 void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-	int drain, percentage = 0;
+	struct ExtBattleHit *ext_hit = GetCurrentExtBattleHit();
+	int percentage = 0;
+	int drain = ext_hit->hp_drain;
+
+#ifdef CONFIG_AUTO_DETECT_EFXRESIRE_WEAPON
+	if (CheckWeaponIsEfxResire(attacker->weapon))
+#else
+	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN)
+#endif
+	{
+		/**
+		 * If the weapon itself is set as hpdrain,
+		 * then it may directly call EfxHpBarResire() in banim,
+		 * at which time we must set hp-steal flag for battle-parse.
+		 */
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+	}
 
 	/**
 	 * Step 1: calculate drain percentage
 	 */
 	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN) {
-		percentage += gpKernelBattleDesignerConfig->nosferatu_hpdrain_perc;
+		int weapon_drain = gpWeaponHpDrainConfig[ITEM_INDEX(attacker->weapon)];
 
-		/**
-		 * If the weapon itself is set as hpdrain,
-		 * then it may directly call EfxHpBarResire() in banim,
-		 * at which time we must set hp-steal flag for battle-parse.
-		 *
-		 * Actually it is better to judge on efxmagic index during banim parse,
-		 * but, well it also works for now.
-		 */
-		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+		if (weapon_drain == 0)
+			weapon_drain = gpKernelBattleDesignerConfig->nosferatu_hpdrain_perc;
+
+		percentage += weapon_drain;
 	}
 
 	if (gBattleTemporaryFlag.skill_activated_aether)
@@ -187,10 +221,7 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	/**
 	 * Step 2: calculate real amount
 	 */
-	drain = Div(gBattleStats.damage * percentage, 100);
-
-	LTRACEF("hpdrain: dmg=%d, perc=%d, drain=%d, cur=%d, max=%d",
-			gBattleStats.damage, percentage, drain, attacker->unit.curHP, attacker->unit.maxHP);
+	drain += k_udiv(gBattleStats.damage * percentage, 100);
 
 	/**
 	 * Step 3: detect overflow
@@ -198,8 +229,11 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	if (attacker->unit.maxHP < (attacker->unit.curHP + drain))
 		drain = attacker->unit.maxHP - attacker->unit.curHP;
 
+	LTRACEF("hpdrain: dmg=%d, perc=%d, drain=%d, cur=%d, max=%d",
+		gBattleStats.damage, percentage, drain, attacker->unit.curHP, attacker->unit.maxHP);
+
 	if (drain > 0) {
-		GetCurrentExtBattleHit()->hp_drain += drain;
+		GetCurrentExtBattleHit()->hp_drain = drain;
 		attacker->unit.curHP += drain;
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 	}

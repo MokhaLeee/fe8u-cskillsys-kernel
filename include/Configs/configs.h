@@ -80,6 +80,11 @@
 #define CONFIG_FAKE_OLD_ANIMNUMBER_PATCH
 
 /**
+ * Auto detect on EfxResire weapon judgement
+ */
+#define CONFIG_AUTO_DETECT_EFXRESIRE_WEAPON
+
+/**
  * If uncommented, enable Gaiden style magic system
  *
  * Sub:
