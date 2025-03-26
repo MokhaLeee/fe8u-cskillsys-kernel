@@ -43,7 +43,7 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 			 * Actually it is better to judge on efxmagic index during banim parse,
 			 * but, well it also works for now.
 			 */
-			hit->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
+			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 		}
 
 #if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
