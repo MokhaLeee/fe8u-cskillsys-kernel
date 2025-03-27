@@ -1246,3 +1246,8 @@ a fixed 10 points of damage.[X]
 Camouflage:[N]
 Terrain avoid bonuses are[N]
 x1.5 for this unit.[X]
+
+## MSG_SKILL_Transpose
+Transpose:[N]
+Invert the enemy unit's[N]
+AVO terrain boosts.[X]

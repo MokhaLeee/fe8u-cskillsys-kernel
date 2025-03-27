@@ -227,6 +227,7 @@ SID_Decadon
 SID_Camouflage
 // SID_SwiftAttack
 // SID_Trace
+// SID_Transpose
 
 //////// POST-BATTLE SKILLS
 // SID_Canto

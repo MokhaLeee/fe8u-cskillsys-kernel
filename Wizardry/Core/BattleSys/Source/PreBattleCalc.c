@@ -1837,6 +1837,11 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             attacker->battleAttack += _dmg_tmp;
     }
 #endif
+
+#if (defined(SID_Transpose) && (COMMON_SKILL_VALID(SID_Transpose)))
+        if (BattleSkillTester(defender, SID_Transpose))
+            attacker->battleAvoidRate -= attacker->terrainAvoid * 2;
+#endif
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *defender)
