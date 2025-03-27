@@ -9,12 +9,11 @@
     #include "../include/Definitions.event"
 */
 
-ORG KernelSpace_Magic
-    #include "Preload/KernelMagic.event"
-ASSERT (KernelSpace_MagicEnd - CURRENTOFFSET)
+// Auto generated
+#include "fake-nonsec-reloc.event"
 
-ORG KernelSpace_Reloc
-    #include "Preload/KernelReloc.event"
+#include "Preload/KernelMagic.event"
+#include "Preload/KernelReloc.event"
 KernelSpace_RelocTail:
 MESSAGE Kernel_____Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - KernelSpace_Reloc) max (KernelRelocSize)
 ASSERT (KernelSpace_RelocEnd - CURRENTOFFSET)

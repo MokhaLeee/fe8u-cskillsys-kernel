@@ -14,25 +14,19 @@
  */
 ORG FreeSpace_MsgTable
     #include "Preload/AllocMsgTable.event"
-ASSERT (FreeSpace_MsgTableEnd - CURRENTOFFSET)
-ORG FreeSpace_MsgTableEnd
     TextTableEnd:
 
-/**
- * <!>
- * Tool helpers should installed after msg_table repointing
- */
-#include "Tools/Tool Helpers.txt"
+    /**
+    * <!>
+    * Tool helpers should installed after msg_table repointing
+    */
+    #include "Tools/Tool Helpers.txt"
+ASSERT (FreeSpace_MsgTableEnd - CURRENTOFFSET)
 
-ORG FreeSpace_Magic
-    #include "Preload/Magic.event"
-ASSERT (FreeSpace_MagicEnd - CURRENTOFFSET)
-
-ORG FreeSpace_Reloc
-    #include "Preload/Reloc.event"
+#include "Preload/Magic.event"
+#include "Preload/Reloc.event"
 FreeSpace_RelocTail:
 MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpace_Reloc) max (UsrRelocSize)
-ASSERT (FreeSpace_RelocEnd - CURRENTOFFSET)
 
 ORG FreeSpace_UsrData
     #include "Data/Data.event"

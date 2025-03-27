@@ -403,6 +403,22 @@ endif
 
 CLEAN_FILES += $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_NUPS)
 
+# ========
+# = MISC =
+# ========
+NONSEC_RELOC     := Preload/Reloc.event
+FAKE_NOSEC_RELOC := Kernel/fake-nonsec-reloc.event
+
+$(FAKE_NOSEC_RELOC): $(NONSEC_RELOC)
+	@echo "[GEN]	$(FAKE_NOSEC_RELOC)"
+	@echo "// Auto generated" > $@
+	@cat $< | sed 's/ POIN /\nORG CURRENTOFFSET+4 \/\/ POIN /g' >> $@
+
+CLEAN_FILES += $(FAKE_NOSEC_RELOC)
+
+fake_reloc: $(FAKE_NOSEC_RELOC)
+PRE_BUILD += fake_reloc
+
 # =============
 # = PRE-BUILD =
 # =============
