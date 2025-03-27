@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "strmag.h"
+#include "item-sys.h"
 #include "constants/texts.h"
 
 const struct ItemData ItemData_MagBooster = {
@@ -13,5 +14,5 @@ const struct ItemData ItemData_MagBooster = {
 	.encodedRange = 0x11,
 	.costPerUse = 8000,
 	.iconId = CONFIG_ICON_INDEX_MAG_BOOSTER,
-	.useEffectId = 17,
+	.useEffectId = IER_BOOSTER_POW,
 };
