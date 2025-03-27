@@ -531,3 +531,8 @@ target, apply the rally to this unit.[X]
 Mimicry:[N]
 If a rally target, apply the[N]
 rally to the user as well.[X]
+
+## MSG_SKILL_EternalVanity
+Eternal Vanity:[N]
+Turn based stat buffs do not[N]
+deplete for this unit.[X]

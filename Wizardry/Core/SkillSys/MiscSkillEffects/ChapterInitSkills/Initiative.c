@@ -112,6 +112,7 @@ bool PrePhsae_TickInitativeSkillStatus(ProcPtr proc)
 {
     int i;
     struct Unit *unit;
+    bool eternalVanity = false;
 
     if (gPlaySt.chapterTurnNumber == 2 && gPlaySt.faction == FACTION_BLUE)
     {
@@ -121,7 +122,13 @@ bool PrePhsae_TickInitativeSkillStatus(ProcPtr proc)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            _ClearInitiativeStatDebuf(unit);
+#if (defined(SID_EternalVanity) && COMMON_SKILL_VALID(SID_EternalVanity))
+            if (SkillTester(unit, SID_EternalVanity))
+                eternalVanity = true;
+#endif
+
+            if (!eternalVanity)
+                _ClearInitiativeStatDebuf(unit);
         }
 
         for (i = FACTION_GREEN + 1; i < FACTION_GREEN + 1 + CONFIG_UNIT_AMT_NPC; i++)
@@ -129,8 +136,13 @@ bool PrePhsae_TickInitativeSkillStatus(ProcPtr proc)
             unit = GetUnit(i);
             if (!UNIT_IS_VALID(unit))
                 continue;
-
-            _ClearInitiativeStatDebuf(unit);
+                                
+#if (defined(SID_EternalVanity) && COMMON_SKILL_VALID(SID_EternalVanity))
+            if (SkillTester(unit, SID_EternalVanity))
+                eternalVanity = true;
+#endif
+            if (!eternalVanity)
+                _ClearInitiativeStatDebuf(unit);
         }
 
         for (i = FACTION_RED + 1; i < FACTION_RED + 1 + CONFIG_UNIT_AMT_ENEMY; i++)
@@ -139,7 +151,13 @@ bool PrePhsae_TickInitativeSkillStatus(ProcPtr proc)
             if (!UNIT_IS_VALID(unit))
                 continue;
 
-            _ClearInitiativeStatDebuf(unit);
+#if (defined(SID_EternalVanity) && COMMON_SKILL_VALID(SID_EternalVanity))
+            if (SkillTester(unit, SID_EternalVanity))
+                eternalVanity = true;
+#endif
+
+            if (!eternalVanity)
+                _ClearInitiativeStatDebuf(unit);
         }
     }
     return false;
