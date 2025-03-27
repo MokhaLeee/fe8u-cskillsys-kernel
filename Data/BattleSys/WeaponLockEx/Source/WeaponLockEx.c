@@ -1,6 +1,5 @@
 #include "common-chax.h"
 #include "weapon-lockex.h"
-#include "wpnlockex-internal.h"
 
 const struct WeaponLockExConf gWeaponLockExConfs[] = {
 	{

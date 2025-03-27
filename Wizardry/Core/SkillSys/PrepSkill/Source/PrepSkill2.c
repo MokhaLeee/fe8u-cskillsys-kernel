@@ -56,14 +56,14 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 *proc)
 	BG_EnableSyncByMask(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 	SetDefaultColorEffects();
 
-	Decompress(Gfx_PrepSkillScreen2, (void *)0x06006000);
-	Decompress(Gfx_PrepPickSkillScreen, (void *)0x06000440);
+	Decompress(gpGfx_PrepSkillScreen2, (void *)0x06006000);
+	Decompress(gpGfx_PrepPickSkillScreen, (void *)0x06000440);
 
-	Decompress(Tsa_PrepSubPickSkillScreen, gGenericBuffer);
+	Decompress(gpTsa_PrepSubPickSkillScreen, gGenericBuffer);
 	CallARM_FillTileRect(gBG1TilemapBuffer, gGenericBuffer, 0x1000);
 
-	CopyToPaletteBuffer(Pal_PrepSkillScreen, 0x1E0, 0x20);
-	CopyToPaletteBuffer(Pal_PrepSkillScreen, 0x320, 0x20);
+	CopyToPaletteBuffer(gpPal_PrepSkillScreen, 0x1E0, 0x20);
+	CopyToPaletteBuffer(gpPal_PrepSkillScreen, 0x320, 0x20);
 	EnablePaletteSync();
 
 	/* Hand cursor */

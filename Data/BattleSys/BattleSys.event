@@ -1,0 +1,9 @@
+#include "Source/WeaponTriangle.lyn.event"
+#include "Source/LeaderShip.lyn.event"
+#include "Source/NegateDef.lyn.event"
+#include "Source/CriticalBonus.lyn.event"
+#include "Source/WrankBonus.lyn.event"
+#include "Source/WeaponHpCost.lyn.event"
+#include "Source/WeaponHpDrain.lyn.event"
+
+#include "WeaponLockEx/WeaponLockEx.event"

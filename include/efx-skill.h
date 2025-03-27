@@ -26,8 +26,8 @@ void RegisterEfxSkillCombatArt(int round, const u8 cid);
 u16 GetActorEfxSkill(int round);
 u16 GetTargetEfxSkill(int round);
 
-extern AnimScr AnimScr_EfxSkillBoxIconRight[];
-extern AnimScr AnimScr_EfxSkillBoxIconLeft[];
-extern AnimScr AnimScr_EfxSkillBoxNameRight[];
-extern AnimScr AnimScr_EfxSkillBoxNameLeft[];
-extern const u8 Img_EfxSkillBoxBG[];
+extern AnimScr const *const gpAnimScr_EfxSkillBoxIconRight;
+extern AnimScr const *const gpAnimScr_EfxSkillBoxIconLeft;
+extern AnimScr const *const gpAnimScr_EfxSkillBoxNameRight;
+extern AnimScr const *const gpAnimScr_EfxSkillBoxNameLeft;
+extern u8 const *const gpImg_EfxSkillBoxBG;

@@ -1,7 +1,7 @@
 #ifndef KERNEL_WEAPON_LOCK_EX_DATA_INSTALLED
 #define KERNEL_WEAPON_LOCK_EX_DATA_INSTALLED
 
-#include "Source/data.lyn.event"
+#include "Source/WeaponLockEx.lyn.event"
 
 PUSH
     /* Fake FEB patch: WeaponLockEX */

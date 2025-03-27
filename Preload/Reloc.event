@@ -188,4 +188,25 @@ gpFarAttackAnimItems: POIN FarAttackAnimItems
 gpWeaponHpDrainConfig: POIN WeaponHpDrainConfig
 gpWeaponHpCostConfig:  POIN WeaponHpCostConfig
 
+pr_gpWeaponLockExConfs: POIN gpWeaponLockExConfs
+
+gpAnimScr_EfxSkillBoxIconRight: POIN AnimScr_EfxSkillBoxIconRight
+gpAnimScr_EfxSkillBoxIconLeft:  POIN AnimScr_EfxSkillBoxIconLeft
+gpAnimScr_EfxSkillBoxNameRight: POIN AnimScr_EfxSkillBoxNameRight
+gpAnimScr_EfxSkillBoxNameLeft:  POIN AnimScr_EfxSkillBoxNameLeft
+gpImg_EfxSkillBoxBG: POIN Img_EfxSkillBoxBG
+
+gpGfx_PrepPickSkillScreen: POIN Gfx_PrepPickSkillScreen
+gpTsa_PrepSubPickSkillScreen: POIN Tsa_PrepSubPickSkillScreen
+gpGfx_PrepSkillScreen: POIN Gfx_PrepSkillScreen
+gpPal_PrepSkillScreen: POIN Pal_PrepSkillScreen
+gpGfx_PrepSkillScreen2: POIN Gfx_PrepSkillScreen2
+gpGfx_ObjSkill: POIN Gfx_ObjSkill
+gpPal_ObjSkill: POIN Pal_ObjSkill
+gpGfx_ObjWindow: POIN Gfx_ObjWindow
+gpPal_ObjWindow: POIN Pal_ObjWindow
+
+gpExpandedTextPals: POIN ExpandedTextPals
+gpPage2SubWindow: POIN Page2SubWindow
+
 KERNEL_RELOC_END:

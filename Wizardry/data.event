@@ -1,6 +1,9 @@
 /**
  * Some file should put at head since it holds some macros
  */
+ALIGN 4
+KERNEL_DATA_START:
+
 #include "Common/ItemSys/data.event"
 #include "Common/EventRework/data.event"
 
@@ -17,7 +20,6 @@
 #include "Common/SaveData/data.event"
 #include "Common/UnitMenu/data.event"
 #include "Common/UnitHooks/data.event"
-#include "Common/BanimHack/data.event"
 #include "Core/SkillSys/data.event"
 #include "Core/BattleSys/data.event"
 #include "Core/MapTask/data.event"
@@ -30,3 +32,5 @@
 #include "Core/ComboAttack/data.event"
 #include "Core/Movement/MovementData.event"
 #include "Misc/Reorganize/data.event"
+
+KERNEL_DATA_END:

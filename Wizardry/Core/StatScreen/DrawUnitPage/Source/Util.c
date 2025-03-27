@@ -75,9 +75,9 @@ u8 GetTalkee(struct Unit *unit)
 
 void InstallExpandedTextPal(void)
 {
-	extern const u16 ExpandedTextPals[];
+	extern u16 const *const gpExpandedTextPals;
 
-	ApplyPalettes(ExpandedTextPals, 0x8, 2);
+	ApplyPalettes(gpExpandedTextPals, 0x8, 2);
 };
 
 void ResetActiveFontPal(void)

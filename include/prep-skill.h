@@ -53,11 +53,11 @@ enum ProcPrepSkill2Label {
 
 void StartPrepSelectSkillScreen(struct ProcPrepSkill1 *pproc);
 
-extern const u8 Gfx_PrepPickSkillScreen[];
-extern const u8 Gfx_PrepSkillScreen[];
-extern const u8 Gfx_PrepSkillScreen2[];
-extern const u8 Tsa_PrepSubPickSkillScreen[];
-extern const u16 Pal_PrepSkillScreen[];
+extern u8  const *const gpGfx_PrepPickSkillScreen;
+extern u8  const *const gpGfx_PrepSkillScreen;
+extern u8  const *const gpGfx_PrepSkillScreen2;
+extern u8  const *const gpTsa_PrepSubPickSkillScreen;
+extern u16 const *const gpPal_PrepSkillScreen;
 
 enum PrepSkill2ListConfig {
 	PREP_SRLIST_LENGTH = 7,
@@ -95,11 +95,11 @@ void EnablePrepSkillObj(void);
 void DisablePrepSkillObj(void);
 void PutPrepSkill2PopupBox(int x, int y, int w, int h, int priority);
 
-extern const u8 Gfx_ObjSkill[];
-extern const u16 Pal_ObjSkill[];
+extern u8 const *const gpGfx_ObjSkill;
+extern u16 const *const gpPal_ObjSkill;
 
-extern const u8 Gfx_ObjWindow[];
-extern const u16 Pal_ObjWindow[];
+extern u8 const *const gpGfx_ObjWindow;
+extern u16 const *const gpPal_ObjWindow;
 
 void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 *proc);
 void PrepSkill2_InitTexts(void);

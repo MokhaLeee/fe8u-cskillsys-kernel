@@ -1,0 +1,33 @@
+#include "Source/PageNameSprite.lyn.event"
+
+ALIGN 4
+NewPageNameGraphic:
+    #incbin "Data/Gfx_StatScreenObj.lz77"
+
+ALIGN 4
+NewPageNamePalette:
+    #incbin "Data/palettecycler.bin"
+
+/* Text colors */
+ALIGN 4
+ExpandedTextPals:
+    #include "Data/NewPalette.event"
+
+/* TSA for Page2 */
+ALIGN 4
+Page2SubWindow:
+    #incbin "Data/Page2SubWindow.tsa.lz"
+
+PUSH
+    ORG $88650
+    POIN NewPageNameGraphic
+
+    ORG $87f38
+    POIN Sprites_PageNameRework
+
+    ORG $87f3c
+    POIN gPageNameChrOffsetLutRe
+
+    ORG $87f40
+    POIN NewPageNamePalette
+POP

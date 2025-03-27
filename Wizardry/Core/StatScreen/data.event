@@ -1,6 +1,5 @@
 #include "DrawPages/HelpBoxPage4.event"
 
-#include "DrawMorePage/data.event"
 #include "DrawSkillPage/data.event"
 #include "DrawUnitPage/data.event"
 
@@ -11,13 +10,3 @@ gStatScreenDrawPages:
     POIN 0x0808784D
     POIN DrawPage4Rework
     WORD 0
-
-/* Text colors */
-ALIGN 4
-ExpandedTextPals:
-    #include "Data/NewPalette.event"
-
-/* TSA for Page2 */
-ALIGN 4
-Page2SubWindow:
-    #incbin "Data/Page2SubWindow.tsa.lz"

@@ -1,13 +1,17 @@
 #include "common-chax.h"
 #include "weapon-lockex.h"
-#include "wpnlockex-internal.h"
+
+#define LOCAL_TRACE 1
 
 int CheckWeaponLockEx(struct Unit *unit, u16 item)
 {
 	int ret = 0;
-	const struct WeaponLockExConf *it;
+	const struct WeaponLockExConf *it = *pr_gpWeaponLockExConfs;
 
-	for (it = gpWeaponLockExConfs; it->iid != 0; it++) {
+	for (; it->iid != 0; it++) {
+		LTRACEF("iid=0x%02X, pid=0x%02X, jid=0x%02X, level=%d, evt_flag=0x%02X",
+			it->iid, it->pid, it->jid, it->level, it->evt_flag);
+
 		if (ITEM_INDEX(item) == it->iid) {
 			if (it->pid != 0) {
 				if (it->pid != UNIT_CHAR_ID(unit)) {

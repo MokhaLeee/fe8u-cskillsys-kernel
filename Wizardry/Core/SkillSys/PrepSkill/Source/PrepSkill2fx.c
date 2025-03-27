@@ -117,11 +117,11 @@ STATIC_DECLAR void PutPrepSkill2Suffix(struct ProcPrepSkillObj *proc)
 
 STATIC_DECLAR void PrepSkillObj_OnInit(struct ProcPrepSkillObj *proc)
 {
-	Decompress(Gfx_ObjSkill, OBJ_VRAM0 + SKILLOBJ_VOBJ);
-	ApplyPalette(Pal_ObjSkill, SKILLOBJ_PAL + 0x10);
+	Decompress(gpGfx_ObjSkill, OBJ_VRAM0 + SKILLOBJ_VOBJ);
+	ApplyPalette(gpPal_ObjSkill, SKILLOBJ_PAL + 0x10);
 
-	Decompress(Gfx_ObjWindow, OBJ_VRAM0 + OBJWINDOW_VOBJ);
-	ApplyPalette(Pal_ObjWindow, OBJWINDOW_PAL + 0x10);
+	Decompress(gpGfx_ObjWindow, OBJ_VRAM0 + OBJWINDOW_VOBJ);
+	ApplyPalette(gpPal_ObjWindow, OBJWINDOW_PAL + 0x10);
 }
 
 STATIC_DECLAR void PrepSkillObjMain(struct ProcPrepSkillObj *proc)

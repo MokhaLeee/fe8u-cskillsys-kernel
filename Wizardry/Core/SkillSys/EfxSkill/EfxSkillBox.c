@@ -62,10 +62,10 @@ STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox *proc)
 
 	/* Icon */
 	if (GetAnimPosition(proc->anim) == EKR_POS_L) {
-		anim = AnimCreate(AnimScr_EfxSkillBoxIconLeft, 0x95);
+		anim = AnimCreate(gpAnimScr_EfxSkillBoxIconLeft, 0x95);
 		anim->xPosition = 0x30;
 	} else {
-		anim = AnimCreate(AnimScr_EfxSkillBoxIconRight, 0x95);
+		anim = AnimCreate(gpAnimScr_EfxSkillBoxIconRight, 0x95);
 		anim->xPosition = 0xF0;
 	}
 	anim->oam2Base = OAM2_PAL(ICON_OBJ_PAL) + OAM2_LAYER(0b01) + OAM2_CHR(ICON_OBJ_CHR);
@@ -76,10 +76,10 @@ STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox *proc)
 	DrawEfxSkillName(proc);
 
 	if (GetAnimPosition(proc->anim) == EKR_POS_L) {
-		anim = AnimCreate(AnimScr_EfxSkillBoxNameLeft, 0x95);
+		anim = AnimCreate(gpAnimScr_EfxSkillBoxNameLeft, 0x95);
 		anim->xPosition = 0x00;
 	} else {
-		anim = AnimCreate(AnimScr_EfxSkillBoxNameRight, 0x95);
+		anim = AnimCreate(gpAnimScr_EfxSkillBoxNameRight, 0x95);
 		anim->xPosition = 0x100;
 	}
 	anim->oam2Base = OAM2_PAL(TEXT_OBJ_PAL) + OAM2_LAYER(0b01) + OAM2_CHR(TEXT_OBJ_CHR);
@@ -87,14 +87,14 @@ STATIC_DECLAR void EfxSkillBoxOnDraw(struct ProcEfxskillbox *proc)
 	proc->anim_text = anim;
 
 	/* Text BG */
-	Decompress(Img_EfxSkillBoxBG, gGenericBuffer);
+	Decompress(gpImg_EfxSkillBoxBG, gGenericBuffer);
 	Copy2dChr(gGenericBuffer, OBJ_VRAM0 + TEXT_BG_OBJ_CHR * 0x20, 6, 2);
 
 	if (GetAnimPosition(proc->anim) == EKR_POS_L) {
-		anim = AnimCreate(AnimScr_EfxSkillBoxNameLeft, 0x95);
+		anim = AnimCreate(gpAnimScr_EfxSkillBoxNameLeft, 0x95);
 		anim->xPosition = 0x00;
 	} else {
-		anim = AnimCreate(AnimScr_EfxSkillBoxNameRight, 0x95);
+		anim = AnimCreate(gpAnimScr_EfxSkillBoxNameRight, 0x95);
 		anim->xPosition = 0x100;
 	}
 	anim->oam2Base = OAM2_PAL(ICON_OBJ_PAL) + OAM2_LAYER(0b01) + OAM2_CHR(TEXT_BG_OBJ_CHR);

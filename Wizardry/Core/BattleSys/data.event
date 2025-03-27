@@ -36,5 +36,3 @@ Gfx_BKSEL:
 ALIGN 4
 Pal_BKSEL:
     #incbin "Data/Gfx_BKSEL.gbapal"
-
-#include "WeaponLockEx/data.event"
