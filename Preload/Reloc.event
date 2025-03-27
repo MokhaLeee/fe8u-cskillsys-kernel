@@ -56,10 +56,7 @@ gpLeaderShipConf: POIN gLeaderShipConf
 gpLeaderShipPConf: POIN gLeaderShipPConf
 gpLeaderShipJConf: POIN gLeaderShipJConf
 
-WORD 0 0 0 0 0 0 0 0
-
-gpExternalBattleToUnitHook: POIN gExternalBattleToUnitHook
-gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
+WORD 0 0 0 0 0 0 0 0 0 0
 
 WORD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 

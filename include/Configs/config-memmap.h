@@ -15,8 +15,8 @@
 #define KernelSpace_Text 0x0E8414
 #define KernelSpace_TextSize 0x785A8
 
-#define KernelSpace_Data 0x1C1EC0
-#define KernelSpace_DataSize 0x01408
+#define KernelSpace_Data 0x9875AC
+#define KernelSpace_DataSize 0xF000
 
 #define FreeSpaceCommon 0xB2A604
 #define FreeSpaceCommonSize 0xD59FC

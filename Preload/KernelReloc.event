@@ -57,4 +57,7 @@ gpPopupComponents: POIN gPopupComponents
 gpBattlePopupConfigs: POIN gBattlePopupConfigs
 gpPromotPopupConfigs: POIN gPromotPopupConfigs
 
+gpExternalBattleToUnitHook: POIN gExternalBattleToUnitHook
+gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
+
 KERNEL_RELOC_END:
