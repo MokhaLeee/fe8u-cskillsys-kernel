@@ -5,7 +5,8 @@ ROM space distribution is configured in [config-memmap.h](../include/Configs/con
 | Address   | Size    | Usage
 | -------   | ------- | -----
 | 0x00E8414 | 0x785A8 | Kernel text section (**in-BL range**)
-| 0x0B2A604 | 0xD59FC | Kernel data section
+| 0x09875AC | 0x0F000 | Kernel data section (secure)
+| 0x0B2A604 | 0xD59FC | common data section (none-secure)
 | 0x0EFB2E0 | 0xE4D20 | Font
 | 0x1000000 | ---     | ***reserved for DEMO***
 

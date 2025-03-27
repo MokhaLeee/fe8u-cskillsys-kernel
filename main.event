@@ -53,7 +53,7 @@ ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
  * --------------------- kernel ---------------------
  * --------------------------------------------------
  */
-#include "Kernel/kernel.event"
+#include "main-kernel.event"
 
 /**
  * --------------------------------------------------
