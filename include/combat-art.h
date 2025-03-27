@@ -121,10 +121,10 @@ extern u8 const *const gpCombatArtSkillTable;
 
 /* TargetSel & BKSEL */
 extern s8 sCombatArtBKSELfxTimer;
-extern const u16 Img_BkselObjArrow[];
-extern const u16 Pal_BkselObjArrow[];
-extern u16 Tsa_BkselDetailedScreen[];
-extern u16 Tsa_BkselStandardScreen[];
+extern u16 const *const gpImg_BkselObjArrow;
+extern u16 const *const gpPal_BkselObjArrow;
+extern u16 const *const gpTsa_BkselDetailedScreen;
+extern u16 const *const gpTsa_BkselStandardScreen;
 
 ProcPtr NewTargetSelectionRework(const struct SelectInfo *selectInfo);
 bool CombatArtSelectTargetExist(void);

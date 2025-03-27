@@ -209,4 +209,9 @@ gpPal_ObjWindow: POIN Pal_ObjWindow
 gpExpandedTextPals: POIN ExpandedTextPals
 gpPage2SubWindow: POIN Page2SubWindow
 
+gpImg_BkselObjArrow: POIN Img_BkselObjArrow
+gpPal_BkselObjArrow: POIN Pal_BkselObjArrow
+gpTsa_BkselDetailedScreen: POIN Tsa_BkselDetailedScreen
+gpTsa_BkselStandardScreen: POIN Tsa_BkselStandardScreen
+
 KERNEL_RELOC_END:

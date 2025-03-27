@@ -29,7 +29,6 @@ KERNEL_DATA_START:
 #include "Core/WeaponRange/data.event"
 #include "Core/AiHack/data.event"
 #include "Core/CombatArt/data.event"
-#include "Core/ComboAttack/data.event"
 #include "Core/Movement/MovementData.event"
 #include "Misc/Reorganize/data.event"
 

@@ -109,10 +109,10 @@ void BattleForecast_InitRework(struct BattleForecastProc *proc)
 	if (CanUnitPlayCombatArt(gActiveUnit, GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex))) {
 		sCombatArtBKSELfxTimer = 0;
 
-		Decompress(Img_BkselObjArrow, gGenericBuffer);
+		Decompress(gpImg_BkselObjArrow, gGenericBuffer);
 		Copy2dChr(gGenericBuffer, OBJ_VRAM0 + OBJ_ARROW_VRAMOFF, 7, 2);
 
-		ApplyPalette(Pal_BkselObjArrow, OBJ_ARROW_PAL + 0x10);
+		ApplyPalette(gpPal_BkselObjArrow, OBJ_ARROW_PAL + 0x10);
 
 		StartParallelWorker(BKSELfxUpdateSprits, proc);
 	}
@@ -123,7 +123,7 @@ STATIC_DECLAR void DrawBattleForecastContentsStandardRework(struct BattleForecas
 	DrawBattleForecastContentsStandard(proc);
 
 	if (CanUnitPlayCombatArt(gActiveUnit, GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex)))
-		CallARM_FillTileRect(gUiTmScratchB, Tsa_BkselStandardScreen, 0x1000);
+		CallARM_FillTileRect(gUiTmScratchB, gpTsa_BkselStandardScreen, 0x1000);
 }
 
 STATIC_DECLAR void DrawBattleForecastContentsExtendedRework(struct BattleForecastProc *proc)
@@ -131,7 +131,7 @@ STATIC_DECLAR void DrawBattleForecastContentsExtendedRework(struct BattleForecas
 	DrawBattleForecastContentsExtended(proc);
 
 	if (CanUnitPlayCombatArt(gActiveUnit, GetItemFromSlot(gActiveUnit, gActionData.itemSlotIndex)))
-		CallARM_FillTileRect(gUiTmScratchB, Tsa_BkselDetailedScreen, 0x1000);
+		CallARM_FillTileRect(gUiTmScratchB, gpTsa_BkselDetailedScreen, 0x1000);
 }
 
 STATIC_DECLAR void DrawBattleForecastContentsVanilla(struct BattleForecastProc *proc)

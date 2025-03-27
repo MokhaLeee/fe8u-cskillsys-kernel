@@ -5,7 +5,6 @@
 #define COMBO_MAPA_ACTOR_IDX 2
 
 extern struct BattleUnit gComboMapAnimBattleUnit;
-extern const u8 Img_MapAnimCOMBO[];
 extern u8 const *const gpImg_MapAnimCOMBO;
 
 /**

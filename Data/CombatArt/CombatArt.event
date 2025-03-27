@@ -1,0 +1,23 @@
+#include "Data/CombatArtInfo.lyn.event"
+#include "Data/EfxCombatArtAnim.lyn.event"
+#include "Data/CombatArtSkill.lyn.event"
+#include "Data/CombatArtWeapon.lyn.event"
+#include "Data/RomTables.lyn.event"
+
+// Standard draw
+ALIGN 4
+Img_BkselObjArrow:
+    #incbin "Gfx_BKSEL/Img_ArrowBKSEL.lz77"
+
+ALIGN 4
+Pal_BkselObjArrow:
+    #incbin "Gfx_BKSEL/Img_ArrowBKSEL.gbapal"
+
+// Tsa window:
+ALIGN 4
+Tsa_BkselDetailedScreen:
+    #incbin "Gfx_BKSEL/BkselDetailedScreen.tsa"
+
+ALIGN 4
+Tsa_BkselStandardScreen:
+    #incbin "Gfx_BKSEL/BkselStandardScreen.tsa"
