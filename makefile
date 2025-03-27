@@ -417,7 +417,7 @@ FAKE_NOSEC_RELOC := Kernel/fake-nonsec-reloc.event
 $(FAKE_NOSEC_RELOC): $(NONSEC_RELOC)
 	@echo "[GEN]	$(FAKE_NOSEC_RELOC)"
 	@echo "// Auto generated" > $@
-	@cat $< | sed 's/ POIN /\nORG CURRENTOFFSET+4 \/\/ POIN /g' >> $@
+	@cat $< | sed 's/POIN /\nORG CURRENTOFFSET+4 \/\/ POIN /g; s/WORD /\nORG CURRENTOFFSET+4 \/\/ WORD /g' >> $@
 
 CLEAN_FILES += $(FAKE_NOSEC_RELOC)
 
