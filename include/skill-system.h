@@ -168,6 +168,8 @@ bool SkillMapAnimMiniExists(void);
 
 void NewMuSkillAnimOnActiveUnit(u16 sid, void (* callback1)(ProcPtr proc), void (* callback2)(ProcPtr proc));
 bool MuSkillAnimExists(void);
+void NewMuSkillAnimOnActiveUnitWithDeamon(ProcPtr parent, u16 sid, void (*callback1)(ProcPtr proc), void (*callback2)(ProcPtr proc));
+void RemoveMuForActiveUnit(int delay);
 
 extern const EventScr EventScr_MuSkillAnim[];
 
@@ -381,6 +383,8 @@ u8 Refuge_Usability(const struct MenuItemDef * def, int number);
 u8 Refuge_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
 u8 DeathBlight_Usability(const struct MenuItemDef * def, int number);
 u8 DeathBlight_OnSelected(struct MenuProc * menu, struct MenuItemProc * item);
+u8 DivineReprieve_Usability(const struct MenuItemDef *def, int number);
+u8 DivineReprieve_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
@@ -412,3 +416,4 @@ bool Action_AssignDecoy(ProcPtr parent);
 bool Action_ShadowFlash(ProcPtr parent);
 bool Action_Refuge(ProcPtr parent);
 bool Action_DeathBlight(ProcPtr parent);
+bool Action_DivineReprieve(ProcPtr parent);

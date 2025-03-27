@@ -438,3 +438,21 @@ AID >= the unit's CON.[X]
 Death Blight:[NL]
 Inflict the "Damned" status on[N]
 enemies. Usable once per map.[X]
+
+## MSG_MenuSkill_DivineReprieve_NAME
+D-Reprieve[X]
+
+## MSG_MenuSkill_DivineReprieve_DESC
+Divine Reprieve:[NL]
+Once per chapter, immediately[NL]
+start next player phase.[X]
+
+## MSG_MenuSkill_DivineReprieveMenuName
+ D-Reprieve[X]
+
+## MSG_MenuSkill_DivineReprieve_FRtext
+You have used this skill![X]
+
+## MSG_MenuSkill_DivineReprieve_Confirm
+This skill may directly end your phase[A][NL]
+Are you sure?           [NL][Yes][X]

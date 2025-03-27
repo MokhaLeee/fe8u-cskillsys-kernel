@@ -43,6 +43,7 @@ SID_AssignDecoy
 SID_ShadowFlash
 // SID_Refuge
 SID_DeathBlight
+// SID_DivineReprieve
 
 //////// PRE-BATTLE SKILLS
 // SID_DefiantStr
