@@ -6,7 +6,7 @@
  * IERevamp
  */
 enum chax_ierevamp_use_effects {
-	IER_START,
+	IER_START = 0,
 
 	IER_STAFF_HEAL,
 	IER_STAFF_MEND,
@@ -69,6 +69,8 @@ enum chax_ierevamp_use_effects {
 	IER_MAX = 0x51,
 };
 
+#define IER_INVALID IER_START
+
 struct IERevamp {
 	bool (*usability)(struct Unit *unit, int item);
 	bool (*prep_usability)(struct Unit *unit, int item);
@@ -81,6 +83,19 @@ extern struct IERevamp const IERevampTable[IER_MAX];
 extern struct IERevamp const *const gpIERevampTable;
 extern struct IERevamp const *const *const pr_gpIERevampTable;
 
+struct IER_PromoConfig {
+	u16 item;
+	u16 _pad_;
+	const u8 *job_list;
+};
+
+extern struct IER_PromoConfig const PromotionItemTable[];
+extern struct IER_PromoConfig const *const gpIER_MAX;
+extern struct IER_PromoConfig const *const *const pr_gpIER_MAX;
+
+/**
+ * Old table
+ */
 typedef void (*PrepItemEffectFunc_t)(struct ProcPrepItemUse *proc, u16 item);
 // extern PrepItemEffectFunc_t const gPrepItemEffectFunc[0x100];
 extern PrepItemEffectFunc_t const *const gpPrepItemEffectFunc;

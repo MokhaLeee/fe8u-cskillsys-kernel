@@ -15,6 +15,8 @@ gHealAmountGetters:
     POIN KernelPad2 KernelPad2 KernelPad2 KernelPad2
     WORD 0
 
+// #include "IERevamp/IERevamp.event"
+
 #include "PrepItem/LynJump.event"
 #include "PrepItem/PrepItemUsability.lyn.event"
 #include "PrepItem/PrepItemEffect.lyn.event"
