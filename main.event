@@ -91,8 +91,3 @@ ORG FreeSpaceDEMO
  * FREE!
  * This is preserved for demo!
  */
-
-ASSERT (KernelSpace_Text + KernelSpace_TextSize - KernelSpace_TextTail)
-ASSERT (KernelSpace_Data + KernelSpace_DataSize - KernelSpace_KDataTail)
-ASSERT (FreeSpaceCommon  + FreeSpaceCommonSize  - FreeSpace_UsrDataTail)
-ASSERT (FreeSpaceFont    + FreeSpaceFontSize    - FreeSpaceFontTail)

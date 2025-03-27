@@ -56,9 +56,21 @@ gpLeaderShipConf: POIN gLeaderShipConf
 gpLeaderShipPConf: POIN gLeaderShipPConf
 gpLeaderShipJConf: POIN gLeaderShipJConf
 
-WORD 0 0 0 0 0 0 0 0 0 0
+gpGfx_ObjSkill: POIN Gfx_ObjSkill
+gpPal_ObjSkill: POIN Pal_ObjSkill
+gpGfx_ObjWindow: POIN Gfx_ObjWindow
+gpPal_ObjWindow: POIN Pal_ObjWindow
 
-WORD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+gpGfx_PrepPickSkillScreen: POIN Gfx_PrepPickSkillScreen
+gpTsa_PrepSubPickSkillScreen: POIN Tsa_PrepSubPickSkillScreen
+gpGfx_PrepSkillScreen: POIN Gfx_PrepSkillScreen
+gpPal_PrepSkillScreen: POIN Pal_PrepSkillScreen
+gpGfx_PrepSkillScreen2: POIN Gfx_PrepSkillScreen2
+
+gpExpandedTextPals: POIN ExpandedTextPals
+gpPage2SubWindow: POIN Page2SubWindow
+
+WORD 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
 gpKernelClassList_Flier:    POIN KernelClassList_Flier
 gpKernelClassList_Cavalry:  POIN KernelClassList_Cavalry
@@ -71,7 +83,12 @@ WORD 0
 gpImg_MapAnimSKILL: POIN Img_MapAnimSKILL
 gpImg_MapAnimCOMBO: POIN Img_MapAnimCOMBO
 
-WORD 0 0 0 0 0 0
+gpAnimScr_EfxSkillBoxIconRight: POIN AnimScr_EfxSkillBoxIconRight
+gpAnimScr_EfxSkillBoxIconLeft:  POIN AnimScr_EfxSkillBoxIconLeft
+gpAnimScr_EfxSkillBoxNameRight: POIN AnimScr_EfxSkillBoxNameRight
+gpAnimScr_EfxSkillBoxNameLeft:  POIN AnimScr_EfxSkillBoxNameLeft
+gpImg_EfxSkillBoxBG: POIN Img_EfxSkillBoxBG
+pr_gpWeaponLockExConfs: POIN gpWeaponLockExConfs
 
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
 
@@ -126,11 +143,12 @@ gpExternalMovGetters:   WORD 0
 gpExternalConGetters:   WORD 0
 gpExternalAidGetters:   WORD 0
 
-WORD 0
-
 gpExternalEndTurnHook: WORD 0
 
-WORD 0 0 0
+gpImg_BkselObjArrow: POIN Img_BkselObjArrow
+gpPal_BkselObjArrow: POIN Pal_BkselObjArrow
+gpTsa_BkselDetailedScreen: POIN Tsa_BkselDetailedScreen
+gpTsa_BkselStandardScreen: POIN Tsa_BkselStandardScreen
 
 gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
 gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
@@ -146,31 +164,5 @@ gpFarAttackAnimItems: POIN FarAttackAnimItems
 
 gpWeaponHpDrainConfig: POIN WeaponHpDrainConfig
 gpWeaponHpCostConfig:  POIN WeaponHpCostConfig
-
-pr_gpWeaponLockExConfs: POIN gpWeaponLockExConfs
-
-gpAnimScr_EfxSkillBoxIconRight: POIN AnimScr_EfxSkillBoxIconRight
-gpAnimScr_EfxSkillBoxIconLeft:  POIN AnimScr_EfxSkillBoxIconLeft
-gpAnimScr_EfxSkillBoxNameRight: POIN AnimScr_EfxSkillBoxNameRight
-gpAnimScr_EfxSkillBoxNameLeft:  POIN AnimScr_EfxSkillBoxNameLeft
-gpImg_EfxSkillBoxBG: POIN Img_EfxSkillBoxBG
-
-gpGfx_PrepPickSkillScreen: POIN Gfx_PrepPickSkillScreen
-gpTsa_PrepSubPickSkillScreen: POIN Tsa_PrepSubPickSkillScreen
-gpGfx_PrepSkillScreen: POIN Gfx_PrepSkillScreen
-gpPal_PrepSkillScreen: POIN Pal_PrepSkillScreen
-gpGfx_PrepSkillScreen2: POIN Gfx_PrepSkillScreen2
-gpGfx_ObjSkill: POIN Gfx_ObjSkill
-gpPal_ObjSkill: POIN Pal_ObjSkill
-gpGfx_ObjWindow: POIN Gfx_ObjWindow
-gpPal_ObjWindow: POIN Pal_ObjWindow
-
-gpExpandedTextPals: POIN ExpandedTextPals
-gpPage2SubWindow: POIN Page2SubWindow
-
-gpImg_BkselObjArrow: POIN Img_BkselObjArrow
-gpPal_BkselObjArrow: POIN Pal_BkselObjArrow
-gpTsa_BkselDetailedScreen: POIN Tsa_BkselDetailedScreen
-gpTsa_BkselStandardScreen: POIN Tsa_BkselStandardScreen
 
 NONE_SRC_RELOC_END:
