@@ -2,4 +2,59 @@ ALIGN 4
 KERNEL_RELOC_START:
 // MESSAGE CURRENTOFFSET
 
+gpSkillMenuInfos: POIN gSkillMenuInfos
+gpHealAmountGetters: POIN gHealAmountGetters
+gpBattleDamageCalcFuncs: POIN BattleDamageCalcFuncs
+gpBattleRealDamageCalcFuncs: POIN BattleRealDamageCalcFuncs
+gpBeginActionHooks: POIN gBeginActionHooks
+gpChapterInitHooks: POIN ChapterInitHooks
+gpGameInitHookTable: POIN gGameInitHookTable
+gpSkillActionFuncTable: POIN gSkillActionFuncTable
+gpPostActionFuncs: POIN gPostActionFuncs
+gpNewSaveHooks: POIN gNewSaveHooks
+
+gpCopyUnitHooks: POIN gCopyUnitHooks
+gpClearUnitHooks: POIN gClearUnitHooks
+gpLoadUnitHooks: POIN gLoadUnitHooks
+
+gpHpGetters:    POIN gHpGetters
+gpPowGetters:   POIN gPowGetters
+gpMagGetters:   POIN gMagGetters
+gpSklGetters:   POIN gSklGetters
+gpSpdGetters:   POIN gSpdGetters
+gpLckGetters:   POIN gLckGetters
+gpDefGetters:   POIN gDefGetters
+gpResGetters:   POIN gResGetters
+gpMovGetters:   POIN gMovGetters
+gpConGetters:   POIN gConGetters
+gpAidGetters:   POIN gAidGetters
+
+gpWeaponRangeGetters: POIN gWeaponRangeGetters
+
+gpPreMapAnimBattleRoundHooks: POIN gPreMapAnimBattleRoundHooks
+
+gpAiActionTable: POIN gAiActionTable
+gpPreAi1DecideHook: POIN gPreAi1DecideHook
+gpPreAi2DecideHook: POIN gPreAi2DecideHook
+gpUnitActionTable: POIN gUnitActionTable
+gpPreBattleGenerateFuncs: POIN PreBattleGenerateFuncs
+gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
+
+gpKernelArmFunConfig: POIN gKernelArmFunConfig
+gpMapTaskConfs: POIN gMapTaskConfs
+gpHpBarChr: POIN gHpBarChr
+
+gpPrepItemEffectFunc: POIN gPrepItemEffectFunc
+gpPrepItemUsabilityFuncs: POIN gPrepItemUsabilityFuncs
+
+prWriteUnitLevelSafe: POIN WriteUnitLevelSafe
+
+gpIconGetters: POIN IconGetters
+
+gpEndTurnFuncs: POIN gEndTurnFuncs
+
+gpPopupComponents: POIN gPopupComponents
+gpBattlePopupConfigs: POIN gBattlePopupConfigs
+gpPromotPopupConfigs: POIN gPromotPopupConfigs
+
 KERNEL_RELOC_END:

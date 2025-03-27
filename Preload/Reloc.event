@@ -40,13 +40,13 @@ gpMsu_Loader:   WORD 0
 
 gpKernelDesigerConfig: POIN gKernelDesigerConfig
 
-gpSkillMenuInfos: POIN gSkillMenuInfos
+WORD 0
 
 gpKTutorialMsg:         POIN gKTutorialMsg
 
 gpExternalGameInitHook: WORD 0
 
-gpHealAmountGetters: POIN gHealAmountGetters
+WORD 0
 
 gpAffinIcons: POIN gAffinIcons
 gpMountIcons: POIN gMountIcons
@@ -56,36 +56,12 @@ gpLeaderShipConf: POIN gLeaderShipConf
 gpLeaderShipPConf: POIN gLeaderShipPConf
 gpLeaderShipJConf: POIN gLeaderShipJConf
 
-gpBattleDamageCalcFuncs: POIN BattleDamageCalcFuncs
-gpBattleRealDamageCalcFuncs: POIN BattleRealDamageCalcFuncs
+WORD 0 0 0 0 0 0 0 0
 
-gpBeginActionHooks: POIN gBeginActionHooks
-gpChapterInitHooks: POIN ChapterInitHooks
-gpGameInitHookTable: POIN gGameInitHookTable
-
-gpSkillActionFuncTable: POIN gSkillActionFuncTable
-
-gpPostActionFuncs: POIN gPostActionFuncs
-gpNewSaveHooks: POIN gNewSaveHooks
 gpExternalBattleToUnitHook: POIN gExternalBattleToUnitHook
 gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
-gpCopyUnitHooks: POIN gCopyUnitHooks
-gpClearUnitHooks: POIN gClearUnitHooks
-gpLoadUnitHooks: POIN gLoadUnitHooks
 
-gpHpGetters:    POIN gHpGetters
-gpPowGetters:   POIN gPowGetters
-gpMagGetters:   POIN gMagGetters
-gpSklGetters:   POIN gSklGetters
-gpSpdGetters:   POIN gSpdGetters
-gpLckGetters:   POIN gLckGetters
-gpDefGetters:   POIN gDefGetters
-gpResGetters:   POIN gResGetters
-gpMovGetters:   POIN gMovGetters
-gpConGetters:   POIN gConGetters
-gpAidGetters:   POIN gAidGetters
-
-gpWeaponRangeGetters: POIN gWeaponRangeGetters
+WORD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
 gpKernelClassList_Flier:    POIN KernelClassList_Flier
 gpKernelClassList_Cavalry:  POIN KernelClassList_Cavalry
@@ -93,26 +69,16 @@ gpKernelClassList_Armor:    POIN KernelClassList_Armor
 gpKernelClassList_Dragon:   POIN KernelClassList_Dragon
 gpKernelClassList_Beast:    POIN KernelClassList_Beast
 
-gpPreMapAnimBattleRoundHooks: POIN gPreMapAnimBattleRoundHooks
+WORD 0
 
 gpImg_MapAnimSKILL: POIN Img_MapAnimSKILL
 gpImg_MapAnimCOMBO: POIN Img_MapAnimCOMBO
 
-gpAiActionTable: POIN gAiActionTable
+WORD 0 0 0 0 0 0
 
-gpPreAi1DecideHook: POIN gPreAi1DecideHook
-gpPreAi2DecideHook: POIN gPreAi2DecideHook
-
-gpUnitActionTable: POIN gUnitActionTable
-
-gpPreBattleGenerateFuncs: POIN PreBattleGenerateFuncs
-
-gpPreBattleCalcFuncs: POIN PreBattleCalcFuncs
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
-gpKernelArmFunConfig: POIN gKernelArmFunConfig
 
-gpMapTaskConfs: POIN gMapTaskConfs
-gpHpBarChr: POIN gHpBarChr
+WORD 0 0 0
 
 gpSkillExtraInfo: POIN gSkillExtraInfo
 
@@ -135,17 +101,14 @@ gpHighPortraitFidLut: POIN HighPortraitFidLut
 
 gpJobGrowthList: POIN gJobGrowthList
 
-gpPrepItemEffectFunc: POIN gPrepItemEffectFunc
-gpPrepItemUsabilityFuncs: POIN gPrepItemUsabilityFuncs
-
-prWriteUnitLevelSafe: POIN WriteUnitLevelSafe
+WORD 0 0 0
 
 gpAutoNarrowFontConf: POIN AutoNarrowFontConf
 gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
 
 gpAnimScr_AnimNumber: POIN AnimScr_AnimNumber
 
-gpIconGetters: POIN IconGetters
+WORD 0
 
 gpStatDebuffStatusPool: POIN sStatDebuffStatusPool
 
@@ -166,12 +129,11 @@ gpExternalMovGetters:   WORD 0
 gpExternalConGetters:   WORD 0
 gpExternalAidGetters:   WORD 0
 
-gpEndTurnFuncs: POIN gEndTurnFuncs
+WORD 0
+
 gpExternalEndTurnHook: WORD 0
 
-gpPopupComponents: POIN gPopupComponents
-gpBattlePopupConfigs: POIN gBattlePopupConfigs
-gpPromotPopupConfigs: POIN gPromotPopupConfigs
+WORD 0 0 0
 
 gpClassLevelUpSkillTable: POIN ClassLevelUpSkillTable
 gpCharLevelUpSkillTable: POIN CharLevelUpSkillTable
