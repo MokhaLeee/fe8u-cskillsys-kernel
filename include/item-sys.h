@@ -350,6 +350,7 @@ static const KeyValuePair dict_skills[] =
         { "Legend Inori DEF", {1000, 1}},
         { "Lethality", {1000, 1}},
         { "Life And Death", {1000, 1}},
+        { "Lifefont", {1000, 1}},
         { "Lifetaker", {1000, 1}},
         { "Light And Dark", {1000, 1}},
         { "Light Prowess", {1000, 1}},

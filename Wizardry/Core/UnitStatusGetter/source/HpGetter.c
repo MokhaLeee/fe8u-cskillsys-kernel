@@ -2,6 +2,7 @@
 #include "skill-system.h"
 #include "status-getter.h"
 #include "constants/skills.h"
+#include "bmunit.h"
 
 int _GetUnitMaxHp(struct Unit * unit)
 {
@@ -34,6 +35,22 @@ int HpGetterSkills(int status, struct Unit * unit)
 #if defined(SID_HpBonus) && (COMMON_SKILL_VALID(SID_HpBonus))
     if (SkillTester(unit, SID_HpBonus))
         status += SKILL_EFF0(SID_HpBonus);
+#endif
+
+#if defined(SID_Lifefont) && (COMMON_SKILL_VALID(SID_Lifefont))
+    if (SkillTester(unit, SID_Lifefont))
+    {
+        switch (gBmMapTerrain[unit->yPos][unit->xPos]) {
+            case TERRAIN_FORT:
+            case TERRAIN_THRONE:
+                int boost = (GetTerrainHealAmount(gBmMapTerrain[unit->yPos][unit->xPos]) * unit->maxHP / 100);
+                status += boost;
+                break;
+    
+            default:
+                break;
+        }
+    }
 #endif
 
     return status;

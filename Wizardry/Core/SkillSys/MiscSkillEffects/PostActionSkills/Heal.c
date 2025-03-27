@@ -80,6 +80,24 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
     }
 #endif
 
+#if defined(SID_Lifefont) && (COMMON_SKILL_VALID(SID_Lifefont))
+    if (SkillTester(gActiveUnit, SID_Lifefont))
+    {
+        if (gActiveUnit->curHP == gActiveUnit->maxHP)
+        {
+            switch (gBmMapTerrain[gActiveUnit->yPos][gActiveUnit->xPos]) {
+                case TERRAIN_FORT:
+                case TERRAIN_THRONE:
+                    heal += (GetTerrainHealAmount(gBmMapTerrain[gActiveUnit->yPos][gActiveUnit->xPos]) * gActiveUnit->maxHP / 100);
+                    break;
+        
+                default:
+                    break;
+            }
+        }
+    }
+#endif
+
 #ifdef CONFIG_RESTORE_HP_ON_LEVEL_UP
     if (gEventSlots[EVT_SLOT_7] == 410) /* 'Heal' expressed as a hexidecimal and then convert back into decimal and summed */
         heal = gActiveUnit->maxHP - gActiveUnit->curHP;

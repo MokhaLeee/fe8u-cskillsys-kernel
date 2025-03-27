@@ -4991,4 +4991,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_Lifefont) && COMMON_SKILL_VALID(SID_Lifefont))
+    [SID_Lifefont] = {
+        .desc = MSG_SKILL_Lifefont,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

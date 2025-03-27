@@ -587,6 +587,7 @@ SID_IndoorMarch
 // SID_Amaterasu
 SID_GoodyBasket
 SID_BlacksmithPlus
+// SID_Lifefont
 
 //////// POST-PHASE SKILLS
 // SID_HoardersBane
