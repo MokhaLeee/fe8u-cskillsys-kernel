@@ -18,3 +18,5 @@ struct EfxAnimConf {
 };
 
 extern const struct EfxAnimConf EfxSkillVanilla, EfxSkillCombat;
+extern struct EfxAnimConf const *const gpEfxSkillVanilla;
+extern struct EfxAnimConf const *const gpEfxSkillCombat;

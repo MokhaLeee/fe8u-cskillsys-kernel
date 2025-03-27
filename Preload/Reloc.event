@@ -44,7 +44,7 @@ gpMsu_Loader:   WORD 0
 
 gpKernelDesigerConfig: POIN gKernelDesigerConfig
 
-WORD 0
+gpGFX_SkillIcon_WIP: POIN GFX_SkillIcon_WIP
 
 gpKTutorialMsg:         POIN gKTutorialMsg
 
@@ -74,7 +74,12 @@ gpGfx_PrepSkillScreen2: POIN Gfx_PrepSkillScreen2
 gpExpandedTextPals: POIN ExpandedTextPals
 gpPage2SubWindow: POIN Page2SubWindow
 
-WORD 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+gpGFX_CombatArtIcon_SwordArtAtk: POIN GFX_CombatArtIcon_SwordArtAtk
+gpGFX_CombatArtIcon_LanceArtAtk: POIN GFX_CombatArtIcon_LanceArtAtk
+gpGFX_CombatArtIcon_AxeArtAtk:   POIN GFX_CombatArtIcon_AxeArtAtk
+gpGFX_CombatArtIcon_BowArtAtk:   POIN GFX_CombatArtIcon_BowArtAtk
+
+WORD 0 0 0 0 0 0 0 0 0 0
 
 gpKernelClassList_Flier:    POIN KernelClassList_Flier
 gpKernelClassList_Cavalry:  POIN KernelClassList_Cavalry
@@ -96,7 +101,9 @@ pr_gpWeaponLockExConfs: POIN gpWeaponLockExConfs
 
 gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
 
-WORD 0 0 0
+pr_gpGaidenPinfoConfigList: POIN gpGaidenPinfoConfigList
+pr_gpGaidenWeaponCostList:  POIN gpGaidenWeaponCostList
+WORD 0
 
 gpSkillExtraInfo: POIN gSkillExtraInfo
 
@@ -119,7 +126,9 @@ gpHighPortraitFidLut: POIN HighPortraitFidLut
 
 gpJobGrowthList: POIN gJobGrowthList
 
-WORD 0 0 0
+gpEfxSkillVanilla: POIN EfxSkillVanilla
+gpEfxSkillCombat:  POIN EfxSkillCombat
+WORD 0
 
 gpAutoNarrowFontConf: POIN AutoNarrowFontConf
 gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode

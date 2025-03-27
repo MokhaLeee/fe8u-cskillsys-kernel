@@ -3,9 +3,9 @@
 #include "constants/skills.h"
 #include "constants/texts.h"
 
-const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
+struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Dance) && COMMON_SKILL_VALID(SID_Dance))
-	[SID_Dance] = {
+	[SID_Dance] = &(const struct MenuItemDef) {
 		.name = "　踊る",
 		.nameMsgId = 0x67E,
 		.helpMsgId = 0x6C2,
@@ -20,7 +20,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Steal) && COMMON_SKILL_VALID(SID_Steal))
-	[SID_Steal] = {
+	[SID_Steal] = &(const struct MenuItemDef) {
 		.name = "　盗む",
 		.nameMsgId = 0x67F,
 		.helpMsgId = 0x6C4,
@@ -35,7 +35,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Summon) && COMMON_SKILL_VALID(SID_Summon))
-	[SID_Summon] = {
+	[SID_Summon] = &(const struct MenuItemDef) {
 		.name = "　召喚",
 		.nameMsgId = 0x693,
 		.helpMsgId = 0x6DD,
@@ -50,7 +50,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_LockTouch) && COMMON_SKILL_VALID(SID_LockTouch))
-	[SID_LockTouch] = {
+	[SID_LockTouch] = &(const struct MenuItemDef) {
 		.name = "　かぎ開",
 		.nameMsgId = 0x694,
 		.helpMsgId = 0x6DE,
@@ -65,7 +65,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_HealingFocus) && COMMON_SKILL_VALID(SID_HealingFocus))
-	[SID_HealingFocus] = {
+	[SID_HealingFocus] = &(const struct MenuItemDef) {
 		.name = "　瞑想",
 		.nameMsgId = MSG_MenuSkill_HealingFocusName,
 		.helpMsgId = MSG_SKILL_HealingFocus,
@@ -80,7 +80,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Teleportation) && COMMON_SKILL_VALID(SID_Teleportation))
-	[SID_Teleportation] = {
+	[SID_Teleportation] = &(const struct MenuItemDef) {
 		.name = "　転移",
 		.nameMsgId = MSG_SkillEffect_Teleportation,
 		.helpMsgId = MSG_MenuSkill__Teleportation_Rtext,
@@ -95,7 +95,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_LightRune) && COMMON_SKILL_VALID(SID_LightRune))
-	[SID_LightRune] = {
+	[SID_LightRune] = &(const struct MenuItemDef) {
 		.name = "　光の結界",
 		.nameMsgId = MSG_MenuSkill_LightRuneName,
 		.helpMsgId = MSG_SKILL_LightRune,
@@ -110,7 +110,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Mine) && COMMON_SKILL_VALID(SID_Mine))
-	[SID_Mine] = {
+	[SID_Mine] = &(const struct MenuItemDef) {
 		.name = "　地雷",
 		.nameMsgId = MSG_MenuSkill_MineName,
 		.helpMsgId = MSG_SKILL_Mine,
@@ -125,7 +125,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallyDefense) && COMMON_SKILL_VALID(SID_RallyDefense))
-	[SID_RallyDefense] = {
+	[SID_RallyDefense] = &(const struct MenuItemDef) {
 		.name = "　ラリー防御",
 		.nameMsgId = MSG_MenuSkill_RallyDefenseName,
 		.helpMsgId = MSG_SKILL_RallyDefense,
@@ -140,7 +140,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallyLuck) && COMMON_SKILL_VALID(SID_RallyLuck))
-	[SID_RallyLuck] = {
+	[SID_RallyLuck] = &(const struct MenuItemDef) {
 		.name = "　ラリー運",
 		.nameMsgId = MSG_MenuSkill_RallyLuckName,
 		.helpMsgId = MSG_SKILL_RallyLuck,
@@ -155,7 +155,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallyMagic) && COMMON_SKILL_VALID(SID_RallyMagic))
-	[SID_RallyMagic] = {
+	[SID_RallyMagic] = &(const struct MenuItemDef) {
 		.name = "　ラリーマジック",
 		.nameMsgId = MSG_MenuSkill_RallyMagicName,
 		.helpMsgId = MSG_SKILL_RallyMagic,
@@ -170,7 +170,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallyMovement) && COMMON_SKILL_VALID(SID_RallyMovement))
-	[SID_RallyMovement] = {
+	[SID_RallyMovement] = &(const struct MenuItemDef) {
 		.name = "　ラリーの動き",
 		.nameMsgId = MSG_MenuSkill_RallyMovementName,
 		.helpMsgId = MSG_SKILL_RallyMovement,
@@ -185,7 +185,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallyResistance) && COMMON_SKILL_VALID(SID_RallyResistance))
-	[SID_RallyResistance] = {
+	[SID_RallyResistance] = &(const struct MenuItemDef) {
 		.name = "　ラリー耐性",
 		.nameMsgId = MSG_MenuSkill_RallyResistanceName,
 		.helpMsgId = MSG_SKILL_RallyResistance,
@@ -200,7 +200,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallySkill) && COMMON_SKILL_VALID(SID_RallySkill))
-	[SID_RallySkill] = {
+	[SID_RallySkill] = &(const struct MenuItemDef) {
 		.name = "　ラリースキル",
 		.nameMsgId = MSG_MenuSkill_RallySkillName,
 		.helpMsgId = MSG_SKILL_RallySkill,
@@ -215,7 +215,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallySpeed) && COMMON_SKILL_VALID(SID_RallySpeed))
-	[SID_RallySpeed] = {
+	[SID_RallySpeed] = &(const struct MenuItemDef) {
 		.name = "　ラリースピード",
 		.nameMsgId = MSG_MenuSkill_RallySpeedName,
 		.helpMsgId = MSG_SKILL_RallySpeed,
@@ -230,7 +230,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallyStrength) && COMMON_SKILL_VALID(SID_RallyStrength))
-	[SID_RallyStrength] = {
+	[SID_RallyStrength] = &(const struct MenuItemDef) {
 		.name = "　ラリーパワー",
 		.nameMsgId = MSG_MenuSkill_RallyStrengthName,
 		.helpMsgId = MSG_SKILL_RallyStrength,
@@ -245,7 +245,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_RallySpectrum) && COMMON_SKILL_VALID(SID_RallySpectrum))
-	[SID_RallySpectrum] = {
+	[SID_RallySpectrum] = &(const struct MenuItemDef) {
 		.name = "　ラリースペクトラム",
 		.nameMsgId = MSG_MenuSkill_RallySpectrumName,
 		.helpMsgId = MSG_SKILL_RallySpectrum,
@@ -260,7 +260,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_GoddessDance) && COMMON_SKILL_VALID(SID_GoddessDance))
-	[SID_GoddessDance] = {
+	[SID_GoddessDance] = &(const struct MenuItemDef) {
 		.name = "　女神の踊り",
 		.nameMsgId = MSG_MenuSkill_GoddessDanceName,
 		.helpMsgId = MSG_SKILL_GoddessDance,
@@ -275,7 +275,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Stride) && COMMON_SKILL_VALID(SID_Stride))
-	[SID_Stride] = {
+	[SID_Stride] = &(const struct MenuItemDef) {
 		.name = "　大股",
 		.nameMsgId = MSG_MenuSkill_StrideName,
 		.helpMsgId = MSG_SKILL_Stride,
@@ -290,7 +290,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Swarp) && COMMON_SKILL_VALID(SID_Swarp))
-	[SID_Swarp] = {
+	[SID_Swarp] = &(const struct MenuItemDef) {
 		.name = "　スワープ",
 		.nameMsgId = MSG_MenuSkill_SwarpName,
 		.helpMsgId = MSG_SKILL_Swarp,
@@ -305,7 +305,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
-	[SID_Blacksmith] = {
+	[SID_Blacksmith] = &(const struct MenuItemDef) {
 		.name = "　鍛冶屋",
 		.nameMsgId = MSG_MenuSkill_BlacksmithName,
 		.helpMsgId = MSG_SKILL_Blacksmith,
@@ -320,7 +320,7 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_DivineReprieve) && COMMON_SKILL_VALID(SID_DivineReprieve))
-	[SID_DivineReprieve] = {
+	[SID_DivineReprieve] = &(const struct MenuItemDef) {
 		.name = "　神裁の恩寵",
 		.nameMsgId = MSG_MenuSkill_DivineReprieveMenuName,
 		.helpMsgId = MSG_MenuSkill_DivineReprieve_DESC,

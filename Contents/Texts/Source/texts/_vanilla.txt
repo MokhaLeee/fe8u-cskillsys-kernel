@@ -1,3 +1,9 @@
+# 0x91
+Suspend[.][X]
+
+# 0xAB
+Only save suspend at player phase[.][X]
+
 #0x578
 Skills[X]
 

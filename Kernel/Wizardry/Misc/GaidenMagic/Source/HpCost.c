@@ -12,7 +12,7 @@ int GetGaidenWeaponHpCost(struct Unit *unit, int item)
 		return 0;
 #endif
 
-	return gpGaidenWeaponCostList[ITEM_INDEX(item)];
+	return GetGaidenWeaponCostList()[ITEM_INDEX(item)];
 }
 
 void BattleGenerateHitHpCostForGaidenMagic(struct BattleUnit *attacker, struct BattleUnit *defender)

@@ -1,8 +1,6 @@
 #include "Source/SkillAnimInfo.lyn.event"
 #include "Source/SkillInfo.lyn.event"
 #include "Source/SkillExtraInfo.lyn.event"
-#include "Source/SkillMenuInfo.lyn.event"
-#include "Source/SkillActionInfo.lyn.event"
 #include "Source/FebList.lyn.event"
 #include "Source/SkillTable-generic.lyn.event"
 #include "Source/SkillTable-person.lyn.event"

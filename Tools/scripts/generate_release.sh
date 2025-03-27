@@ -54,7 +54,7 @@ collect_header $RELEASE_DIR/include
 RELEASE_EADIR=$RELEASE_DIR/buildfile
 
 install -d $RELEASE_EADIR
-cp -r Preload Kernel Data Contents include main.event Debug Fonts $RELEASE_EADIR
+cp -r Preload Kernel Data Contents include main.event main-kernel.event Debug Fonts $RELEASE_EADIR
 
 zip -r $RELEASE_DIR/buildfile.zip $RELEASE_DIR/buildfile/
 zip -r $RELEASE_DIR/include.zip $RELEASE_DIR/include/

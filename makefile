@@ -2,7 +2,12 @@ MAKEFLAGS += --no-print-directory
 
 include configs.mk
 
-MAIN    := main.event
+ifeq ($(CONFIG_KERNEL_ONLY), 1)
+	MAIN := main-kernel.event
+else
+	MAIN := main.event
+endif
+
 FE8_CHX := fe8-kernel-$(CONFIG_VERSION).gba
 FE8_GBA := fe8.gba
 

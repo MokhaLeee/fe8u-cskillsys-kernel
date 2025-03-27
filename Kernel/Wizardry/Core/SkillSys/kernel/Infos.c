@@ -10,7 +10,7 @@ const u8 *_GetSkillIconExt(const u8 lo, int hi)
 	const u8 *icon = gpSkillInfos[lo + (hi << 8)].icon;
 
 	if (!icon)
-		icon = GFX_SkillIcon_WIP;
+		icon = gpGFX_SkillIcon_WIP;
 
 	return icon;
 }
@@ -104,7 +104,7 @@ const struct EfxAnimConf *GetEfxSkillConf(const u8 aid)
 	struct EfxAnimConf const *conf = gpEfxSkillAnims[aid];
 
 	if (!conf)
-		conf = &EfxSkillVanilla;
+		conf = gpEfxSkillVanilla;
 
 	return conf;
 }

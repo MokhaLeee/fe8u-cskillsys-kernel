@@ -9,10 +9,20 @@ struct GaidenPinfoConfigEnt { u8 level, iid; };
 struct GaidenPinfoConfig { const struct GaidenPinfoConfigEnt *ent; };
 
 // extern struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100];
-extern struct GaidenPinfoConfig const *const gpGaidenPinfoConfigList;
+// extern struct GaidenPinfoConfig const *const gpGaidenPinfoConfigList;
+extern struct GaidenPinfoConfig const *const *const pr_gpGaidenPinfoConfigList;
+static inline const struct GaidenPinfoConfig *GetGaidenPinfoConfigList()
+{
+	return *pr_gpGaidenPinfoConfigList;
+}
 
 // extern const u8 gGaidenWeaponCostList[0x100];
-extern u8 const *const gpGaidenWeaponCostList;
+// extern u8 const *const gpGaidenWeaponCostList;
+extern u8 const *const *const pr_gpGaidenWeaponCostList;
+static inline const u8 *GetGaidenWeaponCostList()
+{
+	return *pr_gpGaidenWeaponCostList;
+}
 
 struct GaidenChaxConfigEnt {
 	u8 iid;

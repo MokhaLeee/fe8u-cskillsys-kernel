@@ -124,7 +124,7 @@ void NewEfxCombatArt(struct Anim *anim, int cid)
 		return;
 
 	if (!IS_ROM_DATA(conf))
-		conf = &EfxSkillCombat;
+		conf = gpEfxSkillCombat;
 
 	proc = Proc_Start(ProcScr_EfxCombatArt, PROC_TREE_3);
 	proc->timer = 0;

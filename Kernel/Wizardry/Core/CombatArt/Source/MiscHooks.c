@@ -43,10 +43,10 @@ u8 GetBestRangeBonusCid(struct Unit *unit, u16 item)
 const u8 *GetCombatArtIcon(const u8 cid)
 {
 	u8 const *const default_icons[] = {
-		[ITYPE_SWORD] = GFX_CombatArtIcon_SwordArtAtk,
-		[ITYPE_LANCE] = GFX_CombatArtIcon_LanceArtAtk,
-		[ITYPE_AXE]   = GFX_CombatArtIcon_AxeArtAtk,
-		[ITYPE_BOW]   = GFX_CombatArtIcon_BowArtAtk,
+		[ITYPE_SWORD] = gpGFX_CombatArtIcon_SwordArtAtk,
+		[ITYPE_LANCE] = gpGFX_CombatArtIcon_LanceArtAtk,
+		[ITYPE_AXE]   = gpGFX_CombatArtIcon_AxeArtAtk,
+		[ITYPE_BOW]   = gpGFX_CombatArtIcon_BowArtAtk,
 	};
 
 	if (COMBART_VALID(cid)) {

@@ -8,12 +8,6 @@ PUSH
 	ORG 0x8D088
 	SHORT 0x00
 
-	ORG TextTable + MSG_0091 * 4
-	WORD 0x88000000 | msg_uiconfig_name_suspend
-
-	ORG TextTable + MSG_00AB * 4
-	WORD 0x88000000 | msg_uiconfig_desc_suspend
-
 	/**
 	 * Fake FEB patch: autosave
 	 */
