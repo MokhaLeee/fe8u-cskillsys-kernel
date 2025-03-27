@@ -3,9 +3,6 @@
 
 #include "EAstdlib.event"
 
-/* Put at head since it holds some macros */
-#include "../Wizardry/data.event"
-
 #include "DesignerConfig/designer-config.lyn.event"
 #include "DesignerConfig/battle-designer-config.lyn.event"
 #include "SkillSys/SkillSys.event"
@@ -14,7 +11,7 @@
 #include "HiddenLevel/HiddenLevel.lyn.event"
 #include "KernelTutorial/ktut.lyn.event"
 #include "BattleSys/BattleSys.event"
-#include "StrMag/UnitMagicInfos.lyn.event"
+#include "StrMag/StrMag.event"
 #include "Debuff/DebuffInfo.lyn.event"
 #include "Debuff/StatDebuffInfo.lyn.event"
 #include "GaidenMagic/GaidenMagicData.event"

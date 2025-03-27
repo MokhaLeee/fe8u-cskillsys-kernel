@@ -1,4 +1,4 @@
-It is recommanded to put your own ***C*** or ***ASM*** hacks to [Wizardry](../Wizardry/) directory.
+It is recommanded to put your own ***C*** or ***ASM*** hacks to [Wizardry](../Kernel/Wizardry/) directory.
 
 For ***C*** hack, you should include [common-chax.h](../include/common-chax.h) at head, which may introduce decomp c-libs and other basic definitions.
 
@@ -13,7 +13,7 @@ For ***ASM*** hack, you need name it as ***\<\*.s\>*** rather than ~~***\<\*.asm
 .include "macros.inc"
 ```
 
-After you have done, dirctly put the ***\<\*.lyn.event\>*** file to your buildfile, and put the event included by [wizardry.event](../Wizardry/Wizardry.event). Kernel may automatically generate the dependence and compile the source file to ***\<\*.lyn.event\>*** via *ea_dep* and *lyn*.
+After you have done, dirctly put the ***\<\*.lyn.event\>*** file to your buildfile, and put the event included by [wizardry.event](../Kernel/Wizardry/Wizardry.event). Kernel may automatically generate the dependence and compile the source file to ***\<\*.lyn.event\>*** via *ea_dep* and *lyn*.
 
 ## Debugging
 

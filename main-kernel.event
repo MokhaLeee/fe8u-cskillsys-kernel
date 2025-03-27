@@ -1,0 +1,10 @@
+#include "EAstdlib.event"
+#include "Extensions/Hack Installation.txt"
+
+#include "include/ProcDefinitions.txt"
+#include "include/Configs/configs.h"
+#include "include/Configs/CustomDefinitions.event"
+#include "include/macros.event"
+#include "include/Definitions.event"
+
+#include "Kernel/kernel.event"

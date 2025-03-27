@@ -5,7 +5,8 @@ ROM space distribution is configured in [config-memmap.h](../include/Configs/con
 | Address   | Size    | Usage
 | -------   | ------- | -----
 | 0x00E8414 | 0x785A8 | Kernel text section (**in-BL range**)
-| 0x0B2A604 | 0xD59FC | Kernel data section
+| 0x09875AC | 0x0F000 | Kernel data section (secure)
+| 0x0B2A604 | 0xD59FC | common data section (none-secure)
 | 0x0EFB2E0 | 0xE4D20 | Font
 | 0x1000000 | ---     | ***reserved for DEMO***
 
@@ -57,7 +58,7 @@ In the kernel, free-RAM space is allocated from the bottom to the top:
 0x02028E58, FreeRamSpaceBottom
 ```
 
-Developers should ensure that used free-RAM space does not overflow, which means asseration `(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop)` should be valid. We have also added detection for RAM space overflows, CHAX will auto detect an overflow error on [game-init](../Wizardry/Common/GameInitHook/source/GameInit.c#L14).
+Developers should ensure that used free-RAM space does not overflow, which means asseration `(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop)` should be valid. We have also added detection for RAM space overflows, CHAX will auto detect an overflow error on [game-init](../Kernel/Wizardry/Common/GameInitHook/source/GameInit.c#L14).
 
 ## Example
 

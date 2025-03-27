@@ -15,7 +15,7 @@ CONFIG_DIR := include/Configs
 EXT_REF    := $(CONFIG_DIR)/usr-defined.s
 RAM_REF    := $(CONFIG_DIR)/config-memmap.s
 
-WIZARDRY_DIR := Wizardry
+WIZARDRY_DIR := Kernel
 CONTENTS_DIR := Contents
 GAMEDATA_DIR := Data
 
@@ -131,16 +131,16 @@ SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 
 LYN_REF := $(EXT_REF:.s=.o) $(RAM_REF:.s=.o) $(FE8_REF)
 
-# Wizardry dir: in-bl range hack
-Wizardry/%.o: Wizardry/%.c
+# Kernel dir: in-bl range hack
+Kernel/%.o: Kernel/%.c
 	@echo "[CC ]	$@"
 	@$(CC) $(CFLAGS) $(GCC_LONG_CALL) $(CDEPFLAGS) -g -c $< -o $@
 
-Wizardry/%.asm: Wizardry/%.c
+Kernel/%.asm: Kernel/%.c
 	@echo "[CC ]	$@"
 	@$(CC) $(CFLAGS) $(GCC_LONG_CALL) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
 
-Wizardry/%.lyn.event: Wizardry/%.o $(LYN_REF) $(FE8_SYM)
+Kernel/%.lyn.event: Kernel/%.o $(LYN_REF) $(FE8_SYM)
 	@echo "[LYN]	$@"
 	@$(LYN) $(LYN_LONG_CALL) $< $(LYN_REF) > $@
 	@$(LYN_PROTECTOR) $@ $(FE8_SYM) >> $@
