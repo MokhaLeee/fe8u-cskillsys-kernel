@@ -158,14 +158,10 @@ void AppendHpDrain(struct BattleUnit *attacker, struct BattleUnit *defender, int
 
 void BattleHit_CalcWeaponHpCost(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
-	int perc = gpWeaponHpCostConfig[ITEM_INDEX(attacker->weapon)];
+	int cost = gpWeaponHpCostConfig[ITEM_INDEX(attacker->weapon)];
 
-	if (perc > 0) {
-		int cost = perc_of(attacker->unit.maxHP, perc);
+	if (cost > 0) {
 		int round = GetCurrentBattleHitRound();
-
-		if (cost <= 0)
-			cost = 1;
 
 		if (cost >= attacker->unit.curHP)
 			cost = attacker->unit.curHP - 1;
