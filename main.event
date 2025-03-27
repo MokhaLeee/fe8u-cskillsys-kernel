@@ -8,12 +8,15 @@
 #include "include/macros.event"
 #include "include/Definitions.event"
 
-ORG FreeSpaceKernel_MsgTable
+/**
+ * --------------------------------------------------
+ * ---------------- None-secure data ----------------
+ * --------------------------------------------------
+ */
+ORG FreeSpace_MsgTable
     #include "Preload/AllocMsgTable.event"
-ASSERT (FreeSpaceKernel_MsgTableEnd - CURRENTOFFSET)
-
-ORG FreeSpaceKernel_MsgTableEnd
-    /* a lable */
+ASSERT (FreeSpace_MsgTableEnd - CURRENTOFFSET)
+ORG FreeSpace_MsgTableEnd
     TextTableEnd:
 
 /**
@@ -22,24 +25,23 @@ ORG FreeSpaceKernel_MsgTableEnd
  */
 #include "Tools/Tool Helpers.txt"
 
-ORG FreeSpaceKernel_Magic
+ORG FreeSpace_Magic
     #include "Preload/Magic.event"
-ASSERT (FreeSpaceKernel_MagicEnd - CURRENTOFFSET)
+ASSERT (FreeSpace_MagicEnd - CURRENTOFFSET)
 
-ORG FreeSpaceKernel_Reloc
+ORG FreeSpace_Reloc
     #include "Preload/Reloc.event"
-FreeSpaceKernel_RelocTail:
-MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Reloc) max (KernelRelocSize)
-ASSERT (FreeSpaceKernel_RelocEnd - CURRENTOFFSET)
+FreeSpace_RelocTail:
+MESSAGE FreeSpace__Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpace_Reloc) max (UsrRelocSize)
+ASSERT (FreeSpace_RelocEnd - CURRENTOFFSET)
 
-ORG FreeSpaceKernel_Data
-    #include "Preload/PreloadData.event"
+ORG FreeSpace_UsrData
     #include "Data/Data.event"
     #include "Debug/Debug.event"
     #include "Contents/Contents.event"
-FreeSpaceKernel_DataTail:
-MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernel_Data) max (KernelDataSize)
-ASSERT (FreeSpaceKernel_DataEnd - CURRENTOFFSET)
+FreeSpace_UsrDataTail:
+MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpace_UsrData) max (UsrDataSize)
+ASSERT (FreeSpace_UsrDataEnd - CURRENTOFFSET)
 
 ORG FreeSpaceFont
     #include "Fonts/Fonts.event"
@@ -47,13 +49,42 @@ FreeSpaceFontTail:
 MESSAGE FreeSpace___Font___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceFont) max (FreeSpaceFontSize)
 ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
 
-ORG FreeSpaceKernelText
+/**
+ * --------------------------------------------------
+ * --------------------- kernel ---------------------
+ * --------------------------------------------------
+ */
+ORG KernelSpace_Magic
+    #include "Preload/Magic.event"
+ASSERT (KernelSpace_MagicEnd - CURRENTOFFSET)
+
+ORG KernelSpace_Reloc
+    #include "Preload/KernelReloc.event"
+KernelSpace_RelocTail:
+MESSAGE Kernel_____Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - KernelSpace_Reloc) max (KernelRelocSize)
+ASSERT (KernelSpace_RelocEnd - CURRENTOFFSET)
+
+ORG KernelSpace_KData
+    #include "Wizardry/data.event"
+KernelSpace_KDataTail:
+MESSAGE Kernel______Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - KernelSpace_KData) max (KernelKDataSize)
+ASSERT (KernelSpace_KDataEnd - CURRENTOFFSET)
+
+ORG KernelSpace_Text
     /**
      * .text section for kernel.
      * This part of code is put at in-BL range space
      */
     #include "Preload/CommonProtection.event"
     #include "Wizardry/Wizardry.event"
-FreeSpaceKernelTextTail:
-MESSAGE FreeSpace___Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpaceKernelText) max (FreeSpaceKernelTextSize)
-ASSERT (FreeSpaceKernelText + FreeSpaceKernelTextSize - CURRENTOFFSET)
+KernelSpace_TextTail:
+MESSAGE Kernel______Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - KernelSpace_Text) max (KernelSpace_TextSize)
+ASSERT (KernelSpace_Text + KernelSpace_TextSize - CURRENTOFFSET)
+
+/**
+ * --------------------------------------------------
+ * ---------------------- Demo ----------------------
+ * --------------------------------------------------
+ */
+ORG FreeSpaceDEMO
+// free

@@ -1,4 +1,4 @@
-KERNEL_RELOC_START:
+NONE_SRC_RELOC_START:
 
 // MESSAGE CURRENTOFFSET
 gpSkillInfos: POIN gSkillInfos
@@ -214,4 +214,4 @@ gpPal_BkselObjArrow: POIN Pal_BkselObjArrow
 gpTsa_BkselDetailedScreen: POIN Tsa_BkselDetailedScreen
 gpTsa_BkselStandardScreen: POIN Tsa_BkselStandardScreen
 
-KERNEL_RELOC_END:
+NONE_SRC_RELOC_END:

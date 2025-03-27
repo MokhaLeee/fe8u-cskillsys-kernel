@@ -3,9 +3,6 @@
 
 #include "EAstdlib.event"
 
-/* Put at head since it holds some macros */
-#include "../Wizardry/data.event"
-
 #include "DesignerConfig/designer-config.lyn.event"
 #include "DesignerConfig/battle-designer-config.lyn.event"
 #include "SkillSys/SkillSys.event"
