@@ -1,8 +1,8 @@
 The GaidenMagic system in c-skillsys is a remake of `B.Mag` and `W.Mag` in *Fire Emblem: Gaiden*. The related code is mainly stored in:
 
-- [Misc/GaidenMagic](../Wizardry/Misc/GaidenMagic)
-- [BattleSys/HpCost](../Wizardry/Core/BattleSys/HpCost)
-- [BattleWeapon.c](../Wizardry/Core/BattleSys/Source/BattleWeapon.c).
+- [Misc/GaidenMagic](../Kernel/Wizardry/Misc/GaidenMagic)
+- [BattleSys/HpCost](../Kernel/Wizardry/Core/BattleSys/HpCost)
+- [BattleWeapon.c](../Kernel/Wizardry/Core/BattleSys/Source/BattleWeapon.c).
 
 Gaiden magic config lists have been actively adapted for FEB. Now users can directly use existing FEB form and patch to set unit gaiden magic list and item hp cost.
 

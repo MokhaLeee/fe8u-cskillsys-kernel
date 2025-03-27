@@ -1,7 +1,6 @@
 #include "EAstdlib.event"
 #include "Extensions/Hack Installation.txt"
 #include "include/ProcDefinitions.txt"
-#include "Tools/Tool Helpers.txt"
 
 #include "include/Configs/configs.h"
 #include "include/Configs/CustomDefinitions.event"
@@ -54,32 +53,7 @@ ASSERT (FreeSpaceFont + FreeSpaceFontSize - CURRENTOFFSET)
  * --------------------- kernel ---------------------
  * --------------------------------------------------
  */
-ORG KernelSpace_Magic
-    #include "Preload/KernelMagic.event"
-ASSERT (KernelSpace_MagicEnd - CURRENTOFFSET)
-
-ORG KernelSpace_Reloc
-    #include "Preload/KernelReloc.event"
-KernelSpace_RelocTail:
-MESSAGE Kernel_____Reloc___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - KernelSpace_Reloc) max (KernelRelocSize)
-ASSERT (KernelSpace_RelocEnd - CURRENTOFFSET)
-
-ORG KernelSpace_KData
-    #include "Wizardry/data.event"
-KernelSpace_KDataTail:
-MESSAGE Kernel______Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - KernelSpace_KData) max (KernelKDataSize)
-ASSERT (KernelSpace_KDataEnd - CURRENTOFFSET)
-
-ORG KernelSpace_Text
-    /**
-     * .text section for kernel.
-     * This part of code is put at in-BL range space
-     */
-    #include "Preload/CommonProtection.event"
-    #include "Wizardry/Wizardry.event"
-KernelSpace_TextTail:
-MESSAGE Kernel______Text___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - KernelSpace_Text) max (KernelSpace_TextSize)
-ASSERT (KernelSpace_Text + KernelSpace_TextSize - CURRENTOFFSET)
+#include "Kernel/kernel.event"
 
 /**
  * --------------------------------------------------
@@ -87,7 +61,4 @@ ASSERT (KernelSpace_Text + KernelSpace_TextSize - CURRENTOFFSET)
  * --------------------------------------------------
  */
 ORG FreeSpaceDEMO
-/**
- * FREE!
- * This is preserved for demo!
- */
+// Free

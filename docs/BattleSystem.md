@@ -68,7 +68,7 @@ The related round anim effect functions are also directly rewriten:
 
 # Hp cost
 
-The **HP cost** is a new combat mechanic introduced in the c-Skillsys, inspired by the *Gaiden magic system*. The related code is mainly stored in [BattleSys/HpCost](../Wizardry/Core/BattleSys/HpCost) and [BattleSys/RoundAnim](../Wizardry/Core/BattleSys/RoundAnim) directory.
+The **HP cost** is a new combat mechanic introduced in the c-Skillsys, inspired by the *Gaiden magic system*. The related code is mainly stored in [BattleSys/HpCost](../Kernel/Wizardry/Core/BattleSys/HpCost/) and [BattleSys/RoundAnim](../Kernel/Wizardry/Core/BattleSys/RoundAnim/) directory.
 
 It is important to note the HP cost is designed **COMPLETE DIFFERENT** from regular battle damage. It is initiated proactively by the attacker before each battle round. The HP cost is non-lethal and can only be triggered when the user's HP is above a predefined threshold. The kernel stores this value in `ExtBattleHit::hp_cost` to preserve the value for each round. In principle, developers are not encouraged to directly modify this value in ext-hit. Instead, the kernel provides dedicated APIs for developers to register the HP cost:
 

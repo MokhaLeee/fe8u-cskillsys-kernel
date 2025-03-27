@@ -57,7 +57,7 @@ In the kernel, free-RAM space is allocated from the bottom to the top:
 0x02028E58, FreeRamSpaceBottom
 ```
 
-Developers should ensure that used free-RAM space does not overflow, which means asseration `(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop)` should be valid. We have also added detection for RAM space overflows, CHAX will auto detect an overflow error on [game-init](../Wizardry/Common/GameInitHook/source/GameInit.c#L14).
+Developers should ensure that used free-RAM space does not overflow, which means asseration `(gKernelUsedFreeRamSpaceTop > FreeRamSpaceTop)` should be valid. We have also added detection for RAM space overflows, CHAX will auto detect an overflow error on [game-init](../Kernel/Wizardry/Common/GameInitHook/source/GameInit.c#L14).
 
 ## Example
 

@@ -1,0 +1,16 @@
+#include "Source/JobMagicInfo.lyn.event"
+#include "Source/PersonMagicInfo.lyn.event"
+
+PUSH
+    ORG CONFIG_PR_ITEM_ICON + CONFIG_ICON_INDEX_MAG_BOOSTER * 0x80
+        #incbin "Gfx/SpiritDust.4bpp"
+
+    ORG CONFIG_PR_ITEM_TABLE + CONFIG_ITEM_INDEX_MAG_BOOSTER * 0x24
+        #include "Source/ItemData_MagBooster.lyn.event"
+POP
+
+/* Boost bonus */
+ALIGN 4
+ItemBonus_MagBooster:
+    BYTE 0 0 0 0 0 0 0 0
+    BYTE 0 2 0 0

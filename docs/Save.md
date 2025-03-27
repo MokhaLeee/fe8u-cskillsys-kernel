@@ -11,7 +11,7 @@ link_arena      ------          0x0
 extra_map       ------          0x0
 ```
 
-SRAM space allocation is set in [SaveData](../Wizardry/Common/SaveData/data.event). Although the organization on data is similar to the public EMS patch, we have made more optimization to make it easier for users to use.
+SRAM space allocation is set in [SaveData](../Kernel/Wizardry/Common/SaveData/data.event). Although the organization on data is similar to the public EMS patch, we have made more optimization to make it easier for users to use.
 
 1. No need to define the offset in EmsChunk, now we just need to define the size we need, and then kernel may automatically calculate on physical address.
 

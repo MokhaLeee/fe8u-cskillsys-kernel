@@ -11,7 +11,7 @@
 #include "HiddenLevel/HiddenLevel.lyn.event"
 #include "KernelTutorial/ktut.lyn.event"
 #include "BattleSys/BattleSys.event"
-#include "StrMag/UnitMagicInfos.lyn.event"
+#include "StrMag/StrMag.event"
 #include "Debuff/DebuffInfo.lyn.event"
 #include "Debuff/StatDebuffInfo.lyn.event"
 #include "GaidenMagic/GaidenMagicData.event"
