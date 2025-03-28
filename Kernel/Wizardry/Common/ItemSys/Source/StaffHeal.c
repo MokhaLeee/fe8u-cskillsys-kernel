@@ -3,6 +3,7 @@
 #include "skill-system.h"
 #include "battle-system.h"
 #include "item-sys.h"
+#include "kernel-lib.h"
 #include "constants/skills.h"
 
 STATIC_DECLAR int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
@@ -22,6 +23,12 @@ int GetUnitItemHealAmount(struct Unit *unit, int item)
 {
 	int result = 0;
 
+#ifdef CONFIG_IER_EN
+	result = GetItemMight(item) + GetItemDataIERByte(item);
+
+	if (result < 10)
+		result = 10;
+#else
 	switch (GetItemIndex(item)) {
 	case ITEM_STAFF_HEAL:
 	case ITEM_STAFF_PHYSIC:
@@ -39,8 +46,8 @@ int GetUnitItemHealAmount(struct Unit *unit, int item)
 	case ITEM_ELIXIR:
 		result = 80;
 		break;
-
 	} // switch (GetItemIndex(item))
+#endif // IER_EN
 
 	if (GetItemAttributes(item) & IA_STAFF)
 		result += MagGetter(unit);
@@ -88,7 +95,6 @@ void ExecFortify(ProcPtr proc)
 	int targetCount;
 
 	struct Unit *unit_act = GetUnit(gActionData.subjectIndex);
-	struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
 
 	BattleInitItemEffect(unit_act, gActionData.itemSlotIndex);
 
@@ -104,7 +110,7 @@ void ExecFortify(ProcPtr proc)
 
 	for (i = 0; i < targetCount; i++) {
 #if CHAX
-		int amound_real = HealAmountGetter(amount, unit_act, unit_tar);
+		int amound_real = HealAmountGetter(amount, unit_act, NULL);
 
 		AddUnitHp(GetUnit(GetTarget(i)->uid), amound_real);
 #else

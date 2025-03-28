@@ -23,6 +23,10 @@ enum chax_ierevamp_use_effects {
 	IER_STAFF_REPAIR,
 	IER_STAFF_UNLOCK,
 	IER_STAFF_BARRIER,
+
+	/**
+	 * Boosters
+	 */
 	IER_BOOSTER_HP,
 	IER_BOOSTER_POW,
 	IER_BOOSTER_SKL,
@@ -32,16 +36,29 @@ enum chax_ierevamp_use_effects {
 	IER_BOOSTER_RES,
 	IER_BOOSTER_MOV,
 	IER_BOOSTER_CON,
+
+	/**
+	 * Promotion
+	 */
 	IER_HEROCREST,
 	IER_KNIGHTCREST,
 	IER_ORIONSBOLT,
 	IER_ELYSIANWHIP,
 	IER_GUIDINGRING,
+
+	/**
+	 * Key
+	 */
 	IER_CHESTKEY,
 	IER_DOORKEY,
 	IER_LOCKPICK,
+
+	/**
+	 * Vulnerary
+	 */
 	IER_VULNERARY,
 	IER_ELIXIR,
+
 	IER_PUREWATER,
 	IER_ANTITOXIN,
 	IER_TORCH,
@@ -52,6 +69,10 @@ enum chax_ierevamp_use_effects {
 	IER_NINISS_GRACE,
 	IER_THORS_IRE,
 	IER_SETS_LITANY,
+
+	/**
+	 * Promotion
+	 */
 	IER_MASTERSEAL,
 	IER_METISSTOME,
 	IER_HEAVENSEAL,
@@ -65,18 +86,20 @@ enum chax_ierevamp_use_effects {
 
 	IER_CHAX_STAFF_LATONA,
 	IER_CHAX_SKILL_SCROLL,
+	IER_CHAX_STAFF_NIGHTMARE,
 
 	IER_MAX = 0x51,
 };
 
 #define IER_INVALID IER_START
+#define IER_IS_VALID(__use_effect) (((__use_effect) > 0) && ((__use_effect) < IER_MAX))
 
 struct IERevamp {
 	bool (*usability)(struct Unit *unit, int item);
 	bool (*prep_usability)(struct Unit *unit, int item);
 	void (*effect)(struct Unit *unit, int item);
 	void (*action_effect)(ProcPtr proc, struct Unit *unit, int item);
-	void (*post_action_effect)(ProcPtr proc);
+	void (*prep_effect)(struct ProcPrepItemUse *proc, u16 item);
 };
 
 extern struct IERevamp const IERevampTable[IER_MAX];
@@ -119,3 +142,40 @@ void PrepItemEffect_JunaFruit(struct ProcPrepItemUse *proc, u16 item);
 
 typedef int (*HealAmountGetterFunc_t)(int old, struct Unit *actor, struct Unit *target);
 extern HealAmountGetterFunc_t const *const gpHealAmountGetters;
+
+/**
+ * IER functions
+ */
+#define IER_DECLEARE_Usability(__func)     bool __func(struct Unit *unit, int item)
+#define IER_DECLEARE_PrepUsability(__func) bool __func(struct Unit *unit, int item)
+#define IER_DECLEARE_Effect(__func)        void __func(struct Unit *unit, int item);
+#define IER_DECLEARE_ActionEffect(__func)  void __func(ProcPtr proc, struct Unit *unit, int item);
+#define IER_DECLEARE_PrepEffect(__func)    void __func(struct ProcPrepItemUse *proc, u16 item);
+
+IER_DECLEARE_Usability(IER_Usability_AdjacentHeal);
+IER_DECLEARE_Usability(IER_Usability_RangedHeal);
+IER_DECLEARE_Usability(IER_Usability_Restore);
+IER_DECLEARE_Usability(IER_Usability_Rescue);
+IER_DECLEARE_Usability(IER_Usability_Barrier);
+IER_DECLEARE_Usability(IER_Usability_Silence);
+IER_DECLEARE_Usability(IER_Usability_Sleep);
+IER_DECLEARE_Usability(IER_Usability_Berserk);
+IER_DECLEARE_Usability(IER_Usability_Warp);
+IER_DECLEARE_Usability(IER_Usability_Hammerne);
+IER_DECLEARE_Usability(IER_Usability_Unlock);
+IER_DECLEARE_Usability(IER_Usability_Booster);
+IER_DECLEARE_Usability(IER_Usability_Promotion);
+IER_DECLEARE_Usability(IER_Usability_Vulnerary);
+IER_DECLEARE_Usability(IER_Usability_PureWater);
+IER_DECLEARE_Usability(IER_Usability_Torch);
+IER_DECLEARE_Usability(IER_Usability_Antitoxin);
+IER_DECLEARE_Usability(IER_Usability_ChestKey);
+IER_DECLEARE_Usability(IER_Usability_DoorKey);
+IER_DECLEARE_Usability(IER_Usability_LockPick);
+IER_DECLEARE_Usability(IER_Usability_Latona);
+IER_DECLEARE_Usability(IER_Usability_Mine);
+IER_DECLEARE_Usability(IER_Usability_LightRune);
+IER_DECLEARE_Usability(IER_Usability_StaffTorch);
+IER_DECLEARE_Usability(IER_Usability_DanceRing);
+IER_DECLEARE_Usability(IER_Usability_MetisStone);
+IER_DECLEARE_Usability(IER_Usability_JunaFruit);
