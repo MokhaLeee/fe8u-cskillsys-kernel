@@ -2,7 +2,18 @@
 #include "item-sys.h"
 #include "status-getter.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
+
+STATIC_DECLAR bool IER_CheckIList(int iid, const u8 *list)
+{
+	int i;
+
+	for (i = 0; list[i] != ITEM_NONE; i++)
+		if (iid == list[i])
+			return true;
+
+	return false;
+}
 
 /**
  * Desc
@@ -83,4 +94,94 @@ int GetUnitItemHealAmount(struct Unit *unit, int item)
 		result = 80;
 
 	return result;
+}
+
+/**
+ * Key
+ */
+LYN_REPLACE_CHECK(AiGetChestUnlockItemSlot);
+bool AiGetChestUnlockItemSlot(u8 *out)
+{
+	int i;
+
+	*out = 0;
+
+	if (GetUnitItemCount(gActiveUnit) == UNIT_ITEM_COUNT) {
+		gActiveUnit->aiFlags |= AI_UNIT_FLAG_3;
+		return false;
+	}
+
+	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+		u16 item = gActiveUnit->items[i];
+
+		if (item == 0)
+			return false;
+
+		*out = i;
+
+#if CHAX
+		switch (GetItemData(ITEM_INDEX(item))->useEffectId) {
+		case IER_LOCKPICK:
+			if (UNIT_CATTRIBUTES(gActiveUnit) & CA_STEAL)
+				return true;
+
+			break;
+
+		case IER_CHESTKEY:
+		case IER_DOORKEY:
+			return true;
+
+		default:
+			break;
+		}
+#else
+		if (GetItemIndex(item) == ITEM_CHESTKEY)
+			return true;
+
+		if (GetItemIndex(item) == ITEM_LOCKPICK) {
+			if (UNIT_CATTRIBUTES(gActiveUnit) & CA_STEAL)
+				return true;
+		}
+#endif
+	}
+
+	return false;
+}
+
+LYN_REPLACE_CHECK(AiTryHealSelf);
+bool AiTryHealSelf(void)
+{
+	int i;
+
+	for (i = 0; i < UNIT_ITEM_COUNT; i++) {
+		u16 item = gActiveUnit->items[i];
+
+		if (item == 0)
+			return 0;
+
+		switch (GetItemData(ITEM_INDEX(item))->useEffectId) {
+		case IER_VULNERARY:
+		case IER_ELIXIR:
+			if (!(gAiState.flags & AI_FLAG_STAY) && !(gActiveUnit->ai_config & AI_UNIT_CONFIG_FLAG_STAY)) {
+				/**
+				 * If unit can move around (rather than stick on position)
+				 * he may try escape to a safe place then heal itself.
+				 */
+				struct Vec2 position;
+
+				if (AiFindSafestReachableLocation(gActiveUnit, &position) == true) {
+					AiSetDecision(position.x, position.y, AI_ACTION_USEITEM, 0, i, 0, 0);
+					return true;
+				}
+			} else {
+				AiSetDecision(gActiveUnit->xPos, gActiveUnit->yPos, AI_ACTION_USEITEM, 0, i, 0, 0);
+				return true;
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
+	return false;
 }

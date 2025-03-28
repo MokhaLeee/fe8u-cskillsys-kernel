@@ -89,6 +89,8 @@ void AiStartCombatAction(struct CpPerformProc *proc);
 void AiStartCombatAction(struct CpPerformProc *proc);
 void AiStartCombatAction(struct CpPerformProc *proc);
 
+bool AiGetChestUnlockItemSlot(u8 *out);
+
 enum ScriptKind {
 	AI_SCRIPT_AI1,
 	AI_SCRIPT_AI2,

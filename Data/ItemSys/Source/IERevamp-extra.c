@@ -1,36 +1,6 @@
 #include "common-chax.h"
 #include "item-sys.h"
 
-const u8 IER_SelfHealItemEffectList[] = {
-	IER_VULNERARY,
-	IER_ELIXIR,
-	IER_VULNERARY_2,
-
-	IER_INVALID
-};
-
-const u8 IER_ChestKeyEffectList[] = {
-	IER_CHESTKEY,
-	IER_LOCKPICK,
-	IER_CHESTKEY_BUNDLE,
-
-	IER_INVALID
-};
-
-const u8 IER_PromoEffectList[] = {
-	IER_HEROCREST,
-	IER_KNIGHTCREST,
-	IER_ORIONSBOLT,
-	IER_ELYSIANWHIP,
-	IER_GUIDINGRING,
-	IER_MASTERSEAL,
-	IER_OCEANSEAL,
-	IER_LUNARBRACE,
-	IER_SOLARBRACE,
-
-	IER_INVALID
-};
-
 const struct IER_PromoConfig IER_PromotionItemTable[] = {
 	{
 		.item = ITEM_HEROCREST,
@@ -73,4 +43,43 @@ const struct IER_PromoConfig IER_PromotionItemTable[] = {
 		.job_list = gItemUseJidList_C1,
 	},
 	{ 0 }
+};
+
+/**
+ * Useless actually
+ */
+const u8 IER_SelfHealItemEffectList[] = {
+	IER_VULNERARY,
+	IER_ELIXIR,
+	IER_VULNERARY_2,
+
+	IER_INVALID
+};
+
+/**
+ * Useless actually
+ */
+const u8 IER_ChestKeyEffectList[] = {
+	IER_CHESTKEY,
+	IER_LOCKPICK,
+	IER_CHESTKEY_BUNDLE,
+
+	IER_INVALID
+};
+
+/**
+ * Useless actually
+ */
+const u8 IER_PromoEffectList[] = {
+	IER_HEROCREST,
+	IER_KNIGHTCREST,
+	IER_ORIONSBOLT,
+	IER_ELYSIANWHIP,
+	IER_GUIDINGRING,
+	IER_MASTERSEAL,
+	IER_OCEANSEAL,
+	IER_LUNARBRACE,
+	IER_SOLARBRACE,
+
+	IER_INVALID
 };
