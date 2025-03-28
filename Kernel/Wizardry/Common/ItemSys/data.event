@@ -1,9 +1,1 @@
 #include "IERevamp/IERevampData.event"
-
-#include "Remap/Remap.event"
-
-#define InjectItemUsabilityJpt(index, routine) "PUSH; ORG (ItemUsabilityJumpTable + 4 * index); POIN routine | 1; POP"
-#define InjectItemEffectJpt(index, routine)    "PUSH; ORG (ItemEffectJumpTable + 4 * index);    POIN routine | 1; POP"
-#define InjectItemActionJpt(index, routine)    "PUSH; ORG (ItemActionJumpTable + 4 * index);    POIN routine | 1; POP"
-
-#include "SpellAssoc/SpellAssoc.event"

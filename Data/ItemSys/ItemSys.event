@@ -1,4 +1,5 @@
 #include "Source/IERevamp-extra.lyn.event"
+#include "SpellAssoc/SpellAssoc.event"
 
 #define PrItemData(__item) "CONFIG_PR_ITEM_TABLE + 0x24 * __item"
 
