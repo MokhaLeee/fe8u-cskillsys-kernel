@@ -2,6 +2,8 @@
 #include "item-sys.h"
 #include "status-getter.h"
 
+#define LOCAL_TRACE 1
+
 /**
  * Desc
  */
@@ -10,6 +12,35 @@
 /**
  * Promotion list
  */
+LYN_REPLACE_CHECK(CanUnitUsePromotionItem);
+bool CanUnitUsePromotionItem(struct Unit *unit, int item)
+{
+	int iid = ITEM_INDEX(item);
+	const struct IER_PromoConfig *it = *pr_gpIER_PromotionItemTable;
+
+	for (; it->item != ITEM_NONE && it->job_list != NULL; it++) {
+		LTRACEF("item=0x%02X 0x%02X, job=0x%02X", it->item, iid, it->job_list[0]);
+
+		if (it->item == iid) {
+			int i;
+			int jid = UNIT_CLASS_ID(unit);
+
+			for (i = 0; ; i++) {
+				int it_jid = it->job_list[i];
+
+				if (it_jid == CLASS_NONE)
+					return false;
+
+				if (jid == it_jid)
+					return true;
+			}
+			return false;
+		}
+	}
+	return false;
+}
+
+// PlayerPhase_PrepareAction
 
 /**
  * Heal

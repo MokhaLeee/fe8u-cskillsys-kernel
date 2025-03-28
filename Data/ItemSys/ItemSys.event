@@ -12,3 +12,7 @@ PUSH
 	ORG PrItemData(0xA6) + 0x1E // use_effect
 	BYTE 57 // IER_CHAX_STAFF_NIGHTMARE
 POP
+
+ALIGN 4
+gpIER_PromotionItemTable:
+	POIN IER_PromotionItemTable

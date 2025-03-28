@@ -103,7 +103,8 @@ gpClassPreLoadHiddenLevel: POIN gClassPreLoadHiddenLevel
 
 pr_gpGaidenPinfoConfigList: POIN gpGaidenPinfoConfigList
 pr_gpGaidenWeaponCostList:  POIN gpGaidenWeaponCostList
-WORD 0
+
+pr_gpIER_PromotionItemTable: POIN gpIER_PromotionItemTable
 
 gpSkillExtraInfo: POIN gSkillExtraInfo
 

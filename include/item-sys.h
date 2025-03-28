@@ -120,20 +120,9 @@ struct IER_PromoConfig {
 	const u8 *job_list;
 };
 
-extern struct IER_PromoConfig const PromotionItemTable[];
-extern struct IER_PromoConfig const *const gpIER_MAX;
-extern struct IER_PromoConfig const *const *const pr_gpIER_MAX;
-
-/**
- * Old table
- */
-typedef void (*PrepItemEffectFunc_t)(struct ProcPrepItemUse *proc, u16 item);
-// extern PrepItemEffectFunc_t const gPrepItemEffectFunc[0x100];
-extern PrepItemEffectFunc_t const *const gpPrepItemEffectFunc;
-
-typedef bool (*PrepItemUsabilityFunc_t)(struct Unit *unit, int item);
-// extern PrepItemUsabilityFunc_t const gPrepItemUsabilityFuncs[0x100];
-extern PrepItemUsabilityFunc_t const *const gpPrepItemUsabilityFuncs;
+// extern struct IER_PromoConfig const IER_PromotionItemTable[];
+// extern struct IER_PromoConfig const *const gpIER_PromotionItemTable;
+extern struct IER_PromoConfig const *const *const pr_gpIER_PromotionItemTable;
 
 /* DuraItem */
 bool IsDuraItem(int item);
