@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "weapon-lockex.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 int CheckWeaponLockEx(struct Unit *unit, u16 item)
 {

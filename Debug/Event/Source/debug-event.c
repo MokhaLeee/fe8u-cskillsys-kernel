@@ -446,6 +446,10 @@ static void modify_unit_status(void)
 	unit = GetUnitFromCharId(CHARACTER_GARCIA);
 	if (unit) {
 		unit->lck = 32;
+
+#if defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact))
+		AddSkillDbgList(unit, SID_DevilsPact);
+#endif
 	}
 }
 

@@ -58,6 +58,7 @@ gEmsSavChunks:
     /* 51 * 0x20 */
     EmsChunk($0660, SaveUnitLearnedSkillLists, LoadUnitLearnedSkillLists)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
+    EmsChunk(32 * 4, EMS_SaveSkillDbgList, EMS_LoadSkillDbgList)
 
     EmsChunkEnd
 
@@ -99,6 +100,7 @@ gEmsSusChunks:
     EmsChunk($0008, MSU_SaveSelectionPos, MSU_LoadSelectionPos)
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
     EmsChunk((51 + 50 + 8) * 16, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
+    EmsChunk(32 * 4, EMS_SaveSkillDbgList, EMS_LoadSkillDbgList)
 
     EmsChunkEnd
 
@@ -106,5 +108,5 @@ ALIGN 4
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
     POIN NewGame_InitPlayStExpa
-    POIN ResetStatDeuffBuf
+    POIN ResetStatDeuffBuf ResetSkillDbgList
     WORD 0 0 0 0

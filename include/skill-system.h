@@ -85,6 +85,11 @@ void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
 void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
 
+static inline bool SkillListOverflow(struct SkillList *list)
+{
+	return (list->amt >= ARRAY_COUNT(list->sid));
+}
+
 /* Skill tetsers */
 // see: ../docs/SkillSys.md
 bool SkillTester(struct Unit *unit, const u16 sid);
@@ -246,6 +251,26 @@ int GetSkillScrollItemUseDescId(int item);
 int GetSkillScrollItemIconId(int item);
 
 extern const struct MenuDef RemoveSkillMenuDef;
+
+/**
+ * Skill debug list
+ */
+struct SkillDbgListEnt {
+	u8 pid, _pad_;
+	u16 sid;
+};
+
+enum { SKILL_DBG_LIST_LEN = 32 };
+extern EWRAM_DATA struct SkillDbgListEnt gSkillDbgList[SKILL_DBG_LIST_LEN];
+
+void ResetSkillDbgList(void);
+void AddSkillDbgList(struct Unit *unit, int sid);
+void RemoveSkillDbgList(struct Unit *unit, int sid);
+void FlushUnitSkillDbgList(struct Unit *unit);
+
+void EMS_SaveSkillDbgList(u8 *dst, const u32 size);
+void EMS_LoadSkillDbgList(u8 *src, const u32 size);
+void AppendSkillListViaDebugList(struct Unit *unit, struct SkillList *list, u8 *ref);
 
 /**
  * Miscs

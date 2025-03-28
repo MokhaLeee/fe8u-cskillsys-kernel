@@ -95,6 +95,8 @@ void GenerateSkillListExt(struct Unit *unit, struct SkillList *list)
 	}
 
 	/* external */
+	AppendSkillListViaDebugList(unit, list, tmp_list);
+
 	if (gpExternalSkillListGenerator)
 		gpExternalSkillListGenerator(unit, list, tmp_list);
 
