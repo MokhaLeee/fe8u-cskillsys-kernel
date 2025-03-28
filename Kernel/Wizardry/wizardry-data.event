@@ -4,9 +4,7 @@
 ALIGN 4
 KERNEL_DATA_START:
 
-#include "Common/ItemSys/data.event"
 #include "Common/EventRework/data.event"
-
 #include "Common/ArmFunc/data.event"
 #include "Common/UnitAction/data.event"
 #include "Common/ChapterInitHook/data.event"
