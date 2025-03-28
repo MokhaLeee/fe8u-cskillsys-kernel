@@ -23,6 +23,7 @@
 #include "PortraitHeight/PortraitHeight.lyn.event"
 #include "Anims/Anims.event"
 #include "MapTask/MapTask.event"
+#include "ItemSys/ItemSys.event"
 #include "StatScreen/StatScreen.event"
 #include "Misc/FarAttackAnimItem.lyn.event"
 #include "Misc/IconTable.lyn.event"

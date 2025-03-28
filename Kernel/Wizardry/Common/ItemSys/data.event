@@ -1,3 +1,5 @@
+#include "IERevamp/IERevampData.event"
+
 #include "Remap/Remap.event"
 
 #define InjectItemUsabilityJpt(index, routine) "PUSH; ORG (ItemUsabilityJumpTable + 4 * index); POIN routine | 1; POP"

@@ -7,6 +7,7 @@
 #include "Source/ItemUse.lyn.event"
 
 #include "ItemInfoRemap/ItemInfoRemap.event"
+#include "IERevamp/IERevamp.event"
 
 /* int (*)(int old, struct Unit *actor, struct Unit *target); */
 ALIGN 4
