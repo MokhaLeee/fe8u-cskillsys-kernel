@@ -1,0 +1,14 @@
+#include "Source/IERevamp-extra.lyn.event"
+#include "SpellAssoc/SpellAssoc.event"
+
+#define PrItemData(__item) "CONFIG_PR_ITEM_TABLE + 0x24 * __item"
+
+PUSH
+	// Latona
+	ORG PrItemData(0x8C) + 0x1E // use_effect
+	BYTE 55 // IER_CHAX_STAFF_LATONA
+
+	// NightMare
+	ORG PrItemData(0xA6) + 0x1E // use_effect
+	BYTE 57 // IER_CHAX_STAFF_NIGHTMARE
+POP

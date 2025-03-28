@@ -209,6 +209,11 @@
 #define CONFIG_USE_KONAMI_CODE_BONUS
 
 /**
+ * IER
+ */
+#define CONFIG_IER_EN
+
+/**
  * Ai action expansion
  */
 #define CONFIG_AI_ACTION_AMT 20

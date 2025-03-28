@@ -46,8 +46,8 @@ gpKernelArmFunConfig: POIN gKernelArmFunConfig
 gpMapTaskConfs: POIN gMapTaskConfs
 gpHpBarChr: POIN gHpBarChr
 
-gpPrepItemEffectFunc: POIN gPrepItemEffectFunc
-gpPrepItemUsabilityFuncs: POIN gPrepItemUsabilityFuncs
+pr_gpIERevampTable: POIN gpIERevampTable
+WORD 0
 
 prWriteUnitLevelSafe: POIN WriteUnitLevelSafe
 
@@ -61,5 +61,7 @@ gpPromotPopupConfigs: POIN gPromotPopupConfigs
 
 gpExternalBattleToUnitHook: POIN gExternalBattleToUnitHook
 gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
+
+
 
 KERNEL_RELOC_END:

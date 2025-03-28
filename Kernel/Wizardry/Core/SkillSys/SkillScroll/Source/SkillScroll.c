@@ -162,3 +162,31 @@ bool PrepItemUsbility_SkillScroll(struct Unit *unit, int item)
 	 */
 	return !IsSkillLearned(unit, ITEM_USES(item));
 }
+
+/**
+ * IER port
+ */
+bool IER_Usability_SkillScroll(struct Unit *unit, int item)
+{
+	return ItemUsbility_SkillScroll(unit, item);
+}
+
+bool IER_PrepUsability_SkillScroll(struct Unit *unit, int item)
+{
+	return PrepItemUsbility_SkillScroll(unit, item);
+}
+
+void IER_Effect_SkillScroll(struct Unit *unit, int item)
+{
+	ItemUseEffect_SkillScroll(unit);
+}
+
+void IER_ActionEffect_SkillScroll(ProcPtr proc, struct Unit *unit, int item)
+{
+	ItemUseAction_SkillScroll(proc);
+}
+
+void IER_PrepEffect_SkillScroll(struct ProcPrepItemUse *proc, u16 item)
+{
+	PrepItemEffect_SkillScroll(proc, item);
+}

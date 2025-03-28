@@ -240,3 +240,6 @@ bool LoadBonusContentData(void *buf);
  */
 int ParsePopupInstAndGetLen(struct PopupProc *proc);
 void GeneratePopupText(const struct PopupInstruction *inst, struct Text th);
+
+extern struct ProcCmd CONST_DATA ProcScr_SetTargetStatus[];
+extern struct ProcCmd CONST_DATA ProcScr_ExecNightmareStaff[];
