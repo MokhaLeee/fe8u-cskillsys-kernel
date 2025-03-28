@@ -24,6 +24,4 @@ PUSH
     PROC_YEILD
 POP
 
-// #include "data.event"
-
 #endif

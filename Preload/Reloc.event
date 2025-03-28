@@ -50,7 +50,7 @@ gpKTutorialMsg:         POIN gKTutorialMsg
 
 gpExternalGameInitHook: WORD 0
 
-WORD 0
+pr_IER_StatBoosterTextTable: POIN gpIER_StatBoosterTextTable
 
 gpAffinIcons: POIN gAffinIcons
 gpMountIcons: POIN gMountIcons

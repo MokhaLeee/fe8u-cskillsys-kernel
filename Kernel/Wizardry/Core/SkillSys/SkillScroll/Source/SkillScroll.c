@@ -44,6 +44,8 @@ STATIC_DECLAR const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
 void ItemUseEffect_SkillScroll(struct Unit *unit)
 {
 	gActionData.unk08 = -1;
+	SetItemUseAction(unit);
+
 	if (gpKernelDesigerConfig->gen_new_scroll == false) {
 		/**
 		 * If the unit has been filled with equipable skills,
@@ -74,7 +76,8 @@ void ItemUseAction_SkillScroll(ProcPtr proc)
 		UnitUpdateUsedItem(unit, slot);
 	}
 
-	NewPopup_VerySimple(MSG_SkillLearned, 0x5A, proc);
+	SetPopupItem(ITEM_USES(item));
+	NewPopup_Simple(PopupScr_LearnSkill, 0x60, 0, proc);
 }
 
 bool ItemUsbility_SkillScroll(struct Unit *unit, int item)

@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "item-sys.h"
 #include "constants/texts.h"
 
 const struct ItemData ItemData_SkillScroll = {
@@ -12,5 +13,5 @@ const struct ItemData ItemData_SkillScroll = {
 	.encodedRange = 0x11,
 	.costPerUse = 8000,
 	.iconId = 0,
-	.useEffectId = 17,
+	.useEffectId = IER_CHAX_SKILL_SCROLL,
 };

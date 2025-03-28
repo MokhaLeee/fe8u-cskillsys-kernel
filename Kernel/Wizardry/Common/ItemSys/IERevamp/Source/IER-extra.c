@@ -1,6 +1,9 @@
 #include "common-chax.h"
 #include "item-sys.h"
+#include "strmag.h"
 #include "status-getter.h"
+#include "skill-system.h"
+#include "constants/skills.h"
 
 #define LOCAL_TRACE 0
 
@@ -29,7 +32,13 @@ bool CanUnitUsePromotionItem(struct Unit *unit, int item)
 	int iid = ITEM_INDEX(item);
 	const struct IER_PromoConfig *it = *pr_gpIER_PromotionItemTable;
 
-	for (; it->item != ITEM_NONE && it->job_list != NULL; it++) {
+	for (;; it++) {
+		if (it->item != ITEM_NONE || it->item == 0xFFFF)
+			break;
+
+		if (it->job_list == NULL)
+			break;
+
 		LTRACEF("item=0x%02X 0x%02X, job=0x%02X", it->item, iid, it->job_list[0]);
 
 		if (it->item == iid) {
@@ -42,8 +51,12 @@ bool CanUnitUsePromotionItem(struct Unit *unit, int item)
 				if (it_jid == CLASS_NONE)
 					return false;
 
-				if (jid == it_jid)
+				if (jid == it_jid) {
+					if (it->extra_check)
+						return it->extra_check(unit, item);
+
 					return true;
+				}
 			}
 			return false;
 		}
@@ -64,8 +77,29 @@ int GetUnitItemHealAmount(struct Unit *unit, int item)
 #ifdef CONFIG_IER_EN
 	result = GetItemMight(item) + IER_BYTE(item);
 
-	if (result < 10)
-		result = 10;
+	if (result == 0) {
+		switch (GetItemData(ITEM_INDEX(item))->useEffectId) {
+		case IER_STAFF_HEAL:
+		case IER_STAFF_PHYSIC:
+		case IER_STAFF_FORTIFY:
+		case IER_VULNERARY:
+		case IER_VULNERARY_2:
+			result = 10;
+			break;
+
+		case IER_STAFF_MEND:
+			result = 20;
+			break;
+
+		case IER_STAFF_RECOVER:
+		case IER_ELIXIR:
+			result = 80;
+			break;
+
+		default:
+			break;
+		}
+	}
 #else
 	switch (GetItemIndex(item)) {
 	case ITEM_STAFF_HEAL:
@@ -184,4 +218,114 @@ bool AiTryHealSelf(void)
 		}
 	}
 	return false;
+}
+
+STATIC_DECLAR int GetStatBoosterText(struct Unit *unit, int item)
+{
+	int iid = ITEM_INDEX(item);
+	const struct IER_PrepStatBoosterMsg *list = *pr_IER_StatBoosterTextTable;
+
+	for (; list->item != ITEM_NONE; list++) {
+		if (list->item != iid)
+			continue;
+
+		if (list->msg_getter)
+			return list->msg_getter(unit, item);
+		else
+			return list->msg;
+	}
+	return 0;
+}
+
+LYN_REPLACE_CHECK(ApplyStatBoostItem);
+int ApplyStatBoostItem(struct Unit *unit, int slot)
+{
+	int item = unit->items[slot];
+	FORCE_DECLARE const struct ItemData *iinfo = GetItemData(ITEM_INDEX(item));
+	const struct ItemStatBonuses *statBonuses = GetItemStatBonuses(item);
+	int msg = GetStatBoosterText(unit, item);
+
+#ifdef CONFIG_IER_EN
+	if (iinfo->useEffectId == IER_METISSTOME) {
+		unit->state |= US_GROWTH_BOOST;
+		UnitUpdateUsedItem(unit, slot);
+		return msg;
+	}
+#else
+	if (GetItemIndex(item) == ITEM_METISSTOME) {
+		unit->state |= US_GROWTH_BOOST;
+		UnitUpdateUsedItem(unit, slot);
+		return 0x1D; /* Maturity increased */
+	}
+#endif
+
+#if (defined(SID_ShrewdPotential) && COMMON_SKILL_VALID(SID_ShrewdPotential))
+	if (SkillTester(unit, SID_ShrewdPotential)) {
+		if (statBonuses->hpBonus > 0) {
+			unit->maxHP += SKILL_EFF0(SID_ShrewdPotential);
+			unit->curHP += SKILL_EFF0(SID_ShrewdPotential);
+		}
+		if (statBonuses->powBonus > 0)
+			unit->pow += SKILL_EFF0(SID_ShrewdPotential);
+		if (ITEM_MAG_BONUS(statBonuses) > 0)
+			UNIT_MAG(unit) += SKILL_EFF0(SID_ShrewdPotential);
+		if (statBonuses->sklBonus > 0)
+			unit->skl += SKILL_EFF0(SID_ShrewdPotential);
+		if (statBonuses->spdBonus > 0)
+			unit->spd += SKILL_EFF0(SID_ShrewdPotential);
+		if (statBonuses->lckBonus > 0)
+			unit->lck += SKILL_EFF0(SID_ShrewdPotential);
+		if (statBonuses->defBonus > 0)
+			unit->def += SKILL_EFF0(SID_ShrewdPotential);
+		if (statBonuses->resBonus > 0)
+			unit->res += SKILL_EFF0(SID_ShrewdPotential);
+		if (statBonuses->conBonus > 0)
+			unit->conBonus += SKILL_EFF0(SID_ShrewdPotential);
+		if (statBonuses->movBonus > 0)
+			unit->movBonus += SKILL_EFF0(SID_ShrewdPotential);
+	}
+#endif
+
+	unit->maxHP += statBonuses->hpBonus;
+	unit->curHP += statBonuses->hpBonus;
+	unit->pow += statBonuses->powBonus;
+	unit->skl += statBonuses->sklBonus;
+	unit->spd += statBonuses->spdBonus;
+	unit->def += statBonuses->defBonus;
+	unit->res += statBonuses->resBonus;
+	unit->lck += statBonuses->lckBonus;
+	unit->movBonus += statBonuses->movBonus;
+	unit->conBonus += statBonuses->conBonus;
+
+	UNIT_MAG(unit) += ITEM_MAG_BONUS(statBonuses);
+
+	UnitCheckStatCaps(unit);
+	UnitUpdateUsedItem(unit, slot);
+
+#ifdef CONFIG_IER_EN
+	return msg;
+#else
+	if (statBonuses->hpBonus > 0)
+		return 0x1C;
+	else if (statBonuses->powBonus > 0)
+		return 0x13;
+	else if (ITEM_MAG_BONUS(statBonuses) > 0)
+		return 0x14;
+	else if (statBonuses->sklBonus > 0)
+		return 0x15;
+	else if (statBonuses->spdBonus > 0)
+		return 0x16;
+	else if (statBonuses->lckBonus > 0)
+		return 0x17;
+	else if (statBonuses->defBonus > 0)
+		return 0x18;
+	else if (statBonuses->resBonus > 0)
+		return 0x19;
+	else if (statBonuses->movBonus > 0)
+		return 0x1A;
+	else if (statBonuses->conBonus > 0)
+		return 0x1B;
+
+	return 0;
+#endif
 }

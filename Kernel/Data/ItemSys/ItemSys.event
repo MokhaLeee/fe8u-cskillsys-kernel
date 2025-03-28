@@ -1,4 +1,4 @@
 #include "Source/IERevampTable.lyn.event"
 
 ALIGN 4
-gpIERevampTable: POIN IERevampTable
+// gpIERevampTable: POIN IERevampTable

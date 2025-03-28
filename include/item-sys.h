@@ -118,11 +118,21 @@ struct IER_PromoConfig {
 	u16 item;
 	u16 _pad_;
 	const u8 *job_list;
+	bool (*extra_check)(struct Unit *unit, int item);
 };
 
 // extern struct IER_PromoConfig const IER_PromotionItemTable[];
 // extern struct IER_PromoConfig const *const gpIER_PromotionItemTable;
 extern struct IER_PromoConfig const *const *const pr_gpIER_PromotionItemTable;
+
+struct IER_PrepStatBoosterMsg {
+	u16 item, msg;
+	int (*msg_getter)(struct Unit *unit, int item);
+};
+
+// extern struct IER_PrepStatBoosterMsg const IER_StatBoosterTextTable[];
+// extern struct IER_PrepStatBoosterMsg const *const gpIER_StatBoosterTextTable;
+extern struct IER_PrepStatBoosterMsg const *const *const pr_IER_StatBoosterTextTable;
 
 /* DuraItem */
 bool IsDuraItem(int item);

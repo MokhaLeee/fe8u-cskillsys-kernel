@@ -3,7 +3,7 @@
 
 THUMB_FUNC_START DrawItemMenuLine_hook
 DrawItemMenuLine_hook:
-	push {lr}
+	@ 0x80168B4
 	push {r0-r3}
 	movs r0, r6
 	bl IsDuraItem
@@ -12,4 +12,8 @@ DrawItemMenuLine_hook:
 	beq 1f
 	bl PutNumberOrBlank
 1:
-	pop {pc}
+	movs r0, r6
+	bl GetItemIconId
+	movs r1, r0
+	ldr r0, =0x80168CB
+	bx r0
