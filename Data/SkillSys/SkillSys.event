@@ -19,3 +19,8 @@ Img_EfxSkillBoxBG:
 
 #include "EfxSkill/EfxSkillBoxfx.lyn.event"
 #include "PrepSkill.event"
+
+PUSH
+    ORG CONFIG_PR_ITEM_TABLE + CONFIG_ITEM_INDEX_SKILL_SCROLL * 0x24
+        #include "SkillScroll/ItemData_Scroll.lyn.event"
+POP

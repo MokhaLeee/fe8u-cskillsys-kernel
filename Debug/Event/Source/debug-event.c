@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 #include "debuff.h"
+#include "strmag.h"
 #include "event-rework.h"
 #include "constants/skills.h"
 
@@ -205,7 +206,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 	},
 	{
 		.charIndex = CHARACTER_NATASHA,
-		.classIndex = CLASS_CLERIC,
+		.classIndex = CLASS_BISHOP_F,
 		.autolevel = true,
 		.level = 1,
 		.xPosition = 12,
@@ -218,7 +219,10 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 			.delayFrames = 64,
 		},
 		.items = {
-			ITEM_VULNERARY
+			ITEM_NIGHTMARE,
+			ITEM_STAFF_BERSERK,
+			ITEM_STAFF_LATONA,
+			ITEM_STAFF_FORTIFY
 		},
 	},
 	{
@@ -434,7 +438,9 @@ static void modify_unit_status(void)
 
 	unit = GetUnitFromCharId(CHARACTER_NATASHA);
 	if (unit) {
+		UNIT_MAG(unit) = 30;
 		unit->res = 20;
+		unit->ranks[ITYPE_STAFF] = WPN_EXP_S;
 	}
 
 	unit = GetUnitFromCharId(CHARACTER_GARCIA);

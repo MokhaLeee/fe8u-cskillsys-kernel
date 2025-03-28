@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "skill-system.h"
 
-const struct MenuItemDef *GetSkillMenuInfo(int sid)
+NOINLINE const struct MenuItemDef *GetSkillMenuInfo(int sid)
 {
 	return *(gpSkillMenuInfos + sid);
 }

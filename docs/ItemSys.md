@@ -29,3 +29,6 @@ CSkillSys supports the similar functionality as [teraspark' IER hack](https://fe
 	```
 
 	If heal amount is lower than 10 HP, then it will be forcefully set as 10.
+
+## Known issue
+1. **FUCKING NIGHTMARE** item related hard-code functions are not touched. Do NOT edit night-mare.

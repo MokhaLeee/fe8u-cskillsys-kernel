@@ -102,10 +102,18 @@ struct IERevamp {
 	void (*prep_effect)(struct ProcPrepItemUse *proc, u16 item);
 };
 
-extern struct IERevamp const IERevampTable[IER_MAX];
-extern struct IERevamp const *const gpIERevampTable;
+// extern struct IERevamp const IERevampTable[IER_MAX];
+// extern struct IERevamp const *const gpIERevampTable;
 extern struct IERevamp const *const *const pr_gpIERevampTable;
+const struct IERevamp *GetIERevamp(int item);
 
+enum { IINFO_IER_BYTE = 22 };
+#define IER_BYTE(item) \
+	*(((u8 *)GetItemData(ITEM_INDEX(item))) + IINFO_IER_BYTE)
+
+/**
+ * IER extra
+ */
 struct IER_PromoConfig {
 	u16 item;
 	u16 _pad_;
@@ -123,7 +131,6 @@ typedef void (*PrepItemEffectFunc_t)(struct ProcPrepItemUse *proc, u16 item);
 // extern PrepItemEffectFunc_t const gPrepItemEffectFunc[0x100];
 extern PrepItemEffectFunc_t const *const gpPrepItemEffectFunc;
 
-bool CanUnitUseMetiStome(struct Unit *unit, int item);
 typedef bool (*PrepItemUsabilityFunc_t)(struct Unit *unit, int item);
 // extern PrepItemUsabilityFunc_t const gPrepItemUsabilityFuncs[0x100];
 extern PrepItemUsabilityFunc_t const *const gpPrepItemUsabilityFuncs;
@@ -135,13 +142,13 @@ int GetDuraItemDescId(int item);
 int GetDuraItemUseDescId(int item);
 int GetDuraItemIconId(int item);
 
-/* Misc API functions */
-void PrepItemEffect_StatBooster(struct ProcPrepItemUse *proc, u16 item);
-void PrepItemEffect_Promotion(struct ProcPrepItemUse *proc, u16 item);
-void PrepItemEffect_JunaFruit(struct ProcPrepItemUse *proc, u16 item);
-
+/**
+ * Modular heal
+ */
 typedef int (*HealAmountGetterFunc_t)(int old, struct Unit *actor, struct Unit *target);
 extern HealAmountGetterFunc_t const *const gpHealAmountGetters;
+
+int HealAmountGetter(int base, struct Unit *actor, struct Unit *target);
 
 /**
  * IER functions
@@ -149,7 +156,7 @@ extern HealAmountGetterFunc_t const *const gpHealAmountGetters;
 #define IER_DECLEARE_Usability(__func)     bool __func(struct Unit *unit, int item)
 #define IER_DECLEARE_PrepUsability(__func) bool __func(struct Unit *unit, int item)
 #define IER_DECLEARE_Effect(__func)        void __func(struct Unit *unit, int item);
-#define IER_DECLEARE_ActionEffect(__func)  void __func(ProcPtr proc, struct Unit *unit, int item);
+#define IER_DECLEARE_Action(__func)  void __func(ProcPtr proc, struct Unit *unit, int item);
 #define IER_DECLEARE_PrepEffect(__func)    void __func(struct ProcPrepItemUse *proc, u16 item);
 
 IER_DECLEARE_Usability(IER_Usability_AdjacentHeal);
@@ -179,3 +186,53 @@ IER_DECLEARE_Usability(IER_Usability_StaffTorch);
 IER_DECLEARE_Usability(IER_Usability_DanceRing);
 IER_DECLEARE_Usability(IER_Usability_MetisStone);
 IER_DECLEARE_Usability(IER_Usability_JunaFruit);
+IER_DECLEARE_Usability(IER_Usability_NightMare);
+IER_DECLEARE_Effect(IER_Effect_AdjacentHeal);
+IER_DECLEARE_Effect(IER_Effect_RangedHeal);
+IER_DECLEARE_Effect(IER_Effect_RescueStaff);
+IER_DECLEARE_Effect(IER_Effect_Restore);
+IER_DECLEARE_Effect(IER_Effect_Silence);
+IER_DECLEARE_Effect(IER_Effect_Sleep);
+IER_DECLEARE_Effect(IER_Effect_Berserk);
+IER_DECLEARE_Effect(IER_Effect_Barrier);
+IER_DECLEARE_Effect(IER_Effect_Unlock);
+IER_DECLEARE_Effect(IER_Effect_Warp);
+IER_DECLEARE_Effect(IER_Effect_Repair);
+IER_DECLEARE_Effect(IER_Effect_CommonStaff);
+IER_DECLEARE_Effect(IER_Effect_Mine);
+IER_DECLEARE_Effect(IER_Effect_LightRune);
+IER_DECLEARE_Effect(IER_Effect_Torch);
+IER_DECLEARE_Effect(IER_Effect_SpeicalDance);
+IER_DECLEARE_Action(IER_Action_StandardHeal);
+IER_DECLEARE_Action(IER_Action_StatusStaff);
+IER_DECLEARE_Action(IER_Action_NightMare);
+IER_DECLEARE_Action(IER_Action_Fortify);
+IER_DECLEARE_Action(IER_Action_Restore);
+IER_DECLEARE_Action(IER_Action_RescueStaff);
+IER_DECLEARE_Action(IER_Action_BarrierStaff);
+IER_DECLEARE_Action(IER_Action_WarpStaff);
+IER_DECLEARE_Action(IER_Action_UnlockStaff);
+IER_DECLEARE_Action(IER_Action_Hammerne);
+IER_DECLEARE_Action(IER_Action_TorchItem);
+IER_DECLEARE_Action(IER_Action_VulneraryItem);
+IER_DECLEARE_Action(IER_Action_ElixirItem);
+IER_DECLEARE_Action(IER_Action_PureWaterItem);
+IER_DECLEARE_Action(IER_Action_AntitoxinItem);
+IER_DECLEARE_Action(IER_Action_KeyItem);
+IER_DECLEARE_Action(IER_Action_Promotion);
+IER_DECLEARE_Action(IER_Action_Booster);
+IER_DECLEARE_Action(IER_Action_Latona);
+IER_DECLEARE_Action(IER_Action_Mine);
+IER_DECLEARE_Action(IER_Action_LightRune);
+IER_DECLEARE_Action(IER_Action_TorchStaff);
+IER_DECLEARE_Action(IER_Action_DanceRing);
+IER_DECLEARE_Action(IER_Action_JunaFruitItem);
+IER_DECLEARE_PrepEffect(IER_PrepEffect_StatBooster);
+IER_DECLEARE_PrepEffect(IER_PrepEffect_Promotion);
+IER_DECLEARE_PrepEffect(IER_PrepEffect_JunaFruit);
+
+IER_DECLEARE_Usability(IER_Usability_SkillScroll);
+IER_DECLEARE_PrepUsability(IER_PrepUsability_SkillScroll);
+IER_DECLEARE_Effect(IER_Effect_SkillScroll);
+IER_DECLEARE_Action(IER_ActionEffect_SkillScroll);
+IER_DECLEARE_PrepEffect(IER_PrepEffect_SkillScroll);

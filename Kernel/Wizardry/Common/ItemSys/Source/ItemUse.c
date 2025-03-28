@@ -59,15 +59,3 @@ void BattleApplyItemEffect(struct Proc *proc)
 	(++gBattleHitIterator)->info = BATTLE_HIT_INFO_END;
 	Proc_StartBlocking(sProcScr_BattleAnimSimpleLock, proc);
 }
-
-/**
- * This is a special hook on: 0x0802FC62,
- * where we may hook on GetItem in function: ActionStaffDoorChestUseItem()
- */
-int AutoGetItemUseActionItem(void)
-{
-	struct Unit *unit = GetUnit(gActionData.subjectIndex);
-	int item = GetItemFromSlot(unit, gActionData.itemSlotIndex);
-
-	return GetItemIndex(item);
-}

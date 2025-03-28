@@ -6,7 +6,7 @@
 #include "kernel-lib.h"
 #include "constants/skills.h"
 
-STATIC_DECLAR int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
+int HealAmountGetter(int base, struct Unit *actor, struct Unit *target)
 {
 	const HealAmountGetterFunc_t *it;
 	int status = base;
@@ -16,46 +16,6 @@ STATIC_DECLAR int HealAmountGetter(int base, struct Unit *actor, struct Unit *ta
 
 	LIMIT_AREA(status, 0, 80);
 	return status;
-}
-
-LYN_REPLACE_CHECK(GetUnitItemHealAmount);
-int GetUnitItemHealAmount(struct Unit *unit, int item)
-{
-	int result = 0;
-
-#ifdef CONFIG_IER_EN
-	result = GetItemMight(item) + GetItemDataIERByte(item);
-
-	if (result < 10)
-		result = 10;
-#else
-	switch (GetItemIndex(item)) {
-	case ITEM_STAFF_HEAL:
-	case ITEM_STAFF_PHYSIC:
-	case ITEM_STAFF_FORTIFY:
-	case ITEM_VULNERARY:
-	case ITEM_VULNERARY_2:
-		result = 10;
-		break;
-
-	case ITEM_STAFF_MEND:
-		result = 20;
-		break;
-
-	case ITEM_STAFF_RECOVER:
-	case ITEM_ELIXIR:
-		result = 80;
-		break;
-	} // switch (GetItemIndex(item))
-#endif // IER_EN
-
-	if (GetItemAttributes(item) & IA_STAFF)
-		result += MagGetter(unit);
-
-	if (result > 80)
-		result = 80;
-
-	return result;
 }
 
 LYN_REPLACE_CHECK(ExecStandardHeal);
@@ -110,9 +70,10 @@ void ExecFortify(ProcPtr proc)
 
 	for (i = 0; i < targetCount; i++) {
 #if CHAX
-		int amound_real = HealAmountGetter(amount, unit_act, NULL);
+		struct Unit *unit_tar = GetUnit(GetTarget(i)->uid);
+		int amound_real = HealAmountGetter(amount, unit_act, unit_tar);
 
-		AddUnitHp(GetUnit(GetTarget(i)->uid), amound_real);
+		AddUnitHp(unit_tar, amound_real);
 #else
 		AddUnitHp(GetUnit(GetTarget(i)->uid), amount);
 #endif
