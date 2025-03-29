@@ -59,6 +59,7 @@
 #include "MenuSkills/Refuge.lyn.event"
 #include "MenuSkills/DeathBlight.lyn.event"
 #include "MenuSkills/DivineReprieve.event"
+#include "MenuSkills/LoadstarRush.lyn.event"
 
 #include "MenuSkills/ReciprocalAid.lyn.event"
 #include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"

@@ -432,6 +432,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_LoadstarRush) && COMMON_SKILL_VALID(SID_LoadstarRush))
+    [SID_LoadstarRush] = {
+        .desc = MSG_SKILL_LoadstarRush,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
 #if (defined(SID_Aegis) && COMMON_SKILL_VALID(SID_Aegis))
     [SID_Aegis] = {
         .desc = MSG_SKILL_Aegis,

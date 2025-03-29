@@ -619,6 +619,21 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 	},
 #endif
 
+#if (defined(SID_LoadstarRush) && COMMON_SKILL_VALID(SID_LoadstarRush))
+    [SID_LoadstarRush] = {
+        .name = "　光の結界",
+        .nameMsgId = MSG_MenuSkill_LoadstarRushName,
+        .helpMsgId = MSG_SKILL_LoadstarRush,
+        .color = TEXT_COLOR_SYSTEM_GOLD,
+        .isAvailable = LoadstarRush_Usability,
+        .onDraw = NULL,
+        .onSelected = LoadstarRush_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
     [0] = {
         .name = "　",
         .nameMsgId = MSG_MenuCommand_RefugeName,

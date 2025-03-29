@@ -6,6 +6,7 @@
 #include "combat-art.h"
 #include "combo-attack.h"
 #include "constants/skills.h"
+#include "unit-expa.h"
 
 #define LOCAL_TRACE 1
 
@@ -32,6 +33,11 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit * actor, struct BattleUnit * tar
 
     if (GetItemIndex(actor->weapon) == ITEM_MONSTER_STONE)
         return false;
+
+#if defined(SID_LoadstarRush) && (COMMON_SKILL_VALID(SID_LoadstarRush))
+        if (gActionData.unk08 == SID_LoadstarRush && !CheckBitUES(gActiveUnit, UES_BIT_LOADSTAR_RUSH_SKILL_USED))
+            return false;
+#endif
 
     /* Check combat-art */
     cid = GetCombatArtInForce(&actor->unit);
@@ -688,6 +694,14 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     }
 #endif
 
+#if defined(SID_LoadstarRush) && (COMMON_SKILL_VALID(SID_LoadstarRush))
+    if (actor == &gBattleActor && !CheckBitUES(gActiveUnit, UES_BIT_LOADSTAR_RUSH_SKILL_USED) && BattleSkillTester(actor, SID_LoadstarRush))
+    {
+        EnqueueRoundEfxSkill(SID_LoadstarRush);
+        result = result + SKILL_EFF0(SID_LoadstarRush);
+    }
+#endif
+
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (actor == &gBattleActor && CheckBattleSkillActivate(actor, target, SID_Astra, actor->unit.spd))
     {
@@ -734,7 +748,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
     if (actor == &gBattleActor && BattleSkillTester(actor, SID_Echo))
     {
         EnqueueRoundEfxSkill(SID_Echo);
-        gBattleActorGlobalFlag.skill_activated_astra = true;
+        gBattleActorGlobalFlag.skill_activated_echo = true;
         result = result + SKILL_EFF0(SID_Echo);
     }
 #endif
