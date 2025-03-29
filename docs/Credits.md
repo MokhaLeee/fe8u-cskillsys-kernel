@@ -4,7 +4,7 @@
 | :---------------- | :------: |
 | Plus        |   GratedShtick   |
 | Minus           |   GratedShtick   |
-| Inori    |  GratedShtick   |
+| Miracle    |  GratedShtick   |
 | Multiscale |  GratedShtick   |
 | Solid Rock        |   GratedShtick   |
 | Sturdy          |   GratedShtick   |

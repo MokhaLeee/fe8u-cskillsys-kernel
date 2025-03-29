@@ -994,23 +994,23 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_LEGEND_InoriAtk) && COMMON_SKILL_VALID(SID_LEGEND_InoriAtk))
-    [SID_LEGEND_InoriAtk] = {
-        .desc = MSG_SKILL_LEGEND_InoriAtk,
+#if (defined(SID_LEGEND_MiracleAtk) && COMMON_SKILL_VALID(SID_LEGEND_MiracleAtk))
+    [SID_LEGEND_MiracleAtk] = {
+        .desc = MSG_SKILL_LEGEND_MiracleAtk,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
-#if (defined(SID_LEGEND_InoriAvo) && COMMON_SKILL_VALID(SID_LEGEND_InoriAvo))
-    [SID_LEGEND_InoriAvo] = {
-        .desc = MSG_SKILL_LEGEND_InoriAvo,
+#if (defined(SID_LEGEND_MiracleAvo) && COMMON_SKILL_VALID(SID_LEGEND_MiracleAvo))
+    [SID_LEGEND_MiracleAvo] = {
+        .desc = MSG_SKILL_LEGEND_MiracleAvo,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
 
-#if (defined(SID_LEGEND_InoriDef) && COMMON_SKILL_VALID(SID_LEGEND_InoriDef))
-    [SID_LEGEND_InoriDef] = {
-        .desc = MSG_SKILL_LEGEND_InoriDef,
+#if (defined(SID_LEGEND_MiracleDef) && COMMON_SKILL_VALID(SID_LEGEND_MiracleDef))
+    [SID_LEGEND_MiracleDef] = {
+        .desc = MSG_SKILL_LEGEND_MiracleDef,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
@@ -2205,9 +2205,9 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
-#if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
-    [SID_Inori] = {
-        .desc = MSG_SKILL_Inori,
+#if (defined(SID_Miracle) && COMMON_SKILL_VALID(SID_Miracle))
+    [SID_Miracle] = {
+        .desc = MSG_SKILL_Miracle,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
@@ -3536,6 +3536,13 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
     [SID_Sturdy] = {
         .desc = MSG_SKILL_Sturdy,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_HoldOut) && COMMON_SKILL_VALID(SID_HoldOut))
+    [SID_HoldOut] = {
+        .desc = MSG_SKILL_HoldOut,
         .icon = GFX_SkillIcon_WIP,
     },
 #endif

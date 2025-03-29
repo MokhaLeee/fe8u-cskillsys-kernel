@@ -3,16 +3,16 @@
 #include "constants/skills.h"
 
 u8 const gLegendSkillPool[] = {
-#if defined(SID_LEGEND_InoriAtk) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAtk))
-    SID_LEGEND_InoriAtk,
+#if defined(SID_LEGEND_MiracleAtk) && (COMMON_SKILL_VALID(SID_LEGEND_MiracleAtk))
+    SID_LEGEND_MiracleAtk,
 #endif
 
-#if defined(SID_LEGEND_InoriAvo) && (COMMON_SKILL_VALID(SID_LEGEND_InoriAvo))
-    SID_LEGEND_InoriAvo,
+#if defined(SID_LEGEND_MiracleAvo) && (COMMON_SKILL_VALID(SID_LEGEND_MiracleAvo))
+    SID_LEGEND_MiracleAvo,
 #endif
 
-#if defined(SID_LEGEND_InoriDef) && (COMMON_SKILL_VALID(SID_LEGEND_InoriDef))
-    SID_LEGEND_InoriDef,
+#if defined(SID_LEGEND_MiracleDef) && (COMMON_SKILL_VALID(SID_LEGEND_MiracleDef))
+    SID_LEGEND_MiracleDef,
 #endif
 
 #if defined(SID_LEGEND_4) && (COMMON_SKILL_VALID(SID_LEGEND_4))

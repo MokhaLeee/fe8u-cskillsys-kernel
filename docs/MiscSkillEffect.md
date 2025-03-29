@@ -3,9 +3,9 @@
 ---
 ##  legendary skill
 ```
-SID_LEGEND_InoriAtk
-SID_LEGEND_InoriAvo
-SID_LEGEND_InoriDef
+SID_LEGEND_MiracleAtk
+SID_LEGEND_MiracleAvo
+SID_LEGEND_MiracleDef
 SID_LEGEND_4
 SID_LEGEND_5
 ```

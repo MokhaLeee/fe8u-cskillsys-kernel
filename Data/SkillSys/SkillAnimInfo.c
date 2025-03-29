@@ -116,8 +116,8 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
     [SID_AxeFaith] = EFX_PRIORITY_NORMAL,
 #endif
 
-#if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
-    [SID_Inori] = EFX_PRIORITY_NORMAL,
+#if (defined(SID_Miracle) && COMMON_SKILL_VALID(SID_Miracle))
+    [SID_Miracle] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_Armsthrift) && COMMON_SKILL_VALID(SID_Armsthrift))
@@ -230,6 +230,10 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Sturdy) && COMMON_SKILL_VALID(SID_Sturdy))
     [SID_Sturdy] = EFX_PRIORITY_NORMAL,
+#endif
+
+#if (defined(SID_HoldOut) && COMMON_SKILL_VALID(SID_HoldOut))
+    [SID_HoldOut] = EFX_PRIORITY_NORMAL,
 #endif
 
 #if (defined(SID_ArmsthriftPlus) && COMMON_SKILL_VALID(SID_ArmsthriftPlus))
@@ -374,8 +378,8 @@ struct EfxAnimConf const * const EfxSkillAnims[MAX_SKILL_NUM + 1] = {
     [SID_AxeFaith] = &EfxSkillVanilla,
 #endif
 
-#if (defined(SID_Inori) && COMMON_SKILL_VALID(SID_Inori))
-    [SID_Inori] = &EfxSkillVanilla,
+#if (defined(SID_Miracle) && COMMON_SKILL_VALID(SID_Miracle))
+    [SID_Miracle] = &EfxSkillVanilla,
 #endif
 
 #if (defined(SID_Armsthrift) && COMMON_SKILL_VALID(SID_Armsthrift))

@@ -603,7 +603,7 @@ bool BattleGenerateHit(struct BattleUnit * attacker, struct BattleUnit * defende
 #if CHAX
         if (defender->unit.curHP == 0)
         {
-            if (CheckBattleInori(attacker, defender))
+            if (CheckBattleMiracle(attacker, defender))
             {
                 gBattleStats.damage = gBattleStats.damage - 1;
                 gBattleHitIterator->hpChange = gBattleStats.damage;

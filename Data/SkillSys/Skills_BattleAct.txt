@@ -1,16 +1,16 @@
 ## MSG_SKILL_Aegis
-Aegis:[N]
-Nullify a magic attack.[N]
+Aegis:[NL]
+Nullify a magic attack.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Pavise
-Pavise:[N]
-Nullify a physical attack.[N]
+Pavise:[NL]
+Nullify a physical attack.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Mercy
-Mercy: Leave the opponent at[N]
-1 HP if the attack would kill.[N]
+Mercy: Leave the opponent at[NL]
+1 HP if the attack would kill.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_MercyPlus
@@ -19,223 +19,218 @@ This unit cannot kill enemy[N]
 units under any circumstances.[X]
 
 ## MSG_SKILL_Bane
-Bane:[N]
-Leave the opponent at 1 HP[N]
+Bane:[NL]
+Leave the opponent at 1 HP[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Aether
-Aether: Negate 80% of enemy[N]
-defenses and absorb HP.[N]
+Aether: Negate 80% of enemy[NL]
+defenses and absorb HP.[NL]
 (Skill/2 % activation).[X]
 
 ## MSG_SKILL_Corona
-Corona:[N]
-Negate enemy resistance.[N]
+Corona:[NL]
+Negate enemy resistance.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Luna
-Luna:[N]
-Negates enemy defense.[N]
+Luna:[NL]
+Negates enemy defense.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Flare
-Flare:[N]
-Halve enemy resistance.[N]
+Flare:[NL]
+Halve enemy resistance.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Foresight
-Foresight: Avoid the damage[N]
-from enemy Critical Hits and[N]
+Foresight: Avoid the damage[NL]
+from enemy Critical Hits and[NL]
 Skill Activations.[X]
 
 ## MSG_SKILL_Sol
-Sol:[N]
-Restore damage dealt as HP.[N]
+Sol:[NL]
+Restore damage dealt as HP.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_DragonFang
-DragonFang:[N]
-Damage +50%.[N]
+DragonFang:[NL]
+Damage +50%.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Colossus
-Colossus:[N]
-Damage +200%.[N]
+Colossus:[NL]
+Damage +200%.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Impale
-Impale:[N]
-Damage +300%.[N]
+Impale:[NL]
+Damage +300%.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Miracle
-Miracle:[N]
-Unit may not die if attacked[N]
+Miracle:[NL]
+Unit may not die if attacked[NL]
 to 0 HP (Luck % activation).[X]
 
 ## MSG_SKILL_Corrosion
-Corrosion:[N]
-Reduce enemy's weapon durability[N]
+Corrosion:[NL]
+Reduce enemy's weapon durability[NL]
 by user's level (Skill % activation).[X]
 
 ## MSG_SKILL_Ignis
-Ignis:[N]
-Add DEF/2 or RES/2 to attack based[N]
+Ignis:[NL]
+Add DEF/2 or RES/2 to attack based[NL]
 on weapon type (Skill % activation).[X]
 
 ## MSG_SKILL_RightfulKing
-Rightful King:[N]
-Add +10% to the activation[N]
+Rightful King:[NL]
+Add +10% to the activation[NL]
 rate of this unit's skills.[X]
 
 ## MSG_SKILL_RightfulGod
-Rightful God:[N]
-Add +30% to the activation[N]
+Rightful God:[NL]
+Add +30% to the activation[NL]
 rate of this unit's skills.[X]
 
 ## MSG_SKILL_RightfulArch
-Rightful Arch:[N]
-Set activation rate of[N]
+Rightful Arch:[NL]
+Set activation rate of[NL]
 this unit's skills to 100%.[X]
 
 ## MSG_SKILL_Glacies
-Glacies:[N]
-Add unit resistance to damage dealt.[N] 
+Glacies:[NL]
+Add unit resistance to damage dealt.[NL] 
 (Skill % activation).[X]
 
 ## MSG_SKILL_GreatShield
-Great Shield:[N]
-Nullify all attacks.[N]
+Great Shield:[NL]
+Nullify all attacks.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Vengeance
-Vengeance:[N]
-Add damage taken to attack.[N]
+Vengeance:[NL]
+Add damage taken to attack.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Deadeye
-Deadeye:[N]
-Doubles hit rate and inflict sleep.[N]
+Deadeye:[NL]
+Doubles hit rate and inflict sleep.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_AxeFaith
-AxeFaith:[N]
-When attacking with an Axe, hit + attack%.[N]
+AxeFaith:[NL]
+When attacking with an Axe, hit + attack%.[NL]
 (Attack % activation).[X]
 
 ## MSG_SKILL_Armsthrift
-Armsthrift:[N]
-A weapon use is not consumed.[N]
+Armsthrift:[NL]
+A weapon use is not consumed.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_SureShot
-SureShot:[N]
-100% hit rate, damage +50%.[N]
+SureShot:[NL]
+100% hit rate, damage +50%.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_DivinePulse_NAME
 D-Pulse[X]
 
 ## MSG_SKILL_DivinePulse
-Divine Pulse:[N]
-Turn a missed attack into a hit[N]
+Divine Pulse:[NL]
+Turn a missed attack into a hit[NL]
 (30% + Luck % activation).[X]
 
 ## MSG_SKILL_Discipline
-Discipline:[N]
-Weapon experience gains are[N]
+Discipline:[NL]
+Weapon experience gains are[NL]
 doubled for this unit.[X]
 
 ## MSG_SKILL_Counter
-Counter:[N]
-Reflect physical damage[N]
+Counter:[NL]
+Reflect physical damage[NL]
 dealt at melee range.[X]
 
 ## MSG_SKILL_DevilsPact_NAME
 D-Pact[X]
 
 ## MSG_SKILL_DevilsPact
-Devil's Pact:[N]
-Inflict the Devil effect[N]
+Devil's Pact:[NL]
+Inflict the Devil effect[NL]
 upon the enemy unit.[X]
 
 ## MSG_SKILL_DevilsWhim_NAME
 D-Whim[X]
 
 ## MSG_SKILL_DevilsWhim
-Devil's Whim:[N]
-Inflict the Devil effect[N]
+Devil's Whim:[NL]
+Inflict the Devil effect[NL]
 upon both units.[X]
 
 ## MSG_SKILL_DevilsLuck_NAME
 D-Luck[X]
 
 ## MSG_SKILL_DevilsLuck
-Devil's Luck:[N]
-Give the unit's devil effect[N]
+Devil's Luck:[NL]
+Give the unit's devil effect[NL]
 to the enemy in battle.[X]
 
 ## MSG_SKILL_CounterMagic_NAME
 C-Magic:[X]
 
 ## MSG_SKILL_CounterMagic
-Counter Magic:[N]
-Reflect magical damage[N]
+Counter Magic:[NL]
+Reflect magical damage[NL]
 dealt at range.[X]
 
 ## MSG_SKILL_Eclipse
-Eclipse:[N]
-Halve the opponent's current HP.[N]
+Eclipse:[NL]
+Halve the opponent's current HP.[NL]
 (Skill % activation).[X]
 
 ## MSG_SKILL_Sturdy
-Sturdy:[N]
-If the unit has full HP at the[N]
-start of the fight, they cannot die.[X]
-
-## MSG_SKILL_HoldOut
-HoldOut:[N]
-If the unit has >= 30% HP at the[N]
+Sturdy:[NL]
+If the unit has full HP at the[NL]
 start of the fight, they cannot die.[X]
 
 ## MSG_SKILL_ArmsthriftPlus
-Armsthrift+:[N]
+Armsthrift+:[NL]
 Weapon uses are not consumed.[X]
 
 ## MSG_SKILL_DownWithArch_NAME
 Down-Arch[X]
 
 ## MSG_SKILL_DownWithArch
-Down With Arch:[N]
-Instantly kill enemy if their[N]
+Down With Arch:[NL]
+Instantly kill enemy if their[NL]
 name is the specified name.[X]
 
 ## MSG_SKILL_RampUp
-RampUp:[N]
-Crits deal x2 damage, but[N]
+RampUp:[NL]
+Crits deal x2 damage, but[NL]
 apply before enemy defense.[X]
 
 ## MSG_SKILL_TriangleAttack_NAME
 Tri-Atk[X]
 
 ## MSG_SKILL_TriangleAttack
-Triangle Attack: Two other units with[N]
-this skill adjacent to an enemy can[N]
+Triangle Attack: Two other units with[NL]
+this skill adjacent to an enemy can[NL]
 perform a triangle attack.[X]
 
 ## MSG_SKILL_AngerPoint
-Anger Point:[N]
-Gai +10 attack for the phase[N]
+Anger Point:[NL]
+Gai +10 attack for the phase[NL]
 if you've taken a critical hit.[X]
 
 ## MSG_SKILL_Debilitator
-Debilitator:[N]
-If this unit deals no damage,[N]
+Debilitator:[NL]
+If this unit deals no damage,[NL]
 -4 to all enemy's stats this turn.[X]
 
 ## MSG_SKILL_Chipper
-Chipper:[N]
-Gain +50g after every[N]
+Chipper:[NL]
+Gain +50g after every[NL]
 hit on the enemy.[X]
 
 ## MSG_SKILL_GrazingBlow

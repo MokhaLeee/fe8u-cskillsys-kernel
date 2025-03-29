@@ -1,14 +1,14 @@
-## MSG_SKILL_LEGEND_InoriAtk
-Legend Inori ATK:[NL]
+## MSG_SKILL_LEGEND_MiracleAtk
+Legend Miracle ATK:[NL]
 If attacked to 0 HP, unit will survive[NL]
 and receive +10 ATK, Crit +100%[X]
 
-## MSG_SKILL_LEGEND_InoriAvo
-Legend Inori AVO:[NL]
+## MSG_SKILL_LEGEND_MiracleAvo
+Legend Miracle AVO:[NL]
 If attacked to 0 HP, unit will[NL]
 survive and receive +10 SPD, AVO +100%[X]
 
-## MSG_SKILL_LEGEND_InoriDef
-Legend Inori DEF:[NL]
+## MSG_SKILL_LEGEND_MiracleDef
+Legend Miracle DEF:[NL]
 If attacked to 0 HP, unit will survive,[NL]
 recover HP and receive +10 DEF/RES.[X]
