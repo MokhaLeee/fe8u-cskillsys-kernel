@@ -22,13 +22,14 @@ enum unit_expa_sus_bitfile_idx {
     UES_BIT_SHADOWFLASH_SKILL_USED,
     UES_BIT_TWIN_CRESTS_SKILL_USED,
     UES_BIT_DEATHBLIGHT_SKILL_USED,
-    UNIT_EXPA_SUS_BIT14,
+    UES_BIT_LOADSTAR_RUSH_SKILL_USED,
     UNIT_EXPA_SUS_BIT15,
 
     UES_BIT_MAX
 };
 
 void SetBitUES(struct Unit * unit, int bit);
+void SetBitUES_BU(struct BattleUnit * bu, int bit);
 void ClearBitUES(struct Unit * unit, int bit);
 bool CheckBitUES(struct Unit * unit, int bit);
 

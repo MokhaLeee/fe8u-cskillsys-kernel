@@ -415,6 +415,10 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
     [SID_Astra] = {{4, 50}},
 #endif
 
+#if (defined(SID_LoadstarRush) && COMMON_SKILL_VALID(SID_LoadstarRush))
+    [SID_LoadstarRush] = {{6, 70}},
+#endif
+
 #if (defined(SID_Aether) && COMMON_SKILL_VALID(SID_Aether))
     [SID_Aether] = {{80}},
 #endif

@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "unit-expa.h"
 
-bool PrePhsae_ClearMiscUES(ProcPtr proc)
+bool PrePhase_ClearMiscUES(ProcPtr proc)
 {
     int uid;
     struct Unit *unit;
@@ -20,6 +20,9 @@ bool PrePhsae_ClearMiscUES(ProcPtr proc)
             ClearBitUES(unit, UES_BIT_SHADOWFLASH_SKILL_USED);
             ClearBitUES(unit, UES_BIT_TWIN_CRESTS_SKILL_USED);
             ClearBitUES(unit, UES_BIT_DEATHBLIGHT_SKILL_USED);
+
+            /* We don't clear this bit as it's meant to be once per map */
+            // ClearBitUES(unit, UES_BIT_LOADSTAR_RUSH_SKILL_USED);
         }
     }
     return false;

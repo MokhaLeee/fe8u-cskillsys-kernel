@@ -454,5 +454,13 @@ start next player phase.[X]
 You have used this skill![X]
 
 ## MSG_MenuSkill_DivineReprieve_Confirm
-This skill may directly end your phase[A][NL]
-Are you sure?           [NL][Yes][X]
+This skill may directly end your phase[A][N]
+Are you sure?           [N][Yes][X]
+
+## MSG_MenuSkill_LoadstarRushName
+ Loadstar Rush[X]
+
+## MSG_SKILL_LoadstarRush
+Loadstar Rush:[N]
+Unit attacks 7 times but[N]
+damage is 30% per attack.[X]

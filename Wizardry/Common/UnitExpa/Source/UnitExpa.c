@@ -1,6 +1,15 @@
 #include "common-chax.h"
 #include "unit-expa.h"
 
+void SetBitUES_BU(struct BattleUnit * bu, int bit)
+{
+    if (bit < 8)
+        bu->unit._u3A |= (1 << bit);
+
+    else if (bit < 16)
+        bu->unit._u3B |= (1 << (bit - 8));
+}
+
 void SetBitUES(struct Unit * unit, int bit)
 {
     if (bit < 8)

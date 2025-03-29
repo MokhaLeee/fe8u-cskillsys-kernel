@@ -370,6 +370,7 @@ static const KeyValuePair dict_skills[] =
         { "Limit Breaker+", {1000, 1}},
         { "Liquid Ooze", {1000, 1}},
         { "Live To Serve", {1000, 1}},
+        { "Loadstar Rush", {1000, 1}},
         { "Lock Touch", {1000, 1}},
         { "Loyalty", {1000, 1}},
         { "Luck Boost", {1000, 1}},

@@ -464,6 +464,12 @@ int BattleHit_CalcDamage(struct BattleUnit * attacker, struct BattleUnit * defen
      */
     gDmg.decrease = 0x100;
 
+#if defined(SID_LoadStarRush) && (COMMON_SKILL_VALID(SID_LoadStarRush))
+    if (attacker == &gBattleActor && BattleSkillTester(attacker, SID_LoadStarRush) &&
+        gBattleActorGlobalFlag.skill_activated_loadstar_rush)
+        gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_LoadstarRush));
+#endif
+
 #if defined(SID_Astra) && (COMMON_SKILL_VALID(SID_Astra))
     if (attacker == &gBattleActor && BattleSkillTester(attacker, SID_Astra) &&
         gBattleActorGlobalFlag.skill_activated_astra)

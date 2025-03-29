@@ -44,6 +44,10 @@ const u8 EfxSkillAnimPriority[MAX_SKILL_NUM + 1] = {
     [SID_Astra] = EFX_PRIORITY_LOW,
 #endif
 
+#if (defined(SID_LoadstarRush) && COMMON_SKILL_VALID(SID_LoadstarRush))
+    [SID_LoadstarRush] = EFX_PRIORITY_LOW,
+#endif
+
 #if (defined(SID_Aegis) && COMMON_SKILL_VALID(SID_Aegis))
     [SID_Aegis] = EFX_PRIORITY_NORMAL,
 #endif

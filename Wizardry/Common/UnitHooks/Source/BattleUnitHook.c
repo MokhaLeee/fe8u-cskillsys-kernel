@@ -5,6 +5,7 @@
 #include "status-getter.h"
 #include "combat-art.h"
 #include "constants/skills.h"
+#include "unit-expa.h"
 
 typedef int (*BattleToUnitFunc_t)(struct BattleUnit * bu, struct Unit * unit);
 // extern const BattleToUnitFunc_t gExternalBattleToUnitHook[];
@@ -235,6 +236,17 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
     const BattleToUnitFunc_t * it;
 
     UpdateUnitFromBattleVanilla(unit, bu);
+
+    /**
+     * I went and made a battle unit version of the set bit function to
+     * accomodate the fact that menu skills that use the attack functionality
+     * need to have their bits set after the battle is over to prevent situations
+     * where the user exits out of the forecast menu without attacking, and the bit is accidentally set
+     */
+#if defined(SID_LoadstarRush) && (COMMON_SKILL_VALID(SID_LoadstarRush))
+    if (SkillTester(unit, SID_LoadstarRush) && !CheckBitUES(unit, UES_BIT_LOADSTAR_RUSH_SKILL_USED))
+        SetBitUES_BU(bu, UES_BIT_LOADSTAR_RUSH_SKILL_USED);
+#endif
 
     UNIT_MAG(unit) += BU_CHG_MAG(bu);
 
