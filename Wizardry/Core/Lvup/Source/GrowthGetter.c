@@ -37,6 +37,11 @@ int GetUnitHpGrowthBonus(int status, struct Unit *unit)
         status = status + unit->maxHP / 2;
 #endif
 
+#if defined(SID_KnackHealth) && (COMMON_SKILL_VALID(SID_KnackHealth))
+    if (SkillTester(unit, SID_KnackHealth))
+        status = status + SKILL_EFF0(SID_KnackHealth);
+#endif
+
     return status;
 }
 
@@ -48,6 +53,11 @@ int GetUnitPowGrowthBonus(int status, struct Unit *unit)
 #if defined(SID_DarkHorse) && (COMMON_SKILL_VALID(SID_DarkHorse))
     if (SkillTester(unit, SID_DarkHorse))
         status = status + unit->pow;
+#endif
+
+#if defined(SID_KnackStrength) && (COMMON_SKILL_VALID(SID_KnackStrength))
+    if (SkillTester(unit, SID_KnackStrength))
+        status = status + SKILL_EFF0(SID_KnackStrength);
 #endif
 
     return status;
@@ -63,6 +73,11 @@ int GetUnitMagGrowthBonus(int status, struct Unit *unit)
         status = status + GetUnitMagic(unit);
 #endif
 
+#if defined(SID_KnackMagic) && (COMMON_SKILL_VALID(SID_KnackMagic))
+    if (SkillTester(unit, SID_KnackMagic))
+        status = status + SKILL_EFF0(SID_KnackMagic);
+#endif
+
     return status;
 }
 
@@ -74,6 +89,11 @@ int GetUnitSklGrowthBonus(int status, struct Unit *unit)
 #if defined(SID_DarkHorse) && (COMMON_SKILL_VALID(SID_DarkHorse))
     if (SkillTester(unit, SID_DarkHorse))
         status = status + unit->skl;
+#endif
+
+#if defined(SID_KnackSkill) && (COMMON_SKILL_VALID(SID_KnackSkill))
+    if (SkillTester(unit, SID_KnackSkill))
+        status = status + SKILL_EFF0(SID_KnackSkill);
 #endif
 
     return status;
@@ -89,6 +109,11 @@ int GetUnitSpdGrowthBonus(int status, struct Unit *unit)
         status = status + unit->spd;
 #endif
 
+#if defined(SID_KnackSpeed) && (COMMON_SKILL_VALID(SID_KnackSpeed))
+    if (SkillTester(unit, SID_KnackSpeed))
+        status = status + SKILL_EFF0(SID_KnackSpeed);
+#endif
+
     return status;
 }
 
@@ -100,6 +125,11 @@ int GetUnitLckGrowthBonus(int status, struct Unit *unit)
 #if defined(SID_DarkHorse) && (COMMON_SKILL_VALID(SID_DarkHorse))
     if (SkillTester(unit, SID_DarkHorse))
         status = status + unit->lck;
+#endif
+
+#if defined(SID_KnackLuck) && (COMMON_SKILL_VALID(SID_KnackLuck))
+    if (SkillTester(unit, SID_KnackLuck))
+        status = status + SKILL_EFF0(SID_KnackLuck);
 #endif
 
     return status;
@@ -115,6 +145,11 @@ int GetUnitDefGrowthBonus(int status, struct Unit *unit)
         status = status + unit->def;
 #endif
 
+#if defined(SID_KnackDefense) && (COMMON_SKILL_VALID(SID_KnackDefense))
+    if (SkillTester(unit, SID_KnackDefense))
+        status = status + SKILL_EFF0(SID_KnackDefense);
+#endif
+
     return status;
 }
 
@@ -126,6 +161,11 @@ int GetUnitResGrowthBonus(int status, struct Unit *unit)
 #if defined(SID_DarkHorse) && (COMMON_SKILL_VALID(SID_DarkHorse))
     if (SkillTester(unit, SID_DarkHorse))
         status = status + unit->def;
+#endif
+
+#if defined(SID_KnackResistance) && (COMMON_SKILL_VALID(SID_KnackResistance))
+    if (SkillTester(unit, SID_KnackResistance))
+        status = status + SKILL_EFF0(SID_KnackResistance);
 #endif
 
     return status;

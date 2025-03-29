@@ -611,6 +611,14 @@ SID_Velocity
 SID_StaffParagon
 SID_OgreBody
 SID_Prodigy
+// SID_KnackStrength
+// SID_KnackMagic
+// SID_KnackSkill
+// SID_KnackSpeed
+// SID_KnackLuck
+// SID_KnackDefense
+// SID_KnackResistance
+// SID_KnackHealth
 
 //////// LEGENDARY SKILLS
 // SID_LEGEND_InoriAtk

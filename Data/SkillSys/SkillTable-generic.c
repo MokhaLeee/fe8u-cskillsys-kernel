@@ -438,8 +438,8 @@ const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
     // 01
     [CHARACTER_EIRIKA] = {
         .skills = {
-            // [0] = SID_EternalVanity,
-            // [1] = SID_InitSpectrum,
+            // [0] = SID_KnackStrength,
+            // [1] = SID_KnackMagic,
         },
     },
     // // 02

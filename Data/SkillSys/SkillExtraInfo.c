@@ -1266,4 +1266,36 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_ShadowFlash) && COMMON_SKILL_VALID(SID_ShadowFlash))
     [SID_ShadowFlash] = {{10, 3}},
 #endif
+
+#if (defined(SID_KnackStrength) && COMMON_SKILL_VALID(SID_KnackStrength))
+    [SID_KnackStrength] = {{10}},
+#endif
+
+#if (defined(SID_KnackMagic) && COMMON_SKILL_VALID(SID_KnackMagic))
+    [SID_KnackMagic] = {{10}},
+#endif
+
+#if (defined(SID_KnackSkill) && COMMON_SKILL_VALID(SID_KnackSkill))
+    [SID_KnackSkill] = {{10}},
+#endif
+
+#if (defined(SID_KnackSpeed) && COMMON_SKILL_VALID(SID_KnackSpeed))
+    [SID_KnackSpeed] = {{10}},
+#endif
+
+#if (defined(SID_KnackLuck) && COMMON_SKILL_VALID(SID_KnackLuck))
+    [SID_KnackLuck] = {{10}},
+#endif
+
+#if (defined(SID_KnackDefense) && COMMON_SKILL_VALID(SID_KnackDefense))
+    [SID_KnackDefense] = {{10}},
+#endif
+
+#if (defined(SID_KnackResistance) && COMMON_SKILL_VALID(SID_KnackResistance))
+    [SID_KnackResistance] = {{10}},
+#endif
+
+#if (defined(SID_KnackHealth) && COMMON_SKILL_VALID(SID_KnackHealth))
+    [SID_KnackHealth] = {{10}},
+#endif
 };

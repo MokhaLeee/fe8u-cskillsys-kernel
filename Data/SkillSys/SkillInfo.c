@@ -5013,4 +5013,60 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_KnackStrength) && COMMON_SKILL_VALID(SID_KnackStrength))
+    [SID_KnackStrength] = {
+        .desc = MSG_SKILL_KnackStrength,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KnackMagic) && COMMON_SKILL_VALID(SID_KnackMagic))
+    [SID_KnackMagic] = {
+        .desc = MSG_SKILL_KnackMagic,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KnackSkill) && COMMON_SKILL_VALID(SID_KnackSkill))
+    [SID_KnackSkill] = {
+        .desc = MSG_SKILL_KnackSkill,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KnackSpeed) && COMMON_SKILL_VALID(SID_KnackSpeed))
+    [SID_KnackSpeed] = {
+        .desc = MSG_SKILL_KnackSpeed,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KnackLuck) && COMMON_SKILL_VALID(SID_KnackLuck))
+    [SID_KnackLuck] = {
+        .desc = MSG_SKILL_KnackLuck,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KnackDefense) && COMMON_SKILL_VALID(SID_KnackDefense))
+    [SID_KnackDefense] = {
+        .desc = MSG_SKILL_KnackDefense,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KnackResistance) && COMMON_SKILL_VALID(SID_KnackResistance))
+    [SID_KnackResistance] = {
+        .desc = MSG_SKILL_KnackResistance,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_KnackHealth) && COMMON_SKILL_VALID(SID_KnackHealth))
+    [SID_KnackHealth] = {
+        .desc = MSG_SKILL_KnackHealth,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

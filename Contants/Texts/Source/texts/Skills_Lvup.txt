@@ -32,3 +32,43 @@ by their base stats.[X]
 Prodigy:[N]
 Unit can gain over[N]
 100 EXP in a round.[X]
+
+## MSG_SKILL_KnackStrength
+Knack Strength:[N]
+Increase unit's STR growth[N]
+by 10%.[X]
+
+## MSG_SKILL_KnackMagic
+Knack Magic:[N]
+Increase unit's MAG growth[N]
+by 10%.[X]
+
+## MSG_SKILL_KnackSkill
+Knack Skill:[N]
+Increase unit's SKL growth[N]
+by 10%.[X]
+
+## MSG_SKILL_KnackSpeed
+Knack Speed:[N]
+Increase unit's SPD growth[N]
+by 10%.[X]
+
+## MSG_SKILL_KnackLuck
+Knack Luck:[N]
+Increase unit's LCK growth[N]
+by 10%.[X]
+
+## MSG_SKILL_KnackDefense
+Knack Defense:[N]
+Increase unit's DEF growth[N]
+by 10%.[X]
+
+## MSG_SKILL_KnackResistance
+Knack Resistance:[N]
+Increase unit's RES growth[N]
+by 10%.[X]
+
+## MSG_SKILL_KnackHealth
+Knack Health:[N]
+Increase unit's HP growth[N]
+by 10%.[X]
