@@ -1,7 +1,35 @@
 PUSH
+	// ROMFEINFO.item_usability_array_switch2_address
+	ORG 0x2889A
+	SHORT 0x2100
+    // PROTECT 0x00028870 0x00028C0C // CanUnitUseItem
+
+	// Program.ROM.RomInfo.item_effect_array_switch2_address
+	ORG 0x2FC72
+	SHORT 0x2100
+    // PROTECT 0x0002FC48 0x0002FFB4 // ActionStaffDoorChestUseItem
+
+	// Program.ROM.RomInfo.item_promotion1_array_switch2_address
+	ORG 0x29202
+	SHORT 0x2100
+    // PROTECT 0x000291A8 0x0002940C // CanUnitUsePromotionItem
+
+	// Program.ROM.RomInfo.item_statbooster1_array_switch2_address
+	ORG 0x2F8A4
+	SHORT 0x2100
+    // PROTECT 0x0002F808 0x0002F914 // ApplyStatBoostItem
+
+	// Program.ROM.RomInfo.item_statbooster2_array_switch2_address
+	ORG 0x29F1C
+	SHORT 0x2100
+	// PROTECT 0x00029F00 0x0002A108 // CanUnitUseItemPrepScreen
+
 	//  PatchUtil.ItemUsingExtendsPatch
 	ORG 0x28E80
 	BYTE 0x03 0x4B 0x14 0x22 0x50 0x43 0x40 0x18 0xC0 0x18 0x00 0x68 0x70 0x47 0x00 0x00
+
+	// PATCH_IER_IERevampTable
+	ORG 0x28E90
 	gpIERevampTable:
 	POIN IERevampTable
 POP
