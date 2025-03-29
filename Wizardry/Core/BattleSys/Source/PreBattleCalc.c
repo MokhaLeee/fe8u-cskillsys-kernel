@@ -310,6 +310,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
     int _skill_list_cnt;
     struct SkillList *list;
     struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(GetUnit(attacker->unit.index)));
+    FORCE_DECLARE bool wrathPlusActivated;
 
     /**
      * Skip arena judgement
@@ -843,9 +844,16 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
             break;
 #endif
 
+#if (defined(SID_WrathPlus) && (COMMON_SKILL_VALID(SID_WrathPlus)))
+        case SID_WrathPlus:
+                attacker->battleCritRate += (attacker->unit.maxHP - attacker->unit.curHP) > 30 ? 30 : (attacker->unit.maxHP - attacker->unit.curHP);
+                wrathPlusActivated = true;
+                break;
+#endif
+
 #if (defined(SID_Wrath) && (COMMON_SKILL_VALID(SID_Wrath)))
         case SID_Wrath:
-            if (attacker->hpInitial > (attacker->hpInitial * 2))
+            if (attacker->hpInitial > (attacker->hpInitial * 2) && !wrathPlusActivated)
                 attacker->battleCritRate += SKILL_EFF0(SID_Wrath);
 
             break;

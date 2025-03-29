@@ -112,6 +112,7 @@
 // SID_ChargePlus
 // SID_FieryBlood
 // SID_Wrath
+// SID_WrathPlus
 // SID_OutdoorFighter
 // SID_KnightAspirant
 // SID_Outrider

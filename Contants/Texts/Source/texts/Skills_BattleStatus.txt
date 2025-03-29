@@ -396,6 +396,11 @@ Wrath:[NL]
 If current HP is < 50%[NL]
 of max, +20 Crit Rate.[X]
 
+## MSG_SKILL_WrathPlus
+Wrath+:[N]
+For each HP the unit has lost,[N]
++1 crit (max 30).[X]
+
 ## MSG_SKILL_Vigilance
 Vigilance:[NL]
 Gain +20 Avoid.[X]
