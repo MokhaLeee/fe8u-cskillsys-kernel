@@ -1,6 +1,7 @@
 #ifndef KERNEL_LIB_INSTALLED
 #define KERNEL_LIB_INSTALLED
 
+#include "Source/U.lyn.event"
 #include "Source/map.lyn.event"
 #include "Source/math.lyn.event"
 #include "Source/banim.lyn.event"
@@ -12,6 +13,7 @@
 #include "Source/faction.lyn.event"
 #include "Source/unit-validation.lyn.event"
 #include "Source/UnitList.lyn.event"
+#include "Source/cache.lyn.event"
 
 // #include "data.event"
 

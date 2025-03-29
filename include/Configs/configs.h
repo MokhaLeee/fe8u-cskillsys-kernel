@@ -240,6 +240,7 @@
 #define CONFIG_PR_ITEM_TABLE 0x809B10
 #define CONFIG_ITEM_INDEX_MAG_BOOSTER 0xBC
 #define CONFIG_ITEM_INDEX_SKILL_SCROLL 0xBD
+#define CONFIG_ITEM_INDEX_SKILL_SCROLL_FEB 0xFF
 
 /**
  * Unit amount, since it is hard to modify, it is recommanded not change this value

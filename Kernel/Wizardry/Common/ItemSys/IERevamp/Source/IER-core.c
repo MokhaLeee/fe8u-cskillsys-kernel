@@ -1,11 +1,20 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "item-sys.h"
 #include "battle-system.h"
 
 const struct IERevamp *GetIERevamp(int item)
 {
 	struct IERevamp const *const pplist = *pr_gpIERevampTable;
-	int ier_id = GetItemData(ITEM_INDEX(item))->useEffectId;
+	int iid = ITEM_INDEX(item);
+	int ier_id;
+
+#if 1
+	if (iid >= ItemDataLengthCache)
+		iid = CONFIG_ITEM_INDEX_SKILL_SCROLL;
+#endif
+
+	ier_id = GetItemData(ITEM_INDEX(item))->useEffectId;
 
 	if (IER_IS_VALID(ier_id))
 		return &pplist[ier_id];

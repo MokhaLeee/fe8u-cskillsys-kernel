@@ -269,6 +269,14 @@ enum BattleStatusIdxRef {
 #define UNIT_WRANK(unit, wtype) ((unit)->ranks[wtype])
 
 /**
- * patch-hooks.c
+ * cache.c
  */
+extern u8 ItemDataLengthCache;
 
+void GameInit_InitCache(void);
+
+/**
+ * U.c
+ */
+bool IsPointer(uintptr_t a);
+bool IsPointerOrNULL(uintptr_t a);

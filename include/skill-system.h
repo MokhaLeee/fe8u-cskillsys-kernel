@@ -245,6 +245,7 @@ extern SkillActionFunc_t const *const gpSkillActionFuncTable;
 /**
  * Skill scroll
  */
+bool IsSkillScrollItem(int item);
 char *GetSkillScrollItemName(int item);
 int GetSkillScrollItemDescId(int item);
 int GetSkillScrollItemUseDescId(int item);

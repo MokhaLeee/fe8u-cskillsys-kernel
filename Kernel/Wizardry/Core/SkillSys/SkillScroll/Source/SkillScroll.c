@@ -5,6 +5,18 @@
 #include "constants/texts.h"
 
 /* External hooks */
+bool IsSkillScrollItem(int item)
+{
+	switch (ITEM_INDEX(item)) {
+	case CONFIG_ITEM_INDEX_SKILL_SCROLL:
+	case CONFIG_ITEM_INDEX_SKILL_SCROLL_FEB:
+		return true;
+
+	default:
+		return false;
+	}
+}
+
 char *GetSkillScrollItemName(int item)
 {
 	return GetSkillNameStr(ITEM_USES(item));
