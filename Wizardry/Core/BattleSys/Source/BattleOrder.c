@@ -695,7 +695,7 @@ int GetBattleUnitHitCount(struct BattleUnit * actor)
 #endif
 
 #if defined(SID_LoadstarRush) && (COMMON_SKILL_VALID(SID_LoadstarRush))
-    if (actor == &gBattleActor && !CheckBitUES(gActiveUnit, UES_BIT_LOADSTAR_RUSH_SKILL_USED) && BattleSkillTester(actor, SID_LoadstarRush))
+    if (gActionData.unk08 == SID_LoadstarRush && !CheckBitUES(gActiveUnit, UES_BIT_LOADSTAR_RUSH_SKILL_USED) && BattleSkillTester(actor, SID_LoadstarRush))
     {
         EnqueueRoundEfxSkill(SID_LoadstarRush);
         result = result + SKILL_EFF0(SID_LoadstarRush);

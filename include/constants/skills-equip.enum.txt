@@ -44,7 +44,7 @@ SID_ShadowFlash
 // SID_Refuge
 SID_DeathBlight
 // SID_DivineReprieve
-// SID_LoadstarRush
+SID_LoadstarRush
 
 //////// PRE-BATTLE SKILLS
 // SID_DefiantStr
