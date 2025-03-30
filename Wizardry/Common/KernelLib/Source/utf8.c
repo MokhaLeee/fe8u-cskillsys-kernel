@@ -153,7 +153,6 @@ char NarrowFontsUnicodeToAscii(u32 unicod)
 	return 0;
 }
 
-
 void DumpNarrowFontsUnicode(void)
 {
 #if 0

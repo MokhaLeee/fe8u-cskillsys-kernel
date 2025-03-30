@@ -57,12 +57,7 @@ Aid Refusal:[N]
 This unit cannot be[N]
 targeted by staves.[X]
 
-## MSG_SKILL_WhiteMage
-White Mage:[N]
-Boost healing staves[N]
-by 50%.[X]
-
-## MSG_SKILL_CursedHeal
-Cursed Heal:[N]
-Healing through this unit [N]
-damages target, but cannot kill.[X]
+## MSG_SKILL_SwordSaint
+Sword Saint:[N]
+Unit can use all swords[N]
+at 1-2 range.[X]

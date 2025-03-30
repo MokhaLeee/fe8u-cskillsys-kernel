@@ -279,3 +279,8 @@ support bonuses.[X]
 Scroll Savant:[N]
 Unit can learn skills from[N]
 scrolls without consuming them.[X]
+
+## MSG_SKILL_WhiteMage
+White Mage:[N]
+Boost healing staves[N]
+by 50%.[X]

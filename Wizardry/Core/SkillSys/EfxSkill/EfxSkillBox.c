@@ -44,11 +44,22 @@ STATIC_DECLAR void DrawEfxSkillName(struct ProcEfxskillbox * proc)
     else
         str = GetStringFromIndex(GetCombatArtName(proc->sid));
 
-    Text_InsertDrawString(
-        text,
-        GetStringTextCenteredPos(0x30, str),
-        TEXT_COLOR_SYSTEM_WHITE,
-        str);
+    if (gpKernelDesigerConfig->auto_narrow_font)
+    {
+        Text_InsertDrawString(
+            text,
+            GetStringTextCenteredPos(0x30, str),
+            TEXT_COLOR_SYSTEM_WHITE,
+            Utf8ToNarrowFonts(str));
+    }
+	else
+    {
+        Text_InsertDrawString(
+            text,
+            GetStringTextCenteredPos(0x30, str),
+            TEXT_COLOR_SYSTEM_WHITE,
+            str);
+    }
 
     SetTextFont(NULL);
 }

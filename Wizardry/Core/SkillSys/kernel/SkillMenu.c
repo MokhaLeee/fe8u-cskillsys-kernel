@@ -60,10 +60,19 @@ static int MenuSkills_StandardDraw(struct MenuProc * menu, struct MenuItemProc *
     if (item->availability == MENU_DISABLED)
         Text_SetColor(&item->text, TEXT_COLOR_SYSTEM_GRAY);
 
-    if (!def->nameMsgId)
-        Text_DrawString(&item->text, def->name);
-    else
-        Text_DrawString(&item->text, GetStringFromIndex(def->nameMsgId));
+    /**
+     * Not actually sure what the point of this check is, but it doesn't seem necessary so I'm commenting it out
+     */
+    // if (!def->nameMsgId)
+    //     Text_DrawString(&item->text, def->name);
+    // else
+    //     Text_DrawString(&item->text, GetStringFromIndex(def->nameMsgId));
+
+#ifdef CONFIG_AUTO_NARROW_FONT
+    Text_DrawString(&item->text, Utf8ToNarrowFonts(GetStringFromIndex(def->nameMsgId)));
+#else
+    Text_DrawString(&item->text, GetStringFromIndex(def->nameMsgId));
+#endif
 
     PutText(
         &item->text,

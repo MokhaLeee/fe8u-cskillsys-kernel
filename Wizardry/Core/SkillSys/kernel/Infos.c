@@ -41,17 +41,17 @@ char * GetSkillDescStr(const u16 sid)
 		return str;
 }
 
-char * SkillDescToName(char * str)
+char *SkillDescToName(char *str)
 {
-    char * it;
-    for (it = str; *it; ++it)
-    {
-        if (*it == ':')
-        {
-            *it = '\0';
-            break;
-        }
-    }
+	char *it;
+
+	for (it = str; *it; ++it) {
+		if (*it == ':') {
+			*it = '\0';
+			break;
+		}
+	}
+
 	/**
 	 * As we have changed the value in the buffer,
 	 * the cached index should become invalid.
@@ -61,20 +61,21 @@ char * SkillDescToName(char * str)
 	return str;
 }
 
-char * GetSkillNameStrFormDesc(const u16 sid)
+char *GetSkillNameStrFormDesc(const u16 sid)
 {
-    char * str;
-    u16 msg = GetSkillDescMsg(sid);
-    if (msg == 0)
-        return "EMPTY";
+	char *str;
+	u16 msg = GetSkillDescMsg(sid);
 
-    str = GetStringFromIndex(msg);
-    return SkillDescToName(str);
+	if (msg == 0)
+		return "EMPTY";
+
+	str = GetStringFromIndex(msg);
+	return SkillDescToName(str);
 }
 
-char * GetSkillNameStr(const u16 sid)
+char *GetSkillNameStr(const u16 sid)
 {
-    char *str;
+	char *str;
 	u16 msg = GetSkillNameMsg(sid);
 
 	if (msg == 0)
@@ -86,8 +87,6 @@ char * GetSkillNameStr(const u16 sid)
 		return Utf8ToNarrowFonts(str);
 	else
 		return str;
-
-    return GetStringFromIndex(msg);
 }
 
 int GetEfxSkillPriority(const u16 sid)

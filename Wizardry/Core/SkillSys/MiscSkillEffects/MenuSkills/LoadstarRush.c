@@ -78,6 +78,7 @@ u8 LoadstarRush_OnSelected(struct MenuProc * menu, struct MenuItemProc * item)
 
 bool Action_LoadstarRush(ProcPtr parent)
 {
+    SetBitUES(gActiveUnit, UES_BIT_LOADSTAR_RUSH_SKILL_USED);
 	return true;
 }
 

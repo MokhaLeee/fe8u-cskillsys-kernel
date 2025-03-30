@@ -175,3 +175,8 @@ FM-Body[X]
 Full Metal Body:[NL]
 This unit is immune to all[NL]
 the seal skills.[X]
+
+## MSG_SKILL_CursedHeal
+Cursed Heal:[N]
+Healing through this unit [N]
+damages target, but cannot kill.[X]

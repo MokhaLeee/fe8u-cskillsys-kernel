@@ -133,10 +133,17 @@ void DisplayLeftPanel(void)
         GetUnitEquippedWeaponSlot(gStatScreen.unit));
 
     // Display character name
+#ifdef CONFIG_AUTO_NARROW_FONT
+    PutDrawText(
+        &gStatScreen.text[STATSCREEN_TEXT_CHARANAME],
+        gBG0TilemapBuffer + TILEMAP_INDEX(3, 10),
+        TEXT_COLOR_SYSTEM_WHITE, namexoff, 0, Utf8ToNarrowFonts((char *)namestr));
+#else 
     PutDrawText(
         &gStatScreen.text[STATSCREEN_TEXT_CHARANAME],
         gBG0TilemapBuffer + TILEMAP_INDEX(3, 10),
         TEXT_COLOR_SYSTEM_WHITE, namexoff, 0, namestr);
+#endif
 
     // Display class name
     PutDrawText(
