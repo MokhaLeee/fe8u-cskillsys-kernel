@@ -716,6 +716,7 @@ SID_Canto
 // SID_ShotputPlus
 // SID_Shotput
 // SID_Extrovert
+// SID_ScrollSavant
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

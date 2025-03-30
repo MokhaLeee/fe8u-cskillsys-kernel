@@ -3589,3 +3589,24 @@ void MakeTargetListForAdjacentEnemies(struct Unit* unit) {
 
     return;
 }
+
+LYN_REPLACE_CHECK(UnitUpdateUsedItem);
+void UnitUpdateUsedItem(struct Unit* unit, int itemSlot) {
+
+    /**
+     * If the item is a scroll, we need to check for the scroll savant skill.
+     * If the unit has the skill, then we skip the check to reduce item uses.
+     */
+    if (GetItemIndex(unit->items[itemSlot]) == 0xBD)
+    {
+#if defined(SID_ScrollSavant) && (COMMON_SKILL_VALID(SID_ScrollSavant))
+        if (SkillTester(unit, SID_ScrollSavant))
+            return;
+#endif
+    }
+
+    if (unit->items[itemSlot]) {
+        unit->items[itemSlot] = GetItemAfterUse(unit->items[itemSlot]);
+        UnitRemoveInvalidItems(unit);
+    }
+}

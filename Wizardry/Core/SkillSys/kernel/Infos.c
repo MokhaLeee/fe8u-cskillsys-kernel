@@ -52,7 +52,13 @@ char * SkillDescToName(char * str)
             break;
         }
     }
-    return str;
+	/**
+	 * As we have changed the value in the buffer,
+	 * the cached index should become invalid.
+	 */
+	sActiveMsg = -1;
+
+	return str;
 }
 
 char * GetSkillNameStrFormDesc(const u16 sid)
@@ -60,7 +66,7 @@ char * GetSkillNameStrFormDesc(const u16 sid)
     char * str;
     u16 msg = GetSkillDescMsg(sid);
     if (msg == 0)
-        return "W.I.P";
+        return "EMPTY";
 
     str = GetStringFromIndex(msg);
     return SkillDescToName(str);

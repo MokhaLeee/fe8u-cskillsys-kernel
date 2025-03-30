@@ -274,3 +274,8 @@ unit in a 3 tile radius.[X]
 Extrovert:[N]
 Double this unit's[N]
 support bonuses.[X]
+
+## MSG_SKILL_ScrollSavant
+Scroll Savant:[N]
+Unit can learn skills from[N]
+scrolls without consuming them.[X]
