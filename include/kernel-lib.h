@@ -271,8 +271,6 @@ enum BattleStatusIdxRef {
 /**
  * cache.c
  */
-extern u8 ItemDataLengthCache;
-
 void GameInit_InitCache(void);
 
 /**

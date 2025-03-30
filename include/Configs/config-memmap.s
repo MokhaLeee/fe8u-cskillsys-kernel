@@ -85,9 +85,8 @@ _kernel_malloc gKonamiComboStep, 1
 _kernel_malloc sEfxResireEfxIndexCacheMagic, 1
 _kernel_malloc sEfxResireEfxIndexCacheData, 1
 _kernel_malloc gSkillDbgList, 32 * 4
-_kernel_malloc ItemDataLengthCache, 1
 
-_kernel_malloc _kernel_malloc_align4_pad, 3
+// _kernel_malloc _kernel_malloc_align4_pad, 0
 
 /**
  * These part of space is allocated from `ewram_overlay_0`

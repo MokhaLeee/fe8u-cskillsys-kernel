@@ -212,6 +212,7 @@
  * IER
  */
 #define CONFIG_IER_EN
+#define CONFIG_FEB_SKILL_SCROLL_OVERFLOW_HOTFIX // If item index is overflowed, modify to skill scroll index
 
 /**
  * Ai action expansion

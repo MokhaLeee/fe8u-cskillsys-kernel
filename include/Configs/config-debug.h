@@ -9,7 +9,7 @@
 	// #define CONFIG_DEBUG_EFXSKILL
 
 	/* Auto load 254 skills on loading unit */
-	#define CONFIG_DEBUG_UNIT_LOAD_SKILL
+	// #define CONFIG_DEBUG_UNIT_LOAD_SKILL
 
 	/* Test forcefully display popup rework */
 	// #define CONFIG_DEBUG_POPR

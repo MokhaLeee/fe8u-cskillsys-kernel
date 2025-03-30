@@ -15,6 +15,16 @@ LYN_REPLACE_CHECK(MakeNewItem);
 int MakeNewItem(int item)
 {
 #if CHAX
+#ifdef CONFIG_FEB_SKILL_SCROLL_OVERFLOW_HOTFIX
+	int iid = ITEM_INDEX(item);
+
+	if (iid == CONFIG_ITEM_INDEX_SKILL_SCROLL_FEB) {
+		iid = CONFIG_ITEM_INDEX_SKILL_SCROLL;
+
+		item = iid | (ITEM_USES(item) << 8);
+	}
+#endif // FEB_SKILL_SCROLL_OVERFLOW_HOTFIX
+
 	if (IsDuraItem(item))
 		return item;
 #endif

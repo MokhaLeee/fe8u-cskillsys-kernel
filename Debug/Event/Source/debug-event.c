@@ -562,6 +562,13 @@ static const EventScr EventScr_Beginning[] = {
 
 	ASMC(modify_unit_status)
 
+	/**
+	 * FEB Event give SkillScroll
+	 */
+	CALL(EventScr_RemoveBGIfNeeded)
+	SVAL(EVT_SLOT_3, 0x7FF)
+    GIVEITEMTO(CHARACTER_SETH)
+
 	// SVAL(EVT_SLOT_3, ITEM_VULNERARY)
 	// GIVEITEMTO(CHARACTER_EPHRAIM)
 
