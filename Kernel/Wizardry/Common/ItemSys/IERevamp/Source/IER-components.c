@@ -247,7 +247,24 @@ void IER_Action_StatusStaff(ProcPtr proc, struct Unit *unit, int item)
 
 void IER_Action_NightMare(ProcPtr proc, struct Unit *unit, int item)
 {
-	ExecNightmare(proc);
+	// ExecNightmare(proc);
+	{
+		BattleInitItemEffect(GetUnit(gActionData.subjectIndex), gActionData.itemSlotIndex);
+		BattleInitItemEffectTarget(GetUnit(gActionData.targetIndex));
+		BattleApplyItemEffect(proc);
+
+		// BeginBattleAnimations();
+		BG_Fill(gBG2TilemapBuffer, 0);
+		BG_EnableSyncByMask(1 << 2);
+		gPaletteBuffer[PAL_BACKDROP_OFFSET] = 0;
+		EnablePaletteSync();
+		RenderBmMap();
+		EndAllMus();
+		RenderBmMap();
+		BeginBattleMapAnims();
+		gBattleStats.config |= BATTLE_CONFIG_MAPANIMS;
+	}
+
 	Proc_StartBlocking(ProcScr_ExecNightmareStaff, proc);
 }
 
