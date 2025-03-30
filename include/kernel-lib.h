@@ -127,19 +127,25 @@ extern const u8 gRange2_In3x3[ARRAY_COUNT_RANGE3x3];
 /**
  * Bits
  */
-static inline void _BIT_SET(u32 * bits, int idx)
+static inline void _BIT_SET(void *bits, int idx)
 {
-    bits[idx / 32] |= 1 << (idx % 32);
+	u8 *_bits = bits;
+
+	_bits[idx >> 3] |= 1 << (idx & 0x7);
 }
 
-static inline void _BIT_CLR(u32 * bits, int idx)
+static inline void _BIT_CLR(void *bits, int idx)
 {
-    bits[idx / 32] &= ~(1 << (idx % 32));
+	u8 *_bits = bits;
+
+	_bits[idx >> 3] &= ~(1 << (idx & 0x7));
 }
 
-static inline bool _BIT_CHK(u32 * bits, int idx)
+static inline bool _BIT_CHK(void *bits, int idx)
 {
-    return !!(bits[idx / 32] & (1 << (idx % 32)));
+	u8 *_bits = bits;
+
+	return !!(_bits[idx >> 3] & (1 << (idx & 0x7)));
 }
 
 /**

@@ -231,6 +231,7 @@ SID_Camouflage
 // SID_SwiftAttack
 // SID_Trace
 // SID_Transpose
+// SID_SwordSaint
 
 //////// POST-BATTLE SKILLS
 // SID_Canto
