@@ -9,10 +9,6 @@
 #include "event-rework.h"
 #include "action-expa.h"
 
-/**
- * BLOCK USAGE OF SCROLL IF UNIT WOULD BE ABOVE CAPACITY LIMIT AFTER APPLYING IT
- */
-
 /* External hooks */
 char * GetSkillScrollItemName(int item)
 {
@@ -50,6 +46,10 @@ static const struct ProcCmd ProcScr_SkillScrollUseSoftLock[] = {
     PROC_END
 };
 
+
+/**
+ * BLOCK USAGE OF SCROLL IF UNIT WOULD BE ABOVE CAPACITY LIMIT AFTER APPLYING IT
+ */
 #ifdef CONFIG_TELLIUS_CAPACITY_SYSTEM
 static const EventScr EventScr_SkillCapacityReached[] = {
     EVBIT_MODIFY(0x4)
