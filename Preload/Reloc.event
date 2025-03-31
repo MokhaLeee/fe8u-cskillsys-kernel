@@ -79,7 +79,16 @@ gpGFX_CombatArtIcon_LanceArtAtk: POIN GFX_CombatArtIcon_LanceArtAtk
 gpGFX_CombatArtIcon_AxeArtAtk:   POIN GFX_CombatArtIcon_AxeArtAtk
 gpGFX_CombatArtIcon_BowArtAtk:   POIN GFX_CombatArtIcon_BowArtAtk
 
-WORD 0 0 0 0 0 0 0 0 0 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
 
 gpKernelClassList_Flier:    POIN KernelClassList_Flier
 gpKernelClassList_Cavalry:  POIN KernelClassList_Cavalry
