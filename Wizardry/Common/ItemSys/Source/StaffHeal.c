@@ -69,6 +69,7 @@ LYN_REPLACE_CHECK(ExecStandardHeal);
 void ExecStandardHeal(ProcPtr proc)
 {
     int amount;
+    FORCE_DECLARE int targetCount;
 
     struct Unit *unit_act = GetUnit(gActionData.subjectIndex);
     struct Unit *unit_tar = GetUnit(gActionData.targetIndex);
@@ -110,6 +111,30 @@ void ExecStandardHeal(ProcPtr proc)
         AddUnitHp(unit_tar, amount);
 #else 
     AddUnitHp(unit_tar, amount);
+#endif
+
+#if defined(SID_ExplosiveHeal) && (COMMON_SKILL_VALID(SID_ExplosiveHeal))
+    if (SkillTester(unit_act, SID_ExplosiveHeal))
+    {
+        for (int i = 0; i < ARRAY_COUNT_RANGE1x1; i++)
+        {
+            int _x = gActiveUnit->xPos + gVecs_1x1[i].x;
+            int _y = gActiveUnit->yPos + gVecs_1x1[i].y;
+    
+            struct Unit * unit_adjacent = GetUnitAtPosition(_x, _y);
+            if (!UNIT_IS_VALID(unit_adjacent))
+                continue;
+    
+            if (unit_adjacent->state & (US_HIDDEN | US_DEAD | US_RESCUED | US_BIT16))
+                continue;
+    
+            if (AreUnitsAllied(gActiveUnit->index, unit_adjacent->index) && GetUnit(unit_adjacent->index) != unit_tar)
+            {
+                int amound_real = HealAmountGetter(amount, unit_act, unit_adjacent);
+                AddUnitHp(GetUnit(GetTarget(i)->uid), amound_real);
+            }
+        }
+    }
 #endif
 
     gBattleHitIterator->hpChange = gBattleTarget.unit.curHP - GetUnitCurrentHp(unit_tar);

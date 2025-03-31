@@ -721,6 +721,7 @@ SID_Mimicry
 // SID_Shotput
 // SID_Extrovert
 // SID_ScrollSavant
+// SID_ExplosiveHeal
 
 /////// COMBAT ARTS
 // SID_COMBAT_Grounder
