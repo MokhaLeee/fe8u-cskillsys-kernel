@@ -124,6 +124,14 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
     }
 #endif
 
+#if (defined(SID_BanditBane) && (COMMON_SKILL_VALID(SID_BanditBane)))
+    if (SkillTester(actor, SID_BanditBane))
+    {
+        if (CheckClassBandit(jid_target))
+            goto check_null_effective;
+    }
+#endif
+
 #if (defined(SID_WyvernCrash) && (COMMON_SKILL_VALID(SID_WyvernCrash)))
     if (SkillTester(actor, SID_WyvernCrash))
     {
