@@ -4,6 +4,7 @@
 #include "Source/LynJump.event"
 #include "Source/StaffAccuracy.lyn.event"
 #include "Source/StaffHeal.lyn.event"
+#include "Source/StaffBuff.lyn.event"
 
 #include "ItemInfoRemap/ItemInfoRemap.event"
 

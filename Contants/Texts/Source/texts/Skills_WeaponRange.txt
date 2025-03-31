@@ -71,3 +71,8 @@ damages target, but cannot kill.[X]
 Explosive Heal:[N]
 Single target healing staves also apply[N]
 their effects to all adjacent allies.[X]
+
+## MSG_SKILL_ExplosiveBuff
+Explosive Buff:[N]
+Single target buff staves also apply[N]
+their effects to all adjacent allies.[X]

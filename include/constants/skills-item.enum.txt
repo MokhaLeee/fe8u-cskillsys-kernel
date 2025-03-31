@@ -723,6 +723,7 @@
 // SID_Extrovert
 // SID_ScrollSavant
 // SID_ExplosiveHeal
+// SID_ExplosiveBuff
 
 ///////// COMBAT ARTS
 // SID_COMBAT_Grounder

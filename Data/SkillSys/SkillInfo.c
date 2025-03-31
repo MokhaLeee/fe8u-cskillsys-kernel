@@ -5139,4 +5139,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_ExplosiveBuff) && COMMON_SKILL_VALID(SID_ExplosiveBuff))
+    [SID_ExplosiveBuff] = {
+        .desc = MSG_SKILL_ExplosiveBuff,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
