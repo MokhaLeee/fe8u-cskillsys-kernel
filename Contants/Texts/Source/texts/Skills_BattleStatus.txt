@@ -1256,3 +1256,8 @@ x1.5 for this unit.[X]
 Transpose:[N]
 Invert the enemy unit's[N]
 AVO terrain boosts.[X]
+
+## MSG_SKILL_SwiftAttack
+Swift Attack:[N]
+Use this unit's SPD instead of[N]
+MAG/POW for damage calculation.[X]

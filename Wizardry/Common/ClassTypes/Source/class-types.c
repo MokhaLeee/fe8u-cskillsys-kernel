@@ -6,6 +6,7 @@ extern u8 const * const gpKernelClassList_Cavalry;
 extern u8 const * const gpKernelClassList_Armor;
 extern u8 const * const gpKernelClassList_Dragon;
 extern u8 const * const gpKernelClassList_Beast;
+extern u8 const * const gpKernelClassList_Bandit;
 
 typedef bool (*ClassTypeFunc_t)(u8 jid);
 
@@ -24,6 +25,7 @@ bool CheckSameClassType(u8 jid1, u8 jid2)
         CheckClassArmor,
         CheckClassDragon,
         CheckClassBeast,
+        CheckClassBandit,
         NULL
     };
 
@@ -92,6 +94,16 @@ bool CheckClassBeast(u8 jid)
 {
     const u8 * it;
     for (it = gpKernelClassList_Beast; *it != CLASS_NONE; it++)
+        if (*it == jid)
+            return true;
+
+    return false;
+}
+
+bool CheckClassBandit(u8 jid)
+{
+    const u8 * it;
+    for (it = gpKernelClassList_Bandit; *it != CLASS_NONE; it++)
         if (*it == jid)
             return true;
 
