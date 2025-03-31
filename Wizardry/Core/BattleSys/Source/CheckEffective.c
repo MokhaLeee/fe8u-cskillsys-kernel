@@ -4,6 +4,7 @@
 #include "combat-art.h"
 #include "class-types.h"
 #include "constants/skills.h"
+#include "unit-expa.h"
 
 STATIC_DECLAR bool CheckUnitNullEffective(struct Unit * unit)
 {
@@ -120,6 +121,14 @@ bool IsUnitEffectiveAgainst(struct Unit * actor, struct Unit * target)
     {
         if (CheckClassFlier(jid_target))
             goto check_null_effective;
+    }
+#endif
+
+#if (defined(SID_WyvernCrash) && (COMMON_SKILL_VALID(SID_WyvernCrash)))
+    if (SkillTester(actor, SID_WyvernCrash))
+    {
+        if(!CheckBitUES(actor, UES_BIT_WYVERN_CRASH_SKILL_USED) && gActionData.unk08 == SID_WyvernCrash)
+            return true;
     }
 #endif
 

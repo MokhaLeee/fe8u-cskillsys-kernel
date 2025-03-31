@@ -464,3 +464,11 @@ Are you sure?           [N][Yes][X]
 Loadstar Rush:[N]
 Unit attacks 7 times but[N]
 damage is 30% per attack.[X]
+
+## MSG_MenuSkill_WyvernCrashName
+ Wyvern Crash[X]
+
+## MSG_SKILL_WyvernCrash
+Wyvern Crash:[N]
+Once per map, this unit can deal[N]
+effective damage to a single foe.[X]

@@ -5118,4 +5118,11 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_WyvernCrash) && COMMON_SKILL_VALID(SID_WyvernCrash))
+    [SID_WyvernCrash] = {
+        .desc = MSG_SKILL_WyvernCrash,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };

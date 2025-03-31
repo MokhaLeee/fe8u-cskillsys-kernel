@@ -244,8 +244,13 @@ void UpdateUnitFromBattle(struct Unit * unit, struct BattleUnit * bu)
      * where the user exits out of the forecast menu without attacking, and the bit is accidentally set
      */
 #if defined(SID_LoadstarRush) && (COMMON_SKILL_VALID(SID_LoadstarRush))
-    if (SkillTester(unit, SID_LoadstarRush) && !CheckBitUES(unit, UES_BIT_LOADSTAR_RUSH_SKILL_USED))
+    if (SkillTester(unit, SID_LoadstarRush) && gActionData.unk08 == SID_LoadstarRush && !CheckBitUES(unit, UES_BIT_LOADSTAR_RUSH_SKILL_USED))
         SetBitUES_BU(bu, UES_BIT_LOADSTAR_RUSH_SKILL_USED);
+#endif
+
+#if defined(SID_WyvernCrash) && (COMMON_SKILL_VALID(SID_WyvernCrash))
+    if (SkillTester(unit, SID_WyvernCrash) && gActionData.unk08 == SID_WyvernCrash && !CheckBitUES(unit, UES_BIT_WYVERN_CRASH_SKILL_USED))
+        SetBitUES_BU(bu, UES_BIT_WYVERN_CRASH_SKILL_USED);
 #endif
 
     UNIT_MAG(unit) += BU_CHG_MAG(bu);
