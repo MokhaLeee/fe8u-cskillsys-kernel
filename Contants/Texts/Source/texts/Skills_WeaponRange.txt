@@ -61,3 +61,13 @@ targeted by staves.[X]
 Sword Saint:[N]
 Unit can use all swords[N]
 at 1-2 range.[X]
+
+## MSG_SKILL_CursedHeal
+Cursed Heal:[N]
+Healing through this unit [N]
+damages target, but cannot kill.[X]
+
+## MSG_SKILL_ExplosiveHeal
+Explosive Heal:[N]
+Single target healing staves also apply[N]
+their effects to all adjacent allies.[X]
