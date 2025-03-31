@@ -5104,4 +5104,18 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
         .icon = GFX_SkillIcon_WIP,
     },
 #endif
+
+#if (defined(SID_SteadyRider) && COMMON_SKILL_VALID(SID_SteadyRider))
+    [SID_SteadyRider] = {
+        .desc = MSG_SKILL_SteadyRider,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
+
+#if (defined(SID_SteadyRiderPlus) && COMMON_SKILL_VALID(SID_SteadyRiderPlus))
+    [SID_SteadyRiderPlus] = {
+        .desc = MSG_SKILL_SteadyRiderPlus,
+        .icon = GFX_SkillIcon_WIP,
+    },
+#endif
 };
