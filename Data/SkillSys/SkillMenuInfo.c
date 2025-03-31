@@ -634,6 +634,21 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_WyvernCrash) && COMMON_SKILL_VALID(SID_WyvernCrash))
+    [SID_WyvernCrash] = {
+        .name = "　光の結界",
+        .nameMsgId = MSG_MenuSkill_WyvernCrashName,
+        .helpMsgId = MSG_SKILL_WyvernCrash,
+        .color = TEXT_COLOR_SYSTEM_GOLD,
+        .isAvailable = WyvernCrash_Usability,
+        .onDraw = NULL,
+        .onSelected = WyvernCrash_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
     [0] = {
         .name = "　",
         .nameMsgId = MSG_MenuCommand_RefugeName,

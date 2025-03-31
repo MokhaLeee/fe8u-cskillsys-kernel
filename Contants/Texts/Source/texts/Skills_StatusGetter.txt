@@ -536,3 +536,13 @@ rally to the user as well.[X]
 Eternal Vanity:[N]
 Turn based stat buffs do not[N]
 deplete for this unit.[X]
+
+## MSG_SKILL_SteadyRider
+Steady Rider:[N]
+Unit gains DEF equal to SPD[N]
+lost from weapon weight.[X]
+
+## MSG_SKILL_SteadyRiderPlus
+Steady Rider+:[N]
+Unit gains DEF and RES equal to[N]
+SPD lost from weapon weight.[X]

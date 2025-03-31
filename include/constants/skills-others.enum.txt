@@ -45,6 +45,7 @@
 // SID_DeathBlight
 // SID_DivineReprieve
 // SID_LoadstarRush
+// SID_WyvernCrash
 
 ////////// PRE-BATTLE SKILLS
 // SID_DefiantStr
@@ -415,6 +416,8 @@ SID_Canto
 // SID_LuckySeven
 // SID_Unaware
 // SID_StaffGuard
+// SID_SteadyRider
+// SID_SteadyRiderPlus
 
 ////////// WEAPON TRIANGLE ADVANTAGE SKILLS
 // SID_SwordBreaker

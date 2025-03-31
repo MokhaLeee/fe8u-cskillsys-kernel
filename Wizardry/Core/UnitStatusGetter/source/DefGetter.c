@@ -168,6 +168,16 @@ int DefGetterSkills(int status, struct Unit * unit)
             status += Div(_GetUnitDefense(GetUnit(unit->rescue)) * SKILL_EFF0(SID_PairUp), 100);
 #endif
 
+#if defined(SID_SteadyRider) && (COMMON_SKILL_VALID(SID_SteadyRider))
+        if (SkillTester(unit, SID_SteadyRider))
+            status += GetItemWeight(GetUnitEquippedWeapon(unit)) > UNIT_CON(unit) ? GetItemWeight(GetUnitEquippedWeapon(unit)) - UNIT_CON(unit) : 0;
+#endif
+
+#if defined(SID_SteadyRiderPlus) && (COMMON_SKILL_VALID(SID_SteadyRiderPlus))
+        if (SkillTester(unit, SID_SteadyRiderPlus))
+            status += GetItemWeight(GetUnitEquippedWeapon(unit)) > UNIT_CON(unit) ? GetItemWeight(GetUnitEquippedWeapon(unit)) - UNIT_CON(unit) : 0;
+#endif
+
     return status;
 }
 

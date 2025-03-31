@@ -23,6 +23,7 @@ bool PrePhase_ClearMiscUES(ProcPtr proc)
 
             /* We don't clear this bit as it's meant to be once per map */
             // ClearBitUES(unit, UES_BIT_LOADSTAR_RUSH_SKILL_USED);
+            // ClearBitUES(unit, UES_BIT_WYVERN_CRASH_SKILL_USED);
         }
     }
     return false;

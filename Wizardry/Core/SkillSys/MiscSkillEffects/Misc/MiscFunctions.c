@@ -3610,3 +3610,24 @@ void UnitUpdateUsedItem(struct Unit* unit, int itemSlot) {
         UnitRemoveInvalidItems(unit);
     }
 }
+
+LYN_REPLACE_CHECK(ItemMenu_ButtonBPressed);
+u8 ItemMenu_ButtonBPressed(struct MenuProc* menu, struct MenuItemProc* menuItem) {
+    BG_Fill(gBG2TilemapBuffer, 0);
+    BG_EnableSyncByMask(BG2_SYNC_BIT);
+
+    ResetTextFont();
+
+    StartSemiCenteredOrphanMenu(&gUnitActionMenuDef, gBmSt.cursorTarget.x - gBmSt.camera.x, 1, 22);
+
+    HideMoveRangeGraphics();
+
+    /**
+     * We need to reset the action data unk08 here when we're cancelling out
+     * of menu skills that hijack the attack menu
+     */
+
+    gActionData.unk08 = 0xFFFF;
+
+    return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6B | MENU_ACT_CLEAR | MENU_ACT_ENDFACE;
+}
