@@ -92,3 +92,10 @@ const u8 KernelClassList_Beast[] = {
     CLASS_PHANTOM,
     CLASS_NONE
 };
+
+const u8 KernelClassList_Bandit[] = {
+    CLASS_BRIGAND,
+    CLASS_PIRATE,
+    CLASS_BERSERKER,
+    CLASS_NONE
+};

@@ -512,6 +512,7 @@ SID_Canto
 // SID_Resourceful
 // SID_Slayer
 // SID_Skybreaker
+// SID_BanditBane
 
 ////////// BATTLE ORDER SKILLS
 // SID_Vantage

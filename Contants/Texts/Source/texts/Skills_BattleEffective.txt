@@ -14,7 +14,7 @@ Sky breaker: Deal effective[NL]
 damage to flying units.[X]
 
 ## MSG_SKILL_Resourceful_NAME
-Resourc[X]
+Resourceful[X]
 
 ## MSG_SKILL_Resourceful
 Resourceful: Double bonus[NL]
@@ -25,7 +25,7 @@ Solid Rock:[NL]
 Halves effective damage[NL]
 against this unit.[X]
 
-## MSG_SKILL_SwiftAttack
-Swift Attack:[N]
-Use this unit's SPD instead of[N]
-MAG/POW for damage calculation.[X]
+## MSG_SKILL_BanditBane
+Bandit Bane:[N]
+Deals effective damage to[N]
+bandits, pirates and berserkers.[X]
