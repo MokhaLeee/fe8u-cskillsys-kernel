@@ -649,6 +649,21 @@ const struct MenuItemDef gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
     },
 #endif
 
+#if (defined(SID_Sellsword) && COMMON_SKILL_VALID(SID_Sellsword))
+    [SID_Sellsword] = {
+        .name = "　光の結界",
+        .nameMsgId = MSG_MenuSkill_SellswordName,
+        .helpMsgId = MSG_SKILL_Sellsword,
+        .color = TEXT_COLOR_SYSTEM_GOLD,
+        .isAvailable = Sellsword_Usability,
+        .onDraw = NULL,
+        .onSelected = Sellsword_OnSelected,
+        .onIdle = NULL,
+        .onSwitchIn = NULL,
+        .onSwitchOut = NULL,
+    },
+#endif
+
     [0] = {
         .name = "　",
         .nameMsgId = MSG_MenuCommand_RefugeName,

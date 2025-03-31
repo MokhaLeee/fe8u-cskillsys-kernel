@@ -3,6 +3,7 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 #include "bwl.h"
+#include "unit-expa.h"
 
 int _GetUnitResistance(struct Unit * unit)
 {
@@ -171,6 +172,11 @@ int ResGetterSkills(int status, struct Unit * unit)
 #if defined(SID_SteadyRiderPlus) && (COMMON_SKILL_VALID(SID_SteadyRiderPlus))
         if (SkillTester(unit, SID_SteadyRiderPlus))
             status += GetItemWeight(GetUnitEquippedWeapon(unit)) > UNIT_CON(unit) ? GetItemWeight(GetUnitEquippedWeapon(unit)) - UNIT_CON(unit) : 0;
+#endif
+
+#if defined(SID_Sellsword) && (COMMON_SKILL_VALID(SID_Sellsword))
+    if (SkillTester(unit, SID_Sellsword) && CheckBitUES(unit, UES_BIT_SELLSWORD_SKILL_USED))
+        status += SKILL_EFF0(SID_Sellsword);
 #endif
 
     return status;

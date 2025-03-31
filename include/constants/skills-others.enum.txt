@@ -46,6 +46,7 @@
 // SID_DivineReprieve
 // SID_LoadstarRush
 // SID_WyvernCrash
+// SID_Sellsword
 
 ////////// PRE-BATTLE SKILLS
 // SID_DefiantStr

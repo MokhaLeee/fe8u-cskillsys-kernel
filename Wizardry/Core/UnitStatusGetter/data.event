@@ -26,7 +26,7 @@ gSklGetters:
 
 gSpdGetters:
     POIN SpdGetterWeaponBonus SpdGetterSkills SpdPsychUpCheck SpdGetterDebuff
-    POIN SpdGetterLegendSkills
+    // POIN SpdGetterLegendSkills
     POIN SpdGetterStatDebuff
     POIN StatusGetterCheckCpas
     MSG_END
@@ -39,14 +39,14 @@ gLckGetters:
 
 gDefGetters:
     POIN DefGetterWeaponBonus DefGetterSkills DefPsychUpCheck DefGetterDebuff
-    POIN DefGetterLegendSkills
+    // POIN DefGetterLegendSkills
     POIN DefGetterStatDebuff
     POIN StatusGetterCheckCpas
     MSG_END
 
 gResGetters:
     POIN ResGetterWeaponBonus ResGetterSkills ResPsychUpCheck ResGetterDebuff
-    POIN ResGetterLegendSkills
+    // POIN ResGetterLegendSkills
     POIN ResGetterPureWater
     POIN ResGetterStatDebuff
     POIN StatusGetterCheckCpas

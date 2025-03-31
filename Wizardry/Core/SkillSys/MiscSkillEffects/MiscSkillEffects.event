@@ -61,6 +61,7 @@
 #include "MenuSkills/DivineReprieve.event"
 #include "MenuSkills/LoadstarRush.lyn.event"
 #include "MenuSkills/WyvernCrash.lyn.event"
+#include "MenuSkills/Sellsword.lyn.event"
 
 #include "MenuSkills/ReciprocalAid.lyn.event"
 #include "MenuSkills/ReciprocalAid_ASM_Extras/Installer.event"
@@ -69,8 +70,11 @@
 #include "Misc/HealAmount.lyn.event"
 #include "Misc/MiscFunctions.lyn.event"
 
-#include "LegendarySkills/JudgeLegend.lyn.event"
-#include "LegendarySkills/LegendEffect.lyn.event"
+/**
+ * I don't like these as a concept
+ */
+// #include "LegendarySkills/JudgeLegend.lyn.event"
+// #include "LegendarySkills/LegendEffect.lyn.event"
 
 #include "ChapterInitSkills/Initiative.lyn.event"
 

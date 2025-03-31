@@ -9,7 +9,7 @@ gPrePhaseFuncs:
     POIN PrePhase_TickMoodySkillStatus
     POIN PrePhase_TickHoneChaosSkillStatus
     POIN PrePhase_ClearMiscUES
-    POIN PrePhase_UpdateLengendSkillStatus
+    // POIN PrePhase_UpdateLengendSkillStatus
     POIN PrePhase_UnitStatusEffectSkills
     POIN PrePhase_TickDopplegangerSkillStatus
     POIN PrePhase_BlacksmithPlus

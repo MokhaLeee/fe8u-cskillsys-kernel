@@ -472,3 +472,11 @@ damage is 30% per attack.[X]
 Wyvern Crash:[N]
 Once per map, this unit can deal[N]
 effective damage to a single foe.[X]
+
+## MSG_MenuSkill_SellswordName
+ Sellsword[X]
+
+## MSG_SKILL_Sellsword
+Sellsword:[NL]
+Spend 1000g to boost all stats by 2[N]
+until the end of the map.[X]

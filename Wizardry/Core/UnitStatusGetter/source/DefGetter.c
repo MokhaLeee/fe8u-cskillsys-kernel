@@ -3,6 +3,7 @@
 #include "status-getter.h"
 #include "constants/skills.h"
 #include "bwl.h"
+#include "unit-expa.h"
 
 int _GetUnitDefense(struct Unit * unit)
 {
@@ -42,6 +43,11 @@ int DefGetterSkills(int status, struct Unit * unit)
 
 #if defined(CONFIG_RESET_BWL_STATS_EACH_CHAPTER)
     struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
+#endif
+
+#if defined(SID_Sellsword) && (COMMON_SKILL_VALID(SID_Sellsword))
+    if (SkillTester(unit, SID_Sellsword) && CheckBitUES(unit, UES_BIT_SELLSWORD_SKILL_USED))
+        status += SKILL_EFF0(SID_Sellsword);
 #endif
 
 #if defined(SID_LifeAndDeath) && (COMMON_SKILL_VALID(SID_LifeAndDeath))
