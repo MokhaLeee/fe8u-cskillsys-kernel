@@ -3,6 +3,7 @@
 #include "skill-system.h"
 #include "strmag.h"
 #include "constants/skills.h"
+#include "bwl.h"
 
 STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit *unit)
 {
@@ -16,6 +17,23 @@ STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit *unit)
 #if defined(SID_Aptitude) && (COMMON_SKILL_VALID(SID_Aptitude))
     if (SkillTester(unit, SID_Aptitude))
         new = new + SKILL_EFF0(SID_Aptitude);
+#endif
+
+#if defined(SID_PeoplesKnight) && (COMMON_SKILL_VALID(SID_PeoplesKnight))
+    if (SkillTester(unit, SID_PeoplesKnight))
+    {
+        struct NewBwl * bwl = GetNewBwl(UNIT_CHAR_ID(unit));
+
+        for (int i = 0; i < 7; i++)
+        {
+            if (bwl->supports[i] >= 240)
+                new += SKILL_EFF0(SID_PeoplesKnight) * 3;
+            else if (bwl->supports[i] >= 160)
+                new += SKILL_EFF0(SID_PeoplesKnight) * 2;
+            else if (bwl->supports[i] >= 80)
+                new += SKILL_EFF0(SID_PeoplesKnight) * 1;
+        }
+    }
 #endif
 
 /* This must come last */

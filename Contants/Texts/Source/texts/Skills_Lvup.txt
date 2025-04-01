@@ -72,3 +72,8 @@ by 10%.[X]
 Knack Health:[N]
 Increase unit's HP growth[N]
 by 10%.[X]
+
+## MSG_SKILL_PeoplesKnight
+People's Knight:[N]
+Gain +3% to all growths for[N]
+each support level this unit has.[X]
