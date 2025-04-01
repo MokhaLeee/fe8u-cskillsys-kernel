@@ -466,6 +466,13 @@
 // #define CONFIG_MULTIPLE_DEATH_QUOTES
 
 /**
+ * By Jester
+ * Display growth rates as letters (flashbacks to school)
+ * Credit to Dragz for the original idea: https://feuniverse.us/t/dragz-s-backstage/19997/84
+ */
+#define CONFIG_GROWTHS_AS_LETTERS
+
+/**
  * Install ConvoyExpa
  */
 #define CONFIG_INSTALL_CONVOYEXPA

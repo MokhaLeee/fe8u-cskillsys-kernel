@@ -8,6 +8,76 @@
 
 static inline void _growth_disp(int x, int y, int growth)
 {
+#ifdef CONFIG_GROWTHS_AS_LETTERS
+    int character1 = 0;
+    FORCE_DECLARE int character2 = 0;
+
+    if (growth >= 100)
+    {
+        character1 = TEXT_SPECIAL_S;
+    }
+    else if (growth >= 90)
+    {
+        character1 = TEXT_SPECIAL_A;
+        character2 = TEXT_SPECIAL_PLUS;
+    }
+    else if (growth >= 80)
+    {
+        character1 = TEXT_SPECIAL_A;
+    }
+    else if (growth >= 70)
+    {
+        character1 = TEXT_SPECIAL_B;
+        character2 = TEXT_SPECIAL_PLUS;
+    }
+    else if (growth >= 60)
+    {
+        character1 = TEXT_SPECIAL_B;
+    }
+    else if (growth >= 50)
+    {
+        character1 = TEXT_SPECIAL_C;
+        character2 = TEXT_SPECIAL_PLUS;
+    }
+    else if (growth >= 40)
+    {
+        character1 = TEXT_SPECIAL_C;
+    }
+    else if (growth >= 30)
+    {
+        character1 = TEXT_SPECIAL_D;
+        character2 = TEXT_SPECIAL_PLUS;
+    }
+    else if (growth >= 20)
+    {
+        character1 = TEXT_SPECIAL_D;
+    }
+    else if (growth >= 10)
+    {
+        character1 = TEXT_SPECIAL_E;
+        character2 = TEXT_SPECIAL_PLUS;
+    }
+    else if (growth > 0)
+    {
+        character1 = TEXT_SPECIAL_E;
+    }
+    else 
+    {
+        character1 = TEXT_SPECIAL_BIGNUM_0;
+    }
+
+    
+    PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(x-1, y),
+    TEXT_COLOR_SYSTEM_BLUE,
+    character1);
+
+    if (character2 > 0)
+    {
+        PutSpecialChar(gBG0TilemapBuffer + TILEMAP_INDEX(x, y),
+        TEXT_COLOR_SYSTEM_BLUE,
+        character2);
+    }
+#else
     int bank, color = GetTextColorFromGrowth(growth);
 
     ModifyTextPal(bank, color);
@@ -17,6 +87,7 @@ static inline void _growth_disp(int x, int y, int growth)
         gBG0TilemapBuffer + TILEMAP_INDEX(x, y),
         color,
         growth);
+#endif
 }
 
 STATIC_DECLAR void ToggleUnitPageGrowth(void)
