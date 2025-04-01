@@ -15,6 +15,9 @@
 /* ClearUnit */
 #include "Source/ClearUnit.lyn.event"
 
+/* UnitKill */
+#include "Source/UnitKill.lyn.event"
+
 // #include "data.event"
 
 #endif
