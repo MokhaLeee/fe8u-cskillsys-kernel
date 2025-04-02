@@ -14,7 +14,7 @@ ALIGN 4
 #include "Essentials/BattleForcastFix/BattleForcastFix.event"
 #include "Essentials/FakePatches/FakePatches.event"
 
-#include "Common/OverflowDetection/OverflowDetection.lyn.event"
+#include "Common/OverflowDetection/OverflowDetection.event"
 #include "Common/AntiHuffman/AntiHuffman.event"
 #include "Common/PopupRework/PopupRework.event"
 #include "Common/EventRework/EventRework.event"

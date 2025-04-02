@@ -245,3 +245,5 @@ void GeneratePopupText(const struct PopupInstruction *inst, struct Text th);
 
 extern struct ProcCmd CONST_DATA ProcScr_SetTargetStatus[];
 extern struct ProcCmd CONST_DATA ProcScr_ExecNightmareStaff[];
+
+u16 GetLoadUnitsAmount(const struct UnitDefinition *unitDefinition);
