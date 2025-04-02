@@ -20,7 +20,7 @@ SET_DATA UsedFreeRamSpaceTop, FreeRamSpaceBottom
     SET_DATA \name, UsedFreeRamSpaceTop
 .endm
 
-SET_DATA FreeDemoRamSpaceTop,    0x0203F3C0 @ see GetLoadUnitsAmount
+SET_DATA FreeDemoRamSpaceTop,    0x0203F150 @ see GetLoadUnitsAmount
 SET_DATA FreeDemoRamSpaceBottom, 0x02040000
 SET_DATA UsedFreeDemoRamSpaceTop, FreeDemoRamSpaceBottom
 

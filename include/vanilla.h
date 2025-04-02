@@ -247,3 +247,4 @@ extern struct ProcCmd CONST_DATA ProcScr_SetTargetStatus[];
 extern struct ProcCmd CONST_DATA ProcScr_ExecNightmareStaff[];
 
 u16 GetLoadUnitsAmount(const struct UnitDefinition *unitDefinition);
+struct UnitDefinition *GetUnitDefinitionFormEventScr(struct UnitDefinition *source, short count, u8 arg2, s8 arg3, s8 arg4);

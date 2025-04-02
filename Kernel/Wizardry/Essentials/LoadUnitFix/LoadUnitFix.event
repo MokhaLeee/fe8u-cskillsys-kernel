@@ -1,0 +1,8 @@
+#include "Source/LynJump.event"
+#include "Source/LoadUnitFix.lyn.event"
+
+PUSH
+	ORG 0x0FC08
+	BL(CHAX_GetUnitDefinitionFormEventScr)
+	PROTECT 0x0000FB84 0x0000FC90 // Event2C_LoadUnits
+POP

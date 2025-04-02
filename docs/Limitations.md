@@ -4,7 +4,9 @@
 
 3. BattleUnit struct is only valid for `gBattleActor` and `gBattleTarget`, any other pointer is unacceptable in battle. In vanilla, there is only one function that alloc a extra battle unit data in `UnitAutolevelRealistic`, which has been rewriten in kernel.
 
-4. The following patches provided by FEBuilderGBA hold clear conflict with c-skillsys thus strictly forbiddened (WIP).
+4. No more than **20** units could be loaded via one `LOAD<x>` call. Designer could use several `LOAD<x>` command to load more characters.
+
+5. The following patches provided by FEBuilderGBA hold clear conflict with c-skillsys thus strictly forbiddened (WIP).
     - Talk AI
     - Anima Triangle
     - AoE Area of Effect

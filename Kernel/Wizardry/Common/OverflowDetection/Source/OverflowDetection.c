@@ -36,36 +36,3 @@ void GameInit_OverflowDetection(void)
 	/* PlaySt expa */
 	Assert(PLAYSTEXPA_BIT_USED < PLAYSTEXPA_BIT_MAX);
 }
-
-LYN_REPLACE_CHECK(GetLoadUnitsAmount);
-u16 GetLoadUnitsAmount(const struct UnitDefinition *unitDefinition)
-{
-	u16 result = 0;
-
-#if CHAX
-	int faction;
-
-	if (!unitDefinition)
-		return 0;
-
-	faction = unitDefinition->allegiance * 0x40;
-#endif
-
-	while (unitDefinition->charIndex) {
-		++result;
-		++unitDefinition;
-	}
-
-#if CHAX
-	/**
-	 * This is a detection on: FreeDemoRamSpaceTop
-	 * FreeDemoRamSpaceTop = gLoadUnitBuffer + 0x14 * count
-	 *
-	 * But actually this is a bug fix LOL
-	 */
-	if (result > GetFactionUnitAmount(faction))
-		result = GetFactionUnitAmount(faction);
-#endif
-
-	return result;
-}

@@ -42,7 +42,7 @@ RAM space distribution is configured in [config-memmap.s](../include/Configs/con
 | Address    | Size    | Usage
 | -------    | ------  | -----
 | 0x02026E30 | 0x2028  | Kernel
-| 0x0203F3C0 | 0x0C40  | ***reserved for DEMO***
+| 0x0203F150 | 0x0C40  | ***reserved for DEMO***
 
 Since the entire source code is compiled at once, CHAX can offer a better Free-RAM-Space control method.
 Free-RAM-Space (unused memory) from vanilla that has been previously identified by other wizards, can now can be referenced in [StanH's DOC](https://github.com/StanHash/DOC/blob/master/FREE-RAM-SPACE.md). Here we mainly use space starting at `0x02026E30` with size `0x2028`, which is the debug print buffer in vanilla (and unused).
