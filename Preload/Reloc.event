@@ -146,8 +146,7 @@ gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
 gpAnimScr_AnimNumber: POIN AnimScr_AnimNumber
 
 WORD 0
-
-gpStatDebuffStatusPool: POIN sStatDebuffStatusPool
+WORD 0
 
 gpExternalPostActionHook: WORD 0
 gpExternalPrePhaseHook: WORD 0

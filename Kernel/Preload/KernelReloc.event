@@ -63,4 +63,6 @@ gpPromotPopupConfigs: POIN gPromotPopupConfigs
 gpExternalBattleToUnitHook: POIN gExternalBattleToUnitHook
 gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
 
+gpStatDebuffStatusPool: POIN sStatDebuffStatusPool
+
 KERNEL_RELOC_END:
