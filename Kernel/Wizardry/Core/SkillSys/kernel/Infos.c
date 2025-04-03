@@ -5,6 +5,8 @@
 #include "utf8.h"
 #include "constants/gfx.h"
 
+extern unsigned char const *const gpGFX_SkillIcon_WIP;
+
 const u8 *_GetSkillIconExt(const u8 lo, int hi)
 {
 	const u8 *icon = gpSkillInfos[lo + (hi << 8)].icon;

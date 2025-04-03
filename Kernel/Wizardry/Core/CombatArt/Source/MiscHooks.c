@@ -6,6 +6,11 @@
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
+extern unsigned char const *const gpGFX_CombatArtIcon_SwordArtAtk;
+extern unsigned char const *const gpGFX_CombatArtIcon_LanceArtAtk;
+extern unsigned char const *const gpGFX_CombatArtIcon_AxeArtAtk;
+extern unsigned char const *const gpGFX_CombatArtIcon_BowArtAtk;
+
 bool CanUnitPlayCombatArt(struct Unit *unit, u16 item)
 {
 	int i, wtype = GetItemType(item);
