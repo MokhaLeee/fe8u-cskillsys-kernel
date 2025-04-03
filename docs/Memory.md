@@ -18,7 +18,7 @@ In order to collaborate with FEBuilderGBA and make DEMO based on kernel, we also
 
 ### a). Magic pattern
 
-[A serial of characters](../main.event#L11) is set at the head of kernel free-space (`0xB2A604`), which we can use as an identifier for [FEBuilder patch](../Patches/PATCH_SkillInfo.txt#L4).
+[A serial of characters](../Preload/Magic.event) is set at the head of kernel free-space (`0xB2A604`), which we can use as an identifier for [FEBuilder patch](../Patches/PATCH_SkillInfo.txt#L4).
 
 ### b). Pointer list
 
@@ -26,7 +26,7 @@ There is a pointer list after the magic pattern, starting at `0xB2A614` with siz
 
 ### c). Text table
 
-TextTable is repointed at the end of data section, [0xBFBBF4](../include/Configs/config-memmap.h#35) (the very beginning of main space) with [size = `0x1200 * sizeof(uintptr_t)`](../Repoint/RepointText/RepointText.event#L9) free space allocated.
+TextTable is repointed at the end of data section, [0xBFBBF4](../include/Configs/config-memmap.h#L64) (the tail of none-sec data section) with [size = `0x2000 * sizeof(uintptr_t)`](../Preload/AllocMsgTable.event) free space allocated.
 
 > [!NOTE]
 > For now, we use the vanilla msg data location to put kernel .text section, so that the kernel can run at in-BL range space. In exchange, the vanilla TextTable and texts' contents have to be recompiled and redirected to the .data section of the kernel. You can use config [`CONFIG_CROP_VANILLA_MSG`](../include/Configs/configs.h#L18) to crop out vanilla story related texts to save space (~470K Bytes).
