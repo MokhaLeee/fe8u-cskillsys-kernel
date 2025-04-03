@@ -23,7 +23,7 @@ void RegisterActorEfxSkill(int round, const u16 sid)
 {
 	u16 sid_old = sEfxSkillRoundData[round].sid_actor;
 
-	if (GetEfxSkillPriority(sid_old) >= GetEfxSkillPriority(sid))
+	if (GetEfxSkillPriority(sid_old) > GetEfxSkillPriority(sid))
 		return;
 
 	LTRACEF("Skill %#x at round %d", sid, round);
@@ -34,7 +34,7 @@ void RegisterTargetEfxSkill(int round, const u16 sid)
 {
 	u16 sid_old = sEfxSkillRoundData[round].sid_target;
 
-	if (GetEfxSkillPriority(sid_old) >= GetEfxSkillPriority(sid))
+	if (GetEfxSkillPriority(sid_old) > GetEfxSkillPriority(sid))
 		return;
 
 	LTRACEF("Skill %#x at round %d", sid, round);

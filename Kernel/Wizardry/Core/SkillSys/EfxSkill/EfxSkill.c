@@ -88,8 +88,11 @@ void NewEfxSkill(struct Anim *anim, int sid)
 	struct ProcEfxSkillRework *proc;
 	const struct EfxAnimConf *conf = gpEfxSkillAnims[sid];
 
-	if (!(COMMON_SKILL_VALID(sid)) || !IS_ROM_DATA(conf))
+	if (!(COMMON_SKILL_VALID(sid)))
 		return;
+
+	if (!IS_ROM_DATA(conf))
+		conf = gpEfxSkillVanilla;
 
 	proc = Proc_Start(ProcScr_EfxSkill, PROC_TREE_3);
 	proc->timer = 0;
