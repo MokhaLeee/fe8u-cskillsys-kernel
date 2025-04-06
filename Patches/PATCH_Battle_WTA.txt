@@ -16,7 +16,7 @@ LISTNAME=DECIMAL
 B0:$COMBO combo.wtype.txt=attacker wtype
 B1:$COMBO combo.wtype.txt=defender wtype
 b5:$COMBO combo.bool.txt=is buff
-W6:$COMBO combo.skills.txt=skill, 0=ANY
+W6:SKILL=skill, 0=ANY
 b8:DECIMAL=atk
 b9:DECIMAL=def
 b10:DECIMAL=as

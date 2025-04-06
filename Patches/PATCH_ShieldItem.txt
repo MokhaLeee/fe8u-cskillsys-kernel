@@ -42,5 +42,5 @@ b27:DECIMAL=spd growth bonus
 b28:DECIMAL=lck growth bonus
 b29:DECIMAL=def growth bonus
 b30:DECIMAL=res growth bonus
-W32:$COMBO combo.skills.txt=skill
-W34:$COMBO combo.skills.txt=skill
+W32:SKILL=skill
+W34:SKILL=skill

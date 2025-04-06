@@ -13,5 +13,5 @@ DATASIZE=0x4
 DATACOUNT=0x100
 
 LISTNAME=UNIT
-W0:$COMBO combo.skills.txt=skill
-W2:$COMBO combo.skills.txt=skill
+W0:SKILL=skill
+W2:SKILL=skill
