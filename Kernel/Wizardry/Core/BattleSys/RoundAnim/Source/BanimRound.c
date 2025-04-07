@@ -3,7 +3,7 @@
 #include <battle-system.h>
 #include <combo-attack.h>
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 extern u16 const *const gpFarAttackAnimItems;
 
@@ -261,16 +261,16 @@ void ParseBattleHitToBanimCmd(void)
 				anim_round[defender_pos] |= ANIM_ROUND_POISON;
 
 			if (hit->attributes & BATTLE_HIT_ATTR_SILENCER)
-				anim_round[defender_pos] |= ANIM_ROUND_SILENCER;
+				anim_round[attacker_pos] |= ANIM_ROUND_SILENCER;
 
 			if (hit->attributes & BATTLE_HIT_ATTR_PIERCE)
-				anim_round[defender_pos] |= ANIM_ROUND_PIERCE;
+				anim_round[attacker_pos] |= ANIM_ROUND_PIERCE;
 
 			if (hit->attributes & BATTLE_HIT_ATTR_SURESHOT)
-				anim_round[defender_pos] |= ANIM_ROUND_SURE_SHOT;
+				anim_round[attacker_pos] |= ANIM_ROUND_SURE_SHOT;
 
 			if (hit->attributes & BATTLE_HIT_ATTR_GREATSHLD)
-				anim_round[defender_pos] |= ANIM_ROUND_GREAT_SHIELD;
+				anim_round[attacker_pos] |= ANIM_ROUND_GREAT_SHIELD;
 		}
 
 		LTRACEF("Round %d: pos=%d, 0x%04X 0x%04X",
