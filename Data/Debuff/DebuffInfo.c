@@ -5,12 +5,12 @@
 
 const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 	[UNIT_STATUS_NONE] = {
-		.name = 0x536,
-		.desc = 0x552,
+		.name = MSG_0536,
+		.desc = MSG_0552,
 	},
 	[UNIT_STATUS_POISON] = {
-		.name = 0x514,
-		.desc = 0x553,
+		.name = MSG_0514,
+		.desc = MSG_0553,
 		.positive_type = STATUS_DEBUFF_NEGATIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
@@ -19,8 +19,8 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitPoisonDebuffOAM,
 	},
 	[UNIT_STATUS_SLEEP] = {
-		.name = 0x515,
-		.desc = 0x554,
+		.name = MSG_0515,
+		.desc = MSG_0554,
 		.positive_type = STATUS_DEBUFF_NEGATIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
@@ -29,8 +29,8 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitSleepDebuffOAM,
 	},
 	[UNIT_STATUS_SILENCED] = {
-		.name = 0x516,
-		.desc = 0x556,
+		.name = MSG_0516,
+		.desc = MSG_0556,
 		.positive_type = STATUS_DEBUFF_NEGATIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
@@ -38,8 +38,8 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitSilenceDebuffOAM,
 	},
 	[UNIT_STATUS_BERSERK] = {
-		.name = 0x517,
-		.desc = 0x555,
+		.name = MSG_0517,
+		.desc = MSG_0555,
 		.positive_type = STATUS_DEBUFF_NEGATIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
@@ -48,8 +48,8 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitBerserkDebuffOAM,
 	},
 	[UNIT_STATUS_ATTACK] = {
-		.name = 0x51B,
-		.desc = 0x558,
+		.name = MSG_051B,
+		.desc = MSG_0558,
 		.positive_type = STATUS_DEBUFF_POSITIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
 		.duration = 3,
@@ -58,8 +58,8 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_DEFENSE] = {
-		.name = 0x51C,
-		.desc = 0x559,
+		.name = MSG_051C,
+		.desc = MSG_0559,
 		.positive_type = STATUS_DEBUFF_POSITIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
 		.duration = 3,
@@ -68,8 +68,8 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_CRIT] = {
-		.name = 0x51D,
-		.desc = 0x55A,
+		.name = MSG_051D,
+		.desc = MSG_055A,
 		.positive_type = STATUS_DEBUFF_POSITIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
 		.duration = 3,
@@ -78,8 +78,8 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_AVOID] = {
-		.name = 0x51E,
-		.desc = 0x55B,
+		.name = MSG_51E,
+		.desc = MSG_055B,
 		.positive_type = STATUS_DEBUFF_POSITIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ALLY,
 		.duration = 3,
@@ -88,17 +88,18 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.on_draw = PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_SICK] = {
-		.name = 0x518,
+		.name = MSG_0518,
 		.positive_type = STATUS_DEBUFF_NEGATIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
 	},
 	[UNIT_STATUS_RECOVER] = {
-		.name = 0x519,
+		.name = MSG_0519,
 		.duration = 3,
 	},
 	[UNIT_STATUS_PETRIFY] = {
-		.name = 0x51A,
+		.name = MSG_051A,
+		.desc = MSG_0557,
 		.positive_type = STATUS_DEBUFF_NEGATIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
@@ -114,7 +115,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 	},
 	[UNIT_STATUS_13] = {
 		.name = 0,
-		.desc = 0,
+		.desc = MSG_0557,
 		.positive_type = STATUS_DEBUFF_NEGATIVE,
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
