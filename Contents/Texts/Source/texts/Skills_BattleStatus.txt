@@ -1,7 +1,6 @@
 ## MSG_SKILL_Lethality
 Lethality: [NL]
-Unit may instantly kill enemy with a[NL]
-critical attack. (Skill % activation).[X]
+Silence rate + SKILL%.[X]
 
 ## MSG_SKILL_Crit
 Crit: [NL]

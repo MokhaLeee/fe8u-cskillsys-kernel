@@ -283,7 +283,7 @@
 ![image](gfx/SkillIcon_Shade.png) | Shade |  Enemies are less likely to target this unit. |
 ![image](gfx/SkillIcon_ShadePlus.png) | ShadePlus |  Enemies won't target this unit. |
 ![image](gfx/SkillIcon_Provoke.png) | Provoke |  Enemies are more likely to target this unit. |
-![image](gfx/SkillIcon_Lethality.png) | Lethality |   Unit may instantly kill enemy with a critical attack. (Skill % activation). |
+![image](gfx/SkillIcon_Lethality.png) | Lethality |   Silence rate + SKILL%. |
 ![image](gfx/SkillIcon_Crit.png) | Crit |   Crit rate +15%. |
 ![image](gfx/SkillIcon_InfinityEdge.png) | InfinityEdge |   Critical attacks damage +100%. |
 ![image](gfx/SkillIcon_SureShot.png) | SureShot |  100% hit rate, damage +50%. (Skill % activation). |

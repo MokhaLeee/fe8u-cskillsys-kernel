@@ -369,7 +369,7 @@ SKILL_INFO_DOC := ./docs/SkillInfo.md
 post_chax: $(CHAX_NUPS) # $(SKILL_INFO_DOC)
 skill_info: $(SKILL_INFO_DOC)
 
-$(SKILL_INFO_DOC): $(SKILLS_ENUM_SRC) $(GFX_SOURCES) $(TEXT_SOURCE) Data/SkillSys/SkillInfo.c
+$(SKILL_INFO_DOC): $(SKILLS_ENUM_SRC) $(GFX_SOURCES) $(TEXT_SOURCE) Data/SkillSys/Source/SkillInfo.c
 	@echo "[GEN]	$(SKILL_INFO_DOC)"
 	@python3 $(TOOL_DIR)/scripts/dump_skill_info.py > $(SKILL_INFO_DOC)
 
