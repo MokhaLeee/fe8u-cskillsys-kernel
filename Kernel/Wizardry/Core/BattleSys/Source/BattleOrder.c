@@ -375,6 +375,9 @@ void BattleUnwind(void)
 		struct BattleHit *old = gBattleHitIterator;
 
 		if (config[i] == ACT_ATTACK) {
+			if (!CheckCanContinueAttack(&gBattleActor))
+				goto round_end;
+
 #ifdef CONFIG_USE_COMBO_ATTACK
 			/* Combo-attack first */
 			if (!combo_atk_done) {
@@ -391,6 +394,9 @@ void BattleUnwind(void)
 			ret = BattleGenerateRoundHits(&gBattleActor, &gBattleTarget);
 			actor_count++;
 		} else if (config[i] == TAR_ATTACK) {
+			if (!CheckCanContinueAttack(&gBattleTarget))
+				goto round_end;
+
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_RETALIATE;
 			ret = BattleGenerateRoundHits(&gBattleTarget, &gBattleActor);
 			target_count++;
@@ -432,6 +438,7 @@ void BattleUnwind(void)
 		if (ret)
 			break;
 	}
+round_end:
 
 	if (GetBattleHitRound(gBattleHitIterator) != 0) {
 		struct BattleHit *pre_hit = gBattleHitIterator - 1;
