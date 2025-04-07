@@ -3,7 +3,7 @@
 #include "wrank-bonus.h"
 #include "constants/texts.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 const struct WrankBonusConfEnt *GetWrankBonusConf(struct Unit *unit, int wtype, int wrank)
 {

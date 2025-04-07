@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "battle-system.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 extern struct SpellAssoc const *const pr_SpellAssoc;
 extern SpellAnimFunc const *const pr_EfxMagicTable;

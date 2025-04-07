@@ -8,7 +8,7 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 bool CheckBattleHpHalve(struct BattleUnit *attacker, struct BattleUnit *defender)
 {

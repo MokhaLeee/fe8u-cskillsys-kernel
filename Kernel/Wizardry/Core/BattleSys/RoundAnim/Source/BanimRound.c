@@ -3,7 +3,7 @@
 #include <battle-system.h>
 #include <combo-attack.h>
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 extern u16 const *const gpFarAttackAnimItems;
 
