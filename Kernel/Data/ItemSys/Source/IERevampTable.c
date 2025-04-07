@@ -407,7 +407,7 @@ struct IERevamp const IERevampTable[IER_MAX] = {
 		.prep_effect    = IER_PrepEffect_JunaFruit,
 	},
 	[IER_CHAX_STAFF_LATONA] = {
-		.usability      = NULL,
+		.usability      = IER_Usability_Latona,
 		.prep_usability = NULL,
 		.effect         = IER_Effect_CommonStaff,
 		.action_effect  = IER_Action_Latona,
