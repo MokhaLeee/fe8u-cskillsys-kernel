@@ -62,6 +62,8 @@
 #include "AiSkills/MiscAiSkills.event"
 
 #include "BattleSkills/LightAndDark.lyn.event"
+#include "BattleDamage/AttackerSkills.lyn.event"
+#include "BattleDamage/DefenderSkills.lyn.event"
 
 #include "ShopSkills/LynJump.event"
 #include "ShopSkills/Price.lyn.event"

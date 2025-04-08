@@ -2,6 +2,7 @@
 
 #include "common-chax.h"
 #include "efx-anim.h"
+#include "efx-skill.h"
 #include "list-verify.h"
 #include "kernel-lib.h"
 #include "constants/event-cmds.h"

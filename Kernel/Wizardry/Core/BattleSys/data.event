@@ -14,6 +14,8 @@ PreBattleCalcFuncs:
     WORD 0
 
 BattleDamageCalcFuncs:
+    POIN BattleDamageCalc_CombatArt
+    POIN BattleDamageCalc_AttackerSkills BattleDamageCalc_DefenderSkills
     POIN KernelPad1 KernelPad1 KernelPad1 KernelPad1
     WORD 0
 

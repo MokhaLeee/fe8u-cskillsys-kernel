@@ -182,9 +182,8 @@ extern u8 const *const gpWeaponHpDrainConfig;
 extern struct {
 	bool8 crit_atk;
 	int result;
-	int damage_base, attack, defense;
 	int correction, real_damage, increase, decrease, crit_correction;
-} gDmg;
+} gDmg; // Aka: expanded gBattleStats
 
 int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defender);
 

@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "battle-system.h"
 #include "skill-system.h"
 #include "kernel-tutorial.h"
 #include "constants/gfx.h"
@@ -186,6 +187,73 @@ void PreBattleCalcCombatArt(struct BattleUnit *bu, struct BattleUnit *defender)
 #endif
 		break;
 	};
+}
+
+/* BattleDamage */
+void BattleDamageCalc_CombatArt(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	if (attacker == &gBattleActor) {
+		/**
+		 * I don't think it's a good idea to put calculation here.
+		 *
+		 * Also for the combat-art, it is better to judge on round count,
+		 * so that it can only take effect on first strike.
+		 *
+		 * Later we may optimize it.
+		 */
+		switch (GetCombatArtInForce(&attacker->unit)) {
+		case CID_Detonate:
+			if (!(GetItemAttributes(attacker->weapon) & IA_UNBREAKABLE))
+				gBattleStats.defense = 0;
+
+			break;
+
+		case CID_BloodTribute:
+#if (defined(SID_COMBAT_BloodTribute) && (COMMON_SKILL_VALID(SID_COMBAT_BloodTribute)))
+			if (gBattleStats.config & BATTLE_CONFIG_REAL) {
+				int _hp_cost = perc_of(attacker->unit.curHP, SKILL_EFF0(SID_COMBAT_BloodTribute));
+				int _dmg_ext = perc_of(_hp_cost, SKILL_EFF1(SID_COMBAT_BloodTribute));
+
+				if (AddBattleHpCost(attacker, GetCurrentBattleHitRound(), _dmg_ext)) {
+					RegisterActorEfxSkill(GetCurrentBattleHitRound(), SID_COMBAT_BloodTribute);
+					gBattleStats.attack += _dmg_ext;
+				}
+			}
+#endif
+			break;
+
+		case CID_CrimsonStrike:
+#if (defined(SID_COMBAT_CrimsonStrike) && (COMMON_SKILL_VALID(SID_COMBAT_CrimsonStrike)))
+			if (gBattleStats.config & BATTLE_CONFIG_REAL) {
+				int _hp_cost = perc_of(attacker->unit.curHP, SKILL_EFF0(SID_COMBAT_CrimsonStrike));
+				int _dmg_ext = perc_of(_hp_cost, SKILL_EFF1(SID_COMBAT_CrimsonStrike));
+
+				if (AddBattleHpCost(attacker, GetCurrentBattleHitRound(), _dmg_ext)) {
+					RegisterActorEfxSkill(GetCurrentBattleHitRound(), SID_COMBAT_CrimsonStrike);
+					gBattleStats.attack += _dmg_ext;
+				}
+			}
+#endif
+			break;
+
+		case CID_VitalReckoning:
+#if (defined(SID_COMBAT_VitalReckoning) && (COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning)))
+			if (gBattleStats.config & BATTLE_CONFIG_REAL) {
+				int _hp_cost = perc_of(attacker->unit.curHP, SKILL_EFF0(SID_COMBAT_VitalReckoning));
+				int _dmg_ext = perc_of(_hp_cost, SKILL_EFF1(SID_COMBAT_VitalReckoning));
+
+				if (AddBattleHpCost(attacker, GetCurrentBattleHitRound(), _dmg_ext)) {
+					RegisterActorEfxSkill(GetCurrentBattleHitRound(), SID_COMBAT_VitalReckoning);
+					gBattleStats.attack += _dmg_ext;
+				}
+			}
+#endif
+			break;
+
+		default:
+			break;
+		}
+	}
 }
 
 /* Pre-battle generate */
