@@ -1,0 +1,8 @@
+#include "Source/LynJump.event"
+#include "Source/GameIntro.lyn.event"
+
+PUSH
+	// Early intro hack
+	ORG 0x59170C
+	PROC_GOTO(1)
+POP

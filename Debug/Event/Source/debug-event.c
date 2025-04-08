@@ -446,11 +446,19 @@ static void modify_unit_status(void)
 	unit = GetUnitFromCharId(CHARACTER_GARCIA);
 	if (unit) {
 		unit->lck = 32;
+	}
 
 #if defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact))
-		AddSkillDbgList(unit, SID_DevilsPact);
+	AddSkillDbgListByPid(CHARACTER_GARCIA, SID_DevilsPact);
 #endif
-	}
+
+#if defined(SID_RightfulArch) && (COMMON_SKILL_VALID(SID_RightfulArch))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_RightfulArch);
+#endif
+
+#if defined(SID_Luna) && (COMMON_SKILL_VALID(SID_Luna))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_Luna);
+#endif
 }
 
 static void modify_unit_status_post_prep(void)

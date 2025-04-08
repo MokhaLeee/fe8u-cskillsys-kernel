@@ -10,7 +10,7 @@
 #include "constants/skills.h"
 #include "constants/combat-arts.h"
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 typedef void (*BattleDamageCalcFunc) (struct BattleUnit *buA, struct BattleUnit *buB);
 extern BattleDamageCalcFunc const *const gpBattleDamageCalcFuncs;

@@ -59,6 +59,14 @@ void AddSkillDbgList(struct Unit *unit, int sid)
 	LTRACEF("Add chunk %d: pid=0x%02X, sid=0x%04X", it - gSkillDbgList, pid, sid);
 }
 
+void AddSkillDbgListByPid(int pid, int sid)
+{
+	struct Unit *unit = GetUnitStructFromEventParameter(pid);
+
+	if (unit)
+		AddSkillDbgList(unit, sid);
+}
+
 void RemoveSkillDbgList(struct Unit *unit, int sid)
 {
 	struct SkillDbgListEnt *it = FindSkillDbgListChunk(unit, sid);

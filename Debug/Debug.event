@@ -12,6 +12,8 @@ WARNING
 #include "RemoveWM/RemoveWM.event"
 #include "Event/Event.event"
 #include "Chapter/Chapter.event"
+#include "GameIntro/GameIntro.event"
+#include "ChapterIntro/ChapterIntro.event"
 
 WARNING
 WARNING ___________________________________________________

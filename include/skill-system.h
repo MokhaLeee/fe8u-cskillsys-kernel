@@ -267,6 +267,7 @@ extern EWRAM_DATA struct SkillDbgListEnt gSkillDbgList[SKILL_DBG_LIST_LEN];
 
 void ResetSkillDbgList(void);
 void AddSkillDbgList(struct Unit *unit, int sid);
+void AddSkillDbgListByPid(int pid, int sid);
 void RemoveSkillDbgList(struct Unit *unit, int sid);
 void FlushUnitSkillDbgList(struct Unit *unit);
 
