@@ -10,6 +10,8 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 LYN_REPLACE_CHECK(BattleUpdateBattleStats);
 void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
@@ -91,6 +93,8 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 	gBattleStats.hitRate = hitRate;
 	gBattleStats.critRate = critRate;
 	gBattleStats.silencerRate = silencerRate;
+
+	LTRACEF("attack=%d, base=%d", attack, BattleUnitOriginalStatus(attacker)->atk);
 }
 
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);

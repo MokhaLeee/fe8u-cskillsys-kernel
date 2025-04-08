@@ -10,6 +10,8 @@
 #include "kernel-tutorial.h"
 #include "constants/skills.h"
 
+#define LOCAL_TRACE 0
+
 typedef void (*PreBattleCalcFunc) (struct BattleUnit *buA, struct BattleUnit *buB);
 extern PreBattleCalcFunc const *const gpPreBattleCalcFuncs;
 void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit *defender);
@@ -1713,6 +1715,12 @@ void ComputeBattleUnitStats(struct BattleUnit *attacker, struct BattleUnit *defe
 {
 	const PreBattleCalcFunc *it;
 
-	for (it = gpPreBattleCalcFuncs; *it; it++)
+	LTRACEF("Trace pre-battle: attacker=%p", attacker);
+
+	for (it = gpPreBattleCalcFuncs; *it; it++) {
+		LTRACEF("Trace attack: %d", attacker->battleAttack);
 		(*it)(attacker, defender);
+	}
+
+	LTRACE("Trace done");
 }
