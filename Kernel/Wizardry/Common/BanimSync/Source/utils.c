@@ -17,11 +17,17 @@ struct BanimSyncHandler *FindBanimSyncHandler_test(struct Anim *anim)
 struct BanimSyncHandler *FindBanimSyncHandler(struct Anim *anim)
 {
 	int i;
-	struct BanimSyncHandler *handler;
+
 	for (i = 0; BanimSyncHandlerGetter[i] != NULL; i++) {
-		handler = BanimSyncHandlerGetter[i](anim);
-		if (handler)
-			return handler;
+		struct BanimSyncHandler *handler = BanimSyncHandlerGetter[i](anim);
+
+		if (handler) {
+			u32 unused;
+			s16 anim_idx = GetBattleAnimationId(NULL, handler->animdef, handler->weapon, &unused);
+
+			if (anim_idx >= 0)
+				return handler;
+		}
 	}
 	return NULL;
 }
@@ -29,12 +35,11 @@ struct BanimSyncHandler *FindBanimSyncHandler(struct Anim *anim)
 int TrySwitchBanim(struct Anim *anim)
 {
 	int pos = GetAnimPosition(anim);
-	int ret;
 	struct BanimSyncHandler *handler;
 
 	handler = FindBanimSyncHandler(anim);
 	if (handler) {
-		ret = TrySwitchBanimInfo(pos, handler->pid, handler->jid, handler->animdef, handler->weapon);
+		int ret = TrySwitchBanimInfo(pos, handler->pid, handler->jid, handler->animdef, handler->weapon);
 
 		/* Already find new force-updated anim */
 		if (ret == 1) {
