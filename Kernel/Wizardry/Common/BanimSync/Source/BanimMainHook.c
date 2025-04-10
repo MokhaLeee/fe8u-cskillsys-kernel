@@ -47,7 +47,7 @@ void BanimSwitch_HookOnMain(struct Anim *anim)
 
 #if CHAX
 			if (banim_switched) {
-				int frame_front = BanimDefaultModeConfig[BattleTypeToAnimModeEndOfDodge[gEkrDistanceType] * 4 + 0];
+				int frame_front = BanimDefaultModeConfig[BanimDefaultStandingTypes[gEkrDistanceType] * 4 + 0];
 				int idx = GetAnimPosition(anim) == EKR_POS_L ? gpBanimModesLeft[frame_front] : gpBanimModesRight[frame_front];
 
 				const void *_ptr;
@@ -107,7 +107,7 @@ void BanimSwitch_HookOnMain(struct Anim *anim)
 				anim2->state3 |= ANIM_BIT3_C01_BLOCKING_IN_BATTLE;
 
 				if (banim_switched) {
-					int frame_front = BanimDefaultModeConfig[BattleTypeToAnimModeEndOfDodge[gEkrDistanceType] * 4 + 0];
+					int frame_front = BanimDefaultModeConfig[BanimDefaultStandingTypes[gEkrDistanceType] * 4 + 0];
 					int idx = GetAnimPosition(anim) == EKR_POS_L ? gpBanimModesLeft[frame_front] : gpBanimModesRight[frame_front];
 
 					const void *_ptr;
