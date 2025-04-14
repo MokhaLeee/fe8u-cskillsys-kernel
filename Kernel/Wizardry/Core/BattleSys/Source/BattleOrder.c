@@ -6,6 +6,7 @@
 #include "gaiden-magic.h"
 #include "combat-art.h"
 #include "strmag.h"
+#include "bwl.h"
 #include "combo-attack.h"
 #include "constants/skills.h"
 
