@@ -74,7 +74,7 @@ SID_AdvantageChaser
 SID_Nonconforming
 SID_Moonlight
 SID_BlackMagic
-// SID_LastWord
+SID_LastWord
 SID_Multiscale
 SID_PridefulWarrior
 SID_MageSlayer

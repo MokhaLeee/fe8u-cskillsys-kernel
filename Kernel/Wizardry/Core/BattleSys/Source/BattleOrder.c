@@ -334,6 +334,29 @@ STATIC_DECLAR bool CheckVantageOrder(void)
 	return false;
 }
 
+STATIC_DECLAR u8 PostCalc_ModifyBattleOrderRoundMask(u8 round_mask)
+{
+	u8 ret = round_mask;
+
+#if defined(SID_LastWord) && (COMMON_SKILL_VALID(SID_LastWord))
+	if (!(round_mask & UNWIND_DOUBLE_ACT)) {
+		if (BattleFastSkillTester(&gBattleActor, SID_LastWord)) {
+			RegisterBattleOrderSkill(SID_LastWord, BORDER_ACT_TWICE);
+			ret |= UNWIND_DOUBLE_ACT;
+		}
+	}
+
+	if (!(round_mask & UNWIND_DOUBLE_TAR)) {
+		if (BattleFastSkillTester(&gBattleTarget, SID_LastWord)) {
+			RegisterBattleOrderSkill(SID_LastWord, BORDER_TAR_TWICE);
+			ret |= UNWIND_DOUBLE_TAR;
+		}
+	}
+#endif
+
+	return ret;
+}
+
 LYN_REPLACE_CHECK(BattleUnwind);
 void BattleUnwind(void)
 {
@@ -368,6 +391,8 @@ void BattleUnwind(void)
 
 	if (CheckCanTwiceAttackOrder(&gBattleTarget, &gBattleActor))
 		round_mask |= UNWIND_DOUBLE_TAR;
+
+	round_mask = PostCalc_ModifyBattleOrderRoundMask(round_mask);
 
 	config = BattleUnwindConfig[round_mask];
 
