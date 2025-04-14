@@ -141,6 +141,7 @@ enum {
 	UNWIND_DOUBLE_TAR = 1 << 3,
 };
 
+extern EWRAM_OVERLAY(0) u8 BattleOrderMask;
 extern const u8 BattleUnwindConfig[16][4];
 
 struct EfxSkillQueue {

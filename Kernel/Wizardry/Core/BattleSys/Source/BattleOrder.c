@@ -364,12 +364,13 @@ void BattleUnwind(void)
 #ifdef CONFIG_USE_COMBO_ATTACK
 	bool combo_atk_done = false;
 #endif
-	u8 round_mask = 0;
 	const u8 *config;
 
 	/* Identifier to record attack amount for skill anim triger */
 	int actor_count = 0;
 	int target_count = 0;
+
+	BattleOrderMask = 0;
 
 	ClearBattleHits();
 	gBattleHitIterator->info |= BATTLE_HIT_INFO_BEGIN;
@@ -381,20 +382,20 @@ void BattleUnwind(void)
 	}
 
 	if (CheckDesperationOrder())
-		round_mask |= UNWIND_DESPERA;
+		BattleOrderMask |= UNWIND_DESPERA;
 
 	if (CheckVantageOrder())
-		round_mask |= UNWIND_VANTAGE;
+		BattleOrderMask |= UNWIND_VANTAGE;
 
 	if (CheckCanTwiceAttackOrder(&gBattleActor, &gBattleTarget))
-		round_mask |= UNWIND_DOUBLE_ACT;
+		BattleOrderMask |= UNWIND_DOUBLE_ACT;
 
 	if (CheckCanTwiceAttackOrder(&gBattleTarget, &gBattleActor))
-		round_mask |= UNWIND_DOUBLE_TAR;
+		BattleOrderMask |= UNWIND_DOUBLE_TAR;
 
-	round_mask = PostCalc_ModifyBattleOrderRoundMask(round_mask);
+	BattleOrderMask = PostCalc_ModifyBattleOrderRoundMask(BattleOrderMask);
 
-	config = BattleUnwindConfig[round_mask];
+	config = BattleUnwindConfig[BattleOrderMask];
 
 	for (i = 0; i < 4; i++) {
 		struct BattleHit *old = gBattleHitIterator;
@@ -440,12 +441,12 @@ void BattleUnwind(void)
 			gBattleHitIterator->attributes = BATTLE_HIT_ATTR_FOLLOWUP;
 
 		/* Vantage */
-		if (i == 0 && (round_mask & UNWIND_VANTAGE))
+		if (i == 0 && (BattleOrderMask & UNWIND_VANTAGE))
 			if (gBattleTemporaryFlag.vantage_order)
 				RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_VANTAGE]);
 
 		/* Desperation */
-		if (i == 1 && (round_mask & UNWIND_DESPERA))
+		if (i == 1 && (BattleOrderMask & UNWIND_DESPERA))
 			if (config[0] == ACT_ATTACK && config[1] == ACT_ATTACK && config[2] == TAR_ATTACK)
 				if (gBattleTemporaryFlag.desperation_order)
 					RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_DESPERATION]);

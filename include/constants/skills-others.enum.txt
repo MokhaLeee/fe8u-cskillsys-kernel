@@ -111,7 +111,7 @@ SID_LadyBlade
 // SID_LullSpeed
 // SID_LullStregth
 SID_ShrewdPotential
-// SID_SteadyBrawler
+SID_SteadyBrawler
 SID_KeepUp
 // SID_LiquidOoze
 SID_CloseCombat

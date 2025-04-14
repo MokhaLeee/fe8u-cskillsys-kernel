@@ -1146,4 +1146,8 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_EndlessVitality) && COMMON_SKILL_VALID(SID_EndlessVitality))
 	[SID_EndlessVitality] = {{ 20 }},
 #endif
+
+#if (defined(SID_SteadyBrawler) && COMMON_SKILL_VALID(SID_SteadyBrawler))
+	[SID_SteadyBrawler] = {{ 25, 25 }},
+#endif
 };

@@ -117,6 +117,9 @@ _kernel_malloc_overlay0 sAiSimuSlotBuf, 0x100
 _kernel_malloc_overlay0 gItemPageList, 0x28
 _kernel_malloc_overlay0 gPostActionCommonBuffer, 0x20
 _kernel_malloc_overlay0 sTmpMovCostTable, 0x44
+_kernel_malloc_overlay0 BattleOrderMask, 1
+
+_kernel_malloc _kernel_malloc_overlay0_align4_pad, 3
 
 /**
  * Usage of memory on IWRAM for arm-functions
