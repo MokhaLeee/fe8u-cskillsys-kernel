@@ -311,6 +311,27 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 		}
 	}
 #endif
+
+#if (defined(SID_BlackMagic) && (COMMON_SKILL_VALID(SID_BlackMagic)))
+	else if (CheckBattleSkillActivate(attacker, defender, SID_BlackMagic, attacker->unit.skl)) {
+		static const u8 _debuffs[] = {
+			// Vanilla
+			UNIT_STATUS_POISON,
+			UNIT_STATUS_SLEEP,
+			UNIT_STATUS_SILENCED,
+			UNIT_STATUS_BERSERK,
+
+			// CHAX
+			NEW_UNIT_STATUS_PIERCE_ARMOR,
+			NEW_UNIT_STATUS_PIERCE_MAGIC,
+			NEW_UNIT_STATUS_HEAVY_GRAVITY,
+			NEW_UNIT_STATUS_WEAKEN,
+		};
+
+		defender->statusOut = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_BlackMagic);
+	}
+#endif
 }
 
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender)
