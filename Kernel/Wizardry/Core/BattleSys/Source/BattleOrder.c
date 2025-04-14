@@ -181,6 +181,19 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 		}
 #endif
 
+#if defined(SID_QuickLearner) && (COMMON_SKILL_VALID(SID_QuickLearner))
+		if (BattleFastSkillTester(actor, SID_QuickLearner)) {
+			int lv1 = actor->levelPrevious  + GetUnitHiddenLevel(&actor->unit);
+			int lv2 = target->levelPrevious + GetUnitHiddenLevel(&target->unit);
+
+			if (lv1 < lv2) {
+				gBattleTemporaryFlag.act_force_twice_order = true;
+				RegisterBattleOrderSkill(SID_QuickLearner, BORDER_ACT_TWICE);
+				return true;
+			}
+		}
+#endif
+
 	} else if (&gBattleTarget == actor) {
 		gBattleTemporaryFlag.tar_force_twice_order = false;
 

@@ -121,7 +121,7 @@ SID_Barricade
 SID_BarricadePlus
 SID_LunarBrace
 SID_Pursuer
-// SID_QuickLearner
+SID_QuickLearner
 SID_EffectSpore
 SID_DominantArm
 SID_SolidRock
