@@ -8,3 +8,4 @@
 #include "Source/WeaponEffectiveness.lyn.event"
 
 #include "WeaponLockEx/WeaponLockEx.event"
+#include "LeaderShip/LeaderShip.event"
