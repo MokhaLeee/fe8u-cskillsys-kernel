@@ -40,21 +40,35 @@ LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
 void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	int status;
+	bool effective = false;;
+	int effective_amplifier = 100;
+	int effective_reduce = 0x100;
 
 	status = GetItemMight(attacker->weapon);
 
-	if (IsUnitEffectiveAgainst(&attacker->unit, &defender->unit) || IsItemEffectiveAgainst(attacker->weapon, &defender->unit)) {
-		status = status * 2;
+	if (IsItemEffectiveAgainst(attacker->weapon, &defender->unit)) {
+		effective = true;
+		effective_amplifier = CalcWeaponEffectivenessScale(attacker->weapon);
+	} else if (IsUnitEffectiveAgainst(&attacker->unit, &defender->unit)) {
+		effective = true;
+		effective_amplifier = 300;
+	}
 
+	if (effective) {
 #if (defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful)))
 		if (BattleFastSkillTester(attacker, SID_Resourceful))
-			status = status * 2;
+			effective_amplifier += SKILL_EFF0(SID_Resourceful);
 #endif
 
 #if (defined(SID_SolidRock) && (COMMON_SKILL_VALID(SID_SolidRock)))
 		if (BattleFastSkillTester(defender, SID_SolidRock))
-			status = status / 2;
+			effective_reduce += DAMAGE_DECREASE(SKILL_EFF0(SID_SolidRock));
 #endif
+
+		/**
+		 * Calc result
+		 */
+		status = k_udiv(status * effective_amplifier * 0x100, 100 * effective_reduce);
 	}
 
 	if (IsMagicAttack(attacker))

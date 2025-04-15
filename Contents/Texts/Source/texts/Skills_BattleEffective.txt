@@ -17,8 +17,8 @@ damage to flying units.[X]
 Resourc[X]
 
 ## MSG_SKILL_Resourceful
-Resourceful: Double bonus[NL]
-effectiveness multipliers.[X]
+Resourceful:[NL]
+effectiveness attack +100%.[X]
 
 ## MSG_SKILL_SolidRock
 Solid Rock:[NL]

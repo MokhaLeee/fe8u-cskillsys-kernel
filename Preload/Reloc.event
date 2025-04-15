@@ -145,7 +145,7 @@ gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
 
 gpAnimScr_AnimNumber: POIN AnimScr_AnimNumber
 
-WORD 0
+gpWeaponEffectivenessConfigs: POIN gWeaponEffectivenessConfigs
 WORD 0
 
 gpExternalPostActionHook: WORD 0

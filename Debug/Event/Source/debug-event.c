@@ -144,6 +144,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 		}},
 		.items = {
 			ITEM_LANCE_IRON,
+			ITEM_LANCE_REGINLEIF,
 			ITEM_SOLARBRACE,
 		},
 	},
@@ -479,6 +480,9 @@ static void modify_unit_status_post_prep(void)
 	if (unit) {
 		SetUnitStatus(unit, UNIT_STATUS_SLEEP);
 	}
+
+	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Resourceful);
+	AddSkillDbgListByPid(CHARACTER_SAAR, SID_SolidRock);
 }
 
 /**

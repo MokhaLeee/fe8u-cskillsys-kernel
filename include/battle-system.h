@@ -238,6 +238,19 @@ bool CheckWeaponIsEfxResire(int weapon);
 bool CheckEfxMagicIsResire(int efx);
 
 /**
+ * Weapon effectiveness
+ */
+struct WeaponEffectivenessEnt {
+	u8 iid;
+	u8 scale;
+};
+
+int CalcWeaponEffectivenessScale(int weapon);
+
+// extern struct WeaponEffectivenessEnt const gWeaponEffectivenessConfigs[];
+extern struct WeaponEffectivenessEnt const *const gpWeaponEffectivenessConfigs;
+
+/**
  * Hp cost
  */
 bool TryBattleHpCost(struct BattleUnit *bu, int hp_cost);

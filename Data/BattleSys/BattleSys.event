@@ -5,5 +5,6 @@
 #include "Source/WrankBonus.lyn.event"
 #include "Source/WeaponHpCost.lyn.event"
 #include "Source/WeaponHpDrain.lyn.event"
+#include "Source/WeaponEffectiveness.lyn.event"
 
 #include "WeaponLockEx/WeaponLockEx.event"

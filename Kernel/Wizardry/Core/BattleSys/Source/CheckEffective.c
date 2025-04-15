@@ -166,3 +166,17 @@ check_null_effective:
 
 	return true;
 }
+
+int CalcWeaponEffectivenessScale(int weapon)
+{
+	const struct WeaponEffectivenessEnt *it;
+	int iid = ITEM_INDEX(weapon);
+
+	for (it = gpWeaponEffectivenessConfigs; it->iid != ITEM_NONE; it++) {
+		if (it->iid != iid)
+			continue;
+
+		return it->scale * 10;
+	}
+	return 300;
+}
