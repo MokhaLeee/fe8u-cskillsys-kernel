@@ -34,7 +34,7 @@
 ![image](gfx/SkillIcon_FortressRes.png) | FortressRes |  STR/MAG -3, RES +5. |
 ![image](gfx/SkillIcon_LifeAndDeath.png) | LifeAndDeath |  For both unit and enemy, STR/MAG +5, DEF/RES -5. |
 ![image](gfx/SkillIcon_Leader.png) | Leader |  Unit grants leadership +2 |
-![image](gfx/SkillIcon_Resourceful.png) | Resourceful |  Double bonus effectiveness multipliers. |
+![image](gfx/SkillIcon_Resourceful.png) | Resourceful |  effectiveness attack +100%. |
 ![image](gfx/SkillIcon_Nihil.png) | Nihil |  Negates enemy's combat-related skills. |
 ![image](gfx/SkillIcon_CritSword.png) | CritSword |   Crit rate +10%, if a Sword is equipped. |
 ![image](gfx/SkillIcon_CritAxe.png) | CritAxe |   Crit rate +10%, if an Axe is equipped. |
@@ -347,6 +347,8 @@
 ![image](gfx/SkillIcon_AdvantageChaser.png) | AdvantageChaser |  Unit always doubles if they have Weapon Triangle Advantage. |
 ![image](gfx/SkillIcon_Nonconforming.png) | Nonconforming |  Invert the effect of the weapon triangle for both units in battle. |
 ![image](gfx/SkillIcon_Moonlight.png) | Moonlight |  This unit cannot double, but the enemy cannot counterattack. |
+![image](gfx/SkillIcon_BlackMagic.png) | BlackMagic |  Inflict a random bad status on the enemy. (Skill % activation). |
+![image](gfx/SkillIcon_LastWord.png) | LastWord |  If the enemy doubles, this unit doubles. |
 ![image](gfx/SkillIcon_Multiscale.png) | Multiscale |  Halve damage taken if the user is at full HP. |
 ![image](gfx/SkillIcon_PridefulWarrior.png) | PridefulWarrior |  Unit always attacks last in the round, but always doubles. |
 ![image](gfx/SkillIcon_MageSlayer.png) | MageSlayer |  +2 damage and +10% crit against magical enemies. |
@@ -373,6 +375,7 @@
 ![image](gfx/SkillIcon_PassionsFlow.png) | PassionsFlow |  Unit doubles if currently gaining support bonuses. |
 ![image](gfx/SkillIcon_LadyBlade.png) | LadyBlade |  If this unit is female, double weapon might. |
 ![image](gfx/SkillIcon_ShrewdPotential.png) | ShrewdPotential |  +1 to stat boosters used by this unit. |
+![image](gfx/SkillIcon_SteadyBrawler.png) | SteadyBrawler |  +25% damage if this unit can double, -25% damage if not. |
 ![image](gfx/SkillIcon_KeepUp.png) | KeepUp |  +2 to MOV at the start of the turn, if within 3 tiles of an ally with Canto or Canto+. |
 ![image](gfx/SkillIcon_CloseCombat.png) | CloseCombat |  +2 damage if at 1 range. Your double attacks occur before countering. |
 ![image](gfx/SkillIcon_ArmorMarch.png) | ArmorMarch |  At the start of the turn, if unit is adjacent to an armor ally, unit and adjacent armor allies +2 MOV. |
@@ -381,6 +384,7 @@
 ![image](gfx/SkillIcon_BarricadePlus.png) | BarricadePlus |  Damage taken is halved in this combat only, after every strike against this unit. |
 ![image](gfx/SkillIcon_LunarBrace.png) | LunarBrace |  Negate 25% of enemy defense. |
 ![image](gfx/SkillIcon_Pursuer.png) | Pursuer |  If initiating combat, attack speed +5, attack + 25% of unit speed, double attack immediately. |
+![image](gfx/SkillIcon_QuickLearner.png) | QuickLearner |  When attacking a higher level enemy, this unit doubles. |
 ![image](gfx/SkillIcon_EffectSpore.png) | EffectSpore |  If attacked, 50% chance of inflicting poison, silence or sleep. |
 ![image](gfx/SkillIcon_DominantArm.png) | DominantArm |  If the unit's equipped weapon is the same type as their highest weapon rank, +50% weapon ATK. |
 ![image](gfx/SkillIcon_SolidRock.png) | SolidRock |  Halves effective damage against this unit. |
