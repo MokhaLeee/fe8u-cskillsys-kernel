@@ -36,4 +36,15 @@
 #define Evt_RemoveSkillSC(sid)       "BYTE 0x48 EVENT_CMD_SKILL; SHORT sid 0 0"
 #define InjectSkillInfo(sid, icon, name, desc) "PUSH ; ORG gSkillInfos + 8 * sid ; WORD ICON; SHORT name desc ; POP"
 
+// banim-main
+/**
+ * mov r0, r7
+ * blh /routine
+ * ldr r0, =0x080596CC + 1
+ * bx r0
+ */
+#define PrBanimCmd(pr_label, routine) "ALIGN 4; pr_label: WORD $B4081C38 $469E4B02 $BC08F800 $47004801; POIN routine; WORD $80596CD"
+#define InjectBanimCmdExt(index, pr_label) "PUSH; ORG ($58C44 + 4 * index); POIN pr_label | 1; POP; PROTECT ($58C44 + 4 * index) ($58C44 + 4 * index + 4)"
+#define InjectBanimCmd(index, routine, pr_label) "PrBanimCmd(pr_label, routine); InjectBanimCmdExt(index, pr_label)"
+
 #endif

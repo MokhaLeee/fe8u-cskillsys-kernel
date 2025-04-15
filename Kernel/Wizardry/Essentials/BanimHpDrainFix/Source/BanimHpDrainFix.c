@@ -1,31 +1,4 @@
 #include "common-chax.h"
-#include "battle-system.h"
-#include "banim-hack.h"
-
-LYN_REPLACE_CHECK(StartBattleAnimHitEffectsDefault);
-void StartBattleAnimHitEffectsDefault(struct Anim *anim, int type)
-{
-	int round = anim->nextRoundId - 1;
-	struct BattleHit *hit = (prBattleHitArray + BattleHitArrayWidth * round);
-
-	if (hit->attributes & BATTLE_HIT_ATTR_HPSTEAL) {
-		/**
-		 * 0x1E is the efx magic for ITEM_DARK_NOSFERATU
-		 * which may directly call the hpbar-resire and cause
-		 * the hpbar offset get wrong.
-		 */
-		if (CheckEfxMagicIsResire(gEkrSpellAnimIndex[GetAnimPosition(anim)])) {
-			StartBattleAnimHitEffects(anim, type, 3, 4);
-			return;
-		}
-
-		StartBattleAnimResireHitEffects(anim, type);
-		gEfxHpBarResireFlag = 3;
-		return;
-	}
-
-	StartBattleAnimHitEffects(anim, type, 3, 4);
-}
 
 LYN_REPLACE_CHECK(EfxHpBarResire_WaitOnCurrentSide);
 void EfxHpBarResire_WaitOnCurrentSide(struct ProcEfxHpBar *proc)

@@ -457,8 +457,12 @@ static void modify_unit_status(void)
 	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_RightfulArch);
 #endif
 
-#if defined(SID_Luna) && (COMMON_SKILL_VALID(SID_Luna))
-	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_Luna);
+#if defined(SID_Enrage) && (COMMON_SKILL_VALID(SID_Enrage))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_Enrage);
+#endif
+
+#if defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful))
+	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Resourceful);
 #endif
 }
 
@@ -480,14 +484,6 @@ static void modify_unit_status_post_prep(void)
 	if (unit) {
 		SetUnitStatus(unit, UNIT_STATUS_SLEEP);
 	}
-
-#if defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful))
-	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Resourceful);
-#endif
-
-#if defined(SID_SolidRock) && (COMMON_SKILL_VALID(SID_SolidRock))
-	AddSkillDbgListByPid(CHARACTER_SAAR, SID_SolidRock);
-#endif
 }
 
 /**

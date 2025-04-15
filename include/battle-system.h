@@ -60,7 +60,7 @@ extern u8 BattleHitArrayWidth;
 
 struct ExtBattleHit {
 	u8 hp_drain, hp_cost;
-	u8 _pad_[2];
+	s8 act_debuff, tar_debuff;
 };
 extern struct ExtBattleHit gExtBattleHitArray[NEW_BATTLE_HIT_MAX];
 

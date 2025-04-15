@@ -236,68 +236,96 @@ void BattleHit_CalcHpDrain(struct BattleUnit *attacker, struct BattleUnit *defen
 	}
 }
 
-void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender)
+STATIC_DECLAR void InjectNegativeStatusExt(struct BattleUnit *bu, int debuff)
 {
-	int debuff;
+	int old_debuff;
 
-	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_PETRIFY) {
+	if (debuff < 0)
+		return;
+
+	old_debuff = (bu->statusOut >= 0)
+			   ? bu->statusOut
+			   : GetUnitStatusIndex(&bu->unit);
+
+	switch (old_debuff) {
+	case UNIT_STATUS_PETRIFY:
+	case UNIT_STATUS_13:
+		// "Ungray" defender if it was petrified (as it won't be anymore)
+		bu->unit.state &= ~US_UNSELECTABLE;
+		break;
+
+	default:
+		break;
+	}
+
+	bu->statusOut = debuff;
+
+	switch (debuff) {
+	case UNIT_STATUS_PETRIFY:
+	case UNIT_STATUS_13:
 		switch (gPlaySt.faction) {
 		case FACTION_BLUE:
-			if (UNIT_FACTION(&defender->unit) == FACTION_BLUE)
-				defender->statusOut = UNIT_STATUS_13;
+			if (UNIT_FACTION(&bu->unit) == FACTION_BLUE)
+				bu->statusOut = UNIT_STATUS_13;
 			else
-				defender->statusOut = UNIT_STATUS_PETRIFY;
+				bu->statusOut = UNIT_STATUS_PETRIFY;
 			break;
 
 		case FACTION_RED:
-			if (UNIT_FACTION(&defender->unit) == FACTION_RED)
-				defender->statusOut = UNIT_STATUS_13;
+			if (UNIT_FACTION(&bu->unit) == FACTION_RED)
+				bu->statusOut = UNIT_STATUS_13;
 			else
-				defender->statusOut = UNIT_STATUS_PETRIFY;
+				bu->statusOut = UNIT_STATUS_PETRIFY;
 			break;
 
 		case FACTION_GREEN:
-			if (UNIT_FACTION(&defender->unit) == FACTION_GREEN)
-				defender->statusOut = UNIT_STATUS_13;
+			if (UNIT_FACTION(&bu->unit) == FACTION_GREEN)
+				bu->statusOut = UNIT_STATUS_13;
 			else
-				defender->statusOut = UNIT_STATUS_PETRIFY;
+				bu->statusOut = UNIT_STATUS_PETRIFY;
 			break;
 		}
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
+		break;
+
+	case UNIT_STATUS_POISON:
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
+		break;
+
+	default:
+		break;
 	}
+}
+
+void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	struct ExtBattleHit *exthit = GetCurrentExtBattleHit();
+
+	exthit->act_debuff = -1;
+	exthit->tar_debuff = -1;
+
+	if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_PETRIFY)
+		exthit->tar_debuff = UNIT_STATUS_PETRIFY;
 #if (defined(SID_Petrify) && (COMMON_SKILL_VALID(SID_Petrify)))
 	else if (CheckBattleSkillActivate(attacker, defender, SID_Petrify, attacker->unit.skl)) {
 		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Petrify);
-		defender->statusOut = UNIT_STATUS_PETRIFY;
-		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_PETRIFY;
+		exthit->tar_debuff = UNIT_STATUS_PETRIFY;
 	}
 #endif
 	else if (gBattleTemporaryFlag.skill_activated_dead_eye)
-		defender->statusOut = UNIT_STATUS_SLEEP;
-	else if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON) {
-		defender->statusOut = UNIT_STATUS_POISON;
-		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
+		exthit->tar_debuff = UNIT_STATUS_SLEEP;
+	else if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_POISON)
+		exthit->tar_debuff = UNIT_STATUS_POISON;
 
-		// "Ungray" defender if it was petrified (as it won't be anymore)
-		debuff = GetUnitStatusIndex(&defender->unit);
-		if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
-			defender->unit.state = defender->unit.state & ~US_UNSELECTABLE;
-	}
 #if (defined(SID_PoisonPoint) && (COMMON_SKILL_VALID(SID_PoisonPoint)))
-	else if (BattleFastSkillTester(attacker, SID_PoisonPoint)) {
-		defender->statusOut = UNIT_STATUS_POISON;
-		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_POISON;
-
-		// "Ungray" defender if it was petrified (as it won't be anymore)
-		debuff = GetUnitStatusIndex(&defender->unit);
-		if (debuff == UNIT_STATUS_PETRIFY || debuff == UNIT_STATUS_13)
-			defender->unit.state = defender->unit.state & ~US_UNSELECTABLE;
-	}
+	else if (BattleFastSkillTester(attacker, SID_PoisonPoint))
+		exthit->tar_debuff = UNIT_STATUS_POISON;
 #endif
+
 #if (defined(SID_Enrage) && (COMMON_SKILL_VALID(SID_Enrage)))
 	else if (CheckBattleSkillActivate(attacker, defender, SID_Enrage, attacker->unit.skl)) {
 		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Enrage);
-		defender->statusOut = UNIT_STATUS_BERSERK;
+		exthit->tar_debuff = UNIT_STATUS_BERSERK;
 	}
 #endif
 
@@ -306,7 +334,7 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 		if (!IsDebuff(GetUnitStatusIndex(&attacker->unit)) && !IsDebuff(attacker->statusOut)) {
 			static const u8 _debuffs[3] = { UNIT_STATUS_POISON, UNIT_STATUS_SILENCED, UNIT_STATUS_SLEEP };
 
-			attacker->statusOut = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
+			exthit->act_debuff = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
 			RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_EffectSpore);
 		}
 	}
@@ -328,10 +356,13 @@ void BattleHit_InjectNegativeStatus(struct BattleUnit *attacker, struct BattleUn
 			NEW_UNIT_STATUS_WEAKEN,
 		};
 
-		defender->statusOut = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
+		exthit->tar_debuff = _debuffs[NextRN_N(ARRAY_COUNT(_debuffs))];
 		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_BlackMagic);
 	}
 #endif
+
+	InjectNegativeStatusExt(attacker, exthit->act_debuff);
+	InjectNegativeStatusExt(defender, exthit->tar_debuff);
 }
 
 void BattleHit_ConsumeWeapon(struct BattleUnit *attacker, struct BattleUnit *defender)

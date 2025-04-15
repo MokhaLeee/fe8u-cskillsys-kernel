@@ -102,6 +102,9 @@ void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit 
 {
 	gBattleStats.damage = 0;
 
+	if (GetCurrentBattleHitRound() == 1)
+		gBattleStats.hitRate = 0;
+
 	/* Fasten simulation */
 	if (!BattleRoll2RN(gBattleStats.hitRate, FALSE)) {
 #if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))

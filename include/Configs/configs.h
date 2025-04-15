@@ -109,6 +109,16 @@
 #define CONFIG_STOP_COUNTER_ENABLED
 
 /**
+ * In banim, unit status flashing is desicded by ext-hit rather than ANIM_ROUND_POISON
+ */
+#define CONFIG_EFX_STATUS_DISPLAY_ON_EXTHIT
+
+/**
+ * C03 not flush efx-status
+ */
+#define CONFIG_C03_NOT_FLUSH_EFXSTATUS
+
+/**
  * Enable leader-ship features
  */
 // #define CONFIG_LEADER_SHIP_EN
