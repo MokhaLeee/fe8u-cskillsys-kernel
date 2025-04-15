@@ -481,8 +481,13 @@ static void modify_unit_status_post_prep(void)
 		SetUnitStatus(unit, UNIT_STATUS_SLEEP);
 	}
 
+#if defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful))
 	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Resourceful);
+#endif
+
+#if defined(SID_SolidRock) && (COMMON_SKILL_VALID(SID_SolidRock))
 	AddSkillDbgListByPid(CHARACTER_SAAR, SID_SolidRock);
+#endif
 }
 
 /**
