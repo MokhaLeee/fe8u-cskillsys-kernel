@@ -117,8 +117,6 @@ $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
 	@$(EA) $(EA_FLAG) -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || { rm -f $(FE8_CHX); exit 1; }
-	@cat $(FE8_SYM) >> $(CHAX_SYM)
-	@cat $(CHAX_SYM) | python3 $(TOOL_DIR)/scripts/sym_modify.py | sponge $(CHAX_SYM)
 
 CLEAN_FILES += $(FE8_CHX)
 
@@ -404,6 +402,8 @@ ifeq ($(CONFIG_RELEASE_COMPILATION), 1)
 	@python3 $(TOOL_DIR)/scripts/ups.py make $(FE8_GBA) $(FE8_CHX) $(CHAX_NUPS)
 endif
 
+	@cat $(FE8_SYM) >> $(CHAX_SYM)
+	@cat $(CHAX_SYM) | python3 $(TOOL_DIR)/scripts/sym_modify.py | sponge $(CHAX_SYM)
 	@echo "Done!"
 
 CLEAN_FILES += $(CHAX_SYM) $(CHAX_REFS) $(CHAX_REFE) $(CHAX_NUPS)
