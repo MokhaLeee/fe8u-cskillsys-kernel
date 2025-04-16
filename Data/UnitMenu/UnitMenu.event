@@ -1,0 +1,8 @@
+#include "Source/UnitMenu.lyn.event"
+#include "Source/UnitMenuRect.event"
+
+PUSH
+	// Repoint Unit Menu
+	ORG $59D1F8
+	POIN gUnitActionMenuItemsRework
+POP

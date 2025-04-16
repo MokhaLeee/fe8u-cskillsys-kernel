@@ -6,6 +6,23 @@
 
 #define MenuItemsEnd {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
+u8 pr_CombatArtActionCommandUsability(const struct MenuItemDef *def, int number);
+int pr_CombatArtActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
+u8 pr_CombatArtActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_CombatArtActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_CombatArtActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 pr_GaidenBMagActionCommandUsability(const struct MenuItemDef *def, int number);
+int pr_GaidenBMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
+u8 pr_GaidenBMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_GaidenBMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_GaidenBMagActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 pr_GaidenWMagActionCommandUsability(const struct MenuItemDef *def, int number);
+int pr_GaidenWMagActionCommandOnDarw(struct MenuProc *menu, struct MenuItemProc *item);
+u8 pr_GaidenWMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_GaidenWMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 pr_UpperMenuSkill_Usability(const struct MenuItemDef *self, int number);
+u8 pr_UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+
 const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 	{"　制圧", 0x67A, 0x6CC, 0, 0x4E, UnitActionMenu_CanSeize, 0, UnitActionMenu_Seize, 0, 0, 0}, // Seize
 	{"　攻撃", 0x67B, 0x6C0, 0, 0x4F, AttackCommandUsabilityFix, 0, UnitActionMenu_Attack, 0, AttackActionCommandHoverFix, AttackActionCommandUnhoverFix}, // Attack >
@@ -18,12 +35,12 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		MSG_COMBATART_UM_DESC,
 		TEXT_COLOR_SYSTEM_WHITE,
 		0x6C,
-		CombatArtActionCommandUsability,
-		CombatArtActionCommandOnDarw,
-		CombatArtActionCommandEffect,
+		pr_CombatArtActionCommandUsability,
+		pr_CombatArtActionCommandOnDarw,
+		pr_CombatArtActionCommandEffect,
 		NULL,
-		CombatArtActionCommandHover,
-		CombatArtActionCommandUnhover
+		pr_CombatArtActionCommandHover,
+		pr_CombatArtActionCommandUnhover
 	},
 
 	{"　杖", 0x67C, 0x6C1, 0, 0x51, StaffCommandUsability, 0, StaffCommandEffect, 0, StaffCommandRange, HideMoveRangeGraphicsWrapper2}, // Staff
@@ -37,12 +54,12 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		MSG_GaidenBMagic_UM_DESC,
 		TEXT_COLOR_SYSTEM_WHITE,
 		0x80,
-		GaidenBMagActionCommandUsability,
-		GaidenBMagActionCommandOnDarw,
-		GaidenBMagActionCommandEffect,
+		pr_GaidenBMagActionCommandUsability,
+		pr_GaidenBMagActionCommandOnDarw,
+		pr_GaidenBMagActionCommandEffect,
 		0,
-		GaidenBMagActionCommandHover,
-		GaidenBMagActionCommandUnhover
+		pr_GaidenBMagActionCommandHover,
+		pr_GaidenBMagActionCommandUnhover
 	},
 	{
 		"　白魔法",
@@ -50,11 +67,11 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		MSG_GaidenWMagic_UM_DESC,
 		TEXT_COLOR_SYSTEM_WHITE,
 		0x80,
-		GaidenWMagActionCommandUsability,
-		GaidenWMagActionCommandOnDarw,
-		GaidenWMagActionCommandEffect,
+		pr_GaidenWMagActionCommandUsability,
+		pr_GaidenWMagActionCommandOnDarw,
+		pr_GaidenWMagActionCommandEffect,
 		0,
-		GaidenWMagActionCommandHover,
+		pr_GaidenWMagActionCommandHover,
 		HideMoveRangeGraphicsWrapper2
 	},
 #ifdef CONFIG_MENU_SKILL_NOT_IN_UPPER
@@ -64,9 +81,9 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		MSG_MenuSkill_UM_DESC,
 		TEXT_COLOR_SYSTEM_WHITE,
 		0x80,
-		UpperMenuSkill_Usability,
+		pr_UpperMenuSkill_Usability,
 		NULL,
-		UpperMenuSkill_OnSelected,
+		pr_UpperMenuSkill_OnSelected,
 		NULL, NULL, NULL
 	},
 #else

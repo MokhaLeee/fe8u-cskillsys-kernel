@@ -4,15 +4,14 @@
 #define pr_UnitActionMenuDef 0x59D1F0
 
 #include "Source/hooks.lyn.event"
-// #include "data.event"
 
 PUSH
     ORG pr_UnitActionMenuDef + 0x18
-        POIN UnitActionMenu_CancelRe
+    POIN UnitActionMenu_CancelRe
 
 #ifndef CONFIG_MENU_SKILL_NOT_IN_UPPER
     ORG pr_UnitActionMenuDef + 0x20
-        POIN UnitActionMenu_OnHelpBoxRe
+    POIN UnitActionMenu_OnHelpBoxRe
 #endif /* MENU_SKILL_NOT_IN_UPPER */
 
     PROTECT 0x0059D1F0 0x0059D214 // gUnitActionMenuDef

@@ -65,4 +65,21 @@ gpExternalUnitToBattleHook: POIN gExternalUnitToBattleHook
 
 gpStatDebuffStatusPool: POIN sStatDebuffStatusPool
 
+pr_CombatArtActionCommandUsability:  jumpToHack(CombatArtActionCommandUsability)
+pr_CombatArtActionCommandOnDarw:     jumpToHack(CombatArtActionCommandOnDarw)
+pr_CombatArtActionCommandEffect:     jumpToHack(CombatArtActionCommandEffect)
+pr_CombatArtActionCommandHover:      jumpToHack(CombatArtActionCommandHover)
+pr_CombatArtActionCommandUnhover:    jumpToHack(CombatArtActionCommandUnhover)
+pr_GaidenBMagActionCommandUsability: jumpToHack(GaidenBMagActionCommandUsability)
+pr_GaidenBMagActionCommandOnDarw:    jumpToHack(GaidenBMagActionCommandOnDarw)
+pr_GaidenBMagActionCommandEffect:    jumpToHack(GaidenBMagActionCommandEffect)
+pr_GaidenBMagActionCommandHover:     jumpToHack(GaidenBMagActionCommandHover)
+pr_GaidenBMagActionCommandUnhover:   jumpToHack(GaidenBMagActionCommandUnhover)
+pr_GaidenWMagActionCommandUsability: jumpToHack(GaidenWMagActionCommandUsability)
+pr_GaidenWMagActionCommandOnDarw:    jumpToHack(GaidenWMagActionCommandOnDarw)
+pr_GaidenWMagActionCommandEffect:    jumpToHack(GaidenWMagActionCommandEffect)
+pr_GaidenWMagActionCommandHover:     jumpToHack(GaidenWMagActionCommandHover)
+pr_UpperMenuSkill_Usability:         jumpToHack(UpperMenuSkill_Usability)
+pr_UpperMenuSkill_OnSelected:        jumpToHack(UpperMenuSkill_OnSelected)
+
 KERNEL_RELOC_END:
