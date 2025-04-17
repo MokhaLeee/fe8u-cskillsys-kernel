@@ -2,7 +2,7 @@
 #define MACROS_EVENT_INSTALLED
 
 #ifndef _thumb
-#define _thumb(p) "PUSH; ORG CURRENTOFFSET+1; p:; POP"
+#define _thumb(p) "PUSH; ORG CURRENTOFFSET+1; p:; POP;"
 #endif
 
 #define LynJumpDefined
