@@ -103,7 +103,7 @@ extern u16 const *const gpPal_ObjWindow;
 
 void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 *proc);
 void PrepSkill2_InitTexts(void);
-void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 *proc);
+void PrepSkill2_DrawSkillDesc(struct ProcPrepSkill2 *proc);
 void PrepSkill2_DrawRightTopBar(struct ProcPrepSkill2 *proc);
 
 extern struct PrepEquipSkillList sPrepEquipSkillList;

@@ -82,7 +82,7 @@ STATIC_DECLAR void ProcPrepSkill2_InitScreen(struct ProcPrepSkill2 *proc)
 			0x0, 0x800);
 
 	NewPrepSkillObj(proc);
-	StartParallelFiniteLoop(PrepSkill2_DrawDrawSkillDesc, 0, proc);
+	StartParallelFiniteLoop(PrepSkill2_DrawSkillDesc, 0, proc);
 	StartParallelFiniteLoop(PrepSkill2_DrawRightTopBar, 0, proc);
 	StartParallelFiniteLoop(PrepSkill2_DrawLeftSkillIcon, 0, proc);
 
@@ -312,7 +312,7 @@ STATIC_DECLAR void ProcPrepSkill2_Idle(struct ProcPrepSkill2 *proc)
 				0x30 + 0x10 * proc->hand_y,
 				0x0, 0x800);
 
-		StartParallelFiniteLoop(PrepSkill2_DrawDrawSkillDesc, 0, proc);
+		StartParallelFiniteLoop(PrepSkill2_DrawSkillDesc, 0, proc);
 	}
 }
 
@@ -405,12 +405,18 @@ STATIC_DECLAR void ProcPrepSkill2_MsgWindowIDLE(struct ProcPrepSkill2 *proc)
 
 STATIC_DECLAR void ProcPrepSkill2_AddOnDraw(struct ProcPrepSkill2 *proc)
 {
+	StartParallelFiniteLoop(PrepSkill2_DrawRightTopBar, 0, proc);
+	StartParallelFiniteLoop(PrepSkill2_DrawLeftSkillIcon, 0, proc);
+
 	ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_AddSkill);
 	HideSysHandCursor();
 }
 
 STATIC_DECLAR void ProcPrepSkill2_RemoveOnDraw(struct ProcPrepSkill2 *proc)
 {
+	StartParallelFiniteLoop(PrepSkill2_DrawRightTopBar, 0, proc);
+	StartParallelFiniteLoop(PrepSkill2_DrawLeftSkillIcon, 0, proc);
+
 	ProcPrepSkill2_MsgOnDraw(MSG_PREPSKILL_RemoveSkill);
 	HideSysHandCursor();
 }

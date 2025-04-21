@@ -201,6 +201,7 @@ void PrepSkill2_DrawLeftSkillIcon(struct ProcPrepSkill2 *proc)
 
 	ResetIconGraphics_();
 	TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 1, 6), 0xA, 0x6, 0);
+	TileMap_FillRect(TILEMAP_LOCATED(gBG0TilemapBuffer, 2, 6), 10, 2, 0);
 
 	if (list->amt == 0) {
 		struct Text *text = &gPrepUnitTexts[0x16];
@@ -254,7 +255,7 @@ void PrepSkill2_InitTexts(void)
 }
 
 /* Skill desc */
-void PrepSkill2_DrawDrawSkillDesc(struct ProcPrepSkill2 *proc)
+void PrepSkill2_DrawSkillDesc(struct ProcPrepSkill2 *proc)
 {
 	u16 sid;
 	int i;
