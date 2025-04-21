@@ -3,8 +3,8 @@
 #include "gbafe.h"
 #include <stdint.h>
 
-#include "Configs/configs.h"
-#include "debug-kit.h"
+#include "configs/configs.h"
+#include "kernel/debug-kit.h"
 #include "vanilla.h"
 
 /* Add an identifier so that we can figure out where we hacked inside C */

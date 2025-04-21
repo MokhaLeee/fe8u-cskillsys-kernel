@@ -14,7 +14,7 @@ It is origined from [StanHash/FE-CHAX](https://github.com/StanHash/FE-CHAX) with
 3. More C-Hacks and less ASM-Hacks.
 4. Useful debug kit.
 5. A faster `SkillTester()` design via [SkillList](../Kernel/Wizardry/Core/SkillSys/kernel/SkillList.c).
-6. Better [free-space](../include/Configs/config-memmap.h) and [free-ram-space](../Configs//usr-defined.s) control.
+6. Better [free-space](../include/configs/config-memmap.h) and [free-ram-space](../include/link/config-memmap.s) control.
 7. A [fixed pointer list](../Reloc/Reloc.event) to get data location, which will facilitate collaborative development with FEB.
 8. Better battle-system design and battle-hit is expanded to 20.
 

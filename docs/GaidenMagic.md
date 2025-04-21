@@ -8,7 +8,7 @@ Gaiden magic config lists have been actively adapted for FEB. Now users can dire
 
 # Configs
 
-We have put several config options to increase the freedom for developers. You can change the functionality via the following configs in [configs.h](../include/Configs/configs.h):
+We have put several config options to increase the freedom for developers. You can change the functionality via the following configs in [configs.h](../include/configs/configs.h):
 
 - `USE_GAIDEN_MAGIC`: enables the gaiden magic system.
 - `MUST_BE_MAGIC`: allows none-magic weapons exist in B.Mag list.

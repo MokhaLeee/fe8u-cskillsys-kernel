@@ -16,15 +16,15 @@ LIB_DIR  := $(TOOL_DIR)/FE-CLib-Mokha
 FE8_REF  := $(LIB_DIR)/reference/fireemblem8.ref.o
 FE8_SYM  := $(LIB_DIR)/reference/fireemblem8.sym
 
-CONFIG_DIR := include/Configs
-EXT_REF    := $(CONFIG_DIR)/usr-defined.s
-RAM_REF    := $(CONFIG_DIR)/config-memmap.s
+LINK_DIR := include/link
+EXT_REF  := $(LINK_DIR)/usr-defined.s
+RAM_REF  := $(LINK_DIR)/config-memmap.s
 
 WIZARDRY_DIR := Kernel
 CONTENTS_DIR := Contents
 GAMEDATA_DIR := Data
 
-HACK_DIRS := $(CONFIG_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
+HACK_DIRS := $(LINK_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
 
 SKILLS_ENUM_DIR  := include/constants
 SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills-equip.enum.txt
@@ -124,7 +124,7 @@ CLEAN_FILES += $(FE8_CHX)
 # = Wizardry =
 # ============
 
-INC_DIRS := include $(LIB_DIR)/include
+INC_DIRS := include include/kernel $(LIB_DIR)/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
 
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork

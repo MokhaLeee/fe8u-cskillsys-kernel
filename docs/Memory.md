@@ -1,6 +1,6 @@
 # ROM space
 
-ROM space distribution is configured in [config-memmap.h](../include/Configs/config-memmap.h)
+ROM space distribution is configured in [config-memmap.h](../include/configs/config-memmap.h)
 
 | Address   | Size    | Usage
 | -------   | ------- | -----
@@ -26,10 +26,10 @@ There is a pointer list after the magic pattern, starting at `0xB2A614` with siz
 
 ### c). Text table
 
-TextTable is repointed at the end of data section, [0xBFBBF4](../include/Configs/config-memmap.h#L64) (the tail of none-sec data section) with [size = `0x2000 * sizeof(uintptr_t)`](../Preload/AllocMsgTable.event) free space allocated.
+TextTable is repointed at the end of data section, [0xBFBBF4](../include/configs/config-memmap.h#L64) (the tail of none-sec data section) with [size = `0x2000 * sizeof(uintptr_t)`](../Preload/AllocMsgTable.event) free space allocated.
 
 > [!NOTE]
-> For now, we use the vanilla msg data location to put kernel .text section, so that the kernel can run at in-BL range space. In exchange, the vanilla TextTable and texts' contents have to be recompiled and redirected to the .data section of the kernel. You can use config [`CONFIG_CROP_VANILLA_MSG`](../include/Configs/configs.h#L18) to crop out vanilla story related texts to save space (~470K Bytes).
+> For now, we use the vanilla msg data location to put kernel .text section, so that the kernel can run at in-BL range space. In exchange, the vanilla TextTable and texts' contents have to be recompiled and redirected to the .data section of the kernel. You can use config [`CONFIG_CROP_VANILLA_MSG`](../include/configs/configs.h#L18) to crop out vanilla story related texts to save space (~470K Bytes).
 
 ## Font space
 
@@ -37,7 +37,7 @@ Free space at `0x0EFB2E0` is used to insert font data for further multi-language
 
 # RAM space
 
-RAM space distribution is configured in [config-memmap.s](../include/Configs/config-memmap.s)
+RAM space distribution is configured in [config-memmap.s](../include/link/config-memmap.s)
 
 | Address    | Size    | Usage
 | -------    | ------  | -----
@@ -66,7 +66,7 @@ Here is an example to allocate RAM space in the kernel:
 
 Suppose you want a 4 Byte RAM space (`u8 NewAlloc4Bytes[4]`)
 
-1. Get into[config-memmap.s](../include/Configs/config-memmap.s)
+1. Get into[config-memmap.s](../include/link/config-memmap.s)
 2. Insert new allocation
 
 ```

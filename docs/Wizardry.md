@@ -17,9 +17,9 @@ After you have done, dirctly put the ***\<\*.lyn.event\>*** file to your buildfi
 
 ## Debugging
 
-For developers, it is recommanded to uncommend `CONFIG_USE_DEBUG` in [config-debug.h](../include/Configs/config-debug.h#L5). This operation may enable debug system, and make kernel print log to tty debug window on emulator.
+For developers, it is recommanded to uncommend `CONFIG_USE_DEBUG` in [config-debug.h](../include/configs/config-debug.h#L5). This operation may enable debug system, and make kernel print log to tty debug window on emulator.
 
-Once enabled, you may use non-standard kernel stdio functions defined in [debug-kit.h](../include/debug-kit.h) (which is included in [common-chax.h](../include/common-chax.h#L7)), such as `Print()`, `Printf()`, `Assert()` to insert debug hooks in your own functions.
+Once enabled, you may use non-standard kernel stdio functions defined in [debug-kit.h](../include/kernel/debug-kit.h) (which is included in [common-chax.h](../include/common-chax.h#L7)), such as `Print()`, `Printf()`, `Assert()` to insert debug hooks in your own functions.
 
 ## BL range
 Now, the kernel allows programs to run simultaneously in both the in-BL range space and other spaces. Functions within the in-BL range can directly use the `BL` instruction, which creates differences in the way these functions are compiled.
