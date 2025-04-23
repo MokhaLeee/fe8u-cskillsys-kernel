@@ -81,5 +81,9 @@ _thumb(pr_GaidenWMagActionCommandEffect)    jumpToHack(GaidenWMagActionCommandEf
 _thumb(pr_GaidenWMagActionCommandHover)     jumpToHack(GaidenWMagActionCommandHover)
 _thumb(pr_UpperMenuSkill_Usability)         jumpToHack(UpperMenuSkill_Usability)
 _thumb(pr_UpperMenuSkill_OnSelected)        jumpToHack(UpperMenuSkill_OnSelected)
+_thumb(pr_AttackCommandUsabilityFix) jumpToHack(AttackCommandUsabilityFix)
+_thumb(pr_AttackBallistaCommandUsabilityFix) jumpToHack(AttackBallistaCommandUsabilityFix)
+_thumb(pr_AttackActionCommandHoverFix) jumpToHack(AttackActionCommandHoverFix)
+_thumb(pr_AttackActionCommandUnhoverFix) jumpToHack(AttackActionCommandUnhoverFix)
 
 KERNEL_RELOC_END:

@@ -22,11 +22,15 @@ u8 pr_GaidenWMagActionCommandEffect(struct MenuProc *menu, struct MenuItemProc *
 int pr_GaidenWMagActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 u8 pr_UpperMenuSkill_Usability(const struct MenuItemDef *self, int number);
 u8 pr_UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+u8 pr_AttackCommandUsabilityFix(const struct MenuItemDef *def, int number);
+u8 pr_AttackBallistaCommandUsabilityFix(const struct MenuItemDef *def, int number);
+int pr_AttackActionCommandHoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_AttackActionCommandUnhoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem);
 
 const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 	{"　制圧", 0x67A, 0x6CC, 0, 0x4E, UnitActionMenu_CanSeize, 0, UnitActionMenu_Seize, 0, 0, 0}, // Seize
-	{"　攻撃", 0x67B, 0x6C0, 0, 0x4F, AttackCommandUsabilityFix, 0, UnitActionMenu_Attack, 0, AttackActionCommandHoverFix, AttackActionCommandUnhoverFix}, // Attack >
-	{"　攻撃", 0x67B, 0x6C0, 0, 0x50, AttackBallistaCommandUsabilityFix, 0, UnitActionMenu_Attack, 0, AttackActionCommandHoverFix, AttackActionCommandUnhoverFix}, // Attack w/Ballista >
+	{"　攻撃", 0x67B, 0x6C0, 0, 0x4F, pr_AttackCommandUsabilityFix, 0, UnitActionMenu_Attack, 0, pr_AttackActionCommandHoverFix, pr_AttackActionCommandUnhoverFix}, // Attack >
+	{"　攻撃", 0x67B, 0x6C0, 0, 0x50, pr_AttackBallistaCommandUsabilityFix, 0, UnitActionMenu_Attack, 0, pr_AttackActionCommandHoverFix, pr_AttackActionCommandUnhoverFix}, // Attack w/Ballista >
 
 	/* Combat Art */
 	{
