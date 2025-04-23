@@ -86,4 +86,7 @@ _thumb(pr_AttackBallistaCommandUsabilityFix) jumpToHack(AttackBallistaCommandUsa
 _thumb(pr_AttackActionCommandHoverFix) jumpToHack(AttackActionCommandHoverFix)
 _thumb(pr_AttackActionCommandUnhoverFix) jumpToHack(AttackActionCommandUnhoverFix)
 
+gpAutoNarrowFontConf: POIN AutoNarrowFontConf
+gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
+
 KERNEL_RELOC_END:

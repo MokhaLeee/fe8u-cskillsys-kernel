@@ -138,10 +138,10 @@ gpJobGrowthList: POIN gJobGrowthList
 
 gpEfxSkillVanilla: POIN EfxSkillVanilla
 gpEfxSkillCombat:  POIN EfxSkillCombat
-WORD 0
 
-gpAutoNarrowFontConf: POIN AutoNarrowFontConf
-gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
+WORD 0
+WORD 0
+WORD 0
 
 gpAnimScr_AnimNumber: POIN AnimScr_AnimNumber
 
