@@ -81,10 +81,17 @@ _thumb(pr_GaidenWMagActionCommandEffect)    jumpToHack(GaidenWMagActionCommandEf
 _thumb(pr_GaidenWMagActionCommandHover)     jumpToHack(GaidenWMagActionCommandHover)
 _thumb(pr_UpperMenuSkill_Usability)         jumpToHack(UpperMenuSkill_Usability)
 _thumb(pr_UpperMenuSkill_OnSelected)        jumpToHack(UpperMenuSkill_OnSelected)
+
 _thumb(pr_AttackCommandUsabilityFix) jumpToHack(AttackCommandUsabilityFix)
 _thumb(pr_AttackBallistaCommandUsabilityFix) jumpToHack(AttackBallistaCommandUsabilityFix)
 _thumb(pr_AttackActionCommandHoverFix) jumpToHack(AttackActionCommandHoverFix)
 _thumb(pr_AttackActionCommandUnhoverFix) jumpToHack(AttackActionCommandUnhoverFix)
+
+_thumb(pr_PutUnitDanceRingBuffIcon) jumpToHack(PutUnitDanceRingBuffIcon)
+_thumb(pr_PutUnitPoisonDebuffOAM) jumpToHack(PutUnitPoisonDebuffOAM)
+_thumb(pr_PutUnitSleepDebuffOAM) jumpToHack(PutUnitSleepDebuffOAM)
+_thumb(pr_PutUnitBerserkDebuffOAM) jumpToHack(PutUnitBerserkDebuffOAM)
+_thumb(pr_PutUnitSilenceDebuffOAM) jumpToHack(PutUnitSilenceDebuffOAM)
 
 gpAutoNarrowFontConf: POIN AutoNarrowFontConf
 gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode

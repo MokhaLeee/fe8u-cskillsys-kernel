@@ -16,7 +16,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Posion,
 		.efx_config = {EFX_DEBUFF_NORMAL, 0x10, 0, 0x10},
-		.on_draw = PutUnitPoisonDebuffOAM,
+		.on_draw = pr_PutUnitPoisonDebuffOAM,
 	},
 	[UNIT_STATUS_SLEEP] = {
 		.name = MSG_0515,
@@ -26,7 +26,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Sleep,
 		.efx_config = {EFX_DEBUFF_NORMAL, 0, 0, 0x10},
-		.on_draw = PutUnitSleepDebuffOAM,
+		.on_draw = pr_PutUnitSleepDebuffOAM,
 	},
 	[UNIT_STATUS_SILENCED] = {
 		.name = MSG_0516,
@@ -35,7 +35,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.tick_type = STATUS_DEBUFF_TICK_ON_ENEMY,
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Silence,
-		.on_draw = PutUnitSilenceDebuffOAM,
+		.on_draw = pr_PutUnitSilenceDebuffOAM,
 	},
 	[UNIT_STATUS_BERSERK] = {
 		.name = MSG_0517,
@@ -45,7 +45,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.img = GFX_DebuffMinibox_Berserk,
 		.efx_config = {EFX_DEBUFF_NORMAL, 0x10, 0, 0},
-		.on_draw = PutUnitBerserkDebuffOAM,
+		.on_draw = pr_PutUnitBerserkDebuffOAM,
 	},
 	[UNIT_STATUS_ATTACK] = {
 		.name = MSG_051B,
@@ -55,7 +55,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.battle_status.atk = 10,
 		.img = GFX_DebuffMinibox_Attack,
-		.on_draw = PutUnitDanceRingBuffIcon,
+		.on_draw = pr_PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_DEFENSE] = {
 		.name = MSG_051C,
@@ -65,7 +65,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.battle_status.def = 3,
 		.img = GFX_DebuffMinibox_Defense,
-		.on_draw = PutUnitDanceRingBuffIcon,
+		.on_draw = pr_PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_CRIT] = {
 		.name = MSG_051D,
@@ -75,7 +75,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.battle_status.crit = 15,
 		.img = GFX_DebuffMinibox_Crit,
-		.on_draw = PutUnitDanceRingBuffIcon,
+		.on_draw = pr_PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_AVOID] = {
 		.name = MSG_51E,
@@ -85,7 +85,7 @@ const struct DebuffInfo gDebuffInfos[NEW_UNIT_STATUS_MAX] = {
 		.duration = 3,
 		.battle_status.avo = 15,
 		.img = GFX_DebuffMinibox_Aviod,
-		.on_draw = PutUnitDanceRingBuffIcon,
+		.on_draw = pr_PutUnitDanceRingBuffIcon,
 	},
 	[UNIT_STATUS_SICK] = {
 		.name = MSG_0518,

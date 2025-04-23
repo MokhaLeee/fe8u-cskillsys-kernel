@@ -99,6 +99,12 @@ void PutUnitSleepDebuffOAM(struct Unit *unit, int x, int y);
 void PutUnitBerserkDebuffOAM(struct Unit *unit, int x, int y);
 void PutUnitSilenceDebuffOAM(struct Unit *unit, int x, int y);
 
+void pr_PutUnitDanceRingBuffIcon(struct Unit *unit, int ix, int iy);
+void pr_PutUnitPoisonDebuffOAM(struct Unit *unit, int x, int y);
+void pr_PutUnitSleepDebuffOAM(struct Unit *unit, int x, int y);
+void pr_PutUnitBerserkDebuffOAM(struct Unit *unit, int x, int y);
+void pr_PutUnitSilenceDebuffOAM(struct Unit *unit, int x, int y);
+
 void PreBattleCalcDebuffs(struct BattleUnit *attacker, struct BattleUnit *defender);
 int PowGetterDebuff(int status, struct Unit *unit);
 int MagGetterDebuff(int status, struct Unit *unit);

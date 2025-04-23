@@ -8,9 +8,9 @@ def main(args):
 
         # Fasten debug
         if line.find("GFX_CombatArtIcon") != -1:
-             continue
+            continue
         elif line.find("GFX_SkillIcon") != -1:
-             continue
+            continue
         elif line.find("CompressedText") != -1:
             continue
         elif line.find(" unit_icon_move_") != -1:
