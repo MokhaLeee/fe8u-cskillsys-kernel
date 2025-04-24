@@ -37,3 +37,7 @@ gClearUnitHooks: // void (*)(struct Unit *unit)
 gKillUnitHooks: // void (*)(struct Unit *unit)
     POIN FlushUnitSkillDbgList
     WORD 0 0 0 0
+
+gUnitRefrainHooks: // void (*)(struct Unit *unit)
+    POIN DemoUnitExpa_OnRefrain
+    WORD 0 0 0 0

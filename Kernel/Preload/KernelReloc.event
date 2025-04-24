@@ -96,4 +96,6 @@ _thumb(pr_PutUnitSilenceDebuffOAM) jumpToHack(PutUnitSilenceDebuffOAM)
 gpAutoNarrowFontConf: POIN AutoNarrowFontConf
 gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
 
+gpUnitRefrainHooks: POIN gUnitRefrainHooks
+
 KERNEL_RELOC_END:

@@ -18,6 +18,9 @@
 /* UnitKill */
 #include "Source/UnitKill.lyn.event"
 
+/* UnitRefrain */
+#include "Source/UnitRefrain.lyn.event"
+
 // #include "data.event"
 
 #endif

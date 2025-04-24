@@ -106,6 +106,13 @@ void DemoUnitExpa_OnLoadUnit(struct Unit *unit)
 	 */
 }
 
+void DemoUnitExpa_OnRefrain(struct Unit *unit)
+{
+	/**
+	 * External hooks
+	 */
+}
+
 void DemoUnitExpa_OnCopyUnit(struct Unit *from, struct Unit *to)
 {
 	memcpy(
