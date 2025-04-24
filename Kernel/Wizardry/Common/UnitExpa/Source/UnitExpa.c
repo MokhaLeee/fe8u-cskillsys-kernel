@@ -90,8 +90,6 @@ void DemoUnitExpa_OnClearUnit(struct Unit *unit)
 
 void DemoUnitExpa_OnChapterInit(void)
 {
-	ResetDemoUnitExpa();
-
 	/**
 	 * External hooks
 	 */
