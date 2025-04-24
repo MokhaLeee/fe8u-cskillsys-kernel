@@ -76,11 +76,6 @@ ALIGN 4
     #include "Misc/ConvoyExpa/ConvoyExpa.event"
 #endif
 
-#ifdef CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
-    #include "Misc/AutoluOpt/AutoluOpt.event"
-#endif
-
 #ifdef CONFIG_NO_SUS_IN_AI_PHASE
     #include "Misc/PhaseSuspend/PhaseSuspend.event"
 #endif
-

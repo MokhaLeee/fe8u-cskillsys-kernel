@@ -61,12 +61,6 @@
 #define CONFIG_FASTER_MAP_RANGE
 
 /**
- * Hook on function: LoadUnit() to
- * optimize performance to avoid minor hitches when loading unit
- */
-#define CONFIG_OPTIMIZE_UNIT_AUTOLEVEL
-
-/**
  * Try narrow font on skill-name/skill-desc/menu-disp
  */
 #define CONFIG_AUTO_NARROW_FONT
