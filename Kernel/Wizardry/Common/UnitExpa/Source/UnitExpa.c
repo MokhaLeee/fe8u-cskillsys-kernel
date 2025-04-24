@@ -88,6 +88,15 @@ void DemoUnitExpa_OnClearUnit(struct Unit *unit)
 	memset(expa, 0, sizeof(struct DemoUnitExpa));
 }
 
+void DemoUnitExpa_OnChapterInit(void)
+{
+	ResetDemoUnitExpa();
+
+	/**
+	 * External hooks
+	 */
+}
+
 void DemoUnitExpa_OnLoadUnit(struct Unit *unit)
 {
 	struct DemoUnitExpa *expa = GetDemoUnitExpa(unit);
