@@ -108,5 +108,6 @@ ALIGN 4
 gNewSaveHooks:
     POIN NewGameSaveGenericHook ClearKtutorialFlags ResetUnitLearnedSkillLists
     POIN NewGame_InitPlayStExpa
+    POIN StatDeuff_OnNewGameInit
     POIN ResetStatDeuffBuf ResetSkillDbgList
     WORD 0 0 0 0
