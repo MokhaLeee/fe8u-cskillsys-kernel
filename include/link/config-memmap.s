@@ -84,7 +84,11 @@ _kernel_malloc sStatDebuffMsgBufNext, 1
 _kernel_malloc gKonamiComboStep, 1
 _kernel_malloc sEfxResireEfxIndexCacheMagic, 1
 _kernel_malloc sEfxResireEfxIndexCacheData, 1
-_kernel_malloc gSkillDbgList, 32 * 4
+_kernel_malloc gSkillDbgList, 20 * 4
+_kernel_malloc sDemoUnitExpaAlly, 51 * 4
+_kernel_malloc sDemoUnitExpaEnemy, 51 * 4
+_kernel_malloc sDemoUnitExpaNpc, 8 * 4
+_kernel_malloc sDemoUnitExpaBattle, 2 * 4
 
 // _kernel_malloc _kernel_malloc_align4_pad, 0
 

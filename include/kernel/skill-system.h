@@ -262,7 +262,7 @@ struct SkillDbgListEnt {
 	u16 sid;
 };
 
-enum { SKILL_DBG_LIST_LEN = 32 };
+enum { SKILL_DBG_LIST_LEN = 20 };
 extern EWRAM_DATA struct SkillDbgListEnt gSkillDbgList[SKILL_DBG_LIST_LEN];
 
 void ResetSkillDbgList(void);

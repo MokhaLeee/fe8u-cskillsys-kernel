@@ -5,10 +5,10 @@
     Mokha's plan:
     SAVE NAME       SAVE OFFSET     SAVE LENGTH
     meta            0x00            0xD4
-    suspend         0xD4            0x3000
-    save1           0x30D4          0x19B0
-    save2           0x4A84          0x19B0
-    save3           0x6434          0x19B0
+    suspend         0xD4            0x3150
+    save1           0x3224          0x1940
+    save2           0x4B64          0x1940
+    save3           0x64A4          0x1940
     magic           0x7DE4          0x0008
     link_arena      ------          0x0
     extra_map       ------          0x0

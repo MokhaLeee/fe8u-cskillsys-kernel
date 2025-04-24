@@ -33,3 +33,19 @@ void ClearBitUES(struct Unit *unit, int bit);
 bool CheckBitUES(struct Unit *unit, int bit);
 
 void ResetUnitsExpaSus(void);
+
+/**
+ * Demo unit expa
+ */
+struct DemoUnitExpa {
+	u8 _pad_[4];
+};
+
+extern struct DemoUnitExpa sDemoUnitExpaAlly[CONFIG_UNIT_AMT_ALLY];
+extern struct DemoUnitExpa sDemoUnitExpaEnemy[CONFIG_UNIT_AMT_ENEMY + 1];
+extern struct DemoUnitExpa sDemoUnitExpaNpc[CONFIG_UNIT_AMT_NPC];
+extern struct DemoUnitExpa sDemoUnitExpaBattle[2];
+extern struct DemoUnitExpa *const sDemoUnitExpaPool[0x100];
+extern struct DemoUnitExpa *const *const gpDemoUnitExpaPool;
+
+struct DemoUnitExpa *GetDemoUnitExpa(struct Unit *unit);

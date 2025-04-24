@@ -5,10 +5,12 @@ gLoadUnitHooks:
     POIN UnitHiddenLevelPreLoad /* this should be ahead of auto-load skill */
     POIN UnitAutoLoadSkills
     POIN StatDeuff_OnLoadUnit
+    POIN DemoUnitExpa_OnLoadUnit
     WORD 0 0 0 0
 
 gExternalBattleToUnitHook: // int (*)(struct BattleUnit *bu, struct Unit *unit);
     POIN BattleToUnit_ResetShieldInfo
+    POIN DemoUnitExpa_OnBattleToUnit
     WORD 0 0 0 0
 
 gExternalUnitToBattleHook: // int (*)(struct Unit *unit, struct BattleUnit *bu);
@@ -19,14 +21,17 @@ gExternalUnitToBattleHook: // int (*)(struct Unit *unit, struct BattleUnit *bu);
     // others
     POIN UnitToBattle_SetShieldInfo
     POIN StatDebuff_OnUnitToBattle
+    POIN DemoUnitExpa_OnUnitToBattle
     WORD 0 0 0 0
 
 gCopyUnitHooks: // void (*)(struct Unit *from, struct Unit *to)
     POIN StatDeuff_OnCopyUnit
+    POIN DemoUnitExpa_OnCopyUnit
     WORD 0 0 0 0
 
 gClearUnitHooks: // void (*)(struct Unit *unit)
     POIN StatDeuff_OnClearUnit
+    POIN DemoUnitExpa_OnClearUnit
     WORD 0 0 0 0
 
 gKillUnitHooks: // void (*)(struct Unit *unit)
