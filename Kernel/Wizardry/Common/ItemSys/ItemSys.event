@@ -8,6 +8,7 @@
 
 #include "ItemInfoRemap/ItemInfoRemap.event"
 #include "IERevamp/IERevamp.event"
+#include "SpellAssoc/SpellAssoc.event"
 
 /* int (*)(int old, struct Unit *actor, struct Unit *target); */
 ALIGN 4

@@ -17,6 +17,7 @@ KERNEL_DATA_START:
 #include "Common/PrePhaseHook/data.event"
 #include "Common/SaveData/data.event"
 #include "Common/UnitHooks/data.event"
+#include "Common/ItemSys/ItemSysData.event"
 #include "Core/BattleSys/data.event"
 #include "Core/MapTask/data.event"
 #include "Core/DebuffRework/data.event"

@@ -1,0 +1,7 @@
+#include "ExtSpellAssoc/LynJump.event"
+#include "ExtSpellAssoc/ExtSpellAssoc.lyn.event"
+
+PUSH
+    ORG 0x078240
+    pr_SpellAssocData:
+POP
