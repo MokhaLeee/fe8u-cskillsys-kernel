@@ -47,7 +47,7 @@ struct SpellAssoc *GetSpellAssocStructPtr(u16 item)
 	struct SpellAssoc *ret;
 
 	ret = GetSpellAssocStructPtrExt(item);
-	if (ret)
+	if (ret && ret->item != 0xFFFF)
 		return ret;
 
 	return GetSpellAssocStructPtrVanilla(item);
