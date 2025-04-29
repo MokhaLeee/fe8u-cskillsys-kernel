@@ -10,38 +10,6 @@ STATIC_DECLAR NOINLINE void ApplyUnitPromotionVanilla(struct Unit *unit, u8 clas
 
 	int i;
 
-	// Apply stat ups
-
-	unit->maxHP += promotedClass->promotionHp;
-
-	if (unit->maxHP > promotedClass->maxHP)
-		unit->maxHP = promotedClass->maxHP;
-
-	unit->pow += promotedClass->promotionPow;
-
-	if (unit->pow > promotedClass->maxPow)
-		unit->pow = promotedClass->maxPow;
-
-	unit->skl += promotedClass->promotionSkl;
-
-	if (unit->skl > promotedClass->maxSkl)
-		unit->skl = promotedClass->maxSkl;
-
-	unit->spd += promotedClass->promotionSpd;
-
-	if (unit->spd > promotedClass->maxSpd)
-		unit->spd = promotedClass->maxSpd;
-
-	unit->def += promotedClass->promotionDef;
-
-	if (unit->def > promotedClass->maxDef)
-		unit->def = promotedClass->maxDef;
-
-	unit->res += promotedClass->promotionRes;
-
-	if (unit->res > promotedClass->maxRes)
-		unit->res = promotedClass->maxRes;
-
 	// Remove base class' base wexp from unit wexp
 	for (i = 0; i < 8; ++i)
 		unit->ranks[i] -= unit->pClassData->baseRanks[i];
@@ -60,6 +28,36 @@ STATIC_DECLAR NOINLINE void ApplyUnitPromotionVanilla(struct Unit *unit, u8 clas
 
 		unit->ranks[i] = wexp;
 	}
+
+	// Apply stat ups
+
+	unit->maxHP += promotedClass->promotionHp;
+	unit->pow += promotedClass->promotionPow;
+	unit->skl += promotedClass->promotionSkl;
+	unit->spd += promotedClass->promotionSpd;
+	unit->def += promotedClass->promotionDef;
+	unit->res += promotedClass->promotionRes;
+
+	if (unit->maxHP > GetUnitMaxStatusHp(unit))
+		unit->maxHP = GetUnitMaxStatusHp(unit);
+
+	if (unit->pow > GetUnitMaxStatusPow(unit))
+		unit->pow = GetUnitMaxStatusPow(unit);
+
+	if (unit->skl > GetUnitMaxStatusSkl(unit))
+		unit->skl = GetUnitMaxStatusSkl(unit);
+
+	if (unit->spd > GetUnitMaxStatusSpd(unit))
+		unit->spd = GetUnitMaxStatusSpd(unit);
+
+	if (unit->def > GetUnitMaxStatusDef(unit))
+		unit->def = GetUnitMaxStatusDef(unit);
+
+	if (unit->res > GetUnitMaxStatusRes(unit))
+		unit->res = GetUnitMaxStatusRes(unit);
+
+	if (unit->lck > GetUnitMaxStatusLck(unit))
+		unit->lck = GetUnitMaxStatusLck(unit);
 
 	unit->level = 1;
 	unit->exp   = 0;
