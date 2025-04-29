@@ -48,7 +48,7 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *at
 
 #if (defined(SID_HeavyBladePlus) && (COMMON_SKILL_VALID(SID_HeavyBladePlus)))
 		if (BattleFastSkillTester(attacker, SID_HeavyBladePlus))
-			attacker->battleCritRate += SKILL_EFF0(SID_HeavyBladePlus);
+			attacker->battleCritRate += SKILL_EFF1(SID_HeavyBladePlus);
 #endif
 	}
 
