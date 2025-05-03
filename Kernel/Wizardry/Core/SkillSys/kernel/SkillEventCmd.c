@@ -78,7 +78,6 @@ STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc *proc)
 
 	u16 sid = argv[1];
 	u8 pid = gEventSlots[0xC];
-	struct Unit *unit = GetUnitFromCharId(pid);
 
 	if (argc < 2) {
 		Errorf("Event format error at %p", proc->pEventCurrent);
