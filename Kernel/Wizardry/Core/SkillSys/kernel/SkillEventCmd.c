@@ -11,17 +11,22 @@ STATIC_DECLAR u8 EventAddSkill(struct EventEngineProc *proc)
 	const u16 *argv = proc->pEventCurrent;
 	u16 sid = argv[1];
 	u8 pid = argv[2];
-	struct Unit *unit = GetUnitFromCharId(pid);
 
-	LTRACEF("sid %#x, pid %#x, unit %p", sid, pid, unit);
+	LTRACEF("sid %#x, pid %#x", sid, pid);
 
 	if (argc < 3) {
 		Errorf("No enough argument at %p", proc->pEventCurrent);
 		hang();
 	}
 
-	if (UNIT_IS_VALID(unit) && EQUIPE_SKILL_VALID(sid))
-		AddSkill(unit, sid);
+	if (EQUIPE_SKILL_VALID(sid)) {
+		FOR_UNITS_ONMAP_ALL(unit, {
+			if (UNIT_CHAR_ID(unit) != pid)
+				continue;
+
+			AddSkill(unit, sid);
+		})
+	}
 
 	return EVC_ADVANCE_CONTINUE;
 }
@@ -80,8 +85,14 @@ STATIC_DECLAR u8 EventAddSkillBySlotC(struct EventEngineProc *proc)
 		hang();
 	}
 
-	if (UNIT_IS_VALID(unit) && EQUIPE_SKILL_VALID(sid))
-		AddSkill(unit, sid);
+	if (EQUIPE_SKILL_VALID(sid)) {
+		FOR_UNITS_ONMAP_ALL(unit, {
+			if (UNIT_CHAR_ID(unit) != pid)
+				continue;
+
+			AddSkill(unit, sid);
+		})
+	}
 
 	return EVC_ADVANCE_CONTINUE;
 }
@@ -93,16 +104,20 @@ STATIC_DECLAR u8 EventRemoveSkill(struct EventEngineProc *proc)
 
 	u16 sid = argv[1];
 	u8 pid = argv[2];
-	struct Unit *unit = GetUnitFromCharId(pid);
 
 	if (argc < 3) {
 		Errorf("No enough argument at %p", proc->pEventCurrent);
 		hang();
 	}
 
-	if (UNIT_IS_VALID(unit) && EQUIPE_SKILL_VALID(sid)) {
-		ForgetSkill(unit, sid);
-		RemoveSkill(unit, sid);
+	if (EQUIPE_SKILL_VALID(sid)) {
+		FOR_UNITS_ONMAP_ALL(unit, {
+			if (UNIT_CHAR_ID(unit) != pid)
+				continue;
+
+			ForgetSkill(unit, sid);
+			RemoveSkill(unit, sid);
+		})
 	}
 	return EVC_ADVANCE_CONTINUE;
 }
@@ -157,16 +172,20 @@ STATIC_DECLAR u8 EventRemoveSkillBySlotC(struct EventEngineProc *proc)
 	const u16 *argv = proc->pEventCurrent;
 	u16 sid = argv[1];
 	u8 pid = gEventSlots[0xC];
-	struct Unit *unit = GetUnitFromCharId(pid);
 
 	if (argc < 2) {
 		Errorf("Event format error at %p", proc->pEventCurrent);
 		hang();
 	}
 
-	if (UNIT_IS_VALID(unit) && EQUIPE_SKILL_VALID(sid)) {
-		ForgetSkill(unit, sid);
-		RemoveSkill(unit, sid);
+	if (EQUIPE_SKILL_VALID(sid)) {
+		FOR_UNITS_ONMAP_ALL(unit, {
+			if (UNIT_CHAR_ID(unit) != pid)
+				continue;
+
+			ForgetSkill(unit, sid);
+			RemoveSkill(unit, sid);
+		})
 	}
 
 	return EVC_ADVANCE_CONTINUE;
