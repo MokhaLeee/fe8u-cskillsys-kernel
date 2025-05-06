@@ -26,8 +26,8 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 	},
 
 	[CLASS_PALADIN] = {
-#if (defined(SID_HoneCavalry) && COMMON_SKILL_VALID(SID_HoneCavalry))
-		SID_HoneCavalry,
+#if (defined(SID_Wrath) && COMMON_SKILL_VALID(SID_Wrath))
+		SID_Wrath,
 #endif
 
 #if (defined(SID_COMBAT_Gamble) && COMMON_SKILL_VALID(SID_COMBAT_Gamble))

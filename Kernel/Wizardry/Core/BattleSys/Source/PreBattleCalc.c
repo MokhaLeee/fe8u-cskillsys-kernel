@@ -759,7 +759,7 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if (defined(SID_Wrath) && (COMMON_SKILL_VALID(SID_Wrath)))
 		case SID_Wrath:
-			if (attacker->hpInitial > (attacker->unit.curHP * 2))
+			if (attacker->unit.maxHP > (attacker->unit.curHP * 2))
 				attacker->battleCritRate += SKILL_EFF0(SID_Wrath);
 
 			break;
