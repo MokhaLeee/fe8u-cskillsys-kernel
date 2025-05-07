@@ -145,6 +145,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 		.items = {
 			ITEM_LANCE_IRON,
 			ITEM_LANCE_REGINLEIF,
+			ITEM_LANCE_AXEREAVER,
 			ITEM_SOLARBRACE,
 		},
 	},

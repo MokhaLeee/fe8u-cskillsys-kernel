@@ -48,6 +48,27 @@ struct WeaponTriangleItemConf {
 extern const struct WeaponTriangleItemConf gWeaponTriangleItemConf[0x100];
 extern struct WeaponTriangleItemConf const *const gpWeaponTriangleItemConf;
 
+enum WTA_handler_ret {
+	WTA_HANDLER_NOT_HANDLED,
+	WTA_HANDLER_SKILL,
+	WTA_HANDLER_CHAX_WEAPON,
+	WTA_HANDLER_VANILLA
+};
+
+struct WtaStatus {
+	bool invert_eff;
+	bool amplifier_eff;
+
+	struct {
+		bool poise_eff;
+		s16 atk, def, hit, avo, crt, sil;
+	} bonus, minus;
+};
+
+extern struct WtaStatus gWtaStatus_act, gWtaStatus_tar;
+
+void ResetWtaStatus(void);
+
 /* Battle hit expansion */
 #define NEW_BATTLE_HIT_MAX 0x20 /* This should align to gAnimRoundData */
 extern struct BattleHit gBattleHitArrayRe[NEW_BATTLE_HIT_MAX];

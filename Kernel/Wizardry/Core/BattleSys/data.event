@@ -27,6 +27,7 @@ PreBattleGenerateFuncs:
     POIN ClearBattleGlobalFlags
     POIN PreBattleGenerate_LightAndDark
     POIN PreBattleGenerate_TrigCombartKTut
+    POIN PreBattleGenerate_SetupWtaStatus
 
     POIN KernelPad1 KernelPad1 KernelPad1 KernelPad1
     WORD 0
