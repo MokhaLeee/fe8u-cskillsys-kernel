@@ -66,7 +66,7 @@ STATIC_DECLAR bool WtaHandler_Vanilla(struct BattleUnit *attacker, struct Battle
 {
 	const struct WeaponTriangleRule *it;
 
-	for (it = sWeaponTriangleRules; it->attackerWeaponType >= 0; ++it) {
+	for (it = pr_WeaponTriangleRules; it->attackerWeaponType >= 0; ++it) {
 		if ((attacker->weaponType == it->attackerWeaponType) && (defender->weaponType == it->defenderWeaponType)) {
 			if (it->atkBonus > 0) {
 				status->bonus.atk += it->atkBonus * 2;

@@ -14,6 +14,8 @@ extern struct BattleStatus BattleSysBattleStatusBackup[2];
 #define BattleUnitOriginalStatus(bu) (((bu) == &gBattleTarget) ? &BattleSysBattleStatusBackup[1] : &BattleSysBattleStatusBackup[0])
 
 /* WTA bonus */
+extern struct WeaponTriangleRule const *const pr_WeaponTriangleRules;
+
 struct WeaponTriangleConf {
 	s8 wtype_a;
 	s8 wtype_b;
@@ -47,13 +49,6 @@ struct WeaponTriangleItemConf {
 
 extern const struct WeaponTriangleItemConf gWeaponTriangleItemConf[0x100];
 extern struct WeaponTriangleItemConf const *const gpWeaponTriangleItemConf;
-
-enum WTA_handler_ret {
-	WTA_HANDLER_NOT_HANDLED,
-	WTA_HANDLER_SKILL,
-	WTA_HANDLER_CHAX_WEAPON,
-	WTA_HANDLER_VANILLA
-};
 
 struct WtaStatus {
 	bool invert_eff;

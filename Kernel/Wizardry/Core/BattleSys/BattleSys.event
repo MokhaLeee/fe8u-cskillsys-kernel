@@ -44,6 +44,9 @@ PUSH
 
     ORG $2C7C0 // BattleApplyWeaponTriangleEffect
     jumpToHack(_BattleApplyWeaponTriangleEffect)
+
+    ORG $2C7CC
+    pr_WeaponTriangleRules:
 POP
 
 #endif
