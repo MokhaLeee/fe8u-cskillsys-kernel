@@ -75,22 +75,22 @@ extern u8 GenericBufferUsedFlag;
 
 #define WARN_GENERIC_BUF_USED \
 do { \
+	if (CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER) { \
+		Assert(GenericBufferUsedFlag == 0); \
+	} \
 	GenericBufferUsedFlag = 1; \
 	if (CONFIG_DEBUG_ON_USING_GENERIC_BUFFER) { \
 		Warn("Generic buffer used"); \
-	} \
-	if (CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER) { \
-		Assert(GenericBufferUsedFlag == 0); \
 	} \
 } while (0)
 
 #define WARN_GENERIC_BUF_RELEASED \
 do { \
+	if (CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER) { \
+		Assert(GenericBufferUsedFlag == 1); \
+	} \
 	GenericBufferUsedFlag = 0; \
 	if (CONFIG_DEBUG_ON_USING_GENERIC_BUFFER) { \
 		Warn("Generic buffer released"); \
-	} \
-	if (CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER) { \
-		Assert(GenericBufferUsedFlag == 1); \
 	} \
 } while (0)
