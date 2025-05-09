@@ -26,5 +26,6 @@
 
 // Show warnning log when using generic buffer
 #define CONFIG_DEBUG_ON_USING_GENERIC_BUFFER 1
+#define CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER 1
 
 #endif /* CONFIG_DEBUG_H */

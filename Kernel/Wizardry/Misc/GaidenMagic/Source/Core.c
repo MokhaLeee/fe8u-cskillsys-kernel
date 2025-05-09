@@ -41,9 +41,7 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 	const struct GaidenPinfoConfigEnt *conf1 = GetGaidenPinfoConfigList()[UNIT_CHAR_ID(unit)].ent;
 	const struct GaidenChaxConfigEnt  *conf2 = gpGaidenChaxConfigs;
 
-	u8 *tmpbuf = gGenericBuffer;
-
-	WARN_GENERIC_BUF_USED;
+	u8 tmpbuf[0x100];
 
 	CpuFastFill16(0, tmpbuf, 0x100);
 
@@ -101,7 +99,6 @@ void UpdateGaidenMagicList(struct Unit *unit, struct GaidenMagicList *list)
 			list->wmags[list->wmag_cnt++] = i;
 	}
 
-	WARN_GENERIC_BUF_RELEASED;
 	WriteUnitList(unit, &list->header);
 }
 
