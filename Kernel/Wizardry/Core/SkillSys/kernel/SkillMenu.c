@@ -138,12 +138,15 @@ STATIC_DECLAR void GenerateUnitMenuSkillList(struct Unit *unit)
 	cnt = 0;
 	for (i = 0; i < list->amt; i++) {
 		u16 sid;
+		const struct MenuItemDef *def;
 
 		if (cnt > UNIT_MENU_SKILL_AMOUNT)
 			break;
 
 		sid = list->sid[i];
-		if (GetSkillMenuInfo(sid)->isAvailable)
+		def = GetSkillMenuInfo(sid);
+
+		if (COMMON_SKILL_VALID(sid) && def && def->isAvailable)
 			UnitMenuSkills[cnt++] = sid;
 	}
 }
