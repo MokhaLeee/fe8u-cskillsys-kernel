@@ -17,7 +17,7 @@ enum weather_skills_priority {
 	WEATHER_PRIORITY_AIR_LOCK,
 };
 
-static void _check_weather_skill(struct Unit *unit, int *priv, int *weather)
+static void _check_weather_skill(struct Unit *unit, int *weather, int *priv)
 {
 	if (!UNIT_IS_VALID(unit))
 		return;
