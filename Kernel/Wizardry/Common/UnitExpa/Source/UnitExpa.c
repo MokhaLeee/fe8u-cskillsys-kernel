@@ -9,7 +9,7 @@ struct DemoUnitExpa *GetDemoUnitExpa(struct Unit *unit)
 	else if (unit == &gBattleTarget.unit)
 		return &sDemoUnitExpaBattle[1];
 
-	return gpDemoUnitExpaPool[unit->index];
+	return gpDemoUnitExpaPool[unit->index & 0xFF];
 }
 
 void MSU_SaveDemoUnitExpa(u8 *dst, const u32 size)
@@ -84,6 +84,8 @@ void DemoUnitExpa_OnNewGameInit(void)
 void DemoUnitExpa_OnClearUnit(struct Unit *unit)
 {
 	struct DemoUnitExpa *expa = GetDemoUnitExpa(unit);
+
+	Printf("UID=0x%02X, expa=%p", unit->index & 0xFF, expa);
 
 	memset(expa, 0, sizeof(struct DemoUnitExpa));
 }
