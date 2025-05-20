@@ -85,8 +85,6 @@ void DemoUnitExpa_OnClearUnit(struct Unit *unit)
 {
 	struct DemoUnitExpa *expa = GetDemoUnitExpa(unit);
 
-	Printf("UID=0x%02X, expa=%p", unit->index & 0xFF, expa);
-
 	memset(expa, 0, sizeof(struct DemoUnitExpa));
 }
 
