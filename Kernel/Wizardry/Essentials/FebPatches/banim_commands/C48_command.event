@@ -1,0 +1,23 @@
+PUSH
+#ifndef CONFIG_COMMON_PROTECTION_ENBALED
+	ORG $58D64
+	POIN C48Hack
+#endif
+POP
+
+ALIGN 4
+C48Hack:
+SHORT $6A3D //ldr r5, [r7, #0x20]
+SHORT $3D04 //sub r5, #0x4
+SHORT $682D //ldr r5, [r5]
+SHORT $022D //lsl r5, r5, #0x8
+SHORT $0C28 //lsr r0, r5, #0x10
+SHORT $A502 //add r5, pc, #0x2
+SHORT $3501 //add r5, #1
+SHORT $46AE //mov lr, r5
+SHORT $4D01 //ldr r5, =BattlePlaySound
+SHORT $4728 //bx r5
+SHORT $4801 //ldr r5, =AIS_ExecCommands_Return
+SHORT $4700 //bx r0
+POIN $71990+1 //BattlePlaySound
+POIN $596CC+1 //AIS_ExecCommands_Return

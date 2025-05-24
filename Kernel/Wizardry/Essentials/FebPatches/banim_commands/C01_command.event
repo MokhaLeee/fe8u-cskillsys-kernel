@@ -1,0 +1,55 @@
+PUSH
+	ORG $5138 //part of AIS_Display @ $5034
+	SHORT $4800 //ldr r0, =C01Hack
+	SHORT $4700 //bx r0
+	POIN (C01Hack+1)
+	PROTECT 0x00005040 0x000051C0 // AnimInterpret
+POP
+
+ALIGN 4
+C01Hack:
+SHORT $20FF //mov r0, #0xFF
+SHORT $4018 //and r0, r3
+SHORT $2801 //cmp r0, #0x1
+SHORT $D00A //beq Handle_C01_Command
+SHORT $2818 //cmp r0, #0x18
+SHORT $D806 //bhi C01Hack_Return_B
+SHORT $D103 //bne C01Hack_Return_A
+
+SHORT $6A10 //ldr r0, [r2, #0x20]
+SHORT $3804 //sub r0, #4
+SHORT $6210 //str r0, [r2, #0x20]
+SHORT $E013 //b C01Hack_Finish
+
+C01Hack_Return_A:
+SHORT $4B0B //ldr r3, =HandleNextAISFrame_Return_A
+SHORT $4718 //bx r3
+C01Hack_Return_B:
+SHORT $4B0B //ldr r3, =HandleNextAISFrame_Return_B
+SHORT $4718 //bx r3
+
+Handle_C01_Command:
+SHORT $041B //lsl r3, r3, #0x10
+SHORT $0E1B //lsr r3, r3, #0x18
+SHORT $009B //lsl r3, r3, #0x2
+SHORT $A102 //add r1, pc, #2
+SHORT $3101 //add r1, #0x1
+SHORT $468E //mov lr, r1
+SHORT $4908 //ldr r1, =Loop_handler_func
+SHORT $4708 //bx r1
+SHORT $46C0 //nop for alignment
+SHORT $2801 //cmp r0, #0x1
+SHORT $D100 //IFNE, skip next instruction
+SHORT $2300 //mov r3, #0x0
+SHORT $3304 //add r3, #0x4
+SHORT $6A10 //ldr r0, [r2, #0x20]
+SHORT $1AC0 //sub r0, r3
+SHORT $6210 //str r0, [r2, #0x20]
+
+C01Hack_Finish:
+SHORT $1C20 //mov r0, r4
+SHORT $BD30 //pop {r4, r5, pc}
+SHORT $46C0 //nop
+POIN $5144+1 //HandleNextAISFrame_Return_A
+POIN $5158+1 //HandleNextAISFrame_Return_B
+POIN $522CC+1 //Loop_handler_func
