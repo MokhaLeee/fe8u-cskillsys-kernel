@@ -122,7 +122,13 @@ STATIC_DECLAR void NewPackSuspandUnit(struct Unit *src, struct EmsPackedSusUnit 
 	if (!dst)
 		return;
 
-	if (!src || !UNIT_IS_VALID(src)) {
+	memset(dst, 0, sizeof(*dst));
+
+	if (!src)
+		return;
+
+	if (!UNIT_IS_VALID(src)) {
+		tmp_unit.index = src->index;
 		ClearUnit(&tmp_unit);
 		src = &tmp_unit;
 		dst->jid = 0;
