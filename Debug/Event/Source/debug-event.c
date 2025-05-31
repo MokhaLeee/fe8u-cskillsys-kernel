@@ -229,7 +229,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 	},
 	{
 		.charIndex = CHARACTER_GARCIA,
-		.classIndex = CLASS_WARRIOR,
+		.classIndex = CLASS_FIGHTER,
 		.autolevel = true,
 		.level = 10,
 		.xPosition = 12,
@@ -244,7 +244,8 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 		.items = {
 			ITEM_AXE_HANDAXE,
 			ITEM_AXE_DEVIL,
-			ITEM_VULNERARY
+			ITEM_VULNERARY,
+			ITEM_HEROCREST
 		},
 	},
 	{}

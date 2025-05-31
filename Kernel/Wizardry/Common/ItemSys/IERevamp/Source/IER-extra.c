@@ -33,7 +33,7 @@ bool CanUnitUsePromotionItem(struct Unit *unit, int item)
 	const struct IER_PromoConfig *it = *pr_gpIER_PromotionItemTable;
 
 	for (;; it++) {
-		if (it->item != ITEM_NONE || it->item == 0xFFFF)
+		if (it->item == ITEM_NONE || it->item == 0xFFFF)
 			break;
 
 		if (it->job_list == NULL)
