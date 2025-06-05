@@ -6,6 +6,7 @@
 #include "constants/skills.h"
 
 #define LOCAL_TRACE 0
+#define ENABLE_ALL_WTA_HANDLER 1
 
 STATIC_DECLAR bool WtaHandler_Skill(struct BattleUnit *attacker, struct BattleUnit *defender, struct WtaStatus *status)
 {
@@ -69,11 +70,11 @@ STATIC_DECLAR bool WtaHandler_Vanilla(struct BattleUnit *attacker, struct Battle
 	for (it = pr_WeaponTriangleRules; it->attackerWeaponType >= 0; ++it) {
 		if ((attacker->weaponType == it->attackerWeaponType) && (defender->weaponType == it->defenderWeaponType)) {
 			if (it->atkBonus > 0) {
-				status->bonus.atk += it->atkBonus * 2;
-				status->bonus.hit += it->hitBonus * 2;
+				status->bonus.atk += it->atkBonus;
+				status->bonus.hit += it->hitBonus;
 			} else {
-				status->minus.atk += it->atkBonus * 2;
-				status->minus.hit += it->hitBonus * 2;
+				status->minus.atk += it->atkBonus;
+				status->minus.hit += it->hitBonus;
 			}
 			return true;
 		}
@@ -87,16 +88,22 @@ STATIC_DECLAR void WtaHandler(void)
 	struct BattleUnit *attacker = &gBattleActor;
 	struct BattleUnit *defender = &gBattleTarget;
 
+	/**
+	 * Attacker
+	 */
 	handled = WtaHandler_Skill(attacker, defender, &gWtaStatus_act);
-	if (!handled)
-		handled = WtaHandler_Skill(defender, attacker, &gWtaStatus_tar);
-	if (!handled)
+	if (!handled || ENABLE_ALL_WTA_HANDLER)
 		handled = WtaHandler_Weapon(attacker, defender, &gWtaStatus_act);
-	if (!handled)
-		handled = WtaHandler_Weapon(defender, attacker, &gWtaStatus_tar);
-	if (!handled)
+	if (!handled || ENABLE_ALL_WTA_HANDLER)
 		handled = WtaHandler_Vanilla(attacker, defender, &gWtaStatus_act);
-	if (!handled)
+
+	/**
+	 * Defender
+	 */
+	handled = WtaHandler_Skill(defender, attacker, &gWtaStatus_tar);
+	if (!handled || ENABLE_ALL_WTA_HANDLER)
+		handled = WtaHandler_Weapon(defender, attacker, &gWtaStatus_tar);
+	if (!handled || ENABLE_ALL_WTA_HANDLER)
 		handled = WtaHandler_Vanilla(defender, attacker, &gWtaStatus_tar);
 }
 
