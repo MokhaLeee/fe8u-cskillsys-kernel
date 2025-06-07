@@ -241,8 +241,6 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 
 	attacker->wTriangleHitBonus  += ui;
 	attacker->wTriangleDmgBonus  += ui;
-	defender->wTriangleHitBonus  -= ui;
-	defender->wTriangleDmgBonus  -= ui;
 }
 
 #if 0
