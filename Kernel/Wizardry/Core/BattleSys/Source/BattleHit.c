@@ -23,6 +23,12 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 
 	/* Fasten simulation */
 	if (gBattleStats.config & BATTLE_CONFIG_SIMULATE) {
+		LIMIT_AREA(attack, 0, 255);
+		LIMIT_AREA(defense, 0, 255);
+		LIMIT_AREA(hitRate, 0, 100);
+		LIMIT_AREA(critRate, 0, 100);
+		LIMIT_AREA(silencerRate, 0, 100);
+
 		gBattleStats.attack = attack;
 		gBattleStats.defense = defense;
 		gBattleStats.hitRate = hitRate;
@@ -82,11 +88,11 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 		hitRate = 100;
 #endif
 
-	LIMIT_AREA(gBattleStats.attack, 0, 255);
-	LIMIT_AREA(gBattleStats.defense, 0, 255);
-	LIMIT_AREA(gBattleStats.hitRate, 0, 100);
-	LIMIT_AREA(gBattleStats.critRate, 0, 100);
-	LIMIT_AREA(gBattleStats.silencerRate, 0, 100);
+	LIMIT_AREA(attack, 0, 255);
+	LIMIT_AREA(defense, 0, 255);
+	LIMIT_AREA(hitRate, 0, 100);
+	LIMIT_AREA(critRate, 0, 100);
+	LIMIT_AREA(silencerRate, 0, 100);
 
 	gBattleStats.attack = attack;
 	gBattleStats.defense = defense;
