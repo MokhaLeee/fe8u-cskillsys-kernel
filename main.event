@@ -32,6 +32,8 @@ ORG FreeSpace_UsrData
     #include "Data/Data.event"
     #include "Debug/Debug.event"
     #include "Contents/Contents.event"
+    // Internal name
+    String("cskillsys-322-20250614")
 FreeSpace_UsrDataTail:
 MESSAGE FreeSpace___Data___ end at (CURRENTOFFSET) size as (CURRENTOFFSET - FreeSpace_UsrData) max (UsrDataSize)
 ASSERT (FreeSpace_UsrDataEnd - CURRENTOFFSET)
