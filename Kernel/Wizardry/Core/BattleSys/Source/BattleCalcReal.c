@@ -16,7 +16,7 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *at
 	 * Thus the main part of calc should be positioned at berfore.
 	 */
 #if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
-	if (BattleFastSkillTester(attacker, SID_CatchingUp)) {
+	if (BattleFastSkillTester(attacker, SID_CriticalOverload)) {
 		int _crit_overflow = attacker->battleCritRate - defender->battleDodgeRate - 100;
 
 		if (_crit_overflow > 0)
