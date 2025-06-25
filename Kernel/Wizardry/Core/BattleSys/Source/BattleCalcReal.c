@@ -159,6 +159,16 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit *attacker, stru
 		attacker->battleEffectiveHitRate = 100;
 #endif
 
+#if (defined(SID_ImmovableObject) && COMMON_SKILL_VALID(SID_ImmovableObject))
+	if (BattleFastSkillTester(attacker, SID_ImmovableObject) || BattleFastSkillTester(defender, SID_ImmovableObject))
+		attacker->battleEffectiveHitRate = 100;
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+	if (BattleFastSkillTester(attacker, SID_UnstoppableForce) || BattleFastSkillTester(defender, SID_UnstoppableForce))
+		attacker->battleEffectiveHitRate = 100;
+#endif
+
 #if (defined(SID_BestDefense) && (COMMON_SKILL_VALID(SID_BestDefense)))
 	if (attacker == &gBattleActor && BattleFastSkillTester(defender, SID_BestDefense)) {
 		attacker->battleAttack += attacker->battleDefense;
