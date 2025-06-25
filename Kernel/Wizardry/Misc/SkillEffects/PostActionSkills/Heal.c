@@ -18,7 +18,7 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
 
 #if defined(SID_Lifetaker) && (COMMON_SKILL_VALID(SID_Lifetaker))
 	if (SkillListTester(gActiveUnit, SID_Lifetaker) && gBattleActorGlobalFlag.enimy_defeated)
-		heal += hp_max * SKILL_EFF0(SID_Lifetaker) / 100;
+		heal += perc_of(hp_max, SKILL_EFF0(SID_Lifetaker));
 #endif
 
 #if defined(SID_MysticBoost) && (COMMON_SKILL_VALID(SID_MysticBoost))
@@ -31,11 +31,11 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
 		heal += perc_of(hp_max, SKILL_EFF0(SID_EndlessVitality));
 #endif
 
-	if (heal == 0)
-		return false;
-
 	if ((heal >= (hp_max - hp_cur)))
 		heal = hp_max - hp_cur;
+
+	if (heal <= 0)
+		return false;
 
 	/**
 	 * Try skip anim
