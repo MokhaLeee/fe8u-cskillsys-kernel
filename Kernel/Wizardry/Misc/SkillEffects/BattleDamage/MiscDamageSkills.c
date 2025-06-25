@@ -11,4 +11,11 @@ void BattleDamageCalc_MiscSkills(struct BattleUnit *attacker, struct BattleUnit 
 	else if (BattleFastSkillTester(defender, SID_ImmovableObject))
 		gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_ImmovableObject));
 #endif
+
+#if defined(SID_UnstoppableForce) && (COMMON_SKILL_VALID(SID_UnstoppableForce))
+	if (BattleFastSkillTester(attacker, SID_UnstoppableForce))
+		gDmg.increase += SKILL_EFF0(SID_UnstoppableForce);
+	else if (BattleFastSkillTester(defender, SID_UnstoppableForce))
+		gDmg.increase += SKILL_EFF0(SID_UnstoppableForce);
+#endif
 }

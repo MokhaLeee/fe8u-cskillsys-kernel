@@ -202,12 +202,6 @@ void BattleDamageCalc_AttackerSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
-#if defined(SID_UnstoppableForce) && (COMMON_SKILL_VALID(SID_UnstoppableForce))
-		case SID_UnstoppableForce:
-			gDmg.increase += SKILL_EFF0(SID_UnstoppableForce);
-			break;
-#endif
-
 #if (defined(SID_SureShot) && (COMMON_SKILL_VALID(SID_SureShot)))
 		case SID_SureShot:
 			if (gBattleTemporaryFlag.skill_activated_sure_shoot)
