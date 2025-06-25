@@ -242,6 +242,12 @@ void BattleDamageCalc_AttackerSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
+#if defined(SID_UnstoppableForce) && (COMMON_SKILL_VALID(SID_UnstoppableForce))
+		case SID_UnstoppableForce:
+			gDmg.increase += SKILL_EFF0(SID_UnstoppableForce);
+			break;
+#endif
+
 		case MAX_SKILL_NUM:
 			Fatal("ENOSUPP");
 			break;

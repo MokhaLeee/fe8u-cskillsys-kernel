@@ -228,6 +228,12 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
+#if defined(SID_ImmovableObject) && (COMMON_SKILL_VALID(SID_ImmovableObject))
+		case SID_ImmovableObject:
+			gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_ImmovableObject));
+			break;
+#endif
+
 		case MAX_SKILL_NUM:
 			Fatal("ENOSUPP");
 			break;
