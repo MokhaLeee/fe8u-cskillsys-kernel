@@ -1351,7 +1351,7 @@ L_FairyTaleFolk_done:
 #endif
 
 #if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
-	if (BattleFastSkillTester(defender, SID_MeleeManiac && gBattleStats.range != 1)) {
+	if (BattleFastSkillTester(defender, SID_MeleeManiac) && gBattleStats.range != 1) {
 		int _dmg_tmp = BattleUnitOriginalStatus(attacker)->atk - BattleUnitOriginalStatus(defender)->def;
 
 		if (_dmg_tmp > 0)
