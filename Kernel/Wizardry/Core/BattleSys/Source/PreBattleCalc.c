@@ -1265,17 +1265,6 @@ L_FairyTaleFolk_done:
 			break;
 #endif
 
-#if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
-		case SID_CriticalOverload:
-			if (attacker->battleHitRate > 100) {
-				int _crit_overflow = BattleUnitOriginalStatus(attacker)->hit - BattleUnitOriginalStatus(defender)->avo - 100;
-
-				if (_crit_overflow > 0)
-					attacker->battleCritRate += _crit_overflow / SKILL_EFF0(SID_CriticalOverload);
-			}
-			break;
-#endif
-
 #if (defined(SID_WyvernFlight) && (COMMON_SKILL_VALID(SID_WyvernFlight)))
 		case SID_WyvernFlight:
 			if (BattleUnitOriginalStatus(attacker)->as > (BattleUnitOriginalStatus(defender)->as - SKILL_EFF0(SID_WyvernFlight))) {

@@ -15,6 +15,14 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *at
 	 * Here we need to put some calculation at the end of the pre-battle calc.
 	 * Thus the main part of calc should be positioned at berfore.
 	 */
+#if (defined(SID_CriticalOverload) && (COMMON_SKILL_VALID(SID_CriticalOverload)))
+	if (BattleFastSkillTester(attacker, SID_CatchingUp)) {
+		int _crit_overflow = attacker->battleCritRate - defender->battleDodgeRate - 100;
+
+		if (_crit_overflow > 0)
+			attacker->battleHitRate += k_udiv(_crit_overflow, SKILL_EFF0(SID_CriticalOverload));
+	}
+#endif
 
 	if (attacker == &gBattleActor) {
 		switch (GetCombatArtInForce(&attacker->unit)) {
