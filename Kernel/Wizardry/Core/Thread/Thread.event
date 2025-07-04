@@ -1,0 +1,17 @@
+// #include "Source/timer.lyn.event"
+// #include "Source/systick_isr.lyn.event"
+// #include "Source/irq.lyn.event"
+// #include "Source/thread.lyn.event"
+
+#include "VBlank/LynJump.event"
+#include "VBlank/VBlank.lyn.event"
+#include "VBlank/_thread.lyn.event"
+#include "VBlank/VBlankIntroWait.lyn.event"
+#include "VBlank/thread.lyn.event"
+
+PUSH
+	// VBlankIntrWait
+	ORG 0x0D16DC
+	jumpToHack(VBlankIntrWaitRework)
+	PROTECT 0x000D16DC 0x000D16E4 // VBlankIntrWait
+POP

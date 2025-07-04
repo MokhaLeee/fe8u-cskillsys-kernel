@@ -14,15 +14,6 @@ void StartGame(void)
 	const GameInitHookFunc_t *it;
 	struct GameCtrlProc *proc;
 
-	SetMainUpdateRoutine(OnMain);
-
-	SetInterrupt_LCDVBlank(OnVBlank);
-
-	proc = Proc_Start(gProcScr_GameControl, PROC_TREE_3);
-	proc->nextAction = GAME_ACTION_EVENT_RETURN;
-	proc->nextChapter = 0;
-	proc->idle_status = 0;
-
 	/* Internal hooks */
 #if CHAX
 	LogInit();
@@ -35,6 +26,14 @@ void StartGame(void)
 	it = gpExternalGameInitHook;
 	if (it)
 		(*it)();
+
+	SetMainUpdateRoutine(OnMain);
+	SetInterrupt_LCDVBlank(OnVBlank);
+
+	proc = Proc_Start(gProcScr_GameControl, PROC_TREE_3);
+	proc->nextAction = GAME_ACTION_EVENT_RETURN;
+	proc->nextChapter = 0;
+	proc->idle_status = 0;
 }
 
 void GameInitHookFuncPad(void) {}

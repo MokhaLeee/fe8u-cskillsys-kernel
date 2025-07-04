@@ -89,8 +89,16 @@ _kernel_malloc sDemoUnitExpaAlly, 51 * 4
 _kernel_malloc sDemoUnitExpaEnemy, 51 * 4
 _kernel_malloc sDemoUnitExpaNpc, 8 * 4
 _kernel_malloc sDemoUnitExpaBattle, 2 * 4
+_kernel_malloc gCommonVblankIrqHandler, 4
+_kernel_malloc thread_task_handler, 4
+_kernel_malloc task_context_stack, 0x40
+_kernel_malloc main_context_stack, 0x40
+_kernel_malloc current_kthread, 1
+_kernel_malloc task_in_use, 1
+_kernel_malloc _kernel_malloc_align4_pad, 2
 
-// _kernel_malloc _kernel_malloc_align4_pad, 0
+/* thread use 0x0203F150 */
+_kernel_malloc_demo thread_stack, 0x200
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
