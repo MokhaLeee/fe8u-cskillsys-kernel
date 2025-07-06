@@ -27,9 +27,4 @@ void StoreIRQToIRAM(void)
 #endif
 
 	INTR_VECTOR = IntrMain_Buffer;
-
-#ifdef CONFIG_USE_DEBUG
-	// test
-	CreateSubThread(kthread_test);
-#endif
 }

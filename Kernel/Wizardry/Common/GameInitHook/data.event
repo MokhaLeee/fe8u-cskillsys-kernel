@@ -3,6 +3,7 @@ ALIGN 4
 gGameInitHookTable:
     POIN GameInit_OverflowDetection
     POIN GameInit_CopyArmFuncs GameInit_RedirectMapFloodFunc
+    POIN GameInit_SetupKthreadScheduler
     POIN InitRandC
     POIN ResetCombatArtStatus
     POIN ClearKtutorialFlags

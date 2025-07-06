@@ -26,6 +26,6 @@ void VBlankIntrWaitRework(void)
 		start_sub_thread();
 	}
 
-	gThreadInfo.sub_thread_state = SUBTHREAD_NONE;
+	// gThreadInfo.sub_thread_state = SUBTHREAD_NONE;
 	_VBlankIntrWait();
 }

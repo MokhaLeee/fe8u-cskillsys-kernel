@@ -278,3 +278,6 @@ void GameInit_InitCache(void);
  */
 bool IsPointer(uintptr_t a);
 bool IsPointerOrNULL(uintptr_t a);
+
+#define read16(addr) *((volatile u16 *)&(addr))
+#define write16(addr, val) (*((volatile u16 *)&(ptr)) = (val))
