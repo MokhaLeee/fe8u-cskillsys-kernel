@@ -134,24 +134,13 @@ handle_normal_irq:
 	orr r2, r2, #PSR_SYS_MODE
 	msr cpsr_fc, r2
 
-	// manually set thumb bit on lr
-	// irq will always set lr to be arm mode
-	// which breaks when resuming the thread
-	// where spsr was stored
-	// ldr r2, [r12, #-0x14]
-	// shift into carry
-	// lsr r2, r2, #6 @ (PSR_T_BIT_POS + 1)
-	// set thumb bit if carry was set
-	// orrcs r0, r0, #1
-
 	/**
-	 * r0,  r1,  r2,  r3,
-	 * r12, r5,  r6,  r7,
-	 * r8,  r9,  r10, r11,
+	 * r0,  r1,  r2,  r3, r12
+	 * r5,  r6,  r7, r8,  r9,  r10, r11,
 	 * lr,  r4,  pc
 	 */
 	push {r0}
-	push {r4} // pc
+	push {r4}
 	push {r5-r11, lr}
 
 	// read the sub-thread irq saved regs
@@ -171,10 +160,30 @@ handle_normal_irq:
 	// save the sub-thread stack pointer
 	str sp, [r1, #oThreadInfo_sub_thread_sp]
 
+/*
+	// For debug
+	pop {r0-r2}
+	pop {r9}  @ r3
+	pop {r10} @ r12
+	pop {r5-r8}
+	pop {r11} @ r9
+	pop {r11} @ r10
+	pop {r11}
+	pop {lr}
+	pop {r4}
+	pop {r11} @ pc
+	ldr r1, =gThreadInfo
+*/
+
 	// and load the main thread stack pointer
 	ldr sp, [r1, #oThreadInfo_main_thread_sp]
 	// this pops off the main thread registers, because the sp we just loaded
 	// had previously pushed the main thread registers before
+
+	// Enable print
+	ldr r1, =log_print_en
+	mov r0, #1
+	strb r0, [r1]
 
 	// restore the main thread irq saved registers (except lr)
 	pop {r0,r2,r4,r5,r6,lr}

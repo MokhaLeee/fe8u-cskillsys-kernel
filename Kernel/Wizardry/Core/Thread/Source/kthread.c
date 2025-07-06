@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "kthread.h"
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 extern void yield_sub_thread(void);
 extern void get_sub_thread_stack(u32 *buf);

@@ -54,49 +54,25 @@ resume_sub_thread_arm:
 	mov r1, #DEFAULT_SUBTHREAD_RUNNING_MODE
 	strb r1, [r0, #oThreadInfo_sub_thread_running]
 
-	ldrb r4, [r0, #oThreadInfo_sub_thread_break_reason]
-	cmp r4, #SUBTHRED_BREAK_FROM_IRQ
-
-.L_thumb_judge_from_normal:
 	/**
-	 * r0,  r1,  r2,  r3,
-	 * r12, r5,  r6,  r7,
-	 * r8,  r9,  r10, r11,
+	 * r0,  r1,  r2,  r3, r12
+	 * r5,  r6,  r7, r8,  r9,  r10, r11,
 	 * lr,  r4,  pc
 	 */
-	popne {r0-r3, r12}
-	popne {r5-r11, lr}
-	movne r4, lr
+	pop {r0-r3, r12}
+	pop {r5-r11, lr}
+	
+	ldr r4, [sp, #4]
+	tst r4, #1
 
-.L_thumb_judge_from_IRQ:
-	popeq {r0-r3, r12}
-
-	// 0x04: kernel_vblank_isr
-	// 0x10: IrqMain
-	// 0x14: bios irq_vector
-	ldreq lr, [sp, #0x24]
-	subeq lr, lr, #4
-	streq lr, [sp, #0x24]
-	// shift thumb bit into carry flag
-	moveq r4, lr
-
-	// restore sub-thread general registers, EXCEPT r4
-	popeq {r5-r11,lr}
-
-1:
-	// carry clear = arm mode = can just return away
-	lsr r4, r4, #1
-	popcc {r4}
-	popcc {pc}
+	popeq {r4, pc}
 
 	// need to switch to thumb mode
 	adr r4, resume_sub_thread_thumb+1
 	bx r4
-
 	.thumb
 resume_sub_thread_thumb:
-	pop {r4}
-	pop {pc}
+	pop {r4, pc}
 
 THUMB_FUNC_START yield_sub_thread
 yield_sub_thread:

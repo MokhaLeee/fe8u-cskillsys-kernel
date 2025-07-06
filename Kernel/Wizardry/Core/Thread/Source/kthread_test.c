@@ -7,7 +7,7 @@
 
 _maybe_unused STATIC_DECLAR void SubTask_PlayPhaseTest(void)
 {
-	enum { LOCAL_TRIGG = 0xFFFF };
+	enum { LOCAL_TRIGG = 1000 };
 
 	u32 total = 0;
 	u32 cnt = 0;
@@ -17,8 +17,10 @@ _maybe_unused STATIC_DECLAR void SubTask_PlayPhaseTest(void)
 		total++;
 		cnt++;
 
+		LTRACEF("trace loop 0x%04X, total 0x%08X", cnt, total);
+
 		if (cnt > rn) {
-			LTRACEF("trace loop 0x%04X, total 0x%08X", cnt, total);
+			// LTRACEF("trace loop 0x%04X, total 0x%08X", cnt, total);
 
 			cnt = 0;
 			rn = NextRN_N(LOCAL_TRIGG);

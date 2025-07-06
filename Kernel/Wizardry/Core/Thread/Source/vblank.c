@@ -11,7 +11,7 @@ void VBlankIntrWaitRework(void)
 {
 	u32 vcount = REG_VCOUNT;
 
-	if (vcount >= 140) {
+	if (vcount >= 160 || vcount == 0) {
 		_VBlankIntrWait();
 		return;
 	}
@@ -28,13 +28,17 @@ void VBlankIntrWaitRework(void)
 		dump_sub_thread_stack();
 #endif
 
-		resume_sub_thread();
+		log_print_en = false;
+		start_sub_thread();
+		log_print_en = true;
 	} else {
 		LTRACEF("start subthread: 0x%08X", gThreadInfo.func);
 
 		gThreadInfo.sub_thread_state = SUBTHREAD_ACTIVE;
 
+		log_print_en = false;
 		start_sub_thread();
+		log_print_en = true;
 	}
 
 	// gThreadInfo.sub_thread_state = SUBTHREAD_NONE;

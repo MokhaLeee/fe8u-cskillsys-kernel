@@ -101,7 +101,8 @@ _kernel_malloc sDemoUnitExpaNpc, 8 * 4
 _kernel_malloc sDemoUnitExpaBattle, 2 * 4
 _kernel_malloc gThreadInfo, 0x14
 
-// _kernel_malloc _kernel_malloc_align4_pad, 3
+_kernel_malloc log_print_en, 1
+_kernel_malloc _kernel_malloc_align4_pad, 3
 
 /**
  * Free space allocated from icon display
