@@ -6,7 +6,7 @@ Thanks to the discussion with [luckytyphlosion](https://github.com/luckytyphlosi
 #include <kthread.h>
 
 typedef void (*thread_task_func)(void);
-void RegisterKthreadSchedulerTask(thread_task_func func);
+void CreateSubThread(thread_task_func func);
 ```
 
 Insert a sub thread to call for the task function during main routine is waiting for VBlank interrupt. CSkillsys kernel may automatically switch back to main routine during VBlank IRQ handler.

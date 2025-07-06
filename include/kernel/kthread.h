@@ -38,11 +38,6 @@ void CreateSubThread(thread_task_func func);
 void RemoveSubThread(thread_task_func func);
 void YieldSubThread(void);
 
-struct ThreadSchedulerInfo {
-	thread_task_func func;
-};
-extern struct ThreadSchedulerInfo gThreadSchedulerInfo;
-
 void RegisterKthreadSchedulerTask(thread_task_func func);
 void RemoveKthreadSchedulerTask(thread_task_func func);
 void GameInit_SetupKthreadScheduler(void);

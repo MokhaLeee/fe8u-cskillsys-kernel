@@ -1,7 +1,6 @@
 #include "Source/LynJump.event"
 
 #include "Source/kthread.lyn.event"
-#include "Source/kthread_scheduler.lyn.event"
 #include "Source/kthread_arm.lyn.event"
 #include "Source/vblank.lyn.event"
 #include "Source/vblank_arm.lyn.event"
