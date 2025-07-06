@@ -17,15 +17,15 @@ start_sub_thread_arm:
 
 	ldr r0, =gThreadInfo
 
-	# save stack pointer
+	// save stack pointer
 	str sp, [r0, #oThreadInfo_main_thread_sp]
 	ldr sp, =SUB_THREAD_STACK_BASE
 
-	# Add a mark for IRQ handler
+	// Add a mark for IRQ handler
 	mov r1, #DEFAULT_SUBTHREAD_RUNNING_MODE
 	strb r1, [r0, #oThreadInfo_sub_thread_running]
 
-	# jump to thread
+	// jump to thread
 	ldr r0, [r0, oThreadInfo_func]
 	adr lr, start_sub_thread_return
 	bx r0
@@ -58,6 +58,12 @@ resume_sub_thread_arm:
 	cmp r4, #SUBTHRED_BREAK_FROM_IRQ
 
 .L_thumb_judge_from_normal:
+	/**
+	 * r0,  r1,  r2,  r3,
+	 * r12, r5,  r6,  r7,
+	 * r8,  r9,  r10, r11,
+	 * lr,  r4,  pc
+	 */
 	popne {r0-r3, r12}
 	popne {r5-r11, lr}
 	movne r4, lr
@@ -65,20 +71,20 @@ resume_sub_thread_arm:
 .L_thumb_judge_from_IRQ:
 	popeq {r0-r3, r12}
 
-	# 0x04: kernel_vblank_isr
-	# 0x10: IrqMain
-	# 0x14: bios irq_vector
+	// 0x04: kernel_vblank_isr
+	// 0x10: IrqMain
+	// 0x14: bios irq_vector
 	ldreq lr, [sp, #0x24]
 	subeq lr, lr, #4
 	streq lr, [sp, #0x24]
-	# shift thumb bit into carry flag
+	// shift thumb bit into carry flag
 	moveq r4, lr
 
-	# restore sub-thread general registers, EXCEPT r4
+	// restore sub-thread general registers, EXCEPT r4
 	popeq {r5-r11,lr}
 
 1:
-	# carry clear = arm mode = can just return away
+	// carry clear = arm mode = can just return away
 	lsr r4, r4, #1
 	popcc {r4}
 	popcc {pc}
@@ -108,13 +114,13 @@ yield_sub_thread_arm:
 	cmp r0, #INVALID_SUBTHREAD_RUNNING_MODE
 	bne 1f
 
-	# error return
+	// error return
 	mov r0, #1
 	strh r0, [r3]
 	bx lr
 
 1:
-	# save sub thread
+	// save sub thread
 	adr r0, .L_thumb_bxlr + 1
 	push {r0}
 	push {r4}
@@ -122,7 +128,7 @@ yield_sub_thread_arm:
 	push {r0-r3, r12}
 	str sp, [r1, #oThreadInfo_sub_thread_sp]
 
-	# load main
+	// load main
 	ldr r0, =gThreadInfo
 	ldr sp, [r0, #oThreadInfo_main_thread_sp]
 	pop {r0-r3, r12, lr}

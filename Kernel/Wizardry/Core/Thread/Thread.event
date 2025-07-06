@@ -2,6 +2,7 @@
 
 #include "Source/kthread.lyn.event"
 #include "Source/kthread_arm.lyn.event"
+#include "Source/kthread_test.lyn.event"
 #include "Source/vblank.lyn.event"
 #include "Source/vblank_arm.lyn.event"
 #include "Source/irq.lyn.event"

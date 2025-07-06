@@ -90,7 +90,7 @@ handle_normal_irq:
 	ldr r1, =gThreadInfo
 	ldrb r3, [r1, #oThreadInfo_sub_thread_running]
 	cmp r2, r3
-	# r12 now is the top of bios irq handler
+	// r12 now is the top of bios irq handler
 	addeq r12, sp, #0x10
 
 	@ Switch to System Mode
@@ -113,26 +113,46 @@ handle_normal_irq:
 	mov r0, #SUBTHRED_BREAK_FROM_IRQ
 	strb r0, [r1, #oThreadInfo_sub_thread_break_reason]
 
-	// save the sub-thread irq lr
-	// which is the address where the thread needs to resume
-	// we have to push this first as due to register issues
-	// we resume the thread by popping into pc
+	// load Bios' LR on INTR
 	ldr r0, [r12, #0x14]
+
+	// But it has no thumb/arm info
+	// Thus we need to get the thumb bit from SPSR
+	// switch to irq mode
+	mrs r2, cpsr
+	bic r2, r2, #PSR_I_BIT | PSR_F_BIT | PSR_MODE_MASK
+	orr r2, r2, #PSR_IRQ_MODE
+	msr cpsr_fc, r2
+
+	mrs r2, spsr
+	tst r2, #PSR_T_BIT
+	orrne r0, r0, #1
+
+	// switch back to system mode
+	mrs r2, cpsr
+	bic r2, r2, #PSR_I_BIT | PSR_F_BIT | PSR_MODE_MASK
+	orr r2, r2, #PSR_SYS_MODE
+	msr cpsr_fc, r2
 
 	// manually set thumb bit on lr
 	// irq will always set lr to be arm mode
 	// which breaks when resuming the thread
 	// where spsr was stored
-	ldr r2, [r12, #-0x14]
+	// ldr r2, [r12, #-0x14]
 	// shift into carry
-	lsr r2, r2, #6 @ (PSR_T_BIT_POS + 1)
+	// lsr r2, r2, #6 @ (PSR_T_BIT_POS + 1)
 	// set thumb bit if carry was set
-	orrcs r0, r0, #1
+	// orrcs r0, r0, #1
 
-	// save to the stack
+	/**
+	 * r0,  r1,  r2,  r3,
+	 * r12, r5,  r6,  r7,
+	 * r8,  r9,  r10, r11,
+	 * lr,  r4,  pc
+	 */
 	push {r0}
-	// save the sub thread general registers, and sys mode lr
-	push {r4-r11, lr}
+	push {r4} // pc
+	push {r5-r11, lr}
 
 	// read the sub-thread irq saved regs
 	// we're reading what r0-r3,r12 are

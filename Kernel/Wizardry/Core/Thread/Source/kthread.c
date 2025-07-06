@@ -1,8 +1,23 @@
 #include "common-chax.h"
 #include "kthread.h"
 
-extern void yield_sub_thread(void);
+#define LOCAL_TRACE 0
 
+extern void yield_sub_thread(void);
+extern void get_sub_thread_stack(u32 *buf);
+
+void dump_sub_thread_stack(void)
+{
+	_maybe_unused u32 *sp = gThreadInfo.sub_thread_sp;
+
+	Print("sub thread");
+	Printf("[pc] 0x%08X [lr] 0x%08X [sp] 0x%08X",  sp[14], sp[12], (uintptr_t)sp);
+	Printf("[r0] 0x%08X [r1] 0x%08X [r2] 0x%08X [r3] 0x%08X", sp[0],  sp[1],  sp[2],  sp[3]);
+	Printf("[r4] 0x%08X [r5] 0x%08X [r6] 0x%08X [r7] 0x%08X", sp[13], sp[5],  sp[6],  sp[7]);
+	Print("done");
+}
+
+/* API */
 void CreateSubThread(thread_task_func func)
 {
 	if (gThreadInfo.func) {
@@ -30,5 +45,6 @@ void YieldSubThread(void)
 		return;
 	}
 
+	LTRACE("yield");
 	yield_sub_thread();
 }

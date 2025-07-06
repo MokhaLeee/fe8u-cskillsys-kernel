@@ -38,6 +38,4 @@ void CreateSubThread(thread_task_func func);
 void RemoveSubThread(thread_task_func func);
 void YieldSubThread(void);
 
-void RegisterKthreadSchedulerTask(thread_task_func func);
-void RemoveKthreadSchedulerTask(thread_task_func func);
-void GameInit_SetupKthreadScheduler(void);
+void dump_sub_thread_stack(void);
