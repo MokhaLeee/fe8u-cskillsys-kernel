@@ -31,16 +31,17 @@ SET_DATA UsedFreeDemoRamSpaceTop, FreeDemoRamSpaceBottom
 
 SET_DATA FreeRamSpace2Top,    0x0203AAA4
 SET_DATA FreeRamSpace2Bottom, 0x0203DDE0
-SET_DATA UsedFreeRamSpace2Top, FreeRamSpace2Bottom
+SET_DATA UsedFreeRamSpace2Bottom, FreeRamSpace2Top
+SET_DATA SUB_THREAD_STACK_BASE, FreeRamSpace2Bottom
 
 .macro _kernel_malloc2 name, size
-    .set UsedFreeRamSpace2Top, UsedFreeRamSpace2Top - \size
-    SET_DATA \name, UsedFreeRamSpace2Top
+    .set UsedFreeRamSpace2Bottom, UsedFreeRamSpace2Bottom + \size
+    SET_DATA \name, UsedFreeRamSpace2Bottom
 .endm
 
 SET_DATA FreeRamSpace3Top,    0x02026AD0
 SET_DATA FreeRamSpace3Bottom, 0x02026E30
-SET_DATA UsedFreeRamSpace3Top, FreeRamSpace2Bottom
+SET_DATA UsedFreeRamSpace3Top, FreeRamSpace3Bottom
 
 .macro _kernel_malloc3 name, size
     .set UsedFreeRamSpace3Top, UsedFreeRamSpace3Top - \size
@@ -98,6 +99,7 @@ _kernel_malloc sDemoUnitExpaAlly, 51 * 4
 _kernel_malloc sDemoUnitExpaEnemy, 51 * 4
 _kernel_malloc sDemoUnitExpaNpc, 8 * 4
 _kernel_malloc sDemoUnitExpaBattle, 2 * 4
+_kernel_malloc gThreadInfo, 0x14
 
 // _kernel_malloc _kernel_malloc_align4_pad, 0
 
@@ -152,9 +154,9 @@ _kernel_malloc _kernel_malloc_overlay0_align4_pad, 3
  * [a]      ARM_MapTask         0x03003F94      0x03003FF0      0x05C       0x05C
  * [a]      ARM_SkillTester     0x03003FF0      0x03004150      0x138       0x160
  *
- * [b]      ARM_UnitList        0x0300428C      0x03004378      0x0EC       0x0EC
- * [b]      ARM_SkillList       0x03004378      0x030043B4      0x03C       0x03C
- * [b]      __free__            0x030043B4      0x03004960      0x5A0       ---
+ * [b]      __free__            end_of_irq      0x03004838      ---         ---
+ * [b]      ARM_UnitList        0x03004838      0x03004924      0x0EC       0x0EC
+ * [b]      ARM_SkillList       0x03004924      0x03004960      0x03C       0x03C
  *
  * Note on part[a]:
  * In vanilla, RAM func left a ram space at: 0x03003F48 - 0x03004150
@@ -169,7 +171,7 @@ dat 0x03003FF0, ARM_MapTaskEnd
 dat 0x03003FF0, ARM_SkillTester
 dat 0x03004150, ARM_SkillTesterEnd
 
-dat 0x0300428C, ARM_UnitList
-dat 0x03004378, ARM_UnitListEnd
-dat 0x03004378, ARM_SkillList
-dat 0x030043B4, ARM_SkillListEnd
+dat 0x03004838, ARM_UnitList
+dat 0x03004924, ARM_UnitListEnd
+dat 0x03004924, ARM_SkillList
+dat 0x03004960, ARM_SkillListEnd

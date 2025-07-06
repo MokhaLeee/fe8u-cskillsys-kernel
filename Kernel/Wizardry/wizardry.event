@@ -51,6 +51,7 @@ ALIGN 4
 #include "Common/PlayStExpa/PlayStExpa.event"
 #include "Common/FebCompat/FebCompat.event"
 
+#include "Core/Thread/Thread.event"
 #include "Core/SkillSys/SkillSys.event"
 #include "Core/DebuffRework/DebuffRework.event"
 #include "Core/WeaponRange/WeaponRange.event"

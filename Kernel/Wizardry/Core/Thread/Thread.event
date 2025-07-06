@@ -1,0 +1,16 @@
+#include "Source/LynJump.event"
+
+#include "Source/kthread.lyn.event"
+#include "Source/kthread_test.lyn.event"
+#include "Source/kthread_arm.lyn.event"
+#include "Source/vblank.lyn.event"
+#include "Source/vblank_arm.lyn.event"
+#include "Source/irq.lyn.event"
+#include "Source/irq_arm.lyn.event"
+
+PUSH
+	// VBlankIntrWait
+	ORG 0x0D16DC
+	jumpToHack(VBlankIntrWaitRework)
+	PROTECT 0x000D16DC 0x000D16E4 // VBlankIntrWait
+POP
