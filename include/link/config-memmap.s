@@ -38,6 +38,15 @@ SET_DATA UsedFreeRamSpace2Top, FreeRamSpace2Bottom
     SET_DATA \name, UsedFreeRamSpace2Top
 .endm
 
+SET_DATA FreeRamSpace3Top,    0x02026AD0
+SET_DATA FreeRamSpace3Bottom, 0x02026E30
+SET_DATA UsedFreeRamSpace3Top, FreeRamSpace2Bottom
+
+.macro _kernel_malloc3 name, size
+    .set UsedFreeRamSpace3Top, UsedFreeRamSpace3Top - \size
+    SET_DATA \name, UsedFreeRamSpace3Top
+.endm
+
 SET_DATA EwramOverlay0_FreeRamSpaceTop,    0x201F200
 SET_DATA EwramOverlay0_FreeRamSpaceBottom, 0x2020188
 SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
@@ -91,6 +100,14 @@ _kernel_malloc sDemoUnitExpaNpc, 8 * 4
 _kernel_malloc sDemoUnitExpaBattle, 2 * 4
 
 // _kernel_malloc _kernel_malloc_align4_pad, 0
+
+/**
+ * Free space allocated from icon display
+ */
+_kernel_malloc3 gBattleHitArrayRe, 4 * 0x21
+_kernel_malloc3 gExtBattleHitArray, 4 * 0x21
+_kernel_malloc3 gAnimRoundDataRe, 2 * 0x21 + 2
+_kernel_malloc3 gEfxHpLutRe, 2 * 0x61 + 2
 
 /**
  * These part of space is allocated from `ewram_overlay_0`
