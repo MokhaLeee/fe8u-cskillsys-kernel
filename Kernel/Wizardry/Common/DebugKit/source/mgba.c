@@ -1,16 +1,17 @@
-#include "global.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-
+#include "common-chax.h"
 #include "mgba.h"
 
 #define REG_DEBUG_ENABLE ((vu16 *) 0x4FFF780)
 #define REG_DEBUG_FLAGS ((vu16 *) 0x4FFF700)
 #define REG_DEBUG_STRING ((char *) 0x4FFF600)
 
+#if !CONFIG_MGBA_PRINTF_EN
+
+void mgba_printf(int level, const char *ptr, ...) {}
+bool mgba_open(void) { return true; }
+void mgba_close(void) {}
+
+#else
 void mgba_printf(int level, const char *ptr, ...)
 {
 	va_list args;
@@ -32,3 +33,4 @@ void mgba_close(void)
 {
 	*REG_DEBUG_ENABLE = 0;
 }
+#endif

@@ -101,6 +101,7 @@ _kernel_malloc sDemoUnitExpaNpc, 8 * 4
 _kernel_malloc sDemoUnitExpaBattle, 2 * 4
 _kernel_malloc gThreadInfo, 0x14
 _kernel_malloc gThreadSchedulerInfo, 0x14
+_kernel_malloc gThreadTestCounter, 4
 
 // _kernel_malloc _kernel_malloc_align4_pad, 0
 

@@ -15,11 +15,17 @@
 	// #define CONFIG_DEBUG_POPR
 
 	#define CONFIG_DEBUG_CHAPTER
+
+	/* Add a dummy task to test thread scheduler */
+	#define CONFIG_DEBUG_THREAD_SCHEDULER
 #endif /* CONFIG_USE_DEBUG */
 
 /**
  * Stand alone debug relatedconfigs
  */
+
+// Enable MGBA printf
+#define CONFIG_MGBA_PRINTF_EN 0
 
 // Always print error log
 #define CONFIG_FORCE_PRIENT_ERROR 1
