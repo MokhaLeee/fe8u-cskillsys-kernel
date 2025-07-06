@@ -18,7 +18,7 @@
 
 	/* Add a dummy task to test thread scheduler */
 	#define CONFIG_DEBUG_THREAD_SCHEDULER
-	#define CONFIG_DEBUG_DUMP_THREAD_STACK
+	// #define CONFIG_DEBUG_DUMP_THREAD_STACK
 #endif /* CONFIG_USE_DEBUG */
 
 /**

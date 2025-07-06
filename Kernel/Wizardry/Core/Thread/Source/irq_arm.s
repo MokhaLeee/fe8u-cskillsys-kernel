@@ -181,9 +181,9 @@ handle_normal_irq:
 	// had previously pushed the main thread registers before
 
 	// Enable print
-	ldr r1, =log_print_en
-	mov r0, #1
-	strb r0, [r1]
+	// ldr r1, =log_print_en
+	// mov r0, #1
+	// strb r0, [r1]
 
 	// restore the main thread irq saved registers (except lr)
 	pop {r0,r2,r4,r5,r6,lr}

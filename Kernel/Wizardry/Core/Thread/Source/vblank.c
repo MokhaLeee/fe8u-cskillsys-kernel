@@ -5,7 +5,7 @@ extern void _VBlankIntrWait(void);
 extern void start_sub_thread(void);
 extern void resume_sub_thread(void);
 
-#define LOCAL_TRACE 1
+#define LOCAL_TRACE 0
 
 void VBlankIntrWaitRework(void)
 {
@@ -28,17 +28,13 @@ void VBlankIntrWaitRework(void)
 		dump_sub_thread_stack();
 #endif
 
-		log_print_en = false;
 		start_sub_thread();
-		log_print_en = true;
 	} else {
 		LTRACEF("start subthread: 0x%08X", gThreadInfo.func);
 
 		gThreadInfo.sub_thread_state = SUBTHREAD_ACTIVE;
 
-		log_print_en = false;
 		start_sub_thread();
-		log_print_en = true;
 	}
 
 	// gThreadInfo.sub_thread_state = SUBTHREAD_NONE;

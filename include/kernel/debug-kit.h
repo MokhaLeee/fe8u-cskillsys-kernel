@@ -6,21 +6,19 @@
 #include "mgba.h"
 #include "no-cash-gba.h"
 
-extern EWRAM_DATA volatile u8 log_print_en;
-
-#define LogInit() {mgba_open(); log_print_en = true;}
-#define LogPrint(string)        if (log_print_en) { mgba_printf(MGBA_LOG_INFO, string);               NoCashGBAPrint(string); }
-#define LogPrintf(format, ...)  if (log_print_en) { mgba_printf(MGBA_LOG_INFO, format, __VA_ARGS__);  NoCashGBAPrintf(format, __VA_ARGS__); }
-#define LogWarn(string)         if (log_print_en) { mgba_printf(MGBA_LOG_WARN, string);               NoCashGBAPrint("[WARN] "string); }
-#define LogWarnf(format, ...)   if (log_print_en) { mgba_printf(MGBA_LOG_WARN, format, __VA_ARGS__);  NoCashGBAPrintf("[WARN] "format, __VA_ARGS__); }
-#define LogInfo(string)         if (log_print_en) { mgba_printf(MGBA_LOG_INFO, string);               NoCashGBAPrint("[INFO] "string); }
-#define LogInfof(format, ...)   if (log_print_en) { mgba_printf(MGBA_LOG_INFO, format, __VA_ARGS__);  NoCashGBAPrintf("[INFO] "format, __VA_ARGS__); }
-#define LogDebug(string)        if (log_print_en) { mgba_printf(MGBA_LOG_DEBUG, string);              NoCashGBAPrint("[DEBUG] "string); }
-#define LogDebugf(format, ...)  if (log_print_en) { mgba_printf(MGBA_LOG_DEBUG, format, __VA_ARGS__); NoCashGBAPrintf("[DEBUG] "format, __VA_ARGS__); }
-#define LogFatal(string)        if (log_print_en) { mgba_printf(MGBA_LOG_FATAL, string);              NoCashGBAPrint("[FATAL] "string); abort(); }
-#define LogFatalf(format, ...)  if (log_print_en) { mgba_printf(MGBA_LOG_FATAL, format, __VA_ARGS__); NoCashGBAPrintf("[FATAL] "format, __VA_ARGS__); abort(); };
-#define LogError(string)        if (log_print_en) { mgba_printf(MGBA_LOG_ERROR, string);              NoCashGBAPrint("[ERROR] "string); }
-#define LogErrorf(format, ...)  if (log_print_en) { mgba_printf(MGBA_LOG_ERROR, format, __VA_ARGS__); NoCashGBAPrintf("[ERROR] "format, __VA_ARGS__); }
+#define LogInit() {mgba_open(); }
+#define LogPrint(string)        { REG_IME = 0; mgba_printf(MGBA_LOG_INFO, string);               NoCashGBAPrint(string); REG_IME = 1; }
+#define LogPrintf(format, ...)  { REG_IME = 0; mgba_printf(MGBA_LOG_INFO, format, __VA_ARGS__);  NoCashGBAPrintf(format, __VA_ARGS__); REG_IME = 1;}
+#define LogWarn(string)         { REG_IME = 0; mgba_printf(MGBA_LOG_WARN, string);               NoCashGBAPrint("[WARN] "string); REG_IME = 1;}
+#define LogWarnf(format, ...)   { REG_IME = 0; mgba_printf(MGBA_LOG_WARN, format, __VA_ARGS__);  NoCashGBAPrintf("[WARN] "format, __VA_ARGS__); REG_IME = 1;}
+#define LogInfo(string)         { REG_IME = 0; mgba_printf(MGBA_LOG_INFO, string);               NoCashGBAPrint("[INFO] "string); REG_IME = 1;}
+#define LogInfof(format, ...)   { REG_IME = 0; mgba_printf(MGBA_LOG_INFO, format, __VA_ARGS__);  NoCashGBAPrintf("[INFO] "format, __VA_ARGS__); REG_IME = 1;}
+#define LogDebug(string)        { REG_IME = 0; mgba_printf(MGBA_LOG_DEBUG, string);              NoCashGBAPrint("[DEBUG] "string); REG_IME = 1;}
+#define LogDebugf(format, ...)  { REG_IME = 0; mgba_printf(MGBA_LOG_DEBUG, format, __VA_ARGS__); NoCashGBAPrintf("[DEBUG] "format, __VA_ARGS__); REG_IME = 1;}
+#define LogFatal(string)        { REG_IME = 0; mgba_printf(MGBA_LOG_FATAL, string);              NoCashGBAPrint("[FATAL] "string); REG_IME = 1; abort(); }
+#define LogFatalf(format, ...)  { REG_IME = 0; mgba_printf(MGBA_LOG_FATAL, format, __VA_ARGS__); NoCashGBAPrintf("[FATAL] "format, __VA_ARGS__); REG_IME = 1; abort(); };
+#define LogError(string)        { REG_IME = 0; mgba_printf(MGBA_LOG_ERROR, string);              NoCashGBAPrint("[ERROR] "string); REG_IME = 1;}
+#define LogErrorf(format, ...)  { REG_IME = 0; mgba_printf(MGBA_LOG_ERROR, format, __VA_ARGS__); NoCashGBAPrintf("[ERROR] "format, __VA_ARGS__); REG_IME = 1;}
 
 #if (CONFIG_FORCE_PRIENT_ERROR || defined(CONFIG_USE_DEBUG))
 	#define Fatal(string)       LogFatalf("(%s): %s", __func__, string)
