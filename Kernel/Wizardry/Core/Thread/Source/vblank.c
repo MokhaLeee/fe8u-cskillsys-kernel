@@ -28,7 +28,7 @@ void VBlankIntrWaitRework(void)
 		dump_sub_thread_stack();
 #endif
 
-		start_sub_thread();
+		resume_sub_thread();
 	} else {
 		LTRACEF("start subthread: 0x%08X", gThreadInfo.func);
 

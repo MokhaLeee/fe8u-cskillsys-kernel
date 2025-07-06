@@ -24,7 +24,7 @@ _maybe_unused STATIC_DECLAR void SubTask_PlayPhaseTest(void)
 
 			cnt = 0;
 			rn = NextRN_N(LOCAL_TRIGG);
-			YieldSubThread();
+			// YieldSubThread();
 		}
 	}
 }
