@@ -51,15 +51,7 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionClearance[] = {
 
 bool PostAction_Clearance(ProcPtr parent)
 {
-	if (!UnitAvaliable(gActiveUnit))
-		return false;
-
-#if defined(SID_Clearance) && (COMMON_SKILL_VALID(SID_Clearance))
-	if (!SkillListTester(gActiveUnit, SID_Clearance))
-#else
-	if (1)
-#endif
-		return false;
+	_maybe_unused struct Unit *unit;
 
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
@@ -69,6 +61,19 @@ bool PostAction_Clearance(ProcPtr parent)
 	default:
 		return false;
 	}
+
+#if defined(SID_Clearance) && (COMMON_SKILL_VALID(SID_Clearance))
+	// target
+	unit = GetUnit(gActionData.targetIndex);
+	if (UnitAvaliable(unit) && SkillListTester(unit, SID_Clearance))
+		RemoveUnitNegativeStatus(gActiveUnit);
+
+	// actor
+	if (!UnitAvaliable(gActiveUnit) || !SkillListTester(gActiveUnit, SID_Clearance))
+#else
+	if (1)
+#endif
+		return false;
 
 	if (UnitHasNegativeStatus(gActiveUnit)) {
 		if (CheckKernelHookSkippingFlag()) {
