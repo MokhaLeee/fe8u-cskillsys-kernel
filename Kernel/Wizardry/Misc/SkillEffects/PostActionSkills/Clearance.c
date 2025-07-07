@@ -51,8 +51,6 @@ STATIC_DECLAR const struct ProcCmd ProcScr_PostActionClearance[] = {
 
 bool PostAction_Clearance(ProcPtr parent)
 {
-	_maybe_unused struct Unit *unit;
-
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
 	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
@@ -63,12 +61,6 @@ bool PostAction_Clearance(ProcPtr parent)
 	}
 
 #if defined(SID_Clearance) && (COMMON_SKILL_VALID(SID_Clearance))
-	// target
-	unit = GetUnit(gActionData.targetIndex);
-	if (UnitAvaliable(unit) && SkillListTester(unit, SID_Clearance))
-		RemoveUnitNegativeStatus(gActiveUnit);
-
-	// actor
 	if (!UnitAvaliable(gActiveUnit) || !SkillListTester(gActiveUnit, SID_Clearance))
 #else
 	if (1)
@@ -84,5 +76,28 @@ bool PostAction_Clearance(ProcPtr parent)
 		Proc_Start(ProcScr_PostActionClearance, PROC_TREE_3);
 		return true;
 	}
+	return false;
+}
+
+bool PostAction_TargetClearance(ProcPtr parent)
+{
+	_maybe_unused struct Unit *unit;
+
+	switch (gActionData.unitActionType) {
+	case UNIT_ACTION_COMBAT:
+	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
+		break;
+
+	default:
+		return false;
+	}
+
+#if defined(SID_Clearance) && (COMMON_SKILL_VALID(SID_Clearance))
+	// target
+	unit = GetUnit(gActionData.targetIndex);
+	if (UnitAvaliable(unit) && SkillListTester(unit, SID_Clearance))
+		RemoveUnitNegativeStatus(unit);
+#endif
+
 	return false;
 }

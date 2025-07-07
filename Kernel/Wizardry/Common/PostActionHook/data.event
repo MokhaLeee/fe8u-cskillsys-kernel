@@ -7,7 +7,6 @@ gPostActionFuncs:
     POIN PostActionSynchronize
     POIN PostActionBattleActorHurt PostActionBattleTargetHurt
     POIN PostAction_BattleActorHeal PostAction_BattleTargetHeal
-    POIN PostAction_Clearance
     POIN PostActionAlertStance
     POIN PostActionTsuzuku
     POIN PostActionGetItem
@@ -16,6 +15,8 @@ gPostActionFuncs:
     POIN PostActionRemoveChillDebuff
     POIN PostAction_Glorifier
     POIN PostActionSkillShakedown
+    POIN PostAction_Clearance
+    POIN PostAction_TargetClearance
     POIN ResetComboAtkList
 
     //End
