@@ -159,7 +159,7 @@ void ComputeBattleUnitCritRate(struct BattleUnit *bu)
 	bu->battleCritRate = status;
 }
 
-void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
+STATIC_DECLAR void Local_PreBattleCalcInitExt(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	struct BattleStatus *st;
 
@@ -195,6 +195,15 @@ void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
 		st->silencer = attacker->battleSilencerRate;
 	} else {
 		st->atk = st->def = st->as = st->hit = st->avo = st->crit = st->dodge = st->silencer = 0;
+	}
+}
+
+void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	/* Only calc at once */
+	if (attacker == &gBattleActor) {
+		Local_PreBattleCalcInitExt(attacker, defender);
+		Local_PreBattleCalcInitExt(defender, attacker);
 	}
 }
 
