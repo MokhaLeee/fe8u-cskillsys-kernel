@@ -162,11 +162,11 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 
 #if (defined(SID_BarricadePlus) && (COMMON_SKILL_VALID(SID_BarricadePlus)))
 		case SID_BarricadePlus:
-			if (GetBattleGlobalFlags(attacker)->round_cnt_hit > 2) {
+			if (GetBattleGlobalFlags(attacker)->round_cnt_hit >= 2) {
 				int _i, _reduction = SKILL_EFF0(SID_BarricadePlus);
 				int _base = _reduction;
 
-				for (_i = 0; _i < GetBattleGlobalFlags(attacker)->round_cnt_hit - 2; _i++) {
+				for (_i = 0; _i < GetBattleGlobalFlags(attacker)->round_cnt_hit - 1; _i++) {
 					_base = _base / 2;
 					_reduction += _base;
 				}
