@@ -53,6 +53,66 @@ ActionCombat
 result = ([atk + correction - def]) * (100% + increase%) * (100%  + crit_correction%) / (100% + decrease%) + real_damage
 ```
 
+In addition to traditional base stats such as **attack**, **defense**, **avoid**, and **critical hits**, CSkillsys introduces multiple dimensions for stacking combat power and encourages players to enhance their characters across these dimensions simultaneously.
+
+- **Damage Amplification**
+
+    The base damage amplification value is 100%, which can be increased through skills. However, different damage amplification effects stack additively, leading to diminishing returns.
+
+    For example:
+
+    - The skill **UnstoppableForce** provides `+100%` damage.
+    - The skill **SolarPower** provides `+25%` damage.
+
+    Then total damage amplification: `(100 + 100 + 25) = 225%`. If the base damage is **20**, the actual damage dealt after amplification will be **45**.
+
+- **Critical Hit Amplification**
+
+    Critical hit amplification is an independent multiplier from damage amplification, applying multiplicatively. By default, critical hits deal 200% damage (compared to the original 300%, adjustable by designers).
+
+    For example: With a total damage amplification of `225%`, a critical hit will deal `225% × 2 = 450%` damage.
+
+- **Damage Reduction**
+
+    Since damage reduction effects also stack additively (leading to diminishing returns), the calculation is more complex. CSkillsys calculates damage reduction as follows:
+
+    Each damage reduction effect is assigned a reference value (`ref`). And the actual damage taken is determined by:
+
+        result = [0x100 / (0x100 + ref)]
+
+    For example, To achieve 50% damage reduction, the reference value is:
+
+        ref = (0x100 / 0.5 - 0x100) = 256
+
+    - For 25% reduction, `ref = 85`
+    - For 75% reduction, `ref = 768`
+    - ...
+
+    When multiple damage reduction effects stack, their reference values are summed before calculation.
+
+    Example:
+
+    **50% + 25%** reduction → `ref_total = 256 + 85 = 341`
+
+    Final damage taken: `[0x100 / (0x100 + 341)] = 43%` (i.e., **57%** damage reduction)
+
+- Real Damage
+
+    Real damage is an additional damage type that:
+
+    - Ignores enemy defense and damage reduction.
+    - Cannot be amplified by damage or critical multipliers.
+
+    This dimension plays as an entirely independent damage source. It can be triggered by skills like `RuinedBlade`, making it ideal for low-attack, high-speed characters to pursue as a combat dimension.
+
+Most damage amplification and reduction skills take effect during battle by rolling RN (Random Number) (e.g., the skill **DragonFang**).
+
+We consolidated these processes along with the critical attack roll into a unified function, `BattleHit_CalcDamage`, which is ultimately called by the vanilla function `BattleGenerateHitAttributes` to apply the effects.
+
+Additionally, to provide players with more accurate battle-forecast information, we also recommond to put non-RN-dependent damage amplification effects to pre-battle calc process (e.g., the skill **MeleeManiac**).These results are then reflected in the battle-forecast via the function `ModifyBattleStatusForUI`.
+
+For Developers, If your damage amplification depends on an RN roll, it should be implemented within `BattleHit_CalcDamage`, otherwise it is rather recommend to apply it during pre-battle calculations (via `ComputeBattleUnitStats`) for optimization.
+
 # Hp drain
 
 In vanilla, it directly uses `BattleHit::hpChange` to determine hp drain amount for each round.
