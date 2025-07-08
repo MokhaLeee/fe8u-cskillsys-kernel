@@ -103,15 +103,6 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
-#if (defined(SID_KeenFighter) && (COMMON_SKILL_VALID(SID_KeenFighter)))
-		case SID_KeenFighter:
-			if (CheckCanTwiceAttackOrder(attacker, defender)) {
-				RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_KeenFighter);
-				gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_KeenFighter));
-			}
-			break;
-#endif
-
 #if defined(SID_GuardBearing) && (COMMON_SKILL_VALID(SID_GuardBearing))
 		case SID_GuardBearing:
 			if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) &&
