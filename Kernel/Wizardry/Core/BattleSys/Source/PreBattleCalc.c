@@ -1455,12 +1455,6 @@ L_FairyTaleFolk_done:
 			break;
 		}
 	}
-
-#if (defined(SID_StunningSmile) && (COMMON_SKILL_VALID(SID_StunningSmile)))
-	/* This is judging on defender */
-	if (BattleFastSkillTester(defender, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
-		attacker->battleAvoidRate -= 20;
-#endif
 }
 
 void PreBattleCalcAuraEffect(struct BattleUnit *attacker, struct BattleUnit *defender)
