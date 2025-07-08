@@ -115,6 +115,12 @@ void ClearBattleGlobalFlags(void);
 void RegisterHitCnt(struct BattleUnit *bu, bool miss);
 
 extern struct {
+	u8 round_mask;
+
+	u8 _pad_[0x10 - 0x01];
+} gBattleFlagExt;
+
+extern struct {
 	u32 desperation_order : 1;
 	u32 vantage_order : 1;
 	u32 tar_force_twice_order : 1;
@@ -157,7 +163,6 @@ enum {
 	UNWIND_DOUBLE_TAR = 1 << 3,
 };
 
-extern EWRAM_OVERLAY(0) u8 BattleOrderMask;
 extern const u8 BattleUnwindConfig[16][4];
 
 struct EfxSkillQueue {

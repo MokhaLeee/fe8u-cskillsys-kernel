@@ -49,6 +49,11 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 	FORCE_DECLARE bool ref_actor_hp_above_half  = ((actor->hpInitial  * 2) > actor->unit.maxHP);
 	FORCE_DECLARE bool ref_target_hp_above_half = ((target->hpInitial * 2) > target->unit.maxHP);
 
+	if (&gBattleActor == actor)
+		gBattleTemporaryFlag.act_force_twice_order = false;
+	else
+		gBattleTemporaryFlag.tar_force_twice_order = false;
+
 	if (target->battleSpeed > 250)
 		return false;
 
@@ -111,8 +116,6 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 
 	/* Check attacker */
 	if (&gBattleActor == actor) {
-		gBattleTemporaryFlag.act_force_twice_order = false;
-
 #if defined(SID_BoldFighter) && (COMMON_SKILL_VALID(SID_BoldFighter))
 		if (BattleFastSkillTester(actor, SID_BoldFighter) && ref_actor_hp_above_half) {
 			gBattleTemporaryFlag.act_force_twice_order = true;
@@ -196,8 +199,6 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 #endif
 
 	} else if (&gBattleTarget == actor) {
-		gBattleTemporaryFlag.tar_force_twice_order = false;
-
 #if defined(SID_VengefulFighter) && (COMMON_SKILL_VALID(SID_VengefulFighter))
 		if (BattleFastSkillTester(actor, SID_VengefulFighter) && ref_actor_hp_above_half) {
 			gBattleTemporaryFlag.tar_force_twice_order = true;
@@ -371,6 +372,25 @@ STATIC_DECLAR u8 PostCalc_ModifyBattleOrderRoundMask(u8 round_mask)
 	return ret;
 }
 
+void PreBattleGenerate_GenerateOrderFlags(void)
+{
+	gBattleFlagExt.round_mask = 0;
+
+	if (CheckDesperationOrder())
+		gBattleFlagExt.round_mask |= UNWIND_DESPERA;
+
+	if (CheckVantageOrder())
+		gBattleFlagExt.round_mask |= UNWIND_VANTAGE;
+
+	if (CheckCanTwiceAttackOrder(&gBattleActor, &gBattleTarget))
+		gBattleFlagExt.round_mask |= UNWIND_DOUBLE_ACT;
+
+	if (CheckCanTwiceAttackOrder(&gBattleTarget, &gBattleActor))
+		gBattleFlagExt.round_mask |= UNWIND_DOUBLE_TAR;
+
+	gBattleFlagExt.round_mask = PostCalc_ModifyBattleOrderRoundMask(gBattleFlagExt.round_mask);
+}
+
 LYN_REPLACE_CHECK(BattleUnwind);
 void BattleUnwind(void)
 {
@@ -384,8 +404,6 @@ void BattleUnwind(void)
 	int actor_count = 0;
 	int target_count = 0;
 
-	BattleOrderMask = 0;
-
 	ClearBattleHits();
 	gBattleHitIterator->info |= BATTLE_HIT_INFO_BEGIN;
 
@@ -395,21 +413,7 @@ void BattleUnwind(void)
 		return;
 	}
 
-	if (CheckDesperationOrder())
-		BattleOrderMask |= UNWIND_DESPERA;
-
-	if (CheckVantageOrder())
-		BattleOrderMask |= UNWIND_VANTAGE;
-
-	if (CheckCanTwiceAttackOrder(&gBattleActor, &gBattleTarget))
-		BattleOrderMask |= UNWIND_DOUBLE_ACT;
-
-	if (CheckCanTwiceAttackOrder(&gBattleTarget, &gBattleActor))
-		BattleOrderMask |= UNWIND_DOUBLE_TAR;
-
-	BattleOrderMask = PostCalc_ModifyBattleOrderRoundMask(BattleOrderMask);
-
-	config = BattleUnwindConfig[BattleOrderMask];
+	config = BattleUnwindConfig[gBattleFlagExt.round_mask];
 
 	for (i = 0; i < 4; i++) {
 		struct BattleHit *old = gBattleHitIterator;
@@ -455,12 +459,12 @@ void BattleUnwind(void)
 			gBattleHitIterator->attributes = BATTLE_HIT_ATTR_FOLLOWUP;
 
 		/* Vantage */
-		if (i == 0 && (BattleOrderMask & UNWIND_VANTAGE))
+		if (i == 0 && (gBattleFlagExt.round_mask & UNWIND_VANTAGE))
 			if (gBattleTemporaryFlag.vantage_order)
 				RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_VANTAGE]);
 
 		/* Desperation */
-		if (i == 1 && (BattleOrderMask & UNWIND_DESPERA))
+		if (i == 1 && (gBattleFlagExt.round_mask & UNWIND_DESPERA))
 			if (config[0] == ACT_ATTACK && config[1] == ACT_ATTACK && config[2] == TAR_ATTACK)
 				if (gBattleTemporaryFlag.desperation_order)
 					RegisterActorEfxSkill(GetBattleHitRound(old), BattleOrderSkills[BORDER_DESPERATION]);

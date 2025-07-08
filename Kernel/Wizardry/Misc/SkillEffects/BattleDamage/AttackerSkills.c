@@ -212,12 +212,12 @@ void BattleDamageCalc_AttackerSkills(struct BattleUnit *attacker, struct BattleU
 #if defined(SID_SteadyBrawler) && (COMMON_SKILL_VALID(SID_SteadyBrawler))
 		case SID_SteadyBrawler:
 			if (attacker == &gBattleActor) {
-				if (BattleOrderMask & UNWIND_DOUBLE_ACT)
+				if (gBattleFlagExt.round_mask & UNWIND_DOUBLE_ACT)
 					gDmg.increase += SKILL_EFF0(SID_SteadyBrawler);
 				else
 					gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_SteadyBrawler));
 			} else {
-				if (BattleOrderMask & UNWIND_DOUBLE_TAR)
+				if (gBattleFlagExt.round_mask & UNWIND_DOUBLE_TAR)
 					gDmg.increase += SKILL_EFF0(SID_SteadyBrawler);
 				else
 					gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_SteadyBrawler));

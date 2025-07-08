@@ -346,6 +346,23 @@ void PreBattleCalcDefenderSkills(struct BattleUnit *attacker, struct BattleUnit 
 			break;
 #endif
 
+#if defined(SID_KeenFighter) && (COMMON_SKILL_VALID(SID_KeenFighter))
+		case SID_KeenFighter:
+		{
+			int tmp = 0;
+
+			if (attacker == &gBattleActor)
+				tmp = UNWIND_DOUBLE_ACT;
+			else
+				tmp = UNWIND_DOUBLE_TAR;
+
+			if (gBattleFlagExt.round_mask & tmp)
+				GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_KeenFighter));
+
+			break;
+		}
+#endif
+
 		case MAX_SKILL_NUM:
 			Fatal("ENOSUPP");
 			break;
