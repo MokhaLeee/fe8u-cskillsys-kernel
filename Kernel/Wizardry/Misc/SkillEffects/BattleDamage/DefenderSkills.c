@@ -86,13 +86,6 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
-#if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
-		case SID_DragonSkin:
-			RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DragonSkin);
-			gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonSkin));
-			break;
-#endif
-
 #if (defined(SID_Multiscale) && (COMMON_SKILL_VALID(SID_Multiscale)))
 		case SID_Multiscale:
 			if (defender->unit.curHP == defender->unit.maxHP) {
@@ -132,41 +125,11 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
-#if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
-		case SID_BeastAssault:
-			gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_BeastAssault));
-			break;
-#endif
-
-#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
-		case SID_Spurn:
-			tmp0 = defender->battleSpeed - attacker->battleSpeed;
-			LIMIT_AREA(tmp0, 0, 10);
-			gDmg.decrease += DAMAGE_DECREASE(tmp0 * SKILL_EFF1(SID_Spurn));
-			break;
-#endif
-
-#if (defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido)))
-		case SID_Bushido:
-			tmp0 = defender->battleSpeed - attacker->battleSpeed;
-			LIMIT_AREA(tmp0, 0, 10);
-			gDmg.decrease += DAMAGE_DECREASE(tmp0 * SKILL_EFF0(SID_Bushido));
-			break;
-#endif
-
 #if (defined(SID_DragonWall) && (COMMON_SKILL_VALID(SID_DragonWall)))
 		case SID_DragonWall:
 			tmp0 = defender->unit.res - attacker->unit.res;
 			LIMIT_AREA(tmp0, 0, 10);
 			gDmg.decrease += DAMAGE_DECREASE(tmp0 * SKILL_EFF0(SID_DragonWall));
-			break;
-#endif
-
-#if (defined(SID_BlueLionRule) && (COMMON_SKILL_VALID(SID_BlueLionRule)))
-		case SID_BlueLionRule:
-			tmp0 = defender->unit.def - attacker->unit.def;
-			LIMIT_AREA(tmp0, 0, 10);
-			gDmg.decrease += DAMAGE_DECREASE(tmp0 * SKILL_EFF0(SID_BlueLionRule));
 			break;
 #endif
 
@@ -225,12 +188,6 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 			if (defender->unit.curHP < defender->hpInitial)
 				gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Barricade));
 
-			break;
-#endif
-
-#if defined(SID_ImmovableObject) && (COMMON_SKILL_VALID(SID_ImmovableObject))
-		case SID_ImmovableObject:
-			gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_ImmovableObject));
 			break;
 #endif
 

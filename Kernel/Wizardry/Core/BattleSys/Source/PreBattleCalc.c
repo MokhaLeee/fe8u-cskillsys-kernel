@@ -196,6 +196,8 @@ STATIC_DECLAR void Local_PreBattleCalcInitExt(struct BattleUnit *attacker, struc
 	} else {
 		st->atk = st->def = st->as = st->hit = st->avo = st->crit = st->dodge = st->silencer = 0;
 	}
+
+	PreBattleCalcInit_BaseDamage(attacker, defender);
 }
 
 void PreBattleCalcInit(struct BattleUnit *attacker, struct BattleUnit *defender)
@@ -253,7 +255,108 @@ void PreBattleCalcEnd(struct BattleUnit *attacker, struct BattleUnit *defender)
 		attacker->battleSilencerRate = 0;
 }
 
-void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
+void PreBattleCalcDefenderSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	int _skill_list_cnt;
+	struct SkillList *list;
+
+	/**
+	 * Skip arena judgement
+	 */
+	if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+		return;
+
+	list = GetUnitSkillList(&defender->unit);
+	for (_skill_list_cnt = 0; _skill_list_cnt < list->amt; _skill_list_cnt++) {
+		switch (list->sid[_skill_list_cnt]) {
+#if (defined(SID_StunningSmile) && (COMMON_SKILL_VALID(SID_StunningSmile)))
+		case SID_StunningSmile:
+			// todo: move to extra info
+			if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
+				attacker->battleAvoidRate -= 20;
+			break;
+#endif
+
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+		case SID_MeleeManiac:
+			// todo: move to extra info
+			if (gBattleStats.range != 1)
+				GetBaseDmg(attacker)->increase += 100;
+			break;
+#endif
+
+#if (defined(SID_DragonSkin) && (COMMON_SKILL_VALID(SID_DragonSkin)))
+		case SID_DragonSkin:
+			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonSkin));
+			break;
+#endif
+
+#if (defined(SID_BeastAssault) && (COMMON_SKILL_VALID(SID_BeastAssault)))
+		case SID_BeastAssault:
+			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_BeastAssault));
+			break;
+#endif
+
+#if (defined(SID_Spurn) && (COMMON_SKILL_VALID(SID_Spurn)))
+		case SID_Spurn:
+		{
+			int tmp = BattleUnitOriginalStatus(defender)->as - BattleUnitOriginalStatus(attacker)->as;
+
+			LIMIT_AREA(tmp, 0, 10);
+			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(tmp * SKILL_EFF1(SID_Spurn));
+			break;
+		}
+#endif
+
+#if (defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido)))
+		case SID_Bushido:
+		{
+			int tmp = BattleUnitOriginalStatus(defender)->as - BattleUnitOriginalStatus(attacker)->as;
+
+			LIMIT_AREA(tmp, 0, 10);
+			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(tmp * SKILL_EFF0(SID_Bushido));
+			break;
+		}
+#endif
+
+#if (defined(SID_DragonWall) && (COMMON_SKILL_VALID(SID_DragonWall)))
+		case SID_DragonWall:
+		{
+			int tmp = defender->unit.res - attacker->unit.res;
+
+			LIMIT_AREA(tmp, 0, 10);
+			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(tmp * SKILL_EFF0(SID_DragonWall));
+			break;
+		}
+#endif
+
+#if (defined(SID_BlueLionRule) && (COMMON_SKILL_VALID(SID_BlueLionRule)))
+		case SID_BlueLionRule:
+		{
+			int tmp = defender->unit.def - attacker->unit.def;
+			LIMIT_AREA(tmp, 0, 10);
+			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(tmp * SKILL_EFF0(SID_BlueLionRule));
+			break;
+		}
+#endif
+
+#if defined(SID_ImmovableObject) && (COMMON_SKILL_VALID(SID_ImmovableObject))
+		case SID_ImmovableObject:
+			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_ImmovableObject));
+			break;
+#endif
+
+		case MAX_SKILL_NUM:
+			Fatal("ENOSUPP");
+			break;
+
+		default:
+			break;
+		}
+	}
+}
+
+void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	FORCE_DECLARE int tmp, i;
 	int _skill_list_cnt;
@@ -902,14 +1005,6 @@ void PreBattleCalcSkills(struct BattleUnit *attacker, struct BattleUnit *defende
 			break;
 #endif
 
-#if (defined(SID_StunningSmile) && (COMMON_SKILL_VALID(SID_StunningSmile)))
-		case SID_StunningSmile:
-			if (!(UNIT_CATTRIBUTES(&defender->unit) & CA_FEMALE))
-				attacker->battleDefense += SKILL_EFF0(SID_StunningSmile);
-
-			break;
-#endif
-
 #if defined(SID_Trample) && (COMMON_SKILL_VALID(SID_Trample))
 		case SID_Trample:
 			if (!(UNIT_CATTRIBUTES(&defender->unit) & CA_MOUNTEDAID))
@@ -1265,12 +1360,31 @@ L_FairyTaleFolk_done:
 
 #if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
 		case SID_MeleeManiac:
-			if (gBattleStats.range == 1) {
-				int _dmg_tmp = BattleUnitOriginalStatus(attacker)->atk - BattleUnitOriginalStatus(defender)->def;
+			// todo: move to extra info
+			GetBaseDmg(attacker)->increase += 100;
+			break;
+#endif
 
-				if (_dmg_tmp > 0)
-					attacker->battleAttack += _dmg_tmp;
-			}
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+		case SID_UnstoppableForce:
+			// todo: move to extra info
+			GetBaseDmg(attacker)->increase += 100;
+			break;
+#endif
+
+#if defined(SID_SolarPower) && (COMMON_SKILL_VALID(SID_SolarPower))
+		case SID_SolarPower:
+			if (gPlaySt.chapterWeatherId == WEATHER_FLAMES && IsMagicAttack(attacker))
+				GetBaseDmg(attacker)->increase += SKILL_EFF0(SID_SolarPower);
+
+			break;
+#endif
+
+#if (defined(SID_LunarBrace) && (COMMON_SKILL_VALID(SID_LunarBrace)))
+		case SID_LunarBrace:
+			if (&gBattleActor == attacker)
+				attacker->battleAttack +=
+					perc_of(BattleUnitOriginalStatus(defender)->def, SKILL_EFF0(SID_LunarBrace));
 			break;
 #endif
 
@@ -1346,15 +1460,6 @@ L_FairyTaleFolk_done:
 	/* This is judging on defender */
 	if (BattleFastSkillTester(defender, SID_StunningSmile) && !(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
 		attacker->battleAvoidRate -= 20;
-#endif
-
-#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
-	if (BattleFastSkillTester(defender, SID_MeleeManiac) && gBattleStats.range != 1) {
-		int _dmg_tmp = BattleUnitOriginalStatus(attacker)->atk - BattleUnitOriginalStatus(defender)->def;
-
-		if (_dmg_tmp > 0)
-			attacker->battleAttack += _dmg_tmp;
-	}
 #endif
 }
 

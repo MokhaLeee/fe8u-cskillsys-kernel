@@ -100,4 +100,14 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 		SID_AversaNight,
 #endif
 	},
+
+	[CHARACTER_VIGARDE] = {
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+		SID_MeleeManiac,
+#endif
+
+#if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
+		SID_UnstoppableForce,
+#endif
+	},
 };

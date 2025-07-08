@@ -95,15 +95,6 @@ void BattleDamageCalc_AttackerSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
-#if (defined(SID_LunarBrace) && (COMMON_SKILL_VALID(SID_LunarBrace)))
-		case SID_LunarBrace:
-			if (&gBattleActor == attacker) {
-				RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_LunarBrace);
-				gDmg.correction += perc_of(defender->battleDefense, SKILL_EFF0(SID_LunarBrace));
-			}
-			break;
-#endif
-
 #if (defined(SID_BloodSurge) && COMMON_SKILL_VALID(SID_BloodSurge))
 		case SID_BloodSurge:
 			if (TryBattleHpCost(attacker, SKILL_EFF0(SID_BloodSurge))) {
@@ -194,14 +185,6 @@ void BattleDamageCalc_AttackerSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
-#if defined(SID_SolarPower) && (COMMON_SKILL_VALID(SID_SolarPower))
-		case SID_SolarPower:
-			if (gPlaySt.chapterWeatherId == WEATHER_FLAMES && IsMagicAttack(attacker))
-				gDmg.increase += SKILL_EFF0(SID_SolarPower);
-
-			break;
-#endif
-
 #if (defined(SID_SureShot) && (COMMON_SKILL_VALID(SID_SureShot)))
 		case SID_SureShot:
 			if (gBattleTemporaryFlag.skill_activated_sure_shoot)
@@ -239,12 +222,6 @@ void BattleDamageCalc_AttackerSkills(struct BattleUnit *attacker, struct BattleU
 				else
 					gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_SteadyBrawler));
 			}
-			break;
-#endif
-
-#if defined(SID_UnstoppableForce) && (COMMON_SKILL_VALID(SID_UnstoppableForce))
-		case SID_UnstoppableForce:
-			gDmg.increase += SKILL_EFF0(SID_UnstoppableForce);
 			break;
 #endif
 

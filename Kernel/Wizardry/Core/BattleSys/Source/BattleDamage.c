@@ -55,12 +55,24 @@ int CalcBattleRealDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	return damage;
 }
 
+void PreBattleCalcInit_BaseDamage(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	gActorBaseDmg.increase = 100;
+	gActorBaseDmg.decrease = 0x100;
+	gActorBaseDmg.real_damage = CalcBattleRealDamage(&gBattleActor, &gBattleTarget);
+
+	gTargetBaseDmg.increase = 100;
+	gTargetBaseDmg.decrease = 0x100;
+	gTargetBaseDmg.real_damage = CalcBattleRealDamage(&gBattleTarget, &gBattleActor);
+}
+
 int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	const BattleDamageCalcFunc *it;
 
 	FORCE_DECLARE bool barricadePlus_activated;
 	int base_damage, crit_correction, result;
+	struct BaseDmg *base_dmg = GetBaseDmg(attacker);
 
 	FORCE_DECLARE struct BattleGlobalFlags *act_flags, *tar_flags;
 
@@ -82,24 +94,15 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 
 	gDmg.crit_atk = false;
 	gDmg.correction = 0;
-	gDmg.increase = 100;
-	gDmg.decrease = 0x100;
 	gDmg.crit_correction = gpKernelBattleDesignerConfig->crit_correction;
-	gDmg.real_damage = CalcBattleRealDamage(attacker, defender);
+
+	gDmg.increase = base_dmg->increase;
+	gDmg.decrease = base_dmg->decrease;
+	gDmg.real_damage = base_dmg->real_damage;
 
 	/**
 	 * Roll critical and silencer attack
 	 */
-#if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
-	if (BattleFastSkillTester(defender, SID_Fortune))
-		gBattleStats.critRate = 0;
-#endif
-
-#if defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight))
-	if (BattleFastSkillTester(defender, SID_Foresight))
-		gBattleStats.critRate = 0;
-#endif
-
 	if (BattleRoll1RN(gBattleStats.critRate, false)) {
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
 		gDmg.crit_atk = true;
@@ -151,8 +154,8 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 		dividend = base_damage * gDmg.increase * crit_correction * 0x100;
 		divisor  = 100 * 100 * gDmg.decrease;
 
-		// quotient = k_udiv(dividend, divisor);
-		quotient = DIV_ROUND_CLOSEST(dividend, divisor);
+		quotient = k_udiv(dividend, divisor);
+		// quotient = DIV_ROUND_CLOSEST(dividend, divisor);
 
 		LTRACEF("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
 		result = quotient;

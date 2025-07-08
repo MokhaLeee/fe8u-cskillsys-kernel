@@ -324,6 +324,7 @@ static const struct UnitDefinition UnitDef_Enemy1[] = {
 			.b = -1,
 		}},
 		.items = {
+			ITEM_LANCE_JAVELIN,
 			ITEM_AXE_IRON,
 			ITEM_LANCE_SILVER,
 			ITEM_VULNERARY,

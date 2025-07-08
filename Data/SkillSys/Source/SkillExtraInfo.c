@@ -856,7 +856,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_StunningSmile) && COMMON_SKILL_VALID(SID_StunningSmile))
-	[SID_StunningSmile] = {{ 6 }},
+	[SID_StunningSmile] = {{ 20 }},
 #endif
 
 #if (defined(SID_Trample) && COMMON_SKILL_VALID(SID_Trample))
@@ -1157,5 +1157,9 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_SolidRock) && COMMON_SKILL_VALID(SID_SolidRock))
 	[SID_SolidRock] = {{ 100 }},
+#endif
+
+#if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
+	[SID_MeleeManiac] = {{ 100, 100 }},
 #endif
 };

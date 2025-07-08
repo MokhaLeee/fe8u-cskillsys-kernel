@@ -196,13 +196,27 @@ extern u8 const *const gpWeaponHpDrainConfig;
 /**
  * BattleDamage
  */
-extern struct {
+struct Dmg {
 	bool8 crit_atk;
 	int result;
 	int correction, real_damage, increase, decrease, crit_correction;
-} gDmg; // Aka: expanded gBattleStats
-
+};
+extern struct Dmg gDmg; // Aka: expanded gBattleStats
 int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defender);
+
+struct BaseDmg {
+	int increase, decrease, real_damage;
+};
+extern struct BaseDmg gActorBaseDmg, gTargetBaseDmg;
+
+static inline struct BaseDmg *GetBaseDmg(struct BattleUnit *bu)
+{
+	return (bu == &gBattleActor)
+		 ? &gActorBaseDmg
+		 : &gTargetBaseDmg;
+}
+
+void PreBattleCalcInit_BaseDamage(struct BattleUnit *attacker, struct BattleUnit *defender);
 
 /**
  * BattleUI

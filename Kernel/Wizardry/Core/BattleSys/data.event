@@ -4,7 +4,8 @@ ALIGN 4
 PreBattleCalcFuncs:
     POIN PreBattleCalcInit
 
-    POIN PreBattleCalcSilencerRate PreBattleCalcWeaponTriangle PreBattleCalcSkills
+    POIN PreBattleCalcSilencerRate PreBattleCalcWeaponTriangle
+    POIN PreBattleCalcAttackerSkills PreBattleCalcDefenderSkills
     POIN PreBattleCalcLegendSkills PreBattleCalcDebuffs PreBattleCalcCombatArt PreBattleCalcAuraEffect
     POIN PreBattleCalcShieldBonus PreBattleCalc_WrankBonus
     POIN PreBattleCalcStatDebuffs PreBattleCalcLeadershipBonus

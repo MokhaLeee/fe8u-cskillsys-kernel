@@ -175,6 +175,30 @@ STATIC_DECLAR void BattleCalcReal_ComputSkills(struct BattleUnit *attacker, stru
 		attacker->battleDefense = 0;
 	}
 #endif
+
+#if defined(SID_Fortune) && (COMMON_SKILL_VALID(SID_Fortune))
+	if (BattleFastSkillTester(defender, SID_Fortune)) {
+		attacker->battleCritRate = 0;
+		attacker->battleEffectiveCritRate = 0;
+	}
+#endif
+
+#if defined(SID_Foresight) && (COMMON_SKILL_VALID(SID_Foresight))
+	if (BattleFastSkillTester(defender, SID_Foresight)) {
+		attacker->battleCritRate = 0;
+		attacker->battleEffectiveCritRate = 0;
+	}
+#endif
+
+#if (defined(SID_TowerShieldPlus) && (COMMON_SKILL_VALID(SID_TowerShieldPlus)))
+	if (gBattleStats.range > 1 && BattleFastSkillTester(attacker, SID_TowerShieldPlus))
+		attacker->battleDefense = 999;
+#endif
+
+#if (defined(SID_Dazzling) && (COMMON_SKILL_VALID(SID_Dazzling)))
+	if (gBattleStats.range > 1 && BattleFastSkillTester(attacker, SID_Dazzling))
+		attacker->battleDefense = 999;
+#endif
 }
 
 LYN_REPLACE_CHECK(ComputeBattleUnitSilencerRate);
