@@ -125,14 +125,6 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 			break;
 #endif
 
-#if (defined(SID_DragonWall) && (COMMON_SKILL_VALID(SID_DragonWall)))
-		case SID_DragonWall:
-			tmp0 = defender->unit.res - attacker->unit.res;
-			LIMIT_AREA(tmp0, 0, 10);
-			gDmg.decrease += DAMAGE_DECREASE(tmp0 * SKILL_EFF0(SID_DragonWall));
-			break;
-#endif
-
 #if (defined(SID_CounterRoar) && (COMMON_SKILL_VALID(SID_CounterRoar)))
 		case SID_CounterRoar:
 			if (GetBattleGlobalFlags(attacker)->round_cnt_hit == 1)
