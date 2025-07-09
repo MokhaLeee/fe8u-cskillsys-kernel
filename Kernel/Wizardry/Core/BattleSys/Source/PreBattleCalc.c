@@ -5,6 +5,7 @@
 #include "debuff.h"
 #include "bwl.h"
 #include "kernel-lib.h"
+#include "unit-expa.h"
 #include "class-types.h"
 #include "combat-art.h"
 #include "kernel-tutorial.h"
@@ -361,6 +362,52 @@ void PreBattleCalcDefenderSkills(struct BattleUnit *attacker, struct BattleUnit 
 
 			break;
 		}
+#endif
+
+#if defined(SID_SteadyBrawler) && (COMMON_SKILL_VALID(SID_SteadyBrawler))
+		case SID_SteadyBrawler:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE) {
+				int local_mask = (defender == &gBattleActor) ? UNWIND_DOUBLE_ACT : UNWIND_DOUBLE_TAR;
+
+				if (!(gBattleFlagExt.round_mask & local_mask))
+					GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF1(SID_SteadyBrawler));
+			}
+			break;
+#endif
+
+#if (defined(SID_Multiscale) && (COMMON_SKILL_VALID(SID_Multiscale)))
+		case SID_Multiscale:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+				if (defender->unit.curHP == defender->unit.maxHP)
+					GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_Multiscale));
+
+			break;
+#endif
+
+#if defined(SID_GuardBearing) && (COMMON_SKILL_VALID(SID_GuardBearing))
+		case SID_GuardBearing:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE) {
+				if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction))
+					if (!CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
+						GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_GuardBearing));
+			}
+			break;
+#endif
+
+#if (defined(SID_CounterRoar) && (COMMON_SKILL_VALID(SID_CounterRoar)))
+		case SID_CounterRoar:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+				GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_CounterRoar));
+
+			break;
+#endif
+
+#if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
+		case SID_DragonWarth:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+				gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_DragonWarth));
+
+			break;
 #endif
 
 		case MAX_SKILL_NUM:
@@ -1450,6 +1497,34 @@ L_FairyTaleFolk_done:
 			if (!defender->canCounter) {
 				attacker->battleHitRate -= 50;
 				attacker->battleAvoidRate += 50;
+			}
+			break;
+#endif
+
+#if (defined(SID_BloodSurge) && COMMON_SKILL_VALID(SID_BloodSurge))
+		case SID_BloodSurge:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+				if (TryBattleHpCost(attacker, SKILL_EFF0(SID_BloodSurge)))
+					attacker->battleAttack += perc_of(attacker->unit.maxHP, SKILL_EFF1(SID_BloodSurge));
+
+			break;
+#endif
+
+#if (defined(SID_DragonWarth) && (COMMON_SKILL_VALID(SID_DragonWarth)))
+		case SID_DragonWarth:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+				attacker->battleAttack += perc_of(BattleUnitOriginalStatus(attacker)->atk, SKILL_EFF0(SID_DragonWarth));
+
+			break;
+#endif
+
+#if defined(SID_SteadyBrawler) && (COMMON_SKILL_VALID(SID_SteadyBrawler))
+		case SID_SteadyBrawler:
+			if (gBattleStats.config & BATTLE_CONFIG_SIMULATE) {
+				int local_mask = (attacker == &gBattleActor) ? UNWIND_DOUBLE_ACT : UNWIND_DOUBLE_TAR;
+
+				if (gBattleFlagExt.round_mask & local_mask)
+					GetBaseDmg(attacker)->increase += SKILL_EFF0(SID_SteadyBrawler);
 			}
 			break;
 #endif
