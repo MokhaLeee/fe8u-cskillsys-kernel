@@ -32,7 +32,6 @@ SET_DATA UsedFreeDemoRamSpaceTop, FreeDemoRamSpaceBottom
 SET_DATA FreeRamSpace2Top,    0x0203AAA4
 SET_DATA FreeRamSpace2Bottom, 0x0203DDE0
 SET_DATA UsedFreeRamSpace2Bottom, FreeRamSpace2Top
-SET_DATA SUB_THREAD_STACK_BASE, FreeRamSpace2Bottom
 
 .macro _kernel_malloc2 name, size
     .set UsedFreeRamSpace2Bottom, UsedFreeRamSpace2Bottom + \size
@@ -99,7 +98,6 @@ _kernel_malloc sDemoUnitExpaAlly, 51 * 4
 _kernel_malloc sDemoUnitExpaEnemy, 51 * 4
 _kernel_malloc sDemoUnitExpaNpc, 8 * 4
 _kernel_malloc sDemoUnitExpaBattle, 2 * 4
-_kernel_malloc gThreadInfo, 0x14
 _kernel_malloc gBattleFlagExt, 0x10
 
 @ _kernel_malloc _kernel_malloc_align4_pad, 3

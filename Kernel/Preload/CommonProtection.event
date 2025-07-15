@@ -8,10 +8,6 @@
 #ifdef CONFIG_COMMON_PROTECTION_ENBALED
 PUSH
 	// player phase
-    ORG 0x59AB8C
-    POIN PlayerPhase_InitUnitMovementSelectRework
-    ORG 0x59AB9C
-    POIN PlayerPhase_RangeDisplayIdleRework
 	ORG $59ABE0
 	PROC_JUMP(ProcScr_PostActionHookPlayPhase)
 	ORG 0x59AB2C
