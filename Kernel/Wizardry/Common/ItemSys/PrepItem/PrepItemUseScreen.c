@@ -150,7 +150,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// POW
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 5),
-		(PowGetter(unit) == UNIT_POW_MAX(unit))
+		(PowGetter(unit) == GetUnitMaxStatusPow(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		PowGetter(unit)
@@ -159,7 +159,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// MAG
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 7),
-		(MagGetter(unit) == GetUnitMaxMagic(unit))
+		(MagGetter(unit) == GetUnitMaxStatusMag(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		MagGetter(unit)
@@ -168,7 +168,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// LCK
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 20, 9),
-		(LckGetter(unit) == UNIT_LCK_MAX(unit))
+		(LckGetter(unit) == GetUnitMaxStatusLck(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		LckGetter(unit)
@@ -177,7 +177,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// SKL
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 27, 3),
-		(SklGetter(unit) == UNIT_SKL_MAX(unit))
+		(SklGetter(unit) == GetUnitMaxStatusSkl(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		SklGetter(unit)
@@ -186,7 +186,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// SPD
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 27, 5),
-		(SpdGetter(unit) == UNIT_SPD_MAX(unit))
+		(SpdGetter(unit) == GetUnitMaxStatusSpd(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		SpdGetter(unit)
@@ -195,7 +195,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// DEF
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 27, 7),
-		(DefGetter(unit) == UNIT_DEF_MAX(unit))
+		(DefGetter(unit) == GetUnitMaxStatusDef(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		DefGetter(unit)
@@ -204,7 +204,7 @@ void DrawPrepScreenItemUseStatValues(struct Unit *unit)
 	// RES
 	PutNumberOrBlank(
 		TILEMAP_LOCATED(gBG2TilemapBuffer, 27, 9),
-		(ResGetter(unit) == UNIT_RES_MAX(unit))
+		(ResGetter(unit) == GetUnitMaxStatusRes(unit))
 			? TEXT_COLOR_SYSTEM_GREEN
 			: TEXT_COLOR_SYSTEM_BLUE,
 		ResGetter(unit)

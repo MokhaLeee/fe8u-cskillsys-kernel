@@ -9,13 +9,13 @@ void DisplayPage0(void)
 	struct Unit *unit = gStatScreen.unit;
 
 	u8 max_vals[] = {
-		UNIT_POW_MAX(unit),
-		GetUnitMaxMagic(unit),
-		UNIT_SKL_MAX(unit),
-		UNIT_SPD_MAX(unit),
-		UNIT_LCK_MAX(unit),
-		UNIT_DEF_MAX(unit),
-		UNIT_RES_MAX(unit),
+		GetUnitMaxStatusPow(unit),
+		GetUnitMaxStatusMag(unit),
+		GetUnitMaxStatusSkl(unit),
+		GetUnitMaxStatusSpd(unit),
+		GetUnitMaxStatusLck(unit),
+		GetUnitMaxStatusDef(unit),
+		GetUnitMaxStatusRes(unit),
 	};
 
 	gStatScreenStExpa.unitpage_max = SortMax(max_vals, ARRAY_COUNT(max_vals));
