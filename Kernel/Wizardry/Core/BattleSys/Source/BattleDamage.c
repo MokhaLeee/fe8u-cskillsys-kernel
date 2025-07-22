@@ -55,6 +55,12 @@ int CalcBattleRealDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	return damage;
 }
 
+STATIC_DECLAR int GetMaxDamage(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	/* TODO: better to put this to designer config */
+	return CONFIG_BATTLE_MAX_DAMAGE;
+}
+
 void PreBattleCalcInit_BaseDamage(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	gActorBaseDmg.increase = 100;
@@ -73,6 +79,7 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	FORCE_DECLARE bool barricadePlus_activated;
 	int base_damage, crit_correction, result;
 	struct BaseDmg *base_dmg = GetBaseDmg(attacker);
+	int max_damage = GetMaxDamage(attacker, defender);
 
 	FORCE_DECLARE struct BattleGlobalFlags *act_flags, *tar_flags;
 
@@ -110,8 +117,8 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 		if (BattleRoll1RN(gBattleStats.silencerRate, false)) {
 			/* Directly return on silencer attack to fasten calc */
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_SILENCER;
-			gDmg.result = BATTLE_MAX_DAMAGE;
-			return BATTLE_MAX_DAMAGE;
+			gDmg.result = max_damage;
+			return max_damage;
 		}
 	}
 
@@ -126,8 +133,8 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	 * Calculate result
 	 */
 	if (gBattleHitIterator->attributes & BATTLE_HIT_ATTR_SILENCER) {
-		gDmg.result = BATTLE_MAX_DAMAGE;
-		return BATTLE_MAX_DAMAGE;
+		gDmg.result = max_damage;
+		return max_damage;
 	} else if (gBattleHitIterator->attributes & BATTLE_HIT_ATTR_GREATSHLD) {
 		gDmg.result = 0;
 		return 0;
@@ -149,16 +156,14 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 	 * Step6: Calculate result
 	 */
 	{
-		u32 dividend, divisor, quotient;
+		int dividend;
 
-		dividend = base_damage * gDmg.increase * crit_correction * 0x100;
-		divisor  = 100 * 100 * gDmg.decrease;
+		dividend = k_udiv(base_damage * gDmg.increase * crit_correction, 100 * 100);
 
-		quotient = k_udiv(dividend, divisor);
-		// quotient = DIV_ROUND_CLOSEST(dividend, divisor);
+		if (dividend > max_damage)
+			dividend = max_damage;
 
-		LTRACEF("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
-		result = quotient;
+		result = k_udiv(dividend * 0x100, gDmg.decrease);
 	}
 
 	if (result == 0 && base_damage > 0)
@@ -166,12 +171,12 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 
 	result += gDmg.real_damage;
 
-	LTRACEF("[round %d] dmg=%d: base=%d (atk=%d, def=%d, cor=%d), inc=%d, crt=%d, dec=%d, real=%d",
-					GetBattleHitRound(gBattleHitIterator), result, base_damage,
+	LTRACEF("[round %d] dmg=%d: max=%d, base=%d (atk=%d, def=%d, cor=%d), inc=%d, crt=%d, dec=%d, real=%d",
+					GetBattleHitRound(gBattleHitIterator), result, max_damage, base_damage,
 					gBattleStats.attack, gBattleStats.defense, gDmg.correction, gDmg.increase, crit_correction, gDmg.decrease, gDmg.real_damage);
 
-	if (result > BATTLE_MAX_DAMAGE)
-		result = BATTLE_MAX_DAMAGE;
+	if (result > max_damage)
+		result = max_damage;
 
 	gDmg.result = result;
 	return result;

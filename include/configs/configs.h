@@ -186,6 +186,11 @@
 // #define CONFIG_INSTALL_STATSCREENFX
 
 /**
+ * Battle max damage 
+ */
+#define CONFIG_BATTLE_MAX_DAMAGE 127
+
+/**
  * Install Bow2Decrease
  */
 #define CONFIG_INSTALL_BOW2DECREASE
