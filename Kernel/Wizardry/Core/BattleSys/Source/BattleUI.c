@@ -15,15 +15,17 @@ STATIC_DECLAR void Local_ModifyBattleStatusExt(struct BattleUnit *attacker, stru
 	struct BaseDmg *base_dmg = GetBaseDmg(attacker);
 
 	if (attacker->battleAttack > defender->battleDefense) {
-		u32 simu_dmg, dividend, divisor, quotient;
+		int simu_dmg, max_damage, dividend, quotient;
 
+		max_damage = GetMaxDamage(attacker, defender);
 		simu_dmg = attacker->battleAttack - defender->battleDefense;
 
-		dividend = simu_dmg * base_dmg->increase * 0x100;
-		divisor  = 1 * 100 * base_dmg->decrease;
-		quotient = k_udiv(dividend, divisor);
+		dividend = k_udiv(simu_dmg * base_dmg->increase, 100);
+		if (dividend > max_damage)
+			dividend = max_damage;
 
-		LTRACEF("dividend=%ld, divisor=%ld, quotient=%ld", dividend, divisor, quotient);
+		quotient = k_udiv(dividend * 0x100, base_dmg->decrease);
+
 		attacker->battleAttack = defender->battleDefense + quotient;
 	}
 

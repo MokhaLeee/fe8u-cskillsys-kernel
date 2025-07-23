@@ -222,6 +222,7 @@ static inline struct BaseDmg *GetBaseDmg(struct BattleUnit *bu)
 }
 
 void PreBattleCalcInit_BaseDamage(struct BattleUnit *attacker, struct BattleUnit *defender);
+int GetMaxDamage(struct BattleUnit *attacker, struct BattleUnit *defender);
 
 /**
  * BattleUI
