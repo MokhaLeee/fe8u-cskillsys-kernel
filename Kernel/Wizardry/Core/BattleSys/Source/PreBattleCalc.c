@@ -41,7 +41,7 @@ LYN_REPLACE_CHECK(ComputeBattleUnitAttack);
 void ComputeBattleUnitAttack(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	int status;
-	bool effective = false;;
+	bool effective = false;
 	int effective_amplifier = 100;
 	int effective_reduce = 0x100;
 
@@ -335,6 +335,7 @@ void PreBattleCalcDefenderSkills(struct BattleUnit *attacker, struct BattleUnit 
 		case SID_BlueLionRule:
 		{
 			int tmp = defender->unit.def - attacker->unit.def;
+
 			LIMIT_AREA(tmp, 0, 10);
 			GetBaseDmg(attacker)->decrease += DAMAGE_DECREASE(tmp * SKILL_EFF0(SID_BlueLionRule));
 			break;
@@ -1533,9 +1534,9 @@ L_FairyTaleFolk_done:
 		case SID_Stubborn:
 			if ((BattleUnitOriginalStatus(attacker)->atk + BattleUnitOriginalStatus(attacker)->def) <
 				(BattleUnitOriginalStatus(defender)->atk + BattleUnitOriginalStatus(defender)->def)) {
-					attacker->battleAttack += SKILL_EFF0(SID_Stubborn);
-					attacker->battleSpeed  += SKILL_EFF1(SID_Stubborn);
-				}
+				attacker->battleAttack += SKILL_EFF0(SID_Stubborn);
+				attacker->battleSpeed  += SKILL_EFF1(SID_Stubborn);
+			}
 			break;
 #endif
 

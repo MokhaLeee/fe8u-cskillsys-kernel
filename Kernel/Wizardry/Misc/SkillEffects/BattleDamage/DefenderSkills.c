@@ -7,9 +7,9 @@
 
 void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+	_maybe_unused int tmp0, tmp1;
 	int _skill_list_cnt;
 	struct SkillList *list;
-	_maybe_unused int tmp0, tmp1;
 
 	/**
 	 * Skip arena judgement
@@ -107,8 +107,8 @@ void BattleDamageCalc_DefenderSkills(struct BattleUnit *attacker, struct BattleU
 		case SID_GuardBearing:
 			if (!AreUnitsAllied(defender->unit.index, gPlaySt.faction) &&
 				GetBattleGlobalFlags(attacker)->round_cnt_hit == 1 &&
-				!CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED))
-			{
+				!CheckBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED)) {
+
 				RegisterTargetEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_GuardBearing);
 				SetBitUES(&defender->unit, UES_BIT_GUARDBEAR_SKILL_USED);
 				gDmg.decrease += DAMAGE_DECREASE(SKILL_EFF0(SID_GuardBearing));

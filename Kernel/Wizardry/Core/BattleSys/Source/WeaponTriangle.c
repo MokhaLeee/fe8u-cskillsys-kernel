@@ -261,5 +261,4 @@ void _BattleApplyWeaponTriangleEffect(struct BattleUnit *attacker, struct Battle
 	 * But just calculate in Pre-Battle calc (PreBattleCalcWeaponTriangle)
 	 * now WTA-bonus in BattleUnit struct is just for BkSel UI.
 	 */
-	return;
 }

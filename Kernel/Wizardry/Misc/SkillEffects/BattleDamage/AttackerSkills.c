@@ -7,9 +7,9 @@
 
 void BattleDamageCalc_AttackerSkills(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+	_maybe_unused int tmp0, tmp1;
 	int _skill_list_cnt;
 	struct SkillList *list;
-	_maybe_unused int tmp0, tmp1;
 
 	gBattleTemporaryFlag.skill_activated_aether = false;
 
