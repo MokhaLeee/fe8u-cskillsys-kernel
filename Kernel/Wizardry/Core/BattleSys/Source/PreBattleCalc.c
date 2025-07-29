@@ -1150,7 +1150,7 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 						continue;
 
 					if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassFlier(UNIT_CLASS_ID(unit_ally))) {
-						attacker->battleAttack += SKILL_EFF0(SID_Skyguard);
+						attacker->battleDefense += SKILL_EFF0(SID_Skyguard);
 						break;
 					}
 				}
@@ -1174,7 +1174,7 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 						continue;
 
 					if (AreUnitsAllied(attacker->unit.index, unit_ally->index) && CheckClassCavalry(UNIT_CLASS_ID(unit_ally))) {
-						attacker->battleAttack += SKILL_EFF0(SID_Horseguard);
+						attacker->battleDefense += SKILL_EFF0(SID_Horseguard);
 						break;
 					}
 				}
