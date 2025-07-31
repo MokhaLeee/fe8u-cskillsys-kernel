@@ -81,4 +81,6 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.wrank_bonux_rtext_auto_gen = true,
 
 	.enemy_can_combo_attack = false, // true
+
+	.menu_skill_disp_msg_en_n = CONFIG_MENU_SKILL_DISP_MSG_EN_N,
 };

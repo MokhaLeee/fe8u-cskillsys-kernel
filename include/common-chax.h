@@ -2,6 +2,8 @@
 
 #include "gbafe.h"
 #include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "configs/configs.h"
 #include "kernel/debug-kit.h"

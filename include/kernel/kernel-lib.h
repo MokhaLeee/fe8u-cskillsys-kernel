@@ -39,6 +39,8 @@ struct KernelDesigerConfig {
 	u8 wrank_bonux_rtext_auto_gen;
 
 	u8 enemy_can_combo_attack;
+
+	u8 menu_skill_disp_msg_en_n;
 };
 
 struct KernelBattleDesignerConfig {

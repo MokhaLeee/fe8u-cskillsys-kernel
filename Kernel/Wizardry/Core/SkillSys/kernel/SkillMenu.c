@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "skill-system.h"
 
 NOINLINE const struct MenuItemDef *GetSkillMenuInfo(int sid)
@@ -183,6 +184,15 @@ u8 MenuSkills_Usability(const struct MenuItemDef *self, int number)
 	return def->isAvailable(self, number);
 }
 
+_maybe_unused STATIC_DECLAR char *GetMenuSkillName(int sid)
+{
+	char *dst = (char *)sMsgString.buffer2;
+	char *name = GetSkillNameStr(sid);
+
+	sprintf(dst, " %s", name);
+	return dst;
+}
+
 STATIC_DECLAR int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
 {
 	u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
@@ -197,10 +207,12 @@ STATIC_DECLAR int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItem
 	if (item->availability == MENU_DISABLED)
 		Text_SetColor(&item->text, TEXT_COLOR_SYSTEM_GRAY);
 
-	if (!def->nameMsgId)
-		Text_DrawString(&item->text, def->name);
-	else
+	if (def->nameMsgId)
 		Text_DrawString(&item->text, GetStringFromIndex(def->nameMsgId));
+	else if (gpKernelDesigerConfig->menu_skill_disp_msg_en_n == true)
+		Text_DrawString(&item->text, GetMenuSkillName(sid));
+	else
+		Text_DrawString(&item->text, def->name);
 
 	PutText(
 		&item->text,
