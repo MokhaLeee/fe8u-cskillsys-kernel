@@ -7,6 +7,7 @@ extern ChapterInitHookFunc const *const gpChapterInitHooks;
 void ChapterInitHook(ProcPtr proc)
 {
 	int i;
+
 	for (i = 0; gpChapterInitHooks[i]; i++)
 		gpChapterInitHooks[i](proc);
 

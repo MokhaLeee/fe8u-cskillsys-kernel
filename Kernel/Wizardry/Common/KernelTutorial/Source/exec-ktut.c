@@ -40,10 +40,11 @@ bool CheckTutorialEvent(u8 type)
 LYN_REPLACE_CHECK(RunTutorialEvent);
 bool RunTutorialEvent(u8 type)
 {
-	int counter, ret = false;
+	int ret = false;
 
 	if ((gPlaySt.tutorial_counter != 0) && (gPlaySt.tutorial_exec_type == type)) {
-		counter = gPlaySt.tutorial_counter;
+		int counter = gPlaySt.tutorial_counter;
+
 		CallEvent(((u16 **)(GetChapterEventDataPointer(gPlaySt.chapterIndex)->tutorialEvents))[counter - 1], 1);
 		gPlaySt.tutorial_counter = 0;
 		gPlaySt.tutorial_exec_type = 0;

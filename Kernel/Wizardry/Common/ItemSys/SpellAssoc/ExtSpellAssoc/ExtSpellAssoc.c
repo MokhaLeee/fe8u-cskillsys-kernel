@@ -10,10 +10,8 @@ STATIC_DECLAR struct SpellAssoc *GetSpellAssocStructPtrVanilla(u16 item)
 	u16 item_;
 
 	item_ = it->item;
-	if (item_ != 0xFFFF)
-	{
-		while (item_ != iid)
-		{
+	if (item_ != 0xFFFF) {
+		while (item_ != iid) {
 			item_ = (++it)->item;
 			if (item_ == 0xFFFF)
 				break;
@@ -29,10 +27,8 @@ STATIC_DECLAR struct SpellAssoc *GetSpellAssocStructPtrExt(u16 item)
 	u16 item_;
 
 	item_ = it->item;
-	if (item_ != 0xFFFF)
-	{
-		while (item_ != iid)
-		{
+	if (item_ != 0xFFFF) {
+		while (item_ != iid) {
 			item_ = (++it)->item;
 			if (item_ == 0xFFFF)
 				break;

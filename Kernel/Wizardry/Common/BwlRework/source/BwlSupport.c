@@ -18,8 +18,6 @@ STATIC_DECLAR u8 *GetUnitBwlSupports(u8 pid)
 LYN_REPLACE_CHECK(ActionSupport);
 s8 ActionSupport(ProcPtr proc)
 {
-	int subjectExp;
-	int targetExp;
 	u8 *supp1, *supp2;
 
 	struct Unit *target = GetUnit(gActionData.targetIndex);
@@ -42,8 +40,8 @@ s8 ActionSupport(ProcPtr proc)
 	supp2 = GetUnitBwlSupports(UNIT_CHAR_ID(target));
 
 	if (supp1 && supp2) {
-		subjectExp = supp1[targetSupportNum];
-		targetExp = supp2[subjectSupportNum];
+		int subjectExp = supp1[targetSupportNum];
+		int targetExp = supp2[subjectSupportNum];
 
 		if (subjectExp != targetExp) {
 			if (subjectExp > targetExp)
@@ -188,10 +186,12 @@ void InitUnitsupports(struct Unit *unit)
 LYN_REPLACE_CHECK(UnitLoadSupports);
 void UnitLoadSupports(struct Unit *unit)
 {
-	int i, count = GetUnitSupporterCount(unit);
+	int count = GetUnitSupporterCount(unit);
 	u8 *supp = GetUnitBwlSupports(UNIT_CHAR_ID(unit));
 
 	if (supp) {
+		int i;
+
 		CpuFill16(0, supp, UNIT_SUPPORT_MAX_COUNT);
 
 		for (i = 0; i < count; ++i)

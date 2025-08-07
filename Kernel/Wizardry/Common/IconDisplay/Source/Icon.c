@@ -88,11 +88,11 @@ void LoadIconObjectGraphics(int icon, int chr)
 	u8 *dst = OBJ_VRAM0 + CHR_SIZE * (chr & 0x3FF);
 
 	if (!src) {
-		RegisterFillTile(0, dst,		 CHR_SIZE * 2);
+		RegisterFillTile(0, dst,         CHR_SIZE * 2);
 		RegisterFillTile(0, dst + 0x400, CHR_SIZE * 2);
 		return;
 	}
 
-	RegisterDataMove(src,				dst,		 CHR_SIZE * 2);
+	RegisterDataMove(src,                dst,         CHR_SIZE * 2);
 	RegisterDataMove(src + CHR_SIZE * 2, dst + 0x400, CHR_SIZE * 2);
 }

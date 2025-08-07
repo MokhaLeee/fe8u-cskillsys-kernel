@@ -10,7 +10,7 @@ STATIC_DECLAR int GetUnitStaticHiddenLevel(struct Unit *unit)
 
 	hidden_lv = gpClassPreLoadHiddenLevel[UNIT_CLASS_ID(unit)];
 	if (hidden_lv == 0)
-		hidden_lv = UNIT_CATTRIBUTES(unit) & CA_PROMOTED ? 15 : 0;
+		hidden_lv = (UNIT_CATTRIBUTES(unit) & CA_PROMOTED) ? 15 : 0;
 
 	return hidden_lv;
 }
