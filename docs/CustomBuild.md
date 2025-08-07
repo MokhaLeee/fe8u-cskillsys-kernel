@@ -1,4 +1,43 @@
-# Custom build
+# Custom Build in the Legacy Skill System
+
+**Custom Build** was an FEB feature initially developed by **7743** for the legacy skill system. Its purpose was to allow users to directly modify the functionality of the **skillsys kernel** (e.g., altering how a skill works) without affecting their existing development (e.g., user-configured skill lists).
+
+While the idea was sound, the legacy system's design imposed significant challenges:
+
+1. **Kernel-User Data Coupling**: Core kernel functions (e.g., `skill-tester`, `status-getter`) were stored alongside user-configurable data, requiring decoupling.
+2. **Unstable Data Pointers**: The system internally held data pointers, but these were not fixed—especially for player-expandable tables, which could change dynamically.
+3. **External Patch Dependencies**: Third-party patches might also call kernel function pointers, complicating modifications.
+
+### 7743's Solution
+
+To address these issues, 7743 implemented the following:
+
+1. **Dedicated FEB Skill System**: A modified version of the skill system was created, splitting functions (`.text` section) and player data (`.rodata` section) into separate components. These were merged into a single patch (`skillsystem_20220703`) for FEB installation.
+2. **Customizable Kernel**: The `.text` section was isolated into a special `buildfile`, allowing users to modify and reinstall it via FEB's **Custom Build Form**.
+3. **Modular Player Data**: Player data was modularized. FEB identified each module's address and replaced corresponding symbols in the `EA buildfile` during Custom Build.
+4. **Pointer Updates for External Patches**: If external patches called kernel functions, their stored pointers were also updated during Custom Build.
+
+This approach was **extremely complex and error-prone**.
+
+### Improvements in Cskillsys
+
+The **Cskillsys** redesign proactively resolved these issues with the following measures:
+
+1. **Memory Partitioning**:
+   - Allocates free space (`0x0B2A604–0xD59FC`) exclusively for user-modifiable data.
+   - Reserves a dedicated **Pointer List** region (`start: 0xB2A614, size: 0x400`) for kernel-user data interaction.
+2. **Pointer List Proxy**:
+   - The kernel accesses data exclusively via the Pointer List and **never stores direct pointers** to user-space data.
+3. **Two-Step Installation**:
+   - **Step 1**: Install user data, saving addresses in the Pointer List.
+   - **Step 2**: Install the kernel (`main-kernel.event`), which can be patched independently later.
+4. **User Workflow Simplification**:
+   - Users perform a **one-time full install** on a clean ROM.
+   - Subsequent updates (e.g., skill assignments, chapter edits, animations) can be applied via FEB without affecting existing data.
+   - Kernel updates only require re-patching `main-kernel.event`, preserving all imported assets.
+
+
+# Custom build process
 
 [Contributing note](./docs/CONTRIBUTING.md)
 
@@ -82,12 +121,3 @@ make
 
 > [!NOTE]
 > If gcc report error, update C-Lib and retry, see [#155](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/discussions/115)
-
-It build such outputs
-
-| Name      | Desc 			|
-| :--------	| :-----------	|
-|fe8-kernel-dev.gba|ROM|
-|fe8-kernel-dev.sym|debug on NO$GBA|
-|fe8-kernel-dev.ref.s|lyn reference|
-|fe8-kernel-dev.ref.event|EA reference|
