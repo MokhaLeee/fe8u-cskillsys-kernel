@@ -116,15 +116,22 @@ void RegisterHitCnt(struct BattleUnit *bu, bool miss);
 
 extern struct {
 	u8 round_mask;
+	u8 double_attack_by_as_judgement_flags;
 
-	u8 _pad_[0x10 - 0x01];
+	u8 _pad_[0x10 - 0x02];
 } gBattleFlagExt;
 
 extern struct {
 	u32 desperation_order : 1;
 	u32 vantage_order : 1;
+
+	/* If the battleunit are forced double attack regardless battle speed */
 	u32 tar_force_twice_order : 1;
 	u32 act_force_twice_order : 1;
+
+	/* If it is judged by battle speed rather than skill or art */
+	u32 act_normal_judge_twice_order : 1;
+	u32 tar_normal_judge_twice_order : 1;
 
 	u32 skill_activated_sure_shoot : 1;
 	u32 skill_activated_dead_eye : 1;

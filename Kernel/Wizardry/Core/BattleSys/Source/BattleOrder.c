@@ -49,10 +49,13 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 	FORCE_DECLARE bool ref_actor_hp_above_half  = ((actor->hpInitial  * 2) > actor->unit.maxHP);
 	FORCE_DECLARE bool ref_target_hp_above_half = ((target->hpInitial * 2) > target->unit.maxHP);
 
-	if (&gBattleActor == actor)
+	if (&gBattleActor == actor) {
 		gBattleTemporaryFlag.act_force_twice_order = false;
-	else
+		gBattleTemporaryFlag.act_normal_judge_twice_order = false;
+	} else {
 		gBattleTemporaryFlag.tar_force_twice_order = false;
+		gBattleTemporaryFlag.tar_normal_judge_twice_order = false;
+	}
 
 	if (target->battleSpeed > 250)
 		return false;
@@ -260,6 +263,11 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 	}
 
 	/* Basic judgement */
+	if (&gBattleActor == actor)
+		gBattleTemporaryFlag.act_normal_judge_twice_order = true;
+	else
+		gBattleTemporaryFlag.tar_normal_judge_twice_order = true;
+
 	return ((actor->battleSpeed - target->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD);
 }
 
@@ -376,6 +384,10 @@ void PreBattleGenerate_GenerateOrderFlags(void)
 {
 	gBattleFlagExt.round_mask = 0;
 
+	/* Well, we need to setup battle speed for twice-order (double-attack) judgement */
+	ComputeBattleUnitSpeed(&gBattleActor);
+	ComputeBattleUnitSpeed(&gBattleTarget);
+
 	if (CheckDesperationOrder())
 		gBattleFlagExt.round_mask |= UNWIND_DESPERA;
 
@@ -389,6 +401,30 @@ void PreBattleGenerate_GenerateOrderFlags(void)
 		gBattleFlagExt.round_mask |= UNWIND_DOUBLE_TAR;
 
 	gBattleFlagExt.round_mask = PostCalc_ModifyBattleOrderRoundMask(gBattleFlagExt.round_mask);
+}
+
+STATIC_DECLAR void RegenerateBattleOrderFlagsAfterCalc(void)
+{
+	int act_as = gBattleActor.battleSpeed;
+	int tar_as = gBattleTarget.battleSpeed;
+
+	/**
+	 * As battle speed may be modifed during pre-battle calc,
+	 * so here we need to retry for speed judgement for twice-order
+	 */
+	if (gBattleTemporaryFlag.act_normal_judge_twice_order == true) {
+		if ((act_as - tar_as) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+			gBattleFlagExt.round_mask |=  UNWIND_DOUBLE_ACT;
+		else
+			gBattleFlagExt.round_mask &= ~UNWIND_DOUBLE_ACT;
+	}
+
+	if (gBattleTemporaryFlag.tar_normal_judge_twice_order == true) {
+		if ((tar_as - act_as) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+			gBattleFlagExt.round_mask |=  UNWIND_DOUBLE_TAR;
+		else
+			gBattleFlagExt.round_mask &= ~UNWIND_DOUBLE_TAR;
+	}
 }
 
 LYN_REPLACE_CHECK(BattleUnwind);
@@ -412,6 +448,8 @@ void BattleUnwind(void)
 		gBattleHitIterator->info |= BATTLE_HIT_INFO_END;
 		return;
 	}
+
+	RegenerateBattleOrderFlagsAfterCalc();
 
 	config = BattleUnwindConfig[gBattleFlagExt.round_mask];
 
