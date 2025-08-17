@@ -2,7 +2,7 @@
 #include <strmag.h>
 #include <status-getter.h>
 
-#define UNIT_STATUS_MAX 128
+#define UNIT_STATUS_MAX 120
 
 int GetUnitMaxStatusHp(struct Unit *unit)
 {
