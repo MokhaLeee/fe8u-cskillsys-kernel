@@ -2,6 +2,10 @@
 #include "strmag.h"
 #include "lvup.h"
 
+#ifndef INT8_MAX
+#define INT8_MAX 127
+#endif
+
 LYN_REPLACE_CHECK(UnitAutolevelRealistic);
 void UnitAutolevelRealistic(struct Unit *unit)
 {
@@ -25,16 +29,47 @@ LYN_REPLACE_CHECK(UnitAutolevelCore);
 void UnitAutolevelCore(struct Unit *unit, u8 classId, int levelCount)
 {
 	if (levelCount) {
-		unit->maxHP += GetAutoleveledStatIncrease(unit->pClassData->growthHP,  levelCount);
-		unit->pow   += GetAutoleveledStatIncrease(unit->pClassData->growthPow, levelCount);
-		unit->skl   += GetAutoleveledStatIncrease(unit->pClassData->growthSkl, levelCount);
-		unit->spd   += GetAutoleveledStatIncrease(unit->pClassData->growthSpd, levelCount);
-		unit->def   += GetAutoleveledStatIncrease(unit->pClassData->growthDef, levelCount);
-		unit->res   += GetAutoleveledStatIncrease(unit->pClassData->growthRes, levelCount);
-		unit->lck   += GetAutoleveledStatIncrease(unit->pClassData->growthLck, levelCount);
+		int mhp = unit->maxHP + GetAutoleveledStatIncrease(unit->pClassData->growthHP,  levelCount);
+		int pow = unit->pow + GetAutoleveledStatIncrease(unit->pClassData->growthPow, levelCount);
+		int skl = unit->skl + GetAutoleveledStatIncrease(unit->pClassData->growthSkl, levelCount);
+		int spd = unit->spd + GetAutoleveledStatIncrease(unit->pClassData->growthSpd, levelCount);
+		int def = unit->def + GetAutoleveledStatIncrease(unit->pClassData->growthDef, levelCount);
+		int res = unit->res + GetAutoleveledStatIncrease(unit->pClassData->growthRes, levelCount);
+		int lck = unit->lck + GetAutoleveledStatIncrease(unit->pClassData->growthLck, levelCount);
+		int mag = UNIT_MAG(unit) + GetAutoleveledStatIncrease(GetUnitJobBasedBasicMagGrowth(unit), levelCount);
 
-		/* Hook here */
-		UNIT_MAG(unit) += GetAutoleveledStatIncrease(GetUnitJobBasedBasicMagGrowth(unit), levelCount);
+		if (mhp > INT8_MAX)
+			mhp = INT8_MAX;
+
+		if (pow > INT8_MAX)
+			pow = INT8_MAX;
+
+		if (skl > INT8_MAX)
+			skl = INT8_MAX;
+
+		if (spd > INT8_MAX)
+			spd = INT8_MAX;
+
+		if (lck > INT8_MAX)
+			lck = INT8_MAX;
+
+		if (def > INT8_MAX)
+			def = INT8_MAX;
+
+		if (res > INT8_MAX)
+			res = INT8_MAX;
+
+		if (mag > INT8_MAX)
+			mag = INT8_MAX;
+
+		unit->maxHP = mhp;
+		unit->pow = pow;
+		unit->skl = skl;
+		unit->spd = spd;
+		unit->lck = lck;
+		unit->def = def;
+		unit->res = res;
+		UNIT_MAG(unit) = mag;
 	}
 }
 
