@@ -150,6 +150,12 @@ extern HealAmountGetterFunc_t const *const gpHealAmountGetters;
 int HealAmountGetter(int base, struct Unit *actor, struct Unit *target);
 
 /**
+ * Spell assoc
+ */
+extern struct SpellAssoc ExtSpellAssocData[];
+extern struct SpellAssoc *pr_SpellAssocData;
+
+/**
  * IER functions
  */
 #define IER_DECLEARE_Usability(__func)     bool __func(struct Unit *unit, int item)

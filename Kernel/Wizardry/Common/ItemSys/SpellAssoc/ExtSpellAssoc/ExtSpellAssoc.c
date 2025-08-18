@@ -1,7 +1,5 @@
 #include "common-chax.h"
-
-extern struct SpellAssoc ExtSpellAssocData[];
-extern struct SpellAssoc *pr_SpellAssocData;
+#include "item-sys.h"
 
 STATIC_DECLAR struct SpellAssoc *GetSpellAssocStructPtrVanilla(u16 item)
 {

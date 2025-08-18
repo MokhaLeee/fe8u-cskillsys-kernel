@@ -1,9 +1,9 @@
 #include "common-chax.h"
+#include "item-sys.h"
 #include "battle-system.h"
 
 #define LOCAL_TRACE 0
 
-extern struct SpellAssoc const *const pr_SpellAssoc;
 extern SpellAnimFunc const *const pr_EfxMagicTable;
 
 extern EWRAM_DATA u8 sEfxResireEfxIndexCacheMagic;
@@ -23,7 +23,7 @@ STATIC_DECLAR int GetEfxResireEfxIndex(void)
 		 */
 		max_efx = -1;
 		efx_ref1 = -1;
-		for (assoc_it = pr_SpellAssoc; assoc_it->item != 0xFFFF; assoc_it++) {
+		for (assoc_it = pr_SpellAssocData; assoc_it->item != 0xFFFF; assoc_it++) {
 			if (max_efx < assoc_it->efx)
 				max_efx = assoc_it->efx;
 
@@ -71,7 +71,17 @@ bool CheckWeaponIsEfxResire(int weapon)
 	int iid = ITEM_INDEX(weapon);
 	const struct SpellAssoc *assoc_it;
 
-	for (assoc_it = pr_SpellAssoc; assoc_it->item != 0xFFFF; assoc_it++) {
+	/* ext spellassoc */
+	for (assoc_it = ExtSpellAssocData; assoc_it->item != 0xFFFF; assoc_it++) {
+		if (assoc_it->item == iid) {
+			if (assoc_it->efx == GetEfxResireEfxIndex())
+				return true;
+			else
+				return false;
+		}
+	}
+
+	for (assoc_it = pr_SpellAssocData; assoc_it->item != 0xFFFF; assoc_it++) {
 		if (assoc_it->item == iid) {
 			if (assoc_it->efx == GetEfxResireEfxIndex())
 				return true;
