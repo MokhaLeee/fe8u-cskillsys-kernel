@@ -164,27 +164,27 @@ void IER_Effect_RangedHeal(struct Unit *unit, int item)
 
 void IER_Effect_RescueStaff(struct Unit *unit, int item)
 {
-	DoUseHealStaff(unit, MakeTargetListForRescueStaff);
+	DoUseRescueStaff(unit, MakeTargetListForRescueStaff);
 }
 
 void IER_Effect_Restore(struct Unit *unit, int item)
 {
-	DoUseHealStaff(unit, MakeTargetListForRestore);
+	DoUseRestoreStaff(unit, MakeTargetListForRestore);
 }
 
 void IER_Effect_Silence(struct Unit *unit, int item)
 {
-	DoUseHealStaff(unit, MakeTargetListForSilence);
+	DoUseAttackStaff(unit, MakeTargetListForSilence);
 }
 
 void IER_Effect_Sleep(struct Unit *unit, int item)
 {
-	DoUseHealStaff(unit, MakeTargetListForSleep);
+	DoUseAttackStaff(unit, MakeTargetListForSleep);
 }
 
 void IER_Effect_Berserk(struct Unit *unit, int item)
 {
-	DoUseHealStaff(unit, MakeTargetListForBerserk);
+	DoUseAttackStaff(unit, MakeTargetListForBerserk);
 }
 
 void IER_Effect_Barrier(struct Unit *unit, int item)
