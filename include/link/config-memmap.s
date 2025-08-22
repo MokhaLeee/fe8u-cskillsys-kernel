@@ -99,6 +99,8 @@ _kernel_malloc sDemoUnitExpaEnemy, 51 * 4
 _kernel_malloc sDemoUnitExpaNpc, 8 * 4
 _kernel_malloc sDemoUnitExpaBattle, 2 * 4
 _kernel_malloc gBattleFlagExt, 0x10
+_kernel_malloc BanimSwitcherBuf, 0x40
+_kernel_malloc BanimSwitcherAnimDef, 0x8
 
 @ _kernel_malloc _kernel_malloc_align4_pad, 3
 
@@ -143,8 +145,6 @@ _kernel_malloc_overlay0 gWtaStatus_act, 0x38
 _kernel_malloc_overlay0 gWtaStatus_tar, 0x38
 _kernel_malloc_overlay0 gActorBaseDmg,  0x0C
 _kernel_malloc_overlay0 gTargetBaseDmg, 0x0C
-_kernel_malloc_overlay0 BanimSwitcherBuf, 0x48
-_kernel_malloc_overlay0 BanimSwitcherAnimDef, 0x8
 
 // _kernel_malloc_overlay0 _kernel_malloc_overlay0_align4_pad, 3
 

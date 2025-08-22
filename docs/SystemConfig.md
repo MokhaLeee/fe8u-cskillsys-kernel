@@ -128,6 +128,14 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Enemy can also participant in combo-attack.
 
+- `menu_skill_disp_msg_en_n`
+
+	Menu skill display option, see [SkillSys](./SkillSys.md) section 7.1.
+
+- `banim_switcher_en`
+
+	Enable patch "Custom banim switcher", see [BanimFeatures](./BanimFeatures.md) section 1.
+
 ## Designer config battle
 
 ![image](./gfx/SystemConfig2.png)

@@ -5,8 +5,10 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 
-extern EWRAM_OVERLAY(0) u16 BanimSwitcherBuf[NEW_BATTLE_HIT_MAX];
-extern EWRAM_OVERLAY(0) struct BattleAnimDef BanimSwitcherAnimDef[2];
+enum { LOCAL_SCORE_MAX = 3 };
+
+extern EWRAM_DATA u16 BanimSwitcherBuf[NEW_BATTLE_HIT_MAX];
+extern EWRAM_DATA struct BattleAnimDef BanimSwitcherAnimDef[2];
 
 static bool check_end(const struct CustomAnimnSwitcher *it)
 {
@@ -103,6 +105,7 @@ STATIC_DECLAR void SetupBanimSwitcherBuf(void)
 	}
 
 	for (iround = 0; iround < NEW_BATTLE_HIT_MAX; iround++) {
+		int cur_score, final_score;
 		struct BattleHit *hit = prBattleHitArray + iround * BattleHitArrayWidth;
 		struct CustomAnimnSwitcher *ref;
 		u32 *valid_chunks_bitfile;
@@ -119,6 +122,8 @@ STATIC_DECLAR void SetupBanimSwitcherBuf(void)
 			ref = &tar_ref;
 			ref->sid = GetTargetEfxSkill(iround);
 		}
+
+		final_score = 0;
 
 		for (i = 0; i < BANIM_SWITCHER_MAX_CHUNKS; i++) {
 			const struct CustomAnimnSwitcher *it = &gpCustomAnimnSwitcher[i];
@@ -148,17 +153,37 @@ STATIC_DECLAR void SetupBanimSwitcherBuf(void)
 			if (it->tar_jid != 0 && it->tar_jid != ref->tar_jid)
 				continue;
 #endif
-			if (it->sid != 0 && it->sid != ref->sid)
-				continue;
 
-			if (it->act_when_killing && !(hit->info & BATTLE_HIT_INFO_KILLS_TARGET))
-				continue;
+			cur_score = 0;
 
-			if (it->act_when_crit && !(hit->attributes & BATTLE_HIT_ATTR_CRIT))
-				continue;
+			if (it->act_when_crit) {
+				if (!(hit->attributes & BATTLE_HIT_ATTR_CRIT))
+					continue;
 
-			BanimSwitcherBuf[iround] = it->banim_index;
-			break;
+				cur_score = 1;
+			}
+
+			if (it->act_when_killing) {
+				if (!(hit->info & BATTLE_HIT_INFO_KILLS_TARGET))
+					continue;
+
+				cur_score = 2;
+			}
+
+			if (it->sid != 0) {
+				if (it->sid != ref->sid)
+					continue;
+
+				cur_score = 3;
+			}
+
+			if (final_score < cur_score) {
+				BanimSwitcherBuf[iround] = it->banim_index;
+				final_score = cur_score;
+			}
+
+			if (final_score == LOCAL_SCORE_MAX)
+				break;
 		}
 	}
 }
