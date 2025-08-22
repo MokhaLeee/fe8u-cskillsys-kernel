@@ -6,6 +6,7 @@ BanimSyncHandlerGetter:
 #ifdef CONFIG_USE_COMBO_ATTACK
     POIN GetBanimSyncHandler_ComboAtk
 #endif
+    POIN GetBanimSyncHandler_BanimSwitcher
     // POIN FindBanimSyncHandler_test
     WORD 0 0 0 0
 

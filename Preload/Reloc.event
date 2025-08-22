@@ -79,7 +79,7 @@ gpGFX_CombatArtIcon_LanceArtAtk: POIN GFX_CombatArtIcon_LanceArtAtk
 gpGFX_CombatArtIcon_AxeArtAtk:   POIN GFX_CombatArtIcon_AxeArtAtk
 gpGFX_CombatArtIcon_BowArtAtk:   POIN GFX_CombatArtIcon_BowArtAtk
 
-WORD 0
+gpCustomAnimnSwitcher: POIN gCustomAnimnSwitcher
 WORD 0
 WORD 0
 WORD 0

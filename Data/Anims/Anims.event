@@ -11,3 +11,4 @@ Pal_EfxAnimNumber:
 
 #include "Source/animscr_num.lyn.event"
 
+#include "Source/BanimSwitcher.lyn.event"

@@ -37,3 +37,26 @@ struct BanimSyncInfo {
 };
 
 #define gpBanimSyncInfo ((struct BanimSyncInfo *)gpProcEkrBattleDeamon)
+
+/**
+ * Custom banim switcher
+ */
+struct CustomAnimnSwitcher {
+	u8 pid, jid;
+	u8 wtype;
+	u8 item;
+
+	u8 tar_pid;
+	u8 tar_jid;
+	u8 act_when_killing;
+	u8 act_when_crit;
+
+	u16 banim_index;
+
+	u16 sid;
+	u16 act_flag;
+	u16 _pad_;
+};
+
+extern struct CustomAnimnSwitcher const gCustomAnimnSwitcher[];
+extern struct CustomAnimnSwitcher const *const gpCustomAnimnSwitcher;

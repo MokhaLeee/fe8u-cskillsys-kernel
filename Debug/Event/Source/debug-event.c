@@ -27,6 +27,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 			.b = -1,
 		}},
 		.items = {
+			ITEM_SWORD_BRAVE,
 			ITEM_SWORD_RAPIER,
 			ITEM_VULNERARY,
 		},
@@ -433,6 +434,7 @@ static void modify_unit_status(void)
 	unit = GetUnitFromCharId(CHARACTER_EIRIKA);
 	if (unit) {
 		unit->exp = 99;
+		unit->ranks[ITYPE_SWORD] = WPN_EXP_A;
 	}
 
 	unit = GetUnitFromCharId(CHARACTER_MYRRH);

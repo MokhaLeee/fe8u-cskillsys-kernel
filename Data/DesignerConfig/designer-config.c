@@ -83,4 +83,8 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 	.enemy_can_combo_attack = false, // true
 
 	.menu_skill_disp_msg_en_n = CONFIG_MENU_SKILL_DISP_MSG_EN_N,
+
+#ifdef CONFIG_BANIM_SWITCHER_EN
+	.banim_switcher_en = true,
+#endif
 };

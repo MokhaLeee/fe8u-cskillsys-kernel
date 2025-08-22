@@ -41,6 +41,9 @@ struct KernelDesigerConfig {
 	u8 enemy_can_combo_attack;
 
 	u8 menu_skill_disp_msg_en_n;
+
+	/* banim switcher */
+	u8 banim_switcher_en;
 };
 
 struct KernelBattleDesignerConfig {
@@ -107,6 +110,7 @@ static inline u32 perc_of(u32 num, u32 perc)
  * banim.c
  */
 bool IsAttackerAnim(struct Anim *anim);
+bool IsActorAnim(struct Anim *anim);
 
 /**
  * event-call.c

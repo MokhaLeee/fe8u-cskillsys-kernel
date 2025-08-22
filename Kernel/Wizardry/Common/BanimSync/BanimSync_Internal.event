@@ -34,3 +34,5 @@ POP
 #include "Source/ekrbattledeamon-hook.lyn.event"
 
 #include "Source/utils.lyn.event"
+
+#include "BanimSwitcher/BanimSwitcher.event"
