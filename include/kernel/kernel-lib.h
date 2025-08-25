@@ -89,6 +89,8 @@ void MapAnim_CommonEnd(void);
  */
 u32 k_udiv(u32 a, u32 b);
 u32 k_umod(u32 a, u32 b);
+u64 k_udiv64(u64 a, u64 b);
+u64 k_umod64(u64 a, u64 b);
 
 static inline u32 perc_of(u32 num, u32 perc)
 {

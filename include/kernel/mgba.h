@@ -36,6 +36,7 @@ extern "C" {
 bool mgba_open(void);
 void mgba_close(void);
 
+void mgba_print(const char *buf);
 void mgba_printf(int level, const char *string, ...);
 bool mgba_console_open(void);
 

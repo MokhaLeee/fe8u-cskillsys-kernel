@@ -57,6 +57,8 @@ SET_DATA EwramOverlay0_UsedFreeRamSpaceTop, EwramOverlay0_FreeRamSpaceBottom
 .endm
 
 /* From the bottom to the top */
+_kernel_malloc mgba_print_level, 4
+_kernel_malloc __stdio_FILEs, 0x10
 _kernel_malloc sSkillList, 0x50 * 3
 _kernel_malloc sSkillFastList, 0x100
 _kernel_malloc sLearnedSkillPLists, 51 * 0x20

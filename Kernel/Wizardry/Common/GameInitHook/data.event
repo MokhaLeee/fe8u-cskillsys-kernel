@@ -1,6 +1,10 @@
 /* void (*)(void) */
 ALIGN 4
 gGameInitHookTable:
+    POIN io_init
+#ifdef CONFIG_USE_DEBUG
+    POIN kprintf_test
+#endif
     POIN GameInit_OverflowDetection
     POIN GameInit_CopyArmFuncs GameInit_RedirectMapFloodFunc
     POIN InitRandC

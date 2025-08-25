@@ -1,12 +1,58 @@
 #pragma once
 
-#include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 
 #include "mgba.h"
 #include "no-cash-gba.h"
 
-#define LogInit() {mgba_open(); }
+#ifndef __PRINTFLIKE
+#define __PRINTFLIKE(__fmt,__varargs) __attribute__((__format__ (__printf__, __fmt, __varargs)))
+#endif
+
+/**
+ * stdio
+ */
+struct io_handle;
+
+typedef struct FILE {
+	const struct io_handle *io;
+} FILE;
+
+struct io_handle {
+	size_t (*write)(FILE *fp, const char *buf, size_t len);
+	size_t (*read)(FILE *fp, char *buf, size_t len);
+};
+
+extern FILE __stdio_FILEs[3];
+
+#define stdin  (&__stdio_FILEs[0])
+#define stdout (&__stdio_FILEs[1])
+#define stderr (&__stdio_FILEs[2])
+
+void io_init(void);
+
+/**
+ * console
+ */
+int k_vsnprintf(char *str, size_t len, const char *fmt, va_list ap);
+int k_vsprintf(char *str, const char *fmt, va_list ap);
+int k_vfprintf(FILE *fp, const char *fmt, va_list ap);
+
+int k_sprintf(char *str, const char *fmt, ...) __PRINTFLIKE(2, 3);
+int k_snprintf(char *str, size_t len, const char *fmt, ...) __PRINTFLIKE(3, 4);
+int k_fprintf(FILE *fp, const char *fmt, ...) __PRINTFLIKE(2, 3);
+int k_printf(const char *fmt, ...) __PRINTFLIKE(1, 2);
+
+/**
+ * Always print to STDOUT regardless on debug config
+ */
+#define fmt_printf(format, ...) k_printf("(%s): "format, __func__, ##__VA_ARGS__)
+
+/**
+ * Old
+ */
+#define LogInit() {io_init(); }
 #define LogPrint(string)        { REG_IME = 0; mgba_printf(MGBA_LOG_INFO, string);               NoCashGBAPrint(string); REG_IME = 1; }
 #define LogPrintf(format, ...)  { REG_IME = 0; mgba_printf(MGBA_LOG_INFO, format, __VA_ARGS__);  NoCashGBAPrintf(format, __VA_ARGS__); REG_IME = 1;}
 #define LogWarn(string)         { REG_IME = 0; mgba_printf(MGBA_LOG_WARN, string);               NoCashGBAPrint("[WARN] "string); REG_IME = 1;}
@@ -60,13 +106,6 @@
  */
 #define LTRACE(x)     do { if (LOCAL_TRACE != 0) { Print(x); } } while (0)
 #define LTRACEF(x...) do { if (LOCAL_TRACE != 0) { Printf(x); } } while (0)
-
-/**
- * FPrint
- * Always print to STDOUT regardless on debug config
- */
-#define FPrint(string)       LogPrintf("(%s): %s", __func__, string)
-#define FPrintf(format, ...) LogPrintf("(%s): "format, __func__, __VA_ARGS__)
 
 /**
  * Misc

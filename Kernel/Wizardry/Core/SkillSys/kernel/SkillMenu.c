@@ -189,7 +189,7 @@ _maybe_unused STATIC_DECLAR char *GetMenuSkillName(int sid)
 	char *dst = (char *)sMsgString.buffer2;
 	char *name = GetSkillNameStr(sid);
 
-	sprintf(dst, " %s", name);
+	k_sprintf(dst, " %s", name);
 	return dst;
 }
 

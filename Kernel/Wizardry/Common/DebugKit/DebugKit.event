@@ -5,3 +5,5 @@ ERROR "Need module: GameInitHook installed!"
 ALIGN 4
 #include "source/mgba.lyn.event"
 #include "source/nocashgba.lyn.event"
+#include "source/printf.lyn.event"
+#include "source/stdio.lyn.event"
