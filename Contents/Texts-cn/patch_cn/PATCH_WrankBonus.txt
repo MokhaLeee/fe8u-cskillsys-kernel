@@ -1,0 +1,25 @@
+NAME=[CSKILL_K (3.x) dev] 武器熟练度战斗增益
+AUTHOR=Mokha(悠木晓缺)
+
+IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x33
+
+TYPE=STRUCT
+TAG=#ENGINE
+
+INFO=[CSKILL_K (3.x): gpWrankBonusConf] Weapon rank battle bonus
+
+POINTER=0xB2A804
+DATASIZE=12
+DATACOUNT=$GREP4 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+LISTNAME=$B0:WEAPONTYPE
+
+B0:WEAPONTYPE=武器类型
+B1:$COMBO combo.wrank.txt=武器熟练度
+B4:DECIMAL= 攻击加成
+B5:DECIMAL= 防御加成
+B6:DECIMAL= 攻速加成
+B7:DECIMAL= 命中加成
+B8:DECIMAL= 回避加成
+B9:DECIMAL= 必杀加成
+B10:DECIMAL= 必杀回避加成
+B11:DECIMAL= 暗杀加成

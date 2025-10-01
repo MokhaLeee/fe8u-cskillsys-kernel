@@ -1,0 +1,27 @@
+NAME=[CSKILL_K (3.x) dev] 战斗系统 武器三角克制基础设定
+AUTHOR=Mokha(悠木晓缺)
+
+IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x33
+
+TYPE=STRUCT
+TAG=#ENGINE
+
+INFO=[CSKILL_K (3.x): gWeaponTriangleConfs] Config battle-system WTA
+
+POINTER=0xB2A654
+DATASIZE=16
+DATACOUNT=$GREP8 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+LISTNAME=DECIMAL
+B0:$COMBO combo.wtype.txt=攻击者武器类型
+B1:$COMBO combo.wtype.txt=防御者武器类型
+b5:$COMBO combo.bool.txt=是否为增益状态
+W6:SKILL=技能, 0=ANY
+b8:DECIMAL=攻击力
+b9:DECIMAL=防御力
+b10:DECIMAL=攻速
+b11:DECIMAL=命中率
+b12:DECIMAL=回避率
+b13:DECIMAL=必杀率
+b14:DECIMAL=必杀回避率
+b15:DECIMAL=暗杀率
