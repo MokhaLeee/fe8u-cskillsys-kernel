@@ -1,4 +1,5 @@
-NAME=[CSKILL_K (3.x) dev] 指挥官职业设置
+NAME=[CSKILL_K (3.x) dev] Leadership job config
+NAME.zh=[CSKILL_K (3.x) dev] 指挥官职业设置
 AUTHOR=Mokha(悠木晓缺)
 
 IF:0xB2A604=0x43 0x53 0x4B 0x49 0x4C 0x4C 0x53 0x59 0x53 0x5F 0x4B 0x2D 0x33
@@ -13,4 +14,5 @@ DATASIZE=0x1
 DATACOUNT=0x100
 
 LISTNAME=CLASS
-B0:DECIMAL=星级
+B0:DECIMAL=stars
+B0:DECIMAL.zh=星级
