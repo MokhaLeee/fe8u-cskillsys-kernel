@@ -136,6 +136,14 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	Enable patch "Custom banim switcher", see [BanimFeatures](./BanimFeatures.md) section 1.
 
+- `max_level`
+
+	Max level for units (0-25).
+
+- `max_level_record`
+
+	Max total level for units (current level + hidden level, 0-80). See SkillSys.md section 3.2.
+
 ## Designer config battle
 
 ![image](./gfx/SystemConfig2.png)

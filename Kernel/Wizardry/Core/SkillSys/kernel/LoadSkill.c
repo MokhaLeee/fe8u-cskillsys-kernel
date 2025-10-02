@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "bwl.h"
+#include "lvup.h"
 #include "kernel-lib.h"
 #include "skill-system.h"
 
@@ -123,8 +124,8 @@ void UnitAutoLoadSkills(struct Unit *unit)
 	level_j = k_udiv(unit->level, 5) * 5;
 	level_p = k_udiv(unit->level + GetUnitHiddenLevel(unit), 5) * 5;
 
-	LIMIT_AREA(level_j, 0, UNIT_LEVEL_MAX_RE);
-	LIMIT_AREA(level_p, 0, UNIT_RECORDED_LEVEL_MAX);
+	LIMIT_AREA(level_j, 0, CHAX_MAX_LEVEL);
+	LIMIT_AREA(level_p, 0, CHAX_MAX_RECORD_LEVEL);
 
 	while (level_p >= 0) {
 		for (i = 0; i < 5; i++)

@@ -1,6 +1,7 @@
 #include "common-chax.h"
 #include "strmag.h"
 #include "bwl.h"
+#include "lvup.h"
 #include "debuff.h"
 #include "skill-system.h"
 
@@ -29,7 +30,7 @@ void UnitLoadStatsFromChracterVanilla(struct Unit *unit, const struct CharacterD
 			unit->ranks[i] = unit->pCharacterData->baseRanks[i];
 	}
 
-	if (UNIT_FACTION(unit) == FACTION_BLUE && (unit->level != UNIT_LEVEL_MAX))
+	if (UNIT_FACTION(unit) == FACTION_BLUE && (unit->level < CHAX_MAX_LEVEL))
 		unit->exp = 0;
 	else
 		unit->exp = UNIT_EXP_DISABLED;

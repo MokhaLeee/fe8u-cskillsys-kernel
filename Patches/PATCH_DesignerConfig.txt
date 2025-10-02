@@ -40,5 +40,7 @@ B26:$COMBO combo.bool.txt=wrank_bonux_rtext_auto_gen
 B27:$COMBO combo.bool.txt=enemy_can_combo_attack
 B28:$COMBO combo.bool.txt=menu_skill_disp_msg_en_n
 B29:$COMBO combo.bool.txt=banim_switcher_en
+B30:DECIMAL=max_level (0-25)
+B31:DECIMAL=max_level_record (0-80)
 
 INFO=Editor: gKernelDesigerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md

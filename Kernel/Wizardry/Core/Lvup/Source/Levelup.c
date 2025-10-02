@@ -135,6 +135,17 @@ STATIC_DECLAR int get_metis_tome_growth_bonus(void)
 	return MetisTomeGrowthBonus;
 }
 
+STATIC_DECLAR bool can_unit_gain_Level(struct Unit *unit)
+{
+	if (unit->level >= CHAX_MAX_LEVEL)
+		return false;
+
+	if ((unit->level + GetUnitHiddenLevel(unit)) >= CHAX_MAX_RECORD_LEVEL)
+		return false;
+
+	return true;
+}
+
 LYN_REPLACE_CHECK(CheckBattleUnitLevelUp);
 void CheckBattleUnitLevelUp(struct BattleUnit *bu)
 {
@@ -149,8 +160,7 @@ void CheckBattleUnitLevelUp(struct BattleUnit *bu)
 				bu->expGain -= bu->unit.exp;
 				bu->unit.exp = UNIT_EXP_DISABLED;
 			}
-		} else if (bu->unit.level == UNIT_LEVEL_MAX_RE ||
-				 UNIT_RECORDED_LEVEL_MAX == (bu->unit.level + GetUnitHiddenLevel(&bu->unit))) {
+		} else if (!can_unit_gain_Level(&bu->unit)) {
 			bu->expGain -= bu->unit.exp;
 			bu->unit.exp = UNIT_EXP_DISABLED;
 		}
