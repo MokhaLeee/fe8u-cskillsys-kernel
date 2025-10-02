@@ -87,4 +87,7 @@ const struct KernelDesigerConfig gKernelDesigerConfig = {
 #ifdef CONFIG_BANIM_SWITCHER_EN
 	.banim_switcher_en = true,
 #endif
+
+	.max_level = UNIT_LEVEL_MAX_RE,
+	.max_level_record = UNIT_RECORDED_LEVEL_MAX,
 };

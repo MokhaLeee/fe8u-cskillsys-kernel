@@ -44,6 +44,9 @@ struct KernelDesigerConfig {
 
 	/* banim switcher */
 	u8 banim_switcher_en;
+
+	u8 max_level;
+	u8 max_level_record;
 };
 
 struct KernelBattleDesignerConfig {
@@ -107,6 +110,9 @@ static inline u32 perc_of(u32 num, u32 perc)
 		(k_udiv(((__x) - ((__d) / 2)), (__d))); \
 } \
 )
+
+#define MAX(_a_, _b_) (((_a_) > (_b_)) ? (_a_) : (_b_))
+#define MIN(_a_, _b_) (((_a_) < (_b_)) ? (_a_) : (_b_))
 
 /**
  * banim.c
