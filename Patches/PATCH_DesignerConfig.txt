@@ -73,7 +73,7 @@ B25:DECIMAL.zh=技能子菜单宽度
 B26:$COMBO combo.bool.txt.zh=武器额外熟练度自动生成字体
 B27:$COMBO combo.bool.txt.zh=敌人能否连携攻击
 B28:$COMBO combo.bool.txt.zh=菜单技能显示消息
-B29:$COMBO combo.bool.txt.zh=banim_switcher_en
+B29:$COMBO combo.bool.txt.zh=启用战斗动画切换
 B30:DECIMAL.zh=最高等级 (0-25)
 B31:DECIMAL.zh=最高等级记录 (0-80)
 
