@@ -36,7 +36,7 @@ int CalcBattleRealDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 
 #if defined(SID_LunaAttack) && (COMMON_SKILL_VALID(SID_LunaAttack))
 	if (BattleFastSkillTester(attacker, SID_LunaAttack))
-		damage += defender->battleDefense / 4;
+		damage += perc_of(defender->battleDefense, SKILL_EFF0(SID_LunaAttack));
 #endif
 
 #if defined(SID_Bushido) && (COMMON_SKILL_VALID(SID_Bushido))

@@ -5,6 +5,8 @@
 #include "kernel-lib.h"
 #include "skill-system.h"
 
+#define LOCAL_TRACE 0
+
 enum { LOCAL_SCORE_MAX = 3 };
 
 extern EWRAM_DATA u16 BanimSwitcherBuf[NEW_BATTLE_HIT_MAX];
@@ -55,7 +57,7 @@ STATIC_DECLAR void SetupBanimSwitcherBuf(void)
 		if (check_end(it))
 			break;
 
-		Printf("chunk: pid=%02X, jid=%02X, wtype=%d, item=%04X, bid=%03X",
+		LTRACEF("chunk: pid=%02X, jid=%02X, wtype=%d, item=%04X, bid=%03X",
 			it->pid, it->jid, it->wtype, it->item, it->banim_index);
 
 		if (it->act_flag && !(CheckFlag(it->act_flag)))
