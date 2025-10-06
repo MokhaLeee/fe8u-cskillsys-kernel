@@ -128,11 +128,12 @@ INC_DIRS := include include/kernel $(LIB_DIR)/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
 
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
-CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi -fno-inline -finline-functions
+CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Werror -Wno-unused-parameter -O2 -mtune=arm7tdmi
 ASFLAGS := $(ARCH) $(INC_FLAG)
 
 # For new version on DEVKITARM
 CFLAGS += -std=gnu99
+# CFLAGS += -fno-inline -finline-functions
 
 CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
 SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"

@@ -180,6 +180,10 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	`combo_base_damage` + [atk - def] * `combo_additional_damage_perc`% * !!`combo_additional_damage_en`
 
+- `battle_followup_speed_threshold`
+
+	Configurable value for vanilla `BATTLE_FOLLOWUP_SPEED_THRESHOLD`.
+
 ## Skill misc infos
 
 ![image](./gfx/SystemConfig3.png)

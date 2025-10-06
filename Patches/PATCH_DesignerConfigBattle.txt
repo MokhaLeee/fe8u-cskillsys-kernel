@@ -20,6 +20,7 @@ b7:DECIMAL=Critical rate bonus on attributes bit
 B8:DECIMAL=combo_base_damage
 B9:$COMBO combo.bool.txt=combo_additional_damage_en
 B10:DECIMAL=combo_additional_damage_perc
+B11:DECIMAL=battle_followup_speed_threshold
 
 B0:DECIMAL.zh=攻击在攻速计算中的百分比
 B1:DECIMAL.zh=吸星术吸血百分比
@@ -30,5 +31,6 @@ b7:DECIMAL.zh=必杀单位必杀率加成
 B8:DECIMAL.zh=连携攻击基础伤害
 B9:$COMBO combo.bool.txt.zh=连携攻击附加伤害使能
 B10:DECIMAL.zh=连携攻击附加伤害百分比
+B11:DECIMAL.zh=追击速差要求
 
 INFO=Editor: gKernelBattleDesignerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md

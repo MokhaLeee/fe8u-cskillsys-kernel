@@ -73,6 +73,8 @@ struct KernelBattleDesignerConfig {
 	u8 combo_base_damage;
 	u8 combo_additional_damage_en;
 	u8 combo_additional_damage_perc;
+
+	u8 battle_followup_speed_threshold;
 };
 
 extern const struct KernelDesigerConfig *const gpKernelDesigerConfig;

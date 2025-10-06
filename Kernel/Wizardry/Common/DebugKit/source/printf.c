@@ -431,7 +431,7 @@ int k_printf(const char *fmt, ...)
 	char buf[0x100];
 
 	va_start(ap, fmt);
-	err = k_vsprintf(buf, fmt, ap);
+	err = k_vsnprintf(buf, sizeof(buf), fmt, ap);
 	va_end(ap);
 
 	k_fprintf_puts(buf, err, stdout);

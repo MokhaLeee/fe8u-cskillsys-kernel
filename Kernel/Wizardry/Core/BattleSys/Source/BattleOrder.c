@@ -268,7 +268,7 @@ bool CheckCanTwiceAttackOrder(struct BattleUnit *actor, struct BattleUnit *targe
 	else
 		gBattleTemporaryFlag.tar_normal_judge_twice_order = true;
 
-	return ((actor->battleSpeed - target->battleSpeed) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD);
+	return ((actor->battleSpeed - target->battleSpeed) >= get_battle_followup_speed_threshold());
 }
 
 STATIC_DECLAR bool CheckDesperationOrder(void)
@@ -413,14 +413,14 @@ STATIC_DECLAR void RegenerateBattleOrderFlagsAfterCalc(void)
 	 * so here we need to retry for speed judgement for twice-order
 	 */
 	if (gBattleTemporaryFlag.act_normal_judge_twice_order == true) {
-		if ((act_as - tar_as) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+		if ((act_as - tar_as) >= get_battle_followup_speed_threshold())
 			gBattleFlagExt.round_mask |=  UNWIND_DOUBLE_ACT;
 		else
 			gBattleFlagExt.round_mask &= ~UNWIND_DOUBLE_ACT;
 	}
 
 	if (gBattleTemporaryFlag.tar_normal_judge_twice_order == true) {
-		if ((tar_as - act_as) >= BATTLE_FOLLOWUP_SPEED_THRESHOLD)
+		if ((tar_as - act_as) >= get_battle_followup_speed_threshold())
 			gBattleFlagExt.round_mask |=  UNWIND_DOUBLE_TAR;
 		else
 			gBattleFlagExt.round_mask &= ~UNWIND_DOUBLE_TAR;

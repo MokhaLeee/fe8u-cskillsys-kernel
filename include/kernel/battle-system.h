@@ -182,6 +182,9 @@ void ResetRoundEfxSkills(void);
 void EnqueueRoundEfxSkill(u16 sid);
 u16 DequeueRoundEfxSkill(void);
 
+static inline int get_battle_followup_speed_threshold(void) \
+	{ return gpKernelBattleDesignerConfig->battle_followup_speed_threshold; }
+
 /**
  * BattleHit
  */
