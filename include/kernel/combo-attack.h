@@ -12,6 +12,7 @@ struct ComboAtkTarget {
 extern struct ComboAtkTarget gComboAtkList[COMBO_ATK_MAX + 1];
 
 void ResetComboAtkList(void);
+bool ChecComboMagi(int weapon);
 void BattleGenerateComboAtkList(void);
 bool BattleComboGenerateHits(void);
 void MapAnim_PrepareNextBattleRound_CleanPreRoundCombo(void);

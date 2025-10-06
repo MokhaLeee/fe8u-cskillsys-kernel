@@ -172,6 +172,14 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 	If bit "Myrmidon/SwordMaster" in Ability3 is set, get crit `[+15%]`
 
+- `combo_base_damage`
+- `combo_additional_damage_en`
+- `combo_additional_damage_perc`
+
+	For combo-attack, battle damage calc:
+
+	`combo_base_damage` + [atk - def] * `combo_additional_damage_perc`% * !!`combo_additional_damage_en`
+
 ## Skill misc infos
 
 ![image](./gfx/SystemConfig3.png)

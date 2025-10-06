@@ -2,6 +2,7 @@
 #include "battle-system.h"
 #include "combo-attack.h"
 #include "skill-system.h"
+#include "status-getter.h"
 #include "kernel-lib.h"
 #include "constants/skills.h"
 
@@ -10,6 +11,53 @@
 STATIC_DECLAR bool ComboCheckBattleInori(struct Unit *combo_actor)
 {
 	return CheckBattleInori(&gBattleActor, &gBattleTarget);
+}
+
+STATIC_DECLAR int ComboGetAdditionalBattleDamage(struct Unit *combo_actor)
+{
+	int ret;
+	int atk, def;
+	struct Unit *target = GetUnit(gBattleTarget.unit.index);
+	int weapon = GetUnitEquippedWeapon(combo_actor);
+
+	/* atk & def */
+	if (ChecComboMagi(weapon)) {
+		atk = MagGetter(combo_actor) + GetItemMight(weapon);
+		def = ResGetter(target);
+	} else {
+		atk = PowGetter(combo_actor) + GetItemMight(weapon);
+		def = DefGetter(target);
+	}
+
+	ret = atk - def;
+	if (ret <= 0)
+		return 0;
+
+	ret = perc_of(ret, gpKernelBattleDesignerConfig->combo_additional_damage_perc);
+	if (ret <= 0)
+		ret = 1;
+
+	return ret;
+}
+
+STATIC_DECLAR int ComboGetBattleDamage(struct Unit *combo_actor)
+{
+	int ret = gpKernelBattleDesignerConfig->combo_base_damage;
+
+	if (gpKernelBattleDesignerConfig->combo_additional_damage_en)
+		ret += ComboGetAdditionalBattleDamage(combo_actor);
+
+#if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
+	if (SkillTester(combo_actor, SID_Assist))
+		ret += SKILL_EFF0(SID_Assist);
+#endif
+
+#if (defined(SID_Synergism) && COMMON_SKILL_VALID(SID_Synergism))
+	if (BattleFastSkillTester(&gBattleActor, SID_Synergism))
+		ret += SKILL_EFF0(SID_Synergism);
+#endif
+
+	return ret;
 }
 
 STATIC_DECLAR bool BattleComboGenerateHit(void)
@@ -32,7 +80,7 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
 	} else {
 		// Hitted
-		gBattleStats.damage = 5;
+		gBattleStats.damage = ComboGetBattleDamage(unit);
 
 #ifdef CONFIG_AUTO_DETECT_EFXRESIRE_WEAPON
 		if (CheckWeaponIsEfxResire(GetUnitEquippedWeapon(unit)))
@@ -47,23 +95,16 @@ STATIC_DECLAR bool BattleComboGenerateHit(void)
 			 */
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
 		}
-
-#if (defined(SID_Assist) && COMMON_SKILL_VALID(SID_Assist))
-		if (SkillTester(unit, SID_Assist))
-			gBattleStats.damage += SKILL_EFF0(SID_Assist);
-#endif
-
-#if (defined(SID_Synergism) && COMMON_SKILL_VALID(SID_Synergism))
-		if (BattleFastSkillTester(&gBattleActor, SID_Synergism))
-			gBattleStats.damage += SKILL_EFF0(SID_Synergism);
-#endif
 	}
 
 	/* step2 BattleGenerateHitEffects */
+	if (gBattleStats.damage > gBattleTarget.unit.curHP)
+		gBattleStats.damage = gBattleTarget.unit.curHP;
+
 	gBattleTarget.unit.curHP -= gBattleStats.damage;
 
-	if (gBattleTarget.unit.curHP < 0)
-		gBattleTarget.unit.curHP = 0;
+	if (gBattleStats.damage != 0)
+		gBattleActor.nonZeroDamage = TRUE;
 
 	gBattleHitIterator->hpChange = gBattleStats.damage;
 

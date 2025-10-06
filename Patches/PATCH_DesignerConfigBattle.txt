@@ -17,6 +17,9 @@ B2:DECIMAL=AVO deacy for riders indorr
 W4:DECIMAL=CRIT damage correction rate
 b6:DECIMAL=Critical rate bonus for cavalry
 b7:DECIMAL=Critical rate bonus on attributes bit
+B8:DECIMAL=combo_base_damage
+B9:$COMBO combo.bool.txt=combo_additional_damage_en
+B10:DECIMAL=combo_additional_damage_perc
 
 B0:DECIMAL.zh=攻击在攻速计算中的百分比
 B1:DECIMAL.zh=吸星术吸血百分比
@@ -24,5 +27,8 @@ B2:DECIMAL.zh=骑兵在室内的回避衰减
 W4:DECIMAL.zh=必杀伤害修正率
 b6:DECIMAL.zh=骑兵必杀率加成
 b7:DECIMAL.zh=必杀单位必杀率加成
+B8:DECIMAL.zh=连携攻击基础伤害
+B9:$COMBO combo.bool.txt.zh=连携攻击附加伤害使能
+B10:DECIMAL.zh=连携攻击附加伤害百分比
 
 INFO=Editor: gKernelBattleDesignerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md

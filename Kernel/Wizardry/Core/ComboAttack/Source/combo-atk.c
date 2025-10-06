@@ -15,7 +15,7 @@ void ResetComboAtkList(void)
 		gComboAtkList[i].uid = COMBO_ATK_UID_INVALID;
 }
 
-STATIC_DECLAR bool ChecComboMagi(int weapon)
+bool ChecComboMagi(int weapon)
 {
 	if (GetItemAttributes(weapon) & (IA_MAGIC | IA_MAGICDAMAGE))
 		return true;
