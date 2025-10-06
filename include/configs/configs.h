@@ -79,11 +79,6 @@
 #define CONFIG_AUTO_DETECT_EFXRESIRE_WEAPON
 
 /**
- * Enable patch: BanimSwitch
- */
-#define CONFIG_BANIM_SWITCHER_EN
-
-/**
  * If uncommented, enable Gaiden style magic system
  *
  * Sub:

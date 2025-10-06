@@ -55,6 +55,9 @@ STATIC_DECLAR void SetupBanimSwitcherBuf(void)
 		if (check_end(it))
 			break;
 
+		Printf("chunk: pid=%02X, jid=%02X, wtype=%d, item=%04X, bid=%03X",
+			it->pid, it->jid, it->wtype, it->item, it->banim_index);
+
 		if (it->act_flag && !(CheckFlag(it->act_flag)))
 			continue;
 
@@ -154,30 +157,30 @@ STATIC_DECLAR void SetupBanimSwitcherBuf(void)
 				continue;
 #endif
 
-			cur_score = 0;
+			cur_score = 1;
 
 			if (it->act_when_crit) {
 				if (!(hit->attributes & BATTLE_HIT_ATTR_CRIT))
 					continue;
 
-				cur_score = 1;
+				cur_score += 1;
 			}
 
 			if (it->act_when_killing) {
 				if (!(hit->info & BATTLE_HIT_INFO_KILLS_TARGET))
 					continue;
 
-				cur_score = 2;
+				cur_score += 2;
 			}
 
 			if (it->sid != 0) {
 				if (it->sid != ref->sid)
 					continue;
 
-				cur_score = 3;
+				cur_score += 3;
 			}
 
-			if (final_score < cur_score) {
+			if (final_score <= cur_score) {
 				BanimSwitcherBuf[iround] = it->banim_index;
 				final_score = cur_score;
 			}

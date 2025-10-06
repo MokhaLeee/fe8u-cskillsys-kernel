@@ -21,6 +21,6 @@ B4:UNIT=target unit (00=ANY)
 B5:CLASS=target class (00=ANY)
 B6:$COMBO combo.bool.txt=activate when kill target
 B7:$COMBO combo.bool.txt=activate when critical attack
-W8:BATTLEANIMEICON=banim
+W8:BATTLEANIME=banim
 W10:SKILL=skill (00=ANY)
 W12:FLAG=flag (00=ANY)
