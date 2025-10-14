@@ -133,8 +133,8 @@ D-Pulse[X]
 
 ## MSG_SKILL_DivinePulse
 Divine Pulse:[NL]
-Turn a missed attack into a hit[NL]
-(30% + Luck % activation).[X]
+Try to turn a missed attack into[NL]
+a hit (30% + Luck % activation).[X]
 
 ## MSG_SKILL_Discipline
 Discipline:[NL]

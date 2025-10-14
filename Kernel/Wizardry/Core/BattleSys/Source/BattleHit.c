@@ -93,27 +93,42 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 	LTRACEF("attack=%d, base=%d", attack, BattleUnitOriginalStatus(attacker)->atk);
 }
 
+STATIC_DECLAR bool check_hitted(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+	bool hitted = BattleRoll2RN(gBattleStats.hitRate, FALSE);
+
+#if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
+	if (!hitted) {
+		bool reroll = CheckBattleSkillActivate(attacker, defender,
+				SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck);
+
+		if (reroll) {
+			/**
+			 * Use Byte1 in misc info to determine whether should we judge another roll;
+			 */
+			if (SKILL_EFF1(SID_DivinePulse) != 0)
+				hitted = true;
+			else
+				hitted = BattleRoll2RN(gBattleStats.hitRate, FALSE);
+		}
+
+		if (hitted)
+			RegisterActorEfxSkill(GetCurrentBattleHitRound(), SID_DivinePulse);
+	}
+#endif
+
+	return hitted;
+}
+
 LYN_REPLACE_CHECK(BattleGenerateHitAttributes);
 void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
 	gBattleStats.damage = 0;
 
-	/* Fasten simulation */
-	if (!BattleRoll2RN(gBattleStats.hitRate, FALSE)) {
-#if (defined(SID_DivinePulse) && (COMMON_SKILL_VALID(SID_DivinePulse)))
-		if (BattleRoll2RN(gBattleStats.hitRate, FALSE) &&
-			CheckBattleSkillActivate(attacker, defender, SID_DivinePulse, SKILL_EFF0(SID_DivinePulse) + attacker->unit.lck))
-			RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_DivinePulse);
-		else {
-			RegisterHitCnt(attacker, true);
-			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
-			return;
-		}
-#else
+	if (!check_hitted(attacker, defender)) {
 		RegisterHitCnt(attacker, true);
 		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_MISS;
 		return;
-#endif
 	}
 
 	RegisterHitCnt(attacker, false);
