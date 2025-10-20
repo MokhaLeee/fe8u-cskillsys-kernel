@@ -469,11 +469,6 @@ static void modify_unit_status(void)
 #if defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful))
 	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Resourceful);
 #endif
-	AddSkillDbgListByPid(CHARACTER_MYRRH, SID_GoddessDance);
-	AddSkillDbgListByPid(CHARACTER_MYRRH, SID_RallyMovement);
-	AddSkillDbgListByPid(CHARACTER_MYRRH, SID_DivineReprieve);
-	AddSkillDbgListByPid(CHARACTER_MYRRH, SID_Blacksmith);
-	AddSkillDbgListByPid(CHARACTER_MYRRH, SID_Swarp);
 }
 
 static void modify_unit_status_post_prep(void)
