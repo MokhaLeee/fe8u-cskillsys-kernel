@@ -67,7 +67,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_HealingFocus) && COMMON_SKILL_VALID(SID_HealingFocus))
 	[SID_HealingFocus] = &(const struct MenuItemDef) {
 		.name = "　瞑想",
-		.nameMsgId = MSG_MenuSkill_HealingFocusName,
 		.helpMsgId = MSG_SKILL_HealingFocus,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = HealingFocus_Usability,
@@ -99,7 +98,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_LightRune) && COMMON_SKILL_VALID(SID_LightRune))
 	[SID_LightRune] = &(const struct MenuItemDef) {
 		.name = "　光の結界",
-		.nameMsgId = MSG_MenuSkill_LightRuneName,
 		.helpMsgId = MSG_SKILL_LightRune,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = LightRune_Usability,
@@ -114,7 +112,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Mine) && COMMON_SKILL_VALID(SID_Mine))
 	[SID_Mine] = &(const struct MenuItemDef) {
 		.name = "　地雷",
-		.nameMsgId = MSG_MenuSkill_MineName,
 		.helpMsgId = MSG_SKILL_Mine,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Mine_Usability,
@@ -129,7 +126,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallyDefense) && COMMON_SKILL_VALID(SID_RallyDefense))
 	[SID_RallyDefense] = &(const struct MenuItemDef) {
 		.name = "　ラリー防御",
-		.nameMsgId = MSG_MenuSkill_RallyDefenseName,
 		.helpMsgId = MSG_SKILL_RallyDefense,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -144,7 +140,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallyLuck) && COMMON_SKILL_VALID(SID_RallyLuck))
 	[SID_RallyLuck] = &(const struct MenuItemDef) {
 		.name = "　ラリー運",
-		.nameMsgId = MSG_MenuSkill_RallyLuckName,
 		.helpMsgId = MSG_SKILL_RallyLuck,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -159,7 +154,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallyMagic) && COMMON_SKILL_VALID(SID_RallyMagic))
 	[SID_RallyMagic] = &(const struct MenuItemDef) {
 		.name = "　ラリーマジック",
-		.nameMsgId = MSG_MenuSkill_RallyMagicName,
 		.helpMsgId = MSG_SKILL_RallyMagic,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -174,7 +168,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallyMovement) && COMMON_SKILL_VALID(SID_RallyMovement))
 	[SID_RallyMovement] = &(const struct MenuItemDef) {
 		.name = "　ラリーの動き",
-		.nameMsgId = MSG_MenuSkill_RallyMovementName,
 		.helpMsgId = MSG_SKILL_RallyMovement,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -189,7 +182,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallyResistance) && COMMON_SKILL_VALID(SID_RallyResistance))
 	[SID_RallyResistance] = &(const struct MenuItemDef) {
 		.name = "　ラリー耐性",
-		.nameMsgId = MSG_MenuSkill_RallyResistanceName,
 		.helpMsgId = MSG_SKILL_RallyResistance,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -204,7 +196,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallySkill) && COMMON_SKILL_VALID(SID_RallySkill))
 	[SID_RallySkill] = &(const struct MenuItemDef) {
 		.name = "　ラリースキル",
-		.nameMsgId = MSG_MenuSkill_RallySkillName,
 		.helpMsgId = MSG_SKILL_RallySkill,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -219,7 +210,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallySpeed) && COMMON_SKILL_VALID(SID_RallySpeed))
 	[SID_RallySpeed] = &(const struct MenuItemDef) {
 		.name = "　ラリースピード",
-		.nameMsgId = MSG_MenuSkill_RallySpeedName,
 		.helpMsgId = MSG_SKILL_RallySpeed,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -234,7 +224,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallyStrength) && COMMON_SKILL_VALID(SID_RallyStrength))
 	[SID_RallyStrength] = &(const struct MenuItemDef) {
 		.name = "　ラリーパワー",
-		.nameMsgId = MSG_MenuSkill_RallyStrengthName,
 		.helpMsgId = MSG_SKILL_RallyStrength,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -249,7 +238,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_RallySpectrum) && COMMON_SKILL_VALID(SID_RallySpectrum))
 	[SID_RallySpectrum] = &(const struct MenuItemDef) {
 		.name = "　ラリースペクトラム",
-		.nameMsgId = MSG_MenuSkill_RallySpectrumName,
 		.helpMsgId = MSG_SKILL_RallySpectrum,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Rally_Usability,
@@ -264,7 +252,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_GoddessDance) && COMMON_SKILL_VALID(SID_GoddessDance))
 	[SID_GoddessDance] = &(const struct MenuItemDef) {
 		.name = "　女神の踊り",
-		.nameMsgId = MSG_MenuSkill_GoddessDanceName,
 		.helpMsgId = MSG_SKILL_GoddessDance,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = GoddessDance_Usability,
@@ -279,7 +266,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Stride) && COMMON_SKILL_VALID(SID_Stride))
 	[SID_Stride] = &(const struct MenuItemDef) {
 		.name = "　大股",
-		.nameMsgId = MSG_MenuSkill_StrideName,
 		.helpMsgId = MSG_SKILL_Stride,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Stride_Usability,
@@ -294,7 +280,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Swarp) && COMMON_SKILL_VALID(SID_Swarp))
 	[SID_Swarp] = &(const struct MenuItemDef) {
 		.name = "　スワープ",
-		.nameMsgId = MSG_MenuSkill_SwarpName,
 		.helpMsgId = MSG_SKILL_Swarp,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Swarp_Usability,
@@ -309,7 +294,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Blacksmith) && COMMON_SKILL_VALID(SID_Blacksmith))
 	[SID_Blacksmith] = &(const struct MenuItemDef) {
 		.name = "　鍛冶屋",
-		.nameMsgId = MSG_MenuSkill_BlacksmithName,
 		.helpMsgId = MSG_SKILL_Blacksmith,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Blacksmith_Usability,
@@ -324,7 +308,6 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_DivineReprieve) && COMMON_SKILL_VALID(SID_DivineReprieve))
 	[SID_DivineReprieve] = &(const struct MenuItemDef) {
 		.name = "　神裁の恩寵",
-		.nameMsgId = MSG_MenuSkill_DivineReprieveMenuName,
 		.helpMsgId = MSG_MenuSkill_DivineReprieve_DESC,
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = DivineReprieve_Usability,

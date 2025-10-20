@@ -3177,7 +3177,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_RallyMovement) && COMMON_SKILL_VALID(SID_RallyMovement))
 	[SID_RallyMovement] = {
-		.name = MSG_SKILL_RallyMovement_NAME,
 		.desc = MSG_SKILL_RallyMovement,
 		.icon = GFX_SkillIcon_RallyMovement,
 	},
@@ -3896,7 +3895,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_EndlessVitality) && COMMON_SKILL_VALID(SID_EndlessVitality))
 	[SID_EndlessVitality] = {
-		.name = MSG_SKILL_EndlessVitality_NAME,
 		.desc = MSG_SKILL_EndlessVitality_DESC,
 		.icon = GFX_SkillIcon_WIP,
 	},
@@ -3918,7 +3916,6 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_DivineReprieve) && COMMON_SKILL_VALID(SID_DivineReprieve))
 	[SID_DivineReprieve] = {
-		.name = MSG_MenuSkill_DivineReprieve_NAME,
 		.desc = MSG_MenuSkill_DivineReprieve_DESC,
 		.icon = GFX_SkillIcon_WIP,
 	},
