@@ -29,6 +29,9 @@ struct ProcHmu {
 	int counter;
 };
 
+u8 Pivot_Usability(const struct MenuItemDef *def, int number);
+int Pivot_Hover(struct MenuProc *menu, struct MenuItemProc *item);
+
 u8 HerosMovement_UM_Usability(const struct MenuItemDef *def, int number);
 int HerosMovement_UM_OnDarw(struct MenuProc *menu, struct MenuItemProc *item);
 u8 HerosMovement_UM_Effect(struct MenuProc *menu, struct MenuItemProc *menuItem);

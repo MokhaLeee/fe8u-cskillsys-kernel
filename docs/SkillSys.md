@@ -157,9 +157,12 @@ The later, which is mainly handled in function `BattleComboGenerateHits`, is now
 
 ## 7.1. menu skills
 
+### 7.1.1 Menu skill name
 When displaying menu option for skills, we need to insert a space, " " as a prefix before skill name.
 Typically, we would register an additional string with a space attached and bind it to a menu item. However, this would inevitably lead to some waste of MSG index. Therefore, starting from version 3.4.0, we have introduced an additional configurable option that allows directly extracting skill names and programmatically adding spaces before displaying them. This way, it helps save a portion of MSG index resources.
 
 This is configurable via `CONFIG_MENU_SKILL_DISP_MSG_EN_N`, or `gKernelDesigerConfig.menu_skill_disp_msg_en_n`.
 
 It is still the reamined as the priority to directly display the menu item name, and the existing individually registered menu skill name indexes (MSG indexes) have not been removed. However, it is recommended that newly developed menu skills no longer apply for separate MSG indexes going forward.
+
+### Wizardry note

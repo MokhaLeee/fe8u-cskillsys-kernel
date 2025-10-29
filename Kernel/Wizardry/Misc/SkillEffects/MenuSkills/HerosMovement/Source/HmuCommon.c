@@ -4,11 +4,6 @@
 #include "constants/skills.h"
 #include "heros-movement.h"
 
-extern EWRAM_OVERLAY(0) struct {
-	s8 type;
-	u8 _pad_[3];
-} sHerosMovementState;
-
 const u16 HerosMovementSkills[HMU_TYPE_COUNT] = {
 #if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
 	[HMU_PIVOT] = SID_Pivot,
@@ -17,31 +12,36 @@ const u16 HerosMovementSkills[HMU_TYPE_COUNT] = {
 
 STATIC_DECLAR bool HerosMovementSkillRequired(void)
 {
-	return !!(gpKernelDesigerConfig->heros_movement_skill_required);
+	return 0;
 }
 
-static void SetupHerosMovementState(void)
+static inline int GetHmuType(struct Unit *unit)
 {
-	u8 jid = UNIT_CLASS_ID(gActiveUnit);
-
-	sHerosMovementState.type = gpHerosMovementTypes[jid];
+	return gpHerosMovementTypes[UNIT_CLASS_ID(gActiveUnit)];
 }
 
 u8 HerosMovement_UM_Usability(const struct MenuItemDef *def, int number)
 {
 	u16 sid;
+	int hmu_type;
 	const struct MenuItemDef *sdef;
 
 	if (HerosMovementSkillRequired())
 		return MENU_NOTSHOWN;
 
-	SetupHerosMovementState();
-
-	if (sHerosMovementState.type == HMU_TYPE_INVALID)
+	hmu_type = GetHmuType(gActiveUnit);
+	if (hmu_type == HMU_TYPE_INVALID)
 		return MENU_NOTSHOWN;
 
-	sid = HerosMovementSkills[sHerosMovementState.type];
+	sid = HerosMovementSkills[hmu_type];
 	if (!COMMON_SKILL_VALID(sid))
+		return MENU_NOTSHOWN;
+
+	/**
+	 * If unit already hold the skill,
+	 * then he may use this skill in skill submenu.
+	 */
+	if (SkillListTester(gActiveUnit, sid))
 		return MENU_NOTSHOWN;
 
 	sdef = GetSkillMenuInfo(sid);
@@ -53,7 +53,7 @@ u8 HerosMovement_UM_Usability(const struct MenuItemDef *def, int number)
 
 int HerosMovement_UM_OnDarw(struct MenuProc *menu, struct MenuItemProc *item)
 {
-	u16 sid = HerosMovementSkills[sHerosMovementState.type];
+	u16 sid = HerosMovementSkills[GetHmuType(gActiveUnit)];
 	const struct MenuItemDef *def = GetSkillMenuInfo(sid);
 
 	if (def->color)
@@ -77,7 +77,7 @@ int HerosMovement_UM_OnDarw(struct MenuProc *menu, struct MenuItemProc *item)
 
 u8 HerosMovement_UM_Effect(struct MenuProc *menu, struct MenuItemProc *item)
 {
-	u16 sid = HerosMovementSkills[sHerosMovementState.type];
+	u16 sid = HerosMovementSkills[GetHmuType(gActiveUnit)];
 	const struct MenuItemDef *def = GetSkillMenuInfo(sid);
 
 	if (def && def->onSelected)
@@ -88,7 +88,7 @@ u8 HerosMovement_UM_Effect(struct MenuProc *menu, struct MenuItemProc *item)
 
 int HerosMovement_UM_Hover(struct MenuProc *menu, struct MenuItemProc *item)
 {
-	u16 sid = HerosMovementSkills[sHerosMovementState.type];
+	u16 sid = HerosMovementSkills[GetHmuType(gActiveUnit)];
 	const struct MenuItemDef *def = GetSkillMenuInfo(sid);
 
 	if (def && def->onSwitchIn)
@@ -99,7 +99,7 @@ int HerosMovement_UM_Hover(struct MenuProc *menu, struct MenuItemProc *item)
 
 int HerosMovement_UM_Unhover(struct MenuProc *menu, struct MenuItemProc *item)
 {
-	u16 sid = HerosMovementSkills[sHerosMovementState.type];
+	u16 sid = HerosMovementSkills[GetHmuType(gActiveUnit)];
 	const struct MenuItemDef *def = GetSkillMenuInfo(sid);
 
 	if (def && def->onSwitchOut)

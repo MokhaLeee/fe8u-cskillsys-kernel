@@ -56,11 +56,7 @@ int Pivot_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 	return 0;
 }
 
-STATIC_DECLAR void Pivot_SelectTarget_Init(ProcPtr proc)
-{
-}
-
-STATIC_DECLAR u8 Pivot_SelectTarget_OnSwitchIn(ProcPtr proc, struct SelectTarget* target)
+static u8 select_target_on_switchin(ProcPtr proc, struct SelectTarget* target)
 {
 	int x, y;
 
@@ -74,14 +70,7 @@ STATIC_DECLAR u8 Pivot_SelectTarget_OnSwitchIn(ProcPtr proc, struct SelectTarget
 	return 0;
 }
 
-STATIC_DECLAR u8 Pivot_SelectTarget_OnCancel(ProcPtr proc, struct SelectTarget* target)
-{
-	HideMoveRangeGraphics();
-
-	return GenericSelection_BackToUM(proc, target);
-}
-
-STATIC_DECLAR u8 Pivot_OnSelectTarget(ProcPtr proc, struct SelectTarget *target)
+static u8 select_target_on_select(ProcPtr proc, struct SelectTarget *target)
 {
 	gActionData.xOther = target->x;
 	gActionData.yOther = target->y;
@@ -100,16 +89,23 @@ STATIC_DECLAR u8 Pivot_OnSelectTarget(ProcPtr proc, struct SelectTarget *target)
 	return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A | TARGETSELECTION_ACTION_CLEARBGS;
 }
 
+static u8 select_target_on_cancel(ProcPtr proc, struct SelectTarget* target)
+{
+	HideMoveRangeGraphics();
+
+	return GenericSelection_BackToUM(proc, target);
+}
+
 STATIC_DECLAR const struct SelectInfo sSelectInfo_HmuPivot = {
-	.onInit = Pivot_SelectTarget_Init,
+	.onInit = NULL,
 	.onEnd = NULL,
-	.onSwitchIn = Pivot_SelectTarget_OnSwitchIn,
-	.onSelect = Pivot_OnSelectTarget,
-	.onCancel = Pivot_SelectTarget_OnCancel,
+	.onSwitchIn = select_target_on_switchin,
+	.onSelect = select_target_on_select,
+	.onCancel = select_target_on_cancel,
 	.onHelp = NULL,
 };
 
-u8 Pivot_Skill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
+u8 Pivot_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
 	if (item->availability == MENU_DISABLED) {
 		MenuFrozenHelpBox(menu, MSG_HMU_ERROR_TERRAIN);
@@ -128,7 +124,7 @@ u8 Pivot_Skill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
 }
 
-static void hmu_init(struct ProcHmu *proc)
+static void action_init(struct ProcHmu *proc)
 {
 	struct MuProc *mu = GetUnitMu(gActiveUnit);
 	if (!mu) {
@@ -142,7 +138,7 @@ static void hmu_init(struct ProcHmu *proc)
 	SetMuFacing(mu, GetFacingDirection(gActiveUnit->xPos, gActiveUnit->yPos, gActionData.xOther, gActionData.yOther));
 }
 
-static void hmu_loop(struct ProcHmu *proc)
+static void action_loop(struct ProcHmu *proc)
 {
 	Mu_OnStateMovement(proc->mu);
 
@@ -154,7 +150,7 @@ static void hmu_loop(struct ProcHmu *proc)
 	}
 }
 
-static void hmu_end(struct ProcHmu *proc)
+static void action_end(struct ProcHmu *proc)
 {
 	gActionData.xMove = gActiveUnit->xPos = 2 * gActionData.xOther - gActiveUnit->xPos;
 	gActionData.yMove = gActiveUnit->yPos = 2 * gActionData.yOther - gActiveUnit->yPos;
@@ -163,11 +159,11 @@ static void hmu_end(struct ProcHmu *proc)
 STATIC_DECLAR const struct ProcCmd ProcScr_ActionPivot[] = {
 	PROC_NAME("ActionPivot"),
 	PROC_YIELD,
-	PROC_CALL(hmu_init),
+	PROC_CALL(action_init),
 	PROC_YIELD,
-	PROC_REPEAT(hmu_loop),
+	PROC_REPEAT(action_loop),
 	PROC_YIELD,
-	PROC_CALL(hmu_end),
+	PROC_CALL(action_end),
 	PROC_END
 };
 
@@ -176,8 +172,14 @@ static void callback_anim(ProcPtr proc)
 	Proc_StartBlocking(ProcScr_ActionPivot, proc);
 }
 
-bool Action_Pivot_Skill(ProcPtr parent)
+bool Action_Pivot(ProcPtr parent)
 {
-	NewMuSkillAnimOnActiveUnitWithDeamon(parent, gActionData.unk08, callback_anim, NULL);
+	int sid = gActionData.unk08;
+
+	if (SkillListTester(gActiveUnit, sid))
+		NewMuSkillAnimOnActiveUnitWithDeamon(parent, sid, callback_anim, NULL);
+	else
+		callback_anim(parent);
+
 	return true;
 }

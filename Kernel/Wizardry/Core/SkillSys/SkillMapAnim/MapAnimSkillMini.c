@@ -107,6 +107,11 @@ static void anim_init(struct ProcMuSkillAnim *proc)
 		proc->mu_gen = true;
 	}
 
+	if (!COMMON_SKILL_VALID(proc->sid)) {
+		Proc_Goto(proc, 1);
+		return;
+	}
+
 	SetMuDefaultFacing(mu);
 	FreezeSpriteAnim(mu->sprite_anim);
 	SetDefaultColorEffects();
@@ -155,11 +160,13 @@ STATIC_DECLAR const struct ProcCmd ProcScr_MuSkillAnim[] = {
 	PROC_CALL(LockGame),
 	PROC_CALL(MapAnim_CommonInit),
 	PROC_CALL_2(EnsureCameraOntoActiveUnitPosition),
+	PROC_YIELD,
 	PROC_CALL(anim_init),
 	PROC_YIELD,
 	PROC_CALL(anim_act),
 	PROC_YIELD,
 	PROC_CALL(skill_anim),
+PROC_LABEL(1),
 	PROC_YIELD,
 	PROC_CALL(_callback1),
 	PROC_YIELD,

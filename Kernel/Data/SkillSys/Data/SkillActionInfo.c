@@ -76,6 +76,6 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
-	[SID_Pivot] = Action_Pivot_Skill,
+	[SID_Pivot] = Action_Pivot,
 #endif
 };
