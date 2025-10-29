@@ -4,6 +4,8 @@
 #include "kernel-lib.h"
 
 enum heros_movement_types {
+	HMU_TYPE_INVALID = 0,
+
 	HMU_PIVOT,
 	HMU_REPOSITION,
 	HMU_SWAP,
@@ -12,8 +14,6 @@ enum heros_movement_types {
 	HMU_SWARP,
 
 	HMU_TYPE_COUNT,
-
-	HMU_TYPE_INVALID = -1,
 };
 
 enum heros_movement_menu_error_reason {
@@ -36,9 +36,4 @@ int HerosMovement_UM_Hover(struct MenuProc *menu, struct MenuItemProc *menuItem)
 int HerosMovement_UM_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 
 /* Only take effect when HEROES_MOVEMENT_SKILL_REQUIRED is not set */
-extern u8 const *const gpPivotClassList;
-extern u8 const *const gpRepositionClassList;
-extern u8 const *const gpSwapClassList;
-extern u8 const *const gpShoveClassList;
-extern u8 const *const gpSmiteClassList;
-extern u8 const *const gpSwarpClassList;
+extern u8 const *const gpHerosMovementTypes;

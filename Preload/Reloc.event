@@ -80,12 +80,12 @@ gpGFX_CombatArtIcon_AxeArtAtk:   POIN GFX_CombatArtIcon_AxeArtAtk
 gpGFX_CombatArtIcon_BowArtAtk:   POIN GFX_CombatArtIcon_BowArtAtk
 
 gpCustomAnimnSwitcher: POIN gCustomAnimnSwitcher
-gpPivotClassList: POIN PivotClassList
-gpRepositionClassList: POIN RepositionClassList
-gpSwapClassList: POIN SwapClassList
-gpShoveClassList: POIN ShoveClassList
-gpSmiteClassList: POIN SmiteClassList
-gpSwarpClassList: POIN SwarpClassList
+gpHerosMovementTypes: POIN gHerosMovementTypes
+WORD 0
+WORD 0
+WORD 0
+WORD 0
+WORD 0
 WORD 0
 WORD 0
 WORD 0

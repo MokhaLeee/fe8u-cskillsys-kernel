@@ -20,58 +20,11 @@ STATIC_DECLAR bool HerosMovementSkillRequired(void)
 	return !!(gpKernelDesigerConfig->heros_movement_skill_required);
 }
 
-static bool check_matched(int type, u8 jid)
-{
-	const u8 *it;
-
-	switch (type) {
-	case HMU_PIVOT:
-		it = gpPivotClassList;
-		break;
-
-	case HMU_REPOSITION:
-		it = gpPivotClassList;
-		break;
-
-	case HMU_SWAP:
-		it = gpPivotClassList;
-		break;
-
-	case HMU_SHOVE:
-		it = gpPivotClassList;
-		break;
-
-	case HMU_SMITE:
-		it = gpPivotClassList;
-		break;
-
-	case HMU_SWARP:
-		it = gpPivotClassList;
-		break;
-
-	default:
-		return false;
-	}
-
-	while (*it)
-		if (*(it++) == jid)
-			return true;
-
-	return false;
-}
-
 static void SetupHerosMovementState(void)
 {
-	int i;
 	u8 jid = UNIT_CLASS_ID(gActiveUnit);
 
-	sHerosMovementState.type = HMU_TYPE_INVALID;
-	for (i = 0; i < HMU_TYPE_COUNT; i++) {
-		if (check_matched(i, jid)) {
-			sHerosMovementState.type = i;
-			break;
-		}
-	}
+	sHerosMovementState.type = gpHerosMovementTypes[jid];
 }
 
 u8 HerosMovement_UM_Usability(const struct MenuItemDef *def, int number)
