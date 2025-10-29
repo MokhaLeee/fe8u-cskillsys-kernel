@@ -43,6 +43,7 @@ B28:$COMBO combo.bool.txt=menu_skill_disp_msg_en_n
 B29:$COMBO combo.bool.txt=banim_switcher_en
 B30:DECIMAL=max_level (0-25)
 B31:DECIMAL=max_level_record (0-80)
+B32:$COMBO combo.bool.txt=heros_movement_skill_required
 
 B0:$COMBO combo.bool.txt.zh=使用可装备技能
 B1:$COMBO combo.bool.txt.zh=产生新技能卷轴
@@ -76,6 +77,7 @@ B28:$COMBO combo.bool.txt.zh=菜单技能显示消息
 B29:$COMBO combo.bool.txt.zh=启用战斗动画切换
 B30:DECIMAL.zh=最高等级 (0-25)
 B31:DECIMAL.zh=最高等级记录 (0-80)
+B32:$COMBO combo.bool.txt=Heros风格位移支援技能需要装备技能
 
 INFO=Editor: gKernelDesigerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md
 

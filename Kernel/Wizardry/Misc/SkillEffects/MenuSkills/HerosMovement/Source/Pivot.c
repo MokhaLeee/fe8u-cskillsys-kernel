@@ -1,0 +1,183 @@
+#include "common-chax.h"
+#include "skill-system.h"
+#include "constants/skills.h"
+#include "constants/texts.h"
+#include "weapon-range.h"
+#include "heros-movement.h"
+
+STATIC_DECLAR void AddTargetForPivot(struct Unit *unit)
+{
+	if (UnitOnMapAvaliable(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index)) {
+		int tx = unit->xPos + (unit->xPos - gSubjectUnit->xPos);
+		int ty = unit->yPos + (unit->yPos - gSubjectUnit->yPos);
+
+		if (CanUnitStandOnPosition(gSubjectUnit, tx, ty))
+			AddTarget(unit->xPos, unit->yPos, unit->index, 1);
+	}
+}
+
+STATIC_DECLAR void MakeTargetListForPivot(struct Unit *unit)
+{
+	int x = unit->xPos;
+	int y = unit->yPos;
+
+	gSubjectUnit = unit;
+
+	ForEachAdjacentUnit(x, y, AddTargetForPivot);
+}
+
+u8 Pivot_Usability(const struct MenuItemDef *def, int number)
+{
+	if (gActiveUnit->state & US_CANTOING)
+		return MENU_NOTSHOWN;
+
+	if (!HasSelectTarget(gActiveUnit, MakeTargetListForPivot))
+		return MENU_DISABLED;
+
+	return MENU_ENABLED;
+}
+
+int Pivot_Hover(struct MenuProc *menu, struct MenuItemProc *item)
+{
+#if 0
+	BmMapFill(gBmMapMovement, -1);
+	BmMapFill(gBmMapRange, 0);
+	GenerateUnitStandingReachRange(gActiveUnit, 0b10);
+	DisplayMoveRangeGraphics(MOVLIMITV_MMAP_BLUE | MOVLIMITV_RMAP_GREEN);
+#endif
+	return 0;
+}
+
+int Pivot_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
+{
+#if 0
+	HideMoveRangeGraphics();
+#endif
+	return 0;
+}
+
+STATIC_DECLAR void Pivot_SelectTarget_Init(ProcPtr proc)
+{
+}
+
+STATIC_DECLAR u8 Pivot_SelectTarget_OnSwitchIn(ProcPtr proc, struct SelectTarget* target)
+{
+	int x, y;
+
+	BmMapFill(gBmMapMovement, -1);
+
+	x = 2 * target->x - gActiveUnit->xPos;
+	y = 2 * target->y - gActiveUnit->yPos;
+
+	gBmMapMovement[y][x] = 1;
+	DisplayMoveRangeGraphics(MOVLIMITV_MMAP_BLUE | MOVLIMITV_RMAP_GREEN);
+	return 0;
+}
+
+STATIC_DECLAR u8 Pivot_SelectTarget_OnCancel(ProcPtr proc, struct SelectTarget* target)
+{
+	HideMoveRangeGraphics();
+
+	return GenericSelection_BackToUM(proc, target);
+}
+
+STATIC_DECLAR u8 Pivot_OnSelectTarget(ProcPtr proc, struct SelectTarget *target)
+{
+	gActionData.xOther = target->x;
+	gActionData.yOther = target->y;
+
+	HideMoveRangeGraphics();
+
+	BG_Fill(gBG2TilemapBuffer, 0);
+	BG_EnableSyncByMask(BG2_SYNC_BIT);
+
+#if defined(SID_Pivot) && (COMMON_SKILL_VALID(SID_Pivot))
+	gActionData.unk08 = SID_Pivot;
+#endif
+
+	gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
+
+	return TARGETSELECTION_ACTION_ENDFAST | TARGETSELECTION_ACTION_END | TARGETSELECTION_ACTION_SE_6A | TARGETSELECTION_ACTION_CLEARBGS;
+}
+
+STATIC_DECLAR const struct SelectInfo sSelectInfo_HmuPivot = {
+	.onInit = Pivot_SelectTarget_Init,
+	.onEnd = NULL,
+	.onSwitchIn = Pivot_SelectTarget_OnSwitchIn,
+	.onSelect = Pivot_OnSelectTarget,
+	.onCancel = Pivot_SelectTarget_OnCancel,
+	.onHelp = NULL,
+};
+
+u8 Pivot_Skill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
+{
+	if (item->availability == MENU_DISABLED) {
+		MenuFrozenHelpBox(menu, MSG_HMU_ERROR_TERRAIN);
+		return MENU_ACT_SND6B;
+	}
+
+	ClearBg0Bg1();
+
+	MakeTargetListForPivot(gActiveUnit);
+	BmMapFill(gBmMapMovement, -1);
+
+	StartSubtitleHelp(
+		NewTargetSelection(&sSelectInfo_HmuPivot),
+		GetStringFromIndex(MSG_HMU_SELECTTARGET_SUBTITLEHELP));
+
+	return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A;
+}
+
+static void hmu_init(struct ProcHmu *proc)
+{
+	struct MuProc *mu = GetUnitMu(gActiveUnit);
+	if (!mu) {
+		HideUnitSprite(gActiveUnit);
+		mu = StartMu(gActiveUnit);
+	}
+
+	proc->counter = 0;
+	proc->mu = mu;
+
+	SetMuFacing(mu, GetFacingDirection(gActiveUnit->xPos, gActiveUnit->yPos, gActionData.xOther, gActionData.yOther));
+}
+
+static void hmu_loop(struct ProcHmu *proc)
+{
+	Mu_OnStateMovement(proc->mu);
+
+	if (proc->mu->move_clock_q4 == 0) {
+		proc->counter++;
+
+		if (proc->counter >= 2)
+			Proc_Break(proc);
+	}
+}
+
+static void hmu_end(struct ProcHmu *proc)
+{
+	gActionData.xMove = gActiveUnit->xPos = 2 * gActionData.xOther - gActiveUnit->xPos;
+	gActionData.yMove = gActiveUnit->yPos = 2 * gActionData.yOther - gActiveUnit->yPos;
+}
+
+STATIC_DECLAR const struct ProcCmd ProcScr_ActionPivot[] = {
+	PROC_NAME("ActionPivot"),
+	PROC_YIELD,
+	PROC_CALL(hmu_init),
+	PROC_YIELD,
+	PROC_REPEAT(hmu_loop),
+	PROC_YIELD,
+	PROC_CALL(hmu_end),
+	PROC_END
+};
+
+static void callback_anim(ProcPtr proc)
+{
+	Proc_StartBlocking(ProcScr_ActionPivot, proc);
+}
+
+bool Action_Pivot_Skill(ProcPtr parent)
+{
+	NewMuSkillAnimOnActiveUnitWithDeamon(parent, gActionData.unk08, callback_anim, NULL);
+	return true;
+}

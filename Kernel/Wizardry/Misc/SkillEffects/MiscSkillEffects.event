@@ -32,6 +32,7 @@
 #include "MenuSkills/Swarp.lyn.event"
 #include "MenuSkills/Repair.lyn.event"
 #include "MenuSkills/DivineReprieve/DivineReprieve.event"
+#include "MenuSkills/HerosMovement/HerosMovement.event"
 
 #include "Misc/HealAmount.lyn.event"
 #include "Misc/SkillActRate.lyn.event"

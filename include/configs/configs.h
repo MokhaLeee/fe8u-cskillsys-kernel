@@ -79,6 +79,11 @@
 #define CONFIG_AUTO_DETECT_EFXRESIRE_WEAPON
 
 /**
+ * If unset, heros-movement will use the local job table
+ */
+#define CONFIG_HEROES_MOVEMENT_SKILL_REQUIRED true
+
+/**
  * If uncommented, enable Gaiden style magic system
  *
  * Sub:

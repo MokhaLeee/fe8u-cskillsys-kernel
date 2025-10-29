@@ -47,6 +47,8 @@ struct KernelDesigerConfig {
 
 	u8 max_level;
 	u8 max_level_record;
+
+	u8 heros_movement_skill_required;
 };
 
 struct KernelBattleDesignerConfig {
@@ -84,6 +86,7 @@ extern const struct KernelBattleDesignerConfig *const gpKernelBattleDesignerConf
  * map.c
  */
 bool IsPositionValid(s8 x, s8 y);
+bool CanUnitStandOnPosition(struct Unit *unit, s8 x, s8 y);
 struct Unit *GetUnitAtPosition(s8 x, s8 y);
 bool CheckOutdoorTerrain(int terrain);
 

@@ -62,6 +62,7 @@ char *GetSkillDescStr(const u16 sid);
 char *SkillDescToName(char *str);
 char *GetSkillNameStrFormDesc(const u16 sid);
 char *GetSkillNameStr(const u16 sid);
+char *GetMenuSkillNameStr(const u16 sid);
 
 /**
  * 7 generic skill
@@ -221,6 +222,8 @@ extern u16 UnitMenuSkills[UNIT_MENU_SKILL_AMOUNT];
 extern struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1];
 extern struct MenuItemDef const *const *const gpSkillMenuInfos;
 
+const struct MenuItemDef *GetSkillMenuInfo(int sid);
+
 #ifdef CONFIG_MENU_SKILL_NOT_IN_UPPER
 u8 UpperMenuSkill_Usability(const struct MenuItemDef *self, int number);
 u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
@@ -228,6 +231,7 @@ u8 UpperMenuSkill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 
 u8 MenuSkills_OnHelpBox(struct MenuProc *menu, struct MenuItemProc *item);
 u8 MenuSkills_Usability(const struct MenuItemDef *self, int number);
+int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item);
 int MenuSkills_OnDraw(struct MenuProc *menu, struct MenuItemProc *item);
 u8 MenuSkills_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 u8 MenuSkills_Idle(struct MenuProc *menu, struct MenuItemProc *item);
@@ -372,6 +376,11 @@ u8 Blacksmith_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 u8 DivineReprieve_Usability(const struct MenuItemDef *def, int number);
 u8 DivineReprieve_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 bool Action_DivineReprieve(ProcPtr parent);
+u8 Pivot_Usability(const struct MenuItemDef *def, int number);
+int Pivot_Hover(struct MenuProc *menu, struct MenuItemProc *item);
+int Pivot_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 Pivot_Skill_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+bool Action_Pivot_Skill(ProcPtr parent);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);

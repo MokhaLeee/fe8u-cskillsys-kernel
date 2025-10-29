@@ -1,0 +1,72 @@
+#include "common-chax.h"
+#include "heros-movement.h"
+
+const u8 PivotClassList[] = {
+	CLASS_EIRIKA_LORD,
+	CLASS_EPHRAIM_LORD,
+
+	/* end */
+	CLASS_NONE
+};
+
+const u8 RepositionClassList[] = {
+	CLASS_MAGE,
+	CLASS_MAGE_F,
+	CLASS_SAGE,
+	CLASS_SAGE_F,
+	CLASS_MONK,
+	CLASS_SHAMAN,
+	CLASS_SHAMAN_F,
+	CLASS_DRUID,
+	CLASS_DRUID_F,
+
+	/* end */
+	CLASS_NONE
+};
+
+const u8 SwapClassList[] = {
+	CLASS_CAVALIER,
+	CLASS_CAVALIER_F,
+	CLASS_PALADIN,
+	CLASS_PALADIN_F,
+	CLASS_ARMOR_KNIGHT,
+	CLASS_ARMOR_KNIGHT_F,
+
+	/* end */
+	CLASS_NONE
+};
+
+const u8 ShoveClassList[] = {
+	CLASS_MERCENARY,
+	CLASS_MERCENARY_F,
+	CLASS_FIGHTER,
+	CLASS_BRIGAND,
+	CLASS_PIRATE,
+	CLASS_BERSERKER,
+	CLASS_WARRIOR,
+
+	/* end */
+	CLASS_NONE
+};
+
+const u8 SmiteClassList[] = {
+	CLASS_ARMOR_KNIGHT,
+	CLASS_ARMOR_KNIGHT_F,
+	CLASS_GENERAL,
+	CLASS_GENERAL_F,
+
+	/* end */
+	CLASS_NONE
+};
+
+const u8 SwarpClassList[] = {
+	CLASS_PRIEST,
+	CLASS_CLERIC,
+	CLASS_BISHOP,
+	CLASS_BISHOP_F,
+	CLASS_SUMMONER,
+	CLASS_SUMMONER_F,
+
+	/* end */
+	CLASS_NONE
+};

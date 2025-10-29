@@ -156,8 +156,12 @@ u8 MenuSkills_OnHelpBox(struct MenuProc *menu, struct MenuItemProc *item)
 {
 	if (IS_SKILL_MENU_ITEM(item->def)) {
 		u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
+		u16 msg = GetSkillMenuInfo(sid)->helpMsgId;
 
-		StartHelpBox(item->xTile * 8, item->yTile * 8, GetSkillMenuInfo(sid)->helpMsgId);
+		if (msg == 0)
+			msg = GetSkillDescMsg(sid);
+
+		StartHelpBox(item->xTile * 8, item->yTile * 8, msg);
 		return 0;
 	}
 
@@ -184,16 +188,7 @@ u8 MenuSkills_Usability(const struct MenuItemDef *self, int number)
 	return def->isAvailable(self, number);
 }
 
-_maybe_unused STATIC_DECLAR char *GetMenuSkillName(int sid)
-{
-	char *dst = (char *)sMsgString.buffer2;
-	char *name = GetSkillNameStr(sid);
-
-	k_sprintf(dst, " %s", name);
-	return dst;
-}
-
-STATIC_DECLAR int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
+int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItemProc *item)
 {
 	u16 sid = UnitMenuSkills[MENU_SKILL_INDEX(item->def)];
 	const struct MenuItemDef *def = GetSkillMenuInfo(sid);
@@ -210,7 +205,7 @@ STATIC_DECLAR int MenuSkills_StandardDraw(struct MenuProc *menu, struct MenuItem
 	if (def->nameMsgId)
 		Text_DrawString(&item->text, GetStringFromIndex(def->nameMsgId));
 	else if (gpKernelDesigerConfig->menu_skill_disp_msg_en_n == true)
-		Text_DrawString(&item->text, GetMenuSkillName(sid));
+		Text_DrawString(&item->text, GetMenuSkillNameStr(sid));
 	else
 		Text_DrawString(&item->text, def->name);
 

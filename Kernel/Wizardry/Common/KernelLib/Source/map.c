@@ -18,6 +18,17 @@ inline bool IsPositionValid(s8 x, s8 y)
 	return true;
 }
 
+bool CanUnitStandOnPosition(struct Unit *unit, s8 x, s8 y)
+{
+	if (!IsPositionValid(x, y))
+		return false;
+
+	if (gBmMapUnit[y][x] != 0)
+		return false;
+
+	return CanUnitCrossTerrain(unit, gBmMapTerrain[y][x]);
+}
+
 struct Unit *GetUnitAtPosition(s8 x, s8 y)
 {
 	s8 uid;

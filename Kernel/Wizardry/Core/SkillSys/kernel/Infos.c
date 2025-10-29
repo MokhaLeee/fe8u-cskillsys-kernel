@@ -94,6 +94,15 @@ char *GetSkillNameStr(const u16 sid)
 		return str;
 }
 
+char *GetMenuSkillNameStr(const u16 sid)
+{
+	char *dst = (char *)sMsgString.buffer2;
+	char *name = GetSkillNameStr(sid);
+
+	k_sprintf(dst, " %s", name);
+	return dst;
+}
+
 #if 0
 int GetEfxSkillPriority(const u16 sid)
 {

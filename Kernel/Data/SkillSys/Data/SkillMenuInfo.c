@@ -318,4 +318,17 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 		.onSwitchOut = NULL,
 	},
 #endif
+
+#if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
+	[SID_Pivot] = &(const struct MenuItemDef) {
+		.name = "　回り込み",
+		.color = TEXT_COLOR_SYSTEM_WHITE,
+		.isAvailable = Pivot_Usability,
+		.onDraw = NULL,
+		.onSelected = Pivot_Skill_OnSelected,
+		.onIdle = NULL,
+		.onSwitchIn = Pivot_Hover,
+		.onSwitchOut = Pivot_Unhover,
+	},
+#endif
 };

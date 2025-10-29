@@ -173,7 +173,7 @@
 ![image](gfx/SkillIcon_BreathOfLife.png) | BreathOfLife |  After attacking, allies in 2 tiles heal for 20% their max HP. |
 ![image](gfx/SkillIcon_PosReturn.png) | PosReturn |  If the enemy is defeated, you can return to your starting position. |
 ![image](gfx/SkillIcon_Lunge.png) | Lunge |  Swap positions with the enemy after attacking them. |
-![image](gfx/SkillIcon_PowerStaff.png) | PowerStaff |  Gain another action after using a staff. |
+![image](gfx/SkillIcon_PowerStaff.png) | PowerStaff |  Gain another action after using a staff (LCK %). |
 ![image](gfx/SkillIcon_SoulSap.png) | SoulSap |  At the end of this unit's action, drain up to 10% HP from each enemy within two tiles for healing. |
 ![image](gfx/SkillIcon_Renewal.png) | Renewal |  Restore 30% of max HP at the start of each turn. |
 ![image](gfx/SkillIcon_Imbue.png) | Imbue |  Recover HP equal to MAG at the start of each turn. |
@@ -420,7 +420,7 @@
 ![image](gfx/SkillIcon_BattleVeteran.png) | BattleVeteran |  Gain +1 damage and +5% Hit per 10 levels unit has. |
 ![image](gfx/SkillIcon_Technician.png) | Technician |  If the user is holding an E-ranked weapon, boost weapon damage by 50%. |
 ![image](gfx/SkillIcon_KillingMachine.png) | KillingMachine |   Double this unit's total crit rate. |
-![image](gfx/SkillIcon_DivinePulse.png) | DivinePulse |  Turn a missed attack into a hit (30% + Luck % activation). |
+![image](gfx/SkillIcon_DivinePulse.png) | DivinePulse |  Try to turn a missed attack into a hit (30% + Luck % activation). |
 ![image](gfx/SkillIcon_Dishonorbreaker.png) | Dishonorbreaker |  When only 1 unit attacks, he gain +50 avoid but -50 hit. |
 ![image](gfx/SkillIcon_Stubborn.png) | Stubborn |  If unit has more Losses than enemy, gains +5 str/spd. |
 ![image](gfx/SkillIcon_Shakedown.png) | Shakedown |  When initiating battle, steal gold equal to damage dealt.(Luck % activation) |
@@ -516,6 +516,7 @@
 ![image](gfx/SkillIcon_Blacksmith.png) | Blacksmith |  Pay 1000 gold to restore the user's equipped weapon, if from armory and C rank or less. |
 ![image](gfx/SkillIcon_Latona.png) | Latona |  Unit can use holly W.Mag: Latona. |
 ![image](gfx/SkillIcon_DivineReprieve.png) | DivineReprieve |  Once per chapter, immediately start next player phase. |
+![image](gfx/SkillIcon_Pivot.png) | Pivot |  Unit moves to opposite side of target ally. |
 ![image](gfx/SkillIcon_COMBAT_Galeforce.png) | COMBAT_Galeforce |  Art: ATK +3, Move again after defeating enemy. |
 ![image](gfx/SkillIcon_COMBAT_Gamble.png) | COMBAT_Gamble |  Art: A reckless attack with halved hit but doubled crit. |
 ![image](gfx/SkillIcon_COMBAT_Detonate.png) | COMBAT_Detonate |  Art: Strike a powerful pierced blow by sacrificing own weapon |

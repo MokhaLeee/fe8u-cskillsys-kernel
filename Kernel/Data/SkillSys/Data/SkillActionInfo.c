@@ -74,4 +74,8 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_DivineReprieve) && COMMON_SKILL_VALID(SID_DivineReprieve))
 	[SID_DivineReprieve] = Action_DivineReprieve,
 #endif
+
+#if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
+	[SID_Pivot] = Action_Pivot_Skill,
+#endif
 };

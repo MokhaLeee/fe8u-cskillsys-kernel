@@ -466,8 +466,8 @@ static void modify_unit_status(void)
 	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_Enrage);
 #endif
 
-#if defined(SID_Resourceful) && (COMMON_SKILL_VALID(SID_Resourceful))
-	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Resourceful);
+#if defined(SID_Pivot) && (COMMON_SKILL_VALID(SID_Pivot))
+	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Pivot);
 #endif
 }
 

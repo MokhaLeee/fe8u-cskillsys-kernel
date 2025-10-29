@@ -26,6 +26,11 @@ u8 pr_AttackCommandUsabilityFix(const struct MenuItemDef *def, int number);
 u8 pr_AttackBallistaCommandUsabilityFix(const struct MenuItemDef *def, int number);
 int pr_AttackActionCommandHoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem);
 int pr_AttackActionCommandUnhoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem);
+u8 pr_HerosMovement_UM_Usability(const struct MenuItemDef *def, int number);
+int pr_HerosMovement_UM_OnDarw(struct MenuProc *menu, struct MenuItemProc *item);
+u8 pr_HerosMovement_UM_Effect(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_HerosMovement_UM_Hover(struct MenuProc *menu, struct MenuItemProc *menuItem);
+int pr_HerosMovement_UM_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 
 const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 	{"　制圧", 0x67A, 0x6CC, 0, 0x4E, UnitActionMenu_CanSeize, 0, UnitActionMenu_Seize, 0, 0, 0}, // Seize
@@ -45,6 +50,21 @@ const struct MenuItemDef gUnitActionMenuItemsRework[] = {
 		NULL,
 		pr_CombatArtActionCommandHover,
 		pr_CombatArtActionCommandUnhover
+	},
+
+	/* Heros movemeny */
+	{
+		"　协助",
+		0,
+		MSG_HMU_UM_DESC,
+		TEXT_COLOR_SYSTEM_WHITE,
+		0x6C,
+		pr_HerosMovement_UM_Usability,
+		pr_HerosMovement_UM_OnDarw,
+		pr_HerosMovement_UM_Effect,
+		NULL,
+		pr_HerosMovement_UM_Hover,
+		pr_HerosMovement_UM_Unhover
 	},
 
 	{"　杖", 0x67C, 0x6C1, 0, 0x51, StaffCommandUsability, 0, StaffCommandEffect, 0, StaffCommandRange, HideMoveRangeGraphicsWrapper2}, // Staff

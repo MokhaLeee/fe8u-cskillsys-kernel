@@ -98,4 +98,10 @@ gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
 
 gpUnitRefrainHooks: POIN gUnitRefrainHooks
 
+_thumb(pr_HerosMovement_UM_Usability)  jumpToHack(HerosMovement_UM_Usability)
+_thumb(pr_HerosMovement_UM_OnDarw)     jumpToHack(HerosMovement_UM_OnDarw)
+_thumb(pr_HerosMovement_UM_Effect)     jumpToHack(HerosMovement_UM_Effect)
+_thumb(pr_HerosMovement_UM_Hover)      jumpToHack(HerosMovement_UM_Hover)
+_thumb(pr_HerosMovement_UM_Unhover)    jumpToHack(HerosMovement_UM_Unhover)
+
 KERNEL_RELOC_END:

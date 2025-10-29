@@ -121,6 +121,8 @@ void TryAddUnitToBerserkTargetList(struct Unit *unit);
 void TryAddUnitToWarpTargetList(struct Unit *unit);
 void TryAddUnitToHammerneTargetList(struct Unit *unit);
 
+void ForEachAdjacentUnit(int x, int y, void(*func)(struct Unit* unit));
+
 extern struct ProcCmd CONST_DATA ProcScr_DanceringAnim[];
 
 void BeginUnitHealAnim(struct Unit *unit, int hp);

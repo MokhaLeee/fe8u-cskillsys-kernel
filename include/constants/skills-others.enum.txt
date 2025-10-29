@@ -291,6 +291,9 @@ SID_Blacksmith
 SID_Latona
 SID_DivineReprieve
 
+// HerosMovement skills
+SID_Pivot
+
 // Art skills
 SID_COMBAT_Galeforce
 SID_COMBAT_Gamble
