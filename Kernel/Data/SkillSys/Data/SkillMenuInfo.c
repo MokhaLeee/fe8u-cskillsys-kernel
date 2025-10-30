@@ -344,4 +344,17 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 		.onSwitchOut = NULL,
 	},
 #endif
+
+#if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
+	[SID_Swap] = &(const struct MenuItemDef) {
+		.name = "　入れ替え",
+		.color = TEXT_COLOR_SYSTEM_WHITE,
+		.isAvailable = Swap_Usability,
+		.onDraw = NULL,
+		.onSelected = Swap_OnSelected,
+		.onIdle = NULL,
+		.onSwitchIn = NULL,
+		.onSwitchOut = NULL,
+	},
+#endif
 };

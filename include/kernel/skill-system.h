@@ -382,6 +382,9 @@ bool Action_Pivot(ProcPtr parent);
 u8 Reposition_Usability(const struct MenuItemDef *def, int number);
 u8 Reposition_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 bool Action_Reposition(ProcPtr parent);
+u8 Swap_Usability(const struct MenuItemDef *def, int number);
+u8 Swap_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+bool Action_Swap(ProcPtr parent);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);

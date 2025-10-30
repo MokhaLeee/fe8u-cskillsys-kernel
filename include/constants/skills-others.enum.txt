@@ -294,6 +294,7 @@ SID_DivineReprieve
 // HerosMovement skills
 SID_Pivot
 SID_Reposition
+SID_Swap
 
 // Art skills
 SID_COMBAT_Galeforce

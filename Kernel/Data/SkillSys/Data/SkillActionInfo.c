@@ -82,4 +82,8 @@ const SkillActionFunc_t gSkillActionFuncTable[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
 	[SID_Reposition] = Action_Reposition,
 #endif
+
+#if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
+	[SID_Swap] = Action_Swap,
+#endif
 };
