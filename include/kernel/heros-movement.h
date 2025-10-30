@@ -25,8 +25,8 @@ enum heros_movement_menu_error_reason {
 struct ProcHmu {
 	PROC_HEADER;
 
-	struct MuProc *mu;
-	int counter;
+	struct MuProc *mu1, *mu2, *mu3;
+	int timer1, timer2, timer3;
 };
 
 u8 Pivot_Usability(const struct MenuItemDef *def, int number);

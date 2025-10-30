@@ -327,8 +327,21 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 		.onDraw = NULL,
 		.onSelected = Pivot_OnSelected,
 		.onIdle = NULL,
-		.onSwitchIn = Pivot_Hover,
-		.onSwitchOut = Pivot_Unhover,
+		.onSwitchIn = NULL,
+		.onSwitchOut = NULL,
+	},
+#endif
+
+#if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
+	[SID_Reposition] = &(const struct MenuItemDef) {
+		.name = "　引き戻し",
+		.color = TEXT_COLOR_SYSTEM_WHITE,
+		.isAvailable = Reposition_Usability,
+		.onDraw = NULL,
+		.onSelected = Reposition_OnSelected,
+		.onIdle = NULL,
+		.onSwitchIn = NULL,
+		.onSwitchOut = NULL,
 	},
 #endif
 };

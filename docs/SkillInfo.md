@@ -517,6 +517,7 @@
 ![image](gfx/SkillIcon_Latona.png) | Latona |  Unit can use holly W.Mag: Latona. |
 ![image](gfx/SkillIcon_DivineReprieve.png) | DivineReprieve |  Once per chapter, immediately start next player phase. |
 ![image](gfx/SkillIcon_Pivot.png) | Pivot |  Unit moves to opposite side of target ally. |
+![image](gfx/SkillIcon_Reposition.png) | Reposition |  Allows unit to pull an adjacent ally to its opposite side. |
 ![image](gfx/SkillIcon_COMBAT_Galeforce.png) | COMBAT_Galeforce |  Art: ATK +3, Move again after defeating enemy. |
 ![image](gfx/SkillIcon_COMBAT_Gamble.png) | COMBAT_Gamble |  Art: A reckless attack with halved hit but doubled crit. |
 ![image](gfx/SkillIcon_COMBAT_Detonate.png) | COMBAT_Detonate |  Art: Strike a powerful pierced blow by sacrificing own weapon |

@@ -8,10 +8,10 @@
 static void try_add_target(struct Unit *unit)
 {
 	if (UnitOnMapAvaliable(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index)) {
-		int tx = unit->xPos + (unit->xPos - gSubjectUnit->xPos);
-		int ty = unit->yPos + (unit->yPos - gSubjectUnit->yPos);
+		int tx = 2 * gSubjectUnit->xPos -  unit->xPos;
+		int ty = 2 * gSubjectUnit->yPos -  unit->yPos;
 
-		if (CanUnitStandOnPosition(gSubjectUnit, tx, ty))
+		if (CanUnitStandOnPosition(unit, tx, ty))
 			AddTarget(unit->xPos, unit->yPos, unit->index, 1);
 	}
 }
@@ -26,7 +26,7 @@ static void make_target_list(struct Unit *unit)
 	ForEachAdjacentUnit(x, y, try_add_target);
 }
 
-u8 Pivot_Usability(const struct MenuItemDef *def, int number)
+u8 Reposition_Usability(const struct MenuItemDef *def, int number)
 {
 	if (gActiveUnit->state & US_CANTOING)
 		return MENU_NOTSHOWN;
@@ -44,8 +44,8 @@ static u8 select_target_on_switchin(ProcPtr proc, struct SelectTarget* target)
 	BmMapFill(gBmMapMovement, -1);
 	BmMapFill(gBmMapRange, 0);
 
-	x = 2 * target->x - gActiveUnit->xPos;
-	y = 2 * target->y - gActiveUnit->yPos;
+	x = 2 * gActiveUnit->xPos - target->x;
+	y = 2 * gActiveUnit->yPos - target->y;
 
 	gBmMapRange[y][x] = 1;
 	DisplayMoveRangeGraphics(MOVLIMITV_RMAP_BLUE);
@@ -56,14 +56,15 @@ static u8 select_target_on_select(ProcPtr proc, struct SelectTarget *target)
 {
 	gActionData.xOther = target->x;
 	gActionData.yOther = target->y;
+	gActionData.targetIndex = target->uid;
 
 	HideMoveRangeGraphics();
 
 	BG_Fill(gBG2TilemapBuffer, 0);
 	BG_EnableSyncByMask(BG2_SYNC_BIT);
 
-#if defined(SID_Pivot) && (COMMON_SKILL_VALID(SID_Pivot))
-	gActionData.unk08 = SID_Pivot;
+#if defined(SID_Reposition) && (COMMON_SKILL_VALID(SID_Reposition))
+	gActionData.unk08 = SID_Reposition;
 #endif
 
 	gActionData.unitActionType = CONFIG_UNIT_ACTION_EXPA_ExecSkill;
@@ -87,7 +88,7 @@ static const struct SelectInfo select_info = {
 	.onHelp = NULL,
 };
 
-u8 Pivot_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
+u8 Reposition_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 {
 	if (item->availability == MENU_DISABLED) {
 		MenuFrozenHelpBox(menu, MSG_HMU_ERROR_TERRAIN);
@@ -108,34 +109,64 @@ u8 Pivot_OnSelected(struct MenuProc *menu, struct MenuItemProc *item)
 
 static void action_init(struct ProcHmu *proc)
 {
-	struct MuProc *mu = GetUnitMu(gActiveUnit);
-	if (!mu) {
+	struct Unit *unit = GetUnit(gActionData.targetIndex);
+
+	proc->mu1 = GetUnitMu(gActiveUnit);
+	if (!proc->mu1) {
 		HideUnitSprite(gActiveUnit);
-		mu = StartMu(gActiveUnit);
+		proc->mu1 = StartMu(gActiveUnit);
 	}
+	SetMuFacing(proc->mu1, GetFacingDirection(gActiveUnit->xPos, gActiveUnit->yPos, gActionData.xOther, gActionData.yOther));
 
-	proc->timer1 = 0;
-	proc->mu1 = mu;
+	proc->mu2 = GetUnitMu(unit);
+	if (!proc->mu2) {
+		HideUnitSprite(unit);
+		proc->mu2 = StartMu(unit);
+	}
+	SetMuFacing(proc->mu2, GetFacingDirection(gActionData.xOther, gActionData.yOther, gActiveUnit->xPos, gActiveUnit->yPos));
 
-	SetMuFacing(mu, GetFacingDirection(gActiveUnit->xPos, gActiveUnit->yPos, gActionData.xOther, gActionData.yOther));
+	proc->timer1 = proc->timer2 = 0;
 }
 
 static void action_loop(struct ProcHmu *proc)
 {
-	Mu_OnStateMovement(proc->mu1);
+	switch (proc->timer1++) {
+	case 0:
+		break;
 
-	if (proc->mu1->move_clock_q4 == 0) {
-		proc->timer1++;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		MapAnimMoveUnitTowardsTargetExt(proc->mu1, proc->mu2);
+		break;
 
-		if (proc->timer1 >= 2)
-			Proc_Break(proc);
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+		MapAnimMoveUnitAwayFromTargetExt(proc->mu1, proc->mu2);
+		break;
+
+	default:
+		Mu_OnStateMovement(proc->mu2);
+
+		if (proc->mu2->move_clock_q4 == 0) {
+			proc->timer2++;
+
+			if (proc->timer2 >= 2)
+				Proc_Break(proc);
+		}
+		break;
 	}
 }
 
 static void action_end(struct ProcHmu *proc)
 {
-	gActionData.xMove = gActiveUnit->xPos = 2 * gActionData.xOther - gActiveUnit->xPos;
-	gActionData.yMove = gActiveUnit->yPos = 2 * gActionData.yOther - gActiveUnit->yPos;
+	struct Unit *unit = GetUnit(gActionData.targetIndex);
+
+	unit->xPos = 2 * gActiveUnit->xPos - unit->xPos;
+	unit->yPos = 2 * gActiveUnit->yPos - unit->yPos;
 }
 
 static const struct ProcCmd proc_scr_action[] = {
@@ -153,7 +184,7 @@ static void callback_anim(ProcPtr proc)
 	Proc_StartBlocking(proc_scr_action, proc);
 }
 
-bool Action_Pivot(ProcPtr parent)
+bool Action_Reposition(ProcPtr parent)
 {
 	int sid = gActionData.unk08;
 

@@ -8,11 +8,15 @@ const u16 HerosMovementSkills[HMU_TYPE_COUNT] = {
 #if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
 	[HMU_PIVOT] = SID_Pivot,
 #endif
+
+#if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
+	[HMU_REPOSITION] = SID_Reposition,
+#endif
 };
 
 STATIC_DECLAR bool HerosMovementSkillRequired(void)
 {
-	return 0;
+	return !!(gpKernelDesigerConfig->heros_movement_skill_required);
 }
 
 static inline int GetHmuType(struct Unit *unit)

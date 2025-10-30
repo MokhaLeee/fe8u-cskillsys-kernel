@@ -377,10 +377,11 @@ u8 DivineReprieve_Usability(const struct MenuItemDef *def, int number);
 u8 DivineReprieve_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 bool Action_DivineReprieve(ProcPtr parent);
 u8 Pivot_Usability(const struct MenuItemDef *def, int number);
-int Pivot_Hover(struct MenuProc *menu, struct MenuItemProc *item);
-int Pivot_Unhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 u8 Pivot_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 bool Action_Pivot(ProcPtr parent);
+u8 Reposition_Usability(const struct MenuItemDef *def, int number);
+u8 Reposition_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+bool Action_Reposition(ProcPtr parent);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);

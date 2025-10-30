@@ -3924,7 +3924,14 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 #if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
 	[SID_Pivot] = {
 		.desc = MSG_SKILL_Pivot,
-		.icon = GFX_SkillIcon_WIP,
+		.icon = GFX_SkillIcon_Pivot,
+	},
+#endif
+
+#if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
+	[SID_Reposition] = {
+		.desc = MSG_SKILL_Reposition,
+		.icon = GFX_SkillIcon_Reposition,
 	},
 #endif
 };
