@@ -11,7 +11,6 @@ enum heros_movement_types {
 	HMU_SWAP,
 	HMU_SHOVE,
 	HMU_SMITE,
-	HMU_SWARP,
 
 	HMU_TYPE_COUNT,
 };

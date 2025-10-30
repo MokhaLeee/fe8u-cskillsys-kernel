@@ -16,6 +16,14 @@ const u16 HerosMovementSkills[HMU_TYPE_COUNT] = {
 #if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
 	[HMU_SWAP] = SID_Swap,
 #endif
+
+#if (defined(SID_Shove) && COMMON_SKILL_VALID(SID_Shove))
+	[HMU_SHOVE] = SID_Shove,
+#endif
+
+#if (defined(SID_Smite) && COMMON_SKILL_VALID(SID_Smite))
+	[HMU_SMITE] = SID_Smite,
+#endif
 };
 
 STATIC_DECLAR bool HerosMovementSkillRequired(void)

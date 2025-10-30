@@ -295,6 +295,8 @@ SID_DivineReprieve
 SID_Pivot
 SID_Reposition
 SID_Swap
+SID_Shove
+SID_Smite
 
 // Art skills
 SID_COMBAT_Galeforce

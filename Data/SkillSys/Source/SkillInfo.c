@@ -3941,4 +3941,18 @@ const struct SkillInfo gSkillInfos[MAX_SKILL_NUM + 1] = {
 		.icon = GFX_SkillIcon_Swap,
 	},
 #endif
+
+#if (defined(SID_Shove) && COMMON_SKILL_VALID(SID_Shove))
+	[SID_Shove] = {
+		.desc = MSG_SKILL_Shove,
+		.icon = GFX_SkillIcon_Shove,
+	},
+#endif
+
+#if (defined(SID_Smite) && COMMON_SKILL_VALID(SID_Smite))
+	[SID_Smite] = {
+		.desc = MSG_SKILL_Smite,
+		.icon = GFX_SkillIcon_Smite,
+	},
+#endif
 };

@@ -321,7 +321,7 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Pivot) && COMMON_SKILL_VALID(SID_Pivot))
 	[SID_Pivot] = &(const struct MenuItemDef) {
-		.name = "　回り込み",
+		.name = "　迂迴",
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Pivot_Usability,
 		.onDraw = NULL,
@@ -334,7 +334,7 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Reposition) && COMMON_SKILL_VALID(SID_Reposition))
 	[SID_Reposition] = &(const struct MenuItemDef) {
-		.name = "　引き戻し",
+		.name = "　帶回",
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Reposition_Usability,
 		.onDraw = NULL,
@@ -347,11 +347,37 @@ struct MenuItemDef const *const gSkillMenuInfos[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_Swap) && COMMON_SKILL_VALID(SID_Swap))
 	[SID_Swap] = &(const struct MenuItemDef) {
-		.name = "　入れ替え",
+		.name = "　替換",
 		.color = TEXT_COLOR_SYSTEM_WHITE,
 		.isAvailable = Swap_Usability,
 		.onDraw = NULL,
 		.onSelected = Swap_OnSelected,
+		.onIdle = NULL,
+		.onSwitchIn = NULL,
+		.onSwitchOut = NULL,
+	},
+#endif
+
+#if (defined(SID_Shove) && COMMON_SKILL_VALID(SID_Shove))
+	[SID_Shove] = &(const struct MenuItemDef) {
+		.name = "　衝撞",
+		.color = TEXT_COLOR_SYSTEM_WHITE,
+		.isAvailable = Shove_Usability,
+		.onDraw = NULL,
+		.onSelected = Shove_OnSelected,
+		.onIdle = NULL,
+		.onSwitchIn = NULL,
+		.onSwitchOut = NULL,
+	},
+#endif
+
+#if (defined(SID_Smite) && COMMON_SKILL_VALID(SID_Smite))
+	[SID_Smite] = &(const struct MenuItemDef) {
+		.name = "　重擊",
+		.color = TEXT_COLOR_SYSTEM_WHITE,
+		.isAvailable = Smite_Usability,
+		.onDraw = NULL,
+		.onSelected = Smite_OnSelected,
 		.onIdle = NULL,
 		.onSwitchIn = NULL,
 		.onSwitchOut = NULL,

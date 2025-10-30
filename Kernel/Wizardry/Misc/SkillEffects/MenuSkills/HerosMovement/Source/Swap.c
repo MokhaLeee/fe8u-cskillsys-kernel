@@ -25,6 +25,7 @@ static void make_target_list(struct Unit *unit)
 
 	gSubjectUnit = unit;
 
+	BmMapFill(gBmMapRange, 0);
 	ForEachAdjacentUnit(x, y, try_add_target);
 }
 

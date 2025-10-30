@@ -3,3 +3,5 @@
 #include "Source/Pivot.lyn.event"
 #include "Source/Reposition.lyn.event"
 #include "Source/Swap.lyn.event"
+#include "Source/Shove.lyn.event"
+#include "Source/Smite.lyn.event"

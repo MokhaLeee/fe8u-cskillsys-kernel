@@ -8,8 +8,8 @@
 static void try_add_target(struct Unit *unit)
 {
 	if (UnitOnMapAvaliable(unit) && AreUnitsAllied(gSubjectUnit->index, unit->index)) {
-		int tx = 2 * gSubjectUnit->xPos -  unit->xPos;
-		int ty = 2 * gSubjectUnit->yPos -  unit->yPos;
+		int tx = 2 * gSubjectUnit->xPos - unit->xPos;
+		int ty = 2 * gSubjectUnit->yPos - unit->yPos;
 
 		if (CanUnitStandOnPosition(unit, tx, ty))
 			AddTarget(unit->xPos, unit->yPos, unit->index, 1);
@@ -23,6 +23,7 @@ static void make_target_list(struct Unit *unit)
 
 	gSubjectUnit = unit;
 
+	BmMapFill(gBmMapRange, 0);
 	ForEachAdjacentUnit(x, y, try_add_target);
 }
 
@@ -139,6 +140,7 @@ static void action_loop(struct ProcHmu *proc)
 	case 3:
 	case 4:
 		MapAnimMoveUnitTowardsTargetExt(proc->mu1, proc->mu2);
+		UpdateMuStepSounds(proc->mu1);
 		break;
 
 	case 5:
@@ -146,6 +148,7 @@ static void action_loop(struct ProcHmu *proc)
 	case 7:
 	case 8:
 		MapAnimMoveUnitAwayFromTargetExt(proc->mu1, proc->mu2);
+		UpdateMuStepSounds(proc->mu1);
 		break;
 
 	default:

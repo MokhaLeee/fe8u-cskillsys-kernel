@@ -466,8 +466,8 @@ static void modify_unit_status(void)
 	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_Enrage);
 #endif
 
-#if defined(SID_Swap) && (COMMON_SKILL_VALID(SID_Swap))
-	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Swap);
+#if defined(SID_Reposition) && (COMMON_SKILL_VALID(SID_Reposition))
+	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Reposition);
 #endif
 }
 

@@ -385,6 +385,12 @@ bool Action_Reposition(ProcPtr parent);
 u8 Swap_Usability(const struct MenuItemDef *def, int number);
 u8 Swap_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
 bool Action_Swap(ProcPtr parent);
+u8 Shove_Usability(const struct MenuItemDef *def, int number);
+u8 Shove_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+bool Action_Shove(ProcPtr parent);
+u8 Smite_Usability(const struct MenuItemDef *def, int number);
+u8 Smite_OnSelected(struct MenuProc *menu, struct MenuItemProc *item);
+bool Action_Smite(ProcPtr parent);
 
 /* Skill actions */
 bool Action_HealingFocus(ProcPtr proc);
