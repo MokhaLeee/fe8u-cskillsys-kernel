@@ -77,8 +77,6 @@ B28:$COMBO combo.bool.txt.zh=菜单技能显示消息
 B29:$COMBO combo.bool.txt.zh=启用战斗动画切换
 B30:DECIMAL.zh=最高等级 (0-25)
 B31:DECIMAL.zh=最高等级记录 (0-80)
-B32:$COMBO combo.bool.txt=Heros风格位移支援技能需要装备技能
+B32:$COMBO combo.bool.txt.zh=Heros风格位移支援技能需要装备技能
 
 INFO=Editor: gKernelDesigerConfig\nhttps://github.com/FireEmblemUniverse/fe8u-cskillsys/tree/main/docs/SystemConfig.md
-
-

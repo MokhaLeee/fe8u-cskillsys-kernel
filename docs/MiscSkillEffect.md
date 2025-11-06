@@ -49,3 +49,19 @@ Skill above can sets the weather to a specific type at the beginning of the chap
 3. Drizzle
 4. SnowWarning
 5. SandStream
+
+## Heros-movement skills
+```
+SID_Pivot
+SID_Reposition
+SID_Swap
+SID_Shove
+SID_Smite
+```
+
+FEH style assistance skills.
+
+Just like the old skillsystem, these 5 skills effect can also be directly handled by unit configed by class regardless whether they readlly equip the skill.
+
+1. Set bit named as **"heros_movement_skill_required"** in patch [designer config](../Patches/PATCH_DesignerConfig.txt) to `FALSE`. 
+2. Config class based assistance skills in patch: [HerosMovement skill class based config](../Patches/PATCH_HerosMovementJobTable.txt).
