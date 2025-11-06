@@ -65,3 +65,5 @@ Just like the old skillsystem, these 5 skills effect can also be directly handle
 
 1. Set bit named as **"heros_movement_skill_required"** in patch [designer config](../Patches/PATCH_DesignerConfig.txt) to `FALSE`. 
 2. Config class based assistance skills in patch: [HerosMovement skill class based config](../Patches/PATCH_HerosMovementJobTable.txt).
+
+# Skill effects in detail

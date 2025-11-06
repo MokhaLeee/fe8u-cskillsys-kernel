@@ -285,6 +285,8 @@ def main(args):
 						f"![image]({skill_icon_fpath})")
 
 	# format print
+	print("> For more detailed descriptions, follow the [MiscSkillEffect.md](./MiscSkillEffect.md)")
+
 	print("## Equipable skills")
 	print("| icon | name | desc |")
 	print("| :-------- | :-------- | :-------- |")

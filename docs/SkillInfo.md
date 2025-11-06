@@ -1,3 +1,5 @@
+> For more detailed descriptions, follow the [MiscSkillEffect.md](./MiscSkillEffect.md)
+
 ## Equipable skills
 | icon | name | desc |
 | :-------- | :-------- | :-------- |
