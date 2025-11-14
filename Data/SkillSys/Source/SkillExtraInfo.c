@@ -364,7 +364,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_Outrider) && COMMON_SKILL_VALID(SID_Outrider))
-	// [SID_Outrider] = {{ 1, 3 }},
+	[SID_Outrider] = {{ 1, 3 }},
 #endif
 
 #if (defined(SID_EvenRhythm) && COMMON_SKILL_VALID(SID_EvenRhythm))
@@ -1165,5 +1165,33 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 
 #if (defined(SID_LunaAttack) && COMMON_SKILL_VALID(SID_LunaAttack))
 	[SID_LunaAttack] = {{ 25 }},
+#endif
+
+#if (defined(SID_CriticalForce) && COMMON_SKILL_VALID(SID_CriticalForce))
+	[SID_CriticalForce] = {{ 15 }},
+#endif
+
+#if (defined(SID_SuperLuck) && COMMON_SKILL_VALID(SID_SuperLuck))
+	[SID_SuperLuck] = {{ 10 }},
+#endif
+
+#if (defined(SID_Frenzy) && COMMON_SKILL_VALID(SID_Frenzy))
+	[SID_Frenzy] = {{ 4, 1 }},
+#endif
+
+#if (defined(SID_KillingMachine) && COMMON_SKILL_VALID(SID_KillingMachine))
+	[SID_KillingMachine] = {{ 20 }},
+#endif
+
+#if (defined(SID_Technician) && COMMON_SKILL_VALID(SID_Technician))
+	[SID_Technician] = {{ 5 }},
+#endif
+
+#if (defined(SID_Dishonorbreaker) && COMMON_SKILL_VALID(SID_Dishonorbreaker))
+	[SID_Dishonorbreaker] = {{ 50, 50 }},
+#endif
+
+#if (defined(SID_COMBAT_Gamble) && COMMON_SKILL_VALID(SID_COMBAT_Gamble))
+	[SID_COMBAT_Gamble] = {{ 20, 50 }},
 #endif
 };

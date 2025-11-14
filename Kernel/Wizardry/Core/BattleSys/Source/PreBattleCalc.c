@@ -140,12 +140,12 @@ void ComputeBattleUnitCritRate(struct BattleUnit *bu)
 
 #if defined(SID_SuperLuck) && (COMMON_SKILL_VALID(SID_SuperLuck))
 	if (BattleFastSkillTester(bu, SID_SuperLuck))
-		status = bu->unit.lck;
+		status = perc_of(bu->unit.lck, 10 * SKILL_EFF0(SID_SuperLuck));
 #endif
 
 #if defined(SID_CriticalForce) && (COMMON_SKILL_VALID(SID_CriticalForce))
 	if (BattleFastSkillTester(bu, SID_CriticalForce))
-		status = bu->unit.skl + bu->unit.skl / 2;
+		status = perc_of(bu->unit.skl, 10 * SKILL_EFF0(SID_CriticalForce));
 #endif
 
 	status += GetItemCrit(bu->weapon);
@@ -274,7 +274,7 @@ void PreBattleCalcDefenderSkills(struct BattleUnit *attacker, struct BattleUnit 
 		case SID_StunningSmile:
 			// todo: move to extra info
 			if (!(UNIT_CATTRIBUTES(&attacker->unit) & CA_FEMALE))
-				attacker->battleAvoidRate -= 20;
+				attacker->battleAvoidRate -= SKILL_EFF0(SID_StunningSmile);
 			break;
 #endif
 
@@ -282,7 +282,7 @@ void PreBattleCalcDefenderSkills(struct BattleUnit *attacker, struct BattleUnit 
 		case SID_MeleeManiac:
 			// todo: move to extra info
 			if (gBattleStats.range != 1)
-				GetBaseDmg(attacker)->increase += 100;
+				GetBaseDmg(attacker)->increase += SKILL_EFF0(SID_MeleeManiac);
 			break;
 #endif
 
@@ -794,7 +794,7 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 #if defined(SID_HolyAura) && (COMMON_SKILL_VALID(SID_HolyAura))
 		case SID_HolyAura:
 			if (attacker->weaponType == ITYPE_LIGHT) {
-				attacker->battleAttack	+= SKILL_EFF0(SID_HolyAura);
+				attacker->battleAttack	  += SKILL_EFF0(SID_HolyAura);
 				attacker->battleCritRate  += SKILL_EFF1(SID_HolyAura);
 				attacker->battleHitRate   += SKILL_EFF2(SID_HolyAura);
 				attacker->battleAvoidRate += SKILL_EFF3(SID_HolyAura);
@@ -824,15 +824,19 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 
 #if (defined(SID_Frenzy) && (COMMON_SKILL_VALID(SID_Frenzy)))
 		case SID_Frenzy:
-			if ((attacker->unit.maxHP - attacker->hpInitial) >= 4)
-				attacker->battleAttack += (attacker->unit.maxHP - attacker->hpInitial) / 4;
+		{
+			int hp_diff = attacker->unit.maxHP - attacker->hpInitial;
+
+			if (hp_diff >= SKILL_EFF0(SID_Frenzy))
+				attacker->battleAttack += k_udiv(hp_diff * SKILL_EFF1(SID_Frenzy), SKILL_EFF0(SID_Frenzy));
 
 			break;
+		}
 #endif
 
 #if (defined(SID_KillingMachine) && (COMMON_SKILL_VALID(SID_KillingMachine)))
 		case SID_KillingMachine:
-			attacker->battleCritRate *= 2;
+			attacker->battleCritRate = perc_of(attacker->battleCritRate, 10 * SKILL_EFF0(SID_KillingMachine));
 			break;
 #endif
 
@@ -845,7 +849,7 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 #if (defined(SID_Technician) && (COMMON_SKILL_VALID(SID_Technician)))
 		case SID_Technician:
 			if (GetItemRequiredExp(attacker->weapon) < WPN_EXP_D)
-				attacker->battleAttack += GetItemMight(attacker->weapon) / 2;
+				attacker->battleAttack += perc_of(GetItemMight(attacker->weapon), 10 * SKILL_EFF0(SID_Technician));
 			break;
 #endif
 
@@ -982,7 +986,7 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 
 #if (defined(SID_Vigilance) && (COMMON_SKILL_VALID(SID_Vigilance)))
 		case SID_Vigilance:
-			attacker->battleAvoidRate += 20;
+			attacker->battleAvoidRate += SKILL_EFF0(SID_Vigilance);
 			break;
 #endif
 
@@ -1022,8 +1026,8 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 
 #if (defined(SID_Outrider) && (COMMON_SKILL_VALID(SID_Outrider)))
 		case SID_Outrider:
-			attacker->battleDefense  += gActionData.moveCount;
-			attacker->battleCritRate += (gActionData.moveCount * 3);
+			attacker->battleDefense  += gActionData.moveCount * SKILL_EFF0(SID_Outrider);
+			attacker->battleCritRate += gActionData.moveCount * SKILL_EFF1(SID_Outrider);
 			break;
 #endif
 
@@ -1426,14 +1430,14 @@ L_FairyTaleFolk_done:
 #if (defined(SID_MeleeManiac) && COMMON_SKILL_VALID(SID_MeleeManiac))
 		case SID_MeleeManiac:
 			// todo: move to extra info
-			GetBaseDmg(attacker)->increase += 100;
+			GetBaseDmg(attacker)->increase += SKILL_EFF1(SID_MeleeManiac);
 			break;
 #endif
 
 #if (defined(SID_UnstoppableForce) && COMMON_SKILL_VALID(SID_UnstoppableForce))
 		case SID_UnstoppableForce:
 			// todo: move to extra info
-			GetBaseDmg(attacker)->increase += 100;
+			GetBaseDmg(attacker)->increase += SKILL_EFF0(SID_UnstoppableForce);
 			break;
 #endif
 
@@ -1496,8 +1500,8 @@ L_FairyTaleFolk_done:
 #if (defined(SID_Dishonorbreaker) && (COMMON_SKILL_VALID(SID_Dishonorbreaker)))
 		case SID_Dishonorbreaker:
 			if (!defender->canCounter) {
-				attacker->battleHitRate -= 50;
-				attacker->battleAvoidRate += 50;
+				attacker->battleHitRate   -= SKILL_EFF0(SID_Dishonorbreaker);
+				attacker->battleAvoidRate += SKILL_EFF1(SID_Dishonorbreaker);
 			}
 			break;
 #endif
