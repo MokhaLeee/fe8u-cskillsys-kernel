@@ -27,8 +27,13 @@ STATIC_DECLAR void BattleCalcReal_ModifyBattleStatusSkills(struct BattleUnit *at
 	if (attacker == &gBattleActor) {
 		switch (GetCombatArtInForce(&attacker->unit)) {
 		case CID_Gamble:
+#if (defined(SID_COMBAT_Gamble) && COMMON_SKILL_VALID(SID_COMBAT_Gamble))
 			attacker->battleCritRate = perc_of(attacker->battleCritRate, 10 * SKILL_EFF0(SID_COMBAT_Gamble));
 			attacker->battleHitRate  = perc_of(attacker->battleHitRate, SKILL_EFF1(SID_COMBAT_Gamble));
+#else
+			attacker->battleCritRate = attacker->battleCritRate * 2;
+			attacker->battleHitRate  = attacker->battleHitRate  / 2;
+#endif
 			break;
 
 		default:
