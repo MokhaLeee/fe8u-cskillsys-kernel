@@ -11,6 +11,7 @@ extern struct BmBgxConf BmBgfxConf_EventThunder[];
 
 void CallMapAnim_HeavyGravity(ProcPtr parent, int x, int y);
 bool MapAnimHeavyGravityExists(void);
+void BlockProcForMapAnimHeavyGravity(ProcPtr proc);
 
 void CallMapAnim_ThunderStorm(ProcPtr parent, int x, int y);
 bool MapAnimThunderStormExists(void);

@@ -454,20 +454,32 @@ static void modify_unit_status(void)
 		unit->lck = 32;
 	}
 
-#if defined(SID_DevilsPact) && (COMMON_SKILL_VALID(SID_DevilsPact))
-	AddSkillDbgListByPid(CHARACTER_GARCIA, SID_DevilsPact);
+#if defined(SID_SealDefense) && (COMMON_SKILL_VALID(SID_SealDefense))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_SealDefense);
 #endif
 
-#if defined(SID_RightfulArch) && (COMMON_SKILL_VALID(SID_RightfulArch))
-	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_RightfulArch);
+#if defined(SID_SealLuck) && (COMMON_SKILL_VALID(SID_SealLuck))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_SealLuck);
 #endif
 
-#if defined(SID_Enrage) && (COMMON_SKILL_VALID(SID_Enrage))
-	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_Enrage);
+#if defined(SID_SealMagic) && (COMMON_SKILL_VALID(SID_SealMagic))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_SealMagic);
 #endif
 
-#if defined(SID_Reposition) && (COMMON_SKILL_VALID(SID_Reposition))
-	AddSkillDbgListByPid(CHARACTER_EPHRAIM, SID_Reposition);
+#if defined(SID_SealResistance) && (COMMON_SKILL_VALID(SID_SealResistance))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_SealResistance);
+#endif
+
+#if defined(SID_SealSkill) && (COMMON_SKILL_VALID(SID_SealSkill))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_SealSkill);
+#endif
+
+#if defined(SID_SealSpeed) && (COMMON_SKILL_VALID(SID_SealSpeed))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_SealSpeed);
+#endif
+
+#if defined(SID_SealStrength) && (COMMON_SKILL_VALID(SID_SealStrength))
+	AddSkillDbgListByPid(CHARACTER_EIRIKA, SID_SealStrength);
 #endif
 }
 

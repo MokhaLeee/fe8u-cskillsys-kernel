@@ -91,3 +91,14 @@ bool MapAnimHeavyGravityExists(void)
 {
 	return !!Proc_Find(ProcScr_MapAnimHeavyGravity);
 }
+
+static const struct ProcCmd deamon_proc_scr[] = {
+	PROC_YIELD,
+	PROC_WHILE(MapAnimHeavyGravityExists),
+	PROC_END
+};
+
+void BlockProcForMapAnimHeavyGravity(ProcPtr proc)
+{
+	Proc_StartBlocking(deamon_proc_scr, proc);
+}

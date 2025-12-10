@@ -1,5 +1,4 @@
 > For more detailed descriptions, follow the [MiscSkillEffect.md](./MiscSkillEffect.md)
-
 ## Equipable skills
 | icon | name | desc |
 | :-------- | :-------- | :-------- |
@@ -450,6 +449,13 @@
 ![image](gfx/SkillIcon_SandRush.png) | SandRush |  If there is a sandstorm, double this unit's battle speed. |
 ![image](gfx/SkillIcon_SwiftSwim.png) | SwiftSwim |  If it is raining, double this unit's battle speed. |
 ![image](gfx/SkillIcon_SolarPower.png) | SolarPower |  If the weather is sunny, +25% damage when using magic. |
+![image](gfx/SkillIcon_SealDefense.png) | SealDefense |  Debuff the enemy's DEF by 6 after combat. Recover 1/turn. |
+![image](gfx/SkillIcon_SealLuck.png) | SealLuck |  Debuff the enemy's LCK by 6 after combat. Recover 1/turn. |
+![image](gfx/SkillIcon_SealMagic.png) | SealMagic |  Debuff the enemy's MAG by 6 after combat. Recover 1/turn. |
+![image](gfx/SkillIcon_SealResistance.png) | SealResistance |  Debuff the enemy's RES by 6 after combat. Recover 1/turn. |
+![image](gfx/SkillIcon_SealSkill.png) | SealSkill |  Debuff the enemy's SKL by 6 after combat. Recover 1/turn. |
+![image](gfx/SkillIcon_SealSpeed.png) | SealSpeed |  Debuff the enemy's SPD by 6 after combat. Recover 1/turn. |
+![image](gfx/SkillIcon_SealStrength.png) | SealStrength |  Debuff the enemy's STR by 6 after combat. Recover 1/turn. |
 ![image](gfx/SkillIcon_InitStrong.png) | InitStrong |  +7 STR at the beginning of the turn. |
 ![image](gfx/SkillIcon_InitClever.png) | InitClever |  +7 MAG at the beginning of the turn. |
 ![image](gfx/SkillIcon_InitDeft.png) | InitDeft |  +7 SKL at the beginning of the turn. |
@@ -521,10 +527,3 @@
 ![image](gfx/SkillIcon_Pivot.png) | Pivot |  Unit moves to opposite side of target ally. |
 ![image](gfx/SkillIcon_Reposition.png) | Reposition |  Target ally moves to opposite side of unit. |
 ![image](gfx/SkillIcon_Swap.png) | Swap |  Unit and target ally swap spaces. |
-![image](gfx/SkillIcon_Shove.png) | Shove |  Pushes target ally 1 space away. |
-![image](gfx/SkillIcon_Smite.png) | Smite |  Pushes target ally 2 spaces away. |
-![image](gfx/SkillIcon_COMBAT_Galeforce.png) | COMBAT_Galeforce |  Art: ATK +3, Move again after defeating enemy. |
-![image](gfx/SkillIcon_COMBAT_Gamble.png) | COMBAT_Gamble |  Art: A reckless attack with halved hit but doubled crit. |
-![image](gfx/SkillIcon_COMBAT_Detonate.png) | COMBAT_Detonate |  Art: Strike a powerful pierced blow by sacrificing own weapon |
-![image](gfx/SkillIcon_COMBAT_BloodTribute.png) | COMBAT_BloodTribute |  Art: Sacrifice 30% HP to deal more damage as the cost. |
-![image](gfx/SkillIcon_COMBAT_CrimsonStrike.png) | COMBAT_CrimsonStrike |  Art: Sacrifice 50% HP to deal more damage as the cost. |

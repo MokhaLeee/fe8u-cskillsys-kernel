@@ -5,6 +5,7 @@ gPostActionFuncs:
     POIN PostActionThunderstorm
     POIN PostActionCombatArtEffect PostActionSkillSavageBlow PostActionSkillBreathOfLife PostActionSkillSoulSap
     POIN PostActionSynchronize
+    POIN PostActionActorSealSkills
     POIN PostActionBattleActorHurt PostActionBattleTargetHurt
     POIN PostAction_BattleActorHeal PostAction_BattleTargetHeal
     POIN PostActionAlertStance

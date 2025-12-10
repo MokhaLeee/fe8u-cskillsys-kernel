@@ -2,7 +2,7 @@
 #include "kernel-lib.h"
 #include "debuff.h"
 
-#define LOCAL_TRACE 0
+#define LOCAL_TRACE 1
 
 inline struct StatDebuffStatus *GetUnitStatDebuffStatus(struct Unit *unit)
 {
