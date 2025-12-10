@@ -64,7 +64,7 @@ static void actor_callback_exec(ProcPtr proc)
 
 bool PostActionActorSealSkills(ProcPtr parent)
 {
-	struct BattleUnit *bu = &gBattleActor;
+	_maybe_unused struct BattleUnit *bu = &gBattleActor;
 	struct Unit *unit = gActiveUnit;
 	struct Unit *unit_tar;
 	_maybe_unused int sid;
@@ -137,6 +137,10 @@ bool PostActionActorSealSkills(ProcPtr parent)
 		goto exec_seal;
 	}
 #endif
+
+	if (0)
+		goto exec_seal;
+
 	/* No seal skills activated */
 	return false;
 
