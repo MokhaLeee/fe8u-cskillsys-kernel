@@ -3,6 +3,7 @@
 #include "battle-system.h"
 #include "popup-reowrk.h"
 #include "playst-expa.h"
+#include "bwl.h"
 
 extern u8 FreeRamSpaceTop[], UsedFreeRamSpaceTop[], FreeRamSpaceBottom[];
 extern u8 FreeRamSpace2Top[], FreeRamSpace2Bottom[], UsedFreeRamSpace2Bottom[];
@@ -38,4 +39,7 @@ void GameInit_OverflowDetection(void)
 
 	/* PlaySt expa */
 	Assert(PLAYSTEXPA_BIT_USED < PLAYSTEXPA_BIT_MAX);
+
+	/* BWL */
+	Assert(sizeof(struct NewBwl) == 0x10);
 }

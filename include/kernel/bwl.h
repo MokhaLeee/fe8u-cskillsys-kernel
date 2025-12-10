@@ -6,16 +6,21 @@
 
 struct NewBwl {
 	/* vanilla */
-	u32 battleAmt : 12;
-	u32 winAmt    : 11;
-	u32 lossAmt   : 8;
+	u32 battleAmt : 10;
+	u32 winAmt    : 8;
+	u32 lossAmt   : 5;
 	u32 levelGain : 9;
+
+	u8 _pad_[5];
 
 	/* bwl support */
 	u8 supports[UNIT_SUPPORT_MAX_COUNT];
-
-	STRUCT_PAD(0x0C, 0x10);
 } BITPACKED;
+
+#define BWL_BIT_MAX(bits) ((1 << (bits)) - 1)
+#define BWL_BATTLEAMT_MAX BWL_BIT_MAX(10)
+#define BWL_WINAMT_MAX    BWL_BIT_MAX(8)
+#define BWL_LOSSAMT_MAX   BWL_BIT_MAX(5)
 
 bool CheckHasBwl(u8 pid);
 struct NewBwl *GetNewBwl(u8 pid);

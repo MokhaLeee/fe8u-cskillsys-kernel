@@ -39,7 +39,7 @@ void PidStatsAddBattleAmt(struct Unit *unit)
 	if (bwl == NULL)
 		return;
 
-	if (bwl->battleAmt < 4000)
+	if (bwl->battleAmt < BWL_BATTLEAMT_MAX)
 		bwl->battleAmt++;
 }
 
@@ -51,7 +51,7 @@ void PidStatsAddWinAmt(u8 pid)
 	if (bwl == NULL)
 		return;
 
-	if (bwl->winAmt < 1000)
+	if (bwl->winAmt < BWL_WINAMT_MAX)
 		bwl->winAmt++;
 }
 
@@ -63,7 +63,7 @@ void PidStatsRecordLoseData(u8 pid)
 	if (bwl == NULL)
 		return;
 
-	if (bwl->lossAmt < 255)
+	if (bwl->lossAmt < BWL_LOSSAMT_MAX)
 		bwl->lossAmt++;
 }
 
