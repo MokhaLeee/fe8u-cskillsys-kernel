@@ -347,6 +347,20 @@ void GameInit_DetectEmsChunks(void)
 
 	i = 0;
 
+	/**
+	 * -----------------
+	 * SUS 0/1
+	 * SAV0
+	 * SAV1
+	 * SAV2
+	 * MAGIC
+	 */
+	Assert(gEmsOffsets[SAVE_ID_SUSPEND] == gEmsOffsets[SAVE_ID_SUSPEND_ALT]);
+	Assert(gEmsOffsets[SAVE_ID_GAME0] == (gEmsOffsets[SAVE_ID_SUSPEND_ALT] + EMS_SIZE_SUS));
+	Assert(gEmsOffsets[SAVE_ID_GAME1] == (gEmsOffsets[SAVE_ID_GAME0] + EMS_SIZE_SAV));
+	Assert(gEmsOffsets[SAVE_ID_GAME2] == (gEmsOffsets[SAVE_ID_GAME1] + EMS_SIZE_SAV));
+	Assert(gSkillSysMagicOffset == (gEmsOffsets[SAVE_ID_GAME2] + EMS_SIZE_SAV));
+
 	Print("Dump SAV");
 	for (offset = 0, cur = gEmsSavChunks; cur->_identifier_ != EMS_CHUNK_INVALID_OFFSET; i++, cur++) {
 		Printf("[%02d]: offset=0x%04X, size=0x%04X, saver=%p, loader=%p",
@@ -354,6 +368,7 @@ void GameInit_DetectEmsChunks(void)
 
 		offset += cur->size;
 	}
+	Errorf("SAV sram usage: max=0x%04X, cur=0x%04X, free=0x%04X", EMS_SIZE_SAV, offset, EMS_SIZE_SAV - offset);
 
 	if (offset > EMS_SIZE_SAV) {
 		Errorf("SAV chunk overflowed: max=0x%04X, cur=0x%04X", EMS_SIZE_SAV, offset);
@@ -369,6 +384,7 @@ void GameInit_DetectEmsChunks(void)
 
 		offset += cur->size;
 	}
+	Errorf("SUS sram usage: max=0x%04X, cur=0x%04X, free=0x%04X", EMS_SIZE_SUS, offset, EMS_SIZE_SUS - offset);
 
 	if (offset > EMS_SIZE_SUS) {
 		Errorf("SUS chunk overflowed: max=0x%04X, cur=0x%04X", EMS_SIZE_SUS, offset);

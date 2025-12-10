@@ -1,3 +1,5 @@
 #include "Source/UES.lyn.event"
 #include "Source/UnitExpa.lyn.event"
 #include "Source/UnitExpaData.lyn.event"
+#include "Source/UnitExpaSus.lyn.event"
+#include "Source/UnitExpaSusData.lyn.event"

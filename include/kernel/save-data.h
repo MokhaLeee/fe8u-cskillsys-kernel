@@ -17,6 +17,8 @@ extern const struct EmsChunk gEmsSavChunks[];
 extern const struct EmsChunk gEmsSusChunks[];
 extern const u16 gEmsOffsets[SAVE_ID_MAX];
 
+extern u16 gSkillSysMagicOffset;
+
 extern const u16 gEmsSizes[2];
 #define EMS_SIZE_SAV (gEmsSizes[0])
 #define EMS_SIZE_SUS (gEmsSizes[1])

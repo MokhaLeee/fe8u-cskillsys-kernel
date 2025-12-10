@@ -66,7 +66,7 @@ void MSU_LoadDemoUnitExpa(u8 *src, const u32 size)
 		sizeof(sDemoUnitExpaNpc));
 }
 
-void ResetDemoUnitExpa(void)
+STATIC_DECLAR void ResetDemoUnitExpa(void)
 {
 	CpuFastFill16(0, sDemoUnitExpaAlly, sizeof(sDemoUnitExpaAlly));
 	CpuFastFill16(0, sDemoUnitExpaEnemy, sizeof(sDemoUnitExpaEnemy));

@@ -1,8 +1,8 @@
 ALIGN 4
 gEmsOffsets:
-    SHORT 0x3224 /* SAVE_ID_GAME0 */
-    SHORT 0x4B64 /* SAVE_ID_GAME1 */
-    SHORT 0x64A4 /* SAVE_ID_GAME2 */
+    SHORT 0x32E4 /* SAVE_ID_GAME0 */
+    SHORT 0x4BE4 /* SAVE_ID_GAME1 */
+    SHORT 0x64E4 /* SAVE_ID_GAME2 */
     SHORT 0x00D4 /* SAVE_ID_SUSPEND */
     SHORT 0x00D4 /* SAVE_ID_SUSPEND_ALT */
     SHORT 0x0000 /* SAVE_ID_ARENA */
@@ -12,8 +12,8 @@ gSkillSysMagicOffset:
     SHORT 0x7DE4
 
 gEmsSizes:
-    SHORT 0x1940 /* SAV */
-    SHORT 0x3150 /* SUS */
+    SHORT 0x1900 /* SAV */
+    SHORT 0x3210 /* SUS */
 
 #define EmsChunk(size, save, load)      "SHORT 0 (size); POIN (save) (load); WORD 0"
 #define EmsChunk(size, save, load, idx) "SHORT 0 (size); POIN (save) (load); WORD idx"
@@ -102,6 +102,7 @@ gEmsSusChunks:
     EmsChunk($0018, EMS_SaveKTutorialFlags, EMS_LoadKTutorialFlags)
     EmsChunk((51 + 50 + 8) * 16, MSU_SaveStatDebuff, MSU_LoadStatDebuff)
     EmsChunk(110 * 4, MSU_SaveDemoUnitExpa, MSU_LoadDemoUnitExpa)
+    EmsChunk(110 * 4, MSU_SaveDemoUnitExpaSus, MSU_LoadDemoUnitExpaSus)
 
     EmsChunk(20 * 4, EMS_SaveSkillDbgList, EMS_LoadSkillDbgList)
     EmsChunkEnd

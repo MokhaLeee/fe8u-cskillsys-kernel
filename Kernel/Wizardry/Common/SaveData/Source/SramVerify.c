@@ -4,8 +4,6 @@
 #define SKILL_SYS_MAGIC "FESKILL\0"
 #define SKILLSYS_MAGIC_LEN 8
 
-extern u16 gSkillSysMagicOffset;
-
 STATIC_DECLAR int VerifySkillSysSRAM(void)
 {
 	int i;

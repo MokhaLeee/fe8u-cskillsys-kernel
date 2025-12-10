@@ -49,3 +49,19 @@ extern struct DemoUnitExpa *const sDemoUnitExpaPool[0x100];
 extern struct DemoUnitExpa *const *const gpDemoUnitExpaPool;
 
 struct DemoUnitExpa *GetDemoUnitExpa(struct Unit *unit);
+
+/**
+ * Demo unit expa for suspend
+ */
+struct DemoUnitExpaSus {
+	u8 _used_[4];
+};
+
+extern struct DemoUnitExpaSus sDemoUnitExpaSusAlly[CONFIG_UNIT_AMT_ALLY];
+extern struct DemoUnitExpaSus sDemoUnitExpaSusEnemy[CONFIG_UNIT_AMT_ENEMY + 1];
+extern struct DemoUnitExpaSus sDemoUnitExpaSusNpc[CONFIG_UNIT_AMT_NPC];
+extern struct DemoUnitExpaSus sDemoUnitExpaSusBattle[2];
+extern struct DemoUnitExpaSus *const sDemoUnitExpaSusPool[0x100];
+extern struct DemoUnitExpaSus *const *const gpDemoUnitExpaSusPool;
+
+struct DemoUnitExpaSus *GetDemoUnitExpaSus(struct Unit *unit);
