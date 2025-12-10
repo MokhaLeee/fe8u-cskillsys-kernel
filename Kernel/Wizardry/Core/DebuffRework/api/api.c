@@ -22,6 +22,12 @@ bool UnitHasNegativeStatus(struct Unit *unit)
 		if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_NEGATIVE)
 			return true;
 	}
+
+	/* DuraStatus */
+	for (i = 0; i < DURA_STATUS_MAX; i++)
+		if (GetDuraStatusVal(unit, i) < 0)
+			return true;
+
 	return false;
 }
 
@@ -45,6 +51,12 @@ bool UnitHasPositiveStatus(struct Unit *unit)
 		if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_POSITIVE)
 			return true;
 	}
+
+	/* DuraStatus */
+	for (i = 0; i < DURA_STATUS_MAX; i++)
+		if (GetDuraStatusVal(unit, i) > 0)
+			return true;
+
 	return false;
 }
 
@@ -74,6 +86,11 @@ void RemoveUnitNegativeStatus(struct Unit *unit)
 		if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_NEGATIVE)
 			_BIT_CLR(sdebuff->st.bitmask, i);
 	}
+
+	/* DuraStatus */
+	for (i = 0; i < DURA_STATUS_MAX; i++)
+		if (GetDuraStatusVal(unit, i) < 0)
+			SetDuraStatusVal(unit, i, 0);
 }
 
 void RemoveUnitPositiveStatus(struct Unit *unit)
@@ -95,4 +112,9 @@ void RemoveUnitPositiveStatus(struct Unit *unit)
 		if (gpStatDebuffInfos[i].positive_type == STATUS_DEBUFF_POSITIVE)
 			_BIT_CLR(sdebuff->st.bitmask, i);
 	}
+
+	/* DuraStatus */
+	for (i = 0; i < DURA_STATUS_MAX; i++)
+		if (GetDuraStatusVal(unit, i) > 0)
+			SetDuraStatusVal(unit, i, 0);
 }

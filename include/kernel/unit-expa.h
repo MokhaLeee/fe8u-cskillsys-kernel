@@ -54,6 +54,7 @@ struct DemoUnitExpa *GetDemoUnitExpa(struct Unit *unit);
  * Demo unit expa for suspend
  */
 struct DemoUnitExpaSus {
+	// used as struct DuraStatus
 	u8 _used_[4];
 };
 

@@ -280,6 +280,50 @@ void StatDeuff_OnNewGameInit(void);
 void ResetStatDeuffBuf(void);
 void StatDeuff_OnLoadUnit(struct Unit *unit);
 
+/* DuraStatus */
+struct DuraStatus {
+	u32 pow_sign : 1;
+	u32 pow      : 3;
+	u32 mag_sign : 1;
+	u32 mag      : 3;
+	u32 skl_sign : 1;
+	u32 skl      : 3;
+	u32 spd_sign : 1;
+	u32 spd      : 3;
+	u32 lck_sign : 1;
+	u32 lck      : 3;
+	u32 def_sign : 1;
+	u32 def      : 3;
+	u32 res_sign : 1;
+	u32 res      : 3;
+	u32 _unused_ : 4;
+} BITPACKED;
+
+enum dura_status_type {
+	DURA_STATUS_POW = 0,
+	DURA_STATUS_MAG,
+	DURA_STATUS_SKL,
+	DURA_STATUS_SPD,
+	DURA_STATUS_LCK,
+	DURA_STATUS_DEF,
+	DURA_STATUS_RES,
+
+	DURA_STATUS_MAX
+};
+
+struct DuraStatus *GetDuraStatus(struct Unit *unit);
+int GetDuraStatusVal(struct Unit *unit, enum dura_status_type type);
+void SetDuraStatusVal(struct Unit *unit, enum dura_status_type type, int val);
+void TickDuraStatus(struct Unit *unit);
+
+int MSG_DuraStatusPow(int status, struct Unit *unit);
+int MSG_DuraStatusMag(int status, struct Unit *unit);
+int MSG_DuraStatusSkl(int status, struct Unit *unit);
+int MSG_DuraStatusSpd(int status, struct Unit *unit);
+int MSG_DuraStatusLck(int status, struct Unit *unit);
+int MSG_DuraStatusDef(int status, struct Unit *unit);
+int MSG_DuraStatusRes(int status, struct Unit *unit);
+
 /* Misc API */
 bool UnitHasNegativeStatus(struct Unit *unit);
 bool UnitHasPositiveStatus(struct Unit *unit);

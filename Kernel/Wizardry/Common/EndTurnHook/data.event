@@ -1,6 +1,7 @@
 ALIGN 4
 gEndTurnFuncs:
 	POIN EndTurnSkill_FreeSpirit
+	POIN TickDebuff_OnEndOfTurn
 	// End
 	POIN CallExternalEndTurnHook
 	WORD 0

@@ -90,9 +90,7 @@ void DemoUnitExpaSus_OnClearUnit(struct Unit *unit)
 
 void DemoUnitExpaSus_OnChapterInit(void)
 {
-	/**
-	 * External hooks
-	 */
+	ResetDemoUnitExpaSus();
 }
 
 void DemoUnitExpaSus_OnLoadUnit(struct Unit *unit)

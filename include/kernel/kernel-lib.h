@@ -222,6 +222,10 @@ int GetUnitFaction(struct Unit *unit);
 /**
  * Bits
  */
+#define BIT(k) (1UL << (k))
+#define GENMASK_32(h, l) \
+	(((0xffffffff) << (l)) & (0xffffffff >> (32 - 1 - (h))))
+
 static inline void _BIT_SET(void *bits, int idx)
 {
 	u8 *_bits = bits;

@@ -4,6 +4,8 @@
 #include "popup-reowrk.h"
 #include "playst-expa.h"
 #include "bwl.h"
+#include "unit-expa.h"
+#include "debuff.h"
 
 extern u8 FreeRamSpaceTop[], UsedFreeRamSpaceTop[], FreeRamSpaceBottom[];
 extern u8 FreeRamSpace2Top[], FreeRamSpace2Bottom[], UsedFreeRamSpace2Bottom[];
@@ -42,4 +44,7 @@ void GameInit_OverflowDetection(void)
 
 	/* BWL */
 	Assert(sizeof(struct NewBwl) == 0x10);
+
+	/* unit-expa sus */
+	Assert(sizeof(struct DemoUnitExpaSus) == sizeof(struct DuraStatus));
 }

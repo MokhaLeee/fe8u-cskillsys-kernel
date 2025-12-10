@@ -1,7 +1,7 @@
 #include "common-chax.h"
 #include "save-data.h"
 
-#define SKILL_SYS_MAGIC "FESKILL\0"
+#define SKILL_SYS_MAGIC "FESKIL1\0"
 #define SKILLSYS_MAGIC_LEN 8
 
 STATIC_DECLAR int VerifySkillSysSRAM(void)

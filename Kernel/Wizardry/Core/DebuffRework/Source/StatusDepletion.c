@@ -111,3 +111,10 @@ void TickActiveFactionTurn(void)
 		})
 	}
 }
+
+void TickDebuff_OnEndOfTurn(void)
+{
+	FOR_UNITS_ONMAP_FACTION(gPlaySt.faction, unit, {
+		TickDuraStatus(unit);
+	})
+}

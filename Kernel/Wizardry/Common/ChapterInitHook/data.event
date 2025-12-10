@@ -3,7 +3,7 @@ ALIGN 4
 ChapterInitHooks:
     POIN InitRandC
     POIN ResetUnitsExpaSus
-    POIN DemoUnitExpa_OnChapterInit
+    POIN DemoUnitExpa_OnChapterInit DemoUnitExpaSus_OnChapterInit
     POIN ResetStatDeuffBuf
     POIN ChapterInit_SetInitiativeStatus
     POIN ChapterInit_ResetPlayStExpa

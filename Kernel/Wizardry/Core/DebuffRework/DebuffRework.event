@@ -13,6 +13,8 @@
 #include "StatDebuff/StatDebuff.lyn.event"
 #include "StatDebuff/Hooks.lyn.event"
 
+#include "DuraStatus/DuraStatus.lyn.event"
+
 #include "Source/EventCmd.lyn.event"
 InjectEventLoCmd(EVENT_CMD_DEBUFF, EventDebuffOperation)
 
