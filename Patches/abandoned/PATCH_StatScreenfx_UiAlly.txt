@@ -1,4 +1,4 @@
-NAME=[(abandoned) CSKILL_K (3.x) dev] StatScreenfx: UI (ally)
+NAME=[(abandoned) CSKILL_K (3.3.0-LTS)] StatScreenfx: UI (ally)
 TYPE=IMAGE
 TAG=#ENGINE
 

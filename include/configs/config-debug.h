@@ -2,7 +2,7 @@
 #define CONFIG_DEBUG_H
 
 /* Basic switch to debug */
-#define CONFIG_USE_DEBUG
+// #define CONFIG_USE_DEBUG
 
 #ifdef CONFIG_USE_DEBUG
 	/* Enable a skill anim at all time */
@@ -32,7 +32,7 @@
 #define CONFIG_FORCE_PRIENT_ERROR 1
 
 // Show warnning log when using generic buffer
-#define CONFIG_DEBUG_ON_USING_GENERIC_BUFFER 1
-#define CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER 1
+#define CONFIG_DEBUG_ON_USING_GENERIC_BUFFER 0
+#define CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER 0
 
 #endif /* CONFIG_DEBUG_H */
