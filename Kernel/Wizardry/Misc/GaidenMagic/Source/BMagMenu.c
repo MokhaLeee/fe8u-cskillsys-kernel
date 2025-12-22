@@ -3,6 +3,7 @@
 #include <kernel-lib.h>
 #include <weapon-range.h>
 #include <combat-art.h>
+#include <icon-rework.h>
 #include <kernel-tutorial.h>
 #include <constants/texts.h>
 
@@ -442,7 +443,7 @@ STATIC_DECLAR void UpdateMenuItemPanelGaidenBMag(int slot)
 
 	DrawIcon(
 		TILEMAP_LOCATED(bg_base, 8, 1),
-		GetItemType(item) + 0x70,
+		WTYPE_ICON(GetItemType(item)),
 		icon_pal << 0xC);
 
 	BG_EnableSyncByMask(BG0_SYNC_BIT);

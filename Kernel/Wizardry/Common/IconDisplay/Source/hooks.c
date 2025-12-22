@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "unitlistscreen.h"
 #include "icon-rework.h"
 #include "kernel-lib.h"
 
@@ -279,4 +280,38 @@ void DisplayWeaponExp(int num, int x, int y, int wtype)
 	DrawStatBarGfx(0x401 + num*6, 5,
 		gUiTmScratchC + TILEMAP_INDEX(x + 2, y + 1), TILEREF(0, STATSCREEN_BGPAL_6),
 		0x22, (progress*34)/(progressMax-1), 0);
+}
+
+LYN_REPLACE_CHECK(sub_8090238);
+void sub_8090238(u8 key)
+{
+	int i, j;
+
+	TileMap_FillRect(TILEMAP_LOCATED(gBG2TilemapBuffer, 21, 1), 4, 1, 0);
+
+	ClearText(&gUnknown_0200E150);
+
+	for (i = 0; i < 10; i++) {
+		for (j = 0; j < 9; j++) {
+			if (gUnitListScreenFields[i][j].sortKey == key) {
+				Text_SetCursor(&gUnknown_0200E150, 0);
+				Text_SetColor(&gUnknown_0200E150, 0);
+
+				Text_DrawString(&gUnknown_0200E150, GetStringFromIndex(0x000004FD));
+
+				if ((i == 5) && (j != 0)) {
+					PutText(&gUnknown_0200E150, TILEMAP_LOCATED(gBG2TilemapBuffer, 21, 1));
+					DrawIcon(TILEMAP_LOCATED(gBG2TilemapBuffer, 25, 1), WTYPE_ICON(j - 1), OAM2_PAL(5));
+				} else {
+					Text_Skip(&gUnknown_0200E150, 4);
+					Text_DrawString(&gUnknown_0200E150, GetStringFromIndex(gUnitListScreenFields[i][j].labelString));
+					PutText(&gUnknown_0200E150, TILEMAP_LOCATED(gBG2TilemapBuffer, 21, 1));
+				}
+
+				break;
+			}
+		}
+	}
+
+	BG_EnableSyncByMask(BG2_SYNC_BIT);
 }
