@@ -175,7 +175,8 @@ Kernel/%.lyn.event: Kernel/%.o $(LYN_REF) $(FE8_SYM)
 
 %.o: %.s
 	@echo "[AS ]	$@"
-	@$(AS) $(ASFLAGS) $(SDEPFLAGS) -I $(dir $<) $< -o $@
+	@$(CC) $(CFLAGS) $(CDEPFLAGS) -g -c $< -o $@
+#	@$(AS) $(ASFLAGS) $(SDEPFLAGS) -I $(dir $<) $< -o $@
 
 # Avoid make deleting objects it thinks it doesn't need anymore
 # Without this make may fail to detect some files as being up to date
