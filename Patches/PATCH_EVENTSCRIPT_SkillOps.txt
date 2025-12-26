@@ -12,10 +12,10 @@ EA=nop.event
 INFO=dynamicly give unit skills
 
 EVENTSCRIPT:1=4146YY00XX000000	(CSKILL_K (3.x)) add skill[YY:skill] for unit [XX:UNIT:character]
-EVENTSCRIPT:3=4246XX0000000000	(CSKILL_K (3.x)) add skill[XX:skill] for active unit
-EVENTSCRIPT:2=4346XX00YY00ZZ00	(CSKILL_K (3.x)) add skill[XX:skill] for unit on map [YY:x][ZZ:y]
-EVENTSCRIPT:3=4446XX0000000000	(CSKILL_K (3.x)) add skill[XX:skill] for unit in slot-C
-EVENTSCRIPT:4=4546YY00XX000000	(CSKILL_K (3.x)) remove skill[YY:skill] for unit [XX:UNIT:character]
+EVENTSCRIPT:2=4246XX0000000000	(CSKILL_K (3.x)) add skill[XX:skill] for active unit
+EVENTSCRIPT:3=4346XX00YY00ZZ00	(CSKILL_K (3.x)) add skill[XX:skill] for unit on map [YY:x][ZZ:y]
+EVENTSCRIPT:4=4446XX0000000000	(CSKILL_K (3.x)) add skill[XX:skill] for unit in slot-C
+EVENTSCRIPT:5=4546YY00XX000000	(CSKILL_K (3.x)) remove skill[YY:skill] for unit [XX:UNIT:character]
 EVENTSCRIPT:6=4646XX00YY000000	(CSKILL_K (3.x)) remove skill[XX:skill] for active unit
-EVENTSCRIPT:5=4746ZZ00XX00YY00	(CSKILL_K (3.x)) remove skill[ZZ:skill] for unit on map [XX:x][YY:y]
-EVENTSCRIPT:6=4846XX00YY000000	(CSKILL_K (3.x)) remove skill[XX:skill] for unit in slot-C
+EVENTSCRIPT:7=4746ZZ00XX00YY00	(CSKILL_K (3.x)) remove skill[ZZ:skill] for unit on map [XX:x][YY:y]
+EVENTSCRIPT:8=4846XX0000000000	(CSKILL_K (3.x)) remove skill[XX:skill] for unit in slot-C

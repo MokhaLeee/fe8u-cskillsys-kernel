@@ -578,7 +578,8 @@ static const EventScr EventScr_Beginning[] = {
 #endif
 
 #if defined(SID_Aptitude) && (EQUIPE_SKILL_VALID(SID_Aptitude))
-	Evt_AddSkill(SID_Aptitude, CHARACTER_VANESSA)
+	SVAL(0xC, CHARACTER_VANESSA)
+	Evt_AddSkillSC(SID_Aptitude)
 #endif
 
 #if defined(SID_WingedShield) && (EQUIPE_SKILL_VALID(SID_WingedShield))
