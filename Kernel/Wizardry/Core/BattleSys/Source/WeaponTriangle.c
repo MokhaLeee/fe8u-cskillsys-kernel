@@ -169,6 +169,12 @@ void PreBattleCalcWeaponTriangle(struct BattleUnit *attacker, struct BattleUnit 
 
 	struct WtaStatus *status = (attacker == &gBattleActor) ? &gWtaStatus_act : &gWtaStatus_tar;
 
+	if (gBattleStats.config & BATTLE_CONFIG_BIT2) {
+		attacker->wTriangleHitBonus = 0;
+		attacker->wTriangleDmgBonus = 0;
+		return;
+	}
+
 	if (status->bonus.poise_eff == true) {
 		status->bonus.atk = 0;
 		status->bonus.def = 0;

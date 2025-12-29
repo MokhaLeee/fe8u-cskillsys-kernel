@@ -264,7 +264,7 @@ void PreBattleCalcDefenderSkills(struct BattleUnit *attacker, struct BattleUnit 
 	/**
 	 * Skip arena judgement
 	 */
-	if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+	if (gBattleStats.config & (BATTLE_CONFIG_ARENA | BATTLE_CONFIG_BIT2))
 		return;
 
 	list = GetUnitSkillList(&defender->unit);
@@ -430,7 +430,7 @@ void PreBattleCalcAttackerSkills(struct BattleUnit *attacker, struct BattleUnit 
 	/**
 	 * Skip arena judgement
 	 */
-	if (gBattleStats.config & BATTLE_CONFIG_ARENA)
+	if (gBattleStats.config & (BATTLE_CONFIG_ARENA | BATTLE_CONFIG_BIT2))
 		return;
 
 	list = GetUnitSkillList(&attacker->unit);
