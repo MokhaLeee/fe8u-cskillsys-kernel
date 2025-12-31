@@ -166,7 +166,7 @@ C-SkillSys offers several patches to allow game-designers to configure some of t
 
 - `Critical rate bonus for cavalry`
 
-	Cavalry class suffer crit `[-10%]`
+	Cavalry class suffer crit `[-0%]`
 
 - `Critical rate bonus on attributes bit`
 
