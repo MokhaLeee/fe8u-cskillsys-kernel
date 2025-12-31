@@ -28,7 +28,7 @@ void UnitAutolevelRealistic(struct Unit *unit)
 LYN_REPLACE_CHECK(UnitAutolevelCore);
 void UnitAutolevelCore(struct Unit *unit, u8 classId, int levelCount)
 {
-	if (levelCount) {
+	if (levelCount > 0) {
 		int mhp = unit->maxHP + GetAutoleveledStatIncrease(unit->pClassData->growthHP,  levelCount);
 		int pow = unit->pow + GetAutoleveledStatIncrease(unit->pClassData->growthPow, levelCount);
 		int skl = unit->skl + GetAutoleveledStatIncrease(unit->pClassData->growthSkl, levelCount);
@@ -78,7 +78,7 @@ void UnitAutolevelPenalty(struct Unit *unit, u8 classId, int levelCount)
 {
 	int level = unit->level;
 
-	if (levelCount && level > unit->pCharacterData->baseLevel) {
+	if (levelCount > 0 && level > unit->pCharacterData->baseLevel) {
 		levelCount = level - levelCount;
 
 		unit->maxHP = unit->pCharacterData->baseHP  + unit->pClassData->baseHP;
