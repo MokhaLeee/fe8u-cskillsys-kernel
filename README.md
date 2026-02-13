@@ -42,6 +42,8 @@ cabal update
 
 # install wine
 sudo dpkg --add-architecture i386
+sudo apt-get update
+rm -rf ~/.wine
 sudo apt-get -y wine
 wget https://mirrors.tuna.tsinghua.edu.cn/winehq/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.msi
 wine msiexec /i wine-mono-9.4.0-x86.msi
