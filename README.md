@@ -39,6 +39,11 @@ sudo apt-get -y install binutils-arm-none-eabi ctags \
 pip install pyelftools PyInstaller tmx six Pillow
 
 cabal update
+
+# install wine
+sudo apt-get -y wine
+wget https://mirrors.tuna.tsinghua.edu.cn/winehq/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.msi
+wine msiexec /i wine-mono-9.4.0-x86.msi
 ```
 
 3. Install DevkitPRO
@@ -57,24 +62,13 @@ echo "export PATH=\${DEVKITPRO}/tools/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-4. Build EA
+4. Build EA tools
 
-Get into **Tools/EventAssembler** and then refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
-
-Recommended installation process
 ```bash
-# Install .NET
-# refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
-wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-chmod +x ./dotnet-install.sh
-sudo ./dotnet-install.sh --channel 6.0
-
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
-
-# Build EA
+# Build EA tools
+cp Tools/scripts/build_ea_wo_core.sh Tools/EventAssembler/
 cd Tools/EventAssembler
-./build.sh
+./build_ea_wo_core.sh
 ```
 
 5. Install code review tools
