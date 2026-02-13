@@ -44,3 +44,4 @@ Tools/dotnet-install.sh
 
 packages-microsoft-prod.deb
 *.EXPERIMENTAL-checkpatch-fixes
+wine-mono-9.4.0-x86.msi

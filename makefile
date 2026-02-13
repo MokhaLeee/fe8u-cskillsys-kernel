@@ -79,7 +79,14 @@ AS      := $(PREFIX)as
 OBJCOPY := $(PREFIX)objcopy
 
 EA_DIR            ?= $(TOOL_DIR)/EventAssembler
-EA                := $(EA_DIR)/ColorzCore
+EA_WIN_DIR        := $(TOOL_DIR)/EventAssembler_win
+
+ifeq ($(CONFIG_EA_WIN), 1)
+	EA := wine "$(EA_WIN_DIR)/ColorzCore.exe"
+else
+	EA := $(EA_DIR)/ColorzCore
+endif
+
 PARSEFILE         := $(EA_DIR)/Tools/ParseFile
 PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
 COMPRESS          := $(EA_DIR)/Tools/compress
