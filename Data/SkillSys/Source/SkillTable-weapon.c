@@ -3,6 +3,7 @@
 #include "constants/skills.h"
 
 const u16 gConstSkillTable_Weapon[0x100][2] = {
+#ifdef CONFIG_USE_DEBUG
 	[ITEM_SWORD_IRON] = {
 #if (defined(SID_COMBAT_Hexblade) && COMMON_SKILL_VALID(SID_COMBAT_Hexblade))
 		SID_COMBAT_Hexblade,
@@ -30,4 +31,5 @@ const u16 gConstSkillTable_Weapon[0x100][2] = {
 		SID_COMBAT_Grounder,
 #endif
 	},
+#endif /* CONFIG_USE_DEBUG */
 };

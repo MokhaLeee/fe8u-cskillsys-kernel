@@ -3,6 +3,7 @@
 #include "constants/skills.h"
 
 const u16 gConstSkillTable_Person[0x100][2] = {
+#ifdef CONFIG_USE_DEBUG
 	[CHARACTER_EIRIKA] = {
 #if (defined(SID_Supply) && COMMON_SKILL_VALID(SID_Supply))
 		SID_Supply,
@@ -110,4 +111,5 @@ const u16 gConstSkillTable_Person[0x100][2] = {
 		SID_UnstoppableForce,
 #endif
 	},
+#endif /* CONFIG_USE_DEBUG */
 };

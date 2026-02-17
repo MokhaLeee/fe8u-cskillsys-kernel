@@ -3,6 +3,7 @@
 #include "constants/skills.h"
 
 const u16 gConstSkillTable_Job[0x100][2] = {
+#ifdef CONFIG_USE_DEBUG
 	[CLASS_EPHRAIM_LORD] = {
 #if (defined(SID_COMBAT_VitalReckoning) && COMMON_SKILL_VALID(SID_COMBAT_VitalReckoning))
 		SID_COMBAT_VitalReckoning,
@@ -161,6 +162,8 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 #endif
 	},
 
+#endif /* CONFIG_USE_DEBUG */
+
 	[CLASS_SUMMONER] = {
 #if (defined(SID_Summon) && COMMON_SKILL_VALID(SID_Summon))
 		SID_Summon,
@@ -183,12 +186,6 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 #endif
 	},
 
-	[CLASS_FIGHTER] = {
-#if (defined(SID_Teleportation) && COMMON_SKILL_VALID(SID_Teleportation))
-		SID_Teleportation,
-#endif
-	},
-
 	[CLASS_BERSERKER] = {
 #if (defined(SID_Crit) && COMMON_SKILL_VALID(SID_Crit))
 		SID_Crit,
@@ -205,12 +202,6 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 #endif
 	},
 
-	[CLASS_PEGASUS_KNIGHT] = {
-#if (defined(SID_HoneFlier) && COMMON_SKILL_VALID(SID_HoneFlier))
-		SID_HoneFlier,
-#endif
-	},
-
 	[CLASS_DANCER] = {
 #if (defined(SID_Dance) && COMMON_SKILL_VALID(SID_Dance))
 		SID_Dance,
@@ -218,12 +209,6 @@ const u16 gConstSkillTable_Job[0x100][2] = {
 
 #if (defined(SID_GoddessDance) && COMMON_SKILL_VALID(SID_GoddessDance))
 		SID_GoddessDance,
-#endif
-	},
-
-	[CLASS_SOLDIER] = {
-#if (defined(SID_Obstruct) && COMMON_SKILL_VALID(SID_Obstruct))
-		SID_Obstruct,
 #endif
 	},
 };

@@ -17,6 +17,7 @@ const u8 gGaidenWeaponCostList[0x100] = {
 };
 
 struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {
+#ifdef CONFIG_USE_DEBUG
 	[CHARACTER_EIRIKA] = { .ent = (const struct GaidenPinfoConfigEnt []) {
 		{ 1, ITEM_SWORD_KILLER },
 		{ 0 }
@@ -44,6 +45,7 @@ struct GaidenPinfoConfig const gGaidenPinfoConfigList[0x100] = {
 		{ 1, ITEM_STAFF_SLEEP },
 		{ 0 }
 	}},
+#endif /* CONFIG_USE_DEBUG */
 };
 
 // This config is valid only when CONFIG_GAIDEN_EXT_CONF_EN is set!

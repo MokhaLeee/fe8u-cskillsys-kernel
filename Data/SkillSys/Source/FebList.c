@@ -9,6 +9,7 @@
  */
 
 struct FebListEnt const *const CharLevelUpSkillTable[0x100] = {
+#ifdef CONFIG_USE_DEBUG
 	[CHARACTER_EIRIKA] = (const struct FebListEnt []) {
 #if (defined(SID_DoubleLion) && EQUIPE_SKILL_VALID(SID_DoubleLion))
 		{ 1, SID_DoubleLion },
@@ -28,9 +29,11 @@ struct FebListEnt const *const CharLevelUpSkillTable[0x100] = {
 
 		{ 0 }
 	},
+#endif /* CONFIG_USE_DEBUG */
 };
 
 struct FebListEnt const *const ClassLevelUpSkillTable[0x100] = {
+#ifdef CONFIG_USE_DEBUG
 	[CLASS_EIRIKA_LORD] = (const struct FebListEnt []) {
 #if (defined(SID_DoubleLion) && EQUIPE_SKILL_VALID(SID_DoubleLion))
 		{ JOB_SKILL_LEVEL_CONFIG(10, LOAD_JOB_SKILL_CONFIG_NONE), SID_DoubleLion },
@@ -54,4 +57,5 @@ struct FebListEnt const *const ClassLevelUpSkillTable[0x100] = {
 
 		{ 0 }
 	},
+#endif /* CONFIG_USE_DEBUG */
 };
