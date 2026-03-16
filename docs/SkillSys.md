@@ -15,6 +15,9 @@ Other skills are categorized as **generic skills**.
 
 # 3. Setting Skills (CHAX New List)
 
+> Note:
+> We have provided a very wide variety of methods for assigning skills, including Dynamic Skills, Generic Skills, Item Skills, Weapon Skills, and Shield Skills. These are also compatible with the FEB "Assign Skill by Unit/Class" forms. However, not all skills are effective in all skill categories. Please refer to the [DOC](./SkillEffInfo.md).
+
 ## 3.1 Fixed Skills
 1. Fixed skills can be assigned to characters via [`gConstSkillTable_Person`](../Data/SkillSys/SkillTable-person.c) or [Skills person table patch](../Patches/PATCH_Skills_Person.txt), with each character being able to hold up to **2** fixed skills.
 2. Fixed skills can be assigned to classes via [`gConstSkillTable_Job`](../Data/SkillSys/SkillTable-job.c) or [Skills job table patch](../Patches/PATCH_Skills_Job.txt), with each class being able to hold up to **2** fixed skills.
@@ -39,7 +42,7 @@ Starting from version **3.0.0**, CSkillSys additionally supports a skill list fo
 
 **https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5**
 
-Note: To maintain compatibility with the old system, the skill ID range for this list is limited to `0x01-0xFF`.
+> Note: To maintain compatibility with the old system, the skill ID range for this list is limited to `0x01-0xFF`, for the actual effective skills, Please refer to the [DOC](./SkillEffInfo.md).
 
 # 5. Judge skill
 

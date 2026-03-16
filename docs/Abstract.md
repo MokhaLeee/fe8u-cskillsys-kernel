@@ -20,8 +20,9 @@ You can choose from the following options:
 
 ## Skill
 
-- [Skills glossary](./SkillInfo.md)
 - [SkillSystem](./SkillSys.md)
+- [Skills glossary](./SkillInfo.md)
+- [Skills effectiveness glossary](./SkillEffInfo.md)
 
 - 500+ skills in implement.
 - Learnable equipable in prepscreen (designer configurable).
