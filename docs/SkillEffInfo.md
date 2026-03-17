@@ -21,8 +21,8 @@ DefiantSpd | ✓ | ✓ | | | | |
 DefiantLck | ✓ | ✓ | | | | |
 DefiantDef | ✓ | ✓ | | | | |
 DefiantRes | ✓ | ✓ | | | | |
-DefiantCrit | ✓ | ✓ | | ✓ | ✓ | ✓ |
-DefiantAvoid | ✓ | ✓ | | ✓ | ✓ | ✓ |
+DefiantCrit | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+DefiantAvoid | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 PushDefense | ✓ | ✓ | | | | |
 PushMagic | ✓ | ✓ | | | | |
 PushResistance | ✓ | ✓ | | | | |
@@ -37,128 +37,128 @@ FortressDef | ✓ | ✓ | | | | |
 FortressRes | ✓ | ✓ | | | | |
 LifeAndDeath | ✓ | ✓ | | | | |
 Leader | ✓ | ✓ | | | | |
-Resourceful | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Nihil | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CritSword | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CritAxe | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CritLance | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CritBow | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireSword | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireLance | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireAxe | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireBow | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireBMag | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireAnima | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireLight | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FaireDark | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Avoid | ✓ | ✓ | | ✓ | ✓ | ✓ |
+Resourceful | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Nihil | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CritSword | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CritAxe | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CritLance | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CritBow | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireSword | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireLance | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireAxe | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireBow | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireBMag | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireAnima | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireLight | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FaireDark | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Avoid | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 RuinedBlade | ✓ | ✓ | | | | |
-HeavyBlade | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FlashingBlade | ✓ | ✓ | | ✓ | ✓ | ✓ |
-HeavyBladePlus | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FlashingBladePlus | ✓ | ✓ | | ✓ | ✓ | ✓ |
-LunaAttack | ✓ | ✓ | | ✓ | ✓ | ✓ |
-SorceryBlade | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Fortune | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Frenzy | ✓ | ✓ | | ✓ | ✓ | ✓ |
-WonderGuard | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Merciless | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CriticalPierce | ✓ | ✓ | | ✓ | ✓ | ✓ |
-HeavyStrikes | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CatchingUp | ✓ | ✓ | | ✓ | ✓ | ✓ |
-ArcaneBlade | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Hawkeye | ✓ | ✓ | | ✓ | ✓ | ✓ |
-MagicEye | ✓ | ✓ | | ✓ | ✓ | ✓ |
-DragonSkin | ✓ | ✓ | | ✓ | ✓ | ✓ |
-WaterBoost | ✓ | ✓ | | ✓ | ✓ | ✓ |
-EarthBoost | ✓ | ✓ | | ✓ | ✓ | ✓ |
-WindBoost | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FireBoost | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StoneBody | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CriticalForce | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Pursuit | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Patience | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StrongRiposte | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Perfectionist | ✓ | ✓ | | ✓ | ✓ | ✓ |
-WindDisciple | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Pragmatic | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Chivalry | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Charge | ✓ | ✓ | | ✓ | ✓ | ✓ |
-ChargePlus | ✓ | ✓ | | ✓ | ✓ | ✓ |
-FieryBlood | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Wrath | ✓ | ✓ | | ✓ | ✓ | ✓ |
-OutdoorFighter | ✓ | ✓ | | ✓ | ✓ | ✓ |
-KnightAspirant | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Outrider | ✓ | ✓ | | ✓ | ✓ | ✓ |
-EvenRhythm | ✓ | ✓ | | ✓ | ✓ | ✓ |
-OddRhythm | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Corrosion | ✓ | ✓ | | ✓ | ✓ | ✓ |
-NoGuard | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Puissance | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Prescience | ✓ | ✓ | | ✓ | ✓ | ✓ |
-SilentPride | ✓ | ✓ | | ✓ | ✓ | ✓ |
-RightfulKing | ✓ | ✓ | | ✓ | ✓ | ✓ |
-RightfulGod | ✓ | ✓ | | ✓ | ✓ | ✓ |
-RightfulArch | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Hero | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Guts | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StrongCon | ✓ | ✓ | | ✓ | ✓ | ✓ |
-SuperLuck | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Spurn | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Counter | ✓ | ✓ | | ✓ | ✓ | ✓ |
-CounterMagic | ✓ | ✓ | | ✓ | ✓ | ✓ |
+HeavyBlade | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FlashingBlade | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+HeavyBladePlus | ✓ | ✓ | | | | |
+FlashingBladePlus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+LunaAttack | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+SorceryBlade | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Fortune | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Frenzy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+WonderGuard | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Merciless | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CriticalPierce | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+HeavyStrikes | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CatchingUp | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+ArcaneBlade | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Hawkeye | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+MagicEye | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+DragonSkin | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+WaterBoost | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+EarthBoost | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+WindBoost | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FireBoost | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StoneBody | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CriticalForce | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Pursuit | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Patience | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StrongRiposte | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Perfectionist | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+WindDisciple | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Pragmatic | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Chivalry | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Charge | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+ChargePlus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+FieryBlood | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Wrath | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+OutdoorFighter | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+KnightAspirant | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Outrider | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+EvenRhythm | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+OddRhythm | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Corrosion | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+NoGuard | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Puissance | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Prescience | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+SilentPride | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+RightfulKing | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+RightfulGod | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+RightfulArch | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Hero | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Guts | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StrongCon | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+SuperLuck | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Spurn | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Counter | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+CounterMagic | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 BonusDoubler | ✓ | ✓ | | | | |
-BloodSurge | ✓ | ✓ | | ✓ | ✓ | ✓ |
-SwordBreaker | ✓ | ✓ | | ✓ | ✓ | ✓ |
-AxeBreaker | ✓ | ✓ | | ✓ | ✓ | ✓ |
-LanceBreaker | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BowBreaker | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BMagBreaker | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Vantage | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Desperation | ✓ | ✓ | | ✓ | ✓ | ✓ |
-QuickRiposte | ✓ | ✓ | | ✓ | ✓ | ✓ |
-WaryFighter | ✓ | ✓ | | ✓ | ✓ | ✓ |
-DoubleLion | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Adept | ✓ | ✓ | | ✓ | ✓ | ✓ |
-GaleWings | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Astra | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Aegis | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Pavise | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Bane | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Mercy | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Aether | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Corona | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Luna | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Flare | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Sol | ✓ | ✓ | | ✓ | ✓ | ✓ |
-DragonFang | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Foresight | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Colossus | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Ignis | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Impale | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Glacies | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Vengeance | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Deadeye | ✓ | ✓ | | ✓ | ✓ | ✓ |
-AxeFaith | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowDarting | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowDeath | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowArmored | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowFiendish | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowWarding | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowDuelist | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowUncanny | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BlowKilling | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceBracing | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceDarting | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceFierce | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceKestrel | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceMirror | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceReady | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceSteady | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceSturdy | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceSwift | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceWarding | ✓ | ✓ | | ✓ | ✓ | ✓ |
-StanceSpectrum | ✓ | ✓ | | ✓ | ✓ | ✓ |
+BloodSurge | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+SwordBreaker | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+AxeBreaker | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+LanceBreaker | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BowBreaker | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BMagBreaker | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Vantage | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Desperation | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+QuickRiposte | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+WaryFighter | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+DoubleLion | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Adept | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+GaleWings | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Astra | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Aegis | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Pavise | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Bane | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Mercy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Aether | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Corona | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Luna | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Flare | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Sol | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+DragonFang | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Foresight | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Colossus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Ignis | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Impale | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Glacies | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Vengeance | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Deadeye | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+AxeFaith | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowDarting | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowDeath | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowArmored | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowFiendish | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowWarding | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowDuelist | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowUncanny | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BlowKilling | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceBracing | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceDarting | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceFierce | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceKestrel | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceMirror | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceReady | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceSteady | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceSturdy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceSwift | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceWarding | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+StanceSpectrum | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 RangeBonusBMag1 | ✓ | ✓ | | | | |
 RangeBonusBMag2 | ✓ | ✓ | | | | |
 RangeBonusBow1 | ✓ | ✓ | | | | |
@@ -169,15 +169,15 @@ InnerFlame2 | ✓ | ✓ | | | | |
 InnerFlame3 | ✓ | ✓ | | | | |
 Canto | ✓ | ✓ | | | | |
 CantoPlus | ✓ | ✓ | | | | |
-Galeforce | ✓ | ✓ | | ✓ | ✓ | ✓ |
-AlertStance | ✓ | ✓ | | ✓ | ✓ | ✓ |
-AlertStancePlus | ✓ | ✓ | | ✓ | ✓ | ✓ |
-SavageBlow | ✓ | ✓ | | ✓ | ✓ | ✓ |
-BreathOfLife | ✓ | ✓ | | ✓ | ✓ | ✓ |
-PosReturn | ✓ | ✓ | | ✓ | ✓ | ✓ |
-Lunge | ✓ | ✓ | | ✓ | ✓ | ✓ |
-PowerStaff | ✓ | ✓ | | ✓ | ✓ | ✓ |
-SoulSap | ✓ | ✓ | | ✓ | ✓ | ✓ |
+Galeforce | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+AlertStance | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+AlertStancePlus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+SavageBlow | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+BreathOfLife | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+PosReturn | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Lunge | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+PowerStaff | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+SoulSap | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 Renewal | ✓ | ✓ | | | | |
 Imbue | ✓ | ✓ | | | | |
 Forager | ✓ | ✓ | | | | |
@@ -231,187 +231,187 @@ DefHone | ✓ | ✓ | | | | |
 ResHone | ✓ | ✓ | | | | |
 MovHone | ✓ | ✓ | | | | |
 Blossom | ✓ | ✓ | | | | |
-Paragon | ✓ | ✓ | | ✓ | ✓ | ✓ |
-VoidCurse | ✓ | ✓ | | ✓ | ✓ | ✓ |
+Paragon | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+VoidCurse | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 Aptitude | ✓ | ✓ | | | | |
 LEGEND_InoriAtk | ✓ | ✓ | | | | |
 LEGEND_InoriAvo | ✓ | ✓ | | | | |
 LEGEND_InoriDef | ✓ | ✓ | | | | |
 Assist | ✓ | ✓ | | | | |
-Synergism | ✓ | ✓ | | ✓ | ✓ | ✓ |
+Synergism | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 Pass | ✓ | ✓ | | | | |
 Obstruct | ✓ | ✓ | | | | |
 Aerobatics | ✓ | ✓ | | | | |
 FlierGuidance | ✓ | ✓ | | | | |
-HealingFocus | ✓ | ✓ | | ✓ | ✓ | ✓ |
+HealingFocus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 Teleportation | ✓ | ✓ | | | | |
-Swarp | ✓ | ✓ | | ✓ | ✓ | ✓ |
+Swarp | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ## Generic skills
 | skill | dynamic skills | generic skills | item skills | weapon skills | shield skills | "assign skill" forms |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-GreatShield || ✓ || ✓ | ✓ | ✓ |
-HoneCavalry || ✓ || ✓ | ✓ | ✓ |
-HoneFlier || ✓ || ✓ | ✓ | ✓ |
-HoneArmor || ✓ || ✓ | ✓ | ✓ |
-FortifyArmor || ✓ || ✓ | ✓ | ✓ |
-Skyguard || ✓ || ✓ | ✓ | ✓ |
-Horseguard || ✓ || ✓ | ✓ | ✓ |
-Armorboost || ✓ || ✓ | ✓ | ✓ |
+GreatShield || ✓ | ✓ | ✓ | ✓ | ✓ |
+HoneCavalry || ✓ | ✓ | ✓ | ✓ | ✓ |
+HoneFlier || ✓ | ✓ | ✓ | ✓ | ✓ |
+HoneArmor || ✓ | ✓ | ✓ | ✓ | ✓ |
+FortifyArmor || ✓ | ✓ | ✓ | ✓ | ✓ |
+Skyguard || ✓ | ✓ | ✓ | ✓ | ✓ |
+Horseguard || ✓ | ✓ | ✓ | ✓ | ✓ |
+Armorboost || ✓ | ✓ | ✓ | ✓ | ✓ |
 Shade || ✓ | | | |
 ShadePlus || ✓ | | | |
-Provoke || ✓ || ✓ | ✓ | ✓ |
-Lethality || ✓ || ✓ | ✓ | ✓ |
-Crit || ✓ || ✓ | ✓ | ✓ |
-InfinityEdge || ✓ || ✓ | ✓ | ✓ |
-SureShot || ✓ || ✓ | ✓ | ✓ |
-WatchfulEye || ✓ || ✓ | ✓ | ✓ |
+Provoke || ✓ | ✓ | ✓ | ✓ | ✓ |
+Lethality || ✓ | ✓ | ✓ | ✓ | ✓ |
+Crit || ✓ | ✓ | ✓ | ✓ | ✓ |
+InfinityEdge || ✓ | ✓ | ✓ | ✓ | ✓ |
+SureShot || ✓ | ✓ | ✓ | ✓ | ✓ |
+WatchfulEye || ✓ | ✓ | ✓ | ✓ | ✓ |
 AversaNight || ✓ | | | |
-Inori || ✓ || ✓ | ✓ | ✓ |
-Armsthrift || ✓ || ✓ | ✓ | ✓ |
-Synchronize || ✓ || ✓ | ✓ | ✓ |
-PoisonPoint || ✓ || ✓ | ✓ | ✓ |
-PushMovement || ✓ || ✓ | ✓ | ✓ |
+Inori || ✓ | ✓ | ✓ | ✓ | ✓ |
+Armsthrift || ✓ | ✓ | ✓ | ✓ | ✓ |
+Synchronize || ✓ | ✓ | ✓ | ✓ | ✓ |
+PoisonPoint || ✓ | ✓ | ✓ | ✓ | ✓ |
+PushMovement || ✓ | ✓ | ✓ | ✓ | ✓ |
 LightWeight || ✓ | | | |
-Analytic || ✓ || ✓ | ✓ | ✓ |
-Lifetaker || ✓ || ✓ | ✓ | ✓ |
-Tsuzuku || ✓ || ✓ | ✓ | ✓ |
+Analytic || ✓ | ✓ | ✓ | ✓ | ✓ |
+Lifetaker || ✓ | ✓ | ✓ | ✓ | ✓ |
+Tsuzuku || ✓ | ✓ | ✓ | ✓ | ✓ |
 MysticBoost || ✓ | | | |
-GuardBearing || ✓ || ✓ | ✓ | ✓ |
-YuneWhispers || ✓ || ✓ | ✓ | ✓ |
-CounterRoar || ✓ || ✓ | ✓ | ✓ |
-Gambit || ✓ || ✓ | ✓ | ✓ |
-MagicGambit || ✓ || ✓ | ✓ | ✓ |
-BeastAssault || ✓ || ✓ | ✓ | ✓ |
-LightAndDark || ✓ || ✓ | ✓ | ✓ |
-Bushido || ✓ || ✓ | ✓ | ✓ |
-DragonWall || ✓ || ✓ | ✓ | ✓ |
-DragonWarth || ✓ || ✓ | ✓ | ✓ |
-BlueLionRule || ✓ || ✓ | ✓ | ✓ |
-FaerghusAncestry || ✓ || ✓ | ✓ | ✓ |
-CrusaderWard || ✓ || ✓ | ✓ | ✓ |
+GuardBearing || ✓ | ✓ | ✓ | ✓ | ✓ |
+YuneWhispers || ✓ | ✓ | ✓ | ✓ | ✓ |
+CounterRoar || ✓ | ✓ | ✓ | ✓ | ✓ |
+Gambit || ✓ | ✓ | ✓ | ✓ | ✓ |
+MagicGambit || ✓ | ✓ | ✓ | ✓ | ✓ |
+BeastAssault || ✓ | ✓ | ✓ | ✓ | ✓ |
+LightAndDark || ✓ | ✓ | ✓ | ✓ | ✓ |
+Bushido || ✓ | ✓ | ✓ | ✓ | ✓ |
+DragonWall || ✓ | ✓ | ✓ | ✓ | ✓ |
+DragonWarth || ✓ | ✓ | ✓ | ✓ | ✓ |
+BlueLionRule || ✓ | ✓ | ✓ | ✓ | ✓ |
+FaerghusAncestry || ✓ | ✓ | ✓ | ✓ | ✓ |
+CrusaderWard || ✓ | ✓ | ✓ | ✓ | ✓ |
 Plus || ✓ | | | |
 Minus || ✓ | | | |
-VengefulFighter || ✓ || ✓ | ✓ | ✓ |
+VengefulFighter || ✓ | ✓ | ✓ | ✓ | ✓ |
 LuckySeven || ✓ | | | |
 EvenFooted || ✓ | | | |
 OddFooted || ✓ | | | |
-Slayer || ✓ || ✓ | ✓ | ✓ |
-Skybreaker || ✓ || ✓ | ✓ | ✓ |
-Nullify || ✓ || ✓ | ✓ | ✓ |
-Perch || ✓ || ✓ | ✓ | ✓ |
-WingedShield || ✓ || ✓ | ✓ | ✓ |
-BeastShield || ✓ || ✓ | ✓ | ✓ |
-Vigilance || ✓ || ✓ | ✓ | ✓ |
-AvoidSword || ✓ || ✓ | ✓ | ✓ |
-Vanity || ✓ || ✓ | ✓ | ✓ |
-ShortShield || ✓ || ✓ | ✓ | ✓ |
-Opportunist || ✓ || ✓ | ✓ | ✓ |
-TowerShield || ✓ || ✓ | ✓ | ✓ |
-StunningSmile || ✓ || ✓ | ✓ | ✓ |
-Trample || ✓ || ✓ | ✓ | ✓ |
+Slayer || ✓ | ✓ | ✓ | ✓ | ✓ |
+Skybreaker || ✓ | ✓ | ✓ | ✓ | ✓ |
+Nullify || ✓ | ✓ | ✓ | ✓ | ✓ |
+Perch || ✓ | ✓ | ✓ | ✓ | ✓ |
+WingedShield || ✓ | ✓ | ✓ | ✓ | ✓ |
+BeastShield || ✓ | ✓ | ✓ | ✓ | ✓ |
+Vigilance || ✓ | ✓ | ✓ | ✓ | ✓ |
+AvoidSword || ✓ | ✓ | ✓ | ✓ | ✓ |
+Vanity || ✓ | ✓ | ✓ | ✓ | ✓ |
+ShortShield || ✓ | ✓ | ✓ | ✓ | ✓ |
+Opportunist || ✓ | ✓ | ✓ | ✓ | ✓ |
+TowerShield || ✓ | ✓ | ✓ | ✓ | ✓ |
+StunningSmile || ✓ | ✓ | ✓ | ✓ | ✓ |
+Trample || ✓ | ✓ | ✓ | ✓ | ✓ |
 Loyalty || ✓ | | | |
-HolyAura || ✓ || ✓ | ✓ | ✓ |
+HolyAura || ✓ | ✓ | ✓ | ✓ | ✓ |
 BlueFlame || ✓ | | | |
-DancingBlade || ✓ || ✓ | ✓ | ✓ |
-QuickBurn || ✓ || ✓ | ✓ | ✓ |
-SlowBurn || ✓ || ✓ | ✓ | ✓ |
-NaturalCover || ✓ || ✓ | ✓ | ✓ |
-RecklessFighter || ✓ || ✓ | ✓ | ✓ |
-BoldFighter || ✓ || ✓ | ✓ | ✓ |
-Dazzle || ✓ || ✓ | ✓ | ✓ |
-BidingBlow || ✓ || ✓ | ✓ | ✓ |
-Discipline || ✓ || ✓ | ✓ | ✓ |
-AdvantageChaser || ✓ || ✓ | ✓ | ✓ |
-Nonconforming || ✓ || ✓ | ✓ | ✓ |
-Moonlight || ✓ || ✓ | ✓ | ✓ |
-BlackMagic || ✓ || ✓ | ✓ | ✓ |
-LastWord || ✓ || ✓ | ✓ | ✓ |
-Multiscale || ✓ || ✓ | ✓ | ✓ |
-PridefulWarrior || ✓ || ✓ | ✓ | ✓ |
-MageSlayer || ✓ || ✓ | ✓ | ✓ |
-TriangleAdept || ✓ || ✓ | ✓ | ✓ |
-TriangleAdeptPlus || ✓ || ✓ | ✓ | ✓ |
-TowerShieldPlus || ✓ || ✓ | ✓ | ✓ |
-PoisonStrike || ✓ || ✓ | ✓ | ✓ |
-GrislyWound || ✓ || ✓ | ✓ | ✓ |
+DancingBlade || ✓ | ✓ | ✓ | ✓ | ✓ |
+QuickBurn || ✓ | ✓ | ✓ | ✓ | ✓ |
+SlowBurn || ✓ | ✓ | ✓ | ✓ | ✓ |
+NaturalCover || ✓ | ✓ | ✓ | ✓ | ✓ |
+RecklessFighter || ✓ | ✓ | ✓ | ✓ | ✓ |
+BoldFighter || ✓ | ✓ | ✓ | ✓ | ✓ |
+Dazzle || ✓ | ✓ | ✓ | ✓ | ✓ |
+BidingBlow || ✓ | ✓ | ✓ | ✓ | ✓ |
+Discipline || ✓ | ✓ | ✓ | ✓ | ✓ |
+AdvantageChaser || ✓ | ✓ | ✓ | ✓ | ✓ |
+Nonconforming || ✓ | ✓ | ✓ | ✓ | ✓ |
+Moonlight || ✓ | ✓ | ✓ | ✓ | ✓ |
+BlackMagic || ✓ | ✓ | ✓ | ✓ | ✓ |
+LastWord || ✓ | ✓ | ✓ | ✓ | ✓ |
+Multiscale || ✓ | ✓ | ✓ | ✓ | ✓ |
+PridefulWarrior || ✓ | ✓ | ✓ | ✓ | ✓ |
+MageSlayer || ✓ | ✓ | ✓ | ✓ | ✓ |
+TriangleAdept || ✓ | ✓ | ✓ | ✓ | ✓ |
+TriangleAdeptPlus || ✓ | ✓ | ✓ | ✓ | ✓ |
+TowerShieldPlus || ✓ | ✓ | ✓ | ✓ | ✓ |
+PoisonStrike || ✓ | ✓ | ✓ | ✓ | ✓ |
+GrislyWound || ✓ | ✓ | ✓ | ✓ | ✓ |
 Poise || ✓ | | | |
-Enrage || ✓ || ✓ | ✓ | ✓ |
-Petrify || ✓ || ✓ | ✓ | ✓ |
+Enrage || ✓ | ✓ | ✓ | ✓ | ✓ |
+Petrify || ✓ | ✓ | ✓ | ✓ | ✓ |
 Amaterasu || ✓ | | | |
-AirRaidAttack || ✓ || ✓ | ✓ | ✓ |
-AirRaidAvoid || ✓ || ✓ | ✓ | ✓ |
-AirRaidCrit || ✓ || ✓ | ✓ | ✓ |
-AirRaidDefense || ✓ || ✓ | ✓ | ✓ |
-AirRaidHit || ✓ || ✓ | ✓ | ✓ |
-AirRaidResistance || ✓ || ✓ | ✓ | ✓ |
-AirRaidSpeed || ✓ || ✓ | ✓ | ✓ |
-Pickup || ✓ || ✓ | ✓ | ✓ |
+AirRaidAttack || ✓ | ✓ | ✓ | ✓ | ✓ |
+AirRaidAvoid || ✓ | ✓ | ✓ | ✓ | ✓ |
+AirRaidCrit || ✓ | ✓ | ✓ | ✓ | ✓ |
+AirRaidDefense || ✓ | ✓ | ✓ | ✓ | ✓ |
+AirRaidHit || ✓ | ✓ | ✓ | ✓ | ✓ |
+AirRaidResistance || ✓ | ✓ | ✓ | ✓ | ✓ |
+AirRaidSpeed || ✓ | ✓ | ✓ | ✓ | ✓ |
+Pickup || ✓ | ✓ | ✓ | ✓ | ✓ |
 IndoorMarch || ✓ | | | |
 NatureRush || ✓ | | | |
-Expertise || ✓ || ✓ | ✓ | ✓ |
-PassionsFlow || ✓ || ✓ | ✓ | ✓ |
-LadyBlade || ✓ || ✓ | ✓ | ✓ |
+Expertise || ✓ | ✓ | ✓ | ✓ | ✓ |
+PassionsFlow || ✓ | ✓ | ✓ | ✓ | ✓ |
+LadyBlade || ✓ | ✓ | ✓ | ✓ | ✓ |
 ShrewdPotential || ✓ | | | |
-SteadyBrawler || ✓ || ✓ | ✓ | ✓ |
+SteadyBrawler || ✓ | ✓ | ✓ | ✓ | ✓ |
 KeepUp || ✓ | | | |
-CloseCombat || ✓ || ✓ | ✓ | ✓ |
-ArmorMarch || ✓ || ✓ | ✓ | ✓ |
-Eclipse || ✓ || ✓ | ✓ | ✓ |
-Barricade || ✓ || ✓ | ✓ | ✓ |
-BarricadePlus || ✓ || ✓ | ✓ | ✓ |
-LunarBrace || ✓ || ✓ | ✓ | ✓ |
-Pursuer || ✓ || ✓ | ✓ | ✓ |
-QuickLearner || ✓ || ✓ | ✓ | ✓ |
-EffectSpore || ✓ || ✓ | ✓ | ✓ |
-DominantArm || ✓ || ✓ | ✓ | ✓ |
-SolidRock || ✓ || ✓ | ✓ | ✓ |
-Sturdy || ✓ || ✓ | ✓ | ✓ |
-FranticSwing || ✓ || ✓ | ✓ | ✓ |
+CloseCombat || ✓ | ✓ | ✓ | ✓ | ✓ |
+ArmorMarch || ✓ | ✓ | ✓ | ✓ | ✓ |
+Eclipse || ✓ | ✓ | ✓ | ✓ | ✓ |
+Barricade || ✓ | ✓ | ✓ | ✓ | ✓ |
+BarricadePlus || ✓ | ✓ | ✓ | ✓ | ✓ |
+LunarBrace || ✓ | ✓ | ✓ | ✓ | ✓ |
+Pursuer || ✓ | ✓ | ✓ | ✓ | ✓ |
+QuickLearner || ✓ | ✓ | ✓ | ✓ | ✓ |
+EffectSpore || ✓ | ✓ | ✓ | ✓ | ✓ |
+DominantArm || ✓ | ✓ | ✓ | ✓ | ✓ |
+SolidRock || ✓ | ✓ | ✓ | ✓ | ✓ |
+Sturdy || ✓ | ✓ | ✓ | ✓ | ✓ |
+FranticSwing || ✓ | ✓ | ✓ | ✓ | ✓ |
 SocialButterfly || ✓ | | | |
-MeleeManiac || ✓ || ✓ | ✓ | ✓ |
-CriticalOverload || ✓ || ✓ | ✓ | ✓ |
-WyvernFlight || ✓ || ✓ | ✓ | ✓ |
-YngviAscendant || ✓ || ✓ | ✓ | ✓ |
-DragonWrath || ✓ || ✓ | ✓ | ✓ |
-BrashAssault || ✓ || ✓ | ✓ | ✓ |
-Scendscale || ✓ || ✓ | ✓ | ✓ |
+MeleeManiac || ✓ | ✓ | ✓ | ✓ | ✓ |
+CriticalOverload || ✓ | ✓ | ✓ | ✓ | ✓ |
+WyvernFlight || ✓ | ✓ | ✓ | ✓ | ✓ |
+YngviAscendant || ✓ | ✓ | ✓ | ✓ | ✓ |
+DragonWrath || ✓ | ✓ | ✓ | ✓ | ✓ |
+BrashAssault || ✓ | ✓ | ✓ | ✓ | ✓ |
+Scendscale || ✓ | ✓ | ✓ | ✓ | ✓ |
 LawsOfSacae || ✓ | | | |
-ShieldPulse || ✓ || ✓ | ✓ | ✓ |
-BestDefense || ✓ || ✓ | ✓ | ✓ |
-DoOrDie || ✓ || ✓ | ✓ | ✓ |
-OverKill || ✓ || ✓ | ✓ | ✓ |
-Momentum || ✓ || ✓ | ✓ | ✓ |
-FatalTen || ✓ || ✓ | ✓ | ✓ |
-LionFlame || ✓ || ✓ | ✓ | ✓ |
-LimitBreak || ✓ || ✓ | ✓ | ✓ |
-ImmovableObject || ✓ || ✓ | ✓ | ✓ |
-UnstoppableForce || ✓ || ✓ | ✓ | ✓ |
-WeaponHeal || ✓ || ✓ | ✓ | ✓ |
-BloodReaver || ✓ || ✓ | ✓ | ✓ |
+ShieldPulse || ✓ | ✓ | ✓ | ✓ | ✓ |
+BestDefense || ✓ | ✓ | ✓ | ✓ | ✓ |
+DoOrDie || ✓ | ✓ | ✓ | ✓ | ✓ |
+OverKill || ✓ | ✓ | ✓ | ✓ | ✓ |
+Momentum || ✓ | ✓ | ✓ | ✓ | ✓ |
+FatalTen || ✓ | ✓ | ✓ | ✓ | ✓ |
+LionFlame || ✓ | ✓ | ✓ | ✓ | ✓ |
+LimitBreak || ✓ | ✓ | ✓ | ✓ | ✓ |
+ImmovableObject || ✓ | ✓ | ✓ | ✓ | ✓ |
+UnstoppableForce || ✓ | ✓ | ✓ | ✓ | ✓ |
+WeaponHeal || ✓ | ✓ | ✓ | ✓ | ✓ |
+BloodReaver || ✓ | ✓ | ✓ | ✓ | ✓ |
 Saint || ✓ | | | |
-Witch || ✓ || ✓ | ✓ | ✓ |
-KeenFighter || ✓ || ✓ | ✓ | ✓ |
-QuickDraw || ✓ || ✓ | ✓ | ✓ |
-ChaosStyle || ✓ || ✓ | ✓ | ✓ |
-ElbowRoom || ✓ || ✓ | ✓ | ✓ |
-BattleVeteran || ✓ || ✓ | ✓ | ✓ |
-Technician || ✓ || ✓ | ✓ | ✓ |
-KillingMachine || ✓ || ✓ | ✓ | ✓ |
-DivinePulse || ✓ || ✓ | ✓ | ✓ |
-Dishonorbreaker || ✓ || ✓ | ✓ | ✓ |
-Stubborn || ✓ || ✓ | ✓ | ✓ |
-Shakedown || ✓ || ✓ | ✓ | ✓ |
+Witch || ✓ | ✓ | ✓ | ✓ | ✓ |
+KeenFighter || ✓ | ✓ | ✓ | ✓ | ✓ |
+QuickDraw || ✓ | ✓ | ✓ | ✓ | ✓ |
+ChaosStyle || ✓ | ✓ | ✓ | ✓ | ✓ |
+ElbowRoom || ✓ | ✓ | ✓ | ✓ | ✓ |
+BattleVeteran || ✓ | ✓ | ✓ | ✓ | ✓ |
+Technician || ✓ | ✓ | ✓ | ✓ | ✓ |
+KillingMachine || ✓ | ✓ | ✓ | ✓ | ✓ |
+DivinePulse || ✓ | ✓ | ✓ | ✓ | ✓ |
+Dishonorbreaker || ✓ | ✓ | ✓ | ✓ | ✓ |
+Stubborn || ✓ | ✓ | ✓ | ✓ | ✓ |
+Shakedown || ✓ | ✓ | ✓ | ✓ | ✓ |
 SeaWays || ✓ | | | |
-Deal || ✓ || ✓ | ✓ | ✓ |
-Bargain || ✓ || ✓ | ✓ | ✓ |
-DevilsPact || ✓ || ✓ | ✓ | ✓ |
-DevilsWhim || ✓ || ✓ | ✓ | ✓ |
-DevilsLuck || ✓ || ✓ | ✓ | ✓ |
-Guidance || ✓ || ✓ | ✓ | ✓ |
+Deal || ✓ | ✓ | ✓ | ✓ | ✓ |
+Bargain || ✓ | ✓ | ✓ | ✓ | ✓ |
+DevilsPact || ✓ | ✓ | ✓ | ✓ | ✓ |
+DevilsWhim || ✓ | ✓ | ✓ | ✓ | ✓ |
+DevilsLuck || ✓ | ✓ | ✓ | ✓ | ✓ |
+Guidance || ✓ | ✓ | ✓ | ✓ | ✓ |
 SoaringGuidance || ✓ | | | |
-FlierFormation || ✓ || ✓ | ✓ | ✓ |
-SoaringWings || ✓ || ✓ | ✓ | ✓ |
+FlierFormation || ✓ | ✓ | ✓ | ✓ | ✓ |
+SoaringWings || ✓ | ✓ | ✓ | ✓ | ✓ |
 DetailedReport || ✓ | | | |
 HighGround || ✓ | | | |
 PointBlank || ✓ | | | |
@@ -421,18 +421,18 @@ Drought || ✓ | | | |
 Drizzle || ✓ | | | |
 SnowWarning || ✓ | | | |
 SandStream || ✓ | | | |
-Chlorophyll || ✓ || ✓ | ✓ | ✓ |
-SlushRush || ✓ || ✓ | ✓ | ✓ |
-SandRush || ✓ || ✓ | ✓ | ✓ |
-SwiftSwim || ✓ || ✓ | ✓ | ✓ |
-SolarPower || ✓ || ✓ | ✓ | ✓ |
-SealDefense || ✓ || ✓ | ✓ | ✓ |
-SealLuck || ✓ || ✓ | ✓ | ✓ |
-SealMagic || ✓ || ✓ | ✓ | ✓ |
-SealResistance || ✓ || ✓ | ✓ | ✓ |
-SealSkill || ✓ || ✓ | ✓ | ✓ |
-SealSpeed || ✓ || ✓ | ✓ | ✓ |
-SealStrength || ✓ || ✓ | ✓ | ✓ |
+Chlorophyll || ✓ | ✓ | ✓ | ✓ | ✓ |
+SlushRush || ✓ | ✓ | ✓ | ✓ | ✓ |
+SandRush || ✓ | ✓ | ✓ | ✓ | ✓ |
+SwiftSwim || ✓ | ✓ | ✓ | ✓ | ✓ |
+SolarPower || ✓ | ✓ | ✓ | ✓ | ✓ |
+SealDefense || ✓ | ✓ | ✓ | ✓ | ✓ |
+SealLuck || ✓ | ✓ | ✓ | ✓ | ✓ |
+SealMagic || ✓ | ✓ | ✓ | ✓ | ✓ |
+SealResistance || ✓ | ✓ | ✓ | ✓ | ✓ |
+SealSkill || ✓ | ✓ | ✓ | ✓ | ✓ |
+SealSpeed || ✓ | ✓ | ✓ | ✓ | ✓ |
+SealStrength || ✓ | ✓ | ✓ | ✓ | ✓ |
 InitStrong || ✓ | | | |
 InitClever || ✓ | | | |
 InitDeft || ✓ | | | |
@@ -468,47 +468,47 @@ SpeedBoost || ✓ | | | |
 StrengthBoost || ✓ | | | |
 SpectrumBoost || ✓ | | | |
 GentleFlower || ✓ | | | |
-Admiration || ✓ || ✓ | ✓ | ✓ |
-FairyTaleFolk || ✓ || ✓ | ✓ | ✓ |
+Admiration || ✓ | ✓ | ✓ | ✓ | ✓ |
+FairyTaleFolk || ✓ | ✓ | ✓ | ✓ | ✓ |
 RainDish || ✓ | | | |
 Boon || ✓ | | | |
 FreeSpirit || ✓ | | | |
-FailGale || ✓ || ✓ | ✓ | ✓ |
-Clearance || ✓ || ✓ | ✓ | ✓ |
-Despoil || ✓ || ✓ | ✓ | ✓ |
-GoldDigger || ✓ || ✓ | ✓ | ✓ |
-Glorifier || ✓ || ✓ | ✓ | ✓ |
-Thunderstorm || ✓ || ✓ | ✓ | ✓ |
+FailGale || ✓ | ✓ | ✓ | ✓ | ✓ |
+Clearance || ✓ | ✓ | ✓ | ✓ | ✓ |
+Despoil || ✓ | ✓ | ✓ | ✓ | ✓ |
+GoldDigger || ✓ | ✓ | ✓ | ✓ | ✓ |
+Glorifier || ✓ | ✓ | ✓ | ✓ | ✓ |
+Thunderstorm || ✓ | ✓ | ✓ | ✓ | ✓ |
 EndlessVitality || ✓ | | | |
-Dance || ✓ || ✓ | ✓ | ✓ |
-LockTouch || ✓ || ✓ | ✓ | ✓ |
-Summon || ✓ || ✓ | ✓ | ✓ |
-Steal || ✓ || ✓ | ✓ | ✓ |
+Dance || ✓ | ✓ | ✓ | ✓ | ✓ |
+LockTouch || ✓ | ✓ | ✓ | ✓ | ✓ |
+Summon || ✓ | ✓ | ✓ | ✓ | ✓ |
+Steal || ✓ | ✓ | ✓ | ✓ | ✓ |
 Supply || ✓ | | | |
-LightRune || ✓ || ✓ | ✓ | ✓ |
-Mine || ✓ || ✓ | ✓ | ✓ |
-RallyDefense || ✓ || ✓ | ✓ | ✓ |
-RallyLuck || ✓ || ✓ | ✓ | ✓ |
-RallyMagic || ✓ || ✓ | ✓ | ✓ |
-RallyMovement || ✓ || ✓ | ✓ | ✓ |
-RallyResistance || ✓ || ✓ | ✓ | ✓ |
-RallySkill || ✓ || ✓ | ✓ | ✓ |
-RallySpeed || ✓ || ✓ | ✓ | ✓ |
-RallyStrength || ✓ || ✓ | ✓ | ✓ |
-RallySpectrum || ✓ || ✓ | ✓ | ✓ |
-GoddessDance || ✓ || ✓ | ✓ | ✓ |
-Stride || ✓ || ✓ | ✓ | ✓ |
-Blacksmith || ✓ || ✓ | ✓ | ✓ |
+LightRune || ✓ | ✓ | ✓ | ✓ | ✓ |
+Mine || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallyDefense || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallyLuck || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallyMagic || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallyMovement || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallyResistance || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallySkill || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallySpeed || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallyStrength || ✓ | ✓ | ✓ | ✓ | ✓ |
+RallySpectrum || ✓ | ✓ | ✓ | ✓ | ✓ |
+GoddessDance || ✓ | ✓ | ✓ | ✓ | ✓ |
+Stride || ✓ | ✓ | ✓ | ✓ | ✓ |
+Blacksmith || ✓ | ✓ | ✓ | ✓ | ✓ |
 Latona || ✓ | | | |
-DivineReprieve || ✓ || ✓ | ✓ | ✓ |
-Pivot || ✓ || ✓ | ✓ | ✓ |
-Reposition || ✓ || ✓ | ✓ | ✓ |
-Swap || ✓ || ✓ | ✓ | ✓ |
+DivineReprieve || ✓ | ✓ | ✓ | ✓ | ✓ |
+Pivot || ✓ | ✓ | ✓ | ✓ | ✓ |
+Reposition || ✓ | ✓ | ✓ | ✓ | ✓ |
+Swap || ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ## Item-boundable skills
 | skill | dynamic skills | generic skills | item skills | weapon skills | shield skills | "assign skill" forms |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-RuinedBladePlus | | | ✓ | | | |
+RuinedBladePlus | | ✓ | ✓ | | | |
 COMBAT_Grounder | | ✓ | ✓ | ✓ | ✓ | ✓ |
 COMBAT_BaneOfMonsters || ✓ | ✓ | ✓ | ✓ | ✓ |
 COMBAT_Hexblade || ✓ | ✓ | ✓ | ✓ | ✓ |
