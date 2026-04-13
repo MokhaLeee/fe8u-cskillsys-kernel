@@ -55,7 +55,7 @@ bool CanUnitUsePromotionItem(struct Unit *unit, int item)
 					if (it->extra_check)
 						return it->extra_check(unit, item);
 
-					return true;
+					return (unit->level >= 10) ? true : false;
 				}
 			}
 			return false;
