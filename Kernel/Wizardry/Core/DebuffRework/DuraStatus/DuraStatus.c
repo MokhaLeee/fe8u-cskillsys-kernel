@@ -101,7 +101,7 @@ void SetDuraStatusVal(struct Unit *unit, enum dura_status_type type, int val)
 
 	case DURA_STATUS_DEF:
 		dstat->def = val;
-		dstat->res_sign = sig;
+		dstat->def_sign = sig;
 		break;
 
 	case DURA_STATUS_RES:

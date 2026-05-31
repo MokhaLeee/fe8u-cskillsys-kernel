@@ -960,7 +960,7 @@ const struct SkillExtraInfo gSkillExtraInfo[MAX_SKILL_NUM + 1] = {
 #endif
 
 #if (defined(SID_HealingFocus) && COMMON_SKILL_VALID(SID_HealingFocus))
-	[SID_HealingFocus] = {{ 50 }},
+	[SID_HealingFocus] = {{ 100 }},
 #endif
 
 #if (defined(SID_LightRune) && COMMON_SKILL_VALID(SID_LightRune))
