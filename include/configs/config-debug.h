@@ -25,7 +25,7 @@
  * Stand alone debug relatedconfigs
  */
 
-// Enable MGBA printf
+// Enable MGBA printf, it seems my-boy cannot handle on mgba reg
 #define CONFIG_MGBA_PRINTF_EN 0
 
 // Always print error log
