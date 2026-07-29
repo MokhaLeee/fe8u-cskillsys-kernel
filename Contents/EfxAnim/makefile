@@ -37,7 +37,9 @@ all: $(EFX_TARGET)
 CLEAN_FILES += $(EFX_TARGET)
 
 EFX_SCR_DEPS := $(EFX_SCRIPTS:.efx.txt=.efx.txt.d)
-include $(EFX_SCR_DEPS)
+ifeq ($(filter clean,$(MAKECMDGOALS)),)
+-include $(EFX_SCR_DEPS)
+endif
 
 CLEAN_FILES += $(EFX_SCR_DEPS)
 

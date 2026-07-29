@@ -23,8 +23,9 @@ RAM_REF  := $(LINK_DIR)/config-memmap.s
 WIZARDRY_DIR := Kernel
 CONTENTS_DIR := Contents
 GAMEDATA_DIR := Data
+DEBUG_DIR    := Debug
 
-HACK_DIRS := $(LINK_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR)
+HACK_DIRS := $(LINK_DIR) $(WIZARDRY_DIR) $(CONTENTS_DIR) $(GAMEDATA_DIR) $(DEBUG_DIR)
 
 SKILLS_ENUM_DIR  := include/constants
 SKILLS_ENUM_SRC := $(SKILLS_ENUM_DIR)/skills-equip.enum.txt
@@ -268,13 +269,16 @@ EFX_TARGET   := $(EFX_SCRIPTS:.efx.txt=.efx.event)
 	@echo -n "$(patsubst %.efx.txt, %.efx.event, $<): " > $@
 	@$(EFX_ANIMTOR) $< --list-files >> $@
 
+# Skip remaking included deps during clean; otherwise clean_basic regenerates them.
+ifeq ($(filter clean clean_basic,$(MAKECMDGOALS)),)
 -include $(EFX_SCR_DEPS)
+endif
 
 efx: $(EFX_TARGET)
 PRE_BUILD += efx
 
 CLEAN_BUILD += $(EFX_ANIM_DIR)
-# CLEAN_FILES += $(EFX_SCR_DEPS) $(EFX_TARGET)
+CLEAN_FILES += $(EFX_SCR_DEPS) $(EFX_TARGET)
 
 # =======
 # = GFX =
