@@ -5,6 +5,11 @@
 #include "shield.h"
 #include "constants/skills.h"
 
+static int get_metis_tome_growth_bonus(void)
+{
+	return MetisTomeGrowthBonus;
+}
+
 STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit *unit)
 {
 	int new = status;
@@ -18,6 +23,10 @@ STATIC_DECLAR int GetUnitCommonGrowthBonus(int status, struct Unit *unit)
 	if (SkillTester(unit, SID_Aptitude))
 		new = new + SKILL_EFF0(SID_Aptitude);
 #endif
+
+	/* metis tome */
+	if (unit->state & US_GROWTH_BOOST)
+		new = new + get_metis_tome_growth_bonus();
 
 	return new;
 }

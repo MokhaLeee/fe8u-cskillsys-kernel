@@ -342,8 +342,8 @@ struct IERevamp const IERevampTable[IER_MAX] = {
 		.usability      = IER_Usability_MetisStone,
 		.prep_usability = IER_Usability_MetisStone,
 		.effect         = NULL,
-		.action_effect  = NULL,
-		.prep_effect    = NULL,
+		.action_effect  = IER_Action_Booster,
+		.prep_effect    = IER_PrepEffect_StatBooster,
 	},
 	[IER_HEAVENSEAL] = {
 		.usability      = IER_Usability_Promotion,

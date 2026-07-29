@@ -30,6 +30,7 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 			ITEM_SWORD_BRAVE,
 			ITEM_SWORD_RAPIER,
 			ITEM_VULNERARY,
+			ITEM_METISSTOME
 		},
 	},
 	{
