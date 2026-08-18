@@ -20,10 +20,19 @@ Other skills are categorized as **generic skills**.
 
 ## 3.1 Fixed Skills
 1. Fixed skills can be assigned to characters via [`gConstSkillTable_Person`](../Data/SkillSys/SkillTable-person.c) or [Skills person table patch](../Patches/PATCH_Skills_Person.txt), with each character being able to hold up to **2** fixed skills.
+![skillsys5](gfx/SkillSys_5.png)
+
 2. Fixed skills can be assigned to classes via [`gConstSkillTable_Job`](../Data/SkillSys/SkillTable-job.c) or [Skills job table patch](../Patches/PATCH_Skills_Job.txt), with each class being able to hold up to **2** fixed skills.
+![skillsys6](gfx/SkillSys_6.png)
+
 3. Fixed skills can be assigned to items via [`gConstSkillTable_Item`](../Data/SkillSys/SkillTable-item.c) or [Skills item table patch](../Patches/PATCH_Skills_Item.txt). Characters gain the corresponding skill when carrying the item. Each item can hold up to **2** fixed skills, and these skills must be within the `0x300-0x3FF` range.
+![skillsys8](gfx/SkillSys_8.png)
+
 4. Fixed skills can be assigned to weapons via [`gConstSkillTable_Weapon`](../Data/SkillSys/SkillTable-weapon.c) or [Skills weapon table patch](../Patches/PATCH_Skills_Weapon.txt). Battle units gain the corresponding skill when equipping the weapon. Note that these skills are **ONLY effective** for **BattleUnit**.
+![skillsys7](gfx/SkillSys_7.png)
+
 5. Fixed skills can be assigned to shields via [`gShieldItemTable::info::skills`](../Data/Shield/ShieldConfig.c) or [Shield item config patch](../Patches/PATCH_ShieldItem.txt). Characters gain the corresponding skill when equipping the shield. Note that these skills are **ONLY effective** for **BattleUnit**. For more details on shields, refer to [ShieldItem.md](./ShieldItem.md).
+![skillsys9](gfx/SkillSys_9.png)
 
 ## 3.2 Dynamic Skills
 
@@ -32,9 +41,16 @@ Other skills are categorized as **generic skills**.
 3. Players can freely equip or unequip dynamic skills in the prepscreen (FE16 style).
 4. If a character acquires a new skill while already holding 7 dynamic skills, the new skill is recorded as "learned" but does not take effect immediately. Players can equip it later in the prepscreen.
 5. Skills that can be learned upon level-up can be configured via [`gSkillPreloadPData`](../Data/SkillSys/SkillTable-generic.c). Characters can only learn new skills at levels 5, 10, 15, etc. Each character can learn up to 5 skills every 5 levels.
+![skillsys1](gfx/SkillSys_1.png)
+
 6. Skills that can be learned upon level-up for classes can be configured via [`gSkillPreloadJData`](../Data/SkillSys/SkillTable-generic.c). Characters can only learn new skills at levels 5, 10, 15, etc. Each class can learn up to 5 skills every 5 levels.
+![skillsys2](gfx/SkillSys_2.png)
+
 7. For character based levelup table, the reference level is based on ([total count of level-up history] + [[hidden level](../Patches/PATCH_HiddenLevel.txt)]) regardless from promotion. For class based levelup table, the reference level is directly determined by the current level.
+![skillsys3](gfx/SkillSys_3.png)
+
 7. Developers can assign or remove skills directly via events. Refer to: [Skill OPS patch](../Patches/PATCH_EVENTSCRIPT_SkillOps.txt).
+![skill event ops](gfx/SkillSys_event1.png)
 
 # 4. Setting Skills (Fitting to FEB Old List)
 
@@ -43,6 +59,8 @@ Starting from version **3.0.0**, CSkillSys additionally supports a skill list fo
 **https://feuniverse.us/t/the-skill-system-and-you-maximizing-your-usage-of-fe8s-most-prolific-bundle-of-wizardry/8232/5**
 
 > Note: To maintain compatibility with the old system, the skill ID range for this list is limited to `0x01-0xFF`, for the actual effective skills, Please refer to the [DOC](./SkillEffInfo.md).
+
+![skillsys4](gfx/SkillSys_4.png)
 
 # 5. Judge skill
 
