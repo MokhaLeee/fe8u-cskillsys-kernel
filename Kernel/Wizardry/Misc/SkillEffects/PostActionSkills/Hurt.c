@@ -11,6 +11,9 @@ bool PostActionBattleActorHurt(ProcPtr parent)
 	FORCE_DECLARE struct Unit *target = GetUnit(gActionData.targetIndex);
 	int damage = 0;
 
+	if (!UnitOnMapAvaliable(unit))
+		return false;
+
 	switch (gActionData.unitActionType) {
 	case UNIT_ACTION_COMBAT:
 	case CONFIG_UNIT_ACTION_EXPA_GaidenMagicCombat:
@@ -78,6 +81,9 @@ bool PostActionBattleTargetHurt(ProcPtr parent)
 	int damage = 0;
 
 	if (!UnitAvaliable(gActiveUnit) || UNIT_STONED(gActiveUnit))
+		return false;
+
+	if (!UnitOnMapAvaliable(unit))
 		return false;
 
 	switch (gActionData.unitActionType) {
