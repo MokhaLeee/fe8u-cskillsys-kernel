@@ -1,6 +1,8 @@
 #include "common-chax.h"
 #include "battle-system.h"
 #include "kernel-lib.h"
+#include "combat-art.h"
+#include "skill-system.h"
 
 typedef void (*PreBattleGenerateFunc) (void);
 extern PreBattleGenerateFunc const *const gpPreBattleGenerateFuncs;
@@ -17,6 +19,27 @@ void PreBattleGenerateHook(void)
 
 	for (it = gpPreBattleGenerateFuncs; *it; it++)
 		(*it)();
+}
+
+void PreBattleUnitInitHook(void)
+{
+	/**
+	 * https://github.com/MokhaLeee/fe8u-cskillsys-kernel/issues/421
+	 *
+	 * The pre-battle hooks should be hooked at all battle generate process
+	 *      to release some resouce.
+	 * However, the function BattleGenerate() can only generate on combat,
+	 *      failed to be called on item/UI in function:
+	 *  - BattleInitItemEffect/BattleInitItemEffectTarget
+	 *  - BattleGenerateUiStats
+	 *
+	 * Here we will remove this process here but
+	 * 	    put it to unit2battle process (function InitBattleUnit).
+	 * 
+	 */
+	ResetCombatArtStatus();
+	ResetSkillLists();
+	ResetCombatArtList();
 }
 
 LYN_REPLACE_CHECK(BattleGenerate);

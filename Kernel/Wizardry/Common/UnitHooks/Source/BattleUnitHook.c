@@ -14,6 +14,8 @@ typedef int (*UnitToBattleFunc_t)(struct Unit *unit, struct BattleUnit *bu);
 // extern const UnitToBattleFunc_t gExternalUnitToBattleHook[];
 extern UnitToBattleFunc_t const *const gpExternalUnitToBattleHook;
 
+extern void PreBattleUnitInitHook(void);
+
 STATIC_DECLAR void InitBattleUnitVanilla(struct BattleUnit *bu, struct Unit *unit)
 {
 	if (!unit)
@@ -103,6 +105,15 @@ LYN_REPLACE_CHECK(InitBattleUnit);
 void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit)
 {
 	const UnitToBattleFunc_t *it;
+
+#if CHAX
+	/**
+	 * Here we use battle-actor as pre-process judgement on U2B process.
+	 * see comment in file: Kernel/Wizardry/Core/BattleSys/Source/BattleGenerate.c
+	 */
+	if (bu == &gBattleActor)
+		PreBattleUnitInitHook();
+#endif
 
 	InitBattleUnitVanilla(bu, unit);
 
