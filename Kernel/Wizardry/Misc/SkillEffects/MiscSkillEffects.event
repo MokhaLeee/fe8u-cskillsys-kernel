@@ -69,3 +69,8 @@
 
 #include "ShopSkills/LynJump.event"
 #include "ShopSkills/Price.lyn.event"
+
+PUSH
+    ORG 0x02442C
+    pr_SummonConfig:
+POP
