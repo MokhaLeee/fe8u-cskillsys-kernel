@@ -98,3 +98,7 @@
     // bwl.h
     void WriteUnitLevelSafe(struct Unit *unit, int new_level);
     ```
+
+6. CSA creator are only recommended to use CSAv2 on ram-space consumption consideration:
+
+    CSA creator V1 may use 0x0203FC000-0x02040000 as its heap space, and V2 may only use 0x0203FF34-0x02040000. Thus the free-spcae in memory allocation (`FreeDemoRamSpaceBottom`) need changing then.

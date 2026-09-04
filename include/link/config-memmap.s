@@ -21,7 +21,7 @@ SET_DATA UsedFreeRamSpaceTop, FreeRamSpaceBottom
 .endm
 
 SET_DATA FreeDemoRamSpaceTop,    0x0203F150 @ see GetLoadUnitsAmount
-SET_DATA FreeDemoRamSpaceBottom, 0x02040000
+SET_DATA FreeDemoRamSpaceBottom, 0x0203FF30 @ 0x0203FF34 - 0x0204000 are used by CSA_Creator_For_FE8U_ver2
 SET_DATA UsedFreeDemoRamSpaceTop, FreeDemoRamSpaceBottom
 
 .macro _kernel_malloc_demo name, size
