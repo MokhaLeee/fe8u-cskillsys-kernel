@@ -3,7 +3,6 @@
 #include "constants/skills.h"
 
 const struct SkillPreloadPConf gSkillPreloadPData[0x100] = {
-#ifdef CONFIG_USE_DEBUG
 	[CHARACTER_EIRIKA] = {{
 #if (defined(SID_SpdBonus) && COMMON_SKILL_VALID(SID_SpdBonus))
 		[0] = SID_SpdBonus,
@@ -79,5 +78,4 @@ const struct SkillPreloadJConf gSkillPreloadJData[0x100] = {
 		[10] = SID_SuperLuck
 #endif
 	}},
-#endif /* CONFIG_USE_DEBUG */
 };
