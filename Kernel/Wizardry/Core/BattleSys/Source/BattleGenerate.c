@@ -37,9 +37,7 @@ void PreBattleUnitInitHook(void)
 	 * 	    put it to unit2battle process (function InitBattleUnit).
 	 * 
 	 */
-	ResetCombatArtStatus();
 	ResetSkillLists();
-	ResetCombatArtList();
 }
 
 LYN_REPLACE_CHECK(BattleGenerate);
