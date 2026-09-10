@@ -315,3 +315,101 @@ void sub_8090238(u8 key)
 
 	BG_EnableSyncByMask(BG2_SYNC_BIT);
 }
+
+LYN_REPLACE_CHECK(UnitList_DrawColumnNames);
+void UnitList_DrawColumnNames(u16 *tm, u8 page)
+{
+	int i;
+
+	TileMap_FillRect(tm + 9, 19, 1, 0);
+	ClearText(&gUnknown_0200E148);
+
+	if (page == UNITLIST_PAGE_WEXP) {
+		for (i = 0; i < 8; i++)
+			DrawIcon(tm + 9 + 2 * i, WTYPE_ICON(i), OAM2_PAL(5));
+	} else {
+		for (i = 1; i < 9 && gUnitListScreenFields[page][i].xColumn != 0; i++) {
+			Text_SetCursor(&gUnknown_0200E148, gUnitListScreenFields[page][i].xColumn - 64);
+			Text_SetColor(&gUnknown_0200E148, TEXT_COLOR_SYSTEM_WHITE);
+			Text_DrawString(&gUnknown_0200E148, GetStringFromIndex(gUnitListScreenFields[page][i].labelString));
+		}
+
+		PutText(&gUnknown_0200E148, tm + 8);
+	}
+
+	BG_EnableSyncByMask(BG2_SYNC_BIT);
+}
+
+LYN_REPLACE_CHECK(DrawSupportSubScreenUnitPartnerText);
+void DrawSupportSubScreenUnitPartnerText(struct SubScreenProc *proc, int idx)
+{
+
+	int _y;
+	int i;
+	int unitCharId;
+	int partnerCharId;
+
+	int supportLvCharLut[3] = {
+		TEXT_SPECIAL_C,
+		TEXT_SPECIAL_B,
+		TEXT_SPECIAL_A,
+	};
+
+	if (proc->partnerState[idx] == 0) {
+		for (i = 0; i < 5; i++)
+			PutSpecialChar(gBG2TilemapBuffer + TILEMAP_INDEX(0x10 + i, _y = idx * 2 + 3), TEXT_COLOR_SYSTEM_GRAY, TEXT_SPECIAL_DASH);
+
+		for (i = 0; i < 2; i++)
+			PutSpecialChar(gBG2TilemapBuffer + TILEMAP_INDEX(0x16 + i, _y = idx * 2 + 3), TEXT_COLOR_SYSTEM_GRAY, TEXT_SPECIAL_DASH);
+
+		for (i = 0; i < 3; i++)
+			PutSpecialChar(gBG2TilemapBuffer + TILEMAP_INDEX(0x19 + i, _y = idx * 2 + 3), TEXT_COLOR_SYSTEM_GRAY, TEXT_SPECIAL_DASH);
+	} else {
+		int color = 0;
+
+		unitCharId = GetSupportScreenCharIdAt(proc->unitIdx);
+		partnerCharId = GetSupportScreenPartnerCharId(proc->unitIdx, idx);
+
+		if (proc->partnerState[idx] == 2)
+			color = 1;
+
+		PutDrawText(
+			0,
+			gBG2TilemapBuffer + TILEMAP_INDEX(16, 0) + (_y = ((idx * 2) + 3) * 0x20),
+			color,
+			0,
+			5,
+			GetStringFromIndex(gCharacterData[GetSupportScreenPartnerCharId(proc->unitIdx, idx) - 1].nameTextId)
+		);
+
+		DrawIcon(
+			gBG2TilemapBuffer + TILEMAP_INDEX(16, 0) + TILEMAP_INDEX(6, (idx * 2) + 3),
+			AFFIN_ICON(gCharacterData[GetSupportScreenPartnerCharId(proc->unitIdx, idx) - 1].affinity),
+			0xe000
+		);
+
+		if (GetUnitsAverageSupportValue(unitCharId, partnerCharId) == 2) {
+			for (i = 0; i < 2; i++) {
+				color = 1;
+				if (proc->supportLevel[idx] == 2)
+					color = 4;
+				else if (proc->supportLevel[idx] > i)
+					color = 0;
+
+				PutSpecialChar(gBG2TilemapBuffer + TILEMAP_INDEX(0x19 + i, (idx * 2) + 3), color, supportLvCharLut[i]);
+			}
+
+			PutSpecialChar(gBG2TilemapBuffer + 0x1B + (((idx * 2) + 3) * 0x20), TEXT_COLOR_SYSTEM_GRAY, TEXT_SPECIAL_DASH);
+		} else {
+			for (i = 0; i < 3; i++) {
+				color = 1;
+				if (proc->supportLevel[idx] == 3)
+					color = 4;
+				else if (proc->supportLevel[idx] > i)
+					color = 0;
+
+				PutSpecialChar(gBG2TilemapBuffer + TILEMAP_INDEX(0x19 + i, (idx * 2) + 3), color, supportLvCharLut[i]);
+			}
+		}
+	}
+}
