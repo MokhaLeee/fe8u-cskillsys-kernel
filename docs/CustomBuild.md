@@ -67,14 +67,6 @@ sudo apt-get -y install binutils-arm-none-eabi ctags \
 pip install pyelftools PyInstaller tmx six Pillow
 
 cabal update
-
-# install wine
-sudo dpkg --add-architecture i386
-sudo apt-get update
-rm -rf ~/.wine
-sudo apt-get -y wine
-wget https://mirrors.tuna.tsinghua.edu.cn/winehq/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.msi
-wine msiexec /i wine-mono-9.4.0-x86.msi
 ```
 
 3. Install DevkitPRO
@@ -96,10 +88,18 @@ source ~/.bashrc
 4. Build EA tools
 
 ```bash
-# Build EA tools
-cp Tools/scripts/build_ea_wo_core.sh Tools/EventAssembler/
+# Install .NET
+# refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+chmod +x ./dotnet-install.sh
+sudo ./dotnet-install.sh --channel 6.0
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+# Build EA
 cd Tools/EventAssembler
-./build_ea_wo_core.sh
+./build.sh
 ```
 
 5. Install code review tools
@@ -119,12 +119,96 @@ make
 > [!NOTE]
 > If gcc report error, update C-Lib and retry, see [#155](https://github.com/MokhaLeee/fe8u-cskillsys-kernel/discussions/115)
 
-# linux EA build
+# Use wine to call for windows EA core
+
+Linux EA core needs .NET installed, and you can also directly use windows version EA core (via wine) to compile.
+
+```bash
+# Install sub-modules
+cd Tools
+git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git
+git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix
+git clone https://github.com/StanHash/FE-PyTools.git --recursive
+git clone https://github.com/MokhaLeee/check_patch.git
+
+# Install dependencies
+sudo apt-get -y install binutils-arm-none-eabi ctags \
+    gcc-arm-none-eabi build-essential cmake re2c ghc \
+    cabal-install libghc-vector-dev libghc-juicypixels-dev \
+    python3-pip pkg-config libpng* moreutils perl
+
+pip install pyelftools PyInstaller tmx six Pillow
+
+cabal update
+
+# install wine
+sudo dpkg --add-architecture i386
+sudo apt-get update
+rm -rf ~/.wine
+sudo apt-get -y wine
+wget https://mirrors.tuna.tsinghua.edu.cn/winehq/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.msi
+wine msiexec /i wine-mono-9.4.0-x86.msi
+
+# Install DevkitPRO
+wget https://apt.devkitpro.org/install-devkitpro-pacman
+chmod +x ./install-devkitpro-pacman
+sudo ./install-devkitpro-pacman
+sudo dkp-pacman -S gba-dev
+
+# Export vars
+echo "export DEVKITPRO=/opt/devkitpro" >> ~/.bashrc
+echo "export DEVKITARM=\${DEVKITPRO}/devkitARM" >> ~/.bashrc
+echo "export DEVKITPPC=\${DEVKITPRO}/devkitPPC" >> ~/.bashrc
+echo "export PATH=\${DEVKITPRO}/tools/bin:\$PATH" >> ~/.bashrc
+source ~/.bashrc
+
+# Build EA tools
+cp Tools/scripts/build_ea_wo_core.sh Tools/EventAssembler/
+cd Tools/EventAssembler
+./build_ea_wo_core.sh
+
+# Install code review tools
+cp Tools/scripts/pre-commit .git/hooks/
+
+make CONFIG_EA_WIN=1
+```
+
+# linux EA build all-in-one
 
 If you want not to use wine to call for ColorzCore.exe in linux, you could also directly build it in linux. Refer to [EA build note](https://github.com/StanHash/EventAssembler) to install [.NET](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu). Here is a recommended installation method:
 
 
 ```bash
+# Install sub-modules
+cd Tools
+git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git
+git clone https://github.com/MokhaLeee/EventAssembler.git -b mokha-fix
+git clone https://github.com/StanHash/FE-PyTools.git --recursive
+git clone https://github.com/MokhaLeee/check_patch.git
+
+# Install dependencies
+sudo apt-get -y install binutils-arm-none-eabi ctags \
+    gcc-arm-none-eabi build-essential cmake re2c ghc \
+    cabal-install libghc-vector-dev libghc-juicypixels-dev \
+    python3-pip pkg-config libpng* moreutils perl
+
+pip install pyelftools PyInstaller tmx six Pillow
+
+cabal update
+
+# Install DevkitPRO
+wget https://apt.devkitpro.org/install-devkitpro-pacman
+chmod +x ./install-devkitpro-pacman
+sudo ./install-devkitpro-pacman
+sudo dkp-pacman -S gba-dev
+
+# Export vars
+echo "export DEVKITPRO=/opt/devkitpro" >> ~/.bashrc
+echo "export DEVKITARM=\${DEVKITPRO}/devkitARM" >> ~/.bashrc
+echo "export DEVKITPPC=\${DEVKITPRO}/devkitPPC" >> ~/.bashrc
+echo "export PATH=\${DEVKITPRO}/tools/bin:\$PATH" >> ~/.bashrc
+source ~/.bashrc
+
 # Install .NET
 # refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
@@ -137,10 +221,9 @@ export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 # Build EA
 cd Tools/EventAssembler
 ./build.sh
-```
 
-Then build kernel with config:
+# Install code review tools
+cp Tools/scripts/pre-commit .git/hooks/
 
-```bash
 make CONFIG_EA_WIN=0
 ```

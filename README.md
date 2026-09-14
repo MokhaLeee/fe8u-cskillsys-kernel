@@ -16,6 +16,8 @@ Modern CHAX for FE8U-SkillSystem.
 > [!NOTE]
 > You need a linux envirment!
 >
+> This doc uses ubuntu 22.04 as example.
+>
 > For Windows users, it is recommended to use a [Ubuntu Server](https://ubuntu.com/aws) or try [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 1. Install sub-modules
@@ -39,14 +41,6 @@ sudo apt-get -y install binutils-arm-none-eabi ctags \
 pip install pyelftools PyInstaller tmx six Pillow
 
 cabal update
-
-# install wine
-sudo dpkg --add-architecture i386
-sudo apt-get update
-rm -rf ~/.wine
-sudo apt-get -y wine
-wget https://mirrors.tuna.tsinghua.edu.cn/winehq/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.msi
-wine msiexec /i wine-mono-9.4.0-x86.msi
 ```
 
 3. Install DevkitPRO
@@ -65,13 +59,21 @@ echo "export PATH=\${DEVKITPRO}/tools/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-4. Build EA tools
+4. Build EA
 
 ```bash
-# Build EA tools
-cp Tools/scripts/build_ea_wo_core.sh Tools/EventAssembler/
+# Install .NET
+# refer to: https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+chmod +x ./dotnet-install.sh
+sudo ./dotnet-install.sh --channel 6.0
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+# Build EA
 cd Tools/EventAssembler
-./build_ea_wo_core.sh
+./build.sh
 ```
 
 5. Install code review tools
