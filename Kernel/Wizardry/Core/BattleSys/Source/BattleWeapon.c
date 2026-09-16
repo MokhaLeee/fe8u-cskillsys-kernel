@@ -250,6 +250,10 @@ void SetBattleUnitWeapon(struct BattleUnit *bu, int slot)
 	int cid;
 
 	SetBattleUnitWeaponVanilla(bu, slot);
+
+	/* reset skill list */
+	ForceUpdateUnitSkillList(&bu->unit, bu->weaponBefore);
+
 	PostSetBattleUnitWeaponVanillaHook(bu, slot);
 
 	/* Check combat-art */
@@ -476,14 +480,14 @@ void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
 	int i, item;
 
 	if (bu->weaponBefore)
-		return;
+		goto reset_skill_list;
 
 	bu->weaponBefore = GetUnitEquippedWeapon(&bu->unit);
 	if (bu->weaponBefore)
-		return;
+		goto reset_skill_list;
 
 	if (!UnitHasMagicRank(&bu->unit))
-		return;
+		goto reset_skill_list;
 
 	for (i = 0; i < UNIT_ITEM_COUNT; ++i) {
 		item = bu->unit.items[i];
@@ -493,7 +497,7 @@ void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
 
 		if (CanUnitUseStaff(&bu->unit, item)) {
 			bu->weaponBefore = item;
-			return;
+			goto reset_skill_list;
 		}
 	}
 
@@ -503,8 +507,12 @@ void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
 
 		if (item != ITEM_NONE) {
 			bu->weaponBefore = MakeNewItem(item);
-			return;
+			goto reset_skill_list;
 		}
 	}
 #endif
+
+reset_skill_list:
+	/* reset skill list */
+	ForceUpdateUnitSkillList(&bu->unit, bu->weaponBefore);
 }

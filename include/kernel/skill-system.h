@@ -81,8 +81,8 @@ struct SkillList {
 struct SkillList *GetUnitSkillList(struct Unit *unit);
 
 void SetupBattleSkillList(void);
-void GenerateSkillListExt(struct Unit *unit, struct SkillList *list);
-void ForceUpdateUnitSkillList(struct Unit *unit);
+void GenerateSkillListExt(struct Unit *unit, struct SkillList *list, int waepon);
+void ForceUpdateUnitSkillList(struct Unit *unit, int weapon);
 void DisableUnitSkilLList(struct Unit *unit);
 void ResetSkillLists(void);
 void AppendBattleUnitSkillList(struct BattleUnit *bu, u16 skill);
