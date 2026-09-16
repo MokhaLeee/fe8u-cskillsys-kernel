@@ -199,9 +199,11 @@ PUSH
     BYTE 0x3F
     PROTECT $397B0 $39858
 
+/*
     ORG $399F4 // BuildAiUnitList
     BYTE 0x3F
     PROTECT $399B0 $39A50
+*/
 
 /*
     ORG $3FA54 // AiTryDoStaff

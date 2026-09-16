@@ -1,6 +1,7 @@
 #ifndef DEBUFF_REWORK_INSTALLED
 #define DEBUFF_REWORK_INSTALLED
 
+#include "Source/LynJump.event"
 #include "Source/Core.lyn.event"
 #include "Source/MiscHooks.lyn.event"
 #include "Source/MiscHooks.event"

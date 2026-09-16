@@ -107,6 +107,10 @@ extern struct AiScr CONST_DATA gAiScript_FallbackAi2[];
 
 void AiScript_Exec(u8 *);
 
+extern u32 *CONST_DATA sUnitPriorityArray;
+int BuildAiUnitList(void);
+int GetUnitAiPriority(struct Unit *unit);
+
 void SetSupportLevelGained(u8 charA, u8 charB);
 s8 HasUnitGainedSupportLevel(struct Unit *unit, int num);
 extern int sSupportMaxExpLookup[];

@@ -1,4 +1,5 @@
 #include "common-chax.h"
+#include "kernel-lib.h"
 #include "debuff.h"
 
 #define LOCAL_TRACE 0
@@ -95,4 +96,23 @@ void PutUnitMapUiStatus(u16 *buffer, struct Unit *unit)
 		buffer[5] = 0;
 		buffer[6] = TILEREF(0x128 + GetUnitStatusDuration(unit), 1);
 	}
+}
+
+LYN_REPLACE_CHECK(BuildAiUnitList);
+int BuildAiUnitList(void)
+{
+	int count = 0;
+
+	FOR_UNITS_VALID_FACTION(gPlaySt.faction, unit, {
+		if (unit->state & (US_HIDDEN | US_UNSELECTABLE | US_DEAD | US_RESCUED | US_HAS_MOVED_AI))
+			continue;
+
+		if (check_unselectable_status(GetUnitStatusIndex(unit)))
+			continue;
+
+		gAiState.units[count] = unit->index;
+		sUnitPriorityArray[count++] = GetUnitAiPriority(unit);
+	})
+
+	return count;
 }

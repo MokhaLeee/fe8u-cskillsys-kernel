@@ -28,6 +28,19 @@ enum UNIT_STATUS_IDENTIFIER {
 	NEW_UNIT_STATUS_MAX = 64
 };
 
+static inline bool check_unselectable_status(int status)
+{
+	switch (status) {
+	case UNIT_STATUS_SLEEP:
+	case UNIT_STATUS_BERSERK:
+	case UNIT_STATUS_PETRIFY:
+		return true;
+
+	default:
+		return false;
+	}
+}
+
 enum DEBUFF_POSITIVE_TYPE {
 	/* DebuffInfo::positive_type */
 	STATUS_DEBUFF_NONE,

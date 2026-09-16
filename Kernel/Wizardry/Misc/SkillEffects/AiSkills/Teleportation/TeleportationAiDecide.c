@@ -39,6 +39,9 @@ bool Ai2Decide_TryTeleportation(void)
 	if (gAiScriptKind != AI_SCRIPT_AI2)
 		return false;
 
+	if (!UNIT_IS_VALID(gActiveUnit) || gActiveUnit->state & (US_DEAD | US_UNSELECTABLE))
+		return false;
+
 	if (CheckBitUES(gActiveUnit, UES_BIT_TSZUKU_SKILL_USED))
 		return false;
 
