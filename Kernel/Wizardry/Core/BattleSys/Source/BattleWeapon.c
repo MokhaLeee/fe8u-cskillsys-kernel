@@ -474,20 +474,19 @@ void BattleUnitTargetCheckCanCounter(struct BattleUnit *bu)
 	bu->battleEffectiveCritRate = 0xFF;
 }
 
-LYN_REPLACE_CHECK(BattleUnitTargetSetEquippedWeapon);
-void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
+static void BattleUnitTargetSetEquippedWeapon_work(struct BattleUnit *bu)
 {
 	int i, item;
 
 	if (bu->weaponBefore)
-		goto reset_skill_list;
+		return;
 
 	bu->weaponBefore = GetUnitEquippedWeapon(&bu->unit);
 	if (bu->weaponBefore)
-		goto reset_skill_list;
+		return;
 
 	if (!UnitHasMagicRank(&bu->unit))
-		goto reset_skill_list;
+		return;
 
 	for (i = 0; i < UNIT_ITEM_COUNT; ++i) {
 		item = bu->unit.items[i];
@@ -497,7 +496,7 @@ void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
 
 		if (CanUnitUseStaff(&bu->unit, item)) {
 			bu->weaponBefore = item;
-			goto reset_skill_list;
+			return;
 		}
 	}
 
@@ -507,12 +506,17 @@ void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
 
 		if (item != ITEM_NONE) {
 			bu->weaponBefore = MakeNewItem(item);
-			goto reset_skill_list;
+			return;
 		}
 	}
 #endif
+}
 
-reset_skill_list:
+LYN_REPLACE_CHECK(BattleUnitTargetSetEquippedWeapon);
+void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
+{
+	BattleUnitTargetSetEquippedWeapon_work(bu);
+
 	/* reset skill list */
 	ForceUpdateUnitSkillList(&bu->unit, bu->weaponBefore);
 }
