@@ -198,12 +198,13 @@ static const struct UnitDefinition UnitDef_Ally1[] = {
 		.yPosition = 29,
 		.redaCount = 1,
 		.redas = (const struct REDA[]) {{
-			.x = 17,
-			.y = 28,
+			.x = 9,
+			.y = 25,
 			.b = -1,
 			.delayFrames = 64,
 		}},
 		.items = {
+			ITEM_DARK_NOSFERATU,
 			ITEM_DARK_FLUX,
 			ITEM_VULNERARY
 		},
