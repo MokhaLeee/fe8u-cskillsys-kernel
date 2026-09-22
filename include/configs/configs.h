@@ -269,4 +269,10 @@
 #define CONFIG_UNIT_AMT_ENEMY 50
 #define CONFIG_UNIT_AMT_NPC   8
 
+/**
+ * It seems bug exixts when try healing during post-action after combo-attack?
+ * Need further discussion.
+ */
+#define CONFIG_DISABLE_HEAL_ANIM_POST_ACTION 1
+
 #endif /* CONFIG_INSTALLED */

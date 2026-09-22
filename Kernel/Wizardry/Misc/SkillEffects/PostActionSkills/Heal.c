@@ -45,7 +45,14 @@ bool PostAction_BattleActorHeal(ProcPtr parent)
 		return false;
 	}
 
+#if !CONFIG_DISABLE_HEAL_ANIM_POST_ACTION
+	/**
+	 * It seems bug exixts on combo-attacking?
+	 */
 	CallMapAnim_Heal(parent, gActiveUnit, heal);
+#else
+	AddUnitHp(gActiveUnit, heal);
+#endif
 	return true;
 }
 
@@ -95,6 +102,14 @@ bool PostAction_BattleTargetHeal(ProcPtr parent)
 		return false;
 	}
 
+#if !CONFIG_DISABLE_HEAL_ANIM_POST_ACTION
+	/**
+	 * It seems bug exixts on combo-attacking?
+	 */
 	CallMapAnim_Heal(parent, target, heal);
+#else
+	AddUnitHp(target, heal);
+#endif
+
 	return true;
 }
