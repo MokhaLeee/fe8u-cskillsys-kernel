@@ -19,6 +19,10 @@
 	/* Add a dummy task to test thread scheduler */
 	#define CONFIG_DEBUG_THREAD_SCHEDULER
 	// #define CONFIG_DEBUG_DUMP_THREAD_STACK
+
+	// Show warnning log when using generic buffer
+	#define CONFIG_DEBUG_ON_USING_GENERIC_BUFFER 1
+	#define CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER 1
 #endif /* CONFIG_USE_DEBUG */
 
 /**
@@ -30,9 +34,5 @@
 
 // Always print error log
 #define CONFIG_FORCE_PRIENT_ERROR 1
-
-// Show warnning log when using generic buffer
-#define CONFIG_DEBUG_ON_USING_GENERIC_BUFFER 1
-#define CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER 1
 
 #endif /* CONFIG_DEBUG_H */

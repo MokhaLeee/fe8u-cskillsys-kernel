@@ -112,11 +112,10 @@ int k_printf(const char *fmt, ...) __PRINTFLIKE(1, 2);
  */
 extern u8 GenericBufferUsedFlag;
 
+#ifdef CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER
 #define WARN_GENERIC_BUF_USED \
 do { \
-	if (CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER) { \
-		Assert(GenericBufferUsedFlag == 0); \
-	} \
+	Assert(GenericBufferUsedFlag == 0); \
 	GenericBufferUsedFlag = 1; \
 	if (CONFIG_DEBUG_ON_USING_GENERIC_BUFFER) { \
 		Warn("Generic buffer used"); \
@@ -125,11 +124,13 @@ do { \
 
 #define WARN_GENERIC_BUF_RELEASED \
 do { \
-	if (CONFIG_DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER) { \
-		Assert(GenericBufferUsedFlag == 1); \
-	} \
+	Assert(GenericBufferUsedFlag == 1); \
 	GenericBufferUsedFlag = 0; \
 	if (CONFIG_DEBUG_ON_USING_GENERIC_BUFFER) { \
 		Warn("Generic buffer released"); \
 	} \
 } while (0)
+#else
+#define WARN_GENERIC_BUF_USED
+#define WARN_GENERIC_BUF_RELEASED
+#endif /* DEBUG_ABORT_ON_ERROR_USING_GENERIC_BUFFER */
