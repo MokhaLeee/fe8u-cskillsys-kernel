@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "combat-art.h"
+#include "skill-system.h"
 #include "weapon-range.h"
 #include "kernel-tutorial.h"
 #include "constants/texts.h"
@@ -112,10 +113,17 @@ int CombatArtActionCommandHover(struct MenuProc *menu, struct MenuItemProc *menu
 	return 0;
 }
 
-int CombatArtActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
+static void reset_misc_status(void)
 {
+	ResetSkillLists();
 	ResetCombatArtList();
 	ResetCombatArtStatus();
+}
+
+int CombatArtActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem)
+{
+	reset_misc_status();
+
 	HideMoveRangeGraphics();
 	return 0;
 }
@@ -125,30 +133,28 @@ int CombatArtActionCommandUnhover(struct MenuProc *menu, struct MenuItemProc *me
  */
 u8 AttackCommandUsabilityFix(const struct MenuItemDef *def, int number)
 {
-	ResetCombatArtList();
-	ResetCombatArtStatus();
+	reset_misc_status();
 
 	return AttackCommandUsability(def, number);
 }
 
 u8 AttackBallistaCommandUsabilityFix(const struct MenuItemDef *def, int number)
 {
-	ResetCombatArtList();
-	ResetCombatArtStatus();
+	reset_misc_status();
 
 	return AttackBallistaCommandUsability(def, number);
 }
 
 int AttackActionCommandHoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
-	ResetCombatArtList();
-	ResetCombatArtStatus();
+	reset_misc_status();
+
 	return DisplayUnitStandingAttackRange(menu, menuItem);
 }
 
 int AttackActionCommandUnhoverFix(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
-	ResetCombatArtList();
-	ResetCombatArtStatus();
+	reset_misc_status();
+
 	return HideMoveRangeGraphicsWrapper(menu, menuItem);
 }
