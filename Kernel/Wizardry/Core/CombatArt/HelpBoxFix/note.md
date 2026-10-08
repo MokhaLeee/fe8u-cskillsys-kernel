@@ -1,7 +1,7 @@
 - RText on draw
 StartHelpBoxExt
 gProcScr_HelpBox
-StartHelpBoxTextInit(proc->item, proc->mid)
+StartHelpBoxTextInit(proc->item, proc->msgId)
 gUnknown_08A01650
 sub_8089F58
 

@@ -118,7 +118,7 @@ void BattleApplyItemExpGains(void)
 		gBattleActor.unit.exp += gBattleActor.expGain;
 
 		CheckBattleUnitLevelUp(&gBattleActor);
-	} else if ((gBattleActor.weaponType == ITYPE_12) && (gBattleActor.unit.exp != UNIT_EXP_DISABLED)) {
+	} else if ((gBattleActor.weaponType == ITYPE_DANCE) && (gBattleActor.unit.exp != UNIT_EXP_DISABLED)) {
 		gBattleActor.expGain = 20;
 		gBattleActor.unit.exp += 20;
 

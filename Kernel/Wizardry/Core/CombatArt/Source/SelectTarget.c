@@ -277,8 +277,8 @@ ProcPtr NewTargetSelectionRework(const struct SelectInfo *selectInfo)
 	return proc;
 }
 
-LYN_REPLACE_CHECK(UnknownMenu_Selected);
-u8 UnknownMenu_Selected(struct MenuProc *menu, struct MenuItemProc *menuItem)
+LYN_REPLACE_CHECK(WeaponSelectMenu_Selected);
+u8 WeaponSelectMenu_Selected(struct MenuProc *menu, struct MenuItemProc *menuItem)
 {
 	EquipUnitItemSlot(gActiveUnit, menuItem->itemNumber);
 	gActionData.itemSlotIndex = 0;

@@ -151,7 +151,7 @@ void DrawStatWithBarRework(int num, int x, int y, u16 *tm1, u16 *tm2, int base, 
 void HbPopuplate_Page1TrvTalk(struct HelpBoxProc *proc)
 {
 	if (gStatScreenStExpa.talkee != 0)
-		proc->mid = 0x56A;
+		proc->msgId = 0x56A;
 	else
-		proc->mid = 0x550;
+		proc->msgId = 0x550;
 }

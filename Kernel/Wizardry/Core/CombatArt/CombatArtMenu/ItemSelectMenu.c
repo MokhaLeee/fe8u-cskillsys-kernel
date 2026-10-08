@@ -27,11 +27,11 @@ STATIC_DECLAR int CombatArtItemSelHover(struct MenuProc *menu, struct MenuItemPr
 STATIC_DECLAR int CombatArtItemSelUnhover(struct MenuProc *menu, struct MenuItemProc *menuItem);
 
 STATIC_DECLAR const struct MenuItemDef gCombatArtItemMenuItems[] = {
-	{"", 0, 0, 0, 0x49, CombatArtItemSelUsability, UnknownMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
-	{"", 0, 0, 0, 0x4A, CombatArtItemSelUsability, UnknownMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
-	{"", 0, 0, 0, 0x4B, CombatArtItemSelUsability, UnknownMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
-	{"", 0, 0, 0, 0x4C, CombatArtItemSelUsability, UnknownMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
-	{"", 0, 0, 0, 0x4D, CombatArtItemSelUsability, UnknownMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
+	{"", 0, 0, 0, 0x49, CombatArtItemSelUsability, WeaponSelectMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
+	{"", 0, 0, 0, 0x4A, CombatArtItemSelUsability, WeaponSelectMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
+	{"", 0, 0, 0, 0x4B, CombatArtItemSelUsability, WeaponSelectMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
+	{"", 0, 0, 0, 0x4C, CombatArtItemSelUsability, WeaponSelectMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
+	{"", 0, 0, 0, 0x4D, CombatArtItemSelUsability, WeaponSelectMenu_Draw, CombatArtItemSelEffect, 0, CombatArtItemSelHover, CombatArtItemSelUnhover},
 	{0}
 };
 

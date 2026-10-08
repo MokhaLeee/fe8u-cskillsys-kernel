@@ -58,7 +58,7 @@ void ExecFortify(ProcPtr proc)
 
 	BattleInitItemEffect(unit_act, gActionData.itemSlotIndex);
 
-	BattleInitItemEffectTarget(GetUnitFromCharId(GetPlayerLeaderUnitId()));
+	BattleInitItemEffectTarget(GetUnitFromCharId(GetPlayerLeaderPid()));
 	MakeTargetListForRangedHeal(unit_act);
 
 	amount = GetUnitItemHealAmount(

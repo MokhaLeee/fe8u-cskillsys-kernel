@@ -7,7 +7,7 @@ void HbPopuplate_CombatArtBKSEL(struct HelpBoxProc *proc)
 	int cid = GetCombatArtInForce(gActiveUnit);
 
 	proc->item = cid;
-	proc->mid = GetCombatArtDesc(cid);
+	proc->msgId = GetCombatArtDesc(cid);
 	sHelpBoxType = NEW_HB_COMBAT_ART_BKSEL;
 }
 

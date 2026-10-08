@@ -244,7 +244,7 @@ void DrawItemPage_ShieldEquipLine(void)
 
 		CallARM_FillTileRect(
 			gUiTmScratchC + TILEMAP_INDEX(1, 2 + line * 2),
-			gpTSA_ItemEquipLine, TILEREF(0x40, STATSCREEN_BGPAL_3));
+			gpTSA_ItemEquipLine, TILEREF(0x40, STATSCREEN_BGPAL_EQUIPMENT_FRAME_AND_HIGHLIGHT));
 	}
 }
 

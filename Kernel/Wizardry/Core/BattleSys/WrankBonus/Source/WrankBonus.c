@@ -61,7 +61,7 @@ void HbPopuplate_WrankBonus(struct HelpBoxProc *proc)
 	if (!gpKernelDesigerConfig->wrank_bonux_rtext_auto_gen)
 		return;
 
-	wtype = GetWtypeFromRTextMsg(proc->info->mid);
+	wtype = GetWtypeFromRTextMsg(proc->info->msgId);
 
 	if (wtype < 0)
 		return;

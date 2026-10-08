@@ -39,12 +39,12 @@ void HbPopuplate_SkillPageCommon(struct HelpBoxProc *proc)
 {
 	struct SkillList *list = GetUnitSkillList(&gBattleActor.unit /* gStatScreen.unit */);
 
-	proc->mid = GetSkillDescMsg(list->sid[proc->info->mid]);
+	proc->msgId = GetSkillDescMsg(list->sid[proc->info->msgId]);
 }
 
 void HbRedirect_SkillPageCommon(struct HelpBoxProc *proc)
 {
-	if (proc->info->mid < GetUnitSkillList(&gBattleActor.unit /* gStatScreen.unit */)->amt)
+	if (proc->info->msgId < GetUnitSkillList(&gBattleActor.unit /* gStatScreen.unit */)->amt)
 		return;
 
 	switch (proc->moveKey) {
@@ -70,16 +70,16 @@ void HbRedirect_SkillPageCommon(struct HelpBoxProc *proc)
 void HbPopuplate_ArtPageCommon(struct HelpBoxProc *proc)
 {
 	struct CombatArtList *list = AutoGetCombatArtList(gStatScreen.unit);
-	int cid = list->cid[proc->info->mid];
+	int cid = list->cid[proc->info->msgId];
 
 	proc->item = cid;
-	proc->mid = GetCombatArtDesc(cid);
+	proc->msgId = GetCombatArtDesc(cid);
 	sHelpBoxType = NEW_HB_COMBAT_ART_BKSEL;
 }
 
 void HbRedirect_ArtPageCommon(struct HelpBoxProc *proc)
 {
-	if (proc->info->mid < AutoGetCombatArtList(gStatScreen.unit)->amt)
+	if (proc->info->msgId < AutoGetCombatArtList(gStatScreen.unit)->amt)
 		return;
 
 	switch (proc->moveKey) {

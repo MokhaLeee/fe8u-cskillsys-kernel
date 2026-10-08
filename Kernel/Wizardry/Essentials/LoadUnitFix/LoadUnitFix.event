@@ -3,6 +3,6 @@
 
 PUSH
 	ORG 0x0FC08
-	BL(CHAX_GetUnitDefinitionFormEventScr)
+	BL(CHAX_GetUnitDefinitionFromEventScr)
 	PROTECT 0x0000FB84 0x0000FC90 // Event2C_LoadUnits
 POP

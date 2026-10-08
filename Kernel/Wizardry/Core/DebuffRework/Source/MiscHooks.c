@@ -71,7 +71,7 @@ void HbPopulate_SSStatus(struct HelpBoxProc *proc)
 {
 	u8 index = GetUnitStatusIndex(gStatScreen.unit);
 
-	proc->mid = gpDebuffInfos[index].desc;
+	proc->msgId = gpDebuffInfos[index].desc;
 }
 
 LYN_REPLACE_CHECK(PutUnitMapUiStatus);

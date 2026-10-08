@@ -147,7 +147,7 @@ NOINLINE STATIC_DECLAR void DrawItemLineGaidenMagic(const struct ItemPageEnt *en
 #if 0
 	CallARM_FillTileRect(
 		gUiTmScratchC + TILEMAP_INDEX(1, 2 + line * 2),
-		gpTSA_ItemEquipLine, TILEREF(0x40, STATSCREEN_BGPAL_3));
+		gpTSA_ItemEquipLine, TILEREF(0x40, STATSCREEN_BGPAL_EQUIPMENT_FRAME_AND_HIGHLIGHT));
 #endif
 }
 
@@ -173,7 +173,7 @@ NOINLINE STATIC_DECLAR void DrawItemEquipLine(int slot)
 
 		CallARM_FillTileRect(
 			gUiTmScratchC + TILEMAP_INDEX(1, 2 + line * 2),
-			gpTSA_ItemEquipLine, TILEREF(0x40, STATSCREEN_BGPAL_3));
+			gpTSA_ItemEquipLine, TILEREF(0x40, STATSCREEN_BGPAL_EQUIPMENT_FRAME_AND_HIGHLIGHT));
 	}
 }
 
@@ -186,7 +186,7 @@ NOINLINE STATIC_DECLAR void DrawItemPageSubfix(int slot)
 	Decompress(gpTSA_ItemPageSubfix, gGenericBuffer);
 	CallARM_FillTileRect(
 		gUiTmScratchC + TILEMAP_INDEX(1, 11),
-		gGenericBuffer, TILEREF(0x40, STATSCREEN_BGPAL_3));
+		gGenericBuffer, TILEREF(0x40, STATSCREEN_BGPAL_EQUIPMENT_FRAME_AND_HIGHLIGHT));
 
 	DisplayTexts(gpPage1TextInfo);
 
@@ -215,8 +215,8 @@ NOINLINE STATIC_DECLAR void DrawItemPageSubfix(int slot)
 		TEXT_COLOR_SYSTEM_BLUE, str);
 
 	for (i = 0; i < 8; ++i) {
-		gUiTmScratchA[TILEMAP_INDEX(1 + i, 11)] = TILEREF(0x60 + i, STATSCREEN_BGPAL_7);
-		gUiTmScratchA[TILEMAP_INDEX(1 + i, 12)] = TILEREF(0x68 + i, STATSCREEN_BGPAL_7);
+		gUiTmScratchA[TILEMAP_INDEX(1 + i, 11)] = TILEREF(0x60 + i, STATSCREEN_BGPAL_EQUIPMENT_LABEL);
+		gUiTmScratchA[TILEMAP_INDEX(1 + i, 12)] = TILEREF(0x68 + i, STATSCREEN_BGPAL_EQUIPMENT_LABEL);
 	}
 }
 
@@ -271,7 +271,7 @@ void HbRedirect_SSItem(struct HelpBoxProc *proc)
 	if (list->ent[0].item == ITEM_NONE)
 		TryRelocateHbLeft(proc);
 
-	if (list->ent[proc->info->mid].item == ITEM_NONE) {
+	if (list->ent[proc->info->msgId].item == ITEM_NONE) {
 		if (proc->moveKey == 0 || proc->moveKey == DPAD_RIGHT || proc->moveKey == DPAD_UP)
 			TryRelocateHbUp(proc);
 		else if (proc->moveKey == DPAD_DOWN)
@@ -283,8 +283,8 @@ LYN_REPLACE_CHECK(HbPopulate_SSItem);
 void HbPopulate_SSItem(struct HelpBoxProc *proc)
 {
 	struct ItemPageList *list = GetUnitItemPageList(gStatScreen.unit);
-	int item = list->ent[proc->info->mid].item;
+	int item = list->ent[proc->info->msgId].item;
 
 	proc->item = item;
-	proc->mid  = GetItemDescId(item);
+	proc->msgId = GetItemDescId(item);
 }

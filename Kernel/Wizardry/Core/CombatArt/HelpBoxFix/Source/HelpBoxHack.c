@@ -67,17 +67,17 @@ STATIC_DECLAR void sub_808A200_vanilla(const struct HelpBoxInfo *info)
 	proc->timer = 0;
 	proc->timerMax = 12;
 
-	proc->mid = info->mid;
+	proc->msgId = info->msgId;
 
 	SetTextFontGlyphs(1);
-	GetStringTextBox(GetStringFromIndex(proc->mid), &wTextBox, &hTextBox);
+	GetStringTextBox(GetStringFromIndex(proc->msgId), &wTextBox, &hTextBox);
 	SetTextFontGlyphs(0);
 
 	sub_808A384(proc, wTextBox, hTextBox);
 	sub_808A3C4(proc, info->xDisplay, info->yDisplay);
 
 	ClearHelpBoxText();
-	StartHelpBoxTextInit(proc->item, proc->mid);
+	StartHelpBoxTextInit(proc->item, proc->msgId);
 
 	gpHelpBoxCurrentInfo = info;
 }
@@ -228,7 +228,7 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc *proc, int width, int height)
 	do { \
 		if (width < 0x90) \
 			width = 0x90; \
-		if (GetStringTextLen(GetStringFromIndex(proc->mid)) > 8) \
+		if (GetStringTextLen(GetStringFromIndex(proc->msgId)) > 8) \
 			height += 0x20; \
 		else \
 			height += 0x10; \
@@ -280,7 +280,7 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc *proc, int width, int height)
 }
 
 LYN_REPLACE_CHECK(StartHelpBoxExt);
-void StartHelpBoxExt(const struct HelpBoxInfo *info, int unk)
+void StartHelpBoxExt(const struct HelpBoxInfo *info, int noHelpSprite)
 {
 	struct HelpBoxProc *proc;
 	int wContent, hContent;
@@ -290,7 +290,7 @@ void StartHelpBoxExt(const struct HelpBoxInfo *info, int unk)
 	if (!proc) {
 		proc = (void *) Proc_Start(gProcScr_HelpBox, PROC_TREE_3);
 
-		proc->unk52 = unk;
+		proc->noHelpSprite = noHelpSprite;
 
 		SetHelpBoxInitPosition(proc, info->xDisplay, info->yDisplay);
 		ResetHelpBoxInitSize(proc);
@@ -308,7 +308,7 @@ void StartHelpBoxExt(const struct HelpBoxInfo *info, int unk)
 	proc->timerMax = 12;
 
 	proc->item = 0;
-	proc->mid = info->mid;
+	proc->msgId = info->msgId;
 
 #if CHAX
 	sHelpBoxType = NEW_HB_DEFAULT;
@@ -318,14 +318,14 @@ void StartHelpBoxExt(const struct HelpBoxInfo *info, int unk)
 		proc->info->populate(proc);
 
 	SetTextFontGlyphs(1);
-	GetStringTextBox(GetStringFromIndex(proc->mid), &wContent, &hContent);
+	GetStringTextBox(GetStringFromIndex(proc->msgId), &wContent, &hContent);
 	SetTextFontGlyphs(0);
 
 	ApplyHelpBoxContentSize(proc, wContent, hContent);
 	ApplyHelpBoxPosition(proc, info->xDisplay, info->yDisplay);
 
 	ClearHelpBoxText();
-	StartHelpBoxTextInit(proc->item, proc->mid);
+	StartHelpBoxTextInit(proc->item, proc->msgId);
 
 	sLastHbi = info;
 }

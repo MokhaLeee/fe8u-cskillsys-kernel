@@ -32,10 +32,10 @@ u16 GetLoadUnitsAmount(const struct UnitDefinition *unitDefinition)
 }
 
 /* external call */
-struct UnitDefinition *CHAX_GetUnitDefinitionFormEventScr(struct UnitDefinition *source, short count, u8 arg2, s8 arg3, s8 arg4)
+struct UnitDefinition *CHAX_GetUnitDefinitionFromEventScr(struct UnitDefinition *source, short count, u8 arg2, s8 arg3, s8 arg4)
 {
 	if (count > MAX_UDEFS_ON_ONE_LOAD)
 		count = MAX_UDEFS_ON_ONE_LOAD;
 
-	return GetUnitDefinitionFormEventScr(source, count, arg2, arg3, arg4);
+	return GetUnitDefinitionFromEventScr(source, count, arg2, arg3, arg4);
 }

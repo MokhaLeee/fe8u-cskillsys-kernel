@@ -22,12 +22,12 @@ static void LoadStatScreenUiFrame(void)
 	if (UNIT_FACTION(gStatScreen.unit) != FACTION_RED) {
 		Decompress(gpImg_StatScreenUI, BG_CHAR_ADDR(0));
 		ApplyPalette(gpPal_StatScreenUI, BGPAL_WINDOW_FRAME);
-		ApplyPalette(sUiFramePaletteLookup[0], STATSCREEN_BGPAL_3);
+		ApplyPalette(sUiFramePaletteLookup[0], STATSCREEN_BGPAL_EQUIPMENT_FRAME_AND_HIGHLIGHT);
 		ApplyPalette(sStatBarPaletteLookup[0], STATSCREEN_BGPAL_6);
 	} else {
 		Decompress(gpImg_StatScreenUIRed, BG_CHAR_ADDR(0));
 		ApplyPalette(gpPal_StatScreenUIRed, BGPAL_WINDOW_FRAME);
-		ApplyPalette(sUiFramePaletteLookup[1], STATSCREEN_BGPAL_3);
+		ApplyPalette(sUiFramePaletteLookup[1], STATSCREEN_BGPAL_EQUIPMENT_FRAME_AND_HIGHLIGHT);
 		ApplyPalette(sStatBarPaletteLookup[1], STATSCREEN_BGPAL_6);
 	}
 }
