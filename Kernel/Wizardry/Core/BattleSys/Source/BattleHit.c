@@ -146,6 +146,22 @@ void BattleGenerateHitAttributes(struct BattleUnit *attacker, struct BattleUnit 
 		attacker->nonZeroDamage = TRUE;
 }
 
+static void calc_hp_change_ext(struct BattleUnit *bu)
+{
+	struct Unit *unit = &bu->unit;
+	int cur_hp = unit->curHP;
+	int calc_hp = cur_hp;
+
+	if (gBattleStats.damage > calc_hp)
+		gBattleStats.damage = calc_hp;
+
+	cur_hp = calc_hp - gBattleStats.damage;
+
+	/* update hp change */
+	gBattleHitIterator->hpChange = unit->curHP - cur_hp;
+	unit->curHP = cur_hp;
+}
+
 LYN_REPLACE_CHECK(BattleGenerateHitEffects);
 void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
@@ -158,6 +174,8 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 		attacker->wexpMultiplier++;
 #endif
 
+	gBattleHitIterator->hpChange = 0;
+
 	if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS)) {
 		if (CheckBattleHpHalve(attacker, defender)) {
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPHALVE;
@@ -166,17 +184,8 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 
 		if (CheckDevilAttack(attacker, defender)) {
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
-			if (gBattleStats.damage > attacker->unit.curHP)
-				gBattleStats.damage = attacker->unit.curHP;
-
-			attacker->unit.curHP -= gBattleStats.damage;
-
-			if (attacker->unit.curHP < 0)
-				attacker->unit.curHP = 0;
+			calc_hp_change_ext(attacker);
 		} else {
-			if (gBattleStats.damage > defender->unit.curHP)
-				gBattleStats.damage = defender->unit.curHP;
-
 #if defined(SID_Bane) && (COMMON_SKILL_VALID(SID_Bane))
 			if (gBattleStats.damage < (defender->unit.curHP - 1)) {
 				if (CheckBattleSkillActivate(attacker, defender, SID_Bane, attacker->unit.skl)) {
@@ -186,29 +195,12 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 				}
 			}
 #endif
-			defender->unit.curHP -= gBattleStats.damage;
-
-			if (defender->unit.curHP < 0)
-				defender->unit.curHP = 0;
+			calc_hp_change_ext(defender);
 		}
 
-#if CHAX
 		BattleHit_CalcHpDrain(attacker, defender);
-#else
-		if (GetItemWeaponEffect(attacker->weapon) == WPN_EFFECT_HPDRAIN) {
-			if (attacker->unit.maxHP < (attacker->unit.curHP + gBattleStats.damage))
-				attacker->unit.curHP = attacker->unit.maxHP;
-			else
-				attacker->unit.curHP += gBattleStats.damage;
-
-			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_HPSTEAL;
-		}
-#endif
-
 		BattleHit_InjectNegativeStatus(attacker, defender);
 	}
-
-	gBattleHitIterator->hpChange = gBattleStats.damage;
 
 	BattleHit_ConsumeWeapon(attacker, defender);
 	BattleHit_ConsumeShield(attacker, defender);
