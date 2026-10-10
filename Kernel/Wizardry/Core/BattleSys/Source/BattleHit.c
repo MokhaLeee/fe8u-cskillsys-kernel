@@ -186,15 +186,6 @@ void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *de
 			gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_DEVIL;
 			calc_hp_change_ext(attacker);
 		} else {
-#if defined(SID_Bane) && (COMMON_SKILL_VALID(SID_Bane))
-			if (gBattleStats.damage < (defender->unit.curHP - 1)) {
-				if (CheckBattleSkillActivate(attacker, defender, SID_Bane, attacker->unit.skl)) {
-					RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
-					gBattleStats.damage = defender->unit.curHP - 1;
-					gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT;
-				}
-			}
-#endif
 			calc_hp_change_ext(defender);
 		}
 

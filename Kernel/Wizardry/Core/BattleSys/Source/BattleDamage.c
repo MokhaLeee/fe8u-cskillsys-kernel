@@ -122,6 +122,14 @@ int BattleHit_CalcDamage(struct BattleUnit *attacker, struct BattleUnit *defende
 		}
 	}
 
+#if defined(SID_Bane) && (COMMON_SKILL_VALID(SID_Bane))
+	if (CheckBattleSkillActivate(attacker, defender, SID_Bane, attacker->unit.skl)) {
+		RegisterActorEfxSkill(GetBattleHitRound(gBattleHitIterator), SID_Bane);
+		gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_CRIT | BATTLE_HIT_ATTR_SILENCER;
+		gDmg.result = MIN(max_damage, defender->unit.curHP - 1);
+		return max_damage;
+	}
+#endif
 
 	/**
 	 * calc-loop
