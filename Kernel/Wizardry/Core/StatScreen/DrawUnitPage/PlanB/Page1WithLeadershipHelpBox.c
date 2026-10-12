@@ -97,7 +97,7 @@ static _DECL_INFO RText_Trv = {
 
 static _DECL_INFO RText_Talk = {
 	&RText_Trv, &RText_Cond, &RText_Res, NULL,
-	0xA6, 0x78, 0x550,
+	0xA6, 0x78, 0x551,
 	NULL, NULL
 };
 
