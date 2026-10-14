@@ -124,7 +124,7 @@ void DemoUnitExpaSus_OnUnitToBattle(struct Unit *unit, struct BattleUnit *bu)
 	*GetDemoUnitExpaSus(&bu->unit) = *GetDemoUnitExpaSus(unit);
 }
 
-void DemoUnitExpaSus_OnBattleToUnit(struct Unit *unit, struct BattleUnit *bu)
+void DemoUnitExpaSus_OnBattleToUnit(struct BattleUnit *bu, struct Unit *unit)
 {
 	*GetDemoUnitExpaSus(unit) = *GetDemoUnitExpaSus(&bu->unit);
 }
