@@ -107,6 +107,11 @@ struct IERevamp {
 extern struct IERevamp const *const *const pr_gpIERevampTable;
 const struct IERevamp *GetIERevamp(int item);
 
+static inline int GetIER(int item)
+{
+	return GetItemData(ITEM_INDEX(item))->useEffectId;
+}
+
 enum { IINFO_IER_BYTE = 0x22 };
 #define IER_BYTE(item) \
 	*(((u8 *)GetItemData(ITEM_INDEX(item))) + IINFO_IER_BYTE)

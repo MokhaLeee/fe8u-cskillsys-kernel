@@ -4,9 +4,8 @@
 
 bool IsDuraItem(int item)
 {
-	switch (ITEM_INDEX(item)) {
-	case CONFIG_ITEM_INDEX_SKILL_SCROLL:
-	case CONFIG_ITEM_INDEX_SKILL_SCROLL_FEB:
+	switch (GetIER(item)) {
+	case IER_CHAX_SKILL_SCROLL:
 		return true;
 
 	default:

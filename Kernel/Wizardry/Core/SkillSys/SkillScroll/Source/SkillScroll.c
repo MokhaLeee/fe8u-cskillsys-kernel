@@ -1,5 +1,6 @@
 #include "common-chax.h"
 #include "skill-system.h"
+#include "item-sys.h"
 #include "icon-rework.h"
 #include "kernel-lib.h"
 #include "constants/texts.h"
@@ -7,9 +8,8 @@
 /* External hooks */
 bool IsSkillScrollItem(int item)
 {
-	switch (ITEM_INDEX(item)) {
-	case CONFIG_ITEM_INDEX_SKILL_SCROLL:
-	case CONFIG_ITEM_INDEX_SKILL_SCROLL_FEB:
+	switch (GetIER(item)) {
+	case IER_CHAX_SKILL_SCROLL:
 		return true;
 
 	default:
