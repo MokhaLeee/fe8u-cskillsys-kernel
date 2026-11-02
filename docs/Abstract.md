@@ -89,6 +89,10 @@ Some combat related debuffs can overlap and exist simultaneously but just hold o
 
 [Shield](./ShieldItem.md)
 
+## Narrow font
+
+[NarrowFont](./NarrowFont.md)
+
 ## System config
 
 [SystemConfig](./SystemConfig.md)

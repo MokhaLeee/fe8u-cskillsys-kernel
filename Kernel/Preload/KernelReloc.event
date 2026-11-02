@@ -93,8 +93,7 @@ _thumb(pr_PutUnitSleepDebuffOAM) jumpToHack(PutUnitSleepDebuffOAM)
 _thumb(pr_PutUnitBerserkDebuffOAM) jumpToHack(PutUnitBerserkDebuffOAM)
 _thumb(pr_PutUnitSilenceDebuffOAM) jumpToHack(PutUnitSilenceDebuffOAM)
 
-gpAutoNarrowFontConf: POIN AutoNarrowFontConf
-gpAutoNarrowFontConfToUnicode: POIN AutoNarrowFontConfToUnicode
+WORD 0 0
 
 gpUnitRefrainHooks: POIN gUnitRefrainHooks
 

@@ -13,6 +13,4 @@ PUSH
 	PROTECT 0x000044C8 0x00004504 // Text_DrawStringASCII
 POP
 
-#include "Source/data.lyn.event"
-
 #endif // UTF8_HACK_INSTALLED

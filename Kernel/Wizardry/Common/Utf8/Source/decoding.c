@@ -67,6 +67,22 @@ int GetStringTextLen(const char *str)
 	return width;
 }
 
+_maybe_unused
+static u32 feb_style_narrow_unicode_convert(u32 unicod)
+{
+	char ch = NarrowFontsFebToAscii(unicod);
+	u32 ret = unicod;
+
+	if (ch != 0) {
+		u32 tmp = AsciiToNarrowFontsUnicode(ch);
+
+		if (tmp != 0)
+			ret = tmp;
+	}
+
+	return ret;
+}
+
 LYN_REPLACE_CHECK(Text_DrawCharacter);
 const char *Text_DrawCharacter(struct Text *text, const char *str)
 {
@@ -79,6 +95,14 @@ const char *Text_DrawCharacter(struct Text *text, const char *str)
 		unicod = '?';
 		decode_len = 1;
 	}
+
+#if 0
+	/**
+	 * convert feb style narrow-fonts to common style.
+	 * unused: we may directly put the FEB-style narrow-fonts to glyph.
+	 */
+	unicod = feb_style_narrow_unicode_convert(unicod);
+#endif
 
 	glyph = GetCharGlyphUnicode(unicod, gActiveFont);
 	if (glyph == NULL)

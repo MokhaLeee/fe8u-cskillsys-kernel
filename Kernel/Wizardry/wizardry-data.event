@@ -28,5 +28,6 @@ KERNEL_DATA_START:
 #include "Core/CombatArt/data.event"
 #include "Core/Movement/MovementData.event"
 #include "Misc/Reorganize/data.event"
+#include "Common/Utf8/kdata.event"
 
 KERNEL_DATA_END:

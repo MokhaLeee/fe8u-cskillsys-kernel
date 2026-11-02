@@ -26,7 +26,7 @@ char *Utf8ToNarrowFonts(char *str)
 			/**
 			 * Try narrow
 			 */
-			const char *narrow_str = gpAutoNarrowFontConf[(u8)*buf_cur].narrow_str;
+			const char *narrow_str = AutoNarrowFontConf[(u8)*buf_cur].narrow_str;
 
 			if (narrow_str) {
 				while (*narrow_str != '\0')
@@ -53,7 +53,7 @@ char NarrowFontsUtf8ToAscii(const char *str)
 	u32 i;
 
 	for (i = 0; i < 0x100; i++) {
-		const char *narrow_str = gpAutoNarrowFontConf[i].narrow_str;
+		const char *narrow_str = AutoNarrowFontConf[i].narrow_str;
 
 		if (!narrow_str)
 			continue;
@@ -71,7 +71,7 @@ char NarrowFontsUnicodeToAscii(u32 unicod)
 	Printf("Try convert unicode: 0x%08X", unicod);
 
 	for (i = 0; i < 0x100; i++) {
-		u32 narrow_unicod = gpAutoNarrowFontConfToUnicode[i];
+		u32 narrow_unicod = AutoNarrowFontConfToUnicode[i];
 
 		if (narrow_unicod == 0)
 			continue;
@@ -82,13 +82,18 @@ char NarrowFontsUnicodeToAscii(u32 unicod)
 	return 0;
 }
 
+u32 AsciiToNarrowFontsUnicode(char ch)
+{
+	return AutoNarrowFontConfToUnicode[(u8)ch];
+}
+
 void DumpNarrowFontsUnicode(void)
 {
 #if 0
 	u32 i;
 
 	for (i = 0; i < 0x100; i++) {
-		const char *narrow_str = gpAutoNarrowFontConf[i].narrow_str;
+		const char *narrow_str = AutoNarrowFontConf[i].narrow_str;
 		int ret, len;
 		u32 decoded;
 
@@ -102,4 +107,18 @@ void DumpNarrowFontsUnicode(void)
 		LogPrintf("['%c'] = 0x%08X", i, decoded);
 	}
 #endif
+}
+
+char NarrowFontsFebToAscii(u32 unicod)
+{
+	u32 i;
+
+	for (i = 0; i < 0x100; i++) {
+		if (gNarrowFontFebToUnicode[i] == 0)
+			continue;
+
+		if (gNarrowFontFebToUnicode[i] == unicod)
+			return i;
+	}
+	return 0;
 }

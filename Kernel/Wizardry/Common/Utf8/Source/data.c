@@ -137,3 +137,68 @@ const u32 AutoNarrowFontConfToUnicode[0x100] = {
     ['y'] = 0x000002B8,
     ['z'] = 0x00001DBB
 };
+
+/**
+ * The `{UTF-8}` half of FEBuilder's `NarrowFont` `TEXTESCAPE` table, as the
+ * unicode code point each letter is encoded to: `[_E]` is written `C2 9F`, which
+ * decodes to `U+009F`. Same shape as `AutoNarrowFontConfToUnicode`, so a code
+ * point can be turned back into the letter with a single scan.
+ *
+ * Scraiza's patch keeps no narrow glyph for i l m w I M N T W and writes them as
+ * plain ascii; those rows stay below U+0080 and never reach the lookup.
+ */
+const u32 gNarrowFontFebToUnicode[0x100] = {
+    ['a'] = 0x00000081, ///< a
+    ['b'] = 0x00000082, ///< b
+    ['c'] = 0x00000083, ///< c
+    ['d'] = 0x00000084, ///< d
+    ['e'] = 0x00000085, ///< e
+    ['f'] = 0x00000086, ///< f
+    ['g'] = 0x00000087, ///< g
+    ['h'] = 0x00000088, ///< h
+    // ['i'] = 0x00000069, ///< i -- self, patch writes plain ascii
+    ['j'] = 0x00000089, ///< j -- patch writes bare 0x89, no C2 prefix
+    ['k'] = 0x0000008A, ///< k
+    // ['l'] = 0x0000006C, ///< l -- self, patch writes plain ascii
+    // ['m'] = 0x0000006D, ///< m -- self, patch writes plain ascii
+    ['n'] = 0x0000008B, ///< n
+    ['o'] = 0x0000008C, ///< o
+    ['p'] = 0x0000008D, ///< p
+    ['q'] = 0x0000008E, ///< q
+    ['r'] = 0x0000008F, ///< r
+    ['s'] = 0x00000090, ///< s
+    ['t'] = 0x00000095, ///< t
+    ['u'] = 0x00000096, ///< u
+    ['v'] = 0x00000097, ///< v
+    // ['w'] = 0x00000066, ///< w -- patch {UTF-8} row says 0x66 (typo)
+    ['x'] = 0x00000098, ///< x
+    ['y'] = 0x00000099, ///< y
+    ['z'] = 0x0000009A, ///< z
+    ['A'] = 0x0000009B, ///< A
+    ['B'] = 0x0000009C, ///< B
+    ['C'] = 0x0000009D, ///< C
+    ['D'] = 0x0000009E, ///< D
+    ['E'] = 0x0000009F, ///< E
+    ['F'] = 0x000000A0, ///< F
+    ['G'] = 0x000000A2, ///< G
+    ['H'] = 0x000000A3, ///< H
+    // ['I'] = 0x00000049, ///< I -- self, patch writes plain ascii
+    ['J'] = 0x000000A4, ///< J
+    ['K'] = 0x000000A5, ///< K
+    ['L'] = 0x000000A6, ///< L
+    // ['M'] = 0x0000004D, ///< M -- self, patch writes plain ascii
+    // ['N'] = 0x0000004E, ///< N -- self, patch writes plain ascii
+    ['O'] = 0x000000A7, ///< O
+    ['P'] = 0x000000A8, ///< P
+    ['Q'] = 0x000000A9, ///< Q
+    ['R'] = 0x000000AC, ///< R
+    ['S'] = 0x000000AD, ///< S
+    // ['T'] = 0x00000054, ///< T -- self, patch writes plain ascii
+    ['U'] = 0x000000AE, ///< U
+    ['V'] = 0x000000AF, ///< V
+    // ['W'] = 0x00000057, ///< W -- self, patch writes plain ascii
+    ['X'] = 0x000000B0, ///< X
+    ['Y'] = 0x000000B1, ///< Y
+    ['Z'] = 0x000000B2, ///< Z
+    // [' '] = 0x000000BC, ///< `[_SP]` short space
+};
